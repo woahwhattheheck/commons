@@ -1,0 +1,98 @@
+{
+  "base": "06615f09c536336e629e34589dc125495cba3109",
+  "agno_revision": "8f36eaf2d18e91afa7b327eec66a3cd3685dcb87",
+  "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+  "run_url": "https://github.com/woahwhattheheck/commons/actions/runs/34085911514",
+  "patch_sha256": "cb4a08823211dcb48266d06a4a0d9ea9b48afbdd3d71c1ad87b3c9340dbbd200",
+  "results": {
+    "format": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "examples/migrations/agno-user-memory"
+      ],
+      "returncode": 0
+    },
+    "adapter-tests": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "examples/migrations/agno-user-memory/tests"
+      ],
+      "returncode": 0
+    },
+    "upstream-okf": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "tests/test_okf.py"
+      ],
+      "returncode": 0
+    },
+    "ruff": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "examples/migrations/agno-user-memory"
+      ],
+      "returncode": 0
+    },
+    "ruff-format": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "examples/migrations/agno-user-memory"
+      ],
+      "returncode": 0
+    },
+    "mypy": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "mypy",
+        "examples/migrations/agno-user-memory/convert.py",
+        "examples/migrations/agno-user-memory/export_agno.py",
+        "examples/migrations/agno-user-memory/verify_bundle.py"
+      ],
+      "returncode": 0
+    },
+    "compile": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "examples/migrations/agno-user-memory"
+      ],
+      "returncode": 0
+    },
+    "whitespace": {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "returncode": 0
+    }
+  },
+  "live_recall": "NOT RUN",
+  "full_repository_suite": "NOT RUN",
+  "contest_entry": "NOT SUBMITTED",
+  "human_onboarding": "NOT COMPLETED"
+}

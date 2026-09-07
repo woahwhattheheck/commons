@@ -1,0 +1,1016 @@
+diff --git a/examples/migrations/agno-user-memory/.gitignore b/examples/migrations/agno-user-memory/.gitignore
+new file mode 100644
+index 0000000..2302512
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/.gitignore
+@@ -0,0 +1,4 @@
++.venv/
++__pycache__/
++.pytest_cache/
++private-run/
+diff --git a/examples/migrations/agno-user-memory/README.md b/examples/migrations/agno-user-memory/README.md
+new file mode 100644
+index 0000000..282d666
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/README.md
+@@ -0,0 +1,159 @@
++# Agno user memories → Memanto OKF
++
++A scoped Python adapter for Memanto issue #1609, Path B. It converts **raw Agno
++`UserMemory` dataclass fields** into an OKF bundle accepted by the existing
++`memanto migrate okf` interface. It adds no core provider or model runtime.
++
++This is an **intake-stage implementation**, not a complete contest submission.
++The regression fixtures are synthetic. No live Agno archive, Moorcheh retrieval
++result, demo video, social post, bounty claim, or sponsor approval is included.
++
++## Source revisions
++
++Memanto base: `06615f09c536336e629e34589dc125495cba3109`.
++Agno API inspected: `8f36eaf2d18e91afa7b327eec66a3cd3685dcb87` (`3.0.6` in its project metadata).
++Agno is optional for file conversion and required only for database export.
++The converter uses Python's standard library; offline tests add pytest and PyYAML.
++Use a disposable cloud environment, not the owner's PC.
++
++## Setup and regression commands
++
++From a checkout of the pinned Memanto revision with this patch applied:
++
++```bash
++python3.11 -m venv .venv
++. .venv/bin/activate
++python -m pip install -e '.[all]'
++python -m pip install -r examples/migrations/agno-user-memory/requirements-source.txt
++
++# No source SDK, Memanto imports, API keys, or network calls in this file:
++python -m pytest -q examples/migrations/agno-user-memory/tests/test_convert.py
++
++# Real SDK/importer integration; missing dependencies must fail, not skip:
++python -m pytest -q examples/migrations/agno-user-memory/tests/test_agno.py
++python -m pytest -q examples/migrations/agno-user-memory/tests/test_memanto.py
++
++python -m ruff check examples/migrations/agno-user-memory
++python -m ruff format --check examples/migrations/agno-user-memory
++python -m pytest -q tests/test_okf.py
++```
++
++Dependency installation was exercised in an isolated Python 3.11 GitHub Actions
++runner on September 7, 2026. See the accompanying validation receipt for results.
++`requirements-source.txt` pins Agno's source and selects only its SQL extra, not
++model-provider, `all`, or local-inference extras. Transitive dependencies are not
++lockfile-pinned. Do not install llama.cpp-related packages or use an owner-PC
++runtime to complete these commands.
++
++## Genuine-source workflow
++
++Only use a database you are authorized to read. Choose one explicit user and,
++when necessary, the existing custom memory table. Keep the output private.
++Replace the non-secret paths and user ID below with the intended source values:
++
++```bash
++EXAMPLE=examples/migrations/agno-user-memory
++mkdir -m 700 "$EXAMPLE/private-run"
++python "$EXAMPLE/export_agno.py" /path/to/owned-agno.sqlite \
++  "$EXAMPLE/private-run/source.json" --user-id exact-user-id
++# Add --memory-table existing-table-name when Agno uses a custom table.
++python "$EXAMPLE/convert.py" "$EXAMPLE/private-run/source.json" \
++  "$EXAMPLE/private-run/okf"
++python "$EXAMPLE/verify_bundle.py" "$EXAMPLE/private-run/source.json" \
++  "$EXAMPLE/private-run/okf" > "$EXAMPLE/private-run/fidelity.json"
++memanto migrate okf "$EXAMPLE/private-run/okf" --dry-run
++```
++
++The exporter opens the original SQLite database read-only, takes a consistent
++SQLite backup including committed WAL data, and lets Agno read the disposable
++copy. SDK initialization/schema changes cannot modify the original database.
++Normal SQLite read locks or sidecar handling may still occur. It does not call
++an LLM, fetch remote memories, or export all users implicitly.
++
++The exported JSON envelope is exactly `format`, `user_id`, and `memories`, with
++`format` set to `agno-user-memory-v1`. Each list item is `dataclasses.asdict()`
++of an Agno `UserMemory`, not `UserMemory.to_dict()`. At the inspected revision,
++`to_dict()` converts epochs through the machine's local timezone without a zone
++suffix; the adapter retains raw epoch seconds and emits explicit UTC timestamps.
++Legacy timezone-naive JSON exports are rejected rather than interpreted by guess.
++
++The OKF subcommand at the pinned Memanto revision has **no `--report` option**.
++Its dry run maps locally without a target agent or API client, although it writes
++local preview files to Memanto's configured data directory. The conversion
++manifest reports measured source/document byte counts, not invented savings.
++
++Live import, recall, and export must be separately authorized after the sponsor
++and AI-policy gates are satisfied. A dedicated Memanto agent must be used for a
++real run. Verify any subsequent exported bundle using the same command:
++
++```bash
++python examples/migrations/agno-user-memory/verify_bundle.py \
++  /private/source.json /private/actual-memanto-export
++```
++
++This measures exact source-record fidelity through Memanto's loader and mapper.
++It is **not** a semantic recall test. The contest's before/after golden questions
++must actually query Agno and Memanto; content presence is not a substitute.
++
++## Mapping and limitations
++
++| Agno field | Representation |
++| --- | --- |
++| `memory` | Readable body plus an exact JSON source record |
++| `memory_id`, `user_id` | Percent-encoded `agno://` resource; SHA-256 identity filename |
++| `topics` | Deduplicated OKF tags; original list remains in the source record |
++| `created_at` | UTC `timestamp`, including Unix epoch zero |
++| `updated_at` | UTC `x_memanto.updated_at` |
++| Memory type | Conservative `observation`; no unsupported semantic inference |
++| Source and provenance | `agno`, `imported` |
++| `input`, `feedback`, agent/team IDs, future fields | Exact canonical JSON in the body |
++
++Memanto's supporting-data footer truncates oversized metadata. Keeping the
++complete record in the body avoids depending on that footer for fidelity.
++The JSON is deterministic and escapes Markdown control characters. The exact
++`<!-- okf-entry -->` sentinel is escaped in displayed text, titles, and tags
++because the pinned loader splits on that substring. The JSON still reconstructs the original value.
++This is a producer-side compatibility rule, not a change to the upstream loader.
++
++All records are validated before creating a bundle. Duplicate IDs, wrong user
++scope, ambiguous JSON, non-finite numbers, invalid timestamps/topics, empty
++exports, and oversized records fail explicitly. Output paths are derived from
++identity hashes, not memory titles or raw IDs. An existing destination is never
++overwritten. An ordinary write failure removes only the newly created bundle.
++The output directory must have an existing parent. Publication is not atomic
++against concurrent readers; consumers must wait for successful conversion.
++
++Bodies over **8,000 characters** are rejected, reserving room within Memanto's
++10,000-character limit for the initial import footer and one export/reimport
++verification. This is not a guarantee for arbitrarily many migration cycles:
++upstream currently appends another supporting-data footer on each import.
++Server-assigned Memanto IDs are not preserved; original Agno IDs are.
++Full original JSON bytes/whitespace are not preserved; decoded record fields are.
++
++**Privacy:** source records intentionally include `input`, feedback and IDs.
++This is not a sanitizer. Never add private source databases, exports, logs,
++credentials, or unreviewed memory bundles to a PR. A public sample must come from
++an actual, intentionally shareable tool run and be reviewed before publication.
++The adapter's own validation errors omit record values; third-party SDK/CLI
++logging is outside that guarantee.
++
++## Submission gates
++
++Issue #1609 advertises $200 USD for **one winning entry**, not for every merged
++adapter, with a September 15, 2026 23:59 UTC deadline. A linked BountyHub account
++and claim, contributor onboarding, genuine-source evidence, live pipeline video,
++social links and recall parity are required by the issue. None is implied by
++these tests. Confirm the current sponsor offer and full onboarding AI rules
++before proposing this entry publicly. Do not use `Closes #1609` for this partial
++contest deliverable.
++
++Sources: https://github.com/moorcheh-ai/memanto/issues/1609 and the repository's
++CONTRIBUTING.md. The chat handoff contains detailed source links and gate status.
++
++### Re-export control sequences
++
++Titles, displayed memory text, and projected tags escape the OKF entry delimiter
++and the embedded-record fence marker. Escaping only the initial JSON frontmatter
++is insufficient: Memanto's exporter decodes those strings and serializes them as
++YAML on the next hop. The original title source and original topics remain exact
++in the embedded canonical Agno record; ordinary projected tags are unchanged.
+diff --git a/examples/migrations/agno-user-memory/convert.py b/examples/migrations/agno-user-memory/convert.py
+new file mode 100644
+index 0000000..f872026
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/convert.py
+@@ -0,0 +1,214 @@
++"""Convert scoped Agno UserMemory dataclass exports into Memanto OKF bundles."""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++import re
++import shutil
++from datetime import datetime, timezone
++from pathlib import Path
++from typing import Any
++from urllib.parse import quote
++
++FORMAT = "agno-user-memory-v1"
++RECORD_MARKER = "```agno-record-v1"
++ENTRY_DELIMITER = "<!-- okf-entry -->"
++# Reserve two upstream footer budgets within the 10,000-character limit.
++# This covers import, export, and validation of that export (not unlimited hops).
++MAX_BODY_CHARS = 8_000
++_RECORD_RE = re.compile(r"(?m)^```agno-record-v1\n([^\n]+)\n```$")
++
++
++def canonical(value: Any) -> str:
++    """Encode deterministic JSON without introducing Markdown control sequences."""
++    return (
++        json.dumps(value, ensure_ascii=True, sort_keys=True, allow_nan=False)
++        .replace("<", r"\u003c")
++        .replace("`", r"\u0060")
++    )
++
++
++def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
++    """Reject duplicate JSON keys instead of silently dropping a source value."""
++    result: dict[str, Any] = {}
++    for key, value in pairs:
++        if key in result:
++            raise ValueError("duplicate JSON key")
++        result[key] = value
++    return result
++
++
++def _constant(_: str) -> Any:
++    """Reject the non-JSON NaN/Infinity extensions accepted by Python's decoder."""
++    raise ValueError("non-finite JSON number")
++
++
++def load_export(path: Path) -> dict[str, Any]:
++    """Read a strict UTF-8 export; report errors without echoing source records."""
++    value = json.loads(
++        path.read_text(encoding="utf-8"),
++        object_pairs_hook=_pairs,
++        parse_constant=_constant,
++    )
++    if not isinstance(value, dict):
++        raise ValueError("export must be an object")
++    return value
++
++
++def _timestamp(value: Any) -> str | None:
++    """Convert raw Agno epoch seconds to UTC, including zero; never guess a zone."""
++    if value is None:
++        return None
++    if type(value) is not int:
++        raise ValueError("timestamps must be integer epoch seconds or null")
++    try:
++        return datetime.fromtimestamp(value, timezone.utc).isoformat()
++    except (OverflowError, OSError, ValueError) as exc:
++        raise ValueError("timestamp is outside the supported range") from exc
++
++
++def _nonempty(value: Any, name: str) -> str:
++    """Validate an identifier or memory without normalizing away source bytes."""
++    if not isinstance(value, str) or not value.strip():
++        raise ValueError(f"{name} must be a nonempty string")
++    return value
++
++
++def _display_text(value: str) -> str:
++    """Keep control sequences out of fields that upstream later writes as YAML."""
++    return value.replace(ENTRY_DELIMITER, "&lt;!-- okf-entry --&gt;").replace(
++        RECORD_MARKER, "&#96;&#96;&#96;agno-record-v1"
++    )
++
++
++def render_export(export: dict[str, Any]) -> dict[str, str]:
++    """Validate every record, then render deterministic files without any I/O."""
++    if set(export) != {"format", "user_id", "memories"}:
++        raise ValueError("export requires exactly format, user_id, and memories")
++    if export["format"] != FORMAT:
++        raise ValueError("unsupported export format")
++    user_id = _nonempty(export["user_id"], "user_id")
++    records = export["memories"]
++    if not isinstance(records, list) or not records:
++        raise ValueError("memories must be a nonempty list")
++    # Validate the complete payload, including unknown future source fields.
++    json.dumps(export, ensure_ascii=False, allow_nan=False).encode("utf-8")
++    files: dict[str, str] = {}
++    seen: set[str] = set()
++    for position, record in enumerate(records):
++        if not isinstance(record, dict):
++            raise ValueError(f"record {position}: expected an object")
++        memory_id = _nonempty(record.get("memory_id"), "memory_id")
++        memory = _nonempty(record.get("memory"), "memory")
++        if record.get("user_id") != user_id:
++            raise ValueError(f"record {position}: user scope mismatch")
++        if memory_id in seen:
++            raise ValueError(f"record {position}: duplicate memory_id")
++        seen.add(memory_id)
++        topics = record.get("topics")
++        if topics is None:
++            topics = []
++        if not isinstance(topics, list) or any(
++            not isinstance(topic, str) for topic in topics
++        ):
++            raise ValueError(f"record {position}: topics must be strings or null")
++        identity = canonical([user_id, memory_id])
++        digest = hashlib.sha256(identity.encode("ascii")).hexdigest()
++        frontmatter: dict[str, Any] = {
++            "type": "observation",
++            "title": _display_text(" ".join(memory.split()))[:80],
++            "resource": (
++                f"agno://users/{quote(user_id, safe='')}"
++                f"/memories/{quote(memory_id, safe='')}"
++            ),
++            "tags": list(dict.fromkeys(["agno", *(_display_text(t) for t in topics)])),
++            "x_memanto": {
++                "type": "observation",
++                "source": "agno",
++                "provenance": "imported",
++            },
++        }
++        created = _timestamp(record.get("created_at"))
++        updated = _timestamp(record.get("updated_at"))
++        if created is not None:
++            frontmatter["timestamp"] = created
++        if updated is not None:
++            frontmatter["x_memanto"]["updated_at"] = updated
++        # Upstream splits on the sentinel even inside prose or a JSON string.
++        # Escape its display spelling; the exact source is in the JSON block.
++        display = _display_text(memory)
++        body = f"{display}\n\n{RECORD_MARKER}\n{canonical(record)}\n```"
++        if len(body) > MAX_BODY_CHARS:
++            raise ValueError(f"record {position}: content exceeds lossless size budget")
++        # JSON is valid YAML, with unambiguous quoting for dates and booleans.
++        files[f"memories/{digest}.md"] = (
++            f"---\n{canonical(frontmatter)}\n---\n\n{body}\n"
++        )
++    return dict(sorted(files.items()))
++
++
++def recover_record(content: str) -> dict[str, Any]:
++    """Recover one exact source record from a converted or re-exported body."""
++    matches = _RECORD_RE.findall(content)
++    if len(matches) != 1:
++        raise ValueError("expected exactly one complete Agno source record")
++    record = json.loads(matches[0], object_pairs_hook=_pairs, parse_constant=_constant)
++    if not isinstance(record, dict):
++        raise ValueError("embedded source record must be an object")
++    return record
++
++
++def convert(source: Path, output: Path) -> dict[str, Any]:
++    """Write a new bundle only after complete validation; never replace a bundle."""
++    export = load_export(source)
++    files = render_export(export)
++    records = sorted(export["memories"], key=lambda record: record["memory_id"])
++    report = {
++        "format": FORMAT,
++        "source_records": len(records),
++        "okf_documents": len(files),
++        "per_type": {"observation": len(records)},
++        "records_sha256": hashlib.sha256(
++            canonical(records).encode("ascii")
++        ).hexdigest(),
++        "source_bytes": source.stat().st_size,
++        "okf_document_bytes": sum(len(text.encode("utf-8")) for text in files.values()),
++        "live_import": "NOT RUN",
++        "recall_parity": "NOT RUN",
++        "cost_token_latency_savings": None,
++    }
++    output.mkdir(mode=0o700)  # Refuse an existing or missing-parent destination.
++    try:
++        (output / "memories").mkdir()
++        for name, text in files.items():
++            (output / name).write_text(text, encoding="utf-8", newline="\n")
++        (output / "manifest.json").write_text(
++            json.dumps(report, indent=2, sort_keys=True) + "\n",
++            encoding="utf-8",
++            newline="\n",
++        )
++    except BaseException:
++        shutil.rmtree(output)
++        raise
++    return report
++
++
++def main() -> None:
++    """CLI entry point; emit only counts and generic validation failures."""
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("source", type=Path)
++    parser.add_argument("output", type=Path)
++    args = parser.parse_args()
++    try:
++        report = convert(args.source, args.output)
++    except (OSError, ValueError, TypeError) as exc:
++        parser.exit(
++            2, f"Conversion failed ({type(exc).__name__}); no records printed.\n"
++        )
++    print(json.dumps(report, sort_keys=True))
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/examples/migrations/agno-user-memory/export_agno.py b/examples/migrations/agno-user-memory/export_agno.py
+new file mode 100644
+index 0000000..3ea406b
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/export_agno.py
+@@ -0,0 +1,79 @@
++"""Read one user's Agno memories from a temporary, consistent SQLite snapshot."""
++
++from __future__ import annotations
++
++import argparse
++import json
++import sqlite3
++import tempfile
++from contextlib import closing
++from dataclasses import asdict
++from pathlib import Path
++from typing import Any
++
++from convert import FORMAT, render_export
++
++
++def export_records(memories: list[Any], user_id: str, output: Path) -> int:
++    """Serialize raw dataclass fields, validate scope and fidelity, and create a file."""
++    export = {
++        "format": FORMAT,
++        "user_id": user_id,
++        "memories": [asdict(memory) for memory in memories],
++    }
++    render_export(export)  # Reject invalid or oversized input before writing.
++    with output.open("x", encoding="utf-8") as stream:
++        json.dump(export, stream, ensure_ascii=True, sort_keys=True, indent=2)
++        stream.write("\n")
++    return len(memories)
++
++
++def snapshot_sqlite(source: Path, destination: Path) -> None:
++    """Use SQLite backup to include committed WAL data without modifying the source."""
++    uri = source.resolve().as_uri() + "?mode=ro"
++    with closing(sqlite3.connect(uri, uri=True)) as reader:
++        with closing(sqlite3.connect(destination)) as writer:
++            reader.backup(writer)
++
++
++def export_sqlite(
++    source: Path, user_id: str, output: Path, memory_table: str | None = None
++) -> int:
++    """Use the official Agno database API only against a disposable copy."""
++    from agno.db.sqlite import SqliteDb
++    from sqlalchemy import create_engine
++    from sqlalchemy.engine import URL
++
++    with tempfile.TemporaryDirectory(prefix="agno-export-") as directory:
++        snapshot = Path(directory) / "snapshot.sqlite"
++        snapshot_sqlite(source, snapshot)
++        engine = create_engine(URL.create("sqlite", database=str(snapshot)))
++        try:
++            db = SqliteDb(db_engine=engine, memory_table=memory_table)
++            memories = db.get_user_memories(user_id=user_id)
++            if not isinstance(memories, list):
++                raise ValueError("Agno did not return a memory list")
++            return export_records(memories, user_id, output)
++        finally:
++            engine.dispose()
++
++
++def main() -> None:
++    """Export one explicitly selected user, never all users by default."""
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("database", type=Path)
++    parser.add_argument("output", type=Path)
++    parser.add_argument("--user-id", required=True)
++    parser.add_argument("--memory-table")
++    args = parser.parse_args()
++    try:
++        count = export_sqlite(
++            args.database, args.user_id, args.output, args.memory_table
++        )
++    except (OSError, ValueError, TypeError, ImportError, sqlite3.Error) as exc:
++        parser.exit(2, f"Export failed ({type(exc).__name__}); no records printed.\n")
++    print(f"Exported {count} scoped memories.")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/examples/migrations/agno-user-memory/requirements-source.txt b/examples/migrations/agno-user-memory/requirements-source.txt
+new file mode 100644
+index 0000000..a028b5b
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/requirements-source.txt
+@@ -0,0 +1,3 @@
++# Only the SQL extra; no model runtimes or llama.cpp-related extras.
++# Install in an isolated cloud environment, not on the owner's PC.
++agno[sql] @ git+https://github.com/agno-agi/agno.git@8f36eaf2d18e91afa7b327eec66a3cd3685dcb87#subdirectory=libs/agno
+diff --git a/examples/migrations/agno-user-memory/tests/test_agno.py b/examples/migrations/agno-user-memory/tests/test_agno.py
+new file mode 100644
+index 0000000..d16fb2e
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/tests/test_agno.py
+@@ -0,0 +1,45 @@
++"""Real Agno SDK integration. Synthetic fixtures are not bounty evidence."""
++
++import hashlib
++import sys
++from dataclasses import asdict
++from pathlib import Path
++
++from agno.db.schemas.memory import UserMemory
++from agno.db.sqlite import SqliteDb
++from sqlalchemy import create_engine
++from sqlalchemy.engine import URL
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++from convert import load_export  # noqa: E402
++from export_agno import export_sqlite  # noqa: E402
++
++
++def test_real_agno_scoped_export_preserves_dataclass_timestamps(tmp_path):
++    database = tmp_path / "source.sqlite"
++    engine = create_engine(URL.create("sqlite", database=str(database)))
++    try:
++        db = SqliteDb(db_engine=engine, memory_table="custom_memories")
++        for user_id in ("alice", "bob"):
++            saved = db.upsert_user_memory(
++                UserMemory(
++                    memory_id=f"memory-{user_id}",
++                    memory=f"Synthetic {user_id} regression memory.",
++                    user_id=user_id,
++                    topics=["timezone"],
++                    created_at=0,
++                    updated_at=172800,
++                )
++            )
++            assert saved is not None
++        expected = [asdict(memory) for memory in db.get_user_memories(user_id="alice")]
++    finally:
++        engine.dispose()
++    assert expected[0]["created_at"] == 0
++    before = hashlib.sha256(database.read_bytes()).hexdigest()
++    output = tmp_path / "export.json"
++    assert export_sqlite(database, "alice", output, "custom_memories") == 1
++    export = load_export(output)
++    assert export["memories"] == expected
++    assert export["user_id"] == "alice"
++    assert hashlib.sha256(database.read_bytes()).hexdigest() == before
+diff --git a/examples/migrations/agno-user-memory/tests/test_convert.py b/examples/migrations/agno-user-memory/tests/test_convert.py
+new file mode 100644
+index 0000000..257f060
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/tests/test_convert.py
+@@ -0,0 +1,290 @@
++"""Offline regression tests. The records here are synthetic, not bounty evidence."""
++
++import copy
++import json
++import sqlite3
++import subprocess
++import sys
++from dataclasses import dataclass
++from pathlib import Path
++
++import pytest
++import yaml
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++from convert import (  # noqa: E402
++    ENTRY_DELIMITER,
++    FORMAT,
++    RECORD_MARKER,
++    convert,
++    load_export,
++    recover_record,
++    render_export,
++)
++from export_agno import export_records, snapshot_sqlite  # noqa: E402
++
++
++@pytest.fixture
++def export():
++    return {
++        "format": FORMAT,
++        "user_id": "alice",
++        "memories": [
++            {
++                "memory_id": "m1",
++                "memory": "Use PostgreSQL 16.\nPrefer UTC timestamps.",
++                "user_id": "alice",
++                "topics": ["database", "database", "on"],
++                "created_at": 0,
++                "updated_at": 172800,
++                "input": "Remember the database and timezone choices.",
++                "feedback": None,
++                "agent_id": "planner",
++                "team_id": None,
++                "future_field": {"nested": [False, None, 3]},
++            }
++        ],
++    }
++
++
++def document(export):
++    return next(iter(render_export(export).values()))
++
++
++def frontmatter(text):
++    return yaml.safe_load(text.split("---\n", 2)[1])
++
++
++def test_exact_record_round_trip_including_future_fields(export):
++    before = copy.deepcopy(export)
++    assert recover_record(document(export)) == export["memories"][0]
++    assert export == before
++
++
++def test_epoch_zero_utc_and_quoted_yaml_scalars(export):
++    fm = frontmatter(document(export))
++    assert fm["timestamp"] == "1970-01-01T00:00:00+00:00"
++    assert fm["x_memanto"]["updated_at"] == "1970-01-03T00:00:00+00:00"
++    assert fm["tags"] == ["agno", "database", "on"]
++    assert fm["x_memanto"]["provenance"] == "imported"
++
++
++def test_null_timestamps_are_not_invented(export):
++    export["memories"][0].update(created_at=None, updated_at=None, topics=None)
++    fm = frontmatter(document(export))
++    assert "timestamp" not in fm
++    assert "updated_at" not in fm["x_memanto"]
++    assert fm["tags"] == ["agno"]
++
++
++def test_unicode_and_reserved_markers_are_lossless(export):
++    record = export["memories"][0]
++    record["memory"] = (
++        f"  café 日本語 🐜\n{ENTRY_DELIMITER}\n"
++        f'{RECORD_MARKER}\n{{"fake": true}}\n```\n---\n'
++    )
++    record["future_field"] = {"sentinel": ENTRY_DELIMITER, "fence": RECORD_MARKER}
++    text = document(export)
++    assert ENTRY_DELIMITER not in text
++    assert text.count(RECORD_MARKER) == 1
++    assert recover_record(text) == record
++
++
++def test_identity_based_paths_do_not_collide_or_depend_on_order(export):
++    other = copy.deepcopy(export["memories"][0])
++    other["memory_id"] = "../../index"
++    export["memories"].append(other)
++    files = render_export(export)
++    assert len(files) == 2
++    assert files == render_export(
++        {**export, "memories": list(reversed(export["memories"]))}
++    )
++    assert all(Path(path).parent == Path("memories") for path in files)
++    assert all(len(Path(path).stem) == 64 for path in files)
++    other["memory"] = "A correction to the same memory."
++    assert set(render_export(export)) == set(files)
++
++
++@pytest.mark.parametrize("value", [True, False, "2026-01-01", 0.0, 10**30])
++def test_invalid_timestamps_do_not_become_plausible_dates(export, value):
++    export["memories"][0]["created_at"] = value
++    with pytest.raises(ValueError):
++        render_export(export)
++
++
++@pytest.mark.parametrize("value", ["database", [3], [None], {"tag": "x"}])
++def test_topics_are_not_silently_coerced(export, value):
++    export["memories"][0]["topics"] = value
++    with pytest.raises(ValueError):
++        render_export(export)
++
++
++@pytest.mark.parametrize(
++    "field,value", [("memory", "  "), ("memory_id", None), ("user_id", "bob")]
++)
++def test_bad_records_fail_before_writing(export, tmp_path, field, value):
++    export["memories"][0][field] = value
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(export))
++    output = tmp_path / "bundle"
++    with pytest.raises(ValueError):
++        convert(source, output)
++    assert not output.exists()
++
++
++def test_duplicate_ids_are_not_overwritten(export):
++    export["memories"].append(copy.deepcopy(export["memories"][0]))
++    with pytest.raises(ValueError, match="duplicate"):
++        render_export(export)
++
++
++def test_oversized_second_record_cannot_produce_partial_bundle(export, tmp_path):
++    second = copy.deepcopy(export["memories"][0])
++    second.update(memory_id="m2", memory="x" * 10000)
++    export["memories"].append(second)
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(export))
++    with pytest.raises(ValueError, match="size budget"):
++        convert(source, tmp_path / "bundle")
++    assert not (tmp_path / "bundle").exists()
++
++
++@pytest.mark.parametrize(
++    "text",
++    ['{"a":1,"a":2}', '{"nested":{"a":1,"a":2}}', '{"x":NaN}', '{"x":Infinity}', "[]"],
++)
++def test_invalid_or_ambiguous_json_is_rejected(tmp_path, text):
++    source = tmp_path / "source.json"
++    source.write_text(text)
++    with pytest.raises(ValueError):
++        load_export(source)
++
++
++def test_write_report_and_no_overwrite(export, tmp_path):
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(export), encoding="utf-8")
++    bundle = tmp_path / "bundle"
++    report = convert(source, bundle)
++    contents = {p.name: p.read_bytes() for p in bundle.rglob("*") if p.is_file()}
++    assert report["source_records"] == report["okf_documents"] == 1
++    assert report["live_import"] == "NOT RUN"
++    assert report["cost_token_latency_savings"] is None
++    with pytest.raises(FileExistsError):
++        convert(source, bundle)
++    assert contents == {
++        p.name: p.read_bytes() for p in bundle.rglob("*") if p.is_file()
++    }
++
++
++def test_cli_does_not_echo_private_content(export, tmp_path):
++    export["memories"][0]["topics"] = ["PRIVATE_MARKER", 1]
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(export))
++    script = Path(__file__).resolve().parents[1] / "convert.py"
++    result = subprocess.run(
++        [sys.executable, str(script), str(source), str(tmp_path / "out")],
++        capture_output=True,
++        text=True,
++        check=False,
++    )
++    assert result.returncode == 2
++    assert "PRIVATE_MARKER" not in result.stdout + result.stderr
++    assert not (tmp_path / "out").exists()
++
++
++def test_truncated_or_ambiguous_record_block_is_not_accepted(export):
++    text = document(export)
++    with pytest.raises(ValueError):
++        recover_record(text.rsplit("```", 1)[0])
++    with pytest.raises(ValueError):
++        recover_record(text + "\n" + text)
++
++
++def test_sqlite_snapshot_includes_wal_and_never_writes_to_original(tmp_path):
++    source, snapshot = tmp_path / "source.sqlite", tmp_path / "snapshot.sqlite"
++    connection = sqlite3.connect(source)
++    try:
++        connection.execute("PRAGMA journal_mode=WAL")
++        connection.execute("CREATE TABLE memories (value TEXT)")
++        connection.execute("INSERT INTO memories VALUES ('committed WAL value')")
++        connection.commit()
++        snapshot_sqlite(source, snapshot)
++        with sqlite3.connect(snapshot) as copied:
++            assert (
++                copied.execute("SELECT value FROM memories").fetchone()[0]
++                == "committed WAL value"
++            )
++            copied.execute("DELETE FROM memories")
++        assert connection.execute("SELECT count(*) FROM memories").fetchone()[0] == 1
++    finally:
++        connection.close()
++
++
++def test_snapshot_of_missing_source_does_not_create_it(tmp_path):
++    source = tmp_path / "missing.sqlite"
++    with pytest.raises(sqlite3.OperationalError):
++        snapshot_sqlite(source, tmp_path / "copy.sqlite")
++    assert not source.exists()
++
++
++def test_raw_dataclass_export_preserves_epoch_zero(tmp_path):
++    @dataclass
++    class FixtureMemory:
++        memory: str = "Use UTC."
++        memory_id: str = "m1"
++        user_id: str = "alice"
++        created_at: int = 0
++
++    output = tmp_path / "source.json"
++    assert export_records([FixtureMemory()], "alice", output) == 1
++    assert load_export(output)["memories"][0]["created_at"] == 0
++    with pytest.raises(FileExistsError):
++        export_records([FixtureMemory()], "alice", output)
++
++
++def test_output_failure_removes_only_new_bundle(export, tmp_path, monkeypatch):
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(export), encoding="utf-8")
++    sibling = tmp_path / "keep.txt"
++    sibling.write_text("unrelated", encoding="utf-8")
++    original_write = Path.write_text
++
++    def fail_manifest(path, *args, **kwargs):
++        if path.name == "manifest.json":
++            raise OSError("simulated output failure")
++        return original_write(path, *args, **kwargs)
++
++    monkeypatch.setattr(Path, "write_text", fail_manifest)
++    with pytest.raises(OSError):
++        convert(source, tmp_path / "bundle")
++    assert not (tmp_path / "bundle").exists()
++    assert sibling.read_text(encoding="utf-8") == "unrelated"
++    assert source.exists()
++
++
++def test_report_byte_counts_match_written_markdown(export, tmp_path):
++    export["memories"][0]["memory"] = "café 日本語 🐜\nUse UTC."
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(export), encoding="utf-8")
++    output = tmp_path / "bundle"
++    report = convert(source, output)
++    assert report["source_bytes"] == len(source.read_bytes())
++    assert report["okf_document_bytes"] == sum(
++        len(path.read_bytes()) for path in output.rglob("*.md")
++    )
++
++
++def test_decoded_projection_fields_do_not_reintroduce_control_sequences():
++    """Re-export serializes decoded fields as YAML, not our escaped JSON."""
++    record = {
++        "memory_id": "control-sequences",
++        "user_id": "alice",
++        "memory": "<!-- okf-entry --> followed by ```agno-record-v1",
++        "topics": ["<!-- okf-entry -->", "```agno-record-v1"],
++    }
++    docs = render_export({"format": FORMAT, "user_id": "alice", "memories": [record]})
++    text = next(iter(docs.values()))
++    metadata = yaml.safe_load(text.split("---\n", 2)[1])
++    assert "<!-- okf-entry -->" not in yaml.safe_dump(metadata)
++    assert "```agno-record-v1" not in yaml.safe_dump(metadata)
++    assert recover_record(text) == record
+diff --git a/examples/migrations/agno-user-memory/tests/test_memanto.py b/examples/migrations/agno-user-memory/tests/test_memanto.py
+new file mode 100644
+index 0000000..d3d0754
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/tests/test_memanto.py
+@@ -0,0 +1,107 @@
++"""Upstream integration tests: run in the pinned Memanto checkout, without keys.
++
++These use real Memanto modules. Missing dependencies must fail, not silently skip.
++Fixtures are synthetic regression data, never live migration or recall evidence.
++"""
++
++import json
++import sys
++from datetime import datetime, timezone
++from pathlib import Path
++
++import pytest
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++from convert import FORMAT, convert, recover_record, render_export  # noqa: E402
++from verify_bundle import verify  # noqa: E402
++
++from memanto.app.services.okf_export_service import OkfExportService  # noqa: E402
++from memanto.cli.migrate.mappers import map_okf  # noqa: E402
++from memanto.cli.migrate.okf_loader import load_okf_bundle  # noqa: E402
++
++
++@pytest.mark.parametrize(
++    "memory",
++    [
++        "Prefer UTC timestamps.",
++        "café 日本語\n<!-- okf-entry -->\n```agno-record-v1\n{}\n```",
++        "[retained link](https://example.invalid/source) " * 60,
++    ],
++)
++@pytest.mark.parametrize(
++    ("topics", "expected_tags"),
++    [
++        (["on", "time"], ["agno", "on", "time"]),
++        (
++            ["<!-- okf-entry -->", "```agno-record-v1"],
++            ["agno", "&lt;!-- okf-entry --&gt;", "&#96;&#96;&#96;agno-record-v1"],
++        ),
++    ],
++)
++def test_actual_import_export_and_reimport_preserve_source_record(
++    tmp_path, memory, topics, expected_tags
++):
++    record = {
++        "memory_id": "same-id",
++        "user_id": "test-user",
++        "memory": memory,
++        "topics": topics,
++        "created_at": 0,
++        "updated_at": 172800,
++        "input": "Synthetic regression input, not a genuine source archive.",
++        "future_field": {"sentinel": "<!-- okf-entry -->"},
++    }
++    source = tmp_path / "source.json"
++    source.write_text(
++        json.dumps({"format": FORMAT, "user_id": "test-user", "memories": [record]}),
++        encoding="utf-8",
++    )
++    bundle = tmp_path / "bundle"
++    convert(source, bundle)
++    entries = load_okf_bundle(bundle)
++    assert len(entries["memories"]) == 1
++    rows = map_okf(entries)
++    assert len(rows) == 1
++    row = rows[0]
++    assert row["created_at"] == datetime(1970, 1, 1, tzinfo=timezone.utc)
++    assert row["updated_at"] == datetime(1970, 1, 3, tzinfo=timezone.utc)
++    assert row["source"] == "agno"
++    assert row["source_ref"] == "agno://users/test-user/memories/same-id"
++    assert row["type"] == "observation"
++    assert row["provenance"] == "imported"
++    assert row["tags"] == expected_tags
++    assert "<!-- okf-entry -->" not in row["title"]
++    assert recover_record(row["content"]) == record
++    assert len(row["content"]) <= 10_000
++    assert verify(source, bundle)["exact_records_matched"] == 1
++
++    service = OkfExportService(exports_dir=tmp_path / "exports")
++    result = service.write_okf_bundle(
++        "agno-regression",
++        {"observation": [{"id": "server-assigned-test-id", **row}]},
++        split="file",
++    )
++    reexport = Path(result["output_path"])
++    assert verify(source, reexport)["exact_records_matched"] == 1
++    restored = map_okf(load_okf_bundle(reexport))[0]
++    assert recover_record(restored["content"]) == record
++
++
++def test_verifier_rejects_changed_or_missing_memories(tmp_path):
++    original = {
++        "format": FORMAT,
++        "user_id": "alice",
++        "memories": [{"memory_id": "m", "memory": "Keep this.", "user_id": "alice"}],
++    }
++    source = tmp_path / "source.json"
++    source.write_text(json.dumps(original), encoding="utf-8")
++    bundle = tmp_path / "bundle"
++    convert(source, bundle)
++    original["memories"][0]["memory"] = "Changed content."
++    for name, text in render_export(original).items():
++        (bundle / name).write_text(text, encoding="utf-8")
++    with pytest.raises(ValueError, match="exactly match"):
++        verify(source, bundle)
++    next((bundle / "memories").glob("*.md")).unlink()
++    with pytest.raises(ValueError, match="counts differ"):
++        verify(source, bundle)
+diff --git a/examples/migrations/agno-user-memory/verify_bundle.py b/examples/migrations/agno-user-memory/verify_bundle.py
+new file mode 100644
+index 0000000..2ef6ad6
+--- /dev/null
++++ b/examples/migrations/agno-user-memory/verify_bundle.py
+@@ -0,0 +1,61 @@
++"""Compare exact Agno source records with a bundle using Memanto's actual importer."""
++
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++from typing import Any
++
++from convert import load_export, recover_record, render_export
++
++
++def verify(source: Path, bundle: Path) -> dict[str, Any]:
++    """Check mapping and record fidelity, not semantic retrieval or agent answers."""
++    from memanto.cli.migrate.mappers import map_okf, type_breakdown
++    from memanto.cli.migrate.okf_loader import load_okf_bundle
++
++    export = load_export(source)
++    render_export(export)  # Apply the same strict schema and scope validation.
++    expected = {record["memory_id"]: record for record in export["memories"]}
++    entries = load_okf_bundle(bundle)
++    rows = map_okf(entries)
++    if len(entries["memories"]) != len(rows) or len(rows) != len(expected):
++        raise ValueError("source, loaded, and mapped counts differ")
++    recovered = {}
++    for row in rows:
++        record = recover_record(row["content"])
++        identity = record.get("memory_id")
++        if not isinstance(identity, str) or identity in recovered:
++            raise ValueError("missing or duplicate source identity")
++        recovered[identity] = record
++    if recovered != expected:
++        raise ValueError("mapped source records do not exactly match the export")
++    return {
++        "source_records": len(expected),
++        "loaded_entries": len(entries["memories"]),
++        "mapped_memories": len(rows),
++        "skipped": 0,
++        "exact_records_matched": len(recovered),
++        "per_type": type_breakdown(rows),
++        "semantic_recall_parity": "NOT RUN",
++    }
++
++
++def main() -> None:
++    """Print only the fidelity summary; never print record contents on failure."""
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("source", type=Path)
++    parser.add_argument("bundle", type=Path)
++    args = parser.parse_args()
++    try:
++        result = verify(args.source, args.bundle)
++    except (OSError, ValueError, TypeError, ImportError) as exc:
++        parser.exit(
++            2, f"Verification failed ({type(exc).__name__}); no records printed.\n"
++        )
++    print(json.dumps(result, sort_keys=True))
++
++
++if __name__ == "__main__":
++    main()
