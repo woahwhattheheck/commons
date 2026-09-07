@@ -37,7 +37,10 @@ def agent(obs, configuration=None):
     # Exactly one call to the actual parent entrypoint. Its persistent route
     # and weed-repair state advance normally; worker actions are not edited.
     parent_action = _FRONTIER_PARENT(obs, configuration)
-    result = sell_finished(obs, parent_action, configuration)
+    from v19_terminal import clone_distance
+    distance = clone_distance(obs)
+    state['sale_regime'] = 'competing_supply' if distance <= 2 else 'parent_schedule'
+    result = sell_finished(obs, parent_action, configuration) if distance <= 2 else parent_action
     state['last_step'] = step
     state['changed_market_turns'] += result['market'] != parent_action.get('market', [])
     state['route'] = _V43_POLICY.states[seat]['route']
