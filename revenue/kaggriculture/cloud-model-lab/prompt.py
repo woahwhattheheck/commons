@@ -1,0 +1,176 @@
+"""Observation digest, explicit joint-turn rules, and prompt assembly.
+
+The digest compresses the fields the engine's own gates read. It does not
+pre-decide: every admissible op stays reachable and the accepted list is printed
+in full with its quantity domains.
+
+Only player-visible fields reach the model. The episode seed, the opponent's
+private state, and the card wrapper's capture metadata are excluded by
+construction (`constraints.visible_config`) and asserted by
+`tests/test_joint_turn.py::test_no_leakage`.
+
+The operator surface is placed FIRST, before the state: a constraint framework
+shapes everything after it, so it leads the prompt.
+"""
+
+from constraints import engine
+
+
+def _tile_str(tile, day):
+    if tile is None:
+        return "empty"
+    if tile == "LOCKED":
+        return "LOCKED"
+    if not isinstance(tile, dict):
+        return str(tile)
+    K = engine()
+    kind = tile.get("kind")
+    if kind == "PLANT":
+        crop = tile["crop"]
+        cd = K.CROPS[crop]
+        age = day - tile["planted_day"]
+        bits = [f"PLANT {crop}", f"age{age}d", f"ripe_at{cd['first_yield_day']}d",
+                f"yield{tile.get('yield_units', 0)}"]
+        bits.append("watered_today" if tile.get("watered_today") else "not_watered_today")
+        if tile.get("fertilized_until_day", -1) >= day:
+            bits.append("fertilized")
+        return " ".join(bits)
+    if "animal" in tile:
+        bits = [f"{tile['animal']} on {kind}", f"yield{tile.get('yield_units', 0)}"]
+        bits.append("fed_today" if tile.get("fed_today") else "not_fed_today")
+        bits.append("cared_today" if tile.get("cared_today") else "not_cared_today")
+        if tile.get("fertilizer_available"):
+            bits.append("fertilizer_ready")
+        return " ".join(bits)
+    return str(kind)
+
+
+def digest(obs, config, seat):
+    K = engine()
+    day, hour = int(obs["day"]), int(obs["hour"])
+    farm = obs["farms"][seat]
+    priv = obs["private"]
+    cap = int(config.get("shedCapacity", 100) or 100)
+    shed = priv.get("shed", {})
+    used = sum(shed.values())
+    tiles = farm["tiles"]
+
+    lines = [f"day {day} hour {hour} money {int(farm['money'])}"]
+    units = [("farmer", farm["farmer"])] + [(f"hand{i}", p) for i, p in enumerate(farm.get("hands", []))]
+    invs = priv.get("inventories", [])
+    for i, (label, pos) in enumerate(units):
+        x, y = int(pos[0]), int(pos[1])
+        held = invs[i] if i < len(invs) else {}
+        held_s = ",".join(f"{k}{v}" for k, v in sorted(held.items()) if v) or "-"
+        lines.append(f"{label} at ({x},{y}) on [{_tile_str(tiles[y][x], day)}] carrying {held_s}")
+    seeds = ",".join(f"{k}{v}" for k, v in sorted(priv.get("seeds", {}).items()) if v) or "-"
+    lines.append(f"seeds {seeds}")
+    shed_s = ",".join(f"{k}{v}" for k, v in sorted(shed.items()) if v) or "-"
+    lines.append(f"shed {shed_s} ({used}/{cap} used, {max(0, cap - used)} room)")
+    prices = obs["market"].get("prices") or {}
+    if not prices:
+        prices = {p: K.market_price(p, obs["market"]["inventory"][p], obs["market"].get("params"))
+                  for p in K.PRODUCTS}
+    lines.append("sell prices " + ",".join(f"{k}{int(round(v))}" for k, v in sorted(prices.items())))
+    shops = obs.get("town", {}).get("unlocked_shops", [])
+    lines.append("town shops " + (",".join(sorted(shops)) if shops else "none"))
+    return "\n".join(lines)
+
+
+def rules_block(adm):
+    """The turn-level engine rules, stated explicitly. Stated, never applied for the model."""
+    r = adm["rules"]
+    plant = ",".join(f"{k}{v}" for k, v in sorted(r["plant_budget"].items()) if v) or "none"
+    out = [
+        f"units this turn: {r['units']} (farmer" +
+        (f" + {r['units'] - 1} hand(s))" if r["units"] > 1 else " only)"),
+        f"PLANT budget is JOINT across farmer and hands: seeds {plant}. If PLANT requests "
+        f"for one crop exceed its seed count, the engine turns ALL of them into PASS.",
+        "ORDER: every unit action resolves BEFORE any market order. So goods dropped "
+        "into the shed this turn CAN be sold this turn; a seed bought this turn CANNOT "
+        "be planted until the next turn.",
+        f"market orders run in sequence sharing one cash balance and {r['shed_room']} "
+        f"shed room, repricing after each unit; at most {r['max_market_orders']} orders.",
+    ]
+    if r["end_of_day_this_turn"]:
+        out.append("END OF DAY fires after this turn: carried goods drop to the shed and "
+                   "ANY OVERFLOW ABOVE CAPACITY IS DISCARDED, hired hands are removed, and "
+                   "the farmer respawns at the default tile.")
+    else:
+        out.append(f"end of day is not this turn (hour {r['hour']} of {r['turns_per_day']}).")
+    if r["last_turn_of_episode"]:
+        out.append("LAST TURN: the score is cash only. Stock left in the shed is worth nothing.")
+    return "\n".join(out)
+
+
+def accepted_block(adm):
+    out = []
+    labels = ["farmer"] + [f"hands[{i}]" for i in range(len(adm["units"]) - 1)]
+    for i, (label, ops) in enumerate(zip(labels, adm["units"])):
+        rendered = []
+        q = adm["quantities"][i]
+        for op in ops:
+            if op[0] == "PICKUP":
+                rendered.append(f"PICKUP {op[1]} n<={q['PICKUP'].get(op[1], 1)}")
+            elif op[0] == "PLACE":
+                rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)}")
+            else:
+                rendered.append(" ".join(str(t) for t in op))
+        out.append(f"{label}: " + " | ".join(rendered))
+
+    def _m(entries):
+        return " | ".join(
+            " ".join(m["order"]) + (f" n<={m['max_n']}" if m["max_n"] > 1 else "")
+            for m in entries)
+
+    out.append("market now: " + _m(adm["market"]))
+    now = {tuple(m["order"]) for m in adm["market"]}
+    extra = [m for m in adm["market_after_full_deposit"] if tuple(m["order"]) not in now]
+    if extra:
+        out.append("market also available if this turn deposits carried goods: " + _m(extra))
+    return "\n".join(out)
+
+
+def horizon_block(hz):
+    """Production dates, decay clock, survival flag, cash-realization horizon.
+
+    Facts the engine will apply, so the plan can weigh them. No move is recommended.
+    """
+    lines = [f"decisions left this episode: {hz['remaining_decisions']} "
+             f"(last is step {hz['last_decision_step']}); "
+             f"{hz['turns_left_today']} turn(s) left today"]
+    if not hz["plants"]:
+        lines.append("no plants owned")
+        return "\n".join(lines)
+    for p in hz["plants"]:
+        bits = [f"({p['at'][0]},{p['at'][1]}) {p['crop']}",
+                f"age{p['age_days']}d", f"yield{p['yield_units']}/{p['max_yield']}"]
+        if p["ongoing"]:
+            days = ",".join(f"day{e['day']}" for e in p["remaining_production_days"][:6])
+            bits.append(f"{p['events_left']} production event(s) left"
+                        + (f" on {days}" if days else ""))
+        else:
+            bits.append(f"ripe at age{p['first_yield_day']}d")
+            lo, hi = p["watering_bonus_window_days"]
+            bits.append(f"watering raises yield at age{lo}-{hi}d")
+        if p["decay_starts_step"] is not None:
+            bits.append(("decaying now" if p["decaying"]
+                         else f"decays from step{p['decay_starts_step']}"))
+        bits.append(f"unwatered_streak{p['consecutive_unwatered']}")
+        if p["dies_at_refresh_unless_watered"]:
+            bits.append("DIES at this day's refresh unless watered today")
+        lines.append("  " + " ".join(bits))
+    return "\n".join(lines)
+
+
+def build(card, adm, head, hz=None):
+    """head = an operator surface, or the baseline instruction. Constraint leads."""
+    parts = [
+        head,
+        f"STATE\n{digest(card['observation'], card['configuration'], card['seat'])}",
+    ]
+    if hz is not None:
+        parts.append(f"PLANTS AND HORIZON\n{horizon_block(hz)}")
+    parts.append(f"RULES\n{rules_block(adm)}")
+    parts.append(f"ACCEPTED (the engine acts on exactly these)\n{accepted_block(adm)}")
+    return "\n\n".join(parts) + "\n"
