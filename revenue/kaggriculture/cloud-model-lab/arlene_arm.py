@@ -18,6 +18,7 @@ import time
 
 import cards as cards_mod
 import arlene_motifs
+import arlene_plan
 import route_cards
 
 
@@ -85,7 +86,16 @@ def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
     env = cards_mod.make_env(seed)
     env.reset(2)
     opp, opp_id = make_opponent(opponent, A)
-    me = arlene_motifs.Overlay(A, table) if overlay else A.Agent()
+    if not overlay:
+        me = A.Agent()
+    elif isinstance(table, dict) and table.get("lane") == "plan":
+        me = arlene_plan.PlanOverlay(A, table["chooser"],
+                                     max_steps=table.get("max_steps",
+                                                         arlene_plan.MAX_PLAN_STEPS),
+                                     deposit=table.get("deposit", True),
+                                     min_value=table.get("min_value", 0.0))
+    else:
+        me = arlene_motifs.Overlay(A, table)
     t0 = time.time()
     n = 0
     while not env.done:
@@ -121,7 +131,8 @@ def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
             "own_cash": own, "rival_cash": rival, "margin": own - rival,
             "rounds": n, "wall_s": round(time.time() - t0, 1),
             "fills": getattr(me, "fills", []),
-            "motif_table": {"motifs": len(table.get("motifs", [])),
+            "plan_report": me.report() if hasattr(me, "report") else None,
+            "motif_table": {"motifs": len(table.get("motifs", []) or []),
                             "proposable": sum(1 for m in table.get("motifs", [])
                                               if m.get("proposable")),
                             "authored": table.get("meta", {}).get("authored"),
@@ -133,7 +144,13 @@ def main():
     ap.add_argument("--seeds", type=int, nargs="+", required=True)
     ap.add_argument("--seats", type=int, nargs="+", default=[0, 1])
     ap.add_argument("--opponents", nargs="+", default=["arlene", "apex"])
-    ap.add_argument("--motifs", required=True)
+    ap.add_argument("--motifs", default=None)
+    ap.add_argument("--plan", choices=("greedy",), default=None,
+                    help="run the bounded worker-reallocation continuation lane "
+                         "with the named target chooser instead of a motif table")
+    ap.add_argument("--plan-max-steps", type=int, default=arlene_plan.MAX_PLAN_STEPS)
+    ap.add_argument("--plan-min-value", type=float, default=0.0)
+    ap.add_argument("--plan-no-deposit", action="store_true")
     ap.add_argument("--label", default=None)
     ap.add_argument("--ledger", action="store_true",
                     help="record every executed market order per seat with its unit "
@@ -145,8 +162,15 @@ def main():
     ap.add_argument("--out", default="results/arlene-arm.json")
     a = ap.parse_args()
     A, arl_id = route_cards.load_arlene()
-    table = json.load(open(a.motifs))
-    label = a.label or os.path.basename(a.motifs)
+    if a.plan:
+        table = {"lane": "plan", "chooser": arlene_plan.GreedyChooser(),
+                 "max_steps": a.plan_max_steps, "deposit": not a.plan_no_deposit,
+                 "min_value": a.plan_min_value, "meta": {"authored": "hand",
+                 "provenance": "engine-derived-control"}}
+        label = a.label or f"plan/{a.plan} steps<={a.plan_max_steps}"
+    else:
+        table = json.load(open(a.motifs))
+        label = a.label or os.path.basename(a.motifs)
     rows = []
     for seed in a.seeds:
         for seat in a.seats:
@@ -168,7 +192,10 @@ def main():
                       f"d_margin {d['margin'] - c['margin']:+9.0f} "
                       f"fills {len(d['fills'])}"
                       + (f" path_div {d.get('path_divergent_days')}d"
-                         if a.record_path else ""), flush=True)
+                         if a.record_path else "")
+                      + (f" done {d['plan_report']['completed']}"
+                         f" abandoned {d['plan_report']['abandoned']}"
+                         if d.get("plan_report") else ""), flush=True)
     def agg(sel):
         c = [r for r in rows if r["arm"] == "control" and sel(r)]
         d = [r for r in rows if r["arm"] == "candidate" and sel(r)]
