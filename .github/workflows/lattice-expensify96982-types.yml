@@ -42,8 +42,8 @@ jobs:
         run: |
           set -o pipefail
           npm ci --no-audit --no-fund 2>&1 | tee ../evidence/npm-ci.log
-      - name: Repair only the test keys and run serial project checks
-        run: python3 review/reviews/lattice-expensify96982/run.py check app evidence
+      - name: Finish measured lint repair and run all three focused suites
+        run: python3 review/reviews/lattice-expensify96982/finish.py check app evidence
       - name: Retain raw diagnostics, replay, and patch
         if: always()
         uses: actions/upload-artifact@v4
