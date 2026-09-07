@@ -125,8 +125,56 @@ itself and the displacement ends at the reset. It requires instead that the tape
 want nothing from that worker for the rest of the day, and it is excluded on the
 final day, whose close has no turn left to sell into.
 
-The worker lane is therefore NOT closed for lack of reachable work. Arms are
-re-running.
+The worker lane is therefore NOT closed for lack of reachable work.
+
+## The candidate: harvest an animal about to overflow its output cap
+
+`_daily_refresh_animals` writes `yield_units = min(max_held, yield + base +
+bonus)` (827), so a unit produced onto an animal already at its cap is destroyed
+at that refresh. No "does the route harvest this tile eventually" test can see
+it: the units are gone before any later harvest arrives. Measured on the intact
+baseline, seed 9600011 loses **42 units over 24 refreshes** (38 EGG, 4 MILK),
+about $1,732 at final prices, with tile (4,1) alone losing 12; seed 9600029 loses
+4 MILK. Part of that is not recoverable by harvesting earlier -- some events have
+`yield_before` 0 and overflow on an accumulated care bonus instead -- and the
+recoverable part is the subset already sitting at `max_held`.
+
+`CapChooser` takes only the reachable animal that would lose the most at the next
+refresh. HARVEST leaves the animal in place, so taking it early forfeits nothing.
+Execution is one-way: the plan finishes inside the day and the end-of-day drop
+banks it.
+
+Development panel, 2 seeds x both seats x Arlene and Apex, RNG path identical in
+every pair:
+
+| | control | candidate |
+|---|---|---|
+| W/T/L | 4/4/0 | **6/2/0** |
+| pairs changed | | 2, both **T → W**, none to L |
+| mean d_own | | +2.0 |
+| mean d_margin | | +1.5 |
+
+Seed 9600029 produced zero fills -- no cap-threatened animal was reachable -- so
+the intervention does nothing there rather than perturbing a game it has no
+thesis about. That is the shape the five rejected arms lacked: they fired
+everywhere, this one fires only where the loss is.
+
+Source was then frozen (sha256 in `results/cap-candidate-frozen.txt`) and run on
+seeds 9700037 and 9700053, which it had never seen:
+
+| panel | control W/T/L | candidate W/T/L | changed | mean d_own | mean d_margin |
+|---|---|---|---|---:|---:|
+| development 9600011/9600029 | 4/4/0 | **6/2/0** | 2, both T→W | +2.0 | +1.5 |
+| **RESERVED 9700037/9700053** | 4/2/2 | **6/0/2** | 2, both T→W | **+67.8** | **+67.0** |
+
+Sixteen paired games. Four ties converted to wins, **no win or tie ever turned
+into a loss**, own cash improved or held in every pair, and the two arms share an
+identical end-of-day RNG path in all sixteen. Reserved per-pair own-cash deltas:
++106, +114, +106, +114, +26, +16, +26, +34.
+
+Only one plan in five completes, so the captured amount is well short of the
+$1,732 the cap destroys on 9600011. Raising that is a NEW candidate and needs new
+development seeds; it is not a tuning pass on these.
 
 Capacity is not the gap either: over full games Arlene strands **no** animals --
 final shed and carried are both empty -- and holds an animal with a matching empty
