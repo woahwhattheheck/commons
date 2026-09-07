@@ -1,5 +1,9 @@
 import base64
 import json
+import io
+import urllib.error
+from email.message import Message
+from email.utils import formatdate
 import os
 import tempfile
 import unittest
@@ -7,7 +11,7 @@ from pathlib import Path
 from unittest.mock import patch
 from host.inbox_slack_relay import (
     Delivery, Event, Providers, RelayError, RunLock, State, clean,
-    github_events, github_pages, gmail_events, mail_body, run,
+    github_events, github_pages, gmail_events, mail_body, request_json, run,
 )
 
 CONFIG = {
@@ -245,6 +249,126 @@ class RelayTests(unittest.TestCase):
         with RunLock(self.path):
             with self.assertRaisesRegex(RelayError,'another_poll'):
                 with RunLock(self.path): pass
+
+
+class ProviderCooldownTests(unittest.TestCase):
+    """Exercise real HTTP error conversion and the persistent finite-run boundary."""
+
+    def http_failure(self, code, values=None, *, host='api.github.com', data=None):
+        headers = Message()
+        for name, value in (values or {}).items():
+            headers[name] = value
+        body = io.BytesIO(b'private provider diagnostic must not be published')
+        error = urllib.error.HTTPError('https://' + host + '/test', code,
+                                       'provider diagnostic', headers, body)
+        with patch('host.inbox_slack_relay.urllib.request.build_opener') as opener:
+            opener.return_value.open.side_effect = error
+            with self.assertRaises(RelayError) as caught:
+                request_json('https://' + host + '/test', data=data)
+        self.assertTrue(body.closed)
+        self.assertEqual(str(caught.exception), 'http_' + str(code))
+        return caught.exception
+
+    def test_github_secondary_limit_honors_retry_after(self):
+        error = self.http_failure(403, {'Retry-After': '7200'})
+        self.assertEqual(error.retry_after, 7200)
+        self.assertFalse(error.uncertain)
+
+    def test_slack_long_retry_after_is_not_shortened(self):
+        error = self.http_failure(429, {'Retry-After': '7200'}, host='slack.com')
+        self.assertEqual(error.retry_after, 7200)
+
+    def test_http_date_rounds_up_remaining_delay(self):
+        with patch('host.inbox_slack_relay.time.time', return_value=1800000000.25):
+            error = self.http_failure(403, {'Retry-After': formatdate(1800000127, usegmt=True)})
+        self.assertEqual(error.retry_after, 127)
+
+    def test_github_primary_limit_honors_reset_epoch(self):
+        with patch('host.inbox_slack_relay.time.time', return_value=1800000000.25):
+            error = self.http_failure(403, {'X-RateLimit-Remaining': '0',
+                                            'X-RateLimit-Reset': '1800007200'})
+        self.assertEqual(error.retry_after, 7200)
+
+    def test_both_limits_wait_for_later_boundary(self):
+        with patch('host.inbox_slack_relay.time.time', return_value=1800000000):
+            error = self.http_failure(429, {'Retry-After': '90',
+                                            'X-RateLimit-Remaining': '0',
+                                            'X-RateLimit-Reset': '1800000120'})
+        self.assertEqual(error.retry_after, 120)
+
+    def test_missing_or_invalid_429_header_uses_fallback(self):
+        for value in (None, '', 'invalid', '-1', 'NaN'):
+            with self.subTest(value=value):
+                values = {} if value is None else {'Retry-After': value}
+                self.assertEqual(self.http_failure(429, values).retry_after, 60)
+
+    def test_malformed_primary_reset_uses_fallback(self):
+        error = self.http_failure(403, {'X-RateLimit-Remaining': '0',
+                                        'X-RateLimit-Reset': 'invalid'})
+        self.assertEqual(error.retry_after, 60)
+
+    def test_ordinary_errors_do_not_become_rate_limits(self):
+        for code in (401, 403, 404, 500):
+            with self.subTest(code=code):
+                self.assertEqual(self.http_failure(code).retry_after, 0)
+
+    def test_reset_headers_are_github_specific(self):
+        error = self.http_failure(403, {'X-RateLimit-Remaining': '0',
+                                        'X-RateLimit-Reset': '1800007200'}, host='slack.com')
+        self.assertEqual(error.retry_after, 0)
+
+    def test_write_uncertainty_is_preserved(self):
+        error = self.http_failure(503, {'Retry-After': '90'},
+                                  host='slack.com', data={'text': 'test'})
+        self.assertEqual(error.retry_after, 90)
+        self.assertTrue(error.uncertain)
+        self.assertFalse(self.http_failure(429, {'Retry-After': '90'},
+                                          host='slack.com', data={}).uncertain)
+
+    def test_zero_and_past_deadlines_have_minimum_delay(self):
+        self.assertEqual(self.http_failure(429, {'Retry-After': '0'}).retry_after, 1)
+        with patch('host.inbox_slack_relay.time.time', return_value=1800000000):
+            error = self.http_failure(403, {'Retry-After': formatdate(1799999990, usegmt=True)})
+        self.assertEqual(error.retry_after, 1)
+
+    def test_source_cooldown_survives_reopen_without_cursor_advance(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'ledger.sqlite3'
+            state = State(path)
+            self.addCleanup(lambda: state.close())
+            state.set('github_since', '2026-09-01T00:00:00Z')
+            gh = FakeGithub([notice(1), notice(2)])
+            calls = []
+            def get(endpoint):
+                calls.append(endpoint)
+                if endpoint == 'repos/example/app/pulls/1':
+                    raise self.http_failure(403, {'Retry-After': '7200'})
+                return gh(endpoint)
+            class P: pass
+            provider = P()
+            provider.github, provider.gmail, provider.slack = get, FakeGmail([]), FakeSlack()
+            with patch('host.inbox_slack_relay.time.time', return_value=1800000000):
+                first = run(CONFIG, state, provider)
+            self.assertEqual(first['errors']['github'], 'http_403')
+            self.assertEqual(first['status'], 'DEGRADED')
+            self.assertEqual(float(state.get('retry_after')), 1800007200)
+            self.assertEqual(state.get('github_since'), '2026-09-01T00:00:00Z')
+            self.assertEqual(state.get('github_last_success'), '')
+            self.assertNotIn('repos/example/app/pulls/2', calls)
+            self.assertFalse(provider.gmail.calls)
+            state.close()
+            state = State(path)
+            counts = (len(calls), len(provider.gmail.calls), len(provider.slack.calls))
+            with patch('host.inbox_slack_relay.time.time', return_value=1800007199):
+                second = run(CONFIG, state, provider)
+            self.assertEqual(second['errors']['delivery'], 'provider_retry_after_active')
+            self.assertEqual(counts, (len(calls), len(provider.gmail.calls), len(provider.slack.calls)))
+            provider.github = FakeGithub([])
+            with patch('host.inbox_slack_relay.time.time', return_value=1800007200):
+                third = run(CONFIG, state, provider)
+            self.assertEqual(third['status'], 'LIVE')
+            self.assertTrue(provider.github.calls)
+            state.close()
 
 if __name__ == '__main__':
     unittest.main()
