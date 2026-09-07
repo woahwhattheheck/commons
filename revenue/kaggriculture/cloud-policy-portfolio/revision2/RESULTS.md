@@ -34,3 +34,9 @@ python3 evidence.py unpack /tmp/t14-r2-artifacts/full-traces.xz /tmp/t14-r2-trac
 Runtime projections use explicit scenarios and approximate future SELL timing.
 Conditional cash studies are separate from actual game labels. These are offline
 scores, with no hosted-rating or revenue claim and no Kaggle/notebook write.
+
+After these panels, the offline harness moved its diagnostic receipt through the
+existing JSON worker response. The driver removes metadata before executing or
+hashing game actions. `HARNESS-UPDATE.json` records the two harness-file changes
+and its focused transport check. Policy code and all panel receipts are unchanged;
+the runtime archive and historical freeze retain the exact evaluated harness.

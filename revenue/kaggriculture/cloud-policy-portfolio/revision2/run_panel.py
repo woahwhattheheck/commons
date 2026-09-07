@@ -6,11 +6,9 @@ import copy
 import gzip
 import hashlib
 import json
-import os
 from pathlib import Path
 import time
 import sys
-import uuid
 HERE = Path(__file__).resolve().parents[1]
 REVISION = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -26,25 +24,33 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def detach_receipt(state, seat):
+    """Remove evaluation metadata before hashing or executing the game action."""
+    return state[seat].action.pop('_t14_evaluation', None)
+
+
 def run_game(job):
     arm, opponent, seed, seat, directory, split = job
     out = Path(directory)
     game_id = f'{arm}-{opponent}-{seed}-seat{seat}'
     path = out / (game_id + '.json')
-    # Random evaluation sink contains no seed or opponent identity.
-    decision_path = out / ('receipt-' + uuid.uuid4().hex + '.json')
     if path.exists():
         return json.loads(path.read_text())
     ev = load(HERE / 'vendor/cloud-eval/evaluate.py', 't14_game_eval')
     engine, hashes = ev.get_engine(HERE / 'vendor/engine')
     original = engine.interpreter
     checkpoints = {}
+    decision = None
     prefix = hashlib.sha256()
     trace_path = out / (game_id + '.jsonl.gz')
     with gzip.open(trace_path, 'wt') as trace:
         def observed(state, env):
+            nonlocal decision
             if not state[0].observation.get('farms'):
                 return original(state, env)
+            receipt = detach_receipt(state, seat)
+            if receipt is not None:
+                decision = receipt
             step = int(state[seat].observation['step'])
             obs = copy.deepcopy(dict(state[seat].observation))
             actions = [copy.deepcopy(s.action) for s in state]
@@ -63,16 +69,8 @@ def run_game(job):
         engine.interpreter = observed
         specs = [str(REVISION / 'controls.py') + '::' + opponent] * 2
         specs[seat] = str(REVISION / 'controls.py') + '::' + arm
-        original_popen = ev.subprocess.Popen
-        def observed_popen(*args, **kwargs):
-            kwargs['env'] = dict(kwargs['env'], T14_DECISION_FILE=str(decision_path))
-            return original_popen(*args, **kwargs)
-        ev.subprocess.Popen = observed_popen
-        try:
-            result = ev.play(engine, specs, HERE / 'vendor/engine', ev.LOADER, seed, seat,
-                             startup_timeout=1.0, action_timeout=1.0)
-        finally:
-            ev.subprocess.Popen = original_popen
+        result = ev.play(engine, specs, HERE / 'vendor/engine', ev.LOADER, seed, seat,
+                         startup_timeout=1.0, action_timeout=1.0)
     result.update(id=game_id, arm=arm, opponent=opponent, panel=split,
                   label_observed_at_step=718 if result['status'] == 'complete' else None,
                   checkpoints=checkpoints, prefix_before_360_sha256=prefix.hexdigest(),
@@ -80,9 +78,9 @@ def run_game(job):
                   engine_ref=ev.ENGINE_REF, engine_sha256=hashes,
                   evaluator_sha256=digest(ev.__file__), source_revision_sha256=digest(REVISION / 'policy.py'),
                   economic_component_sha256=digest(REVISION / 'continuation.py'))
-    if decision_path.exists():
-        result['decision'] = json.loads(decision_path.read_text())
-        decision_path.rename(out / (game_id + '.decision.json'))
+    if decision is not None:
+        result['decision'] = decision
+        (out / (game_id + '.decision.json')).write_text(json.dumps(decision,indent=2)+'\n')
     if result['status'] == 'complete':
         own, rival = result['scores'][seat], result['scores'][1-seat]
         result.update(own_cash=own, rival_cash=rival, margin=own-rival,

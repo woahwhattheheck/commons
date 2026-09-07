@@ -30,14 +30,10 @@ def entry(name):
                 actor = bank.make_agent(HERE/'vendor/opponents',
                     'lonespear-v18-greedy' if name == 'lonespear' else 'cok-v10')
         action = actor(obs, cfg)
-        # Evaluation-only after-call receipt. The runtime selector never reads
-        # this path and the frozen public opponent receives no extra call.
+        # Evaluation-only after-call receipt. The driver removes it before the
+        # action reaches the engine; the standalone runtime never emits it.
         if name in ('economic', 'staged') and int(obs['step']) == 360:
-            import json
-            import os
-            destination = os.environ.get('T14_DECISION_FILE')
-            if destination:
-                Path(destination).write_text(json.dumps(actor.policy.decision, indent=2)+'\n')
+            action = dict(action, _t14_evaluation=actor.policy.decision)
         return action
     return agent
 
