@@ -1,12 +1,5 @@
 """Regression for the target-pricing lookup.
 
-The defect: `reachable_targets` priced every candidate through
-`native_motifs.engine()`, which returns the BUNDLED `engine_pin.py` -- the
-unit-phase transition closure, which carries no `market_price`. Each lookup
-raised, the value came back None, and the filter dropped the whole target list.
-The lane then reported that the board held nothing collectable at 457 positions
-on a board that holds animal yield on 451 of 719 turns.
-
 Two things are asserted here, and the second is the one that matters:
 
   1. On a REAL observed yield-bearing state, candidate targets come back
