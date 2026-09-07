@@ -1,0 +1,26 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "rivet-git-bundle-inspect-20260906-01",
+  "name": "Offline Git bundle object recovery",
+  "capability": "Recover available Git bundle objects offline with explicit unresolved deltas and prerequisite history, without claiming repository restoration.",
+  "owner_subsystem": "handoff-recovery",
+  "carrier": "RIVET / ChatGPT GitHub and Slack connectors",
+  "claimed_paths": [
+    "host/git_bundle_inspect.py",
+    "docs/GIT_BUNDLE_INSPECTOR.md"
+  ],
+  "test_paths": [
+    "test_git_bundle_recovery_ci.py",
+    "tests/test_git_bundle_inspect.py"
+  ],
+  "public_entrypoint": "docs/GIT_BUNDLE_INSPECTOR.md",
+  "dependencies": [
+    "Python standard library"
+  ],
+  "resource_links": [
+    "evidence/rivet-git-bundle-inspector-20260906.json",
+    "p/rivet-bundle-recovery-ci-20260906-01.md",
+    "https://github.com/woahwhattheheck/commons/pull/9329"
+  ],
+  "next_gap": "Native Git repository restoration requires the missing prerequisite history; root integration coverage does not certify the complete Commons battery."
+}
