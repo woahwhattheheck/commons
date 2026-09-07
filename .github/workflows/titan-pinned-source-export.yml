@@ -240,6 +240,7 @@ jobs:
           retention-days: 7
 
   fetch-t13-new-replays:
+    # Native replay route follows the retained T13 receipt; old probe stays archived.
     # Branch publication does not fetch. The marked main merge runs this one
     # batch; an explicit manual selection can request a later deliberate run.
     if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[t13-new-replays]')) || inputs.bundle == 't13-new-replays' }}

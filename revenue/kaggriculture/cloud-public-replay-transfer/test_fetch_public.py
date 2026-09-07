@@ -114,8 +114,8 @@ class TransferTests(unittest.TestCase):
             self.assertEqual(len(calls), 1)
             request, timeout = calls[0]
             self.assertEqual(request.get_method(), "POST")
-            self.assertEqual(request.full_url, transfer.ENDPOINT)
-            self.assertEqual(json.loads(request.data), {"EpisodeId": self.expected["episode_id"]})
+            self.assertEqual(request.full_url, "https://api.kaggle.com/v1/competitions.CompetitionApiService/GetEpisodeReplay")
+            self.assertEqual(json.loads(request.data), {"episodeId": self.expected["episode_id"]})
             self.assertEqual(timeout, 45)
             self.assertIsNone(request.get_header("Authorization"))
             self.assertIsNone(request.get_header("Cookie"))
