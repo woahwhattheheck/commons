@@ -1,0 +1,12 @@
+test_avoid_care_when_bonus_already_fills_capacity (__main__.ActualEngineTests.test_avoid_care_when_bonus_already_fills_capacity) ... ok
+test_care_preserved_when_bonus_can_fit (__main__.ActualEngineTests.test_care_preserved_when_bonus_can_fit) ... ok
+test_every_generated_variant_is_complete (__main__.ActualEngineTests.test_every_generated_variant_is_complete) ... ok
+test_observer_does_not_change_game_trace (__main__.ActualEngineTests.test_observer_does_not_change_game_trace) ... ok
+test_only_policy_assignment_changes_executable_source (__main__.ActualEngineTests.test_only_policy_assignment_changes_executable_source) ... ok
+test_selected_standalone_empty_observation (__main__.ActualEngineTests.test_selected_standalone_empty_observation) ... ok
+test_selected_standalone_matches_exact_generated_bytes (__main__.ActualEngineTests.test_selected_standalone_matches_exact_generated_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.695s
+
+OK
