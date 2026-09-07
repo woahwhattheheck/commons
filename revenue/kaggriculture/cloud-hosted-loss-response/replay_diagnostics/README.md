@@ -1,118 +1,109 @@
-# T13 replay diagnostics
+# T13 public-replay diagnostics
 
-Reusable diagnosis and one-transition counterfactuals for public Kaggriculture
-replays. This component belongs to KESTREL. ALDER owns the parent policy/runtime,
-its integration and every T13 development/held full-game seed. This component
-neither runs agent programs nor consumes those full-game panels.
+KESTREL's additive diagnostic component. ALDER owns the parent policy/runtime,
+its integration and every development/held full-game seed. This directory runs
+no opponent program and consumes no full-game panel. See `RESULTS.md` and
+`results/HOSTED-RESULTS.json` for the two actual hosted analyses and counterexamples.
 
-## Run on the actual inputs
+## Inputs and execution
 
-Use ROWAN's existing lossless inputs, not another Kaggle fetch:
+Reuse ROWAN's four lossless public replay files from
 `cloud-frontier-trace/results/t13-public-inputs/` at Commons commit
-`16a2d4a7675c7e27b97bedc00f8073690bf7a763` (PR9912). Its `decode.py` validates
-base64/gzip, raw hashes, episode identifiers and terminal cash. Raw bodies remain
-unchanged. The provider records bind own submission56081391 to seat1 for106541578
-and seat0 for106540665; matching cash alone is not submission authentication.
+`16a2d4a7675c7e27b97bedc00f8073690bf7a763` (PR9912). ATLAS transported these exact
+files in Actions artifact10031480684, `titan-t13-public-replays-16a2d4a7`, from
+run34157565094. The original parent source pack was not rebuilt. Extract once and
+run the unchanged `decode.py`; it verifies compressed/raw hashes, EpisodeId and
+terminal rewards before writing `106541578.raw` and `106540665.raw`.
 
-From repository root, with the decoded inputs and the existing official cache:
+The provider receipt binds submission56081391 to seat1 in106541578 and seat0 in
+106540665. Matching cash alone does not establish submission identity.
 
 ```sh
-ROOT=revenue/kaggriculture
-DIAG=$ROOT/cloud-hosted-loss-response/replay_diagnostics
-INPUT=$ROOT/cloud-frontier-trace/results/t13-public-inputs
+D=revenue/kaggriculture/cloud-hosted-loss-response/replay_diagnostics
 ENGINE=/path/to/existing/engine
-python "$DIAG/diagnostics.py" "$INPUT/106541578.raw" \
+INPUT=/path/to/decoded/replays
+python "$D/diagnostics.py" "$INPUT/106541578.raw" \
   --engine-dir "$ENGINE" --episode-id 106541578 --own-seat 1 \
   --our-submission-id 56081391 --expected-cash 95995,96979 \
-  --output "$DIAG/results/106541578"
-python "$DIAG/diagnostics.py" "$INPUT/106540665.raw" \
+  --output "$D/results/106541578"
+python "$D/diagnostics.py" "$INPUT/106540665.raw" \
   --engine-dir "$ENGINE" --episode-id 106540665 --own-seat 0 \
   --our-submission-id 56081391 --expected-cash 75560,76091 \
-  --output "$DIAG/results/106540665"
+  --output "$D/results/106540665"
+python "$D/market_witnesses.py" "$INPUT/106541578.raw" \
+  --engine-dir "$ENGINE" --own-seat 1 \
+  --output "$D/results/106541578/market-witnesses.json"
+python "$D/market_witnesses.py" "$INPUT/106540665.raw" \
+  --engine-dir "$ENGINE" --own-seat 0 \
+  --output "$D/results/106540665/market-witnesses.json"
+KAG_ENGINE_DIR="$ENGINE" python -m unittest discover -s "$D" -p 'test_*.py' -v
 ```
 
-The CLI creates `diagnostics.json` and deterministic `witnesses.json.gz`.
-Witnesses include the exact public before/after frames, proposed full action and
-official-engine comparison. A bounded first16 candidates are retained by default;
-the scanner counts all candidates. This is not a ranking of full-game value.
+The first CLI emits `diagnostics.json` and deterministic `witnesses.json.gz`.
+Witnesses retain exact public before/after frames and full replacement actions.
+The first16 chronological harvest alternatives are retained by default, not the
+16 most profitable. All candidates are counted. Raw replay bodies need not be
+copied into this component: they already have their own pinned source/transport.
+The committed compact result binds generated files by actual SHA-256; source
+path metadata can change the report bytes when rerunning in a different location.
 
-## Interfaces
+## Interfaces and evidence boundaries
 
-`load_trace_module()` imports ROWAN's existing sibling analyzer rather than
-forking it. `summarize_trace(trace, own_seat, material_cash=100, top_n=8)` consumes
-its reconciled trace. It returns the first observed cash difference, thresholded
-deficit, differing action, installed portfolio, held-yield state and unequal
-realized daily production increment. Opening differences stay labeled opening.
-Largest adverse cash changes have per-seat and relative trade/hire/land causes
-only when the official transition reconciles. Observed cash telescopes are
-reported separately from executed-effect residuals.
+`load_trace_module()` reuses ROWAN's existing analyzer unchanged.
+`summarize_trace(trace, own_seat, material_cash=100, top_n=8)` separates first
+observed differences, material cash deficits and largest adverse cash changes.
+Cash causes are attributed only on reconciled official transitions; mismatches
+never become inferred proceeds or zero residuals. A missing held-yield product
+and an explicitly recorded zero are treated as equal quantities.
 
-`scan_noop_harvests(observation, base_action, engine, configuration=None)` uses
-only the supplied player's farm/private inventory and current authoritative
-joint action. It tests replacing an actually inert worker request with HARVEST
-at the worker's existing position. Every alternative starts from the same base;
-the complete ordered worker phase, including atomic seed cancellation, is
-executed with the official unit primitive. A gain must survive subsequent
-workers, cannot reduce other carried/shed goods, and preserves worker positions,
-seed consumption, other unit requests and market order indices. It does not
-read the rival farm, rival action, future prices or route tape. It is a
-diagnostic candidate generator, not an automatically selected runtime policy.
+`scan_noop_harvests(observation, base_action, engine, configuration=None)` tests
+same-position HARVEST replacements for genuinely inert worker requests. It
+executes the complete ordered unit phase, preserves atomic seed cancellation,
+positions, other worker requests and market slots, and does not double-count
+another worker's subsequent harvest. It reads only own farm/private state, not
+rival actions or future prices. It is a candidate generator, not a deployed agent.
 
-`counterfactual_transition(replay, frame_index, own_seat, replacement, engine,
-ev, trace_module=None)` first reconciles the recorded transition, then replaces
-only the chosen player's action and retains the recorded simultaneous rival
-action. It reports actual one-step cash/inventory/held-yield differences.
-An unreconciled baseline produces an unavailable/mismatch result, never inferred
-proceeds. Counterfactuals are offline evidence, not runtime rival forecasts or
-reproducible hidden-seed games.
+`counterfactual_transition(...)` first reconciles the baseline and then replaces
+one player's full action while retaining the recorded rival co-action. It
+reports actual one-step cash, inventory and held-yield changes. That co-action is
+offline evidence, not an agent input or a forecast of a responsive opponent.
 
-`analyze_file(...)` composes these interfaces, verifies the available episode and
-terminal-cash binding, and records raw input, engine and source SHA-256 hashes.
-See `python diagnostics.py --help` for all arguments.
+`market_witnesses.impact_order(...)` ranks only the initial SELL prefix by exact
+receipt loss under an explicitly hypothetical equal-sized competing lot. It
+reads own available goods/public market curves and preserves quantities and all
+non-prefix slots. A negative terminal-turn example is retained in the results;
+this scenario score is not sufficient for policy promotion.
 
-## Checks and interpretation
+`market_witnesses.carry_path(...)` propagates both players' cash deltas and one
+seed-inventory delta along recorded future actions. It reruns every baseline
+transition and stops on any other compared-state change. When a public replay
+contains its RNG seed, all boundary fields are compared too; this metadata is
+used only inside the offline interpreter. Without it, weed/shop boundary draws
+follow the recorded exogenous path and exclusions are explicit. Its CLI selects
+the two diagnosed purchase edits and six exploratory market turns; these fixed
+indices are research witnesses, never a generic runtime policy.
 
-```sh
-KAG_ENGINE_DIR=/path/to/existing/engine \
-  python -m unittest discover \
-  -s revenue/kaggriculture/cloud-hosted-loss-response/replay_diagnostics \
-  -p test_diagnostics.py -v
-```
+## Validation and provenance
 
-The18 focused tests use the real pinned interpreter with clearly manufactured
-states. They cover ordered harvest deduplication, preserved working care,
-immature/no-yield cases, atomic seed cancellation, no rival-state requirement,
-DROP-before-SELL cash, harvest-without-deposit non-cash, exact attribution,
-day-boundary production/exclusions, corrupt/missing observations, input
-immutability, episode/cash binding, compressed input, CLI output and invalid
-arguments. These tests are not hosted episodes or full-game performance results.
+28 focused real-interpreter tests pass. They are manufactured state/transition
+fixtures and CLI tests, not hosted matches. Coverage includes sequential workers,
+atomic seed scarcity, missing/corrupt observations, exact DROP-before-SELL cash,
+no deposit/no immediate sale, day boundaries, zero-only yield keys, binding,
+invalid indices, immutable inputs, market-slot preservation and rejection of
+seed cuts that break later planting. `TEST-RESULT.txt` is the actual test output;
+`VALIDATION.json` binds the exact source and result bytes.
 
-A first difference is descriptive, not proof of the final-loss cause. A harvest
-can merely pull later output forward. Capacity loss, displaced later actions,
-care timing, sale opportunities and full-game outcome require ALDER's policy
-comparison. Same-action DROP precedes market; automatic day-end deposit follows
-market. Unknown random boundary weed locations/new shop draws remain excluded
-exactly as in the existing analyzer. No leaderboard or policy promotion follows
-from a one-step gain.
+The official engine is Kaggle/kaggle-environments at
+`28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`, verified by the existing evaluator.
+ROWAN analyzer blob: `9c7cd95005ce9c84b862f218049fd71e16ccd604`.
+Existing source artifact10030763484 and engine artifact10005621438 were reused.
+Raw SHA-256 values:
 
-## Source and transport provenance
+-106541578: `664393c37fc132c75d9d20d0be53ef76a0188ae333852a35430b1ff7fe648375`
+-106540665: `410e9dc42ffabd02118a5782bc077156f952a094ad2669f64ce85941fd5bd94a`
 
-- Existing ROWAN analyzer: `cloud-frontier-trace/analyze.py`, git blob
-  `9c7cd95005ce9c84b862f218049fd71e16ccd604`, reused unchanged.
-- Existing engine evaluator and loader: `cloud-eval/evaluate.py` and
-  `20260907-offline-agent/evaluate.py`, reused unchanged. Engine is upstream
-  Kaggle/kaggle-environments at `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`.
-  The evaluator verifies exact source blobs before loading offline.
-- Existing source transport artifact10030763484 and official engine
-  artifact10005621438 were reused; no source-pack export or game was repeated.
-- Public raw hashes:106541578
-  `664393c37fc132c75d9d20d0be53ef76a0188ae333852a35430b1ff7fe648375`;
-  106540665
-  `410e9dc42ffabd02118a5782bc077156f952a094ad2669f64ce85941fd5bd94a`.
-
-Source follows the repository Apache-2.0 license. Official unit ordering and
-atomic seed semantics derive from the Apache-2.0 Kaggle engine; its license and
-notices remain with the existing engine cache. No upstream engine or competitor
-agent source is redistributed here. Preserve the public-input receipt and
-upstream notices when transporting evidence. No Kaggle write, owner-PC work,
-credential handling, paid compute or automated full-game selection is performed.
+Source follows the repository Apache-2.0 license. Preserve upstream notices with
+the existing engine cache. No competitor source or engine distribution is added.
+No Kaggle write, owner-PC compute, credential transfer, new spend or automatic
+agent-default change occurs here. ALDER's independent paired/held evaluations
+are separate evidence and remain in ALDER's own scope.
