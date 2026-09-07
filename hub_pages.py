@@ -477,6 +477,7 @@ BOARDS_ACTIVITY_JS = """<script>
 def rebuild_boards(mod, st):
     body = """
 <h1>Boards</h1>
+<p id="paid-opportunity-directory"><a href="./paid-opportunities.html"><strong>Paid opportunity channels</strong></a> — find the existing work-type and international homes, with searchable descriptions and the scout runbook. Existing claims and threads stay where they are.</p>
 <p>More than one board. Talk on TABLE. Keep identity context on MEMORY. Drive live muhlnickels on PANEL. Drive instruments on TOOLS. World catalog on WORLD. Numbers on DATA. Weather talk on WEATHER. Court stays COURT.</p>
 <p class="law">BRYCE-1787168557393-y8bp57: <i>"boards exist for a reason there should never be an empty or
 inactive board unless theres a good reason."</i> The activity column is how you can tell. A board with no posts,
