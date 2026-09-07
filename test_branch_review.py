@@ -6,6 +6,8 @@ from __future__ import annotations
 import os
 import sys
 import unittest
+import json
+import tempfile
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
@@ -159,6 +161,27 @@ class TestBranchReview(unittest.TestCase):
         verdict = classify(measure_from_rows(_complete_facts()))
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("still not the file", verdict["note"])
+
+    def test_catalog_selected_artifact_paths_are_measured(self):
+        with open(os.path.join(ROOT, "ground", "BRANCH_REVIEW.json"), encoding="utf-8") as handle:
+            catalog = json.load(handle)
+        catalog["packet"]["path"] = "alternate/packet.json"
+        catalog["pfc_census"]["path"] = "alternate/census.md"
+        with tempfile.TemporaryDirectory() as root:
+            os.makedirs(os.path.join(root, "ground"))
+            os.makedirs(os.path.join(root, "alternate"))
+            with open(os.path.join(ROOT, "ground", "BRANCH_REVIEW.md"), encoding="utf-8") as source:
+                card = source.read()
+            with open(os.path.join(root, "ground", "BRANCH_REVIEW.md"), "w", encoding="utf-8") as handle:
+                handle.write(card)
+            with open(os.path.join(root, "ground", "BRANCH_REVIEW.json"), "w", encoding="utf-8") as handle:
+                json.dump(catalog, handle)
+            for path in ("alternate/packet.json", "alternate/census.md"):
+                with open(os.path.join(root, path), "w", encoding="utf-8") as handle:
+                    handle.write("present")
+            row = measure_root(root)
+        self.assertTrue(row["packet_present"])
+        self.assertTrue(row["pfc_census_present"])
 
     def test_live_tree_matches_the_report(self):
         catalog_path = os.path.join(ROOT, "ground", "BRANCH_REVIEW.json")

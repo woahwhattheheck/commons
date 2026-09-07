@@ -211,7 +211,7 @@ def parse_structured_record(text):
             continue
         if HELLO_RE.match(stripped) or SENT_USING_RE.search(stripped):
             hello = True
-        break
+            break
     salon = sent_using and hello and not work_ids and not action and not owner
     return {
         "id": ident,

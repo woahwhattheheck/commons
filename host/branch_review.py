@@ -366,6 +366,11 @@ def measure_root(root):
     card_text = search_hits.get(DEFAULT_CARD, "")
     catalog_text = search_hits.get(DEFAULT_CATALOG, "")
     catalog = load_catalog(catalog_text) if catalog_text else {}
+    packet = catalog.get("packet") or {}
+    pfc = catalog.get("pfc_census") or {}
+    for path in (packet.get("path"), pfc.get("path")):
+        if isinstance(path, str) and path and path not in search_hits:
+            search_hits[path] = _read(root, path)
     blob = "\n".join(
         [
             card_text,
@@ -375,15 +380,14 @@ def measure_root(root):
     ).lower()
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
-    pfc = catalog.get("pfc_census") or {}
     facts = {
         "card_present": bool(card_text) and "branch_review" in card_text.lower(),
         "catalog_present": bool(catalog) and not catalog.get("error"),
         "found_phrases": found,
         "families": catalog.get("families") or [],
         "branches": catalog.get("branches") or [],
-        "packet_present": bool(search_hits.get(PACKET_PATH)),
-        "pfc_census_present": bool(search_hits.get(PFC_CENSUS_PATH)),
+        "packet_present": bool(search_hits.get(packet.get("path") or PACKET_PATH)),
+        "pfc_census_present": bool(search_hits.get(pfc.get("path") or PFC_CENSUS_PATH)),
         "clearance_retracted": str(pfc.get("clearance_sentence") or "").upper()
         == "RETRACTED",
         "retracted_stays_retracted": bool(catalog.get("retracted_stays_retracted")),

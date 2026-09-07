@@ -167,16 +167,17 @@ def reconcile_item(item, snapshot):
         result["executable"] = False
         result["reason"] = "hazardous device op; not fired from this ledger"
         return result
-    if kind == "OWNER_PLATFORM":
-        result["executable"] = False
-        result["reason"] = "external owner/platform act"
-    if snapshot.get("open_prs") and not (
-        SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed)
-    ):
+    if snapshot.get("open_prs"):
         result["status"] = "OPEN"
         result["reason"] = result.get("reason") or "open PR is not close evidence"
         return result
-    if SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed):
+    if kind == "OWNER_PLATFORM":
+        result["executable"] = False
+        result["reason"] = "external owner/platform act"
+    closeable = (
+        SHA_RE.match(main_sha) and bool(claimed) and all(main_paths.get(p) for p in claimed)
+    )
+    if closeable:
         result["status"] = "CLOSED"
         result["main_sha"] = main_sha
         return result
@@ -229,7 +230,12 @@ def measure_tree(root, main_sha=""):
         return {"error": catalog["error"], "open_now": [], "items": []}
     snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
     for item in catalog.get("items") or []:
-        for path in item.get("claimed_paths") or []:
+        if not isinstance(item, dict):
+            continue
+        claimed_paths = item.get("claimed_paths")
+        if not isinstance(claimed_paths, list):
+            continue
+        for path in claimed_paths:
             snapshot["main_paths"][path] = os.path.exists(os.path.join(root, path))
     return project(catalog, snapshot)
 

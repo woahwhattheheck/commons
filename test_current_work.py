@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "host"))
 import current_work as cw
@@ -89,10 +90,20 @@ def test_conflict_same_id():
     check("same id different bytes CONFLICT", any("CONFLICT" in p for p in problems), problems)
 
 
+def test_malformed_items_do_not_crash_measurement():
+    with tempfile.TemporaryDirectory() as root:
+        os.makedirs(os.path.join(root, "ground"))
+        with open(os.path.join(root, cw.DEFAULT_CATALOG), "w", encoding="utf-8") as handle:
+            json.dump({"schema": cw.SCHEMA, "items": ["not-an-item", {"claimed_paths": "not-a-list"}]}, handle)
+        row = cw.measure_tree(root)
+    check("malformed items do not crash measurement", isinstance(row, dict), row)
+
+
 def main():
     test_self_and_catalog()
     test_close_rule()
     test_conflict_same_id()
+    test_malformed_items_do_not_crash_measurement()
     if FAILED:
         print("CURRENT WORK TEST: FAIL", len(FAILED), ":", ", ".join(FAILED))
         return 1
