@@ -1,0 +1,93 @@
+name: astra-entry-live
+on:
+  push:
+    branches: [ops/astra-directory-publish-20260907]
+    paths: [.github/workflows/astra-entry-live.yml]
+permissions:
+  contents: read
+  actions: write
+jobs:
+  publish-readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Read deployed directory and submit the newly merged entrypoints
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/astra-entry-live
+          python3 - <<'PY'
+          import hashlib,json,subprocess,time,urllib.request,urllib.error
+          from datetime import datetime,timezone
+          from pathlib import Path
+          out=Path('/tmp/astra-entry-live')
+          repo='woahwhattheheck/commons'
+          sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          def api(args):
+              p=subprocess.run(['gh','api']+args,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+              if p.returncode:return {'command_exit':p.returncode,'provider_error':p.stderr.strip()[-1000:]}
+              return json.loads(p.stdout) if p.stdout.strip() else {'accepted':True}
+          def observe(paths):
+              result={'observed_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),'sha':sha,'assets':[]}
+              for path in paths:
+                  expected=Path(path).read_bytes()
+                  row={'path':path,'url':'https://woahwhattheheck.github.io/commons/'+path,'source_sha256':hashlib.sha256(expected).hexdigest(),'source_blob':subprocess.check_output(['git','rev-parse','HEAD:'+path],text=True).strip()}
+                  try:
+                      req=urllib.request.Request(row['url'],headers={'User-Agent':'Commons-entry-delivery','Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(req,timeout=25) as response:
+                          body=response.read(1000000)
+                          row.update(http_status=response.status,sha256=hashlib.sha256(body).hexdigest(),matches_source=body==expected)
+                          if path=='llms.txt':
+                              text=body.decode('utf-8')
+                              row['paid_work_section_matches']='\n## Paid work\n' in text and text.split('\n## Paid work\n',1)[1].split('\n## Doors\n',1)[0] == expected.decode().split('\n## Paid work\n',1)[1].split('\n## Doors\n',1)[0]
+                  except urllib.error.HTTPError as exc:row['http_status']=exc.code
+                  except Exception as exc:row['error_type']=type(exc).__name__
+                  result['assets'].append(row)
+              return result
+          original=observe(['paid-opportunities.html','paid-opportunities.js'])
+          (out/'directory-before-new-dispatch.json').write_text(json.dumps(original,indent=2)+'\n')
+          assert 'id="paid-work-doors"' in Path('start.html').read_text(), 'Latest main lacks merged entrypoint; reconcile before dispatch'
+          endpoint=f'repos/{repo}/actions/workflows/pages-deploy.yml/runs?per_page=10'
+          before=api([endpoint]);before_ids={r['id'] for r in before.get('workflow_runs',[])}
+          record={'operation_id':'astra-entrypoints-pages-submit-20260907-02','requested_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),'reason':'New entrypoint bytes merged in PR9742 after the earlier directory deployment','merged_commit':'af62c7e7c4a98cf47520625dc6431ad2243a1b06','checkout_sha':sha,'workflow':'pages-deploy.yml','ref':'main'}
+          record['result']=api(['--method','POST',f'repos/{repo}/actions/workflows/pages-deploy.yml/dispatches','-f','ref=main'])
+          (out/'submission.json').write_text(json.dumps(record,indent=2)+'\n')
+          run=None
+          if record['result'].get('accepted'):
+              for attempt in range(5):
+                  listing=api([endpoint])
+                  candidates=[r for r in listing.get('workflow_runs',[]) if r['id'] not in before_ids and r['event']=='workflow_dispatch' and r['created_at']>=record['requested_at'].replace('+00:00','Z')]
+                  if candidates:
+                      run=min(candidates,key=lambda r:r['created_at']);break
+                  time.sleep(2)
+          if run:
+              record['run_id']=run['id']
+              record['run_url']=run['html_url']
+              (out/'submission.json').write_text(json.dumps(record,indent=2)+'\n')
+              try:
+                  p=subprocess.run(['gh','run','watch',str(run['id']),'--repo',repo,'--exit-status','--interval','10'],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=240)
+                  (out/'deployment-watch.txt').write_text(p.stdout)
+                  record['watch_exit']=p.returncode
+              except subprocess.TimeoutExpired:
+                  record['watch_status']='bounded_wait_elapsed'
+              state=api([f'repos/{repo}/actions/runs/{run["id"]}'])
+              record['status']=state.get('status')
+              record['conclusion']=state.get('conclusion')
+              record['deployment_sha']=state.get('head_sha')
+              (out/'submission.json').write_text(json.dumps(record,indent=2)+'\n')
+          final=observe(['paid-opportunities.html','paid-opportunities.js','start.html','llms.txt'])
+          (out/'public-readback.json').write_text(json.dumps(final,indent=2)+'\n')
+          print(json.dumps(record,indent=2))
+          print(json.dumps(final,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-entry-live
+          path: /tmp/astra-entry-live/
+          retention-days: 7
