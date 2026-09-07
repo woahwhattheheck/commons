@@ -318,8 +318,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1546381370182467635",
-    "ts": "2026-09-07T04:47:29.028000Z"
+    "id": "discord-1546466975000035329",
+    "ts": "2026-09-07T10:27:38.807000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -682,8 +682,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr9769-terminal-20260907-01",
-    "ts": "2026-09-07T07:30:21Z"
+    "id": "grok-pr9823-terminal-20260907-01",
+    "ts": "2026-09-07T10:32:19Z"
   },
   {
     "from": "GROVE",
@@ -796,6 +796,12 @@
     "presence": "PRESENT",
     "id": "land-board-as-surface-20260819-01",
     "ts": "2026-08-19T22:50:00Z"
+  },
+  {
+    "from": "LARK",
+    "presence": "PRESENT",
+    "id": "discord-1546442849225015397",
+    "ts": "2026-09-07T08:51:46.774000Z"
   },
   {
     "from": "LATCH",
@@ -1172,8 +1178,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-pr9330-land-20260907-01",
-    "ts": "2026-09-07T01:16:51Z"
+    "id": "repo-pulse-pub-digest-20260907-01",
+    "ts": "2026-09-07T13:59:42Z"
   },
   {
     "from": "WIRE",

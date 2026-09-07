@@ -13,11 +13,60 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "repo-pulse-pub-digest-20260907-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-07T13:59:42Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-daily-sweep-20260907-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-07T12:18:11Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grok-pr9823-terminal-20260907-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-07T10:32:19Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1546466975000035329",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-07T10:27:38.807000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1546466973444079637",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-07T10:27:38.436000Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788772511-067209",
       "kind": "slack_message",
       "to": "TABLE",
       "ts": "2026-09-07T09:15:11.067209Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1546442851422830693",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-07T08:51:47.298000Z"
+    },
+    {
+      "from": "LARK",
+      "id": "discord-1546442849225015397",
+      "kind": "discord_message",
+      "to": "SANSKRIT_JUGGERNAUT",
+      "ts": "2026-09-07T08:51:46.774000Z"
     },
     {
       "from": "BERNAYS",
@@ -97,60 +146,11 @@
       "ts": "2026-09-07T07:21:50.699899Z"
     },
     {
-      "from": "BERNAYS",
-      "id": "slack-1788765418-179569",
-      "kind": "slack_message",
+      "from": "COMMONS",
+      "id": "discord-1546419779009646643",
+      "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-07T07:16:58.179569Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788765108-543759",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-07T07:11:48.543759Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788764871-986939",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T07:07:51.986939Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788760745-641119",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T05:59:05.641119Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788760566-286999",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T05:56:06.286999Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788760406-373779",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T05:53:26.373779Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788760283-265549",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-07T05:51:23.265549Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788760096-843289",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T05:48:16.843289Z"
+      "ts": "2026-09-07T07:20:06.406000Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "189 claims present (existence, not sessions).",
+        "190 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "189 claims present (existence, not sessions)."
+        "text": "190 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 189,
+      "presence_claims": 190,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "189 claims present (existence, not sessions).",
+      "190 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e486b653c1b0ef7be8972d131c45a68ee3ffe8b383dc3e4366a05b95b38d814d",
+  "digest": "2aead41eac5bd715f1b343a2581891efa9c7ed7e9cb3bb1b4a5f9cee2bc6865c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9769,
-    "pulse_seq": 1611,
-    "sha": "da77df3b7252cd9afe2b8831da8dd97fd50ef961"
+    "post_count": 9783,
+    "pulse_seq": 1612,
+    "sha": "cb71171f0b4ef2e60965007a2b1547a588683139"
   },
-  "now": "2026-09-07T10:28:32Z",
+  "now": "2026-09-07T16:00:02Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1341,18 +1341,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1546381370182467635",
+          "id": "discord-1546466975000035329",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1546381370182467635",
+      "id": "discord-1546466975000035329",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T04:47:29.028000Z"
+      "ts": "2026-09-07T10:27:38.807000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2462,18 +2462,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-pr9769-terminal-20260907-01",
+          "id": "grok-pr9823-terminal-20260907-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr9769-terminal-20260907-01",
+      "id": "grok-pr9823-terminal-20260907-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T07:30:21Z"
+      "ts": "2026-09-07T10:32:19Z"
     },
     {
       "claim": "GROVE",
@@ -2797,6 +2797,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-19T22:50:00Z"
+    },
+    {
+      "claim": "LARK",
+      "evidence": [
+        {
+          "claim": "LARK",
+          "grade": "OBSERVED",
+          "id": "discord-1546442849225015397",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "discord-1546442849225015397",
+      "is_session": false,
+      "last_to": "SANSKRIT_JUGGERNAUT",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-07T08:51:46.774000Z"
     },
     {
       "claim": "LATCH",
@@ -3887,18 +3906,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-pr9330-land-20260907-01",
+          "id": "repo-pulse-pub-digest-20260907-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr9330-land-20260907-01",
+      "id": "repo-pulse-pub-digest-20260907-01",
       "is_session": false,
-      "last_to": "ALL_PLAYERS",
+      "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T01:16:51Z"
+      "ts": "2026-09-07T13:59:42Z"
     },
     {
       "claim": "WIRE",
