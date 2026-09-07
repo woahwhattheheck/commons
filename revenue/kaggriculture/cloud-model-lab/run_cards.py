@@ -24,8 +24,10 @@ import copy
 import json
 import os
 
-import cards as cards_mod
-import route_cards
+# `cards` and `route_cards` are harvesting-side only. They are imported inside the
+# functions that need them so that importing this module for `reachable_targets`
+# alone -- which is all a packaged agent needs -- pulls in nothing that reaches for
+# the evaluator package.
 
 MAX_TARGETS = 6
 
@@ -138,6 +140,8 @@ def reachable_targets(obs, seat, pos, K, board, prices):
 
 
 def harvest(seed, seat, opponent_spec, min_free=1, limit=None):
+    import cards as cards_mod
+    import route_cards
     from kaggle_environments.envs.kaggriculture import kaggriculture as K
     A, arl_id = route_cards.load_arlene()
     opp, opp_id = route_cards.load_agent(opponent_spec)
@@ -206,6 +210,7 @@ def main():
     ap.add_argument("--limit-per-seed", type=int, default=None)
     ap.add_argument("--out", default="results/run-cards.json")
     a = ap.parse_args()
+    import route_cards          # noqa: F401  (CLI path only)
     allc, meta = [], []
     for seed in a.seeds:
         for seat in a.seats:

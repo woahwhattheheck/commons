@@ -101,7 +101,9 @@ def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
                                                          arlene_plan.MAX_PLAN_STEPS),
                                      deposit=table.get("deposit", True),
                                      min_value=table.get("min_value", 0.0),
-                                     one_way=table.get("one_way", False))
+                                     one_way=table.get("one_way", False),
+                                     storage_aware=table.get("storage_aware", False),
+                                     min_incremental=table.get("min_incremental", 0.0))
     else:
         me = arlene_motifs.Overlay(A, table)
     t0 = time.time()
@@ -153,11 +155,13 @@ def main():
     ap.add_argument("--seats", type=int, nargs="+", default=[0, 1])
     ap.add_argument("--opponents", nargs="+", default=["arlene", "apex"])
     ap.add_argument("--motifs", default=None)
-    ap.add_argument("--plan", choices=("greedy", "cap"), default=None,
+    ap.add_argument("--plan", choices=("greedy", "cap", "cap-storage"), default=None,
                     help="run the bounded worker-reallocation continuation lane "
                          "with the named target chooser instead of a motif table")
     ap.add_argument("--plan-max-steps", type=int, default=arlene_plan.MAX_PLAN_STEPS)
     ap.add_argument("--plan-min-value", type=float, default=0.0)
+    ap.add_argument("--plan-min-incremental", type=float, default=0.0,
+                    help="storage-aware admission floor on incremental receipts")
     ap.add_argument("--plan-no-deposit", action="store_true")
     ap.add_argument("--label", default=None)
     ap.add_argument("--ledger", action="store_true",
@@ -171,10 +175,15 @@ def main():
     a = ap.parse_args()
     A, arl_id = route_cards.load_arlene()
     if a.plan:
-        chooser = (arlene_plan.CapChooser(NM_engine()) if a.plan == "cap"
-                   else arlene_plan.GreedyChooser())
+        chooser = (arlene_plan.CapChooser(NM_engine())
+                   if a.plan.startswith("cap") else arlene_plan.GreedyChooser())
         table = {"lane": "plan", "chooser": chooser,
-                 "one_way": a.plan == "cap",
+                 # one_way is the FROZEN behavioural config for the cap arms; the
+                 # PlanOverlay constructor default is False, so it is set here
+                 # explicitly rather than relied upon.
+                 "one_way": a.plan.startswith("cap"),
+                 "storage_aware": a.plan == "cap-storage",
+                 "min_incremental": a.plan_min_incremental,
                  "max_steps": a.plan_max_steps, "deposit": not a.plan_no_deposit,
                  "min_value": a.plan_min_value, "meta": {"authored": "hand",
                  "provenance": "engine-derived-control"}}

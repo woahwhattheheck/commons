@@ -188,7 +188,8 @@ class TableChooser:
 
 class PlanOverlay:
     def __init__(self, arlene_mod, chooser, max_steps=MAX_PLAN_STEPS,
-                 deposit=True, last_day=29, min_value=0.0, one_way=False):
+                 deposit=True, last_day=29, min_value=0.0, one_way=False,
+                 storage_aware=False, min_incremental=0.0):
         self.A = arlene_mod
         self.agent = arlene_mod.Agent()
         self.chooser = chooser
@@ -203,6 +204,17 @@ class PlanOverlay:
         # the reset. Goods dropped at the final day's close have no turn left to
         # sell in, so the last day is excluded.
         self.one_way = one_way
+        # Storage-aware admission. The frozen candidate accepts a plan on the gross
+        # output the cap would destroy; that is not the cash it earns. Measured on
+        # 9600011, its +2 own cash is +2 EGG (+84) less 2 WHEAT (-82) -- the cargo
+        # competed with the incumbent's cargo and with shed capacity. When this is
+        # on, a plan must first clear an incremental settlement of the seat's own
+        # economy: ordered transfers, the capacity-bounded end-of-day deposit with
+        # its discarded overflow, the route's own remaining sale reservations, and
+        # dated marginal receipts for both what it adds and what it displaces.
+        self.storage_aware = storage_aware
+        self.min_incremental = min_incremental
+        self.assessments = []
         self.last_day = last_day
         self.min_value = min_value
         self.K = NM.engine()
@@ -282,6 +294,20 @@ class PlanOverlay:
                     t = self.chooser.choose(card, window)
                 if t is None or t["value_now"] < self.min_value:
                     continue
+                if self.storage_aware:
+                    import storage_value
+                    # credit only the units the output cap would have destroyed;
+                    # the whole harvest still competes for shed capacity
+                    credited = (self.chooser.at_risk(t, obs)
+                                if hasattr(self.chooser, "at_risk") else
+                                int(t.get("units", 0)))
+                    va = storage_value.assess(self.K, obs, cfg, seat, self.agent,
+                                              step, i, t, credited)
+                    self.assessments.append(dict(va, step=step, accepted=None))
+                    if va["incremental"] <= self.min_incremental:
+                        self.assessments[-1]["accepted"] = False
+                        continue
+                    self.assessments[-1]["accepted"] = True
                 plan = {"target": t, "phase": "go", "steps": 0, "home": (x, y),
                         "started": step, "unit": i, "window": window}
                 self.plans[i] = plan
@@ -371,7 +397,15 @@ class PlanOverlay:
         return None
 
     def report(self):
+        acc = [a for a in self.assessments if a.get("accepted")]
+        rej = [a for a in self.assessments if a.get("accepted") is False]
         return {"fills": len(self.fills), "completed": self.completed,
+                "storage_aware": self.storage_aware,
+                "plans_priced": len(self.assessments),
+                "plans_accepted_on_value": len(acc),
+                "plans_rejected_on_value": len(rej),
+                "incremental_accepted": round(sum(a["incremental"] for a in acc), 1),
+                "incremental_rejected": round(sum(a["incremental"] for a in rej), 1),
                 "abandoned": self.abandoned,
                 "displacement_left_unrejoined": self.stranded,
                 "open_at_end": len(self.plans),
