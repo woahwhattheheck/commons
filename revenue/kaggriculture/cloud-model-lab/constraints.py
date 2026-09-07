@@ -611,6 +611,19 @@ def outcome(pre_obs, post_obs, config, seat, action, effects=None):
         # A deposit moves goods OUT of hands. Requiring the carried count to fall
         # keeps a market purchase -- which also grows the shed -- from reading as
         # workers moving goods.
+        #
+        # On the last turn of a day the engine's own end-of-day drop empties every
+        # worker's hands into the shed whatever the action was, producing exactly this
+        # transition. Crediting it would credit the model for the refresh, so on that
+        # turn a worker must actually have emitted a deposit that the engine acted on.
+        tpd = int(_cfg(config, "turnsPerDay", 24))
+        end_of_day = (absolute_step(pre_obs, config) + 1) % tpd == 0
+        if end_of_day:
+            deposited = any(e["action"][0] in ("DROP", "PLACE") and e["non_no_op"]
+                            and e["effect"] == "stored_in_shed" for e in effects)
+            if not deposited:
+                return False, "neutral", ("carried goods reached the shed via the "
+                                          "end-of-day drop, not via an emitted deposit")
         return True, "logistics", (f"goods deposited: carried {carried0}->{carried1}, "
                                    f"shed {shed0}->{shed1}")
     if p1 > p0:
