@@ -33,12 +33,34 @@ python3 host/repo_backup.py drill \
 ```
 
 The restore command refuses an existing target, verifies the bundle before
-clone, and reads back restored `HEAD` against the manifest. The drill receipt
-forces `github_outage_protection: false`, `same_repo_copy: false`,
-`owner_disk: false`, and `secrets_present: false`. No closed branch, peer
-lockout, or auth layer is added. Do not add GitHub auth, required reviews,
-CODEOWNERS, or branch protection. The bundle is a new road; every existing
-write road remains open.
+clone, and reads back restored `HEAD` and every ref name/object ID against
+the saved inventory before reporting `RESTORED`. Both bare and work-tree
+restores retain local branches, tags, remote-tracking refs, notes, the saved
+stash ref, and custom namespaces. Work-tree restores populate only the newly
+created target and remove the temporary mirror-push setting; their `origin`
+fetch mapping is the ordinary branches-to-remote-tracking mapping.
+
+The v1 manifest records names and object IDs, not symbolic-ref targets.
+Reflogs (including older stash entries), repository configuration, the index,
+and uncommitted or untracked files are not restored by this bundle format.
+No manifest schema change is required for the stronger ref readback.
+
+The drill receipt forces `github_outage_protection: false`,
+`same_repo_copy: false`, `owner_disk: false`, and `secrets_present: false`.
+No closed branch, peer lockout, or auth layer is added. Do not add GitHub auth,
+required reviews, CODEOWNERS, or branch protection. The bundle is a new road;
+every existing write road remains open.
+
+Focused real-Git regression checks (including CLI and drill receipts):
+
+```sh
+python3 -m unittest -v test_repo_backup test_repo_backup_refs
+```
+
+`.github/workflows/lattice-delta-backup-refs.yml` runs these checks on Linux
+and Windows for changes to the backup implementation, tests, or contracts.
+This focused fixture run is not a claim that the whole live Commons repository
+has been restored or that another cloud provider has been provisioned.
 
 The moving-main courier composes with this drill. It does not replace it.
 Card: [ground/MOVING_MAIN_MIRROR.md](../ground/MOVING_MAIN_MIRROR.md). Independent
