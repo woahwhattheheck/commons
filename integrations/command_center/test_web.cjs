@@ -29,6 +29,12 @@ const walk=n=>[n,...n.children.flatMap(walk)];
 const text=n=>walk(n).map(e=>e.textContent||'').join(' ');
 const refresh=(id,overrides={})=>({id,kind:'source',source_status:'live',source_id:'runtime:shared-equipment',title:'Shared equipment — live',body:'Source observation refreshed.',observed_at:'2026-09-07T21:00:00Z',...overrides});
 
+test('owner-reported and reported_active statuses stay in the reported-active count',()=>{
+  const {ui}=harness();
+  const counts=ui.sessionStats([{kind:'machine',status:'active'},{status:'owner_reported_in_use'},{status:'reported_active'},{status:'observed'}]);
+  assert.equal(counts.sessions,3);assert.equal(counts.machines,1);assert.equal(counts.active,2);
+});
+
 test('fleet records separate machines and reported activity without guessing availability',()=>{
   const {ui,get}=harness({sources:[],operations:[],feed:[],sessions:[{kind:'machine',status:'active'},...['active_reported','active reported','RUNNING','in-progress','inactive','observed','existing_reported','stale','unknown'].map(status=>({status}))]});
   const counts=ui.sessionStats([{kind:'machine',status:'active'},{status:'active_reported'},{status:'observed'}]);
