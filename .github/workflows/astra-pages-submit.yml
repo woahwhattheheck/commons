@@ -1,0 +1,58 @@
+name: astra-pages-submit
+on:
+  push:
+    branches: [ops/astra-directory-publish-20260907]
+    paths: [.github/workflows/astra-pages-submit.yml]
+permissions:
+  contents: read
+  actions: write
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Submit one existing Pages workflow, without changing deployment policy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/astra-pages-submit
+          python3 - <<'PY'
+          import json,os,subprocess,urllib.request,urllib.error
+          from pathlib import Path
+          from datetime import datetime,timezone
+          out=Path('/tmp/astra-pages-submit')
+          repo='woahwhattheheck/commons'
+          def api(args):
+              p=subprocess.run(['gh','api']+args,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+              if p.returncode:
+                  return {'command_exit':p.returncode,'provider_error':p.stderr.strip()[-1000:]}
+              return json.loads(p.stdout) if p.stdout.strip() else {'accepted':True}
+          before=api([f'repos/{repo}/actions/workflows/pages-deploy.yml/runs?per_page=5'])
+          (out/'runs-before.json').write_text(json.dumps(before,indent=2)+'\n')
+          record={'operation_id':'astra-directory-pages-submit-20260907-01','requested_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),'workflow':'pages-deploy.yml','ref':'main'}
+          record['result']=api(['--method','POST',f'repos/{repo}/actions/workflows/pages-deploy.yml/dispatches','-f','ref=main'])
+          (out/'submission.json').write_text(json.dumps(record,indent=2)+'\n')
+          after=api([f'repos/{repo}/actions/workflows/pages-deploy.yml/runs?per_page=5'])
+          (out/'runs-after.json').write_text(json.dumps(after,indent=2)+'\n')
+          controls=[]
+          for path in ['index.html','pages-deploy.json']:
+              url='https://woahwhattheheck.github.io/commons/'+path
+              row={'url':url}
+              try:
+                  with urllib.request.urlopen(url,timeout=20) as r:
+                      row['http_status']=r.status
+                      if path.endswith('.json'):
+                          row['deployment']=json.loads(r.read(10000))
+              except urllib.error.HTTPError as e:row['http_status']=e.code
+              except Exception as e:row['error_type']=type(e).__name__
+              controls.append(row)
+          (out/'controls.json').write_text(json.dumps(controls,indent=2)+'\n')
+          print(json.dumps(record,indent=2))
+          print('Public entry controls:',json.dumps(controls))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-pages-submit
+          path: /tmp/astra-pages-submit/
+          retention-days: 7
