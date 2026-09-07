@@ -24,9 +24,12 @@ jobs:
           git switch -c astra-relay/mail-headers-20260907-01
           cp "$RUNNER_TEMP/test_inbox_slack_relay_headers.py" .
           mkdir -p "$RUNNER_TEMP/header-evidence"
-          test "$(git hash-object host/inbox_slack_relay.py)" = a05d2608735266d292005b60816fa690d4054e9d
-          test "$(git hash-object tests/test_inbox_slack_relay.py)" = b3ca30ce309e477e40a2972ac5413e15c09c2670
+          git hash-object host/inbox_slack_relay.py tests/test_inbox_slack_relay.py test_inbox_slack_relay_headers.py | tee "$RUNNER_TEMP/header-evidence/input-blobs.txt"
+          test "$(git hash-object host/inbox_slack_relay.py)" = 8ab37c0dad170e7ac9df3d397573c99832c4b4ad
+          test "$(git hash-object tests/test_inbox_slack_relay.py)" = e75bc4b26e25d5c92732fffb8e127e26a4dd91af
           test "$(git hash-object test_inbox_slack_relay_headers.py)" = b794f12ac5d974ce3fc0c19a79f8d55460779ce0
+          test "$(git hash-object .github/workflows/inbox-visibility.yml)" = 77b7c0b7b8e4a92de5d0abd0280b140f550a5072
+          test "$(git hash-object host/INBOX_VISIBILITY.md)" = 424748cda7ee678a5a8c80598b3012dbd7a8ba05
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
@@ -49,7 +52,7 @@ jobs:
         run: |
           set -euo pipefail
           git apply "$RUNNER_TEMP/astra_relay_header_repair.patch"
-          test "$(git hash-object host/inbox_slack_relay.py)" = 2d5cea2b78ded89eade562e926e3688aeb42d8e0
+          test "$(git hash-object host/inbox_slack_relay.py)" = d42718ceda5a6123cf19a072faf4db650b91c14c
           python --version | tee "$RUNNER_TEMP/header-evidence/python310.log"
           python -m unittest test_inbox_slack_relay_headers test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python310-mime.log"
           python -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python310-existing.log"
@@ -65,7 +68,34 @@ jobs:
           python -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python313-existing.log"
           python -m py_compile host/inbox_slack_relay.py test_inbox_slack_relay_headers.py
           git diff --check
-      - name: Publish scoped source, tests and execution receipt
+      - name: Update only regression invocation and operator explanation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('.github/workflows/inbox-visibility.yml')
+          before = path.read_text()
+          old_path = '      - test_inbox_slack_relay_alternatives.py\n'
+          old_command = 'python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v'
+          new_command = 'python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers -v'
+          assert before.count(old_path) == 1 and before.count(old_command) == 1
+          after = before.replace(old_path, old_path + '      - test_inbox_slack_relay_headers.py\n').replace(old_command, new_command)
+          assert after.replace('      - test_inbox_slack_relay_headers.py\n', '').replace(new_command, old_command) == before
+          path.write_text(after)
+          path = Path('host/INBOX_VISIBILITY.md')
+          before = path.read_text()
+          anchor = 'Each leaf MIME body uses its declared Content-Type charset, with UTF-8\n'
+          assert before.count(old_command) == 1 and before.count(anchor) == 1
+          paragraph = ('RFC 2047 Subject and sender display text are decoded before the existing\n'
+                       'subject rules and message formatting. Sender-domain decisions still parse the\n'
+                       'original structured From address, never the decoded display name. Malformed\n'
+                       'encoded words remain literal rather than aborting the poll; existing auth/private\n'
+                       'rules apply to decoded valid subjects. This does not add new routing rules.\n\n')
+          path.write_text(before.replace(old_command, new_command).replace(anchor, paragraph + anchor))
+          PY
+          test "$(git hash-object .github/workflows/inbox-visibility.yml)" = 2cd4da0bad8d7cbfca051be03092b7bf174a4fb9
+          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
+          python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers -v
+      - name: Publish scoped source, tests, integration and execution receipt
         env:
           GH_RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
@@ -77,23 +107,27 @@ jobs:
 
           Operation: `astra-relay-mail-headers-20260907-01`. Author: ASTRA-RELAY-MAIL.
           Base: `f3062333cb48e64f3db0cda4e21f983163f6af53`.
-          Original worker: `a05d2608735266d292005b60816fa690d4054e9d`.
-          Candidate worker: `2d5cea2b78ded89eade562e926e3688aeb42d8e0`.
-          New test: `b794f12ac5d974ce3fc0c19a79f8d55460779ce0`.
+          Original worker: `8ab37c0dad170e7ac9df3d397573c99832c4b4ad`.
+          Candidate worker: `d42718ceda5a6123cf19a072faf4db650b91c14c`.
+          Preserved 47-test file: `e75bc4b26e25d5c92732fffb8e127e26a4dd91af`.
+          New 22-test file: `b794f12ac5d974ce3fc0c19a79f8d55460779ce0`.
           Hosted execution: {os.environ['GH_RUN']}
 
-          Decode RFC 2047 display headers before applying the existing subject rules and formatting. Canonical sender/domain parsing still consumes the original structured From value; a decoded display name cannot supply or alter a routing address. The modern standard-library header parser preserves mixed native Unicode/encoded words, unknown-codec replacement, literal escapes and unfolded whitespace. The legacy decoder is used only as a malformed-encoded-word check so invalid Base64 stays literal instead of dropping a poll.
+          Decode RFC 2047 display headers before applying existing subject rules and formatting. Canonical sender/domain parsing still consumes the original structured From value; a decoded display name cannot supply or alter a routing address. The modern standard-library header parser preserves mixed native Unicode/encoded words, unknown-codec replacement, literal escapes and unfolded whitespace. The legacy decoder is used only as a malformed-encoded-word check so invalid Base64 stays literal instead of dropping a poll.
 
-          No subject rule or sender allowlist is expanded. Existing authentication/private-subject omissions now see decoded valid subjects. This is a functional parsing repair and synthetic regression coverage, not evidence of a live private-mail exposure or a universal DLP guarantee. Source read/done state, source IDs, Slack message scrubbing, acknowledgement semantics, prior MIME repairs and COOLDOWN's provider handling are preserved.
+          No subject rule or sender allowlist is expanded. Existing authentication/private-subject omissions now see decoded valid subjects. This is a functional parsing repair and synthetic regression coverage, not evidence of a live private-mail exposure or a universal DLP guarantee. Source read/done state, source IDs, Slack message scrubbing, acknowledgement semantics, prior MIME repairs and both COOLDOWN repairs are preserved.
 
-          Local Python 3.13: 22 new tests produce 20 failed assertions/subtests and zero errors on the exact parent; candidate passes all 88 focused tests. Hosted Python 3.10 baseline: {baseline}. Candidate passes all 88 tests on both Python 3.10 and 3.13, plus compile and whitespace checks. The retained artifact contains the actual logs and exact published source/test files.
+          Local Python 3.13: the new 22 tests produce 20 failed assertions/subtests and zero errors on the exact parent; the composed candidate passes all 99 focused tests. Hosted Python 3.10 baseline: {baseline}. Candidate passes all 99 tests on both Python 3.10 and 3.13, plus compile and whitespace checks. The retained artifact contains actual logs and exact published source/test files.
+
+          Run 34153741875 failed at its stale source-hash guard before tests or publication: the selected base already contained COOLDOWN PR #9884. This run corrects that build metadata and preserves the newer source and its 11 additional tests. The earlier local 88-test result applies only to the older worker and is superseded for this publication by the 99-test composition.
 
           Replay:
-          `python -m unittest test_inbox_slack_relay_headers test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v`
-          `python -m unittest discover -s tests -p test_inbox_slack_relay.py -v`
+          `python3 -m unittest test_inbox_slack_relay_headers test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v`
+          `python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v`
 
-          The existing inbox regression command/runbook are updated separately on the same PR; its normal main-push check is reported only after actual execution. This support workflow/patch is not part of the product PR. No scheduler activation, credentials, actual inbox delivery, sponsor communication, submission or payment claim.
-          ASTRA-VISIBILITY retains original implementation credit; COOLDOWN retains its provider repair; F/equipment retains activation.
+          Only the new test path and regression command change in the normal inbox workflow; its schedule, bindings, permissions, cache and delivery behavior are untouched. The operator runbook has the replay command and header behavior. These exact commands pass on the hosted candidate, but the normal main-push job itself is reported only after execution. The support workflow/patch is not part of the five-file product PR.
+
+          No scheduler activation, credentials, actual inbox delivery, sponsor communication, submission or payment claim. ASTRA-VISIBILITY retains original implementation credit; COOLDOWN retains both provider repairs; F/equipment retains activation.
 
           Sources:
           https://docs.python.org/3/library/email.policy.html#email.policy.EmailPolicy.header_factory
@@ -104,8 +138,8 @@ jobs:
           receipt = '\n'.join(line[10:] if line.startswith('          ') else line for line in receipt.splitlines()) + '\n'
           Path('p/astra-relay-mail-headers-20260907-01.md').write_text(receipt)
           PY
-          git add host/inbox_slack_relay.py test_inbox_slack_relay_headers.py p/astra-relay-mail-headers-20260907-01.md
-          test "$(git diff --cached --name-only | wc -l)" -eq 3
+          git add host/inbox_slack_relay.py test_inbox_slack_relay_headers.py p/astra-relay-mail-headers-20260907-01.md .github/workflows/inbox-visibility.yml host/INBOX_VISIBILITY.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 5
           git diff --cached --check
           git diff --cached > "$RUNNER_TEMP/header-evidence/change.patch"
           git config user.name 'ASTRA-RELAY-MAIL'
