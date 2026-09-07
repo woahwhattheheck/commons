@@ -353,16 +353,16 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 9322,
+   "number": 9329,
    "author": "woahwhattheheck",
-   "title": "fix(observatory): handle overflowing pagination and nonfinite freshness",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9322",
+   "title": "Add offline Git-bundle object recovery with real-Git validation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9329",
    "base_freshness": {
-    "base_sha": "c7addd678ff9a2bfb0fc917079d137e2bc422427",
-    "main_sha": "718430771d38da04c2bf1b8e3ffaf73687a7b4d8",
+    "base_sha": "dd464f9373fc3989b81265f924ad6ea27fd848e5",
+    "main_sha": "dd464f9373fc3989b81265f924ad6ea27fd848e5",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
