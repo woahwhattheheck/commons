@@ -1,0 +1,197 @@
+{
+  "frozen-development": {
+    "source": "next-panel-runtime/frozen/main.py",
+    "source_sha256": "16d7f213e06c563487e5f613f8c94116a094b36ba46927329cbfc3b4195d461d",
+    "raw_sha256": "58880ff9ad7e087359affdedbf1e996536954b76938b6d378e02a9bdd393b0a2",
+    "raw_bytes": 26635951,
+    "gzip_sha256": "7ee8e9793238bb0b47db2dc3bdba287895189f39b0fb211123f7345bee683eb8",
+    "summary": {
+      "apex": {
+        "scheduled": 8,
+        "completed": 8,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -22334.25,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      },
+      "arlene": {
+        "scheduled": 8,
+        "completed": 8,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -21472.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  },
+  "service-diagnostic": {
+    "source": "next-panel-runtime/frozen/main.py",
+    "source_sha256": "16d7f213e06c563487e5f613f8c94116a094b36ba46927329cbfc3b4195d461d",
+    "raw_sha256": "f0bfe18682c28d9cbfd73ec2ae56124c7db0071d26b04fb50522cd4ec17cbd50",
+    "raw_bytes": 1707654,
+    "gzip_sha256": "b1b817f66ee72888b36c47816d10db1dd7a7721074faa126431ac0b3affff6b7",
+    "summary": {
+      "arlene": {
+        "scheduled": 1,
+        "completed": 1,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 1,
+        "mean_margin": -17585.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  },
+  "feed-rescue-development": {
+    "source": "commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/feed-rescue-main.py",
+    "source_sha256": "7bc78e1cf7bd8ec31b990fe38830c06fbf6a5092a67627e8d9db527f919a0754",
+    "raw_sha256": "4d4ce7e1a2ef44e1e2d311bd92e43abb7e256b76dee475d3dea3e8385f0cdbd3",
+    "raw_bytes": 6818905,
+    "gzip_sha256": "7d583805ad41ea8639b047a846cc51af73a34dbde24eac3568190f99ac9d0dd1",
+    "summary": {
+      "apex": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -13171.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      },
+      "arlene": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -17585.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  },
+  "feed-priority-development": {
+    "source": "commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/feed-priority-main.py",
+    "source_sha256": "38958dcfc2c1d82d5b44a3cd6209379e7ca8fedff7c7dc7f026e9efa6783425d",
+    "raw_sha256": "90cd86f5652181a3b09037c58cbfe3f2a26bb66a558e91116b86ff614a181117",
+    "raw_bytes": 6825503,
+    "gzip_sha256": "076ff8fad8bd2b2d2651b2d5d9e3a60bf54630e9b1f397a3d08f68da77bba170",
+    "summary": {
+      "apex": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -13176.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      },
+      "arlene": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -17590.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  },
+  "harvest-rescue-development": {
+    "source": "commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/harvest-rescue-main.py",
+    "source_sha256": "b8be29a92e7036d0a39896c6721350218dd96183de9278d03b91765141628112",
+    "raw_sha256": "9c378c43f31c4bcb3b432045b9aa1d5b5a1220fb8a55bdef62ab4ef66b67f18e",
+    "raw_bytes": 6876401,
+    "gzip_sha256": "f07599e68402488654f9ecd5876b948ace1fb675e51844c3f78a9781ee5e8e52",
+    "summary": {
+      "apex": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -16415.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      },
+      "arlene": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -20843.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  },
+  "animal-harvest-development": {
+    "source": "commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/animal-harvest-main.py",
+    "source_sha256": "07aea9c848e744f866c3c52b3a816b36646267b0cfca18947d3d5c4ffcb4de0d",
+    "raw_sha256": "5dc80a3911570f0a0f9ba009288c9b642888ce553a1278ba2bc89faa5db4a8e3",
+    "raw_bytes": 6819155,
+    "gzip_sha256": "8a714f70781cc7ded22fba36160f2d534ce0ed9bd5590604145393d59f9c6deb",
+    "summary": {
+      "apex": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -13171.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      },
+      "arlene": {
+        "scheduled": 2,
+        "completed": 2,
+        "failed": 0,
+        "wins": 0,
+        "ties": 0,
+        "losses": 2,
+        "mean_margin": -17585.0,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  },
+  "strong-source-head-to-head": {
+    "source": "commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "source_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "raw_sha256": "a19e118661dfe1935f2be1eb008c255467d02fc30d445d7387f32643b64e5588",
+    "raw_bytes": 6688334,
+    "gzip_sha256": "4f1c5b9ad53ac41918409755a0e1d39594f9403d81de89090e4c25aaf59afc13",
+    "summary": {
+      "apex": {
+        "scheduled": 4,
+        "completed": 4,
+        "failed": 0,
+        "wins": 4,
+        "ties": 0,
+        "losses": 0,
+        "mean_margin": 3443.75,
+        "candidate_failures": 0,
+        "opponent_failures": 0
+      }
+    }
+  }
+}
