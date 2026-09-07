@@ -112,6 +112,22 @@ class RepositoryPortfolioTests(unittest.TestCase):
         with self.assertRaisesRegex(PortfolioError, "canonical repository head differs"):
             validate(data)
 
+    def test_general_public_reference_is_supported(self) -> None:
+        data = fixture()
+        data["public_repositories"].append(
+            {
+                "full_name": "owner/public-tool",
+                "visibility": "public",
+                "head_sha": "1" * 40,
+                "role": "PUBLIC_REFERENCE",
+                "condition": "REFERENCE",
+            }
+        )
+        data["summary"]["accessible_repositories"] += 1
+        data["summary"]["public_repositories"] += 1
+        data["summary"]["reference_repositories"] += 1
+        self.assertEqual(validate(data), data["summary"])
+
 
 if __name__ == "__main__":
     unittest.main()

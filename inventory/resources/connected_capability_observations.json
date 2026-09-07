@@ -1,9 +1,9 @@
 {
   "schema": "commons-connected-capability-observations/v1",
   "snapshot": {
-    "observed_at": "2026-09-01T23:32:25Z",
-    "base_main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
-    "source_watermark": "2026-09-01T23:29:27Z",
+    "observed_at": "2026-09-07T04:08:47Z",
+    "base_main_sha": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca",
+    "source_watermark": "2026-09-02T10:06:41Z",
     "route_rule": "All Commons carriers may consume all shared resources; Claude is the sole owner-handled exception.",
     "truth_rule": "Exposure, successful probe, lifecycle stage, condition, authority, mutation, consumption, and value are independent facts.",
     "secret_rule": "Share account roles, business identity, services, quotas, and routes; never persist passwords, tokens, recovery links, verification links, or payment credentials."
@@ -31,15 +31,15 @@
     }
   },
   "tool_fleet": {
-    "callable_tools": 405,
-    "connected_app_tools": 390,
+    "callable_tools": 442,
+    "connected_app_tools": 427,
     "core_tools": 15,
-    "app_families": 18,
+    "app_families": 20,
     "app_family_counts": {
       "airtable": 29,
       "apollo": 46,
       "automations": 5,
-      "dropbox": 23,
+      "dropbox": 24,
       "finances": 9,
       "github": 89,
       "gmail": 21,
@@ -51,37 +51,46 @@
       "plugin_management": 6,
       "safety": 5,
       "sites": 23,
-      "slack": 32,
+      "netlify": 9,
+      "railway": 26,
+      "slack": 33,
       "stripe": 10,
       "vercel": 24
     },
-    "fully_paginated_skills": 104,
+    "fully_paginated_skills": 118,
     "skill_groups": {
       "core": 18,
       "airtable": 3,
+      "deep_research_work": 1,
       "demos": 2,
       "dropbox": 6,
       "google_drive": 5,
+      "netlify": 12,
       "openai_library": 1,
       "work_pets": 3,
       "plugin_management": 1,
       "sites": 3,
       "stripe": 7,
+      "task_tool": 1,
       "template_creator": 1,
       "vercel": 54
     },
     "automations": {
-      "total": 13,
-      "enabled": 6,
+      "total": 14,
+      "enabled": 7,
       "disabled": 7
     },
     "installed_plugins": [
       "Demos",
+      "Deep Research Work",
       "Dropbox",
       "Gmail",
       "GitHub",
       "Google Drive",
+      "Netlify",
+      "Railway",
       "Slack",
+      "Task Tool",
       "Vercel"
     ],
     "plugin_search_findings": {
@@ -90,73 +99,126 @@
       "latent_recommended_plugins": 45
     }
   },
+  "component_freshness": {
+    "account_roles": "2026-09-01T23:32:25Z",
+    "tool_fleet": "2026-09-07T04:08:47Z",
+    "github_portfolio": "2026-09-07T04:08:47Z"
+  },
   "github_portfolio": {
-    "accessible_repositories": 9,
-    "public_repositories": 4,
-    "private_repositories": 5,
+    "observed_at": "2026-09-07T04:08:47Z",
+    "accessible_repositories": 30,
+    "public_repositories": 18,
+    "private_repositories": 12,
+    "private_details_persisted": false,
     "repositories": [
       {
         "name": "woahwhattheheck/commons",
         "visibility": "public",
-        "head": "392e8f99d374ca1f03740daf7f29eeae092576a2",
-        "open_prs": 10,
+        "head": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca",
+        "open_prs": 1,
         "role": "CANONICAL"
       },
       {
         "name": "woahwhattheheck/commons-backup",
         "visibility": "public",
-        "head": "17268727",
-        "open_prs": 0,
-        "role": "STALE_MIRROR"
+        "head": "17268727fea21066cda39f5740f02fb6903961d8",
+        "role": "MIRROR_UNVERIFIED"
       },
       {
         "name": "woahwhattheheck/kite-mouth-help",
         "visibility": "public",
-        "head": "eedbaf2c",
-        "open_prs": 0,
+        "head": "eedbaf2cd53dc490de8af7d070b4261edae9ee9a",
         "role": "REFERENCE"
       },
       {
         "name": "woahwhattheheck/public-commons-sprint-2026",
         "visibility": "public",
-        "head": "d01f738",
-        "open_prs": 1,
+        "head": "56f7ccf477c7c540f7d2105775b7b159417f160e",
         "role": "SPRINT"
       },
       {
-        "name": "woahwhattheheck/LocalDeviceAgent",
-        "visibility": "private",
-        "head": "71c6dc2",
-        "open_prs": 0,
-        "role": "DEVICE_BUILD"
+        "name": "woahwhattheheck/agentlily-runtime",
+        "visibility": "public",
+        "head": "d7dea5d64e44c15713faec276eb18ef3197a4888",
+        "role": "REFERENCE"
       },
       {
-        "name": "woahwhattheheck/commons-storage-recovery-2026-08-27",
-        "visibility": "private",
-        "head": "b70baed",
-        "open_prs": 0,
-        "role": "RECOVERY"
+        "name": "woahwhattheheck/ultimate-ai-platform",
+        "visibility": "public",
+        "head": "167af0b01eb0b0282a88381473216d793b9835be",
+        "role": "REFERENCE"
       },
       {
-        "name": "woahwhattheheck/aquatrace-lims",
-        "visibility": "private",
-        "head": "93606e3",
-        "open_prs": 1,
-        "role": "PRODUCT"
+        "name": "woahwhattheheck/scrypt",
+        "visibility": "public",
+        "head": "a71ae8281742ac638bc75baa4334f2292251e0eb",
+        "role": "REFERENCE"
       },
       {
-        "name": "woahwhattheheck/smb-showcase-inventory",
-        "visibility": "private",
-        "head": "9a72b15",
-        "open_prs": 1,
-        "role": "PRODUCT"
+        "name": "woahwhattheheck/hive",
+        "visibility": "public",
+        "head": "0c387492067e8b7d3e1c803009169f202f30ed77",
+        "role": "REFERENCE"
       },
       {
-        "name": "woahwhattheheck/motel-ops-suite",
-        "visibility": "private",
-        "head": "d0fcc07",
-        "open_prs": 1,
-        "role": "PRODUCT"
+        "name": "woahwhattheheck/startup-credits",
+        "visibility": "public",
+        "head": "5834dccb21aed15d15c1fb0290e81cd1d754c921",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/AncientBeast",
+        "visibility": "public",
+        "head": "6fe46c29c0715ef68f773ceec472d298584a46e3",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/omi",
+        "visibility": "public",
+        "head": "16e3f19bb9613c469a92910fc525c52a592d0bdc",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/tarsnap",
+        "visibility": "public",
+        "head": "0bf0b299fed91139044c81cc6fcdc5521c34d235",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/jhipster-control-center",
+        "visibility": "public",
+        "head": "8c5fd7383137fe638a7b17883b6c90cac090f447",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/split-sdk",
+        "visibility": "public",
+        "head": "5e1f9d682d29b1cb5270cf9c6e8614c5830a53a7",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/spiped",
+        "visibility": "public",
+        "head": "a945f3315e35ee48c8a79af952addc1b6616db83",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/kivaloo",
+        "visibility": "public",
+        "head": "3de151b5d878b0714552c3658562eb5a87b378ce",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/mova-store",
+        "visibility": "public",
+        "head": "65d9dfb09cbf544edbd0d6ac2954219427f734c7",
+        "role": "REFERENCE"
+      },
+      {
+        "name": "woahwhattheheck/drizzle-orm",
+        "visibility": "public",
+        "head": "b7862528fd8fc39bc2653a6c18dad7c1f4e68d10",
+        "role": "REFERENCE"
       }
     ]
   },
@@ -176,11 +238,11 @@
       ],
       "mutation": "TASK_SCOPED",
       "route_state": "CALLABLE",
-      "value": "$200 ChatGPT subscription with connected tools, skills, automations, browser, and GitHub/Slack carriers.",
-      "last_use": "2026-09-01T23:32:25Z",
+      "value": "$200 ChatGPT subscription with 442 callable tools, 118 installed skills, 14 automations, browser, and connected carriers.",
+      "last_use": "2026-09-07T04:08:47Z",
       "freshness": "LIVE_PROBE",
       "source_kind": "OWNER_DECLARATION_PLUS_TOOL_CENSUS",
-      "evidence": "405 tools, 390 connected-app tools, 104 skills, 13 automations, 6 enabled."
+      "evidence": "442 tools, 427 connected-app tools across 20 families, 118 fully paginated skills, 14 automations, 7 enabled."
     },
     {
       "id": "business-gmail",
@@ -238,8 +300,8 @@
       ],
       "mutation": "SHIP_TO_WOAHWHATTHEHECK_ONLY",
       "route_state": "CALLABLE_WITH_CONSTRAINT",
-      "value": "Two GitHub identities and nine accessible woahwhattheheck repositories; four public and five private.",
-      "last_use": "2026-09-01T23:32:25Z",
+      "value": "Two GitHub identities and 30 accessible woahwhattheheck repositories; 18 public and 12 private. Private identities and heads are aggregate-only in the public graph.",
+      "last_use": "2026-09-07T04:08:47Z",
       "freshness": "LIVE_PROBE",
       "source_kind": "GITHUB_CONNECTOR_AND_CURRENT_MAIN",
       "evidence": "Authenticated connector resolves woahwhattheheck; current-main shipping law names woahwhattheheck and not tokenjunkielabs."
@@ -787,4 +849,3 @@
     "No prospect outreach, resend, deployment, device action, payment, revenue, settlement, payout, or cash."
   ]
 }
-

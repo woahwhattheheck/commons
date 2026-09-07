@@ -49,21 +49,39 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
         self.assertEqual(github["ship_target"], "woahwhattheheck")
         self.assertEqual(github["non_ship_identity"], "tokenjunkielabs")
 
-    def test_repository_fleet_reconciles_nine_repositories(self) -> None:
+    def test_repository_fleet_reconciles_current_public_safe_aggregate(self) -> None:
         fleet = self.catalog["github_portfolio"]
-        self.assertEqual(fleet["accessible_repositories"], 9)
-        self.assertEqual(fleet["public_repositories"], 4)
-        self.assertEqual(fleet["private_repositories"], 5)
-        self.assertEqual(len(fleet["repositories"]), 9)
+        self.assertEqual(fleet["accessible_repositories"], 30)
+        self.assertEqual(fleet["public_repositories"], 18)
+        self.assertEqual(fleet["private_repositories"], 12)
+        self.assertEqual(len(fleet["repositories"]), 18)
+        self.assertFalse(fleet["private_details_persisted"])
+        self.assertTrue(all(row["visibility"] == "public" for row in fleet["repositories"]))
+
+    def test_private_repository_row_is_rejected(self) -> None:
+        bad = copy.deepcopy(self.source)
+        bad["github_portfolio"]["repositories"].append(
+            {"name": "redacted/private", "visibility": "private"}
+        )
+        bad["github_portfolio"]["public_repositories"] += 1
+        bad["github_portfolio"]["accessible_repositories"] += 1
+        with self.assertRaisesRegex(inventory.CapabilityInventoryError, "must be public"):
+            inventory.compile_catalog(bad)
+
+    def test_private_detail_persistence_flag_is_required(self) -> None:
+        bad = copy.deepcopy(self.source)
+        bad["github_portfolio"]["private_details_persisted"] = True
+        with self.assertRaisesRegex(inventory.CapabilityInventoryError, "must not be persisted"):
+            inventory.compile_catalog(bad)
 
     def test_tool_skill_and_automation_counts_reconcile(self) -> None:
         tools = self.catalog["tool_fleet"]
-        self.assertEqual(tools["callable_tools"], 405)
-        self.assertEqual(tools["connected_app_tools"], 390)
-        self.assertEqual(sum(tools["app_family_counts"].values()), 390)
-        self.assertEqual(tools["fully_paginated_skills"], 104)
-        self.assertEqual(sum(tools["skill_groups"].values()), 104)
-        self.assertEqual(tools["automations"], {"total": 13, "enabled": 6, "disabled": 7})
+        self.assertEqual(tools["callable_tools"], 442)
+        self.assertEqual(tools["connected_app_tools"], 427)
+        self.assertEqual(sum(tools["app_family_counts"].values()), 427)
+        self.assertEqual(tools["fully_paginated_skills"], 118)
+        self.assertEqual(sum(tools["skill_groups"].values()), 118)
+        self.assertEqual(tools["automations"], {"total": 14, "enabled": 7, "disabled": 7})
 
     def test_cursor_has_usable_shared_route(self) -> None:
         rows = {row["id"]: row for row in self.catalog["providers"]}
@@ -118,4 +136,3 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

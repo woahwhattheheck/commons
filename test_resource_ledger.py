@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788344382.615839")
+        self.assertEqual(catalog["slack_ts"], "1788754083.404829")
         self.assertEqual(
             catalog["source_id"],
-            "codex-google-research-grok-automation-resource-delta-20260902-01",
+            "codex-github-repository-portfolio-privacy-refresh-20260907-01",
+        )
+        self.assertIn(
+            "codex-github-repository-portfolio-privacy-refresh-20260907-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-upwork-marketplace-capacity-activation-20260902-01",
@@ -247,14 +251,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-google-research-grok-automation-resource-delta-20260902-01.json",
+            "codex-github-repository-portfolio-privacy-refresh-20260907-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "google-ai-mode-browser-mesh"
+            current_activation["selected_resource"], "github-repository-portfolio"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -490,8 +494,9 @@ class TestResourceLedger(unittest.TestCase):
         self.assertNotIn("titan-hands-windows", queue_names)
         self.assertIn("titan-hands-windows", measured["expired_resources"])
         self.assertNotIn("github-actions", queue_names)
-        self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
-        self.assertEqual(measured["activation_queue"][0]["priority"], 72)
+        self.assertEqual(measured["activation_queue"][0]["name"], "upwork-marketplace-account")
+        self.assertEqual(measured["activation_queue"][0]["priority"], 70)
+        self.assertIn("outcome-commerce-bridge", measured["expired_resources"])
         self.assertNotIn("commons-skill-and-tool-set", queue_names)
         self.assertNotIn("chatgpt-connected-capability-fleet", queue_names)
         self.assertNotIn("resource-master-office", queue_names)
@@ -513,7 +518,7 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(fleet["stage"], "PRODUCING")
         self.assertEqual(
             fleet["last_receipt"],
-            "codex-connected-capability-fleet-activation-20260901-01",
+            "codex-github-repository-portfolio-privacy-refresh-20260907-01",
         )
         office = next(
             row
@@ -800,7 +805,7 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["owner-workstation"]["condition"], "BLOCKED")
         self.assertEqual(rows["public-commerce-road"]["stage"], "PRODUCING")
         self.assertEqual(rows["public-commerce-road"]["condition"], "CONSTRAINED")
-        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 6)
+        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 7)
         self.assertEqual(rows["kite-task-forge-r0"]["stage"], "PRODUCING")
         self.assertEqual(rows["kite-task-forge-r0"]["condition"], "LIVE")
         self.assertEqual(rows["commons-network-plugin"]["stage"], "PRODUCING")
