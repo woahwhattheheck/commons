@@ -1,26 +1,49 @@
-# Development results — checkpoint 2
+# Selected policy results
 
-No held-out seeds have been run. No submission recommendation yet.
+Frozen policy SHA-256: `b3a6085e1e6674f0228fca4b31fe90950875c1ef93c8c8d926dbc586298c0b56` (73,212 bytes). Native-loader main.py is that exact byte prefix plus a new uniquely named delegating entrypoint, SHA-256 `16d7f213e06c563487e5f613f8c94116a094b36ba46927329cbfc3b4195d461d` (73,418 bytes). No policy parameters changed after selection.
 
-| Experiment | Games | vs Kaito mean margin | vs Igor mean margin | Interpretation |
-|---|---:|---:|---:|---|
-| Igor reconstructed + immediate sale, truncated slots | 8 | -17,812 | -2,146.75 | Rejected |
-| Above + route-prefix commitment | 8 | -17,812 | -2,146.75 | Identical; route-switch diagnosis unsupported |
-| Actual Igor baseline | 4 | -13,175 | 0 | Control |
-| Actual Igor + route-only | 4 | -13,175 | 0 | Matched control exactly |
-| Actual Igor + slot-preserving sales-only | 4 | -13,174 | +121 | Still loses to Kaito |
-| Kaito + immediate sale, truncated slots | 8 | -57,785.5 | -38,019.5 | Rejected |
-| Actual Kaito baseline | 8 | 0 | +14,824.75 | Four ties against self; four Igor wins |
-| Kaito + slot-preserving sales-only | 8 | +4,556.25 | +11,352.5 | Eight wins; lower Igor margin than parent |
+| Phase | Opponent | W/T/L | Mean own cash | Mean opponent cash | Mean margin |
+|---|---|---|---:|---:|---:|
+| Development | kaito_v43 | 8/0/0 | 88,690.875 | 84,203.375 | +4,487.500 |
+| Development | igor_multiroute | 8/0/0 | 81,591.750 | 70,015.250 | +11,576.500 |
+| Reserved validation | igor_multiroute | 8/0/0 | 84,001.750 | 71,784.875 | +12,216.875 |
+| Reserved validation | kaito_v43 | 8/0/0 | 91,153.375 | 83,624.875 | +7,528.500 |
 
-Controls use development seed9400109 for Igor and seeds9400109/9400123 for Kaito. Raw reports retain candidate hashes, both seats, per-game cash/action/transaction/runtime and final state. First-stage variants are retained as failed evidence, not recommended agents. Clean standalone candidate removes unused Igor routes and calls the ACTUAL Kaito entrypoint once; its production actions/router/repair state remain unchanged. Fresh development seeds9400137/9400151 and a separately isolated observed-farm-similarity sale gate are in progress.
+The selected variant won all16 development and all16 reserved games, both seats against both source parents. Four validation seeds were reserved before selection (selection.json; Slack freeze1788772606.334099). They were run once each against each parent in both seats, without parameter retuning. Pairings share seeds and are not16 independent environments. This is evidence for root's submission selection, not a measured leaderboard rating or proof against the current leader.
 
-## Corrected causal interpretation
+## Reserved per-game results
 
-The initial cash/shop/route explanation was only a hypothesis and was not supported by the route-only controls. Shop unlocks occur on fixed day boundaries, not cash thresholds. Policy changes can alter RNG consumption indirectly through empty tiles/weed draws, but that does not establish the cause here. The initial market overlay demonstrably appended/prepended sales and truncated the queue to ten, dropping planned hires. Kaito routes contain many ten-order daily hire openings. Keeping every parent slot fixes that implementation error; it does not prove generic immediate-sale superiority.
+Wall time includes passive driver diagnostics; decision maximum is measured inside the isolated agent process. Raw JSON includes every daily cash snapshot, actual market units/proceeds, action/no-op counts and final private inventory. CSV includes all timing/action fields.
 
-On seed9400109 Kaito self-play earns102348 each; the sale edit earns100306 versus98328. Against Igor, unchanged Kaito earns83279 versus70104, while the edit earns77306 versus67748. Own cash, opponent cash and winning margin are separately reported. Endogenous prices and later farm effects prevent attributing all final differences to one isolated unit price.
+| Opponent | Seed | Seat | Own cash | Rival cash | Margin | Wall s | Max call ms | Non-PASS unchanged |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| kaito_v43 | 9400203 | 0 | 129,283 | 117,125 | +12,158 | 5.418 | 2.237 | 63 |
+| kaito_v43 | 9400203 | 1 | 129,283 | 117,125 | +12,158 | 5.393 | 2.358 | 63 |
+| igor_multiroute | 9400203 | 0 | 65,423 | 53,326 | +12,097 | 6.507 | 10.418 | 31 |
+| igor_multiroute | 9400203 | 1 | 75,905 | 62,236 | +13,669 | 7.292 | 6.570 | 31 |
+| kaito_v43 | 9400217 | 0 | 75,123 | 71,609 | +3,514 | 6.950 | 6.277 | 65 |
+| kaito_v43 | 9400217 | 1 | 71,106 | 67,476 | +3,630 | 6.693 | 5.366 | 66 |
+| igor_multiroute | 9400217 | 0 | 58,838 | 49,156 | +9,682 | 6.115 | 3.371 | 31 |
+| igor_multiroute | 9400217 | 1 | 58,774 | 49,145 | +9,629 | 5.855 | 5.036 | 31 |
+| kaito_v43 | 9400231 | 0 | 54,158 | 50,445 | +3,713 | 5.858 | 3.542 | 63 |
+| kaito_v43 | 9400231 | 1 | 54,158 | 50,445 | +3,713 | 6.016 | 8.613 | 63 |
+| igor_multiroute | 9400231 | 0 | 83,897 | 70,133 | +13,764 | 5.211 | 2.015 | 31 |
+| igor_multiroute | 9400231 | 1 | 89,735 | 75,361 | +14,374 | 5.248 | 2.665 | 31 |
+| kaito_v43 | 9400249 | 0 | 108,058 | 97,387 | +10,671 | 6.155 | 4.874 | 66 |
+| kaito_v43 | 9400249 | 1 | 108,058 | 97,387 | +10,671 | 7.669 | 5.245 | 66 |
+| igor_multiroute | 9400249 | 0 | 119,721 | 107,461 | +12,260 | 8.014 | 7.219 | 30 |
+| igor_multiroute | 9400249 | 1 | 119,721 | 107,461 | +12,260 | 8.768 | 11.869 | 30 |
 
-## Leader replay used as context
+## Native loader and exporter
 
-Read ../cloud-frontier-trace/OBSERVATIONS.md for episode106392861. Tomato diversification and realized sale prices are evidence to investigate, not copied inventory targets. This lane has not installed a copied one-game crop mix, replayed hidden future actions, or claimed a current leaderboard rating. Root owns submission.
+Accepted cloud-pack exporter produced export/submission.tar.gz (57711 bytes), SHA-256 `79b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b`, with main.py, Apache LICENSE, attribution NOTICE.txt and PACK-MANIFEST.json. An initial failed archive is not shipped: its first call selected a helper because redefining an earlier entrypoint does not move its dictionary insertion position. results/native-first-failed.json preserves that discovery. main.py fixes only loader selection by appending a new unique function name; candidate.py remains the frozen validated policy.
+
+Corrected exported cold calls took 284.242/138.255 ms including lazy loader/source initialization; fresh process through first response took 565.416/229.564 ms. Both initial actions exactly matched direct source. Four complete source/export games on development seed9400109 (both seats vs Kaito) matched cash and action-trace hashes, each719 rounds. Exported cash100306 versus98328 in both seats. Full report results/native-loader.json pins exporter, evaluator and loader sources. These are cloud native Python/pinned official file-loader measurements, not an actual hosted Kaggle sandbox certification. No accepted PR9770 orientation tests were rerun; this new candidate required its own native check.
+
+## Experiments and interpretation
+
+There were76 development/control games,16 reserved validation games and4 new-candidate source/export complete games:96 total full games. All completed. Rejected policies lost; those losses were not hidden. Three focused market-slot regressions pass. CHECKPOINT2.md and each raw report retain the actual-parent / route-only / sales-only ablations.
+
+The first reconstruction combined multiple edits and truncated hire orders. Its eight losses did not identify route switching as causal. Route-only Igor control matched actual Igor exactly; a slot-preserving sale edit gave only+121 against Igor and still lost to Kaito. The selected implementation calls Kaito's ACTUAL entrypoint once and changes no worker action, route selector, seed/feed/capital order or parent state progression. For visible farm-signature distance<=2 it adjusts finished-product quantities and adds sales only in free slots; otherwise it returns the parent action. It uses existing public state only, no opponent private inventory or environment seed. The gate improved development cash versus unconditional sales while retaining wins; this is not a universal immediate-sale claim.
+
+Winning margin is the competition objective. On one control seed earlier sales lowered both players' cash but improved margin, so the edit was not rejected solely for lower own cash. ROWAN's leader replay contextualized productive scheduling and endogenous sale prices; no one-game crop counts were copied into this policy. Submission/account transport remains with root/ROWAN.

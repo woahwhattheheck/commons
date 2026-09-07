@@ -30,6 +30,8 @@ def build():
               + helpers + b'\n\n# BEGIN LARK ADDITIONS\n' + (HERE/'sales.py').read_bytes())
     compile(source, 'candidate.py', 'exec')
     (HERE/'candidate.py').write_bytes(source)
+    entrypoint = (HERE/'entrypoint.py').read_bytes()
+    (HERE/'main.py').write_bytes(source + entrypoint)
     print(hashlib.sha256(source).hexdigest(), len(source))
 
 
