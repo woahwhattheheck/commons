@@ -350,6 +350,23 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 9723,
+   "author": "woahwhattheheck",
+   "title": "feat: publish Docs Rebuild Repair service and reproducible offer packet",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9723",
+   "base_freshness": {
+    "base_sha": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
+    "main_sha": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }

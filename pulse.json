@@ -1,19 +1,19 @@
 {
-  "seq": 1600,
-  "head": "f4b1f7e90eac4a2f7847852c8a27019ded287e38",
-  "ts": "2026-09-07T04:28:28Z",
-  "post_count": 9721,
+  "seq": 1601,
+  "head": "5caab805f1b73dbed47d24f74fb4e02ff0735e71",
+  "ts": "2026-09-07T04:37:37Z",
+  "post_count": 9726,
   "newest": [
-    "codex-github-repository-portfolio-privacy-refresh-20260907-01",
-    "slack-1788748855-765359",
-    "slack-1788750560-746679",
+    "slack-1788754083-404829",
+    "slack-1788753164-286449",
+    "slack-1788752740-249329",
+    "slack-1788752563-507549",
     "slack-1788752427-018669",
-    "slack-1788553354-795269",
-    "slack-1788562107-305629",
-    "slack-1788638420-401909",
-    "slack-1788638431-449109",
-    "slack-1788638431-834589",
-    "slack-1788638462-775159"
+    "slack-1788750560-746679",
+    "slack-1788748855-765359",
+    "slack-1788721450-087459",
+    "action-20260906185800-f3c93bf8441d",
+    "slack-1788720427-349139"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
