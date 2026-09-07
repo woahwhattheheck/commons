@@ -1153,9 +1153,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "action-20260906185800-f3c93bf8441d",
-    "ts": "2026-09-06T18:58:00Z",
-    "to": "TOOLS"
+    "id": "grok-pr9330-land-20260907-01",
+    "ts": "2026-09-07T01:16:51Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "WIRE",

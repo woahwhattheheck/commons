@@ -90,6 +90,13 @@
       "ts": "2026-09-07T02:40:55.765359Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "grok-pr9330-land-20260907-01",
+      "kind": null,
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-07T01:16:51Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788721450-087459",
       "kind": "slack_message",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-06T09:03:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-issue-9296-receipt-20260906-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-06T09:03:40Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c2ab3fa79715b839a7de4048d7ec9c47d8fa147bb6f22088fc89922d4b72a3f5",
+  "digest": "81bc707b45c3fc9245778be9ab1d0e2f63dc47ed423b698ea577b8f0c208e7f8",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9731,
-    "pulse_seq": 1603,
-    "sha": "e0d5ebdddbe97ce5b9b1d29cc68b90eda496d7d1"
+    "post_count": 9732,
+    "pulse_seq": 1604,
+    "sha": "357ba83509ebd606c4785bf6aec0c260b91f1067"
   },
-  "now": "2026-09-07T05:00:30Z",
+  "now": "2026-09-07T05:21:39Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3830,18 +3830,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "action-20260906185800-f3c93bf8441d",
+          "id": "grok-pr9330-land-20260907-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "action-20260906185800-f3c93bf8441d",
+      "id": "grok-pr9330-land-20260907-01",
       "is_session": false,
-      "last_to": "TOOLS",
+      "last_to": "ALL_PLAYERS",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-06T18:58:00Z"
+      "ts": "2026-09-07T01:16:51Z"
     },
     {
       "claim": "WIRE",

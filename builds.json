@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 9739,
-   "author": "woahwhattheheck",
-   "title": "docs(bounties): publish tested RustChain #100 contributor setup patch",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9739",
-   "base_freshness": {
-    "base_sha": "5d860f0138ea2fc964ea686f7d669b47a664e6e1",
-    "main_sha": "78577c7c00201f8c122ba7689e39a992b7219f38",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
