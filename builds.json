@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 9802,
-   "author": "woahwhattheheck",
-   "title": "Kaggriculture cloud-model-lab: slot renderer install/feeding state, leader-episode bank builder",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9802",
-   "base_freshness": {
-    "base_sha": "4afa09578e9ca056f41eedad1e79f7deef3b8724",
-    "main_sha": "560f718ac6bad2defc9c45ac78f92c9d2e8d9458",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
