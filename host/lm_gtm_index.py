@@ -144,6 +144,8 @@ CONTRACT = {
     "read_state": "revenue/lm_gtm_index/state.json",
     "list_brief": "python3 host/lm_gtm_index.py brief",
     "check_freshness": "python3 host/lm_gtm_index.py freshness",
+    "mailbox_verify": "python3 host/lm_gtm_mailbox_buyer_reply_verify.py SUBJECT",
+    "handoff_mailbox_verify": "python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-verify",
     "list_next": "python3 host/lm_gtm_index.py next",
     "list_hot": "python3 host/lm_gtm_index.py hot",
     "list_hold": "python3 host/lm_gtm_index.py hold",
@@ -154,6 +156,7 @@ CONTRACT = {
     "release": "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
     "require-claim": "python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU",
     "send": "illegal; exits 3",
+    "mailbox_send": "illegal; exits 3",
     "sales_without_claim": "illegal; exits 4",
 }
 
