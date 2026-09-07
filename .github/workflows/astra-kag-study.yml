@@ -1,9 +1,10 @@
 name: ASTRA frozen Kaggriculture study
 on:
   push:
-    branches: [main, build/astra-kag-improve-20260907]
+    branches: [main, build/astra-kag-improve-20260907, build/astra-kag-lean20-20260907]
     paths:
       - revenue/kaggriculture/cloud-market/**
+      - revenue/kaggriculture/cloud-eval/**
       - .github/workflows/astra-kag-study.yml
   workflow_dispatch:
 permissions:
@@ -25,6 +26,13 @@ jobs:
           mkdir -p "$RUNNER_TEMP/kag-study"
           python -B revenue/kaggriculture/cloud-market/study.py prepare --root "$RUNNER_TEMP/kag-study"
           cp revenue/kaggriculture/20260907-offline-agent/LICENSE* "$RUNNER_TEMP/kag-study/peer/"
+          python - <<'PY'
+          import os, urllib.request
+          from pathlib import Path
+          url='https://raw.githubusercontent.com/Kaggle/kaggle-environments/28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c/LICENSE'
+          with urllib.request.urlopen(url,timeout=45) as response:
+              Path(os.environ['RUNNER_TEMP'],'kag-study','engine','LICENSE').write_bytes(response.read())
+          PY
           docker pull python:3.11-slim
           docker image inspect python:3.11-slim --format '{{.Id}}' > "$RUNNER_TEMP/kag-study/runtime-image.txt"
           git rev-parse HEAD > "$RUNNER_TEMP/kag-study/checkout.txt"
@@ -58,7 +66,7 @@ jobs:
           Path(os.environ['RUNNER_TEMP'],'kag-study','commons-discovery.json').write_text(json.dumps(result,indent=2))
           print('Commons capability discovery response retained; no device command executed.')
           PY
-      - name: Tests then development selection then untouched validation offline
+      - name: Tests, frozen selection, validation and diagnostic equivalence offline
         run: |
           IMAGE=$(cat "$RUNNER_TEMP/kag-study/runtime-image.txt")
           docker run --rm --network none --read-only --cpus 1.6 --memory 6656m \
@@ -66,14 +74,20 @@ jobs:
             --user "$(id -u):$(id -g)" --tmpfs /tmp:rw,nosuid,nodev,size=128m,mode=1777 \
             -v "$GITHUB_WORKSPACE/revenue/kaggriculture:/work:ro" \
             -v "$RUNNER_TEMP/kag-study:/results:rw" \
-            -e KAG_EVAL_ENGINE_DIR=/results/engine -e PYTHONDONTWRITEBYTECODE=1 \
-            -e KAG_RUNTIME_IMAGE="$IMAGE" -w /work "$IMAGE" sh -ec '
+            -e KAG_EVAL_ENGINE_DIR=/results/engine -e KAG_STUDY_ROOT=/results \
+            -e PYTHONDONTWRITEBYTECODE=1 -e KAG_RUNTIME_IMAGE="$IMAGE" \
+            -w /work "$IMAGE" sh -ec '
               cd /work/cloud-eval
               python -B test_evaluator.py > /results/evaluator-tests.log 2>&1 || { cat /results/evaluator-tests.log; exit 1; }
               cd /work/cloud-market
               python -B test_study.py > /results/study-tests.log 2>&1 || { cat /results/study-tests.log; exit 1; }
+              python -B test_behavior.py > /results/behavior-tests.log 2>&1 || { cat /results/behavior-tests.log; exit 1; }
               python -B study.py development --root /results
+              cmp main.py /results/selected_main.py
               python -B study.py validation --root /results
+              python -B diagnostics.py --root /results
+              mkdir -p /results/delivery
+              cp main.py LICENSE LICENSE-MIT.txt LICENSE-CC-BY-4.0.txt README.md ECONOMICS.md selection.json /results/delivery/
             '
       - name: Current main readback
         if: github.ref == 'refs/heads/main'
@@ -82,7 +96,7 @@ jobs:
         run: |
           git fetch --filter=blob:none --depth=100 origin main
           git diff --exit-code HEAD origin/main -- revenue/kaggriculture/cloud-market .github/workflows/astra-kag-study.yml
-          python .github/scripts/audit_git_terminal.py --target-ref origin/main --expected-commit "$EXPECTED_COMMIT" --required-path revenue/kaggriculture/cloud-market/study.py
+          python .github/scripts/audit_git_terminal.py --target-ref origin/main --expected-commit "$EXPECTED_COMMIT" --required-path revenue/kaggriculture/cloud-market/main.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
