@@ -1,0 +1,36 @@
+{
+  "schema": "t13.replay-diagnostics.validation.v1",
+  "status": "IMPLEMENTED_FOCUSED_TESTS_PASS",
+  "test_count": 18,
+  "tests_are": "manufactured real-official-engine state/transition and CLI tests, not public episodes or full games",
+  "runtime_seconds": 3.411,
+  "command": "KAG_ENGINE_DIR=/path/to/existing/engine python -m unittest discover -s revenue/kaggriculture/cloud-hosted-loss-response/replay_diagnostics -p test_diagnostics.py -v",
+  "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "rowan_trace_blob": "9c7cd95005ce9c84b862f218049fd71e16ccd604",
+  "full_game_seeds_consumed": [],
+  "source_files": {
+    "diagnostics.py": {
+      "bytes": 19003,
+      "sha256": "515028b316ee3090cb8aa5ca1ebe0f21ca8e71d31664474bb90626810f61fe4e",
+      "git_blob": "eded7c7cba1ac0e56c3aa41e381424198b3e3fb2"
+    },
+    "test_diagnostics.py": {
+      "bytes": 13680,
+      "sha256": "038654c35aa1b70311055b68f3d4b33a662a9b06f33d4983b9a5a9f1b179d810",
+      "git_blob": "17399a5bb524795b7362ac159f70e0939a56b07a"
+    },
+    "README.md": {
+      "bytes": 6448,
+      "sha256": "68b2116733de1ee3b9fe8a8f962c68c9e29ef96f5b289d1085ad14cfd9f4f1d1",
+      "git_blob": "836c1357122124f253fbc2a001c3660bcae561a3"
+    },
+    "TEST-RESULT.txt": {
+      "bytes": 2577,
+      "sha256": "f27bcef64ba960b6227614e8d3d94faf706737601518fc74f10224364e2c4c5a",
+      "git_blob": "554f52495740a2074b791f3f9270eaa68cf1bc6a"
+    }
+  },
+  "public_input_source_commit": "16a2d4a7675c7e27b97bedc00f8073690bf7a763",
+  "public_replay_analysis_status": "PENDING_RAW_BYTES_MATERIALIZATION_AT_THIS_SOURCE_CHECKPOINT",
+  "scope": "replay_diagnostics only; ALDER owns parent policy/runtime and game panels"
+}
