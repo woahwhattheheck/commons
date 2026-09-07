@@ -1,7 +1,8 @@
 name: titan-pinned-source-export
 
 # Transport existing, published bytes to network-isolated cloud builders.
-# No candidate build, game, package install, model call, or Kaggle operation.
+# Historical modes copy committed bytes. The selected new-replay mode reads
+# two public episodes; no candidate build, game, package install or Kaggle write.
 on:
   push:
     paths:
@@ -9,19 +10,20 @@ on:
   workflow_dispatch:
     inputs:
       bundle:
-        description: Existing committed byte bundle to export
+        description: Committed bundle or selected public replay batch
         type: choice
         default: parents
         options:
           - parents
           - t13-replays
+          - t13-new-replays
 
 permissions:
   contents: read
 
 jobs:
   export:
-    if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-transport]')) && inputs.bundle != 't13-replays' }}
+    if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-transport]')) && inputs.bundle != 't13-replays' && !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-new-replays]')) && inputs.bundle != 't13-new-replays' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -234,5 +236,31 @@ jobs:
         with:
           name: titan-t13-public-replays-16a2d4a7
           path: ${{ runner.temp }}/titan-t13-replay-export/
+          if-no-files-found: error
+          retention-days: 7
+
+  fetch-t13-new-replays:
+    # Branch publication does not fetch. The marked main merge runs this one
+    # batch; an explicit manual selection can request a later deliberate run.
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[t13-new-replays]')) || inputs.bundle == 't13-new-replays' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-public-replay-transfer/
+      - name: Check the actual transport and offline consumer
+        run: python3 -m unittest discover -s revenue/kaggriculture/cloud-public-replay-transfer -p 'test_*.py' -v
+      - name: Read the two requested public replay bodies once
+        run: python3 revenue/kaggriculture/cloud-public-replay-transfer/fetch_public.py fetch --output "${{ runner.temp }}/titan-t13-new-replays"
+      - name: Retain delivered bodies or explicit failure receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-t13-new-replays-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-t13-new-replays/
           if-no-files-found: error
           retention-days: 7
