@@ -38,11 +38,17 @@ town-demand counts and `products`:
 | `opponent_public_supply` | Opponent observed held stock and the same conditional public-crop scenarios. No private inventory read. |
 | `shop_copy_demand` / `town_center_demand` | Separate known-copy and center consumption in `[now, sale_step)`. |
 | `price_scenarios.floor/base/ceiling` | Minimum / maintained-buffered / maximum scenario quotes. Base is not an expected value. |
-| `scenarios[name].inventory_delta` | Conditional crop sales minus known town consumption. |
+| `scenarios[name].inventory_delta` | Admitted conditional crop market supply minus known town consumption. |
+| `scenarios[name].conditional_crop_sale_units` | Cash-paying sale count, including price-1 sales. |
+| `scenarios[name].conditional_crop_market_supply_units` | Units admitted to market inventory at executed price >1. |
+| `scenarios[name].floor_sale_units` | Sales that pay 1 but add zero inventory. |
+| `own_supply.conditional[name].market_supply_units` | Own admitted supply, distinct from own `sale_units`; opponent partition uses the same field. |
+| `conditional_sale_timeline[name][product][]` | Dated batches with `sale_units_by_seat`, admitted `market_supply_units_by_seat`, and conditional cash. |
 | `crop_witnesses[]` | Per-seat/tile contributions and exact ROWAN event/fertilizer/harvest contracts. |
 
-Add FLORA's animal or other net-trade projection to the exposed crop inventory
-scenario and call `market_price(product, inventory, obs['market'].get('params'))`.
+Animal products are separate from the projected crop products. For other trades
+in the same crop, combine dated sale batches and exogenous consumption and replay
+`project_sale_timeline`; do not add raw sale counts to a final inventory. Then call `market_price(product, inventory, obs['market'].get('params'))`.
 Do not add the old approximate town-demand term a second time. The all-product
 output permits composition; animal products currently have **zero projected animal
 supply**. This module does not forecast future planting or choose a static/dynamic
@@ -82,7 +88,7 @@ python -B revenue/kaggriculture/cloud-market-forecast/test_engine_cases.py /path
 python -B revenue/kaggriculture/cloud-market-forecast/run_cases.py
 ```
 
-Ten focused contract cases and three direct-engine primitive comparisons passed.
+Twelve focused contract cases and four direct-engine primitive comparisons passed.
 The two actual public leader observations are frame 224 (day 9, hour 8) and frame 430
 (day 17, hour 22) from ROWAN's pinned episode 106392861. The fixtures contain current
 observation only. Current tomato/strawberry prices 68/166 and 94/176 are preserved;
@@ -93,3 +99,28 @@ No performance win or leaderboard claim follows from these primitive checks.
 Reproduce the bundled mechanisms with `build_mechanics.py /path/to/kaggriculture.py`.
 It checks the engine Git blob and ROWAN SHA-256 before extracting/embedding the
 exact reviewed definitions. `SOURCE_MANIFEST.json` records source and file hashes.
+
+## Schema 2: sale count versus admitted market supply
+
+The call signature and existing fields remain, but `schema` is now 2 and inventory
+calculation is corrected. Each conditional batch is processed at its actual sale
+step, with known town consumption before that step. A floor-price sale pays cash
+and removes stock but does not increase inventory. Only above-floor sales carry
+forward as cumulative supply. Older aggregate outputs are superseded by this
+mechanics correction; they must not be interpreted as schema-2 results.
+
+For each product and step, visible per-seat batches are flattened and assumed
+aligned at one market order slot. Both seats quote the SAME pre-commit inventory
+per unit, then both commit. This is an explicit alignment scenario: actual order
+indices, cross-product interleaving and private orders are unknown. Neither the
+conditional cash nor the final quote claims arbitrary one-side front-running.
+`project_sale_timeline(initial_inventory, sales, horizons, quote, demand_before)`
+exposes that bounded calculation; `sales` maps step to `{seat: quantity}` and
+`demand_before(step)` supplies cumulative exogenous consumption before the step.
+Snapshots and dated output distinguish cash-paying units from admitted supply.
+
+To remove or alter a modeled own stream, replay its timeline: floor-dependent
+admission of the opponent's sales can change too. Simply subtracting own sale
+counts, or holding all previously admitted opponent supply fixed, is not an exact
+joint counterfactual. Scenario supply remains conditional on the existing
+transport, care and capacity assumptions; no future hidden orders are introduced.

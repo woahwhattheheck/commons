@@ -28,6 +28,34 @@ def plant(crop='STRAWBERRY', day=0, held=0, watered=True, until=-1):
 
 
 class ForecastTests(unittest.TestCase):
+    def test_floor_supply_timeline_and_same_unit_joint_quotes(self):
+        rows, timeline = f.project_sale_timeline(0,{1:{0:4},5:{0:1}},[1,5],
+            lambda i:max(1,3-i),lambda step:0 if step==1 else 2)
+        self.assertEqual(rows[1]['inventory'],2)
+        self.assertEqual(rows[5]['inventory'],1)
+        self.assertEqual(rows[5]['sale_units_by_seat'],{0:5})
+        self.assertEqual(rows[5]['market_supply_units_by_seat'],{0:3})
+        self.assertEqual(rows[5]['conditional_cash_by_seat'],{0:10})
+        self.assertEqual(timeline[0]['market_supply_units_by_seat'],{0:2})
+        rows,_=f.project_sale_timeline(1,{1:{0:2,1:2}},[1],
+            lambda i:max(1,3-i),lambda step:0)
+        self.assertEqual(rows[1]['conditional_cash_by_seat'],{0:3,1:3})
+        self.assertEqual(rows[1]['market_supply_units_by_seat'],{0:1,1:1})
+        self.assertEqual(rows[1]['inventory'],3)
+
+    def test_forecast_exposes_floor_sale_counts_separately(self):
+        o=obs(287,plant(held=4,until=11));o['farms'].append(deepcopy(o['farms'][0]))
+        o['market']['inventory']['STRAWBERRY']=11000
+        r=f.forecast_market(o,{},[288,289])
+        row=r['frames'][0]['products']['STRAWBERRY']['scenarios']['fertilized_prompt']
+        self.assertEqual(row['conditional_crop_sale_units'],8)
+        self.assertEqual(row['conditional_crop_market_supply_units'],0)
+        self.assertEqual(row['floor_sale_units'],8)
+        self.assertEqual(row['inventory_delta'],0)
+        self.assertEqual(r['frames'][1]['products']['STRAWBERRY']['scenarios']['fertilized_prompt']['inventory'],10999)
+        self.assertEqual(r['schema'],2)
+        self.assertEqual(r['conditional_sale_timeline']['fertilized_prompt']['STRAWBERRY'][0]['sale_units_by_seat'],{0:4,1:4})
+
     def test_duplicate_shops_and_sale_phase(self):
         o=obs(216,copies=['PIZZA_SHOP','PIZZA_SHOP','FARMERS_MARKET','YARN_STORE'])
         self.assertEqual(f.public_demand(o,{},216)['units']['TOMATO'],0)

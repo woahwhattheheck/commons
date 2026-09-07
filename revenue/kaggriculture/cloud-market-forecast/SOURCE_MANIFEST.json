@@ -24,12 +24,12 @@
       "sha256": "d124eb5e3916597a9835307ad56334d403bc7e4b642f83216ffc4086e8c8df9b"
     },
     "README.md": {
-      "bytes": 5878,
-      "sha256": "c024fbd1799209191eceb548dda9d205d9715582d835d44bddf910e0296b45a6"
+      "bytes": 8295,
+      "sha256": "66885e336214ca6ae996c93b93b0162b41cc90050a46f219a3d49b42b19a67e2"
     },
     "RESULTS.md": {
-      "bytes": 2658,
-      "sha256": "3d1cf5f4d2aaeed2d7ec54277347058a2f98859080381b013953668c69b73d0a"
+      "bytes": 3257,
+      "sha256": "a7d05d295f2d4e8a91b950aed23a8155ffefffb85c3df539f6cb0f0127c1e6a6"
     },
     "build_mechanics.py": {
       "bytes": 1732,
@@ -44,8 +44,8 @@
       "sha256": "58256768b05d8c3a786266ef9fe926ae06a7bbb06480955e2731d92bbdc38049"
     },
     "forecast.py": {
-      "bytes": 13824,
-      "sha256": "2e75d4742866b66feee816e8ed2f262890593a6d5d5d327821648fc55897c093"
+      "bytes": 18158,
+      "sha256": "b7c3046715952a708d9aa985af397f00f85b8c43500d1fe3ee17b20a57987421"
     },
     "forecast_events.py": {
       "bytes": 6480,
@@ -56,24 +56,24 @@
       "sha256": "b4b25c99c55dd33f0d8613a4f48866d83d1472205c29c1d3bc049165975979ce"
     },
     "results/actual-state-cases.json.gz": {
-      "bytes": 20686,
-      "sha256": "f7fae51ad43d7a537a95108edd720ca91d78284db609c4ea940af8112449322f"
+      "bytes": 26003,
+      "sha256": "45f48e64acfe5cadcc4a3d63d13c7b9a4d00f61aed85c6de1b00068d9f552c07"
     },
     "results/summary.json": {
-      "bytes": 170364,
-      "sha256": "7e4fdfa9778952d2a0f46cc092750c98e3ac802747e919c582d507e4db1d01ec"
+      "bytes": 285430,
+      "sha256": "800732109b266c9307c0e9761061ac12d72e638332a0faf4735c39a2cf9c52f7"
     },
     "run_cases.py": {
       "bytes": 2145,
       "sha256": "2c2bdb75d06ec8262fce321c975d0febff851b25ca91a32c6164a8a59221ae39"
     },
     "test_engine_cases.py": {
-      "bytes": 2615,
-      "sha256": "04d007ee8442cd6899ad7c2b33103a027a87f9472d428ea79b38933f5cb7406f"
+      "bytes": 4161,
+      "sha256": "be77b9f40f141fb6e841ae49710ca22b8634a5e966c3114328e434f4b82b8c7a"
     },
     "test_forecast.py": {
-      "bytes": 6829,
-      "sha256": "5844354585199fd579d5c2bbc73d932c4fe370cfac6e6b7d710261583b90887f"
+      "bytes": 8579,
+      "sha256": "8017d2de7b75ab95fbe2b5c7802d0d07c9f2b5ed180561b9d69390ef5fb2ac4c"
     }
   },
   "rowan": {
@@ -81,17 +81,18 @@
     "path": "revenue/kaggriculture/cloud-frontier-trace/events.py",
     "sha256": "000a7f5a4285942c6616a05786e0831f757fb69ba6e5fff51a65cb3e914b6d69"
   },
-  "schema": 1,
+  "schema": 2,
   "source_read": [
     "engine market_price and _shape/defaults",
     "engine _town_consume and interpreter market-before-town ordering",
     "engine WATER, HARVEST, decay, daily crop refresh and automatic inventory deposit",
     "ROWAN complete events.py and DECISION_CONDITIONS.md",
-    "original public replay current observations frames224 and430 only for fixtures; future frames not supplied to forecast"
+    "original public replay current observations frames224 and430 only for fixtures; future frames not supplied to forecast",
+    "engine _commit_unit SELL price>1 admission and _process_market same-pre-commit two-seat quotes; scoped floor mechanics repair"
   ],
   "tests": {
-    "contract": 10,
-    "engine_comparisons": 3,
+    "contract": 12,
+    "engine_comparisons": 4,
     "games": 0
   }
 }

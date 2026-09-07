@@ -16,6 +16,27 @@ engine,_=eval.get_engine(Path(sys.argv[1]))
 
 
 class EngineCases(unittest.TestCase):
+    def test_floor_and_recovered_sales_match_official_market(self):
+        params=deepcopy(MARKET_PARAMS)
+        params['STRAWBERRY'].update(base=3,I0=0,T=2,above_func='linear',above_target=2/3)
+        for batches in [{1:{0:4},5:{0:1}}, {1:{0:2,1:2},5:{0:1,1:1}}]:
+            initial=0 if len(batches[1])==1 else 1
+            market={'inventory':{p:10000 for p in PRODUCTS},'params':params,'prices':{}}
+            market['inventory']['STRAWBERRY']=initial
+            farms=[{'money':0},{'money':0}]
+            privates=[{'shed':{'STRAWBERRY':10}},{'shed':{'STRAWBERRY':10}}]
+            rows,_=f.project_sale_timeline(initial,batches,[1,5],
+                lambda i:engine.market_price('STRAWBERRY',i,params),lambda step:0 if step==1 else 2)
+            for step in [1,5]:
+                if step==5:market['inventory']['STRAWBERRY']-=2
+                state=[eval.Struct(observation=eval.Struct(market=market,farms=farms,private=privates[seat]),
+                    action={'market':[['SELL','STRAWBERRY',batches[step][seat]]] if seat in batches[step] else []}) for seat in range(2)]
+                engine._process_market(state,eval.Struct(configuration=eval.Struct({})))
+                self.assertEqual(rows[step]['inventory'],market['inventory']['STRAWBERRY'])
+                for seat in range(2):
+                    self.assertEqual(rows[step]['conditional_cash_by_seat'].get(seat,0),farms[seat]['money'])
+                    self.assertEqual(rows[step]['sale_units_by_seat'].get(seat,0),10-privates[seat]['shed']['STRAWBERRY'])
+
     def test_actual_engine_pricing_defaults_and_override(self):
         params=deepcopy(MARKET_PARAMS);params['TOMATO'].update(base=75,T=80)
         for p in PRODUCTS:
