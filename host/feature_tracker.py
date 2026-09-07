@@ -98,7 +98,10 @@ def _read(path):
 
 
 def _load_json_file(path):
-    text = _read(path)
+    try:
+        text = _read(path)
+    except UnicodeDecodeError as exc:
+        return None, ["not UTF-8: %s" % exc]
     if not text.strip():
         return None, ["unreadable or empty"]
     try:
