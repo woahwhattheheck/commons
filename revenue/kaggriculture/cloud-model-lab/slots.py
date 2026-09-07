@@ -53,7 +53,8 @@ def _tid(x, y):
     return f"t{x}{y}" if x < 10 and y < 10 else f"t{x}_{y}"
 
 
-def render(card, adm, hz, plan=None, bank_block=None, head=None):
+def render(card, adm, hz, plan=None, bank_block=None, head=None,
+           tail_block=None, only_units=None, show_market=True):
     K = engine()
     obs, cfg, seat = card["observation"], card["configuration"], card["seat"]
     day, hour = int(obs["day"]), int(obs["hour"])
@@ -235,7 +236,13 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
 
     out.append("ALLOWED THIS TURN (ids refer to the tiles above)")
     labels = ["farmer"] + [f"hands[{i}]" for i in range(len(adm["units"]) - 1)]
+    # `only_units` narrows the ALLOWED lists to the slots the caller is actually
+    # asking the model to author. The other units' admissible sets are not part of
+    # this action space, so listing them is noise, not withheld information -- the
+    # full state above still describes every worker and its tile.
     for i, (label, ops) in enumerate(zip(labels, adm["units"])):
+        if only_units is not None and i not in only_units:
+            continue
         q = adm["quantities"][i]
         p = units[i][1]
         tid = _tid(int(p[0]), int(p[1]))
@@ -256,12 +263,24 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
     def _m(entries):
         return " | ".join(" ".join(m["order"]) + (f" n<={m['max_n']}" if m["max_n"] > 1 else "")
                           for m in entries)
-    out.append("  market: " + _m(adm["market"]))
-    now = {tuple(m["order"]) for m in adm["market"]}
-    extra = [m for m in adm["market_after_full_deposit"] if tuple(m["order"]) not in now]
-    if extra:
-        out.append("  market after depositing carried goods this turn: " + _m(extra))
+    # The market line is dropped only when the caller's action space genuinely
+    # excludes market orders (slot authoring over a route baseline keeps the
+    # route's own orders). It is never dropped to save tokens on a turn the model
+    # could author them.
+    if show_market:
+        out.append("  market: " + _m(adm["market"]))
+        now = {tuple(m["order"]) for m in adm["market"]}
+        extra = [m for m in adm["market_after_full_deposit"]
+                 if tuple(m["order"]) not in now]
+        if extra:
+            out.append("  market after depositing carried goods this turn: "
+                       + _m(extra))
 
+    # A caller-supplied block that belongs AFTER the admissible lists, because it
+    # talks about those entries: the open slots and what each one is standing on.
+    if tail_block:
+        out.append("")
+        out.append(tail_block)
     if head:
         out.append("")
         out.append(head)

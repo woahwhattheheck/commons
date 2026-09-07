@@ -410,3 +410,136 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ---------------------------------------------------------------- slot-probe lane
+
+def compile_slot_probe(probe_path, cards_path, min_support=1):
+    """Compile motifs from what E4B authored into Arlene's OPEN slots.
+
+    A row is compiled only when the constrained decode accepted it, the op is not
+    PASS, the pinned interpreter ACTED on it in context, the effect is not one of
+    the forbidden ones, and the merged turn left every working route slot's exact
+    outcome unchanged. The precondition is read from the ordered PREFIX state that
+    slot actually acted on, so a later slot's facts include the earlier ones.
+
+    Provenance is `model` and nothing else is mixed in. Hand-authored candidates
+    live in `engine_derived_controls()` and carry their own provenance.
+    """
+    probe = json.load(open(probe_path))
+    cards = {(c["seed"], c["seat"], c["step"]): c
+             for c in json.load(open(cards_path))["cards"]}
+    K = NM.engine()
+    table, skipped, used = {}, [], 0
+    for row in probe["rows"]:
+        key = (row["seed"], row["seat"], row["step"])
+        card = cards.get(key)
+        if card is None:
+            skipped.append({"row": key, "why": "no matching card"})
+            continue
+        if not row.get("slots"):
+            skipped.append({"row": key, "why": f"rejected: {row.get('rejected')}"})
+            continue
+        eng = row.get("engine") or {}
+        if eng.get("disturbed_route_slots"):
+            skipped.append({"row": key, "why": "merged turn disturbed a route slot"})
+            continue
+        obs, cfg, seat = card["observation"], card["configuration"], card["seat"]
+        merged = eng.get("merged_action")
+        units = [list(merged["farmer"])] + [list(h) for h in merged["hands"]]
+        for s in eng.get("slots", []):
+            op = list(s["op"])
+            if op[0] == "PASS":
+                continue
+            if not s["acted"] or s["effect"] in NM.FORBIDDEN_EFFECTS:
+                skipped.append({"row": key, "unit": s["unit"],
+                                "why": f"effect {s['effect']}"})
+                continue
+            i = s["unit"]
+            pre = NM.simulate(K, obs, cfg, seat, units, upto=i)
+            farm = pre["farm"] if i else obs["farms"][seat]
+            priv = pre["priv"] if i else obs["private"]
+            facts = NM.unit_facts(farm, priv, cfg, i)
+            when = NM.precondition(op, facts)
+            if when is None or not NM.holds(when, op, facts):
+                skipped.append({"row": key, "unit": i,
+                                "why": "precondition does not hold on its own state"})
+                continue
+            used += 1
+            sig = _sig(op, when)
+            m = table.setdefault(sig, {
+                "op": op, "when": when, "effect": s["effect"], "role": "worker",
+                "observed_roles": set(),
+                "proposable": op[0] in LOCAL_PAYOFF_OPS,
+                "hold_reason": None if op[0] in LOCAL_PAYOFF_OPS else HOLD_REASON,
+                "support": {"model": 0, "teacher": 0, "total": 0},
+                "provenance": ["model"], "authored": "model", "sources": []})
+            m["observed_roles"].add("farmer" if i == 0 else "hand")
+            m["support"]["model"] += 1
+            m["support"]["total"] += 1
+            if len(m["sources"]) < 8:
+                m["sources"].append({"seed": row["seed"], "seat": seat,
+                                     "step": row["step"], "unit": i,
+                                     "plan": row.get("plan"),
+                                     "provenance": "model"})
+    motifs = []
+    for i, (sig, m) in enumerate(sorted(table.items())):
+        if m["support"]["total"] < min_support:
+            continue
+        m = dict(m)
+        m["observed_roles"] = sorted(m["observed_roles"])
+        m["id"] = "s%03d" % i
+        motifs.append(m)
+    motifs.sort(key=lambda m: (-m["support"]["total"], m["id"]))
+    return {"motifs": motifs,
+            "meta": {"compiled_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                     "engine_pin": cards_mod.ENGINE_PIN,
+                     "lane": "slot-probe over the intact Arlene baseline",
+                     "probe": os.path.basename(probe_path),
+                     "cards": os.path.basename(cards_path),
+                     "slot_decisions_compiled": used,
+                     "rows": len(probe["rows"]),
+                     "authored": "model",
+                     "provenance": "model"},
+            "uncompiled": skipped}
+
+
+def engine_derived_controls():
+    """HAND-AUTHORED candidate controls. NOT model output; never label them so.
+
+    Each is written directly from a pinned engine rule, to give the model-produced
+    table something to be discriminated against. They are a control arm, not a
+    recommendation, and they carry their own provenance so no measurement can
+    confuse the two lanes.
+    """
+    def m(idx, op, when, effect, why):
+        return {"id": "c%03d" % idx, "op": list(op), "when": dict(when),
+                "effect": effect, "role": "worker", "observed_roles": ["worker"],
+                "proposable": True, "hold_reason": None,
+                "support": {"model": 0, "teacher": 0, "hand": 1, "total": 1},
+                "provenance": ["engine-derived-control"], "authored": "hand",
+                "rule": why, "sources": []}
+    return {"motifs": [
+        m(0, ["CARE"], {"tile": "ANIMAL", "cared_today": False, "fed_today": True},
+          "tile_state_change",
+          "the daily refresh pays care only on an animal already fed today "
+          "(kaggriculture.py 829-830); this is the fed half of that pair"),
+        m(1, ["HARVEST"], {"tile": "ANIMAL", "yield_units>=1": True}, "harvested",
+          "HARVEST on an animal takes its held units and leaves the animal in "
+          "place (469-472), so it forfeits nothing"),
+        m(2, ["COLLECT_FERTILIZER"], {"tile": "ANIMAL", "fertilizer_available": True},
+          "tile_state_change",
+          "fertilizer standing available on an animal is collected outright"),
+        m(3, ["FEED"], {"tile": "ANIMAL", "fed_today": False, "carry.WHEAT>=1": True},
+          "tile_state_change",
+          "FEED sets fed_today and consumes one carried WHEAT (508-513); it is the "
+          "precondition the refresh pays production and care against"),
+        m(4, ["WATER"], {"tile": "PLANT", "watered_today": False, "unwatered_run": 1},
+          "tile_state_change",
+          "an unwatered plant loses growth at the refresh; WATER costs nothing "
+          "carried"),
+    ], "meta": {"lane": "hand-authored engine-derived controls",
+                "authored": "hand", "provenance": "engine-derived-control",
+                "engine_pin": cards_mod.ENGINE_PIN,
+                "note": "these are NOT model output and must not be reported as "
+                        "model-produced"}}
