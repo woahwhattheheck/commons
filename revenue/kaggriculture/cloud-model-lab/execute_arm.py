@@ -1,0 +1,185 @@
+"""Run any peer's callable arm against a control, on this VM, with real receipts.
+
+This is the complementary-executor road. It takes whole callables by PATH -- no
+peer file is copied, edited or re-implemented -- and gives back what actually
+decides a rating plus what diagnoses it:
+
+  * W/T/L first, per game, against the rival in that game
+  * own AND rival cash, so a gain that is really the rival losing is visible
+  * the end-of-day RNG path per arm, so a candidate/control pair that differs can
+    be shown to be playing the SAME market world rather than a different town
+  * worst single action wall time, cold first call included
+  * every failure preserved; a raising arm is reported, never silently dropped
+
+Opponents resolve through this lab's single resolver: intact Arlene, Apex, and
+the exact public bank from PR9942 (`lonespear`, `cok`) read-only from its owner's
+path. lonespear and COK are two frozen public source revisions from ONE bank, not
+two independent opponent families, and the summary says so.
+
+A callable is `agent(observation, configuration)` or `agent(observation)`; an
+`--arm-factory` module may instead expose `make_agent()` returning a fresh
+per-match callable, which is what a stateful arm needs.
+
+  python -B execute_arm.py \
+     --candidate /path/to/arm.py --control /path/to/parent.py \
+     --seeds 9890101 9890119 --seats 0 1 --opponents arlene apex lonespear cok
+"""
+
+import argparse
+import hashlib
+import importlib.util
+import json
+import os
+import sys
+import time
+import traceback
+
+import cards as cards_mod
+
+
+def load_callable(path, extra_sys_path=()):
+    """Fresh module per match, so a module-level singleton cannot leak between
+    games. The bank's own entrypoints rely on exactly this."""
+    rp = os.path.realpath(path)
+    for p in extra_sys_path:
+        if p and p not in sys.path:
+            sys.path.insert(0, p)
+    sha = hashlib.sha256(open(rp, "rb").read()).hexdigest()
+
+    def factory():
+        spec = importlib.util.spec_from_file_location(
+            f"arm_{os.path.basename(rp).replace('.', '_')}_{time.time_ns()}", rp)
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = mod
+        spec.loader.exec_module(mod)
+        if hasattr(mod, "make_agent"):
+            fn = mod.make_agent()
+        else:
+            fn = mod.agent
+        def call(obs, cfg):
+            try:
+                return fn(obs, cfg)
+            except TypeError:
+                return fn(obs)
+        return call
+
+    return factory, {"path": rp, "sha256": sha,
+                     "label": f"{os.path.basename(rp)}@{sha[:12]}"}
+
+
+def normalise(obs, seat):
+    """The engine omits `step` from a seat-1 observation. Three published
+    consumers index it directly, so a seat-1 game raises before any policy runs.
+    Supplied here in the HARNESS exactly as Arlene does internally; no arm under
+    test is modified."""
+    o = dict(obs)
+    if o.get("step") is None:
+        o["step"] = int(o["day"]) * 24 + int(o["hour"])
+    o.setdefault("player", seat)
+    return o
+
+
+def game(seed, seat, opponent, factory, label, record_path=True):
+    import arlene_arm
+    import route_cards
+    A, arl_id = route_cards.load_arlene()
+    rec = None
+    if record_path:
+        import market_path
+        rec = market_path.PathRecorder()
+        rec.__enter__()
+    row = {"seed": seed, "seat": seat, "opponent": opponent, "arm": label}
+    try:
+        env = cards_mod.make_env(seed)
+        env.reset(2)
+        opp, opp_id = arlene_arm.make_opponent(opponent, A)
+        me = factory()
+        t0, worst, n = time.time(), 0.0, 0
+        while not env.done:
+            acts = [None, None]
+            for i in range(2):
+                obs = env.state[i].observation
+                if i == seat:
+                    t = time.perf_counter()
+                    acts[i] = me(normalise(obs, i), env.configuration)
+                    worst = max(worst, time.perf_counter() - t)
+                else:
+                    acts[i] = opp(obs, env.configuration)
+            env.step(acts)
+            n += 1
+        farms = env.state[0].observation.farms
+        own, rival = float(farms[seat]["money"]), float(farms[1 - seat]["money"])
+        row.update(own_cash=own, rival_cash=rival, margin=own - rival, rounds=n,
+                   wall_s=round(time.time() - t0, 1),
+                   worst_action_s=round(worst, 4), opponent_id=opp_id,
+                   arlene=arl_id, error=None)
+    except Exception as exc:                     # preserved, never swallowed
+        row.update(own_cash=None, rival_cash=None, margin=None, error=
+                   f"{type(exc).__name__}: {exc}",
+                   traceback=traceback.format_exc()[-2000:])
+    if rec is not None:
+        row["path"] = rec.path()
+        rec.__exit__(None, None, None)
+    return row
+
+
+def wtl(m):
+    return "?" if m is None else ("W" if m > 0 else ("L" if m < 0 else "T"))
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--candidate", required=True)
+    ap.add_argument("--control", required=True)
+    ap.add_argument("--seeds", type=int, nargs="+", required=True)
+    ap.add_argument("--seats", type=int, nargs="+", default=[0, 1])
+    ap.add_argument("--opponents", nargs="+", default=["arlene", "apex"])
+    ap.add_argument("--sys-path", nargs="*", default=[],
+                    help="extra import roots the arms need (their vendor dirs)")
+    ap.add_argument("--no-path", action="store_true")
+    ap.add_argument("--out", default="results/execute-arm.json")
+    a = ap.parse_args()
+    cf, cid = load_callable(a.candidate, a.sys_path)
+    bf, bid = load_callable(a.control, a.sys_path)
+    print(f"candidate {cid['label']}\ncontrol   {bid['label']}", flush=True)
+    rows = []
+    for seed in a.seeds:
+        for seat in a.seats:
+            for opp in a.opponents:
+                b = game(seed, seat, opp, bf, "control", not a.no_path)
+                c = game(seed, seat, opp, cf, "candidate", not a.no_path)
+                div = None
+                if not a.no_path and b.get("path") and c.get("path"):
+                    import market_path
+                    div = len(market_path.diff({"path": b["path"]},
+                                               {"path": c["path"]}))
+                    c["path_divergent_days"] = div
+                rows += [b, c]
+                d_own = (None if c["own_cash"] is None or b["own_cash"] is None
+                         else c["own_cash"] - b["own_cash"])
+                print(f"seed {seed} seat {seat} vs {opp:9s} control "
+                      f"{wtl(b['margin'])} own {b['own_cash']} rival {b['rival_cash']}"
+                      f" | candidate {wtl(c['margin'])} own {c['own_cash']} "
+                      f"rival {c['rival_cash']} d_own {d_own}"
+                      + (f" pathdiv {div}d" if div is not None else "")
+                      + (f"  ERROR {c['error']}" if c["error"] else ""), flush=True)
+    os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
+    json.dump({"candidate": cid, "control": bid, "rows": rows},
+              open(a.out, "w"), indent=1, default=str)
+    for label in ("control", "candidate"):
+        rs = [r for r in rows if r["arm"] == label]
+        v = [wtl(r["margin"]) for r in rs]
+        fail = sum(1 for r in rs if r["error"])
+        print(f"  {label:10s} {v.count('W')}/{v.count('T')}/{v.count('L')}  "
+              f"failures {fail}  worst action "
+              f"{max((r.get('worst_action_s') or 0) for r in rs) * 1000:.1f}ms")
+    lineage = {"arlene": "arlene", "apex": "apex",
+               "lonespear": "public bank PR9942", "cok": "public bank PR9942"}
+    opps = sorted({r["opponent"] for r in rows})
+    print(f"  independent seeds {len({r['seed'] for r in rows})}; opponent entries "
+          f"{len(opps)}; independent opponent lineages "
+          f"{len({lineage.get(o, o) for o in opps})}")
+
+
+if __name__ == "__main__":
+    main()
