@@ -43,13 +43,8 @@ def frontier_agent(obs, configuration=None):
     state['last_step'] = step
     # The parent's route changes only from observed shops/layout. Retain its
     # weed transactions, storage evacuation and complete worker schedule.
-    actions = _kawa_actions(obs)
-    action = _weed_repair_action(obs, _copy_action(actions[min(step, len(actions)-1)]), step)
-    action = _v17_feed_guard(obs, action, step)
-    action = _v17_room_evac(obs, action, step)
-    action = _v17_room_guard(obs, action, step)
-    action = _terminal_liquidation(obs, action, step)
-    state['route'] = _ROUTE_STATE[seat]['route']
+    action = _V43_POLICY(obs, configuration)
+    state['route'] = _V43_POLICY.states[seat]['route']
     if _FRONTIER_MODE == 'parent':
         return _PARENT_AGENT(obs)
     # Feed wheat and fertilizer retain the production plan's own quantities.
@@ -57,14 +52,20 @@ def frontier_agent(obs, configuration=None):
     projected = _projected_shed(obs, action)
     for item in _FINISHED:
         projected[item] = max(0, projected.get(item, 0) - _v17_pickup_reserve(action, item))
-    market = [list(o) for o in action.get('market', [])
-              if not (len(o) >= 3 and o[0] == 'SELL' and o[1] in _FINISHED)]
+    market = [list(o) for o in action.get('market', [])]
+    handled = set()
+    for order in market:
+        if len(order) >= 3 and order[0] == 'SELL' and order[1] in _FINISHED:
+            item = order[1]
+            order[2] = projected.get(item, 0) if item not in handled else 0
+            handled.add(item)
     sales = [['SELL', item, projected.get(item, 0)] for item in _FINISHED
-             if projected.get(item, 0) > 0]
+             if item not in handled and projected.get(item, 0) > 0]
     sales.sort(key=lambda o: _order_score(obs, configuration, o), reverse=True)
-    # Preserve relative order of capital/feed orders. Finished sales lead so
-    # their cash and storage become available to those planned purchases.
-    action['market'] = (sales + market)[:10]
+    # Daily route indices depend on every planned HIRE. Never truncate a
+    # parent order to make room for an opportunistic sale.
+    capacity = int(_get(configuration, 'maxMarketOrdersPerTurn', 10))
+    action['market'] = market + sales[:max(0, capacity-len(market))]
     state['sales_turns'] += bool(sales)
     state['previous_prices'] = dict(_get(_get(obs, 'market', {}), 'prices', {}))
     state['observed_cash'] = _get(_farm(obs, seat), 'money', 0)
