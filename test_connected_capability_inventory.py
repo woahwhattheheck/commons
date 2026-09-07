@@ -81,15 +81,17 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
         self.assertEqual(sum(tools["app_family_counts"].values()), 427)
         self.assertEqual(tools["fully_paginated_skills"], 118)
         self.assertEqual(sum(tools["skill_groups"].values()), 118)
-        self.assertEqual(tools["automations"], {"total": 14, "enabled": 7, "disabled": 7})
+        self.assertEqual(tools["automations"], {"total": 14, "enabled": 6, "disabled": 8})
 
-    def test_kaggle_binding_is_reachable_but_not_an_entry_claim(self) -> None:
+    def test_kaggle_binding_is_producing_without_superiority_or_retry_claim(self) -> None:
         rows = {row["id"]: row for row in self.catalog["providers"]}
         kaggle = rows["kaggle-account-binding"]
-        self.assertEqual(kaggle["stage"], "REACHABLE")
+        self.assertEqual(kaggle["stage"], "PRODUCING")
         self.assertEqual(kaggle["condition"], "CONSTRAINED")
-        self.assertEqual(kaggle["allocation"], "DISCOVER_IN_CARRIER")
+        self.assertEqual(kaggle["allocation"], "CALLABLE_WITH_CONSTRAINT")
         self.assertIn("OWNER_ONLY_ENTRY_SUBMISSION", kaggle["mutation"])
+        self.assertIn("56074364", kaggle["evidence"])
+        self.assertIn("public score 790.0", kaggle["evidence"])
 
     def test_cursor_has_usable_shared_route(self) -> None:
         rows = {row["id"]: row for row in self.catalog["providers"]}

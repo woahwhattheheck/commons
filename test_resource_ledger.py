@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788765108.543759")
+        self.assertEqual(catalog["slack_ts"], "1788775586.762069")
         self.assertEqual(
             catalog["source_id"],
-            "codex-github-repository-portfolio-live-expansion-20260907-03",
+            "codex-kaggle-account-binding-exercised-20260907-01",
+        )
+        self.assertIn(
+            "codex-kaggle-account-binding-exercised-20260907-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-github-repository-portfolio-live-expansion-20260907-03",
@@ -259,14 +263,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-github-repository-portfolio-live-expansion-20260907-03.json",
+            "codex-kaggle-account-binding-exercised-20260907-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
-        self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
+        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "github-repository-portfolio"
+            current_activation["selected_resource"], "kaggle-account-binding"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -548,6 +552,17 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             upwork["last_receipt"],
             "codex-upwork-marketplace-capacity-activation-20260902-01",
+        )
+        kaggle = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "kaggle-account-binding"
+        )
+        self.assertEqual(kaggle["stage"], "PRODUCING")
+        self.assertEqual(kaggle["condition"], "CONSTRAINED")
+        self.assertEqual(
+            kaggle["last_receipt"],
+            "codex-kaggle-account-binding-exercised-20260907-01",
         )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
