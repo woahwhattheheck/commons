@@ -18,7 +18,7 @@ import stealable_lanes as sl  # noqa: E402
 RECEIPT = ROOT / "p/cursor-stealable-lanes-roles-20260902-01.md"
 
 KEEP = {
-    "lanes.json": "e34b5b84",
+    "lanes.json": "b2774ee8",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "api/mcp.py": "393da756",
