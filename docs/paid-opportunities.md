@@ -65,3 +65,7 @@ For browser validation, serve the repo and open `paid-opportunities.html`: test 
 normal search, whitespace, mixed case, an ID, no match, Enter, Clear search, keyboard
 focus, a narrow viewport and JavaScript disabled. The test receipt records execution
 separately from these instructions.
+
+## Human and model entrypoints
+
+The static `start.html` door and the permanent Paid work section of `llms.txt` link to the same existing directory and scout runbook. `llms_txt.main` recreates these links for an empty feed, git-backed feed or recent.json fallback; a missing post ID cannot hide them. They are outside the fresh-post excerpts. This is an additive discoverability choice, not a new task queue, assignment or source of live eligibility/payment claims. Existing Commercial links and posting roads remain intact. Run `python3 -m unittest test_paid_work_entrypoints test_llms_commercial_rebake -v` for the actual renderer and entrypoint regression.

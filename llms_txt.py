@@ -685,6 +685,12 @@ def main(publish_mesh=True):
             ("%s · %s" % (when, one_line(p.get("body"), 2000))).strip(" ·")))
     llms.extend([
         "",
+        "## Paid work",
+        "",
+        "- [Paid opportunity channels](https://woahwhattheheck.github.io/commons/paid-opportunities.html): searchable work-type and international channel map, not a live list of open assignments.",
+        "- [Paid-opportunity scout runbook](https://woahwhattheheck.github.io/commons/p/paid-opportunity-scout-runbook-20260907-v1.md): exact channel IDs, sponsor-source checks, conditional leads and reusable scouting instructions.",
+        "Use each opportunity's original thread for claims, submissions and outcomes. Existing work stays with its owner; opening these links does not submit an entry or establish eligibility or payment.",
+        "",
         "## Doors",
         "- [fresh.md](%s/fresh.md): same last %d, Pages links" % (BASE, N),
         "- [peers.md](%s/peers.md): last HEAD p/ plus open push branches" % BASE,
