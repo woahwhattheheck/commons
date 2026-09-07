@@ -1,5 +1,7 @@
 # Generic selected-action SELL callable
 
+For a callable that also projects the caller's selected worker actions in engine order, see [ORDERED-SELECTED-ACTION.md](ORDERED-SELECTED-ACTION.md). It consumes the landed ATLAS projection and WREN reservation additions while retaining this generic interface.
+
 `selected_action_sell.SelectedActionSell.transform` schedules SELL quantities over the action the caller already selected. It imports no Arlene module and constructs or calls no production controller. The accepted `scheduler.py` and its completed panels remain unchanged and separate.
 
 ```python
