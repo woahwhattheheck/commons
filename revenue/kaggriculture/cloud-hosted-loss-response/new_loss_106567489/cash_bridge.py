@@ -231,7 +231,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     rowan = load_trace_module(args.trace_source)
     replay, source = rowan.load_replay(args.replay)
-    if replay.get("info", {}).get("EpisodeId") != args.episode_id:
+    embedded_episode_id = replay.get("info", {}).get("EpisodeId")
+    if args.episode_id < 1:
+        raise ValueError("Requested episode must be positive")
+    if embedded_episode_id is not None and str(embedded_episode_id) != str(args.episode_id):
         raise ValueError("Replay EpisodeId does not match the requested episode")
     own = seat_index(args.player_index)
     expected = [Fraction(v.strip()) for v in args.expected_cash.split(",")]
@@ -245,11 +248,14 @@ def main(argv: list[str] | None = None) -> int:
     engine, engine_hashes = ev.get_engine(args.engine_dir)
     source.update(analyzer_git_blob=TRACE_BLOB, engine_sha256=engine_hashes,
                   provider_binding={"source": args.provider_source, "own_seat": own,
+                    "requested_episode_id": args.episode_id,
+                    "embedded_episode_id": embedded_episode_id,
                     "our_submission_id": args.our_submission_id,
                     "rival_submission_id": args.rival_submission_id,
                     "expected_cash_own_rival": jsonable(expected)})
     trace = rowan.analyze(replay, engine, ev, source)
     bridge = build_bridge(trace, own)
+    bridge["requested_episode_id"] = args.episode_id
     witness_frames = sorted({r["frame"] for r in bridge["largest_adverse_changes"]})
     witnesses = {"schema": "titan.observed-cash-witnesses.v1", "episode_id": args.episode_id,
         "source": source, "note": "Observed paired frames, not proposed actions or counterfactuals.",
@@ -267,7 +273,7 @@ def main(argv: list[str] | None = None) -> int:
         (args.output / filename).write_bytes(data)
         manifest["files"][filename] = {"sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)}
     (args.output / "MANIFEST.json").write_text(json.dumps(manifest, sort_keys=True, indent=2) + "\n")
-    print(json.dumps({k: bridge[k] for k in ("episode_id", "own_seat", "terminal_margin",
+    print(json.dumps({k: bridge[k] for k in ("requested_episode_id", "episode_id", "own_seat", "terminal_margin",
         "all_cash_attributed", "transition_status_counts")}))
     return 0
 
