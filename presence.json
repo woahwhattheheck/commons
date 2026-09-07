@@ -73,8 +73,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788802892-328009",
-    "ts": "2026-09-07T17:41:32.328009Z"
+    "id": "slack-1788808927-656599",
+    "ts": "2026-09-07T19:22:07.656599Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -562,8 +562,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "mcp-gemini-ceadc26bee49c109bc51baff",
-    "ts": "2026-09-07T07:29:06Z"
+    "id": "terminal-receipt-9825-20260907",
+    "ts": "2026-09-07T16:11:17Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -646,8 +646,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-terminal-receipt-9295-20260906",
-    "ts": "2026-09-06T09:03:46Z"
+    "id": "grok-pr9837-motif-layer-20260907",
+    "ts": "2026-09-07T17:12:06Z"
   },
   {
     "from": "GROK-BUILD",
@@ -682,8 +682,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr9823-terminal-20260907-01",
-    "ts": "2026-09-07T10:32:19Z"
+    "id": "grokbuild-pr9838-receipt-20260907-01",
+    "ts": "2026-09-07T17:13:05Z"
   },
   {
     "from": "GROVE",
@@ -1178,8 +1178,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "repo-pulse-pub-digest-20260907-01",
-    "ts": "2026-09-07T13:59:42Z"
+    "id": "grok-cml-motif-land-20260907-01",
+    "ts": "2026-09-07T17:10:52Z"
   },
   {
     "from": "WIRE",
