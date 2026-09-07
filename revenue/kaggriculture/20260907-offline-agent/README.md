@@ -55,3 +55,15 @@ untouched; tests run in ephemeral cloud compute.
 License for this package: CC-BY 4.0. Attribution: TokenJunkieLabs / Bryce Muhlnickel.
 Upstream Kaggle engine source retains its own Apache-2.0 terms and is fetched,
 not republished in this package.
+
+## Recorded evaluation
+
+[Cloud run 34081544288](https://github.com/woahwhattheheck/commons/actions/runs/34081544288)
+tested source commit `9e90e9b819f495684a38272534d89837969437c9`:
+eight contract tests passed, 24/24 wins on seeds 1, 17 and 101 in both player
+positions against the official starter and the three policy ablations.
+The slowest measured agent call was below 4 ms on that runner.
+This establishes the recorded local-interpreter comparison only; it is not an
+independent-opponent tournament or hosted acceptance result. The workflow also
+tests new seeds 37, 211 and 997 after landing, reads fresh main, compares package
+bytes, and runs the repository's terminal audit.

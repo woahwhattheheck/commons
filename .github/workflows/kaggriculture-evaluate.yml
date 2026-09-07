@@ -41,3 +41,35 @@ jobs:
             ${{ runner.temp }}/submission/main.py
             ${{ runner.temp }}/evaluation.json
           retention-days: 30
+
+  current-main-readback:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 100
+          sparse-checkout: |
+            revenue/kaggriculture/20260907-offline-agent
+            .github/scripts
+      - name: Test freshly read current main
+        working-directory: revenue/kaggriculture/20260907-offline-agent
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m unittest -v test_agent.py
+          python evaluate.py --seeds 37,211,997 --output "$RUNNER_TEMP/current-main-evaluation.json"
+      - name: Landed ancestry and exact source readback
+        env:
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: |
+          git fetch --filter=blob:none --depth=100 origin main
+          git diff --exit-code HEAD origin/main -- revenue/kaggriculture/20260907-offline-agent
+          python .github/scripts/audit_git_terminal.py --target-ref origin/main --expected-commit "$EXPECTED_COMMIT" --required-path revenue/kaggriculture/20260907-offline-agent/main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kaggriculture-current-main-evaluation
+          path: ${{ runner.temp }}/current-main-evaluation.json
+          retention-days: 30
