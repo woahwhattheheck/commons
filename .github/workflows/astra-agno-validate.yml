@@ -1,0 +1,111 @@
+name: astra-agno-validate
+on:
+  push:
+    branches: [ops/astra-agno-validate-20260907]
+    paths: [.github/workflows/astra-agno-validate.yml]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover exact approved patch and pinned upstream
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agno-result
+          python - <<'PY'
+          import base64, gzip, hashlib
+          from pathlib import Path
+          raw = gzip.decompress(base64.b64decode(Path('p/astra-agno-publish-20260907/agno-user-memory.patch.gz.b64').read_text()))
+          digest = hashlib.sha256(raw).hexdigest()
+          assert digest == 'e054c8e9f84be41d231803a7a830ea73a0980108c7aed5149b14967e5af5d495', digest
+          Path('/tmp/agno-result/original.patch').write_bytes(raw)
+          Path('/tmp/agno-result/original.sha256').write_text(digest + '\n')
+          PY
+          git init /tmp/agno-repo
+          git -C /tmp/agno-repo remote add origin https://github.com/moorcheh-ai/memanto.git
+          git -C /tmp/agno-repo fetch --depth=1 origin 06615f09c536336e629e34589dc125495cba3109
+          git -C /tmp/agno-repo checkout --detach FETCH_HEAD
+          git -C /tmp/agno-repo rev-parse HEAD > /tmp/agno-result/base.txt
+          git -C /tmp/agno-repo apply --check /tmp/agno-result/original.patch
+          git -C /tmp/agno-repo apply /tmp/agno-result/original.patch
+      - name: Install declared runtime and test dependencies
+        working-directory: /tmp/agno-repo
+        run: |
+          set -euo pipefail
+          python -m pip install -e '.[all]' -r examples/migrations/agno-user-memory/requirements-source.txt > /tmp/agno-result/install.log 2>&1
+          python -m pip freeze > /tmp/agno-result/dependencies.txt
+          python --version > /tmp/agno-result/python.txt
+      - name: Execute SDK integration, loader round trip, upstream OKF tests and style
+        working-directory: /tmp/agno-repo
+        run: |
+          python - <<'PY'
+          import json, os, subprocess, sys
+          from pathlib import Path
+          out = Path('/tmp/agno-result')
+          example = 'examples/migrations/agno-user-memory'
+          results = {}
+          def run(name, command, seconds=120):
+              try:
+                  p = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=seconds)
+                  (out / (name + '.log')).write_text(p.stdout)
+                  results[name] = {'command': command, 'returncode': p.returncode}
+              except subprocess.TimeoutExpired as e:
+                  text = e.stdout or b''
+                  if isinstance(text, bytes): text = text.decode('utf-8', 'replace')
+                  (out / (name + '.log')).write_text(text + '\nTIMEOUT\n')
+                  results[name] = {'command': command, 'returncode': None, 'timeout': seconds}
+              (out / 'results.json').write_text(json.dumps(results, indent=2))
+          run('original-style', [sys.executable, '-m', 'ruff', 'check', example])
+          run('original-format', [sys.executable, '-m', 'ruff', 'format', '--check', example])
+          run('style-autofix', [sys.executable, '-m', 'ruff', 'check', '--fix', example])
+          run('format', [sys.executable, '-m', 'ruff', 'format', example])
+          run('offline', [sys.executable, '-m', 'pytest', '-q', example + '/tests/test_convert.py'])
+          run('agno-sdk', [sys.executable, '-m', 'pytest', '-q', example + '/tests/test_agno.py'])
+          run('memanto-roundtrip', [sys.executable, '-m', 'pytest', '-q', example + '/tests/test_memanto.py'])
+          run('upstream-okf', [sys.executable, '-m', 'pytest', '-q', 'tests/test_okf.py'], 180)
+          run('final-style', [sys.executable, '-m', 'ruff', 'check', example])
+          run('final-format', [sys.executable, '-m', 'ruff', 'format', '--check', example])
+          run('compile', [sys.executable, '-m', 'compileall', '-q', example])
+          run('whitespace', ['git', 'diff', '--check'])
+          subprocess.run(['git', 'add', example], check=True)
+          (out / 'final.patch').write_bytes(subprocess.check_output(['git', 'diff', '--cached', '--binary']))
+          subprocess.run(['cp', '-a', example, str(out / 'agno-user-memory')], check=True)
+          for cache in (out / 'agno-user-memory').rglob('__pycache__'):
+              import shutil
+              shutil.rmtree(cache)
+          print(json.dumps(results, indent=2))
+          PY
+      - name: Render public contributor onboarding without authentication
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir -p /tmp/agno-result
+          python -m pip install playwright > /tmp/agno-result/browser-install.log 2>&1
+          python -m playwright install chromium >> /tmp/agno-result/browser-install.log 2>&1
+          python - <<'PY'
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page()
+              page.goto('https://memanto.ai/contributor-onboard', wait_until='networkidle', timeout=60000)
+              Path('/tmp/agno-result/onboarding.txt').write_text(page.inner_text('body'))
+              Path('/tmp/agno-result/onboarding-links.txt').write_text('\n'.join(page.locator('a').evaluate_all('(xs) => xs.map(x => x.href)')))
+              page.screenshot(path='/tmp/agno-result/onboarding.png', full_page=True)
+              browser.close()
+          PY
+      - name: Preserve execution evidence and exact final source
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-agno-validation
+          path: /tmp/agno-result/
+          retention-days: 7
