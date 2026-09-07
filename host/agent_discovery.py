@@ -221,12 +221,12 @@ def generate(root: Path = ROOT) -> None:
     for relative, content in projections(load_registry(root / "agent-discovery.json")).items():
         path = root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
+        path.write_bytes(content.encode("utf-8"))
 
 
 def check(root: Path = ROOT) -> list[str]:
     expected = projections(load_registry(root / "agent-discovery.json"))
-    return [relative for relative, content in expected.items() if not (root / relative).is_file() or (root / relative).read_text(encoding="utf-8") != content]
+    return [relative for relative, content in expected.items() if not (root / relative).is_file() or (root / relative).read_bytes() != content.encode("utf-8")]
 
 
 def main() -> int:
