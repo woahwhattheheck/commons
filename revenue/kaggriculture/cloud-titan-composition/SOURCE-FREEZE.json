@@ -1,11 +1,18 @@
 {
-  "upstream": {
-    "base": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
-    "carrot": "8329e78768906dc6e75ca3712e1690adc1ab2148",
-    "cap": "d39b989f842db7c51d06396998b0ccaea09cc305",
-    "sell": "9f89a2cd75c5c89198caa1617a9e399900553ce3",
-    "flora": "46482481f5cec7fb1aa5165e89520f2240a0286b"
-  },
+  "utc": "2026-09-07T19:18:31.219704+00:00",
+  "selected_arm": "carrot_cap_sell_conserved",
+  "control_arms": [
+    "baseline",
+    "sell",
+    "carrot_sell"
+  ],
+  "held_seeds": [
+    9780101,
+    9780119
+  ],
+  "held_status": "not run at freeze",
+  "held_games": 32,
+  "gate": "No source tuning after held. Retain development-selected composition only if its held W/T/L is not worse than frozen SELL; otherwise retain the frozen working SELL control. Report individual paired flips and margin diagnostics.",
   "files": {
     "analyze.py": "db48eb4ce2d131f99c97ab87718215008b6aedc1b22ff69e2030c91fd7141aa0",
     "arms/baseline.py": "21ee146f14c202a0984d50a7535163f5de0485f6a3405aaa92fa3cc651c77196",
@@ -19,13 +26,11 @@
     "arms/flora.py": "9afb66e6cc424e52f53fa26e8940e3989d3454d404da249838c946ad03a14397",
     "arms/sell.py": "401ad5051a5100875b029eec5ec75bce77b385b8906e3172230d564512179178",
     "benchmark.py": "c5ecd4356f7e611fc1b438d7bdcdfa50bc8d162b201af95d9d864a446d02799f",
-    "build.py": "262fbf7da93bbbbb20db8986273fa902f91b257227fe40a10288198a1dd778e0",
+    "build.py": "e550205db04cd5a1e7c334df3ccccd6c242d5cc4bedcc09fc038272158b09313",
     "conserved_sell_adapter.py": "0df166b296b0f24e04620ae14c34031a5201c082da677f2c22005ce9d9d3ae4f",
     "controller.py": "0b4de0527624353585cebc90efe4e0b677b7d419abbd7c245d927a968e0eaed8",
     "dated_sell_adapter.py": "6242305f0259a47a0f3ebf95c006a53eef72a3cc9cd28f57d1c85dae22b49148",
-    "development-entrypoint.py": "345921ab449141dd5caf2b48d8bbfefe6c5bc0c27f66b8eedbfa693c0f2e0307",
-    "freeze/build.py": "e550205db04cd5a1e7c334df3ccccd6c242d5cc4bedcc09fc038272158b09313",
-    "main.py": "fa79f45cd761463adb54865b0d06d1fa8f900f96db0f9895a662f2f69b1cdab4",
+    "main.py": "345921ab449141dd5caf2b48d8bbfefe6c5bc0c27f66b8eedbfa693c0f2e0307",
     "sell_adapter.py": "81fc6050460efe4e943148abce7d60192690eb9a997c32c86d3156ffe7f80bc4",
     "test_composition.py": "6fade7816428c8c9687c161b658292c0858d0b569f38ba9e4050f7bf3929e5fe",
     "vendor/base/arlene.py": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
