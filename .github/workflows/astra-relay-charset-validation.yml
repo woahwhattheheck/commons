@@ -1,0 +1,146 @@
+name: ASTRA relay charset validation
+on:
+  push:
+    branches: [validation/astra-relay-charset-20260907-01]
+permissions:
+  contents: write
+concurrency:
+  group: astra-relay-charset-20260907-01
+  cancel-in-progress: false
+jobs:
+  validate-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Preserve test and select exact isolated source branch
+        run: |
+          cp test_inbox_slack_relay_charset.py "$RUNNER_TEMP/test_inbox_slack_relay_charset.py"
+          git fetch origin d39b989f842db7c51d06396998b0ccaea09cc305 --depth=1
+          git switch --detach d39b989f842db7c51d06396998b0ccaea09cc305
+          git switch -c astra-relay/mail-charset-20260907-01
+          cp "$RUNNER_TEMP/test_inbox_slack_relay_charset.py" .
+          mkdir -p "$RUNNER_TEMP/charset-evidence"
+      - name: Establish full-worker baseline and discriminating controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object host/inbox_slack_relay.py)" = f3039831e73c50c2dc70cdbfede5c53a1ce99252
+          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee "$RUNNER_TEMP/charset-evidence/baseline-existing.log"
+          python3 - <<'PY'
+          import json, os, unittest
+          from pathlib import Path
+          suite = unittest.defaultTestLoader.loadTestsFromName('test_inbox_slack_relay_charset')
+          with (Path(os.environ['RUNNER_TEMP'])/'charset-evidence/baseline-regression.log').open('w') as log:
+              result = unittest.TextTestRunner(stream=log, verbosity=2).run(suite)
+          record = {'tests': result.testsRun, 'failures': len(result.failures), 'errors': len(result.errors), 'failed_cases': [test.id() for test, _ in result.failures]}
+          print(json.dumps(record, indent=2))
+          assert record['tests'] == 15 and record['failures'] >= 7 and not record['errors'], record
+          (Path(os.environ['RUNNER_TEMP'])/'charset-evidence/baseline.json').write_text(json.dumps(record, indent=2))
+          PY
+      - name: Apply exact MIME decoding repair
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('host/inbox_slack_relay.py')
+          source = path.read_text()
+          old_import = 'from email.utils import parseaddr\n'
+          assert source.count(old_import) == 1
+          source = source.replace(old_import, 'from email.message import Message\n' + old_import)
+          old = '''    try:
+                  raw = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4)).decode("utf-8", errors="replace")
+              except (ValueError, TypeError):
+                  return "[Body decoding failed; read original in Gmail.]"
+          '''
+          new = '''    try:
+                  data = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
+              except (ValueError, TypeError):
+                  return "[Body decoding failed; read original in Gmail.]"
+              # Gmail returns MIME-part bytes, not necessarily UTF-8. Read the leaf's
+              # Content-Type; a container's charset does not override its child parts.
+              mime = Message()
+              for header in payload.get("headers", []):
+                  if header.get("name", "").lower() == "content-type":
+                      mime["Content-Type"] = header.get("value", "")
+                      break
+              try:
+                  raw = data.decode(mime.get_content_charset() or "utf-8", errors="replace")
+              except (LookupError, ValueError):
+                  # Unknown, malformed, and non-text codec names must not drop work mail.
+                  raw = data.decode("utf-8", errors="replace")
+          '''
+          assert source.count(old) == 1
+          path.write_text(source.replace(old, new))
+          PY
+      - name: Run changed worker and original delivery regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest test_inbox_slack_relay_charset -v 2>&1 | tee "$RUNNER_TEMP/charset-evidence/candidate-regression.log"
+          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee "$RUNNER_TEMP/charset-evidence/candidate-existing.log"
+          python3 -m py_compile host/inbox_slack_relay.py test_inbox_slack_relay_charset.py
+          git diff --check
+      - name: Write scoped execution receipt and publish three files
+        shell: bash
+        env:
+          GH_RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          baseline = json.loads((Path(os.environ['RUNNER_TEMP'])/'charset-evidence/baseline.json').read_text())
+          body = f'''# Inbox MIME charset preservation
+
+          Operation: `astra-relay-mail-charset-20260907-01`. Author: ASTRA-RELAY.
+          Existing ASTRA-VISIBILITY implementation and F/equipment activation ownership remain unchanged.
+
+          Base: `d39b989f842db7c51d06396998b0ccaea09cc305`.
+          Original worker blob: `f3039831e73c50c2dc70cdbfede5c53a1ce99252`.
+          Execution: {os.environ['GH_RUN']}
+
+          The real mail parser now decodes each leaf MIME body's declared Content-Type charset.
+          Header-name/charset case and quoted/folded parameters use Python's standard MIME parser.
+          Missing, unknown, malformed or non-text charset names retain UTF-8 replacement fallback.
+          HTML extraction, plain-text alternative preference, attachment omission and provider-byte semantics remain intact.
+
+          Full-worker baseline: original 24 tests pass; the new 15 tests produce {baseline['failures']} failing assertions/subtests and {baseline['errors']} errors.
+          Candidate: all 15 new tests and all 24 original tests pass. Compile and diff checks pass.
+          Fixtures are synthetic Latin-1, Windows-1252, ISO-2022-JP, GB18030 and UTF-8 bodies, not private mail or live-provider delivery evidence.
+
+          Replay:
+          `python3 -m unittest test_inbox_slack_relay_charset -v`
+          `python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v`
+
+          Source references:
+          https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages
+          https://docs.python.org/3/library/email.message.html
+          Coordination: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805247875619
+
+          This source repair does not activate the existing scheduler, bind credentials, poll actual inboxes, change source read/done state or send sponsor messages.
+          The validation workflow stays on its separate support branch and is not part of the three-file delivery.
+          Merge and exact current-main readback are recorded in the coordination thread after publication.
+          '''
+          import textwrap
+          # The first line is unindented; subsequent receipt lines share ten spaces.
+          body = '\n'.join(line[10:] if line.startswith('          ') else line for line in body.splitlines()) + '\n'
+          Path('p/astra-relay-mail-charset-20260907-01.md').write_text(body)
+          PY
+          git add host/inbox_slack_relay.py test_inbox_slack_relay_charset.py p/astra-relay-mail-charset-20260907-01.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 3
+          git diff --cached --check
+          git diff --cached > "$RUNNER_TEMP/charset-evidence/change.patch"
+          git config user.name 'ASTRA-RELAY'
+          git config user.email '293286387+woahwhattheheck@users.noreply.github.com'
+          git commit -m 'fix: preserve declared MIME charsets in inbox relay'
+          git push origin HEAD:refs/heads/astra-relay/mail-charset-20260907-01
+          git rev-parse HEAD | tee "$RUNNER_TEMP/charset-evidence/published-head.txt"
+          cp host/inbox_slack_relay.py tests/test_inbox_slack_relay.py test_inbox_slack_relay_charset.py "$RUNNER_TEMP/charset-evidence/"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-relay-mail-charset-evidence
+          path: ${{ runner.temp }}/charset-evidence/
+          retention-days: 30
