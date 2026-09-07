@@ -25,7 +25,8 @@ class BackupJSONWriteTests(unittest.TestCase):
             with self.subTest(payload=payload):
                 path = self.root / f"manifest-{index}.json"
                 repo_backup._write_exclusive_json(path, payload)
-                expected = (json.dumps(payload, indent=2, sort_keys=True) + "\n").encode("utf-8")
+                # Preserve the existing native text-mode newlines from os.open.
+                expected = (json.dumps(payload, indent=2, sort_keys=True) + "\n").replace("\n", os.linesep).encode("utf-8")
                 self.assertEqual(path.read_bytes(), expected)
                 self.assertEqual(json.loads(path.read_text(encoding="utf-8")), payload)
 
@@ -52,7 +53,7 @@ class BackupJSONWriteTests(unittest.TestCase):
                         repo_backup._write_exclusive_json(path, payload)
                 self.assertGreater(write.call_count, 1)
                 sync.assert_called_once()
-                self.assertEqual(path.read_bytes(), expected)
+                self.assertEqual(path.read_bytes(), expected.replace(b"\n", os.linesep.encode("ascii")))
 
     def test_no_progress_raises_and_closes_without_fsync(self) -> None:
         path = self.root / "no-progress.json"
