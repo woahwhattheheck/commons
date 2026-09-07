@@ -7,12 +7,21 @@ on:
     paths:
       - ".github/workflows/titan-pinned-source-export.yml"
   workflow_dispatch:
+    inputs:
+      bundle:
+        description: Existing committed byte bundle to export
+        type: choice
+        default: parents
+        options:
+          - parents
+          - t13-replays
 
 permissions:
   contents: read
 
 jobs:
   export:
+    if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-transport]')) && inputs.bundle != 't13-replays' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -159,5 +168,71 @@ jobs:
         with:
           name: titan-pinned-source-pack-7f92f6c0
           path: ${{ runner.temp }}/titan-source-export/
+          if-no-files-found: error
+          retention-days: 7
+
+  export-t13-replays:
+    # A tagged workflow edit selects only this transport; ordinary push/manual
+    # parent-pack exports retain their existing behavior and frozen source.
+    if: ${{ (github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-transport]')) || inputs.bundle == 't13-replays' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 16a2d4a7675c7e27b97bedc00f8073690bf7a763
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-frontier-trace/results/t13-public-inputs/
+      - name: Export ROWAN's four committed replay inputs unchanged
+        shell: python
+        env:
+          SOURCE_REF: 16a2d4a7675c7e27b97bedc00f8073690bf7a763
+        run: |
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          expected = os.environ["SOURCE_REF"]
+          actual = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          if actual != expected:
+              raise SystemExit("checkout does not match the committed replay-input pin")
+          directory = "revenue/kaggriculture/cloud-frontier-trace/results/t13-public-inputs"
+          blobs = {
+              "106540665.raw.gz.b64": "76cea08b0f5c6556cb9392e1a3421c93b46b2028",
+              "106541578.raw.gz.b64": "bcce7ed879c50f51bfa6df394cf82334465dbe83",
+              "decode.py": "e32b9ae196ca311fa3d626381ee0828252971b9b",
+              "receipt.json": "ec6a6a0dadb8490dc105b3880b140817ec495b45",
+          }
+          out = Path(os.environ["RUNNER_TEMP"]) / "titan-t13-replay-export"
+          out.mkdir(parents=True, exist_ok=True)
+          files = {}
+          for name, expected_blob in blobs.items():
+              source_path = directory + "/" + name
+              data = subprocess.check_output(["git", "show", expected + ":" + source_path])
+              blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+              if blob != expected_blob:
+                  raise SystemExit("committed replay input blob mismatch: " + name)
+              (out / name).write_bytes(data)
+              files[name] = {"source_path": source_path, "git_blob": blob,
+                             "size_bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+          manifest = {
+              "schema": "titan.public-replay-transport.v1",
+              "source_commit": actual,
+              "workflow_run_id": os.environ["GITHUB_RUN_ID"],
+              "workflow_run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "files": files,
+              "consumer": "Verify manifest files; run python decode.py in their common directory. The existing decoder validates raw hashes, episode IDs and terminal cash.",
+              "limits": "Four already-published files copied unchanged. No Kaggle request, policy change, game, seed consumption, dependency install or parent-pack rebuild.",
+          }
+          (out / "TRANSPORT-MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps({"source_commit": actual, "files": files}))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-t13-public-replays-16a2d4a7
+          path: ${{ runner.temp }}/titan-t13-replay-export/
           if-no-files-found: error
           retention-days: 7
