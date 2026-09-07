@@ -208,7 +208,9 @@ class Providers:
                     "grant_type": "refresh_token", "client_id": grant["client_id"],
                     "client_secret": grant["client_secret"], "refresh_token": grant["refresh_token"]})
                 self.gmail_token = refreshed["access_token"]
-            except (KeyError, ValueError, RelayError):
+            except RelayError as exc:
+                raise RelayError("gmail_existing_grant_unavailable", retry_after=exc.retry_after) from None
+            except (KeyError, ValueError):
                 raise RelayError("gmail_existing_grant_unavailable") from None
         if self.gmail_token:
             return request_json("https://gmail.googleapis.com/gmail/v1/users/me/" + resource +
@@ -714,7 +716,15 @@ def main() -> int:
     try:
         with RunLock(args.state):
             config = json.loads(Path(args.config).read_text(encoding="utf-8"))
-            report = run(config, state, Providers())
+            try:
+                report = run(config, state, Providers())
+            except RelayError as exc:
+                # Initial Slack reads and final health writes are outside the
+                # source loop. Persist their cooldown before releasing the lock.
+                if exc.retry_after > 0:
+                    state.set("retry_after", max(float(state.get("retry_after", "0")),
+                                                 time.time() + exc.retry_after))
+                raise
     except RelayError as exc:
         report = {"observed_at": iso(), "status": "BLOCKED", "error": exc.code}
     except Exception:
