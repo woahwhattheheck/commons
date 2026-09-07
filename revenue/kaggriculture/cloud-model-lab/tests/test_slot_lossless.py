@@ -10,6 +10,7 @@ repeated statements of the same fact, not any fact.
 Run: python -B tests/test_slot_lossless.py
 """
 
+import copy
 import os
 import sys
 
@@ -86,6 +87,29 @@ def main():
           "workers act in order" in text and "Sharing a tile is NOT a conflict" in text
           and "resolves for the FIRST only" not in text)
     check("DIG spares installed animals", "does NOT remove an installed animal" in text)
+
+    # These blocks were missing from the slot renderer while the verbose renderer had
+    # them, so a run that bought a cow was never shown how to install or feed it.
+    from constraints import engine as _eng
+    K = _eng()
+    obs2 = copy.deepcopy(obs)
+    obs2["private"]["shed"]["COW"] = 1
+    card2 = dict(card, observation=obs2)
+    adm2 = constraints.admissible(obs2, cfg, seat)
+    t2 = slots.render(card2, adm2, constraints.horizon(obs2, cfg, seat))
+    check("animals held in the shed show their install path",
+          "ANIMALS IN THE SHED" in t2 and "PICKUP" in t2 and "PLACE" in t2)
+    # and with an animal installed, the feeding state
+    x3, y3 = next((x, y) for y in range(len(obs2["farms"][seat]["tiles"]))
+                  for x in range(len(obs2["farms"][seat]["tiles"][0]))
+                  if obs2["farms"][seat]["tiles"][y][x] is None)
+    obs3 = copy.deepcopy(obs2)
+    obs3["farms"][seat]["tiles"][y3][x3] = K._new_animal("GOOSE", int(obs3["day"]))
+    card3 = dict(card, observation=obs3)
+    t3 = slots.render(card3, constraints.admissible(obs3, cfg, seat),
+                      constraints.horizon(obs3, cfg, seat))
+    check("installed animals show feeding state",
+          "FEEDING" in t3 and "WHEAT" in t3 and "NOT fed today" in t3)
 
     print()
     if FAIL:
