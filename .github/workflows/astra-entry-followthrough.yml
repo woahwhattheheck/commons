@@ -1,0 +1,70 @@
+name: astra-entry-followthrough
+on:
+  push:
+    branches: [ops/astra-directory-publish-20260907]
+    paths: [.github/workflows/astra-entry-followthrough.yml]
+permissions:
+  contents: read
+  checks: read
+  actions: read
+jobs:
+  followthrough:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Collect exact current source and completed CI annotations
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/astra-entry-followthrough/source
+          git rev-parse HEAD > /tmp/astra-entry-followthrough/main.txt
+          for p in AGENTS.md START.md start.html llms.txt llms_txt.py read_mesh.py hub_pages.py test_llms_commercial_rebake.py test_blink_llms_tip_shelf_199.py test_paid_opportunities.py; do
+            if test -f "$p"; then cp "$p" /tmp/astra-entry-followthrough/source/; fi
+          done
+          git grep -n 'start.html' -- '*.py' ':!p/**' > /tmp/astra-entry-followthrough/start-callers.txt || test "$?" = 1
+          gh api --paginate --slurp repos/woahwhattheheck/commons/check-runs/101624385668/annotations > /tmp/astra-entry-followthrough/battery-annotations.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out = Path('/tmp/astra-entry-followthrough')
+          pages = json.loads((out/'battery-annotations.json').read_text())
+          messages = [{'path':a.get('path'),'level':a.get('annotation_level'),'message':a.get('message','')[:1000]} for page in pages for a in page]
+          (out/'battery-summary.json').write_text(json.dumps(messages,indent=2)+'\n')
+          print('Completed battery annotations retained:',len(messages))
+          PY
+      - name: Measure the public directory assets without login or retries
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess,urllib.request,urllib.error
+          from datetime import datetime,timezone
+          from pathlib import Path
+          out=Path('/tmp/astra-entry-followthrough')
+          report={'observed_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),'sha':(out/'main.txt').read_text().strip(),'assets':[]}
+          for path in ['paid-opportunities.html','paid-opportunities.js']:
+              url='https://woahwhattheheck.github.io/commons/'+path
+              expected=Path(path).read_bytes()
+              row={'path':path,'url':url,'blob':subprocess.check_output(['git','rev-parse','HEAD:'+path],text=True).strip(),'source_sha256':hashlib.sha256(expected).hexdigest()}
+              try:
+                  req=urllib.request.Request(url,headers={'User-Agent':'Commons-directory-followthrough','Cache-Control':'no-cache'})
+                  with urllib.request.urlopen(req,timeout=30) as response:
+                      body=response.read(1000000)
+                      row.update(http_status=response.status,final_url=response.url,sha256=hashlib.sha256(body).hexdigest(),matches_source=body==expected)
+              except urllib.error.HTTPError as exc:
+                  row['http_status']=exc.code
+              except Exception as exc:
+                  row['error_type']=type(exc).__name__
+              report['assets'].append(row)
+          (out/'public-deployment.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-entry-followthrough
+          path: /tmp/astra-entry-followthrough/
+          retention-days: 7
