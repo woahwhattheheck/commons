@@ -64,11 +64,12 @@
   }
   function showToast(text) { clearTimeout(toastTimer); $('toast').textContent=text; $('toast').hidden=false; toastTimer=setTimeout(()=>$('toast').hidden=true,5500); }
   function navigate(view) {
-    if (!views.includes(view)) view='focus'; currentView=view;
+    if (!views.includes(view)) view='focus'; const changed=currentView!==view; currentView=view;
     views.forEach(v=>$('view-'+v).hidden=v!==view);
     document.querySelectorAll('[data-view]').forEach(n=>{ n.classList.toggle('active',n.dataset.view===view); if(n.dataset.view===view)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current'); });
     $('breadcrumb-view').textContent=view[0].toUpperCase()+view.slice(1);
     if(location.hash!=='#'+view) history.replaceState(null,'','#'+view);
+    if(changed)window.scrollTo({top:0,left:0,behavior:'instant'});
   }
   async function request(path, method='GET', data) {
     const controller=new AbortController(), timeout=setTimeout(()=>controller.abort(),45000);
@@ -112,23 +113,50 @@
     catch(e){$('tool-catalog-error').textContent='Tool catalog refresh failed: '+e.message+'. Previous catalog retained.';$('tool-catalog-error').hidden=false;}
     finally{$('reload-tools').disabled=false;}
   }
+  function sessionStats(records) {
+    const machines=records.filter(r=>r.kind==='machine'),sessions=records.filter(r=>r.kind!=='machine');
+    const active=sessions.filter(r=>/^(running|active|in_progress|inprogress|executing|busy)(?:_reported)?$/i.test(status(r).trim().replace(/[\s-]+/g,'_'))).length;
+    return {sessions:sessions.length,machines:machines.length,active};
+  }
+  function operationSummary(o) {
+    let summary=o.summary;
+    if(typeof summary==='string') {try {summary=JSON.parse(summary);} catch(_) {summary=null;}}
+    const s=summary&&typeof summary==='object'&&!Array.isArray(summary)?summary:{};
+    const outcome=status(o);
+    if(/^(failed|error|rejected)$/i.test(outcome)||s.provider_reported_error===true)return 'Operation reported a failure. Inspect the receipt for details.';
+    if(/^(cancelled|canceled)$/i.test(outcome))return 'Operation was cancelled.';
+    if(pending(outcome))return 'Completion is not established. Inspect the latest receipt before retrying.';
+    if(typeof o.summary==='string'&&!summary&&o.summary.trim()&&!/^[\[{]/.test(o.summary.trim()))return o.summary;
+    if(!/^(completed|complete|succeeded|success|done)$/i.test(outcome))return 'No completed outcome is recorded. Inspect the receipt for details.';
+    if(s.receipt_received===false||s.execution_complete===false)return 'A response was recorded; completion is not established by the receipt.';
+    if(typeof s.hidden==='boolean')return s.hidden?'Entry hidden from the default feed; the original is retained.':'Entry restored to the default feed.';
+    if(s.record_id) {
+      const names={focus:'Current objective saved.',sessions:'Session record saved.',budgets:'Budget observation saved.',runtimes:'Runtime route recorded.',janny:'Housekeeping responsibility saved.',feed:'Feed note saved.'};
+      return names[o.name]||'Record saved. Inspect the receipt for its ID.';
+    }
+    if(s.receipt_received===true&&s.execution_complete===true)return 'Execution completed; the runtime returned a receipt.';
+    return 'Operation reported success. Inspect the receipt for details.';
+  }
+  function routineRefresh(e) {
+    return e.kind==='source'&&e.source_status==='live'&&!e.error&&e.body==='Source observation refreshed.';
+  }
   function operationRows(records, limit) {
     if(!state)return [empty('Waiting for a successful state read.')]; if(!records.length)return [empty('No operation records returned. No execution is inferred.')];
     return records.slice(0,limit).map(o=>{const row=make('div','operation-row'),main=make('div','operation-main'),info=make('div','operation-info');
       info.append(make('strong','',first(o.name,o.summary,'Operation')),make('small','',str(o.operation_id||'ID unavailable')+' · '+time(o.started_at)));
-      main.append(make('span','operation-icon','↗'),info,badge(o.status));row.append(main);if(o.summary)row.append(make('p','operation-summary',o.summary));row.append(raw(o,'Inspect result and receipt'));return row;});
+      main.append(make('span','operation-icon','↗'),info,badge(o.status));row.append(main);row.append(make('p','operation-summary',operationSummary(o)));row.append(raw(o,'Inspect result and receipt'));return row;});
   }
   function attentionItems() {
     if(!state)return [];const items=[];
     arr(state.sources).filter(s=>s.error||/error|failed|offline|unavailable/i.test(status(s))).forEach(s=>items.push({title:'Source: '+label(s),body:str(s.error||status(s)),at:observed(s)}));
     arr(state.runtimes).filter(r=>r.error||/error|failed|offline|unavailable|degraded/i.test(status(r))).forEach(r=>items.push({title:'Runtime: '+label(r),body:str(r.error||status(r)),at:observed(r)}));
-    arr(state.operations).filter(o=>/failed|error|uncertain|unknown/i.test(status(o))).slice(0,5).forEach(o=>items.push({title:str(first(o.name,'Operation needs reconciliation')),body:str(first(o.summary,o.operation_id,status(o))),at:o.started_at}));
+    arr(state.operations).filter(o=>/failed|error|uncertain|unknown/i.test(status(o))).slice(0,5).forEach(o=>items.push({title:str(first(o.name,'Operation needs reconciliation')),body:operationSummary(o),at:o.started_at}));
     arr(state.feed).filter(e=>(!e.hidden||protectedEvent(e))&&/attention|decision|failure|error|incident/i.test(str(e.kind))).slice(0,5).forEach(e=>items.push({title:e.title,body:e.body,at:observed(e)}));return items;
   }
   function renderFocus() {
     const sessions=arr(state&&state.sessions),resources=arr(state&&state.resources),attention=attentionItems();
-    const active=sessions.filter(s=>/^(running|active|in_progress|inprogress|executing|busy)$/i.test(status(s))).length;
-    const stats=[['Active sessions',active,sessions.length+' recorded sessions','◈'],['Resources',resources.length,'Existing inventory records','▦'],['Tool routes',tools.length,'Exposed runtime schemas','⌘'],['Attention',attention.length,'Reported exceptions','◎']];
+    const counts=sessionStats(sessions);
+    const stats=[['Recorded sessions',counts.sessions,counts.active+' reported active · '+counts.machines+' '+(counts.machines===1?'machine':'machines'),'◈'],['Resources',resources.length,'Existing inventory records','▦'],['Tool routes',tools.length,'Exposed runtime schemas','⌘'],['Attention',attention.length,'Reported exceptions','◎']];
     replace('focus-stats',stats.map(([title,value,note,symbol],i)=>{const c=make('div','stat-card'+(i===3?' attention':'')),top=make('div','stat-top');top.append(make('span','',title),make('span','stat-symbol',symbol));c.append(top,make('div','stat-value',state?value:'—'),make('div','stat-note',state?note:'Observation unavailable'));return c;}));
     $('objective-text').textContent=state?str(first(state.focus&&state.focus.objective,'No current objective recorded.')):'Waiting for the operation state.';
     $('next-action-text').textContent=state?str(first(state.focus&&state.focus.next_action,'Set one concrete next action.')):'The current objective will appear after a successful sync.';
@@ -139,8 +167,8 @@
     replace('janny-summary',[p,make('p','janny-scope',str(first(j&&j.scope,'Catalog freshness, receipts, disposable artifacts, and reversible feed moderation. Original evidence and shared access remain intact.')))]);
   }
   function renderFleet() {
-    const sessions=arr(state&&state.sessions);$('session-count').textContent=state?sessions.length+' recorded':'Unknown';
-    replace('session-list',sessions.length?sessions.map(s=>{const c=recordCard(s,'session VM');c.className='panel session-card';c.append(meta([['Provider',s.provider],['CPU',s.cpu],['RAM',finite(s.ram_gib)?s.ram_gib+' GiB':null],['GPU',s.gpu],['Workspace',s.workspace]]));if(s.objective)c.append(make('div','session-objective',s.objective));if(sourceURL(s))c.append(link('Open existing session ↗',sourceURL(s),'button button-small button-quiet'));c.append(button('Update record',()=>sessionForm(s)));return c;}):[empty('No session records returned. Existing GPT/Claude VM capacity must be bound to its actual session and route.')]);
+    const sessions=arr(state&&state.sessions),counts=sessionStats(sessions);$('session-count').textContent=state?counts.sessions+' sessions · '+counts.machines+' '+(counts.machines===1?'machine':'machines')+' · activity is last reported':'Unknown';
+    replace('session-list',sessions.length?sessions.map(s=>{const c=recordCard(s,'session VM');c.className='panel session-card';c.append(meta([['Provider',s.provider],['CPU',s.cpu],['RAM',finite(s.ram_gib)?s.ram_gib.toLocaleString([], {maximumFractionDigits:2})+' GiB':null],['GPU',s.gpu],['Workspace',s.workspace]]));if(s.objective)c.append(make('div','session-objective',s.objective));if(sourceURL(s))c.append(link('Open existing session ↗',sourceURL(s),'button button-small button-quiet'));c.append(button('Update record',()=>sessionForm(s)));return c;}):[empty('No session records returned. Existing GPT/Claude VM capacity must be bound to its actual session and route.')]);
     const runtimes=arr(state&&state.runtimes);
     replace('runtime-list',runtimes.length?runtimes.map(r=>{const c=recordCard(r,'runtime');c.append(meta([['Gateway',r.gateway_url],['Schemas',arr(r.tools).length]]));if(r.error)c.append(make('p','source-error',r.error));c.append(button('Inspect tools →',()=>{ $('tool-search').value=str(r.id);renderTools();navigate('tools');}));return c;}):[empty('No runtime catalog returned. Account metadata alone does not make service operations callable here.')]);
   }
@@ -186,24 +214,36 @@
     }):[empty('No budget or quota observations returned. Missing values remain unknown; no cross-provider total is inferred.')]);
   }
   function protectedEvent(e){return /^(failure|error|incident|critical)$/i.test(str(e.kind));}
+  function feedCard(e) {
+    const c=make('article','panel feed-card'+(e.hidden?' is-hidden':'')),top=make('div','feed-card-top');top.append(badge(e.kind||'event'),make('h3','feed-title',e.title||e.id));if(e.hidden)top.append(badge(protectedEvent(e)?'Failure kept visible':'Hidden from default'));c.append(top);
+    if(e.hidden&&e.moderation)c.append(make('p','moderation-reason',str(first(e.moderation.reason,e.moderation,'Reason unavailable'))));
+    const original=make('details','feed-original');original.open=!e.hidden||protectedEvent(e);original.append(make('summary','','Original event'),make('p','feed-body',e.body||'No body returned.'),raw(e));c.append(original);
+    const foot=make('div','feed-footer'),left=make('div');left.append(make('span','small muted',time(observed(e))));if(sourceURL(e))left.append(link('Open source ↗',sourceURL(e)));left.append(link('Preserved event ↗','/api/event?event_id='+encodeURIComponent(e.id)));
+    foot.append(left);if(e.id&&(e.hidden||!protectedEvent(e)))foot.append(button(e.hidden?'Restore to default view':'Hide from default view',()=>moderationForm(e)));else if(protectedEvent(e))foot.append(make('span','small muted','Failures remain visible'));c.append(foot);return c;
+  }
   function renderFeed() {
-    const rows=arr(state&&state.feed),q=$('feed-search').value.toLowerCase(),show=$('show-hidden').checked;
+    const rows=arr(state&&state.feed),q=$('feed-search').value.trim().toLowerCase(),show=$('show-hidden').checked;
     const filtered=rows.filter(e=>(show||!e.hidden||protectedEvent(e))&&JSON.stringify(clean(e)).toLowerCase().includes(q));
-    $('feed-summary').textContent=state?filtered.length+' shown · '+rows.filter(e=>e.hidden).length+' marked hidden · originals retained':'Waiting for feed observations';
-    replace('feed-list',filtered.length?filtered.map(e=>{
-      const c=make('article','panel feed-card'+(e.hidden?' is-hidden':'')),top=make('div','feed-card-top');top.append(badge(e.kind||'event'),make('h3','feed-title',e.title||e.id));if(e.hidden)top.append(badge(protectedEvent(e)?'Failure kept visible':'Hidden from default'));c.append(top);
-      if(e.hidden&&e.moderation)c.append(make('p','moderation-reason',str(first(e.moderation.reason,e.moderation,'Reason unavailable'))));
-      const original=make('details','feed-original');original.open=!e.hidden||protectedEvent(e);original.append(make('summary','','Original event'),make('p','feed-body',e.body||'No body returned.'),raw(e));c.append(original);
-      const foot=make('div','feed-footer'),left=make('div');left.append(make('span','small muted',time(observed(e))));if(sourceURL(e))left.append(link('Open source ↗',sourceURL(e)));left.append(link('Preserved event ↗','/api/event?event_id='+encodeURIComponent(e.id)));
-      foot.append(left);if(e.id&&(e.hidden||!protectedEvent(e)))foot.append(button(e.hidden?'Restore to default view':'Hide from default view',()=>moderationForm(e)));else if(protectedEvent(e))foot.append(make('span','small muted','Failures remain visible'));c.append(foot);return c;
-    }):[empty('No matching feed entries. Hidden originals can be inspected with “Include hidden entries”.')]);
+    const grouped=!$('show-refreshes').checked&&!q;
+    const refreshes=grouped?filtered.filter(e=>routineRefresh(e)&&!e.hidden):[];
+    const updates=grouped?filtered.filter(e=>!routineRefresh(e)||e.hidden):filtered;
+    $('feed-summary').textContent=state?updates.length+' shown'+(refreshes.length?' · '+refreshes.length+' routine refreshes grouped':'')+' · '+rows.filter(e=>e.hidden).length+' marked hidden · originals retained':'Waiting for feed observations';
+    const nodes=updates.map(feedCard);
+    if(refreshes.length) {
+      const group=make('details','panel refresh-group');
+      group.open=!!$('routine-refreshes')?.open;group.id='routine-refreshes';
+      group.append(make('summary','',refreshes.length+' routine source refreshes · latest '+time(observed(refreshes[0]))));
+      const originals=make('div','feed-list');originals.append(...refreshes.map(feedCard));group.append(originals);nodes.push(group);
+    }
+    replace('feed-list',nodes.length?nodes:[empty('No matching feed entries. Try a broader search or include hidden entries.')]);
   }
   function renderSources() {
     replace('source-list',arr(state&&state.sources).length?state.sources.map(s=>{const c=make('article','source-card'),top=make('div','card-top');top.append(make('h3','',label(s)),badge(status(s)));c.append(top,meta([['Path',s.path],['Version',s.sha],['Observed',time(observed(s))]]));if(s.error)c.append(make('p','source-error',s.error));if(sourceURL(s))c.append(link('Open original source ↗',sourceURL(s)));c.append(raw(s,'Inspect source envelope'));return c;}):[empty('No source observations have been read.')]);
   }
   function render() {
     renderFocus();renderFleet();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();renderSources();
-    $('nav-fleet').textContent=arr(state.sessions).length;$('nav-resources').textContent=arr(state.resources).length;$('nav-tools').textContent=tools.length;$('nav-feed').textContent=arr(state.feed).filter(e=>!e.hidden||protectedEvent(e)).length;
+    $('nav-fleet').textContent=arr(state.sessions).length;$('nav-resources').textContent=arr(state.resources).length;$('nav-tools').textContent=tools.length;$('nav-feed').textContent=arr(state.feed).filter(e=>(!e.hidden||protectedEvent(e))&&!routineRefresh(e)).length;
+    $('nav-feed').title='Updates; routine source refreshes are grouped in Feed.';
     $('footer-sources').textContent=arr(state.sources).length+' source observations · '+arr(state.sources).filter(s=>s.error).length+' reporting errors';connectionState();
   }
   function observationTime(key){const a=attempts[key];return a&&pending(a.status)&&a.observed_at?a.observed_at:new Date().toISOString();}
@@ -257,7 +297,7 @@
   document.querySelectorAll('[data-view]').forEach(n=>n.addEventListener('click',()=>navigate(n.dataset.view)));window.addEventListener('hashchange',()=>navigate(location.hash.slice(1)));
   $('refresh-button').addEventListener('click',()=>refresh(true));$('reload-tools').addEventListener('click',reloadTools);
   ['edit-focus','focus-edit-inline'].forEach(x=>$(x).addEventListener('click',focusForm));$('add-session').addEventListener('click',()=>sessionForm());$('add-budget').addEventListener('click',budgetForm);$('assign-janny').addEventListener('click',jannyForm);
-  $('resource-search').addEventListener('input',renderResources);$('resource-kind').addEventListener('change',renderResources);$('tool-search').addEventListener('input',renderTools);$('feed-search').addEventListener('input',renderFeed);$('show-hidden').addEventListener('change',renderFeed);
+  $('resource-search').addEventListener('input',renderResources);$('resource-kind').addEventListener('change',renderResources);$('tool-search').addEventListener('input',renderTools);$('feed-search').addEventListener('input',renderFeed);$('show-hidden').addEventListener('change',renderFeed);$('show-refreshes').addEventListener('change',renderFeed);
   ['vault-references','vault-sealed'].forEach((id,i)=>$(id).addEventListener('click',()=>{const t=tools.find(t=>t.name===(i?'credential_retrieve_sealed':'credential_references'));if(t){$('tool-search').value='';chooseTool(t);navigate('tools');}}));
   ['source-button','resources-source-button'].forEach(id=>$(id).addEventListener('click',()=>{$('source-dialog').showModal();renderSources();}));$('close-sources').addEventListener('click',()=>$('source-dialog').close());
   ['close-dialog','cancel-dialog'].forEach(id=>$(id).addEventListener('click',()=>$('form-dialog').close()));
