@@ -1,0 +1,28 @@
+name: command-center
+on:
+  push:
+    branches: [main, 'codex/command-center-*']
+    paths: ['integrations/command_center/**', 'integrations/shared_equipment/services.py', '.github/workflows/command-center.yml']
+  pull_request:
+    paths: ['integrations/command_center/**', 'integrations/shared_equipment/services.py', '.github/workflows/command-center.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: command-center-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            integrations/command_center
+            integrations/shared_equipment
+          sparse-checkout-cone-mode: true
+      - name: Shared state, operation journal, and HTTP contracts
+        run: python3 -m unittest integrations.command_center.test_core integrations.command_center.test_server -v
+      - name: Browser source syntax
+        run: node --check integrations/command_center/web/app.js
