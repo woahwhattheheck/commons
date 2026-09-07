@@ -97,3 +97,26 @@ def farm_contract(observation, configuration):
     return [dict(x=x,y=y,**harvest_contract(tile,step,tpd,end))
         for y,row in enumerate(farm['tiles']) for x,tile in enumerate(row)
         if isinstance(tile,dict) and (tile.get('kind')=='PLANT' or 'animal' in tile)]
+
+
+def fertilizer_contract(tile, step, turns_per_day=24, episode_steps=720):
+    """Next uncovered ongoing-crop event for FLORA's fertilizer routing.
+
+    Returns None after final realizable event, for nonongoing crops, or when all
+    remaining events are already covered. Coverage is checked on refresh's care
+    day, not the following availability day. Caller supplies water and capacity.
+    """
+    if tile.get('kind')!='PLANT': return None
+    day=step//turns_per_day
+    for event in production_events(tile,step,turns_per_day,episode_steps):
+        if event['fertilizer_already_covers']: continue
+        first,last=event['fertilizer_application_days']
+        return {'product':event['product'],'event_available_step':event['available_step'],
+                'care_day':event['care_day'],'earliest_application_day':max(day,first),
+                'latest_application_step':event['refresh_step'],
+                'apply_today_covers_event':first<=day<=last,
+                'days_until_window':max(0,first-day),
+                'requires_water_on_care_day':True,
+                'held_capacity':event['held_capacity'],
+                'bonus_units_upper_bound':1}
+    return None

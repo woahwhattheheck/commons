@@ -1,6 +1,6 @@
 # Public frontier trace
 
-Checkpoint: reusable fetcher and interpreter-backed transition analyzer. Actual episode 106392861 analysis is pending replay retrieval. No winning-policy findings or improvement claims are made by this checkpoint.
+Public episode106392861 is downloaded and analyzed: all719 transitions reconcile; terminal139044/106987 is confirmed. See OBSERVATIONS.md and results/106392861/. Reusable fetcher, analyzer and timing contracts are implemented; six focused tests pass. No candidate-improvement claim is made.
 
 From repository root:
 
@@ -32,3 +32,5 @@ Assigned additive interface: production-event timing and harvest deadlines. FLOR
 Concrete source-derived implications: a day-zero strawberry has four base production opportunities available on days 10,12,14,16, not indefinitely. To double the first event, water on day9 and apply fertilizer during days7–9 (inclusive). Held capacity can erase the bonus without intervening harvesting. Day20 strawberries first yield on day30, beyond this 720-frame episode's last action718. These are interpreter rules, not claims about the leader's choices. Future survival and output remain conditional; future prices and net returns are deliberately not guessed.
 
 Five distinct focused tests now pass: actual interpreter strawberry refresh agreement; terminal/decay/maturity timing; held capacity and animal-care semantics; recorded buy/sell/hire transitions with zero cash residual and corrupted-state detection; missing private inventory. No candidate game or leader replay result is implied. Rule tables derive from the pinned upstream source; no upstream license terms are changed.
+
+`fertilizer_contract(tile, step, ...)` selects the next uncovered realizable ongoing-crop event using the correct refresh day. `summarize.py TRACE --output DIR` generates a compact economic summary, daily cash, exact per-unit cash ledger and compressed full trace. Historical checkpoint notes above retain their original pending status; the current completed replay result supersedes those statuses.
