@@ -28,10 +28,9 @@ PARAMS = {
     "WOOL": (200, 105, "log", .2, "sq", 3.2),
     "FERTILIZER": (100, 200, "linear", .4, "linear", .4),
 }
-# Keep marginal land/labor demand below the costly outer-herd regime.
-# Paired unseen-seed comparison and original incumbent: see ECONOMICS.md.
-POLICY = {"animal_cap": 28, "max_hands": 10, "crop_cap": 6,
-          "forecast_days": 8, "care": True, "mixed": True, "expansion": True}
+POLICY = {"animal_cap": 36, "max_hands": 11, "crop_cap": 6,
+          "forecast_days": 8, "care": True, "mixed": True, "expansion": True,
+          "marginal_economics": True, "same_tile_bonus": 1.15}
 
 
 def distance(a, b):
@@ -134,6 +133,44 @@ def agent(obs, configuration=None):
         feed = max(prices["WHEAT"], future_prices["WHEAT"])
         # Feed/fertilizer also occur during maturation. Allow realistic worker cost.
         roi = productive_days * daily + remaining_days * (fert - feed - 9) - cost
+        if policy.get("marginal_economics"):
+            # Price each remaining day, including maturation and market saturation.
+            # Account for the new animal's price impact on the existing herd.
+            own_rate = sum((1 + ANIMALS[a["animal"]][3]) / ANIMALS[a["animal"]][3]
+                           for _, _, a in animals if ANIMALS[a["animal"]][5] == product)
+            own_fert = len(animals)
+            eligible = [(x,y) for x,y in spots if tiles[y][x] is None]
+            route = min((min(distance(p,d) for d in depot) for p in eligible), default=4)
+            # A marginal animal needs feed/care/collection and a shared depot route.
+            workload = 5.5 + route * .8
+            current_work = len(animals)*5.5 + len(plants)*2 + pending*6
+            old_hands = min(policy["max_hands"], max(3, math.ceil(current_work/18)))
+            new_hands = min(policy["max_hands"], max(3, math.ceil((current_work+workload)/18)))
+            def wages(n):
+                a,b,total=1,1,0
+                for _ in range(n):
+                    total += a
+                    a,b=b,a+b
+                return total
+            marginal_wage = max(4.0 + route, wages(new_hands)-wages(old_hands))
+            roi = -cost - (1000 * 2**(len(farm["unlocked_quadrants"])-1)/12
+                           if not eligible and len(spots)<size*size else 0)
+            for elapsed in range(1, math.ceil(remaining_days)+1):
+                fraction = min(1., remaining_days-elapsed+1)
+                maturity = elapsed > first
+                sold = max(0, elapsed-first)*rate
+                base_inventory = market["inventory"][product] + (production[product]-demand[product])*elapsed
+                before_price = price(product, base_inventory, market)
+                after_price = price(product, base_inventory+sold, market)
+                baseline_fert = market["inventory"]["FERTILIZER"]+production["FERTILIZER"]*elapsed
+                fert_before = price("FERTILIZER",baseline_fert,market)
+                fert_after = price("FERTILIZER",baseline_fert+elapsed,market)
+                feed_price = price("WHEAT",market["inventory"]["WHEAT"]-demand["WHEAT"]*elapsed,market)
+                # Marginal contribution, not the misleading new animal's gross revenue.
+                value = (rate*after_price if maturity else 0)
+                value += own_rate*(after_price-before_price) + fert_after
+                value += own_fert*(fert_after-fert_before)
+                roi += fraction*(value-feed_price-marginal_wage)
         if roi > best_roi:
             best_roi, affordable_animal = roi, animal
 
@@ -219,7 +256,7 @@ def agent(obs, configuration=None):
                 return
             if d >= turns-hour: return
             score = value / (1 + d * .65)
-            if target == tuple(pos): score *= 1.15
+            if target == tuple(pos): score *= policy.get("same_tile_bonus", 1.15)
             candidates.append((score, -d, target, action, key))
 
         # An animal already carried is capital in transit: finish its installation.

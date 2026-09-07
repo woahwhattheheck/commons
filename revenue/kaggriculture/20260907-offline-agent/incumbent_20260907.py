@@ -28,9 +28,7 @@ PARAMS = {
     "WOOL": (200, 105, "log", .2, "sq", 3.2),
     "FERTILIZER": (100, 200, "linear", .4, "linear", .4),
 }
-# Keep marginal land/labor demand below the costly outer-herd regime.
-# Paired unseen-seed comparison and original incumbent: see ECONOMICS.md.
-POLICY = {"animal_cap": 28, "max_hands": 10, "crop_cap": 6,
+POLICY = {"animal_cap": 36, "max_hands": 11, "crop_cap": 6,
           "forecast_days": 8, "care": True, "mixed": True, "expansion": True}
 
 

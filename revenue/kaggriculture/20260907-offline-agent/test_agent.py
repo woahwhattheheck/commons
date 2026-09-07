@@ -1,5 +1,6 @@
 """Offline contract regressions: no dependencies or external accounts."""
 import copy
+import os
 import importlib.util
 import unittest
 from pathlib import Path
@@ -11,7 +12,7 @@ class AgentTests(unittest.TestCase):
     def setUpClass(cls):
         cls.temp=tempfile.TemporaryDirectory(prefix="kaggriculture-tests-")
         cls.engine,_=get_engine(cls.temp.name)
-        cls.path=Path(__file__).with_name("main.py")
+        cls.path=Path(os.environ.get("KAG_AGENT_PATH",str(Path(__file__).with_name("main.py"))))
     @classmethod
     def tearDownClass(cls): cls.temp.cleanup()
     def initial(self):
@@ -59,6 +60,25 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(result["status"],["DONE","DONE"])
         self.assertEqual(result["steps"],719)
         self.assertGreater(result["bank"][0],result["bank"][1])
+    def test_selected_candidate_matches_standalone_for_full_game(self):
+        if os.environ.get("KAG_AGENT_PATH"):
+            self.skipTest("Only applies to promoted standalone")
+        from compare import VARIANTS
+        actual=load_agent(self.path)
+        selected=load_agent(self.path.with_name("candidate.py"),VARIANTS["compact_capacity"])
+        def equivalent(obs,cfg):
+            chosen=actual(obs,cfg)
+            self.assertEqual(chosen,selected(copy.deepcopy(obs),cfg))
+            return chosen
+        result=play(self.engine,[equivalent,
+            load_agent(self.path.with_name("incumbent_20260907.py"))],919)
+        self.assertEqual(result["status"],["DONE","DONE"])
+    def test_original_incumbent_is_preserved_byte_for_byte(self):
+        import hashlib
+        self.assertEqual(hashlib.sha1(
+            b"blob "+str(len(self.path.with_name("incumbent_20260907.py").read_bytes())).encode()
+            + b"\0" + self.path.with_name("incumbent_20260907.py").read_bytes()
+        ).hexdigest(),"be6543695b89322e8d3f4cb96f010dc15f8030f1")
     def test_plant_and_water_are_separate_actions(self):
         obs=self.initial()
         obs.private["seeds"]["WHEAT"]=1
