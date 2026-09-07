@@ -50,10 +50,16 @@ class TransferTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             transfer.inspect_body(json.dumps(self.value).encode(), self.expected)
 
-    def test_missing_episode(self):
+    def test_missing_episode_is_external_binding(self):
         self.value["info"] = {}
-        with self.assertRaises(ValueError):
-            transfer.inspect_body(json.dumps(self.value).encode(), self.expected)
+        result = transfer.inspect_body(json.dumps(self.value).encode(), self.expected)
+        self.assertIsNone(result["embedded_episode_id"])
+        self.assertEqual(result["identity_binding"], "request_and_checkpoint")
+
+    def test_string_embedded_id(self):
+        self.value["info"]["EpisodeId"] = str(self.expected["episode_id"])
+        result = transfer.inspect_body(json.dumps(self.value).encode(), self.expected)
+        self.assertEqual(result["identity_binding"], "body_and_request")
 
     def test_incomplete_frames(self):
         self.value["steps"] = self.value["steps"][-1:]
