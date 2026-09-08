@@ -494,11 +494,12 @@ def fingerprint(spec):
 
 
 def write_report(path, report):
-    """Replace one complete UTF-8 snapshot; failed writes leave its predecessor."""
+    """Replace one UTF-8 snapshot, preserving primary errors (REPORT_ERRORS.md)."""
     path = Path(path)
     payload = json.dumps(report, indent=2, allow_nan=False) + "\n"
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = None
+    primary_error = None
     try:
         with tempfile.NamedTemporaryFile("w", encoding="utf-8", newline="\n",
                                          dir=path.parent, delete=False) as file:
@@ -507,9 +508,19 @@ def write_report(path, report):
             file.flush()
             os.fsync(file.fileno())
         os.replace(temporary, path)
+    except BaseException as exc:
+        primary_error = exc
+        raise
     finally:
         if temporary is not None:
-            temporary.unlink(missing_ok=True)
+            try:
+                temporary.unlink(missing_ok=True)
+            except OSError as cleanup_error:
+                if primary_error is None:
+                    raise
+                primary_error.add_note(
+                    "Temporary report cleanup failed: " + type(cleanup_error).__name__
+                    + "; the temporary file may remain.")
 
 
 def main():
