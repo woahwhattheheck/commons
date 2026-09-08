@@ -1,0 +1,62 @@
+name: Hemlock bridge diagnostic
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/hemlock-bridge-repro.yml'
+permissions:
+  contents: read
+jobs:
+  bridge-repro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Reproduce only the retained bridge test
+        shell: bash
+        run: |
+          mkdir -p hemlock-evidence
+          git rev-parse HEAD > hemlock-evidence/checkout-sha.txt
+          git hash-object test_grok_slack_bridge.py integrations/grok_slack/bridge.py > hemlock-evidence/source-blobs.txt
+          set +e
+          timeout 180 python3 test_grok_slack_bridge.py > hemlock-evidence/bridge-test.txt 2>&1
+          rc=$?
+          set -e
+          printf '%s\n' "$rc" > hemlock-evidence/exit-code.txt
+      - name: Package exact public source for isolated follow-up
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          import zipfile
+          files = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
+          with zipfile.ZipFile('hemlock-evidence/source.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+              for name in files:
+                  if not name:
+                      continue
+                  path = Path(name)
+                  selected = (
+                      (path.parent == Path('.') and path.suffix == '.py' and not path.name.startswith('test_'))
+                      or name == 'test_grok_slack_bridge.py'
+                      or name.startswith('integrations/grok_slack/')
+                      or name.startswith('integrations/grokcom_revenue/')
+                  )
+                  if selected and path.is_file() and not path.is_symlink():
+                      archive.write(path, name)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hemlock-bridge-repro-${{ github.run_id }}
+          path: hemlock-evidence/
+          retention-days: 3
+      - name: Preserve original test outcome
+        if: always()
+        shell: bash
+        run: |
+          test -f hemlock-evidence/exit-code.txt
+          test "$(cat hemlock-evidence/exit-code.txt)" = 0
