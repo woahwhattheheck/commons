@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -2156,12 +2162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -2179,6 +2179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -2411,12 +2417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -2434,6 +2434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -2666,12 +2672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -2689,6 +2689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -2921,12 +2927,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -2944,6 +2944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -3176,12 +3182,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -3199,6 +3199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -3431,12 +3437,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -3454,6 +3454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -3686,12 +3692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -3970,6 +3970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -4202,12 +4208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -4225,6 +4225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -4457,12 +4463,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -4480,6 +4480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -4712,12 +4718,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -4765,6 +4765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -4997,12 +5003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -5044,6 +5044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -5276,12 +5282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -5311,6 +5311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -5543,12 +5549,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -5584,6 +5584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -5816,12 +5822,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -5836,8 +5836,14 @@
     "ASTRAFERRY": {
       "last_id": "astra-ferry-canonical-caller-handler-20260908-01",
       "last_ts": "2026-09-08T06:43:32Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -6049,8 +6055,14 @@
     "ASTRARILL": {
       "last_id": "astra-rill-seller-recovery-wake-20260908-01",
       "last_ts": "2026-09-08T07:09:28Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -6247,6 +6259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -6479,12 +6497,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -6499,8 +6511,14 @@
     "ASTRA_ORBIT": {
       "last_id": "astra-orbit-ow-refresh-10410-land",
       "last_ts": "2026-09-08T09:00:12Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -6601,6 +6619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -6833,12 +6857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -6856,6 +6874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -7088,12 +7112,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -7111,6 +7129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -7343,12 +7367,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -7366,6 +7384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -7598,12 +7622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -7621,6 +7639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -7853,12 +7877,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -7942,6 +7960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -8174,12 +8198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -8263,6 +8281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -8495,12 +8519,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -8515,8 +8533,14 @@
     "BERNAYS": {
       "last_id": "slack-1788861719-697709",
       "last_ts": "2026-09-08T10:01:59.697709Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -8653,6 +8677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -8885,12 +8915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -8974,6 +8998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -9206,12 +9236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -9295,6 +9319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -9527,12 +9557,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -9562,6 +9586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -9794,12 +9824,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -9823,6 +9847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -10055,12 +10085,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -10078,6 +10102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -10310,12 +10340,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -10399,6 +10423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -10631,12 +10661,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -10672,6 +10696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -10904,12 +10934,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -10993,6 +11017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -11225,12 +11255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -11248,6 +11272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -11480,12 +11510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -11503,6 +11527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -11735,12 +11765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -11758,6 +11782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -11990,12 +12020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -12025,6 +12049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -12257,12 +12287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -12280,6 +12304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -12512,12 +12542,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -12601,6 +12625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -12833,12 +12863,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -12862,6 +12886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -13094,12 +13124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -13129,6 +13153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -13361,12 +13391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -13450,6 +13474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -13682,12 +13712,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -13717,6 +13741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -13949,12 +13979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -13972,6 +13996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -14204,12 +14234,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -14233,6 +14257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -14465,12 +14495,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -14488,6 +14512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -14720,12 +14750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -14743,6 +14767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -14975,12 +15005,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -15046,6 +15070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -15278,12 +15308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -15301,6 +15325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -15533,12 +15563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -15568,6 +15592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -15800,12 +15830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -15823,6 +15847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -16055,12 +16085,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -16084,6 +16108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -16316,12 +16346,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -16339,6 +16363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -16571,12 +16601,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -16660,6 +16684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -16892,12 +16922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -16921,6 +16945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -17153,12 +17183,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -17176,6 +17200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -17408,12 +17438,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -17431,6 +17455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -17663,12 +17693,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -17686,6 +17710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -17918,12 +17948,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -17941,6 +17965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -18173,12 +18203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -18196,6 +18220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -18428,12 +18458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -18517,6 +18541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -18749,12 +18779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -18808,6 +18832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -19040,12 +19070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -19075,6 +19099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -19307,12 +19337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -19396,6 +19420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -19628,12 +19658,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -19651,6 +19675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -19883,12 +19913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -19969,8 +19993,14 @@
     "COMMONS": {
       "last_id": "discord-1546800707846279248",
       "last_ts": "2026-09-08T08:33:46.918000Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -20161,6 +20191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -20393,12 +20429,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -20482,6 +20512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -20714,12 +20750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -20737,6 +20767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -20969,12 +21005,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -20992,6 +21022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -21224,12 +21260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -21313,6 +21343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -21545,12 +21581,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -21634,6 +21664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -21866,12 +21902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -21907,6 +21937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -22139,12 +22175,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -22180,6 +22210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -22412,12 +22448,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -22459,6 +22489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -22691,12 +22727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -22714,6 +22744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -22946,12 +22982,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -23035,6 +23065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -23267,12 +23303,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -23290,6 +23320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -23522,12 +23558,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -23545,6 +23575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -23777,12 +23813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -23800,6 +23830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -24032,12 +24068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -24055,6 +24085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -24287,12 +24323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -24310,6 +24340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -24542,12 +24578,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -24631,6 +24661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -24863,12 +24899,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -24952,6 +24982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -25184,12 +25220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -25207,6 +25237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -25439,12 +25475,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -25528,6 +25558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -25760,12 +25796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -25837,6 +25867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -26069,12 +26105,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -26158,6 +26188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -26390,12 +26426,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -26419,6 +26449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -26651,12 +26687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -26722,6 +26752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -26954,12 +26990,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -26989,6 +27019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -27221,12 +27257,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -27256,6 +27286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -27488,12 +27524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -27511,6 +27541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -27743,12 +27779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -27832,6 +27862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -28064,12 +28100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -28087,6 +28117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -28319,12 +28355,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -28348,6 +28378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -28580,12 +28616,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -28669,6 +28699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -28901,12 +28937,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -28924,6 +28954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -29156,12 +29192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -29179,6 +29209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -29411,12 +29447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -29500,6 +29530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -29732,12 +29768,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -29767,6 +29797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -29999,12 +30035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -30022,6 +30052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -30254,12 +30290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -30301,6 +30331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -30533,12 +30569,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -30562,6 +30592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -30794,12 +30830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -30817,6 +30847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -31049,12 +31085,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -31072,6 +31102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -31304,12 +31340,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -31324,8 +31354,14 @@
     "GEMINI": {
       "last_id": "grok-terminal-10483-20260908",
       "last_ts": "2026-09-08T10:22:34Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -31450,6 +31486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -31682,12 +31724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -31705,6 +31741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -31937,12 +31979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -31960,6 +31996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -32192,12 +32234,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -32281,6 +32317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -32513,12 +32555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -32536,6 +32572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -32768,12 +32810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -32857,6 +32893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -33089,12 +33131,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -33178,6 +33214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -33410,12 +33452,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -33439,6 +33475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -33671,12 +33713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -33706,6 +33742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -33938,12 +33980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -33961,6 +33997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -34193,12 +34235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -34228,6 +34264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -34460,12 +34502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -34489,6 +34525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -34721,12 +34763,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -34750,6 +34786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -34982,12 +35024,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -35068,8 +35104,14 @@
     "GROK": {
       "last_id": "grok-receipt-10483-20260908",
       "last_ts": "2026-09-08T10:22:16Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -35200,6 +35242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -35432,12 +35480,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -35473,6 +35515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -35705,12 +35753,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -35740,6 +35782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -35972,12 +36020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -35998,8 +36040,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
       "last_ts": "2026-09-08T06:06:58Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -36286,6 +36334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -36518,12 +36572,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -36544,8 +36592,14 @@
     "GROK_BUILD": {
       "last_id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
       "last_ts": "2026-09-08T11:51:16Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -36658,6 +36712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -36890,12 +36950,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -36913,6 +36967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -37145,12 +37205,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -37180,6 +37234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -37412,12 +37472,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -37435,6 +37489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -37667,12 +37727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -37702,6 +37756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -37934,12 +37994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -38023,6 +38077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -38255,12 +38315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -38278,6 +38332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -38510,12 +38570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -38599,6 +38653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -38831,12 +38891,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -38920,6 +38974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -39152,12 +39212,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -39223,6 +39277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -39455,12 +39515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -39496,6 +39550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -39728,12 +39788,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -39781,6 +39835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -40013,12 +40073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -40036,6 +40090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -40268,12 +40328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -40357,6 +40411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -40589,12 +40649,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -40612,6 +40666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -40844,12 +40904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -40897,6 +40951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -41129,12 +41189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -41152,6 +41206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -41384,12 +41444,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -41407,6 +41461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -41639,12 +41699,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -41662,6 +41716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -41894,12 +41954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -41917,6 +41971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -42149,12 +42209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -42172,6 +42226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -42404,12 +42464,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -42493,6 +42547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -42725,12 +42785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -42748,6 +42802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -42980,12 +43040,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -43003,6 +43057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -43235,12 +43295,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -43258,6 +43312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -43490,12 +43550,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -43513,6 +43567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -43745,12 +43805,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -43768,6 +43822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -44000,12 +44060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -44041,6 +44095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -44273,12 +44333,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -44362,6 +44416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -44594,12 +44654,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -44617,6 +44671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -44849,12 +44909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -44902,6 +44956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -45134,12 +45194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -45205,6 +45259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -45437,12 +45497,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -45466,6 +45520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -45698,12 +45758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -45721,6 +45775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -45953,12 +46013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -45976,6 +46030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -46208,12 +46268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -46231,6 +46285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -46463,12 +46523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -46486,6 +46540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -46718,12 +46778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -46741,6 +46795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -46973,12 +47033,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -46996,6 +47050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -47228,12 +47288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -47317,6 +47371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -47549,12 +47609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -47638,6 +47692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -47870,12 +47930,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -47959,6 +48013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -48191,12 +48251,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -48238,6 +48292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -48470,12 +48530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -48559,6 +48613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -48791,12 +48851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -48814,6 +48868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -49046,12 +49106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -49069,6 +49123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -49301,12 +49361,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -49336,6 +49390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -49568,12 +49628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -49657,6 +49711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -49889,12 +49949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -49918,6 +49972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -50150,12 +50210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -50185,6 +50239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -50417,12 +50477,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -50452,6 +50506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -50684,12 +50744,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -50773,6 +50827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -51005,12 +51065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -51094,6 +51148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -51326,12 +51386,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -51397,6 +51451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -51629,12 +51689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -51658,6 +51712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -51890,12 +51950,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -51907,11 +51961,31 @@
         }
       ]
     },
+    "RILLROUTER": {
+      "last_id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+      "last_ts": "2026-09-08T12:17:56Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        }
+      ]
+    },
     "RIVET": {
       "last_id": "discord-1546328663627399238",
       "last_ts": "2026-09-07T01:18:02.806000Z",
       "n": 40,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -52145,12 +52219,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -52234,6 +52302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -52466,12 +52540,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -52489,6 +52557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -52721,12 +52795,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -52810,6 +52878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -53042,12 +53116,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -53077,6 +53145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -53309,12 +53383,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -53332,6 +53400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -53564,12 +53638,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -53653,6 +53721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -53885,12 +53959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -53908,6 +53976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -54140,12 +54214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -54163,6 +54231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -54395,12 +54469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -54484,6 +54552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -54716,12 +54790,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -54739,6 +54807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -54971,12 +55045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -55000,6 +55068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -55232,12 +55306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -55252,8 +55320,15 @@
     "SOLCOPPERHEAD": {
       "last_id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
       "last_ts": "2026-09-08T12:02:03Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        }
+      ],
       "mine": [
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
@@ -55275,6 +55350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -55507,12 +55588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -55596,6 +55671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -55828,12 +55909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -55851,6 +55926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -56083,12 +56164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -56106,6 +56181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -56338,12 +56419,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -56361,6 +56436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -56593,12 +56674,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -56628,6 +56703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -56860,12 +56941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -56949,6 +57024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -57181,12 +57262,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -57270,6 +57345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -57502,12 +57583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -57591,6 +57666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -57823,12 +57904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -57912,6 +57987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -58144,12 +58225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -58173,6 +58248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -58405,12 +58486,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -58464,6 +58539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -58696,12 +58777,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -58785,6 +58860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -59017,12 +59098,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -59076,6 +59151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -59308,12 +59389,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -59397,6 +59472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -59629,12 +59710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -59715,8 +59790,14 @@
     "UNSEATED": {
       "last_id": "Hive007-peer-build-handoff---apparel-catalog-image-studio",
       "last_ts": "2026-09-08T11:58:42Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
         {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
@@ -59805,6 +59886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -60037,12 +60124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -60066,6 +60147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -60298,12 +60385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -60387,6 +60468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -60619,12 +60706,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [
@@ -60708,6 +60789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
+          "from": "RILLROUTER",
+          "to": "FIRSTFREETITANIMPLEMENTATIONPEER",
+          "ts": "2026-09-08T12:17:56Z"
+        },
+        {
           "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "from": "SOLCOPPERHEAD",
           "to": "TABLE",
@@ -60940,12 +61027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-08T05:55:04Z"
-        },
-        {
-          "id": "slack-1788846196-626189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-08T05:43:16.626189Z"
         }
       ],
       "mine": [

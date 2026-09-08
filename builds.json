@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 5,
+ "n_open_prs": 6,
  "open_prs": [
-  {
-   "number": 10687,
-   "author": "woahwhattheheck",
-   "title": "fix(grok-slack): reject nonpositive chunk limits",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10687",
-   "base_freshness": {
-    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "13aa7901eb4090ac0cb414e2d91e081b336ecb2b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 10580,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10580",
    "base_freshness": {
     "base_sha": "12621cf42edefe85aa298d3929d3d1166325a0ad",
-    "main_sha": "13aa7901eb4090ac0cb414e2d91e081b336ecb2b",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10690",
    "base_freshness": {
     "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "13aa7901eb4090ac0cb414e2d91e081b336ecb2b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10691,
-   "author": "woahwhattheheck",
-   "title": "Add bounded viewport backfill tool",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10691",
-   "base_freshness": {
-    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "13aa7901eb4090ac0cb414e2d91e081b336ecb2b",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +391,55 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10688",
    "base_freshness": {
     "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "13aa7901eb4090ac0cb414e2d91e081b336ecb2b",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10687,
+   "author": "woahwhattheheck",
+   "title": "fix(grok-slack): reject nonpositive chunk limits",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10687",
+   "base_freshness": {
+    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10692,
+   "author": "woahwhattheheck",
+   "title": "Hive003: reject overflowing numeric project inputs (fresh-main rebase)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10692",
+   "base_freshness": {
+    "base_sha": "b246d5c91beba330dfa3097fd1b9500b91ecfdb4",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10691,
+   "author": "woahwhattheheck",
+   "title": "Add bounded viewport backfill tool",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10691",
+   "base_freshness": {
+    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
