@@ -72,13 +72,17 @@ def _parse_rows(rows: Sequence[Mapping[str, str]]) -> tuple[list[Node], list[Edg
                 f"row {row_number}: id must be consecutive from 0; expected {expected_id}, got {actual_id}"
             )
 
-        dataset = (row.get("dataset") or "").strip()
+        dataset = row.get("dataset") or ""
+        if dataset != dataset.strip():
+            raise SubmissionError(f"row {row_number}: dataset must not contain leading or trailing whitespace")
         if not dataset:
             raise SubmissionError(f"row {row_number}: dataset must be non-empty")
         if dataset.endswith(".zarr"):
             raise SubmissionError(f"row {row_number}: dataset must omit the .zarr suffix")
 
-        row_type = (row.get("row_type") or "").strip()
+        row_type = row.get("row_type") or ""
+        if row_type != row_type.strip():
+            raise SubmissionError(f"row {row_number}: row_type must not contain leading or trailing whitespace")
         if row_type == "node":
             node_id = _as_int(row, "node_id", row_number)
             t = _as_int(row, "t", row_number)
