@@ -1,0 +1,100 @@
+name: astra-sequoia-marketing-sales-diagnostic
+on:
+  push:
+    branches:
+      - astra/sequoia-marketing-sales-diagnostic-20260908-02
+    paths:
+      - .github/workflows/astra-sequoia-marketing-sales-diagnostic.yml
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 12621cf42edefe85aa298d3929d3d1166325a0ad
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /host/marketing_sales.py
+            /test_marketing_sales.py
+            /test_marketing_sales_input_shapes.py
+            /revenue/marketing_sales/
+            /revenue/production_survival/qualified_prospects_20260830.json
+            /revenue/production_survival/outreach_log_20260830.json
+            /revenue/reply_to_revenue/funnel.json
+      - name: Validate existing public inputs and export exact sources
+        shell: python
+        env:
+          SOURCE_REF: 12621cf42edefe85aa298d3929d3d1166325a0ad
+        run: |
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          expected = os.environ["SOURCE_REF"]
+          actual = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          if actual != expected:
+              raise SystemExit("source checkout differs from pin")
+          paths = [
+              "host/marketing_sales.py",
+              "test_marketing_sales.py",
+              "test_marketing_sales_input_shapes.py",
+              "revenue/marketing_sales/discovery_queries.json",
+              "revenue/marketing_sales/operating_contract.json",
+              "revenue/marketing_sales/account_universe.json",
+              "revenue/marketing_sales/pipeline.json",
+              "revenue/production_survival/qualified_prospects_20260830.json",
+              "revenue/production_survival/outreach_log_20260830.json",
+              "revenue/reply_to_revenue/funnel.json",
+          ]
+          out = Path(os.environ["RUNNER_TEMP"]) / "marketing-sales-diagnostic"
+          out.mkdir(parents=True, exist_ok=True)
+          source_tar = out / "sources.tar"
+          subprocess.run([
+              "git", "archive", "--format=tar", "--output=" + str(source_tar),
+              expected, "--", *paths,
+          ], check=True)
+          files = {}
+          for path in paths:
+              data = subprocess.check_output(["git", "show", expected + ":" + path])
+              files[path] = {
+                  "size_bytes": len(data),
+                  "sha256": hashlib.sha256(data).hexdigest(),
+                  "git_blob": hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest(),
+              }
+          results = []
+          for name, command in (
+              ("validate", [sys.executable, "host/marketing_sales.py", "validate"]),
+              ("tests", [sys.executable, "-m", "unittest", "-v", "test_marketing_sales", "test_marketing_sales_input_shapes"]),
+          ):
+              result = subprocess.run(command, capture_output=True, text=True, timeout=60)
+              (out / (name + ".stdout.log")).write_text(result.stdout, encoding="utf-8")
+              (out / (name + ".stderr.log")).write_text(result.stderr, encoding="utf-8")
+              print(name, "exit", result.returncode, flush=True)
+              print(result.stdout, end="", flush=True)
+              print(result.stderr, end="", flush=True)
+              results.append({"name": name, "command": command, "exit_code": result.returncode})
+          manifest = {
+              "source_commit": actual,
+              "workflow_run_id": os.environ["GITHUB_RUN_ID"],
+              "files": files,
+              "archive_sha256": hashlib.sha256(source_tar.read_bytes()).hexdigest(),
+              "results": results,
+              "scope": "Existing public repository inputs only; no discovery, provider calls, outreach, source edits or full battery.",
+          }
+          (out / "MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+          if any(result["exit_code"] for result in results):
+              raise SystemExit(1)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: marketing-sales-diagnostic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/marketing-sales-diagnostic
+          if-no-files-found: error
+          retention-days: 7
