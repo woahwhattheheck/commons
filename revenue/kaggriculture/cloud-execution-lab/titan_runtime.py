@@ -129,8 +129,12 @@ class TitanAgent:
         post['farms'][int(obs['player'])], post['private'] = pair
         return post
 
-    def act(self, observation, configuration=None):
-        started = time.perf_counter()
+    def act(self, observation, configuration=None, *, entry_started=None):
+        invoked = time.perf_counter()
+        # The canonical entrypoint shares its start clock with this same timer.
+        # A supplied future timestamp must never extend the configured budget.
+        started = invoked if entry_started is None else min(invoked,float(entry_started))
+        cpu_started = time.process_time()
         cfg = dict(configuration or {})
         obs = dict(observation)
         obs['step'] = int(obs['step']) if obs.get('step') is not None else int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])
@@ -139,10 +143,15 @@ class TitanAgent:
                     else deadline.legal_pass(obs))
         self.selected = None
         self.post = None
-        self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0}
+        self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0,
+                            'entrypoint_prelude_seconds': invoked-started}
         stage = 'cold_start'
         seconds = self.features.budget_seconds-self.features.reserve_seconds-(time.perf_counter()-started)
-        timer = deadline._DeadlineTimer(max(0.000001, seconds))
+        if seconds <= 0:
+            self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',
+                elapsed_seconds=time.perf_counter()-started,act_cpu_seconds=time.process_time()-cpu_started)
+            return fallback
+        timer = deadline._DeadlineTimer(seconds)
         try:
             with timer:
                 if not self.ready:
@@ -170,7 +179,8 @@ class TitanAgent:
                         deadline=started+self.features.budget_seconds-self.features.reserve_seconds)
                     self.history.remember(obs,cfg,output,self.post)
                     self.diagnostics['history'] = self.history.diagnostics
-                self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started)
+                self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
+                                        act_cpu_seconds=time.process_time()-cpu_started)
                 return output
         except deadline.DeadlineExceeded as error:
             if error is not timer.expired:
@@ -185,8 +195,10 @@ class TitanAgent:
                     # Bind only the exact returned fallback and a completed
                     # current unit snapshot. Reserve time covers this copy.
                     self.history.remember(obs,cfg,fallback,self._selected_snapshot(obs))
+            output = deepcopy(fallback)
             self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,
-                                    elapsed_seconds=time.perf_counter()-started)
-            return deepcopy(fallback)
+                                    elapsed_seconds=time.perf_counter()-started,
+                                    act_cpu_seconds=time.process_time()-cpu_started)
+            return output
 
     __call__ = act

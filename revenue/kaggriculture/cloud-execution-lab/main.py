@@ -5,6 +5,8 @@ _INSTANCE = None
 
 def agent(observation, configuration=None):
     global _INSTANCE
+    import time
+    entry_started = time.perf_counter()
     from pathlib import Path
     import json
     import sys
@@ -21,4 +23,4 @@ def agent(observation, configuration=None):
         step = int(observation['day'])*int(cfg.get('turnsPerDay', 24))+int(observation['hour'])
     if _INSTANCE is None or int(step) == 0:
         _INSTANCE = TitanAgent(Features(**json.loads((root/'TITAN-CONFIG.json').read_text())))
-    return _INSTANCE.act(observation, cfg)
+    return _INSTANCE.act(observation, cfg, entry_started=entry_started)

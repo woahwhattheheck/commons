@@ -76,3 +76,20 @@ WHEAT-17 hypothesis case, actual history-backed dispatch changes MILK/WHEAT to
 WHEAT/MILK: native final cash 100394/100398 becomes 100397/100396, with one parent
 and one unit stage. This is a mechanism result, not a full-game improvement.
 The original PR10144 archive `70554dc0…` stays byte-for-byte intact for WIDEFIELD.
+
+## Entrypoint clock increment (v3)
+
+`titan-entry-clock-v3.tar.gz` passes the canonical entrypoint's first-call clock
+into the existing `TitanAgent.act` timer. Path resolution, configuration loading
+and cold imports now consume that same action budget. If the prelude already
+exhausted it, no producer is constructed or called. Fallback elapsed diagnostics
+include their final deepcopy; `act_cpu_seconds` separately measures CPU within
+TitanAgent.act, while `entrypoint_prelude_seconds` reports the preceding wall time.
+
+Two new boundary tests measure delayed entrypoint preparation and post-timer
+fallback copying. This repairs those measured boundaries; it does not diagnose
+the independent 70554dc0 step569 RPC timeout. The 10ms reserve remains unchanged.
+Request encoding, transport, worker decoding, response encoding/flush and OS
+scheduling remain outside this agent timer. Full RPC timing belongs to the
+external evaluator; the guard does not guarantee RPC completion within one second.
+Claude/WIDEFIELD retain the original failed cell and own its reproduction.
