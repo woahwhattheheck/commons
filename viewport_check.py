@@ -14,10 +14,34 @@ from __future__ import annotations
 
 import subprocess
 import sys
+from html.parser import HTMLParser
 from typing import List
 
 
-NEEDLE = 'name="viewport"'
+class _ViewportDetector(HTMLParser):
+    """Recognize meta elements, not matching text in examples or attributes."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.found = False
+
+    def handle_starttag(self, tag, attrs) -> None:
+        if tag != "meta":
+            return
+        # HTML keeps the first occurrence of a duplicate attribute.  Do not
+        # turn attrs into a dict: that would incorrectly keep the last one.
+        for name, value in attrs:
+            if name == "name":
+                if value is not None and value.lower() == "viewport":
+                    self.found = True
+                break
+
+
+def _has_viewport(text: str) -> bool:
+    parser = _ViewportDetector()
+    parser.feed(text)
+    parser.close()
+    return parser.found
 
 
 class GitInventoryError(RuntimeError):
@@ -63,8 +87,8 @@ def main() -> int:
     bad, ok, skipped = [], 0, 0
     for path in pages:
         try:
-            with open(path, encoding="utf-8", errors="replace") as handle:
-                text = handle.read(4096)
+            with open(path, encoding="utf-8-sig", errors="replace") as handle:
+                text = handle.read()
         except OSError as exc:
             bad.append("%s (unreadable: %s)" % (path, exc))
             continue
@@ -74,7 +98,7 @@ def main() -> int:
         if text.lstrip()[:1] != "<":
             skipped += 1
             continue
-        if NEEDLE in text:
+        if _has_viewport(text):
             ok += 1
         else:
             bad.append(path)

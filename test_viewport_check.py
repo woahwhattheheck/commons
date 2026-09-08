@@ -84,5 +84,95 @@ class ViewportCensusTests(unittest.TestCase):
             self.assertLess(len(done.stderr), 400)
 
 
+    def check_document(self, content, expected_code):
+        with self.new_repo() as tmp:
+            write(tmp, "page.html", content)
+            staged = run(["git", "add", "page.html"], tmp)
+            self.assertEqual(staged.returncode, 0, staged.stderr)
+            done = self.invoke(tmp)
+            self.assertEqual(done.returncode, expected_code, done.stdout + done.stderr)
+            self.assertIn("1 tracked HTML documents checked", done.stdout)
+            return done
+
+    def test_comment_is_not_a_viewport_element(self):
+        done = self.check_document(
+            '<!doctype html><!-- <meta name="viewport"> --><title>missing</title>', 1
+        )
+        self.assertIn("NO VIEWPORT: page.html", done.stdout)
+
+    def test_script_literal_is_not_a_viewport_element(self):
+        self.check_document(
+            """<!doctype html><script>const sample = '<meta name="viewport">';</script>""",
+            1,
+        )
+
+    def test_style_literal_is_not_a_viewport_element(self):
+        self.check_document(
+            """<!doctype html><style>.sample::after { content: 'name="viewport"'; }</style>""",
+            1,
+        )
+
+    def test_other_element_name_is_not_a_viewport_element(self):
+        self.check_document('<!doctype html><input name="viewport">', 1)
+
+    def test_meta_other_attribute_does_not_count_as_name(self):
+        self.check_document(
+            '<!doctype html><meta data-name="viewport" content="width=device-width">',
+            1,
+        )
+
+    def test_attribute_literal_is_not_a_viewport_element(self):
+        self.check_document(
+            """<!doctype html><div data-example='<meta name="viewport">'>example</div>""",
+            1,
+        )
+
+    def test_single_quoted_viewport_is_recognized(self):
+        self.check_document(
+            "<!doctype html><meta name='viewport' content='width=device-width'>", 0
+        )
+
+    def test_unquoted_viewport_is_recognized(self):
+        self.check_document('<!doctype html><meta name=viewport>', 0)
+
+    def test_case_and_attribute_spacing_are_recognized(self):
+        self.check_document(
+            '<!doctype html><META\nNAME = "VIEWPORT" CONTENT="width=device-width">', 0
+        )
+
+    def test_viewport_after_long_comment_is_recognized(self):
+        self.check_document(
+            '<!doctype html><!--' + 'x' * 8192 + '-->'
+            '<meta name="viewport" content="width=device-width">', 0
+        )
+
+    def test_utf8_bom_does_not_hide_missing_viewport(self):
+        self.check_document('\ufeff' + MISSING, 1)
+
+    def test_utf8_bom_does_not_skip_valid_document(self):
+        self.check_document('\ufeff' + VIEWPORT, 0)
+
+    def test_duplicate_name_attribute_uses_first_value(self):
+        self.check_document('<!doctype html><meta name="other" name="viewport">', 1)
+        self.check_document('<!doctype html><meta name="viewport" name="other">', 0)
+
+    def test_real_viewport_after_decoys_is_recognized(self):
+        self.check_document(
+            '<!doctype html><!-- <meta name="viewport"> -->'
+            """<script>const example = '<meta name="viewport">';</script>"""
+            '<meta name="viewport" content="width=device-width">', 0
+        )
+
+    def test_unreadable_tracked_document_is_not_silently_skipped(self):
+        with self.new_repo() as tmp:
+            write(tmp, "missing.html", VIEWPORT)
+            run(["git", "add", "missing.html"], tmp)
+            Path(tmp, "missing.html").unlink()
+            done = self.invoke(tmp)
+            self.assertEqual(done.returncode, 1, done.stdout + done.stderr)
+            self.assertIn("NO VIEWPORT: missing.html (unreadable:", done.stdout)
+            self.assertIn("1 tracked HTML documents checked", done.stdout)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
