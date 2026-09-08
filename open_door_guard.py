@@ -45,12 +45,21 @@ SKIP_FILES.add("open_door_guard_core.py")
 
 
 def _code_without_literals(text: str) -> str:
-    """Return Python source with strings/comments blanked but code tokens retained."""
+    """Return available Python code tokens with strings/comments blanked.
+
+    A partial added line can end before its unchanged continuation. Keep tokens
+    emitted before that expected EOF so an executable gate identifier already
+    present on the added line cannot inherit the truncation exemption.
+    """
     tokens = []
-    for token in tokenize.generate_tokens(io.StringIO(text).readline):
-        if token.type in (tokenize.STRING, tokenize.COMMENT):
-            token = tokenize.TokenInfo(token.type, " ", token.start, token.end, token.line)
-        tokens.append(token)
+    generator = tokenize.generate_tokens(io.StringIO(text).readline)
+    try:
+        for token in generator:
+            if token.type in (tokenize.STRING, tokenize.COMMENT):
+                token = tokenize.TokenInfo(token.type, " ", token.start, token.end, token.line)
+            tokens.append(token)
+    except (IndentationError, tokenize.TokenError):
+        pass
     return tokenize.untokenize(tokens)
 
 
@@ -127,7 +136,9 @@ def _negative_assertion_indexes(path: str, lines: Sequence[AddedLine]) -> set[in
                 hidden.update(range(start, end + 1))
             break
         if not parsed and not _top_level_semicolon(line.text):
-            hidden.add(start)
+            code = _code_without_literals(line.text)
+            if not any(rule.pattern.search(code) for rule in LINE_RULES):
+                hidden.add(start)
     return hidden
 
 

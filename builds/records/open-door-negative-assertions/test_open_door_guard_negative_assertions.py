@@ -76,6 +76,16 @@ class ScopeTests(unittest.TestCase):
             'assert "permission denied" not in source.lower() or REQUIRE_IDENTITY()',
         ))
 
+    def test_assert_quoted_negative_or_gate_without_method_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py',
+            'assert "permission denied" not in source or REQUIRE_IDENTITY()',
+        ))
+
+    def test_incomplete_assertion_with_gate_tail_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py', 'self.assertFalse(flag) or REQUIRE_IDENTITY('))
+
     def test_chained_assertion_gate_call_is_scanned(self):
         self.assertIn('gate-identifier', self.rules(
             'test_policy.py', 'self.assertFalse(flag).REQUIRE_IDENTITY()'))

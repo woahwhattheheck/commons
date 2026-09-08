@@ -46,12 +46,13 @@ selection remain unchanged. No admission rule was removed or added.
 
 ## Executed checks
 
-`test_open_door_guard_negative_assertions.py` runs twenty-five direct unified-diff
+`test_open_door_guard_negative_assertions.py` runs twenty-seven direct unified-diff
 cases through the actual scanner module.
 
-- Wrapper: 25 passed, 0 failures, 0 errors.
-- Exact prior scanner: 13 passed, 12 failures, 0 errors.
-- The twelve prior failures cover semicolon/boolean tails, gate calls embedded in
+- Wrapper: 27 passed, 0 failures, 0 errors.
+- Exact prior scanner: 13 passed, 14 failures, 0 errors.
+- The fourteen prior failures cover semicolon/boolean tails, complete and
+  incomplete gate calls embedded in
   `assert` and assertion-call expressions, a walrus expression, a structural
   schema tail, and the multiline negative-quote false positive.
 - Python compilation passes for the wrapper, unchanged core, and focused test.
