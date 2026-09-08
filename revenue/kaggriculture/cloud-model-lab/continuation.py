@@ -27,12 +27,19 @@ import cards as cards_mod
 from constraints import engine
 
 
+def _file_agent_identity(spec, real, fn_name, digest):
+    return {"spec": spec, "kind": "file", "path": real, "function": fn_name,
+            "sha256": digest,
+            "label": f"{os.path.basename(real)}::{fn_name}@{(digest or '?')[:12]}"}
+
+
 def agent_identity(spec):
     """Resolved absolute path and content hash for a policy spec.
 
     Every peer candidate in this project is a file called main.py or candidate.py, so
     a basename label makes lean20, Euler and dispatch indistinguishable in a result.
-    The identity records what was actually loaded.
+    This standalone lookup describes the current file. load_agent builds its
+    returned identity from the same captured bytes it executes.
     """
     if "::" not in spec:
         return {"spec": spec, "kind": "builtin", "path": None, "sha256": None,
@@ -40,27 +47,32 @@ def agent_identity(spec):
     path, fn_name = spec.split("::", 1)
     real = os.path.realpath(path)
     try:
-        digest = hashlib.sha256(open(real, "rb").read()).hexdigest()
+        with open(real, "rb") as source_file:
+            digest = hashlib.sha256(source_file.read()).hexdigest()
     except OSError:
         digest = None
-    return {"spec": spec, "kind": "file", "path": real, "function": fn_name,
-            "sha256": digest,
-            "label": f"{os.path.basename(real)}::{fn_name}@{(digest or '?')[:12]}"}
+    return _file_agent_identity(spec, real, fn_name, digest)
 
 
 def load_agent(spec):
     """A SEPARATE instantiation each time, so no state leaks between runs."""
-    ident = agent_identity(spec)
     if "::" not in spec:
         K = engine()
         fn = {"starter": K.starter_agent, "random": K.random_agent,
               "pass": K.pass_agent}[spec]
-        return (lambda obs, cfg=None: fn(obs)), ident
+        return (lambda obs, cfg=None: fn(obs)), agent_identity(spec)
     path, fn_name = spec.split("::", 1)
+    real = os.path.realpath(path)
+    with open(real, "rb") as source_file:
+        source = source_file.read()
+    ident = _file_agent_identity(
+        spec, real, fn_name, hashlib.sha256(source).hexdigest())
     sp = importlib.util.spec_from_file_location(
         f"cont_{abs(hash(path + fn_name))}", path)
     mod = importlib.util.module_from_spec(sp)
-    sp.loader.exec_module(mod)
+    # Execute the bytes named by the receipt. A loader may reuse stale bytecode
+    # or reread a file changed since hashing, so it cannot supply this snapshot.
+    exec(compile(source, mod.__file__, "exec", dont_inherit=True), mod.__dict__)
     fn = getattr(mod, fn_name)
 
     # Select the call shape without executing a policy. Retrying a body
