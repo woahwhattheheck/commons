@@ -1,0 +1,46 @@
+{
+  "apex_agent_so_sha256": "859857b1e6139026460fd50ee83bfe9022d4f73f01c40b7cca4aeea4d9af673c",
+  "apex_main_sha256": "1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a",
+  "arlene_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+  "boundaries": [
+    "development evidence only",
+    "one independent seed with five opponent definitions and mirrored seats",
+    "stress variants are not calibrated stronger opponents",
+    "no controller, default, CURRENT, archive, workflow, provider, or Kaggle mutation"
+  ],
+  "candidate_main_sha256": "a4ecdb513b48fa51877fe509597a84dd753dfe71d2d76a406ee3dc51475a9008",
+  "canonical_archive": {
+    "bytes": 292007,
+    "sha256": "87d7b8bf7c4e9467f4b6b46887abe2eb03735c42453cdbf4f2cac12c5962acc7"
+  },
+  "independent_seed_count": 1,
+  "official_engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "operation": "titan-current-responsive-9969137-20260908",
+  "owned_path": "revenue/kaggriculture/cloud-widefield-lab/current-87d7-responsive/",
+  "result_summary": {
+    "completed": 10,
+    "failed": 0,
+    "losses": 0,
+    "scheduled": 10,
+    "ties": 0,
+    "wins": 10
+  },
+  "results": {
+    "INTERRUPTION.json": "ea97316452c52d4c715f1ed5d20990ad02be1bcf283429fb3fa32f5dfc73e592",
+    "RESULTS.json": "e44df84a468bf634f8f34a40d32d056c5bc644192a33dda2c064be7eb34e3cff",
+    "VERIFICATION.json": "3ea266fdca9eddb945aaa47e04b682582cc29f0ed0775444c9d0f27996a1fdcf"
+  },
+  "schema_version": 1,
+  "seed": 9969137,
+  "slack_claim_ts": "1788853665.872039",
+  "source_files": {
+    "source/assemble_checkpoints.py": "59ed946ce36f0df22ee38b8231e977afb90971d27187494f473d3e7283c6c465",
+    "source/run_responsive_shard.py": "f04b933f3da4f163b74b6f4de29789460bd5833b58a65826b14a0ccc088082f7",
+    "source/variants.py": "69df8c159d8f0b48377052d1637c49727ec551a8774f9f0215984fa89acd0746",
+    "source/verify_result.py": "d563a58f5e573eebb979d1d2b34fb8766334f18c5cfb2806be23d0f37b4609fc"
+  },
+  "t09_variants": {
+    "git_blob": "374a23ffb3cf6cc1c67571df74fde9f84467e832",
+    "sha256": "69df8c159d8f0b48377052d1637c49727ec551a8774f9f0215984fa89acd0746"
+  }
+}
