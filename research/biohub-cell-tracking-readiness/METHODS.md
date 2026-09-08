@@ -6,7 +6,7 @@ Provide a deterministic, data-free readiness layer for the 2026 Biohub Cell Trac
 
 ## Representation
 
-The public submission is a graph serialized as CSV. A node is a cell detection with integer `(t,z,y,x)` voxel coordinates; an edge links two node IDs in the same dataset. Divisions are represented as one source with two children. The validator keeps node identity dataset-scoped and checks forward temporal ordering.
+The public submission is a graph serialized as CSV. A node is a cell detection with integer `(t,z,y,x)` voxel coordinates; an edge links two node IDs in the same dataset. Divisions are represented as one source with two children. The validator keeps node identity dataset-scoped and enforces consecutive `t→t+1` tracking by default.
 
 ## Geometry
 
@@ -24,6 +24,7 @@ A competitive lane can replace only the detection/linking producer while retaini
 - No network access at runtime.
 - Fixed synthetic coordinates and deterministic sort/tie-break rules.
 - Exact organizer starter Git commit pinned in `SOURCE_LOCK.json`.
+- Public starter offline/runtime hazards are bounded in `OFFLINE_RUNTIME.md`; no full-stack offline-install PASS is claimed.
 - Unit tests cover valid output plus representative contract failures.
 
 ## Data governance
