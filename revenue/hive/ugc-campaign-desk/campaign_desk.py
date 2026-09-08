@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic synthetic-only UGC campaign packet builder."""
 from __future__ import annotations
-import argparse,csv,hashlib,io,json,re,sys,zipfile
+import argparse,csv,hashlib,io,json,os,re,sys,tempfile,zipfile
 from pathlib import Path
 SCHEMA='ugc-campaign-desk/v1'; SHIP='PLANNED_NOT_SHIPPED'; RIGHTS='PROPOSED_NOT_GRANTED'; ZIP_DATE=(2026,9,8,0,0,0)
 ID=re.compile(r'^[a-z0-9][a-z0-9-]{2,79}$')
@@ -53,9 +53,20 @@ def build_zip(doc):
         for p,b in sorted(files(doc).items()):
             i=zipfile.ZipInfo(p,ZIP_DATE); i.compress_type=zipfile.ZIP_DEFLATED; i.external_attr=0o100644<<16; z.writestr(i,b,compress_type=zipfile.ZIP_DEFLATED,compresslevel=9)
     return out.getvalue()
+def publish_zip(path,raw):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    fd,name=tempfile.mkstemp(prefix=f'.{path.name}.',suffix='.tmp',dir=path.parent); stage=Path(name)
+    try:
+        with os.fdopen(fd,'wb') as f:
+            f.write(raw); f.flush(); os.fsync(f.fileno())
+        try: os.link(stage,path)
+        except FileExistsError as e: raise CampaignError(f'refusing to overwrite {path}') from e
+    finally:
+        try: stage.unlink()
+        except FileNotFoundError: pass
 def main(argv=None):
     p=argparse.ArgumentParser(); p.add_argument('input',type=Path); p.add_argument('output',type=Path); a=p.parse_args(argv)
     try:
-        req(a.output.suffix.lower()=='.zip','output must end in .zip'); req(not a.output.exists(),f'refusing to overwrite {a.output}'); doc=json.loads(a.input.read_text(encoding='utf-8')); raw=build_zip(doc); a.output.parent.mkdir(parents=True,exist_ok=True); a.output.write_bytes(raw); print(json.dumps({'status':'BUILT_SYNTHETIC_PACKET','output':str(a.output),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'creators':5,'videos':10,'samples_shipped':False,'usage_rights_granted':False,'cash_usd':0},sort_keys=True,separators=(',',':'))); return 0
+        req(a.output.suffix.lower()=='.zip','output must end in .zip'); doc=json.loads(a.input.read_text(encoding='utf-8')); raw=build_zip(doc); publish_zip(a.output,raw); print(json.dumps({'status':'BUILT_SYNTHETIC_PACKET','output':str(a.output),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'creators':5,'videos':10,'samples_shipped':False,'usage_rights_granted':False,'cash_usd':0},sort_keys=True,separators=(',',':'))); return 0
     except (CampaignError,OSError,ValueError,json.JSONDecodeError) as e: print(f'UGC CAMPAIGN INVALID: {e}',file=sys.stderr); return 1
 if __name__=='__main__': raise SystemExit(main())
