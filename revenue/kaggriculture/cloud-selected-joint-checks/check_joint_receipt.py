@@ -211,21 +211,23 @@ def inspect_archive(path: Path, *, expected_sha256: str | None = None,
                 text = members[log_name].decode('utf-8')
             except UnicodeError:
                 problem('failure', f'invalid UTF-8: {log_name}')
-            counts = re.findall(r'^Ran (\d+) tests? in [^\n]+$', text, re.MULTILINE)
-            endings = re.findall(r'^(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)$', text, re.MULTILINE)
+            counts = list(re.finditer(r'^Ran (\d+) tests? in [^\n]+$', text, re.MULTILINE))
+            endings = list(re.finditer(r'^(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)$', text, re.MULTILINE))
             if re.search(r'^FAILED(?: |$)', text, re.MULTILINE):
                 problem('failure', f'{label}: unittest failure footer is present')
-            if len(counts) != 1 or len(endings) != 1:
+            if (len(counts) != 1 or len(endings) != 1
+                    or endings[0].start() < counts[0].end()):
                 problem('missing', f'{label}: missing or ambiguous unittest completion')
             else:
-                count = int(counts[0])
+                count = int(counts[0].group(1))
+                ending = endings[0].group(1)
                 summary['test_methods'] = count
-                summary['reported_pass'] = endings[0] == 'OK'
+                summary['reported_pass'] = ending == 'OK'
                 if count < minimum:
                     problem('failure', f'{label}: {count} methods is below required coverage {minimum}')
-                if endings[0].startswith('FAILED'):
+                if ending.startswith('FAILED'):
                     problem('failure', f'{label}: unittest reports failure')
-                elif endings[0] != 'OK':
+                elif ending != 'OK':
                     problem('missing', f'{label}: skipped/qualified completion is not full coverage')
         if report_name is None:
             continue
