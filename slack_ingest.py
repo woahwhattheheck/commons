@@ -120,7 +120,7 @@ def _decimal_ts(value: Any) -> Decimal:
         out = Decimal(str(value or "").strip())
     except InvalidOperation as exc:
         raise IngestError("invalid Slack ts: %r" % (value,)) from exc
-    if out <= 0:
+    if not out.is_finite() or out <= 0:
         raise IngestError("invalid Slack ts: %r" % (value,))
     return out
 
@@ -131,7 +131,7 @@ def _cursor_decimal(value: Any) -> Decimal:
         out = Decimal(str(value or "0").strip())
     except InvalidOperation as exc:
         raise IngestError("invalid Slack cursor: %r" % (value,)) from exc
-    if out < 0:
+    if not out.is_finite() or out < 0:
         raise IngestError("invalid Slack cursor: %r" % (value,))
     return out
 
