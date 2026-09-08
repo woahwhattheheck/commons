@@ -6,10 +6,25 @@ rewriters. Counting every PLANT request (including future no-ops) and taking the
 largest suffix count over prefix-compatible routes preserves a conservative stock budget.
 It does not read the rival, replay actions, prices, hidden seeds, or future draws.
 """
-from plant_suffix import immutable_plant_suffixes
 from copy import deepcopy
+import importlib.util
+from pathlib import Path
 from types import MappingProxyType
 import marshal
+
+try:
+    from plant_suffix import immutable_plant_suffixes
+except ModuleNotFoundError:
+    # Canonical archives place the helper at runtime root. Direct source-tree
+    # consumers instead resolve the exact landed sibling without requiring a
+    # caller-specific PYTHONPATH.
+    source = Path(__file__).resolve().parents[4]/'cloud-runtime-pulse'/'plant_suffix.py'
+    spec = importlib.util.spec_from_file_location('_titan_plant_suffix', source)
+    module = importlib.util.module_from_spec(spec)
+    if spec.loader is None:
+        raise ImportError(f'cannot load plant suffix helper from {source}')
+    spec.loader.exec_module(module)
+    immutable_plant_suffixes = module.immutable_plant_suffixes
 
 # Process-local, bounded, content-keyed; never deserialize external input.
 _DERIVED_CACHE = {}
