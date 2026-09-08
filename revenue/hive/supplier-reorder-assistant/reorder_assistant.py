@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 from collections import defaultdict
 from dataclasses import dataclass
@@ -314,12 +315,38 @@ def build_plan(
     }
 
 
+def _receipt_record(row: dict[str, object]) -> dict[str, object]:
+    """Normalize business fields; CSV line numbers are not receipt identity."""
+    if not isinstance(row, dict):
+        raise ReorderError("receipt must be an object")
+    record: dict[str, object] = {}
+    for field in ("receipt_id", "received_at", "supplier_id", "supplier_sku", "sku"):
+        value = row.get(field)
+        if not isinstance(value, str) or not value.strip():
+            raise ReorderError(f"receipt {field} must be nonblank text")
+        record[field] = value.strip()
+    record["quantity"] = _integer(
+        str(row.get("quantity", "")), f"{record['receipt_id']}.quantity", minimum=1
+    )
+    return record
+
+
+def _plan_sha256(plan: dict[str, object]) -> str:
+    """Bind cumulative receipts to the saved plan, not a reused draft ID."""
+    try:
+        encoded = json.dumps(plan, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    except (TypeError, ValueError) as exc:
+        raise ReorderError("plan must contain finite JSON values") from exc
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
 def apply_receipts(
     stock: dict[str, Stock],
     plan: dict[str, object],
     receipt_rows: list[dict[str, str]],
     *,
     pipeline_includes_draft: bool = False,
+    prior_log: dict[str, object] | None = None,
 ) -> tuple[dict[str, Stock], dict[str, object]]:
     if plan.get("schema") != SCHEMA:
         raise ReorderError("plan schema is not supported")
@@ -330,17 +357,52 @@ def apply_receipts(
             key = (supplier, str(line["supplier_sku"]), str(line["sku"]))
             drafted[key] = drafted.get(key, 0) + int(line["quantity"])
 
+    plan_sha256 = _plan_sha256(plan)
     updated = dict(stock)
     applied: list[dict[str, object]] = []
-    seen_receipts: set[str] = set()
+    history: dict[str, dict[str, object]] = {}
     cumulative: dict[tuple[str, str, str], int] = defaultdict(int)
+    if prior_log is not None:
+        if not isinstance(prior_log, dict) or prior_log.get("schema") != SCHEMA:
+            raise ReorderError("prior log schema is not supported")
+        version = prior_log.get("receipt_history_version")
+        if type(version) is not int or version != 1:
+            raise ReorderError("prior log must contain versioned receipt history")
+        if prior_log.get("plan_sha256") != plan_sha256:
+            raise ReorderError("prior log belongs to a different saved plan")
+        prior_rows = prior_log.get("applied_receipts")
+        if not isinstance(prior_rows, list):
+            raise ReorderError("prior log applied_receipts must be a list")
+        for prior_row in prior_rows:
+            record = _receipt_record(prior_row)
+            receipt_id = record["receipt_id"]
+            if receipt_id in history:
+                raise ReorderError(f"prior log has duplicate receipt_id {receipt_id!r}")
+            key = (record["supplier_id"], record["supplier_sku"], record["sku"])
+            if key not in drafted:
+                raise ReorderError(f"{receipt_id}: prior receipt item was not present in the draft plan")
+            cumulative[key] += record["quantity"]
+            if cumulative[key] > drafted[key]:
+                raise ReorderError(f"{receipt_id}: prior received quantity exceeds drafted quantity")
+            history[receipt_id] = record
+            applied.append(record)
+
+    previous_count = len(applied)
+    replayed: list[str] = []
+    seen_receipts: set[str] = set()
     for row in receipt_rows:
-        receipt_id = row["receipt_id"]
-        if not receipt_id or receipt_id in seen_receipts:
+        record = _receipt_record(row)
+        receipt_id = record["receipt_id"]
+        if receipt_id in seen_receipts:
             raise ReorderError(f"blank or duplicate receipt_id {receipt_id!r}")
         seen_receipts.add(receipt_id)
-        key = (row["supplier_id"], row["supplier_sku"], row["sku"])
-        quantity = _integer(row["quantity"], f"{receipt_id}.quantity", minimum=1)
+        if receipt_id in history:
+            if record != history[receipt_id]:
+                raise ReorderError(f"{receipt_id}: receipt conflicts with prior history")
+            replayed.append(receipt_id)
+            continue
+        key = (record["supplier_id"], record["supplier_sku"], record["sku"])
+        quantity = record["quantity"]
         if key not in drafted:
             raise ReorderError(f"{receipt_id}: receipt item was not present in the draft plan")
         cumulative[key] += quantity
@@ -359,20 +421,15 @@ def apply_receipts(
             allocated=item.allocated,
             unit=item.unit,
         )
-        applied.append(
-            {
-                "receipt_id": receipt_id,
-                "received_at": row["received_at"],
-                "supplier_id": key[0],
-                "supplier_sku": key[1],
-                "sku": key[2],
-                "quantity": quantity,
-            }
-        )
+        applied.append(record)
     return updated, {
         "schema": SCHEMA,
+        "receipt_history_version": 1,
+        "plan_sha256": plan_sha256,
         "applied_receipts": applied,
         "count": len(applied),
+        "new_count": len(applied) - previous_count,
+        "replayed_receipt_ids": replayed,
         "pipeline_includes_draft": pipeline_includes_draft,
     }
 
@@ -393,6 +450,8 @@ def command_plan(args: argparse.Namespace) -> None:
 
 def command_receive(args: argparse.Namespace) -> None:
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
+    prior_path = getattr(args, "prior_log", None)
+    prior_log = json.loads(prior_path.read_text(encoding="utf-8")) if prior_path is not None else None
     receipts = _read_csv(
         args.receipts,
         {"receipt_id", "received_at", "supplier_id", "supplier_sku", "sku", "quantity"},
@@ -402,6 +461,7 @@ def command_receive(args: argparse.Namespace) -> None:
         plan,
         receipts,
         pipeline_includes_draft=args.pipeline_includes_draft,
+        prior_log=prior_log,
     )
     write_stock(args.out_stock, updated)
     args.out_log.write_text(json.dumps(log, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -424,6 +484,11 @@ def parser() -> argparse.ArgumentParser:
     receive.add_argument("--receipts", type=Path, required=True)
     receive.add_argument("--out-stock", type=Path, required=True)
     receive.add_argument("--out-log", type=Path, required=True)
+    receive.add_argument(
+        "--prior-log",
+        type=Path,
+        help="cumulative receipt log already reflected in --stock for this exact saved plan",
+    )
     receive.add_argument(
         "--pipeline-includes-draft",
         action="store_true",
