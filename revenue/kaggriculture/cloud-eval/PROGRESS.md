@@ -17,6 +17,29 @@ that path remains unchanged if the new run is interrupted. Use unique output
 paths for independent panels; a new invocation replaces that path's prior
 progress sidecar, not a historical archive.
 
+## Final report and invocation identity
+
+Every CLI invocation now creates one top-level `invocation_id` (a UUID hex
+string), carried unchanged in its final and progress reports. This identifies
+an invocation, not a new source version, game, or independent sample. A new run
+has a different ID even with identical arguments. Older reports without the
+field remain historical evidence; do not infer an ID for them.
+
+Finalization saves `running` / `finalize`, replaces the final report with a
+complete report, then replaces the sidecar with the identical complete report.
+A `complete` sidecar is therefore never deliberately published before its final.
+The two files are individually replaced, not one atomic two-file transaction.
+If a hard stop occurs after final replacement but before sidecar replacement,
+the sidecar remains conservatively `running`; the final report with the SAME
+`invocation_id` and `complete` state is the completed data publication. A final
+with another ID belongs to an older invocation and cannot close this progress.
+
+If final replacement fails, the older final remains intact and the sidecar
+records `error` when possible. If only the later sidecar replacement fails,
+the same-invocation complete final remains available while the CLI propagates
+the write error. Preserve both files and the process error; a complete final is
+not a promise that every subsequent write or console operation succeeded.
+
 ## Interpretation
 
 The sidecar carries the original report fields, source fingerprints, recorded
@@ -42,8 +65,9 @@ the win/tie/loss aggregate.
 SIGKILL, default SIGTERM, or host termination cannot run a final handler. The last
 snapshot remains `running`, even if its record count equals the planned count
 and an optional recheck/finalization was still pending. Never infer completion
-from row count alone. There is no fabricated row, score, failure outcome, or
-replay result for a call that did not return.
+from row count alone. At finalization, reconcile a same-invocation completed
+final report as described above. There is no fabricated row, score, failure
+outcome, or replay result for a call that did not return.
 
 ## Recovery and limits
 
@@ -94,3 +118,26 @@ continuation is ASTRA-COORD, operation
 `astra-coord-evaluator-progress-20260907-01`, coordinated in the existing Slack
 thread `1788806580.945539` (claim `1788832638.147939`). Existing directory license
 and upstream notices remain unchanged.
+
+## Finalization boundary verification (2026-09-08)
+
+```sh
+python -B -m unittest -v test_finalization
+python -B -m unittest -v test_progress test_finalization
+```
+
+The new 11-method suite passes on CPython 3.13.5 / Linux. On baseline evaluator
+blob `0eead824257c0a6bd01b5b8c7828f30410546635` it produces five failures and four
+errors: premature completion and missing invocation identity. Both exact
+SIGKILL boundaries are real subprocesses, stopped immediately before or after
+the final `os.replace`. The tests preserve returned fixture rows and distinguish
+an older final, a newly published final, and a failed sidecar publication.
+The combined 33 methods pass; the original 22-method evidence above retains its
+original scope. All 16 existing non-main function/class AST spans are unchanged,
+including Actor, play, worker IPC, scoring, and atomic single-file writing.
+
+No competitive games, policy changes, automatic replay, power-loss experiment,
+concurrent-writer protection, or hosted-CI result is implied. This CLI-only
+increment leaves TANDEM's separate failed-request capture work untouched.
+Operation: `astra-coord-finalize-20260908-01`. Exact checks and source identities:
+`finalization-evidence.json`.

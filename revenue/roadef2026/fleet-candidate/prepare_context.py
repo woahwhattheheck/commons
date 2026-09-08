@@ -173,29 +173,41 @@ def prepare(destination, runtime_root, candidate, archive_dir=None):
             with zipfile.ZipFile(archive_path) as archive:
                 list(archive_members(archive, ARCHIVES[name]))
         destination.mkdir(parents=True)
-        for name, archive_path in archives.items():
-            copy_archive_sources(archive_path, name, ARCHIVES[name], destination)
-        for name in required:
-            target = destination / ("attribution/ATTRIBUTION.md" if name == "ATTRIBUTION.md" else name)
+        # mkdir above is the exclusive claim: never clean an existing context
+        # or a competing creator's path when that claim fails. After it succeeds,
+        # roll back our own partial tree on any catchable staging failure.
+        try:
+            for name, archive_path in archives.items():
+                copy_archive_sources(archive_path, name, ARCHIVES[name], destination)
+            for name in required:
+                target = destination / ("attribution/ATTRIBUTION.md" if name == "ATTRIBUTION.md" else name)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(runtime_root / name, target)
+            if (runtime_root / ".dockerignore").is_file():
+                shutil.copyfile(runtime_root / ".dockerignore", destination / ".dockerignore")
+            target = destination / "sources" / "candidate" / "main.cpp"
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(runtime_root / name, target)
-        if (runtime_root / ".dockerignore").is_file():
-            shutil.copyfile(runtime_root / ".dockerignore", destination / ".dockerignore")
-        target = destination / "sources" / "candidate" / "main.cpp"
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(candidate, target)
-        shutil.copyfile(destination / "sources/sedge/vendor/rapidjson-LICENSE",
-                        destination / "attribution/RapidJSON-LICENSE")
-        for required_source in ("sources/sedge/main.cpp", "sources/flora/main.cpp", "sources/candidate/main.cpp",
-                                "sources/checker/src/main.cpp", "sources/checker/src/CLI11.hpp",
-                                "sources/networktools/networktools/networktools.h"):
-            if not (destination / required_source).is_file():
-                raise ValueError(f"Missing required staged source: {required_source}")
-        manifest = {"stage_version": 2, "submitted": False,
-                    "archives": {name: {"url": spec["url"], "sha256": spec["sha256"]} for name, spec in ARCHIVES.items()},
-                    "files": [{"path": path.relative_to(destination).as_posix(), "sha256": sha256(path)}
-                              for path in sorted(destination.rglob("*")) if path.is_file()]}
-        (destination / "source-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+            shutil.copyfile(candidate, target)
+            shutil.copyfile(destination / "sources/sedge/vendor/rapidjson-LICENSE",
+                            destination / "attribution/RapidJSON-LICENSE")
+            for required_source in ("sources/sedge/main.cpp", "sources/flora/main.cpp", "sources/candidate/main.cpp",
+                                    "sources/checker/src/main.cpp", "sources/checker/src/CLI11.hpp",
+                                    "sources/networktools/networktools/networktools.h"):
+                if not (destination / required_source).is_file():
+                    raise ValueError(f"Missing required staged source: {required_source}")
+            manifest = {"stage_version": 2, "submitted": False,
+                        "archives": {name: {"url": spec["url"], "sha256": spec["sha256"]} for name, spec in ARCHIVES.items()},
+                        "files": [{"path": path.relative_to(destination).as_posix(), "sha256": sha256(path)}
+                                  for path in sorted(destination.rglob("*")) if path.is_file()]}
+            (destination / "source-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+        except BaseException as error:
+            try:
+                shutil.rmtree(destination)
+            except OSError as cleanup_error:
+                # Keep the preparation failure primary and expose failed cleanup.
+                raise error from cleanup_error
+            raise
+
     return manifest
 
 

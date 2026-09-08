@@ -30,4 +30,14 @@ class TransportTests(unittest.TestCase):
             p=Path(d)/'main.py';p.write_text('x=1');api=API()
             with self.assertRaises(ValueError):transport.execute(api,p,'wrong',Path(d)/'state')
             self.assertEqual(api.calls,0)
+
+    def test_old_operation_row_for_other_hash_is_not_current_payload(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'main.py';p.write_text('new payload')
+            h=hashlib.sha256(p.read_bytes()).hexdigest();api=API()
+            api.rows=[{'ref':41,'description':f'{transport.OPERATION_ID} sha256:{"0"*64}'}]
+            result=transport.execute(api,p,h,Path(d)/'state')
+            self.assertEqual(result['status'],'SUBMISSION_FOUND')
+            self.assertEqual(api.calls,1)
+            self.assertEqual(len(result['after']['matching_submissions']),1)
 if __name__=='__main__':unittest.main()

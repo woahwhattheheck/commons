@@ -350,6 +350,87 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 5,
+ "open_prs": [
+  {
+   "number": 10181,
+   "author": "woahwhattheheck",
+   "title": "Execute ROADEF portfolio Docker and SIGTERM checkpoint checks",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10181",
+   "base_freshness": {
+    "base_sha": "01c2b20b990f556ddd190ff5caaa7d8ab55adac1",
+    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10187,
+   "author": "woahwhattheheck",
+   "title": "Record original PR9997 full-prefix parity and measured runtime",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10187",
+   "base_freshness": {
+    "base_sha": "f279419f22713874f402d8cb1b930b76b1a84cb2",
+    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10173,
+   "author": "woahwhattheheck",
+   "title": "Preserve seed-consumer state across public day/hour clocks",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10173",
+   "base_freshness": {
+    "base_sha": "f7af1b0ae8ba3bb5a4e981b54a93fcf439799246",
+    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10188,
+   "author": "woahwhattheheck",
+   "title": "TITAN: accept explicit retained continuity record names",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10188",
+   "base_freshness": {
+    "base_sha": "d247990656259a61c27657e8f37354803e18fe8f",
+    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10189,
+   "author": "woahwhattheheck",
+   "title": "Support public clocks and zero-cost hiring in the existing lonespear consumer",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10189",
+   "base_freshness": {
+    "base_sha": "d247990656259a61c27657e8f37354803e18fe8f",
+    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }

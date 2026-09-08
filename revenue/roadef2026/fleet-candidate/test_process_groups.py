@@ -31,6 +31,9 @@ RECORDS = []
 FIXTURE = r'''import json,os,signal,sys,time
 from pathlib import Path
 root=Path(os.environ['TEST_GROUP_ROOT'])
+def publish(path,value):
+    temporary=path.with_name(path.name+'.tmp')
+    temporary.write_text(json.dumps(value));temporary.replace(path)
 role=os.environ.get('TEST_GROUP_ROLE','plain')
 read,write=os.pipe()
 child=os.fork()
@@ -38,12 +41,12 @@ if child==0:
     os.close(read)
     if os.environ.get('TEST_IGNORE_TERM')=='1':signal.signal(signal.SIGTERM,signal.SIG_IGN)
     p=root/(str(os.getpid())+'.child.json')
-    p.write_text(json.dumps({'pid':os.getpid(),'pgid':os.getpgrp()}))
+    publish(p,{'pid':os.getpid(),'pgid':os.getpgrp()})
     os.write(write,b'1');os.close(write)
     time.sleep(30)
     os._exit(0)
 os.close(write);os.read(read,1);os.close(read)
-(root/(str(os.getpid())+'.leader.json')).write_text(json.dumps({'pid':os.getpid(),'pgid':os.getpgrp(),'child':child}))
+publish(root/(str(os.getpid())+'.leader.json'),{'pid':os.getpid(),'pgid':os.getpgrp(),'child':child})
 if '--srpaths' in sys.argv:
     source=Path(sys.argv[sys.argv.index('--srpaths')+1])
     v=json.loads(source.read_text())

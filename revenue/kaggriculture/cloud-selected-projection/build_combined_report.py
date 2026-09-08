@@ -44,6 +44,18 @@ QUEUE_COPY = (
     ("queue_copy", "queue-copy-tests.log", MARKET + "test_queue_copy.py", "queue-copy-results.json", "methods"),
     ("queue_copy_reporter", "queue-copy-reporter-tests.log", PROJECTION + "test_queue_copy_report.py", None, None),
 )
+ADAPTIVE = ROOT + "cloud-market-game-theory/adaptive/"
+ADAPTIVE_CONTEXT = (
+    ("adaptive_context", "adaptive-context-tests.log", ADAPTIVE + "context_cases/test_market_context.py", "adaptive-context-results.json", "tests"),
+    ("lazy_offers", "lazy-offers-tests.log", ADAPTIVE + "test_lazy_offers.py", None, None),
+    ("adaptive_context_reporter", "adaptive-context-reporter-tests.log", PROJECTION + "test_adaptive_context_report.py", None, None),
+)
+ADAPTIVE_SOURCES = {
+    "runtime": ADAPTIVE + "runtime.py", "core": LAB + "selected_sell_core.py",
+    "recourse": ADAPTIVE + "recourse.py", "selector": ROOT + "cloud-market-game-theory/selector.py",
+    "continuation": ROOT + "cloud-plan-continuation/continuation.py",
+    "engine": LAB + "reference/engine/kaggriculture.py",
+}
 REPORTER = ("reporter", "reporter-tests.log", PROJECTION + "test_combined_report.py", None, None)
 SUMMARY = re.compile(r"^Ran ([0-9]+) tests? in .+\n\s*\n(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)\s*$", re.M)
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -83,7 +95,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False, include_queue_copy: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False, include_queue_copy: bool = False, include_adaptive_context: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -131,7 +143,8 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                     + ((LEDGER_SCHEDULE,) if include_ledger_schedule else ())
                     + ((REPORTER,) if include_reporter else ())
                     + (STRESS_RUNNER if include_stress_runner else ())
-                    + (QUEUE_COPY if include_queue_copy else ()))
+                    + (QUEUE_COPY if include_queue_copy else ())
+                    + (ADAPTIVE_CONTEXT if include_adaptive_context else ()))
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
         text = read(log)
@@ -152,7 +165,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                 value = summary.get(count_key)
                 if type(value) is not int or value != entry["tests"]:
                     problems.append(key + ": JSON/log test counts differ")
-                if key in ("deadline_cancellation", "stress_runner_boundary"):
+                if key in ("deadline_cancellation", "stress_runner_boundary", "adaptive_context"):
                     for field in ("failures", "errors", "skipped"):
                         if not isinstance(summary.get(field), list) or summary[field]:
                             problems.append(key + ": nonempty or missing JSON " + field + " array")
@@ -276,6 +289,43 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
         except ValueError as exc:
             problems.append("queue copy: " + str(exc))
 
+    context = reports.get("adaptive_context", {})
+    context_transitions = 0
+    context_bindings = {}
+    if include_adaptive_context:
+        if type(context.get("schema")) is not int or context["schema"] != 1:
+            problems.append("adaptive context: unsupported or missing report schema")
+        bindings = context.get("sources")
+        if not isinstance(bindings, dict):
+            bindings = {}
+        for name, path in ADAPTIVE_SOURCES.items():
+            row = bindings.get(name)
+            observed = row.get("sha256") if isinstance(row, dict) else None
+            expected = source(path)
+            bind("adaptive context " + name, observed, expected)
+            context_bindings[name] = expected
+        # Both suites import these actual support files. Their checked-out
+        # identities are part of the same snapshot, not a borrowed old closure.
+        for path in (LAB + "selected_action_sell.py", LAB + "mechanics.py",
+                     LAB + "reference/decision/decision.py",
+                     ROOT + "cloud-observed-fills/observed_fills.py"):
+            context_bindings[path] = source(path)
+        evidence = context.get("evidence")
+        if not isinstance(evidence, list):
+            problems.append("adaptive context: missing evidence array")
+            evidence = []
+        official = [row for row in evidence if isinstance(row, dict)
+                    and row.get("kind") == "official_interpreter"]
+        if not official:
+            problems.append("adaptive context: no official interpreter evidence")
+        for row in official:
+            transitions = row.get("transitions")
+            if (not isinstance(transitions, list) or not transitions
+                    or any(not isinstance(t, dict) for t in transitions)):
+                problems.append("adaptive context: invalid interpreter transitions")
+            else:
+                context_transitions += len(transitions)
+
     observed_total = sum(s["tests"] for s in suites.values() if s["tests"] is not None)
     counts_complete = all(s["tests"] is not None for s in suites.values())
     result = {"schema": "titan.selected-projection.combined.v2",
@@ -317,6 +367,9 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
             field: queue.get(field) for field in
             ("schema", "source_sha256", "new_games", "engine_transitions")}
         result["queue_copy_case_counts"] = queue.get("counts")
+    if include_adaptive_context:
+        result["adaptive_context_binding"] = context_bindings
+        result["adaptive_context_interpreter_transitions"] = context_transitions
     return result
 
 
@@ -331,6 +384,7 @@ def main(argv=None):
     parser.add_argument("--include-ledger-schedule", action="store_true")
     parser.add_argument("--include-stress-runner", action="store_true")
     parser.add_argument("--include-queue-copy", action="store_true")
+    parser.add_argument("--include-adaptive-context", action="store_true")
     args = parser.parse_args(argv)
     report = build_report(args.directory, include_reporter=args.include_reporter_tests,
                           include_funded_join=args.include_funded_join,
@@ -338,7 +392,8 @@ def main(argv=None):
                           include_cancellation=args.include_cancellation,
                           include_ledger_schedule=args.include_ledger_schedule,
                           include_stress_runner=args.include_stress_runner,
-                          include_queue_copy=args.include_queue_copy)
+                          include_queue_copy=args.include_queue_copy,
+                          include_adaptive_context=args.include_adaptive_context)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
