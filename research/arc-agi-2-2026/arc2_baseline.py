@@ -100,6 +100,122 @@ def crop_nonzero(g: Grid) -> Grid:
     return [row[c0 : c1 + 1] for row in g[r0 : r1 + 1]]
 
 
+def crop_background(g: Grid, background: int) -> Grid:
+    coords = [(r, c) for r, row in enumerate(g) for c, v in enumerate(row) if v != background]
+    if not coords:
+        return copy_grid(g)
+    r0, r1 = min(r for r, _ in coords), max(r for r, _ in coords)
+    c0, c1 = min(c for _, c in coords), max(c for _, c in coords)
+    return [row[c0 : c1 + 1] for row in g[r0 : r1 + 1]]
+
+
+def non_background_components(g: Grid, background: int) -> List[List[Tuple[int, int]]]:
+    """Return deterministic 4-connected components of cells unlike background."""
+    height, width = len(g), len(g[0])
+    unseen = {(r, c) for r in range(height) for c in range(width) if g[r][c] != background}
+    components: List[List[Tuple[int, int]]] = []
+    while unseen:
+        start = min(unseen)
+        stack = [start]
+        unseen.remove(start)
+        cells: List[Tuple[int, int]] = []
+        while stack:
+            r, c = stack.pop()
+            cells.append((r, c))
+            for rr, cc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)):
+                if (rr, cc) in unseen:
+                    unseen.remove((rr, cc))
+                    stack.append((rr, cc))
+        components.append(sorted(cells))
+    return sorted(components, key=lambda cells: cells[0])
+
+
+def crop_component(g: Grid, background: int, choose_largest: bool) -> Grid:
+    components = non_background_components(g, background)
+    if not components:
+        return copy_grid(g)
+    ranked = sorted(
+        components,
+        key=lambda cells: ((-len(cells) if choose_largest else len(cells)), cells[0]),
+    )
+    chosen = ranked[0]
+    r0, r1 = min(r for r, _ in chosen), max(r for r, _ in chosen)
+    c0, c1 = min(c for _, c in chosen), max(c for _, c in chosen)
+    chosen_set = set(chosen)
+    return [
+        [g[r][c] if (r, c) in chosen_set else background for c in range(c0, c1 + 1)]
+        for r in range(r0, r1 + 1)
+    ]
+
+
+def self_mask_expand(g: Grid, background: int) -> Grid:
+    """Replace each non-background mask cell with the whole source grid."""
+    height, width = len(g), len(g[0])
+    if height * height > 30 or width * width > 30:
+        return copy_grid(g)
+    out = [[background for _ in range(width * width)] for _ in range(height * height)]
+    for mask_r in range(height):
+        for mask_c in range(width):
+            if g[mask_r][mask_c] == background:
+                continue
+            for r in range(height):
+                for c in range(width):
+                    out[mask_r * height + r][mask_c * width + c] = g[r][c]
+    return out
+
+
+def panel_overlap_vertical(g: Grid, background: int) -> Grid:
+    """Intersect equal panels separated by one uniform middle column."""
+    height, width = len(g), len(g[0])
+    if width < 3 or width % 2 == 0:
+        return copy_grid(g)
+    mid = width // 2
+    if len({g[r][mid] for r in range(height)}) != 1:
+        return copy_grid(g)
+    out: Grid = []
+    for r in range(height):
+        row: List[int] = []
+        for c in range(mid):
+            left, right = g[r][c], g[r][mid + 1 + c]
+            row.append(left if left != background and right != background else background)
+        out.append(row)
+    return out
+
+
+def panel_overlap_horizontal(g: Grid, background: int) -> Grid:
+    """Intersect equal panels separated by one uniform middle row."""
+    height, width = len(g), len(g[0])
+    if height < 3 or height % 2 == 0:
+        return copy_grid(g)
+    mid = height // 2
+    if len(set(g[mid])) != 1:
+        return copy_grid(g)
+    out: Grid = []
+    for r in range(mid):
+        row: List[int] = []
+        for c in range(width):
+            top, bottom = g[r][c], g[mid + 1 + r][c]
+            row.append(top if top != background and bottom != background else background)
+        out.append(row)
+    return out
+
+
+def background_variants() -> Tuple[Tuple[str, Transform], ...]:
+    """Enumerate background-sensitive transforms; demos decide which color is valid."""
+    variants: List[Tuple[str, Transform]] = []
+    for background in range(10):
+        variants.extend(
+            [
+                (f"panel_overlap_vertical_bg{background}", lambda g, b=background: panel_overlap_vertical(g, b)),
+                (f"panel_overlap_horizontal_bg{background}", lambda g, b=background: panel_overlap_horizontal(g, b)),
+                (f"self_mask_expand_bg{background}", lambda g, b=background: self_mask_expand(g, b)),
+                (f"crop_background_bg{background}", lambda g, b=background: crop_background(g, b)),
+                (f"crop_largest_component_bg{background}", lambda g, b=background: crop_component(g, b, True)),
+                (f"crop_smallest_component_bg{background}", lambda g, b=background: crop_component(g, b, False)),
+            ]
+        )
+    return tuple(variants)
+
 def upscale2(g: Grid) -> Grid:
     out: Grid = []
     for row in g:
@@ -181,6 +297,7 @@ TRANSFORMS: Tuple[Tuple[str, Transform], ...] = (
     ("complete_latin_square", complete_latin_square),
     ("mirror_quadrants", mirror_quadrants),
     ("crop_nonzero", crop_nonzero),
+) + background_variants() + (
     ("upscale2", upscale2),
     ("repeat_rows2", repeat_rows2),
     ("repeat_cols2", repeat_cols2),
