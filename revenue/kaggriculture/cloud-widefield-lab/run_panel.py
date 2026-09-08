@@ -230,13 +230,57 @@ def write_run_state(path: Path, records: list[dict]) -> None:
                 pass
 
 
+def validate_panel_config(cfg: object, workers: int) -> None:
+    """Require runnable panel dimensions before creating output or starting work.
+
+    Additional configuration fields and all nonempty actor references pass through
+    unchanged. This validates the requested job grid, not source or result identity.
+    """
+    if not isinstance(cfg, dict):
+        raise ValueError("panel configuration must be a JSON object")
+    seeds = cfg.get("seeds")
+    if not isinstance(seeds, dict):
+        raise ValueError("seeds must be an object with first, last and shard_size")
+    first, last = seeds.get("first"), seeds.get("last")
+    if type(first) is not int or type(last) is not int:
+        raise ValueError("seeds.first and seeds.last must be integers")
+    if first > last:
+        raise ValueError("seeds.first must not exceed seeds.last")
+    try:
+        # Preserve the existing int-conversion behavior for nonempty shards.
+        size = int(seeds["shard_size"])
+    except (KeyError, TypeError, ValueError, OverflowError):
+        raise ValueError("seeds.shard_size must convert to a positive integer") from None
+    if size <= 0:
+        raise ValueError("seeds.shard_size must convert to a positive integer")
+    arms = cfg.get("arms")
+    if not isinstance(arms, dict) or not arms:
+        raise ValueError("arms must contain at least one candidate")
+    if any(not isinstance(value, str) or not value.strip() for value in arms.values()):
+        raise ValueError("each candidate reference must be a nonempty string")
+    opponents = cfg.get("opponents")
+    if not isinstance(opponents, list) or not opponents:
+        raise ValueError("opponents must contain at least one opponent")
+    if any(not isinstance(value, str) or not value.strip() for value in opponents):
+        raise ValueError("each opponent reference must be a nonempty string")
+    for field in ("evaluator", "engine"):
+        if not isinstance(cfg.get(field), str) or not cfg[field].strip():
+            raise ValueError(f"{field} must be a nonempty string")
+    if type(workers) is not int or workers <= 0:
+        raise ValueError("--jobs must be a positive integer")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--jobs", type=int, default=4)
     args = ap.parse_args()
-    cfg = json.loads(args.config.read_text())
+    try:
+        cfg = json.loads(args.config.read_text())
+        validate_panel_config(cfg, args.jobs)
+    except (OSError, UnicodeError, ValueError) as error:
+        ap.error(f"invalid panel configuration: {error}")
     args.output.mkdir(parents=True, exist_ok=True)
     seeds = list(range(cfg["seeds"]["first"], cfg["seeds"]["last"] + 1))
     size = int(cfg["seeds"]["shard_size"])
