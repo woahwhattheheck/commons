@@ -1,0 +1,143 @@
+name: keep-sell-independent-review-one-shot
+
+on:
+  push:
+    branches:
+      - astra/keep-sell-independent-review-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: astra/keep-sell-independent-review-20260908
+          fetch-depth: 2
+      - name: Execute current-main review and publish receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          MERGE=0819c9bf13b0ad74842fb2ba6cfc62d20d8365f2
+          ORIGINAL_HEAD=48b720ca0285423d06291372e16dc81d82bc1343
+          REVIEWED_BASE="$(git rev-parse HEAD^)"
+          EXPECTED_BASE=7c50bbfb41027f31a2d4bc9470424e815f1fcef1
+          test "$REVIEWED_BASE" = "$EXPECTED_BASE"
+          git fetch --quiet --depth=1 origin "$MERGE"
+
+          paths=(
+            boards.html
+            features/registry/business-pack-keep-sell-20260902-01.json
+            ground/BUSINESS_PACK_KEEP_SELL.json
+            ground/BUSINESS_PACK_KEEP_SELL.md
+            host/business_pack_keep_sell.py
+            keep-sell.html
+            p/cursor-business-pack-keep-sell-20260902-01.md
+            test_business_pack_keep_sell.py
+          )
+          for path in "${paths[@]}"; do
+            test -f "$path"
+            git cat-file -e "$MERGE:$path"
+          done
+
+          ledger_before="$(sha256sum ground/BUSINESS_PACK_KEEP_SELL.json | cut -d' ' -f1)"
+          python3 -m py_compile host/business_pack_keep_sell.py test_business_pack_keep_sell.py
+          python3 host/business_pack_keep_sell.py validate | tee /tmp/validate.log
+          python3 host/business_pack_keep_sell.py list | tee /tmp/list.log
+          python3 host/business_pack_keep_sell.py --self-test | tee /tmp/self-test.log
+          python3 -m unittest -v test_business_pack_keep_sell.py 2>&1 | tee /tmp/unittest.log
+          grep -q '^Ran 8 tests' /tmp/unittest.log
+          grep -q '^OK$' /tmp/unittest.log
+          ledger_after="$(sha256sum ground/BUSINESS_PACK_KEEP_SELL.json | cut -d' ' -f1)"
+          test "$ledger_before" = "$ledger_after"
+          git diff --exit-code -- "${paths[@]}"
+
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          ledger = json.loads(Path('ground/BUSINESS_PACK_KEEP_SELL.json').read_text())
+          registry = json.loads(Path('features/registry/business-pack-keep-sell-20260902-01.json').read_text())
+          receipt = Path('p/cursor-business-pack-keep-sell-20260902-01.md').read_text()
+          card = Path('ground/BUSINESS_PACK_KEEP_SELL.md').read_text()
+          door = Path('keep-sell.html').read_text()
+          boards = Path('boards.html').read_text()
+
+          assert ledger['kind'] == 'BUSINESS_PACK_KEEP_SELL_FACTORY'
+          assert ledger['packs'] == []
+          assert ledger['cash_usd'] == '0.00'
+          assert ledger['buyers'] == 0
+          assert ledger['marketing'] == 'BRYCE'
+          assert ledger['scaffold_not_stolen'] is True
+          assert ledger['slack_channel'] == {'name': '#business-packs', 'id': 'C0BU7JAPUH3'}
+          assert ledger['control_plane_receipt'] == 'cursor-slack-business-packs-channel-20260902-01'
+          assert registry['id'] == 'business-pack-keep-sell-20260902-01'
+          assert registry['public_entrypoint'] == 'keep-sell.html'
+          assert 'buy.stripe.com' not in door
+          assert 'NEED_OWNER_LINK' in door and 'Bryce only' in door
+          assert boards.count('href="./keep-sell.html"') == 1
+          assert 'does not steal' in card.lower()
+          assert 'Cash USD 0' in receipt or 'cash stays USD 0' in receipt
+          PY
+
+          test_log_sha="$(sha256sum /tmp/unittest.log | cut -d' ' -f1)"
+          command_log_sha="$({ cat /tmp/validate.log; cat /tmp/list.log; cat /tmp/self-test.log; } | sha256sum | cut -d' ' -f1)"
+          receipt_path=p/astra-bridge-business-pack-keep-sell-review-20260908-01.md
+          {
+            echo '# Independent current-main review — KEEP vs SELL factory'
+            echo
+            echo 'Operation: `astra-bridge-business-pack-keep-sell-review-20260908-01`'
+            echo
+            echo '**Verdict: PASS.** The eight PR7514 paths execute on the reviewed current-main source, preserve the empty ledger, expose no checkout URL, and remain byte-identical to the original merge.'
+            echo
+            echo '## Source identity'
+            echo
+            echo "- Reviewed Commons base: \`$REVIEWED_BASE\`"
+            echo "- Original PR: [#7514](https://github.com/woahwhattheheck/commons/pull/7514)"
+            echo "- Original head: \`$ORIGINAL_HEAD\`"
+            echo "- Original merge: \`$MERGE\`"
+            echo '- Review owner: ASTRA-BRIDGE-REVIEW; original Cursor/GOAT implementation credit is unchanged.'
+            echo
+            echo '## Executed checks'
+            echo
+            echo '- `python3 -m py_compile host/business_pack_keep_sell.py test_business_pack_keep_sell.py` — PASS'
+            echo '- `python3 host/business_pack_keep_sell.py validate` — PASS'
+            echo '- `python3 host/business_pack_keep_sell.py list` — PASS; empty ledger retained'
+            echo '- `python3 host/business_pack_keep_sell.py --self-test` — PASS'
+            echo '- `python3 -m unittest -v test_business_pack_keep_sell.py` — 8/8 PASS, zero failures/errors/skips'
+            echo "- Unittest log SHA-256: \`$test_log_sha\`"
+            echo "- validate/list/self-test combined-output SHA-256: \`$command_log_sha\`"
+            echo "- Ledger pre/post SHA-256: \`$ledger_before\` (unchanged)"
+            echo '- Static review also checks one board link, the exact Slack lane, registry entry, honest empty state, no `buy.stripe.com` text in the door, `NEED_OWNER_LINK`, and Bryce-only marketing.'
+            echo
+            echo '## Exact current-main readback'
+            echo
+            echo '| Path | Current blob | PR7514 merge blob | Status |'
+            echo '|---|---|---|---|'
+            for path in "${paths[@]}"; do
+              current="$(git hash-object "$path")"
+              original="$(git rev-parse "$MERGE:$path")"
+              status=UNCHANGED
+              if [ "$current" != "$original" ]; then status=CHANGED; fi
+              printf '| `%s` | `%s` | `%s` | %s |\n' "$path" "$current" "$original" "$status"
+            done
+            echo
+            echo 'All eight rows are `UNCHANGED`; the focused commands leave those files byte-identical. This receipt adds no product decision or mutable ledger row.'
+            echo
+            echo '## Scope and limits'
+            echo
+            echo 'This is an independent source/readback and focused execution receipt, not a buyer, sale, checkout, payment, revenue, marketing, ad-spend, or deployment event. The ledger remains empty with cash USD 0. Owner-supplied payment links remain inert unless separately proven CHARGEABLE. The GOAT pack scaffold and existing control-plane receipt are not modified.'
+            echo
+            echo "Focused hosted run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo
+            echo 'Coordination claim: https://tokenjunkielabs.slack.com/archives/C0BU7JAPUH3/p1788847391960139?thread_ts=1788323828.692809&cid=C0BU7JAPUH3'
+          } > "$receipt_path"
+
+          rm .github/workflows/keep-sell-review-one-shot.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$receipt_path" .github/workflows/keep-sell-review-one-shot.yml
+          git commit -m 'Add independent KEEP vs SELL current-main review receipt'
+          git push origin HEAD:astra/keep-sell-independent-review-20260908
