@@ -26,6 +26,7 @@ class AdaptiveContextReportTests(unittest.TestCase):
         sources = set(subject.ADAPTIVE_SOURCES.values())
         sources.update(row[2] for row in subject.ADAPTIVE_CONTEXT)
         sources.add(subject.ROOT+'cloud-observed-fills/observed_fills.py')
+        snapshot['files'].update({p: {'sha256': retained.sha(p)} for p in sources})
         retained.save(self.path/'SOURCE-SNAPSHOT.json', snapshot)
         for row, count in zip(subject.ADAPTIVE_CONTEXT, (28, 29, 1)):
             (self.path/row[1]).write_text(retained.log(count))
