@@ -51,7 +51,7 @@ jobs:
                         prior_run_id='34211426650', prior_artifact_id='10050120696',
                         prior_integration_ref='320bfc25002d4836c13fa772d8e82de7d7cb8054',
                         portfolio_seconds=585, internal_search_seconds=565, solver_trials_planned=4,
-                        submission='not authorized; no qualification action in this workflow')
+                        submission='not performed; no qualification action in this workflow')
           pathlib.Path(os.environ['TRIAL_ROOT'], 'RUN.json').write_text(json.dumps(record, indent=2) + '\n')
           PY
 
