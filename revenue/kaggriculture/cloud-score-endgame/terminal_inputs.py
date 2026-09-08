@@ -169,7 +169,7 @@ def stress_scenarios(mechanics, observation, configuration):
     ranked = sorted(items, key=lambda p: (-mechanics.market_price(
         p, observation['market']['inventory'][p], observation['market'].get('params')), p))
     lot = {p: cap // len(items) + int(i < cap % len(items)) for i, p in enumerate(ranked)}
-    for name, order in [('ranked', ranked), ('reversed', list(reversed(ranked))]:
+    for name, order in [('ranked', ranked), ('reversed', list(reversed(ranked)))]:
         result.append({'id': 'mixed-'+name, 'shed': lot.copy(),
                        'market': [['SELL', p, lot[p]] for p in order[:limit] if lot[p]],
                        'origin': 'current-snapshot-stress'})
