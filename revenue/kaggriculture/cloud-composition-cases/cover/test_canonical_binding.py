@@ -18,6 +18,11 @@ import unittest
 
 WORKFLOW = (Path(__file__).resolve().parent / '../../../../.github/workflows/titan-selected-projection.yml').resolve()
 LAB = 'revenue/kaggriculture/cloud-execution-lab/'
+SIBLING_SOURCE_ROOTS = (
+    'revenue/kaggriculture/cloud-economic-stress/funded_payback',
+    'revenue/kaggriculture/cloud-quickstep',
+    'revenue/kaggriculture/cloud-runtime-pulse',
+)
 
 
 def canonical(text):
@@ -57,6 +62,15 @@ class CanonicalBindingTests(unittest.TestCase):
         self.assertIn('            /.github/workflows/titan-selected-projection.yml\n', self.job)
         self.assertNotIn('    needs:', self.job)
         self.assertIn("      PYTHONDONTWRITEBYTECODE: '1'", self.job)
+
+    def test_external_canonical_sources_are_triggered_checked_out_and_snapshotted(self):
+        triggers = self.text.split('  workflow_dispatch:', 1)[0]
+        snapshot = step(self.job, 'Record canonical source before checking')
+        for root in SIBLING_SOURCE_ROOTS:
+            with self.subTest(root=root):
+                self.assertIn("- '" + root + "/**'", triggers)
+                self.assertIn('            /' + root + '/\n', self.job)
+                self.assertIn("'" + root + "'", snapshot)
 
     def test_actual_builder_check_never_rebuilds_the_checkout(self):
         body = step(self.job, 'Check the committed canonical package without rebuilding')
