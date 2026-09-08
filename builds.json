@@ -350,6 +350,23 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 10487,
+   "author": "woahwhattheheck",
+   "title": "Add funded production-bundle admission callback",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10487",
+   "base_freshness": {
+    "base_sha": "9d352d2dea7b0bb1cf6ef40de4b3a4616c0017ea",
+    "main_sha": "0a8321de8e0ba8b476a40e45a415dd30521c2bd3",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
