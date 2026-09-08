@@ -8,6 +8,11 @@ on:
       - '.github/workflows/birch-history-joint-capacity.yml'
       - 'revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/**'
       - 'revenue/kaggriculture/cloud-market-response/selected_action_history.py'
+  pull_request:
+    paths:
+      - '.github/workflows/birch-history-joint-capacity.yml'
+      - 'revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/**'
+      - 'revenue/kaggriculture/cloud-market-response/selected_action_history.py'
 
 permissions:
   contents: read
