@@ -312,7 +312,11 @@ jobs:
 
   device:
     needs: ingest
-    if: always() && needs.ingest.outputs.ingest_complete == 'true' && needs.ingest.outputs.has_pending_device == 'true'
+    # A Slack-batch ingest owns only public record publication.  Letting its
+    # unrelated device tail wait on a second runner keeps the workflow-level
+    # concurrency group occupied and starves the next complete Slack sweep.
+    # Ordinary issue, schedule, and dispatch runs retain device follow-through.
+    if: "${{ always() && needs.ingest.outputs.ingest_complete == 'true' && needs.ingest.outputs.has_pending_device == 'true' && !(github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector')) }}"
     runs-on: ubuntu-latest
     steps:
       - name: retain physical-device actions without automatic laptop dispatch
