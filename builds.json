@@ -350,39 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
- "open_prs": [
-  {
-   "number": 10736,
-   "author": "woahwhattheheck",
-   "title": "Fix atomic exclusive UGC packet publication",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10736",
-   "base_freshness": {
-    "base_sha": "fcadcfaa71b2ada1593819b2b06c9f58b910a178",
-    "main_sha": "612f40f5472a5269ed3af2f608ea80138037b53c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10749,
-   "author": "woahwhattheheck",
-   "title": "Add DaT Parkinson's submission-readiness tooling",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10749",
-   "base_freshness": {
-    "base_sha": "27e38e8931c4da6156b58d123cbc989bc0f67c0a",
-    "main_sha": "612f40f5472a5269ed3af2f608ea80138037b53c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
