@@ -3,6 +3,8 @@
 
 These tests execute the real commit_and_push function with only its git/process
 boundaries substituted. No board records, carrier events, or remote refs change.
+Unrelated renderer modules are stubbed only while importing this boundary; the
+production commit_and_push bytecode is loaded directly from the requested file.
 """
 from __future__ import annotations
 
@@ -30,7 +32,43 @@ class Proc:
         self.stderr = stderr
 
 
+def install_import_stubs():
+    """Supply only attributes evaluated while board_ingest is imported."""
+    plain = (
+        "builds_ledger",
+        "chunk_board",
+        "panel",
+        "memory_board",
+        "capability_declaration",
+        "model_language",
+        "commons_publication_policy",
+        "exact_body_redact",
+    )
+    for name in plain:
+        sys.modules[name] = types.ModuleType(name)
+
+    hub = types.ModuleType("hub_pages")
+    hub.nav_html = lambda *args, **kwargs: ""
+    hub.CSS_TAG = ""
+    hub.ASSET_V = "test"
+    hub.CSS_V = "test"
+    sys.modules["hub_pages"] = hub
+
+    relay = types.ModuleType("relay_manifest")
+    relay.NTFY_HOSTS = ("https://ntfy.invalid",)
+    relay.NTFY_TOPIC = "test"
+    sys.modules["relay_manifest"] = relay
+
+    host = types.ModuleType("host")
+    host.__path__ = []
+    correction = types.ModuleType("host.correction_link")
+    host.correction_link = correction
+    sys.modules["host"] = host
+    sys.modules["host.correction_link"] = correction
+
+
 def load_source(path: Path):
+    install_import_stubs()
     name = "board_ingest_bake_convergence_under_test"
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
@@ -196,7 +234,7 @@ def main() -> int:
         "errors": [{"test": test.id(), "traceback": trace} for test, trace in result.errors],
         "skipped": [{"test": test.id(), "reason": reason} for test, reason in result.skipped],
         "successful": result.wasSuccessful(),
-        "scope": "commit_and_push git/process boundary; no records, carrier events, or remote refs",
+        "scope": "real commit_and_push; mocked git/process boundaries; no records, carrier events, or remote refs",
     }
     if OPTIONS.report:
         OPTIONS.report.parent.mkdir(parents=True, exist_ok=True)
