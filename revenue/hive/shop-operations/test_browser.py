@@ -12,7 +12,7 @@ except ImportError:
 CHROMIUM = os.environ.get("CHROMIUM_PATH") or shutil.which("chromium")
 
 HTML = Path(__file__).with_name('desk.html').read_text(encoding='utf-8')
-EMPTY = {table: [] for table in ('products','orders','lines','returns','return_lines','movements','receipts')}
+EMPTY = {table: [] for table in ('products','orders','lines','returns','return_lines','movements','receipts','stocktakes')}
 
 
 @unittest.skipUnless(sync_playwright and CHROMIUM, "Optional Playwright and Chromium are needed")
@@ -134,6 +134,54 @@ class BrowserControls(unittest.TestCase):
         self.page.locator('#import').click()
         self.wait_saved()
         self.assertEqual(self.page.evaluate('requests[0].data.products'),json.loads(content))
+
+    def count_fixture(self):
+        fixture = dict(sku='COUNT-FIX',title='Synthetic counted item',source_url='https://example.invalid/fixture',
+                       description='Fixture',uncertainties='',price_minor=100,currency='USD',
+                       listing_state='ready',on_hand=5,reserved=0,available=5,version=7)
+        self.page.evaluate('(p)=>{fixtureState.products=[p]}',fixture)
+        self.page.locator('#count-sku').fill('COUNT-FIX')
+        self.page.locator('#load-count').click()
+        self.page.wait_for_function("document.getElementById('count-version').value==='7'")
+
+    def test_physical_count_loads_version_submits_zero_and_resets(self):
+        self.count_fixture()
+        self.assertIn('on hand 5',self.page.locator('#count-baseline').inner_text())
+        self.page.locator('#count-quantity').fill('0')
+        self.page.locator('#count-reference').fill('fixture-count')
+        self.page.locator('#count-note').fill('Synthetic count')
+        self.page.get_by_role('button',name='Record physical count').click()
+        self.wait_saved()
+        request = self.page.evaluate('requests[0]')
+        self.assertEqual(request['action'],'stocktake')
+        self.assertEqual(request['data'],dict(sku='COUNT-FIX',version=7,quantity=0,
+                         reference='fixture-count',note='Synthetic count'))
+        self.assertEqual(self.page.locator('#count-version').input_value(),'')
+        self.assertIn('Load the ledger',self.page.locator('#count-baseline').inner_text())
+        self.assertEqual(self.page.locator('a[download="stock-counts.csv"]').get_attribute('href'),
+                         '/export/stocktakes.csv')
+
+    def test_refresh_does_not_silently_rebase_a_physical_count(self):
+        self.count_fixture()
+        self.page.evaluate('fixtureState.products[0].version=8')
+        self.page.locator('#refresh').click()
+        self.page.wait_for_function("document.getElementById('status').textContent==='Workspace refreshed.'")
+        self.assertEqual(self.page.locator('#count-version').input_value(),'7')
+        self.page.locator('#count-sku').fill('OTHER')
+        self.assertEqual(self.page.locator('#count-version').input_value(),'')
+        self.page.locator('#count-quantity').fill('2')
+        self.page.locator('#count-reference').fill('fixture-count')
+        self.page.get_by_role('button',name='Record physical count').click()
+        self.assertEqual(self.page.evaluate('requests.length'),0)
+        self.assertIn('Load the current ledger',self.page.locator('#status').inner_text())
+
+    def test_missing_count_sku_clears_prior_version_without_mutation(self):
+        self.count_fixture()
+        self.page.locator('#count-sku').fill('MISSING')
+        self.page.locator('#load-count').click()
+        self.page.wait_for_function("document.getElementById('status').textContent==='Unknown SKU: MISSING'")
+        self.assertEqual(self.page.locator('#count-version').input_value(),'')
+        self.assertEqual(self.page.evaluate('requests.length'),0)
 
     def test_fulfillment_requires_reference_and_emits_selected_order(self):
         order=dict(id='order-fixture',kind='sale',recipient_ref='fixture',status='reserved',shipment_ref='')
