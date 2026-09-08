@@ -10,7 +10,7 @@
     },
     {
       "condition": "At least one non-colliding evidence-bound prospect reaches READY_TO_DRAFT.",
-      "current": 1,
+      "current": 0,
       "id": "QUALIFIED_UNCONTACTED_DEMAND",
       "owner": "COMMONS_RESEARCH_AND_OUTREACH_LANES",
       "rank": 2
@@ -26,21 +26,6 @@
   "execution_queue": [
     {
       "collision_receipts": [],
-      "decision": "READY_TO_DRAFT",
-      "fit_score": 85,
-      "missing": [],
-      "next_action": "record the private draft in Swarm Mail; this planner does not dispatch",
-      "observed_at": "2026-08-30T15:20:37Z",
-      "offer_id": "same-day-agent-survival-proof",
-      "organization": "Composio",
-      "prospect_id": "composio",
-      "rank": 1,
-      "route_state": "VERIFIED",
-      "source_url": "https://docs.composio.dev/reference/changelog",
-      "transport_authorized": false
-    },
-    {
-      "collision_receipts": [],
       "decision": "RESEARCH_REQUIRED",
       "fit_score": 40,
       "missing": [
@@ -53,9 +38,26 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "SigNoz",
       "prospect_id": "signoz",
-      "rank": 2,
+      "rank": 1,
       "route_state": "UNVERIFIED",
       "source_url": "https://signoz.io/blog/introducing-agent-native-observability/",
+      "transport_authorized": false
+    },
+    {
+      "collision_receipts": [
+        "revenue/payment_ready/outreach_receipts/20260830-composio-1a053aa4f8a0014a.json"
+      ],
+      "decision": "HOLD_DO_NOT_RESEND",
+      "fit_score": 85,
+      "missing": [],
+      "next_action": "retain canonical receipt suppression; no draft and no transport handoff",
+      "observed_at": "2026-08-30T15:20:37Z",
+      "offer_id": "same-day-agent-survival-proof",
+      "organization": "Composio",
+      "prospect_id": "composio",
+      "rank": 2,
+      "route_state": "VERIFIED",
+      "source_url": "https://docs.composio.dev/reference/changelog",
       "transport_authorized": false
     },
     {
@@ -221,7 +223,7 @@
     "active_chargeable_checkout": true,
     "collected_cash_usd": 0,
     "prospects_evaluated": 4,
-    "ready_to_draft": 1,
+    "ready_to_draft": 0,
     "transport_actions": 0,
     "verified_positive_replies": 0
   }

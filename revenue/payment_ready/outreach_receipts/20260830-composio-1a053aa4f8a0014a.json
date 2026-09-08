@@ -1,0 +1,45 @@
+{
+  "campaign_id": "same-day-agent-survival-proof-20260830-01",
+  "channel": "EMAIL",
+  "dedupe": {
+    "distinct_contact_key": "support@composio.dev",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": []
+  },
+  "evidence": {
+    "canonical_crm_record": "rec7R1lsHI4m51Cn1",
+    "completion_corroborated": true,
+    "gmail_message_id": "1a053aa4f8a0014a",
+    "gmail_sent_label": true,
+    "gmail_thread_id": "1a05350c96aa3e64",
+    "gmail_thread_message_count": 1,
+    "pipeline_census_disposition": "SENT_HARD_DO_NOT_RESEND",
+    "pipeline_census_path": "p/cursor-revenue-pipeline-census-20260901-01.md",
+    "public_slack_ts": "1788135092.707739"
+  },
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "cash_claimed": false,
+    "collected_cash_usd": 0,
+    "legal_acceptance": "NOT_LANDED"
+  },
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "message_contract": {
+    "content_state": "GMAIL_SENT_BODY_VERIFIED",
+    "prepared_source_reference": "revenue/smart_outreach/candidates.json#composio",
+    "sha256": "e499c2acab126bd71bb24b89f16ccacbab9fb03c1651d6d63bb965dd446f5bcd"
+  },
+  "observed_at": "2026-08-30T17:14:25Z",
+  "organization": "Composio",
+  "provider": "GMAIL",
+  "provider_completed_at": "2026-08-30T17:14:25Z",
+  "provider_reference": "gmail:message:1a053aa4f8a0014a",
+  "provider_state": "SENT",
+  "receipt_id": "outreach-transport-composio-20260830T171425Z",
+  "recipient_email": "support@composio.dev",
+  "response_reference": null,
+  "response_state": "NO_REPLY_OBSERVED",
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "target_id": "composio"
+}
