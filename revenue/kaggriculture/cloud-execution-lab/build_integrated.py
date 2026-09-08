@@ -42,9 +42,9 @@ def source_files():
     mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
     # Controls and experimental configuration are reproduction inputs only.
     for name in ('TITAN-HISTORY-CONFIG.json','test_terminal_history_join.py',
-                 'test_entrypoint_clock.py','test_module_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
+                 'test_entrypoint_clock.py','test_module_recovery.py','test_seed_derived.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
         mapping['checks/'+name]=name
-    for name in ('reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
+    for name in ('reference/historical/seed_budget-before-derived-cache.py','reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
                  'reference/engine/utils.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):
         mapping['checks/'+name]=name
     return mapping

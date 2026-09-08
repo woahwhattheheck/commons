@@ -94,6 +94,13 @@
       "consumed_result": "Three focused cancellation/import/match-isolation tests; completed modules reused, controller and mutable ledgers rebuilt. No RPC-cause or full-game improvement claim.",
       "enabled": true,
       "source_pin": "Current source manifest titan_runtime.py"
+    },
+    {
+      "callsite": "TitanAgent._initialize -> SeedBudget.__init__ -> _derived(routes)",
+      "component": "Immutable SeedBudget route derivation reuse",
+      "consumed_result": "Claude T08 1788840840.568819 measured 91% seed derivation. Complete built-in route-content key, four-entry process cache, read-only tables, per-instance events. Focused semantic/cancellation/isolation and current archive timing tests; no new games.",
+      "enabled": true,
+      "source_pin": "ALDER derivative in current manifest reference/integrated-selected/alder/seed_budget.py; original retained under checks/reference/historical"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -251,8 +258,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 2728,
-      "sha256": "1ac498194c2386ef0aa6172dd3181892d478e4517d359742ee7d103524b07674",
+      "bytes": 3089,
+      "sha256": "e1b015585067d5bd99b4fc01eff13194cee395979469470b5569bd1fd06fa6af",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -285,6 +292,11 @@
       "sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
       "source_path": "reference/evaluator/loader.py"
     },
+    "checks/reference/historical/seed_budget-before-derived-cache.py": {
+      "bytes": 3049,
+      "sha256": "455024a4179a95ad597492e1f4b94de7bd3bfe7a3a88fd0dce46001f629ec3cd",
+      "source_path": "reference/historical/seed_budget-before-derived-cache.py"
+    },
     "checks/test_engine_semantics.py": {
       "bytes": 15070,
       "sha256": "fc0a65f98fc78e4dc0cc5e1b553a53d514276fe83fb3106d4ed55f028b0305f6",
@@ -296,14 +308,19 @@
       "source_path": "test_entrypoint_clock.py"
     },
     "checks/test_module_recovery.py": {
-      "bytes": 3382,
-      "sha256": "d1fa08a6b8efad0db5f709de63d6692f435077d970c5874f7233cbc004769a21",
+      "bytes": 3476,
+      "sha256": "930244277af14cb493b4d63f542b1446820e25f46a7e6c7be06be3ee303e2b93",
       "source_path": "test_module_recovery.py"
     },
     "checks/test_ordered_selected_sell.py": {
       "bytes": 11682,
       "sha256": "0b0a700eb2b8efe0bdc59e5a3dde982fa14c1a5e9b847c9fb41438ed8e1700a0",
       "source_path": "test_ordered_selected_sell.py"
+    },
+    "checks/test_seed_derived.py": {
+      "bytes": 4554,
+      "sha256": "74109501f3277b6af6d6032b1c56d2152b06cd5d6274e5eed1c65edf3bf28d8d",
+      "source_path": "test_seed_derived.py"
     },
     "checks/test_terminal_history_join.py": {
       "bytes": 7847,
@@ -356,8 +373,8 @@
       "source_path": "reference/integrated-selected/UPSTREAM.json"
     },
     "reference/integrated-selected/alder/seed_budget.py": {
-      "bytes": 3049,
-      "sha256": "455024a4179a95ad597492e1f4b94de7bd3bfe7a3a88fd0dce46001f629ec3cd",
+      "bytes": 4093,
+      "sha256": "49cd9ea4112d2bb52b8c42982afa25a3d8258bb6cfdcd6e9b8aa005015788c36",
       "source_path": "reference/integrated-selected/alder/seed_budget.py"
     },
     "reference/integrated-selected/claude/LICENSE-APACHE-2.0.txt": {
