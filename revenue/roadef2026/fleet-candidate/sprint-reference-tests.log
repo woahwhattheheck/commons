@@ -1,0 +1,33 @@
+test_all_published_vectors_survive_checker_loading_and_compare_exactly (__main__.SprintTests.test_all_published_vectors_survive_checker_loading_and_compare_exactly) ... ok
+test_candidate_loader_precision_and_duplicates_preserved (__main__.SprintTests.test_candidate_loader_precision_and_duplicates_preserved) ... ok
+test_cost_is_diagnostic_even_on_exact_tie (__main__.SprintTests.test_cost_is_diagnostic_even_on_exact_tie) ... ok
+test_deep_rank_changes_decide_both_directions (__main__.SprintTests.test_deep_rank_changes_decide_both_directions) ... ok
+test_direct_cli_demands_explicit_instance (__main__.SprintTests.test_direct_cli_demands_explicit_instance) ... ok
+test_direct_cli_records_paths_hashes_rank_and_limits (__main__.SprintTests.test_direct_cli_records_paths_hashes_rank_and_limits) ... ok
+test_equal_length_instances_stay_distinct_with_caller_binding_caveat (__main__.SprintTests.test_equal_length_instances_stay_distinct_with_caller_binding_caveat) ... ok
+test_exact_real_bytes_and_all_twenty_instances (__main__.SprintTests.test_exact_real_bytes_and_all_twenty_instances) ... ok
+test_format_parser_does_not_reorder_unsorted_reference (__main__.SprintTests.test_format_parser_does_not_reorder_unsorted_reference) ... ok
+test_format_parser_rejects_bad_numbers_and_missing_cells (__main__.SprintTests.test_format_parser_rejects_bad_numbers_and_missing_cells) ... ok
+test_format_parser_rejects_duplicate_or_missing_labels (__main__.SprintTests.test_format_parser_rejects_duplicate_or_missing_labels) ... ok
+test_format_parser_rejects_empty_or_excess_rows (__main__.SprintTests.test_format_parser_rejects_empty_or_excess_rows) ... ok
+test_format_parser_rejects_invalid_headers (__main__.SprintTests.test_format_parser_rejects_invalid_headers) ... ok
+test_format_parser_retains_variable_width_not_dictreader_padding (__main__.SprintTests.test_format_parser_retains_variable_width_not_dictreader_padding) ... ok
+test_hash_binding_refuses_mutated_reference (__main__.SprintTests.test_hash_binding_refuses_mutated_reference) ... ok
+test_invalid_candidate_not_invented_vector (__main__.SprintTests.test_invalid_candidate_not_invented_vector) ... ok
+test_legacy_checker_cli_unchanged (__main__.SprintTests.test_legacy_checker_cli_unchanged) ... ok
+test_old_loader_ast_and_main_nonreference_behavior (__main__.SprintTests.test_old_loader_ast_and_main_nonreference_behavior) ... ok
+test_original_full_vector_ranking_500_pairs (__main__.SprintTests.test_original_full_vector_ranking_500_pairs) ... ok
+test_published_tail_is_included_not_mlu_only (__main__.SprintTests.test_published_tail_is_included_not_mlu_only) ... ok
+test_real_decimal_values_are_not_binary_float_rounding (__main__.SprintTests.test_real_decimal_values_are_not_binary_float_rounding) ... ok
+test_real_variable_width_rows_and_zero_tails_are_not_padded (__main__.SprintTests.test_real_variable_width_rows_and_zero_tails_are_not_padded) ... ok
+test_reference_metadata_is_not_invented_coordinate_mapping (__main__.SprintTests.test_reference_metadata_is_not_invented_coordinate_mapping) ... ok
+test_root_cli_compares_named_subset_and_preserves_uncompared_instances (__main__.SprintTests.test_root_cli_compares_named_subset_and_preserves_uncompared_instances) ... ok
+test_root_cli_empty_or_ambiguous_instance_rejected (__main__.SprintTests.test_root_cli_empty_or_ambiguous_instance_rejected) ... ok
+test_root_cli_refuses_unknown_cases_instead_of_silently_dropping (__main__.SprintTests.test_root_cli_refuses_unknown_cases_instead_of_silently_dropping) ... ok
+test_unknown_instance_not_matched_by_length (__main__.SprintTests.test_unknown_instance_not_matched_by_length) ... ok
+test_wrong_length_never_compared_as_prefix (__main__.SprintTests.test_wrong_length_never_compared_as_prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 15.726s
+
+OK
