@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import mimetypes
 import re
 import sqlite3
@@ -21,6 +22,13 @@ class Conflict(ValueError):
 
 def reject_constant(value):
     raise ValueError(f'{value} is not a finite JSON number')
+
+
+def parse_finite_float(value):
+    parsed = float(value)
+    if not math.isfinite(parsed):
+        reject_constant(value)
+    return parsed
 
 
 class Store:
@@ -62,7 +70,7 @@ class Store:
         if payload is not None:
             if not isinstance(payload, str) or len(payload.encode('utf-8')) > MAX_BYTES:
                 raise ValueError('payload must be JSON text up to 2 MB, or null to delete')
-            parsed = json.loads(payload, parse_constant=reject_constant)
+            parsed = json.loads(payload, parse_constant=reject_constant, parse_float=parse_finite_float)
             if not isinstance(parsed, dict):
                 raise ValueError('The workspace JSON root must be an object')
         digest = hashlib.sha256(payload.encode('utf-8')).hexdigest() if payload is not None else None

@@ -26,6 +26,7 @@ def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str]]:
     """Read command/path/exit triples, retaining completed records after a stop."""
     problems: list[str] = []
     records: list[dict] = []
+    seen_paths: set[str] = set()
     sha = ""
     marker: int | None = None
     if raw is None:
@@ -63,6 +64,10 @@ def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str]]:
         if not path or normalized.is_absolute() or ".." in normalized.parts or str(normalized) == ".":
             problems.append("invalid repository-relative test path")
             continue
+        # Keep every exit as evidence, but do not certify repeated file records.
+        if str(normalized) in seen_paths:
+            problems.append("duplicate repository-relative test path")
+        seen_paths.add(str(normalized))
         records.append({"path": str(normalized), "command": [command, path], "exit_code": int(code)})
     if not sha:
         problems.append("checkout record is missing")

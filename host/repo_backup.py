@@ -10,6 +10,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -163,16 +164,23 @@ def snapshot(source: Path, output_dir: Path) -> Path:
     bundle = output_dir / f"commons-{stamp}-{head_sha[:12]}.bundle"
     if bundle.exists():
         raise BackupError(f"refusing to overwrite snapshot: {bundle}")
-    _run(["bundle", "create", str(bundle), "--all"], cwd=source)
-    bundle_heads = _bundle_heads(bundle)
-    repo_heads = _repo_heads(source)
-    if bundle_heads != repo_heads:
-        bundle.unlink(missing_ok=True)
-        raise BackupError("bundle ref inventory differs from source")
-    if (_head_ref(source) != head_ref
-            or _run(["rev-parse", "HEAD"], cwd=source).stdout.strip() != head_sha):
-        bundle.unlink(missing_ok=True)
-        raise BackupError("source HEAD changed during snapshot")
+    # Git may replace an existing bundle path. Build privately on the same
+    # filesystem, then publish with an exclusive hard link: an existence check
+    # alone cannot protect another snapshot that finishes during generation.
+    with tempfile.TemporaryDirectory(prefix=".commons-backup-", dir=output_dir) as staging:
+        staged_bundle = Path(staging) / bundle.name
+        _run(["bundle", "create", str(staged_bundle), "--all"], cwd=source)
+        bundle_heads = _bundle_heads(staged_bundle)
+        repo_heads = _repo_heads(source)
+        if bundle_heads != repo_heads:
+            raise BackupError("bundle ref inventory differs from source")
+        if (_head_ref(source) != head_ref
+                or _run(["rev-parse", "HEAD"], cwd=source).stdout.strip() != head_sha):
+            raise BackupError("source HEAD changed during snapshot")
+        try:
+            os.link(staged_bundle, bundle)
+        except OSError as error:
+            raise BackupError(f"cannot publish snapshot exclusively {bundle}: {error}") from error
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "created_at": _utc_now(),
