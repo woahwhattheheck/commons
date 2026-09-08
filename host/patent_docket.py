@@ -73,7 +73,7 @@ def _git(root: Path, *args: str, binary: bool = False):
 
 
 def _blob_bytes(root: Path, oid: str) -> bytes:
-    _require(bool(HEX40.fullmatch(oid)), "invalid blob sha %r" % oid)
+    _require(isinstance(oid, str) and bool(HEX40.fullmatch(oid)), "invalid blob sha %r" % oid)
     return _git(root, "cat-file", "blob", oid, binary=True)
 
 
@@ -139,9 +139,9 @@ def _validate_source(root: Path, source: dict, at: str) -> bytes:
     required = {"path", "blob_sha", "sha256", "byte_count", "public_url"}
     _exact_keys(source, required, at)
     path = _safe_path(source["path"], at)
-    _require(bool(HEX40.fullmatch(source["blob_sha"])), "%s blob_sha invalid" % at)
-    _require(bool(HEX64.fullmatch(source["sha256"])), "%s sha256 invalid" % at)
-    _require(isinstance(source["byte_count"], int) and source["byte_count"] > 0, "%s byte_count invalid" % at)
+    _require(isinstance(source["blob_sha"], str) and bool(HEX40.fullmatch(source["blob_sha"])), "%s blob_sha invalid" % at)
+    _require(isinstance(source["sha256"], str) and bool(HEX64.fullmatch(source["sha256"])), "%s sha256 invalid" % at)
+    _require(type(source["byte_count"]) is int and source["byte_count"] > 0, "%s byte_count invalid" % at)
     expected_url = "https://github.com/woahwhattheheck/commons/blob/main/%s" % path
     _require(source["public_url"] == expected_url, "%s public_url mismatch" % at)
     actual_oid = _current_blob(root, path)
@@ -171,7 +171,7 @@ def _validate_receipt(root: Path, receipt: dict, source_path: str, at: str) -> N
     _exact_keys(receipt, required, at)
     path = _safe_path(receipt["path"], at)
     _require(path == source_path, "%s path must equal source path" % at)
-    _require(bool(HEX40.fullmatch(receipt["commit_sha"])), "%s commit_sha invalid" % at)
+    _require(isinstance(receipt["commit_sha"], str) and bool(HEX40.fullmatch(receipt["commit_sha"])), "%s commit_sha invalid" % at)
     earliest_commit, earliest_at = _earliest_add(root, path)
     if receipt["commit_sha"] != earliest_commit:
         # A shallow boundary makes every path present at that boundary look newly
@@ -198,8 +198,9 @@ def load(root: Path = ROOT) -> tuple[dict, dict]:
 
 
 def validate(root: Path, docket: dict, schema: dict) -> dict:
+    _require(isinstance(schema, dict), "schema must be an object")
     _require(schema.get("$schema") == "https://json-schema.org/draft/2020-12/schema", "schema draft mismatch")
-    _require(schema.get("$id", "").endswith("/revenue/ip/patent_docket.schema.json"), "schema id mismatch")
+    _require(isinstance(schema.get("$id"), str) and schema["$id"].endswith("/revenue/ip/patent_docket.schema.json"), "schema id mismatch")
     _require(schema.get("type") == "object" and schema.get("additionalProperties") is False, "schema root must be closed")
     top_keys = {
         "schema_version", "kind", "generated_at", "generated_from_main", "scope",
@@ -209,13 +210,14 @@ def validate(root: Path, docket: dict, schema: dict) -> dict:
     _exact_keys(docket, top_keys, "docket")
     _require(docket["schema_version"] == "commons-patent-docket/v1", "schema_version mismatch")
     _require(docket["kind"] == "PATENT_DOCKET", "kind mismatch")
-    _require(bool(HEX40.fullmatch(docket["generated_from_main"])), "generated_from_main invalid")
+    _require(isinstance(docket["generated_from_main"], str) and bool(HEX40.fullmatch(docket["generated_from_main"])), "generated_from_main invalid")
     _require(isinstance(docket["generated_at"], str) and "T" in docket["generated_at"], "generated_at invalid")
     _require(isinstance(docket["scope"], str) and docket["scope"], "scope empty")
     _exact_keys(docket["legal_scope"], LEGAL_SCOPE_KEYS, "legal_scope")
+    _require(all(isinstance(value, bool) for value in docket["legal_scope"].values()), "legal_scope values must be booleans")
     _require(not any(docket["legal_scope"].values()), "legal_scope may not claim legal conclusions")
     omitted = docket["omitted_private_fields"]
-    _require(isinstance(omitted, list) and len(omitted) == len(set(omitted)), "omitted_private_fields invalid")
+    _require(isinstance(omitted, list) and all(isinstance(value, str) for value in omitted) and len(omitted) == len(set(omitted)), "omitted_private_fields invalid")
     _require(PRIVATE_KEYS.issubset(set(omitted)), "omitted_private_fields incomplete")
     _walk_private_keys(docket)
     _validate_provenance(root, docket["inventor_provenance"], "inventor_provenance", "Inventor: Bryce Muhlnickel")
@@ -233,14 +235,14 @@ def validate(root: Path, docket: dict, schema: dict) -> dict:
             "counsel_questions",
         }
         _exact_keys(entry, required, at)
-        _require(re.fullmatch(r"[a-z0-9][a-z0-9-]{7,79}", entry["id"]) is not None, "%s id invalid" % at)
+        _require(isinstance(entry["id"], str) and re.fullmatch(r"[a-z0-9][a-z0-9-]{7,79}", entry["id"]) is not None, "%s id invalid" % at)
         ids.append(entry["id"])
         _require(isinstance(entry["title"], str) and entry["title"], "%s title empty" % at)
         _require(isinstance(entry["invention_summary"], str) and entry["invention_summary"], "%s summary empty" % at)
         _require(entry["inventors"] == ["Bryce Muhlnickel"], "%s inventor provenance mismatch" % at)
         _require(entry["jurisdiction"] == "US", "%s jurisdiction mismatch" % at)
         _require(entry["filing_type"] == "PROVISIONAL", "%s filing_type mismatch" % at)
-        _require(entry["filing_status"] in {"DRAFT_READY_TO_FILE", "OWNER_REPORTED_FILED", "UNKNOWN"}, "%s filing_status invalid" % at)
+        _require(isinstance(entry["filing_status"], str) and entry["filing_status"] in {"DRAFT_READY_TO_FILE", "OWNER_REPORTED_FILED", "UNKNOWN"}, "%s filing_status invalid" % at)
         _require(entry["filing_status"] != "DRAFT_READY_TO_FILE", "%s contradicts current owner-reported filing status" % at)
         questions = entry["counsel_questions"]
         _require(isinstance(questions, list) and questions and all(isinstance(q, str) and q for q in questions), "%s counsel_questions invalid" % at)
