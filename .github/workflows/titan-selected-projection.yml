@@ -245,6 +245,7 @@ jobs:
           python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
             --directory "$RUNNER_TEMP/projection-validation" \
             --include-reporter-tests --include-funded-join --include-runtime-regressions \
+            --include-cancellation --include-ledger-schedule \
             --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
