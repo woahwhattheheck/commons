@@ -13,15 +13,12 @@
     "required_next_consumer_action": "Run this checker with an explicit PR10335-or-later runtime/pins before changing production recovery state.",
     "titan_runtime_core_still_same_blob": true
   },
-  "fixture": {
-    "bytes": 231333,
-    "contains": [
-      "runtime/**",
-      "inputs/candidate-inputs.jsonl.gz"
-    ],
-    "members": 12,
-    "path": "seller-state-fixture.tar.gz",
-    "sha256": "7c867eb9202f95ac01fe6776b056d8a0367f9706b91a25758ed1a92f8e68446e"
+  "evidence_transport": {
+    "bytes": 937901,
+    "library_file_id": "file_000000006fc8820cacdf9f848121b1c0",
+    "library_name": "TITAN-seller-recovery-discriminator-20260908.zip",
+    "required_for_actor_reexecution": true,
+    "sha256": "5acd44985ebc64a8d739cc85eba6102d86695b7962f67b860a50778b3ad6ebc6"
   },
   "fresh_publication_checks": [
     {
