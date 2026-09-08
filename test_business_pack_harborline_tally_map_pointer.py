@@ -69,18 +69,19 @@ class BusinessPackHarborlineTallyMapPointerTest(unittest.TestCase):
         self.assertEqual(self.result["checkout"], "NOT_MINTED")
         self.assertNotIn("337 NO", json.dumps(self.result))
 
-    def test_intact_blobs_stay_put(self) -> None:
-        self.assertTrue(self.result["blobs_match"])
+    def test_historical_hashes_and_receipts_stay_available(self) -> None:
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertEqual(self.result["missing_files"], [])
         self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
         self.assertTrue(
-            self.result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a7a49b77")
+            pointer.EXPECTED_BLOBS["host/harborline_tally_pack_map.py"].startswith("a7a49b77")
         )
         self.assertTrue(
-            self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
+            pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"].startswith(
                 "d3d6fcc7"
             )
         )
-        self.assertTrue(self.result["blobs"]["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
         self.assertEqual(
             self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
             "a550ae1b",
@@ -135,7 +136,8 @@ class BusinessPackHarborlineTallyMapPointerTest(unittest.TestCase):
         )
         self.assertEqual(data["checkout"], "NOT_MINTED")
         self.assertTrue(data["did_not_remint_pointer"])
-        self.assertTrue(data["blobs_match"])
+        self.assertTrue(data["receipt_blobs_match"])
+        self.assertEqual(data["missing_files"], [])
         self.assertIs(data["live_instance_blobs_not_pinned"], True)
 
 

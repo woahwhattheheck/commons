@@ -70,7 +70,7 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
         self.assertIs(self.law["gate"], False)
         self.assertIs(self.law["commons_admission"], False)
 
-    def test_map_stays_with_bc_31c8ef9a_and_blobs_stay_put(self) -> None:
+    def test_map_owner_and_historical_hashes_stay_available(self) -> None:
         row = pointer.landed_row(self.block, "Harborline Local Sites")
         self.assertEqual(self.result["map_owner"], "bc-31c8ef9a")
         self.assertTrue(self.result["files_cleared_to_bc_31c8ef9a"])
@@ -81,9 +81,10 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
         self.assertEqual(row["tally_pack_map_receipt"], "cursor-harborline-tally-pack-map-20260902-01")
         self.assertEqual(row["helper"], "host/business_pack_desk_instance.py")
         self.assertIs(self.block["did_not_overwrite_harborline_tally_pack_map"], True)
-        self.assertTrue(self.result["blobs_match"])
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertEqual(self.result["missing_files"], [])
         self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
-        self.assertEqual(self.result["blobs"]["host/harborline_tally_pack_map.py"], "a7a49b77")
+        self.assertEqual(pointer.EXPECTED_BLOBS["host/harborline_tally_pack_map.py"], "a7a49b77")
         self.assertEqual(
             self.result["blobs"]["p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md"],
             "e38f1251",
@@ -95,10 +96,10 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
             "6ec23344",
         )
         self.assertEqual(
-            self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
+            pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"],
             "d3d6fcc7",
         )
-        self.assertEqual(self.result["blobs"]["packs/waitlist.html"], "bdcaa7ea")
+        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], "bdcaa7ea")
         self.assertEqual(
             self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
             "a550ae1b",

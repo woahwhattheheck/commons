@@ -30,11 +30,18 @@ SIDEWALK_LOTRIBBON_POINTER_ID = (
 MAP_HELPER = "host/harborline_tally_pack_map.py"
 MAP_RECEIPT = "cursor-harborline-tally-pack-map-20260902-01"
 MAP_OWNER = "bc-31c8ef9a"
+# Historical byte observations. Mutable pages and helpers may evolve independently
+# of the catalog pointer. Canonical receipt continuity is checked separately.
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a7a49b77",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "packs/waitlist.html": "bdcaa7ea",
 }
+RECEIPT_BLOBS = {
+    f"p/{POINTER_ID}.md": "e38f1251",
+    f"p/{MAP_RECEIPT}.md": "d3e7312c",
+}
+
 # Land-time observations from leftover SHIP 4b1e74dd / a692e5ca. Not live pins.
 OBSERVED_AT_LAND = {
     "host/business_pack_desk_instance.py": "a550ae1b",
@@ -89,9 +96,13 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     block = instances_block(data)
     waitlist = waitlist_block(data)
     row = harborline_row(block)
-    blobs = {rel: blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
+    blobs = {rel: blob_prefix(rel) for rel in dict.fromkeys((*EXPECTED_BLOBS, *OBSERVED_AT_LAND, *RECEIPT_BLOBS))}
     blobs_match = all(
         blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
+    )
+    missing_files = [rel for rel, prefix in blobs.items() if not prefix]
+    receipt_blobs_match = all(
+        blobs.get(rel, "") == prefix for rel, prefix in RECEIPT_BLOBS.items()
     )
     pointer_ok = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
@@ -110,7 +121,8 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         and str(block.get("checkout") or "") == "NOT_MINTED"
         and data.get("gate") is False
         and data.get("commons_admission") is False
-        and blobs_match
+        and not missing_files
+        and receipt_blobs_match
         and (ROOT / MAP_HELPER).is_file()
         and (ROOT / "p" / f"{POINTER_ID}.md").is_file()
         and (ROOT / "p" / f"{MAP_RECEIPT}.md").is_file()
@@ -148,6 +160,8 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "live_instance_blobs_not_pinned": True,
         "blobs": blobs,
         "blobs_match": blobs_match,
+        "receipt_blobs_match": receipt_blobs_match,
+        "missing_files": missing_files,
         "pointer_ok": pointer_ok,
         "agents_spend_ads": False,
     }
