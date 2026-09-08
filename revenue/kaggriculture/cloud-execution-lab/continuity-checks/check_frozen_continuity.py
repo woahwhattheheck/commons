@@ -158,7 +158,8 @@ def main():
     ap.add_argument('--pins', type=Path, default=Path(__file__).with_name('SOURCE-PINS.json'))
     ap.add_argument('--delve-archive', type=Path)
     ap.add_argument('--output', type=Path, required=True)
-    ap.add_argument('--cell', action='append', choices=CELLS)
+    ap.add_argument('--cell', action='append', metavar='RETAINED_CELL',
+                    help='Retained SELL record prefix; omit for the four original cells')
     ap.add_argument('--worker', action='store_true')
     ap.add_argument('--packets', type=Path)
     args = ap.parse_args()
