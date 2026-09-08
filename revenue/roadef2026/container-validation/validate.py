@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise one built ROADEF image with real Docker and the pinned B01 inputs.
+"""Exercise one built ROADEF image with real Docker and pinned B01/B11/B12 inputs.
 
 No image build, pull, solver modification or performance comparison is performed.
 All execution uses the inspected immutable image ID and network-disabled containers.
@@ -16,6 +16,8 @@ import uuid
 
 UID = "1006410000"
 INPUTS = ("network.json", "traffic.json", "scenario.json")
+INSTANCES = ("B01", "B11", "B12")
+SIGNAL_EXIT_SECONDS = 10
 GIB = 1024 ** 3
 
 
@@ -25,6 +27,38 @@ def digest(path):
 
 def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+
+
+def input_hashes(data):
+    return {instance: {name: digest(data / instance / name) for name in INPUTS}
+            for instance in INSTANCES}
+
+
+def prepared_input_hashes(preparation):
+    """Bind every prepared input to its explicit instance; never collapse paths."""
+    result = {instance: {} for instance in INSTANCES}
+    for row in preparation["inputs"]:
+        instance, name = row["instance"], row["path"]
+        if instance not in result or name not in INPUTS or name in result[instance]:
+            raise ValueError("Expected one preparation row for each instance/input pair")
+        result[instance][name] = row["sha256"]
+    if any(set(files) != set(INPUTS) for files in result.values()):
+        raise ValueError("Prepared inputs must cover B01/B11/B12 network, traffic and scenario")
+    return result
+
+
+def terminate_and_wait(docker, identifier):
+    """Include signal delivery overhead in the external observation deadline."""
+    started = time.monotonic()
+    docker.command(["kill", "--signal", "TERM", identifier], timeout=5)
+    remaining = SIGNAL_EXIT_SECONDS - (time.monotonic() - started)
+    if remaining <= 0:
+        raise RuntimeError("SIGTERM delivery exhausted the external 10s deadline")
+    state = docker.wait(identifier, remaining)
+    elapsed = time.monotonic() - started
+    if elapsed > SIGNAL_EXIT_SECONDS:
+        raise RuntimeError(f"SIGTERM exit observed at {elapsed:.6f}s, after the external 10s deadline")
+    return state, elapsed
 
 
 def optional_text(path):
@@ -218,19 +252,30 @@ def compare_reports(docker, case, left, right, name, allowed):
     return result
 
 
-def run_case(docker, data, output, name, *, terminate):
-    case = output / name
+def run_case(docker, data, output, name, *, instance, terminate, configuration):
+    case = output / f"{instance}-{name}"
     case.mkdir(mode=0o777)
     case.chmod(0o777)  # The image's required numeric UID must write its bind mount.
     budget = 90 if terminate else 30
-    identifier, created = docker.create(name,
+    environment = dict(configuration['env'])
+    environment.update(PORTFOLIO_SECONDS=str(budget), PORTFOLIO_ARTIFACTS='/out')
+    first_container = len(docker.containers)
+    identifier, created = docker.create(case.name,
         ["/home/run.sh", "/data/network.json", "/data/traffic.json", "/data/scenario.json", "/out/solution.json"],
-        data=data, output=case, environment={"PORTFOLIO_SECONDS": budget, "PORTFOLIO_ARTIFACTS": "/out"})
+        data=data, output=case, environment=environment)
     write_json(case / "container-created.json", created)
     started = time.monotonic()
-    row = {"case": name, "portfolio_budget_seconds": budget, "container_id": identifier,
+    row = {"instance": instance, "case": name, "output_directory": case.name,
+           "input_sha256": {name: digest(data / name) for name in INPUTS},
+           "portfolio_budget_seconds": budget, "container_id": identifier,
+           "applied_environment": environment,
            "image_id": docker.image, "command": created["Config"]["Cmd"]}
     try:
+        actual_environment = dict(value.split('=', 1) for value in created['Config']['Env'] if '=' in value)
+        if any(actual_environment.get(key) != str(value) for key, value in environment.items()):
+            raise RuntimeError('Container did not receive the frozen configuration and smoke budget')
+        if any(key in actual_environment for key in configuration['unset']):
+            raise RuntimeError('Container inherited a control forbidden by the frozen configuration')
         if terminate:
             checkpoint_deadline = time.monotonic() + 60
             checkpoint = None
@@ -248,13 +293,9 @@ def run_case(docker, data, output, name, *, terminate):
             write_json(case / "preterm-receipt.json", receipt)
             row["preterm_selected_lane"] = receipt["selected_lane"]
             row["preterm_solution_sha256"] = hashlib.sha256(solution).hexdigest()
-            signal_started = time.monotonic()
-            docker.command(["kill", "--signal", "TERM", identifier], timeout=5)
-            state = docker.wait(identifier, max(0, 15 - (time.monotonic() - signal_started)))
-            row["signal_to_observed_exit_seconds"] = time.monotonic() - signal_started
-            row["signal_observation_window_seconds"] = 15
-            if row["signal_to_observed_exit_seconds"] > 15:
-                raise RuntimeError("SIGTERM exit was not observed within the external 15s deadline")
+            row["signal_observation_window_seconds"] = SIGNAL_EXIT_SECONDS
+            state, elapsed = terminate_and_wait(docker, identifier)
+            row["signal_to_observed_exit_seconds"] = elapsed
         else:
             state = docker.wait(identifier, budget + 15)
         row["observed_wall_seconds"] = time.monotonic() - started
@@ -272,7 +313,7 @@ def run_case(docker, data, output, name, *, terminate):
                     for lane in receipt["lanes"])):
             raise RuntimeError("Portfolio lane binary bytes differ from the inspected image")
         if receipt.get("input_sha256") != {"/data/" + name: digest(data / name) for name in INPUTS}:
-            raise RuntimeError("Portfolio input bytes differ from the supplied B01 files")
+            raise RuntimeError(f"Portfolio input bytes differ from the supplied {instance} files")
         if terminate and receipt.get("signal_received") != 15:
             raise RuntimeError("Portfolio did not record the delivered SIGTERM")
         final = check_solution(docker, case, data, "solution")
@@ -292,6 +333,19 @@ def run_case(docker, data, output, name, *, terminate):
     except Exception as error:
         row.update(passed=False, error=f"{type(error).__name__}: {error}")
     finally:
+        # A failed case must not leave its solver/checker competing with the next
+        # instance. Keep the stopped containers for inspection and final removal.
+        row["forced_stops_before_next_case"] = []
+        for owned in docker.containers[first_container:]:
+            try:
+                if docker.state(owned)["Running"]:
+                    row["passed"] = False
+                    row["forced_stops_before_next_case"].append(owned)
+                    docker.command(["kill", "--signal", "KILL", owned], timeout=5)
+                    docker.wait(owned, 5)
+            except Exception as error:
+                row["passed"] = False
+                row.setdefault("case_cleanup_errors", []).append(f"{owned}: {type(error).__name__}: {error}")
         docker.retain(identifier, case)
         write_json(case / "RESULT.json", row)
     return row
@@ -305,13 +359,16 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     data, output = args.data.resolve(strict=True), args.output.resolve()
-    inputs = {name: digest(data / name) for name in INPUTS}
+    inputs = input_hashes(data)
     preparation = json.loads(args.preparation.read_text())
     output.mkdir(parents=True, exist_ok=False)
     docker = Docker(output)
-    report = {"scope": "B01 actual Docker integration and accepted-checkpoint SIGTERM retention",
+    report = {"scope": "B01/B11/B12 actual Docker integration and accepted-checkpoint SIGTERM retention",
+              "instances": list(INSTANCES), "planned_cases": 2 * len(INSTANCES),
               "submitted": False, "input_sha256": inputs, "cases": [], "passed": False,
               "preparation_sha256": digest(args.preparation),
+              "frozen_candidate": preparation['frozen'],
+              "frozen_configuration": preparation['configuration'],
               "validator_host_uid": os.getuid(), "validator_host_euid": os.geteuid()}
     try:
         image = json.loads(docker.command(["image", "inspect", args.image]))[0]
@@ -328,19 +385,30 @@ def main():
         docker.image_files = probe["files"]
         if probe["uid"] != int(UID) or probe["euid"] != int(UID):
             raise RuntimeError("Actual image process did not use the declared numeric UID")
-        if inputs != {row['path']: row['sha256'] for row in preparation['inputs']}:
+        if inputs != prepared_input_hashes(preparation):
             raise RuntimeError("Runtime inputs differ from pinned preparation")
         if probe['files']['source-manifest.json'] != preparation['context_manifest_sha256']:
             raise RuntimeError("Image build manifest differs from pinned preparation")
+        built_sources = {row['path']: row['sha256'] for row in probe['source_manifest']['files']}
+        if built_sources.get('sources/candidate/main.cpp') != preparation['candidate']['used_sha256']:
+            raise RuntimeError("Image source manifest differs from frozen candidate source")
         runtime = {row['path']: row for row in preparation['runtime_files']}
         for name in ('run.sh', 'supervisor.py', 'compare_checker.py'):
             if probe['files'].get(name) != runtime[name]['used_sha256']:
                 raise RuntimeError(f"Image runtime differs from pinned preparation: {name}")
         report['runtime_source_identity_verified'] = True
-        for name in ("normal-30s", "term-after-checkpoint"):
-            report["cases"].append(run_case(docker, data, output, name, terminate=name.startswith("term")))
-        report["input_hashes_unchanged"] = inputs == {name: digest(data / name) for name in INPUTS}
-        report["passed"] = report["input_hashes_unchanged"] and all(row["passed"] for row in report["cases"])
+        for instance in INSTANCES:
+            for name in ("normal-30s", "term-after-checkpoint"):
+                result = run_case(docker, data / instance, output, name,
+                                  instance=instance, terminate=name.startswith("term"),
+                                  configuration=preparation['configuration'])
+                report["cases"].append(result)
+                if result.get("case_cleanup_errors"):
+                    raise RuntimeError("Case cleanup could not be verified; later instances were not started")
+        report["input_hashes_unchanged"] = inputs == input_hashes(data)
+        report["passed"] = (report["input_hashes_unchanged"] and
+                            len(report["cases"]) == report["planned_cases"] and
+                            all(row["passed"] for row in report["cases"]))
     except Exception as error:
         report["error"] = f"{type(error).__name__}: {error}"
     finally:
