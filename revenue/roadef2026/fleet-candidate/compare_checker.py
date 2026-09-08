@@ -38,7 +38,11 @@ def load_result(path):
             if not value.is_finite() or value < 0:
                 raise ValueError(f"{path}: nonfinite or negative saturation")
             scaled = value * 1_000_000
-            if scaled != scaled.to_integral_value():
+            # The pinned RapidJSON writer emits [1e-7, 1e-6) in scientific
+            # notation even with SetMaxDecimalPlaces(6). Keep those official
+            # values exactly; rounding them would change the objective vector.
+            native_scientific = Decimal("1e-7") <= value < Decimal("1e-6")
+            if scaled != scaled.to_integral_value() and not native_scientific:
                 raise ValueError(f"{path}: saturation has >6 decimal places; rerun official checker at 6")
         except DecimalException as error:
             # Malformed numeric output belongs to the supervisor's existing

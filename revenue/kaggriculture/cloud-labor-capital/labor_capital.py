@@ -11,13 +11,16 @@ import copy
 import math
 from collections import Counter
 from dataclasses import dataclass
-from typing import Any, Mapping, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
 ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
 PARENT_REF = "8329e78768906dc6e75ca3712e1690adc1ab2148"
 # A schema-valid zero-quantity order: _parse_order returns None. Keeping the
 # slot avoids shifting another player's lockstep trades when a hire is removed.
 NO_ORDER = ["SELL", "WHEAT", 0]
+# The factory snapshots its owner after the selected current action. Each call
+# must return a fresh, independent one-observation continuation callable.
+ParentFork = Callable[[], Callable[[Mapping[str, Any]], Mapping[str, Any]]]
 DEFAULTS = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10,
             "shedCapacity": 100, "maxMarketOrdersPerTurn": 10,
             "farmHandCostMult": 1, "townShopSellInterval": 4,
@@ -119,19 +122,34 @@ def _units(engine: Any, farm: dict, private: dict, action: dict, cfg: View,
 
 
 def project_shift(engine: Any, observation: Mapping[str, Any], parent_after_call: Any,
-                  first_action: Mapping[str, Any], configuration: Mapping[str, Any] | None = None
-                  ) -> Projection:
+                  first_action: Mapping[str, Any], configuration: Mapping[str, Any] | None = None,
+                  *, fork_parent: ParentFork | None = None) -> Projection:
     """Replay incumbent tasks through this day, or decision 718, whichever first.
 
     The parent is already advanced through the current call. Future actions come
     from its own source policy applied to projected OBSERVATIONS, not replays,
     held seeds, private rival inventory, or future provider information.
+
+    By default only intact Arlene is supported, via its existing shallow clone.
+    A composed owner may supply the same zero-argument fork factory contract as
+    T04: return an independent callable taking one observation. The factory must
+    snapshot the already-advanced owner without advancing it again; mutable
+    route/diagnostic state must not alias the live owner or another forecast.
+    Configuration and any bounded continuation policy belong to that callable.
+    T10 does not automatically recurse into future hiring/selector searches.
     """
     cfg = _configuration(configuration)
     states, me = _own_state(engine, observation)
     farm = states[me].observation.farms[me]
     private = states[me].observation.private
-    parent = _clone_parent(parent_after_call)
+    if fork_parent is None:
+        continuation = _clone_parent(parent_after_call).act
+    else:
+        if not callable(fork_parent):
+            raise TypeError("fork_parent must be a zero-argument factory")
+        continuation = fork_parent()
+        if not callable(continuation):
+            raise TypeError("fork_parent must return an observation callable")
     env = View(configuration=cfg)
     start = _step(observation, cfg)
     last = min((start // cfg.turnsPerDay + 1) * cfg.turnsPerDay - 1,
@@ -147,7 +165,7 @@ def project_shift(engine: Any, observation: Mapping[str, Any], parent_after_call
         for state in states:
             state.observation.update(step=step, day=day, hour=step % cfg.turnsPerDay)
         action = (copy.deepcopy(dict(first_action)) if step == start
-                  else parent.act(copy.deepcopy(states[me].observation)))
+                  else continuation(copy.deepcopy(states[me].observation)))
         states[me].action = action
         _units(engine, farm, private, action, cfg, day)
         money_before = float(farm["money"])
@@ -257,9 +275,18 @@ def choose_projection(control: Projection, candidates: Sequence[tuple[str, Proje
 
 
 class HiringAgent:
-    """Compose with an intact Arlene Agent and a pinned official engine module."""
+    """Compose with a pinned engine and an intact or explicitly forkable parent.
+
+    Composed parents require fork_parent; its result owns its own forecast state.
+    A fork is requested separately for the control and every candidate. The
+    actual parent is still called exactly once to select the current action.
+    """
     def __init__(self, parent: Any, engine: Any, *, mode: str = "reserve",
-                 configuration: Mapping[str, Any] | None = None):
+                 configuration: Mapping[str, Any] | None = None,
+                 fork_parent: ParentFork | None = None):
+        if fork_parent is not None and not callable(fork_parent):
+            raise TypeError("fork_parent must be a zero-argument factory")
+        self.fork_parent = fork_parent
         self.parent, self.engine = parent, engine
         self.configuration = _configuration(configuration)
         if mode not in ("reserve", "timed"):
@@ -274,8 +301,10 @@ class HiringAgent:
         self.last_decision = {"selected": "baseline", "evaluated": 0}
         if not options:
             return baseline
-        control = project_shift(self.engine, observation, self.parent, baseline, self.configuration)
-        rows = [(name, project_shift(self.engine, observation, self.parent, action, self.configuration))
+        control = project_shift(self.engine, observation, self.parent, baseline, self.configuration,
+                                fork_parent=self.fork_parent)
+        rows = [(name, project_shift(self.engine, observation, self.parent, action, self.configuration,
+                                     fork_parent=self.fork_parent))
                 for name, action in options]
         selected = choose_projection(control, rows)
         self.last_decision = {"selected": selected or "baseline", "evaluated": len(rows),

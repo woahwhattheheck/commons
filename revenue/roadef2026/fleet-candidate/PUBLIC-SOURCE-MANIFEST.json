@@ -13,8 +13,8 @@
     },
     {
       "path": "compare_checker.py",
-      "bytes": 13470,
-      "sha256": "09628fc3465aacaf7cddf11e97a32ba5a40f86ff7a4b777fe603a2301f9f71d6"
+      "bytes": 13802,
+      "sha256": "a402a0166b1e52c95dd181e15b8a124504ac78ddea7e815944c754569b323cb8"
     },
     {
       "path": "test_supervisor.py",
@@ -58,8 +58,8 @@
     },
     {
       "path": "verify_joint.py",
-      "bytes": 5452,
-      "sha256": "3687f7b8bee359c0a6439be4dbbd51c2e14308928597da82502b061738b8c22c"
+      "bytes": 6917,
+      "sha256": "16ed696a69d9677206d8d6b67008fa7a781d1080c32d57d0f1f296b5c216e131"
     },
     {
       "path": "joint-net.json",
@@ -167,6 +167,21 @@
       "sha256": "b5c22394fda4abf5d6d368bc65fa9a545b11b966ec595d200a6f3d12ed75d805"
     },
     {
+      "path": "test_verify_joint_outputs.py",
+      "bytes": 6056,
+      "sha256": "a4f5256e81889494263f4e3df6ef4825466ee3a5cdf93f49277a81557acd36e2"
+    },
+    {
+      "path": "VERIFY-JOINT-OUTPUTS.md",
+      "bytes": 2942,
+      "sha256": "1bf1261602c8537f61045df413cbdff106888a36e3b99dfc3ef8d59c05d2f3f9"
+    },
+    {
+      "path": "VERIFY-JOINT-OUTPUTS-RESULTS.json",
+      "bytes": 4658,
+      "sha256": "9f154d8d833e4a4381b185e4d31d9c24ea7dc40bdcee96c2e3299914b4357e29"
+    },
+    {
       "path": "test_benchmark_finite.py",
       "bytes": 10321,
       "sha256": "5bbdf71f8da39a9a8d3ff324e407b9d86a75a9efab058942da2489ad805f6e0e"
@@ -180,6 +195,36 @@
       "path": "FINITE-LOADS-RESULTS.json",
       "bytes": 8580,
       "sha256": "7ee91ffb326b95b97f3f44a2914bbe020d24ccf0936236b0967e9cb4aa3ef83e"
+    },
+    {
+      "path": "test_checker_serialization.py",
+      "bytes": 11461,
+      "sha256": "1e0d2098f955b284484170744dfe970cd6fb7a7b2324f16f02f2cae4553c3f7b"
+    },
+    {
+      "path": "CHECKER-SCIENTIFIC.md",
+      "bytes": 4122,
+      "sha256": "478b1bc960ebbb8e80d1d578efec9699e5ee3fc58ff471360e00b8009107aa80"
+    },
+    {
+      "path": "CHECKER-SCIENTIFIC-VALIDATION.json",
+      "bytes": 3467,
+      "sha256": "1a07f8da9eb723f8a8326d00de8924e79cebfb6ea87ace9be6656b3f01c6038d"
+    },
+    {
+      "path": "checker-scientific-evidence.json.xz",
+      "bytes": 6228,
+      "sha256": "e67a378e1ab38db07d23b348162c693b971b2dd1dd84b1a757b1b1ce17133ce7"
+    },
+    {
+      "path": "test_sprint_scientific_composition.py",
+      "bytes": 6720,
+      "sha256": "913b886f82948f0094e1d097b0411c52eb6a9e5b2ec3cb14785c480acf74b9bd"
+    },
+    {
+      "path": "SCIENTIFIC-SPRINT-COMPOSITION.md",
+      "bytes": 3154,
+      "sha256": "ebdee0952377a8f7f57a5809a7a4c755d7e77f3cea1e28e495577ec2a6ea70c8"
     }
   ]
 }

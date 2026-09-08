@@ -7,10 +7,21 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def clear_output_cell(path):
+    """Remove one deterministic output cell without following stale symlinks."""
+    try:
+        Path(path).unlink()
+    except FileNotFoundError:
+        return
+    except IsADirectoryError as exc:
+        raise RuntimeError(f"Output cell is a directory: {path}") from exc
 
 
 def main():
@@ -24,6 +35,8 @@ def main():
     args.output = args.output.resolve()
     args.solver = args.solver.resolve()
     args.checker = args.checker.resolve()
+    summary = args.output / "summary.json"
+    clear_output_cell(summary)
     reports = []
 
     def execute(case, joint, suffix, *, resume=None, rounds=128):
@@ -32,22 +45,47 @@ def main():
         scenario = root / (case + "-scenario.json")
         output = args.output / (suffix + ".json")
         stats = args.output / (suffix + "-stats.json")
+        log = args.output / (suffix + ".log")
+        checker_report = args.output / (suffix + "-checker.json")
+        resume_path = Path(resume).resolve() if resume else None
+        temporary_resume = None
+        if resume_path == output.resolve():
+            descriptor, name = tempfile.mkstemp(
+                prefix="." + suffix + ".resume-", suffix=".json", dir=args.output)
+            os.close(descriptor)
+            temporary_resume = Path(name)
+            try:
+                shutil.copyfile(resume_path, temporary_resume)
+            except Exception:
+                clear_output_cell(temporary_resume)
+                raise
+            resume_path = temporary_resume
+        for path in (output, stats, log, checker_report):
+            clear_output_cell(path)
         environment = os.environ.copy()
         for name in ("CLOUD_INITIAL_SOLUTION", "FLEET_WAYPOINT_LIMIT"):
             environment.pop(name, None)
         environment.update(SEDGE_SECONDS="40", SEDGE_MAX_ROUNDS=str(rounds),
                            SEDGE_STATS=str(stats), FLEET_DIRECTED="1", FLEET_JOINT=str(joint))
-        if resume:
-            environment["CLOUD_INITIAL_SOLUTION"] = str(resume)
+        if resume_path:
+            environment["CLOUD_INITIAL_SOLUTION"] = str(resume_path)
         command = [str(args.solver), str(network), str(traffic), str(scenario), str(output)]
-        run = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=60)
-        (args.output / (suffix + ".log")).write_text(run.stdout + run.stderr, encoding="utf-8")
+        try:
+            run = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=60)
+        finally:
+            if temporary_resume is not None:
+                clear_output_cell(temporary_resume)
+        log.write_text(run.stdout + run.stderr, encoding="utf-8")
         if run.returncode:
             raise RuntimeError(f"Solver failed ({run.returncode}): {run.stderr}")
+        missing = [str(path) for path in (output, stats) if not path.is_file()]
+        if missing:
+            raise RuntimeError(
+                "Solver exited 0 without creating current output cells: " + ", ".join(missing))
         command = [str(args.checker), "--net", str(network), "--tm", str(traffic),
                    "--scenario", str(scenario), "--srpaths", str(output), "--max-decimal-places", "6"]
         checked = subprocess.run(command, capture_output=True, text=True, timeout=30)
-        (args.output / (suffix + "-checker.json")).write_text(checked.stdout, encoding="utf-8")
+        checker_report.write_text(checked.stdout, encoding="utf-8")
         if checked.returncode:
             raise RuntimeError(f"Checker failed ({checked.returncode}): {checked.stderr}")
         result = json.loads(checked.stdout)
@@ -90,7 +128,7 @@ def main():
     report = {"solver_sha256": digest(args.solver), "source_sha256": digest(root / "main.cpp"),
               "checker_sha256": digest(args.checker), "cases": reports,
               "fixture_sha256": {p.name: digest(p) for p in sorted(root.glob("joint*.json"))}}
-    (args.output / "summary.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    summary.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
 
 

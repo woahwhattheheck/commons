@@ -153,10 +153,18 @@ def observed_fill(before: Mapping[str, Any], after: Mapping[str, Any], *, actor:
     try:
         if type(actor) is not int or actor not in (0, 1):
             raise ValueError('actor must be 0 or 1')
+        if not isinstance(before, Mapping) or not isinstance(after, Mapping):
+            raise ValueError('two public observation mappings required')
         step0 = _absolute_step(before, configuration)
         step1 = _absolute_step(after, configuration)
         if step1 != step0+1 or before.get('day') != after.get('day'):
             raise ValueError('nonconsecutive frames or day reset')
+        for label, observation in (('before', before), ('after', after)):
+            farms = observation.get('farms')
+            if not isinstance(farms, (list, tuple)) or len(farms) != 2:
+                raise ValueError(label + ': two public farms required')
+            if not isinstance(farms[actor], Mapping):
+                raise ValueError(label + ': public actor farm must be a mapping')
         old, new = before['farms'][actor], after['farms'][actor]
         delta = _integer(new.get('hires_today'), 'after.hires_today')-_integer(old.get('hires_today'), 'before.hires_today')
         if not isinstance(old.get('hands'), (list, tuple)) or not isinstance(new.get('hands'), (list, tuple)):
