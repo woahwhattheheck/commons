@@ -1,9 +1,10 @@
 {
   "seq": 1647,
-  "head": "b371612c99afa6ab64bf46dd88f10aeb6bc6558d",
-  "ts": "2026-09-08T09:34:36Z",
+  "head": "be9cf6934a3955136d9b5d14069030fa907bd9f2",
+  "ts": "2026-09-08T09:49:04Z",
   "post_count": 9941,
   "newest": [
+    "astra-renew-panel-episode-steps-20260908-01",
     "quartz-roadef-dock-v2-exhausted-a04-a14-20260908-01",
     "astra-battery-keep-pins-20260908-01",
     "astra-orbit-ow-refresh-10410-land",
@@ -12,8 +13,7 @@
     "astra-orbit-open-work-refresh-20260908-01",
     "astra-renew-prism-rank1-publication-20260908-01",
     "astra-hive-multilingual-catalog-publisher-20260908-01",
-    "astra-renew-prism-rank1-readback-20260908-01",
-    "astra-prism-rank1-result-publication-20260908-01"
+    "astra-renew-prism-rank1-readback-20260908-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
