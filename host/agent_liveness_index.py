@@ -266,12 +266,22 @@ def build_index(
     }
 
 
+def _decode_json(raw: str | bytes, at: str) -> Any:
+    """Keep parser diagnostics, but normalize integer conversion limit errors."""
+    try:
+        return json.loads(raw)
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        raise
+    except ValueError as exc:
+        raise AgentLivenessError(f"{at}: invalid JSON: {exc}") from exc
+
+
 def scan(root: Path, observed_at: str, source_commit: str) -> dict[str, Any]:
     documents: dict[str, object] = {}
     blobs: dict[str, str] = {}
     for path in SOURCE_PATHS:
         raw = (root / path).read_bytes()
-        documents[path] = json.loads(raw)
+        documents[path] = _decode_json(raw, str(root / path))
         blobs[path] = git_blob_sha(raw)
     return build_index(
         presence=documents["presence.json"],
@@ -284,7 +294,7 @@ def scan(root: Path, observed_at: str, source_commit: str) -> dict[str, Any]:
 
 
 def check_snapshot(root: Path, path: Path) -> dict[str, Any]:
-    expected = json.loads(path.read_text(encoding="utf-8"))
+    expected = _decode_json(path.read_text(encoding="utf-8"), str(path))
     _require(isinstance(expected, dict), f"{path} must be an object")
     _require(expected.get("schema") == SCHEMA, f"{path} is not {SCHEMA}")
     actual = scan(root, _text(expected.get("observed_at")), _text(expected.get("source_commit")))
