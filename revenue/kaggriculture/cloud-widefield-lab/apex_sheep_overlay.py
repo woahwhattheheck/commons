@@ -44,9 +44,13 @@ def _transform(obs, cfg, mode):
         if (isinstance(order, list) and len(order) >= 3 and
                 order[0] == "BUY_ANIMAL" and order[1] == "GOOSE" and
                 isinstance(order[2], (int, float)) and order[2] > 0):
-            if mode == "no_goose":
+            if mode == "no_goose_compacted_legacy":
                 continue
-            if mode == "all":
+            if mode == "no_goose":
+                # Empty slots are intentional: later orders must keep their
+                # opponent pairing and maxMarketOrdersPerTurn positions.
+                order = []
+            elif mode == "all":
                 order[1] = "SHEEP"
             elif mode == "single_upgrade" and order[2] == 1:
                 order[1] = "SHEEP"
@@ -81,8 +85,17 @@ def agent_budget_neutral(obs, cfg=None):
 
 
 def agent_no_goose(obs, cfg=None):
-    """Suppress goose capital spend while preserving every other parent order."""
+    """Suppress goose purchases without shifting any other market slot."""
     return _transform(obs, cfg, "no_goose")
+
+
+def agent_no_goose_compacted_legacy(obs, cfg=None):
+    """Replay the historical compacted-queue experiment, not a pure ablation.
+
+    Kept for exact provenance of PR10009's old no-goose result. The legacy
+    transform also shifts later orders against the opponent's market queue.
+    """
+    return _transform(obs, cfg, "no_goose_compacted_legacy")
 
 
 def agent_two_sheep_budget(obs, cfg=None):
