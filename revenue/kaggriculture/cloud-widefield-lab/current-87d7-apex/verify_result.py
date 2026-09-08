@@ -158,7 +158,6 @@ def main() -> int:
             ]),
         },
         "files": file_receipts,
-        "results_sha256": sha256(args.results),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temp = args.output.with_suffix(args.output.suffix + ".tmp")
