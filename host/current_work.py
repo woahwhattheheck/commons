@@ -244,7 +244,10 @@ def project(catalog, snapshot):
 
 
 def measure_tree(root, main_sha=""):
-    catalog = load_catalog(_read(root, DEFAULT_CATALOG))
+    try:
+        catalog = load_catalog(_read(root, DEFAULT_CATALOG))
+    except UnicodeDecodeError:
+        return {"error": "catalog is not UTF-8", "open_now": [], "items": []}
     if catalog.get("error"):
         return {"error": catalog["error"], "open_now": [], "items": []}
     snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
