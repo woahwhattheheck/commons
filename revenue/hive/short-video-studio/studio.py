@@ -30,6 +30,18 @@ class ProjectError(ValueError):
     pass
 
 
+def _finite_number(value: Any, label: str) -> float:
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        raise ProjectError(f"{label} must be a finite number")
+    try:
+        number = float(value)
+    except (OverflowError, ValueError) as exc:
+        raise ProjectError(f"{label} must be a finite number") from exc
+    if not math.isfinite(number):
+        raise ProjectError(f"{label} must be a finite number")
+    return number
+
+
 def _within(root: pathlib.Path, candidate: pathlib.Path) -> pathlib.Path:
     root = root.resolve()
     candidate = candidate.resolve()
@@ -72,8 +84,8 @@ def validate_project(project: dict[str, Any], project_dir: pathlib.Path) -> dict
     for index, raw in enumerate(segments, 1):
         if not isinstance(raw, dict):
             raise ProjectError(f"segment {index} must be an object")
-        duration = raw.get("duration")
-        if not isinstance(duration, (int, float)) or isinstance(duration, bool) or duration <= 0:
+        duration = _finite_number(raw.get("duration"), f"segment {index} duration")
+        if duration <= 0:
             raise ProjectError(f"segment {index} duration must be positive")
         text = raw.get("text")
         if not isinstance(text, str) or not text.strip():
@@ -86,10 +98,10 @@ def validate_project(project: dict[str, Any], project_dir: pathlib.Path) -> dict
         if asset is not None:
             asset_path = _local_file(project_dir, asset, IMAGE_EXTS)
         start = cursor
-        cursor += float(duration)
+        cursor += duration
         normalized.append(
             {
-                "duration": float(duration),
+                "duration": duration,
                 "text": text.strip(),
                 "color": color,
                 "asset": str(asset_path) if asset_path else None,
@@ -107,13 +119,13 @@ def validate_project(project: dict[str, Any], project_dir: pathlib.Path) -> dict
     kind = audio.get("kind", "tone")
     normalized_audio: dict[str, Any]
     if kind == "tone":
-        frequency = audio.get("frequency", 220)
-        volume = audio.get("volume", 0.03)
-        if not isinstance(frequency, (int, float)) or not 40 <= float(frequency) <= 2000:
+        frequency = _finite_number(audio.get("frequency", 220), "tone frequency")
+        volume = _finite_number(audio.get("volume", 0.03), "tone volume")
+        if not 40 <= frequency <= 2000:
             raise ProjectError("tone frequency must be 40-2000 Hz")
-        if not isinstance(volume, (int, float)) or not 0 <= float(volume) <= 1:
+        if not 0 <= volume <= 1:
             raise ProjectError("tone volume must be 0-1")
-        normalized_audio = {"kind": "tone", "frequency": float(frequency), "volume": float(volume)}
+        normalized_audio = {"kind": "tone", "frequency": frequency, "volume": volume}
     elif kind == "file":
         source = _local_file(project_dir, audio.get("path"), AUDIO_EXTS)
         normalized_audio = {"kind": "file", "path": str(source)}
