@@ -27,6 +27,8 @@ def main():
     workflow = Path(".github/workflows/open-door-guard.yml").read_text(encoding="utf-8")
     assert "\n  push:\n    branches: [main]\n" in workflow, "open-door guard must report direct main pushes"
 
+    test_workflow_diff_base()
+
     blocked = "\n".join(
         [
             diff("action_executor.py", ["PROTECTED_FILES = {'AGENTS.md'}"]),
@@ -308,7 +310,7 @@ def main():
 
     bindings_path = Path("revenue/scope_to_delivery/catalog_bindings.json")
     binding_lines = [
-        guard.AddedLine(bindings_path.as_posix(), line_number, text)
+        guard.AddedLine(path.as_posix(), line_number, text)
         for line_number, text in enumerate(bindings_path.read_text(encoding="utf-8").splitlines(), 1)
     ]
     binding_violations = guard.scan_added(binding_lines)
@@ -362,6 +364,135 @@ def main():
     assert instruction_violations == [], instruction_violations
 
     print("OPEN DOOR GUARD TEST: additions blocked; removals, directive, and active instructions pass")
+
+
+def test_workflow_diff_base():
+    """Execute the real workflow shell and scanner on isolated Git histories."""
+    import os
+    import shutil
+    import subprocess
+    import tempfile
+    import textwrap
+
+    root = Path(__file__).resolve().parent
+    workflow = (root / '.github/workflows/open-door-guard.yml').read_text(encoding='utf-8')
+    step = workflow.split('      - name: reject newly added ', 1)[1]
+    block = step.split('        run: |\n', 1)[1].split('\n      - name:', 1)[0]
+    script = textwrap.dedent(block)
+    scanner = root / 'open_door_guard.py'
+    cases = []
+    with tempfile.TemporaryDirectory(prefix='guard-base-') as temporary:
+        tmp = Path(temporary)
+        home = tmp / 'home'
+        home.mkdir()
+        env = dict(os.environ, HOME=str(home), GIT_CONFIG_NOSYSTEM='1',
+                   GIT_CONFIG_GLOBAL=os.devnull, GIT_TERMINAL_PROMPT='0')
+        repo = tmp / 'repo'
+        repo.mkdir()
+
+        def command(args, cwd=repo, *, check=True, input=None, extra=None):
+            result = subprocess.run(args, cwd=cwd, env=dict(env, **(extra or {})),
+                input=input, text=True, capture_output=True, timeout=20)
+            if check:
+                assert result.returncode == 0, (args, result.stdout, result.stderr)
+            return result
+
+        def git(*args, cwd=repo, check=True, input=None):
+            return command(['git', *args], cwd, check=check, input=input)
+
+        def commit(message):
+            git('add', '.')
+            git('commit', '-qm', message)
+            return git('rev-parse', 'HEAD').stdout.strip()
+
+        def check_case(name, expected, cwd=repo, *, event='pull_request',
+                       pr_head=None, push_base='', contains=None, absent=None):
+            result = command(['bash', '-c', script], cwd, check=False, extra={
+                'EVENT_NAME': event, 'PR_HEAD_SHA': pr_head or feature_head,
+                # Deliberately stale metadata reproduces the provider incident.
+                'PR_BASE_SHA': old_base, 'PUSH_BASE_SHA': push_base,
+            })
+            output = result.stdout + result.stderr
+            assert result.returncode == expected, (name, result.returncode, output)
+            if contains:
+                assert contains in output, (name, output)
+            if absent:
+                assert absent not in output, (name, output)
+            cases.append(name)
+            return result
+
+        git('init', '-q', '-b', 'main')
+        git('config', 'user.name', 'Workflow fixture')
+        git('config', 'user.email', 'fixture@example.invalid')
+        shutil.copyfile(scanner, repo / 'open_door_guard.py')
+        (repo / 'README.md').write_text('Initial fixture.\n', encoding='utf-8')
+        old_base = commit('initial')
+        git('checkout', '-qb', 'feature')
+        (repo / 'candidate.py').write_text('value = 1\n', encoding='utf-8')
+        feature_head = commit('candidate')
+        git('checkout', '-q', 'main')
+        (repo / 'concurrent.py').write_text("PROTECTED_FILES = {'example'}\n", encoding='utf-8')
+        actual_base = commit('concurrent base')
+        git('merge', '-q', '--no-ff', 'feature', '-m',
+            'integration\n\nparent this-is-message-text-not-a-header')
+        merged = git('rev-parse', 'HEAD').stdout.strip()
+        raw_parents = git('cat-file', '-p', 'HEAD').stdout.split('\n\n', 1)[0]
+        assert 'parent ' + actual_base in raw_parents
+        assert 'parent ' + feature_head in raw_parents
+
+        old_result = command(['python3', 'open_door_guard.py', '--diff', old_base, merged], check=False)
+        assert old_result.returncode == 1 and 'concurrent.py:' in old_result.stderr
+        cases.append('stale-event-base-reproduces-concurrent-finding')
+        check_case('actual-merge-base-excludes-concurrent-change', 0, contains='GUARD: PASS')
+        check_case('wrong-second-parent-is-not-a-pass', 1, pr_head=old_base, absent='GUARD: PASS')
+        check_case('push-still-sees-all-pushed-additions', 1, event='push', push_base=old_base,
+                   contains='concurrent.py:')
+        check_case('push-retains-existing-comparison', 0, event='push', push_base=actual_base,
+                   contains='GUARD: PASS')
+
+        # A shallow clone retains the raw merge header even when parent objects
+        # are absent. The exact base is fetched from this local fixture only.
+        git('branch', 'integration', merged)
+        bare = tmp / 'remote.git'
+        git('clone', '-q', '--bare', str(repo), str(bare), cwd=tmp)
+        for folder in ('shallow', 'missing-base'):
+            git('clone', '-q', '--depth=1', '--branch', 'integration', bare.as_uri(),
+                str(tmp / folder), cwd=tmp)
+        shallow = tmp / 'shallow'
+        assert git('rev-parse', '--is-shallow-repository', cwd=shallow).stdout.strip() == 'true'
+        assert git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow, check=False).returncode != 0
+        check_case('depth-one-checkout-fetches-exact-first-parent', 0, cwd=shallow,
+                   contains='GUARD: PASS')
+        git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow)
+        assert git('rev-parse', '--is-shallow-repository', cwd=shallow).stdout.strip() == 'true'
+        missing = tmp / 'missing-base'
+        git('remote', 'set-url', 'origin', str(tmp / 'absent-remote'), cwd=missing)
+        check_case('missing-required-base-is-not-a-pass', 128, cwd=missing, absent='GUARD: PASS')
+
+        # A new finding in the feature still reaches the unchanged scanner.
+        git('checkout', '-qb', 'bad-feature', old_base)
+        (repo / 'introduced.py').write_text("ALLOWED_VERBS = {'READ'}\n", encoding='utf-8')
+        bad_head = commit('candidate finding')
+        git('checkout', '-q', '--detach', actual_base)
+        git('merge', '-q', '--no-ff', 'bad-feature', '-m', 'bad integration')
+        check_case('feature-finding-remains-visible', 1, pr_head=bad_head,
+                   contains='introduced.py:', absent='concurrent.py:')
+
+        # Integration-only resolutions are included, not a head-only shortcut.
+        git('checkout', '-q', '--detach', merged)
+        (repo / 'resolution.py').write_text("ALLOWED_VERBS = {'READ'}\n", encoding='utf-8')
+        git('add', 'resolution.py')
+        tree = git('write-tree').stdout.strip()
+        resolved = git('commit-tree', tree, '-p', actual_base, '-p', feature_head,
+                       input='integration-only addition\n').stdout.strip()
+        git('checkout', '-q', '--detach', resolved)
+        check_case('merge-resolution-finding-remains-visible', 1,
+                   contains='resolution.py:', absent='concurrent.py:')
+        git('checkout', '-q', '--detach', feature_head)
+        check_case('non-merge-pr-checkout-is-not-a-pass', 1, absent='GUARD: PASS')
+
+    print('OPEN DOOR WORKFLOW BASE TEST: ' + str(len(cases)) + ' actual-Git cases pass')
+    return cases
 
 
 if __name__ == "__main__":
