@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -103,7 +103,15 @@ jobs:
               data = path.read_bytes()
               files[str(path)] = {'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(),
                                  'git_blob': hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()}
-          report = {'checkout': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+          checkout = subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()
+          assert checkout == os.environ['GITHUB_SHA'], 'checkout must match the workflow event commit'
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          pull = event.get('pull_request') or {}
+          context = {'event': os.environ['GITHUB_EVENT_NAME'], 'event_sha': os.environ['GITHUB_SHA'],
+                     'pull_request_head': (pull.get('head') or {}).get('sha'),
+                     'pull_request_base': (pull.get('base') or {}).get('sha'),
+                     'checkout_semantics': 'pull_request_merge' if pull else 'event_commit'}
+          report = {'checkout': checkout, 'source_context': context,
                     'run_id': os.environ['GITHUB_RUN_ID'], 'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
                     'python': subprocess.check_output(['python3','--version'], text=True).strip(),
                     'files': files, 'scope': 'focused deterministic tests; no gameplay panels'}
@@ -194,6 +202,19 @@ jobs:
           set -euo pipefail
           python3 -B revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py -v \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/score-schedule-tests.log"
+      - name: Selected-market ledger schedule parity tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 -B revenue/kaggriculture/cloud-selected-market-checks/test_ledger_schedule.py \
+            --lab "$LAB" \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --report "$RUNNER_TEMP/projection-validation/ledger-schedule-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/ledger-schedule-tests.log"
       - name: Deadline cancellation regression tests
         if: ${{ !cancelled() }}
         shell: bash
