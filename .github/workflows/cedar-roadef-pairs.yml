@@ -1,0 +1,85 @@
+name: CEDAR ROADEF paired-waypoint controls
+on:
+  push:
+    branches: [ci/cedar-roadef-pairs-20260908]
+    paths: [.github/workflows/cedar-roadef-pairs.yml]
+permissions:
+  contents: read
+jobs:
+  native-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Stage exact sources and execute new algorithm controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          export EVIDENCE="$RUNNER_TEMP/cedar-pair-evidence"
+          mkdir -p "$EVIDENCE"
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, shutil, subprocess, sys, urllib.request
+          evidence=pathlib.Path(os.environ['EVIDENCE'])
+          work=evidence/'sources';work.mkdir()
+          base=evidence/'fleet';base.mkdir()
+          source='a27b580a926c1ddb6000b7c8192c3e2c8611bc9c'
+          fleet='2885d176373c33410148829fef93c310c3752c0b'
+          prefix='https://raw.githubusercontent.com/woahwhattheheck/commons/'
+          def fetch(ref,path):
+              request=urllib.request.Request(prefix+ref+'/'+path,headers={'User-Agent':'CEDAR-paired-waypoint-control/1'})
+              with urllib.request.urlopen(request,timeout=45) as r:return r.read()
+          expected={
+              'ordered_pairs.hpp':'f6324016b318b807044c9453598a2b06b4c80055138f3e91e941c1c9d1640671',
+              'pair_moves.inc':'fa2f1b3c9427d89899f45c0bbf23d887b90179f3eee338a6d0bd1d181fa52cb6',
+              'build_candidate.py':'b829f2ccd887b058709ee8bbda75411b702add4bc0eed41db9e6e9ba6dcbda0c',
+              'test_ordered_pairs.cpp':'9a6c9b2718aa4ac7314c325c96c160b9018ddc85ddd12e853d0cd7306060a1e6',
+              'check_native.py':'38d0a46c93057f4f328162cd326fbab3203047d2ad3a89bf274a254f933202d9',
+          }
+          for name,digest in expected.items():
+              raw=fetch(source,'revenue/roadef2026/cloud-waypoint-pairs/'+name)
+              assert hashlib.sha256(raw).hexdigest()==digest,name
+              (work/name).write_bytes(raw)
+          manifest=json.loads(fetch(fleet,'revenue/roadef2026/fleet-candidate/PUBLIC-SOURCE-MANIFEST.json'))
+          (base/'PUBLIC-SOURCE-MANIFEST.json').write_text(json.dumps(manifest,indent=2))
+          need={'main.cpp','prepare_context.py','run.sh','supervisor.py','compare_checker.py','build.sh','Dockerfile','README.md','ATTRIBUTION.md','.dockerignore','LICENSE'}
+          for entry in manifest['files']:
+              if entry['path'] not in need:continue
+              raw=fetch(fleet,'revenue/roadef2026/fleet-candidate/'+entry['path'])
+              assert len(raw)==entry['bytes'] and hashlib.sha256(raw).hexdigest()==entry['sha256'],entry['path']
+              (base/entry['path']).write_bytes(raw)
+          context=pathlib.Path(os.environ['RUNNER_TEMP'])/'cedar-context'
+          def run(name,command,cwd=None,timeout=240):
+              with (evidence/(name+'.log')).open('w') as log:
+                  result=subprocess.run(command,cwd=cwd,stdout=log,stderr=subprocess.STDOUT,timeout=timeout)
+              print(name,'exit',result.returncode,flush=True)
+              if result.returncode:
+                  print((evidence/(name+'.log')).read_text()[-12000:])
+                  raise SystemExit(result.returncode)
+          run('generate',[sys.executable,str(work/'build_candidate.py'),'--base',str(base/'main.cpp'),'--output',str(evidence/'paired-main.cpp')])
+          run('prepare',[sys.executable,str(base/'prepare_context.py'),'--candidate',str(evidence/'paired-main.cpp'),'--output',str(context)],timeout=400)
+          shutil.copyfile(context/'source-manifest.json',evidence/'context-source-manifest.json')
+          shutil.copytree(context/'attribution',evidence/'attribution')
+          run('build',['sh',str(context/'build.sh')],timeout=300)
+          binaries=evidence/'bin';binaries.mkdir()
+          for name in ('candidate','checker'):
+              shutil.copyfile(context/'bin'/name,binaries/name)
+              (binaries/name).chmod(0o755)
+          run('baseline-build',['g++','-O3','-std=c++20','-DNDEBUG','-I'+str(context/'sources/sedge/vendor'),str(base/'main.cpp'),'-o',str(binaries/'baseline')])
+          run('pair-unit-build',['g++','-O2','-std=c++20','-Wall','-Wextra','-Werror',str(work/'test_ordered_pairs.cpp'),'-o',str(binaries/'pair-unit')])
+          run('pair-unit',[str(binaries/'pair-unit')])
+          identity={'source':source,'fleet':fleet,'python':sys.version,
+              'compiler':subprocess.check_output(['g++','--version']).decode(),
+              'runner':os.environ.get('RUNNER_OS'),'source_sha256':expected,
+              'generated_sha256':hashlib.sha256((evidence/'paired-main.cpp').read_bytes()).hexdigest(),
+              'workflow_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID']}
+          (evidence/'identity.json').write_text(json.dumps(identity,indent=2))
+          run('native-checks',[sys.executable,str(work/'check_native.py'),'--baseline',str(binaries/'baseline'),
+              '--candidate',str(binaries/'candidate'),'--checker',str(binaries/'checker'),'--output',str(evidence/'native')],timeout=180)
+          print('Pinned official-checker controls complete; no public benchmark or qualification submission executed.')
+          PY
+      - name: Retain exact source and actual results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cedar-roadef-pairs-native
+          path: ${{ runner.temp }}/cedar-pair-evidence
+          if-no-files-found: error
