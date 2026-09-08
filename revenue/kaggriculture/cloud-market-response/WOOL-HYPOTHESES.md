@@ -15,13 +15,19 @@ finite current-stock and recurrence assumptions, not estimates of hidden stock
 or calibrated probabilities. Capacity and scenario limits remain unchanged;
 an impossible family is not silently clipped or partially optimized.
 
-`WOOL-FREEZE.json` was written before execution and retains the settings,
-experiment/JOINT/flow/score source hashes, and saved-history input identity.
+The original `WOOL-FREEZE.json` was written before execution and retains the
+settings, experiment/JOINT/flow/score hashes, and saved-history input identity
+at PR10215 merge `95c5b22a8c06e3bcd42e8eaaa4e0f56aae44b782`. Current main's
+manifest updates only the script hash for the behavior-equivalent reporting
+constant and records that follow-through explicitly; all scientific settings
+and the original decision file remain unchanged. `WOOL-ACTUAL-OUTCOMES.md`
+documents the separate downstream recorded-rival evaluation and CI follow-through.
+
 The ten runtime payloads are the already-exposed LARCH/PRISM development inputs,
 not fresh held data. Fifty prior reconciliations were consumed from their saved
 records instead of rerunning the history inference, actors, or full games.
 
-## Actual result
+## Original conditional result
 
 Exact-only readiness was 1/10. Explicit WOOL assumptions make all 10 inputs
 usable, each with 12 scenarios; eight inputs have five common historical lags
@@ -29,7 +35,7 @@ and two have four. This change in availability is caused by assumptions, not
 new knowledge about WOOL.
 
 The existing producer executes 720 conditional native markets. The two existing
-objective choices make 20 score calls: default baseline-on-tie changes no action;
+objective settings make 20 score calls: default baseline-on-tie changes no action;
 `cash_pareto` changes nine complete actions. All selected action/scenario pairs
 are checked by 228 full native interpreter transitions, with matching own/rival
 terminal cash. There are ten own-unit snapshot captures and no additional
@@ -44,9 +50,10 @@ nine changed actions are not nine demonstrated game improvements, and most do
 not establish a new WOOL-specific economic mechanism.
 
 No recorded current rival queue, hidden inventory, terminal outcome, or reward
-was used or looked up for this experiment. Actual-rival coverage and realized
-performance remain unmeasured here. The result does not warrant changing the
-single canonical agent or its default configuration.
+was used or looked up for this original experiment. Its subsequent separate
+actual-rival evaluation is in `WOOL-ACTUAL-OUTCOMES.md`, and includes a negative
+out-of-family case. The result does not warrant changing the single canonical
+agent or its default configuration.
 
 ## Checks
 
@@ -78,6 +85,8 @@ Use the LARCH score source Git blob `f8219d69985f4fe5a92e688a42507c5294db5744`,
 not the earlier score file bundled in the POLY package. The script explicitly
 loads the supplied later score module; all other consumer modules are the
 unchanged POLY closure. The source hashes in the freeze are checked by the CLI.
+Use source and manifest from the same checkpoint: PR10215 for the original
+execution, or current main for the behavior-equivalent reporting revision.
 
 ```sh
 python -B revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py \
@@ -93,5 +102,6 @@ python -B revenue/kaggriculture/cloud-market-response/check_joint_wool_hypothese
 
 Detailed inputs, complete per-scenario receipts, certificates, and selected
 queues stay in private storage. `WOOL-HYPOTHESES-SUMMARY.json` contains only the
-aggregate outcome and source identities. POLY retains its distinct expanded
-current-snapshot stress-family experiment; this delivery does not modify it.
+original aggregate outcome and source identities. POLY retains its distinct
+expanded current-snapshot stress-family experiment; this delivery does not
+modify it.
