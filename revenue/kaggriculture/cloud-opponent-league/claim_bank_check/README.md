@@ -11,7 +11,7 @@ python -B revenue/kaggriculture/cloud-opponent-league/claim_bank_check/bank_chec
 python -B -m unittest discover -s revenue/kaggriculture/cloud-opponent-league/claim_bank_check -p 'test_*.py' -v
 ```
 
-Pass `-` instead of a filename to read JSON from standard input. Requires Python 3.9 or later. The source and 31-test suite were exercised with Python 3.13.5 in the provided cloud container; no game execution is part of this test command.
+Pass `-` instead of a filename to read JSON from standard input. Requires Python 3.9 or later. The 40-test suite was exercised with Python 3.13.5 in the provided cloud container. It retains the original 31 tests and adds nine scaling/equivalence tests, including 200 deterministic synthetic snapshots. No game execution is part of this test command.
 
 Exit status is 0 when the supplied snapshot has no reported conflicts, 1 when interval overlaps, blocked supersessions, supersession forks, or reused active operation IDs are present, and 2 for invalid input or file errors. Reports are JSON on stdout; input errors are JSON on stderr. An empty inventory is valid but says nothing about unseen claims.
 
@@ -47,6 +47,6 @@ Use `supersedes` only for the exact established original event and accepted repl
 
 `audit(document)` returns active records, superseded IDs, overlap intervals, blocked supersessions, forks, and reused active operation IDs. It preserves the snapshot timestamp and coverage note. It does not modify the input document or invoke network, game, or provider operations.
 
-The checker trusts the supplied correspondence and phase assertions. It does not fetch Slack, authenticate authors, query GitHub, allocate ranges, launch or cancel jobs, infer available runtime, or count queued games as complete. Pairwise comparison and dense result sets can require quadratic time and output space. A clear result applies only to the supplied snapshot, not unseen or subsequently posted messages.
+The checker trusts the supplied correspondence and phase assertions. It does not fetch Slack, authenticate authors, query GitHub, allocate ranges, launch or cancel jobs, infer available runtime, or count queued games as complete. Active intervals are sorted, and each left interval stops scanning when the next start exceeds its end. For `n` active claims and `k` overlapping pairs, sorting plus overlap discovery uses `O(n log n + k)` time and the overlap output uses `O(k)` space, excluding validation and the other report fields. Dense overlaps still require quadratic output. Report order, inclusive endpoints, and all supersession diagnostics are unchanged. The regression suite includes an independent exhaustive reference and deterministic endpoint-access bounds, not machine-speed thresholds. A clear result applies only to the supplied snapshot, not unseen or subsequently posted messages.
 
 Existing T09 allocation and runtime owners remain unchanged. This directory contains reusable source, tests, and this usage guide only. Historical operational snapshots, scenario reports, raw game files, and private trajectories are not included. Keep private input and result files outside the repository.
