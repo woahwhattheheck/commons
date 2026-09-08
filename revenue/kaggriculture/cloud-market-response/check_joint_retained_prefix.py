@@ -99,9 +99,37 @@ def evaluate(rows, deps, cases, ti, flow, fills):
             'runtime_scope':'Public/own retained observations and already-selected own actions; no recorded current rival queue or terminal outcome.'}
 
 
+def decode_input(raw):
+    """Normalize the two existing input contracts, never evaluator indexes."""
+    try:
+        payload=json.loads(raw)
+    except json.JSONDecodeError:
+        rows=[json.loads(line) for line in raw.splitlines() if line.strip()]
+        if not rows:raise ValueError('Empty input stream')
+        return rows
+    if isinstance(payload,dict) and payload.get('schema')=='titan.public-own-history.v1':
+        cfg=payload['configuration'];final=payload['observation']
+        prefix=payload['history'];now=final['step'];seat=final['player']
+        if not isinstance(prefix,list) or len(prefix)!=now:
+            raise ValueError('Complete chronological public/own prefix required')
+        rows=[]
+        for step,entry in enumerate(prefix):
+            obs=entry['observation']
+            if obs['step']!=step or obs['player']!=seat:
+                raise ValueError('Inconsistent history observation boundary')
+            rows.append({'step':step,'seat':seat,'observation':obs,
+                         'configuration':cfg,'expected_action':entry['own_action']})
+        rows.append({'step':now,'seat':seat,'observation':final,
+                     'configuration':cfg,'expected_action':payload['selected_action']})
+        return rows
+    if isinstance(payload,dict) and {'step','observation','configuration','expected_action'}<=set(payload):
+        return [payload]
+    raise ValueError('Expected recorded input JSONL or public-own-history.v1, not an offline index')
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input',type=Path,required=True)
+    parser.add_argument('--input',type=Path,nargs='+',required=True)
     parser.add_argument('--poly-package',type=Path,required=True)
     parser.add_argument('--flow',type=Path,required=True)
     parser.add_argument('--observed-fills',type=Path,required=True)
@@ -112,13 +140,28 @@ def main():
     cases=load(root/'source/terminal_input_cases.py','_retained_joint_cases')
     deps=cases.dependencies(root/'dependencies/engine_loader.py',root/'engine',root/'dependencies',root/'dependencies/full_support.py')
     flow=load(args.flow,'_retained_joint_flow');fills=load(args.observed_fills,'_retained_joint_fills')
-    compressed=args.input.read_bytes();raw=gzip.decompress(compressed)
-    rows=[json.loads(line) for line in raw.splitlines() if line.strip()]
-    report=evaluate(rows,deps,cases,ti,flow,fills)
-    report['input_compressed_sha256']=hashlib.sha256(compressed).hexdigest()
-    report['input_decoded_sha256']=hashlib.sha256(raw).hexdigest()
-    report['source_sha256']={str(p.name):hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in [args.flow,args.observed_fills,Path(__file__),Path(__file__).with_name('joint_terminal_history.py')]}
+    reports=[]
+    for source in args.input:
+        compressed=source.read_bytes();raw=gzip.decompress(compressed)
+        rows=decode_input(raw)
+        report=evaluate(rows,deps,cases,ti,flow,fills)
+        report['input_compressed_sha256']=hashlib.sha256(compressed).hexdigest()
+        report['input_decoded_sha256']=hashlib.sha256(raw).hexdigest()
+        report['source_sha256']={str(p.name):hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in [args.flow,args.observed_fills,Path(__file__),Path(__file__).with_name('joint_terminal_history.py')]}
+        reports.append(report)
+    if len(reports)==1:
+        report=reports[0]
+    else:
+        report={'reports':reports,'summary':{'unique_inputs':len(reports),
+            'ready_inputs':sum(r['family']['ready'] for r in reports),
+            'changed_actions':sum(r['summary']['action_changed'] for r in reports),
+            'family_statuses':dict(Counter(r['family']['status'] for r in reports)),
+            'prior_pairs':sum(r['summary']['prior_pairs'] for r in reports),
+            'unit_boundary_captures':sum(r['summary']['unit_boundary_captures'] for r in reports),
+            'conditional_market_calls':sum(r['summary']['conditional_market_calls'] for r in reports),
+            'score_selector_calls':sum(r['summary']['score_selector_calls'] for r in reports),
+            'full_games':0,'policy_actor_calls':0,'new_game_seeds':0}}
     args.output.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
     print(json.dumps(report['summary'],indent=2))
 
