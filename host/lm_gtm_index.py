@@ -229,7 +229,8 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     if not text.strip():
         return []
-    for line_no, line in enumerate(text.splitlines(), start=1):
+    # JSONL records use LF; Unicode line separators inside strings are data.
+    for line_no, line in enumerate(text.split("\n"), start=1):
         if not line.strip():
             continue
         try:
