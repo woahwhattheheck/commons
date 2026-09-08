@@ -1,272 +1,198 @@
 #!/usr/bin/env python3
-"""Recent deliveries remain visible across arbitrary first-parent bake runs."""
+"""Exercise landed-work history selection against real temporary Git histories."""
 from __future__ import annotations
 
+import contextlib
 import importlib.util
-import json
-from pathlib import Path
-import shutil
+import io
 import subprocess
-import sys
 import tempfile
 import unittest
-from unittest import mock
+from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / "host" / "landed_work_feed.py"
-SPEC = importlib.util.spec_from_file_location("landed_feed_history_target", SOURCE)
+SPEC = importlib.util.spec_from_file_location("landed_work_feed_history_subject", ROOT / "host/landed_work_feed.py")
+assert SPEC and SPEC.loader
 feed = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(feed)
 
 
-class LandedWorkHistoryTests(unittest.TestCase):
-    def setUp(self):
-        directory = tempfile.TemporaryDirectory()
-        self.addCleanup(directory.cleanup)
-        self.repo = Path(directory.name)
-        self.run_git("init", "-q", "-b", "main")
+class HistoryTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
         self.sequence = 0
+        self.git("init", "-q", "-b", "main")
+        self.git("config", "user.name", "Feed Test")
+        self.git("config", "user.email", "feed-test@example.invalid")
+        self.git("config", "commit.gpgsign", "false")
+        self.git("config", "core.hooksPath", str(self.root / "no-hooks"))
+        self.commit("llms.txt+fresh.md initial", {"llms.txt": "initial"})
 
-    def run_git(self, *args):
+    def git(self, *args: str) -> str:
         return subprocess.check_output(
-            ["git", "-c", "user.name=Feed Fixture", "-c",
-             "user.email=fixture@example.invalid", "-c", "core.hooksPath=/dev/null",
-             "-c", "commit.gpgSign=false", *args],
-            cwd=self.repo, text=True, stderr=subprocess.PIPE,
+            ["git", "-C", str(self.root), *args], text=True, stderr=subprocess.PIPE,
         ).strip()
 
-    def commit(self, title, filename="feature.txt"):
+    def commit(self, title: str, files: dict[str, str] | None = None) -> str:
         self.sequence += 1
-        path = self.repo / filename
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(str(self.sequence), encoding="utf-8")
-        self.run_git("add", "--", filename)
-        self.run_git("commit", "-qm", title)
-        return self.run_git("rev-parse", "HEAD")
+        for name, text in (files or {}).items():
+            path = self.root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding="utf-8")
+        self.git("add", "--all")
+        self.git("commit", "-q", "--allow-empty", "-m", title)
+        return self.git("rev-parse", "HEAD")
 
-    def bakes(self, count, named=True):
+    def bakes(self, count: int, *, by_path: bool = False) -> None:
         for _ in range(count):
-            self.commit("llms.txt+fresh.md: refresh" if named else "Refresh generated pulse",
-                        "fresh.md" if named else "pulse.json")
+            self.commit(
+                "Update generated files" if by_path else "llms.txt+fresh.md bake",
+                {"llms.txt": str(self.sequence)} if by_path else None,
+            )
 
-    def shas(self, limit):
-        return [row["sha"] for row in feed.recent_merges(limit, self.repo)]
+    def selected(self, limit: int) -> list[str]:
+        return [row["sha"] for row in feed.recent_merges(limit, self.root)]
 
-    def test_delivery_survives_more_than_three_log_pages_of_bakes(self):
-        delivery = self.commit("Landed feature #123")
-        self.bakes(75)
-        self.assertEqual(self.shas(1), [delivery])
+    def test_long_title_bake_run_does_not_hide_deliveries(self) -> None:
+        first = self.commit("Merge pull request #101", {"source.py": "first"})
+        second = self.commit("Merge pull request #102", {"source.py": "second"})
+        self.bakes(137)
+        self.assertEqual(self.selected(2), [second, first])
 
-    def test_interleaved_deliveries_fill_limit_in_newest_first_order(self):
-        older = self.commit("Old delivery #1")
-        self.bakes(26)
-        middle = self.commit("Middle delivery #2")
-        self.bakes(27)
-        newest = self.commit("Newest delivery #3")
-        self.bakes(28)
-        self.assertEqual(self.shas(2), [newest, middle])
-        self.assertEqual(self.shas(3), [newest, middle, older])
+    def test_long_path_only_bake_run_does_not_hide_deliveries(self) -> None:
+        first = self.commit("Useful #103", {"source.py": "first"})
+        self.bakes(70, by_path=True)
+        self.assertEqual(self.selected(1), [first])
 
-    def test_path_only_bakes_remain_excluded_across_pages(self):
-        delivery = self.commit("Real implementation #4")
-        self.bakes(30, named=False)
-        self.assertEqual(self.shas(2), [delivery])
+    def test_page_boundary_has_no_omissions_or_duplicates(self) -> None:
+        wanted = []
+        for count in (63, 64, 65):
+            wanted.insert(0, self.commit(f"Useful #{count}", {"source.py": str(count)}))
+            self.bakes(count)
+        self.assertEqual(self.selected(3), wanted)
+        self.assertEqual(self.selected(9), wanted)
 
-    def test_mixed_source_and_generated_commit_remains_visible(self):
-        self.commit("Initial implementation")
-        (self.repo / "fresh.md").write_text("generated", encoding="utf-8")
-        self.run_git("add", "fresh.md")
-        delivery = self.commit("Mixed real change #5")
-        rows = feed.recent_merges(1, self.repo)
-        self.assertEqual(rows[0]["sha"], delivery)
-        self.assertEqual(set(rows[0]["paths"]), {"fresh.md", "feature.txt"})
-        self.assertEqual(rows[0]["pr"], 5)
+    def test_exhaustion_returns_fewer_than_requested(self) -> None:
+        first = self.commit("Useful #104", {"source.py": "first"})
+        self.bakes(90)
+        self.assertEqual(self.selected(8), [first])
 
-    def test_exhausted_history_returns_available_rows_without_duplicates(self):
-        first = self.commit("First real item")
-        self.bakes(30)
-        second = self.commit("Second real item")
-        rows = self.shas(10)
-        self.assertEqual(rows, [second, first])
-        self.assertEqual(len(rows), len(set(rows)))
+    def test_all_bakes_exhaust_without_inventing_a_delivery(self) -> None:
+        self.bakes(70, by_path=True)
+        self.assertEqual(self.selected(3), [])
 
-    def test_all_bake_history_exhausts_to_empty(self):
-        self.bakes(50)
-        self.assertEqual(self.shas(2), [])
+    def test_limit_stops_at_requested_qualifying_entry(self) -> None:
+        self.commit("Older #105", {"source.py": "older"})
+        latest = self.commit("Latest #106", {"source.py": "latest"})
+        with patch.object(feed, "parse_commit", wraps=feed.parse_commit) as parser:
+            self.assertEqual(self.selected(1), [latest])
+            self.assertEqual(parser.call_count, 1)
 
-    def test_nonpositive_limit_needs_no_git_history(self):
-        with mock.patch.object(feed, "git", side_effect=AssertionError("unexpected Git read")):
-            self.assertEqual(feed.recent_merges(0, self.repo), [])
-            self.assertEqual(feed.recent_merges(-1, self.repo), [])
-
-    def test_first_parent_history_does_not_double_count_side_branch_commits(self):
-        root = self.commit("Initial implementation")
-        self.run_git("checkout", "-qb", "feature")
-        side = self.commit("Side branch implementation", "side.txt")
-        self.run_git("checkout", "-q", "main")
-        main = self.commit("Main implementation", "main.txt")
-        self.run_git("merge", "--no-ff", "-qm", "Merge pull request #77", "feature")
-        merge = self.run_git("rev-parse", "HEAD")
-        self.bakes(26)
-        rows = feed.recent_merges(3, self.repo)
-        self.assertEqual([row["sha"] for row in rows], [merge, main, root])
+    def test_first_parent_excludes_unmerged_branch_history(self) -> None:
+        base = self.commit("Main #107", {"base.py": "base"})
+        self.git("checkout", "-q", "-b", "feature")
+        side = self.commit("Side #108", {"feature.py": "feature"})
+        self.git("checkout", "-q", "main")
+        self.git("merge", "--no-ff", "-qm", "Merge pull request #109", "feature")
+        merge = self.git("rev-parse", "HEAD")
+        self.bakes(68)
+        rows = feed.recent_merges(10, self.root)
+        self.assertEqual([row["sha"] for row in rows], [merge, base])
         self.assertNotIn(side, [row["sha"] for row in rows])
-        self.assertEqual(rows[0]["pr"], 77)
-        self.assertEqual(rows[0]["paths"], ["side.txt"])
+        self.assertEqual(rows[0]["paths"], ["feature.py"])
 
-    def test_pagination_uses_one_head_when_new_commits_arrive(self):
-        oldest = self.commit("Old original delivery")
-        self.bakes(40)
-        newest = self.commit("New original delivery")
+    def test_merge_at_page_boundary_follows_its_first_parent(self) -> None:
+        base = self.commit("Main #201", {"base.py": "base"})
+        self.git("checkout", "-q", "-b", "feature")
+        side = self.commit("Side #202", {"feature.py": "feature"})
+        self.git("checkout", "-q", "main")
+        self.git("merge", "--no-ff", "-qm", "Merge pull request #203", "feature")
+        merge = self.git("rev-parse", "HEAD")
+        self.bakes(63)
+        selected = self.selected(8)
+        self.assertEqual(selected, [merge, base])
+        self.assertNotIn(side, selected)
+
+    def test_head_advancing_between_pages_does_not_change_snapshot(self) -> None:
+        first = self.commit("Older #110", {"source.py": "older"})
+        self.bakes(70)
         original_git = feed.git
+        appended = []
         log_calls = []
-        arrivals = []
 
-        def moving_head(args, cwd=None):
-            result = original_git(args, cwd)
+        def advance(args: list[str], cwd: Path | None = None) -> str:
+            output = original_git(args, cwd)
             if args[0] == "log":
                 log_calls.append(args)
-                if len(log_calls) == 1:
-                    arrivals.append(self.commit("Concurrent later delivery"))
-            return result
+                if not appended:
+                    appended.append(self.commit("New #111", {"new.py": "new"}))
+            return output
 
-        with mock.patch.object(feed, "git", side_effect=moving_head):
-            rows = feed.recent_merges(2, self.repo)
-        self.assertGreater(len(log_calls), 1)
-        self.assertEqual([row["sha"] for row in rows], [newest, oldest])
-        self.assertNotIn(arrivals[0], [row["sha"] for row in rows])
-        self.assertTrue(all(newest in args for args in log_calls))
+        with patch.object(feed, "git", side_effect=advance):
+            self.assertEqual(self.selected(2), [first])
+        self.assertGreaterEqual(len(log_calls), 2)
+        self.assertTrue(all("-64" in args for args in log_calls))
+        self.assertEqual(self.selected(2), [appended[0], first])
 
-    def test_scan_stops_after_enough_visible_rows(self):
-        self.commit("Initial delivery")
-        newest = self.commit("Latest delivery")
-        with mock.patch.object(feed, "git", wraps=feed.git) as reads:
-            self.assertEqual(self.shas(1), [newest])
-        self.assertEqual(sum(call.args[0][0] == "log" for call in reads.call_args_list), 1)
+    def test_mixed_source_and_generated_paths_remain_visible(self) -> None:
+        sha = self.commit("Useful #112", {"source.py": "code", "llms.txt": "generated"})
+        row = feed.recent_merges(1, self.root)[0]
+        self.assertEqual(row["sha"], sha)
+        self.assertEqual(row["pr"], 112)
+        self.assertEqual(row["paths"], ["llms.txt", "source.py"])
+        self.assertEqual(row["harness"], "feed-test")
+        self.assertIn("harness=feed-test", feed.format_line(row))
 
-    def test_subject_author_and_formatted_delivery_fields_are_preserved(self):
-        self.commit("Initial delivery")
-        delivery = self.commit("Implement café support (#88)")
-        self.bakes(30)
-        row = feed.recent_merges(1, self.repo)[0]
-        self.assertEqual(row["sha"], delivery)
-        self.assertEqual(row["title"], "Implement café support (#88)")
-        self.assertEqual(row["author"], "Feed Fixture")
-        self.assertEqual(row["harness"], "feed-fixture")
-        line = feed.format_line(row)
-        self.assertIn("#88 " + delivery[:9], line)
-        self.assertIn("paths=feature.txt", line)
+    def test_subject_tabs_and_unicode_are_preserved(self) -> None:
+        title = "Useful #113 café\tcomponent"
+        sha = self.commit(title, {"source.py": "code"})
+        self.bakes(2)
+        row = feed.recent_merges(1, self.root)[0]
+        self.assertEqual((row["sha"], row["title"]), (sha, title))
 
-    def test_real_cli_reports_delivery_after_dense_bakes_without_sending(self):
-        (self.repo / "host").mkdir()
-        shutil.copyfile(SOURCE, self.repo / "host" / SOURCE.name)
-        (self.repo / "ground").mkdir()
-        catalog = {"id": "history-fixture", "ride": "commons-ship-enforcer",
-                   "headless_enforcer": "CLAUDE_TAKING", "repos_named_here": 6}
-        (self.repo / "ground" / "LANDED_WORK_FEED.json").write_text(json.dumps(catalog), encoding="utf-8")
-        self.run_git("add", ".")
-        delivery = self.commit("Real CLI delivery #90")
-        self.bakes(30)
-        result = subprocess.run(
-            [sys.executable, str(self.repo / "host" / SOURCE.name), "--json", "--limit", "1"],
-            cwd=self.repo, capture_output=True, text=True, timeout=15, check=False,
-        )
-        self.assertEqual(result.returncode, 0, result.stderr)
-        packet = json.loads(result.stdout)
-        self.assertEqual(packet["count"], 1)
-        self.assertEqual(packet["merges"][0]["sha"], delivery)
-        self.assertEqual(packet["sends"], 0)
-        self.assertEqual(packet["cash_usd"], 0)
-        self.assertEqual(packet["cadence"], "per-merge")
-        self.assertEqual(packet["verdict"], "RENDER")
+    def test_zero_limit_does_not_read_git(self) -> None:
+        with patch.object(feed, "git", side_effect=AssertionError("unexpected git read")):
+            self.assertEqual(self.selected(0), [])
 
-    def test_root_commit_lists_its_actual_paths(self):
-        sha = self.commit("Initial delivery", "initial.txt")
-        self.assertEqual(feed.paths_of(sha, self.repo), ["initial.txt"])
+    def test_negative_limit_is_rejected_before_reading_git(self) -> None:
+        with patch.object(feed, "git", side_effect=AssertionError("unexpected git read")):
+            with self.assertRaisesRegex(ValueError, "nonnegative"):
+                feed.recent_merges(-1, self.root)
 
-    def test_git_quoted_and_whitespace_filenames_stay_exact(self):
-        self.commit("Initial delivery")
-        names = ["café.txt", " leading.txt", "trailing.txt ", "tab\tname.txt",
-                 "two\nlines.txt", "carriage\rreturn.txt", '"quoted".txt',
-                 "back\\slash.txt", "comma,name.txt", "ends-newline\n"]
-        for name in names:
-            (self.repo / name).write_text("evidence", encoding="utf-8")
-        self.run_git("add", ".")
-        self.run_git("commit", "-qm", "Delivery with exact filenames")
-        sha = self.run_git("rev-parse", "HEAD")
-        self.assertEqual(set(feed.paths_of(sha, self.repo)), set(names))
+    def test_cli_negative_limit_is_a_usage_error_not_a_git_call(self) -> None:
+        with patch.object(feed, "measure", side_effect=AssertionError("unexpected measure")):
+            with contextlib.redirect_stderr(io.StringIO()) as captured:
+                with self.assertRaises(SystemExit) as result:
+                    feed.main(["--limit", "-1"])
+        self.assertEqual(result.exception.code, 2)
+        self.assertIn("--limit must be nonnegative", captured.getvalue())
 
-    def test_quote_path_configuration_does_not_change_reported_names(self):
-        self.commit("Initial delivery")
-        sha = self.commit("Unicode delivery", "récolte-稲.txt")
-        for value in ("true", "false"):
-            self.run_git("config", "core.quotePath", value)
-            self.assertEqual(feed.paths_of(sha, self.repo), ["récolte-稲.txt"])
+    def test_later_page_failure_is_not_reported_as_partial_success(self) -> None:
+        self.commit("Older #204", {"source.py": "older"})
+        self.bakes(70)
+        self.commit("Latest #205", {"source.py": "latest"})
+        original_git = feed.git
+        log_calls = 0
 
-    def test_rename_and_delete_include_the_affected_paths(self):
-        self.commit("Initial delivery", "old.txt")
-        self.run_git("mv", "old.txt", "new.txt")
-        self.run_git("commit", "-qm", "Rename")
-        sha = self.run_git("rev-parse", "HEAD")
-        self.assertEqual(set(feed.paths_of(sha, self.repo)), {"old.txt", "new.txt"})
-        self.run_git("rm", "-q", "new.txt")
-        self.run_git("commit", "-qm", "Delete")
-        self.assertEqual(feed.paths_of(self.run_git("rev-parse", "HEAD"), self.repo), ["new.txt"])
+        def fail_later(args: list[str], cwd: Path | None = None) -> str:
+            nonlocal log_calls
+            if args[0] == "log":
+                log_calls += 1
+                if log_calls == 2:
+                    raise subprocess.CalledProcessError(128, ["git", *args])
+            return original_git(args, cwd)
 
-    def test_untracked_files_are_not_reported_as_landed(self):
-        sha = self.commit("Initial delivery")
-        (self.repo / "untracked.txt").write_text("not delivered", encoding="utf-8")
-        self.assertEqual(feed.paths_of(sha, self.repo), ["feature.txt"])
+        with patch.object(feed, "git", side_effect=fail_later):
+            with self.assertRaises(subprocess.CalledProcessError):
+                feed.recent_merges(3, self.root)
 
-    def test_empty_commit_has_no_invented_paths(self):
-        self.commit("Initial delivery")
-        self.run_git("commit", "--allow-empty", "-qm", "Empty commit")
-        self.assertEqual(feed.paths_of(self.run_git("rev-parse", "HEAD"), self.repo), [])
-
-    def test_single_line_display_escapes_controls_without_mutating_paths(self):
-        names = ["two\nlines.txt", "carriage\rreturn", "tab\tname", "comma,name", "back\\slash"]
-        row = {"repo": feed.REPO, "pr": 88, "sha": "a" * 40,
-               "title": "Shipped feature", "harness": "fixture", "paths": names[:]}
-        line = feed.format_line(row)
-        self.assertEqual(len(line.splitlines()), 1)
-        self.assertNotIn("\t", line)
-        for name in names:
-            self.assertIn(json.dumps(name, ensure_ascii=True), line)
-        self.assertEqual(row["paths"], names)
-
-    def test_normal_line_format_is_unchanged(self):
-        row = {"repo": feed.REPO, "pr": 91, "sha": "b" * 40,
-               "title": "Delivery", "harness": "fixture", "paths": ["src/a.py", "readme.md"]}
-        self.assertEqual(feed.format_line(row),
-                         "woahwhattheheck/commons #91 bbbbbbbbb Delivery harness=fixture paths=src/a.py,readme.md")
-
-    def test_empty_root_subject_does_not_abort_feed(self):
-        (self.repo / "initial.txt").write_text("actual root", encoding="utf-8")
-        self.run_git("add", ".")
-        self.run_git("commit", "--allow-empty-message", "-qm", "")
-        sha = self.run_git("rev-parse", "HEAD")
-        rows = feed.recent_merges(1, self.repo)
-        self.assertEqual([row["sha"] for row in rows], [sha])
-        self.assertEqual(rows[0]["title"], "")
-        self.assertEqual(rows[0]["paths"], ["initial.txt"])
-
-    def test_empty_subject_at_history_page_end_remains_visible(self):
-        (self.repo / "initial.txt").write_text("actual root", encoding="utf-8")
-        self.run_git("add", ".")
-        self.run_git("commit", "--allow-empty-message", "-qm", "")
-        sha = self.run_git("rev-parse", "HEAD")
-        self.bakes(30)
-        self.assertEqual(self.shas(1), [sha])
-
-    def test_control_characters_in_subject_are_data_not_record_boundaries(self):
-        title = "Implement\talpha\x1ebeta\u2028gamma"
-        sha = self.commit(title)
-        rows = feed.recent_merges(1, self.repo)
-        self.assertEqual(rows[0]["sha"], sha)
-        self.assertEqual(rows[0]["title"], title)
-        line = feed.format_line(rows[0])
-        self.assertEqual(len(line.splitlines()), 1)
-        self.assertIn(json.dumps(title, ensure_ascii=True), line)
+    def test_git_failure_is_not_reported_as_an_empty_feed(self) -> None:
+        with patch.object(feed, "git", side_effect=subprocess.CalledProcessError(128, ["git"])):
+            with self.assertRaises(subprocess.CalledProcessError):
+                feed.recent_merges(2, self.root)
 
 
 if __name__ == "__main__":

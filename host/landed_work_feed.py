@@ -101,32 +101,39 @@ def format_line(row: dict[str, Any]) -> str:
 
 
 def recent_merges(limit: int = 8, cwd: Path | None = None) -> list[dict[str, Any]]:
-    if limit <= 0:
+    """Return up to limit non-bake entries from one first-parent history.
+
+    Page by the last examined commit's first parent, not a fixed overscan or
+    offsets against moving HEAD. Long bake runs must not hide landed work.
+    """
+    if limit < 0:
+        raise ValueError("limit must be nonnegative")
+    if limit == 0:
         return []
-    # Pin one history before paging; new commits must not shift page offsets.
-    head = git(["rev-parse", "HEAD"], cwd=cwd)
-    page_size = max(24, limit * 3)
-    offset = 0
+    tip = git(["rev-parse", "--verify", "HEAD^{commit}"], cwd=cwd)
     rows: list[dict[str, Any]] = []
-    while len(rows) < limit:
+    while True:
         raw = git(
-            ["log", "--first-parent", f"--max-count={page_size}",
-             f"--skip={offset}", "-z", "--format=%H%x00%an%x00%s", head, "--"],
+            ["log", "--first-parent", "-64", "-z", "--format=%H%x00%an%x00%s", tip, "--"],
             cwd=cwd,
         )
-        # Fixed-width NUL fields preserve empty subjects and embedded tabs.
+        # Fixed-width NUL fields retain empty/control-bearing subjects.
         fields = raw.split("\0")[:-1]
         records = [fields[i:i + 3] for i in range(0, len(fields), 3)]
+        if not records:
+            break
         for sha, author, subject in records:
             parsed = parse_commit(sha, author, subject, cwd)
-            if parsed is None:
-                continue
-            rows.append(parsed)
-            if len(rows) >= limit:
-                return rows
-        if len(records) < page_size:
+            if parsed is not None:
+                rows.append(parsed)
+                if len(rows) >= limit:
+                    return rows
+        # Continue from the first parent, never rediscover HEAD between pages.
+        last_sha = records[-1][0]
+        parents = git(["rev-list", "--parents", "-n", "1", last_sha], cwd=cwd).split()
+        if len(parents) < 2:
             break
-        offset += len(records)
+        tip = parents[1]
     return rows
 
 
@@ -192,6 +199,8 @@ def main(argv: list[str] | None = None) -> int:
                 )
             )
             return 1
+    if args.limit < 0:
+        parser.error("--limit must be nonnegative")
     packet = measure(args.limit)
     print(json.dumps(packet, indent=2, sort_keys=True))
     return 0

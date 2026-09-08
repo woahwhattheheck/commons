@@ -25,8 +25,8 @@
   "keep_unread": {
     "host/commons_slack_full_body.py": "3bf97dc1",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "ac812adb",
-    "test_commons_slack_full_body.py": "af05ce72",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "958be799",
+    "test_commons_slack_full_body.py": "ba9a871f",
     "host/slack_mirror.py": "70d181fb",
     "slack_ingest.py": "0040a726",
     "commons-slack.html": "172df02f",

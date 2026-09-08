@@ -125,6 +125,10 @@ def _solve_normalized(rows, *, max_pivots: int = 128, max_bits: int = 512) -> di
     while True:
         entering = next((j for j, cost in enumerate(table[-1][:-1]) if cost < 0), None)
         if entering is None:
+            # The last pivot can exceed the arithmetic budget too. Do not
+            # bypass the limit merely because it also reaches an optimum.
+            if any(too_big(x) for row in table for x in row):
+                status = 'bit_limit'
             break
         if pivots >= max_pivots:
             status = 'pivot_limit'

@@ -107,9 +107,15 @@ class WoolExperimentTests(unittest.TestCase):
         self.assertEqual(out['family']['status'], 'joint_capacity_exceeded')
         self.assertEqual(out['family']['scenarios'], [])
         self.assertEqual(out['fallback_action'], payload['selected_action'])
-        self.assertFalse(out['choices'])
+        self.assertNotIn('choices', out)
+        self.assertFalse(out['by_objective'])
         self.assertTrue(all(v == 0 for v in out['counts'].values()))
         cases.own_unit_snapshot.assert_not_called(); ti.build_terminal_inputs.assert_not_called()
+
+    def test_result_map_is_not_named_choices(self):
+        source = Path(__file__).with_name('check_joint_wool_hypotheses.py').read_text(encoding='utf-8')
+        self.assertNotIn("'choices'", source)
+        self.assertIn("'by_objective'", source)
 
     def test_input_binding_failure_precedes_every_consumer(self):
         saved, payload, raw, compressed = saved_fixture()

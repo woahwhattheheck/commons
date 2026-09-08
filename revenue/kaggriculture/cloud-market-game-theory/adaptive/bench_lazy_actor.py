@@ -21,6 +21,7 @@ import random
 import shutil
 import subprocess
 import sys
+import tempfile
 
 LAZY = 'offers = (self._offers(cfg, base)'
 EAGER = 'offers = (list(self._offers(cfg, base))'
@@ -196,6 +197,73 @@ def summarize_passes(passes):
     return out
 
 
+def _retain_child_failure(output, log, phase, error, *, stdout=b'', stderr=b'',
+                          returncode=None):
+    """Retain observed bytes, not a successful measurement or inferred result.
+
+    A timeout can carry bytes even when no child JSON was returned. Preserve the
+    original exception if storage itself fails; report only error classes in
+    notes. Streams retain the existing stdout-then-stderr concatenation order.
+    """
+    data = (stdout or b'') + (stderr or b'')
+    problems = []
+    try:
+        log.write_bytes(data)
+    except OSError as failure:
+        problems.append('log:' + type(failure).__name__)
+    record = {
+        'schema': 'titan.lazy-actor-child-failure.v1', 'complete': False,
+        'phase': phase, 'error_type': type(error).__name__,
+        'kind': ('timeout' if isinstance(error, subprocess.TimeoutExpired)
+                 else 'exit' if returncode is not None else 'launch'),
+        'returncode': returncode,
+        'timeout_seconds': getattr(error, 'timeout', None),
+        'expected_output': output.name, 'child_output_present': output.is_file(),
+        'child_output_validated': False, 'log': log.name,
+        'captured_log_bytes': len(data), 'captured_log_sha256': sha(data),
+        'retention_errors': list(problems),
+    }
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=output.parent, prefix='.child-failure-',
+                                         suffix='.tmp', delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(canonical(record) + b'\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, output.parent / 'FAILURE.json')
+    except OSError as failure:
+        problems.append('record:' + type(failure).__name__)
+    finally:
+        if temporary is not None:
+            try:
+                temporary.unlink(missing_ok=True)
+            except OSError as failure:
+                problems.append('temporary:' + type(failure).__name__)
+    for problem in problems:
+        error.add_note('Child evidence retention failed: ' + problem)
+
+
+def _run_child(command, *, environment, output, log, phase):
+    """Use the same subprocess deadline; retain failed attempts before raising."""
+    try:
+        run = subprocess.run(command, env=environment, capture_output=True, timeout=180)
+    except subprocess.TimeoutExpired as error:
+        _retain_child_failure(output, log, phase, error,
+                              stdout=error.stdout, stderr=error.stderr)
+        raise
+    except OSError as error:
+        _retain_child_failure(output, log, phase, error)
+        raise
+    if run.returncode:
+        error = RuntimeError(f'{phase} failed; retained {output}')
+        _retain_child_failure(output, log, phase, error, stdout=run.stdout,
+                              stderr=run.stderr, returncode=run.returncode)
+        raise error
+    log.write_bytes(run.stdout + run.stderr)
+    return run
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--profiler', type=Path, required=True)
@@ -241,10 +309,8 @@ def main():
             command = [sys.executable, '-B', str(args.profiler), '--worker-mode', 'ordinary',
                        '--entrypoint', str(roots[mode] / RUNTIME), '--source-root', str(roots[mode]),
                        *common, '--output', str(output)]
-            run = subprocess.run(command, env=environment, capture_output=True, timeout=180)
-            (args.output / f'{index}-{mode}.log').write_bytes(run.stdout + run.stderr)
-            if run.returncode:
-                raise RuntimeError(f'{mode} pass failed; retained {output}')
+            _run_child(command, environment=environment, output=output,
+                       log=args.output / f'{index}-{mode}.log', phase=f'{mode} pass')
             passes[mode].append(json.loads(output.read_text()))
             print(f'complete {index} {mode}', flush=True)
     traced = {}
@@ -254,10 +320,8 @@ def main():
                    '--profiler', str(args.profiler), '--source-root', str(roots[mode]),
                    '--timing-source', str(args.timing_source), '--input', str(args.input),
                    '--receipt', str(args.receipt), '--seat', str(args.seat), '--output', str(output)]
-        run = subprocess.run(command, env=environment, capture_output=True, timeout=180)
-        (args.output / f'{mode}-trace.log').write_bytes(run.stdout + run.stderr)
-        if run.returncode:
-            raise RuntimeError(f'{mode} trace failed; retained {output}')
+        _run_child(command, environment=environment, output=output,
+                   log=args.output / f'{mode}-trace.log', phase=f'{mode} trace')
         traced[mode] = json.loads(gzip.decompress(output.read_bytes()))
     result = {'schema': 'titan.lazy-actor-comparison.v1',
               'benchmark_sha256': sha(Path(__file__).read_bytes()),

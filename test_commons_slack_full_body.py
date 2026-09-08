@@ -24,7 +24,7 @@ KEEP = {
     "host/slack_mirror.py": "70d181fb",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "739d5ee8",
-    "host/landed_work_feed.py": "a503869e",
+    "host/landed_work_feed.py": "fc1be135",
     "repo_pulse.py": "9ec71eb0",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",

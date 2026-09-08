@@ -20,8 +20,8 @@ DOOR = ROOT / "commons-slack-chunk.html"
 KEEP = {
     "host/commons_slack_full_body.py": "3bf97dc1",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "ac812adb",
-    "test_commons_slack_full_body.py": "af05ce72",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "958be799",
+    "test_commons_slack_full_body.py": "ba9a871f",
     "host/slack_mirror.py": "70d181fb",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "739d5ee8",
@@ -31,7 +31,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "ground/OWNER_NOW.md": "0a574d94",
-    "host/landed_work_feed.py": "a503869e",
+    "host/landed_work_feed.py": "fc1be135",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
 }
