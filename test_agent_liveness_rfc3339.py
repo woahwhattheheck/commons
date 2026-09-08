@@ -22,11 +22,12 @@ class AgentLivenessRfc3339Tests(unittest.TestCase):
         with self.assertRaisesRegex(AgentLivenessError, "must be RFC3339"):
             _timestamp(text, "stamp")
 
-    def test_canonical_z_and_numeric_offsets_normalize_to_utc(self) -> None:
+    def test_canonical_z_and_known_numeric_offsets_normalize_to_utc(self) -> None:
         self.assertEqual(_timestamp("2026-09-01T16:00:00Z", "stamp"), dt.datetime(2026, 9, 1, 16, tzinfo=UTC))
         self.assertEqual(_timestamp("2026-09-01T18:30:00+02:30", "stamp"), dt.datetime(2026, 9, 1, 16, tzinfo=UTC))
         self.assertEqual(_timestamp("2026-09-01T08:00:00-08:00", "stamp"), dt.datetime(2026, 9, 1, 16, tzinfo=UTC))
-        self.assertEqual(_timestamp("2026-09-01T16:00:00-00:00", "stamp"), dt.datetime(2026, 9, 1, 16, tzinfo=UTC))
+        with self.assertRaisesRegex(AgentLivenessError, "known UTC offset"):
+            _timestamp("2026-09-01T16:00:00-00:00", "stamp")
 
     def test_lowercase_t_and_z_are_permitted(self) -> None:
         expected = dt.datetime(2026, 9, 1, 16, tzinfo=UTC)
