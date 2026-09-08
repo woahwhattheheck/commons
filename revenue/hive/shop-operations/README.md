@@ -41,8 +41,9 @@ this is a completeness check, not independent verification of product claims.
    confirmed a listing. Product SKUs are immutable; use Edit to change metadata.
 2. Receive units against a delivery reference. Each `(reference, SKU)` is unique;
    separate actual deliveries need separate references. The same reference can
-   cover multiple SKUs. Corrections to an already-posted receipt are not an
-   implemented operation; do not enter a duplicate receipt as a correction.
+   cover multiple SKUs. Posted receipt records stay immutable. Use the physical-count
+   workflow below to reconcile an observed stock difference; do not enter a duplicate
+   receipt as a correction.
 3. Reserve an order using a unique external order ID and one `SKU,quantity` per
    line. Choose Creator sample to allocate samples with the identical stock
    accounting. Recipient fields are references, not a messaging integration.
@@ -91,6 +92,8 @@ Supported commands and payloads:
 | `product` | One product metadata object, including expected `version` |
 | `catalog` | `products`: nonempty list of product metadata objects |
 | `receive` | `sku`, positive integer `quantity`, unique receipt `reference` per SKU |
+| `stocktake` | `sku`, observed `quantity` (zero allowed), current `version`, unique count `reference` per SKU, optional `note` |
+| `stocktake_batch` | nonempty `counts` list of the same stocktake payloads, at most one per SKU |
 | `order` | unique `id`, `kind` (`sale` or `sample`), `recipient_ref`, `lines` of `sku` and `quantity` |
 | `fulfill` | order `id`, nonempty `shipment_ref` |
 | `cancel` | reserved order `id` |
@@ -113,12 +116,65 @@ python shop_ops.py --db ./workspace.sqlite3 export > operational-snapshot.json
 ```
 
 `GET /export/{table}.csv` exports `products`, `orders`, `lines`, `returns`,
-`return_lines`, `receipts`, or `movements`. CSV prefixes formula-like text with
-an apostrophe for spreadsheet handoff; JSON retains raw strings. JSON snapshots
+`return_lines`, `receipts`, `movements`, or `stocktakes`. CSV prefixes formula-like
+text with an apostrophe for spreadsheet handoff; JSON retains raw strings. JSON snapshots
 are operational exports, not full database backups: the idempotency table is
 not included. For a full backup, stop the server and copy the SQLite database
 with any remaining WAL/SHM sidecars as a unit, or use SQLite's online backup API.
 Do not restore a JSON export expecting original retry history to be present.
+
+## Reconcile physical inventory
+
+The **Reconcile a physical stock count** form records observed on-hand units,
+including reserved units that are still physically present. It does not record
+available-to-sell units and it does not create a new receipt. Load the current
+ledger, count the units, and submit the observed quantity with a unique count
+reference and source/adjustment note. A count of zero is valid when no units are
+reserved. The operation records the prior on-hand amount, expected version,
+observed quantity and timestamp, and posts the exact difference to the existing
+movement ledger. Even a matching count produces a zero-delta observation.
+
+The count must use the current product version. A receipt, reservation,
+fulfillment, prior count or metadata edit makes an older observation stale.
+Refreshing the dashboard does **not** silently replace the version attached to
+an in-progress count. Load the ledger and recheck the physical count before
+trying again. Changing the SKU clears its loaded version.
+
+A count below outstanding reserved units returns a conflict with **no inventory
+or order change**. Resolve the affected allocations in the existing order
+workflow first, then capture a fresh count. This version does not model negative
+availability, backorders or an oversold state; it never cancels customer orders
+silently to force a count through. Reconciliation is for observed quantities,
+not a rewrite or deletion of original receipts, return records or orders.
+
+For multi-SKU intake, save this command shape to a JSON file and use CLI `apply`
+or send it to `/api/command`:
+
+```json
+{
+  "key": "fixture-count-batch-001",
+  "action": "stocktake_batch",
+  "data": {
+    "counts": [
+      {"sku": "BAG-01", "version": 2, "quantity": 8,
+       "reference": "fixture-count-001", "note": "Synthetic shelf count"}
+    ]
+  }
+}
+```
+
+Replace the example version and quantity with the current ledger and observed
+count; the example does not itself constitute a count. Every row is applied in
+one transaction, or no rows are changed. Duplicate SKUs in a batch are rejected.
+The same count reference can describe different SKUs in one counting session;
+`(reference, SKU)` remains unique across successful counts. Retrying the original
+command key and exact payload returns the original result without reapplying
+an old count, even after later shipments or a restart. Use a new reference for
+a genuinely new physical observation. `stocktakes.csv` exports the count history.
+
+Existing workspaces gain only a new `stocktakes` table on startup; their original
+rows, operation keys, reservations, price snapshots and history remain intact.
+There is no marketplace feed, automatic stock detection or remote stock update.
 
 ## Accounting and concurrency
 
@@ -136,16 +192,17 @@ and catalog imports roll back together. Product metadata updates require the
 current version; stock movements also advance that version, so stale editors
 must reload rather than replace fresh data. Snapshots read one transaction.
 Quantities and minor-unit prices are integers from zero through 1,000,000,000;
-individual movement and order quantities must be positive. JSON bodies are
-bounded to 2 MB. Network binding and SQLite storage remain operator choices.
+receipt, order and return quantities must be positive. Observed stock counts may
+be zero, and count adjustments may be positive, zero or negative. JSON bodies
+are bounded to 2 MB. Network binding and SQLite storage remain operator choices.
 
-## Executed validation
+## Initial delivery validation (PR10630)
 
 ```sh
 PYTHONWARNINGS=error::ResourceWarning python -B -m unittest -v test_shop_ops
 ```
 
-The delivered runtime passed 27 methods on Python 3.13.5 in the provided cloud
+The initial delivery passed 27 methods on Python 3.13.5 in the provided cloud
 container. These use real temporary SQLite files, threads, local HTTP requests
 and CLI subprocesses, including 12 concurrent reservations for five units,
 20 identical receipt retries, concurrent return caps, malformed data, partial
@@ -170,3 +227,22 @@ The browser suite found and covered the retry button's hidden-state styling;
 `[hidden]` now retains priority over the general button display rule. No hosted
 CI success, deployed site, remote integration or whole-repository test result is
 claimed by these local results.
+
+## Stock-count follow-through validation
+
+```sh
+PYTHONWARNINGS=error::ResourceWarning python -B -m unittest -v test_shop_ops test_stocktake
+CHROMIUM_PATH=/usr/bin/chromium python -B -m unittest -v test_browser
+```
+
+The composed product passed **47 real SQLite/HTTP/CLI methods** (27 retained and
+20 new stock-count methods) and **11 explicitly adapter-backed Chromium DOM
+methods** (eight retained and three new controls). Ten concurrent counts with
+one expected version accept exactly one; 24 identical retries share one result;
+a count-versus-order race cannot erase a committed allocation. Multi-SKU failure
+rolls back prior rows and audit changes. Additive schema-upgrade and post-shipment
+replay tests preserve original data and operation history. Browser controls prove
+that refresh does not silently rebase a stale observation and a changed SKU
+clears its version. The same native-browser-network limitation described above
+still applies; these results do not claim an external installation or full-suite
+hosted acceptance.

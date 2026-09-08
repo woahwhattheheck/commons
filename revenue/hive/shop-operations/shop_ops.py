@@ -80,6 +80,11 @@ CREATE TABLE IF NOT EXISTS movements (
  id INTEGER PRIMARY KEY, sku TEXT NOT NULL REFERENCES products(sku),
  on_hand_delta INTEGER NOT NULL, reserved_delta INTEGER NOT NULL,
  reason TEXT NOT NULL, reference TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS stocktakes (
+ reference TEXT NOT NULL, sku TEXT NOT NULL REFERENCES products(sku),
+ quantity INTEGER NOT NULL, prior_on_hand INTEGER NOT NULL,
+ version_before INTEGER NOT NULL, note TEXT NOT NULL, created_at TEXT NOT NULL,
+ PRIMARY KEY(reference,sku));
 CREATE TABLE IF NOT EXISTS operations (
  key TEXT PRIMARY KEY, request TEXT NOT NULL, result TEXT NOT NULL);
 '''
@@ -155,6 +160,32 @@ class Store:
             db.execute('INSERT INTO products(title,description,source_url,uncertainties,price_minor,currency,listing_state,sku) VALUES(?,?,?,?,?,?,?,?)', (*values, sku))
         return {'sku': sku, 'version': version + 1}
 
+    def stocktake(self, db, data):
+        """Apply a version-bound physical count without replacing reserved work."""
+        if not isinstance(data, dict):
+            raise DomainError('Each stock count must be an object')
+        sku = text(data.get('sku'), 'sku')
+        quantity = integer(data.get('quantity'), 'quantity')
+        version = integer(data.get('version'), 'version', 1)
+        reference = text(data.get('reference'), 'stock count reference')
+        note = text(data.get('note', ''), 'note', True)
+        product = self.product(db, sku)
+        if version != product['version']:
+            raise DomainError(f'Stale stock count for {sku}; reload and recheck the count', 409)
+        if quantity < product['reserved']:
+            raise DomainError(
+                f'Count {quantity} for {sku} is below {product["reserved"]} reserved units; '
+                'resolve the affected allocations, then reload and recount. Nothing changed', 409)
+        db.execute('INSERT INTO stocktakes VALUES(?,?,?,?,?,?,?)',
+                   (reference, sku, quantity, product['on_hand'], version, note, now()))
+        delta = quantity - product['on_hand']
+        # Record zero-delta observations too: a count is not an untracked overwrite.
+        self.move(db, sku, delta, 0, 'stocktake', reference)
+        return {'sku': sku, 'reference': reference, 'prior_on_hand': product['on_hand'],
+                'on_hand': quantity, 'reserved': product['reserved'],
+                'available': quantity - product['reserved'], 'delta': delta,
+                'version': version + 1}
+
     def execute(self, request):
         if not isinstance(request, dict) or not isinstance(request.get('data'), dict):
             raise DomainError('Expected {key, action, data: {...}}')
@@ -188,6 +219,18 @@ class Store:
             if len(skus) != len(set(skus)):
                 raise DomainError('Duplicate SKU in catalog import')
             return {'products': [self.save_product(db, p) for p in products]}
+        if action == 'stocktake':
+            return self.stocktake(db, data)
+        if action == 'stocktake_batch':
+            counts = data.get('counts')
+            if not isinstance(counts, list) or not counts:
+                raise DomainError('counts must be a nonempty list')
+            if not all(isinstance(count, dict) for count in counts):
+                raise DomainError('Each stock count must be an object')
+            skus = [text(count.get('sku'), 'sku') for count in counts]
+            if len(skus) != len(set(skus)):
+                raise DomainError('Duplicate SKU in stock count batch')
+            return {'counts': [self.stocktake(db, count) for count in counts]}
         if action == 'receive':
             sku = text(data.get('sku'), 'sku')
             qty = integer(data.get('quantity'), 'quantity', 1)
@@ -257,13 +300,13 @@ class Store:
         with self.connection() as db:
             db.execute('BEGIN')
             result = {table: [dict(row) for row in db.execute(f'SELECT * FROM {table} ORDER BY 1')]
-                      for table in ('products', 'orders', 'lines', 'returns', 'return_lines', 'movements', 'receipts')}
+                      for table in ('products', 'orders', 'lines', 'returns', 'return_lines', 'movements', 'receipts', 'stocktakes')}
             for p in result['products']:
                 p['available'] = p['on_hand'] - p['reserved']
             return result
 
     def export_csv(self, table):
-        if table not in ('products', 'orders', 'lines', 'returns', 'return_lines', 'movements', 'receipts'):
+        if table not in ('products', 'orders', 'lines', 'returns', 'return_lines', 'movements', 'receipts', 'stocktakes'):
             raise DomainError('Unknown export', 404)
         rows = self.snapshot()[table]
         with self.connection() as db:
