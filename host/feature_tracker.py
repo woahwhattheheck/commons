@@ -216,8 +216,9 @@ def validate_feature(rec, filename=""):
     for field in FEATURE_REQUIRED:
         if field not in rec:
             problems.append("missing field: %s" % field)
-    feat_id = str(rec.get("id") or "")
-    if not ID_RE.match(feat_id):
+    # Keep identifier types intact: evidence matching uses exact string IDs.
+    feat_id = rec.get("id")
+    if not isinstance(feat_id, str) or not ID_RE.fullmatch(feat_id):
         problems.append("id must match %s" % ID_RE.pattern)
     elif filename and filename != feat_id + ".json":
         problems.append("filename must equal id.json")
@@ -252,13 +253,13 @@ def validate_evidence(rec, filename=""):
         return ["evidence is not an object"]
     if rec.get("schema") != SCHEMA_EVIDENCE:
         problems.append("schema must be %s" % SCHEMA_EVIDENCE)
-    evid_id = str(rec.get("id") or "")
-    if not ID_RE.match(evid_id):
+    evid_id = rec.get("id")
+    if not isinstance(evid_id, str) or not ID_RE.fullmatch(evid_id):
         problems.append("id must match %s" % ID_RE.pattern)
     elif filename and filename != evid_id + ".json":
         problems.append("filename must equal id.json")
-    feat_id = str(rec.get("feature_id") or "")
-    if not ID_RE.match(feat_id):
+    feat_id = rec.get("feature_id")
+    if not isinstance(feat_id, str) or not ID_RE.fullmatch(feat_id):
         problems.append("feature_id must match %s" % ID_RE.pattern)
     kind = rec.get("kind")
     if kind not in EVIDENCE_KINDS:
@@ -272,8 +273,10 @@ def validate_evidence(rec, filename=""):
             problems.append("LIVE_MEASUREMENT needs url")
         if not SHA_RE.match(str(rec.get("sha") or "")):
             problems.append("LIVE_MEASUREMENT needs 40-hex sha")
-    if kind == "SUPERSEDE" and not ID_RE.match(str(rec.get("superseded_by") or rec.get("replaces") or "")):
-        problems.append("SUPERSEDE needs superseded_by id")
+    if kind == "SUPERSEDE":
+        target = rec.get("superseded_by") or rec.get("replaces")
+        if not isinstance(target, str) or not ID_RE.fullmatch(target):
+            problems.append("SUPERSEDE needs superseded_by id")
     for key in ("paths",):
         val = rec.get(key)
         if val is None:
