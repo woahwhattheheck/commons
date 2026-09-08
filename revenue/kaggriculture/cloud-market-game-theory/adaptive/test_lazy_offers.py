@@ -313,15 +313,16 @@ class LazyOfferTests(unittest.TestCase):
         self.assertEqual(a.offer_work,{'captured_windows':0,'inspected_windows':0,'compiled_windows':0,'admitted_index':None})
         self.assertEqual(a.parent.calls,2)
 
-    def test_completed_plan_keeps_existing_one_call_admission_gap(self):
+    def test_completed_plan_collects_but_rejects_stale_offer_context(self):
         compiler=controlled_compiler()
         a,o,c=scenario(module=runtime(compiler=compiler))
         a.act(o,c)
         o['step']=49
         p=a.parent.last_packet['projection'];p.update(observed_step=49,end_step=57,future_market={})
         self.assertEqual(a.act(o,c),a.parent.action)
-        self.assertEqual(compiler.calls,['EGG'])
-        self.assertEqual(a.offer_work['captured_windows'],0)
+        self.assertEqual(compiler.calls,['EGG','EGG'])
+        self.assertEqual(a.offer_work['captured_windows'],1)
+        self.assertEqual(a.last,{'reason':'market_context_unknown','item':'EGG'})
         self.assertIsNone(a.transformer.selector.active)
 
     def test_inputs_and_stream_order_are_unchanged(self):

@@ -109,12 +109,21 @@ class AdaptiveTransform:
         self.last = {'reason':reason}
         return deepcopy(base)
 
-    def transform(self, obs, cfg, base, *, ledger, offers=()):
-        now = int(obs['step']); self.last = {}
+    def expire(self, now):
+        """Retire a finished window before deciding whether to capture offers.
+
+        The completion date itself still owes its final sale. This is also
+        called by transform so direct consumers retain the same lifecycle.
+        """
         active = self.selector.active
         if active and now > active['completion_step']:
             self.selector.completed.add(active['key']); self.selector.active = None
-            self.tree = None; active = None
+            self.tree = None
+
+    def transform(self, obs, cfg, base, *, ledger, offers=()):
+        now = int(obs['step']); self.last = {}
+        self.expire(now)
+        active = self.selector.active
         if active:
             reason = _context_reason(self.tree, obs, cfg, active['item'], active['end'])
             if reason:
@@ -343,6 +352,8 @@ class Agent:
         cfg=dict(cfg or {}); self.calls+=1; self.records=[]; self.last={}
         self._reset_offer_work()
         self.observe(obs,cfg)
+        if self.transformer:
+            self.transformer.expire(int(obs['step']))
         base=self._parent_action(obs,cfg)  # Exactly one existing production call.
         packet=self.parent.last_packet
         self.offer_work['captured_windows'] = len(self.records)
