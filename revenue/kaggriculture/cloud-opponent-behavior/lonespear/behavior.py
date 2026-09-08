@@ -26,6 +26,22 @@ def _cash(value: Any) -> float | int:
     return value
 
 
+
+def _absolute_step(observation: Mapping[str, Any],
+                   configuration: Mapping[str, Any] | None = None) -> int:
+    """Retain an explicit step; otherwise derive it from the public day/hour."""
+    step = observation.get('step')
+    if step is not None:
+        return _integer(step, 'step')
+    cfg = configuration if configuration is not None else {}
+    period = _integer(cfg.get('turnsPerDay', 24), 'turnsPerDay', 1)
+    day = _integer(observation.get('day'), 'day')
+    hour = _integer(observation.get('hour'), 'hour')
+    if hour >= period:
+        raise ValueError('hour must be below turnsPerDay when deriving step')
+    return day * period + hour
+
+
 def _counts(tiles: Any) -> dict[str, int]:
     if not isinstance(tiles, (list, tuple)) or not tiles:
         raise ValueError('public tile grid missing')
@@ -80,9 +96,7 @@ def predict(observation: Mapping[str, Any], configuration: Mapping[str, Any] | N
         farm = farms[actor]
         day = _integer(observation.get('day'), 'day')
         hour = _integer(observation.get('hour'), 'hour')
-        step = observation.get('step')
-        if step is not None:
-            _integer(step, 'step')
+        step = _absolute_step(observation, cfg)
         money = _cash(farm.get('money'))
         hands = farm.get('hands')
         if not isinstance(hands, (list, tuple)):
@@ -92,7 +106,7 @@ def predict(observation: Mapping[str, Any], configuration: Mapping[str, Any] | N
         if hires > 100:
             raise ValueError('hires_today outside supported engine-state range')
         counts = _counts(farm.get('tiles'))
-        multiplier = _integer(cfg.get('farmHandCostMult', 1), 'farmHandCostMult', 1)
+        multiplier = _integer(cfg.get('farmHandCostMult', 1), 'farmHandCostMult')
         max_orders = _integer(cfg.get('maxMarketOrdersPerTurn', 10), 'maxMarketOrdersPerTurn', 1)
         workload = 3*counts['animals'] + counts['plants'] + counts['empty']//3
         target = min(11, max(4, workload//4))
@@ -128,14 +142,19 @@ def predict(observation: Mapping[str, Any], configuration: Mapping[str, Any] | N
     return result
 
 
-def observed_fill(before: Mapping[str, Any], after: Mapping[str, Any], *, actor: int) -> dict[str, Any]:
-    """Measure a public fill delta only across consecutive within-day frames."""
+def observed_fill(before: Mapping[str, Any], after: Mapping[str, Any], *, actor: int,
+                  configuration: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    """Measure consecutive within-day fills with explicit or public day/hour clocks.
+
+    Optional configuration supplies turnsPerDay for a sparse clock. The same
+    per-match configuration applies to both frames; daily resets stay unknown.
+    """
     out: dict[str, Any] = {'status': 'unknown', 'fills': None}
     try:
         if type(actor) is not int or actor not in (0, 1):
             raise ValueError('actor must be 0 or 1')
-        step0 = _integer(before.get('step'), 'before.step')
-        step1 = _integer(after.get('step'), 'after.step')
+        step0 = _absolute_step(before, configuration)
+        step1 = _absolute_step(after, configuration)
         if step1 != step0+1 or before.get('day') != after.get('day'):
             raise ValueError('nonconsecutive frames or day reset')
         old, new = before['farms'][actor], after['farms'][actor]
@@ -148,7 +167,7 @@ def observed_fill(before: Mapping[str, Any], after: Mapping[str, Any], *, actor:
         out.update(status='known', fills=delta,
             public_cash_delta=_cash(new.get('money'))-_cash(old.get('money')),
             interpretation='cash delta includes all other market orders; not hire-only spending')
-    except (KeyError, TypeError, ValueError) as error:
+    except (AttributeError, KeyError, TypeError, ValueError, OverflowError) as error:
         out['reason'] = str(error)
     return out
 
