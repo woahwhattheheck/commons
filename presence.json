@@ -568,8 +568,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "terminal-receipt-9825-20260907",
-    "ts": "2026-09-07T16:11:17Z"
+    "id": "terminal-receipt-9995-20260907",
+    "ts": "2026-09-07T22:41:40Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -652,8 +652,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-pr9837-motif-layer-20260907",
-    "ts": "2026-09-07T17:12:06Z"
+    "id": "grok-pr10000-cedar-seed-funding-20260907",
+    "ts": "2026-09-07T23:27:51Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1184,8 +1184,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-cml-motif-land-20260907-01",
-    "ts": "2026-09-07T17:10:52Z"
+    "id": "grok-receipt-9996-20260907",
+    "ts": "2026-09-07T22:41:35Z"
   },
   {
     "from": "WIRE",
