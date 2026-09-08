@@ -1,0 +1,61 @@
+name: repair-spatial-hook-workflow-once
+
+on:
+  push:
+    branches:
+      - astra/spatial-hook-disabled-canonical-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+          sparse-checkout: |
+            .github/workflows/titan-spatial-hook-disabled-once.yml
+            .github/workflows/repair-spatial-hook-workflow-once.yml
+          sparse-checkout-cone-mode: false
+      - name: Replace the stale builder marker with an idempotent insertion
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('.github/workflows/titan-spatial-hook-disabled-once.yml')
+          lines = path.read_text().splitlines()
+          start = next(i for i, line in enumerate(lines)
+                       if "builder=root/'build_integrated.py'" in line)
+          end = next(i for i in range(start, len(lines))
+                     if 'builder.write_text(b.replace(old,new))' in lines[i])
+          indent = lines[start][:len(lines[start]) - len(lines[start].lstrip())]
+          replacement = [
+              indent + "builder=root/'build_integrated.py'",
+              indent + 'b=builder.read_text()',
+              indent + "marker=\"'test_engine_semantics.py'\"",
+              indent + "spatial=\"'test_spatial_tempo_integration.py'\"",
+              indent + 'assert marker in b',
+              indent + 'if spatial not in b:',
+              indent + '    b=b.replace(marker, marker+\",\"+spatial, 1)',
+              indent + 'builder.write_text(b)',
+          ]
+          lines[start:end + 1] = replacement
+          lines = [line for line in lines
+                   if not ('sha256sum' in line and 'test_spatial_tempo_integration.py' in line)]
+          text = '\n'.join(lines) + '\n'
+          assert "marker=\"'test_engine_semantics.py'\"" in text
+          assert 'builder.write_text(b.replace(old,new))' not in text
+          assert not any('sha256sum' in line and 'test_spatial_tempo_integration.py' in line
+                         for line in text.splitlines())
+          path.write_text(text)
+          PY
+      - name: Commit the repaired workflow and remove this repair job
+        run: |
+          rm .github/workflows/repair-spatial-hook-workflow-once.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/titan-spatial-hook-disabled-once.yml .github/workflows/repair-spatial-hook-workflow-once.yml
+          git commit -m 'Repair the spatial integration workflow marker'
+          git push origin HEAD:${{ github.ref_name }}
