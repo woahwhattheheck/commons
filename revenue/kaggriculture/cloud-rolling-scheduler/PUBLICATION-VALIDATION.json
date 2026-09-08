@@ -1,0 +1,82 @@
+{
+  "schema": "titan.t03.result-publication-validation.v1",
+  "scope": "T03 result publication; file/process tests with labelled evaluator fixture; zero official games",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "source": {
+    "baseline/evaluate_panel.py": {
+      "bytes": 8403,
+      "sha256": "8f124b71c0e717aa071436229b7345c6791f8eb518f8dcb7fd794fc29c434e9e",
+      "git_blob": "d98ca4fdb78b25f24c7c1afc4686873dfd337ed0"
+    },
+    "candidate/evaluate_panel.py": {
+      "bytes": 9786,
+      "sha256": "3ce9ea244fc4e4f85e3eeafa42357d6b7c6cdbe8b1b165996c621f17eaddc545",
+      "git_blob": "046c30128da0b0ff42c3d9d62aaff41740e0351d"
+    },
+    "candidate/test_panel_publication.py": {
+      "bytes": 14857,
+      "sha256": "9195b78e4e44c34f6051afe32cf9a602faf7f75a0fd9a71e7067c0da316d2e08",
+      "git_blob": "821ac17d2529ebe25636383febdeefec2ca4a2c5"
+    },
+    "candidate/test_panel_resume.py": {
+      "bytes": 13618,
+      "sha256": "e1ae2bf38a716e8b124838c6171ab305519c5bb613c252edfc8d046b2ec909d2",
+      "git_blob": "d746f32f0477864e764c5734f741764a68254587"
+    }
+  },
+  "results": {
+    "new_methods": 18,
+    "retained_methods": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "baseline_controls": {
+      "tests": 4,
+      "failures": 4,
+      "errors": 0
+    },
+    "official_games": 0
+  },
+  "structural_delta": {
+    "changed_existing_functions": [
+      "run"
+    ],
+    "added_functions": [
+      "publish_json"
+    ],
+    "other_functions": "AST-identical to predecessor"
+  },
+  "commands": [
+    "python3 -B test_panel_publication.py -v",
+    "python3 -B test_panel_resume.py -v"
+  ],
+  "baseline_control_methods": [
+    "test_file_limit_never_exposes_partial_cell",
+    "test_file_limit_preserves_previous_summary",
+    "test_kill_during_cell_write_keeps_final_absent",
+    "test_kill_during_summary_write_preserves_old_complete_bytes"
+  ],
+  "logs": {
+    "publication-tests.log": {
+      "bytes": 2625,
+      "sha256": "e206880b90febe26fca115598f1fda963cb3ae5700e1d0309c22653256b5cc6c",
+      "gzip_base64": "H4sIAAAAAAAC/62Vz5KbMAzG7zwFx/ZQZtrL7n2PPbTTF9AYI4IbY7O2nD/79CtMgCXZDCZtDkkYrJ8+S59sQk8ghZGotSBlDXQOPboDerBO7ZQRGvAksYsvhanAk9hh/gWgFcoAFL9DqZWMwS/Coy/oQebXvCiK3O6zAaBRmNBBLZQODoEfe4C0baeREOqI6YMZHlpRaoQ+47qyB8FX8ng5kjI73pyV6BkPXZ/PN7w3IUmfwRqcsWnaHqHeCouvyjM/A76GWG3lI/av54o7jA0xFNMnidpEXAqaVvZaQXkweEDXh2ghsVpNvxK/TFYr7pZWraLLMjx1NlZROFKsO6kNSZS7iWe387+DssED+6gV7rwl8X3KVWJ/NhLQOetgj9j50cBl34/o46mBaaO7mbgUtBMtDqYdyNOg8YbI8hewjxktNZd0Vcwm2lLIXrFfRE3cv8E6htXybxxrDjwqamygwUlndtiqmM3ETwSVWLPssZcfEMSZPZSWmrm87D3PEnyasofQn0isgpvm7egUL761QZqiFNJ9AeNGhsgPl4iurg6lTWrSsUtplxNncuAcORL70TB43Dpwj4KX8jiEjyb1NozJML6VZYixBGSDbOIORyS/bcU+VeKK/wK9kNtbRUHueXTffZes3wf3QqxQXFWM9J6EO8YQyEI6XKlbxgFn3z3bkUtIbOntjuGDmmLQ2pGGm1Nm3//LJ/giTf3/Oewk+VyZZ/Kp6ffvgs+/UzewfBDn0+QQoAAA=="
+    },
+    "retained-tests.log": {
+      "bytes": 3363,
+      "sha256": "f9cbe94a5f70efea14c65f1841c3620a196fd4cfce3390a198180c098e28c9d9",
+      "gzip_base64": "H4sIAAAAAAAC/61WzY7bIBC+5yl8bA+1qrZSe++xh0r7AqMJTGy0GCgDm/U+fcdusl27Xds4m1MEfD8MH4MTcQJUyUdQ1jNBlAEfSQOeEkWgR1I5Ge+AYvSxegfQoXEA9R1x7ug7MnGdyljeV3VdV1dV/7+sIbjrBQx71S9oGdqGsMwqVp0DYFC53wSZGZalHkd9n/+DkMwrtmrswCf6cUOOkqCSwid4Q6TarfLraKnajKjjSwmINcYR6Xb24JfUdy/2UKqmQ/vEj0mYIoGrXkihqNP7Z/8MQj1i5Rb05m0GNsddP/6id4C+xzVTVUpIZp60ITa7kjBEm6mkIM1ajiySL+yjMMjlVmQtX6pD4J1a1trEMFWlB7QZx75StrFF4FSjiUZDiHSypmnT8E+RlhRI2Xm8+OLxbwSWRMuYpi6MJpekPFZi0AVLQ3VGvtGxZZLKXZXA2qfVVZqC32S07K2WWZu3BUHmBJ1QYYYHgyboyUUYCql8dgMrspRWtbTlhdjPOnVVnqUHVQ/RnBk7Yg4B8luV6JGFjZfdWhkMTUZNe8lTKNXPiZaw4nK+jpuyOziDnE+SItJEwSZz762XhC1xLVWXBYt1LeKKYO/Ok0tgdNgZxkSipVuNNdtDDPVELyTst/QSzdSvKJ76cClW12Hz/WSvCdPUvvQy010EkAjHULCp+4ZoiTRdAQtcku8LLydZ+rgOrf/fLcxTFWZ8Jaz3QCf60lpbtFbhc/0EqbMLyB5fGpZRXOU1ueu3W9RdCPHVDDk7ud4+Sp96PpjLacj3eJC+Tyf5LF99PgponvUPH97kd7hDV336Wg0+uDKu+lx/+/iFD4efPw6/AZlagbQjDQAA"
+    },
+    "baseline-tests.log": {
+      "bytes": 3114,
+      "sha256": "970880d4390ac5ce3ccc6e9abb453cc36128738dad74d4b203a647e9b672790e",
+      "gzip_base64": "H4sIAAAAAAAC/91VTY/aMBC951dMuZBIrENYVD4kDqsWpEo9VNXeYGs5YWhdHDu1HRZUtb+9TjYVqwjaIEFbOqdkxjPzJvPybNFYuuICqeApt1TiBjXFbaYMGpoxbTkTNEEhwKc0ZVxSSt7lseAJs1zJV8ydI7ZxlQAIITC7e/PWqydlGg3qTZGgccNVbqjJ05Tp3Smtj1ept15zIegy11x+LKHRR80t0jViZlxF6RCz2KC0v23fuNKvIFQoq9z9GEosaaLSTKBzxzuXdxKe5mWfgfMmZzGvKDYG+6c55t2c5nZ2RjLhL7rM7Lkj73yqWRpOUYs2QNfqqMBY0pQUeEOaSCGZuMPYCZgwStMJQ2XDLLQtu9vXlUeh0mTC65c2FYQs+YREEz/Vgk27U6ILhEiLpRBrg84Uu5xgAGxYow4zZqZ0wY9EtHEfYDgltttPGDoDy6vWafDhoXl1ZzIGbaq30GO51jsANSKVhVTS4MDOOrgHXR42oX5Aax2esU2P6JUfCr4JEI1s+/e9+0IlxpTSewuRhBIjbK90B14+hEYAkm3dHxmG7+FIvmTc4DazLGOv1dzsIKyrQSne7tZ4OLjPhwppdmfDUUnWo7z27hbI9BtCLGLGhdyjr4dFd6CxaMdu2XnMhnk01De5EvSo0MkHbwtspjJanZmAupszdfRYMK40QngGWfVoTZIoq/Xdy/+jBd+c88bjPfPamoO/KdPOuUYI/fRCg9xki0gGftGp59BtGGV6drXI5/AJo/MZbAqDAAA"
+    },
+    "baseline-witness.json": {
+      "bytes": 1795,
+      "sha256": "4c2a831e3857c88299f52514544fd4317e2b5e8d8aad870961b8386a233c92b9",
+      "gzip_base64": "H4sIAAAAAAAC/+1UTY/TMBC9768Y5ZJUZBv6tbtUyx6Q4AoS3JoSOck0NTi2GTttI7T8dmyShVRUQFdC4sBIVuznSfLezLNXFwCf3QAI9JYZDJYQSNxnBQoRxN0GHrh1+KRfVqzGrGBCmAG44ZKJzGUa62FLDR7t5K1Fv3EzeTbtN3ZM8DL7YJR0+IYJ8/CGJq4oM01dM2ozTWiQdli6LNkI0ScZWyKRp/uOWIE5Kz5CVCtjgbBAacEzBMGMHS1TCfCKC4Q0uDWWuKzu0iAGwSXCdQxcwm2tykbgnc8EqMfUyOgNs9vItGbMqNqtputRfIzMfkLmDlnNJ+t4FTKNh9BNnvpFwWTJS2YxXI+6P3zx8f7vxEBtYmvth91e5e2B10khVFNekhJOe3Vpii162ZSga0bjCGaaSRRj3X6vz2Q2/1YhV5GOuisgsnq8J24x8t0bl02tTURqH3NZutI/n46ehGkqw6HYPn7L/fXbl0SKlrByT6lger3u1FilXDupwlQGzgL38QnnPniGUAtnin/PwMOs/w4+w8FVLrKbQ/XpMQ5eLI4dHKnG6sYmYZfqGxiOOkNnFg/2yNWoFdk/MPapOE9pYygRPE90a7dKzsaTWaJdczyUCeXMMBS1WHRt/8G6o0RoG5Lgu/rCHYqhKoNiE4NrIosBZaFKV0A386fNxOAuff/hXlkfj9J0ljCWF0NZV4vpr2Rt+mvHizjJ9Oxb5GJ98RVjxJGxAwcAAA=="
+    }
+  }
+}
