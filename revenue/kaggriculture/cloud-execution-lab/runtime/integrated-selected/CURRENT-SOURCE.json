@@ -394,8 +394,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 6501,
-      "sha256": "fdf54ec963e93c831fc4c8459bb9095935a64be604b08b3bbcd6c44c2e45cdb5",
+      "bytes": 6623,
+      "sha256": "8d37c610af3e0c91b3265ccc85697428ef7c22d1c3e7d77f01610841f3aad1a2",
       "source_path": "frozen_selected.py"
     },
     "integrated_selected.py": {
@@ -413,10 +413,20 @@
       "sha256": "579965e589237d1e5bbcc8b8448188f91b173d4480430d34b3a7f0e07e0c48d3",
       "source_path": "mechanics.py"
     },
+    "observed_clone.py": {
+      "bytes": 1442,
+      "sha256": "ab92d3c18c8edb63cbdd31626ada447783b85bbe9ed32bb546e6c7834a99b152",
+      "source_path": "../cloud-runtime-pulse/observed_clone.py"
+    },
     "ordered_selected_sell.py": {
       "bytes": 5101,
       "sha256": "b38caacb2d2156e83aab9d1471e1312a241250dae8b655c1b133fce097bca426",
       "source_path": "reference/titan-current/latest/ordered_selected_sell.py"
+    },
+    "plant_suffix.py": {
+      "bytes": 1394,
+      "sha256": "74bb2152dde111cd2e1b25751cd2bc4c3428db08a126e7896b08b4bb87ddd693",
+      "source_path": "../cloud-runtime-pulse/plant_suffix.py"
     },
     "reference/decision/README.md": {
       "bytes": 9410,
@@ -439,8 +449,8 @@
       "source_path": "reference/integrated-selected/UPSTREAM.json"
     },
     "reference/integrated-selected/alder/seed_budget.py": {
-      "bytes": 4093,
-      "sha256": "49cd9ea4112d2bb52b8c42982afa25a3d8258bb6cfdcd6e9b8aa005015788c36",
+      "bytes": 3732,
+      "sha256": "1e62a846cffd344956add4b7b8763f09695ee3ce3c30573e490b26cd74f2f919",
       "source_path": "reference/integrated-selected/alder/seed_budget.py"
     },
     "reference/integrated-selected/claude/LICENSE-APACHE-2.0.txt": {
@@ -514,8 +524,8 @@
       "source_path": "reference/selected-action/t08/arrival_contract.py"
     },
     "reference/titan-current/deadline_adapter.py": {
-      "bytes": 12701,
-      "sha256": "6e677016ac93350a5eb0b6f3345fb94726e78d5416d20bb81e7e5bc8ffdc8da2",
+      "bytes": 15458,
+      "sha256": "7f70a25dfb703f50aa83cd281a9722d575571da1073e605c5927fc35453ab486",
       "source_path": "reference/titan-current/deadline_adapter.py"
     },
     "reference/titan-current/latest/integrated_selected.py": {
@@ -574,8 +584,8 @@
       "source_path": "reference/next-panel/vendor/arlene.py"
     },
     "reference/titan-current/vendor/sell/scheduler.py": {
-      "bytes": 19766,
-      "sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+      "bytes": 19829,
+      "sha256": "2915af42b6b4cb280526f105705257b6ed35173391d1f11bb80dd73d55fc48f7",
       "source_path": "scheduler.py"
     },
     "reference/titan-current/vendor/terminal.py": {
@@ -654,8 +664,8 @@
       "source_path": "reference/titan-history/weighted_selector.py"
     },
     "scheduler.py": {
-      "bytes": 19766,
-      "sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+      "bytes": 19829,
+      "sha256": "2915af42b6b4cb280526f105705257b6ed35173391d1f11bb80dd73d55fc48f7",
       "source_path": "scheduler.py"
     },
     "selected_action_sell.py": {
@@ -667,6 +677,11 @@
       "bytes": 7015,
       "sha256": "63198d3b642847a02fee8f3553b9983341b4931b4975013209ad10777b5d1199",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
+    },
+    "seller_snapshot.py": {
+      "bytes": 1452,
+      "sha256": "e7093c760c05400948ece0a4a00495ab2cb93fd56e585eba9eb78b1f13666576",
+      "source_path": "../cloud-quickstep/seller_snapshot.py"
     },
     "spatial_tempo.py": {
       "bytes": 14557,

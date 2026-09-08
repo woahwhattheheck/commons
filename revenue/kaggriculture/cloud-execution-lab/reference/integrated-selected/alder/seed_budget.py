@@ -6,7 +6,7 @@ rewriters. Counting every PLANT request (including future no-ops) and taking the
 largest suffix count over prefix-compatible routes preserves a conservative stock budget.
 It does not read the rival, replay actions, prices, hidden seeds, or future draws.
 """
-from collections import Counter
+from plant_suffix import immutable_plant_suffixes
 from copy import deepcopy
 from types import MappingProxyType
 import marshal
@@ -28,14 +28,7 @@ def _derive(routes):
                 common += 1
             prefix_lengths[name, other] = common
     for name, route in routes.items():
-        suffix = [Counter() for _ in range(len(route) + 1)]
-        for t in range(len(route) - 1, -1, -1):
-            suffix[t] = suffix[t + 1].copy()
-            row = route[t]
-            for action in [row.get("farmer", []), *row.get("hands", [])]:
-                if len(action) >= 2 and action[0] == "PLANT":
-                    suffix[t][action[1]] += 1
-        suffixes[name] = tuple(MappingProxyType(dict(c)) for c in suffix)
+        suffixes[name] = immutable_plant_suffixes(route)
     return MappingProxyType(suffixes), MappingProxyType(prefix_lengths)
 
 
