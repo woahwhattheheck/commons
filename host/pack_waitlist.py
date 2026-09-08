@@ -103,7 +103,7 @@ def _now() -> str:
 
 
 def normalize_email(value: Any) -> str:
-    return str(value or "").strip().lower()
+    return value.strip().lower() if isinstance(value, str) else ""
 
 
 def normalize_tier(value: Any) -> str:
@@ -288,11 +288,26 @@ def handle_http(
 ) -> dict[str, Any]:
     target = jsonl_path or Path("/tmp/tjlabs-waitlist-signups.jsonl")
     route = (path or "/").split("?", 1)[0]
+    if method.upper() == "POST" and route in {
+        "/waitlist", "/waitlist/", "/", "/waitlist/opt-out", "/opt-out"
+    }:
+        try:
+            payload = parse_body(body, content_type)
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            return {
+                "status": 400,
+                "body": {
+                    "verdict": "WAITLIST_INVALID",
+                    "sends": 0,
+                    "addresses_public": False,
+                    "counts": public_counts(target),
+                    "pixel_allowed": False,
+                },
+            }
     if method.upper() == "GET" and route in {"/waitlist/counts", "/counts", "/waitlist"}:
         counts = public_counts(target)
         return {"status": 200, "body": counts}
     if method.upper() == "POST" and route in {"/waitlist", "/waitlist/", "/"}:
-        payload = parse_body(body, content_type)
         result = append_signup(target, payload)
         status = 200 if result["verdict"] in {"SIGNUP_OK", "OPT_OUT_OK"} else 400
         public = {
@@ -306,7 +321,6 @@ def handle_http(
             raise RuntimeError("http body leaked an address")
         return {"status": status, "body": public}
     if method.upper() == "POST" and route in {"/waitlist/opt-out", "/opt-out"}:
-        payload = parse_body(body, content_type)
         payload["kind"] = "opt_out"
         payload["ccpa_do_not_sell"] = True
         result = append_signup(target, payload)
