@@ -57,7 +57,9 @@ def run(source, reports):
         def test_wrong_call_total(self):self.data['original']['total_calls']=1;self.reject()
         def test_wrong_cell_calls(self):self.data['uncached']['cells'][1]['calls']=718;self.reject()
         def test_wrong_parent_count(self):self.data['original']['cells'][2]['actual_parent_calls']=718;self.reject()
-        def test_wrong_view_seat(self):self.data['uncached']['cells'][0]['seat']=1;self.reject()
+        def test_wrong_view_seat(self):
+            self.data['uncached']['cells'][0]['seat']=1
+            self.reject()
         def test_equal_but_noncontiguous_rows(self):
             for report in self.data.values():report['cells'][0]['rows'][0]['step']=-1
             self.reject()
