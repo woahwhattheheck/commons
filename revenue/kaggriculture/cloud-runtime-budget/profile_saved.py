@@ -21,6 +21,7 @@ from pathlib import Path
 import platform
 import pstats
 import resource
+import random
 import subprocess
 import sys
 import time
@@ -56,10 +57,39 @@ def bind_action(fn):
     return lambda obs, cfg: fn(obs, cfg)
 
 
-def load_workload(path: Path, seat: int, limit: int):
+def load_execution_receipt(path: Path):
+    raw = path.read_bytes()
+    receipt = json.loads(raw)
+    if receipt.get("schema") != "titan.recorded-actor-inputs.v1":
+        raise ValueError("unsupported recorded-input receipt")
+    for field in ("candidate_actor_rng_seed", "candidate_pythonhashseed"):
+        if type(receipt.get(field)) is not int:
+            raise ValueError("recorded actor seed is missing or invalid")
+    return receipt, digest(raw)
+
+
+def load_workload(path: Path, seat: int, limit: int, receipt_path: Path | None = None):
     raw = path.read_bytes()
     decoded = gzip.decompress(raw) if raw.startswith(b"\x1f\x8b") else raw
-    value = json.loads(decoded)
+    if receipt_path is not None:
+        receipt, receipt_hash = load_execution_receipt(receipt_path)
+        if digest(raw) != receipt.get("output_file_sha256") or digest(decoded) != receipt.get("input_jsonl_sha256"):
+            raise ValueError("recorded JSONL bytes differ from their receipt")
+        rows = [json.loads(line) for line in decoded.splitlines() if line.strip()]
+        if len(rows) != receipt.get("observation_count") or not rows:
+            raise ValueError("recorded observation count differs")
+        if receipt.get("candidate_seat") != seat:
+            raise ValueError("recorded candidate seat differs")
+        for row in rows:
+            if row.get("seat") != seat or row.get("step") != row.get("observation", {}).get("step"):
+                raise ValueError("recorded row seat or clock differs")
+            if not isinstance(row.get("configuration"), dict):
+                raise ValueError("recorded row configuration is missing")
+        value = {"schema": "titan.profile.observations.v1", "configuration": rows[0]["configuration"],
+                 "records": rows, "provenance": {"kind": "recorded_actor_inputs",
+                    "receipt_sha256": receipt_hash, "source_receipt": receipt}}
+    else:
+        value = json.loads(decoded)
     for _ in range(8):
         if isinstance(value, str):
             value = json.loads(value)
@@ -143,17 +173,27 @@ def worker(args):
               "process_id": os.getpid(),
               "entrypoint": str(args.entrypoint), "profiler_sha256": digest(Path(__file__).read_bytes())}
     observer = None
+    source_root = getattr(args, "source_root", None) or args.entrypoint.parent
+    report["runtime_source_root"] = str(source_root)
+    report["factory_kwargs"] = getattr(args, "factory_kwargs", None) or {}
     source_before = None
     prof = cProfile.Profile() if args.worker_mode == "profile" else None
     profile_steps = {int(step) for step in (getattr(args, "profile_steps", "") or "").split(",") if step}
     report["profiled_steps"] = sorted(profile_steps) if prof else []
     try:
         t0 = time.perf_counter()
-        cfg, records, report["input"] = load_workload(args.replay, args.seat, args.max_decisions)
+        cfg, records, report["input"] = load_workload(args.replay, args.seat, args.max_decisions, getattr(args, "input_receipt", None))
         report["input_load_s"] = time.perf_counter() - t0
         timing = load_module(args.timing_source, "finch_existing_timing")
         report["timing_source_sha256"] = digest(args.timing_source.read_bytes())
-        source_before = source_rows(args.entrypoint.parent)
+        execution = (report["input"]["provenance"].get("source_receipt", {})
+                     if getattr(args, "input_receipt", None) is not None else {})
+        actor_seed = execution.get("candidate_actor_rng_seed")
+        report["actor_rng_seed"] = actor_seed
+        report["pythonhashseed"] = os.environ.get("PYTHONHASHSEED")
+        if actor_seed is not None:
+            random.seed(actor_seed)
+        source_before = source_rows(source_root)
         sys.path.insert(0, str(args.entrypoint.parent))
         t0 = time.perf_counter()
         target_load_started = t0
@@ -162,7 +202,7 @@ def worker(args):
         holder = {}
 
         def factory():
-            actor = getattr(module, args.factory)()
+            actor = getattr(module, args.factory)(**report["factory_kwargs"])
             holder["actor"] = actor
             method = actor if args.method == "__call__" else getattr(actor, args.method)
             return bind_action(method)
@@ -173,7 +213,8 @@ def worker(args):
         report["expected_actions"] = {"present": 0, "mismatches": 0, "first_mismatch": None}
         for row in records:
             obs = copy.deepcopy(row["observation"])
-            configuration = copy.deepcopy(cfg)
+            configuration = copy.deepcopy(row.get("configuration", cfg))
+            configuration.pop("seed", None)
             step = obs["step"]
             started = time.perf_counter()
             cpu_started = time.process_time()
@@ -213,7 +254,7 @@ def worker(args):
     finally:
         report["timings"] = observer.timings() if observer else None
         report["runtime_sources"] = source_before
-        report["sources_unchanged"] = source_before == source_rows(args.entrypoint.parent) if source_before else None
+        report["sources_unchanged"] = source_before == source_rows(source_root) if source_before else None
         report["peak_rss_kib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         values = [r["wall_s"] for r in report["calls"]]
         report["ordinary_threshold_s"] = 1.0
@@ -225,11 +266,11 @@ def worker(args):
         if prof and prof.getstats():
             stats = pstats.Stats(prof)
             report["hot_functions"] = sorted([
-                {"file": str(Path(filename).relative_to(args.entrypoint.parent)), "line": lineno,
+                {"file": str(Path(filename).relative_to(source_root)), "line": lineno,
                  "function": name, "primitive_calls": cc, "calls": nc,
                  "self_s": tt, "cumulative_s": ct}
                 for (filename, lineno, name), (cc, nc, tt, ct, _callers) in stats.stats.items()
-                if str(filename).startswith(str(args.entrypoint.parent) + os.sep)
+                if str(filename).startswith(str(source_root) + os.sep)
             ], key=lambda r: r["cumulative_s"], reverse=True)[:50]
         args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
     return 0 if report["status"] == "complete" else 2
@@ -255,9 +296,19 @@ def supervise(args):
             steps = {calls[0]["step"], calls[-1]["step"]}
             steps.update(row["step"] for row in sorted(calls, key=lambda row: row["wall_s"], reverse=True)[:getattr(args,"profile_slowest",5)])
             command.extend(["--profile-steps", ",".join(map(str, sorted(steps)))])
+        if getattr(args, "factory_kwargs", None):
+            command.extend(["--factory-kwargs", json.dumps(args.factory_kwargs)])
+        if getattr(args, "source_root", None):
+            command.extend(["--source-root", str(args.source_root)])
+        environment = None
+        input_receipt = getattr(args, "input_receipt", None)
+        if input_receipt is not None:
+            execution, _ = load_execution_receipt(input_receipt)
+            command.extend(["--input-receipt", str(input_receipt)])
+            environment = dict(os.environ, PYTHONHASHSEED=str(execution["candidate_pythonhashseed"] % (2**32)))
         started = time.perf_counter()
         try:
-            run = subprocess.run(command, capture_output=True, text=True, timeout=args.process_timeout)
+            run = subprocess.run(command, capture_output=True, text=True, timeout=args.process_timeout, env=environment)
             code, log = run.returncode, run.stdout + run.stderr
             report = json.loads(child_output.read_text()) if child_output.exists() else {
                 "status": "process_error", "error": {"type": "MissingChildReport"}}
@@ -302,7 +353,10 @@ def main():
     for name in ("entrypoint", "timing-source", "replay", "output"):
         ap.add_argument("--" + name, type=Path,
                         required=True)
+    ap.add_argument("--input-receipt", type=Path, help="TRACE native JSONL receipt; supplies actor RNG and process hash seed")
     ap.add_argument("--factory", default="make_agent")
+    ap.add_argument("--factory-kwargs", type=json.loads, default={}, help="JSON object forwarded once to the selected factory")
+    ap.add_argument("--source-root", type=Path, help="Explicit runtime dependency root for source binding and hot-function attribution")
     ap.add_argument("--method", default="act")
     ap.add_argument("--seat", type=int, choices=(0, 1), default=0)
     ap.add_argument("--max-decisions", type=int, default=719)
@@ -314,6 +368,12 @@ def main():
     args = ap.parse_args()
     for name in ("entrypoint", "timing_source", "replay", "output"):
         setattr(args, name, getattr(args, name).resolve())
+    if args.input_receipt is not None:
+        args.input_receipt = args.input_receipt.resolve()
+    if args.source_root is not None:
+        args.source_root = args.source_root.resolve()
+    if not isinstance(args.factory_kwargs, dict):
+        ap.error("--factory-kwargs must be a JSON object")
     if args.process_timeout <= 0:
         ap.error("--process-timeout must be positive")
     if args.profile_slowest < 1:

@@ -21,7 +21,9 @@ python -B -m unittest discover -s "$D" -p 'test_profile_saved.py' -v
 
 The default factory is `make_agent()` and method is `act`. `--factory Agent` supports the unchanged Arlene source; `--method __call__` accepts a callable factory result. The selected signature is bound before execution. Tests normally use the repository's existing timing utility; `TITAN_TIMING_SOURCE` selects an already-materialized copy in an isolated source cache.
 
-A normalized workload is a JSON object with schema `titan.profile.observations.v1`, `configuration`, `provenance`, and `records`. Each record contains a complete `observation` and optionally an `expected_action`. Records must form an uninterrupted prefix from step0, for the supplied seat. Missing observations and summaries are rejected rather than reconstructed. Configuration seed is removed before agent delivery. For public replay frames only shared fields are reconstructed from the companion row; rival private inventory is never copied. An expected-action mismatch is reported independently from instrumentation parity.
+A normalized workload is a JSON object with schema `titan.profile.observations.v1`, `configuration`, `provenance`, and `records`. Each record contains a complete `observation` and optionally an `expected_action`. The actor is rebuilt from the uninterrupted step0 prefix for the selected player; summaries alone do not contain those inputs. Configuration seed is omitted from agent delivery. Shared public fields may come from the companion replay row, while private inventory comes only from the selected player. Expected-action mismatch is reported independently from instrumentation parity.
+
+Native TRACE JSONL and its execution receipt can be consumed directly with `--input-receipt`; see [TRACE-INPUTS.md](TRACE-INPUTS.md) for actor seeds, per-row configuration, factory keyword arguments and sibling-source coverage. The original measurements below remain bound to PR10052, not this later input adaptation.
 
 ## Executed result
 
