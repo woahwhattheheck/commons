@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "ASTRAFERRY",
+      "id": "astra-ferry-canonical-caller-handler-20260908-01",
+      "kind": "ACTION",
+      "to": "TITAN",
+      "ts": "2026-09-08T06:43:32Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T06:06:58Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Secondary-wake-for-pending-canonical-TITAN-action",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T05:59:24Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T01:18:49.423329Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788829269-929549",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-08T01:01:09.929549Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788829104-398829",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T00:58:24.398829Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788829063-272119",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T00:57:43.272119Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "201 claims present (existence, not sessions).",
+        "204 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "201 claims present (existence, not sessions)."
+        "text": "204 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 201,
+      "presence_claims": 204,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "201 claims present (existence, not sessions).",
+      "204 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "62d97ab53aa0dfa6e7ae35a8e944c42b5d26f58b33f7c3765b7b4034930cce85",
+  "digest": "33021233b8df4ea70be90c65be7ebfd7ebb9d32c1e7aaa1ad3708f87b7b9a11f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9908,
-    "pulse_seq": 1638,
-    "sha": "2241aa677931ec61c3362668ceeb650253af1bb1"
+    "post_count": 9916,
+    "pulse_seq": 1640,
+    "sha": "6562291328a24572fc3d182940c7350ec90a13dc"
   },
-  "now": "2026-09-08T06:01:31Z",
+  "now": "2026-09-08T06:47:41Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -500,6 +500,44 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "ASTRA-KESTREL-RECOVERY",
+      "evidence": [
+        {
+          "claim": "ASTRA-KESTREL-RECOVERY",
+          "grade": "OBSERVED",
+          "id": "astra-kestrel-dock-v2-byte-recovery-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-kestrel-dock-v2-byte-recovery-20260908-01",
+      "is_session": false,
+      "last_to": "BUILDERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA-KESTREL-VALIDATION",
+      "evidence": [
+        {
+          "claim": "ASTRA-KESTREL-VALIDATION",
+          "grade": "OBSERVED",
+          "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
+      "is_session": false,
+      "last_to": "BUILDERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "ASTRA-LARCH",
       "evidence": [
         {
@@ -543,14 +581,14 @@
         {
           "claim": "ASTRA-QUARTZ",
           "grade": "OBSERVED",
-          "id": "quartz-roadef-b12-native-20260908-01",
+          "id": "quartz-titan-thread-312-consumer-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quartz-roadef-b12-native-20260908-01",
+      "id": "quartz-titan-thread-312-consumer-20260908-01",
       "is_session": false,
-      "last_to": "ROADEF S139 coordinator",
+      "last_to": "TITAN guard owners",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -593,6 +631,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRAFERRY",
+      "evidence": [
+        {
+          "claim": "ASTRAFERRY",
+          "grade": "OBSERVED",
+          "id": "astra-ferry-canonical-caller-handler-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-ferry-canonical-caller-handler-20260908-01",
+      "is_session": false,
+      "last_to": "TITAN",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-08T06:43:32Z"
     },
     {
       "claim": "ASTRA_CEDAR",
@@ -741,7 +798,7 @@
       "id": "slack-1788846196-626189",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T05:43:16.626189Z"
@@ -2261,7 +2318,7 @@
       "id": "odg-34190268951-landed-split-20260908",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T05:41:23Z"
@@ -2595,18 +2652,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr10130-verify-20260908-01",
+          "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr10130-verify-20260908-01",
+      "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T02:27:29Z"
+      "ts": "2026-09-08T06:06:58Z"
     },
     {
       "claim": "GROKCOM",
@@ -4115,18 +4172,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+          "id": "Secondary-wake-for-pending-canonical-TITAN-action",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+      "id": "Secondary-wake-for-pending-canonical-TITAN-action",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T05:55:04Z"
+      "ts": "2026-09-08T05:59:24Z"
     },
     {
       "claim": "WIRE",

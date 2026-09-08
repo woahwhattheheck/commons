@@ -1,0 +1,10 @@
+test_completed_checkpoint_does_not_recreate_cancelled_replanning (__main__.SellerRecoveryAcceptance.test_completed_checkpoint_does_not_recreate_cancelled_replanning) ... ok
+test_completed_checkpoint_plus_public_observer_restores_this_prefix (__main__.SellerRecoveryAcceptance.test_completed_checkpoint_plus_public_observer_restores_this_prefix) ... ok
+test_evidence_category_is_not_inflated (__main__.SellerRecoveryAcceptance.test_evidence_category_is_not_inflated) ... ok
+test_exact_subject_and_retained_input (__main__.SellerRecoveryAcceptance.test_exact_subject_and_retained_input) ... ok
+test_identical_fallback_loses_two_later_sales (__main__.SellerRecoveryAcceptance.test_identical_fallback_loses_two_later_sales) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 19.929s
+
+OK

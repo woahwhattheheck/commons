@@ -494,8 +494,8 @@
       "source_path": "reference/selected-action/t08/arrival_contract.py"
     },
     "reference/titan-current/deadline_adapter.py": {
-      "bytes": 12377,
-      "sha256": "c8f7c9842ba7e4eb29f6e57a8d6f9ba816140dcbea7817aea2b3efcabe2771c5",
+      "bytes": 12701,
+      "sha256": "6e677016ac93350a5eb0b6f3345fb94726e78d5416d20bb81e7e5bc8ffdc8da2",
       "source_path": "reference/titan-current/deadline_adapter.py"
     },
     "reference/titan-current/latest/integrated_selected.py": {
@@ -599,8 +599,8 @@
       "source_path": "reference/titan-history/score_endgame.py"
     },
     "reference/titan-history/selected_action_history.py": {
-      "bytes": 11579,
-      "sha256": "ff7abe56cff0fe68de8652bcee4c67997eae0666a12ba953eb48ae3e5f8f0d9b",
+      "bytes": 15289,
+      "sha256": "f83bf0804eadee97b91250ec0f93c44332cc2269d38b66aa25568873c46694d4",
       "source_path": "reference/titan-history/selected_action_history.py"
     },
     "reference/titan-history/selector.py": {

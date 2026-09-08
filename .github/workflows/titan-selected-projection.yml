@@ -24,6 +24,9 @@ on:
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/selector.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/solver.py'
+      - 'revenue/kaggriculture/cloud-full-support/**'
+      - 'revenue/kaggriculture/cloud-weighted-plan-selector/**'
       - 'revenue/kaggriculture/cloud-plan-continuation/continuation.py'
       - 'revenue/kaggriculture/cloud-observed-fills/observed_fills.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py'
@@ -77,6 +80,9 @@ jobs:
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py
             /revenue/kaggriculture/cloud-market-game-theory/selector.py
+            /revenue/kaggriculture/cloud-market-game-theory/solver.py
+            /revenue/kaggriculture/cloud-full-support/
+            /revenue/kaggriculture/cloud-weighted-plan-selector/
             /revenue/kaggriculture/cloud-plan-continuation/continuation.py
             /revenue/kaggriculture/cloud-observed-fills/observed_fills.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py
@@ -112,10 +118,12 @@ jobs:
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
                    'cloud-integration-differentials', 'cloud-composition-cases/cypress',
                    'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
-                   'cloud-economic-stress',
+                   'cloud-economic-stress', 'cloud-full-support',
+                   'cloud-weighted-plan-selector',
                    'cloud-plan-continuation', 'cloud-observed-fills')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
           paths.append(root/'cloud-market-game-theory/selector.py')
+          paths.append(root/'cloud-market-game-theory/solver.py')
           paths.append(Path('.github/workflows/titan-selected-projection.yml'))
           files = {}
           for path in sorted(paths):
@@ -231,6 +239,14 @@ jobs:
           set -euo pipefail
           python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py -v \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/lazy-offers-tests.log"
+      - name: Full-support final-pivot budget consumer tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-full-support/test_final_pivot_budget.py \
+            --report "$RUNNER_TEMP/projection-validation/final-pivot-budget-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/final-pivot-budget-tests.log"
       - name: Adaptive-context combined-report binding tests
         if: ${{ !cancelled() }}
         working-directory: revenue/kaggriculture/cloud-selected-projection

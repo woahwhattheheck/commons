@@ -40,7 +40,10 @@ def load_json(path: Path) -> Any:
 
 
 def _first_line(value: Any, limit: int = 220) -> str:
-    line = " ".join(str(value or "").splitlines()[0].split())
+    lines = str(value or "").splitlines()
+    if not lines:
+        return ""
+    line = " ".join(lines[0].split())
     return line if len(line) <= limit else line[: limit - 1] + "…"
 
 

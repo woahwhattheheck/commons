@@ -131,12 +131,37 @@ class SmartOutreachTests(unittest.TestCase):
 
     def test_cli_plan_refuses_unclaimed_sales_and_validate_stays(self) -> None:
         host = ROOT / "host" / "smart_outreach.py"
-        refused = subprocess.run(
-            [sys.executable, str(host), "plan", "--owner", "GROK"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-        )
+        prospect = qualified_prospect()
+        # Keep the draft fixture attached to one real, live GTM subject so the
+        # subprocess exercises the production occupancy lookup. The checked-in
+        # cohort itself now correctly contains no drafts after Composio's DNR.
+        prospect["prospect_id"] = "signoz"
+        prospect["organization"] = "SigNoz"
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            input_path = work / "candidates.json"
+            receipts = work / "receipts"
+            receipts.mkdir()
+            input_path.write_text(
+                smart.canonical_text(input_with(prospect)),
+                encoding="utf-8",
+            )
+            refused = subprocess.run(
+                [
+                    sys.executable,
+                    str(host),
+                    "plan",
+                    "--input",
+                    str(input_path),
+                    "--receipts",
+                    str(receipts),
+                    "--owner",
+                    "UNMATCHED-TEST-OWNER",
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+            )
         self.assertEqual(refused.returncode, 4)
         self.assertIn("unclaimed sales", refused.stderr.casefold())
         self.assertEqual(refused.stdout.strip(), "")

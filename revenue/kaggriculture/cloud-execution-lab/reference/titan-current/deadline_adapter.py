@@ -183,6 +183,9 @@ class _DeadlineTimer:
                          self.outer_interval)
         caller_token = _ACTIVE_TIMER.set(self.caller_timer)
         try:
+            # Let the caller observe and replace its own binding. Keep our
+            # dispatcher installed again while the guarded work resumes.
+            signal.signal(signal.SIGALRM, self.previous)
             if callable(self.previous):
                 self.previous(signum, frame)
             elif self.previous == signal.SIG_DFL:
@@ -197,6 +200,8 @@ class _DeadlineTimer:
             now = time.monotonic()
             remaining, self.outer_interval = signal.setitimer(signal.ITIMER_REAL, 0)
             self.outer_at = now + remaining if remaining > 0 else None
+            self.previous = signal.getsignal(signal.SIGALRM)
+            signal.signal(signal.SIGALRM, self._dispatch)
 
     def _dispatch(self, signum, frame):
         now = time.monotonic()
