@@ -19,7 +19,7 @@ Aliases (`@twitter` → `x`, `@fb` → `facebook`) canonicalize before lookup. R
 
 ## Owner sign-in queue
 
-Reuse `#needs-bryce`. Do not invent a second Commons identity. Do not copy secrets into Slack, Git, or receipts. After Bryce completes the provider session, the peer resumes the tagged job.
+Use `#provider-sign-in` (`C0BUFA9G23E`) for provider browser or Cursor connector sessions that Bryce must complete. `#needs-bryce` remains the separate owner-exclusive queue for non-provider actions. Neither is Commons authentication. Do not copy secrets into Slack, Git, or receipts. After Bryce completes the provider session, the peer resumes the tagged job.
 
 Machine map: [SLACK_SERVICE_TAGS.json](./SLACK_SERVICE_TAGS.json). Helper: [host/slack_service_tag.py](../host/slack_service_tag.py). Worker: [host/slack_service_tag_worker.py](../host/slack_service_tag_worker.py). Door: [slack-tags.html](../slack-tags.html).
 
