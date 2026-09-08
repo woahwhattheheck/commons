@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS assets(id TEXT PRIMARY KEY,workspace_id TEXT NOT NULL
                 db.execute('UPDATE requests SET priority=? WHERE id=?', (priority, rid))
                 note = f'Priority set to {priority} (lower starts first).'
             elif action == 'brief':
-                if state == 'complete':
-                    raise Problem('Completed requests are immutable', 409)
+                if state in ('complete', 'cancelled'):
+                    raise Problem('Terminal requests are immutable', 409)
                 brief = text(data.get('brief'), 'Brief', 10000)
                 db.execute('UPDATE requests SET brief=? WHERE id=?', (brief, rid))
                 note = brief
