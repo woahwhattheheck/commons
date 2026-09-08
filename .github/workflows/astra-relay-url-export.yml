@@ -1,0 +1,114 @@
+name: ASTRA relay URL exact-source export
+'on':
+  push:
+    branches: [astra/relay-url-build-20260907-01]
+    paths: [.github/workflows/astra-relay-url-export.yml]
+permissions:
+  contents: write
+concurrency:
+  group: astra-relay-url-export-20260907-01
+  cancel-in-progress: false
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 2b43be26ae7858b7a7da63fff71322e8c93d482f
+          path: support
+          sparse-checkout: .github/workflows
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 1f15b08e9e58d33a39770a831c6dfc84f49968a0
+          path: source
+          sparse-checkout: host
+          persist-credentials: true
+      - name: Export the tested production change without workflow writes
+        run: |
+          python3 - <<'PY'
+          import ast, hashlib, json, os, subprocess
+          from pathlib import Path
+
+          def blob(data):
+              return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+          support = Path('support/.github/workflows/astra-relay-url-build.yml')
+          assert blob(support.read_bytes()) == '3a1746667de4c0aa96d40851e36f538619ad48fc'
+          text = support.read_text()
+          script = text.split("        python3 - <<'PY'\n", 1)[1].split('\n        PY\n', 1)[0]
+          script = '\n'.join(line[8:] if line.startswith('        ') else line for line in script.splitlines())
+          parts = {}
+          for node in ast.parse(script).body:
+              if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name) and node.targets[0].id in ('old', 'new'):
+                  parts[node.targets[0].id] = ast.literal_eval(node.value)
+              if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call) and isinstance(node.value.func, ast.Attribute) and isinstance(node.value.func.value, ast.Name) and node.value.func.value.id == 'test_path' and node.value.func.attr == 'write_text':
+                  parts['tests'] = ast.literal_eval(node.value.args[0])
+          assert set(parts) == {'old', 'new', 'tests'}
+          assert blob(parts['tests'].encode()) == '9923da5c7105c0ab366c15d3da27a03052950866'
+          os.chdir('source')
+          worker = Path('host/inbox_slack_relay.py')
+          assert blob(worker.read_bytes()) == 'd42718ceda5a6123cf19a072faf4db650b91c14c'
+          source = worker.read_text()
+          assert source.count(parts['old']) == 1
+          worker.write_text(source.replace(parts['old'], parts['new']), encoding='utf-8')
+          test = Path('test_inbox_slack_relay_urls.py')
+          assert not test.exists()
+          test.write_text(parts['tests'], encoding='utf-8')
+          receipt = Path('p/astra-relay-malformed-url-20260907-01.md')
+          receipt.parent.mkdir(exist_ok=True)
+          assert not receipt.exists()
+          receipt.write_text('''# Readable inbox work with malformed source links
+
+          Operation: `astra-relay-malformed-url-20260907-01`. Builder: ASTRA-RELAY.
+          Existing ASTRA-VISIBILITY, charset, MAIL and COOLDOWN work is preserved.
+
+          `clean()` catches only URL-parser `ValueError`, replaces the malformed link with an explicit omission marker, and retains surrounding work text. Normal links and existing redaction and mention behavior are unchanged. No source link is fetched.
+
+          ## Executed evidence
+
+          [Hosted validation run 34175273169](https://github.com/woahwhattheheck/commons/actions/runs/34175273169), job 101903316874, executed on base `1f15b08e9e58d33a39770a831c6dfc84f49968a0` with baseline worker blob `d42718ceda5a6123cf19a072faf4db650b91c14c`.
+
+          Two synthetic malformed-URL controls raised ValueError before the repair; ordinary HTTPS was unchanged. After the repair, 117 targeted tests passed: 47 existing relay/cooldown tests and 70 charset/alternative/header/URL tests, including 18 new URL methods. Compile and whitespace checks passed. Tests exercise actual rendering and SQLite delivery state with synthetic provider responses, including a following work item and repeat delivery without duplicates. These are not live mailbox incidents or live deliveries.
+
+          The run's overall conclusion is failure because its runner credential cannot publish workflow-file changes. The passed test evidence remains valid. This export reconstructs the exact executed worker transformation and test literal from immutable support commit `2b43be26ae7858b7a7da63fff71322e8c93d482f`; test blob `9923da5c7105c0ab366c15d3da27a03052950866` is checked. It is source preservation, not another test execution.
+
+          [Retained test artifact](https://github.com/woahwhattheheck/commons/actions/runs/34175273169/artifacts/10037025979), ZIP SHA-256 `f9523353ee28fbd0b99d898bfa54f6b1d3814954dfe854f4a4c493f7985952d8`.
+
+          ## Replay and integration
+
+          ```sh
+          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
+          python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers test_inbox_slack_relay_urls -v
+          ```
+
+          The product consists of the worker, root URL test, this receipt and the existing inbox workflow's trigger/test-command update. The workflow update uses the connected account's supported write action; this runner exports only the three non-workflow product files. Neither branch-only build/export workflow belongs on main. Main integration and exact readback are recorded in the original Slack thread.
+
+          No credentials, source inbox mutations, scheduler activation, account submission, spend or owner-PC work occurred. F/equipment retains activation; this code change does not establish unattended delivery.
+          ''', encoding='utf-8')
+          paths = [str(worker), str(test), str(receipt)]
+          subprocess.run(['python3', '-m', 'py_compile', str(worker), str(test)], check=True)
+          subprocess.run(['git', 'add', '--sparse', '--', *paths], check=True)
+          changed = subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines()
+          assert sorted(changed) == sorted(paths)
+          subprocess.run(['git', 'diff', '--cached', '--check'], check=True)
+          subprocess.run(['git', '-c', 'user.name=ASTRA-RELAY', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com', 'commit', '-m', 'fix: preserve readable inbox work around malformed URLs'], check=True)
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          manifest = {'product_sha': head, 'inherited_test_run': 34175273169, 'inherited_passed_tests': 117, 'fresh_test_execution': False, 'blobs': {p: blob(Path(p).read_bytes()) for p in paths}}
+          print(json.dumps(manifest, indent=2))
+          Path(os.environ['RUNNER_TEMP'], 'relay-url-export.json').write_text(json.dumps(manifest, indent=2))
+          subprocess.run(['git', 'push', 'origin', 'HEAD:refs/heads/astra/relay-malformed-url-20260907-01'], check=True)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+              f.write('## Exact-source export\n```json\n' + json.dumps(manifest, indent=2) + '\n```\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-relay-url-source-export
+          path: |
+            ${{ runner.temp }}/relay-url-export.json
+            source/host/inbox_slack_relay.py
+            source/test_inbox_slack_relay_urls.py
+            source/p/astra-relay-malformed-url-20260907-01.md
+          retention-days: 30
