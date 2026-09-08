@@ -116,12 +116,13 @@ def validate_rows(
     rows: Sequence[Mapping[str, str]],
     *,
     expected_datasets: Iterable[str] | None = None,
-    require_consecutive_edges: bool = False,
+    require_consecutive_edges: bool = True,
 ) -> dict[str, int]:
     """Validate rows and return compact counts.
 
-    Publicly documented invariants are always enforced.  `require_consecutive_edges`
-    enables the stricter t->t+1 topology used by the organizer's reference baseline.
+    The organizer's public tracking model links cells to the next timepoint, so
+    t->t+1 edges are enforced by default. Set `require_consecutive_edges=False`
+    only for deliberate non-submission analysis.
     """
     nodes, edges = _parse_rows(rows)
     node_map = {(node.dataset, node.node_id): node for node in nodes}
@@ -183,7 +184,7 @@ def validate_submission(
     path: Path,
     *,
     expected_datasets: Iterable[str] | None = None,
-    require_consecutive_edges: bool = False,
+    require_consecutive_edges: bool = True,
 ) -> dict[str, int]:
     return validate_rows(
         read_submission(path),
@@ -216,7 +217,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate Biohub submission.csv without loading competition data")
     parser.add_argument("submission", type=Path)
     parser.add_argument("--expected-datasets", type=Path, help="newline-delimited dataset names")
-    parser.add_argument("--strict-consecutive", action="store_true", help="require every edge to connect t to t+1")
+    parser.add_argument(
+        "--strict-consecutive",
+        action="store_true",
+        default=True,
+        help="require every edge to connect t to t+1 (default; flag retained for compatibility)",
+    )
     args = parser.parse_args()
     counts = validate_submission(
         args.submission,
