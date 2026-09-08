@@ -1,0 +1,70 @@
+name: poly-profiler-complete-reports-diagnostic
+
+"on":
+  push:
+    branches: ["astra/poly-profiler-complete-reports-20260908"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poly-profiler-complete-reports-diagnostic
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Apply exact patch and run all profiler suites
+        id: validate
+        continue-on-error: true
+        shell: bash
+        run: |
+          exec > >(tee "$RUNNER_TEMP/diagnostic.log") 2>&1
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-runtime-budget
+          test "$(git hash-object "$ROOT/profile_saved.py")" = "031f14ba3e15dd438f248a58a5f1143fc45f0d4b"
+          test "$(git hash-object "$ROOT/test_child_reports.py")" = "0f7b1cacba615b614ae2b93833c53a87bd6567df"
+          test "$(git hash-object "$ROOT/test_complete_reports.py")" = "c728ac232d5c2b04ef43349b6f97069f526c1dda"
+          cp "$ROOT/profile_saved.py" "$RUNNER_TEMP/profile_saved.original.py"
+          git apply --check "$ROOT/profiler-complete-reports.patch"
+          git apply "$ROOT/profiler-complete-reports.patch"
+          python -m py_compile "$ROOT/profile_saved.py" "$ROOT/test_child_reports.py" "$ROOT/test_complete_reports.py" "$ROOT/validate_complete_reports.py"
+          mkdir "$RUNNER_TEMP/results"
+          python -B "$ROOT/validate_complete_reports.py" \
+            --source-dir "$ROOT" \
+            --output-dir "$RUNNER_TEMP/results" \
+            --baseline-source "$RUNNER_TEMP/profile_saved.original.py" \
+            --base-commit "$GITHUB_SHA"
+      - name: Collect exact diagnostic files
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/artifact/results"
+          cp "$RUNNER_TEMP/diagnostic.log" "$RUNNER_TEMP/artifact/diagnostic.log" || true
+          cp "$RUNNER_TEMP/profile_saved.original.py" "$RUNNER_TEMP/artifact/" || true
+          cp revenue/kaggriculture/cloud-runtime-budget/profile_saved.py "$RUNNER_TEMP/artifact/profile_saved.patched.py" || true
+          cp revenue/kaggriculture/cloud-runtime-budget/test_child_reports.py "$RUNNER_TEMP/artifact/test_child_reports.patched.py" || true
+          cp revenue/kaggriculture/cloud-runtime-budget/test_complete_reports.py "$RUNNER_TEMP/artifact/" || true
+          cp revenue/kaggriculture/cloud-runtime-budget/validate_complete_reports.py "$RUNNER_TEMP/artifact/" || true
+          cp revenue/kaggriculture/cloud-runtime-budget/profiler-complete-reports.patch "$RUNNER_TEMP/artifact/" || true
+          cp -a "$RUNNER_TEMP/results/." "$RUNNER_TEMP/artifact/results/" 2>/dev/null || true
+          (cd "$RUNNER_TEMP/artifact" && find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+      - name: Upload source-bound diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poly-profiler-complete-reports-diagnostic-${{ github.sha }}
+          path: ${{ runner.temp }}/artifact
+          if-no-files-found: error
+          retention-days: 7
+      - name: Propagate validation failure
+        if: steps.validate.outcome != 'success'
+        shell: bash
+        run: exit 1
