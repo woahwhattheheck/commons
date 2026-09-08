@@ -103,7 +103,11 @@ def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
 
 
 def mirror_payload(path: Path) -> str:
-    raw = path.read_text(encoding="utf-8")
+    return mirror_payload_from_text(path, path.read_text(encoding="utf-8"))
+
+
+def mirror_payload_from_text(path: Path, raw: str) -> str:
+    """Format an already captured source without reopening its path."""
     pid = post_id(path)
     body = body_of(raw)
     if not body.endswith("\n"):

@@ -21,7 +21,7 @@ DOOR = ROOT / "commons-slack.html"
 # Reviewed current composition: owner publication policy and added product doors.
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/slack_mirror.py": "3fe0a5d7",
+    "host/slack_mirror.py": "99059569",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "739d5ee8",
     "host/landed_work_feed.py": "0506fd0f",

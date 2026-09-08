@@ -16,16 +16,16 @@ DOOR = ROOT / "commons-slack-chunk.html"
 
 KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
-    "host/commons_slack_full_body_chunk.py": "a85d1742",
-    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "bf55c254",
-    "test_commons_slack_full_body_chunk.py": "845ce861",
+    "host/commons_slack_full_body_chunk.py": "1fccf134",
+    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "f7e25f56",
+    "test_commons_slack_full_body_chunk.py": "1c3b87d8",
     "commons-slack-chunk.html": "ed480912",
-    "host/commons_slack_full_body.py": "a0f40930",
+    "host/commons_slack_full_body.py": "3bf97dc1",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "5f674c5d",
-    "test_commons_slack_full_body.py": "1ff5bedc",
-    "host/slack_mirror.py": "846a80c2",
-    "test_slack_mirror.py": "201bca45",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "b553959c",
+    "test_commons_slack_full_body.py": "15b1ca56",
+    "host/slack_mirror.py": "99059569",
+    "test_slack_mirror.py": "739d5ee8",
     "commons-slack.html": "172df02f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
@@ -123,7 +123,7 @@ class TestCursorCommonsSlackFullBodyChunkReadback(unittest.TestCase):
             check=False,
         )
         self.assertEqual(mirror.returncode, 0, msg=mirror.stdout + mirror.stderr)
-        self.assertIn("Ran 3 tests", mirror.stderr)
+        self.assertIn("Ran 7 tests", mirror.stderr)
 
     def test_readback_receipt_exists_and_does_not_steal(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")
