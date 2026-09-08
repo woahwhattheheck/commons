@@ -7,6 +7,7 @@ algebraic fixtures, not game traces. No simulator or provider IO is invoked.
 from __future__ import annotations
 
 import argparse
+import ast
 from copy import deepcopy
 from fractions import Fraction as F
 import hashlib
@@ -51,7 +52,6 @@ def traced(core, rows, **budgets):
     target = core._solve_normalized.__wrapped__.__code__
     seen = {}
     previous = sys.gettrace()
-
     def trace(frame, event, arg):
         if frame.f_code is target and event == 'return' and 'table' in frame.f_locals:
             table = frame.f_locals['table']
@@ -60,7 +60,6 @@ def traced(core, rows, **budgets):
                 for row in table for v in row)
             seen['improving_column_remains'] = any(v < 0 for v in table[-1][:-1])
         return trace
-
     sys.settrace(trace)
     try:
         result = core.solve_full_table(rows, **budgets)
@@ -72,9 +71,7 @@ def traced(core, rows, **budgets):
 
 
 class FixedDraw:
-    def __init__(self):
-        self.calls = 0
-
+    def __init__(self): self.calls = 0
     def randrange(self, n):
         self.calls += 1
         return 0
@@ -90,13 +87,10 @@ class FinalPivotBudgetTests(unittest.TestCase):
         try:
             cls.base = load_source(T15/'selector.py', 'triad_original_t15_selector')
         finally:
-            if previous is None:
-                sys.modules.pop('solver', None)
-            else:
-                sys.modules['solver'] = previous
+            if previous is None: sys.modules.pop('solver', None)
+            else: sys.modules['solver'] = previous
 
-    def setUp(self):
-        self.core.clear_table_cache()
+    def setUp(self): self.core.clear_table_cache()
 
     def limited(self, rows=MIXED, **kwargs):
         result, trace = traced(self.core, rows, max_bits=16, **kwargs)
@@ -133,8 +127,7 @@ class FinalPivotBudgetTests(unittest.TestCase):
     def test_default_budget_retains_same_result(self):
         result = self.core.solve_full_table(MIXED)
         high = self.core.solve_full_table(MIXED, max_bits=17)
-        result.pop('max_bits')
-        high.pop('max_bits')
+        result.pop('max_bits'); high.pop('max_bits')
         self.assertEqual(result, high)
 
     def test_existing_zero_pivot_stop_preserved(self):
@@ -167,17 +160,15 @@ class FinalPivotBudgetTests(unittest.TestCase):
             self.core.solve_full_table([[0], [65536]], max_bits=16)
 
     def test_zero_value_tie_keeps_baseline(self):
-        result = self.core.solve_full_table([[0, 0], [-1, 1]], max_bits=16)
+        result = self.core.solve_full_table([[0,0],[-1,1]], max_bits=16)
         self.assertEqual(result['status'], 'optimal')
-        self.assertEqual(result['weights'], ['1', '0'])
+        self.assertEqual(result['weights'], ['1','0'])
         self.assertEqual(result['value'], '0')
 
     def test_mathematical_certificate_remains_valid_at_limit(self):
         result = self.core.solve_full_table(MIXED, max_bits=16)
-        p = list(map(F, result['weights']))
-        q = list(map(F, result['dual_weights']))
-        self.assertEqual(sum(p), 1)
-        self.assertEqual(sum(q), 1)
+        p = list(map(F, result['weights'])); q = list(map(F, result['dual_weights']))
+        self.assertEqual(sum(p), 1); self.assertEqual(sum(q), 1)
         lower = min(sum(p[i]*MIXED[i][j] for i in range(3)) for j in range(2))
         upper = max(sum(q[j]*row[j] for j in range(2)) for row in MIXED)
         self.assertEqual(F(result['value']), lower)
@@ -189,8 +180,7 @@ class FinalPivotBudgetTests(unittest.TestCase):
         low = self.core.solve_full_table(MIXED, max_bits=16)
         high = self.core.solve_full_table(MIXED, max_bits=17)
         again = self.core.solve_full_table(MIXED, max_bits=16)
-        self.assertEqual(self.core.table_cache_info(),
-                         {'hits': 1, 'misses': 2, 'maxsize': 64, 'currsize': 2})
+        self.assertEqual(self.core.table_cache_info(), {'hits':1, 'misses':2, 'maxsize':64, 'currsize':2})
         self.assertEqual(low, again)
         self.assertEqual(low['status'], 'bit_limit')
         self.assertEqual(high['status'], 'optimal')
@@ -204,79 +194,69 @@ class FinalPivotBudgetTests(unittest.TestCase):
     def test_cached_outputs_remain_detached(self):
         first = self.core.solve_full_table(MIXED, max_bits=16)
         expected = deepcopy(first)
-        first['weights'][0] = '900'
-        first['dual_weights'].append('1')
-        first['status'] = 'changed'
+        first['weights'][0] = '900'; first['dual_weights'].append('1'); first['status'] = 'changed'
         self.assertEqual(self.core.solve_full_table(MIXED, max_bits=16), expected)
 
     def test_inputs_and_limit_validation_preserved(self):
         original = deepcopy(MIXED)
         self.core.solve_full_table(original, max_bits=16)
         self.assertEqual(original, MIXED)
-        for kwargs in ({'max_bits': True}, {'max_bits': 15},
-                       {'max_pivots': True}, {'max_pivots': -1}):
+        for kwargs in ({'max_bits':True}, {'max_bits':15}, {'max_pivots':True}, {'max_pivots':-1}):
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 self.core.solve_full_table(MIXED, **kwargs)
 
     def selector(self, max_bits):
         rng = FixedDraw()
-
-        def provider(rows):
-            return self.core.solve_full_table(rows, max_bits=max_bits)
-
-        selector = self.weighted.make_selector(
-            self.base.WholePlanSelector, provider, rng=rng)
+        def provider(rows): return self.core.solve_full_table(rows, max_bits=max_bits)
+        selector = self.weighted.make_selector(self.base.WholePlanSelector, provider, rng=rng)
         return selector, rng
 
     @staticmethod
     def fixture():
-        action = {'farmer': ['PASS'], 'hands': [['PASS']],
-                  'market': [['SELL', 'EGG', 3], ['BUY_SEED', 'WHEAT', 1]]}
-        obs = {'step': 10, 'player': 0, 'farms': [{'money': 100}, {'money': 100}]}
-        plans = [{'id': 'baseline', 'sales': [[10, 3]]},
-                 {'id': 'split', 'sales': [[10, 1], [14, 2]]},
-                 {'id': 'later', 'sales': [[14, 3]]}]
-        window = {'key': 'algebraic-budget-fixture', 'item': 'EGG', 'quantity': 3,
-                  'now': 10, 'end': 14, 'slot': 0, 'plans': plans,
-                  'deltas': deepcopy(MIXED)}
+        action = {'farmer':['PASS'], 'hands':[['PASS']],
+                  'market':[['SELL','EGG',3], ['BUY_SEED','WHEAT',1]]}
+        obs = {'step':10, 'player':0, 'farms':[{'money':100}, {'money':100}]}
+        plans = [{'id':'baseline', 'sales':[[10,3]]},
+                 {'id':'split', 'sales':[[10,1],[14,2]]},
+                 {'id':'later', 'sales':[[14,3]]}]
+        window = {'key':'algebraic-budget-fixture','item':'EGG','quantity':3,
+                  'now':10,'end':14,'slot':0,'plans':plans,'deltas':deepcopy(MIXED)}
         return action, obs, window
 
     def test_real_consumer_keeps_no_draw_on_limit(self):
         selector, rng = self.selector(16)
         _, _, window = self.fixture()
-        result = selector.choose('limit', window['plans'], MIXED,
-                                 feasible=lambda p: True)
+        result = selector.choose('limit', window['plans'], MIXED, feasible=lambda p: True)
         self.assertIsNone(result)
         self.assertEqual(selector.last_decision['reason'], 'provider_not_optimal')
         self.assertEqual(selector.last_decision['provider_status'], 'bit_limit')
-        self.assertEqual((selector.provider_calls, selector.draws, rng.calls), (1, 0, 0))
-        self.assertIsNone(selector.choose('limit', window['plans'], MIXED,
-                                          feasible=lambda p: True))
+        self.assertEqual((selector.provider_calls, selector.draws, rng.calls), (1,0,0))
+        self.assertIsNone(selector.choose('limit', window['plans'], MIXED, feasible=lambda p: True))
         self.assertEqual(selector.provider_calls, 1)
 
     def test_real_transform_preserves_full_fallback_on_limit(self):
         selector, rng = self.selector(16)
         action, obs, window = self.fixture()
         original = deepcopy((action, obs, window))
-        output = selector.transform(obs, {'episodeSteps': 20}, action, window=window,
-                                    post_unit_shed={'EGG': 3}, feasible=lambda p: True)
+        output = selector.transform(obs, {'episodeSteps':20}, action, window=window,
+                                    post_unit_shed={'EGG':3}, feasible=lambda p: True)
         self.assertEqual(output, action)
         self.assertIsNot(output, action)
         self.assertEqual(selector.draws, 0)
-        self.assertEqual((action, obs, window), original)
+        self.assertEqual((action,obs,window), original)
 
     def test_real_consumer_sufficient_budget_keeps_persistence(self):
         selector, rng = self.selector(17)
         action, obs, window = self.fixture()
-        output = selector.transform(obs, {'episodeSteps': 20}, action, window=window,
-                                    post_unit_shed={'EGG': 3}, feasible=lambda p: True)
-        self.assertEqual(output['market'][0], ['SELL', 'EGG', 1])
+        output = selector.transform(obs, {'episodeSteps':20}, action, window=window,
+                                    post_unit_shed={'EGG':3}, feasible=lambda p: True)
+        self.assertEqual(output['market'][0], ['SELL','EGG',1])
         self.assertEqual(output['market'][1], action['market'][1])
         obs['step'] = 14
-        output = selector.transform(obs, {'episodeSteps': 20}, action,
-                                    post_unit_shed={'EGG': 2})
-        self.assertEqual(output['market'][0], ['SELL', 'EGG', 2])
-        self.assertEqual((selector.provider_calls, selector.draws, rng.calls), (1, 1, 1))
+        output = selector.transform(obs, {'episodeSteps':20}, action,
+                                    post_unit_shed={'EGG':2})
+        self.assertEqual(output['market'][0], ['SELL','EGG',2])
+        self.assertEqual((selector.provider_calls, selector.draws, rng.calls), (1,1,1))
 
     def test_actual_cli_reports_budget_stop(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -288,14 +268,11 @@ class FinalPivotBudgetTests(unittest.TestCase):
             output = json.loads(run.stdout)
             self.assertEqual(output['status'], 'bit_limit')
             self.assertFalse(output['exact'])
-            self.assertEqual(output['weights'], ['1', '0', '0'])
+            self.assertEqual(output['weights'], ['1','0','0'])
 
     def test_trace_restores_existing_debug_hook(self):
         previous = sys.gettrace()
-
-        def hook(frame, event, arg):
-            return hook
-
+        def hook(frame,event,arg): return hook
         sys.settrace(hook)
         try:
             traced(self.core, MIXED, max_bits=16)
@@ -314,29 +291,23 @@ def main():
                         help='Existing cloud-weighted-plan-selector directory')
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
-    CORE, T15, WEIGHTED, REPORT = (
-        args.core, args.t15_dir, args.weighted_dir, args.report)
+    CORE, T15, WEIGHTED, REPORT = args.core, args.t15_dir, args.weighted_dir, args.report
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(FinalPivotBudgetTests)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if REPORT:
-        report = {
-            'schema': 'triad-final-pivot-budget-v1',
-            'core': identity(CORE),
-            'test_source': identity(__file__),
-            'consumers': {
-                'solver.py': identity(T15/'solver.py'),
-                'selector.py': identity(T15/'selector.py'),
-                'weighted_selector.py': identity(WEIGHTED/'weighted_selector.py'),
-            },
-            'tests_run': result.testsRun,
-            'failures': [{'test': str(t), 'traceback': s} for t, s in result.failures],
-            'errors': [{'test': str(t), 'traceback': s} for t, s in result.errors],
-            'passed': result.wasSuccessful(),
-            'recorded_solver_calls': RECORDS,
-            'scope': 'Algebraic solver and real consumer regressions; no game/engine calls.',
-        }
-        REPORT.parent.mkdir(parents=True, exist_ok=True)
-        REPORT.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
+        report = {'schema':'triad-final-pivot-budget-v1',
+                  'core':identity(CORE),
+                  'test_source':identity(__file__),
+                  'consumers':{'solver.py':identity(T15/'solver.py'),
+                               'selector.py':identity(T15/'selector.py'),
+                               'weighted_selector.py':identity(WEIGHTED/'weighted_selector.py')},
+                  'tests_run':result.testsRun,
+                  'failures':[{'test':str(t),'traceback':s} for t,s in result.failures],
+                  'errors':[{'test':str(t),'traceback':s} for t,s in result.errors],
+                  'passed':result.wasSuccessful(), 'recorded_solver_calls':RECORDS,
+                  'scope':'Algebraic solver and real consumer regressions; no game/engine calls.'}
+        REPORT.parent.mkdir(parents=True,exist_ok=True)
+        REPORT.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     return 0 if result.wasSuccessful() else 1
 
 
