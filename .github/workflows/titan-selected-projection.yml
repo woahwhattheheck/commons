@@ -22,6 +22,7 @@ on:
       - 'revenue/kaggriculture/cloud-economic-stress/funded_payback/**'
       - 'revenue/kaggriculture/cloud-quickstep/**'
       - 'revenue/kaggriculture/cloud-runtime-pulse/**'
+      - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/**'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py'
@@ -387,6 +388,7 @@ jobs:
             /revenue/kaggriculture/cloud-economic-stress/funded_payback/
             /revenue/kaggriculture/cloud-quickstep/
             /revenue/kaggriculture/cloud-runtime-pulse/
+            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/
             /revenue/kaggriculture/cloud-composition-cases/cover/
       - name: Record canonical source before checking
         id: canonical_snapshot
@@ -400,6 +402,7 @@ jobs:
                    'revenue/kaggriculture/cloud-economic-stress/funded_payback',
                    'revenue/kaggriculture/cloud-quickstep',
                    'revenue/kaggriculture/cloud-runtime-pulse',
+                   'revenue/kaggriculture/cloud-opponent-league/lark-responsive',
                    'revenue/kaggriculture/cloud-composition-cases/cover']
           paths = [p for root in roots for p in Path(root).rglob('*') if p.is_file()]
           paths.append(Path('.github/workflows/titan-selected-projection.yml'))

@@ -22,6 +22,7 @@ SIBLING_SOURCE_ROOTS = (
     'revenue/kaggriculture/cloud-economic-stress/funded_payback',
     'revenue/kaggriculture/cloud-quickstep',
     'revenue/kaggriculture/cloud-runtime-pulse',
+    'revenue/kaggriculture/cloud-opponent-league/lark-responsive',
 )
 
 
