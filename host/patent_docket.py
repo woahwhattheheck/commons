@@ -81,21 +81,37 @@ def _current_blob(root: Path, path: str) -> str:
     return _git(root, "rev-parse", "HEAD:%s" % path)
 
 
-def _earliest_add(root: Path, path: str) -> tuple[str, str]:
+def _earliest_add_record(root: Path, path: str) -> tuple[str, str, str]:
+    # Follow renames newest-to-oldest before selecting the oldest addition.
+    # Combining --follow with --reverse can lose the pre-rename creation record.
+    # NUL framing keeps historical names containing tabs/newlines byte-exact.
     raw = _git(
         root,
         "log",
         "--follow",
         "--diff-filter=A",
-        "--reverse",
         "--format=%H|%cI",
+        "--name-only",
+        "-z",
         "HEAD",
         "--",
         path,
+        binary=True,
     )
-    first = raw.splitlines()[0] if raw else ""
-    _require("|" in first, "no add commit for %s" % path)
-    commit, timestamp = first.split("|", 1)
+    fields = raw.split(b"\0")
+    if fields and fields[-1] == b"":
+        fields.pop()
+    _require(bool(fields) and len(fields) % 2 == 0, "no add commit for %s" % path)
+    header, name = fields[-2:]
+    _require(b"|" in header and name.startswith(b"\n"), "invalid add record for %s" % path)
+    commit, timestamp = header.decode("utf-8").split("|", 1)
+    original_path = name[1:].decode("utf-8")
+    _require(bool(HEX40.fullmatch(commit)) and bool(original_path), "invalid add record for %s" % path)
+    return commit, timestamp, original_path
+
+
+def _earliest_add(root: Path, path: str) -> tuple[str, str]:
+    commit, timestamp, _ = _earliest_add_record(root, path)
     return commit, timestamp
 
 
@@ -170,9 +186,17 @@ def _validate_receipt(root: Path, receipt: dict, source_path: str, at: str) -> N
     required = {"path", "commit_sha", "disclosed_at", "public_url"}
     _exact_keys(receipt, required, at)
     path = _safe_path(receipt["path"], at)
-    _require(path == source_path, "%s path must equal source path" % at)
     _require(isinstance(receipt["commit_sha"], str) and bool(HEX40.fullmatch(receipt["commit_sha"])), "%s commit_sha invalid" % at)
-    earliest_commit, earliest_at = _earliest_add(root, path)
+    earliest_commit, earliest_at = _earliest_add(root, source_path)
+    if path != source_path:
+        # A historical receipt keeps the path that existed at creation, but it
+        # must be linked to this exact current source by Git's rename history.
+        # Compare the whole record as well, so moving HEAD cannot mix queries.
+        origin_commit, origin_at, origin_path = _earliest_add_record(root, source_path)
+        _require(
+            (origin_commit, origin_at, origin_path) == (earliest_commit, earliest_at, path),
+            "%s path must equal source path at its earliest add" % at,
+        )
     if receipt["commit_sha"] != earliest_commit:
         # A shallow boundary makes every path present at that boundary look newly
         # added to `git log --diff-filter=A`. In that environment, validate the
