@@ -273,12 +273,20 @@ class Workspace:
             return result
 
     def export(self, document_id: str) -> dict:
-        document = self.document(document_id)
+        # One WAL read snapshot keeps history and counters consistent with each
+        # other even when another browser commits an answer during the export.
         with self.connection() as db:
+            db.execute("BEGIN")
+            row = db.execute("SELECT id,title,filename,kind,pages,created_at FROM documents WHERE id=?", (document_id,)).fetchone()
+            if row is None:
+                raise KeyError("Document not found.")
+            document = dict(row)
             reviews = [dict(row) for row in db.execute("SELECT r.* FROM reviews r JOIN cards c ON r.card_id=c.id WHERE c.document_id=? ORDER BY r.created_at,r.request_id", (document_id,))]
+            cards = [self._card(row) for row in db.execute("SELECT * FROM cards WHERE document_id=? ORDER BY due_at,id", (document_id,))]
+        document["pages"] = json.loads(document["pages"])
         for review in reviews:
             review["result"] = json.loads(review["result"])
-        return {"format": "hive-study-export-v1", "document": document, "cards": self.cards(document_id), "reviews": reviews}
+        return {"format": "hive-study-export-v1", "document": document, "cards": cards, "reviews": reviews}
 
     def delete_document(self, document_id: str) -> None:
         with self.connection() as db:
