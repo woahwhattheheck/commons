@@ -110,50 +110,78 @@ def normalise(obs, seat):
 
 
 def game(seed, seat, opponent, factory, label, record_path=True):
-    import arlene_arm
-    import route_cards
-    A, arl_id = route_cards.load_arlene()
-    # Restore engine hooks even when cancellation or result diagnostics raise.
-    with contextlib.ExitStack() as stack:
-        rec = None
-        if record_path:
-            import market_path
-            rec = stack.enter_context(market_path.PathRecorder())
-        row = {"seed": seed, "seat": seat, "opponent": opponent, "arm": label}
-        observer = TimedFactory(factory)
+    # Ordinary failures outside the policy loop still have a named attempted
+    # cell. Keep the original exception; main can checkpoint these known facts
+    # before stopping. Cancellation is deliberately not converted into a row.
+    row = {"seed": seed, "seat": seat, "opponent": opponent, "arm": label}
+    stage = "setup"
+    try:
+        import arlene_arm
+        import route_cards
+        A, arl_id = route_cards.load_arlene()
+        # Restore engine hooks even when cancellation or result diagnostics raise.
+        with contextlib.ExitStack() as stack:
+            rec = None
+            if record_path:
+                import market_path
+                rec = stack.enter_context(market_path.PathRecorder())
+            observer = TimedFactory(factory)
+            try:
+                env = cards_mod.make_env(seed)
+                env.reset(2)
+                opp, opp_id = arlene_arm.make_opponent(opponent, A)
+                me = observer()
+                t0, worst, n = time.time(), 0.0, 0
+                while not env.done:
+                    acts = [None, None]
+                    for i in range(2):
+                        obs = env.state[i].observation
+                        if i == seat:
+                            t = time.perf_counter()
+                            acts[i] = me(normalise(obs, i), env.configuration)
+                            worst = max(worst, time.perf_counter() - t)
+                        else:
+                            acts[i] = opp(obs, env.configuration)
+                    env.step(acts)
+                    n += 1
+                farms = env.state[0].observation.farms
+                own, rival = float(farms[seat]["money"]), float(farms[1 - seat]["money"])
+                row.update(own_cash=own, rival_cash=rival, margin=own - rival, rounds=n,
+                           wall_s=round(time.time() - t0, 1),
+                           worst_action_s=round(worst, 4), opponent_id=opp_id,
+                           arlene=arl_id, error=None)
+            except Exception as exc:                     # preserved, never swallowed
+                row.update(own_cash=None, rival_cash=None, margin=None, error=
+                           f"{type(exc).__name__}: {exc}",
+                           traceback=traceback.format_exc()[-2000:])
+            finally:
+                stage = "timing"
+                row["executor_timing"] = observer.timings()
+            if rec is not None:
+                stage = "path"
+                row["path"] = rec.path()
+            stage = "cleanup"
+            return row
+    except Exception as exc:
+        # A cleanup failure can mask an active cancellation. Preserve that
+        # existing propagation without manufacturing an attempted-result row.
+        if isinstance(exc.__context__, BaseException) and not isinstance(exc.__context__, Exception):
+            raise
+        failure = {"stage": stage, "error": f"{type(exc).__name__}: {exc}",
+                   "traceback": traceback.format_exc()[-2000:]}
+        if "error" not in row:
+            row.update(own_cash=None, rival_cash=None, margin=None,
+                       error=failure["error"], traceback=failure["traceback"],
+                       executor_timing=None)
+        row.setdefault("executor_timing", None)
+        row["executor_error"] = failure
+        # Exception subclasses may reject custom attributes. Such a refusal
+        # must not replace the original failure or imply a saved result.
         try:
-            env = cards_mod.make_env(seed)
-            env.reset(2)
-            opp, opp_id = arlene_arm.make_opponent(opponent, A)
-            me = observer()
-            t0, worst, n = time.time(), 0.0, 0
-            while not env.done:
-                acts = [None, None]
-                for i in range(2):
-                    obs = env.state[i].observation
-                    if i == seat:
-                        t = time.perf_counter()
-                        acts[i] = me(normalise(obs, i), env.configuration)
-                        worst = max(worst, time.perf_counter() - t)
-                    else:
-                        acts[i] = opp(obs, env.configuration)
-                env.step(acts)
-                n += 1
-            farms = env.state[0].observation.farms
-            own, rival = float(farms[seat]["money"]), float(farms[1 - seat]["money"])
-            row.update(own_cash=own, rival_cash=rival, margin=own - rival, rounds=n,
-                       wall_s=round(time.time() - t0, 1),
-                       worst_action_s=round(worst, 4), opponent_id=opp_id,
-                       arlene=arl_id, error=None)
-        except Exception as exc:                     # preserved, never swallowed
-            row.update(own_cash=None, rival_cash=None, margin=None, error=
-                       f"{type(exc).__name__}: {exc}",
-                       traceback=traceback.format_exc()[-2000:])
-        finally:
-            row["executor_timing"] = observer.timings()
-        if rec is not None:
-            row["path"] = rec.path()
-        return row
+            exc._titan_executor_row = row
+        except Exception:
+            pass
+        raise
 
 
 def wtl(m):
@@ -210,15 +238,30 @@ def main():
     print(f"candidate {cid['label']}\ncontrol   {bid['label']}", flush=True)
     rows = []
     expected_rows = 2 * len(a.seeds) * len(a.seats) * len(a.opponents)
+
+    def run_one(seed, seat, opponent, factory, label):
+        try:
+            result = game(seed, seat, opponent, factory, label, not a.no_path)
+        except Exception as exc:
+            try:
+                result = getattr(exc, "_titan_executor_row", None)
+            except Exception:
+                result = None
+            if isinstance(result, dict) and all(result.get(k) == v for k, v in
+                    (("seed", seed), ("seat", seat), ("opponent", opponent),
+                     ("arm", label))):
+                rows.append(result)
+                write_checkpoint(a.out, cid, bid, rows, expected_rows)
+            raise
+        rows.append(result)
+        write_checkpoint(a.out, cid, bid, rows, expected_rows)
+        return result
+
     for seed in a.seeds:
         for seat in a.seats:
             for opp in a.opponents:
-                b = game(seed, seat, opp, bf, "control", not a.no_path)
-                rows.append(b)
-                write_checkpoint(a.out, cid, bid, rows, expected_rows)
-                c = game(seed, seat, opp, cf, "candidate", not a.no_path)
-                rows.append(c)
-                write_checkpoint(a.out, cid, bid, rows, expected_rows)
+                b = run_one(seed, seat, opp, bf, "control")
+                c = run_one(seed, seat, opp, cf, "candidate")
                 div = None
                 if not a.no_path and b.get("path") and c.get("path"):
                     import market_path
