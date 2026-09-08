@@ -1,0 +1,73 @@
+{
+  "comparisons": 137600,
+  "exhaustive": 115600,
+  "short_random": 20000,
+  "long_random": 2000,
+  "checksum": 786075,
+  "old_short_allocations": -1,
+  "new_short_allocations": -1,
+  "old_long_allocations": -1,
+  "new_long_allocations": -1,
+  "rounds": [
+    {
+      "original_seconds": 0.0835766,
+      "candidate_seconds": 0.0158657
+    },
+    {
+      "original_seconds": 0.0798578,
+      "candidate_seconds": 0.0148543
+    },
+    {
+      "original_seconds": 0.0826548,
+      "candidate_seconds": 0.0159609
+    },
+    {
+      "original_seconds": 0.0786512,
+      "candidate_seconds": 0.0143232
+    },
+    {
+      "original_seconds": 0.0821598,
+      "candidate_seconds": 0.0159821
+    },
+    {
+      "original_seconds": 0.0783335,
+      "candidate_seconds": 0.0149788
+    },
+    {
+      "original_seconds": 0.0817036,
+      "candidate_seconds": 0.0153687
+    },
+    {
+      "original_seconds": 0.0852285,
+      "candidate_seconds": 0.0150832
+    },
+    {
+      "original_seconds": 0.0805506,
+      "candidate_seconds": 0.0144841
+    }
+  ],
+  "calls_per_arm_per_round": 200000,
+  "allocation_instrumentation": false,
+  "source_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+  "method_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+  "original_method_sha256": "1e5097d26a3de28d1ac18d8b5d6b0097651edaab3ead2d5da6e38c92d6e80532",
+  "harness_sha256": "acd2157fff59d438c41d6aebe21591d3310dd53e3ae2a69deb73fe73dd89e334",
+  "binary_sha256": "199cab76b7c35275fcbf01f11bdb1ffc86ecb1402a4d78ffb8808ce16011564f",
+  "flags": [
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wno-mismatched-new-delete",
+    "-O3",
+    "-DNDEBUG"
+  ],
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "stderr": "",
+  "scope": "extracted exact method; no full solver or official checker run",
+  "original_median_seconds": 0.0817036,
+  "candidate_median_seconds": 0.0150832,
+  "median_reduction_percent": 81.53912434703
+}

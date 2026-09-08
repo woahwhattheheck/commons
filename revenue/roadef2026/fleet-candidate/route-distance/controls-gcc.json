@@ -1,0 +1,54 @@
+{
+  "methods": 7,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "candidate_source_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+  "harness_sha256": "acd2157fff59d438c41d6aebe21591d3310dd53e3ae2a69deb73fe73dd89e334",
+  "records": [
+    {
+      "name": "exact-candidate",
+      "method_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+      "returncode": 0,
+      "stdout": "{\"comparisons\":137600,\"exhaustive\":115600,\"short_random\":20000,\"long_random\":2000,\"checksum\":786075,\"old_short_allocations\":-1,\"new_short_allocations\":-1,\"old_long_allocations\":-1,\"new_long_allocations\":-1,\"rounds\":[],\"calls_per_arm_per_round\":0}\n",
+      "stderr": ""
+    },
+    {
+      "name": "count-duplicates",
+      "method_sha256": "8d57653c35f5d10f358f004ce2be9aa18409e0b31d8be8d7bca1e9294d4ad166",
+      "returncode": -6,
+      "stdout": "",
+      "stderr": "terminate called after throwing an instance of 'std::runtime_error'\n  what():  distance mismatch at case 1\n"
+    },
+    {
+      "name": "omit-final-segment",
+      "method_sha256": "f35df3071454c24d486db3a257c9bad3891a219d3ee5de1f498e5e3d18ca7ae9",
+      "returncode": -6,
+      "stdout": "",
+      "stderr": "terminate called after throwing an instance of 'std::runtime_error'\n  what():  distance mismatch at case 1\n"
+    },
+    {
+      "name": "disable-general-fallback",
+      "method_sha256": "b235a26ca75cccb6eb4d85238b24abc0ecd1b31516a5e41e3dec9d1a49b75823",
+      "returncode": -6,
+      "stdout": "",
+      "stderr": "terminate called after throwing an instance of 'std::runtime_error'\n  what():  distance mismatch at case 135600\n"
+    },
+    {
+      "name": "unchanged-original",
+      "method_sha256": "1e5097d26a3de28d1ac18d8b5d6b0097651edaab3ead2d5da6e38c92d6e80532",
+      "returncode": 0,
+      "stdout": "{\"comparisons\":137600,\"exhaustive\":115600,\"short_random\":20000,\"long_random\":2000,\"checksum\":786075,\"old_short_allocations\":-1,\"new_short_allocations\":-1,\"old_long_allocations\":-1,\"new_long_allocations\":-1,\"rounds\":[],\"calls_per_arm_per_round\":0}\n",
+      "stderr": ""
+    },
+    {
+      "name": "lose-direction",
+      "method_sha256": "476d027ada747d45efa6dff05a8185ca2765f642f830bca5919a487a5f32d43c",
+      "returncode": -6,
+      "stdout": "",
+      "stderr": "terminate called after throwing an instance of 'std::runtime_error'\n  what():  distance mismatch at case 4\n"
+    }
+  ],
+  "scope": "compiled method controls; no full solver/checker execution"
+}

@@ -53,8 +53,8 @@
     },
     {
       "path": "main.cpp",
-      "bytes": 34254,
-      "sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1"
+      "bytes": 35487,
+      "sha256": "1aa873e4ea15f4bde655327fb856bd9da759c68e347b8a8722619666424b9ed8"
     },
     {
       "path": "verify_joint.py",
