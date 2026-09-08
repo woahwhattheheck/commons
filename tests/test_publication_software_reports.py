@@ -13,6 +13,14 @@ import commons_publication_policy as policy
 EVENT = json.loads((ROOT / "tests/fixtures/publication_tarsnap_819.json").read_text(encoding="utf-8"))
 INCIDENT = EVENT["tool_input"]["message"]
 REPORT = "Submitted parser fix: https://github.com/example/parser/pull/42\n\n"
+WRAPPED_CI = (
+    "Repair landed in test_current_work_ui_details.py at "
+    "9c66c44a4fc101c2e286519fd37dbae5e38d0b58.\n\n"
+    "The new seven-method browser suite fails on\n"
+    "baseline and passes on the candidate.\n"
+    "A first invocation included the HTML-wiring case and failed because the complete\n"
+    "page fixture was not staged. Covers filters, pending/error/retry/success, and GET-only requests.\n"
+)
 
 ALLOWED = [
     INCIDENT,
@@ -21,6 +29,7 @@ ALLOWED = [
     REPORT + "The API returned an incorrect total for empty input. The fix handles that case.",
     REPORT + "The CLI rejects unsupported argument values. The patch reports the valid range.",
     "CLAIM: https://github.com/example/parser/issues/42\n\nDefect: the CLI parser crashes on empty input. Preparing a fix.",
+    WRAPPED_CI,
 ]
 REJECTED = [
     "Can you prove that again?",
@@ -62,6 +71,13 @@ class SoftwarePublicationTests(unittest.TestCase):
                 self.assertEqual(result["hookSpecificOutput"]["permissionDecision"], "deny")
                 self.assertFalse(result["continue"])
                 self.assertNotIn(body, run.stdout)
+
+    def test_landed_current_work_receipt_is_a_software_report(self):
+        path = ROOT / "p/astra-larch-current-work-details-state-20260907-01.md"
+        body = path.read_text(encoding="utf-8")
+        decision = policy.check_publication(body)
+        self.assertTrue(decision["allowed"], decision)
+        policy.require_publication(body)
 
     @unittest.skipUnless(shutil.which("node"), "Node is required for companion parity")
     def test_javascript_companions_preserve_decisions(self):
