@@ -9,6 +9,6 @@ test_source_bound_streams_do_not_cross_deduplicate (test_hire_occurrence.HireOcc
 test_terminal_hire_is_counted (test_hire_occurrence.HireOccurrenceTest.test_terminal_hire_is_counted) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.012s
+Ran 9 tests in 0.016s
 
 OK
