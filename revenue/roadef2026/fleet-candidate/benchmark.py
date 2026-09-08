@@ -46,6 +46,38 @@ def execute(cmd, folder, label, env=None, timeout=660):
         raise RuntimeError(f'{label} exited {result.returncode}: {result.stderr[-2000:]!r}')
     return result, time.monotonic() - start
 
+def reserve_outputs(output, instances, solvers, metadata):
+    """Give this invocation exclusive ownership of its evidence destinations.
+
+    Existing unrelated files (including explicit resume inputs) are allowed.
+    Never overwrite an earlier experiment or consume an earlier trial's files.
+    The exclusive experiment file also arbitrates concurrent CLI invocations.
+    """
+    labels = [label for label, _ in solvers]
+    if len(set(labels)) != len(labels) or len(set(instances)) != len(instances):
+        raise ValueError('duplicate solver labels or instances share an output cell')
+    reserved = [output / name for name in ('experiment.json', 'summary.json')]
+    folders = {}
+    for name in instances:
+        for label in labels:
+            folder = (output / name / label).resolve()
+            if output not in folder.parents:
+                raise ValueError('trial output must be below --output: ' + str(folder))
+            for previous in [*reserved, *folders.values()]:
+                if folder == previous or folder in previous.parents or previous in folder.parents:
+                    raise ValueError('overlapping benchmark output paths: ' + str(folder))
+            folders[name, label] = folder
+    for path in [*reserved, *folders.values()]:
+        if path.exists() or path.is_symlink():
+            raise FileExistsError('preserve existing benchmark evidence; choose a fresh --output: ' + str(path))
+    output.mkdir(parents=True, exist_ok=True)
+    # Check above is diagnostic; x mode, not the check, owns the concurrent race.
+    with reserved[0].open('x', encoding='utf-8') as stream:
+        json.dump(metadata, stream, indent=2)
+    for folder in folders.values():
+        folder.mkdir(parents=True, exist_ok=False)
+    return folders
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--solver', action='append', required=True, help='label=path')
@@ -66,22 +98,20 @@ def main():
     solvers = [(label, Path(path).resolve()) for label, path in (s.split('=', 1) for s in args.solver)]
     args.output = args.output.resolve()
     args.checker = args.checker.resolve()
-    args.output.mkdir(parents=True, exist_ok=True)
     metadata = {'started_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
         'platform':platform.platform(), 'benchmark_sha256':digest(__file__), 'seconds_per_solver':args.seconds,
         'rounds':args.rounds,'workers':args.workers,'checker_sha256':digest(args.checker),
         'challenge_commit':'d84d319a7fdb8de3b1866830d2eaa2937871e5ae',
         'networktools_commit':'aebafc9ee91891e5d721bb86725e8cf1533877d1',
         'solvers':{label:{'path':str(path),'sha256':digest(path)} for label,path in solvers}}
-    (args.output/'experiment.json').write_text(json.dumps(metadata,indent=2))
+    folders = reserve_outputs(args.output, args.instances, solvers, metadata)
     def trial(name):
         prefix = data / name[:4] / name
         inputs = [Path(str(prefix)+suffix) for suffix in ('-net.json','-tm.json','-scenario.json')]
         rows = []
         scores = []
         for label, solver in solvers:
-            folder = args.output/name/label
-            folder.mkdir(parents=True, exist_ok=True)
+            folder = folders[name, label]
             solution, stats = folder/'solution.json', folder/'stats.json'
             env = dict(os.environ,SEDGE_SECONDS=str(args.seconds), SEDGE_STATS=str(stats))
             env.pop('CLOUD_INITIAL_SOLUTION', None)
