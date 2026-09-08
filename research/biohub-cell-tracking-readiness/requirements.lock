@@ -1,0 +1,2 @@
+# Data-free readiness scaffold: runtime dependencies are Python standard library only.
+# Tested with CPython 3.11+ semantics; no package download is required for smoke/tests.
