@@ -118,8 +118,8 @@ class SourceBindingTests(unittest.TestCase):
         self.assertEqual(run({}), {"revision": "A"})
 
     def test_nonascii_source_and_mixed_newlines(self):
-        self.install('def agent(obs):\r\n return {"text": "café λ"}\r'.encode())
-        self.assertEqual(bank.make_agent(self.root, "sample")({}), {"text": "café λ"})
+        self.install('def agent(obs):\r\n return {"text": "caf\u00e9 \u03bb"}\r'.encode())
+        self.assertEqual(bank.make_agent(self.root, "sample")({}), {"text": "caf\u00e9 \u03bb"})
 
     def test_persistent_state_with_two_independent_instances(self):
         self.install(b'n = 0\ndef agent(obs):\n global n\n n += 1\n return {"n": n}\n')
