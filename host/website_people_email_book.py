@@ -15,6 +15,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -31,19 +32,7 @@ MEASURED_AT = "2026-08-30T15:20:37Z"
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
-META_DESC_RE = re.compile(
-    r"<meta\s+[^>]*name=[\"']description[\"'][^>]*content=[\"']([^\"']+)[\"']",
-    re.I,
-)
-OG_DESC_RE = re.compile(
-    r"<meta\s+[^>]*property=[\"']og:description[\"'][^>]*content=[\"']([^\"']+)[\"']",
-    re.I,
-)
 ICP_RE = re.compile(r"data-icp[^>]*>(.*?)</", re.I | re.S)
-BOOK_ATTR_RE = re.compile(
-    r"<a[^>]*data-book-url[^>]*href=[\"']([^\"']+)[\"']",
-    re.I,
-)
 CAL_RE = re.compile(r"https://(?:www\.)?(?:cal\.com|calendly\.com)/[^\s\"']+", re.I)
 PERSON_RE = re.compile(
     r"<(?P<tag>article|div|section|li)(?P<attrs>[^>]*\bdata-person\b[^>]*)>(?P<body>.*?)</(?P=tag)>",
@@ -216,15 +205,41 @@ def _page_people(html: str) -> list[dict[str, Any]]:
     return people
 
 
+class _WebsiteAttributes(HTMLParser):
+    """Read metadata and explicit booking links independently of attribute order."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.description = ""
+        self.og_description = ""
+        self.book_url = ""
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        # Keep the first occurrence, as HTML does for duplicate attributes.
+        values: dict[str, str] = {}
+        for name, value in attrs:
+            values.setdefault(name, value or "")
+        if tag == "meta":
+            content = squeeze(values.get("content", ""))
+            if values.get("name", "").strip().casefold() == "description":
+                if not self.description:
+                    self.description = content
+            if values.get("property", "").strip().casefold() == "og:description":
+                if not self.og_description:
+                    self.og_description = content
+        elif tag == "a" and "data-book-url" in values and not self.book_url:
+            self.book_url = values.get("href", "").strip()
+
+
 def extract_website(html: str, source: str) -> dict[str, Any]:
     title = _first(TITLE_RE, html)
     headline = _first(H1_RE, html) or title
-    description = _first(META_DESC_RE, html) or _first(OG_DESC_RE, html)
+    attributes = _WebsiteAttributes()
+    attributes.feed(html)
+    attributes.close()
+    description = attributes.description or attributes.og_description
     icp = _first(ICP_RE, html)
-    book = ""
-    book_match = BOOK_ATTR_RE.search(html)
-    if book_match:
-        book = book_match.group(1).strip()
+    book = attributes.book_url
     if not book:
         cal = CAL_RE.search(html)
         if cal:
