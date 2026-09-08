@@ -30,7 +30,8 @@ def measure(target: str = "HEAD", high_velocity_per_hour: float = 30.0) -> dict:
             "commits_per_minute": round(count / minutes, 4),
             "commits_per_hour": round(count * 60 / minutes, 2),
         }
-    per_hour = windows["24h"]["commits_per_hour"]
+    # Keep presentation rounding out of the threshold decision.
+    per_hour = windows["24h"]["commits"] / 24
     return {
         "schema": "commons.main-velocity.v1",
         "measured_at": dt.datetime.now(dt.timezone.utc).isoformat(),
