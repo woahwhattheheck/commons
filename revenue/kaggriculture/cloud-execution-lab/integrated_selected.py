@@ -48,13 +48,16 @@ def plant_requests(action):
 
 
 class IntegratedSelectedAgent:
-    def __init__(self, production=None, *, seed=True, committed=True, sell=True, horizon=8):
+    def __init__(self, production=None, *, seed=True, committed=True, sell=True, horizon=8,
+                 seed_queue_selector=None):
         self.production = make_production() if production is None else production
         self.controller = self.production.agent
         self.execution = OrderedSelectedSell(horizon)
         self.budget = budget_module.SeedBudget(self.controller.R)
         self.seed, self.committed = bool(seed), bool(committed)
         self.sell = bool(sell)
+        # Optional current-market selector; no callback preserves the frozen rule.
+        self.seed_queue_selector = seed_queue_selector
         self.diagnostics = {}
         self.last_packet = None
         self.last_selected = self.last_seeded = None
@@ -131,6 +134,8 @@ class IntegratedSelectedAgent:
 
         For an injected PlanOverlay, call production.act first, then this method.
         act() is the complete callable and performs that single call itself.
+        An optional seed_queue_selector receives detached post-unit inputs only
+        after demand eligibility and returns (seed-only action, funding report).
         """
         cfg = dict(cfg or {}); obs = dict(obs)
         now = absolute_step(obs, cfg); obs['step'] = now
@@ -148,6 +153,7 @@ class IntegratedSelectedAgent:
             post['farms'][int(obs['player'])] = deepcopy(farm); post['private'] = deepcopy(private)
             seeded = deepcopy(selected)
             seed_reason = 'disabled'
+            seed_funding = None
             tape = self.controller.R[self.controller.cur]
             if self.seed:
                 if now >= len(tape) or plant_requests(selected) - plant_requests(tape[now]):
@@ -157,15 +163,25 @@ class IntegratedSelectedAgent:
                         int(cfg.get('maxMarketOrdersPerTurn',10)))
                     edits = [i for i,(a,b) in enumerate(zip(selected.get('market',[]), proposed.get('market',[]))) if a != b]
                     # Trimming an earlier buy can activate a later unchanged hire
-                    # or acquisition. Keep that queue intact without a paired
-                    # economic evaluator for those resource changes.
+                    # or acquisition. Keep that queue intact unless the supplied
+                    # selector establishes the current-market funding case.
                     dependent = any(o and o[0] in ('HIRE','BUY_LAND','BUY_PRODUCT','BUY_ANIMAL')
                                     for i in edits for o in selected['market'][i+1:])
                     if dependent:
                         seed_reason = 'later_economic_order'; seeded = deepcopy(selected)
+                        if self.seed_queue_selector is not None:
+                            seeded, seed_funding = self.seed_queue_selector(
+                                m, deepcopy(post), deepcopy(selected), deepcopy(proposed), dict(cfg))
+                            if not isinstance(seeded, dict) or not isinstance(seed_funding, dict):
+                                raise TypeError('seed_queue_selector must return (action dict, report dict)')
+                            seeded, seed_funding = deepcopy(seeded), deepcopy(seed_funding)
+                            if seed_funding.get('status') == 'certified':
+                                seed_reason = 'funded_economic_order'
                     else:
                         seed_reason = 'applied'; seeded = proposed
             self.last_seeded = deepcopy(seeded)
+            if seed_funding is not None:
+                self.diagnostics['seed_funding'] = seed_funding
             if not self.sell:
                 self.diagnostics.update(status='parent_control', seed_reason=seed_reason,
                                         selected_unit_stages=1)
@@ -186,6 +202,8 @@ class IntegratedSelectedAgent:
             self.diagnostics.update(seed_reason=seed_reason, continuation=details,
                 selected_unit_stages=1, parent_calls_in_transform=0,
                 committed_capacity=self.committed)
+            if seed_funding is not None:
+                self.diagnostics['seed_funding'] = seed_funding
             return out
         except (ValueError, TypeError, KeyError, AttributeError, IndexError) as error:
             self.diagnostics['reason'] = str(error)
@@ -200,8 +218,10 @@ class IntegratedSelectedAgent:
     __call__ = act
 
 
-def make_agent(production=None, *, seed=True, committed=True, sell=True, horizon=8):
-    return IntegratedSelectedAgent(production, seed=seed, committed=committed, sell=sell, horizon=horizon)
+def make_agent(production=None, *, seed=True, committed=True, sell=True, horizon=8,
+               seed_queue_selector=None):
+    return IntegratedSelectedAgent(production, seed=seed, committed=committed, sell=sell,
+                                   horizon=horizon, seed_queue_selector=seed_queue_selector)
 
 
 _INSTANCE = None
