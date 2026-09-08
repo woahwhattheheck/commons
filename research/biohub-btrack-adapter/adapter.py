@@ -229,10 +229,11 @@ def _as_int(value: Any, label: str) -> int:
     except (TypeError, ValueError, OverflowError) as exc:
         raise AdapterError(f"{label} must be an integer") from exc
     try:
-        if float(value) != float(result):
-            raise AdapterError(f"{label} must be an integer")
-    except (TypeError, ValueError, OverflowError):
-        pass
+        numeric = float(value)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AdapterError(f"{label} must be an integer") from exc
+    if not math.isfinite(numeric) or numeric != float(result):
+        raise AdapterError(f"{label} must be an integer")
     return result
 
 
