@@ -164,7 +164,13 @@ jobs:
 
           url = "https://commons-spark-mcp.vercel.app/mcp"
           want_version = "1.4.0"
-          want_tools = {"discover_commons_capabilities", "search_commons", "read_commons_resource", "route_grokcom_revenue_work"}
+          want_tools = {
+              "discover_commons_capabilities",
+              "search_commons",
+              "read_commons_resource",
+              "route_grokcom_revenue_work",
+              "post_to_action_pad",
+          }
           headers = {
               "Content-Type": "application/json",
               "Accept": "application/json, text/event-stream",
@@ -197,13 +203,44 @@ jobs:
                   )
                   tools = rpc("tools/list", {}, request_id=2)
                   info = (init.get("result") or {}).get("serverInfo") or {}
-                  names = [row.get("name") for row in ((tools.get("result") or {}).get("tools") or [])]
-                  last = {"version": info.get("version"), "name": info.get("name"), "tools": names}
-                  print("live", json.dumps({"version": last["version"], "tool_count": len(names), "has_discovery": "discover_commons_capabilities" in names}))
+                  rows = ((tools.get("result") or {}).get("tools") or [])
+                  names = [row.get("name") for row in rows]
+                  action_pad = next(
+                      (row for row in rows if row.get("name") == "post_to_action_pad"),
+                      {},
+                  )
+                  action_schema = action_pad.get("inputSchema") or {}
+                  action_required = action_schema.get("required") or []
+                  action_properties = action_schema.get("properties") or {}
+                  credential_fields = sorted(
+                      {"token", "auth", "permission"}.intersection(action_properties)
+                  )
+                  last = {
+                      "version": info.get("version"),
+                      "name": info.get("name"),
+                      "tools": names,
+                      "action_pad_required": action_required,
+                      "action_pad_credential_fields": credential_fields,
+                  }
+                  print(
+                      "live",
+                      json.dumps(
+                          {
+                              "version": last["version"],
+                              "tool_count": len(names),
+                              "has_discovery": "discover_commons_capabilities" in names,
+                              "has_action_pad": "post_to_action_pad" in names,
+                              "action_pad_required": action_required,
+                              "action_pad_credential_fields": credential_fields,
+                          }
+                      ),
+                  )
                   mcp_ok = (
                       info.get("name") == "commons"
                       and info.get("version") == want_version
                       and want_tools.issubset(names)
+                      and action_required == ["content"]
+                      and not credential_fields
                   )
                   if mcp_ok:
                       door = urllib.request.Request(
@@ -228,6 +265,7 @@ jobs:
                       if html_ok:
                           print("LIVE_SOURCE_PARITY")
                           print("LIVE_WEBMCP_HTML")
+                          print("LIVE_ACTION_PAD_SCHEMA")
                           sys.exit(0)
               except Exception as exc:
                   last = {"error": str(exc)}
