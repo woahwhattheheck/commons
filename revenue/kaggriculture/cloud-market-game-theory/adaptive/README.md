@@ -28,6 +28,36 @@ its existing retry/skipped-date behavior. Previously emitted prefixes remain
 unchanged; the selected suffix persists. Other products and unit fields are
 preserved. Future route changes can retire a commitment to the supplied action.
 
+## Final measured result
+
+`RESULTS.md` and `RESULTS.json` retain all 104 new attempts, 102 complete.
+The 48-game broad development panel is 10W/2L for the integrated control and
+12W for each fixed/static/adaptive arm. All three flip both SELL losses; the
+adaptive arm has no extra win flip over its ablations. On the separate held
+seed, baseline/fixed/static each have 10W/2L. Adaptive has 8W/2L and two
+candidate-side games ending at the RPC deadline against COK. These are kept
+incomplete with null final scores, not assigned invented wins or losses.
+No held win improvement or default promotion is established.
+
+Four conditional engine tables retain 4,068 serialized transitions; one uses
+the reached WOOL admission's actual public parameters and own slot. Eighteen
+recorded development comparisons have identical full observations and trees
+but different adaptive versus fixed/static market actions; all non-market
+fields match. `CAUSAL-ATTRIBUTION.json` links those existing receipts.
+
+The official raw loader supplies `configuration['__raw_path__']` when it does
+not set `__file__`. The three entrypoints now use that source path. Six fresh
+process calls match the evaluator, maximum cold setup plus call264.89ms. The
+original entrypoint remains preserved. `HELD-FREEZE.json` records the source
+before held execution; no decision tuning followed its outcomes. Current
+`report.py` retains null final scores for incomplete episodes; its earlier
+frozen version also remains preserved.
+
+Production entrypoints are `main.py` (adaptive), `fixed_main.py` and
+`static_main.py`. They return ordinary actions without evaluator metadata.
+The entire existing repository dependency layout is required; no extra source
+bank export or duplicate standalone archive was created.
+
 ## Executed development checkpoint
 
 The initial 386 single-burst cases found no adaptive advantage. Three later
@@ -54,9 +84,10 @@ separately from active-plan retirements; decision logic is unchanged. Six
 focused tests cover the explicit objective and the actual ASH/selected-action
 integration. The old T11/T12/T15 panels and peer suites were not rerun.
 
-The existing public bank artifact10032525998 is reused for the next broad
-development comparison, not exported again. No held result or policy promotion
-is claimed at this checkpoint. Exact game receipts are under `results/`.
+The existing public bank artifact10032525998 was reused for the broad
+development and held comparisons, not exported again. The preceding eight-game
+checkpoint is preserved separately from the final results. Exact game receipts
+are under `results/`.
 
 ## Call and reproduce
 
