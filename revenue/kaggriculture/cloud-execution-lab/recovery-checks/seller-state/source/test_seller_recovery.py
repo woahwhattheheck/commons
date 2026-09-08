@@ -1,65 +1,58 @@
 """Executable acceptance checks for the retained seller-state recovery case.
 
-The actor comparisons use one historical own-observation sequence. They are not
-new games, engine replays, strength evidence, or a production recovery patch.
+Set TITAN_SELLER_RECOVERY_EVIDENCE to the complete evidence ZIP or its extracted
+root. The actor comparisons use one historical own-observation sequence; they
+are not new games, engine replays, strength evidence, or a production patch.
 """
 from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
-import tarfile
 import tempfile
 import unittest
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKER = Path(__file__).with_name("check_seller_recovery.py")
-FIXTURE = ROOT / "seller-state-fixture.tar.gz"
+ENVIRONMENT = "TITAN_SELLER_RECOVERY_EVIDENCE"
 
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def safe_extract(target: Path) -> None:
-    with tarfile.open(FIXTURE, "r:gz") as archive:
+def safe_extract_zip(source: Path, target: Path) -> None:
+    with zipfile.ZipFile(source) as archive:
         root = target.resolve()
-        for member in archive.getmembers():
-            resolved = (target / member.name).resolve()
+        for info in archive.infolist():
+            resolved = (target / info.filename).resolve()
             if root not in (resolved, *resolved.parents):
-                raise ValueError("fixture contains an unsafe path")
-            if not member.isfile():
-                raise ValueError("fixture contains a non-file member")
-        for member in archive.getmembers():
-            destination = target / member.name
+                raise ValueError("evidence ZIP contains an unsafe path")
+            if info.is_dir():
+                continue
+            destination = target / info.filename
             destination.parent.mkdir(parents=True, exist_ok=True)
-            source = archive.extractfile(member)
-            if source is None:
-                raise ValueError("fixture member has no file body")
-            destination.write_bytes(source.read())
+            destination.write_bytes(archive.read(info))
 
 
-def execute(fixture: Path, extra: list[str], expected_status: int) -> dict:
+def execute(evidence: Path, extra: list[str], expected_status: int) -> dict:
     with tempfile.TemporaryDirectory() as tmp:
         report = Path(tmp) / "report.json"
         command = [
             sys.executable, "-B", str(CHECKER),
-            "--runtime", str(fixture / "runtime"),
+            "--runtime", str(evidence / "runtime"),
             "--pins", str(ROOT / "SOURCE-PINS.json"),
-            "--input", str(fixture / "inputs/candidate-inputs.jsonl.gz"),
+            "--input", str(evidence / "inputs/candidate-inputs.jsonl.gz"),
             "--receipt", str(ROOT / "inputs/ORIGINAL-INPUT-RECEIPT.json"),
             *extra, "--report", str(report),
         ]
         completed = subprocess.run(
-            command,
-            cwd=ROOT,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            timeout=120,
-            check=False,
+            command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            text=True, timeout=120, check=False,
         )
         if completed.returncode != expected_status:
             raise AssertionError(
@@ -72,17 +65,29 @@ def execute(fixture: Path, extra: list[str], expected_status: int) -> dict:
 class SellerRecoveryAcceptance(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
+        supplied = os.environ.get(ENVIRONMENT)
+        if not supplied:
+            raise unittest.SkipTest(
+                f"set {ENVIRONMENT} to TITAN-seller-recovery-discriminator-20260908.zip "
+                "or its extracted directory"
+            )
         cls.temp = tempfile.TemporaryDirectory()
-        cls.fixture = Path(cls.temp.name) / "fixture"
-        cls.fixture.mkdir()
-        safe_extract(cls.fixture)
-        cls.baseline = execute(cls.fixture, ["--through", "453", "--require-continuity"], 1)
-        cls.rehydrated = execute(cls.fixture, [
+        source = Path(supplied).expanduser().resolve()
+        if source.is_dir():
+            cls.evidence = source
+        elif source.is_file() and zipfile.is_zipfile(source):
+            cls.evidence = Path(cls.temp.name) / "evidence"
+            cls.evidence.mkdir()
+            safe_extract_zip(source, cls.evidence)
+        else:
+            raise ValueError(f"unsupported evidence source: {source}")
+        cls.baseline = execute(cls.evidence, ["--through", "453", "--require-continuity"], 1)
+        cls.rehydrated = execute(cls.evidence, [
             "--through", "453",
             "--restore-fields", "planned,pending,previous,observed_harvests",
             "--observe-skipped", "--require-continuity",
         ], 0)
-        cls.negative = execute(cls.fixture, [
+        cls.negative = execute(cls.evidence, [
             "--step", "447", "--through", "453",
             "--restore-fields", "planned,pending,previous,observed_harvests",
             "--observe-skipped", "--require-continuity",
@@ -90,16 +95,17 @@ class SellerRecoveryAcceptance(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls) -> None:
-        cls.temp.cleanup()
+        if hasattr(cls, "temp"):
+            cls.temp.cleanup()
 
     def test_exact_subject_and_retained_input(self) -> None:
         pins = json.loads((ROOT / "SOURCE-PINS.json").read_text())
         self.assertEqual(pins["source_ref"], "c7627b63419240e377a96fd26ee5c3933334b6eb")
         self.assertEqual(pins["source_count"], 9)
         for relative, expected in pins["sha256"].items():
-            self.assertEqual(digest(self.fixture / "runtime" / relative), expected)
+            self.assertEqual(digest(self.evidence / "runtime" / relative), expected)
         receipt = json.loads((ROOT / "inputs/ORIGINAL-INPUT-RECEIPT.json").read_text())
-        self.assertEqual(digest(self.fixture / "inputs/candidate-inputs.jsonl.gz"),
+        self.assertEqual(digest(self.evidence / "inputs/candidate-inputs.jsonl.gz"),
                          receipt["output_file_sha256"])
         self.assertEqual(receipt["observation_count"], 719)
 
