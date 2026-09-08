@@ -26,6 +26,7 @@ import selected_sell_core as math
 ash = load(HERE.parent.parent/'cloud-plan-continuation/continuation.py', 't15_adaptive_ash')
 flow = load(HERE.parent.parent/'cloud-market-response/flow.py', 't15_adaptive_flow')
 sorrel = load(HERE.parent.parent/'cloud-market-response/vendor/sorrel_adapter.py', 't15_adaptive_sorrel')
+fills = load(HERE.parent.parent/'cloud-observed-fills/observed_fills.py', 't15_adaptive_fills')
 
 # Capture is call-scoped: constructing another actor must not chain bound
 # methods or retain earlier actors. The evaluator normally isolates processes;
@@ -137,6 +138,8 @@ class Agent:
         self.original=_OPTIMIZE_LOT
         self.records=[]; self.history=flow.FlowHistory()
         self.previous=None; self.previous_sales={}; self.last={}; self.calls=0
+        self.previous_action={}; self.previous_cfg={}; self.fill_ledger=None
+        self.last_fill={}; self.last_flow={}; self._history_observed=False
         self.counts={'tables':0,'positive_trees':0,'feasible_candidate_windows':0}
 
     def _parent_action(self, obs, cfg):
@@ -174,17 +177,75 @@ class Agent:
                 self.counts['feasible_candidate_windows']+=1
         return frozen,info
 
+    @staticmethod
+    def _exact_fills(result, order_type):
+        """Only singleton counts for EVERY same-product slot become receipts.
+
+        Marginal interval endpoints are correlated. An ambiguous slot prevents
+        an exact aggregate for that product, even if another slot is exact.
+        """
+        if result.get('status') not in ('reconciled', 'ambiguous'): return {}
+        totals={}; unknown=set()
+        for row in result.get('orders', ()):
+            if row.get('type') != order_type or row.get('item') is None: continue
+            item=row['item']; low=row.get('fill_min'); high=row.get('fill_max')
+            if low is None or low != high:
+                unknown.add(item)
+            else:
+                totals[item]=totals.get(item,0)+low
+        return {p:q for p,q in totals.items() if p not in unknown}
+
+    def _remember_action(self, obs, cfg, action, packet):
+        """Bind final queue and SAME-stage known stock; never reuse a stale packet."""
+        self.previous=deepcopy(obs); self.previous_action=deepcopy(action)
+        self.previous_cfg=deepcopy(cfg); self.previous_sales={}
+        self.fill_ledger=None; self._history_observed=False
+        try:
+            post=packet['post_unit_observation']
+            if (packet['projection']['observed_step'] != obs['step']
+                    or post['step'] != obs['step'] or post['player'] != obs['player']):
+                return
+            # The adaptive transform changes only market slots. Its final queue
+            # shares this already-executed unit stage; no controller/projection
+            # call is needed. Bounded uncertainty must not become a guessed fill.
+            ledger=fills.ObservedFillLedger(max_states=512, max_transitions=4096)
+            ledger.record(obs,cfg,action,post_unit_shed=post['private']['shed'],
+                          post_unit_inventories=post['private'].get('inventories'))
+            self.fill_ledger=ledger
+        except (ValueError, TypeError, KeyError, IndexError, AttributeError, OverflowError):
+            # Requests still enter the flow model as bounds, not zero receipts.
+            pass
+
     def observe(self,obs,cfg):
-        if self.previous is None: return
-        own=self.previous_sales
-        receipt=sorrel.infer_rival_flow(self.previous,obs,
-            [['SELL',p,q] for p,q in own.items() if q],cfg,
-            quote=lambda p,i:math.m.market_price(p,i,self.previous['market'].get('params')),
-            shops=math.m.SHOPS,center_products=math.m.TOWN_CENTER_PRODUCTS,own_sale_units=own)
+        if self.previous is None or self._history_observed: return
+        before=self.previous
+        if obs.get('step') == before.get('step'): return
+        self.previous_sales={}
+        self.last_fill={'status':'unknown','reason':'current_post_unit_snapshot_unavailable'}
+        self.last_flow={'status':'unknown','reason':'nonadjacent_or_different_actor','products':{}}
+        try:
+            if (obs['step'] != before['step']+1 or before.get('player') not in (0,1)
+                    or obs.get('player') != before['player']): return
+            self._history_observed=True
+            if self.fill_ledger is not None:
+                self.last_fill=self.fill_ledger.observe(obs)
+            own=self._exact_fills(self.last_fill,'SELL')
+            bought=self._exact_fills(self.last_fill,'BUY_PRODUCT')
+            # Preserve BUY_PRODUCT, duplicate orders and original positions.
+            # Empty receipt mappings deliberately leave requested fills unknown.
+            receipt=sorrel.infer_rival_flow(before,obs,
+                self.previous_action.get('market',[]),self.previous_cfg,
+                quote=lambda p,i:math.m.market_price(p,i,before['market'].get('params')),
+                shops=math.m.SHOPS,center_products=math.m.TOWN_CENTER_PRODUCTS,
+                own_sale_units=own,own_buy_units=bought)
+        except (ValueError, TypeError, KeyError, IndexError, AttributeError, OverflowError):
+            self.last_flow={'status':'unknown','reason':'invalid_flow_inputs','products':{}}
+            return
+        self.previous_sales=own; self.last_flow=receipt
         for item,r in receipt.get('products',{}).items():
             if item not in sale.PRODUCTS or r['status']!='identified_interval': continue
             lo,hi=r['rival_sale_units_range'];a,b=r['rival_market_supply_units_range']
-            self.history.add(flow.FlowInterval(int(self.previous['step']),item,lo,hi,a,b,
+            self.history.add(flow.FlowInterval(int(before['step']),item,lo,hi,a,b,
                 'floor_censored' if r['floor_nonadmission_possible'] else 'identified'))
 
     def streams(self,kw,slot):
@@ -231,11 +292,5 @@ class Agent:
                 self.last=deepcopy(self.transformer.last)
         elif self.transformer and self.transformer.selector.active:
             out=self.transformer.abort(base,'current_projection_unavailable')
-        shed=packet['post_unit_observation']['private']['shed'] if packet else obs['private']['shed']
-        available=dict(shed); sales={}
-        for o in out.get('market',[])[:int(cfg.get('maxMarketOrdersPerTurn',10))]:
-            if sale._sell(o) and o[1] in sale.PRODUCTS:
-                p=o[1];q=min(max(0,int(o[2])),available.get(p,0));available[p]=available.get(p,0)-q
-                sales[p]=sales.get(p,0)+q
-        self.previous=deepcopy(obs);self.previous_sales=sales
+        self._remember_action(obs,cfg,out,packet)
         return out
