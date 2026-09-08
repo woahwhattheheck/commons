@@ -91,7 +91,6 @@ def _retain_failure(path: Path, report: dict, exc: Exception) -> None:
         exc.add_note(f'Benchmark failure checkpoint not saved: {type(save_error).__name__}')
 
 
-
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
