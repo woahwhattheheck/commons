@@ -3,7 +3,13 @@
 _policy = None
 
 
-def make_agent(root, sell=True, enabled=True):
+def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None):
+    """Keep one existing policy; optionally select cash-coupled seed proposals.
+
+    The selector has the same post-unit callback contract as the integrated
+    agent. None retains this module's original, demand-only seed behavior.
+    """
+    from copy import deepcopy
     import importlib.util
     from pathlib import Path
     import sys
@@ -24,16 +30,35 @@ def make_agent(root, sell=True, enabled=True):
     budget = budget_module.SeedBudget(controller.R)
     def run(observation, configuration=None):
         config = dict(configuration or {})
+        run.seed_funding = None
         # One call only; projection below is deterministic owned unit mechanics.
         action = policy.act(observation, config) if sell else policy.act(observation)
         if not enabled or not any(o and o[0] == 'BUY_SEED' for o in action.get('market', [])):
             return action
-        _, private = scheduler.post_units(observation, action, config)
-        return budget.apply(action, private['seeds'], int(observation['step']), controller.cur,
-                            int(config.get('maxMarketOrdersPerTurn', 10)))
+        farm, private = scheduler.post_units(observation, action, config)
+        proposed = budget.apply(action, private['seeds'], int(observation['step']), controller.cur,
+                                int(config.get('maxMarketOrdersPerTurn', 10)))
+        if seed_queue_selector is None:
+            return proposed
+        edits = [i for i, (a, b) in enumerate(zip(action.get('market', []),
+                                                 proposed.get('market', []))) if a != b]
+        dependent = any(o and o[0] in ('HIRE', 'BUY_LAND', 'BUY_PRODUCT', 'BUY_ANIMAL')
+                        for i in edits for o in action['market'][i + 1:])
+        if not dependent:
+            return proposed
+        post = deepcopy(observation)
+        post['farms'][int(observation['player'])] = farm
+        post['private'] = private
+        chosen, report = seed_queue_selector(
+            scheduler.m, post, deepcopy(action), deepcopy(proposed), deepcopy(config))
+        if not isinstance(chosen, dict) or not isinstance(report, dict):
+            raise TypeError('seed_queue_selector must return (action dict, report dict)')
+        run.seed_funding = deepcopy(report)
+        return deepcopy(chosen)
     run.policy = policy
     run.controller = controller
     run.budget = budget
+    run.seed_funding = None
     return run
 
 
