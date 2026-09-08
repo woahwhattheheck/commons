@@ -47,7 +47,8 @@ def header_line(path: Path) -> str:
 
 def format_channel_and_thread(path: Path) -> dict[str, Any]:
     packed = leftover.commons_to_slack(path)
-    first = header_line(path)
+    # The header identifies the captured source, not a later revision at the path.
+    first = f"{path.stem} {packed['blob']}"
     payload = first + "\n" + packed["payload"]
     parts = sm.chunks(payload, CHANNEL_LIMIT)
     channel = parts[0] if parts else ""

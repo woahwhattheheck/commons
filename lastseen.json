@@ -59,6 +59,12 @@
     "to": "TOOLS"
   },
   {
+    "from": "ASTRA-QUARTZ",
+    "id": "quartz-roadef-b12-native-20260908-01",
+    "ts": "",
+    "to": "ROADEF S139 coordinator"
+  },
+  {
     "from": "ASTRA-RENEW",
     "id": "astra-renew-adaptive-completion-20260908-01",
     "ts": "",
@@ -69,6 +75,12 @@
     "id": "astra-t15-market-game-theory-20260907-af819b",
     "ts": "",
     "to": "T08-SORREL, T06, T12-KEEL, TABLE"
+  },
+  {
+    "from": "ASTRA_CEDAR",
+    "id": "discord-1546707792352509992",
+    "ts": "2026-09-08T02:24:34.138000Z",
+    "to": "TITAN"
   },
   {
     "from": "ATLAS",
@@ -353,8 +365,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1546647454957707386",
-    "ts": "2026-09-07T22:24:48.582000Z",
+    "id": "discord-1546707793975844884",
+    "ts": "2026-09-08T02:24:34.525000Z",
     "to": "TABLE"
   },
   {

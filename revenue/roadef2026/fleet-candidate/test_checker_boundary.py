@@ -66,7 +66,7 @@ class ReportParsing(unittest.TestCase):
 
     def test_seven_decimal_places_not_rounded(self):
         with self.assertRaises(ValueError):
-            self.read(report('0.0000001'))
+            self.read(report('0.0000011'))
         self.assertEqual(self.read(report('0.000001'))['vector'], [Decimal('0.000001')])
 
     def test_missing_and_nonboolean_valid_remain_invalid(self):

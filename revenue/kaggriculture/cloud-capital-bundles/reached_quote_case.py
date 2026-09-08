@@ -39,23 +39,40 @@ def sha256(data: bytes) -> str:
 
 
 def load_dependencies(root: Path = HERE.parent) -> SimpleNamespace:
-    """Read the existing source closure, preserving each author's exact bytes."""
+    """Execute the exact verified source bytes, without consulting bytecode.
+
+    Preserve normal module metadata and restore this loader's prior aliases if
+    any source fails. Imported transitive dependencies and arbitrary import
+    side effects are not snapshotted or rolled back.
+    """
     modules, pins = {}, {}
-    for key, (relative, expected) in DEPENDENCIES.items():
-        path = root.resolve() / relative
-        raw = path.read_bytes()
-        actual = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
-        if actual != expected:
-            raise ValueError(f'This consumer was tested against different source: {relative}')
-        name = '_reached_quote_' + key
-        spec = importlib.util.spec_from_file_location(name, path)
-        if spec is None or spec.loader is None:
-            raise ImportError(f'Cannot load source module: {relative}')
-        module = importlib.util.module_from_spec(spec)
-        sys.modules[name] = module
-        spec.loader.exec_module(module)
-        modules[key] = module
-        pins[relative] = {'git_blob': actual, 'sha256': sha256(raw)}
+    missing = object()
+    previous = {}
+    try:
+        for key, (relative, expected) in DEPENDENCIES.items():
+            path = root.resolve() / relative
+            raw = path.read_bytes()
+            actual = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+            if actual != expected:
+                raise ValueError(f'This consumer was tested against different source: {relative}')
+            name = '_reached_quote_' + key
+            spec = importlib.util.spec_from_file_location(name, path)
+            if spec is None or spec.loader is None:
+                raise ImportError(f'Cannot load source module: {relative}')
+            code = compile(raw, str(path), 'exec', dont_inherit=True)
+            module = importlib.util.module_from_spec(spec)
+            previous[name] = sys.modules.get(name, missing)
+            sys.modules[name] = module
+            exec(code, module.__dict__)
+            modules[key] = module
+            pins[relative] = {'git_blob': actual, 'sha256': sha256(raw)}
+    except BaseException:
+        for name, prior in previous.items():
+            if prior is missing:
+                sys.modules.pop(name, None)
+            else:
+                sys.modules[name] = prior
+        raise
     return SimpleNamespace(**modules, pins=pins)
 
 

@@ -55,22 +55,26 @@ def launch(command, env, stdout, stderr):
 def stop_process(process, force=False):
     if process is None:
         return
-    # launch() gives each POSIX child its own process group. The leader may
-    # already have exited while descendants still need TERM/KILL, including
-    # during escalation and the final cleanup pass.
-    if os.name != "posix" and process.poll() is not None:
-        return
     try:
         if os.name == "posix":
+            # launch() owns a new session/group, not only its leader. A leader
+            # may exit before its descendants or during the TERM grace period.
+            if getattr(process, "_portfolio_group_closed", False):
+                return
             os.killpg(process.pid, signal.SIGKILL if force else signal.SIGTERM)
-        elif force:
-            process.kill()
-        else:
-            # Windows is a development harness. POSIX competition builds exercise
-            # the C++ SIGTERM checkpoint path; TerminateProcess cannot emulate it.
-            process.terminate()
+            if force:
+                process._portfolio_group_closed = True
+        elif process.poll() is None:
+            if force:
+                process.kill()
+            else:
+                # Windows is a development harness. TerminateProcess cannot
+                # emulate the C++ SIGTERM checkpoint or POSIX group cleanup.
+                process.terminate()
     except ProcessLookupError:
-        pass
+        # Do not later signal a new group that reuses this retired group ID.
+        if os.name == "posix":
+            process._portfolio_group_closed = True
 
 
 class Supervisor:
@@ -129,7 +133,8 @@ class Supervisor:
                   "cost_used_in_ranking": False, "checker_sha256": self.checker_sha256,
                   "input_sha256": self.input_hashes,
                   "peak_sampled_process_rss_kib": self.peak_sampled_rss_kib,
-                  "memory_measurement": "Linux /proc RSS sum sampled every 0.5s; excludes page cache; not a hard bound",
+                  "memory_measurement": "Linux /proc RSS sum of supervisor and active lane/checker leaders every 0.5s; complete samples only; excludes descendants/page cache; shared pages may repeat; not a hard bound",
+                  "memory_sampling": getattr(self, "memory_sampling", {"status": "not_sampled"}),
                   "wall_seconds": round(time.monotonic() - self.start, 4),
                   "search_allowance_seconds": self.search_seconds,
                   "deadline_seconds": self.total, "signal_received": self.signal_received,
@@ -149,22 +154,105 @@ class Supervisor:
     def sample_rss(self):
         if not sys.platform.startswith("linux") or time.monotonic() < self.next_rss_sample:
             return
-        self.next_rss_sample = time.monotonic() + 0.5
-        pids = [os.getpid()]
-        pids.extend(lane["process"].pid for lane in self.lanes
-                    if lane.get("process") is not None and lane["process"].poll() is None)
+        started = time.monotonic()
+        self.next_rss_sample = started + 0.5
+        # Preserve the original measured set: this supervisor and active
+        # lane/checker leaders, not arbitrary host processes or descendants.
+        processes = [lane["process"] for lane in self.lanes
+                     if lane.get("process") is not None and lane["process"].poll() is None]
         if self.check is not None and self.check["process"].poll() is None:
-            pids.append(self.check["process"].pid)
-        total = 0
-        for pid in pids:
-            try:
-                for line in Path(f"/proc/{pid}/status").read_text().splitlines():
-                    if line.startswith("VmRSS:"):
-                        total += int(line.split()[1])
-                        break
-            except (OSError, ValueError):
-                pass  # A child may exit between the poll and status read.
-        self.peak_sampled_rss_kib = max(total, self.peak_sampled_rss_kib or 0)
+            processes.append(self.check["process"])
+        wanted = {process.pid for process in processes}
+        previous = getattr(self, "memory_sampling", {})
+        sampled = {}
+        reason = None
+
+        def status(path):
+            fields = dict(line.split(":", 1) for line in path.read_text().splitlines() if ":" in line)
+            pid, parent = int(fields["Pid"]), int(fields["PPid"])
+            namespace = [int(value) for value in fields.get("NSpid", str(pid)).split()]
+            if pid <= 0 or parent < 0 or not namespace or namespace[0] != pid:
+                raise ValueError("inconsistent procfs PID fields")
+            return pid, parent, namespace, fields
+
+        def rss(fields):
+            value, unit = fields["VmRSS"].split()
+            value = int(value)
+            if value < 0 or unit != "kB":
+                raise ValueError("invalid procfs RSS")
+            return value
+
+        try:
+            own_pid, _, own_namespace, own_fields = status(Path("/proc/self/status"))
+            depth = len(own_namespace) - 1
+            if own_namespace[depth] != os.getpid():
+                raise ValueError("unresolved supervisor PID namespace")
+            sampled[own_pid] = rss(own_fields)
+            matched = set()
+            missing = set(wanted)
+            for native_pid in wanted:
+                try:
+                    proc_pid, parent, namespace, fields = status(Path(f"/proc/{native_pid}/status"))
+                    if (parent == own_pid and len(namespace) > depth
+                            and namespace[depth] == native_pid):
+                        sampled[proc_pid] = rss(fields)
+                        matched.add(native_pid)
+                        missing.discard(native_pid)
+                except (OSError, ValueError, KeyError):
+                    pass
+            if missing:
+                # The fast path above is sufficient when procfs and Popen use
+                # the same namespace. Otherwise match only DIRECT children at
+                # the supervisor's namespace depth; a nested child's last PID
+                # or an unrelated process with the same number is not a match.
+                matches = {}
+                scanned = 0
+                with os.scandir("/proc") as entries:
+                    for entry in entries:
+                        if time.monotonic() - started >= 0.02 or scanned >= 4096:
+                            reason = "procfs_scan_budget"
+                            break
+                        if not entry.name.isdigit():
+                            continue
+                        scanned += 1
+                        try:
+                            proc_pid, parent, namespace, fields = status(Path(entry.path) / "status")
+                            if (parent != own_pid or len(namespace) <= depth
+                                    or namespace[depth] not in missing):
+                                continue
+                            native_pid = namespace[depth]
+                            if native_pid in matches:
+                                # Ambiguous snapshots are not silently credited.
+                                matches[native_pid] = None
+                            else:
+                                matches[native_pid] = (proc_pid, rss(fields))
+                        except (OSError, ValueError, KeyError):
+                            continue
+                for native_pid, match in matches.items():
+                    if match is not None:
+                        proc_pid, value = match
+                        sampled[proc_pid] = value
+                        matched.add(native_pid)
+                if wanted - matched and reason is None:
+                    reason = "active_process_unreadable"
+        except (OSError, ValueError, KeyError):
+            reason = "procfs_scan_unavailable" if sampled else "supervisor_procfs_unavailable"
+
+        expected = 1 + len(wanted)
+        complete = len(sampled) == expected and reason is None
+        total = sum(sampled.values()) if sampled else None
+        # Missing status files are not zero-sized processes. Preserve any last
+        # complete peak and expose partial/unavailable observations separately.
+        if complete:
+            self.peak_sampled_rss_kib = max(total, self.peak_sampled_rss_kib or 0)
+        self.memory_sampling = {
+            "status": "complete" if complete else "partial" if sampled else "unavailable",
+            "expected_processes": expected, "sampled_processes": len(sampled),
+            "sampled_sum_kib": total, "reason": reason,
+            "complete_samples": previous.get("complete_samples", 0) + int(complete),
+            "incomplete_samples": previous.get("incomplete_samples", 0) + int(not complete),
+            "duration_seconds": round(time.monotonic() - started, 6),
+        }
 
     def signal_handler(self, signum, frame):
         # No file or process work inside the signal handler. The polling loop
@@ -308,8 +396,10 @@ class Supervisor:
         if check["process"].poll() is None and elapsed < self.check_timeout:
             return
         timed_out = check["process"].poll() is None
+        # Retire the checker group before dropping its handle, including when
+        # its leader has returned but a descendant still holds the log files.
+        stop_process(check["process"], force=True)
         if timed_out:
-            stop_process(check["process"], force=True)
             check["process"].wait(timeout=1)
         check["stdout"].close()
         check["stderr"].close()
@@ -362,6 +452,7 @@ class Supervisor:
         self.input_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in self.inputs}
         for sig in (signal.SIGTERM, signal.SIGINT):
             signal.signal(sig, self.signal_handler)
+        run_error = None
         try:
             self.start_lanes()
             while time.monotonic() < self.deadline:
@@ -380,6 +471,9 @@ class Supervisor:
                         all(lane["final_checked"] for lane in self.lanes)):
                     break
                 time.sleep(0.1)
+        except BaseException as error:
+            run_error = error
+            raise
         finally:
             for lane in self.lanes:
                 stop_process(lane.get("process"), force=True)
@@ -403,7 +497,20 @@ class Supervisor:
             for lane in self.lanes:
                 if lane.get("log"):
                     lane["log"].close()
-            self.save_receipt("complete" if self.best is not None else "no_validated_solution")
+            if run_error is None:
+                self.save_receipt("complete" if self.best is not None else "no_validated_solution")
+            else:
+                # A feasible incumbent and a successfully finished search are
+                # different facts. Preserve the former without asserting both.
+                # Diagnostics must not replace the exception already escaping.
+                try:
+                    self.emit("supervisor_failed", error_type=type(run_error).__name__)
+                except BaseException:
+                    pass
+                try:
+                    self.save_receipt("error")
+                except BaseException:
+                    pass  # The last atomic receipt remains, not a completed run.
         return 0 if self.best is not None else 1
 
 

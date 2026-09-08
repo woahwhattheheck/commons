@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 6,
+ "n_open_prs": 4,
  "open_prs": [
   {
    "number": 10181,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10181",
    "base_freshness": {
     "base_sha": "01c2b20b990f556ddd190ff5caaa7d8ab55adac1",
-    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
+    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,29 +369,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10202,
+   "number": 10213,
    "author": "woahwhattheheck",
-   "title": "Check the committed canonical TITAN package without rebuilding it",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10202",
+   "title": "ROADEF: compose process cleanup with abnormal-run receipts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10213",
    "base_freshness": {
-    "base_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
-    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10203,
-   "author": "woahwhattheheck",
-   "title": "Bind COK observer source labels to the official captured program",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10203",
-   "base_freshness": {
-    "base_sha": "f62275d80a8e7a2b6556065d786c82738a5abfd8",
-    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
+    "base_sha": "de8327a183c50123476bfe8e934e1f7631c72b00",
+    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -401,13 +385,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10204,
+   "number": 10224,
    "author": "woahwhattheheck",
-   "title": "TITAN: bind recorded-input imports and receipts to captured source bytes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10204",
+   "title": "Accept exact native scientific values in ROADEF checker reports",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10224",
    "base_freshness": {
-    "base_sha": "c4f128fbdf9f8d5148d35dd61476cf1f62677282",
-    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
+    "base_sha": "af0c9feffa15ea4437b8d6aa0b8f5476a5c9f4d4",
+    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -417,29 +401,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10188,
+   "number": 10225,
    "author": "woahwhattheheck",
-   "title": "TITAN: accept explicit retained continuity record names",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10188",
+   "title": "Preserve emitted sale prefixes during plan continuation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10225",
    "base_freshness": {
-    "base_sha": "d247990656259a61c27657e8f37354803e18fe8f",
-    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10205,
-   "author": "woahwhattheheck",
-   "title": "TITAN: recover bounded late-route model and complete its consumer evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10205",
-   "base_freshness": {
-    "base_sha": "c4f128fbdf9f8d5148d35dd61476cf1f62677282",
-    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
+    "base_sha": "af0c9feffa15ea4437b8d6aa0b8f5476a5c9f4d4",
+    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

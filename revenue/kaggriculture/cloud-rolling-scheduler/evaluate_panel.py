@@ -6,6 +6,8 @@ import importlib.util
 import importlib.metadata
 import platform
 import json
+import os
+import tempfile
 from pathlib import Path
 import sys
 
@@ -79,6 +81,42 @@ def read_cached(path, expected):
     return row
 
 
+def publish_json(path, value, *, replace=False):
+    """Expose complete JSON only; retain a staging file if publication fails.
+
+    Cell creation uses an atomic hard link so an overlapping writer cannot be
+    overwritten. Summaries replace atomically. This is per-file visibility,
+    not a multi-file transaction or a power-loss durability guarantee.
+    """
+    path = Path(path)
+    payload = (json.dumps(value, indent=2) + '\n').encode('utf-8')
+    fd, name = tempfile.mkstemp(prefix=f'.{path.name}.', suffix='.pending',
+                                dir=path.parent)
+    staged = Path(name)
+    try:
+        try:
+            remaining = memoryview(payload)
+            while remaining:
+                written = os.write(fd, remaining)
+                if written <= 0:
+                    raise OSError('Report staging write made no progress')
+                remaining = remaining[written:]
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+        if replace:
+            os.replace(staged, path)
+        else:
+            os.link(staged, path)
+            staged.unlink()
+    except BaseException as error:
+        # Preserve partial or complete unpublished bytes for inspection. A
+        # process kill also leaves .pending files; read_cached never consumes them.
+        if hasattr(error, 'add_note'):
+            error.add_note(f'Report staging path (not a published result): {staged}')
+        raise
+
+
 def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
     runtime=Path(runtime);engine_dir=Path(engine_dir)
     seeds,opponents,seats,arms=(tuple(dict.fromkeys(values))
@@ -130,8 +168,7 @@ def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
             row.update(arm=arm,opponent=opponent,source_sha256=manifest['source_sha256'],
                        engine_sha256=engine_hashes,run_identity=identity)
             # An overlapping caller must not overwrite a newly finished attempt.
-            with destination.open('x') as stream:
-                stream.write(json.dumps(row,indent=2)+'\n')
+            publish_json(destination, row)
             games.append(row)
             resumed['executed'] += 1
             print(json.dumps({k:row[k] for k in ('seed','opponent','candidate_seat','arm','status','steps','scores','failure')}),flush=True)
@@ -152,7 +189,7 @@ def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
                               'rival_cash_delta':b['scores'][1-seat]-a['scores'][1-seat],'margin_delta':bm-am})
     report={'games':games,'pairs':pairs,'resume':resumed,'seed_scope':'development unless accompanied by a prior immutable freeze receipt',
             'claim':'Offline simulations, not hosted leaderboard or cash earnings'}
-    (output/'panel.json').write_text(json.dumps(report,indent=2)+'\n')
+    publish_json(output/'panel.json', report, replace=True)
     print(json.dumps({'pairs':pairs,'resume':resumed},indent=2))
     return report
 

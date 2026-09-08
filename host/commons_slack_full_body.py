@@ -9,6 +9,7 @@ or slack_ingest.py.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -40,14 +41,20 @@ def git_blob(rel: str) -> str:
 
 def commons_to_slack(path: Path) -> dict[str, Any]:
     """Full Commons post body as Slack prose. Uses leftover slack_mirror formatter."""
-    payload = sm.mirror_payload(path)
-    parts = sm.format_mirror(path)
-    body = sm.body_of(path.read_text(encoding="utf-8"))
+    # Capture once: another writer may replace the post between formatter calls.
+    source = path.read_bytes()
+    # Match Path.read_text's universal-newline behavior while hashing exact bytes.
+    text = source.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+    payload = sm.mirror_payload_from_text(path, text)
+    parts = sm.chunks(payload)
+    body = sm.body_of(text)
+    blob = hashlib.sha1(b"blob " + str(len(source)).encode("ascii") + b"\0" + source).hexdigest()
     return {
         "direction": "commons_to_slack",
         "full_body": True,
         "posts_not_receipts": True,
         "source": str(path),
+        "blob": blob,
         "char_count": len(payload),
         "parts": len(parts),
         "payload": payload,

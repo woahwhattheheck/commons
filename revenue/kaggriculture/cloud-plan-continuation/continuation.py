@@ -41,6 +41,7 @@ class ContinuationPlanSelector:
         self._key: Any = None
         self._last_step: int | None = None
         self._emitted: set[int] = set()
+        self._emitted_orders: dict[int, tuple[str, int, int]] = {}
         self._fill_ledger, self._fill_verdict = fill_ledger, fill_verdict
         self._fill_due: dict[str, Any] | None = None
         self._fill_error: str | None = None
@@ -161,6 +162,7 @@ class ContinuationPlanSelector:
                               'fallback_preserved': True, **details}
         self.selector.last_decision = deepcopy(self.last_decision)
         self._key, self._last_step, self._emitted = None, None, set()
+        self._emitted_orders = {}
         self._fill_due, self._fill_error = None, None
         return deepcopy(base_action)
 
@@ -224,6 +226,15 @@ class ContinuationPlanSelector:
             if missing:
                 return self._abort('due_step_not_emitted', now, base_action,
                                    missing_steps=missing)
+            if self._key == key:
+                # A new observed suffix may change future dates, never the
+                # product, fixed slot or quantity already emitted before now.
+                prefix = sorted((t, before['item'], before['slot'], q)
+                                for t, q in before['plan']['sales'] if q > 0 and t < now)
+                emitted_prefix = sorted((t, *order) for t, order in self._emitted_orders.items()
+                                        if t < now)
+                if prefix != emitted_prefix:
+                    return self._abort('emitted_prefix_changed', now, base_action)
             if any(q > 0 and t >= now for t, q in before['plan']['sales']):
                 reason = self._check(before, now, observation, cfg, post_unit_shed,
                                      reservations, continuation_feasible)
@@ -249,10 +260,12 @@ class ContinuationPlanSelector:
                     return self._abort(reason, now, base_action)
             if self._key != key:
                 self._key, self._last_step, self._emitted = key, None, set()
+                self._emitted_orders = {}
             self._last_step = now
             decision = self.selector.last_decision
             if decision.get('reason') == 'executed' and decision.get('due', 0) > 0:
                 self._emitted.add(now)
+                self._emitted_orders[now] = (active['item'], active['slot'], decision['due'])
                 if self._fill_ledger is not None:
                     self._fill_due = {'key': key, 'step': now,
                                       'player': observation.get('player'),
@@ -261,6 +274,7 @@ class ContinuationPlanSelector:
                                       'quantity': decision['due']}
         else:
             self._key, self._last_step, self._emitted = None, None, set()
+            self._emitted_orders = {}
             if self.selector.last_decision.get('reason') == 'commitment_aborted':
                 out = deepcopy(base_action)
         self.last_decision = deepcopy(self.selector.last_decision)

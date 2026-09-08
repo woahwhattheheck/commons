@@ -137,10 +137,17 @@ class LiveCollectors:
                 raise SourceFailure("github_response_shape")
             result.extend(rows)
             if isinstance(response, dict):
-                total = response.get("total_count", total)
+                if "total_count" in response:
+                    total = response["total_count"]
+                    if type(total) is not int or total < 0:
+                        raise SourceFailure("github_pagination_shape")
+                if ("incomplete_results" in response
+                        and type(response["incomplete_results"]) is not bool):
+                    raise SourceFailure("github_pagination_shape")
                 incomplete = incomplete or bool(response.get("incomplete_results"))
             if len(rows) < self.page_size:
-                return result, not incomplete
+                # A short page cannot overrule an explicit larger result count.
+                return result, not incomplete and (total is None or len(result) >= total)
         return result, not incomplete and isinstance(total, int) and len(result) >= total
 
     @staticmethod
@@ -235,12 +242,24 @@ class LiveCollectors:
                 payload["cursor"] = cursor
             self._check_deadline()
             response = self.equipment.slack("conversations.history", payload)
-            if not isinstance(response, dict) or not response.get("ok"):
+            if not isinstance(response, dict) or response.get("ok") is not True:
                 raise SourceFailure(response.get("error", "slack_response_shape") if isinstance(response, dict) else "slack_response_shape")
-            rows.extend(response.get("messages", []))
-            cursor = response.get("response_metadata", {}).get("next_cursor", "")
+            # Missing/malformed history is unknown, not a complete empty source.
+            # Validate before rows can be omitted and the store replaces old work.
+            messages = response.get("messages")
+            if (not isinstance(messages, list) or any(
+                    not isinstance(row, dict) or not row.get("ts") for row in messages)):
+                raise SourceFailure("slack_messages_shape")
+            metadata = response.get("response_metadata", {})
+            has_more = response.get("has_more", False)
+            if (not isinstance(metadata, dict)
+                    or not isinstance(metadata.get("next_cursor", ""), str)
+                    or type(has_more) is not bool):
+                raise SourceFailure("slack_pagination_shape")
+            rows.extend(messages)
+            cursor = metadata.get("next_cursor", "")
             if not cursor:
-                complete = not bool(response.get("has_more"))
+                complete = not has_more
                 break
         items, threads = [], []
         workspace = self.slack_config.get("workspace_url", "")
