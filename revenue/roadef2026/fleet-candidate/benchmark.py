@@ -3,6 +3,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -45,6 +46,12 @@ def execute(cmd, folder, label, env=None, timeout=660):
     if result.returncode:
         raise RuntimeError(f'{label} exited {result.returncode}: {result.stderr[-2000:]!r}')
     return result, time.monotonic() - start
+
+def finite_loads(rows, label):
+    """Check every saturation before sorting or reducing a difference vector."""
+    for row in rows:
+        if not math.isfinite(row['sat']):
+            raise RuntimeError(f'{label}: non-finite saturation')
 
 def reserve_outputs(output, instances, solvers, metadata):
     """Give this invocation exclusive ownership of its evidence destinations.
@@ -127,9 +134,11 @@ def main():
                 result, duration = execute(command,folder,f'checker-{decimals}',timeout=180)
                 check = json.loads(result.stdout)
                 if check.get('valid') is not True: raise RuntimeError(f'{name}/{label}: checker rejected')
+                finite_loads(check['saturations'], f'{name}/{label}: checker-{decimals}')
                 checks[decimals],check_times[decimals] = check,duration
             score = sorted((x['sat'] for x in checks[6]['saturations']), reverse=True)
             diagnostic = json.loads(stats.read_text())
+            finite_loads(diagnostic['loads'], f'{name}/{label}: diagnostic')
             actual = {(x['t'],str(x['from']),str(x['to'])):x['sat'] for x in checks[12]['saturations']}
             predicted = {(x['t'],str(x['from']),str(x['to'])):x['sat'] for x in diagnostic['loads']}
             if actual.keys() != predicted.keys(): raise RuntimeError('Load key mismatch')
