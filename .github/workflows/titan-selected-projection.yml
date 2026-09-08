@@ -253,6 +253,24 @@ jobs:
           set -euo pipefail
           python3 -B -m unittest -v test_stress_runner_report \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-reporter-tests.log"
+      - name: Selected-action queue-copy parity tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 -B revenue/kaggriculture/cloud-selected-market-checks/test_queue_copy.py \
+            --lab "$LAB" \
+            --report "$RUNNER_TEMP/projection-validation/queue-copy-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/queue-copy-tests.log"
+      - name: Queue-copy combined-report binding tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_queue_copy_report \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/queue-copy-reporter-tests.log"
       - name: Existing workflow regression binding tests
         if: ${{ !cancelled() }}
         shell: bash
@@ -275,7 +293,7 @@ jobs:
           python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
             --directory "$RUNNER_TEMP/projection-validation" \
             --include-reporter-tests --include-funded-join --include-runtime-regressions \
-            --include-cancellation --include-ledger-schedule --include-stress-runner \
+            --include-cancellation --include-ledger-schedule --include-stress-runner --include-queue-copy \
             --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
