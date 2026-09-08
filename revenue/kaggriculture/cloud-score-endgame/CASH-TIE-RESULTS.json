@@ -36,7 +36,7 @@
     "test_cash_tie.py": "46e3632b4d66130417773ac00791ea01592ead8f73fdf3cc008a1021968c461c",
     "evaluate_cash_tie.py": "1cadf8c300a6dc874f6a93d12edeba6cccfb9227458a9b6c5a71143c3d3eacef",
     "verify_selected_markets.py": "83ac288f19d75bba2d665124ea0cc3279300d51b4f5a5762bc57c901664d58ab",
-    "CASH-TIE.md": "b80c9fb67d0c1fe62ef242ae43de1ea9aab562ee782a14a9aad9e989a284b68e"
+    "CASH-TIE.md": "5b59906d0b6c499d28d9d5bf2fc244bdfdb2582f6ab3671ed605b9f3c51a953d"
   },
   "decisions_sha256": "94bddf13edd1d4902d0c808eea21626545aa39fb9aa3341fab6ba6594f30fb72",
   "engine_sha256": {
