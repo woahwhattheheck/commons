@@ -15,7 +15,8 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA_VERSION = "commons-open-repo-backup/v1"
+SCHEMA_VERSION = "commons-open-repo-backup/v2"
+LEGACY_SCHEMA_VERSION = "commons-open-repo-backup/v1"
 DRILL_SCHEMA_VERSION = "commons-open-repo-backup-drill/v1"
 ALLOWED_STORAGE = frozenset({"github-actions-artifact"})
 ARTIFACT_RETENTION_DAYS = 90
@@ -137,6 +138,17 @@ def _repo_heads(source: Path) -> list[dict[str, str]]:
     return sorted(heads, key=lambda row: row["ref"])
 
 
+def _head_ref(source: Path) -> str | None:
+    """Return the immediate symbolic HEAD target, or None for detached HEAD."""
+    completed = _run(["symbolic-ref", "--quiet", "--no-recurse", "HEAD"], cwd=source, check=False)
+    if completed.returncode == 1:
+        return None
+    if completed.returncode:
+        detail = completed.stderr.strip() or completed.stdout.strip()
+        raise BackupError(f"cannot read symbolic HEAD: {detail}")
+    return completed.stdout.strip()
+
+
 def snapshot(source: Path, output_dir: Path) -> Path:
     source = source.resolve()
     output_dir = output_dir.resolve()
@@ -145,6 +157,7 @@ def snapshot(source: Path, output_dir: Path) -> Path:
     head_sha = _run(["rev-parse", "HEAD"], cwd=source).stdout.strip()
     if not SHA_RE.fullmatch(head_sha):
         raise BackupError("HEAD is not a full object id")
+    head_ref = _head_ref(source)
     output_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     bundle = output_dir / f"commons-{stamp}-{head_sha[:12]}.bundle"
@@ -156,10 +169,15 @@ def snapshot(source: Path, output_dir: Path) -> Path:
     if bundle_heads != repo_heads:
         bundle.unlink(missing_ok=True)
         raise BackupError("bundle ref inventory differs from source")
+    if (_head_ref(source) != head_ref
+            or _run(["rev-parse", "HEAD"], cwd=source).stdout.strip() != head_sha):
+        bundle.unlink(missing_ok=True)
+        raise BackupError("source HEAD changed during snapshot")
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "created_at": _utc_now(),
         "head_sha": head_sha,
+        "head_ref": head_ref,
         "bundle": bundle.name,
         "bundle_sha256": _sha256(bundle),
         "refs": bundle_heads,
@@ -184,10 +202,14 @@ def read_manifest(manifest_path: Path) -> tuple[dict[str, Any], Path]:
         "refs",
         "source",
     }
-    if not isinstance(manifest, dict) or set(manifest) != required:
+    if not isinstance(manifest, dict):
         raise BackupError("manifest fields drifted")
-    if manifest["schema_version"] != SCHEMA_VERSION:
+    if manifest.get("schema_version") == SCHEMA_VERSION:
+        required.add("head_ref")
+    elif manifest.get("schema_version") != LEGACY_SCHEMA_VERSION:
         raise BackupError("manifest schema version drifted")
+    if set(manifest) != required:
+        raise BackupError("manifest fields drifted")
     if not SHA_RE.fullmatch(str(manifest["head_sha"])):
         raise BackupError("manifest HEAD is invalid")
     bundle_name = str(manifest["bundle"])
@@ -209,7 +231,15 @@ def verify(manifest_path: Path) -> dict[str, Any]:
         raise BackupError("bundle refs differ from manifest")
     if not any(row["sha"] == manifest["head_sha"] for row in actual_refs):
         raise BackupError("manifest HEAD is absent from bundle refs")
-    return {
+    if manifest["schema_version"] == SCHEMA_VERSION:
+        head_ref = manifest["head_ref"]
+        if not any(row["ref"] == "HEAD" and row["sha"] == manifest["head_sha"] for row in actual_refs):
+            raise BackupError("manifest HEAD differs from bundle HEAD")
+        if head_ref is not None:
+            if (not isinstance(head_ref, str) or not head_ref.startswith("refs/")
+                    or not any(row["ref"] == head_ref and row["sha"] == manifest["head_sha"] for row in actual_refs)):
+                raise BackupError("manifest symbolic HEAD differs from bundle refs")
+    receipt = {
         "state": "VERIFIED",
         "manifest": str(manifest_path),
         "bundle": str(bundle),
@@ -217,6 +247,9 @@ def verify(manifest_path: Path) -> dict[str, Any]:
         "head_sha": manifest["head_sha"],
         "refs": len(actual_refs),
     }
+    if manifest["schema_version"] == SCHEMA_VERSION:
+        receipt["head_ref"] = manifest["head_ref"]
+    return receipt
 
 
 def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, Any]:
@@ -242,6 +275,15 @@ def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, 
              "+refs/heads/*:refs/remotes/origin/*"],
             cwd=target,
         )
+    # Bundles store HEAD's commit, not its attached/detached identity. Clone
+    # may choose a different branch when multiple refs share that commit.
+    if "head_ref" in receipt:
+        if receipt["head_ref"] is None:
+            _run(["update-ref", "--no-deref", "HEAD", receipt["head_sha"]], cwd=target)
+        else:
+            _run(["symbolic-ref", "HEAD", receipt["head_ref"]], cwd=target)
+        if _head_ref(target) != receipt["head_ref"]:
+            raise BackupError("restored symbolic HEAD differs from manifest")
     restored_head = _run(["rev-parse", "HEAD"], cwd=target).stdout.strip()
     if restored_head != receipt["head_sha"]:
         raise BackupError(
