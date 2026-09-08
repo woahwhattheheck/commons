@@ -65,7 +65,10 @@ def iso_utc(value: Any, label: str) -> str:
         raise Problem(422, f"{label} must be an ISO date-time") from exc
     if parsed.tzinfo is None:
         raise Problem(422, f"{label} must include a timezone")
-    return parsed.astimezone(UTC).isoformat().replace("+00:00", "Z")
+    try:
+        return parsed.astimezone(UTC).isoformat().replace("+00:00", "Z")
+    except (ValueError, OverflowError) as exc:
+        raise Problem(422, f"{label} must be an ISO date-time") from exc
 
 
 def now_iso(clock: Callable[[], float]) -> str:
