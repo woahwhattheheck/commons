@@ -350,6 +350,23 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 10715,
+   "author": "woahwhattheheck",
+   "title": "Resolve TITAN seed helper for direct source consumers",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10715",
+   "base_freshness": {
+    "base_sha": "a649b50e1af19dba4933b0e5e783b49c2e7fe208",
+    "main_sha": "a649b50e1af19dba4933b0e5e783b49c2e7fe208",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
