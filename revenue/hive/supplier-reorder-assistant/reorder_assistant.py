@@ -392,6 +392,13 @@ def command_plan(args: argparse.Namespace) -> None:
 
 
 def command_receive(args: argparse.Namespace) -> None:
+    # The CSV and JSON are separate deliverables. Resolve spelling/symlink
+    # aliases and existing hardlinks before either output can be truncated.
+    same_output = args.out_stock.resolve() == args.out_log.resolve()
+    if not same_output and args.out_stock.exists() and args.out_log.exists():
+        same_output = args.out_stock.samefile(args.out_log)
+    if same_output:
+        raise ReorderError("receipt stock and log outputs must refer to different files")
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     receipts = _read_csv(
         args.receipts,
