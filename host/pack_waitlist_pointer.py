@@ -109,7 +109,10 @@ def classify_harborline_similar(root: Path | None = None) -> dict[str, Any]:
 def classify(root: Path | None = None, pointer: dict[str, Any] | None = None) -> dict[str, Any]:
     """Cite waitlist ownership. Never a Commons gate."""
     base = root or ROOT
-    data = pointer if isinstance(pointer, dict) else load_pointer()
+    data = pointer if isinstance(pointer, dict) else load_pointer(
+        base / "ground" / "BUSINESS_PACK_WAITLIST_POINTER.json"
+        if root is not None else None
+    )
     unique = load_json(base / "ground" / "BUSINESS_PACKS.json")
     unique_ptr = unique.get("waitlist") if isinstance(unique.get("waitlist"), dict) else {}
     owner_rows = owner_path_rows(base)
