@@ -14,7 +14,7 @@ This lane is a **public-contract scaffold**, not a Kaggle submission and not a t
 - Dataset names match test folder names without `.zarr`; every hidden-test dataset must appear.
 - Public data description: Zarr v3 image volumes `(T,Z,Y,X)`; physical voxel scale `(z,y,x)=(1.625,0.40625,0.40625)` microns/voxel; sparse GEFF ground truth for training only.
 
-Authoritative references and the exact organizer starter commit are recorded in `SOURCE_LOCK.json`.
+Authoritative references and the exact organizer starter commit are recorded in `SOURCE_LOCK.json`. `OFFLINE_RUNTIME.md` records the public starter dependency/runtime hazards that matter when moving from this standard-library smoke path into a real Kaggle notebook.
 
 ## Run the zero-data smoke path
 
@@ -48,6 +48,7 @@ Consecutive `t→t+1` tracking edges are enforced by default. `--strict-consecut
 - wrong header or non-consecutive throwaway `id` values;
 - `.zarr` suffix leakage in dataset names;
 - malformed node/edge sentinel fields;
+- duplicate edges;
 - duplicate node IDs inside a dataset;
 - missing edge endpoints;
 - non-consecutive, backward, or self links;
