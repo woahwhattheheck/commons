@@ -350,79 +350,15 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 6,
+ "n_open_prs": 3,
  "open_prs": [
   {
-   "number": 10580,
+   "number": 10696,
    "author": "woahwhattheheck",
-   "title": "WIP: isolate retained Grok Slack bridge test failure",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10580",
+   "title": "feat(hive): package Conversation Desk standalone release",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10696",
    "base_freshness": {
-    "base_sha": "12621cf42edefe85aa298d3929d3d1166325a0ad",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10690,
-   "author": "woahwhattheheck",
-   "title": "Add Hive010 browser package recovery acceptance",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10690",
-   "base_freshness": {
-    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10688,
-   "author": "woahwhattheheck",
-   "title": "Hive003: reject overflowing numeric project inputs",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10688",
-   "base_freshness": {
-    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10687,
-   "author": "woahwhattheheck",
-   "title": "fix(grok-slack): reject nonpositive chunk limits",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10687",
-   "base_freshness": {
-    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10692,
-   "author": "woahwhattheheck",
-   "title": "Hive003: reject overflowing numeric project inputs (fresh-main rebase)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10692",
-   "base_freshness": {
-    "base_sha": "b246d5c91beba330dfa3097fd1b9500b91ecfdb4",
+    "base_sha": "f443f8f1ac132cfb9f0bda0438326ef5cb6fda07",
     "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
     "ahead_by": null,
     "behind_by": null,
@@ -438,7 +374,23 @@
    "title": "Add bounded viewport backfill tool",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10691",
    "base_freshness": {
-    "base_sha": "e8e5f5b3aefbdad2947ec822fa07d0cc5589b9d5",
+    "base_sha": "41ca0f8f1be553aa85a915e16b40b1d739c08854",
+    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10703,
+   "author": "woahwhattheheck",
+   "title": "test: compose Brand Launch Ops with Shop Operations",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10703",
+   "base_freshness": {
+    "base_sha": "41ca0f8f1be553aa85a915e16b40b1d739c08854",
     "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
     "ahead_by": null,
     "behind_by": null,
