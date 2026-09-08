@@ -50,9 +50,11 @@ This first version consumes user-provided exports. No live Gmail, calendar, task
 - `POST /api/ask`: `workspace_id`, `question`; returns exact `citations` or `no_answer`.
 - `GET /api/source?workspace_id=...&source_id=...&version=...`: the immutable cited source version.
 - `POST /api/task`: `workspace_id`, `task_id`, `revision`, `state` (`open` or `done`).
-- `POST /api/draft`: `workspace_id`, `recipient`, `subject`, `body`; add `draft_id` and `revision` when editing. Separate new-draft calls create separate drafts; automatic new-draft retries are not deduplicated.
+- `POST /api/draft`: `workspace_id`, `recipient`, `subject`, `body`; add `draft_id` and `revision` when editing. New-draft callers can provide a stable `request_id` (1–200 characters) for retry safety. The same client/key and same normalized recipient, subject and body reuse the existing draft, including after a restart; `repeated: true` reports this. Reusing the key with different contents returns HTTP 409 without writing. Replays never revert later edits and return the latest saved revision; reload that draft before editing. Different clients or different keys are independent. Omit the key only for legacy non-deduplicated creation; edits must use `draft_id`/`revision` without `request_id`.
 - `GET /api/export?workspace_id=...&kind=tasks`: current-task CSV.
 - `GET /api/export?workspace_id=...&kind=draft&draft_id=...`: unsent EML.
+
+The browser retains one creation key for the active new-draft form and reuses it after a failed response; choosing New blank draft, preparing a new template, switching clients, or reloading the page creates a new key. After a page reload, reopen the saved draft rather than resubmitting a new form. The server retains request receipts in SQLite. Existing databases gain this table without rewriting saved drafts. Changed-content retry conflicts preserve the input for review; reopen the saved draft or explicitly start a new one.
 
 Bodies are limited to 1 MiB; imported text and draft bodies to 100,000 characters. HTTP errors return JSON. Unknown or cross-client record IDs return 404. Stale revisions return 409. All persistence uses SQLite transactions and parameterized values. Provider adapters must not treat a local task or draft save as a remote installation or delivery receipt.
 
@@ -70,6 +72,6 @@ python revenue/hive/office-workspace/test_app.py
 python test_hive_office_workspace.py
 ```
 
-Seventeen tests use real temporary SQLite databases, concurrent workers, and a live loopback HTTP server. Coverage includes persistence, duplicate and conflicting imports, rollback, task history, current-source citations, no-answer behavior, client isolation, stale edits, CSV safety, and unsent EML export. No mocked storage or provider calls are used.
+Twenty-five tests use real temporary SQLite databases, concurrent workers, and a live loopback HTTP server. Coverage includes persistence, duplicate and conflicting imports, rollback, task history, current-source citations, no-answer behavior, client isolation, stale edits, CSV safety, unsent EML export, durable request replay, sixteen-way concurrent draft creation, conflicting retry payloads, and additive database migration. No mocked storage or provider calls are used.
 
 The implementation session also checked JavaScript syntax with Node. An interactive Chromium walkthrough was attempted, but local navigation returned `net::ERR_BLOCKED_BY_ADMINISTRATOR`; browser interactions and responsive rendering are therefore **not verified** by this delivery. HTTP workflow tests passed independently. No whole-repository or hosted-CI pass is claimed.

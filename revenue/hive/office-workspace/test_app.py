@@ -175,6 +175,61 @@ class StoreTests(unittest.TestCase):
         self.assertEqual(self.store.snapshot(self.wid)['drafts'],[])
 
 
+    def test_keyed_draft_retry_survives_restart_and_later_edits(self):
+        first = self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Original', request_id='request-1')
+        self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Newer edit', first['id'], 1)
+        reopened = app.Store(self.path)
+        again = reopened.save_draft(self.wid, 'client@example.test', 'Review', 'Original', request_id='request-1')
+        self.assertEqual((again['id'], again['revision'], again['repeated']), (first['id'], 2, True))
+        self.assertEqual(len(reopened.snapshot(self.wid)['drafts']), 1)
+        self.assertEqual(reopened.snapshot(self.wid)['drafts'][0]['body'], 'Newer edit')
+
+    def test_concurrent_keyed_draft_creation_is_single(self):
+        def create(_):
+            return self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Body', request_id='one-request')
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(create, range(16)))
+        self.assertEqual(len({r['id'] for r in results}), 1)
+        self.assertEqual(sum(not r['repeated'] for r in results), 1)
+        self.assertEqual(len(self.store.snapshot(self.wid)['drafts']), 1)
+
+    def test_reused_request_with_different_content_does_not_write(self):
+        first = self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Original', request_id='request')
+        for recipient, subject, body in [('other@example.test', 'Review', 'Original'), ('client@example.test', 'Changed', 'Original'), ('client@example.test', 'Review', 'Changed')]:
+            self.problem(lambda: self.store.save_draft(self.wid, recipient, subject, body, request_id='request'), 409)
+        self.assertEqual([(r['id'], r['body'], r['revision']) for r in self.store.snapshot(self.wid)['drafts']], [(first['id'], 'Original', 1)])
+
+    def test_request_ids_are_client_scoped_and_new_keys_are_independent(self):
+        first = self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Body', request_id='same')
+        other = self.store.save_draft(self.other, 'other@example.test', 'Review', 'Other', request_id='same')
+        second = self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Body', request_id='second')
+        self.assertEqual(len({first['id'], other['id'], second['id']}), 3)
+        self.assertEqual(len(self.store.snapshot(self.wid)['drafts']), 2)
+        self.assertEqual(len(self.store.snapshot(self.other)['drafts']), 1)
+
+    def test_legacy_unkeyed_creation_and_keyed_edit_rejection(self):
+        one = self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Body')
+        two = self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Body')
+        self.assertNotEqual(one['id'], two['id'])
+        self.problem(lambda: self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Changed', one['id'], 1, request_id='not-for-edit'))
+        self.assertEqual({r['body'] for r in self.store.snapshot(self.wid)['drafts']}, {'Body'})
+
+    def test_invalid_creation_keys_do_not_write(self):
+        for value in ('', '  ', [], {}, True, 3, 'x'*201):
+            with self.subTest(value=value):
+                self.problem(lambda: self.store.save_draft(self.wid, 'client@example.test', 'Review', 'Body', request_id=value))
+        self.assertEqual(self.store.snapshot(self.wid)['drafts'], [])
+
+    def test_request_table_is_added_to_existing_database(self):
+        old = self.store.save_draft(self.wid, 'client@example.test', 'Legacy', 'Keep me')
+        with self.store.connection(True) as db:
+            db.execute('DROP TABLE draft_requests')
+        reopened = app.Store(self.path)
+        created = reopened.save_draft(self.wid, 'client@example.test', 'New', 'New body', request_id='new')
+        self.assertEqual({r['id'] for r in reopened.snapshot(self.wid)['drafts']}, {old['id'], created['id']})
+        self.assertTrue(reopened.save_draft(self.wid, 'client@example.test', 'New', 'New body', request_id='new')['repeated'])
+
+
 class HTTPTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -220,6 +275,20 @@ class HTTPTests(unittest.TestCase):
         self.assertIn('attachment',headers['Content-Disposition'])
         self.assertIn(b'X-Unsent: 1',raw)
         self.assertEqual(headers['Cache-Control'],'no-store')
+
+    def test_http_draft_creation_retries_and_payload_conflict(self):
+        wid = self.store.create_workspace('Retry client')['id']
+        payload = dict(workspace_id=wid, recipient='client@example.test', subject='Unsent', body='Original', request_id='http-request')
+        status, _, original = self.request('/api/draft', payload)
+        self.assertEqual(status, 200)
+        first = json.loads(original)
+        status, _, repeated = self.request('/api/draft', payload)
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(repeated)['id'], first['id'])
+        self.assertTrue(json.loads(repeated)['repeated'])
+        self.assertEqual(self.request('/api/draft', dict(payload, body='Different'))[0], 409)
+        self.assertEqual(len(self.store.snapshot(wid)['drafts']), 1)
+        self.assertEqual(self.request('/api/send', payload)[0], 404)
 
     def test_bad_requests_and_unknown_routes(self):
         self.assertEqual(self.request('/api/workspaces',[])[0],400)
