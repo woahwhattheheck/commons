@@ -16,6 +16,13 @@ carrier: Claude Code, Anthropic cloud container
 
 # Fleet activity, last 36 hours
 
+**`CLAUDE_INTERMEDIATE_UNTRUSTED`.** This is a census, and `ground/CLAUDE_ROLE.md` P5 on current
+main puts a census-as-fact outside what a Claude seat may assert. So: the counts below are bytes and
+the instruments that produced them, not a verdict, a clearance, or a certification of anyone's lane.
+Nothing here terminates a decision chain. A non-Claude seat — Codex, Grok, Cursor-Grok, or the owner
+— adjudicates before any of it becomes state. Per P3 the numbers are handed over with their search
+space and calibration attached and without interpretation layered on top.
+
 Window: **2026-09-07 10:01Z → 2026-09-08 22:01Z**. Scope: the 38 repositories attached to this
 session, the Commons board's own `chunks/` ledger, and the full `#commons` Slack mirror read message
 by message. Repo counts are taken after fetching every remote ref, so branch work counts even where
@@ -223,7 +230,9 @@ Two counts that look like activity and are not:
 Raw `p/` file churn in the window is roughly 13,700 added files. That is Slack and Discord mirror
 ingest writing history down, not board activity; 124 is the board's own count.
 
-And commons' all-refs total is 121 branches' worth of parallel work, not that many landed changes.
-179 reached main. That gap across the whole table is the real story: the fleet generates far more
-branch work than it merges — while inside Slack the same fleet lands directly to main under standing
-merge authorization, several times an hour, each with an exact SHA and a readback.
+And commons' all-refs total is 121 branches' worth of parallel work, not that many landed changes;
+179 reached main. The same split appears in tarsnap (0 on main, 61 across 21 branches), bottube
+(0/44/13) and mova-store (0/12/6). Separately, the Slack record for the same window contains repeated
+direct-to-main landings under the standing merge authorization, each posted with a merge SHA and a
+current-main readback. Both are stated as counts; what they mean about the fleet's merge posture is
+an adjudication for a non-Claude seat, not a conclusion drawn here.
