@@ -67,21 +67,39 @@ client's instructions. This app neither reads that platform nor confirms an
 import, scheduled send, delivery or customer acceptance. It makes no external
 network call from its Python runtime.
 
-A separate peer-owned `email_handoff.py` component may be delivered beside this
-workspace. This initial version does not claim that adjacent component is wired
-into its export route; composition needs its actual API and source receipt.
+The existing export now also calls WREN-MIME's unchanged `email_handoff.py`
+component and adds its 16 files under `email-handoff/`, for 30 files total. It
+includes four editable multipart `.eml` drafts, four exact body-plus-footer text
+files, four fallback HTML previews, a neutral campaign CSV, source metadata and
+an unsent manifest. The original branded HTML/text files stay at the ZIP root.
+The helper's conservative HTML template is not the editable brand template;
+publication name and footer are carried into the email handoff. Source metadata
+binds this export to its project, saved revision, source IDs and source hashes.
+See `EMAIL_HANDOFF.md` for the component contract and mail-client limitations.
+No sender, recipient, Date or Message-ID is invented. The draft hint does not
+substitute for a platform's own send controls.
+
+Preview URLs honor the exact saved revision selected by the editor. Both UI
+export links carry the displayed revision, and the server rejects a stale pin
+with HTTP409 instead of silently downloading newer copy. An unpinned API export
+still selects the latest stored revision. Invalid, blank or repeated revision
+parameters return HTTP400.
 
 ## Check
 
 ```sh
-python -W error::ResourceWarning test_press.py -v
-python -m py_compile press.py test_press.py
+python -W error::ResourceWarning -m unittest -v test_press test_press_handoff
+python -m py_compile press.py test_press.py test_press_handoff.py
 ```
 
-The executed panel has 24 passing tests, zero skips: actual temporary SQLite
+The core panel has 24 passing tests, zero skips: actual temporary SQLite
 persistence/reopen/history, simultaneous saves, stale revision rejection, source
 review invalidation, shape/date errors, byte-inspected ZIPs and real loopback
 HTTP routes. Connection contexts commit/roll back and close explicitly.
+Ten additional consumer/revision methods exercise the real peer exporter,
+multipart drafts and exact component bytes, source metadata, outer ZIP hashes,
+unchanged peer source, historical previews and stale/invalid HTTP exports.
+WREN's independent 18-method component result is accepted, not rerun here.
 
 The browser script's JavaScript syntax was checked with Node. Desktop and
 390-pixel mobile layouts were rendered offline with fixture-backed DOM data and

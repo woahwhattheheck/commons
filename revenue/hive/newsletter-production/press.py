@@ -16,6 +16,7 @@ from datetime import date, datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
+from email_handoff import HandoffError, build_email_bundle
 
 HERE = Path(__file__).resolve().parent
 MAX_BODY = 2_000_000
@@ -225,12 +226,41 @@ def render(doc, issue, preview=False):
             f'{notice}<p>{e(doc["brand"]["name"])}</p><h1>{e(issue["subject"])}</h1>{paragraphs}'
             f'<hr><p style="font-size:13px">{e(doc["brand"]["footer"])}</p></main></body></html>')
 
+def requested_revision(query):
+    """Bounded positive revision; duplicate or blank pins are not silently ignored."""
+    values = query.get("revision")
+    if values is None:
+        return None
+    if len(values) != 1 or not re.fullmatch(r"[1-9][0-9]{0,8}", values[0]):
+        raise Invalid("revision must be one positive integer of at most nine digits")
+    return int(values[0])
+
+def email_bundle(view):
+    """Compose WREN's unchanged exporter; retain brand originals in the outer ZIP."""
+    doc = view["document"]
+    footer = doc["brand"]["footer"]
+    issues = [{"id": i["id"], "subject": i["subject"],
+               "body": i["body"] + ("\n\n" + footer if footer else ""),
+               "scheduled_at": i["scheduled_utc"], "source_refs": i["source_ids"]}
+              for i in doc["issues"]]
+    metadata = {"project_id": view["id"], "source_revision": view["revision"],
+                "review_needed": issues_to_review(doc), "delivery_status": "NOT_SENT",
+                "original_interview_sha256": hashlib.sha256(doc["original_interview"].encode()).hexdigest(),
+                "working_sources": [{"id": src["id"], "reference": src.get("reference", ""),
+                                     "sha256": hashlib.sha256(src["text"].encode()).hexdigest()}
+                                    for src in doc["sources"]]}
+    try:
+        return build_email_bundle(issues, publication=doc["brand"]["name"], source_metadata=metadata)
+    except HandoffError as exc:
+        raise Invalid("Email handoff: " + str(exc)) from exc
+
 def export_package(view, ready=False):
     doc = view["document"]
     validate(doc)
     problems = issues_to_review(doc)
     if ready and problems:
         raise Conflict("Ready export requires current review: " + "; ".join(problems))
+    handoff = email_bundle(view)
     out = io.BytesIO()
     manifest = {"project_id": view["id"], "revision": view["revision"], "status": "REVIEWED_HANDOFF" if ready else "DRAFT",
                 "delivery_status": "NOT_SENT", "review_needed": problems, "files": {}}
@@ -261,6 +291,9 @@ def export_package(view, ready=False):
             "Check subject, sender, platform unsubscribe/footer merge tags, audience consent/preferences, and UTC schedule there.\n"
             "The calendar contains editorial reminders only; it neither schedules nor sends email.\n"
             "Review labels record operator review of source-linked copy, not automated factual verification.\n")
+        with zipfile.ZipFile(io.BytesIO(handoff)) as peer:
+            for name in peer.namelist():
+                add("email-handoff/" + name, peer.read(name))
         z.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2))
     return out.getvalue()
 
@@ -283,7 +316,7 @@ def handler(store):
         def route(self):
             parsed = urlsplit(self.path)
             parts = [p for p in parsed.path.split("/") if p]
-            q = parse_qs(parsed.query)
+            q = parse_qs(parsed.query, keep_blank_values=True)
             data = None
             if self.command in ("POST", "PUT"):
                 try:
@@ -311,12 +344,7 @@ def handler(store):
                 pid = parts[2]
                 if len(parts) == 3:
                     if self.command == "GET":
-                        revision = q.get("revision", [None])[0]
-                        if revision is not None:
-                            if not revision.isdecimal():
-                                raise Invalid("revision must be a positive integer")
-                            revision = int(revision)
-                        return self.send(200, store.get(pid, revision))
+                        return self.send(200, store.get(pid, requested_revision(q)))
                     if self.command == "PUT":
                         return self.send(200, store.save(pid, data.get("expected_revision"), data.get("document")))
                 if parts[3:] == ["history"] and self.command == "GET":
@@ -324,13 +352,17 @@ def handler(store):
                 if len(parts) == 5 and parts[3] == "review" and self.command == "POST":
                     return self.send(200, store.save(pid, data.get("expected_revision"), None, parts[4]))
             if len(parts) == 3 and parts[0] == "preview" and self.command == "GET":
-                doc = store.get(parts[1])["document"]
+                doc = store.get(parts[1], requested_revision(q))["document"]
                 issue = next((i for i in doc["issues"] if i["id"] == parts[2]), None)
                 if issue is None:
                     raise Missing("Issue not found")
                 return self.send(200, render(doc, issue, preview=True), "text/html; charset=utf-8")
             if len(parts) == 2 and parts[0] == "export" and self.command == "GET":
-                return self.send(200, export_package(store.get(parts[1]), q.get("ready") == ["1"]),
+                revision = requested_revision(q)
+                view = store.get(parts[1])
+                if revision is not None and revision != view["revision"]:
+                    raise Conflict("A newer revision exists. Reopen before exporting; no different revision was downloaded.")
+                return self.send(200, export_package(view, q.get("ready") == ["1"]),
                                  "application/zip", "newsletter-month.zip")
             raise Missing("Route not found")
         def handle_request(self):

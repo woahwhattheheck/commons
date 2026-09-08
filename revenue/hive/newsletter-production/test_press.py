@@ -147,7 +147,7 @@ class ProductionTests(unittest.TestCase):
             manifest = json.loads(z.read('manifest.json'))
             self.assertEqual(manifest['status'], 'REVIEWED_HANDOFF')
             self.assertEqual(manifest['delivery_status'], 'NOT_SENT')
-            self.assertEqual(len([n for n in z.namelist() if n.endswith('.html')]), 4)
+            self.assertEqual(len([n for n in z.namelist() if n.endswith('.html') and '/' not in n]), 4)
             for name, meta in manifest['files'].items():
                 self.assertEqual(hashlib.sha256(z.read(name)).hexdigest(), meta['sha256'])
                 self.assertEqual(len(z.read(name)), meta['bytes'])
