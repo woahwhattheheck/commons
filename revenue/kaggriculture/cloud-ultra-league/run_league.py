@@ -139,21 +139,31 @@ def launch(args):
         command = [sys.executable, '-B', str(Path(__file__).resolve()), '--config', str(cfg_path), '--cell', item['id']]
         log = out / (item['id'] + '.log')
         started = now()
-        with log.open('w') as f:
-            proc = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT)
-            code = proc.wait()
-        path = out / item['id'] / 'result.json'
-        result = read_cell_result(path, item, code, freeze_sha256)
+        proc, code = None, None
+        try:
+            with log.open('w') as f:
+                proc = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT)
+                code = proc.wait()
+            path = out / item['id'] / 'result.json'
+            result = read_cell_result(path, item, code, freeze_sha256)
+            summary = {'status': result['status'], 'scores': result.get('scores'),
+                       'failure': result.get('failure'), 'wall_seconds': result.get('wall_seconds')}
+        except Exception as exc:
+            # Retain a failed slot without dropping other completed cells or retrying.
+            summary = {'status': 'driver_failed', 'scores': None, 'wall_seconds': None,
+                       'failure': {'kind': 'driver_exception', 'error_type': type(exc).__name__,
+                                   'error': str(exc)[:1000]}}
         return {'id': item['id'], 'seed': item['seed'], 'seat': item['seat'], 'opponent': item['opponent'],
-                'started': started, 'finished': now(), 'pid': proc.pid, 'returncode': code,
-                'status': result['status'], 'scores': result.get('scores'), 'failure': result.get('failure'),
-                'wall_seconds': result.get('wall_seconds')}
+                'started': started, 'finished': now(), 'pid': proc.pid if proc is not None else None,
+                'returncode': code, **summary}
     # Complete the operational eight before launching the rest; no game is repeated.
     for phase, cells in [('operational8', cfg['cells'][:8]), ('remaining', cfg['cells'][8:])]:
         state['phase'] = phase
         write_json(out / 'BATCH-STATE.json', state)
         with concurrent.futures.ThreadPoolExecutor(max_workers=cfg['jobs']) as pool:
-            for row in pool.map(run, cells):
+            pending = [pool.submit(run, item) for item in cells]
+            for future in concurrent.futures.as_completed(pending):
+                row = future.result()
                 rows.append(row)
                 write_json(out / 'BATCH-STATE.json', state)
                 print(json.dumps(row), flush=True)
