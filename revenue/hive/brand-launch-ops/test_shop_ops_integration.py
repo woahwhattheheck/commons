@@ -74,8 +74,8 @@ class BrandLaunchShopOpsIntegration(unittest.TestCase):
             "currency": self.product["currency"],
             "listing_state": "ready",
         }
-        self.run("product-v1", "product", self.shop_product)
-        self.run(
+        self.exec_op("product-v1", "product", self.shop_product)
+        self.exec_op(
             "receive-v1",
             "receive",
             {
@@ -88,7 +88,7 @@ class BrandLaunchShopOpsIntegration(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def run(self, key, action, data):
+    def exec_op(self, key, action, data):
         return self.store.execute({"key": key, "action": action, "data": data})
 
     def product_row(self):
@@ -137,15 +137,15 @@ class BrandLaunchShopOpsIntegration(unittest.TestCase):
             "recipient_ref": "synthetic-recipient",
             "lines": [{"sku": self.product["sku"], "quantity": 10}],
         }
-        first = self.run("order-op-001", "order", order)
-        replay = self.run("order-op-001", "order", order)
+        first = self.exec_op("order-op-001", "order", order)
+        replay = self.exec_op("order-op-001", "order", order)
         self.assertEqual(first, replay)
         self.assertEqual(self.product_row()["available"], 2)
         self.assertTrue(self.reorder_projection()["reorder_needed"])
 
         fulfill = {"id": "order-001", "shipment_ref": "synthetic-shipment"}
-        first_fulfill = self.run("fulfill-op-001", "fulfill", fulfill)
-        self.assertEqual(first_fulfill, self.run("fulfill-op-001", "fulfill", fulfill))
+        first_fulfill = self.exec_op("fulfill-op-001", "fulfill", fulfill)
+        self.assertEqual(first_fulfill, self.exec_op("fulfill-op-001", "fulfill", fulfill))
         self.assertEqual(self.product_row()["on_hand"], 2)
         self.assertEqual(self.product_row()["reserved"], 0)
         self.assertTrue(self.reorder_projection()["reorder_needed"])
@@ -158,8 +158,8 @@ class BrandLaunchShopOpsIntegration(unittest.TestCase):
             "restock": True,
             "note": "synthetic inspection accepted",
         }
-        first_return = self.run("return-op-001", "return", returned)
-        self.assertEqual(first_return, self.run("return-op-001", "return", returned))
+        first_return = self.exec_op("return-op-001", "return", returned)
+        self.assertEqual(first_return, self.exec_op("return-op-001", "return", returned))
         self.assertEqual(self.product_row()["on_hand"], 4)
         self.assertFalse(self.reorder_projection()["reorder_needed"])
 
@@ -176,19 +176,19 @@ class BrandLaunchShopOpsIntegration(unittest.TestCase):
             "recipient_ref": "synthetic-recipient",
             "lines": [{"sku": self.product["sku"], "quantity": 2}],
         }
-        self.run("order-op-conflict", "order", original)
+        self.exec_op("order-op-conflict", "order", original)
         before = self.store.snapshot()
         changed = dict(original)
         changed["lines"] = [{"sku": self.product["sku"], "quantity": 3}]
         with self.assertRaises(shop.DomainError) as caught:
-            self.run("order-op-conflict", "order", changed)
+            self.exec_op("order-op-conflict", "order", changed)
         self.assertEqual(caught.exception.status, 409)
         self.assertEqual(self.store.snapshot(), before)
 
     def test_launch_rehearsal_state_is_not_used_as_second_live_inventory(self):
         launch_state = json.loads((self.launch_dir / "state.json").read_text())
         self.assertEqual(launch_state["available"], 12)
-        self.run(
+        self.exec_op(
             "shop-order-only",
             "order",
             {
