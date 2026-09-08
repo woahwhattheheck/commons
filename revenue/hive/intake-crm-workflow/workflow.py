@@ -251,13 +251,18 @@ class Store:
                 db.execute("INSERT INTO inbox VALUES (?,?,?,?)", (ident, fingerprint, encoded(payload), time.time()))
         return {"accepted": True, "duplicate": row is not None, "event_id": ident}
 
-    def process_one(self, now=None):
+    def process_one(self, now=None, ident=None):
+        if ident is not None:
+            ident = text(ident, "Delivery id", 160)
+            if not ident:
+                raise InputError("Delivery id cannot be blank.")
         now = time.time() if now is None else now
         token = str(uuid.uuid4())
         with self.transaction() as db:
             row = db.execute("""SELECT * FROM outbox WHERE
-                (state IN ('pending','retry') AND next_attempt<=?) OR
-                (state='sending' AND lease_until<=?) ORDER BY created,id LIMIT 1""", (now, now)).fetchone()
+                ((state IN ('pending','retry') AND next_attempt<=?) OR
+                 (state='sending' AND lease_until<=?)) AND (? IS NULL OR id=?)
+                ORDER BY created,id LIMIT 1""", (now, now, ident, ident)).fetchone()
             if row is None:
                 return {"processed": False}
             endpoint = json.loads(db.execute("SELECT value FROM settings WHERE key='endpoint'").fetchone()[0])
@@ -344,7 +349,7 @@ class Handler(BaseHTTPRequestHandler):
             elif path == "/api/config":
                 self.send_value(store.configure(value))
             elif path == "/api/process":
-                self.send_value(store.process_one())
+                self.send_value(store.process_one(ident=value.get("id")))
             elif path == "/api/retry":
                 self.send_value(store.retry(text(value.get("id"), "Delivery id", 160)))
             elif path == "/api/tasks":

@@ -26,3 +26,11 @@ CLI sequence in an isolated temporary database: ingest the included example twic
 ## Delivery boundary
 
 This receipt documents a runnable source package and the tests above. It does not claim current-main integration, hosted CI success, a live deployment, a customer installation, customer acceptance, outreach, payment, or revenue. Those states require their own actual delivery receipts.
+
+## Selected-event retry follow-through
+
+The first source package merged through PR #10497 as `17580b81d35d6a68ff50c34934d36a7bfa5ce1e6`; all nine published Git blob identities matched the tested files. The following incremental change preserves that product and its original validation record above.
+
+A new two-job HTTP regression initially returned the older queued event when the operator selected a newer one. The optional `id` on `/api/process` now filters the queue claim, and the per-job Retry button sends that ID. An active lease or an absent selected event does not substitute another job. A blank selected ID returns 400. Global queue processing remains oldest-due-first.
+
+Current revised suite: `python -m unittest -v test_workflow.py` — **22 tests passed in 4.274 seconds**, including the two selected-event HTTP regressions and the original 20 checks. Python compilation and Node syntax validation of the revised dashboard script also passed. Interactive browser navigation was not retried; its administrator-policy boundary remains unchanged. The recorded suite uses actual local HTTP and SQLite, not an external provider.
