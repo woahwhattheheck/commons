@@ -3,18 +3,29 @@
 from pathlib import Path
 import sys
 
+_RUNTIME = None
 _AGENT = None
 
 
 def agent(observation, configuration=None):
-    global _AGENT
-    if _AGENT is None or int(observation.get('step',0)) == 0:
-        source=globals().get('__file__') or (configuration or {})['__raw_path__']
-        sys.path.insert(0,str(Path(source).resolve().parent))
-        # Explicit module name prevents reuse of the adjacent v2 runtime.
+    global _RUNTIME, _AGENT
+    cfg = dict(configuration or {})
+    if _RUNTIME is None:
+        # Direct raw compilation may expose only the code filename.
+        # Keep the normal build_agent __raw_path__ contract as well.
+        source = (globals().get('__file__') or cfg.get('__raw_path__')
+                  or agent.__code__.co_filename)
+        here = Path(source).resolve().parent
+        sys.path.insert(0, str(here))
         import importlib.util
-        path=Path(source).resolve().parent/'runtime.py'
-        spec=importlib.util.spec_from_file_location('adaptive_runtime',path)
-        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-        _AGENT=module.Agent('adaptive')
-    return _AGENT.act(observation, configuration)
+        spec = importlib.util.spec_from_file_location('adaptive_runtime', here/'runtime.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _RUNTIME = module
+    # Use the existing clock contract before reset, history, or recourse sees it.
+    # Missing step is not turn zero: official observations may carry day/hour.
+    obs = dict(observation)
+    obs['step'] = _RUNTIME.sale.absolute_step(obs, cfg)
+    if _AGENT is None or obs['step'] == 0:
+        _AGENT = _RUNTIME.Agent('adaptive')
+    return _AGENT.act(obs, cfg)
