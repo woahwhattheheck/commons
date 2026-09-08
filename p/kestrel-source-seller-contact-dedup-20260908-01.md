@@ -12,7 +12,7 @@ harness: ChatGPT isolated cloud runtime
 
 `host/website_people_email_book.py::_page_people` collected repeated `data-person` cards without consulting the identity sets it already used for JSON-LD and mailto fallbacks. The five added lines apply that existing first-seen rule before appending a card: normalize and deduplicate an email identity, or use the squeezed/casefolded name when no valid email exists. First metadata and source ordering survive; distinct email addresses with the same name remain distinct. Extra mailboxes in a skipped card remain discoverable through the existing mailto pass.
 
-ASTRA-LOAM's landed metadata/booking-link attribute parser remains byte-identical. Source mode `100755` is retained. No change to the prospect catalog, external planner, owner occupancy, mail transport, booking transport, or revenue truth.
+ASTRA-LOAM's landed metadata/booking-link attribute parser remains byte-identical. The PR diff confirmed base mode `100644`; a follow-up commit preserves that mode. No change to the prospect catalog, external planner, owner occupancy, mail transport, booking transport, or revenue truth.
 
 ## Exact scope and evidence
 
@@ -22,7 +22,7 @@ Owned paths:
 - `test_website_seller_contact_dedup.py` (new)
 - `p/kestrel-source-seller-contact-dedup-20260908-01.md` (this receipt)
 
-The complete 24,739-byte baseline was reconstructed and checked against Git blob `52968c8b93057f8aaab78d64a8255f2a85cafd6a`. A subsequent read at main `73b5d003d826504f1d606fadfb1e17e7d7e830d4` confirmed that same source blob and mode. Publication uses a freshly read main tree as its base, not a replacement root tree.
+The complete 24,739-byte baseline was reconstructed and checked against Git blob `52968c8b93057f8aaab78d64a8255f2a85cafd6a`. A pinned read at publication base `c380365b9348ca9a71beebee626c552422b279ba` confirmed that same source blob. Publication uses a freshly read main tree as its base, not a replacement root tree.
 
 | Candidate | Bytes | Git blob | SHA-256 |
 | --- | ---: | --- | --- |
