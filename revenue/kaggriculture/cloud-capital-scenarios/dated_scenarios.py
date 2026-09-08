@@ -10,6 +10,8 @@ a calibrated forecast, or a guarantee over omitted worlds.
 
 The opt-in completed-replay path uses the same ranking rule on RILL/T04 executed
 terminal own cash. It does not reinterpret whole-queue receipts as per-slot fills.
+The robust objective remains default; expected_cash and minimax_regret are explicit
+opt-in decision assumptions, not calibrated probabilities or game-win claims.
 """
 from __future__ import annotations
 
@@ -17,6 +19,7 @@ import argparse
 import json
 import math
 from dataclasses import dataclass
+from fractions import Fraction
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
@@ -125,7 +128,8 @@ def _price(route_id: str, rows: Sequence[Mapping[str, Any]], start: float,
 
 
 def compare_routes(offers: Sequence[Any], observation: Mapping[str, Any],
-                   scenarios: Sequence[CashScenario], *, minimum_gain: float = 0.0
+                   scenarios: Sequence[CashScenario], *, minimum_gain: float = 0.0,
+                   objective: str = "robust", scenario_weights: Mapping[str, Any] | None = None
                    ) -> dict[str, Any]:
     """Maximize the worst PAIRED cash gain over every supplied scenario.
 
@@ -162,15 +166,21 @@ def compare_routes(offers: Sequence[Any], observation: Mapping[str, Any],
             "routes": {key: _price(key, rows, start, scenario)
                        for key, rows in zip(ids, route_rows)},
         })
-    return _rank_paired(report, ids, margin)
+    return _rank_paired(report, ids, margin, objective=objective, scenario_weights=scenario_weights)
 
 
 def _rank_paired(report: dict, ids: Sequence[str], margin: float, *,
                  final_key: str = "final_nominal_cash",
                  minimum_key: str = "minimum_nominal_cash",
                  budget_key: str = "nominal_budget_nonnegative",
-                 improvement_reason: str = "covered_nominal_improvement") -> dict:
+                 improvement_reason: str = "covered_nominal_improvement",
+                 objective: str = "robust", scenario_weights: Mapping[str, Any] | None = None) -> dict:
     """One paired-cash ordering rule, with explicit input-specific budget labels."""
+    alternate_objective = objective != "robust" or scenario_weights is not None
+    if alternate_objective:
+        report["decision_objective"] = objective
+        report["probabilities_calibrated"] = False
+        report["rival_utility"] = None
     if not report["scenarios"]:
         return report
     if any(not item["routes"][ids[0]]["complete"] for item in report["scenarios"]):
@@ -191,10 +201,94 @@ def _rank_paired(report: dict, ids: Sequence[str], margin: float, *,
             "complete": complete, budget_key: funded,
             "worst_paired_gain": worst,
         }
-        if funded and worst > best_gain + 1e-9:
+        if not alternate_objective and funded and worst > best_gain + 1e-9:
             best_gain = worst
             report.update(selected=key, changed=True, reason=improvement_reason)
+    if alternate_objective:
+        return _rank_objective(report, ids, margin, final_key, minimum_key, budget_key,
+                               objective, scenario_weights)
     return report
+
+
+def _rank_objective(report, ids, margin, final_key, minimum_key, budget_key,
+                    objective, scenario_weights):
+    """Opt-in pure-route objectives over the already validated cash matrix.
+
+    Regret compares with the best eligible whole route in each scenario, but
+    returns ONE route for every scenario, not an oracle contingent action.
+    Expected cash uses declared weights, never frequencies inferred from cases.
+    All scenarios, including zero-weight ones, must remain covered and funded.
+    Arithmetic is exact over decimal representations of the validated values;
+    it does not recover precision already lost by the input's cash conversion.
+    """
+    try:
+        if objective not in ("expected_cash", "minimax_regret"):
+            raise ValueError("choose robust, expected_cash or minimax_regret explicitly")
+        names = [item["name"] for item in report["scenarios"]]
+        if len(set(names)) != len(names):
+            raise ValueError("scenario identities must be unique")
+        baseline_values = [item["routes"][ids[0]] for item in report["scenarios"]]
+        if any(value[minimum_key] < 0 for value in baseline_values):
+            report["reason"] = "incumbent_budget_unsupported"
+            return report
+        eligible = [ids[0]] + [key for key in ids[1:]
+                    if report["candidates"][key][budget_key]]
+        matrix = {key: tuple(Fraction(str(item["routes"][key][final_key]))
+                             for item in report["scenarios"]) for key in eligible}
+        report["eligible_routes"] = eligible
+        report["objective_values"] = {}
+        report["objective_arithmetic"] = "exact_rational_over_validated_cash_values"
+        required_gain = Fraction(str(margin))
+        scores = {}
+        if objective == "expected_cash":
+            if not isinstance(scenario_weights, Mapping) or set(scenario_weights) != set(names):
+                raise ValueError("expected_cash needs one explicit weight for EVERY named scenario")
+            weights = []
+            for name in names:
+                value = scenario_weights[name]
+                if isinstance(value, bool) or not isinstance(value, (int, float, str, Fraction)):
+                    raise ValueError("weights must be finite rational values, not booleans")
+                weights.append(Fraction(str(value)) if isinstance(value, float) else Fraction(value))
+            if any(w < 0 for w in weights) or sum(weights) != 1:
+                raise ValueError("weights must be nonnegative and sum EXACTLY to one")
+            report["scenario_weights"] = {name: str(w) for name, w in zip(names, weights)}
+            report["weight_scope"] = "caller_assumptions_over_this_complete_bank_not_inferred_probabilities"
+            expected = {key: sum((w * cash for w, cash in zip(weights, values)), Fraction(0))
+                        for key, values in matrix.items()}
+            for key, value in expected.items():
+                scores[key] = value - expected[ids[0]]
+                report["objective_values"][key] = {
+                    "expected_own_cash": str(value),
+                    "expected_paired_gain": str(scores[key])}
+            reason = "declared_expected_own_cash_improvement"
+        else:
+            if scenario_weights is not None:
+                raise ValueError("minimax_regret does not use scenario weights")
+            best = tuple(max(values[j] for values in matrix.values()) for j in range(len(names)))
+            regret = {key: tuple(upper - cash for upper, cash in zip(best, values))
+                      for key, values in matrix.items()}
+            maxima = {key: max(values) for key, values in regret.items()}
+            report["scenario_weights"] = None
+            report["regret_comparator"] = "best_eligible_whole_route_per_scenario_for_scoring_only"
+            report["scenario_best_own_cash"] = {name: str(v) for name, v in zip(names, best)}
+            for key, values in regret.items():
+                scores[key] = maxima[ids[0]] - maxima[key]
+                report["objective_values"][key] = {
+                    "scenario_regret": {name: str(v) for name, v in zip(names, values)},
+                    "worst_regret": str(maxima[key]),
+                    "worst_regret_reduction": str(scores[key])}
+            reason = "declared_minimax_regret_improvement"
+        # Exact ties retain incumbent or the earlier offered alternative.
+        best_gain = required_gain
+        for key in eligible[1:]:
+            if scores[key] > best_gain:
+                best_gain = scores[key]
+                report.update(selected=key, changed=True, reason=reason)
+        return report
+    except (ValueError, TypeError, ZeroDivisionError, OverflowError) as exc:
+        report.update(selected=ids[0], changed=False, reason="objective_input_invalid",
+                      invalid_objective_input=str(exc))
+        return report
 
 
 class DatedSelector:
@@ -204,16 +298,20 @@ class DatedSelector:
     last_report preserves the scenario comparison; HAZEL's existing outer report
     still describes its original quote screen and does not embed this report.
     """
-    def __init__(self, scenarios: Sequence[CashScenario], *, minimum_gain: float = 0.0):
+    def __init__(self, scenarios: Sequence[CashScenario], *, minimum_gain: float = 0.0,
+                 objective: str = "robust", scenario_weights: Mapping[str, Any] | None = None):
         self.scenarios = tuple(scenarios)
         self.minimum_gain = minimum_gain
+        self.objective = objective
+        self.scenario_weights = dict(scenario_weights) if isinstance(scenario_weights, Mapping) else scenario_weights
         self.last_report: dict[str, Any] | None = None
         self._completed_replay = None
 
     @classmethod
     def from_completed_replay(cls, replay: Mapping[str, Any],
                               configuration: Mapping[str, Any], *,
-                              scenario_ids: Sequence[str], minimum_gain: float = 0.0):
+                              scenario_ids: Sequence[str], minimum_gain: float = 0.0,
+                              objective: str = "robust", scenario_weights: Mapping[str, Any] | None = None):
         """Opt-in RILL input bridge; no simulation and no inferred scenario subset.
 
         The report is read-only input, not copied or mutated. Validation runs on
@@ -221,19 +319,21 @@ class DatedSelector:
         horizon. Retain the original replay beside last_report for provenance.
         The supplied configuration must belong to the same replay execution.
         """
-        selector = cls((), minimum_gain=minimum_gain)
+        selector = cls((), minimum_gain=minimum_gain, objective=objective, scenario_weights=scenario_weights)
         selector._completed_replay = (replay, dict(configuration), tuple(scenario_ids))
         return selector
 
     def __call__(self, offers: Sequence[Any], observation: Mapping[str, Any]) -> str:
         if self._completed_replay is None:
             self.last_report = compare_routes(offers, observation, self.scenarios,
-                                              minimum_gain=self.minimum_gain)
+                                              minimum_gain=self.minimum_gain,
+                                              objective=self.objective, scenario_weights=self.scenario_weights)
         else:
             from physical_outcomes import compare_replay
             replay, configuration, names = self._completed_replay
             self.last_report = compare_replay(offers, observation, replay, configuration,
-                                              scenario_ids=names, minimum_gain=self.minimum_gain)
+                                              scenario_ids=names, minimum_gain=self.minimum_gain,
+                                              objective=self.objective, scenario_weights=self.scenario_weights)
         return self.last_report["selected"]
 
 
@@ -245,7 +345,9 @@ def main() -> None:
         data = json.loads(args.input.read_text(encoding="utf-8"))
         result = compare_routes(data["offers"], data["observation"],
                                 [CashScenario.from_dict(s) for s in data["scenarios"]],
-                                minimum_gain=data.get("minimum_gain", 0))
+                                minimum_gain=data.get("minimum_gain", 0),
+                                objective=data.get("objective", "robust"),
+                                scenario_weights=data.get("scenario_weights"))
     except (OSError, KeyError, TypeError, ValueError, OverflowError, AttributeError) as exc:
         parser.error(str(exc))
     print(json.dumps(result, indent=2, allow_nan=False))

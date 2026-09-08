@@ -10,7 +10,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
+import uuid
 from pathlib import Path
 
 ROOT = "revenue/kaggriculture/"
@@ -95,6 +98,81 @@ def _pairs(items):
     return result
 
 
+def _check_source_context(snapshot: dict, problems: list) -> None:
+    """Check optional workflow context without relabeling legacy snapshots.
+
+    The event commit is the executed checkout; PR head/base are provenance,
+    not substitutes for the synthetic merge commit. Extra fields are retained.
+    These checks align declarations, not independently attest execution.
+    """
+    if "source_context" not in snapshot:
+        return
+    context = snapshot["source_context"]
+    if not isinstance(context, dict):
+        problems.append("source context: expected an object")
+        return
+    event = context.get("event")
+    if not isinstance(event, str) or not event.strip():
+        problems.append("source context: missing/invalid event")
+    event_sha = context.get("event_sha")
+    if (not isinstance(event_sha, str)
+            or re.fullmatch(r"[0-9a-f]{40}", event_sha) is None
+            or event_sha != snapshot.get("checkout")):
+        problems.append("source context: event_sha does not match executed checkout")
+    semantics = context.get("checkout_semantics")
+    if semantics not in ("pull_request_merge", "event_commit"):
+        problems.append("source context: unsupported checkout_semantics")
+    for key in ("pull_request_head", "pull_request_base"):
+        value = context.get(key)
+        if semantics == "pull_request_merge":
+            if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
+                problems.append("source context: missing/invalid " + key)
+        elif value is not None:
+            problems.append("source context: unexpected " + key + " for event_commit")
+
+
+def _atomic_write_text(output: Path, text: str) -> None:
+    """Publish complete UTF-8 bytes; preserve an old file on pre-replace failure.
+
+    Resolve an existing symlink as write_text did. Stage on the same filesystem,
+    retain existing permissions, and replace only after flush/fsync succeeds.
+    A hard kill may leave a temporary sibling; it cannot expose a partial target.
+    This is atomic visibility, not a claim of power-loss directory durability.
+    """
+    output = output.resolve()
+    try:
+        mode = stat.S_IMODE(output.stat().st_mode)
+    except FileNotFoundError:
+        mode = None
+    temporary = output.with_name("." + output.name + "." + uuid.uuid4().hex + ".tmp")
+    # O_EXCL avoids collisions; 0666 lets the OS apply the caller's umask,
+    # matching write_text for a newly created output without changing umask.
+    fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o666)
+    try:
+        try:
+            stream = os.fdopen(fd, "w", encoding="utf-8", newline="")
+        except BaseException:
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+            raise
+        with stream:
+            if stream.write(text) != len(text):
+                raise OSError("short report write")
+            stream.flush()
+            if mode is not None:
+                os.chmod(temporary, mode)
+            os.fsync(stream.fileno())
+        os.replace(temporary, output)
+    finally:
+        try:
+            temporary.unlink()
+        except OSError:
+            # Cleanup must not replace the original write/replace exception.
+            pass
+
+
 def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False, include_queue_copy: bool = False, include_adaptive_context: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
@@ -116,6 +194,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
             return None
 
     snapshot = read("SOURCE-SNAPSHOT.json", as_json=True) or {}
+    _check_source_context(snapshot, problems)
     files = snapshot.get("files")
     if not isinstance(files, dict):
         problems.append("source snapshot: missing files mapping")
@@ -344,6 +423,8 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
               "loader_market_cases": loader.get("official_market_cases"),
               "input_sha256": digests, "problems": problems, "full_games": 0,
               "scope": "saved focused-suite outputs; source alignment is not independent execution attestation"}
+    if "source_context" in snapshot:
+        result["source_context"] = snapshot["source_context"]
     for key, entry in suites.items():
         result[key + "_tests"] = entry["tests"]
     first_three = [result[k + "_tests"] for k in ("original", "projection", "market")]
@@ -396,7 +477,7 @@ def main(argv=None):
                           include_adaptive_context=args.include_adaptive_context)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
-        args.output.write_text(text, encoding="utf-8")
+        _atomic_write_text(args.output, text)
     else:
         print(text, end="")
     return 0 if report["successful"] else 1

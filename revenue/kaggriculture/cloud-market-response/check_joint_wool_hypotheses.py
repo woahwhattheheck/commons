@@ -106,7 +106,7 @@ def evaluate_saved(saved, payload, raw, compressed, deps, cases, ti, flow, joint
         **arguments(deps.engine.PRODUCTS))
     family_s = time.perf_counter() - start
     out = {'input_sha256': sha(raw), 'old_family_status': saved['family']['status'],
-           'family': family, 'original_action': deepcopy(action), 'choices': {},
+           'family': family, 'original_action': deepcopy(action), 'by_objective': {},
            'counts': {'unit_captures': 0, 'native_market_cells': 0, 'score_calls': 0,
                       'native_selected_checks': 0, 'history_inference_calls': 0,
                       'production_controller_calls': 0, 'full_games': 0, 'new_game_seeds': 0},
@@ -127,12 +127,12 @@ def evaluate_saved(saved, payload, raw, compressed, deps, cases, ti, flow, joint
         chosen, objective = selected_action(deps, ti, obs, cfg, action, packet, tie)
         out['timing_s']['score_' + tie] = time.perf_counter() - start
         out['counts']['score_calls'] += 1
-        out['choices'][tie] = {'action': chosen, 'changed': chosen != action, 'objective': objective}
+        out['by_objective'][tie] = {'action': chosen, 'changed': chosen != action, 'objective': objective}
     # Check each distinct selected action against EVERY included hypothesis.
     # These are conditional native references, not the recorded current rival.
     scenarios = {r['id']: r for r in packet['scenarios']}
     checked = set()
-    for choice in out['choices'].values():
+    for choice in out['by_objective'].values():
         chosen = choice['action']; key = ti.fingerprint(chosen)
         if key in checked or not packet['complete']:
             continue
@@ -189,7 +189,7 @@ def main():
     summary = {'retained_payloads': len(reports), 'old_ready': sum(r['old_family_status'] == 'ready' for r in reports),
         'new_ready': sum(r['family']['ready'] for r in reports),
         'statuses': dict(Counter(r['family']['status'] for r in reports)),
-        'changed_by_tie': {tie: sum(r['choices'].get(tie, {}).get('changed', False) for r in reports)
+        'changed_by_tie': {tie: sum(r['by_objective'].get(tie, {}).get('changed', False) for r in reports)
                            for tie in SETTINGS['objectives']}, 'counts': dict(totals),
         'meaning': 'Existing development inputs under explicit finite hypotheses. No actual current rival outcomes or policy-strength claims.'}
     args.output.write_text(json.dumps({'summary': summary, 'freeze': freeze, 'reports': reports}, indent=2, allow_nan=False)+'\n')

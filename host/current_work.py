@@ -148,7 +148,7 @@ def add_item(catalog, item):
 
 
 def reconcile_item(item, snapshot):
-    snapshot = snapshot or {}
+    snapshot = snapshot if isinstance(snapshot, dict) else {}
     item = item if isinstance(item, dict) else {}
     kind = item.get("kind")
     job_id = str(item.get("id") or "")
@@ -206,6 +206,9 @@ def reconcile_item(item, snapshot):
 
 def project(catalog, snapshot):
     problems = validate_catalog(catalog)
+    if snapshot is not None and not isinstance(snapshot, dict):
+        problems.append("snapshot is not an object")
+        snapshot = {}
     items = catalog.get("items") if isinstance(catalog, dict) else []
     if not isinstance(items, list):
         items = []

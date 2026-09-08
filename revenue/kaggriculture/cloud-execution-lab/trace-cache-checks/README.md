@@ -34,8 +34,9 @@ already-retained frozen-SELL observations. Current seed funding is active: on
 9965001 it changes steps 600 and 624 in both positions. At 600 the retained seed
 purchase becomes one unit in position 0 and two in position 1; at 624 it is removed.
 The 9965019 action streams are unchanged from their recorded originals. All three
-comparison modes agree. The final routes include MAIN and YARN, not only identical
-route choices. These are fixed-input checks: the later observations still come
+comparison modes agree. Final controller program hashes are recorded in each
+worker report: `7015cc00acfa4922` for 9965001 and `dc76e4003029ac51` for 9965019.
+These are fixed-input checks: the later observations still come
 from the original games, so their terminal money is not a new outcome for the
 current candidate and the seed changes are not new cash-gain evidence.
 
@@ -89,10 +90,35 @@ source file is retained in the repository at
 runtime root for the explicit comparator input.
 
 `validation.json` retains exact report hashes. Full original reports, command logs,
-source pins and runnable default-only source closure are retained separately in
-Bryce's Library as the TRACE-9042 cache-prefix evidence package. That acceptance
-package is not a second product release. The existing DELVE input ZIP is reused,
-not repackaged as new evidence.
+source pins and runnable default-only source closure are saved in Bryce's Library
+as `TITAN-TRACE-cache-prefix-PR10212.zip`, file ID
+`file_000000000de481f5947a6ed625595cee`, 801686 bytes, SHA256
+`b6b0098b60f38e4c50108006cc29ff5abe26437007f14d461b7b8f3cd209371b`.
+That acceptance package is not a second product release. The existing DELVE input
+ZIP is reused, not repackaged as new evidence.
+
+## Complete-report follow-through
+
+The original `compare()` paired cells with `zip` without first checking the full
+matrix. A detached original-mode report truncated to one cell could therefore
+return `complete=true` for only 3,595 pairs. The original complete 5,752-pair result
+is intact. The same consumer now checks all three completed worker reports, every
+expected cell and position, all 719 per-decision records, source/input identities,
+call counts and fresh-event records before pairing. Report source references come
+from the supplied pins rather than a fixed historical label.
+
+Twenty-three saved-report regression methods pass. Exact original checker
+`bcdae525` has 18 assertion failures and one malformed-report error in those same
+methods. The healthy summary is unchanged. `REPORT-COMPLETENESS.json` preserves
+both results. Input alignment, state extraction, loading and source checks are
+unchanged; the worker's only change is its output source-reference value. There
+were no additional actor calls or game executions for this follow-through.
+
+```sh
+python -B test_report_completeness.py \
+  --reports /path/to/extracted/acceptance \
+  --output /tmp/report-completeness.json
+```
 
 ## Scope
 

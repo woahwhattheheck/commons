@@ -8,13 +8,13 @@
     },
     {
       "path": "supervisor.py",
-      "bytes": 21743,
-      "sha256": "e132568db1a88d38380d222d84b210a823da019c644974afcb535bbade2d7d67"
+      "bytes": 26402,
+      "sha256": "5be32965e166d764fd101e1ab53c057bf9b02d014bb8e4464040a68d9faf7381"
     },
     {
       "path": "compare_checker.py",
-      "bytes": 5878,
-      "sha256": "4b8752b13bef936c59d3240831ef7f2fc2c25940e945f678b9b5cd15e0bda136"
+      "bytes": 13802,
+      "sha256": "a402a0166b1e52c95dd181e15b8a124504ac78ddea7e815944c754569b323cb8"
     },
     {
       "path": "test_supervisor.py",
@@ -147,6 +147,26 @@
       "sha256": "d2468841a144b31c6a1d4b441af247a13c4b0b1a5711cea278ee1d870e5e91e4"
     },
     {
+      "path": "test_sprint_reference.py",
+      "bytes": 12867,
+      "sha256": "60cc30eabce62330592899ec2dc40617b6fbe8f0f2367e4efbe536ae083292eb"
+    },
+    {
+      "path": "SPRINT-REFERENCE.md",
+      "bytes": 5269,
+      "sha256": "17c3dcbdf6adcfbfbd850ba124cf1dce316dcdafd167ab8035b85dfd99261734"
+    },
+    {
+      "path": "SPRINT-REFERENCE-VALIDATION.json",
+      "bytes": 4454,
+      "sha256": "d73d3d0b0b243b40873d40bf5ce3a94bd0de4b2c00377a9953e1ea5990155f80"
+    },
+    {
+      "path": "sprint-reference-tests.log",
+      "bytes": 3858,
+      "sha256": "b5c22394fda4abf5d6d368bc65fa9a545b11b966ec595d200a6f3d12ed75d805"
+    },
+    {
       "path": "test_checker_serialization.py",
       "bytes": 11461,
       "sha256": "1e0d2098f955b284484170744dfe970cd6fb7a7b2324f16f02f2cae4553c3f7b"
@@ -165,6 +185,16 @@
       "path": "checker-scientific-evidence.json.xz",
       "bytes": 6228,
       "sha256": "e67a378e1ab38db07d23b348162c693b971b2dd1dd84b1a757b1b1ce17133ce7"
+    },
+    {
+      "path": "test_sprint_scientific_composition.py",
+      "bytes": 6720,
+      "sha256": "913b886f82948f0094e1d097b0411c52eb6a9e5b2ec3cb14785c480acf74b9bd"
+    },
+    {
+      "path": "SCIENTIFIC-SPRINT-COMPOSITION.md",
+      "bytes": 2890,
+      "sha256": "14f836267ea9730c0ac47dae81ca3b0ffe2d742d4cc257d233f20f92fc404154"
     }
   ]
 }

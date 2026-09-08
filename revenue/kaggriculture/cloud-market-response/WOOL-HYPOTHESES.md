@@ -50,7 +50,7 @@ single canonical agent or its default configuration.
 
 ## Checks
 
-Eight new local boundary methods pass. They preserve censored/missing records,
+Nine local boundary methods pass. They preserve censored/missing records,
 reject mismatched saved-input hashes and interval identities, retain empty
 slots and explicit unknown quantities, and keep unavailable or capacity-invalid
 families away from the terminal producer. A scenario budget returns no trimmed
@@ -63,7 +63,7 @@ python -B revenue/kaggriculture/cloud-market-response/test_joint_wool_hypotheses
 The tests use the adjacent existing `flow.py` and `joint_terminal_history.py`.
 `TITAN_WOOL_FLOW` and `TITAN_WOOL_JOINT` can point to those exact files in an
 extracted source layout. No engine or private input archive is needed for the
-eight boundary tests.
+nine boundary tests.
 
 ## Reproduce the retained-input comparison
 
