@@ -35,6 +35,31 @@ def detailed_actor(base):
             return result
     return DetailedActor
 
+def lark_actor(base, paths, engine):
+    """Consume the two configured, unchanged LARK wrappers around one Actor.
+
+    The pressure module's sibling import must resolve the configured quote
+    module, without inheriting another experiment's module or import path.
+    """
+    def load(name, path):
+        spec = importlib.util.spec_from_file_location(name, Path(path).resolve())
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    sell = load('_ultra_lark_sell_priority', paths['sell_priority'])
+    missing = object()
+    previous = sys.modules.get('sell_priority', missing)
+    try:
+        sys.modules['sell_priority'] = sell
+        pressure = load('_ultra_lark_pressure_priority', paths['pressure_priority'])
+    finally:
+        if previous is missing:
+            sys.modules.pop('sell_priority', None)
+        else:
+            sys.modules['sell_priority'] = previous
+    return pressure.actor_class(sell.actor_class(base), engine.market_price)
+
 def now():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
@@ -73,6 +98,23 @@ def load_job(path):
         if cell_id in seen:
             raise ValueError("Duplicate cell id: " + cell_id)
         seen.add(cell_id)
+    if 'lark_wrappers' in cfg:
+        paths = cfg['lark_wrappers']
+        if (not isinstance(paths, dict)
+                or set(paths) != {'sell_priority', 'pressure_priority'}
+                or any(not isinstance(value, str) or not Path(value).is_absolute()
+                       for value in paths.values())):
+            raise ValueError('lark_wrappers requires the two absolute module paths')
+        for spec in [cfg['candidate'], *cfg['opponents'].values()]:
+            if not isinstance(spec, str):
+                raise ValueError('LARK actor specifications must be strings')
+            # An explicit callable separates markers from pipes in filenames.
+            tail = spec.rpartition('::')[2] if '::' in spec else spec
+            if '|' in tail:
+                parts = tail.split('|')
+                if (len(parts) != 2 or not parts[0]
+                        or parts[1] not in {'sell-priority', 'supply-pressure'}):
+                    raise ValueError('LARK requires one supported terminal marker')
     return cfg, hashlib.sha256(payload).hexdigest()
 
 
@@ -148,6 +190,8 @@ def cell(args):
     write_json(out / 'STARTED.json', {'started': now(), 'pid': os.getpid(), 'cell': item,
                                      'command': sys.argv, 'freeze_sha256': freeze_sha256})
     engine, engine_hashes = ev.get_engine(cfg['engine'], cfg['loader'])
+    if 'lark_wrappers' in cfg:
+        ev.Actor = lark_actor(ev.Actor, cfg['lark_wrappers'], engine)
     candidate, opponent = cfg['candidate'], cfg['opponents'][item['opponent']]
     specs = [candidate, opponent] if item['seat'] == 0 else [opponent, candidate]
     final = out / 'trajectory.jsonl.gz'
