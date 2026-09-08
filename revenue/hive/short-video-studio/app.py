@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import pathlib
+import subprocess
 import tempfile
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
@@ -76,7 +77,7 @@ class Handler(BaseHTTPRequestHandler):
                     result = render_project(temp_project, exports / safe)
                 finally:
                     temp_project.unlink(missing_ok=True)
-            except (ProjectError, RuntimeError, OSError, ValueError) as exc:
+            except (ProjectError, RuntimeError, OSError, ValueError, subprocess.CalledProcessError) as exc:
                 self._json(422, {"error": str(exc)})
                 return
             self._json(200, {"ok": True, "output": result["output"], "captions": result["captions"], "probe": result["probe"]})
