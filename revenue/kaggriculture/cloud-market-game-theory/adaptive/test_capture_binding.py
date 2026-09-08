@@ -77,6 +77,10 @@ def load_agent(runtime_path, optimizer=instrumented_optimizer):
             self.selector = SimpleNamespace(active=None)
             self.last = {}
             self.counts = {'projection_fallbacks':0}
+        def expire(self, now):
+            # These capture fixtures model no completion event. Actual expiry
+            # and admission use the real runtime in test_completion_admission.
+            pass
         def abort(self, base, reason):
             self.selector.active = None
             self.last = {'reason':reason}
