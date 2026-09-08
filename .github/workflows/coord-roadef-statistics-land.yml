@@ -1,0 +1,87 @@
+name: coord-roadef-statistics-land
+
+on:
+  push:
+    branches:
+      - work/coord-roadef-statistics-output-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decode source-pinned payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/roadef-statistics-payload
+          cat .github/roadef-statistics-payload/part-* | base64 -d > /tmp/roadef-statistics-payload.tar.gz
+          echo 'e2c12faca1565bd286203ff8a663d9f6446fca659f4d8d46c8a58fcdfa8145c4  /tmp/roadef-statistics-payload.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/roadef-statistics-payload.tar.gz -C /tmp/roadef-statistics-payload
+          python3 /tmp/roadef-statistics-payload/apply.py
+
+      - name: Compile exact original and current repaired source
+        shell: bash
+        run: |
+          set -euo pipefail
+          F=revenue/roadef2026/fleet-candidate
+          mkdir -p /tmp/roadef-statistics-build
+          git show 2885d176373c33410148829fef93c310c3752c0b:$F/main.cpp > /tmp/roadef-statistics-build/original.cpp
+          g++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" /tmp/roadef-statistics-build/original.cpp -o /tmp/roadef-statistics-build/original-gcc
+          g++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" "$F/main.cpp" -o /tmp/roadef-statistics-build/candidate-gcc
+          clang++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" /tmp/roadef-statistics-build/original.cpp -o /tmp/roadef-statistics-build/original-clang
+          clang++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" "$F/main.cpp" -o /tmp/roadef-statistics-build/candidate-clang
+
+      - name: Run output-ownership regressions with GCC and Clang
+        shell: bash
+        run: |
+          set -euo pipefail
+          F=revenue/roadef2026/fleet-candidate
+          T="$F/statistics-output-checks/test_statistics_output.py"
+          python3 -B "$T" --binary /tmp/roadef-statistics-build/candidate-gcc --reference-binary /tmp/roadef-statistics-build/original-gcc --fixtures "$F" --report /tmp/gcc.json 2>&1 | tee "$F/statistics-output-checks/hosted-gcc.log"
+          python3 -B "$T" --binary /tmp/roadef-statistics-build/candidate-clang --reference-binary /tmp/roadef-statistics-build/original-clang --fixtures "$F" --report /tmp/clang.json 2>&1 | tee "$F/statistics-output-checks/hosted-clang.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, subprocess
+          root=Path('revenue/roadef2026/fleet-candidate')
+          gcc=json.loads(Path('/tmp/gcc.json').read_text())
+          clang=json.loads(Path('/tmp/clang.json').read_text())
+          assert gcc['successful'] and clang['successful']
+          assert gcc['tests_run']==clang['tests_run']==24
+          source=(root/'main.cpp').read_bytes()
+          assert len(source)==37776
+          assert hashlib.sha256(source).hexdigest()=='79362dbf9d47ca921de508a9253e7c2642c57459487a88ea754780b673961724'
+          record={
+            'schema':'roadef-statistics-output-hosted-v1',
+            'status':'PASS',
+            'source_sha256':hashlib.sha256(source).hexdigest(),
+            'source_bytes':len(source),
+            'gcc_version':subprocess.check_output(['g++','--version'],text=True).splitlines()[0],
+            'clang_version':subprocess.check_output(['clang++','--version'],text=True).splitlines()[0],
+            'gcc':gcc,
+            'clang':clang,
+            'tests_per_compiler':24,
+            'public_instance_benchmark':False,
+            'submission_changed':False,
+          }
+          (root/'statistics-output-checks/HOSTED-REGRESSIONS.json').write_text(json.dumps(record,indent=2,sort_keys=True)+'\n')
+          PY
+
+      - name: Commit verified implementation to this branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add revenue/roadef2026/fleet-candidate/main.cpp \
+                  revenue/roadef2026/fleet-candidate/PUBLIC-SOURCE-MANIFEST.json \
+                  revenue/roadef2026/fleet-candidate/statistics-output-checks
+          git diff --cached --check
+          git config user.name commons-board
+          git config user.email commons-board@users.noreply.github.com
+          git commit -m 'fix(roadef): preserve solution and statistics outputs'
+          git push origin HEAD:work/coord-roadef-statistics-output-20260908
