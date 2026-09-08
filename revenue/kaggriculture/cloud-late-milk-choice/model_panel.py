@@ -14,12 +14,29 @@ import panel
 
 
 def load(path, name):
+    """Execute one source snapshot, ignoring bytecode and restoring failed loads.
+
+    Keep normal module metadata and registration for dataclasses and relative
+    imports. This binds this file only; transitive imports retain their existing
+    import behavior. Callers continue to own source pins and isolated names.
+    """
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise ImportError(str(path))
+    code = compile(Path(path).read_bytes(), spec.origin, 'exec', dont_inherit=True)
     module = importlib.util.module_from_spec(spec)
+    missing = object()
+    previous = sys.modules.get(name, missing)
     sys.modules[name] = module
-    spec.loader.exec_module(module)
+    try:
+        exec(code, module.__dict__)
+    except BaseException:
+        # Include cancellation; a partial module must not replace an old one.
+        if previous is missing:
+            sys.modules.pop(name, None)
+        else:
+            sys.modules[name] = previous
+        raise
     return module
 
 
