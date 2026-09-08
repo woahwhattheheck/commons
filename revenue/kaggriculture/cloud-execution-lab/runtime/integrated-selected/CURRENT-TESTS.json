@@ -1,0 +1,371 @@
+{
+  "archive_sha256": "70554dc01f8e84336ede169cf109f3d61152e169dce8ad5265b9625216fe52cb",
+  "engine_sha256": {
+    "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+    "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+  },
+  "new_games": 0,
+  "cases": [
+    {
+      "case": "cold_full_main",
+      "seconds": 0.07447184900229331,
+      "diagnostics": {
+        "consumer": "frozen",
+        "parent_calls": 1,
+        "status": "completed",
+        "elapsed_seconds": 0.053487783996388316
+      },
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [],
+        "market": [
+          [
+            "BUY_PRODUCT",
+            "WHEAT",
+            13
+          ]
+        ]
+      }
+    },
+    {
+      "case": "cold_full_main",
+      "seconds": 0.04562568399705924,
+      "diagnostics": {
+        "consumer": "frozen",
+        "parent_calls": 1,
+        "status": "completed",
+        "elapsed_seconds": 0.03210401500109583
+      },
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [],
+        "market": [
+          [
+            "BUY_PRODUCT",
+            "WHEAT",
+            13
+          ]
+        ]
+      }
+    },
+    {
+      "case": "frozen_selected_parity_five_windows",
+      "passed": true
+    },
+    {
+      "case": "frozen_funding_170",
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [
+          [
+            "PASS"
+          ]
+        ],
+        "market": [
+          [
+            "BUY_SEED",
+            "WHEAT",
+            17
+          ],
+          [
+            "HIRE"
+          ]
+        ]
+      },
+      "funding": {
+        "status": "not_certified",
+        "reason": "original_queue_needs_additional_cash",
+        "scope": "current_market_only",
+        "rival_private_used": false,
+        "controller_calls": 0,
+        "observed_cash": 170,
+        "original_fixed_cost_upper_bound": 171,
+        "seed_cash_reduction": 170,
+        "edited_slots": [
+          0
+        ],
+        "prefixes": [
+          {
+            "slot": 0,
+            "operation": "BUY_SEED",
+            "cost_upper_bound": 170,
+            "cash_floor_without_sales": 0
+          },
+          {
+            "slot": 1,
+            "operation": "HIRE",
+            "cost_upper_bound": 1,
+            "cash_floor_without_sales": -1
+          }
+        ],
+        "minimum_cash_floor": -1
+      },
+      "parent_calls": 1,
+      "official_hands": 0
+    },
+    {
+      "case": "frozen_funding_100000",
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [
+          [
+            "PASS"
+          ]
+        ],
+        "market": [
+          [],
+          [
+            "HIRE"
+          ]
+        ]
+      },
+      "funding": {
+        "status": "certified",
+        "reason": "original_fixed_queue_fully_funded",
+        "scope": "current_market_only",
+        "rival_private_used": false,
+        "controller_calls": 0,
+        "observed_cash": 100000,
+        "original_fixed_cost_upper_bound": 171,
+        "seed_cash_reduction": 170,
+        "edited_slots": [
+          0
+        ],
+        "prefixes": [
+          {
+            "slot": 0,
+            "operation": "BUY_SEED",
+            "cost_upper_bound": 170,
+            "cash_floor_without_sales": 99830
+          },
+          {
+            "slot": 1,
+            "operation": "HIRE",
+            "cost_upper_bound": 1,
+            "cash_floor_without_sales": 99829
+          }
+        ],
+        "minimum_cash_floor": 99829,
+        "non_seed_execution_preserved": true,
+        "paired_current_market_cash_delta": 170
+      },
+      "parent_calls": 1,
+      "official_hands": 1
+    },
+    {
+      "case": "ordered_funding_170",
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [
+          [
+            "PASS"
+          ]
+        ],
+        "market": [
+          [
+            "BUY_SEED",
+            "WHEAT",
+            17
+          ],
+          [
+            "HIRE"
+          ]
+        ]
+      },
+      "funding": {
+        "status": "not_certified",
+        "reason": "original_queue_needs_additional_cash",
+        "scope": "current_market_only",
+        "rival_private_used": false,
+        "controller_calls": 0,
+        "observed_cash": 170,
+        "original_fixed_cost_upper_bound": 171,
+        "seed_cash_reduction": 170,
+        "edited_slots": [
+          0
+        ],
+        "prefixes": [
+          {
+            "slot": 0,
+            "operation": "BUY_SEED",
+            "cost_upper_bound": 170,
+            "cash_floor_without_sales": 0
+          },
+          {
+            "slot": 1,
+            "operation": "HIRE",
+            "cost_upper_bound": 1,
+            "cash_floor_without_sales": -1
+          }
+        ],
+        "minimum_cash_floor": -1
+      },
+      "parent_calls": 1,
+      "official_hands": 0
+    },
+    {
+      "case": "ordered_funding_100000",
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [
+          [
+            "PASS"
+          ]
+        ],
+        "market": [
+          [],
+          [
+            "HIRE"
+          ]
+        ]
+      },
+      "funding": {
+        "status": "certified",
+        "reason": "original_fixed_queue_fully_funded",
+        "scope": "current_market_only",
+        "rival_private_used": false,
+        "controller_calls": 0,
+        "observed_cash": 100000,
+        "original_fixed_cost_upper_bound": 171,
+        "seed_cash_reduction": 170,
+        "edited_slots": [
+          0
+        ],
+        "prefixes": [
+          {
+            "slot": 0,
+            "operation": "BUY_SEED",
+            "cost_upper_bound": 170,
+            "cash_floor_without_sales": 99830
+          },
+          {
+            "slot": 1,
+            "operation": "HIRE",
+            "cost_upper_bound": 1,
+            "cash_floor_without_sales": 99829
+          }
+        ],
+        "minimum_cash_floor": 99829,
+        "non_seed_execution_preserved": true,
+        "paired_current_market_cash_delta": 170
+      },
+      "parent_calls": 1,
+      "official_hands": 1
+    },
+    {
+      "case": "ordered_worker_and_market_slots",
+      "action": {
+        "farmer": [
+          "PICKUP",
+          "WHEAT",
+          10
+        ],
+        "hands": [
+          [
+            "DROP"
+          ]
+        ],
+        "market": [
+          [
+            "SELL",
+            "MILK",
+            50
+          ],
+          [
+            "BUY_PRODUCT",
+            "WHEAT",
+            1
+          ],
+          [
+            "SELL",
+            "MILK",
+            50
+          ]
+        ]
+      },
+      "post_shed": {
+        "WHEAT": 0,
+        "MILK": 100
+      }
+    },
+    {
+      "case": "committed_capacity_not_stock",
+      "pending_units": 4,
+      "projected_existing_cargo": 2
+    },
+    {
+      "case": "selected_timeout",
+      "seconds": 0.013105619000270963,
+      "diagnostics": {
+        "consumer": "frozen",
+        "parent_calls": 1,
+        "status": "deadline_fallback",
+        "fallback_stage": "selected_transform",
+        "elapsed_seconds": 0.013077904004603624
+      }
+    },
+    {
+      "case": "cold_terminal_timeout",
+      "seconds": 0.014285448007285595,
+      "action": {
+        "farmer": [
+          "DROP"
+        ],
+        "hands": [
+          [
+            "PASS"
+          ]
+        ],
+        "market": [
+          [
+            "SELL",
+            "MILK",
+            98
+          ],
+          [
+            "SELL",
+            "CARROT",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "case": "terminal_owner_consumed",
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [
+          [
+            "PASS"
+          ]
+        ],
+        "market": [
+          [
+            "SELL",
+            "CARROT",
+            1
+          ]
+        ]
+      },
+      "seconds": 0.025300616995082237
+    }
+  ],
+  "source_manifest_sha256": "5f6aab68a5c286e574adc80c998733c83680ac41ef92350b19867ffe9be52ef2",
+  "maximum_measured_action_seconds": 0.07447184900229331,
+  "episode_allowance": "Full-game wall/episode allowance to be recorded by Claude/WIDEFIELD for this exact archive; boundary timings alone are not episode proof."
+}
