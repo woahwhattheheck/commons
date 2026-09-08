@@ -7,6 +7,7 @@ its existing continuation checks. There is one production call in Agent.act.
 """
 from copy import deepcopy
 from pathlib import Path
+from threading import RLock
 import sys
 
 HERE = Path(__file__).resolve().parent
@@ -25,6 +26,12 @@ import selected_sell_core as math
 ash = load(HERE.parent.parent/'cloud-plan-continuation/continuation.py', 't15_adaptive_ash')
 flow = load(HERE.parent.parent/'cloud-market-response/flow.py', 't15_adaptive_flow')
 sorrel = load(HERE.parent.parent/'cloud-market-response/vendor/sorrel_adapter.py', 't15_adaptive_sorrel')
+
+# Capture is call-scoped: constructing another actor must not chain bound
+# methods or retain earlier actors. The evaluator normally isolates processes;
+# this reentrant lock also serializes parent calls made through this module.
+_OPTIMIZE_LOT = sale.optimize_lot
+_CAPTURE_LOCK = RLock()
 
 
 class AdaptiveTransform:
@@ -127,10 +134,23 @@ class Agent:
     def __init__(self, mode='adaptive'):
         self.parent=integrated.IntegratedSelectedAgent()
         self.transformer=AdaptiveTransform(mode) if mode!='baseline' else None
-        self.original=sale.optimize_lot; sale.optimize_lot=self.capture
+        self.original=_OPTIMIZE_LOT
         self.records=[]; self.history=flow.FlowHistory()
         self.previous=None; self.previous_sales={}; self.last={}; self.calls=0
         self.counts={'tables':0,'positive_trees':0,'feasible_candidate_windows':0}
+
+    def _parent_action(self, obs, cfg):
+        # Only a new admission consumes offers. Baseline and already-active
+        # plans still run the same optimizer, without unused offer collection.
+        collecting = (self.transformer is not None
+                      and self.transformer.selector.active is None)
+        with _CAPTURE_LOCK:
+            previous = sale.optimize_lot
+            sale.optimize_lot = self.capture if collecting else self.original
+            try:
+                return self.parent.act(obs, cfg)
+            finally:
+                sale.optimize_lot = previous
 
     def capture(self, **kw):
         frozen,info=self.original(**kw)
@@ -184,7 +204,7 @@ class Agent:
     def act(self,obs,cfg=None):
         cfg=dict(cfg or {}); self.calls+=1; self.records=[]; self.last={}
         self.observe(obs,cfg)
-        base=self.parent.act(obs,cfg)  # Exactly one existing production call.
+        base=self._parent_action(obs,cfg)  # Exactly one existing production call.
         packet=self.parent.last_packet
         out=base
         if self.transformer and packet and packet['projection']['observed_step']==obs['step']:
