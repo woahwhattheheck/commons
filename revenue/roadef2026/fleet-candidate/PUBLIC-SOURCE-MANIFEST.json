@@ -13,8 +13,8 @@
     },
     {
       "path": "compare_checker.py",
-      "bytes": 4993,
-      "sha256": "225169ef7e1e81f1006b296a186973e9b885d24dbfa5304b2695286cadf8d765"
+      "bytes": 5546,
+      "sha256": "0b2d2bfbb3314ea76d1c434bf5fe2cc424ebc38d337c0f0b23a05b1a089adc9b"
     },
     {
       "path": "test_supervisor.py",
