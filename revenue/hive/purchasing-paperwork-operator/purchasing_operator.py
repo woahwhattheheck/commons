@@ -8,6 +8,7 @@ import csv
 import hashlib
 import json
 import unicodedata
+from collections import Counter
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -249,6 +250,9 @@ def reconcile(
     records: list[dict[str, object]] = []
     accounting: list[dict[str, str]] = []
     drafts: list[dict[str, object]] = []
+    # Matching is full-line, not a partial-invoice allocation or payment ledger.
+    # Review every repeated reference rather than choosing an order-dependent winner.
+    po_uses = Counter((line.po_number, line.po_line) for line in invoices)
 
     for line in invoices:
         candidates = sorted(names.get(_name_key(line.vendor_name), set()))
@@ -263,6 +267,9 @@ def reconcile(
         if po is None:
             issues.append("po_line_not_found")
         else:
+            uses = po_uses[(line.po_number, line.po_line)]
+            if uses > 1:
+                issues.append(f"po_line_reused_in_batch:count={uses}")
             if supplier_id and supplier_id != po.supplier_id:
                 issues.append(f"vendor_mismatch:invoice={supplier_id},po={po.supplier_id}")
             if line.currency != po.currency:
