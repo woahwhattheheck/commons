@@ -327,7 +327,7 @@ def read_child_report(path: Path, mode: str):
 def supervise(args):
     args.output.parent.mkdir(parents=True, exist_ok=True)
     outputs = [args.output] + [args.output.with_name(args.output.stem + "." + mode + suffix)
-        for mode in ("ordinary", "profile") for suffix in (".json", ".log", ".invalid.bin")]
+        for mode in ("ordinary", "profile") for suffix in (".json", ".log", ".invalid.bin", ".timeout.bin")]
     if any(path.exists() for path in outputs):
         raise FileExistsError("use a new result basename; previous receipts are preserved")
     reports = []
@@ -366,6 +366,18 @@ def supervise(args):
             log = decoded(exc.stdout) + decoded(exc.stderr)
             report = {"status": "process_timeout", "mode": mode,
                       "error": {"type": "ProcessTimeout", "limit_s": args.process_timeout}}
+            # A worker can finish its report and then hang during shutdown.
+            # Preserve any bytes before replacing the path with timeout truth.
+            try:
+                raw = child_output.read_bytes()
+            except FileNotFoundError:
+                pass
+            else:
+                retained = child_output.with_name(child_output.stem + ".timeout.bin")
+                with retained.open("xb") as handle:
+                    handle.write(raw)
+                report["timed_out_child_report"] = {
+                    "path": str(retained), "bytes": len(raw), "sha256": digest(raw)}
         elapsed = time.perf_counter() - started
         report["process_start_to_exit_wall_s"] = elapsed
         report["process_exit_code"] = code
