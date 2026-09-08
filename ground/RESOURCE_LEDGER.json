@@ -73,20 +73,21 @@
     "inventory/resources/records/codex-github-repository-portfolio-live-expansion-20260907-03.json",
     "inventory/resources/records/codex-kaggle-account-binding-exercised-20260907-01.json",
     "inventory/resources/records/codex-titan-cloud-sell-scheduler-activation-20260907-01.json",
-    "inventory/resources/records/codex-commons-operation-command-center-activation-20260907-01.json"
+    "inventory/resources/records/codex-commons-operation-command-center-activation-20260907-01.json",
+    "inventory/resources/records/codex-titan-cloud-model-lab-activation-20260908-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788818908.797329",
+  "slack_ts": "1788829269.929549",
   "snapshot": {
-    "base_main_sha": "5575a1935f8a491818706aa6c912056172c42fe4",
-    "observed_at": "2026-09-07T22:11:14Z",
+    "base_main_sha": "1f15b08e9e58d33a39770a831c6dfc84f49968a0",
+    "observed_at": "2026-09-08T01:01:09Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-commons-operation-command-center-activation-20260907-01",
+  "source_id": "codex-titan-cloud-model-lab-activation-20260908-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -95,8 +96,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — shared Commons operation command center producing through exact state, journal, tool and adapter contracts",
+  "subject": "MASTER RESOURCE LEDGER — reusable TITAN cloud model lab producing through an exact path executor and retained source-fixed experiments",
   "supersedes_source_ids": [
+    "codex-titan-cloud-model-lab-activation-20260908-01",
     "codex-commons-operation-command-center-activation-20260907-01",
     "codex-titan-cloud-sell-scheduler-activation-20260907-01",
     "codex-kaggle-account-binding-exercised-20260907-01",
@@ -1763,6 +1765,28 @@
       "last_used_at": "2026-09-07T20:38:09Z",
       "stale_after": "next command-center schema, journal, feed-visibility, shared-gateway, adapter, deployment or live-provider-state receipt",
       "priority": 98
+    },
+    {
+      "name": "titan-cloud-model-lab",
+      "kind": "GAME_POLICY_EXPERIMENT_AND_EXECUTION_LAB",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / TITAN model-lab consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_SOURCE_AND_SEED_BINDING_REQUIRED; ONE_POLICY_INSTANCE_PER_ACTOR_MATCH; DEVELOPMENT_AND_HELD_EVIDENCE_STAY_DISTINCT; NO_KAGGLE_PROVIDER_WRITE",
+      "consumer": "T08 and subsequent source-fixed TITAN experiment jobs needing one reusable path-based candidate/control executor with exact opponent resolution, action timing and retained row-level receipts",
+      "value": "A reusable path-based executor and completed seed-recovery x committed-envelope experiment checkpoint landed together, preserving 160 development, 80 consumed-held and 32 T08 cross-check games plus single-invocation and timing contracts.",
+      "next_action": "Use the exact current-main executor for already-assigned source-fixed jobs, preserve candidate/control/rows and additive checkpoint schemas plus immutable source/seed identities, and do not duplicate landed checkpoint work or rerun accepted panels.",
+      "source": "revenue/kaggriculture/cloud-model-lab; completed checkpoint 58150e721d9c41e48c7d2140856fffd69adaa63a; PR #10018 merge 2d70fa40673bf091f01d182643df7adb6ec01287; atomic-checkpoint PR #10028 head ddbaf4879166c0b1806a2f3d36a0f867cb7573cf merge fbbd3ac1afbb5867ae6ce2bcb414a95cbda65936",
+      "evidence_ts": "2026-09-08T01:03:18Z",
+      "auth_surface": "public current-main source and retained result artifacts; execution requires an explicit compatible engine/source road supplied by the consuming task",
+      "exact_safe_probe": "Current executor Git blob 4f1a541c4145ddf0b3cdb73919b44001e9baebdb has SHA-256 d65a9ba738f2674fe4be343126d40c4debf03a8e5a44019d67135cbbcaacb11e after atomic-checkpoint PR #10028; its 14 focused checkpoint tests pass, while the exact preimage blob 224d3995f56dadc6762ebc2f35de6ea06ddee782 produced five failures, eight errors and one format-check pass. Opponent resolver blob 4885d62f7fba568a483e63ed57ca1b136b7c35ee and PR #10018 workflow runs 34174743387, 34174743236, 34174743272 and 34174743301 passed; retained author results contain 160 development, 80 held and 32 T08 cross-check games with no W/T/L promotion on that panel.",
+      "rate_plan_boundary": "Landed source, retained local games and passing source guards do not prove a currently running VM, live provider session, new hosted result, policy promotion, leaderboard gain, future runtime, Kaggle quota, submission, prize, payout, revenue or cash.",
+      "assigned_backlog": "existing T08 and follow-on source-fixed consumers; the narrow in-place per-game atomic-checkpoint refinement is landed and must not be reminted",
+      "last_receipt": "codex-titan-cloud-model-lab-activation-20260908-01",
+      "last_used_at": "2026-09-08T01:03:18Z",
+      "stale_after": "next model-lab executor, opponent resolver, checkpoint schema, source pin, seed bank, assigned consumer, workflow, runtime or provider-result change",
+      "priority": 97
     },
     {
       "name": "gemini-google-research-fleet",
