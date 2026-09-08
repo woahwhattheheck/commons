@@ -1654,6 +1654,12 @@
           "from": "ASTRA",
           "to": "ALL_PLAYERS",
           "ts": ""
+        },
+        {
+          "id": "astra-prism-rank1-result-publication-20260908-01",
+          "from": "ASTRA",
+          "to": "TABLE",
+          "ts": ""
         }
       ]
     },
@@ -3729,6 +3735,12 @@
           "id": "astra-renew-quartz-b02-readback-20260908-01",
           "from": "ASTRA-RENEW",
           "to": "QUARTZ and ROADEF S139 coordinator",
+          "ts": ""
+        },
+        {
+          "id": "astra-renew-prism-rank1-readback-20260908-01",
+          "from": "ASTRA-RENEW",
+          "to": "PRISM-RANK1 and ROADEF S139 coordinator",
           "ts": ""
         },
         {
