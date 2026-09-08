@@ -125,6 +125,104 @@ def _common_prefix_stop(scenarios, start, end):
     return end
 
 
+@dataclass(frozen=True)
+class _PrefixNode:
+    """One contiguous segment shared by one still-indistinguishable group."""
+
+    node_id: int
+    start_step: int
+    end_step: int
+    scenario_ids: tuple[str, ...]
+
+
+def _scenario_snapshots(scenarios):
+    """Return exact declared-event snapshots, or None for the ordinary path."""
+    names = ("market_deltas", "new_shops", "new_weeds")
+    expected = set(names) | {"label"}
+    if len(scenarios) < 2:
+        return None
+    snapshots = {}
+    try:
+        for scenario_id, scenario in scenarios.items():
+            if not is_dataclass(scenario) or {f.name for f in fields(scenario)} != expected:
+                return None
+            data = asdict(scenario)
+            for name in names:
+                if type(data[name]) is not dict or any(type(k) is not int for k in data[name]):
+                    return None
+            snapshots[scenario_id] = data
+    except (TypeError, ValueError, OverflowError):
+        return None
+    return snapshots
+
+
+def _event_signature(snapshot, step):
+    """Exact mechanics-bearing declaration at one action step; labels are evidence."""
+    return (
+        _encoded(snapshot["market_deltas"].get(step, {})),
+        _encoded(snapshot["new_shops"].get(step, ())),
+        _encoded(snapshot["new_weeds"].get(step, ())),
+    )
+
+
+def _event_prefix_paths(scenarios, start, end):
+    """Build ordered, non-merging scenario paths split at declared events.
+
+    Worlds share a node only while their entire declared event histories remain
+    equal. Once a step separates two groups they are never recombined merely
+    because a later declaration happens to match. Nodes include only whole
+    action decisions and therefore end immediately before a differing event.
+    """
+    snapshots = _scenario_snapshots(scenarios)
+    if snapshots is None:
+        return None
+    paths = {scenario_id: [] for scenario_id in scenarios}
+    branch_steps = []
+    next_id = [0]
+
+    def build(group, segment_start):
+        event_steps = sorted({
+            step
+            for scenario_id in group
+            for name in ("market_deltas", "new_shops", "new_weeds")
+            for step in snapshots[scenario_id][name]
+            if segment_start <= step <= end
+        })
+        split_step = None
+        for step in event_steps:
+            signatures = [_event_signature(snapshots[scenario_id], step)
+                          for scenario_id in group]
+            if any(signature != signatures[0] for signature in signatures[1:]):
+                split_step = step
+                break
+        stop = end if split_step is None else split_step - 1
+        if stop >= segment_start:
+            node = _PrefixNode(next_id[0], segment_start, stop, tuple(group))
+            next_id[0] += 1
+            for scenario_id in group:
+                paths[scenario_id].append(node)
+        if split_step is None:
+            return
+        branch_steps.append(split_step)
+        groups = {}
+        for scenario_id in group:
+            signature = _event_signature(snapshots[scenario_id], split_step)
+            groups.setdefault(signature, []).append(scenario_id)
+        for child in groups.values():
+            build(child, split_step)
+
+    ordered = list(scenarios)
+    build(ordered, start)
+    root_stop = _common_prefix_stop(scenarios, start, end)
+    return {
+        "paths": paths,
+        "root_stop": root_stop,
+        "branch_steps": tuple(sorted(set(branch_steps))),
+        "max_depth": max((len(path) for path in paths.values()), default=0),
+        "nodes": next_id[0],
+    }
+
+
 def _resume_observation(observation, result, configuration):
     """Rebind the returned T04 physical world; retain observed rival farms."""
     view = deepcopy(dict(observation))
@@ -171,8 +269,10 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
     the existing Arlene route seam, not a new generic controller protocol.
 
     Opt-in reuse_scenario_prefixes is for the unchanged deterministic T04 oracle
-    and a complete forkable actor. It executes the common declared-event prefix
-    once per route, then forks BOTH actor state and the returned physical world.
+    and a complete forkable actor. It groups worlds by their entire declared event
+    prefix, executes each still-common segment once per route, then forks BOTH actor
+    state and the returned physical world immediately before the next differing
+    event. Diverged groups are never merged again because a later label matches.
     No random state is invented: any actor-local generator must be in the supplied
     fork; external/global stochastic or stateful simulator callbacks are outside
     this opt-in contract. Defaults and unsupported scenario shapes are unchanged.
@@ -200,8 +300,10 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
         raise ValueError("Replay ends at an executable decision")
     budget = _Budget(limits)
     cases = []
-    shared_stop = (_common_prefix_stop(scenarios, start, int(end_step))
-                   if reuse_scenario_prefixes else start - 1)
+    prefix_plan = (_event_prefix_paths(scenarios, start, int(end_step))
+                   if reuse_scenario_prefixes else None)
+    shared_stop = prefix_plan["root_stop"] if prefix_plan is not None else start - 1
+    scenario_paths = prefix_plan["paths"] if prefix_plan is not None else {}
     prefix_cache = {}
     reused_decisions = prefixes_computed = 0
     for route_id in routes:
@@ -213,24 +315,34 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
             observed = None
             try:
                 budget.check()
-                saved = prefix_cache.get(route_id)
+                path = scenario_paths.get(scenario_id, ())
+                saved = None
+                path_index = 0
+                # Cache entries are cumulative and only exist when every earlier
+                # node on this exact, non-merging path completed successfully.
+                for index, node in enumerate(path):
+                    candidate = prefix_cache.get((route_id, node.node_id))
+                    if candidate is None:
+                        break
+                    saved = candidate
+                    path_index = index + 1
                 source = controller if saved is None else saved["controller"]
                 clone = fork_controller(source)
                 if clone is source or clone is controller:
                     raise ValueError("fork_controller returned the live producer or cached checkpoint")
                 observed = _ObservedEngine(engine, budget)
                 route_trace = []
-                prefix = None
+                result = None
                 current_observation = observation
                 if saved is not None:
                     # Do not reset cur here: a public-feature switch may already
-                    # have occurred inside the reused prefix.
+                    # have occurred inside the reused event-prefix path.
                     case["program_sha256"] = saved["program_sha256"]
-                    prefix = saved["result"]
+                    result = deepcopy(saved["result"])
                     observed.rows = deepcopy(saved["market_rows"])
                     route_trace = deepcopy(saved["active_routes"])
-                    current_observation = _resume_observation(observation, prefix, configuration)
-                    reused_decisions += shared_stop - start + 1
+                    current_observation = _resume_observation(observation, result, configuration)
+                    reused_decisions += int(result["end_step"]) - start + 1
                 else:
                     if route_id not in clone.R:
                         raise ValueError("Missing offered program")
@@ -250,34 +362,49 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
                                         "active_route": clone.cur})
                     return action
 
-                if saved is None and shared_stop >= start:
-                    prefix = simulate_bundle(observed, observation, configuration,
-                                             plan, end_step=shared_stop,
-                                             scenario=deepcopy(scenario), record_actions=True)
-                    budget.check()
-                    if sum(row["cash_delta"] for row in observed.rows) != prefix["cash_gain"]:
-                        raise ValueError("Observer cash does not match common prefix")
-                    checkpoint_actor = fork_controller(clone)
-                    if checkpoint_actor is clone or checkpoint_actor is controller:
-                        raise ValueError("Common-prefix fork is not independent")
-                    checkpoint = dict(controller=checkpoint_actor, result=deepcopy(prefix),
-                                      market_rows=deepcopy(observed.rows),
-                                      active_routes=deepcopy(route_trace),
-                                      program_sha256=case["program_sha256"])
-                    current_observation = _resume_observation(observation, prefix, configuration)
-                    budget.check()
-                    prefix_cache[route_id] = checkpoint
-                    prefixes_computed += 1
-                if prefix is not None and shared_stop == int(end_step):
-                    result = deepcopy(prefix)
-                    result["scenario"] = scenario.label
-                else:
+                remaining = path[path_index:]
+                if remaining:
+                    for node in remaining:
+                        segment = simulate_bundle(observed, current_observation, configuration,
+                                                  plan, end_step=node.end_step,
+                                                  scenario=deepcopy(scenario), record_actions=True)
+                        budget.check()
+                        result = segment if result is None else _join_results(result, segment)
+                        if sum(row["cash_delta"] for row in observed.rows) != result["cash_gain"]:
+                            raise ValueError("Observer cash does not match shared event prefix")
+                        current_observation = _resume_observation(observation, result, configuration)
+                        # Singleton leaves have no downstream consumer. Every
+                        # multi-world node is a reusable complete actor+world checkpoint.
+                        if len(node.scenario_ids) > 1:
+                            # Keep the actor which actually executed this prefix
+                            # frozen at the checkpoint. Continue the current case
+                            # on its fresh fork. Some supplied actor families bind
+                            # callbacks to the running instance; caching a copied
+                            # actor and then advancing its source can retain a stale
+                            # binding even when ordinary deepcopy equality holds.
+                            continuation_actor = fork_controller(clone)
+                            if continuation_actor is clone or continuation_actor is controller:
+                                raise ValueError("Common-prefix fork is not independent")
+                            budget.check()
+                            prefix_cache[(route_id, node.node_id)] = dict(
+                                controller=clone, result=deepcopy(result),
+                                market_rows=deepcopy(observed.rows),
+                                active_routes=deepcopy(route_trace),
+                                program_sha256=case["program_sha256"])
+                            clone = continuation_actor
+                            prefixes_computed += 1
+                elif result is None:
+                    # Invalid/unsupported scenario schemas retain the original
+                    # independent complete execution path.
                     result = simulate_bundle(observed, current_observation, configuration,
                                              plan, end_step=int(end_step),
                                              scenario=deepcopy(scenario), record_actions=True)
                     budget.check()
-                    if prefix is not None:
-                        result = _join_results(prefix, result)
+                else:
+                    # An identical terminal node can be reused for evidence labels
+                    # only; labels never affect mechanics.
+                    result = deepcopy(result)
+                    result["scenario"] = scenario.label
                 budget.check()
                 # Validate binding of the observer's cash to the delegated result;
                 # net queue cash includes actual successful fixed-cost orders too.
@@ -321,5 +448,11 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
             "prefixes_computed": prefixes_computed,
             "reused_decisions": reused_decisions,
             "mode": "complete_actor_and_T04_world_before_first_different_event",
+            "strategy": ("recursive_declared_event_prefix_tree"
+                         if prefix_plan is not None else "ordinary_unsupported_schema"),
+            "branch_steps": (list(prefix_plan["branch_steps"])
+                             if prefix_plan is not None else []),
+            "max_depth": prefix_plan["max_depth"] if prefix_plan is not None else 0,
+            "planned_nodes": prefix_plan["nodes"] if prefix_plan is not None else 0,
         }
     return report
