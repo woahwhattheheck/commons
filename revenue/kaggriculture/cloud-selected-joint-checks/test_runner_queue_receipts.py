@@ -45,6 +45,11 @@ def fixture():
     paths.update((PROJECTION + 'build_combined_report.py', WORKFLOW))
     files = {path: {'sha256': hashlib.sha256(path.encode()).hexdigest()} for path in paths}
     members = {v[0]: log(v[2]) for v in SPECS.values()}
+    # This source-backed subset requires method identity, not only a count.
+    members['stress-runner-existing-tests.log'] = (
+        b'test_known_order_cost_keeps_sequence (test_runner.RunnerTests.test_known_order_cost_keeps_sequence) ... ok\n'
+        b'test_summary_counts_cash_and_timeouts (test_runner.RunnerTests.test_summary_counts_cash_and_timeouts) ... ok\n'
+        + log(2))
     runner = dict(tests_run=20, failures=[], errors=[], skipped=[],
                   actual_source=False, full_games=0, new_game_seeds=[],
                   **{k: files[p]['sha256'] for k, p in BINDINGS.items()})
