@@ -61,6 +61,7 @@ class Features:
     spatial_pathing: bool = False
     spatial_tempo: bool = False
     fourth_quadrant: bool = False
+    market_pressure: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -301,6 +302,28 @@ class TitanAgent:
         result = self._redundant_hire_selected(obs, cfg, result)
         return self._seed_selected(obs, cfg, result)
 
+    def _market_pressure_selected(self, obs, cfg, selected):
+        """Order the final contiguous SELL blocks by public delay exposure.
+
+        Source-tree tests load the landed LARK modules from their attributed
+        directory.  The standalone release maps the same bytes beside this
+        module.  No units, quantities, economic barriers or suffix orders move.
+        """
+        if not self.features.market_pressure:
+            return selected
+        source = (HERE if (HERE/'pressure_priority.py').is_file() else
+                  HERE.parent/'cloud-opponent-league/lark-responsive')
+        # pressure_priority imports the exact sibling by its public module name.
+        load('sell_priority', source/'sell_priority.py', cache=True)
+        pressure = load('_titan_pressure_priority', source/'pressure_priority.py', cache=True)
+        mechanics = load('_titan_pressure_mechanics', HERE/'mechanics.py', cache=True)
+        result = pressure.transform(selected, obs, cfg, quote=mechanics.market_price)
+        self.diagnostics['market_pressure'] = {
+            'enabled': True,
+            'changed': result != selected,
+        }
+        return result
+
     def _selected_snapshot(self, obs):
         if self.features.consumer == 'ordered':
             packet = self.consumer.last_packet
@@ -384,6 +407,9 @@ class TitanAgent:
                     stage = 'terminal_history'
                     output = self.history.transform(obs,cfg,output,self.post,
                         deadline=started+self.features.budget_seconds-self.features.reserve_seconds)
+                stage = 'market_pressure'
+                output = self._market_pressure_selected(obs, cfg, output)
+                if self.history is not None:
                     self.history.remember(obs,cfg,output,self.post)
                     self.diagnostics['history'] = self.history.diagnostics
                 # Build the checkpoint while the deadline is still active, but

@@ -1,6 +1,11 @@
 TITAN finite-horizon SELL execution lab, 2026-09-07.
 New scheduler, extraction script, tests and integration: Commons / TokenJunkieLabs, ASTRA in ChatGPT Work cloud container. New code Apache-2.0 unless a source file states otherwise.
 
+The public-curve final SELL ordering reuses the unchanged Apache-2.0 LARK
+`sell_priority.py` and `pressure_priority.py` sources from
+`cloud-opponent-league/lark-responsive/`; their source paths and hashes are
+recorded in SOURCE.json.
+
 Arlene / lynnsakurai, Farming score — a mathematical approach, public notebook version14:
 https://www.kaggle.com/code/lynnsakurai/farming-score-a-mathematical-approach
 The complete production controller, four route tapes, state, switching compatibility and service guards are reused unchanged. Original source SHA2561dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4. Apache-2.0 LICENSE and upstream provenance retained under reference/next-panel/.

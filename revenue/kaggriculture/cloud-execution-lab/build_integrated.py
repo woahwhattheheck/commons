@@ -34,6 +34,10 @@ def source_files():
     mapping['seller_snapshot.py']='../cloud-quickstep/seller_snapshot.py'
     mapping['observed_clone.py']='../cloud-runtime-pulse/observed_clone.py'
     mapping['plant_suffix.py']='../cloud-runtime-pulse/plant_suffix.py'
+    # Reuse LARK's tested public-curve implementation byte-for-byte.  These two
+    # modules become ordinary root modules inside the standalone archive.
+    mapping['sell_priority.py']='../cloud-opponent-league/lark-responsive/sell_priority.py'
+    mapping['pressure_priority.py']='../cloud-opponent-league/lark-responsive/pressure_priority.py'
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
               'funded_payback_runtime.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
@@ -55,6 +59,7 @@ def source_files():
                  'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py','test_module_recovery.py','test_seed_derived.py','test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
         mapping['checks/'+name]=name
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
+    mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
     for name in ('reference/historical/seed_budget-before-derived-cache.py','reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
                  'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):
         mapping['checks/'+name]=name
