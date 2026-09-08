@@ -19,12 +19,17 @@ def _git(*args: str) -> str:
 
 def measure(target: str = "HEAD", high_velocity_per_hour: float = 30.0) -> dict:
     """Return exact local counts. Cost is one Git query per time window."""
+    # Git commit dates have whole-second precision. Freeze the clock once so
+    # every window and the receipt describe the same measurement instant.
+    measured_at = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
     head = _git("rev-parse", f"{target}^{{commit}}")
     windows = {}
-    for label, since, minutes in WINDOWS:
+    for label, _since, minutes in WINDOWS:
+        since = (measured_at - dt.timedelta(minutes=minutes)).isoformat()
         # Commit timestamps need not follow parent order. Filter the full walk;
         # --since can stop at an old commit and hide newer-dated ancestors.
-        count = int(_git("rev-list", "--count", f"--since-as-filter={since}", head) or "0")
+        count = int(_git("rev-list", "--count", f"--since-as-filter={since}",
+                         f"--until={measured_at.isoformat()}", head) or "0")
         windows[label] = {
             "commits": count,
             "commits_per_minute": round(count / minutes, 4),
@@ -34,7 +39,7 @@ def measure(target: str = "HEAD", high_velocity_per_hour: float = 30.0) -> dict:
     per_hour = windows["24h"]["commits"] / 24
     return {
         "schema": "commons.main-velocity.v1",
-        "measured_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "measured_at": measured_at.isoformat(),
         "target": target,
         "head": head,
         "windows": windows,
