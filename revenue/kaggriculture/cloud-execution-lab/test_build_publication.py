@@ -82,7 +82,10 @@ class PublicationTests(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory(prefix='titan-publication-')
         self.addCleanup(self.directory.cleanup)
-        self.root = Path(self.directory.name)
+        # Use the same sibling layout as the repository so attributed package
+        # sources outside cloud-execution-lab remain inside this fixture.
+        self.root = Path(self.directory.name)/'cloud-execution-lab'
+        self.root.mkdir()
         self.m = load_builder(BUILDER, self.root)
         populate(self.m)
         self.m.build_release()

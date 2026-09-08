@@ -142,6 +142,7 @@
     "budget_seconds": 1.0,
     "committed": true,
     "consumer": "frozen",
+    "fourth_quadrant": false,
     "funding": true,
     "redundant_hire": true,
     "reserve_seconds": 0.01,
@@ -294,8 +295,8 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 217,
-      "sha256": "336f204e3cafd6f342fd15e19ab4dda5cc68b33532b880a1d3fd8f39a384faf4",
+      "bytes": 245,
+      "sha256": "496dc8ccf12a6503d5fa6047711eec7dd2c6f1f1f2fef9c04b08fe4598925772",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
@@ -353,6 +354,11 @@
       "sha256": "3e2c3122a1330dfb7cb38d16f9f66965810052a429b2e10688854c75c9534b04",
       "source_path": "test_entrypoint_clock.py"
     },
+    "checks/test_funded_payback_runtime.py": {
+      "bytes": 3508,
+      "sha256": "5655e3bce73ef9acf00fa5ab423ed6be5a828dd3cf25f50d70eabf49ab6ae8eb",
+      "source_path": "test_funded_payback_runtime.py"
+    },
     "checks/test_module_recovery.py": {
       "bytes": 3476,
       "sha256": "930244277af14cb493b4d63f542b1446820e25f46a7e6c7be06be3ee303e2b93",
@@ -398,14 +404,24 @@
       "sha256": "fdf54ec963e93c831fc4c8459bb9095935a64be604b08b3bbcd6c44c2e45cdb5",
       "source_path": "frozen_selected.py"
     },
+    "funded_payback.py": {
+      "bytes": 37779,
+      "sha256": "e2fe1975c74ec7373961fe7e8818ebabbae46ceb91f77118de46eb52b6a075e7",
+      "source_path": "../cloud-economic-stress/funded_payback/funded_payback.py"
+    },
+    "funded_payback_runtime.py": {
+      "bytes": 2719,
+      "sha256": "2d5d33fdee1551d2373cfe7dbac8bafde2d52805a5e88946a1b71ab378094e3a",
+      "source_path": "funded_payback_runtime.py"
+    },
     "integrated_selected.py": {
       "bytes": 12860,
       "sha256": "e16702fd388c2ae0ead9bb59a078e0099e0c149cc39002703b3b7988bb061bd8",
       "source_path": "reference/titan-current/latest/integrated_selected.py"
     },
     "main.py": {
-      "bytes": 1015,
-      "sha256": "a4ecdb513b48fa51877fe509597a84dd753dfe71d2d76a406ee3dc51475a9008",
+      "bytes": 1880,
+      "sha256": "cb0b6678a1baec715ec560d9a0180c922306c855d15e8dfa80bd0da3ab5bd292",
       "source_path": "main.py"
     },
     "mechanics.py": {
@@ -679,8 +695,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 21179,
-      "sha256": "fe30ac0a4be4b2a75292cbd262af07610aeb2cd4cb1264520e9b5ab9f7953e3a",
+      "bytes": 21522,
+      "sha256": "e7d035608b926e4375086df7085c3861afc0a7862733f61bc15e549fd95fef79",
       "source_path": "titan_runtime.py"
     }
   },

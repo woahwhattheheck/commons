@@ -32,8 +32,12 @@ def source_files():
     """Archive member -> actual current repository source; no version selector."""
     mapping={p:p for p in RUNTIME if p not in ('integrated_main.py','integrated_parent.py')}
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
-              'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+              'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
+              'funded_payback_runtime.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
+    # Package ECON's landed callback from its attributed source rather than
+    # maintaining a second implementation in the canonical runtime tree.
+    mapping['funded_payback.py']='../cloud-economic-stress/funded_payback/funded_payback.py'
     for directory in ('reference/titan-current','reference/titan-history'):
         for p in (ROOT/directory).rglob('*'):
             if p.is_file() and '__pycache__' not in p.parts:
@@ -47,6 +51,7 @@ def source_files():
     for name in ('TITAN-HISTORY-CONFIG.json','test_terminal_history_join.py',
                  'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py','test_module_recovery.py','test_seed_derived.py','test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
         mapping['checks/'+name]=name
+    mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     for name in ('reference/historical/seed_budget-before-derived-cache.py','reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
                  'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):
         mapping['checks/'+name]=name
