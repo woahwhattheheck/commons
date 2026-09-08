@@ -1,0 +1,29 @@
+test_crossed_staging_roles_are_rejected (__main__.ArtifactTests.test_crossed_staging_roles_are_rejected) ... ok
+test_empty_statistics_path_is_reported_before_work (__main__.ArtifactTests.test_empty_statistics_path_is_reported_before_work) ... ok
+test_file_limit_preserves_previous_statistics (__main__.ArtifactTests.test_file_limit_preserves_previous_statistics) ... ok
+test_fixed_work_matches_original_solver (__main__.ArtifactTests.test_fixed_work_matches_original_solver) ... ok
+test_hardlink_stats_to_solution_is_rejected (__main__.ArtifactTests.test_hardlink_stats_to_solution_is_rejected) ... ok
+test_in_place_resume_remains_supported (__main__.ArtifactTests.test_in_place_resume_remains_supported) ... ok
+test_missing_statistics_parent_is_reported (__main__.ArtifactTests.test_missing_statistics_parent_is_reported) ... ok
+test_normalized_relative_alias_is_rejected (__main__.ArtifactTests.test_normalized_relative_alias_is_rejected) ... ok
+test_output_cannot_replace_problem_input (__main__.ArtifactTests.test_output_cannot_replace_problem_input) ... ok
+test_output_input_aliases_are_rejected (__main__.ArtifactTests.test_output_input_aliases_are_rejected) ... ok
+test_output_staging_cannot_truncate_input (__main__.ArtifactTests.test_output_staging_cannot_truncate_input) ... ok
+test_same_output_existing_is_rejected_before_changes (__main__.ArtifactTests.test_same_output_existing_is_rejected_before_changes) ... ok
+test_same_output_nonexistent_is_rejected_before_creation (__main__.ArtifactTests.test_same_output_nonexistent_is_rejected_before_creation) ... ok
+test_separate_resume_remains_supported (__main__.ArtifactTests.test_separate_resume_remains_supported) ... ok
+test_separate_stats_preserve_all_fields_and_solution (__main__.ArtifactTests.test_separate_stats_preserve_all_fields_and_solution) ... ok
+test_statistics_rename_failure_is_reported (__main__.ArtifactTests.test_statistics_rename_failure_is_reported) ... ok
+test_statistics_staging_open_failure_preserves_previous (__main__.ArtifactTests.test_statistics_staging_open_failure_preserves_previous) ... ok
+test_stats_cannot_replace_any_problem_input (__main__.ArtifactTests.test_stats_cannot_replace_any_problem_input) ... ok
+test_stats_cannot_replace_resume_input (__main__.ArtifactTests.test_stats_cannot_replace_resume_input) ... ok
+test_stats_disabled_preserves_normal_solution (__main__.ArtifactTests.test_stats_disabled_preserves_normal_solution) ... ok
+test_stats_input_aliases_are_rejected (__main__.ArtifactTests.test_stats_input_aliases_are_rejected) ... ok
+test_stats_staging_cannot_truncate_input (__main__.ArtifactTests.test_stats_staging_cannot_truncate_input) ... ok
+test_success_replaces_existing_statistics (__main__.ArtifactTests.test_success_replaces_existing_statistics) ... ok
+test_symlink_stats_to_solution_is_rejected (__main__.ArtifactTests.test_symlink_stats_to_solution_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.098s
+
+OK
