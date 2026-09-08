@@ -1912,9 +1912,6 @@ class GrokSlackBridge:
 
     def _route_revenue(self, arguments: dict[str, Any]) -> dict[str, Any]:
         """Prefer live public MCP. Current-main orchestrator if production is stale."""
-        event = arguments.get("event")
-        if isinstance(event, dict) and isinstance(event.get("text"), str):
-            require_publication(event["text"])
         if self._has_live_route_tool():
             self.intake_road = "public_mcp"
             self.work_log.append("mcp:route_grokcom_revenue_work")
