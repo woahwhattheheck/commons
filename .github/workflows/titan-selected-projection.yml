@@ -11,6 +11,11 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/integrated_selected.py'
       - 'revenue/kaggriculture/cloud-integration-differentials/**'
       - 'revenue/kaggriculture/cloud-composition-cases/cypress/**'
+      - 'revenue/kaggriculture/cloud-composition-cases/cover/**'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py'
       - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/ordered_selected_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_ordered_selected_sell.py'
@@ -39,6 +44,7 @@ jobs:
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            /.github/workflows/titan-selected-projection.yml
             /revenue/kaggriculture/cloud-selected-projection/
             /revenue/kaggriculture/cloud-selected-market-checks/
             /revenue/kaggriculture/cloud-eval/
@@ -47,6 +53,11 @@ jobs:
             /revenue/kaggriculture/cloud-execution-lab/exports/integrated-selected-v1.tar.gz
             /revenue/kaggriculture/cloud-integration-differentials/
             /revenue/kaggriculture/cloud-composition-cases/cypress/
+            /revenue/kaggriculture/cloud-composition-cases/cover/
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py
+            /revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py
             /revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/
             /revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
             /revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py
@@ -76,8 +87,10 @@ jobs:
           (out/frozen.name).write_bytes(frozen_bytes)
           roots = ('cloud-selected-projection', 'cloud-execution-lab',
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
-                   'cloud-integration-differentials', 'cloud-composition-cases/cypress')
+                   'cloud-integration-differentials', 'cloud-composition-cases/cypress',
+                   'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
+          paths.append(Path('.github/workflows/titan-selected-projection.yml'))
           files = {}
           for path in sorted(paths):
               data = path.read_bytes()
@@ -159,6 +172,28 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-composition-cases/cypress/test_funded_join.py \
             --json-output "$RUNNER_TEMP/projection-validation/funded-join-results.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/funded-join-tests.log"
+      - name: Adaptive actor capture binding tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py \
+            --report "$RUNNER_TEMP/projection-validation/capture-binding-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/capture-binding-tests.log"
+      - name: Dated market score schedule parity tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/score-schedule-tests.log"
+      - name: Existing workflow regression binding tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-composition-cases/cover/test_regression_bindings.py -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/workflow-bindings-tests.log"
       - name: Bind combined results to one source snapshot
         shell: python
         run: |
