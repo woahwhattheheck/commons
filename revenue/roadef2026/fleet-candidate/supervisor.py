@@ -53,19 +53,28 @@ def launch(command, env, stdout, stderr):
 
 
 def stop_process(process, force=False):
-    if process is None or process.poll() is not None:
+    if process is None:
         return
     try:
         if os.name == "posix":
+            # launch() owns a new session/group, not only its leader. A leader
+            # may exit before its descendants or during the TERM grace period.
+            if getattr(process, "_portfolio_group_closed", False):
+                return
             os.killpg(process.pid, signal.SIGKILL if force else signal.SIGTERM)
-        elif force:
-            process.kill()
-        else:
-            # Windows is a development harness. POSIX competition builds exercise
-            # the C++ SIGTERM checkpoint path; TerminateProcess cannot emulate it.
-            process.terminate()
+            if force:
+                process._portfolio_group_closed = True
+        elif process.poll() is None:
+            if force:
+                process.kill()
+            else:
+                # Windows is a development harness. TerminateProcess cannot
+                # emulate the C++ SIGTERM checkpoint or POSIX group cleanup.
+                process.terminate()
     except ProcessLookupError:
-        pass
+        # Do not later signal a new group that reuses this retired group ID.
+        if os.name == "posix":
+            process._portfolio_group_closed = True
 
 
 class Supervisor:
@@ -303,8 +312,10 @@ class Supervisor:
         if check["process"].poll() is None and elapsed < self.check_timeout:
             return
         timed_out = check["process"].poll() is None
+        # Retire the checker group before dropping its handle, including when
+        # its leader has returned but a descendant still holds the log files.
+        stop_process(check["process"], force=True)
         if timed_out:
-            stop_process(check["process"], force=True)
             check["process"].wait(timeout=1)
         check["stdout"].close()
         check["stderr"].close()
