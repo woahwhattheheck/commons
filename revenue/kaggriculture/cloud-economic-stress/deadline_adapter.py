@@ -9,6 +9,7 @@ SELL transform runs.  No parent/controller method is called a second time.
 from __future__ import annotations
 
 import copy
+from contextvars import ContextVar
 import signal
 import time
 
@@ -22,7 +23,13 @@ class DeadlineExceeded(BaseException):
     """
 
 
+_ACTIVE_TIMER = ContextVar("titan_active_deadline_timer", default=None)
+
+
 def _alarm(_signum, _frame):
+    timer = _ACTIVE_TIMER.get()
+    if timer is not None:
+        raise timer.expired
     raise DeadlineExceeded("action deadline exhausted")
 
 
@@ -86,6 +93,8 @@ class _DeadlineTimer:
         remaining, self.outer_interval = signal.setitimer(signal.ITIMER_REAL, 0)
         self.outer_at = now + remaining if remaining > 0 else None
         self.own_at = now + self.seconds
+        self.caller_timer = _ACTIVE_TIMER.get()
+        self.context_token = _ACTIVE_TIMER.set(self)
         try:
             signal.signal(signal.SIGALRM, self._dispatch)
             self._schedule()
@@ -117,6 +126,7 @@ class _DeadlineTimer:
         signal.setitimer(signal.ITIMER_REAL,
                          self._remaining(self.outer_at) if self.outer_at is not None else 0,
                          self.outer_interval)
+        caller_token = _ACTIVE_TIMER.set(self.caller_timer)
         try:
             if callable(self.previous):
                 self.previous(signum, frame)
@@ -126,6 +136,7 @@ class _DeadlineTimer:
                 signal.raise_signal(signal.SIGALRM)
             # SIG_IGN consumes this occurrence without calling an integer.
         finally:
+            _ACTIVE_TIMER.reset(caller_token)
             # A handler may intentionally rearm/disarm its timer (including an
             # enclosing DeadlineFallbackAgent). Preserve that updated schedule.
             now = time.monotonic()
@@ -143,6 +154,7 @@ class _DeadlineTimer:
 
     def __exit__(self, _kind, _error, _traceback):
         signal.setitimer(signal.ITIMER_REAL, 0)
+        _ACTIVE_TIMER.reset(self.context_token)
         signal.signal(signal.SIGALRM, self.previous)
         if self.outer_at is not None:
             signal.setitimer(signal.ITIMER_REAL, self._remaining(self.outer_at),
