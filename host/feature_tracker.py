@@ -169,7 +169,19 @@ def tree_blob(root, rel):
     if not isinstance(rel, str) or not rel or rel.startswith("/") or ".." in rel.split("/"):
         return ""
     path = os.path.join(root, rel)
-    if os.path.isfile(path):
+    if os.path.islink(path):
+        try:
+            # Git stores the link target text, not the referent's contents.
+            blob = subprocess.check_output(
+                ["git", "-C", root, "hash-object", "--stdin"],
+                input=os.readlink(os.fsencode(path)),
+                stderr=subprocess.DEVNULL,
+            ).decode("ascii").strip()
+            if BLOB_RE.match(blob):
+                return blob
+        except (OSError, subprocess.CalledProcessError):
+            pass
+    elif os.path.isfile(path):
         try:
             blob = subprocess.check_output(
                 ["git", "hash-object", path],
