@@ -1,0 +1,31 @@
+name: export-current-titan-spatial-once
+
+on:
+  push:
+    branches:
+      - astra/export-current-titan-spatial-20260908
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout: |
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+          sparse-checkout-cone-mode: false
+      - name: Verify current pointer bytes
+        run: |
+          test "$(sha256sum revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz | cut -d' ' -f1)" = 'ab5d35365a6c031450cd581d2c0835752fef0e377932ccdc6c3dee980e2d28b0'
+          test "$(stat -c%s revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz)" = '292494'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-current-ab5d-spatial-input
+          path: revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
