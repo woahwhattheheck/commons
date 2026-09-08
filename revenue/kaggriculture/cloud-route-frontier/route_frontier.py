@@ -199,13 +199,33 @@ def pareto_frontier(alternatives: Sequence[Alternative], *, max_size: int = 64,
     kept: list[Alternative] = []
     removed: list[tuple[str, str]] = []
     checks = 0
-    for right in alternatives:
+    # Alternative freezes its inputs. Reuse its scenario alignment within this
+    # invocation, without hashing snapshots or retaining cross-call state. Keep
+    # the original method-dispatch path for custom Alternative subclasses.
+    cacheable = len(alternatives) > 1 and all(
+        type(a) is Alternative and all(type(t) is Trace for t in a.traces)
+        for a in alternatives)
+    keys = [a.comparison_key() for a in alternatives] if cacheable else None
+    vectors: dict[int, tuple[float, ...]] = {}
+    for ri, right in enumerate(alternatives):
         winner = None
-        for left in alternatives:
+        for li, left in enumerate(alternatives):
             if left is right:
                 continue
             checks += 1
-            if dominates(left, right):
+            if keys is None:
+                better = dominates(left, right)
+            elif keys[li] != keys[ri]:
+                better = False
+            else:
+                if li not in vectors:
+                    vectors[li] = left.vector()
+                if ri not in vectors:
+                    vectors[ri] = right.vector()
+                a, b = vectors[li], vectors[ri]
+                better = (all(x >= y for x, y in zip(a, b)) and
+                          any(x > y for x, y in zip(a, b)))
+            if better:
                 winner = left
                 break
         if winner is None:

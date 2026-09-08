@@ -18,3 +18,15 @@ python -B revenue/kaggriculture/cloud-widefield-lab/test_panel_config.py \
 ```
 
 To exercise a pinned alternative runner, pass `--runner /path/to/run_panel.py`. The source-specific report distinguishes this argument/planning coverage from TANDEM's source/result binding and TRIAD's future/checkpoint handling. Neither implementation is replaced. Canonical TITAN runtime, archives, selected policy and all existing experiment outputs remain unchanged.
+
+## Current-main composition
+
+The normal PR merge first encountered TRIAD's newly landed run-state collection
+change. The final source composes with its exact `cd168aef` runner from main
+`fde359585bfadbc0422f68e1ec7bcb092375cf93`. All 18 configuration tests pass on
+that combined source. The `sha256`, `valid_report`, `run_job` and
+`write_run_state` functions are AST-identical to that main input, as is every
+`main` statement after configuration parsing. TRIAD's checkpoint ordering and
+sibling-error preservation remain its implementation and evidence; no second
+writer was added. TANDEM's separate reuse/source-binding branch is not included
+in this composition or claimed as tested by it.
