@@ -17,11 +17,11 @@ jobs:
           export EVIDENCE="$RUNNER_TEMP/cedar-pair-evidence"
           mkdir -p "$EVIDENCE"
           python3 - <<'PY'
-          import hashlib, json, os, pathlib, shutil, subprocess, sys, urllib.request
+          import hashlib, importlib.util, json, os, pathlib, shutil, subprocess, sys, urllib.request, zipfile
           evidence=pathlib.Path(os.environ['EVIDENCE'])
           work=evidence/'sources';work.mkdir()
           base=evidence/'fleet';base.mkdir()
-          source='a27b580a926c1ddb6000b7c8192c3e2c8611bc9c'
+          source='6d5af5e348059e0679f9653a091168ab81fdcaad'
           fleet='2885d176373c33410148829fef93c310c3752c0b'
           prefix='https://raw.githubusercontent.com/woahwhattheheck/commons/'
           def fetch(ref,path):
@@ -30,7 +30,7 @@ jobs:
           expected={
               'ordered_pairs.hpp':'f6324016b318b807044c9453598a2b06b4c80055138f3e91e941c1c9d1640671',
               'pair_moves.inc':'fa2f1b3c9427d89899f45c0bbf23d887b90179f3eee338a6d0bd1d181fa52cb6',
-              'build_candidate.py':'b829f2ccd887b058709ee8bbda75411b702add4bc0eed41db9e6e9ba6dcbda0c',
+              'build_candidate.py':'f850a05156b4681e56bf47f6d8dd1a0f39e5538c655ba8234a2c407114b94ce1',
               'test_ordered_pairs.cpp':'9a6c9b2718aa4ac7314c325c96c160b9018ddc85ddd12e853d0cd7306060a1e6',
               'check_native.py':'38d0a46c93057f4f328162cd326fbab3203047d2ad3a89bf274a254f933202d9',
           }
@@ -55,15 +55,33 @@ jobs:
                   print((evidence/(name+'.log')).read_text()[-12000:])
                   raise SystemExit(result.returncode)
           run('generate',[sys.executable,str(work/'build_candidate.py'),'--base',str(base/'main.cpp'),'--output',str(evidence/'paired-main.cpp')])
-          run('prepare',[sys.executable,str(base/'prepare_context.py'),'--candidate',str(evidence/'paired-main.cpp'),'--output',str(context)],timeout=400)
+          spec=importlib.util.spec_from_file_location('pinned_prepare',base/'prepare_context.py')
+          prep=importlib.util.module_from_spec(spec);spec.loader.exec_module(prep)
+          original=prep.copy_archive_sources
+          header_rows=[]
+          def with_extensionless_headers(archive_path,name,spec,destination):
+              original(archive_path,name,spec,destination)
+              if name!='networktools':return
+              wanted={'dense_hash_map','dense_hash_set','sparse_hash_map','sparse_hash_set','sparsetable'}
+              with zipfile.ZipFile(archive_path) as archive:
+                  for info,relative in prep.archive_members(archive,spec):
+                      if relative.parts[:3] != ('networktools','@deps','sparsehash') or relative.name not in wanted:continue
+                      raw=archive.read(info)
+                      target=destination/'sources'/'networktools'/relative
+                      target.parent.mkdir(parents=True,exist_ok=True)
+                      with target.open('xb') as output:output.write(raw)
+                      header_rows.append({'path':str(relative),'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)})
+              assert len(header_rows)==5,header_rows
+          prep.copy_archive_sources=with_extensionless_headers
+          prepared=prep.prepare(context,base,evidence/'paired-main.cpp')
+          (evidence/'staging-delta.json').write_text(json.dumps({'change':'Retain five extensionless headers from the unchanged pinned archive','headers':header_rows},indent=2))
           shutil.copyfile(context/'source-manifest.json',evidence/'context-source-manifest.json')
           shutil.copytree(context/'attribution',evidence/'attribution')
-          run('build',['sh',str(context/'build.sh')],timeout=300)
           binaries=evidence/'bin';binaries.mkdir()
-          for name in ('candidate','checker'):
-              shutil.copyfile(context/'bin'/name,binaries/name)
-              (binaries/name).chmod(0o755)
-          run('baseline-build',['g++','-O3','-std=c++20','-DNDEBUG','-I'+str(context/'sources/sedge/vendor'),str(base/'main.cpp'),'-o',str(binaries/'baseline')])
+          include='-I'+str(context/'sources/sedge/vendor')
+          for label,src in [('baseline',base/'main.cpp'),('candidate',evidence/'paired-main.cpp')]:
+              run(label+'-build',['g++','-O3','-std=c++20','-DNDEBUG',include,str(src),'-o',str(binaries/label)])
+          run('checker-build',['g++','-O3','-std=c++20','-DNDEBUG','-DLANG_EN','-I'+str(context/'sources/networktools/networktools'),str(context/'sources/checker/src/main.cpp'),'-o',str(binaries/'checker')],timeout=300)
           run('pair-unit-build',['g++','-O2','-std=c++20','-Wall','-Wextra','-Werror',str(work/'test_ordered_pairs.cpp'),'-o',str(binaries/'pair-unit')])
           run('pair-unit',[str(binaries/'pair-unit')])
           identity={'source':source,'fleet':fleet,'python':sys.version,
