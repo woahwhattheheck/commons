@@ -345,7 +345,12 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertTrue(open_card.get("ok"), open_card)
         self.assertEqual(open_card["card"].get("sla_status"), "OPEN")
         self.assertEqual(open_card["card"].get("diagnostic_usd"), 199)
-        self.assertIn("199", str(open_card["card"].get("refund", "")))
+        self.assertEqual(
+            open_card["card"].get("refund"),
+            "If the accepted diagnostic is not delivered inside the one-business-day window, "
+            "the paid diagnostic amount is refunded unless the buyer elects in writing to "
+            "receive one free next-business-day repair instead.",
+        )
         missed = self.eq.call(
             "diagnostic_fulfill_sla_card",
             {
@@ -358,7 +363,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
         self.assertEqual(missed["card"].get("diagnostic_usd"), 199)
-        self.assertIn("199", str(missed["card"].get("refund", "")))
+        self.assertEqual(missed["card"].get("refund"), open_card["card"]["refund"])
 
     def _assert_diag_contract_receipt_cards(self, role: dict) -> None:
         # rivet-r4-equipment-contract-receipt-survive-handoff-20260905-01
