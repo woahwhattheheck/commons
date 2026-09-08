@@ -76,20 +76,21 @@
     "inventory/resources/records/codex-commons-operation-command-center-activation-20260907-01.json",
     "inventory/resources/records/codex-titan-cloud-model-lab-activation-20260908-01.json",
     "inventory/resources/records/codex-titan-runtime-profiler-activation-20260908-01.json",
-    "inventory/resources/records/codex-gpt-6-astra-carrier-activation-20260908-01.json"
+    "inventory/resources/records/codex-gpt-6-astra-carrier-activation-20260908-01.json",
+    "inventory/resources/records/codex-hive-trade-quote-schedule-activation-20260908-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788851325.359019",
+  "slack_ts": "1788861719.697709",
   "snapshot": {
-    "base_main_sha": "06616531b56ec4dfcc421bce82db8f8e04091b15",
-    "observed_at": "2026-09-08T07:08:45Z",
+    "base_main_sha": "f7a475a96c6f352c2e4dda76651f8688dcdb20dd",
+    "observed_at": "2026-09-08T10:01:59Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-gpt-6-astra-carrier-activation-20260908-01",
+  "source_id": "codex-hive-trade-quote-schedule-activation-20260908-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -98,8 +99,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — GPT-6 Astra limited-rollout carrier producing across Commons implementation and coordination lanes",
+  "subject": "MASTER RESOURCE LEDGER — source-bound trade quote-to-schedule workflow producing for small painting contractors",
   "supersedes_source_ids": [
+    "codex-hive-trade-quote-schedule-activation-20260908-01",
     "codex-gpt-6-astra-carrier-activation-20260908-01",
     "codex-titan-runtime-profiler-activation-20260908-01",
     "codex-titan-cloud-model-lab-activation-20260908-01",
@@ -966,6 +968,28 @@
       "last_used_at": "2026-09-08T07:08:45Z",
       "stale_after": "next official Astra availability, directly observed usage-meter, model-access, carrier-operating, consumer or material output change",
       "priority": 100
+    },
+    {
+      "name": "hive-trade-quote-schedule",
+      "kind": "TRADE_QUOTE_ACCEPTANCE_SCHEDULING_PRODUCT",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Hive trade-workflow consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; CUSTOMER_SOURCE_FILES_AND_MEASUREMENTS_REQUIRED; NO_GUESSED_MEASUREMENTS; LOCAL_DRAFT_ACCEPTANCE_AND_SCHEDULE_WRITES_ONLY; NO_OUTREACH_PAYMENT_OR_EXTERNAL_CALENDAR_WRITE",
+      "consumer": "Small painting contractors converting measured inbound requests and source-linked photos into editable quotes, local acceptance receipts and collision-checked job schedules",
+      "value": "A dependency-free runnable product converts a complete painting request into an editable $1,118.15 rules-priced quote, valid PDF and HTTP acceptance form, then records an eight-hour local schedule while holding missing measurements, invalid tokens, expiry and overlapping slots.",
+      "next_action": "Package the exact current-main workflow for a named painting contractor or compatible trade buyer, replace fixtures and pricing only with customer-supplied inputs, and keep outreach, customer acceptance, external calendar and payment actions separately authorized and receipted.",
+      "source": "Hive demand bm-hive-20260908-039; source PR #10477 merge 2b30905b3bb518c0d28f2b58dae0b89df0182885; hosted guard follow-through at #commons 1788861417.468409",
+      "evidence_ts": "2026-09-08T09:56:57Z",
+      "auth_surface": "Public current-main Python source and synthetic fixtures; no credential, customer-private input, provider session or deployment is required for local execution",
+      "exact_safe_probe": "Current-main source tree a75dae6308ce4bab3e0b2625638c953ee2d25dcd; runtime blob fd3d56b6dad06c1177795ec92e1916fb24aa6955; focused test blob 8dee30f084e8a29599adee5afb5da1f1f7b8297c. PR #10477 reports 10/10 focused tests, compile, live local HTTP, diff, open-door, secret and zero-fabrication checks; all four hosted source-head guards later completed green.",
+      "rate_plan_boundary": "The included amount, PDF, HTTP form and local schedule are deterministic fixture outputs. They do not prove customer outreach, real acceptance, external calendar mutation, deployment, sale, subscription, payment, revenue or cash.",
+      "assigned_backlog": "First named painting-contractor packaging or handoff; the implementation is landed and released, so do not remint demand bm-hive-20260908-039 or modify builder-owned source during resource activation",
+      "last_receipt": "codex-hive-trade-quote-schedule-activation-20260908-01",
+      "last_used_at": "2026-09-08T09:56:57Z",
+      "stale_after": "next source, pricing-rule, fixture, buyer, packaging, acceptance, schedule, deployment or payment receipt",
+      "priority": 95
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",
