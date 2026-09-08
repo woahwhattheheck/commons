@@ -29,14 +29,22 @@ def make_agent(root: Path, identity: str) -> Callable:
     root = Path(root).resolve()
     entry = json.loads((root / "BANK.json").read_text())["entries"][identity]
     source = root / entry["source"]
-    if sha256(source) != entry["source_sha256"]:
+    source_bytes = source.read_bytes()
+    if hashlib.sha256(source_bytes).hexdigest() != entry["source_sha256"]:
         raise ValueError("Opponent source differs from bank snapshot")
     official = module(root / "contract/official.py", "t07_bank_contract")
     original = official.contract()["get_last_callable"]
     mode = entry["assignment"]
 
-    def inspected(*args, **kwargs):
-        function = original(*args, **kwargs)
+    def inspected(raw, *args, **kwargs):
+        # The official loader reads once during construction, then compiles
+        # lazily. Compare its retained program BEFORE executing it. Its UTF-8
+        # text reader performs universal-newline conversion; only mirror that
+        # conversion here, keeping the manifest identity on the original bytes.
+        expected = source_bytes.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        if raw != expected:
+            raise ValueError("Opponent loader source differs from bank snapshot")
+        function = original(raw, *args, **kwargs)
         if mode != "not_applicable":
             observed = bool(function.__globals__.get("_HUNGARIAN"))
             if observed != (mode == "scipy"):
