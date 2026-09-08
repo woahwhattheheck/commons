@@ -56,6 +56,7 @@ OWNER_DISK_MARKERS = (
 )
 
 _CONFLICT = object()
+_MISSING = object()
 
 SECRET_BASENAMES = {
     ".env",
@@ -440,21 +441,25 @@ def _is_append_only(base, side):
 def _compose_json(base, left, right):
     if left == right:
         return left
+    if left == base:
+        return right
+    if right == base:
+        return left
     if isinstance(left, dict) and isinstance(right, dict):
         base_d = base if isinstance(base, dict) else {}
         out = {}
         for key in set(left) | set(right) | set(base_d):
-            in_l = key in left
-            in_r = key in right
-            if in_l and in_r:
-                composed = _compose_json(base_d.get(key), left[key], right[key])
-                if composed is _CONFLICT:
-                    return _CONFLICT
+            # A missing key is a deletion, not the JSON value null. Compose
+            # against the base so an unchanged side cannot undo the other edit.
+            composed = _compose_json(
+                base_d.get(key, _MISSING),
+                left.get(key, _MISSING),
+                right.get(key, _MISSING),
+            )
+            if composed is _CONFLICT:
+                return _CONFLICT
+            if composed is not _MISSING:
                 out[key] = composed
-            elif in_l:
-                out[key] = left[key]
-            elif in_r:
-                out[key] = right[key]
         return out
     if isinstance(left, list) and isinstance(right, list):
         base_l = base if isinstance(base, list) else []
