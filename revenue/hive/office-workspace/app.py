@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS sources(id TEXT PRIMARY KEY,workspace_id TEXT NOT NUL
 CREATE TABLE IF NOT EXISTS versions(source_id TEXT NOT NULL REFERENCES sources(id) ON DELETE CASCADE,version INTEGER NOT NULL,title TEXT NOT NULL,kind TEXT NOT NULL,text TEXT NOT NULL,PRIMARY KEY(source_id,version));
 CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,source_id TEXT NOT NULL REFERENCES sources(id) ON DELETE CASCADE,source_version INTEGER NOT NULL,line INTEGER NOT NULL,owner TEXT NOT NULL,due TEXT NOT NULL,description TEXT NOT NULL,state TEXT NOT NULL DEFAULT 'open',revision INTEGER NOT NULL DEFAULT 1,current INTEGER NOT NULL DEFAULT 1);
 CREATE TABLE IF NOT EXISTS drafts(id TEXT PRIMARY KEY,workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,recipient TEXT NOT NULL,subject TEXT NOT NULL,body TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
+CREATE TABLE IF NOT EXISTS draft_requests(workspace_id TEXT NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,request_id TEXT NOT NULL,draft_id TEXT NOT NULL REFERENCES drafts(id) ON DELETE CASCADE,fingerprint TEXT NOT NULL,PRIMARY KEY(workspace_id,request_id));
 """
 
 
@@ -196,7 +197,7 @@ class Store:
             db.execute("UPDATE tasks SET state=?,revision=revision+1 WHERE id=?", (state, tid))
         return {"revision": expected + 1}
 
-    def save_draft(self, wid, recipient, subject, body, did=None, expected=None):
+    def save_draft(self, wid, recipient, subject, body, did=None, expected=None, request_id=None):
         recipient = text(recipient, "recipient", 254).strip()
         if not re.fullmatch(r"[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+", recipient):
             raise Problem("recipient must be one email address")
@@ -204,6 +205,11 @@ class Store:
         if "\r" in subject or "\n" in subject:
             raise Problem("subject must be one line")
         body = text(body, "body", 100000)
+        if request_id is not None:
+            request_id = text(request_id, "request_id").strip()
+            if did is not None:
+                raise Problem("request_id is only for creating a draft; edits use revision")
+        fingerprint = hashlib.sha256(json.dumps([recipient, subject, body], ensure_ascii=True).encode()).hexdigest()
         with self.connection(True) as db:
             self.workspace(db, wid)
             if did is not None:
@@ -216,9 +222,18 @@ class Store:
                     raise Problem("draft changed; reload first", 409)
                 db.execute("UPDATE drafts SET recipient=?,subject=?,body=?,revision=revision+1 WHERE id=?", (recipient, subject, body, did))
                 return dict(id=did, revision=expected + 1, state="unsent")
+            if request_id is not None:
+                previous = db.execute("SELECT * FROM draft_requests WHERE workspace_id=? AND request_id=?", (wid, request_id)).fetchone()
+                if previous:
+                    if previous["fingerprint"] != fingerprint:
+                        raise Problem("request_id already belongs to different draft content; reopen the saved draft or start a new draft", 409)
+                    saved = db.execute("SELECT revision FROM drafts WHERE id=?", (previous["draft_id"],)).fetchone()
+                    return dict(id=previous["draft_id"], revision=saved["revision"], state="unsent", repeated=True)
             did = uuid.uuid4().hex
             db.execute("INSERT INTO drafts(id,workspace_id,recipient,subject,body) VALUES (?,?,?,?,?)", (did, wid, recipient, subject, body))
-        return dict(id=did, revision=1, state="unsent")
+            if request_id is not None:
+                db.execute("INSERT INTO draft_requests VALUES (?,?,?,?)", (wid, request_id, did, fingerprint))
+        return dict(id=did, revision=1, state="unsent", repeated=False)
 
     def export(self, wid, kind, did=None):
         data = self.snapshot(wid)
@@ -308,7 +323,7 @@ def make_server(store, port=8765):
                 elif post and url.path == "/api/task":
                     result = store.update_task(wid, args.get("task_id"), args.get("revision"), args.get("state"))
                 elif post and url.path == "/api/draft":
-                    result = store.save_draft(wid, args.get("recipient"), args.get("subject"), args.get("body"), args.get("draft_id"), args.get("revision"))
+                    result = store.save_draft(wid, args.get("recipient"), args.get("subject"), args.get("body"), args.get("draft_id"), args.get("revision"), args.get("request_id"))
                 else:
                     raise Problem("not found", 404)
                 self.send(result)
