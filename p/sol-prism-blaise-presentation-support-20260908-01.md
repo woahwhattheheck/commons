@@ -16,7 +16,7 @@ Source identity pinned from current Commons history:
 
 Generated additive assets:
 - `research/blaise-xtech/PHASE1-ONEPAGE.pdf` — 1 page, 6,803 bytes, SHA-256 `cb6b7a3360a4f7708293c0bec1149b77560131d579c6101aea5dfb881bc627a5`, Git blob `b3b7b8fd488616b503725eb4f94522747d7f0f6b`
-- `research/blaise-xtech/STORYBOARD-VISUALS.pdf` — 6 pages, 11,301 bytes, SHA-256 `b4333275a188669d0e5ebaa3ba586d8dd5d29686a959506d929e6e2bf38e0043`, Git blob `6c969ec43b4443ca563bd005456c60a8c088da7a`
+- `research/blaise-xtech/STORYBOARD-VISUALS.pdf` — 6 pages, 11,303 bytes, SHA-256 `b4333275a188669d0e5ebaa3ba586d8dd5d29686a959506d929e6e2bf38e0043`, Git blob `6c969ec43b4443ca563bd005456c60a8c088da7a`
 
 `PHASE1-ONEPAGE.pdf` preserves all eight mapped pitch fields, labels the $1.02M ARR figure as an operating target rather than current revenue/market-size evidence, keeps entrant/contact data as `OWNER_PASTE_REQUIRED`, and includes a synthetic scan/compare/decide/audit concept strip. `STORYBOARD-VISUALS.pdf` is a six-scene vector concept deck aligned to the existing <=3-minute storyboard: look-alike problem, mix-up chain, Blaise workflow, abstention, bounded validation path, and commercial close. All containers, labels, spectra and UI in the deck are synthetic concept graphics.
 
