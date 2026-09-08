@@ -58,7 +58,6 @@ class BackupManifestEncodingTests(unittest.TestCase):
         bundle = self.root / "backup.bundle"
         bundle.write_bytes(b"read-manifest fixture")
         payload = {
-            "schema_version": repo_backup.SCHEMA_VERSION,
             "created_at": "2026-09-07T00:00:00Z",
             "head_sha": "a" * 40,
             "bundle": bundle.name,
@@ -66,10 +65,16 @@ class BackupManifestEncodingTests(unittest.TestCase):
             "refs": [{"ref": "HEAD", "sha": "a" * 40}],
             "source": "/cloud/caf\u00e9/\u6570\u636e",
         }
-        self.manifest.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-        actual, actual_bundle = repo_backup.read_manifest(self.manifest)
-        self.assertEqual(actual, payload)
-        self.assertEqual(actual_bundle, bundle.resolve())
+        for version, head_fields in (
+            (repo_backup.LEGACY_SCHEMA_VERSION, {}),
+            (repo_backup.SCHEMA_VERSION, {"head_ref": None}),
+        ):
+            with self.subTest(schema_version=version):
+                versioned = {**payload, "schema_version": version, **head_fields}
+                self.manifest.write_text(json.dumps(versioned, ensure_ascii=False), encoding="utf-8")
+                actual, actual_bundle = repo_backup.read_manifest(self.manifest)
+                self.assertEqual(actual, versioned)
+                self.assertEqual(actual_bundle, bundle.resolve())
 
     def test_missing_and_malformed_json_keep_existing_error_path(self) -> None:
         with self.assertRaises(repo_backup.BackupError) as missing:
