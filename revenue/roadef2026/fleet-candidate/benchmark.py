@@ -53,6 +53,51 @@ def finite_loads(rows, label):
         if not math.isfinite(row['sat']):
             raise RuntimeError(f'{label}: non-finite saturation')
 
+def load_coordinates(rows, label):
+    """Index every recorded coordinate without silently discarding duplicates."""
+    if not isinstance(rows, list) or not rows:
+        raise RuntimeError(f'Load rows must be a nonempty list: {label}')
+    values = {}
+    indexed = []
+    for index, row in enumerate(rows):
+        try:
+            key = (row['t'], str(row['from']), str(row['to']))
+            value = row['sat']
+            duplicate = key in values
+        except (KeyError, TypeError) as error:
+            raise RuntimeError(f'Invalid load row: {label}[{index}]') from error
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise RuntimeError(f'Invalid saturation: {label}[{index}]')
+        if duplicate:
+            raise RuntimeError(f'Duplicate load coordinate: {label}[{index}]')
+        values[key] = value
+        indexed.append((index, value))
+    # Retain the landed finite-number contract and its diagnostics.
+    finite_loads(rows, label)
+    for index, value in indexed:
+        if value < 0:
+            raise RuntimeError(f'Invalid saturation: {label}[{index}]')
+    return values
+
+def validated_loads(checks, diagnostic, expected_keys=None, label='benchmark'):
+    """Require matching load universes before ranking or reconciliation.
+
+    Values, sorting, the existing 2e-9 tolerance, and cost handling are unchanged.
+    Agreement among reports is not an independent topology-completeness proof.
+    """
+    score_values = load_coordinates(checks[6]['saturations'], f'{label}: checker-6')
+    actual = load_coordinates(checks[12]['saturations'], f'{label}: checker-12')
+    predicted = load_coordinates(diagnostic['loads'], f'{label}: diagnostic')
+    if score_values.keys() != actual.keys() or actual.keys() != predicted.keys():
+        raise RuntimeError('Load key mismatch across checker precision and diagnostics')
+    keys = frozenset(actual)
+    if expected_keys is not None and keys != expected_keys:
+        raise RuntimeError('Load key mismatch across solvers')
+    error = max(abs(actual[key] - value) for key, value in predicted.items())
+    if error >= 2e-9:
+        raise RuntimeError(f'Load disagreement: {error}')
+    return sorted(score_values.values(), reverse=True), error, keys
+
 def reserve_outputs(output, instances, solvers, metadata):
     """Give this invocation exclusive ownership of its evidence destinations.
 
@@ -117,6 +162,7 @@ def main():
         inputs = [Path(str(prefix)+suffix) for suffix in ('-net.json','-tm.json','-scenario.json')]
         rows = []
         scores = []
+        expected_keys = None
         for label, solver in solvers:
             folder = folders[name, label]
             solution, stats = folder/'solution.json', folder/'stats.json'
@@ -134,16 +180,10 @@ def main():
                 result, duration = execute(command,folder,f'checker-{decimals}',timeout=180)
                 check = json.loads(result.stdout)
                 if check.get('valid') is not True: raise RuntimeError(f'{name}/{label}: checker rejected')
-                finite_loads(check['saturations'], f'{name}/{label}: checker-{decimals}')
                 checks[decimals],check_times[decimals] = check,duration
-            score = sorted((x['sat'] for x in checks[6]['saturations']), reverse=True)
             diagnostic = json.loads(stats.read_text())
-            finite_loads(diagnostic['loads'], f'{name}/{label}: diagnostic')
-            actual = {(x['t'],str(x['from']),str(x['to'])):x['sat'] for x in checks[12]['saturations']}
-            predicted = {(x['t'],str(x['from']),str(x['to'])):x['sat'] for x in diagnostic['loads']}
-            if actual.keys() != predicted.keys(): raise RuntimeError('Load key mismatch')
-            error = max(abs(actual[k]-v) for k,v in predicted.items())
-            if error >= 2e-9: raise RuntimeError(f'Load disagreement: {error}')
+            score, error, expected_keys = validated_loads(
+                checks, diagnostic, expected_keys, f'{name}/{label}')
             if sum(diagnostic['budget_used']) != checks[12]['total_cost']: raise RuntimeError('Cost disagreement')
             row = {'instance':name,'solver':label,'valid':True,'mlu_6':score[0],
                    'total_cost':checks[6]['total_cost'],'wall_seconds':wall,'checker_seconds':check_times,
