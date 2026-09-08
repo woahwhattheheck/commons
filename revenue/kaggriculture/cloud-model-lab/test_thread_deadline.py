@@ -181,6 +181,9 @@ def t4_no_signal_mutation_from_worker(G):
                 t = time.perf_counter()
                 while time.perf_counter() - t < 0.4:
                     pass
+            box["entered"] = True
+        except G.DeadlineExceeded:
+            box["entered"] = True          # expected: the guard fired
         except BaseException as exc:
             box["error"] = f"{type(exc).__name__}: {exc}"
 
@@ -190,14 +193,18 @@ def t4_no_signal_mutation_from_worker(G):
     after_handler = signal.getsignal(signal.SIGALRM)
     after_timer = signal.setitimer(signal.ITIMER_REAL, 0)
     unchanged = (after_handler is before_handler) and (after_timer[1] == before_timer[1])
-    record("T4 no signal mutation from a worker",
-           "PASS" if unchanged else "FAIL",
-           (f"guard unusable on a worker ({box['error']}) -- so it also cannot "
-            f"mutate signal state; handler identity unchanged={after_handler is before_handler}"
-            if box.get("error") else
-            f"handler identity unchanged={after_handler is before_handler}, "
-            f"ITIMER_REAL interval unchanged={after_timer[1] == before_timer[1]}"),
-           worker_error=box.get("error"),
+    entered = bool(box.get("entered"))
+    # Only meaningful once the guard actually runs on a worker. A guard that
+    # cannot be entered leaves signal state alone for the wrong reason.
+    status = "PASS" if (entered and unchanged) else (
+        "FAIL" if entered else "UNSUPPORTED")
+    record("T4 no signal mutation from a worker", status,
+           (f"guard could not be entered on a worker ({box.get('error')}), so the "
+            f"property was NOT exercised" if not entered else
+            f"guard ran and cancelled ON THE WORKER; SIGALRM handler identity "
+            f"unchanged={after_handler is before_handler}, ITIMER_REAL interval "
+            f"unchanged={after_timer[1] == before_timer[1]}"),
+           guard_entered_on_worker=entered, worker_error=box.get("error"),
            handler_identity_unchanged=bool(after_handler is before_handler),
            itimer_interval_unchanged=bool(after_timer[1] == before_timer[1]))
     return unchanged
@@ -419,6 +426,139 @@ def t8_async_exc_mechanism_probe(spin=2.0, fire_after=0.05):
     return box
 
 
+# --------------------------------------------------------------------------- T9
+def t9_worker_steady_state_cost(G, reps=400):
+    """The number ECON's 719-action episode actually depends on.
+
+    T6 measures the guard's cost on the main thread, where cancellation is a
+    signal and the body runs untraced. A worker-thread guard cancels by tracing,
+    so its cost is not the entry cost -- it is whatever the trace check adds to
+    the guarded BODY. This times an identical fixed workload inside the guard on
+    the main thread and on a worker, and reports the ratio.
+    """
+    def workload():
+        total = 0
+        for i in range(20000):
+            total += i * i % 7
+        return total
+
+    def timed(on_worker):
+        out = {}
+
+        def body():
+            samples = []
+            for _ in range(reps):
+                t = time.perf_counter()
+                with G._DeadlineTimer(5.0):
+                    workload()
+                samples.append(time.perf_counter() - t)
+            samples.sort()
+            out["mean"] = statistics.mean(samples)
+            out["median"] = samples[len(samples) // 2]
+            out["p99"] = samples[int(0.99 * len(samples)) - 1]
+
+        if on_worker:
+            th = threading.Thread(target=body)
+            th.start()
+            th.join(300)
+        else:
+            body()
+        return out
+
+    bare = []
+    for _ in range(reps):
+        t = time.perf_counter()
+        workload()
+        bare.append(time.perf_counter() - t)
+    bare_mean = statistics.mean(bare)
+    main = timed(False)
+    worker = timed(True)
+    record("T9 guarded-body cost, main thread versus worker", "MEASURED",
+           f"unguarded body {bare_mean*1e3:.3f} ms; guarded on main "
+           f"{main.get('mean', 0)*1e3:.3f} ms ({main.get('mean', 0)/bare_mean:.2f}x); "
+           f"guarded on worker {worker.get('mean', 0)*1e3:.3f} ms "
+           f"({worker.get('mean', 0)/bare_mean:.2f}x), {reps} reps each",
+           unguarded_mean_s=bare_mean, main_thread=main, worker_thread=worker,
+           main_multiplier=round(main.get("mean", 0) / bare_mean, 3),
+           worker_multiplier=round(worker.get("mean", 0) / bare_mean, 3))
+    return bare_mean, main, worker
+
+
+# -------------------------------------------------------------------------- T10
+def t10_shipped_policy_on_a_worker(actions=120):
+    """The real question behind T9, measured instead of extrapolated.
+
+    T9's workload is a tight arithmetic loop, which is the worst case for any
+    event-counting tracer. What matters is the SHIPPED policy: the same
+    `TitanAgent.act`, over real observations, driven from the main thread and
+    then from a worker thread, so the worker guard's cost on the actual body is
+    a measurement rather than an inference from a microbenchmark.
+    """
+    if LAB not in sys.path:
+        sys.path.insert(0, LAB)
+    import cards as cards_mod
+    import titan_runtime as T
+    import arlene_arm, route_cards
+    A, _ = route_cards.load_arlene()
+    cfg0 = json.load(open(os.path.join(LAB, "TITAN-CONFIG.json")))
+
+    def run(on_worker):
+        opp, _ = arlene_arm.make_opponent("apex", A)
+        agent = T.TitanAgent(T.Features(**cfg0))
+        env = cards_mod.make_env(9902241)
+        env.reset(2)
+        el, n, err = [], 0, None
+        while not env.done and n < actions:
+            acts = [None, None]
+            for i in range(2):
+                o = env.state[i].observation
+                if i != 0:
+                    acts[i] = opp(o, env.configuration)
+                    continue
+                box = {}
+
+                def call():
+                    try:
+                        t = time.perf_counter()
+                        box["out"] = agent.act(o, env.configuration)
+                        box["dt"] = time.perf_counter() - t
+                    except BaseException as exc:
+                        box["err"] = f"{type(exc).__name__}: {exc}"
+
+                if on_worker:
+                    th = threading.Thread(target=call)
+                    th.start()
+                    th.join(30)
+                else:
+                    call()
+                if "err" in box:
+                    err = box["err"]
+                    return {"error": err, "actions": len(el)}
+                el.append(box["dt"])
+                acts[i] = box["out"]
+            env.step(acts)
+            n += 1
+        el_sorted = sorted(el)
+        return {"actions": len(el), "mean_s": statistics.mean(el),
+                "median_s": el_sorted[len(el_sorted) // 2],
+                "p99_s": el_sorted[int(0.99 * len(el_sorted)) - 1],
+                "max_s": el_sorted[-1]}
+
+    main_r = run(False)
+    worker_r = run(True)
+    ratio = (None if "error" in main_r or "error" in worker_r
+             else round(worker_r["mean_s"] / main_r["mean_s"], 3))
+    record("T10 shipped policy driven from a worker thread", "MEASURED",
+           (f"error: main={main_r.get('error')} worker={worker_r.get('error')}"
+            if ratio is None else
+            f"main thread {main_r['mean_s']*1e3:.3f} ms/action "
+            f"(max {main_r['max_s']*1e3:.3f}); worker thread "
+            f"{worker_r['mean_s']*1e3:.3f} ms/action (max {worker_r['max_s']*1e3:.3f}) "
+            f"= {ratio}x, over {main_r['actions']} actions each"),
+           main_thread=main_r, worker_thread=worker_r, worker_multiplier=ratio)
+    return main_r, worker_r
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--guard", default=DEFAULT_GUARD)
@@ -443,6 +583,16 @@ def main():
         t7_trace_cost_on_shipped_policy()
     except Exception as exc:
         record("T7 trace-based cancellation cost on the shipped default", "ERROR",
+               f"{type(exc).__name__}: {exc}")
+    try:
+        t9_worker_steady_state_cost(G)
+    except Exception as exc:
+        record("T9 guarded-body cost, main thread versus worker", "ERROR",
+               f"{type(exc).__name__}: {exc}")
+    try:
+        t10_shipped_policy_on_a_worker()
+    except Exception as exc:
+        record("T10 shipped policy driven from a worker thread", "ERROR",
                f"{type(exc).__name__}: {exc}")
     try:
         t8_async_exc_mechanism_probe()
