@@ -9,6 +9,10 @@ import unittest
 
 from supplemental_receipt import inspect_supplemental, SUPPLEMENTS, LOADER_SOURCES
 
+# Retain the original three-suite fixture as a historical compatibility case.
+LEGACY_SUPPLEMENTS = {name: SUPPLEMENTS[name]
+                      for name in ('loader', 'empty_lot', 'joined_wrapper')}
+
 
 def log(count: int, ending: str = 'OK') -> bytes:
     return f'\nRan {count} tests in 0.013s\n\n{ending}\n'.encode()
@@ -16,11 +20,11 @@ def log(count: int, ending: str = 'OK') -> bytes:
 
 def fixture():
     files = {name: {'sha256': hashlib.sha256(name.encode()).hexdigest()}
-             for _, _, _, paths in SUPPLEMENTS.values() for name in paths}
+             for _, _, _, paths in LEGACY_SUPPLEMENTS.values() for name in paths}
     files.update({name: {'sha256': hashlib.sha256(name.encode()).hexdigest()}
                   for name in LOADER_SOURCES.values()})
     snapshot = {'files': files}
-    members = {name: log(count) for name, _, count, _ in SUPPLEMENTS.values()}
+    members = {name: log(count) for name, _, count, _ in LEGACY_SUPPLEMENTS.values()}
     report = {'schema': 'titan.selected-market-loader-tests.v1', 'test_methods': 7,
               'failures': 0, 'errors': 0, 'successful': True, 'game_panels': 0,
               'seeds_consumed': [], 'source_sha256': {
@@ -65,7 +69,7 @@ class SupplementalTests(unittest.TestCase):
     def test_require_all_reports_missing_suites_on_old_artifact(self):
         result = inspect_supplemental({}, {'files': {}}, self.core, require_all=True)
         self.assertEqual(result['status'], 'INCOMPLETE')
-        self.assertEqual(result['represented_suite_count'], 3)
+        self.assertEqual(result['represented_suite_count'], len(SUPPLEMENTS))
 
     def test_known_source_without_log_is_incomplete(self):
         del self.members['empty-lot-tests.log']
@@ -162,7 +166,7 @@ class SupplementalTests(unittest.TestCase):
     def test_unknown_suites_are_not_claimed_as_covered(self):
         self.members['funded-join-tests.log'] = log(16)
         result = self.read()
-        self.assertEqual(set(result['suites']), set(SUPPLEMENTS))
+        self.assertEqual(set(result['suites']), set(LEGACY_SUPPLEMENTS))
         self.assertEqual(result['core_plus_supplemental_methods'], 79)
 
 

@@ -12,12 +12,22 @@ from typing import Any, Mapping
 
 LAB = 'revenue/kaggriculture/cloud-execution-lab/'
 MARKET = 'revenue/kaggriculture/cloud-selected-market-checks/'
+ADAPTIVE = 'revenue/kaggriculture/cloud-market-game-theory/adaptive/'
+COVER = 'revenue/kaggriculture/cloud-composition-cases/cover/'
+WORKFLOW = '.github/workflows/titan-selected-projection.yml'
 SUPPLEMENTS = {
     'loader': ('loader-tests.log', 'loader-results.json', 7,
                (MARKET + 'test_engine_binding.py',)),
     'empty_lot': ('empty-lot-tests.log', None, 15, (MARKET + 'test_empty_lot.py',)),
     'joined_wrapper': ('joined-wrapper-tests.log', None, 6,
                       (LAB + 'test_ordered_selected_sell.py', LAB + 'ordered_selected_sell.py')),
+    'capture_binding': ('capture-binding-tests.log', 'capture-binding-results.json', 22,
+                        (ADAPTIVE + 'test_capture_binding.py', ADAPTIVE + 'runtime.py',
+                         LAB + 'selected_sell_core.py')),
+    'score_schedule': ('score-schedule-tests.log', None, 10,
+                       (LAB + 'test_score_schedule.py', LAB + 'selected_sell_core.py')),
+    'workflow_bindings': ('workflow-bindings-tests.log', None, 8,
+                          (COVER + 'test_regression_bindings.py', WORKFLOW)),
 }
 LOADER_SOURCES = {
     'checker': MARKET + 'check_market_contracts.py',
@@ -45,12 +55,13 @@ def finite_json(value: str) -> Any:
 
 def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, Any],
                          core_receipt: Mapping[str, Any], *, require_all: bool = False) -> dict[str, Any]:
-    """Add the three represented suites without altering caller-owned inputs.
+    """Check represented supplemental suites without altering caller-owned inputs.
 
     The existing reader remains responsible for archive digest, checkout/run,
     core suite validation and source/engine binding. Aggregate report schemas
     and further suites remain the caller's responsibility. A represented suite
-    has a known source-snapshot row or a log/report member. require_all also
+    has its test-source snapshot row or a log/report member. Shared runtime
+    dependencies alone do not declare that a newer suite ran. require_all also
     requests missing suites in older artifacts without relabeling old results.
     """
     problems: list[dict[str, str]] = []
@@ -99,7 +110,7 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
             problem('failure', f'{label}: differs from declared source/results')
 
     for label, (log_name, report_name, minimum, paths) in SUPPLEMENTS.items():
-        represented = (log_name in members or report_name in members or any(p in files for p in paths))
+        represented = (log_name in members or report_name in members or paths[0] in files)
         if not represented and not require_all:
             continue
         for name in paths:
@@ -139,6 +150,31 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
         report = obj(report_name)
         if report is None:
             continue
+        if label == 'capture_binding':
+            # The actual producer uses a nested tests object and has no schema
+            # field. Do not invent the loader's schema/count shape for it.
+            tests = report.get('tests')
+            if not isinstance(tests, dict):
+                problem('failure', 'capture_binding: tests is not an object')
+                tests = {}
+            count = tests.get('run')
+            if not integer(count) or count < minimum:
+                problem('failure', 'capture_binding: invalid/below-coverage tests.run')
+            else:
+                compare(count, summary['test_methods'], 'capture_binding count')
+            for key in ('failures', 'errors'):
+                if not integer(tests.get(key)) or tests[key] != 0:
+                    problem('failure', f'capture_binding: invalid/nonzero tests.{key}')
+            if tests.get('success') is not True:
+                problem('failure', 'capture_binding: tests.success is not true')
+            if (not integer(report.get('games')) or report['games'] != 0 or
+                    report.get('seeds_consumed', []) != []):
+                problem('failure', 'capture_binding: unexpected gameplay/seed scope')
+            compare(report.get('runtime_sha256'), source(ADAPTIVE + 'runtime.py'),
+                    'capture_binding runtime')
+            compare(report.get('optimizer_sha256'), source(LAB + 'selected_sell_core.py'),
+                    'capture_binding optimizer')
+            continue
         compare(report.get('schema'), 'titan.selected-market-loader-tests.v1', 'loader schema')
         count = report.get('test_methods')
         if not integer(count) or count < minimum:
@@ -173,7 +209,7 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
         'core_status': core_receipt.get('status'),
         'checkout': core_receipt.get('checkout'),
         'tests_rerun': 0, 'game_panels': 0, 'seeds_consumed': [],
-        'scope': 'Only represented loader, empty-lot and joined-wrapper evidence. '
+        'scope': 'Only represented suites named by SUPPLEMENTS. '
                  'Core status, aggregate summaries and further suites remain separate. '
                  'Not whole-repository CI, gameplay strength or execution attestation.',
     }
