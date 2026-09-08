@@ -356,7 +356,8 @@ def supervise(args):
             environment = dict(os.environ, PYTHONHASHSEED=str(execution["candidate_pythonhashseed"] % (2**32)))
         started = time.perf_counter()
         try:
-            run = subprocess.run(command, capture_output=True, text=True, timeout=args.process_timeout, env=environment)
+            run = subprocess.run(command, capture_output=True, text=True, encoding="utf-8",
+                                 errors="backslashreplace", timeout=args.process_timeout, env=environment)
             code, log = run.returncode, run.stdout + run.stderr
             report = read_child_report(child_output, mode)
         except subprocess.TimeoutExpired as exc:

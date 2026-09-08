@@ -4,6 +4,9 @@ import gzip
 import hashlib
 import io
 import json
+import os
+import stat
+import uuid
 from pathlib import Path
 import tarfile
 
@@ -74,20 +77,64 @@ def render():
     return data,encoded,receipt
 
 
+def _publish_files(outputs):
+    """Stage every complete file before replacing any published path.
+
+    Each same-directory replace is atomic, not the group. The receipt is last;
+    interruption between replacements remains detectable by verify_current().
+    A hard process exit can leave an unreferenced temporary file, never a
+    partially overwritten archive. Only this invocation's temporary paths are
+    cleaned up; historical artifacts and other writers' files are untouched.
+    """
+    staged = []
+    try:
+        for target, content in outputs:
+            temporary = target.with_name('.'+target.name+'.'+uuid.uuid4().hex+'.tmp')
+            with temporary.open('xb') as stream:
+                staged.append((temporary, target))
+                if target.exists():
+                    os.chmod(temporary, stat.S_IMODE(target.stat().st_mode))
+                remaining = memoryview(content)
+                while remaining:
+                    written = stream.write(remaining)
+                    if written is None or written <= 0:
+                        raise OSError('Release staging write made no progress')
+                    remaining = remaining[written:]
+                stream.flush()
+                os.fsync(stream.fileno())
+        for temporary, target in staged:
+            os.replace(temporary, target)
+    finally:
+        for temporary, _ in staged:
+            try:
+                temporary.unlink(missing_ok=True)
+            except OSError:
+                # Cleanup is best-effort; retain the original publication error.
+                pass
+
+
 def build_release():
     data,manifest,receipt=render()
+    outputs = []
     # Preserve every superseded current archive before advancing the one stream.
     current=ROOT/ARCHIVE
-    if current.exists() and current.read_bytes()!=data:
-        old=current.read_bytes();digest=hashlib.sha256(old).hexdigest()
+    old=current.read_bytes() if current.exists() else None
+    if old is not None and old!=data:
+        digest=hashlib.sha256(old).hexdigest()
         historical=ROOT/'exports/historical'/('titan-'+digest+'.tar.gz')
         historical.parent.mkdir(parents=True,exist_ok=True)
-        if historical.exists() and historical.read_bytes()!=old:
-            raise ValueError('Historical archive identity collision')
-        historical.write_bytes(old)
-    current.write_bytes(data)
-    (ROOT/(RECORD+'CURRENT-SOURCE.json')).write_bytes(manifest)
-    (ROOT/(RECORD+'CURRENT-ARCHIVE.json')).write_text(json.dumps(receipt,indent=2)+'\n')
+        if historical.exists():
+            if historical.read_bytes()!=old:
+                raise ValueError('Historical archive identity collision')
+        else:
+            outputs.append((historical, old))
+    # Keep the receipt as the final publication point. All files are staged and
+    # flushed first; a staging failure leaves the previous three outputs intact.
+    receipt_bytes=(json.dumps(receipt,indent=2)+'\n').replace('\n',os.linesep).encode('utf-8')
+    outputs.extend(((current, data),
+                    (ROOT/(RECORD+'CURRENT-SOURCE.json'), manifest),
+                    (ROOT/(RECORD+'CURRENT-ARCHIVE.json'), receipt_bytes)))
+    _publish_files(outputs)
     verify_current()
     return receipt
 
