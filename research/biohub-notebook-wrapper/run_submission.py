@@ -23,6 +23,10 @@ import sys
 import tempfile
 
 STARTER_COMMIT = "075fc5f5a52d11077f9dc2b074644618f26939e2"
+PINNED_ENTRYPOINT_BLOBS = {
+    "scripts/predict_unet_transformer.py": "b7372c6177d4ae79a693e5622e96e0af19a308b9",
+    "scripts/geffs_to_csv.py": "9d8effd56d238e96d4586e223379d649b46cfbc2",
+}
 TEST_DIR = Path("/kaggle/input/competitions/biohub-cell-tracking-during-development/test")
 WORK_DIR = Path("/kaggle/working")
 METHOD = "unet_transformer"
@@ -39,6 +43,32 @@ def digest_bytes(data: bytes) -> str:
 
 def digest_file(path: Path) -> str:
     return digest_bytes(path.read_bytes())
+
+
+def git_blob_sha1(path: Path) -> str:
+    data = path.read_bytes()
+    header = f"blob {len(data)}\0".encode("ascii")
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def verify_blob_map(root: Path, expected: dict[str, str]) -> dict[str, str]:
+    actual: dict[str, str] = {}
+    for relative, expected_sha in expected.items():
+        path = root / relative
+        if not path.is_file():
+            raise BootstrapError(f"missing pinned starter entrypoint: {relative}")
+        actual_sha = git_blob_sha1(path)
+        if actual_sha != expected_sha:
+            raise BootstrapError(
+                f"pinned starter entrypoint mismatch: {relative} "
+                f"expected={expected_sha} actual={actual_sha}"
+            )
+        actual[relative] = actual_sha
+    return actual
+
+
+def verify_starter_entrypoints(starter: Path) -> dict[str, str]:
+    return verify_blob_map(starter, PINNED_ENTRYPOINT_BLOBS)
 
 
 def discover(test_dir: Path) -> list[str]:
@@ -144,7 +174,21 @@ def self_test() -> int:
         (pred / "a.zarr.geff").mkdir()
         (pred / "b.zarr.geff").mkdir()
         assert verify_geffs(root / "starter", USER, METHOD, names)["count"] == 2
-    print("SELF_TEST PASS cases=4")
+
+        entry = root / "entry"
+        (entry / "scripts").mkdir(parents=True)
+        fake = entry / "scripts" / "predict.py"
+        fake.write_text("print('pinned')\n", encoding="utf-8")
+        fake_sha = git_blob_sha1(fake)
+        assert verify_blob_map(entry, {"scripts/predict.py": fake_sha}) == {"scripts/predict.py": fake_sha}
+        fake.write_text("print('changed')\n", encoding="utf-8")
+        try:
+            verify_blob_map(entry, {"scripts/predict.py": fake_sha})
+        except BootstrapError:
+            pass
+        else:
+            raise AssertionError("starter blob mismatch was not rejected")
+    print("SELF_TEST PASS cases=6")
     return 0
 
 
@@ -184,7 +228,13 @@ def main() -> int:
     receipt_file = args.work_dir / "biohub_submission_receipt.json"
     plan_file.write_text(
         json.dumps(
-            {"starter_commit": STARTER_COMMIT, "dataset_count": len(names), "dataset_name_sha256": name_sha, "commands": plan},
+            {
+                "starter_commit": STARTER_COMMIT,
+                "pinned_entrypoint_blobs": PINNED_ENTRYPOINT_BLOBS,
+                "dataset_count": len(names),
+                "dataset_name_sha256": name_sha,
+                "commands": plan,
+            },
             indent=2, sort_keys=True,
         ) + "\n",
         encoding="utf-8",
@@ -193,6 +243,7 @@ def main() -> int:
     if args.dry_run:
         receipt = {
             "starter_commit": STARTER_COMMIT, "dry_run": True,
+            "pinned_entrypoint_blobs": PINNED_ENTRYPOINT_BLOBS,
             "dataset_count": len(names), "dataset_name_sha256": name_sha,
             "split_manifest_sha256": digest_file(splits),
         }
@@ -200,13 +251,10 @@ def main() -> int:
         print(f"DRY_RUN datasets={len(names)} name_sha256={name_sha} plan={plan_file}")
         return 0
 
-    required = [
-        args.starter_dir / "scripts" / "predict_unet_transformer.py",
-        args.starter_dir / "scripts" / "geffs_to_csv.py",
-        args.weights, args.validator,
-    ]
+    required = [args.weights, args.validator]
     if any(not p.exists() for p in required):
         raise BootstrapError("one or more required local inputs are missing")
+    starter_entrypoint_blobs = verify_starter_entrypoints(args.starter_dir)
 
     env = os.environ.copy()
     env["USER"] = args.user_label
@@ -227,6 +275,7 @@ def main() -> int:
     submission = args.work_dir / "submission.csv"
     receipt = {
         "starter_commit": STARTER_COMMIT, "dry_run": False,
+        "starter_entrypoint_blobs": starter_entrypoint_blobs,
         "dataset_count": len(names), "dataset_name_sha256": name_sha,
         "split_manifest_sha256": digest_file(splits),
         "prediction": geff,
