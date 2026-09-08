@@ -19,6 +19,14 @@ promotion requires an observable prospective certificate covering ordered-queue
 affordability, needed inputs, finite worker turns, and receipts before the
 remaining horizon.
 
+`analyze_early_plant.py` also tests the most concrete existing-land opportunity:
+move a later same-tile WHEAT plant/water pair into two earlier literal PASS
+turns. All 64 reached predicates hold and terminal seed state is preserved, but
+the terminal cash delta is positive in 23, zero in 20, and negative in 21
+(mean -$1,138; range -$17,524 to +$23,957). The two-turn transform is therefore
+sent to the complete-route owner as a dated-sale/capacity input and rejected as
+a standalone stage.
+
 Run `summarize.py` from the repository root to recheck all baseline identities
 in the compressed raw result files and regenerate `summary.json`. No Kaggle
 upload or hosted-strength claim is made.
