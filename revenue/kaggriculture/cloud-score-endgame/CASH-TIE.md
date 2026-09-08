@@ -74,7 +74,7 @@ opt-in rule to POLY's already-retained runtime receipt matrices changes four
 complete actions. Only after all decisions were written was the existing
 native-counterfactual report joined by the selected action ID. The old source
 record totals are 28 wins / 4 ties under baseline and 30 wins / 2 ties under the
-opt-in choices. The two tie-to-win rows are ONE original development matchup
+opt-in variant. The two tie-to-win rows are ONE original development matchup
 mirrored, not two independent successes. Two already-winning rows improve
 margin without a win-point change; the other 28 actions remain identical.
 
