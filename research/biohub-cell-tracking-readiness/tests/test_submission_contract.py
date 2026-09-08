@@ -72,6 +72,32 @@ class SubmissionContractTests(unittest.TestCase):
         with self.assertRaisesRegex(SubmissionError, "more than two children"):
             validate_rows(rows)
 
+
+    def test_duplicate_edge_is_rejected(self) -> None:
+        rows = [
+            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "0", "t": "0", "z": "0", "y": "0", "x": "0", "source_id": "-1", "target_id": "-1"},
+            {"id": "1", "dataset": "d", "row_type": "node", "node_id": "1", "t": "1", "z": "0", "y": "1", "x": "0", "source_id": "-1", "target_id": "-1"},
+            {"id": "2", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "0", "target_id": "1"},
+            {"id": "3", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "0", "target_id": "1"},
+        ]
+        with self.assertRaisesRegex(SubmissionError, "duplicate edge"):
+            validate_rows(rows)
+
+    def test_csv_round_trip_is_byte_deterministic(self) -> None:
+        rows = build_rows()
+        with tempfile.TemporaryDirectory() as tmp:
+            first = Path(tmp) / "first.csv"
+            second = Path(tmp) / "second.csv"
+            write_submission(first, rows)
+            with first.open("r", encoding="utf-8", newline="") as handle:
+                parsed = list(csv.DictReader(handle))
+            write_submission(second, parsed)
+            self.assertEqual(first.read_bytes(), second.read_bytes())
+            self.assertEqual(
+                validate_submission(second, expected_datasets=["synthetic_embryo_0001"], require_consecutive_edges=True),
+                {"rows": 14, "nodes": 8, "edges": 6, "datasets": 1, "divisions": 0},
+            )
+
     def test_header_must_be_exact(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "bad.csv"
