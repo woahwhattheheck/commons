@@ -358,6 +358,11 @@
       "sha256": "74109501f3277b6af6d6032b1c56d2152b06cd5d6274e5eed1c65edf3bf28d8d",
       "source_path": "test_seed_derived.py"
     },
+    "checks/test_seller_state_recovery.py": {
+      "bytes": 7136,
+      "sha256": "06af343c810df30bc06c5e7fd502612ae248e733bfa4343039dd1f1bc36b5705",
+      "source_path": "test_seller_state_recovery.py"
+    },
     "checks/test_terminal_history_join.py": {
       "bytes": 7847,
       "sha256": "d4d025d21c6c941d34056d9584cd875c77c9d07975a53ed8c089fb599e292aee",
@@ -654,8 +659,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 12883,
-      "sha256": "001ce55c72d02571b6b80291c3a2fec6061f6a3243093fd8e0b4dd29f08c4d6c",
+      "bytes": 14657,
+      "sha256": "d693e8663ea7691b7ecaf373cc2fe8273174292eb5bb03ea63762d338f0fbbf1",
       "source_path": "titan_runtime.py"
     }
   },

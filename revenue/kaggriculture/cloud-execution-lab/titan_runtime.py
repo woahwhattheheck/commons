@@ -87,6 +87,11 @@ class TitanAgent:
         self.history = None
         self.post = None
         self._completed_route = None
+        # Last seller state paired with an action that actually returned.
+        # The observation is queued only when a later selected action becomes
+        # the deadline fallback before its seller transform completes.
+        self._completed_seller_state = None
+        self._seller_recovery_observation = None
 
     def _initialize(self):
         f = self.features
@@ -119,7 +124,26 @@ class TitanAgent:
                                                tie_break=f.terminal_tie_break)
         if self._completed_route is not None:
             self.controller.cur = self._completed_route
+        if (f.consumer == 'frozen' and self._completed_seller_state is not None
+                and self._seller_recovery_observation is not None):
+            for name, value in self._completed_seller_state.items():
+                setattr(self.consumer, name, deepcopy(value))
+            skipped = deepcopy(self._seller_recovery_observation)
+            self.consumer.observe(skipped)
+            self.consumer.previous = skipped
+            self._seller_recovery_observation = None
         self.ready = True
+
+    def _seller_checkpoint(self):
+        """Detach only completed frozen-seller state needed after recovery."""
+        if self.features.consumer != 'frozen' or self.history is not None:
+            return None
+        return {
+            'planned': deepcopy(self.consumer.planned),
+            'pending': deepcopy(self.consumer.pending),
+            'previous': self.consumer.previous,
+            'observed_harvests': deepcopy(self.consumer.observed_harvests),
+        }
 
     def _seed_selected(self, obs, cfg, selected):
         if not self.features.seed or not any(o and o[0] == 'BUY_SEED' for o in selected['market']):
@@ -197,6 +221,7 @@ class TitanAgent:
         self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0,
                             'entrypoint_prelude_seconds': invoked-started}
         selected_checkpoint = None
+        seller_checkpoint = None
         stage = 'cold_start'
         seconds = self.features.budget_seconds-self.features.reserve_seconds-(time.perf_counter()-started)
         if seconds <= 0:
@@ -225,6 +250,7 @@ class TitanAgent:
                 fallback = selected_checkpoint[0]
                 stage = 'selected_transform'
                 output = self.transform_selected(obs, cfg, selected)
+                seller_checkpoint = self._seller_checkpoint()
                 if self.history is not None:
                     self.post = self._selected_snapshot(obs)
                     stage = 'terminal_history'
@@ -233,6 +259,9 @@ class TitanAgent:
                     self.history.remember(obs,cfg,output,self.post)
                     self.diagnostics['history'] = self.history.diagnostics
                 self._completed_route = selected_checkpoint[1]
+                if seller_checkpoint is not None:
+                    self._completed_seller_state = seller_checkpoint
+                    self._seller_recovery_observation = None
                 self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
                                         act_cpu_seconds=time.process_time()-cpu_started)
                 return output
@@ -246,6 +275,9 @@ class TitanAgent:
             # A producer interrupted before returning cannot commit its choice.
             if selected_checkpoint is not None and fallback is selected_checkpoint[0]:
                 self._completed_route = selected_checkpoint[1]
+                if (self.features.consumer == 'frozen' and self.history is None
+                        and self._completed_seller_state is not None):
+                    self._seller_recovery_observation = deepcopy(obs)
             if self.history is not None:
                 if stage in ('cold_start','history_observation'):
                     self.history = None
