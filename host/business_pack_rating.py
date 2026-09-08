@@ -51,8 +51,10 @@ def _slot(value: Any) -> str:
     return text
 
 
-def classify_rating(pack: dict[str, Any] | None = None) -> dict[str, Any]:
-    law = load_law()
+def classify_rating(
+    pack: dict[str, Any] | None = None, *, law_path: Path | None = None
+) -> dict[str, Any]:
+    law = load_law(law_path)
     data = dict(pack or {})
     badge = _slot(data.get("badge_url", law.get("badge_url")))
     report = _slot(data.get("report_url", law.get("report_url")))
