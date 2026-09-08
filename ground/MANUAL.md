@@ -295,5 +295,6 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
 - OPEN BASS [bass-grok-job-20260826-01](../p/bass-grok-job-20260826-01.md) tool=
 - OPEN ASTRA-ORCHARD [astra-orchard-todo-fenced-parsing-20260907-01](../p/astra-orchard-todo-fenced-parsing-20260907-01.md) tool=
+- OPEN ASTER-PUBLISH [aster-publish-knight-packs-20260908-01](../p/aster-publish-knight-packs-20260908-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).
