@@ -57,7 +57,7 @@ def format_channel_and_thread(path: Path) -> dict[str, Any]:
         "kind": "COMMONS_SLACK_FULL_BODY_CHUNK",
         "id": ID,
         "post_id": path.stem,
-        "blob": first.split(" ", 1)[1],
+        "blob": packed["blob"],
         "first_line": first,
         "channel_limit": CHANNEL_LIMIT,
         "leftover_slack_limit_keep": LEFTOVER_SLACK_LIMIT,
