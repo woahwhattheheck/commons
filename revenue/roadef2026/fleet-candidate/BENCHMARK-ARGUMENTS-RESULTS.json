@@ -1,160 +1,45 @@
 {
-  "schema": "roadef.benchmark.arguments.current-composition.v1",
-  "checked_main": "b402afa36ed39ea24746aaa2e6713cf1c55a86bc",
-  "baseline": {
-    "path": "revenue/roadef2026/fleet-candidate/benchmark.py@b402afa3",
-    "bytes": 11165,
-    "sha256": "789fda06bb7f255cbe9be77a9e2f7be4a2f03d7f3c5a81b4988df77735902c99",
-    "git_blob": "609567b941013189181857b8303566796b56c4dd"
+  "baseline_control": {
+    "errors": 0,
+    "failures": 16,
+    "note": "Exact pre-fix benchmark; failing assertions/subtests demonstrate invalid values reached work/output reservation.",
+    "successful": false,
+    "tests_run": 23
   },
-  "prepared": {
-    "path": "revenue/roadef2026/fleet-candidate/benchmark.py",
-    "bytes": 11597,
-    "sha256": "ab9216ae6eea506e13ba0ff666cbe91909c25a9941a6b45a2a801857580230ec",
-    "git_blob": "139543be90a5e0ca4e27071304af30d6a1001c6a"
-  },
-  "test_source": {
-    "path": "revenue/roadef2026/fleet-candidate/test_benchmark_arguments.py",
-    "bytes": 12147,
-    "sha256": "f63ea15ab6d3156e6f3368b3a0502d83555b66812be5bfc97f1f8b1da7903961",
-    "git_blob": "801e3fcbd74b15770acf1a1be21bf40cd8c34951"
-  },
-  "guide": {
-    "path": "revenue/roadef2026/fleet-candidate/BENCHMARK-ARGUMENTS.md",
-    "bytes": 3813,
-    "sha256": "48fbe3733af2dad26956a41cc65946e2dfe8db2d985b20e6c8dd12d5389db1b3",
-    "git_blob": "a2dd8dba707be8f35e4092beb058b08347166070"
-  },
-  "tests": {
-    "prepared": {
-      "tests_run": 23,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "successful": true
-    },
-    "baseline": {
-      "tests_run": 23,
-      "failures": 16,
-      "errors": 0,
-      "skipped": 0,
-      "successful": false
-    }
-  },
-  "direct_retry": {
-    "original_invalid": {
-      "returncode": 1,
-      "output_entries": [
-        "experiment.json",
-        "setB-01",
-        "setB-01/test",
-        "setB-01/test/solver.process.json",
-        "setB-01/test/solver.stderr",
-        "setB-01/test/solver.stdout"
-      ],
-      "calls": [
-        {
-          "role": "solver",
-          "seconds": "nan"
-        }
-      ]
-    },
-    "original_retry": {
-      "returncode": 1,
-      "output_entries": [
-        "experiment.json",
-        "setB-01",
-        "setB-01/test",
-        "setB-01/test/solver.process.json",
-        "setB-01/test/solver.stderr",
-        "setB-01/test/solver.stdout"
-      ],
-      "calls": [
-        {
-          "role": "solver",
-          "seconds": "nan"
-        }
-      ]
-    },
-    "fixed_invalid": {
-      "returncode": 2,
-      "output_entries": [],
-      "calls": []
-    },
-    "fixed_retry": {
-      "returncode": 0,
-      "output_entries": [
-        "experiment.json",
-        "setB-01",
-        "setB-01/test",
-        "setB-01/test/checker-12.process.json",
-        "setB-01/test/checker-12.stderr",
-        "setB-01/test/checker-12.stdout",
-        "setB-01/test/checker-6.process.json",
-        "setB-01/test/checker-6.stderr",
-        "setB-01/test/checker-6.stdout",
-        "setB-01/test/result.json",
-        "setB-01/test/solution.json",
-        "setB-01/test/solver.process.json",
-        "setB-01/test/solver.stderr",
-        "setB-01/test/solver.stdout",
-        "setB-01/test/stats.json",
-        "summary.json"
-      ],
-      "calls": [
-        {
-          "role": "solver",
-          "seconds": "0.0"
-        },
-        {
-          "role": "checker",
-          "precision": "6"
-        },
-        {
-          "role": "checker",
-          "precision": "12"
-        }
-      ]
-    }
-  },
-  "ast_scope": {
-    "module_equal_after_removing_validations": true,
-    "removed_validations": [
-      "if not math.isfinite(args.seconds) or args.seconds < 0:\n    ap.error('--seconds must be finite and >= 0')",
-      "if args.rounds is not None and args.rounds < 0:\n    ap.error('--rounds must be >= 0')",
-      "if args.workers < 1:\n    ap.error('--workers must be >= 1')"
+  "behavior": {
+    "preserved": [
+      "zero seconds",
+      "negative zero seconds",
+      "fractional positive seconds",
+      "zero rounds",
+      "default settings",
+      "explicit resume path",
+      "multiple workers",
+      "existing output protection"
     ],
-    "unchanged_functions": {
-      "digest": true,
-      "execute": true,
-      "finite_loads": true,
-      "load_coordinates": true,
-      "validated_loads": true,
-      "reserve_outputs": true
-    }
+    "rejected_before_work": [
+      "nonfinite seconds",
+      "negative seconds",
+      "negative rounds",
+      "workers below one"
+    ]
   },
-  "official_solver_calls": 0,
+  "executed": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "successful": true,
+    "tests_run": 23
+  },
   "official_checker_calls": 0,
   "official_instances": 0,
-  "submission_changes": 0,
-  "qualification_draft_changes": 0,
-  "publication": {
-    "slack_posted": false,
-    "branch_created": false,
-    "pull_request_created": false,
-    "merged": false,
-    "hosted_ci": false
+  "official_solver_calls": 0,
+  "schema": "roadef.benchmark.arguments.delivery.v1",
+  "scope": "CLI validation using synthetic local subprocess fixtures; no official solver, checker, instances, scores, or timing panel",
+  "source": {
+    "base_benchmark_git_blob": "609567b941013189181857b8303566796b56c4dd",
+    "base_main_commit": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "delivered_benchmark_sha256": "ab9216ae6eea506e13ba0ff666cbe91909c25a9941a6b45a2a801857580230ec"
   },
-  "limits": [
-    "Synthetic subprocess protocol only; no contest score or native performance result.",
-    "The source pin is a checked main revision; main can move before publication.",
-    "Manifest changes must preserve concurrent current-main rows and use the prepared source identities."
-  ],
-  "recheck": {
-    "main_commit": "b402afa36ed39ea24746aaa2e6713cf1c55a86bc",
-    "benchmark_git_blob": "609567b941013189181857b8303566796b56c4dd",
-    "manifest_git_blob": "77a2672075128ab53d59c4c21ca92c54f2067756",
-    "argument_validation_present": false,
-    "source_unchanged_since_initial_check": true
-  }
+  "submission_changes": 0
 }

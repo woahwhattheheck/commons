@@ -13,10 +13,10 @@ inputs, and large nonnegative round limits preserve their prior behavior.
 
 ## Current source and scope
 
-The source was rechecked on Commons main `b402afa36ed39ea24746aaa2e6713cf1c55a86bc`,
-`benchmark.py` Git blob `609567b941013189181857b8303566796b56c4dd`,
-11,165 bytes, SHA-256
-`789fda06bb7f255cbe9be77a9e2f7be4a2f03d7f3c5a81b4988df77735902c99`.
+The source was rebased on Commons main `b19e7d4ee51046c2dd2f254629d2f49a7fa341e6`,
+`benchmark.py` base Git blob `609567b941013189181857b8303566796b56c4dd`,
+11,165 bytes. The delivered file is 11,597 bytes, SHA-256
+`ab9216ae6eea506e13ba0ff666cbe91909c25a9941a6b45a2a801857580230ec`.
 The prepared source is Git blob `139543be90a5e0ca4e27071304af30d6a1001c6a`,
 11,597 bytes, SHA-256
 `ab9216ae6eea506e13ba0ff666cbe91909c25a9941a6b45a2a801857580230ec`.
@@ -65,6 +65,7 @@ No official solver/checker/instance, benchmark panel, Docker build, S139 draft,
 qualification attachment, or submission is touched. No prior evidence is
 modified. This does not change search budgets supplied by valid calls, solver
 selection, score semantics, timeout allowance, or output replacement rules.
-The package is source-ready but has not been posted, committed, merged, or run in
-hosted CI by this connector session. The default branch can continue moving; apply
-only while the benchmark and manifest base blobs still match the identities above.
+The original recovered package was source-ready but unpublished. This repository
+delivery reran the same 23 methods against the rebased source and retains the
+original negative controls. Generic hosted checks and merge status are recorded on
+the pull request rather than inferred from this local test receipt.
