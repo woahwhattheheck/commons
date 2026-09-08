@@ -17,14 +17,8 @@ CROPS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
 
 def _time(observation: dict, configuration: Any) -> tuple[int, int, int]:
     cfg = configuration if isinstance(configuration, dict) else {}
-    per_day = max(1, int(cfg.get("turnsPerDay", 24)))
-    if "episodeSteps" in cfg:
-        # Official actions run from step 0 through episodeSteps - 2 inclusive.
-        # The terminal recorded state is not another opportunity to sell.
-        last_action_step = max(0, int(cfg["episodeSteps"]) - 2)
-        days = last_action_step // per_day + 1
-    else:
-        days = max(1, int(cfg.get("days", 30)))
+    per_day = int(cfg.get("turnsPerDay", 24))
+    days = int(cfg.get("days", 30))
     if "step" in observation:
         step = int(observation["step"])
         day, hour = divmod(step, per_day)
@@ -38,7 +32,7 @@ def _may_delay(observation: dict, configuration: Any) -> bool:
     private = observation.get("private", {})
     shed = private.get("shed", {})
     cfg = configuration if isinstance(configuration, dict) else {}
-    capacity = private.get("shed_capacity", cfg.get("shedCapacity", 100))
+    capacity = private.get("shed_capacity", cfg.get("shedCapacity", 1000))
     used = sum(v for v in shed.values() if isinstance(v, (int, float)))
     return day < days - 1 and used < 0.8 * capacity and hour % 4 != 0
 
