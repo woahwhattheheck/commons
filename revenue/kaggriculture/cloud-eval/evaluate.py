@@ -24,6 +24,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import uuid
 
 HERE = Path(__file__).resolve().parent
 LOADER = HERE.parent / "20260907-offline-agent" / "evaluate.py"
@@ -482,7 +483,8 @@ def main():
     engine, hashes = get_engine(args.engine_dir, args.loader)
     games = []
     reproducibility = None
-    report = {"schema_version": 1, "engine_ref": ENGINE_REF, "engine_sha256": hashes,
+    report = {"schema_version": 1, "invocation_id": uuid.uuid4().hex,
+              "engine_ref": ENGINE_REF, "engine_sha256": hashes,
               "loader_sha256": sha256(args.loader), "evaluator_sha256": sha256(__file__),
               "candidate": fingerprint(candidate), "opponents": {n: fingerprint(s) for n, s in rivals.items()},
               "seeds": seeds, "agent_rng_seed": args.rng_seed, "python": sys.version,
@@ -540,8 +542,13 @@ def main():
                                first["trace_sha256"] == replay["trace_sha256"] and first["scores"] == replay["scores"],
                                "original_trace": first["trace_sha256"], "replay_trace": replay["trace_sha256"]}
         phase = "finalize"
-        checkpoint("complete")
+        checkpoint("running")
+        # Publish the final report before advertising completion in the sidecar.
+        # A hard stop between replacements leaves a conservative running marker;
+        # invocation_id distinguishes this final report from an older invocation.
+        report["progress"]["state"] = "complete"
         write_report(args.output, report)
+        write_report(progress_path, report)
     except KeyboardInterrupt as exc:
         record_stop("interrupted", exc)
         print("Interrupted; completed game records: " + str(progress_path), file=sys.stderr)
