@@ -1,0 +1,344 @@
+name: poly-profiler-complete-reports-one-shot
+
+on:
+  push:
+    branches:
+      - astra/poly-profiler-complete-reports-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: astra/poly-profiler-complete-reports-20260908
+          fetch-depth: 0
+
+      - name: Verify exact retained base
+        run: |
+          set -euo pipefail
+          test "$(git hash-object revenue/kaggriculture/cloud-runtime-budget/profile_saved.py)" = "031f14ba3e15dd438f248a58a5f1143fc45f0d4b"
+          test "$(git hash-object revenue/kaggriculture/cloud-runtime-budget/test_child_reports.py)" = "0f7b1cacba615b614ae2b93833c53a87bd6567df"
+          test "$(git hash-object revenue/kaggriculture/cloud-runtime-budget/test_complete_reports.py)" = "c728ac232d5c2b04ef43349b6f97069f526c1dda"
+          cp revenue/kaggriculture/cloud-runtime-budget/profile_saved.py "$RUNNER_TEMP/profile_saved.original.py"
+
+      - name: Apply exact complete-report contract
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('revenue/kaggriculture/cloud-runtime-budget')
+          profile_path = root / 'profile_saved.py'
+          text = profile_path.read_text(encoding='utf-8')
+          old = '''        for row in calls:
+              if not isinstance(row, dict) or type(row.get("step")) is not int:
+                  raise ValueError("child report step is missing or invalid")
+              wall = row.get("wall_s")
+              if type(wall) not in (int, float) or wall < 0 or (type(wall) is float and not math.isfinite(wall)):
+                  raise ValueError("child report wall time is missing or invalid")
+          json.dumps(report, allow_nan=False)  # validate the eventual receipt encoding too
+          '''
+          new = '''        for row in calls:
+              if not isinstance(row, dict) or type(row.get("step")) is not int:
+                  raise ValueError("child report step is missing or invalid")
+              wall = row.get("wall_s")
+              if type(wall) not in (int, float) or wall < 0 or (type(wall) is float and not math.isfinite(wall)):
+                  raise ValueError("child report wall time is missing or invalid")
+          if report["status"] == "complete":
+              # Missing identities must not compare equal as None in the supervisor.
+              def require_digest(value, field):
+                  if (not isinstance(value, str) or len(value) != 64
+                          or any(char not in "0123456789abcdef" for char in value)):
+                      raise ValueError("child report %s is not a SHA-256 digest" % field)
+
+              if report.get("schema") != "titan.saved-runtime-pass.v1":
+                  raise ValueError("complete child report schema is missing or invalid")
+              if report.get("mode") != mode:
+                  raise ValueError("complete child report mode differs from requested pass")
+              if report.get("error"):
+                  raise ValueError("complete child report also contains an error")
+              for field in ("action_sequence_sha256", "profiler_sha256", "timing_source_sha256"):
+                  require_digest(report.get(field), field)
+              inputs = report.get("input")
+              if not isinstance(inputs, dict):
+                  raise ValueError("complete child report input identity is missing")
+              if type(inputs.get("records")) is not int or inputs["records"] != len(calls):
+                  raise ValueError("complete child report input count differs from calls")
+              for field in ("transport_sha256", "decoded_sha256"):
+                  require_digest(inputs.get(field), "input." + field)
+              runtime_sources = report.get("runtime_sources")
+              if not isinstance(runtime_sources, dict):
+                  raise ValueError("complete child report runtime source identities are missing")
+              for name, value in runtime_sources.items():
+                  if not isinstance(name, str) or not name:
+                      raise ValueError("complete child report runtime source name is invalid")
+                  require_digest(value, "runtime_sources." + name)
+              loaded_sources = report.get("loaded_sources")
+              if not isinstance(loaded_sources, dict):
+                  raise ValueError("complete child report loaded source identities are missing")
+              for name in ("finch_existing_timing", "finch_profile_target"):
+                  value = loaded_sources.get(name)
+                  if not isinstance(value, dict) or not isinstance(value.get("path"), str) or not value["path"]:
+                      raise ValueError("complete child report loaded source is missing: " + name)
+                  require_digest(value.get("sha256"), "loaded_sources." + name)
+              if report["timing_source_sha256"] != loaded_sources["finch_existing_timing"]["sha256"]:
+                  raise ValueError("complete child report timing source identities disagree")
+              for index, row in enumerate(calls):
+                  if row["step"] != index:
+                      raise ValueError("complete child report calls are not a zero-based uninterrupted prefix")
+                  require_digest(row.get("action_sha256"), "calls[%d].action_sha256" % index)
+          json.dumps(report, allow_nan=False)  # validate the eventual receipt encoding too
+          '''
+          if text.count(old) != 1:
+              raise SystemExit('profile validation insertion point changed')
+          text = text.replace(old, new)
+          old = '''    matching = (normal.get("status") == profiled.get("status") == "complete" and
+                  normal.get("action_sequence_sha256") == profiled.get("action_sequence_sha256") and
+                  len(normal["calls"]) == len(profiled["calls"]) and
+                  normal.get("runtime_sources") == profiled.get("runtime_sources") and
+          '''
+          new = '''    matching = (normal.get("status") == profiled.get("status") == "complete" and
+                  normal.get("action_sequence_sha256") == profiled.get("action_sequence_sha256") and
+                  len(normal["calls"]) == len(profiled["calls"]) and
+                  [(row["step"], row["action_sha256"]) for row in normal["calls"]] ==
+                  [(row["step"], row["action_sha256"]) for row in profiled["calls"]] and
+                  normal.get("runtime_sources") == profiled.get("runtime_sources") and
+          '''
+          if text.count(old) != 1:
+              raise SystemExit('profile parity insertion point changed')
+          profile_path.write_text(text.replace(old, new), encoding='utf-8')
+
+          child_path = root / 'test_child_reports.py'
+          text = child_path.read_text(encoding='utf-8')
+          old = '''        real_run = subprocess.run
+          calls = []
+          payload = 'missing' if raw is None else base64.b64encode(raw).decode('ascii')
+          def child(command, **kwargs):
+              child_output = command[command.index('--output')+1]
+              calls.append(command)
+              return real_run([sys.executable, '-c', CHILD, child_output, payload, str(exit_code)], **kwargs)
+          '''
+          new = '''        real_run = subprocess.run
+          calls = []
+          def child(command, **kwargs):
+              child_output = command[command.index('--output')+1]
+              calls.append(command)
+              mode = command[command.index('--worker-mode')+1]
+              data = raw(mode) if callable(raw) else raw
+              payload = 'missing' if data is None else base64.b64encode(data).decode('ascii')
+              return real_run([sys.executable, '-c', CHILD, child_output, payload, str(exit_code)], **kwargs)
+          '''
+          if text.count(old) != 1:
+              raise SystemExit('child subprocess fixture insertion point changed')
+          text = text.replace(old, new)
+          old = '''    def test_structured_complete_child_report_remains_accepted(self):
+          # This is a transport-only fixture, not evidence of actor/game execution.
+          report = {'status':'complete','calls':[{'step':0,'wall_s':.01}],
+              'action_sequence_sha256':'fixture','runtime_sources':{'main.py':'fixture'},
+              'input':{'fixture':True},'loaded_sources':{'target':'fixture'},
+              'loaded_sources_unchanged':True,'sources_unchanged':True}
+          code, result, output = self.run_case(json.dumps(report).encode(), 0)
+          self.assertEqual(code, 0)
+          self.assertTrue(result['instrumentation_action_parity'])
+          self.assertEqual(result['ordinary']['calls'], report['calls'])
+          self.assertFalse(list(self.root.glob('*.invalid.bin')))
+          '''
+          new = '''    def test_structured_complete_child_report_remains_accepted(self):
+          # This is a transport-only fixture, not evidence of actor/game execution.
+          digest = 'a' * 64
+          report = {'schema':'titan.saved-runtime-pass.v1', 'status':'complete',
+              'calls':[{'step':0,'wall_s':.01,'action_sha256':digest}],
+              'action_sequence_sha256':digest,'profiler_sha256':digest,
+              'timing_source_sha256':digest,'runtime_sources':{'main.py':digest},
+              'input':{'records':1,'transport_sha256':digest,'decoded_sha256':digest},
+              'loaded_sources':{
+                  'finch_existing_timing':{'path':'/fixture/timing.py','sha256':digest},
+                  'finch_profile_target':{'path':'/fixture/main.py','sha256':digest}},
+              'loaded_sources_unchanged':True,'sources_unchanged':True}
+          code, result, output = self.run_case(
+              lambda mode: json.dumps(dict(report, mode=mode)).encode(), 0)
+          self.assertEqual(code, 0)
+          self.assertTrue(result['instrumentation_action_parity'])
+          self.assertEqual(result['ordinary']['calls'], report['calls'])
+          self.assertFalse(list(self.root.glob('*.invalid.bin')))
+          '''
+          if text.count(old) != 1:
+              raise SystemExit('child complete fixture insertion point changed')
+          child_path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          python -m py_compile \
+            revenue/kaggriculture/cloud-runtime-budget/profile_saved.py \
+            revenue/kaggriculture/cloud-runtime-budget/test_child_reports.py \
+            revenue/kaggriculture/cloud-runtime-budget/test_complete_reports.py
+
+      - name: Execute changed and compatibility suites
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-runtime-budget
+          : > "$ROOT/COMPLETE-REPORTS-TESTS.txt"
+          for test in \
+            test_complete_reports.py \
+            test_child_reports.py \
+            test_profile_saved.py \
+            test_source_binding.py \
+            test_timeout_reports.py \
+            test_process_output.py \
+            test_trace_consumer.py
+          do
+            printf '\n===== %s =====\n' "$test" | tee -a "$ROOT/COMPLETE-REPORTS-TESTS.txt"
+            python -B "$ROOT/$test" 2>&1 | tee -a "$ROOT/COMPLETE-REPORTS-TESTS.txt"
+          done
+
+      - name: Prove predecessor rejects the new contract
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-runtime-budget
+          set +e
+          PROFILER_SOURCE="$RUNNER_TEMP/profile_saved.original.py" \
+            python -B "$ROOT/test_complete_reports.py" > "$ROOT/COMPLETE-REPORTS-BASELINE.txt" 2>&1
+          code=$?
+          set -e
+          test "$code" -ne 0
+          echo "predecessor_exit_code=$code" >> "$ROOT/COMPLETE-REPORTS-BASELINE.txt"
+
+      - name: Retain source-bound result and guide
+        env:
+          BASE_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os, platform, re, subprocess
+
+          root = Path('revenue/kaggriculture/cloud-runtime-budget')
+          log = (root / 'COMPLETE-REPORTS-TESTS.txt').read_text(encoding='utf-8')
+          sections = re.split(r'^===== (.+?) =====$', log, flags=re.M)
+          tests = {}
+          total = 0
+          for index in range(1, len(sections), 2):
+              name, body = sections[index], sections[index + 1]
+              match = re.search(r'Ran (\d+) tests? in ([0-9.]+)s', body)
+              if not match or not re.search(r'\nOK\s*$', body):
+                  raise SystemExit('unparseable successful test log: ' + name)
+              count = int(match.group(1))
+              total += count
+              tests[name] = {'tests': count, 'seconds': float(match.group(2)), 'success': True}
+
+          def identity(path):
+              body = path.read_bytes()
+              git_blob = subprocess.check_output(['git', 'hash-object', str(path)], text=True).strip()
+              return {'bytes': len(body), 'sha256': hashlib.sha256(body).hexdigest(), 'git_blob': git_blob}
+
+          sources = {path.name: identity(path) for path in [
+              root / 'profile_saved.py', root / 'test_complete_reports.py',
+              root / 'test_child_reports.py', root / 'test_profile_saved.py',
+              root / 'test_source_binding.py', root / 'test_timeout_reports.py',
+              root / 'test_process_output.py', root / 'test_trace_consumer.py']}
+          baseline = (root / 'COMPLETE-REPORTS-BASELINE.txt').read_text(encoding='utf-8')
+          baseline_match = re.search(r'FAILED \(failures=(\d+)', baseline)
+          result = {
+              'schema': 'titan.saved-profiler.complete-report-integrity.v1',
+              'base_workflow_commit': os.environ['BASE_HEAD'],
+              'python': platform.python_version(),
+              'tests': tests,
+              'total_test_methods': total,
+              'failures': 0,
+              'errors': 0,
+              'skips': 0,
+              'predecessor_control': {
+                  'source_git_blob': '031f14ba3e15dd438f248a58a5f1143fc45f0d4b',
+                  'suite_exit_nonzero': True,
+                  'reported_failures': int(baseline_match.group(1)) if baseline_match else None,
+                  'log_sha256': hashlib.sha256(baseline.encode()).hexdigest(),
+              },
+              'sources': sources,
+              'behavior': {
+                  'complete_reports_require_source_input_action_and_mode_identity': True,
+                  'per_call_action_hash_parity_required': True,
+                  'invalid_complete_bytes_retained': True,
+                  'original_error_reports_preserved': True,
+                  'expected_action_mismatch_remains_off_policy_evidence': True,
+              },
+              'scope': 'Saved-profiler child-report validation and parent parity only.',
+              'full_games': 0,
+              'game_seed_uses': 0,
+              'engine_transitions': 0,
+              'workflow_added_to_final_tree': False,
+          }
+          (root / 'COMPLETE-REPORTS-RESULT.json').write_text(
+              json.dumps(result, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+          guide = f'''# Complete saved-profiler report integrity
+
+A child report marked `complete` is now accepted only when it binds the exact
+requested pass, source identities, replay input, uninterrupted call prefix, and
+one action digest for every completed call. Missing identities no longer compare
+as equal `None` values in the parent supervisor.
+
+Malformed or incomplete `complete` reports become `process_error` with type
+`InvalidChildReport`. Their original bytes are retained at a new `.invalid.bin`
+path with length and SHA-256. Existing non-complete actor errors remain actor
+errors rather than being relabeled. Expected-action mismatch remains separate
+off-policy correspondence evidence and does not by itself invalidate profiler
+instrumentation parity.
+
+The supervisor now also compares `(step, action_sha256)` for every ordinary and
+instrumented call. An aggregate action-sequence digest alone is not the complete
+parent parity proof.
+
+## Executed validation
+
+All **{total} methods** passed across the seven current standard-library suites:
+
+'''
+          for name, row in tests.items():
+              guide += f'- `{name}`: {row["tests"]} methods.\n'
+          guide += f'''
+
+The new 24-method integrity suite starts real subprocesses for the key controls.
+It verifies well-formed success, original error preservation, missing identity,
+wrong mode, malformed digests, input/source binding, noncontiguous steps,
+per-call action mismatches, raw invalid-byte retention, actual worker shutdown
+corruption, and off-policy expected-action separation.
+
+The unchanged predecessor source `031f14ba3e15dd438f248a58a5f1143fc45f0d4b`
+failed that new suite as required; its exact log is retained in
+`COMPLETE-REPORTS-BASELINE.txt`. Final source identities and per-suite durations
+are in `COMPLETE-REPORTS-RESULT.json`. Full passing output is retained in
+`COMPLETE-REPORTS-TESTS.txt`.
+
+## Reproduce
+
+From the repository root:
+
+```sh
+python -B revenue/kaggriculture/cloud-runtime-budget/test_complete_reports.py
+python -B revenue/kaggriculture/cloud-runtime-budget/test_child_reports.py
+python -B revenue/kaggriculture/cloud-runtime-budget/test_profile_saved.py
+python -B revenue/kaggriculture/cloud-runtime-budget/test_source_binding.py
+python -B revenue/kaggriculture/cloud-runtime-budget/test_timeout_reports.py
+python -B revenue/kaggriculture/cloud-runtime-budget/test_process_output.py
+python -B revenue/kaggriculture/cloud-runtime-budget/test_trace_consumer.py
+```
+
+These are profiler/transport tests. They execute no Kaggriculture games, engine
+transitions, gameplay seeds, remote services, canonical release, or policy
+selection. No permanent workflow is added by this delivery.
+'''
+          (root / 'COMPLETE-REPORTS.md').write_text(guide, encoding='utf-8')
+          PY
+
+      - name: Publish tested source and remove one-shot workflow
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/poly-profiler-complete-reports-one-shot.yml
+          git config user.name "Astra Poly"
+          git config user.email "brycembusiness2@gmail.com"
+          git add revenue/kaggriculture/cloud-runtime-budget
+          git commit -m "Require complete profiler identity before action parity"
+          git push origin HEAD:astra/poly-profiler-complete-reports-20260908
