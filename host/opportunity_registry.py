@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import html
 import json
+import math
 from datetime import date, datetime
 from pathlib import Path
 import re
@@ -136,12 +137,20 @@ def _reject_nonfinite(value: str):
     raise RegistryError("non-finite JSON constant %s" % value)
 
 
+def _finite_float(value: str) -> float:
+    # parse_constant does not see JSON numbers whose float conversion overflows.
+    number = float(value)
+    _require(math.isfinite(number), "non-finite JSON number %s" % value)
+    return number
+
+
 def _parse_json(raw: str, at: str):
     try:
         return json.loads(
             raw,
             object_pairs_hook=_reject_duplicate_pairs,
             parse_constant=_reject_nonfinite,
+            parse_float=_finite_float,
         )
     except json.JSONDecodeError as exc:
         raise RegistryError("%s is malformed JSON" % at) from exc
