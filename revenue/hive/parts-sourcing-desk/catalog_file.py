@@ -11,7 +11,7 @@ import hashlib
 import io
 import json
 from dataclasses import dataclass
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from pathlib import Path, PureWindowsPath
 from typing import Any
 
@@ -160,6 +160,26 @@ def map_fields(catalog: ParsedCatalog, mapping: dict[str, str] | None = None,
     return output
 
 
+def _config(path: Path | None) -> dict[str, Any] | None:
+    """Read explicit CLI options without dropping keys or rounding decimals."""
+    if path is None:
+        return None
+    try:
+        value = json.loads(path.read_text(encoding="utf-8-sig"), parse_float=Decimal,
+                           parse_constant=_finite_json, object_pairs_hook=_unique_object)
+    except UnicodeDecodeError as exc:
+        raise CatalogFileError(f"{path.name}: configuration must be UTF-8; invalid byte near offset {exc.start}") from None
+    except json.JSONDecodeError as exc:
+        raise CatalogFileError(f"{path.name}: JSON line {exc.lineno}, column {exc.colno}: {exc.msg}") from None
+    except InvalidOperation:
+        raise CatalogFileError(f"{path.name}: JSON number exceeds the supported decimal range") from None
+    except CatalogFileError as exc:
+        raise CatalogFileError(f"{path.name}: {exc}") from None
+    if not isinstance(value, dict):
+        raise CatalogFileError(f"{path.name}: configuration must be a JSON object")
+    return value
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("file", type=Path)
@@ -170,8 +190,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         catalog = read_catalog(args.file, args.format)
-        mapping = json.loads(args.mapping.read_text(encoding="utf-8")) if args.mapping else None
-        defaults = json.loads(args.defaults.read_text(encoding="utf-8")) if args.defaults else None
+        mapping = _config(args.mapping)
+        # Match catalog JSON normalization for defaults, but do not coerce a
+        # numeric mapping destination into a valid string column name.
+        defaults = _json_value(_config(args.defaults))
         doc = {"format": "parts-catalog-preview-v1", "source": catalog.source,
                "rows": map_fields(catalog, mapping, defaults), "applied": False,
                "supplier_contact": "not_performed", "compatibility": "not_inferred"}
