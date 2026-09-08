@@ -48,9 +48,13 @@ _NEW_FAILURE = (
 
 # Owner-authorized software-work reports describe the defect being repaired.
 # Artifact links identify report context, never credentials or admission.
-_SOFTWARE_ARTIFACT = 'https?://[^\\s<>]+/(?:issues|pull|pulls|merge_requests|commit|commits|actions/runs)/[a-z0-9][^\\s<>]*'
+_SOFTWARE_ARTIFACT = (
+    r'https?://[^\s<>]+/(?:issues|pull|pulls|merge_requests|commit|commits|actions/runs)/[a-z0-9][^\s<>]*'
+    r'|\b[0-9a-f]{40}\b'
+    r'|\btest_[A-Za-z0-9_.-]+\.(?:py|js|mjs|cjs)\b'
+)
 _SOFTWARE_WORK = '\\b(?:bug|defect|fix|fixed|patch|bounty|claim|submitted|report filed|pull request|repair|progress)\\b'
-_SOFTWARE_DETAIL = '\\b(?:cli|api|parser|parsing|argument|option|input|output|code|function|http|ci|build|test|tests|workflow|pipeline|dependency|package|compiler|config|configuration|database|query|client|server|request|response)\\b'
+_SOFTWARE_DETAIL = '\\b(?:cli|api|parser|parsing|argument|option|input|output|code|function|http|ci|build|test|tests|workflow|pipeline|dependency|package|compiler|config|configuration|database|query|client|server|request|requests|response|baseline|candidate|fixture|suite|browser|chromium)\\b'
 _RESULT_EVALUATION = '\\b(?:owner|muhlnickel|peer|peers|teammate|teammates|agent|agents|their|your|claim|claims|assertion|assertions|accepted|established|proven|verified|validated|completed|passed|reported)\\b'
 
 _RULES = [
@@ -224,7 +228,8 @@ def check_publication(body: str, subject: str = "") -> dict:
     # Each paragraph supplies antecedents (e.g. 'The peer shipped it. I doubt
     # that result.') while a prohibition protects only its own sentence.
     for paragraph in re.split(r"\n\s*\n", value):
-        sentences = re.split(r"[.!?;](?:\s+|$)|[\r\n]+", paragraph)
+        paragraph = re.sub(r"[ \t]*\n[ \t]*", " ", paragraph)
+        sentences = re.split(r"[.!?;](?:\s+|$)", paragraph)
         for index, sentence in enumerate(sentences):
             if not sentence.strip():
                 continue
