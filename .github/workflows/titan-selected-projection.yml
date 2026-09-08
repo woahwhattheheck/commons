@@ -72,7 +72,7 @@ jobs:
             /revenue/kaggriculture/cloud-economic-stress/cancellation/
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
-            /revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py'
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py
             /revenue/kaggriculture/cloud-market-game-theory/selector.py
             /revenue/kaggriculture/cloud-plan-continuation/continuation.py
