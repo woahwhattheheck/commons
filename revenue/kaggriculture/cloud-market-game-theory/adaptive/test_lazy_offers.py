@@ -15,6 +15,7 @@ import inspect
 from pathlib import Path
 import random
 import sys
+from tempfile import TemporaryDirectory
 from threading import RLock
 from types import SimpleNamespace
 import unittest
@@ -38,13 +39,29 @@ def load_file(path, name):
 
 recourse = load_file(HERE/'recourse.py', 'cove_recourse')
 ash = load_file(ROOT/'cloud-plan-continuation/continuation.py', 'cove_continuation')
+fills = load_file(ROOT/'cloud-observed-fills/observed_fills.py', 'cove_observed_fills')
 
 
-def classes(path, names, environment):
-    """Compile whole unchanged class nodes, never rewrite their methods."""
+def classes(path, names, environment, *, support=()):
+    """Compile unchanged classes and their explicitly requested source helpers.
+
+    Optional support names also let historical runtimes without these helpers
+    remain loadable. Unrelated imports, assignments and bootstrap calls are not
+    executed. Production class/function bodies are never rewritten.
+    """
     module = ast.parse(path.read_text(), filename=str(path))
-    body = [n for n in module.body if isinstance(n, ast.ClassDef) and n.name in names]
-    if {n.name for n in body} != set(names):
+    body = []
+    found = set()
+    for node in module.body:
+        if isinstance(node, ast.ClassDef) and node.name in names:
+            body.append(node)
+            found.add(node.name)
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in support:
+            body.append(node)
+        elif isinstance(node, ast.Assign) and any(
+                isinstance(target, ast.Name) and target.id in support for target in node.targets):
+            body.append(node)
+    if found != set(names):
         raise ValueError(f'Missing production classes in {path}')
     namespace = dict(environment)
     exec(compile(ast.Module(body=body, type_ignores=[]), str(path), 'exec'), namespace)
@@ -90,7 +107,7 @@ class SuppliedParent:
 
 def runtime(path=None, compiler=None):
     return classes(Path(path) if path else HERE/'runtime.py', ['AdaptiveTransform','Agent'], {
-        'deepcopy':copy.deepcopy, 'WholePlanSelector':WholePlanSelector, 'ash':ash,
+        'deepcopy':copy.deepcopy, 'WholePlanSelector':WholePlanSelector, 'ash':ash, 'fills':fills,
         'sale':sale, 'math':core, 'integrated':SimpleNamespace(IntegratedSelectedAgent=SuppliedParent),
         'flow':SimpleNamespace(FlowHistory=EmptyHistory),
         'sorrel':SimpleNamespace(infer_rival_flow=lambda *a, **k: {'products':{}}),
@@ -98,7 +115,7 @@ def runtime(path=None, compiler=None):
         'compile_policy':compiler or recourse.compile_policy,
         'choose_observed':recourse.choose_observed,
         '_CAPTURE_LOCK':RLock(), '_OPTIMIZE_LOT':sale.optimize_lot,
-    })
+    }, support=('_PRICE_FIELDS', '_economic_context', '_context_reason'))
 
 
 def record(item='EGG', *, now=40, end=48, quantity=6, inventory=40):
@@ -159,6 +176,58 @@ def observable(agent, output):
             'transform_counts':tr.counts if tr else {},
             'continuation':tr.continuation.last_decision if tr else None,
             'parent_calls':agent.parent.calls}
+
+
+class LoaderTests(unittest.TestCase):
+    def test_current_runtime_binds_economic_helpers(self):
+        module = runtime()
+        self.assertEqual(module._PRICE_FIELDS,
+                         ('base', 'I0', 'T', 'below_func', 'below_target',
+                          'above_func', 'above_target'))
+        context = module._economic_context('EGG', None, ['BAKERY'], {}, 40, 48)
+        observation = {'step': 40, 'town': {'unlocked_shops': ['BAKERY']},
+                       'market': {'params': None}}
+        self.assertIsNone(module._context_reason({'economic_context': context},
+                                                observation, {}, 'EGG', 48,
+                                                admission=True))
+
+    def test_current_runtime_uses_real_fill_recorder(self):
+        module = runtime()
+        self.assertIs(module.fills, fills)
+        recorder = module.fills.ObservedFillLedger()
+        recorded = recorder.record({'step': 40, 'player': 0}, {},
+            {'market': [['SELL', 'EGG', 2]]}, post_unit_shed={'EGG': 2})
+        result = recorder.observe({'step': 41, 'player': 0,
+                                   'private': {'shed': {'EGG': 0}}})
+        self.assertEqual(recorded['status'], 'recorded')
+        self.assertTrue(module.fills.full_sale_verdict(result, 0, 2))
+
+    def test_only_requested_support_nodes_execute(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory)/'fixture.py'
+            path.write_text("LIMIT = 7\n"
+                            "UNRELATED = trigger()\n"
+                            "def helper(value): return value + LIMIT\n"
+                            "class Fixture:\n"
+                            "    def call(self): return helper(2)\n")
+            module = classes(path, ['Fixture'], {}, support=('LIMIT', 'helper'))
+            self.assertEqual(module.Fixture().call(), 9)
+            self.assertFalse(hasattr(module, 'UNRELATED'))
+            self.assertEqual(module.helper.__code__.co_filename, str(path))
+
+    def test_historical_class_needs_no_optional_helpers(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory)/'fixture.py'
+            path.write_text('class Fixture:\n    value = 11\n')
+            module = classes(path, ['Fixture'], {}, support=('absent_helper',))
+            self.assertEqual(module.Fixture.value, 11)
+
+    def test_missing_required_class_is_rejected(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory)/'fixture.py'
+            path.write_text('def optional_helper(): return 1\n')
+            with self.assertRaisesRegex(ValueError, 'Missing production classes'):
+                classes(path, ['Missing'], {}, support=('optional_helper',))
 
 
 class LazyOfferTests(unittest.TestCase):
