@@ -62,6 +62,7 @@ class Features:
     spatial_tempo: bool = False
     fourth_quadrant: bool = False
     market_pressure: bool = False
+    committed_seed_retry: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -104,6 +105,7 @@ class TitanAgent:
         self.quadrant = None
         self._quadrant_admission = fourth_quadrant_admission
         self._seed_plan = None
+        self.committed_seed_retry_module = None
 
     @staticmethod
     def _seller_public_observation(obs, *, copy_tiles=True):
@@ -211,6 +213,11 @@ class TitanAgent:
             if f.redundant_hire:
                 self.redundant_hire_module = load(
                     '_titan_redundant_hire', HERE/'reference/titan-current/redundant_hire.py', cache=True)
+        if f.committed_seed_retry:
+            source = (HERE/'seed_retry.py' if (HERE/'seed_retry.py').is_file() else
+                      HERE.parent/'cloud-committed-seed-retry/seed_retry.py')
+            self.committed_seed_retry_module = load(
+                '_titan_committed_seed_retry', source, cache=True)
         if f.terminal_history and self.history is None:
             from terminal_history_join import TerminalHistoryJoin
             self.history = TerminalHistoryJoin(hypotheses=f.history_hypotheses,
@@ -293,6 +300,21 @@ class TitanAgent:
         self.diagnostics['redundant_hire'] = report
         return result
 
+    def _committed_seed_retry_selected(self, obs, cfg, selected):
+        """Append a certified seed deficit for the unchanged next-turn route.
+
+        The attributed helper owns demand, route and reserve checks and calls the
+        landed funding certificate in its reverse (richer-queue) direction. It
+        never invokes the producer or substitutes the certificate's reduced
+        action for the separately retained candidate.
+        """
+        if not self.features.committed_seed_retry:
+            return selected
+        result, report = self.committed_seed_retry_module.apply_committed_seed_retry(
+            self, obs, cfg, selected)
+        self.diagnostics['committed_seed_retry'] = report
+        return result
+
     def transform_selected(self, obs, cfg, selected):
         """Dispatch an already-selected action; never calls a producer."""
         if self.features.consumer == 'ordered':
@@ -300,7 +322,8 @@ class TitanAgent:
         result = (self.consumer.transform(obs, cfg, selected)
                   if self.features.consumer == 'frozen' else deepcopy(selected))
         result = self._redundant_hire_selected(obs, cfg, result)
-        return self._seed_selected(obs, cfg, result)
+        result = self._seed_selected(obs, cfg, result)
+        return self._committed_seed_retry_selected(obs, cfg, result)
 
     def _market_pressure_selected(self, obs, cfg, selected):
         """Order the final contiguous SELL blocks by public delay exposure.

@@ -141,6 +141,7 @@
   "default": {
     "budget_seconds": 1.0,
     "committed": true,
+    "committed_seed_retry": false,
     "consumer": "frozen",
     "fourth_quadrant": false,
     "funding": true,
@@ -296,8 +297,8 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 272,
-      "sha256": "abc9e6812f444a04161340801d469a06b7cf5c29336c08e267a7e1546e6b562b",
+      "bytes": 305,
+      "sha256": "0750a0340ef799b7cfe6d5e6d5db23c3b4dd630617d1859a08ca0bf9f48dbe9a",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
@@ -345,6 +346,11 @@
       "sha256": "455024a4179a95ad597492e1f4b94de7bd3bfe7a3a88fd0dce46001f629ec3cd",
       "source_path": "reference/historical/seed_budget-before-derived-cache.py"
     },
+    "checks/test_committed_seed_retry_runtime.py": {
+      "bytes": 2269,
+      "sha256": "b48b6b1704186ef9b3ad9828b190019415d68dde5b6e624784958a7638a47fca",
+      "source_path": "test_committed_seed_retry_runtime.py"
+    },
     "checks/test_engine_semantics.py": {
       "bytes": 15070,
       "sha256": "fc0a65f98fc78e4dc0cc5e1b553a53d514276fe83fb3106d4ed55f028b0305f6",
@@ -384,6 +390,11 @@
       "bytes": 4554,
       "sha256": "74109501f3277b6af6d6032b1c56d2152b06cd5d6274e5eed1c65edf3bf28d8d",
       "source_path": "test_seed_derived.py"
+    },
+    "checks/test_seed_retry.py": {
+      "bytes": 12268,
+      "sha256": "6180896c9f355bb8ad36d7e086f37706461724adb10ff95a6ed3bd3ce6e606be",
+      "source_path": "../cloud-committed-seed-retry/test_seed_retry.py"
     },
     "checks/test_terminal_history_join.py": {
       "bytes": 7847,
@@ -695,6 +706,11 @@
       "sha256": "2915af42b6b4cb280526f105705257b6ed35173391d1f11bb80dd73d55fc48f7",
       "source_path": "scheduler.py"
     },
+    "seed_retry.py": {
+      "bytes": 11359,
+      "sha256": "71396deb4098709f128a4f0b8d8e6d7259da2d0bfe383f224a6d57d8a85eb72f",
+      "source_path": "../cloud-committed-seed-retry/seed_retry.py"
+    },
     "selected_action_sell.py": {
       "bytes": 21680,
       "sha256": "3aa372c563a7cc4c7f5273e9fd1b9652959df301d84652c44be1c5bfeea1500e",
@@ -726,8 +742,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 23279,
-      "sha256": "457abb184dba86d9cd5c924e8ce65eca13714de9aa007bfc81a4478a3d7631bc",
+      "bytes": 24486,
+      "sha256": "a1a2a77c28a1be8e8341c057084f76b75073998d149e7d24eb5c97b11ffa27dc",
       "source_path": "titan_runtime.py"
     }
   },
