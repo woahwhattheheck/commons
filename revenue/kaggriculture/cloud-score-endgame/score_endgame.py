@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from copy import deepcopy
 from fractions import Fraction as F
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -99,6 +100,35 @@ def solve_absolute(document, build_table, solve_full_table, verify_certificate,
                 'nonterminal_cells': deepcopy(table['nonterminal_cells'])}
     raw = solve_full_table(rows, max_pivots=max_pivots, max_bits=max_bits)
     return _consume(table, rows, raw, verify_certificate)
+
+
+def _terminal_context(observation, configuration, table):
+    """Bind a terminal draw to its current facts and normalized paired evidence.
+
+    Keep native mapping order, which can matter to inventory operations. Do not
+    consume evaluator-only observation/configuration fields or diagnostic source
+    labels. This is continuity checking, not proof that receipts were produced
+    causally or that a first supplied table matches the real environment.
+    """
+    visible = {key: observation[key] for key in
+               ('player', 'step', 'farms', 'market', 'private', 'town')
+               if key in observation}
+    defaults = dict(episodeSteps=720, boardSize=10, turnsPerDay=24,
+                    shedCapacity=100, maxMarketOrdersPerTurn=10,
+                    farmHandCostMult=1)
+    cfg = {key: (configuration or {}).get(key, value)
+           for key, value in defaults.items()}
+    fields = ('plan', 'scenario', 'step', 'own_action', 'own_cash',
+              'rival_cash', 'done', 'plan_sha256', 'scenario_sha256',
+              'public_state_sha256')
+    receipts = [[None if receipt is None else
+                 {key: receipt.get(key) for key in fields}
+                 for receipt in row] for row in table['receipts']]
+    value = {'observation': visible, 'configuration': cfg,
+             'plan_ids': table['plan_ids'], 'scenario_ids': table['scenario_ids'],
+             'receipts': receipts}
+    return hashlib.sha256(json.dumps(value, ensure_ascii=True, allow_nan=False,
+                                    separators=(',', ':')).encode('ascii')).hexdigest()
 
 
 def make_score_selector(selector_type, weighted_factory, build_table,
@@ -198,16 +228,33 @@ def make_score_selector(selector_type, weighted_factory, build_table,
             receipts, never the actual hidden rival action. Full market-queue
             feasibility must be tested on current own state by the callback.
             Production fields and non-SELL slots remain exactly as supplied.
+            Same-key retries retain the draw only with unchanged current facts
+            and paired evidence; changed/unavailable context retires that key
+            and preserves the supplied fallback without solving or redrawing.
             Unlike inherited transform, this supports multiple products in one
             terminal market queue. Reuses the SAME choose/sampling operation.
             """
             fallback = deepcopy(base_action)
+            key = None
             try:
                 now = observation['step']
-                if type(now) is not int or now != int((configuration or {}).get('episodeSteps', 720)) - 2:
+                if type(now) is not int:
                     return fallback
                 key = ('terminal-score', observation['player'], now)
+                if now != int((configuration or {}).get('episodeSteps', 720)) - 2:
+                    if self.active is not None and self.active['key'] == key:
+                        self.active = None
+                        self.last_objective = None
+                        self._fallback(key, 'terminal_context_unavailable')
+                    return fallback
                 table = build_table(deepcopy(document))
+                binding = _terminal_context(observation, configuration, table)
+                if (self.active is not None and self.active['key'] == key
+                        and self.active.get('terminal_context_sha256') != binding):
+                    self.active = None
+                    self.last_objective = None
+                    self._fallback(key, 'terminal_context_changed')
+                    return fallback
                 if embedding(table) is None:
                     return fallback
                 plans = []
@@ -240,6 +287,7 @@ def make_score_selector(selector_type, weighted_factory, build_table,
                                        feasible=lambda plan: current_feasible(plan['action']))
                 if selected is None:
                     return fallback
+                self.active['terminal_context_sha256'] = binding
                 # Preserve the draw only while the complete committed action
                 # remains in the current parent-bound set of terminal plans.
                 committed = selected['plan']
@@ -254,6 +302,14 @@ def make_score_selector(selector_type, weighted_factory, build_table,
                     return fallback
                 return deepcopy(selected['plan']['action'])
             except Exception:
+                # An unavailable same-decision table cannot later revive its
+                # old draw. Other modes/keys and first incomplete calls retain
+                # their existing behavior; BaseException still propagates.
+                if (key is not None and self.active is not None
+                        and self.active['key'] == key):
+                    self.active = None
+                    self.last_objective = None
+                    self._fallback(key, 'terminal_context_unavailable')
                 return fallback
 
     return ScorePlanSelector()
