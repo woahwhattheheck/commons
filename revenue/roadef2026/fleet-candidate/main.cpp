@@ -203,6 +203,32 @@ class Solver {
         return static_cast<int>(x.size() + y.size()) - 2 * common;
     }
 
+    // Exact first-stratum shortcut; all unresolved comparisons retain the
+    // original full descending sort. Quantization remains at the call site.
+    static bool quantizedImproves(std::vector<long long>& before,
+                                  std::vector<long long>& after) {
+        if (before.size() == after.size() && !before.empty()) {
+            long long bmax = before.front(), amax = after.front();
+            std::size_t bcount = 0, acount = 0;
+            for (std::size_t i = 0; i < before.size(); ++i) {
+                const auto b = before[i], a = after[i];
+                if (b > bmax) { bmax = b; bcount = 1; }
+                else if (b == bmax) { ++bcount; }
+                if (a > amax) { amax = a; acount = 1; }
+                else if (a == amax) { ++acount; }
+            }
+            if (amax != bmax) {
+                return amax < bmax;
+            }
+            if (acount != bcount) {
+                return acount < bcount;
+            }
+        }
+        std::sort(before.begin(), before.end(), std::greater<long long>());
+        std::sort(after.begin(), after.end(), std::greater<long long>());
+        return after < before;
+    }
+
     // Simultaneous moves are evaluated against the same incumbent. No tentative
     // route is published, and transition capacity released by either demand is
     // available to the other before the combined budget is checked.
@@ -259,9 +285,7 @@ class Solver {
             before.push_back(static_cast<long long>(std::floor(std::max(0.0, loads[i] - 1e-10) * 1e6)));
             after.push_back(static_cast<long long>(std::floor(std::max(0.0, loads[i] + delta[i] + 1e-10) * 1e6)));
         }
-        std::sort(before.begin(), before.end(), std::greater<long long>());
-        std::sort(after.begin(), after.end(), std::greater<long long>());
-        if (!(after < before)) return false;
+        if (!quantizedImproves(before, after)) return false;
         for (int i : touched) loads[i] += delta[i];
         used = std::move(costs);
         for (std::size_t k = 0; k < changes.size(); ++k) {
