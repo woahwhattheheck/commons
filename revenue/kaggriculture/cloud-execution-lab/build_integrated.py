@@ -38,6 +38,7 @@ def source_files():
     # modules become ordinary root modules inside the standalone archive.
     mapping['sell_priority.py']='../cloud-opponent-league/lark-responsive/sell_priority.py'
     mapping['pressure_priority.py']='../cloud-opponent-league/lark-responsive/pressure_priority.py'
+    mapping['seed_retry.py']='../cloud-committed-seed-retry/seed_retry.py'
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
               'funded_payback_runtime.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
@@ -60,6 +61,8 @@ def source_files():
         mapping['checks/'+name]=name
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
+    mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
+    mapping['checks/test_seed_retry.py']='../cloud-committed-seed-retry/test_seed_retry.py'
     for name in ('reference/historical/seed_budget-before-derived-cache.py','reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
                  'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):
         mapping['checks/'+name]=name

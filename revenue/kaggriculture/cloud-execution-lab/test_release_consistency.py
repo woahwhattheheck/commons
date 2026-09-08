@@ -24,6 +24,9 @@ class ReleaseTests(unittest.TestCase):
      self.assertEqual(t.extractfile(name).read(),(root/row['source_path']).read_bytes())
     self.assertIn('terminal_history_join.py',t.getnames())
     self.assertIn('funded_payback.py',t.getnames())
+    self.assertIn('seed_retry.py',t.getnames())
+    self.assertEqual(manifest['runtime']['seed_retry.py']['source_path'],
+                     '../cloud-committed-seed-retry/seed_retry.py')
     self.assertTrue(any(p.startswith('reference/titan-history/') for p in t.getnames()))
     self.assertNotIn('integrated_main.py',t.getnames())
    first=(root/b.ARCHIVE).read_bytes();self.assertEqual(call().returncode,0);self.assertEqual(first,(root/b.ARCHIVE).read_bytes())

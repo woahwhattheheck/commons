@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 import unittest
 
+import seed_retry as retry_module
 from seed_retry import propose_seed_retry, apply_committed_seed_retry, install_seed_retry
 
 ROOT = Path(os.environ.get('TITAN_TEST_RUNTIME', str(Path(__file__).resolve().parent.parent / 'cloud-execution-lab')))
@@ -200,6 +201,14 @@ class RuntimeAdapterTests(unittest.TestCase):
         r.production.act = lambda *a, **k: (_ for _ in ()).throw(AssertionError('second producer call'))
         action = r._seed_selected(fixture(), CFG, deepcopy(PASS))
         self.assertEqual(action['market'], [['BUY_SEED', 'STRAWBERRY', 1]])
+
+    def test_canonical_runtime_boundary_calls_actual_helper(self):
+        r = self.runtime()
+        r.features = Features(committed_seed_retry=True)
+        r.committed_seed_retry_module = retry_module
+        action = r._committed_seed_retry_selected(fixture(), CFG, deepcopy(PASS))
+        self.assertEqual(action['market'], [['BUY_SEED', 'STRAWBERRY', 1]])
+        self.assertEqual(r.diagnostics['committed_seed_retry']['status'], 'appended')
 
     def test_installer_idempotent(self):
         r = self.runtime(); install_seed_retry(r); method = r._seed_selected

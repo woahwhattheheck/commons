@@ -9,5 +9,6 @@
   "terminal_history": false,
   "redundant_hire": true,
   "fourth_quadrant": false,
-  "market_pressure": true
+  "market_pressure": true,
+  "committed_seed_retry": false
 }
