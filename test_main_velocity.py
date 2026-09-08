@@ -165,6 +165,41 @@ class MainVelocityTests(unittest.TestCase):
         self.assertEqual(calls.call_count, 4)
         self.assertEqual(self.git("rev-parse", "HEAD"), moved)
 
+    def recent_history(self, count):
+        head = self.commit(2)
+        for _ in range(count - 1):
+            head = self.commit(1, head)
+        self.set_head(head)
+        return head
+
+    def test_rounding_down_does_not_hide_above_threshold_rate(self):
+        self.recent_history(1)
+        result = velocity.measure(high_velocity_per_hour=0.041)
+        self.assertEqual(result["windows"]["24h"]["commits_per_hour"], 0.04)
+        self.assertTrue(result["high_velocity"])
+        self.assertEqual(result["integration_mode"], "coalesce_ranges")
+
+    def test_rounding_up_does_not_invent_above_threshold_rate(self):
+        self.recent_history(4)
+        completed = subprocess.run(
+            [sys.executable, str(SCRIPT), "--high-velocity-per-hour", "0.168", "--json"],
+            text=True, capture_output=True, check=True,
+        )
+        result = json.loads(completed.stdout)
+        self.assertEqual(result["windows"]["24h"]["commits_per_hour"], 0.17)
+        self.assertFalse(result["high_velocity"])
+        self.assertEqual(result["integration_mode"], "range_batch")
+
+    def test_exact_threshold_is_inclusive_before_display_rounding(self):
+        self.recent_history(3)
+        at_threshold = velocity.measure(high_velocity_per_hour=0.125)
+        self.assertEqual(at_threshold["windows"]["24h"]["commits_per_hour"], 0.12)
+        self.assertTrue(at_threshold["high_velocity"])
+        self.assertEqual(at_threshold["integration_mode"], "coalesce_ranges")
+        above_threshold = velocity.measure(high_velocity_per_hour=0.126)
+        self.assertFalse(above_threshold["high_velocity"])
+        self.assertEqual(above_threshold["integration_mode"], "range_batch")
+
     def test_unknown_target_keeps_git_error(self):
         self.set_head(self.commit(1))
         with self.assertRaises(subprocess.CalledProcessError):
