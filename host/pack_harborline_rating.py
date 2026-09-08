@@ -89,8 +89,8 @@ DO_NOT_OVERWRITE = (
 )
 
 
-def git_blob_prefix(rel: str, n: int = 8) -> str:
-    path = ROOT / rel
+def git_blob_prefix(rel: str, n: int = 8, *, root: Path | None = None) -> str:
+    path = (ROOT if root is None else root) / rel
     if not path.is_file():
         return ""
     data = path.read_bytes()
@@ -114,7 +114,7 @@ def parse_slots(text: str) -> dict[str, Any]:
     }
 
 
-def classify_path(path: Path) -> dict[str, Any]:
+def classify_path(path: Path, *, law_path: Path | None = None) -> dict[str, Any]:
     if not path.is_file():
         return {
             "kind": "HARBORLINE_RATING",
@@ -138,7 +138,8 @@ def classify_path(path: Path) -> dict[str, Any]:
             "bulk_price": slots["bulk_price"],
             "owner_pasted_rating": slots["owner_pasted_rating"],
             "copy": "",
-        }
+        },
+        law_path=law_path,
     )
     invented_stripe = bool(STRIPE_FAKE_RE.search(text))
     named = "Harborline Local Sites" in text
@@ -195,25 +196,37 @@ def classify_path(path: Path) -> dict[str, Any]:
 
 def classify_tree(root: Path | None = None) -> dict[str, Any]:
     base = root or ROOT
-    harborline = classify_path(base / "packs" / "desk-website-service-20260902-01" / "rating.md")
-    template_blob = git_blob_prefix("packs/_template/rating.md")
-    door_blob = git_blob_prefix("packs/desk-website-service-20260902-01/door.html")
-    sidecar_blob = git_blob_prefix("host/business_pack_harborline_tally_map.py")
-    map_pointer_blob = git_blob_prefix("host/business_pack_harborline_tally_map_pointer.py")
-    map_helper_pointer_blob = git_blob_prefix(
+    law_path = None if root is None else base / "ground" / "BUSINESS_PACK_RATING.json"
+    manifest = MANIFEST if root is None else base / "packs" / "desk-website-service-20260902-01" / "manifest.json"
+
+    def blob(rel: str) -> str:
+        # Preserve the existing default hook while keeping selected roots local.
+        if root is None:
+            return git_blob_prefix(rel)
+        return git_blob_prefix(rel, root=base)
+
+    harborline = classify_path(
+        base / "packs" / "desk-website-service-20260902-01" / "rating.md",
+        law_path=law_path,
+    )
+    template_blob = blob("packs/_template/rating.md")
+    door_blob = blob("packs/desk-website-service-20260902-01/door.html")
+    sidecar_blob = blob("host/business_pack_harborline_tally_map.py")
+    map_pointer_blob = blob("host/business_pack_harborline_tally_map_pointer.py")
+    map_helper_pointer_blob = blob(
         "host/business_pack_harborline_map_helper_pointer.py"
     )
-    pack_map_blob = git_blob_prefix("host/harborline_tally_pack_map.py")
-    pin_lift_receipt = git_blob_prefix("p/cursor-pack-harborline-map-pin-lift-20260902-01.md")
-    pointer_receipt = git_blob_prefix(
+    pack_map_blob = blob("host/harborline_tally_pack_map.py")
+    pin_lift_receipt = blob("p/cursor-pack-harborline-map-pin-lift-20260902-01.md")
+    pointer_receipt = blob(
         "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
     )
-    sheet_blob = git_blob_prefix("packs/desk-website-service-20260902-01/rating.md")
-    leftover_receipt = git_blob_prefix("p/cursor-pack-harborline-rating-20260902-01.md")
-    waitlist_slot_blob = git_blob_prefix(
+    sheet_blob = blob("packs/desk-website-service-20260902-01/rating.md")
+    leftover_receipt = blob("p/cursor-pack-harborline-rating-20260902-01.md")
+    waitlist_slot_blob = blob(
         "packs/desk-website-service-20260902-01/waitlist-slot.md"
     )
-    law = factory.load_law()
+    law = factory.load_law(law_path)
     ok = (
         harborline.get("verdict") == "HARBORLINE_RATING_INSTANCE_OK"
         and str(law.get("id") or "") == FACTORY_ID
@@ -228,7 +241,7 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         and sheet_blob == SHEET_BLOB
         and leftover_receipt == LEFTOVER_RECEIPT_BLOB
         and waitlist_slot_blob == WAITLIST_SLOT_BLOB
-        and not MANIFEST.is_file()
+        and not manifest.is_file()
     )
     return {
         "kind": "HARBORLINE_RATING",
@@ -260,7 +273,7 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         "did_not_write_leftover_pin_helpers": sidecar_blob == SIDECAR_BLOB,
         "did_not_overwrite_pointer_receipt": pointer_receipt == POINTER_RECEIPT_BLOB,
         "did_not_write_peer_rating_slots": True,
-        "did_not_invent_harborline_manifest": not MANIFEST.is_file(),
+        "did_not_invent_harborline_manifest": not manifest.is_file(),
         "did_not_merge_7915": True,
         "sends": 0,
         "agents_spend_ads": False,
