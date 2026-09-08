@@ -40,6 +40,28 @@ def _sell(order, item=None):
                 and (item is None or order[1] == item))
 
 
+def _copy_market_orders(orders):
+    """Copy flat built-in queues; retain deepcopy for nested/custom values."""
+    if type(orders) is not list:
+        return copy.deepcopy(orders)
+    for order in orders:
+        if type(order) is not list:
+            return copy.deepcopy(orders)
+        for value in order:
+            kind = type(value)
+            if (kind is not str and kind is not int and kind is not float
+                    and kind is not bool and value is not None):
+                return copy.deepcopy(orders)
+    memo = {}
+    result = []
+    for order in orders:
+        identity = id(order)
+        if identity not in memo:
+            memo[identity] = order.copy()
+        result.append(memo[identity])
+    return result
+
+
 def replace_sales(orders, item, quantity, available, max_orders, reserved=()):
     """Keep economic prefixes and all original positions; append only at end.
 
@@ -47,7 +69,7 @@ def replace_sales(orders, item, quantity, available, max_orders, reserved=()):
     its actual funding and space contribution to inherited purchases/hiring.
     A reserved SELL position is left to the caller's selected action.
     """
-    out = copy.deepcopy(orders)
+    out = _copy_market_orders(orders)
     last_economic = max((i for i, o in enumerate(orders)
                          if o and not _sell(o)), default=-1)
     if any(i in reserved and _sell(o, item) for i, o in enumerate(orders)):
@@ -191,6 +213,7 @@ class ProjectionLedger:
         params = self.obs['market'].get('params')
         tpd = int(self.config.get('turnsPerDay', 24))
         orders = dict(plan)
+        consumed = None
         def phase_ok(t, phase):
             for product, delta in self.events.get((t, phase), []):
                 stock[product] = stock.get(product, 0) + delta
@@ -210,7 +233,7 @@ class ProjectionLedger:
                 hires = 0
             if not phase_ok(t, 'before_market'):
                 return False
-            market = (copy.deepcopy(self.future.get(t, [])) if item is None else
+            market = (_copy_market_orders(self.future.get(t, [])) if item is None else
                       self.market(t, item, orders.get(t, 0), stock.get(item, 0)))
             if market is None:
                 return False
@@ -263,8 +286,26 @@ class ProjectionLedger:
                         and cash >= self.cash_min.get((t, 'after_market'), 0))
             if not phase_ok(t, 'after_market'):
                 return False
-            for product in inv:
-                inv[product] -= absorption(product, t, self.obs.get('town', {}).get('unlocked_shops', []), self.config)
+            if consumed is None:
+                shops = self.obs.get('town', {}).get('unlocked_shops', [])
+                # Preserve uncached evaluation for nonstandard caller inputs.
+                if not isinstance(shops, (list, tuple)) or not all(isinstance(s, str) for s in shops):
+                    for product in inv:
+                        inv[product] -= absorption(product, t, shops, self.config)
+                    continue
+                context = (self.now, self.end, tuple(inv), tuple(shops),
+                           self.config.get('townShopSellInterval', 4),
+                           self.config.get('townCenterSellInterval', 24), absorption)
+                if getattr(self, '_flow_context', None) != context:
+                    self._flow_context = context
+                    self._flow_consumed = {}
+                consumed = self._flow_consumed
+            if t not in consumed:
+                # Populate only a reached date: early rejection and the final
+                # market must not evaluate unused future consumption.
+                consumed[t] = tuple((p, absorption(p, t, shops, self.config)) for p in inv)
+            for product, quantity in consumed[t]:
+                inv[product] -= quantity
         return True
 
 

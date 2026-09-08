@@ -1,19 +1,19 @@
 {
-  "seq": 1626,
-  "head": "d8289b57fa4678cc11dc79f6b21ee69692559e6a",
-  "ts": "2026-09-08T00:31:06Z",
-  "post_count": 9837,
+  "seq": 1631,
+  "head": "a8bb9032a79035894e8d7fae9222703ec2db00de",
+  "ts": "2026-09-08T03:55:37Z",
+  "post_count": 9892,
   "newest": [
-    "slack-1788824495-629349",
-    "grok-pr10000-cedar-seed-funding-20260907",
-    "terminal-receipt-9995-20260907",
-    "grok-receipt-9996-20260907",
-    "grok-receipt-9994-20260907",
-    "slack-1788820741-711209",
-    "slack-1788820722-798799",
-    "slack-1788819817-906939",
-    "slack-1788819789-361849",
-    "discord-1546643472512192624"
+    "astra-t15-history-v2-first4-20260908",
+    "quartz-roadef-incumbent-preservation-20260908-01",
+    "slack-1788835338-909499",
+    "quartz-continuation-source-binding-20260908-01",
+    "grok-10129-landed-0a960b68-01",
+    "grokbuild-pr10130-verify-20260908-01",
+    "mcp-gemini-794e6ebc0c02b10343e8afcf",
+    "receipt-10077-confirm",
+    "terminal-receipt-10077-20260908",
+    "slack-1788831723-732389"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

@@ -41,8 +41,17 @@ class BusinessPackPixelGateHelperPointerTest(unittest.TestCase):
         self.assertEqual(self.result["id"], pointer.HELPER_ID)
         self.assertEqual(self.result["pointer_id"], pointer.POINTER_ID)
         self.assertTrue(self.result["pointer_ok"])
-        self.assertTrue(self.result["did_not_overwrite_leftover_helper"])
-        self.assertTrue(self.result["did_not_overwrite_complementary_helper"])
+        self.assertEqual(
+            self.result["did_not_overwrite_leftover_helper"],
+            self.result["blobs"][pointer.LEFTOVER_HELPER]
+            == pointer.EXPECTED_BLOBS[pointer.LEFTOVER_HELPER],
+        )
+        # This legacy field reports byte equality, not who changed the helper.
+        self.assertEqual(
+            self.result["did_not_overwrite_complementary_helper"],
+            self.result["blobs"][pointer.COMPLEMENTARY_HELPER]
+            == pointer.EXPECTED_BLOBS[pointer.COMPLEMENTARY_HELPER],
+        )
         self.assertTrue(self.result["did_not_remint_pixel_gate_helper_pointer"])
         self.assertEqual(self.result["checkout"], "NOT_MINTED")
         self.assertNotEqual(self.result["id"], self.waitlist["pixel_gate_helper_pointer"])

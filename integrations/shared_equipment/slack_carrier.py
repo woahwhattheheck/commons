@@ -63,6 +63,12 @@ def terminal_delivery_rejection(delivery: dict) -> bool:
     )
 
 
+def _catalog_json(value) -> str:
+    """Lossless JSON for a code-rendered schema, including embedded fences/tags."""
+    return (json.dumps(value, ensure_ascii=False)
+            .replace("`", "\\u0060").replace("<", "\\u003c"))
+
+
 class SlackEquipmentCarrier:
     def __init__(self, catalog, calls, route: dict, cursor_path: Path):
         self.catalog = catalog
@@ -119,14 +125,29 @@ class SlackEquipmentCarrier:
             runner = self.catalog.call
         result = self.calls.execute_journaled("equipment:" + rid, cid,
             request["name"], request.get("arguments", {}), runner)
-        response = json.dumps(redacted({"request_id": rid, "call_id": cid, "result": result}), ensure_ascii=False)
+        metadata_reply = (
+            not tool_failed(result) and not effect_uncertain(result)
+            and isinstance(result, dict)
+            and ((request["name"] == "equipment_catalog" and isinstance(result.get("tools"), list))
+                 or (request["name"] == "equipment_capability_manifest"
+                     and result.get("schema") == "commons.shared_equipment.capability_manifest.v1"
+                     and isinstance(result.get("operations"), list)))
+        )
+        encode = _catalog_json if metadata_reply else lambda value: json.dumps(value, ensure_ascii=False)
+        response = encode(redacted({"request_id": rid, "call_id": cid, "result": result}))
         # Slack text has a finite message size. Multiple parts preserve the full
         # JSON; consumers join content between the per-part wrappers in order.
         parts = [response[i:i + 28000] for i in range(0, len(response), 28000)]
         digest = hashlib.sha256(response.encode("utf-8")).hexdigest()
         for index, part in enumerate(parts, start=1):
-            text = (f"<commons_equipment_result request_id={json.dumps(rid)} call_id={json.dumps(cid)} "
+            text = (f"<commons_equipment_result request_id={encode(rid)} call_id={encode(cid)} "
                 f"part=\"{index}/{len(parts)}\" sha256=\"{digest}\">\n{part}\n</commons_equipment_result>")
+            if metadata_reply:
+                # Catalogs are source schemas, not assertions about an operation.
+                # The code fence is OUTSIDE the unchanged result envelope, so
+                # existing consumers still join JSON between the original tags.
+                # Ordinary results and catalog errors keep their original path.
+                text = "```\n" + text + "\n```"
             delivery = self.calls.execute_journaled("equipment-return:" + rid,
                 cid + ":" + message["ts"] + ":" + str(index), "slack_post_message",
                 {"channel_id": self.channel, "thread_ts": message.get("thread_ts") or message["ts"], "text": text},

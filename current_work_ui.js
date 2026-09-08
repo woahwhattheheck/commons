@@ -80,6 +80,9 @@
     }
     function render() {
       const focusedRow = rows.find(row => row.button === doc.activeElement);
+      for (const row of rows) {
+        if (row.details && row.details.isConnected) row.detailsOpen = row.details.open;
+      }
       list.replaceChildren();
       if (!snapshot) { doc.getElementById('cw-count').textContent = ''; return; }
       const query = search.value.trim().toLowerCase();
@@ -104,6 +107,8 @@
         const paths = pathsFor(item);
         if (paths && paths.length) {
           const details = element('details', undefined, card);
+          row.details = details;
+          details.open = !!row.detailsOpen;
           element('summary', `${paths.length} claimed paths at ${snapshot.sha.slice(0, 12)}`, details);
           const links = element('ul', undefined, details);
           for (const path of paths) {

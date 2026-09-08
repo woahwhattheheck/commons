@@ -11,6 +11,16 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/integrated_selected.py'
       - 'revenue/kaggriculture/cloud-integration-differentials/**'
       - 'revenue/kaggriculture/cloud-composition-cases/cypress/**'
+      - 'revenue/kaggriculture/cloud-composition-cases/cover/**'
+      - 'revenue/kaggriculture/cloud-economic-stress/deadline_adapter.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/test_runner.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/runner.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/cancellation/**'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py'
       - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/ordered_selected_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_ordered_selected_sell.py'
@@ -35,10 +45,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            /.github/workflows/titan-selected-projection.yml
             /revenue/kaggriculture/cloud-selected-projection/
             /revenue/kaggriculture/cloud-selected-market-checks/
             /revenue/kaggriculture/cloud-eval/
@@ -47,6 +58,16 @@ jobs:
             /revenue/kaggriculture/cloud-execution-lab/exports/integrated-selected-v1.tar.gz
             /revenue/kaggriculture/cloud-integration-differentials/
             /revenue/kaggriculture/cloud-composition-cases/cypress/
+            /revenue/kaggriculture/cloud-composition-cases/cover/
+            /revenue/kaggriculture/cloud-economic-stress/deadline_adapter.py
+            /revenue/kaggriculture/cloud-economic-stress/test_runner.py
+            /revenue/kaggriculture/cloud-economic-stress/runner.py
+            /revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py
+            /revenue/kaggriculture/cloud-economic-stress/cancellation/
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py
+            /revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py
             /revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/
             /revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
             /revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py
@@ -76,14 +97,25 @@ jobs:
           (out/frozen.name).write_bytes(frozen_bytes)
           roots = ('cloud-selected-projection', 'cloud-execution-lab',
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
-                   'cloud-integration-differentials', 'cloud-composition-cases/cypress')
+                   'cloud-integration-differentials', 'cloud-composition-cases/cypress',
+                   'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
+                   'cloud-economic-stress')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
+          paths.append(Path('.github/workflows/titan-selected-projection.yml'))
           files = {}
           for path in sorted(paths):
               data = path.read_bytes()
               files[str(path)] = {'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(),
                                  'git_blob': hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()}
-          report = {'checkout': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+          checkout = subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()
+          assert checkout == os.environ['GITHUB_SHA'], 'checkout must match the workflow event commit'
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          pull = event.get('pull_request') or {}
+          context = {'event': os.environ['GITHUB_EVENT_NAME'], 'event_sha': os.environ['GITHUB_SHA'],
+                     'pull_request_head': (pull.get('head') or {}).get('sha'),
+                     'pull_request_base': (pull.get('base') or {}).get('sha'),
+                     'checkout_semantics': 'pull_request_merge' if pull else 'event_commit'}
+          report = {'checkout': checkout, 'source_context': context,
                     'run_id': os.environ['GITHUB_RUN_ID'], 'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
                     'python': subprocess.check_output(['python3','--version'], text=True).strip(),
                     'files': files, 'scope': 'focused deterministic tests; no gameplay panels'}
@@ -159,39 +191,110 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-composition-cases/cypress/test_funded_join.py \
             --json-output "$RUNNER_TEMP/projection-validation/funded-join-results.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/funded-join-tests.log"
-      - name: Bind combined results to one source snapshot
-        shell: python
+      - name: Adaptive actor capture binding tests
+        if: ${{ !cancelled() }}
+        shell: bash
         run: |
-          import json, os, re
-          from pathlib import Path
-          out = Path(os.environ['RUNNER_TEMP']) / 'projection-validation'
-          snapshot = json.loads((out/'SOURCE-SNAPSHOT.json').read_text())
-          projection = json.loads((out/'projection-results.json').read_text())
-          market = json.loads((out/'market-results.json').read_text())
-          seller = 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
-          expected = snapshot['files'][seller]['sha256']
-          assert expected == projection['seller_sha256'] == market['sources']['selected_action_sell.py']
-          assert projection['engine_sha256'] == market['engine_sha256']
-          assert projection['failures'] == projection['errors'] == 0
-          assert market['successful'] and market['failures'] == market['errors'] == 0
-          text = (out/'original-seller-tests.log').read_text()
-          original = int(re.search(r'Ran (\d+) tests?', text).group(1))
-          report = {'checkout': snapshot['checkout'], 'seller_sha256': expected,
-                    'original_tests': original, 'projection_tests': projection['tests_run'],
-                    'market_tests': market['test_methods'],
-                    'total_tests': original+projection['tests_run']+market['test_methods'],
-                    'projection_cases': projection['differential_cases'],
-                    'projection_transitions': projection['interpreter_transitions'],
-                    'market_cases': market['official_market_cases'],
-                    'same_engine': True, 'full_games': 0}
-          joined = json.loads((out/'funded-join-results.json').read_text())
-          assert joined['successful'] and joined['failures'] == joined['errors'] == 0
-          for name, source in joined['sources'].items():
-              assert source['sha256'] == snapshot['files']['revenue/kaggriculture/'+name]['sha256']
-          report['funded_join_tests'] = joined['test_methods']
-          report['funded_join_transitions'] = joined['official_transitions']
-          report['funded_join_full_games'] = joined['full_games']
-          (out/'COMBINED-RESULTS.json').write_text(json.dumps(report, indent=2)+'\n')
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py \
+            --report "$RUNNER_TEMP/projection-validation/capture-binding-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/capture-binding-tests.log"
+      - name: Dated market score schedule parity tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/score-schedule-tests.log"
+      - name: Selected-market ledger schedule parity tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 -B revenue/kaggriculture/cloud-selected-market-checks/test_ledger_schedule.py \
+            --lab "$LAB" \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --report "$RUNNER_TEMP/projection-validation/ledger-schedule-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/ledger-schedule-tests.log"
+      - name: Deadline cancellation regression tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-economic-stress/cancellation/test_deadline_cancellation.py \
+            --report "$RUNNER_TEMP/projection-validation/deadline-cancellation.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/deadline-cancellation-tests.log"
+      - name: Actual stress-runner deadline boundary tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py \
+            --report "$RUNNER_TEMP/projection-validation/stress-runner-boundary.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-boundary-tests.log"
+      - name: Retained stress-runner tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-economic-stress
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v \
+            test_runner.RunnerTests.test_known_order_cost_keeps_sequence \
+            test_runner.RunnerTests.test_summary_counts_cash_and_timeouts \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-existing-tests.log"
+      - name: Stress-runner combined-report binding tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_stress_runner_report \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-reporter-tests.log"
+      - name: Selected-action queue-copy parity tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 -B revenue/kaggriculture/cloud-selected-market-checks/test_queue_copy.py \
+            --lab "$LAB" \
+            --report "$RUNNER_TEMP/projection-validation/queue-copy-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/queue-copy-tests.log"
+      - name: Queue-copy combined-report binding tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_queue_copy_report \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/queue-copy-reporter-tests.log"
+      - name: Existing workflow regression binding tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-composition-cases/cover/test_regression_bindings.py -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/workflow-bindings-tests.log"
+      - name: Combined-report regression tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest test_combined_report -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/reporter-tests.log"
+      - name: Bind all combined results to one source snapshot
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
+            --directory "$RUNNER_TEMP/projection-validation" \
+            --include-reporter-tests --include-funded-join --include-runtime-regressions \
+            --include-cancellation --include-ledger-schedule --include-stress-runner --include-queue-copy \
+            --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:

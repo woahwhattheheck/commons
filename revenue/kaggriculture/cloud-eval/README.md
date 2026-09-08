@@ -17,7 +17,7 @@ Do not create this build/cache on Bryce's machine.
 ```sh
 cd revenue/kaggriculture/cloud-eval
 python -B evaluate.py --prepare-engine /tmp/kag-engine
-KAG_EVAL_ENGINE_DIR=/tmp/kag-engine python -B -m unittest -v test_evaluator test_final_usage
+KAG_EVAL_ENGINE_DIR=/tmp/kag-engine python -B -m unittest -v test_evaluator test_final_usage test_progress
 python -B evaluate.py --engine-dir /tmp/kag-engine \
   --seeds 2027,6607,104729 --recheck-first --output /tmp/tournament.json
 ```
@@ -46,6 +46,22 @@ not an independent policy; its imported agent dependency is also fingerprinted.
 The other simple baselines are **not a claim of strong competition opposition**.
 A successful first-game replay checks the score and full action/final-state hash;
 its extra game is excluded from the aggregate to avoid double-counting.
+
+## Interrupted CLI panels
+
+While the CLI runs, `/tmp/comparison.json.progress.json` retains each returned
+game row. The final `/tmp/comparison.json` is replaced only after the requested
+panel and optional recheck finish; an older final report survives an interrupted
+new invocation. Use unique output paths and preserve a sidecar before reusing
+its path.
+
+Read `progress.state`, `progress.phase`, and planned/recorded counts together.
+`complete` means the invocation traversed its panel, not that every game passed.
+Ctrl-C records `interrupted` and returns 130; hard termination leaves the last
+`running` snapshot. No in-flight game is fabricated or automatically retried.
+[Progress and recovery notes](PROGRESS.md) document exact behavior, file-write
+limits, and the 22 focused checks. Direct `play()` callers keep their existing
+caller-owned journals; this change applies to the CLI only.
 
 ## What is measured
 
@@ -116,8 +132,15 @@ These cases cover unavailable procfs, final allocation/CPU usage, normal and
 signal exit codes, unavailable/interrupted wait4, and repeated cleanup. The
 [landed validation record](FINAL_USAGE.md#validation) distinguishes these checks
 from the original interpreter tests and earlier tournament results. The manual
-full-test command above includes both test modules; this documentation change
-does not alter the GitHub Actions workflow or claim a new CI execution.
+full-test command above includes all three test modules; this documentation
+change does not alter the GitHub Actions workflow or claim a new CI execution.
+
+For CLI progress, atomic replacement and actual SIGINT/SIGKILL checks alone
+(no engine cache or competitive games), use:
+
+```sh
+python -B -m unittest -v test_progress
+```
 
 Work order: [KAG-EVAL coordination](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788753053465569).
 License for these new files: CC-BY 4.0. Attribution: TokenJunkieLabs / Bryce

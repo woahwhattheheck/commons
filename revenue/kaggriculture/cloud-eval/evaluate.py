@@ -2,6 +2,7 @@
 
 Not the hosted Kaggle runner. Only --prepare-engine performs network I/O.
 Candidate modules are executable code: run the evaluator in an isolated container.
+CLI progress is saved to OUTPUT.progress.json; see PROGRESS.md for recovery limits.
 """
 from __future__ import annotations
 
@@ -416,6 +417,25 @@ def fingerprint(spec):
     return value
 
 
+def write_report(path, report):
+    """Replace one complete UTF-8 snapshot; failed writes leave its predecessor."""
+    path = Path(path)
+    payload = json.dumps(report, indent=2, allow_nan=False) + "\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", newline="\n",
+                                         dir=path.parent, delete=False) as file:
+            temporary = Path(file.name)
+            file.write(payload)
+            file.flush()
+            os.fsync(file.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--worker":
         worker(sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]))
@@ -461,24 +481,7 @@ def main():
     candidate = resolve_spec(args.candidate)
     engine, hashes = get_engine(args.engine_dir, args.loader)
     games = []
-    for name, rival in rivals.items():
-        for seed in seeds:
-            for seat in (0, 1):
-                pair = [candidate, rival] if seat == 0 else [rival, candidate]
-                game = play(engine, pair, args.engine_dir, args.loader, seed, seat, args.rng_seed,
-                            args.action_timeout, args.startup_timeout, args.game_timeout, args.episode_steps)
-                game["opponent"] = name
-                games.append(game)
-                print(json.dumps({k: game[k] for k in ("opponent", "seed", "candidate_seat", "status", "scores", "failure")}), flush=True)
     reproducibility = None
-    if args.recheck_first:
-        first = games[0]
-        replay = play(engine, [candidate, next(iter(rivals.values()))], args.engine_dir, args.loader,
-                      first["seed"], 0, args.rng_seed, args.action_timeout, args.startup_timeout,
-                      args.game_timeout, args.episode_steps)
-        reproducibility = {"checked": True, "same_trace_and_scores": first["status"] == replay["status"] == "complete" and
-                           first["trace_sha256"] == replay["trace_sha256"] and first["scores"] == replay["scores"],
-                           "original_trace": first["trace_sha256"], "replay_trace": replay["trace_sha256"]}
     report = {"schema_version": 1, "engine_ref": ENGINE_REF, "engine_sha256": hashes,
               "loader_sha256": sha256(args.loader), "evaluator_sha256": sha256(__file__),
               "candidate": fingerprint(candidate), "opponents": {n: fingerprint(s) for n, s in rivals.items()},
@@ -488,12 +491,64 @@ def main():
                          "game_seconds_between_steps": args.game_timeout, "remaining_overage_time": 0},
               "method": "Official interpreter with explicit driver; not hosted Kaggle scoring. Decision timings are child-reported; RPC deadlines are parent-enforced. Resource samples combine child rusage, available Linux procfs, and final wait4 usage when supported; actor provenance records the actual sources. Entry-file hashes do not cover arbitrary agent dependencies.",
               "summary": summarize(games), "games": games, "reproducibility": reproducibility}
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile("w", dir=args.output.parent, delete=False) as file:
-        json.dump(report, file, indent=2, allow_nan=False)
-        file.write("\n")
-        temporary = file.name
-    os.replace(temporary, args.output)
+    progress_path = args.output.with_name(args.output.name + ".progress.json")
+    phase, active_game = "games", None
+
+    def checkpoint(state, error_type=None):
+        report["summary"] = summarize(games)
+        report["resource_usage"] = usage()
+        report["reproducibility"] = reproducibility
+        report["progress"] = {"state": state, "phase": phase,
+                              "planned_games": len(rivals) * len(seeds) * 2,
+                              "recorded_games": len(games), "active_game": active_game,
+                              "recheck_requested": args.recheck_first}
+        if error_type is not None:
+            report["progress"]["error_type"] = error_type
+        write_report(progress_path, report)
+
+    def record_stop(state, exc):
+        try:
+            checkpoint(state, type(exc).__name__)
+        except Exception as save_error:
+            # Preserve the original stop/error; the last atomic snapshot remains.
+            print("Could not update progress snapshot: " + type(save_error).__name__, file=sys.stderr)
+
+    # Keep any previous final report intact until this entire invocation finishes.
+    # A snapshot is not a resume instruction: no saved cell is silently rerun.
+    checkpoint("running")
+    try:
+        for name, rival in rivals.items():
+            for seed in seeds:
+                for seat in (0, 1):
+                    active_game = {"opponent": name, "seed": seed, "candidate_seat": seat}
+                    pair = [candidate, rival] if seat == 0 else [rival, candidate]
+                    game = play(engine, pair, args.engine_dir, args.loader, seed, seat, args.rng_seed,
+                                args.action_timeout, args.startup_timeout, args.game_timeout, args.episode_steps)
+                    game["opponent"] = name
+                    games.append(game)
+                    active_game = None
+                    checkpoint("running")
+                    print(json.dumps({k: game[k] for k in ("opponent", "seed", "candidate_seat", "status", "scores", "failure")}), flush=True)
+        if args.recheck_first:
+            phase = "recheck"
+            checkpoint("running")
+            first = games[0]
+            replay = play(engine, [candidate, next(iter(rivals.values()))], args.engine_dir, args.loader,
+                          first["seed"], 0, args.rng_seed, args.action_timeout, args.startup_timeout,
+                          args.game_timeout, args.episode_steps)
+            reproducibility = {"checked": True, "same_trace_and_scores": first["status"] == replay["status"] == "complete" and
+                               first["trace_sha256"] == replay["trace_sha256"] and first["scores"] == replay["scores"],
+                               "original_trace": first["trace_sha256"], "replay_trace": replay["trace_sha256"]}
+        phase = "finalize"
+        checkpoint("complete")
+        write_report(args.output, report)
+    except KeyboardInterrupt as exc:
+        record_stop("interrupted", exc)
+        print("Interrupted; completed game records: " + str(progress_path), file=sys.stderr)
+        return 130
+    except Exception as exc:
+        record_stop("error", exc)
+        raise
     print("SUMMARY " + json.dumps(report["summary"]), flush=True)
     return int(any(g["status"] != "complete" for g in games) or
                (reproducibility is not None and not reproducibility["same_trace_and_scores"]))

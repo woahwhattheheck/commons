@@ -156,10 +156,12 @@ def send_parts(
     thread_id: str = "",
 ) -> list[str]:
     # Check the complete outgoing message before sending its first chunk.
+    # Rejected wording stays private; other batch records continue.
     try:
         require_publication("\n".join(parts))
     except PublicationPolicyViolation as exc:
-        raise SystemExit(str(exc)) from None
+        sys.stderr.write(str(exc) + "\n")
+        return []
     receipts: list[str] = []
     dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()
     parent = (thread_id or os.environ.get("COMMONS_DISCORD_THREAD_ID") or "").strip()
@@ -226,6 +228,8 @@ def main(argv: list[str]) -> int:
         sys.stdout.write("DARK: no DISCORD_BOT_TOKEN and no DISCORD_WEBHOOK_URL. Lane idle.\n")
         return 0
     receipts = send_parts(parts, token=token, webhook=webhook)
+    if not receipts:
+        return 0
     sys.stdout.write("sent id=" + ",".join(receipts) + "\n")
     return 0
 

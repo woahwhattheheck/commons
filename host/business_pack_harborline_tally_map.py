@@ -32,8 +32,8 @@ WAITLIST_POINTER = "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-202
 WAITLIST_CLAIM = "cursor-business-pack-waitlist-pointer-20260902-01"
 LEFTOVER_HELPER = "host/business_pack_harborline_tally_map.py"
 PEER_HELPER = "host/business_pack_harborline_tally_map_pointer.py"
-# Live MATCH for files this leftover still owns. TALLY/LEAD instance blobs
-# are observed-at-land only (sold-once HELD 1788331796.003639).
+# Historical byte observations. Mutable pages and helpers may evolve independently
+# of the catalog pointer. Canonical receipt continuity is checked separately.
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a7a49b77",
     "test_harborline_tally_pack_map.py": "68b4fce1",
@@ -43,6 +43,10 @@ EXPECTED_BLOBS = {
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "packs/waitlist.html": "bdcaa7ea",
 }
+RECEIPT_BLOBS = {
+    rel: prefix for rel, prefix in EXPECTED_BLOBS.items() if rel.startswith("p/")
+}
+
 # Land-time observations from leftover SHIP f439bf0a. Not live pins.
 OBSERVED_AT_LAND = {
     "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
@@ -89,8 +93,12 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     block = instance_block(data)
     waitlist = data.get("waitlist") if isinstance(data.get("waitlist"), dict) else {}
     row = landed_row(block, "Harborline Local Sites")
-    blobs = {rel: git_blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
+    blobs = {rel: git_blob_prefix(rel) for rel in dict.fromkeys((*EXPECTED_BLOBS, *OBSERVED_AT_LAND, *RECEIPT_BLOBS))}
     blobs_match = all(blobs.get(rel) == prefix for rel, prefix in EXPECTED_BLOBS.items())
+    missing_files = [rel for rel, prefix in blobs.items() if not prefix]
+    receipt_blobs_match = all(
+        blobs.get(rel, "") == prefix for rel, prefix in RECEIPT_BLOBS.items()
+    )
     ids_not_reminted = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
         and str(block.get("id") or "") == CATALOG_ID
@@ -116,7 +124,8 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         and str(block.get("checkout") or "") == "NOT_MINTED"
         and data.get("gate") is False
         and data.get("commons_admission") is False
-        and blobs_match
+        and not missing_files
+        and receipt_blobs_match
     )
     return {
         "gate": False,
@@ -148,6 +157,8 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "no_auth": True,
         "blobs": blobs,
         "blobs_match": blobs_match,
+        "receipt_blobs_match": receipt_blobs_match,
+        "missing_files": missing_files,
         "pointer_ok": pointer_ok,
     }
 

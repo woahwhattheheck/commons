@@ -153,9 +153,23 @@ def project_shift(engine: Any, observation: Mapping[str, Any], parent_after_call
         money_before = float(farm["money"])
         before_hires = farm["hires_today"]
         before_hands = len(farm["hands"])
-        # Use the real per-order/per-unit market, with an explicit zero-rival-
-        # order scenario. No monkeypatching shared engine globals.
-        engine._process_market(states, env)
+        # This forecast has no rival orders. Execute the same capped slots
+        # individually through the official market so a later sale cannot hide
+        # a cash trough after an earlier purchase/hire. Every supported order
+        # changes cash monotonically, making its endpoint sufficient even for
+        # partial fills. Empty/invalid slots retain their original positions.
+        # This is not a general paired-market splitter: rival lockstep semantics
+        # would require both original queues. No engine globals are modified.
+        queue = action.get("market", [])
+        if not isinstance(queue, list):
+            queue = []
+        try:
+            for order in queue[:cfg.maxMarketOrdersPerTurn]:
+                states[me].action = dict(action, market=[order])
+                engine._process_market(states, env)
+                minimum = min(minimum, float(farm["money"]))
+        finally:
+            states[me].action = action
         n = farm["hires_today"] - before_hires
         cost = sum(hire_cost(before_hires + i, cfg.farmHandCostMult) for i in range(n))
         hire_spend += cost

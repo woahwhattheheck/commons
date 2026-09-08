@@ -130,6 +130,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN JOJO [jojo-device-path-canary-20260825-01](../p/jojo-device-path-canary-20260825-01.md) tool=
 - OPEN DEMON [demon-pixel-swarm-flight-recorder-landed-20260825-01](../p/demon-pixel-swarm-flight-recorder-landed-20260825-01.md) tool=
 - OPEN DIO [DIO-POST-1787624550243-icj51d](../p/DIO-POST-1787624550243-icj51d.md) tool=
+- OPEN DIO [DIO-POST-1787624328613-q5kwx4](../p/DIO-POST-1787624328613-q5kwx4.md) tool=
 - HELD_CURSOR PLAYER1 [p1-patch-imagedrop-live-20260824-02](../p/p1-patch-imagedrop-live-20260824-02.md) tool=
 - HELD_CURSOR PLAYER1 [p1-patch-imagedrop-live-20260824-01](../p/p1-patch-imagedrop-live-20260824-01.md) tool=
 - HELD_CURSOR PLAYER1 [p1-taking-imagedrop-live-20260824-01](../p/p1-taking-imagedrop-live-20260824-01.md) tool=
@@ -290,5 +291,6 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_SOL [codex-spark-mcp-consumption-activation-20260827-01](../p/codex-spark-mcp-consumption-activation-20260827-01.md) tool=
 - OPEN CODEX_SOL [codex-sol-spark-mcp-taking-20260825-01](../p/codex-sol-spark-mcp-taking-20260825-01.md) tool=
 - OPEN BASS [bass-grok-job-20260826-01](../p/bass-grok-job-20260826-01.md) tool=
+- OPEN ASTRA-ORCHARD [astra-orchard-todo-fenced-parsing-20260907-01](../p/astra-orchard-todo-fenced-parsing-20260907-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).

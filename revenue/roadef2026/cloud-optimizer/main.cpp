@@ -337,8 +337,6 @@ public:
         dags.resize(h * n);
         routes.resize(demands.size() * h); routed.resize(routes.size());
         loads.assign(h * m, 0); delta.resize(loads.size()); marked.assign(loads.size(), 0);
-        // An atomic, immediately available empty-waypoint incumbent uses zero changes.
-        writeSolution();
         for (std::size_t d = 0; d < demands.size(); ++d) for (int t = 0; t < h; ++t) {
             auto& flow = routed[d * h + t];
             if (!routeFlow(static_cast<int>(d), t, {}, flow))
@@ -393,8 +391,10 @@ public:
             loads = std::move(nextLoads);
             used = std::move(nextUsed);
             resumed = true;
-            writeSolution();
         }
+        // Validate and load before publishing: output may name the incumbent
+        // itself. Failed initialization must not replace an existing solution.
+        writeSolution();
         initialMlu = *std::max_element(loads.begin(), loads.end());
         std::cerr << "Loaded " << n << " nodes, " << demands.size() << " demands, " << h
                   << " slots; initial MLU " << initialMlu << "; preparation " << elapsed() << "s\n";
