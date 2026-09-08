@@ -8,8 +8,8 @@
     },
     {
       "path": "supervisor.py",
-      "bytes": 20979,
-      "sha256": "549bf99d9529b2ef2155d90ca497b1f8d9b3635e0b1800784f7b62acb99c96e1"
+      "bytes": 21743,
+      "sha256": "e132568db1a88d38380d222d84b210a823da019c644974afcb535bbade2d7d67"
     },
     {
       "path": "compare_checker.py",

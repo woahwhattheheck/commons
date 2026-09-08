@@ -368,6 +368,7 @@ class Supervisor:
         self.input_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in self.inputs}
         for sig in (signal.SIGTERM, signal.SIGINT):
             signal.signal(sig, self.signal_handler)
+        run_error = None
         try:
             self.start_lanes()
             while time.monotonic() < self.deadline:
@@ -386,6 +387,9 @@ class Supervisor:
                         all(lane["final_checked"] for lane in self.lanes)):
                     break
                 time.sleep(0.1)
+        except BaseException as error:
+            run_error = error
+            raise
         finally:
             for lane in self.lanes:
                 stop_process(lane.get("process"), force=True)
@@ -409,7 +413,20 @@ class Supervisor:
             for lane in self.lanes:
                 if lane.get("log"):
                     lane["log"].close()
-            self.save_receipt("complete" if self.best is not None else "no_validated_solution")
+            if run_error is None:
+                self.save_receipt("complete" if self.best is not None else "no_validated_solution")
+            else:
+                # A feasible incumbent and a successfully finished search are
+                # different facts. Preserve the former without asserting both.
+                # Diagnostics must not replace the exception already escaping.
+                try:
+                    self.emit("supervisor_failed", error_type=type(run_error).__name__)
+                except BaseException:
+                    pass
+                try:
+                    self.save_receipt("error")
+                except BaseException:
+                    pass  # The last atomic receipt remains, not a completed run.
         return 0 if self.best is not None else 1
 
 
