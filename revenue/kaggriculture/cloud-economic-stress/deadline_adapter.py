@@ -13,8 +13,13 @@ import signal
 import time
 
 
-class DeadlineExceeded(Exception):
-    pass
+class DeadlineExceeded(BaseException):
+    """Control-flow cancellation, not an ordinary recoverable policy error.
+
+    Production and transform helpers may catch Exception to supply a default.
+    The guard's one-shot deadline must cross those handlers and be consumed only
+    by DeadlineFallbackAgent.act, or execution continues with its alarm spent.
+    """
 
 
 def _alarm(_signum, _frame):
