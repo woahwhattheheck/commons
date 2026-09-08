@@ -43,8 +43,15 @@ class InputBudgetAgent:
     __call__=act
 
 def make_agent(*,parent=None,enabled=True):return InputBudgetAgent(parent,enabled)
+
+def _absolute_step(obs,cfg=None):
+    if obs.get('step') is not None:
+        return int(obs['step'])
+    config=dict(cfg or {})
+    return int(obs['day'])*int(config.get('turnsPerDay',24))+int(obs['hour'])
+
 _policy=None
 def agent(obs,cfg=None):
     global _policy
-    if _policy is None or obs.get('step')==0:_policy=make_agent()
+    if _policy is None or _absolute_step(obs,cfg)==0:_policy=make_agent()
     return _policy.act(obs,cfg)
