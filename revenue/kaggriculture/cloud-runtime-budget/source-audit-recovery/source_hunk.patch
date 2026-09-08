@@ -1,0 +1,20 @@
+--- a/revenue/kaggriculture/cloud-runtime-budget/profile_saved.py
++++ b/revenue/kaggriculture/cloud-runtime-budget/profile_saved.py
+@@ -266,7 +266,16 @@
+                 for row in loaded_sources.values())
+         except OSError:
+             report["loaded_sources_unchanged"] = False
+-        report["sources_unchanged"] = source_before == source_rows(source_root) if source_before else None
++        try:
++            report["sources_unchanged"] = source_before == source_rows(source_root) if source_before else None
++        except OSError as exc:
++            # Source-audit failure must not erase completed calls or the primary
++            # actor/import error. None means the final inventory is unknown.
++            report["sources_unchanged"] = None
++            report["source_audit_error"] = {"type": type(exc).__name__, "message": str(exc)[:300]}
++            if report["status"] == "complete":
++                report["status"] = "error"
++                report["error"] = {"type": "SourceAuditError", "message": str(exc)[:300]}
+         report["peak_rss_kib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+         values = [r["wall_s"] for r in report["calls"]]
+         report["ordinary_threshold_s"] = 1.0
