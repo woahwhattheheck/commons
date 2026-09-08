@@ -67,18 +67,19 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         self.assertIn("KEEP MAIN", self.receipt)
         self.assertIn("#7754", self.receipt)
 
-    def test_intact_blobs_stay_put(self) -> None:
-        self.assertTrue(self.result["blobs_match"])
+    def test_historical_hashes_and_receipts_stay_available(self) -> None:
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertEqual(self.result["missing_files"], [])
         self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
         self.assertTrue(
-            self.result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a7a49b77")
+            pointer.EXPECTED_BLOBS["host/harborline_tally_pack_map.py"].startswith("a7a49b77")
         )
         self.assertTrue(
-            self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
+            pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"].startswith(
                 "d3d6fcc7"
             )
         )
-        self.assertTrue(self.result["blobs"]["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
         self.assertTrue(
             self.result["blobs"][
                 "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
@@ -161,7 +162,8 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         self.assertEqual(data["checkout"], "NOT_MINTED")
         self.assertTrue(data["did_not_remint_pointer"])
         self.assertTrue(data["keep_main"])
-        self.assertTrue(data["blobs_match"])
+        self.assertTrue(data["receipt_blobs_match"])
+        self.assertEqual(data["missing_files"], [])
         self.assertIs(data["live_instance_blobs_not_pinned"], True)
 
 

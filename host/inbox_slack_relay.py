@@ -62,7 +62,11 @@ def clean(text: Any) -> str:
     text = re.sub(r"(?im)^.*(?:one.?time (?:code|password)|verification code|security code|your (?:login|sign.?in) code).*$", "[authentication material omitted]", text)
     def url_filter(match: re.Match) -> str:
         raw = match.group(0)
-        parsed = urllib.parse.urlsplit(raw)
+        try:
+            parsed = urllib.parse.urlsplit(raw)
+        except ValueError:
+            # Malformed source links must not abort the surrounding work item.
+            return "[malformed URL omitted]"
         if parsed.username or parsed.password or re.search(r"(?i)/(?:reset-password|password/reset|verify-email|magic-link|login/verify|auth/callback)(?:/|$)", parsed.path):
             return "[credential-bearing URL omitted]"
         if any(TOKEN_QUERY.search(key) for key, _ in urllib.parse.parse_qsl(parsed.query)):

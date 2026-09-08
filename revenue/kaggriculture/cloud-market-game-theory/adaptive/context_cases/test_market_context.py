@@ -337,6 +337,8 @@ class ContextTests(unittest.TestCase):
         agent.calls = 0; agent.records = []; agent.last = {}
         agent.counts = {'tables': 0, 'positive_trees': 0}
         agent.observe = lambda obs, cfg: None
+        # History is a separate consumer; this fixture checks offer binding only.
+        agent._remember_action = lambda obs, cfg, action, packet: None
         agent.streams = lambda kw, slot: [('model', ((72, 2),), 'after')]
         agent.parent = types.SimpleNamespace(last_packet={
             'projection': {'observed_step': 71},
@@ -353,9 +355,9 @@ class ContextTests(unittest.TestCase):
         class Consumer:
             selector = types.SimpleNamespace(active=None)
             last = {}
-            counts = {'projection_fallbacks': 0}
+            counts = {'projection_fallbacks': 0, 'admissions': 0}
             def transform(self, obs, cfg, base, *, ledger, offers):
-                observed_offers.extend(copy.deepcopy(offers)); return base
+                observed_offers.extend(copy.deepcopy(list(offers))); return base
             def abort(self, base, reason):
                 raise AssertionError(reason)
         agent.transformer = Consumer()

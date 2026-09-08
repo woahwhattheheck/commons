@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788818908.797329")
+        self.assertEqual(catalog["slack_ts"], "1788829269.929549")
         self.assertEqual(
             catalog["source_id"],
-            "codex-commons-operation-command-center-activation-20260907-01",
+            "codex-titan-cloud-model-lab-activation-20260908-01",
+        )
+        self.assertIn(
+            "codex-titan-cloud-model-lab-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-commons-operation-command-center-activation-20260907-01",
@@ -271,14 +275,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-commons-operation-command-center-activation-20260907-01.json",
+            "codex-titan-cloud-model-lab-activation-20260908-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "commons-operation-command-center"
+            current_activation["selected_resource"], "titan-cloud-model-lab"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -604,6 +608,20 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("STABLE_OPERATION_ID", command_center["authority"])
         self.assertIn("NO_CREDENTIAL_VALUE_DISPLAY", command_center["authority"])
         self.assertIn("eight command_center_* tools", command_center["value"])
+        model_lab = next(
+            row for row in catalog["surfaces"] if row["name"] == "titan-cloud-model-lab"
+        )
+        self.assertEqual(model_lab["capacity"], "LIVE")
+        self.assertEqual(model_lab["stage"], "PRODUCING")
+        self.assertEqual(model_lab["condition"], "CONSTRAINED")
+        self.assertEqual(
+            model_lab["last_receipt"],
+            "codex-titan-cloud-model-lab-activation-20260908-01",
+        )
+        self.assertIn("ONE_POLICY_INSTANCE_PER_ACTOR_MATCH", model_lab["authority"])
+        self.assertIn("NO_KAGGLE_PROVIDER_WRITE", model_lab["authority"])
+        self.assertIn("4f1a541c4145ddf0b3cdb73919b44001e9baebdb", model_lab["exact_safe_probe"])
+        self.assertIn("d65a9ba738f2674fe4be343126d40c4debf03a8e5a44019d67135cbbcaacb11e", model_lab["exact_safe_probe"])
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
