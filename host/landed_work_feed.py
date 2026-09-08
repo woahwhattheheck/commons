@@ -37,7 +37,11 @@ REFUSE = ("--send", "--apply", "--go", "--autopilot")
 
 def git(args: list[str], cwd: Path | None = None) -> str:
     return subprocess.check_output(
-        ["git", *args], cwd=str(cwd or ROOT), text=True
+        ["git", *args],
+        cwd=str(cwd or ROOT),
+        text=True,
+        encoding="utf-8",
+        errors="surrogateescape",
     ).strip()
 
 
@@ -85,7 +89,12 @@ def parse_commit(sha: str, author: str, subject: str, cwd: Path | None = None) -
 
 
 def _line_label(text: str, delimiters: str = "") -> str:
-    if any(ord(c) < 32 or c in "\x85\u2028\u2029" + delimiters for c in text):
+    if any(
+        ord(c) < 32
+        or 0xD800 <= ord(c) <= 0xDFFF
+        or c in "\x85\u2028\u2029" + delimiters
+        for c in text
+    ):
         return json.dumps(text, ensure_ascii=True)
     return text
 
