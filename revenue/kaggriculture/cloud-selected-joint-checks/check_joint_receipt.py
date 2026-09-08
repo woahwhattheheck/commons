@@ -5,9 +5,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
 import sys
+import tempfile
 from typing import Any
 import zipfile
 
@@ -445,6 +447,46 @@ def inspect_archive(path: Path, *, expected_sha256: str | None = None,
     }
 
 
+def write_json_output(path: Path, rendered: str, *, archive: Path) -> None:
+    """Publish one complete receipt without replacing its evidence archive.
+
+    Resolve symlink destinations as Path.write_text did; a hard-linked output
+    is replaced as a directory entry, not truncated through the shared inode.
+    Staging is in the destination directory. This is not a multi-file or
+    power-loss transaction; uncatchable exits may leave an unused stage file.
+    """
+    destination = path.resolve()
+    evidence = archive.resolve()
+
+    def check_destination() -> None:
+        # Repeat before publication in case a normal concurrent writer linked
+        # the destination to the evidence while this receipt was staged.
+        if destination == evidence or (destination.exists() and destination.samefile(evidence)):
+            raise ValueError('JSON output must not refer to the evidence archive')
+
+    check_destination()
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    staged = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8',
+                dir=destination.parent, prefix='.' + destination.name + '.',
+                suffix='.tmp', delete=False) as stream:
+            staged = Path(stream.name)
+            stream.write(rendered)
+            stream.flush()
+            os.fsync(stream.fileno())
+        check_destination()
+        os.replace(staged, destination)
+        staged = None
+    finally:
+        if staged is not None:
+            try:
+                staged.unlink(missing_ok=True)
+            except OSError:
+                # Cleanup must not hide the original write/replace exception.
+                pass
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('archive', type=Path)
@@ -467,8 +509,7 @@ def main() -> int:
                                  required_suites=tuple(args.require_suite))
         rendered = json.dumps(report, indent=2, sort_keys=True) + '\n'
         if args.json_output:
-            args.json_output.parent.mkdir(parents=True, exist_ok=True)
-            args.json_output.write_text(rendered, encoding='utf-8')
+            write_json_output(args.json_output, rendered, archive=args.archive)
         print(rendered, end='')
         return {'COMPLETE_PASS': 0, 'FAIL': 1, 'INCOMPLETE': 2}[report['status']]
     except (OSError, ValueError) as exc:
