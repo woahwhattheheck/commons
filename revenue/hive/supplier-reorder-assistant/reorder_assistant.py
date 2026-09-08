@@ -45,18 +45,36 @@ def _money(value: Decimal) -> str:
 def _read_csv(path: Path, required: set[str]) -> list[dict[str, str]]:
     try:
         with path.open(newline="", encoding="utf-8-sig") as handle:
-            reader = csv.DictReader(handle)
-            fields = set(reader.fieldnames or [])
+            reader = csv.DictReader(handle, strict=True)
+            fieldnames = reader.fieldnames or []
+            fields = set(fieldnames)
             missing = required - fields
             if missing:
                 raise ReorderError(f"{path}: missing columns {sorted(missing)}")
+            if any(not field.strip() for field in fieldnames):
+                raise ReorderError(f"{path}: blank column name")
+            seen: set[str] = set()
+            duplicates: set[str] = set()
+            for field in fieldnames:
+                if field in seen:
+                    duplicates.add(field)
+                seen.add(field)
+            if duplicates:
+                raise ReorderError(f"{path}: duplicate column names {sorted(duplicates)}")
             rows = []
             for line, row in enumerate(reader, start=2):
-                normalized = {key: (value or "").strip() for key, value in row.items()}
+                # DictReader stores overflow cells under None and pads short
+                # records with None. Neither is an explicitly empty CSV cell.
+                if None in row:
+                    raise ReorderError(f"{path}:{line}: extra field(s) beyond the header")
+                absent = [key for key, value in row.items() if value is None]
+                if absent:
+                    raise ReorderError(f"{path}:{line}: missing field(s) {absent}")
+                normalized = {key: value.strip() for key, value in row.items()}
                 normalized["_line"] = str(line)
                 rows.append(normalized)
             return rows
-    except OSError as exc:
+    except (OSError, UnicodeError, csv.Error) as exc:
         raise ReorderError(f"cannot read {path}: {exc}") from exc
 
 
