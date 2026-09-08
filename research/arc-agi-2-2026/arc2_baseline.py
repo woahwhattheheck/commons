@@ -12,7 +12,7 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict, Iterable, List, Mapping, MutableMapping, Sequence, Tuple
+from typing import Callable, Dict, List, Mapping, Sequence, Tuple
 
 Grid = List[List[int]]
 Task = Mapping[str, Sequence[Mapping[str, Grid]]]
@@ -122,6 +122,53 @@ def tile2x2(g: Grid) -> Grid:
     return doubled_rows + [row[:] for row in doubled_rows]
 
 
+def mirror_quadrants(g: Grid) -> Grid:
+    """Mirror the input across its right and bottom edges, doubling both axes."""
+    wide = [row + row[::-1] for row in g]
+    return wide + [row[:] for row in wide[::-1]]
+
+
+def complete_latin_square(g: Grid) -> Grid:
+    """Fill 0-valued blanks when row/column constraints force a Latin square.
+
+    The transform is deliberately conservative: it only acts on an n×n grid
+    containing exactly n non-zero symbols and returns the original grid unless
+    every blank can be resolved by singleton row/column intersections.
+    """
+    n = len(g)
+    if n != len(g[0]) or not 2 <= n <= 9:
+        return copy_grid(g)
+    symbols = {v for row in g for v in row if v != 0}
+    if len(symbols) != n:
+        return copy_grid(g)
+    out = copy_grid(g)
+    if not any(v == 0 for row in out for v in row):
+        return out
+
+    while True:
+        progress = False
+        for r in range(n):
+            for c in range(n):
+                if out[r][c] != 0:
+                    continue
+                row_used = {v for v in out[r] if v != 0}
+                col_used = {out[rr][c] for rr in range(n) if out[rr][c] != 0}
+                candidates = symbols - row_used - col_used
+                if len(candidates) == 1:
+                    out[r][c] = next(iter(candidates))
+                    progress = True
+        if not progress:
+            break
+
+    if any(v == 0 for row in out for v in row):
+        return copy_grid(g)
+    if any(set(row) != symbols for row in out):
+        return copy_grid(g)
+    if any({out[r][c] for r in range(n)} != symbols for c in range(n)):
+        return copy_grid(g)
+    return out
+
+
 TRANSFORMS: Tuple[Tuple[str, Transform], ...] = (
     ("identity", copy_grid),
     ("rot90", rot90),
@@ -131,6 +178,8 @@ TRANSFORMS: Tuple[Tuple[str, Transform], ...] = (
     ("flip_v", flip_v),
     ("transpose", transpose),
     ("anti_transpose", anti_transpose),
+    ("complete_latin_square", complete_latin_square),
+    ("mirror_quadrants", mirror_quadrants),
     ("crop_nonzero", crop_nonzero),
     ("upscale2", upscale2),
     ("repeat_rows2", repeat_rows2),
