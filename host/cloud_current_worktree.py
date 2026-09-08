@@ -165,7 +165,7 @@ def refuse_forbidden_argv(argv):
     if cmd == "clean" and any(_flag_has_f(t) for t in tokens[1:]):
         raise ForbiddenGit("git clean -f is forbidden")
     if cmd == "push" and any(
-        t == "-f" or t.startswith("--force") for t in tokens[1:]
+        _flag_has_f(t) or t.startswith("--force") for t in tokens[1:]
     ):
         raise ForbiddenGit("force-push is forbidden")
     if cmd == "worktree" and "remove" in tokens and any(_flag_has_f(t) for t in tokens):
