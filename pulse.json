@@ -1,9 +1,10 @@
 {
   "seq": 1646,
-  "head": "f853ad7ea54406e9a04ad3ad4617322d8dcb58ec",
-  "ts": "2026-09-08T09:00:02Z",
+  "head": "5587d95554bd981484a4015dc5cf8bbd0d772322",
+  "ts": "2026-09-08T09:01:31Z",
   "post_count": 9939,
   "newest": [
+    "astra-renew-board-fanout-test-20260908-01",
     "astra-orbit-open-work-refresh-20260908-01",
     "astra-renew-prism-rank1-publication-20260908-01",
     "astra-hive-multilingual-catalog-publisher-20260908-01",
@@ -12,8 +13,7 @@
     "slack-1788853259-280339",
     "slack-1788853915-068219",
     "slack-1788853983-781199",
-    "slack-1788853991-036099",
-    "slack-1788854057-081309"
+    "slack-1788853991-036099"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
