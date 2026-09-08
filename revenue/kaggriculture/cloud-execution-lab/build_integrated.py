@@ -42,4 +42,42 @@ def build():
     (ROOT/'runtime/integrated-selected/ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 
-if __name__=='__main__': print(json.dumps(build()))
+def build_release():
+    """Evolve this packaging boundary; retain the PR9997 archive unchanged."""
+    blobs={p:(ROOT/p).read_bytes() for p in RUNTIME}
+    for p in ['main.py','titan_runtime.py','frozen_selected.py','TITAN-CONFIG.json',
+              'scheduler.py','LICENSE','NOTICE','TITAN-RELEASE.md']:
+        blobs[p]=(ROOT/p).read_bytes()
+    for p in (ROOT/'reference/titan-current').rglob('*'):
+        if p.is_file() and '__pycache__' not in p.parts:
+            blobs[str(p.relative_to(ROOT))]=p.read_bytes()
+    for name in ['integrated_selected.py','selected_action_sell.py',
+                 'selected_sell_core.py','ordered_selected_sell.py']:
+        blobs[name]=blobs['reference/titan-current/latest/'+name]
+    # OSPREY's exact shipped relative paths, with no original-repository imports.
+    for name in ['scheduler.py','mechanics.py','reference/next-panel/vendor/arlene.py',
+                 'reference/decision/decision.py']:
+        blobs['reference/titan-current/vendor/sell/'+name]=(ROOT/name).read_bytes()
+    blobs['reference/titan-current/vendor/terminal.py']=blobs['reference/titan-current/terminal.py']
+    rows={p:{'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)} for p,b in blobs.items()}
+    manifest=json.loads((ROOT/'runtime/integrated-selected/RELEASE.json').read_text())
+    manifest.update(runtime=rows,entrypoint='main.py',default=json.loads(blobs['TITAN-CONFIG.json']))
+    encoded=(json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode()
+    blobs['SOURCE.json']=encoded
+    (ROOT/'runtime/integrated-selected/CURRENT-SOURCE.json').write_bytes(encoded)
+    output=io.BytesIO()
+    with gzip.GzipFile(fileobj=output,mode='wb',mtime=0,filename='') as gz:
+        with tarfile.open(fileobj=gz,mode='w') as archive:
+            for path,data in sorted(blobs.items()):
+                info=tarfile.TarInfo(path);info.size=len(data);info.mode=0o644;info.mtime=0
+                archive.addfile(info,io.BytesIO(data))
+    path=ROOT/'exports/titan-current.tar.gz';path.write_bytes(output.getvalue())
+    receipt={'path':str(path.relative_to(ROOT)), 'sha256':hashlib.sha256(output.getvalue()).hexdigest(),
+             'bytes':len(output.getvalue()),'runtime_files':len(rows),
+             'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
+    (ROOT/'runtime/integrated-selected/CURRENT-ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    return receipt
+
+if __name__=='__main__':
+    import sys
+    print(json.dumps(build_release() if '--release' in sys.argv else build()))
