@@ -176,7 +176,7 @@ def stress_scenarios(mechanics, observation, configuration):
     return result
 
 
-def _scenarios(mechanics, scenarios, cfg):
+def _scenarios(mechanics, scenarios, cfg, *, allow_hire=False):
     if not isinstance(scenarios, list) or not 1 <= len(scenarios) <= 32:
         raise ValueError('Supply 1..32 complete rival sale hypotheses')
     result = []
@@ -199,7 +199,11 @@ def _scenarios(mechanics, scenarios, cfg):
         for order in queue[:cfg['maxMarketOrdersPerTurn']]:
             if not order:
                 continue
+            if allow_hire and order == ['HIRE']:
+                continue
             if not _sale(order) or order[1] not in mechanics.PRODUCTS:
+                if allow_hire:
+                    raise ValueError('Rival hypotheses require SELL slots or explicitly enabled HIRE')
                 raise ValueError('This scenario producer supports rival SELL slots only')
             q = _integer(order[2], 'rival sale quantity', 1, cfg['shedCapacity'])
             requested[order[1]] = requested.get(order[1], 0) + q
@@ -234,7 +238,7 @@ def market_cell(mechanics, farms, own_private, market, configuration, player,
 
 def build_terminal_inputs(mechanics, observation, configuration, selected_action, *,
                           post_unit_observation, scenarios=None, max_plans=8,
-                          max_cells=256, deadline=None):
+                          max_cells=256, deadline=None, allow_rival_hire=False):
     """Build raw PORT receipts using current facts, preserving missing cells.
 
     Caller supplies the exact own-unit snapshot for this same selected action
@@ -245,16 +249,33 @@ def build_terminal_inputs(mechanics, observation, configuration, selected_action
 
     deadline is an optional absolute time.perf_counter() value in this process.
     It is checked between native calls, not a preemptive wall-clock guarantee.
+    Explicit allow_rival_hire=True admits HIRE slots in caller-supplied whole
+    queues. Their native affordability uses current PUBLIC money and hires_today,
+    independently in every cell. It does not predict that any hire will occur.
+    The default sale-only stress family and all other rival operations stay as
+    before; no additional scenarios are inferred or added.
+
     Missing cells retain done=False/cash=None, so PORT/LARCH cannot optimize a
     completed-looking subset. max_cells bounds native market invocations.
     """
+    if type(allow_rival_hire) is not bool:
+        raise ValueError('allow_rival_hire must be an explicit boolean')
+    if allow_rival_hire and scenarios is None:
+        raise ValueError('Rival HIRE requires explicit whole caller-supplied scenarios')
     _integer(max_cells, 'max_cells', 0, 256)
     if deadline is not None and (isinstance(deadline, bool) or not isinstance(deadline, (int, float)) or not math.isfinite(deadline)):
         raise ValueError('deadline must be a finite monotonic timestamp')
     cfg, player, step, farms, private, bound = _current(observation, configuration, post_unit_observation)
+    if allow_rival_hire:
+        # Bound only the newly exercised native hiring inputs. No rival-private
+        # worker inventory is inspected or inferred; the new worker starts empty.
+        rival_farm = farms[1-player]
+        _integer(rival_farm.get('hires_today'), 'public rival hires_today',
+                 0, len(rival_farm['hands']))
     plans = sale_plans(mechanics, selected_action, private, observation['market'], cfg, max_plans=max_plans)
     default = scenarios is None
-    rivals = _scenarios(mechanics, stress_scenarios(mechanics, observation, cfg) if default else scenarios, cfg)
+    rivals = _scenarios(mechanics, stress_scenarios(mechanics, observation, cfg) if default else scenarios, cfg,
+                        allow_hire=allow_rival_hire)
     public_hash = fingerprint(bound)
     receipt_list = []
     executed = 0
@@ -278,6 +299,9 @@ def build_terminal_inputs(mechanics, observation, configuration, selected_action
                                own_shed_after=out['own_private']['shed'],
                                own_seeds_after=out['own_private']['seeds'],
                                own_hands_after=len(out['farms'][player]['hands']))
+                if allow_rival_hire:
+                    receipt.update(rival_hands_after=len(out['farms'][1-player]['hands']),
+                                   rival_hires_today_after=out['farms'][1-player]['hires_today'])
             receipt_list.append(receipt)
     source = {'schema': SCHEMA, 'step': step, 'player': player,
               'selected_action_sha256': fingerprint(selected_action),
@@ -285,6 +309,9 @@ def build_terminal_inputs(mechanics, observation, configuration, selected_action
               'hypothesis_family': 'finite-current-snapshot-stress' if default else 'caller-supplied-sale-hypotheses',
               'scenario_probabilities': None,
               'limits': 'Conditional final-market cash only. No inferred hidden stock, calibrated win probability, exhaustive scenario coverage, or new game result.'}
+    if allow_rival_hire:
+        source['hypothesis_family'] = 'caller-supplied-sale-and-hire-hypotheses'
+        source['rival_hire_enabled'] = True
     document = {'plan_ids': [p['id'] for p in plans], 'scenario_ids': [r['id'] for r in rivals],
                 'baseline': 'baseline', 'receipts': receipt_list, 'source': source}
     return {'schema': SCHEMA, 'status': stopped or 'complete', 'document': document,
