@@ -25,10 +25,31 @@ Against the exact original reader blob **47c15bde5301dd18dea1a0a9cfcab8ad3ec829d
 
 The fault cases cover failed/truncated added logs, log/report absence, funded report count/status/scope, funded runtime/test/engine source identity, run/attempt identity, missing snapshot source, qualified or ambiguous completion, and an unrecognized test log. Positive controls check the 95-method total, inert unexecuted source, and zero rerun/game/seed counters.
 
-Exact JOINT helper blob **f3b0562221cc1ef81ad0e95f3a6145474c44ac8b** was also consumed directly on this unchanged 95-method input. It reports its intended **28 supplemental methods**, `COMPLETE_PASS`, no problems, and a core-plus-supplemental subtotal of **79**. This is a helper intake result, not a claim that the funded 16 are integrated.
+Exact JOINT helper blob **f3b0562221cc1ef81ad0e95f3a6145474c44ac8b** was also consumed directly on this unchanged 95-method input. It reports its intended **28 supplemental methods**, `COMPLETE_PASS`, no problems, and a core-plus-supplemental subtotal of **79**. That separate helper intake is preserved, rather than relabeled as funded coverage.
 
-## Integration status
+## Composed result: 26 of 26 pass
 
-At this checkpoint, the shared branch still has the original base-reader blob. The 95-method/funded/aggregate composition has not yet been independently exercised here. The test consumer is already on the one shared branch, ready to run against RECEIPT-9096's exact published implementation. A subsequent result must identify that reader and helper source; this baseline is not a passing implementation claim.
+The exact shared implementation at **1b297a9048a3d6a9d085840bda9c5a126343477f** was independently materialized and checked against its Git blob before execution:
 
-Only the 26 reader regression methods execute. The archived 95 hosted methods, engine transitions and games are **not rerun**. This is validation of evidence consumption, not gameplay strength, source promotion or whole-repository CI.
+| Source | Git blob | SHA-256 |
+| --- | --- | --- |
+| `check_joint_receipt.py` | `007a846e91e8923be742c1754da0c9bc8777d896` | `8bcce19f859c43cea0aedbe1c548a52e623eb72b0d4c23df91193bcd18f1e008` |
+| `supplemental_receipt.py` | `f3b0562221cc1ef81ad0e95f3a6145474c44ac8b` | `08f5d5c81a580dc9616c1fd4d5127a8b7cdef8206228d35026348d7a23a86dda` |
+| `test_archive_faults.py` | `3978dcf50edfe43312683dae3108839bbdae7421` | `56b2c5d48a360ca0f4608ea8e2b0e8c0c7a282fac6f2c10ef1058e3f3f7aba0f` |
+
+**All 26 methods pass, with zero failures, errors or skips.** There are 33 API evidence reads including controls, not 33 hosted tests. The composed reader returns `COMPLETE_PASS` and **95 methods**, retaining original core **51**, JOINT supplemental **28** and funded **16** separately. Its aggregate summary explicitly records declared total 51, recognized total 95, `total_matches_recognized=false` and `authoritative_for_suite_verdicts=false`.
+
+The actual command-line reader was also executed with all four expected identity arguments and `--require-suite funded_join`. It exits **0**, returns `COMPLETE_PASS95`, and its stdout is byte-identical to `--json-output`. This exercises the real CLI, not an adapter or a replacement parser.
+
+## Durable original outputs
+
+`ARCHIVE-FAULTS-RESULTS.json` provides compact source-bound metadata. The complete original and composed JSON outputs, full unittest logs, CLI outputs, helper intake and exact source snapshots are saved in Bryce's Library:
+
+- File: `TITAN_RECEIPT_9162_archive_faults_20260907.zip`
+- File ID: `file_00000000555481f5ac8017bafebb5908`
+- Size: **49,198 bytes**
+- SHA-256: `a0435575a10839075fd544a24b96961948d777727b9a408e32255364af09f1e5`
+
+Retrieve that existing file with Files search/materialize by its exact file ID. Its manifest verifies every included source and evidence member. The 95-method input ZIP and frozen policy archive are intentionally not duplicated; they remain available through the existing GitHub artifact.
+
+Only the 26 reader regression methods execute. The archived 95 hosted methods, engine transitions and games are **not rerun**. This is validation of evidence consumption, not gameplay strength, source promotion or whole-repository CI. The single ordinary reader PR/main integration remains RECEIPT-9096's publication scope.
