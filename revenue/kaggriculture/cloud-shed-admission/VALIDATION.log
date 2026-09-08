@@ -1,0 +1,28 @@
+test_active_purchases_preserve_selected_queue (__main__.AdmissionTests.test_active_purchases_preserve_selected_queue) ... ok
+test_cooperative_expiry_returns_original (__main__.AdmissionTests.test_cooperative_expiry_returns_original) ... ok
+test_default_budget_completes_small_discriminator (__main__.AdmissionTests.test_default_budget_completes_small_discriminator) ... ok
+test_exact_market_definition_provenance (__main__.AdmissionTests.test_exact_market_definition_provenance) ... ok
+test_exact_small_independent_sequence_enumeration (__main__.AdmissionTests.test_exact_small_independent_sequence_enumeration) ... ok
+test_fresh_standard_library_only_runtime (__main__.AdmissionTests.test_fresh_standard_library_only_runtime) ... ok
+test_inventory_insertion_order_matters (__main__.AdmissionTests.test_inventory_insertion_order_matters) ... ok
+test_large_clearance_uses_capacity_breakpoint (__main__.AdmissionTests.test_large_clearance_uses_capacity_breakpoint) ... ok
+test_late_high_value_sale_stress_veto (__main__.AdmissionTests.test_late_high_value_sale_stress_veto) ... ok
+test_later_worker_priority_both_positions (__main__.AdmissionTests.test_later_worker_priority_both_positions) ... ok
+test_liquidation_without_admission_gets_no_credit (__main__.AdmissionTests.test_liquidation_without_admission_gets_no_credit) ... ok
+test_market_indices_and_limit_remain (__main__.AdmissionTests.test_market_indices_and_limit_remain) ... ok
+test_no_movement_or_animal_action_replaced (__main__.AdmissionTests.test_no_movement_or_animal_action_replaced) ... ok
+test_nonadjacent_worker_unchanged (__main__.AdmissionTests.test_nonadjacent_worker_unchanged) ... ok
+test_nonpressure_fast_path_avoids_engine_search (__main__.AdmissionTests.test_nonpressure_fast_path_avoids_engine_search) ... ok
+test_nonterminal_and_missing_scenarios_preserve (__main__.AdmissionTests.test_nonterminal_and_missing_scenarios_preserve) ... ok
+test_offline_market_binding_matches_full_engine (__main__.AdmissionTests.test_offline_market_binding_matches_full_engine) ... ok
+test_partial_pickup_preserves_sellable_low_stock (__main__.AdmissionTests.test_partial_pickup_preserves_sellable_low_stock) ... ok
+test_pickup_clears_before_later_deposit (__main__.AdmissionTests.test_pickup_clears_before_later_deposit) ... ok
+test_producer_called_once_and_error_preserved (__main__.AdmissionTests.test_producer_called_once_and_error_preserved) ... ok
+test_pruned_search_never_claims_exhaustive (__main__.AdmissionTests.test_pruned_search_never_claims_exhaustive) ... ok
+test_scenario_contract_and_count_validation (__main__.AdmissionTests.test_scenario_contract_and_count_validation) ... ok
+test_three_workers_share_one_capacity (__main__.AdmissionTests.test_three_workers_share_one_capacity) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.283s
+
+OK
