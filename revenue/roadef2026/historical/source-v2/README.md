@@ -41,3 +41,23 @@ Those are historical results from the existing delivery, not work performed by t
 This source is not the later PR10218 `dock_temporal` interface and must not replace it. It is not the current canonical fleet candidate. Root and DOCK retain any fourth-lane trial, compiler/context selection, scoring and result interpretation.
 
 S139 remains on hold. No Gmail draft, attachment, registration, qualification archive, organizer communication, or submission was changed.
+
+## Reproduce the existing public study record
+
+Root's follow-up requires the actual replay recipe and compact historical evidence, not just the two source files. Materialize the unchanged accepted records with:
+
+```sh
+python3 materialize_study.py --output /tmp/roadef-temporal-v2-study
+```
+
+The verified `study-v2.tar.gz.b64` contains the original:
+
+- `replay_three_arms.py` rebuild-aware replay adapter;
+- `run_three_arms.py` executed three-arm driver and exact runtime flags;
+- `PREDECLARED.json` operation, source, limits, and public-development designation;
+- `PUBLIC-THREE-ARM-FREEZE.json` nominal 10-second allowance, arm order, binary/comparator identities, source pin, and incumbent description;
+- `PUBLIC-INPUTS.json` exact B01–B12 input and initial SEDGE30s solution identities;
+- `public-three.log` all 36 actual solver row times/counts and 12 pair records, ending with the original compact summary;
+- `RESULTS.md` and `RESULTS.json` original public summary and validation boundary.
+
+These files are copied byte-for-byte from the accepted 90-member source archive. Materialization performs no build, solver run, checker call, or result derivation. The raw record bundle is also saved in Library as `/ROADEF-historical-temporal-V2-study-records-20260908.zip`.
