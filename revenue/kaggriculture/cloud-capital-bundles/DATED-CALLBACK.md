@@ -54,7 +54,8 @@ the original read-only session; treat them as exposed development data now.
 
 The largest recorded dated action/RPC is 89.524/91.185 ms. This is original cloud
 measurement, not a hard latency guarantee or new benchmark. Complete score rows
-are preserved byte-for-byte in `dated-evaluation/scores.csv`.
+retain all original field values in `dated-evaluation/scores.csv`; only line
+endings are normalized to LF.
 
 ## Durable inputs and reproduction
 
