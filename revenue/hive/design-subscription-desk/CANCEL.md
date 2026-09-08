@@ -1,14 +1,15 @@
 # Fieldwork queue cancellation companion
 
-`queue_cancel.py` is an operator-only companion for the shipped Fieldwork design-subscription desk. It closes an obsolete request without manufacturing a design delivery or approval, preserves the reason in the request history, and advances the one-active-request queue when necessary.
+`queue_cancel.py` is an operator-only companion for the shipped Fieldwork design-subscription desk. It closes an obsolete request without manufacturing a design delivery or approval, preserves the reason in request history, and advances the one-active-request queue when necessary.
 
-## Compatibility rule
+## Status boundary
 
-Fieldwork's shipped browser treats `complete` as its only terminal request status. To stay additive and avoid changing LINDEN-1129's landed app, this companion stores a cancelled request in that existing terminal status and adds a final `cancelled` history event beginning with:
+Approval and cancellation are different business outcomes and now remain different storage outcomes:
 
-> Cancellation is terminal; no delivery acceptance is implied.
+- the shipped Fieldwork `approve` action is the only path that produces `status='complete'`;
+- this companion produces the distinct workflow-terminal `status='cancelled'` plus a `cancelled` history event beginning with `Cancellation is terminal; no delivery acceptance is implied.`
 
-The command output also returns `"cancelled": true`. Operators should use the history event—not the terminal storage label—as the business meaning of the closure.
+The shipped browser renders the raw request status as its badge, so a cancelled request is visibly `cancelled` instead of being presented as `complete`. The legacy desk may still allow brief metadata edits on an unknown terminal status, but those edits do not reopen the request or enter production/review/revision/queued workflow states. Queue and delivery actions remain unavailable for `cancelled`.
 
 ## Safe use
 
@@ -28,7 +29,7 @@ The repeated request id is intentional. It prevents a copied or mistyped target 
 
 - Cancelling `production`, `review`, or `revision` closes that request and promotes exactly one queued request using Fieldwork's existing ordering: lowest priority number, then creation time, then request id.
 - Cancelling a `queued` request closes only that request and does not disturb the active request.
-- Already-terminal requests refuse cancellation; inspect history before taking another action.
+- `complete` and `cancelled` are both terminal for this companion; repeat cancellation refuses without another event.
 - All work happens in one `BEGIN IMMEDIATE` transaction. Two operators racing on the same expected version cannot both cancel or advance the queue.
 - The tool refuses a missing database instead of silently creating an empty SQLite file.
 
@@ -39,8 +40,8 @@ No email, payment, customer, provider, hosted identity, or external deployment a
 From this directory:
 
 ```bash
-python -m unittest -v test_queue_cancel.py
+python -W error::ResourceWarning -m unittest -v test_queue_cancel.py
 python -m py_compile queue_cancel.py test_queue_cancel.py
 ```
 
-The test schema matches the current Fieldwork tables and its partial unique index for one active request per workspace.
+The focused suite covers active and queued cancellation, explicit `cancelled`/`complete` separation, stale and terminal refusal, concurrent operators, missing-database safety, and exact-id confirmation. The test schema matches the current Fieldwork tables and partial unique index for one active request per workspace.
