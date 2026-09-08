@@ -154,6 +154,7 @@ class PaybackTests(unittest.TestCase):
         self.assertFalse(result["admitted"])
         self.assertEqual(result["reason"], "no_strict_funded_payback")
         self.assertEqual(result["worst_gain"], -3_820)
+        self.assertEqual(len(result["rows"]), 1)
 
     def test_harvest_without_explicit_drop_is_rejected(self):
         def no_drop(_base, candidate):
@@ -244,6 +245,17 @@ class PaybackTests(unittest.TestCase):
         self.assertFalse(admission.last_report["admitted"])
         self.assertEqual(admission.last_report["proposals"][0]["reason"],
                          "target_harvest_not_explicitly_dropped")
+
+    def test_first_ranked_complete_payback_returns_without_scanning_later_options(self):
+        obs, cfg = fixture()
+        base, candidate = routes()
+        first = proposal(base, candidate)
+        second = copy.deepcopy(first)
+        admission = FundedPaybackAdmission(seconds=1.0, max_proposals=24)
+        selected = admission(ENGINE, obs, cfg, {"base": base}, [first, second])
+        self.assertIs(selected, first)
+        self.assertTrue(admission.last_report["complete"])
+        self.assertEqual(admission.last_report["evaluated"], 1)
 
 
 def load(path: Path, name: str):

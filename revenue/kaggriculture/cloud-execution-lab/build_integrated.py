@@ -31,6 +31,9 @@ RECORD='runtime/integrated-selected/'
 def source_files():
     """Archive member -> actual current repository source; no version selector."""
     mapping={p:p for p in RUNTIME if p not in ('integrated_main.py','integrated_parent.py')}
+    mapping['seller_snapshot.py']='../cloud-quickstep/seller_snapshot.py'
+    mapping['observed_clone.py']='../cloud-runtime-pulse/observed_clone.py'
+    mapping['plant_suffix.py']='../cloud-runtime-pulse/plant_suffix.py'
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
               'funded_payback_runtime.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:

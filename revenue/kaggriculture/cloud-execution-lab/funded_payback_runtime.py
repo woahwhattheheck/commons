@@ -10,6 +10,11 @@ and the peer-owned ECON implementation remain unchanged.
 from __future__ import annotations
 
 from copy import deepcopy
+import math
+import time
+
+
+_POST_ADMISSION_SECONDS = 0.30
 
 
 _QUANTITY_ORDERS = frozenset(
@@ -43,6 +48,14 @@ def _evaluation_route(route):
 def make_admission(base_class):
     """Bind the adapter to the exact packaged ECON class without forking it."""
     class RuntimeFundedPaybackAdmission(base_class):
+        _action_deadline = None
+
+        def begin_action(self, deadline):
+            deadline = float(deadline)
+            if not math.isfinite(deadline):
+                raise ValueError('action deadline must be finite')
+            self._action_deadline = deadline
+
         @staticmethod
         def _candidate(base, variant, now):
             candidate, inferred = base_class._candidate(base, variant, now)
@@ -58,8 +71,18 @@ def make_admission(base_class):
         def __call__(self, mechanics, observation, configuration, routes, proposals):
             evaluation_routes = {key: _evaluation_route(route)
                                  for key, route in routes.items()}
-            return super().__call__(mechanics, observation, configuration,
-                                    evaluation_routes, proposals)
+            configured_seconds = self.seconds
+            action_deadline = self._action_deadline
+            try:
+                if action_deadline is not None:
+                    self.seconds = min(
+                        configured_seconds,
+                        max(0.0, action_deadline-time.monotonic()-_POST_ADMISSION_SECONDS))
+                return super().__call__(mechanics, observation, configuration,
+                                        evaluation_routes, proposals)
+            finally:
+                self.seconds = configured_seconds
+                self._action_deadline = None
 
     RuntimeFundedPaybackAdmission.__name__ = 'RuntimeFundedPaybackAdmission'
     RuntimeFundedPaybackAdmission.__qualname__ = 'RuntimeFundedPaybackAdmission'

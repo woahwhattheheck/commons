@@ -12,6 +12,7 @@ import math
 from pathlib import Path
 from functools import lru_cache
 import mechanics as m
+from observed_clone import detached_json_value
 
 HERE = Path(__file__).resolve().parent
 
@@ -30,7 +31,8 @@ MAX_PLANS = 700
 
 def post_units(obs, action, config):
     """Exact deterministic engine unit stage on the player's observed farm."""
-    farm, private = copy.deepcopy(obs['farms'][obs['player']]), copy.deepcopy(obs['private'])
+    farm = detached_json_value(obs['farms'][obs['player']])
+    private = detached_json_value(obs['private'])
     acts = [action.get('farmer',['PASS']), *action.get('hands',[])]
     demand = {}
     for a in acts:

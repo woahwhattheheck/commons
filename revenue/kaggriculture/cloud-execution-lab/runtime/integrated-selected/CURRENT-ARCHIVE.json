@@ -2,9 +2,9 @@
   "path": "exports/titan-current.tar.gz",
   "entrypoint": "main.py::agent",
   "config": "TITAN-CONFIG.json",
-  "sha256": "499989ab907331d4c0c990af2ab3703e6731dc83078964aca8563ea5a069e48e",
-  "bytes": 313471,
-  "runtime_files": 83,
+  "sha256": "5f37ab9d218e1085427f946777f0330fe677d9ce0d8866344d74f5983a8a277b",
+  "bytes": 316927,
+  "runtime_files": 86,
   "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json",
-  "source_manifest_sha256": "6350d80c2dc211e803da7741bba5f6b95b770e96827d65bb1343655754f25133"
+  "source_manifest_sha256": "ac4e52b7c45f3d42d7bd6a2de6733fd379c3b165d3aaa97a595d03c1f64f785d"
 }

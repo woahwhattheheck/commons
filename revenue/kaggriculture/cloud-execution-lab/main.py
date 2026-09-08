@@ -17,7 +17,8 @@ def _new_instance(root, feature_data):
         module = load('_titan_funded_payback', source, cache=True)
         adapter = load('_titan_funded_payback_runtime',
                        root/'funded_payback_runtime.py', cache=True)
-        admission = adapter.make_admission(module.FundedPaybackAdmission)()
+        admission = adapter.make_admission(module.FundedPaybackAdmission)(
+            seconds=features.budget_seconds, max_proposals=24)
     return TitanAgent(features, fourth_quadrant_admission=admission)
 
 

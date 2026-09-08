@@ -119,16 +119,44 @@ class _DeadlineTimer:
         self.caller_frame = caller
         self.previous_local = caller.f_trace
         self.local_traces = {caller: self.previous_local}
+        # A debugger may have disabled line events. The guard needs those events
+        # for inline loops, independently of the caller's tracing preferences.
+        self.local_trace_lines = {caller: caller.f_trace_lines}
         self.context_token = _ACTIVE_TIMER.set(self)
         self.trace_ticks = 0
         self.trace_fired = False
         try:
-            sys.settrace(self._trace)
-            caller.f_trace = self._trace
+            trace = (self._trace_plain if self.previous_trace is None and
+                     self.previous_local is None else self._trace)
+            sys.settrace(trace)
+            caller.f_trace = trace
+            caller.f_trace_lines = True
             return self
         except BaseException:
             self._exit_thread()
             raise
+
+    def _trace_plain(self, frame, event, arg):
+        # No caller tracer is installed in the normal runtime. Avoid per-line
+        # multiplexing, but still preserve live and suspended frame settings.
+        if frame.f_code.co_filename == __file__:
+            return None
+        next_trace = self._trace_plain
+        if event == "call":
+            self.local_traces[frame] = frame.f_trace
+            self.local_trace_lines[frame] = frame.f_trace_lines
+            frame.f_trace_lines = True
+        elif event == "return":
+            next_trace = self.local_traces.pop(frame, None)
+            frame.f_trace = next_trace
+            frame.f_trace_lines = self.local_trace_lines.pop(frame, True)
+        self.trace_ticks += 1
+        if event in ("call", "return") or self.trace_ticks >= 64:
+            self.trace_ticks = 0
+            if not self.trace_fired and time.monotonic() >= self.own_at:
+                self.trace_fired = True
+                raise self.expired
+        return next_trace
 
     def _trace(self, frame, event, arg):
         # Never interrupt guard setup/cleanup. In particular __exit__ must run
@@ -136,25 +164,50 @@ class _DeadlineTimer:
         if frame.f_code.co_filename == __file__:
             return None
         prior = self.previous_trace if event == "call" else self.local_traces.get(frame)
-        if prior is not None:
-            self.local_traces[frame] = prior(frame, event, arg)
+        prior_lines = self.local_trace_lines.get(frame, frame.f_trace_lines)
+        self.local_trace_lines[frame] = prior_lines
+        if prior is not None and (event != "line" or prior_lines):
+            # Show the caller its own frame settings, not our forced line flag.
+            # Preserve explicit f_trace assignments and CPython's local-None
+            # behavior, while retaining a private callback for guard dispatch.
+            frame.f_trace = self.local_traces.get(
+                frame, frame.f_trace if event == "call" else None)
+            frame.f_trace_lines = prior_lines
+            try:
+                replacement = prior(frame, event, arg)
+                if replacement is not None:
+                    frame.f_trace = replacement
+            finally:
+                self.local_traces[frame] = frame.f_trace
+                self.local_trace_lines[frame] = frame.f_trace_lines
+                frame.f_trace = self._trace
+                frame.f_trace_lines = True
+        else:
+            frame.f_trace_lines = True
+        next_trace = self._trace
         if event == "return":
-            self.local_traces.pop(frame, None)
+            # A generator yield is also a return event. Restore that suspended
+            # frame now, without retaining completed frames until scope exit.
+            next_trace = self.local_traces.pop(frame, None)
+            frame.f_trace = next_trace
+            frame.f_trace_lines = self.local_trace_lines.pop(frame)
         self.trace_ticks += 1
         if event in ("call", "return") or self.trace_ticks >= 64:
             self.trace_ticks = 0
             if not self.trace_fired and time.monotonic() >= self.own_at:
                 self.trace_fired = True
                 raise self.expired
-        return self._trace
+        return next_trace
 
     def _exit_thread(self):
-        # An exception raised by a trace callback clears sys.gettrace(). Restore
-        # the caller's tracer explicitly, including its already-active frame.
+        # A trace callback exception clears sys.gettrace(). Restore global and
+        # per-frame state, including muted line flags and interrupted frames.
         sys.settrace(self.previous_trace)
-        self.caller_frame.f_trace = self.local_traces.get(
-            self.caller_frame, self.previous_local)
+        for frame, prior_lines in self.local_trace_lines.items():
+            frame.f_trace = self.local_traces.get(frame)
+            frame.f_trace_lines = prior_lines
         self.local_traces.clear()
+        self.local_trace_lines.clear()
         self.caller_frame = None
         _ACTIVE_TIMER.reset(self.context_token)
 
