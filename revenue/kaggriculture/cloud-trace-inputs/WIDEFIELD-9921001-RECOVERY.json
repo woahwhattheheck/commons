@@ -23,7 +23,7 @@
   "hosted_timing_measured": false,
   "input_jsonl_sha256": "0f70729cd505e4b7a80029e01cef61024e85e801bde4344172c17e2e2f036e9f",
   "input_gzip_sha256": "84015b5773a50ad9d8b62ebc686d7c118c686bb272977fe6e350e4b59f0da854",
-  "input_gzip_bytes": 71413,
+  "input_gzip_bytes": 191352,
   "source_blobs": {
     "recorded_inputs.py": "5d6160082cccecf2d96b0f2199cb53a7073f1127",
     "trace_apex_loss.py": "8194b53a3f9df6a81998a7c56a703c056d17238f",
@@ -32,17 +32,16 @@
   "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
   "package": {
     "library_path": "/TITAN-PR9997-original-actor-inputs-9921001.zip",
-    "library_file_id": "libfile_d0a6832b484c81918b08e2327574927a",
     "file_id": "file_00000000b4bc81f5af377ed01c1596fb",
-    "bytes": 404145,
-    "sha256": "a7e0e44d7416d73eeab907b5374e2d63d04fca94b51b1eb465e64f96c6a5f56c",
+    "bytes": 401280,
+    "sha256": "50fcdcd55132610f9b171a4d212101ba4ff09b5b6786ef936e1d5aa61f0491aa",
     "contents": "Original compressed record and transport manifest, candidate JSONL.gz, full recovery receipt/log, original timing index, exact existing sources and engine with licenses, SHA256 manifest and reproduction README"
   },
   "original_timing_index": {
     "scope": "Existing original WIDEFIELD measurements only; not remeasured by recovery",
     "maximum_candidate_call_step": 626,
-    "maximum_candidate_call_seconds": 0.2924136339984251,
-    "step683_candidate_call_seconds": 0.05633271100668935,
+    "maximum_candidate_call_seconds": 0.2924136340006953,
+    "step683_candidate_call_seconds": 0.05633271099941339,
     "step683_not_equivalent_to": "ECON-STRESS's separately retained workload"
   },
   "consumer": "FINCH A",
