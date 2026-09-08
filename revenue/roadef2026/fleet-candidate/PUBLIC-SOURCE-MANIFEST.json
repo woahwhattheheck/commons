@@ -98,8 +98,8 @@
     },
     {
       "path": "benchmark.py",
-      "bytes": 9026,
-      "sha256": "89fb0b630348825ade1ee94f03f066e835298f315869113501f2ca1d5b8798f5"
+      "bytes": 9447,
+      "sha256": "430e6499c88a592c2bf73284a10c7b2eac3f6c4c8cf4f7d5f159486a491d1653"
     },
     {
       "path": "CLOUD-VALIDATION.md",
@@ -165,6 +165,21 @@
       "path": "sprint-reference-tests.log",
       "bytes": 3858,
       "sha256": "b5c22394fda4abf5d6d368bc65fa9a545b11b966ec595d200a6f3d12ed75d805"
+    },
+    {
+      "path": "test_benchmark_finite.py",
+      "bytes": 10321,
+      "sha256": "5bbdf71f8da39a9a8d3ff324e407b9d86a75a9efab058942da2489ad805f6e0e"
+    },
+    {
+      "path": "FINITE-LOADS.md",
+      "bytes": 4114,
+      "sha256": "8ae88c6914f20d4bd10b76d6960b5401ca86365ba5ba00ed4c0c40938c72908c"
+    },
+    {
+      "path": "FINITE-LOADS-RESULTS.json",
+      "bytes": 8580,
+      "sha256": "7ee91ffb326b95b97f3f44a2914bbe020d24ccf0936236b0967e9cb4aa3ef83e"
     }
   ]
 }
