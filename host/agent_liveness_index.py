@@ -14,6 +14,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,13 @@ SCHEMA = "commons-agent-receipt-liveness/v1"
 SOURCE_PATHS = ("presence.json", "lastseen.json", "claims.json")
 FRESH_SECONDS = 6 * 60 * 60
 RECENT_SECONDS = 24 * 60 * 60
+RFC3339_RE = re.compile(
+    r"\A\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}"
+    r"(?:\.\d+)?(?:[Zz]|[+-]\d{2}:\d{2})\Z"
+)
+RFC3339_LOCAL_RE = re.compile(
+    r"\A\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}(?:\.\d+)?\Z"
+)
 
 
 class AgentLivenessError(ValueError):
@@ -47,11 +55,14 @@ def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datet
     if not text and allow_blank:
         return None
     _require(bool(text), f"{at} must be nonempty")
+    if RFC3339_LOCAL_RE.fullmatch(text):
+        raise AgentLivenessError(f"{at} must include a timezone")
+    _require(RFC3339_RE.fullmatch(text) is not None, f"{at} must be RFC3339")
+    normalized = text[:-1] + "+00:00" if text[-1] in "Zz" else text
     try:
-        parsed = dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
+        parsed = dt.datetime.fromisoformat(normalized)
     except ValueError as exc:
         raise AgentLivenessError(f"{at} must be RFC3339") from exc
-    _require(parsed.tzinfo is not None, f"{at} must include a timezone")
     return parsed.astimezone(dt.timezone.utc)
 
 
