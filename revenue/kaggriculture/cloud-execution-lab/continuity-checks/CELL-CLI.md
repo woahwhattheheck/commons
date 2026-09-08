@@ -22,7 +22,6 @@ continues to identify its original runtime and execution; it is not relabelled
 as a new run of this CLI. `SOURCE-PINS.json`, `CONTINUITY-RESULTS.json`, input
 controls and all original evidence remain unchanged.
 
-The earlier hosted source, manifest and specification checks passed; the
-open-door text classifier interpreted the fixed argparse menu as a verb enum.
-No classifier, rule, exclusion or permission was modified. The normal follow-up
-PR supplies its own hosted result, separate from those historical checks.
+Hosted checks are recorded per commit in the pull request, separately from the
+original parser and continuity measurements. This usage-note clarification
+changes no executable source or workflow configuration.
