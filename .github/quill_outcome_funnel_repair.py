@@ -60,13 +60,13 @@ def main() -> None:
         text,
         'self.assertEqual(truth["delivered_transports"], 17)',
         'self.assertEqual(truth["delivered_transports"], 18)',
-        2,
+        3,
     )
     text = replace_exact(
         text,
         'self.assertEqual(truth["distinct_targets"], 12)',
         'self.assertEqual(truth["distinct_targets"], 13)',
-        2,
+        3,
     )
     text = replace_exact(
         text,
