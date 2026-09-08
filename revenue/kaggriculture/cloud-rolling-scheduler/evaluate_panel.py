@@ -1,6 +1,7 @@
 """Paired official-engine games with per-game isolated actors and frozen sources."""
 from __future__ import annotations
 import argparse
+import base64
 import hashlib
 import importlib.util
 import importlib.metadata
@@ -145,10 +146,26 @@ def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
     # private and are deleted by the unchanged existing close implementation.
     original_close=ev.Actor.close
     def close(actor):
-        path=Path(actor.directory.name)/'t03-events.json'
-        if path.exists():
-            actor.stats['t03_events']=json.loads(path.read_text())
-        return original_close(actor)
+        data = None
+        try:
+            path = Path(actor.directory.name) / 't03-events.json'
+            data = path.read_bytes()
+            actor.stats['t03_events'] = json.loads(data.decode('utf-8'))
+        except FileNotFoundError:
+            pass  # Telemetry is optional, including a file removed before read.
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError, RecursionError) as error:
+            actor.stats['t03_events_error'] = {
+                'kind': 'read_error' if data is None else 'decode_error',
+                'type': type(error).__name__, 'error': str(error),
+                'bytes': len(data) if data is not None else None,
+                'sha256': hashlib.sha256(data).hexdigest() if data is not None else None,
+                'raw_base64': base64.b64encode(data).decode('ascii') if data is not None else None,
+            }
+        finally:
+            # Never let optional telemetry prevent the original worker cleanup.
+            # A cancellation still propagates after this finally block.
+            result = original_close(actor)
+        return result
     ev.Actor.close=close
     games=[]
     resumed={'reused_complete': 0, 'retained_incomplete': 0, 'executed': 0}
