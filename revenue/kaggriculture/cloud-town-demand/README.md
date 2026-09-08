@@ -35,11 +35,13 @@ python -B test_flow_scenarios.py --engine "$ENGINE/kaggriculture.py" \
   --flow ../cloud-capital-route-flow/dated_flow.py --report /tmp/town-flow-tests.json
 ```
 
+For current reader adoption, optional budget arguments and incomplete-result exit codes, see [JOINED-CLI.md](JOINED-CLI.md). Use an exact dependency closure; moving main may contain different peer revisions.
+
 For the natural-input join, reuse Library `osprey-reached-quote-case.zip`, file `file_00000000d93881f5949750cf2733e3ad`. Its unchanged `evidence/saved-226-row.json` is TRACE's DELVE control input, not HAZEL's missing candidate checkpoint. The source closure uses the PR10216 FLOW and reader revisions plus the other source pins already declared by OSPREY's reader.
 
 ```sh
 python -B joined_case.py --input "$PACKAGE/evidence/saved-226-row.json" \
-  --paths declared-paths.json --source-root .. --engine "$ENGINE/kaggriculture.py" \
+  --paths declared-paths.json --source-root "$PINNED_SOURCE_ROOT" --engine "$ENGINE/kaggriculture.py" \
   --output /tmp/town-flow-joined.json
 ```
 
