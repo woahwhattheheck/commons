@@ -132,6 +132,48 @@ class AgentLivenessRfc3339Tests(unittest.TestCase):
         self.assertEqual(row["age_seconds"], 3600)
         self.assertEqual(row["receipt_freshness"], "FRESH_6H")
 
+    def test_source_rows_do_not_prestrip_timestamp_padding(self) -> None:
+        for raw in (
+            " 2026-09-01T15:00:00Z",
+            "2026-09-01T15:00:00Z ",
+            "2026-09-01T15:00:00Z\n",
+        ):
+            with self.subTest(raw=repr(raw)):
+                with self.assertRaisesRegex(AgentLivenessError, r"lastseen\[actor\]\.ts must be RFC3339"):
+                    build_index(
+                        presence=[{"from": "actor", "presence": "PRESENT", "id": "r1", "ts": raw}],
+                        lastseen=[{"from": "actor", "id": "r1", "ts": raw, "to": "TABLE"}],
+                        claims={"claims": []},
+                        observed_at="2026-09-01T16:00:00Z",
+                        source_commit="a" * 40,
+                        source_blobs=BLOBS,
+                    )
+
+    def test_source_timestamp_comparison_is_exact_before_parsing(self) -> None:
+        with self.assertRaisesRegex(AgentLivenessError, "actor: timestamp mismatch"):
+            build_index(
+                presence=[{"from": "actor", "presence": "PRESENT", "id": "r1", "ts": " 2026-09-01T15:00:00Z"}],
+                lastseen=[{"from": "actor", "id": "r1", "ts": "2026-09-01T15:00:00Z", "to": "TABLE"}],
+                claims={"claims": []},
+                observed_at="2026-09-01T16:00:00Z",
+                source_commit="a" * 40,
+                source_blobs=BLOBS,
+            )
+
+    def test_whitespace_only_source_timestamp_remains_unknown_and_normalized(self) -> None:
+        result = build_index(
+            presence=[{"from": "actor", "presence": "PRESENT", "id": "r1", "ts": " \t\n"}],
+            lastseen=[{"from": "actor", "id": "r1", "ts": " \t\n", "to": "TABLE"}],
+            claims={"claims": []},
+            observed_at="2026-09-01T16:00:00Z",
+            source_commit="a" * 40,
+            source_blobs=BLOBS,
+        )
+        row = result["identities"][0]
+        self.assertEqual(row["last_seen_at"], "")
+        self.assertEqual(row["receipt_freshness"], "UNKNOWN_TS")
+        self.assertIsNone(row["age_seconds"])
+
     def test_observed_at_extensions_fail_before_projection(self) -> None:
         with self.assertRaisesRegex(AgentLivenessError, "observed_at must be RFC3339"):
             build_index(
