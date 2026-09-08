@@ -12,7 +12,7 @@ DATE and ROUTE-FLOW retain their separate scenario/ranking implementations. They
 
 ## Native file use and standalone build
 
-The original `entry.py` expects a module filename and is not a raw-exec entry. Additive `main.py` resolves the official loader's `configuration['__raw_path__']` (or normal module `__file__`) and imports the unchanged entry with a real filename. The package preserves the entry's original sibling `cloud-titan-composition/vendor/sell/` layout. No runtime network or `kaggle_environments` import is required. Use a fresh actor/process namespace per game, as with the existing evaluator.
+The original `entry.py` expects a module filename and is not a raw-exec entry. Additive `main.py` resolves the official loader's `configuration['__raw_path__']` (or normal module `__file__`) and imports the unchanged entry with a real filename. The package preserves the entry's original sibling `cloud-titan-composition/vendor/sell/` layout. The runtime operates offline without importing `kaggle_environments`. Use a fresh actor/process namespace per game, as with the existing evaluator.
 
 From a Commons checkout with its existing frozen SELL and cloud-pack dependencies:
 
