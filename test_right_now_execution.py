@@ -18,6 +18,11 @@ assert SPEC and SPEC.loader
 control = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(control)
 
+COMPOSIO_RECEIPT = (
+    "revenue/payment_ready/outreach_receipts/"
+    "20260830-composio-1a053aa4f8a0014a.json"
+)
+
 
 class RightNowExecutionTests(unittest.TestCase):
     def test_committed_snapshot_is_exact_compiler_output(self) -> None:
@@ -48,16 +53,25 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(value["truth"]["collected_cash_usd"], 0)
         self.assertEqual(value["truth"]["verified_positive_replies"], 0)
         self.assertEqual(value["truth"]["accepted_scopes"], 0)
+        self.assertEqual(value["truth"]["ready_to_draft"], 0)
         self.assertEqual(value["truth"]["transport_actions"], 0)
         self.assertTrue(value["truth"]["active_chargeable_checkout"])
 
     def test_queue_reuses_collision_and_research_decisions(self) -> None:
-        queue = {row["prospect_id"]: row for row in control.build_control()["execution_queue"]}
+        value = control.build_control()
+        queue = {row["prospect_id"]: row for row in value["execution_queue"]}
         self.assertEqual(queue["anythingllm-mintplex"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["metaforms"]["decision"], "HOLD_DO_NOT_RESEND")
+        self.assertEqual(queue["composio"]["decision"], "HOLD_DO_NOT_RESEND")
+        self.assertEqual(queue["composio"]["collision_receipts"], [COMPOSIO_RECEIPT])
         self.assertEqual(queue["signoz"]["decision"], "RESEARCH_REQUIRED")
         self.assertTrue(queue["anythingllm-mintplex"]["collision_receipts"])
         self.assertFalse(any(row["transport_authorized"] for row in queue.values()))
+        demand_blocker = next(
+            row for row in value["blockers"]
+            if row["id"] == "QUALIFIED_UNCONTACTED_DEMAND"
+        )
+        self.assertEqual(demand_blocker["current"], 0)
 
     def test_offer_prices_are_owned_by_canonical_catalogs(self) -> None:
         value = control.build_control()
@@ -174,6 +188,8 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertIn('id="revenue-control"', page)
         self.assertIn("right-now.js", page)
         self.assertIn("JavaScript-off truth", page)
+        self.assertIn("0 ready drafts", page)
+        self.assertIn("Composio remains held", page)
 
 
 if __name__ == "__main__":
