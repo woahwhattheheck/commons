@@ -257,7 +257,7 @@ class Store:
         old = self.row(db, 'reservations', text(data.get('id'), 'Reservation', 120))
         self.revision(old, data.get('expected_revision'))
         stage, checks = data.get('stage'), data.get('checks')
-        if stage not in CHECKS or not isinstance(checks, dict) or set(checks) != set(CHECKS[stage]):
+        if not isinstance(stage, str) or stage not in CHECKS or not isinstance(checks, dict) or set(checks) != set(CHECKS[stage]):
             raise FleetError('Supply the named checklist items for handover or return.')
         if any(type(value) is not bool for value in checks.values()) or type(data.get('complete')) is not bool:
             raise FleetError('Checklist items and complete must be booleans.')
