@@ -29,6 +29,6 @@ Repeated exact inputs share one input file but keep all original references. The
 
 ## Inventory metrics
 
-`total_inventory_excess` compares shed plus all carried inventory with shed capacity. `ready_excess` includes only workers currently standing on one of the four shed access tiles. It is potential current deposit pressure, not a claim that the selected action deposits those goods. Goods still traveling, future arrivals, production and later sale choices require their own execution model.
+`total_inventory_excess` compares shed plus all carried inventory with shed capacity. `ready_excess` includes only workers currently standing on one of the four shed access tiles. It is potential current deposit pressure, not a claim that the selected action deposits those goods. Goods still traveling, future arrivals, production and later sale schedules require their own execution model.
 
 Actual development intake: 28 frame references have total inventory above capacity (maximum excess 6), but none has ready-to-deposit load exceeding current shed room. Accordingly `--only-pressure` returns zero cases for this bank. This limited observation does not imply that other trajectories or future steps lack admission constraints.
