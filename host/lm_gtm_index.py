@@ -208,6 +208,8 @@ def rel(root: Path, path: Path) -> str:
 
 
 def parse_time(value: str) -> dt.datetime:
+    if not isinstance(value, str):
+        raise IndexError_(f"invalid date-time: {value}")
     text = value[:-1] + "+00:00" if value.endswith("Z") else value
     try:
         parsed = dt.datetime.fromisoformat(text)
@@ -215,7 +217,10 @@ def parse_time(value: str) -> dt.datetime:
         raise IndexError_(f"invalid date-time: {value}") from error
     if parsed.tzinfo is None:
         raise IndexError_("date-time must include a timezone")
-    return parsed.astimezone(dt.timezone.utc)
+    try:
+        return parsed.astimezone(dt.timezone.utc)
+    except (OverflowError, ValueError) as error:
+        raise IndexError_(f"invalid date-time: {value}") from error
 
 
 def iso_z(value: dt.datetime) -> str:
