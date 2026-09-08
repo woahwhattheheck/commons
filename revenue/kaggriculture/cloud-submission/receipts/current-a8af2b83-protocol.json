@@ -1,0 +1,55 @@
+{
+  "scope": "newest-source standalone protocol and completed-route recovery validation; no Kaggle write or independent strength claim",
+  "operation": "titan-kaggriculture-checkpoint-20260908-01",
+  "merge": "c7627b63419240e377a96fd26ee5c3933334b6eb",
+  "source": "592253093f",
+  "archive": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
+  "archive_sha256": "a8af2b834bb5e1d6486245b9538c2de5a041085be38c7707d08e6d49e6149e89",
+  "archive_bytes": 279687,
+  "source_manifest_sha256": "e2c25daaed8476a88cea5bfd778643fa175836b42501dfcc2579eb791613b191",
+  "entrypoint": "main.py::agent",
+  "archive_validation": {
+    "runtime_members": 74,
+    "runtime_manifest_mismatches": 0,
+    "tar_members_including_source_manifest": 75,
+    "absolute_parent_or_link_members": 0
+  },
+  "raw_loader_episode": {
+    "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "engine_package": "1.32.7",
+    "loader_contract": "pinned build_agent/get_last_callable with loader-supplied __raw_path__",
+    "seed": 9922999,
+    "candidate_seat": 0,
+    "opponent": "official_starter",
+    "steps": 719,
+    "scores": [190319.0, 3550.0],
+    "failure": null,
+    "candidate_calls": 719,
+    "candidate_startup_seconds": 0.05983438700786792,
+    "candidate_max_call_seconds": 0.07771184999728575,
+    "candidate_mean_call_seconds": 0.005835122240651257,
+    "candidate_max_rpc_seconds": 0.07875793499988504,
+    "candidate_mean_rpc_seconds": 0.006407200712122066,
+    "candidate_call_cpu_seconds": 4.194895322999998,
+    "candidate_peak_rss_kib": 23868,
+    "trace_sha256": "20133364cd0802a933f7936cac79f226f64179654157067f064401b468f6fc85",
+    "comparison_to_58f8_protocol_cell": "exact same trace, daily bank sequence, scores and terminal state; zero action/economic divergence"
+  },
+  "route_recovery_fixture": {
+    "classification": "deliberate engine-valid forced-cancellation fixture; not naturally activated in the full episode",
+    "tests": 4,
+    "passed": 4,
+    "seconds": 0.116,
+    "completed_route": "a84d06f1d12add7c",
+    "checked_steps": [433, 434, 577, 578],
+    "boundaries": [
+      "completed route survives later selected-transform fallback and controller reconstruction",
+      "route selected on the fallback turn is retained",
+      "producer route interrupted before return is not committed",
+      "new match does not inherit a prior route"
+    ]
+  },
+  "raw_result": "current-a8af2b83-protocol-raw.json",
+  "submission_instruction": "Stage and submit these exact 279687-byte tar.gz bytes once; do not unpack, repack or upload from this lab.",
+  "kaggle_writes": 0
+}
