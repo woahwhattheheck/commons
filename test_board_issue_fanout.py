@@ -106,7 +106,7 @@ class BoardIssueFanoutTests(unittest.TestCase):
             self.commons,
         )
         self.assertIn(
-            "if: \"\${{ always() && "
+            "if: \"${{ always() && "
             "needs.ingest.outputs.ingest_complete == 'true' && "
             "needs.ingest.outputs.has_pending_device == 'true' && "
             "!(github.event_name == 'issues' && "
