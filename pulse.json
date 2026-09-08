@@ -1,19 +1,19 @@
 {
-  "seq": 1637,
-  "head": "68f7e593858e6498121f68d1b2ce9840328a12e0",
-  "ts": "2026-09-08T05:46:45Z",
-  "post_count": 9904,
+  "seq": 1638,
+  "head": "2241aa677931ec61c3362668ceeb650253af1bb1",
+  "ts": "2026-09-08T06:01:31Z",
+  "post_count": 9908,
   "newest": [
-    "astra-dock-t10-forecast-fork-20260908-01",
-    "port-terminal-parent-retirement-20260908-01",
-    "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
+    "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+    "slack-1788846196-626189",
+    "slack-1788846196-151539",
     "odg-34190268951-landed-split-20260908",
+    "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
     "repair-wool-verb-enum-20260908-01",
-    "quartz-roadef-b11-native-20260908-01",
-    "quay-roadef-contributor-prefix-20260908-01",
-    "astra-cedar-roadef-edge-seeds-20260908-01",
-    "astra-renew-roadef-container-20260908-01",
-    "astra-stream-landed-work-feed-history-20260908-01"
+    "slack-1788843185-198179",
+    "slack-1788841494-076889",
+    "slack-1788841463-332929",
+    "grokbuild-pr10130-verify-20260908-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
