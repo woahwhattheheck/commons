@@ -1,0 +1,13 @@
+{
+  "tests": 3,
+  "passed": true,
+  "cases": [
+    {
+      "case": "recovery_state_reconstruction",
+      "seconds": 0.00942937599029392,
+      "module_identity_reused": true,
+      "mutable_state_rebuilt": true
+    }
+  ],
+  "new_games": 0
+}

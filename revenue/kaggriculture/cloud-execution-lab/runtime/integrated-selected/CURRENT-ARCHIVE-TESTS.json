@@ -1,10 +1,10 @@
 {
-  "archive_sha256": "d2e09d4c61dfaad4e2853c481cd3bdef75286716133e9feb6339def3e588e599",
+  "archive_sha256": "401d2dbcaf2a089386a145bd0237b79070dfda730d4cf582ad814a59a778a86d",
   "new_games": 0,
   "cold_actions": [
     {
       "case": "cold_default",
-      "seconds": 0.03463313700922299,
+      "seconds": 0.09199285099748522,
       "action": {
         "farmer": [
           "PASS"
@@ -21,15 +21,15 @@
       "diagnostics": {
         "consumer": "frozen",
         "parent_calls": 1,
-        "entrypoint_prelude_seconds": 0.01051062298938632,
+        "entrypoint_prelude_seconds": 0.025251901999581605,
         "status": "completed",
-        "elapsed_seconds": 0.03411625100125093,
-        "act_cpu_seconds": 0.023604856
+        "elapsed_seconds": 0.09155928599648178,
+        "act_cpu_seconds": 0.066307953
       }
     },
     {
       "case": "cold_history",
-      "seconds": 0.049063006008509547,
+      "seconds": 0.06973748198652174,
       "action": {
         "farmer": [
           "PASS"
@@ -49,12 +49,12 @@
         "entrypoint_prelude_seconds": 0.0,
         "history": {},
         "status": "completed",
-        "elapsed_seconds": 0.03414870898996014,
-        "act_cpu_seconds": 0.034148551
+        "elapsed_seconds": 0.05018250099965371,
+        "act_cpu_seconds": 0.05017820900000001
       }
     }
   ],
-  "source_manifest_sha256": "2f174b93bcaeb24ad8309d655f05b6bea78a5704c68b9a9d19462a2d6ad4b6b3",
+  "source_manifest_sha256": "051a5eddac522986c5b43f972b1597ef96415c9669f65b17c66c172844c50ca1",
   "boundaries": {
     "ENTRY-CLOCK": {
       "tests": 2,
@@ -62,28 +62,28 @@
       "cases": [
         {
           "case": "fallback_copy_is_in_reported_elapsed",
-          "wall_seconds": 0.025153595008305274,
+          "wall_seconds": 0.028443071991205215,
           "diagnostics": {
             "consumer": "frozen",
             "parent_calls": 1,
             "entrypoint_prelude_seconds": 0.0,
             "status": "deadline_fallback",
             "fallback_stage": "selected_transform",
-            "elapsed_seconds": 0.025146861997200176,
-            "act_cpu_seconds": 0.025136506999999975
+            "elapsed_seconds": 0.028434687992557883,
+            "act_cpu_seconds": 0.028427012999999945
           }
         },
         {
           "case": "count_main_prelude_before_parent",
-          "wall_seconds": 0.030198146007023752,
+          "wall_seconds": 0.03553033800562844,
           "diagnostics": {
             "consumer": "frozen",
             "parent_calls": 0,
-            "entrypoint_prelude_seconds": 0.03017256200837437,
+            "entrypoint_prelude_seconds": 0.03549907999695279,
             "status": "deadline_fallback",
             "fallback_stage": "entrypoint_prelude",
-            "elapsed_seconds": 0.03018894999695476,
-            "act_cpu_seconds": 1.3957999999980597e-05
+            "elapsed_seconds": 0.03552010499697644,
+            "act_cpu_seconds": 1.6678999999908406e-05
           }
         }
       ],
@@ -97,7 +97,7 @@
         {
           "case": "economically_active_single_parent_history_join",
           "seat": 0,
-          "seconds": 0.0038386270025512204,
+          "seconds": 0.004430554996361025,
           "selected": {
             "farmer": [
               "PASS"
@@ -164,7 +164,7 @@
         {
           "case": "economically_active_single_parent_history_join",
           "seat": 1,
-          "seconds": 0.0037909399979980662,
+          "seconds": 0.0035459479986457154,
           "selected": {
             "farmer": [
               "PASS"
@@ -232,7 +232,7 @@
         },
         {
           "case": "deadline_records_actual_fallback",
-          "seconds": 0.03044284600764513
+          "seconds": 0.030567540001356974
         },
         {
           "case": "unready_family_retains_complete_selected_action",
@@ -240,9 +240,22 @@
         }
       ],
       "new_games": 0
+    },
+    "MODULE-RECOVERY": {
+      "tests": 3,
+      "passed": true,
+      "cases": [
+        {
+          "case": "recovery_state_reconstruction",
+          "seconds": 0.00988597801188007,
+          "module_identity_reused": true,
+          "mutable_state_rebuilt": true
+        }
+      ],
+      "new_games": 0
     }
   },
   "identical_first_action": true,
-  "max_cold_seconds": 0.049063006008509547,
+  "max_cold_seconds": 0.09199285099748522,
   "episode_allowance": "No full game run here; exact version/config to Claude/WIDEFIELD for separate panel."
 }

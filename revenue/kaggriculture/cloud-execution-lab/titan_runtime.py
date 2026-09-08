@@ -9,12 +9,36 @@ import time
 HERE = Path(__file__).resolve().parent
 
 
-def load(name, path):
+_MODULE_CACHE = {}
+
+
+def load(name, path, *, cache=False):
+    """Cache only completed stateless modules; cancellation never publishes one.
+
+    Controller instances and route/seed ledgers are constructed separately.
+    Cache keys include the resolved artifact path to isolate relocated packages.
+    """
+    import sys
+    key = (name, str(Path(path).resolve()))
+    if cache and key in _MODULE_CACHE:
+        return _MODULE_CACHE[key]
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
-    import sys
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
+    missing = object()
+    previous = sys.modules.get(name, missing)
+    try:
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+        if cache:
+            _MODULE_CACHE[key] = module
+    except BaseException:
+        _MODULE_CACHE.pop(key, None)
+        if sys.modules.get(name) is module:
+            if previous is missing:
+                sys.modules.pop(name, None)
+            else:
+                sys.modules[name] = previous
+        raise
     return module
 
 
@@ -62,7 +86,7 @@ class TitanAgent:
 
     def _initialize(self):
         f = self.features
-        self.funding_module = load('_titan_funding', HERE/'reference/titan-current/seed_funding.py')
+        self.funding_module = load('_titan_funding', HERE/'reference/titan-current/seed_funding.py', cache=True)
         selector = self.funding_module.select_seed_queue if f.funding else None
         if f.consumer == 'ordered':
             from integrated_selected import IntegratedSelectedAgent
@@ -80,7 +104,7 @@ class TitanAgent:
                 module = load('_titan_terminal_composition', HERE/'reference/titan-current/terminal_composition.py')
                 self.production = module.TerminalOwner(self.controller)
                 self.consumer.controller = self.production
-            budget = load('_titan_seed_budget', HERE/'reference/integrated-selected/alder/seed_budget.py')
+            budget = load('_titan_seed_budget', HERE/'reference/integrated-selected/alder/seed_budget.py', cache=True)
             self.seed_budget = budget.SeedBudget(self.controller.R)
         if f.terminal_history and self.history is None:
             from terminal_history_join import TerminalHistoryJoin
