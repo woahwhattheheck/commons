@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Build only the new integrated candidate and its parent control."""
+"""Build and verify the single current TITAN release."""
 import gzip
 import hashlib
 import io
@@ -21,14 +21,44 @@ RUNTIME=['integrated_selected.py','integrated_main.py','integrated_parent.py',
    ['arlene_plan.py','native_motifs.py','run_cards.py','arrival_facts.py','engine_pin.py',
     'LICENSE-MIT.txt','LICENSE-APACHE-2.0.txt']]]
 
-def build():
-    blobs={p:(ROOT/p).read_bytes() for p in RUNTIME}
-    rows={p:{'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)} for p,b in blobs.items()}
-    manifest={'runtime':rows,'candidate':'integrated_main.py','parent':'integrated_parent.py',
-              'module':'integrated_selected.py','factory':'make_agent',
-              'default_switches':{'seed':True,'committed':True,'sell':True}}
+ARCHIVE='exports/titan-current.tar.gz'
+RECORD='runtime/integrated-selected/'
+
+
+def source_files():
+    """Archive member -> actual current repository source; no version selector."""
+    mapping={p:p for p in RUNTIME if p not in ('integrated_main.py','integrated_parent.py')}
+    for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
+              'terminal_history_join.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+        mapping[p]=p
+    for directory in ('reference/titan-current','reference/titan-history'):
+        for p in (ROOT/directory).rglob('*'):
+            if p.is_file() and '__pycache__' not in p.parts:
+                name=str(p.relative_to(ROOT));mapping[name]=name
+    for name in ('integrated_selected.py','selected_action_sell.py','selected_sell_core.py','ordered_selected_sell.py'):
+        mapping[name]='reference/titan-current/latest/'+name
+    for name in ('scheduler.py','mechanics.py','reference/next-panel/vendor/arlene.py','reference/decision/decision.py'):
+        mapping['reference/titan-current/vendor/sell/'+name]=name
+    mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
+    # Controls and experimental configuration are reproduction inputs only.
+    for name in ('TITAN-HISTORY-CONFIG.json','test_terminal_history_join.py',
+                 'test_entrypoint_clock.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
+        mapping['checks/'+name]=name
+    for name in ('reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
+                 'reference/engine/utils.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):
+        mapping['checks/'+name]=name
+    return mapping
+
+
+def render():
+    mapping=source_files()
+    blobs={p:(ROOT/source).read_bytes() for p,source in mapping.items()}
+    manifest=json.loads((ROOT/(RECORD+'RELEASE.json')).read_text())
+    manifest.update(entrypoint='main.py::agent',config='TITAN-CONFIG.json',
+        default=json.loads(blobs['TITAN-CONFIG.json']),
+        runtime={p:{'source_path':mapping[p],'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+                 for p,b in blobs.items()})
     encoded=(json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode()
-    (ROOT/'runtime/integrated-selected/SOURCE.json').write_bytes(encoded)
     blobs['SOURCE.json']=encoded
     output=io.BytesIO()
     with gzip.GzipFile(fileobj=output,mode='wb',mtime=0,filename='') as gz:
@@ -36,70 +66,49 @@ def build():
             for path,data in sorted(blobs.items()):
                 info=tarfile.TarInfo(path);info.size=len(data);info.mode=0o644;info.mtime=0
                 archive.addfile(info,io.BytesIO(data))
-    path=ROOT/'exports/integrated-selected-v1.tar.gz';path.write_bytes(output.getvalue())
-    receipt={'path':str(path.relative_to(ROOT)), 'sha256':hashlib.sha256(output.getvalue()).hexdigest(),
-             'bytes':len(output.getvalue()),'runtime_files':len(rows)}
-    (ROOT/'runtime/integrated-selected/ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    data=output.getvalue()
+    receipt={'path':ARCHIVE,'entrypoint':'main.py::agent','config':'TITAN-CONFIG.json',
+             'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),
+             'runtime_files':len(mapping),'source_manifest':RECORD+'CURRENT-SOURCE.json',
+             'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
+    return data,encoded,receipt
+
+
+def build_release():
+    data,manifest,receipt=render()
+    # Preserve every superseded current archive before advancing the one stream.
+    current=ROOT/ARCHIVE
+    if current.exists() and current.read_bytes()!=data:
+        old=current.read_bytes();digest=hashlib.sha256(old).hexdigest()
+        historical=ROOT/'exports/historical'/('titan-'+digest+'.tar.gz')
+        historical.parent.mkdir(parents=True,exist_ok=True)
+        if historical.exists() and historical.read_bytes()!=old:
+            raise ValueError('Historical archive identity collision')
+        historical.write_bytes(old)
+    current.write_bytes(data)
+    (ROOT/(RECORD+'CURRENT-SOURCE.json')).write_bytes(manifest)
+    (ROOT/(RECORD+'CURRENT-ARCHIVE.json')).write_text(json.dumps(receipt,indent=2)+'\n')
+    verify_current()
     return receipt
 
-def build_release(version=None):
-    """Evolve this packaging boundary; retain the PR9997 archive unchanged."""
-    blobs={p:(ROOT/p).read_bytes() for p in RUNTIME}
-    for p in ['main.py','titan_runtime.py','frozen_selected.py','TITAN-CONFIG.json',
-              'scheduler.py','LICENSE','NOTICE','TITAN-RELEASE.md']:
-        blobs[p]=(ROOT/p).read_bytes()
-    for p in (ROOT/'reference/titan-current').rglob('*'):
-        if p.is_file() and '__pycache__' not in p.parts:
-            blobs[str(p.relative_to(ROOT))]=p.read_bytes()
-    for name in ['integrated_selected.py','selected_action_sell.py',
-                 'selected_sell_core.py','ordered_selected_sell.py']:
-        blobs[name]=blobs['reference/titan-current/latest/'+name]
-    # OSPREY's exact shipped relative paths, with no original-repository imports.
-    for name in ['scheduler.py','mechanics.py','reference/next-panel/vendor/arlene.py',
-                 'reference/decision/decision.py']:
-        blobs['reference/titan-current/vendor/sell/'+name]=(ROOT/name).read_bytes()
-    blobs['reference/titan-current/vendor/terminal.py']=blobs['reference/titan-current/terminal.py']
-    if version in ('history-v2','entry-clock-v3'):
-        for name in ['terminal_history_join.py','TITAN-HISTORY-CONFIG.json']:
-            blobs[name]=(ROOT/name).read_bytes()
-        for name in ['test_terminal_history_join.py','test_ordered_selected_sell.py','test_engine_semantics.py']:
-            blobs['checks/'+name]=(ROOT/name).read_bytes()
-        if version == 'entry-clock-v3':
-            blobs['checks/test_entrypoint_clock.py']=(ROOT/'test_entrypoint_clock.py').read_bytes()
-        for name in ['reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
-                     'reference/engine/utils.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py']:
-            blobs['checks/'+name]=(ROOT/name).read_bytes()
-        for p in (ROOT/'reference/titan-history').rglob('*'):
-            if p.is_file() and '__pycache__' not in p.parts:
-                blobs[str(p.relative_to(ROOT))]=p.read_bytes()
-    rows={p:{'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)} for p,b in blobs.items()}
-    manifest=json.loads((ROOT/'runtime/integrated-selected/RELEASE.json').read_text())
-    manifest.update(runtime=rows,entrypoint='main.py',default=json.loads(blobs['TITAN-CONFIG.json']))
-    if version in ('history-v2','entry-clock-v3'):
-        manifest.update(release='titan-'+version,history=json.loads((ROOT/'runtime/integrated-selected/HISTORY-RELEASE.json').read_text()))
-    if version == 'entry-clock-v3':
-        manifest['entry_clock']={'same_timer':True,'main_prelude_included':True,'fallback_copy_reported':True,
-            'reserve_seconds':0.01,'rpc_serialization_scheduling_outside_agent':True,
-            'failed_9921012_cell_diagnosis':None,'test':'checks/test_entrypoint_clock.py'}
-    encoded=(json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode()
-    blobs['SOURCE.json']=encoded
-    prefix={'history-v2':'HISTORY','entry-clock-v3':'ENTRY-CLOCK'}.get(version,'CURRENT')
-    (ROOT/f'runtime/integrated-selected/{prefix}-SOURCE.json').write_bytes(encoded)
-    output=io.BytesIO()
-    with gzip.GzipFile(fileobj=output,mode='wb',mtime=0,filename='') as gz:
-        with tarfile.open(fileobj=gz,mode='w') as archive:
-            for path,data in sorted(blobs.items()):
-                info=tarfile.TarInfo(path);info.size=len(data);info.mode=0o644;info.mtime=0
-                archive.addfile(info,io.BytesIO(data))
-    path=ROOT/('exports/titan-'+version+'.tar.gz' if version else 'exports/titan-current.tar.gz')
-    path.write_bytes(output.getvalue())
-    receipt={'path':str(path.relative_to(ROOT)), 'sha256':hashlib.sha256(output.getvalue()).hexdigest(),
-             'bytes':len(output.getvalue()),'runtime_files':len(rows),
-             'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
-    (ROOT/f'runtime/integrated-selected/{prefix}-ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
+
+def verify_current():
+    """Fail on stale source, stale pointer, changed config or archive contents."""
+    data,manifest,receipt=render()
+    actual=json.loads((ROOT/(RECORD+'CURRENT-ARCHIVE.json')).read_text())
+    if actual!=receipt:raise ValueError('Current release pointer differs from current source')
+    if (ROOT/ARCHIVE).read_bytes()!=data:raise ValueError('Canonical archive differs from current source')
+    if (ROOT/(RECORD+'CURRENT-SOURCE.json')).read_bytes()!=manifest:
+        raise ValueError('Current manifest differs from current source')
     return receipt
+
+
+build=build_release
 
 if __name__=='__main__':
-    import sys
-    version='entry-clock-v3' if '--entry-clock-v3' in sys.argv else 'history-v2' if '--history-v2' in sys.argv else None
-    print(json.dumps(build_release(version) if '--release' in sys.argv or version else build()))
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check',action='store_true')
+    parser.add_argument('--release',action='store_true',help=argparse.SUPPRESS)
+    args=parser.parse_args()
+    print(json.dumps(verify_current() if args.check else build_release()))

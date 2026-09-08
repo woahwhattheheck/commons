@@ -1,0 +1,248 @@
+{
+  "archive_sha256": "d2e09d4c61dfaad4e2853c481cd3bdef75286716133e9feb6339def3e588e599",
+  "new_games": 0,
+  "cold_actions": [
+    {
+      "case": "cold_default",
+      "seconds": 0.03463313700922299,
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [],
+        "market": [
+          [
+            "BUY_PRODUCT",
+            "WHEAT",
+            13
+          ]
+        ]
+      },
+      "diagnostics": {
+        "consumer": "frozen",
+        "parent_calls": 1,
+        "entrypoint_prelude_seconds": 0.01051062298938632,
+        "status": "completed",
+        "elapsed_seconds": 0.03411625100125093,
+        "act_cpu_seconds": 0.023604856
+      }
+    },
+    {
+      "case": "cold_history",
+      "seconds": 0.049063006008509547,
+      "action": {
+        "farmer": [
+          "PASS"
+        ],
+        "hands": [],
+        "market": [
+          [
+            "BUY_PRODUCT",
+            "WHEAT",
+            13
+          ]
+        ]
+      },
+      "diagnostics": {
+        "consumer": "frozen",
+        "parent_calls": 1,
+        "entrypoint_prelude_seconds": 0.0,
+        "history": {},
+        "status": "completed",
+        "elapsed_seconds": 0.03414870898996014,
+        "act_cpu_seconds": 0.034148551
+      }
+    }
+  ],
+  "source_manifest_sha256": "2f174b93bcaeb24ad8309d655f05b6bea78a5704c68b9a9d19462a2d6ad4b6b3",
+  "boundaries": {
+    "ENTRY-CLOCK": {
+      "tests": 2,
+      "passed": true,
+      "cases": [
+        {
+          "case": "fallback_copy_is_in_reported_elapsed",
+          "wall_seconds": 0.025153595008305274,
+          "diagnostics": {
+            "consumer": "frozen",
+            "parent_calls": 1,
+            "entrypoint_prelude_seconds": 0.0,
+            "status": "deadline_fallback",
+            "fallback_stage": "selected_transform",
+            "elapsed_seconds": 0.025146861997200176,
+            "act_cpu_seconds": 0.025136506999999975
+          }
+        },
+        {
+          "case": "count_main_prelude_before_parent",
+          "wall_seconds": 0.030198146007023752,
+          "diagnostics": {
+            "consumer": "frozen",
+            "parent_calls": 0,
+            "entrypoint_prelude_seconds": 0.03017256200837437,
+            "status": "deadline_fallback",
+            "fallback_stage": "entrypoint_prelude",
+            "elapsed_seconds": 0.03018894999695476,
+            "act_cpu_seconds": 1.3957999999980597e-05
+          }
+        }
+      ],
+      "failed_cell_reproduction": false,
+      "new_games": 0
+    },
+    "HISTORY": {
+      "tests": 5,
+      "passed": true,
+      "cases": [
+        {
+          "case": "economically_active_single_parent_history_join",
+          "seat": 0,
+          "seconds": 0.0038386270025512204,
+          "selected": {
+            "farmer": [
+              "PASS"
+            ],
+            "hands": [
+              [
+                "PASS"
+              ]
+            ],
+            "market": [
+              [
+                "SELL",
+                "MILK",
+                2
+              ],
+              [
+                "SELL",
+                "WHEAT",
+                2
+              ]
+            ]
+          },
+          "output": {
+            "farmer": [
+              "PASS"
+            ],
+            "hands": [
+              [
+                "PASS"
+              ]
+            ],
+            "market": [
+              [
+                "SELL",
+                "WHEAT",
+                2
+              ],
+              [
+                "SELL",
+                "MILK",
+                2
+              ]
+            ]
+          },
+          "cash_pairs": [
+            {
+              "plan": "baseline",
+              "cash": [
+                100394,
+                100398
+              ]
+            },
+            {
+              "plan": "sale-55d4fc043aecc70f",
+              "cash": [
+                100397,
+                100396
+              ]
+            }
+          ],
+          "parent_calls": 1,
+          "unit_stages": 1
+        },
+        {
+          "case": "economically_active_single_parent_history_join",
+          "seat": 1,
+          "seconds": 0.0037909399979980662,
+          "selected": {
+            "farmer": [
+              "PASS"
+            ],
+            "hands": [],
+            "market": [
+              [
+                "SELL",
+                "MILK",
+                2
+              ],
+              [
+                "SELL",
+                "WHEAT",
+                2
+              ]
+            ]
+          },
+          "output": {
+            "farmer": [
+              "PASS"
+            ],
+            "hands": [],
+            "market": [
+              [
+                "SELL",
+                "WHEAT",
+                2
+              ],
+              [
+                "SELL",
+                "MILK",
+                2
+              ]
+            ]
+          },
+          "cash_pairs": [
+            {
+              "plan": "baseline",
+              "cash": [
+                100394,
+                100398
+              ]
+            },
+            {
+              "plan": "sale-5904fcbde9b2337d",
+              "cash": [
+                100397,
+                100396
+              ]
+            }
+          ],
+          "parent_calls": 1,
+          "unit_stages": 1
+        },
+        {
+          "case": "partial_native_table_retains_selected",
+          "passed": true
+        },
+        {
+          "case": "seed_funding_history_shared_snapshot",
+          "unit_stages": 1,
+          "seed_buy": 1,
+          "official_hands": 2
+        },
+        {
+          "case": "deadline_records_actual_fallback",
+          "seconds": 0.03044284600764513
+        },
+        {
+          "case": "unready_family_retains_complete_selected_action",
+          "passed": true
+        }
+      ],
+      "new_games": 0
+    }
+  },
+  "identical_first_action": true,
+  "max_cold_seconds": 0.049063006008509547,
+  "episode_allowance": "No full game run here; exact version/config to Claude/WIDEFIELD for separate panel."
+}
