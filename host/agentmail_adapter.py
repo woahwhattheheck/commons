@@ -44,6 +44,11 @@ RECEIPT_KEYS = {
 }
 SAFE_ID = re.compile(r"^[A-Za-z0-9._:-]{1,200}$")
 HASH = re.compile(r"^sha256:[0-9a-f]{64}$")
+UTC_TIMESTAMP = re.compile(
+    r"\A[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]+)?Z\Z",
+    re.ASCII,
+)
 
 
 class AgentMailReceiptError(ValueError):
@@ -53,11 +58,11 @@ class AgentMailReceiptError(ValueError):
 def _time(value: object, nullable: bool = False) -> str | None:
     if value is None and nullable:
         return None
-    if not isinstance(value, str) or not value.endswith("Z"):
+    if not isinstance(value, str) or UTC_TIMESTAMP.fullmatch(value) is None:
         raise AgentMailReceiptError("invalid UTC timestamp")
     try:
         datetime.fromisoformat(value[:-1] + "+00:00")
-    except ValueError as exc:
+    except (OverflowError, ValueError) as exc:
         raise AgentMailReceiptError("invalid UTC timestamp") from exc
     return value
 
