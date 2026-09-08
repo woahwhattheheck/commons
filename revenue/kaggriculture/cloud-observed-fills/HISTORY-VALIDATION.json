@@ -1,0 +1,35 @@
+{
+  "format": "zlib-base64-v1",
+  "scope": "Actual Agent AST + existing reconciler/inference + official market; explicit parent and history-sink harnesses; not full agent gameplay",
+  "runtime_sha256": "a9385e6b4d2aa71b7001cbfdadaa837412c4ceab3be9545a7456ff2596449f9a",
+  "runtime_blob": "204d865ace55a196618b45c1299c4e461f4a7137",
+  "original_runtime_blob": "2408104e5014ed006eea60066c762eaa67dd6a1a",
+  "test_sha256": "90c878d44d060aa8418c9675e468502a22f9e117688966fc000ac9a0e2ab2263",
+  "summary": {
+    "tests_run": 28,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "success": true,
+    "market_executions": 37,
+    "full_games": 0,
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "flow_function_ast_sha256": "9b8d1104ccd58504aa01a2fd9854cfb09e6b5a09f3f6e1d7f8176c4534db7cfa"
+  },
+  "retained_unchanged": [
+    "AdaptiveTransform",
+    "Agent._parent_action",
+    "Agent.capture",
+    "Agent.streams"
+  ],
+  "payloads": {
+    "history-results.json": {
+      "bytes": 42021,
+      "sha256": "429f766b7e28e632d0f15d44e1216bcbdf855a102d74201ff8aeb7572dfdbb69",
+      "data": "eNrtnVtvEzkUx9/7KdA8I+Tr2N43YLNQbdmgUITYFYp8LbOkSTQzWUCI776epE3S0Ia2lN74V1WVHGeO7WP7N8fHJ9MvOw8eFHF8UI3jsHlvmSyL3x58ycIs/mAPDurKz0btrI6P/m0m41xWWM28Np5axql0hidulJJBR8KkUNQS6hTXpVA+y1kpNS91jKWjrkxCl6p4eJr26edOt/PaSqGViYkwr6IthdOOcx5Ka1SZSJZIL4wwVJhAaBIlT4w773MNksdj3bO2GjVHOiVXrmTKUaq0CIIJKlRMUkXnCC9N/mNc0tybpA2NmiZKcjMdTVIyzoUrssqvD+dmqutJ3WSdZP422WqUm74mGE0+DtNs7NtqMh7apl1ZtDBOB5o1ex+klkTYbCfLUjBaCp8cMdlC0hKTeCojDSppqkovJBfBKZ9ssahhNhoND+zhWqWHtv4Q26G3zVz4z9wAiwHMpS6mSd2NbAzLcZ0XPH08GPT3j7UcC/tvNiS9Z882JH/0Bvu7e7t/9wYbBc/6/Ve9DdmL3l7/r03Z7t6fG6JXz3u9l5uy/cHjN096g8HbjYL9/ovH+/0N4ZvnvcebvXnT7+91oiPJ1+OiYhw/tTDJCZNM6hDr1fzpflavuqp7e3vFw3VJZ4Z1AV++fnf06t1K+8dxN0HfZ/00r75HyyYV00leJbNx9cPjwe/XeNTVf3a0tBkhZM1mi7LViK3s3ETbrtdQNG2cdgrUzpp6wAFwABx+VThQwAFwABwAB3gOgAPgADjcUs+BAw6Aw5XBQQIOF4WD0VvgcNkRY1tG7EZ8EGAGmAFmfkHMIA4CzJzTJOwqMPPk9dvhy0H/99dP90/O3UUt5529a7wxQv8M3BBseRAPASQACUACcRFA4i5uWIwxCJv+mj4E8AA8XGB3/PB0Hc93B73iu5/6sX34SQyVwNB9whADhjZNIoChy8GBGPMz4MAAh7PhwDjgADgADoDDKfENwAFwABwAh+v3HG58K88R3bhtcFhrzGWSNgjh9/KAhOMUFYwAI8CIu8EIpGOBEec0CRfXnGqR5/J3z0LOVLdmyzN1boVPifwNuCdAz110T87yJgiWNHIusKTxHRIkZN2KkCUBHAAHwAFwOO2wk2AzADgADoADIgWAA+AAOOAEA3BAGBH3eyxpLGksaSzpLZanWNJw4b/jwtPzJiHJnwIHCjjg2PC2wIEBDrcKDtjfYzMAz+Fm4HCRBMVLPKphq5ZtrMEW5YKgAWVAGVDmwh4NYiGIhYA12O4gFoLnRQEOgAOe+oBAKeBwP03yPThc1fMoz5kuZX4OQRBNBUHgXiCVEnBAEBRwABwAB8ABcAAcAIc7+iUMHGkADlcWtcSRxrV7DopquA6gA/6dH7IiEJkEJLC/wP4CWRGAA7IikBVxpXDYORqU4tDWH2I7jJbm+zh..."}
+  }
+}
