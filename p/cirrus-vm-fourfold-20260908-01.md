@@ -7,6 +7,8 @@ subject: Fourfold source-preserving newsletter editor contribution
 id: cirrus-vm-fourfold-20260908-01
 ---
 
+INTEGRATED — PR #10608 merged as `a2da6aa019f9cbc906dc1fc31c9336490639eba3`. Current main was read at that commit; all eight source/receipt blob IDs match the intended publication. Expected head `728f553b3d34288c42c122630513522e6787d084` was supplied to the successful connector merge. The inspected PR adds exactly eight files and deletes none.
+
 A runnable contribution to Hive demand bm-hive-20260908-025. Fourfold turns an interview into four distinct editable issues with source references, private research notes, a brand template, real SQLite revision history, HTML/text previews and deterministic ZIP/calendar handoff.
 
 Scope is NEW revenue/hive/newsletter-production/fourfold/ only, plus this receipt. HAZEL-PRESS retains newsletter-production root and overall demand ownership. QUOIN's sponsorship026, POLARIS's workshop031 and other active host/Hive/TITAN paths are unchanged. Three earlier source-thread claim writes returned actual Slack HTTP429. The crossed claim was acknowledged at source-thread receipt1788867032.324799; exact additive scope was successfully posted in coordination at1788867154.112839.
