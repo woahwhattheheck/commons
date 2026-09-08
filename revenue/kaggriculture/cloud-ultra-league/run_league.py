@@ -57,15 +57,60 @@ class RecordingEngine:
         self.index += 1
         return result
 
+def load_job(path):
+    """Read one configuration snapshot and reject ambiguous cell identities."""
+    payload = Path(path).read_bytes()
+    cfg = json.loads(payload)
+    cells = cfg['cells']
+    if not isinstance(cells, list):
+        raise ValueError("cells must be a list")
+    seen = set()
+    for item in cells:
+        cell_id = item.get('id') if isinstance(item, dict) else None
+        if not isinstance(cell_id, str) or not cell_id:
+            raise ValueError("Each cell must have a nonempty string id")
+        if cell_id in seen:
+            raise ValueError("Duplicate cell id: " + cell_id)
+        seen.add(cell_id)
+    return cfg, hashlib.sha256(payload).hexdigest()
+
+
+def read_cell_result(path, item, returncode, freeze_sha256):
+    """Bind a saved result to its scheduled cell, configuration and process exit.
+
+    Keep original result files intact, including genuine evaluator failures.
+    A stale or unreadable result must not supply scores for another execution.
+    """
+    def failed(kind, **details):
+        return {'status': 'driver_failed', 'failure': {
+            'kind': kind, 'returncode': returncode, **details}}
+
+    try:
+        result = json.loads(path.read_text())
+    except (OSError, ValueError, UnicodeError) as exc:
+        return failed('result_read_error', error=f"{type(exc).__name__}: {exc}"[:1000])
+    if not isinstance(result, dict) or result.get('status') not in ('complete', 'failed'):
+        return failed('result_schema_error')
+    expected = {'cell_id': item['id'], 'seed': item['seed'],
+                'candidate_seat': item['seat'], 'opponent': item['opponent'],
+                'freeze_sha256': freeze_sha256}
+    mismatches = [key for key, value in expected.items()
+                  if type(result.get(key)) is not type(value) or result.get(key) != value]
+    if mismatches:
+        return failed('result_identity_mismatch', fields=mismatches)
+    if result['status'] == 'complete' and returncode != 0:
+        return failed('child_exit_after_result')
+    return result
+
 def cell(args):
-    cfg = json.loads(Path(args.config).read_text())
+    cfg, freeze_sha256 = load_job(args.config)
     ev = load_evaluator(cfg.get("evaluator", str(HERE.parent / "cloud-eval/evaluate.py")))
     ev.Actor = detailed_actor(ev.Actor)
     item = next(x for x in cfg['cells'] if x['id'] == args.cell)
     out = Path(cfg['output']) / item['id']
     out.mkdir(parents=True, exist_ok=False)
     write_json(out / 'STARTED.json', {'started': now(), 'pid': os.getpid(), 'cell': item,
-                                     'command': sys.argv, 'freeze_sha256': hashlib.sha256(Path(args.config).read_bytes()).hexdigest()})
+                                     'command': sys.argv, 'freeze_sha256': freeze_sha256})
     engine, engine_hashes = ev.get_engine(cfg['engine'], cfg['loader'])
     candidate, opponent = cfg['candidate'], cfg['opponents'][item['opponent']]
     specs = [candidate, opponent] if item['seat'] == 0 else [opponent, candidate]
@@ -74,6 +119,7 @@ def cell(args):
         result = ev.play(recorder, specs, cfg['engine'], cfg['loader'], item['seed'], item['seat'],
                          cfg['rng_seed'], cfg['action_timeout'], cfg['startup_timeout'], cfg['game_timeout'], None)
     result.update(opponent=item['opponent'], cell_id=item['id'], finished=now(),
+                  freeze_sha256=freeze_sha256,
                   engine_sha256=engine_hashes, recorded_transitions=recorder.index)
     result['trajectory_sha256'] = hashlib.sha256((out / 'trajectory.jsonl.gz').read_bytes()).hexdigest()
     write_json(out / 'result.json', result)
@@ -82,12 +128,12 @@ def cell(args):
 
 def launch(args):
     cfg_path = Path(args.config).resolve()
-    cfg = json.loads(cfg_path.read_text())
+    cfg, freeze_sha256 = load_job(cfg_path)
     out = Path(cfg['output'])
     out.mkdir(parents=True, exist_ok=False)
     rows = []
     state = {'started': now(), 'pid': os.getpid(), 'command': sys.argv, 'config': str(cfg_path),
-             'freeze_sha256': hashlib.sha256(cfg_path.read_bytes()).hexdigest(), 'scheduled': len(cfg['cells']), 'finished_cells': rows}
+             'freeze_sha256': freeze_sha256, 'scheduled': len(cfg['cells']), 'finished_cells': rows}
     write_json(out / 'BATCH-STATE.json', state)
     def run(item):
         command = [sys.executable, '-B', str(Path(__file__).resolve()), '--config', str(cfg_path), '--cell', item['id']]
@@ -97,7 +143,7 @@ def launch(args):
             proc = subprocess.Popen(command, stdout=f, stderr=subprocess.STDOUT)
             code = proc.wait()
         path = out / item['id'] / 'result.json'
-        result = json.loads(path.read_text()) if path.exists() else {'status': 'driver_failed', 'failure': {'returncode': code}}
+        result = read_cell_result(path, item, code, freeze_sha256)
         return {'id': item['id'], 'seed': item['seed'], 'seat': item['seat'], 'opponent': item['opponent'],
                 'started': started, 'finished': now(), 'pid': proc.pid, 'returncode': code,
                 'status': result['status'], 'scores': result.get('scores'), 'failure': result.get('failure'),
