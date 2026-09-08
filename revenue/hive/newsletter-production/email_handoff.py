@@ -100,12 +100,14 @@ def _email(issue: dict[str, Any], rendered: str) -> bytes:
     mail.set_content(issue['body'])
     mail.add_alternative(rendered, subtype='html')
     digest = hashlib.sha256(_json(issue) + rendered.encode('utf-8')).hexdigest()
-    boundary = 'newsletter-handoff-' + digest
-    # The generated boundary is deterministic; also guard literal content collisions.
-    while boundary in issue['body'] or boundary in rendered:
-        boundary += '-x'
-    mail.set_boundary(boundary)
-    return mail.as_bytes()
+    # RFC 2046 section 5.1.1 caps boundaries at 70 characters. Each candidate
+    # below is 63 ASCII characters; collision retries never lengthen it.
+    for attempt in range(1000):
+        boundary = f'newsletter-handoff-{digest[:40]}-{attempt:03d}'
+        if boundary not in issue['body'] and boundary not in rendered:
+            mail.set_boundary(boundary)
+            return mail.as_bytes()
+    raise HandoffError('Unable to choose a MIME boundary absent from the draft content.')
 
 
 def _csv_cell(value: str) -> str:
