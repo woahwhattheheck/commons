@@ -62,6 +62,7 @@ def _parse_rows(rows: Sequence[Mapping[str, str]]) -> tuple[list[Node], list[Edg
     nodes: list[Node] = []
     edges: list[Edge] = []
     seen_nodes: set[tuple[str, int]] = set()
+    seen_edges: set[tuple[str, int, int]] = set()
 
     for position, row in enumerate(rows):
         row_number = position + 2  # header is line 1
@@ -72,13 +73,17 @@ def _parse_rows(rows: Sequence[Mapping[str, str]]) -> tuple[list[Node], list[Edg
                 f"row {row_number}: id must be consecutive from 0; expected {expected_id}, got {actual_id}"
             )
 
-        dataset = (row.get("dataset") or "").strip()
+        dataset = row.get("dataset") or ""
+        if dataset != dataset.strip():
+            raise SubmissionError(f"row {row_number}: dataset must not contain leading or trailing whitespace")
         if not dataset:
             raise SubmissionError(f"row {row_number}: dataset must be non-empty")
         if dataset.endswith(".zarr"):
             raise SubmissionError(f"row {row_number}: dataset must omit the .zarr suffix")
 
-        row_type = (row.get("row_type") or "").strip()
+        row_type = row.get("row_type") or ""
+        if row_type != row_type.strip():
+            raise SubmissionError(f"row {row_number}: row_type must not contain leading or trailing whitespace")
         if row_type == "node":
             node_id = _as_int(row, "node_id", row_number)
             t = _as_int(row, "t", row_number)
@@ -105,6 +110,12 @@ def _parse_rows(rows: Sequence[Mapping[str, str]]) -> tuple[list[Node], list[Edg
                 raise SubmissionError(f"row {row_number}: edge source_id and target_id must be non-negative")
             if source_id == target_id:
                 raise SubmissionError(f"row {row_number}: self-edge {source_id}->{target_id} is invalid")
+            edge_key = (dataset, source_id, target_id)
+            if edge_key in seen_edges:
+                raise SubmissionError(
+                    f"row {row_number}: duplicate edge {source_id}->{target_id} in dataset {dataset!r}"
+                )
+            seen_edges.add(edge_key)
             edges.append(Edge(dataset, source_id, target_id))
         else:
             raise SubmissionError(f"row {row_number}: row_type must be 'node' or 'edge', got {row_type!r}")
@@ -116,12 +127,13 @@ def validate_rows(
     rows: Sequence[Mapping[str, str]],
     *,
     expected_datasets: Iterable[str] | None = None,
-    require_consecutive_edges: bool = False,
+    require_consecutive_edges: bool = True,
 ) -> dict[str, int]:
     """Validate rows and return compact counts.
 
-    Publicly documented invariants are always enforced.  `require_consecutive_edges`
-    enables the stricter t->t+1 topology used by the organizer's reference baseline.
+    Consecutive t->t+1 edges are required by default because the organizer's
+    scoring/reference conversion drops non-consecutive links.  Explicit False is
+    retained only for diagnostic callers that need to inspect a looser graph.
     """
     nodes, edges = _parse_rows(rows)
     node_map = {(node.dataset, node.node_id): node for node in nodes}
@@ -183,7 +195,7 @@ def validate_submission(
     path: Path,
     *,
     expected_datasets: Iterable[str] | None = None,
-    require_consecutive_edges: bool = False,
+    require_consecutive_edges: bool = True,
 ) -> dict[str, int]:
     return validate_rows(
         read_submission(path),
@@ -216,12 +228,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate Biohub submission.csv without loading competition data")
     parser.add_argument("submission", type=Path)
     parser.add_argument("--expected-datasets", type=Path, help="newline-delimited dataset names")
-    parser.add_argument("--strict-consecutive", action="store_true", help="require every edge to connect t to t+1")
+    parser.add_argument(
+        "--strict-consecutive",
+        dest="require_consecutive_edges",
+        action="store_true",
+        default=True,
+        help="require every edge to connect t to t+1 (default; flag retained for CLI compatibility)",
+    )
     args = parser.parse_args()
     counts = validate_submission(
         args.submission,
         expected_datasets=_load_expected(args.expected_datasets),
-        require_consecutive_edges=args.strict_consecutive,
+        require_consecutive_edges=args.require_consecutive_edges,
     )
     print("PASS " + " ".join(f"{key}={value}" for key, value in counts.items()))
     return 0
