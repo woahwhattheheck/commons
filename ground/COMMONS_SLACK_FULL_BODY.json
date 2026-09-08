@@ -23,7 +23,7 @@
   "grok_com_prose_parity": true,
   "default_table": "C0BRGMDQB6G",
   "keep_unread": {
-    "host/slack_mirror.py": "3fe0a5d7",
+    "host/slack_mirror.py": "99059569",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "739d5ee8",
     "host/landed_work_feed.py": "0506fd0f",
