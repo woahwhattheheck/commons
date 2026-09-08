@@ -273,6 +273,14 @@ def make_score_selector(selector_type, weighted_factory, build_table,
                 if type(now) is not int:
                     return fallback
                 key = ('terminal-score', observation['player'], now)
+                # A fallback rejected before choose() must still retire the
+                # previous draw when its complete parent action has changed.
+                if (self.active is not None and self.active['key'] == key
+                        and self.active.get('terminal_parent_action') != fallback):
+                    self.active = None
+                    self.last_objective = None
+                    self._fallback(key, 'terminal_parent_changed')
+                    return fallback
                 if now != int((configuration or {}).get('episodeSteps', 720)) - 2:
                     if self.active is not None and self.active['key'] == key:
                         self.active = None
@@ -320,6 +328,7 @@ def make_score_selector(selector_type, weighted_factory, build_table,
                 if selected is None:
                     return fallback
                 self.active['terminal_context_sha256'] = binding
+                self.active['terminal_parent_action'] = deepcopy(fallback)
                 # Preserve the draw only while the complete committed action
                 # remains in the current parent-bound set of terminal plans.
                 committed = selected['plan']

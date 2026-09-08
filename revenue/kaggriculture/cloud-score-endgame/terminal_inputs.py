@@ -43,14 +43,18 @@ def _queue_ok(queue, limit):
         raise ValueError('A supplied market queue must be a list')
     # Only the engine-admitted prefix is executed. Preserve any inactive tail.
     for order in queue[:limit]:
-        if not isinstance(order, list) or not order or order[0] not in {
-                'SELL', 'BUY_SEED', 'BUY_PRODUCT', 'BUY_ANIMAL'} or len(order) < 3:
+        if not isinstance(order, list) or not order or order[0] not in (
+                'SELL', 'BUY_SEED', 'BUY_PRODUCT', 'BUY_ANIMAL') or len(order) < 3:
             continue
         try:
             count = int(order[2])
-        except (TypeError, ValueError, OverflowError):
-            # The native parser has no overflow handler. Do not pass nonfinite
-            # orders into it merely to produce a table; preserve caller fallback.
+        except (TypeError, ValueError):
+            # Native _parse_order treats these quantities as a no-op. Keep the
+            # inherited order and its slot; do not abort the entire table.
+            continue
+        except OverflowError:
+            # The native parser has no overflow handler. Preserve fallback
+            # rather than pass an overflowing quantity into a market cell.
             raise ValueError('Unsupported noninteger native order quantity') from None
         if abs(count) > 1000:
             raise ValueError('Order quantity exceeds this bounded consumer')
