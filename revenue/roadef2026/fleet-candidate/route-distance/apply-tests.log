@@ -1,0 +1,12 @@
+test_duplicate_signature (__main__.ApplicationTests.test_duplicate_signature) ... ok
+test_exact_method (__main__.ApplicationTests.test_exact_method) ... ok
+test_independent_regions_preserved (__main__.ApplicationTests.test_independent_regions_preserved) ... ok
+test_method_edits_are_not_overwritten (__main__.ApplicationTests.test_method_edits_are_not_overwritten) ... ok
+test_missing_signature (__main__.ApplicationTests.test_missing_signature) ... ok
+test_reapplication_is_idempotent (__main__.ApplicationTests.test_reapplication_is_idempotent) ... ok
+test_truncated_method (__main__.ApplicationTests.test_truncated_method) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+OK

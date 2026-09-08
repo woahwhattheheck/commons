@@ -1,0 +1,73 @@
+{
+  "comparisons": 137600,
+  "exhaustive": 115600,
+  "short_random": 20000,
+  "long_random": 2000,
+  "checksum": 786075,
+  "old_short_allocations": -1,
+  "new_short_allocations": -1,
+  "old_long_allocations": -1,
+  "new_long_allocations": -1,
+  "rounds": [
+    {
+      "original_seconds": 0.0692868,
+      "candidate_seconds": 0.0149444
+    },
+    {
+      "original_seconds": 0.0679347,
+      "candidate_seconds": 0.015026
+    },
+    {
+      "original_seconds": 0.068709,
+      "candidate_seconds": 0.0151621
+    },
+    {
+      "original_seconds": 0.0667739,
+      "candidate_seconds": 0.0149586
+    },
+    {
+      "original_seconds": 0.0677671,
+      "candidate_seconds": 0.0155327
+    },
+    {
+      "original_seconds": 0.0677654,
+      "candidate_seconds": 0.0151229
+    },
+    {
+      "original_seconds": 0.0684361,
+      "candidate_seconds": 0.0151178
+    },
+    {
+      "original_seconds": 0.0701457,
+      "candidate_seconds": 0.0145671
+    },
+    {
+      "original_seconds": 0.0665934,
+      "candidate_seconds": 0.0144584
+    }
+  ],
+  "calls_per_arm_per_round": 200000,
+  "allocation_instrumentation": false,
+  "source_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+  "method_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+  "original_method_sha256": "1e5097d26a3de28d1ac18d8b5d6b0097651edaab3ead2d5da6e38c92d6e80532",
+  "harness_sha256": "acd2157fff59d438c41d6aebe21591d3310dd53e3ae2a69deb73fe73dd89e334",
+  "binary_sha256": "bc2aa21140bc33b96d90baa250445b78cc44374d33d5f6e6a8e087af142ec7cd",
+  "flags": [
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wno-mismatched-new-delete",
+    "-O3",
+    "-DNDEBUG"
+  ],
+  "compiler": "clang version 17.0.0 (https://github.com/swiftlang/llvm-project.git 10999b6d034fe318f3d56c83bddb6572593a8bb0)",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "stderr": "",
+  "scope": "extracted exact method; no full solver or official checker run",
+  "original_median_seconds": 0.0679347,
+  "candidate_median_seconds": 0.015026,
+  "median_reduction_percent": 77.88170110414853
+}

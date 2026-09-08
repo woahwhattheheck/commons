@@ -1,0 +1,143 @@
+{
+  "status": "READY_FOR_PUBLICATION",
+  "base_commit": "2885d176373c33410148829fef93c310c3752c0b",
+  "source_path": "revenue/roadef2026/fleet-candidate/main.cpp",
+  "base_source_sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1",
+  "original_method_sha256": "1e5097d26a3de28d1ac18d8b5d6b0097651edaab3ead2d5da6e38c92d6e80532",
+  "candidate_method_sha256": "5e75bda8beb48026a604beafa3634eca6fe99d8d12596d8aea5a022f1133b864",
+  "method_controls": 7,
+  "source_application_tests": 7,
+  "mutation_controls": 4,
+  "sanitizer_clean": true,
+  "fixed_round_solver": {
+    "cases_per_compiler": 32,
+    "cold": 24,
+    "resume": 8,
+    "attempts_per_arm": 60002,
+    "compilers": [
+      "GCC14.2",
+      "Clang17"
+    ],
+    "solutions_loads_budgets_counters_equal": true
+  },
+  "official_checker": null,
+  "timing_scope": "Constructed method-only workload; not solver throughput or solution quality",
+  "median_reduction_percent": {
+    "timing-gcc.json": 81.53912434703,
+    "timing-clang.json": 77.88170110414853
+  },
+  "short_allocations": [
+    164100,
+    0
+  ],
+  "long_fallback_allocations": [
+    108577,
+    108577
+  ],
+  "submission_changed": false,
+  "notes": [
+    "Compiler repetitions share the same137600 cases; not independent new samples.",
+    "Allocation instrumentation and timings used separate binaries.",
+    "All changes are proposed until an actual merge receipt.",
+    "TRACE source transfer consumed and verified; no source recreation or new exporter.",
+    "No official checker or public-instance benchmark run in this component.",
+    "Patch and source-preserving utility are ready for the existing central publication."
+  ],
+  "comparison_cases": 137600,
+  "full_candidate_source_sha256": "1aa873e4ea15f4bde655327fb856bd9da759c68e347b8a8722619666424b9ed8",
+  "full_candidate_bytes": 35487,
+  "whole_solver_workload": {
+    "heavy-gcc-pilot": {
+      "scope": "one generated36-node/16-slot/48-demand fixed48-round workload; not public benchmarks",
+      "pairs": 1,
+      "original_binary_sha256": "36f5f03bd0919ea4ebaaaae509d4e4e5c87e76d7adfd8104b814b33ff23c5e8b",
+      "candidate_binary_sha256": "351b461a08ce3920d4b3941f8d3445057ffe75485f135fda26b7b948f1f02635",
+      "medians_solver_seconds": {
+        "original": 0.204949977,
+        "candidate": 0.222992146
+      },
+      "reduction_percent": -8.803206159910903,
+      "all_solutions_loads_budgets_counters_equal": true
+    },
+    "heavy-gcc": {
+      "scope": "one generated36-node/16-slot/48-demand fixed48-round workload; not public benchmarks",
+      "pairs": 9,
+      "original_binary_sha256": "36f5f03bd0919ea4ebaaaae509d4e4e5c87e76d7adfd8104b814b33ff23c5e8b",
+      "candidate_binary_sha256": "351b461a08ce3920d4b3941f8d3445057ffe75485f135fda26b7b948f1f02635",
+      "medians_solver_seconds": {
+        "original": 0.216288447,
+        "candidate": 0.218729502
+      },
+      "reduction_percent": -1.1286109054174265,
+      "all_solutions_loads_budgets_counters_equal": true
+    },
+    "heavy-clang": {
+      "scope": "one generated36-node/16-slot/48-demand fixed48-round workload; not public benchmarks",
+      "pairs": 9,
+      "original_binary_sha256": "172d0d9754309c489d4703ff19e8471d1db0f8ea8a602215ac97558e5470dd74",
+      "candidate_binary_sha256": "a4c0d9988baae173ac575ca260bf078dd5ca58c82f61f487b6adc230c52119bc",
+      "medians_solver_seconds": {
+        "original": 0.240614314,
+        "candidate": 0.243607554
+      },
+      "reduction_percent": -1.24399914129798,
+      "all_solutions_loads_budgets_counters_equal": true
+    },
+    "resume-gcc-pilot": {
+      "scope": "one generated36-node/16-slot/48-demand fixed48-round workload; not public benchmarks",
+      "pairs": 1,
+      "resumed": true,
+      "incumbent_sha256": "e2427396fd579533eed2cafd8f57514803bfedf3110bf01a230b01893bb1cdf5",
+      "original_binary_sha256": "36f5f03bd0919ea4ebaaaae509d4e4e5c87e76d7adfd8104b814b33ff23c5e8b",
+      "candidate_binary_sha256": "351b461a08ce3920d4b3941f8d3445057ffe75485f135fda26b7b948f1f02635",
+      "medians_solver_seconds": {
+        "original": 0.838765148,
+        "candidate": 0.740072862
+      },
+      "reduction_percent": 11.766378972150616,
+      "all_solutions_loads_budgets_counters_equal": true
+    },
+    "resume-gcc": {
+      "scope": "one generated36-node/16-slot/48-demand fixed48-round workload; not public benchmarks",
+      "pairs": 9,
+      "resumed": true,
+      "incumbent_sha256": "e2427396fd579533eed2cafd8f57514803bfedf3110bf01a230b01893bb1cdf5",
+      "original_binary_sha256": "36f5f03bd0919ea4ebaaaae509d4e4e5c87e76d7adfd8104b814b33ff23c5e8b",
+      "candidate_binary_sha256": "351b461a08ce3920d4b3941f8d3445057ffe75485f135fda26b7b948f1f02635",
+      "medians_solver_seconds": {
+        "original": 0.836223853,
+        "candidate": 0.727264332
+      },
+      "reduction_percent": 13.029946539924886,
+      "all_solutions_loads_budgets_counters_equal": true
+    },
+    "resume-clang": {
+      "scope": "one generated36-node/16-slot/48-demand fixed48-round workload; not public benchmarks",
+      "pairs": 9,
+      "resumed": true,
+      "incumbent_sha256": "e2427396fd579533eed2cafd8f57514803bfedf3110bf01a230b01893bb1cdf5",
+      "original_binary_sha256": "172d0d9754309c489d4703ff19e8471d1db0f8ea8a602215ac97558e5470dd74",
+      "candidate_binary_sha256": "a4c0d9988baae173ac575ca260bf078dd5ca58c82f61f487b6adc230c52119bc",
+      "medians_solver_seconds": {
+        "original": 0.89121519,
+        "candidate": 0.770315579
+      },
+      "reduction_percent": 13.565703587255962,
+      "all_solutions_loads_budgets_counters_equal": true
+    }
+  },
+  "native_call_profile": {
+    "cold": {
+      "kind": "cold",
+      "distance_calls": 403890,
+      "nonidentical_calls": 0,
+      "equal_route_calls": 403890
+    },
+    "resume": {
+      "kind": "resume",
+      "distance_calls": 1776604,
+      "nonidentical_calls": 403925,
+      "equal_route_calls": 1372679
+    }
+  }
+}
