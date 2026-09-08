@@ -1,0 +1,198 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -639,7 +639,180 @@
+                   << " slots; initial MLU " << initialMlu << "; preparation " << elapsed() << "s\n";
+     }
+ 
++    // PRISM rankOne() body reused verbatim from commons PR10430,
++    // merged 73a805e290cee36981917ac09e7ce2133f35afd7 (cloud-a-rank1).
++    // Natural-exhaustion dispatch below is a separate opt-in integration.
++
++    // Opt-in hard-case pass: exhaust the current rank-one coordinate before
++    // returning to the ordinary search. All proposed routes still enter through
++    // move()/moveTogether(), so exact ECMP, segment limits, transition budgets,
++    // and the full sorted six-decimal acceptance rule remain authoritative.
++    void rankOne() {
++        int passLimit = static_cast<int>(std::min(128.0, setting("FLEET_RANK1_PASSES", 16)));
++        int demandLimitSetting = static_cast<int>(std::min(256.0, setting("FLEET_RANK1_DEMANDS", 32)));
++        int pairNodeLimit = static_cast<int>(std::min(96.0, setting("FLEET_RANK1_PAIR_NODES", 24)));
++        const char* reportPath = std::getenv("FLEET_RANK1_REPORT");
++        struct PassRecord {
++            int pass, t, edge, from, to, contributors;
++            double before, after;
++            long long attemptsBefore, attemptsAfter, acceptedBefore, acceptedAfter;
++            bool ejection;
++            std::vector<std::pair<int, double>> top;
++        };
++        std::vector<PassRecord> records;
++        auto appendWindow = [](std::vector<std::pair<int, int>>& windows, int left, int right) {
++            std::pair<int, int> item{left, right};
++            if (std::find(windows.begin(), windows.end(), item) == windows.end()) windows.push_back(item);
++        };
++        for (int pass = 0; pass < passLimit && !finished(); ++pass) {
++            int position = 0;
++            for (int i = 1; i < static_cast<int>(loads.size()); ++i)
++                if (loads[i] > loads[position]) position = i;
++            int t = position / m, edge = position % m;
++            double before = loads[position];
++            auto contributing = contributors(t, edge);
++            PassRecord record{pass, t, edge, nodeIds[edges[edge].from], nodeIds[edges[edge].to],
++                              static_cast<int>(contributing.size()), before, before,
++                              attempted, attempted, accepted, accepted, false, {}};
++            for (int i = 0; i < std::min<int>(32, contributing.size()); ++i)
++                record.top.emplace_back(contributing[i].second, contributing[i].first);
++            long long acceptedBefore = accepted;
++            int demandLimit = std::min<int>(demandLimitSetting, contributing.size());
++            for (int j = 0; j < demandLimit && accepted == acceptedBefore && !finished(); ++j) {
++                int d = contributing[j].second;
++                Route original = routes[d * h + t];
++                std::vector<std::pair<int, int>> windows;
++                appendWindow(windows, t, t);
++                if (h > 1) {
++                    for (int radius : {1, 2, 3})
++                        appendWindow(windows, std::max(0, t - radius), std::min(h - 1, t + radius));
++                    appendWindow(windows, 0, t);
++                    appendWindow(windows, t, h - 1);
++                }
++                appendWindow(windows, 0, h - 1);
++
++                auto tryPath = [&](const Route& path) {
++                    for (auto [left, right] : windows) {
++                        if (finished()) return false;
++                        if (move(d, left, right, path)) return true;
++                    }
++                    return false;
++                };
++
++                if (tryPath({})) break;
++                for (std::size_t k = 0; k < original.size() && accepted == acceptedBefore && !finished(); ++k) {
++                    Route path = original;
++                    path.erase(path.begin() + static_cast<std::ptrdiff_t>(k));
++                    if (tryPath(path)) break;
++                }
++                if (accepted != acceptedBefore || finished()) break;
++
++                // This ranks every node when FLEET_WAYPOINT_LIMIT is unset, but
++                // unlike run() it does not truncate the returned candidate list.
++                auto candidates = waypointCandidates(d, t, edge);
++                for (int w : candidates) {
++                    if (finished() || accepted != acceptedBefore) break;
++                    if (tryPath({w})) break;
++                    for (std::size_t k = 0; k < original.size() && accepted == acceptedBefore; ++k) {
++                        Route path = original;
++                        path[k] = w;
++                        if (tryPath(path)) break;
++                    }
++                    if (accepted != acceptedBefore) break;
++                    if (original.size() + 1 < static_cast<std::size_t>(maxSegments)) {
++                        for (std::size_t k = 0; k <= original.size() && accepted == acceptedBefore; ++k) {
++                            Route path = original;
++                            path.insert(path.begin() + static_cast<std::ptrdiff_t>(k), w);
++                            if (tryPath(path)) break;
++                        }
++                    }
++                }
++                if (accepted != acceptedBefore || finished() || maxSegments < 3) break;
++
++                int pairLimit = std::min<int>(pairNodeLimit, candidates.size());
++                for (int a = 0; a < pairLimit && accepted == acceptedBefore && !finished(); ++a) {
++                    for (int b = 0; b < pairLimit && accepted == acceptedBefore && !finished(); ++b) {
++                        if (a == b) continue;
++                        if (tryPath({candidates[a], candidates[b]})) break;
++                    }
++                }
++            }
++            if (accepted == acceptedBefore && !finished()) {
++                record.ejection = eject(t, edge, contributing, true);
++            }
++            record.after = loads[t * m + edge];
++            record.attemptsAfter = attempted;
++            record.acceptedAfter = accepted;
++            records.push_back(std::move(record));
++            writeSolution();
++            // No state change means the deterministic exhaustive pass would
++            // repeat the same proposals. Preserve that measured stopping point.
++            if (accepted == acceptedBefore) break;
++        }
++        writeSolution();
++        statistics();
++        if (reportPath) {
++            std::string temporary = std::string(reportPath) + ".tmp";
++            std::ofstream out(temporary);
++            if (!out) throw std::runtime_error("Cannot write " + temporary);
++            out.precision(17);
++            out << "{\"schema\":\"roadef.rank-one-diversion.v1\",\"passes\":[";
++            for (std::size_t i = 0; i < records.size(); ++i) {
++                if (i) out << ',';
++                const auto& r = records[i];
++                out << "{\"pass\":" << r.pass << ",\"t\":" << r.t
++                    << ",\"edge\":" << r.edge << ",\"from\":" << r.from
++                    << ",\"to\":" << r.to << ",\"before\":" << r.before
++                    << ",\"after\":" << r.after << ",\"contributors\":" << r.contributors
++                    << ",\"attempts\":" << (r.attemptsAfter - r.attemptsBefore)
++                    << ",\"accepted\":" << (r.acceptedAfter - r.acceptedBefore)
++                    << ",\"ejection\":" << (r.ejection ? "true" : "false")
++                    << ",\"top_contributors\":[";
++                for (std::size_t j = 0; j < r.top.size(); ++j) {
++                    if (j) out << ',';
++                    out << "{\"d\":" << r.top[j].first << ",\"load\":" << r.top[j].second << '}';
++                }
++                out << "]}";
++            }
++            out << "],\"attempted\":" << attempted << ",\"accepted\":" << accepted
++                << ",\"elapsed\":" << elapsed() << "}\n";
++            out.close();
++            if (!out) throw std::runtime_error("Failed writing " + temporary);
++            std::filesystem::rename(temporary, reportPath);
++        }
++        std::cerr << "Rank-one pass completed " << accepted << " improving moves / "
++                  << attempted << " attempts; MLU " << *std::max_element(loads.begin(), loads.end())
++                  << "; elapsed " << elapsed() << "s\n";
++    }
++
++    void polishAfterExhaustion(bool naturallyExhausted) {
++        if (setting("FLEET_POLISH_AFTER_EXHAUSTION", 0) == 0) return;
++        const double phaseStart = elapsed();
++        const char* reason = interrupted ? "signal" : phaseStart >= seconds ? "deadline"
++            : naturallyExhausted ? nullptr : "round_limit";
++        if (reason) {
++            std::cerr << "FLEET_POLISH {\"event\":\"skipped\",\"reason\":\"" << reason
++                      << "\",\"elapsed\":" << phaseStart << ",\"remaining\":"
++                      << std::max(0.0, seconds - phaseStart) << "}\n";
++            return;
++        }
++        const long long attemptsBefore = attempted, acceptedBefore = accepted;
++        std::cerr << "FLEET_POLISH {\"event\":\"begin\",\"reason\":\"natural_exhaustion\","
++                  << "\"elapsed\":" << phaseStart << ",\"remaining\":" << (seconds - phaseStart)
++                  << ",\"attempted_before\":" << attemptsBefore
++                  << ",\"accepted_before\":" << acceptedBefore << "}\n";
++        rankOne();
++        const double phaseEnd = elapsed();
++        std::cerr << "FLEET_POLISH {\"event\":\"end\",\"reason\":\""
++                  << (interrupted ? "signal" : phaseEnd >= seconds ? "deadline" : "completed")
++                  << "\",\"elapsed\":" << phaseEnd << ",\"phase_seconds\":" << (phaseEnd - phaseStart)
++                  << ",\"remaining\":" << std::max(0.0, seconds - phaseEnd)
++                  << ",\"attempted\":" << (attempted - attemptsBefore)
++                  << ",\"accepted\":" << (accepted - acceptedBefore) << "}\n";
++    }
++
+     void run() {
++        bool naturallyExhausted = false;
+         int stalled = 0;
+         // A resumed incumbent has already exhausted the broad early search;
+         // enter the complementary window neighborhood immediately.
+@@ -716,12 +889,13 @@
+             if (accepted == oldAccepted && !finished() && stalled % 4 == 3)
+                 eject(t, e, contributing, adaptive);
+             if (accepted > oldAccepted) stalled = 0; else ++stalled;
+-            if (adaptive && stalled >= 64) break;
++            if (adaptive && stalled >= 64) { naturallyExhausted = true; break; }
+         }
+         writeSolution();
+         statistics();
+         std::cerr << "Completed " << accepted << " improving moves / " << attempted << " attempts; MLU "
+                   << *std::max_element(loads.begin(), loads.end()) << "; elapsed " << elapsed() << "s\n";
++        polishAfterExhaustion(naturallyExhausted);
+     }
+ };
+ 
