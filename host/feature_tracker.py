@@ -141,13 +141,14 @@ def git_names(root):
     for ref in ("HEAD", "origin/main"):
         try:
             out = subprocess.check_output(
-                ["git", "-C", root, "ls-tree", "-r", "--name-only", ref],
+                ["git", "-C", root, "ls-tree", "-r", "-z", "--name-only", ref],
                 stderr=subprocess.DEVNULL,
-                text=True,
             )
         except (OSError, subprocess.CalledProcessError):
             continue
-        names.update(line for line in out.splitlines() if line)
+        # NUL framing avoids Git quoting and preserves embedded line breaks.
+        # Decode as filesystem paths, including non-UTF-8 bytes on POSIX.
+        names.update(os.fsdecode(name) for name in out.split(b"\0") if name)
     return names
 
 
