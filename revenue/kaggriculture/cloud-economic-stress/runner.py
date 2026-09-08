@@ -17,7 +17,6 @@ import json
 import math
 from pathlib import Path
 import random
-import signal
 import statistics
 import sys
 import time
@@ -84,12 +83,9 @@ def intact_arlene(runtime: Path):
     return lambda obs, cfg=None: owner.act(obs)
 
 
-class DeadlineExceeded(Exception):
-    pass
-
-
-def _alarm(_signum, _frame):
-    raise DeadlineExceeded("one-second action budget exhausted")
+# Retain the old import names while using the single shared cancellation type.
+DeadlineExceeded = deadline_fix.DeadlineExceeded
+_alarm = deadline_fix._alarm
 
 
 def action_cost(action, obs, cfg):
@@ -165,6 +161,38 @@ def classify(obs, cfg, selected, output, diagnostics, elapsed, production_elapse
     }
 
 
+class _MeasuredDeadlinePhases:
+    """Observe the existing owner's phases inside the shared guard.
+
+    This object constructs no actor and owns no timer. The guard still performs
+    the only producer call; its normal before_transform hook records selection.
+    """
+    def __init__(self, runner, step):
+        self.runner, self.step = runner, step
+        self.production = self
+        self.selected = self.selected_at = None
+
+    @property
+    def diagnostics(self):
+        return self.runner.owner.diagnostics
+
+    def act(self, observation):
+        r = self.runner
+        if self.step == r.inject_step and r.inject_stage == "production":
+            time.sleep(r.inject_seconds)
+        return r.owner.production.act(observation)
+
+    def before_transform(self, observation, configuration, selected):
+        self.selected_at = time.perf_counter()
+        self.selected = copy.deepcopy(selected)
+        r = self.runner
+        if self.step == r.inject_step and r.inject_stage == "transform":
+            time.sleep(r.inject_seconds)
+
+    def transform(self, *args, **kwargs):
+        return self.runner.owner.transform(*args, **kwargs)
+
+
 class InstrumentedIntegrated:
     def __init__(self, module, *, sell=True, deadline_s=None, inject_step=None,
                  inject_seconds=1.05, inject_stage="transform"):
@@ -177,61 +205,60 @@ class InstrumentedIntegrated:
         self.timeouts = 0
         self.production_timeout_fallback = "pass"
 
+    def _guarded(self, obs, cfg, step, started):
+        phases = _MeasuredDeadlinePhases(self, step)
+        guard = deadline_fix.DeadlineFallbackAgent(
+            phases, budget_seconds=self.deadline_s, reserve_seconds=0,
+            before_transform=phases.before_transform)
+        output = guard.act(obs, cfg)
+        ended = time.perf_counter()
+        timed_out = guard.diagnostics["status"] == "deadline_fallback"
+        stage = guard.diagnostics["fallback_stage"]
+        if timed_out:
+            self.timeouts += 1
+            if stage == "production":
+                # Keep the two explicitly named experimental treatments. This
+                # selection does not call the producer or change the shared guard.
+                output = (deadline_fix.terminal_liquidation_fallback(obs, cfg)
+                          if self.production_timeout_fallback == "terminal_liquidation"
+                          else deadline_fix.legal_pass(obs))
+            self.owner.diagnostics = {
+                "status": "deadline_fallback",
+                "reason": "one-second action budget exhausted" + (
+                    " before selection" if stage == "production" else ""),
+                "selected_unit_stages": 0 if stage == "production" else 1,
+            }
+        # If cancellation interrupted the selection snapshot, the guard's exact
+        # saved fallback is the only available completed action for the receipt.
+        selected = phases.selected if phases.selected is not None else output
+        selected_at = phases.selected_at if phases.selected_at is not None else ended
+        diag = copy.deepcopy(self.owner.diagnostics); diag["_owner"] = self.owner
+        row = classify(obs, cfg, selected, output, diag, ended-started, selected_at-started)
+        row.update(timed_out=timed_out, fallback_stage=stage,
+                   selection_completed=stage != "production", deadline_binding="shared-guard-v1")
+        self.calls.append(row)
+        return output
+
     def __call__(self, observation, configuration=None):
         obs = copy.deepcopy(dict(observation)); cfg = dict(configuration or {})
         step = int(obs.get("step", int(obs["day"])*int(cfg.get("turnsPerDay", 24)) + int(obs["hour"])))
         obs["step"] = step
         started = time.perf_counter()
+        if self.deadline_s is not None:
+            return self._guarded(obs, cfg, step, started)
+        # Natural runs still call the same producer and transform directly.
         if step == self.inject_step and self.inject_stage == "production":
-            previous = signal.signal(signal.SIGALRM, _alarm)
-            signal.setitimer(signal.ITIMER_REAL, self.deadline_s)
-            try:
-                time.sleep(self.inject_seconds)
-            except DeadlineExceeded:
-                self.timeouts += 1
-                output = (deadline_fix.terminal_liquidation_fallback(obs, cfg)
-                          if self.production_timeout_fallback == "terminal_liquidation"
-                          else deadline_fix.legal_pass(obs))
-                self.owner.diagnostics = {"status": "deadline_fallback",
-                    "reason": "one-second action budget exhausted before selection",
-                    "selected_unit_stages": 0}
-                diag = copy.deepcopy(self.owner.diagnostics); diag["_owner"] = self.owner
-                row = classify(obs, cfg, output, output, diag,
-                               time.perf_counter()-started, time.perf_counter()-started)
-                row["timed_out"] = True
-                self.calls.append(row)
-                return output
-            finally:
-                signal.setitimer(signal.ITIMER_REAL, 0)
-                signal.signal(signal.SIGALRM, previous)
+            time.sleep(self.inject_seconds)
         selected = self.owner.production.act(obs)
         selected_at = time.perf_counter()
-        timed_out = False
-        previous = None
-        try:
-            if self.deadline_s is not None:
-                previous = signal.signal(signal.SIGALRM, _alarm)
-                remaining = max(0.000001, self.deadline_s - (selected_at-started))
-                signal.setitimer(signal.ITIMER_REAL, remaining)
-            if step == self.inject_step:
-                time.sleep(self.inject_seconds)
-            output = self.owner.transform(obs, cfg, selected, fallback_action=selected)
-        except DeadlineExceeded:
-            timed_out = True
-            self.timeouts += 1
-            output = copy.deepcopy(selected)
-            self.owner.diagnostics = {"status": "deadline_fallback",
-                                      "reason": "one-second action budget exhausted",
-                                      "selected_unit_stages": 1}
-        finally:
-            if self.deadline_s is not None:
-                signal.setitimer(signal.ITIMER_REAL, 0)
-                signal.signal(signal.SIGALRM, previous)
+        if step == self.inject_step and self.inject_stage == "transform":
+            time.sleep(self.inject_seconds)
+        output = self.owner.transform(obs, cfg, selected, fallback_action=selected)
         ended = time.perf_counter()
         diag = copy.deepcopy(self.owner.diagnostics)
         diag["_owner"] = self.owner
         row = classify(obs, cfg, selected, output, diag, ended-started, selected_at-started)
-        row["timed_out"] = timed_out
+        row["timed_out"] = False
         self.calls.append(row)
         return output
 
@@ -343,6 +370,9 @@ def main():
                 games.append(game)
     report = {
         "engine_ref": ENGINE_REF,
+        "runner_sha256": sha256(Path(__file__)),
+        "deadline_adapter_sha256": sha256(Path(deadline_fix.__file__)),
+        "deadline_binding": "shared-guard-v1",
         "engine_sha256": {p.name: sha256(p) for p in args.engine.iterdir() if p.is_file()},
         "integrated_manifest_sha256": sha256(args.runtime / "SOURCE.json"),
         "method": "Unmodified official interpreter; natural trajectories and separately labelled injected overrun.",
