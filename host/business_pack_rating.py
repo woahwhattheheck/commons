@@ -54,14 +54,18 @@ def _slot(value: Any) -> str:
 def classify_rating(
     pack: dict[str, Any] | None = None, *, law_path: Path | None = None
 ) -> dict[str, Any]:
+    if pack is not None and not isinstance(pack, dict):
+        raise ValueError("pack must be a JSON object")
+    data = dict(pack) if pack is not None else {}
+    owner_pasted = data.get("owner_pasted_rating", False)
+    if not isinstance(owner_pasted, bool):
+        raise ValueError("owner_pasted_rating must be a boolean")
     law = load_law(law_path)
-    data = dict(pack or {})
     badge = _slot(data.get("badge_url", law.get("badge_url")))
     report = _slot(data.get("report_url", law.get("report_url")))
     partner = _slot(data.get("partner_name", law.get("partner_name")))
     bulk = _slot(data.get("bulk_price", law.get("bulk_price")))
     ads = str(data.get("ads_copy") or data.get("copy") or "")
-    owner_pasted = bool(data.get("owner_pasted_rating"))
     invented_url = (
         bool(URL_RE.search(badge) or URL_RE.search(report)) and not owner_pasted
     )
@@ -109,8 +113,14 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pack", default="", help="JSON object to classify")
     args = parser.parse_args(argv)
-    pack = json.loads(args.pack) if args.pack else None
-    print(json.dumps(classify_rating(pack), indent=2))
+    try:
+        pack = json.loads(args.pack) if args.pack else None
+        if args.pack and not isinstance(pack, dict):
+            raise ValueError("--pack must be a JSON object")
+        result = classify_rating(pack)
+    except ValueError as exc:
+        parser.error(str(exc))
+    print(json.dumps(result, indent=2))
     print("", end="")
     return 0
 
