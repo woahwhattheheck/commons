@@ -29,6 +29,10 @@ jobs:
         run: |
           set -euo pipefail
           root="$GITHUB_WORKSPACE/frozen/revenue/roadef2026/fleet-candidate"
+          test "$(sha256sum "$root/main.cpp" | cut -d' ' -f1)" = 322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1
+          patch_file="$GITHUB_WORKSPACE/frozen/revenue/roadef2026/cloud-kernel-composition/combined.patch"
+          test "$(git hash-object "$patch_file")" = 0ff8d2ee7c4df1022c50484a89e7424329cce0ec
+          (cd "$root" && patch --batch --fuzz=0 -p1 < "$patch_file")
           test "$(sha256sum "$root/main.cpp" | cut -d' ' -f1)" = 758977095f8f34263bbcd9ed043ac4ab7943f04f65fae530c78ee64787c34f8f
           test "$(sha256sum "$root/supervisor.py" | cut -d' ' -f1)" = 182371658e82f9037716e90ea8cd115622d089d02512916c7a7bf3b39fca1c63
           test "$(sha256sum "$root/compare_checker.py" | cut -d' ' -f1)" = a402a0166b1e52c95dd181e15b8a124504ac78ddea7e815944c754569b323cb8
@@ -66,15 +70,18 @@ jobs:
           if test -d "$RUNNER_TEMP/results"; then
             cp -a "$RUNNER_TEMP/results/." "$RUNNER_TEMP/export/"
           fi
-          sha256sum \
-            frozen/revenue/roadef2026/fleet-candidate/main.cpp \
-            frozen/revenue/roadef2026/fleet-candidate/supervisor.py \
-            frozen/revenue/roadef2026/fleet-candidate/compare_checker.py \
-            "$RUNNER_TEMP/context/bin/candidate" \
-            "$RUNNER_TEMP/context/bin/sedge" \
-            "$RUNNER_TEMP/context/bin/flora" \
-            "$RUNNER_TEMP/context/bin/checker" \
-            > "$RUNNER_TEMP/export/SOURCE-HASHES.txt"
+          {
+            for path in \
+              frozen/revenue/roadef2026/fleet-candidate/main.cpp \
+              frozen/revenue/roadef2026/fleet-candidate/supervisor.py \
+              frozen/revenue/roadef2026/fleet-candidate/compare_checker.py \
+              "$RUNNER_TEMP/context/bin/candidate" \
+              "$RUNNER_TEMP/context/bin/sedge" \
+              "$RUNNER_TEMP/context/bin/flora" \
+              "$RUNNER_TEMP/context/bin/checker"; do
+              if test -f "$path"; then sha256sum "$path"; else printf 'MISSING  %s\n' "$path"; fi
+            done
+          } > "$RUNNER_TEMP/export/SOURCE-HASHES.txt"
       - name: Upload exact results
         if: always()
         uses: actions/upload-artifact@v4
