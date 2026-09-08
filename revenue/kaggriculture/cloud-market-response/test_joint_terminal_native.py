@@ -5,6 +5,7 @@ Set TITAN_ENGINE_DIR to the existing engine artifact's engine/ directory and
 TITAN_TERMINAL_INPUTS_PATH to POLY's unchanged terminal_inputs.py.
 """
 from copy import deepcopy
+from contextlib import ExitStack
 import hashlib
 import importlib.util
 import ast
@@ -22,31 +23,60 @@ from unittest.mock import patch
 from joint_terminal_history import build_joint_terminal_scenarios as build
 
 
-def load(name, path):
+def register_module(stack, name, module):
+    """Restore only our temporary registration, not unrelated imported modules."""
+    missing = object()
+    original = sys.modules.get(name, missing)
+    sys.modules[name] = module
+    def restore():
+        if original is missing:
+            sys.modules.pop(name, None)
+        else:
+            sys.modules[name] = original
+    stack.callback(restore)
+
+
+def load(stack, name, path):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
+    register_module(stack, name, module)
     spec.loader.exec_module(module)
     return module
 
 
-FLOW_PATH = Path(os.environ.get('TITAN_FLOW_PATH', Path(__file__).with_name('flow.py')))
-flow = load('joint_native_flow', FLOW_PATH)
-ENGINE_DIR = Path(os.environ['TITAN_ENGINE_DIR'])
-TERMINAL_PATH = Path(os.environ['TITAN_TERMINAL_INPUTS_PATH'])
-# Extract the exact official seed utility, avoiding unrelated package imports.
-# These post-initialization fixtures do not invoke it or draw a game seed.
-pkg = ModuleType('kaggle_environments')
-pkg.__path__ = [str(ENGINE_DIR)]
-sys.modules['kaggle_environments'] = pkg
-utils_tree = ast.parse((ENGINE_DIR/'utils.py').read_text())
-seed_fn = next(n for n in utils_tree.body if isinstance(n, ast.FunctionDef) and n.name == 'resolve_episode_seed')
-utils_module = ModuleType('kaggle_environments.utils')
-utils_module.__dict__.update(Any=Any, Callable=Callable, random=random)
-exec(compile(ast.Module(body=[seed_fn], type_ignores=[]), str(ENGINE_DIR/'utils.py'), 'exec'), utils_module.__dict__)
-sys.modules['kaggle_environments.utils'] = utils_module
-m = load('joint_native_mechanics', ENGINE_DIR/'kaggriculture.py')
-terminal = load('joint_poly_terminal_inputs', TERMINAL_PATH)
+def configure(stack):
+    """Optional native resources are required only while this class executes.
+
+    Missing configuration is a named skip during ordinary test discovery.
+    Explicitly configured missing or invalid files remain failures. Cleanup is
+    registered before any engine import, including partially failed setup.
+    """
+    global flow, m, terminal, TERMINAL_PATH
+    required = ('TITAN_ENGINE_DIR', 'TITAN_TERMINAL_INPUTS_PATH')
+    absent = [name for name in required if not os.environ.get(name)]
+    if absent:
+        raise unittest.SkipTest('native inputs not configured: ' + ', '.join(absent))
+    engine_dir = Path(os.environ['TITAN_ENGINE_DIR'])
+    TERMINAL_PATH = Path(os.environ['TITAN_TERMINAL_INPUTS_PATH'])
+    flow_path = Path(os.environ.get('TITAN_FLOW_PATH', Path(__file__).with_name('flow.py')))
+    flow = load(stack, 'joint_native_flow', flow_path)
+    # Extract the exact official seed utility, avoiding unrelated package
+    # imports. Post-initialization fixtures do not invoke it or draw a seed.
+    pkg = ModuleType('kaggle_environments')
+    pkg.__path__ = [str(engine_dir)]
+    register_module(stack, 'kaggle_environments', pkg)
+    utils_tree = ast.parse((engine_dir/'utils.py').read_text())
+    seed_fn = next(n for n in utils_tree.body
+                  if isinstance(n, ast.FunctionDef) and n.name == 'resolve_episode_seed')
+    utils_module = ModuleType('kaggle_environments.utils')
+    utils_module.__dict__.update(Any=Any, Callable=Callable, random=random)
+    exec(compile(ast.Module(body=[seed_fn], type_ignores=[]),
+                 str(engine_dir/'utils.py'), 'exec'), utils_module.__dict__)
+    register_module(stack, 'kaggle_environments.utils', utils_module)
+    m = load(stack, 'joint_native_mechanics', engine_dir/'kaggriculture.py')
+    terminal = load(stack, 'joint_poly_terminal_inputs', TERMINAL_PATH)
+
+
 CFG = dict(episodeSteps=720, boardSize=10, turnsPerDay=24, shedCapacity=100,
            maxMarketOrdersPerTurn=10, farmHandCostMult=1)
 NOW = 718
@@ -129,6 +159,9 @@ def family(h):
 class NativeJoinTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        resources = ExitStack()
+        cls.addClassCleanup(resources.close)
+        configure(resources)
         cls.histories = {seat: trained(seat) for seat in (0,1)}
 
     def test_actual_source_identities(self):
@@ -236,6 +269,7 @@ if __name__=='__main__':
     suite=unittest.defaultTestLoader.loadTestsFromTestCase(NativeJoinTests)
     result=unittest.TextTestRunner(verbosity=2).run(suite)
     report=dict(tests=result.testsRun,failures=len(result.failures),errors=len(result.errors),
+                skipped=len(result.skipped),skip_reasons=[reason for _, reason in result.skipped],
                 counts=COUNTS,details=DETAILS,full_games=0,new_game_seeds=0,
                 limits='Constructed state integration, not reached-state accuracy, calibrated probability, or gameplay strength.')
     if os.environ.get('TITAN_JOINT_REPORT'):
