@@ -22,8 +22,12 @@
         "stats": {
           "accepted": 0,
           "attempted": 4255889,
-          "critical_band_accepts": [0],
-          "critical_band_visits": [64],
+          "critical_band_accepts": [
+            0
+          ],
+          "critical_band_visits": [
+            64
+          ],
           "critical_max_rank_visited": 31,
           "critical_rank_limit": 32,
           "critical_stall_limit": 128,
@@ -48,8 +52,14 @@
         "stats": {
           "accepted": 41,
           "attempted": 4031310,
-          "critical_band_accepts": [31, 10],
-          "critical_band_visits": [339, 2],
+          "critical_band_accepts": [
+            31,
+            10
+          ],
+          "critical_band_visits": [
+            339,
+            2
+          ],
           "critical_max_rank_visited": 32,
           "critical_rank_limit": 128,
           "critical_stall_limit": 128,
@@ -65,9 +75,17 @@
       },
       "first_six_decimal_difference": {
         "control": "0.296067",
-        "control_coordinate": {"from": 84, "t": 4, "to": 75},
+        "control_coordinate": {
+          "from": 84,
+          "t": 4,
+          "to": 75
+        },
         "expanded": "0.294532",
-        "expanded_coordinate": {"from": 978, "t": 6, "to": 1054},
+        "expanded_coordinate": {
+          "from": 978,
+          "t": 6,
+          "to": 1054
+        },
         "rank": 33,
         "winner": "expanded"
       },
@@ -93,8 +111,12 @@
         "stats": {
           "accepted": 0,
           "attempted": 4181362,
-          "critical_band_accepts": [0],
-          "critical_band_visits": [63],
+          "critical_band_accepts": [
+            0
+          ],
+          "critical_band_visits": [
+            63
+          ],
           "critical_max_rank_visited": 31,
           "critical_rank_limit": 32,
           "critical_stall_limit": 128,
@@ -119,8 +141,14 @@
         "stats": {
           "accepted": 42,
           "attempted": 4178909,
-          "critical_band_accepts": [32, 10],
-          "critical_band_visits": [349, 2],
+          "critical_band_accepts": [
+            32,
+            10
+          ],
+          "critical_band_visits": [
+            349,
+            2
+          ],
           "critical_max_rank_visited": 32,
           "critical_rank_limit": 128,
           "critical_stall_limit": 128,
@@ -136,9 +164,17 @@
       },
       "first_six_decimal_difference": {
         "control": "0.296067",
-        "control_coordinate": {"from": 84, "t": 4, "to": 75},
+        "control_coordinate": {
+          "from": 84,
+          "t": 4,
+          "to": 75
+        },
         "expanded": "0.294532",
-        "expanded_coordinate": {"from": 978, "t": 6, "to": 1054},
+        "expanded_coordinate": {
+          "from": 978,
+          "t": 6,
+          "to": 1054
+        },
         "rank": 33,
         "winner": "expanded"
       },
@@ -165,8 +201,12 @@
       "stats": {
         "accepted": 0,
         "attempted": 4256279,
-        "critical_band_accepts": [0],
-        "critical_band_visits": [64],
+        "critical_band_accepts": [
+          0
+        ],
+        "critical_band_visits": [
+          64
+        ],
         "critical_max_rank_visited": 31,
         "critical_rank_limit": 32,
         "critical_stall_limit": 128,
@@ -186,8 +226,14 @@
       "stats": {
         "accepted": 2,
         "attempted": 1161637,
-        "critical_band_accepts": [0, 2],
-        "critical_band_visits": [63, 1],
+        "critical_band_accepts": [
+          0,
+          2
+        ],
+        "critical_band_visits": [
+          63,
+          1
+        ],
         "critical_max_rank_visited": 32,
         "critical_rank_limit": 128,
         "critical_stall_limit": 128,
@@ -212,8 +258,14 @@
       "stats": {
         "accepted": 2,
         "attempted": 1161637,
-        "critical_band_accepts": [0, 2],
-        "critical_band_visits": [63, 1],
+        "critical_band_accepts": [
+          0,
+          2
+        ],
+        "critical_band_visits": [
+          63,
+          1
+        ],
         "critical_max_rank_visited": 32,
         "critical_rank_limit": 128,
         "critical_stall_limit": 128,
@@ -229,9 +281,17 @@
     },
     "first_six_decimal_difference": {
       "control": "0.296067",
-      "control_coordinate": {"from": 84, "t": 4, "to": 75},
+      "control_coordinate": {
+        "from": 84,
+        "t": 4,
+        "to": 75
+      },
       "expanded": "0.294548",
-      "expanded_coordinate": {"from": 628, "t": 4, "to": 622},
+      "expanded_coordinate": {
+        "from": 628,
+        "t": 4,
+        "to": 622
+      },
       "rank": 33,
       "winner": "expanded"
     },
@@ -249,7 +309,10 @@
     "default_parity_compiler_comparisons": 32,
     "report_sha256": "2341dba193ecf6af840bd0dbd9c67eff6e3e461735690705442c5f128268ae2a",
     "schedule_cases_per_compiler": 21,
-    "schedule_compilers": ["g++", "clang++"]
+    "schedule_compilers": [
+      "g++",
+      "clang++"
+    ]
   },
   "inputs": {
     "incumbent_archive_sha256": "1494b0faf268be12b99f25444ce5bd6c42539a187c00ca7ef29f11d24484fd9f",
@@ -278,13 +341,34 @@
     "repository": "woahwhattheheck/commons",
     "sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1",
     "unchanged_function_bodies": {
-      "contributors": {"bytes": 634, "sha256": "657650524874345a66b68bb7e9862f33edffa62b9f52044096edd666745d46fc"},
-      "distance": {"bytes": 607, "sha256": "6a5acfc3028efd8a37aac94ee3248c8e674d14c9946cd9b2c4997e3e7ebb942b"},
-      "eject": {"bytes": 3429, "sha256": "064f5ad9cd6e270ec15790d079ff699078750b5e4cc020086732a74b279556f1"},
-      "moveTogether": {"bytes": 3701, "sha256": "ad9de88a2e073797190b477118dcafb0096bb766fa4dbbf59803334996e3a79d"},
-      "routeFlow": {"bytes": 775, "sha256": "603b5ffe8a60c84a629210fbcf89d4772e743c2ad4f59c43b4f4dd9031c05f8f"},
-      "waypointCandidates": {"bytes": 3203, "sha256": "ec1e778ccf5cf46ede3a4133e297dc8a820901a57c82e6b0ce82973854762552"},
-      "writeSolution": {"bytes": 988, "sha256": "7ef1f7eb8f5142fd83c82aa58c9a5dde3c19fb6b0daf27d2f1a49e26ca763f4b"}
+      "contributors": {
+        "bytes": 634,
+        "sha256": "657650524874345a66b68bb7e9862f33edffa62b9f52044096edd666745d46fc"
+      },
+      "distance": {
+        "bytes": 607,
+        "sha256": "6a5acfc3028efd8a37aac94ee3248c8e674d14c9946cd9b2c4997e3e7ebb942b"
+      },
+      "eject": {
+        "bytes": 3429,
+        "sha256": "064f5ad9cd6e270ec15790d079ff699078750b5e4cc020086732a74b279556f1"
+      },
+      "moveTogether": {
+        "bytes": 3701,
+        "sha256": "ad9de88a2e073797190b477118dcafb0096bb766fa4dbbf59803334996e3a79d"
+      },
+      "routeFlow": {
+        "bytes": 775,
+        "sha256": "603b5ffe8a60c84a629210fbcf89d4772e743c2ad4f59c43b4f4dd9031c05f8f"
+      },
+      "waypointCandidates": {
+        "bytes": 3203,
+        "sha256": "ec1e778ccf5cf46ede3a4133e297dc8a820901a57c82e6b0ce82973854762552"
+      },
+      "writeSolution": {
+        "bytes": 988,
+        "sha256": "7ef1f7eb8f5142fd83c82aa58c9a5dde3c19fb6b0daf27d2f1a49e26ca763f4b"
+      }
     }
   },
   "status": "COMPLETE_DEVELOPMENT_EXPERIMENT"
