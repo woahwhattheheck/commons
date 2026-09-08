@@ -36,6 +36,28 @@ LOADER_SOURCES = {
 }
 
 
+STRESS = 'revenue/kaggriculture/cloud-economic-stress/'
+LATE_SUPPLEMENTS = {
+    'deadline_cancellation': ('deadline-cancellation-tests.log', 'deadline-cancellation.json', 18,
+                              (STRESS + 'cancellation/test_deadline_cancellation.py',)),
+    'ledger_schedule': ('ledger-schedule-tests.log', 'ledger-schedule-results.json', 20,
+                        (MARKET + 'test_ledger_schedule.py',)),
+}
+CANCELLATION_CLOSURE = (
+    STRESS + 'test_runner.py', STRESS + 'cancellation/measure_cancellation.py',
+    STRESS + 'cancellation/source/plan_overlay_commit_excerpt.py',
+)
+LEDGER_SOURCES = {name: LAB + name for name in (
+    'selected_action_sell.py', 'selected_sell_core.py', 'mechanics.py',
+    'reference/decision/decision.py')}
+LEDGER_ENGINE = {name: LAB + 'reference/engine/' + name
+                 for name in ('kaggriculture.py', 'kaggriculture.json', 'utils.py')}
+LEDGER_REFERENCE = MARKET + 'fixtures/ledger_feasible_0364fa0a.py'
+LEDGER_COUNTS = ('feasibility_comparisons', 'transform_comparisons',
+                 'ordered_capacity_comparisons', 'official_market_calls')
+SUPPLEMENTS.update(LATE_SUPPLEMENTS)
+
+
 def integer(value: Any) -> bool:
     return type(value) is int and value >= 0
 
@@ -149,6 +171,68 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
             continue
         report = obj(report_name)
         if report is None:
+            continue
+        if label == 'deadline_cancellation':
+            count = report.get('tests_run')
+            if not integer(count) or count < minimum:
+                problem('failure', 'deadline_cancellation: invalid/below-coverage tests_run')
+            else:
+                compare(count, summary['test_methods'], 'deadline_cancellation count')
+            for key in ('failures', 'errors', 'skipped'):
+                value = report.get(key)
+                if not isinstance(value, list):
+                    problem('failure', f'deadline_cancellation: {key} must be a list')
+                elif value:
+                    problem('missing' if key == 'skipped' else 'failure',
+                            f'deadline_cancellation: nonempty {key}')
+            new, inherited = (report.get('new_regression_methods'),
+                              report.get('unchanged_upstream_guard_methods'))
+            if (not integer(new) or new < 15 or not integer(inherited)
+                    or inherited != 3 or not integer(count) or new + inherited != count):
+                problem('failure', 'deadline_cancellation: inconsistent new/inherited partition')
+            summary.update(new_regression_methods=new,
+                           unchanged_upstream_guard_methods=inherited)
+            compare(report.get('adapter_sha256'), source(STRESS + 'deadline_adapter.py'),
+                    'deadline_cancellation adapter')
+            for name in CANCELLATION_CLOSURE:
+                source(name)
+            continue
+        if label == 'ledger_schedule':
+            count = report.get('test_methods')
+            if not integer(count) or count < minimum:
+                problem('failure', 'ledger_schedule: invalid/below-coverage test_methods')
+            else:
+                compare(count, summary['test_methods'], 'ledger_schedule count')
+            for key in ('failures', 'errors', 'skipped'):
+                value = report.get(key)
+                if not integer(value):
+                    problem('failure', f'ledger_schedule: invalid {key}')
+                elif value:
+                    problem('missing' if key == 'skipped' else 'failure',
+                            f'ledger_schedule: nonzero {key}')
+            if report.get('successful') is not True:
+                problem('failure', 'ledger_schedule: successful is not true')
+            if (not integer(report.get('full_games')) or report['full_games'] != 0
+                    or report.get('game_seeds') != []):
+                problem('failure', 'ledger_schedule: unexpected gameplay/seed scope')
+            for field, paths in (('sources_sha256', LEDGER_SOURCES),
+                                 ('engine_sha256', LEDGER_ENGINE)):
+                hashes = report.get(field)
+                if not isinstance(hashes, dict):
+                    problem('failure', f'ledger_schedule: {field} is not an object')
+                    hashes = {}
+                for key, name in paths.items():
+                    compare(hashes.get(key), source(name), f'ledger_schedule {field} {key}')
+            compare(report.get('reference_method_sha256'), source(LEDGER_REFERENCE),
+                    'ledger_schedule reference method')
+            counts = report.get('counts')
+            if not isinstance(counts, dict):
+                problem('failure', 'ledger_schedule: counts is not an object')
+                counts = {}
+            for key in LEDGER_COUNTS:
+                if not integer(counts.get(key)) or counts[key] <= 0:
+                    problem('failure', f'ledger_schedule: missing positive {key}')
+            summary['comparisons'] = {key: counts.get(key) for key in LEDGER_COUNTS}
             continue
         if label == 'capture_binding':
             # The actual producer uses a nested tests object and has no schema
