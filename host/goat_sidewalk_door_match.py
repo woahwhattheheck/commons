@@ -17,6 +17,16 @@ ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "packs" / "sidewalk-signal-web-desk-20260902-01"
 DOOR_REL = "packs/sidewalk-signal-web-desk-20260902-01/index.html"
 DOOR_BLOB = "638e60b4"
+DOOR_LIVE_CASH_V1 = (
+    '<p id="live-cash" class="note"><strong>Live cash</strong> — '
+    '<a href="../../agent-rescue.html">$29 Autopsy</a> · '
+    '<a href="../../dealer-service-lead-rescue.html">$199 dealer</a> · '
+    '<a href="../../referral-intake-completeness.html">$199 referral</a> · '
+    '<a href="../../repair-booking-preflight.html">$199 repair</a> · '
+    '<a href="../../plant-downtime-handoff.html">$199 plant</a>.</p>\n\n'
+).encode("utf-8")
+PAGES_CRON_CURRENT = b"    - cron: '7,17,27,37,47,57 * * * *'\n"
+PAGES_CRON_AT_LAND = b"    - cron: '*/10 * * * *'\n"
 PAGES_DEPLOY_RUN = "33601287295"
 PAGES_DEPLOY_SHA = "e86ff8f3e47fda6d56ee67ac304d8a3e3ce40747"
 RECEIPT_ID = "cursor-goat-match-sidewalk-door-200-20260902-01"
@@ -49,14 +59,50 @@ THIS_SEAT_DOES_NOT_WRITE = (
 )
 
 
+def _git_blob_bytes(data: bytes, n: int = 8) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    ).hexdigest()[:n]
+
+
 def git_blob(rel: str, n: int = 8) -> str:
     path = ROOT / rel
     if not path.is_file():
         return ""
+    return _git_blob_bytes(path.read_bytes(), n)
+
+
+def _normalize_successors(
+    data: bytes, replacements: tuple[tuple[str, bytes, bytes], ...]
+) -> tuple[bytes, list[str]]:
+    """Reverse only named, byte-exact successor edits back to the land baseline."""
+    applied: list[str] = []
+    for label, successor, baseline in replacements:
+        count = data.count(successor)
+        if count > 1:
+            return data, [f"AMBIGUOUS:{label}"]
+        if count == 1:
+            data = data.replace(successor, baseline, 1)
+            applied.append(label)
+    return data, applied
+
+
+def normalized_observation(rel: str) -> dict[str, Any]:
+    path = ROOT / rel
+    if not path.is_file():
+        return {"blob": "", "baseline_blob": "", "successors": []}
     data = path.read_bytes()
-    return hashlib.sha1(
-        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
-    ).hexdigest()[:n]
+    replacements: tuple[tuple[str, bytes, bytes], ...] = ()
+    if rel == DOOR_REL:
+        replacements = (("live-cash-v1", DOOR_LIVE_CASH_V1, b""),)
+    elif rel == ".github/workflows/pages-deploy.yml":
+        replacements = (("pages-cron-offset-v1", PAGES_CRON_CURRENT, PAGES_CRON_AT_LAND),)
+    normalized, successors = _normalize_successors(data, replacements)
+    return {
+        "blob": _git_blob_bytes(data),
+        "baseline_blob": _git_blob_bytes(normalized),
+        "successors": successors,
+    }
 
 
 def checkout_status() -> str:
@@ -93,9 +139,13 @@ def classify_match() -> dict[str, Any]:
     tally_present = all((ROOT / "p" / f"{pid}.md").is_file() for pid in TALLY_IDS)
     pages_present = all((ROOT / "p" / f"{pid}.md").is_file() for pid in PAGES_IDS)
     observed = {rel: git_blob(rel) for rel in OBSERVED_AT_LAND}
-    door_match = door_blob == DOOR_BLOB
+    door_observation = normalized_observation(DOOR_REL)
+    pages_workflow_observation = normalized_observation(
+        ".github/workflows/pages-deploy.yml"
+    )
+    door_match = door_observation["baseline_blob"] == DOOR_BLOB
     pages_untouched = (
-        observed.get(".github/workflows/pages-deploy.yml")
+        pages_workflow_observation["baseline_blob"]
         == OBSERVED_AT_LAND[".github/workflows/pages-deploy.yml"]
         and observed.get("pages-deploy.json") == OBSERVED_AT_LAND["pages-deploy.json"]
     )
@@ -120,6 +170,11 @@ def classify_match() -> dict[str, Any]:
         "pages_deploy_sha": PAGES_DEPLOY_SHA,
         "door": DOOR_REL,
         "door_blob": door_blob,
+        "door_baseline_blob": door_observation["baseline_blob"],
+        "door_successors": door_observation["successors"],
+        "pages_workflow_blob": pages_workflow_observation["blob"],
+        "pages_workflow_baseline_blob": pages_workflow_observation["baseline_blob"],
+        "pages_workflow_successors": pages_workflow_observation["successors"],
         "door_size": next(
             (int(row["size"]) for row in files if row["path"] == DOOR_REL), 0
         ),
