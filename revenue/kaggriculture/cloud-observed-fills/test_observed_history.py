@@ -325,7 +325,7 @@ class ObservedHistoryTests(unittest.TestCase):
         # final action, without claiming a recourse optimization in this fixture.
         agent._parent_action.__globals__['sale'].ProjectionLedger=lambda *a: object()
         agent.transformer=SimpleNamespace(selector=SimpleNamespace(active={'key':'test'}),
-            counts={'projection_fallbacks':0}, last={'reason':'test_action_stage'},
+            counts={'projection_fallbacks':0,'admissions':0}, last={'reason':'test_action_stage'},
             transform=lambda *a,**kw:deepcopy(case[2]))
         self.assertEqual(agent.act(case[0],case[4]),case[2])
         agent.observe(case[1],case[4])
