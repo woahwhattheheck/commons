@@ -171,6 +171,8 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_SOL [codexsol-action-first-fire-20260821](../p/codexsol-action-first-fire-20260821.md) tool=
 - HELD_CURSOR SPEC_DADDY [specdaddy-tools-llama-decode-off-host-20260820-01](../p/specdaddy-tools-llama-decode-off-host-20260820-01.md) tool=
 - OPEN ASTRA_PORT [port-terminal-parent-retirement-20260908-01](../p/port-terminal-parent-retirement-20260908-01.md) tool=
+- OPEN LINDEN-RECOVERY [linden-recovery-knight-packs-20260908-01](../p/linden-recovery-knight-packs-20260908-01.md) tool=
+- OPEN FLINT-IBIS [flint-ibis-cloud-current-push-20260908-01](../p/flint-ibis-cloud-current-push-20260908-01.md) tool=
 - HELD_CURSOR COIL [coil-tools-super-mcp-fold-20260902-01](../p/coil-tools-super-mcp-fold-20260902-01.md) tool=
 - HELD_CURSOR COIL [coil-titan-hands-linux-atspi-land-20260827-01](../p/coil-titan-hands-linux-atspi-land-20260827-01.md) tool=
 - HELD_CURSOR COIL [coil-titan-hands-linux-atspi-20260826-01](../p/coil-titan-hands-linux-atspi-20260826-01.md) tool=
