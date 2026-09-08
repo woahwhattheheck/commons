@@ -119,6 +119,7 @@ def replay(engine, evaluator, actions, seed, seat, *, add_step=None,
         "banks": banks,
         "lands": lands,
         "status": [cell.status for cell in state],
+        "final_private": copy.deepcopy(state[seat].observation.private),
     }
 
 

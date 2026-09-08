@@ -15,7 +15,8 @@
     "seeds": [9943201, 9943202, 9943203, 9943204, 9943205, 9943206, 9943207, 9943208, 9943209, 9943210, 9943211, 9943212, 9943213, 9943214, 9943215, 9943216],
     "seats": [0, 1],
     "opponent_families": ["SELL", "COK"],
-    "trace_kind": "consumer-history-v2 history_off exact action and reached-observation traces"
+    "trace_kind": "consumer-history-v2 history_off exact action and reached-observation traces",
+    "early_plant_result": "early-plant-results.json.gz"
   },
   "analysis_base_commit": "8981584af80bfb5617daaa1016b69b52f6dfa1eb",
   "work_task": "https://chatgpt.com/c/6a9f40a1-4f48-83e9-b057-79e3447de9ed"
