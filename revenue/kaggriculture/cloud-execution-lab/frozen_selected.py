@@ -6,6 +6,8 @@ The selected-action boundary also optionally exposes its exact unit snapshot.
 Original scheduler and sale valuation remain intact.
 """
 from scheduler import *
+# Reuse the same optimizer with SPRUCE's input-keyed score schedule.
+from selected_sell_core import optimize_lot
 
 class FrozenSelected(SellScheduler):
     def transform(self, obs, config, base):
