@@ -55,7 +55,7 @@ def utc_now(explicit=""):
 
 
 def git_sha(root, explicit=""):
-    text = str(explicit or os.environ.get("GITHUB_SHA") or "").strip()
+    text = str(explicit or "").strip()
     if SHA_RE.match(text):
         return text
     try:
@@ -65,9 +65,14 @@ def git_sha(root, explicit=""):
             text=True,
         )
     except (OSError, subprocess.CalledProcessError):
-        return ""
+        out = ""
     got = out.strip()
-    return got if SHA_RE.match(got) else ""
+    if SHA_RE.match(got):
+        return got
+    # An Actions event SHA can predate a moving-branch checkout or rebase.
+    # Keep it only as a fallback for source exports without Git metadata.
+    fallback = str(os.environ.get("GITHUB_SHA") or "").strip()
+    return fallback if SHA_RE.match(fallback) else ""
 
 
 def read_bytes(root, rel):
