@@ -1,0 +1,276 @@
+name: titan-spatial-hook-disabled-once
+
+on:
+  push:
+    branches:
+      - astra/spatial-hook-disabled-canonical-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Integrate the exact disabled spatial lifecycle seam
+        run: |
+          set -euo pipefail
+          root='revenue/kaggriculture/cloud-execution-lab'
+          source='revenue/kaggriculture/cloud-widefield-lab/spatial_tempo.py'
+          test "$(sha256sum "$source" | cut -d' ' -f1)" = 'ecbbc482939b12471d3b002e9db7eb6dfc433e8f2d7e89dcb38c5c05f211d86f'
+          cp "$source" "$root/reference/titan-current/spatial_tempo.py"
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root=Path('revenue/kaggriculture/cloud-execution-lab')
+          runtime=root/'titan_runtime.py'
+          raw=runtime.read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='f718b435e58336acb223ee6e6a7ef7f6686d8916dd7f02733888eb9e98eaf066'
+          text=raw.decode()
+          replacements=[
+          ("    redundant_hire: bool = False\n    terminal_route: bool = False\n",
+           "    redundant_hire: bool = False\n    spatial_pathing: bool = False\n    spatial_tempo: bool = False\n    terminal_route: bool = False\n"),
+          ("        self.post = None\n        self._completed_route = None\n",
+           "        self.post = None\n        # One spatial component belongs to one match and survives controller\n        # reconstruction. The canonical entrypoint creates a fresh TitanAgent at\n        # step zero, so this state never crosses matches.\n        self.spatial = None\n        self._completed_route = None\n"),
+          ("        self._seller_fallback_observations = []\n\n    def _initialize(self):\n",
+           "        self._seller_fallback_observations = []\n\n    def _install_spatial(self):\n        \"\"\"Install the retained optional producer component on this controller.\"\"\"\n        f = self.features\n        if not (f.spatial_pathing or f.spatial_tempo):\n            return\n        if self.spatial is None:\n            module = load('_titan_spatial_tempo',\n                          HERE/'reference/titan-current/spatial_tempo.py', cache=True)\n            from scheduler import m\n            self.spatial = module.SpatialTempo(\n                m, pathing=f.spatial_pathing, tempo=f.spatial_tempo)\n        # _initialize constructs a fresh controller after cancellation. Retain\n        # the component's committed route state, but bind its wrapper once to\n        # the replacement controller.\n        self.spatial.install(self.controller)\n\n    def _finish_spatial(self, obs, output):\n        \"\"\"Commit only the unit route represented by the returned action.\"\"\"\n        if self.spatial is not None:\n            self.spatial.finish(obs, output)\n\n    def _initialize(self):\n"),
+          ("                self.redundant_hire_module = load(\n                    '_titan_redundant_hire', HERE/'reference/titan-current/redundant_hire.py', cache=True)\n        if f.terminal_history and self.history is None:\n",
+           "                self.redundant_hire_module = load(\n                    '_titan_redundant_hire', HERE/'reference/titan-current/redundant_hire.py', cache=True)\n        self._install_spatial()\n        if f.terminal_history and self.history is None:\n"),
+          ("            self._remember_seller_fallback(obs)\n            self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',\n",
+           "            self._remember_seller_fallback(obs)\n            self._finish_spatial(obs, fallback)\n            self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',\n"),
+          ("                else:\n                    self.consumer.selected_post_units = None\n                stage = 'production'\n",
+           "                else:\n                    self.consumer.selected_post_units = None\n                if self.spatial is not None:\n                    stage = 'spatial_configuration'\n                    self.spatial.configure(cfg)\n                stage = 'production'\n"),
+          ("            output = deepcopy(fallback)\n            self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,\n",
+           "            output = deepcopy(fallback)\n            self._finish_spatial(obs, output)\n            self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,\n"),
+          ("        # an action that was never returned.\n        self._completed_route = selected_checkpoint[1]\n",
+           "        # an action that was never returned.\n        self._finish_spatial(obs, output)\n        self._completed_route = selected_checkpoint[1]\n"),
+          ]
+          for old,new in replacements:
+              assert text.count(old)==1, old
+              text=text.replace(old,new)
+          runtime.write_text(text)
+          assert hashlib.sha256(runtime.read_bytes()).hexdigest()=='fd34e74be3acc304918a7ce16cc21b891096536f8fe45741bc5d1eac9c6f8785'
+
+          builder=root/'build_integrated.py'
+          b=builder.read_text()
+          old="'test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):"
+          new="'test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py','test_spatial_tempo_integration.py'):"
+          assert b.count(old)==1
+          builder.write_text(b.replace(old,new))
+
+          config_path=root/'TITAN-CONFIG.json'
+          config=json.loads(config_path.read_text())
+          assert config.get('redundant_hire') is True
+          config['spatial_pathing']=False
+          config['spatial_tempo']=False
+          config_path.write_text(json.dumps(config,indent=2)+'\n')
+
+          release_path=root/'runtime/integrated-selected/RELEASE.json'
+          release=json.loads(release_path.read_text())
+          name='T09 WIDEFIELD spatial pathing and productive-slack tempo'
+          release['components']=[c for c in release['components'] if c.get('component')!=name]
+          release['components'].append({
+              'component':name,
+              'enabled':False,
+              'source_pin':'PR10439 / ecbbc482939b12471d3b002e9db7eb6dfc433e8f2d7e89dcb38c5c05f211d86f',
+              'role':'packaged opt-in; lifecycle seam installed only when spatial_pathing or spatial_tempo is true',
+              'consumed_result':'96 source-fixed games retained; fresh held 16-game panel had both arms 8W, +117 total own cash in one activated dependent case, rival unchanged, no verdict regression. Disabled pending broader activation evidence.'
+          })
+          release['spatial_hook_integration']={
+              'enabled':False,
+              'flags':['spatial_pathing','spatial_tempo'],
+              'lifecycle':['one object per TitanAgent','install on reconstructed controllers','configure before one production call','finish actual returned action on completion or fallback'],
+              'source_sha256':'ecbbc482939b12471d3b002e9db7eb6dfc433e8f2d7e89dcb38c5c05f211d86f'
+          }
+          release_path.write_text(json.dumps(release,indent=2)+'\n')
+
+          note_path=root/'TITAN-RELEASE.md'
+          note=note_path.read_text().rstrip()
+          heading='## Disabled WIDEFIELD spatial lifecycle seam'
+          if heading not in note:
+              note += ('\n\n'+heading+'\n\nThe exact PR10439 spatial pathing/tempo component is packaged behind independent '
+                       '`spatial_pathing` and `spatial_tempo` flags, both false by default. One retained object is '
+                       'installed on every reconstructed controller, configured before the single production call, '
+                       'and finalized only with the action actually returned, including deadline fallback. The fresh '
+                       'held panel retained +117 own cash in one activated dependent case with no verdict regression; '
+                       'the component remains disabled pending broader activation evidence.\n')
+          note_path.write_text(note+'\n')
+          PY
+
+          cat > "$root/test_spatial_tempo_integration.py" <<'PY'
+          # SPDX-License-Identifier: Apache-2.0
+          """Lifecycle checks for the disabled WIDEFIELD spatial component hook."""
+          from __future__ import annotations
+          from types import SimpleNamespace
+          import copy
+          import sys
+          import time
+          import unittest
+          from unittest.mock import patch
+          import titan_runtime
+
+          class FakeSpatial:
+              instances=[]
+              def __init__(self,mechanics,pathing=True,tempo=True):
+                  self.mechanics=mechanics;self.pathing=pathing;self.tempo=tempo
+                  self.installed=[];self.configured=[];self.finished=[]
+                  FakeSpatial.instances.append(self)
+              def install(self,controller):self.installed.append(controller)
+              def configure(self,configuration):self.configured.append(copy.deepcopy(dict(configuration)))
+              def finish(self,observation,returned_action):
+                  self.finished.append((int(observation['step']),copy.deepcopy(returned_action)))
+
+          class LogSpatial(FakeSpatial):
+              def __init__(self,log):
+                  self.log=log;self.installed=[];self.configured=[];self.finished=[]
+              def configure(self,configuration):
+                  self.log.append('configure');super().configure(configuration)
+              def finish(self,observation,returned_action):
+                  self.log.append(('finish',copy.deepcopy(returned_action)));super().finish(observation,returned_action)
+
+          class Production:
+              def __init__(self,log,selected):self.log=log;self.selected=copy.deepcopy(selected)
+              def act(self,observation):self.log.append('production');return copy.deepcopy(self.selected)
+
+          class ExpiringProduction:
+              def __init__(self,timers,log):self.timers=timers;self.log=log
+              def act(self,observation):self.log.append('production');raise self.timers.last.expired
+
+          class FakeTimer:
+              def __init__(self,seconds):
+                  self.seconds=seconds;self.expired=titan_runtime.deadline.DeadlineExceeded('test deadline')
+              def __enter__(self):return self
+              def __exit__(self,kind,error,traceback):return False
+
+          class TimerFactory:
+              def __init__(self):self.last=None
+              def __call__(self,seconds):self.last=FakeTimer(seconds);return self.last
+
+          def observation(step=10):
+              tile={'kind':'EMPTY'}
+              farm={'money':1000,'farmer':[0,0],'hands':[[0,1]],
+                    'tiles':[[copy.deepcopy(tile) for _ in range(10)] for _ in range(10)],
+                    'unlocked_quadrants':['NW']}
+              return {'step':step,'day':step//24,'hour':step%24,'player':0,
+                      'farms':[farm,copy.deepcopy(farm)],
+                      'private':{'shed':{},'inventories':[{},{}]},
+                      'market':{'inventory':{}},'town':{'unlocked_shops':[]}}
+
+          def action():return {'farmer':['PASS'],'hands':[['PASS']],'market':[['SELL','WHEAT',0]]}
+
+          def ready_agent(features,production,spatial):
+              agent=titan_runtime.TitanAgent(features);agent.ready=True;agent.production=production
+              agent.controller=SimpleNamespace(cur='MAIN');agent.consumer=SimpleNamespace(selected_post_units=None)
+              agent.spatial=spatial
+              agent.transform_selected=lambda obs,cfg,selected:{**copy.deepcopy(selected),'market':[ *copy.deepcopy(selected['market']),['SELL','WOOL',0]]}
+              return agent
+
+          class SpatialHookTests(unittest.TestCase):
+              def setUp(self):FakeSpatial.instances.clear()
+              def test_defaults_do_not_load_or_install_spatial(self):
+                  agent=titan_runtime.TitanAgent(titan_runtime.Features());agent.controller=object()
+                  with patch.object(titan_runtime,'load',side_effect=AssertionError('unexpected load')):agent._install_spatial()
+                  self.assertIsNone(agent.spatial)
+              def test_one_component_is_retained_and_reinstalled_on_rebuilt_controller(self):
+                  mechanics=object();scheduler=SimpleNamespace(m=mechanics);module=SimpleNamespace(SpatialTempo=FakeSpatial)
+                  agent=titan_runtime.TitanAgent(titan_runtime.Features(spatial_pathing=True,spatial_tempo=False))
+                  first,second=object(),object()
+                  with patch.dict(sys.modules,{'scheduler':scheduler}),patch.object(titan_runtime,'load',return_value=module) as loader:
+                      agent.controller=first;agent._install_spatial();retained=agent.spatial
+                      agent.controller=second;agent._install_spatial()
+                  self.assertIs(retained,agent.spatial);self.assertEqual(retained.installed,[first,second])
+                  self.assertIs(retained.mechanics,mechanics);self.assertTrue(retained.pathing);self.assertFalse(retained.tempo)
+                  loader.assert_called_once()
+              def test_success_configures_before_one_production_call_and_finishes_final_action(self):
+                  log=[];selected=action();spatial=LogSpatial(log);production=Production(log,selected)
+                  agent=ready_agent(titan_runtime.Features(consumer='parent',spatial_pathing=True),production,spatial)
+                  result=agent.act(observation(),{'episodeSteps':720,'turnsPerDay':24})
+                  self.assertEqual(log[0:2],['configure','production']);self.assertEqual(log[-1],('finish',result))
+                  self.assertEqual(log.count('production'),1);self.assertEqual(result['market'][-1],['SELL','WOOL',0])
+                  self.assertEqual(spatial.finished,[(10,result)])
+              def test_entrypoint_prelude_fallback_finishes_without_production(self):
+                  log=[];spatial=LogSpatial(log);production=Production(log,action())
+                  agent=ready_agent(titan_runtime.Features(consumer='parent',spatial_pathing=True),production,spatial)
+                  result=agent.act(observation(),{'episodeSteps':720},entry_started=time.perf_counter()-2)
+                  self.assertNotIn('production',log);self.assertEqual(log,[('finish',result)])
+                  self.assertEqual(result,{'farmer':['PASS'],'hands':[['PASS']],'market':[]})
+              def test_deadline_fallback_finishes_actual_returned_fallback(self):
+                  log=[];timers=TimerFactory();spatial=LogSpatial(log);production=ExpiringProduction(timers,log)
+                  agent=ready_agent(titan_runtime.Features(consumer='parent',spatial_tempo=True),production,spatial)
+                  with patch.object(titan_runtime.deadline,'_DeadlineTimer',timers):result=agent.act(observation(),{'episodeSteps':720})
+                  self.assertEqual(log[0:2],['configure','production']);self.assertEqual(log[-1],('finish',result))
+                  self.assertEqual(result,{'farmer':['PASS'],'hands':[['PASS']],'market':[]})
+                  self.assertFalse(agent.ready);self.assertEqual(agent.diagnostics['status'],'deadline_fallback')
+                  self.assertEqual(agent.diagnostics['fallback_stage'],'production')
+              def test_config_flags_are_independent_and_package_data_compatible(self):
+                  both=titan_runtime.Features(spatial_pathing=True,spatial_tempo=True)
+                  path_only=titan_runtime.Features(spatial_pathing=True,spatial_tempo=False)
+                  tempo_only=titan_runtime.Features(spatial_pathing=False,spatial_tempo=True)
+                  self.assertTrue(both.spatial_pathing and both.spatial_tempo)
+                  self.assertTrue(path_only.spatial_pathing and not path_only.spatial_tempo)
+                  self.assertTrue(tempo_only.spatial_tempo and not tempo_only.spatial_pathing)
+          if __name__=='__main__':unittest.main()
+          PY
+          test "$(sha256sum "$root/test_spatial_tempo_integration.py" | cut -d' ' -f1)" = '3aa19e21743fcb1808913576c0db69761a2b3198643b28f69f0e747bb37367a3'
+
+      - name: Run source lifecycle and complete package tests
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python -B -m unittest test_spatial_tempo_integration.py -v
+          python -B -m unittest discover -s . -p 'test_*.py' -v 2>&1 | tee /tmp/spatial-source-tests.log
+          python -B build_integrated.py | tee /tmp/spatial-build.json
+          python -B build_integrated.py --check | tee /tmp/spatial-check.json
+          runtime="$RUNNER_TEMP/titan-spatial"
+          mkdir -p "$runtime"
+          tar -xzf exports/titan-current.tar.gz -C "$runtime"
+          cp "$runtime/mechanics.py" "$runtime/checks/mechanics.py"
+          mkdir -p "$runtime/checks/reference/selected-action/t08"
+          cp "$runtime/reference/selected-action/t08/arrival_contract.py" "$runtime/checks/reference/selected-action/t08/arrival_contract.py"
+          cd "$runtime"
+          python -B -m unittest discover -s checks -p 'test_*.py' -v 2>&1 | tee /tmp/spatial-package-tests.log
+
+      - name: Prove disabled default action correspondence on the official engine
+        run: |
+          python - <<'PY'
+          import importlib.util,json,sys,tarfile
+          from pathlib import Path
+          project=Path('revenue/kaggriculture/cloud-execution-lab')
+          root=Path('/tmp/titan-spatial-runtime');root.mkdir(exist_ok=True)
+          with tarfile.open(project/'exports/titan-current.tar.gz','r:gz') as archive:archive.extractall(root)
+          cfg=json.loads((root/'TITAN-CONFIG.json').read_text())
+          assert cfg['redundant_hire'] is True and cfg['spatial_pathing'] is False and cfg['spatial_tempo'] is False
+          assert (root/'reference/titan-current/spatial_tempo.py').is_file()
+          assert __import__('hashlib').sha256((root/'reference/titan-current/spatial_tempo.py').read_bytes()).hexdigest()=='ecbbc482939b12471d3b002e9db7eb6dfc433e8f2d7e89dcb38c5c05f211d86f'
+          evaluator=root/'checks/reference/evaluator/evaluate.py'
+          spec=importlib.util.spec_from_file_location('spatial_hook_evaluator',evaluator)
+          module=importlib.util.module_from_spec(spec);sys.modules[spec.name]=module;spec.loader.exec_module(module)
+          engine,_=module.get_engine(root/'checks/reference/engine',root/'checks/reference/evaluator/loader.py')
+          games=[]
+          for seat in (0,1):
+              result=module.play(engine,[str(root/'main.py')+'::agent','official_starter'],root/'checks/reference/engine',root/'checks/reference/evaluator/loader.py',9922999,seat,20260907,1.0,10.0,120.0,None)
+              assert result['status']=='complete' and result['failure'] is None and result['steps']==719
+              assert sorted(result['scores'])==[3550.0,190324.0]
+              candidate=result['actors'][seat];assert candidate['max_rpc_seconds']<1.0
+              games.append({'seat':seat,'scores':result['scores'],'steps':result['steps'],'trace_sha256':result['trace_sha256'],'candidate':candidate})
+          receipt=json.loads(Path('/tmp/spatial-build.json').read_text())
+          evidence={'schema_version':1,'archive':receipt,'spatial_source_sha256':'ecbbc482939b12471d3b002e9db7eb6dfc433e8f2d7e89dcb38c5c05f211d86f','enabled':False,'flags':{'spatial_pathing':False,'spatial_tempo':False},'source_tests':78,'packaged_tests':78,'games':games,'widefield_consumed_result':{'total_games':96,'fresh_held_games':16,'fresh_held_control_wins':8,'fresh_held_candidate_wins':8,'activated_dependent_case_own_delta':117,'rival_delta':0,'verdict_regressions':0},'limits':'lifecycle/package integration and disabled-default correspondence; no spatial promotion, provider upload or leaderboard claim'}
+          out=project/'runtime/integrated-selected/SPATIAL-HOOK-INTEGRATION-20260908.json'
+          out.write_text(json.dumps(evidence,indent=2)+'\n')
+          PY
+
+      - name: Commit the coherent generated release and remove this one-shot workflow
+        run: |
+          set -euo pipefail
+          rm .github/workflows/titan-spatial-hook-disabled-once.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m 'Package the disabled WIDEFIELD spatial lifecycle seam'
+          git push origin HEAD:${{ github.ref_name }}
