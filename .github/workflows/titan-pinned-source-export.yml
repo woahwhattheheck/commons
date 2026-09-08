@@ -17,13 +17,14 @@ on:
           - parents
           - t13-replays
           - t13-new-replays
+          - widefield-trace
 
 permissions:
   contents: read
 
 jobs:
   export:
-    if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-transport]')) && inputs.bundle != 't13-replays' && !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-new-replays]')) && inputs.bundle != 't13-new-replays' }}
+    if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-transport]')) && inputs.bundle != 't13-replays' && !(github.event_name == 'push' && contains(github.event.head_commit.message, '[t13-new-replays]')) && inputs.bundle != 't13-new-replays' && !(github.event_name == 'push' && contains(github.event.head_commit.message, '[widefield-transport]')) && inputs.bundle != 'widefield-trace' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -263,5 +264,130 @@ jobs:
         with:
           name: titan-t13-new-replays-${{ github.run_id }}
           path: ${{ runner.temp }}/titan-t13-new-replays/
+          if-no-files-found: error
+          retention-days: 7
+
+  export-widefield-trace:
+    # Copy only the requested original member. Branch publication stays idle;
+    # one marked main merge or explicit selection runs this historical export.
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[widefield-transport]')) || inputs.bundle == 'widefield-trace' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 78627f83968a9cb042c5c6093f885f4b9ced499a
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-widefield-lab/results/archive-parts/
+      - name: Export one exact retained WIDEFIELD trace member
+        shell: python
+        run: |
+          """Export one member from an immutable tracked multipart archive; no code execution."""
+          import gzip
+          import hashlib
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          import shutil
+          import subprocess
+          import tarfile
+
+
+          def export_member(checkout, output, *, ref, source_directory, prefix, parts,
+                            expected_archive_sha256, target_name, run_id, attempt):
+              checkout, output = Path(checkout), Path(output)
+              def git(*args):
+                  return subprocess.check_output(['git', '-C', str(checkout), *args])
+              actual = git('rev-parse', 'HEAD').decode().strip()
+              if actual != ref:
+                  raise ValueError('checkout does not match pinned source')
+              paths = [source_directory + '/' + prefix + f'{i:02d}' for i in range(parts)]
+              listed = git('ls-tree', '-r', '-z', ref, '--', source_directory).split(b'\0')
+              entries = {}
+              for line in listed:
+                  if not line:
+                      continue
+                  metadata, path = line.split(b'\t', 1)
+                  mode, kind, blob = metadata.decode().split()
+                  entries[path.decode()] = (mode, kind, blob)
+              actual_parts = sorted(p for p in entries if PurePosixPath(p).name.startswith(prefix))
+              if actual_parts != paths:
+                  raise ValueError('unexpected multipart source set')
+              output.mkdir(parents=True, exist_ok=False)
+              archive_path = output / '_source.tar.gz'
+              digest, records = hashlib.sha256(), {}
+              with archive_path.open('xb') as target:
+                  for path in paths:
+                      mode, kind, expected_blob = entries[path]
+                      if mode not in ('100644', '100755') or kind != 'blob':
+                          raise ValueError('archive part is not a regular tracked file')
+                      data = git('show', ref + ':' + path)
+                      blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+                      if blob != expected_blob:
+                          raise ValueError('archive part blob mismatch')
+                      target.write(data)
+                      digest.update(data)
+                      records[path] = {'git_blob': blob, 'size_bytes': len(data),
+                                       'sha256': hashlib.sha256(data).hexdigest()}
+              if digest.hexdigest() != expected_archive_sha256:
+                  raise ValueError('reassembled archive digest mismatch')
+              with tarfile.open(archive_path, 'r:gz') as archive:
+                  selected = [m for m in archive.getmembers()
+                              if PurePosixPath(m.name).name == target_name]
+                  if len(selected) != 1 or not selected[0].isfile():
+                      raise ValueError('expected exactly one regular target member')
+                  member = selected[0]
+                  reader = archive.extractfile(member)
+                  if reader is None:
+                      raise ValueError('target member unreadable')
+                  name = target_name + '.gz'
+                  member_digest, copied = hashlib.sha256(), 0
+                  with reader, (output / name).open('xb') as raw:
+                      with gzip.GzipFile(filename='', fileobj=raw, mode='wb', mtime=0) as encoded:
+                          while True:
+                              block = reader.read(1024 * 1024)
+                              if not block:
+                                  break
+                              encoded.write(block)
+                              member_digest.update(block)
+                              copied += len(block)
+                  if copied != member.size:
+                      raise ValueError('target member size mismatch')
+              source_readme = source_directory + '/README.md'
+              if source_readme in entries:
+                  (output / 'SOURCE-README.md').write_bytes(git('show', ref + ':' + source_readme))
+              compressed = (output / name).read_bytes()
+              manifest = {
+                  'schema': 'titan.committed-archive-member.v1',
+                  'source_commit': ref, 'workflow_run_id': str(run_id), 'workflow_run_attempt': str(attempt),
+                  'archive_sha256': digest.hexdigest(), 'archive_size_bytes': archive_path.stat().st_size,
+                  'parts': records, 'member_path': member.name,
+                  'member_size_bytes': copied, 'member_sha256': member_digest.hexdigest(),
+                  'delivered_file': name, 'delivered_size_bytes': len(compressed),
+                  'delivered_sha256': hashlib.sha256(compressed).hexdigest(),
+                  'encoding': 'gzip of exact original tar member bytes; decompress before the existing replayer',
+                  'limits': 'Committed data transport only. No interpreter, policy, replay, game, seed, Kaggle request or parent-pack export.'
+              }
+              (output / 'TRANSPORT-MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+              # Remove only this job's newly created temporary copy, never tracked source.
+              archive_path.unlink()
+              return manifest
+
+
+          if __name__ == '__main__':
+              result = export_member('.', Path(os.environ['RUNNER_TEMP']) / 'titan-widefield-member',
+                  ref='78627f83968a9cb042c5c6093f885f4b9ced499a',
+                  source_directory='revenue/kaggriculture/cloud-widefield-lab/results/archive-parts',
+                  prefix='full-results-9921001-9921032.tar.gz.part-', parts=18,
+                  expected_archive_sha256='2859491973c51d21a95ec80135ac7385ce889c335ff619012f9f86dabce55a11',
+                  target_name='integrated-pr9997-fullstate.json',
+                  run_id=os.environ['GITHUB_RUN_ID'], attempt=os.environ['GITHUB_RUN_ATTEMPT'])
+              print(json.dumps({k: v for k, v in result.items() if k != 'parts'}, sort_keys=True))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-widefield-retained-trace-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-widefield-member/
           if-no-files-found: error
           retention-days: 7
