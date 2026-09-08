@@ -1,0 +1,77 @@
+name: SOL Atlas TITAN source-closure patch carrier
+
+on:
+  push:
+    branches:
+      - 'sol-atlas/titan-selected-projection-source-closure-20260908-01'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - name: Apply exact source-closure additions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          path = Path('.github/workflows/titan-selected-projection.yml')
+          expected_blob = '5b4ffd14d3c54a781a6cc544530281607bfd8c07'
+          actual_blob = subprocess.check_output(['git', 'hash-object', str(path)], text=True).strip()
+          if actual_blob != expected_blob:
+              raise SystemExit(f'unexpected workflow preimage: {actual_blob} != {expected_blob}')
+
+          text = path.read_text(encoding='utf-8')
+          replacements = [
+              (
+                  "            /revenue/kaggriculture/cloud-weighted-plan-selector/\n            /revenue/kaggriculture/cloud-plan-continuation/continuation.py\n",
+                  "            /revenue/kaggriculture/cloud-weighted-plan-selector/\n            /revenue/kaggriculture/cloud-runtime-pulse/\n            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/\n            /revenue/kaggriculture/cloud-plan-continuation/continuation.py\n",
+              ),
+              (
+                  "                   'cloud-weighted-plan-selector',\n                   'cloud-plan-continuation', 'cloud-observed-fills')\n",
+                  "                   'cloud-weighted-plan-selector',\n                   'cloud-runtime-pulse', 'cloud-opponent-league/lark-responsive',\n                   'cloud-plan-continuation', 'cloud-observed-fills')\n",
+              ),
+              (
+                  "            /revenue/kaggriculture/cloud-runtime-pulse/\n            /revenue/kaggriculture/cloud-composition-cases/cover/\n",
+                  "            /revenue/kaggriculture/cloud-runtime-pulse/\n            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/\n            /revenue/kaggriculture/cloud-composition-cases/cover/\n",
+              ),
+              (
+                  "                   'revenue/kaggriculture/cloud-runtime-pulse',\n                   'revenue/kaggriculture/cloud-composition-cases/cover']\n",
+                  "                   'revenue/kaggriculture/cloud-runtime-pulse',\n                   'revenue/kaggriculture/cloud-opponent-league/lark-responsive',\n                   'revenue/kaggriculture/cloud-composition-cases/cover']\n",
+              ),
+          ]
+          for old, new in replacements:
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'expected one exact patch anchor, found {count}: {old!r}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+          git diff --check -- .github/workflows/titan-selected-projection.yml
+          test "$(grep -Fc '/revenue/kaggriculture/cloud-opponent-league/lark-responsive/' .github/workflows/titan-selected-projection.yml)" -eq 2
+          test "$(grep -Fc "'cloud-opponent-league/lark-responsive'" .github/workflows/titan-selected-projection.yml)" -eq 1
+          test "$(grep -Fc "'revenue/kaggriculture/cloud-opponent-league/lark-responsive'" .github/workflows/titan-selected-projection.yml)" -eq 1
+          test "$(grep -Fc '/revenue/kaggriculture/cloud-runtime-pulse/' .github/workflows/titan-selected-projection.yml)" -eq 2
+      - name: Commit final one-file branch state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'SOL-ATLAS'
+          git config user.email 'commons-board@users.noreply.github.com'
+          git rm -- '.github/workflows/sol-atlas-titan-source-closure-patch.yml'
+          git add -- '.github/workflows/titan-selected-projection.yml'
+          git diff --cached --check
+          git commit -m 'Close TITAN selected-projection source snapshot roots'
+          git push origin HEAD:${{ github.ref_name }}
