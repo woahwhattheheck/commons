@@ -40,6 +40,10 @@ STRESS_RUNNER = (
     ("stress_runner_existing", "stress-runner-existing-tests.log", STRESS + "test_runner.py", None, None),
     ("stress_runner_reporter", "stress-runner-reporter-tests.log", PROJECTION + "test_stress_runner_report.py", None, None),
 )
+QUEUE_COPY = (
+    ("queue_copy", "queue-copy-tests.log", MARKET + "test_queue_copy.py", "queue-copy-results.json", "methods"),
+    ("queue_copy_reporter", "queue-copy-reporter-tests.log", PROJECTION + "test_queue_copy_report.py", None, None),
+)
 REPORTER = ("reporter", "reporter-tests.log", PROJECTION + "test_combined_report.py", None, None)
 SUMMARY = re.compile(r"^Ran ([0-9]+) tests? in .+\n\s*\n(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)\s*$", re.M)
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -79,7 +83,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False, include_queue_copy: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -126,7 +130,8 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                     + ((CANCELLATION,) if include_cancellation else ())
                     + ((LEDGER_SCHEDULE,) if include_ledger_schedule else ())
                     + ((REPORTER,) if include_reporter else ())
-                    + (STRESS_RUNNER if include_stress_runner else ()))
+                    + (STRESS_RUNNER if include_stress_runner else ())
+                    + (QUEUE_COPY if include_queue_copy else ()))
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
         text = read(log)
@@ -154,7 +159,8 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                 else:
                     if any(type(summary.get(k)) is not int or summary[k] != 0 for k in ("failures", "errors")):
                         problems.append(key + ": nonzero or missing JSON failures/errors")
-                    if key != "projection" and summary.get("success" if key == "capture_binding" else "successful") is not True:
+                    success_field = "passed" if key == "queue_copy" else "success" if key == "capture_binding" else "successful"
+                    if key != "projection" and summary.get(success_field) is not True:
                         problems.append(key + ": JSON result is not successful")
         suites[key] = entry
 
@@ -246,6 +252,30 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
         if stress.get("new_game_seeds") != []:
             problems.append("stress runner: expected empty new_game_seeds array")
 
+    queue = reports.get("queue_copy", {})
+    if include_queue_copy:
+        bind("queue copy seller", queue.get("source_sha256"), seller)
+        if queue.get("schema") != "titan.queue-copy.final.v1":
+            problems.append("queue copy: unsupported or missing report schema")
+        for field in ("new_games", "engine_transitions"):
+            if type(queue.get(field)) is not int or queue[field] != 0:
+                problems.append("queue copy: expected zero " + field)
+        counts = queue.get("counts")
+        expected_counts = ("queue_comparisons", "replacement_comparisons",
+                           "complete_transform_comparisons", "feasibility_comparisons")
+        if (not isinstance(counts, dict)
+                or any(type(counts.get(k)) is not int or counts[k] < 0 for k in expected_counts)):
+            problems.append("queue copy: invalid comparison-count mapping")
+        inner_log = queue.get("log")
+        try:
+            if not isinstance(inner_log, str):
+                raise ValueError("missing text")
+            inner = parse_unittest(inner_log)
+            if not inner["successful"] or inner["tests"] != suites["queue_copy"]["tests"]:
+                raise ValueError("embedded log does not match completed passing outer log")
+        except ValueError as exc:
+            problems.append("queue copy: " + str(exc))
+
     observed_total = sum(s["tests"] for s in suites.values() if s["tests"] is not None)
     counts_complete = all(s["tests"] is not None for s in suites.values())
     result = {"schema": "titan.selected-projection.combined.v2",
@@ -282,6 +312,11 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
         result["stress_runner_binding"] = {
             field: stress.get(field) for field in
             ("runner_sha256", "adapter_sha256", "test_sha256", "actual_source", "full_games", "new_game_seeds")}
+    if include_queue_copy:
+        result["queue_copy_binding"] = {
+            field: queue.get(field) for field in
+            ("schema", "source_sha256", "new_games", "engine_transitions")}
+        result["queue_copy_case_counts"] = queue.get("counts")
     return result
 
 
@@ -295,13 +330,15 @@ def main(argv=None):
     parser.add_argument("--include-cancellation", action="store_true")
     parser.add_argument("--include-ledger-schedule", action="store_true")
     parser.add_argument("--include-stress-runner", action="store_true")
+    parser.add_argument("--include-queue-copy", action="store_true")
     args = parser.parse_args(argv)
     report = build_report(args.directory, include_reporter=args.include_reporter_tests,
                           include_funded_join=args.include_funded_join,
                           include_runtime_regressions=args.include_runtime_regressions,
                           include_cancellation=args.include_cancellation,
                           include_ledger_schedule=args.include_ledger_schedule,
-                          include_stress_runner=args.include_stress_runner)
+                          include_stress_runner=args.include_stress_runner,
+                          include_queue_copy=args.include_queue_copy)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
