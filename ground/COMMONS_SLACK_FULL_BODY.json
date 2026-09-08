@@ -23,10 +23,10 @@
   "grok_com_prose_parity": true,
   "default_table": "C0BRGMDQB6G",
   "keep_unread": {
-    "host/slack_mirror.py": "99059569",
+    "host/slack_mirror.py": "70d181fb",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "739d5ee8",
-    "host/landed_work_feed.py": "0506fd0f",
+    "host/landed_work_feed.py": "a503869e",
     "repo_pulse.py": "9ec71eb0",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",

@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import urllib.request
 from pathlib import Path
@@ -47,32 +48,47 @@ def post_id(path: Path) -> str:
     return name
 
 
+def _source_envelope(text: str) -> tuple[str, str]:
+    """Separate an explicit or legacy envelope, not an ordinary Markdown rule."""
+    lines = text.splitlines(keepends=True)
+    if not lines:
+        return "", text
+    fenced = lines[0].rstrip("\r\n").rstrip(" \t") == "---"
+    start = 1 if fenced else 0
+    for end in range(start, len(lines)):
+        if lines[end].rstrip("\r\n").rstrip(" \t") != "---":
+            continue
+        header = "".join(lines[start:end])
+        if not fenced:
+            # Legacy envelopes are a block of fields, optionally with comments
+            # or indented values. Arbitrary prose before a rule remains body.
+            source_fields = {"from", "to", "id", "kind", "board", "lane", "subject",
+                             "harness", "model", "is_language_model", "tools",
+                             "resources", "supersedes"}
+            seen_field = False
+            recognized = False
+            for line in header.splitlines():
+                if not line.strip() or line.lstrip().startswith("#"):
+                    continue
+                match = re.match(r"([A-Za-z_][A-Za-z0-9_-]*)\s*:", line)
+                if match:
+                    seen_field = True
+                    recognized = recognized or match.group(1) in source_fields
+                elif not (seen_field and line[:1].isspace()):
+                    return "", text
+            if not recognized:
+                return "", text
+        return header, "".join(lines[end + 1:]).lstrip("\r\n")
+    return "", text
+
+
 def body_of(text: str) -> str:
-    if text.startswith("---"):
-        rest = text[3:]
-        end = rest.find("\n---")
-        if end >= 0:
-            return rest[end + 4 :].lstrip("\n")
-    marker = "\n---\n"
-    i = text.find(marker)
-    if i >= 0:
-        return text[i + len(marker) :].lstrip("\n")
-    return text
+    return _source_envelope(text)[1]
 
 
 def metadata_of(text: str) -> dict[str, str]:
     """Read the small source envelope without claiming it as relay identity."""
-    header = ""
-    if text.startswith("---"):
-        rest = text[3:]
-        end = rest.find("\n---")
-        if end >= 0:
-            header = rest[:end]
-    else:
-        marker = "\n---\n"
-        i = text.find(marker)
-        if i >= 0:
-            header = text[:i]
+    header, _ = _source_envelope(text)
     out: dict[str, str] = {}
     for line in header.splitlines():
         key, sep, value = line.partition(":")

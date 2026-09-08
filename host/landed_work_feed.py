@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -56,19 +57,13 @@ def harness_of(author: str) -> str:
 
 
 def paths_of(sha: str, cwd: Path | None = None) -> list[str]:
-    out = git(
-        [
-            "diff-tree",
-            "--no-commit-id",
-            "--name-only",
-            "-r",
-            "-m",
-            "--first-parent",
-            sha,
-        ],
-        cwd=cwd,
+    # NUL-delimited bytes preserve Git filenames, including whitespace/Unicode.
+    out = subprocess.check_output(
+        ["git", "diff-tree", "--no-commit-id", "--name-only", "-r",
+         "--diff-merges=first-parent", "--root", "-z", sha],
+        cwd=str(cwd or ROOT),
     )
-    return [line for line in out.splitlines() if line.strip()]
+    return [os.fsdecode(path) for path in out.split(b"\0") if path]
 
 
 def parse_commit(sha: str, author: str, subject: str, cwd: Path | None = None) -> dict[str, Any] | None:
@@ -89,29 +84,49 @@ def parse_commit(sha: str, author: str, subject: str, cwd: Path | None = None) -
     }
 
 
+def _line_label(text: str, delimiters: str = "") -> str:
+    if any(ord(c) < 32 or c in "\x85\u2028\u2029" + delimiters for c in text):
+        return json.dumps(text, ensure_ascii=True)
+    return text
+
+
 def format_line(row: dict[str, Any]) -> str:
     pr = f"#{row['pr']}" if row.get("pr") else "PR=FINDER-FAILED"
-    paths = ",".join(row.get("paths") or []) or "paths=FINDER-FAILED"
+    path_labels = [_line_label(path, '\\",') for path in row.get("paths") or []]
+    paths = ",".join(path_labels) or "paths=FINDER-FAILED"
     return (
-        f"{row['repo']} {pr} {row['sha'][:9]} {row['title']} "
-        f"harness={row['harness']} paths={paths}"
+        f"{row['repo']} {pr} {row['sha'][:9]} {_line_label(row['title'])} "
+        f"harness={_line_label(row['harness'])} paths={paths}"
     )
 
 
 def recent_merges(limit: int = 8, cwd: Path | None = None) -> list[dict[str, Any]]:
-    raw = git(
-        ["log", "--first-parent", f"-{limit * 3}", "--format=%H\t%an\t%s"],
-        cwd=cwd,
-    )
+    if limit <= 0:
+        return []
+    # Pin one history before paging; new commits must not shift page offsets.
+    head = git(["rev-parse", "HEAD"], cwd=cwd)
+    page_size = max(24, limit * 3)
+    offset = 0
     rows: list[dict[str, Any]] = []
-    for line in raw.splitlines():
-        sha, author, subject = line.split("\t", 2)
-        parsed = parse_commit(sha, author, subject, cwd)
-        if parsed is None:
-            continue
-        rows.append(parsed)
-        if len(rows) >= limit:
+    while len(rows) < limit:
+        raw = git(
+            ["log", "--first-parent", f"--max-count={page_size}",
+             f"--skip={offset}", "-z", "--format=%H%x00%an%x00%s", head, "--"],
+            cwd=cwd,
+        )
+        # Fixed-width NUL fields preserve empty subjects and embedded tabs.
+        fields = raw.split("\0")[:-1]
+        records = [fields[i:i + 3] for i in range(0, len(fields), 3)]
+        for sha, author, subject in records:
+            parsed = parse_commit(sha, author, subject, cwd)
+            if parsed is None:
+                continue
+            rows.append(parsed)
+            if len(rows) >= limit:
+                return rows
+        if len(records) < page_size:
             break
+        offset += len(records)
     return rows
 
 
