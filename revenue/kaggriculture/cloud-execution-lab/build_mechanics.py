@@ -32,4 +32,16 @@ import math
     (HERE/'mechanics.py').write_text(header+'\n\n\n'.join(blocks)+'\n')
     print('mechanics.py',hashlib.sha256((HERE/'mechanics.py').read_bytes()).hexdigest())
 
-if __name__=='__main__':main()
+def terminal_market():
+    """Add exact native market definitions without changing frozen mechanics."""
+    source=SOURCE.read_text()
+    assert hashlib.sha256(SOURCE.read_bytes()).hexdigest()=='bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e'
+    names={'_process_market','_parse_order','_refresh_prices'}
+    blocks=[ast.get_source_segment(source,n) for n in ast.parse(source).body
+            if isinstance(n,ast.FunctionDef) and n.name in names]
+    header='# SPDX-License-Identifier: Apache-2.0\n# Exact official engine 28b6d8af definitions; see reference/engine/LICENSE.\nimport mechanics as _base\nglobals().update({k:v for k,v in vars(_base).items() if not k.startswith("__")})\n\n'
+    (HERE/'reference/titan-history/terminal_mechanics.py').write_text(header+'\n\n'.join(blocks)+'\n')
+
+if __name__=='__main__':
+    import sys
+    terminal_market() if '--terminal-market' in sys.argv else main()
