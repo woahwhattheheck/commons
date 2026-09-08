@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Discriminating release tests; no game panel."""
+import hashlib,json,shutil,subprocess,sys,tarfile,tempfile,unittest
+from pathlib import Path
+import build_integrated as b
+
+class ReleaseTests(unittest.TestCase):
+ def test_default_build_and_history_preservation(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp)
+   for p in set(b.source_files().values())|{'build_integrated.py',b.RECORD+'RELEASE.json'}:
+    dest=root/p;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(b.ROOT/p,dest)
+   (root/'exports').mkdir();old=b'historical evidence sentinel';(root/b.ARCHIVE).write_bytes(old)
+   named=root/'exports/integrated-selected-v1.tar.gz';named.write_bytes(b'unchanged control')
+   def call(*args):return subprocess.run([sys.executable,str(root/'build_integrated.py'),*args],capture_output=True,text=True)
+   out=call();self.assertEqual(out.returncode,0,out.stderr)
+   receipt=json.loads(out.stdout);self.assertEqual(receipt['path'],b.ARCHIVE)
+   self.assertEqual(named.read_bytes(),b'unchanged control')
+   self.assertEqual((root/'exports/historical'/('titan-'+hashlib.sha256(old).hexdigest()+'.tar.gz')).read_bytes(),old)
+   with tarfile.open(root/b.ARCHIVE) as t:
+    self.assertEqual(t.extractfile('main.py').read(),(b.ROOT/'main.py').read_bytes())
+    manifest=json.load(t.extractfile('SOURCE.json'))
+    for name,row in manifest['runtime'].items():
+     self.assertEqual(t.extractfile(name).read(),(root/row['source_path']).read_bytes())
+    self.assertIn('terminal_history_join.py',t.getnames())
+    self.assertTrue(any(p.startswith('reference/titan-history/') for p in t.getnames()))
+    self.assertNotIn('integrated_main.py',t.getnames())
+   first=(root/b.ARCHIVE).read_bytes();self.assertEqual(call().returncode,0);self.assertEqual(first,(root/b.ARCHIVE).read_bytes())
+   for target in ['main.py','TITAN-CONFIG.json',b.RECORD+'CURRENT-SOURCE.json',b.RECORD+'CURRENT-ARCHIVE.json',b.ARCHIVE,'reference/titan-history/selected_action_history.py']:
+    p=root/target;original=p.read_bytes()
+    if target.endswith('CURRENT-ARCHIVE.json'):
+     changed=json.loads(original);changed['path']='exports/integrated-selected-v1.tar.gz';p.write_text(json.dumps(changed))
+    else:p.write_bytes(original+b' ')
+    self.assertNotEqual(call('--check').returncode,0,target)
+    p.write_bytes(original)
+   self.assertEqual(call('--check').returncode,0)
+   for flag in ['--history-v2','--entry-clock-v3','--version']:
+    self.assertNotEqual(call(flag).returncode,0)
+
+if __name__=='__main__':unittest.main()

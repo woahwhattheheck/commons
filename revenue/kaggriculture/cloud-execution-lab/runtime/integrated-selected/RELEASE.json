@@ -1,5 +1,5 @@
 {
-  "release": "titan-history-v2",
+  "release": "TITAN",
   "upstream_snapshot": "56796f814b3ec1f76013aedc03d335bfedba6b37",
   "components": [
     {
@@ -28,29 +28,40 @@
       "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
       "callsite": "TitanAgent._initialize -> TerminalOwner.act",
       "enabled": false,
-      "consumed_result": "64 games; cash gain without WTL change; terminal_route=true"
+      "consumed_result": "64 games; cash gain without WTL change; terminal_route=true",
+      "role": "internal experiment/test-only"
     },
     {
       "component": "ATLAS/WREN/FLORA/Claude ordered + arrivals",
       "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
       "callsite": "consumer=ordered -> IntegratedSelectedAgent.transform -> ordered seller / arrival_contract",
       "enabled": false,
-      "consumed_result": "PR9997 comparison favors frozen; current bytes require new artifact games"
+      "consumed_result": "PR9997 comparison favors frozen; current bytes require new artifact games",
+      "role": "internal experiment/test-only"
     },
     {
       "component": "SPRUCE scorer",
       "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
       "callsite": "consumer=ordered -> selected_sell_core",
       "enabled": false,
-      "consumed_result": "16 reports / 11504 actions; no whole-actor tail gain; research callsite only"
+      "consumed_result": "16 reports / 11504 actions; no whole-actor tail gain; research callsite only",
+      "role": "internal experiment/test-only"
     },
     {
       "component": "CEDAR/T12/SORREL/JOINT/POLY/PORT/LARCH/ANCHOR/PRISM terminal history",
       "source_pin": "cfc199b5ecb01b9607a2b2e6048860c0e8076738",
       "callsite": "TitanAgent.act -> TerminalHistoryJoin.observe/transform/remember",
       "enabled": false,
-      "enabled_setting": "terminal_history=True with explicit history_hypotheses; bundled TITAN-HISTORY-CONFIG.json",
-      "consumed_result": "Five new methods, six cases; actual both-seat native 100394/100398 -> 100397/100396, same selected unit snapshot; no full game claim"
+      "enabled_setting": "Internal tests only: checks/TITAN-HISTORY-CONFIG.json; runtime dependency closure always packaged",
+      "consumed_result": "Five new methods, six cases; actual both-seat native 100394/100398 -> 100397/100396, same selected unit snapshot; no full game claim",
+      "role": "internal experiment/test-only"
+    },
+    {
+      "component": "Entrypoint clock accounting",
+      "source_pin": "PR10154 / 47dfb2a9e66f237321f8a9d5b1305b2dc6198eac",
+      "enabled": true,
+      "callsite": "main.agent entry_started -> TitanAgent.act; fallback copy before elapsed measurement",
+      "consumed_result": "Two discriminating tests fail previous clock and pass current clock; no whole-RPC guarantee or game attribution"
     }
   ],
   "next_increments": [
@@ -94,7 +105,7 @@
       "component": "T09 Claude/WIDEFIELD",
       "source_pin": "T09 registry",
       "owner": "Claude/WIDEFIELD",
-      "current_step": "ack archive/source hash and assign disjoint development shards"
+      "current_step": "Finish frozen checkpoints; consume canonical archive at next checkpoint with exact hash readback; current clock/history bytes need their own game attribution"
     },
     {
       "component": "T10 DOCK",
@@ -136,12 +147,49 @@
       "component": "ECON calibration",
       "source_pin": "task 6a9f40a1-4f48-83e9-b057-79e3447de9ed",
       "owner": "Root ECON",
-      "current_step": "calibration analysis consumed as config/evaluation decision, no second integrator"
+      "current_step": "Use actual caller/RPC subinterval evidence to calibrate reserve with Claude/WIDEFIELD; current 10 ms reserve unchanged, no inferred step569 diagnosis"
     }
   ],
   "official_engine": {
     "version": "1.32.7",
     "commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
   },
-  "game_evidence_for_this_archive": null
+  "game_evidence_for_this_archive": null,
+  "current": {
+    "entrypoint": "main.py::agent",
+    "archive": "exports/titan-current.tar.gz",
+    "receipt": "runtime/integrated-selected/CURRENT-ARCHIVE.json",
+    "manifest": "runtime/integrated-selected/CURRENT-SOURCE.json",
+    "configuration": "TITAN-CONFIG.json",
+    "build": "python build_integrated.py",
+    "verify": "python build_integrated.py --check"
+  },
+  "historical_role": "All other named archives, version receipts and controls are historical/test-only; preserve frozen experiments in flight.",
+  "ancestor_evidence": {
+    "archive_sha256": "70554dc01f8e84336ede169cf109f3d61152e169dce8ad5265b9625216fe52cb",
+    "strongest_control": {
+      "pr": 10156,
+      "merge": "1c5a87de",
+      "games": 32,
+      "W": 27,
+      "T": 4,
+      "L": 1,
+      "timeouts": 0,
+      "errors": 0
+    },
+    "broad": {
+      "pr": 10153,
+      "original": {
+        "W": 309,
+        "L": 2,
+        "candidate_timeouts": 4,
+        "opponent_timeouts": 5
+      },
+      "failed_only_jobs1_resolved": {
+        "W": 318,
+        "L": 2
+      }
+    },
+    "applies_to_current_archive": false
+  }
 }
