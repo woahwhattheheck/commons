@@ -312,7 +312,40 @@ def reconcile(
     return report, accounting, drafts
 
 
+def _check_output_paths(inputs: tuple[Path, ...], outputs: tuple[Path, ...]) -> None:
+    """Detect existing aliases before writes; this is not a filesystem lock."""
+    def identity(path: Path):
+        resolved = path.resolve()
+        try:
+            info = path.stat()
+        except FileNotFoundError:
+            inode = None
+        else:
+            inode = (info.st_dev, info.st_ino)
+        return resolved, inode
+
+    try:
+        sources = [(path, *identity(path)) for path in inputs]
+        targets = [(path, *identity(path)) for path in outputs]
+    except (OSError, RuntimeError) as exc:
+        raise PurchasingError(f"cannot inspect output paths: {exc}") from exc
+
+    for index, (target, resolved, inode) in enumerate(targets):
+        for source, source_resolved, source_inode in sources:
+            if resolved == source_resolved or (inode is not None and inode == source_inode):
+                raise PurchasingError(f"output {target} overlaps input {source}")
+        for previous, previous_resolved, previous_inode in targets[:index]:
+            if resolved == previous_resolved or (inode is not None and inode == previous_inode):
+                raise PurchasingError(f"output {target} overlaps output {previous}")
+
+
 def run(vendors_path: Path, po_path: Path, invoice_path: Path, out_dir: Path) -> dict[str, Path]:
+    report_path = out_dir / "reconciliation.json"
+    accounting_path = out_dir / "accounting_import.csv"
+    drafts_path = out_dir / "exception_drafts.json"
+    _check_output_paths(
+        (vendors_path, po_path, invoice_path), (report_path, accounting_path, drafts_path),
+    )
     vendor_ref, po_ref, invoice_ref = _source(vendors_path), _source(po_path), _source(invoice_path)
     vendors, names = load_vendors(vendors_path)
     report, accounting, drafts = reconcile(
@@ -320,9 +353,6 @@ def run(vendors_path: Path, po_path: Path, invoice_path: Path, out_dir: Path) ->
         vendors_source=vendor_ref, po_source=po_ref, invoice_source=invoice_ref,
     )
     out_dir.mkdir(parents=True, exist_ok=True)
-    report_path = out_dir / "reconciliation.json"
-    accounting_path = out_dir / "accounting_import.csv"
-    drafts_path = out_dir / "exception_drafts.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     drafts_path.write_text(json.dumps({"schema": SCHEMA, "drafts": drafts}, indent=2) + "\n", encoding="utf-8")
     with accounting_path.open("w", newline="", encoding="utf-8") as handle:
