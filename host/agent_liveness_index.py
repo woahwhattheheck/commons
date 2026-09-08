@@ -59,10 +59,15 @@ def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datet
         raise AgentLivenessError(f"{at} must include a timezone")
     _require(RFC3339_RE.fullmatch(text) is not None, f"{at} must be RFC3339")
     normalized = text[:-1] + "+00:00" if text[-1] in "Zz" else text
+    leap_second = normalized[17:19] == "60"
+    if leap_second:
+        normalized = normalized[:17] + "59" + normalized[19:]
     try:
         parsed = dt.datetime.fromisoformat(normalized)
     except ValueError as exc:
         raise AgentLivenessError(f"{at} must be RFC3339") from exc
+    if leap_second:
+        parsed += dt.timedelta(seconds=1)
     return parsed.astimezone(dt.timezone.utc)
 
 
