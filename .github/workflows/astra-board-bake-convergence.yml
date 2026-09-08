@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: astra-board-bake-convergence-20260908
+  cancel-in-progress: true
+
 jobs:
   apply-test-publish:
     runs-on: ubuntu-24.04-arm
