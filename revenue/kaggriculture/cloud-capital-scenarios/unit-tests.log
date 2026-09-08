@@ -1,0 +1,28 @@
+test_accumulation_and_paired_difference_overflow_fall_back (__main__.DatedScenarioTests.test_accumulation_and_paired_difference_overflow_fall_back) ... ok
+test_bad_route_order_and_fixed_credit_rejected (__main__.DatedScenarioTests.test_bad_route_order_and_fixed_credit_rejected) ... ok
+test_buy_product_uses_total_cost_not_unit_times_quantity (__main__.DatedScenarioTests.test_buy_product_uses_total_cost_not_unit_times_quantity) ... ok
+test_cli_missing_file_has_controlled_error (__main__.DatedScenarioTests.test_cli_missing_file_has_controlled_error) ... ok
+test_dataclass_routequote_callback_and_last_report (__main__.DatedScenarioTests.test_dataclass_routequote_callback_and_last_report) ... ok
+test_dated_drawdown_reverses_static_quote_choice (__main__.DatedScenarioTests.test_dated_drawdown_reverses_static_quote_choice) ... ok
+test_duplicate_route_scenario_and_negative_margin_rejected (__main__.DatedScenarioTests.test_duplicate_route_scenario_and_negative_margin_rejected) ... ok
+test_explicit_zero_is_valid_but_missing_is_unknown (__main__.DatedScenarioTests.test_explicit_zero_is_valid_but_missing_is_unknown) ... ok
+test_fixed_costs_are_preserved (__main__.DatedScenarioTests.test_fixed_costs_are_preserved) ... ok
+test_future_receipt_cannot_fund_earlier_input (__main__.DatedScenarioTests.test_future_receipt_cannot_fund_earlier_input) ... ok
+test_json_scenario_duplicate_and_cli (__main__.DatedScenarioTests.test_json_scenario_duplicate_and_cli) ... ok
+test_missing_candidate_row_is_not_zero_or_discarded_scenario (__main__.DatedScenarioTests.test_missing_candidate_row_is_not_zero_or_discarded_scenario) ... ok
+test_missing_incumbent_blocks_paired_comparison (__main__.DatedScenarioTests.test_missing_incumbent_blocks_paired_comparison) ... ok
+test_no_mutation (__main__.DatedScenarioTests.test_no_mutation) ... ok
+test_no_scenarios_and_incumbent_only (__main__.DatedScenarioTests.test_no_scenarios_and_incumbent_only) ... ok
+test_nonfinite_and_wrong_sign_scenario_values_cannot_select (__main__.DatedScenarioTests.test_nonfinite_and_wrong_sign_scenario_values_cannot_select) ... ok
+test_one_thousand_independent_integer_oracle_cases (__main__.DatedScenarioTests.test_one_thousand_independent_integer_oracle_cases) ... ok
+test_positive_buy_cost_is_invalid (__main__.DatedScenarioTests.test_positive_buy_cost_is_invalid) ... ok
+test_positive_complete_comparison (__main__.DatedScenarioTests.test_positive_complete_comparison) ... ok
+test_route_specific_and_date_specific_totals (__main__.DatedScenarioTests.test_route_specific_and_date_specific_totals) ... ok
+test_same_turn_sale_can_fund_later_input_in_real_slot_order (__main__.DatedScenarioTests.test_same_turn_sale_can_fund_later_input_in_real_slot_order) ... ok
+test_tie_and_required_margin_keep_incumbent (__main__.DatedScenarioTests.test_tie_and_required_margin_keep_incumbent) ... ok
+test_worst_paired_gain_not_worst_absolute_cash (__main__.DatedScenarioTests.test_worst_paired_gain_not_worst_absolute_cash) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.980s
+
+OK

@@ -191,6 +191,7 @@ class ProjectionLedger:
         params = self.obs['market'].get('params')
         tpd = int(self.config.get('turnsPerDay', 24))
         orders = dict(plan)
+        consumed = None
         def phase_ok(t, phase):
             for product, delta in self.events.get((t, phase), []):
                 stock[product] = stock.get(product, 0) + delta
@@ -263,8 +264,26 @@ class ProjectionLedger:
                         and cash >= self.cash_min.get((t, 'after_market'), 0))
             if not phase_ok(t, 'after_market'):
                 return False
-            for product in inv:
-                inv[product] -= absorption(product, t, self.obs.get('town', {}).get('unlocked_shops', []), self.config)
+            if consumed is None:
+                shops = self.obs.get('town', {}).get('unlocked_shops', [])
+                # Preserve uncached evaluation for nonstandard caller inputs.
+                if not isinstance(shops, (list, tuple)) or not all(isinstance(s, str) for s in shops):
+                    for product in inv:
+                        inv[product] -= absorption(product, t, shops, self.config)
+                    continue
+                context = (self.now, self.end, tuple(inv), tuple(shops),
+                           self.config.get('townShopSellInterval', 4),
+                           self.config.get('townCenterSellInterval', 24), absorption)
+                if getattr(self, '_flow_context', None) != context:
+                    self._flow_context = context
+                    self._flow_consumed = {}
+                consumed = self._flow_consumed
+            if t not in consumed:
+                # Populate only a reached date: early rejection and the final
+                # market must not evaluate unused future consumption.
+                consumed[t] = tuple((p, absorption(p, t, shops, self.config)) for p in inv)
+            for product, quantity in consumed[t]:
+                inv[product] -= quantity
         return True
 
 
