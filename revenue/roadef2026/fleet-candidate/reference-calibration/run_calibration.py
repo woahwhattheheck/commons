@@ -125,8 +125,8 @@ def compare_published_prefix(candidate: dict[str, Any], target: dict[str, Any],
     }
     if not candidate["valid"]:
         report.update(winner="reference", comparison_status="candidate_invalid",
-                      candidate_vector_length=0, compared_prefix_length=0,
-                      reference_is_strict_prefix=False)
+                      candidate_vector_length=None, compared_prefix_length=0,
+                      reference_is_strict_prefix=None)
         return report
 
     candidate_vector = candidate["vector"]
