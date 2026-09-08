@@ -84,8 +84,8 @@ DO_NOT_OVERWRITE = (
 )
 
 
-def git_blob_prefix(rel: str, n: int = 8) -> str:
-    path = ROOT / rel
+def git_blob_prefix(rel: str, n: int = 8, *, root: Path | None = None) -> str:
+    path = (Path(root) if root is not None else ROOT) / rel
     if not path.is_file():
         return ""
     data = path.read_bytes()
@@ -172,34 +172,38 @@ def classify_path(path: Path) -> dict[str, Any]:
 
 
 def classify_tree(root: Path | None = None) -> dict[str, Any]:
-    base = root or ROOT
-    harborline = classify_path(base / "packs" / "desk-website-service-20260902-01" / "waitlist-slot.md")
-    door = waitlist.classify()
-    template_blob = git_blob_prefix("packs/_template/waitlist-slot.md")
-    waitlist_door_blob = git_blob_prefix("packs/waitlist.html")
-    waitlist_helper_blob = git_blob_prefix("host/pack_waitlist.py")
-    waitlist_law_blob = git_blob_prefix("ground/BUSINESS_PACK_WAITLIST.json")
-    instance_door_blob = git_blob_prefix("packs/desk-website-service-20260902-01/door.html")
-    rating_blob = git_blob_prefix("packs/desk-website-service-20260902-01/rating.md")
-    sidecar_blob = git_blob_prefix("host/business_pack_harborline_tally_map.py")
-    pointer_receipt = git_blob_prefix(
-        "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
+    base = Path(root) if root is not None else ROOT
+    harborline_path = base / "packs" / "desk-website-service-20260902-01" / "waitlist-slot.md"
+    manifest = base / "packs" / "desk-website-service-20260902-01" / "manifest.json"
+    harborline = classify_path(harborline_path)
+    door_path = base / "packs" / "waitlist.html"
+    law_path = base / "ground" / "BUSINESS_PACK_WAITLIST.json"
+    law = waitlist.load_law(law_path) if law_path.is_file() else {}
+    # Reuse the shared content classifier without reading its module-default
+    # door/template paths. The selected tree is data, not an import location.
+    door = (
+        waitlist.classify_door(door_path.read_text(encoding="utf-8"))
+        if door_path.is_file()
+        else {"verdict": "WAITLIST_DOOR_MISSING", "sends": 0}
     )
-    slot_pointer_receipt = git_blob_prefix(
-        "p/cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md"
-    )
-    sheet_blob = git_blob_prefix(
-        "packs/desk-website-service-20260902-01/waitlist-slot.md"
-    )
-    leftover_receipt = git_blob_prefix(
-        "p/cursor-pack-harborline-waitlist-slot-20260902-01.md"
-    )
+    door = {**door, "law_id": str(law.get("id") or "")}
+    template_blob = git_blob_prefix("packs/_template/waitlist-slot.md", root=base)
+    waitlist_door_blob = git_blob_prefix("packs/waitlist.html", root=base)
+    waitlist_helper_blob = git_blob_prefix("host/pack_waitlist.py", root=base)
+    waitlist_law_blob = git_blob_prefix("ground/BUSINESS_PACK_WAITLIST.json", root=base)
+    instance_door_blob = git_blob_prefix("packs/desk-website-service-20260902-01/door.html", root=base)
+    rating_blob = git_blob_prefix("packs/desk-website-service-20260902-01/rating.md", root=base)
+    sidecar_blob = git_blob_prefix("host/business_pack_harborline_tally_map.py", root=base)
+    pointer_receipt = git_blob_prefix("p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md", root=base)
+    slot_pointer_receipt = git_blob_prefix("p/cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md", root=base)
+    sheet_blob = git_blob_prefix("packs/desk-website-service-20260902-01/waitlist-slot.md", root=base)
+    leftover_receipt = git_blob_prefix("p/cursor-pack-harborline-waitlist-slot-20260902-01.md", root=base)
     copy_ok = True
-    if HARBORLINE.is_file():
+    if harborline_path.is_file():
         sys.path.insert(0, str(ROOT / "host"))
         import business_pack_unique as unique  # noqa: E402
 
-        copy_ok = unique.classify_copy(HARBORLINE.read_text(encoding="utf-8")).get(
+        copy_ok = unique.classify_copy(harborline_path.read_text(encoding="utf-8")).get(
             "verdict"
         ) == "COPY_OK"
     ok = (
@@ -217,7 +221,7 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         and slot_pointer_receipt == SLOT_POINTER_RECEIPT_BLOB
         and sheet_blob == SHEET_BLOB
         and leftover_receipt == LEFTOVER_RECEIPT_BLOB
-        and not MANIFEST.is_file()
+        and not manifest.is_file()
         and copy_ok
         and int(door.get("sends") or 0) == 0
     )
@@ -256,7 +260,7 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         "did_not_overwrite_pointer_receipt": pointer_receipt == POINTER_RECEIPT_BLOB,
         "did_not_remint_slot_catalog_pointer": slot_pointer_receipt == SLOT_POINTER_RECEIPT_BLOB,
         "did_not_write_peer_waitlist_slots": True,
-        "did_not_invent_harborline_manifest": not MANIFEST.is_file(),
+        "did_not_invent_harborline_manifest": not manifest.is_file(),
         "did_not_merge_7915": True,
         "sends": 0,
         "agents_spend_ads": False,
@@ -271,11 +275,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", nargs="?", default="classify")
     parser.add_argument("--file", default="")
+    parser.add_argument("--root", type=Path, default=None, help="Tree to classify (default: module checkout)")
     args = parser.parse_args(argv)
     if args.file:
         print(json.dumps(classify_path(Path(args.file)), indent=2))
         return 0
-    print(json.dumps(classify_tree(), indent=2))
+    print(json.dumps(classify_tree(args.root), indent=2))
     return 0
 
 
