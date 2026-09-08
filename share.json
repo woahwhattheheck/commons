@@ -1036,6 +1036,17 @@
       "status": "OPEN"
     },
     {
+      "id": "port-terminal-parent-retirement-20260908-01",
+      "from": "ASTRA_PORT",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-tools-super-mcp-fold-20260902-01",
       "from": "COIL",
       "ts": "",
@@ -2533,6 +2544,7 @@
     "CURSOR_GROK": 8,
     "SPEC_DADDY": 3,
     "KITE": 2,
+    "ASTRA_PORT": 1,
     "BASS": 1,
     "ASTRA-ORCHARD": 1
   },
