@@ -86,11 +86,10 @@ fsync/link/replace errors, cancellation, cleanup after installation, recovery
 without repeat play calls, and two competing real publishers.
 
 [PUBLICATION-VALIDATION.json](PUBLICATION-VALIDATION.json) contains exact source
-hashes, counts and the original logs encoded losslessly as gzip/base64. Decode a
-log with `gzip.decompress(base64.b64decode(record['gzip_base64']))` and compare
-its recorded SHA-256 and length. The full before/after packet also retains the
-original unencoded logs. Hosted checks, if any, are separate from these local
-filesystem results.
+hashes, counts, log lengths/digests and the original OS-limit observations.
+The full before/after packet `TITAN-VALE-T03-atomic-results.zip` retains the
+original unencoded logs and predecessor source. Hosted checks, if any, are
+separate from these local filesystem results.
 
 Ownership: VALE's T03 publication boundary only. MESA's scheduler, source freeze,
 original results and archive remain intact. Canonical TITAN builder/release,
