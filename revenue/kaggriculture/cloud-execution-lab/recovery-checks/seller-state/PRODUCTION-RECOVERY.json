@@ -1,0 +1,168 @@
+{
+  "base_archive": {
+    "bytes": 290697,
+    "runtime_files": 78,
+    "sha256": "f623c088765301872123697db250b10651d3027cb347b5a05ceb7b7eb270f279",
+    "source_manifest_sha256": "c2b4294c6014514e93f3d92ecd17b8e6a01b3533df6cb81e0b47d67fc74d6197"
+  },
+  "base_merge": "102a4d4ed6fa70dc656f5e184387455b0ce26ce1",
+  "base_reproduction": {
+    "all_routes_equal": true,
+    "boundary": "transform_entry",
+    "bytes": 2006480,
+    "calls_per_actor": 719,
+    "cancel_step": 450,
+    "continuity_preserved": false,
+    "fallback_equals_uninterrupted_action": true,
+    "later_action_differences": [
+      451,
+      453
+    ],
+    "path": "baseline.json",
+    "sha256": "9f1392b09038359ece08d2bf85ef5bcac68508f399fe620ce235d142714e9c2a"
+  },
+  "behavior": {
+    "arming": "Only a timer-owned cancellation after a complete selected action becomes the returned fallback queues its public observation for seller recovery.",
+    "checkpoint": "After a successful final action, retain a detached snapshot of frozen seller planned, pending, previous and observed_harvests.",
+    "negative": "Production interruption, first-call cancellation, foreign DeadlineExceeded, terminal-history mode and ordered mode do not use this checkpoint.",
+    "restore": "Fresh initialization restores the prior completed checkpoint, observes the skipped public observation once, and sets previous to that observation."
+  },
+  "candidate_boundaries": [
+    {
+      "all_routes_equal": true,
+      "boundary": "transform_entry",
+      "bytes": 2124318,
+      "calls_per_actor": 719,
+      "cancel_step": 450,
+      "continuity_preserved": true,
+      "fallback_equals_uninterrupted_action": true,
+      "later_action_differences": [],
+      "path": "fixed450_entry.json",
+      "sha256": "6edaeead9485463ab6f609a05b3f03f6759e8bfc8ef21681f9bdd7d68362bd01"
+    },
+    {
+      "all_routes_equal": true,
+      "boundary": "after_observe",
+      "bytes": 2124413,
+      "calls_per_actor": 719,
+      "cancel_step": 450,
+      "continuity_preserved": true,
+      "fallback_equals_uninterrupted_action": true,
+      "later_action_differences": [],
+      "path": "fixed450_observe.json",
+      "sha256": "75481f63052d4d5ef8ab482138c4d981ea43d8dd7807907ef490cae5fb351c9b"
+    },
+    {
+      "all_routes_equal": true,
+      "boundary": "transform_return",
+      "bytes": 2124377,
+      "calls_per_actor": 719,
+      "cancel_step": 450,
+      "continuity_preserved": true,
+      "fallback_equals_uninterrupted_action": true,
+      "later_action_differences": [],
+      "path": "fixed450_return.json",
+      "sha256": "94d88859e750b039a06bc721eef4a39476a79d2852ed6337a91bc54036945160"
+    }
+  ],
+  "expected_package": {
+    "bytes": 292389,
+    "runtime_files": 79,
+    "sha256": "687d5297c652ec8f4a793d14fab5b224d8341cb549f7f659153d93fdee451bd1",
+    "source_manifest_sha256": "ecabe7208df8b556958b242a0a6454ed596129143ca37a5425624394c513808a"
+  },
+  "focused_suites": {
+    "all_passed": true,
+    "entry_clock": 2,
+    "module_recovery": 3,
+    "new_seller_recovery": 6,
+    "route_recovery": 4,
+    "seed_derived": 5,
+    "terminal_history": 5,
+    "total_distinct_methods": 31,
+    "worker_deadline": 6
+  },
+  "negative_control": {
+    "all_routes_equal": true,
+    "boundary": "transform_entry",
+    "bytes": 2261581,
+    "calls_per_actor": 719,
+    "cancel_step": 447,
+    "continuity_preserved": false,
+    "fallback_equals_uninterrupted_action": true,
+    "later_action_differences": [
+      449,
+      453
+    ],
+    "path": "fixed447_entry.json",
+    "sha256": "25422bb33782b2340f5a07d72b0a4ead6e09675e1f4e815c790627f8b9eff5de"
+  },
+  "retained_input": {
+    "encoded_sha256": "6d850535bc06fd9d366119365651e789c32ec8a48c96bedaa992fd19a1ff060e",
+    "observation_count": 719,
+    "origin": "DELVE development9965001 seat0 own-observation stream"
+  },
+  "schema": "titan.completed-seller-recovery.v1",
+  "scope": {
+    "default_change": false,
+    "economic_change": false,
+    "engine_interpreter_calls": 0,
+    "history_mode_recovery_changed": false,
+    "new_games": 0,
+    "new_seeds": 0,
+    "ordered_mode_recovery_changed": false
+  },
+  "source": {
+    "after_sha256": "d693e8663ea7691b7ecaf373cc2fe8273174292eb5bb03ea63762d338f0fbbf1",
+    "before_sha256": "001ce55c72d02571b6b80291c3a2fec6061f6a3243093fd8e0b4dd29f08c4d6c",
+    "new_test_sha256": "06af343c810df30bc06c5e7fd502612ae248e733bfa4343039dd1f1bc36b5705"
+  },
+  "uninjected_parity": [
+    {
+      "action_sha256": "62f97d3b41b7d01c6eede25c229ffd1dc23f51b58269be9ae80efbe0978aa199",
+      "actions_equal": true,
+      "calls_per_actor": 718,
+      "candidate_action_seconds": 1.6084606510000867,
+      "candidate_max_seconds": 0.028260402999876533,
+      "original_action_seconds": 1.6657112829989273,
+      "original_max_seconds": 0.11835867399986455,
+      "pair": 1,
+      "state_sha256": "448019028e40ddbe5fdb3fcaf52e1106752956676c452ab5fe92c1b66abb317a",
+      "states_equal": true
+    },
+    {
+      "action_sha256": "62f97d3b41b7d01c6eede25c229ffd1dc23f51b58269be9ae80efbe0978aa199",
+      "actions_equal": true,
+      "calls_per_actor": 718,
+      "candidate_action_seconds": 1.5600812089994633,
+      "candidate_max_seconds": 0.03221323899992967,
+      "original_action_seconds": 1.7546594880016073,
+      "original_max_seconds": 0.13489424199997302,
+      "pair": 2,
+      "state_sha256": "448019028e40ddbe5fdb3fcaf52e1106752956676c452ab5fe92c1b66abb317a",
+      "states_equal": true
+    },
+    {
+      "action_sha256": "62f97d3b41b7d01c6eede25c229ffd1dc23f51b58269be9ae80efbe0978aa199",
+      "actions_equal": true,
+      "calls_per_actor": 718,
+      "candidate_action_seconds": 1.4965272819977145,
+      "candidate_max_seconds": 0.027181503999827328,
+      "original_action_seconds": 1.5323190329979752,
+      "original_max_seconds": 0.11142629200003284,
+      "pair": 3,
+      "state_sha256": "448019028e40ddbe5fdb3fcaf52e1106752956676c452ab5fe92c1b66abb317a",
+      "states_equal": true
+    }
+  ],
+  "uninjected_summary": {
+    "actual_actor_calls_total": 4308,
+    "all_actions_equal": true,
+    "all_states_equal": true,
+    "calls_per_source": 2154,
+    "median_candidate_action_seconds": 1.5600812089994633,
+    "median_original_action_seconds": 1.6657112829989273,
+    "pairs": 3,
+    "timing_claim": "No speedup or hard latency claim; alternating fresh-process totals are retained only to detect an obvious regression."
+  }
+}
