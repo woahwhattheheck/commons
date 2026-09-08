@@ -2,8 +2,9 @@
 """Safe operator cancellation companion for Fieldwork's one-request-at-a-time queue.
 
 This tool is intentionally additive: it uses Fieldwork's existing SQLite schema and
-existing terminal ``complete`` status so the shipped browser stays compatible.  A
-``cancelled`` history event records that no delivery was accepted.
+a distinct terminal ``cancelled`` status. Fieldwork's shipped browser renders raw
+status text, so cancellation remains distinct from delivery acceptance; its
+``cancelled`` history event also records that no delivery was accepted.
 """
 from __future__ import annotations
 
@@ -15,6 +16,7 @@ from pathlib import Path
 
 ACTIVE = {"production", "review", "revision"}
 CANCELLABLE = ACTIVE | {"queued"}
+TERMINAL = {"complete", "cancelled"}
 REQUEST_ID = re.compile(r"[a-f0-9]{32}")
 DEFAULT_DB = Path(__file__).resolve().parent / "data" / "desk.sqlite3"
 
@@ -49,9 +51,9 @@ def _request_id(value: str) -> str:
 def cancel_request(database: str | Path, request_id: str, expected_version: int, reason: str) -> dict:
     """Cancel one request without losing history or violating queue ordering.
 
-    Fieldwork's browser recognizes only ``complete`` as terminal.  For compatibility,
-    cancellation therefore stores ``status='complete'`` and an explicit ``cancelled``
-    event whose note states that no delivery acceptance is implied.
+    Cancellation stores ``status='cancelled'`` so approval remains the only path
+    that produces ``status='complete'``. The explicit ``cancelled`` history event
+    retains the human reason and makes the boundary auditable.
     """
     database = Path(database)
     request_id = _request_id(request_id)
@@ -70,7 +72,7 @@ def cancel_request(database: str | Path, request_id: str, expected_version: int,
             raise CancellationError("Request not found", 404)
         if request["version"] != expected_version:
             raise CancellationError("Request changed; reload its current version before cancelling", 409)
-        if request["status"] == "complete":
+        if request["status"] in TERMINAL:
             raise CancellationError("Request is already terminal; inspect its history before taking another action", 409)
         if request["status"] not in CANCELLABLE:
             raise CancellationError(f"Request status {request['status']!r} is not cancellable by this companion", 409)
@@ -78,7 +80,7 @@ def cancel_request(database: str | Path, request_id: str, expected_version: int,
         workspace_id = request["workspace_id"]
         was_active = request["status"] in ACTIVE
         changed = db.execute(
-            "UPDATE requests SET status='complete',version=version+1 WHERE id=? AND version=?",
+            "UPDATE requests SET status='cancelled',version=version+1 WHERE id=? AND version=?",
             (request_id, expected_version),
         )
         if changed.rowcount != 1:
