@@ -6,6 +6,7 @@ on:
       - "host/repo_backup.py"
       - "test_repo_backup.py"
       - "test_repo_backup_head_identity.py"
+      - "test_repo_backup_collision.py"
       - "test_repo_backup_refs.py"
       - "test_repo_backup_short_writes.py"
       - "test_repo_backup_manifest_encoding.py"
@@ -35,6 +36,7 @@ jobs:
             /host/repo_backup.py
             /test_repo_backup.py
             /test_repo_backup_head_identity.py
+            /test_repo_backup_collision.py
             /test_repo_backup_refs.py
             /test_repo_backup_short_writes.py
             /test_repo_backup_manifest_encoding.py
@@ -50,7 +52,7 @@ jobs:
         shell: bash
         run: |
           git archive --format=tar --output="$RUNNER_TEMP/backup-test-source.tar" HEAD -- \
-            host/repo_backup.py test_repo_backup.py test_repo_backup_head_identity.py test_repo_backup_refs.py \
+            host/repo_backup.py test_repo_backup.py test_repo_backup_head_identity.py test_repo_backup_collision.py test_repo_backup_refs.py \
             test_repo_backup_short_writes.py test_repo_backup_manifest_encoding.py \
             test_backup_workflow_source_transfer.py open_door_guard.py open_door_guard_core.py AGENTS.md \
             ground/BACKUP_OPEN_REPO.md backups/README.md \
@@ -105,4 +107,4 @@ jobs:
           git --version
           python --version
       - name: Existing backup contracts and complete ref round trips
-        run: python -m unittest -v test_repo_backup test_repo_backup_head_identity test_repo_backup_refs test_repo_backup_short_writes test_repo_backup_manifest_encoding test_backup_workflow_source_transfer
+        run: python -m unittest -v test_repo_backup test_repo_backup_head_identity test_repo_backup_collision test_repo_backup_refs test_repo_backup_short_writes test_repo_backup_manifest_encoding test_backup_workflow_source_transfer
