@@ -207,7 +207,7 @@ def main() -> int:
     parser.add_argument("--sample-size", type=int, default=128)
     parser.add_argument("--sample-seed", type=int, default=DEFAULT_SEED)
     parser.add_argument("--generation-seed", type=int, default=DEFAULT_SEED)
-    parser.add_argument("--max-tokens", type=int, default=None)
+    parser.add_argument("--max-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
     parser.add_argument("--timeout-seconds", type=int, default=180)
@@ -216,14 +216,14 @@ def main() -> int:
 
     if args.sample_size <= 0:
         parser.error("--sample-size must be positive")
+    if args.max_tokens <= 0:
+        parser.error("--max-tokens must be positive")
     if args.temperature < 0:
         parser.error("--temperature must be >= 0")
     if not (0 < args.top_p <= 1):
         parser.error("--top-p must be in (0, 1]")
 
     max_tokens = args.max_tokens
-    if max_tokens is None:
-        max_tokens = 128 if args.prompt_mode == "direct" else 512
 
     dataset = load_dataset(
         DATASET_ID,

@@ -11,7 +11,7 @@ Run the official `XHToken/Spark-X2.5-1.7B` checkpoint on one deterministic 128-i
 1. `direct` — request only `FINAL: <number>`.
 2. `reason` — request a concise, checkable derivation and the same final-answer line.
 
-Both conditions use the same dataset revision, sampled indices, sample seed, model revision, temperature 0, top-p 1, and per-item generation seed sequence. This makes the prompt-format comparison paired and reproducible. Raw API responses are retained; unparseable outputs count as wrong.
+Both conditions use the same dataset revision, sampled indices, sample seed, model revision, temperature 0, top-p 1, **max_tokens 512**, and per-item generation seed sequence. Prompt text is the only intentional generation-variable difference. This makes the prompt-format comparison paired and reproducible. Raw API responses are retained; unparseable outputs count as wrong.
 
 The harness records the exact question, gold answer, full prompt, full assistant output, raw OpenAI-compatible API response, token counts, latency, parse route, correctness, output hash, environment versions, GPU receipt, selected indices, and SHA-256 digests of the harness and evidence files. It intentionally does **not** record environment variables, credentials, hostname, working directory, or Hugging Face cache paths.
 
@@ -67,6 +67,7 @@ python eval_gsm8k.py \
   --sample-size 128 \
   --sample-seed 20260908 \
   --generation-seed 20260908 \
+  --max-tokens 512 \
   --output-root runs-direct
 
 python eval_gsm8k.py \
@@ -76,6 +77,7 @@ python eval_gsm8k.py \
   --sample-size 128 \
   --sample-seed 20260908 \
   --generation-seed 20260908 \
+  --max-tokens 512 \
   --output-root runs-reason
 ```
 
