@@ -5,21 +5,35 @@ on:
     paths:
       - integrations/shared_equipment/**
       - integrations/gemini_slack/**
-      - integrations/claude_headless/client.py
+      - integrations/claude_headless/**
       - host/toolbench.py
+      - toolbench/**
       - test_commons_transport_outcomes.py
       - test_claude_client_transport_outcomes.py
       - test_toolbench_snapshot_consistency.py
+      - test_gemini_peer_tool_gateway.py
+      - test_gemini_tool_result_boundary.py
+      - test_toolbench.py
+      - test_client.py
+      - test_claude_headless.py
+      - test_commons_transport_workflow.py
       - .github/workflows/commons-transport-regression.yml
   pull_request:
     paths:
       - integrations/shared_equipment/**
       - integrations/gemini_slack/**
-      - integrations/claude_headless/client.py
+      - integrations/claude_headless/**
       - host/toolbench.py
+      - toolbench/**
       - test_commons_transport_outcomes.py
       - test_claude_client_transport_outcomes.py
       - test_toolbench_snapshot_consistency.py
+      - test_gemini_peer_tool_gateway.py
+      - test_gemini_tool_result_boundary.py
+      - test_toolbench.py
+      - test_client.py
+      - test_claude_headless.py
+      - test_commons_transport_workflow.py
       - .github/workflows/commons-transport-regression.yml
   workflow_dispatch:
 permissions:
@@ -37,7 +51,10 @@ jobs:
             integrations
             host
             toolbench
+            .github/workflows
           sparse-checkout-cone-mode: true
+      - name: Check transport workflow trigger coverage
+        run: python -m unittest -v test_commons_transport_workflow
       - name: Archive the selected committed test sources
         shell: python
         run: |

@@ -27,6 +27,11 @@ SUITES = (
     ("joined_wrapper", "joined-wrapper-tests.log", LAB + "test_ordered_selected_sell.py", None, None),
 )
 FUNDED_JOIN = ("funded_join", "funded-join-tests.log", ROOT + "cloud-composition-cases/cypress/test_funded_join.py", "funded-join-results.json", "test_methods")
+RUNTIME_REGRESSIONS = (
+    ("capture_binding", "capture-binding-tests.log", ROOT + "cloud-market-game-theory/adaptive/test_capture_binding.py", "capture-binding-results.json", "run"),
+    ("score_schedule", "score-schedule-tests.log", LAB + "test_score_schedule.py", None, None),
+    ("workflow_bindings", "workflow-bindings-tests.log", ROOT + "cloud-composition-cases/cover/test_regression_bindings.py", None, None),
+)
 REPORTER = ("reporter", "reporter-tests.log", PROJECTION + "test_combined_report.py", None, None)
 SUMMARY = re.compile(r"^Ran ([0-9]+) tests? in .+\n\s*\n(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)\s*$", re.M)
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -66,7 +71,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -108,7 +113,9 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
             problems.append("source mismatch: " + label)
 
     suites, reports = {}, {}
-    declarations = SUITES + ((FUNDED_JOIN,) if include_funded_join else ()) + ((REPORTER,) if include_reporter else ())
+    declarations = (SUITES + ((FUNDED_JOIN,) if include_funded_join else ())
+                    + (RUNTIME_REGRESSIONS if include_runtime_regressions else ())
+                    + ((REPORTER,) if include_reporter else ()))
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
         text = read(log)
@@ -123,12 +130,15 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
             report = read(report_file, as_json=True)
             reports[key] = report or {}
             if report is not None:
-                value = report.get(count_key)
+                summary = report.get("tests", {}) if key == "capture_binding" else report
+                if not isinstance(summary, dict):
+                    summary = {}
+                value = summary.get(count_key)
                 if type(value) is not int or value != entry["tests"]:
                     problems.append(key + ": JSON/log test counts differ")
-                if any(type(report.get(k)) is not int or report[k] != 0 for k in ("failures", "errors")):
+                if any(type(summary.get(k)) is not int or summary[k] != 0 for k in ("failures", "errors")):
                     problems.append(key + ": nonzero or missing JSON failures/errors")
-                if key != "projection" and report.get("successful") is not True:
+                if key != "projection" and summary.get("success" if key == "capture_binding" else "successful") is not True:
                     problems.append(key + ": JSON result is not successful")
         suites[key] = entry
 
@@ -172,6 +182,13 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
             if str(funded.get(field)) != str(snapshot.get(origin)):
                 problems.append("funded join: mismatched " + field)
 
+    if include_runtime_regressions:
+        capture = reports.get("capture_binding", {})
+        bind("capture runtime", capture.get("runtime_sha256"),
+             source(ROOT + "cloud-market-game-theory/adaptive/runtime.py"))
+        bind("capture optimizer", capture.get("optimizer_sha256"),
+             source(LAB + "selected_sell_core.py"))
+        source(".github/workflows/titan-selected-projection.yml")
 
     observed_total = sum(s["tests"] for s in suites.values() if s["tests"] is not None)
     counts_complete = all(s["tests"] is not None for s in suites.values())
@@ -207,9 +224,11 @@ def main(argv=None):
     parser.add_argument("--output", type=Path)
     parser.add_argument("--include-reporter-tests", action="store_true")
     parser.add_argument("--include-funded-join", action="store_true")
+    parser.add_argument("--include-runtime-regressions", action="store_true")
     args = parser.parse_args(argv)
     report = build_report(args.directory, include_reporter=args.include_reporter_tests,
-                          include_funded_join=args.include_funded_join)
+                          include_funded_join=args.include_funded_join,
+                          include_runtime_regressions=args.include_runtime_regressions)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")

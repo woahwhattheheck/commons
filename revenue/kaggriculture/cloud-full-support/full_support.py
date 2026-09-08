@@ -8,6 +8,8 @@ are inferred. Runtime uses only the Python standard library.
 from __future__ import annotations
 
 from fractions import Fraction as F
+from copy import deepcopy
+from functools import lru_cache
 import hashlib
 import json
 from typing import Any, Iterable
@@ -91,7 +93,8 @@ def verify_certificate(deltas, result: dict) -> dict:
         return {'valid': False, 'optimal': False, 'reason': str(exc)}
 
 
-def solve_full_table(deltas, *, max_pivots: int = 128, max_bits: int = 512) -> dict:
+@lru_cache(maxsize=64)
+def _solve_normalized(rows, *, max_pivots: int = 128, max_bits: int = 512) -> dict:
     """Maximize worst expected baseline-relative own-minus-rival cash.
 
     Solve max 1'y subject to (D + shift)y <= 1, y >= 0 using exact
@@ -104,7 +107,6 @@ def solve_full_table(deltas, *, max_pivots: int = 128, max_bits: int = 512) -> d
     upper-bound witness, NEVER an unfinished strategy labeled optimal. Limits
     bound arithmetic work, not wall-clock time. Bad input raises ValueError.
     """
-    rows = _rows(deltas)
     if type(max_pivots) is not int or not 0 <= max_pivots <= 4096:
         raise ValueError('max_pivots must be an integer in 0..4096')
     if type(max_bits) is not int or not 16 <= max_bits <= 4096:
@@ -178,6 +180,36 @@ def solve_full_table(deltas, *, max_pivots: int = 128, max_bits: int = 512) -> d
         raise ArithmeticError('Exact solution certificate failed: ' + certificate['reason'])
     result['certificate_valid'] = True
     return result
+
+
+def solve_full_table(deltas, *, max_pivots: int = 128, max_bits: int = 512) -> dict:
+    """Solve the same exact game, reusing up to 64 identical ordered tables.
+
+    Cache identity includes every canonical rational entry, its row/column
+    position, and both computation budgets. No observations or actor state
+    are stored. Each call validates inputs and returns a detached result.
+    Result ``pivots`` describes the solve that produced the certificate, not
+    new work on a cache hit. Cache misses retain the original algorithm.
+    """
+    rows = _rows(deltas)
+    # Validate before lookup: bool and integer budgets can otherwise compare
+    # equal as cache keys despite having different public input contracts.
+    if type(max_pivots) is not int or not 0 <= max_pivots <= 4096:
+        raise ValueError('max_pivots must be an integer in 0..4096')
+    if type(max_bits) is not int or not 16 <= max_bits <= 4096:
+        raise ValueError('max_bits must be an integer in 16..4096')
+    return deepcopy(_solve_normalized(rows, max_pivots=max_pivots, max_bits=max_bits))
+
+
+def clear_table_cache() -> None:
+    """Release retained tables/results and reset cache counters in this process."""
+    _solve_normalized.cache_clear()
+
+
+def table_cache_info() -> dict:
+    """Return detached hit/miss/entry counts; these are not game statistics."""
+    return dict(_solve_normalized.cache_info()._asdict())
+
 
 
 def _main() -> None:

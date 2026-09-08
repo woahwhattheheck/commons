@@ -120,6 +120,39 @@ class ReportTests(unittest.TestCase):
                 self.mutate("funded-join-results.json", change)
                 self.assertFalse(self.report(include_funded_join=True)["successful"])
 
+    def add_runtime_fixtures(self):
+        paths = [row[2] for row in subject.RUNTIME_REGRESSIONS]
+        paths += [subject.ROOT + "cloud-market-game-theory/adaptive/runtime.py",
+                  ".github/workflows/titan-selected-projection.yml"]
+        self.mutate("SOURCE-SNAPSHOT.json", lambda d: d["files"].update({p: {"sha256": sha(p)} for p in paths}))
+        for row, count in zip(subject.RUNTIME_REGRESSIONS, (19, 5, 8)):
+            (self.path / row[1]).write_text(log(count))
+        save(self.path / "capture-binding-results.json", dict(
+            tests=dict(run=19, failures=0, errors=0, success=True),
+            runtime_sha256=sha(subject.ROOT + "cloud-market-game-theory/adaptive/runtime.py"),
+            optimizer_sha256=sha(subject.LAB + "selected_sell_core.py")))
+
+    def test_runtime_regressions_count_nested_capture_summary(self):
+        self.add_runtime_fixtures()
+        report = self.report(include_runtime_regressions=True)
+        self.assertTrue(report["successful"], report["problems"])
+        self.assertEqual(report["total_tests"], 111)
+        self.assertEqual(report["capture_binding_tests"], 19)
+        self.assertEqual(report["score_schedule_tests"], 5)
+        self.assertEqual(report["workflow_bindings_tests"], 8)
+        self.assertEqual(self.report()["total_tests"], 79)
+
+    def test_capture_count_and_optimizer_bindings_cannot_drift(self):
+        self.add_runtime_fixtures()
+        original = (self.path / "capture-binding-results.json").read_text()
+        for change in (lambda d: d["tests"].update(run=18),
+                       lambda d: d.update(optimizer_sha256="0" * 64),
+                       lambda d: d.update(tests=[])):
+            with self.subTest(change=change):
+                (self.path / "capture-binding-results.json").write_text(original)
+                self.mutate("capture-binding-results.json", change)
+                self.assertFalse(self.report(include_runtime_regressions=True)["successful"])
+
     def test_missing_extended_suites_preserve_known_51_not_complete(self):
         for name in ("loader-tests.log", "empty-lot-tests.log", "joined-wrapper-tests.log", "loader-results.json"):
             (self.path / name).unlink()

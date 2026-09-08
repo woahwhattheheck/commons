@@ -13,8 +13,13 @@ import signal
 import time
 
 
-class DeadlineExceeded(Exception):
-    pass
+class DeadlineExceeded(BaseException):
+    """Control-flow cancellation, not an ordinary recoverable policy error.
+
+    Production and transform helpers may catch Exception to supply a default.
+    The guard's one-shot deadline must cross those handlers and be consumed only
+    by DeadlineFallbackAgent.act, or execution continues with its alarm spent.
+    """
 
 
 def _alarm(_signum, _frame):
@@ -62,10 +67,94 @@ def terminal_liquidation_fallback(observation, configuration=None):
     return {"farmer": units[0], "hands": units[1:], "market": market[:maximum]}
 
 
+class _DeadlineTimer:
+    """Share ITIMER_REAL with the caller without restarting its deadline.
+
+    This main-thread scope schedules the earlier of its own deadline and the
+    caller's alarm. A caller handler is invoked with its original signal/frame;
+    any exception it raises remains a caller exception, not our fallback signal.
+    """
+    def __init__(self, seconds):
+        self.seconds = seconds
+        self.expired = DeadlineExceeded("action deadline exhausted")
+
+    def __enter__(self):
+        self.previous = signal.getsignal(signal.SIGALRM)
+        # Validate main-thread signal access before touching the caller timer.
+        signal.signal(signal.SIGALRM, self.previous)
+        now = time.monotonic()
+        remaining, self.outer_interval = signal.setitimer(signal.ITIMER_REAL, 0)
+        self.outer_at = now + remaining if remaining > 0 else None
+        self.own_at = now + self.seconds
+        try:
+            signal.signal(signal.SIGALRM, self._dispatch)
+            self._schedule()
+            return self
+        except BaseException:
+            self.__exit__(None, None, None)
+            raise
+
+    @staticmethod
+    def _remaining(deadline):
+        # Zero disables a timer, so an overdue caller alarm must use a positive
+        # delay when control returns to its original handler.
+        return max(0.000001, deadline - time.monotonic())
+
+    def _schedule(self):
+        deadline = self.own_at
+        if self.outer_at is not None:
+            deadline = min(deadline, self.outer_at)
+        signal.setitimer(signal.ITIMER_REAL, self._remaining(deadline))
+
+    def _deliver_outer(self, signum, frame):
+        now = time.monotonic()
+        if self.outer_interval > 0:
+            # Preserve periodic cadence; missed ticks coalesce like SIGALRM.
+            missed = max(0, int((now - self.outer_at) // self.outer_interval))
+            self.outer_at += (missed + 1) * self.outer_interval
+        else:
+            self.outer_at = None
+        signal.setitimer(signal.ITIMER_REAL,
+                         self._remaining(self.outer_at) if self.outer_at is not None else 0,
+                         self.outer_interval)
+        try:
+            if callable(self.previous):
+                self.previous(signum, frame)
+            elif self.previous == signal.SIG_DFL:
+                # Respect the caller's default action rather than swallowing it.
+                signal.signal(signal.SIGALRM, signal.SIG_DFL)
+                signal.raise_signal(signal.SIGALRM)
+            # SIG_IGN consumes this occurrence without calling an integer.
+        finally:
+            # A handler may intentionally rearm/disarm its timer (including an
+            # enclosing DeadlineFallbackAgent). Preserve that updated schedule.
+            now = time.monotonic()
+            remaining, self.outer_interval = signal.setitimer(signal.ITIMER_REAL, 0)
+            self.outer_at = now + remaining if remaining > 0 else None
+
+    def _dispatch(self, signum, frame):
+        now = time.monotonic()
+        if (self.outer_at is not None and self.outer_at <= now
+                and self.outer_at <= self.own_at):
+            self._deliver_outer(signum, frame)
+        if time.monotonic() >= self.own_at:
+            raise self.expired
+        self._schedule()
+
+    def __exit__(self, _kind, _error, _traceback):
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, self.previous)
+        if self.outer_at is not None:
+            signal.setitimer(signal.ITIMER_REAL, self._remaining(self.outer_at),
+                             self.outer_interval)
+        return False
+
+
 class DeadlineFallbackAgent:
     """Deadline-enforce one already-created IntegratedSelectedAgent.
 
-    SIGALRM is supported by the Linux hosted runner and acts on the main thread.
+    SIGALRM acts on the main thread; existing caller alarms keep their remaining
+    time and handler. Only this guard's own expiry selects a fallback.
     A caller on another platform must supply its own process-level timeout rather
     than silently claiming this guard ran.
     """
@@ -85,35 +174,35 @@ class DeadlineFallbackAgent:
         if step is None:
             step = int(obs["day"])*int(cfg.get("turnsPerDay", 24)) + int(obs["hour"])
         step = int(step)
+        obs["step"] = step
         last = int(cfg.get("episodeSteps", 720)) - 2
         fallback = (terminal_liquidation_fallback(obs, cfg)
                     if step == last else legal_pass(obs))
         stage = "production"
         started = time.perf_counter()
-        previous = signal.signal(signal.SIGALRM, _alarm)
-        signal.setitimer(signal.ITIMER_REAL, self.budget_seconds - self.reserve_seconds)
+        timer = _DeadlineTimer(self.budget_seconds - self.reserve_seconds)
         try:
-            selected = self.integrated.production.act(obs)
-            fallback = copy.deepcopy(selected)
-            stage = "transform"
-            if self.before_transform is not None:
-                self.before_transform(obs, cfg, selected)
-            output = self.integrated.transform(obs, cfg, selected, fallback_action=selected)
-            self.diagnostics = {
-                "status": "completed", "fallback_stage": None,
-                "elapsed_seconds": time.perf_counter() - started,
-                "inner": copy.deepcopy(self.integrated.diagnostics),
-            }
-            return output
-        except DeadlineExceeded:
+            with timer:
+                selected = self.integrated.production.act(obs)
+                fallback = copy.deepcopy(selected)
+                stage = "transform"
+                if self.before_transform is not None:
+                    self.before_transform(obs, cfg, selected)
+                output = self.integrated.transform(obs, cfg, selected, fallback_action=selected)
+                self.diagnostics = {
+                    "status": "completed", "fallback_stage": None,
+                    "elapsed_seconds": time.perf_counter() - started,
+                    "inner": copy.deepcopy(self.integrated.diagnostics),
+                }
+                return output
+        except DeadlineExceeded as error:
+            if error is not timer.expired:
+                raise
             self.diagnostics = {
                 "status": "deadline_fallback", "fallback_stage": stage,
                 "elapsed_seconds": time.perf_counter() - started,
                 "inner": copy.deepcopy(getattr(self.integrated, "diagnostics", {})),
             }
             return fallback
-        finally:
-            signal.setitimer(signal.ITIMER_REAL, 0)
-            signal.signal(signal.SIGALRM, previous)
 
     __call__ = act
