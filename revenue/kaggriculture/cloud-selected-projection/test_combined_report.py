@@ -153,6 +153,63 @@ class ReportTests(unittest.TestCase):
                 self.mutate("capture-binding-results.json", change)
                 self.assertFalse(self.report(include_runtime_regressions=True)["successful"])
 
+    def add_cancellation_fixture(self):
+        names = (subject.CANCELLATION[2], subject.ROOT + "cloud-economic-stress/deadline_adapter.py")
+        self.mutate("SOURCE-SNAPSHOT.json", lambda d: d["files"].update({p: {"sha256": sha(p)} for p in names}))
+        (self.path / "deadline-cancellation-tests.log").write_text(log(18))
+        save(self.path / "deadline-cancellation.json", dict(tests_run=18,
+            new_regression_methods=15, unchanged_upstream_guard_methods=3,
+            adapter_sha256=sha(names[1]), failures=[], errors=[], skipped=[]))
+
+    def test_cancellation_arrays_and_partition_are_supported(self):
+        self.add_cancellation_fixture()
+        report = self.report(include_cancellation=True)
+        self.assertTrue(report["successful"], report["problems"])
+        self.assertEqual(report["total_tests"], 97)
+        self.assertEqual(report["deadline_cancellation_tests"], 18)
+        self.assertEqual(report["cancellation_new_regression_methods"], 15)
+        self.assertEqual(report["cancellation_retained_guard_methods"], 3)
+
+    def test_cancellation_nonempty_or_wrong_error_arrays_fail(self):
+        self.add_cancellation_fixture()
+        original = (self.path / "deadline-cancellation.json").read_text()
+        for field in ("failures", "errors", "skipped"):
+            for value in (["case"], 0, None):
+                with self.subTest(field=field, value=value):
+                    (self.path / "deadline-cancellation.json").write_text(original)
+                    self.mutate("deadline-cancellation.json", lambda d: d.update({field: value}))
+                    self.assertFalse(self.report(include_cancellation=True)["successful"])
+
+    def test_cancellation_adapter_binding_cannot_drift(self):
+        self.add_cancellation_fixture()
+        self.mutate("deadline-cancellation.json", lambda d: d.update(adapter_sha256="0" * 64))
+        self.assertFalse(self.report(include_cancellation=True)["successful"])
+
+    def test_cancellation_method_partition_cannot_inflate_count(self):
+        self.add_cancellation_fixture()
+        for value in (16, -1, True, None):
+            with self.subTest(value=value):
+                self.mutate("deadline-cancellation.json", lambda d: d.update(new_regression_methods=value))
+                self.assertFalse(self.report(include_cancellation=True)["successful"])
+
+    def test_missing_cancellation_log_retains_known_counts(self):
+        self.add_cancellation_fixture()
+        (self.path / "deadline-cancellation-tests.log").unlink()
+        report = self.report(include_cancellation=True)
+        self.assertFalse(report["successful"])
+        self.assertIsNone(report["total_tests"])
+        self.assertEqual(report["observed_tests"], 79)
+
+    def test_cancellation_is_opt_in_and_not_double_counted(self):
+        self.add_cancellation_fixture()
+        self.add_funded_fixture()
+        self.add_runtime_fixtures()
+        legacy = self.report(include_funded_join=True, include_runtime_regressions=True)
+        included = self.report(include_funded_join=True, include_runtime_regressions=True, include_cancellation=True)
+        self.assertTrue(included["successful"], included["problems"])
+        self.assertEqual(included["total_tests"], legacy["total_tests"] + 18)
+        self.assertNotIn("deadline_cancellation_tests", legacy)
+
     def test_missing_extended_suites_preserve_known_51_not_complete(self):
         for name in ("loader-tests.log", "empty-lot-tests.log", "joined-wrapper-tests.log", "loader-results.json"):
             (self.path / name).unlink()
