@@ -52,6 +52,20 @@ class ScopeTests(unittest.TestCase):
         self.assertIn('gate-identifier', self.rules(
             'test_policy.py', 'self.assertFalse(SEAT_GATE := True)'))
 
+    def test_assert_boolean_tail_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py',
+            "assert not hasattr(module, 'gate') or REQUIRE_IDENTITY()",
+        ))
+
+    def test_assertion_argument_gate_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py', 'self.assertFalse(REQUIRE_IDENTITY())'))
+
+    def test_assert_notin_gate_call_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py', 'assert REQUIRE_IDENTITY() not in source'))
+
     def test_semicolon_window_schema_tail_is_scanned(self):
         found = self.rules(
             'test_policy.py', 'self.assertFalse(flag); schema = {"required": ["identity"]}')

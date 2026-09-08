@@ -26,7 +26,8 @@ negative regression assertions are suppressed:
 
 - non-Python languages retain the existing textual heuristic;
 - contiguous added Python lines are dedented and parsed;
-- only one standalone `assert` or recognized assertion-call expression is hidden;
+- only one standalone `assert` or recognized assertion-call expression is eligible;
+- strings and comments are blanked before the existing line rules are checked, so a forbidden identifier used as executable assertion code is never hidden;
 - walrus expressions, boolean-expression tails, semicolon-separated statements,
   and statements appended to a multiline closing line remain visible;
 - quoted semicolons, trailing comments, ordinary standalone negative assertions,
@@ -45,14 +46,14 @@ selection remain unchanged. No admission rule was removed or added.
 
 ## Executed checks
 
-`test_open_door_guard_negative_assertions.py` runs nineteen direct unified-diff
+`test_open_door_guard_negative_assertions.py` runs twenty-two direct unified-diff
 cases through the actual scanner module.
 
-- Wrapper: 19 passed, 0 failures, 0 errors.
-- Exact prior scanner: 13 passed, 6 failures, 0 errors.
-- The six prior failures cover three executable-tail bypass families, a walrus
-  expression, a structural-schema tail, and the multiline negative-quote false
-  positive.
+- Wrapper: 22 passed, 0 failures, 0 errors.
+- Exact prior scanner: 13 passed, 9 failures, 0 errors.
+- The nine prior failures cover semicolon/boolean tails, gate calls embedded in
+  `assert` and assertion-call expressions, a walrus expression, a structural
+  schema tail, and the multiline negative-quote false positive.
 - Python compilation passes for the wrapper, unchanged core, and focused test.
 - A copied-wrapper subprocess with no sibling core successfully consumes the
   inherited explicit core path and rejects the semicolon-tail witness.

@@ -44,13 +44,35 @@ for _name, _value in vars(_core).items():
 SKIP_FILES.add("open_door_guard_core.py")
 
 
-def _negative_assertion_statement(statement: ast.stmt) -> bool:
-    """Return whether one parsed Python statement is only a negative assertion."""
+def _code_without_literals(text: str) -> str:
+    """Return Python source with strings/comments blanked but code tokens retained."""
+    tokens = []
+    for token in tokenize.generate_tokens(io.StringIO(text).readline):
+        if token.type in (tokenize.STRING, tokenize.COMMENT):
+            token = tokenize.TokenInfo(token.type, " ", token.start, token.end, token.line)
+        tokens.append(token)
+    return tokenize.untokenize(tokens)
+
+
+def _negative_assertion_statement(statement: ast.stmt, source: str) -> bool:
+    """Return whether one parsed statement is only a negative assertion.
+
+    Admission identifiers used as executable code are never hidden merely
+    because the surrounding statement is an assertion. Literal quotation in a
+    negative regression remains exempt.
+    """
     if any(isinstance(node, ast.NamedExpr) for node in ast.walk(statement)):
         return False
-    if isinstance(statement, ast.Assert):
-        return True
-    return isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call)
+    shape = isinstance(statement, ast.Assert) or (
+        isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call)
+    )
+    if not shape:
+        return False
+    try:
+        code = _code_without_literals(source)
+    except (IndentationError, tokenize.TokenError):
+        return False
+    return not any(rule.pattern.search(code) for rule in LINE_RULES)
 
 
 def _top_level_semicolon(text: str) -> bool:
@@ -101,7 +123,7 @@ def _negative_assertion_indexes(path: str, lines: Sequence[AddedLine]) -> set[in
             except SyntaxError:
                 continue
             parsed = True
-            if len(module.body) == 1 and _negative_assertion_statement(module.body[0]):
+            if len(module.body) == 1 and _negative_assertion_statement(module.body[0], "\n".join(source)):
                 hidden.update(range(start, end + 1))
             break
         if not parsed and not _top_level_semicolon(line.text):

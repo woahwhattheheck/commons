@@ -7,22 +7,29 @@
     "prior_guard_sha256": "5f72e898806338ee512e589e5e77fd165fa1a5e9b5157129e14e532e96ae48b3"
   },
   "candidate": {
-    "wrapper_git_blob": "da4c2abb33827b89fa59124d478d26f3c6da398a",
-    "wrapper_bytes": 7694,
-    "wrapper_sha256": "c2a74e00d9070f401f66f8f8a8d4fb7ee90d3d744d729649ccfb5ef61e993e05",
+    "wrapper_git_blob": "ee2c5da318fe14970160a8ec47a71b7e12125073",
+    "wrapper_bytes": 8589,
+    "wrapper_sha256": "89eb7de44bc90766fe75582275a45ae162cfa86c6a111968281cbc7403fb5b2d",
     "core_git_blob": "861958e91177fedd09db974345a2838387e7f2b7",
     "core_unchanged": true,
-    "test_git_blob": "7dfccdcce68e2f84e595372d802295c69601b086",
-    "test_bytes": 6061,
-    "test_sha256": "7e03d8c2d2bbe013250ea81e77590b2e56f6e103ac5a1e8dbcde7b085b4be75d"
+    "test_git_blob": "7ac7850554a5e9fb75b798df4c0387ff580e61ea",
+    "test_bytes": 6641,
+    "test_sha256": "ed9e99f1eab71f2afcce8906d5bd52421001f307ddaf7999b35c0d430bf4bccc"
   },
   "focused_execution": {
-    "candidate": {"tests": 19, "failures": 0, "errors": 0},
+    "candidate": {
+      "tests": 22,
+      "failures": 0,
+      "errors": 0
+    },
     "prior_source": {
-      "tests": 19,
-      "failures": 6,
+      "tests": 22,
+      "failures": 9,
       "errors": 0,
       "failure_names": [
+        "test_assert_boolean_tail_is_scanned",
+        "test_assert_notin_gate_call_is_scanned",
+        "test_assertion_argument_gate_is_scanned",
         "test_assignment_expression_is_not_hidden",
         "test_boolean_expression_tail_is_scanned",
         "test_multiline_negative_quote_passes",
