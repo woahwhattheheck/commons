@@ -47,7 +47,10 @@ class ChunkSourceBlobTests(unittest.TestCase):
                 self.assertEqual(packed["blob"], expected)
                 self.assertRegex(packed["blob"], r"^[0-9a-f]{40}$")
                 self.assertEqual(packed["post_id"], path.stem)
-                self.assertEqual(packed["first_line"], f"{path.stem} {expected}")
+                header = json.dumps(path.stem, ensure_ascii=True)
+                self.assertEqual(packed["first_line"], f"{header} {expected}")
+                self.assertEqual(packed["header_post_id"], header)
+                self.assertEqual(packed["header_post_id_encoding"], "json-string")
 
     def test_ordinary_names_keep_the_complete_packet_contract(self):
         for name in ("source-post.md", "récolte.md", "notes.txt"):
@@ -58,6 +61,7 @@ class ChunkSourceBlobTests(unittest.TestCase):
                 expected = {
                     "kind": "COMMONS_SLACK_FULL_BODY_CHUNK", "id": channel.ID,
                     "post_id": path.stem, "blob": source_blob(SOURCE), "first_line": first,
+                    "header_post_id": path.stem, "header_post_id_encoding": "plain",
                     "channel_limit": 4000, "leftover_slack_limit_keep": 5000,
                     "channel": parts[0], "thread_replies": parts[1:],
                     "channel_chars": len(parts[0]), "thread_parts": len(parts) - 1,
@@ -80,7 +84,7 @@ class ChunkSourceBlobTests(unittest.TestCase):
         capture.assert_called_once_with(path)
         self.assertEqual(path.read_bytes(), replacement)
         self.assertEqual(packet["blob"], source_blob(SOURCE))
-        self.assertEqual(packet["first_line"], f"review notes {source_blob(SOURCE)}")
+        self.assertEqual(packet["first_line"], f'"review notes" {source_blob(SOURCE)}')
         self.assertTrue((packet["channel"] + "".join(packet["thread_replies"])).endswith(SOURCE.decode()))
 
     def test_unlink_after_capture_preserves_the_source_blob(self):
@@ -102,7 +106,7 @@ class ChunkSourceBlobTests(unittest.TestCase):
         expected_payload = sm.mirror_payload(path)
         packet = channel.format_channel_and_thread(path)
         self.assertEqual(packet["blob"], source_blob(raw))
-        expected_first = f"long review notes {source_blob(raw)}"
+        expected_first = f'"long review notes" {source_blob(raw)}'
         parts = [packet["channel"], *packet["thread_replies"]]
         self.assertEqual("".join(parts), expected_first + "\n" + expected_payload)
         self.assertTrue(all(0 < len(part) <= 4000 for part in parts))
