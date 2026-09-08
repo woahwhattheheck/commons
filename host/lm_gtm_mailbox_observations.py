@@ -45,7 +45,10 @@ def _message(raw: Any) -> dict[str, Any]:
         raise ValueError("mailbox observations require internal_date milliseconds")
     try:
         millis = int(raw_stamp)
-        stamp = dt.datetime.fromtimestamp(millis / 1000, dt.timezone.utc)
+        # Keep provider milliseconds exact; a float loses precision near
+        # the supported datetime range boundaries.
+        stamp = (dt.datetime(1970, 1, 1, tzinfo=dt.timezone.utc)
+                 + dt.timedelta(milliseconds=millis))
     except (ValueError, OverflowError, OSError) as error:
         raise ValueError("mailbox observation has invalid internal_date") from error
     labels = source.get("label_ids", source.get("labelIds"))
