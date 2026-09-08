@@ -7,9 +7,11 @@ import argparse
 import concurrent.futures
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import time
 
 
@@ -56,6 +58,35 @@ def run_job(job: dict, evaluator: Path, engine: Path, opponents: list[str], out:
             "sha256": sha256(target) if target.is_file() else None}
 
 
+
+def write_run_state(path: Path, records: list[dict]) -> None:
+    """Replace one complete UTF-8 checkpoint; never truncate the prior file.
+
+    Staging and replacement share a directory. This is a single-file guarantee,
+    not a transaction with raw reports or a power-loss durability guarantee.
+    """
+    payload = (json.dumps(records, indent=2) + "\n").encode("utf-8")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="wb", dir=path.parent,
+                                         prefix=f".{path.name}.", suffix=".tmp",
+                                         delete=False) as stream:
+            temporary = Path(stream.name)
+            if stream.write(payload) != len(payload):
+                raise OSError("Short run-state checkpoint write")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            try:
+                temporary.unlink()
+            except OSError:
+                # Cleanup must not replace the original publication exception.
+                # A hard exit or failed cleanup can leave an unreferenced stage.
+                pass
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", type=Path, required=True)
@@ -71,14 +102,34 @@ def main() -> int:
         for i in range(0, len(seeds), size):
             jobs.append({"arm": arm, "candidate": candidate, "seeds": seeds[i:i + size]})
     records = []
+    first_failure = None
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as pool:
-        futures = [pool.submit(run_job, j, Path(cfg["evaluator"]), Path(cfg["engine"]),
-                               cfg["opponents"], args.output) for j in jobs]
+        futures = {pool.submit(run_job, j, Path(cfg["evaluator"]), Path(cfg["engine"]),
+                               cfg["opponents"], args.output): j for j in jobs}
         for future in concurrent.futures.as_completed(futures):
-            rec = future.result()
+            try:
+                rec = future.result()
+            except Exception as exc:
+                # All jobs were already submitted. Retain their results before
+                # re-raising the first ordinary failure; do not retry any job.
+                # BaseException cancellation is deliberately not converted.
+                if first_failure is None:
+                    first_failure = (exc, exc.__traceback__)
+                rec = {**futures[future], "status": "failed",
+                       "failure": {"kind": "runner_exception",
+                                   "type": type(exc).__name__, "message": str(exc)}}
             records.append(rec)
+            try:
+                write_run_state(args.output / "run-state.json", records)
+            except Exception as output_error:
+                if first_failure is not None:
+                    error, traceback = first_failure
+                    raise error.with_traceback(traceback) from output_error
+                raise
             print(json.dumps(rec, sort_keys=True), flush=True)
-            (args.output / "run-state.json").write_text(json.dumps(records, indent=2) + "\n")
+    if first_failure is not None:
+        error, traceback = first_failure
+        raise error.with_traceback(traceback)
     failed = [r for r in records if r["status"] == "failed"]
     return 1 if failed else 0
 
