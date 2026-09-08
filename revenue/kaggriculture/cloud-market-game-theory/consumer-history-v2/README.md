@@ -1,4 +1,4 @@
-# Packaged TITAN history ON/OFF consumer
+# One TITAN: packaged history ON/OFF consumer
 
 This executes the exact PR10152 history-v2 archive through its public
 `TitanAgent(Features(**history_config))` interface. It adds no policy, parent,
@@ -15,6 +15,12 @@ Embedded SOURCE.json SHA256
 All71 runtime manifest entries match their sizes and hashes. Archive bytes are
 consumed from the existing Git object, safely extracted into a separate cloud
 runtime, and never modified or exported again. Original notices remain there.
+
+Final sixteen-seed outcome:128/128 games, each arm62W/2L, all64 paired engine
+traces and cash identical. See [RESULTS.md](RESULTS.md) and
+[ACTIVATION-DIAGNOSIS.json](ACTIVATION-DIAGNOSIS.json). This is a development
+ablation of one TITAN; the original integration owner retains the current
+archive/default/submission path.
 
 ## First completed chunk
 
@@ -36,7 +42,7 @@ represent that terminal liquidation. This is evaluation evidence about the
 specified finite family, never a private-state or future-action input to policy.
 No probability calibration or whole-game superiority is inferred.
 
-The unchanged freeze extends through DEVELOPMENT9943216 to measure eligibility
+The unchanged freeze completed through DEVELOPMENT9943216 to measure eligibility
 and terminal-family mismatch across more reached observations. First4 evidence
 is separately retained. These are development games, not held or hosted results.
 No old T11/T12/T15 panels, WIDEFIELD9921, ECON9922 or Claude99022 cells are reused.
