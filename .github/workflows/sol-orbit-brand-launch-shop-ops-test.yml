@@ -1,0 +1,21 @@
+name: sol-orbit-brand-launch-shop-ops-test
+
+on:
+  push:
+    branches:
+      - sol-orbit-brand-launch-shop-ops-integration-20260908-02
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run focused integration acceptance
+        run: python3 -B revenue/hive/brand-launch-ops/test_shop_ops_integration.py
