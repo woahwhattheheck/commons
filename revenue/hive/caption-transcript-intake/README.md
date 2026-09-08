@@ -81,6 +81,34 @@ An existing local HTTP client may POST the unmodified `episode-import.json` byte
 
 The adapter is bound to the [published canonical implementation at main `3e3ff8a5`](https://github.com/woahwhattheheck/commons/blob/3e3ff8a5af0b1910b50203e4fe1229134eb9a7ec/revenue/hive/podcast-content-workspace/app.py), Git blob `2051b0fdf43648d857fec34f6a36503adabf9c8f`. Its companion tests execute real converter-to-consumer CLI imports, SQLite reads, a local HTTP import/generate/export workflow, Unicode preservation, schema boundaries, and the large-document CLI route. They import the actual sibling runtime, print its current source hashes, and fail if it is absent; they do not substitute a fake consumer or require that future revisions retain one historical hash. Python callers pass recording duration as a decimal string: `canonical_episode(parsed, "65", synthetic_demo=True)`.
 
+### Managed-clipping follow-through
+
+The same `episode-import.json` is accepted by the sibling `../managed-clipping/managed_clipping.py` runtime through `--transcript-json`. This is a local composition: the caption companion still does not edit, fork, or import the managed-clipping package.
+
+The bundled fictional demo has exactly six eligible caption segments. When demonstrating transcript-driven clipping, request exactly six moments (or fewer):
+
+```sh
+python caption_intake.py examples/demo.vtt \
+  --title "Fictional clipping handoff" \
+  --duration-seconds 63 --synthetic-demo \
+  --output clipping-caption-handoff.zip
+python -m zipfile -e clipping-caption-handoff.zip clipping-caption-handoff
+python ../managed-clipping/managed_clipping.py init \
+  /path/to/authorized-source.mp4 clipping-project.json \
+  --transcript-json clipping-caption-handoff/episode-import.json \
+  --moments 6 --synthetic-demo
+python ../managed-clipping/managed_clipping.py render \
+  clipping-project.json clipping-renders
+python ../managed-clipping/managed_clipping.py handoff \
+  clipping-project.json clipping-handoff
+```
+
+The source video must be authorized media whose duration and cue boundaries correspond to the supplied captions; the fictional caption sample by itself does not verify any recording. The clipping project records the source byte hash and refuses work if the source later changes.
+
+Do not request more transcript-derived moments than there are eligible segments and then describe the results as distinct transcript moments. The current managed-clipping selector repeats eligible segments when it is asked to fill a larger moment count. The six-cue demo therefore uses `--moments 6`; `test_clipping_consumer.py` asserts the resulting transcript references are exactly `c00001` through `c00006` with no duplicates. If additional non-transcript clips are wanted, choose and document another clipping source rather than presenting repeated transcript references as new transcript-derived moments.
+
+After rendering, the managed-clipping handoff preserves source-linked boundaries and source hash together with playable MP4s, editable SRT captions, `clips.csv`, `project.json`, and its hash manifest. Editing a clip before rendering is revisioned and appears in those editable handoff files without changing the source media.
+
 ## Validation
 
 ```sh
@@ -88,8 +116,10 @@ python -m unittest -v test_caption_intake
 python -m py_compile caption_intake.py test_caption_intake.py
 # Optional integration suite: requires the real sibling podcast workspace.
 python -m unittest -v test_podcast_consumer
+# Optional integration suite: requires the real sibling managed-clipping runtime plus ffmpeg/ffprobe.
+python -m unittest -v test_clipping_consumer
 ```
 
 The suite exercises real parsing, Unicode/encoding handling, actual CLI subprocesses, ZIP contents/hashes, existing-target preservation, and competing filesystem publishers. The sample captions are original fictional material, not customer recordings. No claim of audio verification, automatic transcription, browser testing, distribution, or customer fulfillment follows from these tests.
 
-The integrated check ran against canonical source blob `2051b0fdf43648d857fec34f6a36503adabf9c8f`: seven integration tests passed. Python 3.13 emitted SQLite connection `ResourceWarning` messages from that consumer; these are retained in the execution receipt, not hidden or described as warning-free. No canonical runtime changes are included in this companion.
+The integrated podcast check ran against canonical source blob `2051b0fdf43648d857fec34f6a36503adabf9c8f`: seven integration tests passed. Python 3.13 emitted SQLite connection `ResourceWarning` messages from that consumer; these are retained in the execution receipt, not hidden or described as warning-free. The managed-clipping composition test uses the live sibling runtime and an original synthetic A/V source; it is distinct from the podcast consumer check. No canonical consumer or managed-clipping runtime changes are included in this companion.
