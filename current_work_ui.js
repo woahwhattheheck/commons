@@ -5,7 +5,17 @@
   const WEB = 'https://github.com/woahwhattheheck/commons';
   const SHA = /^[0-9a-f]{40}$/;
   const KINDS = ['BUILDABLE', 'OWNER_PLATFORM', 'DEVICE_PINNED'];
-  const pathPart = path => path.split('/').map(encodeURIComponent).join('/');
+  const pathPart = path => {
+    if (typeof path !== 'string' || !path.length) throw new Error('Expected a relative repository path.');
+    const parts = path.split('/');
+    if (parts.some((part, index) => part === '.' || part === '..' || part.includes('\0') ||
+        (!part && (index === 0 || index !== parts.length - 1)))) {
+      throw new Error('Expected a relative repository path without dot or empty interior segments.');
+    }
+    // Encode literal percent signs and separators before constructing a URL.
+    // encodeURIComponent also diagnoses unpaired Unicode surrogates.
+    return parts.map(encodeURIComponent).join('/');
+  };
   const sourceURL = (sha, path) => `${WEB}/blob/${sha}/${pathPart(path)}`;
 
   async function request(fetcher, url, signal) {
@@ -33,7 +43,9 @@
   function pathsFor(item) {
     if (!item || typeof item !== 'object' || Array.isArray(item) || !KINDS.includes(item.kind)) return null;
     const paths = item.claimed_paths == null ? [] : item.claimed_paths;
-    return Array.isArray(paths) && paths.every(p => typeof p === 'string' && p.length) ? paths : null;
+    if (!Array.isArray(paths)) return null;
+    try { paths.forEach(pathPart); } catch (_) { return null; }
+    return paths;
   }
 
   function initialStatus(item) {
