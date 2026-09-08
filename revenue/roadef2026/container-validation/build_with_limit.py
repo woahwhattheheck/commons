@@ -26,21 +26,41 @@ show() {
 show proc_self_cgroup /proc/self/cgroup
 if [ -f /sys/fs/cgroup/cgroup.controllers ]; then
   relative=$(awk -F: '$1 == "0" { print $3; exit }' /proc/self/cgroup)
-  root=/sys/fs/cgroup
-  if [ -r "$root$relative/memory.max" ]; then root="$root$relative"; fi
-  printf 'version\t2\nroot\t%s\n' "$root"
-  for name in memory.max memory.swap.max memory.current memory.peak memory.events memory.events.local; do
-    show "$name" "$root/$name"
-  done
+  mount=/sys/fs/cgroup
+  names='memory.max memory.swap.max memory.current memory.peak memory.events memory.events.local'
+  printf 'version\t2\n'
 else
   relative=$(awk -F: '$2 ~ /(^|,)memory(,|$)/ { print $3; exit }' /proc/self/cgroup)
-  root=/sys/fs/cgroup/memory
-  if [ -r "$root$relative/memory.limit_in_bytes" ]; then root="$root$relative"; fi
-  printf 'version\t1\nroot\t%s\n' "$root"
-  for name in memory.limit_in_bytes memory.memsw.limit_in_bytes memory.usage_in_bytes memory.max_usage_in_bytes memory.failcnt memory.oom_control; do
-    show "$name" "$root/$name"
-  done
+  mount=/sys/fs/cgroup/memory
+  names='memory.limit_in_bytes memory.memsw.limit_in_bytes memory.usage_in_bytes memory.max_usage_in_bytes memory.failcnt memory.oom_control memory.use_hierarchy'
+  printf 'version\t1\n'
 fi
+mount_group=$(awk -v target="$mount" '$5 == target { print $4; exit }' /proc/self/mountinfo)
+case "$relative:$mount_group" in *'/..'*|*'/./'*) echo 'Unresolved cgroup namespace path' >&2; exit 1 ;; esac
+case "$mount_group" in
+  /) suffix="$relative" ;;
+  '') echo 'Memory controller mount root unavailable' >&2; exit 1 ;;
+  *) case "$relative" in
+       "$mount_group") suffix='' ;;
+       "$mount_group"/*) suffix=${relative#"$mount_group"} ;;
+       *) echo 'Process cgroup is outside the visible controller mount' >&2; exit 1 ;;
+     esac ;;
+esac
+root=${mount}${suffix}
+root=${root%/}
+printf 'root\t%s\nmount_root\t%s\nmount_cgroup\t%s\n' "$root" "$mount" "$mount_group"
+index=0
+while :; do
+  suffix=${root#"$mount"}
+  group=${mount_group%/}${suffix}
+  if [ -z "$group" ]; then group=/; fi
+  printf 'ancestor.%s.path\t%s\nancestor.%s.cgroup\t%s\n' "$index" "$root" "$index" "$group"
+  for name in $names; do show "ancestor.$index.$name" "$root/$name"; done
+  if [ "$root" = "$mount" ]; then break; fi
+  root=${root%/*}
+  case "$root" in "$mount"|"$mount"/*) ;; *) echo 'Cgroup ancestor escaped controller mount' >&2; exit 1 ;; esac
+  index=$((index + 1))
+done
 '''
 COMPILER_PROBE = r'''
 for file in /proc/[0-9]*/comm; do
@@ -74,15 +94,48 @@ def parse_cgroup(raw):
     maximum = "memory.max" if version == 2 else "memory.limit_in_bytes"
     swap = "memory.swap.max" if version == 2 else "memory.memsw.limit_in_bytes"
     peak = "memory.peak" if version == 2 else "memory.max_usage_in_bytes"
-    number = lambda name: int(values[name]) if values.get(name, "").isdigit() else None
     event_name = "memory.events" if version == 2 else "memory.oom_control"
-    tokens = values.get(event_name, "").split()
-    events = {tokens[i]: int(tokens[i + 1]) for i in range(0, len(tokens) - 1, 2)
-              if tokens[i + 1].isdigit()}
-    return {"version": version, "raw": values, "memory_limit_bytes": number(maximum),
-            "swap_limit_bytes": number(swap), "memory_peak_bytes": number(peak),
-            "events": events,
-            "cap_confirmed": number(maximum) == LIMIT and number(swap) == (0 if version == 2 else LIMIT)}
+    ancestors = []
+    index = 0
+    while f"ancestor.{index}.path" in values:
+        prefix = f"ancestor.{index}."
+        row = {key[len(prefix):]: value for key, value in values.items() if key.startswith(prefix)}
+        number = lambda name: int(row[name]) if row.get(name, "").isdigit() else None
+        # v1 uses a page-counter sentinel near LONG_MAX for an unlimited limit.
+        bound = lambda name: number(name) if number(name) is not None and (version == 2 or number(name) < 2 ** 60) else None
+        tokens = row.get(event_name, "").split()
+        events = {tokens[i]: int(tokens[i + 1]) for i in range(0, len(tokens) - 1, 2)
+                  if tokens[i + 1].isdigit()}
+        ancestors.append({"path": row["path"], "memory_cgroup": row["cgroup"], "raw": row,
+                          "memory_limit_bytes": bound(maximum), "swap_limit_bytes": bound(swap),
+                          "memory_peak_bytes": number(peak), "events": events,
+                          "hierarchical": version == 2 or row.get("memory.use_hierarchy") == "1"})
+        index += 1
+    if not ancestors:
+        raise ValueError("Memory controller ancestor readback is absent")
+    finite = [row["memory_limit_bytes"] for row in ancestors if row["memory_limit_bytes"] is not None]
+    effective_memory = min(finite) if finite else None
+    # Prefer the outermost equally restrictive ancestor. Its counters include
+    # the entire capped domain, including compiler siblings of BuildKit's /init.
+    governing_index = next((i for i in range(len(ancestors) - 1, -1, -1)
+                            if effective_memory is not None and ancestors[i]["memory_limit_bytes"] == effective_memory), None)
+    governing = ancestors[governing_index] if governing_index is not None else None
+    # A swap cap applying only to /init cannot constrain compiler siblings. Only
+    # this RAM-governing domain and its ancestors can establish no extra swap.
+    swap_domain = ancestors[governing_index:] if governing_index is not None else []
+    swap_bounds = [row["swap_limit_bytes"] for row in swap_domain if row["swap_limit_bytes"] is not None]
+    effective_swap = min(swap_bounds) if swap_bounds else None
+    swap_governing = next((row for row in reversed(swap_domain)
+                           if effective_swap is not None and row["swap_limit_bytes"] == effective_swap), None)
+    cap_confirmed = (effective_memory == LIMIT and effective_swap == (0 if version == 2 else LIMIT)
+                     and governing["hierarchical"] and swap_governing["hierarchical"])
+    return {"version": version, "raw": values, "ancestors": ancestors, "memory_limit_bytes": effective_memory,
+            "swap_limit_bytes": effective_swap,
+            "governing_memory_cgroup": governing["memory_cgroup"] if governing else None,
+            "governing_memory_path": governing["path"] if governing else None,
+            "governing_swap_cgroup": swap_governing["memory_cgroup"] if swap_governing else None,
+            "memory_peak_bytes": governing["memory_peak_bytes"] if governing else None,
+            "events": governing["events"] if governing else {}, "cap_confirmed": cap_confirmed}
 
 
 def memory_group(raw, version):
@@ -168,7 +221,7 @@ class Build:
     def sample_compilers(self):
         try:
             _, raw = self.command(["exec", self.container, "/bin/sh", "-c", COMPILER_PROBE], timeout=10)
-            parent = memory_group(self.cgroup_before["raw"]["proc_self_cgroup"], self.cgroup_before["version"])
+            parent = self.cgroup_before["governing_memory_cgroup"]
             for row in raw.splitlines():
                 pid, command, groups = row.split("\t", 2)
                 child = memory_group(groups, self.cgroup_before["version"])
@@ -288,6 +341,8 @@ def main():
             raise RuntimeError("BuildKit memory enforcement changed during the build")
         if report["after"]["container_id"] != report["before"]["container_id"]:
             raise RuntimeError("BuildKit container identity changed during the build")
+        if report["after"]["cgroup"]["governing_memory_cgroup"] != report["before"]["cgroup"]["governing_memory_cgroup"]:
+            raise RuntimeError("The compiler-governing memory domain changed during the build")
         report['observed_build_memory_peak_bytes'] = report['after']['cgroup']['memory_peak_bytes']
         if report['observed_build_memory_peak_bytes'] is None:
             raise RuntimeError('The requested build memory peak could not be read back')
