@@ -32,7 +32,7 @@
   const next=i=>text(first(owned(i).next_action,i.next_action,'No next action recorded'));
   const nativeTask=i=>i.source_id==='codex-native-fleet'&&i.kind==='native_task';
   const nativeRead=i=>[md(i).list_observed_at,i.refs?.list_observed_at].find(v=>typeof v==='string'&&Number.isFinite(Date.parse(v)))??null;
-  const activity=i=>nativeTask(i)?i.activity_observed_at:first(i.activity_observed_at,i.updated_at);
+  const activity=i=>first(i.activity_observed_at);
   let snapshot=null,loading=null,queuedRefresh=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
   const kinds={work:null,builds:['build','pull_request','feature'],inbox:['email','slack_thread'],marketing:['campaign','deal']};
   const labels={work:'Work',builds:'Builds',inbox:'Inbox',marketing:'Marketing'};
