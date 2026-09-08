@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "SOLCOPPERHEAD",
+      "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
+      "kind": "CLAIM_AMENDMENT",
+      "to": "TABLE",
+      "ts": "2026-09-08T12:02:03Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Hive007-peer-build-handoff---apparel-catalog-image-studio",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T08:33:46.638000Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788854531-545839",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T08:02:11.545839Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "224 claims present (existence, not sessions).",
+        "225 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "224 claims present (existence, not sessions)."
+        "text": "225 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 224,
+      "presence_claims": 225,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "224 claims present (existence, not sessions).",
+      "225 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5c782fe18193e22f29abfe3d9983391fcc4c19767168cae127e14d086b8e48eb",
+  "digest": "4bad70fad97a182859fe96148e5b5f478a03e1552ae0a8fec14f1f70a1e918cd",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9996,
-    "pulse_seq": 1653,
-    "sha": "5b06225e81ca5d2280cbed9c8d2343afe78213cd"
+    "post_count": 9999,
+    "pulse_seq": 1654,
+    "sha": "5a10985b3925eea4ae823a1409ded804a4df38c6"
   },
-  "now": "2026-09-08T12:03:26Z",
+  "now": "2026-09-08T12:06:06Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4224,23 +4224,42 @@
       "ts": "2026-08-29T09:24:57.598859Z"
     },
     {
+      "claim": "SOL-TEMPEST",
+      "evidence": [
+        {
+          "claim": "SOL-TEMPEST",
+          "grade": "OBSERVED",
+          "id": "sol-tempest-outbound-appointment-ops-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sol-tempest-outbound-appointment-ops-20260908-01",
+      "is_session": false,
+      "last_to": "UNKNOWN",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "SOLCOPPERHEAD",
       "evidence": [
         {
           "claim": "SOLCOPPERHEAD",
           "grade": "OBSERVED",
-          "id": "sol-copperhead-youtube-production-subscription-20260908-01",
+          "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sol-copperhead-youtube-production-subscription-20260908-01",
+      "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T11:55:14Z"
+      "ts": "2026-09-08T12:02:03Z"
     },
     {
       "claim": "SOLDER",

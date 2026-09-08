@@ -1268,9 +1268,15 @@
     "to": "TABLE"
   },
   {
+    "from": "SOL-TEMPEST",
+    "id": "sol-tempest-outbound-appointment-ops-20260908-01",
+    "ts": "",
+    "to": ""
+  },
+  {
     "from": "SOLCOPPERHEAD",
-    "id": "sol-copperhead-youtube-production-subscription-20260908-01",
-    "ts": "2026-09-08T11:55:14Z",
+    "id": "SOL-COPPERHEAD-scope-amendment---demand027-complete-sample-episode-asset",
+    "ts": "2026-09-08T12:02:03Z",
     "to": "TABLE"
   },
   {

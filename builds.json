@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 5,
+ "n_open_prs": 3,
  "open_prs": [
   {
    "number": 10580,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10580",
    "base_freshness": {
     "base_sha": "12621cf42edefe85aa298d3929d3d1166325a0ad",
-    "main_sha": "e27c690724c94dca4a19c77dec8bbbd95b2f1224",
+    "main_sha": "37e3caf914333ec9ef10d65a3a1eb48d15793def",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,61 +369,29 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
+   "number": 10667,
+   "author": "woahwhattheheck",
+   "title": "Fix short-video HTTP subprocess failure response",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10667",
+   "base_freshness": {
+    "base_sha": "b0fce4094fd23faac45d7732b74fbc21aa30328a",
+    "main_sha": "37e3caf914333ec9ef10d65a3a1eb48d15793def",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
    "number": 10653,
    "author": "woahwhattheheck",
    "title": "Repair GOAT historical pins across known successor edits",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10653",
    "base_freshness": {
-    "base_sha": "06f488d9da6a1fe08940b90461b7a7eacccf5a09",
-    "main_sha": "e27c690724c94dca4a19c77dec8bbbd95b2f1224",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10661,
-   "author": "woahwhattheheck",
-   "title": "Repair GOAT historical pins across known successor edits",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10661",
-   "base_freshness": {
-    "base_sha": "f3f6ff3ce83dfed24847e6ac2263e11e597f513e",
-    "main_sha": "e27c690724c94dca4a19c77dec8bbbd95b2f1224",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10662,
-   "author": "woahwhattheheck",
-   "title": "Wire funded payback into the TITAN runtime",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10662",
-   "base_freshness": {
-    "base_sha": "f3f6ff3ce83dfed24847e6ac2263e11e597f513e",
-    "main_sha": "e27c690724c94dca4a19c77dec8bbbd95b2f1224",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10663,
-   "author": "woahwhattheheck",
-   "title": "Hive025: consume email handoff and pin saved-revision exports",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10663",
-   "base_freshness": {
-    "base_sha": "f3f6ff3ce83dfed24847e6ac2263e11e597f513e",
-    "main_sha": "e27c690724c94dca4a19c77dec8bbbd95b2f1224",
+    "base_sha": "a7b6238ceb767cb197b1eb2534813cecd5cbce8c",
+    "main_sha": "37e3caf914333ec9ef10d65a3a1eb48d15793def",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
