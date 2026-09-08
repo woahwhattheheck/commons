@@ -27,6 +27,7 @@ SUITES = (
     ("joined_wrapper", "joined-wrapper-tests.log", LAB + "test_ordered_selected_sell.py", None, None),
 )
 FUNDED_JOIN = ("funded_join", "funded-join-tests.log", ROOT + "cloud-composition-cases/cypress/test_funded_join.py", "funded-join-results.json", "test_methods")
+LEDGER_SCHEDULE = ("ledger_schedule", "ledger-schedule-tests.log", MARKET + "test_ledger_schedule.py", "ledger-schedule-results.json", "test_methods")
 CANCELLATION = ("deadline_cancellation", "deadline-cancellation-tests.log", ROOT + "cloud-economic-stress/cancellation/test_deadline_cancellation.py", "deadline-cancellation.json", "tests_run")
 RUNTIME_REGRESSIONS = (
     ("capture_binding", "capture-binding-tests.log", ROOT + "cloud-market-game-theory/adaptive/test_capture_binding.py", "capture-binding-results.json", "run"),
@@ -72,7 +73,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -117,6 +118,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
     declarations = (SUITES + ((FUNDED_JOIN,) if include_funded_join else ())
                     + (RUNTIME_REGRESSIONS if include_runtime_regressions else ())
                     + ((CANCELLATION,) if include_cancellation else ())
+                    + ((LEDGER_SCHEDULE,) if include_ledger_schedule else ())
                     + ((REPORTER,) if include_reporter else ()))
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
@@ -197,6 +199,21 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
              source(LAB + "selected_sell_core.py"))
         source(".github/workflows/titan-selected-projection.yml")
 
+    ledger = reports.get("ledger_schedule", {})
+    if include_ledger_schedule:
+        bindings = ledger.get("sources_sha256")
+        if not isinstance(bindings, dict):
+            bindings = {}
+        for name in ("selected_action_sell.py", "selected_sell_core.py", "mechanics.py", "reference/decision/decision.py"):
+            bind("ledger " + name, bindings.get(name), source(LAB + name))
+        if ledger.get("engine_sha256") != engine:
+            problems.append("ledger: engine hashes do not match source snapshot")
+        if type(ledger.get("skipped")) is not int or ledger["skipped"] != 0:
+            problems.append("ledger: nonzero or missing skipped count")
+        counts = ledger.get("counts")
+        if not isinstance(counts, dict) or any(type(n) is not int or n < 0 for n in counts.values()):
+            problems.append("ledger: invalid case-count mapping")
+
     cancelled = reports.get("deadline_cancellation", {})
     if include_cancellation:
         bind("cancellation adapter", cancelled.get("adapter_sha256"),
@@ -236,6 +253,9 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
         result["cancellation_new_regression_methods"] = cancelled.get("new_regression_methods")
         result["cancellation_retained_guard_methods"] = cancelled.get("unchanged_upstream_guard_methods")
         result["cancellation_adapter_sha256"] = cancelled.get("adapter_sha256")
+    if include_ledger_schedule:
+        result["ledger_schedule_case_counts"] = ledger.get("counts")
+        result["ledger_reported_reference_method_sha256"] = ledger.get("reference_method_sha256")
     return result
 
 
@@ -247,11 +267,13 @@ def main(argv=None):
     parser.add_argument("--include-funded-join", action="store_true")
     parser.add_argument("--include-runtime-regressions", action="store_true")
     parser.add_argument("--include-cancellation", action="store_true")
+    parser.add_argument("--include-ledger-schedule", action="store_true")
     args = parser.parse_args(argv)
     report = build_report(args.directory, include_reporter=args.include_reporter_tests,
                           include_funded_join=args.include_funded_join,
                           include_runtime_regressions=args.include_runtime_regressions,
-                          include_cancellation=args.include_cancellation)
+                          include_cancellation=args.include_cancellation,
+                          include_ledger_schedule=args.include_ledger_schedule)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
