@@ -13,8 +13,8 @@
     },
     {
       "path": "compare_checker.py",
-      "bytes": 5546,
-      "sha256": "0b2d2bfbb3314ea76d1c434bf5fe2cc424ebc38d337c0f0b23a05b1a089adc9b"
+      "bytes": 5878,
+      "sha256": "4b8752b13bef936c59d3240831ef7f2fc2c25940e945f678b9b5cd15e0bda136"
     },
     {
       "path": "test_supervisor.py",
@@ -130,6 +130,26 @@
       "path": "PREPARATION-ROLLBACK.md",
       "bytes": 2236,
       "sha256": "d32530ef49fc73e5c1ec91c313193a9e7136fd4c1c614f3ec01a75eae8ce988f"
+    },
+    {
+      "path": "test_checker_serialization.py",
+      "bytes": 11461,
+      "sha256": "1e0d2098f955b284484170744dfe970cd6fb7a7b2324f16f02f2cae4553c3f7b"
+    },
+    {
+      "path": "CHECKER-SCIENTIFIC.md",
+      "bytes": 4122,
+      "sha256": "478b1bc960ebbb8e80d1d578efec9699e5ee3fc58ff471360e00b8009107aa80"
+    },
+    {
+      "path": "CHECKER-SCIENTIFIC-VALIDATION.json",
+      "bytes": 3467,
+      "sha256": "1a07f8da9eb723f8a8326d00de8924e79cebfb6ea87ace9be6656b3f01c6038d"
+    },
+    {
+      "path": "checker-scientific-evidence.json.xz",
+      "bytes": 6228,
+      "sha256": "e67a378e1ab38db07d23b348162c693b971b2dd1dd84b1a757b1b1ce17133ce7"
     }
   ]
 }
