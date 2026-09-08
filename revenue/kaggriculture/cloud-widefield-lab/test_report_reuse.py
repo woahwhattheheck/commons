@@ -100,6 +100,36 @@ class ReportReuseTests(unittest.TestCase):
         self.assertEqual(result['sha256'],sha(self.target))
         self.assertEqual(result['source_binding']['candidate']['sha256'],sha(self.candidate))
 
+    def test_scalar_episode_steps_report_reused_without_launch_or_writes(self):
+        schema = self.engine/'kaggriculture.json'
+        schema.write_text(json.dumps({'configuration': {'episodeSteps': 720}}))
+        self.report['engine_sha256']['kaggriculture.json'] = sha(schema)
+        for game in self.report['games']:
+            game.update(episode_steps=720, steps=719)
+        self.save_report()
+        result = self.run_existing()
+        self.assertEqual(result['status'], 'reused-complete')
+        self.assertEqual(result['source_binding']['episode_steps'], 720)
+        self.assertEqual(result['source_binding']['engine_sha256']['kaggriculture.json'], sha(schema))
+
+    def test_episode_steps_accepts_scalar_and_default_integers(self):
+        for value in (2, 720):
+            for configured in (value, {'default': value}):
+                with self.subTest(configured=configured):
+                    (self.engine/'kaggriculture.json').write_text(json.dumps(
+                        {'configuration': {'episodeSteps': configured}}))
+                    binding = P.expected_binding(self.job, self.evaluator, self.engine, self.opponents)
+                    self.assertEqual(binding['episode_steps'], value)
+
+    def test_episode_steps_rejects_non_integer_and_short_values(self):
+        for value in (None, True, False, -1, 0, 1, 2.0, 720.0, '720', []):
+            for configured in (value, {'default': value}):
+                with self.subTest(configured=configured):
+                    (self.engine/'kaggriculture.json').write_text(json.dumps(
+                        {'configuration': {'episodeSteps': configured}}))
+                    with self.assertRaisesRegex(ValueError, 'integer >= 2'):
+                        P.expected_binding(self.job, self.evaluator, self.engine, self.opponents)
+
     def test_changed_candidate_bytes_not_reused(self):
         self.save_report();self.candidate.write_text('# new revision\n')
         result=self.rejected();self.assertIn('candidate_source',result['validation']['problems'])

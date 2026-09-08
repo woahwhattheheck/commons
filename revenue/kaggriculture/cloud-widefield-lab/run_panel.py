@@ -62,7 +62,9 @@ def expected_binding(job: dict, evaluator: Path, engine: Path, opponents: list[s
     engine_bytes = {name: (engine / name).read_bytes() for name in
                     ("kaggriculture.py", "kaggriculture.json", "utils.py")}
     configuration = json.loads(engine_bytes["kaggriculture.json"])["configuration"]
-    episode_steps = configuration["episodeSteps"]["default"]
+    episode_steps = configuration["episodeSteps"]
+    if isinstance(episode_steps, dict):
+        episode_steps = episode_steps["default"]
     if type(episode_steps) is not int or episode_steps < 2:
         raise ValueError("Engine episodeSteps default must be an integer >= 2")
     return {"scope": "requested_cells_and_direct_source_files",
