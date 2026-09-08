@@ -74,39 +74,34 @@ def collapse_identical_seats(obs):
     return out, dropped
 
 
-def fit(obs, anchor, prior_sd=2.0, iters=500):
-    """Regularised Bradley-Terry MM. Ties are half a win to each side."""
+def fit(obs, anchor, prior_sd=2.0, iters=4000, lr=0.15):
+    """Penalised Bradley-Terry MLE by gradient ascent.
+
+    Maximises sum y*log sigma(s_a - s_b) + (1-y)*log sigma(s_b - s_a) minus an
+    L2 penalty, with y = 1 for a win, 0 for a loss and 0.5 for a tie. The penalty
+    is what keeps an unbeaten entrant finite; without it the likelihood pushes its
+    strength to infinity and the number would be meaningless rather than large.
+    """
     names = sorted({o["a"] for o in obs} | {o["b"] for o in obs})
     idx = {n: i for i, n in enumerate(names)}
-    wins = defaultdict(float)
-    played = defaultdict(float)
-    for o in obs:
-        a, b = idx[o["a"]], idx[o["b"]]
-        s = 1.0 if o["res"] == "W" else (0.0 if o["res"] == "L" else 0.5)
-        wins[a] += s
-        wins[b] += 1 - s
-        played[(a, b)] += 1
-        played[(b, a)] += 1
+    data = [(idx[o["a"]], idx[o["b"]],
+             1.0 if o["res"] == "W" else (0.0 if o["res"] == "L" else 0.5))
+            for o in obs]
     s = [0.0] * len(names)
     lam = 1.0 / (prior_sd ** 2)
+    n = max(1, len(data))
     for _ in range(iters):
-        new = list(s)
-        for i in range(len(names)):
-            num = wins[i] + lam * 0.0
-            den = lam
-            for j in range(len(names)):
-                n = played[(i, j)]
-                if not n:
-                    continue
-                den += n / (1.0 + math.exp(s[j] - s[i])) if False else \
-                       n * math.exp(s[j]) / (math.exp(s[i]) + math.exp(s[j]))
-            # MM step in log space with a Gaussian pull toward 0
-            if den > 0 and num > 0:
-                new[i] = s[i] + math.log(num / den) * 0.5
-            new[i] -= lam * new[i] * 0.01
-        s = new
+        g = [-lam * v for v in s]
+        for a, b, y in data:
+            d = s[a] - s[b]
+            p = 1.0 / (1.0 + math.exp(-max(-30.0, min(30.0, d))))
+            r = y - p
+            g[a] += r
+            g[b] -= r
+        for i in range(len(s)):
+            s[i] += lr * g[i] / n
     base = s[idx[anchor]] if anchor in idx else 0.0
-    return {n: s[idx[n]] - base for n in names}
+    return {nm: s[idx[nm]] - base for nm in names}
 
 
 def bootstrap(obs, anchor, draws=400, seed=12345):
