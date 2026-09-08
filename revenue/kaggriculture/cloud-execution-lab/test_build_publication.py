@@ -5,6 +5,7 @@ No policy or engine is executed. Faults are injected only at the file writer,
 fsync, rename, or process-exit boundary; source mapping and rendering are real.
 """
 import argparse
+import errno
 from contextlib import contextmanager
 import hashlib
 import importlib.util
@@ -190,12 +191,15 @@ class PublicationTests(unittest.TestCase):
 
     def test_open_failure_before_last_staging_preserves_bundle(self):
         original=Path.open
+        error=OSError(errno.EMFILE, 'injected file-descriptor exhaustion')
         def opened(path, mode='r', *args, **kwargs):
             if ('w' in mode or 'x' in mode) and 'CURRENT-ARCHIVE.json' in path.name:
-                raise PermissionError('injected open failure')
+                raise error
             return original(path,mode,*args,**kwargs)
         with patch.object(Path,'open',opened):
-            with self.assertRaises(PermissionError): self.m.build_release()
+            with self.assertRaises(OSError) as caught: self.m.build_release()
+        self.assertIs(caught.exception, error)
+        self.assertEqual(caught.exception.errno, errno.EMFILE)
         self.unchanged(); self.no_temps()
 
     def test_archive_never_exposes_partial_bytes_during_write(self):
