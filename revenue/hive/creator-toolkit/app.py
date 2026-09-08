@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, quote, urlsplit
 
 from toolkit import CONSENT_TEXT, DeskError, Store
+from workspace_copy import CopyError, snapshot_bytes
 
 MAX_BODY = 12 * 1024 * 1024
 
@@ -48,6 +49,17 @@ def make_server(store: Store, host="127.0.0.1", port=8768):
                 key = query.get("id", [None])[0]
                 if parsed.path == "/":
                     return self.respond(200, Path(__file__).with_name("index.html").read_bytes(), "text/html; charset=utf-8")
+                if parsed.path == "/workspace.sqlite3":
+                    try:
+                        data, receipt = snapshot_bytes(store.path)
+                    except CopyError as exc:
+                        raise DeskError(str(exc), 409) from None
+                    except OSError:
+                        raise DeskError("Workspace snapshot is unavailable", 503) from None
+                    return self.respond(200, data, "application/octet-stream", {
+                        "Content-Disposition": 'attachment; filename="creator-workspace.sqlite3"',
+                        "X-Content-SHA256": receipt["sha256"],
+                    })
                 if parsed.path == "/api/catalog":
                     return self.respond(200, {"resources": store.catalog(), "consent_text": CONSENT_TEXT})
                 if parsed.path == "/api/member":
