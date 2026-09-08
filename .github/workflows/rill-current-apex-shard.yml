@@ -1,0 +1,70 @@
+name: rill-current-apex-shard
+on:
+  push:
+    branches:
+      - astra/rill-current-87d7-apex-shard-20260908
+    paths:
+      - .github/workflows/rill-current-apex-shard.yml
+permissions:
+  contents: write
+concurrency:
+  group: rill-current-apex-shard-arm
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: astra/rill-current-87d7-apex-shard-20260908
+          fetch-depth: 0
+      - name: Verify and publish exact result packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(sha256sum .tmp/rill-apex/part-00.b64 | cut -d' ' -f1)" = bb614c4b0a34128b307c3ea3e55a5ea9aaec43e1961a704f65f8b1cd7f2766f4
+          test "$(sha256sum .tmp/rill-apex/part-01.b64 | cut -d' ' -f1)" = 7344d97ea5204d719bba68b306aefbec4944863ab26642727bd6b1c419f17533
+          test "$(sha256sum .tmp/rill-apex/part-02.b64 | cut -d' ' -f1)" = a3fa45f999535fd7becdc21b0bfb0dbe0847bd5c8dc25d5d32f2e037119691c2
+          test "$(sha256sum .tmp/rill-apex/part-03.b64 | cut -d' ' -f1)" = a52ba339ab7b97fc85dbc82d588ead79ebfc3009f029783a09cdcc637982ddef
+          test "$(sha256sum .tmp/rill-apex/part-04.b64 | cut -d' ' -f1)" = 25fe3312a12d59657e43ed0e27225b933d3d43a5cbed2c605f028aa856538eb9
+          test "$(sha256sum .tmp/rill-apex/part-05.b64 | cut -d' ' -f1)" = c14be58e9065fbdd09c39482d6cf1c0245684f96b159e76dd44fa915fe50984d
+          cat .tmp/rill-apex/part-*.b64 | base64 -d > /tmp/rill-current-apex.zip
+          test "$(sha256sum /tmp/rill-current-apex.zip | cut -d' ' -f1)" = fbdc8ffa2f0ca1f6cc7bcc2d1a2caf45a5383d10fc8caa472cc0a5d83352ab94
+          test "$(wc -c < /tmp/rill-current-apex.zip)" = 13908
+          rm -rf /tmp/rill-current-apex
+          mkdir -p /tmp/rill-current-apex
+          unzip -q /tmp/rill-current-apex.zip -d /tmp/rill-current-apex
+          DEST=revenue/kaggriculture/cloud-current-apex-shard
+          test ! -e "$DEST"
+          cp -a /tmp/rill-current-apex/cloud-current-apex-shard "$DEST"
+          python "$DEST/verify_results.py"
+          git rm .github/workflows/rill-current-apex-shard.yml .tmp/rill-apex/part-*.b64
+          rmdir .tmp/rill-apex .tmp || true
+          git add "$DEST"
+          python - <<'PY'
+          import subprocess
+          expected={
+              '.github/workflows/rill-current-apex-shard.yml',
+              '.tmp/rill-apex/part-00.b64',
+              '.tmp/rill-apex/part-01.b64',
+              '.tmp/rill-apex/part-02.b64',
+              '.tmp/rill-apex/part-03.b64',
+              '.tmp/rill-apex/part-04.b64',
+              '.tmp/rill-apex/part-05.b64',
+              'revenue/kaggriculture/cloud-current-apex-shard/NOTICE.md',
+              'revenue/kaggriculture/cloud-current-apex-shard/README.md',
+              'revenue/kaggriculture/cloud-current-apex-shard/RESULTS.json',
+              'revenue/kaggriculture/cloud-current-apex-shard/verify_results.py',
+              'revenue/kaggriculture/cloud-current-apex-shard/logs/current-vs-apex-9969101.log',
+              'revenue/kaggriculture/cloud-current-apex-shard/logs/current-vs-apex-9969119.log',
+              'revenue/kaggriculture/cloud-current-apex-shard/raw/current-vs-apex-9969101.json',
+              'revenue/kaggriculture/cloud-current-apex-shard/raw/current-vs-apex-9969119.json',
+          }
+          actual=set(subprocess.check_output(['git','diff','--cached','--name-only']).decode().split())
+          assert actual==expected, sorted(actual)
+          PY
+          git config user.name woahwhattheheck
+          git config user.email brycembusiness2@gmail.com
+          git commit -m "Record current TITAN versus Apex development shard"
+          git push origin HEAD:astra/rill-current-87d7-apex-shard-20260908
