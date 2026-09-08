@@ -70,6 +70,18 @@ Result solve(const std::vector<std::vector<Option>>& layers,
         }
     }
     for (std::size_t t = 1; t < h; ++t) {
+        // Adding the SAME current option preserves the lexicographic order of
+        // predecessor prefixes. Rank feasible predecessors once for this layer,
+        // then each current option can take the first budget-feasible entry.
+        // stable_sort preserves V1's lowest-index choice when objectives tie.
+        std::vector<int> predecessor_order;
+        predecessor_order.reserve(previous.size());
+        for (std::size_t j = 0; j < previous.size(); ++j)
+            if (previous_ok[j]) predecessor_order.push_back(static_cast<int>(j));
+        std::stable_sort(predecessor_order.begin(), predecessor_order.end(),
+            [&](int a, int b) { return previous[static_cast<std::size_t>(a)] <
+                                      previous[static_cast<std::size_t>(b)]; });
+
         std::vector<Objective> current(layers[t].size());
         std::vector<bool> current_ok(layers[t].size(), false);
         parents[t].assign(layers[t].size(), -1);
@@ -77,15 +89,15 @@ Result solve(const std::vector<std::vector<Option>>& layers,
             if (cancel()) return result;
             if (!layers[t][k].reachable) continue;
             int best = -1;
-            for (std::size_t j = 0; j < previous.size(); ++j) {
+            for (int ranked : predecessor_order) {
                 if (cancel()) return result;
-                if (!previous_ok[j]) continue;
+                const std::size_t j = static_cast<std::size_t>(ranked);
                 int used = transition_cost(t, j, k);
                 ++result.transitions_examined;
                 if (used < 0) throw std::invalid_argument("negative transition cost");
                 if (used > budgets[t]) continue;
-                if (best < 0 || previous[j] < previous[static_cast<std::size_t>(best)])
-                    best = static_cast<int>(j);
+                best = ranked;
+                break;
             }
             if (best < 0) continue;
             const auto& prefix = previous[static_cast<std::size_t>(best)];
