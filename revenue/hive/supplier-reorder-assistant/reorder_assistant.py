@@ -45,8 +45,8 @@ def _money(value: Decimal) -> str:
 def _read_csv(path: Path, required: set[str]) -> list[dict[str, str]]:
     try:
         with path.open(newline="", encoding="utf-8-sig") as handle:
-            reader = csv.DictReader(handle, strict=True)
-            fieldnames = reader.fieldnames or []
+            reader = csv.reader(handle, strict=True)
+            fieldnames = next(reader, [])
             fields = set(fieldnames)
             missing = required - fields
             if missing:
@@ -62,15 +62,24 @@ def _read_csv(path: Path, required: set[str]) -> list[dict[str, str]]:
             if duplicates:
                 raise ReorderError(f"{path}: duplicate column names {sorted(duplicates)}")
             rows = []
-            for line, row in enumerate(reader, start=2):
-                # DictReader stores overflow cells under None and pads short
-                # records with None. Neither is an explicitly empty CSV cell.
-                if None in row:
+            while True:
+                # Capture the start before parsing: one CSV record may span
+                # several physical lines, and blank records still consume one.
+                line = reader.line_num + 1
+                try:
+                    values = next(reader)
+                except StopIteration:
+                    break
+                except csv.Error as exc:
+                    raise ReorderError(f"cannot read {path}:{line}: {exc}") from exc
+                if not values:
+                    continue
+                if len(values) > len(fieldnames):
                     raise ReorderError(f"{path}:{line}: extra field(s) beyond the header")
-                absent = [key for key, value in row.items() if value is None]
-                if absent:
+                if len(values) < len(fieldnames):
+                    absent = fieldnames[len(values):]
                     raise ReorderError(f"{path}:{line}: missing field(s) {absent}")
-                normalized = {key: value.strip() for key, value in row.items()}
+                normalized = {key: value.strip() for key, value in zip(fieldnames, values)}
                 normalized["_line"] = str(line)
                 rows.append(normalized)
             return rows
