@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: codex/astra-board-bake-convergence-20260908
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: apply exact source hunk and execute original/fixed contracts
         shell: bash
