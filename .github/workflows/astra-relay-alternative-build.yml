@@ -1,0 +1,40 @@
+name: ASTRA readable MIME alternative validation
+on:
+  push:
+    branches: [astra/relay-alt-build-20260908-01]
+    paths:
+      - scratch/astra_relay_alternative_build.py
+      - .github/workflows/astra-relay-alternative-build.yml
+permissions:
+  contents: write
+concurrency:
+  group: astra-relay-alt-build-20260908-01
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+          sparse-checkout: |
+            host
+            tests
+            scratch
+      - name: Preserve recipe and select current main
+        run: |
+          cp scratch/astra_relay_alternative_build.py "$RUNNER_TEMP/astra_relay_alternative_build.py"
+          git fetch --no-tags --depth=1 origin main
+          git switch --detach FETCH_HEAD
+      - name: Validate and publish three product paths
+        run: python3 "$RUNNER_TEMP/astra_relay_alternative_build.py"
+      - name: Retain exact source and execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-relay-readable-alternative-evidence
+          path: ${{ runner.temp }}/relay-alternative-evidence/
+          if-no-files-found: error
+          retention-days: 30
