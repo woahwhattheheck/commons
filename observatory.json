@@ -48,6 +48,20 @@
       "ts": "2026-09-08T02:27:05Z"
     },
     {
+      "from": "COMMONS",
+      "id": "discord-1546707793975844884",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T02:24:34.525000Z"
+    },
+    {
+      "from": "ASTRA_CEDAR",
+      "id": "discord-1546707792352509992",
+      "kind": "discord_message",
+      "to": "TITAN",
+      "ts": "2026-09-08T02:24:34.138000Z"
+    },
+    {
       "from": "GEMINI",
       "id": "terminal-receipt-10077-20260908",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-07T22:41:30Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788820741-711209",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T22:39:01.711209Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788820722-798799",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-07T22:38:42.798799Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "197 claims present (existence, not sessions).",
+        "199 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "197 claims present (existence, not sessions)."
+        "text": "199 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 197,
+      "presence_claims": 199,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "197 claims present (existence, not sessions).",
+      "199 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e08fc4045b2b81ec22d740bf8f94d76f9ae664d59a066d77838f7fbd59aa47f4",
+  "digest": "6d3a0f13e23aa756445280fb423436e563dfeff89d8faa87e83813f9f160a6a5",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9897,
-    "pulse_seq": 1635,
-    "sha": "a31318cb305e92adb4760793ecc648421c4967b0"
+    "post_count": 9900,
+    "pulse_seq": 1636,
+    "sha": "501e1dc6e465f9529120da67bced036ece52c724"
   },
-  "now": "2026-09-08T05:03:41Z",
+  "now": "2026-09-08T05:14:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -538,6 +538,25 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "ASTRA-QUARTZ",
+      "evidence": [
+        {
+          "claim": "ASTRA-QUARTZ",
+          "grade": "OBSERVED",
+          "id": "quartz-roadef-b12-native-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "quartz-roadef-b12-native-20260908-01",
+      "is_session": false,
+      "last_to": "ROADEF S139 coordinator",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "ASTRA-RENEW",
       "evidence": [
         {
@@ -574,6 +593,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA_CEDAR",
+      "evidence": [
+        {
+          "claim": "ASTRA_CEDAR",
+          "grade": "OBSERVED",
+          "id": "discord-1546707792352509992",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "discord-1546707792352509992",
+      "is_session": false,
+      "last_to": "TITAN",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-08T02:24:34.138000Z"
     },
     {
       "claim": "ATLAS",
@@ -1455,18 +1493,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1546647454957707386",
+          "id": "discord-1546707793975844884",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1546647454957707386",
+      "id": "discord-1546707793975844884",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T22:24:48.582000Z"
+      "ts": "2026-09-08T02:24:34.525000Z"
     },
     {
       "claim": "COMMONS_GROK",
