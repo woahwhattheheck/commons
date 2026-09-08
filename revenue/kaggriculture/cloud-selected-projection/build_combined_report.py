@@ -26,6 +26,7 @@ SUITES = (
     ("empty_lot", "empty-lot-tests.log", MARKET + "test_empty_lot.py", None, None),
     ("joined_wrapper", "joined-wrapper-tests.log", LAB + "test_ordered_selected_sell.py", None, None),
 )
+FUNDED_JOIN = ("funded_join", "funded-join-tests.log", ROOT + "cloud-composition-cases/cypress/test_funded_join.py", "funded-join-results.json", "test_methods")
 REPORTER = ("reporter", "reporter-tests.log", PROJECTION + "test_combined_report.py", None, None)
 SUMMARY = re.compile(r"^Ran ([0-9]+) tests? in .+\n\s*\n(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)\s*$", re.M)
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -65,7 +66,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -107,7 +108,7 @@ def build_report(directory: Path, *, include_reporter: bool = False) -> dict:
             problems.append("source mismatch: " + label)
 
     suites, reports = {}, {}
-    declarations = SUITES + ((REPORTER,) if include_reporter else ())
+    declarations = SUITES + ((FUNDED_JOIN,) if include_funded_join else ()) + ((REPORTER,) if include_reporter else ())
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
         text = read(log)
@@ -153,6 +154,24 @@ def build_report(directory: Path, *, include_reporter: bool = False) -> dict:
                        ("loader", LAB + "reference/evaluator/loader.py")):
         bind("loader " + name, loader_sources.get(name), source(path))
     joined = source(LAB + "ordered_selected_sell.py")
+    funded = reports.get("funded_join", {})
+    if include_funded_join:
+        funded_sources = funded.get("sources")
+        if not isinstance(funded_sources, dict) or not funded_sources:
+            problems.append("funded join: missing source bindings")
+            funded_sources = {}
+        for name, row in funded_sources.items():
+            digest = row.get("sha256") if isinstance(row, dict) else None
+            bind("funded join " + name, digest, source(ROOT + name))
+        required = (FUNDED_JOIN[2], LAB + "integrated_selected.py",
+                    LAB + "selected_action_sell.py", LAB + "reference/engine/kaggriculture.py")
+        for path in required:
+            if path[len(ROOT):] not in funded_sources:
+                problems.append("funded join: missing binding for " + path)
+        for field, origin in (("workflow_run", "run_id"), ("workflow_attempt", "attempt")):
+            if str(funded.get(field)) != str(snapshot.get(origin)):
+                problems.append("funded join: mismatched " + field)
+
 
     observed_total = sum(s["tests"] for s in suites.values() if s["tests"] is not None)
     counts_complete = all(s["tests"] is not None for s in suites.values())
@@ -176,6 +195,9 @@ def build_report(directory: Path, *, include_reporter: bool = False) -> dict:
         result[key + "_tests"] = entry["tests"]
     first_three = [result[k + "_tests"] for k in ("original", "projection", "market")]
     result["legacy_three_suite_tests"] = sum(first_three) if all(v is not None for v in first_three) else None
+    if include_funded_join:
+        result["funded_join_transitions"] = funded.get("official_transitions")
+        result["funded_join_full_games"] = funded.get("full_games")
     return result
 
 
@@ -184,8 +206,10 @@ def main(argv=None):
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--include-reporter-tests", action="store_true")
+    parser.add_argument("--include-funded-join", action="store_true")
     args = parser.parse_args(argv)
-    report = build_report(args.directory, include_reporter=args.include_reporter_tests)
+    report = build_report(args.directory, include_reporter=args.include_reporter_tests,
+                          include_funded_join=args.include_funded_join)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
