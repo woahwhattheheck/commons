@@ -123,14 +123,16 @@ def _solve_normalized(rows, *, max_pivots: int = 128, max_bits: int = 512) -> di
     pivots = 0
     status = 'optimal'
     while True:
+        # A pivot may grow exact numerators/denominators. Check the resulting
+        # tableau before accepting optimality, including after the final pivot.
+        if any(too_big(x) for row in table for x in row):
+            status = 'bit_limit'
+            break
         entering = next((j for j, cost in enumerate(table[-1][:-1]) if cost < 0), None)
         if entering is None:
             break
         if pivots >= max_pivots:
             status = 'pivot_limit'
-            break
-        if any(too_big(x) for row in table for x in row):
-            status = 'bit_limit'
             break
         eligible = [i for i in range(n) if table[i][entering] > 0]
         if not eligible:
