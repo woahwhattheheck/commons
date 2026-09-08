@@ -1,0 +1,93 @@
+name: astra-board-bake-convergence
+
+on:
+  push:
+    branches:
+      - codex/astra-board-bake-convergence-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  apply-test-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/astra-board-bake-convergence-20260908
+          fetch-depth: 0
+
+      - name: apply exact source hunk and execute original/fixed contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp board_ingest.py /tmp/board_ingest-original.py
+          python3 -B tools/apply_board_bake_convergence.py
+
+          set +e
+          python3 -B test_board_bake_convergence.py \
+            --module /tmp/board_ingest-original.py \
+            --report /tmp/board-bake-original.json \
+            > /tmp/board-bake-original.log 2>&1
+          original_rc=$?
+          set -e
+          cat /tmp/board-bake-original.log
+          python3 - "$original_rc" <<'PY'
+          import json, sys
+          report=json.load(open('/tmp/board-bake-original.json', encoding='utf-8'))
+          assert int(sys.argv[1]) != 0, report
+          assert report['tests_run'] == 5, report
+          assert len(report['failures']) == 2, report
+          assert not report['errors'], report
+          PY
+
+          python3 -B test_board_bake_convergence.py \
+            --module board_ingest.py \
+            --report /tmp/board-bake-fixed.json \
+            > /tmp/board-bake-fixed.log 2>&1
+          cat /tmp/board-bake-fixed.log
+
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          original=json.load(open('/tmp/board-bake-original.json', encoding='utf-8'))
+          fixed=json.load(open('/tmp/board-bake-fixed.json', encoding='utf-8'))
+          assert fixed['tests_run'] == 5 and fixed['successful'], fixed
+          assert not fixed['failures'] and not fixed['errors'] and not fixed['skipped'], fixed
+          result={
+              'schema':'commons-board-bake-convergence-v1',
+              'trigger_commit':os.environ['GITHUB_SHA'],
+              'workflow_run_id':os.environ['GITHUB_RUN_ID'],
+              'original':original,
+              'fixed':fixed,
+              'original_log':Path('/tmp/board-bake-original.log').read_text(encoding='utf-8'),
+              'fixed_log':Path('/tmp/board-bake-fixed.log').read_text(encoding='utf-8'),
+              'test_sha256':hashlib.sha256(Path('test_board_bake_convergence.py').read_bytes()).hexdigest(),
+              'change':'accept only final bake-reset plus exact refreshed-origin CONVERGED_IN_GIT',
+              'remote_writes':0,
+              'records_written':0,
+          }
+          Path('BOARD-BAKE-CONVERGENCE-RESULTS.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True)+'\n', encoding='utf-8')
+          PY
+
+          python3 -m py_compile board_ingest.py test_board_bake_convergence.py
+          git diff --check
+
+      - name: publish tested source to the same branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name commons-board-test
+          git config user.email commons-board@users.noreply.github.com
+          git rm .github/workflows/astra-board-bake-convergence.yml
+          git rm tools/apply_board_bake_convergence.py
+          git add board_ingest.py test_board_bake_convergence.py \
+            BOARD-BAKE-CONVERGENCE.md BOARD-BAKE-CONVERGENCE-RESULTS.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'expected tested source delta' >&2
+            exit 1
+          fi
+          git commit -m 'board: accept an exact converged bake replay no-op'
+          git push origin HEAD:codex/astra-board-bake-convergence-20260908
