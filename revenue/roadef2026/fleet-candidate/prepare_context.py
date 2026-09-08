@@ -40,6 +40,9 @@ ARCHIVES = {
         "main": "networktools/networktools.h"},
 }
 SOURCE_SUFFIXES = {".h", ".hpp", ".cpp", ".c"}
+# Sparsehash deliberately ships these public C++ headers without extensions.
+SPARSEHASH_HEADERS = {"dense_hash_map", "dense_hash_set", "sparse_hash_map",
+                      "sparse_hash_set", "sparsetable", "traits"}
 
 
 def sha256(path):
@@ -136,7 +139,10 @@ def copy_archive_sources(archive_path, name, spec, destination):
                 elif str(relative) == "LICENSE":
                     target = destination / "attribution" / "Orange-checker-LICENSE"
             elif name == "networktools":
-                if parts[0] == "networktools" and relative.suffix.lower() in SOURCE_SUFFIXES:
+                sparsehash_header = (parts[:3] == ("networktools", "@deps", "sparsehash") and
+                                     len(parts) == 4 and relative.name in SPARSEHASH_HEADERS)
+                if parts[0] == "networktools" and (relative.suffix.lower() in SOURCE_SUFFIXES or
+                                                   sparsehash_header):
                     target = destination / "sources" / "networktools" / relative
                 elif str(relative) == "LICENSE":
                     target = destination / "attribution" / "Orange-networktools-LICENSE"
