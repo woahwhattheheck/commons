@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from copy import deepcopy
-import csv,hashlib,io,json,subprocess,sys,tempfile,unittest,zipfile
+import csv,hashlib,io,json,subprocess,sys,tempfile,threading,unittest,zipfile
 from pathlib import Path
 import campaign_desk as d
 ROOT=Path(__file__).resolve().parent; SAMPLE=json.loads((ROOT/'sample_campaign.json').read_text())
@@ -34,4 +34,18 @@ class Tests(unittest.TestCase):
     def test_invalid_cli_no_traceback(self):
         with tempfile.TemporaryDirectory() as td:
             i=Path(td)/'bad.json'; o=Path(td)/'x.zip'; i.write_text('{}'); r=subprocess.run([sys.executable,'-B',str(ROOT/'campaign_desk.py'),str(i),str(o)],text=True,capture_output=True,timeout=10); self.assertEqual(r.returncode,1); self.assertEqual(r.stdout,''); self.assertIn('UGC CAMPAIGN INVALID:',r.stderr); self.assertNotIn('Traceback',r.stderr); self.assertFalse(o.exists())
+    def test_simultaneous_distinct_publishers_are_exclusive(self):
+        with tempfile.TemporaryDirectory() as td:
+            o=Path(td)/'race.zip'; a=deepcopy(SAMPLE); b=deepcopy(SAMPLE); a['campaign']['id']='fictional-race-alpha'; b['campaign']['id']='fictional-race-beta'; raws=[d.build_zip(a),d.build_zip(b)]; gate=threading.Barrier(2); results=[None,None]
+            def run(i):
+                gate.wait()
+                try: d.publish_zip(o,raws[i]); results[i]='published'
+                except d.CampaignError as e: results[i]=str(e)
+            threads=[threading.Thread(target=run,args=(i,)) for i in range(2)]
+            [x.start() for x in threads]; [x.join(10) for x in threads]; self.assertTrue(all(not x.is_alive() for x in threads)); self.assertEqual(results.count('published'),1); self.assertEqual(sum('refusing to overwrite' in str(x) for x in results),1); self.assertIn(o.read_bytes(),raws); self.unzip(o.read_bytes()); self.assertEqual(list(Path(td).glob('.race.zip.*.tmp')),[])
+    def test_broken_output_symlink_is_not_followed(self):
+        with tempfile.TemporaryDirectory() as td:
+            o=Path(td)/'broken.zip'; target=Path(td)/'missing-target.zip'; o.symlink_to(target)
+            with self.assertRaisesRegex(d.CampaignError,'refusing to overwrite'): d.publish_zip(o,d.build_zip(SAMPLE))
+            self.assertTrue(o.is_symlink()); self.assertFalse(target.exists()); self.assertEqual(list(Path(td).glob('.broken.zip.*.tmp')),[])
 if __name__=='__main__': unittest.main()
