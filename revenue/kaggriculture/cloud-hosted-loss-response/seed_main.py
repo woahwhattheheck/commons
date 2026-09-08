@@ -3,12 +3,17 @@
 _policy = None
 
 
-def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None):
+def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None,
+               policy=None, controller=None):
     """Keep one existing policy; optionally select cash-coupled seed proposals.
 
     The selector has the same post-unit callback contract as the integrated
     agent. None retains this module's original, demand-only seed behavior.
+    A supplied policy/controller pair reuses that actor and its live route; the
+    caller must keep its worker actions prefix-compatible with controller.R.
     """
+    if (policy is None) != (controller is None):
+        raise ValueError('Supply policy and its controller together')
     from copy import deepcopy
     import importlib.util
     from pathlib import Path
@@ -25,8 +30,9 @@ def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None):
         return module
     scheduler = load('alder_seed_scheduler', vendor / 'scheduler.py')
     budget_module = load('alder_seed_budget', root / 'seed_budget.py')
-    policy = scheduler.SellScheduler() if sell else scheduler.parent.Agent()
-    controller = policy.controller if sell else policy
+    if policy is None:
+        policy = scheduler.SellScheduler() if sell else scheduler.parent.Agent()
+        controller = policy.controller if sell else policy
     budget = budget_module.SeedBudget(controller.R)
     def run(observation, configuration=None):
         config = dict(configuration or {})
