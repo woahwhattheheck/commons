@@ -164,8 +164,9 @@ def validate_rows(
                 f"edge {edge.source_id}->{edge.target_id} in {edge.dataset!r} must connect consecutive frames"
             )
 
-        # Organizer scoring deduplicates exact source->target pairs before topology
-        # accounting, so non-strict mode does the same for compact lineage counts.
+        # Edge-Jaccard scoring deduplicates exact source->target pairs. Non-strict
+        # mode also deduplicates them for Commons compact lineage counts, but
+        # duplicate rows can still affect organizer division/fork topology.
         if is_duplicate:
             continue
 
@@ -260,7 +261,7 @@ def main() -> int:
         "--organizer-compatible",
         dest="strict_lineage",
         action="store_false",
-        help="allow scorer-normalized duplicate/merge/high-outdegree graphs; structural and t->t+1 checks remain",
+        help="allow organizer-ingestible duplicate/merge/high-outdegree graph shapes; structural and t->t+1 checks remain",
     )
     args = parser.parse_args()
     counts = validate_submission(
