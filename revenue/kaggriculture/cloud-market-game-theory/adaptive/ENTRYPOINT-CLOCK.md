@@ -54,3 +54,55 @@ profiler, RAWLOAD's funded entrypoint, INTEGRATION's timer adapter, existing
 workflow ownership and frozen PR9997 archive remain untouched. The consumer is
 the next ordinary invocation of these existing adaptive/fixed/static files;
 do not restart a running experiment or rewrite an older source-bound result.
+
+## Real-parent consumer regression (separate follow-through)
+
+The follow-on `test_entrypoint_real_clock.py` executes actual adaptive, fixed
+and static actors in both seats: three methods, six constructed short prefixes,
+48 integrated-parent calls, 48 cap-producer calls and 48 intact Arlene calls.
+Every decision invokes each layer exactly once. Python call instrumentation
+counts the real source functions; no implementation body is substituted.
+Day/hour-only and explicit-step controls have identical complete actions and
+selected adaptive snapshots at steps 0, 1, 2 and a fresh 0. Identified history
+counts are 0, 7, 14, 0. Actors persist across nonzero calls and reset at zero;
+the runtime module remains cached. The caller's observation stays unchanged.
+
+Twelve official engine transitions advance the accepted control prefixes.
+These are not full games and do not use game initialization seeds. The initial
+projection fallback is identical in both clocks and remains in the raw records;
+it is not hidden as an adaptive admission. Original entrypoint bytes under the
+same real runtime produce six `KeyError: step` errors after the parent call,
+while their six explicit controls succeed. Those runs have 12 actual calls per
+layer and zero prefix transitions, not the fixed run's 48 calls and 12 transitions.
+
+```sh
+python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_entrypoint_real_clock.py \
+  --evaluator /existing/peer/evaluate.py --engine /existing/engine \
+  --report /tmp/entrypoint-real-clock.json
+```
+
+All inputs must already be local. The test refuses to download a missing engine.
+Use `--entrypoint-dir` for a preserved alternate entrypoint directory; its sibling
+runtime and imports must keep the same dependency layout. The executed source
+composition is deliberately not a claim about all of current main:
+
+- Three entrypoints from PR10058 merge `f9dba7394dbd4c8b78fbf6e36912471dbbce9ddb`.
+- Runtime plus eight other files from `fd80861e1420c5b1a79c781814f2364aef484fc8`:
+  game-theory dependencies, selector, solver and history_streams; adaptive
+  runtime and recourse; plan-continuation continuation; market-response flow
+  and vendor/sorrel_adapter. Runtime blob is `fc633655bdb5df026ce2654668337214ec6771e5`.
+- Unchanged original PR9997 parent closure, existing provider artifact10036877991,
+  nested archive SHA256 `95c7bf10a20149419e6208e43cdf2bf0728e22fe61b600180eaa1a3fbcc1b153`.
+  This is not newer SPRUCE/WREN ledger or DELVE funding policy bytes.
+- Existing evaluator and three pinned engine files from artifact10005621438.
+
+`ENTRYPOINT-REAL-CLOCK-VALIDATION.json` binds the executed test, source recipe,
+counts and successful log to the complete before/after evidence. The full 32
+source identities per run, all actions/call counts/snapshot hashes, original
+tracebacks and reproduction recipe are retained in Bryce's Library:
+`TITAN-entrypoint-real-clock-evidence.zip`, file ID
+`file_000000003dc881f5a45c5cca061ef8ab`, 17452 bytes, SHA256
+`894af9924ab176e4101105b04206eabdaaa6d636f2387448a0e99fd219a483ea`.
+All archive member hashes were verified after packaging. This follow-through
+changes only test/evidence/this guide, not production, runtime, workflow, frozen
+sources or running panels. It makes no whole-agent speed or game-strength claim.
