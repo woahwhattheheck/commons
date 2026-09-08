@@ -78,6 +78,8 @@
       if (parent) parent.appendChild(node);
       return node;
     }
+    // Catalog metadata can be valid JSON without being renderable text.
+    const textField = (value, fallback) => typeof value === 'string' && value ? value : fallback;
     function render() {
       const focusedRow = rows.find(row => row.button === doc.activeElement);
       for (const row of rows) {
@@ -89,7 +91,7 @@
       const visible = rows.filter(row => {
         const item = row.item || {};
         const text = [item.id, item.title, item.from, item.kind, item.acceptance, item.notes,
-          ...(pathsFor(item) || [])].join(' ').toLowerCase();
+          ...(pathsFor(item) || [])].filter(value => typeof value === 'string').join(' ').toLowerCase();
         return (!kind.value || item.kind === kind.value) && (!query || text.includes(query));
       });
       doc.getElementById('cw-count').textContent = `${visible.length} of ${rows.length} ledger items`;
@@ -99,7 +101,10 @@
         const card = element('article', undefined, list);
         card.className = 'cw-item';
         element('h3', typeof item.title === 'string' ? item.title : 'Invalid ledger row', card);
-        element('p', `${item.id || '(missing id)'} · ${item.kind || '(missing kind)'} · From: ${item.from || 'unspecified'}`, card);
+        element('p', `${textField(item.id, '(missing id)')} · ${textField(item.kind, '(missing kind)')} · From: ${textField(item.from, 'unspecified')}`, card);
+        const invalidText = ['id', 'title', 'from', 'kind', 'acceptance', 'notes']
+          .filter(field => item[field] != null && typeof item[field] !== 'string');
+        if (invalidText.length) element('p', `Invalid text fields: ${invalidText.join(', ')}`, card);
         const outcome = element('p', `${row.status}${row.detail ? ' — ' + row.detail : ''}`, card);
         outcome.setAttribute('role', 'status');
         if (typeof item.acceptance === 'string') element('p', 'Acceptance: ' + item.acceptance, card);
