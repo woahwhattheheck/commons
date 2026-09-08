@@ -18,10 +18,10 @@
     },
     {
       "component": "ECON deadline",
-      "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+      "source_pin": "Current manifest reference/titan-current/deadline_adapter.py",
       "callsite": "TitanAgent.act -> _DeadlineTimer / terminal_liquidation_fallback",
       "enabled": true,
-      "consumed_result": "10005 32 natural / 8 forced-timeout games; current timer repairs"
+      "consumed_result": "Main-thread alarm semantics retained. Worker-specific trace guard before signal access; focused cancellation, restoration, actual entrypoint and raw-loader worker episode checks. No inherited game-strength claim."
     },
     {
       "component": "OSPREY terminal",

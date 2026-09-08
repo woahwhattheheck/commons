@@ -55,9 +55,9 @@
     {
       "callsite": "TitanAgent.act -> _DeadlineTimer / terminal_liquidation_fallback",
       "component": "ECON deadline",
-      "consumed_result": "10005 32 natural / 8 forced-timeout games; current timer repairs",
+      "consumed_result": "Main-thread alarm semantics retained. Worker-specific trace guard before signal access; focused cancellation, restoration, actual entrypoint and raw-loader worker episode checks. No inherited game-strength claim.",
       "enabled": true,
-      "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37"
+      "source_pin": "Current manifest reference/titan-current/deadline_adapter.py"
     },
     {
       "callsite": "TitanAgent._initialize -> TerminalOwner.act",
@@ -276,8 +276,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 3711,
-      "sha256": "1efdb0cc4ba3ae7c6b5d7cf4c042bbb93ff259ef25fb0933e91bafc568f8d7ae",
+      "bytes": 4296,
+      "sha256": "80ff7a8b28b5a66f60936bd05bf9acae63be171b8daf8d89d2e05a89ca0c62cc",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -309,6 +309,11 @@
       "bytes": 8203,
       "sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
       "source_path": "reference/evaluator/loader.py"
+    },
+    "checks/reference/evaluator/official_agent.py": {
+      "bytes": 8091,
+      "sha256": "b4e7326ed90847032b14f45919b2b9f4c89901a0df8afae7241260c03560a88a",
+      "source_path": "reference/evaluator/official_agent.py"
     },
     "checks/reference/historical/seed_budget-before-derived-cache.py": {
       "bytes": 3049,
@@ -349,6 +354,16 @@
       "bytes": 7847,
       "sha256": "d4d025d21c6c941d34056d9584cd875c77c9d07975a53ed8c089fb599e292aee",
       "source_path": "test_terminal_history_join.py"
+    },
+    "checks/test_worker_deadline.py": {
+      "bytes": 5437,
+      "sha256": "c531c51436d1bcdfbb58ae4ed06defe8c84e6dcdfe975c4436f31810505904ab",
+      "source_path": "test_worker_deadline.py"
+    },
+    "checks/test_worker_episode.py": {
+      "bytes": 5328,
+      "sha256": "bcd9a56fc7af87d70b4fb168e7109614a44a52b9aacbcd1e208bb36ecc13b034",
+      "source_path": "test_worker_episode.py"
     },
     "frozen_selected.py": {
       "bytes": 6501,
@@ -471,8 +486,8 @@
       "source_path": "reference/selected-action/t08/arrival_contract.py"
     },
     "reference/titan-current/deadline_adapter.py": {
-      "bytes": 9730,
-      "sha256": "c3bef158763cb4f5f8b8436800f442b1acc94be2c407c5db1e740edd3a0d68f0",
+      "bytes": 12377,
+      "sha256": "c8f7c9842ba7e4eb29f6e57a8d6f9ba816140dcbea7817aea2b3efcabe2771c5",
       "source_path": "reference/titan-current/deadline_adapter.py"
     },
     "reference/titan-current/latest/integrated_selected.py": {

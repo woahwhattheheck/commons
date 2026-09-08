@@ -11,6 +11,8 @@ from __future__ import annotations
 import copy
 from contextvars import ContextVar
 import signal
+import sys
+import threading
 import time
 
 
@@ -77,7 +79,12 @@ def terminal_liquidation_fallback(observation, configuration=None):
 class _DeadlineTimer:
     """Share ITIMER_REAL with the caller without restarting its deadline.
 
-    This main-thread scope schedules the earlier of its own deadline and the
+    Workers use a thread-local trace guard and never access signal handlers or
+    timers. Python execution is cancelled at trace boundaries; a blocking native
+    call must return before cancellation can be delivered. The outer runner
+    still owns its whole-call timeout, including imports and serialization.
+
+    The main-thread scope schedules the earlier of its own deadline and the
     caller's alarm. A caller handler is invoked with its original signal/frame;
     any exception it raises remains a caller exception, not our fallback signal.
     """
@@ -86,6 +93,9 @@ class _DeadlineTimer:
         self.expired = DeadlineExceeded("action deadline exhausted")
 
     def __enter__(self):
+        self.thread_guard = threading.current_thread() is not threading.main_thread()
+        if self.thread_guard:
+            return self._enter_thread(sys._getframe(1))
         self.previous = signal.getsignal(signal.SIGALRM)
         # Validate main-thread signal access before touching the caller timer.
         signal.signal(signal.SIGALRM, self.previous)
@@ -102,6 +112,51 @@ class _DeadlineTimer:
         except BaseException:
             self.__exit__(None, None, None)
             raise
+
+    def _enter_thread(self, caller):
+        self.own_at = time.monotonic() + self.seconds
+        self.previous_trace = sys.gettrace()
+        self.caller_frame = caller
+        self.previous_local = caller.f_trace
+        self.local_traces = {caller: self.previous_local}
+        self.context_token = _ACTIVE_TIMER.set(self)
+        self.trace_ticks = 0
+        self.trace_fired = False
+        try:
+            sys.settrace(self._trace)
+            caller.f_trace = self._trace
+            return self
+        except BaseException:
+            self._exit_thread()
+            raise
+
+    def _trace(self, frame, event, arg):
+        # Never interrupt guard setup/cleanup. In particular __exit__ must run
+        # even when the body raised or tracing disabled itself on cancellation.
+        if frame.f_code.co_filename == __file__:
+            return None
+        prior = self.previous_trace if event == "call" else self.local_traces.get(frame)
+        if prior is not None:
+            self.local_traces[frame] = prior(frame, event, arg)
+        if event == "return":
+            self.local_traces.pop(frame, None)
+        self.trace_ticks += 1
+        if event in ("call", "return") or self.trace_ticks >= 64:
+            self.trace_ticks = 0
+            if not self.trace_fired and time.monotonic() >= self.own_at:
+                self.trace_fired = True
+                raise self.expired
+        return self._trace
+
+    def _exit_thread(self):
+        # An exception raised by a trace callback clears sys.gettrace(). Restore
+        # the caller's tracer explicitly, including its already-active frame.
+        sys.settrace(self.previous_trace)
+        self.caller_frame.f_trace = self.local_traces.get(
+            self.caller_frame, self.previous_local)
+        self.local_traces.clear()
+        self.caller_frame = None
+        _ACTIVE_TIMER.reset(self.context_token)
 
     @staticmethod
     def _remaining(deadline):
@@ -153,6 +208,12 @@ class _DeadlineTimer:
         self._schedule()
 
     def __exit__(self, _kind, _error, _traceback):
+        if self.thread_guard:
+            expired = _kind is None and time.monotonic() >= self.own_at
+            self._exit_thread()
+            if expired:
+                raise self.expired
+            return False
         signal.setitimer(signal.ITIMER_REAL, 0)
         _ACTIVE_TIMER.reset(self.context_token)
         signal.signal(signal.SIGALRM, self.previous)
@@ -167,8 +228,8 @@ class DeadlineFallbackAgent:
 
     SIGALRM acts on the main thread; existing caller alarms keep their remaining
     time and handler. Only this guard's own expiry selects a fallback.
-    A caller on another platform must supply its own process-level timeout rather
-    than silently claiming this guard ran.
+    Worker threads use the trace guard described above; the outer runner retains
+    responsibility for blocking native calls and whole-call transport deadlines.
     """
     def __init__(self, integrated, budget_seconds=1.0, reserve_seconds=0.002,
                  before_transform=None):
