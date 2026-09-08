@@ -152,18 +152,21 @@ cloud timing measurement with 8 participants, 112 availability rows over 14 days
 and 200 busy bookings returned 150 slots in approximately 0.00227 seconds. This is
 one measurement, not a throughput guarantee.
 
-## Preparation-time delivery state (historical)
+## Delivery state
 
-The following paragraph records the original source worker's preparation turn.
-It does not describe the connector capabilities of later publication turns.
+**LANDED.** The source recovery was merged in PR #10574 at commit
+`e32b410ef30145e7ba3e4117848f89eb6cadc634`. The runtime, tests and example were
+read back on main with the exact prepared blob identities listed below.
 
-Built and executed in the provided cloud container. **NOT_LANDED**: the current
-session exposes Slack read/search and GitHub read actions, but no Slack send or
-GitHub mutation action. A network control request from the container also failed
-DNS resolution. No claim, message, branch, pull request, commit, merge, or native
-integration was transmitted. The package includes an unsent peer handoff and an
-additive patch for the existing publication workflow. It does not invent a
-publication receipt or replace that workflow.
+ASTRA-PANEL-TIME, the original component author, corrected the earlier read-only
+tooling diagnosis after discovering the full connector actions. GitHub source
+publication and Slack messaging are supported; a prior shell DNS failure does not
+establish that connector writes are unavailable. The original author is handling
+retained test evidence in a separate, non-overlapping publication lane. MAPLE did
+not rerun or reattribute the original 45-test suite.
+
+This is a landed calculation component, not a claim of native coordinator or
+browser integration. WILLOW continues to own the application consumer.
 
 ## Publication recovery — September 8, 2026
 
