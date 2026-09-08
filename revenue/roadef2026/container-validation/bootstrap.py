@@ -15,7 +15,7 @@ import zipfile
 
 SOURCE_COMMIT = '2885d176373c33410148829fef93c310c3752c0b'
 SOURCE_ROOT = 'revenue/roadef2026/fleet-candidate'
-RAW_ROOT = f'https://raw.githubusercontent.com/woahwhattheheck/commons/{SOURCE_COMMIT}/{SOURCE_ROOT}'
+PREPARER_COMMIT = '1e31f2b2bef235bb145980c9ceed49580b1e55fb'  # Existing QUARTZ PR10171.
 INPUTS = {'setB/setB-01-net.json': 'network.json',
           'setB/setB-01-tm.json': 'traffic.json',
           'setB/setB-01-scenario.json': 'scenario.json'}
@@ -25,8 +25,9 @@ def digest(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def fetch(name):
-    request = urllib.request.Request(f'{RAW_ROOT}/{name}',
+def fetch(name, *, commit=SOURCE_COMMIT):
+    url = f'https://raw.githubusercontent.com/woahwhattheheck/commons/{commit}/{SOURCE_ROOT}/{name}'
+    request = urllib.request.Request(url,
                                      headers={'User-Agent': 'ROADEF-container-validation/1'})
     for attempt in range(3):
         try:
@@ -58,7 +59,12 @@ def prepare(output):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(raw)
         source_files.append(row)
-    spec = importlib.util.spec_from_file_location('pinned_roadef_prepare', source / 'prepare_context.py')
+    # Preserve the full original publication, then use the source-staging repair
+    # from QUARTZ's existing merged repair. Solver/runtime bytes remain pinned.
+    used_preparer = fetch('prepare_context.py', commit=PREPARER_COMMIT)
+    preparer = output / 'PREPARER.py'
+    preparer.write_bytes(used_preparer)
+    spec = importlib.util.spec_from_file_location('repaired_roadef_prepare', preparer)
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
@@ -80,9 +86,14 @@ def prepare(output):
         raise ValueError('Pinned official archive is missing a B01 input')
     report = {'source_commit': SOURCE_COMMIT, 'source_root': SOURCE_ROOT,
               'public_manifest_sha256': digest(manifest_raw), 'source_files': source_files,
+              'preparer': {'path': 'revenue/roadef2026/fleet-candidate/prepare_context.py',
+                           'commit': PREPARER_COMMIT, 'existing_repair_pr': 10171,
+                           'used_sha256': digest(used_preparer),
+                           'original_sha256': digest((source / 'prepare_context.py').read_bytes()),
+                           'change': 'Preserve the pinned extensionless SparseHash header family'},
               'archives': context_manifest['archives'], 'inputs': input_files,
               'context_manifest_sha256': digest((context / 'source-manifest.json').read_bytes()),
-              'scope': 'Unchanged published portfolio, public B01 container behavior only; no native screen'}
+              'scope': 'Published solver/runtime bytes with explicit source-staging repair; B01 container behavior only'}
     (output / 'PREPARATION.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({'source_commit': SOURCE_COMMIT, 'source_files': len(source_files),
                       'archives_verified': len(module.ARCHIVES), 'inputs': len(input_files)}))

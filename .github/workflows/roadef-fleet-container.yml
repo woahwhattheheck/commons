@@ -52,7 +52,7 @@ jobs:
           source = pathlib.Path('revenue/roadef2026/container-validation')
           shutil.copytree(source, out / 'validation-source', dirs_exist_ok=True)
           work = pathlib.Path(os.environ['RUNNER_TEMP']) / 'roadef-fleet-work'
-          for name in ('PREPARATION.json', 'BUILD.log'):
+          for name in ('PREPARATION.json', 'PREPARER.py', 'BUILD.log'):
               if (work / name).is_file():
                   shutil.copyfile(work / name, out / name)
           if (work / 'context/source-manifest.json').is_file():

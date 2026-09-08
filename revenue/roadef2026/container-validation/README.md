@@ -7,8 +7,16 @@ comparisons; the solver, portfolio defaults and qualification draft remain with
 their existing owners.
 
 `bootstrap.py` retrieves the 22 files listed in that commit's public manifest,
-verifies every original byte count and SHA-256, and uses its unchanged source
-preparer to verify four pinned dependency archives and stage the build context.
+verifies every original byte count and SHA-256, and uses QUARTZ's existing
+[PR10171](https://github.com/woahwhattheheck/commons/pull/10171) preparer at
+`1e31f2b2bef235bb145980c9ceed49580b1e55fb` to verify four pinned dependency archives and stage the
+build context. The first actual build exposed a missing extensionless SparseHash
+header family in the original preparer's suffix filter. The shared repair retains
+those original archive bytes and their attribution. No second preparation repair
+is introduced here. The original publication is
+preserved; `PREPARATION.json` records both original and executed preparer hashes,
+and `PREPARER.py` retains the executed source. Solver and runtime files still come
+from the original published commit.
 Only the three official B01 input files are extracted for these container cases.
 `PREPARATION.json` maps their original archive names to the local input names.
 
