@@ -15,3 +15,8 @@ Completed funding and seed-budget module code is reused across recovery and matc
 Completed parent route identity is retained separately from mutable controller state. Recovery restores only a choice associated with a complete selected action used as output/fallback; cancellation before the parent returns retains the preceding completed choice. New matches start fresh. LARCH supplied the actual-source boundary evidence; terminal routing and history economics remain experimental because the comparative results do not justify changing the strongest default.
 
 Worker-thread calls use a per-thread Python trace deadline, chaining and restoring the prior tracer and active frame. They never mutate process signal handlers or timers. Main-thread calls retain the existing alarm path. Both paths retain identity-specific cancellation and fresh-controller recovery. Tracing adds measured overhead and can deliver cancellation only at Python execution boundaries; blocking native calls, module imports before the entry clock, and external transport remain subject to the runner timeout. The default budget, reserve and economic policy are unchanged.
+
+## Redundant-hire certificate enabled
+
+The packaged T10 physical certificate is enabled in this release. It changes only a HIRE order proven to add no productive state before the next refresh, replacing that slot with a zero-quantity sale. Exact current-package and multi-opponent development checks retained positive own-cash deltas with no verdict regression; it remains independent of optional feed, terminal-route, terminal-history and spatial experiments. Root retains provider upload.
+

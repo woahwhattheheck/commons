@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "archive": {
+    "path": "exports/titan-current.tar.gz",
+    "entrypoint": "main.py::agent",
+    "config": "TITAN-CONFIG.json",
+    "sha256": "ab5d35365a6c031450cd581d2c0835752fef0e377932ccdc6c3dee980e2d28b0",
+    "bytes": 292494,
+    "runtime_files": 78,
+    "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json",
+    "source_manifest_sha256": "1fbd5b1d59207ed554080dc36a37831f91e0b4deb9225c49c3ba2c1c01f35741"
+  },
+  "retained_seed": 9922999,
+  "games": [
+    {
+      "seat": 0,
+      "scores": [
+        190324.0,
+        3550.0
+      ],
+      "steps": 719,
+      "trace_sha256": "2fdb81a544ae3d3b3f5081c0c98708b7cfa5377dd8e6744f15619b301cb070de",
+      "candidate": {
+        "calls": 719,
+        "call_cpu_seconds": 4.012190869999999,
+        "cpu_seconds": 4.278642,
+        "peak_rss_kib": 30816,
+        "exit_code": 0,
+        "resource_sample": "child_rusage_plus_linux_procfs",
+        "startup_seconds": 0.051139417000001686,
+        "max_call_seconds": 0.04822622399996135,
+        "mean_call_seconds": 0.005580750198887823,
+        "max_rpc_seconds": 0.0486257910000063,
+        "mean_rpc_seconds": 0.0060816750389428515
+      }
+    },
+    {
+      "seat": 1,
+      "scores": [
+        190324.0,
+        3550.0
+      ],
+      "steps": 719,
+      "trace_sha256": "2fdb81a544ae3d3b3f5081c0c98708b7cfa5377dd8e6744f15619b301cb070de",
+      "candidate": {
+        "calls": 719,
+        "call_cpu_seconds": 0.004130714000000382,
+        "cpu_seconds": 0.27457299999999996,
+        "peak_rss_kib": 28200,
+        "exit_code": 0,
+        "resource_sample": "child_rusage_plus_linux_procfs",
+        "startup_seconds": 0.06514507800000047,
+        "max_call_seconds": 2.225000002908928e-05,
+        "mean_call_seconds": 5.94912239237586e-06,
+        "max_rpc_seconds": 0.0008205240000052072,
+        "mean_rpc_seconds": 0.00046639046453307803
+      }
+    }
+  ],
+  "focused_tests": 72,
+  "result": "redundant_hire enabled; +5 own and no rival change in the retained mirrored protocol case",
+  "limits": "development/compatibility evidence; no provider upload or leaderboard claim"
+}
