@@ -7,14 +7,18 @@ name: poly-profiler-complete-reports-one-shot
 permissions:
   contents: write
 
+concurrency:
+  group: poly-profiler-complete-reports-one-shot
+  cancel-in-progress: true
+
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: astra/poly-profiler-complete-reports-20260908
+          ref: ${{ github.sha }}
           fetch-depth: 0
       - name: Apply retained patch and execute validation
         shell: bash
