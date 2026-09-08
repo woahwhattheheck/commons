@@ -165,7 +165,7 @@ class Actor:
         self.spec, self.buffer = spec, bytearray()
         self.stats = {"calls": 0, "call_seconds": [], "rpc_seconds": [], "call_cpu_seconds": 0.0,
                       "cpu_seconds": 0.0, "peak_rss_kib": 0, "exit_code": None, "resource_sample": "child_rusage",
-                      "final_resource_sample": "unavailable"}
+                      "final_resource_sample": "unavailable", "procfs_sample_status": "not_attempted"}
         self.directory = tempfile.TemporaryDirectory(prefix="kag-eval-agent-")
         env = {"PATH": os.defpath, "HOME": self.directory.name, "LANG": "C.UTF-8",
                "PYTHONHASHSEED": str(rng_seed % (2**32)), "PYTHONDONTWRITEBYTECODE": "1"}
@@ -351,22 +351,32 @@ class Actor:
         self.closed = True
         # Include resource use inside a call that timed out before it could report.
         if sys.platform.startswith("linux"):
+            sample_stage = "self_stat"
             try:
                 # A host-mounted procfs can use a different PID namespace from
                 # Popen/wait4. Numeric child paths would then name other processes.
                 procfs_pid = int(Path("/proc/self/stat").read_text().split(maxsplit=1)[0])
                 if procfs_pid != os.getpid():
+                    sample_stage = "pid_view_mismatch"
                     raise ValueError("procfs PID namespace differs from process APIs")
+                sample_stage = "child_status"
                 status = Path(f"/proc/{self.proc.pid}/status").read_text()
                 for line in status.splitlines():
                     if line.startswith("VmHWM:"):
                         self.stats["peak_rss_kib"] = max(self.stats["peak_rss_kib"], int(line.split()[1]))
+                sample_stage = "child_stat"
                 fields = Path(f"/proc/{self.proc.pid}/stat").read_text().rsplit(")", 1)[1].split()
                 cpu = (int(fields[11]) + int(fields[12])) / os.sysconf("SC_CLK_TCK")
                 self.stats["cpu_seconds"] = max(self.stats["cpu_seconds"], cpu)
                 self.stats["resource_sample"] = "child_rusage_plus_linux_procfs"
-            except (OSError, ValueError, IndexError):
-                pass  # Unavailable procfs: child-reported and final wait4 samples remain.
+                self.stats["procfs_sample_status"] = "sampled"
+            except (OSError, ValueError, IndexError) as exc:
+                # A later read failure may follow an already-retained RSS sample.
+                self.stats["procfs_sample_status"] = (
+                    "skipped:pid_view_mismatch" if sample_stage == "pid_view_mismatch"
+                    else f"error:{sample_stage}:{type(exc).__name__}")
+        else:
+            self.stats["procfs_sample_status"] = "not_applicable:non_linux"
         # Kill the process group, including children, before discarding its private directory.
         # Do not wait for a crashed/hung agent to consume another game slot.
         if self.proc.stdin:
