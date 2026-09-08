@@ -13,6 +13,7 @@ import stat
 import tempfile
 import time
 import zipfile
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -284,7 +285,7 @@ def main(argv=None) -> int:
             result = restore_workspace(args.archive, args.destination)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
-    except (MigrationError, OSError, sqlite3.Error, zipfile.BadZipFile, RuntimeError,
+    except (MigrationError, OSError, sqlite3.Error, zipfile.BadZipFile, zlib.error, RuntimeError,
             ValueError, TypeError, KeyError, AttributeError) as exc:
         print(json.dumps({"error": str(exc), "completed": False}, ensure_ascii=False))
         return 2
