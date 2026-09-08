@@ -72,13 +72,17 @@ def _parse_rows(rows: Sequence[Mapping[str, str]]) -> tuple[list[Node], list[Edg
                 f"row {row_number}: id must be consecutive from 0; expected {expected_id}, got {actual_id}"
             )
 
-        dataset = (row.get("dataset") or "").strip()
+        dataset = row.get("dataset") or ""
+        if dataset != dataset.strip():
+            raise SubmissionError(f"row {row_number}: dataset must not contain leading or trailing whitespace")
         if not dataset:
             raise SubmissionError(f"row {row_number}: dataset must be non-empty")
         if dataset.endswith(".zarr"):
             raise SubmissionError(f"row {row_number}: dataset must omit the .zarr suffix")
 
-        row_type = (row.get("row_type") or "").strip()
+        row_type = row.get("row_type") or ""
+        if row_type != row_type.strip():
+            raise SubmissionError(f"row {row_number}: row_type must not contain leading or trailing whitespace")
         if row_type == "node":
             node_id = _as_int(row, "node_id", row_number)
             t = _as_int(row, "t", row_number)
@@ -117,12 +121,16 @@ def validate_rows(
     *,
     expected_datasets: Iterable[str] | None = None,
     require_consecutive_edges: bool = True,
+    strict_lineage: bool = True,
 ) -> dict[str, int]:
     """Validate rows and return compact counts.
 
-    The organizer's public tracking model links cells to the next timepoint, so
-    t->t+1 edges are enforced by default. Set `require_consecutive_edges=False`
-    only for deliberate non-submission analysis.
+    Consecutive t->t+1 edges are enforced by default because the organizer scorer
+    filters non-consecutive links. ``strict_lineage=True`` additionally applies the
+    Commons readiness policy: reject exact duplicate edges, multiple parents, and
+    sources with more than two children. Set ``strict_lineage=False`` only when
+    checking organizer-compatible graph ingestion/scoring behavior; structural,
+    reference, sentinel, ID, and temporal checks remain active.
     """
     nodes, edges = _parse_rows(rows)
     node_map = {(node.dataset, node.node_id): node for node in nodes}
@@ -132,11 +140,13 @@ def validate_rows(
 
     for edge in edges:
         edge_key = (edge.dataset, edge.source_id, edge.target_id)
-        if edge_key in seen_edges:
+        is_duplicate = edge_key in seen_edges
+        if is_duplicate and strict_lineage:
             raise SubmissionError(
                 f"duplicate edge {edge.source_id}->{edge.target_id} in {edge.dataset!r}"
             )
         seen_edges.add(edge_key)
+
         src_key = (edge.dataset, edge.source_id)
         dst_key = (edge.dataset, edge.target_id)
         if src_key not in node_map:
@@ -153,11 +163,17 @@ def validate_rows(
             raise SubmissionError(
                 f"edge {edge.source_id}->{edge.target_id} in {edge.dataset!r} must connect consecutive frames"
             )
+
+        # Organizer scoring deduplicates exact source->target pairs before topology
+        # accounting, so non-strict mode does the same for compact lineage counts.
+        if is_duplicate:
+            continue
+
         incoming[dst_key] += 1
         outgoing[src_key] += 1
-        if incoming[dst_key] > 1:
+        if strict_lineage and incoming[dst_key] > 1:
             raise SubmissionError(f"node {edge.target_id} in {edge.dataset!r} has more than one parent")
-        if outgoing[src_key] > 2:
+        if strict_lineage and outgoing[src_key] > 2:
             raise SubmissionError(f"node {edge.source_id} in {edge.dataset!r} has more than two children")
 
     present = {node.dataset for node in nodes} | {edge.dataset for edge in edges}
@@ -192,11 +208,13 @@ def validate_submission(
     *,
     expected_datasets: Iterable[str] | None = None,
     require_consecutive_edges: bool = True,
+    strict_lineage: bool = True,
 ) -> dict[str, int]:
     return validate_rows(
         read_submission(path),
         expected_datasets=expected_datasets,
         require_consecutive_edges=require_consecutive_edges,
+        strict_lineage=strict_lineage,
     )
 
 
@@ -230,11 +248,26 @@ def main() -> int:
         default=True,
         help="require every edge to connect t to t+1 (default; flag retained for compatibility)",
     )
+    policy = parser.add_mutually_exclusive_group()
+    policy.add_argument(
+        "--strict-lineage",
+        dest="strict_lineage",
+        action="store_true",
+        default=True,
+        help="apply conservative duplicate/parent/child lineage guards (default)",
+    )
+    policy.add_argument(
+        "--organizer-compatible",
+        dest="strict_lineage",
+        action="store_false",
+        help="allow scorer-normalized duplicate/merge/high-outdegree graphs; structural and t->t+1 checks remain",
+    )
     args = parser.parse_args()
     counts = validate_submission(
         args.submission,
         expected_datasets=_load_expected(args.expected_datasets),
         require_consecutive_edges=args.strict_consecutive,
+        strict_lineage=args.strict_lineage,
     )
     print("PASS " + " ".join(f"{key}={value}" for key, value in counts.items()))
     return 0
