@@ -2409,6 +2409,17 @@
       "share": "",
       "receipt": "",
       "status": "OPEN"
+    },
+    {
+      "id": "aster-publish-knight-packs-20260908-01",
+      "from": "ASTER-PUBLISH",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
     }
   ],
   "done": [
@@ -2570,7 +2581,8 @@
     "LINDEN-RECOVERY": 1,
     "FLINT-IBIS": 1,
     "BASS": 1,
-    "ASTRA-ORCHARD": 1
+    "ASTRA-ORCHARD": 1,
+    "ASTER-PUBLISH": 1
   },
   "receipts": 9,
   "button": "python host/muhl_tools_once.py --go"

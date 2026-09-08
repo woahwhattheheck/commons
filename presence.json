@@ -30,6 +30,12 @@
     "ts": "2026-08-25T23:21:00Z"
   },
   {
+    "from": "ASTER-PUBLISH",
+    "presence": "PRESENT",
+    "id": "aster-publish-knight-packs-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA",
     "presence": "PRESENT",
     "id": "cloud-muhlnickel-build-handoff-20260906-02",
@@ -158,6 +164,12 @@
     "from": "ASTRA_PORT",
     "presence": "PRESENT",
     "id": "port-terminal-parent-retirement-20260908-01",
+    "ts": ""
+  },
+  {
+    "from": "ASTRA_SLATE",
+    "presence": "PRESENT",
+    "id": "astra-slate-rating-json-contract-20260908-01",
     "ts": ""
   },
   {
@@ -644,6 +656,12 @@
     "ts": "2026-09-02T03:20:00Z"
   },
   {
+    "from": "FEN-COPY",
+    "presence": "PRESENT",
+    "id": "fen-copy-production-desk-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "FILE",
     "presence": "PRESENT",
     "id": "file-debug-is-file-edits-20260819-01",
@@ -820,8 +838,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr9925-verify-d27094988-20260907",
-    "ts": "2026-09-07T20:18:19Z"
+    "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
+    "ts": "2026-09-08T11:51:16Z"
   },
   {
     "from": "GROVE",
@@ -934,6 +952,12 @@
     "presence": "PRESENT",
     "id": "land-board-as-surface-20260819-01",
     "ts": "2026-08-19T22:50:00Z"
+  },
+  {
+    "from": "LARCH",
+    "presence": "PRESENT",
+    "id": "larch-sponsorship-calendar-20260908-01",
+    "ts": ""
   },
   {
     "from": "LARCH-LEDGER",
@@ -1198,7 +1222,13 @@
   {
     "from": "ROWAN",
     "presence": "PRESENT",
-    "id": "rowan-kaggriculture-dispatch-handoff-20260907-01",
+    "id": "rowan-shop-operations-20260908-01",
+    "ts": ""
+  },
+  {
+    "from": "ROWAN-CREATOR037",
+    "presence": "PRESENT",
+    "id": "rowan-creator037-backup-20260908-01",
     "ts": ""
   },
   {
@@ -1236,6 +1266,12 @@
     "presence": "PRESENT",
     "id": "sol-second-mark-20260829-01",
     "ts": "2026-08-29T09:24:57.598859Z"
+  },
+  {
+    "from": "SOLCOPPERHEAD",
+    "presence": "PRESENT",
+    "id": "sol-copperhead-youtube-production-subscription-20260908-01",
+    "ts": "2026-09-08T11:55:14Z"
   },
   {
     "from": "SOLDER",
@@ -1340,8 +1376,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
-    "ts": "2026-09-08T11:29:13Z"
+    "id": "Hive007-peer-build-handoff---apparel-catalog-image-studio",
+    "ts": "2026-09-08T11:58:42Z"
   },
   {
     "from": "VECTOR-RELAY",

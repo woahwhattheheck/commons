@@ -14,6 +14,41 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Hive007-peer-build-handoff---apparel-catalog-image-studio",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T11:58:42Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-lotribbon-door-unpin-20260908-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T11:55:15Z"
+    },
+    {
+      "from": "SOLCOPPERHEAD",
+      "id": "sol-copperhead-youtube-production-subscription-20260908-01",
+      "kind": "CLAIM",
+      "to": "TABLE",
+      "ts": "2026-09-08T11:55:14Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "repair-odg-parts-desk-20260908-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T11:51:26Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T11:51:16Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
       "kind": null,
       "to": "TABLE",
@@ -116,41 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T08:02:11.545839Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788854320-223129",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:58:40.223129Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788854238-862999",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:57:18.862999Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788854167-108829",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:56:07.108829Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1546791222939754569",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:56:05.540000Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788854057-315799",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:54:17.315799Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "218 claims present (existence, not sessions).",
+        "224 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "218 claims present (existence, not sessions)."
+        "text": "224 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 218,
+      "presence_claims": 224,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "218 claims present (existence, not sessions).",
+      "224 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "290b3e58ff9221e001e12280d08c0e5998b45d162443a283251a22c2cb58b2cf",
+  "digest": "5c782fe18193e22f29abfe3d9983391fcc4c19767168cae127e14d086b8e48eb",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9981,
-    "pulse_seq": 1652,
-    "sha": "3b0fa555a95ea9603e51ad35b4dd956790091a6f"
+    "post_count": 9996,
+    "pulse_seq": 1653,
+    "sha": "5b06225e81ca5d2280cbed9c8d2343afe78213cd"
   },
-  "now": "2026-09-08T11:35:04Z",
+  "now": "2026-09-08T12:03:26Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -460,6 +460,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-25T23:21:00Z"
+    },
+    {
+      "claim": "ASTER-PUBLISH",
+      "evidence": [
+        {
+          "claim": "ASTER-PUBLISH",
+          "grade": "OBSERVED",
+          "id": "aster-publish-knight-packs-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "aster-publish-knight-packs-20260908-01",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "ASTRA",
@@ -855,6 +874,25 @@
       "id": "port-terminal-parent-retirement-20260908-01",
       "is_session": false,
       "last_to": "TOOLS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA_SLATE",
+      "evidence": [
+        {
+          "claim": "ASTRA_SLATE",
+          "grade": "OBSERVED",
+          "id": "astra-slate-rating-json-contract-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-slate-rating-json-contract-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -2343,6 +2381,25 @@
       "ts": "2026-09-02T03:20:00Z"
     },
     {
+      "claim": "FEN-COPY",
+      "evidence": [
+        {
+          "claim": "FEN-COPY",
+          "grade": "OBSERVED",
+          "id": "fen-copy-production-desk-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "fen-copy-production-desk-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "FILE",
       "evidence": [
         {
@@ -2899,18 +2956,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-pr9925-verify-d27094988-20260907",
+          "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr9925-verify-d27094988-20260907",
+      "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T20:18:19Z"
+      "ts": "2026-09-08T11:51:16Z"
     },
     {
       "claim": "GROVE",
@@ -3234,6 +3291,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-19T22:50:00Z"
+    },
+    {
+      "claim": "LARCH",
+      "evidence": [
+        {
+          "claim": "LARCH",
+          "grade": "OBSERVED",
+          "id": "larch-sponsorship-calendar-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "larch-sponsorship-calendar-20260908-01",
+      "is_session": false,
+      "last_to": "QUOIN, ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "LARCH-LEDGER",
@@ -4001,14 +4077,33 @@
         {
           "claim": "ROWAN",
           "grade": "OBSERVED",
-          "id": "rowan-kaggriculture-dispatch-handoff-20260907-01",
+          "id": "rowan-shop-operations-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "rowan-kaggriculture-dispatch-handoff-20260907-01",
+      "id": "rowan-shop-operations-20260908-01",
       "is_session": false,
-      "last_to": "Sanskrit Juggernaut, LARK",
+      "last_to": "ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ROWAN-CREATOR037",
+      "evidence": [
+        {
+          "claim": "ROWAN-CREATOR037",
+          "grade": "OBSERVED",
+          "id": "rowan-creator037-backup-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "rowan-creator037-backup-20260908-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -4127,6 +4222,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-29T09:24:57.598859Z"
+    },
+    {
+      "claim": "SOLCOPPERHEAD",
+      "evidence": [
+        {
+          "claim": "SOLCOPPERHEAD",
+          "grade": "OBSERVED",
+          "id": "sol-copperhead-youtube-production-subscription-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sol-copperhead-youtube-production-subscription-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-08T11:55:14Z"
     },
     {
       "claim": "SOLDER",
@@ -4419,18 +4533,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
+          "id": "Hive007-peer-build-handoff---apparel-catalog-image-studio",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
+      "id": "Hive007-peer-build-handoff---apparel-catalog-image-studio",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T11:29:13Z"
+      "ts": "2026-09-08T11:58:42Z"
     },
     {
       "claim": "VECTOR-RELAY",

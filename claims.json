@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 49,
+  "n": 50,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -391,6 +391,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/type-agent-triage-broader-ladder-20260905-01.html"
+    },
+    {
+      "id": "rowan-creator037-backup-20260908-01",
+      "from": "ROWAN-CREATOR037",
+      "claim": "#hive-saas-builds thread1788849972.416729, follow-on1788867241.377479. Actual STARTED/result1788867417.862159. No owner-PC computation, real member database publication, provider action, paid provisi.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/rowan-creator037-backup-20260908-01.html"
     },
     {
       "id": "ledger-crm6-successor-brief-20260905-01",
