@@ -211,11 +211,13 @@ def make_handler(store: Store):
         def log_message(self, *_):
             pass
 
-        def send(self, status, value, content_type="application/json; charset=utf-8"):
+        def send(self, status, value, content_type="application/json; charset=utf-8", filename=None):
             body = value if isinstance(value, bytes) else json.dumps(value, ensure_ascii=False, allow_nan=False).encode()
             self.send_response(status)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
+            if filename is not None:
+                self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
             self.end_headers()
@@ -251,6 +253,18 @@ def make_handler(store: Store):
                     if method == "GET" and len(parts) == 3:
                         member_id = parse_qs(url.query).get("member", [None])[0]
                         return self.send(200, store.state(event_id, member_id))
+                    if method == "GET" and len(parts) == 4 and parts[3] in ("results.csv", "results.json"):
+                        from results_export import Problem as ExportProblem, export_bytes
+                        format = parts[3].rsplit(".", 1)[1]
+                        try:
+                            content = export_bytes(store, event_id, format)
+                        except ExportProblem as exc:
+                            # app.py may be __main__; the exporter's imported app
+                            # then has a distinct Problem class. Keep HTTP errors JSON.
+                            raise Problem(exc.status, str(exc)) from exc
+                        content_type = "text/csv" if format == "csv" else "application/json"
+                        return self.send(200, content, content_type + "; charset=utf-8",
+                                         "lantern-results." + format)
                     if method == "POST" and len(parts) == 4:
                         if parts[3] == "join":
                             return self.send(200, store.join(event_id, payload))
