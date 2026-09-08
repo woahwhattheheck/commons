@@ -197,9 +197,18 @@ def canonical_episode(parsed: dict, duration_seconds: str, *, synthetic_demo: bo
         raise IntakeError('recording duration must be finite, positive, and at most 86400 seconds')
     if type(synthetic_demo) is not bool:
         raise IntakeError('synthetic_demo must be a boolean')
+    # These limits belong to the optional consumer, not generic caption intake.
+    if len(parsed['title']) > 200:
+        raise IntakeError('canonical title exceeds 200 characters; retain the generic transcript or edit the title')
+    if len(parsed['segments']) > 2000:
+        raise IntakeError('canonical import supports at most 2000 segments; retain the generic transcript')
     rows = []
     previous_end = 0
     for row in parsed['segments']:
+        if len(row['speaker']) > 120:
+            raise IntakeError(f"canonical speaker exceeds 120 characters at {row['id']}; retain the generic transcript")
+        if len(row['text']) > 12000:
+            raise IntakeError(f"canonical text exceeds 12000 characters at {row['id']}; retain the generic transcript")
         if row['start_ms'] < previous_end:
             raise IntakeError(f"canonical import cannot represent overlap at {row['id']}; "
                               'export without --duration-seconds to preserve overlapping captions')
