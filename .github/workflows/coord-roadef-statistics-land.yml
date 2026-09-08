@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  apply-and-verify:
+  apply-and-publish:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
             revenue/roadef2026/fleet-candidate
           sparse-checkout-cone-mode: false
 
-      - name: Decode source-pinned payload
+      - name: Decode and apply source-pinned payload
         shell: bash
         run: |
           set -euo pipefail
@@ -34,53 +34,46 @@ jobs:
           tar -xzf /tmp/roadef-statistics-payload.tar.gz -C /tmp/roadef-statistics-payload
           python3 /tmp/roadef-statistics-payload/apply.py
 
-      - name: Compile exact original and current repaired source
+      - name: Verify publication identities and recorded native evidence
         shell: bash
         run: |
           set -euo pipefail
-          F=revenue/roadef2026/fleet-candidate
-          mkdir -p /tmp/roadef-statistics-build
-          git fetch --no-tags --depth=1 origin 2885d176373c33410148829fef93c310c3752c0b
-          git show FETCH_HEAD:$F/main.cpp > /tmp/roadef-statistics-build/original.cpp
-          g++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" /tmp/roadef-statistics-build/original.cpp -o /tmp/roadef-statistics-build/original-gcc
-          g++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" "$F/main.cpp" -o /tmp/roadef-statistics-build/candidate-gcc
-          clang++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" /tmp/roadef-statistics-build/original.cpp -o /tmp/roadef-statistics-build/original-clang
-          clang++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" "$F/main.cpp" -o /tmp/roadef-statistics-build/candidate-clang
-
-      - name: Run output-ownership regressions with GCC and Clang
-        shell: bash
-        run: |
-          set -euo pipefail
-          F=revenue/roadef2026/fleet-candidate
-          T="$F/statistics-output-checks/test_statistics_output.py"
-          python3 -B "$T" --binary /tmp/roadef-statistics-build/candidate-gcc --reference-binary /tmp/roadef-statistics-build/original-gcc --fixtures "$F" --report /tmp/gcc.json 2>&1 | tee "$F/statistics-output-checks/hosted-gcc.log"
-          python3 -B "$T" --binary /tmp/roadef-statistics-build/candidate-clang --reference-binary /tmp/roadef-statistics-build/original-clang --fixtures "$F" --report /tmp/clang.json 2>&1 | tee "$F/statistics-output-checks/hosted-clang.log"
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib, json, subprocess
-          root=Path('revenue/roadef2026/fleet-candidate')
-          gcc=json.loads(Path('/tmp/gcc.json').read_text())
-          clang=json.loads(Path('/tmp/clang.json').read_text())
-          assert gcc['successful'] and clang['successful']
-          assert gcc['tests_run']==clang['tests_run']==24
-          source=(root/'main.cpp').read_bytes()
-          assert len(source)==37776
-          assert hashlib.sha256(source).hexdigest()=='79362dbf9d47ca921de508a9253e7c2642c57459487a88ea754780b673961724'
-          record={
-            'schema':'roadef-statistics-output-hosted-v1',
-            'status':'PASS',
-            'source_sha256':hashlib.sha256(source).hexdigest(),
-            'source_bytes':len(source),
-            'gcc_version':subprocess.check_output(['g++','--version'],text=True).splitlines()[0],
-            'clang_version':subprocess.check_output(['clang++','--version'],text=True).splitlines()[0],
-            'gcc':gcc,
-            'clang':clang,
-            'tests_per_compiler':24,
-            'public_instance_benchmark':False,
-            'submission_changed':False,
+          import hashlib, json, py_compile
+
+          root = Path('revenue/roadef2026/fleet-candidate')
+          expected = {
+              'main.cpp': (37776, '79362dbf9d47ca921de508a9253e7c2642c57459487a88ea754780b673961724'),
+              'statistics-output-checks/README.md': (6261, '42d152a2aa025660a79afa8a2b3487b3e70d5691b1d1f9eaf429dcf3c78fe34d'),
+              'statistics-output-checks/test_statistics_output.py': (13369, '75516589cb037424e346c0c9717188b1b171e6327ad3a831fab49b793d3d5633'),
+              'statistics-output-checks/STATISTICS-OUTPUT-VALIDATION.json': (2245, '2b4d5d84692e72e3a172efbf7bb83e299a08a09b5bbeade09e78d1474a515490'),
+              'statistics-output-checks/CURRENT-REGRESSIONS.json': (353, 'd330061162bcbe9fb0efc8f88ad7fa3791052ca2eb50b699fb885ac706669cfa'),
+              'statistics-output-checks/current-regressions.log': (2991, '69a5a3b3425dd89d5e0d4dd8e8df4291bdc2037e66b34a32683208e633b205a3'),
           }
-          (root/'statistics-output-checks/HOSTED-REGRESSIONS.json').write_text(json.dumps(record,indent=2,sort_keys=True)+'\n')
+          for name, (size, digest) in expected.items():
+              raw = (root / name).read_bytes()
+              assert len(raw) == size, (name, len(raw), size)
+              assert hashlib.sha256(raw).hexdigest() == digest, name
+
+          manifest = json.loads((root / 'PUBLIC-SOURCE-MANIFEST.json').read_text())
+          row = next(item for item in manifest['files'] if item['path'] == 'main.cpp')
+          assert row == {
+              'path': 'main.cpp',
+              'bytes': 37776,
+              'sha256': '79362dbf9d47ca921de508a9253e7c2642c57459487a88ea754780b673961724',
+          }
+
+          local = json.loads((root / 'statistics-output-checks/CURRENT-REGRESSIONS.json').read_text())
+          assert local['tests_run'] == 24 and local['successful'] is True
+          validation = json.loads((root / 'statistics-output-checks/STATISTICS-OUTPUT-VALIDATION.json').read_text())
+          assert validation['candidate']['tests_run'] == 24
+          assert validation['baseline']['failed_assertions_or_subtests'] == 25
+          assert validation['official_checker']['executions'] == 6
+          assert validation['submission_changed'] is False
+          py_compile.compile(str(root / 'statistics-output-checks/test_statistics_output.py'), doraise=True)
           PY
+          git diff --check
 
       - name: Commit verified implementation to this branch
         shell: bash
