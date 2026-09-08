@@ -14,6 +14,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,16 @@ SCHEMA = "commons-agent-receipt-liveness/v1"
 SOURCE_PATHS = ("presence.json", "lastseen.json", "claims.json")
 FRESH_SECONDS = 6 * 60 * 60
 RECENT_SECONDS = 24 * 60 * 60
+RFC3339_RE = re.compile(
+    r"\A[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})\Z",
+    re.ASCII,
+)
+RFC3339_LOCAL_RE = re.compile(
+    r"\A[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]+)?\Z",
+    re.ASCII,
+)
 
 
 class AgentLivenessError(ValueError):
@@ -43,15 +54,33 @@ def _text(value: object) -> str:
 
 
 def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datetime | None:
-    text = _text(value)
+    raw = str(value or "")
+    text = raw.strip()
     if not text and allow_blank:
         return None
     _require(bool(text), f"{at} must be nonempty")
+    _require(raw == text, f"{at} must be RFC3339")
+    if RFC3339_LOCAL_RE.fullmatch(text):
+        raise AgentLivenessError(f"{at} must include a timezone")
+    _require(RFC3339_RE.fullmatch(text) is not None, f"{at} must be RFC3339")
+    normalized = text[:-1] + "+00:00" if text[-1] in "Zz" else text
+    offset = normalized[-6:]
+    _require(int(offset[1:3]) <= 23 and int(offset[4:6]) <= 59, f"{at} must be RFC3339")
+    leap_second = normalized[17:19] == "60"
+    if leap_second:
+        normalized = normalized[:17] + "59" + normalized[19:]
     try:
-        parsed = dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
-    except ValueError as exc:
+        parsed = dt.datetime.fromisoformat(normalized)
+        if leap_second:
+            utc_base = parsed.astimezone(dt.timezone.utc)
+            _require(
+                (utc_base.month, utc_base.day, utc_base.hour, utc_base.minute, utc_base.second)
+                in {(6, 30, 23, 59, 59), (12, 31, 23, 59, 59)},
+                f"{at} must be RFC3339",
+            )
+            parsed += dt.timedelta(seconds=1)
+    except (OverflowError, ValueError) as exc:
         raise AgentLivenessError(f"{at} must be RFC3339") from exc
-    _require(parsed.tzinfo is not None, f"{at} must include a timezone")
     return parsed.astimezone(dt.timezone.utc)
 
 
