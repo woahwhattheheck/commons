@@ -175,6 +175,47 @@ class RecordedInputTests(unittest.TestCase):
             self.assertEqual(output.read_bytes(), b"previous input")
             self.assertEqual(receipt.read_bytes(), b"previous receipt")
 
+    def document(self):
+        return {"schema": subject.SCHEMA, "engine_ref": self.evaluator.ENGINE_REF,
+                "engine_sha256": copy.deepcopy(self.hashes),
+                "games": [copy.deepcopy(self.fixtures[0])]}
+
+    def recover_document(self, document=None, **kwargs):
+        return subject.recover_record(self.document() if document is None else document,
+                                      self.evaluator, self.tracer, self.engine,
+                                      ENGINE_DIR, self.loader, self.hashes, **kwargs)
+
+    def test_record_schema_engine_and_custom_configuration(self):
+        cases = [("schema", None), ("engine_ref", "wrong"), ("engine_sha256", {}),
+                 ("configuration_overrides", {"startingMoney": 1}),
+                 ("configuration", {"startingMoney": 1})]
+        for key, value in cases:
+            with self.subTest(key=key):
+                document = self.document(); document[key] = value
+                with self.assertRaises(ValueError):
+                    self.recover_document(document)
+
+    def test_record_view_preserves_original_and_actor_rng_identity(self):
+        document = self.document()
+        before = subject.canonical(document)
+        inputs, receipt = self.recover_document(document, seat=1)
+        self.assertEqual(subject.canonical(document), before)
+        self.assertEqual(inputs[1]["observation"]["player"], 1)
+        self.assertEqual(inputs[0]["expected_action"], document["games"][0]["actions_and_timing"][0]["actions"][1])
+        self.assertEqual(receipt["original_candidate_seat"], 0)
+        self.assertFalse(receipt["view_is_original_candidate"])
+        self.assertEqual(receipt["candidate_actor_rng_seed"], 20260908)
+        self.assertEqual(receipt["candidate_pythonhashseed"], 20260908)
+
+    def test_record_invalid_original_seat_not_masked_by_view(self):
+        document = self.document()
+        document["games"][0]["candidate_seat"] = True
+        with self.assertRaises(ValueError):
+            self.recover_document(document, seat=1)
+        for kw in ({"seat": True}, {"game_index": True}, {"expected_trace": "0" * 64}):
+            with self.subTest(kw=kw), self.assertRaises(ValueError):
+                self.recover_document(**kw)
+
     def test_atomic_replace_failure_preserves_target(self):
         with tempfile.TemporaryDirectory() as folder:
             target = Path(folder) / "output"
