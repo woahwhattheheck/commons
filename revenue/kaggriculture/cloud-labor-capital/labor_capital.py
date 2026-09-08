@@ -54,7 +54,6 @@ def _configuration(configuration: Mapping[str, Any] | None) -> View:
         lower = 0 if key == "farmHandCostMult" else 1
         if isinstance(value, bool) or not isinstance(value, int) or value < lower:
             raise ValueError(f"invalid {key}")
-        cfg[key] = value
     return cfg
 
 
