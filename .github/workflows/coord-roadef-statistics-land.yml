@@ -8,13 +8,21 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: coord-roadef-statistics-land
+  cancel-in-progress: true
+
 jobs:
   apply-and-verify:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/roadef-statistics-payload
+            revenue/roadef2026/fleet-candidate
+          sparse-checkout-cone-mode: false
 
       - name: Decode source-pinned payload
         shell: bash
@@ -32,7 +40,8 @@ jobs:
           set -euo pipefail
           F=revenue/roadef2026/fleet-candidate
           mkdir -p /tmp/roadef-statistics-build
-          git show 2885d176373c33410148829fef93c310c3752c0b:$F/main.cpp > /tmp/roadef-statistics-build/original.cpp
+          git fetch --no-tags --depth=1 origin 2885d176373c33410148829fef93c310c3752c0b
+          git show FETCH_HEAD:$F/main.cpp > /tmp/roadef-statistics-build/original.cpp
           g++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" /tmp/roadef-statistics-build/original.cpp -o /tmp/roadef-statistics-build/original-gcc
           g++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" "$F/main.cpp" -o /tmp/roadef-statistics-build/candidate-gcc
           clang++ -std=c++17 -O2 -DNDEBUG -I "$F/vendor" /tmp/roadef-statistics-build/original.cpp -o /tmp/roadef-statistics-build/original-clang
