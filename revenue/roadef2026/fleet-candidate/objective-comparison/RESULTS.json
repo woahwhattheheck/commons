@@ -1,0 +1,229 @@
+{
+  "schema": "roadef.delve.objective-comparison.v1",
+  "scope": "Exact objective-comparison cost only; no search/ranking/quantization change",
+  "source": {
+    "original_commit": "2885d176373c33410148829fef93c310c3752c0b",
+    "original_git_blob": "9354ec61fc32bb7ebbdaaa4a9bff7c7780a7e1df",
+    "original_sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1",
+    "patched_git_blob": "48e887dcbfc3988258350cf25d8a49e4e15ab4b9",
+    "patched_sha256": "66b4a203230abbc415a9e8f682e02dc9868a140e2520b91ad978ea48900da0f1",
+    "patched_bytes": 35298
+  },
+  "generic_comparator": {
+    "checks": 189930,
+    "max_decisive": 92857,
+    "count_decisive": 39187,
+    "fallback": 57886
+  },
+  "source_manifest_test_methods": 8,
+  "negative_controls": [
+    {
+      "control": "reversed-max",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "comparison mismatch case 2\n"
+    },
+    {
+      "control": "reversed-multiplicity",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "comparison mismatch case 38\n"
+    },
+    {
+      "control": "non-strict-tie",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "comparison mismatch case 0\n"
+    },
+    {
+      "control": "missing-deeper-fallback",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "comparison mismatch case 115\n"
+    }
+  ],
+  "whole_solver": {
+    "graphs": 4,
+    "joint_switch_cases": 8,
+    "all_solutions_and_non_time_stats_identical": true,
+    "fixed_rounds": 40,
+    "alternating_pairs": 9,
+    "original_median_s": 0.22362259399983486,
+    "patched_median_s": 0.09204282600012448,
+    "reduction_fraction": 0.5884010450205561,
+    "timing_samples_s": [
+      {
+        "original": 0.22531822599989937,
+        "fast": 0.09003203400015991
+      },
+      {
+        "original": 0.21372606900013125,
+        "fast": 0.09976440100012951
+      },
+      {
+        "original": 0.2401134969998111,
+        "fast": 0.09655030000021725
+      },
+      {
+        "original": 0.21835826699998506,
+        "fast": 0.09204282600012448
+      },
+      {
+        "original": 0.21810021599981155,
+        "fast": 0.08907767300001979
+      },
+      {
+        "original": 0.2242740970000341,
+        "fast": 0.08994130900009623
+      },
+      {
+        "original": 0.22543881899991902,
+        "fast": 0.09596394200002578
+      },
+      {
+        "original": 0.21411324100017737,
+        "fast": 0.08975390299997343
+      },
+      {
+        "original": 0.22362259399983486,
+        "fast": 0.09314475899986974
+      }
+    ],
+    "work": {
+      "accepted": 74,
+      "attempted": 6636,
+      "final_mlu": 3.7857142857142847,
+      "initial_mlu": 16.900000000000002,
+      "joint_accepted": 0,
+      "joint_attempted": 780,
+      "ranked_candidates": 5152,
+      "resumed": false
+    },
+    "checker_calls": 18,
+    "checker_decimals": [
+      6,
+      12
+    ],
+    "valid": true
+  },
+  "wren_join": {
+    "input_package": "ROADEF-WREN-route-distance.zip",
+    "input_sha256": "af439be9de9526fad231a828b0342441fd90c2ed25f09045b512803693bcfb31",
+    "distance_only_source_sha256": "1aa873e4ea15f4bde655327fb856bd9da759c68e347b8a8722619666424b9ed8",
+    "combined_source_sha256": "5c3369ce355f37f5ee40a09d2c9d973a9326e709a848058f8622fec9c1f96b3e",
+    "patch_order_bytes_identical": true,
+    "all_four_combinations_same_work": true,
+    "alternating_pairs": 9,
+    "distance_only_median_s": 0.23312344000009944,
+    "combined_median_s": 0.09311802499996702,
+    "marginal_reduction_fraction": 0.6005634396956081,
+    "timing_samples_s": [
+      {
+        "original": 0.25747694999995474,
+        "fast": 0.09202333200005341
+      },
+      {
+        "original": 0.22827662899999268,
+        "fast": 0.11538215900009163
+      },
+      {
+        "original": 0.21840143999997963,
+        "fast": 0.09715925899990907
+      },
+      {
+        "original": 0.23333607399990797,
+        "fast": 0.09311802499996702
+      },
+      {
+        "original": 0.24367558299991288,
+        "fast": 0.09648530800018307
+      },
+      {
+        "original": 0.23312344000009944,
+        "fast": 0.09531034599990562
+      },
+      {
+        "original": 0.23724731499987683,
+        "fast": 0.0901226470000438
+      },
+      {
+        "original": 0.2242477320000944,
+        "fast": 0.08642736500019055
+      },
+      {
+        "original": 0.2136608430000706,
+        "fast": 0.08570352500009903
+      }
+    ],
+    "checker_calls": 18
+  },
+  "existing_joint_controls": {
+    "solver_sha256": "5bbc59383719f60fdb534e6fc9e67cdb5dcfe4cc9a7d920464433af91e10ce97",
+    "source_sha256": "66b4a203230abbc415a9e8f682e02dc9868a140e2520b91ad978ea48900da0f1",
+    "checker_sha256": "e2a2297b5a43aaf4d95d6cbc65b16e62d4fc5fb1381e59a2323a8bad3015a472",
+    "cases": [
+      {
+        "case": "joint",
+        "first_improved_rank": 1,
+        "before_mlu": 10.0,
+        "after_mlu": 9.0,
+        "joint_accepted": 1,
+        "cost_before": 0,
+        "cost_after": 0,
+        "negative_control": "pass",
+        "same_path_resume": "pass",
+        "fixed_round_repeatability": "pass",
+        "checker_valid": true,
+        "before_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b",
+        "after_sha256": "54bb374c34f5e3316d85073cafeb926e7a6442a993675942e4d9c0f298d49187"
+      },
+      {
+        "case": "joint-budget",
+        "first_improved_rank": 3,
+        "before_mlu": 10.0,
+        "after_mlu": 10.0,
+        "joint_accepted": 1,
+        "cost_before": 3,
+        "cost_after": 3,
+        "negative_control": "pass",
+        "same_path_resume": "pass",
+        "fixed_round_repeatability": "pass",
+        "checker_valid": true,
+        "before_sha256": "b162bb6539e9dc99eccff1f6dbca933273339f9f762c71535f2462a534ba2131",
+        "after_sha256": "b0396abcb6de2b3f9e9570a565223df3167c983f14225c2bc3d807a0e95db9bc"
+      }
+    ],
+    "fixture_sha256": {
+      "joint-budget-incumbent.json": "b162bb6539e9dc99eccff1f6dbca933273339f9f762c71535f2462a534ba2131",
+      "joint-budget-scenario.json": "ad046b3b6240fd8d9765151740a69fe84ad7459200715f0ecb070af355c0658d",
+      "joint-budget-tm.json": "46c8281c34cca2147a70c79b168583cde2f6ef72de94a89066fe609e492c317d",
+      "joint-net.json": "5e4b170baf48a0ba41975f7d026ed78e4d87de567f64940b5dada726589c998f",
+      "joint-scenario.json": "0d3afa4828af57156657f711788d68876d1ba93fcd5f25aa9a2fb442a2edb21d",
+      "joint-tm.json": "0741d857dc321b14e9164c3e98687431d9be78548ea51e8a75463540a745cdd9"
+    }
+  },
+  "hardware": {
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "cpu_max": "400000 100000",
+    "memory_max": "4294967296"
+  },
+  "input_archives": {
+    "fleet": "82785dc0ccbbd5daf0a77770faec95f02094a42aa40fb0dc84ad94e818765e6a",
+    "checker_context": "62bb113f6fecf074fad8a5a76623c548d099466e230f509c8e353fb2b2e181e6"
+  },
+  "raw_reports": {
+    "checker-valid-run/RESULTS.json": "5b23e3a19f54df81117a10de88c6d3c7d13d25dd72d35611b1bd491c2a247850",
+    "checker-valid-wren-join/RESULTS.json": "fdc58581afac979439cea35a4ab7e2ddbec00129c488d245a63a263d155fd502",
+    "microbench.json": "bf76ab28b6859192fb533911b395b5503c7404d5663bcb8907ebb73b2ec92a08"
+  },
+  "limitations": [
+    "Constructed fixed-work graphs, not official public B performance or competition placement.",
+    "Added scan has measured 2-19% overhead on some synthetic deeper/tied comparisons; original sorting remains the exact fallback.",
+    "Earlier generated traffic allowed duplicate demand endpoints: those results remain separately labeled initial synthetic/predecessor evidence, not checker-valid results.",
+    "A faster deadline-limited run may explore more or different moves; equal-time quality is not established by fixed-round parity.",
+    "The 4-CPU/4GiB container is not the official evaluation hardware.",
+    "WREN original method validation is not rerun or included in these comparator test counts.",
+    "S139 draft, attachment, registration and submission remain unchanged."
+  ]
+}
