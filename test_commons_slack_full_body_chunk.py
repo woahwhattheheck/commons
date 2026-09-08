@@ -20,10 +20,10 @@ DOOR = ROOT / "commons-slack-chunk.html"
 KEEP = {
     "host/commons_slack_full_body.py": "3bf97dc1",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "17214fcb",
-    "test_commons_slack_full_body.py": "a8b51665",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "2db9f0e5",
+    "test_commons_slack_full_body.py": "5ace22d6",
     "host/slack_mirror.py": "c94f6fa5",
-    "slack_ingest.py": "0040a726",
+    "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",
     "commons-slack.html": "172df02f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
