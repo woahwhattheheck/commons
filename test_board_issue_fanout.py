@@ -89,7 +89,7 @@ class BoardIssueFanoutTests(unittest.TestCase):
         self.assertIn("&& 'queue' || github.event.issue.number || 'poll'", self.commons)
         self.assertIn("cancel-in-progress: false", self.commons)
 
-    def test_label_failure_keeps_completed_ingest_and_device_eligible(self):
+    def test_label_failure_keeps_completed_ingest_and_ordinary_device_eligible(self):
         label_at = self.commons.index(
             "      - name: label template-matching board issue")
         complete_at = self.commons.index(
@@ -106,8 +106,11 @@ class BoardIssueFanoutTests(unittest.TestCase):
             self.commons,
         )
         self.assertIn(
-            "if: always() && needs.ingest.outputs.ingest_complete == 'true' "
-            "&& needs.ingest.outputs.has_pending_device == 'true'",
+            "if: \"\${{ always() && "
+            "needs.ingest.outputs.ingest_complete == 'true' && "
+            "needs.ingest.outputs.has_pending_device == 'true' && "
+            "!(github.event_name == 'issues' && "
+            "contains(github.event.issue.body, 'carrier: slack-connector')) }}\"",
             self.commons,
         )
 
