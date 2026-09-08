@@ -54,6 +54,7 @@ class TimeoutEvidenceTests(unittest.TestCase):
 
     def test_checker_timeout_preserves_both_streams_and_solver_log(self):
         calls = 0
+
         def runner(command, **kwargs):
             nonlocal calls
             calls += 1
@@ -63,6 +64,7 @@ class TimeoutEvidenceTests(unittest.TestCase):
                 Path(kwargs['env']['SEDGE_STATS']).write_text('{"accepted":0,"joint_accepted":0,"budget_used":[0,3],"resumed":false}\n')
                 return subprocess.CompletedProcess(command, 0, stdout='solver-ok\n', stderr='solver-note\n')
             raise subprocess.TimeoutExpired(command, 30, output=b'{"valid":', stderr=b'checker-err\n')
+
         with patch.object(self.subject.subprocess, 'run', side_effect=runner), self.assertRaises(subprocess.TimeoutExpired):
             self.call_main()
         self.assertEqual((self.out/'joint-disabled.log').read_text(), 'solver-ok\nsolver-note\n')
