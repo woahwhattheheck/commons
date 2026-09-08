@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from arc2_baseline import build_submission, fit_hypotheses, solve_task, validate_grid
+from arc2_baseline import build_submission, solve_task, validate_grid
 
 
 def task(inp, out, test):
@@ -30,6 +30,28 @@ class Arc2BaselineTests(unittest.TestCase):
         t = task([[1, 0], [2, 1]], [[9, 8], [8, 7]], [[2, 1], [0, 2]])
         # rot90(test) -> [[0,2],[2,1]], then 0->7, 2->9, 1->8
         self.assertEqual(solve_task(t)[0]["attempt_1"], [[7, 9], [9, 8]])
+
+    def test_mirror_quadrants(self):
+        t = task(
+            [[1, 2], [3, 4]],
+            [[1, 2, 2, 1], [3, 4, 4, 3], [3, 4, 4, 3], [1, 2, 2, 1]],
+            [[5, 6], [7, 8]],
+        )
+        self.assertEqual(
+            solve_task(t)[0]["attempt_1"],
+            [[5, 6, 6, 5], [7, 8, 8, 7], [7, 8, 8, 7], [5, 6, 6, 5]],
+        )
+
+    def test_latin_square_zero_completion(self):
+        t = task(
+            [[0, 2, 3, 4], [2, 3, 4, 1], [3, 4, 1, 2], [4, 1, 2, 0]],
+            [[1, 2, 3, 4], [2, 3, 4, 1], [3, 4, 1, 2], [4, 1, 2, 3]],
+            [[1, 0, 3, 4], [0, 3, 4, 1], [3, 4, 0, 2], [4, 1, 2, 0]],
+        )
+        self.assertEqual(
+            solve_task(t)[0]["attempt_1"],
+            [[1, 2, 3, 4], [2, 3, 4, 1], [3, 4, 1, 2], [4, 1, 2, 3]],
+        )
 
     def test_crop_nonzero(self):
         t = task(
