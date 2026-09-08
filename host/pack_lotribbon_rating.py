@@ -90,8 +90,8 @@ DO_NOT_OVERWRITE = (
 )
 
 
-def git_blob_prefix(rel: str, n: int = 8) -> str:
-    path = ROOT / rel
+def git_blob_prefix(rel: str, n: int = 8, *, root: Path | None = None) -> str:
+    path = (ROOT if root is None else root) / rel
     if not path.is_file():
         return ""
     data = path.read_bytes()
@@ -115,7 +115,7 @@ def parse_slots(text: str) -> dict[str, Any]:
     }
 
 
-def classify_path(path: Path) -> dict[str, Any]:
+def classify_path(path: Path, *, law_path: Path | None = None) -> dict[str, Any]:
     if not path.is_file():
         return {
             "kind": "LOTRIBBON_RATING",
@@ -138,7 +138,8 @@ def classify_path(path: Path) -> dict[str, Any]:
             "bulk_price": slots["bulk_price"],
             "owner_pasted_rating": slots["owner_pasted_rating"],
             "copy": "",
-        }
+        },
+        law_path=law_path,
     )
     invented_stripe = bool(STRIPE_FAKE_RE.search(text))
     named = "LotRibbon Greetings" in text
@@ -201,22 +202,33 @@ def classify_path(path: Path) -> dict[str, Any]:
 
 def classify_tree(root: Path | None = None) -> dict[str, Any]:
     base = root or ROOT
-    sheet = classify_path(base / "packs" / "lotribbon-greetings-20260902-01" / "rating.md")
-    template_blob = git_blob_prefix("packs/_template/rating.md")
-    door_blob = git_blob_prefix("packs/lotribbon-greetings-20260902-01/index.html")
-    harborline_sheet = git_blob_prefix("packs/desk-website-service-20260902-01/rating.md")
-    harborline_receipt = git_blob_prefix("p/cursor-pack-harborline-rating-20260902-01.md")
-    pointer_receipt = git_blob_prefix(
+    law_path = None if root is None else base / "ground" / "BUSINESS_PACK_RATING.json"
+
+    def blob(rel: str) -> str:
+        # Retain the existing one-argument default hook for callers and tests.
+        if root is None:
+            return git_blob_prefix(rel)
+        return git_blob_prefix(rel, root=base)
+
+    sheet = classify_path(
+        base / "packs" / "lotribbon-greetings-20260902-01" / "rating.md",
+        law_path=law_path,
+    )
+    template_blob = blob("packs/_template/rating.md")
+    door_blob = blob("packs/lotribbon-greetings-20260902-01/index.html")
+    harborline_sheet = blob("packs/desk-website-service-20260902-01/rating.md")
+    harborline_receipt = blob("p/cursor-pack-harborline-rating-20260902-01.md")
+    pointer_receipt = blob(
         "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
     )
-    sheet_blob = git_blob_prefix("packs/lotribbon-greetings-20260902-01/rating.md")
-    original_receipt = git_blob_prefix("p/cursor-lead-lotribbon-rating-20260902-01.md")
-    a4_yard = git_blob_prefix("p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md")
-    desk_a4 = git_blob_prefix("p/cursor-claude-peer-check-a4-desk-test-adopt-20260902-01.md")
+    sheet_blob = blob("packs/lotribbon-greetings-20260902-01/rating.md")
+    original_receipt = blob("p/cursor-lead-lotribbon-rating-20260902-01.md")
+    a4_yard = blob("p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md")
+    desk_a4 = blob("p/cursor-claude-peer-check-a4-desk-test-adopt-20260902-01.md")
     harborline_unpin_present = (
         base / "p" / "cursor-pack-harborline-rating-peer-unpin-20260902-01.md"
     ).is_file()
-    law = factory.load_law()
+    law = factory.load_law(law_path)
     ok = (
         sheet.get("verdict") == "LOTRIBBON_RATING_INSTANCE_OK"
         and str(law.get("id") or "") == FACTORY_ID
