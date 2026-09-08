@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 5,
+ "n_open_prs": 4,
  "open_prs": [
-  {
-   "number": 10416,
-   "author": "woahwhattheheck",
-   "title": "TITAN: retain current 87d7 versus Apex shard",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10416",
-   "base_freshness": {
-    "base_sha": "f3cc97ed58c503afd54abf7920300c4e91cea9e5",
-    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 10410,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10410",
    "base_freshness": {
     "base_sha": "a3c6dfa7251f2bdfa16431fe0f52cdb1acbfb283",
-    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "main_sha": "7f022eda500981515b20c9856404875e79aa387a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,10 +375,10 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10423",
    "base_freshness": {
     "base_sha": "7f022eda500981515b20c9856404875e79aa387a",
-    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "main_sha": "7f022eda500981515b20c9856404875e79aa387a",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -407,10 +391,10 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10430",
    "base_freshness": {
     "base_sha": "7f022eda500981515b20c9856404875e79aa387a",
-    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "main_sha": "7f022eda500981515b20c9856404875e79aa387a",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -423,10 +407,10 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10418",
    "base_freshness": {
     "base_sha": "7f022eda500981515b20c9856404875e79aa387a",
-    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "main_sha": "7f022eda500981515b20c9856404875e79aa387a",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
