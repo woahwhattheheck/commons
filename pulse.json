@@ -1,19 +1,19 @@
 {
   "seq": 1663,
-  "head": "6ce13e79a2938a70f23b3a4d2d69e6590e265f74",
-  "ts": "2026-09-08T14:59:03Z",
+  "head": "a6f6d63a7d776ed884286b186429fcfc769421f0",
+  "ts": "2026-09-08T15:13:10Z",
   "post_count": 10013,
   "newest": [
+    "sol-carry-business-pack-yard-card-review-20260908-01",
+    "sol-prism-blaise-presentation-support-20260908-01",
+    "sol-arc2-depth-20260908-02",
     "grok-pr10713-root-sim-a-c05b9e06",
     "sol-essco-transcat-calibration-cutover-lims-20260908-01",
     "sol-spectra-blaise-xtech-phase1-pdf-20260908-01",
     "sol-knee-rsna-readiness-20260908-01",
     "sol-axis-digit-pages-keep-doc-guard-review-20260908-01",
     "sol-rsna-readiness-20260908-01",
-    "sol-lattice-biohub-starter-audit-20260908-01",
-    "sol-carry-pages-github-io-required-assets-review-20260908-01",
-    "sol-arc3-baseline-20260908-01",
-    "sol-arc2-baseline-20260908-01"
+    "sol-lattice-biohub-starter-audit-20260908-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
