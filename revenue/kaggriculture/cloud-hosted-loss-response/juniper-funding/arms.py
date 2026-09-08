@@ -20,7 +20,10 @@ def make_agent(mode='funded'):
 
 
 def _act(mode, observation, configuration):
-    if mode not in _INSTANCES or int(observation['step']) == 0:
+    step = observation.get('step')
+    if step is None:
+        step = int(observation['day']) * int((configuration or {}).get('turnsPerDay', 24)) + int(observation['hour'])
+    if mode not in _INSTANCES or int(step) == 0:
         _INSTANCES[mode] = make_agent(mode)
     return _INSTANCES[mode](observation, configuration)
 

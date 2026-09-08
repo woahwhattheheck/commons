@@ -3,6 +3,14 @@
 _policy = None
 
 
+def _absolute_step(observation, configuration):
+    """Resolve the same public clock before actor dispatch or reset decisions."""
+    step = observation.get('step')
+    if step is not None:
+        return int(step)
+    return int(observation['day']) * int((configuration or {}).get('turnsPerDay', 24)) + int(observation['hour'])
+
+
 def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None,
                policy=None, controller=None):
     """Keep one existing policy; optionally select cash-coupled seed proposals.
@@ -36,6 +44,8 @@ def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None,
     budget = budget_module.SeedBudget(controller.R)
     def run(observation, configuration=None):
         config = dict(configuration or {})
+        observation = dict(observation)
+        observation['step'] = _absolute_step(observation, config)
         run.seed_funding = None
         # One call only; projection below is deterministic owned unit mechanics.
         action = policy.act(observation, config) if sell else policy.act(observation)
@@ -70,10 +80,9 @@ def make_agent(root, sell=True, enabled=True, *, seed_queue_selector=None,
 
 def agent(observation, configuration=None):
     global _policy
-    if _policy is None or int(observation.get('step', 0)) == 0:
+    if _policy is None or _absolute_step(observation, configuration) == 0:
         from pathlib import Path
-        path = globals().get('__file__') or (configuration or {}).get('__raw_path__')
-        if not path:
-            raise ValueError('Supply a module path or configuration.__raw_path__')
+        path = (globals().get('__file__') or (configuration or {}).get('__raw_path__')
+                or agent.__code__.co_filename)
         _policy = make_agent(Path(path).resolve().parent)
     return _policy(observation, configuration)
