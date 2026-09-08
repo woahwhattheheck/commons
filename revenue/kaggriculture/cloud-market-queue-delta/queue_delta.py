@@ -309,6 +309,22 @@ def main() -> int:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
+    if args.output is not None:
+        # Compare path and filesystem identity before loading or simulating.
+        # A report must not truncate its engine, input, or executing CLI source.
+        for incoming in (args.engine_source, args.input, Path(__file__)):
+            try:
+                try:
+                    output_path = args.output.resolve(strict=True)
+                except FileNotFoundError:
+                    output_path = args.output.resolve()
+                aliases = output_path == incoming.resolve()
+                if args.output.exists() and incoming.exists():
+                    aliases = aliases or args.output.samefile(incoming)
+            except (OSError, RuntimeError) as exc:
+                parser.error("Cannot resolve report/input identity: " + type(exc).__name__)
+            if aliases:
+                parser.error("Report output must not alias an engine, input, or CLI source")
     mechanics = load_market_engine(args.engine_source)
     payload = json.loads(args.input.read_text(encoding="utf-8"))
     result = compare_queues(mechanics, **payload)
