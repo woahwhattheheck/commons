@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "prepare_context.py",
-      "bytes": 11528,
-      "sha256": "12dc42972d0f000f2651701347238ce5fd2205ac040941ebe9eaf1a2571c1df8"
+      "bytes": 12160,
+      "sha256": "b4ccca899888e40dcf44bb6867eb98bc6b3571c2ffc795c762f5884382fcd9a7"
     },
     {
       "path": "supervisor.py",
@@ -110,6 +110,16 @@
       "path": "NATIVE-VALIDATION.json",
       "bytes": 14244,
       "sha256": "4368c22fd75dfc67348d57f75ede923352eace6387dec26b7dfbd2fcf2bbaf5e"
+    },
+    {
+      "path": "test_prepare_context_transaction.py",
+      "bytes": 15015,
+      "sha256": "a33805ab7e5439336d705b4ec778d85afcf3d374fa4db3a651b193f00d218368"
+    },
+    {
+      "path": "PREPARATION-ROLLBACK.md",
+      "bytes": 2236,
+      "sha256": "d32530ef49fc73e5c1ec91c313193a9e7136fd4c1c614f3ec01a75eae8ce988f"
     }
   ]
 }
