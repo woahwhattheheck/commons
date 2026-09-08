@@ -7,8 +7,14 @@ import argparse
 import csv
 import hashlib
 import html
+import io
 import json
 import re
+import os
+import sqlite3
+import stat
+import tempfile
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta
 from decimal import Decimal, InvalidOperation
@@ -249,6 +255,38 @@ def _read_schedule(path: Path) -> list[dict[str, str]]:
         raise QuoteError(f"cannot read {path}: {exc}") from exc
 
 
+@contextmanager
+def _schedule_transaction(path: Path):
+    """Serialize participating threads/processes using a stable local SQLite lock."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = path.with_name(f".{path.name}.lock.sqlite3")
+    connection = sqlite3.connect(lock_path, timeout=30, isolation_level=None)
+    try:
+        connection.execute("BEGIN IMMEDIATE")
+        yield
+    finally:
+        # Closing rolls back this data-free transaction and releases the OS lock.
+        # Keep the sidecar inode: deleting it can split simultaneous contenders.
+        connection.close()
+
+
+def _atomic_text(path: Path, content: str) -> None:
+    """Replace a complete file; failed staging leaves the previous bytes intact."""
+    mode = stat.S_IMODE(path.stat().st_mode) if path.exists() else None
+    fd, name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    staged = Path(name)
+    try:
+        with os.fdopen(fd, "w", newline="", encoding="utf-8") as handle:
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        if mode is not None:
+            staged.chmod(mode)
+        os.replace(staged, path)
+    finally:
+        staged.unlink(missing_ok=True)
+
+
 def accept_quote(quote_path: Path, token: str, job_date: str, start_time: str, schedule_path: Path) -> dict[str, object]:
     quote = _read_json(quote_path)
     if quote.get("status") != "DRAFT_NOT_SENT" or token != quote.get("acceptance_token"):
@@ -260,25 +298,39 @@ def accept_quote(quote_path: Path, token: str, job_date: str, start_time: str, s
     duration = _decimal(quote["schedule_duration_hours"], "schedule_duration_hours", minimum=Decimal("0.25"))
     new_start = datetime.combine(day, start)
     new_end = new_start + timedelta(hours=float(duration))
-    rows = _read_schedule(schedule_path)
-    for row in rows:
-        existing_start = datetime.combine(_iso_date(row["date"], "schedule.date"), _clock(row["start_time"], "schedule.start_time"))
-        existing_end = existing_start + timedelta(hours=float(_decimal(row["duration_hours"], "schedule.duration_hours")))
-        if new_start < existing_end and existing_start < new_end:
-            raise QuoteError(f"schedule collision with quote {row['quote_id']}")
     record = {
-        "date": job_date, "start_time": start.strftime("%H:%M"), "duration_hours": _number(duration),
+        "date": str(day), "start_time": start.strftime("%H:%M"), "duration_hours": _number(duration),
         "quote_id": str(quote["quote_id"]), "request_id": str(quote["request_id"]),
         "customer": str(quote["customer"]), "service": str(quote["service"]), "status": "ACCEPTED_SCHEDULED_LOCAL",
     }
-    schedule_path.parent.mkdir(parents=True, exist_ok=True)
-    with schedule_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=SCHEDULE_FIELDS)
-        writer.writeheader()
-        writer.writerows([*rows, record])
     receipt = {"schema": SCHEMA, "status": "ACCEPTED_SCHEDULED_LOCAL", "quote_source": _source(quote_path), "schedule": record, "external_calendar_writes": 0, "messages_sent": 0, "payments_collected": 0}
+    receipt_text = json.dumps(receipt, indent=2) + "\n"
+    schedule_path = schedule_path.resolve()
     receipt_path = schedule_path.with_name(f"{quote['quote_id']}-acceptance.json")
-    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    try:
+        with _schedule_transaction(schedule_path):
+            rows = _read_schedule(schedule_path)
+            previous = [row for row in rows if row["quote_id"] == record["quote_id"]]
+            if previous:
+                if previous != [record]:
+                    raise QuoteError(f"schedule collision: quote {record['quote_id']} already has different booking details")
+                # The CSV is authoritative. A retry also repairs a receipt lost
+                # between the two file publications, without adding another job.
+                _atomic_text(receipt_path, receipt_text)
+                return receipt
+            for row in rows:
+                existing_start = datetime.combine(_iso_date(row["date"], "schedule.date"), _clock(row["start_time"], "schedule.start_time"))
+                existing_end = existing_start + timedelta(hours=float(_decimal(row["duration_hours"], "schedule.duration_hours")))
+                if new_start < existing_end and existing_start < new_end:
+                    raise QuoteError(f"schedule collision with quote {row['quote_id']}")
+            content = io.StringIO(newline="")
+            writer = csv.DictWriter(content, fieldnames=SCHEDULE_FIELDS)
+            writer.writeheader()
+            writer.writerows([*rows, record])
+            _atomic_text(schedule_path, content.getvalue())
+            _atomic_text(receipt_path, receipt_text)
+    except (OSError, sqlite3.Error) as exc:
+        raise QuoteError(f"cannot persist local acceptance: {exc}; retry the same booking to complete its receipt") from exc
     return receipt
 
 
