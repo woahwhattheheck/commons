@@ -144,6 +144,7 @@
     "consumer": "frozen",
     "fourth_quadrant": false,
     "funding": true,
+    "market_pressure": true,
     "redundant_hire": true,
     "reserve_seconds": 0.01,
     "seed": true,
@@ -290,13 +291,13 @@
       "source_path": "LICENSE"
     },
     "NOTICE": {
-      "bytes": 2742,
-      "sha256": "8bffc504d8ef1ea771fd10e383533eb690f8398e5f05153993cb14cca06b5b3f",
+      "bytes": 2977,
+      "sha256": "e72e9fb3fa80ecb91df0fd656b41dad3ed558f6046230ad334a9800feacfdb2e",
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 245,
-      "sha256": "496dc8ccf12a6503d5fa6047711eec7dd2c6f1f1f2fef9c04b08fe4598925772",
+      "bytes": 272,
+      "sha256": "abc9e6812f444a04161340801d469a06b7cf5c29336c08e267a7e1546e6b562b",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
@@ -358,6 +359,11 @@
       "bytes": 4847,
       "sha256": "debea504799ed40eb43dc5df2451625ece6331af8546ea01123bb5c420e9f03b",
       "source_path": "test_funded_payback_runtime.py"
+    },
+    "checks/test_market_pressure_runtime.py": {
+      "bytes": 1992,
+      "sha256": "2968302e5e2db6786a7081fbb36c53110c702aa9a31f4e7174d55b9dbf389ce3",
+      "source_path": "test_market_pressure_runtime.py"
     },
     "checks/test_module_recovery.py": {
       "bytes": 3476,
@@ -443,6 +449,11 @@
       "bytes": 1394,
       "sha256": "74bb2152dde111cd2e1b25751cd2bc4c3428db08a126e7896b08b4bb87ddd693",
       "source_path": "../cloud-runtime-pulse/plant_suffix.py"
+    },
+    "pressure_priority.py": {
+      "bytes": 6273,
+      "sha256": "635f11abdc29b97422fd24ef0d5a8a52f070fab2754e5c3b24ec3e7370ac7824",
+      "source_path": "../cloud-opponent-league/lark-responsive/pressure_priority.py"
     },
     "reference/decision/README.md": {
       "bytes": 9410,
@@ -694,6 +705,11 @@
       "sha256": "63198d3b642847a02fee8f3553b9983341b4931b4975013209ad10777b5d1199",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
+    "sell_priority.py": {
+      "bytes": 5095,
+      "sha256": "b0e8c21cb1c67cf81863c545cb3e3c8727c252ba2609414a9a61401ffc718787",
+      "source_path": "../cloud-opponent-league/lark-responsive/sell_priority.py"
+    },
     "seller_snapshot.py": {
       "bytes": 1452,
       "sha256": "e7093c760c05400948ece0a4a00495ab2cb93fd56e585eba9eb78b1f13666576",
@@ -710,8 +726,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 21915,
-      "sha256": "c09c95ac4a23edd4363c8fce88a3ade3091a3e23277a5bd5b23199d111e20e8d",
+      "bytes": 23279,
+      "sha256": "457abb184dba86d9cd5c924e8ce65eca13714de9aa007bfc81a4478a3d7631bc",
       "source_path": "titan_runtime.py"
     }
   },
