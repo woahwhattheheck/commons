@@ -44,7 +44,7 @@ class CatalogPublicationTests(unittest.TestCase):
     def _http(self, request, **kwargs):
         if request.data is not None:
             self.messages.append(json.loads(request.data.decode('utf-8')))
-        return io.BytesIO(b'{"ok":true,"ts":"1700000001.000001","permalink":"https://example.invalid/catalog"}')
+        return io.BytesIO(b'{"ok":true,"channel":"C0CATALOG","ts":"1700000001.000001","permalink":"https://example.invalid/catalog"}')
 
     def _carrier(self):
         return SlackEquipmentCarrier(self.catalog, self.calls,
