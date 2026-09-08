@@ -128,8 +128,15 @@ def validate_rows(
     node_map = {(node.dataset, node.node_id): node for node in nodes}
     incoming: defaultdict[tuple[str, int], int] = defaultdict(int)
     outgoing: defaultdict[tuple[str, int], int] = defaultdict(int)
+    seen_edges: set[tuple[str, int, int]] = set()
 
     for edge in edges:
+        edge_key = (edge.dataset, edge.source_id, edge.target_id)
+        if edge_key in seen_edges:
+            raise SubmissionError(
+                f"duplicate edge {edge.source_id}->{edge.target_id} in {edge.dataset!r}"
+            )
+        seen_edges.add(edge_key)
         src_key = (edge.dataset, edge.source_id)
         dst_key = (edge.dataset, edge.target_id)
         if src_key not in node_map:

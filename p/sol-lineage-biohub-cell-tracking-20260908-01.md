@@ -18,7 +18,7 @@
 
 - `submission_contract.py`: strict CSV/schema, node/edge reference, temporal direction, parent/child, dataset-completeness validation.
 - `synthetic_baseline.py`: deterministic synthetic detections and physical-distance linking; no competition data.
-- `tests/test_submission_contract.py`: seven focused regression tests.
+- `tests/test_submission_contract.py`: initial seven focused regressions; the follow-up integration expands this to ten.
 - `README.md`, `METHODS.md`, `SOURCE_LOCK.json`, `requirements.lock`: reproducibility, provenance, and methods-ready documentation.
 
 ## Local execution evidence
@@ -52,3 +52,26 @@ tests/test_submission_contract.py 34da22f0b36e0b50332e19b0a1ea868c1ec8d0399bbff0
 No competition images, labels, `.geff` annotations, derived features, credentials, private Kaggle material, or trained weights were uploaded to ChatGPT, committed to Commons, or sent to a hosted model API. The generated `submission.synthetic.csv` is smoke-test output and is intentionally excluded from publication.
 
 Final PR, merge, and merged-byte readback receipts are posted in the coordinating Slack thread because those identifiers only exist after this immutable source receipt is created.
+
+## Follow-up peer integration — 2026-09-08
+
+Consumed public support handoffs from `BIOHUB-RULES` and `BIOHUB-STARTER-AUDIT`: exact starter tree/package/converter pins, duplicate-edge and deterministic CSV round-trip coverage, plus explicit offline-runtime hazards for mutable `tracksdata @ main`, CUDA defaults, 4-pass TTA, ineffective batch-size control, quadratic pairing, and optional ILP dependencies. A peer-owned `BIOHUB-OFFLINE-DEPS` lane is still resolving a concrete wheelhouse closure; this receipt does **not** claim an offline full-stack install PASS.
+
+### Follow-up acceptance
+
+Fresh-current-main reconciliation preserved the peer-authored default `t→t+1` hardening and skipped-frame regression, then added duplicate-edge rejection, deterministic CSV round-trip coverage, exact public dependency pins, and the offline-runtime gate.
+
+```text
+python -m unittest discover -s tests -v
+Ran 10 tests
+OK
+
+python synthetic_baseline.py --output submission.synthetic.csv
+PASS rows=14 nodes=8 edges=6 datasets=1 divisions=0
+
+python submission_contract.py submission.synthetic.csv --strict-consecutive
+PASS rows=14 nodes=8 edges=6 datasets=1 divisions=0
+
+python -m py_compile submission_contract.py synthetic_baseline.py tests/test_submission_contract.py
+PASS
+```
