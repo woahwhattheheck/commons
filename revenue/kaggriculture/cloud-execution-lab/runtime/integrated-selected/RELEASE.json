@@ -76,6 +76,13 @@
       "callsite": "TitanAgent._initialize -> SeedBudget.__init__ -> _derived(routes)",
       "enabled": true,
       "consumed_result": "Claude T08 1788840840.568819 measured 91% seed derivation. Complete built-in route-content key, four-entry process cache, read-only tables, per-instance events. Focused semantic/cancellation/isolation and current archive timing tests; no new games."
+    },
+    {
+      "component": "LARCH completed-route recovery",
+      "source_pin": "T08 1788842514.810219 / 1788842769.872099; current titan_runtime.py source manifest",
+      "callsite": "TitanAgent.act selected action/route checkpoint -> _initialize fresh controller route restore",
+      "enabled": true,
+      "consumed_result": "Four focused actual-source tests: completed433 choice and selected fallback survive recovery, pre-return433 mutation discarded, new match remains fresh. Two retained-route cases fail predecessor and pass repair; no new game claim."
     }
   ],
   "next_increments": [
@@ -229,5 +236,16 @@
     ],
     "reserve_decision": "Keep 10 ms; measurements do not establish original cause or a 73 ms reserve requirement",
     "terminal_route_decision": "Keep off: 272-game research; frozen matchup default42W20T2L -> route54W0T10L, no robust gain demonstrated"
+  },
+  "checkpoint": {
+    "operation": "titan-kaggriculture-checkpoint-20260908-01",
+    "upload_executor": "root",
+    "owner_authorization": "Submission authorized for this single checkpoint; builder does not duplicate upload",
+    "runtime_entrypoint": "main.py::agent",
+    "validation_consumers": [
+      "WIDEFIELD",
+      "ECON"
+    ],
+    "pending_research": "Terminal route/history economic changes remain test-only; no comparative basis to change default. BROOK owns additive atomic builder publication; LARCH owns retained-input recovery checker."
   }
 }

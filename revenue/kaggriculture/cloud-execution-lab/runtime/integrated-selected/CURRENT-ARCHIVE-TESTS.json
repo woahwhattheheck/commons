@@ -1,10 +1,10 @@
 {
-  "archive_sha256": "58f8e6c1808a28ad659e763e9d47ce45e566bc16d9248e28c9c2764f9ad66062",
+  "archive_sha256": "a8af2b834bb5e1d6486245b9538c2de5a041085be38c7707d08e6d49e6149e89",
   "new_games": 0,
   "cold_actions": [
     {
       "case": "cold_default",
-      "seconds": 0.03095416301221121,
+      "seconds": 0.03354056899843272,
       "action": {
         "farmer": [
           "PASS"
@@ -21,15 +21,15 @@
       "diagnostics": {
         "consumer": "frozen",
         "parent_calls": 1,
-        "entrypoint_prelude_seconds": 0.009499954001512378,
+        "entrypoint_prelude_seconds": 0.009457024993025698,
         "status": "completed",
-        "elapsed_seconds": 0.030653142006485723,
-        "act_cpu_seconds": 0.021151971999999998
+        "elapsed_seconds": 0.033333782994304784,
+        "act_cpu_seconds": 0.023874889000000003
       }
     },
     {
       "case": "cold_history",
-      "seconds": 0.04043896999792196,
+      "seconds": 0.0478378809930291,
       "action": {
         "farmer": [
           "PASS"
@@ -49,12 +49,12 @@
         "entrypoint_prelude_seconds": 0.0,
         "history": {},
         "status": "completed",
-        "elapsed_seconds": 0.03154569599428214,
-        "act_cpu_seconds": 0.031545314000000005
+        "elapsed_seconds": 0.0367541000014171,
+        "act_cpu_seconds": 0.03675226399999999
       }
     }
   ],
-  "source_manifest_sha256": "ab1704734b4082af14e322dfa3f32a5440f6a22338dd65530c52845604bca4c4",
+  "source_manifest_sha256": "e2c25daaed8476a88cea5bfd778643fa175836b42501dfcc2579eb791613b191",
   "boundaries": {
     "ENTRY-CLOCK": {
       "tests": 2,
@@ -62,28 +62,28 @@
       "cases": [
         {
           "case": "fallback_copy_is_in_reported_elapsed",
-          "wall_seconds": 0.02514506499574054,
+          "wall_seconds": 0.025204389006830752,
           "diagnostics": {
             "consumer": "frozen",
             "parent_calls": 1,
             "entrypoint_prelude_seconds": 0.0,
             "status": "deadline_fallback",
             "fallback_stage": "selected_transform",
-            "elapsed_seconds": 0.025138375989627093,
-            "act_cpu_seconds": 0.025131259000000017
+            "elapsed_seconds": 0.025194141009706073,
+            "act_cpu_seconds": 0.02518842499999996
           }
         },
         {
           "case": "count_main_prelude_before_parent",
-          "wall_seconds": 0.03018770100607071,
+          "wall_seconds": 0.030250943993451074,
           "diagnostics": {
             "consumer": "frozen",
             "parent_calls": 0,
-            "entrypoint_prelude_seconds": 0.030167016011546366,
+            "entrypoint_prelude_seconds": 0.030222372995922342,
             "status": "deadline_fallback",
             "fallback_stage": "entrypoint_prelude",
-            "elapsed_seconds": 0.030180317000485957,
-            "act_cpu_seconds": 1.0830000000017215e-05
+            "elapsed_seconds": 0.03024169300624635,
+            "act_cpu_seconds": 1.5696999999981198e-05
           }
         }
       ],
@@ -97,7 +97,7 @@
         {
           "case": "economically_active_single_parent_history_join",
           "seat": 0,
-          "seconds": 0.003929343001800589,
+          "seconds": 0.004173191002337262,
           "selected": {
             "farmer": [
               "PASS"
@@ -164,7 +164,7 @@
         {
           "case": "economically_active_single_parent_history_join",
           "seat": 1,
-          "seconds": 0.003562839003279805,
+          "seconds": 0.0038454659952549264,
           "selected": {
             "farmer": [
               "PASS"
@@ -232,7 +232,7 @@
         },
         {
           "case": "deadline_records_actual_fallback",
-          "seconds": 0.03046561000519432
+          "seconds": 0.03046879099565558
         },
         {
           "case": "unready_family_retains_complete_selected_action",
@@ -247,7 +247,7 @@
       "cases": [
         {
           "case": "recovery_state_reconstruction",
-          "seconds": 0.0024038850096985698,
+          "seconds": 0.004287957010092214,
           "module_identity_reused": true,
           "mutable_state_rebuilt": true
         }
@@ -259,21 +259,38 @@
       "passed": true,
       "timing": [
         {
-          "first_initialize_in_test_process_seconds": 0.0074926380038959906,
-          "recovery_initialize_seconds": 0.002551685000071302,
+          "first_initialize_in_test_process_seconds": 0.007822260013199411,
+          "recovery_initialize_seconds": 0.0025471429980825633,
           "uncached_derive_seconds": [
-            0.0065155859920196235,
-            0.005282112993882038,
-            0.004826264004805125,
-            0.004981663005310111,
-            0.005713707010727376
+            0.006064369998057373,
+            0.005174574995180592,
+            0.005638930000714026,
+            0.006114572010119446,
+            0.01241274298809003
           ],
           "content_keyed_reuse_seconds": [
-            0.00339942000573501,
-            0.0020222029997967184,
-            0.0020724880014313385,
-            0.002193628009990789,
-            0.002188084996305406
+            0.0025766420003492385,
+            0.002226611992227845,
+            0.0033366699935868382,
+            0.0020845200051553547,
+            0.0020756239973707125
+          ]
+        }
+      ],
+      "new_games": 0
+    },
+    "ROUTE-RECOVERY": {
+      "tests": 4,
+      "passed": true,
+      "cases": [
+        {
+          "case": "completed_route_survives_selected_fallback",
+          "route": "a84d06f1d12add7c",
+          "checked_steps": [
+            433,
+            434,
+            577,
+            578
           ]
         }
       ],
@@ -281,6 +298,6 @@
     }
   },
   "identical_first_action": true,
-  "max_cold_seconds": 0.04043896999792196,
+  "max_cold_seconds": 0.0478378809930291,
   "episode_allowance": "No full game run here; exact version/config to Claude/WIDEFIELD for separate panel."
 }

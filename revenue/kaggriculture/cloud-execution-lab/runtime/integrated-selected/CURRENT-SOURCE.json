@@ -26,6 +26,17 @@
       "timeouts": 0
     }
   },
+  "checkpoint": {
+    "operation": "titan-kaggriculture-checkpoint-20260908-01",
+    "owner_authorization": "Submission authorized for this single checkpoint; builder does not duplicate upload",
+    "pending_research": "Terminal route/history economic changes remain test-only; no comparative basis to change default. BROOK owns additive atomic builder publication; LARCH owns retained-input recovery checker.",
+    "runtime_entrypoint": "main.py::agent",
+    "upload_executor": "root",
+    "validation_consumers": [
+      "WIDEFIELD",
+      "ECON"
+    ]
+  },
   "components": [
     {
       "callsite": "FrozenSelected.transform",
@@ -101,6 +112,13 @@
       "consumed_result": "Claude T08 1788840840.568819 measured 91% seed derivation. Complete built-in route-content key, four-entry process cache, read-only tables, per-instance events. Focused semantic/cancellation/isolation and current archive timing tests; no new games.",
       "enabled": true,
       "source_pin": "ALDER derivative in current manifest reference/integrated-selected/alder/seed_budget.py; original retained under checks/reference/historical"
+    },
+    {
+      "callsite": "TitanAgent.act selected action/route checkpoint -> _initialize fresh controller route restore",
+      "component": "LARCH completed-route recovery",
+      "consumed_result": "Four focused actual-source tests: completed433 choice and selected fallback survive recovery, pre-return433 mutation discarded, new match remains fresh. Two retained-route cases fail predecessor and pass repair; no new game claim.",
+      "enabled": true,
+      "source_pin": "T08 1788842514.810219 / 1788842769.872099; current titan_runtime.py source manifest"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -258,8 +276,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 3089,
-      "sha256": "e1b015585067d5bd99b4fc01eff13194cee395979469470b5569bd1fd06fa6af",
+      "bytes": 3711,
+      "sha256": "1efdb0cc4ba3ae7c6b5d7cf4c042bbb93ff259ef25fb0933e91bafc568f8d7ae",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -316,6 +334,11 @@
       "bytes": 11682,
       "sha256": "0b0a700eb2b8efe0bdc59e5a3dde982fa14c1a5e9b847c9fb41438ed8e1700a0",
       "source_path": "test_ordered_selected_sell.py"
+    },
+    "checks/test_route_recovery.py": {
+      "bytes": 3059,
+      "sha256": "40f9ab586c8a9ea6ab6be47b5d29129a0e9dfb256d45169fc2a64af90f440078",
+      "source_path": "test_route_recovery.py"
     },
     "checks/test_seed_derived.py": {
       "bytes": 4554,
@@ -603,8 +626,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 11003,
-      "sha256": "07a8d13390c46b26fafd90b9462db19445dcf286934b6ddde78b253dd02807e5",
+      "bytes": 11632,
+      "sha256": "58ea0d32db8e5f40de86f45f3709d065c3ccdb7c09ee11adcae3ebc0ee6ef9d7",
       "source_path": "titan_runtime.py"
     }
   },
