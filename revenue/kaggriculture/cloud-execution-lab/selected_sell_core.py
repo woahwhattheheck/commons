@@ -60,12 +60,29 @@ class MarketPath:
     def score(self, plan, quantity, rival, alignment, terminal=False):
         inv=self.inventory;own_cash=other_cash=0;sold=0
         orders=dict(plan)
-        for step in range(self.now,self.end+1):
+        steps=range(self.now,self.end+1)
+        consumed=()
+        if steps:
+            rival_orders=dict(rival) if isinstance(rival,tuple) else {self.now:rival}
+            # A model scores many plans against the same dated town consumption.
+            # Key the observable inputs, so edits between calls invalidate the
+            # schedule rather than inheriting stale shops or configuration.
+            context=(self.item,self.now,self.end,tuple(self.shops),
+                     self.config.get('townShopSellInterval',4),
+                     self.config.get('townCenterSellInterval',24))
+            if getattr(self,'_score_context',None)!=context:
+                consumed=tuple(absorption(self.item,t,self.shops,self.config)
+                               for t in steps)
+                self._score_context=context
+                self._score_consumed=consumed
+            else:
+                consumed=self._score_consumed
+        for step,used in zip(steps,consumed):
             q=min(quantity-sold,max(0,orders.get(step,0)))
-            r=(dict(rival).get(step,0) if isinstance(rival,tuple) else rival if step==self.now else 0)
+            r=rival_orders.get(step,0)
             a,b,inv=self.joint(inv,q,r,alignment)
             own_cash+=a;other_cash+=b;sold+=q
-            inv-=absorption(self.item,step,self.shops,self.config)
+            inv-=used
         remaining=quantity-sold
         # Artificial planning boundaries retain inventory at a conservative
         # continuation value. No mandatory horizon-end liquidation constraint.
