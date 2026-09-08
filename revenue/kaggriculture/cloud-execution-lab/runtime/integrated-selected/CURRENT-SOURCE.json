@@ -119,6 +119,14 @@
       "consumed_result": "Four focused actual-source tests: completed433 choice and selected fallback survive recovery, pre-return433 mutation discarded, new match remains fresh. Two retained-route cases fail predecessor and pass repair; no new game claim.",
       "enabled": true,
       "source_pin": "T08 1788842514.810219 / 1788842769.872099; current titan_runtime.py source manifest"
+    },
+    {
+      "callsite": "TitanAgent.transform_selected -> _redundant_hire_selected before seed funding",
+      "component": "T10 redundant-hire physical certificate",
+      "consumed_result": "T10 seven focused checks and four paired development cells: own +5 each, no WTL flips. Optional source closure included; default economics retained.",
+      "enabled": false,
+      "role": "internal experiment/test-only",
+      "source_pin": "00f93ec9ebb91b70940f8990ee3617b73e7e3d85"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -510,6 +518,11 @@
       "sha256": "63198d3b642847a02fee8f3553b9983341b4931b4975013209ad10777b5d1199",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
+    "reference/titan-current/redundant_hire.py": {
+      "bytes": 9036,
+      "sha256": "a881284d6b59366536ebc5e77f0f7c7f2923599dfb8588fd8b1ed6166bd51483",
+      "source_path": "reference/titan-current/redundant_hire.py"
+    },
     "reference/titan-current/seed_funding.py": {
       "bytes": 13630,
       "sha256": "e329a3535aeeed745cf975451b7bea859a6ec6f39cf54aeac57c3a3492cc3128",
@@ -641,8 +654,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 11632,
-      "sha256": "58ea0d32db8e5f40de86f45f3709d065c3ccdb7c09ee11adcae3ebc0ee6ef9d7",
+      "bytes": 12883,
+      "sha256": "001ce55c72d02571b6b80291c3a2fec6061f6a3243093fd8e0b4dd29f08c4d6c",
       "source_path": "titan_runtime.py"
     }
   },

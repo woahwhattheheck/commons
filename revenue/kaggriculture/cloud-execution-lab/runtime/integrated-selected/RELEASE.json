@@ -83,6 +83,14 @@
       "callsite": "TitanAgent.act selected action/route checkpoint -> _initialize fresh controller route restore",
       "enabled": true,
       "consumed_result": "Four focused actual-source tests: completed433 choice and selected fallback survive recovery, pre-return433 mutation discarded, new match remains fresh. Two retained-route cases fail predecessor and pass repair; no new game claim."
+    },
+    {
+      "component": "T10 redundant-hire physical certificate",
+      "source_pin": "00f93ec9ebb91b70940f8990ee3617b73e7e3d85",
+      "callsite": "TitanAgent.transform_selected -> _redundant_hire_selected before seed funding",
+      "enabled": false,
+      "role": "internal experiment/test-only",
+      "consumed_result": "T10 seven focused checks and four paired development cells: own +5 each, no WTL flips. Optional source closure included; default economics retained."
     }
   ],
   "next_increments": [
