@@ -58,7 +58,9 @@ def load_report(path: Path) -> dict[str, Any]:
         if len(raw) > MAX_BYTES:
             raise InvalidReport("report exceeds byte limit")
         data = json.loads(raw.decode("utf-8"), object_pairs_hook=_pairs, parse_constant=_constant)
-    except (OSError, UnicodeError, json.JSONDecodeError, zipfile.BadZipFile,
+    except InvalidReport:
+        raise
+    except (OSError, UnicodeError, ValueError, zipfile.BadZipFile,
             RuntimeError, NotImplementedError, RecursionError) as exc:
         raise InvalidReport(f"cannot read report: {type(exc).__name__}") from exc
     if not isinstance(data, dict):

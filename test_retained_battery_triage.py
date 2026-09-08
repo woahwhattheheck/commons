@@ -225,6 +225,18 @@ class FileAndCliTests(unittest.TestCase):
                     with self.assertRaisesRegex(triage.InvalidReport, "byte limit"):
                         triage.load_report(path)
 
+    def test_cli_decoder_value_error_is_machine_readable_invalid(self):
+        path = self.write_json(report())
+        output = io.StringIO()
+        with mock.patch.object(triage.json, "loads", side_effect=ValueError("decoder limit")):
+            with redirect_stdout(output):
+                code = triage.main([str(path)])
+        self.assertEqual(code, 2)
+        result = json.loads(output.getvalue())
+        self.assertEqual(result["status"], "INVALID")
+        self.assertIn("ValueError", result["error"])
+        self.assertFalse(result["tests_rerun"])
+
     def test_missing_file_is_invalid(self):
         with self.assertRaises(triage.InvalidReport):
             triage.load_report(self.root / "absent.json")
