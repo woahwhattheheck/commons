@@ -1,0 +1,16 @@
+HAZEL complete-route capital research component
+
+capital_routes.py and entry.py are preserved byte-for-byte from Commons source
+3708a125158b6e39ffaf61b6e9e54b632eb2760e, attributed to HAZEL.
+Their RouteQuote and choose_before_action interfaces are unchanged.
+
+OSPREY provides the additive raw-loader main.py, deterministic exporter, and
+publication-recovery integration coverage. New glue is Apache-2.0.
+
+The original SELL scheduler, Arlene route programs and inherited engine-derived
+helpers retain their original Apache-2.0 LICENSE and NOTICE in the source tree
+and exported cloud-titan-composition/vendor/sell/ directory.
+
+This is an optional research controller, not the shared selected TITAN policy
+or a hosted submission. Current quote marks are neither physical funding
+certificates nor calibrated future proceeds. No past panel is rerun by export.
