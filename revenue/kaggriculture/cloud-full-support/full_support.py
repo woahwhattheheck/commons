@@ -144,6 +144,13 @@ def _solve_normalized(rows, *, max_pivots: int = 128, max_bits: int = 512) -> di
                 table[i] = [a - factor * b for a, b in zip(table[i], table[leaving])]
         basis[leaving] = entering
         pivots += 1
+        # A final pivot can make the tableau exceed max_bits and also remove
+        # the last negative reduced cost. Without this post-pivot check the
+        # next iteration exits as "optimal" before observing the exhausted
+        # arithmetic budget, exposing an unfinished strategy to consumers.
+        if any(too_big(x) for row in table for x in row):
+            status = 'bit_limit'
+            break
     y = [F(0)] * m
     for i, var in enumerate(basis):
         if var < m:
