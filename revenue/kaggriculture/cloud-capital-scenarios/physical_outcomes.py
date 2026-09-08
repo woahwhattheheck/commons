@@ -64,7 +64,9 @@ def compare_replay(offers: Sequence[Any], observation: Mapping[str, Any],
         _require(replay["complete"] is True, "replay is incomplete")
         _require(set(replay["scenarios"]) == set(names), "scenario bank differs")
         start = _integer(observation["step"])
-        terminal = _integer(configuration["episodeSteps"]) - 2
+        # Match replay_routes' default without adopting a possibly partial
+        # report horizon. Explicit null/invalid/custom values remain checked.
+        terminal = _integer(configuration.get("episodeSteps", 720)) - 2
         _require(0 <= start <= terminal, "invalid decision horizon")
         _require(_integer(replay["start_step"]) == start
                  and _integer(replay["end_step"]) == terminal, "replay is not this terminal horizon")

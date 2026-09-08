@@ -37,7 +37,9 @@ nonterminal/mismatched horizon retain the incumbent with an explicit invalid-inp
 reason. A case has a full chronological market-queue history, consistent cash
 before/after/delta, and matching final/gain/minimum values. Nothing converts a
 missing future to zero or removes it from the comparison. The caller's
-`configuration['episodeSteps'] - 2` defines the expected final executable step.
+`configuration.get('episodeSteps', 720) - 2` defines the expected final executable
+step, matching the existing replay producer when the field is omitted. An
+explicit custom value is still checked; null and invalid values are not defaulted.
 
 RILL's report binds the original observation and offered program identities,
 not arbitrary hidden controller state or a digest of every configuration field.
