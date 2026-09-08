@@ -10,9 +10,10 @@
   "evidence_archive": {
     "name": "TITAN-DELVE-market-gap-attribution.zip",
     "location": "Bryce Library",
-    "sha256": "56c865b7f4a2c9e1fd5b20b72835221a1399cadb765a72f6f7eef433a79b5c84",
-    "bytes": 5427137,
-    "manifest_files": 88,
+    "sha256": "598ea65c175606722ddd5f3f5d207da6cb5f0219d46aaab9e5162beeb6e4d8b6",
+    "bytes": 2831864,
+    "manifest_files": 84,
+    "manifest_sha256": "ff5755ff625786de9e147ebf4d491365431a7a7cc481ff7a35232d18f133d10f",
     "contains": ["complete responsive game frames and telemetry", "initial instrumentation failure", "complete canonical fixed-command suffix states", "recorded cash-attribution reports", "executed source versions", "20-test output", "reproduction scripts"]
   },
   "recorded_streams": {
