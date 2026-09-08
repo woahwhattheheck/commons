@@ -10,7 +10,7 @@ This lane is a **public-contract scaffold**, not a Kaggle submission and not a t
 - `submission.csv` has exactly ten columns: `id,dataset,row_type,node_id,t,z,y,x,source_id,target_id`.
 - Node rows contain dataset-scoped node IDs plus integer `(t,z,y,x)` voxel centroids and use `-1` edge sentinels.
 - Edge rows contain dataset-scoped `(source_id,target_id)` references and use `-1` node/coordinate sentinels.
-- Tracking edges connect a cell at one timepoint to the same cell or daughters at the next timepoint (`t→t+1`).
+- The organizer scorer keeps only consecutive tracking edges (`t→t+1`) for edge accounting.
 - Dataset names match test folder names without `.zarr`; every hidden-test dataset must appear.
 - Public data description: Zarr v3 image volumes `(T,Z,Y,X)`; physical voxel scale `(z,y,x)=(1.625,0.40625,0.40625)` microns/voxel; sparse GEFF ground truth for training only.
 
@@ -21,11 +21,11 @@ Authoritative references and the exact organizer starter commit are recorded in 
 ```bash
 cd research/biohub-cell-tracking-readiness
 python synthetic_baseline.py --output /tmp/submission.synthetic.csv
-python submission_contract.py /tmp/submission.synthetic.csv --strict-consecutive
+python submission_contract.py /tmp/submission.synthetic.csv --strict-lineage
 python -m unittest discover -s tests -v
 ```
 
-The synthetic baseline creates two moving 3D tracks across four timepoints, links in **physical microns** rather than raw voxel distance, writes the public CSV schema, and validates the result. It is intentionally tiny and deterministic.
+The synthetic baseline creates two moving 3D tracks across four timepoints, including one deterministic parent→two-child division, links in **physical microns** rather than raw voxel distance, writes the public CSV schema, round-trips it byte-for-byte, and validates `divisions=1`. It is intentionally tiny and deterministic.
 
 ## Use on a real local prediction
 
@@ -38,22 +38,25 @@ Do not copy challenge data into Commons. On the machine that is already authoriz
 5. Run:
 
 ```bash
-python submission_contract.py submission.csv --expected-datasets private_test_names.txt --strict-consecutive
+python submission_contract.py submission.csv --expected-datasets private_test_names.txt --strict-lineage
 ```
 
-Consecutive `t→t+1` tracking edges are enforced by default. `--strict-consecutive` is retained as a compatibility spelling. The Python API permits `require_consecutive_edges=False` only for deliberate non-submission analysis; do not use that mode for Kaggle submission readiness.
+Consecutive `t→t+1` tracking edges are enforced by default. `--strict-consecutive` remains a compatibility spelling. The Python API permits `require_consecutive_edges=False` only for deliberate non-submission analysis.
 
-## What this validator catches
+The Commons readiness policy is also conservative by default: `strict_lineage=True` / `--strict-lineage` rejects exact duplicate edges, multiple parents, and more than two children. Those three guards are **local lineage-readiness policy, not universal organizer CSV-invalidity**. The pinned organizer conversion/scoring path can ingest/normalize or cap those graph shapes. Use `--organizer-compatible` (or `strict_lineage=False`) only when checking that broader organizer-compatible graph surface; it does not relax headers, IDs, sentinels, references, forward time, or default `t→t+1`.
+
+## What this validator catches universally
 
 - wrong header or non-consecutive throwaway `id` values;
+- leading/trailing whitespace in literal `dataset` or `row_type` tokens;
 - `.zarr` suffix leakage in dataset names;
 - malformed node/edge sentinel fields;
-- duplicate edges;
 - duplicate node IDs inside a dataset;
 - missing edge endpoints;
 - non-consecutive, backward, or self links;
-- multiple parents or more than two children (division topology guard);
 - missing or unexpected datasets when a private expected-set list is supplied.
+
+With the default strict-lineage policy it additionally rejects exact duplicate edges, multiple parents, and sources with more than two children. These stricter topology guards are intentionally labeled separately from organizer ingestion/scoring behavior.
 
 ## Deliberate exclusions
 

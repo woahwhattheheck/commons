@@ -4,84 +4,168 @@ import csv
 import sys
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from submission_contract import COLUMNS, SubmissionError, validate_rows, validate_submission, write_submission
+from submission_contract import (
+    COLUMNS,
+    SubmissionError,
+    read_submission,
+    validate_rows,
+    validate_submission,
+    write_submission,
+)
 from synthetic_baseline import build_rows, link_nearest, synthetic_frames
 
 
+def node_row(node_id: int, t: int, *, dataset: str = "d") -> dict[str, str]:
+    return {
+        "id": "",
+        "dataset": dataset,
+        "row_type": "node",
+        "node_id": str(node_id),
+        "t": str(t),
+        "z": "1",
+        "y": "1",
+        "x": "1",
+        "source_id": "-1",
+        "target_id": "-1",
+    }
+
+
+def edge_row(source_id: int, target_id: int, *, dataset: str = "d") -> dict[str, str]:
+    return {
+        "id": "",
+        "dataset": dataset,
+        "row_type": "edge",
+        "node_id": "-1",
+        "t": "-1",
+        "z": "-1",
+        "y": "-1",
+        "x": "-1",
+        "source_id": str(source_id),
+        "target_id": str(target_id),
+    }
+
+
+def with_ids(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    for index, row in enumerate(rows):
+        row["id"] = str(index)
+    return rows
+
+
 class SubmissionContractTests(unittest.TestCase):
-    def test_synthetic_baseline_is_deterministic_and_valid(self) -> None:
+    def test_synthetic_baseline_is_deterministic_and_exercises_division(self) -> None:
         rows_a = build_rows()
         rows_b = build_rows()
         self.assertEqual(rows_a, rows_b)
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "submission.csv"
-            write_submission(path, rows_a)
-            counts = validate_submission(path, expected_datasets=["synthetic_embryo_0001"], require_consecutive_edges=True)
-        self.assertEqual(counts, {"rows": 14, "nodes": 8, "edges": 6, "datasets": 1, "divisions": 0})
+            path_a = Path(tmp) / "submission-a.csv"
+            path_b = Path(tmp) / "submission-b.csv"
+            write_submission(path_a, rows_a)
+            write_submission(path_b, rows_b)
+            self.assertEqual(path_a.read_bytes(), path_b.read_bytes())
+            parsed = read_submission(path_a)
+            write_submission(path_b, parsed)
+            self.assertEqual(path_a.read_bytes(), path_b.read_bytes())
+            counts = validate_submission(path_a, expected_datasets=["synthetic_embryo_0001"])
+        self.assertEqual(counts, {"rows": 16, "nodes": 9, "edges": 7, "datasets": 1, "divisions": 1})
+        outgoing = Counter(int(row["source_id"]) for row in parsed if row["row_type"] == "edge")
+        self.assertEqual(outgoing[4], 2)
 
-    def test_linker_uses_physical_scale_and_links_every_track(self) -> None:
+    def test_linker_uses_physical_scale_and_recovers_one_division(self) -> None:
         nodes, edges = link_nearest(synthetic_frames(), radius_um=8.5)
-        self.assertEqual(len(nodes), 8)
-        self.assertEqual(len(edges), 6)
-        self.assertEqual(edges, [(0, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 7)])
+        self.assertEqual(len(nodes), 9)
+        self.assertEqual(len(edges), 7)
+        self.assertEqual(edges, [(0, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 8), (4, 7)])
 
     def test_missing_dataset_is_rejected(self) -> None:
-        rows = []
         with self.assertRaisesRegex(SubmissionError, "missing datasets"):
-            validate_rows(rows, expected_datasets=["wanted"])
+            validate_rows([], expected_datasets=["wanted"])
+
+    def test_whitespace_padded_dataset_is_rejected(self) -> None:
+        rows = with_ids([node_row(1, 0, dataset=" d")])
+        with self.assertRaisesRegex(SubmissionError, "dataset must not contain"):
+            validate_rows(rows)
+
+    def test_whitespace_padded_row_type_is_rejected(self) -> None:
+        row = node_row(1, 0)
+        row["row_type"] = "node "
+        with self.assertRaisesRegex(SubmissionError, "row_type must not contain"):
+            validate_rows(with_ids([row]))
 
     def test_edge_missing_node_is_rejected(self) -> None:
-        rows = [
-            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "1", "t": "0", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
-            {"id": "1", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "1", "target_id": "2"},
-        ]
+        rows = with_ids([node_row(1, 0), edge_row(1, 2)])
         with self.assertRaisesRegex(SubmissionError, "missing target node"):
             validate_rows(rows)
 
     def test_reverse_time_edge_is_rejected(self) -> None:
-        rows = [
-            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "1", "t": "1", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
-            {"id": "1", "dataset": "d", "row_type": "node", "node_id": "2", "t": "0", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
-            {"id": "2", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "1", "target_id": "2"},
-        ]
+        rows = with_ids([node_row(1, 1), node_row(2, 0), edge_row(1, 2)])
         with self.assertRaisesRegex(SubmissionError, "move forward in time"):
             validate_rows(rows)
 
-    def test_skipped_frame_edge_is_rejected_by_default(self) -> None:
-        rows = [
-            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "1", "t": "0", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
-            {"id": "1", "dataset": "d", "row_type": "node", "node_id": "2", "t": "2", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
-            {"id": "2", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "1", "target_id": "2"},
-        ]
-        with self.assertRaisesRegex(SubmissionError, "consecutive frames"):
+    def test_nonconsecutive_edge_is_rejected_by_default(self) -> None:
+        rows = with_ids([node_row(1, 0), node_row(2, 2), edge_row(1, 2)])
+        with self.assertRaisesRegex(SubmissionError, "connect consecutive frames"):
             validate_rows(rows)
 
-    def test_more_than_two_children_is_rejected(self) -> None:
-        rows = [
-            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "0", "t": "0", "z": "0", "y": "0", "x": "0", "source_id": "-1", "target_id": "-1"},
-        ]
-        for i in range(1, 4):
-            rows.append({"id": str(len(rows)), "dataset": "d", "row_type": "node", "node_id": str(i), "t": "1", "z": "0", "y": str(i), "x": "0", "source_id": "-1", "target_id": "-1"})
-        for i in range(1, 4):
-            rows.append({"id": str(len(rows)), "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "0", "target_id": str(i)})
-        with self.assertRaisesRegex(SubmissionError, "more than two children"):
-            validate_rows(rows)
-
-
-    def test_duplicate_edge_is_rejected(self) -> None:
-        rows = [
-            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "0", "t": "0", "z": "0", "y": "0", "x": "0", "source_id": "-1", "target_id": "-1"},
-            {"id": "1", "dataset": "d", "row_type": "node", "node_id": "1", "t": "1", "z": "0", "y": "1", "x": "0", "source_id": "-1", "target_id": "-1"},
-            {"id": "2", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "0", "target_id": "1"},
-            {"id": "3", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "0", "target_id": "1"},
-        ]
+    def test_duplicate_edge_is_strict_lineage_policy(self) -> None:
+        rows = with_ids([node_row(0, 0), node_row(1, 1), edge_row(0, 1), edge_row(0, 1)])
         with self.assertRaisesRegex(SubmissionError, "duplicate edge"):
             validate_rows(rows)
+        counts = validate_rows(rows, strict_lineage=False)
+        self.assertEqual(counts, {"rows": 4, "nodes": 2, "edges": 2, "datasets": 1, "divisions": 0})
+
+    def test_multiple_parents_are_strict_lineage_policy(self) -> None:
+        rows = with_ids(
+            [
+                node_row(0, 0),
+                node_row(1, 0),
+                node_row(2, 1),
+                edge_row(0, 2),
+                edge_row(1, 2),
+            ]
+        )
+        with self.assertRaisesRegex(SubmissionError, "more than one parent"):
+            validate_rows(rows)
+        counts = validate_rows(rows, strict_lineage=False)
+        self.assertEqual(counts, {"rows": 5, "nodes": 3, "edges": 2, "datasets": 1, "divisions": 0})
+
+    def test_more_than_two_children_is_strict_lineage_policy(self) -> None:
+        rows = [node_row(0, 0)]
+        for i in range(1, 4):
+            row = node_row(i, 1)
+            row["y"] = str(i)
+            rows.append(row)
+        for i in range(1, 4):
+            rows.append(edge_row(0, i))
+        rows = with_ids(rows)
+        with self.assertRaisesRegex(SubmissionError, "more than two children"):
+            validate_rows(rows)
+        counts = validate_rows(rows, strict_lineage=False)
+        self.assertEqual(counts, {"rows": 7, "nodes": 4, "edges": 3, "datasets": 1, "divisions": 0})
+
+    def test_organizer_compatible_mode_keeps_timing_and_reference_checks(self) -> None:
+        skipped = with_ids([node_row(0, 0), node_row(1, 2), edge_row(0, 1)])
+        with self.assertRaisesRegex(SubmissionError, "consecutive frames"):
+            validate_rows(skipped, strict_lineage=False)
+        missing = with_ids([node_row(0, 0), edge_row(0, 1)])
+        with self.assertRaisesRegex(SubmissionError, "missing target node"):
+            validate_rows(missing, strict_lineage=False)
+
+    def test_node_and_edge_sentinels_are_rejected(self) -> None:
+        bad_node = node_row(0, 0)
+        bad_node["source_id"] = "0"
+        with self.assertRaisesRegex(SubmissionError, "node source_id must be -1"):
+            validate_rows(with_ids([bad_node]))
+
+        bad_edge = edge_row(0, 1)
+        bad_edge["t"] = "0"
+        with self.assertRaisesRegex(SubmissionError, "edge t must be -1"):
+            validate_rows(with_ids([bad_edge]))
 
     def test_csv_round_trip_is_byte_deterministic(self) -> None:
         rows = build_rows()
@@ -94,8 +178,8 @@ class SubmissionContractTests(unittest.TestCase):
             write_submission(second, parsed)
             self.assertEqual(first.read_bytes(), second.read_bytes())
             self.assertEqual(
-                validate_submission(second, expected_datasets=["synthetic_embryo_0001"], require_consecutive_edges=True),
-                {"rows": 14, "nodes": 8, "edges": 6, "datasets": 1, "divisions": 0},
+                validate_submission(second, expected_datasets=["synthetic_embryo_0001"]),
+                {"rows": 16, "nodes": 9, "edges": 7, "datasets": 1, "divisions": 1},
             )
 
     def test_header_must_be_exact(self) -> None:
