@@ -210,6 +210,54 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(included["total_tests"], legacy["total_tests"] + 18)
         self.assertNotIn("deadline_cancellation_tests", legacy)
 
+    def add_ledger_fixture(self):
+        self.mutate("SOURCE-SNAPSHOT.json", lambda d: d["files"].update({subject.LEDGER_SCHEDULE[2]: {"sha256": sha("ledger-tests")}}))
+        (self.path / "ledger-schedule-tests.log").write_text(log(20))
+        market = json.loads((self.path / "market-results.json").read_text())
+        save(self.path / "ledger-schedule-results.json", dict(test_methods=20,
+            failures=0, errors=0, skipped=0, successful=True,
+            sources_sha256=market["sources"], engine_sha256=market["engine_sha256"],
+            counts={"fixture_cases": 4}, reference_method_sha256=sha("reported-reference")))
+
+    def test_ledger_counts_are_opt_in_and_source_bound(self):
+        self.add_ledger_fixture()
+        report = self.report(include_ledger_schedule=True)
+        self.assertTrue(report["successful"], report["problems"])
+        self.assertEqual(report["total_tests"], 99)
+        self.assertEqual(report["ledger_schedule_tests"], 20)
+        self.assertEqual(report["ledger_schedule_case_counts"], {"fixture_cases": 4})
+        self.assertEqual(self.report()["total_tests"], 79)
+
+    def test_ledger_engine_and_runtime_drift_are_detected(self):
+        self.add_ledger_fixture()
+        original = (self.path / "ledger-schedule-results.json").read_text()
+        changes = [lambda d: d["engine_sha256"].update({"utils.py": "0" * 64}),
+                   lambda d: d.update(sources_sha256={})]
+        for change in changes:
+            with self.subTest(change=change):
+                (self.path / "ledger-schedule-results.json").write_text(original)
+                self.mutate("ledger-schedule-results.json", change)
+                self.assertFalse(self.report(include_ledger_schedule=True)["successful"])
+
+    def test_ledger_count_disagreement_skips_and_bad_cases_fail(self):
+        self.add_ledger_fixture()
+        original = (self.path / "ledger-schedule-results.json").read_text()
+        for change in ({"test_methods": 19}, {"skipped": 1}, {"skipped": False},
+                       {"counts": []}, {"counts": {"cases": -1}}, {"counts": {"cases": True}}):
+            with self.subTest(change=change):
+                (self.path / "ledger-schedule-results.json").write_text(original)
+                self.mutate("ledger-schedule-results.json", lambda d: d.update(change))
+                self.assertFalse(self.report(include_ledger_schedule=True)["successful"])
+
+    def test_ledger_and_cancellation_remain_separate_suites(self):
+        self.add_ledger_fixture()
+        self.add_cancellation_fixture()
+        report = self.report(include_ledger_schedule=True, include_cancellation=True)
+        self.assertTrue(report["successful"], report["problems"])
+        self.assertEqual(report["total_tests"], 117)
+        self.assertEqual(report["suite_count"], 8)
+        self.assertEqual(report["legacy_three_suite_tests"], 51)
+
     def test_missing_extended_suites_preserve_known_51_not_complete(self):
         for name in ("loader-tests.log", "empty-lot-tests.log", "joined-wrapper-tests.log", "loader-results.json"):
             (self.path / name).unlink()
