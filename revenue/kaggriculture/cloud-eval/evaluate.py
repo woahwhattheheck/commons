@@ -7,6 +7,7 @@ CLI progress is saved to OUTPUT.progress.json; see PROGRESS.md for recovery limi
 from __future__ import annotations
 
 import argparse
+import base64
 import contextlib
 import hashlib
 import importlib.util
@@ -35,6 +36,7 @@ ENGINE_BLOBS = {
     "utils.py": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87",
 }
 MAX_PACKET = 2 * 1024 * 1024
+FAILURE_RESPONSE_PREFIX = 64 * 1024
 
 
 class Struct(dict):
@@ -178,6 +180,10 @@ class Actor:
         self.ready = self.exchange(None, startup_timeout)
         self.stats["startup_seconds"] = time.perf_counter() - started
         self._measure(self.ready)
+        if self.ready.get("kind") != "ready":
+            self.ready = self._retain_rpc_failure(self.ready)
+        else:
+            self._last_exchange = None
 
     def _measure(self, message):
         for key in ("cpu_seconds", "peak_rss_kib"):
@@ -188,8 +194,21 @@ class Actor:
     def exchange(self, request, timeout):
         """Deadline covers request writing AND response reading; partial frames cannot hang."""
         started = time.perf_counter()
+        # Keep the already-encoded request, not a mutable observation reference.
+        # No hashing, base64, JSON decoding or file writing is added to success.
+        record = self._last_exchange = {
+            "request": None, "request_expected": request is not None,
+            "timeout_seconds": timeout, "request_bytes_written": 0,
+            "response_buffered_at_start": len(self.buffer), "response_bytes_read": 0,
+            "request_encoded_seconds": None, "write_complete_seconds": None,
+            "first_response_seconds": 0.0 if self.buffer else None,
+            "response_complete_seconds": None, "response_line": None,
+        }
         try:
-            pending = memoryview(encoded(request) + b"\n") if request is not None else memoryview(b"")
+            payload = encoded(request) + b"\n" if request is not None else b""
+            record["request"] = payload
+            record["request_encoded_seconds"] = time.perf_counter() - started
+            pending = memoryview(payload)
             if len(pending) > MAX_PACKET:
                 return {"kind": "protocol_error", "error": "Observation exceeds packet limit"}
             with selectors.DefaultSelector() as selector:
@@ -199,6 +218,8 @@ class Actor:
                 while True:
                     if b"\n" in self.buffer:
                         line, _, rest = self.buffer.partition(b"\n")
+                        record["response_line"] = line
+                        record["response_complete_seconds"] = time.perf_counter() - started
                         self.buffer = bytearray(rest)
                         result = json.loads(line)
                         if not isinstance(result, dict) or not isinstance(result.get("kind"), str):
@@ -210,18 +231,69 @@ class Actor:
                     for key, _ in selector.select(remaining):
                         if key.fileobj is self.proc.stdin:
                             count = os.write(self.proc.stdin.fileno(), pending)
+                            record["request_bytes_written"] += count
                             pending = pending[count:]
                             if not pending:
+                                record["write_complete_seconds"] = time.perf_counter() - started
                                 selector.unregister(self.proc.stdin)
                         else:
                             chunk = os.read(self.proc.stdout.fileno(), 65536)
                             if not chunk:
                                 return {"kind": "process_exit", "error": "Worker exited before completing a response"}
+                            if record["first_response_seconds"] is None:
+                                record["first_response_seconds"] = time.perf_counter() - started
+                            record["response_bytes_read"] += len(chunk)
                             self.buffer.extend(chunk)
                             if len(self.buffer) > MAX_PACKET:
                                 raise ValueError("Response exceeds packet limit")
         except (OSError, ValueError, TypeError) as exc:
             return {"kind": "protocol_error", "error": f"{type(exc).__name__}: {exc}"[:1000]}
+        finally:
+            record["exchange_seconds"] = time.perf_counter() - started
+
+    def _retain_rpc_failure(self, result):
+        """Attach bounded, parent-observed evidence after the timed exchange.
+
+        Successful packets are untouched. A written request does not establish
+        worker receipt or execution; a missing response supplies no call timing.
+        """
+        record = self._last_exchange
+        payload = record["request"]
+        if not record["request_expected"]:
+            disposition = "startup_no_request"
+        elif payload is None:
+            disposition = "serialization_failed"
+        elif len(payload) > MAX_PACKET:
+            disposition = "over_packet_limit"
+        else:
+            disposition = "complete"
+        request = {
+            "disposition": disposition,
+            "wire_bytes": len(payload) if payload is not None else None,
+            "wire_sha256": hashlib.sha256(payload).hexdigest() if payload is not None else None,
+            "wire_utf8": payload.decode("utf-8") if disposition == "complete" else None,
+        }
+        line = record["response_line"]
+        raw = bytes(line) + b"\n" if line is not None else bytes(self.buffer)
+        prefix = raw[:FAILURE_RESPONSE_PREFIX]
+        timeout = record["timeout_seconds"]
+        evidence = {
+            "schema_version": 1, "scope": "parent_observed_failed_rpc",
+            "request": request,
+            "transport": {key: record[key] for key in (
+                "exchange_seconds", "request_encoded_seconds", "request_bytes_written",
+                "write_complete_seconds", "response_buffered_at_start", "response_bytes_read",
+                "first_response_seconds", "response_complete_seconds")},
+            "response": {"observed_bytes": len(raw), "observed_sha256": hashlib.sha256(raw).hexdigest(),
+                         "prefix_base64": base64.b64encode(prefix).decode("ascii"),
+                         "retained_bytes": len(prefix), "truncated": len(prefix) < len(raw),
+                         "complete_line": line is not None},
+            "worker_call_seconds": None, "worker_call_cpu_seconds": None, "worker_stage": None,
+        }
+        evidence["transport"]["timeout_seconds"] = (
+            timeout if isinstance(timeout, (int, float)) and math.isfinite(timeout) else None)
+        # Parent-recorded evidence cannot be replaced by an agent-provided field.
+        return {**result, "rpc_failure": evidence}
 
     def act(self, observation, configuration, timeout):
         started = time.perf_counter()
@@ -233,10 +305,13 @@ class Actor:
             duration, cpu = result.get("call_seconds"), result.get("call_cpu_seconds")
             if (not isinstance(result.get("action"), dict) or
                 any(not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in (duration, cpu))):
-                return {"kind": "protocol_error", "error": "Invalid action response or timing"}
+                return self._retain_rpc_failure(
+                    {"kind": "protocol_error", "error": "Invalid action response or timing"})
             self.stats["call_seconds"].append(duration)
             self.stats["call_cpu_seconds"] += cpu
-        return result
+            self._last_exchange = None
+            return result
+        return self._retain_rpc_failure(result)
 
     def _wait_with_usage(self, timeout=None):
         """Reap our worker once, retaining the OS sample even after an RPC timeout."""

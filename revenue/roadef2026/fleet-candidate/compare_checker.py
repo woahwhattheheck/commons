@@ -6,7 +6,7 @@ No locally reconstructed or rounded objective is substituted for checker output.
 Inputs may be two files or roots containing <instance>/checker-6.json.
 """
 import argparse
-from decimal import Decimal
+from decimal import Decimal, DecimalException
 import hashlib
 import json
 from pathlib import Path
@@ -14,7 +14,12 @@ from pathlib import Path
 
 def load_result(path):
     raw = path.read_bytes()
-    result = json.loads(raw, parse_float=Decimal)
+    try:
+        result = json.loads(raw, parse_float=Decimal)
+    except DecimalException as error:
+        raise ValueError(f"{path}: malformed checker number") from error
+    if not isinstance(result, dict):
+        raise ValueError(f"{path}: expected checker result object")
     if result.get("valid") not in (True, False) or type(result.get("valid")) is not bool:
         raise ValueError(f"{path}: expected checker valid boolean")
     record = {"valid": result["valid"], "path": str(path.resolve()),
@@ -26,12 +31,17 @@ def load_result(path):
         raise ValueError(f"{path}: valid output has no saturation vector")
     vector, keys = [], set()
     for row in saturations:
-        value = Decimal(row["sat"])
-        if not value.is_finite() or value < 0:
-            raise ValueError(f"{path}: nonfinite or negative saturation")
-        scaled = value * 1_000_000
-        if scaled != scaled.to_integral_value():
-            raise ValueError(f"{path}: saturation has >6 decimal places; rerun official checker at 6")
+        try:
+            value = Decimal(row["sat"])
+            if not value.is_finite() or value < 0:
+                raise ValueError(f"{path}: nonfinite or negative saturation")
+            scaled = value * 1_000_000
+            if scaled != scaled.to_integral_value():
+                raise ValueError(f"{path}: saturation has >6 decimal places; rerun official checker at 6")
+        except DecimalException as error:
+            # Malformed numeric output belongs to the supervisor's existing
+            # report retry path, not an uncaught arithmetic exception.
+            raise ValueError(f"{path}: malformed saturation number") from error
         key = (row["t"], str(row["from"]), str(row["to"]))
         if key in keys:
             raise ValueError(f"{path}: duplicate link/time coordinate {key}")

@@ -26,7 +26,8 @@ def main():
     parser.add_argument("--candidate", type=Path, required=True)
     parser.add_argument("--control", type=Path, required=True)
     parser.add_argument("--seed", type=int, required=True)
-    parser.add_argument("--candidate-seat", type=int, choices=(0, 1), required=True)
+    placement = parser.add_argument("--candidate-seat", type=int, choices=(0, 1))
+    placement.required = True
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     E = load(args.evaluator.resolve(), "continuity_evaluator")

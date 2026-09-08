@@ -19,6 +19,11 @@ on:
       - 'revenue/kaggriculture/cloud-economic-stress/cancellation/**'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py'
+      - 'revenue/kaggriculture/cloud-market-game-theory/selector.py'
+      - 'revenue/kaggriculture/cloud-plan-continuation/continuation.py'
+      - 'revenue/kaggriculture/cloud-observed-fills/observed_fills.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py'
       - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
@@ -66,6 +71,11 @@ jobs:
             /revenue/kaggriculture/cloud-economic-stress/cancellation/
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py
+            /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py
+            /revenue/kaggriculture/cloud-market-game-theory/selector.py
+            /revenue/kaggriculture/cloud-plan-continuation/continuation.py
+            /revenue/kaggriculture/cloud-observed-fills/observed_fills.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py
             /revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py
             /revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/
@@ -99,8 +109,10 @@ jobs:
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
                    'cloud-integration-differentials', 'cloud-composition-cases/cypress',
                    'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
-                   'cloud-economic-stress')
+                   'cloud-economic-stress',
+                   'cloud-plan-continuation', 'cloud-observed-fills')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
+          paths.append(root/'cloud-market-game-theory/selector.py')
           paths.append(Path('.github/workflows/titan-selected-projection.yml'))
           files = {}
           for path in sorted(paths):
@@ -199,6 +211,31 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py \
             --report "$RUNNER_TEMP/projection-validation/capture-binding-results.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/capture-binding-tests.log"
+      - name: Adaptive economic-context tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py \
+            --engine "$LAB/reference/engine/kaggriculture.py" \
+            --report "$RUNNER_TEMP/projection-validation/adaptive-context-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/adaptive-context-tests.log"
+      - name: Adaptive lazy-offer and loader tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offers.py -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/lazy-offers-tests.log"
+      - name: Adaptive-context combined-report binding tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_adaptive_context_report \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/adaptive-context-reporter-tests.log"
       - name: Dated market score schedule parity tests
         if: ${{ !cancelled() }}
         shell: bash
@@ -293,7 +330,7 @@ jobs:
           python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
             --directory "$RUNNER_TEMP/projection-validation" \
             --include-reporter-tests --include-funded-join --include-runtime-regressions \
-            --include-cancellation --include-ledger-schedule --include-stress-runner --include-queue-copy \
+            --include-cancellation --include-ledger-schedule --include-stress-runner --include-queue-copy --include-adaptive-context \
             --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}

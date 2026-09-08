@@ -353,6 +353,7 @@ class ContextTests(unittest.TestCase):
             return fallback()
         agent._parent_action = parent
         class Consumer:
+            expire = G['AdaptiveTransform'].expire
             selector = types.SimpleNamespace(active=None)
             last = {}
             counts = {'projection_fallbacks': 0, 'admissions': 0}

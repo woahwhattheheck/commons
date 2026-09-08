@@ -16,9 +16,32 @@ def digest(p):
 
 def execute(cmd, folder, label, env=None, timeout=660):
     start = time.monotonic()
-    result = subprocess.run(list(map(str, cmd)), capture_output=True, env=env, timeout=timeout)
-    (folder / (label + '.stdout')).write_bytes(result.stdout)
-    (folder / (label + '.stderr')).write_bytes(result.stderr)
+    def save(stdout, stderr, status, returncode):
+        # Keep byte streams unmodified; a timeout's capture is only a prefix.
+        stdout, stderr = stdout or b'', stderr or b''
+        record = {'schema': 'roadef.benchmark.process.v1', 'label': label,
+                  'status': status, 'returncode': returncode,
+                  'timeout_seconds': timeout, 'wall_seconds': time.monotonic() - start,
+                  'capture_complete': status != 'timeout',
+                  'stdout_bytes': len(stdout), 'stderr_bytes': len(stderr),
+                  'stdout_sha256': hashlib.sha256(stdout).hexdigest(),
+                  'stderr_sha256': hashlib.sha256(stderr).hexdigest()}
+        (folder / (label + '.stdout')).write_bytes(stdout)
+        (folder / (label + '.stderr')).write_bytes(stderr)
+        (folder / (label + '.process.json')).write_text(json.dumps(record, indent=2) + '\n',
+                                                       encoding='utf-8')
+    try:
+        result = subprocess.run(list(map(str, cmd)), capture_output=True, env=env, timeout=timeout)
+    except subprocess.TimeoutExpired as error:
+        try:
+            save(error.stdout, error.stderr, 'timeout', None)
+        except OSError as write_error:
+            # Evidence I/O must not turn the original timeout into another error.
+            error.add_note('Could not persist all timeout evidence: ' + type(write_error).__name__)
+            raise error from write_error
+        raise
+    save(result.stdout, result.stderr, 'completed' if result.returncode == 0 else 'nonzero_exit',
+         result.returncode)
     if result.returncode:
         raise RuntimeError(f'{label} exited {result.returncode}: {result.stderr[-2000:]!r}')
     return result, time.monotonic() - start

@@ -53,7 +53,12 @@ def launch(command, env, stdout, stderr):
 
 
 def stop_process(process, force=False):
-    if process is None or process.poll() is not None:
+    if process is None:
+        return
+    # launch() gives each POSIX child its own process group. The leader may
+    # already have exited while descendants still need TERM/KILL, including
+    # during escalation and the final cleanup pass.
+    if os.name != "posix" and process.poll() is not None:
         return
     try:
         if os.name == "posix":
