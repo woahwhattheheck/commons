@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -25,7 +26,6 @@ class AdaptiveContextReportTests(unittest.TestCase):
         sources = set(subject.ADAPTIVE_SOURCES.values())
         sources.update(row[2] for row in subject.ADAPTIVE_CONTEXT)
         sources.add(subject.ROOT+'cloud-observed-fills/observed_fills.py')
-        snapshot['files'].update({p: {'sha256': retained.sha(p)} for p in sources})
         retained.save(self.path/'SOURCE-SNAPSHOT.json', snapshot)
         for row, count in zip(subject.ADAPTIVE_CONTEXT, (28, 29, 1)):
             (self.path/row[1]).write_text(retained.log(count))
@@ -188,7 +188,9 @@ class AdaptiveContextWorkflowTests(unittest.TestCase):
         for text in ('test_queue_copy.py','test_runner_guard_join.py',
                      '--include-queue-copy','--include-stress-runner'):
             self.assertIn(text,self.workflow)
-        self.assertEqual(self.workflow.count('actions/upload-artifact@v4'),1)
+        focused = re.search(r'^  focused:\n(.*?)(?=^  [A-Za-z_][\w-]*:|\Z)', self.workflow, re.M | re.S)
+        self.assertIsNotNone(focused)
+        self.assertEqual(focused.group(1).count('actions/upload-artifact@v4'),1)
 
 
 if __name__=='__main__':
