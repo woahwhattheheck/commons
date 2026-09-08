@@ -313,11 +313,11 @@ class LiveCollectors:
                 raise SourceFailure("document_collection_shape")
             for row in rows:
                 if not isinstance(row, dict):
-                    continue
+                    raise SourceFailure("document_item_shape")
                 detail = row.get("data") if isinstance(row.get("data"), dict) else row
                 key = row.get("id") or row.get("subject_id") or row.get("record_id")
                 if not key:
-                    continue
+                    raise SourceFailure("document_item_shape")
                 origin = row.get("source", {})
                 origin = origin if isinstance(origin, dict) else {}
                 provider = row.get("provider", {})
