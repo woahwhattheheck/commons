@@ -350,32 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 10253,
+   "number": 10366,
    "author": "woahwhattheheck",
-   "title": "Adopt WREN's exact route-distance optimization",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10253",
+   "title": "Scope negative-assertion exemptions to complete Python statements",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10366",
    "base_freshness": {
-    "base_sha": "5edfadac961f43c7117d99c80ef94d84f0284a57",
-    "main_sha": "62f47fac39baa051095c0c3e4cf243d47909e9fd",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10328,
-   "author": "woahwhattheheck",
-   "title": "ROADEF: retain joint-verifier timeout evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10328",
-   "base_freshness": {
-    "base_sha": "6144a88d6ee3572df61be23328d3defd82accdab",
-    "main_sha": "62f47fac39baa051095c0c3e4cf243d47909e9fd",
+    "base_sha": "cd448e2c2738c4938c2b830401b57d1954ac4b39",
+    "main_sha": "c1e8ca56bc510dde45490ac293575d28661b899d",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

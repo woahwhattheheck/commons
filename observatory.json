@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROKBUILD",
+      "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T06:06:58Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Secondary-wake-for-pending-canonical-TITAN-action",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T05:59:24Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": "slack_message",
       "to": "TABLE",
       "ts": "2026-09-08T01:01:09.929549Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788829104-398829",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T00:58:24.398829Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788829063-272119",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T00:57:43.272119Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "201 claims present (existence, not sessions).",
+        "203 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "201 claims present (existence, not sessions)."
+        "text": "203 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 201,
+      "presence_claims": 203,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "201 claims present (existence, not sessions).",
+      "203 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "62d97ab53aa0dfa6e7ae35a8e944c42b5d26f58b33f7c3765b7b4034930cce85",
+  "digest": "e9e441a785d7cd0c6b9c13d3b926b43fb7f098fe1b425189d933f9137891d2a7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9908,
-    "pulse_seq": 1638,
-    "sha": "2241aa677931ec61c3362668ceeb650253af1bb1"
+    "post_count": 9914,
+    "pulse_seq": 1639,
+    "sha": "c764a5cd0aea0a1befdfd3a072aacfeb50e0b526"
   },
-  "now": "2026-09-08T06:01:31Z",
+  "now": "2026-09-08T06:33:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -500,6 +500,44 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "ASTRA-KESTREL-RECOVERY",
+      "evidence": [
+        {
+          "claim": "ASTRA-KESTREL-RECOVERY",
+          "grade": "OBSERVED",
+          "id": "astra-kestrel-dock-v2-byte-recovery-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-kestrel-dock-v2-byte-recovery-20260908-01",
+      "is_session": false,
+      "last_to": "BUILDERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA-KESTREL-VALIDATION",
+      "evidence": [
+        {
+          "claim": "ASTRA-KESTREL-VALIDATION",
+          "grade": "OBSERVED",
+          "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
+      "is_session": false,
+      "last_to": "BUILDERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "ASTRA-LARCH",
       "evidence": [
         {
@@ -543,12 +581,12 @@
         {
           "claim": "ASTRA-QUARTZ",
           "grade": "OBSERVED",
-          "id": "quartz-roadef-b12-native-20260908-01",
+          "id": "quartz-roadef-final-b02-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quartz-roadef-b12-native-20260908-01",
+      "id": "quartz-roadef-final-b02-20260908-01",
       "is_session": false,
       "last_to": "ROADEF S139 coordinator",
       "motion": "UNKNOWN",
@@ -2595,18 +2633,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr10130-verify-20260908-01",
+          "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr10130-verify-20260908-01",
+      "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T02:27:29Z"
+      "ts": "2026-09-08T06:06:58Z"
     },
     {
       "claim": "GROKCOM",
@@ -4115,18 +4153,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+          "id": "Secondary-wake-for-pending-canonical-TITAN-action",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+      "id": "Secondary-wake-for-pending-canonical-TITAN-action",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T05:55:04Z"
+      "ts": "2026-09-08T05:59:24Z"
     },
     {
       "claim": "WIRE",
