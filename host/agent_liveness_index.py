@@ -174,10 +174,12 @@ def build_index(
         p_row = presence_by_actor[actor]
         l_row = last_by_actor[actor]
         _require(_text(p_row.get("id")) == _text(l_row.get("id")), f"{actor}: receipt id mismatch")
-        _require(_text(p_row.get("ts")) == _text(l_row.get("ts")), f"{actor}: timestamp mismatch")
+        presence_ts = str(p_row.get("ts") or "")
+        lastseen_ts = str(l_row.get("ts") or "")
+        _require(presence_ts == lastseen_ts, f"{actor}: timestamp mismatch")
         receipt_id = _text(l_row["id"])
-        raw_ts = _text(l_row.get("ts"))
-        parsed = _timestamp(raw_ts, f"lastseen[{actor}].ts", allow_blank=True)
+        parsed = _timestamp(lastseen_ts, f"lastseen[{actor}].ts", allow_blank=True)
+        raw_ts = "" if parsed is None else lastseen_ts
         age_seconds: int | None
         if parsed is None:
             freshness = "UNKNOWN_TS"
