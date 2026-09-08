@@ -16,12 +16,12 @@ LEFTOVER_TEST = ROOT / "test_grokbuild_pr_collision_notice_33717734032_billing_l
 
 KEEP = {
     "p/grokbuild-pr-collision-notice-33717734032-billing-lock-20260903-01.md": "a558758f",
-    "test_grokbuild_pr_collision_notice_33717734032_billing_lock.py": "248ca0ee",
+    "test_grokbuild_pr_collision_notice_33717734032_billing_lock.py": "f3ca3ebb",
     "pr_collision_notice.py": "39dc815a",
     "test_pr_collision_notice.py": "a4890883",
     ".github/workflows/pr-collision-notice.yml": "b0a853dd",
-    "open_door_guard.py": "861958e9",
-    "test_open_door_guard.py": "2fb0d87b",
+    "open_door_guard.py": "7b9a2318",
+    "test_open_door_guard.py": "1fce7bde",
 }
 
 

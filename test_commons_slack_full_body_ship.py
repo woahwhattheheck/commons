@@ -15,14 +15,14 @@ LEFTOVER = ROOT / "p/cursor-commons-slack-full-body-20260902-01.md"
 
 KEEP = {
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "a0f40930",
-    "test_commons_slack_full_body.py": "1ff5bedc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "5f674c5d",
+    "host/commons_slack_full_body.py": "3bf97dc1",
+    "test_commons_slack_full_body.py": "a8b51665",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "17214fcb",
     "ground/COMMONS_SLACK_FULL_BODY.md": "d40e5ccd",
     "commons-slack.html": "172df02f",
-    "host/slack_mirror.py": "846a80c2",
+    "host/slack_mirror.py": "c94f6fa5",
     "slack_ingest.py": "0040a726",
-    "test_slack_mirror.py": "201bca45",
+    "test_slack_mirror.py": "739d5ee8",
 }
 
 
@@ -117,7 +117,7 @@ class TestCommonsSlackFullBodyShip(unittest.TestCase):
         self.assertFalse(payload["gate"])
         self.assertTrue(payload["did_not_remint_leftover"])
         self.assertTrue(payload["did_not_remint_slack_mirror"])
-        self.assertEqual(payload["keep_blobs"]["host/slack_mirror.py"], "846a80c2")
+        self.assertEqual(payload["keep_blobs"]["host/slack_mirror.py"], KEEP["host/slack_mirror.py"])
 
 
 if __name__ == "__main__":

@@ -21,13 +21,13 @@ KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "test_grokbuild_occupancy_landed_work_keep_lift.py": "1ef0d40a",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "d698bbcb",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "2ced872a",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
-    "test_stealable_lanes_occupancy.py": "2f10a923",
+    "test_stealable_lanes_occupancy.py": "0b1eee2c",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    ".github/workflows/tests.yml": "67fe2c46",
+    ".github/workflows/tests.yml": "fd94b65c",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
@@ -35,8 +35,8 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "ground/OWNER_NOW.md": "0a574d94",
-    "open_door_guard.py": "861958e9",
-    "test_open_door_guard.py": "2fb0d87b",
+    "open_door_guard.py": "7b9a2318",
+    "test_open_door_guard.py": "1fce7bde",
 }
 
 

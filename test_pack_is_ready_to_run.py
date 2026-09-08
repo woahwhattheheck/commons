@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/slack_mirror.py": "846a80c2",
+    "host/slack_mirror.py": "c94f6fa5",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "hub_pages.py": "97004993",
     "door.js": "5bc431b1",

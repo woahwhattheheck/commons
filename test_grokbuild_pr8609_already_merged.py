@@ -15,10 +15,10 @@ BODY_SHA256 = "b9d6ba80cfc4dde7b44042c450857a25ac2e991d98444a892b69eb3e7a34904d"
 
 KEEP = {
     "p/grokbuild-pr8584-verify-20260903-01.md": "80fa5f50",
-    "test_grokbuild_pr8584_verify.py": "34cc30c7",
+    "test_grokbuild_pr8584_verify.py": "3148c990",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "d99c08de",
-    "open_door_guard.py": "861958e9",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "c0854a3a",
+    "open_door_guard.py": "7b9a2318",
     "wakeup.py": "7988ceb2",
     "test_wakeup_reliability.py": "aca39ab4",
     ".github/workflows/harness-wakeup.yml": "813043ab",

@@ -129,7 +129,7 @@ def main() -> None:
     assert git_tree_id(ROOT / "door") == audit["door_tree_sha"]
 
     door_files = sorted(path for path in (ROOT / "door").rglob("*") if path.is_file())
-    assert len(door_files) == audit["tracked_door_file_count"] == 41
+    assert len(door_files) == audit["tracked_door_file_count"] == 43
 
     for relative, expected in audit["file_sha256"].items():
         path = ROOT / relative

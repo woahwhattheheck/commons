@@ -24,7 +24,7 @@ KEEP = {
     ".github/workflows/local-compute-guard.yml": "43576548",
     "test_local_compute_guard.py": "b8d65280",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "b5aa8863",
+    "test_grokbuild_pr8411_verify.py": "22dca8e3",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",

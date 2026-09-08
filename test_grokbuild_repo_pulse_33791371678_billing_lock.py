@@ -17,13 +17,13 @@ WORKFLOW = ROOT / ".github/workflows/repo-pulse.yml"
 
 KEEP = {
     ".github/workflows/repo-pulse.yml": "5c973635",
-    "repo_pulse.py": "9ec71eb0",
-    "test_repo_pulse.py": "b62b4485",
+    "repo_pulse.py": "298716e9",
+    "test_repo_pulse.py": "2fd56220",
     "slack_ingest.py": "0040a726",
     "test_slack_ingest.py": "5c46c3eb",
     "exact_body_redact.py": "6b9fff81",
     "host/sprint_integration.py": "1ba2002c",
-    "open_door_guard.py": "861958e9",
+    "open_door_guard.py": "7b9a2318",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
 }
 

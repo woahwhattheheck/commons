@@ -15,10 +15,10 @@ PRIOR_TEST = ROOT / "test_grokbuild_open_door_guard_33694402752_billing_lock.py"
 
 KEEP = {
     "p/grokbuild-open-door-guard-33694402752-billing-lock-20260902-01.md": "e3d789b6",
-    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "fc1db7a4",
-    "open_door_guard.py": "861958e9",
-    "test_open_door_guard.py": "2fb0d87b",
-    ".github/workflows/open-door-guard.yml": "c2121049",
+    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "c50d63ab",
+    "open_door_guard.py": "7b9a2318",
+    "test_open_door_guard.py": "1fce7bde",
+    ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-pr8481-verify-20260902-01.md": "ccbaff70",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
 }

@@ -19,14 +19,14 @@ THIS_SEAT = "bc-7e34a47c"
 
 KEEP = {
     f"p/{LEFTOVER_ID}.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "a0f40930",
-    "test_commons_slack_full_body.py": "1ff5bedc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "5f674c5d",
+    "host/commons_slack_full_body.py": "3bf97dc1",
+    "test_commons_slack_full_body.py": "a8b51665",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "17214fcb",
     "ground/COMMONS_SLACK_FULL_BODY.md": "d40e5ccd",
     "commons-slack.html": "172df02f",
-    "host/slack_mirror.py": "846a80c2",
+    "host/slack_mirror.py": "c94f6fa5",
     "slack_ingest.py": "0040a726",
-    "test_slack_mirror.py": "201bca45",
+    "test_slack_mirror.py": "739d5ee8",
 }
 
 THIS_SEAT_PATHS = (

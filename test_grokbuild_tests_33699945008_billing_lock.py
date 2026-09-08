@@ -19,21 +19,21 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
-    "test_grokbuild_tests_33694253421_billing_lock.py": "cb872444",
+    "test_grokbuild_tests_33694253421_billing_lock.py": "bafbfb9b",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "a6f9b28c",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "ddbd5c09",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
-    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "a22ff59c",
+    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "a17d5750",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "e82beaab",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "4eb56338",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daa",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
-    "boards.html": "7d046f44",
+    "boards.html": "718dc5ff",
     "hub_pages.py": "97004993",
-    ".github/workflows/tests.yml": "67fe2c46",
-    "open_door_guard.py": "861958e9",
+    ".github/workflows/tests.yml": "fd94b65c",
+    "open_door_guard.py": "7b9a2318",
 }
 
 
