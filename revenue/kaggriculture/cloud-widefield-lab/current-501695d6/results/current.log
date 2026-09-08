@@ -1,0 +1,6 @@
+{"opponent": "frozen", "seed": 9925001, "candidate_seat": 0, "status": "complete", "scores": [92736.0, 92496.0], "failure": null}
+{"opponent": "frozen", "seed": 9925001, "candidate_seat": 1, "status": "complete", "scores": [92496.0, 92736.0], "failure": null}
+{"opponent": "frozen", "seed": 9925019, "candidate_seat": 0, "status": "complete", "scores": [68194.0, 67954.0], "failure": null}
+{"opponent": "frozen", "seed": 9925019, "candidate_seat": 1, "status": "complete", "scores": [67954.0, 68194.0], "failure": null}
+SUMMARY {"frozen": {"scheduled": 4, "completed": 4, "failed": 0, "wins": 4, "ties": 0, "losses": 0, "mean_margin": 240.0, "candidate_failures": 0, "opponent_failures": 0}}
+elapsed=28.20 maxrss=103836
