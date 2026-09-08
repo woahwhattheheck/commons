@@ -210,7 +210,7 @@ def inspect_archive(path: Path, *, expected_sha256: str | None = None,
             problem('missing', f'missing {log_name}')
         else:
             try:
-                text = members[log_name].decode('utf-8')
+                text = members[log_name].decode('utf-8').replace('\r\n', '\n')
             except UnicodeError:
                 problem('failure', f'invalid UTF-8: {log_name}')
             counts = list(re.finditer(r'^Ran (\d+) tests? in [^\n]+$', text, re.MULTILINE))
