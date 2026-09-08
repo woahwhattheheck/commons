@@ -37,7 +37,7 @@ _core = _load_core()
 # The existing workflow matrix copies this wrapper into an isolated Git fixture.
 # Its child inherits this explicit source pointer; normal repository execution
 # finds the sibling without consulting the environment.
-os.environ.setdefault("OPEN_DOOR_GUARD_CORE", str(Path(_core.__file__).resolve()))
+os.environ["OPEN_DOOR_GUARD_CORE"] = str(Path(_core.__file__).resolve())
 for _name, _value in vars(_core).items():
     if not _name.startswith("__"):
         globals()[_name] = _value
