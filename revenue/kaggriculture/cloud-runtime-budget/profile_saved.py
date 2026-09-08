@@ -313,7 +313,8 @@ def read_child_report(path: Path, mode: str):
             wall = row.get("wall_s")
             if type(wall) not in (int, float) or wall < 0 or (type(wall) is float and not math.isfinite(wall)):
                 raise ValueError("child report wall time is missing or invalid")
-    except (ValueError, UnicodeError) as exc:
+        json.dumps(report, allow_nan=False)  # validate the eventual receipt encoding too
+    except (ValueError, UnicodeError, RecursionError) as exc:
         retained = path.with_name(path.stem + ".invalid.bin")
         with retained.open("xb") as handle:
             handle.write(raw)
