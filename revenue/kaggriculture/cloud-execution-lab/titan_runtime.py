@@ -30,12 +30,17 @@ class Features:
     committed: bool = True
     budget_seconds: float = 1.0
     reserve_seconds: float = 0.01
+    terminal_history: bool = False
+    history_hypotheses: dict | None = None
+    terminal_tie_break: str = 'baseline'
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
             raise ValueError('consumer must be frozen, ordered or parent')
         if self.terminal_route and self.consumer != 'frozen':
             raise ValueError('terminal_route is the tested frozen SELL composition')
+        if self.terminal_history and (self.consumer == 'parent' or self.history_hypotheses is None):
+            raise ValueError('terminal_history needs a SELL snapshot and explicit scenario hypotheses')
         if not 0 <= self.reserve_seconds < self.budget_seconds <= 1:
             raise ValueError('invalid action deadline')
 
@@ -52,6 +57,8 @@ class TitanAgent:
         self.ready = False
         self.diagnostics = {}
         self.selected = None
+        self.history = None
+        self.post = None
 
     def _initialize(self):
         f = self.features
@@ -66,6 +73,7 @@ class TitanAgent:
         else:
             from frozen_selected import FrozenSelected
             self.consumer = FrozenSelected()
+            self.consumer.capture_post_units = f.terminal_history
             self.controller = self.consumer.controller
             self.production = self.controller
             if f.terminal_route:
@@ -74,13 +82,18 @@ class TitanAgent:
                 self.consumer.controller = self.production
             budget = load('_titan_seed_budget', HERE/'reference/integrated-selected/alder/seed_budget.py')
             self.seed_budget = budget.SeedBudget(self.controller.R)
+        if f.terminal_history and self.history is None:
+            from terminal_history_join import TerminalHistoryJoin
+            self.history = TerminalHistoryJoin(hypotheses=f.history_hypotheses,
+                                               tie_break=f.terminal_tie_break)
         self.ready = True
 
     def _seed_selected(self, obs, cfg, selected):
         if not self.features.seed or not any(o and o[0] == 'BUY_SEED' for o in selected['market']):
             return selected
         from scheduler import post_units, m
-        farm, private = post_units(obs, selected, cfg)
+        snapshot = getattr(self.consumer, 'selected_post_units', None)
+        farm, private = snapshot if snapshot is not None else post_units(obs, selected, cfg)
         proposed = self.seed_budget.apply(selected, private['seeds'], int(obs['step']),
                                          self.controller.cur, int(cfg.get('maxMarketOrdersPerTurn', 10)))
         edits = [i for i, (a, b) in enumerate(zip(selected['market'], proposed['market'])) if a != b]
@@ -106,6 +119,16 @@ class TitanAgent:
                   if self.features.consumer == 'frozen' else deepcopy(selected))
         return self._seed_selected(obs, cfg, result)
 
+    def _selected_snapshot(self, obs):
+        if self.features.consumer == 'ordered':
+            packet = self.consumer.last_packet
+            return None if packet is None else packet['post_unit_observation']
+        pair = getattr(self.consumer, 'selected_post_units', None)
+        if pair is None:return None
+        post = deepcopy(obs)
+        post['farms'][int(obs['player'])], post['private'] = pair
+        return post
+
     def act(self, observation, configuration=None):
         started = time.perf_counter()
         cfg = dict(configuration or {})
@@ -115,6 +138,7 @@ class TitanAgent:
         fallback = (deadline.terminal_liquidation_fallback(obs, cfg) if obs['step'] == last
                     else deadline.legal_pass(obs))
         self.selected = None
+        self.post = None
         self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0}
         stage = 'cold_start'
         seconds = self.features.budget_seconds-self.features.reserve_seconds-(time.perf_counter()-started)
@@ -123,6 +147,13 @@ class TitanAgent:
             with timer:
                 if not self.ready:
                     self._initialize()
+                if self.history is not None:
+                    stage = 'history_observation'
+                    self.history.observe(obs)
+                if self.features.consumer == 'ordered':
+                    self.consumer.last_packet = None
+                else:
+                    self.consumer.selected_post_units = None
                 stage = 'production'
                 if self.features.terminal_route:
                     self.production.configuration = cfg
@@ -132,6 +163,13 @@ class TitanAgent:
                 fallback = self.selected
                 stage = 'selected_transform'
                 output = self.transform_selected(obs, cfg, selected)
+                if self.history is not None:
+                    self.post = self._selected_snapshot(obs)
+                    stage = 'terminal_history'
+                    output = self.history.transform(obs,cfg,output,self.post,
+                        deadline=started+self.features.budget_seconds-self.features.reserve_seconds)
+                    self.history.remember(obs,cfg,output,self.post)
+                    self.diagnostics['history'] = self.history.diagnostics
                 self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started)
                 return output
         except deadline.DeadlineExceeded as error:
@@ -140,6 +178,13 @@ class TitanAgent:
             # Cancellation can interrupt a state mutation. Reconstruct next turn
             # from observed state rather than reuse partially updated ledgers.
             self.ready = False
+            if self.history is not None:
+                if stage in ('cold_start','history_observation'):
+                    self.history = None
+                else:
+                    # Bind only the exact returned fallback and a completed
+                    # current unit snapshot. Reserve time covers this copy.
+                    self.history.remember(obs,cfg,fallback,self._selected_snapshot(obs))
             self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,
                                     elapsed_seconds=time.perf_counter()-started)
             return deepcopy(fallback)

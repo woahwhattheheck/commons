@@ -45,3 +45,34 @@ Licenses: Commons/SELL/Arlene, ALDER/JUNIPER and ECON carry Apache-2.0;
 OSPREY terminal composition/routing carry MIT; Claude producer dependencies
 retain their supplied MIT/Apache notices. Full texts and original distribution
 notice/UPSTREAM files are included, alongside source hashes in SOURCE.json.
+
+## History terminal increment (v2)
+
+`titan-history-v2.tar.gz` adds the shipped CEDAR own-fill bridge, T12 history,
+SORREL interval inference, JOINT scenario family, POLY native terminal receipts,
+PORT utility, LARCH/ANCHOR selector, PRISM sampler and existing T15/POLY solvers.
+`main.py` retains the frozen default. Instantiate
+`TitanAgent(Features(**json.load(open('TITAN-HISTORY-CONFIG.json'))))` for the
+explicit history experiment; its slot order and quiet operating-stock hypothesis
+are declared finite hypotheses, not inferred facts. Supply a separately named
+configuration to test other operating-stock hypotheses. The sampling stream is
+explicit `random.Random(0)` per actor and used only for a certified plan mixture.
+
+The history path receives the same unit snapshot already computed by SELL.
+It records the final returned market queue, then reconciles that record on the
+next observed turn. Timeout with a completed snapshot records the actual selected
+fallback. Timeout before a snapshot leaves history unknown. Final worker actions,
+seed/hire acquisition receipts and non-SELL slot positions are preserved. Changed
+queues with BUY_PRODUCT, BUY_ANIMAL or BUY_LAND retain the baseline because this
+receipt interface does not expose those per-order acquisition witnesses.
+
+Only a complete joint history family reaches terminal input generation. Only a
+complete native receipt table reaches selection. Both run inside the existing
+whole-action deadline. No current rival private stock or replay action enters
+the runtime. Terminal results are conditional on the explicit finite family.
+
+Five new methods cover six cases including both seats. In the constructed
+WHEAT-17 hypothesis case, actual history-backed dispatch changes MILK/WHEAT to
+WHEAT/MILK: native final cash 100394/100398 becomes 100397/100396, with one parent
+and one unit stage. This is a mechanism result, not a full-game improvement.
+The original PR10144 archive `70554dc0…` stays byte-for-byte intact for WIDEFIELD.

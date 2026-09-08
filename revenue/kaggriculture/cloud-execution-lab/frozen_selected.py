@@ -2,7 +2,8 @@
 """Frozen SELL method with selected base parameter; no second parent call.
 
 Generated mechanically from scheduler.py SHA256 32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9.
-Only method signature and parent-call line differ. Original remains intact.
+The selected-action boundary also optionally exposes its exact unit snapshot.
+Original scheduler and sale valuation remain intact.
 """
 from scheduler import *
 
@@ -11,6 +12,8 @@ class FrozenSelected(SellScheduler):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
         self.observe(obs)
         farm,private=post_units(obs,base,config)
+        if getattr(self, 'capture_post_units', False):
+            self.selected_post_units = (copy.deepcopy(farm), copy.deepcopy(private))
         shed=private['shed'];self.diagnostics={'step':now,'evaluations':[]}
         # Operating WHEAT/FERTILIZER and animal stock remain baseline-controlled.
         if now==last:
@@ -101,4 +104,3 @@ class FrozenSelected(SellScheduler):
             if not self.pending[item]:self.planned.pop(item,None)
         self.previous=copy.deepcopy(obs)
         return out
-

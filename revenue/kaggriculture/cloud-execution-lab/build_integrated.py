@@ -42,7 +42,7 @@ def build():
     (ROOT/'runtime/integrated-selected/ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 
-def build_release():
+def build_release(version=None):
     """Evolve this packaging boundary; retain the PR9997 archive unchanged."""
     blobs={p:(ROOT/p).read_bytes() for p in RUNTIME}
     for p in ['main.py','titan_runtime.py','frozen_selected.py','TITAN-CONFIG.json',
@@ -59,25 +59,41 @@ def build_release():
                  'reference/decision/decision.py']:
         blobs['reference/titan-current/vendor/sell/'+name]=(ROOT/name).read_bytes()
     blobs['reference/titan-current/vendor/terminal.py']=blobs['reference/titan-current/terminal.py']
+    if version == 'history-v2':
+        for name in ['terminal_history_join.py','TITAN-HISTORY-CONFIG.json']:
+            blobs[name]=(ROOT/name).read_bytes()
+        for name in ['test_terminal_history_join.py','test_ordered_selected_sell.py','test_engine_semantics.py']:
+            blobs['checks/'+name]=(ROOT/name).read_bytes()
+        for name in ['reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
+                     'reference/engine/utils.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py']:
+            blobs['checks/'+name]=(ROOT/name).read_bytes()
+        for p in (ROOT/'reference/titan-history').rglob('*'):
+            if p.is_file() and '__pycache__' not in p.parts:
+                blobs[str(p.relative_to(ROOT))]=p.read_bytes()
     rows={p:{'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)} for p,b in blobs.items()}
     manifest=json.loads((ROOT/'runtime/integrated-selected/RELEASE.json').read_text())
     manifest.update(runtime=rows,entrypoint='main.py',default=json.loads(blobs['TITAN-CONFIG.json']))
+    if version == 'history-v2':
+        manifest.update(release='titan-history-v2',history=json.loads((ROOT/'runtime/integrated-selected/HISTORY-RELEASE.json').read_text()))
     encoded=(json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode()
     blobs['SOURCE.json']=encoded
-    (ROOT/'runtime/integrated-selected/CURRENT-SOURCE.json').write_bytes(encoded)
+    prefix='HISTORY' if version == 'history-v2' else 'CURRENT'
+    (ROOT/f'runtime/integrated-selected/{prefix}-SOURCE.json').write_bytes(encoded)
     output=io.BytesIO()
     with gzip.GzipFile(fileobj=output,mode='wb',mtime=0,filename='') as gz:
         with tarfile.open(fileobj=gz,mode='w') as archive:
             for path,data in sorted(blobs.items()):
                 info=tarfile.TarInfo(path);info.size=len(data);info.mode=0o644;info.mtime=0
                 archive.addfile(info,io.BytesIO(data))
-    path=ROOT/'exports/titan-current.tar.gz';path.write_bytes(output.getvalue())
+    path=ROOT/('exports/titan-history-v2.tar.gz' if version == 'history-v2' else 'exports/titan-current.tar.gz')
+    path.write_bytes(output.getvalue())
     receipt={'path':str(path.relative_to(ROOT)), 'sha256':hashlib.sha256(output.getvalue()).hexdigest(),
              'bytes':len(output.getvalue()),'runtime_files':len(rows),
              'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
-    (ROOT/'runtime/integrated-selected/CURRENT-ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    (ROOT/f'runtime/integrated-selected/{prefix}-ARCHIVE.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 
 if __name__=='__main__':
     import sys
-    print(json.dumps(build_release() if '--release' in sys.argv else build()))
+    print(json.dumps(build_release('history-v2' if '--history-v2' in sys.argv else None)
+                     if '--release' in sys.argv or '--history-v2' in sys.argv else build()))

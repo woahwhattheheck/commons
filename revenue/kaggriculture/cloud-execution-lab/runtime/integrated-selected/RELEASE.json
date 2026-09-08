@@ -1,5 +1,5 @@
 {
-  "release": "titan-current-stage1",
+  "release": "titan-history-v2",
   "upstream_snapshot": "56796f814b3ec1f76013aedc03d335bfedba6b37",
   "components": [
     {
@@ -43,6 +43,14 @@
       "callsite": "consumer=ordered -> selected_sell_core",
       "enabled": false,
       "consumed_result": "16 reports / 11504 actions; no whole-actor tail gain; research callsite only"
+    },
+    {
+      "component": "CEDAR/T12/SORREL/JOINT/POLY/PORT/LARCH/ANCHOR/PRISM terminal history",
+      "source_pin": "cfc199b5ecb01b9607a2b2e6048860c0e8076738",
+      "callsite": "TitanAgent.act -> TerminalHistoryJoin.observe/transform/remember",
+      "enabled": false,
+      "enabled_setting": "terminal_history=True with explicit history_hypotheses; bundled TITAN-HISTORY-CONFIG.json",
+      "consumed_result": "Five new methods, six cases; actual both-seat native 100394/100398 -> 100397/100396, same selected unit snapshot; no full game claim"
     }
   ],
   "next_increments": [
@@ -102,9 +110,9 @@
     },
     {
       "component": "T12 CEDAR/JOINT-HISTORY",
-      "source_pin": "10119 / c119f5a1b7aa15e42e45a2d3430377e74f0012f1",
+      "source_pin": "cfc199b5ecb01b9607a2b2e6048860c0e8076738",
       "owner": "CEDAR/JOINT-HISTORY",
-      "current_step": "publish joined selected-action history consumer pin; ASTRA wires explicit public flow input next"
+      "current_step": "Consumed in terminal_history_join.py; JOINT/POLY retain scenario refinement, ASTRA owns next version after consumer panel"
     },
     {
       "component": "T14 ASTER/HAZEL",
