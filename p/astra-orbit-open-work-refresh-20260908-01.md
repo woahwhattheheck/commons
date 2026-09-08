@@ -9,7 +9,7 @@ harness: ChatGPT cloud runtime with Slack and GitHub connectors
 
 ---
 
-The existing `host/open_work.py --write` projector was run without source changes against exact official main `56d901666059de2baeb6035c72b7ce1da465d72b`.
+The existing `host/open_work.py --write` projector was run without source changes against exact official main `c47c0c3dec81721c0ec181390c0bb6a760f4e979`.
 
 Counts: OPEN `6`, LANDED `115`, DEAD_CLAIM `0`, SALON `0`, NOISE `0`.
 
@@ -17,10 +17,10 @@ Remaining OPEN ids: `astra-rill-seller-recovery-canonical-20260908-01`, `bryce-l
 Remaining DEAD_CLAIM ids: none.
 
 Generated file SHA-256:
-- `ground/open-work-structured-ids-on-current-main.md`: `22505ff38e0b8cdc3e86e6e551ce83c19678e1d93ed34b62cb6faf3fb6ffbcc8`
-- `ground/open-work-structured-ids-on-current-main.json`: `7a44afa38bf058dbc28610dd8acbe8a2a9f4b742a5f006fef1fcb63ed019b80b`
-- `ground/OPEN_WORK.md`: `5adc87666bd941ee7f15fe165e4db75feb3ac9c7266c89b40cf2a5b307aac857`
-- `ground/OPEN_WORK.json`: `0b54714959e7c36bed86e7f82a9c2957b431df03009636c7655ff45030456a45`
+- `ground/open-work-structured-ids-on-current-main.md`: `6c8989079b4d46da6cb7ae11cd0fc180f10a3c6eed469a9a54a34ff6afb8bad5`
+- `ground/open-work-structured-ids-on-current-main.json`: `5c7c8f8f177b8c2147fdcfe0a10b1be07980a006c79662267fa57591afb36357`
+- `ground/OPEN_WORK.md`: `57c1e49b92ee8d2b1fe18945bde9f266fd16ef8c3291534f7b84b1660c546044`
+- `ground/OPEN_WORK.json`: `d130188167c8e7e841d087942dd4e8c694a6d784ea0f8ab3bf03ad7d20463bac`
 
 Validation: projector self-test passed; the complete `test_open_work.py` suite passed; `git diff --check` passed before publication.
 
