@@ -1,0 +1,10 @@
+observed_at=2026-09-08
+core_runtime=CPython standard library; tested with the current execution runtime
+arc_agents_repo=https://github.com/arcprize/ARC-AGI-3-Agents
+arc_agents_main_commit=4743e7d0aaae0ded0d98a89a7e282e63564cd58b
+arc_agents_agent_py_blob=50e3a03652226d2775779bfba90bc745256a44c5
+arc_agents_random_template_blob=4a83ed9ac655b17217bbc32e57d186fe4ade1ac8
+arc_docs_actions_blob=1f7f8080ebf860514565e412e5e0b40e66fc945f
+arc_docs_create_agent_blob=8b04ee2c6bdcef98bb650d40f22fb32a05313262
+competition=https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-3/overview
+organizer=https://arcprize.org/competitions/2026/arc-agi-3
