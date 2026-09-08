@@ -21,7 +21,7 @@ For Commons agent work, use existing cloud compute rather than the owner's compu
 
 Enter a name, contact email, service address, and requested service. The date, phone, and notes are optional. A requested date is a preference, not a confirmed appointment or an availability check. Submit once. The dashboard shows the customer-linked job and three follow-up tasks. Repeating an identical submission with the same source ID returns that job instead of creating another one.
 
-Use **Deliver next notification** to move a queued event into the local notification feed. Check tasks as the work progresses; checking all three completes the job, and reopening one returns it to in-progress. **New request ID** prepares a genuinely different request. **Import intake JSON** accepts the same format as the HTTP endpoint and CLI.
+Use **Deliver next notification** to move a queued event into the local notification feed. Check tasks as the work progresses; checking all three completes the job, and reopening one returns it to in-progress. **New source ID** prepares a genuinely different request. **Import intake JSON** accepts the same format as the HTTP endpoint and CLI.
 
 The included example uses synthetic details:
 
@@ -84,7 +84,7 @@ Pending events use the current configured receiver. Changing it affects future a
 
 Each HTTP attempt uses a 60-second reclaimable lease and a distinct completion token. An unfinished lease can be reclaimed after expiry; completion from a stale worker cannot overwrite the new worker's state. Each URL operation has a 10-second timeout. A retry retains its event ID and payload. Automatic due times use exponential backoff from two seconds, capped at 2,048 seconds. The manual retry operation makes an event immediately due and retains its attempt history. A delivered event is not reopened by retry.
 
-**Workers are explicit:** the server does not start a background delivery loop. The dashboard processes one due event at a time; `work --limit N` processes at most N due events and exits when none are due. An existing operator scheduler may invoke that command periodically. The per-job Retry button marks that event due, then processes the oldest due event in the workspace; refresh the queue or process more entries when other earlier events are pending.
+**Workers are explicit:** the server does not start a background delivery loop. The dashboard processes one due event at a time; `work --limit N` processes at most N due events and exits when none are due. An existing operator scheduler may invoke that command periodically. The per-job Retry button marks and processes only its selected event, without consuming another queued job. If that event is already being processed, complete, or not due, no other event is substituted. The top-level delivery button and CLI worker retain oldest-due-first queue processing.
 
 ## HTTP interface
 
@@ -98,7 +98,7 @@ All POST bodies are JSON objects, limited to 128 KiB. Input errors return 400; c
 | `GET /api/config` | Current field mapping and receiver URL |
 | `POST /api/intakes` | `{ "id": "...", "payload": {...} }`; 201 new / 200 identical replay |
 | `POST /api/config` | Partial `{ "mapping": {...}, "endpoint": "..." }` settings update |
-| `POST /api/process` | `{}`; process one due event |
+| `POST /api/process` | `{}` for oldest due, or `{ "id": "intake:..." }` to process only the selected due event |
 | `POST /api/retry` | `{ "id": "intake:..." }`; mark undelivered event due |
 | `POST /api/tasks` | `{ "id": "task UUID", "done": true }`; update task and job status |
 | `POST /api/receive` | Event JSON plus matching `Idempotency-Key`; durable inbox acknowledgement |
@@ -112,6 +112,6 @@ python -m unittest -v test_workflow.py
 python -m py_compile workflow.py test_workflow.py browser_smoke.py
 ```
 
-The 20 automated tests exercise real SQLite files and loopback HTTP, including concurrent intake, an acknowledgement lost after receiver commit, retries, lease recovery, mapping changes, task persistence, and malformed input. See `VALIDATION.md` for the recorded run. The optional `browser_smoke.py` uses Playwright and Chromium for interactive UI checks; it is not a runtime dependency. Browser navigation was blocked by this build environment's administrator policy, so interactive browser and mobile-layout results are not claimed.
+The 22 automated tests exercise real SQLite files and loopback HTTP, including concurrent intake, an acknowledgement lost after receiver commit, retries, lease recovery, mapping changes, task persistence, and malformed input. See `VALIDATION.md` for the recorded run. The optional `browser_smoke.py` uses Playwright and Chromium for interactive UI checks; it is not a runtime dependency. Browser navigation was blocked by this build environment's administrator policy, so interactive browser and mobile-layout results are not claimed.
 
 This version does not send email/SMS, confirm appointments, collect payments, synchronize subsequent task edits to an external CRM, edit task titles, or run a multi-tenant service. A concrete first installation uses a customer's own request schema, an existing private deployment location, and the chosen provider's supported interface. The Hive queue's $1,500 setup / $199 monthly offer is a proposed service scope, not an implemented subscription, signed sale, or earned revenue.

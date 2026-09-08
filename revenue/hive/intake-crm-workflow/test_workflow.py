@@ -258,6 +258,43 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(error.exception.code, 409)
             error.exception.close()
 
+    def test_http_selected_retry_leaves_older_queue_pending(self):
+        self.store.intake(self.request)
+        second = copy.deepcopy(self.request)
+        second['id'] = 'selected-second'
+        self.store.intake(second)
+        selected = 'intake:' + second['id']
+        with running(Server(('127.0.0.1', 0), self.store)) as url:
+            post(url + '/api/retry', {'id': selected})
+            _, result = post(url + '/api/process', {'id': selected})
+            self.assertEqual(result['id'], selected)
+            state = self.store.snapshot()
+            self.assertEqual([n['id'] for n in state['notifications']], [selected])
+            states = {row['id']: row['state'] for row in state['outbox']}
+            self.assertEqual(states['intake:' + self.request['id']], 'pending')
+            _, next_result = post(url + '/api/process', {})
+            self.assertEqual(next_result['id'], 'intake:' + self.request['id'])
+            self.assertEqual(len(self.store.snapshot()['notifications']), 2)
+
+    def test_selected_unavailable_event_does_not_process_other_job(self):
+        self.store.intake(self.request)
+        selected = 'intake:' + self.request['id']
+        second = copy.deepcopy(self.request)
+        second['id'] = 'other-pending'
+        self.store.intake(second)
+        with self.store.transaction() as db:
+            db.execute("UPDATE outbox SET state='sending',lease_until=?,lease_token='live' WHERE id=?", (time.time()+30, selected))
+        with running(Server(('127.0.0.1', 0), self.store)) as url:
+            _, result = post(url + '/api/process', {'id': selected})
+            self.assertFalse(result['processed'])
+            _, missing = post(url + '/api/process', {'id': 'intake:not-present'})
+            self.assertFalse(missing['processed'])
+            self.assertEqual(self.store.snapshot()['notifications'], [])
+            with self.assertRaises(HTTPError) as error:
+                post(url + '/api/process', {'id': ''})
+            self.assertEqual(error.exception.code, 400)
+            error.exception.close()
+
     def test_http_malformed_json_and_size(self):
         with running(Server(('127.0.0.1', 0), self.store)) as url:
             for body in (b'{', b'[]', b'{"payload":NaN}', b' ' * 131073):
