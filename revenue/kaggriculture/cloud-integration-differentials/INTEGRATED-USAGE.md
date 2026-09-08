@@ -22,6 +22,19 @@ action = candidate.act(observation, configuration)
 file-agent entrypoint, resetting its instance at step zero. It expects the normal
 repository layout with the sibling `cloud-execution-lab` runtime and its pinned
 reference files. This file alone is not a self-contained submission archive.
+Like `integrated_main.py`, its lazy factory locates the source from its code
+filename; a raw file loader need not populate `__file__` in the entrypoint namespace.
+
+For an existing file-based executor, use these two paths from the same checkout:
+
+```text
+candidate: revenue/kaggriculture/cloud-integration-differentials/funded_main.py
+control:   revenue/kaggriculture/cloud-execution-lab/integrated_main.py
+```
+
+Do not substitute `integrated_parent.py` for that control: it also disables SELL
+and therefore does not isolate this funding change. Frozen selected SELL is a
+third, separately labeled incumbent benchmark.
 
 To reuse an existing production instance, pass `production=existing_production`.
 Call either the returned object's `act` once, or call that producer once and pass
@@ -63,16 +76,48 @@ terminal cash, independent game wins, or calibrated rival probabilities. Positiv
 BUY_PRODUCT requests keep the existing unresolved/fallback path. A newly affordable
 HIRE in an underfunded original queue remains a rejected seed edit.
 
-## Evidence and next consumer
+## Executed joined evidence
 
-CEDAR's original component evidence is retained in this directory without edits:
-15 test methods and 71 paired official-market cases. These are inputs to this
-join, not new tests or full games from this integration. CYPRESS owns the new
-joined integration cases against this same source; their execution receipt must
-be read separately rather than inferred from the component result.
+CYPRESS's actual-runtime suite passed 16 methods and 14 official interpreter
+transitions in hosted run [34174381218](https://github.com/woahwhattheheck/commons/actions/runs/34174381218),
+checkout `ff81687372ac83c3a0684c038fe62cfdedf90dc6`. Zero failures, errors, full
+games or new game seeds. This is constructed-state integration evidence, not a
+policy-strength or leaderboard result.
 
-T08 and the existing executor can freeze this optional candidate against
-`make_agent(funded=False)` on a separately assigned development shard. That
-comparison isolates the funding selector; frozen selected SELL remains a distinct
-benchmark. No game seeds, held results, selected default, or upload are changed
-by this source delivery.
+The funded 17-to-3 WHEAT-seed case retains the same HIRE and complete non-seed
+state in both positions, changing own cash 597 to 737 (+140). After a current
+PLANT consumes the final seed, the joined stage retains one seed for future
+demand (+160 cash against the original purchase). The underfunded original queue
+retains 130 cash rather than the uncertified reduction's 67 and additional HIRE.
+Terminal PLACE plus sale remains executable in both positions, with +170 cash
+from unused seed purchases. These are separately identified constructed cases,
+not independent wins. Actual initial producer calls are one per position.
+
+The exact executed runtime SHA-256 values are:
+
+```text
+integrated_selected.py dd6b0b52575ad95a975695d372546ebfbdcb829065574d9c94eab5085a44a9fe
+funded_main.py         1b2587bc81533f4cafb9c844d8b5dec1e199460feb8f0a5e0cb7236e8c04ef56
+seed_funding.py        d40225f74f37c564dd5e099637defa9dfcf42941fddc5503b60f18fbd2de2302
+```
+
+Reproduce the joined tests from the repository root:
+
+```sh
+python3 -B revenue/kaggriculture/cloud-composition-cases/cypress/test_funded_join.py \
+  --json-output /tmp/funded-join-results.json
+```
+
+CEDAR's earlier 15 methods and 71 paired official-market cases are retained as
+component provenance, not counted again as these new joined tests. JUNIPER owns
+the optional runtime seam and entrypoint; CYPRESS owns the joined test source and
+its binding into the existing hosted workflow. The raw run artifact is
+`10036744675`, SHA-256 `dbb8977c3394f0c1f857f844222b264981eff8c50761424e5a92b6cec842609d`.
+
+## Next consumer
+
+T08 and the existing executor can freeze this optional candidate against the
+integrated control on a separately assigned development shard. That comparison
+isolates the funding selector; frozen selected SELL remains a distinct benchmark.
+No game seeds, held results, selected default, or upload are changed by this
+source delivery.
