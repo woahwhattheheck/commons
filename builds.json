@@ -350,6 +350,23 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 10066,
+   "author": "woahwhattheheck",
+   "title": "TITAN: bind adaptive recourse to current observable market economics",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10066",
+   "base_freshness": {
+    "base_sha": "17e149e75092c905e4ef96ce0dca8806e521ea5e",
+    "main_sha": "9e5c43c1842f82213718ea8393af045c39204bfe",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
