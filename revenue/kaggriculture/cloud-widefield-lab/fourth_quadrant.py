@@ -133,7 +133,7 @@ def proposals(mechanics, observation, routes, current, configuration):
                 groups = [chosen[i::workers] for i in range(workers)]
                 variants = {}; feasible = True
                 for key, rows in compatible.items():
-                    patch = {}; receipts = []; costs = []; worker_days = []
+                    patch = {}; receipts = []; costs = []; worker_days = []; lots = []; growing = {}
                     for work_day, kind in schedule.items():
                         entry = calendars[key].get(work_day)
                         if entry is None:
@@ -159,18 +159,55 @@ def proposals(mechanics, observation, routes, current, configuration):
                             for offset, unit_action in enumerate(sequence, 1):
                                 t = step+offset
                                 row = deepcopy(patch.get(t, rows[t])); set_action(row, entry['hands']+i+1, unit_action); patch[t] = row
+                            harvested = []
+                            for offset, tile, op in visits:
+                                t = step+1+offset
+                                if op[0] == 'PLANT':
+                                    growing[tile] = {'tile': list(tile), 'crop': crop,
+                                        'plant_step': t, 'water_steps': [],
+                                        'worker': entry['hands']+i+1}
+                                elif op[0] == 'WATER':
+                                    growing[tile]['water_steps'].append(t)
+                                elif op[0] == 'HARVEST':
+                                    growing[tile]['harvest_step'] = t
+                                    harvested.append(growing.pop(tile))
                             if 'harvest' in kind:
-                                receipts.append({'step': step+len(sequence), 'crop': crop, 'units': len(group)*{'TOMATO': 4, 'CARROT': 3, 'MELON': 5}[crop], 'worker': entry['hands']+i+1})
+                                delivery = step+len(sequence)
+                                quantity = len(group)*{'TOMATO': 4, 'CARROT': 3, 'MELON': 5}[crop]
+                                row = deepcopy(patch[delivery]); market = row.setdefault('market', [])
+                                if len(market) >= int(configuration.get('maxMarketOrdersPerTurn', 10)):
+                                    feasible = False; break
+                                slot = len(market); market.append(['SELL', crop, quantity]); patch[delivery] = row
+                                for lot in harvested:
+                                    lot.update(drop_step=delivery, sale_step=delivery, sale_slot=slot)
+                                    lots.append(lot)
+                                receipts.append({'step': delivery, 'crop': crop, 'units': quantity, 'worker': entry['hands']+i+1})
                         if not feasible:
                             break
                     if not feasible:
                         break
-                    variants[key] = {'patches': patch, 'receipts': receipts, 'costs': costs, 'worker_days': worker_days}
+                    first_entry = calendars[key][day]
+                    variants[key] = {'patches': patch, 'receipts': receipts, 'costs': costs, 'worker_days': worker_days,
+                        'bundle': {'route_id': key, 'base_route_id': key,
+                            'target_quadrant': 'SE', 'land': {'step': first_entry['step'],
+                                'slot': len(rows[first_entry['step']].get('market', []))},
+                            'rejoin_step': min(719, (max(schedule)+1)*24), 'lots': lots}}
                 if feasible:
                     answer.append({'crop': crop, 'tiles': chosen, 'workers': workers, 'start': now,
                                    'variants': variants, 'seed_units': len(chosen)*cycles,
                                    'cost': max(sum(x['cash'] for x in v['costs']) for v in variants.values())})
     return answer
+
+
+def economic_program(proposal, route_id, base_route):
+    """Return ECON's concrete full-route and lot contract without valuation."""
+    variant = proposal['variants'][route_id]
+    candidate = list(base_route)
+    for t, row in variant['patches'].items():
+        candidate[t] = deepcopy(row)
+    bundle = deepcopy(variant['bundle'])
+    bundle['candidate_route'] = candidate
+    return candidate, bundle
 
 
 class FourthQuadrant:
