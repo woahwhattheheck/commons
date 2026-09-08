@@ -9,6 +9,7 @@ on:
       - test_inbox_slack_relay_charset.py
       - test_inbox_slack_relay_alternatives.py
       - test_inbox_slack_relay_headers.py
+      - test_inbox_slack_relay_urls.py
       - .github/workflows/inbox-visibility.yml
   workflow_dispatch:
   schedule:
@@ -55,7 +56,7 @@ jobs:
         if: steps.bindings.outputs.ready == 'true' || github.event_name != 'schedule'
         run: |
           python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
-          python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers -v
+          python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers test_inbox_slack_relay_urls -v
       - uses: actions/cache/restore@v4
         if: steps.bindings.outputs.ready == 'true'
         with:
