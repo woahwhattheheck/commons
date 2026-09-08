@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788829269.929549")
+        self.assertEqual(catalog["slack_ts"], "1788840496.125739")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-cloud-model-lab-activation-20260908-01",
+            "codex-titan-runtime-profiler-activation-20260908-01",
+        )
+        self.assertIn(
+            "codex-titan-runtime-profiler-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-cloud-model-lab-activation-20260908-01",
@@ -275,14 +279,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-cloud-model-lab-activation-20260908-01.json",
+            "codex-titan-runtime-profiler-activation-20260908-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "titan-cloud-model-lab"
+            current_activation["selected_resource"], "titan-runtime-profiler"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -622,6 +626,20 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("NO_KAGGLE_PROVIDER_WRITE", model_lab["authority"])
         self.assertIn("4f1a541c4145ddf0b3cdb73919b44001e9baebdb", model_lab["exact_safe_probe"])
         self.assertIn("d65a9ba738f2674fe4be343126d40c4debf03a8e5a44019d67135cbbcaacb11e", model_lab["exact_safe_probe"])
+        profiler = next(
+            row for row in catalog["surfaces"] if row["name"] == "titan-runtime-profiler"
+        )
+        self.assertEqual(profiler["capacity"], "LIVE")
+        self.assertEqual(profiler["stage"], "PRODUCING")
+        self.assertEqual(profiler["condition"], "CONSTRAINED")
+        self.assertEqual(
+            profiler["last_receipt"],
+            "codex-titan-runtime-profiler-activation-20260908-01",
+        )
+        self.assertIn("NO_ENGINE_ADVANCE", profiler["authority"])
+        self.assertIn("NO_PROVIDER_OR_KAGGLE_WRITE", profiler["authority"])
+        self.assertIn("8ae01c736bd44ffc424f91f657c2861126115d24", profiler["exact_safe_probe"])
+        self.assertIn("0f7b1cacba615b614ae2b93833c53a87bd6567df", profiler["exact_safe_probe"])
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
