@@ -1,0 +1,213 @@
+name: triad-final-pivot-aggregate-assembly
+
+on:
+  push:
+    branches:
+      - astra/triad-final-pivot-aggregate-20260908
+    paths:
+      - '.github/workflows/triad-final-pivot-aggregate-assembly.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  compose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: astra/triad-final-pivot-aggregate-20260908
+          fetch-depth: 0
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/triad-final-pivot-aggregate-assembly.yml
+            /.github/workflows/titan-selected-projection.yml
+            /revenue/kaggriculture/cloud-selected-projection/
+            /revenue/kaggriculture/cloud-selected-joint-checks/
+            /revenue/kaggriculture/cloud-full-support/
+            /revenue/kaggriculture/cloud-market-game-theory/solver.py
+            /revenue/kaggriculture/cloud-market-game-theory/selector.py
+            /revenue/kaggriculture/cloud-weighted-plan-selector/
+      - name: Compose producer and existing-reader support
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib
+
+          def blob(path):
+              data = path.read_bytes()
+              return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+          def replace_once(text, old, new):
+              if text.count(old) != 1:
+                  raise AssertionError('marker count != 1: ' + old[:120])
+              return text.replace(old, new)
+
+          root = Path('revenue/kaggriculture')
+          builder = root/'cloud-selected-projection/build_combined_report.py'
+          builder_test = root/'cloud-selected-projection/test_combined_report.py'
+          supplemental = root/'cloud-selected-joint-checks/supplemental_receipt.py'
+          supplemental_test = root/'cloud-selected-joint-checks/test_supplemental_receipt.py'
+          workflow = Path('.github/workflows/titan-selected-projection.yml')
+          expected = {
+              builder: 'cd64e61feac09d63dd0d7de920e1ef9f95253d07',
+              builder_test: '0949aa89be6bbb8b7240d57725116da499b8a215',
+              supplemental: '518b33c8130612adfb898ac2cc377976215e778e',
+              supplemental_test: '3be2a502a4b0ca65b4300175c55bad3ccfa85231',
+              workflow: 'b8da4d91ee88835b04e80d24a3c67f7ee77239b1',
+          }
+          for path, digest in expected.items():
+              actual = blob(path)
+              if actual != digest:
+                  raise AssertionError(f'{path}: expected {digest}, got {actual}')
+
+          text = builder.read_text()
+          text = replace_once(text,
+              "ADAPTIVE_CONTEXT = (\n"
+              "    (\"adaptive_context\", \"adaptive-context-tests.log\", ADAPTIVE_CONTEXT_TEST, \"adaptive-context-results.json\", \"tests\"),\n"
+              "    (\"lazy_offers\", \"lazy-offers-tests.log\", ADAPTIVE + \"test_lazy_offers.py\", None, None),\n"
+              ")\nADAPTIVE_SOURCES = {\n",
+              "ADAPTIVE_CONTEXT = (\n"
+              "    (\"adaptive_context\", \"adaptive-context-tests.log\", ADAPTIVE_CONTEXT_TEST, \"adaptive-context-results.json\", \"tests\"),\n"
+              "    (\"lazy_offers\", \"lazy-offers-tests.log\", ADAPTIVE + \"test_lazy_offers.py\", None, None),\n"
+              ")\n"
+              "FINAL_PIVOT_BUDGET = (\"final_pivot_budget\", \"final-pivot-budget-tests.log\",\n"
+              "                      ROOT + \"cloud-full-support/test_final_pivot_budget.py\",\n"
+              "                      \"final-pivot-budget-results.json\", \"tests_run\")\n"
+              "ADAPTIVE_SOURCES = {\n")
+          text = replace_once(text,
+              "                 include_queue_copy: bool = False,\n"
+              "                 include_adaptive_context: bool = False) -> dict:\n",
+              "                 include_queue_copy: bool = False,\n"
+              "                 include_adaptive_context: bool = False,\n"
+              "                 include_final_pivot_budget: bool = False) -> dict:\n")
+          text = replace_once(text,
+              "                    + (QUEUE_COPY if include_queue_copy else ())\n"
+              "                    + (ADAPTIVE_CONTEXT if include_adaptive_context else ()))\n",
+              "                    + (QUEUE_COPY if include_queue_copy else ())\n"
+              "                    + (ADAPTIVE_CONTEXT if include_adaptive_context else ())\n"
+              "                    + ((FINAL_PIVOT_BUDGET,) if include_final_pivot_budget else ()))\n")
+          text = replace_once(text,
+              "            if key in (\"deadline_cancellation\", \"caller_handler\",\n"
+              "                        \"stress_runner_boundary\", \"adaptive_context\"):\n",
+              "            if key == \"final_pivot_budget\":\n"
+              "                for field in (\"failures\", \"errors\"):\n"
+              "                    value = summary.get(field)\n"
+              "                    if not isinstance(value, list) or value:\n"
+              "                        problems.append(f\"{key}: nonempty or invalid {field}\")\n"
+              "                if summary.get(\"passed\") is not True:\n"
+              "                    problems.append(f\"{key}: passed is not true\")\n"
+              "            elif key in (\"deadline_cancellation\", \"caller_handler\",\n"
+              "                          \"stress_runner_boundary\", \"adaptive_context\"):\n")
+          pivot_validation = '''\n    pivot = reports.get("final_pivot_budget", {})\n    pivot_bindings = {}\n    if include_final_pivot_budget:\n        if pivot.get("schema") != "triad-final-pivot-budget-v1":\n            problems.append("final_pivot_budget: unexpected schema")\n        for label, row, path in (\n            ("core", pivot.get("core"), ROOT + "cloud-full-support/full_support.py"),\n            ("test_source", pivot.get("test_source"), FINAL_PIVOT_BUDGET[2]),\n        ):\n            actual = row.get("sha256") if isinstance(row, dict) else None\n            expected_hash = source(path)\n            bind("final_pivot_budget " + label, actual, expected_hash)\n            pivot_bindings[label] = expected_hash\n        consumers = pivot.get("consumers")\n        if not isinstance(consumers, dict):\n            problems.append("final_pivot_budget: consumers is not an object")\n            consumers = {}\n        for label, path in (\n            ("solver.py", ROOT + "cloud-market-game-theory/solver.py"),\n            ("selector.py", ROOT + "cloud-market-game-theory/selector.py"),\n            ("weighted_selector.py", ROOT + "cloud-weighted-plan-selector/weighted_selector.py"),\n        ):\n            row = consumers.get(label)\n            actual = row.get("sha256") if isinstance(row, dict) else None\n            expected_hash = source(path)\n            bind("final_pivot_budget " + label, actual, expected_hash)\n            pivot_bindings[label] = expected_hash\n        calls = pivot.get("recorded_solver_calls")\n        if not isinstance(calls, list) or not calls:\n            problems.append("final_pivot_budget: missing recorded solver calls")\n\n'''
+          text = replace_once(text,
+              "    observed_total = sum(s[\"tests\"] or 0 for s in suites.values())\n",
+              pivot_validation + "    observed_total = sum(s[\"tests\"] or 0 for s in suites.values())\n")
+          text = replace_once(text,
+              "    if include_adaptive_context:\n"
+              "        result[\"adaptive_context_binding\"] = context_bindings\n"
+              "        result[\"adaptive_context_interpreter_transitions\"] = context_transitions\n"
+              "    return result\n",
+              "    if include_adaptive_context:\n"
+              "        result[\"adaptive_context_binding\"] = context_bindings\n"
+              "        result[\"adaptive_context_interpreter_transitions\"] = context_transitions\n"
+              "    if include_final_pivot_budget:\n"
+              "        result[\"final_pivot_budget_binding\"] = {\n"
+              "            \"schema\": pivot.get(\"schema\"),\n"
+              "            \"sources\": pivot_bindings,\n"
+              "            \"recorded_solver_calls\": (len(pivot.get(\"recorded_solver_calls\"))\n"
+              "                                      if isinstance(pivot.get(\"recorded_solver_calls\"), list) else None),\n"
+              "        }\n"
+              "    return result\n")
+          text = replace_once(text,
+              "    parser.add_argument(\"--include-adaptive-context\", action=\"store_true\")\n",
+              "    parser.add_argument(\"--include-adaptive-context\", action=\"store_true\")\n"
+              "    parser.add_argument(\"--include-final-pivot-budget\", action=\"store_true\")\n")
+          text = replace_once(text,
+              "                          include_queue_copy=args.include_queue_copy,\n"
+              "                          include_adaptive_context=args.include_adaptive_context)\n",
+              "                          include_queue_copy=args.include_queue_copy,\n"
+              "                          include_adaptive_context=args.include_adaptive_context,\n"
+              "                          include_final_pivot_budget=args.include_final_pivot_budget)\n")
+          builder.write_text(text)
+
+          text = builder_test.read_text()
+          helper = '''\n    def add_final_pivot_fixture(self):\n        paths = {\n            "core": subject.ROOT + "cloud-full-support/full_support.py",\n            "test_source": subject.FINAL_PIVOT_BUDGET[2],\n            "solver.py": subject.ROOT + "cloud-market-game-theory/solver.py",\n            "selector.py": subject.ROOT + "cloud-market-game-theory/selector.py",\n            "weighted_selector.py": subject.ROOT + "cloud-weighted-plan-selector/weighted_selector.py",\n        }\n        self.mutate("SOURCE-SNAPSHOT.json", lambda d: d["files"].update(\n            {path: {"sha256": sha(path)} for path in paths.values()}))\n        (self.path / "final-pivot-budget-tests.log").write_text(log(21), encoding="utf-8")\n        save(self.path / "final-pivot-budget-results.json", {\n            "schema": "triad-final-pivot-budget-v1",\n            "core": {"sha256": sha(paths["core"])},\n            "test_source": {"sha256": sha(paths["test_source"])},\n            "consumers": {name: {"sha256": sha(paths[name])}\n                          for name in ("solver.py", "selector.py", "weighted_selector.py")},\n            "tests_run": 21, "failures": [], "errors": [], "passed": True,\n            "recorded_solver_calls": [{"result": {"status": "bit_limit"}}],\n        })\n\n'''
+          text = replace_once(text,
+              "    def test_cli_exit_and_serialized_partial_report(self):\n",
+              helper + "    def test_cli_exit_and_serialized_partial_report(self):\n")
+          old_cli = '''    def test_cli_exit_and_serialized_partial_report(self):\n        output = self.path / "output.json"\n        cmd = [sys.executable, str(Path(subject.__file__)), "--directory", str(self.path), "--output", str(output)]\n        ok = subprocess.run(cmd, capture_output=True, text=True)\n        self.assertEqual(ok.returncode, 0, ok.stderr)\n        self.assertEqual(json.loads(output.read_text())["total_tests"], 79)\n        (self.path / "joined-wrapper-tests.log").unlink()\n        bad = subprocess.run(cmd, capture_output=True, text=True)\n        self.assertEqual(bad.returncode, 1, bad.stderr)\n        self.assertIsNone(json.loads(output.read_text())["total_tests"])\n'''
+          new_cli = '''    def test_cli_exit_and_serialized_partial_report(self):\n        output = self.path / "output.json"\n        cmd = [sys.executable, str(Path(subject.__file__)), "--directory", str(self.path), "--output", str(output)]\n        ok = subprocess.run(cmd, capture_output=True, text=True)\n        self.assertEqual(ok.returncode, 0, ok.stderr)\n        self.assertEqual(json.loads(output.read_text())["total_tests"], 79)\n\n        self.add_final_pivot_fixture()\n        pivot_cmd = cmd + ["--include-final-pivot-budget"]\n        pivot = subprocess.run(pivot_cmd, capture_output=True, text=True)\n        self.assertEqual(pivot.returncode, 0, pivot.stderr)\n        pivot_report = json.loads(output.read_text())\n        self.assertEqual(pivot_report["total_tests"], 100)\n        self.assertEqual(pivot_report["suite_count"], 7)\n        self.assertEqual(pivot_report["final_pivot_budget_tests"], 21)\n        self.assertEqual(pivot_report["final_pivot_budget_binding"]["schema"],\n                         "triad-final-pivot-budget-v1")\n        self.mutate("final-pivot-budget-results.json",\n                    lambda d: d["core"].update(sha256="0" * 64))\n        drift = subprocess.run(pivot_cmd, capture_output=True, text=True)\n        self.assertEqual(drift.returncode, 1, drift.stderr)\n        self.assertFalse(json.loads(output.read_text())["successful"])\n\n        (self.path / "joined-wrapper-tests.log").unlink()\n        bad = subprocess.run(cmd, capture_output=True, text=True)\n        self.assertEqual(bad.returncode, 1, bad.stderr)\n        self.assertIsNone(json.loads(output.read_text())["total_tests"])\n'''
+          text = replace_once(text, old_cli, new_cli)
+          builder_test.write_text(text)
+
+          text = supplemental.read_text()
+          text = replace_once(text,
+              "    'workflow_bindings': ('workflow-bindings-tests.log', None, 8,\n"
+              "                          (COVER + 'test_regression_bindings.py', WORKFLOW)),\n"
+              "}\n",
+              "    'workflow_bindings': ('workflow-bindings-tests.log', None, 8,\n"
+              "                          (COVER + 'test_regression_bindings.py', WORKFLOW)),\n"
+              "    'final_pivot_budget': ('final-pivot-budget-tests.log',\n"
+              "                           'final-pivot-budget-results.json', 21,\n"
+              "                           ('revenue/kaggriculture/cloud-full-support/test_final_pivot_budget.py',\n"
+              "                            'revenue/kaggriculture/cloud-full-support/full_support.py',\n"
+              "                            'revenue/kaggriculture/cloud-market-game-theory/solver.py',\n"
+              "                            'revenue/kaggriculture/cloud-market-game-theory/selector.py',\n"
+              "                            'revenue/kaggriculture/cloud-weighted-plan-selector/weighted_selector.py')),\n"
+              "}\n")
+          pivot_reader = '''        if label == 'final_pivot_budget':\n            compare(report.get('schema'), 'triad-final-pivot-budget-v1',\n                    'final_pivot_budget schema')\n            count = report.get('tests_run')\n            if not integer(count) or count < minimum:\n                problem('failure', 'final_pivot_budget: invalid/below-coverage tests_run')\n            else:\n                compare(count, summary['test_methods'], 'final_pivot_budget count')\n            for key in ('failures', 'errors'):\n                value = report.get(key)\n                if not isinstance(value, list) or value:\n                    problem('failure', f'final_pivot_budget: nonempty or invalid {key}')\n            if report.get('passed') is not True:\n                problem('failure', 'final_pivot_budget: passed is not true')\n            for field, path in (\n                ('core', 'revenue/kaggriculture/cloud-full-support/full_support.py'),\n                ('test_source', 'revenue/kaggriculture/cloud-full-support/test_final_pivot_budget.py'),\n            ):\n                row = report.get(field)\n                compare(row.get('sha256') if isinstance(row, dict) else None, source(path),\n                        'final_pivot_budget ' + field)\n            consumers = report.get('consumers')\n            if not isinstance(consumers, dict):\n                problem('failure', 'final_pivot_budget: consumers is not an object')\n                consumers = {}\n            for field, path in (\n                ('solver.py', 'revenue/kaggriculture/cloud-market-game-theory/solver.py'),\n                ('selector.py', 'revenue/kaggriculture/cloud-market-game-theory/selector.py'),\n                ('weighted_selector.py', 'revenue/kaggriculture/cloud-weighted-plan-selector/weighted_selector.py'),\n            ):\n                row = consumers.get(field)\n                compare(row.get('sha256') if isinstance(row, dict) else None, source(path),\n                        'final_pivot_budget ' + field)\n            calls = report.get('recorded_solver_calls')\n            if not isinstance(calls, list) or not calls:\n                problem('failure', 'final_pivot_budget: missing recorded solver calls')\n            else:\n                summary['recorded_solver_calls'] = len(calls)\n            continue\n'''
+          text = replace_once(text,
+              "        if label == 'deadline_cancellation':\n",
+              pivot_reader + "        if label == 'deadline_cancellation':\n")
+          supplemental.write_text(text)
+
+          text = supplemental_test.read_text()
+          pivot_test_helper = '''\n    def add_final_pivot(self):\n        log_name, report_name, count, paths = SUPPLEMENTS['final_pivot_budget']\n        self.snapshot['files'].update(\n            {path: {'sha256': hashlib.sha256(path.encode()).hexdigest()} for path in paths})\n        self.members[log_name] = log(count)\n        self.members[report_name] = json.dumps({\n            'schema': 'triad-final-pivot-budget-v1',\n            'core': {'sha256': self.snapshot['files'][paths[1]]['sha256']},\n            'test_source': {'sha256': self.snapshot['files'][paths[0]]['sha256']},\n            'consumers': {\n                'solver.py': {'sha256': self.snapshot['files'][paths[2]]['sha256']},\n                'selector.py': {'sha256': self.snapshot['files'][paths[3]]['sha256']},\n                'weighted_selector.py': {'sha256': self.snapshot['files'][paths[4]]['sha256']},\n            },\n            'tests_run': count, 'failures': [], 'errors': [], 'passed': True,\n            'recorded_solver_calls': [{'result': {'status': 'bit_limit'}}],\n        }).encode()\n\n    def change_final_pivot(self, change):\n        report = json.loads(self.members['final-pivot-budget-results.json'])\n        change(report)\n        self.members['final-pivot-budget-results.json'] = json.dumps(report).encode()\n\n    def test_final_pivot_is_source_bound_and_adds_21(self):\n        self.add_final_pivot()\n        result = self.read()\n        self.assertEqual(result['status'], 'COMPLETE_PASS')\n        self.assertEqual(result['represented_suite_count'], 4)\n        self.assertEqual(result['reported_test_methods'], 49)\n        self.assertEqual(result['core_plus_supplemental_methods'], 100)\n        self.assertEqual(result['suites']['final_pivot_budget']['test_methods'], 21)\n        self.assertEqual(result['suites']['final_pivot_budget']['recorded_solver_calls'], 1)\n\n    def test_final_pivot_contract_corruption_fails(self):\n        changes = (\n            lambda d: d.update(schema='other'),\n            lambda d: d.update(passed=False),\n            lambda d: d.update(failures=['case']),\n            lambda d: d.update(tests_run=20),\n            lambda d: d['core'].update(sha256='0' * 64),\n            lambda d: d['consumers']['selector.py'].update(sha256='0' * 64),\n            lambda d: d.update(recorded_solver_calls=[]),\n        )\n        for change in changes:\n            with self.subTest(change=change):\n                self.members, self.snapshot, self.core = fixture()\n                self.add_final_pivot()\n                self.change_final_pivot(change)\n                self.assertEqual(self.read()['status'], 'FAIL')\n\n'''
+          text = replace_once(text,
+              "    def test_unknown_suites_are_not_claimed_as_covered(self):\n",
+              pivot_test_helper + "    def test_unknown_suites_are_not_claimed_as_covered(self):\n")
+          supplemental_test.write_text(text)
+
+          text = workflow.read_text()
+          text = replace_once(text,
+              "            --include-cancellation --include-caller-handler --include-ledger-schedule --include-stress-runner --include-queue-copy --include-adaptive-context \\\n",
+              "            --include-cancellation --include-caller-handler --include-ledger-schedule --include-stress-runner --include-queue-copy --include-adaptive-context --include-final-pivot-budget \\\n")
+          workflow.write_text(text)
+      - name: Execute affected parser suites
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m py_compile \
+            revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
+            revenue/kaggriculture/cloud-selected-projection/test_combined_report.py \
+            revenue/kaggriculture/cloud-selected-joint-checks/supplemental_receipt.py \
+            revenue/kaggriculture/cloud-selected-joint-checks/test_supplemental_receipt.py
+          (
+            cd revenue/kaggriculture/cloud-selected-projection
+            python3 -B -m unittest -v test_combined_report
+          )
+          (
+            cd revenue/kaggriculture/cloud-selected-joint-checks
+            python3 -B -m unittest -v test_supplemental_receipt test_joint_receipt
+          )
+      - name: Commit clean composed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/triad-final-pivot-aggregate-assembly.yml
+          git config user.name woahwhattheheck
+          git config user.email brycembusiness2@gmail.com
+          git add -A
+          git diff --cached --check
+          changed="$(git diff --cached --diff-filter=ACMRTUXB --name-only | sort)"
+          expected="$(printf '%s\n' \
+            '.github/workflows/titan-selected-projection.yml' \
+            'revenue/kaggriculture/cloud-selected-joint-checks/supplemental_receipt.py' \
+            'revenue/kaggriculture/cloud-selected-joint-checks/test_supplemental_receipt.py' \
+            'revenue/kaggriculture/cloud-selected-projection/build_combined_report.py' \
+            'revenue/kaggriculture/cloud-selected-projection/test_combined_report.py')"
+          test "$changed" = "$expected"
+          git commit -m "test(titan): bind final-pivot suite into aggregate receipt"
+          git push origin HEAD:astra/triad-final-pivot-aggregate-20260908
