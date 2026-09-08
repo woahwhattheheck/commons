@@ -49,7 +49,12 @@ def _public_url(value: str) -> bool:
             # netloc. Discovery links need a real absolute authority. Reading
             # ``port`` also rejects malformed, non-numeric port declarations.
             parsed.port
-            return bool(parsed.netloc and parsed.hostname)
+            return bool(
+                parsed.netloc
+                and parsed.hostname
+                and parsed.username is None
+                and parsed.password is None
+            )
         if parsed.scheme == "mailto":
             # ``mailto://host`` is not a mailbox URI. The recipient is the
             # scheme path and must not be written as a slash-prefixed URL path.
