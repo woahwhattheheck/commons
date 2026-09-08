@@ -1,41 +1,198 @@
 {
-  "format": "zlib-base64-v1",
-  "scope": "Actual Agent AST + existing reconciler/inference + official market; explicit parent and history-sink harnesses; not full agent gameplay",
-  "runtime_sha256": "a9385e6b4d2aa71b7001cbfdadaa837412c4ceab3be9545a7456ff2596449f9a",
+  "format": "compact-history-v1",
+  "scope": "Verbatim Agent/inference AST and actual fill reconciler/official market; explicit parent, final-action-stage and history-sink harnesses; no full-agent gameplay.",
   "runtime_blob": "204d865ace55a196618b45c1299c4e461f4a7137",
   "original_runtime_blob": "2408104e5014ed006eea60066c762eaa67dd6a1a",
-  "test_sha256": "90c878d44d060aa8418c9675e468502a22f9e117688966fc000ac9a0e2ab2263",
-  "summary": {
-    "tests_run": 28,
-    "failures": 0,
-    "errors": 0,
-    "skipped": 0,
-    "success": true,
-    "market_executions": 37,
-    "full_games": 0,
+  "test_sha256": "a6113b09b70fd766d0ed24880d0284a3a39847cdeb603346f8402278866d6468",
+  "report_sha256": "a8d537bf4efcf72404150d7d62ee17fcb1211e86970bf2be0257884788683e5a",
+  "report": {
     "engine_sha256": {
       "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
       "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
       "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
     },
-    "flow_function_ast_sha256": "9b8d1104ccd58504aa01a2fd9854cfb09e6b5a09f3f6e1d7f8176c4534db7cfa"
-  },
-  "retained_unchanged": [
-    "AdaptiveTransform",
-    "Agent._parent_action",
-    "Agent.capture",
-    "Agent.streams"
-  ],
-  "payloads": {
-    "history-results.json": {
-      "bytes": 42021,
-      "sha256": "429f766b7e28e632d0f15d44e1216bcbdf855a102d74201ff8aeb7572dfdbb69",
-      "data": "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"
+    "errors": 0,
+    "failures": 0,
+    "flow_function_ast_sha256": "9b8d1104ccd58504aa01a2fd9854cfb09e6b5a09f3f6e1d7f8176c4534db7cfa",
+    "full_games": 0,
+    "market_executions": 37,
+    "skipped": 0,
+    "sources": {
+      "engine_loader": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+      "fills": "8439d571028e5613bfcd70cfa1428ee86b1c17c89a1297288191c2a833f38857",
+      "flow_adapter": "b331d330da5d2adde44c67b8db70ef76ae8e3c1f01aedb773b362afa2325c9d8",
+      "original_runtime": "d58f04603cb8bcf411327dfe6d4a092dbf07ea83811609dd1efef94ea19a00e4",
+      "runtime": "a9385e6b4d2aa71b7001cbfdadaa837412c4ceab3be9545a7456ff2596449f9a"
     },
-    "history-test.log": {
-      "bytes": 3903,
-      "sha256": "78a5e99ca058908ed49f82ee67741af9964988e624dcd7ba6928d8fb569a8dc7",
-      "data": "eNqtl8uO0zAUhvd9ii5hQQWzgUdAYoGE2FuufZKacWzjS0t4en7baTsOjORUzKIapT3/+Xx8bokUIuMiJq6Zs/g/GRVZ4JqYkmSiGhQF9pu8ZV6dud6/YWziyjB2+HoM5M8kP6sQrZ+/Qykc4ka9t/vD4bC3z7uXhuUbFqLS+m4lt7j+t0Lr7Jhm5ulnKmZGMruIsiFbeeLixAZtL11+e8VaBGHNoMbkeVTWFLtBGYDjFOWBJyYpwrbz9Bv01iDek+YRwHw6QsKmwJy3MonIjI3McR/1zEKapm6WLZItjkxOKwFbFrSN2YyWcOYz0S+cB/rJ4Cs+jp5G/LQL6hHhFo2sZIJ7j3RCflnxzFQox+Hw7p8J50penHjoA+qX+xtjUiEoMzJlzshw63NlecouA8ru2diL6Wbo0GoBkMzW18LOuAtsSM7pXAmClItd3nuEVq6TkZk1GUE+Qj/OqD85wuyR4/fLtRgIFddKMhR9AjudycMgltDFE+X8Rii7EPqkWveFiMX8gbJHFblS41dkXOFYal+ZgWAt+vJxs2oLdU2je+u/Vli4tsea3gPXgTaMlEeEWzRjEUaRc+uIApfcz0xaqkZZQaE5lmatJmd9xFGZ03wm38X3sPoa0nD5gwvcdh0juH2f2zd+L21Rw1d4dKoEnWzbRFukZZLd8nGxuHfSLSi9Yi1CTX+0Z0E1HTFGHM+9GRmJHCynEtzFhCirnBBZpHNOPSreIqJRWS/DMm+j5yYM1k/XirY3P+VBF9g2yRVOTkLYKIepwudtDfE149ZF4BOmaCTHLlyh+MDGbmlW77msIV0ue8VWCIgQSGsmY0aiK0lyZPLCd82kZQvSOvSBbJJc4ZSV4khzVtBqQpOqrfwI0Ym2UPQorZwb7sLJlh0QuSJVXflSuDdIrBilOXUybBBcocQ8zJd2WBsgrPqq8RXb1gF61VSKYlkWbp22bi9LxeDebFB9A3iTYguzFEd5A0B74AyFOtb6rPtkftnpguhSap1fvMVQrNn6YjTW8F03SZE7W2f8twi+joL3HXmPYV0kcKtUFy0651eyzoVku+wNa/fuv/ztvnGzf/q0zzhhr8z+/eHpw8ew2339svsDq0rqng=="
-    }
-  }
+    "success": true,
+    "tests_run": 28,
+    "witnesses": [
+      {
+        "case": "drop_sale",
+        "corrected_rival_range": [
+          0,
+          3
+        ],
+        "original_rival_range": [
+          3,
+          3
+        ],
+        "packet": "missing",
+        "seat": 0
+      },
+      {
+        "case": "drop_sale",
+        "corrected_rival_range": [
+          0,
+          3
+        ],
+        "original_rival_range": [
+          3,
+          3
+        ],
+        "packet": "stale",
+        "seat": 0
+      },
+      {
+        "case": "drop_sale",
+        "corrected_rival_range": [
+          0,
+          0
+        ],
+        "original_rival_range": [
+          0,
+          0
+        ],
+        "packet": "current",
+        "seat": 0
+      },
+      {
+        "case": "drop_sale",
+        "corrected_rival_range": [
+          0,
+          3
+        ],
+        "original_rival_range": [
+          3,
+          3
+        ],
+        "packet": "missing",
+        "seat": 1
+      },
+      {
+        "case": "drop_sale",
+        "corrected_rival_range": [
+          0,
+          3
+        ],
+        "original_rival_range": [
+          3,
+          3
+        ],
+        "packet": "stale",
+        "seat": 1
+      },
+      {
+        "case": "drop_sale",
+        "corrected_rival_range": [
+          0,
+          0
+        ],
+        "original_rival_range": [
+          0,
+          0
+        ],
+        "packet": "current",
+        "seat": 1
+      },
+      {
+        "case": "current_post_unit_drop_sale",
+        "history_ms": 0.17682600014268246,
+        "rival_range": [
+          0,
+          0
+        ],
+        "sale_receipts": {
+          "EGG": 3
+        },
+        "seat": 0
+      },
+      {
+        "case": "current_post_unit_drop_sale",
+        "history_ms": 0.17618499987293035,
+        "rival_range": [
+          0,
+          0
+        ],
+        "sale_receipts": {
+          "EGG": 3
+        },
+        "seat": 1
+      }
+    ]
+  },
+  "case_columns": [
+    "seat",
+    "step",
+    "orders",
+    "rival_orders",
+    "before_shed",
+    "post_unit_shed",
+    "next_shed",
+    "own_cash",
+    "rival_cash"
+  ],
+  "shed_keys": [
+    "CARROT",
+    "COW",
+    "EGG",
+    "FERTILIZER",
+    "GOOSE",
+    "MELON",
+    "MILK",
+    "SHEEP",
+    "STRAWBERRY",
+    "TOMATO",
+    "WHEAT",
+    "WOOL"
+  ],
+  "cases": [
+    [0,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [1,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [1,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[["SELL","EGG",2]],{"EGG":3},{"EGG":3},{},1145.0,1098.0],
+    [1,17,[["SELL","EGG",3]],[["SELL","EGG",2]],{"EGG":3},{"EGG":3},{},1145.0,1098.0],
+    [0,17,[["BUY_PRODUCT","WHEAT",2]],[],{},{},{"WHEAT":2},948.0,1000.0],
+    [1,17,[["BUY_PRODUCT","WHEAT",2]],[],{},{},{"WHEAT":2},948.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[],{"EGG":3},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[["SELL","EGG",2],["HIRE"],["SELL","EGG",2]],[],{"EGG":3},{"EGG":3},{},1146.0,1000.0],
+    [0,23,[["SELL","EGG",2]],[],{"EGG":2},{"EGG":2},{"EGG":4},1099.0,1000.0],
+    [1,23,[["SELL","EGG",2]],[],{"EGG":2},{"EGG":2},{"EGG":4},1099.0,1000.0],
+    [0,23,[["SELL","EGG",2]],[],{"EGG":2},{"EGG":2},{"EGG":4},1099.0,1000.0],
+    [0,17,[["SELL","STRAWBERRY",3]],[],{"STRAWBERRY":3},{"STRAWBERRY":3},{},1003.0,1000.0],
+    [1,17,[["SELL","STRAWBERRY",3]],[],{"STRAWBERRY":3},{"STRAWBERRY":3},{},1003.0,1000.0],
+    [0,17,[["BUY_PRODUCT","WHEAT",100],["BUY_PRODUCT","FERTILIZER",100]],[],{},{},{"WHEAT":34},16.0,1000.0],
+    [0,17,[],[],{},{},{},1000.0,1000.0],
+    [0,20,[["SELL","EGG",3]],[],{"EGG":3},{"EGG":3},{},1147.0,1000.0],
+    [1,20,[["SELL","EGG",3]],[],{"EGG":3},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [1,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[],[],{},{},{},1000.0,1000.0],
+    [0,17,[],[],{},{},{},1000.0,1000.0],
+    [0,17,[["SELL","EGG",1]],[],{"EGG":1},{"EGG":1},{},1050.0,1000.0],
+    [0,17,[["SELL","EGG",1]],[],{"EGG":3},{"EGG":3},{"EGG":2},1050.0,1000.0],
+    [0,17,[["BUY_PRODUCT","WHEAT",1],["SELL","WHEAT",1]],[],{},{},{},0.0,0.0],
+    [0,17,[["BUY_PRODUCT","WHEAT",1],["SELL","WHEAT",1]],[],{},{},{},1000.0,1000.0],
+    [0,17,[["SELL","EGG",1]],[],{"EGG":1},{"EGG":1},{},1050.0,1000.0],
+    [0,17,[["SELL","EGG",2]],[],{"EGG":2},{"EGG":2},{},1099.0,1000.0],
+    [0,17,[["HIRE"],["SELL","EGG",3]],[],{"EGG":3},{"EGG":3},{"EGG":3},999.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[],{"EGG":3},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [1,17,[["SELL","EGG",3]],[],{},{"EGG":3},{},1147.0,1000.0],
+    [0,718,[["SELL","EGG",2]],[],{"EGG":1},{"EGG":1},{},1050.0,1000.0],
+    [0,17,[["BUY_PRODUCT","WHEAT",2]],[],{},{},{"WHEAT":2},948.0,1000.0],
+    [0,17,[["SELL","EGG",3]],[],{"EGG":3},{"EGG":3},{},1147.0,1000.0],
+    [0,17,[["SELL","EGG",2]],[],{"EGG":2},{"EGG":2},{},1099.0,1000.0]
+  ]
 }
