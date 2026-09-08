@@ -35,11 +35,28 @@ def load_registry(path: Path = SOURCE) -> dict[str, Any]:
 
 
 def _public_url(value: str) -> bool:
+    if (
+        not value
+        or "\\" in value
+        or any(character.isspace() or ord(character) < 32 or ord(character) == 127
+               for character in value)
+    ):
+        return False
     try:
         parsed = urlparse(value)
+        if parsed.scheme == "https":
+            # ``urlparse`` accepts ``https:relative`` and a non-empty ``:port``
+            # netloc. Discovery links need a real absolute authority. Reading
+            # ``port`` also rejects malformed, non-numeric port declarations.
+            parsed.port
+            return bool(parsed.netloc and parsed.hostname)
+        if parsed.scheme == "mailto":
+            # ``mailto://host`` is not a mailbox URI. The recipient is the
+            # scheme path and must not be written as a slash-prefixed URL path.
+            return not parsed.netloc and bool(parsed.path) and not parsed.path.startswith("/")
     except ValueError:
         return False
-    return parsed.scheme in {"https", "mailto"} and bool(parsed.netloc or parsed.path)
+    return False
 
 
 def validate(registry: dict[str, Any]) -> list[str]:
