@@ -167,6 +167,61 @@ class ScopeTests(unittest.TestCase):
         )
         self.assertIn('gate-identifier', found)
 
+    def test_fstring_negative_literal_passes(self):
+        self.assertEqual(self.rules(
+            'test_policy.py',
+            'self.assertFalse(f"authentication required {value}" in source)',
+        ), set())
+
+    def test_raw_fstring_negative_literal_passes(self):
+        self.assertEqual(self.rules(
+            'test_policy.py',
+            'self.assertFalse(fr"authentication required" in source)',
+        ), set())
+
+    def test_fstring_escaped_gate_text_passes(self):
+        self.assertEqual(self.rules(
+            'test_policy.py',
+            'self.assertFalse(f"{{REQUIRE_IDENTITY()}}" in source)',
+        ), set())
+
+    def test_fstring_gate_expression_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py',
+            'self.assertFalse(f"safe {REQUIRE_IDENTITY()}" in source)',
+        ))
+
+    def test_fstring_format_gate_expression_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py',
+            'self.assertFalse(f"{REQUIRE_IDENTITY():permission denied}" in source)',
+        ))
+
+    def test_multiline_plain_assert_negative_quote_passes(self):
+        self.assertEqual(self.rules(
+            'test_policy.py',
+            'assert (',
+            '    "permission denied" not in source.lower()',
+            ')',
+        ), set())
+
+    def test_multiline_plain_assert_positive_quote_is_scanned(self):
+        self.assertIn('explicit-denial', self.rules(
+            'test_policy.py',
+            'assert (',
+            '    "permission denied" in source.lower()',
+            ')',
+        ))
+
+    def test_multiline_plain_assert_gate_tail_is_scanned(self):
+        self.assertIn('gate-identifier', self.rules(
+            'test_policy.py',
+            'assert (',
+            '    "permission denied" not in source.lower()',
+            '    or REQUIRE_IDENTITY()',
+            ')',
+        ))
+
 
 def main():
     parser = argparse.ArgumentParser()
