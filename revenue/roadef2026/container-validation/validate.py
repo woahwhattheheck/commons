@@ -301,14 +301,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--image", required=True)
     parser.add_argument("--data", type=Path, required=True)
+    parser.add_argument("--preparation", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     data, output = args.data.resolve(strict=True), args.output.resolve()
     inputs = {name: digest(data / name) for name in INPUTS}
+    preparation = json.loads(args.preparation.read_text())
     output.mkdir(parents=True, exist_ok=False)
     docker = Docker(output)
     report = {"scope": "B01 actual Docker integration and accepted-checkpoint SIGTERM retention",
               "submitted": False, "input_sha256": inputs, "cases": [], "passed": False,
+              "preparation_sha256": digest(args.preparation),
               "validator_host_uid": os.getuid(), "validator_host_euid": os.geteuid()}
     try:
         image = json.loads(docker.command(["image", "inspect", args.image]))[0]
@@ -325,6 +328,15 @@ def main():
         docker.image_files = probe["files"]
         if probe["uid"] != int(UID) or probe["euid"] != int(UID):
             raise RuntimeError("Actual image process did not use the declared numeric UID")
+        if inputs != {row['path']: row['sha256'] for row in preparation['inputs']}:
+            raise RuntimeError("Runtime inputs differ from pinned preparation")
+        if probe['files']['source-manifest.json'] != preparation['context_manifest_sha256']:
+            raise RuntimeError("Image build manifest differs from pinned preparation")
+        runtime = {row['path']: row for row in preparation['runtime_files']}
+        for name in ('run.sh', 'supervisor.py', 'compare_checker.py'):
+            if probe['files'].get(name) != runtime[name]['used_sha256']:
+                raise RuntimeError(f"Image runtime differs from pinned preparation: {name}")
+        report['runtime_source_identity_verified'] = True
         for name in ("normal-30s", "term-after-checkpoint"):
             report["cases"].append(run_case(docker, data, output, name, terminate=name.startswith("term")))
         report["input_hashes_unchanged"] = inputs == {name: digest(data / name) for name in INPUTS}

@@ -16,6 +16,20 @@ import zipfile
 SOURCE_COMMIT = '2885d176373c33410148829fef93c310c3752c0b'
 SOURCE_ROOT = 'revenue/roadef2026/fleet-candidate'
 PREPARER_COMMIT = '1e31f2b2bef235bb145980c9ceed49580b1e55fb'  # Existing QUARTZ PR10171.
+RUNTIME_FILES = ('run.sh', 'supervisor.py', 'compare_checker.py', 'build.sh',
+                 'Dockerfile', 'README.md', 'ATTRIBUTION.md', '.dockerignore')
+RUNTIME_REPAIRS = {
+    'compare_checker.py': {
+        'commit': 'addf9ca4c363ab638c3af7f4e4c6f07f41596e1e',
+        'sha256': '4b8752b13bef936c59d3240831ef7f2fc2c25940e945f678b9b5cd15e0bda136',
+        'existing_repair_pr': 10224,
+        'change': 'PORT native scientific-notation compatibility with HAZEL malformed-report handling'},
+    'supervisor.py': {
+        'commit': '3eb001cb7ccab80678ee1661d2dd411e63af645a',
+        'sha256': 'e132568db1a88d38380d222d84b210a823da019c644974afcb535bbade2d7d67',
+        'existing_repair_pr': 10213,
+        'change': 'SPRUCE process-group cleanup composed with JOINT abnormal-exit receipts'},
+}
 INPUTS = {'setB/setB-01-net.json': 'network.json',
           'setB/setB-01-tm.json': 'traffic.json',
           'setB/setB-01-scenario.json': 'scenario.json'}
@@ -59,8 +73,25 @@ def prepare(output):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(raw)
         source_files.append(row)
-    # Preserve the full original publication, then use the source-staging repair
-    # from QUARTZ's existing merged repair. Solver/runtime bytes remain pinned.
+    # Keep the original publication untouched. Stage only named runtime repairs
+    # separately so the preparer's manifest describes the actual build inputs.
+    runtime = output / 'runtime-source'
+    runtime.mkdir()
+    runtime_files = []
+    for name in RUNTIME_FILES:
+        original = (source / name).read_bytes()
+        repair = RUNTIME_REPAIRS.get(name)
+        used = fetch(name, commit=repair['commit']) if repair else original
+        if repair and digest(used) != repair['sha256']:
+            raise ValueError(f'Published runtime repair identity differs: {name}')
+        (runtime / name).write_bytes(used)
+        runtime_files.append({'path': name, 'source_path': f'{SOURCE_ROOT}/{name}',
+                              'commit': repair['commit'] if repair else SOURCE_COMMIT,
+                              'original_bytes': len(original), 'original_sha256': digest(original),
+                              'used_bytes': len(used), 'used_sha256': digest(used),
+                              'existing_repair_pr': repair['existing_repair_pr'] if repair else None,
+                              'change': repair['change'] if repair else 'Unchanged original publication'})
+    # The existing QUARTZ repair retains extensionless dependency headers.
     used_preparer = fetch('prepare_context.py', commit=PREPARER_COMMIT)
     preparer = output / 'PREPARER.py'
     preparer.write_bytes(used_preparer)
@@ -71,7 +102,14 @@ def prepare(output):
     for archive in module.ARCHIVES.values():
         module.fetch_verified(archive, archives, None)
     context = output / 'context'
-    context_manifest = module.prepare(context, source, source / 'main.cpp', archives)
+    context_manifest = module.prepare(context, runtime, source / 'main.cpp', archives)
+    staged = {row['path']: row['sha256'] for row in context_manifest['files']}
+    for row in runtime_files:
+        target = 'attribution/ATTRIBUTION.md' if row['path'] == 'ATTRIBUTION.md' else row['path']
+        if staged.get(target) != row['used_sha256']:
+            raise ValueError(f'Build context differs from pinned runtime: {target}')
+    if staged['sources/candidate/main.cpp'] != digest((source / 'main.cpp').read_bytes()):
+        raise ValueError('Build context differs from original candidate algorithm')
     official = module.ARCHIVES['checker']
     input_files = []
     with zipfile.ZipFile(archives / official['file']) as archive:
@@ -86,6 +124,7 @@ def prepare(output):
         raise ValueError('Pinned official archive is missing a B01 input')
     report = {'source_commit': SOURCE_COMMIT, 'source_root': SOURCE_ROOT,
               'public_manifest_sha256': digest(manifest_raw), 'source_files': source_files,
+              'runtime_files': runtime_files,
               'preparer': {'path': 'revenue/roadef2026/fleet-candidate/prepare_context.py',
                            'commit': PREPARER_COMMIT, 'existing_repair_pr': 10171,
                            'used_sha256': digest(used_preparer),
@@ -93,7 +132,7 @@ def prepare(output):
                            'change': 'Preserve the pinned extensionless SparseHash header family'},
               'archives': context_manifest['archives'], 'inputs': input_files,
               'context_manifest_sha256': digest((context / 'source-manifest.json').read_bytes()),
-              'scope': 'Published solver/runtime bytes with explicit source-staging repair; B01 container behavior only'}
+              'scope': 'Original solver algorithms with explicit preparer and Python runtime repairs; B01 container behavior only'}
     (output / 'PREPARATION.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({'source_commit': SOURCE_COMMIT, 'source_files': len(source_files),
                       'archives_verified': len(module.ARCHIVES), 'inputs': len(input_files)}))

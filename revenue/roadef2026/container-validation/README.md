@@ -15,8 +15,17 @@ header family in the original preparer's suffix filter. The shared repair retain
 those original archive bytes and their attribution. No second preparation repair
 is introduced here. The original publication is
 preserved; `PREPARATION.json` records both original and executed preparer hashes,
-and `PREPARER.py` retains the executed source. Solver and runtime files still come
-from the original published commit.
+and `PREPARER.py` retains the executed source. Solver algorithms stay on the
+original publication. A separate `runtime-source` directory consumes the exact
+comparator from [PORT PR10224](https://github.com/woahwhattheheck/commons/pull/10224)
+and supervisor from [SPRUCE/JOINT PR10213](https://github.com/woahwhattheheck/commons/pull/10213).
+Their immutable commits, original and used hashes, byte counts and repair ownership
+are recorded in `PREPARATION.json`; their executed bytes are retained in the
+artifact. The comparator preserves native checker scientific values exactly and
+includes HAZEL's malformed-report handling. The supervisor composes process-group
+cleanup with accurate abnormal-exit receipts. The preparer generates its manifest
+from these actual inputs, and the image probe verifies the runtime hashes and
+build manifest before either case runs.
 Only the three official B01 input files are extracted for these container cases.
 `PREPARATION.json` maps their original archive names to the local input names.
 
@@ -29,14 +38,15 @@ resources.
 The hosted validation process runs with `sudo` so it can read the unchanged
 container's private checkpoint files and work directories. The report records
 the validation host's UID/EUID separately from the runtime container's actual
-UID. After execution, only the retained result directory is made readable for
-artifact upload. Local execution likewise needs host access to files created by
+UID. After execution, only the retained result directory is assigned back to the
+Actions user and made readable for receipt assembly and artifact upload. Local
+execution likewise needs host access to files created by
 UID 1006410000; Docker access alone does not grant that filesystem access.
 
 The cases cover a 30-second development portfolio run and SIGTERM after an
 accepted checkpoint in a longer running portfolio. The second case independently
 checks both that checkpoint and the final output using the image's compiled
-official checker. It compares complete six-decimal saturation vectors to ensure
+official checker. It compares complete saturation vectors emitted at checker precision six to ensure
 the signalled run retains an equal or better feasible result. It also records
 actual exit and cleanup behavior. This does not cover a signal before the first
 validated checkpoint, every final-drain timing, an official-budget run, largest
@@ -47,7 +57,7 @@ Run on an existing Linux host with Docker:
 ```sh
 python3 -B revenue/roadef2026/container-validation/bootstrap.py --output /tmp/roadef-fleet-work
 docker build -t roadef-fleet /tmp/roadef-fleet-work/context
-sudo python3 -B revenue/roadef2026/container-validation/validate.py --image roadef-fleet --data /tmp/roadef-fleet-work/data --output /tmp/roadef-fleet-results
+sudo python3 -B revenue/roadef2026/container-validation/validate.py --image roadef-fleet --data /tmp/roadef-fleet-work/data --preparation /tmp/roadef-fleet-work/PREPARATION.json --output /tmp/roadef-fleet-results
 ```
 
 Choose new work and result directories. The GitHub workflow

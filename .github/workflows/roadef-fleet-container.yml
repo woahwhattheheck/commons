@@ -34,12 +34,14 @@ jobs:
           sudo python3 -B revenue/roadef2026/container-validation/validate.py
           --image roadef-fleet
           --data "${{ runner.temp }}/roadef-fleet-work/data"
+          --preparation "${{ runner.temp }}/roadef-fleet-work/PREPARATION.json"
           --output "${{ runner.temp }}/roadef-fleet-results"
       - name: Make retained runtime evidence readable to artifact upload
         if: ${{ always() }}
         shell: bash
         run: |
           if [ -d "$RUNNER_TEMP/roadef-fleet-results" ]; then
+            sudo chown -R "$(id -u):$(id -g)" "$RUNNER_TEMP/roadef-fleet-results"
             sudo chmod -R a+rX "$RUNNER_TEMP/roadef-fleet-results"
           fi
       - name: Bind execution evidence to workflow and validation source
@@ -55,6 +57,10 @@ jobs:
           for name in ('PREPARATION.json', 'PREPARER.py', 'BUILD.log'):
               if (work / name).is_file():
                   shutil.copyfile(work / name, out / name)
+          if (work / 'runtime-source').is_dir():
+              shutil.copytree(work / 'runtime-source', out / 'runtime-source', dirs_exist_ok=True)
+          if (work / 'source/PUBLIC-SOURCE-MANIFEST.json').is_file():
+              shutil.copyfile(work / 'source/PUBLIC-SOURCE-MANIFEST.json', out / 'ORIGINAL-PUBLIC-SOURCE-MANIFEST.json')
           if (work / 'context/source-manifest.json').is_file():
               shutil.copyfile(work / 'context/source-manifest.json', out / 'BUILD-SOURCE-MANIFEST.json')
           workflow = pathlib.Path('.github/workflows/roadef-fleet-container.yml')
@@ -72,4 +78,5 @@ jobs:
           name: roadef-fleet-container-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/roadef-fleet-results/
           if-no-files-found: error
+          include-hidden-files: true
           retention-days: 14
