@@ -1,0 +1,41 @@
+{
+  "schema": "titan.full-support.final-pivot-budget.v1",
+  "base_runtime_git_blob": "7f7e2e9d62a655e24219490e9c54ab23019f1520",
+  "changed_runtime_path": "revenue/kaggriculture/cloud-full-support/full_support.py",
+  "changed_behavior": "check exact tableau bit lengths before accepting the no-entering optimal exit",
+  "unchanged": [
+    "finite-table objective",
+    "ordered rows and columns",
+    "max_pivots semantics",
+    "cache key and size",
+    "certificate schema",
+    "default computation budgets",
+    "consumer selection APIs"
+  ],
+  "retained_packet_execution": {
+    "dedicated_test_methods": 21,
+    "old_fixed_comparisons": 222,
+    "unchanged_comparisons": 213,
+    "corrected_boundary_comparisons": 9,
+    "default_budget_comparisons": 72,
+    "default_budget_differences": 0
+  },
+  "repository_native_regression": {
+    "path": "revenue/kaggriculture/cloud-full-support/test_final_pivot_budget.py",
+    "test_methods": 21,
+    "deterministically_discovered_boundary_tables": 9,
+    "default_budget_tables": 72,
+    "expected_boundary_result": {
+      "status": "bit_limit",
+      "exact": false,
+      "support": [0],
+      "certificate_valid": true
+    }
+  },
+  "games": 0,
+  "seeds": 0,
+  "policy_changed": false,
+  "selected_default_changed": false,
+  "probabilities_inferred": false,
+  "scope": "Exact finite-table provider arithmetic contract only"
+}
