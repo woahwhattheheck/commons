@@ -67,10 +67,15 @@ jobs:
           local = json.loads((root / 'statistics-output-checks/CURRENT-REGRESSIONS.json').read_text())
           assert local['tests_run'] == 24 and local['successful'] is True
           validation = json.loads((root / 'statistics-output-checks/STATISTICS-OUTPUT-VALIDATION.json').read_text())
-          assert validation['candidate']['tests_run'] == 24
-          assert validation['baseline']['failed_assertions_or_subtests'] == 25
-          assert validation['official_checker']['executions'] == 6
-          assert validation['submission_changed'] is False
+          assert validation['status'] == 'PASS'
+          assert validation['regression']['methods'] == 24
+          assert validation['regression']['gcc_14_2_pass'] == 24
+          assert validation['regression']['clang_17_pass'] == 24
+          assert validation['regression']['exact_original_failed_methods'] == 18
+          assert validation['regression']['exact_original_assertion_or_subtest_failures'] == 25
+          assert validation['checker_correspondence']['official_checker_invocations'] == 6
+          assert validation['checker_correspondence']['solution_bytes_identical'] is True
+          assert validation['checker_correspondence']['non_timing_statistics_identical'] is True
           py_compile.compile(str(root / 'statistics-output-checks/test_statistics_output.py'), doraise=True)
           PY
           git diff --check
