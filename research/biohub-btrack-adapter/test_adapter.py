@@ -212,6 +212,22 @@ class AdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(AdapterError, "IDs may have been mutated"):
             tracks_to_rows("a", detections, [mutated], refs, self.scale)
 
+    def test_fractional_refs_fail_closed_instead_of_truncating(self):
+        detections = self.detections()[:1]
+        payload, refs = build_btrack_payload(detections, self.scale, self.bounds)
+        fractional = FakeTrack(
+            1,
+            [0.5],
+            [False],
+            [0],
+            [payload["x"][0]],
+            [payload["y"][0]],
+            [payload["z"][0]],
+            [10],
+        )
+        with self.assertRaisesRegex(AdapterError, "must be an integer"):
+            tracks_to_rows("a", detections, [fractional], refs, self.scale)
+
     def test_unknown_and_inconsistent_dummy_refs_fail_closed(self):
         detections = self.detections()[:1]
         payload, refs = build_btrack_payload(detections, self.scale, self.bounds)
