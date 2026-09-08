@@ -140,8 +140,12 @@ def _liquidate(engine: Any, selected: Mapping[str, Any], node: _Node,
     limit = max(1, int(config.get('maxMarketOrdersPerTurn', 10)))
     queue = copy.deepcopy(list(selected.get('market', []))[:limit])
     seen = set()
-    for order in queue:
+    for index, order in enumerate(queue):
         if isinstance(order, list) and len(order) >= 3 and order[0] == 'SELL' and order[1] in engine.PRODUCTS:
+            # Slots are separate execution occurrences, even when the caller
+            # reuses one order list. Detach before sizing or zeroing a SELL.
+            order = copy.deepcopy(order)
+            queue[index] = order
             item = order[1]
             order[2] = max(0, int(node.private['shed'].get(item, 0))) if item not in seen else 0
             seen.add(item)
@@ -360,7 +364,9 @@ class TerminalAdmissionAgent:
         # Preserve the supplied parent's invocation/input contract. Normalize
         # only the detached admission view, after the single original call.
         selected = self.producer(observation, config)
-        cfg = dict(config or {})
+        # Preserve the existing callback's Mapping implementation and identity;
+        # structured configurations may also expose attribute-style access.
+        cfg = config if config is not None else {}
         step = observation.get('step')
         if step is None:
             step = (int(observation['day']) * int(cfg.get('turnsPerDay', 24))
