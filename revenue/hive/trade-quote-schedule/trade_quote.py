@@ -78,8 +78,10 @@ def _iso_date(value: str, field: str) -> date:
 def _clock(value: str, field: str) -> time:
     try:
         parsed = time.fromisoformat(value)
-    except ValueError as exc:
+    except (TypeError, ValueError) as exc:
         raise QuoteError(f"{field} must be HH:MM") from exc
+    if parsed.tzinfo is not None:
+        raise QuoteError(f"{field} must be local HH:MM without a UTC offset")
     if parsed.second or parsed.microsecond:
         raise QuoteError(f"{field} must be minute precision")
     return parsed
