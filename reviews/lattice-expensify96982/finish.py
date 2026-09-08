@@ -83,7 +83,7 @@ def main() -> None:
     fixed_source = replace_once(fixed_source, '            setIsCreationLifecycleArmed(true);\n', '')
     fixed_source = replace_once(fixed_source,
         '    }, [isOptimisticTrackingCleared, optimisticWatchKey, transactions]);',
-        '    }, [isOptimisticTrackingCleared, optimisticWatchKey, transactions, watchedTx]);')
+        '    }, [isOptimisticTrackingCleared, optimisticWatchKey, transactions, watchedTx?.pendingAction, watchedTx?.reportID, watchedTx?.transactionID]);')
     fixed_source = replace_once(fixed_source, '''    const isPendingCreation =
         ''' + watch_lookup + '''?.pendingAction === CONST.RED_BRICK_ROAD_PENDING_ACTION.ADD;
 ''', '')
@@ -107,7 +107,7 @@ def main() -> None:
     manifest.update({'source_after_sha256': common.sha(APP/SOURCE),
                      'test_after_sha256': common.sha(APP/TEST),
                      'repair_sha256': hashlib.sha256(patch).hexdigest(),
-                     'scope': 'two const keys; typed test prefix filter; deduplicated watched transaction and guarded render-time lifecycle latch'})
+                     'scope': 'two const keys; typed test prefix filter; deduplicated watched transaction; guarded render-time lifecycle latch; narrow optional watched transaction hook dependencies'})
     (OUT/'final-manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
 
     for project in ('tsconfig.jest.json','tsconfig.json','tsconfig.bun.json','tsconfig.node.json','server/victory-chart-renderer/tsconfig.json'):
