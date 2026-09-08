@@ -149,7 +149,7 @@ class IntakeTests(unittest.TestCase):
     def test_relationship_must_resolve_before_file_read(self):
         with patch('attachment_intake.read_attachment') as read:
             with self.assertRaises(AttachmentError):
-                prepare_attachments(self.root, [self.row], ['c-001'])
+                prepare_attachments(self.root, [self.row], ['c-002'])
             read.assert_not_called()
 
     def test_identifier_strings_preserved_and_not_trimmed(self):
