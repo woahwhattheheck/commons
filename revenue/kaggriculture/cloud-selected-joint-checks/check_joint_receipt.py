@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+from io import BytesIO
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -58,8 +59,8 @@ def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return result
 
 
-def read_members(path: Path) -> dict[str, bytes]:
-    """Read bounded text evidence only, without extracting archive paths."""
+def read_members(path: Path | BytesIO) -> dict[str, bytes]:
+    """Read a path or captured ZIP stream without extracting archive paths."""
     with zipfile.ZipFile(path) as archive:
         infos = [info for info in archive.infolist() if not info.is_dir()]
         if sum(info.file_size for info in infos) > MAX_TOTAL:
@@ -89,7 +90,10 @@ def inspect_archive(path: Path, *, expected_sha256: str | None = None,
                     market_report: str = 'market-results.json',
                     market_log: str = 'market-tests.log',
                     required_suites: tuple[str, ...] = ()) -> dict[str, Any]:
-    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    # Hash and parse one captured input. A downloader may replace the path
+    # after this read; its later bytes must not inherit this snapshot's digest.
+    archive_bytes = path.read_bytes()
+    digest = hashlib.sha256(archive_bytes).hexdigest()
     problems: list[dict[str, str]] = []
     summaries: dict[str, Any] = {}
     reports: dict[str, dict[str, Any]] = {}
@@ -109,7 +113,7 @@ def inspect_archive(path: Path, *, expected_sha256: str | None = None,
         problem('failure', 'artifact SHA-256 differs from supplied provider digest')
 
     try:
-        members = read_members(path)
+        members = read_members(BytesIO(archive_bytes))
     except (ValueError, OSError, zipfile.BadZipFile, RuntimeError) as exc:
         members = {}
         problem('failure', f'cannot read evidence ZIP: {exc}')
