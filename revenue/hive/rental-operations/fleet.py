@@ -13,7 +13,7 @@ from pathlib import Path
 EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
 HOUR = 3_600_000_000
 DAY = 24 * HOUR
-TIME = re.compile(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,6})?)?(?:Z|[+-]\d{2}:\d{2})\Z')
+TIME = re.compile(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,6})?)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)\Z')
 CHECKS = {'handover': ('condition_recorded', 'accessories_counted', 'instructions_shared'),
           'return': ('condition_recorded', 'accessories_counted', 'issues_noted')}
 
