@@ -44,18 +44,48 @@ for _name, _value in vars(_core).items():
 SKIP_FILES.add("open_door_guard_core.py")
 
 
+def _legacy_fstring_code(token_text: str) -> str:
+    """Keep only executable interpolation from a pre-3.12 STRING token."""
+    try:
+        expression = ast.parse(token_text, mode="eval").body
+    except (SyntaxError, ValueError):
+        return " "
+    if not isinstance(expression, ast.JoinedStr):
+        return " "
+    values = []
+    for node in ast.walk(expression):
+        if isinstance(node, ast.FormattedValue):
+            try:
+                values.append(ast.unparse(node.value))
+            except (AttributeError, TypeError, ValueError):
+                return token_text
+    return " ".join(values) or " "
+
+
 def _code_without_literals(text: str) -> str:
     """Return available Python code tokens with strings/comments blanked.
 
-    A partial added line can end before its unchanged continuation. Keep tokens
-    emitted before that expected EOF so an executable gate identifier already
-    present on the added line cannot inherit the truncation exemption.
+    Python 3.12+ exposes f-string literal segments separately, while older
+    tokenizers expose the whole f-string as STRING. In both cases retain only
+    executable interpolation, never quoted denial text. A partial added line
+    can end before its unchanged continuation; keep tokens emitted before that
+    expected EOF so an executable gate identifier cannot inherit an exemption.
     """
+    literal_types = {tokenize.COMMENT}
+    for name in ("FSTRING_START", "FSTRING_MIDDLE", "FSTRING_END"):
+        token_type = getattr(tokenize, name, None)
+        if token_type is not None:
+            literal_types.add(token_type)
     tokens = []
     generator = tokenize.generate_tokens(io.StringIO(text).readline)
     try:
         for token in generator:
-            if token.type in (tokenize.STRING, tokenize.COMMENT):
+            if token.type == tokenize.STRING:
+                replacement = _legacy_fstring_code(token.string)
+                token = tokenize.TokenInfo(
+                    token.type, replacement, token.start, token.end, token.line
+                )
+            elif token.type in literal_types:
                 token = tokenize.TokenInfo(token.type, " ", token.start, token.end, token.line)
             tokens.append(token)
     except (IndentationError, tokenize.TokenError):
@@ -116,7 +146,13 @@ def _negative_assertion_indexes(path: str, lines: Sequence[AddedLine]) -> set[in
 
     hidden: set[int] = set()
     for start, line in enumerate(lines):
-        if start in hidden or not _negative_assertion(line.text):
+        stripped = line.text.lstrip()
+        plain_assert = stripped.startswith("assert") and (
+            len(stripped) == len("assert")
+            or stripped[len("assert")].isspace()
+            or stripped[len("assert")] == "("
+        )
+        if start in hidden or not (_negative_assertion(line.text) or plain_assert):
             continue
         source: list[str] = []
         parsed = False
@@ -127,18 +163,24 @@ def _negative_assertion_indexes(path: str, lines: Sequence[AddedLine]) -> set[in
                 break
             previous_line = current.line_number
             source.append(current.text)
+            joined = "\n".join(source)
             try:
-                module = ast.parse(textwrap.dedent("\n".join(source)))
+                module = ast.parse(textwrap.dedent(joined))
             except SyntaxError:
                 continue
             parsed = True
-            if len(module.body) == 1 and _negative_assertion_statement(module.body[0], "\n".join(source)):
+            if (len(module.body) == 1
+                    and _negative_assertion(joined)
+                    and _negative_assertion_statement(module.body[0], joined)):
                 hidden.update(range(start, end + 1))
             break
-        if not parsed and not _top_level_semicolon(line.text):
-            code = _code_without_literals(line.text)
-            if not any(rule.pattern.search(code) for rule in LINE_RULES):
-                hidden.add(start)
+        if not parsed:
+            joined = "\n".join(source)
+            if (_negative_assertion(joined)
+                    and not _top_level_semicolon(joined)):
+                code = _code_without_literals(joined)
+                if not any(rule.pattern.search(code) for rule in LINE_RULES):
+                    hidden.update(range(start, start + len(source)))
     return hidden
 
 
