@@ -12,6 +12,9 @@ on:
       - 'revenue/kaggriculture/cloud-integration-differentials/**'
       - 'revenue/kaggriculture/cloud-composition-cases/cypress/**'
       - 'revenue/kaggriculture/cloud-composition-cases/cover/**'
+      - 'revenue/kaggriculture/cloud-economic-stress/deadline_adapter.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/test_runner.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/cancellation/**'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py'
@@ -54,6 +57,9 @@ jobs:
             /revenue/kaggriculture/cloud-integration-differentials/
             /revenue/kaggriculture/cloud-composition-cases/cypress/
             /revenue/kaggriculture/cloud-composition-cases/cover/
+            /revenue/kaggriculture/cloud-economic-stress/deadline_adapter.py
+            /revenue/kaggriculture/cloud-economic-stress/test_runner.py
+            /revenue/kaggriculture/cloud-economic-stress/cancellation/
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py
@@ -88,7 +94,8 @@ jobs:
           roots = ('cloud-selected-projection', 'cloud-execution-lab',
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
                    'cloud-integration-differentials', 'cloud-composition-cases/cypress',
-                   'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover')
+                   'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
+                   'cloud-economic-stress')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
           paths.append(Path('.github/workflows/titan-selected-projection.yml'))
           files = {}
@@ -187,6 +194,14 @@ jobs:
           set -euo pipefail
           python3 -B revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py -v \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/score-schedule-tests.log"
+      - name: Deadline cancellation regression tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-economic-stress/cancellation/test_deadline_cancellation.py \
+            --report "$RUNNER_TEMP/projection-validation/deadline-cancellation.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/deadline-cancellation-tests.log"
       - name: Existing workflow regression binding tests
         if: ${{ !cancelled() }}
         shell: bash
