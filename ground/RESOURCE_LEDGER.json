@@ -74,20 +74,21 @@
     "inventory/resources/records/codex-kaggle-account-binding-exercised-20260907-01.json",
     "inventory/resources/records/codex-titan-cloud-sell-scheduler-activation-20260907-01.json",
     "inventory/resources/records/codex-commons-operation-command-center-activation-20260907-01.json",
-    "inventory/resources/records/codex-titan-cloud-model-lab-activation-20260908-01.json"
+    "inventory/resources/records/codex-titan-cloud-model-lab-activation-20260908-01.json",
+    "inventory/resources/records/codex-titan-runtime-profiler-activation-20260908-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788829269.929549",
+  "slack_ts": "1788840496.125739",
   "snapshot": {
-    "base_main_sha": "1f15b08e9e58d33a39770a831c6dfc84f49968a0",
-    "observed_at": "2026-09-08T01:01:09Z",
+    "base_main_sha": "0e1071e2059e07ab03224e61a210b04e7f1b5e56",
+    "observed_at": "2026-09-08T04:08:16Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-cloud-model-lab-activation-20260908-01",
+  "source_id": "codex-titan-runtime-profiler-activation-20260908-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -96,8 +97,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — reusable TITAN cloud model lab producing through an exact path executor and retained source-fixed experiments",
+  "subject": "MASTER RESOURCE LEDGER — source-bound TITAN runtime profiler producing through retained observations and lossless child-process receipts",
   "supersedes_source_ids": [
+    "codex-titan-runtime-profiler-activation-20260908-01",
     "codex-titan-cloud-model-lab-activation-20260908-01",
     "codex-commons-operation-command-center-activation-20260907-01",
     "codex-titan-cloud-sell-scheduler-activation-20260907-01",
@@ -1787,6 +1789,28 @@
       "last_used_at": "2026-09-08T01:03:18Z",
       "stale_after": "next model-lab executor, opponent resolver, checkpoint schema, source pin, seed bank, assigned consumer, workflow, runtime or provider-result change",
       "priority": 97
+    },
+    {
+      "name": "titan-runtime-profiler",
+      "kind": "SOURCE_BOUND_SAVED_OBSERVATION_RUNTIME_PROFILER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / TITAN runtime-analysis consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_ENTRYPOINT_INPUT_AND_SOURCE_BINDING_REQUIRED; NO_ENGINE_ADVANCE; NO_PROVIDER_OR_KAGGLE_WRITE",
+      "consumer": "T08/current canonical-package continuity and subsequent source-fixed TITAN runtime or deadline diagnosis needing exact saved-observation execution, action correspondence and child-process failure receipts",
+      "value": "The FINCH/TRACE profiler executes exact saved JSONL or JSONL.gz observations against one explicitly named actor in fresh processes. Retained development evidence matched 719 of 719 actions in each of two independent passes, while later refinements bind executed bytes to reported hashes and preserve malformed, interrupted, nested and nonfinite child outputs.",
+      "next_action": "Run only when the next concrete canonical package has matching archive, SOURCE/config and current-pointer identities; keep source-load, direct-call, RPC, engine and provider timing boundaries separate and never relabel retained inputs as new games.",
+      "source": "revenue/kaggriculture/cloud-runtime-budget; PR #10088 merge e7279b3ded61898974065e0ad247c207215a7424; source-binding PR #10118 merge 1484d886442ca1556c8165d8367492e35fd8b10b; child-report PR #10135 merge cc7f6e8c55bf04326fd4a5303021ab8e707f1fcf",
+      "evidence_ts": "2026-09-08T02:30:35Z",
+      "auth_surface": "public current-main source plus explicitly supplied retained observations, execution receipt and compatible actor source; no credential or live provider session is required",
+      "exact_safe_probe": "Current profile_saved.py blob 8ae01c736bd44ffc424f91f657c2861126115d24; core, source-binding and child-report test blobs ab0a073d0faf891036c19ec49caee6ad4937afa3, 3047711518c5600fdae0f12acf9421e23533f91e and 0f7b1cacba615b614ae2b93833c53a87bd6567df. PR-head workflow runs 34177317242/291/244/243, 34179157657/669/680/654 and 34180285857/855/832/916 completed successfully.",
+      "rate_plan_boundary": "A retained saved-observation profile does not prove a current VM, Kaggle-equivalent hardware, engine-transition time, external RPC latency, hosted timeout result, game strength, policy promotion, live provider capacity, deployment, score, rank, prize, payout, revenue or cash.",
+      "assigned_backlog": "current canonical-package parity consumer and later exact source-fixed runtime diagnostics; profiler implementation and its source-binding/child-report repairs are landed and released",
+      "last_receipt": "codex-titan-runtime-profiler-activation-20260908-01",
+      "last_used_at": "2026-09-08T02:30:35Z",
+      "stale_after": "next profiler source, input schema, source-binding, child-report, canonical-package identity, consumer, workflow, runtime or provider-result change",
+      "priority": 96
     },
     {
       "name": "gemini-google-research-fleet",

@@ -1,0 +1,157 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-runtime-profiler-activation-20260908-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "titan-runtime-profiler",
+  "observed_at": "2026-09-08T04:08:16Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_SOURCE_WORKFLOWS_MEASUREMENT_AND_CONSUMER"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_ENTRYPOINT_INPUT_AND_SOURCE_BINDING_REQUIRED; NO_ENGINE_ADVANCE; NO_PROVIDER_OR_KAGGLE_WRITE",
+    "holder": "Commons / TITAN runtime-analysis consumers",
+    "activation_base_main_sha": "0e1071e2059e07ab03224e61a210b04e7f1b5e56"
+  },
+  "concrete_consumer": "T08/current canonical-package continuity and subsequent source-fixed TITAN runtime or deadline diagnosis needing exact saved-observation execution, action correspondence and child-process failure receipts.",
+  "measurable_outcome": "The current-main FINCH/TRACE saved-observation profiler is now canonical as one producing resource. It accepts source-bound native JSONL or JSONL.gz inputs, reproduced 719 of 719 retained development actions in each of two fresh processes, and preserves malformed or interrupted child output with complete failure summaries.",
+  "source_truth": {
+    "source_path": "revenue/kaggriculture/cloud-runtime-budget/",
+    "profiler_pr": 10088,
+    "profiler_head": "96d45fa82421f3c674f05ae587262051df46f89c",
+    "profiler_merge": "e7279b3ded61898974065e0ad247c207215a7424",
+    "source_binding_pr": 10118,
+    "source_binding_head": "551b571bdacb18e5e7d01eaabd0a2d4ba0e4ab65",
+    "source_binding_merge": "1484d886442ca1556c8165d8367492e35fd8b10b",
+    "child_report_pr": 10135,
+    "child_report_head": "8e2ad30ac260ce55ecbb42c80bef713eb2d77e21",
+    "child_report_merge": "cc7f6e8c55bf04326fd4a5303021ab8e707f1fcf",
+    "profiler_blob": "8ae01c736bd44ffc424f91f657c2861126115d24",
+    "core_test_blob": "ab0a073d0faf891036c19ec49caee6ad4937afa3",
+    "source_binding_test_blob": "3047711518c5600fdae0f12acf9421e23533f91e",
+    "child_report_test_blob": "0f7b1cacba615b614ae2b93833c53a87bd6567df"
+  },
+  "measurement_truth": {
+    "retained_development_actor_calls_per_process": 719,
+    "independent_processes": 2,
+    "action_mismatches": 0,
+    "sequence_sha256": "09d55e1943d2d7aab3d97ea2d9859080ab0603f171abaf84e4b17145d725bd9a",
+    "mapped_runtime_members": 29,
+    "python_source_files_unchanged": 20,
+    "source_load_through_first_attempt_ms": 42.89,
+    "ordinary_p99_ms": 20.0,
+    "ordinary_max_ms": 92.49,
+    "environment": "4-CPU cgroup and 4 GiB cloud container; not claimed Kaggle-equivalent",
+    "games_executed": 0,
+    "engine_transitions_executed": 0
+  },
+  "repair_truth": {
+    "source_binding": "Directly loaded Python bytes are read once and used for both hashing and compilation; loaded-source receipts and after-run stability are retained.",
+    "source_binding_methods_passed": 41,
+    "source_binding_baseline": "Exact baseline failed 10 of 14 discriminating source-binding methods.",
+    "child_reports": "Malformed raw child bytes, stderr, stdout, exit code and final supervisor summary remain separate and durable without child retry.",
+    "child_report_methods_passed": 50,
+    "child_report_baseline": "Exact baseline produced 8 failed assertions and 17 errors across the nine-method discriminating suite."
+  },
+  "workflow_truth": {
+    "profiler_head_success_runs": [
+      34177317242,
+      34177317291,
+      34177317244,
+      34177317243
+    ],
+    "source_binding_head_success_runs": [
+      34179157657,
+      34179157669,
+      34179157680,
+      34179157654
+    ],
+    "child_report_head_success_runs": [
+      34180285857,
+      34180285855,
+      34180285832,
+      34180285916
+    ],
+    "workflows": [
+      "open-door-guard",
+      "source-parses",
+      "path-manifest",
+      "muhlnickel-spec-guard"
+    ],
+    "all_listed_runs_completed_success": true
+  },
+  "consumer_truth": {
+    "canonical_source_main_py_blob": "44f056938ab78212f74e6cf0987e5645702fd0ae",
+    "active_export_sha256": "70554dc01f8e84336ede169cf109f3d61152e169dce8ad5265b9625216fe52cb",
+    "source_export_pointer_parity_at_last_read": false,
+    "consumer_next_step": "Wait for one exact canonical package whose archive, SOURCE/config and current pointer agree, then profile that package without creating a new runtime or replaying finished panels."
+  },
+  "delta": {
+    "previous_terminal_main_sha": "645fc4abd21de1314d47adc7b98d0eafa2729319",
+    "main_sha_at_claim": "0e1071e2059e07ab03224e61a210b04e7f1b5e56",
+    "prior_terminal_slack_ts": "1788830329.423329",
+    "latest_preclaim_commons_slack_ts": "1788838806.072269",
+    "latest_titan_slack_ts": "1788839908.407329",
+    "latest_shipped_builds_slack_ts": "1788832684.081149",
+    "material_state_changes": [
+      "The native FINCH/TRACE saved-observation profiler, its exact source-binding repair and its lossless child-report recovery landed with completed hosted guards.",
+      "The canonical TITAN runtime and multiple source-fixed result panels advanced, but latest exact Slack readback still shows source, export and current-pointer parity unresolved; no deployable-package claim is inferred.",
+      "Canonical full32 development evidence landed with original timeout cells preserved separately from isolated successful retries; completed-game evidence is not rewritten as an all-attempt pass.",
+      "The canonical DEFAULT versus frozen SELL panel landed at 27W/4T/1L on 32 source-fixed development games; this is retained evidence, not a provider, leaderboard or policy-promotion claim.",
+      "The branch refresh observed seven retired remote branches, eleven newly reachable branches, one updated credential-deployment branch and main movement; branch presence alone was not promoted to live capacity.",
+      "Connected-app aggregate capacity remained 442 callable tools including 427 app tools."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The canonical one-stream release parity, runtime integration, profiler refinements, T08 execution, result panels and deadline diagnosis all have existing owners, landed source or explicit waiting consumers; no independent nonduplicate capability gap survived.",
+  "verification": {
+    "focused_tests": "Resource-ledger and existing cloud-runtime-budget fixture tests pass without a retained-input profile or any game.",
+    "privacy": "No credential value, private account identifier, customer data, private filename, retained raw observation or child output is copied into canonical metadata.",
+    "open_door": "The profiler source is shared for all Commons carriers; no peer admission, identity, auth or personal-owner gate was added.",
+    "zero_fabrication": "Source, retained observations, tests, measurements and workflow results remain separate from a current VM, provider session, Kaggle-equivalent runtime, engine timing, new game, policy promotion, deployment, score, rank, prize, payout, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. Profiler, runtime, integration, package, workflow, input, result and provider paths remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-08T04:08:16Z",
+    "prior_terminal_main_sha": "645fc4abd21de1314d47adc7b98d0eafa2729319",
+    "main_sha_at_claim": "0e1071e2059e07ab03224e61a210b04e7f1b5e56",
+    "prior_terminal_slack_ts": "1788830329.423329",
+    "commons_claim_slack_ts": "1788840496.125739",
+    "commons_latest_preclaim_slack_ts": "1788838806.072269",
+    "titan_latest_slack_ts": "1788839908.407329",
+    "shipped_builds_latest_slack_ts": "1788832684.081149",
+    "delegations_state": "no new root or reply after the prior terminal watermark",
+    "todo_state": "no new root or reply after the prior terminal watermark",
+    "products_state": "no new root or reply after the prior terminal watermark",
+    "leads_state": "no new root or reply after the prior terminal watermark",
+    "sales_state": "no new root or reply after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; 33 Slack tools; 89 GitHub tools; aggregate unchanged",
+    "automations": "15 observed; 7 paused; Resource Master enabled; Keep Commons Productive and TITAN hosted match watch have fresh runs/updated prompts",
+    "open_prs_at_last_read": [],
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset; prior quota state retained."
+  },
+  "projection": {
+    "resources": 81,
+    "producing": 53
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788840496125739",
+    "profiler_pr": "https://github.com/woahwhattheheck/commons/pull/10088",
+    "source_binding_pr": "https://github.com/woahwhattheheck/commons/pull/10118",
+    "child_report_pr": "https://github.com/woahwhattheheck/commons/pull/10135",
+    "prior_terminal_receipt": "p/codex-titan-cloud-model-lab-activation-20260908-01.md"
+  },
+  "non_claims": [
+    "No profiler, runtime, integration, package, workflow, retained-input, result or provider implementation was changed by this activation.",
+    "No retained-input profile or production process was started, no VM was created, no game or simulation was run, no provider was called, no credential was retrieved, no archive was built, no result was uploaded, and no Kaggle operation occurred.",
+    "No deployment, quota spend, model or device mutation, outreach, payment, prize, payout, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}
