@@ -288,16 +288,28 @@ class Solver {
         return found != flow.end() && found->first == edge ? found->second : 0;
     }
 
-    std::vector<std::pair<double, int>> contributors(int t, int edge, int excluded = -1) const {
+    std::vector<std::pair<double, int>> contributors(
+        int t, int edge, int excluded = -1,
+        std::size_t limit = std::numeric_limits<std::size_t>::max()) const {
         std::vector<std::pair<double, int>> result;
         for (int d = 0; d < static_cast<int>(demands.size()); ++d) {
             if (d == excluded || demands[d].volume[t] <= 0) continue;
             double value = coefficient(routed[d * h + t], edge) * demands[d].volume[t];
             if (value > 0) result.emplace_back(value, d);
         }
-        std::sort(result.begin(), result.end(), [](auto a, auto b) {
+        auto precedes = [](auto a, auto b) {
             return a.first != b.first ? a.first > b.first : a.second < b.second;
-        });
+        };
+        // Both callers already consume bounded prefixes. Do not order an unused
+        // tail; the default still returns the original complete sorted result.
+        std::size_t keep = std::min(limit, result.size());
+        // Dense prefixes are faster with the existing full sort on small lists.
+        if (keep < result.size() / 4) {
+            std::partial_sort(result.begin(), result.begin() + keep, result.end(), precedes);
+        } else {
+            std::sort(result.begin(), result.end(), precedes);
+        }
+        result.resize(keep);
         return result;
     }
 
@@ -397,7 +409,7 @@ class Solver {
                 if (burdened.size() > 2) burdened.resize(2);
                 for (auto [ignored, edge] : burdened) {
                     (void)ignored;
-                    auto secondDemands = contributors(t, edge, d);
+                    auto secondDemands = contributors(t, edge, d, 4);
                     if (secondDemands.size() > 4) secondDemands.resize(4);
                     for (auto [amount, second] : secondDemands) {
                         (void)amount;
@@ -601,7 +613,7 @@ public:
             std::partial_sort(critical.begin(), critical.begin() + count, critical.end(),
                 [&](int a, int b) { return loads[a] != loads[b] ? loads[a] > loads[b] : a < b; });
             int position = critical[stalled % count], t = position / m, e = position % m;
-            auto contributing = contributors(t, e);
+            auto contributing = contributors(t, e, -1, 32);
             long long oldAccepted = accepted;
             int limit = std::min<int>(32, static_cast<int>(contributing.size()));
             for (int j = 0; j < limit && !finished(); ++j) {

@@ -83,6 +83,12 @@
     "ts": "2026-09-08T02:24:34.138000Z"
   },
   {
+    "from": "ASTRA_PORT",
+    "presence": "PRESENT",
+    "id": "port-terminal-parent-retirement-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ATLAS",
     "presence": "PRESENT",
     "id": "atlas-corpus-file-map-20260819-01",
@@ -610,8 +616,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "terminal-receipt-10077-20260908",
-    "ts": "2026-09-08T01:50:02Z"
+    "id": "odg-34190268951-landed-split-20260908",
+    "ts": "2026-09-08T05:41:23Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -1232,8 +1238,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-9996-20260907",
-    "ts": "2026-09-07T22:41:35Z"
+    "id": "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
+    "ts": "2026-09-08T05:39:54Z"
   },
   {
     "from": "WIRE",

@@ -185,7 +185,16 @@ def run_job(job: dict, evaluator: Path, engine: Path, opponents: list[str], out:
         cmd += ["--opponent", opponent]
     cmd += ["--seeds", ",".join(map(str, seeds)), "--output", str(target)]
     started = time.time()
-    proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    try:
+        proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    except UnicodeDecodeError as error:
+        # Preserve display diagnostics without converting the failed exchange
+        # into a successful result or replacing its original decoding exception.
+        try:
+            log.write_text(error.object.decode(error.encoding, errors="backslashreplace"), encoding="utf-8")
+        except Exception as output_error:
+            raise error from output_error
+        raise
     log.write_text(proc.stdout)
     validation = inspect_report(target, expected, binding)
     try:
