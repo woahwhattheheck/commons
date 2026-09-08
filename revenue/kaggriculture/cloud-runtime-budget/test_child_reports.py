@@ -91,6 +91,13 @@ class ChildReportTests(unittest.TestCase):
             with self.subTest(calls=calls):
                 self.assert_invalid(json.dumps({'status':'complete','calls':calls}).encode())
 
+    def test_nonfinite_metadata_and_deep_json_preserve_raw_bytes(self):
+        for raw in (b'{"status":"error","calls":[],"extra":NaN}',
+                    b'{"status":"error","calls":[],"extra":1e9999}',
+                    b'['*2000 + b'0' + b']'*2000):
+            with self.subTest(prefix=raw[:60]):
+                self.assert_invalid(raw)
+
     def test_missing_child_report_keeps_log_and_summary(self):
         code, result, output = self.run_case(None)
         self.assertEqual(code, 2)
