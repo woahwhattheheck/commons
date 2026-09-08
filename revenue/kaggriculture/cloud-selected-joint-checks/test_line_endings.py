@@ -199,6 +199,14 @@ class LineEndingTests(unittest.TestCase):
                             b'Ran 16 tests in 0.1s\r\rOK\r'))
         self.assertEqual(out['status'], 'INCOMPLETE')
 
+    def test_unknown_crlf_failed_footer_remains_failure(self):
+        # NEWLINE-RESUME's retained discriminator, using this suite's saved95 fixture.
+        out = self.inspect(lambda m: m.__setitem__(
+            'new-tests.log', b'Ran 1 test in 0.01s\r\n\r\nFAILED\r\n'))
+        self.assertEqual(out['status'], 'FAIL')
+        self.assertIn('new-tests.log: unittest failure footer is present',
+                      [p['detail'] for p in out['problems']])
+
     def test_real_cli_crlf_and_byte_preservation(self):
         members = copy.deepcopy(self.members['legacy'])
         members['funded-join-tests.log'] = crlf(members['funded-join-tests.log'])
