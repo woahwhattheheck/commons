@@ -16,6 +16,43 @@ def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def read_manifest(path: Path) -> dict:
+    """Read the bundle schema without leaking JSON-shape errors as tracebacks."""
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise SystemExit(f"invalid bundle manifest: {exc}") from exc
+    if not isinstance(manifest, dict):
+        raise SystemExit("invalid bundle manifest: expected an object")
+    if manifest.get("schema") != "hive.multilingual-catalog-source-bundle.v1":
+        raise SystemExit("unsupported bundle manifest schema")
+
+    def byte_count(value: object, label: str) -> None:
+        if type(value) is not int or value < 0:
+            raise SystemExit(f"invalid bundle manifest: {label} must be a nonnegative integer")
+
+    def sha256(value: object, label: str) -> None:
+        if (not isinstance(value, str) or len(value) != 64
+                or any(char not in "0123456789abcdef" for char in value)):
+            raise SystemExit(f"invalid bundle manifest: {label} must be a lowercase SHA-256 hex digest")
+
+    byte_count(manifest.get("archive_bytes"), "archive_bytes")
+    sha256(manifest.get("archive_sha256"), "archive_sha256")
+    for collection in ("parts", "members"):
+        records = manifest.get(collection)
+        if not isinstance(records, list):
+            raise SystemExit(f"invalid bundle manifest: {collection} must be an array")
+        for index, record in enumerate(records):
+            label = f"{collection}[{index}]"
+            if not isinstance(record, dict):
+                raise SystemExit(f"invalid bundle manifest: {label} must be an object")
+            if not isinstance(record.get("path"), str) or not record["path"]:
+                raise SystemExit(f"invalid bundle manifest: {label}.path must be a nonempty string")
+            byte_count(record.get("bytes"), f"{label}.bytes")
+            sha256(record.get("sha256"), f"{label}.sha256")
+    return manifest
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bundle-dir", type=Path, default=Path(__file__).resolve().parent)
@@ -24,9 +61,7 @@ def main() -> int:
 
     root = args.bundle_dir.resolve()
     destination = args.destination.resolve()
-    manifest = json.loads((root / "BUNDLE.json").read_text(encoding="utf-8"))
-    if manifest.get("schema") != "hive.multilingual-catalog-source-bundle.v1":
-        raise SystemExit("unsupported bundle manifest schema")
+    manifest = read_manifest(root / "BUNDLE.json")
 
     encoded = bytearray()
     for record in manifest["parts"]:
