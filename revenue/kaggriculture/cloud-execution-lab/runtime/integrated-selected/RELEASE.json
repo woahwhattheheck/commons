@@ -1,0 +1,139 @@
+{
+  "release": "titan-current-stage1",
+  "upstream_snapshot": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+  "components": [
+    {
+      "component": "Frozen SELL",
+      "source_pin": "9877 / 32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+      "callsite": "FrozenSelected.transform",
+      "enabled": true,
+      "consumed_result": "384-game comparative result: 31-9 dev / 13-3 held vs PR9997"
+    },
+    {
+      "component": "ALDER/JUNIPER",
+      "source_pin": "10116 / 0d59146cd13f4b4af832427ffe114b84ab089eb4",
+      "callsite": "TitanAgent._seed_selected -> SeedBudget.apply -> select_seed_queue",
+      "enabled": true,
+      "consumed_result": "6 games; existing +240 cash, no funding-specific WTL flip"
+    },
+    {
+      "component": "ECON deadline",
+      "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+      "callsite": "TitanAgent.act -> _DeadlineTimer / terminal_liquidation_fallback",
+      "enabled": true,
+      "consumed_result": "10005 32 natural / 8 forced-timeout games; current timer repairs"
+    },
+    {
+      "component": "OSPREY terminal",
+      "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+      "callsite": "TitanAgent._initialize -> TerminalOwner.act",
+      "enabled": false,
+      "consumed_result": "64 games; cash gain without WTL change; terminal_route=true"
+    },
+    {
+      "component": "ATLAS/WREN/FLORA/Claude ordered + arrivals",
+      "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+      "callsite": "consumer=ordered -> IntegratedSelectedAgent.transform -> ordered seller / arrival_contract",
+      "enabled": false,
+      "consumed_result": "PR9997 comparison favors frozen; current bytes require new artifact games"
+    },
+    {
+      "component": "SPRUCE scorer",
+      "source_pin": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+      "callsite": "consumer=ordered -> selected_sell_core",
+      "enabled": false,
+      "consumed_result": "16 reports / 11504 actions; no whole-actor tail gain; research callsite only"
+    }
+  ],
+  "next_increments": [
+    {
+      "component": "T01 COVE",
+      "source_pin": "cloud-macro-crops",
+      "owner": "COVE",
+      "current_step": "publish active crop case/source; route selection requires frozen comparator"
+    },
+    {
+      "component": "T02 MERIDIAN",
+      "source_pin": "cloud-macro-livestock",
+      "owner": "MERIDIAN",
+      "current_step": "publish primary model source; landed engine_cases informs eligible fixtures"
+    },
+    {
+      "component": "T03 MESA",
+      "source_pin": "9937",
+      "owner": "MESA",
+      "current_step": "deadline/relative value discriminator for selected producer"
+    },
+    {
+      "component": "T04 SABLE/KEEL",
+      "source_pin": "9908",
+      "owner": "SABLE",
+      "current_step": "service/hire reserve composition remains producer experiment"
+    },
+    {
+      "component": "T06 FIR",
+      "source_pin": "9926",
+      "owner": "FIR",
+      "current_step": "affordable complete bundle callback feeds T14/T15 searches"
+    },
+    {
+      "component": "T07 ORBIT/HARBOR/ELM",
+      "source_pin": "9942",
+      "owner": "Claude/WIDEFIELD",
+      "current_step": "use exact licensed source-wide opponent bank in next panel"
+    },
+    {
+      "component": "T09 Claude/WIDEFIELD",
+      "source_pin": "T09 registry",
+      "owner": "Claude/WIDEFIELD",
+      "current_step": "ack archive/source hash and assign disjoint development shards"
+    },
+    {
+      "component": "T10 DOCK",
+      "source_pin": "9906",
+      "owner": "DOCK",
+      "current_step": "labor reserve feeds service experiment; comparative default unresolved"
+    },
+    {
+      "component": "T11/T15 ASTRA-RULE",
+      "source_pin": "10008",
+      "owner": "ASTRA-RULE",
+      "current_step": "repair adaptive timeouts, then full-game evidence before default"
+    },
+    {
+      "component": "T12 CEDAR/JOINT-HISTORY",
+      "source_pin": "10119 / c119f5a1b7aa15e42e45a2d3430377e74f0012f1",
+      "owner": "CEDAR/JOINT-HISTORY",
+      "current_step": "publish joined selected-action history consumer pin; ASTRA wires explicit public flow input next"
+    },
+    {
+      "component": "T14 ASTER/HAZEL",
+      "source_pin": "9975",
+      "owner": "ASTER/HAZEL",
+      "current_step": "cash scorer/reached quote feeds selected capital experiment; 192 games did not promote default"
+    },
+    {
+      "component": "MARLIN terminal join",
+      "source_pin": "46a13526",
+      "owner": "MARLIN/ASTRA",
+      "current_step": "optional selected-terminal interface pending joined-history intake"
+    },
+    {
+      "component": "WREN queue copy",
+      "source_pin": "active owner source",
+      "owner": "WREN",
+      "current_step": "finish exact-type copy regression, publish pin; ASTRA intake next"
+    },
+    {
+      "component": "ECON calibration",
+      "source_pin": "task 6a9f40a1-4f48-83e9-b057-79e3447de9ed",
+      "owner": "Root ECON",
+      "current_step": "calibration analysis consumed as config/evaluation decision, no second integrator"
+    }
+  ],
+  "official_engine": {
+    "version": "1.32.7",
+    "commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+  },
+  "game_evidence_for_this_archive": null
+}
