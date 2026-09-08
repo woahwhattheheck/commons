@@ -29,6 +29,9 @@ jobs:
         run: |
           set -euo pipefail
           root="$GITHUB_WORKSPACE/frozen/revenue/roadef2026/fleet-candidate"
+          baseline_commit=2885d176373c33410148829fef93c310c3752c0b
+          git -C "$GITHUB_WORKSPACE/frozen" fetch --no-tags --depth=1 origin "$baseline_commit"
+          git -C "$GITHUB_WORKSPACE/frozen" show FETCH_HEAD:revenue/roadef2026/fleet-candidate/main.cpp > "$root/main.cpp"
           test "$(sha256sum "$root/main.cpp" | cut -d' ' -f1)" = 322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1
           patch_file="$GITHUB_WORKSPACE/frozen/revenue/roadef2026/cloud-kernel-composition/combined.patch"
           test "$(git hash-object "$patch_file")" = 0ff8d2ee7c4df1022c50484a89e7424329cce0ec
