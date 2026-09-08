@@ -7,6 +7,9 @@ Other costs and market-slot order come from the supplied RouteQuote. Quantities,
 fixed costs and successful execution remain assumptions of that quotation: this
 is nominal ordered-budget comparison, not a physical-feasibility certificate,
 a calibrated forecast, or a guarantee over omitted worlds.
+
+The opt-in completed-replay path uses the same ranking rule on RILL/T04 executed
+terminal own cash. It does not reinterpret whole-queue receipts as per-slot fills.
 """
 from __future__ import annotations
 
@@ -159,7 +162,16 @@ def compare_routes(offers: Sequence[Any], observation: Mapping[str, Any],
             "routes": {key: _price(key, rows, start, scenario)
                        for key, rows in zip(ids, route_rows)},
         })
-    if not scenarios:
+    return _rank_paired(report, ids, margin)
+
+
+def _rank_paired(report: dict, ids: Sequence[str], margin: float, *,
+                 final_key: str = "final_nominal_cash",
+                 minimum_key: str = "minimum_nominal_cash",
+                 budget_key: str = "nominal_budget_nonnegative",
+                 improvement_reason: str = "covered_nominal_improvement") -> dict:
+    """One paired-cash ordering rule, with explicit input-specific budget labels."""
+    if not report["scenarios"]:
         return report
     if any(not item["routes"][ids[0]]["complete"] for item in report["scenarios"]):
         report["reason"] = "incumbent_scenario_incomplete"
@@ -169,19 +181,19 @@ def compare_routes(offers: Sequence[Any], observation: Mapping[str, Any],
         values = [item["routes"][key] for item in report["scenarios"]]
         complete = all(value["complete"] for value in values)
         gains = [] if not complete else [
-            item["routes"][key]["final_nominal_cash"]
-            - item["routes"][ids[0]]["final_nominal_cash"]
+            item["routes"][key][final_key]
+            - item["routes"][ids[0]][final_key]
             for item in report["scenarios"]]
         complete = complete and all(math.isfinite(gain) for gain in gains)
-        funded = complete and all(value["minimum_nominal_cash"] >= 0 for value in values)
+        funded = complete and all(value[minimum_key] >= 0 for value in values)
         worst = min(gains) if complete else None
         report["candidates"][key] = {
-            "complete": complete, "nominal_budget_nonnegative": funded,
+            "complete": complete, budget_key: funded,
             "worst_paired_gain": worst,
         }
         if funded and worst > best_gain + 1e-9:
             best_gain = worst
-            report.update(selected=key, changed=True, reason="covered_nominal_improvement")
+            report.update(selected=key, changed=True, reason=improvement_reason)
     return report
 
 
@@ -196,10 +208,32 @@ class DatedSelector:
         self.scenarios = tuple(scenarios)
         self.minimum_gain = minimum_gain
         self.last_report: dict[str, Any] | None = None
+        self._completed_replay = None
+
+    @classmethod
+    def from_completed_replay(cls, replay: Mapping[str, Any],
+                              configuration: Mapping[str, Any], *,
+                              scenario_ids: Sequence[str], minimum_gain: float = 0.0):
+        """Opt-in RILL input bridge; no simulation and no inferred scenario subset.
+
+        The report is read-only input, not copied or mutated. Validation runs on
+        every invocation against the current observation, offer IDs and supplied
+        horizon. Retain the original replay beside last_report for provenance.
+        The supplied configuration must belong to the same replay execution.
+        """
+        selector = cls((), minimum_gain=minimum_gain)
+        selector._completed_replay = (replay, dict(configuration), tuple(scenario_ids))
+        return selector
 
     def __call__(self, offers: Sequence[Any], observation: Mapping[str, Any]) -> str:
-        self.last_report = compare_routes(offers, observation, self.scenarios,
-                                          minimum_gain=self.minimum_gain)
+        if self._completed_replay is None:
+            self.last_report = compare_routes(offers, observation, self.scenarios,
+                                              minimum_gain=self.minimum_gain)
+        else:
+            from physical_outcomes import compare_replay
+            replay, configuration, names = self._completed_replay
+            self.last_report = compare_replay(offers, observation, replay, configuration,
+                                              scenario_ids=names, minimum_gain=self.minimum_gain)
         return self.last_report["selected"]
 
 
