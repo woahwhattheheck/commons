@@ -70,3 +70,17 @@ canonical render is included with the source change: archive SHA-256
 All runtime member hashes match, paths/modes/mtimes are canonical, and an
 independent repack is byte-identical. The superseded f623 archive is preserved
 under its immutable historical digest. Root retains provider-upload ownership.
+
+## Canonical publication receipt
+
+The single CURRENT writer completed the atomic repository composition at source
+head `fdc958b0333e49dbbe3c3ca547df5b4d542e28d2`. The eight-path PR delta contains
+the tested runtime, focused evidence, `exports/titan-current.tar.gz`, the immutable
+f623 predecessor, and both CURRENT pointer/manifests. Git records the current
+archive as blob `17fd553ec954599c270e25eba43e302897eceee4`, 292,007 bytes; the
+pointer binds the exact archive and SOURCE hashes above.
+
+The bot-authored composition produced GitHub `action_required` records with no
+jobs. This receipt changes no runtime, archive, manifest, pointer, configuration,
+or evidence result; it provides a normal user-authored synchronization so the
+existing repository checks can execute against the exact composed bytes.
