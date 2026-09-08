@@ -160,12 +160,25 @@ class KaggleSingleFileContract(unittest.TestCase):
 
         self.assertEqual(run(), run())
 
+    def test_frontier_route_is_preserved_in_single_file(self):
+        agent = self.make_agent()
+        a = FakeFrameData([[0, 0]], [1, 2])
+        b = FakeFrameData([[1, 0]], [1, 2])
+        self.assertEqual(agent.choose_action([], a).value, 1)
+        self.assertEqual(agent.choose_action([], b).value, 1)
+        self.assertEqual(agent.choose_action([], a).value, 2)
+        routed = agent.choose_action([], a)
+        self.assertEqual(routed.value, 1)
+        self.assertIn("frontier-route", routed.reasoning["reason"])
+
     def test_reasoning_is_structured(self):
         agent = self.make_agent()
         frame = FakeFrameData([[0]], [1])
         action = agent.choose_action([], frame)
         self.assertIsInstance(action.reasoning, dict)
-        self.assertEqual(action.reasoning["policy"], "deterministic-novelty-ucb")
+        self.assertEqual(action.reasoning["policy"], "deterministic-frontier-model-v2")
+        self.assertIn("known_edges", action.reasoning)
+        self.assertIn("frontier_routes", action.reasoning)
 
 
 if __name__ == "__main__":

@@ -25,9 +25,9 @@ Exact upstream pins used here are in `environment.lock`.
 
 ## What this baseline does
 
-`arc3_baseline.py` implements a deterministic online explorer with no third-party dependencies and no network access. It validates the public frame/action contract, builds a compact transition graph keyed by visual-state hashes, scores actions using novelty/progress reward plus bounded UCB exploration, and selects `ACTION6` coordinates from changed regions, non-background connected components, then deterministic anchors.
+`arc3_baseline.py` implements a deterministic model-based frontier explorer with no third-party dependencies and no network access. It validates the public frame/action contract, builds an online transition graph keyed by visual-state hashes, tries every legal state/action frontier once, rejects learned self-loops as navigation edges, and then routes through the shortest known transition path toward a visited state that still has an untried action. Novelty/progress UCB remains only a deterministic fallback when the learned graph has no reachable frontier. `ACTION6` coordinates are explored across changed regions, non-background connected components, and deterministic anchors.
 
-The policy deliberately does not encode any private game solution. It is a measurable floor to iterate from: every action is legal under the observed action set, every transition is recorded, repeated states reuse learned action evidence, and level completion receives a strong reward signal.
+The policy deliberately does not encode any private game solution or fixed public-game action sequence. It is a measurable floor to iterate from: every emitted action is legal under the observed action set, every transition is recorded, failed/no-change actions are remembered, repeated states can reuse learned paths to reach unexplored frontiers, and level completion receives a strong reward signal. The v2 frontier logic was implemented clean-room; no third-party solver source was copied.
 
 `competition_agent.py` is the thin adapter for the official `arcprize/ARC-AGI-3-Agents` harness. `test_arc3_baseline.py` is an offline synthetic contract suite.
 
@@ -40,7 +40,7 @@ python -m py_compile arc3_baseline.py competition_agent.py test_arc3_baseline.py
 python test_arc3_baseline.py
 ```
 
-The authored checkpoint was run with CPython and passed 11/11 tests. That is synthetic/offline evidence only; it is not an ARC score.
+The authored checkpoint was run with CPython and passed 13/13 tests. That is synthetic/offline evidence only; it is not an ARC score.
 
 ## Run in the official harness
 
@@ -57,14 +57,14 @@ Register `SolArc3` in the official `agents/__init__.py` / `AVAILABLE_AGENTS` map
 uv run main.py --agent=solarc3 --game=ls20
 ```
 
-The adapter uses only the official `FrameData`, `GameAction`, `GameState`, and `Agent` surfaces. `SOL_ARC3_MAX_ACTIONS` optionally changes the default 240-action ceiling.
+The adapter uses only the official `FrameData`, `GameAction`, `GameState`, and `Agent` surfaces. `SOL_ARC3_MAX_ACTIONS` optionally changes the default 400-action ceiling.
 
 ## Next measured iterations
 
-1. Replay against the organizer's public/local game set and record per-game score, action count, state coverage, and failure state.
-2. Replace undirected novelty with inferred object-role and goal hypotheses only where replay evidence supports them.
-3. Add action-effect models for movement/interact/coordinate actions, preserving unknown-game generality.
-4. Build the Kaggle notebook wrapper from the exact accepted competition environment and run it only on an authenticated participant surface.
+1. Run v2 against the organizer's public/local game set and record per-game score, action count, state coverage, frontier-route count, learned self-loops, and terminal failure state.
+2. Add role-free object tracking so visually distinct but structurally equivalent movement states can share action-effect evidence.
+3. Infer reversible movement/interact/coordinate effects from observed deltas, then plan over those effect hypotheses without level IDs or fixed coordinates.
+4. Compare frontier routing against the frozen v1 novelty/UCB behavior on identical public game versions and action budgets.
 5. Publish any actual score with game/version, environment commit, notebook version, and raw run receipt. Never infer a leaderboard score from synthetic tests.
 
 ## Data and submission boundary

@@ -1,8 +1,8 @@
-# Methods-ready note — deterministic novelty world model
+# Methods-ready note — deterministic frontier world model
 
 ## Objective
 
-ARC-AGI-3 evaluates agents that must learn unknown interactive environments rather than solve a static grid. A useful first milestone therefore needs to be more than random action selection while remaining generic enough not to hard-code public game solutions. This baseline treats each observation as a state in a small online transition graph and directs exploration toward actions that have historically produced visual novelty or level progress.
+ARC-AGI-3 evaluates agents that must learn unknown interactive environments rather than solve a static grid. A useful baseline therefore needs to do more than random action selection while remaining generic enough not to hard-code public game solutions. This version treats each observation as a state in an online transition graph, exhausts untried legal state/action frontiers deterministically, and uses learned transitions to route back toward reachable unexplored frontiers. Novelty/progress reward is retained as a fallback rather than the primary navigation rule.
 
 ## Observation representation
 
@@ -14,7 +14,7 @@ This representation is intentionally lossless at the grid level. No semantic lab
 
 For each state/action pair the agent records visits, successor states, changed-cell counts, novel successors, and level advances. A transition receives a small penalty when the display is unchanged, positive reward when visible state changes, an additional novelty bonus when a previously unseen state is reached, and a much larger bonus when `levels_completed` increases.
 
-When a state is revisited, actions are ranked by a deterministic upper-confidence score combining mean observed transition reward with an exploration term. Untried legal actions receive first priority. This produces a reproducible explore/exploit schedule without random seeds and gives the harness concrete diagnostics for every decision.
+When a state is revisited, any still-untried legal action is selected first. Once a state is locally exhausted, breadth-first search over learned non-self-loop transitions finds the nearest visited state with an untried action and emits the first action on that shortest route. This turns repeated observations into purposeful navigation instead of repeatedly rewarding whatever changes pixels nearby. If no reachable frontier exists, a deterministic upper-confidence score over observed reward is used as fallback. The harness exposes frontier-route counts, learned-edge counts, and self-loop observations for measurement.
 
 ## Coordinate action
 
@@ -26,10 +26,10 @@ The organizer specifies that GAME_OVER accepts RESET only. The policy therefore 
 
 ## Reproducibility
 
-The core is Python standard library only and deterministic for an identical observation/action sequence. The official adapter is intentionally thin and pinned to the public ARC-AGI-3 Agents interface. Synthetic unit tests cover frame validation, current-action constraints, deterministic exploration order, coordinate selection and bounds, transition reward, level-progress reward, diagnostics serialization, and repeatability.
+The core is Python standard library only and deterministic for an identical observation/action sequence. The official adapter is intentionally thin and pinned to the public ARC-AGI-3 Agents interface. Synthetic unit tests cover frame validation, current-action constraints, deterministic exploration order, coordinate selection and bounds, transition reward, level-progress reward, shortest learned routing to an unexplored frontier, self-loop rejection, diagnostics serialization, and repeatability. The frontier implementation is clean-room and copies no third-party solver source.
 
 ## Limitations and planned ablations
 
-Novelty is not the same as task progress. Environments with reversible visual effects can attract an explorer even when they do not help win, and the state hash does not yet abstract equivalent configurations. The next empirical work should therefore measure: (1) novelty-only versus novelty+level reward, (2) full-grid identity versus object-centric state abstraction, (3) one-step UCB versus learned multi-step planning on the recorded transition graph, and (4) coordinate salience heuristics versus uniform coordinate sweeps. Any improvement should be accepted only on reproducible public/local ARC runs, not on synthetic fixtures alone.
+Frontier coverage is still not the same as task progress. Full-grid hashes cannot yet recognize structurally equivalent states after an object translates, learned edges model only observed one-step outcomes, and the policy does not yet infer persistent object roles or latent mechanism state. The next empirical work should therefore measure: (1) v1 novelty/UCB versus v2 frontier routing on identical public game versions, (2) full-grid identity versus role-free object-centric abstraction, (3) observed one-step graph routing versus learned action-effect planning, and (4) coordinate salience heuristics versus systematic coordinate-region exploration. Any improvement should be accepted only on reproducible public/local ARC runs, not on synthetic fixtures alone.
 
 No leaderboard, milestone placement, submission, or award is claimed in this note.
