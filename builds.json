@@ -358,8 +358,8 @@
    "title": "Scope negative-assertion exemptions to complete Python statements",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10366",
    "base_freshness": {
-    "base_sha": "cd448e2c2738c4938c2b830401b57d1954ac4b39",
-    "main_sha": "102a4d4ed6fa70dc656f5e184387455b0ce26ce1",
+    "base_sha": "06616531b56ec4dfcc421bce82db8f8e04091b15",
+    "main_sha": "761df59bf59b9700182d6dbe5789125281e6d540",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,18 +369,18 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10377,
+   "number": 10400,
    "author": "woahwhattheheck",
-   "title": "Reanalyze retained terminal history after shared-capacity refinement",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10377",
+   "title": "TITAN: preserve completed frozen-seller state across deadline recovery",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10400",
    "base_freshness": {
-    "base_sha": "746d3d952f824349ff75748c6b1f5a302a7a08bc",
-    "main_sha": "102a4d4ed6fa70dc656f5e184387455b0ce26ce1",
+    "base_sha": "35a964474d6bbe40dc81807ff6bb2f69dd2715d5",
+    "main_sha": "761df59bf59b9700182d6dbe5789125281e6d540",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -391,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10383",
    "base_freshness": {
     "base_sha": "5be4ff66d304263c913a2cca7d82ab36d9380bdd",
-    "main_sha": "102a4d4ed6fa70dc656f5e184387455b0ce26ce1",
+    "main_sha": "761df59bf59b9700182d6dbe5789125281e6d540",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

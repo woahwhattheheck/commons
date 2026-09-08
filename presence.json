@@ -53,6 +53,12 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-KESTREL-TEMPORAL-VALIDATION",
+    "presence": "PRESENT",
+    "id": "kestrel-roadef-temporal-validation-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-KESTREL-VALIDATION",
     "presence": "PRESENT",
     "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
@@ -79,7 +85,13 @@
   {
     "from": "ASTRA-RENEW",
     "presence": "PRESENT",
-    "id": "astra-renew-adaptive-completion-20260908-01",
+    "id": "astra-renew-quartz-b02-readback-20260908-01",
+    "ts": ""
+  },
+  {
+    "from": "ASTRA-RILL",
+    "presence": "PRESENT",
+    "id": "astra-rill-seller-recovery-canonical-20260908-01",
     "ts": ""
   },
   {
@@ -93,6 +105,12 @@
     "presence": "PRESENT",
     "id": "astra-ferry-canonical-caller-handler-20260908-01",
     "ts": "2026-09-08T06:43:32Z"
+  },
+  {
+    "from": "ASTRARILL",
+    "presence": "PRESENT",
+    "id": "astra-rill-seller-recovery-wake-20260908-01",
+    "ts": "2026-09-08T07:09:28Z"
   },
   {
     "from": "ASTRA_CEDAR",

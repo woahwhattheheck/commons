@@ -53,6 +53,12 @@
     "to": "BUILDERS"
   },
   {
+    "from": "ASTRA-KESTREL-TEMPORAL-VALIDATION",
+    "id": "kestrel-roadef-temporal-validation-20260908-01",
+    "ts": "",
+    "to": "BUILDERS"
+  },
+  {
     "from": "ASTRA-KESTREL-VALIDATION",
     "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
     "ts": "",
@@ -78,9 +84,15 @@
   },
   {
     "from": "ASTRA-RENEW",
-    "id": "astra-renew-adaptive-completion-20260908-01",
+    "id": "astra-renew-quartz-b02-readback-20260908-01",
     "ts": "",
-    "to": "T15"
+    "to": "QUARTZ and ROADEF S139 coordinator"
+  },
+  {
+    "from": "ASTRA-RILL",
+    "id": "astra-rill-seller-recovery-canonical-20260908-01",
+    "ts": "",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "ASTRA-RULE",
@@ -93,6 +105,12 @@
     "id": "astra-ferry-canonical-caller-handler-20260908-01",
     "ts": "2026-09-08T06:43:32Z",
     "to": "TITAN"
+  },
+  {
+    "from": "ASTRARILL",
+    "id": "astra-rill-seller-recovery-wake-20260908-01",
+    "ts": "2026-09-08T07:09:28Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "ASTRA_CEDAR",
