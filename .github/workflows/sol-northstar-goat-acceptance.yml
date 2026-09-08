@@ -1,0 +1,41 @@
+name: sol-northstar-goat-current-main-acceptance
+
+on:
+  push:
+    branches:
+      - sol-northstar/goat-acceptance-ci-20260908-1229
+
+permissions:
+  contents: read
+
+jobs:
+  goat-current-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout identity
+        run: |
+          git rev-parse HEAD
+          git merge-base --is-ancestor dd74a44fd77c69bf4c4c5cc736db9330eb845cfe HEAD
+      - name: Exact GOAT acceptance command
+        run: python -B -W error::ResourceWarning -m unittest -v test_goat_sidewalk_door_match.py
+      - name: Explicit successor normalization evidence
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, 'host')
+          import goat_sidewalk_door_match as match
+
+          known = match._normalize_successors(b'head\nknown\nbody\n', (("known", b'known\n', b''),))
+          unknown = match._normalize_successors(b'head\nother\nbody\n', (("known", b'known\n', b''),))
+          ambiguous = match._normalize_successors(b'known\nknown\n', (("known", b'known\n', b''),))
+          print('KNOWN', known)
+          print('UNKNOWN', unknown)
+          print('AMBIGUOUS', ambiguous)
+          assert known == (b'head\nbody\n', ['known'])
+          assert unknown == (b'head\nother\nbody\n', [])
+          assert ambiguous == (b'known\nknown\n', ['AMBIGUOUS:known'])
+          PY
