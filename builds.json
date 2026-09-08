@@ -350,55 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 3,
- "open_prs": [
-  {
-   "number": 10696,
-   "author": "woahwhattheheck",
-   "title": "feat(hive): package Conversation Desk standalone release",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10696",
-   "base_freshness": {
-    "base_sha": "f443f8f1ac132cfb9f0bda0438326ef5cb6fda07",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10691,
-   "author": "woahwhattheheck",
-   "title": "Add bounded viewport backfill tool",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10691",
-   "base_freshness": {
-    "base_sha": "41ca0f8f1be553aa85a915e16b40b1d739c08854",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10703,
-   "author": "woahwhattheheck",
-   "title": "test: compose Brand Launch Ops with Shop Operations",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10703",
-   "base_freshness": {
-    "base_sha": "41ca0f8f1be553aa85a915e16b40b1d739c08854",
-    "main_sha": "584ed88bf686fa176a704e84f170de924c860ec1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
