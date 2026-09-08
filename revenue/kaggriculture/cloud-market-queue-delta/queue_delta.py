@@ -40,8 +40,39 @@ def _delta(before: Mapping, after: Mapping) -> dict:
             if after.get(key, 0) != before.get(key, 0)}
 
 
+def _snapshot_copy(value: Any, memo: dict | None = None) -> Any:
+    """Copy ordinary observed-state containers, retaining deepcopy's graph rules.
+
+    Exact builtins use a smaller traversal; subclasses and other objects retain
+    their standard deepcopy hooks. The shared memo preserves repeated references
+    and cycles, including references crossing the fast and standard paths.
+    """
+    kind = type(value)
+    if value is None or kind is int or kind is float or kind is str or kind is bool:
+        return value
+    if memo is None:
+        memo = {}
+    identity = id(value)
+    if identity in memo:
+        return memo[identity]
+    if kind is dict:
+        result = {}
+        memo[identity] = result
+        for key, item in value.items():
+            result[_snapshot_copy(key, memo)] = _snapshot_copy(item, memo)
+        memo.setdefault(id(memo), []).append(value)
+        return result
+    if kind is list:
+        result = []
+        memo[identity] = result
+        result.extend(_snapshot_copy(item, memo) for item in value)
+        memo.setdefault(id(memo), []).append(value)
+        return result
+    return copy.deepcopy(value, memo)
+
+
 def _view(farm: Mapping, private: Mapping) -> dict:
-    return copy.deepcopy(dict(cash=farm["money"], hands=farm["hands"],
+    return _snapshot_copy(dict(cash=farm["money"], hands=farm["hands"],
         hires_today=farm["hires_today"], land=farm["unlocked_quadrants"],
         shed=private["shed"], seeds=private["seeds"],
         inventories=private["inventories"]))
@@ -102,9 +133,9 @@ def _simulate(mechanics: Any, seat: int, own_farm: Mapping, own_private: Mapping
     # SAME farm/market objects, exactly as in the original _process_market.
     farms = [None, None]
     privates = [None, None]
-    farms[seat], privates[seat] = copy.deepcopy((own_farm, own_private))
-    farms[1-seat], privates[1-seat] = copy.deepcopy((scenario["farm"], scenario["private"]))
-    shared_market = copy.deepcopy(market)
+    farms[seat], privates[seat] = _snapshot_copy([own_farm, own_private])
+    farms[1-seat], privates[1-seat] = _snapshot_copy([scenario["farm"], scenario["private"]])
+    shared_market = _snapshot_copy(market)
     queues = [None, None]
     queues[seat] = _queue(action, max_orders)
     queues[1-seat] = _queue(scenario["action"], max_orders)
