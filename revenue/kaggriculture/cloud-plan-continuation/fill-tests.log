@@ -1,0 +1,34 @@
+test_ambiguous_round_trip_is_unknown_not_filled (__main__.FillBindingTests.test_ambiguous_round_trip_is_unknown_not_filled) ... ok
+test_changed_final_product_not_bound_to_original_plan (__main__.FillBindingTests.test_changed_final_product_not_bound_to_original_plan) ... ok
+test_changed_final_quantity_not_bound_to_original_plan (__main__.FillBindingTests.test_changed_final_quantity_not_bound_to_original_plan) ... ok
+test_changed_slot_not_bound (__main__.FillBindingTests.test_changed_slot_not_bound) ... ok
+test_constructor_requires_coherent_optional_pair (__main__.FillBindingTests.test_constructor_requires_coherent_optional_pair) ... ok
+test_deferral_and_baseline_keep_disabled_contract (__main__.FillBindingTests.test_deferral_and_baseline_keep_disabled_contract) ... ok
+test_detached_final_inputs_and_results (__main__.FillBindingTests.test_detached_final_inputs_and_results) ... ok
+test_different_date_record_not_bound (__main__.FillBindingTests.test_different_date_record_not_bound) ... ok
+test_different_player_record_not_bound (__main__.FillBindingTests.test_different_player_record_not_bound) ... ok
+test_earlier_final_sale_drains_due_slot_and_retires_before_replenished_suffix (__main__.FillBindingTests.test_earlier_final_sale_drains_due_slot_and_retires_before_replenished_suffix) ... ok
+test_end_of_day_deposits_preserve_order_and_enable_full_verdict (__main__.FillBindingTests.test_end_of_day_deposits_preserve_order_and_enable_full_verdict) ... ok
+test_fill_truth_does_not_replace_current_physics (__main__.FillBindingTests.test_fill_truth_does_not_replace_current_physics) ... ok
+test_full_fill_both_seats_allows_remaining_sale_one_draw (__main__.FillBindingTests.test_full_fill_both_seats_allows_remaining_sale_one_draw) ... ok
+test_gap_preserves_full_fallback (__main__.FillBindingTests.test_gap_preserves_full_fallback) ... ok
+test_missing_final_record_is_not_an_observed_fill (__main__.FillBindingTests.test_missing_final_record_is_not_an_observed_fill) ... ok
+test_missing_terminal_record_not_labeled_complete (__main__.FillBindingTests.test_missing_terminal_record_not_labeled_complete) ... ok
+test_no_sale_does_not_require_record (__main__.FillBindingTests.test_no_sale_does_not_require_record) ... ok
+test_null_key_is_valid (__main__.FillBindingTests.test_null_key_is_valid) ... ok
+test_reconciliation_budget_exhaustion_keeps_unknown (__main__.FillBindingTests.test_reconciliation_budget_exhaustion_keeps_unknown) ... ok
+test_replaced_shared_ledger_binding_is_detected (__main__.FillBindingTests.test_replaced_shared_ledger_binding_is_detected) ... ok
+test_reported_failure_survives_until_next_action (__main__.FillBindingTests.test_reported_failure_survives_until_next_action) ... ok
+test_same_step_invalid_record_can_be_replaced (__main__.FillBindingTests.test_same_step_invalid_record_can_be_replaced) ... ok
+test_same_step_observation_does_not_consume_pending (__main__.FillBindingTests.test_same_step_observation_does_not_consume_pending) ... ok
+test_same_step_replacement_records_final_queue (__main__.FillBindingTests.test_same_step_replacement_records_final_queue) ... ok
+test_same_step_retry_has_one_draw_and_requires_new_final_record (__main__.FillBindingTests.test_same_step_retry_has_one_draw_and_requires_new_final_record) ... ok
+test_terminal_result_can_be_observed_without_an_extra_action (__main__.FillBindingTests.test_terminal_result_can_be_observed_without_an_extra_action) ... ok
+test_unknown_daily_deposits_dont_create_fill (__main__.FillBindingTests.test_unknown_daily_deposits_dont_create_fill) ... ok
+test_wrong_observation_seat_does_not_confirm (__main__.FillBindingTests.test_wrong_observation_seat_does_not_confirm) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.007s
+
+OK
+{"differences": 0, "original_blob": "165890d9e2534785ee4114e39549528e3f14ad82", "paired_invocations": 1312, "sampler_seeds": 32, "scenario_count": 12, "scenarios": ["split", "deferred", "mixed", "missed", "backward", "unknown", "infeasible", "stock", "slot", "terminal", "rollover", "zero"], "scope": "default-mode action/state differential, not game seeds or game runs", "transcript_sha256": "b398ab5c342f19368155805ca5d8e215edce5781f269f9de85aea2c64a9ca8ed"}
