@@ -21,7 +21,7 @@ function harness(state={sources:[],sessions:[],operations:[],feed:[]}) {
   const elements=new Map(),scrolls=[];
   const get=id=>{if(!elements.has(id))elements.set(id,new Element());return elements.get(id);};
   const context=vm.createContext({document:{getElementById:get,createElement:tag=>new Element(tag),querySelectorAll:()=>[]},sessionStorage:{getItem:()=>null},location:{origin:'http://localhost',hash:'#focus'},history:{replaceState(){}},window:{scrollTo:options=>scrolls.push(options)},URL,console});
-  vm.runInContext(source.slice(0,boundary)+`globalThis.ui={sessionStats,operationSummary,routineRefresh,renderFeed,renderFocus,navigate,setState:value=>state=value};})();`,context);
+  vm.runInContext(source.slice(0,boundary)+`globalThis.ui={renderFleet,renderBudgets,time,sessionStats,operationSummary,routineRefresh,renderFeed,renderFocus,navigate,setState:value=>state=value};})();`,context);
   context.ui.setState(state);
   return {ui:context.ui,get,scrolls};
 }
@@ -93,4 +93,62 @@ test('source errors, status changes, and failure events are never routine groups
 test('view changes reset scroll and repeated renders preserve the current position',()=>{
   const {ui,scrolls}=harness();ui.navigate('fleet');assert.equal(scrolls.length,1);assert.equal(scrolls[0].top,0);
   ui.navigate('fleet');assert.equal(scrolls.length,1);ui.navigate('focus');assert.equal(scrolls.length,2);
+});
+
+// Metadata activity is not a measurement, even when it is recent.
+const measurementCases=[
+  {observed_at:null,observed_at_utc:null,updated_at:'2026-09-08T02:00:00Z',started_at:'2026-09-08T01:59:00Z'},
+  {observed_at:null,observed_at_utc:null,started_at:'2026-09-08T01:59:00Z'},
+  {observed_at:'2026-09-01T10:00:00Z',observed_at_utc:'2026-09-02T10:00:00Z',updated_at:'2026-09-08T02:00:00Z'},
+  {observed_at:null,observed_at_utc:'2026-09-02T10:00:00Z',updated_at:'2026-09-08T02:00:00Z'}
+];
+const metaValue=(card,key)=>{const nodes=walk(card);const i=nodes.findIndex(n=>n.tagName==='dt'&&n.textContent===key);assert.ok(i>=0,key+' is rendered');return nodes[i+1].textContent;};
+test('hardware measurement freshness excludes metadata update and start times',()=>{
+  for(const stamps of measurementCases){
+    const {ui,get}=harness({sessions:[{id:'fixture-machine',kind:'machine',cpu:0,ram_gib:0,...stamps}],sources:[],runtimes:[]});
+    ui.renderFleet();const card=get('session-list').children[0];
+    assert.equal(metaValue(card,'Observed'),ui.time(stamps.observed_at||stamps.observed_at_utc));
+    assert.equal(String(metaValue(card,'CPU')),'0');assert.equal(metaValue(card,'RAM'),'0 GiB');
+    if(stamps.updated_at)assert.equal(metaValue(card,'Metadata updated'),ui.time(stamps.updated_at));
+  }
+});
+test('budget measurement freshness excludes metadata update and start times',()=>{
+  for(const stamps of measurementCases)for(const kind of ['cash_balance','quota']){
+    const {ui,get}=harness({budgets:[{id:'fixture-budget',kind,balance:kind==='cash_balance'?0:null,pending:0,limit:0,used:0,remaining:0,committed:0,...stamps}]});
+    ui.renderBudgets();const card=get('budget-list').children[0];
+    assert.equal(metaValue(card,'Observed'),ui.time(stamps.observed_at||stamps.observed_at_utc));
+    assert.equal(String(metaValue(card,'Remaining')),'0');assert.equal(String(metaValue(card,'Committed')),'0');
+    assert.deepEqual(walk(card).filter(n=>n.tagName==='strong').map(n=>n.textContent),['0','0']);
+  }
+});
+
+test('business activity keeps its update time separate from measurement freshness',()=>{
+  const stamp='2026-09-08T02:00:00Z';
+  const {ui,get}=harness({sources:[],feed:[{id:'activity',kind:'note',title:'Business activity',body:'Synthetic fixture',observed_at:null,observed_at_utc:null,updated_at:stamp}]});
+  ui.renderFeed();assert.match(text(get('feed-list')),new RegExp(ui.time(stamp).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+});
+
+
+test('invalid measurement observations stay unknown or use a valid UTC fallback',()=>{
+  const cases=[
+    {observed_at:'not-a-date',observed_at_utc:'also-invalid',expected:null},
+    {observed_at:'not-a-date',observed_at_utc:null,expected:null},
+    {observed_at:'   ',observed_at_utc:null,expected:null},
+    {observed_at:false,observed_at_utc:null,expected:null},
+    {observed_at:'not-a-date',observed_at_utc:'2026-09-02T10:00:00Z',expected:'2026-09-02T10:00:00Z'}
+  ];
+  for(const {expected,...stamps} of cases){
+    const metadata={updated_at:'2026-09-08T04:00:00Z',started_at:'2026-09-08T03:59:00Z'};
+    const {ui,get}=harness({sessions:[{id:'machine',kind:'machine',cpu:0,ram_gib:0,...metadata,...stamps}],sources:[],runtimes:[],budgets:['cash_balance','quota'].map(kind=>({id:kind,kind,balance:0,pending:0,limit:0,used:0,remaining:0,committed:0,...metadata,...stamps}))});
+    ui.renderFleet();ui.renderBudgets();
+    const machine=get('session-list').children[0];
+    assert.equal(metaValue(machine,'Observed'),expected?ui.time(expected):'Observation time unknown');
+    assert.equal(metaValue(machine,'Metadata updated'),ui.time(metadata.updated_at));
+    assert.equal(String(metaValue(machine,'CPU')),'0');assert.equal(metaValue(machine,'RAM'),'0 GiB');
+    for(const card of get('budget-list').children){
+      assert.equal(metaValue(card,'Observed'),expected?ui.time(expected):'Observation time unknown');
+      assert.equal(String(metaValue(card,'Remaining')),'0');
+      assert.deepEqual(walk(card).filter(n=>n.tagName==='strong').map(n=>n.textContent),['0','0']);
+    }
+  }
 });

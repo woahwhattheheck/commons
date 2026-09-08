@@ -18,7 +18,9 @@
   const make = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = str(text); return n; };
   const replace = (id, nodes) => $(id).replaceChildren(...nodes);
   const time = value => { if (!value) return 'Observation time unknown'; const d = new Date(value); return Number.isNaN(d.getTime()) ? str(value) : d.toLocaleString([], {dateStyle:'medium',timeStyle:'short'}); };
-  const observed = r => first(r.observed_at,r.observed_at_utc,r.updated_at,r.started_at);
+  // Measurement freshness never comes from record creation or metadata updates.
+  const observed = r => [r.observed_at,r.observed_at_utc].find(v => typeof v === 'string' && v.trim() !== '' && Number.isFinite(Date.parse(v))) ?? null;
+  const activityTime = r => first(observed(r),r.updated_at,r.started_at);
   function safeURL(value) {
     if (typeof value !== 'string' || !value.trim()) return null;
     try { const u = new URL(value, location.origin); return ['http:','https:','codex:'].includes(u.protocol) ? u.href : null; } catch (_) { return null; }
@@ -165,7 +167,7 @@
     arr(state.sources).filter(s=>s.error||/error|failed|offline|unavailable/i.test(status(s))).forEach(s=>items.push({title:'Source: '+label(s),body:str(s.error||status(s)),at:observed(s)}));
     arr(state.runtimes).filter(r=>r.error||/error|failed|offline|unavailable|degraded/i.test(status(r))).forEach(r=>items.push({title:'Runtime: '+label(r),body:str(r.error||status(r)),at:observed(r)}));
     arr(state.operations).filter(o=>/failed|error|uncertain|unknown/i.test(status(o))).slice(0,5).forEach(o=>items.push({title:str(first(o.name,'Operation needs reconciliation')),body:operationSummary(o),at:o.started_at}));
-    arr(state.feed).filter(e=>(!e.hidden||protectedEvent(e))&&/attention|decision|failure|error|incident/i.test(str(e.kind))).slice(0,5).forEach(e=>items.push({title:e.title,body:e.body,at:observed(e)}));return items;
+    arr(state.feed).filter(e=>(!e.hidden||protectedEvent(e))&&/attention|decision|failure|error|incident/i.test(str(e.kind))).slice(0,5).forEach(e=>items.push({title:e.title,body:e.body,at:activityTime(e)}));return items;
   }
   function renderFocus() {
     const sessions=arr(state&&state.sessions),resources=arr(state&&state.resources),attention=attentionItems();
@@ -232,7 +234,7 @@
     const c=make('article','panel feed-card'+(e.hidden?' is-hidden':'')),top=make('div','feed-card-top');top.append(badge(e.kind||'event'),make('h3','feed-title',e.title||e.id));if(e.hidden)top.append(badge(protectedEvent(e)?'Failure kept visible':'Hidden from default'));c.append(top);
     if(e.hidden&&e.moderation)c.append(make('p','moderation-reason',str(first(e.moderation.reason,e.moderation,'Reason unavailable'))));
     const original=make('details','feed-original');original.open=!e.hidden||protectedEvent(e);original.append(make('summary','','Original event'),make('p','feed-body',e.body||'No body returned.'),raw(e));c.append(original);
-    const foot=make('div','feed-footer'),left=make('div');left.append(make('span','small muted',time(observed(e))));if(sourceURL(e))left.append(link('Open source ↗',sourceURL(e)));left.append(link('Preserved event ↗','/api/event?event_id='+encodeURIComponent(e.id)));
+    const foot=make('div','feed-footer'),left=make('div');left.append(make('span','small muted',time(activityTime(e))));if(sourceURL(e))left.append(link('Open source ↗',sourceURL(e)));left.append(link('Preserved event ↗','/api/event?event_id='+encodeURIComponent(e.id)));
     foot.append(left);if(e.id&&(e.hidden||!protectedEvent(e)))foot.append(button(e.hidden?'Restore to default view':'Hide from default view',()=>moderationForm(e)));else if(protectedEvent(e))foot.append(make('span','small muted','Failures remain visible'));c.append(foot);return c;
   }
   function renderFeed() {
