@@ -330,7 +330,7 @@ def inspect_archive(path: Path, *, expected_sha256: str | None = None,
     for name, payload in members.items():
         if not name.endswith('.log') or name in recognized_logs:
             continue
-        text = payload.decode('utf-8', errors='replace')
+        text = payload.decode('utf-8', errors='replace').replace('\r\n', '\n')
         if name.endswith('-tests.log') or re.search(r'^Ran \d+ tests? in ', text, re.MULTILINE):
             unrecognized_logs.append(name)
             problem('missing', f'unrecognized test evidence: {name}')
