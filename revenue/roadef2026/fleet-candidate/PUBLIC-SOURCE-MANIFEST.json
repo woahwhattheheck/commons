@@ -98,8 +98,8 @@
     },
     {
       "path": "benchmark.py",
-      "bytes": 9447,
-      "sha256": "430e6499c88a592c2bf73284a10c7b2eac3f6c4c8cf4f7d5f159486a491d1653"
+      "bytes": 11165,
+      "sha256": "789fda06bb7f255cbe9be77a9e2f7be4a2f03d7f3c5a81b4988df77735902c99"
     },
     {
       "path": "CLOUD-VALIDATION.md",
@@ -225,6 +225,21 @@
       "path": "SCIENTIFIC-SPRINT-COMPOSITION.md",
       "bytes": 3154,
       "sha256": "ebdee0952377a8f7f57a5809a7a4c755d7e77f3cea1e28e495577ec2a6ea70c8"
+    },
+    {
+      "path": "test_benchmark_coordinates.py",
+      "bytes": 19439,
+      "sha256": "aaebc38e16b622bbc9a03013951cba228693cdb48a51cc0af4d8ad2172f49a1d"
+    },
+    {
+      "path": "BENCHMARK-COORDINATES.md",
+      "bytes": 4894,
+      "sha256": "f72a68b362aab6555adc6d824d621029f3c9f10ff93568f8c78813439ac9fd41"
+    },
+    {
+      "path": "BENCHMARK-COORDINATES-RESULTS.json",
+      "bytes": 4728,
+      "sha256": "2c39871eedf0bdd571b1571448b35f34e45c7692e449d92f7353b7482d9d8d2e"
     }
   ]
 }
