@@ -34,7 +34,7 @@ def hang(obs, cfg):
     time.sleep(5)
     return {}
 def hungry(obs, cfg):
-    value = bytearray(12 * 1024 * 1024)
+    value = bytearray(32 * 1024 * 1024)
     time.sleep(5)
     return {}
 def bad(obs, cfg):
@@ -126,9 +126,12 @@ class ActorTests(unittest.TestCase):
         initial_rss = actor.report()["peak_rss_kib"]
         self.assertEqual(actor.act({}, {}, 0.2)["kind"], "timeout")
         try:
+            # The independent reference must also use the worker's PID view.
+            if int(Path("/proc/self/stat").read_text().split(maxsplit=1)[0]) != os.getpid():
+                raise ValueError("procfs PID namespace differs from process APIs")
             status = Path(f"/proc/{actor.proc.pid}/status").read_text()
             observed = int(next(line for line in status.splitlines() if line.startswith("VmHWM:")).split()[1])
-        except OSError:
+        except (OSError, ValueError, IndexError):
             observed = None
         actor.close()
         report = actor.report()

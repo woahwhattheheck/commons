@@ -352,6 +352,11 @@ class Actor:
         # Include resource use inside a call that timed out before it could report.
         if sys.platform.startswith("linux"):
             try:
+                # A host-mounted procfs can use a different PID namespace from
+                # Popen/wait4. Numeric child paths would then name other processes.
+                procfs_pid = int(Path("/proc/self/stat").read_text().split(maxsplit=1)[0])
+                if procfs_pid != os.getpid():
+                    raise ValueError("procfs PID namespace differs from process APIs")
                 status = Path(f"/proc/{self.proc.pid}/status").read_text()
                 for line in status.splitlines():
                     if line.startswith("VmHWM:"):
@@ -361,7 +366,7 @@ class Actor:
                 self.stats["cpu_seconds"] = max(self.stats["cpu_seconds"], cpu)
                 self.stats["resource_sample"] = "child_rusage_plus_linux_procfs"
             except (OSError, ValueError, IndexError):
-                pass  # Already exited: the last child-reported sample remains available.
+                pass  # Unavailable procfs: child-reported and final wait4 samples remain.
         # Kill the process group, including children, before discarding its private directory.
         # Do not wait for a crashed/hung agent to consume another game slot.
         if self.proc.stdin:
