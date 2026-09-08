@@ -236,7 +236,7 @@ def worker(args):
             relative = str(Path(path).resolve().relative_to(root))
             require(relative in before, 'Unpinned runtime import: ' + relative)
             imported[name] = relative
-    report = {'mode':args.mode,'source_commit':SOURCE_COMMIT,'source_scope':'exact default-only current source closure; not whole current archive',
+    report = {'mode':args.mode,'source_commit':pins['commit'],'source_scope':'exact default-only current source closure; not whole current archive',
         'source_files':before,'imported_runtime':imported,'input_zip_sha256':ARCHIVE_SHA,
         'manifest_files_verified':len(manifest),'cells':cells,'initializations':init_records,
         'total_calls':parent_count,'completed':True,'failures':[], 'new_games':0,
@@ -244,8 +244,51 @@ def worker(args):
     args.output.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
 
 
+def validate_reports(reports):
+    """Require the complete declared matrix before comparing any paired rows."""
+    require(isinstance(reports, dict) and set(reports) == set(MODES), 'Missing comparison mode')
+    first = reports['cached']
+    require(isinstance(first, dict), 'Malformed cached report')
+    source = first.get('source_files')
+    require(isinstance(source, dict) and source, 'Missing source binding')
+    source_ref = first.get('source_commit')
+    require(isinstance(source_ref, str) and len(source_ref) == 40 and
+            all(c in '0123456789abcdef' for c in source_ref), 'Invalid source ref')
+    expected_calls = 719 * len(CASES)
+    for mode in MODES:
+        report = reports[mode]
+        require(isinstance(report, dict) and report.get('mode') == mode, 'Wrong report mode')
+        require(report.get('completed') is True and report.get('failures') == [], 'Incomplete worker report')
+        require(report.get('source_files') == source and report.get('source_commit') == source_ref,
+                'Comparison source identity differs')
+        require(report.get('input_zip_sha256') == ARCHIVE_SHA, 'Wrong retained input binding')
+        require(type(report.get('total_calls')) is int and report['total_calls'] == expected_calls,
+                'Wrong complete parent-call count')
+        cells = report.get('cells')
+        require(isinstance(cells, list) and len(cells) == len(CASES), 'Incomplete or extra comparison cells')
+        initializations = report.get('initializations')
+        require(isinstance(initializations, list) and len(initializations) == len(CASES) and
+                all(isinstance(row, dict) and row.get('events_empty_at_init') is True
+                    for row in initializations), 'Incomplete fresh-event initialization record')
+        for cell, (prefix, seat) in zip(cells, CASES):
+            require(isinstance(cell, dict) and cell.get('prefix') == prefix and
+                    type(cell.get('seat')) is int and cell['seat'] == seat, 'Wrong comparison cell identity')
+            require(type(cell.get('calls')) is int and cell['calls'] == 719 and
+                    type(cell.get('actual_parent_calls')) is int and cell['actual_parent_calls'] == 719,
+                    'Incomplete comparison cell calls')
+            rows = cell.get('rows')
+            require(isinstance(rows, list) and len(rows) == 719, 'Incomplete per-decision evidence')
+            for step, row in enumerate(rows):
+                require(isinstance(row, dict) and type(row.get('step')) is int and row['step'] == step,
+                        'Noncontiguous per-decision evidence')
+                for field in ('action', 'state'):
+                    value = row.get(field)
+                    require(isinstance(value, str) and len(value) == 64 and
+                            all(c in '0123456789abcdef' for c in value), 'Invalid per-decision digest')
+
+
 def compare(reports):
-    require(set(reports) == set(MODES), 'Missing comparison mode')
+    validate_reports(reports)
     base = reports['cached']
     checks = []
     for mode in ('uncached','original'):
@@ -289,7 +332,7 @@ def main():
         require(process.returncode==0,'Worker failed; retained log: '+str(out.with_suffix('.log')))
         reports[mode]=json.loads(out.read_text())
     summary=compare(reports)
-    summary.update(source_commit=SOURCE_COMMIT,input_zip_sha256=ARCHIVE_SHA,
+    summary.update(source_commit=reports['cached']['source_commit'],input_zip_sha256=ARCHIVE_SHA,
                    report_sha256={m:digest(args.output.with_name(args.output.stem+'-'+m+'.json').read_bytes()) for m in MODES},
                    python=sys.version)
     args.output.write_text(json.dumps(summary,indent=2,sort_keys=True)+'\n')
