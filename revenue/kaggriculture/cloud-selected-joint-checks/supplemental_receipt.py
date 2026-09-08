@@ -58,6 +58,34 @@ LEDGER_COUNTS = ('feasibility_comparisons', 'transform_comparisons',
 SUPPLEMENTS.update(LATE_SUPPLEMENTS)
 
 
+PROJECTION = 'revenue/kaggriculture/cloud-selected-projection/'
+RUNNER_QUEUE_SUPPLEMENTS = {
+    'stress_runner_boundary': ('stress-runner-boundary-tests.log', 'stress-runner-boundary.json', 20,
+                               (STRESS + 'test_runner_guard_join.py', STRESS + 'runner.py',
+                                STRESS + 'deadline_adapter.py')),
+    'stress_runner_existing': ('stress-runner-existing-tests.log', None, 2,
+                               (STRESS + 'test_runner.py', STRESS + 'runner.py')),
+    'stress_runner_reporter': ('stress-runner-reporter-tests.log', None, 13,
+                               (PROJECTION + 'test_stress_runner_report.py',
+                                PROJECTION + 'build_combined_report.py')),
+    'queue_copy': ('queue-copy-tests.log', 'queue-copy-results.json', 23,
+                   (MARKET + 'test_queue_copy.py', LAB + 'selected_action_sell.py',
+                    LAB + 'selected_sell_core.py', LAB + 'mechanics.py',
+                    LAB + 'reference/decision/decision.py')),
+    'queue_copy_reporter': ('queue-copy-reporter-tests.log', None, 14,
+                            (PROJECTION + 'test_queue_copy_report.py',
+                             PROJECTION + 'build_combined_report.py', WORKFLOW)),
+}
+STRESS_BINDINGS = {
+    'runner_sha256': STRESS + 'runner.py',
+    'adapter_sha256': STRESS + 'deadline_adapter.py',
+    'test_sha256': STRESS + 'test_runner_guard_join.py',
+}
+QUEUE_COPY_COUNTS = ('queue_comparisons', 'replacement_comparisons',
+                     'complete_transform_comparisons', 'feasibility_comparisons')
+SUPPLEMENTS.update(RUNNER_QUEUE_SUPPLEMENTS)
+
+
 def integer(value: Any) -> bool:
     return type(value) is int and value >= 0
 
@@ -132,7 +160,11 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
             problem('failure', f'{label}: differs from declared source/results')
 
     for label, (log_name, report_name, minimum, paths) in SUPPLEMENTS.items():
-        represented = (log_name in members or report_name in members or paths[0] in files)
+        # test_runner.py is also a dependency of the older cancellation suite.
+        # Only a log or an enclosing declaration can establish its two-method
+        # subset; merely bundling that shared source must not change old ZIPs.
+        source_declared = paths[0] in files and label != 'stress_runner_existing'
+        represented = (log_name in members or report_name in members or source_declared)
         if not represented and not require_all:
             continue
         for name in paths:
@@ -167,10 +199,87 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
                     problem('failure', f'{label}: unittest reports failure')
                 elif ending != 'OK':
                     problem('missing', f'{label}: qualified completion is not full coverage')
+        if label == 'stress_runner_existing' and summary['test_methods'] is not None:
+            # The other three upstream methods already run in cancellation.
+            if summary['test_methods'] != 2:
+                problem('failure', 'stress_runner_existing: expected the two non-cancellation methods')
+            summary['retained_runner_methods'] = 2
         if report_name is None:
             continue
         report = obj(report_name)
         if report is None:
+            continue
+        if label == 'stress_runner_boundary':
+            count = report.get('tests_run')
+            if not integer(count) or count < minimum:
+                problem('failure', 'stress_runner_boundary: invalid/below-coverage tests_run')
+            else:
+                compare(count, summary['test_methods'], 'stress_runner_boundary count')
+            for key in ('failures', 'errors', 'skipped'):
+                value = report.get(key)
+                if not isinstance(value, list):
+                    problem('failure', f'stress_runner_boundary: {key} must be a list')
+                elif value:
+                    problem('missing' if key == 'skipped' else 'failure',
+                            f'stress_runner_boundary: nonempty {key}')
+            # This suite's hosted command excludes the three actual-state
+            # methods. Their local evidence cannot acquire this hosted identity.
+            if report.get('actual_source') is not False:
+                problem('failure', 'stress_runner_boundary: expected boundary-only actual_source=false')
+            if (not integer(report.get('full_games')) or report['full_games'] != 0
+                    or report.get('new_game_seeds') != []):
+                problem('failure', 'stress_runner_boundary: unexpected gameplay/seed scope')
+            for key, name in STRESS_BINDINGS.items():
+                compare(report.get(key), source(name), f'stress_runner_boundary {key}')
+            summary['actual_source'] = report.get('actual_source')
+            continue
+        if label == 'queue_copy':
+            compare(report.get('schema'), 'titan.queue-copy.final.v1', 'queue_copy schema')
+            count = report.get('methods')
+            if not integer(count) or count < minimum:
+                problem('failure', 'queue_copy: invalid/below-coverage methods')
+            else:
+                compare(count, summary['test_methods'], 'queue_copy count')
+            for key in ('failures', 'errors'):
+                if not integer(report.get(key)) or report[key] != 0:
+                    problem('failure', f'queue_copy: invalid/nonzero {key}')
+            if report.get('passed') is not True:
+                problem('failure', 'queue_copy: passed is not true')
+            for key in ('new_games', 'engine_transitions'):
+                if not integer(report.get(key)) or report[key] != 0:
+                    problem('failure', f'queue_copy: unexpected {key}')
+            compare(report.get('source_sha256'), source(LAB + 'selected_action_sell.py'),
+                    'queue_copy seller')
+            comparison_counts = report.get('counts')
+            if not isinstance(comparison_counts, dict):
+                problem('failure', 'queue_copy: counts is not an object')
+                comparison_counts = {}
+            for key in QUEUE_COPY_COUNTS:
+                if not integer(comparison_counts.get(key)):
+                    problem('failure', f'queue_copy: invalid comparison count {key}')
+            summary['comparisons'] = {key: comparison_counts.get(key) for key in QUEUE_COPY_COUNTS}
+            # The actual report embeds its original unittest text. Inspect it
+            # as data as well as the outer tee log; neither may hide a failure.
+            inner = report.get('log')
+            if not isinstance(inner, str):
+                problem('missing', 'queue_copy: missing embedded unittest log')
+            else:
+                inner = inner.replace('\r\n', '\n')
+                inner_counts = list(re.finditer(r'^Ran (\d+) tests? in [0-9.eE+-]+s[ \t]*$', inner, re.MULTILINE))
+                inner_endings = list(re.finditer(r'^(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)[ \t]*$',
+                                                 inner, re.MULTILINE))
+                if re.search(r'^FAILED(?: |$)', inner, re.MULTILINE):
+                    problem('failure', 'queue_copy: embedded unittest failure footer')
+                if (len(inner_counts) != 1 or len(inner_endings) != 1
+                        or inner_endings[0].start() < inner_counts[0].end()):
+                    problem('missing', 'queue_copy: incomplete or ambiguous embedded unittest completion')
+                else:
+                    compare(int(inner_counts[0].group(1)), summary['test_methods'],
+                            'queue_copy embedded count')
+                    ending = inner_endings[0].group(1).strip()
+                    if ending != 'OK':
+                        problem('failure' if ending.startswith('FAILED') else 'missing',
+                                'queue_copy: embedded completion is not full passing coverage')
             continue
         if label == 'deadline_cancellation':
             count = report.get('tests_run')
