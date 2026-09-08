@@ -149,10 +149,12 @@ def build_index(
         len(source_commit) == 40 and all(ch in "0123456789abcdef" for ch in source_commit),
         "source_commit must be a 40-character Git SHA",
     )
+    _require(isinstance(source_blobs, dict), "source_blobs must be an object")
     _require(set(source_blobs) == set(SOURCE_PATHS), "source_blobs must name exactly the three source files")
     for path, oid in source_blobs.items():
         _require(
-            len(oid) == 40 and all(ch in "0123456789abcdef" for ch in oid),
+            isinstance(oid, str) and len(oid) == 40
+            and all(ch in "0123456789abcdef" for ch in oid),
             f"source blob for {path} must be a 40-character Git SHA",
         )
 
@@ -283,6 +285,7 @@ def scan(root: Path, observed_at: str, source_commit: str) -> dict[str, Any]:
 
 def check_snapshot(root: Path, path: Path) -> dict[str, Any]:
     expected = json.loads(path.read_text(encoding="utf-8"))
+    _require(isinstance(expected, dict), f"{path} must be an object")
     _require(expected.get("schema") == SCHEMA, f"{path} is not {SCHEMA}")
     actual = scan(root, _text(expected.get("observed_at")), _text(expected.get("source_commit")))
     if actual != expected:
@@ -319,7 +322,7 @@ def main(argv: list[str] | None = None) -> int:
         else:
             sys.stdout.write(rendered)
         return 0
-    except (AgentLivenessError, OSError, json.JSONDecodeError) as exc:
+    except (AgentLivenessError, OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
         sys.stderr.write(f"agent-liveness-index: {exc}\n")
         return 2
 
