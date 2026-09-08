@@ -453,10 +453,39 @@ def play(engine, specs, cache, loader, seed, candidate_seat, rng_seed=20260907,
         result["actors"] = [actor.report() for actor in actors]
         result["wall_seconds"] = time.perf_counter() - started
         result["driver_cpu_seconds"] = time.process_time() - initial_cpu
-        result["bank_snapshot"] = [float(state[0].observation.get("farms", [{"money": 0}] * 2)[i]["money"])
-                                   for i in range(2)]
-        trace.update(encoded([s.observation for s in state]))
-        result["trace_sha256"] = trace.hexdigest()
+        # Diagnostic failures must not replace an already-recorded game error.
+        # Keep unknown balances explicit, and never label a prefix hash as a
+        # complete trace. Healthy reports retain their exact existing shape.
+        finalization_errors = []
+        result["bank_snapshot"] = []
+        for seat in range(2):
+            try:
+                balance = float(state[0].observation["farms"][seat]["money"])
+                if not math.isfinite(balance):
+                    raise ValueError("Nonfinite bank snapshot")
+            except Exception as exc:
+                balance = None
+                finalization_errors.append({"stage": "bank_snapshot", "seat": seat,
+                                            "error": f"{type(exc).__name__}: {exc}"[:1000]})
+            result["bank_snapshot"].append(balance)
+        try:
+            trace.update(encoded([s.observation for s in state]))
+        except Exception as exc:
+            result["trace_sha256"] = None
+            result["trace_prefix_sha256"] = trace.hexdigest()
+            finalization_errors.append({"stage": "final_observation_trace", "seat": None,
+                                        "error": f"{type(exc).__name__}: {exc}"[:1000]})
+        else:
+            result["trace_sha256"] = trace.hexdigest()
+        if finalization_errors:
+            result["finalization_errors"] = finalization_errors
+            # Terminal scores, when already known, remain recorded. A result
+            # lacking required final evidence is not a completed evaluation.
+            result["status"] = "failed"
+            if result["failure"] is None:
+                result["failure"] = {"kind": "finalization_error", "seat": None,
+                                     "step": result["steps"],
+                                     "error": finalization_errors[0]["error"]}
     return result
 
 

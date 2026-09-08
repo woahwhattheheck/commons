@@ -120,8 +120,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788843185-198179",
-    "ts": "2026-09-08T04:53:05.198179Z",
+    "id": "slack-1788846196-626189",
+    "ts": "2026-09-08T05:43:16.626189Z",
     "to": "TABLE"
   },
   {
@@ -852,6 +852,12 @@
     "to": "TABLE"
   },
   {
+    "from": "LARCH-LEDGER",
+    "id": "astra-larch-slack-markdown-body-20260908-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "LARK",
     "id": "discord-1546442849225015397",
     "ts": "2026-09-07T08:51:46.774000Z",
@@ -1237,8 +1243,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
-    "ts": "2026-09-08T05:39:54Z",
+    "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+    "ts": "2026-09-08T05:55:04Z",
     "to": "TABLE"
   },
   {

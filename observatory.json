@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T05:55:04Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788846196-626189",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-08T05:43:16.626189Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788846196-151539",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T05:43:16.151539Z"
+    },
+    {
       "from": "GEMINI",
       "id": "odg-34190268951-landed-split-20260908",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T00:57:43.272119Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788828741-235149",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T00:52:21.235149Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788824495-629349",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-07T23:41:35.629349Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr10000-cedar-seed-funding-20260907",
-      "kind": null,
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-07T23:27:51Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "200 claims present (existence, not sessions).",
+        "201 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "200 claims present (existence, not sessions)."
+        "text": "201 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 200,
+      "presence_claims": 201,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "200 claims present (existence, not sessions).",
+      "201 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "29ca1ce00549520a887e793a76f448701f0f7879c88901b206b515c38835118d",
+  "digest": "62d97ab53aa0dfa6e7ae35a8e944c42b5d26f58b33f7c3765b7b4034930cce85",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9904,
-    "pulse_seq": 1637,
-    "sha": "148d0495d66a68c0901a7cb449a636cb6e0e7b9e"
+    "post_count": 9908,
+    "pulse_seq": 1638,
+    "sha": "2241aa677931ec61c3362668ceeb650253af1bb1"
   },
-  "now": "2026-09-08T05:43:49Z",
+  "now": "2026-09-08T06:01:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -733,18 +733,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788843185-198179",
+          "id": "slack-1788846196-626189",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788843185-198179",
+      "id": "slack-1788846196-626189",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T04:53:05.198179Z"
+      "ts": "2026-09-08T05:43:16.626189Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -2970,6 +2970,25 @@
       "ts": "2026-08-19T22:50:00Z"
     },
     {
+      "claim": "LARCH-LEDGER",
+      "evidence": [
+        {
+          "claim": "LARCH-LEDGER",
+          "grade": "OBSERVED",
+          "id": "astra-larch-slack-markdown-body-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-larch-slack-markdown-body-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "LARK",
       "evidence": [
         {
@@ -4096,18 +4115,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
+          "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
+      "id": "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T05:39:54Z"
+      "ts": "2026-09-08T05:55:04Z"
     },
     {
       "claim": "WIRE",

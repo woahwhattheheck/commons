@@ -24,6 +24,33 @@ def clear_output_cell(path):
         raise RuntimeError(f"Output cell is a directory: {path}") from exc
 
 
+def captured_bytes(value):
+    """Return TimeoutExpired streams as exact bytes for durable evidence."""
+    if value is None:
+        return b""
+    if isinstance(value, bytes):
+        return value
+    return str(value).encode("utf-8")
+
+
+def captured_text(value):
+    return captured_bytes(value).decode("utf-8", errors="replace")
+
+
+def timeout_receipt(path, stage, timeout, stdout, stderr):
+    stdout_bytes, stderr_bytes = captured_bytes(stdout), captured_bytes(stderr)
+    record = {
+        "status": "timeout",
+        "stage": stage,
+        "timeout_seconds": timeout,
+        "stdout_sha256": hashlib.sha256(stdout_bytes).hexdigest(),
+        "stderr_sha256": hashlib.sha256(stderr_bytes).hexdigest(),
+        "stdout_bytes": len(stdout_bytes),
+        "stderr_bytes": len(stderr_bytes),
+    }
+    path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver", type=Path, required=True)
@@ -47,6 +74,8 @@ def main():
         stats = args.output / (suffix + "-stats.json")
         log = args.output / (suffix + ".log")
         checker_report = args.output / (suffix + "-checker.json")
+        checker_log = args.output / (suffix + "-checker.log")
+        timeout_report = args.output / (suffix + "-timeout.json")
         resume_path = Path(resume).resolve() if resume else None
         temporary_resume = None
         if resume_path == output.resolve():
@@ -60,7 +89,7 @@ def main():
                 clear_output_cell(temporary_resume)
                 raise
             resume_path = temporary_resume
-        for path in (output, stats, log, checker_report):
+        for path in (output, stats, log, checker_report, checker_log, timeout_report):
             clear_output_cell(path)
         environment = os.environ.copy()
         for name in ("CLOUD_INITIAL_SOLUTION", "FLEET_WAYPOINT_LIMIT"):
@@ -71,7 +100,13 @@ def main():
             environment["CLOUD_INITIAL_SOLUTION"] = str(resume_path)
         command = [str(args.solver), str(network), str(traffic), str(scenario), str(output)]
         try:
-            run = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=60)
+            try:
+                run = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=60)
+            except subprocess.TimeoutExpired as exc:
+                stdout, stderr = captured_bytes(exc.stdout), captured_bytes(exc.stderr)
+                log.write_bytes(stdout + stderr)
+                timeout_receipt(timeout_report, "solver", exc.timeout, stdout, stderr)
+                raise
         finally:
             if temporary_resume is not None:
                 clear_output_cell(temporary_resume)
@@ -84,8 +119,16 @@ def main():
                 "Solver exited 0 without creating current output cells: " + ", ".join(missing))
         command = [str(args.checker), "--net", str(network), "--tm", str(traffic),
                    "--scenario", str(scenario), "--srpaths", str(output), "--max-decimal-places", "6"]
-        checked = subprocess.run(command, capture_output=True, text=True, timeout=30)
+        try:
+            checked = subprocess.run(command, capture_output=True, text=True, timeout=30)
+        except subprocess.TimeoutExpired as exc:
+            stdout, stderr = captured_bytes(exc.stdout), captured_bytes(exc.stderr)
+            checker_report.write_bytes(stdout)
+            checker_log.write_bytes(stderr)
+            timeout_receipt(timeout_report, "checker", exc.timeout, stdout, stderr)
+            raise
         checker_report.write_text(checked.stdout, encoding="utf-8")
+        checker_log.write_text(checked.stderr, encoding="utf-8")
         if checked.returncode:
             raise RuntimeError(f"Checker failed ({checked.returncode}): {checked.stderr}")
         result = json.loads(checked.stdout)
@@ -112,7 +155,6 @@ def main():
         repeat_path, repeated, repeat_stats, _ = execute(case, 1, case + "-repeat", resume=resume)
         assert repeated == new and repeat_path.read_bytes() == new_path.read_bytes()
         assert repeat_stats["joint_accepted"] == positive["joint_accepted"]
-        # A same-path restart must read the incumbent before its first checkpoint.
         same_path = args.output / (case + " resume in place.json")
         shutil.copyfile(new_path, same_path)
         resumed_path, resumed, resumed_stats, _ = execute(

@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 4,
+ "n_open_prs": 2,
  "open_prs": [
   {
    "number": 10253,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10253",
    "base_freshness": {
     "base_sha": "5edfadac961f43c7117d99c80ef94d84f0284a57",
-    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
+    "main_sha": "62f47fac39baa051095c0c3e4cf243d47909e9fd",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,45 +369,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10279,
+   "number": 10328,
    "author": "woahwhattheheck",
-   "title": "fix(reporting): retain delivery history and complete Markdown bodies",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10279",
+   "title": "ROADEF: retain joint-verifier timeout evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10328",
    "base_freshness": {
-    "base_sha": "09f7566fb9f90dfe2a86052b347ca4eaa7e5ada9",
-    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10224,
-   "author": "woahwhattheheck",
-   "title": "Accept exact native scientific values in ROADEF checker reports",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10224",
-   "base_freshness": {
-    "base_sha": "d9dd9f79a9d1bb268bff4f01d55b9acad0b1df79",
-    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10299,
-   "author": "woahwhattheheck",
-   "title": "Support explicit producer snapshots in the existing seed compatibility CLI",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10299",
-   "base_freshness": {
-    "base_sha": "616a1d2846f15f5a3b6f08ec8628aa7b21b68bed",
-    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
+    "base_sha": "6144a88d6ee3572df61be23328d3defd82accdab",
+    "main_sha": "62f47fac39baa051095c0c3e4cf243d47909e9fd",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
