@@ -28,6 +28,14 @@ same `SEDGE_STATS` and `SEDGE_MAX_ROUNDS` diagnostics used by SEDGE remain
 available. The optimizer is deterministic for a fixed round limit; a wall-time
 limit can stop at a different accepted move on different machines.
 
+The incumbent and output may name the same file. Initialization now finishes
+reading and validating the incumbent and topology before the first atomic output
+replacement; a rejected input leaves an existing output unchanged. The earlier
+version could erase an in-place incumbent before reading it. Fourteen real-binary
+regression methods cover this boundary; see
+[INCUMBENT-PRESERVATION.md](INCUMBENT-PRESERVATION.md). This save-order repair does
+not change the search neighborhoods or claim a new benchmark improvement.
+
 ## Measured public-instance result
 
 The checked experiment used exact official challenge commit
