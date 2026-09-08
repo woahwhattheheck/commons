@@ -332,7 +332,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m unittest test_combined_report -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/reporter-tests.log"
+          python3 -m unittest test_combined_report test_report_publication -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/reporter-tests.log"
       - name: Bind all combined results to one source snapshot
         if: ${{ !cancelled() }}
         shell: bash
