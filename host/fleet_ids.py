@@ -20,8 +20,14 @@ import json
 import os
 import sys
 
+if __package__:
+    from .finder_zero import FINDER_UNVERIFIED, calibrate, search_space
+else:
+    from finder_zero import FINDER_UNVERIFIED, calibrate, search_space
+
 
 DEFAULT_CATALOG = os.path.join("ground", "FLEET_IDS.json")
+CALIBRATION_ID = "rivet-ship-finder-zero-20260825-01"
 
 
 def load_catalog(text):
@@ -64,6 +70,12 @@ def present_ids(ids, listing):
 def classify(row):
     """Turn a measured census into a land-desk state."""
     row = row or {}
+    if row.get("finder_state") == FINDER_UNVERIFIED:
+        return {
+            "state": FINDER_UNVERIFIED,
+            "note": row.get("finder_note")
+            or "p/{id}.md finder failed calibration or execution. Absence is unverified.",
+        }
     if not row.get("measured"):
         return {
             "state": "UNMEASURED",
@@ -104,9 +116,9 @@ def classify(row):
     return {
         "state": "NOT_LANDED",
         "note": (
-            "0/%s claimed fleet ids are p/{id}.md. Fleet-live / "
-            "isolated-lanes talk is CLAIMED. Do not remint. Ship the "
-            "exact id or a unique leftover."
+            "0/%s claimed fleet ids are p/{id}.md after a calibrated listing. "
+            "Fleet-live / isolated-lanes talk is CLAIMED. Do not remint. Ship "
+            "the exact id or a unique leftover."
         )
         % len(ids),
     }
@@ -131,6 +143,25 @@ def measure_from_parts(catalog_text, listing):
     }
 
 
+def _finder_failure(catalog_path, root, space, note, calibration=None):
+    calibration = calibration or {}
+    return {
+        "measured": False,
+        "catalog": catalog_path,
+        "posts_dir": root,
+        "finder_state": FINDER_UNVERIFIED,
+        "finder_note": note,
+        "search_space": space,
+        "calibrated": False,
+        "calibration_id": CALIBRATION_ID,
+        "calibration_state": calibration.get("state") or FINDER_UNVERIFIED,
+        "calibration_missed": list(calibration.get("missed") or []),
+        "observed": None,
+        "miss_behavior": FINDER_UNVERIFIED,
+        "titan": "NOT_WRITTEN",
+    }
+
+
 def measure_paths(catalog_path, posts_dir=None):
     path = os.path.abspath(catalog_path)
     if not os.path.isfile(path):
@@ -141,17 +172,63 @@ def measure_paths(catalog_path, posts_dir=None):
         }
     with open(path, "r", encoding="utf-8") as handle:
         catalog_text = handle.read()
-    listing = []
     root = os.path.abspath(posts_dir) if posts_dir else ""
-    if root and os.path.isdir(root):
-        try:
-            listing = os.listdir(root)
-        except OSError:
-            listing = []
+    space = search_space(
+        query="catalog fleet ids plus known-present calibration id",
+        path=root,
+        pattern="p/{id}.md directory entries",
+    )
+    if not root:
+        return _finder_failure(
+            path,
+            root,
+            space,
+            "posts directory not supplied; absence is FINDER UNVERIFIED, never 0",
+        )
+    if not os.path.isdir(root):
+        return _finder_failure(
+            path,
+            root,
+            space,
+            "posts directory is unavailable; absence is FINDER UNVERIFIED, never 0",
+        )
+    try:
+        listing = os.listdir(root)
+    except OSError as error:
+        return _finder_failure(
+            path,
+            root,
+            space,
+            "posts listing failed: %s: %s; absence is FINDER UNVERIFIED, never 0"
+            % (type(error).__name__, error),
+        )
+    calibration_hits = present_ids([CALIBRATION_ID], listing)
+    calibration = calibrate(calibration_hits, [CALIBRATION_ID])
+    if not calibration.get("calibrated"):
+        return _finder_failure(
+            path,
+            root,
+            space,
+            calibration.get("note") or "known-present calibration failed",
+            calibration,
+        )
     row = measure_from_parts(catalog_text, listing)
     row["catalog"] = path
-    if root:
-        row["posts_dir"] = root
+    row["posts_dir"] = root
+    row["finder_state"] = "CALIBRATED"
+    row["search_space"] = space
+    row["calibrated"] = True
+    row["calibration_id"] = CALIBRATION_ID
+    row["calibration_state"] = calibration.get("state") or "CALIBRATED"
+    row["calibration_missed"] = []
+    row["observed"] = {
+        "listing_entries": len(listing),
+        "present_count": row["present_count"],
+        "missing_count": row["missing_count"],
+    }
+    row["miss_behavior"] = (
+        "CALIBRATED_ABSENCE" if row["missing_count"] else "FOUND"
+    )
     return row
 
 
