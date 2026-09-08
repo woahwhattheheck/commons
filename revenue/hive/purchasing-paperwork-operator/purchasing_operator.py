@@ -74,16 +74,37 @@ def _source(path: Path) -> dict[str, str]:
 def _read_csv(path: Path, required: set[str]) -> list[dict[str, str]]:
     try:
         with path.open(newline="", encoding="utf-8-sig") as handle:
-            reader = csv.DictReader(handle)
-            missing = required - set(reader.fieldnames or [])
+            reader = csv.reader(handle, strict=True)
+            fields = next(reader, [])
+            if any(not field.strip() for field in fields):
+                raise PurchasingError(f"{path}: blank column names are not allowed")
+            if len(fields) != len(set(fields)):
+                raise PurchasingError(f"{path}: duplicate columns are not allowed")
+            if "_line" in fields:
+                raise PurchasingError(f"{path}: reserved column _line is not allowed")
+            missing = required - set(fields)
             if missing:
                 raise PurchasingError(f"{path}: missing columns {sorted(missing)}")
             rows = []
-            for line, row in enumerate(reader, start=2):
-                normalized = {key: (value or "").strip() for key, value in row.items()}
+            while True:
+                # Capture the start, not the end, of a quoted multiline record.
+                line = reader.line_num + 1
+                try:
+                    values = next(reader)
+                except StopIteration:
+                    break
+                if not values:
+                    continue
+                if len(values) != len(fields):
+                    raise PurchasingError(
+                        f"{path}:{line}: expected {len(fields)} columns, got {len(values)}"
+                    )
+                normalized = {key: value.strip() for key, value in zip(fields, values)}
                 normalized["_line"] = str(line)
                 rows.append(normalized)
             return rows
+    except (csv.Error, UnicodeError) as exc:
+        raise PurchasingError(f"{path}: invalid CSV: {exc}") from exc
     except OSError as exc:
         raise PurchasingError(f"cannot read {path}: {exc}") from exc
 
