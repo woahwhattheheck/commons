@@ -67,13 +67,18 @@ def main() -> int:
             if len(data) != record["bytes"] or digest(data) != record["sha256"]:
                 raise SystemExit(f"archive member mismatch: {relative}")
             target = destination / prefix / relative
-            if target.exists():
+            if target.exists() or target.is_symlink():
                 raise SystemExit(f"refusing to replace existing path: {target}")
         for member, relative in files:
             data = package.extractfile(member).read()
             target = destination / prefix / relative
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(data)
+            try:
+                # Preflight is advisory: another extractor may create this path.
+                with target.open("xb") as output:
+                    output.write(data)
+            except FileExistsError as exc:
+                raise SystemExit(f"refusing to replace existing path: {target}") from exc
             target.chmod(member.mode & 0o777)
 
     print(json.dumps({
