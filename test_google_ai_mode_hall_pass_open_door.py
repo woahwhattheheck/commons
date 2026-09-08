@@ -16,7 +16,7 @@ SKILL = ROOT / ".agents" / "skills" / "google-ai-mode-hall-pass" / "SKILL.md"
 
 KEEP = {
     "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "1fce7bde",
+    "test_open_door_guard.py": "b9a4acde",
     ".github/workflows/open-door-guard.yml": "e7321d35",
 }
 

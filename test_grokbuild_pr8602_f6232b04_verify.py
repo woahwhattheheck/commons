@@ -18,7 +18,7 @@ BODY_SHA256 = "b287847f46da506553cd65ddbdceb1f031d6dac714907471b7a5508736c1b84b"
 
 KEEP = {
     "p/grokbuild-local-compute-guard-33718131429-billing-lock-20260903-01.md": "ceb14fe0",
-    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "0c192d46",
+    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "d91f17d9",
     "open_door_guard.py": "7b9a2318",
 }
 

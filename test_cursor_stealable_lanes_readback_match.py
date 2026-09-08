@@ -19,18 +19,18 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "test_cursor_stealable_lanes_readback.py": "85007fd8",
+    "test_cursor_stealable_lanes_readback.py": "dec52c0f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_stealable_lanes.py": "fa0248e2",
+    "test_stealable_lanes.py": "9015f14d",
     "ground/STEALABLE_ROLES.json": "ab601590",
     "ground/STEALABLE_ROLES.md": "07585b26",
-    "ground/STEALABLE_LANES.json": "439972db",
+    "ground/STEALABLE_LANES.json": "90631a18",
     "ground/STEALABLE_LANES.md": "11480353",
     "stealable-lanes.html": "0aa76ae4",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
-    "lanes.json": "ad2add78",
+    "lanes.json": "b06c5923",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
@@ -100,6 +100,19 @@ class TestCursorStealableLanesReadbackMatch(unittest.TestCase):
         )
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         self.assertIn("Ran 4 tests", leftover.stderr)
+        # test_stealable_lanes.py regenerates the door/cards. Restore committed
+        # leftover bytes before the unique-pack KEEP pin runs.
+        subprocess.check_call(
+            [
+                "git",
+                "checkout",
+                "--",
+                "stealable-lanes.html",
+                "ground/STEALABLE_LANES.md",
+                "ground/STEALABLE_ROLES.md",
+            ],
+            cwd=ROOT,
+        )
         unique = subprocess.run(
             ["python3", "-m", "unittest", "test_cursor_stealable_lanes_readback.py"],
             cwd=ROOT,

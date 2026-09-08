@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/what_a_pack_is.py": "3de395af",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
-    "test_what_a_pack_is.py": "98ecc0fc",
+    "test_what_a_pack_is.py": "be2d124b",
     "what-a-pack-is.html": "ab0b8767",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",

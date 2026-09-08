@@ -19,7 +19,7 @@ KEEP = {
     ".github/workflows/repo-pulse.yml": "5c973635",
     "repo_pulse.py": "298716e9",
     "test_repo_pulse.py": "2fd56220",
-    "slack_ingest.py": "0040a726",
+    "slack_ingest.py": "a35169fe",
     "test_slack_ingest.py": "5c46c3eb",
     "exact_body_redact.py": "6b9fff81",
     "host/sprint_integration.py": "1ba2002c",

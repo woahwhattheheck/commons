@@ -23,7 +23,7 @@ KEEP = {
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "host/commons_slack_full_body.py": "3bf97dc1",
     "host/slack_mirror.py": "c94f6fa5",
-    "slack_ingest.py": "0040a726",
+    "slack_ingest.py": "a35169fe",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",

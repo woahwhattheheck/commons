@@ -53,9 +53,9 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
     def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
         self.assertNotEqual(KEEP.get("test_landed_work_feed.py"), "1c35b970")
         self.assertNotEqual(KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08")
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("275077fe"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("0152843a"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("09933895")
+            git_blob("test_landed_work_feed_readback.py").startswith("0f09b0df")
         )
         self.assertTrue(
             git_blob("p/grokbuild-pr8365-terminal-20260902-01.md").startswith("212208a2")

@@ -25,7 +25,7 @@ KEEP = {
     "test_wakeup_reliability.py": "aca39ab4",
     "open_door_guard.py": "7b9a2318",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "ce555094",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "47e90c71",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",

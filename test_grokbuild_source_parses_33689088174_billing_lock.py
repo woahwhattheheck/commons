@@ -26,15 +26,15 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "5c7fdb5e",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "c406cad2",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "6914821a",
+    "test_cursor_merge_on_pr_readback.py": "737cbe74",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "f20b41f7",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
     "open_door_guard.py": "7b9a2318",
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "2ed70f1a",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "fbd781aa",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "134e29f5",
+    "test_grokbuild_pr8414_verify.py": "50faa761",
 }
 
 

@@ -27,13 +27,13 @@ KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "e2b3cd40",
+    "llms_txt.py": "70daec62",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
-    "test_grokbuild_llms_txt_billing_lock.py": "403125ae",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "6914821a",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "2ed70f1a",
+    "test_grokbuild_llms_txt_billing_lock.py": "9f86a4ef",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "fbd781aa",
 }
 
 

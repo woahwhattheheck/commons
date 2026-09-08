@@ -43,7 +43,7 @@ KEEP = {
 # and its behavioral tests can evolve without rewriting that historical proof.
 HISTORICAL_TREE = "b4ea49b49a1d6dda16b611c811c174be43bc850d"
 HISTORICAL_GOOGLE_FILES = {
-    "test_cursor_google_ai_mode_hall_pass_readback.py": "7444256c",
+    "test_cursor_google_ai_mode_hall_pass_readback.py": "c1a35a43",
     ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
     "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
 }

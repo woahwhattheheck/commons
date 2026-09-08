@@ -13,7 +13,7 @@ LEFTOVER = ROOT / "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "1ef0d40a",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "0e0ede06",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -30,7 +30,7 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "ground/OWNER_NOW.md": "0a574d94",
-    "test_stealable_lanes.py": "fa0248e2",
+    "test_stealable_lanes.py": "9015f14d",
     "test_stealable_lanes_occupancy.py": "0b1eee2c",
     "test_landed_work_feed.py": "0152843a",
     "test_landed_work_feed_readback.py": "0f09b0df",
