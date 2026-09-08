@@ -51,20 +51,26 @@ TimedFactory = _timing_module.TimedFactory
 
 
 def load_callable(path, extra_sys_path=()):
-    """Fresh module per match, so a module-level singleton cannot leak between
-    games. The bank's own entrypoints rely on exactly this."""
+    """Bind entrypoint bytes once; construct a fresh module and actor per match.
+
+    The returned SHA describes the bytes compiled by every factory attempt, not
+    a later filesystem read or cached bytecode. Imported dependencies retain
+    normal Python import behavior and need a separately pinned source closure.
+    """
     rp = os.path.realpath(path)
     for p in extra_sys_path:
         if p and p not in sys.path:
             sys.path.insert(0, p)
-    sha = hashlib.sha256(open(rp, "rb").read()).hexdigest()
+    with open(rp, "rb") as handle:
+        source = handle.read()
+    sha = hashlib.sha256(source).hexdigest()
 
     def factory():
         spec = importlib.util.spec_from_file_location(
             f"arm_{os.path.basename(rp).replace('.', '_')}_{time.time_ns()}", rp)
         mod = importlib.util.module_from_spec(spec)
         sys.modules[spec.name] = mod
-        spec.loader.exec_module(mod)
+        exec(compile(source, rp, "exec", dont_inherit=True), mod.__dict__)
         if hasattr(mod, "make_agent"):
             fn = mod.make_agent()
         else:
