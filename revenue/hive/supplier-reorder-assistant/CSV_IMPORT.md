@@ -21,16 +21,19 @@ are not overwritten when parsing an input fails.
 
 UTF-8 BOMs, CRLF, quoted commas, escaped quotes, embedded newlines, explicit empty
 values, blank physical lines, header-only datasets and additional **named**
-metadata columns remain supported. Existing value trimming and `_line` record
-metadata are preserved. No supplier-selection, quantity, pricing, plan or receipt
-calculation has changed.
+metadata columns remain supported. Existing value trimming is preserved.
+`_line` identifies each record's **first physical source line**, including when
+blank lines precede it or quoted fields span multiple lines. Width and quoted-record
+errors report that same source position; duplicate SKU/rule/catalog diagnostics
+inherit it. Header and UTF-8 decoding errors remain file-level messages.
+No supplier-selection, quantity, pricing, plan or receipt calculation has changed.
 
 ## Focused regressions
 
 Run in the supplied cloud execution environment, from this directory:
 
 ```sh
-python -B -m unittest -v test_reorder_csv_robustness
+python -B -m unittest -v test_reorder_csv_robustness test_reorder_csv_locations
 ```
 
 The suite exercises real files and actual CLI subprocesses, including a fictitious
