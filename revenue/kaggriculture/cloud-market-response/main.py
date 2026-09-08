@@ -9,7 +9,10 @@ _instance = None
 def agent(observation, configuration=None):
     global _instance
     configuration = configuration or {}
-    if _instance is None or int(observation.get('step', 0)) == 0:
+    if observation.get('step') is None:
+        step = int(observation['day']) * int(configuration.get('turnsPerDay', 24)) + int(observation['hour'])
+        observation = dict(observation, step=step)
+    if _instance is None or int(observation['step']) == 0:
         # The pinned official contract supplies this before invoking agent,
         # AFTER raw-source execution. Direct module imports supply __file__.
         raw_path = configuration.get('__raw_path__') or globals().get('__file__')

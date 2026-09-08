@@ -15,6 +15,15 @@ HERE = Path(__file__).resolve().parent
 SELL = HERE.parent / 'cloud-titan-composition' / 'vendor' / 'sell'
 FROZEN_SHA256 = '32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9'
 
+def _with_public_clock(observation, configuration=None):
+    """Retain an explicit step; otherwise derive it without mutating the caller."""
+    if observation.get('step') is not None:
+        return observation
+    config = {} if configuration is None else configuration
+    step = int(observation['day']) * int(config.get('turnsPerDay', 24)) + int(observation['hour'])
+    return dict(observation, step=step)
+
+
 def load(path, name):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
@@ -163,6 +172,7 @@ class ResponsePolicy:
 
     def act(self, observation, configuration=None):
         config = dict(configuration or {})
+        observation = _with_public_clock(observation, config)
         self.observe(observation, config)
         self.observation = observation
         self.calls += 1
@@ -186,6 +196,7 @@ _INSTANCE = None
 
 def agent(observation, configuration=None):
     global _INSTANCE
-    if _INSTANCE is None or int(observation.get('step', 0)) == 0:
+    observation = _with_public_clock(observation, configuration)
+    if _INSTANCE is None or int(observation['step']) == 0:
         _INSTANCE = ResponsePolicy()
     return _INSTANCE.act(observation, configuration)
