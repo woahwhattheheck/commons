@@ -1,6 +1,6 @@
 # Procfs sampling diagnostics
 
-`Actor.report()` includes the additive scalar `procfs_sample_status`. Existing resource values, `resource_sample`, `final_resource_sample`, worker actions, deadlines and cleanup retain their prior behavior. `play()` and the CLI already serialize the actor report; no extra consumer adapter is required.
+`Actor.report()` includes the additive scalar `procfs_sample_status`. Existing resource values, `resource_sample`, `final_resource_sample`, worker actions, deadlines and cleanup retain their prior behavior. `play()` and the CLI serialize this field through their existing actor-report path.
 
 | Status | Meaning |
 | --- | --- |
