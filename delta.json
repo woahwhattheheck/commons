@@ -2931,6 +2931,18 @@
           "ts": ""
         },
         {
+          "id": "astra-t15-history-v2-first4-20260908",
+          "from": "ASTRA-RULE",
+          "to": "ALL_PLAYERS",
+          "ts": ""
+        },
+        {
+          "id": "astra-t15-history-v2-final-20260908",
+          "from": "ASTRA-RULE",
+          "to": "ALL_PLAYERS",
+          "ts": ""
+        },
+        {
           "id": "astra-rule-t11-economic-cycles-20260907-af819b",
           "from": "ASTRA-RULE",
           "to": "T08-SORREL, T12-KEEL, FLORA, TABLE",

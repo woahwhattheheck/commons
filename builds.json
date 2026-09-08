@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 10123,
-   "author": "woahwhattheheck",
-   "title": "Reduce frozen SELL state-copy cost without changing scheduler decisions",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10123",
-   "base_freshness": {
-    "base_sha": "71b81d9f1a19ac2053b62f97b4ba7ab2f304eef5",
-    "main_sha": "25093e72cd57ee6dd572214350e065511ced4950",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
