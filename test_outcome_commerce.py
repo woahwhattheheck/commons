@@ -857,8 +857,8 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertEqual(funnel["measurement"]["dom_action"], expected_action)
             self.assertEqual(funnel["measurement"]["first_evidence_state"], expected_first)
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 12)
-        self.assertEqual(truth["delivered_transports"], 17)
+        self.assertEqual(truth["distinct_targets"], 13)
+        self.assertEqual(truth["delivered_transports"], 18)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
@@ -1814,6 +1814,7 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         )
         self.assertIn(latest_receipt, truth["source"])
         self.assertIn("20260828-langfuse-1a0496451e052b9d.json", truth["source"])
+        self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
         contacts = set()
         for row in receipts:
             dedupe = row.get("dedupe") or {}
@@ -1823,8 +1824,8 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
                 or row["target_id"]
             )
         self.assertEqual(len(contacts), truth["distinct_targets"])
-        self.assertEqual(truth["delivered_transports"], 17)
-        self.assertEqual(truth["distinct_targets"], 12)
+        self.assertEqual(truth["delivered_transports"], 18)
+        self.assertEqual(truth["distinct_targets"], 13)
         for target_id, provider_reference in (
             ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
             ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
@@ -1848,7 +1849,7 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         self.assertIsNone(upvest[0]["response_reference"])
         self.assertEqual(
             {row["response_state"] for row in receipts},
-            {"UNKNOWN"},
+            {"UNKNOWN", "NO_REPLY_OBSERVED"},
         )
         self.assertTrue(all(row["facts"]["legal_acceptance"] == "NOT_LANDED" for row in receipts))
         self.assertTrue(all(row["facts"]["cash_claimed"] is False for row in receipts))
@@ -1861,16 +1862,17 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         self.assertEqual(current["facts"]["delivery"], "NOT_LANDED")
         self.assertIs(current["cash_claimed"], False)
 
-    def test_langfuse_hard_dnr_zero_cash_advances_funnel_truth(self) -> None:
-        """#4969 receipt must advance catalog funnel_truth; do not leave 16/11 pins."""
+    def test_latest_hard_dnr_receipts_advance_funnel_truth(self) -> None:
+        """Canonical receipts advance truth without claiming cash or acceptance."""
         truth = self.catalog["funnel_truth"]
         receipts = sorted(
             (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
         )
-        self.assertEqual(len(receipts), 17)
-        self.assertEqual(truth["delivered_transports"], 17)
-        self.assertEqual(truth["distinct_targets"], 12)
+        self.assertEqual(len(receipts), 18)
+        self.assertEqual(truth["delivered_transports"], 18)
+        self.assertEqual(truth["distinct_targets"], 13)
         self.assertIn("20260828-langfuse-1a0496451e052b9d.json", truth["source"])
+        self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
         self.assertEqual(truth["collected_cash_usd"], "0.00")
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
@@ -1889,6 +1891,33 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         self.assertTrue(row["dedupe"]["do_not_resend"])
         self.assertEqual(row["dedupe"]["distinct_contact_key"], "contact@langfuse.com")
         self.assertEqual(row["response_state"], "UNKNOWN")
+        self.assertIsNone(row["response_reference"])
+        self.assertIs(row["facts"]["cash_claimed"], False)
+        self.assertEqual(row["facts"]["collected_cash_usd"], 0)
+        self.assertEqual(row["facts"]["legal_acceptance"], "NOT_LANDED")
+        self.assertEqual(row["facts"]["buyer_authorization"], "UNKNOWN")
+
+
+    def test_composio_hard_dnr_zero_cash_advances_funnel_truth(self) -> None:
+        truth = self.catalog["funnel_truth"]
+        self.assertEqual(truth["as_of"], "2026-08-30T17:14:25Z")
+        self.assertEqual(truth["delivered_transports"], 18)
+        self.assertEqual(truth["distinct_targets"], 13)
+        self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
+        row = read_json(
+            ROOT
+            / "revenue"
+            / "payment_ready"
+            / "outreach_receipts"
+            / "20260830-composio-1a053aa4f8a0014a.json"
+        )
+        self.assertEqual(row["target_id"], "composio")
+        self.assertEqual(row["provider"], "GMAIL")
+        self.assertEqual(row["provider_state"], "SENT")
+        self.assertEqual(row["provider_reference"], "gmail:message:1a053aa4f8a0014a")
+        self.assertTrue(row["dedupe"]["do_not_resend"])
+        self.assertEqual(row["dedupe"]["distinct_contact_key"], "support@composio.dev")
+        self.assertEqual(row["response_state"], "NO_REPLY_OBSERVED")
         self.assertIsNone(row["response_reference"])
         self.assertIs(row["facts"]["cash_claimed"], False)
         self.assertEqual(row["facts"]["collected_cash_usd"], 0)

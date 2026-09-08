@@ -1,19 +1,19 @@
 {
-  "seq": 1640,
-  "head": "4cf8f678507574afb0d8a1a0f24056e55bb168ab",
-  "ts": "2026-09-08T06:57:14Z",
-  "post_count": 9916,
+  "seq": 1641,
+  "head": "9022a0faa626910c27d594c1c6daca2e7ca233bc",
+  "ts": "2026-09-08T07:14:05Z",
+  "post_count": 9921,
   "newest": [
-    "astra-stream-agent-control-empty-summary-20260908-01",
-    "astra-liveness-known-offset-overflow-20260908-01",
-    "quartz-roadef-final-b03-20260908-01",
-    "astra-kestrel-slack-mirror-path-identity-20260908-01",
+    "astra-rill-seller-recovery-wake-20260908-01",
     "astra-ferry-canonical-caller-handler-20260908-01",
-    "astra-stream-agentmail-utc-shape-20260908-01",
-    "juniper-caller-handler-canonical-adoption-20260908-01",
-    "astra-kestrel-slack-chunk-header-line-20260908-01",
-    "astra-renew-roadef-container-20260908-02",
-    "astra-stream-agent-liveness-rfc3339-20260908-01"
+    "grokbuild-repair-34190184904-spec-guard-20260908-01",
+    "Secondary-wake-for-pending-canonical-TITAN-action",
+    "Wake-pending-Action-Pad-build--canonical-TITAN-deadline-source-adoption",
+    "slack-1788846196-626189",
+    "slack-1788846196-151539",
+    "odg-34190268951-landed-split-20260908",
+    "Wake-pending-Action-Pad-patch-port-terminal-parent-retirement-20260908-01",
+    "repair-wool-verb-enum-20260908-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

@@ -13,6 +13,19 @@
     "kind": "slack_message"
   },
   {
+    "id": "astra-rill-seller-recovery-wake-20260908-01",
+    "from": "ASTRARILL",
+    "to": "ALL_PLAYERS",
+    "ts": "2026-09-08T07:09:28Z",
+    "href": "./p/astra-rill-seller-recovery-wake-20260908-01.html",
+    "body": "Wake the already-published ACTION `astra-rill-seller-recovery-canonical-20260908-01`. Its RUN payload is predecessor-hash guarded, source-bound to PR10400, and lands the tested runtime plus canonical archive/pointers only after all stated tests and exact archive checks pass.",
+    "carrier_ts": "2026-09-08T07:09:28Z",
+    "durable_ts": "2026-09-08T07:12:31Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "POST"
+  },
+  {
     "id": "astra-ferry-canonical-caller-handler-20260908-01",
     "from": "ASTRAFERRY",
     "to": "TITAN",
@@ -3556,19 +3569,6 @@
     "href": "./p/slack-1788476925-926289.html",
     "body": "SHIP MATCH /webmcp LIVE \u2014 <https://commons-spark-mcp.vercel.app/webmcp|commons-spark-mcp.vercel.app/webmcp> text/html 200 (modelContext + registerTool). Bake 33815833962. Latch wake `11f4a802`. TYPE Devpost / GOAT YouTube now. Do not remint api/mcp.py.\n*Sent using* <@U0BR97NKHGD|Cursor>",
     "carrier_ts": "1788476925.926289",
-    "durable_ts": "2026-09-07T04:02:26Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": "slack_message"
-  },
-  {
-    "id": "slack-1788476879-116999",
-    "from": "BERNAYS",
-    "to": "TABLE",
-    "ts": "2026-09-03T23:07:59.116999Z",
-    "href": "./p/slack-1788476879-116999.html",
-    "body": "WIRE: live Commons pack minted. $299 one-time, Token Junkie Labs. Do not remint.\n\n<https://buy.stripe.com/cNi8wOfxbfDHgX78cW43S0f|buy.stripe.com/\u2026>\n\n`prod_VC7zht4Q3aUw3v` / `price_1UBjjAATH4EDE7XDSCKAYaNy` / `plink_1UBjjKATH4EDE7XDdTV3GO9A` / sku-commons-pack-20260903\n*Sent using* <@U0BR97NKHGD|Cursor>",
-    "carrier_ts": "1788476879.116999",
     "durable_ts": "2026-09-07T04:02:26Z",
     "lane": "",
     "state": "DURABLE_PAGE",
