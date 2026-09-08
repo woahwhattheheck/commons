@@ -157,13 +157,14 @@ def _load_relationship_evidence(
             raise idx.IndexError_(
                 f"relationship evidence {event_id} missing legal subject_id"
             )
-        if event_type not in RELATIONSHIP_EVIDENCE_TYPES:
+        if not isinstance(event_type, str) or event_type not in RELATIONSHIP_EVIDENCE_TYPES:
             raise idx.IndexError_(
                 f"relationship evidence {event_id} has illegal type {event_type!r}"
             )
         if record.get("cash_usd") != 0:
             raise idx.IndexError_(f"relationship evidence {event_id} claimed cash")
-        if record.get("transport") not in {None, "NONE"}:
+        transport = record.get("transport")
+        if transport is not None and (not isinstance(transport, str) or transport != "NONE"):
             raise idx.IndexError_(f"relationship evidence {event_id} claimed transport")
         idx.parse_time(str(record.get("ts")))
         source_paths = record.get("source_paths")
@@ -178,7 +179,7 @@ def _load_relationship_evidence(
         if event_type in {"MATERIAL_REPLY", "SENT_AWAITING_REPLY"}:
             role = record.get("role")
             organization = record.get("organization")
-            if role not in idx.LIVE_ROLES:
+            if not isinstance(role, str) or role not in idx.LIVE_ROLES:
                 raise idx.IndexError_(
                     f"relationship evidence {event_id} cannot cite role {role!r}"
                 )
