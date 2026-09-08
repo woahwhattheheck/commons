@@ -126,7 +126,7 @@ def diagnostic_card_tool_schemas() -> list[dict]:
         ),
         _schema(
             "advance_obligation_card",
-            "Advance one obligation on a transferable role (status / next_action / evidence_pointer). Pass role object + obligation_id + at least one field. Import-only RoleStore.advance_obligation wrap; returns updated role. Does not remint roles.py.",
+            "Advance one obligation on a transferable role (status / next_action / evidence_pointer). Pass role object + obligation_id + at least one field. Import-only RoleStore.advance_obligation wrap; returns updated role. Does not remint roles.py or grant credentials.",
             {"role": "object", "obligation_id": "string"},
             {
                 "status": "string",
