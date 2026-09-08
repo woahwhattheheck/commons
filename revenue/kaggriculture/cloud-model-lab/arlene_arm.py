@@ -31,12 +31,15 @@ import route_cards
 
 
 def _load(path, name="agent"):
+    """Execute and identify the same source bytes for this opponent load."""
     rp = os.path.realpath(path)
+    with open(rp, "rb") as handle:
+        source = handle.read()
+    sha = hashlib.sha256(source).hexdigest()
     sp = importlib.util.spec_from_file_location(
         os.path.splitext(os.path.basename(rp))[0] + "_arm", rp)
     mod = importlib.util.module_from_spec(sp)
-    sp.loader.exec_module(mod)
-    sha = hashlib.sha256(open(rp, "rb").read()).hexdigest()
+    exec(compile(source, rp, "exec", dont_inherit=True), mod.__dict__)
     return mod, {"path": rp, "sha256": sha, "label": f"{os.path.basename(rp)}@{sha[:12]}"}
 
 
