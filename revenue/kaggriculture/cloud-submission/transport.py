@@ -18,14 +18,28 @@ def plain(value):
     return value
 
 
-def matching(rows, operation_id):
-    return [plain(row) for row in (rows or []) if operation_id in (getattr(row,'description',None) or (row.get('description','') if isinstance(row,dict) else ''))]
+def matching(rows, operation_id, artifact_sha256=None):
+    """Return readback rows for this operation and, when supplied, artifact.
+
+    Operation IDs coordinate retries of one immutable payload.  Reusing an old
+    operation ID for a different archive must not report the old row as proof
+    that the new bytes are already present.
+    """
+    matches=[]
+    for row in rows or []:
+        description=getattr(row,'description',None) or (row.get('description','') if isinstance(row,dict) else '')
+        if operation_id not in description:
+            continue
+        if artifact_sha256 is not None and f'sha256:{artifact_sha256}' not in description:
+            continue
+        matches.append(plain(row))
+    return matches
 
 
-def snapshot(api, operation_id=OPERATION_ID):
+def snapshot(api, operation_id=OPERATION_ID, artifact_sha256=None):
     submissions=api.competition_submissions(COMPETITION,page_size=100)
     limits=api.competition_get_submission_limits(COMPETITION)
-    return {'limits':plain(limits),'matching_submissions':matching(submissions,operation_id),
+    return {'limits':plain(limits),'matching_submissions':matching(submissions,operation_id,artifact_sha256),
             'recent_submissions':plain(submissions)}
 
 
@@ -38,7 +52,7 @@ def execute(api, artifact, expected_sha256, state_dir, operation_id=OPERATION_ID
     journal=state_dir/(operation_id+'.json')
     # Read provider BEFORE local retry decision: a previous create may have
     # succeeded even if the requesting process lost its response.
-    before=snapshot(api,operation_id)
+    before=snapshot(api,operation_id,actual)
     if before['matching_submissions']:
         return {'status':'ALREADY_PRESENT','artifact_sha256':actual,'readback':before}
     if journal.exists():
@@ -61,7 +75,7 @@ def execute(api, artifact, expected_sha256, state_dir, operation_id=OPERATION_ID
         record['status']='OUTCOME_UNKNOWN';record['exception_type']=type(exc).__name__
     journal.write_text(json.dumps(record,indent=2,default=str)+'\n')
     try:
-        record['after']=snapshot(api,operation_id)
+        record['after']=snapshot(api,operation_id,actual)
         record['status']='SUBMISSION_FOUND' if record['after']['matching_submissions'] else 'AWAITING_PROVIDER_READBACK'
     except Exception as exc:
         record['readback_exception_type']=type(exc).__name__
@@ -73,8 +87,10 @@ if __name__=='__main__':
     parser.add_argument('--artifact',type=Path,required=True)
     parser.add_argument('--sha256',required=True,help='Exact archive hash designated by root')
     parser.add_argument('--state-dir',type=Path,required=True)
+    parser.add_argument('--operation-id',required=True,
+                        help='Fresh stable ID for this one immutable authorized payload')
     args=parser.parse_args()
     from kaggle.api.kaggle_api_extended import KaggleApi
     api=KaggleApi();api.authenticate()
-    result=execute(api,args.artifact,args.sha256,args.state_dir)
+    result=execute(api,args.artifact,args.sha256,args.state_dir,operation_id=args.operation_id)
     print(json.dumps(result,default=str))
