@@ -1,0 +1,45 @@
+name: coord-roadef-a-plateau-inputs
+
+on:
+  push:
+    branches:
+      - work/coord-a-plateau-inputs-20260908
+
+permissions:
+  contents: read
+
+jobs:
+  transport:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact official A07 and A13 inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/official"
+          mkdir "$root"
+          git -C "$root" init -q
+          git -C "$root" remote add origin https://gitlab.com/Orange-OpenSource/network-optimization-tools/challenge-roadef-2026.git
+          git -C "$root" fetch --depth=1 origin d84d319a7fdb8de3b1866830d2eaa2937871e5ae
+          git -C "$root" checkout -q FETCH_HEAD -- \
+            setA/setA-07-net.json setA/setA-07-tm.json setA/setA-07-scenario.json \
+            setA/setA-13-net.json setA/setA-13-tm.json setA/setA-13-scenario.json
+          cd "$root/setA"
+          echo '2a7363c2f291cc8c9b54f720b59c6c8b058fc5e6d5ec753ac3622799880cb834  setA-07-net.json' | sha256sum -c -
+          echo '84c080e41d325c6f803be48a1f86017892b01e5db1737642bf530f9841382ef4  setA-07-tm.json' | sha256sum -c -
+          echo '958c029c441072d9efab455e692c38c98e26f3ef89c9068af5c5f9dc9268da6d  setA-07-scenario.json' | sha256sum -c -
+          echo 'eafa68f7b432ff4047abc3000526eb39cc962ce9dbaad834eab86b6192bd88ff  setA-13-net.json' | sha256sum -c -
+          echo '11f875409ba617982c04f25df0429256315e831ea0efe2646c603289c0a8a91a  setA-13-tm.json' | sha256sum -c -
+          echo 'a432830a947728b86328b9431715c661922bd851d5bc4187acf9173d99a30cb8  setA-13-scenario.json' | sha256sum -c -
+          mkdir "$RUNNER_TEMP/export"
+          cp setA-07-*.json setA-13-*.json "$RUNNER_TEMP/export/"
+          sha256sum setA-07-*.json setA-13-*.json > "$RUNNER_TEMP/export/SHA256SUMS"
+          printf '%s\n' 'd84d319a7fdb8de3b1866830d2eaa2937871e5ae' > "$RUNNER_TEMP/export/OFFICIAL-COMMIT"
+      - name: Upload exact input subset
+        uses: actions/upload-artifact@v4
+        with:
+          name: roadef-a-plateau-inputs
+          path: ${{ runner.temp }}/export
+          if-no-files-found: error
+          retention-days: 30
