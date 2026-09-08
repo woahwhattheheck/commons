@@ -6,11 +6,12 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: rill-seller-recovery-canonical
+  group: rill-seller-recovery-canonical-arm
   cancel-in-progress: false
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
