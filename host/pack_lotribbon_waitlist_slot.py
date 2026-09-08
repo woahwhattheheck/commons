@@ -55,8 +55,10 @@ DO_NOT_OVERWRITE = (
 )
 
 
-def git_blob_prefix(rel: str, n: int = 8) -> str:
-    path = ROOT / rel
+def git_blob_prefix(rel: str, n: int = 8, *, root: Path | None = None) -> str:
+    """Hash within the selected checkout, defaulting to the module checkout."""
+    base = ROOT if root is None else root
+    path = base / rel
     if not path.is_file():
         return ""
     data = path.read_bytes()
@@ -127,13 +129,13 @@ def classify_path(path: Path) -> dict[str, Any]:
 
 
 def classify_tree(root: Path | None = None) -> dict[str, Any]:
-    base = root or ROOT
+    base = ROOT if root is None else root
     sheet = classify_path(base / "packs" / "lotribbon-greetings-20260902-01" / "waitlist-slot.md")
-    template_blob = git_blob_prefix("packs/_template/waitlist-slot.md")
-    waitlist_blob = git_blob_prefix("packs/waitlist.html")
-    door_blob = git_blob_prefix("packs/lotribbon-greetings-20260902-01/index.html")
-    harborline_present = HARBORLINE.is_file()
-    sidewalk_present = SIDEWALK.is_file()
+    template_blob = git_blob_prefix("packs/_template/waitlist-slot.md", root=base)
+    waitlist_blob = git_blob_prefix("packs/waitlist.html", root=base)
+    door_blob = git_blob_prefix("packs/lotribbon-greetings-20260902-01/index.html", root=base)
+    harborline_present = (base / "packs" / "desk-website-service-20260902-01" / "waitlist-slot.md").is_file()
+    sidewalk_present = (base / "packs" / "sidewalk-signal-web-desk-20260902-01" / "waitlist-slot.md").is_file()
     ok = (
         sheet.get("verdict") == "LOTRIBBON_WAITLIST_SLOT_INSTANCE_OK"
         and template_blob == TEMPLATE_BLOB
