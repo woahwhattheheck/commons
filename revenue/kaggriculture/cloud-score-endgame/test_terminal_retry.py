@@ -33,11 +33,13 @@ def compile_boundary(path):
         raise ValueError('Expected exactly one production transform_terminal')
     node = deepcopy(matches[0])
     ast.fix_missing_locations(node)
-    env = {'deepcopy': deepcopy, 'json': json,
+    env = {'deepcopy': deepcopy, 'json': json, 'hashlib': hashlib,
            # Fixtures start AFTER PORT compilation and finite-table readiness.
            'build_table': lambda doc: deepcopy(doc),
            'embedding': lambda table: () if table.get('terminal') else None}
-    exec(compile(ast.Module(body=[node], type_ignores=[]), str(path), 'exec'), env)
+    support = [deepcopy(n) for n in tree.body
+               if isinstance(n, ast.FunctionDef) and n.name == '_terminal_context']
+    exec(compile(ast.Module(body=support+[node], type_ignores=[]), str(path), 'exec'), env)
     body = path.read_bytes()
     return env['transform_terminal'], {
         'runtime_sha256': hashlib.sha256(body).hexdigest(),
@@ -47,6 +49,7 @@ def compile_boundary(path):
 
 def document(base=BASE, alternative=ALT, *, alt_id='alternative', player=0):
     return {'terminal': True, 'plan_ids': ['baseline', alt_id],
+            'scenario_ids': ['fixture-0', 'fixture-1'],
             'receipts': [[{'step': 718, 'own_action': deepcopy(action)} for _ in range(2)]
                          for action in (base, alternative)]}
 
