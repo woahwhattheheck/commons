@@ -355,6 +355,40 @@ def main():
     wool_violations = guard.scan_added(wool_lines)
     assert wool_violations == [], wool_violations
 
+    # Run 34190268951 / SHA 285dedd: TRACE-9042 completeness tests mutate a
+    # retained cell's recorded player-view field and then call a unittest
+    # helper. Collocating `seat` with `reject` on one line is still an
+    # admission phrase. Split assignment and helper remain data checks.
+    report_cell_path = (
+        "revenue/kaggriculture/cloud-execution-lab/trace-cache-checks/"
+        "test_report_completeness.py"
+    )
+    report_cell_blocked = diff(
+        report_cell_path,
+        [
+            "def test_wrong_view_seat(self):self.data['uncached']['cells'][0]['seat']=1;self.reject()"
+        ],
+    )
+    assert rules(report_cell_blocked) == {"admission-phrase"}, rules(report_cell_blocked)
+    report_cell_allowed = diff(
+        report_cell_path,
+        [
+            "def test_wrong_view_seat(self):",
+            "    self.data['uncached']['cells'][0]['seat']=1",
+            "    self.reject()",
+        ],
+    )
+    assert guard.scan_diff(report_cell_allowed) == [], guard.scan_diff(report_cell_allowed)
+    completeness_path = Path(report_cell_path)
+    completeness_lines = [
+        guard.AddedLine(completeness_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            completeness_path.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    completeness_violations = guard.scan_added(completeness_lines)
+    assert completeness_violations == [], completeness_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.

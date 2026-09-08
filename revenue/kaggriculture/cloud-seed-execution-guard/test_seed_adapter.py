@@ -132,12 +132,14 @@ if __name__ == '__main__':
     parser.add_argument('--mechanics', type=Path, default=HERE.parent/'cloud-execution-lab/mechanics.py')
     parser.add_argument('--producer', type=Path,
                         default=HERE.parent/'cloud-selected-seed-budget/selected_seed_budget.py')
+    parser.add_argument('--producer-blob', default=PRODUCER_BLOB,
+                        help='Expected complete producer Git blob; defaults to the original compatibility source')
     parser.add_argument('--guard-file', type=Path, default=HERE/'guard.py')
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     raw = args.producer.read_bytes()
     actual_blob = hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
-    if actual_blob != PRODUCER_BLOB:
+    if actual_blob != args.producer_blob:
         parser.error('producer bytes do not match the published compatibility pin')
     PRODUCER = support.load(args.producer, 'seed_guard_published_producer')
     GATE = support.load(args.guard_file, 'seed_guard_compatibility_gate').SeedExecutionGuard
@@ -152,7 +154,8 @@ if __name__ == '__main__':
     report = {'tests_run': result.testsRun, 'failures': len(result.failures),
               'errors': len(result.errors), 'skipped': len(result.skipped),
               'seconds': time.perf_counter()-start, 'producer_git_blob': actual_blob,
-              'producer_commit': '36ec529659f038725ce325a19c2079a2a5b898b7',
+              'producer_commit': ('36ec529659f038725ce325a19c2079a2a5b898b7'
+                                  if actual_blob == PRODUCER_BLOB else None),
               'engine_ref': evaluator.ENGINE_REF, 'engine_hashes': engine_hashes,
               'source_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
                                 for p in [args.guard_file, HERE/'test_seed_adapter.py',
