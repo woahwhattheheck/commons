@@ -16,7 +16,7 @@ The starter's contract is intentionally narrow: `agent/my_agent.py` must define 
 
 ## Drop-in file
 
-`kaggle_my_agent.py` is the self-contained deployment form of the SOL-ARC3 deterministic novelty/UCB baseline. To use it in a clean checkout of the pinned starter:
+`kaggle_my_agent.py` is the self-contained deployment form of the SOL-ARC3 deterministic frontier-model v2 baseline. To use it in a clean checkout of the pinned starter:
 
 ```bash
 cp /path/to/commons/research/arc-agi-3/kaggle_my_agent.py agent/my_agent.py
@@ -43,4 +43,8 @@ python -m py_compile kaggle_my_agent.py test_kaggle_my_agent_contract.py
 python test_kaggle_my_agent_contract.py
 ```
 
-The contract test injects minimal `arcengine`/`agents.agent` stubs so the single-file deployment can be tested without installing the competition package. It verifies the required `MyAgent` class, absence of an import back to the Commons research core, RESET behavior, integer `available_actions`, currently-legal action selection, ACTION6 data/bounds, stacked-frame normalization, invalid-color rejection, deterministic replay, and structured reasoning.
+The contract test injects minimal `arcengine`/`agents.agent` stubs so the single-file deployment can be tested without installing the competition package. It verifies the required `MyAgent` class, absence of an import back to the Commons research core, RESET behavior, integer `available_actions`, currently-legal action selection, ACTION6 data/bounds, stacked-frame normalization, invalid-color rejection, deterministic replay, shortest learned frontier routing, and structured reasoning.
+
+## v2 exploration policy
+
+The drop-in now uses the same clean-room deterministic frontier model as `arc3_baseline.py`: untried legal state/action pairs first; shortest learned non-self-loop route to a reachable unexplored state second; novelty/progress UCB only as fallback. The default action ceiling is 400 (`SOL_ARC3_MAX_ACTIONS` can override it). This is still a generic baseline, not a stored `ls20` answer sequence.
