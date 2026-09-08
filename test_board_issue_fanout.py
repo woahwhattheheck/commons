@@ -85,7 +85,7 @@ class BoardIssueFanoutTests(unittest.TestCase):
 
     def test_issue_runs_preserve_lossless_current_main_concurrency(self):
         self.assertIn("'carrier: slack-connector'", self.commons)
-        self.assertIn("&& 'slack-batch' || github.event_name", self.commons)
+        self.assertIn("&& 'slack-batch-v2' || github.event_name", self.commons)
         self.assertIn("&& 'queue' || github.event.issue.number || 'poll'", self.commons)
         self.assertIn("cancel-in-progress: false", self.commons)
 

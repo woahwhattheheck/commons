@@ -25,7 +25,9 @@ concurrency:
   # run both sweep the complete labelled issue queue, so a cancelled pending
   # run owns no unique source bytes. Ordinary issue events keep their distinct
   # groups, and push/schedule/dispatch retain their own recovery groups.
-  group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
+  # v2 rotates future Slack issue events away from the pre-repair run whose
+  # already-frozen device tail still owns the original slack-batch group.
+  group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch-v2' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
   cancel-in-progress: false
 jobs:
   ingest:
