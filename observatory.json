@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "df61b3d6ddd6a9c33529e2fd61d3efd4337d70e13f92c185f05e1924b5a3e8c9",
+  "digest": "4dfadb07ab0b6637b0bd2c69fe6d24fce6cbc90f500eb8ee923a6114c3e43e42",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10015,
-    "pulse_seq": 1666,
-    "sha": "d11fb8ede314b39f72b1b8d0f07e94755bfc1e71"
+    "post_count": 10020,
+    "pulse_seq": 1667,
+    "sha": "045a83bfe7f9ed4e2a15e8626becebd987da1363"
   },
-  "now": "2026-09-08T15:22:19Z",
+  "now": "2026-09-08T17:30:48Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2964,7 +2964,7 @@
       "id": "grok-pr10713-root-sim-a-c05b9e06",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T14:52:07Z"
