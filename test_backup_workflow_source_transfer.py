@@ -59,7 +59,7 @@ class BackupWorkflowSourceTests(unittest.TestCase):
         for module in modules:
             self.assertIn(module + ".py", paths)
         for path in (
-            "host/repo_backup.py", "open_door_guard.py", "AGENTS.md",
+            "host/repo_backup.py", "open_door_guard.py", "open_door_guard_core.py", "AGENTS.md",
             "ground/BACKUP_OPEN_REPO.md", "backups/README.md",
             ".github/workflows/open-repo-backup.yml",
             ".github/workflows/lattice-delta-backup-refs.yml",
@@ -93,7 +93,7 @@ class BackupWorkflowSourceTests(unittest.TestCase):
             for index, name in enumerate(paths):
                 path = source / name
                 path.parent.mkdir(parents=True, exist_ok=True)
-                expected[name] = f"committed {index}: caf\u00e9\n".encode("utf-8")
+                expected[name] = f"committed {index}: café\n".encode("utf-8")
                 path.write_bytes(expected[name])
             self.git(source, "add", "--", *paths)
             self.git(source, "commit", "-m", "source fixture")
