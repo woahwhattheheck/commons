@@ -36,13 +36,17 @@ def canonical(value) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
 
 
-def load_module(path: Path, name: str):
+def load_module(path: Path, name: str, *, loaded_sources=None):
+    """Execute one source read, never a timestamp-valid cached bytecode file."""
+    source = path.read_bytes()
+    if loaded_sources is not None:
+        loaded_sources[name] = {"path": str(path), "sha256": digest(source)}
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise ValueError("not an importable Python source")
     module = importlib.util.module_from_spec(spec)
     sys.modules[name] = module
-    spec.loader.exec_module(module)
+    exec(compile(source, str(path), "exec", dont_inherit=True), module.__dict__)
     return module
 
 
@@ -173,6 +177,7 @@ def worker(args):
               "process_id": os.getpid(),
               "entrypoint": str(args.entrypoint), "profiler_sha256": digest(Path(__file__).read_bytes())}
     observer = None
+    loaded_sources = {}
     source_root = getattr(args, "source_root", None) or args.entrypoint.parent
     report["runtime_source_root"] = str(source_root)
     report["factory_kwargs"] = getattr(args, "factory_kwargs", None) or {}
@@ -184,8 +189,8 @@ def worker(args):
         t0 = time.perf_counter()
         cfg, records, report["input"] = load_workload(args.replay, args.seat, args.max_decisions, getattr(args, "input_receipt", None))
         report["input_load_s"] = time.perf_counter() - t0
-        timing = load_module(args.timing_source, "finch_existing_timing")
-        report["timing_source_sha256"] = digest(args.timing_source.read_bytes())
+        timing = load_module(args.timing_source, "finch_existing_timing", loaded_sources=loaded_sources)
+        report["timing_source_sha256"] = loaded_sources["finch_existing_timing"]["sha256"]
         execution = (report["input"]["provenance"].get("source_receipt", {})
                      if getattr(args, "input_receipt", None) is not None else {})
         actor_seed = execution.get("candidate_actor_rng_seed")
@@ -197,7 +202,7 @@ def worker(args):
         sys.path.insert(0, str(args.entrypoint.parent))
         t0 = time.perf_counter()
         target_load_started = t0
-        module = load_module(args.entrypoint, "finch_profile_target")
+        module = load_module(args.entrypoint, "finch_profile_target", loaded_sources=loaded_sources)
         report["entry_import_s"] = time.perf_counter() - t0
         holder = {}
 
@@ -254,6 +259,13 @@ def worker(args):
     finally:
         report["timings"] = observer.timings() if observer else None
         report["runtime_sources"] = source_before
+        report["loaded_sources"] = loaded_sources
+        try:
+            report["loaded_sources_unchanged"] = bool(loaded_sources) and all(
+                digest(Path(row["path"]).read_bytes()) == row["sha256"]
+                for row in loaded_sources.values())
+        except OSError:
+            report["loaded_sources_unchanged"] = False
         report["sources_unchanged"] = source_before == source_rows(source_root) if source_before else None
         report["peak_rss_kib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         values = [r["wall_s"] for r in report["calls"]]
@@ -331,11 +343,14 @@ def supervise(args):
                 len(normal["calls"]) == len(profiled["calls"]) and
                 normal.get("runtime_sources") == profiled.get("runtime_sources") and
                 normal.get("input") == profiled.get("input") and
+                normal.get("loaded_sources") == profiled.get("loaded_sources") and
+                normal.get("loaded_sources_unchanged") is True and profiled.get("loaded_sources_unchanged") is True and
                 normal.get("sources_unchanged") is True and profiled.get("sources_unchanged") is True and
                 normal.get("process_exit_code") == profiled.get("process_exit_code") == 0)
     result = {"schema": "titan.saved-runtime-budget.v1", "ordinary": normal,
               "instrumented": profiled, "instrumentation_action_parity": matching,
               "limits": ["No engine transitions or game outcomes are computed.",
+                         "Only directly loaded entrypoint and timing source bytes are execution-bound; transitive imports are not frozen.",
                          "Saved replay workloads are off-policy unless separately established by their owner.",
                          "Instrumented wall timings include profiler overhead; ordinary timings are the cost result.",
                          "Hot-function data covers the first, last and selected slowest ordinary-pass steps only.",
