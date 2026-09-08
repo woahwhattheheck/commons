@@ -55,22 +55,26 @@ def launch(command, env, stdout, stderr):
 def stop_process(process, force=False):
     if process is None:
         return
-    # launch() gives each POSIX child its own process group. The leader may
-    # already have exited while descendants still need TERM/KILL, including
-    # during escalation and the final cleanup pass.
-    if os.name != "posix" and process.poll() is not None:
-        return
     try:
         if os.name == "posix":
+            # launch() owns a new session/group, not only its leader. A leader
+            # may exit before its descendants or during the TERM grace period.
+            if getattr(process, "_portfolio_group_closed", False):
+                return
             os.killpg(process.pid, signal.SIGKILL if force else signal.SIGTERM)
-        elif force:
-            process.kill()
-        else:
-            # Windows is a development harness. POSIX competition builds exercise
-            # the C++ SIGTERM checkpoint path; TerminateProcess cannot emulate it.
-            process.terminate()
+            if force:
+                process._portfolio_group_closed = True
+        elif process.poll() is None:
+            if force:
+                process.kill()
+            else:
+                # Windows is a development harness. TerminateProcess cannot
+                # emulate the C++ SIGTERM checkpoint or POSIX group cleanup.
+                process.terminate()
     except ProcessLookupError:
-        pass
+        # Do not later signal a new group that reuses this retired group ID.
+        if os.name == "posix":
+            process._portfolio_group_closed = True
 
 
 class Supervisor:
@@ -308,8 +312,10 @@ class Supervisor:
         if check["process"].poll() is None and elapsed < self.check_timeout:
             return
         timed_out = check["process"].poll() is None
+        # Retire the checker group before dropping its handle, including when
+        # its leader has returned but a descendant still holds the log files.
+        stop_process(check["process"], force=True)
         if timed_out:
-            stop_process(check["process"], force=True)
             check["process"].wait(timeout=1)
         check["stdout"].close()
         check["stderr"].close()
@@ -362,6 +368,7 @@ class Supervisor:
         self.input_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in self.inputs}
         for sig in (signal.SIGTERM, signal.SIGINT):
             signal.signal(sig, self.signal_handler)
+        run_error = None
         try:
             self.start_lanes()
             while time.monotonic() < self.deadline:
@@ -380,6 +387,9 @@ class Supervisor:
                         all(lane["final_checked"] for lane in self.lanes)):
                     break
                 time.sleep(0.1)
+        except BaseException as error:
+            run_error = error
+            raise
         finally:
             for lane in self.lanes:
                 stop_process(lane.get("process"), force=True)
@@ -403,7 +413,20 @@ class Supervisor:
             for lane in self.lanes:
                 if lane.get("log"):
                     lane["log"].close()
-            self.save_receipt("complete" if self.best is not None else "no_validated_solution")
+            if run_error is None:
+                self.save_receipt("complete" if self.best is not None else "no_validated_solution")
+            else:
+                # A feasible incumbent and a successfully finished search are
+                # different facts. Preserve the former without asserting both.
+                # Diagnostics must not replace the exception already escaping.
+                try:
+                    self.emit("supervisor_failed", error_type=type(run_error).__name__)
+                except BaseException:
+                    pass
+                try:
+                    self.save_receipt("error")
+                except BaseException:
+                    pass  # The last atomic receipt remains, not a completed run.
         return 0 if self.best is not None else 1
 
 

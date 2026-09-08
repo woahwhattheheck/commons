@@ -8,8 +8,8 @@
     },
     {
       "path": "supervisor.py",
-      "bytes": 20348,
-      "sha256": "cb6907cbef3417bc649bc99b4764a1e7a482c9858bc2c29e8a0a75728d645a3b"
+      "bytes": 21743,
+      "sha256": "e132568db1a88d38380d222d84b210a823da019c644974afcb535bbade2d7d67"
     },
     {
       "path": "compare_checker.py",
@@ -53,8 +53,8 @@
     },
     {
       "path": "main.cpp",
-      "bytes": 34254,
-      "sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1"
+      "bytes": 34974,
+      "sha256": "a3bf3968145cd6dc2431ad34720c634395e326f7425e56f2cdbc3d4c2b4fa905"
     },
     {
       "path": "verify_joint.py",
@@ -98,8 +98,8 @@
     },
     {
       "path": "benchmark.py",
-      "bytes": 7360,
-      "sha256": "5b50105257ca594d465328dac6cf548a06cd52a21e37e88eb2c959721ea05d77"
+      "bytes": 9026,
+      "sha256": "89fb0b630348825ade1ee94f03f066e835298f315869113501f2ca1d5b8798f5"
     },
     {
       "path": "CLOUD-VALIDATION.md",
@@ -130,6 +130,21 @@
       "path": "PREPARATION-ROLLBACK.md",
       "bytes": 2236,
       "sha256": "d32530ef49fc73e5c1ec91c313193a9e7136fd4c1c614f3ec01a75eae8ce988f"
+    },
+    {
+      "path": "test_benchmark_outputs.py",
+      "bytes": 14275,
+      "sha256": "2bab99ca629920fb1e397ab6658f2f03371b7c8c60e1e498f0cfc0a380b4c1c9"
+    },
+    {
+      "path": "BENCHMARK-OUTPUTS.md",
+      "bytes": 4935,
+      "sha256": "f09bdb7b16e09d207a140b21a507de334b5924ad5ff52c95d29d77240ef5c575"
+    },
+    {
+      "path": "BENCHMARK-OUTPUTS-RESULTS.json",
+      "bytes": 4269,
+      "sha256": "d2468841a144b31c6a1d4b441af247a13c4b0b1a5711cea278ee1d870e5e91e4"
     },
     {
       "path": "test_checker_serialization.py",
