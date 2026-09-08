@@ -87,6 +87,94 @@ class TitanAgent:
         self.history = None
         self.post = None
         self._completed_route = None
+        # Frozen SELL mutates several planning/observer fields before returning.
+        # Keep only the last state associated with a successfully returned
+        # action.  Deadline fallback observations are replayed through the
+        # original public observer after reconstruction; interrupted planning is
+        # never promoted into the checkpoint.
+        self._completed_seller_state = None
+        self._seller_fallback_observations = []
+
+    @staticmethod
+    def _seller_public_observation(obs, *, copy_tiles=True):
+        """Retain only the public rival tiles consumed by SellScheduler.observe."""
+        if obs is None:
+            return None
+        player = int(obs['player'])
+        rival = 1-player
+        farms = [{'tiles': []}, {'tiles': []}]
+        tiles = obs['farms'][rival]['tiles']
+        farms[rival] = {'tiles': deepcopy(tiles) if copy_tiles else tiles}
+        return {'step': int(obs['step']), 'player': player, 'farms': farms}
+
+    @staticmethod
+    def _seller_state(consumer):
+        """Copy the mutable completed FrozenSelected state economically.
+
+        ``previous`` is already a private deep copy created by FrozenSelected
+        and is replaced, never mutated, by later successful calls.  Retaining
+        that object avoids a second full-observation copy on every action.  The
+        collection fields are copied because later observations mutate them.
+        """
+        return {
+            'planned': {item:list(rows) for item,rows in consumer.planned.items()},
+            'pending': dict(consumer.pending),
+            # FrozenSelected assigns a new deep-copied observation after each
+            # completed transform; it never mutates the previous object. Reuse
+            # those already-private tile bytes and copy them only on recovery.
+            'previous': TitanAgent._seller_public_observation(
+                consumer.previous, copy_tiles=False),
+            'observed_harvests': {
+                item:list(rows) for item,rows in consumer.observed_harvests.items()
+            },
+        }
+
+    def _restore_seller_state(self):
+        """Restore completed SELL intent and replay completed fallback inputs."""
+        if self.features.consumer != 'frozen':
+            return
+        checkpoint = self._completed_seller_state
+        if checkpoint is not None:
+            self.consumer.planned = {
+                item:list(rows) for item,rows in checkpoint['planned'].items()
+            }
+            self.consumer.pending = dict(checkpoint['pending'])
+            self.consumer.previous = deepcopy(checkpoint['previous'])
+            self.consumer.observed_harvests = {
+                item:list(rows) for item,rows in checkpoint['observed_harvests'].items()
+            }
+        for skipped in self._seller_fallback_observations:
+            # Observe only public state that was actually supplied to an action
+            # call whose fallback was returned.  Advancing ``previous`` mirrors
+            # the end of a completed transform without retaining any unreturned
+            # planned/pending mutations from that transform.
+            self.consumer.observe(skipped)
+            self.consumer.previous = deepcopy(skipped)
+
+    def _remember_seller_fallback(self, obs):
+        """Queue one completed fallback observation for a later reconstruction."""
+        if self.features.consumer != 'frozen':
+            return
+        step = int(obs['step'])
+        if self._seller_fallback_observations:
+            prior = int(self._seller_fallback_observations[-1]['step'])
+            if step < prior:
+                # A fresh/reordered stream cannot safely inherit old observations.
+                self._seller_fallback_observations = []
+            elif step == prior:
+                # Retry of the same public step is represented once.  Preserve
+                # the latest exact observation rather than double-count harvests.
+                self._seller_fallback_observations[-1] = self._seller_public_observation(obs)
+                return
+        self._seller_fallback_observations.append(self._seller_public_observation(obs))
+
+    def _commit_seller_state(self, checkpoint=None):
+        """Bind a completed FrozenSelected state to the returned action."""
+        if self.features.consumer != 'frozen':
+            return
+        self._completed_seller_state = (self._seller_state(self.consumer)
+                                        if checkpoint is None else checkpoint)
+        self._seller_fallback_observations = []
 
     def _initialize(self):
         f = self.features
@@ -119,6 +207,7 @@ class TitanAgent:
                                                tie_break=f.terminal_tie_break)
         if self._completed_route is not None:
             self.controller.cur = self._completed_route
+        self._restore_seller_state()
         self.ready = True
 
     def _seed_selected(self, obs, cfg, selected):
@@ -197,9 +286,16 @@ class TitanAgent:
         self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0,
                             'entrypoint_prelude_seconds': invoked-started}
         selected_checkpoint = None
+        seller_checkpoint = None
         stage = 'cold_start'
         seconds = self.features.budget_seconds-self.features.reserve_seconds-(time.perf_counter()-started)
         if seconds <= 0:
+            # No current state mutated, but FrozenSelected must still observe the
+            # public step before the next decision.  Reconstruct so the queued
+            # fallback observation is replayed through the original observer.
+            if self.features.consumer == 'frozen':
+                self.ready = False
+            self._remember_seller_fallback(obs)
             self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',
                 elapsed_seconds=time.perf_counter()-started,act_cpu_seconds=time.process_time()-cpu_started)
             return fallback
@@ -232,10 +328,10 @@ class TitanAgent:
                         deadline=started+self.features.budget_seconds-self.features.reserve_seconds)
                     self.history.remember(obs,cfg,output,self.post)
                     self.diagnostics['history'] = self.history.diagnostics
-                self._completed_route = selected_checkpoint[1]
-                self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
-                                        act_cpu_seconds=time.process_time()-cpu_started)
-                return output
+                # Build the checkpoint while the deadline is still active, but
+                # publish it only after the context exits without cancellation.
+                if self.features.consumer == 'frozen':
+                    seller_checkpoint = self._seller_state(self.consumer)
         except deadline.DeadlineExceeded as error:
             if error is not timer.expired:
                 raise
@@ -246,6 +342,7 @@ class TitanAgent:
             # A producer interrupted before returning cannot commit its choice.
             if selected_checkpoint is not None and fallback is selected_checkpoint[0]:
                 self._completed_route = selected_checkpoint[1]
+            self._remember_seller_fallback(obs)
             if self.history is not None:
                 if stage in ('cold_start','history_observation'):
                     self.history = None
@@ -258,5 +355,13 @@ class TitanAgent:
                                     elapsed_seconds=time.perf_counter()-started,
                                     act_cpu_seconds=time.process_time()-cpu_started)
             return output
+        # The deadline context has exited successfully.  Commit mutable state
+        # only now, so a final trace/signal cancellation cannot bind planning for
+        # an action that was never returned.
+        self._completed_route = selected_checkpoint[1]
+        self._commit_seller_state(seller_checkpoint)
+        self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
+                                act_cpu_seconds=time.process_time()-cpu_started)
+        return output
 
     __call__ = act
