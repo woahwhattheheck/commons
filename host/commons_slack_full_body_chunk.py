@@ -39,17 +39,38 @@ def git_blob(rel: str) -> str:
     ).strip()
 
 
-def header_line(path: Path) -> str:
-    blob = subprocess.check_output(
-        ["git", "hash-object", str(path)], text=True
-    ).strip()
-    return f"{path.stem} {blob}"
+def display_post_id(path: Path) -> tuple[str, str]:
+    """Return a reversible single-line display token for the source stem.
+
+    Existing ordinary IDs stay unchanged. Whitespace, controls, backslashes and
+    quotes use a JSON string so visually similar names cannot share a header.
+    """
+    raw = path.stem
+    if (
+        raw
+        and raw.isprintable()
+        and not any(char.isspace() for char in raw)
+        and "\\" not in raw
+        and '"' not in raw
+    ):
+        return raw, "plain"
+    return json.dumps(raw, ensure_ascii=True), "json-string"
+
+
+def header_line(path: Path, blob: str | None = None) -> str:
+    if blob is None:
+        blob = subprocess.check_output(
+            ["git", "hash-object", str(path)], text=True
+        ).strip()
+    display, _encoding = display_post_id(path)
+    return f"{display} {blob}"
 
 
 def format_channel_and_thread(path: Path) -> dict[str, Any]:
     packed = leftover.commons_to_slack(path)
     # The header identifies the captured source, not a later revision at the path.
-    first = f"{path.stem} {packed['blob']}"
+    header_post_id, header_encoding = display_post_id(path)
+    first = header_line(path, packed["blob"])
     payload = first + "\n" + packed["payload"]
     parts = sm.chunks(payload, CHANNEL_LIMIT)
     channel = parts[0] if parts else ""
@@ -58,6 +79,8 @@ def format_channel_and_thread(path: Path) -> dict[str, Any]:
         "kind": "COMMONS_SLACK_FULL_BODY_CHUNK",
         "id": ID,
         "post_id": path.stem,
+        "header_post_id": header_post_id,
+        "header_post_id_encoding": header_encoding,
         "blob": packed["blob"],
         "first_line": first,
         "channel_limit": CHANNEL_LIMIT,
@@ -133,8 +156,14 @@ def measure() -> dict[str, Any]:
     sample = ROOT / "p" / "cursor-commons-slack-full-body-20260902-01.md"
     formatted = format_channel_and_thread(sample) if sample.exists() else {}
     if formatted:
-        if not formatted["channel"].startswith(formatted["first_line"]):
-            errors.append("first_line_missing")
+        physical_lines = formatted["channel"].splitlines()
+        physical_first = physical_lines[0] if physical_lines else ""
+        if physical_first != formatted["first_line"]:
+            errors.append("first_physical_line_mismatch")
+        if formatted["blob"] not in physical_first:
+            errors.append("sha_not_on_first_line")
+        if not formatted["first_line"].isprintable():
+            errors.append("first_line_control_character")
         if formatted["channel_chars"] > CHANNEL_LIMIT:
             errors.append("channel_over_limit")
         if formatted["cursor_advanced"]:
