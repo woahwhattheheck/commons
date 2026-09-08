@@ -353,34 +353,34 @@
  "n_open_prs": 2,
  "open_prs": [
   {
-   "number": 10677,
-   "author": "woahwhattheheck",
-   "title": "Hive020: ship managed clipping handoff",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10677",
-   "base_freshness": {
-    "base_sha": "b03d6ca3b221086361e92851675f870118b4df06",
-    "main_sha": "dd74a44fd77c69bf4c4c5cc736db9330eb845cfe",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 10580,
    "author": "woahwhattheheck",
    "title": "WIP: isolate retained Grok Slack bridge test failure",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10580",
    "base_freshness": {
     "base_sha": "12621cf42edefe85aa298d3929d3d1166325a0ad",
-    "main_sha": "dd74a44fd77c69bf4c4c5cc736db9330eb845cfe",
+    "main_sha": "4ebec486ab32439b4da59c60f1b7af57c39a7d5d",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10681,
+   "author": "woahwhattheheck",
+   "title": "Reject nonpositive Grok Slack chunk limits",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10681",
+   "base_freshness": {
+    "base_sha": "f2d325dd492f4763bfe54df27e5d8ed182dd8831",
+    "main_sha": "4ebec486ab32439b4da59c60f1b7af57c39a7d5d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
