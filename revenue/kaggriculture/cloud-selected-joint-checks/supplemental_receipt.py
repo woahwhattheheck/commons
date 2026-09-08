@@ -299,6 +299,37 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
                     if ending != 'OK':
                         problem('failure' if ending.startswith('FAILED') else 'missing',
                                 'queue_copy: embedded completion is not full passing coverage')
+                # The current producer includes its Python identity and prints
+                # the exact unittest text followed by the report minus
+                # log/benchmark as one JSON line. Bind those two persisted
+                # representations while preserving older synthetic/legacy
+                # reports that predate the producer metadata field.
+                producer_python = report.get('python')
+                if producer_python is not None and not isinstance(producer_python, str):
+                    problem('failure', 'queue_copy: invalid producer Python identity')
+                if isinstance(producer_python, str):
+                    outer = members.get(log_name)
+                    if isinstance(outer, bytes):
+                        try:
+                            outer_text = outer.decode('utf-8').replace('\r\n', '\n').rstrip('\n')
+                            preceding, separator, last_line = outer_text.rpartition('\n')
+                            if not separator:
+                                raise ValueError('missing emitted summary line')
+                            emitted = json.loads(last_line, object_pairs_hook=unique_object,
+                                                 parse_constant=finite_json)
+                            if not isinstance(emitted, dict):
+                                raise ValueError('emitted summary is not an object')
+                            expected = {key: value for key, value in report.items()
+                                        if key not in ('log', 'benchmark')}
+                            encode = lambda value: json.dumps(value, sort_keys=True,
+                                                              separators=(',', ':'), allow_nan=False)
+                            if encode(emitted) != encode(expected):
+                                problem('failure', 'queue_copy: emitted summary differs from report')
+                            if preceding.rstrip('\n') != inner.rstrip('\n'):
+                                problem('failure', 'queue_copy: emitted unittest text differs from report')
+                            summary['emitted_summary_bound'] = True
+                        except (ValueError, UnicodeError) as exc:
+                            problem('failure', f'queue_copy: invalid emitted summary: {exc}')
             continue
         if label == 'deadline_cancellation':
             count = report.get('tests_run')
