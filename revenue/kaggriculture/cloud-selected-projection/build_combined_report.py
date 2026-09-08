@@ -27,6 +27,7 @@ SUITES = (
     ("joined_wrapper", "joined-wrapper-tests.log", LAB + "test_ordered_selected_sell.py", None, None),
 )
 FUNDED_JOIN = ("funded_join", "funded-join-tests.log", ROOT + "cloud-composition-cases/cypress/test_funded_join.py", "funded-join-results.json", "test_methods")
+CANCELLATION = ("deadline_cancellation", "deadline-cancellation-tests.log", ROOT + "cloud-economic-stress/cancellation/test_deadline_cancellation.py", "deadline-cancellation.json", "tests_run")
 RUNTIME_REGRESSIONS = (
     ("capture_binding", "capture-binding-tests.log", ROOT + "cloud-market-game-theory/adaptive/test_capture_binding.py", "capture-binding-results.json", "run"),
     ("score_schedule", "score-schedule-tests.log", LAB + "test_score_schedule.py", None, None),
@@ -71,7 +72,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -115,6 +116,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
     suites, reports = {}, {}
     declarations = (SUITES + ((FUNDED_JOIN,) if include_funded_join else ())
                     + (RUNTIME_REGRESSIONS if include_runtime_regressions else ())
+                    + ((CANCELLATION,) if include_cancellation else ())
                     + ((REPORTER,) if include_reporter else ()))
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
@@ -136,10 +138,15 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                 value = summary.get(count_key)
                 if type(value) is not int or value != entry["tests"]:
                     problems.append(key + ": JSON/log test counts differ")
-                if any(type(summary.get(k)) is not int or summary[k] != 0 for k in ("failures", "errors")):
-                    problems.append(key + ": nonzero or missing JSON failures/errors")
-                if key != "projection" and summary.get("success" if key == "capture_binding" else "successful") is not True:
-                    problems.append(key + ": JSON result is not successful")
+                if key == "deadline_cancellation":
+                    for field in ("failures", "errors", "skipped"):
+                        if not isinstance(summary.get(field), list) or summary[field]:
+                            problems.append(key + ": nonempty or missing JSON " + field + " array")
+                else:
+                    if any(type(summary.get(k)) is not int or summary[k] != 0 for k in ("failures", "errors")):
+                        problems.append(key + ": nonzero or missing JSON failures/errors")
+                    if key != "projection" and summary.get("success" if key == "capture_binding" else "successful") is not True:
+                        problems.append(key + ": JSON result is not successful")
         suites[key] = entry
 
     seller = source(LAB + "selected_action_sell.py")
@@ -190,6 +197,16 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
              source(LAB + "selected_sell_core.py"))
         source(".github/workflows/titan-selected-projection.yml")
 
+    cancelled = reports.get("deadline_cancellation", {})
+    if include_cancellation:
+        bind("cancellation adapter", cancelled.get("adapter_sha256"),
+             source(ROOT + "cloud-economic-stress/deadline_adapter.py"))
+        partition = [cancelled.get(field) for field in
+                     ("new_regression_methods", "unchanged_upstream_guard_methods")]
+        if (any(type(n) is not int or n < 0 for n in partition)
+                or sum(partition) != cancelled.get("tests_run")):
+            problems.append("cancellation: method partition does not match tests_run")
+
     observed_total = sum(s["tests"] for s in suites.values() if s["tests"] is not None)
     counts_complete = all(s["tests"] is not None for s in suites.values())
     result = {"schema": "titan.selected-projection.combined.v2",
@@ -215,6 +232,10 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
     if include_funded_join:
         result["funded_join_transitions"] = funded.get("official_transitions")
         result["funded_join_full_games"] = funded.get("full_games")
+    if include_cancellation:
+        result["cancellation_new_regression_methods"] = cancelled.get("new_regression_methods")
+        result["cancellation_retained_guard_methods"] = cancelled.get("unchanged_upstream_guard_methods")
+        result["cancellation_adapter_sha256"] = cancelled.get("adapter_sha256")
     return result
 
 
@@ -225,10 +246,12 @@ def main(argv=None):
     parser.add_argument("--include-reporter-tests", action="store_true")
     parser.add_argument("--include-funded-join", action="store_true")
     parser.add_argument("--include-runtime-regressions", action="store_true")
+    parser.add_argument("--include-cancellation", action="store_true")
     args = parser.parse_args(argv)
     report = build_report(args.directory, include_reporter=args.include_reporter_tests,
                           include_funded_join=args.include_funded_join,
-                          include_runtime_regressions=args.include_runtime_regressions)
+                          include_runtime_regressions=args.include_runtime_regressions,
+                          include_cancellation=args.include_cancellation)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
