@@ -112,7 +112,8 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
     T04's injected scenarios affect external inventory before the own market;
     they are not paired rival-order streams and cannot supply rival cash utility.
     The cooperative budget is shared across all pairs and cannot preempt a single
-    dependency call. Partial pairs are retained as incomplete, never as scores.
+    dependency call. Overdue returns and partial pairs remain incomplete, never
+    scored; completing a dependency is not itself proof of meeting the deadline.
     """
     started = perf_counter()
     routes = tuple(route_ids)
@@ -161,18 +162,23 @@ def replay_routes(controller: Any, route_ids: Sequence[str],
                 result = simulate_bundle(observed, observation, configuration,
                                          plan, end_step=int(end_step),
                                          scenario=deepcopy(scenario), record_actions=True)
+                budget.check()
                 # Validate binding of the observer's cash to the delegated result;
                 # net queue cash includes actual successful fixed-cost orders too.
                 realized = sum(row["cash_delta"] for row in observed.rows)
                 if realized != result["cash_gain"]:
                     raise ValueError("Observer cash does not match delegated result")
-                case.update(status="complete", cash_gain=result["cash_gain"],
+                completed = dict(status="complete", cash_gain=result["cash_gain"],
                             final_cash=result["farm"]["money"],
                             minimum_after_market_cash=min(
                                 [observation["farms"][int(observation["player"])]["money"]]
                                 + [row["cash_after"] for row in observed.rows]),
                             action_sha256=_digest(result["actions"]),
                             active_routes=route_trace, result=result)
+                # Result encoding is cooperative work too; publish no scores
+                # until the complete candidate has passed its final check.
+                budget.check()
+                case.update(completed)
             except ReplayBudgetExceeded as exc:
                 case["reason"] = "budget:" + str(exc)
             except Exception as exc:
