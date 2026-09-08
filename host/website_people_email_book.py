@@ -165,6 +165,11 @@ def _page_people(html: str) -> list[dict[str, Any]]:
             continue
         if not name and email:
             name = email.split("@", 1)[0]
+        # Apply the same first-seen identity rule as the JSON-LD fallback below.
+        if email and email in seen_email:
+            continue
+        if not email and name.casefold() in seen_name:
+            continue
         person = {
             "name": name,
             "role": role,
