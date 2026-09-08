@@ -340,6 +340,45 @@ def _plan_sha256(plan: dict[str, object]) -> str:
     return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
 
 
+def _drafted_quantities(plan: object) -> dict[tuple[str, str, str], int]:
+    """Validate the imported draft before any receipt is applied."""
+    if not isinstance(plan, dict):
+        raise ReorderError("plan must be an object")
+    if plan.get("schema") != SCHEMA:
+        raise ReorderError("plan schema is not supported")
+    orders = plan.get("purchase_orders", [])
+    if not isinstance(orders, list):
+        raise ReorderError("plan.purchase_orders must be an array")
+
+    def identifier(value: object, field: str) -> str:
+        if not isinstance(value, str) or not value.strip():
+            raise ReorderError(f"{field} must be a nonblank string")
+        return value
+
+    drafted: dict[tuple[str, str, str], int] = {}
+    for order_index, order in enumerate(orders):
+        order_field = f"plan.purchase_orders[{order_index}]"
+        if not isinstance(order, dict):
+            raise ReorderError(f"{order_field} must be an object")
+        supplier = identifier(order.get("supplier_id"), f"{order_field}.supplier_id")
+        lines = order.get("lines")
+        if not isinstance(lines, list):
+            raise ReorderError(f"{order_field}.lines must be an array")
+        for line_index, line in enumerate(lines):
+            line_field = f"{order_field}.lines[{line_index}]"
+            if not isinstance(line, dict):
+                raise ReorderError(f"{line_field} must be an object")
+            supplier_sku = identifier(line.get("supplier_sku"), f"{line_field}.supplier_sku")
+            sku = identifier(line.get("sku"), f"{line_field}.sku")
+            value = line.get("quantity")
+            if isinstance(value, bool) or not isinstance(value, (str, int, float, Decimal)):
+                raise ReorderError(f"{line_field}.quantity must be an integer")
+            quantity = _integer(value, f"{line_field}.quantity", minimum=1)
+            key = (supplier, supplier_sku, sku)
+            drafted[key] = drafted.get(key, 0) + quantity
+    return drafted
+
+
 def apply_receipts(
     stock: dict[str, Stock],
     plan: dict[str, object],
@@ -348,14 +387,7 @@ def apply_receipts(
     pipeline_includes_draft: bool = False,
     prior_log: dict[str, object] | None = None,
 ) -> tuple[dict[str, Stock], dict[str, object]]:
-    if plan.get("schema") != SCHEMA:
-        raise ReorderError("plan schema is not supported")
-    drafted: dict[tuple[str, str, str], int] = {}
-    for order in plan.get("purchase_orders", []):
-        supplier = str(order["supplier_id"])
-        for line in order["lines"]:
-            key = (supplier, str(line["supplier_sku"]), str(line["sku"]))
-            drafted[key] = drafted.get(key, 0) + int(line["quantity"])
+    drafted = _drafted_quantities(plan)
 
     plan_sha256 = _plan_sha256(plan)
     updated = dict(stock)
