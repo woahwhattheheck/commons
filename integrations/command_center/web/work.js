@@ -33,7 +33,7 @@
   const nativeTask=i=>i.source_id==='codex-native-fleet'&&i.kind==='native_task';
   const nativeRead=i=>[md(i).list_observed_at,i.refs?.list_observed_at].find(v=>typeof v==='string'&&Number.isFinite(Date.parse(v)))??null;
   const activity=i=>nativeTask(i)?i.activity_observed_at:first(i.activity_observed_at,i.updated_at);
-  let snapshot=null,loading=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
+  let snapshot=null,loading=null,queuedRefresh=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
   const kinds={work:null,builds:['build','pull_request','feature'],inbox:['email','slack_thread'],marketing:['campaign','deal']};
   const labels={work:'Work',builds:'Builds',inbox:'Inbox',marketing:'Marketing'};
   const filters=Object.fromEntries(Object.keys(labels).map(k=>[k,{q:'',project:'all',provider:'all',status:'all',channel:'all',tab:'all'}]));
@@ -249,8 +249,21 @@
     }));
   }
   function refresh(force=false,afterCurrent=false){
-    // A save needs a read begun after the update, not a pre-save request in flight.
-    if(loading)return afterCurrent?loading.then(()=>refresh(force)):loading;
+    // Manual refreshes and saves need a read begun after the current request.
+    // Coalesce waiting callers and retain the strongest (forced) refresh intent.
+    if(loading){
+      if(!force&&!afterCurrent)return loading;
+      if(!queuedRefresh){
+        const queued={force,promise:null};
+        queued.promise=loading.then(()=>{
+          queuedRefresh=null;
+          return refresh(queued.force);
+        },failure=>{queuedRefresh=null;throw failure;});
+        queuedRefresh=queued;
+      }
+      if(force)queuedRefresh.force=true;
+      return queuedRefresh.promise;
+    }
     loading=(async()=>{
       try{const {body}=await api.request('/api/work'+(force?'?refresh=1':''));if(!body||!Array.isArray(body.items)||!Array.isArray(body.sources))throw new Error('Work response is missing items or source coverage.');snapshot=body;error='';}
       catch(e){error=e.message;}
