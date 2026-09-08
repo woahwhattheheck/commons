@@ -172,6 +172,9 @@ class MarketingSalesTests(unittest.TestCase):
         self.assertEqual(pipeline["seed_audit"]["verified_organizations_in_seed"], 3)
         self.assertEqual(pipeline["seed_audit"]["public_email_routes_in_seed"], 1)
         self.assertEqual(pipeline["seed_audit"]["production_survival_sends"], 5)
+        seed = marketing._seed_truth()
+        self.assertEqual(pipeline["seed_audit"]["canonical_historical_contacts"], seed["canonical_historical_contacts"])
+        self.assertEqual(pipeline["seed_audit"]["canonical_hard_dnr_contacts"], seed["canonical_hard_dnr_contacts"])
         self.assertEqual(pipeline["current"]["cash_usd"], 0)
 
     def test_pipeline_rejects_false_counts_gaps_queue_and_boundaries(self) -> None:
@@ -194,6 +197,12 @@ class MarketingSalesTests(unittest.TestCase):
         boundary = copy.deepcopy(pipeline)
         boundary["boundaries"]["private_routes_or_provider_ids_published"] = True
         variants.append(boundary)
+        stale_dnr = copy.deepcopy(pipeline)
+        stale_dnr["seed_audit"]["canonical_hard_dnr_contacts"] -= 1
+        variants.append(stale_dnr)
+        stale_contacts = copy.deepcopy(pipeline)
+        stale_contacts["seed_audit"]["canonical_historical_contacts"] -= 1
+        variants.append(stale_contacts)
         for variant in variants:
             with self.subTest(variant=variants.index(variant)):
                 with self.assertRaises(marketing.MarketingSalesError):
@@ -225,6 +234,24 @@ class MarketingSalesTests(unittest.TestCase):
             r"^VALID \d+ research entities \d+ GitHub organizations 50 queued; 0 qualified 0 routes 0 sends USD 0 cash$",
         )
 
+    def test_checked_in_seed_audit_tracks_canonical_funnel_truth(self) -> None:
+        pipeline = marketing.read_object(marketing.DEFAULT_PIPELINE)
+        funnel = marketing.read_object(marketing.REPLY_FUNNEL)
+        seed = marketing._seed_truth()
+        self.assertEqual(pipeline["seed_audit"], seed)
+        self.assertEqual(
+            pipeline["seed_audit"]["canonical_historical_contacts"],
+            funnel["truth"]["distinct_contacts"],
+        )
+        self.assertEqual(
+            pipeline["seed_audit"]["canonical_hard_dnr_contacts"],
+            funnel["truth"]["hard_dnr_contacts"],
+        )
+        self.assertEqual(funnel["truth"]["distinct_contacts"], 13)
+        self.assertEqual(funnel["truth"]["hard_dnr_contacts"], 13)
+        self.assertEqual(len(funnel["contacts"]), 13)
+
 
 if __name__ == "__main__":
     unittest.main()
+
