@@ -22,6 +22,8 @@ import sys
 
 
 DEFAULT_CATALOG = os.path.join("ground", "FLEET_IDS.json")
+FINDER_UNVERIFIED = "FINDER UNVERIFIED"
+CALIBRATION_POST_ID = "rivet-ship-fleet-ids-20260825-01"
 
 
 def load_catalog(text):
@@ -65,6 +67,12 @@ def classify(row):
     """Turn a measured census into a land-desk state."""
     row = row or {}
     if not row.get("measured"):
+        if row.get("finder_state") == FINDER_UNVERIFIED:
+            return {
+                "state": FINDER_UNVERIFIED,
+                "note": row.get("error")
+                or "fleet p/{id}.md finder was not verified; absence is void.",
+            }
         return {
             "state": "UNMEASURED",
             "note": (
@@ -131,7 +139,30 @@ def measure_from_parts(catalog_text, listing):
     }
 
 
-def measure_paths(catalog_path, posts_dir=None):
+def _finder_unverified(catalog, catalog_path, posts_dir, reason, calibration):
+    """Name a failed finder without manufacturing an empty measured result."""
+    ids = list(catalog.get("ids") or [])
+    return {
+        "measured": False,
+        "finder_state": FINDER_UNVERIFIED,
+        "error": "%s: %s" % (FINDER_UNVERIFIED, reason),
+        "ids": ids,
+        "source_id": catalog.get("source_id") or "",
+        "slack_ts": catalog.get("slack_ts") or "",
+        "hands_off": list(catalog.get("hands_off") or []),
+        "catalog": catalog_path,
+        "posts_dir": posts_dir,
+        "search_space": {
+            "path": posts_dir,
+            "pattern": "{id}.md",
+            "ids": ids,
+        },
+        "calibration": calibration,
+        "titan": "NOT_WRITTEN",
+    }
+
+
+def measure_paths(catalog_path, posts_dir=None, calibration_id=CALIBRATION_POST_ID):
     path = os.path.abspath(catalog_path)
     if not os.path.isfile(path):
         return {
@@ -141,17 +172,57 @@ def measure_paths(catalog_path, posts_dir=None):
         }
     with open(path, "r", encoding="utf-8") as handle:
         catalog_text = handle.read()
-    listing = []
+    catalog = load_catalog(catalog_text)
+    ids = list(catalog.get("ids") or [])
     root = os.path.abspath(posts_dir) if posts_dir else ""
-    if root and os.path.isdir(root):
-        try:
-            listing = os.listdir(root)
-        except OSError:
-            listing = []
+    calibration_name = "%s.md" % str(calibration_id or "").strip()
+    calibration_path = os.path.join(root, calibration_name) if root else ""
+    calibration = {
+        "id": str(calibration_id or "").strip(),
+        "path": calibration_path,
+        "known_present": bool(calibration_path and os.path.isfile(calibration_path)),
+        "observed": False,
+        "state": FINDER_UNVERIFIED,
+    }
+    if not root:
+        return _finder_unverified(
+            catalog, path, root, "posts directory was not provided", calibration
+        )
+    if not os.path.isdir(root):
+        return _finder_unverified(
+            catalog, path, root, "posts directory missing: %s" % root, calibration
+        )
+    try:
+        listing = os.listdir(root)
+    except OSError as exc:
+        return _finder_unverified(
+            catalog, path, root, "posts listing failed: %s" % exc, calibration
+        )
+    calibration["observed"] = calibration_name in listing
+    if calibration["known_present"] and calibration["observed"]:
+        calibration["state"] = "CALIBRATED"
     row = measure_from_parts(catalog_text, listing)
     row["catalog"] = path
-    if root:
-        row["posts_dir"] = root
+    row["posts_dir"] = root
+    row["search_space"] = {
+        "path": root,
+        "pattern": "{id}.md",
+        "ids": ids,
+        "listing_entries": len(listing),
+    }
+    row["observed"] = {
+        "present": list(row.get("present") or []),
+        "missing": list(row.get("missing") or []),
+    }
+    row["calibration"] = calibration
+    row["finder_state"] = "MEASURED"
+    if row.get("missing_count") and calibration["state"] != "CALIBRATED":
+        row["measured"] = False
+        row["finder_state"] = FINDER_UNVERIFIED
+        row["error"] = (
+            "%s: finder missed known-present %s; absence verdict is void"
+            % (FINDER_UNVERIFIED, calibration_name)
+        )
     return row
 
 
@@ -181,6 +252,10 @@ def main(argv=None):
 def _self_test():
     empty = classify({})
     assert empty["state"] == "UNMEASURED"
+    finder_failure = classify(
+        {"measured": False, "finder_state": FINDER_UNVERIFIED, "error": FINDER_UNVERIFIED}
+    )
+    assert finder_failure["state"] == FINDER_UNVERIFIED
     none = measure_from_parts('{"ids":[]}', [])
     assert none["ids"] == []
     assert classify(none)["state"] == "NOT_LANDED"
