@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -46,6 +47,25 @@ def post_id(path: Path) -> str:
     if name.endswith(".md"):
         name = name[:-3]
     return name
+
+
+def display_post_id(path: Path) -> tuple[str, str]:
+    """Return a reversible single-line display token for the raw post ID."""
+    raw = post_id(path)
+    if (
+        raw
+        and raw.isprintable()
+        and not any(char.isspace() for char in raw)
+        and "\\" not in raw
+        and '"' not in raw
+    ):
+        return raw, "plain"
+    return json.dumps(raw, ensure_ascii=True), "json-string"
+
+
+def source_link(path: Path) -> str:
+    """Build a GitHub URL whose final path component round-trips exactly."""
+    return GIT_BLOB.format(id=urllib.parse.quote(post_id(path), safe=""))
 
 
 def _source_envelope(text: str) -> tuple[str, str]:
@@ -125,15 +145,16 @@ def mirror_payload(path: Path) -> str:
 def mirror_payload_from_text(path: Path, raw: str) -> str:
     """Format an already captured source without reopening its path."""
     pid = post_id(path)
+    display_id, _display_encoding = display_post_id(path)
     body = body_of(raw)
     if not body.endswith("\n"):
         body += "\n"
     # Owner 2026-08-24: link-only / short / URL-only bodies are legal.
     source = metadata_of(raw)
     source_from = source.get("from", "UNKNOWN")
-    source_id = source.get("id", pid)
-    link = GIT_BLOB.format(id=pid)
-    declaration = RELAY_DECLARATION.format(id=pid)
+    source_id = source.get("id", display_id)
+    link = source_link(path)
+    declaration = RELAY_DECLARATION.format(id=display_id)
     return (
         declaration
         + f"source_from: {source_from}\n"
