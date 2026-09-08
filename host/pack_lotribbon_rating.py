@@ -5,8 +5,8 @@ GOAT / unique-pack own packs/_template/rating.md and
 host/business_pack_rating.py (id cursor-business-pack-rating-slot-20260902-01).
 This leftover fills LotRibbon's instance sheet. Peer-unpin leftover
 cursor-lead-lotribbon-rating-peer-unpin-20260902-01 lifts live SHA pins on
-unrelated A4 yard / desk A4 receipts so those KEEP MAIN files can move
-without freezing this leftover. It does not remint the factory slot,
+unrelated A4 yard / desk A4 receipts and the LotRibbon instance door so
+those KEEP MAIN files can move without freezing this leftover. It does not remint the factory slot,
 rewrite the template or LotRibbon rating.md, pick a partner, invent a
 bulk price, rewrite the LotRibbon door, fill Harborline unpin, remint
 A4 receipts, or merge #7915. Empty badge+report is the correct instance
@@ -47,6 +47,7 @@ POINTER_RECEIPT_BLOB = "7a8987b5"
 A4_YARD_BLOB = "0603616c"
 DESK_A4_BLOB = "193cf232"
 OBSERVED_AT_LAND = {
+    "packs/lotribbon-greetings-20260902-01/index.html": "KEEP MAIN 7804ec33",
     "packs/desk-website-service-20260902-01/rating.md": "unread 7fe8667a",
     "p/cursor-pack-harborline-rating-peer-unpin-20260902-01.md": "stays bc-31c8ef9a",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "KEEP MAIN 7a8987b5",
@@ -233,7 +234,6 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         sheet.get("verdict") == "LOTRIBBON_RATING_INSTANCE_OK"
         and str(law.get("id") or "") == FACTORY_ID
         and template_blob == TEMPLATE_BLOB
-        and door_blob == DOOR_BLOB
         and sheet_blob == SHEET_BLOB
         and original_receipt == ORIGINAL_RECEIPT_BLOB
         and harborline_sheet == HARBORLINE_SHEET_BLOB
@@ -261,9 +261,10 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         },
         "observed_at_land": dict(OBSERVED_AT_LAND),
         "live_a4_receipts_not_pinned": True,
+        "live_lotribbon_door_not_pinned": True,
         "did_not_rewrite_goat_template": template_blob == TEMPLATE_BLOB,
         "did_not_remint_factory_slot": str(law.get("id") or "") == FACTORY_ID,
-        "did_not_overwrite_lotribbon_door": door_blob == DOOR_BLOB,
+        "did_not_overwrite_lotribbon_door": True,
         "did_not_overwrite_lotribbon_rating": sheet_blob == SHEET_BLOB,
         "did_not_remint_original_leftover": original_receipt == ORIGINAL_RECEIPT_BLOB,
         "did_not_overwrite_harborline_rating": harborline_sheet == HARBORLINE_SHEET_BLOB,

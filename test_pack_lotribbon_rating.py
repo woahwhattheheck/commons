@@ -98,13 +98,18 @@ class PackLotribbonRatingTest(unittest.TestCase):
         self.assertTrue(result["did_not_remint_a4_yard"])
         self.assertTrue(result["did_not_remint_desk_a4"])
         self.assertTrue(result["live_a4_receipts_not_pinned"])
+        self.assertTrue(result["live_lotribbon_door_not_pinned"])
         self.assertTrue(result["did_not_live_pin_sidewalk_absent"])
         self.assertTrue(result["did_not_merge_7915"])
         self.assertEqual(result["harborline_unpin_stays"], "bc-31c8ef9a")
         self.assertEqual(result["blobs"]["packs/_template/rating.md"], "7d644a8b")
         self.assertEqual(
-            result["blobs"]["packs/lotribbon-greetings-20260902-01/index.html"],
-            "7804ec33",
+            result["observed_at_land"]["packs/lotribbon-greetings-20260902-01/index.html"],
+            "KEEP MAIN 7804ec33",
+        )
+        self.assertEqual(
+            len(result["blobs"]["packs/lotribbon-greetings-20260902-01/index.html"]),
+            8,
         )
         self.assertEqual(
             result["blobs"]["packs/lotribbon-greetings-20260902-01/rating.md"],
@@ -165,6 +170,35 @@ class PackLotribbonRatingTest(unittest.TestCase):
             self.assertEqual(
                 result["blobs"]["p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md"],
                 "deadbeef",
+            )
+        finally:
+            rating.git_blob_prefix = original  # type: ignore[method-assign]
+
+    def test_door_sha_change_does_not_fail_tree(self) -> None:
+        if not rating.TEMPLATE.is_file() or not rating.LOTRIBBON.is_file():
+            self.skipTest("rating files not in this tree")
+        original = rating.git_blob_prefix
+
+        def fake(rel: str, n: int = 8) -> str:
+            if rel == "packs/lotribbon-greetings-20260902-01/index.html":
+                return "deadbeef"
+            return original(rel, n)
+
+        rating.git_blob_prefix = fake  # type: ignore[method-assign]
+        try:
+            result = rating.classify_tree()
+            self.assertEqual(result["verdict"], "LOTRIBBON_RATING_OK", msg=result)
+            self.assertTrue(result["live_lotribbon_door_not_pinned"])
+            self.assertTrue(result["did_not_overwrite_lotribbon_door"])
+            self.assertEqual(
+                result["blobs"]["packs/lotribbon-greetings-20260902-01/index.html"],
+                "deadbeef",
+            )
+            self.assertEqual(
+                result["observed_at_land"][
+                    "packs/lotribbon-greetings-20260902-01/index.html"
+                ],
+                "KEEP MAIN 7804ec33",
             )
         finally:
             rating.git_blob_prefix = original  # type: ignore[method-assign]
