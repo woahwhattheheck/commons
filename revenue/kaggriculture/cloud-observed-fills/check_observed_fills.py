@@ -98,7 +98,7 @@ class UnitChecks(unittest.TestCase):
         self.assertIsNone(full_sale_verdict(r, 0, 1))
 
     def test_state_and_transition_budgets(self):
-        kw = dict(post_unit_shed={}, submitted_action=action(['BUY_PRODUCT', 'WHEAT', 100]), next_shed={})
+        kw = dict(post_unit_shed={}, submitted_action=action(['BUY_PRODUCT', 'WHEAT', 100], ['SELL', 'WHEAT', 100]), next_shed={})
         self.assertEqual(reconcile_shed_fills(**kw, max_states=2)['reason'], 'state_budget_exceeded')
         self.assertEqual(reconcile_shed_fills(**kw, max_transitions=2)['reason'], 'transition_budget_exceeded')
 

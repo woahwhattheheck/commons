@@ -136,6 +136,7 @@ def reconcile_shed_fills(post_unit_shed: Mapping[str, int], submitted_action: An
     zero = (0,) * len(orders)
     states = {tuple(before.get(k, 0) for k in keys): (zero, zero)}
     peak, transitions = 1, 0
+    terminal_buys = None  # Built lazily; SELL-only paths keep their existing work.
     for order in orders:
         kind, slot = order['kind'], order['slot']
         if kind not in ('sell', 'buy'):
@@ -147,11 +148,26 @@ def reconcile_shed_fills(post_unit_shed: Mapping[str, int], submitted_action: An
                 quantities = (min(order['requested'], stock[item_index], MAX_SLOT_UNITS),)
             else:
                 ceiling = min(order['requested'], max(0, capacity - sum(stock)), MAX_SLOT_UNITS)
-                # No sampling/truncation: the complete relaxed range or unknown.
-                if transitions + ceiling + 1 > max_transitions:
-                    return _unknown('transition_budget_exceeded', peak_states=peak,
-                                    transitions=transitions)
-                quantities = range(ceiling + 1)
+                if terminal_buys is None:
+                    # Only the final stock-changing order for a product can be
+                    # fixed by its next observation. A later automatic deposit
+                    # could hide a smaller fill, so retain that uncertainty.
+                    last_updates = {o['item']: o for o in orders
+                                    if o['kind'] in ('sell', 'buy')}
+                    deposited = {k for d in deposits for k, q in d.items() if q > 0}
+                    terminal_buys = {k: o['slot'] for k, o in last_updates.items()
+                                     if o['kind'] == 'buy' and k not in deposited}
+                if terminal_buys.get(order['item']) == slot:
+                    quantity = after.get(order['item'], 0) - stock[item_index]
+                    if not 0 <= quantity <= ceiling:
+                        continue
+                    quantities = (quantity,)
+                else:
+                    # No sampling/truncation: the complete relaxed range or unknown.
+                    if transitions + ceiling + 1 > max_transitions:
+                        return _unknown('transition_budget_exceeded', peak_states=peak,
+                                        transitions=transitions)
+                    quantities = range(ceiling + 1)
             for quantity in quantities:
                 transitions += 1
                 if transitions > max_transitions:
