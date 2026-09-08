@@ -353,12 +353,12 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 10066,
+   "number": 10095,
    "author": "woahwhattheheck",
-   "title": "TITAN: bind adaptive recourse to current observable market economics",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10066",
+   "title": "Reuse detached state in selected production projections",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10095",
    "base_freshness": {
-    "base_sha": "17e149e75092c905e4ef96ce0dca8806e521ea5e",
+    "base_sha": "e52ac5a6948c849074aa11941ecdcee92fcd65c3",
     "main_sha": "9e5c43c1842f82213718ea8393af045c39204bfe",
     "ahead_by": null,
     "behind_by": null,
