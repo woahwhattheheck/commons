@@ -30,6 +30,41 @@ LEGAL_SCOPE_KEYS = {
     "filing_receipt_verified",
     "application_numbers_public",
 }
+PROVENANCE_SUCCESSORS = {
+    "ground/INVENTION_BURST_INDEX.md": (
+        (
+            "spy-ground-live-cash-v1",
+            (
+                "\n## Live cash\n\n"
+                "Verified product pages only — no invented Stripe links.\n\n"
+                "- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run\n"
+                "- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)\n"
+                "- [$199 referral diagnostic](../referral-intake-completeness.html)\n"
+                "- [$199 repair diagnostic](../repair-booking-preflight.html)\n"
+                "- [$199 plant diagnostic](../plant-downtime-handoff.html)\n\n"
+                "Shelf: [tools-cash.html](../tools-cash.html). Catalog: "
+                "[commerce.html](../commerce.html). Cite "
+                "spy-ground-batch-live-cash-20260905-18 — do not remint.\n"
+            ).encode("utf-8"),
+        ),
+    ),
+    "GRANTS.md": (
+        (
+            "bass-grants-live-cash-v2",
+            (
+                "\n## Live cash\n\n"
+                "Verified product pages only — no invented Stripe links.\n\n"
+                "- [$29 Autopsy checkout](./agent-rescue.html)\n"
+                "- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)\n"
+                "- [$199 referral diagnostic](./referral-intake-completeness.html)\n"
+                "- [$199 repair diagnostic](./repair-booking-preflight.html)\n"
+                "- [$199 plant diagnostic](./plant-downtime-handoff.html)\n\n"
+                "Shelf: [tools-cash.html](./tools-cash.html) · "
+                "[commerce.html](./commerce.html).\n\n"
+            ).encode("utf-8"),
+        ),
+    ),
+}
 
 
 class DocketError(ValueError):
@@ -79,6 +114,22 @@ def _blob_bytes(root: Path, oid: str) -> bytes:
 
 def _current_blob(root: Path, path: str) -> str:
     return _git(root, "rev-parse", "HEAD:%s" % path)
+
+
+def _git_blob_oid(data: bytes) -> str:
+    header = b"blob " + str(len(data)).encode("ascii") + b"\0"
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def _normalize_provenance_successors(path: str, data: bytes) -> tuple[bytes, list[str]]:
+    applied: list[str] = []
+    for label, successor in PROVENANCE_SUCCESSORS.get(path, ()):
+        count = data.count(successor)
+        _require(count <= 1, "%s successor %s is ambiguous" % (path, label))
+        if count == 1:
+            data = data.replace(successor, b"", 1)
+            applied.append(label)
+    return data, applied
 
 
 def _earliest_add_record(root: Path, path: str) -> tuple[str, str, str]:
@@ -174,12 +225,30 @@ def _validate_provenance(root: Path, value: dict, at: str, phrase: str) -> None:
         "evidence_key", "statement",
     }
     _exact_keys(value, required, at)
-    raw = _validate_source(root, {key: value[key] for key in (
+    source = {key: value[key] for key in (
         "path", "blob_sha", "sha256", "byte_count", "public_url"
-    )}, at)
+    )}
+    path = _safe_path(source["path"], at)
+    _require(isinstance(source["blob_sha"], str) and bool(HEX40.fullmatch(source["blob_sha"])), "%s blob_sha invalid" % at)
+    _require(isinstance(source["sha256"], str) and bool(HEX64.fullmatch(source["sha256"])), "%s sha256 invalid" % at)
+    _require(type(source["byte_count"]) is int and source["byte_count"] > 0, "%s byte_count invalid" % at)
+    expected_url = "https://github.com/woahwhattheheck/commons/blob/main/%s" % path
+    _require(source["public_url"] == expected_url, "%s public_url mismatch" % at)
+    actual_oid = _current_blob(root, path)
+    current_raw = _blob_bytes(root, actual_oid)
+    baseline_raw, _ = _normalize_provenance_successors(path, current_raw)
+    _require(
+        _git_blob_oid(baseline_raw) == source["blob_sha"],
+        "%s source blob drift: %s" % (at, actual_oid),
+    )
+    _require(len(baseline_raw) == source["byte_count"], "%s byte_count drift" % at)
+    _require(
+        hashlib.sha256(baseline_raw).hexdigest() == source["sha256"],
+        "%s sha256 drift" % at,
+    )
     _require(isinstance(value["evidence_key"], str) and value["evidence_key"], "%s evidence_key empty" % at)
     _require(isinstance(value["statement"], str) and value["statement"], "%s statement empty" % at)
-    _require(phrase.lower() in raw.decode("utf-8").lower(), "%s evidence phrase missing" % at)
+    _require(phrase.lower() in current_raw.decode("utf-8").lower(), "%s evidence phrase missing" % at)
 
 
 def _validate_receipt(root: Path, receipt: dict, source_path: str, at: str) -> None:
