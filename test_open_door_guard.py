@@ -316,44 +316,39 @@ def main():
     binding_violations = guard.scan_added(binding_lines)
     assert binding_violations == [], binding_violations
 
-    # Run 34189413855 / SHA 95c5b22: explicit-WOOL consumer stored per-objective
-    # selected game plans in a field named `choices` next to `action`. That is
-    # a result map, not an Action Pad verb enum. The collocation still fails;
-    # the renamed field must pass, and the live experiment source must stay clean.
-    wool_blocked = "\n".join(
-        [
-            diff(
-                "revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py",
-                [
-                    "out = {'original_action': deepcopy(action), 'choices': {}, 'counts': {}}",
-                ],
-            ),
-            diff(
-                "revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py",
-                [
-                    "out['choices'][tie] = {'action': chosen, 'changed': chosen != action}",
-                ],
-            ),
-        ]
+    # Run 34190268951 / SHA 285dedd: TRACE-9042 completeness tests mutate a
+    # retained cell's recorded player-view field and then call a unittest
+    # helper. Collocating `seat` with `reject` on one line is still an
+    # admission phrase. Split assignment and helper remain data checks.
+    report_cell_path = (
+        "revenue/kaggriculture/cloud-execution-lab/trace-cache-checks/"
+        "test_report_completeness.py"
     )
-    assert rules(wool_blocked) == {"verb-enum"}, rules(wool_blocked)
-
-    wool_allowed = diff(
-        "revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py",
+    report_cell_blocked = diff(
+        report_cell_path,
         [
-            "out = {'original_action': deepcopy(action), 'by_objective': {}, 'counts': {}}",
-            "out['by_objective'][tie] = {'action': chosen, 'changed': chosen != action}",
+            "def test_wrong_view_seat(self):self.data['uncached']['cells'][0]['seat']=1;self.reject()"
         ],
     )
-    assert guard.scan_diff(wool_allowed) == [], guard.scan_diff(wool_allowed)
-
-    wool_path = Path("revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py")
-    wool_lines = [
-        guard.AddedLine(wool_path.as_posix(), line_number, text)
-        for line_number, text in enumerate(wool_path.read_text(encoding="utf-8").splitlines(), 1)
+    assert rules(report_cell_blocked) == {"admission-phrase"}, rules(report_cell_blocked)
+    report_cell_allowed = diff(
+        report_cell_path,
+        [
+            "def test_wrong_view_seat(self):",
+            "    self.data['uncached']['cells'][0]['seat']=1",
+            "    self.reject()",
+        ],
+    )
+    assert guard.scan_diff(report_cell_allowed) == [], guard.scan_diff(report_cell_allowed)
+    completeness_path = Path(report_cell_path)
+    completeness_lines = [
+        guard.AddedLine(completeness_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            completeness_path.read_text(encoding="utf-8").splitlines(), 1
+        )
     ]
-    wool_violations = guard.scan_added(wool_lines)
-    assert wool_violations == [], wool_violations
+    completeness_violations = guard.scan_added(completeness_lines)
+    assert completeness_violations == [], completeness_violations
 
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
