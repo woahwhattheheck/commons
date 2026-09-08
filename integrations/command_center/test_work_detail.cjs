@@ -31,10 +31,10 @@ const clone=v=>JSON.parse(JSON.stringify(v));
 const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
 const item={id:'task-1',source_id:'source-1',title:'Fixture task',status:'open',next_action:'Source next action',owner_work:{priority:3,next_action:'Old next action',job:{id:'existing/job',objective:'Old objective',dispatch_status:'not_dispatched',status:'prepared'}}};
 function harness(records=null,registered=[],sourceRows=[]){
-  const body=new Element('body'),copies=[],updates=[];let stored=clone(item),readGate=null,reads=0;
+  const body=new Element('body'),copies=[],updates=[],requests=[];let stored=clone(item),readGate=null,reads=0;
   const document={body,createElement:tag=>{const n=new Element(tag);n.ownerDocument=document;return n;},getElementById:id=>walk(body).find(n=>n.id===id)};
   const focus=new Element('section');focus.id='view-focus';const main=new Element('div');main.className='main-column';const side=new Element('div');side.className='side-column';focus.append(main,side);body.append(focus);const stats=new Element('div');stats.id='focus-stats';body.append(stats);const ops=new Element('div');ops.id='recent-operations';const panel=new Element('div');panel.append(ops);main.append(panel);
-  const api={getState:()=>({sessions:registered}),showToast(){},getTools:()=>[],request:async()=>{reads++;const response={body:{sources:clone(sourceRows),items:records?clone(records):[clone(stored)]}};if(readGate){const gate=readGate;readGate=null;await gate.promise;}return response;},updateWork:async(key,payload)=>{
+  const api={getState:()=>({sessions:registered}),showToast(){},getTools:()=>[],request:async endpoint=>{requests.push(endpoint);reads++;const response={body:{sources:clone(sourceRows),items:records?clone(records):[clone(stored)]}};if(readGate){const gate=readGate;readGate=null;const outcome=await gate.promise;if(outcome instanceof Error)throw outcome;if(outcome?.body)return outcome;}return response;},updateWork:async(key,payload)=>{
     updates.push(clone(payload));stored.owner_work={...stored.owner_work,priority:payload.priority,next_action:payload.next_action};
     if(Object.hasOwn(payload,'job'))stored.owner_work.job=payload.job===null?null:{...payload.job,id:'saved-operation/job',status:'prepared',dispatch_status:'not_dispatched'};
     return true;
@@ -43,8 +43,8 @@ function harness(records=null,registered=[],sourceRows=[]){
   source=source.replace(/^  section\('[^\n]+\n/gm,'');
   const boundary=source.indexOf("  $('refresh-button').addEventListener");assert.ok(boundary>0);
   const events={};const ctx=vm.createContext({document,window:{CommonsPanel:api,addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async s=>copies.push(JSON.parse(s))}},URL,console});
-  vm.runInContext(source.slice(0,boundary)+`const overview=renderOverview;renderView=()=>{};renderOverview=()=>{};renderFleetJobs=()=>{};globalThis.ui={refresh,overview,native:renderNativeTasks,inspect:(id)=>showDetail(id?items().find(i=>i.id===id):items()[0])};})();`,ctx);
-  return {ui:ctx.ui,body,document,copies,updates,coreEvent:()=>events['commons-state'](),advanceAge:()=>stored.age_seconds=(stored.age_seconds||0)+1,get reads(){return reads;},holdRead(){readGate=deferred();return readGate;},reloadFixture(){stored=JSON.parse(JSON.stringify(stored));},externalChange(){stored.owner_work.next_action='Externally refreshed action';}};
+  vm.runInContext(source.slice(0,boundary)+`const overview=renderOverview;renderView=()=>{};renderOverview=()=>{};renderFleetJobs=()=>{};globalThis.ui={state:()=>({snapshot,error}),refresh,overview,native:renderNativeTasks,inspect:(id)=>showDetail(id?items().find(i=>i.id===id):items()[0])};})();`,ctx);
+  return {ui:ctx.ui,body,document,copies,updates,requests,coreEvent:()=>events['commons-state'](),advanceAge:()=>stored.age_seconds=(stored.age_seconds||0)+1,get reads(){return reads;},holdRead(){readGate=deferred();return readGate;},reloadFixture(){stored=JSON.parse(JSON.stringify(stored));},externalChange(){stored.owner_work.next_action='Externally refreshed action';}};
 }
 async function edit(h,{priority='0',next='Saved next action',job='{"objective":"Saved objective"}'}={}){
   const detail=h.document.getElementById('work-detail');await button(detail,'Set priority / next action').fire('click');
@@ -167,4 +167,79 @@ test('Native tasks project all matches separately with exact links, unknown reta
   await button(h.document.getElementById('native-task-rows'),'Inspect task').fire('click');const detail=h.document.getElementById('work-detail');assert.match(content(detail),/Conversation metadata updated/);assert.match(content(detail),/Unknown read time/);assert.match(content(detail),/Unknown activity time/);
   await button(detail,'Copy bounded job packet').fire('click');const packet=h.copies.at(-1);assert.equal(packet.work_id,'native-80');assert.equal(packet.source_id,'codex-native-fleet');assert.equal(packet.priority,'0');assert.equal(packet.prepared_job.id,'stable/job');assert.equal(packet.prepared_job.dispatch_status,'not_dispatched');assert.equal(packet.activity_observed_at,undefined);
   assert.equal(h.updates.length,0);assert.equal(JSON.stringify({registered,rows,sourceRows}),before);
+});
+
+// Refresh concurrency uses the actual work.js body, with controlled API replies.
+const tick=()=>new Promise(resolve=>setImmediate(resolve));
+test('manual refresh during an ordinary read issues one forced request and waits for it',async()=>{
+  const h=harness(),first=h.holdRead(),ordinary=h.ui.refresh();
+  let done=false;const manual=h.ui.refresh(true).then(()=>done=true);
+  const forced=h.holdRead();first.resolve();await ordinary;await tick();
+  assert.deepEqual(h.requests,['/api/work','/api/work?refresh=1']);
+  assert.equal(done,false,'Manual refresh resolves only after its forced read');
+  forced.resolve();await manual;assert.equal(done,true);
+});
+test('repeated manual refreshes waiting on one read coalesce without request fanout',async()=>{
+  const h=harness(),first=h.holdRead(),ordinary=h.ui.refresh();
+  const callers=Array.from({length:20},()=>h.ui.refresh(true));
+  first.resolve();await Promise.all([ordinary,...callers]);
+  assert.deepEqual(h.requests,['/api/work','/api/work?refresh=1']);
+});
+test('ordinary polls share their active read without queuing another request',async()=>{
+  const h=harness(),first=h.holdRead(),ordinary=h.ui.refresh();
+  const polls=Array.from({length:20},()=>h.ui.refresh());
+  assert.ok(polls.every(p=>p===ordinary));first.resolve();await Promise.all(polls);
+  assert.deepEqual(h.requests,['/api/work']);
+});
+test('a manual request upgrades a queued post-save read without losing saved detail',async()=>{
+  const h=harness();await h.ui.refresh();h.ui.inspect();
+  const first=h.holdRead(),ordinary=h.ui.refresh(),e=await edit(h);
+  const save=e.submit();await tick();const manual=h.ui.refresh(true);
+  first.resolve();await Promise.all([ordinary,save,manual]);
+  assert.deepEqual(h.requests,['/api/work','/api/work','/api/work?refresh=1']);
+  await button(h.document.getElementById('work-detail'),'Copy bounded job packet').fire('click');
+  assert.equal(h.copies.at(-1).next_action,'Saved next action');
+  assert.equal(h.copies.at(-1).priority,0);
+});
+test('a save can share a queued forced read that has not started before the edit',async()=>{
+  const h=harness();await h.ui.refresh();h.ui.inspect();
+  const first=h.holdRead(),ordinary=h.ui.refresh(),manual=h.ui.refresh(true);
+  const e=await edit(h),save=e.submit();await tick();first.resolve();
+  await Promise.all([ordinary,manual,save]);
+  assert.deepEqual(h.requests,['/api/work','/api/work','/api/work?refresh=1']);
+  await button(h.document.getElementById('work-detail'),'Copy bounded job packet').fire('click');
+  assert.equal(h.copies.at(-1).prepared_job.id,'saved-operation/job');
+});
+test('a save after the forced read starts still requires a new post-save read',async()=>{
+  const h=harness();await h.ui.refresh();h.ui.inspect();
+  const first=h.holdRead(),ordinary=h.ui.refresh(),manual=h.ui.refresh(true);
+  const forced=h.holdRead();first.resolve();await ordinary;await tick();
+  assert.deepEqual(h.requests,['/api/work','/api/work','/api/work?refresh=1']);
+  const e=await edit(h),save=e.submit();await tick();forced.resolve();
+  await Promise.all([manual,save]);
+  assert.deepEqual(h.requests,['/api/work','/api/work','/api/work?refresh=1','/api/work']);
+  await button(h.document.getElementById('work-detail'),'Copy bounded job packet').fire('click');
+  assert.equal(h.copies.at(-1).next_action,'Saved next action');
+});
+test('a queued manual refresh runs after a failed active read and clears the error',async()=>{
+  const h=harness();await h.ui.refresh();const prior=h.ui.state().snapshot;
+  const first=h.holdRead(),ordinary=h.ui.refresh(),manual=h.ui.refresh(true);
+  const forced=h.holdRead();first.resolve(new Error('Fixture read failure'));await ordinary;await tick();
+  assert.equal(h.ui.state().error,'Fixture read failure');assert.equal(h.ui.state().snapshot,prior);
+  assert.deepEqual(h.requests,['/api/work','/api/work','/api/work?refresh=1']);
+  forced.resolve();await manual;assert.equal(h.ui.state().error,'');
+});
+test('a failed forced read preserves old data and permits a subsequent manual retry',async()=>{
+  const h=harness();await h.ui.refresh();
+  const first=h.holdRead(),ordinary=h.ui.refresh(),manual=h.ui.refresh(true);
+  const forced=h.holdRead();first.resolve();await ordinary;await tick();
+  const prior=h.ui.state().snapshot;forced.resolve(new Error('Fixture forced failure'));await manual;
+  assert.equal(h.ui.state().error,'Fixture forced failure');assert.equal(h.ui.state().snapshot,prior);
+  await h.ui.refresh(true);
+  assert.deepEqual(h.requests,['/api/work','/api/work','/api/work?refresh=1','/api/work?refresh=1']);
+  assert.equal(h.ui.state().error,'');
+});
+test('manual refresh when idle and ordinary refresh after completion keep their distinct URLs',async()=>{
+  const h=harness();await h.ui.refresh(true);await h.ui.refresh();
+  assert.deepEqual(h.requests,['/api/work?refresh=1','/api/work']);
 });
