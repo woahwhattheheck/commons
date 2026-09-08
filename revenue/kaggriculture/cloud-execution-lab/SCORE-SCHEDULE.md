@@ -64,6 +64,19 @@ is a few milliseconds here; it does not by itself explain T15's one-second COK
 timeouts. No held attempt is replaced, no new game seed or full-game panel is
 used, and this is not a whole-agent deadline repair or strength/promotion claim.
 
+## Whole-actor follow-through
+
+The completed scorer-only consumer comparison is in
+[SCORE-SCHEDULE-WHOLE-ACTOR.md](SCORE-SCHEDULE-WHOLE-ACTOR.md) and its adjacent
+JSON (PR10114). Eight alternating-order pairs preserve all11,504 recorded
+actor actions and selected diagnostics. Five pairs are faster, but aggregate
+action time rises48.952s to49.374s and median per-process maximum rises94.94ms
+to105.91ms. This does not establish a general whole-actor or tail-latency
+improvement. All raw repetitions, exact source/input identities and a runnable
+reproduction are retained. The component table above remains unchanged; its
+percentages must not be transferred to the complete actor. This comparison
+does not include later peer ledger/projection/queue changes.
+
 ## Consuming integration
 
 T15/RULE and T08 can consume the same callable from the next repository-source
