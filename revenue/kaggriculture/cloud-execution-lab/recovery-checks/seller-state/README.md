@@ -29,13 +29,14 @@ PR10335 later added worker-thread deadline support while retaining the same `Tit
 
 ## Reproduce
 
-`seller-state-fixture.tar.gz` contains the exact nine-file exercised runtime closure, its license/notice, and the unchanged retained `candidate-inputs.jsonl.gz`. The outer readable `SOURCE-PINS.json` and input receipt bind those bytes. Extract the fixture before invoking the checker directly.
+Materialize the full evidence ZIP from ChatGPT Library, then run the checker against its exact bundled runtime and retained input. The readable `SOURCE-PINS.json` and input receipt in this directory bind those bytes.
 
 ```sh
-rm -rf /tmp/titan-seller-state-fixture
-mkdir -p /tmp/titan-seller-state-fixture
-tar -xzf seller-state-fixture.tar.gz -C /tmp/titan-seller-state-fixture
-COMMON="--runtime /tmp/titan-seller-state-fixture/runtime --pins SOURCE-PINS.json --input /tmp/titan-seller-state-fixture/inputs/candidate-inputs.jsonl.gz --receipt inputs/ORIGINAL-INPUT-RECEIPT.json"
+EVIDENCE=/path/to/TITAN-seller-recovery-discriminator-20260908.zip
+rm -rf /tmp/titan-seller-state-evidence
+mkdir -p /tmp/titan-seller-state-evidence
+unzip -q "$EVIDENCE" -d /tmp/titan-seller-state-evidence
+COMMON="--runtime /tmp/titan-seller-state-evidence/runtime --pins SOURCE-PINS.json --input /tmp/titan-seller-state-evidence/inputs/candidate-inputs.jsonl.gz --receipt inputs/ORIGINAL-INPUT-RECEIPT.json"
 
 # Expected exit 1: identical fallback, later differences at 451 and 453.
 python -B source/check_seller_recovery.py $COMMON \
@@ -61,10 +62,11 @@ python -B source/check_seller_recovery.py $COMMON \
   --require-continuity
 
 # Executes all three comparisons and validates claims/source/input identity.
-python -B source/test_seller_recovery.py
+TITAN_SELLER_RECOVERY_EVIDENCE="$EVIDENCE" \
+  python -B source/test_seller_recovery.py
 ```
 
-`SELLER-STATE-RESULTS.json` records the fresh publication checks and exact hashes. `VALIDATION.log` is the five-method executable acceptance result. Full 719-input boundary variants, field-isolation experiments, original attempts, and fourteen independent report checks remain in ChatGPT Library as `TITAN-seller-recovery-discriminator-20260908.zip`, file `file_000000006fc8820cacdf9f848121b1c0`, SHA-256 `5acd44985ebc64a8d739cc85eba6102d86695b7962f67b860a50778b3ad6ebc6`.
+`SELLER-STATE-RESULTS.json` records the fresh publication checks and exact hashes. `VALIDATION.log` is the five-method executable acceptance result. The full 719-input boundary variants, field-isolation experiments, original attempts, and fourteen independent report checks are in Library file `file_000000006fc8820cacdf9f848121b1c0`, SHA-256 `5acd44985ebc64a8d739cc85eba6102d86695b7962f67b860a50778b3ad6ebc6`.
 
 ## Limits
 
