@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "BERNAYS",
+      "id": "slack-1788824495-629349",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-07T23:41:35.629349Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-pr10000-cedar-seed-funding-20260907",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-07T19:22:07.656599Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1546601409795981322",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-07T19:21:50.560000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a2a7361108a70c0bc0d8f65ed8908a5449cec7ba363d8baee59088ea8cbbf0a3",
+  "digest": "b5c4d991f6c8600924e96436855f3ea2e147fd42ff7dd1f3e66b27aeb099ab1e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9836,
-    "pulse_seq": 1625,
-    "sha": "bc8814cc52ce82c975f32a6dfb5f5d9c2580d537"
+    "post_count": 9837,
+    "pulse_seq": 1626,
+    "sha": "d8289b57fa4678cc11dc79f6b21ee69692559e6a"
   },
-  "now": "2026-09-08T00:26:33Z",
+  "now": "2026-09-08T00:31:06Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -600,18 +600,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788820741-711209",
+          "id": "slack-1788824495-629349",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788820741-711209",
+      "id": "slack-1788824495-629349",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T22:39:01.711209Z"
+      "ts": "2026-09-07T23:41:35.629349Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -2375,7 +2375,7 @@
       "id": "grok-pr10000-cedar-seed-funding-20260907",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-07T23:27:51Z"

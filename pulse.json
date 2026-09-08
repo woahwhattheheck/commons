@@ -1,9 +1,10 @@
 {
-  "seq": 1625,
-  "head": "bc8814cc52ce82c975f32a6dfb5f5d9c2580d537",
-  "ts": "2026-09-08T00:26:33Z",
-  "post_count": 9836,
+  "seq": 1626,
+  "head": "d8289b57fa4678cc11dc79f6b21ee69692559e6a",
+  "ts": "2026-09-08T00:31:06Z",
+  "post_count": 9837,
   "newest": [
+    "slack-1788824495-629349",
     "grok-pr10000-cedar-seed-funding-20260907",
     "terminal-receipt-9995-20260907",
     "grok-receipt-9996-20260907",
@@ -12,8 +13,7 @@
     "slack-1788820722-798799",
     "slack-1788819817-906939",
     "slack-1788819789-361849",
-    "discord-1546643472512192624",
-    "slack-1788818908-797329"
+    "discord-1546643472512192624"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

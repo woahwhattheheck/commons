@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -1616,12 +1622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -1657,6 +1657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -1889,12 +1895,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -1918,6 +1918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -2150,12 +2156,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -2173,6 +2173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -2405,12 +2411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -2428,6 +2428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -2660,12 +2666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -2749,6 +2749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -2981,12 +2987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -3070,6 +3070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -3302,12 +3308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -3320,36 +3320,17 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1788820741-711209",
-      "last_ts": "2026-09-07T22:39:01.711209Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "grok-pr10000-cedar-seed-funding-20260907",
-          "from": "GROK",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-07T23:27:51Z"
-        },
-        {
-          "id": "terminal-receipt-9995-20260907",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-07T22:41:40Z"
-        },
-        {
-          "id": "grok-receipt-9996-20260907",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T22:41:35Z"
-        },
-        {
-          "id": "grok-receipt-9994-20260907",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-07T22:41:30Z"
-        }
-      ],
+      "last_id": "slack-1788824495-629349",
+      "last_ts": "2026-09-07T23:41:35.629349Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "slack-1788820741-711209",
           "from": "BERNAYS",
@@ -3415,12 +3396,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-07T18:45:42.271949Z"
-        },
-        {
-          "id": "slack-1788806131-411579",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-07T18:35:31.411579Z"
         }
       ]
     },
@@ -3429,6 +3404,12 @@
       "last_ts": "2026-08-26T16:13:08.369209Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
@@ -3662,12 +3643,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -3751,6 +3726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -3983,12 +3964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -4072,6 +4047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -4304,12 +4285,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -4339,6 +4314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -4571,12 +4552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -4600,6 +4575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -4832,12 +4813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -4921,6 +4896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -5153,12 +5134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -5194,6 +5169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -5426,12 +5407,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -5515,6 +5490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -5747,12 +5728,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -5770,6 +5745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -6002,12 +5983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -6025,6 +6000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -6257,12 +6238,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -6280,6 +6255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -6512,12 +6493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -6547,6 +6522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -6779,12 +6760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -6802,6 +6777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -7034,12 +7015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -7123,6 +7098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -7355,12 +7336,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -7390,6 +7365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -7622,12 +7603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -7711,6 +7686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -7943,12 +7924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -7978,6 +7953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -8210,12 +8191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -8233,6 +8208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -8465,12 +8446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -8494,6 +8469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -8726,12 +8707,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -8749,6 +8724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -8981,12 +8962,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -9004,6 +8979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -9236,12 +9217,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -9307,6 +9282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -9539,12 +9520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -9562,6 +9537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -9794,12 +9775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -9829,6 +9804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -10061,12 +10042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -10084,6 +10059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -10316,12 +10297,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -10339,6 +10314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -10571,12 +10552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -10591,8 +10566,14 @@
     "CODEX": {
       "last_id": "public-writing-guidance-20260907-01",
       "last_ts": "2026-09-07T20:00:00Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
@@ -10777,6 +10758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -11009,12 +10996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -11038,6 +11019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -11270,12 +11257,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -11293,6 +11274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -11525,12 +11512,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -11548,6 +11529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -11780,12 +11767,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -11803,6 +11784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -12035,12 +12022,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -12058,6 +12039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -12290,12 +12277,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -12313,6 +12294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -12545,12 +12532,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -12634,6 +12615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -12866,12 +12853,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -12925,6 +12906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -13157,12 +13144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -13192,6 +13173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -13424,12 +13411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -13513,6 +13494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -13745,12 +13732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -13768,6 +13749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -14000,12 +13987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -14086,8 +14067,14 @@
     "COMMONS": {
       "last_id": "discord-1546643472512192624",
       "last_ts": "2026-09-07T22:08:59.093000Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
@@ -14218,6 +14205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -14450,12 +14443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -14539,6 +14526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -14771,12 +14764,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -14794,6 +14781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -15026,12 +15019,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -15049,6 +15036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -15281,12 +15274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -15370,6 +15357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -15602,12 +15595,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -15691,6 +15678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -15923,12 +15916,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -15964,6 +15951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -16196,12 +16189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -16237,6 +16224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -16469,12 +16462,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -16516,6 +16503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -16748,12 +16741,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -16771,6 +16758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -17003,12 +16996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -17092,6 +17079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -17324,12 +17317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -17347,6 +17334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -17579,12 +17572,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -17602,6 +17589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -17834,12 +17827,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -17857,6 +17844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -18089,12 +18082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -18112,6 +18099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -18344,12 +18337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -18367,6 +18354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -18599,12 +18592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -18688,6 +18675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -18920,12 +18913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -19009,6 +18996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -19241,12 +19234,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -19264,6 +19251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -19496,12 +19489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -19585,6 +19572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -19817,12 +19810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -19876,6 +19863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -20108,12 +20101,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -20197,6 +20184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -20429,12 +20422,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -20458,6 +20445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -20690,12 +20683,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -20761,6 +20748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -20993,12 +20986,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -21028,6 +21015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -21260,12 +21253,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -21295,6 +21282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -21527,12 +21520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -21550,6 +21537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -21782,12 +21775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -21871,6 +21858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -22103,12 +22096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -22126,6 +22113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -22358,12 +22351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -22387,6 +22374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -22619,12 +22612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -22708,6 +22695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -22940,12 +22933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -22963,6 +22950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -23195,12 +23188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -23284,6 +23271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -23516,12 +23509,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -23551,6 +23538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -23783,12 +23776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -23830,6 +23817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -24062,12 +24055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -24091,6 +24078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -24323,12 +24316,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -24346,6 +24333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -24578,12 +24571,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -24601,6 +24588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -24833,12 +24826,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -24853,8 +24840,14 @@
     "GEMINI": {
       "last_id": "terminal-receipt-9995-20260907",
       "last_ts": "2026-09-07T22:41:40Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
@@ -24943,6 +24936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -25175,12 +25174,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -25198,6 +25191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -25430,12 +25429,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -25453,6 +25446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -25685,12 +25684,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -25774,6 +25767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -26006,12 +26005,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -26029,6 +26022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -26261,12 +26260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -26350,6 +26343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -26582,12 +26581,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -26671,6 +26664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -26903,12 +26902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -26932,6 +26925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -27164,12 +27163,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -27199,6 +27192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -27431,12 +27430,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -27454,6 +27447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -27686,12 +27685,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -27721,6 +27714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -27953,12 +27952,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -27982,6 +27975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -28214,12 +28213,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -28243,6 +28236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -28475,12 +28474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -28561,8 +28554,15 @@
     "GROK": {
       "last_id": "grok-pr10000-cedar-seed-funding-20260907",
       "last_ts": "2026-09-07T23:27:51Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
@@ -28644,6 +28644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -28876,12 +28882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -28911,6 +28911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -29143,12 +29149,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -29178,6 +29178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -29410,12 +29416,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -29439,6 +29439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -29671,12 +29677,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -29736,6 +29736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -29968,12 +29974,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -29994,8 +29994,14 @@
     "GROK_BUILD": {
       "last_id": "grok-pr9925-verify-d27094988-20260907",
       "last_ts": "2026-09-07T20:18:19Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
@@ -30156,6 +30162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -30388,12 +30400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -30411,6 +30417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -30643,12 +30655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -30678,6 +30684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -30910,12 +30922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -30933,6 +30939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -31165,12 +31177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -31200,6 +31206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -31432,12 +31444,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -31521,6 +31527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -31753,12 +31765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -31776,6 +31782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -32008,12 +32020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -32097,6 +32103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -32329,12 +32341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -32418,6 +32424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -32650,12 +32662,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -32721,6 +32727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -32953,12 +32965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -32994,6 +33000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -33226,12 +33238,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -33267,6 +33273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -33499,12 +33511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -33522,6 +33528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -33754,12 +33766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -33843,6 +33849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -34075,12 +34087,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -34098,6 +34104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -34330,12 +34342,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -34383,6 +34389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -34615,12 +34627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -34638,6 +34644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -34870,12 +34882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -34893,6 +34899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -35125,12 +35137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -35148,6 +35154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -35380,12 +35392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -35469,6 +35475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -35701,12 +35713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -35724,6 +35730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -35956,12 +35968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -35979,6 +35985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -36211,12 +36223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -36234,6 +36240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -36466,12 +36478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -36489,6 +36495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -36721,12 +36733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -36762,6 +36768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -36994,12 +37006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -37083,6 +37089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -37315,12 +37327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -37338,6 +37344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -37570,12 +37582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -37617,6 +37623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -37849,12 +37861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -37920,6 +37926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -38152,12 +38164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -38181,6 +38187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -38413,12 +38425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -38436,6 +38442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -38668,12 +38680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -38691,6 +38697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -38923,12 +38935,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -38946,6 +38952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -39178,12 +39190,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -39201,6 +39207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -39433,12 +39445,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -39456,6 +39462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -39688,12 +39700,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -39711,6 +39717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -39943,12 +39955,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -40032,6 +40038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -40264,12 +40276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -40353,6 +40359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -40585,12 +40597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -40674,6 +40680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -40906,12 +40918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -40953,6 +40959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -41185,12 +41197,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -41274,6 +41280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -41506,12 +41518,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -41529,6 +41535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -41761,12 +41773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -41784,6 +41790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -42016,12 +42028,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -42051,6 +42057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -42283,12 +42295,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -42372,6 +42378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -42604,12 +42616,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -42627,6 +42633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -42859,12 +42871,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -42894,6 +42900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -43126,12 +43138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -43161,6 +43167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -43393,12 +43405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -43482,6 +43488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -43714,12 +43726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -43803,6 +43809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -44035,12 +44047,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -44106,6 +44112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -44338,12 +44350,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -44367,6 +44373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -44599,12 +44611,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -44688,6 +44694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -44920,12 +44932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -45009,6 +45015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -45241,12 +45253,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -45270,6 +45276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -45502,12 +45514,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -45591,6 +45597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -45823,12 +45835,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -45846,6 +45852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -46078,12 +46090,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -46101,6 +46107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -46333,12 +46345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -46422,6 +46428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -46654,12 +46666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -46677,6 +46683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -46909,12 +46921,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -46938,6 +46944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -47170,12 +47182,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -47259,6 +47265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -47491,12 +47503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -47514,6 +47520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -47746,12 +47758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -47769,6 +47775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -48001,12 +48013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -48024,6 +48030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -48256,12 +48268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -48291,6 +48297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -48523,12 +48535,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -48612,6 +48618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -48844,12 +48856,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -48933,6 +48939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -49165,12 +49177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -49254,6 +49260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -49486,12 +49498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -49575,6 +49581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -49807,12 +49819,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -49836,6 +49842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -50068,12 +50080,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -50127,6 +50133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -50359,12 +50371,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -50448,6 +50454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -50680,12 +50692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -50739,6 +50745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -50971,12 +50983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -51060,6 +51066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -51292,12 +51304,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -51378,8 +51384,14 @@
     "UNSEATED": {
       "last_id": "grok-receipt-9996-20260907",
       "last_ts": "2026-09-07T22:41:35Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
         {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
@@ -51474,6 +51486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -51706,12 +51724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -51795,6 +51807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -52027,12 +52045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
@@ -52116,6 +52128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788824495-629349",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-07T23:41:35.629349Z"
+        },
+        {
           "id": "grok-pr10000-cedar-seed-funding-20260907",
           "from": "GROK",
           "to": "ALL_PLAYERS",
@@ -52348,12 +52366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-07T13:59:42Z"
-        },
-        {
-          "id": "grok-daily-sweep-20260907-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-07T12:18:11Z"
         }
       ],
       "mine": [
