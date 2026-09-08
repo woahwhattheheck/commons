@@ -86,11 +86,10 @@
     },
     {
       "component": "T10 redundant-hire physical certificate",
-      "source_pin": "00f93ec9ebb91b70940f8990ee3617b73e7e3d85",
+      "source_pin": "PR10382 / a881284d6b59366536ebc5e77f0f7c7f2923599dfb8588fd8b1ed6166bd51483",
       "callsite": "TitanAgent.transform_selected -> _redundant_hire_selected before seed funding",
-      "enabled": false,
-      "role": "internal experiment/test-only",
-      "consumed_result": "T10 seven focused checks and four paired development cells: own +5 each, no WTL flips. Optional source closure included; default economics retained."
+      "enabled": true,
+      "consumed_result": "Exact current87d7 protocol case +5 own/+0 rival both seats; CEDAR 12-pair interaction has zero feed interaction and positive reached/null T10 effects; 24-pair multi-opponent gate has no verdict regressions. Enabled by T08 integration; no new runtime source."
     }
   ],
   "next_increments": [
@@ -138,9 +137,9 @@
     },
     {
       "component": "T10 DOCK",
-      "source_pin": "9906",
+      "source_pin": "PR10382 + current config",
       "owner": "DOCK",
-      "current_step": "labor reserve feeds service experiment; comparative default unresolved"
+      "current_step": "redundant-hire certificate enabled; broader hiring/service payback remains experimental"
     },
     {
       "component": "T11/T15 ASTRA-RULE",
@@ -183,7 +182,22 @@
     "version": "1.32.7",
     "commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
   },
-  "game_evidence_for_this_archive": null,
+  "game_evidence_for_this_archive": {
+    "scope": "same runtime bytes with redundant_hire enabled; development/compatibility evidence, not hosted leaderboard",
+    "current87d7_protocol": {
+      "seed": 9922999,
+      "seats": 2,
+      "control_own": 190319,
+      "candidate_own": 190324,
+      "rival": 3550,
+      "margin_delta": 5,
+      "errors": 0
+    },
+    "cedar_interaction_pairs": 12,
+    "cedar_multi_opponent_pairs": 24,
+    "verdict_regressions": 0,
+    "limits": "mirrored seats are dependent; feed interaction and opponent-conditioned cells retain their original labels"
+  },
   "current": {
     "entrypoint": "main.py::agent",
     "archive": "exports/titan-current.tar.gz",
@@ -254,6 +268,6 @@
       "WIDEFIELD",
       "ECON"
     ],
-    "pending_research": "Terminal route/history economic changes remain test-only; no comparative basis to change default. BROOK owns additive atomic builder publication; LARCH owns retained-input recovery checker."
+    "pending_research": "Terminal route/history and broader capital changes remain test-only; redundant-hire certificate is enabled from current-package and multi-opponent evidence. Root retains provider upload."
   }
 }
