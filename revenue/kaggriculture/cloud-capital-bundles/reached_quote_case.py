@@ -21,7 +21,7 @@ from typing import Any, Mapping
 HERE = Path(__file__).resolve().parent
 DEPENDENCIES = {
     'hazel': ('cloud-capital-bundles/capital_routes.py', '00abee3c99641eb0ab1729fd80e6f9a5c783f373'),
-    'flow': ('cloud-capital-route-flow/dated_flow.py', '1070bcade1c0c3ed72f1f5ea7858621d875c130d'),
+    'flow': ('cloud-capital-route-flow/dated_flow.py', 'ddbbe439c93082ab68b2e7e8dcfe302bbee052e7'),
     'date': ('cloud-capital-scenarios/dated_scenarios.py', '5e418aeca191e71d281f669a9fdd9f4b0730617f'),
     'inputs': ('cloud-terminal-sell/reached_states.py', '24f8bd4cac2e88c609f309aa241eca8f3d1e05ee'),
     'programs': ('cloud-titan-composition/vendor/sell/reference/next-panel/vendor/arlene.py',
