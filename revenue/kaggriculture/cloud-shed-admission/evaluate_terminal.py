@@ -26,6 +26,8 @@ def main():
     ap.add_argument('--engine-dir',type=Path,required=True)
     ap.add_argument('--seeds',type=int,nargs='+',required=True)
     ap.add_argument('--out',type=Path,required=True)
+    ap.add_argument('--candidate', type=Path, help='Existing complete agent entrypoint; default is frozen SELL')
+    ap.add_argument('--seats', type=int, choices=[0,1], nargs='+', default=[0,1])
     ap.add_argument('--opponent',choices=['arlene','apex'],action='append')
     args=ap.parse_args()
     r=args.repo_root/'revenue/kaggriculture'
@@ -33,14 +35,20 @@ def main():
     ev=importlib.util.module_from_spec(spec);sys.modules[spec.name]=ev;spec.loader.exec_module(ev)
     engine,hashes=ev.get_engine(args.engine_dir)
     original_interpreter=engine.interpreter
-    candidate=str(r/'cloud-titan-composition/arms/sell.py')
+    candidate=str((args.candidate or r/'cloud-titan-composition/arms/sell.py').resolve())
+    if not Path(candidate).is_file():
+        ap.error(f'Candidate entrypoint does not exist: {candidate}')
+    candidate_identity={'entrypoint':candidate, 'entrypoint_sha256':hashlib.sha256(Path(candidate).read_bytes()).hexdigest()}
+    candidate_manifest=Path(candidate).with_name('SOURCE.json')
+    if candidate_manifest.is_file():
+        candidate_identity['source_manifest']=json.loads(candidate_manifest.read_text())
     opponents={'arlene':str(r/'cloud-frontier-policy/next-panel/vendor/arlene.py'),
                'apex':str(r/'cloud-frontier-policy/next-panel/vendor/apex/main.py')}
     rows=[];records=[]
     for seed in args.seeds:
         for opponent,opp_spec in opponents.items():
             if args.opponent and opponent not in args.opponent: continue
-            for player in (0,1):
+            for player in dict.fromkeys(args.seats):
                 capture={};trace=[]
                 def observed_interpreter(states,env):
                     initialized=bool(states[0].observation.get('farms'))
@@ -92,7 +100,7 @@ def main():
                 packed=gzip.compress(json.dumps(records,separators=(',',':')).encode(),mtime=0)
                 (args.out/'traces.json.gz').write_bytes(packed)
     summary={'kind':'new development; exact shared prefix with terminal-only branches',
-             'engine_hashes':hashes,'seeds':args.seeds,'games':len(rows),
+             'engine_hashes':hashes,'candidate':candidate_identity,'seeds':args.seeds,'seats':args.seats,'games':len(rows),
              'complete':sum(r['original_run']['status']=='complete' for r in rows),
              'changed':sum(r.get('report',{}).get('changed',False) for r in rows),
              'budget_exhausted':sum(r.get('report',{}).get('budget_exhausted',False) for r in rows),

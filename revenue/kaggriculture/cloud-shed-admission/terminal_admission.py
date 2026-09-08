@@ -355,12 +355,23 @@ class TerminalAdmissionAgent:
         self.search_options = search_options
         self.last_report = None
 
-    def act(self, observation: Mapping[str, Any], config: Mapping[str, Any]) -> dict:
+    def act(self, observation: Mapping[str, Any],
+            config: Mapping[str, Any] | None = None) -> dict:
+        # Preserve the supplied parent's invocation/input contract. Normalize
+        # only the detached admission view, after the single original call.
         selected = self.producer(observation, config)
-        if int(observation['step']) != int(config.get('episodeSteps',720)) - 2:
+        cfg = dict(config or {})
+        step = observation.get('step')
+        if step is None:
+            step = (int(observation['day']) * int(cfg.get('turnsPerDay', 24))
+                    + int(observation['hour']))
+        step = int(step)
+        if step != int(cfg.get('episodeSteps', 720)) - 2:
             self.last_report = {'changed':False,'reason':'nonterminal'}
             return selected
-        scenarios = self.scenario_model(observation, config)
+        normalized = dict(observation)
+        normalized['step'] = step
+        scenarios = self.scenario_model(normalized, cfg)
         action, self.last_report = optimize_terminal_admission(
-            self.engine, observation, config, selected, scenarios, **self.search_options)
+            self.engine, normalized, cfg, selected, scenarios, **self.search_options)
         return action
