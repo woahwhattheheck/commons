@@ -22,7 +22,15 @@ SIBLING_SOURCE_ROOTS = (
     'revenue/kaggriculture/cloud-economic-stress/funded_payback',
     'revenue/kaggriculture/cloud-quickstep',
     'revenue/kaggriculture/cloud-runtime-pulse',
+    'revenue/kaggriculture/cloud-opponent-league/lark-responsive',
 )
+
+
+def focused(text):
+    match = re.search(r'^  focused:\n(.*?)(?=^  [A-Za-z_][\w-]*:|\Z)', text, re.M | re.S)
+    if not match:
+        raise ValueError('Focused job is absent')
+    return match.group(1)
 
 
 def canonical(text):
@@ -48,6 +56,7 @@ class CanonicalBindingTests(unittest.TestCase):
     def setUpClass(cls):
         cls.text = WORKFLOW.read_text()
         cls.job = canonical(cls.text)
+        cls.focused = focused(cls.text)
 
     def test_canonical_sources_trigger_the_existing_workflow(self):
         triggers = self.text.split('  workflow_dispatch:', 1)[0]
@@ -71,6 +80,12 @@ class CanonicalBindingTests(unittest.TestCase):
                 self.assertIn("- '" + root + "/**'", triggers)
                 self.assertIn('            /' + root + '/\n', self.job)
                 self.assertIn("'" + root + "'", snapshot)
+
+    def test_focused_runtime_pulse_is_checked_out_and_snapshotted(self):
+        snapshot = step(self.focused, 'Record committed test and runtime inputs')
+        root = 'revenue/kaggriculture/cloud-runtime-pulse'
+        self.assertIn('            /' + root + '/\n', self.focused)
+        self.assertIn("'cloud-runtime-pulse'", snapshot)
 
     def test_actual_builder_check_never_rebuilds_the_checkout(self):
         body = step(self.job, 'Check the committed canonical package without rebuilding')
