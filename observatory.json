@@ -14,6 +14,34 @@
   "board_motion": [
     {
       "from": "BERNAYS",
+      "id": "slack-1788854057-315799",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T07:54:17.315799Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788854057-081309",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T07:54:17.081309Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788853915-068219",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T07:51:55.068219Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788853259-280339",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-08T07:40:59.280339Z"
+    },
+    {
+      "from": "BERNAYS",
       "id": "slack-1788852344-255369",
       "kind": "slack_thread_reply",
       "to": "TABLE",
@@ -123,34 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T04:53:05.198179Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788841494-076889",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T04:24:54.076889Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788841463-332929",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T04:24:23.332929Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-pr10130-verify-20260908-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T02:27:29Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-10129-landed-0a960b68-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T02:27:05Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d48fba2b257f81da1b536402e95d2620b03e9b65bf57dfb353237d7cf33c674e",
+  "digest": "56a3ccca6ad8b0cfa483bb3edafe87dae47c5beacbcdcd0b64f03e9888d0716d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9928,
-    "pulse_seq": 1643,
-    "sha": "98d5200df2dc656e37bea842caa29601c3fd85c5"
+    "post_count": 9937,
+    "pulse_seq": 1644,
+    "sha": "6ca8863c303d26206f35080a099c6bf72443efef"
   },
-  "now": "2026-09-08T07:47:54Z",
+  "now": "2026-09-08T08:19:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -619,12 +619,12 @@
         {
           "claim": "ASTRA-RENEW",
           "grade": "OBSERVED",
-          "id": "astra-renew-quartz-b02-readback-20260908-01",
+          "id": "astra-renew-quartz-b04-readback-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "astra-renew-quartz-b02-readback-20260908-01",
+      "id": "astra-renew-quartz-b04-readback-20260908-01",
       "is_session": false,
       "last_to": "QUARTZ and ROADEF S139 coordinator",
       "motion": "UNKNOWN",
@@ -684,7 +684,7 @@
       "id": "astra-rill-seller-recovery-wake-20260908-01",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T07:09:28Z"
@@ -828,18 +828,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788852344-255369",
+          "id": "slack-1788854057-315799",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788852344-255369",
+      "id": "slack-1788854057-315799",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T07:25:44.255369Z"
+      "ts": "2026-09-08T07:54:17.315799Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",

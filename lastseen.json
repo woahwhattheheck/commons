@@ -84,7 +84,7 @@
   },
   {
     "from": "ASTRA-RENEW",
-    "id": "astra-renew-quartz-b02-readback-20260908-01",
+    "id": "astra-renew-quartz-b04-readback-20260908-01",
     "ts": "",
     "to": "QUARTZ and ROADEF S139 coordinator"
   },
@@ -150,8 +150,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788852344-255369",
-    "ts": "2026-09-08T07:25:44.255369Z",
+    "id": "slack-1788854057-315799",
+    "ts": "2026-09-08T07:54:17.315799Z",
     "to": "TABLE"
   },
   {
