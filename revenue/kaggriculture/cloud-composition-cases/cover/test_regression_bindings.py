@@ -20,8 +20,16 @@ SOURCES = (
     PREFIX + 'cloud-market-game-theory/adaptive/test_capture_binding.py',
     PREFIX + 'cloud-market-game-theory/adaptive/recourse.py',
     PREFIX + 'cloud-execution-lab/test_score_schedule.py',
+    PREFIX + 'cloud-economic-stress/deadline_adapter.py',
+    PREFIX + 'cloud-economic-stress/test_runner.py',
 )
 NEW_STEPS = {
+    'Selected-market ledger schedule parity tests': (
+        PREFIX + 'cloud-selected-market-checks/test_ledger_schedule.py',
+        'ledger-schedule-tests.log'),
+    'Deadline cancellation regression tests': (
+        PREFIX + 'cloud-economic-stress/cancellation/test_deadline_cancellation.py',
+        'deadline-cancellation-tests.log'),
     'Adaptive actor capture binding tests': (
         SOURCES[1], 'capture-binding-tests.log'),
     'Dated market score schedule parity tests': (
@@ -47,7 +55,8 @@ class RegressionBindings(unittest.TestCase):
 
     def test_changed_sources_trigger_existing_workflow(self):
         paths = self.text.split('    paths:\n', 1)[1].split('  workflow_dispatch:', 1)[0]
-        for path in SOURCES + (PREFIX + 'cloud-composition-cases/cover/**',):
+        for path in SOURCES + (PREFIX + 'cloud-composition-cases/cover/**',
+                               PREFIX + 'cloud-economic-stress/cancellation/**'):
             with self.subTest(path=path):
                 self.assertIn("      - '" + path + "'\n", paths)
 
@@ -56,7 +65,8 @@ class RegressionBindings(unittest.TestCase):
         sparse = sparse.split('      - name:', 1)[0]
         for path in SOURCES + (
                 '.github/workflows/titan-selected-projection.yml',
-                PREFIX + 'cloud-composition-cases/cover/'):
+                PREFIX + 'cloud-composition-cases/cover/',
+                PREFIX + 'cloud-economic-stress/cancellation/'):
             with self.subTest(path=path):
                 self.assertIn('            /' + path + '\n', sparse)
 
@@ -69,6 +79,7 @@ class RegressionBindings(unittest.TestCase):
                      and any(isinstance(t, ast.Name) and t.id == 'roots' for t in node.targets))
         self.assertIn('cloud-market-game-theory/adaptive', roots)
         self.assertIn('cloud-composition-cases/cover', roots)
+        self.assertIn('cloud-economic-stress', roots)
         self.assertIn("paths.append(Path('.github/workflows/titan-selected-projection.yml'))", code)
 
     def test_suites_execute_once_with_preserved_failure_status(self):
@@ -92,6 +103,30 @@ class RegressionBindings(unittest.TestCase):
         self.assertIn('--report "$RUNNER_TEMP/projection-validation/capture-binding-results.json"', step)
         self.assertIn('      - uses: actions/upload-artifact@v4\n        if: ${{ always() }}', self.text)
         self.assertIn('          path: ${{ runner.temp }}/projection-validation/', self.text)
+
+    def test_cancellation_machine_readable_report_is_retained(self):
+        step = named_step(self.text, 'Deadline cancellation regression tests')
+        self.assertIn('--report "$RUNNER_TEMP/projection-validation/deadline-cancellation.json"', step)
+        self.assertNotIn('thread', step)
+        self.assertNotIn('pytest', step)
+
+    def test_checkout_and_snapshot_bind_the_same_event_commit(self):
+        self.assertIn('          ref: ${{ github.sha }}\n', self.text)
+        self.assertNotIn('github.event.pull_request.head.sha || github.sha', self.text)
+        step = named_step(self.text, 'Record committed test and runtime inputs')
+        self.assertIn("assert checkout == os.environ['GITHUB_SHA']", step)
+        self.assertIn("'source_context': context", step)
+        for key in ('event_sha', 'pull_request_head', 'pull_request_base', 'checkout_semantics'):
+            self.assertIn("'" + key + "'", step)
+
+    def test_ledger_runs_with_existing_official_engine_inputs(self):
+        step = named_step(self.text, 'Selected-market ledger schedule parity tests')
+        for option in ('--lab', '--evaluator', '--engine-loader', '--engine-cache', '--report'):
+            self.assertIn(option + ' ', step)
+        self.assertIn('ledger-schedule-results.json', step)
+        self.assertNotIn('--benchmark', step)
+        self.assertIn('            /' + PREFIX + 'cloud-selected-market-checks/\n', self.text)
+        self.assertIn("      - '" + PREFIX + "cloud-selected-market-checks/**'\n", self.text)
 
     def test_existing_seven_execution_suites_are_preserved(self):
         for name in (
