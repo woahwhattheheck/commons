@@ -53,6 +53,7 @@ def main():
     parser.add_argument('--repeats', type=int, default=21)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    args.baseline_source = args.baseline_source.resolve()
     if args.repeats < 3:
         parser.error('--repeats must be at least 3')
     if digest(args.baseline_source) != cases.BASELINE_SHA256:

@@ -81,3 +81,11 @@ Consumers continue to call `compare_queues` normally. This optimizes its existin
 conditional current-market reports; it does not add a funding certificate,
 future-price model, new policy, default selection or another prerequisite for
 an assembled-agent experiment.
+
+[`snapshot-cli-validation.json`](snapshot-cli-validation.json) records the
+benchmark CLI resolving a relative baseline path before matching its
+profiler source filename. A separate three-pair-per-workload CLI smoke returned
+exit 0 and nine matching reports after this portability correction. The retained
+21-pair timing record names its original benchmark hash at commit
+`c5f37cc881d3fccf2e8a3d0e16d62febbf3ba9b7`; its measurements are unchanged.
+The evaluator and tests are byte-identical across this CLI-only follow-through.
