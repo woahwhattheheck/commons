@@ -1,0 +1,8 @@
+{
+  "operation": "birch-history-joint-capacity-20260908",
+  "historical_source_ref": "2fc1418f3724ac09232e35a2a583414ce0ee8f84",
+  "historical_archive_sha256": "75740d430c8d137ad4074432f47b7480df1f6864b03e84a367c7e068d27f51ba",
+  "current_bridge_git_blob": "7967fb43c64bc3154fe7da609497873163c773eb",
+  "input": "committed consumer-history-v2 history_on result JSON only",
+  "actor_or_game_calls": 0
+}
