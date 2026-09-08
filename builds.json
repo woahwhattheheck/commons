@@ -353,13 +353,13 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 10095,
+   "number": 10123,
    "author": "woahwhattheheck",
-   "title": "Reuse detached state in selected production projections",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10095",
+   "title": "Reduce frozen SELL state-copy cost without changing scheduler decisions",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10123",
    "base_freshness": {
-    "base_sha": "e52ac5a6948c849074aa11941ecdcee92fcd65c3",
-    "main_sha": "9e5c43c1842f82213718ea8393af045c39204bfe",
+    "base_sha": "71b81d9f1a19ac2053b62f97b4ba7ab2f304eef5",
+    "main_sha": "27a265905fcb083101cffb22e58c48fc6bb3f42a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
