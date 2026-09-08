@@ -99,19 +99,38 @@ def format_line(row: dict[str, Any]) -> str:
 
 
 def recent_merges(limit: int = 8, cwd: Path | None = None) -> list[dict[str, Any]]:
-    raw = git(
-        ["log", "--first-parent", f"-{limit * 3}", "--format=%H\t%an\t%s"],
-        cwd=cwd,
-    )
+    """Return up to limit non-bake entries from one first-parent history.
+
+    Page by the last examined commit's first parent, not a fixed overscan or
+    offsets against moving HEAD. Long bake runs must not hide landed work.
+    """
+    if limit < 0:
+        raise ValueError("limit must be nonnegative")
+    if limit == 0:
+        return []
+    tip = git(["rev-parse", "--verify", "HEAD^{commit}"], cwd=cwd)
     rows: list[dict[str, Any]] = []
-    for line in raw.splitlines():
-        sha, author, subject = line.split("\t", 2)
-        parsed = parse_commit(sha, author, subject, cwd)
-        if parsed is None:
-            continue
-        rows.append(parsed)
-        if len(rows) >= limit:
+    while True:
+        raw = git(
+            ["log", "--first-parent", "-64", "--format=%H\t%an\t%s", tip, "--"],
+            cwd=cwd,
+        )
+        lines = raw.splitlines()
+        if not lines:
             break
+        for line in lines:
+            sha, author, subject = line.split("\t", 2)
+            parsed = parse_commit(sha, author, subject, cwd)
+            if parsed is not None:
+                rows.append(parsed)
+                if len(rows) >= limit:
+                    return rows
+        # Continue from the first parent, never rediscover HEAD between pages.
+        last_sha = lines[-1].split("\t", 1)[0]
+        parents = git(["rev-list", "--parents", "-n", "1", last_sha], cwd=cwd).split()
+        if len(parents) < 2:
+            break
+        tip = parents[1]
     return rows
 
 
@@ -177,6 +196,8 @@ def main(argv: list[str] | None = None) -> int:
                 )
             )
             return 1
+    if args.limit < 0:
+        parser.error("--limit must be nonnegative")
     packet = measure(args.limit)
     print(json.dumps(packet, indent=2, sort_keys=True))
     return 0
