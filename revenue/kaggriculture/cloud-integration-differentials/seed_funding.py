@@ -17,6 +17,17 @@ def _whole(value: Any, name: str, minimum: int = 0) -> int:
     return value
 
 
+def _cash(value: Any) -> int:
+    """Preserve integral numeric cash from the official float-valued farm state.
+
+    Convert only exact whole floats; never round fractional or nonfinite values.
+    Seed quantities, indices and cost metadata keep their integer-only checks.
+    """
+    if isinstance(value, float) and value.is_integer():
+        value = int(value)
+    return _whole(value, "own cash")
+
+
 def _quantity(order: Any) -> int:
     if not isinstance(order, list) or len(order) < 3:
         raise ValueError("quantity order must be a list with three fields")
@@ -57,7 +68,7 @@ def certify_seed_funding(
         mult = _whole(config.get("farmHandCostMult", 1), "hire multiplier")
         seat = _whole(post_unit_observation["player"], "player")
         farm = post_unit_observation["farms"][seat]
-        money = _whole(farm["money"], "own cash")
+        money = _cash(farm["money"])
         hires = _whole(farm["hires_today"], "hires_today")
         unlocked = farm["unlocked_quadrants"]
         if not isinstance(unlocked, list) or not unlocked:
