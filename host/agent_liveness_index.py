@@ -86,6 +86,16 @@ def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datet
     return normalized_utc
 
 
+def _fractional_digits(value: object) -> str:
+    """Canonical fractional seconds for an already validated timestamp.
+
+    Removing trailing zeros makes lexicographic order equal decimal order,
+    including an absent/zero fraction. No float or precision cap is needed.
+    """
+    match = re.search(r"\.([0-9]+)", str(value))
+    return match.group(1).rstrip("0") if match else ""
+
+
 def git_blob_sha(raw: bytes) -> str:
     return hashlib.sha1(f"blob {len(raw)}\0".encode("ascii") + raw).hexdigest()
 
@@ -132,6 +142,8 @@ def build_index(
 ) -> dict[str, Any]:
     observed = _timestamp(observed_at, "observed_at")
     assert observed is not None
+    observed_fraction = _fractional_digits(observed_at)
+    observed = observed.replace(microsecond=0)
     source_commit = _text(source_commit).lower()
     _require(
         len(source_commit) == 40 and all(ch in "0123456789abcdef" for ch in source_commit),
@@ -189,12 +201,16 @@ def build_index(
         else:
             # Validate and classify before discarding fractional seconds.
             # Truncation can admit future receipts and extend freshness windows.
-            delta = observed - parsed
-            _require(delta >= dt.timedelta(0), f"{actor}: last-seen timestamp is in the future")
-            age_seconds = delta // dt.timedelta(seconds=1)
-            if delta <= dt.timedelta(seconds=FRESH_SECONDS):
+            # datetime truncates after six fractional digits. Compare the
+            # whole-second delta with the original exact decimal fractions.
+            delta = observed - parsed.replace(microsecond=0)
+            receipt_fraction = _fractional_digits(lastseen_ts)
+            elapsed = (delta, observed_fraction)
+            _require(elapsed >= (dt.timedelta(0), receipt_fraction), f"{actor}: last-seen timestamp is in the future")
+            age_seconds = delta // dt.timedelta(seconds=1) - (observed_fraction < receipt_fraction)
+            if elapsed <= (dt.timedelta(seconds=FRESH_SECONDS), receipt_fraction):
                 freshness = "FRESH_6H"
-            elif delta <= dt.timedelta(seconds=RECENT_SECONDS):
+            elif elapsed <= (dt.timedelta(seconds=RECENT_SECONDS), receipt_fraction):
                 freshness = "RECENT_24H"
             else:
                 freshness = "STALE"
