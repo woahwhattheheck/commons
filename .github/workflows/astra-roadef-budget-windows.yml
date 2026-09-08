@@ -1,0 +1,50 @@
+name: ASTRA ROADEF budget-window research
+on:
+  push:
+    branches: [ci/astra-roadef-budget-windows-20260908]
+    paths: [.github/workflows/astra-roadef-budget-windows.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 47dfb2a9e66f237321f8a9d5b1305b2dc6198eac
+          sparse-checkout: revenue/roadef2026
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Preserve pinned candidate sources
+        run: |
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/commons-head.txt
+          cp revenue/roadef2026/cloud-optimizer/source.zip evidence/flora-source.zip
+          cp revenue/roadef2026/sedge/source.zip evidence/sedge-source.zip
+          cp revenue/roadef2026/cloud-optimizer/verify_resume.py evidence/
+          cp revenue/roadef2026/sedge/verify.py evidence/
+          sha256sum evidence/* > evidence/source-hashes.txt
+      - name: Pinned public challenge and checker
+        run: |
+          git clone -q https://gitlab.com/Orange-OpenSource/network-optimization-tools/challenge-roadef-2026.git challenge
+          git -C challenge checkout -q d84d319a7fdb8de3b1866830d2eaa2937871e5ae
+          git clone -q https://gitlab.com/Orange-OpenSource/network-optimization-tools/networktools.git networktools
+          git -C networktools checkout -q aebafc9ee91891e5d721bb86725e8cf1533877d1
+          git -C challenge rev-parse HEAD > evidence/challenge-head.txt
+          git -C networktools rev-parse HEAD > evidence/networktools-head.txt
+          make -C challenge/checker/src IDIRNT="$PWD/networktools/networktools" > evidence/checker-build.log 2>&1
+          tar --exclude=.git -czf evidence/official-local-inputs.tar.gz challenge networktools
+          printf 'Pinned public challenge inputs/checker for isolated experiments only; no submission, upload to competition, or result claim.\n' > evidence/scope.txt
+      - name: Evidence manifest
+        if: always()
+        run: |
+          (cd evidence && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-roadef-inputs-${{ github.run_id }}
+          path: evidence/
+          retention-days: 14
+          if-no-files-found: error
