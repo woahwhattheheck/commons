@@ -654,8 +654,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 12883,
-      "sha256": "001ce55c72d02571b6b80291c3a2fec6061f6a3243093fd8e0b4dd29f08c4d6c",
+      "bytes": 18405,
+      "sha256": "f718b435e58336acb223ee6e6a7ef7f6686d8916dd7f02733888eb9e98eaf066",
       "source_path": "titan_runtime.py"
     }
   },
