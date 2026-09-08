@@ -120,7 +120,7 @@ def market_case(seat=0, *, shed=None, carry=None, orders=(), rival_orders=(),
         e._drop_inventories_to_shed(privates[seat], capacity)
     after = deepcopy(states[seat].observation)
     after.update(step=step+1, day=(step+1)//24, hour=(step+1)%24)
-    REPORT['market_cases'].append({'seat': seat, 'step': step, 'orders': own['market'],
+    REPORT['market_cases'].append({'seat': seat, 'step': step, 'orders': deepcopy(own['market']),
         'rival_orders': deepcopy(list(rival_orders)), 'before_shed': deepcopy(before['private']['shed']),
         'post_unit_shed': deepcopy(post['private']['shed']), 'next_shed': deepcopy(after['private']['shed']),
         'own_cash': farms[seat]['money'], 'rival_cash': farms[1-seat]['money']})
@@ -295,6 +295,7 @@ class ObservedHistoryTests(unittest.TestCase):
         agent.observe(case[1],current_cfg)
         self.assertEqual(rows[-1]['orders'],original[2]['market'])
         self.assertEqual(rows[-1]['sale_receipts'],{'EGG':3})
+        self.assertEqual(REPORT['market_cases'][-1]['orders'],original[2]['market'])
 
     def test_invalid_queue_never_retries_the_parent(self):
         case=market_case()
