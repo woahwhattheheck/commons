@@ -6,6 +6,7 @@ import datetime
 import gzip
 import hashlib
 import importlib.util
+import io
 import json
 import os
 from pathlib import Path
@@ -102,6 +103,41 @@ def read_cell_result(path, item, returncode, freeze_sha256):
         return failed('child_exit_after_result')
     return result
 
+def publish_trajectory(partial, final, expected_transitions):
+    """Publish closed, synced gzip bytes after checking every recorded frame.
+
+    The final name is absent during recording. This checks capture integrity,
+    not game completion, and cannot prevent a later external file mutation.
+    Failed publication leaves the partial (or already-promoted file) intact.
+    """
+    if type(expected_transitions) is not int or expected_transitions < 0:
+        raise ValueError('Invalid recorded transition count')
+    with partial.open('r+b') as raw:
+        os.fsync(raw.fileno())
+        count = 0
+        with gzip.GzipFile(fileobj=raw, mode='rb') as stream:
+            for line in stream:
+                record = json.loads(line)
+                if (not isinstance(record, dict)
+                        or type(record.get('transition')) is not int
+                        or record['transition'] != count):
+                    raise ValueError('Noncontiguous trajectory transition at %s' % count)
+                count += 1
+        if count != expected_transitions:
+            raise ValueError('Trajectory count %s != recorded count %s'
+                             % (count, expected_transitions))
+        raw.seek(0)
+        digest = hashlib.sha256()
+        for block in iter(lambda: raw.read(1024 * 1024), b''):
+            digest.update(block)
+    partial.replace(final)
+    directory = os.open(final.parent, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(directory)
+    finally:
+        os.close(directory)
+    return digest.hexdigest()
+
 def cell(args):
     cfg, freeze_sha256 = load_job(args.config)
     ev = load_evaluator(cfg.get("evaluator", str(HERE.parent / "cloud-eval/evaluate.py")))
@@ -114,15 +150,37 @@ def cell(args):
     engine, engine_hashes = ev.get_engine(cfg['engine'], cfg['loader'])
     candidate, opponent = cfg['candidate'], cfg['opponents'][item['opponent']]
     specs = [candidate, opponent] if item['seat'] == 0 else [opponent, candidate]
-    with gzip.open(out / 'trajectory.jsonl.gz', 'wt', encoding='utf-8', compresslevel=1) as stream:
-        recorder = RecordingEngine(engine, stream)
-        result = ev.play(recorder, specs, cfg['engine'], cfg['loader'], item['seed'], item['seat'],
-                         cfg['rng_seed'], cfg['action_timeout'], cfg['startup_timeout'], cfg['game_timeout'], None)
-    result.update(opponent=item['opponent'], cell_id=item['id'], finished=now(),
-                  freeze_sha256=freeze_sha256,
-                  engine_sha256=engine_hashes, recorded_transitions=recorder.index)
-    result['trajectory_sha256'] = hashlib.sha256((out / 'trajectory.jsonl.gz').read_bytes()).hexdigest()
-    write_json(out / 'result.json', result)
+    final = out / 'trajectory.jsonl.gz'
+    partial = out / 'trajectory.jsonl.gz.partial'
+    recorder, result, stage = None, None, 'recording'
+    try:
+        with partial.open('xb') as raw:
+            # Preserve the original gzip header name despite staging elsewhere.
+            with gzip.GzipFile(filename=final.name, mode='wb', fileobj=raw, compresslevel=1) as compressed:
+                with io.TextIOWrapper(compressed, encoding='utf-8') as stream:
+                    recorder = RecordingEngine(engine, stream)
+                    result = ev.play(recorder, specs, cfg['engine'], cfg['loader'], item['seed'], item['seat'],
+                                     cfg['rng_seed'], cfg['action_timeout'], cfg['startup_timeout'], cfg['game_timeout'], None)
+        stage = 'publishing'
+        trajectory_sha256 = publish_trajectory(partial, final, recorder.index)
+        result.update(opponent=item['opponent'], cell_id=item['id'], finished=now(),
+                      freeze_sha256=freeze_sha256,
+                      engine_sha256=engine_hashes, recorded_transitions=recorder.index)
+        result['trajectory_sha256'] = trajectory_sha256
+        stage = 'result'
+        write_json(out / 'result.json', result)
+    except BaseException as exc:
+        try:
+            write_json(out / 'CAPTURE-ERROR.json', {
+                'error_type': type(exc).__name__, 'error': str(exc), 'stage': stage,
+                'partial': partial.name, 'trajectory': final.name,
+                'partial_exists': partial.exists(), 'trajectory_exists': final.exists(),
+                'recorded_transitions': recorder.index if recorder is not None else None,
+                'evaluator_result': result,
+            })
+        except Exception as diagnostic_error:
+            print('Capture diagnostic write failed: %s' % diagnostic_error, file=sys.stderr)
+        raise
     print(json.dumps({k: result[k] for k in ['cell_id', 'seed', 'candidate_seat', 'opponent', 'status', 'scores', 'failure', 'wall_seconds']}), flush=True)
     return int(result['status'] != 'complete')
 
