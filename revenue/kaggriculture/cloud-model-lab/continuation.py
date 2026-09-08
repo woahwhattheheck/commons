@@ -19,6 +19,7 @@ import argparse
 import copy
 import hashlib
 import importlib.util
+import inspect
 import json
 import os
 
@@ -62,11 +63,21 @@ def load_agent(spec):
     sp.loader.exec_module(mod)
     fn = getattr(mod, fn_name)
 
+    # Select the call shape without executing a policy. Retrying a body
+    # TypeError can advance a stateful continuation twice and hide its failure.
+    signature = inspect.signature(fn)
+    try:
+        signature.bind(None, None)
+    except TypeError:
+        signature.bind(None)
+        with_config = False
+    else:
+        with_config = True
+
     def call(obs, cfg=None):
-        try:
+        if with_config:
             return fn(obs, cfg)
-        except TypeError:
-            return fn(obs)
+        return fn(obs)
     return call, ident
 
 
