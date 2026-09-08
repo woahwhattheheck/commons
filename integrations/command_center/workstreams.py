@@ -12,7 +12,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .core import CoreError, _json, _metadata, _no_secret_fields
+from .schema import CoreError, _json, _metadata, _no_secret_fields
 
 SOURCE_FIELDS = {
     "id", "provider", "label", "sync_mode", "observed_at", "activity_as_of",

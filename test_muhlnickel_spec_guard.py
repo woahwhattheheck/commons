@@ -282,6 +282,47 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         coil = [e for e in errors if any(name in e for name in names)]
         self.assertEqual(coil, [])
 
+    def test_live_command_center_intake_files_stay_outside_activated_runtime(self):
+        """Collector submit/subprocess.run must not inherit a titan catalog id."""
+        here = Path(__file__).resolve().parent
+        names = [
+            "integrations/command_center/collectors.py",
+            "integrations/command_center/workstreams.py",
+            "integrations/command_center/schema.py",
+            "integrations/command_center/core.py",
+            "integrations/command_center/test_collector_pagination_evidence.py",
+            "integrations/command_center/test_collector_response_shapes.py",
+            "integrations/command_center/test_collectors.py",
+            "integrations/shared_equipment/provider_io.py",
+            "integrations/shared_equipment/services.py",
+        ]
+        with mock.patch.object(guard, "ROOT", here):
+            by_module, by_path = guard.load_module_facts()
+            missing = [name for name in names if name not in by_path]
+            self.assertEqual(missing, [])
+            reasons = []
+            for name in names:
+                closed = guard.closure(by_path[name], by_module)
+                reasons.extend("%s: %s" % (name, item) for item in guard.fact_reasons(closed))
+            self.assertEqual(reasons, [])
+
+    def test_kitchen_sink_equipment_import_still_rejects_activated_titan_catalog(self):
+        """A collector that imports a titan catalog module still trips the conjunction."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_catalog.py").write_text("SOURCE = 'kaggriculture'\n", encoding="utf-8")
+        (root / "collectors.py").write_text(
+            "import subprocess\nfrom concurrent.futures import ThreadPoolExecutor\n"
+            "from titan_catalog import SOURCE\n"
+            "def go():\n    return subprocess.run([SOURCE])\n"
+            "def launch():\n    return ThreadPoolExecutor().submit(go)\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        hit = [item for item in errors if item.startswith("collectors.py:")]
+        self.assertEqual(len(hit), 1)
+        self.assertIn("dynamic host code", hit[0])
+
     def test_null_byte_corpus_is_not_python_and_does_not_crash_the_scan(self):
         """Packed .mno bytes decode as UTF-8 but ast.parse raises ValueError on NUL."""
         td, root = self.init_repo()

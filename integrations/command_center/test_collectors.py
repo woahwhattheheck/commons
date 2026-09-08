@@ -262,5 +262,12 @@ class CollectorTests(unittest.TestCase):
             LiveCollectors(self.store, {"max_workers": 5}, equipment=self.provider)
 
 
+    def test_default_equipment_uses_provider_io(self):
+        from integrations.shared_equipment.provider_io import GitHubSlackEquipment
+        collector = LiveCollectors(self.store, {"github": {"enabled": False}, "slack": {"channels": []}})
+        self.assertIsInstance(collector.equipment, GitHubSlackEquipment)
+        self.assertTrue(callable(collector.equipment.github))
+        self.assertTrue(callable(collector.equipment.slack))
+
 if __name__ == "__main__":
     unittest.main()
