@@ -8,6 +8,9 @@ on:
       - 'revenue/kaggriculture/cloud-selected-market-checks/**'
       - 'revenue/kaggriculture/cloud-eval/**'
       - 'revenue/kaggriculture/20260907-offline-agent/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/integrated_selected.py'
+      - 'revenue/kaggriculture/cloud-integration-differentials/**'
+      - 'revenue/kaggriculture/cloud-composition-cases/cypress/**'
       - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/ordered_selected_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_ordered_selected_sell.py'
@@ -40,6 +43,11 @@ jobs:
             /revenue/kaggriculture/cloud-selected-market-checks/
             /revenue/kaggriculture/cloud-eval/
             /revenue/kaggriculture/20260907-offline-agent/
+            /revenue/kaggriculture/cloud-execution-lab/integrated_selected.py
+            /revenue/kaggriculture/cloud-integration-differentials/
+            /revenue/kaggriculture/cloud-composition-cases/cypress/
+            /revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/
+            /revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
             /revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py
             /revenue/kaggriculture/cloud-execution-lab/ordered_selected_sell.py
             /revenue/kaggriculture/cloud-execution-lab/test_ordered_selected_sell.py
@@ -61,7 +69,8 @@ jobs:
           out.mkdir()
           root = Path('revenue/kaggriculture')
           roots = ('cloud-selected-projection', 'cloud-execution-lab',
-                   'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent')
+                   'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
+                   'cloud-integration-differentials', 'cloud-composition-cases/cypress')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
           files = {}
           for path in sorted(paths):
@@ -136,6 +145,14 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest test_ordered_selected_sell -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/joined-wrapper-tests.log"
+      - name: Funded seed queue joined integration tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-composition-cases/cypress/test_funded_join.py \
+            --json-output "$RUNNER_TEMP/projection-validation/funded-join-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/funded-join-tests.log"
       - name: Bind combined results to one source snapshot
         shell: python
         run: |
@@ -161,6 +178,13 @@ jobs:
                     'projection_transitions': projection['interpreter_transitions'],
                     'market_cases': market['official_market_cases'],
                     'same_engine': True, 'full_games': 0}
+          joined = json.loads((out/'funded-join-results.json').read_text())
+          assert joined['successful'] and joined['failures'] == joined['errors'] == 0
+          for name, source in joined['sources'].items():
+              assert source['sha256'] == snapshot['files']['revenue/kaggriculture/'+name]['sha256']
+          report['funded_join_tests'] = joined['test_methods']
+          report['funded_join_transitions'] = joined['official_transitions']
+          report['funded_join_full_games'] = joined['full_games']
           (out/'COMBINED-RESULTS.json').write_text(json.dumps(report, indent=2)+'\n')
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
