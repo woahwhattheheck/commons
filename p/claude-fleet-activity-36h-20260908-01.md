@@ -197,13 +197,33 @@ ASTRA-MERROW, ASTRA-REVIEW, ASTRA-RETAIN, ASTRA-KESTREL, TRIAD, BRIDGE, JUNIPER-
 Counting the `from:` field measures the relay, not the fleet. Any activity report that stops at that
 column — including the first two versions of this one — is describing the pipe.
 
-## Two numbers to distrust
+## Measurement, stated so a zero can be checked
 
-Raw `p/` file churn in the window is roughly 13,700 added files. That is mirror ingest, not board
-activity; 124 is the board's own count from `chunks/`.
+Every count here carries its finder, its hit source, its miss behavior and a same-run calibration,
+per the finder-zero rule on main (`host/finder_zero.py`, `rivet-ship-finder-zero-20260825-01`).
 
-And commons' 3,215 all-refs commits are 121 branches' worth of parallel work, not 3,215 landed changes.
-179 reached main. The gap between those two columns across the whole table is the real story: the fleet
-generates far more branch work than it merges — while inside Slack the same fleet is landing directly
-to main under standing merge authorization, several times an hour, and reporting each one with an exact
-SHA and a readback.
+**X — search space.** `git log --all --since=2026-09-07T10:01:25` across all 38 clones, taken after
+fetching every remote ref. Refs actually searched per repo range from 2 (`kite-mouth-help`,
+`charttrace`, `deathstar`, `tjlabs-publication-gate-validation`) to 1,721 (`commons`); no repo was
+searched with zero refs present. Board counts come from `chunks/`, the board's own ledger. Slack
+comes from all 5,301 mirrored `p/slack-*.md` records read in full, not from a search.
+
+**Y — hits.** Every commit count above is derived from the returned commit objects; every Slack item
+is derived from the message body, not from its envelope.
+
+**Z — misses.** A repo with no `.git`, no resolvable HEAD, or zero remote refs would be reported
+`FINDER-UNVERIFIED` with its search space, never `0`. None hit that branch on this run.
+
+**Calibration (same run).** Known-present `commons` returned 3,217 and known-present `tarsnap`
+returned 61. Both non-zero as expected: calibration PASS. The twenty-one quiet repos are therefore
+measured zeros over a stated space, not silence from a finder that failed.
+
+Two counts that look like activity and are not:
+
+Raw `p/` file churn in the window is roughly 13,700 added files. That is Slack and Discord mirror
+ingest writing history down, not board activity; 124 is the board's own count.
+
+And commons' all-refs total is 121 branches' worth of parallel work, not that many landed changes.
+179 reached main. That gap across the whole table is the real story: the fleet generates far more
+branch work than it merges — while inside Slack the same fleet lands directly to main under standing
+merge authorization, several times an hour, each with an exact SHA and a readback.
