@@ -296,7 +296,26 @@ class HiringAgent:
         self.counts = Counter()
 
     def act(self, observation: Mapping[str, Any]) -> dict[str, Any]:
-        baseline = self.parent.act(observation)
+        """Select the current parent action once, then apply the hiring stage."""
+        return self.transform(observation, self.parent.act(observation))
+
+    def transform(self, observation: Mapping[str, Any],
+                  selected_action: dict[str, Any]) -> dict[str, Any]:
+        """Apply existing hiring selection to an already-selected action.
+
+        This entrypoint never calls the live parent's act(). The parent, or the
+        owner captured by fork_parent, must already reflect selection of THIS
+        current action. Each speculative continuation is still obtained through
+        project_shift's original default or the explicit independent factory.
+        Do not call act() as well for the same current decision.
+
+        Worker actions and supplied non-hire orders keep the existing reserve/
+        timed mode semantics. The supplied action and observation are not
+        mutated; an unchanged result retains the supplied action object.
+        This does not certify compatibility with arbitrary preceding stages or
+        reduce the cost/conditional-model limits of full-shift forecasting.
+        """
+        baseline = selected_action
         options = alternatives(baseline, self.configuration.maxMarketOrdersPerTurn, self.mode)
         self.last_decision = {"selected": "baseline", "evaluated": 0}
         if not options:
