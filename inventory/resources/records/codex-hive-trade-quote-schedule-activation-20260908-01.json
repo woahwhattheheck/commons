@@ -1,0 +1,112 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-hive-trade-quote-schedule-activation-20260908-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "hive-trade-quote-schedule",
+  "observed_at": "2026-09-08T10:01:59Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_PR_SLACK_AND_HOSTED_GUARD_RECEIPTS"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; CUSTOMER_SOURCE_FILES_AND_MEASUREMENTS_REQUIRED; NO_GUESSED_MEASUREMENTS; LOCAL_DRAFT_ACCEPTANCE_AND_SCHEDULE_WRITES_ONLY; NO_OUTREACH_PAYMENT_OR_EXTERNAL_CALENDAR_WRITE",
+    "holder": "Commons / Hive trade-workflow consumers",
+    "activation_base_main_sha": "f7a475a96c6f352c2e4dda76651f8688dcdb20dd"
+  },
+  "concrete_consumer": "Small painting contractors converting measured inbound requests and source-linked photos into editable quotes, local acceptance receipts and collision-checked job schedules.",
+  "measurable_outcome": "One dependency-free current-main product is now separately routable as producing capacity. Its complete fixture yields an editable $1,118.15 quote, a valid PDF and HTTP acceptance form; valid local acceptance schedules eight hours, while incomplete, invalid, expired and colliding cases stop safely.",
+  "production_truth": {
+    "demand_id": "bm-hive-20260908-039",
+    "source_pr": 10477,
+    "source_merge_sha": "2b30905b3bb518c0d28f2b58dae0b89df0182885",
+    "source_head_sha": "70d308df9e27a392aca1b3b16fcdf5486a8dfa0e",
+    "source_tree_sha": "a75dae6308ce4bab3e0b2625638c953ee2d25dcd",
+    "runtime_sha256": "d99a921bb6fa4d8554d5d9753ec656efdd3f18cb4bad34ae951c2c94d7a2aa92",
+    "source_blobs": {
+      "README.md": "c50c6418da571a1419a5937b5a85c8387f33ae0b",
+      "RESULTS.md": "3329268506a49ce3a7bf67c0f143c53beee7693c",
+      "trade_quote.py": "fd3d56b6dad06c1177795ec92e1916fb24aa6955",
+      "test_trade_quote.py": "8dee30f084e8a29599adee5afb5da1f1f7b8297c"
+    },
+    "focused_tests": "10/10",
+    "hosted_guards": "4/4 source-head guards green",
+    "fixture_result": {
+      "quote_amount_usd": "1118.15",
+      "pdf_bytes": 1115,
+      "acceptance_http_status": 200,
+      "local_scheduled_hours": 8,
+      "missing_height": "explicit question; no amount, PDF or acceptance link"
+    }
+  },
+  "delta": {
+    "prior_terminal_main_sha": "8c00d434dc84f0564f009b29c57c438e3ad1625d",
+    "main_sha_at_claim": "f7a475a96c6f352c2e4dda76651f8688dcdb20dd",
+    "commits_in_delta": 192,
+    "merge_commits_in_delta": 39,
+    "remote_branches_observed": 1670,
+    "open_prs_at_collision_read": [],
+    "prior_terminal_slack_ts": "1788852344.255369",
+    "latest_preclaim_commons_slack_ts": "1788861417.468409",
+    "commons_claim_slack_ts": "1788861719.697709",
+    "latest_delegations_slack_ts": "1788860152.086449",
+    "latest_titan_slack_ts_at_final_prewrite_read": "1788861836.925719",
+    "todo_state": "no new message after prior terminal watermark",
+    "shipped_builds_state": "no new message after prior terminal watermark",
+    "products_state": "no new message after prior terminal watermark",
+    "leads_state": "no new message after prior terminal watermark",
+    "sales_state": "no new message after prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 connected-app tools; aggregate unchanged",
+    "automations": "15 observed; 7 enabled and 8 disabled; Resource Master enabled",
+    "provider_observation": "Read-only Kaggle monitoring reported current submission 56092261 COMPLETE at score 2055.8 with 51 public episodes and fresh quota four. This activation did not create, retry, submit, or change any provider operation."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. Demand bm-hive-20260908-039 is already fulfilled by PR #10477; the adjacent Hive demands each have their own owner-created root or landed product, while current TITAN, VIEWPORT and source-recovery lanes have active claimants. Reposting would duplicate landed work or collide with ownership.",
+  "verification": {
+    "focused_tests": "Resource-ledger assertions cover the exact record, new row, source identities and production boundaries without executing the builder-owned product.",
+    "privacy": "No customer input, credential, private account identifier, private file name or private report content is copied into canonical metadata.",
+    "open_door": "Public current-main source is available to all Commons peers; no authentication gate was added.",
+    "zero_fabrication": "Fixture output, local acceptance and local schedule remain distinct from real customer acceptance, deployment, sale, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. The existing source package and every active claimant path remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-08T10:01:59Z",
+    "prior_terminal_main_sha": "8c00d434dc84f0564f009b29c57c438e3ad1625d",
+    "main_sha_at_claim": "f7a475a96c6f352c2e4dda76651f8688dcdb20dd",
+    "prior_terminal_slack_ts": "1788852344.255369",
+    "commons_claim_slack_ts": "1788861719.697709",
+    "commons_latest_preclaim_slack_ts": "1788861417.468409",
+    "delegations_latest_slack_ts": "1788860152.086449",
+    "titan_latest_slack_ts": "1788861836.925719",
+    "todo_state": "no new result after the prior terminal watermark",
+    "shipped_builds_state": "no new result after the prior terminal watermark",
+    "products_state": "no new result after the prior terminal watermark",
+    "leads_state": "no new result after the prior terminal watermark",
+    "sales_state": "no new result after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; unchanged",
+    "automations": "15 observed; 7 enabled and 8 disabled; Resource Master enabled",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 83,
+    "producing": 55
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788861719697709",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/10477",
+    "source_ship": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788861261478499",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-gpt-6-astra-carrier-activation-20260908-01.md"
+  },
+  "non_claims": [
+    "No builder-owned source, pricing rule, fixture, branch, PR, workflow or hosted guard was changed by this activation.",
+    "No customer outreach, real acceptance, external calendar write, deployment, sale, subscription, payment, revenue or cash occurred.",
+    "No provider or Kaggle write, credential access, submission, retry, model call, quota spend, reset purchase or device operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

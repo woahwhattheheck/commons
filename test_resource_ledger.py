@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788851325.359019")
+        self.assertEqual(catalog["slack_ts"], "1788861719.697709")
         self.assertEqual(
             catalog["source_id"],
-            "codex-gpt-6-astra-carrier-activation-20260908-01",
+            "codex-hive-trade-quote-schedule-activation-20260908-01",
+        )
+        self.assertIn(
+            "codex-hive-trade-quote-schedule-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-gpt-6-astra-carrier-activation-20260908-01",
@@ -283,15 +287,17 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-gpt-6-astra-carrier-activation-20260908-01.json",
+            "codex-hive-trade-quote-schedule-activation-20260908-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "gpt-6-astra-codex-carrier"
+            current_activation["selected_resource"], "hive-trade-quote-schedule"
         )
+        self.assertEqual(current_activation["projection"]["resources"], 83)
+        self.assertEqual(current_activation["projection"]["producing"], 55)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -657,6 +663,20 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("NO_QUOTA_OR_GLOBAL_AVAILABILITY_INFERENCE", astra["authority"])
         self.assertIn("06616531b56ec4dfcc421bce82db8f8e04091b15", astra["exact_safe_probe"])
         self.assertIn("c3ddcb017d5b1ad53f2bf08d6efe2986cc6ac3a9", astra["exact_safe_probe"])
+        trade_quote = next(
+            row for row in catalog["surfaces"] if row["name"] == "hive-trade-quote-schedule"
+        )
+        self.assertEqual(trade_quote["capacity"], "LIVE")
+        self.assertEqual(trade_quote["stage"], "PRODUCING")
+        self.assertEqual(trade_quote["condition"], "CONSTRAINED")
+        self.assertEqual(
+            trade_quote["last_receipt"],
+            "codex-hive-trade-quote-schedule-activation-20260908-01",
+        )
+        self.assertIn("NO_GUESSED_MEASUREMENTS", trade_quote["authority"])
+        self.assertIn("NO_OUTREACH_PAYMENT_OR_EXTERNAL_CALENDAR_WRITE", trade_quote["authority"])
+        self.assertIn("a75dae6308ce4bab3e0b2625638c953ee2d25dcd", trade_quote["exact_safe_probe"])
+        self.assertIn("fd3d56b6dad06c1177795ec92e1916fb24aa6955", trade_quote["exact_safe_probe"])
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
