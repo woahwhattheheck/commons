@@ -494,8 +494,8 @@
       "source_path": "reference/selected-action/t08/arrival_contract.py"
     },
     "reference/titan-current/deadline_adapter.py": {
-      "bytes": 12377,
-      "sha256": "c8f7c9842ba7e4eb29f6e57a8d6f9ba816140dcbea7817aea2b3efcabe2771c5",
+      "bytes": 12701,
+      "sha256": "6e677016ac93350a5eb0b6f3345fb94726e78d5416d20bb81e7e5bc8ffdc8da2",
       "source_path": "reference/titan-current/deadline_adapter.py"
     },
     "reference/titan-current/latest/integrated_selected.py": {
