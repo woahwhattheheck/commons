@@ -1,270 +1,173 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Bounded selected-action proposal for economically redundant current hires.
+"""Cheap, conditional redundant-worker proposal over an explicit incumbent route.
 
-This is a cheap T10 consumer, not another producer.  It changes only current
-HIRE slots after proving that the removed trailing workers add no physical
-value over the remaining route through the bounded current shift.
+This is a selected-action transform, not a producer or a future-price model.
+It proves a narrow remaining-shift physical equivalence: removed trailing new
+hands only move/pass or duplicate watering, and a retained hand supplies every
+needed watering before reset without an intervening crop operation. Immediate
+wages are exact. Future economic/controller/opponent responses still require
+full-agent evaluation; the report deliberately makes no terminal-profit claim.
 """
 from __future__ import annotations
 
 import copy
 import math
+from collections import Counter
+from typing import Any, Mapping, Sequence
 
 NO_ORDER = ["SELL", "WHEAT", 0]
+MOVES = {"NORTH": (0, -1), "SOUTH": (0, 1), "WEST": (-1, 0), "EAST": (1, 0)}
 
 
-def _absolute_step(observation, configuration):
-    step = observation.get("step")
-    if step is not None:
-        return int(step)
-    turns = int((configuration or {}).get("turnsPerDay", 24))
-    return int(observation.get("day", 0)) * turns + int(observation.get("hour", 0))
+def _uint(value: Any, name: str, minimum: int = 0) -> int:
+    if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
+        raise ValueError(f"{name} must be an integer >= {minimum}")
+    return value
 
 
-def _position(tile):
-    if isinstance(tile, (list, tuple)) and len(tile) >= 2:
-        return (int(tile[0]), int(tile[1]))
-    if isinstance(tile, dict):
-        if "x" in tile and "y" in tile:
-            return (int(tile["x"]), int(tile["y"]))
-        if "position" in tile:
-            return _position(tile["position"])
-    return None
-
-
-def _move(pos, action, size):
-    if pos is None or not action:
-        return pos
-    verb = action[0]
-    x, y = pos
-    if verb == "NORTH":
-        y = max(0, y - 1)
-    elif verb == "SOUTH":
-        y = min(size - 1, y + 1)
-    elif verb == "WEST":
-        x = max(0, x - 1)
-    elif verb == "EAST":
-        x = min(size - 1, x + 1)
-    return (x, y)
-
-
-def _units(private):
-    # The engine stores farmer + hands in inventories/positions in the same order.
-    inventories = private.get("inventories", [])
-    positions = private.get("positions", [])
-    count = max(len(inventories), len(positions))
-    return [positions[i] if i < len(positions) else None for i in range(count)]
-
-
-def _tile(farm, pos):
-    if pos is None:
-        return None
-    x, y = pos
-    try:
-        return farm["tiles"][y][x]
-    except (IndexError, KeyError, TypeError):
-        return None
-
-
-def _plant_safe_for_duplicate_water(tile, step, retained_water_step):
-    if not isinstance(tile, dict) or tile.get("kind") != "PLANT":
-        return False
-    end = tile.get("max_lifespan_step")
-    if isinstance(end, (int, float)) and end >= 0 and end < retained_water_step:
-        return False
-    return True
-
-
-def _all_hires_affordable(action, farm, config):
-    money = farm.get("money")
-    if isinstance(money, bool) or not isinstance(money, (int, float)) or not math.isfinite(money) or money < 0:
-        return False
-    mult = config.get("farmHandCostMult", 1)
-    if isinstance(mult, bool) or not isinstance(mult, (int, float)) or not math.isfinite(mult) or mult <= 0:
-        return False
-    hires = sum(1 for order in action.get("market", []) if order and order[0] == "HIRE")
-    spent = 0.0
-    already = int(farm.get("hires_today", 0))
-    for offset in range(hires):
-        spent += float(mult) * (already + offset + 1)
-    return money >= spent
-
-
-def _has_active_nonhire_market(action):
-    return any(order and order[0] != "HIRE" and not (
-        order[0] == "SELL" and len(order) > 2 and int(order[2]) == 0)
-        for order in action.get("market", []))
+def _units(action: Mapping[str, Any]) -> list:
+    return [action.get("farmer", ["PASS"]), *action.get("hands", [])]
 
 
 def propose_redundant_hires(
-    mechanics,
-    observation,
-    configuration,
-    selected_action,
-    *,
-    route,
-    route_id=None,
-    route_switch_steps=(),
-    max_route_steps=None,
-):
-    """Return a detached selected action with provably redundant trailing hires removed.
+    mechanics: Any, observation: Mapping[str, Any], configuration: Mapping[str, Any] | None,
+    selected_action: Mapping[str, Any], *, route: Sequence[Mapping[str, Any]],
+    route_id: str, route_switch_steps: Sequence[int], max_route_steps: int = 48,
+) -> tuple[dict, dict]:
+    """Return an optional hire proposal and exact limits; never call a policy.
 
-    The proof is intentionally narrow.  It only accepts current HIRE-only market
-    queues, a complete same-route remainder of the current day, and trailing new
-    workers whose route contributes only movement/PASS or duplicate WATER tasks
-    already supplied by retained workers before reset.  Any uncertainty preserves
-    the original action.
+    The caller supplies the CURRENT complete route after the producer's single
+    action call, and all potential route-switch steps, not just triggered ones.
+    This contract is for the Arlene-style source whose worker program is the
+    supplied tape plus its weed/no-op repair. A different worker controller is
+    not made compatible by providing its old tape.
     """
+    out = copy.deepcopy(dict(selected_action))
+    report = {"changed": False, "reason": "no_hire", "route_id": route_id,
+              "removed_order_indices": [], "immediate_wage_saving": 0,
+              "terminal_gain": None,
+              "scope": "conditional remaining-route physical equivalence; not future cash or win proof"}
     cfg = dict(configuration or {})
-    obs = copy.deepcopy(observation)
-    action = copy.deepcopy(selected_action)
-    now = _absolute_step(obs, cfg)
-    obs["step"] = now
-    turns = int(cfg.get("turnsPerDay", 24))
-    episode_steps = int(cfg.get("episodeSteps", 720))
-    last = episode_steps - 2
-    shift_end = min(last, (now // turns + 1) * turns - 1)
-    if max_route_steps is not None:
-        shift_end = min(shift_end, now + int(max_route_steps))
-    report = {
-        "changed": False,
-        "reason": None,
-        "route_id": route_id,
-        "step": now,
-        "removed_workers": 0,
-        "removed_order_indices": [],
-        "immediate_wage_saving": 0,
-        "watering_witnesses": [],
-        "terminal_gain": None,
-        "future_cash_compatibility": "not established; later purchases/opponent response require separate evaluation",
-    }
+    board = _uint(cfg.get("boardSize", 10), "boardSize", 1)
+    day_len = _uint(cfg.get("turnsPerDay", 24), "turnsPerDay", 1)
+    episode = _uint(cfg.get("episodeSteps", 720), "episodeSteps", 2)
+    cap = _uint(cfg.get("shedCapacity", 100), "shedCapacity", 1)
+    limit = max(1, _uint(cfg.get("maxMarketOrdersPerTurn", 10), "maxMarketOrdersPerTurn"))
+    mult = _uint(cfg.get("farmHandCostMult", 1), "farmHandCostMult")
+    _uint(max_route_steps, "max_route_steps", 1)
+    step = observation.get("step")
+    if step is None:
+        step = _uint(observation["day"], "day") * day_len + _uint(observation["hour"], "hour")
+    step = _uint(step, "step")
+    end = min((step // day_len + 1) * day_len - 1, episode - 2)
+    report.update(step=step, end_step=end)
+    if step > end or end - step > max_route_steps:
+        report["reason"] = "outside_bounded_shift"; return out, report
+    queue = out.get("market", [])
+    if not isinstance(queue, list):
+        report["reason"] = "unsupported_queue"; return out, report
+    hires = []
+    for j, order in enumerate(queue[:limit]):
+        if isinstance(order, list) and order and order[0] == "HIRE":
+            hires.append(j)
+        elif (isinstance(order, list) and len(order) == 3 and order[0] == "SELL"
+              and order[1] in mechanics.PRODUCTS and order[2] == 0):
+            continue
+        else:
+            report["reason"] = "active_or_unknown_nonhire_order"; return out, report
+    if not hires or mult == 0:
+        report["reason"] = "no_positive_cost_hire"; return out, report
+    if not route_id or len(route) <= end:
+        report["reason"] = "incomplete_route"; return out, report
+    if any(step < _uint(t, "route switch") <= end for t in route_switch_steps):
+        report["reason"] = "possible_route_switch"; return out, report
+    for t in range(step + 1, end + 1):
+        if any(isinstance(o, list) and o and o[0] == "HIRE"
+               for o in route[t].get("market", [])[:limit]):
+            report["reason"] = "later_hire_changes_cost_or_spawn"; return out, report
 
-    farm = obs["farms"][int(obs.get("player", 0))]
-    private = obs.get("private", {})
-    orders = action.get("market", [])
-    hire_indices = [i for i, order in enumerate(orders) if order and order[0] == "HIRE"]
-    if not hire_indices:
-        report["reason"] = "no_current_hires"
-        return action, report
-    if _has_active_nonhire_market(action):
-        report["reason"] = "current_market_has_nonhire_order"
-        return action, report
-    if not _all_hires_affordable(action, farm, cfg):
-        report["reason"] = "current_hires_not_all_funded"
-        return action, report
-    if any(now < int(step) <= shift_end for step in route_switch_steps):
-        report["reason"] = "possible_route_switch"
-        return action, report
-    if shift_end >= len(route):
-        report["reason"] = "incomplete_route"
-        return action, report
-    if max_route_steps is not None and shift_end <= now and now < last:
-        report["reason"] = "outside_bounded_shift"
-        return action, report
-    if any(route[t].get("market") and any(o and o[0] == "HIRE" for o in route[t].get("market", []))
-           for t in range(now + 1, shift_end + 1)):
-        report["reason"] = "later_hire_changes_cost_or_spawn"
-        return action, report
+    me = _uint(observation["player"], "player")
+    farm = copy.deepcopy(observation["farms"][me])
+    private = copy.deepcopy(observation["private"])
+    if len(farm["tiles"]) != board or any(len(row) != board for row in farm["tiles"]):
+        report["reason"] = "board_shape"; return out, report
+    current = _units(out)
+    demand = Counter(a[1] for a in current if isinstance(a, list) and len(a) > 1 and a[0] == "PLANT")
+    blocked = {p for p, n in demand.items() if n > private.get("seeds", {}).get(p, 0)}
+    for i, action in enumerate(current):
+        if isinstance(action, list) and len(action) > 1 and action[0] == "PLANT" and action[1] in blocked:
+            action = ["PASS"]
+        mechanics._apply_unit_action(farm, private, i, action, board, step // day_len, day_len, cap)
+    existing = len(farm["hands"])
+    costs = [mechanics._hire_cost(farm["hires_today"] + j, mult) for j in range(len(hires))]
+    cash = farm["money"]
+    if isinstance(cash, bool) or not isinstance(cash, (float, int)) or not math.isfinite(cash) or cash < sum(costs):
+        report["reason"] = "current_hires_not_all_funded"; return out, report
+    for _ in hires:
+        mechanics._do_hire(farm, private, board, mult)
+    positions = [list(farm["farmer"]), *copy.deepcopy(farm["hands"])]
+    events = []
+    for t in range(step + 1, end + 1):
+        unit_program = _units(route[t])
+        for i, pos in enumerate(positions):
+            # Missing hand slots are genuinely absent, so the parent weed
+            # repair does not process them. Explicit PASS slots do get repaired.
+            explicit = i < len(unit_program)
+            a = unit_program[i] if explicit else ["PASS"]
+            if not isinstance(a, list) or not a or not isinstance(a[0], str):
+                report["reason"] = "unsupported_unit_program"; return out, report
+            op = a[0]; x, y = pos
+            events.append((t, i, op, x, y, explicit))
+            if op in MOVES:
+                dx, dy = MOVES[op]; nx, ny = x + dx, y + dy
+                if 0 <= nx < board and 0 <= ny < board:
+                    pos[:] = [nx, ny]
 
-    positions = _units(private)
-    base_count = max(1, len(positions))
-    board_size = int(cfg.get("boardSize", 10))
-    current_actions = [action.get("farmer", ["PASS"]), *action.get("hands", [])]
-    while len(positions) < len(current_actions):
-        positions.append(None)
-    positions = [_move(_position(pos), current_actions[i] if i < len(current_actions) else ["PASS"], board_size)
-                 for i, pos in enumerate(positions)]
-
-    # Hires spawn after current unit actions.  New worker indices therefore form a
-    # trailing suffix of the next route action's hands.
-    new_count = len(hire_indices)
-    total_after = base_count + new_count
-    retained_total = total_after
-    removable = []
-
-    # Determine whether each newly hired trailing worker is independently redundant.
-    for offset in range(new_count - 1, -1, -1):
-        worker_index = base_count + offset
-        witness = []
-        worker_pos = None
-        safe = True
-        for t in range(now + 1, shift_end + 1):
-            packet = route[t]
-            hands = packet.get("hands", [])
-            unit = hands[worker_index - 1] if worker_index > 0 and worker_index - 1 < len(hands) else ["PASS"]
-            verb = unit[0] if unit else "PASS"
-            if verb in ("PASS", "NORTH", "SOUTH", "EAST", "WEST"):
-                worker_pos = _move(worker_pos, unit, board_size)
+    best = 0; best_witnesses = []; checks = 0
+    for remove_count in range(1, len(hires) + 1):
+        first_removed = 1 + existing + len(hires) - remove_count
+        removed = [e for e in events if e[1] >= first_removed]
+        valid = True; witnesses = []
+        for t, i, op, x, y, explicit in removed:
+            checks += 1
+            if op not in (*MOVES, "WATER", "PASS"):
+                valid = False; break
+            tile = farm["tiles"][y][x]
+            # Midday decay may create a weed and turn a nominal PASS/invalid
+            # move/WATER into the parent's useful DIG. Do not suppress it.
+            if explicit and isinstance(tile, dict):
+                if tile.get("kind") == "WEED":
+                    valid = False; break
+                expiry = tile.get("max_lifespan_step", -1)
+                if tile.get("kind") == "PLANT" and expiry >= 0 and expiry <= end:
+                    valid = False; break
+            if op != "WATER":
                 continue
-            if verb != "WATER":
-                safe = False
-                break
-            tile = _tile(farm, worker_pos)
-            if not _plant_safe_for_duplicate_water(tile, now, t):
-                safe = False
-                break
-            if tile.get("watered_today"):
-                witness.append({"worker": worker_index, "step": t, "position": worker_pos,
-                                "retained_watering": []})
-                continue
-            found = []
-            for earlier_t in range(now + 1, shift_end + 1):
-                if earlier_t > t:
-                    break
-                other = route[earlier_t]
-                candidates = [other.get("farmer", ["PASS"]), *other.get("hands", [])]
-                for retained_index in range(min(retained_total - 1, len(candidates))):
-                    if retained_index == worker_index:
-                        continue
-                    candidate = candidates[retained_index]
-                    if candidate and candidate[0] == "WATER":
-                        # Route-level duplicate-water proof: current source routes encode
-                        # the worker target by its preceding movement tape.  We only accept
-                        # an exact same tile after replaying the retained worker locally.
-                        pos = None
-                        for u in range(now + 1, earlier_t + 1):
-                            p = route[u]
-                            acts = [p.get("farmer", ["PASS"]), *p.get("hands", [])]
-                            a = acts[retained_index] if retained_index < len(acts) else ["PASS"]
-                            pos = _move(pos, a, board_size)
-                        if pos == worker_pos:
-                            found.append([earlier_t, retained_index])
-                if found:
-                    break
-            if not found:
-                safe = False
-                break
-            # Structural operations on this tile between the duplicate and retained
-            # watering invalidate equivalence.
-            for s in range(t, found[0][0] + 1):
-                p = route[s]
-                for ua in [p.get("farmer", ["PASS"]), *p.get("hands", [])]:
-                    if ua and ua[0] in ("HARVEST", "FERTILIZE", "DIG", "PLANT"):
-                        safe = False
-                        break
-                if not safe:
-                    break
-            if not safe:
-                break
-            witness.append({"worker": worker_index, "step": t, "position": worker_pos,
-                            "retained_watering": found})
-        if not safe:
+            # A narrow sufficient test; do not guess whether a nonplant tile
+            # will be planted/unlocked or whether a later harvest is harmless.
+            if not isinstance(tile, dict) or tile.get("kind") != "PLANT":
+                valid = False; break
+            touching = [e for e in events if e[3:5] == (x, y)]
+            if any(e[2] not in (*MOVES, "WATER", "PASS") for e in touching):
+                valid = False; break
+            kept = [e for e in touching if e[1] < first_removed and e[2] == "WATER"]
+            if not tile.get("watered_today") and not kept:
+                valid = False; break
+            witnesses.append({"worker": i, "step": t, "position": [x, y],
+                              "already_watered": bool(tile.get("watered_today")),
+                              "retained_watering": [[e[0], e[1]] for e in kept]})
+        if not valid:
             break
-        removable.append(offset)
-        report["watering_witnesses"].extend(witness)
-        retained_total -= 1
-
-    if not removable:
-        report["reason"] = "new_workers_have_distinct_route_value"
-        return action, report
-
-    remove_offsets = set(removable)
-    removed_indices = [hire_indices[i] for i in sorted(remove_offsets)]
-    for idx in removed_indices:
-        action["market"][idx] = list(NO_ORDER)
-    already = int(farm.get("hires_today", 0))
-    mult = float(cfg.get("farmHandCostMult", 1))
-    saving = sum(mult * (already + i + 1) for i in remove_offsets)
-    report.update(changed=True, reason="redundant_trailing_hires", removed_workers=len(remove_offsets),
-                  removed_order_indices=removed_indices, immediate_wage_saving=saving)
-    return action, report
+        best = remove_count; best_witnesses = witnesses
+    report["route_events_checked"] = checks
+    if not best:
+        report["reason"] = "no_redundant_trailing_worker"; return out, report
+    omitted = hires[-best:]
+    for j in omitted:
+        out["market"][j] = list(NO_ORDER)
+    report.update(changed=True, reason="redundant_watering_or_empty_tail",
+                  removed_order_indices=omitted, removed_workers=best,
+                  immediate_wage_saving=sum(costs[-best:]),
+                  watering_witnesses=best_witnesses,
+                  future_cash_compatibility="not established by the physical certificate")
+    return out, report
