@@ -218,7 +218,11 @@ class TitanAgent:
             self.controller.cur = self._completed_route
         if f.fourth_quadrant:
             from fourth_quadrant import FourthQuadrant
-            from scheduler import m
+            # ECON evaluates full market queues and therefore needs the exact
+            # parser/price-refresh surface retained by the terminal mechanics.
+            # The root mechanics intentionally does not expose those helpers.
+            m = load('_titan_fourth_quadrant_mechanics',
+                     HERE/'reference/titan-history/terminal_mechanics.py', cache=True)
             if self.quadrant is None:
                 self.quadrant = FourthQuadrant(m, self._quadrant_admission)
             self.quadrant.install(self.controller)

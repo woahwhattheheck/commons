@@ -7,7 +7,7 @@ import build_integrated as b
 class ReleaseTests(unittest.TestCase):
  def test_default_build_and_history_preservation(self):
   with tempfile.TemporaryDirectory() as tmp:
-   root=Path(tmp)
+   root=Path(tmp)/'cloud-execution-lab';root.mkdir()
    for p in set(b.source_files().values())|{'build_integrated.py',b.RECORD+'RELEASE.json'}:
     dest=root/p;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(b.ROOT/p,dest)
    (root/'exports').mkdir();old=b'historical evidence sentinel';(root/b.ARCHIVE).write_bytes(old)
@@ -23,6 +23,7 @@ class ReleaseTests(unittest.TestCase):
     for name,row in manifest['runtime'].items():
      self.assertEqual(t.extractfile(name).read(),(root/row['source_path']).read_bytes())
     self.assertIn('terminal_history_join.py',t.getnames())
+    self.assertIn('funded_payback.py',t.getnames())
     self.assertTrue(any(p.startswith('reference/titan-history/') for p in t.getnames()))
     self.assertNotIn('integrated_main.py',t.getnames())
    first=(root/b.ARCHIVE).read_bytes();self.assertEqual(call().returncode,0);self.assertEqual(first,(root/b.ARCHIVE).read_bytes())
