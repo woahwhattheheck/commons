@@ -29,6 +29,33 @@ def _integer(value: Any, name: str, minimum: int = 0) -> int:
     return value
 
 
+def _context(observation: Mapping[str, Any],
+             configuration: Mapping[str, Any] | None) -> tuple[Mapping[str, Any], Mapping[str, Any]]:
+    """Resolve a redundant public clock without changing caller-owned inputs.
+
+    A supplied, non-null step retains precedence and the original strict integer
+    contract. Otherwise day/hour and the configured period must identify it;
+    missing or malformed clocks are not silently interpreted as a new match.
+    """
+    if not isinstance(observation, Mapping):
+        raise ValueError("observation must be a mapping")
+    if configuration is None:
+        configuration = {}
+    if not isinstance(configuration, Mapping):
+        raise ValueError("configuration must be a mapping or None")
+    if observation.get("step") is not None:
+        _integer(observation["step"], "step")
+        return observation, configuration
+    day = _integer(observation["day"], "day")
+    hour = _integer(observation["hour"], "hour")
+    period = _integer(configuration.get("turnsPerDay", 24), "turnsPerDay", 1)
+    if hour >= period:
+        raise ValueError("hour must be below turnsPerDay")
+    normalized = dict(observation)
+    normalized["step"] = day * period + hour
+    return normalized, configuration
+
+
 def _stock(value: Mapping[str, int], name: str) -> dict[str, int]:
     if not isinstance(value, Mapping):
         raise ValueError(f"{name} must be a mapping")
@@ -81,7 +108,7 @@ class SeedDemandContract:
         return result
 
 
-def compile_demand(observation: Mapping[str, Any], configuration: Mapping[str, Any],
+def compile_demand(observation: Mapping[str, Any], configuration: Mapping[str, Any] | None,
                    selected_action: Mapping[str, Any], *, post_unit_seeds: Mapping[str, int],
                    continuations: Mapping[str, Sequence[Mapping[str, Any]]], complete: bool,
                    reserves: Mapping[str, int] | None = None) -> SeedDemandContract:
@@ -93,6 +120,7 @@ def compile_demand(observation: Mapping[str, Any], configuration: Mapping[str, A
     Future BUY_SEED orders do not reduce demand. complete=True is the caller's
     assertion of branch coverage; the compiler cannot prove that assertion.
     """
+    observation, configuration = _context(observation, configuration)
     final, _ = _rules(configuration)
     step = _integer(observation["step"], "step")
     if step > final:
@@ -138,7 +166,7 @@ def compile_demand(observation: Mapping[str, Any], configuration: Mapping[str, A
     return result(True, "complete_explicit_continuations", branches)
 
 
-def transform(observation: Mapping[str, Any], configuration: Mapping[str, Any],
+def transform(observation: Mapping[str, Any], configuration: Mapping[str, Any] | None,
               selected_action: Mapping[str, Any], *, post_unit_seeds: Mapping[str, int],
               contract: SeedDemandContract | None) -> dict[str, Any]:
     """Return action + diagnostic changes; untouched action is the fallback.
@@ -153,6 +181,7 @@ def transform(observation: Mapping[str, Any], configuration: Mapping[str, Any],
     if not isinstance(contract, SeedDemandContract) or not contract.complete:
         return out
     try:
+        observation, configuration = _context(observation, configuration)
         stock = _stock(post_unit_seeds, "post_unit_seeds")
         final, max_orders = _rules(configuration)
         binding = _binding(observation, configuration, selected_action, stock)
