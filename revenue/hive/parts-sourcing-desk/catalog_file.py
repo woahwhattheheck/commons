@@ -12,7 +12,7 @@ import io
 import json
 from dataclasses import dataclass
 from decimal import Decimal
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 MAX_BYTES = 8 * 1024 * 1024
@@ -69,10 +69,12 @@ def parse_bytes(raw: bytes, filename: str, format: str | None = None) -> ParsedC
         content = raw.decode("utf-8-sig")
     except UnicodeDecodeError as exc:
         raise CatalogFileError(f"catalog must be UTF-8; invalid byte near offset {exc.start}") from None
-    kind = (format or Path(filename).suffix.lstrip(".")).lower()
+    # Metadata accepts either platform's upload labels without retaining folders.
+    source_name = PureWindowsPath(filename).name
+    kind = (format or PureWindowsPath(source_name).suffix.lstrip(".")).lower()
     if kind not in ("csv", "json"):
         raise CatalogFileError("choose csv or json format")
-    source = {"filename": Path(filename).name, "sha256": hashlib.sha256(raw).hexdigest(),
+    source = {"filename": source_name, "sha256": hashlib.sha256(raw).hexdigest(),
               "size_bytes": len(raw), "format": kind}
     records = []
     if kind == "csv":
