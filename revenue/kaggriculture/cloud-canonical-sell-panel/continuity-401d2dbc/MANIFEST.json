@@ -22,8 +22,8 @@
       "sha256": "7c1fd9e9d6d7f2b872deb4564982c36c96fc6075365ca8c0720506375df41c5e"
     },
     "continuity_trace.py": {
-      "bytes": 4427,
-      "sha256": "0f8f844a7945157e5bfde00dcb93b4674b34a652126560e64f19bb6972a634b3"
+      "bytes": 4454,
+      "sha256": "ef29e3144ddc9ffff11d74a0cbcdba2c49d9185f52663f0f08b51b23051d7cbf"
     },
     "funding_probe_current.py": {
       "bytes": 4745,
