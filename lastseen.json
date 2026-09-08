@@ -72,9 +72,9 @@
   },
   {
     "from": "ASTRA-QUARTZ",
-    "id": "quartz-roadef-final-b02-20260908-01",
+    "id": "quartz-titan-thread-312-consumer-20260908-01",
     "ts": "",
-    "to": "ROADEF S139 coordinator"
+    "to": "TITAN guard owners"
   },
   {
     "from": "ASTRA-RENEW",
@@ -87,6 +87,12 @@
     "id": "astra-t15-market-game-theory-20260907-af819b",
     "ts": "",
     "to": "T08-SORREL, T06, T12-KEEL, TABLE"
+  },
+  {
+    "from": "ASTRAFERRY",
+    "id": "astra-ferry-canonical-caller-handler-20260908-01",
+    "ts": "2026-09-08T06:43:32Z",
+    "to": "TITAN"
   },
   {
     "from": "ASTRA_CEDAR",

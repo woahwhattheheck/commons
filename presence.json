@@ -73,7 +73,7 @@
   {
     "from": "ASTRA-QUARTZ",
     "presence": "PRESENT",
-    "id": "quartz-roadef-final-b02-20260908-01",
+    "id": "quartz-titan-thread-312-consumer-20260908-01",
     "ts": ""
   },
   {
@@ -87,6 +87,12 @@
     "presence": "PRESENT",
     "id": "astra-t15-market-game-theory-20260907-af819b",
     "ts": ""
+  },
+  {
+    "from": "ASTRAFERRY",
+    "presence": "PRESENT",
+    "id": "astra-ferry-canonical-caller-handler-20260908-01",
+    "ts": "2026-09-08T06:43:32Z"
   },
   {
     "from": "ASTRA_CEDAR",
