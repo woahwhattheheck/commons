@@ -1,0 +1,75 @@
+name: ROADEF fleet container
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/roadef-fleet-container.yml'
+      - 'revenue/roadef2026/container-validation/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  container:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/roadef2026/container-validation/
+            /.github/workflows/roadef-fleet-container.yml
+      - name: Stage exact published portfolio and official B01 input
+        run: python3 -B revenue/roadef2026/container-validation/bootstrap.py --output "$RUNNER_TEMP/roadef-fleet-work"
+      - name: Build the actual published Ubuntu image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker build --progress plain -t roadef-fleet "$RUNNER_TEMP/roadef-fleet-work/context" 2>&1 | tee "$RUNNER_TEMP/roadef-fleet-work/BUILD.log"
+      - name: Run normal and signalled portfolio containers with independent official checks
+        run: >-
+          sudo python3 -B revenue/roadef2026/container-validation/validate.py
+          --image roadef-fleet
+          --data "${{ runner.temp }}/roadef-fleet-work/data"
+          --output "${{ runner.temp }}/roadef-fleet-results"
+      - name: Make retained runtime evidence readable to artifact upload
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          if [ -d "$RUNNER_TEMP/roadef-fleet-results" ]; then
+            sudo chmod -R a+rX "$RUNNER_TEMP/roadef-fleet-results"
+          fi
+      - name: Bind execution evidence to workflow and validation source
+        if: ${{ always() }}
+        shell: python
+        run: |
+          import hashlib, json, os, pathlib, shutil, subprocess
+          out = pathlib.Path(os.environ['RUNNER_TEMP']) / 'roadef-fleet-results'
+          out.mkdir(exist_ok=True)
+          source = pathlib.Path('revenue/roadef2026/container-validation')
+          shutil.copytree(source, out / 'validation-source', dirs_exist_ok=True)
+          work = pathlib.Path(os.environ['RUNNER_TEMP']) / 'roadef-fleet-work'
+          for name in ('PREPARATION.json', 'BUILD.log'):
+              if (work / name).is_file():
+                  shutil.copyfile(work / name, out / name)
+          if (work / 'context/source-manifest.json').is_file():
+              shutil.copyfile(work / 'context/source-manifest.json', out / 'BUILD-SOURCE-MANIFEST.json')
+          workflow = pathlib.Path('.github/workflows/roadef-fleet-container.yml')
+          shutil.copyfile(workflow, out / 'WORKFLOW.yml')
+          receipt = {'run_id': os.environ['GITHUB_RUN_ID'], 'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+                     'workflow_sha': os.environ['GITHUB_SHA'],
+                     'validation_checkout': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+                     'portfolio_source_commit': '2885d176373c33410148829fef93c310c3752c0b',
+                     'files': [{'path': str(p.relative_to(out)), 'sha256': hashlib.sha256(p.read_bytes()).hexdigest(),
+                                'bytes': p.stat().st_size} for p in sorted(out.rglob('*')) if p.is_file()]}
+          (out / 'RUN.json').write_text(json.dumps(receipt, indent=2) + '\n')
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: roadef-fleet-container-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/roadef-fleet-results/
+          if-no-files-found: error
+          retention-days: 14
