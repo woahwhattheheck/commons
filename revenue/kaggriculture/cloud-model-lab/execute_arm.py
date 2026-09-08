@@ -232,7 +232,7 @@ def main():
                       f" | candidate {wtl(c['margin'])} own {c['own_cash']} "
                       f"rival {c['rival_cash']} d_own {d_own}"
                       + (f" pathdiv {div}d" if div is not None else "")
-                      + (f"  ERROR {c['error']}" if c['error'] else ""), flush=True)
+                      + (f"  ERROR {c['error']}" if c["error"] else ""), flush=True)
     write_checkpoint(a.out, cid, bid, rows, expected_rows, complete=True)
     for label in ("control", "candidate"):
         rs = [r for r in rows if r["arm"] == label]
