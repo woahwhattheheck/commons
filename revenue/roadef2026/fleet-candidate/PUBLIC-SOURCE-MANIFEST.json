@@ -20,7 +20,7 @@
     {"path":"joint-budget-scenario.json","bytes":67,"sha256":"ad046b3b6240fd8d9765151740a69fe84ad7459200715f0ecb070af355c0658d"},
     {"path":"joint-budget-incumbent.json","bytes":36,"sha256":"b162bb6539e9dc99eccff1f6dbca933273339f9f762c71535f2462a534ba2131"},
     {"path":"LICENSE","bytes":1085,"sha256":"6695de0415214b1e01ea31a8d3d8c6e7f7933e3db88d80b92adaf0b388d006e8"},
-    {"path":"benchmark.py","bytes":11165,"sha256":"789fda06bb7f255cbe9be77a9e2f7be4a2f03d7f3c5a81b4988df77735902c99"},
+    {"path":"benchmark.py","bytes":11597,"sha256":"ab9216ae6eea506e13ba0ff666cbe91909c25a9941a6b45a2a801857580230ec"},
     {"path":"CLOUD-VALIDATION.md","bytes":4554,"sha256":"c8487da6d17716d284287412c7309ba17bab7f01a4fceae892d3167fd9275e45"},
     {"path":"NATIVE-VALIDATION.json","bytes":14244,"sha256":"4368c22fd75dfc67348d57f75ede923352eace6387dec26b7dfbd2fcf2bbaf5e"},
     {"path":"test_benchmark_timeout.py","bytes":9356,"sha256":"0a8444576ea823b463f0f3117fc04a538798405be1cf8e07899e09cb90581085"},
@@ -51,6 +51,9 @@
     {"path":"BENCHMARK-COORDINATES-RESULTS.json","bytes":4728,"sha256":"2c39871eedf0bdd571b1571448b35f34e45c7692e449d92f7353b7482d9d8d2e"},
     {"path":"test_verify_joint_timeout.py","bytes":4712,"sha256":"e44de7da477d25702a1653474f2c21709caa3d8b57a867d7f90f0e24327a29b5"},
     {"path":"VERIFY-JOINT-TIMEOUTS.md","bytes":1944,"sha256":"05513e06a38b45dc0290712d0064ac59be9ac893b3ca6e94a5e599f2bab36946"},
-    {"path":"VERIFY-JOINT-TIMEOUTS-RESULTS.json","bytes":451,"sha256":"9feb4ff36930929418dcb2190a4315fab9a4fe1fceff63f09a79bcec83c2ccda"}
+    {"path":"VERIFY-JOINT-TIMEOUTS-RESULTS.json","bytes":451,"sha256":"9feb4ff36930929418dcb2190a4315fab9a4fe1fceff63f09a79bcec83c2ccda"},
+    {"path":"test_benchmark_arguments.py","bytes":12147,"sha256":"f63ea15ab6d3156e6f3368b3a0502d83555b66812be5bfc97f1f8b1da7903961"},
+    {"path":"BENCHMARK-ARGUMENTS.md","bytes":3914,"sha256":"9c40c3715d79d0652757cbff723c0c1dcad1427320030e24fd8b70c4e6e72704"},
+    {"path":"BENCHMARK-ARGUMENTS-RESULTS.json","bytes":1344,"sha256":"91721a4563a12fbf82a4e83191c4d0ec39a069c74c295933c628ae7ff84fe946"}
   ]
 }

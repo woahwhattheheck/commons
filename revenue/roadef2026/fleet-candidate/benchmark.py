@@ -142,6 +142,14 @@ def main():
     ap.add_argument('--data', type=Path, help='Extracted pinned official challenge root')
     ap.add_argument('--resume-dir', type=Path)
     args = ap.parse_args()
+    # Reject unusable budgets before reading inputs, reserving evidence, or starting work.
+    # Zero seconds/rounds are valid no-search baseline requests.
+    if not math.isfinite(args.seconds) or args.seconds < 0:
+        ap.error('--seconds must be finite and >= 0')
+    if args.rounds is not None and args.rounds < 0:
+        ap.error('--rounds must be >= 0')
+    if args.workers < 1:
+        ap.error('--workers must be >= 1')
     if args.data:
         data = args.data.resolve()
     else:

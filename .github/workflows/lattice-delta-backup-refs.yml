@@ -10,6 +10,7 @@ on:
       - "test_repo_backup_manifest_encoding.py"
       - "test_backup_workflow_source_transfer.py"
       - "open_door_guard.py"
+      - "open_door_guard_core.py"
       - "backups/README.md"
       - "ground/BACKUP_OPEN_REPO.md"
       - "AGENTS.md"
@@ -37,6 +38,7 @@ jobs:
             /test_repo_backup_manifest_encoding.py
             /test_backup_workflow_source_transfer.py
             /open_door_guard.py
+            /open_door_guard_core.py
             /AGENTS.md
             /ground/BACKUP_OPEN_REPO.md
             /backups/README.md
@@ -48,7 +50,7 @@ jobs:
           git archive --format=tar --output="$RUNNER_TEMP/backup-test-source.tar" HEAD -- \
             host/repo_backup.py test_repo_backup.py test_repo_backup_refs.py \
             test_repo_backup_short_writes.py test_repo_backup_manifest_encoding.py \
-            test_backup_workflow_source_transfer.py open_door_guard.py AGENTS.md \
+            test_backup_workflow_source_transfer.py open_door_guard.py open_door_guard_core.py AGENTS.md \
             ground/BACKUP_OPEN_REPO.md backups/README.md \
             .github/workflows/open-repo-backup.yml .github/workflows/lattice-delta-backup-refs.yml
           git rev-parse HEAD > "$RUNNER_TEMP/backup-test-source.commit"

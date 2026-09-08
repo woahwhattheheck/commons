@@ -31,7 +31,8 @@ class BoardBatchDrainTest(unittest.TestCase):
         raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
         self.assertIn("contains(github.event.issue.body, 'carrier: slack-connector')", raw)
         self.assertIn("commons-board-ingest-${{", raw)
-        self.assertIn("'slack-batch'", raw)
+        self.assertIn("'slack-batch-v2'", raw)
+        self.assertNotIn("&& 'slack-batch' || github.event_name", raw)
         self.assertIn("cancel-in-progress: false", raw)
 
     def test_workflow_repair_push_wakes_the_recovery_sweep(self):

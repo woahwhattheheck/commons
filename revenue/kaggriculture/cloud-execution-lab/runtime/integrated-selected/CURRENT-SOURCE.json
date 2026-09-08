@@ -29,7 +29,7 @@
   "checkpoint": {
     "operation": "titan-kaggriculture-checkpoint-20260908-01",
     "owner_authorization": "Submission authorized for this single checkpoint; builder does not duplicate upload",
-    "pending_research": "Terminal route/history economic changes remain test-only; no comparative basis to change default. BROOK owns additive atomic builder publication; LARCH owns retained-input recovery checker.",
+    "pending_research": "Terminal route/history and broader capital changes remain test-only; redundant-hire certificate is enabled from current-package and multi-opponent evidence. Root retains provider upload.",
     "runtime_entrypoint": "main.py::agent",
     "upload_executor": "root",
     "validation_consumers": [
@@ -123,10 +123,9 @@
     {
       "callsite": "TitanAgent.transform_selected -> _redundant_hire_selected before seed funding",
       "component": "T10 redundant-hire physical certificate",
-      "consumed_result": "T10 seven focused checks and four paired development cells: own +5 each, no WTL flips. Optional source closure included; default economics retained.",
-      "enabled": false,
-      "role": "internal experiment/test-only",
-      "source_pin": "00f93ec9ebb91b70940f8990ee3617b73e7e3d85"
+      "consumed_result": "Exact current87d7 protocol case +5 own/+0 rival both seats; CEDAR 12-pair interaction has zero feed interaction and positive reached/null T10 effects; 24-pair multi-opponent gate has no verdict regressions. Enabled by T08 integration; no new runtime source.",
+      "enabled": true,
+      "source_pin": "PR10382 / a881284d6b59366536ebc5e77f0f7c7f2923599dfb8588fd8b1ed6166bd51483"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -144,6 +143,7 @@
     "committed": true,
     "consumer": "frozen",
     "funding": true,
+    "redundant_hire": true,
     "reserve_seconds": 0.01,
     "seed": true,
     "terminal_history": false,
@@ -174,7 +174,22 @@
     ]
   },
   "entrypoint": "main.py::agent",
-  "game_evidence_for_this_archive": null,
+  "game_evidence_for_this_archive": {
+    "cedar_interaction_pairs": 12,
+    "cedar_multi_opponent_pairs": 24,
+    "current87d7_protocol": {
+      "candidate_own": 190324,
+      "control_own": 190319,
+      "errors": 0,
+      "margin_delta": 5,
+      "rival": 3550,
+      "seats": 2,
+      "seed": 9922999
+    },
+    "limits": "mirrored seats are dependent; feed interaction and opponent-conditioned cells retain their original labels",
+    "scope": "same runtime bytes with redundant_hire enabled; development/compatibility evidence, not hosted leaderboard",
+    "verdict_regressions": 0
+  },
   "historical_role": "All other named archives, version receipts and controls are historical/test-only; preserve frozen experiments in flight.",
   "next_increments": [
     {
@@ -221,9 +236,9 @@
     },
     {
       "component": "T10 DOCK",
-      "current_step": "labor reserve feeds service experiment; comparative default unresolved",
+      "current_step": "redundant-hire certificate enabled; broader hiring/service payback remains experimental",
       "owner": "DOCK",
-      "source_pin": "9906"
+      "source_pin": "PR10382 + current config"
     },
     {
       "component": "T11/T15 ASTRA-RULE",
@@ -279,13 +294,13 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 191,
-      "sha256": "97c68a011f947de06dc2124773c9d224fbb63b2f92bd1e4f8d8e5466925db8da",
+      "bytes": 217,
+      "sha256": "336f204e3cafd6f342fd15e19ab4dda5cc68b33532b880a1d3fd8f39a384faf4",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 4296,
-      "sha256": "80ff7a8b28b5a66f60936bd05bf9acae63be171b8daf8d89d2e05a89ca0c62cc",
+      "bytes": 4789,
+      "sha256": "d1e5d727e100c367d10f9c6ce46af964e2bda5eba6a8dac31ee18526eab14daf",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -654,8 +669,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 12883,
-      "sha256": "001ce55c72d02571b6b80291c3a2fec6061f6a3243093fd8e0b4dd29f08c4d6c",
+      "bytes": 18405,
+      "sha256": "f718b435e58336acb223ee6e6a7ef7f6686d8916dd7f02733888eb9e98eaf066",
       "source_path": "titan_runtime.py"
     }
   },

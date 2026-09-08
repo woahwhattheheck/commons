@@ -75,20 +75,21 @@
     "inventory/resources/records/codex-titan-cloud-sell-scheduler-activation-20260907-01.json",
     "inventory/resources/records/codex-commons-operation-command-center-activation-20260907-01.json",
     "inventory/resources/records/codex-titan-cloud-model-lab-activation-20260908-01.json",
-    "inventory/resources/records/codex-titan-runtime-profiler-activation-20260908-01.json"
+    "inventory/resources/records/codex-titan-runtime-profiler-activation-20260908-01.json",
+    "inventory/resources/records/codex-gpt-6-astra-carrier-activation-20260908-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788840496.125739",
+  "slack_ts": "1788851325.359019",
   "snapshot": {
-    "base_main_sha": "0e1071e2059e07ab03224e61a210b04e7f1b5e56",
-    "observed_at": "2026-09-08T04:08:16Z",
+    "base_main_sha": "06616531b56ec4dfcc421bce82db8f8e04091b15",
+    "observed_at": "2026-09-08T07:08:45Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-runtime-profiler-activation-20260908-01",
+  "source_id": "codex-gpt-6-astra-carrier-activation-20260908-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -97,8 +98,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — source-bound TITAN runtime profiler producing through retained observations and lossless child-process receipts",
+  "subject": "MASTER RESOURCE LEDGER — GPT-6 Astra limited-rollout carrier producing across Commons implementation and coordination lanes",
   "supersedes_source_ids": [
+    "codex-gpt-6-astra-carrier-activation-20260908-01",
     "codex-titan-runtime-profiler-activation-20260908-01",
     "codex-titan-cloud-model-lab-activation-20260908-01",
     "codex-commons-operation-command-center-activation-20260907-01",
@@ -942,6 +944,28 @@
       "stage": "PRODUCING",
       "stale_after": "next tool, skill, plugin, automation, or subscription-state change",
       "value": "Owner-declared USD 200 ChatGPT subscription with 442 callable tools, 427 app tools in 20 families, 118 installed skills, and 14 automations."
+    },
+    {
+      "name": "gpt-6-astra-codex-carrier",
+      "kind": "LIMITED_ROLLOUT_MODEL_CARRIER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Astra-enabled ChatGPT Work carriers",
+      "authority": "SHARED_ALL_CARRIERS; TASK_SCOPED_COMMONS_OPERATIONS; PRESERVE_SOURCE_ATTRIBUTION_AND_COLLISION_BOUNDARIES; NO_QUOTA_OR_GLOBAL_AVAILABILITY_INFERENCE",
+      "consumer": "Current Commons implementation, integration, coordination and merge lanes needing high-capability coding, research, computer-use and complex multi-step judgment",
+      "value": "Official limited-organization access is directly exercised across distinct Commons consumers. Since the prior Resource Master watermark, current main absorbed 835 commits and 227 merges, including Astra-prefixed deliveries across TITAN, Slack and command-center, sales, and ROADEF lanes.",
+      "next_action": "Route Astra to the highest-value nonduplicate connected-app, coordination, integration and merge work while preserving a reserve; delegate commodity execution and retain exact source, branch, PR, test and readback attribution.",
+      "source": "OpenAI ChatGPT release notes 2026-09-03; current Git and GitHub delta 29f28f72838d83ce6e35e61e2a19685d6ae3b0d8..06616531b56ec4dfcc421bce82db8f8e04091b15; #commons, #delegations and #titan-kaggriculture Astra receipts through 2026-09-08T07:08:45Z",
+      "evidence_ts": "2026-09-08T07:08:45Z",
+      "auth_surface": "Astra access observed on enabled Commons carriers in an organization included in OpenAI's limited rollout; availability is not claimed for every account, workspace, region or API",
+      "exact_safe_probe": "Official September 3 release note names GPT-6 Astra and limited-organization rollout. Exact current-main merge receipts include PR #10394 at 06616531b56ec4dfcc421bce82db8f8e04091b15, PR #10391 at 6f321d78dcb2a4c79de786da9671d531c0c36694, PR #10389 at 4cf8f678507574afb0d8a1a0f24056e55bb168ab, PR #10386 at 8cf9f04d54fb3789438240c61259269f7b648c8e, PR #10381 at b6f022932925329b0f59b66a553824d6f0274eea and PR #10339 at c3ddcb017d5b1ad53f2bf08d6efe2986cc6ac3a9.",
+      "rate_plan_boundary": "Limited rollout and landed work prove exercised carrier capacity, not a hard or banked reset, unlimited allowance, a fresh meter, general availability, API access, future uptime, deployment, buyer acceptance, payment, revenue or cash.",
+      "assigned_backlog": "Existing Astra-prefixed claims and consumers retain their owners; use only fresh unclaimed work and do not remint the 50 owner-created Hive demand roots as delegations.",
+      "last_receipt": "codex-gpt-6-astra-carrier-activation-20260908-01",
+      "last_used_at": "2026-09-08T07:08:45Z",
+      "stale_after": "next official Astra availability, directly observed usage-meter, model-access, carrier-operating, consumer or material output change",
+      "priority": 100
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",

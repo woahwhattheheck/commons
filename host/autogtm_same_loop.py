@@ -60,6 +60,10 @@ Opener = Callable[[str], tuple[int, str]]
 WPEB_PATH = ROOT / "host" / "website_people_email_book.py"
 
 
+class CatalogError(ValueError):
+    """The local prospect catalog does not match the AutoGTM input contract."""
+
+
 def _load_wpeb() -> Any:
     spec = importlib.util.spec_from_file_location("website_people_email_book", WPEB_PATH)
     if spec is None or spec.loader is None:
@@ -166,8 +170,23 @@ def draft_campaign(row: dict[str, Any], context: dict[str, Any]) -> dict[str, An
     }
 
 
-def search_extract(catalog: dict[str, Any]) -> list[dict[str, Any]]:
-    return list(catalog.get("prospects") or [])
+def search_extract(catalog: Any) -> list[dict[str, Any]]:
+    if not isinstance(catalog, dict):
+        raise CatalogError("prospect catalog must be an object")
+    prospects = catalog.get("prospects")
+    if prospects is None:
+        return []
+    if not isinstance(prospects, list):
+        raise CatalogError("prospect catalog prospects must be a list")
+    result: list[dict[str, Any]] = []
+    for index, prospect in enumerate(prospects):
+        if not isinstance(prospect, dict):
+            raise CatalogError(f"prospect catalog row {index} must be an object")
+        evidence = prospect.get("evidence")
+        if evidence is not None and not isinstance(evidence, dict):
+            raise CatalogError(f"prospect catalog row {index} evidence must be an object or null")
+        result.append(prospect)
+    return result
 
 
 def approve_or_autopilot(asked_autopilot: bool) -> dict[str, Any]:

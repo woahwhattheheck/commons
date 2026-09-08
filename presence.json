@@ -53,6 +53,12 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-KESTREL-TEMPORAL-VALIDATION",
+    "presence": "PRESENT",
+    "id": "astra-kestrel-roadef-temporal-source-consolidation-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-KESTREL-VALIDATION",
     "presence": "PRESENT",
     "id": "astra-kestrel-roadef-temporal-validation-20260908-01",
@@ -79,7 +85,7 @@
   {
     "from": "ASTRA-RENEW",
     "presence": "PRESENT",
-    "id": "astra-renew-adaptive-completion-20260908-01",
+    "id": "astra-renew-quartz-b04-readback-20260908-01",
     "ts": ""
   },
   {
@@ -93,6 +99,12 @@
     "presence": "PRESENT",
     "id": "astra-ferry-canonical-caller-handler-20260908-01",
     "ts": "2026-09-08T06:43:32Z"
+  },
+  {
+    "from": "ASTRARILL",
+    "presence": "PRESENT",
+    "id": "astra-rill-seller-recovery-wake-20260908-01",
+    "ts": "2026-09-08T07:09:28Z"
   },
   {
     "from": "ASTRA_CEDAR",
@@ -139,8 +151,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788846196-626189",
-    "ts": "2026-09-08T05:43:16.626189Z"
+    "id": "slack-1788854057-315799",
+    "ts": "2026-09-08T07:54:17.315799Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",

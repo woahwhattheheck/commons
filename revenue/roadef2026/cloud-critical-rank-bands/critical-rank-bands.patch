@@ -1,0 +1,123 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -49,6 +49,36 @@
+         throw std::runtime_error(std::string("Invalid setting ") + name);
+     return value;
+ }
++static int positiveIntegerSetting(const char* name, int fallback, int maximum) {
++    double value = setting(name, fallback);
++    if (value < 1 || value > maximum || std::floor(value) != value)
++        throw std::runtime_error(std::string("Invalid positive integer setting ") + name);
++    return static_cast<int>(value);
++}
++
++struct CriticalRankChoice {
++    int sortedPrefix;
++    int rank;
++    int band;
++};
++
++// Visit the top 32 coordinates first. Each uninterrupted plateau then opens
++// one disjoint power-of-two rank band. Once the configured limit is exhausted,
++// keep cycling the deepest band rather than silently returning to the top.
++static CriticalRankChoice selectCriticalRank(int stalled, int available, int maxRanks) {
++    if (stalled < 0 || available <= 0 || maxRanks <= 0)
++        throw std::runtime_error("Invalid critical-rank selection input");
++    int limit = std::min(available, maxRanks);
++    int start = 0, end = std::min(32, limit), remaining = stalled, band = 0;
++    while (end < limit && remaining >= end - start) {
++        remaining -= end - start;
++        start = end;
++        end = std::min(limit, end * 2);
++        ++band;
++    }
++    int width = end - start;
++    return {end, start + remaining % width, band};
++}
+ struct Edge { int from, to, id; double metric, capacity; };
+ struct Demand { int from, to; std::vector<double> volume; };
+ struct Dag {
+@@ -82,6 +112,14 @@
+     bool jointEnabled = setting("FLEET_JOINT", 1) != 0;
+     bool directedEnabled = setting("FLEET_DIRECTED", 1) != 0;
+     int scanLimit = static_cast<int>(setting("FLEET_WAYPOINT_LIMIT", 0));
++    int criticalRankLimit = positiveIntegerSetting("FLEET_CRITICAL_RANK_LIMIT", 32, 1000000);
++    int criticalStallLimit = positiveIntegerSetting("FLEET_CRITICAL_STALL_LIMIT", 64, 1000000);
++    std::vector<long long> criticalBandVisits = std::vector<long long>(32, 0);
++    std::vector<long long> criticalBandAccepts = std::vector<long long>(32, 0);
++    int criticalMaxRankVisited = -1;
++    int criticalMaxBandVisited = 0;
++    int roundsCompleted = 0;
++    std::string stopReason = "round_limit";
+ 
+     struct Change { int d, left, right; Route next; };
+ 
+@@ -458,7 +496,22 @@
+             << ",\"ranked_candidates\":" << rankedCandidates
+             << ",\"accepted\":" << accepted << ",\"initial_mlu\":" << initialMlu
+             << ",\"final_mlu\":" << *std::max_element(loads.begin(), loads.end())
+-            << ",\"budget_used\":[";
++            << ",\"critical_rank_limit\":" << criticalRankLimit
++            << ",\"critical_stall_limit\":" << criticalStallLimit
++            << ",\"critical_max_rank_visited\":" << criticalMaxRankVisited
++            << ",\"rounds_completed\":" << roundsCompleted
++            << ",\"stop_reason\":\"" << stopReason << "\""
++            << ",\"critical_band_visits\":[";
++        for (int i = 0; i <= criticalMaxBandVisited; ++i) {
++            if (i) out << ',';
++            out << criticalBandVisits.at(i);
++        }
++        out << "],\"critical_band_accepts\":[";
++        for (int i = 0; i <= criticalMaxBandVisited; ++i) {
++            if (i) out << ',';
++            out << criticalBandAccepts.at(i);
++        }
++        out << "],\"budget_used\":[";
+         for (int t = 0; t < h; ++t) { if (t) out << ','; out << used[t]; }
+         out << "],\"loads\":[";
+         for (int t = 0; t < h; ++t) for (int e = 0; e < m; ++e) {
+@@ -579,13 +632,18 @@
+         bool adaptive = resumed;
+         double lastSave = elapsed();
+         for (int round = 0; round < maxRounds && !finished(); ++round) {
++            roundsCompleted = round + 1;
+             if (elapsed() > seconds * 0.65 || stalled >= 12) adaptive = true;
+             std::vector<int> critical(loads.size());
+             std::iota(critical.begin(), critical.end(), 0);
+-            int count = std::min<int>(32, static_cast<int>(critical.size()));
+-            std::partial_sort(critical.begin(), critical.begin() + count, critical.end(),
++            CriticalRankChoice choice = selectCriticalRank(
++                stalled, static_cast<int>(critical.size()), criticalRankLimit);
++            std::partial_sort(critical.begin(), critical.begin() + choice.sortedPrefix, critical.end(),
+                 [&](int a, int b) { return loads[a] != loads[b] ? loads[a] > loads[b] : a < b; });
+-            int position = critical[stalled % count], t = position / m, e = position % m;
++            int position = critical[choice.rank], t = position / m, e = position % m;
++            criticalMaxRankVisited = std::max(criticalMaxRankVisited, choice.rank);
++            criticalMaxBandVisited = std::max(criticalMaxBandVisited, choice.band);
++            criticalBandVisits.at(choice.band) += 1;
+             auto contributing = contributors(t, e);
+             long long oldAccepted = accepted;
+             int limit = std::min<int>(32, static_cast<int>(contributing.size()));
+@@ -648,9 +706,20 @@
+             }
+             if (accepted == oldAccepted && !finished() && stalled % 4 == 3)
+                 eject(t, e, contributing, adaptive);
+-            if (accepted > oldAccepted) stalled = 0; else ++stalled;
+-            if (adaptive && stalled >= 64) break;
++            if (accepted > oldAccepted) {
++                criticalBandAccepts.at(choice.band) += accepted - oldAccepted;
++                stalled = 0;
++            } else {
++                ++stalled;
++            }
++            if (adaptive && stalled >= criticalStallLimit) {
++                stopReason = "stall_limit";
++                break;
++            }
+         }
++        if (interrupted) stopReason = "signal";
++        else if (elapsed() >= seconds) stopReason = "time_limit";
++        else if (stopReason != "stall_limit") stopReason = "round_limit";
+         writeSolution();
+         statistics();
+         std::cerr << "Completed " << accepted << " improving moves / " << attempted << " attempts; MLU "
