@@ -12,26 +12,29 @@
     "wrapper_sha256": "89eb7de44bc90766fe75582275a45ae162cfa86c6a111968281cbc7403fb5b2d",
     "core_git_blob": "861958e91177fedd09db974345a2838387e7f2b7",
     "core_unchanged": true,
-    "test_git_blob": "7ac7850554a5e9fb75b798df4c0387ff580e61ea",
-    "test_bytes": 6641,
-    "test_sha256": "ed9e99f1eab71f2afcce8906d5bd52421001f307ddaf7999b35c0d430bf4bccc"
+    "test_git_blob": "d3a221ba67b9a4ce0897badbd35d46e6aef70b21",
+    "test_bytes": 7268,
+    "test_sha256": "83eed10e74d63d2d4d657263c9f2f97b7859a458b87adbbcbb4ee805e1092ace"
   },
   "focused_execution": {
     "candidate": {
-      "tests": 22,
+      "tests": 25,
       "failures": 0,
       "errors": 0
     },
     "prior_source": {
-      "tests": 22,
-      "failures": 9,
+      "tests": 25,
+      "failures": 12,
       "errors": 0,
       "failure_names": [
         "test_assert_boolean_tail_is_scanned",
         "test_assert_notin_gate_call_is_scanned",
+        "test_assert_quoted_negative_or_gate_call_is_scanned",
         "test_assertion_argument_gate_is_scanned",
+        "test_assertion_message_gate_call_is_scanned",
         "test_assignment_expression_is_not_hidden",
         "test_boolean_expression_tail_is_scanned",
+        "test_chained_assertion_gate_call_is_scanned",
         "test_multiline_negative_quote_passes",
         "test_semicolon_assert_tail_is_scanned",
         "test_semicolon_unittest_tail_is_scanned",
