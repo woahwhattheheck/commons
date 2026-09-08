@@ -133,3 +133,87 @@ that the guard returns legally, and that wall-versus-CPU divergence under
 oversubscription is real and measured on this box. WIDEFIELD's jobs=2 outcome
 stands as theirs; this is an independent run, not a replacement, and no
 tournament limit was relaxed to obtain it.
+
+---
+
+# Addendum: consuming the CURRENT v3 runtime, and the two state checks
+
+Written after reading `cloud-execution-lab/` on current main rather than the
+archive snapshot above, so nothing here duplicates a patch that already landed.
+No file of that lane is edited.
+
+Runtime read: `main.py` sha256 `a4ecdb513b48fa51877fe509597a84dd753dfe71d2d76a406ee3dc51475a9008`,
+`titan_runtime.py` sha256 `6af56386dd3df9fd9c2fbe7fd5222dbf7ea9cd3f8a1e13530383f7ee180eefaa`.
+
+## Already implemented in v3 — proposals withdrawn
+
+* **The entry clock is shared.** `main.py` takes `entry_started = time.perf_counter()`
+  before any import work and passes it in; `act` uses
+  `min(invoked, entry_started)`, so a supplied future timestamp cannot extend the
+  budget. There is also an `entrypoint_prelude` early return when the prelude has
+  already spent the whole budget. My "the guard's clock starts too late" point is
+  addressed for everything inside the process, and I withdraw it.
+* **CPU is reported.** `act_cpu_seconds` is on both the completed and the
+  fallback path, alongside `elapsed_seconds`, and the fallback copy is bounded by
+  the reserve. My contention evidence is consumable through that field directly;
+  it needs no new instrumentation.
+
+## Scope corrections to my own earlier claims
+
+* The 10 ms and 3 ms budget probes **expose cold/reinitialization overhead**.
+  They do **not** measure a safe reserve for the 1 s deadline, and I withdraw the
+  suggested `0.85–0.90 / ≥0.05` numbers — a safe reserve has to be measured
+  against the outer RPC boundary, which this VM cannot observe.
+* The controlled contention result **supports descheduling as a possibility**. It
+  is not an exclusive claim about the cause of the original WIDEFIELD failure,
+  and that failure's cause remains unproven.
+* Cold start, full entry, and outer RPC are three different intervals and are
+  kept distinct throughout. Only the first two are measurable here.
+
+## The one proposal that survives: split the module cache from mutable state
+
+`act` still sets `self.ready = False` on `DeadlineExceeded`, so the next action
+re-runs the whole of `_initialize()` — module loads plus `SeedBudget` over the
+route table — inside the next budget.
+
+Proposal, for the runtime owner to implement in its own files: split
+`_initialize()` into an **immutable module-loading cache** (`funding_module`, the
+`seed_budget`/`terminal_composition` module objects) that is built once and never
+invalidated, and a **mutable per-game/controller reset** (`consumer`,
+`controller`, `production`, `seed_budget`, `selected`, `post`, `history`) that is
+what a fallback discards. A cancelled mutation still gets a clean controller; the
+expensive, side-effect-free half stops being re-paid.
+
+## Verification asked for: cross-match leakage and retained partial initialization
+
+`cloud-model-lab/titan_state_leakage.py`, run against the v3 files above.
+Development seeds 9902233 / 9902234, censused clean.
+
+**A. No cross-match state leakage.** Game 9902234 played through a module that
+had already played 9902233 produces a **byte-identical 719-action sequence** and
+identical terminal cash (55,487 / 48,559) to the same game played in a freshly
+loaded module. First divergent action index: none. The `step == 0` reset in
+`main.py` is complete for this path.
+
+**B. Partial initialization IS retained, and it is currently harmless.** With a
+budget too small to finish cold start, the interrupt lands in `_initialize` and
+the instance is left holding `consumer=FrozenSelected`, `controller=Agent`,
+`production=Agent` from the interrupted generation with `seed_budget=None`:
+
+| | |
+|---|---|
+| interrupted status / stage | `deadline_fallback` / `cold_start` |
+| held after interrupt | consumer, controller, production bound; `seed_budget` None |
+| recovery on the next act | `completed`, action legal |
+| `seed_budget` keyed to the live controller | **yes** — route-name sets identical |
+
+So the mixed generation exists between the fallback and the next call, but
+because `act` re-initializes before use, nothing corrupts the output under the
+default config.
+
+**One latent path worth the owner's eye.** In the `DeadlineExceeded` handler the
+`terminal_history` branch calls `self._selected_snapshot(obs)`, which reads
+`self.consumer` — possibly the consumer from the interrupted generation — *before*
+any re-initialization. `TITAN-CONFIG.json` has `terminal_history: false`, so this
+is latent rather than active today. The module/state split above removes it as a
+class rather than special-casing it.
