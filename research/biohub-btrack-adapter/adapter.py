@@ -527,6 +527,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         output_path = args.output.resolve()
         if output_path in {detections_path, config_path}:
             raise AdapterError("output must not overwrite detections or configuration input")
+        for input_path in (args.detections, args.config):
+            try:
+                aliases_input = args.output.samefile(input_path)
+            except FileNotFoundError:
+                aliases_input = False
+            except OSError as exc:
+                raise AdapterError(f"cannot verify output file identity: {exc}") from exc
+            if aliases_input:
+                raise AdapterError("output must not overwrite detections or configuration input")
         detections = read_detections(args.detections)
         scale = Scale(args.scale_z, args.scale_y, args.scale_x).validate()
         bounds = VoxelBounds(args.zlo, args.zhi, args.ylo, args.yhi, args.xlo, args.xhi).validate()
