@@ -151,6 +151,8 @@ def value_route(offer: Any, observation: Mapping[str, Any], configuration: Mappi
         key = item, inv
         if key not in quotes:
             quotes[key] = mechanics.market_price(item, inv, params)
+            # A delegated quote may return after the cooperative deadline.
+            budget.check()
         return quotes[key]
     for step in range(now, end + 1):
         budget.check()
@@ -209,7 +211,7 @@ def value_route(offer: Any, observation: Mapping[str, Any], configuration: Mappi
         if step % center_interval == 0:
             for item in mechanics.TOWN_CENTER_PRODUCTS:
                 inventory[item] -= 1
-    return {"route_id": offer.route_id, "scenario": scenario.name, "complete": True,
+    result = {"route_id": offer.route_id, "scenario": scenario.name, "complete": True,
             "kind": "conditional_dated_flow_not_physical_feasibility",
             "assumptions": "supplied trade quantities execute; fixed costs are offer deltas; only declared demand/rival flows",
             "initial_cash": initial, "final_marked_cash": cash,
@@ -218,6 +220,9 @@ def value_route(offer: Any, observation: Mapping[str, Any], configuration: Mappi
             "fixed_costs": fixed_costs, "rival_receipts": rival_receipts,
             "rival_product_spend": rival_buys, "final_market_inventory": inventory,
             "cash_flow_rows": cash_flow_rows, "trace": trace}
+    # Include final town consumption and receipt construction in completion.
+    budget.check()
+    return result
 
 
 def evaluate_scenarios(offers: Sequence[Any], observation: Mapping[str, Any],
@@ -242,6 +247,8 @@ def evaluate_scenarios(offers: Sequence[Any], observation: Mapping[str, Any],
         rows = [[value_route(o, observation, configuration, mechanics, s,
                              _budget=budget, retain_trace=retain_trace) for o in offers]
                 for s in scenarios]
+        # No partially timely vector can reach the downstream selector.
+        budget.check()
         report.update(complete=True, reason="complete_conditional_flow", rows=rows,
                       unit_rounds=budget.used)
     except BudgetExceeded:

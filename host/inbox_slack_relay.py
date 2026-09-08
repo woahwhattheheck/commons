@@ -256,28 +256,42 @@ class PlainHTML(HTMLParser):
 
 def mail_body(payload: dict) -> str:
     """No image/link retrieval, attachments, or duplicate HTML alternatives."""
+    return _mail_body_content(payload)[0]
+
+
+def _mail_body_content(payload: dict) -> tuple[str, bool]:
+    """Return rendered text and whether it contains readable source content.
+
+    Diagnostics are retained when no alternative is readable, but are not
+    themselves source content. Keep this fact separate from the text so a
+    literal diagnostic-looking message remains an ordinary readable message.
+    """
     if payload.get("filename"):
-        return ""
+        return "", False
     parts = payload.get("parts", [])
     if parts:
         if payload.get("mimeType") == "multipart/alternative":
             # Prefer readable plain text, then the last usable alternative.
-            # Blank/omitted parts must not hide another available body.
             ordered = [p for p in parts if p.get("mimeType") == "text/plain"]
             ordered.extend(p for p in reversed(parts) if p.get("mimeType") != "text/plain")
+            diagnostic = ""
             for candidate in ordered:
-                body = mail_body(candidate)
-                if body.strip():
-                    return body
-            return ""
-        return "\n".join(filter(None, (mail_body(p) for p in parts)))
+                body, readable = _mail_body_content(candidate)
+                if readable:
+                    return body, True
+                if body.strip() and not diagnostic:
+                    diagnostic = body
+            return diagnostic, False
+        rendered = [_mail_body_content(p) for p in parts]
+        return "\n".join(body for body, _ in rendered if body), any(readable for _, readable in rendered)
     encoded = payload.get("body", {}).get("data", "")
     if not encoded:
-        return "[Body stored as an attachment; read original in Gmail.]" if payload.get("body", {}).get("attachmentId") else ""
+        diagnostic = "[Body stored as an attachment; read original in Gmail.]" if payload.get("body", {}).get("attachmentId") else ""
+        return diagnostic, False
     try:
         data = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
     except (ValueError, TypeError):
-        return "[Body decoding failed; read original in Gmail.]"
+        return "[Body decoding failed; read original in Gmail.]", False
     # Gmail returns MIME-part bytes, not necessarily UTF-8. Read the leaf's
     # Content-Type; a container's charset does not override its child parts.
     mime = Message()
@@ -293,9 +307,10 @@ def mail_body(payload: dict) -> str:
     if payload.get("mimeType") == "text/html":
         parser = PlainHTML()
         parser.feed(raw)
-        return "".join(parser.parts).strip()
-    return raw if payload.get("mimeType", "text/plain") == "text/plain" else ""
-
+        body = "".join(parser.parts).strip()
+    else:
+        body = raw if payload.get("mimeType", "text/plain") == "text/plain" else ""
+    return body, bool(body.strip())
 
 def attachment_names(payload: dict) -> list[str]:
     found = [payload["filename"]] if payload.get("filename") else []

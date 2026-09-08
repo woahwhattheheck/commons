@@ -63,6 +63,9 @@ class Solver {
     std::vector<Demand> demands;
     std::vector<std::vector<int>> incoming, outgoing;
     std::vector<std::vector<bool>> offline;
+    // Immutable maintenance-equivalent slots share only topology-derived data.
+    // Traffic, routes, loads and transition budgets remain indexed by real time.
+    std::vector<int> topologySlot;
     std::vector<std::unique_ptr<Dag>> dags;
     std::unordered_map<std::uint64_t, Sparse> cache;
     std::vector<Route> routes;
@@ -91,7 +94,7 @@ class Solver {
     bool finished() const { return interrupted || elapsed() >= seconds; }
 
     Dag& dag(int t, int target) {
-        auto& ptr = dags[t * n + target];
+        auto& ptr = dags[topologySlot[t] * n + target];
         if (ptr) return *ptr;
         auto result = std::make_unique<Dag>();
         auto& dist = result->distance;
@@ -132,7 +135,7 @@ class Solver {
     // A unit flow splits equally at EACH forwarding node, not across whole paths.
     // Values are fractions divided by link capacity, ready for load accumulation.
     const Sparse& segment(int t, int source, int target) {
-        std::uint64_t key = (static_cast<std::uint64_t>(t) * n + source) * n + target;
+        std::uint64_t key = (static_cast<std::uint64_t>(topologySlot[t]) * n + source) * n + target;
         auto found = cache.find(key);
         if (found != cache.end()) return found->second;
         if (cache.size() >= 300000) cache.clear();
@@ -501,6 +504,18 @@ public:
         for (const auto& item : scenario["interventions"].GetArray()) {
             int t = item["t"].GetInt();
             for (const auto& link : item["links"].GetArray()) offline.at(t).at(edgeIndex.at(link.GetInt())) = true;
+        }
+        // Equality uses the complete link mask, including nonconsecutive slots
+        // and bits past a machine word; equal counts alone are insufficient.
+        topologySlot.resize(h);
+        for (int t = 0; t < h; ++t) {
+            topologySlot[t] = t;
+            for (int prior = 0; prior < t; ++prior) {
+                if (offline[t] == offline[prior]) {
+                    topologySlot[t] = topologySlot[prior];
+                    break;
+                }
+            }
         }
         budget.assign(h, 0); used.assign(h, 0);
         for (const auto& item : scenario["budget"].GetArray()) budget.at(item["t"].GetInt()) = item["value"].GetInt();

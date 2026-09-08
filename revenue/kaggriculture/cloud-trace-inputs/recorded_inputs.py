@@ -26,12 +26,29 @@ SCHEMA = "titan.widefield.loss-trace.v1"
 
 
 def load(path: Path, name: str) -> Any:
+    """Execute and identify one captured source, without consulting bytecode.
+
+    Imported dependencies are not snapshotted. Register before execution for
+    normal module semantics, and restore the prior binding if execution fails.
+    """
+    source = path.read_bytes()
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise ValueError(f"Cannot load {path}")
+    code = compile(source, str(path), "exec")
     module = importlib.util.module_from_spec(spec)
+    missing = object()
+    previous = sys.modules.get(name, missing)
     sys.modules[name] = module
-    spec.loader.exec_module(module)
+    try:
+        exec(code, module.__dict__)
+    except BaseException:
+        if previous is missing:
+            sys.modules.pop(name, None)
+        else:
+            sys.modules[name] = previous
+        raise
+    module.__trace_input_source_sha256__ = hashlib.sha256(source).hexdigest()
     return module
 
 
@@ -249,8 +266,8 @@ def main(argv: list[str] | None = None) -> int:
     receipt.update({"source_record_sha256": hashlib.sha256(raw).hexdigest(),
                     "engine_ref": evaluator.ENGINE_REF, "engine_sha256": engine_hashes,
                     "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-                    "evaluator_sha256": hashlib.sha256(args.evaluator.read_bytes()).hexdigest(),
-                    "tracer_sha256": hashlib.sha256(args.tracer.read_bytes()).hexdigest()})
+                    "evaluator_sha256": evaluator.__trace_input_source_sha256__,
+                    "tracer_sha256": tracer.__trace_input_source_sha256__})
     output = b"".join(canonical(row) + b"\n" for row in inputs)
     if args.output.suffix == ".gz":
         output = gzip.compress(output, mtime=0)

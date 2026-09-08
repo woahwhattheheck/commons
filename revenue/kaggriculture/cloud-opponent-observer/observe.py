@@ -46,11 +46,17 @@ class CokObserver:
 
     def __init__(self, source: str | Path, pack: str | Path):
         self.source = Path(source).resolve(strict=True)
-        if hashlib.sha256(self.source.read_bytes()).hexdigest() != SOURCE_SHA256:
+        source_bytes = self.source.read_bytes()
+        if hashlib.sha256(source_bytes).hexdigest() != SOURCE_SHA256:
             raise ValueError("COK source differs from the declared T07 revision")
         self.official = load_official(Path(pack))
         self.contract = self.official.contract()
         self.call, _ = self.contract["build_agent"](str(self.source), {}, "kaggriculture")
+        # Bind the declared identity to the text the existing lazy loader will
+        # compile, not a separate earlier path read. No policy executes here.
+        captured = inspect.getclosurevars(self.call).nonlocals.get("raw_agent")
+        if captured != source_bytes.decode("utf-8"):
+            raise ValueError("COK source changed while the official loader captured it")
         self.last_record: dict[str, Any] | None = None
         self.calls = 0
         self._last_route: dict[int, str | None] = {}

@@ -68,7 +68,11 @@ class RecordedEngine:
         return result
 
 
-def main():
+def main(*, entry_factory=None, arms=None, extra_metadata=None):
+    write_entry = entry if entry_factory is None else entry_factory
+    arms = (('frozen_sell_control', False), ('late_recheck', True)) if arms is None else tuple(arms)
+    if len(arms) != 2 or len({name for name, _ in arms}) != 2:
+        raise ValueError('Supply one named control and one named candidate')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evaluator', type=Path, required=True)
     parser.add_argument('--loader', type=Path, required=True)
@@ -98,15 +102,17 @@ def main():
                 'frozen_sell_closure':source_closure,'engine_hashes':engine_hashes,
                 'original_evaluator':str(args.evaluator),'limits':{'action_seconds':1.0,'game_seconds':120.0},
                 'games':[], 'complete':False, 'held_seeds':[], 'selected_policy_changed':False}
+    if extra_metadata:
+        document['experiment_metadata'] = deepcopy(extra_metadata)
     atomic_json(args.output/'results.json', document)
     for seed in document['seeds']:
         for opponent, opponent_path in [('arlene',args.arlene),('apex',args.apex)]:
             for seat in (0,1):
-                for arm, enabled in [('frozen_sell_control',False),('late_recheck',True)]:
+                for arm, enabled in arms:
                     identity=f'{seed}-{opponent}-p{seat}-{arm}'
                     candidate=args.output/(identity+'.py')
                     telemetry=args.output/(identity+'.choices.jsonl')
-                    entry(candidate,sell_dir=args.sell_dir,implementation=root,enabled=enabled,telemetry=telemetry)
+                    write_entry(candidate,sell_dir=args.sell_dir,implementation=root,enabled=enabled,telemetry=telemetry)
                     trace=args.output/(identity+'.trace.jsonl.gz')
                     with gzip.open(trace,'wb',compresslevel=6) as output:
                         recorded=RecordedEngine(engine,output)
@@ -139,7 +145,7 @@ def main():
     document['pairs']=pairs
     document['complete']=all(g['status']=='complete' for g in document['games'])
     document['summary']={}
-    for arm in ('frozen_sell_control','late_recheck'):
+    for arm, _enabled in arms:
         games=[g for g in document['games'] if g['arm']==arm and g['status']=='complete']
         margins=[g['scores'][g['candidate_seat']]-g['scores'][1-g['candidate_seat']] for g in games]
         document['summary'][arm]={'complete':len(games),'wins':sum(x>0 for x in margins),
