@@ -412,6 +412,8 @@ jobs:
           set -euo pipefail
           python3 -B revenue/kaggriculture/cloud-composition-cases/cover/test_canonical_binding.py -v \
             2>&1 | tee "$RUNNER_TEMP/canonical-validation/canonical-binding-tests.log"
+          python3 -B revenue/kaggriculture/cloud-composition-cases/cover/test_canonical_transport.py -v \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/canonical-transport-tests.log"
       - name: Record canonical result and source preservation
         if: ${{ always() }}
         env:
@@ -458,6 +460,63 @@ jobs:
           (out/'CANONICAL-RESULTS.json').write_text(json.dumps(result, indent=2)+'\n')
           print(json.dumps(result, sort_keys=True))
           if problems:
+              raise SystemExit(1)
+      - name: Retain checked canonical bytes for existing consumers
+        shell: python
+        run: |
+          import hashlib, json, os, tempfile
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'canonical-validation'
+          report = {'schema': 'titan.canonical.transfer.v1', 'successful': False,
+                    'problems': [], 'scope': 'byte copy of the checked release; no rebuild'}
+          try:
+              checked = json.loads((out/'CANONICAL-RESULTS.json').read_text())
+              snapshot = json.loads((out/'SOURCE-SNAPSHOT.json').read_text())
+              if checked.get('successful') is not True or checked.get('changed_paths') != []:
+                  raise ValueError('Canonical check did not finish successfully with unchanged source')
+              for key in ('checkout', 'event_sha', 'pull_request_head'):
+                  if checked[key] != snapshot[key]:
+                      raise ValueError('Canonical result and snapshot identity differ: '+key)
+                  report[key] = snapshot[key]
+              lab = Path('revenue/kaggriculture/cloud-execution-lab')
+              names = ('exports/titan-current.tar.gz',
+                       'runtime/integrated-selected/CURRENT-ARCHIVE.json',
+                       'runtime/integrated-selected/CURRENT-SOURCE.json')
+              payload = {name: (lab/name).read_bytes() for name in names}
+              records = {}
+              for name, data in payload.items():
+                  source = snapshot['files'][str(lab/name)]
+                  digest = hashlib.sha256(data).hexdigest()
+                  if source['bytes'] != len(data) or source['sha256'] != digest:
+                      raise ValueError('Checked source changed before copying: '+name)
+                  records[name] = {'bytes': len(data), 'sha256': digest}
+              pointer = json.loads(payload[names[1]])
+              if pointer != checked['release']:
+                  raise ValueError('Release pointer differs from the successful check')
+              if (pointer['path'] != names[0] or pointer['source_manifest'] != names[2]
+                  or pointer['sha256'] != records[names[0]]['sha256']
+                  or pointer['bytes'] != records[names[0]]['bytes']
+                  or pointer['source_manifest_sha256'] != records[names[2]]['sha256']):
+                  raise ValueError('Release pointer does not bind the copied payload')
+              target = out/'checked-package'
+              if target.exists():
+                  raise ValueError('Checked-package destination is already present')
+              with tempfile.TemporaryDirectory(prefix='canonical-copy-', dir=out.parent) as tmp:
+                  staged = Path(tmp)/'checked-package'
+                  for name, data in payload.items():
+                      path = staged/name
+                      path.parent.mkdir(parents=True, exist_ok=True)
+                      path.write_bytes(data)
+                      if path.read_bytes() != data:
+                          raise OSError('Copied bytes differ: '+name)
+                  staged.rename(target)
+              report.update(successful=True, directory='checked-package', files=records,
+                            release=pointer)
+          except (OSError, ValueError, KeyError, TypeError) as exc:
+              report['problems'].append(type(exc).__name__+': '+str(exc))
+          (out/'PACKAGE-TRANSFER.json').write_text(json.dumps(report, indent=2)+'\n')
+          print(json.dumps(report, sort_keys=True))
+          if not report['successful']:
               raise SystemExit(1)
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
