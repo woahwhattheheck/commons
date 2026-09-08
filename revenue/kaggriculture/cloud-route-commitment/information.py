@@ -94,7 +94,6 @@ def information_window(*, now: int, last_compatible_decision: int | None,
             "semantics": "public_timing_with_supplied_structural_boundary_not_economic_feasibility"}
 
 
-
 def from_commitment(boundary: Mapping[str, Any], *, shop_count: int,
                     configuration: Mapping[str, Any] | None = None,
                     max_shop_instances: int = 8) -> dict[str, Any]:
@@ -125,7 +124,6 @@ def from_commitment(boundary: Mapping[str, Any], *, shop_count: int,
     result["boundary_source"] = {key: boundary.get(key) for key in
         ("current_route", "target_route", "current_sha256", "target_sha256", "predicate_agrees")}
     return result
-
 
 
 def main(argv: Sequence[str] | None = None) -> int:
