@@ -1,0 +1,63 @@
+name: ASTRA DOCK Learn2Design public inputs
+on:
+  push:
+    branches: [ci/astra-dock-learn2design-sourcepack-20260908]
+    paths: [.github/workflows/astra-dock-learn2design-sourcepack.yml]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: artificial-scientist-lab/Learn2Design-2026
+          ref: bd082889e4315884e177be5e343783ac5758dbb3
+          path: upstream
+          persist-credentials: false
+          sparse-checkout: |
+            docs
+            learn2design
+            competition_data
+            starter_kit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Retain public source and wheels without running an optimizer
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/upstream inputs/wheels
+          for f in LICENSE README.md pyproject.toml; do cp "upstream/$f" "inputs/upstream/$f"; done
+          for d in docs learn2design competition_data starter_kit; do
+            if test -d "upstream/$d"; then cp -a "upstream/$d" "inputs/upstream/$d"; fi
+          done
+          python -m pip download --only-binary=:all: --no-deps --dest inputs/wheels dfbench==0.3.3 differometor
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, platform, sys, zipfile
+          root = Path('inputs')
+          metadata = {}
+          for wheel in sorted((root/'wheels').glob('*.whl')):
+              with zipfile.ZipFile(wheel) as archive:
+                  members = [n for n in archive.namelist() if n.endswith('.dist-info/METADATA')]
+                  metadata[wheel.name] = archive.read(members[0]).decode()
+          (root/'WHEEL_METADATA.json').write_text(json.dumps(metadata, indent=2)+'\n')
+          files = sorted(p for p in root.rglob('*') if p.is_file())
+          manifest = {
+              'operation': 'astra-dock-learn2design-sourcepack-20260908-01',
+              'upstream_ref': 'bd082889e4315884e177be5e343783ac5758dbb3',
+              'purpose': 'public source and dependency transport only; no optimizer, entry, or benchmark result',
+              'python': sys.version, 'platform': platform.platform(),
+              'files': {str(p.relative_to(root)): {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in files},
+          }
+          (root/'MANIFEST.json').write_text(json.dumps(manifest, indent=2)+'\n')
+          print(json.dumps({'files':len(files),'bytes':sum(p.stat().st_size for p in files),'wheels':list(metadata)}, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: astra-dock-learn2design-public-inputs
+          path: inputs/
+          if-no-files-found: error
+          retention-days: 3
