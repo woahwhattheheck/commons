@@ -209,9 +209,16 @@ class MarketingSalesTests(unittest.TestCase):
         result = subprocess.run(
             [sys.executable, str(ROOT / "host" / "marketing_sales.py"), "validate"],
             cwd=ROOT,
-            check=True,
+            check=False,
             capture_output=True,
             text=True,
+            timeout=30,
+        )
+        self.assertEqual(
+            result.returncode,
+            0,
+            f"marketing-sales validation exited with code {result.returncode}.\n"
+            f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}",
         )
         self.assertRegex(
             result.stdout.strip(),
