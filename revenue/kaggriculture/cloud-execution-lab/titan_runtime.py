@@ -83,6 +83,7 @@ class TitanAgent:
         self.selected = None
         self.history = None
         self.post = None
+        self._completed_route = None
 
     def _initialize(self):
         f = self.features
@@ -110,6 +111,8 @@ class TitanAgent:
             from terminal_history_join import TerminalHistoryJoin
             self.history = TerminalHistoryJoin(hypotheses=f.history_hypotheses,
                                                tie_break=f.terminal_tie_break)
+        if self._completed_route is not None:
+            self.controller.cur = self._completed_route
         self.ready = True
 
     def _seed_selected(self, obs, cfg, selected):
@@ -169,6 +172,7 @@ class TitanAgent:
         self.post = None
         self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0,
                             'entrypoint_prelude_seconds': invoked-started}
+        selected_checkpoint = None
         stage = 'cold_start'
         seconds = self.features.budget_seconds-self.features.reserve_seconds-(time.perf_counter()-started)
         if seconds <= 0:
@@ -193,7 +197,8 @@ class TitanAgent:
                 self.diagnostics['parent_calls'] = 1
                 selected = self.production.act(obs)
                 self.selected = deepcopy(selected)
-                fallback = self.selected
+                selected_checkpoint = (self.selected, self.controller.cur)
+                fallback = selected_checkpoint[0]
                 stage = 'selected_transform'
                 output = self.transform_selected(obs, cfg, selected)
                 if self.history is not None:
@@ -203,6 +208,7 @@ class TitanAgent:
                         deadline=started+self.features.budget_seconds-self.features.reserve_seconds)
                     self.history.remember(obs,cfg,output,self.post)
                     self.diagnostics['history'] = self.history.diagnostics
+                self._completed_route = selected_checkpoint[1]
                 self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
                                         act_cpu_seconds=time.process_time()-cpu_started)
                 return output
@@ -212,6 +218,10 @@ class TitanAgent:
             # Cancellation can interrupt a state mutation. Reconstruct next turn
             # from observed state rather than reuse partially updated ledgers.
             self.ready = False
+            # Retain only the route paired with a complete selected fallback.
+            # A producer interrupted before returning cannot commit its choice.
+            if selected_checkpoint is not None and fallback is selected_checkpoint[0]:
+                self._completed_route = selected_checkpoint[1]
             if self.history is not None:
                 if stage in ('cold_start','history_observation'):
                     self.history = None
