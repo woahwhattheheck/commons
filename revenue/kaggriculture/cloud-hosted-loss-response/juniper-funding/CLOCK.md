@@ -81,7 +81,7 @@ python -B revenue/kaggriculture/cloud-hosted-loss-response/juniper-funding/check
   --root /path/to/commons/revenue/kaggriculture \
   --baseline-dir /path/to/original-entry-files \
   --frames /path/to/capital-evidence/results/9989001-p0-funded.frames.jsonl.gz \
-  --kind capital --seat 0 --report /tmp/capital-clock-prefix.json
+  --kind capital --position 0 --report /tmp/capital-clock-prefix.json
 ```
 
 Repeat for the other position; use `--kind frozen` with the corresponding
