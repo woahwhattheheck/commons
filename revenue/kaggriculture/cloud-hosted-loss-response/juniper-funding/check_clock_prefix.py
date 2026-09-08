@@ -61,7 +61,7 @@ def main():
                         help='Original seed_main.py, arms.py, capital_arms.py (published source pins)')
     parser.add_argument('--frames', type=Path, required=True)
     parser.add_argument('--kind', choices=('frozen', 'capital'), required=True)
-    parser.add_argument('--seat', type=int, choices=(0, 1), required=True)
+    parser.add_argument('--position', type=int, choices=(0, 1), required=True)
     parser.add_argument('--report', type=Path, required=True)
     args = parser.parse_args()
     root = args.root.resolve(); t13 = root/'cloud-hosted-loss-response'
@@ -87,7 +87,7 @@ def main():
     failure = None
     try:
         for step, (before, after) in enumerate(zip(frames, frames[1:])):
-            observation = deepcopy(before['state'][args.seat]['observation'])
+            observation = deepcopy(before['state'][args.position]['observation'])
             observation.update(step=step, remainingOverageTime=0)
             sparse = deepcopy(observation); sparse.pop('step')
             cfg = deepcopy(before['configuration'])
@@ -100,7 +100,7 @@ def main():
                 states.append(deepcopy(state(actors[index]._INSTANCES['funded'])))
                 action_hashes[index].update(canonical(output)+b'\n')
                 state_hashes[index].update(canonical(states[-1])+b'\n')
-            if outputs[0] != outputs[1] or outputs[1] != after['state'][args.seat]['action']:
+            if outputs[0] != outputs[1] or outputs[1] != after['state'][args.position]['action']:
                 raise AssertionError(f'Action mismatch at step {step}')
             if states[0] != states[1]:
                 raise AssertionError(f'Persistent state mismatch at step {step}')
@@ -118,7 +118,7 @@ def main():
             completed += 1
     except Exception as exc:
         failure = {'type': type(exc).__name__, 'detail': str(exc)}
-    report = {'schema': 'juniper-seed-clock-prefix-v1', 'kind': args.kind, 'seat': args.seat,
+    report = {'schema': 'juniper-seed-clock-prefix-v1', 'kind': args.kind, 'seat': args.position,
               'complete': completed == len(frames)-1 and failure is None,
               'compared_decisions': completed, 'expected_decisions': len(frames)-1,
               'dispatch_counts': counts, 'action_sha256': [h.hexdigest() for h in action_hashes],
