@@ -16,7 +16,7 @@ DOOR = ROOT / "commons-slack-chunk.html"
 
 KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
-    "host/commons_slack_full_body_chunk.py": "1fccf134",
+    "host/commons_slack_full_body_chunk.py": "482461f9",
     "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "2c7e34e0",
     "test_commons_slack_full_body_chunk.py": "1373d614",
     "commons-slack-chunk.html": "ed480912",
