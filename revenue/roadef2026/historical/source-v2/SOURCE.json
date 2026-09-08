@@ -40,6 +40,71 @@
       "worse": 2
     }
   },
+  "historical_study": {
+    "decoded_bytes": 16512,
+    "decoded_sha256": "9057f4ce667108881e8613be7131a1ee08cf06bb60ae437f6203a09183cc69fb",
+    "encoded_bytes": 22017,
+    "encoded_path": "study-v2.tar.gz.b64",
+    "encoded_sha256": "122345cbc4b3abc7aea6658ee40217c10eda67334e8a40a604ba92e3c19ab24b",
+    "files": [
+      {
+        "bytes": 4487,
+        "git_blob": "815b6757d93373f7d9fa4b00cf9649b2c465826d",
+        "path": "replay_three_arms.py",
+        "sha256": "62531c78c04655d519f238ed58f895edd20ee9c9f862cdf28147a0b11760d122"
+      },
+      {
+        "bytes": 6000,
+        "git_blob": "f80952a6cdc6a27c192cd47e593d9c6c1e9596e7",
+        "path": "run_three_arms.py",
+        "sha256": "96f807aff9435a7fb62ae32f558aa77701128b90a1f1e73f09269dac93520196"
+      },
+      {
+        "bytes": 766,
+        "git_blob": "933eb7a44d7fe895854e79a51395b5381f7d994d",
+        "path": "PREDECLARED.json",
+        "sha256": "5227a8652d236ceb16fa36ef30d66cb5df1211a07df4f3eb17eca54e39b3983b"
+      },
+      {
+        "bytes": 2224,
+        "git_blob": "88068af221da2d95d23df56673e87959bd85693f",
+        "path": "PUBLIC-THREE-ARM-FREEZE.json",
+        "sha256": "af5b05f2b8568133c2acad52d0cff558bef3c9ed96785627f897be092d596507"
+      },
+      {
+        "bytes": 7459,
+        "git_blob": "a6c90480568952480a372de17f865a540ab5393c",
+        "path": "PUBLIC-INPUTS.json",
+        "sha256": "242f79aa0fc0967bb761131e8bc44d940702e26f1090ff726f9ef3448852ca92"
+      },
+      {
+        "bytes": 3328,
+        "git_blob": "97e1d55da61c5545af4bb25fdf49ff374cf97dc0",
+        "path": "RESULTS.md",
+        "sha256": "380b2a988572a8e79ec89e4aa99a9a83d7f9f8b9241f22d7a8fe4a4fc215656d"
+      },
+      {
+        "bytes": 18048,
+        "git_blob": "28ebf52642ad8f111e969757a4437f799a1227be",
+        "path": "RESULTS.json",
+        "sha256": "5e2a70235d55b9ca448e8ffdddfc601d2386cba15936e448ac456293885c23ee"
+      },
+      {
+        "bytes": 26285,
+        "git_blob": "e785194d8c10056696f31ed94c731e2dcdf3e70a",
+        "path": "public-three.log",
+        "sha256": "107db7487f4cd8fa43685188af6713cc9d666775e651f6e621d92bba35062761"
+      }
+    ],
+    "historical_execution_only": true,
+    "library_delivery": {
+      "path": "/ROADEF-historical-temporal-V2-study-records-20260908.zip"
+    },
+    "nominal_seconds_each": 10,
+    "official_checker_calls": 48,
+    "pair_rows": 12,
+    "solver_rows": 36
+  },
   "library_delivery": {
     "bytes": 34387,
     "path": "/ROADEF-historical-temporal-V2-source-20260908.zip",
