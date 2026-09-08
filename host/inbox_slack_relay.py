@@ -43,7 +43,13 @@ SECRET_FIELD = re.compile(r"(?im)(\b(?:access_token|refresh_token|client_secret|
 AUTH_MAIL = re.compile(r"(?i)\b(sign.?in|log.?in|one.?time|passcode|password|passkey|2fa|two.factor|security (?:code|alert)|verification code|verify (?:your |the )?(?:email|identity)|unrecognized device)\b")
 PRIVATE_MAIL = re.compile(r"(?i)\b(patient|medical record|social security|account statement|bank statement|insurance claim)\b")
 WORK_MAIL = re.compile(r"(?i)\b(rfp|rfq|bid\s+\d|addend\w*|proposal|deadline|submission|registration|qualification|review|pull request|invoice|ticket|contract|tasks? due|automation|usage limit|interview|application)\b")
-URL = re.compile(r"https?://[^\s<>\]\)]+")
+# Keep bracketed authorities and generated redaction markers inside URL tokens.
+# Other closing prose/Markdown brackets still terminate the URL.
+URL = re.compile(
+    r"https?://(?:"
+    r"(?:[^\s<>/?#@\[\]\)]*@)?\[[^\s<>/?#\[\]\)]+\](?:\[REDACTED\]|[^\s<>\]\)])*"
+    r"|(?:\[REDACTED\]|[^\s<>\]\)])+)"
+)
 TOKEN_QUERY = re.compile(r"(?i)(token|secret|password|signature|sig|code|key|auth|credential)")
 
 
