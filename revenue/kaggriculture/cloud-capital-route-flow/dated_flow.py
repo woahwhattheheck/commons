@@ -34,6 +34,8 @@ def _int(value: Any, name: str) -> int:
 
 
 def _number(value: Any, name: str) -> float:
+    if isinstance(value, bool):
+        raise ValueError(f"{name} cannot be a boolean")
     result = float(value)
     if not math.isfinite(result):
         raise ValueError(f"{name} must be finite")
@@ -73,7 +75,8 @@ def _trade(order: Sequence[Any], mechanics: Any, *, rival: bool = False):
     if op not in ("SELL", "BUY_PRODUCT") or len(order) != 3:
         raise ValueError(f"unsupported flow order: {op}")
     item, quantity = order[1], _int(order[2], "quantity")
-    if quantity < 0 or item not in mechanics.PRODUCTS:
+    # The pinned interpreter aborts a slot before its 100,000th unit round.
+    if not 0 <= quantity <= 99_999 or item not in mechanics.PRODUCTS:
         raise ValueError("invalid product or quantity")
     if op == "BUY_PRODUCT" and item not in ("WHEAT", "FERTILIZER"):
         raise ValueError("engine BUY_PRODUCT accepts WHEAT/FERTILIZER only")
@@ -159,7 +162,7 @@ def value_route(offer: Any, observation: Mapping[str, Any], configuration: Mappi
             rival = rival_queue[slot] if slot < len(rival_queue) else None
             before = cash
             before_rival = rival_receipts - rival_buys
-            cash += fixed
+            cash = _number(cash + fixed, "running cash")
             fixed_costs -= fixed
             minimum = min(minimum, cash)
             if cash < 0 and first_negative is None:
@@ -178,7 +181,7 @@ def value_route(offer: Any, observation: Mapping[str, Any], configuration: Mappi
                 for actor, op, item, px in pending:
                     sell = op == "SELL"
                     if actor == 0:
-                        cash += px if sell else -px
+                        cash = _number(cash + (px if sell else -px), "running cash")
                         own_receipts += px if sell else 0
                         own_buys += px if not sell else 0
                     else:
