@@ -93,7 +93,7 @@ class CurrentNoopConsumer(unittest.TestCase):
             self.assertEqual(consume(actor, obs, cfg, changed, new_packet), changed)
             self.assertIsNone(actor.active)
             self.assertEqual((actor.draws, actor.provider_calls), (1, 1))
-            self.assertEqual(actor.last_decision['reason'], 'terminal_context_changed')
+            self.assertEqual(actor.last_decision['reason'], 'terminal_parent_changed')
             self.assertEqual(consume(actor, obs, cfg, action, packet), action)
             self.assertEqual((actor.draws, actor.provider_calls), (1, 1))
 
