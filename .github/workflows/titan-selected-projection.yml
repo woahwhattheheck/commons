@@ -332,7 +332,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m unittest test_combined_report test_report_publication -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/reporter-tests.log"
+          python3 -m unittest test_combined_report test_report_publication test_caller_handler_report -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/reporter-tests.log"
       - name: Bind all combined results to one source snapshot
         if: ${{ !cancelled() }}
         shell: bash
@@ -341,7 +341,7 @@ jobs:
           python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
             --directory "$RUNNER_TEMP/projection-validation" \
             --include-reporter-tests --include-funded-join --include-runtime-regressions \
-            --include-cancellation --include-ledger-schedule --include-stress-runner --include-queue-copy --include-adaptive-context \
+            --include-cancellation --include-caller-handler --include-ledger-schedule --include-stress-runner --include-queue-copy --include-adaptive-context \
             --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}

@@ -32,6 +32,7 @@ SUITES = (
 FUNDED_JOIN = ("funded_join", "funded-join-tests.log", ROOT + "cloud-composition-cases/cypress/test_funded_join.py", "funded-join-results.json", "test_methods")
 LEDGER_SCHEDULE = ("ledger_schedule", "ledger-schedule-tests.log", MARKET + "test_ledger_schedule.py", "ledger-schedule-results.json", "test_methods")
 CANCELLATION = ("deadline_cancellation", "deadline-cancellation-tests.log", ROOT + "cloud-economic-stress/cancellation/test_deadline_cancellation.py", "deadline-cancellation.json", "tests_run")
+CALLER_HANDLER = ("caller_handler", "caller-handler-tests.log", ROOT + "cloud-economic-stress/test_caller_handler.py", "caller-handler-results.json", "tests_run")
 RUNTIME_REGRESSIONS = (
     ("capture_binding", "capture-binding-tests.log", ROOT + "cloud-market-game-theory/adaptive/test_capture_binding.py", "capture-binding-results.json", "run"),
     ("score_schedule", "score-schedule-tests.log", LAB + "test_score_schedule.py", None, None),
@@ -173,7 +174,7 @@ def _atomic_write_text(output: Path, text: str) -> None:
             pass
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False, include_queue_copy: bool = False, include_adaptive_context: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_caller_handler: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False, include_queue_copy: bool = False, include_adaptive_context: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -219,6 +220,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
     declarations = (SUITES + ((FUNDED_JOIN,) if include_funded_join else ())
                     + (RUNTIME_REGRESSIONS if include_runtime_regressions else ())
                     + ((CANCELLATION,) if include_cancellation else ())
+                    + ((CALLER_HANDLER,) if include_caller_handler else ())
                     + ((LEDGER_SCHEDULE,) if include_ledger_schedule else ())
                     + ((REPORTER,) if include_reporter else ())
                     + (STRESS_RUNNER if include_stress_runner else ())
@@ -244,7 +246,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                 value = summary.get(count_key)
                 if type(value) is not int or value != entry["tests"]:
                     problems.append(key + ": JSON/log test counts differ")
-                if key in ("deadline_cancellation", "stress_runner_boundary", "adaptive_context"):
+                if key in ("deadline_cancellation", "caller_handler", "stress_runner_boundary", "adaptive_context"):
                     for field in ("failures", "errors", "skipped"):
                         if not isinstance(summary.get(field), list) or summary[field]:
                             problems.append(key + ": nonempty or missing JSON " + field + " array")
@@ -328,6 +330,27 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
         if (any(type(n) is not int or n < 0 for n in partition)
                 or sum(partition) != cancelled.get("tests_run")):
             problems.append("cancellation: method partition does not match tests_run")
+
+    caller = reports.get("caller_handler", {})
+    caller_measurements = caller.get("measurements")
+    if include_caller_handler:
+        bind("caller handler adapter", caller.get("adapter_sha256"),
+             source(ROOT + "cloud-economic-stress/deadline_adapter.py"))
+        bind("caller handler test", caller.get("test_sha256"), source(CALLER_HANDLER[2]))
+        if type(caller.get("games")) is not int or caller["games"] != 0:
+            problems.append("caller handler: expected zero games")
+        if not isinstance(caller_measurements, list) or not caller_measurements:
+            problems.append("caller handler: missing measurement array")
+        else:
+            for index, row in enumerate(caller_measurements):
+                if not isinstance(row, dict):
+                    problems.append(f"caller handler: invalid measurement {index}")
+                    continue
+                diagnostics = row.get("diagnostics")
+                if row.get("handler_preserved") is not True:
+                    problems.append(f"caller handler: replacement not preserved in measurement {index}")
+                if not isinstance(diagnostics, dict) or diagnostics.get("status") != "deadline_fallback":
+                    problems.append(f"caller handler: invalid fallback diagnostics in measurement {index}")
 
     stress = reports.get("stress_runner_boundary", {})
     if include_stress_runner:
@@ -436,6 +459,13 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
         result["cancellation_new_regression_methods"] = cancelled.get("new_regression_methods")
         result["cancellation_retained_guard_methods"] = cancelled.get("unchanged_upstream_guard_methods")
         result["cancellation_adapter_sha256"] = cancelled.get("adapter_sha256")
+    if include_caller_handler:
+        result["caller_handler_binding"] = {
+            "adapter_sha256": caller.get("adapter_sha256"),
+            "test_sha256": caller.get("test_sha256"),
+            "games": caller.get("games")}
+        result["caller_handler_measurements"] = (
+            len(caller_measurements) if isinstance(caller_measurements, list) else None)
     if include_ledger_schedule:
         result["ledger_schedule_case_counts"] = ledger.get("counts")
         result["ledger_reported_reference_method_sha256"] = ledger.get("reference_method_sha256")
@@ -462,6 +492,7 @@ def main(argv=None):
     parser.add_argument("--include-funded-join", action="store_true")
     parser.add_argument("--include-runtime-regressions", action="store_true")
     parser.add_argument("--include-cancellation", action="store_true")
+    parser.add_argument("--include-caller-handler", action="store_true")
     parser.add_argument("--include-ledger-schedule", action="store_true")
     parser.add_argument("--include-stress-runner", action="store_true")
     parser.add_argument("--include-queue-copy", action="store_true")
@@ -471,6 +502,7 @@ def main(argv=None):
                           include_funded_join=args.include_funded_join,
                           include_runtime_regressions=args.include_runtime_regressions,
                           include_cancellation=args.include_cancellation,
+                          include_caller_handler=args.include_caller_handler,
                           include_ledger_schedule=args.include_ledger_schedule,
                           include_stress_runner=args.include_stress_runner,
                           include_queue_copy=args.include_queue_copy,

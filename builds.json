@@ -353,13 +353,13 @@
  "n_open_prs": 4,
  "open_prs": [
   {
-   "number": 10181,
+   "number": 10253,
    "author": "woahwhattheheck",
-   "title": "Execute ROADEF portfolio Docker and SIGTERM checkpoint checks",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10181",
+   "title": "Adopt WREN's exact route-distance optimization",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10253",
    "base_freshness": {
-    "base_sha": "01c2b20b990f556ddd190ff5caaa7d8ab55adac1",
-    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
+    "base_sha": "5edfadac961f43c7117d99c80ef94d84f0284a57",
+    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,13 +369,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10213,
+   "number": 10279,
    "author": "woahwhattheheck",
-   "title": "ROADEF: compose process cleanup with abnormal-run receipts",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10213",
+   "title": "fix(reporting): retain delivery history and complete Markdown bodies",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10279",
    "base_freshness": {
-    "base_sha": "de8327a183c50123476bfe8e934e1f7631c72b00",
-    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
+    "base_sha": "09f7566fb9f90dfe2a86052b347ca4eaa7e5ada9",
+    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -390,8 +390,8 @@
    "title": "Accept exact native scientific values in ROADEF checker reports",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10224",
    "base_freshness": {
-    "base_sha": "af0c9feffa15ea4437b8d6aa0b8f5476a5c9f4d4",
-    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
+    "base_sha": "d9dd9f79a9d1bb268bff4f01d55b9acad0b1df79",
+    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -401,13 +401,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10225,
+   "number": 10299,
    "author": "woahwhattheheck",
-   "title": "Preserve emitted sale prefixes during plan continuation",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10225",
+   "title": "Support explicit producer snapshots in the existing seed compatibility CLI",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10299",
    "base_freshness": {
-    "base_sha": "af0c9feffa15ea4437b8d6aa0b8f5476a5c9f4d4",
-    "main_sha": "58c9c46ae321271634b26100938fb598da32f419",
+    "base_sha": "616a1d2846f15f5a3b6f08ec8628aa7b21b68bed",
+    "main_sha": "7768660e56bb83f9371583ce5719dce8304efdd7",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

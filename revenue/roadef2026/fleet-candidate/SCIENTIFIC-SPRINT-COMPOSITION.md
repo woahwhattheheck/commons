@@ -18,11 +18,16 @@ comparison and CLI functions, is AST-identical. The composed reader is blob
 `6d6812e1e3d682103f90efa0b817c867555d74a7`, 13,802 bytes, SHA256
 `a402a0166b1e52c95dd181e15b8a124504ac78ddea7e815944c754569b323cb8`.
 
-The current source manifest retains all 32 unrelated original entries exactly,
+The current source manifest retains all unrelated current entries exactly,
 updates only the composed reader identity, and adds the original scientific
 reader delivery files plus this integration note and its new tests. Original
 native validation JSON, compressed evidence, guide and test bytes are retained;
 their narrower historical source identities are not relabeled.
+
+A subsequent manifest reconciliation consumes main
+`7d883bf94a1b7afa83bb9ed472db30e618d28236`, retaining its 35 unrelated rows,
+including newer supervisor, solver and benchmark identities and finite-load
+entries. The tested reader and both test files stay unchanged.
 
 ## Executed joined checks
 
