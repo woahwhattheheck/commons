@@ -310,7 +310,7 @@ def main():
 
     bindings_path = Path("revenue/scope_to_delivery/catalog_bindings.json")
     binding_lines = [
-        guard.AddedLine(path.as_posix(), line_number, text)
+        guard.AddedLine(bindings_path.as_posix(), line_number, text)
         for line_number, text in enumerate(bindings_path.read_text(encoding="utf-8").splitlines(), 1)
     ]
     binding_violations = guard.scan_added(binding_lines)
