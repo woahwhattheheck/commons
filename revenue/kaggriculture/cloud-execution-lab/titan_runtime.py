@@ -246,6 +246,9 @@ class TitanAgent:
         if self.quadrant is not None:
             self.quadrant.finish(obs, returned)
             self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
+            if self._quadrant_admission is not None:
+                self.diagnostics['fourth_quadrant_admission'] = deepcopy(
+                    self._quadrant_admission.last_report)
         if self.spatial is not None:
             self.spatial.finish(obs, returned)
 
@@ -358,6 +361,9 @@ class TitanAgent:
                     self.spatial.configure(cfg)
                 if self.features.terminal_route:
                     self.production.configuration = cfg
+                if self._quadrant_admission is not None:
+                    self._quadrant_admission.begin_action(
+                        started+self.features.budget_seconds-self.features.reserve_seconds)
                 self.diagnostics['parent_calls'] = 1
                 selected = self.production.act(obs)
                 self.selected = deepcopy(selected)

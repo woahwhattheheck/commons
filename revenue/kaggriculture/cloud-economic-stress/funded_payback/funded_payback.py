@@ -268,13 +268,20 @@ def _simulate(route: Sequence[Mapping[str, Any]], observation: Mapping[str, Any]
             actual = (["PASS"] if len(request) >= 2 and request[0] == "PLANT"
                       and request[1] in blocked else request)
             position = tuple(mechanics._farmer_position(farm, worker))
-            tile_before = deepcopy(farm["tiles"][position[1]][position[0]])
-            inventory_before = deepcopy(private["inventories"][worker])
-            shed_before = deepcopy(private["shed"])
+            on_target = position in target
+            explicit_drop = bool(actual and actual[0] == "DROP")
+            # Provenance needs snapshots only on target tiles or at an explicit
+            # deposit. Avoid copying unrelated worker/tile/shed state on every
+            # route step; official mechanics still receives the same objects.
+            tile_before = (deepcopy(farm["tiles"][position[1]][position[0]])
+                           if on_target else None)
+            inventory_before = (deepcopy(private["inventories"][worker])
+                                if on_target or explicit_drop else None)
+            shed_before = deepcopy(private["shed"]) if explicit_drop else None
             mechanics._apply_unit_action(farm, private, worker, actual, board,
                                          step // turns, turns, capacity)
-            tile_after = farm["tiles"][position[1]][position[0]]
-            if position in target:
+            if on_target:
+                tile_after = farm["tiles"][position[1]][position[0]]
                 op = actual[0] if actual else "PASS"
                 if op == "PLANT" and tile_before is None and isinstance(tile_after, dict):
                     events.append({"step": step, "kind": "plant", "worker": worker,
@@ -290,7 +297,7 @@ def _simulate(route: Sequence[Mapping[str, Any]], observation: Mapping[str, Any]
                             target_inventory[worker][item] = target_inventory[worker].get(item, 0) + gained
                             events.append({"step": step, "kind": "harvest", "worker": worker,
                                            "tile": list(position), "item": item, "quantity": gained})
-            if actual and actual[0] == "DROP":
+            if explicit_drop:
                 _deposit_provenance({"shed": shed_before}, [inventory_before], private["shed"],
                                     [target_inventory[worker]], target_shed, explicit=True,
                                     events=events, step=step, capacity=capacity,
@@ -309,12 +316,15 @@ def _simulate(route: Sequence[Mapping[str, Any]], observation: Mapping[str, Any]
         if (step + 1) % turns == 0:
             mechanics._daily_refresh_plants(farm, step // turns, turns)
             mechanics._daily_refresh_animals(farm, step // turns)
-            before_inventories = deepcopy(private["inventories"])
-            before_shed = deepcopy(private["shed"])
-            mechanics._drop_inventories_to_shed(private, capacity)
-            _deposit_provenance({"shed": before_shed}, before_inventories, private["shed"],
-                                target_inventory, target_shed, explicit=False,
-                                events=events, step=step, capacity=capacity)
+            if any(target_inventory):
+                before_inventories = deepcopy(private["inventories"])
+                before_shed = deepcopy(private["shed"])
+                mechanics._drop_inventories_to_shed(private, capacity)
+                _deposit_provenance({"shed": before_shed}, before_inventories, private["shed"],
+                                    target_inventory, target_shed, explicit=False,
+                                    events=events, step=step, capacity=capacity)
+            else:
+                mechanics._drop_inventories_to_shed(private, capacity)
             farm["farmer"] = list(mechanics._default_spawn(board))
             farm["hands"] = []
             farm["hires_today"] = 0
@@ -351,7 +361,8 @@ def evaluate_bundle(observation: Mapping[str, Any], configuration: Mapping[str, 
                     mechanics: Any, base_route: Sequence[Mapping[str, Any]],
                     candidate_route: Sequence[Mapping[str, Any]], bundle: Mapping[str, Any], *,
                     scenarios: Sequence[MarketScenario] | None = None,
-                    minimum_gain: float = 0.0, seconds: float | None = 0.20) -> dict[str, Any]:
+                    minimum_gain: float = 0.0, seconds: float | None = 0.20,
+                    base_cache: dict[tuple[Any, ...], dict[str, Any]] | None = None) -> dict[str, Any]:
     """Admit only a funded, physically realized, route-rejoining land bundle.
 
     The returned report is a callback result, not a route mutation.  A caller
@@ -433,12 +444,23 @@ def evaluate_bundle(observation: Mapping[str, Any], configuration: Mapping[str, 
         for scenario in selected_scenarios:
             if deadline is not None and time.perf_counter() >= deadline:
                 raise BudgetExceeded("prospective bundle budget exhausted")
-            base = _simulate(base_route, observation, configuration, mechanics, scenario,
-                             target, deadline, rejoin_step)
+            cache_key = ((id(base_route), rejoin_step, scenario.name)
+                         if base_cache is not None and not scenario.rival_orders else None)
+            base = base_cache.get(cache_key) if cache_key is not None else None
+            if base is None:
+                base = _simulate(base_route, observation, configuration, mechanics, scenario,
+                                 target, deadline, rejoin_step)
+                if cache_key is not None:
+                    base_cache[cache_key] = base
             candidate = _simulate(candidate_route, observation, configuration, mechanics, scenario,
                                   target, deadline, rejoin_step)
             rows.append({"name": scenario.name, "base": base, "candidate": candidate,
                          "gain": candidate["cash"] - base["cash"]})
+            # Admission requires every declared scenario to clear the minimum.
+            # Once one complete scenario fails, later stress rows cannot change
+            # the rejection and only consume the live action budget.
+            if rows[-1]["gain"] <= gain:
+                break
         compact_rows = [{"name": row["name"], "base_cash": row["base"]["cash"],
                          "candidate_cash": row["candidate"]["cash"], "gain": row["gain"],
                          "candidate_minimum_cash": row["candidate"]["minimum_cash"],
@@ -609,6 +631,7 @@ class FundedPaybackAdmission:
         started = time.perf_counter()
         now = _integer(observation["step"], "step")
         diagnostics = []
+        base_cache = {}
         selected = None
         selected_gain = float("-inf")
         ordered = sorted(enumerate(proposals),
@@ -649,7 +672,8 @@ class FundedPaybackAdmission:
                     {"route_id": str(route_id), "base_route_id": str(route_id),
                      "target_quadrant": "SE", "rejoin_step": rejoin,
                      "required_tiles": tiles, "minimum_planted_tiles": len(tiles)},
-                    minimum_gain=self.minimum_gain, seconds=remaining)
+                    minimum_gain=self.minimum_gain, seconds=remaining,
+                    base_cache=base_cache)
                 row["variants"][str(route_id)] = self._compact(report)
                 if not report.get("complete"):
                     complete = False
@@ -659,10 +683,14 @@ class FundedPaybackAdmission:
                 worst = min(worst, float(report["worst_gain"]))
             if row["admitted"]:
                 row.update(reason="all_compatible_routes_pay_back", worst_gain=worst)
-                if worst > selected_gain:
-                    selected = proposal
-                    selected_gain = worst
+                selected = proposal
+                selected_gain = worst
             diagnostics.append(row)
+            # Proposals are already ranked by current public economics. Execute
+            # the first fully funded reachable bundle, retaining enough time for
+            # the selected action and avoiding machine-speed-dependent rescans.
+            if selected is not None:
+                break
         self.last_report = {
             "complete": complete,
             "admitted": selected is not None,
