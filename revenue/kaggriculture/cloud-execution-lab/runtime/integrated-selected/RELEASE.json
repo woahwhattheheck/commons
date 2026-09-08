@@ -69,6 +69,13 @@
       "enabled": true,
       "callsite": "TitanAgent._initialize -> load(cache=True) for funding and SeedBudget code only",
       "consumed_result": "Three focused cancellation/import/match-isolation tests; completed modules reused, controller and mutable ledgers rebuilt. No RPC-cause or full-game improvement claim."
+    },
+    {
+      "component": "Immutable SeedBudget route derivation reuse",
+      "source_pin": "ALDER derivative in current manifest reference/integrated-selected/alder/seed_budget.py; original retained under checks/reference/historical",
+      "callsite": "TitanAgent._initialize -> SeedBudget.__init__ -> _derived(routes)",
+      "enabled": true,
+      "consumed_result": "Claude T08 1788840840.568819 measured 91% seed derivation. Complete built-in route-content key, four-entry process cache, read-only tables, per-instance events. Focused semantic/cancellation/isolation and current archive timing tests; no new games."
     }
   ],
   "next_increments": [

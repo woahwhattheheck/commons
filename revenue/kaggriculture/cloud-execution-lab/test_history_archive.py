@@ -9,8 +9,8 @@ root=pathlib.Path(sys.argv[1]);sys.path.insert(0,str(root));sys.path.insert(1,st
 def offline(event,args):
  if event in ('socket.connect','socket.getaddrinfo'):raise RuntimeError('offline test')
 sys.addaudithook(offline)
-if sys.argv[2] in ('boundaries','entry-clock','module-recovery'):
- filename={'entry-clock':'test_entrypoint_clock.py','boundaries':'test_terminal_history_join.py','module-recovery':'test_module_recovery.py'}[sys.argv[2]]
+if sys.argv[2] in ('boundaries','entry-clock','module-recovery','seed-derived'):
+ filename={'entry-clock':'test_entrypoint_clock.py','boundaries':'test_terminal_history_join.py','module-recovery':'test_module_recovery.py','seed-derived':'test_seed_derived.py'}[sys.argv[2]]
  try:runpy.run_path(str(root/'checks'/filename),run_name='__main__')
  except SystemExit as e:
   if e.code:raise
@@ -51,7 +51,7 @@ def main():
    if p.returncode:raise RuntimeError(p.stdout+p.stderr)
    return p
   result['boundaries']={}
-  for mode,name in [('entry-clock','ENTRY-CLOCK'),('boundaries','HISTORY'),('module-recovery','MODULE-RECOVERY')]:
+  for mode,name in [('entry-clock','ENTRY-CLOCK'),('boundaries','HISTORY'),('module-recovery','MODULE-RECOVERY'),('seed-derived','SEED-DERIVED')]:
    run(mode)
    result['boundaries'][name]=json.loads((r/f'checks/runtime/integrated-selected/{name}-TESTS.json').read_text())
   fixture=w/'fixture.json';fixture.write_text(run('fixture').stdout)

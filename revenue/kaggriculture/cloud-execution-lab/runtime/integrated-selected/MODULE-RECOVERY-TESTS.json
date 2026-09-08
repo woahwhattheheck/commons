@@ -4,7 +4,7 @@
   "cases": [
     {
       "case": "recovery_state_reconstruction",
-      "seconds": 0.00942937599029392,
+      "seconds": 0.002563173999078572,
       "module_identity_reused": true,
       "mutable_state_rebuilt": true
     }

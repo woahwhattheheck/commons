@@ -30,7 +30,7 @@ class ModuleRecovery(unittest.TestCase):
  def test_cancel_reuses_code_but_rebuilds_state(self):
   OrderedSelectedSellTests.setUpClass();h=OrderedSelectedSellTests();obs,cfg,_,_=h.fixture(100)
   agent=T.TitanAgent(T.Features(budget_seconds=.025,reserve_seconds=.01));agent._initialize()
-  funding=agent.funding_module;budget_class=type(agent.seed_budget);controller=agent.controller;consumer=agent.consumer
+  funding=agent.funding_module;budget_class=type(agent.seed_budget);controller=agent.controller;consumer=agent.consumer;suffixes=agent.seed_budget.suffixes
   agent.seed_budget.events.append({'sentinel':True});consumer.pending['MILK']=999
   def spin(*a):
    while True:pass
@@ -40,6 +40,7 @@ class ModuleRecovery(unittest.TestCase):
   self.assertIs(agent.funding_module,funding);self.assertIs(type(agent.seed_budget),budget_class)
   self.assertIsNot(agent.controller,controller);self.assertIsNot(agent.consumer,consumer)
   self.assertEqual(agent.seed_budget.events,[]);self.assertEqual(agent.consumer.pending,{})
+  self.assertTrue(agent.seed_budget.suffixes is suffixes)
   ROWS.append({'case':'recovery_state_reconstruction','seconds':elapsed,'module_identity_reused':True,'mutable_state_rebuilt':True})
  def test_new_match_has_fresh_controller_and_seed_ledger(self):
   a=T.TitanAgent();a._initialize();a.seed_budget.events.append({'sentinel':True});a.consumer.pending['MILK']=999

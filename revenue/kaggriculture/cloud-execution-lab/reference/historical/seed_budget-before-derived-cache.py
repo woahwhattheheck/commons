@@ -8,60 +8,29 @@ It does not read the rival, replay actions, prices, hidden seeds, or future draw
 """
 from collections import Counter
 from copy import deepcopy
-from types import MappingProxyType
-import marshal
-
-# Process-local, bounded, content-keyed; never deserialize external input.
-_DERIVED_CACHE = {}
-_CACHE_LIMIT = 4
-
-
-def _derive(routes):
-    suffixes = {}
-    prefix_lengths = {}
-    for name, route in routes.items():
-        for other, candidate in routes.items():
-            common = 0
-            for a, b in zip(route, candidate):
-                if a != b:
-                    break
-                common += 1
-            prefix_lengths[name, other] = common
-    for name, route in routes.items():
-        suffix = [Counter() for _ in range(len(route) + 1)]
-        for t in range(len(route) - 1, -1, -1):
-            suffix[t] = suffix[t + 1].copy()
-            row = route[t]
-            for action in [row.get("farmer", []), *row.get("hands", [])]:
-                if len(action) >= 2 and action[0] == "PLANT":
-                    suffix[t][action[1]] += 1
-        suffixes[name] = tuple(MappingProxyType(dict(c)) for c in suffix)
-    return MappingProxyType(suffixes), MappingProxyType(prefix_lengths)
-
-
-def _derived(routes):
-    # marshal is only a local lossless builtin-content encoding, not a persisted
-    # format or object identity key. Lists/tuples and every full action field
-    # remain distinct. Version 2 omits reference-count-dependent sharing tags.
-    # Unsupported object types take the uncached path.
-    try:
-        key = marshal.dumps(routes, 2)
-    except (ValueError, TypeError):
-        return _derive(routes)
-    cached = _DERIVED_CACHE.get(key)
-    if cached is not None:
-        return cached
-    result = _derive(routes)
-    # Publish only after every suffix and prefix has completed and is immutable.
-    if len(_DERIVED_CACHE) >= _CACHE_LIMIT:
-        _DERIVED_CACHE.pop(next(iter(_DERIVED_CACHE)))
-    _DERIVED_CACHE[key] = result
-    return result
 
 
 class SeedBudget:
     def __init__(self, routes):
-        self.suffixes, self.prefix_lengths = _derived(routes)
+        self.suffixes = {}
+        self.prefix_lengths = {}
+        for name, route in routes.items():
+            for other, candidate in routes.items():
+                common = 0
+                for a, b in zip(route, candidate):
+                    if a != b:
+                        break
+                    common += 1
+                self.prefix_lengths[name, other] = common
+        for name, route in routes.items():
+            suffix = [Counter() for _ in range(len(route) + 1)]
+            for t in range(len(route) - 1, -1, -1):
+                suffix[t] = suffix[t + 1].copy()
+                row = route[t]
+                for action in [row.get('farmer', []), *row.get('hands', [])]:
+                    if len(action) >= 2 and action[0] == 'PLANT':
+                        suffix[t][action[1]] += 1
+            self.suffixes[name] = suffix
         self.events = []
 
     def remaining(self, crop, after_step, current):
