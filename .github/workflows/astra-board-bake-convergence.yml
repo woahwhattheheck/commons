@@ -16,6 +16,13 @@ jobs:
         with:
           ref: codex/astra-board-bake-convergence-20260908
           fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            board_ingest.py
+            test_board_bake_convergence.py
+            BOARD-BAKE-CONVERGENCE.md
+            tools/apply_board_bake_convergence.py
+            .github/workflows/astra-board-bake-convergence.yml
 
       - name: apply exact source hunk and execute original/fixed contracts
         shell: bash
