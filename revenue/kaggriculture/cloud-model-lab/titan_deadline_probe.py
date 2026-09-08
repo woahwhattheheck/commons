@@ -36,6 +36,16 @@ import cards as cards_mod
 ARCHIVE = "/home/user/work/titan-current"
 
 
+def _set_root(root):
+    """Point the probe at any runtime root -- the frozen archive or the live lane.
+
+    The same measurement has to be runnable against the code that is actually
+    shipping, otherwise a before/after on a landed patch is not possible.
+    """
+    global ARCHIVE
+    ARCHIVE = os.path.realpath(root)
+
+
 def _runtime():
     if ARCHIVE not in sys.path:
         sys.path.insert(0, ARCHIVE)
@@ -147,8 +157,11 @@ def main():
     ap.add_argument("--opponent", default="cok")
     ap.add_argument("--upto", type=int, default=600)
     ap.add_argument("--sample", type=int, default=120)
+    ap.add_argument("--root", default=ARCHIVE,
+                    help="runtime root holding main.py/titan_runtime.py/TITAN-CONFIG.json")
     ap.add_argument("--out", default="results/titan-deadline-probe.json")
     a = ap.parse_args()
+    _set_root(a.root)
     T = _runtime()
     cards = collect_cards(a.seed, a.seat, a.opponent, a.upto, T)
     cards = cards[-a.sample:]
@@ -157,9 +170,12 @@ def main():
     A = probe_a(cards, T, [1.0, 0.05, 0.01, 0.003])
     print("probe A done", flush=True)
     B = probe_b(cards, T, [0, 2, 6])
-    res = {"seed": a.seed, "seat": a.seat, "opponent": a.opponent,
+    res = {"runtime_root": ARCHIVE, "seed": a.seed, "seat": a.seat,
+           "opponent": a.opponent,
            "cards": len(cards), "engine_pin": cards_mod.ENGINE_PIN,
-           "archive_sha256": "70554dc01f8e84336ede169cf109f3d61152e169dce8ad5265b9625216fe52cb",
+           "runtime_files": {n: __import__("hashlib").sha256(
+               open(os.path.join(ARCHIVE, n), "rb").read()).hexdigest()
+               for n in ("main.py", "titan_runtime.py")},
            "source_modified": False,
            "overlay": "Features(budget_seconds=...) constructed directly; "
                       "archive files unchanged, unrepacked, unsubstituted",
