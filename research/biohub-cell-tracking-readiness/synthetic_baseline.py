@@ -25,16 +25,12 @@ class Detection:
 
 
 def synthetic_frames() -> list[list[Detection]]:
-    """Return two moving cells across four frames, with one final-frame daughter."""
+    """Return two moving cells across four frames."""
     return [
         [Detection(0, 10, 30, 40, 1000), Detection(0, 20, 70, 80, 900)],
         [Detection(1, 10, 32, 42, 1005), Detection(1, 20, 69, 79, 905)],
         [Detection(2, 11, 34, 44, 1010), Detection(2, 20, 68, 78, 910)],
-        [
-            Detection(3, 11, 32, 42, 1008),
-            Detection(3, 11, 36, 46, 1015),
-            Detection(3, 20, 67, 77, 915),
-        ],
+        [Detection(3, 11, 36, 46, 1015), Detection(3, 20, 67, 77, 915)],
     ]
 
 
@@ -49,9 +45,8 @@ def link_nearest(
     frames: list[list[Detection]],
     *,
     radius_um: float = 8.5,
-    recover_divisions: bool = True,
 ) -> tuple[list[Detection], list[tuple[int, int]]]:
-    """Deterministic physical-nearest linker with bounded two-child division recovery."""
+    """Deterministic one-to-one nearest-neighbour linker in physical units."""
     nodes: list[Detection] = []
     ids_by_frame: list[list[int]] = []
     for frame in frames:
@@ -63,12 +58,8 @@ def link_nearest(
 
     edges: list[tuple[int, int]] = []
     for frame_index in range(len(frames) - 1):
-        source_ids = ids_by_frame[frame_index]
         available_targets = set(ids_by_frame[frame_index + 1])
-        child_count = {source_id: 0 for source_id in source_ids}
-
-        # First assign at most one nearest target to every source.
-        for source_id in source_ids:
+        for source_id in ids_by_frame[frame_index]:
             source = nodes[source_id]
             ranked = sorted(
                 (
@@ -81,24 +72,6 @@ def link_nearest(
                 _, target_id = ranked[0]
                 available_targets.remove(target_id)
                 edges.append((source_id, target_id))
-                child_count[source_id] = 1
-
-        # A remaining close target can be the second child of its nearest source.
-        if recover_divisions:
-            for target_id in sorted(available_targets):
-                ranked_sources = sorted(
-                    (
-                        (distance_um(nodes[source_id], nodes[target_id]), source_id)
-                        for source_id in source_ids
-                        if child_count[source_id] < 2
-                    ),
-                    key=lambda item: (item[0], item[1]),
-                )
-                if ranked_sources and ranked_sources[0][0] <= radius_um:
-                    _, source_id = ranked_sources[0]
-                    edges.append((source_id, target_id))
-                    child_count[source_id] += 1
-
     return nodes, edges
 
 

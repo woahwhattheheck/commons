@@ -25,7 +25,9 @@ python submission_contract.py /tmp/submission.synthetic.csv --strict-lineage
 python -m unittest discover -s tests -v
 ```
 
-The synthetic baseline creates two moving 3D tracks across four timepoints, including one deterministic parent→two-child division, links in **physical microns** rather than raw voxel distance, writes the public CSV schema, round-trips it byte-for-byte, and validates `divisions=1`. It is intentionally tiny and deterministic.
+The synthetic baseline creates two moving 3D tracks across four timepoints, links them one-to-one in **physical microns** rather than raw voxel distance, writes the public CSV schema, round-trips it byte-for-byte, and validates `rows=14`, `nodes=8`, `edges=6`, and `divisions=0`. It is intentionally tiny and deterministic and does **not** infer divisions from leftover nearby detections.
+
+Positive division coverage lives in an isolated contract fixture: one parent at `t=0` links to exactly two known children at `t=1`, then the writer→reader→validator→rewrite path proves `rows=5`, `nodes=3`, `edges=2`, `divisions=1`, consecutive IDs, and byte-identical output without broadening the baseline tracker.
 
 ## Use on a real local prediction
 
@@ -43,7 +45,7 @@ python submission_contract.py submission.csv --expected-datasets private_test_na
 
 Consecutive `t→t+1` tracking edges are enforced by default. `--strict-consecutive` remains a compatibility spelling. The Python API permits `require_consecutive_edges=False` only for deliberate non-submission analysis.
 
-The Commons readiness policy is also conservative by default: `strict_lineage=True` / `--strict-lineage` rejects exact duplicate edges, multiple parents, and more than two children. Those three guards are **local lineage-readiness policy, not universal organizer CSV-invalidity**. The pinned organizer conversion/scoring path can ingest/normalize or cap those graph shapes. Use `--organizer-compatible` (or `strict_lineage=False`) only when checking that broader organizer-compatible graph surface; it does not relax headers, IDs, sentinels, references, forward time, or default `t→t+1`.
+The Commons readiness policy is also conservative by default: `strict_lineage=True` / `--strict-lineage` rejects exact duplicate edges, multiple parents, and more than two children. Those three guards are **local lineage-readiness policy, not universal organizer CSV-invalidity**. The pinned organizer path can ingest these broader graph shapes; its edge-scoring path deduplicates exact source→target pairs and caps outgoing edges for edge accounting, while division scoring evaluates graph topology separately. Use `--organizer-compatible` (or `strict_lineage=False`) only for local exploration of that broader organizer-ingestible graph surface. Its compact lineage counts are a readiness summary, not a full scorer emulation; headers, IDs, sentinels, references, forward time, and default `t→t+1` remain strict.
 
 ## What this validator catches universally
 
@@ -56,7 +58,7 @@ The Commons readiness policy is also conservative by default: `strict_lineage=Tr
 - non-consecutive, backward, or self links;
 - missing or unexpected datasets when a private expected-set list is supplied.
 
-With the default strict-lineage policy it additionally rejects exact duplicate edges, multiple parents, and sources with more than two children. These stricter topology guards are intentionally labeled separately from organizer ingestion/scoring behavior.
+With the default strict-lineage policy it additionally rejects exact duplicate edges, multiple parents, and sources with more than two children. These stricter topology guards are intentionally labeled separately from organizer ingestion and metric-specific edge handling.
 
 ## Deliberate exclusions
 

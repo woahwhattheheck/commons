@@ -4,7 +4,6 @@ import csv
 import sys
 import tempfile
 import unittest
-from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,7 +17,7 @@ from submission_contract import (
     validate_submission,
     write_submission,
 )
-from synthetic_baseline import build_rows, link_nearest, synthetic_frames
+from synthetic_baseline import Detection, build_rows, link_nearest, synthetic_frames
 
 
 def node_row(node_id: int, t: int, *, dataset: str = "d") -> dict[str, str]:
@@ -58,7 +57,7 @@ def with_ids(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 
 
 class SubmissionContractTests(unittest.TestCase):
-    def test_synthetic_baseline_is_deterministic_and_exercises_division(self) -> None:
+    def test_synthetic_baseline_is_deterministic_and_valid(self) -> None:
         rows_a = build_rows()
         rows_b = build_rows()
         self.assertEqual(rows_a, rows_b)
@@ -72,15 +71,48 @@ class SubmissionContractTests(unittest.TestCase):
             write_submission(path_b, parsed)
             self.assertEqual(path_a.read_bytes(), path_b.read_bytes())
             counts = validate_submission(path_a, expected_datasets=["synthetic_embryo_0001"])
-        self.assertEqual(counts, {"rows": 16, "nodes": 9, "edges": 7, "datasets": 1, "divisions": 1})
-        outgoing = Counter(int(row["source_id"]) for row in parsed if row["row_type"] == "edge")
-        self.assertEqual(outgoing[4], 2)
+        self.assertEqual(counts, {"rows": 14, "nodes": 8, "edges": 6, "datasets": 1, "divisions": 0})
 
-    def test_linker_uses_physical_scale_and_recovers_one_division(self) -> None:
+    def test_linker_uses_physical_scale_and_is_one_to_one(self) -> None:
         nodes, edges = link_nearest(synthetic_frames(), radius_um=8.5)
-        self.assertEqual(len(nodes), 9)
-        self.assertEqual(len(edges), 7)
-        self.assertEqual(edges, [(0, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 8), (4, 7)])
+        self.assertEqual(len(nodes), 8)
+        self.assertEqual(len(edges), 6)
+        self.assertEqual(edges, [(0, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 7)])
+
+    def test_linker_does_not_infer_division_from_leftover_proximity(self) -> None:
+        frames = [
+            [Detection(0, 10, 30, 40, 1000)],
+            [
+                Detection(1, 10, 32, 42, 1005),
+                Detection(1, 10, 33, 43, 990),
+            ],
+        ]
+        nodes, edges = link_nearest(frames, radius_um=8.5)
+        self.assertEqual(len(nodes), 3)
+        self.assertEqual(edges, [(0, 1)])
+
+    def test_explicit_division_round_trip_is_deterministic_and_valid(self) -> None:
+        rows = with_ids(
+            [
+                node_row(0, 0, dataset="division"),
+                node_row(1, 1, dataset="division"),
+                node_row(2, 1, dataset="division"),
+                edge_row(0, 1, dataset="division"),
+                edge_row(0, 2, dataset="division"),
+            ]
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            first = Path(tmp) / "division-a.csv"
+            second = Path(tmp) / "division-b.csv"
+            write_submission(first, rows)
+            parsed = read_submission(first)
+            self.assertEqual([row["id"] for row in parsed], ["0", "1", "2", "3", "4"])
+            self.assertEqual(
+                validate_submission(first, expected_datasets=["division"]),
+                {"rows": 5, "nodes": 3, "edges": 2, "datasets": 1, "divisions": 1},
+            )
+            write_submission(second, parsed)
+            self.assertEqual(first.read_bytes(), second.read_bytes())
 
     def test_missing_dataset_is_rejected(self) -> None:
         with self.assertRaisesRegex(SubmissionError, "missing datasets"):
@@ -179,7 +211,7 @@ class SubmissionContractTests(unittest.TestCase):
             self.assertEqual(first.read_bytes(), second.read_bytes())
             self.assertEqual(
                 validate_submission(second, expected_datasets=["synthetic_embryo_0001"]),
-                {"rows": 16, "nodes": 9, "edges": 7, "datasets": 1, "divisions": 1},
+                {"rows": 14, "nodes": 8, "edges": 6, "datasets": 1, "divisions": 0},
             )
 
     def test_header_must_be_exact(self) -> None:

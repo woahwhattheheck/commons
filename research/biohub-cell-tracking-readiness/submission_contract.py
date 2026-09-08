@@ -128,9 +128,10 @@ def validate_rows(
     Consecutive t->t+1 edges are enforced by default because the organizer scorer
     filters non-consecutive links. ``strict_lineage=True`` additionally applies the
     Commons readiness policy: reject exact duplicate edges, multiple parents, and
-    sources with more than two children. Set ``strict_lineage=False`` only when
-    checking organizer-compatible graph ingestion/scoring behavior; structural,
-    reference, sentinel, ID, and temporal checks remain active.
+    sources with more than two children. Set ``strict_lineage=False`` only for
+    organizer-ingestible graph exploration without those Commons lineage guards;
+    compact counts remain local readiness summaries, not a full scorer emulation.
+    Structural, reference, sentinel, ID, and temporal checks remain active.
     """
     nodes, edges = _parse_rows(rows)
     node_map = {(node.dataset, node.node_id): node for node in nodes}
@@ -164,8 +165,9 @@ def validate_rows(
                 f"edge {edge.source_id}->{edge.target_id} in {edge.dataset!r} must connect consecutive frames"
             )
 
-        # Organizer scoring deduplicates exact source->target pairs before topology
-        # accounting, so non-strict mode does the same for compact lineage counts.
+        # Organizer edge scoring deduplicates exact source->target pairs before edge
+        # accounting. Non-strict mode mirrors that only for these compact lineage
+        # counts; organizer division scoring evaluates graph topology separately.
         if is_duplicate:
             continue
 
@@ -260,7 +262,10 @@ def main() -> int:
         "--organizer-compatible",
         dest="strict_lineage",
         action="store_false",
-        help="allow scorer-normalized duplicate/merge/high-outdegree graphs; structural and t->t+1 checks remain",
+        help=(
+            "allow organizer-ingestible duplicate/merge/high-outdegree graphs for local exploration; "
+            "not scorer-equivalent; structural and t->t+1 checks remain"
+        ),
     )
     args = parser.parse_args()
     counts = validate_submission(
