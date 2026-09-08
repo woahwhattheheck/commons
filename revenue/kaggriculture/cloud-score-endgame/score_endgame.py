@@ -240,6 +240,14 @@ def make_score_selector(selector_type, weighted_factory, build_table,
                                        feasible=lambda plan: current_feasible(plan['action']))
                 if selected is None:
                     return fallback
+                # Preserve the draw only while the complete committed action
+                # remains in the current parent-bound set of terminal plans.
+                committed = selected['plan']
+                if not any(p['id'] == committed['id'] and p['action'] == committed['action']
+                           for p in plans):
+                    self.active = None
+                    self._fallback(key, 'terminal_commitment_changed')
+                    return fallback
                 if current_feasible(selected['plan']['action']) is not True:
                     self.active = None
                     self._fallback(key, 'terminal_continuation_unavailable')
