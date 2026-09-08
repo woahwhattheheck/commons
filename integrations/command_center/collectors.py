@@ -79,12 +79,12 @@ class LiveCollectors:
         self.cancel_event, self.deadline = cancel_event, None
         self.lookback_days = self._bound(self.github_config.get("lookback_days", 14), 1, 90)
         if equipment is None:
-            from integrations.shared_equipment.services import ServiceEquipment
+            from integrations.shared_equipment.provider_io import GitHubSlackEquipment
             timeout = self._bound(self.config.get("request_timeout_seconds", 25), 1, 30)
             def bounded_runner(command, **kwargs):
                 kwargs["timeout"] = min(timeout, kwargs.get("timeout", timeout))
                 return subprocess.run(command, **kwargs)
-            equipment = ServiceEquipment(gh_runner=bounded_runner)
+            equipment = GitHubSlackEquipment(gh_runner=bounded_runner)
         self.equipment = equipment
 
     @staticmethod
