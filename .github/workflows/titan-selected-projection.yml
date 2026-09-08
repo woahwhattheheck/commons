@@ -14,6 +14,8 @@ on:
       - 'revenue/kaggriculture/cloud-composition-cases/cover/**'
       - 'revenue/kaggriculture/cloud-economic-stress/deadline_adapter.py'
       - 'revenue/kaggriculture/cloud-economic-stress/test_runner.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/runner.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py'
       - 'revenue/kaggriculture/cloud-economic-stress/cancellation/**'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
@@ -59,6 +61,8 @@ jobs:
             /revenue/kaggriculture/cloud-composition-cases/cover/
             /revenue/kaggriculture/cloud-economic-stress/deadline_adapter.py
             /revenue/kaggriculture/cloud-economic-stress/test_runner.py
+            /revenue/kaggriculture/cloud-economic-stress/runner.py
+            /revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py
             /revenue/kaggriculture/cloud-economic-stress/cancellation/
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
@@ -223,6 +227,32 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-economic-stress/cancellation/test_deadline_cancellation.py \
             --report "$RUNNER_TEMP/projection-validation/deadline-cancellation.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/deadline-cancellation-tests.log"
+      - name: Actual stress-runner deadline boundary tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py \
+            --report "$RUNNER_TEMP/projection-validation/stress-runner-boundary.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-boundary-tests.log"
+      - name: Retained stress-runner tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-economic-stress
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v \
+            test_runner.RunnerTests.test_known_order_cost_keeps_sequence \
+            test_runner.RunnerTests.test_summary_counts_cash_and_timeouts \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-existing-tests.log"
+      - name: Stress-runner combined-report binding tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_stress_runner_report \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/stress-runner-reporter-tests.log"
       - name: Existing workflow regression binding tests
         if: ${{ !cancelled() }}
         shell: bash
@@ -245,7 +275,7 @@ jobs:
           python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
             --directory "$RUNNER_TEMP/projection-validation" \
             --include-reporter-tests --include-funded-join --include-runtime-regressions \
-            --include-cancellation --include-ledger-schedule \
+            --include-cancellation --include-ledger-schedule --include-stress-runner \
             --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}

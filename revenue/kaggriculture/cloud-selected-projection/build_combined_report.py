@@ -34,6 +34,12 @@ RUNTIME_REGRESSIONS = (
     ("score_schedule", "score-schedule-tests.log", LAB + "test_score_schedule.py", None, None),
     ("workflow_bindings", "workflow-bindings-tests.log", ROOT + "cloud-composition-cases/cover/test_regression_bindings.py", None, None),
 )
+STRESS = ROOT + "cloud-economic-stress/"
+STRESS_RUNNER = (
+    ("stress_runner_boundary", "stress-runner-boundary-tests.log", STRESS + "test_runner_guard_join.py", "stress-runner-boundary.json", "tests_run"),
+    ("stress_runner_existing", "stress-runner-existing-tests.log", STRESS + "test_runner.py", None, None),
+    ("stress_runner_reporter", "stress-runner-reporter-tests.log", PROJECTION + "test_stress_runner_report.py", None, None),
+)
 REPORTER = ("reporter", "reporter-tests.log", PROJECTION + "test_combined_report.py", None, None)
 SUMMARY = re.compile(r"^Ran ([0-9]+) tests? in .+\n\s*\n(OK(?: \([^\n]*\))?|FAILED(?: \([^\n]*\))?)\s*$", re.M)
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -73,7 +79,7 @@ def _pairs(items):
     return result
 
 
-def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False) -> dict:
+def build_report(directory: Path, *, include_reporter: bool = False, include_funded_join: bool = False, include_runtime_regressions: bool = False, include_cancellation: bool = False, include_ledger_schedule: bool = False, include_stress_runner: bool = False) -> dict:
     """Bind all named suite results to their one declared source snapshot."""
     directory = Path(directory)
     problems, digests = [], {}
@@ -119,7 +125,8 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                     + (RUNTIME_REGRESSIONS if include_runtime_regressions else ())
                     + ((CANCELLATION,) if include_cancellation else ())
                     + ((LEDGER_SCHEDULE,) if include_ledger_schedule else ())
-                    + ((REPORTER,) if include_reporter else ()))
+                    + ((REPORTER,) if include_reporter else ())
+                    + (STRESS_RUNNER if include_stress_runner else ()))
     for key, log, test_path, report_file, count_key in declarations:
         entry = {"tests": None, "successful": False, "test_source_sha256": source(test_path), "log": log}
         text = read(log)
@@ -140,7 +147,7 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                 value = summary.get(count_key)
                 if type(value) is not int or value != entry["tests"]:
                     problems.append(key + ": JSON/log test counts differ")
-                if key == "deadline_cancellation":
+                if key in ("deadline_cancellation", "stress_runner_boundary"):
                     for field in ("failures", "errors", "skipped"):
                         if not isinstance(summary.get(field), list) or summary[field]:
                             problems.append(key + ": nonempty or missing JSON " + field + " array")
@@ -224,6 +231,21 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
                 or sum(partition) != cancelled.get("tests_run")):
             problems.append("cancellation: method partition does not match tests_run")
 
+    stress = reports.get("stress_runner_boundary", {})
+    if include_stress_runner:
+        for field, path in (("runner_sha256", STRESS + "runner.py"),
+                            ("adapter_sha256", STRESS + "deadline_adapter.py"),
+                            ("test_sha256", STRESS_RUNNER[0][2])):
+            bind("stress runner " + field, stress.get(field), source(path))
+        # The hosted command runs boundary-only fixtures. Do not import a local
+        # actual-state run or its three extra methods into this receipt.
+        if stress.get("actual_source") is not False:
+            problems.append("stress runner: expected boundary-only actual_source=false")
+        if type(stress.get("full_games")) is not int or stress["full_games"] != 0:
+            problems.append("stress runner: expected zero full_games")
+        if stress.get("new_game_seeds") != []:
+            problems.append("stress runner: expected empty new_game_seeds array")
+
     observed_total = sum(s["tests"] for s in suites.values() if s["tests"] is not None)
     counts_complete = all(s["tests"] is not None for s in suites.values())
     result = {"schema": "titan.selected-projection.combined.v2",
@@ -256,6 +278,10 @@ def build_report(directory: Path, *, include_reporter: bool = False, include_fun
     if include_ledger_schedule:
         result["ledger_schedule_case_counts"] = ledger.get("counts")
         result["ledger_reported_reference_method_sha256"] = ledger.get("reference_method_sha256")
+    if include_stress_runner:
+        result["stress_runner_binding"] = {
+            field: stress.get(field) for field in
+            ("runner_sha256", "adapter_sha256", "test_sha256", "actual_source", "full_games", "new_game_seeds")}
     return result
 
 
@@ -268,12 +294,14 @@ def main(argv=None):
     parser.add_argument("--include-runtime-regressions", action="store_true")
     parser.add_argument("--include-cancellation", action="store_true")
     parser.add_argument("--include-ledger-schedule", action="store_true")
+    parser.add_argument("--include-stress-runner", action="store_true")
     args = parser.parse_args(argv)
     report = build_report(args.directory, include_reporter=args.include_reporter_tests,
                           include_funded_join=args.include_funded_join,
                           include_runtime_regressions=args.include_runtime_regressions,
                           include_cancellation=args.include_cancellation,
-                          include_ledger_schedule=args.include_ledger_schedule)
+                          include_ledger_schedule=args.include_ledger_schedule,
+                          include_stress_runner=args.include_stress_runner)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
