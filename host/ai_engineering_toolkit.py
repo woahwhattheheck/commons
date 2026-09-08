@@ -19,6 +19,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = ROOT / "ground" / "AI_ENGINEERING_TOOLKIT.json"
 EVIDENCE_CLASSES = {"STRUCTURAL_ONLY", "RUNTIME_MEASURED", "CUSTOMER_READY", "UNKNOWN"}
+CANONICAL_COMPONENT_IDS = {"muhlnickel", "titan", "whitebox", "subzero"}
 
 
 def _sha256(path: Path) -> str:
@@ -48,9 +49,12 @@ def load_catalog(path: Path = DEFAULT_CATALOG) -> dict[str, Any]:
     if data.get("schema") != "commons-ai-engineering-toolkit-v1":
         raise ValueError("unsupported toolkit schema")
     components = data.get("components")
-    if not isinstance(components, list) or {row.get("id") for row in components} != {
-        "muhlnickel", "titan", "whitebox", "subzero"
-    }:
+    if not isinstance(components, list) or len(components) != len(CANONICAL_COMPONENT_IDS):
+        raise ValueError("toolkit must compose exactly the four canonical component families")
+    if not all(isinstance(row, dict) for row in components):
+        raise ValueError("toolkit components must be objects")
+    component_ids = [row.get("id") for row in components]
+    if set(component_ids) != CANONICAL_COMPONENT_IDS or len(set(component_ids)) != len(component_ids):
         raise ValueError("toolkit must compose exactly the four canonical component families")
     for row in components:
         if row.get("evidence_class") not in EVIDENCE_CLASSES:
