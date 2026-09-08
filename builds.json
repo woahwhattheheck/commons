@@ -350,8 +350,24 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 3,
+ "n_open_prs": 2,
  "open_prs": [
+  {
+   "number": 10677,
+   "author": "woahwhattheheck",
+   "title": "Hive020: ship managed clipping handoff",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10677",
+   "base_freshness": {
+    "base_sha": "b03d6ca3b221086361e92851675f870118b4df06",
+    "main_sha": "dd74a44fd77c69bf4c4c5cc736db9330eb845cfe",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
   {
    "number": 10580,
    "author": "woahwhattheheck",
@@ -359,44 +375,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10580",
    "base_freshness": {
     "base_sha": "12621cf42edefe85aa298d3929d3d1166325a0ad",
-    "main_sha": "37e3caf914333ec9ef10d65a3a1eb48d15793def",
+    "main_sha": "dd74a44fd77c69bf4c4c5cc736db9330eb845cfe",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10667,
-   "author": "woahwhattheheck",
-   "title": "Fix short-video HTTP subprocess failure response",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10667",
-   "base_freshness": {
-    "base_sha": "b0fce4094fd23faac45d7732b74fbc21aa30328a",
-    "main_sha": "37e3caf914333ec9ef10d65a3a1eb48d15793def",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10653,
-   "author": "woahwhattheheck",
-   "title": "Repair GOAT historical pins across known successor edits",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10653",
-   "base_freshness": {
-    "base_sha": "a7b6238ceb767cb197b1eb2534813cecd5cbce8c",
-    "main_sha": "37e3caf914333ec9ef10d65a3a1eb48d15793def",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
