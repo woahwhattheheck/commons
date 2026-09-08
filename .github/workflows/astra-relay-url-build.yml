@@ -1,0 +1,152 @@
+name: ASTRA relay malformed URL isolated build
+'on':
+  push:
+    branches:
+    - astra/relay-url-build-20260907-01
+    paths:
+    - .github/workflows/astra-relay-url-build.yml
+permissions:
+  contents: write
+concurrency:
+  group: astra-relay-url-build-20260907-01
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: main
+        fetch-depth: 1
+        filter: blob:none
+        sparse-checkout: |-
+          host
+          tests
+          .github/workflows
+        persist-credentials: true
+    - name: Reproduce, repair, test and publish exact product paths
+      run: |
+        python3 - <<'PY'
+        import importlib, json, os, re, subprocess, sys
+        from pathlib import Path
+
+        def git(*args):
+            return subprocess.check_output(['git', *args], text=True).strip()
+
+        base_sha = git('rev-parse', 'HEAD')
+        worker = Path('host/inbox_slack_relay.py')
+        workflow = Path('.github/workflows/inbox-visibility.yml')
+        assert git('hash-object', str(worker)) == 'd42718ceda5a6123cf19a072faf4db650b91c14c', 'worker moved; compose before publishing'
+        assert git('hash-object', str(workflow)) == '2cd4da0bad8d7cbfca051be03092b7bf174a4fb9', 'workflow moved; compose before publishing'
+        from host import inbox_slack_relay as baseline
+        controls = ['Review https://[broken/path today', 'Review https://example.test\uff0fprivate today']
+        for control in controls:
+            try:
+                baseline.clean(control)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError('baseline must distinguish this repair')
+        print('BASELINE: 2/2 malformed URL controls raise ValueError; ordinary HTTPS control returns')
+        assert baseline.clean('https://example.test/review') == 'https://example.test/review'
+        old = '        raw = match.group(0)\n        parsed = urllib.parse.urlsplit(raw)\n'
+        new = ('        raw = match.group(0)\n'
+               '        try:\n'
+               '            parsed = urllib.parse.urlsplit(raw)\n'
+               '        except ValueError:\n'
+               '            # Malformed source links must not abort the surrounding work item.\n'
+               '            return "[malformed URL omitted]"\n')
+        source = worker.read_text()
+        assert source.count(old) == 1
+        worker.write_text(source.replace(old, new), encoding='utf-8')
+        test_path = Path('test_inbox_slack_relay_urls.py')
+        assert not test_path.exists()
+        test_path.write_text('"""Malformed links cannot prevent readable work-item delivery."""\nimport tempfile\nimport unittest\nfrom pathlib import Path\nfrom unittest.mock import patch\n\nfrom host import inbox_slack_relay as relay\n\n\nclass URLRenderingTests(unittest.TestCase):\n    def test_unclosed_ip_literal(self):\n        self.assertEqual(relay.clean("Review https://[broken/path today"),\n                         "Review [malformed URL omitted] today")\n\n    def test_nfkc_authority_delimiters(self):\n        for delimiter in ("\\uff0f", "\\uff1a", "\\uff20", "\\uff1f", "\\uff03"):\n            with self.subTest(delimiter=delimiter):\n                self.assertEqual(relay.clean("Review https://example.test" + delimiter + "private now"),\n                                 "Review [malformed URL omitted] now")\n\n    def test_malformed_at_end(self):\n        self.assertEqual(relay.clean("Please review https://[broken"),\n                         "Please review [malformed URL omitted]")\n\n    def test_multiple_bad_links_preserve_good_link(self):\n        text = "https://[bad one http://example.test/review two https://[other"\n        self.assertEqual(relay.clean(text),\n                         "[malformed URL omitted] one http://example.test/review two [malformed URL omitted]")\n\n    def test_unicode_work_text_preserved(self):\n        self.assertEqual(relay.clean("R\\u00e9vision \\u65e5\\u672c\\u8a9e https://[bad termin\\u00e9e"),\n                         "R\\u00e9vision \\u65e5\\u672c\\u8a9e [malformed URL omitted] termin\\u00e9e")\n\n    def test_valid_links_unchanged(self):\n        for text in ("https://example.test/review", "http://example.test/path?a=1#part", "[Review](https://example.test/path)"):\n            with self.subTest(text=text):\n                self.assertEqual(relay.clean(text), text)\n\n    def test_sensitive_query_still_removed(self):\n        self.assertEqual(relay.clean("https://example.test/path?token=fixture"),\n                         "https://example.test/path [query omitted]")\n\n    def test_userinfo_still_omitted(self):\n        self.assertEqual(relay.clean("https://reader:fixture@example.test/path"),\n                         "[credential-bearing URL omitted]")\n\n    def test_reset_link_still_omitted(self):\n        self.assertEqual(relay.clean("https://example.test/reset-password/fixture"),\n                         "[credential-bearing URL omitted]")\n\n    def test_tracking_link_still_omitted(self):\n        self.assertEqual(relay.clean("https://click.example.test/tracking/fixture"),\n                         "[tracking/action link omitted]")\n\n    def test_other_scrubbing_continues(self):\n        text = "api_key=fixture https://[bad <@U123> @here"\n        result = relay.clean(text)\n        self.assertIn("api_key=[REDACTED]", result)\n        self.assertIn("[malformed URL omitted]", result)\n        self.assertNotIn("fixture", result)\n        self.assertNotIn("<@", result)\n        self.assertNotIn("@here", result)\n\n    def test_clean_is_idempotent_after_omission(self):\n        result = relay.clean("Review https://[bad today")\n        self.assertEqual(relay.clean(result), result)\n\n    def test_event_renders_malformed_header_and_body(self):\n        event = relay.Event("github", "fixture/1", "v1", "Review https://[title", "Fix ready https://[body", "https://[source")\n        messages = event.messages()\n        self.assertEqual(len(messages), 1)\n        self.assertIn("Fix ready [malformed URL omitted]", messages[0])\n        self.assertIn("relay.part=", messages[0])\n        self.assertEqual(messages[0].count("[malformed URL omitted]"), 3)\n\n    def test_delivery_progress_and_repeat_dedup(self):\n        posted = []\n        def slack(method, data):\n            if method == "conversations.history":\n                return {"ok": True, "messages": [m for m in posted if not m.get("thread_ts")]}\n            if method == "conversations.replies":\n                return {"ok": True, "messages": [m for m in posted if m.get("thread_ts") == data["ts"] or m["ts"] == data["ts"]]}\n            self.assertEqual(method, "chat.postMessage")\n            self.assertFalse(data["mrkdwn"])\n            ts = "1780000000.%06d" % (len(posted) + 1)\n            posted.append({**data, "ts": ts})\n            return {"ok": True, "ts": ts}\n        first = relay.Event("github", "fixture/1", "v1", "Review https://[bad", "First work item", "https://example.test/1")\n        second = relay.Event("github", "fixture/2", "v1", "Next review", "Second work item", "https://example.test/2")\n        with tempfile.TemporaryDirectory() as tmp:\n            state = relay.State(Path(tmp) / "state.sqlite3")\n            try:\n                delivery = relay.Delivery(state, slack, min_interval=0)\n                self.assertEqual(delivery.deliver(first, "C_FIXTURE"), 1)\n                self.assertEqual(delivery.deliver(second, "C_FIXTURE"), 1)\n                self.assertEqual(delivery.deliver(first, "C_FIXTURE"), 0)\n                self.assertEqual(delivery.deliver(second, "C_FIXTURE"), 0)\n            finally:\n                state.close()\n        self.assertEqual(len(posted), 4)\n        self.assertTrue(any("Second work item" in m["text"] for m in posted))\n\n    def test_clean_performs_no_network_or_cli_operation(self):\n        with patch.object(relay.urllib.request, "build_opener", side_effect=AssertionError("network")), patch.object(relay, "command_json", side_effect=AssertionError("CLI")):\n            self.assertEqual(relay.clean("https://[bad"), "[malformed URL omitted]")\n\n    def test_falsey_inputs_unchanged(self):\n        self.assertEqual(relay.clean(None), "")\n        self.assertEqual(relay.clean(0), "")\n\n    def test_unrelated_exceptions_not_swallowed(self):\n        with patch.object(relay.urllib.parse, "urlsplit", side_effect=RuntimeError("fixture")):\n            with self.assertRaises(RuntimeError):\n                relay.clean("https://example.test")\n\n    def test_long_work_body_is_not_truncated(self):\n        body = "A" * 6000 + " https://[bad finish"\n        event = relay.Event("github", "fixture/long", "v1", "Review", body, "https://example.test/long")\n        messages = event.messages()\n        self.assertEqual(len(messages), 3)\n        self.assertIn("[malformed URL omitted] finish", messages[-1])\n        self.assertTrue(all("relay.part=" in part for part in messages))\n\n\nif __name__ == "__main__":\n    unittest.main()\n', encoding='utf-8')
+        config = workflow.read_text()
+        trigger = '      - test_inbox_slack_relay_headers.py\n'
+        command = 'test_inbox_slack_relay_headers -v'
+        assert config.count(trigger) == config.count(command) == 1
+        config = config.replace(trigger, trigger + '      - test_inbox_slack_relay_urls.py\n')
+        config = config.replace(command, 'test_inbox_slack_relay_headers test_inbox_slack_relay_urls -v')
+        workflow.write_text(config, encoding='utf-8')
+        commands = [
+            [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_inbox_slack_relay.py', '-v'],
+            [sys.executable, '-m', 'unittest', 'test_inbox_slack_relay_charset', 'test_inbox_slack_relay_alternatives', 'test_inbox_slack_relay_headers', 'test_inbox_slack_relay_urls', '-v'],
+        ]
+        logs = []
+        counts = []
+        for command in commands:
+            completed = subprocess.run(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            print(completed.stdout)
+            logs.append('$ ' + ' '.join(command) + '\n' + completed.stdout)
+            if completed.returncode:
+                Path(os.environ['RUNNER_TEMP'], 'relay-url-tests.log').write_text('\n'.join(logs))
+                raise SystemExit(completed.returncode)
+            match = re.search(r'Ran (\d+) tests?', completed.stdout)
+            assert match, 'test count missing'
+            counts.append(int(match.group(1)))
+        subprocess.run([sys.executable, '-m', 'py_compile', str(worker), str(test_path)], check=True)
+        subprocess.run(['git', 'diff', '--check'], check=True)
+        run_url = f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
+        receipt = Path('p/astra-relay-malformed-url-20260907-01.md')
+        assert not receipt.exists()
+        receipt.parent.mkdir(exist_ok=True)
+        receipt.write_text(f'''# Readable inbox delivery with malformed source URLs
+
+        Operation: `astra-relay-malformed-url-20260907-01`.
+        Builder: ASTRA-RELAY. Existing ASTRA-VISIBILITY, charset, MAIL and COOLDOWN implementations and attribution are preserved.
+
+        ## Implementation
+
+        Catch only URL-parser `ValueError` inside `clean()`. Replace the malformed link with an explicit omission marker while retaining surrounding work text. Normal links and the existing credential, tracking, mention and HTML behavior are unchanged. No URL is fetched by this renderer.
+
+        Product paths are the relay worker, `test_inbox_slack_relay_urls.py`, this receipt and the existing inbox workflow. That workflow now triggers on and executes the new suite. The branch-only build workflow is not part of the product.
+
+        ## Executed evidence
+
+        Base main: `{base_sha}`. Baseline worker blob: `d42718ceda5a6123cf19a072faf4db650b91c14c`.
+
+        [Isolated cloud build and logs]({run_url}). Python: `{sys.version.split()[0]}`.
+
+        Two synthetic baseline controls raise `ValueError` before the repair; the ordinary HTTPS control returns unchanged. These are parser regressions, not a claim of a live mailbox incident.
+
+        The actual patched worker passed {sum(counts)} targeted tests ({' + '.join(map(str, counts))}), including 18 new URL/render/delivery test methods. Controls cover invalid IP-literal syntax, invalid Unicode authority delimiters, valid links, existing redaction, long work bodies, an item followed by another item, and repeat delivery without duplicates. Compile and whitespace checks passed.
+
+        Replay:
+
+        ```sh
+        python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
+        python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers test_inbox_slack_relay_urls -v
+        ```
+
+        ## Runtime boundary
+
+        These are offline regression results. No live mail contents, credentials, inbox read/done mutations, scheduler activation, delivery claim, account action or owner-PC work occurred. F/equipment retains relay activation. Merge and main readback are recorded in the original coordination thread after publication.
+        ''', encoding='utf-8')
+        Path(os.environ['RUNNER_TEMP'], 'relay-url-tests.log').write_text('\n'.join(logs))
+        paths = [str(worker), str(test_path), str(workflow), str(receipt)]
+        subprocess.run(['git', 'add', '--sparse', '--', *paths], check=True)
+        assert sorted(git('diff', '--cached', '--name-only').splitlines()) == sorted(paths)
+        subprocess.run(['git', 'diff', '--cached', '--check'], check=True)
+        subprocess.run(['git', '-c', 'user.name=ASTRA-RELAY', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com', 'commit', '-m', 'fix: preserve readable inbox work around malformed URLs'], check=True)
+        head = git('rev-parse', 'HEAD')
+        subprocess.run(['git', 'push', 'origin', 'HEAD:refs/heads/astra/relay-malformed-url-20260907-01'], check=True)
+        blobs = {path: git('rev-parse', 'HEAD:' + path) for path in paths}
+        summary = {'source_base': base_sha, 'product_sha': head, 'targeted_tests': sum(counts), 'baseline_controls': 2, 'files': blobs}
+        print(json.dumps(summary, indent=2))
+        Path(os.environ['RUNNER_TEMP'], 'relay-url-manifest.json').write_text(json.dumps(summary, indent=2))
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+            f.write('## Executed and published product\n```json\n' + json.dumps(summary, indent=2) + '\n```\n')
+
+        PY
+    - name: Retain execution receipt
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: astra-relay-url-evidence
+        path: |-
+          ${{ runner.temp }}/relay-url-tests.log
+          ${{ runner.temp }}/relay-url-manifest.json
+        if-no-files-found: ignore
+        retention-days: 30
