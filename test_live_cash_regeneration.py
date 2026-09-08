@@ -30,9 +30,9 @@ class LiveCashRegenerationTests(unittest.TestCase):
             ("2026-09-05T01:00:00Z", {"id": "new-feature", "from": "ALPHA", "board": "FEATURES"}, ""),
         ]
 
-    def assert_cash(self, text, marker):
+    def assert_cash(self, text, marker, products=PRODUCTS):
         self.assertEqual(text.count(marker), 1)
-        for product in PRODUCTS:
+        for product in products:
             self.assertIn("./" + product, text)
         self.assertNotIn("buy.stripe.com", text)
 
@@ -86,10 +86,13 @@ class LiveCashRegenerationTests(unittest.TestCase):
             self.assertEqual(data["features"]["posts"][0]["id"], "new-feature")
             self.assertEqual(data["salon"]["n"], 1)
             self.assertEqual(json.loads((self.root / "lanes.json").read_text()), data)
-            self.assertNotIn('id="live-cash"', (self.root / "salon.html").read_text())
+            # PR9345 intentionally extends direct-product links to SALON.
+            salon = (self.root / "salon.html").read_text(encoding="utf-8")
+            self.assert_cash(salon, 'id="live-cash"', products=PRODUCTS[:5])
+            self.assertEqual(data["salon"]["posts"][0]["id"], "new-salon")
             if previous is not None:
-                self.assertEqual(page, previous)
-            previous = page
+                self.assertEqual((page, salon), previous)
+            previous = (page, salon)
 
 
 if __name__ == "__main__":
