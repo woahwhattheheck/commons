@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Offline inclusive-bank audit. No network, allocation, or game counting."""
 import argparse
-import itertools
 import json
 import re
 import sys
@@ -59,9 +58,17 @@ def audit(document):
                 retired.add(old)
     active = sorted((r for k, r in claims.items() if k not in retired), key=lambda r: (r["bank"], r["claim_id"]))
     conflicts = []
-    for left, right in itertools.combinations(active, 2):
-        lo, hi = max(left["bank"][0], right["bank"][0]), min(left["bank"][1], right["bank"][1])
-        if lo <= hi:
+    for index, left in enumerate(active):
+        # Starts are nondecreasing. Once a right start exceeds this left end,
+        # every later interval is disjoint too. Do not slice the remaining list:
+        # copying each suffix would make sparse snapshots quadratic again.
+        left_end = left["bank"][1]
+        for right_index in range(index + 1, len(active)):
+            right = active[right_index]
+            lo = right["bank"][0]
+            if lo > left_end:
+                break
+            hi = min(left_end, right["bank"][1])
             conflicts.append({"left": left["claim_id"], "right": right["claim_id"], "bank": [lo, hi]})
     operations = {}
     for row in active:
