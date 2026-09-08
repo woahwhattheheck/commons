@@ -11,7 +11,7 @@
     {"path":".dockerignore","bytes":63,"sha256":"5f6037f339d62040843e26eac0f4ae45a517b56640e777c9c281244822d6a584"},
     {"path":"README.md","bytes":5676,"sha256":"4e861c4677160bfebff96510e329d7efe0bb96a12e8ed97cee7602581b813a81"},
     {"path":"ATTRIBUTION.md","bytes":904,"sha256":"b8d164ea1ab3c3f4b15ac59ef92e9a9542e69abd0f5cc46abcac308c2e70d673"},
-    {"path":"main.cpp","bytes":35592,"sha256":"77cfa308b87e941b130f837b13f62564e8ee098911f45d9c06d2648b0aa83c05"},
+    {"path":"main.cpp","bytes":37776,"sha256":"79362dbf9d47ca921de508a9253e7c2642c57459487a88ea754780b673961724"},
     {"path":"verify_joint.py","bytes":8599,"sha256":"8ae6e16af35801d831a0536f56e7d048431165f36d555c3ec2cdd306f0a23360"},
     {"path":"joint-net.json","bytes":2702,"sha256":"5e4b170baf48a0ba41975f7d026ed78e4d87de567f64940b5dada726589c998f"},
     {"path":"joint-tm.json","bytes":122,"sha256":"0741d857dc321b14e9164c3e98687431d9be78548ea51e8a75463540a745cdd9"},
