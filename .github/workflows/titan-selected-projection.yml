@@ -159,39 +159,22 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-composition-cases/cypress/test_funded_join.py \
             --json-output "$RUNNER_TEMP/projection-validation/funded-join-results.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/funded-join-tests.log"
-      - name: Bind combined results to one source snapshot
-        shell: python
+      - name: Combined-report regression tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-selected-projection
+        shell: bash
         run: |
-          import json, os, re
-          from pathlib import Path
-          out = Path(os.environ['RUNNER_TEMP']) / 'projection-validation'
-          snapshot = json.loads((out/'SOURCE-SNAPSHOT.json').read_text())
-          projection = json.loads((out/'projection-results.json').read_text())
-          market = json.loads((out/'market-results.json').read_text())
-          seller = 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
-          expected = snapshot['files'][seller]['sha256']
-          assert expected == projection['seller_sha256'] == market['sources']['selected_action_sell.py']
-          assert projection['engine_sha256'] == market['engine_sha256']
-          assert projection['failures'] == projection['errors'] == 0
-          assert market['successful'] and market['failures'] == market['errors'] == 0
-          text = (out/'original-seller-tests.log').read_text()
-          original = int(re.search(r'Ran (\d+) tests?', text).group(1))
-          report = {'checkout': snapshot['checkout'], 'seller_sha256': expected,
-                    'original_tests': original, 'projection_tests': projection['tests_run'],
-                    'market_tests': market['test_methods'],
-                    'total_tests': original+projection['tests_run']+market['test_methods'],
-                    'projection_cases': projection['differential_cases'],
-                    'projection_transitions': projection['interpreter_transitions'],
-                    'market_cases': market['official_market_cases'],
-                    'same_engine': True, 'full_games': 0}
-          joined = json.loads((out/'funded-join-results.json').read_text())
-          assert joined['successful'] and joined['failures'] == joined['errors'] == 0
-          for name, source in joined['sources'].items():
-              assert source['sha256'] == snapshot['files']['revenue/kaggriculture/'+name]['sha256']
-          report['funded_join_tests'] = joined['test_methods']
-          report['funded_join_transitions'] = joined['official_transitions']
-          report['funded_join_full_games'] = joined['full_games']
-          (out/'COMBINED-RESULTS.json').write_text(json.dumps(report, indent=2)+'\n')
+          set -euo pipefail
+          python3 -m unittest test_combined_report -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/reporter-tests.log"
+      - name: Bind all combined results to one source snapshot
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 revenue/kaggriculture/cloud-selected-projection/build_combined_report.py \
+            --directory "$RUNNER_TEMP/projection-validation" \
+            --include-reporter-tests --include-funded-join \
+            --output "$RUNNER_TEMP/projection-validation/COMBINED-RESULTS.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
