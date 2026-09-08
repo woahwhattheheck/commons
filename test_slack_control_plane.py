@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SOL-PINION execution probe; comment-only and not intended for merge.
 """Contract for Slack control-plane routing. Not a send gate."""
 
 from __future__ import annotations
