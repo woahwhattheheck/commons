@@ -58,8 +58,8 @@
     },
     {
       "path": "verify_joint.py",
-      "bytes": 6917,
-      "sha256": "16ed696a69d9677206d8d6b67008fa7a781d1080c32d57d0f1f296b5c216e131"
+      "bytes": 8599,
+      "sha256": "8ae6e16af35801d831a0536f56e7d048431165f36d555c3ec2cdd306f0a23360"
     },
     {
       "path": "joint-net.json",
@@ -225,6 +225,21 @@
       "path": "SCIENTIFIC-SPRINT-COMPOSITION.md",
       "bytes": 3154,
       "sha256": "ebdee0952377a8f7f57a5809a7a4c755d7e77f3cea1e28e495577ec2a6ea70c8"
+    },
+    {
+      "path": "test_verify_joint_timeout.py",
+      "bytes": 4712,
+      "sha256": "e44de7da477d25702a1653474f2c21709caa3d8b57a867d7f90f0e24327a29b5"
+    },
+    {
+      "path": "VERIFY-JOINT-TIMEOUTS.md",
+      "bytes": 1944,
+      "sha256": "05513e06a38b45dc0290712d0064ac59be9ac893b3ca6e94a5e599f2bab36946"
+    },
+    {
+      "path": "VERIFY-JOINT-TIMEOUTS-RESULTS.json",
+      "bytes": 451,
+      "sha256": "9feb4ff36930929418dcb2190a4315fab9a4fe1fceff63f09a79bcec83c2ccda"
     }
   ]
 }
