@@ -70,7 +70,7 @@ class OpponentInvocationTests(unittest.TestCase):
         obs = []
         with self.assertRaisesRegex(TypeError, '^variadic-body$'):
             fn(obs, {})
-        self.assertEqual(obs, [1])
+        self.assertEqual(obs, [2])
 
     def test_other_exception_is_unchanged(self):
         fn, _ = self.opponent('def agent(obs, cfg):\n obs.append(1)\n raise ValueError("value-body")\n')
