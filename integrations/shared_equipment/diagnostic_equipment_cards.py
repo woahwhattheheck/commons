@@ -102,7 +102,7 @@ def diagnostic_card_tool_schemas() -> list[dict]:
         ),
         _schema(
             "autopsy_receipt_card",
-            "Build opaque seats case_row for an Autopsy transferable role. Pass role + case_ref. Default state UNVERIFIED. Import-only wrap of autopsy_paid.build_receipt_row_from_role; does not append seats.json or remint SPARK.",
+            "Build opaque seats case_row for an Autopsy transferable role. Pass role + case_ref. Default state `UNVERIFIED`. Import-only wrap of autopsy_paid.build_receipt_row_from_role; does not append seats.json or remint SPARK.",
             {"role": "object", "case_ref": "string"},
             {
                 "client_reference_id": "string",
@@ -126,7 +126,7 @@ def diagnostic_card_tool_schemas() -> list[dict]:
         ),
         _schema(
             "advance_obligation_card",
-            "Advance one obligation on a transferable role (status / next_action / evidence_pointer). Pass role object + obligation_id + at least one field. Import-only RoleStore.advance_obligation wrap; returns updated role. Does not remint roles.py or grant credentials.",
+            "Advance one obligation on a transferable role (status / next_action / evidence_pointer). Pass role object + obligation_id + at least one field. Import-only RoleStore.advance_obligation wrap; returns updated role. Does not remint roles.py.",
             {"role": "object", "obligation_id": "string"},
             {
                 "status": "string",
