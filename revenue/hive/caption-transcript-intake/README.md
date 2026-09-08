@@ -62,13 +62,34 @@ python caption_intake.py examples/demo.vtt --title "Fictional handoff interview"
 
 The ZIP additionally contains `episode-import.json`: `{title,duration,description,synthetic_demo,segments,chapters:[]}`. Its segment fields are `{id,start,end,speaker,text,verified:false}` in seconds. The original millisecond fields, caption settings and source bytes remain in `transcript.json` and the source copy. Duration must be positive, finite and at most 86,400 seconds. The canonical runtime requires nonoverlapping segments entirely within that duration. The adapter reports overlap or an out-of-range cue without shifting, trimming or discarding anything. Run without `--duration-seconds` for the generic, overlap-preserving bundle instead. Fewer than five cues may be imported but are insufficient for that runtime's draft-generation workflow.
 
-The canonical runtime remains owned by its builder under `../podcast-content-workspace/`. This package neither changes it nor sends HTTP requests. The adapter implements the builder's [reported import contract](https://tokenjunkielabs.slack.com/archives/C0C05UU6WKG/p1788867534373669), with local conversion and CLI tests. Execution against the published Store/HTTP implementation is a separate integration check, not claimed by this initial adapter delivery. The self-contained caption handoff works independently. Python callers pass the recording duration as a decimal string: `canonical_episode(parsed, "65", synthetic_demo=True)`.
+The optional adapter also checks the canonical document limits: title at most 200 characters, speaker at most 120, cue text at most 12,000, and at most 2,000 segments. It reports incompatible inputs instead of truncating, splitting, or guessing. Those limits do not narrow the generic transcript format: omit `--duration-seconds` to preserve a larger generic caption handoff.
+
+The canonical runtime remains owned by its builder under `../podcast-content-workspace/`. The converter does not change or contact it. To import the generated document into a selected local workspace, extract the bundle and run the canonical CLI from this directory:
+
+```sh
+python -m zipfile -e demo-episode-handoff.zip demo-episode-handoff
+python ../podcast-content-workspace/app.py \
+  --db demo-episode-handoff/workspace.sqlite3 \
+  --import-document demo-episode-handoff/episode-import.json
+python ../podcast-content-workspace/app.py \
+  --db demo-episode-handoff/workspace.sqlite3
+```
+
+The import command creates a new episode; rerunning it creates another episode rather than updating the first. The server command opens that same local database. Attach the corresponding authorized recording in the workspace before reviewing names/quotes; the fictional caption sample alone is not a verified recording. Retain the original caption handoff beside the content export: the workspace imports the normalized document, not every caption-provenance field.
+
+An existing local HTTP client may POST the unmodified `episode-import.json` bytes to `/api/episodes`. The canonical HTTP body limit is 2 MiB. A valid document can exceed that after JSON escaping; use the CLI import above for those documents rather than dropping text or changing the runtime limit. The integration suite exercises that larger CLI route separately. The converter itself sends no requests.
+
+The adapter is bound to the [published canonical implementation at main `3e3ff8a5`](https://github.com/woahwhattheheck/commons/blob/3e3ff8a5af0b1910b50203e4fe1229134eb9a7ec/revenue/hive/podcast-content-workspace/app.py), Git blob `2051b0fdf43648d857fec34f6a36503adabf9c8f`. Its companion tests execute real converter-to-consumer CLI imports, SQLite reads, a local HTTP import/generate/export workflow, Unicode preservation, schema boundaries, and the large-document CLI route. They import the actual sibling runtime, print its current source hashes, and fail if it is absent; they do not substitute a fake consumer or require that future revisions retain one historical hash. Python callers pass recording duration as a decimal string: `canonical_episode(parsed, "65", synthetic_demo=True)`.
 
 ## Validation
 
 ```sh
 python -m unittest -v test_caption_intake
 python -m py_compile caption_intake.py test_caption_intake.py
+# Optional integration suite: requires the real sibling podcast workspace.
+python -m unittest -v test_podcast_consumer
 ```
 
 The suite exercises real parsing, Unicode/encoding handling, actual CLI subprocesses, ZIP contents/hashes, existing-target preservation, and competing filesystem publishers. The sample captions are original fictional material, not customer recordings. No claim of audio verification, automatic transcription, browser testing, distribution, or customer fulfillment follows from these tests.
+
+The integrated check ran against canonical source blob `2051b0fdf43648d857fec34f6a36503adabf9c8f`: seven integration tests passed. Python 3.13 emitted SQLite connection `ResourceWarning` messages from that consumer; these are retained in the execution receipt, not hidden or described as warning-free. No canonical runtime changes are included in this companion.
