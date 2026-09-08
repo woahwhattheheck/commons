@@ -288,7 +288,10 @@ def check_snapshot(root: Path, path: Path) -> dict[str, Any]:
     _require(isinstance(expected, dict), f"{path} must be an object")
     _require(expected.get("schema") == SCHEMA, f"{path} is not {SCHEMA}")
     actual = scan(root, _text(expected.get("observed_at")), _text(expected.get("source_commit")))
-    if actual != expected:
+    # JSON booleans and numbers are distinct even when Python equates them.
+    # Canonical comparison also preserves nested scalar types without making
+    # object key order or whitespace part of the snapshot contract.
+    if canonical_text(actual) != canonical_text(expected):
         raise AgentLivenessError(f"{path} differs from its exact source inputs")
     return actual
 
