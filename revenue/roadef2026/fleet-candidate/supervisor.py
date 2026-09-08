@@ -344,8 +344,13 @@ class Supervisor:
         # Solvers atomically rename their own output. Read its complete inode,
         # then freeze those exact bytes so validation cannot race with updates.
         snapshot.write_bytes(raw)
-        stdout_path = self.work / (digest + ".checker-6.json")
-        stderr_path = self.work / (digest + ".checker.log")
+        # Keep the original names for the first check. A retry validates the
+        # same immutable solution, but must not truncate the failed attempt's
+        # raw report and diagnostics when it opens its own output streams.
+        attempt = self.failed_checks.get(digest, 0) + 1
+        stem = digest if attempt == 1 else f"{digest}.attempt-{attempt}"
+        stdout_path = self.work / (stem + ".checker-6.json")
+        stderr_path = self.work / (stem + ".checker.log")
         stdout, stderr = stdout_path.open("wb"), stderr_path.open("wb")
         check = {"stdout": stdout, "stderr": stderr,
                  "result": stdout_path, "snapshot": snapshot, "digest": digest,
