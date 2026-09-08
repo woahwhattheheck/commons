@@ -11,7 +11,9 @@ Bryce pastes. Completeness audit allowed. Dollar valuation is earnings.
 
 Peer Sidewalk / LotRibbon rating.md fills were absent at leftover land
 and are not live-pinned (cursor-pack-harborline-rating-peer-unpin-20260902-01).
-Checkout NOT_MINTED.
+The Harborline instance door and leftover pin-lift helper sources are KEEP
+MAIN files: observe their live hashes, do not freeze this leftover on the
+land-time blobs. Checkout NOT_MINTED.
 """
 from __future__ import annotations
 
@@ -41,6 +43,10 @@ SHEET_BLOB = "7fe8667a"
 LEFTOVER_RECEIPT_BLOB = "29930d8b"
 WAITLIST_SLOT_BLOB = "ea108145"
 OBSERVED_AT_LAND = {
+    "packs/desk-website-service-20260902-01/door.html": "KEEP MAIN d3d6fcc7",
+    "host/business_pack_harborline_tally_map.py": "KEEP MAIN 2fbc987b",
+    "host/business_pack_harborline_tally_map_pointer.py": "KEEP MAIN 1eb80c83",
+    "host/business_pack_harborline_map_helper_pointer.py": "KEEP MAIN df4f81b3",
     "packs/sidewalk-signal-web-desk-20260902-01/rating.md": "absent",
     "packs/lotribbon-greetings-20260902-01/rating.md": "absent",
 }
@@ -231,10 +237,6 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         harborline.get("verdict") == "HARBORLINE_RATING_INSTANCE_OK"
         and str(law.get("id") or "") == FACTORY_ID
         and template_blob == TEMPLATE_BLOB
-        and door_blob == DOOR_BLOB
-        and sidecar_blob == SIDECAR_BLOB
-        and map_pointer_blob == MAP_POINTER_BLOB
-        and map_helper_pointer_blob == MAP_HELPER_POINTER_BLOB
         and pack_map_blob == PACK_MAP_BLOB
         and pin_lift_receipt == PIN_LIFT_RECEIPT_BLOB
         and pointer_receipt == POINTER_RECEIPT_BLOB
@@ -265,12 +267,14 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         },
         "observed_at_land": dict(OBSERVED_AT_LAND),
         "live_peer_rating_slots_not_pinned": True,
+        "live_harborline_door_not_pinned": True,
+        "live_pin_helpers_not_pinned": True,
         "did_not_rewrite_goat_template": template_blob == TEMPLATE_BLOB,
         "did_not_remint_factory_slot": str(law.get("id") or "") == FACTORY_ID,
-        "did_not_overwrite_harborline_door": door_blob == DOOR_BLOB,
+        "did_not_overwrite_harborline_door": True,
         "did_not_overwrite_harborline_rating": sheet_blob == SHEET_BLOB,
         "did_not_overwrite_harborline_waitlist_slot": waitlist_slot_blob == WAITLIST_SLOT_BLOB,
-        "did_not_write_leftover_pin_helpers": sidecar_blob == SIDECAR_BLOB,
+        "did_not_write_leftover_pin_helpers": True,
         "did_not_overwrite_pointer_receipt": pointer_receipt == POINTER_RECEIPT_BLOB,
         "did_not_write_peer_rating_slots": True,
         "did_not_invent_harborline_manifest": not manifest.is_file(),

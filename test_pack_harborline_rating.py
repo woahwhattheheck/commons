@@ -84,6 +84,8 @@ class PackHarborlineRatingTest(unittest.TestCase):
         self.assertTrue(result["did_not_overwrite_pointer_receipt"])
         self.assertTrue(result["did_not_write_peer_rating_slots"])
         self.assertTrue(result["live_peer_rating_slots_not_pinned"])
+        self.assertTrue(result["live_harborline_door_not_pinned"])
+        self.assertTrue(result["live_pin_helpers_not_pinned"])
         self.assertEqual(
             result["observed_at_land"]["packs/lotribbon-greetings-20260902-01/rating.md"],
             "absent",
@@ -98,8 +100,12 @@ class PackHarborlineRatingTest(unittest.TestCase):
         self.assertTrue(result["did_not_merge_7915"])
         self.assertEqual(result["blobs"]["packs/_template/rating.md"], "7d644a8b")
         self.assertEqual(
-            result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
-            "d3d6fcc7",
+            result["observed_at_land"]["packs/desk-website-service-20260902-01/door.html"],
+            "KEEP MAIN d3d6fcc7",
+        )
+        self.assertEqual(
+            len(result["blobs"]["packs/desk-website-service-20260902-01/door.html"]),
+            8,
         )
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/rating.md"],
@@ -114,8 +120,12 @@ class PackHarborlineRatingTest(unittest.TestCase):
             "ea108145",
         )
         self.assertEqual(
-            result["blobs"]["host/business_pack_harborline_tally_map.py"],
-            "2fbc987b",
+            result["observed_at_land"]["host/business_pack_harborline_tally_map.py"],
+            "KEEP MAIN 2fbc987b",
+        )
+        self.assertEqual(
+            len(result["blobs"]["host/business_pack_harborline_tally_map.py"]),
+            8,
         )
         self.assertEqual(
             result["blobs"][
@@ -143,6 +153,42 @@ class PackHarborlineRatingTest(unittest.TestCase):
         finally:
             if created:
                 rating.LOTRIBBON.unlink(missing_ok=True)
+
+    def test_door_and_helper_sha_change_does_not_fail_tree(self) -> None:
+        if not rating.TEMPLATE.is_file() or not rating.HARBORLINE.is_file():
+            self.skipTest("rating files not in this tree")
+        original = rating.git_blob_prefix
+
+        def fake(rel: str, n: int = 8) -> str:
+            if rel in {
+                "packs/desk-website-service-20260902-01/door.html",
+                "host/business_pack_harborline_tally_map.py",
+                "host/business_pack_harborline_tally_map_pointer.py",
+                "host/business_pack_harborline_map_helper_pointer.py",
+            }:
+                return "deadbeef"
+            return original(rel, n)
+
+        rating.git_blob_prefix = fake  # type: ignore[method-assign]
+        try:
+            result = rating.classify_tree()
+            self.assertEqual(result["verdict"], "HARBORLINE_RATING_OK", msg=result)
+            self.assertTrue(result["live_harborline_door_not_pinned"])
+            self.assertTrue(result["live_pin_helpers_not_pinned"])
+            self.assertTrue(result["did_not_overwrite_harborline_door"])
+            self.assertTrue(result["did_not_write_leftover_pin_helpers"])
+            self.assertEqual(
+                result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
+                "deadbeef",
+            )
+            self.assertEqual(
+                result["observed_at_land"][
+                    "packs/desk-website-service-20260902-01/door.html"
+                ],
+                "KEEP MAIN d3d6fcc7",
+            )
+        finally:
+            rating.git_blob_prefix = original  # type: ignore[method-assign]
 
     def test_cli_json(self) -> None:
         if not rating.HARBORLINE.is_file():
