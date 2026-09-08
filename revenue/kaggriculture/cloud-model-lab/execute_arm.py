@@ -8,7 +8,8 @@ decides a rating plus what diagnoses it:
   * own AND rival cash, so a gain that is really the rival losing is visible
   * the end-of-day RNG path per arm, so a candidate/control pair that differs can
     be shown to be playing the SAME market world rather than a different town
-  * worst single action wall time, cold first call included
+  * worst single action wall time, first action included (initialization separate)
+  * executor_timing: initialization, first action, and later-action timings
   * every failure preserved; a raising arm is reported, never silently dropped
 
 Opponents resolve through this lab's single resolver: intact Arlene, Apex, and
@@ -36,6 +37,16 @@ import time
 import traceback
 
 import cards as cards_mod
+
+# Reuse the sibling observer without adding a policy import root or a second
+# callable loader. Its module load is outside all measured policy timings.
+_timing_spec = importlib.util.spec_from_file_location(
+    "_titan_execution_timing", os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "..", "cloud-combination-analysis", "execution_timing.py"))
+_timing_module = importlib.util.module_from_spec(_timing_spec)
+sys.modules[_timing_spec.name] = _timing_module
+_timing_spec.loader.exec_module(_timing_module)
+TimedFactory = _timing_module.TimedFactory
 
 
 def load_callable(path, extra_sys_path=()):
@@ -100,11 +111,12 @@ def game(seed, seat, opponent, factory, label, record_path=True):
         rec = market_path.PathRecorder()
         rec.__enter__()
     row = {"seed": seed, "seat": seat, "opponent": opponent, "arm": label}
+    observer = TimedFactory(factory)
     try:
         env = cards_mod.make_env(seed)
         env.reset(2)
         opp, opp_id = arlene_arm.make_opponent(opponent, A)
-        me = factory()
+        me = observer()
         t0, worst, n = time.time(), 0.0, 0
         while not env.done:
             acts = [None, None]
@@ -128,6 +140,8 @@ def game(seed, seat, opponent, factory, label, record_path=True):
         row.update(own_cash=None, rival_cash=None, margin=None, error=
                    f"{type(exc).__name__}: {exc}",
                    traceback=traceback.format_exc()[-2000:])
+    finally:
+        row["executor_timing"] = observer.timings()
     if rec is not None:
         row["path"] = rec.path()
         rec.__exit__(None, None, None)

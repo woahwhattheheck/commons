@@ -12,6 +12,7 @@ Opponents are the vendored public parents (Apache-2.0, notices and lineage under
 import argparse
 import hashlib
 import importlib.util
+import inspect
 import json
 import os
 import time
@@ -60,11 +61,21 @@ def make_opponent(name, A):
         return (lambda obs, cfg: ag.act(obs)), {"label": "arlene (vendored)"}
     mod, ident = _load(OPPONENTS[name])
     fn = mod.agent
+    # Bind before execution: a TypeError from the opponent body is a failure,
+    # not permission to execute a stateful opponent for a second time.
+    signature = inspect.signature(fn)
+    try:
+        signature.bind(None, None)
+    except TypeError:
+        signature.bind(None)
+        with_config = False
+    else:
+        with_config = True
+
     def call(obs, cfg):
-        try:
+        if with_config:
             return fn(obs, cfg)
-        except TypeError:
-            return fn(obs)
+        return fn(obs)
     return call, ident
 
 
