@@ -32,9 +32,22 @@ def host_observation(state_dir):
                 item["ram_gib"] = round(status.total / 2**30, 2)
                 item["ram_available_gib"] = round(status.available / 2**30, 2)
         elif system == "Linux":
-            rows = {line.split(":")[0]: int(line.split()[1]) for line in Path("/proc/meminfo").read_text().splitlines() if line.startswith(("MemTotal:", "MemAvailable:"))}
-            item["ram_gib"] = round(rows["MemTotal"] / 2**20, 2)
-            item["ram_available_gib"] = round(rows["MemAvailable"] / 2**20, 2)
+            fields = {"MemTotal": "ram_gib", "MemAvailable": "ram_available_gib"}
+            for line in Path("/proc/meminfo").read_text().splitlines():
+                name, separator, value = line.partition(":")
+                if not separator or name not in fields:
+                    continue
+                parts = value.split()
+                # A damaged measurement must not hide the other usable one.
+                # procfs reports these values as nonnegative integers in kB.
+                if (len(parts) != 2 or parts[1] != "kB"
+                        or not parts[0].isascii() or not parts[0].isdecimal()):
+                    continue
+                try:
+                    gib = round(int(parts[0]) / 2**20, 2)
+                except (ValueError, OverflowError):
+                    continue
+                item[fields[name]] = gib
     except (OSError, AttributeError, ValueError, KeyError):
         pass
     return item
