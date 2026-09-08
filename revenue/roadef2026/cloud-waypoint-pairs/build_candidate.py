@@ -39,7 +39,7 @@ def generate(raw: bytes, root: Path) -> bytes:
         '    struct Change { int d, left, right; Route next; };')
     text = once(text, '    void writeSolution() const {', method + '    void writeSolution() const {')
     text = once(text, '            if (accepted > oldAccepted) stalled = 0; else ++stalled;',
-        '            if (accepted == oldAccepted && !finished() && stalled % 4 == 1)\n'
+        '            if (accepted == oldAccepted && !finished() && !contributing.empty())\n'
         '                cedarPairMoves(t, e, contributing, adaptive);\n'
         '            if (accepted > oldAccepted) stalled = 0; else ++stalled;')
     text = once(text, '            << ",\\"ranked_candidates\\":" << rankedCandidates',
