@@ -17,6 +17,7 @@ on:
       - 'revenue/kaggriculture/cloud-economic-stress/test_runner.py'
       - 'revenue/kaggriculture/cloud-economic-stress/runner.py'
       - 'revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py'
+      - 'revenue/kaggriculture/cloud-economic-stress/test_caller_handler.py'
       - 'revenue/kaggriculture/cloud-economic-stress/cancellation/**'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py'
       - 'revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py'
@@ -69,6 +70,7 @@ jobs:
             /revenue/kaggriculture/cloud-economic-stress/test_runner.py
             /revenue/kaggriculture/cloud-economic-stress/runner.py
             /revenue/kaggriculture/cloud-economic-stress/test_runner_guard_join.py
+            /revenue/kaggriculture/cloud-economic-stress/test_caller_handler.py
             /revenue/kaggriculture/cloud-economic-stress/cancellation/
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
@@ -265,6 +267,14 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-economic-stress/cancellation/test_deadline_cancellation.py \
             --report "$RUNNER_TEMP/projection-validation/deadline-cancellation.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/deadline-cancellation-tests.log"
+      - name: Caller handler replacement boundary tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-economic-stress/test_caller_handler.py \
+            --report "$RUNNER_TEMP/projection-validation/caller-handler-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/caller-handler-tests.log"
       - name: Actual stress-runner deadline boundary tests
         if: ${{ !cancelled() }}
         shell: bash
