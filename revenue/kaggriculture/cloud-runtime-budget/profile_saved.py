@@ -206,7 +206,21 @@ def worker(args):
         report["entry_import_s"] = time.perf_counter() - t0
         holder = {}
 
+        direct_name = getattr(args, "entrypoint_callable", None)
+        if direct_name:
+            if report["factory_kwargs"]:
+                raise ValueError("factory keyword arguments do not apply to a direct entrypoint")
+            report["call_binding"] = {
+                "kind": "module_callable", "name": direct_name,
+                "initialization_scope": "callable binding only; lazy controller construction remains in its action call",
+                "diagnostics_scope": "attributes on the exported callable; no private actor lookup",
+            }
+
         def factory():
+            if direct_name:
+                method = getattr(module, direct_name)
+                holder["actor"] = method
+                return bind_action(method)
             actor = getattr(module, args.factory)(**report["factory_kwargs"])
             holder["actor"] = actor
             method = actor if args.method == "__call__" else getattr(actor, args.method)
@@ -334,11 +348,16 @@ def supervise(args):
     for mode in ("ordinary", "profile"):
         child_output = args.output.with_name(args.output.stem + "." + mode + ".json")
         command = [sys.executable, "-B", str(Path(__file__).resolve()), "--worker-mode", mode,
-                   "--entrypoint", str(args.entrypoint), "--factory", args.factory,
+                   "--entrypoint", str(args.entrypoint),
                    "--method", args.method, "--timing-source", str(args.timing_source),
                    "--replay", str(args.replay), "--seat", str(args.seat),
                    "--max-decisions", str(args.max_decisions), "--classification", args.classification,
                    "--output", str(child_output)]
+        direct_name = getattr(args, "entrypoint_callable", None)
+        if direct_name:
+            command.extend(["--entrypoint-callable", direct_name])
+        else:
+            command.extend(["--factory", args.factory])
         if mode == "profile" and reports and reports[0].get("calls"):
             calls = reports[0]["calls"]
             steps = {calls[0]["step"], calls[-1]["step"]}
@@ -417,7 +436,9 @@ def main():
         ap.add_argument("--" + name, type=Path,
                         required=True)
     ap.add_argument("--input-receipt", type=Path, help="TRACE native JSONL receipt; supplies actor RNG and process hash seed")
-    ap.add_argument("--factory", default="make_agent")
+    binding = ap.add_mutually_exclusive_group()
+    binding.add_argument("--factory", default="make_agent")
+    binding.add_argument("--entrypoint-callable", help="Exported function called with observations directly, without a factory")
     ap.add_argument("--factory-kwargs", type=json.loads, default={}, help="JSON object forwarded once to the selected factory")
     ap.add_argument("--source-root", type=Path, help="Explicit runtime dependency root for source binding and hot-function attribution")
     ap.add_argument("--method", default="act")
@@ -437,6 +458,8 @@ def main():
         args.source_root = args.source_root.resolve()
     if not isinstance(args.factory_kwargs, dict):
         ap.error("--factory-kwargs must be a JSON object")
+    if args.entrypoint_callable and args.factory_kwargs:
+        ap.error("--factory-kwargs does not apply to --entrypoint-callable")
     if args.process_timeout <= 0:
         ap.error("--process-timeout must be positive")
     if args.profile_slowest < 1:
