@@ -92,11 +92,13 @@ must surface these messages and preserve pending data for transient failures.
 
 ## Tests
 
-From this directory: `python -B -m unittest -v test_study`.
+From this directory: `python -B -m unittest -v test_study test_export_snapshot`.
 
-The 29 tests exercise actual temporary SQLite databases, concurrent imports and
+The 30 tests exercise actual temporary SQLite databases, concurrent imports and
 reviews, original-byte hashes, citations, editable keys, schedule boundaries,
-reopen/retry behavior, exports, deletion, and a real local HTTP server. When
+reopen/retry behavior, exports, deletion, and a real local HTTP server. A second
+SQLite connection commits an answer during an export to exercise snapshot
+consistency between card counters and review history. When
 `pdftotext` is installed, a generated two-page original PDF goes through the real
 converter and HTTP import. PDF tests report a skip explicitly when it is absent.
 No user document is committed as a fixture. Browser acceptance belongs to the
