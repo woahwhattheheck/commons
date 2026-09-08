@@ -51,7 +51,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         try:
             payload = json.loads(self.rfile.read(size).decode("utf-8"))
-        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        except (UnicodeDecodeError, ValueError) as exc:
             self._json(400, {"error": f"invalid JSON: {exc}"})
             return
         if self.path == "/api/validate":

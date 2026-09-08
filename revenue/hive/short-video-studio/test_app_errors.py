@@ -48,6 +48,29 @@ class AppErrorContractTests(unittest.TestCase):
                     server.server_close()
                     thread.join(timeout=2)
 
+    def test_json_integer_digit_limit_returns_json_400(self):
+        server = app.ThreadingHTTPServer(("127.0.0.1", 0), app.Handler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            body = ('{"title":' + ("9" * 5000) + "}").encode("utf-8")
+            request = urllib.request.Request(
+                f"http://127.0.0.1:{server.server_port}/api/validate",
+                data=body,
+                headers={"Content-Type": "application/json"},
+            )
+            with self.assertRaises(urllib.error.HTTPError) as caught:
+                urllib.request.urlopen(request, timeout=5)
+            response = caught.exception
+            self.assertEqual(response.code, 400)
+            payload = json.loads(response.read())
+            self.assertTrue(payload["error"].startswith("invalid JSON:"))
+            self.assertIn("Exceeds the limit", payload["error"])
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=2)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
