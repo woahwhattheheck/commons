@@ -62,6 +62,13 @@
       "enabled": true,
       "callsite": "main.agent entry_started -> TitanAgent.act; fallback copy before elapsed measurement",
       "consumed_result": "Two discriminating tests fail previous clock and pass current clock; no whole-RPC guarantee or game attribution"
+    },
+    {
+      "component": "Completed immutable module reuse",
+      "source_pin": "Current source manifest titan_runtime.py",
+      "enabled": true,
+      "callsite": "TitanAgent._initialize -> load(cache=True) for funding and SeedBudget code only",
+      "consumed_result": "Three focused cancellation/import/match-isolation tests; completed modules reused, controller and mutable ledgers rebuilt. No RPC-cause or full-game improvement claim."
     }
   ],
   "next_increments": [
@@ -191,5 +198,29 @@
       }
     },
     "applies_to_current_archive": false
+  },
+  "diagnostic_intake": {
+    "owner": "Claude cloud-model-lab",
+    "artifact": "70554dc0",
+    "same_failed_development_cell": {
+      "seed": 9921012,
+      "opponent": "COK10",
+      "seat": 1,
+      "jobs": 1,
+      "calls": 719,
+      "fallbacks": 0,
+      "step569_seconds": 0.0043,
+      "max_call_seconds": 0.1507
+    },
+    "tiny_budget_overshoot_ms": [
+      73,
+      37
+    ],
+    "contention_wall_cpu_ratio": [
+      1.0,
+      1.668
+    ],
+    "reserve_decision": "Keep 10 ms; measurements do not establish original cause or a 73 ms reserve requirement",
+    "terminal_route_decision": "Keep off: 272-game research; frozen matchup default42W20T2L -> route54W0T10L, no robust gain demonstrated"
   }
 }
