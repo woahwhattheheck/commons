@@ -44,6 +44,7 @@ jobs:
             /revenue/kaggriculture/cloud-eval/
             /revenue/kaggriculture/20260907-offline-agent/
             /revenue/kaggriculture/cloud-execution-lab/integrated_selected.py
+            /revenue/kaggriculture/cloud-execution-lab/exports/integrated-selected-v1.tar.gz
             /revenue/kaggriculture/cloud-integration-differentials/
             /revenue/kaggriculture/cloud-composition-cases/cypress/
             /revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/
@@ -68,6 +69,11 @@ jobs:
           out = Path(os.environ['RUNNER_TEMP']) / 'projection-validation'
           out.mkdir()
           root = Path('revenue/kaggriculture')
+          frozen = root/'cloud-execution-lab/exports/integrated-selected-v1.tar.gz'
+          frozen_bytes = frozen.read_bytes()
+          assert len(frozen_bytes) == 103527
+          assert hashlib.sha256(frozen_bytes).hexdigest() == '95c7bf10a20149419e6208e43cdf2bf0728e22fe61b600180eaa1a3fbcc1b153'
+          (out/frozen.name).write_bytes(frozen_bytes)
           roots = ('cloud-selected-projection', 'cloud-execution-lab',
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
                    'cloud-integration-differentials', 'cloud-composition-cases/cypress')
