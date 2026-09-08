@@ -22,6 +22,13 @@ receipts from a current quote. Economic admission must account for all incumbent
 operating obligations, shed capacity at delivery, market demand and remaining
 horizon. A funded physical counterfactual is an experiment, not an admission rule.
 
+`economic_program(proposal, route_id, base_route)` returns the full proposed route
+and a concrete bundle with land order location, rejoin boundary, and per-tile
+planting, watering, harvest, drop and sale slots. Explicit sale intents follow the
+baseline market prefix and still pass through the single selected SELL consumer.
+ECON derives physical and financial outcomes from that program rather than
+trusting a claimed receipt or a current-quote multiplication.
+
 Exact full-game observations, outcomes, development counterfactuals, failed checks,
 timings and analysis are retained in the private task evidence. The public source
 contains no hosted replay or private opponent continuation.
