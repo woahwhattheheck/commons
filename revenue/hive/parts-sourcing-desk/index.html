@@ -15,7 +15,7 @@
 <div>
 <section id="intake" class="panel"><div class="toolbar"><h2 id="form-title">New sourcing request</h2><span id="request-revision" class="muted"></span></div><form id="request-form" class="grid">
 <label>Unique workshop job reference<input name="job_ref" required maxlength="200" placeholder="JOB-104"></label><label>Equipment manufacturer<input name="make" required placeholder="Manufacturer"></label>
-<label>Exact model<input name="model" required placeholder="Copy the model label"></label><label>Serial number / revision<input name="serial" placeholder="Not supplied"></label>
+<label>Exact model<input name="model" placeholder="Copy the model label"></label><label>Serial number / revision<input name="serial" placeholder="Not supplied"></label>
 <label>Requested part number<input name="part_number" placeholder="Leave blank when unknown"></label><label>Quantity<input name="quantity" type="number" min="1" max="1000000" value="1" required></label>
 <label class="wide">Part description<input name="description" required placeholder="What needs replacing?"></label><label class="wide">Shop notes<textarea name="notes" placeholder="Measurements, serial limits, or missing details"></textarea></label>
 <div class="actions wide"><button type="submit">Save request</button><button type="button" id="reload" class="secondary">Reload saved version</button></div></form></section>

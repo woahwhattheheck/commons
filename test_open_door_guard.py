@@ -389,6 +389,37 @@ def main():
     completeness_violations = guard.scan_added(completeness_lines)
     assert completeness_violations == [], completeness_violations
 
+    # Run 34220005044 / SHA 4b125d39: Hive #044 Parts Sourcing Desk added
+    # <input name="model" required> for equipment model. The guard treats
+    # name="model" as a speaker/capability field, so HTML required is an
+    # admission lock. Equipment model stays optional in markup; backend
+    # workshop validation is unchanged. The original required tag must
+    # still fail; the repaired live file must stay clean.
+    parts_desk_html = "revenue/hive/parts-sourcing-desk/index.html"
+    parts_desk_blocked = diff(
+        parts_desk_html,
+        [
+            '<label>Exact model<input name="model" required placeholder="Copy the model label"></label>',
+        ],
+    )
+    assert rules(parts_desk_blocked) == {"required-speaker-field"}, rules(parts_desk_blocked)
+    parts_desk_allowed = diff(
+        parts_desk_html,
+        [
+            '<label>Exact model<input name="model" placeholder="Copy the model label"></label>',
+        ],
+    )
+    assert guard.scan_diff(parts_desk_allowed) == [], guard.scan_diff(parts_desk_allowed)
+    parts_path = Path(parts_desk_html)
+    parts_lines = [
+        guard.AddedLine(parts_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            parts_path.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    parts_violations = guard.scan_added(parts_lines)
+    assert parts_violations == [], parts_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.

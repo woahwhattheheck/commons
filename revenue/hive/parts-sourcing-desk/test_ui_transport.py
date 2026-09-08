@@ -15,6 +15,22 @@ from test_parts_desk import item, job
 
 
 class UITransportCase(unittest.TestCase):
+    def test_speaker_named_form_fields_are_not_html_required(self):
+        import re
+
+        html = Path(__file__).with_name("index.html").read_text()
+        speaker = re.compile(
+            r"(?:name|id)\s*=\s*['\"]?(?:from|actor(?:_id)?|identity|claim|seat|memory|"
+            r"is_language_model|model|harness|tools|resources)\b",
+            re.I,
+        )
+        tags = re.findall(r"<(?:input|select|textarea)\b[^>]*>", html, re.I)
+        self.assertGreater(len(tags), 0)
+        speaker_tags = [tag for tag in tags if speaker.search(tag)]
+        self.assertGreater(len(speaker_tags), 0)
+        for tag in speaker_tags:
+            self.assertIsNone(re.search(r"\brequired\b", tag, re.I), tag)
+
     @unittest.skipUnless(shutil.which("node"), "Node is needed for the UI transport composition test")
     def test_exact_javascript_write_functions_with_live_http(self):
         html = Path(__file__).with_name("index.html").read_text()
