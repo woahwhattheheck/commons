@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 5,
+ "n_open_prs": 6,
  "open_prs": [
   {
    "number": 10181,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10181",
    "base_freshness": {
     "base_sha": "01c2b20b990f556ddd190ff5caaa7d8ab55adac1",
-    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,13 +369,29 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10187,
+   "number": 10202,
    "author": "woahwhattheheck",
-   "title": "Record original PR9997 full-prefix parity and measured runtime",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10187",
+   "title": "Check the committed canonical TITAN package without rebuilding it",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10202",
    "base_freshness": {
-    "base_sha": "f279419f22713874f402d8cb1b930b76b1a84cb2",
-    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "base_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
+    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10203,
+   "author": "woahwhattheheck",
+   "title": "Bind COK observer source labels to the official captured program",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10203",
+   "base_freshness": {
+    "base_sha": "f62275d80a8e7a2b6556065d786c82738a5abfd8",
+    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -385,13 +401,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10173,
+   "number": 10204,
    "author": "woahwhattheheck",
-   "title": "Preserve seed-consumer state across public day/hour clocks",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10173",
+   "title": "TITAN: bind recorded-input imports and receipts to captured source bytes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10204",
    "base_freshness": {
-    "base_sha": "f7af1b0ae8ba3bb5a4e981b54a93fcf439799246",
-    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "base_sha": "c4f128fbdf9f8d5148d35dd61476cf1f62677282",
+    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10188",
    "base_freshness": {
     "base_sha": "d247990656259a61c27657e8f37354803e18fe8f",
-    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -417,13 +433,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10189,
+   "number": 10205,
    "author": "woahwhattheheck",
-   "title": "Support public clocks and zero-cost hiring in the existing lonespear consumer",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10189",
+   "title": "TITAN: recover bounded late-route model and complete its consumer evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10205",
    "base_freshness": {
-    "base_sha": "d247990656259a61c27657e8f37354803e18fe8f",
-    "main_sha": "86e41e5b3c6d5b97c91341fe96718c86fa51056f",
+    "base_sha": "c4f128fbdf9f8d5148d35dd61476cf1f62677282",
+    "main_sha": "4df7c7ace48d7304b39c89c19d0eeb077f74fe51",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
