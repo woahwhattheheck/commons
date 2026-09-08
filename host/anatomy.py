@@ -97,11 +97,22 @@ def anatomy(path):
 
 
 def compare(a, b):
-    same_arch = a["arch"] == b["arch"]
+    arch_known = a["arch"] not in (None, "", "?") and b["arch"] not in (None, "", "?")
+    tokenizer_known = (
+        a["tokenizer"] not in (None, "")
+        and b["tokenizer"] not in (None, "")
+        and a["vocab"] is not None
+        and b["vocab"] is not None
+    )
+    same_arch = arch_known and a["arch"] == b["arch"]
     same_hidden = a["hidden"] == b["hidden"] and a["hidden"] is not None
-    same_tok = a["tokenizer"] == b["tokenizer"] and a["vocab"] == b["vocab"]
-    if not same_tok:
+    same_tok = tokenizer_known and a["tokenizer"] == b["tokenizer"] and a["vocab"] == b["vocab"]
+    if not tokenizer_known:
+        verdict = "TOKEN SPACE UNKNOWN — inspect tokenizer metadata before grafting"
+    elif not same_tok:
         verdict = "DIFFERENT TOKEN SPACE — re-embed first, then a seam adapter"
+    elif not arch_known:
+        verdict = "ARCHITECTURE UNKNOWN — inspect architecture metadata before grafting"
     elif same_arch and same_hidden:
         verdict = "SAME FAMILY — sections graftable directly (mergekit passthrough / franken-MoE)"
     elif same_hidden:
