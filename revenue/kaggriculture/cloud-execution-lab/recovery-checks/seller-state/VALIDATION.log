@@ -5,6 +5,6 @@ test_exact_subject_and_retained_input (__main__.SellerRecoveryAcceptance.test_ex
 test_identical_fallback_loses_two_later_sales (__main__.SellerRecoveryAcceptance.test_identical_fallback_loses_two_later_sales) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 19.521s
+Ran 5 tests in 19.929s
 
 OK
