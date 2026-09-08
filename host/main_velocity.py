@@ -22,7 +22,9 @@ def measure(target: str = "HEAD", high_velocity_per_hour: float = 30.0) -> dict:
     head = _git("rev-parse", f"{target}^{{commit}}")
     windows = {}
     for label, since, minutes in WINDOWS:
-        count = int(_git("rev-list", "--count", f"--since={since}", head) or "0")
+        # Commit timestamps need not follow parent order. Filter the full walk;
+        # --since can stop at an old commit and hide newer-dated ancestors.
+        count = int(_git("rev-list", "--count", f"--since-as-filter={since}", head) or "0")
         windows[label] = {
             "commits": count,
             "commits_per_minute": round(count / minutes, 4),
