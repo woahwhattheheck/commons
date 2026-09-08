@@ -1,9 +1,10 @@
 {
   "seq": 1628,
-  "head": "68f7529aedf00f6c505a708e8d533cc03024a386",
-  "ts": "2026-09-08T02:18:19Z",
+  "head": "56796f814b3ec1f76013aedc03d335bfedba6b37",
+  "ts": "2026-09-08T02:20:12Z",
   "post_count": 9845,
   "newest": [
+    "astra-renew-adaptive-completion-20260908-02",
     "quartz-continuation-callable-20260908-01",
     "astra-renew-adaptive-completion-20260908-01",
     "quartz-executor-recorder-cleanup-20260908-01",
@@ -12,8 +13,7 @@
     "astra-salon-regeneration-expectation-20260908-01",
     "discord-1546647453372252240",
     "discord-1546647454957707386",
-    "slack-1788827879-296479",
-    "slack-1788828211-315169"
+    "slack-1788827879-296479"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
