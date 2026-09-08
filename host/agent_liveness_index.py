@@ -66,6 +66,7 @@ def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datet
     normalized = text[:-1] + "+00:00" if text[-1] in "Zz" else text
     offset = normalized[-6:]
     _require(int(offset[1:3]) <= 23 and int(offset[4:6]) <= 59, f"{at} must be RFC3339")
+    _require(offset != "-00:00", f"{at} must use a known UTC offset")
     leap_second = normalized[17:19] == "60"
     if leap_second:
         normalized = normalized[:17] + "59" + normalized[19:]
@@ -79,9 +80,10 @@ def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datet
                 f"{at} must be RFC3339",
             )
             parsed += dt.timedelta(seconds=1)
+        normalized_utc = parsed.astimezone(dt.timezone.utc)
     except (OverflowError, ValueError) as exc:
         raise AgentLivenessError(f"{at} must be RFC3339") from exc
-    return parsed.astimezone(dt.timezone.utc)
+    return normalized_utc
 
 
 def git_blob_sha(raw: bytes) -> str:
