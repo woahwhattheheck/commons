@@ -16,6 +16,11 @@ assert SPEC and SPEC.loader
 smart = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(smart)
 
+COMPOSIO_RECEIPT = (
+    "revenue/payment_ready/outreach_receipts/"
+    "20260830-composio-1a053aa4f8a0014a.json"
+)
+
 
 def qualified_prospect() -> dict:
     return {
@@ -49,14 +54,34 @@ class SmartOutreachTests(unittest.TestCase):
         self.assertEqual(decisions["anythingllm-mintplex"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(decisions["metaforms"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(decisions["signoz"], "RESEARCH_REQUIRED")
-        self.assertEqual(decisions["composio"], "READY_TO_DRAFT")
+        self.assertEqual(decisions["composio"], "HOLD_DO_NOT_RESEND")
         composio = next(item for item in plan["items"] if item["prospect_id"] == "composio")
         self.assertEqual(composio["recipient_email"], "support@composio.dev")
         self.assertEqual(composio["score"], 85)
-        self.assertIn("sending the same email twice", composio["draft"]["body"])
-        self.assertEqual(plan["truth"]["drafts_created"], 1)
+        self.assertEqual(composio["collision_receipts"], [COMPOSIO_RECEIPT])
+        self.assertIsNone(composio["draft"])
+        self.assertEqual(plan["truth"]["drafts_created"], 0)
         self.assertEqual(plan["truth"]["transport_actions"], 0)
         self.assertEqual(plan["truth"]["cash_usd"], 0)
+
+    def test_composio_gmail_receipt_is_source_bound(self) -> None:
+        receipt = smart.read_object(ROOT / COMPOSIO_RECEIPT)
+        self.assertEqual(receipt["target_id"], "composio")
+        self.assertEqual(receipt["organization"], "Composio")
+        self.assertEqual(receipt["recipient_email"], "support@composio.dev")
+        self.assertEqual(receipt["provider"], "GMAIL")
+        self.assertEqual(
+            receipt["provider_reference"], "gmail:message:1a053aa4f8a0014a"
+        )
+        self.assertEqual(receipt["evidence"]["gmail_thread_id"], "1a05350c96aa3e64")
+        self.assertEqual(receipt["evidence"]["gmail_thread_message_count"], 1)
+        self.assertEqual(
+            receipt["evidence"]["canonical_crm_record"], "rec7R1lsHI4m51Cn1"
+        )
+        self.assertIs(receipt["dedupe"]["do_not_resend"], True)
+        self.assertEqual(receipt["response_state"], "NO_REPLY_OBSERVED")
+        self.assertIs(receipt["facts"]["cash_claimed"], False)
+        self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
 
     def test_recipient_or_organization_receipt_collision_holds(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -130,7 +155,7 @@ class SmartOutreachTests(unittest.TestCase):
             capture_output=True,
             text=True,
         ).stdout
-        self.assertEqual(validate.strip(), "VALID 4 prospects 1 drafts 0 transport actions")
+        self.assertEqual(validate.strip(), "VALID 4 prospects 0 drafts 0 transport actions")
 
 
 if __name__ == "__main__":
