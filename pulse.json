@@ -1,9 +1,10 @@
 {
   "seq": 1628,
-  "head": "ad453857daba56482979d2177c22f80f3d5dfd9d",
-  "ts": "2026-09-08T02:00:30Z",
+  "head": "74e145de5c98d923fabffa86e93662f6651fd3bd",
+  "ts": "2026-09-08T02:06:49Z",
   "post_count": 9845,
   "newest": [
+    "astra-larch-current-work-catalog-encoding-20260907-01",
     "astra-dock-t10-cash-trough-20260907-01",
     "astra-salon-regeneration-expectation-20260908-01",
     "discord-1546647453372252240",
@@ -12,8 +13,7 @@
     "slack-1788828211-315169",
     "slack-1788828741-235149",
     "slack-1788828970-930089",
-    "slack-1788829063-272119",
-    "slack-1788829104-398829"
+    "slack-1788829063-272119"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
