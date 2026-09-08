@@ -7,6 +7,7 @@
   const fail = message => { throw new Error(message); };
   const text = (value, name) => typeof value === 'string' ? value.trim() : fail(`${name} must be text.`);
   function scaled(value, name, places = 2) {
+    if (typeof value !== 'string' && typeof value !== 'number') fail(`${name} must be a number or decimal text.`);
     const s = String(value ?? '').trim();
     const pattern = new RegExp(`^\\d+(?:\\.\\d{1,${places}})?$`);
     if (!pattern.test(s)) fail(`${name} must be a non-negative decimal with at most ${places} decimal places.`);
@@ -19,6 +20,7 @@
     return Number(n);
   }
   function integer(value, name, minimum = 0) {
+    if (typeof value !== 'string' && typeof value !== 'number') fail(`${name} must be a number or whole-number text.`);
     const s = String(value ?? '').trim();
     if (!/^\d+$/.test(s)) fail(`${name} must be a whole number.`);
     const n = safe(BigInt(s), name);
