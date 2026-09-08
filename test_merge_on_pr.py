@@ -34,7 +34,7 @@ KEEP = {
     "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
-    "repo_pulse.py": "9ec71eb0",
+    "repo_pulse.py": "298716e9",
     "autogtm.html": "fab1d536",
 }
 

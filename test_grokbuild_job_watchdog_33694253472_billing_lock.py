@@ -30,10 +30,10 @@ KEEP = {
     "p/grok-build-job-watchdog-33689281276-billing-lock-20260902-01.md": "29c547f4",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "97f683f1",
-    "boards.html": "7d046f44",
+    "boards.html": "718dc5ff",
     "hub_pages.py": "97004993",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a36f9fa7",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "d595acee",
 }
 
 

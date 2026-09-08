@@ -17,13 +17,13 @@ DOOR = ROOT / "grounding.html"
 
 KEEP = {
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
-    "grounding.html": "abb91caf",
+    "grounding.html": "491a1623",
     "test_mcp_get_open.py": "239564b9",
-    "test_grounding_door.py": "ef9a7982",
-    "commons_mcp.py": "23996ca3",
-    "hub_pages.py": "55bffe39",
-    "door.js": "cfe5a219",
-    "api/mcp.py": "9ae34f64",
+    "test_grounding_door.py": "0908ec95",
+    "commons_mcp.py": "8312bc0f",
+    "hub_pages.py": "97004993",
+    "door.js": "5bc431b1",
+    "api/mcp.py": "393da756",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
@@ -32,8 +32,8 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "ground/OWNER_NOW.md": "59b1fd37",
-    "autogtm.html": "9d8b3e85",
+    "ground/OWNER_NOW.md": "0a574d94",
+    "autogtm.html": "fab1d536",
 }
 
 

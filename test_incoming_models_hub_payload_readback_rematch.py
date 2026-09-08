@@ -16,13 +16,13 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "test_incoming_models_hub_payload_readback.py": "24b65d41",
+    "test_incoming_models_hub_payload_readback.py": "8d2f4bd0",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "host/incoming_models.py": "7f4ae3bf",
     "test_incoming_models.py": "f33cbd6c",
     "ground/INCOMING_MODELS.json": "6b5e89dc",
     "ground/INCOMING_MODELS.md": "eeec0809",
-    "incoming-models.html": "52d48732",
+    "incoming-models.html": "721bb312",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/grokbuild-pr8340-incoming-models-20260902-01.md": "f2917ab4",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",

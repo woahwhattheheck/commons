@@ -26,7 +26,7 @@ KEEP = {
     "ground/WORK_AUTOMATION.json": "dca944cb",
     "ping/union_git_ntfy.py": "ffd3617b",
     "p/work-becomes-automation-20260830-01.md": "c0ab7d78",
-    "open_door_guard.py": "861958e9",
+    "open_door_guard.py": "7b9a2318",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",

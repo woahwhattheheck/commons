@@ -18,14 +18,14 @@ PRIOR = ROOT / "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md"
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "67fe2c46",
-    "open_door_guard.py": "861958e9",
-    "test_open_door_guard.py": "2fb0d87b",
+    ".github/workflows/tests.yml": "fd94b65c",
+    "open_door_guard.py": "7b9a2318",
+    "test_open_door_guard.py": "1fce7bde",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "dd2af89b",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "eae2e71f",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
-    "test_grokbuild_tests_33694253421_billing_lock.py": "cb872444",
+    "test_grokbuild_tests_33694253421_billing_lock.py": "bafbfb9b",
     "p/grokbuild-open-door-guard-33699607387-billing-lock-20260903-01.md": "32f69eaf",
     "p/grokbuild-open-door-guard-33699940644-billing-lock-20260903-01.md": "38fc515e",
     "p/grokbuild-tests-33699945008-billing-lock-20260903-01.md": "a6542e64",

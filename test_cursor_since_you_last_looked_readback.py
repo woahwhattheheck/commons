@@ -18,10 +18,10 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "156f4393",
+    "test_since_you_last_looked.py": "8c1a356b",
     "since-you-last-looked.html": "a70a4adc",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "host/landed_work_feed.py": "0506fd0f",
+    "host/landed_work_feed.py": "5a5e5804",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
@@ -33,7 +33,7 @@ KEEP = {
     "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
-    "repo_pulse.py": "9ec71eb0",
+    "repo_pulse.py": "298716e9",
 }
 
 

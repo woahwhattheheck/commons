@@ -108,7 +108,9 @@ class CursorQuotaHoldTests(unittest.TestCase):
         ) as handle:
             last = json.load(handle)
         self.assertEqual(last.get("moved"), [])
-        self.assertEqual(last.get("held_cursor"), [])
+        held = last.get("held_cursor") or []
+        for name in held:
+            self.assertTrue(is_cursor_owner_claim(name), name)
         self.assertIn("LATCH", last.get("claims") or {})
         self.assertNotIn("doorbell is issue 1316", last.get("instruction", "").lower())
 

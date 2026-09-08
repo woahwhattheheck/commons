@@ -21,11 +21,11 @@ DOOR = ROOT / "commons-slack.html"
 # Reviewed current composition: owner publication policy and added product doors.
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/slack_mirror.py": "70d181fb",
+    "host/slack_mirror.py": "c94f6fa5",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "739d5ee8",
-    "host/landed_work_feed.py": "fc1be135",
-    "repo_pulse.py": "9ec71eb0",
+    "host/landed_work_feed.py": "5a5e5804",
+    "repo_pulse.py": "298716e9",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",

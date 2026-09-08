@@ -18,15 +18,15 @@ TRIGGER = ROOT / "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-0
 TRIGGER_TEST = ROOT / "test_grokbuild_discord_cloud_33699286743_billing_lock.py"
 
 KEEP = {
-    "open_door_guard.py": "861958e9",
-    "test_open_door_guard.py": "2fb0d87b",
-    ".github/workflows/open-door-guard.yml": "c2121049",
+    "open_door_guard.py": "7b9a2318",
+    "test_open_door_guard.py": "1fce7bde",
+    ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33699940644-billing-lock-20260903-01.md": "38fc515e",
-    "test_grokbuild_open_door_guard_33699940644_billing_lock.py": "9e8b8ab3",
+    "test_grokbuild_open_door_guard_33699940644_billing_lock.py": "ddf2729a",
     "p/grokbuild-open-door-guard-33699607387-billing-lock-20260903-01.md": "32f69eaf",
-    "test_grokbuild_open_door_guard_33699607387_billing_lock.py": "c89a5973",
+    "test_grokbuild_open_door_guard_33699607387_billing_lock.py": "a7772a60",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "df0e025c",
+    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "59b3b673",
 }
 
 

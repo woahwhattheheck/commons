@@ -18,7 +18,7 @@ DOOR = ROOT / "since-you-last-looked.html"
 
 KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "host/landed_work_feed.py": "0506fd0f",
+    "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
     "landed-work.html": "a79ca428",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -33,7 +33,7 @@ KEEP = {
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
     "grounding.html": "491a1623",
-    "repo_pulse.py": "9ec71eb0",
+    "repo_pulse.py": "298716e9",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

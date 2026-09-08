@@ -17,13 +17,13 @@ HUB_TICK = ROOT / "ground/HUB_TICK.md"
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "67fe2c46",
+    ".github/workflows/tests.yml": "fd94b65c",
     "ground/HUB_TICK.md": "98548e87",
     "p/grokbuild-tests-33689083188-billing-lock-20260902-01.md": "ea4625e6",
     "p/grokbuild-tests-33689243523-billing-lock-20260902-01.md": "119ccb17",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
-    "open_door_guard.py": "861958e9",
+    "open_door_guard.py": "7b9a2318",
 }
 
 

@@ -15,11 +15,11 @@ HELPER = ROOT / "host/landed_work_feed.py"
 
 KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "host/landed_work_feed.py": "0506fd0f",
+    "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "test_landed_work_feed.py": "275077fe",
+    "test_landed_work_feed.py": "0152843a",
     "landed-work.html": "a79ca428",
-    "repo_pulse.py": "9ec71eb0",
+    "repo_pulse.py": "298716e9",
     "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",

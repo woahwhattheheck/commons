@@ -18,17 +18,17 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
     "muhlnickel_spec_guard.py": "74423d71",
-    "test_muhlnickel_spec_guard.py": "097742ec",
+    "test_muhlnickel_spec_guard.py": "742c8fcf",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
-    "open_door_guard.py": "861958e9",
+    "open_door_guard.py": "7b9a2318",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "6d0baa8a",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "80a99713",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "f37c4b15",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "88283bfd",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "c4b3628e",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "b437fa14",
     "wire.html": "a3934e26",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
 }

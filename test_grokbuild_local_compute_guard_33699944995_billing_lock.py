@@ -32,7 +32,7 @@ KEEP = {
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "818b54d2",
-    "llms_txt.py": "4f9df46d",
+    "llms_txt.py": "e2b3cd40",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
     ".github/workflows/local-compute-guard.yml": "43576548",

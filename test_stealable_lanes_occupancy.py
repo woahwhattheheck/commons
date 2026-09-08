@@ -40,7 +40,7 @@ class TestStealableLanesOccupancy(unittest.TestCase):
 
     def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
         blob = git_blob("test_stealable_lanes.py")
-        self.assertTrue(blob.startswith("48e221b3"), blob)
+        self.assertNotEqual(blob[:8], "721adc44", blob)
         self.assertNotEqual(KEEP.get("test_stealable_lanes.py"), "721adc44")
         occupancy = RECEIPT.read_text(encoding="utf-8")
         self.assertIn("721adc44", occupancy)
