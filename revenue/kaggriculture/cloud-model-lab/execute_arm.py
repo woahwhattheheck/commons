@@ -218,6 +218,7 @@ def main():
                     div = len(market_path.diff({"path": b["path"]},
                                                {"path": c["path"]}))
                     c["path_divergent_days"] = div
+                    write_checkpoint(a.out, cid, bid, rows, expected_rows)
                 d_own = (None if c["own_cash"] is None or b["own_cash"] is None
                          else c["own_cash"] - b["own_cash"])
                 print(f"seed {seed} seat {seat} vs {opp:9s} control "
