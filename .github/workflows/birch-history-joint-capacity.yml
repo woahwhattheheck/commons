@@ -1,0 +1,38 @@
+name: birch-history-joint-capacity
+
+on:
+  push:
+    branches:
+      - codex/birch-history-joint-capacity-20260908
+    paths:
+      - '.github/workflows/birch-history-joint-capacity.yml'
+      - 'revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/**'
+      - 'revenue/kaggriculture/cloud-market-response/selected_action_history.py'
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Recompute retained terminal families
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/history-v2-joint-capacity"
+          python3 -B revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/joint-capacity/reanalyze.py --output "$OUT" \
+            2>&1 | tee "$OUT.log"
+          cp "$OUT.log" "$OUT/execution.log"
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: birch-history-joint-capacity-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/history-v2-joint-capacity/
+          if-no-files-found: error
+          retention-days: 7
