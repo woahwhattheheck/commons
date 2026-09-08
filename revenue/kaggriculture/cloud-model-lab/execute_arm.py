@@ -27,6 +27,7 @@ per-match callable, which is what a stateful arm needs.
 """
 
 import argparse
+import contextlib
 import hashlib
 import importlib.util
 import inspect
@@ -112,47 +113,47 @@ def game(seed, seat, opponent, factory, label, record_path=True):
     import arlene_arm
     import route_cards
     A, arl_id = route_cards.load_arlene()
-    rec = None
-    if record_path:
-        import market_path
-        rec = market_path.PathRecorder()
-        rec.__enter__()
-    row = {"seed": seed, "seat": seat, "opponent": opponent, "arm": label}
-    observer = TimedFactory(factory)
-    try:
-        env = cards_mod.make_env(seed)
-        env.reset(2)
-        opp, opp_id = arlene_arm.make_opponent(opponent, A)
-        me = observer()
-        t0, worst, n = time.time(), 0.0, 0
-        while not env.done:
-            acts = [None, None]
-            for i in range(2):
-                obs = env.state[i].observation
-                if i == seat:
-                    t = time.perf_counter()
-                    acts[i] = me(normalise(obs, i), env.configuration)
-                    worst = max(worst, time.perf_counter() - t)
-                else:
-                    acts[i] = opp(obs, env.configuration)
-            env.step(acts)
-            n += 1
-        farms = env.state[0].observation.farms
-        own, rival = float(farms[seat]["money"]), float(farms[1 - seat]["money"])
-        row.update(own_cash=own, rival_cash=rival, margin=own - rival, rounds=n,
-                   wall_s=round(time.time() - t0, 1),
-                   worst_action_s=round(worst, 4), opponent_id=opp_id,
-                   arlene=arl_id, error=None)
-    except Exception as exc:                     # preserved, never swallowed
-        row.update(own_cash=None, rival_cash=None, margin=None, error=
-                   f"{type(exc).__name__}: {exc}",
-                   traceback=traceback.format_exc()[-2000:])
-    finally:
-        row["executor_timing"] = observer.timings()
-    if rec is not None:
-        row["path"] = rec.path()
-        rec.__exit__(None, None, None)
-    return row
+    # Restore engine hooks even when cancellation or result diagnostics raise.
+    with contextlib.ExitStack() as stack:
+        rec = None
+        if record_path:
+            import market_path
+            rec = stack.enter_context(market_path.PathRecorder())
+        row = {"seed": seed, "seat": seat, "opponent": opponent, "arm": label}
+        observer = TimedFactory(factory)
+        try:
+            env = cards_mod.make_env(seed)
+            env.reset(2)
+            opp, opp_id = arlene_arm.make_opponent(opponent, A)
+            me = observer()
+            t0, worst, n = time.time(), 0.0, 0
+            while not env.done:
+                acts = [None, None]
+                for i in range(2):
+                    obs = env.state[i].observation
+                    if i == seat:
+                        t = time.perf_counter()
+                        acts[i] = me(normalise(obs, i), env.configuration)
+                        worst = max(worst, time.perf_counter() - t)
+                    else:
+                        acts[i] = opp(obs, env.configuration)
+                env.step(acts)
+                n += 1
+            farms = env.state[0].observation.farms
+            own, rival = float(farms[seat]["money"]), float(farms[1 - seat]["money"])
+            row.update(own_cash=own, rival_cash=rival, margin=own - rival, rounds=n,
+                       wall_s=round(time.time() - t0, 1),
+                       worst_action_s=round(worst, 4), opponent_id=opp_id,
+                       arlene=arl_id, error=None)
+        except Exception as exc:                     # preserved, never swallowed
+            row.update(own_cash=None, rival_cash=None, margin=None, error=
+                       f"{type(exc).__name__}: {exc}",
+                       traceback=traceback.format_exc()[-2000:])
+        finally:
+            row["executor_timing"] = observer.timings()
+        if rec is not None:
+            row["path"] = rec.path()
+        return row
 
 
 def wtl(m):
