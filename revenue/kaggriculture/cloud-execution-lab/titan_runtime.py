@@ -58,6 +58,9 @@ class Features:
     terminal_history: bool = False
     history_hypotheses: dict | None = None
     terminal_tie_break: str = 'baseline'
+    spatial_pathing: bool = False
+    spatial_tempo: bool = False
+    fourth_quadrant: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -66,6 +69,8 @@ class Features:
             raise ValueError('terminal_route is the tested frozen SELL composition')
         if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')
+        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant) and (self.consumer != 'frozen' or self.terminal_route):
+            raise ValueError('spatial routes require nonterminal frozen SELL')
         if self.terminal_history and (self.consumer == 'parent' or self.history_hypotheses is None):
             raise ValueError('terminal_history needs a SELL snapshot and explicit scenario hypotheses')
         if not 0 <= self.reserve_seconds < self.budget_seconds <= 1:
@@ -79,7 +84,7 @@ class TitanAgent:
     internally. Frozen mode owns its frozen ledger and applies ALDER/JUNIPER once
     after SELL, matching the shipped seed_main order. Ledgers never compose twice.
     """
-    def __init__(self, features=None):
+    def __init__(self, features=None, *, fourth_quadrant_admission=None):
         self.features = features or Features()
         self.ready = False
         self.diagnostics = {}
@@ -94,6 +99,10 @@ class TitanAgent:
         # never promoted into the checkpoint.
         self._completed_seller_state = None
         self._seller_fallback_observations = []
+        self.spatial = None
+        self.quadrant = None
+        self._quadrant_admission = fourth_quadrant_admission
+        self._seed_plan = None
 
     @staticmethod
     def _seller_public_observation(obs, *, copy_tiles=True):
@@ -207,8 +216,34 @@ class TitanAgent:
                                                tie_break=f.terminal_tie_break)
         if self._completed_route is not None:
             self.controller.cur = self._completed_route
+        if f.fourth_quadrant:
+            from fourth_quadrant import FourthQuadrant
+            from scheduler import m
+            if self.quadrant is None:
+                self.quadrant = FourthQuadrant(m, self._quadrant_admission)
+            self.quadrant.install(self.controller)
+            self._seed_plan = None
+        if f.spatial_pathing or f.spatial_tempo:
+            from spatial_tempo import SpatialTempo
+            from scheduler import m
+            if self.spatial is None:
+                self.spatial = SpatialTempo(m, pathing=f.spatial_pathing, tempo=f.spatial_tempo)
+                transform = self.spatial.transform
+                def compatible_transform(obs, selected, controller):
+                    if self.quadrant is not None and (self.quadrant.plan is not None or self.quadrant.pending is not None):
+                        return selected
+                    return transform(obs, selected, controller)
+                self.spatial.transform = compatible_transform
+            self.spatial.install(self.controller)
         self._restore_seller_state()
         self.ready = True
+
+    def _finish_production(self, obs, returned):
+        if self.quadrant is not None:
+            self.quadrant.finish(obs, returned)
+            self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
+        if self.spatial is not None:
+            self.spatial.finish(obs, returned)
 
     def _seed_selected(self, obs, cfg, selected):
         if not self.features.seed or not any(o and o[0] == 'BUY_SEED' for o in selected['market']):
@@ -298,6 +333,7 @@ class TitanAgent:
             self._remember_seller_fallback(obs)
             self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',
                 elapsed_seconds=time.perf_counter()-started,act_cpu_seconds=time.process_time()-cpu_started)
+            self._finish_production(obs, fallback)
             return fallback
         timer = deadline._DeadlineTimer(seconds)
         try:
@@ -312,6 +348,10 @@ class TitanAgent:
                 else:
                     self.consumer.selected_post_units = None
                 stage = 'production'
+                if self.quadrant is not None:
+                    self.quadrant.configure(cfg)
+                if self.spatial is not None:
+                    self.spatial.configure(cfg)
                 if self.features.terminal_route:
                     self.production.configuration = cfg
                 self.diagnostics['parent_calls'] = 1
@@ -319,6 +359,14 @@ class TitanAgent:
                 self.selected = deepcopy(selected)
                 selected_checkpoint = (self.selected, self.controller.cur)
                 fallback = selected_checkpoint[0]
+                if self.quadrant is not None:
+                    plan = self.quadrant.pending or self.quadrant.plan
+                    if plan is not self._seed_plan:
+                        # The exact future PLANT additions enter ALDER's bound;
+                        # no private seed purchase bypasses the selected queue.
+                        budget = load('_titan_seed_budget', HERE/'reference/integrated-selected/alder/seed_budget.py', cache=True)
+                        self.seed_budget = budget.SeedBudget(self.controller.R)
+                        self._seed_plan = plan
                 stage = 'selected_transform'
                 output = self.transform_selected(obs, cfg, selected)
                 if self.history is not None:
@@ -354,6 +402,7 @@ class TitanAgent:
             self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,
                                     elapsed_seconds=time.perf_counter()-started,
                                     act_cpu_seconds=time.process_time()-cpu_started)
+            self._finish_production(obs, output)
             return output
         # The deadline context has exited successfully.  Commit mutable state
         # only now, so a final trace/signal cancellation cannot bind planning for
@@ -362,6 +411,7 @@ class TitanAgent:
         self._commit_seller_state(seller_checkpoint)
         self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
                                 act_cpu_seconds=time.process_time()-cpu_started)
+        self._finish_production(obs, output)
         return output
 
     __call__ = act
