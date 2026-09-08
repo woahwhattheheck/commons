@@ -316,6 +316,45 @@ def main():
     binding_violations = guard.scan_added(binding_lines)
     assert binding_violations == [], binding_violations
 
+    # Run 34189413855 / SHA 95c5b22: explicit-WOOL consumer stored per-objective
+    # selected game plans in a field named `choices` next to `action`. That is
+    # a result map, not an Action Pad verb enum. The collocation still fails;
+    # the renamed field must pass, and the live experiment source must stay clean.
+    wool_blocked = "\n".join(
+        [
+            diff(
+                "revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py",
+                [
+                    "out = {'original_action': deepcopy(action), 'choices': {}, 'counts': {}}",
+                ],
+            ),
+            diff(
+                "revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py",
+                [
+                    "out['choices'][tie] = {'action': chosen, 'changed': chosen != action}",
+                ],
+            ),
+        ]
+    )
+    assert rules(wool_blocked) == {"verb-enum"}, rules(wool_blocked)
+
+    wool_allowed = diff(
+        "revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py",
+        [
+            "out = {'original_action': deepcopy(action), 'by_objective': {}, 'counts': {}}",
+            "out['by_objective'][tie] = {'action': chosen, 'changed': chosen != action}",
+        ],
+    )
+    assert guard.scan_diff(wool_allowed) == [], guard.scan_diff(wool_allowed)
+
+    wool_path = Path("revenue/kaggriculture/cloud-market-response/check_joint_wool_hypotheses.py")
+    wool_lines = [
+        guard.AddedLine(wool_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(wool_path.read_text(encoding="utf-8").splitlines(), 1)
+    ]
+    wool_violations = guard.scan_added(wool_lines)
+    assert wool_violations == [], wool_violations
+
     # Run 34190268951 / SHA 285dedd: TRACE-9042 completeness tests mutate a
     # retained cell's recorded player-view field and then call a unittest
     # helper. Collocating `seat` with `reject` on one line is still an
