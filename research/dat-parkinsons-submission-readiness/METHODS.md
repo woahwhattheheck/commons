@@ -1,6 +1,13 @@
 # Methods / provenance checklist
 
-ThhÈÚ]Ù\\˜]\È
-ŠœX›XÈİX›Z\ÜÚ[ÛˆYXÚ[šXÜÊŠˆœ›ÛH
-Šœ™\İšXİYÛÛ\]][Ûˆ]KÛ[Ù[]™[ÜY[
-Š‹‚‚ŒKˆÙY\[ÛÛ\]][ÛˆØØ[œËX™[ËY]Y]K\š]™Y™X]\™\ËØXÚ\Ë[™˜Z[™YÙZYÚÈ[ˆH\XÚ\[8 &\È[KXÛÛ\X[ØØ[[š\›Û›Y[ˆÈ›İ\İHÜˆ\ØY[HÈÚ]ÔĞÛÙ^‚Œ‹ˆ[ˆHÜ™Ø[š^™\ˆ[[YH[™™\šYHHš[˜[[Ù[\Ù\ÈÛ›HXÚØYÙ\È™\Ù[[ˆ][XYÙK‚ŒËˆZ[˜[Y][ÛˆÜ]ÈØØ[Hœ›ÛHHXİX[\›Z]Y˜Z[š[™ÈY]Y]Kˆ[H]Y[ÜÚ]KÙÜ›İ\XZØYÙH[˜[\Ú\È]\İ™H\™›Ü›YYØØ[Hœ›ÛHH™X[Y]Y]NÈ\ÈX›XÈÚ]Ù\È›İİY\ÜÈH]\Ù]Ü›İ\[™ÈšY[Ë‚ˆÜ[Z^™KÙ]˜[X]HØ[Xœ˜]Y›Ø˜Xš[]Y\ÈØØ[H™XØ]\ÙHHÛÛ\]][ÛˆY]šXÈ\ÈÙÈÜÜËˆ™XÛÜ™Ø[Xœ˜][ÛˆY]Ù[™˜[Y][Ûˆ›İØÛÛ[ˆÚ[›™\‹\™XYHØİ[Y[][Û‹‚Kˆ][™™\™[˜ÙK›ØÙ\ÜÈXXÚ\İØØ[ˆ[™\[™[KˆH[›™\ˆ[ˆÛÛ˜XİœX\ÜÙ\ÈH™YXİÜˆÛ›HH]›ÜˆHİ\œ™[ØØ[‹™]™\ˆHİ\ˆ\İ›İÜÈÜˆš[Üˆ™YXİ[ÛœË‚‹ˆ™XÛÜ™]™\H^\›˜[]\Ù]Û[Ù[[ˆ[ˆ\ÜÙ]X[šY™\İÚ]Ûİ\˜ÙKXÙ[œÙKÛÛ[Y\˜ÚX[]\ÙHÛÛ™š\›X][Û‹™Y\İšX][Û‹Z[‹\İX›Z\ÜÚ[ÛˆÛÛ™š\›X][Û‹[™Ü™Ø[š^™\ˆ\ØÛÜİ\™Hİ]\Ëˆ[X[ˆ™]šY]ÈÙˆHXİX[XÙ[œÙH\Èİ[™\]Z\™Y‚Ëˆ™Y›Ü™HXÚØYÚ[™Ë[ˆH]KY^Û\Ú[ÛˆİX\™ˆHX›XÈXÚÙ\ˆ™Y\Ù\È’Y•Hš[\È[™ÛÛ\]][Û‹Y›Ü›X]Ûİ]]ÔÕœÈÛÈXØÚY[[]\Ù]X›XØ][Ûˆ\È\™\‹‚ˆ[ˆHÜ™Ø[š^™\¸ &\ÈÙ™šXÚX[ØØ[ØÚÙ\ˆ\İ[™[ˆ]][XØ]Y]›Ü›HÛ[ÚÙH\İÛ›Hœ›ÛH[ˆ[YÚX›H\XÚ\[[š\›Û›Y[ˆÜÙHİ\È\™H›İ\™›Ü›YYÜˆÛZ[YY\™K‚KˆÈ›İÛZ[HXY\˜›Ø\™ØÛÜ™KÛ[šXØ[\™›Ü›X[˜ÙKXYÛ›ÜİXÈ][]Kš^™H[YÚXš[]KİX›Z\ÜÚ[Û‹Üˆ]Ø\™Ú]İ]HÛÜœ™\ÜÛ™[™È^Xİ]Y]šY[˜ÙK‚
+This kit separates **public submission mechanics** from **restricted competition data/model development**.
+
+1. Keep all competition scans, labels, metadata, derived features, caches, and trained weights in the participantâ€™s rule-compliant local environment. Do not paste or upload them to ChatGPT/Codex.
+2. Pin the organizer runtime and verify the final model uses only packages present in that image.
+3. Build validation splits locally from the actual permitted training metadata. Any patient/site/group leakage analysis must be performed locally from the real metadata; this public kit does not guess the dataset grouping fields.
+4. Optimize/evaluate calibrated probabilities locally because the competition metric is log loss. Record calibration method and validation protocol in winner-ready documentation.
+5. At inference, process each test scan independently. The runner in `contract.py` passes a predictor only the path for the current scan, never the other test rows or prior predictions.
+6. Record every external dataset/model in an asset manifest with source, license, commercial-use confirmation, redistribution-in-submission confirmation, and organizer disclosure status. Human review of the actual license is still required.
+7. Before packaging, run the data-exclusion guard. The public packer refuses NIfTI files and competition-format/output CSVs so accidental dataset publication is harder.
+8. Run the organizerâ€™s official local Docker test and an authenticated platform smoke test only from an eligible participant environment. Those steps are not performed or claimed here.
+9. Do not claim leaderboard score, clinical performance, diagnostic utility, prize eligibility, submission, or award without the corresponding executed evidence.
