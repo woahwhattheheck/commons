@@ -49,6 +49,40 @@ static double setting(const char* name, double fallback) {
         throw std::runtime_error(std::string("Invalid setting ") + name);
     return value;
 }
+// Output roles must not overwrite one another or the already-read problem.
+// Preserve supported in-place resume: only the final solution may replace the
+// initial solution, after the constructor has parsed and validated it.
+static bool sameArtifact(const std::string& left, const std::string& right) {
+    namespace fs = std::filesystem;
+    if (fs::weakly_canonical(left) == fs::weakly_canonical(right)) return true;
+    std::error_code error;
+    return fs::equivalent(left, right, error) && !error;
+}
+static void validateArtifactPaths(char** argv) {
+    using NamedPath = std::pair<std::string, std::string>;
+    std::vector<NamedPath> outputs{{"solution", argv[4]},
+                                   {"solution staging", std::string(argv[4]) + ".tmp"}};
+    if (const char* stats = std::getenv("SEDGE_STATS")) {
+        if (!*stats) throw std::runtime_error("SEDGE_STATS must name an output file");
+        outputs.emplace_back("statistics", stats);
+        outputs.emplace_back("statistics staging", std::string(stats) + ".tmp");
+    }
+    std::vector<NamedPath> inputs{{"network", argv[1]}, {"traffic", argv[2]},
+                                 {"scenario", argv[3]}};
+    if (const char* initial = std::getenv("CLOUD_INITIAL_SOLUTION"))
+        inputs.emplace_back("initial solution", initial);
+    for (std::size_t i = 0; i < outputs.size(); ++i) {
+        for (std::size_t j = 0; j < i; ++j)
+            if (sameArtifact(outputs[i].second, outputs[j].second))
+                throw std::runtime_error(outputs[i].first + " aliases " + outputs[j].first);
+        for (const auto& input : inputs) {
+            if (i == 0 && input.first == "initial solution") continue;
+            if (sameArtifact(outputs[i].second, input.second))
+                throw std::runtime_error(outputs[i].first + " aliases " + input.first);
+        }
+    }
+}
+
 struct Edge { int from, to, id; double metric, capacity; };
 struct Demand { int from, to; std::vector<double> volume; };
 struct Dag {
@@ -465,7 +499,9 @@ class Solver {
     void statistics() const {
         const char* path = std::getenv("SEDGE_STATS");
         if (!path) return;
-        std::ofstream out(path);
+        std::string temporary = std::string(path) + ".tmp";
+        std::ofstream out(temporary);
+        if (!out) throw std::runtime_error("Cannot write " + temporary);
         out.precision(17);
         out << "{\"seconds\":" << elapsed() << ",\"resumed\":" << (resumed ? "true" : "false")
             << ",\"attempted\":" << attempted
@@ -482,6 +518,9 @@ class Solver {
                 << ",\"to\":" << nodeIds[edges[e].to] << ",\"sat\":" << std::max(0.0, loads[t*m+e]) << '}';
         }
         out << "]}\n";
+        out.close();
+        if (!out) throw std::runtime_error("Failed writing " + temporary);
+        std::filesystem::rename(temporary, path);
     }
 
 public:
@@ -692,6 +731,9 @@ int main(int argc, char** argv) {
     }
     std::signal(SIGTERM, stop);
     std::signal(SIGINT, stop);
-    try { Solver solver(argv[1], argv[2], argv[3], argv[4]); solver.run(); }
+    try {
+        validateArtifactPaths(argv);
+        Solver solver(argv[1], argv[2], argv[3], argv[4]); solver.run();
+    }
     catch (const std::exception& error) { std::cerr << error.what() << '\n'; return 1; }
 }
