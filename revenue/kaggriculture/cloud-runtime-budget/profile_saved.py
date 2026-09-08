@@ -288,10 +288,45 @@ def worker(args):
     return 0 if report["status"] == "complete" else 2
 
 
+def read_child_report(path: Path, mode: str):
+    """Keep interrupted/malformed child bytes and let the supervisor finish."""
+    try:
+        raw = path.read_bytes()
+    except FileNotFoundError:
+        return {"status": "process_error", "mode": mode,
+                "error": {"type": "MissingChildReport"}}
+    except OSError as exc:
+        return {"status": "process_error", "mode": mode,
+                "error": {"type": "UnreadableChildReport", "message": str(exc)[:300]}}
+    try:
+        report = json.loads(raw)
+        if not isinstance(report, dict):
+            raise ValueError("child report must be an object")
+        if not isinstance(report.get("status"), str) or not report["status"]:
+            raise ValueError("child report status is missing or invalid")
+        calls = report.get("calls", [])
+        if not isinstance(calls, list) or (report["status"] == "complete" and not calls):
+            raise ValueError("child report calls are missing or invalid")
+        for row in calls:
+            if not isinstance(row, dict) or type(row.get("step")) is not int:
+                raise ValueError("child report step is missing or invalid")
+            wall = row.get("wall_s")
+            if type(wall) not in (int, float) or wall < 0 or (type(wall) is float and not math.isfinite(wall)):
+                raise ValueError("child report wall time is missing or invalid")
+    except (ValueError, UnicodeError) as exc:
+        retained = path.with_name(path.stem + ".invalid.bin")
+        with retained.open("xb") as handle:
+            handle.write(raw)
+        return {"status": "process_error", "mode": mode,
+                "error": {"type": "InvalidChildReport", "message": str(exc)[:300]},
+                "invalid_report": {"path": str(retained), "bytes": len(raw), "sha256": digest(raw)}}
+    return report
+
+
 def supervise(args):
     args.output.parent.mkdir(parents=True, exist_ok=True)
     outputs = [args.output] + [args.output.with_name(args.output.stem + "." + mode + suffix)
-        for mode in ("ordinary", "profile") for suffix in (".json", ".log")]
+        for mode in ("ordinary", "profile") for suffix in (".json", ".log", ".invalid.bin")]
     if any(path.exists() for path in outputs):
         raise FileExistsError("use a new result basename; previous receipts are preserved")
     reports = []
@@ -322,8 +357,7 @@ def supervise(args):
         try:
             run = subprocess.run(command, capture_output=True, text=True, timeout=args.process_timeout, env=environment)
             code, log = run.returncode, run.stdout + run.stderr
-            report = json.loads(child_output.read_text()) if child_output.exists() else {
-                "status": "process_error", "error": {"type": "MissingChildReport"}}
+            report = read_child_report(child_output, mode)
         except subprocess.TimeoutExpired as exc:
             code = None
             def decoded(value):
