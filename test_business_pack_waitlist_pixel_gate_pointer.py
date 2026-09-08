@@ -84,18 +84,19 @@ class BusinessPackWaitlistPixelGatePointerTest(unittest.TestCase):
         self.assertIn("packs/thanks.html", pointer.DO_NOT_WRITE)
         self.assertNotIn("337 NO", json.dumps(self.result))
 
-    def test_intact_blobs_stay_put(self) -> None:
-        self.assertTrue(self.result["blobs_match"])
+    def test_historical_hashes_and_receipts_stay_available(self) -> None:
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertEqual(self.result["missing_files"], [])
         self.assertTrue(
-            self.result["blobs"]["host/pack_waitlist_pixel_gate.py"].startswith("4df0f64e")
+            pointer.EXPECTED_BLOBS["host/pack_waitlist_pixel_gate.py"].startswith("4df0f64e")
         )
         self.assertTrue(
-            self.result["blobs"]["host/pack_waitlist_pixel_gate_pointer.py"].startswith(
+            pointer.EXPECTED_BLOBS["host/pack_waitlist_pixel_gate_pointer.py"].startswith(
                 "b3f26525"
             )
         )
-        self.assertTrue(self.result["blobs"]["packs/waitlist.html"].startswith("bdcaa7ea"))
-        self.assertTrue(self.result["blobs"]["packs/thanks.html"].startswith("7ec0bf86"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/thanks.html"].startswith("7ec0bf86"))
         self.assertTrue(
             self.result["blobs"][
                 "p/cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md"
@@ -158,7 +159,8 @@ class BusinessPackWaitlistPixelGatePointerTest(unittest.TestCase):
         self.assertTrue(data["did_not_remint_peer_helper"])
         self.assertTrue(data["did_not_remint_catalog"])
         self.assertTrue(data["did_not_remint_waitlist"])
-        self.assertTrue(data["blobs_match"])
+        self.assertTrue(data["receipt_blobs_match"])
+        self.assertEqual(data["missing_files"], [])
         self.assertTrue(data["files_cleared_to_bc_31c8ef9a"])
 
 

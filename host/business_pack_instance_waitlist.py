@@ -29,9 +29,12 @@ OBSERVED_AT_LAND = {
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "host/business_pack_desk_instance.py": "a550ae1b",
 }
+# Historical byte observations; live pages/helpers may evolve independently.
 EXPECTED_BLOBS = {
     "packs/waitlist.html": "bdcaa7ea",
 }
+RECEIPT_BLOBS = {f"p/{POINTER_ID}.md": "2c584983"}
+
 THIS_SEAT_DOES_NOT_WRITE = (
     "packs/sidewalk-signal-web-desk-20260902-01/index.html",
     "packs/lotribbon-greetings-20260902-01/index.html",
@@ -104,7 +107,7 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
                     "door_blob": blob_prefix(rel) if rel else "",
                 }
             )
-    blobs = {rel: blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
+    blobs = {rel: blob_prefix(rel) for rel in dict.fromkeys((*EXPECTED_BLOBS, *OBSERVED_AT_LAND, *RECEIPT_BLOBS))}
     waitlist_blob_ok = all(
         blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
     )
@@ -113,6 +116,10 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
         WAITLIST_CATALOG_POINTER,
         WAITLIST_ON_INSTANCE_DOOR,
     }
+    missing_files = [rel for rel, prefix in blobs.items() if not prefix]
+    receipt_blobs_match = all(
+        blobs.get(rel, "") == prefix for rel, prefix in RECEIPT_BLOBS.items()
+    )
     pointer_ok = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
         and str(block.get("id") or "") == CATALOG_ID
@@ -127,7 +134,8 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
         and verdicts.get("LotRibbon Greetings") in catalog_waitlist_ok
         and verdicts.get("Sidewalk Signal") in catalog_waitlist_ok
         and verdicts.get("Harborline Local Sites") == WAITLIST_ON_INSTANCE_DOOR
-        and waitlist_blob_ok
+        and not missing_files
+        and receipt_blobs_match
     )
     return {
         "gate": False,
@@ -148,6 +156,8 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "blobs": blobs,
         "waitlist_blob_ok": waitlist_blob_ok,
         "rows": rows_out,
+        "receipt_blobs_match": receipt_blobs_match,
+        "missing_files": missing_files,
         "pointer_ok": pointer_ok,
     }
 

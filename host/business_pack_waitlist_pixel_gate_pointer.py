@@ -30,6 +30,7 @@ PIXEL_GATE_RECEIPT = "cursor-pack-waitlist-pixel-gate-20260902-01"
 PIXEL_GATE_OWNER = "bc-31c8ef9a"
 PIXEL_GATE_SHA = "314cb051e"
 PEER_PACK_HELPER = "host/pack_waitlist_pixel_gate_pointer.py"
+# Historical byte observations; live pages/helpers may evolve independently.
 EXPECTED_BLOBS = {
     "host/pack_waitlist_pixel_gate.py": "4df0f64e",
     "host/pack_waitlist_pixel_gate_pointer.py": "b3f26525",
@@ -39,6 +40,10 @@ EXPECTED_BLOBS = {
     "p/cursor-business-pack-waitlist-pixel-gate-pointer-helper-20260902-01.md": "af68f245",
     "p/cursor-pack-waitlist-pixel-gate-20260902-01.md": "e3dcb2f8",
 }
+RECEIPT_BLOBS = {
+    rel: prefix for rel, prefix in EXPECTED_BLOBS.items() if rel.startswith("p/")
+}
+
 THIS_SEAT_PATHS = (
     "host/business_pack_waitlist_pixel_gate_pointer.py",
     "test_business_pack_waitlist_pixel_gate_pointer.py",
@@ -88,9 +93,13 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     data = law if isinstance(law, dict) else load_law()
     block = waitlist_block(data)
     catalog = instances_block(data)
-    blobs = {rel: blob_prefix(rel) for rel in EXPECTED_BLOBS}
+    blobs = {rel: blob_prefix(rel) for rel in dict.fromkeys((*EXPECTED_BLOBS, *RECEIPT_BLOBS))}
     blobs_match = all(
         blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
+    )
+    missing_files = [rel for rel, prefix in blobs.items() if not prefix]
+    receipt_blobs_match = all(
+        blobs.get(rel, "") == prefix for rel, prefix in RECEIPT_BLOBS.items()
     )
     pointer_ok = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
@@ -109,7 +118,8 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         and str(block.get("checkout") or "") == "NOT_MINTED"
         and data.get("gate") is False
         and data.get("commons_admission") is False
-        and blobs_match
+        and not missing_files
+        and receipt_blobs_match
         and PIXEL_GATE_HELPER not in THIS_SEAT_PATHS
         and PEER_PACK_HELPER not in THIS_SEAT_PATHS
         and (ROOT / PIXEL_GATE_HELPER).is_file()
@@ -155,6 +165,8 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "do_not_write": list(DO_NOT_WRITE),
         "blobs": blobs,
         "blobs_match": blobs_match,
+        "receipt_blobs_match": receipt_blobs_match,
+        "missing_files": missing_files,
         "pointer_ok": pointer_ok,
         "agents_spend_ads": False,
         "no_auth": True,
