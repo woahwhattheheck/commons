@@ -1417,11 +1417,3297 @@
      "draws_before_shop": 68
     }
    ]
+  },
+  {
+   "seed": 9902016,
+   "seat": 1,
+   "opponent": "arlene",
+   "arm": "candidate",
+   "own_cash": 98205.0,
+   "rival_cash": 98001.0,
+   "margin": 204.0,
+   "rounds": 719,
+   "wall_s": 13.1,
+   "worst_action_s": 0.1484,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.013560058003349695,
+    "initialization_failed": false,
+    "first_action_s": 0.0008742239988350775,
+    "initialization_plus_first_action_s": 0.014434282002184773,
+    "max_action_s": 0.14842257700001937,
+    "max_later_action_s": 0.14842257700001937,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "BRUNCH_SPOT",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "BAKERY",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "BRUNCH_SPOT",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "BAKERY",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ],
+   "path_divergent_days": 0
+  },
+  {
+   "seed": 9902017,
+   "seat": 0,
+   "opponent": "arlene",
+   "arm": "control",
+   "own_cash": 92838.0,
+   "rival_cash": 92815.0,
+   "margin": 23.0,
+   "rounds": 719,
+   "wall_s": 9.0,
+   "worst_action_s": 0.0292,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.07759644099860452,
+    "initialization_failed": false,
+    "first_action_s": 0.0005475329999171663,
+    "initialization_plus_first_action_s": 0.07814397399852169,
+    "max_action_s": 0.029207733998191543,
+    "max_later_action_s": 0.029207733998191543,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PIZZA_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ]
+  },
+  {
+   "seed": 9902017,
+   "seat": 0,
+   "opponent": "arlene",
+   "arm": "candidate",
+   "own_cash": 92800.0,
+   "rival_cash": 92546.0,
+   "margin": 254.0,
+   "rounds": 719,
+   "wall_s": 13.4,
+   "worst_action_s": 0.131,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.014452308001636993,
+    "initialization_failed": false,
+    "first_action_s": 0.000936087999434676,
+    "initialization_plus_first_action_s": 0.01538839600107167,
+    "max_action_s": 0.13097087400092278,
+    "max_later_action_s": 0.13097087400092278,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PIZZA_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ],
+   "path_divergent_days": 0
+  },
+  {
+   "seed": 9902017,
+   "seat": 1,
+   "opponent": "arlene",
+   "arm": "control",
+   "own_cash": 92838.0,
+   "rival_cash": 92815.0,
+   "margin": 23.0,
+   "rounds": 719,
+   "wall_s": 8.2,
+   "worst_action_s": 0.082,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.011402829000871861,
+    "initialization_failed": false,
+    "first_action_s": 0.0004477779984881636,
+    "initialization_plus_first_action_s": 0.011850606999360025,
+    "max_action_s": 0.0819928089986206,
+    "max_later_action_s": 0.0819928089986206,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PIZZA_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ]
+  },
+  {
+   "seed": 9902017,
+   "seat": 1,
+   "opponent": "arlene",
+   "arm": "candidate",
+   "own_cash": 92800.0,
+   "rival_cash": 92546.0,
+   "margin": 254.0,
+   "rounds": 719,
+   "wall_s": 13.3,
+   "worst_action_s": 0.1212,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.014098202002060134,
+    "initialization_failed": false,
+    "first_action_s": 0.0009063029974640813,
+    "initialization_plus_first_action_s": 0.015004504999524215,
+    "max_action_s": 0.12114366099922336,
+    "max_later_action_s": 0.12114366099922336,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PIZZA_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "YARN_STORE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ],
+   "path_divergent_days": 0
+  },
+  {
+   "seed": 9902018,
+   "seat": 0,
+   "opponent": "arlene",
+   "arm": "control",
+   "own_cash": 73932.0,
+   "rival_cash": 73932.0,
+   "margin": 0.0,
+   "rounds": 719,
+   "wall_s": 9.5,
+   "worst_action_s": 0.0328,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.01295043200298096,
+    "initialization_failed": false,
+    "first_action_s": 0.0004734899994218722,
+    "initialization_plus_first_action_s": 0.013423922002402833,
+    "max_action_s": 0.032756343000073684,
+    "max_later_action_s": 0.032756343000073684,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "BRUNCH_SPOT",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ]
+  },
+  {
+   "seed": 9902018,
+   "seat": 0,
+   "opponent": "arlene",
+   "arm": "candidate",
+   "own_cash": 73987.0,
+   "rival_cash": 73857.0,
+   "margin": 130.0,
+   "rounds": 719,
+   "wall_s": 12.5,
+   "worst_action_s": 0.1413,
+   "opponent_id": {
+    "label": "arlene (vendored)"
+   },
+   "arlene": {
+    "path": "/home/user/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "label": "arlene.py@1dc166ae2bf0"
+   },
+   "error": null,
+   "executor_timing": {
+    "scope": "in_process_supplied_factory_and_actions",
+    "initialization_s": 0.0731300259976706,
+    "initialization_failed": false,
+    "first_action_s": 0.0009704119984235149,
+    "initialization_plus_first_action_s": 0.07410043799609412,
+    "max_action_s": 0.14132466999944882,
+    "max_later_action_s": 0.14132466999944882,
+    "calls": 719,
+    "failures": 0
+   },
+   "path": [
+    {
+     "day": 0,
+     "farms": [
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 2,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 4
+    },
+    {
+     "day": 1,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 2,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 3,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 4,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 5,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 6,
+     "farms": [
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 8,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 16
+    },
+    {
+     "day": 7,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 8,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "ICE_CREAM_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 9,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 10,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 11,
+     "farms": [
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 4,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 8
+    },
+    {
+     "day": 12,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 13,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 14,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "SMOOTHIE_SHOP",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 15,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 16,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 17,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "BRUNCH_SPOT",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 18,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 19,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 20,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "FARMERS_MARKET",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 21,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 22,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 23,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": "PET_CAFE",
+     "draws_before_shop": 0
+    },
+    {
+     "day": 24,
+     "farms": [
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 0,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 0
+    },
+    {
+     "day": 25,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 26,
+     "farms": [
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 1,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 2
+    },
+    {
+     "day": 27,
+     "farms": [
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 10,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 20
+    },
+    {
+     "day": 28,
+     "farms": [
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      },
+      {
+       "empty_tiles_drawn": 34,
+       "weeds_spawned": 0
+      }
+     ],
+     "shop_unlocked": null,
+     "draws_before_shop": 68
+    }
+   ]
   }
  ],
  "checkpoint": {
   "complete": false,
-  "recorded_rows": 3,
+  "recorded_rows": 10,
   "expected_rows": 64,
   "failed_rows": 0
  }
