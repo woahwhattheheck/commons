@@ -34,6 +34,46 @@ _OPTIMIZE_LOT = sale.optimize_lot
 _CAPTURE_LOCK = RLock()
 
 
+_PRICE_FIELDS = ('base', 'I0', 'T', 'below_func', 'below_target',
+                 'above_func', 'above_target')
+
+
+def _economic_context(item, params, shops, cfg, now, end):
+    """Detach the observable inputs that price the remaining complete lot.
+
+    Inventory is deliberately not included: the existing causal branch owns
+    that observation. Equal dated consumption is equivalent even when shop
+    names/order or irrelevant configuration differ. Consumption after the
+    final sale date cannot affect these complete-lot receipts.
+    """
+    price = (params or math.m.MARKET_PARAMS)[item]
+    return {'version': 1, 'item': item, 'start': now, 'end': end,
+            'price': {key: deepcopy(price[key]) for key in _PRICE_FIELDS},
+            'absorption': [math.absorption(item, step, shops, cfg)
+                           for step in range(now, end)]}
+
+
+def _context_reason(tree, obs, cfg, item, end, *, admission=False):
+    """Do not reuse an old table after its observable economics changed."""
+    try:
+        expected = tree['economic_context']
+        now, start = int(obs['step']), expected['start']
+        if (expected['version'] != 1 or expected['item'] != item
+                or expected['end'] != end or not start <= now <= end
+                or len(expected['absorption']) != end - start
+                or (admission and start != now)):
+            return 'market_context_unknown'
+        current = _economic_context(
+            item, obs['market'].get('params'), obs['town']['unlocked_shops'],
+            cfg, now, end)
+        if (current['price'] != expected['price']
+                or current['absorption'] != expected['absorption'][now-start:]):
+            return 'market_context_changed'
+    except (KeyError, TypeError, ValueError, IndexError, ZeroDivisionError):
+        return 'market_context_unknown'
+    return None
+
+
 class AdaptiveTransform:
     def __init__(self, mode='adaptive'):
         if mode not in ('adaptive', 'fixed', 'static'): raise ValueError('Unknown arm')
@@ -74,6 +114,10 @@ class AdaptiveTransform:
         if active and now > active['completion_step']:
             self.selector.completed.add(active['key']); self.selector.active = None
             self.tree = None; active = None
+        if active:
+            reason = _context_reason(self.tree, obs, cfg, active['item'], active['end'])
+            if reason:
+                return self.abort(base, reason)
         if active and not self.branch_done and now >= self.tree['branch']:
             if now != self.tree['branch']:
                 return self.abort(base, 'branch_date_skipped')
@@ -97,6 +141,10 @@ class AdaptiveTransform:
             for offer in offers:
                 tree, item, quantity, end = offer['tree'], offer['item'], offer['quantity'], offer['end']
                 if not tree['active']: continue
+                reason = _context_reason(tree, obs, cfg, item, end, admission=True)
+                if reason:
+                    self.last = {'reason': reason, 'item': item}
+                    continue
                 slots=[i for i,o in enumerate(base.get('market',[])) if sale._sell(o,item)]
                 if len(slots)>1: continue
                 slot=slots[0] if slots else len(base.get('market',[]))
@@ -222,6 +270,8 @@ class Agent:
                         tree=compile_policy(model,plans,kw['quantity'],streams,kw['now']+1,math.absorption)
                         self.counts['tables']+=1;self.counts['positive_trees']+=int(tree['active'])
                         tree['streams']=streams;tree['market_params']=deepcopy(kw['params'])
+                        tree['economic_context'] = _economic_context(
+                            kw['item'], kw['params'], kw['shops'], cfg, kw['now'], kw['dates'][-1])
                         offers.append({'tree':tree,'item':kw['item'],'quantity':kw['quantity'],'end':kw['dates'][-1]})
                 out=self.transformer.transform(obs,cfg,base,ledger=ledger,offers=offers)
                 self.last=deepcopy(self.transformer.last)
