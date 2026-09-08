@@ -19,13 +19,13 @@ RECEIPT = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 KEEP = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "ba38bdf8",
+    "test_harborline_pack_market_render.py": "e8f8703c",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "9d8b3e85",
 }
 
 

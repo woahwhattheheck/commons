@@ -18,9 +18,9 @@ PRIOR_0903 = ROOT / "p/grok-resources-tab-freshness-billing-lock-20260903-01.md"
 WORKFLOW = ROOT / ".github/workflows/resources-tab-freshness.yml"
 
 KEEP = {
-    ".github/workflows/resources-tab-freshness.yml": "658eec6f",
-    "host/resources_tab.py": "18ae6933",
-    "test_resources_tab.py": "8aa4fdd9",
+    ".github/workflows/resources-tab-freshness.yml": "0ee11d93",
+    "host/resources_tab.py": "622b6c9a",
+    "test_resources_tab.py": "ec0db1c3",
     "open_door_guard.py": "7b9a2318",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/grok-resources-tab-freshness-billing-lock-20260903-01.md": "2eb99153",

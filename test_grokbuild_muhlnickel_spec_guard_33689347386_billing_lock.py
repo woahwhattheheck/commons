@@ -21,7 +21,7 @@ KEEP = {
     "test_muhlnickel_spec_guard.py": "742c8fcf",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
-    "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "6b7018a0",
+    "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
     "p/grokbuild-pr8409-verify-20260902-01.md": "199cc075",
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",

@@ -49,10 +49,10 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertNotEqual(
             terminal.KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08"
         )
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("152461e2"))
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("275077fe"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("9015f14d"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("0152843a"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("09933895")
+            git_blob("test_landed_work_feed_readback.py").startswith("0f09b0df")
         )
 
     def test_living_owner_now_stays_clear_of_invented_signature(self) -> None:

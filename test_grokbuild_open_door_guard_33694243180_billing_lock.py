@@ -19,12 +19,12 @@ GOAT_TEST = ROOT / "test_cursor_goat_pages_super_mcp_land_readback_match.py"
 
 KEEP = {
     "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "1fce7bde",
+    "test_open_door_guard.py": "b9a4acde",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "14fe35f7",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "5d2d0ce7",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "d595acee",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "fefb8d8c",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
 }
 

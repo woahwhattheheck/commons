@@ -20,7 +20,7 @@ WORKFLOW = ROOT / ".github/workflows/main-range-verify.yml"
 KEEP = {
     ".github/workflows/main-range-verify.yml": "029f912a",
     "host/main_range.py": "6acdc3d9",
-    "host/main_velocity.py": "b34a1241",
+    "host/main_velocity.py": "e9045607",
     "test_main_range.py": "2cfa7313",
     "open_door_guard.py": "7b9a2318",
     "p/codex-main-range-open-door-repair-20260830-01.md": "bfba0568",

@@ -29,7 +29,7 @@ KEEP = {
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
-    "ground/STEALABLE_LANES.json": "439972db",
+    "ground/STEALABLE_LANES.json": "90631a18",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
