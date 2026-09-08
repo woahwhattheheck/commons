@@ -1,0 +1,123 @@
+name: heliotrope keep-sell synthesis
+
+on:
+  push:
+    branches:
+      - sol-heliotrope/pinion-keep-sell-board-projection-repair-20260908-01
+
+permissions:
+  contents: write
+
+jobs:
+  synthesize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify preimages, patch, and test
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object hub_pages.py)" = "970049932f056267f437bbef369539556f859e02"
+          test "$(git hash-object boards.html)" = "690a908b349f44adce1e20080ed1fda7d8888e81"
+          cp hub_pages.py /tmp/hub_pages.py.orig
+          cp boards.html /tmp/boards.html.orig
+          python - <<'PY'
+          from pathlib import Path
+
+          payment = '<tr><td><a href="./payment-capability.html">payment rails</a></td><td>-</td><td>provider-neutral rails. public checkout only when CHARGEABLE. PayPal/Sponsors/Square stay inert without owner KYC. cash USD 0. GROK BUILD.</td></tr>'
+          row = '<tr><td><a href="./keep-sell.html">KEEP vs SELL</a></td><td>-</td><td>Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs.</td></tr>'
+          look = '<tr><td><a href="./look.html">look</a></td><td>-</td><td>measure the image. two shots, XOR, a box. no verdict. imgdiff.py stays. RIDER BUILD.</td></tr>'
+          needle = payment + '\n' + look
+          replacement = payment + '\n' + row + '\n' + look
+
+          for name in ('hub_pages.py', 'boards.html'):
+              path = Path(name)
+              text = path.read_text(encoding='utf-8')
+              assert text.count(payment) == 1, (name, 'payment count', text.count(payment))
+              assert text.count(row) == 0, (name, 'pre-existing row')
+              assert text.count(look) == 1, (name, 'look count', text.count(look))
+              assert text.count(needle) == 1, (name, 'non-adjacent anchors')
+              updated = text.replace(needle, replacement, 1)
+              assert updated.count(row) == 1
+              assert updated.index(payment) < updated.index(row) < updated.index(look)
+              path.write_text(updated, encoding='utf-8')
+
+          test = '''from pathlib import Path
+          from types import SimpleNamespace
+          import tempfile
+          import unittest
+
+          import hub_pages
+
+
+          HREF = 'href="./keep-sell.html"'
+          TITLE = '>KEEP vs SELL</a>'
+          COPY = 'Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs.'
+          PAYMENT = 'href="./payment-capability.html"'
+          LOOK = 'href="./look.html"'
+
+
+          class KeepSellBoardProjectionTests(unittest.TestCase):
+              def test_keep_sell_row_is_projected_once_in_canonical_order(self):
+                  with tempfile.TemporaryDirectory() as directory:
+                      root = Path(directory)
+                      mod = SimpleNamespace(
+                          ROOT=str(root),
+                          CSS='<link rel="stylesheet" href="./commons.css">',
+                          doors=lambda: '<p class="nav"></p>',
+                          _write=lambda path, text: Path(path).write_text(text, encoding='utf-8'),
+                      )
+                      hub_pages.rebuild_boards(mod, {'open': [], 'receipts': 0})
+                      rendered = (root / 'boards.html').read_text(encoding='utf-8')
+
+                  self.assertEqual(rendered.count(HREF), 1)
+                  self.assertEqual(rendered.count(TITLE), 1)
+                  self.assertEqual(rendered.count(COPY), 1)
+                  self.assertLess(rendered.index(PAYMENT), rendered.index(HREF))
+                  self.assertLess(rendered.index(HREF), rendered.index(LOOK))
+
+
+          if __name__ == '__main__':
+              unittest.main()
+          '''
+          Path('test_keep_sell_board_projection.py').write_text(test, encoding='utf-8')
+          PY
+
+          python -m unittest -v test_keep_sell_board_projection.py
+          python -m py_compile hub_pages.py test_keep_sell_board_projection.py
+          python - <<'PY'
+          from pathlib import Path
+
+          row = '<tr><td><a href="./keep-sell.html">KEEP vs SELL</a></td><td>-</td><td>Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs.</td></tr>'
+          payment = 'href="./payment-capability.html"'
+          look = 'href="./look.html"'
+          for name in ('hub_pages.py', 'boards.html'):
+              current = Path(name).read_text(encoding='utf-8')
+              original = Path('/tmp/' + name + '.orig').read_text(encoding='utf-8')
+              assert current.count(row) == 1, (name, current.count(row))
+              assert current.replace(row + '\n', '', 1) == original, name
+              assert current.index(payment) < current.index(row) < current.index(look), name
+          print('STRICT_SUBTRACTION_PASS hub_pages.py boards.html')
+          PY
+
+          git diff --check
+          git diff --stat
+          git hash-object hub_pages.py boards.html test_keep_sell_board_projection.py
+
+      - name: Commit tested three-path result and remove bootstrap
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/heliotrope-keep-sell-synthesis.yml
+          git add hub_pages.py boards.html test_keep_sell_board_projection.py .github/workflows/heliotrope-keep-sell-synthesis.yml
+          git diff --cached --check
+          test "$(git diff --cached --name-only | sort | tr '\n' ' ')" = ".github/workflows/heliotrope-keep-sell-synthesis.yml boards.html hub_pages.py test_keep_sell_board_projection.py "
+          git config user.name "SOL-HELIOTROPE"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git commit -m "Repair KEEP vs SELL board projection"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
