@@ -50,6 +50,7 @@ class Features:
     consumer: str = 'frozen'
     seed: bool = True
     funding: bool = True
+    redundant_hire: bool = False
     terminal_route: bool = False
     committed: bool = True
     budget_seconds: float = 1.0
@@ -63,6 +64,8 @@ class Features:
             raise ValueError('consumer must be frozen, ordered or parent')
         if self.terminal_route and self.consumer != 'frozen':
             raise ValueError('terminal_route is the tested frozen SELL composition')
+        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):
+            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')
         if self.terminal_history and (self.consumer == 'parent' or self.history_hypotheses is None):
             raise ValueError('terminal_history needs a SELL snapshot and explicit scenario hypotheses')
         if not 0 <= self.reserve_seconds < self.budget_seconds <= 1:
@@ -107,6 +110,9 @@ class TitanAgent:
                 self.consumer.controller = self.production
             budget = load('_titan_seed_budget', HERE/'reference/integrated-selected/alder/seed_budget.py', cache=True)
             self.seed_budget = budget.SeedBudget(self.controller.R)
+            if f.redundant_hire:
+                self.redundant_hire_module = load(
+                    '_titan_redundant_hire', HERE/'reference/titan-current/redundant_hire.py', cache=True)
         if f.terminal_history and self.history is None:
             from terminal_history_join import TerminalHistoryJoin
             self.history = TerminalHistoryJoin(hypotheses=f.history_hypotheses,
@@ -138,12 +144,30 @@ class TitanAgent:
         self.diagnostics['seed_funding'] = report
         return result
 
+    def _redundant_hire_selected(self, obs, cfg, selected):
+        """Apply the landed T10 physical certificate to the final frozen-SELL queue."""
+        if not self.features.redundant_hire:
+            return selected
+        if not any(isinstance(o, list) and o and o[0] == 'HIRE'
+                   for o in selected.get('market', [])):
+            return selected
+        from scheduler import m, parent
+        result, report = self.redundant_hire_module.propose_redundant_hires(
+            m, obs, cfg, selected,
+            route=self.controller.R[self.controller.cur],
+            route_id=self.controller.cur,
+            route_switch_steps=[item[0] for item in parent.DECISIONS],
+        )
+        self.diagnostics['redundant_hire'] = report
+        return result
+
     def transform_selected(self, obs, cfg, selected):
         """Dispatch an already-selected action; never calls a producer."""
         if self.features.consumer == 'ordered':
             return self.consumer.transform(obs, cfg, selected, fallback_action=selected)
         result = (self.consumer.transform(obs, cfg, selected)
                   if self.features.consumer == 'frozen' else deepcopy(selected))
+        result = self._redundant_hire_selected(obs, cfg, result)
         return self._seed_selected(obs, cfg, result)
 
     def _selected_snapshot(self, obs):
