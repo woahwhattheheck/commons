@@ -3,12 +3,15 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import importlib.metadata
+import platform
 import json
 from pathlib import Path
 import sys
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parent
+RUN_LIMITS = {"action_timeout": 1.0, "startup_timeout": 10, "game_timeout": 90}
 
 
 def load(path,name):
@@ -16,13 +19,90 @@ def load(path,name):
     module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module);return module
 
 
+def sha256_file(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def execution_identity(manifest, engine_hashes, evaluator, loader):
+    """Bind the prepared closure, not just the four policy-source filenames.
+
+    The preparer has no per-actor dependency graph. Keep its entire manifest so
+    an untracked guess about imports cannot turn a changed runtime into a hit.
+    This is deliberately stricter than selectively reusing an Arlene control.
+    """
+    try:
+        engine_package = importlib.metadata.version('kaggle-environments')
+    except importlib.metadata.PackageNotFoundError:
+        engine_package = None
+    return {
+        'schema': 'titan.t03.execution-inputs.v1',
+        'manifest': manifest,
+        'adapter_sha256': {name: sha256_file(path)
+                           for name, path in manifest['adapters'].items()},
+        'engine_sha256': engine_hashes,
+        'harness_sha256': {
+            'panel': sha256_file(__file__),
+            'evaluator': sha256_file(evaluator),
+            'loader': sha256_file(loader),
+            'offline': sha256_file(ROOT / 'cloud-frontier-policy/next-panel/offline.py'),
+        },
+        # play() receives only these limits; configuration defaults are bound by
+        # the evaluator, loader, engine schema and installed engine package.
+        'limits': dict(RUN_LIMITS),
+        'python': sys.version,
+        'platform': [sys.platform, platform.machine()],
+        'kaggle_environments_version': engine_package,
+    }
+
+
+def cell_identity(inputs, seed, opponent, seat, arm):
+    return {'inputs': inputs, 'cell': {'seed': seed, 'opponent': opponent,
+                                     'candidate_seat': seat, 'arm': arm}}
+
+
+def read_cached(path, expected):
+    """Read an exact prior attempt without rewriting or upgrading its metadata."""
+    row = json.loads(path.read_text())
+    if not isinstance(row, dict) or row.get('run_identity') != expected:
+        raise ValueError(f'Existing game lacks matching execution inputs: {path}; '
+                         'preserve it and use another output directory')
+    # A filename or copied identity must not override the actual result's labels.
+    for key, value in expected['cell'].items():
+        if row.get(key) != value:
+            raise ValueError(f'Existing game cell mismatch ({key}): {path}')
+    inputs = expected['inputs']
+    if (row.get('source_sha256') != inputs['manifest']['source_sha256'] or
+            row.get('engine_sha256') != inputs['engine_sha256']):
+        raise ValueError(f'Existing game source/engine metadata mismatch: {path}')
+    if not isinstance(row.get('status'), str):
+        raise ValueError(f'Existing game has no attempt status: {path}')
+    return row
+
+
 def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
+    runtime=Path(runtime);engine_dir=Path(engine_dir)
+    seeds,opponents,seats,arms=(tuple(dict.fromkeys(values))
+                               for values in (seeds,opponents,seats,arms))
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((runtime/'runtime-manifest.json').read_text())
     for name,digest in manifest['runtime_sha256'].items():
-        assert hashlib.sha256((runtime/name).read_bytes()).hexdigest()==digest,(name,'runtime changed')
-    ev=load(ROOT/'cloud-eval/evaluate.py','t03_panel_evaluator')
+        if sha256_file(runtime/name) != digest:
+            raise ValueError(f'Runtime changed: {name}')
+    evaluator_path=ROOT/'cloud-eval/evaluate.py'
+    ev=load(evaluator_path,'t03_panel_evaluator')
     engine,engine_hashes=ev.get_engine(engine_dir)
+    inputs=execution_identity(manifest,engine_hashes,evaluator_path,ev.LOADER)
+    # Preflight the entire requested grid before spending any new game compute.
+    cells=[]
+    for seed in seeds:
+        for opponent in opponents:
+            for seat in seats:
+                for arm in arms:
+                    name=f'{seed}-{opponent}-seat{seat}-{arm}'
+                    destination=output/(name+'.json')
+                    identity=cell_identity(inputs,seed,opponent,seat,arm)
+                    cached=read_cached(destination,identity) if destination.exists() else None
+                    cells.append((destination,identity,cached))
     # Benchmark-only per-game event collection; actor working directories remain
     # private and are deleted by the unchanged existing close implementation.
     original_close=ev.Actor.close
@@ -33,27 +113,30 @@ def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
         return original_close(actor)
     ev.Actor.close=close
     games=[]
-    for seed in seeds:
-        for opponent in opponents:
-            for seat in seats:
-                for arm in arms:
-                    name=f'{seed}-{opponent}-seat{seat}-{arm}'
-                    destination=output/(name+'.json')
-                    if destination.exists():
-                        row=json.loads(destination.read_text())
-                        matches = (row['source_sha256'].get('arlene.py')==manifest['source_sha256']['arlene.py'] and row['engine_sha256']==engine_hashes) if arm=='arlene' else row['source_sha256']==manifest['source_sha256']
-                        if not matches:
-                            raise ValueError('Existing game belongs to another source freeze; use another output directory')
-                        games.append(row);continue
-                    candidate=manifest['adapters'][arm]
-                    rival=manifest['adapters'][opponent]
-                    pair=[candidate,rival] if seat==0 else [rival,candidate]
-                    row=ev.play(engine,pair,engine_dir,ev.LOADER,seed,seat,
-                                action_timeout=1.0,startup_timeout=10,game_timeout=90)
-                    row.update(arm=arm,opponent=opponent,source_sha256=manifest['source_sha256'],engine_sha256=engine_hashes)
-                    destination.write_text(json.dumps(row,indent=2)+'\n')
-                    games.append(row)
-                    print(json.dumps({k:row[k] for k in ('seed','opponent','candidate_seat','arm','status','steps','scores','failure')}),flush=True)
+    resumed={'reused_complete': 0, 'retained_incomplete': 0, 'executed': 0}
+    try:
+        for destination,identity,cached in cells:
+            if cached is not None:
+                games.append(cached)
+                resumed['reused_complete' if cached['status']=='complete' else
+                        'retained_incomplete'] += 1
+                continue
+            cell=identity['cell']
+            seed,opponent,seat,arm=(cell[k] for k in ('seed','opponent','candidate_seat','arm'))
+            candidate=manifest['adapters'][arm]
+            rival=manifest['adapters'][opponent]
+            pair=[candidate,rival] if seat==0 else [rival,candidate]
+            row=ev.play(engine,pair,engine_dir,ev.LOADER,seed,seat,**RUN_LIMITS)
+            row.update(arm=arm,opponent=opponent,source_sha256=manifest['source_sha256'],
+                       engine_sha256=engine_hashes,run_identity=identity)
+            # An overlapping caller must not overwrite a newly finished attempt.
+            with destination.open('x') as stream:
+                stream.write(json.dumps(row,indent=2)+'\n')
+            games.append(row)
+            resumed['executed'] += 1
+            print(json.dumps({k:row[k] for k in ('seed','opponent','candidate_seat','arm','status','steps','scores','failure')}),flush=True)
+    finally:
+        ev.Actor.close=original_close
     pairs=[]
     for seed in seeds:
         for opponent in opponents:
@@ -67,10 +150,11 @@ def run(runtime,engine_dir,output,seeds,opponents,seats,arms):
                 pairs.append({'seed':seed,'opponent':opponent,'seat':seat,'control':outcome(am),'candidate':outcome(bm),
                               'own_cash_delta':b['scores'][seat]-a['scores'][seat],
                               'rival_cash_delta':b['scores'][1-seat]-a['scores'][1-seat],'margin_delta':bm-am})
-    report={'games':games,'pairs':pairs,'seed_scope':'development unless accompanied by a prior immutable freeze receipt',
+    report={'games':games,'pairs':pairs,'resume':resumed,'seed_scope':'development unless accompanied by a prior immutable freeze receipt',
             'claim':'Offline simulations, not hosted leaderboard or cash earnings'}
     (output/'panel.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps({'pairs':pairs},indent=2))
+    print(json.dumps({'pairs':pairs,'resume':resumed},indent=2))
+    return report
 
 
 if __name__=='__main__':
