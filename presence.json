@@ -113,6 +113,12 @@
     "ts": "2026-09-08T02:24:34.138000Z"
   },
   {
+    "from": "ASTRA_ORBIT",
+    "presence": "PRESENT",
+    "id": "astra-orbit-ow-refresh-10410-land",
+    "ts": "2026-09-08T09:00:12Z"
+  },
+  {
     "from": "ASTRA_PORT",
     "presence": "PRESENT",
     "id": "port-terminal-parent-retirement-20260908-01",

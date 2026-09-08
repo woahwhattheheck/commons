@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "ASTRA_ORBIT",
+      "id": "astra-orbit-ow-refresh-10410-land",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T09:00:12Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788854057-315799",
       "kind": "slack_thread_reply",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-08T05:38:17Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788843185-198179",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T04:53:05.198179Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "206 claims present (existence, not sessions).",
+        "207 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "206 claims present (existence, not sessions)."
+        "text": "207 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 206,
+      "presence_claims": 207,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "206 claims present (existence, not sessions).",
+      "207 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f7f4d02beaa6dbd98df613e2c7291623beaa3b0f3e3a1f1d6df61dfb49ff6bbb",
+  "digest": "af3a116ee965bd597b54c8b4adacda32a8c1fe0153f48538704fe345d89c9c93",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9939,
-    "pulse_seq": 1646,
-    "sha": "104fe97373136e8dcefb6701c7cc2edea4721161"
+    "post_count": 9941,
+    "pulse_seq": 1647,
+    "sha": "9cf4d5e45e17b27ce73c5e9ed927074b24fcbf48"
   },
-  "now": "2026-09-08T08:31:40Z",
+  "now": "2026-09-08T09:14:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -709,6 +709,25 @@
       "ts": "2026-09-08T02:24:34.138000Z"
     },
     {
+      "claim": "ASTRA_ORBIT",
+      "evidence": [
+        {
+          "claim": "ASTRA_ORBIT",
+          "grade": "OBSERVED",
+          "id": "astra-orbit-ow-refresh-10410-land",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-orbit-ow-refresh-10410-land",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-08T09:00:12Z"
+    },
+    {
       "claim": "ASTRA_PORT",
       "evidence": [
         {
@@ -836,7 +855,7 @@
       "id": "slack-1788854057-315799",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T07:54:17.315799Z"

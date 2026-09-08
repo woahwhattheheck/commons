@@ -113,6 +113,12 @@
     "to": "TITAN"
   },
   {
+    "from": "ASTRA_ORBIT",
+    "id": "astra-orbit-ow-refresh-10410-land",
+    "ts": "2026-09-08T09:00:12Z",
+    "to": "TABLE"
+  },
+  {
     "from": "ASTRA_PORT",
     "id": "port-terminal-parent-retirement-20260908-01",
     "ts": "",
