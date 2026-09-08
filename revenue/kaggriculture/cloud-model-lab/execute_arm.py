@@ -33,6 +33,7 @@ import inspect
 import json
 import os
 import sys
+import tempfile
 import time
 import traceback
 
@@ -152,6 +153,34 @@ def wtl(m):
     return "?" if m is None else ("W" if m > 0 else ("L" if m < 0 else "T"))
 
 
+def write_checkpoint(path, candidate, control, rows, expected_games, complete=False):
+    """Atomically retain returned game rows outside the action timing path.
+
+    Completion means all requested attempts returned, not that they succeeded.
+    An interrupted/failed write leaves the previous complete JSON file intact.
+    """
+    directory = os.path.dirname(os.path.abspath(path))
+    os.makedirs(directory, exist_ok=True)
+    document = {"candidate": candidate, "control": control, "rows": rows,
+                "progress": {"games_recorded": len(rows),
+                             "expected_games": expected_games,
+                             "failed_games": sum(r.get("error") is not None
+                                                 for r in rows),
+                             "attempts_complete": bool(complete and
+                                                       len(rows) == expected_games)}}
+    fd, temporary = tempfile.mkstemp(prefix="." + os.path.basename(path) + ".",
+                                     suffix=".tmp", dir=directory)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as output:
+            json.dump(document, output, indent=1, default=str)
+            output.flush()
+            os.fsync(output.fileno())
+        os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--candidate", required=True)
@@ -168,18 +197,23 @@ def main():
     bf, bid = load_callable(a.control, a.sys_path)
     print(f"candidate {cid['label']}\ncontrol   {bid['label']}", flush=True)
     rows = []
+    expected_games = 2 * len(a.seeds) * len(a.seats) * len(a.opponents)
     for seed in a.seeds:
         for seat in a.seats:
             for opp in a.opponents:
                 b = game(seed, seat, opp, bf, "control", not a.no_path)
+                rows.append(b)
+                write_checkpoint(a.out, cid, bid, rows, expected_games)
                 c = game(seed, seat, opp, cf, "candidate", not a.no_path)
+                rows.append(c)
+                write_checkpoint(a.out, cid, bid, rows, expected_games)
                 div = None
                 if not a.no_path and b.get("path") and c.get("path"):
                     import market_path
                     div = len(market_path.diff({"path": b["path"]},
                                                {"path": c["path"]}))
                     c["path_divergent_days"] = div
-                rows += [b, c]
+                    write_checkpoint(a.out, cid, bid, rows, expected_games)
                 d_own = (None if c["own_cash"] is None or b["own_cash"] is None
                          else c["own_cash"] - b["own_cash"])
                 print(f"seed {seed} seat {seat} vs {opp:9s} control "
@@ -188,9 +222,7 @@ def main():
                       f"rival {c['rival_cash']} d_own {d_own}"
                       + (f" pathdiv {div}d" if div is not None else "")
                       + (f"  ERROR {c['error']}" if c["error"] else ""), flush=True)
-    os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
-    json.dump({"candidate": cid, "control": bid, "rows": rows},
-              open(a.out, "w"), indent=1, default=str)
+    write_checkpoint(a.out, cid, bid, rows, expected_games, complete=True)
     for label in ("control", "candidate"):
         rs = [r for r in rows if r["arm"] == label]
         v = [wtl(r["margin"]) for r in rs]
