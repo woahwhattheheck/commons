@@ -8,6 +8,7 @@ on:
       - 'revenue/kaggriculture/cloud-selected-market-checks/**'
       - 'revenue/kaggriculture/cloud-eval/**'
       - 'revenue/kaggriculture/20260907-offline-agent/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/**'
       - 'revenue/kaggriculture/cloud-execution-lab/integrated_selected.py'
       - 'revenue/kaggriculture/cloud-integration-differentials/**'
       - 'revenue/kaggriculture/cloud-composition-cases/cypress/**'
@@ -337,5 +338,131 @@ jobs:
         with:
           name: titan-selected-projection-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/projection-validation/
+          if-no-files-found: error
+          retention-days: 7
+
+  canonical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/titan-selected-projection.yml
+            /revenue/kaggriculture/cloud-execution-lab/
+            /revenue/kaggriculture/cloud-composition-cases/cover/
+      - name: Record canonical source before checking
+        id: canonical_snapshot
+        shell: python
+        run: |
+          import hashlib, json, os, platform, subprocess, zlib
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'canonical-validation'
+          out.mkdir(parents=True, exist_ok=True)
+          roots = ['revenue/kaggriculture/cloud-execution-lab',
+                   'revenue/kaggriculture/cloud-composition-cases/cover']
+          paths = [p for root in roots for p in Path(root).rglob('*') if p.is_file()]
+          paths.append(Path('.github/workflows/titan-selected-projection.yml'))
+          files = {}
+          for path in sorted(paths):
+              data = path.read_bytes()
+              files[str(path)] = {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(),
+                  'git_blob': hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()}
+          checkout = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          if checkout != os.environ['GITHUB_SHA']:
+              raise ValueError('Canonical checkout differs from workflow event')
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          pull = event.get('pull_request') or {}
+          report = {'checkout': checkout, 'event_sha': os.environ['GITHUB_SHA'],
+              'event': os.environ['GITHUB_EVENT_NAME'],
+              'pull_request_head': (pull.get('head') or {}).get('sha'),
+              'pull_request_base': (pull.get('base') or {}).get('sha'),
+              'run_id': os.environ['GITHUB_RUN_ID'], 'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'python': platform.python_version(), 'zlib': zlib.ZLIB_RUNTIME_VERSION,
+              'roots': roots, 'files': files, 'scope': 'canonical package consistency; no games'}
+          (out/'SOURCE-SNAPSHOT.json').write_text(json.dumps(report, indent=2)+'\n')
+      - name: Check the committed canonical package without rebuilding
+        id: canonical_check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check \
+            > "$RUNNER_TEMP/canonical-validation/current-check.json" \
+            2> "$RUNNER_TEMP/canonical-validation/current-check.stderr"
+          cat "$RUNNER_TEMP/canonical-validation/current-check.json"
+      - name: Existing release consistency cases in temporary copies
+        id: canonical_consistency
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_release_consistency \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/release-consistency-tests.log"
+      - name: Canonical workflow boundary tests
+        id: canonical_bindings
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-composition-cases/cover/test_canonical_binding.py -v \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/canonical-binding-tests.log"
+      - name: Record canonical result and source preservation
+        if: ${{ always() }}
+        env:
+          SNAPSHOT_OUTCOME: ${{ steps.canonical_snapshot.outcome }}
+          CHECK_OUTCOME: ${{ steps.canonical_check.outcome }}
+          CONSISTENCY_OUTCOME: ${{ steps.canonical_consistency.outcome }}
+          BINDINGS_OUTCOME: ${{ steps.canonical_bindings.outcome }}
+        shell: python
+        run: |
+          import hashlib, json, os
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'canonical-validation'
+          out.mkdir(parents=True, exist_ok=True)
+          outcomes = {key: os.environ.get(key) for key in
+              ['SNAPSHOT_OUTCOME', 'CHECK_OUTCOME', 'CONSISTENCY_OUTCOME', 'BINDINGS_OUTCOME']}
+          problems = [key+': '+str(value) for key,value in outcomes.items() if value != 'success']
+          result = {'successful': False, 'outcomes': outcomes, 'problems': problems,
+                    'scope': 'package consistency, not gameplay or submission', 'full_games': 0}
+          try:
+              snapshot = json.loads((out/'SOURCE-SNAPSHOT.json').read_text())
+              before = snapshot['files']
+              paths = [p for root in snapshot['roots'] for p in Path(root).rglob('*') if p.is_file()]
+              paths.append(Path('.github/workflows/titan-selected-projection.yml'))
+              after = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
+              changed = sorted(name for name in set(before)|set(after)
+                  if before.get(name,{}).get('sha256') != after.get(name))
+              result.update(checkout=snapshot['checkout'], event_sha=snapshot['event_sha'],
+                  pull_request_head=snapshot['pull_request_head'],
+                  source_files_checked=len(before), changed_paths=changed)
+              if changed:
+                  problems.append('Checked source changed during validation')
+              if outcomes['CHECK_OUTCOME'] == 'success':
+                  receipt = json.loads((out/'current-check.json').read_text())
+                  lab = 'revenue/kaggriculture/cloud-execution-lab/'
+                  archive = before[lab+receipt['path']]
+                  manifest = before[lab+receipt['source_manifest']]
+                  if (receipt['sha256'] != archive['sha256'] or receipt['bytes'] != archive['bytes']
+                      or receipt['source_manifest_sha256'] != manifest['sha256']):
+                      problems.append('Builder result differs from pre-check source snapshot')
+                  result['release'] = receipt
+          except (OSError, ValueError, KeyError, TypeError) as exc:
+              problems.append(type(exc).__name__+': '+str(exc))
+          result['successful'] = not problems
+          (out/'CANONICAL-RESULTS.json').write_text(json.dumps(result, indent=2)+'\n')
+          print(json.dumps(result, sort_keys=True))
+          if problems:
+              raise SystemExit(1)
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: titan-canonical-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/canonical-validation/
           if-no-files-found: error
           retention-days: 7
