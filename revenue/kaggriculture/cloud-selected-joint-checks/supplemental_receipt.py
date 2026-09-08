@@ -84,6 +84,10 @@ STRESS_BINDINGS = {
 QUEUE_COPY_COUNTS = ('queue_comparisons', 'replacement_comparisons',
                      'complete_transform_comparisons', 'feasibility_comparisons')
 SUPPLEMENTS.update(RUNNER_QUEUE_SUPPLEMENTS)
+RUNNER_RETAINED_METHODS = (
+    'test_known_order_cost_keeps_sequence',
+    'test_summary_counts_cash_and_timeouts',
+)
 
 
 def integer(value: Any) -> bool:
@@ -204,6 +208,21 @@ def inspect_supplemental(members: Mapping[str, bytes], snapshot: Mapping[str, An
             if summary['test_methods'] != 2:
                 problem('failure', 'stress_runner_existing: expected the two non-cancellation methods')
             summary['retained_runner_methods'] = 2
+            # Count alone cannot distinguish this subset from the already
+            # counted cancellation guards. Bind the two verbose method IDs to
+            # the actual source, accepting order and module-prefix differences.
+            records = re.findall(
+                r'^(test_[A-Za-z0-9_]+) \(([^()\r\n]+)\) \.\.\. ([^\n]+)$',
+                text, re.MULTILINE)
+            identities = [qualified.split('.')[-2:] for _, qualified, _ in records]
+            summary['method_ids'] = ['.'.join(parts) for parts in identities]
+            if not records:
+                problem('missing', 'stress_runner_existing: missing verbose method identities')
+            elif (len(records) != 2
+                  or sorted(name for name, _, _ in records) != sorted(RUNNER_RETAINED_METHODS)
+                  or any(parts != ['RunnerTests', name] or outcome.strip() != 'ok'
+                         for (name, _, outcome), parts in zip(records, identities))):
+                problem('failure', 'stress_runner_existing: method identities differ from the two non-cancellation methods')
         if report_name is None:
             continue
         report = obj(report_name)
