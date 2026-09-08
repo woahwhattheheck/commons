@@ -217,3 +217,70 @@ default config.
 any re-initialization. `TITAN-CONFIG.json` has `terminal_history: false`, so this
 is latent rather than active today. The module/state split above removes it as a
 class rather than special-casing it.
+
+---
+
+# Addendum 2: before/after on the landed module-cache patch
+
+The runtime owner landed the split as `8238baca` / PR #10161 — an `_MODULE_CACHE`
+keyed on `(name, resolved path)`, populated only after a module executes to
+completion, with `sys.modules` restored on cancellation so a partially executed
+module is never published. Measured here against the shipping code
+(`titan_runtime.py` sha256 `07a8d13390c46b26fafd90b9462db19445dcf286934b6ddde78b253dd02807e5`)
+using the same 120 real cards, with `titan_deadline_probe.py --root` now able to
+point at a live lane instead of only the frozen archive.
+
+## The patch works, and it is not yet where the time goes
+
+| budget | pre-patch fallbacks | post-patch | pre over budget | post | pre stages | post stages |
+|---:|---:|---:|---:|---:|---|---|
+| 0.010 s | 120 | **116** | 4 | **3** | cold_start, production, selected_transform | cold_start, selected_transform |
+| 0.003 s | 120 | 120 | 6 | 10 | cold_start | cold_start |
+
+Four actions now complete inside a 10 ms budget that previously all fell back,
+and `production` has dropped out of the fallback stages. `cold_start` has not.
+
+## Where cold start actually goes now
+
+Measured directly on the shipping runtime:
+
+| stage | cost |
+|---|---:|
+| `funding_module` first load | 4.488 ms |
+| `funding_module` cached lookup | **0.032 ms** (141× cheaper — the patch) |
+| `FrozenSelected()` construction | 0.001 ms |
+| **`SeedBudget(controller.R)`** | **5.218 ms** |
+| full `_initialize()` post-patch | 5.706 ms |
+
+So after the patch, **91% of cold start is `SeedBudget` over the route table**,
+and the cached module lookup is 0.6% of it.
+
+## The follow-up, same shape as the patch that just landed
+
+`SeedBudget.__init__` builds `suffixes` and `prefix_lengths` from
+`controller.R` and nothing else. Reading the shipped source: those two are
+written **only** in `__init__` and are read-only thereafter; the sole per-game
+mutation is `self.events.append(...)` in `apply`. They are therefore a *derived
+immutable*, exactly like a module — not mutable per-game state.
+
+Caching the derived tables keyed on the route-table identity, while keeping
+`events` per-game and rebuilt, would take cold start from **5.706 ms to about
+0.5 ms** without weakening the property the fallback comment protects: a
+cancelled mutation still gets a clean controller, because nothing cached is
+mutated by a turn. This is the runtime owner's change to make in its own files;
+the measurement is here so it can be decided on numbers.
+
+## Contention, re-measured post-patch
+
+| burners | wall mean | wall max | cpu mean | wall/cpu |
+|---:|---:|---:|---:|---:|
+| 0 | 0.006153 s | 0.022268 s | 0.006152 s | 1.000 |
+| 2 | 0.005958 s | 0.021544 s | 0.005955 s | 1.001 |
+| 6 | 0.010501 s | 0.136573 s | 0.006428 s | **1.633** |
+
+Unchanged in character from the pre-patch run — this is a host-scheduling
+property, not something a runtime patch was ever going to move. Worth noting that
+at 6 burners `cpu_max` rose to 0.0609 s from 0.0212 s: under heavy load the CPU
+accounting itself inflates, so `act_cpu_seconds` is a floor on real work rather
+than a clean isolate. Still supports descheduling as a possibility; still not an
+exclusive cause claim about the original failure.
