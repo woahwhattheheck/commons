@@ -1086,6 +1086,10 @@ def main(argv=None):
     sub.add_parser("snapshot")
     p_rec = sub.add_parser("recover")
     p_rec.add_argument("receipt")
+    for command_parser in sub.choices.values():
+        command_parser.add_argument("--peer", default=argparse.SUPPRESS)
+        command_parser.add_argument("--worktree", default=argparse.SUPPRESS)
+        command_parser.add_argument("--json", action="store_true", default=argparse.SUPPRESS)
     args = parser.parse_args(argv)
 
     try:
