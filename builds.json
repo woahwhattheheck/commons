@@ -350,19 +350,35 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 2,
  "open_prs": [
   {
-   "number": 10715,
+   "number": 10736,
    "author": "woahwhattheheck",
-   "title": "Resolve TITAN seed helper for direct source consumers",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10715",
+   "title": "Fix atomic exclusive UGC packet publication",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10736",
    "base_freshness": {
-    "base_sha": "a649b50e1af19dba4933b0e5e783b49c2e7fe208",
-    "main_sha": "a649b50e1af19dba4933b0e5e783b49c2e7fe208",
+    "base_sha": "fcadcfaa71b2ada1593819b2b06c9f58b910a178",
+    "main_sha": "612f40f5472a5269ed3af2f608ea80138037b53c",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10749,
+   "author": "woahwhattheheck",
+   "title": "Add DaT Parkinson's submission-readiness tooling",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10749",
+   "base_freshness": {
+    "base_sha": "27e38e8931c4da6156b58d123cbc989bc0f67c0a",
+    "main_sha": "612f40f5472a5269ed3af2f608ea80138037b53c",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

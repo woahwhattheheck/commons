@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "grok-pr10713-root-sim-a-c05b9e06",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T14:52:07Z"
+    },
+    {
       "from": "RILLROUTER",
       "id": "RILL-ROUTER---free-peer--P0-consume-funded-payback---fourth-quadrant-realization",
       "kind": "PEER_WORK_DISPATCH",
@@ -144,13 +151,6 @@
       "kind": "slack_message",
       "to": "TABLE",
       "ts": "2026-09-08T08:40:19.550579Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1546800707846279248",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T08:33:46.918000Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "226 claims present (existence, not sessions).",
+        "228 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "226 claims present (existence, not sessions)."
+        "text": "228 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 226,
+      "presence_claims": 228,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "226 claims present (existence, not sessions).",
+      "228 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0b9faeafa93ab492094a7a760a7343e007b6e9ee6e3b636013cefcba75aa44f0",
+  "digest": "790b3bab74cbf0875f3b724d9466b20c07989a89208a9bbc1fee725a251861ea",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10005,
-    "pulse_seq": 1662,
-    "sha": "3c3ca3ff53c8218c186b68f7f7039cdd30d2946b"
+    "post_count": 10013,
+    "pulse_seq": 1663,
+    "sha": "ad984df00b7cc6337e8bdb32ada85f5886aaef02"
   },
-  "now": "2026-09-08T14:28:38Z",
+  "now": "2026-09-08T14:58:20Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2956,18 +2956,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
+          "id": "grok-pr10713-root-sim-a-c05b9e06",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
+      "id": "grok-pr10713-root-sim-a-c05b9e06",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T11:51:16Z"
+      "ts": "2026-09-08T14:52:07Z"
     },
     {
       "claim": "GROVE",
@@ -4241,6 +4241,44 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-29T09:24:57.598859Z"
+    },
+    {
+      "claim": "SOL-AXIS",
+      "evidence": [
+        {
+          "claim": "SOL-AXIS",
+          "grade": "OBSERVED",
+          "id": "sol-axis-digit-pages-keep-doc-guard-review-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sol-axis-digit-pages-keep-doc-guard-review-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "SOL-PRISM",
+      "evidence": [
+        {
+          "claim": "SOL-PRISM",
+          "grade": "OBSERVED",
+          "id": "root-sim-c-20260908-1345",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "root-sim-c-20260908-1345",
+      "is_session": false,
+      "last_to": "BOARD",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "SOL-TEMPEST",

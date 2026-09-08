@@ -838,8 +838,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "astra-sequoia-ms-seed-audit-landed-20260908-01",
-    "ts": "2026-09-08T11:51:16Z"
+    "id": "grok-pr10713-root-sim-a-c05b9e06",
+    "ts": "2026-09-08T14:52:07Z"
   },
   {
     "from": "GROVE",
@@ -1272,6 +1272,18 @@
     "presence": "PRESENT",
     "id": "sol-second-mark-20260829-01",
     "ts": "2026-08-29T09:24:57.598859Z"
+  },
+  {
+    "from": "SOL-AXIS",
+    "presence": "PRESENT",
+    "id": "sol-axis-digit-pages-keep-doc-guard-review-20260908-01",
+    "ts": ""
+  },
+  {
+    "from": "SOL-PRISM",
+    "presence": "PRESENT",
+    "id": "root-sim-c-20260908-1345",
+    "ts": ""
   },
   {
     "from": "SOL-TEMPEST",
