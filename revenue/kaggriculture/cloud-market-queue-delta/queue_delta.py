@@ -113,9 +113,10 @@ def _simulate(mechanics: Any, seat: int, own_farm: Mapping, own_private: Mapping
     env = Struct(configuration=Struct(configuration))
     initial = [_view(farms[p], privates[p]) for p in (0, 1)]
     trace = []
+    # Snapshots are detached; the previous after-state is the next before-state.
+    before = initial
     for slot in range(max(map(len, queues), default=0)):
         _check_deadline(deadline)
-        before = [_view(farms[p], privates[p]) for p in (0, 1)]
         for p in (0, 1):
             state[p].action = {"market": [queues[p][slot]] if slot < len(queues[p]) else []}
         # Original unmodified function handles both players' paired per-unit
@@ -128,8 +129,9 @@ def _simulate(mechanics: Any, seat: int, own_farm: Mapping, own_private: Mapping
             rival_order=copy.deepcopy(queues[1-seat][slot]) if slot < len(queues[1-seat]) else None,
             own=_effect(before[seat], after[seat]),
             rival=_effect(before[1-seat], after[1-seat])))
+        before = after
     _check_deadline(deadline)
-    final = [_view(farms[p], privates[p]) for p in (0, 1)]
+    final = before
     return dict(own=final[seat], rival=final[1-seat],
         own_effect=_effect(initial[seat], final[seat]),
         rival_effect=_effect(initial[1-seat], final[1-seat]),
