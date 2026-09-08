@@ -102,6 +102,9 @@ function render(data) {
   });
   stage.append(node('h3','Leaderboard'));
   if(data.phase!=='finished'){stage.append(node('p','Scores and correct answers are revealed when the event finishes.','muted'));return;}
+  const downloads=node('div',undefined,'row');downloads.setAttribute('aria-label','Download final results');
+  for(const format of ['csv','json']){const link=node('a',`Download ${format.toUpperCase()} results`);link.href='/api/events/'+encodeURIComponent(data.id)+'/results.'+format;link.download='lantern-results.'+format;downloads.append(link);}
+  stage.append(downloads,node('p','Downloads contain display names and final scores, without reconnect references or individual answers.','muted'));
   if(!data.leaderboard.length){stage.append(node('p','No participants joined this event.','muted'));return;}
   const table=node('table');const head=node('tr');['Rank','Player','Points','Answered'].forEach(t=>head.append(node('th',t)));const thead=node('thead');thead.append(head);table.append(thead);const tbody=node('tbody');
   data.leaderboard.forEach(p=>{const tr=node('tr');[p.rank,p.name,p.points,p.answered].forEach(v=>tr.append(node('td',String(v))));tbody.append(tr);});table.append(tbody);stage.append(table);

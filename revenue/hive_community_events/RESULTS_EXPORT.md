@@ -5,6 +5,25 @@ SQLite database, not another event store or scoring engine. It uses `Store.state
 for the native event phase and competition ranks, including ties and players who
 submitted no answers. It does not finish events or change their records.
 
+## Download from the event page
+
+After an event finishes, its **Leaderboard** section offers **Download CSV results**
+and **Download JSON results**. They also appear for events with no participants.
+The links are absent for scheduled/open events; direct premature requests receive
+HTTP 409 with a JSON error and do not end the event. Event URLs and participant
+reconnect behavior stay unchanged.
+
+The same downloads are available at these read-only routes:
+
+- `GET /api/events/{event_id}/results.csv`
+- `GET /api/events/{event_id}/results.json`
+
+Successful responses use an attachment filename of `lantern-results.csv` or
+`lantern-results.json`, a matching content type, and `Cache-Control: no-store`.
+Participant references are not needed or added to download links. Unknown events
+return the application's normal JSON 404. The download remains available after
+restarting Lantern with the same database.
+
 ## Export from an existing workspace
 
 Run beside `app.py` in `revenue/hive_community_events` using Python 3.10 or newer:
@@ -62,15 +81,24 @@ An existing route can call `export_bytes(store, event_id, "csv")` or `"json"` an
 send the returned bytes with `text/csv; charset=utf-8` or
 `application/json; charset=utf-8`. `results_document` returns the allowlisted
 Python object. Neither API mutates the supplied store. The native `Problem(409)`
-means results are not final. This slice does not change the browser or HTTP routes;
-its delivered end-user workflow is the command-line download above.
+means results are not final. Lantern's two GET download routes consume this
+function directly. Their error handling also works when `app.py` is launched as
+`__main__`, rather than imported by a test or another application.
 
 ## Focused acceptance
 
 ```sh
 PYTHONWARNINGS=error::ResourceWarning python -B -m unittest -v test_results_export.py
+PYTHONWARNINGS=error::ResourceWarning python -B -m unittest -v test_results_download.py
 ```
 
-The suite uses the actual Lantern Store, SQLite transactions and WAL, fresh CLI
-processes and filesystem operations. No live community data, browser acceptance,
-hosted deployment, external platform or paid service is claimed.
+The export suite uses the actual Lantern Store, SQLite transactions and WAL,
+fresh CLI processes and filesystem operations. The download suite starts the
+actual `python app.py` server process and covers HTTP attachment bytes/headers,
+unfinished-event JSON errors, Unicode, event separation and restart persistence.
+Four optional Node.js tests execute the page's real `render()` function against
+an explicit DOM fixture and fetch the generated links through the native server.
+Those are JavaScript/HTTP integration checks, not real-browser layout or download
+acceptance. Node.js is needed only for those tests, not to run Lantern.
+No live community data, hosted deployment, external platform or paid service is
+claimed.
