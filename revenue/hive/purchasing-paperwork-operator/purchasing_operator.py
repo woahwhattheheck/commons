@@ -7,7 +7,7 @@ import argparse
 import csv
 import hashlib
 import json
-import re
+import unicodedata
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -60,7 +60,15 @@ def _quantity(value: Decimal) -> str:
 
 
 def _name_key(value: str) -> str:
-    return " ".join(re.findall(r"[a-z0-9]+", value.casefold()))
+    # Canonical equivalence is not transliteration: accents and script marks
+    # still distinguish vendors; case and punctuation retain their old folding.
+    canonical = unicodedata.normalize("NFC", value)
+    folded = unicodedata.normalize("NFC", canonical.casefold())
+    separated = "".join(
+        char if char.isalnum() or unicodedata.category(char).startswith("M") else " "
+        for char in folded
+    )
+    return " ".join(word for word in separated.split() if any(char.isalnum() for char in word))
 
 
 def _source(path: Path) -> dict[str, str]:
