@@ -31,7 +31,7 @@ jobs:
           ref: 6feb9c0566b8f203c5d1a2ffdfbf1cb6d11be055
           path: frozen
 
-      - name: Verify candidate source and prepare native context
+      - name: Verify frozen source and prepare native context
         shell: bash
         run: |
           set -euo pipefail
@@ -46,6 +46,24 @@ jobs:
           test "$(sha256sum "$root/main.cpp" | cut -d' ' -f1)" = 758977095f8f34263bbcd9ed043ac4ab7943f04f65fae530c78ee64787c34f8f
           python3 "$root/prepare_context.py" --candidate "$root/main.cpp" --output "$RUNNER_TEMP/context"
           sh "$RUNNER_TEMP/context/build.sh"
+
+      - name: Build and test targeted rank-one source
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$GITHUB_WORKSPACE/frozen/revenue/roadef2026/fleet-candidate"
+          tool="$GITHUB_WORKSPACE/harness/revenue/roadef2026/cloud-a-rank1"
+          python3 -B "$tool/test_rank1_builder.py" \
+            --builder "$tool/build_rank1_candidate.py" \
+            --source "$root/main.cpp" \
+            --vendor "$RUNNER_TEMP/context/sources/sedge/vendor" -v
+          python3 -B "$tool/build_rank1_candidate.py" "$root/main.cpp" \
+            --expected-sha256 758977095f8f34263bbcd9ed043ac4ab7943f04f65fae530c78ee64787c34f8f \
+            --output "$RUNNER_TEMP/rank1.cpp" \
+            --receipt "$RUNNER_TEMP/rank1-builder.json"
+          g++ -O3 -std=c++20 -DNDEBUG \
+            -I"$RUNNER_TEMP/context/sources/sedge/vendor" \
+            "$RUNNER_TEMP/rank1.cpp" -o "$RUNNER_TEMP/context/bin/candidate"
 
       - name: Download authoritative selected incumbents
         uses: actions/download-artifact@v4
@@ -69,8 +87,13 @@ jobs:
             setA/setA-14-net.json setA/setA-14-tm.json setA/setA-14-scenario.json \
             setA/setA-16-net.json setA/setA-16-tm.json setA/setA-16-scenario.json
 
-      - name: Run bounded rank-one continuation
+      - name: Run targeted contributor/diversion search
         shell: bash
+        env:
+          FLEET_RANK1: '1'
+          FLEET_RANK1_PASSES: '16'
+          FLEET_RANK1_DEMANDS: '32'
+          FLEET_RANK1_PAIR_NODES: '24'
         run: |
           set -euo pipefail
           python3 -B harness/revenue/roadef2026/cloud-a-rank1/run_rank1.py \
@@ -90,15 +113,20 @@ jobs:
           if test -d "$RUNNER_TEMP/results"; then
             cp -a "$RUNNER_TEMP/results/." "$RUNNER_TEMP/export/"
           fi
-          cp harness/revenue/roadef2026/cloud-a-rank1/run_rank1.py "$RUNNER_TEMP/export/"
+          cp "$RUNNER_TEMP/rank1.cpp" "$RUNNER_TEMP/export/" 2>/dev/null || true
+          cp "$RUNNER_TEMP/rank1-builder.json" "$RUNNER_TEMP/export/" 2>/dev/null || true
+          cp harness/revenue/roadef2026/cloud-a-rank1/*.py "$RUNNER_TEMP/export/"
           cp harness/revenue/roadef2026/cloud-a-rank1/README.md "$RUNNER_TEMP/export/"
           {
             sha256sum \
+              harness/revenue/roadef2026/cloud-a-rank1/build_rank1_candidate.py \
+              harness/revenue/roadef2026/cloud-a-rank1/test_rank1_builder.py \
               harness/revenue/roadef2026/cloud-a-rank1/run_rank1.py \
               harness/revenue/roadef2026/cloud-a-rank1/README.md \
               harness/.github/workflows/roadef-a-rank1.yml
             for path in \
               frozen/revenue/roadef2026/fleet-candidate/main.cpp \
+              "$RUNNER_TEMP/rank1.cpp" \
               "$RUNNER_TEMP/context/bin/candidate" \
               "$RUNNER_TEMP/context/bin/checker"; do
               if test -f "$path"; then sha256sum "$path"; else printf 'MISSING  %s\n' "$path"; fi

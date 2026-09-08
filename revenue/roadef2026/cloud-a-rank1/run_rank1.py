@@ -92,6 +92,7 @@ def vector(checker: dict[str, Any]) -> tuple[int, ...]:
         value = row.get("sat")
         if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
             raise ValueError("checker saturation is not finite")
+        # The 6-decimal checker is the ranking source.  Convert exactly as emitted.
         result.append(int(round(float(value) * 1_000_000)))
     return tuple(result)
 
@@ -193,6 +194,9 @@ def main() -> int:
             "FLEET_WAYPOINT_LIMIT": "0",
             "OMP_NUM_THREADS": "1",
         })
+        rank1_report = case / "rank1-report.json"
+        if float(env.get("FLEET_RANK1", "0")) != 0:
+            env["FLEET_RANK1_REPORT"] = str(rank1_report)
         env.pop("SEDGE_MAX_ROUNDS", None)
         run_started = time.monotonic()
         try:
@@ -233,6 +237,7 @@ def main() -> int:
             raise ValueError(f"{label}: continuation worsened the official six-decimal vector")
         target_after = coordinate(checker_docs["6"], contract["target"])
         stats_doc = read_json(stats) if stats.is_file() else None
+        rank1_doc = read_json(rank1_report) if rank1_report.is_file() else None
         record = {
             "instance": label,
             "complete": True,
@@ -259,6 +264,7 @@ def main() -> int:
                 "segments": checker_docs["6"].get("total_segments"),
             },
             "candidate_stats": stats_doc,
+            "rank1_report": rank1_doc,
         }
         records.append(record)
         write_json(output / "RUN-PARTIAL.json", {"runs": records})
@@ -266,7 +272,7 @@ def main() -> int:
               f"first={difference}; wall={elapsed:.2f}s", flush=True)
 
     summary = {
-        "schema": "roadef.a-rank1-continuation.v1",
+        "schema": "roadef.a-rank1-diversion-result.v1",
         "complete": True,
         "submission_performed": False,
         "calibration": {"run_id": CALIBRATION_RUN, "artifact_id": CALIBRATION_ARTIFACT},
