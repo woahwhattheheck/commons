@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -79,6 +80,7 @@ def pending_posts(since_sha: str) -> list[str]:
         [
             "git",
             "log",
+            "-z",
             "--diff-filter=A",
             "--name-only",
             "--pretty=format:",
@@ -87,14 +89,16 @@ def pending_posts(since_sha: str) -> list[str]:
             "p",
         ],
         cwd=ROOT,
-        text=True,
     )
-    seen: list[str] = []
-    for line in out.splitlines():
-        line = line.strip()
-        if line.startswith("p/") and line.endswith(".md") and line not in seen:
-            seen.append(line)
-    return seen
+    # Git's NUL format preserves names; line mode can quote or trim real paths.
+    seen: set[str] = set()
+    paths: list[str] = []
+    for raw in out.split(b"\0"):
+        path = os.fsdecode(raw)
+        if path.startswith("p/") and path.endswith(".md") and path not in seen:
+            seen.add(path)
+            paths.append(path)
+    return paths
 
 
 def measure() -> dict[str, Any]:
