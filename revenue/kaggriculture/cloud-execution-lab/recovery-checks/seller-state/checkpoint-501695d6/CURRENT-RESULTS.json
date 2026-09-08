@@ -45,7 +45,157 @@
     "controlled_cancellations": 3,
     "engine_interpreter_calls": 0,
     "new_games": 0,
-    "new_seed_reservations": []
+    "new_seed_reservations": [],
+    "treatments": {
+      "baseline": {
+        "actual_parent_events": [
+          {
+            "parent_calls": 719,
+            "transform_calls": 719
+          },
+          {
+            "parent_calls": 719,
+            "transform_calls": 718
+          }
+        ],
+        "all_routes_equal": true,
+        "boundary": "transform_entry",
+        "calls_per_actor": 719,
+        "cancel_step": 450,
+        "continuity_precondition_met": true,
+        "continuity_preserved": false,
+        "elapsed_seconds": 15.13,
+        "expected_require_continuity_exit": 1,
+        "fallback_equals_uninterrupted_action": true,
+        "features": {
+          "budget_seconds": 1.0,
+          "committed": true,
+          "consumer": "frozen",
+          "funding": true,
+          "history_hypotheses": null,
+          "redundant_hire": false,
+          "reserve_seconds": 0.01,
+          "seed": true,
+          "terminal_history": false,
+          "terminal_route": false,
+          "terminal_tie_break": "baseline"
+        },
+        "intervention": {
+          "observe_skipped": false,
+          "production_repair": false,
+          "restore_completed_fields": []
+        },
+        "later_action_differences": [
+          451,
+          453
+        ],
+        "later_seller_state_differences_count": 268,
+        "report_bytes": 2006480,
+        "report_sha256": "9aafa3660cd48ee95b7e9e007a834dd2998a736e28b4c98217357f8b03605f8b",
+        "through": 718
+      },
+      "negative": {
+        "actual_parent_events": [
+          {
+            "parent_calls": 719,
+            "transform_calls": 719
+          },
+          {
+            "parent_calls": 719,
+            "transform_calls": 718
+          }
+        ],
+        "all_routes_equal": true,
+        "boundary": "transform_entry",
+        "calls_per_actor": 719,
+        "cancel_step": 447,
+        "continuity_precondition_met": true,
+        "continuity_preserved": false,
+        "elapsed_seconds": 15.576285600662231,
+        "expected_require_continuity_exit": 1,
+        "fallback_equals_uninterrupted_action": true,
+        "features": {
+          "budget_seconds": 1.0,
+          "committed": true,
+          "consumer": "frozen",
+          "funding": true,
+          "history_hypotheses": null,
+          "redundant_hire": false,
+          "reserve_seconds": 0.01,
+          "seed": true,
+          "terminal_history": false,
+          "terminal_route": false,
+          "terminal_tie_break": "baseline"
+        },
+        "intervention": {
+          "observe_skipped": true,
+          "production_repair": false,
+          "restore_completed_fields": [
+            "planned",
+            "pending",
+            "previous",
+            "observed_harvests"
+          ]
+        },
+        "later_action_differences": [
+          449,
+          453
+        ],
+        "later_seller_state_differences_count": 6,
+        "report_bytes": 2195460,
+        "report_sha256": "417ccd6e8616482ad0cf0abaf7184c6c85f83e4934374788dc93a7592230cfcc",
+        "through": 718
+      },
+      "restored": {
+        "actual_parent_events": [
+          {
+            "parent_calls": 719,
+            "transform_calls": 719
+          },
+          {
+            "parent_calls": 719,
+            "transform_calls": 718
+          }
+        ],
+        "all_routes_equal": true,
+        "boundary": "transform_entry",
+        "calls_per_actor": 719,
+        "cancel_step": 450,
+        "continuity_precondition_met": true,
+        "continuity_preserved": true,
+        "elapsed_seconds": 15.25,
+        "expected_require_continuity_exit": 0,
+        "fallback_equals_uninterrupted_action": true,
+        "features": {
+          "budget_seconds": 1.0,
+          "committed": true,
+          "consumer": "frozen",
+          "funding": true,
+          "history_hypotheses": null,
+          "redundant_hire": false,
+          "reserve_seconds": 0.01,
+          "seed": true,
+          "terminal_history": false,
+          "terminal_route": false,
+          "terminal_tie_break": "baseline"
+        },
+        "intervention": {
+          "observe_skipped": true,
+          "production_repair": false,
+          "restore_completed_fields": [
+            "planned",
+            "pending",
+            "previous",
+            "observed_harvests"
+          ]
+        },
+        "later_action_differences": [],
+        "later_seller_state_differences_count": 0,
+        "report_bytes": 2058224,
+        "report_sha256": "f4290fa5e779026bb2f1c942fbf66499110805eb953b742bb1d4d78c24ec8891",
+        "through": 718
+      }
+    }
   },
   "headline": "The current canonical checkpoint reproduces the completed seller-state cancellation boundary from PR10365.",
   "limits": [
@@ -71,83 +221,5 @@
     "frozen_selected_sha256_unchanged": "fdf54ec963e93c831fc4c8459bb9095935a64be604b08b3bbcd6c44c2e45cdb5",
     "seller_scheduler_sha256_unchanged": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
     "titan_runtime_current_sha256": "001ce55c72d02571b6b80291c3a2fec6061f6a3243093fd8e0b4dd29f08c4d6c"
-  },
-  "treatments": {
-    "baseline": {
-      "all_routes_equal": true,
-      "boundary": "transform_entry",
-      "calls_per_actor": 719,
-      "cancel_step": 450,
-      "continuity_precondition_met": true,
-      "continuity_preserved": false,
-      "expected_require_continuity_exit": 1,
-      "fallback_equals_uninterrupted_action": true,
-      "intervention": {
-        "observe_skipped": false,
-        "production_repair": false,
-        "restore_completed_fields": []
-      },
-      "later_action_differences": [
-        451,
-        453
-      ],
-      "later_seller_state_differences_count": 268,
-      "report_bytes": 2006480,
-      "report_sha256": "9aafa3660cd48ee95b7e9e007a834dd2998a736e28b4c98217357f8b03605f8b",
-      "through": 718
-    },
-    "negative": {
-      "all_routes_equal": true,
-      "boundary": "transform_entry",
-      "calls_per_actor": 719,
-      "cancel_step": 447,
-      "continuity_precondition_met": true,
-      "continuity_preserved": false,
-      "expected_require_continuity_exit": 1,
-      "fallback_equals_uninterrupted_action": true,
-      "intervention": {
-        "observe_skipped": true,
-        "production_repair": false,
-        "restore_completed_fields": [
-          "planned",
-          "pending",
-          "previous",
-          "observed_harvests"
-        ]
-      },
-      "later_action_differences": [
-        449,
-        453
-      ],
-      "later_seller_state_differences_count": 6,
-      "report_bytes": 2195460,
-      "report_sha256": "417ccd6e8616482ad0cf0abaf7184c6c85f83e4934374788dc93a7592230cfcc",
-      "through": 718
-    },
-    "restored": {
-      "all_routes_equal": true,
-      "boundary": "transform_entry",
-      "calls_per_actor": 719,
-      "cancel_step": 450,
-      "continuity_precondition_met": true,
-      "continuity_preserved": true,
-      "expected_require_continuity_exit": 0,
-      "fallback_equals_uninterrupted_action": true,
-      "intervention": {
-        "observe_skipped": true,
-        "production_repair": false,
-        "restore_completed_fields": [
-          "planned",
-          "pending",
-          "previous",
-          "observed_harvests"
-        ]
-      },
-      "later_action_differences": [],
-      "later_seller_state_differences_count": 0,
-      "report_bytes": 2058224,
-      "report_sha256": "f4290fa5e779026bb2f1c942fbf66499110805eb953b742bb1d4d78c24ec8891",
-      "through": 718
-    }
   }
 }
