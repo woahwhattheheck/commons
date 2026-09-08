@@ -155,6 +155,87 @@ class FinalUsageTests(unittest.TestCase):
         self.assertEqual(actor.report()["final_resource_sample"], "unavailable:already_reaped")
         self.assert_clean(actor, 23)
 
+    @unittest.skipUnless(os.name == "posix" and ev.sys.platform.startswith("linux"), "Linux procfs only")
+    @unittest.skipUnless(hasattr(os, "wait4"), "wait4 unavailable")
+    def test_mismatched_procfs_namespace_never_samples_numeric_child(self):
+        actor = self.actor("good")
+        self.assertEqual(actor.act({}, {}, 1)["kind"], "action")
+        reads = []
+
+        def foreign_procfs(path, *args, **kwargs):
+            reads.append(str(path))
+            if str(path) == "/proc/self/stat":
+                return f"{os.getpid() + 1000000} (parent) S 0 0"
+            if str(path).endswith("/status"):
+                return "VmHWM:\t134217728 kB\n"
+            return f"{actor.proc.pid} (foreign process) " + " ".join(["S"] + ["1000000"] * 20)
+
+        with mock.patch.object(ev.Path, "read_text", autospec=True, side_effect=foreign_procfs):
+            actor.close()
+        report = actor.report()
+        self.assertEqual(reads, ["/proc/self/stat"])
+        self.assertEqual(report["resource_sample"], "child_rusage")
+        self.assertEqual(report["final_resource_sample"], "wait4")
+        self.assertLess(report["cpu_seconds"], 1000)
+        self.assertLess(report["peak_rss_kib"], 134217728)
+        self.assert_clean(actor, report["exit_code"])
+
+    @unittest.skipUnless(ev.sys.platform.startswith("linux"), "Linux procfs only")
+    def test_matching_procfs_namespace_retains_worker_sample(self):
+        actor = self.actor("good")
+        self.assertEqual(actor.act({}, {}, 1)["kind"], "action")
+        reads = []
+        ticks = os.sysconf("SC_CLK_TCK")
+        fields = ["S"] + ["0"] * 20
+        fields[11], fields[12] = str(1200 * ticks), str(34 * ticks)
+        samples = {
+            "/proc/self/stat": f"{os.getpid()} (parent with spaces) S 0 0",
+            f"/proc/{actor.proc.pid}/status": "VmHWM:\t134217728 kB\n",
+            f"/proc/{actor.proc.pid}/stat": f"{actor.proc.pid} (worker with ) parentheses) " + " ".join(fields),
+        }
+
+        def matching_procfs(path, *args, **kwargs):
+            reads.append(str(path))
+            return samples[str(path)]
+
+        with mock.patch.object(ev.Path, "read_text", autospec=True, side_effect=matching_procfs):
+            actor.close()
+        report = actor.report()
+        self.assertEqual(reads, list(samples))
+        self.assertEqual(report["resource_sample"], "child_rusage_plus_linux_procfs")
+        self.assertEqual(report["cpu_seconds"], 1234)
+        self.assertEqual(report["peak_rss_kib"], 134217728)
+        self.assert_clean(actor, report["exit_code"])
+
+    @unittest.skipUnless(ev.sys.platform.startswith("linux"), "Linux procfs only")
+    def test_unavailable_or_malformed_procfs_identity_keeps_child_fallback(self):
+        for self_sample in (PermissionError("procfs unavailable"), "", "invalid (parent) S 0 0"):
+            with self.subTest(self_sample=repr(self_sample)):
+                actor = self.actor("good")
+                self.assertEqual(actor.act({}, {}, 1)["kind"], "action")
+                initial = actor.report()
+                reads = []
+
+                def unavailable_identity(path, *args, **kwargs):
+                    reads.append(str(path))
+                    if str(path) == "/proc/self/stat":
+                        if isinstance(self_sample, Exception):
+                            raise self_sample
+                        return self_sample
+                    return "VmHWM:\t134217728 kB\n"
+
+                with mock.patch.object(ev.Path, "read_text", autospec=True, side_effect=unavailable_identity), mock.patch.object(
+                    ev.os, "wait4", None, create=True
+                ):
+                    actor.close()
+                report = actor.report()
+                self.assertEqual(reads, ["/proc/self/stat"])
+                self.assertEqual(report["resource_sample"], "child_rusage")
+                self.assertEqual(report["final_resource_sample"], "unavailable:wait4_unsupported")
+                self.assertEqual(report["cpu_seconds"], initial["cpu_seconds"])
+                self.assertEqual(report["peak_rss_kib"], initial["peak_rss_kib"])
+                self.assert_clean(actor, report["exit_code"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
