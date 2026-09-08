@@ -160,6 +160,55 @@ def recover_inputs(game: dict[str, Any], evaluator: Any, tracer: Any, engine: An
     return inputs, receipt
 
 
+
+def recover_record(document: dict[str, Any], evaluator: Any, tracer: Any,
+                   engine: Any, engine_dir: Path, loader: Path,
+                   engine_hashes: dict[str, str], *, game_index: int = 0,
+                   expected_trace: str | None = None,
+                   seat: int | None = None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Validate the original document before the same recorded-action recovery.
+
+    An optional seat selects a single-player observation view for analysis. It
+    does not change any action or expose the environment seed to that player.
+    Original candidate identity is retained separately in the returned receipt.
+    """
+    if not isinstance(document, dict) or document.get("schema") != SCHEMA:
+        raise ValueError(f"Expected original {SCHEMA} record")
+    if (document.get("engine_ref") != evaluator.ENGINE_REF or
+            document.get("engine_sha256") != engine_hashes):
+        raise ValueError("Recorded interpreter source differs from the supplied original engine")
+    # The original tracer uses specification defaults. A declared custom
+    # configuration must not be silently presented as its recorded contract.
+    if any(document.get(key) not in (None, {})
+           for key in ("configuration_overrides", "configuration")):
+        raise ValueError("Custom recorded configurations are not supported by the original tracer")
+    games = document.get("games")
+    if (not isinstance(games, list) or type(game_index) is not int or
+            not 0 <= game_index < len(games)):
+        raise ValueError("game-index is out of range")
+    original = games[game_index]
+    if not isinstance(original, dict):
+        raise ValueError("Recorded game must be an object")
+    validate_game(original)
+    if expected_trace is not None and original["trace_sha256"] != expected_trace:
+        raise ValueError("Record is not the requested original source trace")
+    if seat is not None and (type(seat) is not int or seat not in (0, 1)):
+        raise ValueError("Observation view seat must be 0 or 1")
+    original_seat = original["candidate_seat"]
+    view_seat = original_seat if seat is None else seat
+    selected = copy.deepcopy(original)
+    if view_seat != original_seat:
+        selected["candidate_seat"] = view_seat
+        selected["candidate"], selected["opponent"] = selected.get("opponent"), selected.get("candidate")
+    inputs, receipt = recover_inputs(selected, evaluator, tracer, engine, engine_dir, loader)
+    actor_seed = 20260907 + int(view_seat != original_seat)
+    receipt.update({"original_candidate_seat": original_seat,
+                    "view_is_original_candidate": view_seat == original_seat,
+                    "candidate_actor_rng_seed": actor_seed,
+                    "candidate_pythonhashseed": actor_seed})
+    return inputs, receipt
+
+
 def atomic_write(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
@@ -188,23 +237,15 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     raw = args.record.read_bytes()
     document = json.loads(raw)
-    if document.get("schema") != SCHEMA:
-        raise ValueError(f"Expected original {SCHEMA} record")
-    games = document.get("games", [])
-    if not 0 <= args.game_index < len(games):
-        raise ValueError("game-index is out of range")
-    game = games[args.game_index]
-    if args.expected_trace and game.get("trace_sha256") != args.expected_trace:
-        raise ValueError("Record is not the requested original source trace")
     if len({args.record.resolve(), args.output.resolve(), args.receipt.resolve()}) != 3:
         raise ValueError("Source record, output and receipt must be different paths")
     evaluator = load(args.evaluator.resolve(), "trace_inputs_evaluator")
     tracer = load(args.tracer.resolve(), "trace_inputs_tracer")
     engine, engine_hashes = evaluator.get_engine(args.engine_dir, args.loader)
-    if document.get("engine_ref") != evaluator.ENGINE_REF or document.get("engine_sha256") != engine_hashes:
-        raise ValueError("Recorded interpreter source differs from the supplied original engine")
-    inputs, receipt = recover_inputs(game, evaluator, tracer, engine,
-                                     args.engine_dir, args.loader)
+    inputs, receipt = recover_record(document, evaluator, tracer, engine,
+                                     args.engine_dir, args.loader, engine_hashes,
+                                     game_index=args.game_index,
+                                     expected_trace=args.expected_trace)
     receipt.update({"source_record_sha256": hashlib.sha256(raw).hexdigest(),
                     "engine_ref": evaluator.ENGINE_REF, "engine_sha256": engine_hashes,
                     "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
