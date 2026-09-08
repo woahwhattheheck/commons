@@ -23,6 +23,12 @@ The full replayable source and raw evidence are retained in the Library archive 
 
 Fresh publication rerun details and exact hashes are in [`RERUN-20260908.json`](./RERUN-20260908.json). The broader packet includes rejected witness shapes, native reference screens, raw process streams and complete checksums.
 
+### Source-level reproduction extension
+
+The source-level consumer, independent reference recurrence, exact fixture files, result validator, and native comparison helpers are kept under [`repro/`](./repro/). Those files were first published by PR10405 and are now colocated here so this remains the single canonical KESTREL validation lane. Their payloads are unchanged except for the current-location manifest; the former parallel directory and duplicate receipt are absent from current main while their publication history remains in Git.
+
+Use [`repro/README.md`](./repro/README.md) for the complete offline recipe and [`repro/PUBLISHED-MANIFEST.json`](./repro/PUBLISHED-MANIFEST.json) for exact blob identities. The source extension adds reproducibility; it does not add another independent result count or replace this directory's canonical PR10355 summary.
+
 ## Scope and limits
 
 This publication independently validates the finite-menu dynamic-programming theorem and a concrete official-checker neighborhood gap. It does **not** claim that this packet directly executed DOCK's current source; DOCK's own 5,000-model and native integration tests remain the direct implementation evidence. It does not modify the selected fleet candidate, public-B runs, Docker execution, S139 draft, S139 attachment, or submission state. S139 remains unsent.

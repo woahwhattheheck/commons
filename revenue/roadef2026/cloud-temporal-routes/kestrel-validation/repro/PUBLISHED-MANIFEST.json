@@ -1,9 +1,21 @@
 {
-  "schema": "kestrel.roadef-temporal-validation-published.v2",
-  "operation": "kestrel-roadef-temporal-validation-20260908-01",
-  "branch_base_main": "2ba9513b34ff56549fc9f4fd29e6fdfb1a3b70cb",
-  "scope": "compact reproducible Git subset; full raw evidence and input archives retained in account Library; no submission",
-  "payloads": [
+  "schema": "kestrel.roadef-temporal-validation-published.v3",
+  "operation": "astra-kestrel-roadef-temporal-source-consolidation-20260908-01",
+  "base_main": "db8e67a9712f33e54bf41fd1deb3c779a9219759",
+  "canonical_root": "revenue/roadef2026/cloud-temporal-routes/kestrel-validation",
+  "repro_root": "revenue/roadef2026/cloud-temporal-routes/kestrel-validation/repro",
+  "canonical_result": {
+    "pr": 10355,
+    "merge": "4b5f21c3b6818c657e3e70ff7718b09a2dc664bd",
+    "receipt": "p/astra-kestrel-roadef-temporal-validation-20260908-01.md"
+  },
+  "source_extension_history": {
+    "pr": 10405,
+    "merge": "7e5d4abc489e3bb170bc1846988e888b9a3cbad1",
+    "former_root": "revenue/roadef2026/cloud-temporal-validation",
+    "former_receipt": "p/kestrel-roadef-temporal-validation-20260908-01.md"
+  },
+  "current_payloads": [
     {"path": "README.md", "git_blob": "125061d49cb44ccf48d821fc893b4ee65246dfb8", "bytes": 9888},
     {"path": "RESULTS.json", "git_blob": "44ca6b537193ebfd5abd3961595ef271fd558d2e", "bytes": 4446},
     {"path": "SOURCE-IDENTITIES.json", "git_blob": "96bd95ac5ae1a33ce12585e94618e424d2630c1a", "bytes": 2095},
@@ -29,10 +41,14 @@
     {"path": "validation/validate_oracle_results.py", "git_blob": "b9c242b952f9593a1a94a482219e888b7205e7a8", "bytes": 3621},
     {"path": "validation/verify_barrier.py", "git_blob": "4a2161212a880555841730e560cbece0952ee770", "bytes": 3385}
   ],
-  "receipt": {"path": "p/kestrel-roadef-temporal-validation-20260908-01.md", "git_blob": "ab15d3a5c82c4d68aa157b000edc0fd7e8e3d4bb", "bytes": 2478},
-  "full_private_package": {"name": "ROADEF-KESTREL-temporal-validation-20260908.zip", "bytes": 4087476, "sha256": "b26352c617bb5d442bae479b6ba14058e8905f6f99d0ac68cebbced881830af6"},
-  "compact_source_archive": {"name": "temporal-validation-source.tar.gz", "bytes": 20991, "sha256": "b33f66df5b3d6035b53984d40701ba8df0e1f029b7bbc02680637ef73139345e", "note": "retained in full private package, not duplicated in Git"},
-  "large_generated_bank": {"gzip_sha256": "1e9da219190eac4d8c579abd690fbb456d1d69f3850a6e2d1a33e886217fbedf", "gzip_bytes": 186471, "generation": "validation/export_oracle_bank.py"},
-  "coordination": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788850407747709?thread_ts=1788750090.535979&cid=C0BUY3EKMSB",
+  "canonical_readme": {"git_blob": "813da4a8f6bdf6e0fbe73e39ca308aee528f0923"},
+  "consolidation_receipt": {"path": "p/astra-kestrel-roadef-temporal-source-consolidation-20260908-01.md", "git_blob": "028e53a26524cb0b44a95bd5dc1cfeea0043bfc8"},
+  "full_private_package": {
+    "name": "ROADEF-KESTREL-temporal-validation-20260908.zip",
+    "file_id": "file_00000000160081f59e3600a999006464",
+    "bytes": 4087476,
+    "sha256": "b26352c617bb5d442bae479b6ba14058e8905f6f99d0ac68cebbced881830af6"
+  },
+  "current_layout": "one canonical validation lane; source payloads preserved byte-for-byte; prior parallel path retained only in Git history",
   "holds": {"qualification_submission": "unchanged and unsent", "gmail_draft": "unchanged and unsent", "staged_attachment": "unchanged"}
 }
