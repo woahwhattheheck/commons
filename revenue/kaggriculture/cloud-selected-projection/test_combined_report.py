@@ -93,6 +93,33 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(report["reporter_tests"], 20)
         self.assertEqual(self.report()["total_tests"], 79)
 
+    def add_funded_fixture(self):
+        names = (subject.FUNDED_JOIN[2], subject.LAB + "integrated_selected.py",
+                 subject.LAB + "selected_action_sell.py", subject.LAB + "reference/engine/kaggriculture.py")
+        self.mutate("SOURCE-SNAPSHOT.json", lambda d: d["files"].update({p: {"sha256": sha(p)} for p in names}))
+        (self.path / "funded-join-tests.log").write_text(log(16))
+        save(self.path / "funded-join-results.json", dict(test_methods=16, failures=0,
+            errors=0, successful=True, official_transitions=16, full_games=0,
+            workflow_run="123", workflow_attempt="1",
+            sources={p[len(subject.ROOT):]: {"sha256": sha(p)} for p in names}))
+
+    def test_funded_suite_is_preserved_and_included(self):
+        self.add_funded_fixture()
+        report = self.report(include_funded_join=True)
+        self.assertTrue(report["successful"], report["problems"])
+        self.assertEqual(report["total_tests"], 95)
+        self.assertEqual(report["funded_join_tests"], 16)
+        self.assertEqual(report["funded_join_transitions"], 16)
+
+    def test_funded_missing_source_or_mixed_run_cannot_pass(self):
+        self.add_funded_fixture()
+        original = (self.path / "funded-join-results.json").read_text()
+        for change in (lambda d: d.update(sources={}), lambda d: d.update(workflow_run="124")):
+            with self.subTest(change=change):
+                (self.path / "funded-join-results.json").write_text(original)
+                self.mutate("funded-join-results.json", change)
+                self.assertFalse(self.report(include_funded_join=True)["successful"])
+
     def test_missing_extended_suites_preserve_known_51_not_complete(self):
         for name in ("loader-tests.log", "empty-lot-tests.log", "joined-wrapper-tests.log", "loader-results.json"):
             (self.path / name).unlink()
