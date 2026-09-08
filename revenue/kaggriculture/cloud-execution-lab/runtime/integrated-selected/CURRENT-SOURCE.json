@@ -599,8 +599,8 @@
       "source_path": "reference/titan-history/score_endgame.py"
     },
     "reference/titan-history/selected_action_history.py": {
-      "bytes": 11579,
-      "sha256": "ff7abe56cff0fe68de8652bcee4c67997eae0666a12ba953eb48ae3e5f8f0d9b",
+      "bytes": 15289,
+      "sha256": "f83bf0804eadee97b91250ec0f93c44332cc2269d38b66aa25568873c46694d4",
       "source_path": "reference/titan-history/selected_action_history.py"
     },
     "reference/titan-history/selector.py": {
