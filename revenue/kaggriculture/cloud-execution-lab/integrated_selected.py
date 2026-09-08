@@ -77,6 +77,7 @@ class IntegratedSelectedAgent:
         switches = {int(row[0]) for row in getattr(self.production.A, 'DECISIONS', ())}
         events, future, omissions = [], {}, []
         reached, reason = now, 'horizon'
+        detached_future = False
         for step in range(now, end+1):
             if step == now:
                 action = selected
@@ -106,15 +107,19 @@ class IntegratedSelectedAgent:
                 if stop:
                     reason = 'committed_continuation_boundary'; break
                 action['farmer'], action['hands'] = units[0], units[1:]
-                trial_farm, trial_private = deepcopy(farm), deepcopy(private)
+                if not detached_future:
+                    # Preserve the caller-visible current-market boundary once.
+                    farm, private = deepcopy(farm), deepcopy(private)
+                    detached_future = True
                 trial_events, trial_omissions = [], []
                 try:
-                    atlas._units(m, trial_farm, trial_private, action, step, board, tpd, cap,
+                    atlas._units(m, farm, private, action, step, board, tpd, cap,
                                  lossless=True, events=trial_events, excluded=excluded,
                                  omissions=trial_omissions)
                 except atlas.ProjectionError:
                     reason = 'stock_dependent_pickup'; break
-                farm, private = trial_farm, trial_private
+                # A failed unit stage ends the projection; no rollback copy is
+                # needed because its detached state and trial events are discarded.
                 events.extend(trial_events); omissions.extend(trial_omissions)
                 future[step] = atlas._market(action, maximum)
             reached = step
