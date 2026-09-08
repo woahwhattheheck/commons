@@ -81,7 +81,7 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
         result = fixture_loop()
         self.assertEqual(result["truth"]["prospects_found"], 4)
         self.assertEqual(result["truth"]["seller_contacts_observed"], 4)
-        self.assertEqual(result["truth"]["emails_drafted"], 1)
+        self.assertEqual(result["truth"]["emails_drafted"], 0)
         self.assertEqual(result["truth"]["calls_booked"], 0)
         self.assertEqual(result["truth"]["transport_actions"], 0)
         self.assertEqual(result["truth"]["cash_usd"], 0)
@@ -92,9 +92,14 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
             {"AnythingLLM / Mintplex Labs", "Composio", "Metaforms", "SigNoz"},
         )
         self.assertNotIn("Ava Platform", organizations)
-        composio = next(item for item in result["emails"] if item["prospect_id"] == "composio")
-        self.assertEqual(composio["to"], "support@composio.dev")
-        self.assertEqual(composio["transport"], "STAGED_NOT_SENT")
+        composio = next(item for item in result["prospects"] if item["prospect_id"] == "composio")
+        self.assertEqual(composio["decision"], "HOLD_DO_NOT_RESEND")
+        self.assertEqual(
+            composio["collision_receipts"],
+            ["revenue/payment_ready/outreach_receipts/20260830-composio-1a053aa4f8a0014a.json"],
+        )
+        self.assertEqual(result["emails"], [])
+        self.assertEqual(result["bookings"], [])
 
     def test_qualified_external_prospect_gets_evidence_bound_draft(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -219,12 +224,33 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
         self.assertEqual(proc.stdout.strip(), "")
 
     def test_cli_run_refuses_unclaimed_sales_and_validate_stays(self) -> None:
-        refused = subprocess.run(
-            [sys.executable, str(HOST), "run", "--html", str(FIXTURE), "--owner", "GROK"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            prospects = root / "prospects.json"
+            receipts = root / "receipts"
+            catalog = prospect_catalog("support@composio.dev")
+            catalog["prospects"][0]["prospect_id"] = "composio"
+            catalog["prospects"][0]["organization"] = "Composio"
+            prospects.write_text(json.dumps(catalog), encoding="utf-8")
+            receipts.mkdir()
+            refused = subprocess.run(
+                [
+                    sys.executable,
+                    str(HOST),
+                    "run",
+                    "--html",
+                    str(FIXTURE),
+                    "--prospects",
+                    str(prospects),
+                    "--receipts",
+                    str(receipts),
+                    "--owner",
+                    "GROK",
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+            )
         self.assertEqual(refused.returncode, 4)
         self.assertIn("unclaimed sales", refused.stderr.casefold())
         self.assertEqual(refused.stdout.strip(), "")
@@ -243,7 +269,7 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
             text=True,
         ).stdout
         self.assertEqual(first, second)
-        self.assertEqual(first.strip(), "VALID 1 website 4 prospects 1 drafts 0 booked 0 sent")
+        self.assertEqual(first.strip(), "VALID 1 website 4 prospects 0 drafts 0 booked 0 sent")
 
     def test_checked_in_loop_matches_current_evidence_catalog(self) -> None:
         landed = json.loads(LOOP_JSON.read_text(encoding="utf-8"))
