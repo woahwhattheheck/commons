@@ -51,3 +51,14 @@ the lifecycle behavior, not real-producer frequency, runtime speed or game
 strength. Existing archives, held results, selected policy and hosted artifact
 are unchanged. The next ordinary adaptive consumer can use current source; no
 running experiment needs to be restarted for this change.
+
+## Hosted capture-fixture follow-through
+
+The original PR10120 focused run `34179199918` failed in the older capture
+harness: its supplied, non-expiring `Transformer` did not implement `expire`,
+so 17 of its 22 methods stopped before reaching their capture checks. Artifact
+`10038297839` retains the original logs. The fixture now explicitly implements
+that lifecycle method as a no-op; its original assertions and production source
+remain intact. All 22 capture methods pass locally with the merged runtime.
+The seven real-runtime completion methods remain the expiry evidence; the
+capture fixture is not presented as an independent lifecycle implementation.
