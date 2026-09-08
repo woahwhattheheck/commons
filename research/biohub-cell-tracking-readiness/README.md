@@ -10,6 +10,7 @@ This lane is a **public-contract scaffold**, not a Kaggle submission and not a t
 - `submission.csv` has exactly ten columns: `id,dataset,row_type,node_id,t,z,y,x,source_id,target_id`.
 - Node rows contain dataset-scoped node IDs plus integer `(t,z,y,x)` voxel centroids and use `-1` edge sentinels.
 - Edge rows contain dataset-scoped `(source_id,target_id)` references and use `-1` node/coordinate sentinels.
+- Tracking edges connect a cell at one timepoint to the same cell or daughters at the next timepoint (`t→t+1`).
 - Dataset names match test folder names without `.zarr`; every hidden-test dataset must appear.
 - Public data description: Zarr v3 image volumes `(T,Z,Y,X)`; physical voxel scale `(z,y,x)=(1.625,0.40625,0.40625)` microns/voxel; sparse GEFF ground truth for training only.
 
@@ -40,7 +41,7 @@ Do not copy challenge data into Commons. On the machine that is already authoriz
 python submission_contract.py submission.csv --expected-datasets private_test_names.txt --strict-consecutive
 ```
 
-`--strict-consecutive` matches the reference baseline's t→t+1 topology. Omit it only when intentionally evaluating a different forward-time representation.
+Consecutive `t→t+1` tracking edges are enforced by default. `--strict-consecutive` is retained as a compatibility spelling. The Python API permits `require_consecutive_edges=False` only for deliberate non-submission analysis; do not use that mode for Kaggle submission readiness.
 
 ## What this validator catches
 
@@ -49,7 +50,7 @@ python submission_contract.py submission.csv --expected-datasets private_test_na
 - malformed node/edge sentinel fields;
 - duplicate node IDs inside a dataset;
 - missing edge endpoints;
-- backward/self links;
+- non-consecutive, backward, or self links;
 - multiple parents or more than two children (division topology guard);
 - missing or unexpected datasets when a private expected-set list is supplied.
 

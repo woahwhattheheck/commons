@@ -52,6 +52,15 @@ class SubmissionContractTests(unittest.TestCase):
         with self.assertRaisesRegex(SubmissionError, "move forward in time"):
             validate_rows(rows)
 
+    def test_skipped_frame_edge_is_rejected_by_default(self) -> None:
+        rows = [
+            {"id": "0", "dataset": "d", "row_type": "node", "node_id": "1", "t": "0", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
+            {"id": "1", "dataset": "d", "row_type": "node", "node_id": "2", "t": "2", "z": "1", "y": "1", "x": "1", "source_id": "-1", "target_id": "-1"},
+            {"id": "2", "dataset": "d", "row_type": "edge", "node_id": "-1", "t": "-1", "z": "-1", "y": "-1", "x": "-1", "source_id": "1", "target_id": "2"},
+        ]
+        with self.assertRaisesRegex(SubmissionError, "consecutive frames"):
+            validate_rows(rows)
+
     def test_more_than_two_children_is_rejected(self) -> None:
         rows = [
             {"id": "0", "dataset": "d", "row_type": "node", "node_id": "0", "t": "0", "z": "0", "y": "0", "x": "0", "source_id": "-1", "target_id": "-1"},
