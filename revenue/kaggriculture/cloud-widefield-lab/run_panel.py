@@ -5,12 +5,18 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+from collections import Counter
 import hashlib
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
 import time
+
+PANEL_RNG_SEED = 20260907
+PANEL_LIMITS = {"action_rpc_seconds": 1.0, "startup_seconds": 10.0,
+                "game_seconds_between_steps": 120.0, "remaining_overage_time": 0}
 
 
 def sha256(path: Path) -> str:
@@ -21,39 +27,176 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def valid_report(path: Path, expected: int) -> bool:
+def _entry_identity(spec: str) -> dict:
+    """Direct entrypoint identity only; never import an agent to inspect a report."""
+    if not isinstance(spec, str):
+        raise TypeError("Agent spec must be text")
+    if spec == "official_starter":
+        return {"entry": spec}
+    path, sep, name = spec.partition("::")
+    source = Path(path).resolve(strict=True)
+    return {"entry": source.name, "callable": name if sep else "agent",
+            "sha256": sha256(source)}
+
+
+def expected_binding(job: dict, evaluator: Path, engine: Path, opponents: list[str]) -> dict:
+    """Match the explicit fields this existing panel command actually requests.
+
+    This is not a transitive import manifest or proof of prior execution. The
+    evaluator remains responsible for its official-source and action contracts.
+    """
+    seeds = job["seeds"]
+    if not seeds or any(type(seed) is not int for seed in seeds) or len(set(seeds)) != len(seeds):
+        raise ValueError("Panel seeds must be distinct integers")
+    rivals = {}
+    for item in opponents:
+        label, sep, spec = item.partition("=")
+        if not sep or not label or label in rivals or not spec:
+            raise ValueError("Panel opponents require unique nonempty label=spec entries")
+        rivals[label] = _entry_identity(spec)
+    if not rivals:
+        raise ValueError("Panel config requires explicit opponents")
+    loader = evaluator.resolve().parent.parent / "20260907-offline-agent" / "evaluate.py"
+    engine_bytes = {name: (engine / name).read_bytes() for name in
+                    ("kaggriculture.py", "kaggriculture.json", "utils.py")}
+    configuration = json.loads(engine_bytes["kaggriculture.json"])["configuration"]
+    episode_steps = configuration["episodeSteps"]["default"]
+    if type(episode_steps) is not int or episode_steps < 2:
+        raise ValueError("Engine episodeSteps default must be an integer >= 2")
+    return {"scope": "requested_cells_and_direct_source_files",
+            "agent_rng_seed": PANEL_RNG_SEED, "limits": dict(PANEL_LIMITS),
+            "episode_steps": episode_steps, "loader_sha256": sha256(loader),
+            "seeds": list(seeds), "candidate": _entry_identity(job["candidate"]),
+            "opponents": rivals, "evaluator_sha256": sha256(evaluator),
+            "engine_sha256": {name: hashlib.sha256(data).hexdigest()
+                              for name, data in engine_bytes.items()}}
+
+
+def inspect_report(path: Path, expected: int, binding: dict | None = None) -> dict:
+    """Read and bind one report snapshot; leave incomplete/mismatched bytes intact."""
     if not path.is_file():
-        return False
+        return {"complete": False, "problems": ["report_missing"], "sha256": None}
     try:
-        report = json.loads(path.read_text())
-    except (OSError, json.JSONDecodeError):
-        return False
-    games = report.get("games", [])
-    return len(games) == expected and all(g.get("status") == "complete" for g in games)
+        raw = path.read_bytes()
+    except OSError as error:
+        return {"complete": False, "problems": ["report_read:" + type(error).__name__], "sha256": None}
+    digest = hashlib.sha256(raw).hexdigest()
+    problems = []
+    try:
+        report = json.loads(raw)
+    except (ValueError, UnicodeError):
+        return {"complete": False, "problems": ["report_json"], "sha256": digest}
+    if not isinstance(report, dict):
+        return {"complete": False, "problems": ["report_object"], "sha256": digest}
+    games = report.get("games")
+    if not isinstance(games, list):
+        return {"complete": False, "problems": ["games_list"], "sha256": digest}
+    if len(games) != expected:
+        problems.append("game_count")
+    cells = []
+    for game in games:
+        if not isinstance(game, dict):
+            problems.append("game_object")
+            continue
+        if game.get("status") != "complete" or game.get("failure") is not None:
+            problems.append("game_incomplete")
+        scores = game.get("scores")
+        if (not isinstance(scores, list) or len(scores) != 2 or any(
+                not (type(value) is int or type(value) is float and math.isfinite(value)) for value in scores)):
+            problems.append("game_scores")
+        if binding is not None:
+            if type(game.get("episode_steps")) is not int or game.get("episode_steps") != binding["episode_steps"]:
+                problems.append("episode_steps")
+            seed, seat, opponent = game.get("seed"), game.get("candidate_seat"), game.get("opponent")
+            if type(seed) is not int or type(seat) is not int or seat not in (0, 1) or not isinstance(opponent, str):
+                problems.append("game_cell")
+            else:
+                cells.append((seed, seat, opponent))
+    if binding is not None:
+        seeds = report.get("seeds")
+        if (not isinstance(seeds, list) or any(type(seed) is not int for seed in seeds)
+                or seeds != binding["seeds"]):
+            problems.append("seeds")
+        for key in ("evaluator_sha256", "engine_sha256", "loader_sha256", "agent_rng_seed", "limits"):
+            if report.get(key) != binding[key]:
+                problems.append(key)
+        limits = report.get("limits")
+        if not isinstance(limits, dict) or any(type(v) not in (int, float) for v in limits.values()):
+            problems.append("limits")
+        candidate = report.get("candidate")
+        if not isinstance(candidate, dict) or any(candidate.get(k) != v for k, v in binding["candidate"].items()):
+            problems.append("candidate_source")
+        rivals = report.get("opponents")
+        if not isinstance(rivals, dict) or set(rivals) != set(binding["opponents"]):
+            problems.append("opponent_labels")
+        else:
+            for label, ident in binding["opponents"].items():
+                found = rivals[label]
+                if not isinstance(found, dict) or any(found.get(k) != v for k, v in ident.items()):
+                    problems.append("opponent_source:" + label)
+        wanted = Counter((seed, seat, label) for seed in binding["seeds"]
+                         for label in binding["opponents"] for seat in (0, 1))
+        if Counter(cells) != wanted:
+            problems.append("game_cells")
+    progress = report.get("progress")
+    if progress is not None and (not isinstance(progress, dict) or progress.get("state") != "complete"):
+        problems.append("progress_incomplete")
+    return {"complete": not problems, "problems": sorted(set(problems)), "sha256": digest}
+
+
+def valid_report(path: Path, expected: int, binding: dict | None = None) -> bool:
+    # The two-argument compatibility form checks structure only. run_job always
+    # supplies the requested source/cell binding for an execution/reuse verdict.
+    return inspect_report(path, expected, binding)["complete"]
 
 
 def run_job(job: dict, evaluator: Path, engine: Path, opponents: list[str], out: Path) -> dict:
+    try:
+        binding = expected_binding(job, evaluator, engine, opponents)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        return {**job, "status": "failed", "reason": "binding_unavailable",
+                "error": type(error).__name__ + ": " + str(error)}
     seeds = job["seeds"]
     target = out / "raw" / job["arm"] / (f"{seeds[0]}-{seeds[-1]}.json")
     log = out / "logs" / job["arm"] / (f"{seeds[0]}-{seeds[-1]}.log")
     target.parent.mkdir(parents=True, exist_ok=True)
     log.parent.mkdir(parents=True, exist_ok=True)
     expected = len(seeds) * len(opponents) * 2
-    if valid_report(target, expected):
-        return {**job, "status": "reused-complete", "report": str(target), "sha256": sha256(target)}
+    validation = inspect_report(target, expected, binding)
+    if validation["complete"]:
+        return {**job, "status": "reused-complete", "report": str(target),
+                "sha256": validation["sha256"], "source_binding": binding}
+    if target.exists() or log.exists():
+        # Preserve prior attempts, including failures. Explicit failed-cell replay
+        # remains with the existing replay_failed_cells tool, not this resume check.
+        return {**job, "status": "failed", "reason": "existing_evidence_not_reusable",
+                "report": str(target), "log": str(log), "sha256": validation["sha256"],
+                "validation": validation, "source_binding": binding}
     cmd = [sys.executable, "-B", str(evaluator), "--engine-dir", str(engine),
-           "--candidate", job["candidate"]]
+           "--candidate", job["candidate"],
+           "--loader", str(evaluator.resolve().parent.parent / "20260907-offline-agent" / "evaluate.py"),
+           "--rng-seed", str(PANEL_RNG_SEED),
+           "--action-timeout", str(PANEL_LIMITS["action_rpc_seconds"]),
+           "--startup-timeout", str(PANEL_LIMITS["startup_seconds"]),
+           "--game-timeout", str(PANEL_LIMITS["game_seconds_between_steps"])]
     for opponent in opponents:
         cmd += ["--opponent", opponent]
     cmd += ["--seeds", ",".join(map(str, seeds)), "--output", str(target)]
     started = time.time()
     proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     log.write_text(proc.stdout)
-    complete = valid_report(target, expected)
-    return {**job, "status": "complete" if complete and proc.returncode == 0 else "failed",
+    validation = inspect_report(target, expected, binding)
+    try:
+        if expected_binding(job, evaluator, engine, opponents) != binding:
+            validation["problems"].append("source_changed_during_job")
+            validation["complete"] = False
+    except (OSError, ValueError, KeyError, TypeError):
+        validation["problems"].append("source_unavailable_after_job")
+        validation["complete"] = False
+    return {**job, "status": "complete" if validation["complete"] and proc.returncode == 0 else "failed",
             "returncode": proc.returncode, "elapsed_seconds": time.time() - started,
-            "report": str(target), "log": str(log),
-            "sha256": sha256(target) if target.is_file() else None}
+            "report": str(target), "log": str(log), "sha256": validation["sha256"],
+            "validation": validation, "source_binding": binding}
 
 
 def main() -> int:
