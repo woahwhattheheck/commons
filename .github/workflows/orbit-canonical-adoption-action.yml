@@ -13,20 +13,29 @@ jobs:
   execute-one:
     runs-on: ubuntu-24.04-arm
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-          persist-credentials: false
-          sparse-checkout: |
-            /action_executor.py
-            /p/
-            /actions/
-            /revenue/kaggriculture/
-          sparse-checkout-cone-mode: false
+      - name: Full-history partial sparse checkout of current main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init repo
+          cd repo
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git config core.sparseCheckout true
+          git config core.sparseCheckoutCone false
+          cat > .git/info/sparse-checkout <<'EOF'
+          /action_executor.py
+          /p/
+          /actions/
+          /revenue/kaggriculture/
+          EOF
+          git fetch --filter=blob:none --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          git checkout --detach origin/main
+          test "$(git rev-parse --is-shallow-repository)" = false
       - name: Execute only the committed canonical-adoption ACTION
+        working-directory: repo
         run: python3 action_executor.py --scope github --only-id cancel-canonical-adoption-20260908-01 > .action_changed.json
       - name: Pack exact changed bytes and effect receipt
+        working-directory: repo
         run: |
           python3 - <<'PY'
           import json
@@ -63,7 +72,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: canonical-adoption-action-outputs
-          path: .action_artifact
+          path: repo/.action_artifact
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 1
@@ -76,7 +85,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          fetch-depth: 1
           sparse-checkout: |
             /action_land.py
             /actions/
