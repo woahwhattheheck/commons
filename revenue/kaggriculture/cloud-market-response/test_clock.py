@@ -305,11 +305,11 @@ def main():
     parser.add_argument('--source-dir', default=str(HERE))
     parser.add_argument('--report')
     parser.add_argument('--archive')
-    parser.add_argument('--worker', action='store_true')
     parser.add_argument('--entry', choices=('direct', 'policy', 'main', 'raw'), default='direct')
     parser.add_argument('--clock', choices=('explicit', 'sparse', 'none'), default='sparse')
     parser.add_argument('--player', type=int, choices=(0, 1), default=0)
     parser.add_argument('--steps', type=int, default=96)
+    parser.add_argument('--worker', action='store_true')
     args = parser.parse_args()
     SOURCE = Path(args.source_dir).resolve()
     if args.worker:
