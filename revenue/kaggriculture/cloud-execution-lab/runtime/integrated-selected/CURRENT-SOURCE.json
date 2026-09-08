@@ -465,8 +465,8 @@
       "source_path": "reference/integrated-selected/UPSTREAM.json"
     },
     "reference/integrated-selected/alder/seed_budget.py": {
-      "bytes": 3732,
-      "sha256": "1e62a846cffd344956add4b7b8763f09695ee3ce3c30573e490b26cd74f2f919",
+      "bytes": 4430,
+      "sha256": "f869ae7834a9b5e49cbace09c9d01c116182e7c3d74a5ca53ee21cd31834473a",
       "source_path": "reference/integrated-selected/alder/seed_budget.py"
     },
     "reference/integrated-selected/claude/LICENSE-APACHE-2.0.txt": {
