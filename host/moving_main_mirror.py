@@ -499,7 +499,7 @@ ADAPTERS = (
         "external_provider_action": (
             "On Codeberg, create a public repository that pull-mirrors "
             "https://github.com/woahwhattheheck/commons.git. Do not put a token in this "
-            "repository. After a public origin URL exists, set adapter "
+            "repository. After the public origin URL exists, set adapter "
             "codeberg-pull-mirror.origin to that URL."
         ),
     },
