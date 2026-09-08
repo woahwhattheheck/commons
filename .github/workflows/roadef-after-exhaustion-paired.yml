@@ -50,7 +50,7 @@ jobs:
           record['portfolio_seconds'] = 585
           record['internal_search_seconds'] = 565
           record['solver_trials_planned'] = 4
-          record['submission'] = 'not authorized; no qualification action in this workflow'
+          record['submission'] = 'paired trial diagnostics; qualification handled separately'
           pathlib.Path(os.environ['TRIAL_ROOT'], 'RUN.json').write_text(json.dumps(record, indent=2) + '\n')
           PY
 
