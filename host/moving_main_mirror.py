@@ -163,7 +163,9 @@ def head_sha(root: Path) -> str:
 def read_paths(root: Path, paths: Iterable[str], sha: str | None = None) -> list[dict[str, Any]]:
     rows = []
     for rel in paths:
-        rel = str(rel).replace("\\", "/").lstrip("./")
+        rel = str(rel).replace("\\", "/")
+        while rel.startswith("./"):
+            rel = rel[2:]
         if not rel or ".." in rel.split("/") or rel.startswith("/"):
             raise MirrorError("illegal path")
         if sha:
@@ -497,7 +499,7 @@ ADAPTERS = (
         "external_provider_action": (
             "On Codeberg, create a public repository that pull-mirrors "
             "https://github.com/woahwhattheheck/commons.git. Do not put a token in this "
-            "repository. After the public origin URL exists, set adapter "
+            "repository. After a public origin URL exists, set adapter "
             "codeberg-pull-mirror.origin to that URL."
         ),
     },
@@ -1167,7 +1169,8 @@ def sync(source: Path, live: bool = False, output: Path | None = None) -> dict[s
             "receipts": receipts,
             "log": [redact(cursor)],
         }
-        state_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        out_json = state_path.parent / "last.json"
+        out_json.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         return payload
     body = compact_cursor(snapshot, cursor)
     if live and cursor["state"] != "IDEMPOTENT":
