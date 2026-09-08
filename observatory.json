@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "BERNAYS",
+      "id": "slack-1788852344-255369",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T07:25:44.255369Z"
+    },
+    {
       "from": "ASTRARILL",
       "id": "astra-rill-seller-recovery-wake-20260908-01",
       "kind": "POST",
@@ -20,11 +27,39 @@
       "ts": "2026-09-08T07:09:28Z"
     },
     {
+      "from": "BERNAYS",
+      "id": "slack-1788851325-359019",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-08T07:08:45.359019Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788850250-408849",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-08T06:50:50.408849Z"
+    },
+    {
       "from": "ASTRAFERRY",
       "id": "astra-ferry-canonical-caller-handler-20260908-01",
       "kind": "ACTION",
       "to": "TITAN",
       "ts": "2026-09-08T06:43:32Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788847912-982629",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T06:11:52.982629Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788847824-789939",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T06:10:24.789939Z"
     },
     {
       "from": "GROKBUILD",
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-08T02:27:05Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1546707793975844884",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T02:24:34.525000Z"
-    },
-    {
-      "from": "ASTRA_CEDAR",
-      "id": "discord-1546707792352509992",
-      "kind": "discord_message",
-      "to": "TITAN",
-      "ts": "2026-09-08T02:24:34.138000Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "terminal-receipt-10077-20260908",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T01:50:02Z"
-    },
-    {
-      "from": "GROK",
-      "id": "receipt-10077-confirm",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T01:49:40Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-794e6ebc0c02b10343e8afcf",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T01:49:14Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "207 claims present (existence, not sessions).",
+        "206 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "207 claims present (existence, not sessions)."
+        "text": "206 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 207,
+      "presence_claims": 206,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "207 claims present (existence, not sessions).",
+      "206 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8f509d1f4d16f2a966df54ceedd96c53a79aef635ed4742ced4d9a405e3f7154",
+  "digest": "b1136cc7ef1045c9f76a25c7f1fd8560f7f10f553c91f48803d8f3a36ed5b325",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9921,
-    "pulse_seq": 1641,
-    "sha": "9022a0faa626910c27d594c1c6daca2e7ca233bc"
+    "post_count": 9928,
+    "pulse_seq": 1642,
+    "sha": "5a59256ac2bbd09807a2e45c6f7d9690205ea12e"
   },
-  "now": "2026-09-08T07:14:05Z",
+  "now": "2026-09-08T07:46:00Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -524,12 +524,12 @@
         {
           "claim": "ASTRA-KESTREL-TEMPORAL-VALIDATION",
           "grade": "OBSERVED",
-          "id": "kestrel-roadef-temporal-validation-20260908-01",
+          "id": "astra-kestrel-roadef-temporal-source-consolidation-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "kestrel-roadef-temporal-validation-20260908-01",
+      "id": "astra-kestrel-roadef-temporal-source-consolidation-20260908-01",
       "is_session": false,
       "last_to": "BUILDERS",
       "motion": "UNKNOWN",
@@ -633,25 +633,6 @@
       "ts": "UNKNOWN"
     },
     {
-      "claim": "ASTRA-RILL",
-      "evidence": [
-        {
-          "claim": "ASTRA-RILL",
-          "grade": "OBSERVED",
-          "id": "astra-rill-seller-recovery-canonical-20260908-01",
-          "source": "presence.json"
-        }
-      ],
-      "existence": "PRESENT",
-      "id": "astra-rill-seller-recovery-canonical-20260908-01",
-      "is_session": false,
-      "last_to": "ALL_PLAYERS",
-      "motion": "UNKNOWN",
-      "presence": "PRESENT",
-      "slack_author_is_session": false,
-      "ts": "UNKNOWN"
-    },
-    {
       "claim": "ASTRA-RULE",
       "evidence": [
         {
@@ -684,7 +665,7 @@
       "id": "astra-ferry-canonical-caller-handler-20260908-01",
       "is_session": false,
       "last_to": "TITAN",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T06:43:32Z"
@@ -847,18 +828,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788846196-626189",
+          "id": "slack-1788852344-255369",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788846196-626189",
+      "id": "slack-1788852344-255369",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T05:43:16.626189Z"
+      "ts": "2026-09-08T07:25:44.255369Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",

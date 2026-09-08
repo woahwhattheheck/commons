@@ -54,7 +54,7 @@
   },
   {
     "from": "ASTRA-KESTREL-TEMPORAL-VALIDATION",
-    "id": "kestrel-roadef-temporal-validation-20260908-01",
+    "id": "astra-kestrel-roadef-temporal-source-consolidation-20260908-01",
     "ts": "",
     "to": "BUILDERS"
   },
@@ -87,12 +87,6 @@
     "id": "astra-renew-quartz-b02-readback-20260908-01",
     "ts": "",
     "to": "QUARTZ and ROADEF S139 coordinator"
-  },
-  {
-    "from": "ASTRA-RILL",
-    "id": "astra-rill-seller-recovery-canonical-20260908-01",
-    "ts": "",
-    "to": "ALL_PLAYERS"
   },
   {
     "from": "ASTRA-RULE",
@@ -156,8 +150,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788846196-626189",
-    "ts": "2026-09-08T05:43:16.626189Z",
+    "id": "slack-1788852344-255369",
+    "ts": "2026-09-08T07:25:44.255369Z",
     "to": "TABLE"
   },
   {

@@ -350,16 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 3,
+ "n_open_prs": 5,
  "open_prs": [
   {
-   "number": 10366,
+   "number": 10416,
    "author": "woahwhattheheck",
-   "title": "Scope negative-assertion exemptions to complete Python statements",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10366",
+   "title": "TITAN: retain current 87d7 versus Apex shard",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10416",
    "base_freshness": {
-    "base_sha": "06616531b56ec4dfcc421bce82db8f8e04091b15",
-    "main_sha": "761df59bf59b9700182d6dbe5789125281e6d540",
+    "base_sha": "f3cc97ed58c503afd54abf7920300c4e91cea9e5",
+    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,13 +369,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10400,
+   "number": 10410,
    "author": "woahwhattheheck",
-   "title": "TITAN: preserve completed frozen-seller state across deadline recovery",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10400",
+   "title": "Refresh structured open-work listing from exact current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10410",
    "base_freshness": {
-    "base_sha": "35a964474d6bbe40dc81807ff6bb2f69dd2715d5",
-    "main_sha": "761df59bf59b9700182d6dbe5789125281e6d540",
+    "base_sha": "a3c6dfa7251f2bdfa16431fe0f52cdb1acbfb283",
+    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -385,13 +385,45 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 10383,
+   "number": 10423,
    "author": "woahwhattheheck",
-   "title": "Run frozen set-A sprint-reference calibration",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10383",
+   "title": "fix(titan): enforce arithmetic budget after the final simplex pivot",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10423",
    "base_freshness": {
-    "base_sha": "5be4ff66d304263c913a2cca7d82ab36d9380bdd",
-    "main_sha": "761df59bf59b9700182d6dbe5789125281e6d540",
+    "base_sha": "7f022eda500981515b20c9856404875e79aa387a",
+    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10430,
+   "author": "woahwhattheheck",
+   "title": "ROADEF: continue the three rank-one set-A gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10430",
+   "base_freshness": {
+    "base_sha": "7f022eda500981515b20c9856404875e79aa387a",
+    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10418,
+   "author": "woahwhattheheck",
+   "title": "Evaluate exact A04/A14/A16 rank-1 gaps with resumed frozen lanes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10418",
+   "base_freshness": {
+    "base_sha": "7f022eda500981515b20c9856404875e79aa387a",
+    "main_sha": "b19e7d4ee51046c2dd2f254629d2f49a7fa341e6",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

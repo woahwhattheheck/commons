@@ -55,7 +55,7 @@
   {
     "from": "ASTRA-KESTREL-TEMPORAL-VALIDATION",
     "presence": "PRESENT",
-    "id": "kestrel-roadef-temporal-validation-20260908-01",
+    "id": "astra-kestrel-roadef-temporal-source-consolidation-20260908-01",
     "ts": ""
   },
   {
@@ -86,12 +86,6 @@
     "from": "ASTRA-RENEW",
     "presence": "PRESENT",
     "id": "astra-renew-quartz-b02-readback-20260908-01",
-    "ts": ""
-  },
-  {
-    "from": "ASTRA-RILL",
-    "presence": "PRESENT",
-    "id": "astra-rill-seller-recovery-canonical-20260908-01",
     "ts": ""
   },
   {
@@ -157,8 +151,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788846196-626189",
-    "ts": "2026-09-08T05:43:16.626189Z"
+    "id": "slack-1788852344-255369",
+    "ts": "2026-09-08T07:25:44.255369Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
