@@ -18,6 +18,8 @@
     return body;
   }
   async function refresh() {
+    if (busy) return null;
+    busy = true; controls();
     try {
       const current = await api();
       revision = current.revision;
@@ -25,9 +27,14 @@
       status(`Server revision ${revision}. ${current.present ? 'A backup is saved; download it before replacing unfamiliar work.' : 'No server backup saved.'}`);
       return current;
     } catch (error) { status(error.message); return null; }
-    finally { controls(); }
+    finally { busy = false; controls(); }
   }
   async function write(deleting = false) {
+    if (busy) return;
+    if (revision === null) { status('Read the server revision first.'); return; }
+    if (!deleting && pending === null && selected === null) {
+      status('Select a workspace backup before saving.'); controls(); return;
+    }
     busy = true; controls();
     try {
       if (!pending) pending = {payload: deleting ? null : selected,
@@ -41,7 +48,8 @@
     } finally { busy = false; controls(); }
   }
   byId('backup').onchange = async () => {
-    selected = null; pending = null;
+    if (busy) return;
+    selected = null; pending = null; busy = true; controls();
     try {
       const file = byId('backup').files[0];
       if (!file) { status('No file selected.'); return; }
@@ -52,14 +60,16 @@
       selected = text;
       status(`${file.name} selected, not saved. Saving will replace the single server backup at revision ${revision}.`);
     } catch (error) { status(error.message); }
-    finally { controls(); }
+    finally { busy = false; controls(); }
   };
   byId('save').onclick = () => write();
   byId('refresh').onclick = () => {
+    if (busy) return;
     if (pending && !confirm('Discard this retry receipt and read the latest server revision? No data will be saved.')) return;
     refresh();
   };
   byId('download').onclick = async () => {
+    if (busy) return;
     busy = true; controls();
     try {
       const current = await api();
@@ -74,6 +84,7 @@
     finally { busy = false; controls(); }
   };
   byId('erase').onclick = () => {
+    if (busy) return;
     if (revision === null) { status('Read the server revision first.'); return; }
     if (pending) { status('Resolve or explicitly discard the pending operation before deleting.'); return; }
     if (confirm('Delete the current server backup? Browser records, existing downloads and external backups are not removed.')) write(true);
