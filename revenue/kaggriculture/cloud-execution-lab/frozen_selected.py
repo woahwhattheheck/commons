@@ -8,6 +8,54 @@ Original scheduler and sale valuation remain intact.
 from scheduler import *
 
 class FrozenSelected(SellScheduler):
+    def receipt_profile(self, obs, base, farm, private, end, item, config):
+        """Conditional exact own-unit deposits, bounded to the current day.
+
+        Follow the unchanged current tape, no RNG or new shops. Enlarging the
+        projection shed records requested arrivals so overflow cannot disappear
+        from feasibility. Other current sells and later tape sells release room.
+        """
+        now=int(obs['step']);cap=int(config.get('shedCapacity',100))
+        f,p=copy.deepcopy(farm),copy.deepcopy(private)
+        for o in base['market']:
+            if o and o[0]=='SELL' and len(o)>2 and o[1]!=item:
+                p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
+        profile=[]
+        route=self.controller.R[self.controller.cur]
+        for t in range(now,end+1):
+            unit_peak=sum(p['shed'].values())
+            if t>now:
+                act=route[t] if t<len(route) else parent.PASS
+                acts=[act.get('farmer',['PASS']),*act.get('hands',[])]
+                for i,a in enumerate(acts):
+                    m._apply_unit_action(f,p,i,a,len(f['tiles']),t//24,24,10**6)
+                    # A later worker withdrawal cannot recover an earlier spill.
+                    unit_peak=max(unit_peak,sum(p['shed'].values()))
+            # Every ordered unit transfer must fit before this turn's market.
+            profile.append((t,'before',unit_peak))
+            orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
+            for o in orders:
+                if not o:continue
+                if o[0]=='SELL' and t>now and o[1]!=item:
+                    p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
+                elif o[0] in ('BUY_PRODUCT','BUY_ANIMAL') and len(o)>2:
+                    p['shed'][o[1]]=p['shed'].get(o[1],0)+int(o[2])
+                elif o[0]=='HIRE':
+                    f['hands'].append(m._spawn_hand(f,len(f['tiles'])));p['inventories'].append({})
+            if t%24==23:
+                m._drop_inventories_to_shed(p,10**6)
+                profile.append((t,'after',sum(p['shed'].values())))
+                break
+            profile.append((t,'after',sum(p['shed'].values())))
+        def feasible(plan):
+            sold=0;orders=dict(plan)
+            for t,phase,total in profile:
+                if phase=='after':sold+=orders.get(t,0)
+                if t==now and phase=='before':continue
+                if total-sold>cap-1:return False
+            return True
+        return feasible
+
     def transform(self, obs, config, base):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
         self.observe(obs)
