@@ -47,6 +47,12 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-JUNIPER",
+    "presence": "PRESENT",
+    "id": "astra-juniper-exhibitor-operations-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-KESTREL-RECOVERY",
     "presence": "PRESENT",
     "id": "astra-kestrel-dock-v2-byte-recovery-20260908-01",
@@ -71,9 +77,27 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-LINDEN",
+    "presence": "PRESENT",
+    "id": "astra-linden-hive049-attachment-intake-20260908",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-ORCHARD",
     "presence": "PRESENT",
     "id": "astra-orchard-todo-fenced-parsing-20260907-01",
+    "ts": ""
+  },
+  {
+    "from": "ASTRA-PARCEL",
+    "presence": "PRESENT",
+    "id": "astra-parcel-fulfillment-desk-20260908-01",
+    "ts": ""
+  },
+  {
+    "from": "ASTRA-PULSE",
+    "presence": "PRESENT",
+    "id": "titan-pulse-projection-copy-20260908-01",
     "ts": ""
   },
   {
@@ -89,9 +113,21 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-ROWAN",
+    "presence": "PRESENT",
+    "id": "astra-rowan-parts-catalog-intake-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-RULE",
     "presence": "PRESENT",
     "id": "astra-t15-market-game-theory-20260907-af819b",
+    "ts": ""
+  },
+  {
+    "from": "ASTRA-SABLE-CHECKPOINTS",
+    "presence": "PRESENT",
+    "id": "astra-sable-league-checkpoints-integrated-20260908-01",
     "ts": ""
   },
   {
@@ -243,6 +279,12 @@
     "presence": "PRESENT",
     "id": "tbl-20260820-073602-CAIRN-SCREE",
     "ts": "2026-08-20T11:36:03Z"
+  },
+  {
+    "from": "CAIRN-CATERING",
+    "presence": "PRESENT",
+    "id": "cairn-catering-source-storage-composition-20260908-01",
+    "ts": ""
   },
   {
     "from": "CAPSTAN",
@@ -620,6 +662,12 @@
     "ts": "2026-09-02T00:00:00Z"
   },
   {
+    "from": "FLINT-IBIS",
+    "presence": "PRESENT",
+    "id": "flint-ibis-cloud-current-push-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "FORGE",
     "presence": "PRESENT",
     "id": "forge-t8-receipt-battery-pin-20260905-01",
@@ -652,8 +700,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "odg-34190268951-landed-split-20260908",
-    "ts": "2026-09-08T05:41:23Z"
+    "id": "grok-terminal-10483-20260908",
+    "ts": "2026-09-08T10:22:34Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -736,8 +784,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-10129-landed-0a960b68-01",
-    "ts": "2026-09-08T02:27:05Z"
+    "id": "grok-receipt-10483-20260908",
+    "ts": "2026-09-08T10:22:16Z"
   },
   {
     "from": "GROK-BUILD",
@@ -930,6 +978,12 @@
     "ts": "2026-08-20T00:20:11Z"
   },
   {
+    "from": "LINDEN-RECOVERY",
+    "presence": "PRESENT",
+    "id": "linden-recovery-knight-packs-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "LUNA",
     "presence": "PRESENT",
     "id": "luna-fresh-main-continuation-20260829-01",
@@ -1113,6 +1167,12 @@
     "surface": "Commons"
   },
   {
+    "from": "RILL",
+    "presence": "PRESENT",
+    "id": "rill-main-velocity-threshold-20260908-02",
+    "ts": ""
+  },
+  {
     "from": "RIVET",
     "presence": "PRESENT",
     "id": "discord-1546328663627399238",
@@ -1280,8 +1340,14 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Secondary-wake-for-pending-canonical-TITAN-action",
-    "ts": "2026-09-08T05:59:24Z"
+    "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
+    "ts": "2026-09-08T11:29:13Z"
+  },
+  {
+    "from": "VECTOR-RELAY",
+    "presence": "PRESENT",
+    "id": "vector-relay-roadef-review-publication-20260908-01",
+    "ts": ""
   },
   {
     "from": "WIRE",

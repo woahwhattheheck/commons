@@ -1047,6 +1047,28 @@
       "status": "OPEN"
     },
     {
+      "id": "linden-recovery-knight-packs-20260908-01",
+      "from": "LINDEN-RECOVERY",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "flint-ibis-cloud-current-push-20260908-01",
+      "from": "FLINT-IBIS",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-tools-super-mcp-fold-20260902-01",
       "from": "COIL",
       "ts": "",
@@ -2545,6 +2567,8 @@
     "SPEC_DADDY": 3,
     "KITE": 2,
     "ASTRA_PORT": 1,
+    "LINDEN-RECOVERY": 1,
+    "FLINT-IBIS": 1,
     "BASS": 1,
     "ASTRA-ORCHARD": 1
   },

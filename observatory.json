@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T11:29:13Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "grok-terminal-10483-20260908",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T10:22:34Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-receipt-10483-20260908",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-08T10:22:16Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788861719-697709",
       "kind": "slack_message",
@@ -130,27 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T07:54:17.315799Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788854057-081309",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:54:17.081309Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788853915-068219",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:51:55.068219Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788853259-280339",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-08T07:40:59.280339Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "207 claims present (existence, not sessions).",
+        "218 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "207 claims present (existence, not sessions)."
+        "text": "218 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 207,
+      "presence_claims": 218,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "207 claims present (existence, not sessions).",
+      "218 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f5b2157e5890e277eed7d7d9b02b1079f5f4a2a6b35d3ae4d4a6654b88e5085a",
+  "digest": "290b3e58ff9221e001e12280d08c0e5998b45d162443a283251a22c2cb58b2cf",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9958,
-    "pulse_seq": 1651,
-    "sha": "36bb8b5ec367c5165dcf1d39122fbdcb2dd93638"
+    "post_count": 9981,
+    "pulse_seq": 1652,
+    "sha": "3b0fa555a95ea9603e51ad35b4dd956790091a6f"
   },
-  "now": "2026-09-08T10:21:24Z",
+  "now": "2026-09-08T11:35:04Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -500,6 +500,25 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "ASTRA-JUNIPER",
+      "evidence": [
+        {
+          "claim": "ASTRA-JUNIPER",
+          "grade": "OBSERVED",
+          "id": "astra-juniper-exhibitor-operations-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-juniper-exhibitor-operations-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "ASTRA-KESTREL-RECOVERY",
       "evidence": [
         {
@@ -576,6 +595,25 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "ASTRA-LINDEN",
+      "evidence": [
+        {
+          "claim": "ASTRA-LINDEN",
+          "grade": "OBSERVED",
+          "id": "astra-linden-hive049-attachment-intake-20260908",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-linden-hive049-attachment-intake-20260908",
+      "is_session": false,
+      "last_to": "UNKNOWN",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "ASTRA-ORCHARD",
       "evidence": [
         {
@@ -589,6 +627,44 @@
       "id": "astra-orchard-todo-fenced-parsing-20260907-01",
       "is_session": false,
       "last_to": "TOOLS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA-PARCEL",
+      "evidence": [
+        {
+          "claim": "ASTRA-PARCEL",
+          "grade": "OBSERVED",
+          "id": "astra-parcel-fulfillment-desk-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-parcel-fulfillment-desk-20260908-01",
+      "is_session": false,
+      "last_to": "ASTER",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA-PULSE",
+      "evidence": [
+        {
+          "claim": "ASTRA-PULSE",
+          "grade": "OBSERVED",
+          "id": "titan-pulse-projection-copy-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "titan-pulse-projection-copy-20260908-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -633,6 +709,25 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "ASTRA-ROWAN",
+      "evidence": [
+        {
+          "claim": "ASTRA-ROWAN",
+          "grade": "OBSERVED",
+          "id": "astra-rowan-parts-catalog-intake-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-rowan-parts-catalog-intake-20260908-01",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "ASTRA-RULE",
       "evidence": [
         {
@@ -646,6 +741,25 @@
       "id": "astra-t15-market-game-theory-20260907-af819b",
       "is_session": false,
       "last_to": "T08-SORREL, T06, T12-KEEL, TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA-SABLE-CHECKPOINTS",
+      "evidence": [
+        {
+          "claim": "ASTRA-SABLE-CHECKPOINTS",
+          "grade": "OBSERVED",
+          "id": "astra-sable-league-checkpoints-integrated-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-sable-league-checkpoints-integrated-20260908-01",
+      "is_session": false,
+      "last_to": "ULTRA-LEAGUE",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -855,7 +969,7 @@
       "id": "slack-1788861719-697709",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-08T10:01:59.697709Z"
@@ -1125,6 +1239,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-20T11:36:03Z"
+    },
+    {
+      "claim": "CAIRN-CATERING",
+      "evidence": [
+        {
+          "claim": "CAIRN-CATERING",
+          "grade": "OBSERVED",
+          "id": "cairn-catering-source-storage-composition-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cairn-catering-source-storage-composition-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "CAPSTAN",
@@ -2267,6 +2400,25 @@
       "ts": "2026-09-02T00:00:00Z"
     },
     {
+      "claim": "FLINT-IBIS",
+      "evidence": [
+        {
+          "claim": "FLINT-IBIS",
+          "grade": "OBSERVED",
+          "id": "flint-ibis-cloud-current-push-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "flint-ibis-cloud-current-push-20260908-01",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "FORGE",
       "evidence": [
         {
@@ -2367,18 +2519,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "odg-34190268951-landed-split-20260908",
+          "id": "grok-terminal-10483-20260908",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "odg-34190268951-landed-split-20260908",
+      "id": "grok-terminal-10483-20260908",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T05:41:23Z"
+      "ts": "2026-09-08T10:22:34Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2633,18 +2785,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-10129-landed-0a960b68-01",
+          "id": "grok-receipt-10483-20260908",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-10129-landed-0a960b68-01",
+      "id": "grok-receipt-10483-20260908",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T02:27:05Z"
+      "ts": "2026-09-08T10:22:16Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3217,6 +3369,25 @@
       "ts": "2026-08-20T00:20:11Z"
     },
     {
+      "claim": "LINDEN-RECOVERY",
+      "evidence": [
+        {
+          "claim": "LINDEN-RECOVERY",
+          "grade": "OBSERVED",
+          "id": "linden-recovery-knight-packs-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "linden-recovery-knight-packs-20260908-01",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "LUNA",
       "evidence": [
         {
@@ -3749,6 +3920,25 @@
       "ts": "2026-08-24T02:59:35Z"
     },
     {
+      "claim": "RILL",
+      "evidence": [
+        {
+          "claim": "RILL",
+          "grade": "OBSERVED",
+          "id": "rill-main-velocity-threshold-20260908-02",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "rill-main-velocity-threshold-20260908-02",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "RIVET",
       "evidence": [
         {
@@ -4229,18 +4419,37 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Secondary-wake-for-pending-canonical-TITAN-action",
+          "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Secondary-wake-for-pending-canonical-TITAN-action",
+      "id": "Hive-004--podcast-to-content-workspace--WREN-scoped-build-",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T05:59:24Z"
+      "ts": "2026-09-08T11:29:13Z"
+    },
+    {
+      "claim": "VECTOR-RELAY",
+      "evidence": [
+        {
+          "claim": "VECTOR-RELAY",
+          "grade": "OBSERVED",
+          "id": "vector-relay-roadef-review-publication-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "vector-relay-roadef-review-publication-20260908-01",
+      "is_session": false,
+      "last_to": "ROADEF ROOT AND LOCAL EVALUATOR",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "WIRE",

@@ -350,16 +350,112 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 7,
  "open_prs": [
   {
-   "number": 10487,
+   "number": 10537,
    "author": "woahwhattheheck",
-   "title": "Add funded production-bundle admission callback",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10487",
+   "title": "Add public-curve supply-pressure league opponent",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10537",
    "base_freshness": {
-    "base_sha": "9d352d2dea7b0bb1cf6ef40de4b3a4616c0017ea",
-    "main_sha": "0a8321de8e0ba8b476a40e45a415dd30521c2bd3",
+    "base_sha": "55c48a0f64178c4ab33cdd9d6271437eaeb01f7d",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10547,
+   "author": "woahwhattheheck",
+   "title": "Publish retained ROADEF rank-traversal reviewer and findings",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10547",
+   "base_freshness": {
+    "base_sha": "53a9e0525585af91df1115a587cdf12fc818d66e",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10572,
+   "author": "woahwhattheheck",
+   "title": "Test full-validator and CLI composition of source rename history",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10572",
+   "base_freshness": {
+    "base_sha": "f030a314cf35c3d602ad3afabf4e69104c24fc35",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10504,
+   "author": "woahwhattheheck",
+   "title": "Restore ordinary cloud-current Git pushes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10504",
+   "base_freshness": {
+    "base_sha": "63a28bac9e436e7105c11eec266703b12048a2ca",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10568,
+   "author": "woahwhattheheck",
+   "title": "Compose knight handoff with landed packs and add remaining boundary checks",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10568",
+   "base_freshness": {
+    "base_sha": "86bc0c77a55d0bf47bb3027254fab5952dd18886",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10580,
+   "author": "woahwhattheheck",
+   "title": "WIP: isolate retained Grok Slack bridge test failure",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10580",
+   "base_freshness": {
+    "base_sha": "12621cf42edefe85aa298d3929d3d1166325a0ad",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10582,
+   "author": "woahwhattheheck",
+   "title": "#041: share the reorder browser workspace with a retry-safe CLI",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10582",
+   "base_freshness": {
+    "base_sha": "285f7a2dc13516fbca2dbbbec19a937c9a9cd3bf",
+    "main_sha": "e32b410ef30145e7ba3e4117848f89eb6cadc634",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
