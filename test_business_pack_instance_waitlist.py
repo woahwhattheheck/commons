@@ -89,9 +89,10 @@ class BusinessPackInstanceWaitlistTest(unittest.TestCase):
         self.assertNotIn("<form", self.door)
         self.assertIn("password", self.door)
 
-    def test_peer_blobs_and_helper_stay_put(self) -> None:
-        self.assertTrue(self.result["waitlist_blob_ok"])
-        self.assertTrue(self.result["blobs"]["packs/waitlist.html"].startswith("bdcaa7ea"))
+    def test_historical_waitlist_hash_and_shared_helper_stay_available(self) -> None:
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertEqual(self.result["missing_files"], [])
+        self.assertTrue(helper.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
         self.assertEqual(self.block["shared_desk_helper"], "host/business_pack_desk_instance.py")
         self.assertEqual(self.block["checkout"], "NOT_MINTED")
         self.assertNotIn("337 NO", json.dumps(self.block))
