@@ -22,6 +22,7 @@ SOURCES = (
     PREFIX + 'cloud-execution-lab/test_score_schedule.py',
     PREFIX + 'cloud-economic-stress/deadline_adapter.py',
     PREFIX + 'cloud-economic-stress/test_runner.py',
+    PREFIX + 'cloud-economic-stress/test_caller_handler.py',
 )
 NEW_STEPS = {
     'Selected-market ledger schedule parity tests': (
@@ -30,6 +31,9 @@ NEW_STEPS = {
     'Deadline cancellation regression tests': (
         PREFIX + 'cloud-economic-stress/cancellation/test_deadline_cancellation.py',
         'deadline-cancellation-tests.log'),
+    'Caller handler replacement boundary tests': (
+        PREFIX + 'cloud-economic-stress/test_caller_handler.py',
+        'caller-handler-tests.log'),
     'Adaptive actor capture binding tests': (
         SOURCES[1], 'capture-binding-tests.log'),
     'Dated market score schedule parity tests': (
@@ -108,6 +112,12 @@ class RegressionBindings(unittest.TestCase):
         step = named_step(self.text, 'Deadline cancellation regression tests')
         self.assertIn('--report "$RUNNER_TEMP/projection-validation/deadline-cancellation.json"', step)
         self.assertNotIn('thread', step)
+        self.assertNotIn('pytest', step)
+
+    def test_caller_handler_machine_readable_report_is_retained(self):
+        step = named_step(self.text, 'Caller handler replacement boundary tests')
+        self.assertIn('--report "$RUNNER_TEMP/projection-validation/caller-handler-results.json"', step)
+        self.assertNotIn('--adapter', step)
         self.assertNotIn('pytest', step)
 
     def test_checkout_and_snapshot_bind_the_same_event_commit(self):
