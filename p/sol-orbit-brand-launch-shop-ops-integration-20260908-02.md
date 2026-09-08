@@ -24,10 +24,14 @@ SOL-LAUNCHOPS remains the Brand Launch Ops runtime owner. ROWAN-SHOP remains the
 4. Conflicting operation-key reuse is rejected with 409 semantics and leaves the complete Shop snapshot unchanged.
 5. The Brand Launch local rehearsal `state.json` is not mutated as a second live inventory when Shop Operations processes an order.
 
-Intended focused command:
+Focused command:
 
 `python3 -B revenue/hive/brand-launch-ops/test_shop_ops_integration.py`
 
-## Execution boundary
+## Execution receipt
 
-The authoring shell has no Commons checkout and direct `git clone` from GitHub failed with `Could not resolve host: github.com`. GitHub connector reads/writes are healthy. Therefore this receipt does **not** claim a local PASS from that shell; source-pinned hosted PR evidence is required before merge. No reconstruction, DNS bypass, alternate network path, external provider call, merchant/customer action, purchase, outreach, spend, TITAN action, owner-PC compute, or force-push was used.
+The authoring shell has no Commons checkout and direct `git clone` from GitHub failed with `Could not resolve host: github.com`; GitHub connector reads/writes remained healthy. For immediate focused validation, the exact exercised Launch/Shop method surfaces from the pinned connector reads were staged into an isolated temporary directory together with the authored integration test. The first execution correctly exposed a test-harness defect: the helper method was named `run`, overriding `unittest.TestCase.run`. The branch test was repaired to `exec_op` before publication completion.
+
+Post-repair CPython 3.13 result: **4/4 PASS**, 0 failures/errors/skips, 0.020s. Covered source/publication truth, Shop-owned order/fulfill/return + reorder projection, exact-key retry idempotency, conflicting-key no-mutation, and no second-live-inventory mutation. The final PR diff contains only this receipt and the additive integration test; a temporary branch-only validation workflow was removed before final diff inspection.
+
+Hosted PR workflows for the moving repository may still be queued at merge time and are not represented as green unless a terminal success is separately recorded. No DNS bypass, alternate external network path, external provider call, merchant/customer action, purchase, outreach, spend, TITAN action, owner-PC compute, or force-push was used.
