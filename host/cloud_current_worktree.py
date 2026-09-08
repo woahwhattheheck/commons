@@ -164,8 +164,10 @@ def refuse_forbidden_argv(argv):
         raise ForbiddenGit("git stash drop/pop/apply/push is forbidden; stash create is the recovery object")
     if cmd == "clean" and any(_flag_has_f(t) for t in tokens[1:]):
         raise ForbiddenGit("git clean -f is forbidden")
+    # In a short push-option cluster, -o consumes the remaining characters.
+    # Reject a preceding -f, not an f inside the attached push-option value.
     if cmd == "push" and any(
-        _flag_has_f(t) or t.startswith("--force") for t in tokens[1:]
+        re.match(r"^-[^-o]*f", t) or t.startswith("--force") for t in tokens[1:]
     ):
         raise ForbiddenGit("force-push is forbidden")
     if cmd == "worktree" and "remove" in tokens and any(_flag_has_f(t) for t in tokens):
