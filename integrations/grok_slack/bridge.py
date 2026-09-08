@@ -322,6 +322,8 @@ def canonical_grok_url(value: str) -> str:
 
 def chunk_text(text: str, limit: int = SLACK_TEXT_LIMIT) -> list[str]:
     """Split below Slack's practical bound without dropping any UTF-8 bytes."""
+    if limit < 1:
+        raise ValueError("chunk limit must be positive")
     if len(text) <= limit:
         return [text]
     pieces: list[str] = []
