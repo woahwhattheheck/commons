@@ -1,0 +1,13 @@
+# RouteFoundry notices
+
+The RouteFoundry source in this directory is released under the repository's
+Apache-2.0 license. Python files and browser assets carry SPDX identifiers.
+
+QR generation uses the `qrcode` Python package, pinned in `requirements.txt`.
+That package is distributed under the BSD license; its own package metadata and
+license remain authoritative when installed. No third-party JavaScript, fonts,
+analytics scripts, hosted QR service, or redirect-checking service is bundled.
+
+The product name, example brands, domains, campaign names, and acceptance data
+are demonstration fixtures. No customer, partnership, conversion, revenue, or
+external deployment is claimed by those fixtures.
