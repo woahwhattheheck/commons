@@ -32,7 +32,8 @@ def _integer(value: Any) -> int:
 
 def compare_replay(offers: Sequence[Any], observation: Mapping[str, Any],
                    replay: Mapping[str, Any], configuration: Mapping[str, Any], *,
-                   scenario_ids: Sequence[str], minimum_gain: float = 0.0) -> dict:
+                   scenario_ids: Sequence[str], minimum_gain: float = 0.0,
+                   objective: str = "robust", scenario_weights: Mapping[str, Any] | None = None) -> dict:
     """Compare a complete physical scenario matrix; invalid input keeps incumbent.
 
     `scenario_ids` is the caller's explicit complete scenario bank, not inferred
@@ -57,6 +58,8 @@ def compare_replay(offers: Sequence[Any], observation: Mapping[str, Any],
         "minimum_cash_scope": "observed_after_whole_market_queue_not_per_slot",
         "rival_utility": None,
     }
+    if objective != "robust" or scenario_weights is not None:
+        report["decision_objective"] = objective
     try:
         _require(bool(names) and all(isinstance(n, str) and n for n in names)
                  and len(set(names)) == len(names), "supply distinct explicit scenario ids")
@@ -116,4 +119,5 @@ def compare_replay(offers: Sequence[Any], observation: Mapping[str, Any],
     return _rank_paired(report, ids, margin, final_key="final_executed_cash",
                         minimum_key="minimum_after_market_cash",
                         budget_key="recorded_queue_cash_nonnegative",
-                        improvement_reason="covered_executed_own_cash_improvement")
+                        improvement_reason="covered_executed_own_cash_improvement",
+                        objective=objective, scenario_weights=scenario_weights)
