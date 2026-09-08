@@ -56,10 +56,19 @@ OPPONENTS = {
 
 
 def make_opponent(name, A):
+    """`name` is a key in OPPONENTS, or `path:/abs/file.py` for any source-backed
+    strategy that lives outside this table. The path form is how a stronger
+    opponent gets into a panel without copying its owner's file here."""
     if name == "arlene":
         ag = A.Agent()
         return (lambda obs, cfg: ag.act(obs)), {"label": "arlene (vendored)"}
-    mod, ident = _load(OPPONENTS[name])
+    path = OPPONENTS[name] if name in OPPONENTS else None
+    if path is None:
+        if not name.startswith("path:"):
+            raise KeyError(f"unknown opponent {name!r}; use a key in OPPONENTS "
+                           f"({sorted(OPPONENTS)}) or path:/abs/file.py")
+        path = name[len("path:"):]
+    mod, ident = _load(path)
     fn = mod.agent
     # Bind before execution: a TypeError from the opponent body is a failure,
     # not permission to execute a stateful opponent for a second time.
