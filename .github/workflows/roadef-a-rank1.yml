@@ -1,0 +1,100 @@
+name: roadef-a-rank1
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/roadef-a-rank1.yml'
+      - 'revenue/roadef2026/cloud-a-rank1/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: roadef-a-rank1-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rank1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout harness
+        uses: actions/checkout@v4
+        with:
+          path: harness
+      - name: Checkout frozen source
+        uses: actions/checkout@v4
+        with:
+          ref: 6feb9c0566b8f203c5d1a2ffdfbf1cb6d11be055
+          path: frozen
+      - name: Reconstruct exact selected candidate and build context
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$GITHUB_WORKSPACE/frozen/revenue/roadef2026/fleet-candidate"
+          baseline=2885d176373c33410148829fef93c310c3752c0b
+          git -C frozen fetch --no-tags --depth=1 origin "$baseline"
+          git -C frozen show FETCH_HEAD:revenue/roadef2026/fleet-candidate/main.cpp > "$root/main.cpp"
+          test "$(sha256sum "$root/main.cpp" | cut -d' ' -f1)" = 322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1
+          patch_file="frozen/revenue/roadef2026/cloud-kernel-composition/combined.patch"
+          test "$(git hash-object "$patch_file")" = 0ff8d2ee7c4df1022c50484a89e7424329cce0ec
+          (cd "$root" && patch --batch --fuzz=0 -p1 < "$GITHUB_WORKSPACE/$patch_file")
+          test "$(sha256sum "$root/main.cpp" | cut -d' ' -f1)" = 758977095f8f34263bbcd9ed043ac4ab7943f04f65fae530c78ee64787c34f8f
+          python3 "$root/prepare_context.py" --candidate "$root/main.cpp" --output "$RUNNER_TEMP/context"
+          sh "$RUNNER_TEMP/context/build.sh"
+      - name: Fetch exact official inputs and reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/official"
+          git -C "$RUNNER_TEMP/official" init -q
+          git -C "$RUNNER_TEMP/official" remote add origin https://gitlab.com/Orange-OpenSource/network-optimization-tools/challenge-roadef-2026.git
+          git -C "$RUNNER_TEMP/official" fetch --depth=1 origin d84d319a7fdb8de3b1866830d2eaa2937871e5ae
+          git -C "$RUNNER_TEMP/official" checkout -q FETCH_HEAD -- \
+            setA/setA-04-net.json setA/setA-04-tm.json setA/setA-04-scenario.json \
+            setA/setA-14-net.json setA/setA-14-tm.json setA/setA-14-scenario.json \
+            setA/setA-16-net.json setA/setA-16-tm.json setA/setA-16-scenario.json \
+            sprint_results/loads_vector.csv
+      - name: Recover exact authoritative incumbents
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10044831235/zip > "$RUNNER_TEMP/a-calibration.zip"
+          test "$(sha256sum "$RUNNER_TEMP/a-calibration.zip" | cut -d' ' -f1)" = ada335ddb8fa16e804950c302d96349a93023ccf7a3321d71090d700942d6844
+          mkdir "$RUNNER_TEMP/incumbents"
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import os
+          source = Path(os.environ['RUNNER_TEMP']) / 'a-calibration.zip'
+          target = Path(os.environ['RUNNER_TEMP']) / 'incumbents'
+          with ZipFile(source) as archive:
+              for label in ('setA-04', 'setA-14', 'setA-16'):
+                  name = label + '/solution.json'
+                  path = target / name
+                  path.parent.mkdir(parents=True, exist_ok=True)
+                  path.write_bytes(archive.read(name))
+          PY
+      - name: Run bounded resumed-lane evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 harness/revenue/roadef2026/cloud-a-rank1/run_rank1.py \
+            --context "$RUNNER_TEMP/context" \
+            --official "$RUNNER_TEMP/official" \
+            --incumbents "$RUNNER_TEMP/incumbents" \
+            --reference "$RUNNER_TEMP/official/sprint_results/loads_vector.csv" \
+            --comparator frozen/revenue/roadef2026/fleet-candidate/compare_checker.py \
+            --output "$RUNNER_TEMP/results" --seconds 60
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roadef-a-rank1
+          path: ${{ runner.temp }}/results
+          if-no-files-found: error
+          retention-days: 90
