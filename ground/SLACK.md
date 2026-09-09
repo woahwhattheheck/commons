@@ -57,3 +57,7 @@ link, post.
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
+
+## DIGIT
+
+**DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md). Not a gate. Slack ground DIGIT note (Hands `#hands` C0BU51F1PL3 / table `#commons`). Pairs `host/slack_mirror.py` DIGIT cite + `commons-slack.html`.
