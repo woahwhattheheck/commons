@@ -25,7 +25,7 @@ for _source in (_HERE, _ROOT):
 
 
 def _load_exact(name: str, path: Path) -> ModuleType:
-    """Load one exact source path, replacing a stale same-name module."""
+    """Load one exact shared dependency, replacing a stale same-name module."""
     target = path.resolve()
     existing = sys.modules.get(name)
     existing_path = getattr(existing, "__file__", None)
@@ -49,6 +49,22 @@ def _load_exact(name: str, path: Path) -> ModuleType:
     return module
 
 
+def _load_private_exact(name: str, path: Path) -> ModuleType:
+    """Execute one exact module without publishing it in ``sys.modules``.
+
+    The returned functions retain the module globals for as long as an agent is
+    live.  Avoiding a registry root lets the complete controller and ``_INSTANCE``
+    state be collected when the evaluator releases that agent.
+    """
+    target = path.resolve()
+    spec = importlib.util.spec_from_file_location(name, target)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"unable to load {target}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 # Resolve candidate-local imports before the runtime class is loaded.  The
 # public aliases are intentional: candidate modules use these exact import
 # names, and an evaluator may load this entrypoint with the candidate directory
@@ -62,11 +78,10 @@ _CANDIDATE_RUNTIME = _load_exact(
 
 # The pinned evaluator executes this entrypoint repeatedly as fresh top-level
 # module objects in one interpreter.  Canonical ``main.py`` owns mutable
-# ``_INSTANCE`` state and its factory hook, so a fixed child-module name would
-# alias otherwise independent agents.  The globals mapping remains reachable
-# through the returned agent/factory graph, making its identity a safe unique
-# namespace for the lifetime of that load.
-_CANONICAL = _load_exact(
+# ``_INSTANCE`` state and its factory hook, so every execution needs a private
+# canonical module.  It must not be published in ``sys.modules``: doing so would
+# root every completed controller for the lifetime of a large panel.
+_CANONICAL = _load_private_exact(
     f"_kestrel_canonical_main_{id(globals()):x}",
     _ROOT / "main.py",
 )
