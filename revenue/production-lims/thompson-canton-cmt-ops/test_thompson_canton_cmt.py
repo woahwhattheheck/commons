@@ -136,17 +136,20 @@ class ThompsonCantonGateTests(unittest.TestCase):
         self.assertFalse(released["sent"])
         self.assertEqual(before, gate.state.staged_reports[job_id])
 
-    def test_10_reserved_automation_reviewers_are_rejected(self) -> None:
+    def test_10_reserved_and_nonhuman_reviewers_are_rejected_without_mutation(self) -> None:
         gate, _ = self._run()
         job_id = gate.state.scheduled[0]["job_id"]
+        before = gate.state.digest()
         for reviewer in [
             "Auto Reviewer", "System Operator", "AI Reviewer", "service account",
             "workflow agent", "Jordan Bot", "Automation Service", "Madonna",
+            "12 34", "1234 5678", "Jordan 12", "1234 Rivera",
         ]:
             with self.subTest(reviewer=reviewer):
                 self.assertFalse(named_human(reviewer))
                 with self.assertRaises(PermissionError):
                     gate.release_report(job_id, reviewer)
+                self.assertEqual(before, gate.state.digest())
         self.assertTrue(named_human("Jordan Rivera"))
 
     def test_11_automatic_report_release_is_disabled(self) -> None:
