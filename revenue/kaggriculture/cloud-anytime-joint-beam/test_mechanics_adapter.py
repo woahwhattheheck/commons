@@ -61,16 +61,39 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
         cls.transition = staticmethod(mechanics_transition(cls.m, cls.ctx))
         cls.score = staticmethod(mechanics_scorer(cls.m))
 
-    def test_exact_plant_consumes_shared_seed_and_second_conflict_prunes(self):
+    def test_atomic_plant_oversubscription_rolls_back_all_requests(self):
         initial = fixture(2)
         first = self.transition(initial, 0, ["PLANT", "WHEAT"])
         self.assertIsNotNone(first)
         self.assertEqual(0, first["private"]["seeds"]["WHEAT"])
-        self.assertIsNone(self.transition(first, 1, ["PLANT", "WHEAT"]))
+        self.assertEqual("PLANT", first["farm"]["tiles"][1][1]["kind"])
+
+        second = self.transition(first, 1, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(second)
+        self.assertEqual(1, second["private"]["seeds"]["WHEAT"])
+        self.assertIsNone(second["farm"]["tiles"][1][1])
         self.assertEqual(1, initial["private"]["seeds"]["WHEAT"])
         self.assertIsNone(initial["farm"]["tiles"][1][1])
 
-    def test_beam_prunes_exact_shared_resource_conflict(self):
+    def test_atomic_rollback_reactivates_downstream_action(self):
+        initial = fixture(3)
+        first = self.transition(initial, 0, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(first)
+
+        # Sequentially, BUILD_COOP is a no-op because the tentative plant owns
+        # the tile. It must still stay in the prefix: the third worker makes the
+        # two PLANT requests oversubscribed, both become PASS before execution,
+        # and BUILD_COOP is then legal in the official interpreter.
+        second = self.transition(first, 1, ["BUILD_COOP"])
+        self.assertIsNotNone(second)
+        self.assertEqual("PLANT", second["farm"]["tiles"][1][1]["kind"])
+
+        third = self.transition(second, 2, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(third)
+        self.assertEqual({"kind": "COOP"}, third["farm"]["tiles"][1][1])
+        self.assertEqual(1, third["private"]["seeds"]["WHEAT"])
+
+    def test_beam_resolves_shared_plant_demand_atomically(self):
         canonical = (["PASS"], ["PASS"])
         result = search_joint_actions(
             fixture(2), canonical,
@@ -81,7 +104,12 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
         self.assertIn(result.reason, {"complete", "deadline-during-search", "deadline-during-finalization"})
         if result.complete:
             self.assertEqual(1, sum(action == ["PLANT", "WHEAT"] for action in result.actions))
-            self.assertGreater(result.pruned_illegal, 0)
+            replayed = fixture(2)
+            for idx, action in enumerate(result.actions):
+                replayed = self.transition(replayed, idx, action)
+                self.assertIsNotNone(replayed)
+            self.assertEqual(0, replayed["private"]["seeds"]["WHEAT"])
+            self.assertEqual("PLANT", replayed["farm"]["tiles"][1][1]["kind"])
         else:
             self.assertEqual(canonical, result.actions)
 
