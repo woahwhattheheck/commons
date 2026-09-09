@@ -18,9 +18,9 @@ class OperatingStockTests(unittest.TestCase):
                      'tiles': [[None for _ in range(10)] for _ in range(10)]}
         for x in (2, 3):
             self.farm['tiles'][4][x] = {
-                'kind': 'PLANT', 'crop': 'STRAWBERRY', 'planted_day': 11,
+                'kind': 'PLANT', 'crop': 'STRAWBERRY', 'planted_day': 10,
                 'yield_units': 0, 'fertilized_until_day': -1, 'max_lifespan_step': -1,
-                'consecutive_unwatered': 0, 'watered_today': False}
+                'consecutive_unwatered': 0, 'watered_today': True}
         self.private = {'inventories': [{}, {}], 'shed': {'FERTILIZER': 9}, 'seeds': {}}
         self.obs = {'step': self.now, 'player': 0, 'day': 19,
                     'market': {'inventory': {'FERTILIZER': 10300, 'STRAWBERRY': 9900}}}
@@ -180,11 +180,55 @@ class OperatingStockTests(unittest.TestCase):
 
     def test_water_before_reset_is_a_real_prerequisite(self):
         self.farm['tiles'][4][3]['consecutive_unwatered'] = 1
+        self.farm['tiles'][4][3]['watered_today'] = False
         self.unchanged('target_lacks_water_before_reset')
         self.route[461]['farmer'] = ['WEST']
         self.route[466]['farmer'] = ['WATER']
         result, report = self.propose()
         self.assertTrue(report['changed'])
+
+    def test_dry_crop_without_wilting_still_has_no_fertilizer_bonus(self):
+        self.farm['tiles'][4][3]['watered_today'] = False
+        self.assertEqual(self.farm['tiles'][4][3]['consecutive_unwatered'], 0)
+        self.unchanged('missing_bonus_day_water')
+
+    def tomorrow_water(self):
+        for x in (2, 3):
+            self.farm['tiles'][4][x]['planted_day'] = 11
+        self.route[480]['market'] = [['HIRE']]
+        for step, action in [(481, ['WEST']), (482, ['WEST']), (483, ['WATER']),
+                             (484, ['WEST']), (485, ['WATER'])]:
+            self.route[step]['hands'] = [action]
+
+    def test_tomorrow_requires_funded_new_worker_and_due_day_water(self):
+        self.tomorrow_water()
+        result, report = self.propose()
+        self.assertTrue(report['changed'])
+        self.assertEqual(report['bonus_day_water_service']['funded_hire_cost'], 1)
+        self.route[483]['hands'][0] = ['PASS']
+        self.unchanged('missing_bonus_day_water')
+
+    def test_today_water_cannot_stand_in_for_tomorrow(self):
+        for x in (2, 3):
+            self.farm['tiles'][4][x]['planted_day'] = 11
+        self.unchanged('missing_bonus_day_water')
+
+    def test_future_variable_purchase_cannot_fund_a_later_water_worker(self):
+        self.tomorrow_water()
+        self.route[480]['market'] = [['BUY_PRODUCT', 'WHEAT', 1], ['HIRE']]
+        self.unchanged('bonus_day_hire_not_funded')
+        # Once this worker is paid, later input prices cannot stop free water.
+        self.route[480]['market'] = [['HIRE'], ['BUY_PRODUCT', 'WHEAT', 1]]
+        result, report = self.propose()
+        self.assertTrue(report['changed'])
+
+    def test_peer_boundary_hire_counterexample_is_explicitly_rejected(self):
+        self.farm['money'] = 54
+        self.farm['hires_today'] = 9
+        self.obs['market']['inventory']['FERTILIZER'] = 11000
+        self.route[470]['market'] = [['HIRE']]
+        self.assertEqual(m._hire_cost(9), 55)
+        self.unchanged('intervening_capital_commitment')
 
     def test_glutted_product_and_exhausted_crop_do_not_hold_inputs(self):
         self.obs['market']['inventory']['STRAWBERRY'] = 11000
