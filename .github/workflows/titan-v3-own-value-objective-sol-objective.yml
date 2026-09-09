@@ -55,6 +55,7 @@ jobs:
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
+          CASE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
           verify_blob() {
             local path="$1" expected="$2"
             local actual
@@ -68,6 +69,9 @@ jobs:
             verify_blob "$KAG/cloud-eval/evaluate.py" 077feb2208b6e0c1727835eb4f8089709bf67f3b
             verify_blob "$LAB/runtime/variants/v1/candidate.py" 8db1262a2d38cc3115d06732383e18e1132ccfba
             verify_blob "$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py" bdb9cf58148a3c7961c085f4902759537decabf6
+            verify_blob "$CASE/candidate.py" a642b3dd6fc272d74ca58cd528dfbd86aa1504fd
+            verify_blob "$CASE/own_value_objective.py" 17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0
+            verify_blob "$CASE/test_own_value_objective.py" 7bb159220594fc45632fc1cfd0548ea50b946cfe
           } | tee "$RUNNER_TEMP/source-blobs.txt"
 
       - name: Run overlay, witness, and comparator contracts
@@ -105,6 +109,8 @@ jobs:
           receipt = dict(module.INSTALL_RECEIPT)
           if receipt.get("changed_field") != "MarketPath.score[0]":
               raise SystemExit("wrong objective field")
+          if receipt.get("actual_git_blob") != receipt.get("expected_git_blob"):
+              raise SystemExit("SELL-core Git-blob binding mismatch")
           if receipt.get("canonical_files_modified") is not False:
               raise SystemExit("overlay claimed a canonical mutation")
           Path(os.environ["OUT"]).write_text(

@@ -2,16 +2,17 @@
 """Fail-closed one-factor overlay for TITAN's SELL planning objective.
 
 The canonical optimizer returns a four-field score tuple whose first element is
-``own_cash + carry - rival_cash``.  Every existing admission/ranking rule reads
-that first element.  This overlay preserves the tuple's diagnostics and all
+``own_cash + carry - rival_cash``. Every existing admission/ranking rule reads
+that first element. This overlay preserves the tuple's diagnostics and all
 upstream receipt math, but changes only element zero to ``own_cash + carry``.
 
-No repository source is rewritten.  The overlay is installed in the isolated
+No repository source is rewritten. The overlay is installed in the isolated
 candidate worker before the canonical entrypoint constructs its runtime.
 """
 from __future__ import annotations
 
 from functools import wraps
+import hashlib
 import importlib
 import inspect
 import math
@@ -47,6 +48,17 @@ def _finite_real(value: Any, field: str) -> float:
     return result
 
 
+def _git_blob_sha1(path: Path) -> str:
+    try:
+        data = path.read_bytes()
+    except OSError as exc:
+        raise ObjectiveBindingError(
+            f"cannot read selected_sell_core.py for Git-blob binding: {exc}"
+        ) from exc
+    header = b"blob " + str(len(data)).encode("ascii") + b"\0"
+    return hashlib.sha1(header + data).hexdigest()
+
+
 def own_value_tuple(score: Any) -> tuple[Any, Any, Any, Any]:
     """Replace only score element zero with own receipts plus continuation value.
 
@@ -72,7 +84,7 @@ def own_value_tuple(score: Any) -> tuple[Any, Any, Any, Any]:
     return recovered, own_cash, rival_cash, remaining
 
 
-def _validate_binding(module: Any, expected_root: Path | None) -> tuple[Any, Path, str]:
+def _validate_binding(module: Any, expected_root: Path | None) -> tuple[Any, Path, str, str]:
     source_path = Path(getattr(module, "__file__", "")).resolve()
     if source_path.name != "selected_sell_core.py":
         raise ObjectiveBindingError(
@@ -84,6 +96,12 @@ def _validate_binding(module: Any, expected_root: Path | None) -> tuple[Any, Pat
             raise ObjectiveBindingError(
                 f"selected_sell_core path mismatch: expected {expected_path}, got {source_path}"
             )
+    actual_blob = _git_blob_sha1(source_path)
+    if actual_blob != EXPECTED_SELECTED_SELL_CORE_BLOB:
+        raise ObjectiveBindingError(
+            "selected_sell_core Git blob drift: "
+            f"expected {EXPECTED_SELECTED_SELL_CORE_BLOB}, got {actual_blob}"
+        )
     market_path = getattr(module, "MarketPath", None)
     current = getattr(market_path, "score", None)
     if not callable(current):
@@ -102,7 +120,7 @@ def _validate_binding(module: Any, expected_root: Path | None) -> tuple[Any, Pat
         raise ObjectiveBindingError(
             "MarketPath.score source drift at objective seam: " + repr(missing)
         )
-    return current, source_path, signature
+    return current, source_path, signature, actual_blob
 
 
 def install(*, module: Any | None = None, expected_root: Path | None = None) -> dict[str, Any]:
@@ -122,7 +140,7 @@ def install(*, module: Any | None = None, expected_root: Path | None = None) -> 
             raise ObjectiveBindingError("idempotent overlay is missing its install receipt")
         return dict(receipt)
 
-    original, source_path, signature = _validate_binding(module, expected_root)
+    original, source_path, signature, actual_blob = _validate_binding(module, expected_root)
 
     @wraps(original)
     def patched(self: Any, *args: Any, **kwargs: Any) -> tuple[Any, Any, Any, Any]:
@@ -135,6 +153,7 @@ def install(*, module: Any | None = None, expected_root: Path | None = None) -> 
         "version": VERSION,
         "source_path": str(source_path),
         "expected_git_blob": EXPECTED_SELECTED_SELL_CORE_BLOB,
+        "actual_git_blob": actual_blob,
         "signature": signature,
         "changed_field": "MarketPath.score[0]",
         "incumbent_objective": "own_cash + carry - rival_cash",

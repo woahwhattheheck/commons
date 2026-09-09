@@ -1,12 +1,20 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import json
 import math
+import os
 from pathlib import Path
+import subprocess
+import sys
 from types import SimpleNamespace
 import unittest
+from unittest import mock
 
 import own_value_objective as objective
+
+HERE = Path(__file__).resolve().parent
+LAB = HERE.parent.parent
 
 
 def bound_module():
@@ -40,6 +48,15 @@ def wrong_signature_module():
         MarketPath=MarketPath,
         __file__="/tmp/selected_sell_core.py",
     )
+
+
+def install_fake(module, **kwargs):
+    with mock.patch.object(
+        objective,
+        "_git_blob_sha1",
+        return_value=objective.EXPECTED_SELECTED_SELL_CORE_BLOB,
+    ):
+        return objective.install(module=module, **kwargs)
 
 
 class OwnValueTupleTests(unittest.TestCase):
@@ -78,39 +95,87 @@ class InstallTests(unittest.TestCase):
     def test_install_is_one_factor_and_idempotent(self):
         module = bound_module()
         before = module.MarketPath.score
-        receipt = objective.install(module=module)
+        receipt = install_fake(module)
         after = module.MarketPath.score
         self.assertIsNot(before, after)
         self.assertEqual(after(module.MarketPath(), (112, 0, 30, 7), 0, 0, "paired"),
                          (112.0, 112, 30, 7))
-        self.assertEqual(objective.install(module=module), receipt)
+        self.assertEqual(install_fake(module), receipt)
         self.assertIs(module.MarketPath.score, after)
         self.assertFalse(receipt["canonical_files_modified"])
+        self.assertEqual(
+            receipt["actual_git_blob"],
+            objective.EXPECTED_SELECTED_SELL_CORE_BLOB,
+        )
 
     def test_install_rejects_source_drift(self):
         with self.assertRaisesRegex(objective.ObjectiveBindingError, "source drift"):
-            objective.install(module=drifted_module())
+            install_fake(drifted_module())
 
     def test_install_rejects_signature_drift(self):
         with self.assertRaisesRegex(objective.ObjectiveBindingError, "signature drift"):
-            objective.install(module=wrong_signature_module())
+            install_fake(wrong_signature_module())
 
     def test_install_rejects_wrong_source_path(self):
         module = bound_module()
         module.__file__ = "/tmp/not_the_core.py"
         with self.assertRaisesRegex(objective.ObjectiveBindingError, "selected_sell_core.py"):
-            objective.install(module=module)
+            install_fake(module)
 
     def test_install_rejects_wrong_root(self):
         module = bound_module()
         with self.assertRaisesRegex(objective.ObjectiveBindingError, "path mismatch"):
-            objective.install(module=module, expected_root=Path("/definitely/not/tmp"))
+            install_fake(module, expected_root=Path("/definitely/not/tmp"))
+
+    def test_install_rejects_same_shape_wrong_git_blob(self):
+        module = bound_module()
+        with mock.patch.object(objective, "_git_blob_sha1", return_value="0" * 40):
+            with self.assertRaisesRegex(objective.ObjectiveBindingError, "Git blob drift"):
+                objective.install(module=module)
 
     def test_conflicting_patch_is_rejected(self):
         module = bound_module()
         setattr(module.MarketPath.score, "__titan_own_value_objective_version__", "other")
         with self.assertRaisesRegex(objective.ObjectiveBindingError, "conflicting"):
-            objective.install(module=module)
+            install_fake(module)
+
+    def test_real_candidate_import_binds_actual_lab_root_and_sell_core_blob(self):
+        script = f"""
+import importlib.util, json, sys
+from pathlib import Path
+path = Path({str(HERE / 'candidate.py')!r})
+sys.path.insert(0, str(path.parent))
+spec = importlib.util.spec_from_file_location('_own_value_candidate_contract', path)
+if spec is None or spec.loader is None:
+    raise SystemExit('candidate spec unavailable')
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+print(json.dumps(module.INSTALL_RECEIPT, sort_keys=True))
+"""
+        environment = dict(os.environ)
+        environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        completed = subprocess.run(
+            [sys.executable, "-c", script],
+            cwd=str(HERE),
+            env=environment,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        receipt = json.loads(completed.stdout.strip().splitlines()[-1])
+        self.assertEqual(
+            Path(receipt["source_path"]).resolve(),
+            (LAB / "selected_sell_core.py").resolve(),
+        )
+        self.assertEqual(
+            receipt["actual_git_blob"],
+            objective.EXPECTED_SELECTED_SELL_CORE_BLOB,
+        )
+        self.assertEqual(
+            receipt["expected_git_blob"],
+            objective.EXPECTED_SELECTED_SELL_CORE_BLOB,
+        )
 
 
 if __name__ == "__main__":
