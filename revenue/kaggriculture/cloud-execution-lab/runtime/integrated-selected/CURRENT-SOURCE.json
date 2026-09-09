@@ -27,11 +27,11 @@
     }
   },
   "checkpoint": {
-    "operation": "titan-v2-operating-stock-20260909",
-    "owner_authorization": "Continue the same targeted v2 integration and actual-game analysis without new simulation panels or Kaggle submission.",
+    "operation": "titan-v2-operating-stock-active-20260909",
+    "owner_authorization": "Activate warranted bounded operating-stock behavior in the single canonical TITAN using focused correctness, funding and capacity checks; no new game panels or Kaggle submission.",
     "playing_strength": "not_measured_for_changed_bytes",
     "runtime_entrypoint": "main.py::agent",
-    "stage": "source_contract_validation_candidate_disabled",
+    "stage": "bounded_behavior_enabled_source_contract_checked",
     "submission_status": "not_submitted"
   },
   "components": [
@@ -156,9 +156,9 @@
     {
       "callsite": "TitanAgent._operating_stock_selected after market_pressure; completed FrozenSelected unit snapshot",
       "component": "Observed operating-stock obligations",
-      "consumed_result": "20 stateless source contract checks; retrospective recorded-input proposals without game advancement. Future operating cash and outcome effects are not certified.",
-      "enabled": false,
-      "role": "integrated candidate; operating_stock=false",
+      "consumed_result": "24 focused source contracts including canonical entrypoint activation. At most two withheld units, incremental product valuation, complete same-day fixed-spending reserve, and 100-times-input actual-cash cushion. No new game panel or measured score effect.",
+      "enabled": true,
+      "role": "active bounded operating-stock reservation; canonical operating_stock=true",
       "source_pin": "Current source manifest operating_stock.py"
     }
   ],
@@ -180,7 +180,7 @@
     "fourth_quadrant": false,
     "funding": true,
     "market_pressure": true,
-    "operating_stock": false,
+    "operating_stock": true,
     "redundant_hire": true,
     "reserve_seconds": 0.01,
     "seed": true,
@@ -349,13 +349,13 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 333,
-      "sha256": "1e96fc1d9e80e69d273e0466fa71e794bd269b3e67b7ab81c28b27845bfe052e",
+      "bytes": 332,
+      "sha256": "0a56ba29d6806c798a318c4c1c7214df0836b5ee47c9358bdf1d82ec05c464ca",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 6840,
-      "sha256": "d3e2b5fe4b22343a305eb87f114a0cc85ec98a12d028873b24fe95d36ffc1792",
+      "bytes": 7399,
+      "sha256": "c6f171dbca3028425980b366122f6224e9885a6c26870089ee77d3e5de659ef5",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -444,8 +444,8 @@
       "source_path": "test_module_recovery.py"
     },
     "checks/test_operating_stock.py": {
-      "bytes": 9890,
-      "sha256": "98eaea62f59c72c519778632508d65bf477d5cdd9f4d456f9a194819fdcb66b6",
+      "bytes": 11288,
+      "sha256": "aa876714b8eb519963567a229ef0f64a47eab87df0107bf809401c9d2a666178",
       "source_path": "test_operating_stock.py"
     },
     "checks/test_ordered_selected_sell.py": {
@@ -529,8 +529,8 @@
       "source_path": "../cloud-runtime-pulse/observed_clone.py"
     },
     "operating_stock.py": {
-      "bytes": 11092,
-      "sha256": "cc403727b3ea31f9590f37e8eb784f1798b2c50a42bd3ba83d321eba6e6c4b78",
+      "bytes": 11854,
+      "sha256": "ca1f57be0a05b4be1fcae5c8490ae716f5f949cef3e115cf1438d7edae2b1f4c",
       "source_path": "operating_stock.py"
     },
     "ordered_selected_sell.py": {

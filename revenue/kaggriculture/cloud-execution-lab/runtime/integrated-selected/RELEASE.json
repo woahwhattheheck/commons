@@ -124,9 +124,9 @@
       "component": "Observed operating-stock obligations",
       "source_pin": "Current source manifest operating_stock.py",
       "callsite": "TitanAgent._operating_stock_selected after market_pressure; completed FrozenSelected unit snapshot",
-      "enabled": false,
-      "consumed_result": "20 stateless source contract checks; retrospective recorded-input proposals without game advancement. Future operating cash and outcome effects are not certified.",
-      "role": "integrated candidate; operating_stock=false"
+      "enabled": true,
+      "consumed_result": "24 focused source contracts including canonical entrypoint activation. At most two withheld units, incremental product valuation, complete same-day fixed-spending reserve, and 100-times-input actual-cash cushion. No new game panel or measured score effect.",
+      "role": "active bounded operating-stock reservation; canonical operating_stock=true"
     }
   ],
   "next_increments": [
@@ -314,11 +314,11 @@
     "historical_results_apply": false
   },
   "checkpoint": {
-    "operation": "titan-v2-operating-stock-20260909",
+    "operation": "titan-v2-operating-stock-active-20260909",
     "runtime_entrypoint": "main.py::agent",
-    "owner_authorization": "Continue the same targeted v2 integration and actual-game analysis without new simulation panels or Kaggle submission.",
+    "owner_authorization": "Activate warranted bounded operating-stock behavior in the single canonical TITAN using focused correctness, funding and capacity checks; no new game panels or Kaggle submission.",
     "submission_status": "not_submitted",
-    "stage": "source_contract_validation_candidate_disabled",
+    "stage": "bounded_behavior_enabled_source_contract_checked",
     "playing_strength": "not_measured_for_changed_bytes"
   }
 }

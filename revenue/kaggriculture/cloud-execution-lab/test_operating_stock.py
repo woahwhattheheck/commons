@@ -2,6 +2,8 @@
 """Stateless proposal contracts. No agent turn or game transition is executed."""
 from copy import deepcopy
 from types import SimpleNamespace
+from pathlib import Path
+import json
 import unittest
 
 import mechanics as m
@@ -143,6 +145,25 @@ class OperatingStockTests(unittest.TestCase):
         self.route[464]['market'] = [['BUY_PRODUCT', 'WHEAT', 3]]
         self.unchanged('intervening_variable_price_purchase')
 
+    def test_capital_after_service_rejoin_remains_a_funding_obligation(self):
+        self.route[470]['market'] = [['HIRE']]
+        self.unchanged('intervening_capital_commitment')
+
+    def test_value_only_incremental_service_after_incumbent_stock(self):
+        self.selected['market'] = [['SELL', 'FERTILIZER', 8]]
+        self.farm['tiles'][4][2]['crop'] = 'TOMATO'
+        self.farm['tiles'][4][2]['planted_day'] = 14
+        self.obs['market']['inventory']['TOMATO'] = 11000
+        # The unsold unit already covers the valuable first strawberry. The
+        # withheld extra unit would only cover the glutted tomato.
+        self.unchanged('marginal_product_screen_not_favorable')
+
+    def test_activation_is_bounded_to_two_withheld_units(self):
+        self.farm['tiles'][4][1] = deepcopy(self.farm['tiles'][4][2])
+        self.route[466]['hands'][0] = ['WEST']
+        self.route[467]['hands'][0] = ['FERTILIZE']
+        self.unchanged('reservation_exceeds_bounded_units')
+
     def test_no_obsolete_fertility_or_duplicate_service(self):
         self.farm['tiles'][4][3]['fertilized_until_day'] = 21
         self.unchanged('pickup_suffix_contains_nonproductive_consumption')
@@ -191,6 +212,14 @@ class OperatingStockTests(unittest.TestCase):
         self.assertIs(agent._operating_stock_selected(self.obs, {}, other_units), other_units)
         agent.consumer.selected_post_units = None
         self.assertIs(agent._operating_stock_selected(self.obs, {}, self.selected), self.selected)
+
+    def test_canonical_entrypoint_configuration_enables_operating_stock(self):
+        import main
+        root = Path(main.__file__).resolve().parent
+        config = json.loads((root / 'TITAN-CONFIG.json').read_text())
+        self.assertTrue(config['operating_stock'])
+        agent = main._new_instance(root, config)
+        self.assertTrue(agent.features.operating_stock)
         agent.features = Features(operating_stock=False)
         self.assertIs(agent._operating_stock_selected(self.obs, {}, self.selected), self.selected)
 

@@ -25,12 +25,20 @@ or unfunded current spending retains the selected action. Obligations are
 recomputed from each observation, so carried inputs and completed pickups
 release shed reservations.
 
-`operating_stock` remains false. Twenty stateless source-contract checks cover
-the proposal and runtime boundary; recorded-input review exercises the actual
-sale-conflict mechanism without advancing a game. The price screen's rival
-supply and liquidity assumptions do not certify future watering, output,
-operating cash or final receipts. This is one integrated candidate capability,
-with no new simulation panel or claimed score improvement.
+`operating_stock` is enabled for this bounded case. It withholds at most two
+fertilizer units and values only service that existing carried and unsold stock
+cannot already fund. Actual cash must cover all fixed spending through today's
+reset plus 100 times the withheld-input price scenario; any capital or variable
+price purchase in that window declines the edit. An unresolved same-day branch
+also declines it. The original unit and market schedules remain intact.
+
+Twenty-four focused source checks cover stock allocation, funding, shared
+capacity, the runtime boundary and the canonical entrypoint's enabled setting.
+Recorded-input review exercises the actual sale-conflict mechanism without
+advancing a game. The price screen's 100-unit rival-supply scenario and cash
+cushion are policy assumptions, not guarantees of future watering, output,
+operating cash or receipts. The behavior is active in the single TITAN; its
+playing-strength effect has not been measured, and no new game panel was run.
 
 Run `python build_integrated.py` to generate `exports/titan-current.tar.gz` from current source. Run `python build_integrated.py --check` to reject any divergence between selected source, archive, configuration and receipt. There is no public variant selector. Executors finish their existing frozen checkpoint, then consume this stream at an immutable commit and report the archive hash before attributing games.
 
