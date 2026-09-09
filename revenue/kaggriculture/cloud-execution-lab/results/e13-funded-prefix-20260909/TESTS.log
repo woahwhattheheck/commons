@@ -1,0 +1,77 @@
+test_funded_prefix (unittest.loader._FailedTest.test_funded_prefix) ... ERROR
+test_scheduler (unittest.loader._FailedTest.test_scheduler) ... ERROR
+test_joint_market_slots (unittest.loader._FailedTest.test_joint_market_slots) ... ERROR
+test_action_deadline_clamps_scan_and_restores_configuration (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_action_deadline_clamps_scan_and_restores_configuration) ... ok
+test_action_deadline_rejects_nonfinite_values (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_action_deadline_rejects_nonfinite_values) ... ok
+test_adapter_preserves_slots_and_explicit_physical_rejoin (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_adapter_preserves_slots_and_explicit_physical_rejoin) ... ok
+test_canonical_config_keeps_investment_opt_in (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_canonical_config_keeps_investment_opt_in) ... ok
+test_enabled_runtime_supplies_econ_callback_and_terminal_mechanics (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_enabled_runtime_supplies_econ_callback_and_terminal_mechanics) ... ERROR
+test_rendered_archive_contains_exact_attributed_callback (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_rendered_archive_contains_exact_attributed_callback) ... ok
+
+======================================================================
+ERROR: test_funded_prefix (unittest.loader._FailedTest.test_funded_prefix)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_funded_prefix
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/test_funded_prefix.py", line 6, in <module>
+    import frozen_selected as fs
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py", line 8, in <module>
+    from scheduler import *
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/scheduler.py", line 15, in <module>
+    from observed_clone import detached_json_value
+ModuleNotFoundError: No module named 'observed_clone'
+
+
+======================================================================
+ERROR: test_scheduler (unittest.loader._FailedTest.test_scheduler)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_scheduler
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/test_scheduler.py", line 11, in <module>
+    import scheduler as s
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/scheduler.py", line 15, in <module>
+    from observed_clone import detached_json_value
+ModuleNotFoundError: No module named 'observed_clone'
+
+
+======================================================================
+ERROR: test_joint_market_slots (unittest.loader._FailedTest.test_joint_market_slots)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_joint_market_slots
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/test_joint_market_slots.py", line 8, in <module>
+    from frozen_selected import (FrozenSelected, joint_resource_bound, joint_queue_ledger,
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py", line 8, in <module>
+    from scheduler import *
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/scheduler.py", line 15, in <module>
+    from observed_clone import detached_json_value
+ModuleNotFoundError: No module named 'observed_clone'
+
+
+======================================================================
+ERROR: test_enabled_runtime_supplies_econ_callback_and_terminal_mechanics (test_funded_payback_runtime.FundedPaybackRuntimeTests.test_enabled_runtime_supplies_econ_callback_and_terminal_mechanics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/test_funded_payback_runtime.py", line 40, in test_enabled_runtime_supplies_econ_callback_and_terminal_mechanics
+    instance._initialize()
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py", line 205, in _initialize
+    from frozen_selected import FrozenSelected
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py", line 8, in <module>
+    from scheduler import *
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/scheduler.py", line 15, in <module>
+    from observed_clone import detached_json_value
+ModuleNotFoundError: No module named 'observed_clone'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.155s
+
+FAILED (errors=4)

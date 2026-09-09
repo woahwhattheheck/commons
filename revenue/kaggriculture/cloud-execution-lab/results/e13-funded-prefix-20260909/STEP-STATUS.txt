@@ -1,0 +1,5 @@
+tests=failure
+build=skipped
+prepare=skipped
+baseline_panel=skipped
+candidate_panel=skipped
