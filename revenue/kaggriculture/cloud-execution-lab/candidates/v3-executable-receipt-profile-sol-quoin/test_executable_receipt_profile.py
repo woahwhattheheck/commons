@@ -20,6 +20,46 @@ HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
 
 
+def _install_repository_import_roots() -> list[Path]:
+    """Resolve bare integrated-source imports from the canonical build map.
+
+    The checked-in lab modules intentionally use bare root imports.  Several of
+    those roots (for example ``observed_clone``) are mapped from sibling source
+    directories by ``build_integrated.source_files`` rather than stored directly
+    in the lab.  Exact-tree tests must reproduce that declared source closure,
+    not depend on an ambient developer PYTHONPATH.
+    """
+    lab = LAB.resolve()
+    lab_text = str(lab)
+    if lab_text not in sys.path:
+        sys.path.insert(0, lab_text)
+    from build_integrated import source_files
+
+    ordered = [lab]
+    seen = {lab}
+    for member, source in source_files().items():
+        if Path(member).parent != Path("."):
+            continue
+        origin = (lab / source).resolve()
+        if not origin.is_file():
+            raise FileNotFoundError(
+                f"mapped root module {member} missing at {origin}"
+            )
+        parent = origin.parent
+        if parent not in seen:
+            seen.add(parent)
+            ordered.append(parent)
+
+    # Preserve the build map's deterministic priority while removing any stale
+    # ambient copies of these roots.
+    for root in reversed(ordered):
+        value = str(root)
+        while value in sys.path:
+            sys.path.remove(value)
+        sys.path.insert(0, value)
+    return ordered
+
+
 class _Base:
     def receipt_profile(self, obs, selected, farm, private, end, item, config):
         route = self.controller.R[self.controller.cur]
@@ -140,8 +180,7 @@ class PrefixViewUnitTests(unittest.TestCase):
 class ExactRepositoryWitnessTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        if str(LAB) not in sys.path:
-            sys.path.insert(0, str(LAB))
+        cls.import_roots = _install_repository_import_roots()
         import frozen_selected
 
         cls.fs = frozen_selected
@@ -184,6 +223,13 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
                 "CARROT",
                 {"shedCapacity": 4, "maxMarketOrdersPerTurn": 1},
             )
+
+    def test_repository_import_closure_uses_declared_source_map(self):
+        self.assertIn(LAB.resolve(), self.import_roots)
+        import observed_clone
+
+        self.assertTrue(Path(observed_clone.__file__).resolve().is_file())
+        self.assertIn(Path(observed_clone.__file__).resolve().parent, self.import_roots)
 
     def test_inactive_animal_purchase_no_longer_forces_early_liquidation(self):
         route = [
@@ -228,6 +274,7 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
         self.assertIsNotNone(spec)
         self.assertIsNotNone(spec.loader)
         engine = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = engine
         spec.loader.exec_module(engine)
 
         def state_for(max_orders, rows):
@@ -235,7 +282,6 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
             privates = [engine._new_private(), engine._new_private()]
             privates[0]["shed"]["CARROT"] = 3
             market = engine._new_market()
-            obs0 = SimpleNamespace(market=market, farms=farms)
             states = [
                 SimpleNamespace(
                     action={"market": rows},
