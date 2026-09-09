@@ -154,11 +154,18 @@ def install(agent: Any, *, max_orders: int = DEFAULT_MAX_ORDERS) -> PatchReport:
     Idempotence therefore belongs to the controller object, not to the long-lived
     agent wrapper. Keeping that distinction prevents the overlay from silently
     disappearing in later episodes while still avoiding duplicate insertions.
+
+    The mapping object itself is retained deliberately. Current TITAN installs
+    ``SpatialTempo`` first, and that wrapper captures ``controller.R`` as its
+    pristine route source. Replacing the mapping would let its per-action rebuild
+    restore the unpatched bank before the producer reads steps 74 and 98.
     """
     controller = getattr(agent, "controller", None)
     routes = getattr(controller, "R", None)
     if controller is None or routes is None:
         raise RuntimeError("initialized TITAN controller with route bank required")
+    if not isinstance(routes, MutableMapping):
+        raise TypeError("controller route bank must be a mutable mapping")
 
     existing = getattr(agent, "_land_7498_report", None)
     installed_controller = getattr(agent, "_land_7498_controller", None)
@@ -166,7 +173,10 @@ def install(agent: Any, *, max_orders: int = DEFAULT_MAX_ORDERS) -> PatchReport:
         return existing
 
     patched, report = patch_routes(routes, max_orders=max_orders)
-    controller.R = patched
+    # Preserve the route-bank identity already captured by SpatialTempo while
+    # replacing only its values with the independently built COW routes.
+    routes.update(patched)
+    controller.R = routes
     agent._land_7498_controller = controller
     agent._land_7498_report = report
     diagnostics = getattr(agent, "diagnostics", None)
