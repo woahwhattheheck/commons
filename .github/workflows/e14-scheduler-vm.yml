@@ -1,0 +1,44 @@
+name: e14-scheduler-vm
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/e14-scheduler-vm.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/scheduler.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_scheduler_overflow_timing.py'
+
+permissions:
+  contents: read
+
+jobs:
+  e14:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: E14 scheduler regressions and existing scheduler suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_scheduler_overflow_timing test_scheduler
+      - name: Rebuild and verify canonical TITAN package
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python3 -B build_integrated.py > "$RUNNER_TEMP/e14-build-receipt.json"
+          python3 -B build_integrated.py --check > "$RUNNER_TEMP/e14-check-receipt.json"
+          mkdir -p "$RUNNER_TEMP/e14-generated/runtime"
+          cp exports/titan-current.tar.gz "$RUNNER_TEMP/e14-generated/titan-current.tar.gz"
+          cp runtime/integrated-selected/CURRENT-SOURCE.json "$RUNNER_TEMP/e14-generated/runtime/CURRENT-SOURCE.json"
+          cp runtime/integrated-selected/CURRENT-ARCHIVE.json "$RUNNER_TEMP/e14-generated/runtime/CURRENT-ARCHIVE.json"
+          cp "$RUNNER_TEMP/e14-build-receipt.json" "$RUNNER_TEMP/e14-generated/build-receipt.json"
+          cp "$RUNNER_TEMP/e14-check-receipt.json" "$RUNNER_TEMP/e14-generated/check-receipt.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e14-generated-runtime
+          path: ${{ runner.temp }}/e14-generated/
+          if-no-files-found: error
+          retention-days: 2
