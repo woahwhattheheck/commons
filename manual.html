@@ -31,6 +31,7 @@
 <p id="share" class="share"></p>
 <p id="job-hook" class="note"></p>
 <p id="super-mcp-hook" class="note"></p>
+<p id="cash-hook" class="note"></p>
 <h2>How to file a job</h2>
 <ol>
 <li>Pick a tool id from the catalog below (live from tools.json).</li>
@@ -91,6 +92,21 @@ one lane. what you want. not a scrape.
     document.getElementById("super-mcp-hook").innerHTML = smBits.length
       ? ("Catalog super MCP (tools.json <code>super_mcp</code>): " + smBits.join(" · "))
       : "Catalog super_mcp missing — open tools.json.";
+    var cash = data.cash || {};
+    var cashBits = [];
+    if (cash.shelf) cashBits.push('<a href="' + esc(cash.shelf) + '"><strong>Cash shelf</strong></a>');
+    if (cash.commerce) cashBits.push('<a href="' + esc(cash.commerce) + '">commerce</a>');
+    if (cash.doors && cash.doors.length) {
+      cashBits.push(cash.doors.length + ' doors');
+      cash.doors.slice(0, 5).forEach(function (d) {
+        if (d && d.href && d.label) cashBits.push('<a href="' + esc(d.href) + '">' + esc(d.label) + '</a>');
+      });
+    }
+    if (cash.note) cashBits.push(esc(cash.note));
+    document.getElementById("cash-hook").innerHTML = cashBits.length
+      ? ("Catalog cash (tools.json <code>cash</code>): " + cashBits.join(" · "))
+      : "Catalog cash missing — open tools.json.";
+
     var tb = document.getElementById("cat");
     tb.innerHTML = (data.tools || []).map(function (t) {
       return "<tr><td>" + esc(t.group) + "</td><td><code>" + esc(t.id) + "</code></td><td>" + esc((t.ops || []).filter(Boolean).join(", ") || "—") + "</td><td>" + esc(t.note) + "</td></tr>";
