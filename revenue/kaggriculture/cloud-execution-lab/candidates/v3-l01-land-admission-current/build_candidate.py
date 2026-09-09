@@ -121,10 +121,25 @@ def build(lab_root: Path, output_root: Path, mechanism: Path) -> dict[str, Any]:
     baseline = output_root / "baseline"
     candidate = output_root / "land"
     safe_extract(archive, baseline)
-    extracted_files = file_count(baseline)
+
+    # build_integrated packages the source manifest as SOURCE.json in addition
+    # to the runtime members counted by CURRENT-ARCHIVE.json.runtime_files.
+    # Bind that metadata copy independently, then keep cardinality strict for
+    # the declared runtime surface so arbitrary extra files still fail closed.
+    archive_source = baseline / "SOURCE.json"
+    if not archive_source.is_file():
+        raise FileNotFoundError("archive did not contain SOURCE.json")
+    archive_source_sha = sha256(archive_source)
+    if archive_source_sha != actual_source_sha:
+        raise ValueError(
+            f"archive SOURCE.json hash mismatch: {archive_source_sha} "
+            f"!= {actual_source_sha}"
+        )
+    baseline_archive_files = file_count(baseline)
+    extracted_files = baseline_archive_files - 1
     if extracted_files != int(manifest["runtime_files"]):
         raise ValueError(
-            f"archive file count mismatch: {extracted_files} "
+            f"archive runtime file count mismatch: {extracted_files} "
             f"!= {manifest['runtime_files']}"
         )
     shutil.copytree(baseline, candidate)
@@ -142,6 +157,7 @@ def build(lab_root: Path, output_root: Path, mechanism: Path) -> dict[str, Any]:
         "exec",
     )
     patch = patch_entrypoint(candidate_main)
+    candidate_archive_files = file_count(candidate)
 
     receipt = {
         "schema": "titan-v3-land-admission-build-v1",
@@ -151,9 +167,12 @@ def build(lab_root: Path, output_root: Path, mechanism: Path) -> dict[str, Any]:
         "archive_bytes": archive.stat().st_size,
         "source_manifest": str(source_manifest.relative_to(lab_root)),
         "source_manifest_sha256": actual_source_sha,
+        "archive_source_sha256": archive_source_sha,
         "entrypoint": manifest["entrypoint"],
+        "baseline_archive_files": baseline_archive_files,
+        "candidate_archive_files": candidate_archive_files,
         "baseline_runtime_files": extracted_files,
-        "candidate_runtime_files": file_count(candidate),
+        "candidate_runtime_files": candidate_archive_files - 1,
         "baseline_tree_sha256": tree_digest(baseline),
         "candidate_tree_sha256": tree_digest(candidate),
         "mechanism_source_sha256": sha256(mechanism),
