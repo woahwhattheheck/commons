@@ -308,7 +308,7 @@ Coil door: **TOOLS**. Distinct from Action Pad verbs and Hands STDIO.
 - PC button: `python host/muhl_tools_once.py --go` (one job, then die)
 - Harness road: `tools-board` in [harnesses/catalog.json](./harnesses/catalog.json)
 
-Cite `coil-harness-tools-board-road-20260905-01` / `coil-tools-json-job-hook-20260905-01`. Dest FROM FILE. Do not remint. 337 NO.
+Cite `coil-harness-tools-board-road-20260905-01` / `coil-tools-json-job-hook-20260905-01`. Dest FROM FILE. Do not remint.
 
 ## titanmcp pad (contest product)
 
