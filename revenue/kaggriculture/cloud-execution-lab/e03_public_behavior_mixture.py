@@ -1,10 +1,9 @@
 """Identity-free rolling mixture over public rival-flow stress hypotheses.
 
-The module calibrates *scenario weights*, not opponent identities.  It consumes
-only attributable public flow intervals and optional public timing relations.
-Censored/ambiguous observations remain diagnostics and never train a precise
-hidden-stock estimate.  Callers keep the incumbent policy whenever ``ready`` is
-false.
+The module calibrates scenario weights, not opponent identities. It consumes only
+attributable public flow intervals and optional public timing relations. Ambiguous
+or censored observations remain diagnostics. Callers keep the incumbent policy
+whenever ``ready`` is false.
 """
 from __future__ import annotations
 
@@ -19,12 +18,12 @@ ALIGNMENTS = frozenset((
     "near_absorption",
     "after_absorption",
 ))
+SAMPLE_ALIGNMENTS = ALIGNMENTS - {"any"}
 
 
 @dataclass(frozen=True)
 class StressScenario:
     """One public stress hypothesis used only for seller scenario weighting."""
-
     name: str
     quantity: int
     alignment: str = "any"
@@ -32,14 +31,7 @@ class StressScenario:
 
 @dataclass(frozen=True)
 class PublicFlowSample:
-    """One prior public-flow receipt suitable for causal calibration.
-
-    ``lower == upper`` with ``reason == 'identified'`` is exact public evidence.
-    Other intervals are preserved as ambiguity but do not train a point-valued
-    mixture.  ``ambiguous`` is for same-step attribution that cannot be separated
-    from our own/simultaneous actions.
-    """
-
+    """One prior public-flow receipt suitable for causal calibration."""
     step: int
     product: str
     lower: int
@@ -64,6 +56,8 @@ def _validate_scenarios(scenarios: Sequence[StressScenario]) -> tuple[StressScen
         raise ValueError("at least one stress scenario is required")
     names = set()
     for scenario in result:
+        if not isinstance(scenario, StressScenario):
+            raise ValueError("scenarios must be StressScenario values")
         if not isinstance(scenario.name, str) or not scenario.name:
             raise ValueError("scenario names must be non-empty strings")
         if scenario.name in names:
@@ -73,9 +67,32 @@ def _validate_scenarios(scenarios: Sequence[StressScenario]) -> tuple[StressScen
             raise ValueError("scenario quantities must be integers")
         if scenario.quantity < 0:
             raise ValueError("scenario quantities must be non-negative")
-        if scenario.alignment not in ALIGNMENTS:
+        if not isinstance(scenario.alignment, str) or scenario.alignment not in ALIGNMENTS:
             raise ValueError("unsupported public timing alignment")
     return result
+
+
+def _validate_sample(sample: PublicFlowSample) -> None:
+    if not isinstance(sample, PublicFlowSample):
+        raise ValueError("samples must be PublicFlowSample values")
+    if isinstance(sample.step, bool) or not isinstance(sample.step, int) or sample.step < 0:
+        raise ValueError("sample step must be a non-negative integer")
+    if not isinstance(sample.product, str) or not sample.product:
+        raise ValueError("sample product must be a non-empty string")
+    if isinstance(sample.lower, bool) or not isinstance(sample.lower, int) or sample.lower < 0:
+        raise ValueError("sample lower bound must be a non-negative integer")
+    if sample.upper is not None:
+        if isinstance(sample.upper, bool) or not isinstance(sample.upper, int) or sample.upper < 0:
+            raise ValueError("sample upper bound must be a non-negative integer or None")
+        if sample.upper < sample.lower:
+            raise ValueError("sample interval is invalid")
+    if not isinstance(sample.reason, str) or not sample.reason:
+        raise ValueError("sample reason must be a non-empty string")
+    if sample.alignment is not None:
+        if not isinstance(sample.alignment, str) or sample.alignment not in SAMPLE_ALIGNMENTS:
+            raise ValueError("sample has unsupported public timing alignment")
+    if not isinstance(sample.ambiguous, bool):
+        raise ValueError("sample ambiguous flag must be boolean")
 
 
 def _normalize_ppm(raw: Mapping[str, Fraction], order: Sequence[str]) -> dict[str, int]:
@@ -85,7 +102,6 @@ def _normalize_ppm(raw: Mapping[str, Fraction], order: Sequence[str]) -> dict[st
     scaled = {name: raw[name] * PPM / total for name in order}
     weights = {name: int(scaled[name]) for name in order}
     remainder = PPM - sum(weights.values())
-    # Largest exact fractional remainder wins; input order is the stable tie-break.
     rank = sorted(
         range(len(order)),
         key=lambda i: (-(scaled[order[i]] - int(scaled[order[i]])), i),
@@ -97,7 +113,6 @@ def _normalize_ppm(raw: Mapping[str, Fraction], order: Sequence[str]) -> dict[st
 
 def fixed_diverse_mixture(scenarios: Sequence[StressScenario]) -> dict:
     """Return a deterministic equal-weight experimental mixture."""
-
     scenarios = _validate_scenarios(scenarios)
     order = [scenario.name for scenario in scenarios]
     weights = _normalize_ppm({name: Fraction(1, 1) for name in order}, order)
@@ -113,14 +128,7 @@ def fixed_diverse_mixture(scenarios: Sequence[StressScenario]) -> dict:
 
 
 def scenarios_from_public_stress(signal: Mapping, *, capacity: int = 100) -> tuple[StressScenario, ...]:
-    """Build a small deduplicated quantity family from public stress diagnostics.
-
-    The accepted keys deliberately match the bounded public-regime signal surface
-    (``visible``, ``short``, ``long_rate``).  No hidden stock, opponent name, or
-    implementation label is accepted.  Equal quantities are deduplicated in
-    conservative order so adding a second label cannot double its mixture mass.
-    """
-
+    """Build a small deduplicated quantity family from public stress diagnostics."""
     if not isinstance(signal, Mapping):
         raise ValueError("public stress signal must be a mapping")
     if isinstance(capacity, bool) or not isinstance(capacity, int) or capacity < 0:
@@ -155,19 +163,7 @@ def rolling_public_mixture(
     minimum_support: int = 3,
     timing_mismatch_cost: int = 25,
 ) -> dict:
-    """Calibrate public stress weights from exact, prior, same-product receipts.
-
-    Scenario loss is absolute public quantity error plus an optional penalty when
-    both sides expose incompatible public timing relative to town absorption.
-    Scores are reciprocal loss (1/(1+loss)) and normalized to exact integer ppm.
-    The rolling window makes old behavior expire after a public regime switch.
-
-    If fewer than ``minimum_support`` exact attributable samples remain, return
-    ``ready=False`` and no weights.  This is the integration no-op: callers retain
-    their incumbent scenario assumptions rather than turning sparse evidence into
-    a fabricated classifier.
-    """
-
+    """Calibrate public stress weights from exact, prior, same-product receipts."""
     scenarios = _validate_scenarios(scenarios)
     if not isinstance(product, str) or not product:
         raise ValueError("product must be a non-empty string")
@@ -179,6 +175,8 @@ def rolling_public_mixture(
     ):
         if isinstance(value, bool) or not isinstance(value, int):
             raise ValueError(f"{name} must be an integer")
+    if now < 0:
+        raise ValueError("now must be non-negative")
     if window < 1 or minimum_support < 1 or timing_mismatch_cost < 0:
         raise ValueError("window/support must be positive and timing cost non-negative")
 
@@ -186,14 +184,9 @@ def rolling_public_mixture(
     exact = []
     ambiguous = 0
     for sample in samples:
-        if not isinstance(sample, PublicFlowSample):
-            raise ValueError("samples must be PublicFlowSample values")
+        _validate_sample(sample)
         if sample.product != product or sample.step >= now or sample.step < cutoff:
             continue
-        if sample.alignment is not None and sample.alignment not in ALIGNMENTS - {"any"}:
-            raise ValueError("sample has unsupported public timing alignment")
-        if sample.lower < 0 or (sample.upper is not None and sample.upper < sample.lower):
-            raise ValueError("sample interval is invalid")
         if not sample.exact:
             ambiguous += 1
             continue
