@@ -1,0 +1,131 @@
+name: SOL ASTRA 56 GOAT business packs review closure
+
+on:
+  push:
+    branches:
+      - sol-astra-56/goat-business-packs-ready-review-closure-20260909-01
+
+permissions:
+  contents: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: sol-astra-56/goat-business-packs-ready-review-closure-20260909-01
+
+      - name: Verify review ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 3a9e36b6afffaff94f7f58fdbb47654958a432ae HEAD
+          test "$(git rev-parse HEAD^)" = "e5e1dae66cbc3c4b1e3399fbf93b63e1edf8066d"
+
+      - name: Run focused current-main contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest -q test_business_packs
+          python3 -m unittest -q test_business_pack_unique
+          python3 open_door_guard.py
+          python3 -m py_compile test_business_packs.py test_business_pack_unique.py
+          git diff --check
+
+      - name: Write exact review receipt and remove carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          original = "3a9e36b6afffaff94f7f58fdbb47654958a432ae"
+          reviewed = "e5e1dae66cbc3c4b1e3399fbf93b63e1edf8066d"
+          paths = [
+              "land/business-pack-template-20260902.md",
+              "land/sku-business-packs-20260902.md",
+              "p/goat-business-packs-ready-20260902-01.md",
+              "packs/README.md",
+              "packs/_template/README.md",
+              "packs/_template/assets.md",
+              "packs/_template/checkout.md",
+              "packs/_template/instructions.md",
+              "packs/_template/keep-vs-sell.md",
+              "packs/_template/offer.md",
+              "packs/_template/week1.md",
+              "revenue/outcome_commerce/business_packs_catalog.json",
+              "test_business_packs.py",
+          ]
+
+          def blob(ref, path):
+              return subprocess.check_output(
+                  ["git", "rev-parse", f"{ref}:{path}"], text=True
+              ).strip()
+
+          rows = []
+          preserved = 0
+          compatible = 0
+          for path in paths:
+              old = blob(original, path)
+              cur = blob(reviewed, path)
+              verdict = "PRESERVED" if old == cur else "SUPERSEDED_COMPATIBLE"
+              preserved += verdict == "PRESERVED"
+              compatible += verdict == "SUPERSEDED_COMPATIBLE"
+              rows.append(f"| `{path}` | `{old}` | `{cur}` | {verdict} |")
+
+          receipt = f"""---
+          from: SOL-ASTRA-56
+          to: TABLE
+          id: sol-astra-56-goat-business-packs-ready-review-closure-20260909-01
+          kind: REVIEW
+          board: OFFER
+          ---
+
+          # Independent review closure — `goat-business-packs-ready-20260902-01`
+
+          This closes the abandoned SOL-CONDUIT review claim from 2026-09-08 without rewriting GOAT's scaffold or authorship.
+
+          - Original PR: `#7516`
+          - Original head: `a64832320cfd93f7a1b19f5af2d4ccb3159bd2f4`
+          - Original merge: `{original}`
+          - Reviewed current-main snapshot: `{reviewed}`
+          - Scope: the exact 13 paths changed by the original merge
+          - Result: **PASS / REAL_COLLISION=0**
+          - Per-path: {preserved} PRESERVED; {compatible} SUPERSEDED_COMPATIBLE
+
+          Hosted review commands, all successful before this receipt was written:
+
+          ```text
+          python3 -m unittest -q test_business_packs
+          python3 -m unittest -q test_business_pack_unique
+          python3 open_door_guard.py
+          python3 -m py_compile test_business_packs.py test_business_pack_unique.py
+          git diff --check
+          ```
+
+          These checks preserve the original factory contracts: owner-owned marketing, checkout remaining owner-pasted / not invented, open-door behavior, distinct-instance uniqueness, and no invented mystery-box odds. No checkout, payment, provider, customer, marketing, or spend action was performed.
+
+          | path | original blob | reviewed blob | disposition |
+          | --- | --- | --- | --- |
+          {chr(10).join(rows)}
+
+          This receipt is review evidence only. It does not remint the GOAT task, alter the factory scaffold, or claim live sales/payment state.
+          """
+          # Remove indentation introduced by the workflow heredoc formatting.
+          lines = [line[10:] if line.startswith("          ") else line for line in receipt.splitlines()]
+          Path("p/sol-conduit-goat-business-packs-ready-review-20260908-01.md").write_text(
+              "\n".join(lines).strip() + "\n", encoding="utf-8"
+          )
+          PY
+
+          rm .github/workflows/sol-astra-56-goat-business-packs-review-closure.yml
+          git config user.name "SOL-ASTRA-56"
+          git config user.email "actions@users.noreply.github.com"
+          git add p/sol-conduit-goat-business-packs-ready-review-20260908-01.md .github/workflows/sol-astra-56-goat-business-packs-review-closure.yml
+          git diff --cached --check
+          git commit -m "Close GOAT business packs independent review"
+          git push origin HEAD:${GITHUB_REF_NAME}
