@@ -1,0 +1,306 @@
+name: titan-v3-own-value-objective-closure-carrier-sol-carrier
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-own-value-objective-closure-carrier-sol-carrier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  canonical-closure-panel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact carrier head and parent repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "aa33226abb0d5158510d85f2576f8207d53c2a85"
+          printf '%s\n' "$(git rev-parse HEAD)" | tee "$RUNNER_TEMP/carrier-head.sha"
+          printf '%s\n' "aa33226abb0d5158510d85f2576f8207d53c2a85" | tee "$RUNNER_TEMP/repaired-parent.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Verify and materialize complete canonical closure twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          LAB="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab"
+          OUT="$RUNNER_TEMP/titan-v3-own-value-closure"
+          CONTROL="$OUT/control-runtime"
+          CANDIDATE="$OUT/candidate-runtime"
+          mkdir -p "$OUT"
+          LAB="$LAB" OUT="$OUT" CONTROL="$CONTROL" CANDIDATE="$CANDIDATE" python - <<'PY'
+          import hashlib
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import tarfile
+
+          lab = Path(os.environ['LAB']).resolve()
+          out = Path(os.environ['OUT']).resolve()
+          destinations = [Path(os.environ['CONTROL']).resolve(), Path(os.environ['CANDIDATE']).resolve()]
+
+          spec = importlib.util.spec_from_file_location('_carrier_build_integrated', lab / 'build_integrated.py')
+          if spec is None or spec.loader is None:
+              raise SystemExit('cannot load build_integrated.py')
+          build = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(build)
+
+          receipt = build.verify_current()
+          mapping = build.source_files()
+          archive_path = lab / receipt['path']
+          archive_bytes = archive_path.read_bytes()
+          archive_sha256 = hashlib.sha256(archive_bytes).hexdigest()
+          if archive_sha256 != receipt['sha256']:
+              raise SystemExit('canonical archive sha256 mismatch')
+          if receipt['runtime_files'] != len(mapping):
+              raise SystemExit('runtime source-map cardinality mismatch')
+
+          archived = {}
+          with tarfile.open(archive_path, 'r:gz') as tf:
+              members = tf.getmembers()
+              names = [member.name for member in members]
+              expected_names = sorted([*mapping.keys(), 'SOURCE.json'])
+              if sorted(names) != expected_names or len(names) != len(set(names)):
+                  raise SystemExit('archive member set does not equal source map + SOURCE.json')
+              for member in members:
+                  path = Path(member.name)
+                  if path.is_absolute() or '..' in path.parts or not member.isfile():
+                      raise SystemExit(f'unsafe/non-file archive member: {member.name}')
+                  stream = tf.extractfile(member)
+                  if stream is None:
+                      raise SystemExit(f'cannot read archive member: {member.name}')
+                  archived[member.name] = stream.read()
+
+          source = json.loads(archived['SOURCE.json'])
+          runtime = source.get('runtime')
+          if not isinstance(runtime, dict) or set(runtime) != set(mapping):
+              raise SystemExit('SOURCE.json runtime map mismatch')
+
+          source_rows = []
+          for member_name, source_rel in sorted(mapping.items()):
+              source_path = (lab / source_rel).resolve()
+              source_bytes = source_path.read_bytes()
+              archive_member = archived[member_name]
+              if archive_member != source_bytes:
+                  raise SystemExit(f'archive/source byte mismatch: {member_name}')
+              row = runtime.get(member_name)
+              if not isinstance(row, dict):
+                  raise SystemExit(f'missing runtime row: {member_name}')
+              digest = hashlib.sha256(archive_member).hexdigest()
+              if row.get('source_path') != source_rel or row.get('sha256') != digest or row.get('bytes') != len(archive_member):
+                  raise SystemExit(f'SOURCE.json row mismatch: {member_name}')
+              source_rows.append({'member': member_name, 'source_path': source_rel, 'sha256': digest, 'bytes': len(archive_member)})
+
+          def materialize(root: Path):
+              root.mkdir(parents=True, exist_ok=False)
+              for name, data in archived.items():
+                  target = root / name
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(data)
+
+          for root in destinations:
+              materialize(root)
+
+          def tree_digest(root: Path):
+              rows = []
+              for path in sorted(p for p in root.rglob('*') if p.is_file()):
+                  rel = path.relative_to(root).as_posix()
+                  rows.append(rel + '\0' + hashlib.sha256(path.read_bytes()).hexdigest())
+              return hashlib.sha256('\n'.join(rows).encode()).hexdigest()
+
+          control_digest = tree_digest(destinations[0])
+          candidate_digest = tree_digest(destinations[1])
+          if control_digest != candidate_digest:
+              raise SystemExit('control/candidate canonical closure trees differ before overlay wrapper')
+
+          binding = {
+              'carrier_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'repaired_parent': 'aa33226abb0d5158510d85f2576f8207d53c2a85',
+              'archive_path': str(archive_path.relative_to(Path.cwd())),
+              'archive_sha256': archive_sha256,
+              'archive_bytes': len(archive_bytes),
+              'runtime_files': len(mapping),
+              'source_json_sha256': hashlib.sha256(archived['SOURCE.json']).hexdigest(),
+              'source_map_sha256': hashlib.sha256(json.dumps(mapping, sort_keys=True, separators=(',', ':')).encode()).hexdigest(),
+              'control_tree_sha256': control_digest,
+              'candidate_tree_sha256_before_wrapper': candidate_digest,
+              'mapped_observed_clone': mapping.get('observed_clone.py'),
+              'source_rows': source_rows,
+          }
+          if binding['mapped_observed_clone'] != '../cloud-runtime-pulse/observed_clone.py':
+              raise SystemExit('observed_clone source mapping drift')
+          (out / 'CLOSURE-BINDING.json').write_text(json.dumps(binding, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(json.dumps({k: binding[k] for k in ('archive_sha256','runtime_files','source_map_sha256','control_tree_sha256','mapped_observed_clone')}, indent=2, sort_keys=True))
+          PY
+
+      - name: Prove mapped root imports and generate candidate wrapper inside its closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          OUT="$RUNNER_TEMP/titan-v3-own-value-closure"
+          CONTROL="$OUT/control-runtime"
+          CANDIDATE="$OUT/candidate-runtime"
+          CASE="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective"
+          CONTROL="$CONTROL" CANDIDATE="$CANDIDATE" CASE="$CASE" OUT="$OUT" python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          control = Path(os.environ['CONTROL']).resolve()
+          candidate = Path(os.environ['CANDIDATE']).resolve()
+          case = Path(os.environ['CASE']).resolve()
+          out = Path(os.environ['OUT']).resolve()
+
+          for label, root in [('control', control), ('candidate', candidate)]:
+              probe = f"""
+          import json, sys
+          from pathlib import Path
+          root = Path({str(root)!r})
+          sys.path.insert(0, str(root))
+          import observed_clone, scheduler, main
+          print(json.dumps({{
+              'observed_clone': str(Path(observed_clone.__file__).resolve()),
+              'scheduler': str(Path(scheduler.__file__).resolve()),
+              'main': str(Path(main.__file__).resolve()),
+          }}, sort_keys=True))
+          """
+              completed = subprocess.run([sys.executable, '-c', probe], check=True, capture_output=True, text=True, timeout=45)
+              paths = json.loads(completed.stdout.strip().splitlines()[-1])
+              for module_name, actual in paths.items():
+                  if Path(actual).parent != root:
+                      raise SystemExit(f'{label} {module_name} escaped materialized root: {actual}')
+              (out / f'{label.upper()}-IMPORT-CLOSURE.json').write_text(json.dumps(paths, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+
+          wrapper = candidate / 'own_value_candidate.py'
+          wrapper.write_text(f'''# generated evidence wrapper; not repository source\nfrom __future__ import annotations\nimport importlib.util\nfrom pathlib import Path\nimport sys\nROOT = Path(__file__).resolve().parent\nCASE = Path({str(case)!r})\nif str(ROOT) not in sys.path:\n    sys.path.insert(0, str(ROOT))\nspec = importlib.util.spec_from_file_location("_closure_own_value_objective", CASE / "own_value_objective.py")\nif spec is None or spec.loader is None:\n    raise ImportError("cannot load own-value objective overlay")\npatch = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(patch)\nINSTALL_RECEIPT = patch.install(expected_root=ROOT)\nimport main as canonical_main\ndef agent(observation, configuration=None):\n    return canonical_main.agent(observation, configuration)\n''', encoding='utf-8')
+
+          smoke = f"""
+          import importlib.util, json
+          from pathlib import Path
+          path = Path({str(wrapper)!r})
+          spec = importlib.util.spec_from_file_location('_closure_candidate_smoke', path)
+          if spec is None or spec.loader is None:
+              raise SystemExit('candidate wrapper spec unavailable')
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          print(json.dumps(module.INSTALL_RECEIPT, sort_keys=True))
+          """
+          completed = subprocess.run([sys.executable, '-c', smoke], check=True, capture_output=True, text=True, timeout=45)
+          receipt = json.loads(completed.stdout.strip().splitlines()[-1])
+          if Path(receipt['source_path']).resolve() != (candidate / 'selected_sell_core.py').resolve():
+              raise SystemExit('overlay did not bind extracted candidate SELL core')
+          if receipt.get('actual_git_blob') != receipt.get('expected_git_blob'):
+              raise SystemExit('overlay extracted SELL-core Git blob mismatch')
+          if receipt.get('canonical_files_modified') is not False:
+              raise SystemExit('overlay claimed canonical mutation')
+          (out / 'CANDIDATE-INSTALL-RECEIPT.json').write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          PY
+
+      - name: Run complete-closure control panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          KAG=revenue/kaggriculture
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          OUT="$RUNNER_TEMP/titan-v3-own-value-closure"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$OUT/control-runtime/main.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --recheck-first \
+            --output "$OUT/control.json"
+
+      - name: Run complete-closure own-value candidate panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          KAG=revenue/kaggriculture
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          OUT="$RUNNER_TEMP/titan-v3-own-value-closure"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$OUT/candidate-runtime/own_value_candidate.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --recheck-first \
+            --output "$OUT/candidate.json"
+
+      - name: Run existing paired classifier without promotion authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective
+          OUT="$RUNNER_TEMP/titan-v3-own-value-closure"
+          python "$CASE/compare.py" \
+            --control "$OUT/control.json" \
+            --candidate "$OUT/candidate.json" \
+            --head "aa33226abb0d5158510d85f2576f8207d53c2a85" \
+            --output "$OUT/PAIRED-REPORT.json" \
+            --markdown "$OUT/PAIRED-REPORT.md"
+          cat "$OUT/PAIRED-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+          printf '\n> Evidence-only closure rerun. No promotion/submission authority; comparator repair is tracked separately.\n' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact closure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-value-closure-carrier-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/carrier-head.sha
+            ${{ runner.temp }}/repaired-parent.sha
+            ${{ runner.temp }}/titan-v3-own-value-closure/CLOSURE-BINDING.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/CONTROL-IMPORT-CLOSURE.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/CANDIDATE-IMPORT-CLOSURE.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/CANDIDATE-INSTALL-RECEIPT.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/control.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/candidate.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/PAIRED-REPORT.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/PAIRED-REPORT.md
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Assert repository checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
