@@ -12,6 +12,9 @@ on:
         default: '2609099501'
 permissions:
   contents: read
+concurrency:
+  group: titan-p24-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   p24-factorial:
     runs-on: ubuntu-latest
@@ -35,14 +38,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DISPATCH=2c4d979e38ed3b5587ae01cebbefe60d53a95cc4
+          DISPATCH=50fc3978603da7a2f155168a0296877007b895ea
           ROOT=revenue/kaggriculture/cloud-execution-lab
           git worktree add --detach /tmp/p24-dispatch "$DISPATCH"
           cd "/tmp/p24-dispatch/$ROOT"
           python build_integrated.py --check
-          test "$(stat -c %s exports/titan-current.tar.gz)" = '423561'
-          test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = '385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492'
-          test "$(sha256sum runtime/integrated-selected/CURRENT-SOURCE.json | awk '{print $1}')" = '9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f'
+          test "$(stat -c %s exports/titan-current.tar.gz)" = '423575'
+          test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = 'a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba'
+          test "$(sha256sum runtime/integrated-selected/CURRENT-SOURCE.json | awk '{print $1}')" = 'b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba'
       - name: Exact-Arlene 2^4 development screen
         shell: bash
         env:
@@ -52,11 +55,11 @@ jobs:
           mkdir -p /tmp/p24-results
           python revenue/kaggriculture/cloud-execution-lab/p24-composition-20260909/run_p24_factorial.py \
             --archive /tmp/p24-dispatch/revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
-            --expected-archive-sha256 385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492 \
-            --expected-archive-bytes 423561 \
+            --expected-archive-sha256 a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba \
+            --expected-archive-bytes 423575 \
             --expected-member-count 107 \
-            --expected-source-sha256 9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f \
-            --dispatch-commit 2c4d979e38ed3b5587ae01cebbefe60d53a95cc4 \
+            --expected-source-sha256 b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba \
+            --dispatch-commit 50fc3978603da7a2f155168a0296877007b895ea \
             --seeds "$DISPATCH_SEEDS" \
             --opponent exact_public_arlene=runtime:reference/next-panel/vendor/arlene.py::agent \
             --action-timeout 1.0 \
