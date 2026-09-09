@@ -13,6 +13,7 @@ from opening_turnover import MODES, prioritize_opening_seeds
 
 MODE = os.environ.get("P01_MODE", "annual").strip().lower()
 MAX_DAY = int(os.environ.get("P01_MAX_DAY", "10"))
+TRACE_FRONTIERS = os.environ.get("P01_TRACE_FRONTIERS", "1").strip().lower() not in {"0", "false", "no"}
 if MODE not in MODES:
     raise ValueError(f"unsupported P01_MODE={MODE!r}")
 
@@ -22,8 +23,25 @@ def _digest(value) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
+def _has_seed_frontier(action) -> bool:
+    market = action.get("market") if isinstance(action, dict) else None
+    if not isinstance(market, list):
+        return False
+    positive = 0
+    for row in market:
+        if (isinstance(row, list) and len(row) >= 3 and row[0] == "BUY_SEED"
+                and isinstance(row[2], int) and not isinstance(row[2], bool) and row[2] > 0):
+            positive += 1
+            if positive >= 2:
+                return True
+    return False
+
+
 def _emit(observation, before, after, report) -> None:
-    if not report.get("changed"):
+    day = report.get("day")
+    audit_frontier = (TRACE_FRONTIERS and isinstance(day, int) and not isinstance(day, bool)
+                      and 0 <= day <= MAX_DAY and _has_seed_frontier(before))
+    if not report.get("changed") and not audit_frontier:
         return
     directory = Path(os.environ.get("P01_TRACE_DIR", "/tmp/p01-traces"))
     directory.mkdir(parents=True, exist_ok=True)
@@ -34,6 +52,7 @@ def _emit(observation, before, after, report) -> None:
         "pid": os.getpid(),
         "step": int(observation.get("step", report.get("step", -1))),
         "player": int(observation.get("player", -1)),
+        "changed": bool(report.get("changed")),
         "before_action_sha256": _digest(before),
         "after_action_sha256": _digest(after),
         "before_market": before.get("market", []),

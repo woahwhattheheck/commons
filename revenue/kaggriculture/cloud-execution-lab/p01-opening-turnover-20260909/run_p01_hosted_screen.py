@@ -122,6 +122,11 @@ def main() -> None:
             paired.append(pair)
 
     traces = _read_traces()
+    activations = [row for row in traces if bool(row.get("report", {}).get("changed"))]
+    reason_counts: dict[str, int] = {}
+    for row in traces:
+        reason = str(row.get("report", {}).get("reason", "missing_reason"))
+        reason_counts[reason] = reason_counts.get(reason, 0) + 1
     complete = [row for row in paired if row.get("complete")]
     own_deltas = [float(row["own_cash_delta"]) for row in complete]
     margin_deltas = [float(row["margin_delta"]) for row in complete]
@@ -148,13 +153,16 @@ def main() -> None:
         "nonzero_own_delta_pairs": sum(delta != 0 for delta in own_deltas),
         "regressive_flips": regressive_flips,
         "positive_flips": positive_flips,
-        "activation_rows": len(traces),
-        "activation_processes": len({row.get("trace_file") for row in traces}),
-        "first_activation": traces[0] if traces else None,
+        "frontier_rows": len(traces),
+        "frontier_reason_counts": dict(sorted(reason_counts.items())),
+        "activation_rows": len(activations),
+        "activation_processes": len({row.get("trace_file") for row in activations}),
+        "first_frontier": traces[0] if traces else None,
+        "first_activation": activations[0] if activations else None,
     }
     summary["development_signal"] = bool(
         len(complete) == len(paired)
-        and traces
+        and activations
         and positive_flips >= regressive_flips
         and summary["mean_own_cash_delta"] > 0
         and summary["mean_margin_delta"] >= 0
