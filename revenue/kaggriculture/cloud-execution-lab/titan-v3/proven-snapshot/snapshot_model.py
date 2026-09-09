@@ -55,6 +55,19 @@ class SnapshotError(ValueError):
 
 
 @dataclass(frozen=True)
+class EvidenceLedgerPin:
+    """Immutable identity plus required cell domain for one retained result ledger."""
+
+    name: str
+    path: str
+    sha256: str
+    bytes: int
+    seeds: tuple[int, ...]
+    opponents: tuple[str, ...]
+    variants: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class Pin:
     source_commit: str
     source_archive: str
@@ -64,6 +77,7 @@ class Pin:
     source_freeze_sha256: str
     source_freeze_version: str
     frozen_hashes: Mapping[str, str]
+    evidence_ledgers: tuple[EvidenceLedgerPin, ...]
 
 
 PRODUCTION_PIN = Pin(
@@ -81,6 +95,26 @@ PRODUCTION_PIN = Pin(
         "reference/next-panel/vendor/arlene.py": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
         "reference/decision/decision.py": "9d78406668c927785b29f5bf2b5a67f0263bfcd63f626c881a60bad5f8293c52",
     },
+    evidence_ledgers=(
+        EvidenceLedgerPin(
+            name="development",
+            path="runtime/development-v3.json",
+            sha256="b73243356f991864e6d6e8aa7a0bf24d7a2646114f7e6745bd9977b287514f60",
+            bytes=143_452,
+            seeds=(9_600_803, 9_600_821, 9_600_839),
+            opponents=("arlene", "apex"),
+            variants=("candidate",),
+        ),
+        EvidenceLedgerPin(
+            name="held_out",
+            path="runtime/heldout-v3.json",
+            sha256="b903365f7ce4cf61580c4ae0de7001f640534a338238fdb5383a2bde9aa3ab77",
+            bytes=181_214,
+            seeds=(9_600_901, 9_600_919),
+            opponents=("arlene", "apex"),
+            variants=("baseline", "candidate"),
+        ),
+    ),
 )
 
 
