@@ -8,7 +8,14 @@ The worker's original rows must be idle through reset; the trip fits six actions
 and ends before a hire, branch or EOD. Same-day input obligations and other
 collectors decline the job. A physical stock bound counts carried goods,
 standing yield, possible annual WATER bonuses and requested purchases without
-crediting future sales. The delivery uses an empty producer market row.
+crediting future sales. Ordinary delivery uses an empty producer market row.
+At final turn 718, delivery instead reuses the real producer's existing unique
+`SELL FERTILIZER 1`. Admission requires no preexisting physical fertilizer,
+no other remaining collection or fertilizer purchase, and a product-only final
+market. Delivery rechecks the exclusively owned carried unit and preserves the
+existing sale; it cannot relabel a larger lot or append a duplicate. This fixes
+the producer/consumer boundary that otherwise replaced the owned DROP with PASS
+when the producer had already included it in terminal settlement.
 
 The actual final fertilizer-sale slot is bound after existing SELL ordering.
 Cancelled deposits cancel the added sale as well. Already collected stock stays
@@ -18,7 +25,11 @@ the returned lot. An unknown receipt or unaccounted later fertilizer transfer
 cannot authorize a duplicate sale of replacement stock. This collection-only
 use does not enable or load the optional terminal optimizer.
 
-Twenty-three focused idle/runtime contracts cover these boundaries. An original
+Twenty-seven focused idle/runtime contracts cover these boundaries, including a
+four-step primitive fixture through the real initialized Arlene and frozen
+consumer with one unit projection per turn and one observed final receipt.
+A delayed earlier collection can use the same final outlet after revalidating
+its current exclusive stock; an original planned date is not a receipt. An original
 recording was also checked privately using the existing unit and market
 primitives. Its earning receipt concerns one bounded action window, with no
 full-game score estimate or measured win gain. Originals and tactical analysis

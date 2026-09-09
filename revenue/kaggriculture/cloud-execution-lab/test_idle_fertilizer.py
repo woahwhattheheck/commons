@@ -374,5 +374,114 @@ class IdleFertilizerRuntimeTests(unittest.TestCase):
         self.assertEqual(agent.spatial.sale_obligation['status'],'fill_unknown')
         self.assertEqual(obs['private']['shed']['FERTILIZER'],1)
 
+    def terminal_fixture(self,step=715):
+        """Keep the real initialized producer, its settlement and FrozenSelected."""
+        from scheduler import parent
+        helper=IdleFertilizerTests();obs,_=helper.fixture(step=step)
+        obs['private']['shed'].pop('FERTILIZER')
+        agent=T.TitanAgent(T.Features(seed=False,funding=False,idle_fertilizer=True,
+                                      operating_stock=True,market_pressure=True))
+        # Isolate the fixture's route bytes without replacing the controller or
+        # either installed method. All actual market rows stay unmodified.
+        with patch.object(parent,'_ROUTES',deepcopy(parent.routes())):
+            agent._initialize()
+        route=agent.controller.R[agent.controller.cur]
+        for now in range(step,719):
+            route[now]=deepcopy(route[now])
+            route[now]['farmer']=['PASS'];route[now]['hands']=[['PASS']]
+        return helper,obs,agent,route
+
+    def test_real_terminal_producer_reuses_one_owned_sale_and_one_receipt(self):
+        helper,obs,agent,route=self.terminal_fixture()
+        inherited=deepcopy(route[718]['market'])
+        self.assertTrue(inherited)
+        import frozen_selected
+        with patch.object(frozen_selected,'post_units',wraps=frozen_selected.post_units) as projections:
+            for expected in ('NORTH','COLLECT_FERTILIZER','SOUTH','DROP'):
+                with patch.object(agent.spatial,'_deliver_idle_fertilizer',
+                                  wraps=agent.spatial._deliver_idle_fertilizer) as delivery:
+                    out=agent.act(obs,{})
+                self.assertEqual(out['farmer'],[expected],agent.diagnostics)
+                if obs['step']==718:
+                    producer_market=delivery.call_args.args[1]['market']
+                    self.assertEqual(agent.selected['market'],producer_market)
+                    self.assertEqual(agent.selected['farmer'],['DROP'])
+                    fertilizer=[(j,a) for j,a in enumerate(out['market'])
+                                if a and a[:2]==['SELL','FERTILIZER']]
+                    self.assertEqual(len(fertilizer),1)
+                    slot,order=fertilizer[0]
+                    self.assertEqual(order,['SELL','FERTILIZER',1])
+                    self.assertEqual(agent.spatial.sale_obligation['slot'],slot)
+                    self.assertEqual(agent.consumer.selected_post_units_binding,
+                                     (718,0,out['farmer'],out['hands']))
+                obs=helper.advance(obs,out)
+            self.assertEqual(projections.call_count,4)
+        self.assertEqual(route[718]['market'],inherited)
+        self.assertEqual(obs['private']['inventories'][0],{})
+        self.assertEqual(obs['private']['shed'].get('FERTILIZER',0),0)
+        # Reconcile the final emitted row directly; 719 is not a playable turn.
+        agent.history.observe(obs)
+        agent.spatial.observe_market_receipt(obs,agent.history.fill_result)
+        self.assertIsNone(agent.spatial.sale_obligation)
+        self.assertEqual(len(agent.spatial.receipt_events),1)
+        self.assertEqual(agent.spatial.receipt_events[0]['sold_units'],1)
+
+    def test_terminal_job_rejects_baseline_fertilizer_or_other_sources_before_departure(self):
+        for case in ('shed','other_carry','collection','purchase','input','barrier','placeholder'):
+            with self.subTest(case=case):
+                helper,obs,agent,route=self.terminal_fixture()
+                if case=='shed':obs['private']['shed']['FERTILIZER']=1
+                if case=='other_carry':obs['private']['inventories'][1]={'FERTILIZER':1}
+                if case=='collection':route[716]['hands'][0]=['COLLECT_FERTILIZER']
+                if case=='purchase':route[716]['market'].append(['BUY_PRODUCT','FERTILIZER',1])
+                if case=='input':route[716]['hands'][0]=['PICKUP','FERTILIZER',1]
+                if case=='barrier':route[718]['market'].append(['BUY_SEED','CARROT',1])
+                if case=='placeholder':route[718]['market'].append([])
+                out=agent.act(obs,{})
+                self.assertEqual(out['farmer'],['PASS'])
+                self.assertFalse(any(p.get('kind')=='idle_fertilizer'
+                                     for p in agent.spatial.plans.values()))
+
+    def test_terminal_delivery_does_not_relabel_or_duplicate_a_larger_lot(self):
+        helper,obs,agent,route=self.terminal_fixture()
+        for _ in range(3):obs=helper.advance(obs,agent.act(obs,{}))
+        for market in ([['SELL','FERTILIZER',2]],
+                       [['SELL','FERTILIZER',1],['SELL','FERTILIZER',1]],
+                       [['BUY_PRODUCT','FERTILIZER',1],['SELL','FERTILIZER',1]]):
+            selected={'farmer':['DROP'],'hands':[['PASS']],'market':deepcopy(market)}
+            out=agent.spatial._deliver_idle_fertilizer(obs,selected,agent.controller)
+            self.assertEqual(out['farmer'],['PASS'])
+            self.assertEqual(out['market'],market)
+        selected={'farmer':['DROP'],'hands':[['PICKUP','FERTILIZER',1]],
+                  'market':[['SELL','FERTILIZER',1]]}
+        out=agent.spatial._deliver_idle_fertilizer(obs,selected,agent.controller)
+        self.assertEqual(out['farmer'],['PASS'])
+        self.assertEqual(out['hands'],selected['hands'])
+
+    def test_delayed_owned_delivery_revalidates_the_final_outlet(self):
+        helper,obs,agent,route=self.terminal_fixture(step=712)
+        route[715]['market']=[]
+        for expected in ('NORTH','COLLECT_FERTILIZER','SOUTH'):
+            out=agent.act(obs,{})
+            self.assertEqual(out['farmer'],[expected],agent.diagnostics)
+            obs=helper.advance(obs,out)
+        self.assertFalse(agent.spatial.plans[0]['outlet_certificate']['terminal_reuse'])
+        # The real producer offers the deposited unit at each intermediate
+        # turn. The ordinary empty-market guard keeps the unit carried until
+        # a supported outlet; ownership must survive this missed delivery.
+        for _ in range(3):
+            out=agent.act(obs,{})
+            self.assertEqual(out['farmer'],['PASS'])
+            obs=helper.advance(obs,out)
+        self.assertEqual(obs['step'],718)
+        out=agent.act(obs,{})
+        self.assertEqual(out['farmer'],['DROP'],agent.diagnostics)
+        self.assertEqual(out['market'],[['SELL','FERTILIZER',1]])
+        obs=helper.advance(obs,out)
+        agent.history.observe(obs)
+        agent.spatial.observe_market_receipt(obs,agent.history.fill_result)
+        self.assertIsNone(agent.spatial.sale_obligation)
+        self.assertEqual(agent.spatial.receipt_events[-1]['sold_units'],1)
+
 
 if __name__=='__main__':unittest.main()

@@ -600,19 +600,45 @@ class SpatialTempo:
                 if 'animal' in tile and tile.get('fertilizer_available'):stock+=1
         return stock,collections,feeds
 
-    def _fertilizer_outlet(self,obs,route,target,deposit,day_bound):
-        """Require an empty same-day delivery market; no future sale credit.
+    def _fertilizer_outlet(self,obs,route,target,deposit,day_bound,*,terminal_worker=None):
+        """Certify an empty outlet or the producer's unique terminal product lot.
 
         The added unit is sold in its own DROP turn, after every inherited row.
         Avoid operating-input obligations throughout this narrow idle window.
+        At 718 the real producer already includes the owned DROP in settlement;
+        that existing one-unit sale must be reused rather than appended again.
         """
         now=int(obs['step']);close=min((now//24+1)*24,719)
-        if deposit>=close or route[deposit].get('market'):return None
+        terminal=deposit==718
+        if deposit>=close or (not terminal and route[deposit].get('market')):return None
+        if terminal:
+            # The pinned settlement fits all nine products in ten slots only
+            # with its ordinary product-only tail. Do not remove placeholders
+            # or cross economic barriers to manufacture room for this job.
+            orders=route[deposit].get('market',[])
+            if len(orders)>10 or any(not a or len(a)!=3 or a[0]!='SELL'
+                    or a[1] not in self.m.PRODUCTS or type(a[2]) is not int
+                    or a[2]<0 for a in orders):return None
+            private=obs['private']
+            physical=private['shed'].get('FERTILIZER',0)+sum(
+                inv.get('FERTILIZER',0) for inv in private['inventories'])
+            # Before departure there must be no fungible baseline fertilizer.
+            # At delivery only this already observed collected unit may exist.
+            if terminal_worker is None:
+                if physical:return None
+            elif (terminal_worker>=len(private['inventories']) or physical!=1
+                  or private['inventories'][terminal_worker]!={'FERTILIZER':1}):return None
         for t in range(now,close):
             for a in [unit(route[t],0),*route[t].get('hands',[])]:
                 if a and (a[0]=='FERTILIZE' or a[:2]==['PICKUP','FERTILIZER']):return None
+                if terminal and a and a[0]=='COLLECT_FERTILIZER':return None
+            if terminal:
+                for a in route[t].get('market',[])[:10]:
+                    if (a and a[:2]==['BUY_PRODUCT','FERTILIZER']
+                            and (len(a)<3 or type(a[2]) is not int or a[2]!=0)):return None
         return {'step':deposit,'slot':0,'shared_stock_upper':day_bound,
-                'basis':'same_return_deposit_and_one_unit_sale','future_sale_credit':0}
+                'basis':'same_return_deposit_and_one_unit_sale','future_sale_credit':0,
+                'terminal_reuse':terminal}
 
     def _deliver_idle_fertilizer(self,obs,selected,controller):
         """Bind a proved one-unit pickup to a same-return DROP and surplus sale."""
@@ -624,18 +650,33 @@ class SpatialTempo:
             if not stock.get('FERTILIZER',0):continue
             position=tuple(self.m._farmer_position(obs['farms'][obs['player']],i))
             bound=self._idle_stock_bound(obs,route,close)
+            market=selected.get('market',[])
+            slots=[j for j,a in enumerate(market[:10])
+                   if a and len(a)>1 and a[:2]==['SELL','FERTILIZER']]
+            actual_terminal=(len(market)<=10 and all(a and len(a)==3 and a[0]=='SELL'
+                and a[1] in self.m.PRODUCTS and type(a[2]) is int and a[2]>=0 for a in market)
+                and not any(a and (a[0] in ('FERTILIZE','COLLECT_FERTILIZER')
+                                   or a[:2]==['PICKUP','FERTILIZER'])
+                            for a in [unit(selected,0),*selected.get('hands',[])]))
+            # An earlier owned job may reach this outlet after a cancelled
+            # delivery. Revalidate its current stock and route below instead
+            # of requiring 718 to have been its originally planned outlet.
+            reuse=(now==718 and actual_terminal and len(slots)==1
+                   and market[slots[0]]==['SELL','FERTILIZER',1])
             supported=(plan.get('collection_observed') and stock=={'FERTILIZER':1}
                        and position in ((4,4),(5,4),(4,5),(5,5))
-                       and not selected.get('market') and bound is not None and bound[0]<=100
-                       and self._fertilizer_outlet(obs,route,plan['extra']['tile'],now,bound[0]) is not None)
+                       and (now!=718 or actual_terminal)
+                       and (not market or reuse) and bound is not None and bound[0]<=100
+                       and self._fertilizer_outlet(obs,route,plan['extra']['tile'],now,bound[0],
+                                                  terminal_worker=i if now==718 else None) is not None)
             out=deepcopy(selected)
             if not supported:
                 # Keep the fertilizer carried and retry only in owned idle slack.
                 # In particular, do not deposit into a market whose sale is absent.
                 set_unit(out,i,['PASS'])
                 return out
-            out['market']=[['SELL','FERTILIZER',1]]
-            self._sale_proposal={'step':now,'slot':0,'worker':i,'quantity':1,
+            if not reuse:out['market']=[['SELL','FERTILIZER',1]]
+            self._sale_proposal={'step':now,'slot':slots[0] if reuse else 0,'worker':i,'quantity':1,
                                  'target':tuple(plan['extra']['tile'])}
             return out
         p=self.sale_obligation
@@ -655,8 +696,9 @@ class SpatialTempo:
         No input, market, productive service or carried inventory is displaced.
         This buys no animal and promises no future production. The worker must
         collect, deposit and return before hiring/reset/branch boundaries.
-        The delivery appends one surplus sale to an empty producer market row;
-        no future requested sale is used as proof that shed room will return.
+        Delivery appends one surplus sale to an empty producer market row, or
+        reuses its certified terminal lot. Future requested sales never prove
+        that shed room will return.
         """
         if (not self.idle_fertilizer or not self.idle_supported
                 or self.sale_obligation is not None
