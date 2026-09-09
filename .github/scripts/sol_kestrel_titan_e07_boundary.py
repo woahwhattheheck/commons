@@ -106,7 +106,18 @@ def verify_and_build() -> tuple[str, dict[str, object]]:
             str(LAB),
         ]
     )
-    run(sys.executable, "-B", "-m", "py_compile", "frozen_selected.py", "test_e07_same_turn_funding.py", cwd=LAB, env=env)
+    run(
+        sys.executable,
+        "-B",
+        "-m",
+        "py_compile",
+        "frozen_selected.py",
+        "test_e07_same_turn_funding.py",
+        cwd=LAB,
+        env=env,
+    )
+    # Source semantics must pass before publication. The canonical-binding test
+    # is intentionally deferred until the deterministic archive is rebuilt.
     run(
         sys.executable,
         "-B",
@@ -114,7 +125,7 @@ def verify_and_build() -> tuple[str, dict[str, object]]:
         "unittest",
         "-v",
         "test_e07_hosted_source_path",
-        "test_e07_same_turn_funding",
+        "test_e07_same_turn_funding.SameTurnFundingContracts",
         "test_joint_market_slots",
         "test_e10_floor_cycle",
         cwd=LAB,
@@ -122,12 +133,14 @@ def verify_and_build() -> tuple[str, dict[str, object]]:
     )
     run(sys.executable, "-B", "build_integrated.py", cwd=LAB, env=env)
     run(sys.executable, "-B", "build_integrated.py", "--check", cwd=LAB, env=env)
+    # Now assert both the focused semantics and the committed package binding.
     run(
         sys.executable,
         "-B",
         "-m",
         "unittest",
         "-v",
+        "test_e07_same_turn_funding",
         "test_release_consistency",
         "test_build_publication",
         cwd=LAB,
@@ -164,7 +177,7 @@ Cloud checkout before publication: `{checkout}`
 
 - Python compilation for the source and focused test;
 - `test_e07_hosted_source_path`;
-- `test_e07_same_turn_funding`;
+- `test_e07_same_turn_funding` (source semantics before rebuild, canonical binding after rebuild);
 - `test_joint_market_slots`;
 - `test_e10_floor_cycle`;
 - deterministic `build_integrated.py` and `build_integrated.py --check`;
