@@ -1,0 +1,116 @@
+name: titan-v3-full-queue-sell-growth-sol-amplifier
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-full-queue-sell-growth-sol-amplifier.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  contracts-and-screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Prove source seam, isolation, and focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier
+          python "$ROOT/audit_change.py" --json "$RUNNER_TEMP/SOURCE-SEAM.json"
+          cd "$ROOT"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python -m unittest -v test_full_queue_sell_growth.py
+          python -m py_compile candidate.py growth_patch.py audit_change.py run_panel.py test_full_queue_sell_growth.py
+
+      - name: Verify canonical release remains unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Build pinned Apex opponent once
+        shell: bash
+        run: |
+          set -euo pipefail
+          APEX=revenue/kaggriculture/cloud-policy-portfolio/vendor/apex
+          g++ -O3 -std=c++17 -shared -fPIC -I"$APEX/source/include" -o "$APEX/agent.so" \
+            "$APEX/source/policy.cpp" "$APEX/submission_bridge.cpp"
+          sha256sum "$APEX/agent.so" | tee "$RUNNER_TEMP/apex-agent.sha256"
+
+      - name: Run 32-cell official-engine screen
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier
+          mkdir -p "$RUNNER_TEMP/full-queue-growth"
+          set +e
+          python "$ROOT/run_panel.py" \
+            --head "$(git rev-parse HEAD)" \
+            --seeds '2611092201,2611092203,2611092205,2611092207' \
+            --opponents 'arlene,apex,public_bt12,v1' \
+            --workers 4 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$RUNNER_TEMP/full-queue-growth/PANEL.json" \
+            --markdown "$RUNNER_TEMP/full-queue-growth/PANEL.md"
+          rc=$?
+          set -e
+          if [[ "$rc" -ne 0 && "$rc" -ne 3 ]]; then
+            echo "panel failed structurally with exit $rc" >&2
+            exit "$rc"
+          fi
+
+      - name: Publish screen summary
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f "$RUNNER_TEMP/full-queue-growth/PANEL.md" ]]; then
+            cat "$RUNNER_TEMP/full-queue-growth/PANEL.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# Saturated-queue SELL screen produced no verdict' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-full-queue-sell-growth-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            ${{ runner.temp }}/SOURCE-SEAM.json
+            ${{ runner.temp }}/apex-agent.sha256
+            ${{ runner.temp }}/full-queue-growth/
+          if-no-files-found: error
+          retention-days: 30
