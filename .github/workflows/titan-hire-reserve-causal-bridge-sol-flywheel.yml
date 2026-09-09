@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: titan-hire-reserve-causal-bridge-sol-flywheel-${{ github.ref }}
+  group: titan-hire-reserve-causal-bridge-sol-flywheel-${{ github.event.pull_request.number || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -20,9 +20,32 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Bind the exact event head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+          test -z "$(git status --porcelain)"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Verify causal receipt and mechanics contract
+      - name: Verify committed manifest and current mechanics contract
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/hire-reserve-causal-bridge-20260909-sol-flywheel
         run: ./run_tests.sh
+      - name: Retain exact-head manifest receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-hire-reserve-causal-bridge-sol-flywheel-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            revenue/kaggriculture/cloud-execution-lab/analysis/hire-reserve-causal-bridge-20260909-sol-flywheel/BRIDGE.json
+          if-no-files-found: error
+          retention-days: 30
