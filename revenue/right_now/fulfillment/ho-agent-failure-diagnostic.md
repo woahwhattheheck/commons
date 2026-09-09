@@ -12,3 +12,7 @@
 - Max concurrent: 2.
 - Scope expansion: same-day working proof is a new SKU.
 - Automation: manual with reusable packet fields. Not an automated certifier.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
