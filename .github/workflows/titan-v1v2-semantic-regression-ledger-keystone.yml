@@ -1,0 +1,168 @@
+name: titan-v1v2-semantic-regression-ledger-keystone
+
+on:
+  push:
+    branches:
+      - keystone/titan-v1v2-semantic-regression-ledger-20260909-02
+    paths:
+      - .github/workflows/titan-v1v2-semantic-regression-ledger-keystone.yml
+      - revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-semantic-regression-keystone/**
+      - p/keystone-titan-v1v2-semantic-regression-ledger-20260909-02.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v1v2-semantic-regression-ledger-keystone-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git status --short
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Extract exact frozen V1 to V2 source packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v1v2-source-packet"
+          mkdir -p "$OUT"
+          OUT="$OUT" python - <<'PY'
+          from __future__ import annotations
+
+          import difflib
+          import hashlib
+          import json
+          import os
+          import shutil
+          from pathlib import Path
+
+          root = Path.cwd()
+          lab = root / "revenue/kaggriculture/cloud-execution-lab"
+          out = Path(os.environ["OUT"])
+          variants = {}
+          expected = {
+              "v1": {
+                  "sha256": "a4eef6065f79cf73a977b7c9f7913cc054f203c27660c4d780f780735ffcfd2f",
+                  "bytes": 17663,
+                  "git_blob": "cbc502a92fe9d790cfaf763f6990d1057bc9b82d",
+              },
+              "v2": {
+                  "sha256": "72865b83e66d0c1ed27ddc35e5ab428f8212872e8e8e918f2826eb7665fbe7f8",
+                  "bytes": 19483,
+                  "git_blob": "7c068b7078c3d7c09bb3836590ad42b0af934cdf",
+              },
+          }
+
+          def git_blob(data: bytes) -> str:
+              return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+
+          for variant in ("v1", "v2"):
+              freeze_path = lab / f"runtime/variants/{variant}/FREEZE.json"
+              scheduler_path = lab / f"runtime/variants/{variant}/scheduler.py"
+              freeze = json.loads(freeze_path.read_text(encoding="utf-8"))
+              assert freeze["variant"] == variant
+              prefix = f"runtime/variants/{variant}/"
+              normalized = {
+                  path.removeprefix(prefix): row
+                  for path, row in freeze["files"].items()
+              }
+              assert len(normalized) == len(freeze["files"])
+              data = scheduler_path.read_bytes()
+              identity = {
+                  "sha256": hashlib.sha256(data).hexdigest(),
+                  "bytes": len(data),
+                  "git_blob": git_blob(data),
+              }
+              assert identity == expected[variant], (variant, identity)
+              assert normalized["scheduler.py"]["sha256"] == identity["sha256"]
+              assert normalized["scheduler.py"]["bytes"] == identity["bytes"]
+              variants[variant] = {
+                  "freeze": freeze,
+                  "normalized": normalized,
+                  "identity": identity,
+                  "scheduler": scheduler_path,
+                  "freeze_sha256": hashlib.sha256(freeze_path.read_bytes()).hexdigest(),
+              }
+
+          assert set(variants["v1"]["normalized"]) == set(variants["v2"]["normalized"])
+          changed = sorted(
+              name
+              for name in variants["v1"]["normalized"]
+              if variants["v1"]["normalized"][name] != variants["v2"]["normalized"][name]
+          )
+          assert changed == ["scheduler.py"], changed
+
+          v1 = variants["v1"]["scheduler"].read_text(encoding="utf-8")
+          v2 = variants["v2"]["scheduler"].read_text(encoding="utf-8")
+          patch = "".join(
+              difflib.unified_diff(
+                  v1.splitlines(keepends=True),
+                  v2.splitlines(keepends=True),
+                  fromfile="runtime/variants/v1/scheduler.py",
+                  tofile="runtime/variants/v2/scheduler.py",
+                  n=8,
+              )
+          )
+          assert patch
+
+          custody = {
+              "schema": "titan-v1v2-source-packet-v1",
+              "event_head": os.environ["GITHUB_SHA"],
+              "changed_members": changed,
+              "normalized_member_count": len(variants["v1"]["normalized"]),
+              "unchanged_members": sorted(set(variants["v1"]["normalized"]) - set(changed)),
+              "v1": {
+                  **variants["v1"]["identity"],
+                  "freeze_sha256": variants["v1"]["freeze_sha256"],
+              },
+              "v2": {
+                  **variants["v2"]["identity"],
+                  "freeze_sha256": variants["v2"]["freeze_sha256"],
+              },
+          }
+          (out / "SOURCE-CUSTODY.json").write_text(
+              json.dumps(custody, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          (out / "SCHEDULER.patch").write_text(patch, encoding="utf-8")
+          shutil.copy2(variants["v1"]["scheduler"], out / "v1.scheduler.py")
+          shutil.copy2(variants["v2"]["scheduler"], out / "v2.scheduler.py")
+          print(json.dumps(custody, sort_keys=True))
+          PY
+          python -m py_compile "$OUT/v1.scheduler.py" "$OUT/v2.scheduler.py"
+          find "$OUT" -type l -print -quit | grep -q . && exit 1 || true
+          (cd "$OUT" && sha256sum SOURCE-CUSTODY.json SCHEDULER.patch v1.scheduler.py v2.scheduler.py > SHA256SUMS)
+          test "$(find "$OUT" -maxdepth 1 -type f | wc -l)" -eq 5
+
+      - name: Retain exact source packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v1v2-source-packet-keystone-${{ github.sha }}
+          path: ${{ runner.temp }}/v1v2-source-packet/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Assert repository checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
