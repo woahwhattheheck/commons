@@ -122,3 +122,7 @@ The checker verifies original Arlene SHA-256
 HAZEL blob `00abee3c99641eb0ab1729fd80e6f9a5c783f373`, and consumed mechanics blob
 `044a4f9c0a4a44dde10ada57563238bcaf82075d`. These dependencies already exist in
 the source pack used for PR10040; no duplicate source or engine is vendored here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

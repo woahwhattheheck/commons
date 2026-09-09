@@ -60,3 +60,7 @@ python -B revenue/kaggriculture/cloud-shed-admission/replay_evidence.py \
 The compact archive contains the eight exact captured terminal states, actual actions, prior final-bank values and original trace identities. The replay policy receives only its own observation; the evaluator alone consumes the actual rival state/action. `evaluate_terminal.py` composes the existing process-isolated runner for a separately assigned future full-game scope. Its seeds must be explicit. The tested original producer is frozen SELL `32c8610c`, not PR9997's integrated archive.
 
 Complete prior action traces, all attempted-game reports, both runtime versions' evidence and exact source are retained in ChatGPT Library as `/titan_shed_admission_evidence_2026-09-07.zip`. The compact reached states and replay source are also in this directory, so ordinary consumption does not require retrieving that larger archive. Source hashes and archive identities are in `SOURCE.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

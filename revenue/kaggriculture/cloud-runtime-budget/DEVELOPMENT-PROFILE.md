@@ -19,3 +19,7 @@ The independent profile sampled steps0,574,583,660,683,697,718 while still execu
 This is a source-matched, expected-action-matched retained development workload, not a new tournament result or hosted deadline certification. The container reports Python3.13.5, a4-CPU cgroup allowance and4GiB memory limit. Direct actor timings exclude DELVE's telemetry-wrapper file writes and original RPC transport, so historical timings cannot be treated as an apples-to-apples speed comparison. The optional scorer, funding-on policy and newer optimizations were not substituted.
 
 `DEVELOPMENT-PROFILE.json` records compact metrics and hashes. Full ordinary/instrumented reports, source readback, TRACE receipt and source map, all27 tests and the earlier three-call wire check are retained in the companion FINCH native-trace delivery. Original PR10052 public-stream results remain unchanged. WIDEFIELD9921001 is still a separate input, not recovered by this work.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

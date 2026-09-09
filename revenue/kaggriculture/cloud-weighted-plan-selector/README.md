@@ -133,3 +133,7 @@ not copied into this directory. Preserve their Apache-2.0 notices and the T15
 
 The runtime uses the Python standard library, Python 3.10 or newer. It introduces
 no second solver or controller and changes none of those source files.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

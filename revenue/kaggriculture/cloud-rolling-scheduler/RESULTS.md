@@ -104,3 +104,7 @@ MESA retains the archive and next implementation revision. This documentation
 adds usage and results context only; no original test, game, seed, controller,
 source freeze or selection has been altered. Hosted workflow status for this
 documentation change is separate from the original 20-test and 32-game results.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

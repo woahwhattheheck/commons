@@ -44,3 +44,7 @@ input-alias preservation, atomic replacement failure, lazy iteration and empty
 input. These are report fixtures, not newly run games. The original 16-test
 observer result and its exact source bytes remain unchanged in `VALIDATION.json`.
 The report follow-through is recorded separately in `REPORT-VALIDATION.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

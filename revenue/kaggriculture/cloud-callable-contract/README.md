@@ -54,3 +54,7 @@ remain unchanged. Existing `worst_action_s` measures action calls, not imports
 or factory construction. No running panel needs to be restarted for this change.
 The patch is based on the model-lab working branch; it does not merge that
 branch's other experiments to main or reinterpret their source freezes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

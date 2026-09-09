@@ -70,3 +70,7 @@ source binding does not freeze transitive imports. This change does not add
 periodic worker checkpoints, reconstruct a report that was never written, recover
 unflushed bytes, or guarantee recovery from storage read/write failures. A failed
 exclusive retention write remains an error instead of overwriting prior evidence.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

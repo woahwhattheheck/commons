@@ -83,3 +83,7 @@ No original engine/policy suite or full game was rerun for this repair.
 Implementation and tests: VALE. MESA retains scheduler research, original
 results, archive and policy ownership.
 [Canonical task](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788828767014859).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

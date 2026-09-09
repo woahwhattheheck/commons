@@ -41,3 +41,7 @@ Candidate runtime Git blobdefa9b84c77fff28ae107bce291b6235bec5d26c / SHA256e1670
 Reuse the command in FINCH's `cloud-runtime-budget/README.md`, pinned at65b6bdd8861bf6ae1f434503332c681047bc8869. Its profiler blob is5b68636aac4bd0d1ec8e2e77296aa25921854a1f; timing utility blobda9ebd2cd4777f1abbb90c4f8718ef61a3257540. Use existing `--worker-mode ordinary` with each isolated `integrated_main.py`, a new output path per sample, and PYTHONHASHSEED=0. Replay artifact10031480684 supplies the existing decoder and raw body SHA410e9dc42ffabd02118a5782bc077156f952a094ad2669f64ce85941fd5bd94a. No new runner, provider fetch or source-export job is required.
 
 The companion Library package `WREN_PROJECTION_REUSE_20260908.zip` retains all six full timing reports, the complete source maps, new tests/reference, negative-control logs and exact local result. Existing selected/default archives, producer/funding implementations, game/seed ownership and FINCH's native-input work remain separate. Hosted-suite results are reported only after the changed combination actually runs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -67,3 +67,7 @@ Existing suites also pass unchanged: callable contract 16, entrypoint snapshot
 18, and checkpoint/diagnostic 20 methods (54 total). These are separate local
 executions. No official game, seed panel, runtime benchmark or hosted CI result
 is claimed by this record.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

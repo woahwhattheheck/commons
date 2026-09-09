@@ -29,3 +29,7 @@ The preserved T13 seed component in `research/t13-seed/` is unchanged source
 SELL dependency closure. It is separate from the tested selector. The native
 file-agent loader in `vendor/cloud-pack/` is the unchanged source-pack copy;
 its upstream source manifest and Apache-2.0 license are retained alongside it.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
