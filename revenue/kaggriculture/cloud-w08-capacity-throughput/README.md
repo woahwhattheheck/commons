@@ -59,7 +59,7 @@ The same proof runs on pull requests through
 `.github/workflows/titan-w08-capacity-throughput.yml`, which retains the test
 log, deterministic witness output, and SHA-256 inventory as a workflow artifact.
 
-The suite covers 20 named tests. The model-level contracts enumerate 5,184
+The suite covers 24 named tests. The model-level contracts enumerate 5,184
 post-market-room states and 880 same-unit-stage ordering states. A separate
 differential suite executes 2,211 DROP, PLACE, PICKUP, market BUY/SELL, EOD, and
 intervening-sale cases against the checked-in official interpreter, whose exact

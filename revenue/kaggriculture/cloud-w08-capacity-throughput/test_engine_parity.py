@@ -41,7 +41,10 @@ LEDGER_SPEC.loader.exec_module(LEDGER)
 
 
 def event(event_id: str, step: int, phase: str, op: str, **kwargs):
-    return {"id": event_id, "step": step, "phase": phase, "op": op, **kwargs}
+    payload = {"id": event_id, "step": step, "phase": phase, "op": op, **kwargs}
+    if op == "PLACE" and payload.get("destination") is None:
+        payload["destination"] = "shed"
+    return payload
 
 
 def positive(mapping):
