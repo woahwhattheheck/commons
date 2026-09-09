@@ -14,90 +14,123 @@ from liquidity_haircut import DEFAULT_CARRY_DISCOUNT, install
 
 class BaseMarketPath:
     def __init__(self):
-        self.inventory = 0
-        self.now = 0
-        self.end = 1
-        self.item = "MILK"
-        self.shops = []
-        self.config = {}
-        self.rivals = []
+        self.calls = []
 
-    def single(self, inv, quantity):
-        return 10 * quantity, inv
-
-    def joint(self, inv, own, rival, alignment):
-        self.rivals.append((own, rival, alignment))
-        return 10 * own, 2 * rival, inv
+    def score(self, plan, quantity, rival, alignment, terminal=False):
+        self.calls.append((plan, quantity, rival, alignment, terminal))
+        sold = min(
+            int(quantity),
+            sum(max(0, int(row[1])) for row in plan if len(row) > 1),
+        )
+        own_cash = 10 * sold
+        rival_units = (
+            sum(max(0, int(value)) for value in dict(rival).values())
+            if isinstance(rival, tuple)
+            else max(0, int(rival))
+        )
+        other_cash = 2 * rival_units
+        remaining = int(quantity) - sold
+        carry = 0.0 if terminal else 10.0 * remaining
+        return own_cash + carry - other_cash, own_cash, other_cash, remaining
 
 
 class LiquidityHaircutTests(unittest.TestCase):
     @staticmethod
     def module():
-        return SimpleNamespace(MarketPath=BaseMarketPath, absorption=lambda *_: 0)
+        return SimpleNamespace(MarketPath=BaseMarketPath)
 
-    def test_exact_v1_factor_rewards_realized_cash_over_equal_modeled_carry(self):
-        scheduler = self.module()
-        receipt = install(scheduler)
-        model = scheduler.MarketPath()
+    def test_exact_v1_factor_rewards_realized_cash_over_equal_full_carry(self):
+        selected_core = self.module()
+        receipt = install(selected_core)
+        model = selected_core.MarketPath()
         held = model.score((), 4, 0, "paired")
         sold = model.score(((0, 1),), 4, 0, "paired")
         self.assertEqual(receipt["factor"], DEFAULT_CARRY_DISCOUNT)
+        self.assertEqual(receipt["target"], "selected_sell_core.MarketPath")
         self.assertEqual(held, (38.0, 0, 0, 4))
         self.assertEqual(sold, (38.5, 10, 0, 3))
         self.assertGreater(sold[0], held[0])
 
-    def test_terminal_inventory_is_not_credited(self):
-        scheduler = self.module()
-        install(scheduler)
-        model = scheduler.MarketPath()
-        self.assertEqual(model.score((), 4, 0, "paired", terminal=True), (0.0, 0, 0, 4))
-
-    def test_delayed_rival_tuple_and_return_shape_are_preserved(self):
-        scheduler = self.module()
-        install(scheduler)
-        model = scheduler.MarketPath()
-        result = model.score(((1, 1),), 2, ((1, 3),), "paired")
-        self.assertEqual(model.rivals, [(0, 0, "paired"), (1, 3, "paired")])
+    def test_wrapper_delegates_exact_inputs_and_preserves_noncarry_fields(self):
+        selected_core = self.module()
+        install(selected_core)
+        model = selected_core.MarketPath()
+        plan = ((1, 1),)
+        rival = ((1, 3),)
+        result = model.score(plan, 2, rival, "after")
+        self.assertEqual(model.calls, [(plan, 2, rival, "after", False)])
         self.assertEqual(result, (13.5, 10, 6, 1))
+        self.assertEqual(result[1:], (10, 6, 1))
+
+    def test_terminal_and_fully_realized_scores_are_byte_semantically_unchanged(self):
+        selected_core = self.module()
+        install(selected_core)
+        model = selected_core.MarketPath()
+        terminal = model.score((), 4, 0, "paired", terminal=True)
+        realized = model.score(((0, 4),), 4, 3, "paired")
+        self.assertEqual(terminal, (0.0, 0, 0, 4))
+        self.assertEqual(realized, (34.0, 40, 6, 0))
 
     def test_install_is_idempotent_and_rejects_conflicting_factor(self):
-        scheduler = self.module()
-        first = install(scheduler)
-        installed = scheduler.MarketPath
-        second = install(scheduler)
+        selected_core = self.module()
+        first = install(selected_core)
+        installed = selected_core.MarketPath
+        second = install(selected_core)
         self.assertTrue(first["installed"])
         self.assertTrue(second["idempotent"])
-        self.assertIs(installed, scheduler.MarketPath)
+        self.assertIs(installed, selected_core.MarketPath)
         with self.assertRaises(RuntimeError):
-            install(scheduler, discount=0.9)
+            install(selected_core, discount=0.9)
 
     def test_invalid_factor_fails_closed(self):
         for factor in (0, -0.1, 1.01, math.nan, math.inf):
             with self.subTest(factor=factor), self.assertRaises(ValueError):
                 install(self.module(), discount=factor)
 
+    def test_selected_optimizer_module_observes_replacement(self):
+        selected_core = self.module()
+        selected_core.construct = lambda: selected_core.MarketPath()
+        install(selected_core)
+        made = selected_core.construct()
+        self.assertEqual(
+            getattr(type(made), "_sol_kepler_horizon_liquidity_discount"),
+            0.95,
+        )
+
     def test_candidate_installs_before_canonical_constructor(self):
-        scheduler = self.module()
-        prior_scheduler = sys.modules.get("scheduler")
+        selected_core = self.module()
+        prior = sys.modules.get("selected_sell_core")
         original = candidate._ORIGINAL_NEW_INSTANCE
         seen = []
 
         def constructor(root, feature_data):
-            seen.append(getattr(scheduler.MarketPath, "_sol_kepler_horizon_liquidity_discount", None))
+            seen.append(
+                getattr(
+                    selected_core.MarketPath,
+                    "_sol_kepler_horizon_liquidity_discount",
+                    None,
+                )
+            )
             return SimpleNamespace()
 
         try:
-            sys.modules["scheduler"] = scheduler
+            sys.modules["selected_sell_core"] = selected_core
             candidate._ORIGINAL_NEW_INSTANCE = constructor
-            instance = candidate._candidate_new_instance(Path("/tmp/root"), {"consumer": "frozen"})
+            instance = candidate._candidate_new_instance(
+                Path("/tmp/root"), {"consumer": "frozen"}
+            )
         finally:
             candidate._ORIGINAL_NEW_INSTANCE = original
-            if prior_scheduler is None:
-                sys.modules.pop("scheduler", None)
+            if prior is None:
+                sys.modules.pop("selected_sell_core", None)
             else:
-                sys.modules["scheduler"] = prior_scheduler
+                sys.modules["selected_sell_core"] = prior
         self.assertEqual(seen, [0.95])
         self.assertEqual(instance.horizon_liquidity_receipt["factor"], 0.95)
+        self.assertEqual(
+            instance.horizon_liquidity_receipt["target"],
+            "selected_sell_core.MarketPath",
+        )
 
     def test_candidate_delegates_outer_entrypoint_unchanged(self):
         original = candidate._CANONICAL.agent
@@ -113,9 +146,12 @@ class LiquidityHaircutTests(unittest.TestCase):
         self.assertIs(result, token)
         self.assertEqual(calls, [({"step": 7}, {"episodeSteps": 720})])
 
-    def test_exact_source_seam_is_attested(self):
+    def test_exact_source_seam_and_production_binding_are_attested(self):
         report = audit_change.build_report()
         self.assertEqual(report["decision"], "PASS")
+        self.assertEqual(
+            report["claim"]["target"], "selected_sell_core.MarketPath.score"
+        )
         self.assertTrue(all(report["checks"].values()))
 
 
