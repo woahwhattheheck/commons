@@ -43,4 +43,27 @@ class T(unittest.TestCase):
   f=self.root/"p.json"; f.write_text(json.dumps(P)); s=Path(launch_ops.__file__).resolve()
   for cmd in ([sys.executable,str(s),"build",str(f),"--out",str(self.out)],[sys.executable,str(s),"order","--state",str(self.out/"state.json"),"--order-id","C1","--quantity","1"],[sys.executable,str(s),"return","--state",str(self.out/"state.json"),"--order-id","C1","--return-id","CR1","--disposition","restock"]): self.assertEqual(0,subprocess.run(cmd,capture_output=True).returncode)
   self.assertEqual(4,self.state()["available"])
+ def test_rebuild_after_state_preserves_bytes(self):
+  """Regression: second build into existing managed workspace must fail closed and leave state untouched."""
+  self.b()
+  launch_ops.order(self.out/"state.json","O1",2)
+  before = (self.out/"state.json").read_bytes()
+  with self.assertRaises(launch_ops.LaunchError) as cm:
+    launch_ops.build(P, self.out)
+  self.assertIn("managed launch workspace", str(cm.exception))
+  self.assertEqual(before, (self.out/"state.json").read_bytes())
+  self.assertEqual(2, self.state()["available"])
+ def test_fresh_empty_dir_build_succeeds(self):
+  empty = self.root / "empty"
+  empty.mkdir()
+  launch_ops.build(P, empty)
+  self.assertTrue((empty / "state.json").is_file())
+  self.assertEqual(4, json.loads((empty / "state.json").read_text())["available"])
+ def test_nan_attribute_rejected(self):
+  p = dict(P)
+  p["attributes"] = dict(P["attributes"])
+  p["attributes"]["bad"] = float("nan")
+  with self.assertRaises(launch_ops.LaunchError) as cm:
+    self.b(p)
+  self.assertIn("non-finite", str(cm.exception).lower())
 if __name__=="__main__": unittest.main()

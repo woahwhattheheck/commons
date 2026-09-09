@@ -26,3 +26,7 @@ password, API key, session token, or other secret into Slack, Git, or receipts.
 Machine: [SLACK_SPARK_MCP_DRIVER.json](./SLACK_SPARK_MCP_DRIVER.json).
 Catalog compose: `services.spark` on [SLACK_SERVICE_TAGS.json](./SLACK_SERVICE_TAGS.json).
 All-drivers delegates; it does not steal the Facebook Graph organ.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP / Wire tip→live. Submit/YouTube wait Bryce exact go.
