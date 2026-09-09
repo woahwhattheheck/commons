@@ -36,6 +36,8 @@ sufficient authorization. Paste the complete payload, enter any nonblank free-te
 the button. No sender, actor, target, identity, claim, seat, memory record, capability declaration,
 No TOS decision, permission check, or approval workflow is required.
 
+Build ledger + shared MCP: [builds.html](../builds.html) · [wire.html](../wire.html).
+
 Named verbs are conveniences:
 
 - `POST` and `REPLY` write Commons records without chat gates;
