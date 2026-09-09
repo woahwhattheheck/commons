@@ -3,7 +3,7 @@ import copy, hashlib, sys, unittest
 from collections import Counter
 from pathlib import Path
 HERE=Path(__file__).resolve().parent; sys.path.insert(0,str(HERE))
-from unr_biobank_custody import FORBIDDEN_PHI_KEYS,IntegrityError,UNRBiobankCustodyShadow,load_fixture,verify_manifest_signature,verify_records
+from unr_biobank_custody import FORBIDDEN_PHI_KEYS,IntegrityError,UNRBiobankCustodyShadow,load_fixture,named_human,verify_manifest_signature,verify_records
 
 class UNRBiobankCustodyTests(unittest.TestCase):
     @classmethod
@@ -80,5 +80,22 @@ class UNRBiobankCustodyTests(unittest.TestCase):
         self.assertEqual(("RESEARCH_USE_AUTHORIZED_BY_NAMED_HUMAN","Named Biobank Reviewer"),(x["state"],x["reviewed_by"]))
         self.assertTrue(s.specimens["UNR-SHIP-0001"]["research_available"])
         self.assertTrue(all(a["research_available"] for a in s.aliquots.values() if a["shipment_id"]=="UNR-SHIP-0001"))
+
+    def test_reserved_automation_tokens_and_short_labels_are_rejected_without_mutation(self):
+        s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest)
+        before=s.state_digest()
+        for bad in ("system","AI Reviewer","Service Account","bot agent","12 34","A B","auto"):
+            with self.assertRaises(PermissionError):s.authorize_research_use("UNR-SHIP-0001",bad)
+            self.assertFalse(s.specimens["UNR-SHIP-0001"]["research_available"])
+            self.assertNotIn("UNR-SHIP-0001",s.research_use)
+        self.assertEqual(before,s.state_digest())
+
+    def test_one_way_authorization_does_not_overwrite_reviewed_by(self):
+        s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest)
+        first=s.authorize_research_use("UNR-SHIP-0001","Named Biobank Reviewer")
+        second=s.authorize_research_use("UNR-SHIP-0001","Different Named Reviewer")
+        self.assertEqual(first,second)
+        self.assertEqual("Named Biobank Reviewer",s.research_use["UNR-SHIP-0001"]["reviewed_by"])
+        self.assertTrue(s.specimens["UNR-SHIP-0001"]["research_available"])
 
 if __name__=="__main__":unittest.main()
