@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 2,
  "open_prs": [
   {
    "number": 10978,
@@ -365,6 +365,22 @@
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11052,
+   "author": "woahwhattheheck",
+   "title": "Tests: close billing-lock carrier pin graph",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11052",
+   "base_freshness": {
+    "base_sha": "c932cbe3872a98d1e957ed75d02f04550fb596be",
+    "main_sha": "21e5754220bf3bfae7ea251d1281de76953d5e8e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
