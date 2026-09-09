@@ -60,7 +60,8 @@ jobs:
             test_compare.py \
             test_bind_execution.py \
             test_strict_compare.py \
-            test_candidate_action_compare.py
+            test_candidate_action_compare.py \
+            test_real_evaluator_receipt.py
           python -m py_compile \
             materialize.py \
             compare.py \
@@ -73,7 +74,8 @@ jobs:
             test_compare.py \
             test_bind_execution.py \
             test_strict_compare.py \
-            test_candidate_action_compare.py
+            test_candidate_action_compare.py \
+            test_real_evaluator_receipt.py
 
       - name: Materialize exact V2 one-factor arm
         shell: bash
