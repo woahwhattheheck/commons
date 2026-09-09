@@ -361,10 +361,13 @@ class EarlyCapitalContracts(unittest.TestCase):
             'hands': [],
             'market': [['BUY_LAND'], ['SELL', 'WOOL', 1]],
         }
-        args = (m, obs(150, money=900, shed={'WOOL': 1}),
-                CFG, selected, route())
-        first, first_report = order_early_capital(*deepcopy(args))
-        second, second_report = order_early_capital(*deepcopy(args))
+        observation = obs(150, money=900, shed={'WOOL': 1})
+        first, first_report = order_early_capital(
+            m, deepcopy(observation), CFG, deepcopy(selected), deepcopy(route()),
+        )
+        second, second_report = order_early_capital(
+            m, deepcopy(observation), CFG, deepcopy(selected), deepcopy(route()),
+        )
         self.assertEqual(first, second)
         self.assertEqual(
             first_report['original_receipt_sha256'],
@@ -388,7 +391,7 @@ class EarlyCapitalContracts(unittest.TestCase):
         result, report = order_early_capital(
             m,
             obs(150, money=1024, shed={'WHEAT': 1},
-                inventory={'WHEAT': 9600}),
+                inventory={'WHEAT': 10000}),
             CFG,
             selected,
             route(),

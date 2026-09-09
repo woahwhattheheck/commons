@@ -15,10 +15,14 @@ class KestrelTitanAgent(TitanAgent):
         import mechanics as mechanics_mod
         from scheduler import parent
 
-        # Use the exact completed unit snapshot when FrozenSelected captured it.
-        # The candidate helper can reconstruct the same state with the vendored
-        # unit primitive when a queue has no capture-triggering operating stock.
-        post_unit = self._selected_snapshot(obs, selected)
+        # Bind only a captured FrozenSelected post-unit pair. The PASS-only
+        # shortcut in TitanAgent._selected_snapshot returns the raw observation
+        # when no pair exists; that is not a completed snapshot, so the helper
+        # reconstructs with the official unit primitive instead.
+        pair = getattr(getattr(self, 'consumer', None), 'selected_post_units', None)
+        post_unit = (
+            self._selected_snapshot(obs, selected) if pair is not None else None
+        )
         result, report = order_early_capital(
             mechanics_mod,
             obs,
