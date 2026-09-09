@@ -1,0 +1,75 @@
+name: sol-e21-bootstrap
+
+on:
+  push:
+    branches:
+      - sol/titan-v3-e21-public-flow-pressure-20260909-01
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/.e21-bootstrap/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol/titan-v3-e21-public-flow-pressure-20260909-01
+          fetch-depth: 0
+
+      - name: Verify and land the candidate packet
+        run: |
+          set -euo pipefail
+          payload_dir='revenue/kaggriculture/cloud-execution-lab/candidates/.e21-bootstrap'
+          destination='revenue/kaggriculture/cloud-execution-lab/candidates/v3-e21-public-flow-pressure'
+          archive="$RUNNER_TEMP/e21-payload.tar.gz"
+          extracted="$RUNNER_TEMP/e21-extracted"
+
+          cat "$payload_dir"/part* | base64 --decode > "$archive"
+          echo 'ba773f64536f4123391d517668341f3a18b39ef877f6370f5bc9fe6ded695a8d  '"$archive" | sha256sum --check
+
+          python3 - "$archive" "$extracted" <<'PY'
+          from pathlib import Path
+          import sys
+          import tarfile
+
+          archive_path = Path(sys.argv[1])
+          destination = Path(sys.argv[2])
+          destination.mkdir()
+          root = destination.resolve()
+          with tarfile.open(archive_path, "r:gz") as archive:
+              for member in archive.getmembers():
+                  target = (destination / member.name).resolve()
+                  if target != root and root not in target.parents:
+                      raise SystemExit("archive path escape: " + member.name)
+                  if member.issym() or member.islnk():
+                      raise SystemExit("archive link rejected: " + member.name)
+              archive.extractall(destination, filter="data")
+          PY
+
+          test ! -e "$destination"
+          mkdir -p "$destination"
+          cp "$extracted"/README.md "$destination"/
+          cp "$extracted"/RESULTS.md "$destination"/
+          cp "$extracted"/PIN.json "$destination"/
+          cp "$extracted"/public_flow_pressure.py "$destination"/
+          cp "$extracted"/main.py "$destination"/
+          cp "$extracted"/build_candidate.py "$destination"/
+          cp "$extracted"/smoke_bundle.py "$destination"/
+          cp "$extracted"/test_public_flow_pressure.py "$destination"/
+          cp "$extracted"/test_build_candidate.py "$destination"/
+          cp "$extracted"/test_main_wrapper.py "$destination"/
+          cp "$extracted"/titan-v3-e21-public-flow-pressure.yml \
+            .github/workflows/titan-v3-e21-public-flow-pressure.yml
+
+          rm -rf "$payload_dir"
+          rm .github/workflows/sol-e21-bootstrap.yml
+
+          git config user.name 'SOL-PULSE'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git add -A
+          git commit -m 'TITAN V3 E21: calibrate SELL pressure from public flow'
+          git push origin HEAD:sol/titan-v3-e21-public-flow-pressure-20260909-01
