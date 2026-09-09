@@ -10,10 +10,41 @@ import time
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
+
+
+def _install_isolated_source_roots(lab: Path) -> list[str]:
+    """Make archive-mapped root modules importable in stripped official workers.
+
+    Official evaluator workers insert only the agent parent. Root modules that
+    ``build_integrated.source_files`` maps from outside the lab
+    (``observed_clone``, ``seller_snapshot``, …) must be on ``sys.path`` before
+    canonical ``main`` loads. Complements the panel evaluator PYTHONPATH forward.
+    """
+    lab = lab.resolve()
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+    ordered = [str(lab)]
+    seen = {lab}
+    for member, source in source_files().items():
+        if Path(member).parent != Path("."):
+            continue
+        origin = (lab / source).resolve()
+        if not origin.is_file():
+            raise FileNotFoundError(
+                f"mapped root module {member} missing at {origin}")
+        parent = origin.parent
+        if parent not in seen:
+            seen.add(parent)
+            ordered.append(str(parent))
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+    return ordered
+
+
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
-if str(LAB) not in sys.path:
-    sys.path.insert(0, str(LAB))
+_install_isolated_source_roots(LAB)
 
 from ledger_tranche import install
 
