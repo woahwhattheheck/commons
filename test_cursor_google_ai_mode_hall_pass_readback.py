@@ -33,8 +33,8 @@ KEEP = {
 
 HISTORICAL_TREE = "dc5455bf2894fa705bf57a4510ceee0119a6c729"
 HISTORICAL_LIVE_FILES = {
-    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "b33b2d20",
-    "ground/tokens/google-ai-mode-hall-pass.md": "01a93607",
+    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
+    "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
 }
 
 

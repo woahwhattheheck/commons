@@ -30,7 +30,7 @@ KEEP = {
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
     "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "4a8a2033",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "155ae14f",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "f4535bc7",
     "p/grok-build-job-watchdog-33699986556-billing-lock-20260903-01.md": "4754031d",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
     "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",

@@ -44,8 +44,8 @@ ANALYSIS: Procurement channel gsa-schedule is composed from the distribution lay
 - `host/feature_tracker.py` sha256 `02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0` (38400 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `37c9ed538a8d72b4572ddab5893b4dd086837572c6f8f79b811ddee0ca121775` (12738 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `4936f29fe482d1f288d07f017618673733d766fcfaf8d01f82f00956650ea3ba` (154474 bytes)
+- `resources.html` sha256 `221aebb9c8779aaee07a9feef54817d27cc451408bc9a1b3451e8c3017c3d1ff` (12738 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `4597808acb86ac8aa9bc53e188483a3bd5b4d09240bf693ff061331503da287d` (157874 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)

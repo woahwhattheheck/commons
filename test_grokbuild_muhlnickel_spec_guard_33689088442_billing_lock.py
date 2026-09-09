@@ -29,7 +29,7 @@ KEEP = {
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "20c6fbed",
+    "test_cursor_merge_on_pr_readback.py": "9408c4b5",
     "host/merge_on_pr.py": "0270094d",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
 }

@@ -27,9 +27,9 @@ KEEP = {
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
-    "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "0b27ecca",
-    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9d4fc1b5",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "abaeb302",
+    "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "afdcef18",
+    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9111f850",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "2f17ec7e",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
@@ -81,7 +81,7 @@ class TestGrokbuildMuhlnickelSpecGuard33699939446BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

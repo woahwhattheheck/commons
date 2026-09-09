@@ -25,9 +25,9 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "4f434aac",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "3cadd5a4",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "d36bccac",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "a180ccc5",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "leftover-census.md": "9a27014b",
     "leftover-census.json": "32d3ee6b",
@@ -80,7 +80,7 @@ class TestGrokbuildMuhlnickelSpecGuard33723902283BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
         added = [
             guard.AddedLine(
                 "test_grokbuild_muhlnickel_spec_guard_33723902283_billing_lock.py",
