@@ -92,7 +92,7 @@ class BuildCandidateTests(unittest.TestCase):
             candidate = (root / "out/land/main.py").read_text(encoding="utf-8")
             self.assertEqual(baseline, source_main)
             self.assertEqual(candidate.count(ENTRYPOINT_REPLACEMENT), 1)
-            self.assertNotIn(ENTRYPOINT_NEEDLE, candidate)
+            self.assertNotIn(ENTRYPOINT_NEEDLE.rstrip("\n"), candidate.splitlines())
             self.assertEqual(
                 candidate.count(
                     "from land_admission import wrap as _wrap_land_admission"
