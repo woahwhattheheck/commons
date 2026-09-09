@@ -118,6 +118,15 @@ class CandidateRuntimeTests(unittest.TestCase):
         self.assertEqual(report["step"], 26)
         self.assertEqual(seen["step"], 26)
 
+    def test_nonpositive_or_noninteger_market_cap_fails_closed(self):
+        for value in (0, -1, 2.5, True, "10"):
+            with self.subTest(value=value):
+                instance = Instance(deepcopy(self.post))
+                result, report = apply_completed_action(
+                    instance, self.obs, {"maxMarketOrdersPerTurn": value}, self.action)
+                self.assertIs(result, self.action)
+                self.assertEqual(report["reason"], "invalid_max_orders")
+
     def test_out_of_range_player_fails_closed(self):
         instance = Instance(deepcopy(self.post))
         result, report = apply_completed_action(instance, {"step": 9, "player": -1}, self.cfg, self.action)
