@@ -13,12 +13,14 @@ from pathlib import Path
 from typing import Any
 
 ENTRYPOINT_NEEDLE = (
-    "        _INSTANCE = _new_instance("
-    "root, json.loads((root/'TITAN-CONFIG.json').read_text()))\n"
+    "                instance = _new_instance(root, feature_data)\n"
+    "                _INSTANCE = instance\n"
 )
-ENTRYPOINT_REPLACEMENT = ENTRYPOINT_NEEDLE + (
-    "        from land_admission import wrap as _wrap_land_admission\n"
-    "        _INSTANCE = _wrap_land_admission(_INSTANCE)\n"
+ENTRYPOINT_REPLACEMENT = (
+    "                instance = _new_instance(root, feature_data)\n"
+    "                from land_admission import wrap as _wrap_land_admission\n"
+    "                instance = _wrap_land_admission(instance)\n"
+    "                _INSTANCE = instance\n"
 )
 
 
