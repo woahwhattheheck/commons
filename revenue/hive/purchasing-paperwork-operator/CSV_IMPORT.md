@@ -22,3 +22,13 @@ python -m py_compile purchasing_operator.py test_purchasing_csv_robustness.py
 ```
 
 These eight additional consumer methods use real temporary files and actual CLI subprocesses against the landed strict reader. They cover all three loaders, LF/CRLF/CR source locations, clean CLI failures, physical-line provenance in records and unsent drafts, source hashes, and preservation of complete previous output packets. Low-level parser coverage remains in the existing `test_csv_intake.py`; that suite and the production reader are not duplicated by this addition. Synthetic end-to-end inputs produce one 50.00 review-only match and one unsent quantity exception; they do not represent a customer transaction.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

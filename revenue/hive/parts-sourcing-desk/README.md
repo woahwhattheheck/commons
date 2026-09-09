@@ -173,3 +173,13 @@ navigation in this environment returned `ERR_BLOCKED_BY_ADMINISTRATOR`; native
 browser-network persistence and native download interactions were not validated.
 The DOM test is not represented as an end-to-end browser-network test. Real HTTP,
 download response bytes and database restart are tested separately.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

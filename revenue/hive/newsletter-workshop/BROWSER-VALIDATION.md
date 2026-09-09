@@ -55,3 +55,13 @@ The test consumed the unchanged production files merged in PR10622, main commit
 | newsletter_workflow.py | `5eb84bb316a44d59de94a95a6911c9c0c45ada59` |
 | workshop.html | `9241740dd840de283c00a1fe11d8ae48bc4d0b60` |
 | example.json | `38b8735b846d616ee6b644e76dc9f1ba3d683b1a` |
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
