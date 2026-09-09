@@ -211,9 +211,9 @@ def run(lab: Path, candidate: Path, materialization: Path) -> dict[str, Any]:
         raise ProbeError("predecessor unexpectedly executed beyond-cap SELL")
     if repaired["milk_in_shed"] != 0:
         raise ProbeError("internal-vacancy SELL did not execute exactly two units")
-    if predecessor["wheat_seeds"] != repaired["wheat_seeds"] != 8:
+    if predecessor["wheat_seeds"] != 8 or repaired["wheat_seeds"] != 8:
         raise ProbeError("inherited WHEAT rows changed")
-    if predecessor["carrot_seeds"] != repaired["carrot_seeds"] != 1:
+    if predecessor["carrot_seeds"] != 1 or repaired["carrot_seeds"] != 1:
         raise ProbeError("later inherited CARROT row changed")
     if repaired["money"] <= predecessor["money"]:
         raise ProbeError("witness did not recover spendable own cash")
