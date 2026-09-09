@@ -38,11 +38,14 @@ def _load_as_pinned_evaluator(name: str):
 
 
 class KestrelEvaluatorLoadIsolationTests(unittest.TestCase):
-    def test_two_loads_own_distinct_entrypoint_state_and_factory(self):
+    def test_two_loads_own_distinct_collectable_entrypoint_state(self):
         first = _load_as_pinned_evaluator("candidate_sol_lattice_probe_one")
         second = _load_as_pinned_evaluator("candidate_sol_lattice_probe_two")
 
         self.assertIsNot(first._CANONICAL, second._CANONICAL)
+        self.assertNotEqual(first._CANONICAL.__name__, second._CANONICAL.__name__)
+        self.assertNotIn(first._CANONICAL.__name__, sys.modules)
+        self.assertNotIn(second._CANONICAL.__name__, sys.modules)
         self.assertIsNot(first.agent, second.agent)
         self.assertIs(
             first.agent.__globals__,
