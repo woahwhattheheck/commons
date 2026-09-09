@@ -13,9 +13,9 @@ import time
 ROOT = Path("/tmp/p01-runtime")
 TRACE_DIR = Path(os.environ.get("P01_TRACE_DIR", "/tmp/p01-traces"))
 MODE = os.environ.get("P01_MODE", "annual").strip().lower()
-DISPATCH = "de4121fcadf365c4ce22c9f5a3a136bc7a075a3d"
-ARCHIVE_SHA256 = "385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492"
-SOURCE_SHA256 = "9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f"
+DISPATCH = "50fc3978603da7a2f155168a0296877007b895ea"
+ARCHIVE_SHA256 = "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba"
+SOURCE_SHA256 = "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
 DEFAULT_SEEDS = tuple(range(2909010001, 2909010009))
 
 EVALUATOR = ROOT / "checks/reference/evaluator/evaluate.py"
