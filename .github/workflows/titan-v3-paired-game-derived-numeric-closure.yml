@@ -38,6 +38,7 @@ jobs:
             test_validation.py \
             test_policy_cli.py \
             test_numeric_closure.py \
-            test_derived_numeric_closure.py
+            test_derived_numeric_closure.py \
+            test_dual_predecessor_gate.py
       - name: Compile sources
         run: python3 -m compileall -q .
