@@ -39,7 +39,7 @@ def timestamp(value):
 
 
 def latest(items):
-    values = [timestamp(item.get("updated_at")) for item in items]
+    values = [timestamp(item.get("activity_observed_at")) for item in items]
     return max((value for value in values if value),
                key=lambda value: datetime.fromisoformat(value.replace("Z", "+00:00")), default=None)
 
@@ -325,6 +325,7 @@ class LiveCollectors:
                 url = "https://github.com/" + repo + "/blob/" + sha + "/" + quote(path, safe="/")
                 observed = timestamp(row.get("observed_at"))
                 updated = timestamp(row.get("updated_at") or row.get("last_change") or provider.get("event_at"))
+                activity = timestamp(row.get("activity_observed_at"))
                 items.append({"id": "document:" + repo + ":" + path + ":" + collection + ":" + str(key),
                     "kind": {"features": "feature", "operations": "task", "artifacts": "artifact",
                              "sessions": "session", "sources": "work"}.get(collection, collection.rstrip("s")),
@@ -334,7 +335,7 @@ class LiveCollectors:
                         if isinstance(value, str) and value), "unknown"),
                     "owner": row.get("owner") or row.get("owner_subsystem") or detail.get("owner"),
                     "project": row.get("project") or spec.get("project") or repo,
-                    "updated_at": updated, "activity_observed_at": updated,
+                    "updated_at": updated, "activity_observed_at": activity,
                     "url": row.get("url") or detail.get("url") or origin.get("ref") if str(row.get("url") or detail.get("url") or origin.get("ref") or "").startswith("https://") else url,
                     "summary": text(row.get("capability") or row.get("objective") or detail.get("description") or row.get("notes")),
                     "next_action": row.get("next_action") or row.get("next_gap") or detail.get("next_action"),

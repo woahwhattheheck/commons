@@ -187,10 +187,11 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual("sales", feature["owner"])
         self.assertIn("/blob/" + SHA + "/", feature["url"])
         self.assertEqual("2026-01-01T00:00:00Z", feature["updated_at"])
+        self.assertIsNone(feature["activity_observed_at"])
         self.assertIsNone(vm["activity_observed_at"])
         self.assertIsNone(vm["updated_at"])
         self.assertEqual(OBSERVED, vm["refs"]["resource_observed_at"])
-        self.assertEqual("2026-01-01T00:00:00Z", batch["source"]["activity_as_of"])
+        self.assertIsNone(batch["source"]["activity_as_of"])
 
     def test_missing_document_collection_is_visible_error_not_false_empty_success(self):
         self.collect({"github": {"enabled": False}, "documents": [{
