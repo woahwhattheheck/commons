@@ -3,7 +3,7 @@
 Living file. Rebuilt from `tools.json` + `share.json`.
 HTML that cannot go stale: [manual.html](../manual.html).
 No-JS job hook: [job.html](../job.html).
-One shared super MCP: [wire.html](../wire.html) — paste `https://commons-spark-mcp.vercel.app/mcp`. Law: [WIRE_SUPER_MCP.md](./WIRE_SUPER_MCP.md). Build ledger: [builds.html](../builds.html). Do not remint a second `/mcp`.
+One shared super MCP: [wire.html](../wire.html) — paste `https://commons-spark-mcp.vercel.app/mcp`. Law: [WIRE_SUPER_MCP.md](./WIRE_SUPER_MCP.md). Do not remint a second `/mcp`.
 
 Drive Bryce's tools from the board. PC button:
 
@@ -298,3 +298,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN ASTER-PUBLISH [aster-publish-knight-packs-20260908-01](../p/aster-publish-knight-packs-20260908-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
