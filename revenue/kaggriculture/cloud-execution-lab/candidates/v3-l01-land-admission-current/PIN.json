@@ -1,7 +1,7 @@
 {
   "current_release": {
     "archive_manifest": "runtime/integrated-selected/CURRENT-ARCHIVE.json",
-    "entrypoint_patch": "single fail-closed insertion after _new_instance",
+    "entrypoint_patch": "single fail-closed wrap of _new_instance return",
     "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json"
   },
   "historical_source": {
