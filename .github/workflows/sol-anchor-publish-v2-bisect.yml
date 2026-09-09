@@ -12,25 +12,35 @@ permissions:
 jobs:
   publish:
     if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: sol-anchor/titan-v2-legacy-bisect-20260909-01
           fetch-depth: 0
 
-      - name: Reassemble and verify payload
+      - name: Reassemble, verify, and extract payload
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/sol-anchor
-          cat .sol-anchor-publish/chunk* | tr -d '\n\r' | base64 -d > /tmp/sol-anchor/payload.tar.gz
-          printf '%s  %s\n' \
-            'c79d549b538a8c88f77c090896c4a406b9ebef37237dd55fc2fc24095ffa48af' \
-            '/tmp/sol-anchor/payload.tar.gz' | sha256sum -c -
-          tar -tzf /tmp/sol-anchor/payload.tar.gz > /tmp/sol-anchor/members.txt
           python3 - <<'PY'
-          from pathlib import PurePosixPath
+          import base64
+          import hashlib
+          import io
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          expected_chunks = [Path(f'.sol-anchor-publish/chunk{i:02d}') for i in range(8)]
+          actual_chunks = sorted(Path('.sol-anchor-publish').glob('chunk*'))
+          if actual_chunks != expected_chunks:
+              raise SystemExit(f'chunk set mismatch: {actual_chunks!r}')
+
+          encoded = ''.join(''.join(path.read_text(encoding='ascii').split()) for path in actual_chunks)
+          payload = base64.b64decode(encoded, validate=True)
+          digest = hashlib.sha256(payload).hexdigest()
+          expected_digest = 'c79d549b538a8c88f77c090896c4a406b9ebef37237dd55fc2fc24095ffa48af'
+          if digest != expected_digest:
+              raise SystemExit(f'payload digest mismatch: {digest}')
 
           expected = {
               'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/README.md',
@@ -44,22 +54,26 @@ jobs:
               'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/HARNESS.json',
               'p/titan-v2-submitted-legacy-feature-bisect-20260909-01.md',
           }
-          members = {
-              line.strip()
-              for line in open('/tmp/sol-anchor/members.txt', encoding='utf-8')
-              if line.strip()
-          }
-          if members != expected:
-              raise SystemExit(
-                  f'payload member mismatch; missing={sorted(expected - members)} '
-                  f'extra={sorted(members - expected)}'
-              )
-          for name in members:
-              path = PurePosixPath(name)
-              if path.is_absolute() or '..' in path.parts or '.' in path.parts:
-                  raise SystemExit(f'unsafe payload member: {name}')
+
+          with tarfile.open(fileobj=io.BytesIO(payload), mode='r:gz') as archive:
+              members = archive.getmembers()
+              names = {member.name for member in members}
+              if names != expected:
+                  raise SystemExit(
+                      f'payload member mismatch; missing={sorted(expected - names)} '
+                      f'extra={sorted(names - expected)}'
+                  )
+              for member in members:
+                  path = PurePosixPath(member.name)
+                  if not member.isfile() or path.is_absolute() or '..' in path.parts or '.' in path.parts:
+                      raise SystemExit(f'unsafe payload member: {member.name}')
+                  source = archive.extractfile(member)
+                  if source is None:
+                      raise SystemExit(f'unreadable payload member: {member.name}')
+                  target = Path(*path.parts)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(source.read())
           PY
-          tar -xzf /tmp/sol-anchor/payload.tar.gz
 
       - name: Verify published lane
         shell: bash
