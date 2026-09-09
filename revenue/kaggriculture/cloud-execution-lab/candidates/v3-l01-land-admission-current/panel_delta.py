@@ -133,6 +133,7 @@ def _leaderboard_admission(
     changed: list[dict[str, Any]],
     overall: dict[str, Any],
     by_opponent: dict[str, dict[str, Any]],
+    by_seat: dict[str, dict[str, Any]],
 ) -> dict[str, Any]:
     """Apply the leaderboard-own-score-first promotion boundary.
 
@@ -147,6 +148,12 @@ def _leaderboard_admission(
         if metrics["mean_own_delta"] is not None
         and metrics["mean_own_delta"] < 0
     )
+    negative_own_seats = sorted(
+        seat
+        for seat, metrics in by_seat.items()
+        if metrics["mean_own_delta"] is not None
+        and metrics["mean_own_delta"] < 0
+    )
     checks = {
         "changed_cells": bool(changed),
         "no_new_losses": overall["new_losses"] == 0,
@@ -155,6 +162,7 @@ def _leaderboard_admission(
             and overall["mean_own_delta"] > 0
         ),
         "nonnegative_candidate_score_by_opponent": not negative_own_opponents,
+        "nonnegative_candidate_score_by_seat": not negative_own_seats,
         "positive_mean_margin": (
             overall["mean_margin_delta"] is not None
             and overall["mean_margin_delta"] > 0
@@ -176,11 +184,17 @@ def _leaderboard_admission(
             "candidate terminal score regresses for opponent strata: "
             + ", ".join(negative_own_opponents)
         )
+    elif negative_own_seats:
+        decision = "reject"
+        reason = (
+            "candidate terminal score regresses for seat strata: "
+            + ", ".join(negative_own_seats)
+        )
     elif all(checks.values()):
         decision = "advance"
         reason = (
-            "positive candidate terminal score, nonnegative opponent strata, "
-            "positive margin, and no new losses"
+            "positive candidate terminal score, nonnegative opponent and seat "
+            "strata, positive margin, and no new losses"
         )
     else:
         decision = "hold"
@@ -194,6 +208,7 @@ def _leaderboard_admission(
         "reason": reason,
         "checks": checks,
         "negative_own_score_opponents": negative_own_opponents,
+        "negative_own_score_seats": negative_own_seats,
     }
 
 
@@ -270,6 +285,7 @@ def compare(
         changed=changed,
         overall=overall,
         by_opponent=by_opponent,
+        by_seat=by_seat,
     )
 
     labels = {-1: "L", 0: "T", 1: "W"}
@@ -339,6 +355,12 @@ def assert_historical_l01(report: dict[str, Any]) -> None:
             report["seat_normalization"]["matches"] == 7
         ),
         "leaderboard_verdict": report["verdict"] == "reject",
+        "seat_zero_own_mean": (
+            report["by_seat"]["0"]["mean_own_delta"] == -708.75
+        ),
+        "negative_own_score_seats": (
+            report["leaderboard_admission"]["negative_own_score_seats"] == ["0"]
+        ),
         "leaderboard_rule": (
             report["admission_rule"] == "leaderboard-own-score-first-v1"
         ),
@@ -358,6 +380,7 @@ def markdown(report: dict[str, Any]) -> str:
     changed = report["changed_only"]
     admission = report["leaderboard_admission"]
     negative_opponents = admission["negative_own_score_opponents"]
+    negative_seats = admission["negative_own_score_seats"]
     lines = [
         "# TITAN paired-panel delta",
         "",
@@ -375,6 +398,10 @@ def markdown(report: dict[str, Any]) -> str:
         (
             "- Opponent strata with negative candidate-score Δ: "
             + (", ".join(negative_opponents) if negative_opponents else "none")
+        ),
+        (
+            "- Seat strata with negative candidate-score Δ: "
+            + (", ".join(negative_seats) if negative_seats else "none")
         ),
         (
             f"- Changed-cell economics: own {changed['mean_own_delta']:+.3f} "
@@ -404,6 +431,22 @@ def markdown(report: dict[str, Any]) -> str:
             f"{metrics['mean_own_delta']:+.3f} | "
             f"{metrics['mean_margin_delta']:+.3f} | "
             f"{metrics['new_losses']} | {metrics['recovered_losses']} |"
+        )
+    lines.extend([
+        "",
+        "## Seats",
+        "",
+        "| candidate seat | cells | changed | mean candidate-score Δ | mean margin Δ |",
+        "|---:|---:|---:|---:|---:|",
+    ])
+    for seat, metrics in report["by_seat"].items():
+        own_delta = metrics["mean_own_delta"]
+        margin_delta = metrics["mean_margin_delta"]
+        own_text = "n/a" if own_delta is None else f"{own_delta:+.3f}"
+        margin_text = "n/a" if margin_delta is None else f"{margin_delta:+.3f}"
+        lines.append(
+            f"| {seat} | {metrics['cells']} | {metrics['changed']} | "
+            f"{own_text} | {margin_text} |"
         )
     lines.extend(["", "## Changed cells", ""])
     if not report["changed_cells"]:
