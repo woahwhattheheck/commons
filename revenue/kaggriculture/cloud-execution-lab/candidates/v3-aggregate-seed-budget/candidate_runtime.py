@@ -75,12 +75,10 @@ def apply_completed_action(instance, observation, configuration, selected):
     obs = dict(observation)
     obs["step"] = step
     raw_max = configuration.get("maxMarketOrdersPerTurn", 10)
-    if isinstance(raw_max, bool):
+    if (not isinstance(raw_max, int) or isinstance(raw_max, bool)
+            or raw_max <= 0):
         return _decline(selected, "invalid_max_orders")
-    try:
-        max_orders = max(1, int(raw_max))
-    except (TypeError, ValueError, OverflowError):
-        return _decline(selected, "invalid_max_orders")
+    max_orders = raw_max
 
     try:
         from scheduler import m, post_units
