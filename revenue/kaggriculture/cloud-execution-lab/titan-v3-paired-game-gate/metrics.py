@@ -6,16 +6,22 @@ from collections import defaultdict
 import statistics
 from typing import Any, Iterable, Mapping, Sequence
 
-from gate_common import CellKey, Game, GateError
+from gate_common import CellKey, Game, GateError, finite_number
 
 
-def _mean(values: Sequence[float]) -> float:
-    return float(statistics.fmean(values))
+def _mean(values: Sequence[float], *, label: str) -> float:
+    try:
+        result = statistics.fmean(values)
+    except (OverflowError, ValueError) as exc:
+        raise GateError(f"{label}: derived mean is not finite") from exc
+    return finite_number(result, label=label)
 
 
-def _summary(values: Sequence[float]) -> dict[str, float | int]:
+def _summary(values: Sequence[float], *, label: str) -> dict[str, float | int]:
     return {
-        "n": len(values), "mean": _mean(values), "median": float(statistics.median(values)),
+        "n": len(values),
+        "mean": _mean(values, label=f"{label}.mean"),
+        "median": finite_number(statistics.median(values), label=f"{label}.median"),
         "min": min(values), "max": max(values),
         "positive": sum(value > 0 for value in values),
         "zero": sum(value == 0 for value in values),
@@ -45,8 +51,14 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
 
     for key in keys:
         base, cand = baseline[key], candidate[key]
-        own_delta, rival_delta = cand.own - base.own, cand.rival - base.rival
-        margin_delta = cand.margin - base.margin
+        cell_label = f"cell {key.as_list()}"
+        base_margin, candidate_margin = base.margin, cand.margin
+        own_delta = finite_number(cand.own - base.own, label=f"{cell_label} own_delta")
+        rival_delta = finite_number(cand.rival - base.rival, label=f"{cell_label} rival_delta")
+        margin_delta = finite_number(
+            candidate_margin - base_margin,
+            label=f"{cell_label} margin_delta",
+        )
         own_deltas.append(own_delta)
         margin_deltas.append(margin_delta)
         pair_values[(key.opponent, key.seed)].append(own_delta)
@@ -54,8 +66,8 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
         seat_values[key.seat].append(own_delta)
         record = {
             "key": key.as_list(), "baseline_result": base.result,
-            "candidate_result": cand.result, "baseline_margin": base.margin,
-            "candidate_margin": cand.margin, "own_delta": own_delta,
+            "candidate_result": cand.result, "baseline_margin": base_margin,
+            "candidate_margin": candidate_margin, "own_delta": own_delta,
         }
         if _rank(cand.result) < _rank(base.result):
             regressions.append(record)
@@ -74,17 +86,24 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
     for (opponent, seed), values in sorted(pair_values.items()):
         if len(values) != 2:
             raise GateError(f"internal pair cardinality error for {[opponent, seed]}: {len(values)}")
-        value = _mean(values)
+        value = _mean(values, label=f"pair {[opponent, seed]} seat_mean_own_delta")
         pair_means.append(value)
         pairs.append({
             "opponent": opponent, "seed": seed,
             "seat_mean_own_delta": value, "seat_deltas": values,
         })
-    per_opponent = {key: _summary(value) for key, value in sorted(opponent_values.items())}
-    per_seat = {str(key): _summary(value) for key, value in sorted(seat_values.items())}
+    per_opponent = {
+        key: _summary(value, label=f"opponent {key!r} own_delta")
+        for key, value in sorted(opponent_values.items())
+    }
+    per_seat = {
+        str(key): _summary(value, label=f"seat {key} own_delta")
+        for key, value in sorted(seat_values.items())
+    }
     aggregate = {
         "cells": len(cells), "pairs": len(pairs),
-        "own_delta": _summary(own_deltas), "margin_delta": _summary(margin_deltas),
+        "own_delta": _summary(own_deltas, label="aggregate own_delta"),
+        "margin_delta": _summary(margin_deltas, label="aggregate margin_delta"),
         "positive_cell_fraction": sum(value > 0 for value in own_deltas) / len(own_deltas),
         "nonnegative_cell_fraction": sum(value >= 0 for value in own_deltas) / len(own_deltas),
         "positive_pair_fraction": sum(value > 0 for value in pair_means) / len(pair_means),
