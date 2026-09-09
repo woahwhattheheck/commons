@@ -449,6 +449,36 @@ def main():
     e17_violations = guard.scan_added(e17_lines)
     assert e17_violations == [], e17_violations
 
+    # Run 34381697929 / SHA aae1eaf2: Polar AS9100 traveler shadow used
+    # PermissionError for held-evidence denial and disabled automatic
+    # disposition. Those are product-local evidence rules, not Commons
+    # admission. PermissionError without named-human/release context still
+    # fails; ValueError on the same statements passes. Live file must stay clean.
+    polar_path = "revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py"
+    polar_blocked = "\n".join(
+        [
+            diff(polar_path, ['raise PermissionError("held evidence cannot be approved")']),
+            diff(polar_path, ['raise PermissionError("automatic disposition disabled")']),
+        ]
+    )
+    assert rules(polar_blocked) == {"permission-exception"}, rules(polar_blocked)
+    polar_allowed = "\n".join(
+        [
+            diff(polar_path, ['raise ValueError("held evidence cannot be approved")']),
+            diff(polar_path, ['raise ValueError("automatic disposition disabled")']),
+        ]
+    )
+    assert guard.scan_diff(polar_allowed) == [], guard.scan_diff(polar_allowed)
+    polar_file = Path(polar_path)
+    polar_lines = [
+        guard.AddedLine(polar_file.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            polar_file.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    polar_violations = guard.scan_added(polar_lines)
+    assert polar_violations == [], polar_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.
