@@ -412,8 +412,14 @@ def tracks_to_rows(
         edges.add((source.detection_id, target.detection_id))
 
     for track_id, track in track_by_id.items():
+        seen_children: set[int] = set()
         for raw_child in list(track.children or []):
             child_id = _as_int(raw_child, f"track {track_id} child")
+            if child_id == track_id:
+                raise AdapterError(f"track {track_id} cannot declare itself as a child")
+            if child_id in seen_children:
+                raise AdapterError(f"track {track_id} declares duplicate child {child_id}")
+            seen_children.add(child_id)
             child = track_by_id.get(child_id)
             if child is None:
                 raise AdapterError(f"track {track_id} declares unknown child {child_id}")

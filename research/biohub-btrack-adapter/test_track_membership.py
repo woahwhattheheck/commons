@@ -67,6 +67,36 @@ class TrackMembershipTests(unittest.TestCase):
                 with self.assertRaisesRegex(AdapterError, "track ID must be positive"):
                     tracks_to_rows("a", detections, [track], ref_map, scale)
 
+    def test_self_child_declaration_is_rejected_but_self_parent_root_is_allowed(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [Detection("a", 0, 10, 5, 5, 5)]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+
+        root = track_from_refs(payload, 1, [0])
+        root.parent = 1
+        tracks_to_rows("a", detections, [root], ref_map, scale)
+
+        root.children = [1]
+        with self.assertRaisesRegex(AdapterError, "cannot declare itself as a child"):
+            tracks_to_rows("a", detections, [root], ref_map, scale)
+
+    def test_duplicate_child_declaration_is_rejected(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [
+            Detection("a", 0, 10, 5, 5, 5),
+            Detection("a", 1, 11, 5, 6, 5),
+        ]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        parent = track_from_refs(payload, 1, [0])
+        child = track_from_refs(payload, 2, [1])
+        parent.children = [2, 2]
+        child.parent = 1
+
+        with self.assertRaisesRegex(AdapterError, "declares duplicate child 2"):
+            tracks_to_rows("a", detections, [parent, child], ref_map, scale)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
