@@ -49,16 +49,18 @@ jobs:
       - name: Install pinned official-interpreter dependency
         run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
 
-      - name: Run one-factor and comparison contracts
+      - name: Run one-factor, comparison, and execution-binding contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark
         shell: bash
         run: |
           set -euo pipefail
           export PYTHONDONTWRITEBYTECODE=1
-          python -m unittest -v test_materialize.py test_compare.py
-          python -m py_compile materialize.py compare.py test_materialize.py test_compare.py
+          python -m unittest -v test_materialize.py test_compare.py test_execution_binding.py
+          python -m py_compile \
+            materialize.py compare.py bound_entry.py execution_bind.py bound_compare.py \
+            test_materialize.py test_compare.py test_execution_binding.py
 
-      - name: Materialize exact V2 one-factor arm
+      - name: Materialize exact V2 arm and bind both executable closures
         shell: bash
         run: |
           set -euo pipefail
@@ -71,6 +73,12 @@ jobs:
             --source "$LAB/runtime/variants/v2" \
             --output "$OUT/candidate" \
             --receipt "$OUT/MATERIALIZATION.json"
+          python "$CASE/execution_bind.py" \
+            --source "$LAB/runtime/variants/v2" \
+            --candidate "$OUT/candidate" \
+            --root "$OUT" \
+            --receipt "$OUT/MATERIALIZATION.json" \
+            --binding "$OUT/EXECUTION-BINDING.json"
 
       - name: Verify canonical package stayed unchanged
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -80,7 +88,7 @@ jobs:
           python build_integrated.py --check
           git diff --exit-code -- .
 
-      - name: Run frozen V2 control panel
+      - name: Run closure-bound frozen V2 control panel
         shell: bash
         run: |
           set -euo pipefail
@@ -90,7 +98,7 @@ jobs:
           python "$KAG/cloud-eval/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --candidate "$LAB/runtime/variants/v2/candidate.py::agent" \
+            --candidate "$OUT/control_entry.py::agent" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
             --seeds "$SEEDS" \
@@ -100,7 +108,7 @@ jobs:
             --game-timeout 180 \
             --output "$OUT/control.json"
 
-      - name: Run target-domain ablation panel
+      - name: Run closure-bound target-domain ablation panel
         shell: bash
         run: |
           set -euo pipefail
@@ -110,7 +118,7 @@ jobs:
           python "$KAG/cloud-eval/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --candidate "$OUT/candidate/candidate.py::agent" \
+            --candidate "$OUT/candidate_entry.py::agent" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
             --seeds "$SEEDS" \
@@ -120,7 +128,20 @@ jobs:
             --game-timeout 180 \
             --output "$OUT/candidate.json"
 
-      - name: Classify one-factor causal signal
+      - name: Reverify measured package closures after both panels
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark
+          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          python "$CASE/execution_bind.py" \
+            --verify \
+            --root "$OUT" \
+            --receipt "$OUT/MATERIALIZATION.json" \
+            --binding "$OUT/EXECUTION-BINDING.json"
+
+      - name: Classify execution-bound one-factor causal signal
         id: classify
         if: always()
         shell: bash
@@ -128,10 +149,12 @@ jobs:
           set +e
           CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark
           OUT="$RUNNER_TEMP/v2-target-domain-ablation"
-          python "$CASE/compare.py" \
+          python "$CASE/bound_compare.py" \
             --control "$OUT/control.json" \
             --candidate "$OUT/candidate.json" \
             --receipt "$OUT/MATERIALIZATION.json" \
+            --binding "$OUT/EXECUTION-BINDING.json" \
+            --root "$OUT" \
             --head "$(git rev-parse HEAD)" \
             --output "$OUT/ABLATION-REPORT.json" \
             --markdown "$OUT/ABLATION-REPORT.md"
