@@ -107,6 +107,20 @@ class TrackMembershipTests(unittest.TestCase):
         with self.assertRaisesRegex(AdapterError, "appears in multiple track observations"):
             tracks_to_rows("a", detections, tracks, ref_map, scale)
 
+    def test_all_frozen_real_refs_must_appear_in_tracker_output(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [
+            Detection("a", 0, 10, 5, 5, 5),
+            Detection("a", 1, 11, 5, 6, 5),
+            Detection("a", 2, 12, 5, 7, 5),
+        ]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        incomplete = track_from_refs(payload, 1, [0, 1])
+
+        with self.assertRaisesRegex(AdapterError, "omitted real object ID 2"):
+            tracks_to_rows("a", detections, [incomplete], ref_map, scale)
+
     def test_nonpositive_track_ids_are_rejected(self):
         scale = Scale()
         bounds = VoxelBounds(0, 20, 0, 20, 0, 20)

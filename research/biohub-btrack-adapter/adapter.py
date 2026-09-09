@@ -390,6 +390,10 @@ def tracks_to_rows(
                 )
             edges.add((source.detection_id, target.detection_id))
 
+    missing_real_refs = sorted(set(ref_map) - set(seen_real_refs))
+    if missing_real_refs:
+        raise AdapterError(f"tracker output omitted real object ID {missing_real_refs[0]}")
+
     # Validate declared lineage and add one parent-last -> child-first edge.
     for track_id, track in track_by_id.items():
         parent_raw = track.parent
