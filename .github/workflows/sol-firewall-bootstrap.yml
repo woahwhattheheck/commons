@@ -1,0 +1,94 @@
+name: SOL Firewall branch materializer
+
+on:
+  push:
+    branches:
+      - sol/titan-v3-measured-champion-firewall-20260909-01
+    paths:
+      - .sol-firewall-bootstrap/**
+      - .github/workflows/sol-firewall-bootstrap.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-firewall-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Reconstruct and validate source packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .sol-firewall-bootstrap/payload.part00 \
+              .sol-firewall-bootstrap/payload.part01 \
+              .sol-firewall-bootstrap/payload.part02 \
+              .sol-firewall-bootstrap/payload.part03 > /tmp/sol-firewall.b64
+          test "$(wc -c < /tmp/sol-firewall.b64)" -eq 20976
+          base64 --decode /tmp/sol-firewall.b64 > /tmp/sol-firewall.tgz
+          echo '755e0573dab1af8d7f9355a9741b1419efcdf63dfab24e9a9373a837cb091655  /tmp/sol-firewall.tgz' | sha256sum --check --strict
+          python3 - <<'PY'
+          import tarfile
+          from pathlib import PurePosixPath
+
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/CHAMPION.json',
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/POLICY.json',
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/RESULTS.md',
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/SOURCE-MANIFEST.json',
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/THREAT-MODEL.md',
+              'revenue/kaggriculture/cloud-execution-lab/release_admission/guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/test_release_admission.py',
+          }
+          with tarfile.open('/tmp/sol-firewall.tgz', 'r:gz') as archive:
+              files = set()
+              for member in archive.getmembers():
+                  path = PurePosixPath(member.name)
+                  if path.is_absolute() or '..' in path.parts or member.issym() or member.islnk():
+                      raise SystemExit(f'unsafe archive member: {member.name}')
+                  if member.isfile():
+                      files.add(member.name)
+                  elif not member.isdir():
+                      raise SystemExit(f'unsupported archive member: {member.name}')
+              if files != expected:
+                  raise SystemExit(f'archive inventory mismatch: {sorted(files ^ expected)}')
+              archive.extractall('.')
+          PY
+
+      - name: Verify exact packet
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONHASHSEED: '0'
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v revenue/kaggriculture/cloud-execution-lab/test_release_admission.py
+          python3 -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/release_admission/guard.py \
+            revenue/kaggriculture/cloud-execution-lab/test_release_admission.py
+          find revenue/kaggriculture/cloud-execution-lab -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --check
+
+      - name: Commit verified packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'SOL-FIREWALL'
+          git config user.email 'sol-firewall@commons.local'
+          git add \
+            revenue/kaggriculture/cloud-execution-lab/release_admission \
+            revenue/kaggriculture/cloud-execution-lab/test_release_admission.py
+          git diff --cached --check
+          git commit -m 'titan: enforce measured champion release admission'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
