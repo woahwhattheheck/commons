@@ -44,6 +44,14 @@ OPPONENTS = {
     "public_bt12": KAG / "cloud-frontier-decision/public-opponent/submission.py",
     "v1": LAB / "runtime/variants/v1/candidate.py",
 }
+ISOLATED_IMPORT_PROBE = (
+    "from observed_clone import detached_json_value\n"
+    "import scheduler\n"
+    "assert callable(detached_json_value)\n"
+)
+EVALUATOR_ENV_SEAM = '''        env = {"PATH": os.defpath, "HOME": self.directory.name, "LANG": "C.UTF-8",
+               "PYTHONHASHSEED": str(rng_seed % (2**32)), "PYTHONDONTWRITEBYTECODE": "1"}'''
+
 
 
 def sha256_file(path: Path) -> str:
@@ -52,6 +60,70 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1 << 20), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def isolated_source_pythonpath(lab: Path) -> str:
+    """Bare imports in stripped official workers resolve archive siblings.
+
+    The official evaluator copies a PATH/HOME/LANG-only environment into each
+    worker and inserts only the agent parent. Root modules that
+    ``build_integrated.source_files`` maps from outside the lab
+    (``observed_clone``, ``seller_snapshot``, …) must therefore appear on
+    PYTHONPATH. GitHub Actions run 34400397411 failed every L02 cell at step 0
+    with ``ModuleNotFoundError: No module named 'observed_clone'``.
+    """
+    lab = lab.resolve()
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+    ordered = [lab]
+    seen = {lab}
+    for member, source in source_files().items():
+        if Path(member).parent != Path("."):
+            continue
+        origin = (lab / source).resolve()
+        if not origin.is_file():
+            raise FileNotFoundError(
+                f"mapped root module {member} missing at {origin}")
+        parent = origin.parent
+        if parent not in seen:
+            seen.add(parent)
+            ordered.append(parent)
+    return os.pathsep.join(str(path) for path in ordered)
+
+
+def patch_evaluator(source: Path, target: Path) -> None:
+    """Forward the isolated source path into stripped worker environments."""
+    text = source.read_text(encoding="utf-8")
+    new = EVALUATOR_ENV_SEAM + '''
+        if os.environ.get("TITAN_L02_PYTHONPATH"):
+            env["PYTHONPATH"] = os.environ["TITAN_L02_PYTHONPATH"]'''
+    if text.count(EVALUATOR_ENV_SEAM) != 1:
+        raise RuntimeError("evaluator environment seam changed")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(text.replace(EVALUATOR_ENV_SEAM, new), encoding="utf-8")
+
+
+def assert_isolated_source_imports(lab: Path, pythonpath: str) -> None:
+    """Fail closed before the 192-game panel if stripped workers cannot import."""
+    with tempfile.TemporaryDirectory(prefix="kag-eval-agent-") as tmp:
+        env = {
+            "PATH": os.defpath,
+            "HOME": tmp,
+            "LANG": "C.UTF-8",
+            "PYTHONHASHSEED": "0",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": pythonpath,
+        }
+        result = subprocess.run(
+            [sys.executable, "-B", "-c", ISOLATED_IMPORT_PROBE],
+            cwd=tmp, env=env, capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                "isolated official-panel workers cannot import lab source: "
+                + (result.stderr or result.stdout)[:1500]
+            )
 
 
 def tree_sha256(root: Path) -> dict[str, Any]:
@@ -112,10 +184,11 @@ def _opponent_args(names: Sequence[str]) -> list[str]:
 
 def run_evaluator(variant: str, seeds: Sequence[int], opponents: Sequence[str],
                   directory: Path, shard_index: int, *, action_timeout: float,
-                  startup_timeout: float, game_timeout: float) -> dict[str, Any]:
+                  startup_timeout: float, game_timeout: float,
+                  evaluator: Path, pythonpath: str) -> dict[str, Any]:
     output = directory / f"{variant}-shard-{shard_index:02d}.json"
     command = [
-        sys.executable, "-B", str(EVALUATOR),
+        sys.executable, "-B", str(evaluator),
         "--engine-dir", str(ENGINE),
         "--loader", str(LOADER),
         "--candidate", _agent_spec(variant),
@@ -127,7 +200,11 @@ def run_evaluator(variant: str, seeds: Sequence[int], opponents: Sequence[str],
         "--output", str(output),
         *_opponent_args(opponents),
     ]
+    env = dict(os.environ)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["TITAN_L02_PYTHONPATH"] = pythonpath
     completed = subprocess.run(command, cwd=REPO, capture_output=True, text=True,
+                               env=env,
                                timeout=max(300.0, game_timeout * len(seeds) * len(opponents) * 2 + 120.0))
     report = None
     if output.is_file():
@@ -302,7 +379,8 @@ def verdict(global_summary: Mapping[str, Any], per_opponent: Mapping[str, Mappin
             "checks": checks, "scope": "development panel only; not a Kaggle or leaderboard claim"}
 
 
-def dependency_receipt(head: str) -> dict[str, Any]:
+def dependency_receipt(head: str, *, evaluator: Path | None = None) -> dict[str, Any]:
+    evaluator_path = Path(evaluator) if evaluator is not None else EVALUATOR
     paths = {
         "candidate": HERE / "candidate.py",
         "overlay": HERE / "ledger_tranche.py",
@@ -312,7 +390,8 @@ def dependency_receipt(head: str) -> dict[str, Any]:
         "scheduler": LAB / "scheduler.py",
         "config": LAB / "TITAN-CONFIG.json",
         "source_manifest": LAB / "runtime/integrated-selected/CURRENT-SOURCE.json",
-        "evaluator": EVALUATOR,
+        "evaluator": evaluator_path,
+        "evaluator_source": EVALUATOR,
         "loader": LOADER,
     }
     missing = [str(path) for path in paths.values() if not path.is_file()]
@@ -382,13 +461,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         parser.error("workers/timeouts must be positive")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    receipt = dependency_receipt(args.head)
-    initial = {"schema_version": 1, "status": "running", "phase": "development",
-               "identity": receipt, "seeds": seeds, "opponents": opponents,
-               "expected_cells_per_variant": len(expected_keys(seeds, opponents))}
-    atomic_json(args.output, initial)
+    pythonpath = isolated_source_pythonpath(LAB)
     work = args.output.parent / "shards"
     work.mkdir(parents=True, exist_ok=True)
+    patched_evaluator = work / "evaluate-l02.py"
+    patch_evaluator(EVALUATOR, patched_evaluator)
+    assert_isolated_source_imports(LAB, pythonpath)
+    receipt = dependency_receipt(args.head, evaluator=patched_evaluator)
+    initial = {"schema_version": 1, "status": "running", "phase": "development",
+               "identity": receipt, "seeds": seeds, "opponents": opponents,
+               "expected_cells_per_variant": len(expected_keys(seeds, opponents)),
+               "isolated_pythonpath": pythonpath.split(os.pathsep)}
+    atomic_json(args.output, initial)
     groups = shard(seeds, args.workers)
     futures = []
     results: list[dict[str, Any]] = []
@@ -399,7 +483,8 @@ def main(argv: Sequence[str] | None = None) -> int:
                     futures.append(executor.submit(
                         run_evaluator, variant, group, opponents, work, index,
                         action_timeout=args.action_timeout, startup_timeout=args.startup_timeout,
-                        game_timeout=args.game_timeout))
+                        game_timeout=args.game_timeout, evaluator=patched_evaluator,
+                        pythonpath=pythonpath))
             for future in as_completed(futures):
                 results.append(future.result())
                 initial["completed_shards"] = [{"variant": result["variant"],
