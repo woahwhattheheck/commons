@@ -79,8 +79,14 @@ class AgdiaOrderTests(unittest.TestCase):
     def test_release_requires_named_human_and_auto_release_fails_closed(self):
         s=AgdiaOrderShadow(); s.replay(self.records,self.manifest)
         with self.assertRaises(PermissionError):s.release_report("AGDIA-CASE-0001","")
+        for actor in ("auto","system","bot","automation","agent","autonomous"," SYSTEM "):
+            with self.subTest(actor=actor):
+                with self.assertRaises(PermissionError):s.release_report("AGDIA-CASE-0001",actor)
+        self.assertEqual(("STAGED_HUMAN_REVIEW",None),(s.staged_reports["AGDIA-CASE-0001"]["state"],s.staged_reports["AGDIA-CASE-0001"]["released_by"]))
         with self.assertRaises(PermissionError):s.automatic_release("AGDIA-CASE-0001")
         x=s.release_report("AGDIA-CASE-0001","Named QA Reviewer")
         self.assertEqual(("RELEASED_BY_NAMED_HUMAN","Named QA Reviewer",self.by_id["AGDIA-CASE-0001"]["designated_contact_id"]),(x["state"],x["released_by"],x["designated_contact_id"]))
+        with self.assertRaises(PermissionError):s.release_report("AGDIA-CASE-0001","Second Reviewer")
+        self.assertEqual("Named QA Reviewer",s.staged_reports["AGDIA-CASE-0001"]["released_by"])
 
 if __name__=="__main__":unittest.main()
