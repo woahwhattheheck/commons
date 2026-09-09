@@ -1,0 +1,153 @@
+name: titan-v3-feature-bisect
+
+on:
+  push:
+    branches:
+      - sol/scalpel-titan-v3-config-bisect-20260909-01
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/**
+      - p/sol-scalpel-titan-v3-config-causal-bisect-20260909-01.md
+      - .github/workflows/titan-v3-feature-bisect.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-feature-bisect-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-config-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github
+            p/sol-scalpel-titan-v3-config-causal-bisect-20260909-01.md
+            revenue/kaggriculture/cloud-execution-lab
+            revenue/kaggriculture/cloud-quickstep
+            revenue/kaggriculture/cloud-runtime-pulse
+            revenue/kaggriculture/cloud-opponent-league/lark-responsive
+            revenue/kaggriculture/cloud-committed-seed-retry
+            revenue/kaggriculture/cloud-economic-stress/funded_payback
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify release and causal-bisector contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python "$LAB/build_integrated.py" --check
+          cd "$LAB/analysis/v3-feature-bisect"
+          python -m py_compile feature_bisect.py test_feature_bisect.py
+          python -m unittest -v test_feature_bisect.py
+
+      - name: Materialize exact current and historical-control matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOOL="$LAB/analysis/v3-feature-bisect/feature_bisect.py"
+          OUT=.titan-v3-bisect
+          rm -rf "$OUT"
+          ARCHIVE_SHA=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          pointer = Path('revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json')
+          print(json.loads(pointer.read_text())['sha256'])
+          PY
+          )
+          CONTROL="${LAB}/exports/historical/titan-e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58.tar.gz"
+          CONTROL_ARGS=()
+          if [[ -f "$CONTROL" ]]; then
+            CONTROL_ARGS+=(--control "submitted-v2=${CONTROL}@e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58")
+          fi
+          python "$TOOL" prepare \
+            --baseline "current-v25=${LAB}/exports/titan-current.tar.gz@${ARCHIVE_SHA}" \
+            "${CONTROL_ARGS[@]}" \
+            --toggle early_capital \
+            --toggle operating_stock \
+            --toggle idle_fertilizer \
+            --toggle crop_release \
+            --pair early_capital,crop_release \
+            --pair operating_stock,crop_release \
+            --pair idle_fertilizer,crop_release \
+            --output-dir "$OUT/matrix"
+
+      - name: Run identical official-engine both-seat cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOOL="$LAB/analysis/v3-feature-bisect/feature_bisect.py"
+          python "$TOOL" run \
+            --matrix .titan-v3-bisect/matrix/matrix.json \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --opponent "arlene=$LAB/reference/next-panel/vendor/arlene.py::agent" \
+            --seeds 261140014,261140015 \
+            --rng-seed 20260907 \
+            --action-timeout 1.0 \
+            --startup-timeout 10.0 \
+            --game-timeout 120.0 \
+            --process-timeout 900.0 \
+            --results-dir .titan-v3-bisect/results
+
+      - name: Analyze paired causal deltas
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOOL="$LAB/analysis/v3-feature-bisect/feature_bisect.py"
+          python "$TOOL" analyze \
+            --runs .titan-v3-bisect/results/runs.json \
+            --output .titan-v3-bisect/analysis.json \
+            --markdown .titan-v3-bisect/analysis.md
+          python "$TOOL" verify \
+            --path .titan-v3-bisect/analysis.json \
+            --field analysis_sha256
+          cat .titan-v3-bisect/analysis.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Bind hosted runner metadata
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          out = Path('.titan-v3-bisect')
+          out.mkdir(exist_ok=True)
+          payload = {
+              'schema_version': 1,
+              'repository': os.environ.get('GITHUB_REPOSITORY'),
+              'ref': os.environ.get('GITHUB_REF'),
+              'sha': os.environ.get('GITHUB_SHA'),
+              'run_id': os.environ.get('GITHUB_RUN_ID'),
+              'run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+              'runner_os': os.environ.get('RUNNER_OS'),
+              'workflow': os.environ.get('GITHUB_WORKFLOW'),
+          }
+          raw = json.dumps(payload, sort_keys=True, separators=(',', ':')).encode()
+          payload['receipt_sha256'] = hashlib.sha256(raw).hexdigest()
+          (out / 'HOSTED-METADATA.json').write_text(json.dumps(payload, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload complete exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-feature-bisect-${{ github.sha }}
+          path: .titan-v3-bisect
+          if-no-files-found: error
+          retention-days: 30

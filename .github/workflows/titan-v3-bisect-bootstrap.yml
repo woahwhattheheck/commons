@@ -1,0 +1,269 @@
+name: titan-v3-bisect-bootstrap
+
+on:
+  push:
+    branches:
+      - sol/scalpel-titan-v3-config-bisect-20260909-01
+    paths:
+      - .titan-bootstrap/titan-scalpel-payload.b64.part*
+      - .github/workflows/titan-v3-bisect-bootstrap.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-bisect-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  install-test-and-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout exact carrier head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          sparse-checkout: |
+            .titan-bootstrap
+            .github
+            p
+            revenue/kaggriculture/cloud-execution-lab
+            revenue/kaggriculture/cloud-quickstep
+            revenue/kaggriculture/cloud-runtime-pulse
+            revenue/kaggriculture/cloud-opponent-league/lark-responsive
+            revenue/kaggriculture/cloud-committed-seed-retry
+            revenue/kaggriculture/cloud-economic-stress/funded_payback
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify and install exact payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .titan-bootstrap/titan-scalpel-payload.b64.part00 \
+              .titan-bootstrap/titan-scalpel-payload.b64.part01 \
+              .titan-bootstrap/titan-scalpel-payload.b64.part02 \
+              .titan-bootstrap/titan-scalpel-payload.b64.part03 \
+              .titan-bootstrap/titan-scalpel-payload.b64.part04 > /tmp/titan-scalpel-payload.b64
+          base64 --decode /tmp/titan-scalpel-payload.b64 > /tmp/titan-scalpel-payload.tar.xz
+          PAYLOAD=/tmp/titan-scalpel-payload.tar.xz
+          EXPECTED_SHA=6fc4c92ef0b9e9e86348b309af5f228815d3882b8f737a7b629926811bc05ec1
+          ACTUAL_SHA=$(sha256sum "$PAYLOAD" | awk '{print $1}')
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          python - <<'PY'
+          import pathlib
+          import tarfile
+
+          payload = pathlib.Path('/tmp/titan-scalpel-payload.tar.xz')
+          expected = {
+              '.github/workflows/titan-v3-feature-bisect.yml',
+              'p/sol-scalpel-titan-v3-config-causal-bisect-20260909-01.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/LOCAL-EVIDENCE.json',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/feature_bisect.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/test_feature_bisect.py',
+          }
+          with tarfile.open(payload, 'r:xz') as archive:
+              members = archive.getmembers()
+              names = {member.name for member in members}
+              if names != expected or len(members) != len(expected):
+                  raise SystemExit(f'payload member mismatch: {sorted(names ^ expected)}')
+              for member in members:
+                  path = pathlib.PurePosixPath(member.name)
+                  if path.is_absolute() or '..' in path.parts or not member.isfile():
+                      raise SystemExit(f'unsafe payload member: {member.name}')
+              archive.extractall()
+          PY
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          cd "$LAB/analysis/v3-feature-bisect"
+          python -m py_compile feature_bisect.py test_feature_bisect.py
+          python -m unittest -v test_feature_bisect.py
+
+      - name: Publish only the verified owned source paths
+        shell: bash
+        env:
+          BRANCH: sol/scalpel-titan-v3-config-bisect-20260909-01
+        run: |
+          set -euo pipefail
+          git fetch origin "$BRANCH"
+          test "$(git rev-parse origin/$BRANCH)" = "$GITHUB_SHA"
+          git add -- \
+            p/sol-scalpel-titan-v3-config-causal-bisect-20260909-01.md \
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/LOCAL-EVIDENCE.json \
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/README.md \
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/feature_bisect.py \
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/test_feature_bisect.py
+          cat > /tmp/expected-paths <<'EOF'
+          p/sol-scalpel-titan-v3-config-causal-bisect-20260909-01.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/LOCAL-EVIDENCE.json
+          revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/README.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/feature_bisect.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/test_feature_bisect.py
+          EOF
+          git diff --cached --name-only | sort > /tmp/actual-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+          git diff --cached --check
+          git config user.name "titan-scalpel[bot]"
+          git config user.email "titan-scalpel@users.noreply.github.com"
+          git commit -m "TITAN: add exact config causal bisector"
+          git push origin "HEAD:$BRANCH"
+
+      - name: Verify canonical release and installed contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python "$LAB/build_integrated.py" --check
+          cd "$LAB/analysis/v3-feature-bisect"
+          python -m py_compile feature_bisect.py test_feature_bisect.py
+          python -m unittest -v test_feature_bisect.py
+
+      - name: Materialize exact current and historical-control matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOOL="$LAB/analysis/v3-feature-bisect/feature_bisect.py"
+          OUT=.titan-v3-bisect
+          rm -rf "$OUT"
+          ARCHIVE_SHA=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          pointer = Path('revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json')
+          print(json.loads(pointer.read_text())['sha256'])
+          PY
+          )
+          CONTROL="${LAB}/exports/historical/titan-e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58.tar.gz"
+          CONTROL_ARGS=()
+          if [[ -f "$CONTROL" ]]; then
+            CONTROL_ARGS+=(--control "submitted-v2=${CONTROL}@e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58")
+          fi
+          python "$TOOL" prepare \
+            --baseline "current-v25=${LAB}/exports/titan-current.tar.gz@${ARCHIVE_SHA}" \
+            "${CONTROL_ARGS[@]}" \
+            --toggle early_capital \
+            --toggle operating_stock \
+            --toggle idle_fertilizer \
+            --toggle crop_release \
+            --pair early_capital,crop_release \
+            --pair operating_stock,crop_release \
+            --pair idle_fertilizer,crop_release \
+            --output-dir "$OUT/matrix"
+
+      - name: Run identical official-engine both-seat cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOOL="$LAB/analysis/v3-feature-bisect/feature_bisect.py"
+          python "$TOOL" run \
+            --matrix .titan-v3-bisect/matrix/matrix.json \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --opponent "arlene=$LAB/reference/next-panel/vendor/arlene.py::agent" \
+            --seeds 261140014,261140015 \
+            --rng-seed 20260907 \
+            --action-timeout 1.0 \
+            --startup-timeout 10.0 \
+            --game-timeout 120.0 \
+            --process-timeout 900.0 \
+            --results-dir .titan-v3-bisect/results
+
+      - name: Analyze paired causal deltas
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOOL="$LAB/analysis/v3-feature-bisect/feature_bisect.py"
+          python "$TOOL" analyze \
+            --runs .titan-v3-bisect/results/runs.json \
+            --output .titan-v3-bisect/analysis.json \
+            --markdown .titan-v3-bisect/analysis.md
+          python "$TOOL" verify \
+            --path .titan-v3-bisect/analysis.json \
+            --field analysis_sha256
+          cat .titan-v3-bisect/analysis.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish hosted screening receipt
+        shell: bash
+        env:
+          BRANCH: sol/scalpel-titan-v3-config-bisect-20260909-01
+        run: |
+          set -euo pipefail
+          DEST=revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect
+          cp .titan-v3-bisect/analysis.json "$DEST/HOSTED-SCREEN.json"
+          cp .titan-v3-bisect/analysis.md "$DEST/HOSTED-SCREEN.md"
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+
+          root = pathlib.Path('.')
+          dest = root / 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect'
+          def digest(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+          payload = {
+              'schema_version': 1,
+              'repository': os.environ['GITHUB_REPOSITORY'],
+              'carrier_event_sha': os.environ['GITHUB_SHA'],
+              'source_commit': os.popen('git rev-parse HEAD').read().strip(),
+              'run_id': os.environ['GITHUB_RUN_ID'],
+              'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'matrix_sha256': digest(root / '.titan-v3-bisect/matrix/matrix.json'),
+              'runs_sha256': digest(root / '.titan-v3-bisect/results/runs.json'),
+              'analysis_sha256': digest(dest / 'HOSTED-SCREEN.json'),
+              'markdown_sha256': digest(dest / 'HOSTED-SCREEN.md'),
+          }
+          raw = json.dumps(payload, sort_keys=True, separators=(',', ':')).encode()
+          payload['receipt_sha256'] = hashlib.sha256(raw).hexdigest()
+          (dest / 'HOSTED-RUN-RECEIPT.json').write_text(json.dumps(payload, indent=2, sort_keys=True) + '\n')
+          PY
+          git add -- "$DEST/HOSTED-SCREEN.json" "$DEST/HOSTED-SCREEN.md" "$DEST/HOSTED-RUN-RECEIPT.json"
+          git diff --cached --check
+          git fetch origin "$BRANCH"
+          test "$(git rev-parse origin/$BRANCH)" = "$(git rev-parse HEAD)"
+          git commit -m "TITAN: record hosted config-bisect screen"
+          git push origin "HEAD:$BRANCH"
+
+      - name: Bind hosted runner metadata
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import subprocess
+
+          out = pathlib.Path('.titan-v3-bisect')
+          out.mkdir(exist_ok=True)
+          payload = {
+              'schema_version': 1,
+              'repository': os.environ.get('GITHUB_REPOSITORY'),
+              'ref': os.environ.get('GITHUB_REF'),
+              'carrier_event_sha': os.environ.get('GITHUB_SHA'),
+              'workspace_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'run_id': os.environ.get('GITHUB_RUN_ID'),
+              'run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+              'runner_os': os.environ.get('RUNNER_OS'),
+              'workflow': os.environ.get('GITHUB_WORKFLOW'),
+          }
+          raw = json.dumps(payload, sort_keys=True, separators=(',', ':')).encode()
+          payload['receipt_sha256'] = hashlib.sha256(raw).hexdigest()
+          (out / 'HOSTED-METADATA.json').write_text(json.dumps(payload, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload complete exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-feature-bisect-${{ github.sha }}
+          path: .titan-v3-bisect
+          if-no-files-found: error
+          retention-days: 30
