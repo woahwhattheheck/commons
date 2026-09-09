@@ -1,0 +1,127 @@
+name: titan-capillary-executable-sol-prism
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-capillary-executable-sol-prism.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/capillary-executable-sol-prism/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONHASHSEED: '0'
+
+jobs:
+  exact-source-and-executable-carrier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind exact event head and parent
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_PARENT: 68318e3da2af99f570c9e4d91029ad22d7a995e2
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT"
+          git merge-base --is-ancestor "$EXPECTED_PARENT" HEAD
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Audit exact repair surface and compile
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/capillary-executable-sol-prism
+          python "$ROOT/audit_change.py" --json "$RUNNER_TEMP/SOURCE-AUDIT.json"
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/capillary-executable-sol-prism')
+          for name in ('candidate.py', 'carrier_smoke.py', 'audit_change.py'):
+              path = root / name
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+
+      - name: Run inherited exact compiler and lifecycle contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          cd "$LAB"
+          ROOTS=$(python - <<'PY'
+          import build_integrated
+          from pathlib import Path
+          root = Path('.').resolve()
+          parents = []
+          for source in build_integrated.source_files().values():
+              parent = str((root / source).resolve().parent)
+              if parent not in parents:
+                  parents.append(parent)
+          print(':'.join(parents))
+          PY
+          )
+          PYTHONPATH="$ROOTS" python - <<'PY'
+          import unittest
+          names = (
+              'test_jit_seed_staging',
+              'test_jit_seed_order_rail',
+              'test_capillary_lifecycle',
+              'test_capillary_carrier_isolation',
+          )
+          suite = unittest.defaultTestLoader.loadTestsFromNames(names)
+          if suite.countTestCases() != 70:
+              raise SystemExit(f'expected 70 inherited contracts, got {suite.countTestCases()}')
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if not result.wasSuccessful():
+              raise SystemExit(1)
+          PY
+
+      - name: Prove stripped private carrier through pinned evaluator
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/capillary-executable-sol-prism
+          env -u PYTHONPATH python "$ROOT/carrier_smoke.py" \
+            --json "$RUNNER_TEMP/CARRIER-SMOKE.json"
+
+      - name: Verify canonical release remains unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
+
+      - name: Retain exact source and carrier receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-capillary-executable-sol-prism-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            ${{ runner.temp }}/SOURCE-AUDIT.json
+            ${{ runner.temp }}/CARRIER-SMOKE.json
+          if-no-files-found: error
+          retention-days: 30
