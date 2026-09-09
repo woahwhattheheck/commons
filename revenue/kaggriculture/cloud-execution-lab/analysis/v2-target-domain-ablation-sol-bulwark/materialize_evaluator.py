@@ -70,13 +70,32 @@ def materialize_evaluator(
                 f"{label} cardinality mismatch: old={before_count}, new={new_before}"
             )
         patched = patched.replace(old, new, 1)
+
+        # ``new`` may intentionally retain ``old`` as a contiguous suffix.  In
+        # that case the raw substring count is nonzero even though the one
+        # patch site was consumed.  The admission contract's historical
+        # ``old_occurrences_after`` field means *unconsumed patch sites*, so
+        # subtract the occurrences embedded by the replacement and retain both
+        # raw components for independent receipt audit.
+        old_after_raw = patched.count(old)
+        old_embedded_in_replacement = new.count(old)
+        old_after_unconsumed = old_after_raw - old_embedded_in_replacement
+        if old_after_unconsumed != 0:
+            raise EvaluatorMaterializeError(
+                f"{label} left {old_after_unconsumed} unconsumed old patch sites"
+            )
+
         patch_receipts.append(
             {
                 "label": label,
                 "old_sha256": base.sha256(old),
                 "new_sha256": base.sha256(new),
                 "old_occurrences_before": before_count,
-                "old_occurrences_after": patched.count(old),
+                "old_occurrences_after": old_after_unconsumed,
+                "old_occurrences_after_raw": old_after_raw,
+                "old_occurrences_embedded_in_replacement": (
+                    old_embedded_in_replacement
+                ),
                 "new_occurrences_after": patched.count(new),
             }
         )
