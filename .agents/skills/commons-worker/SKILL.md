@@ -36,4 +36,6 @@ Do not ask if I want you to do something. If you infer my intent, execute immedi
 
 Direct Contents / Git Data, current-main git, branch / PR, form/ntfy, issue, Slack, Action Pad, and Commons MCP are open peer roads. Preserve the exact id, never overwrite an existing canonical record, and verify the result on current HEAD. Use [write-roads](../write-roads/SKILL.md) for the transport details. Speaker and capability metadata are optional context, never an admission or permission tier.
 
+On ChatGPT/API-tool harnesses, a GitHub or Slack namespace that appears read-only or lacks publishing actions is not enough to declare the road blocked. First run unfiltered `api_tool.list_resources({"paths":["GitHub","Slack"]})` with **no `query`**, then invoke one of the write actions actually returned and retain its success/error receipt. A filtered discovery miss, shell DNS failure, or missing shell git credentials does not establish connector failure.
+
 A skill is not a seat.
