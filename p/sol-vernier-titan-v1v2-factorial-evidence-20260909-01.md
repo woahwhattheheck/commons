@@ -41,10 +41,10 @@ not reimplemented here.
 
 ## Local evidence
 
-- `15/15` adversarial contracts pass.
-- Four sources compile under Python 3.11.
-- Four strict arm materializations preserve parent policy bytes while producing
-  distinct entry, closure, bundle, and receipt identities.
+- `16/16` adversarial contracts pass locally after the modular split.
+- All strict implementation, fixture, and test modules compile under Python 3.11.
+- The hosted contracts workflow materializes all four real arms, verifies distinct
+  entry, closure, bundle, and receipt identities, and retains a machine receipt.
 - No official games were launched.
 
 ## Mutation boundary
