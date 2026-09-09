@@ -123,3 +123,13 @@ python -m unittest -v test_clipping_consumer
 The suite exercises real parsing, Unicode/encoding handling, actual CLI subprocesses, ZIP contents/hashes, existing-target preservation, and competing filesystem publishers. The sample captions are original fictional material, not customer recordings. No claim of audio verification, automatic transcription, browser testing, distribution, or customer fulfillment follows from these tests.
 
 The integrated podcast check ran against canonical source blob `2051b0fdf43648d857fec34f6a36503adabf9c8f`: seven integration tests passed. Python 3.13 emitted SQLite connection `ResourceWarning` messages from that consumer; these are retained in the execution receipt, not hidden or described as warning-free. The managed-clipping composition test uses the live sibling runtime and an original synthetic A/V source; it is distinct from the podcast consumer check. No canonical consumer or managed-clipping runtime changes are included in this companion.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -103,7 +103,7 @@ def render():
     data=output.getvalue()
     receipt={'path':ARCHIVE,'entrypoint':'main.py::agent','config':'TITAN-CONFIG.json',
              'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),
-             'runtime_files':len(blobs),'source_manifest':RECORD+'CURRENT-SOURCE.json',
+             'runtime_files':len(mapping),'source_manifest':RECORD+'CURRENT-SOURCE.json',
              'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
     return data,encoded,receipt
 
