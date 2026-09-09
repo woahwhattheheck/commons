@@ -131,23 +131,30 @@ class OperatingStockTests(unittest.TestCase):
         self.selected['market'].append(['BUY_ANIMAL', 'COW', 100])
         self.unchanged('retained_stock_conflicts_with_arrival_room')
 
-    def test_current_cash_funds_later_orders_without_sale_credit(self):
+    def test_current_cash_prices_fixed_commitments_without_sale_credit(self):
         self.selected['market'].append(['BUY_SEED', 'STRAWBERRY', 20])
+        self.farm['money'] = 1999
+        self.unchanged('committed_liquidity_shortfall')
         self.farm['money'] = 2100
-        self.unchanged('actual_cash_cushion_insufficient')
-        self.farm['money'] = 10000
         result, report = self.propose()
         self.assertTrue(report['changed'])
         self.assertEqual(result['market'][1], ['BUY_SEED', 'STRAWBERRY', 20])
-        self.assertEqual(self.farm['money'], 10000)
+        self.assertEqual(report['commitment_liquidity']['required_cash'], 2000)
+        self.assertEqual(report['commitment_liquidity']['cash_after_commitments'], 100)
+        self.assertEqual(report['commitment_liquidity']['future_sale_cash_credit'], 0)
+        self.assertEqual(self.farm['money'], 2100)
 
     def test_variable_purchase_keeps_incumbent_funding(self):
         self.route[464]['market'] = [['BUY_PRODUCT', 'WHEAT', 3]]
         self.unchanged('intervening_variable_price_purchase')
 
-    def test_capital_after_service_rejoin_remains_a_funding_obligation(self):
+    def test_funded_hire_after_service_rejoin_is_priced_not_blanket_rejected(self):
         self.route[470]['market'] = [['HIRE']]
-        self.unchanged('intervening_capital_commitment')
+        result, report = self.propose()
+        self.assertTrue(report['changed'])
+        self.assertTrue(any(c['op'] == 'HIRE' for c in report['commitment_liquidity']['commitments']))
+        self.farm['money'] = 0
+        self.unchanged('committed_liquidity_shortfall')
 
     def test_value_only_incremental_service_after_incumbent_stock(self):
         self.selected['market'] = [['SELL', 'FERTILIZER', 8]]
@@ -158,11 +165,34 @@ class OperatingStockTests(unittest.TestCase):
         # withheld extra unit would only cover the glutted tomato.
         self.unchanged('marginal_product_screen_not_favorable')
 
-    def test_activation_is_bounded_to_two_withheld_units(self):
+    def test_value_screen_uses_public_curve_and_labels_stress_diagnostic(self):
+        result, report = self.propose()
+        self.assertTrue(report['changed'])
+        observed = report['value_scenarios']['observed_public']
+        stress = report['value_scenarios']['one_full_slot_stress_diagnostic']
+        self.assertEqual(observed['rival_extra_units'], 0)
+        self.assertEqual(stress['rival_extra_units'], 100)
+        self.assertEqual(stress['admission_weight'], 0)
+        self.assertEqual(report['product_value_scenario'], observed['marginal_product_value'])
+        self.assertGreater(report['product_value_scenario'], report['input_opportunity_cost'])
+
+    def test_three_distinct_productive_uses_can_reserve_three_units(self):
         self.farm['tiles'][4][1] = deepcopy(self.farm['tiles'][4][2])
         self.route[466]['hands'][0] = ['WEST']
         self.route[467]['hands'][0] = ['FERTILIZE']
-        self.unchanged('reservation_exceeds_bounded_units')
+        result, report = self.propose()
+        self.assertTrue(report['changed'])
+        self.assertEqual(result['market'], [['SELL', 'FERTILIZER', 6]])
+        self.assertEqual(report['withheld_units'], 3)
+        self.assertEqual(report['reservation_bound'], 3)
+        self.assertEqual(report['reservation_basis'], 'distinct_productive_obligations_and_market_slots')
+
+    def test_engine_market_slot_bound_still_caps_retention(self):
+        self.farm['tiles'][4][1] = deepcopy(self.farm['tiles'][4][2])
+        self.route[466]['hands'][0] = ['WEST']
+        self.route[467]['hands'][0] = ['FERTILIZE']
+        self.unchanged('reservation_exceeds_obligation_bound',
+                       config={'maxMarketOrdersPerTurn': 2})
 
     def test_no_obsolete_fertility_or_duplicate_service(self):
         self.farm['tiles'][4][3]['fertilized_until_day'] = 21
@@ -222,13 +252,13 @@ class OperatingStockTests(unittest.TestCase):
         result, report = self.propose()
         self.assertTrue(report['changed'])
 
-    def test_peer_boundary_hire_counterexample_is_explicitly_rejected(self):
+    def test_sale_cannot_be_counted_to_fund_a_more_valuable_hire(self):
         self.farm['money'] = 54
         self.farm['hires_today'] = 9
         self.obs['market']['inventory']['FERTILIZER'] = 11000
         self.route[470]['market'] = [['HIRE']]
         self.assertEqual(m._hire_cost(9), 55)
-        self.unchanged('intervening_capital_commitment')
+        self.unchanged('committed_liquidity_shortfall')
 
     def test_glutted_product_and_exhausted_crop_do_not_hold_inputs(self):
         self.obs['market']['inventory']['STRAWBERRY'] = 11000
