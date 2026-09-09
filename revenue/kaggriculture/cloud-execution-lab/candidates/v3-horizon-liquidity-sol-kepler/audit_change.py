@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Fail-closed provenance audit for the V1 -> V2/current carry-value seam."""
+"""Fail-closed custody audit for the historical carry seam and V3 target."""
 from __future__ import annotations
 
 import argparse
@@ -11,12 +11,9 @@ from typing import Any
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
-V1 = LAB / "runtime/variants/v1/scheduler.py"
-V2 = LAB / "runtime/variants/v2/scheduler.py"
-CURRENT = LAB / "scheduler.py"
-ABLATION = HERE / "liquidity_haircut.py"
 V1_NEEDLE = "carry=.95*self.single(inv,remaining)[0]"
 FULL_NEEDLE = "carry=float(self.single(inv,remaining)[0])"
+SELECTED_IMPORT = "from selected_sell_core import optimize_lot, joint_plan_metrics, shared_slot_ledger"
 
 
 def sha256_file(path: Path) -> str:
@@ -27,17 +24,20 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _score_ast(path: Path) -> str:
+def _method_ast(path: Path, class_name: str, method_name: str) -> str:
     tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
     matches = [
         item
-        for node in tree.body
-        if isinstance(node, ast.ClassDef) and node.name == "MarketPath"
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ClassDef) and node.name == class_name
         for item in node.body
-        if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)) and item.name == "score"
+        if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef))
+        and item.name == method_name
     ]
     if len(matches) != 1:
-        raise RuntimeError(f"expected one MarketPath.score in {path}; found {len(matches)}")
+        raise RuntimeError(
+            f"expected one {class_name}.{method_name} in {path}; found {len(matches)}"
+        )
     return ast.dump(matches[0], include_attributes=False)
 
 
@@ -45,7 +45,9 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
     paths = {
         "v1": lab / "runtime/variants/v1/scheduler.py",
         "v2": lab / "runtime/variants/v2/scheduler.py",
-        "current": lab / "scheduler.py",
+        "current_scheduler": lab / "scheduler.py",
+        "selected_sell_core": lab / "selected_sell_core.py",
+        "frozen_selected": lab / "frozen_selected.py",
         "ablation": HERE / "liquidity_haircut.py",
         "candidate": HERE / "candidate.py",
     }
@@ -59,24 +61,47 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         "v1_has_no_full_carry": FULL_NEEDLE not in text["v1"],
         "v2_has_one_full_carry": text["v2"].count(FULL_NEEDLE) == 1,
         "v2_has_no_095_carry": V1_NEEDLE not in text["v2"],
-        "current_has_one_full_carry": text["current"].count(FULL_NEEDLE) == 1,
-        "current_has_no_095_carry": V1_NEEDLE not in text["current"],
-        "v2_current_score_ast_equal": _score_ast(paths["v2"]) == _score_ast(paths["current"]),
-        "ablation_declares_095": "DEFAULT_CARRY_DISCOUNT = 0.95" in text["ablation"],
+        "current_scheduler_has_one_full_carry": (
+            text["current_scheduler"].count(FULL_NEEDLE) == 1
+        ),
+        "selected_core_has_one_full_carry": (
+            text["selected_sell_core"].count(FULL_NEEDLE) == 1
+        ),
+        "selected_core_has_no_095_carry": V1_NEEDLE not in text["selected_sell_core"],
+        "frozen_selector_imports_selected_optimizer_once": (
+            text["frozen_selected"].count(SELECTED_IMPORT) == 1
+        ),
+        "frozen_selector_calls_selected_optimizer_once": (
+            text["frozen_selected"].count("plan,info=optimize_lot(") == 1
+        ),
+        "ablation_wraps_base_score_without_reimplementing_loop": (
+            "super().score(" in text["ablation"]
+            and "for step in range(" not in text["ablation"]
+            and "DEFAULT_CARRY_DISCOUNT = 0.95" in text["ablation"]
+        ),
+        "candidate_targets_selected_core_not_scheduler": (
+            "import selected_sell_core" in text["candidate"]
+            and "install(selected_sell_core)" in text["candidate"]
+            and "install(scheduler)" not in text["candidate"]
+        ),
         "candidate_delegates_canonical_agent": (
             "return _CANONICAL.agent(observation, configuration)" in text["candidate"]
             and "instance.act(observation" not in text["candidate"]
         ),
+        "selected_score_ast_is_present": bool(
+            _method_ast(paths["selected_sell_core"], "MarketPath", "score")
+        ),
     }
     report = {
-        "schema_version": 1,
+        "schema_version": 2,
         "operation": "titan-v3-horizon-liquidity-20260909-sol-kepler-01",
         "decision": "PASS" if all(checks.values()) else "FAIL",
         "claim": {
-            "v1_artificial_horizon_carry_factor": 0.95,
-            "v2_artificial_horizon_carry_factor": 1.0,
-            "current_artificial_horizon_carry_factor": 1.0,
-            "candidate_artificial_horizon_carry_factor": 0.95,
+            "historical_v1_artificial_horizon_carry_factor": 0.95,
+            "historical_v2_artificial_horizon_carry_factor": 1.0,
+            "current_selected_optimizer_carry_factor": 1.0,
+            "candidate_selected_optimizer_carry_factor": 0.95,
+            "target": "selected_sell_core.MarketPath.score",
             "canonical_files_modified": False,
         },
         "checks": checks,
