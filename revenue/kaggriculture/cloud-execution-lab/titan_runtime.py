@@ -268,6 +268,10 @@ class TitanAgent:
         post = self._selected_snapshot(obs, returned) if self.history is not None else None
         if self.spatial is not None:
             returned=self.spatial.guard_crop_returned(obs,returned,post)
+        # This small stock/position calculation is the final market guard, so
+        # crop/idle composition and a completed selected fallback cannot undo
+        # its same-slot reservation. It never executes a producer or game.
+        returned = self._feed_stock_selected(obs, cfg or {}, returned)
         if self.quadrant is not None:
             self.quadrant.finish(obs, returned)
             self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
@@ -339,6 +343,28 @@ class TitanAgent:
             m, obs, cfg, selected, farm, private, self.controller.R[self.controller.cur],
             [item[0] for item in parent.DECISIONS])
         self.diagnostics['operating_stock'] = report
+        return result
+
+    def _feed_stock_selected(self, obs, cfg, selected):
+        if (not self.features.operating_stock or self.features.consumer != 'frozen'
+                or self.features.terminal_route or not any(
+                    o and o[:2] == ['SELL', 'WHEAT'] for o in selected.get('market', [])[:10])):
+            return selected
+        if self.spatial is not None and self.spatial._crop_repair is not None:
+            self.diagnostics['feed_stock'] = {'changed': False, 'certified': False,
+                                              'reason': 'crop_input_repair_owns_current_queue'}
+            return selected
+        post = self._selected_snapshot(obs, selected)
+        if post is None:
+            self.diagnostics['feed_stock'] = {'changed': False, 'certified': False,
+                                              'reason': 'no_matching_completed_unit_snapshot'}
+            return selected
+        from operating_stock import protect_feed_stock
+        from scheduler import m, parent
+        result, report = protect_feed_stock(
+            m, obs, cfg, selected, post['farms'][int(obs['player'])], post['private'],
+            self.controller.R[self.controller.cur], [item[0] for item in parent.DECISIONS])
+        self.diagnostics['feed_stock'] = report
         return result
 
     def _redundant_hire_selected(self, obs, cfg, selected):

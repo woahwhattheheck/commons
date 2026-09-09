@@ -1,5 +1,29 @@
 # Current TITAN release
 
+The active operating-stock consumer now also preserves up to two owned WHEAT
+units for reachable feeds of animals already on the farm. This uses the final
+selected action and its matching completed unit snapshot. It changes only
+WHEAT sale quantities, preserves empty and duplicate market slots, and leaves
+every worker action and other order in place. The existing `operating_stock`
+setting remains enabled; there is no second producer or new feature selector.
+
+The bounded service window uses actual carried inputs, the full shared pickup
+prefix, actual worker positions and prepaid hires and purchases. It crosses a
+daily reset only from the current day-close observation. Requested purchases
+supply no wheat, future sales supply no cash, and unresolved branch boundaries
+retain the inherited action. Earlier competing pickups must consume their full
+requests in useful feeds, so retained stock cannot return later as unused wheat
+and displace another delivery. Current market prefixes, all current EOD carry
+and future physical arrivals keep their shared capacity. Active crop-repair
+receipt ownership takes priority at the final action boundary.
+
+Twenty-four feed-stock contracts and the existing affected stock, crop, idle,
+joint seller, pressure and route contracts pass:168 source methods. Six
+independent original own-unit observations produce unchanged actions. These
+checks establish the bounded mechanism and compatibility, not a game score
+gain. The missing-sheep acquisition/route repair remains separate unfinished
+work; retaining existing feed is not a claim that this loss has been repaired.
+
 The existing frozen seller can now compose two ordinary per-product plans among
 its four strongest eligible lots. This integrates E05 PR11053 into the current
 package with additional funding, shared-capacity and full-queue admission.

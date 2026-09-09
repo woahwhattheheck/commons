@@ -125,10 +125,11 @@
     {
       "component": "Observed operating-stock obligations",
       "source_pin": "Current source manifest operating_stock.py",
-      "callsite": "TitanAgent._operating_stock_selected after market_pressure; completed FrozenSelected unit snapshot",
+      "callsite": "TitanAgent._operating_stock_selected and final _feed_stock_selected; matching completed FrozenSelected unit snapshot",
       "enabled": true,
-      "consumed_result": "29 focused source contracts, including production-day WATER and funded post-reset worker availability. At most two withheld units, incremental product valuation, full same-day funding and a 100-times-input cash cushion. No new game panel or measured score effect.",
-      "role": "active bounded operating-stock reservation; canonical operating_stock=true"
+      "consumed_result": "53 stock contracts: 29 existing fertilizer plus 24 feed-stock. At most two owned WHEAT units for reachable existing-animal feeds, actual carry/shared pickup prefixes, prepaid boundary capital, physical room and producer receipt ownership. Six independent original own-unit observations unchanged. No new game panel or measured score effect.",
+      "role": "active bounded operating-stock reservation; canonical operating_stock=true",
+      "wheat_scope": "Same-day service window, or next-day service only from current day close. No requested wheat receipt or future sale cash credit; prior pickups must fully consume their requested input. Empty/duplicate slots and all worker actions preserved."
     },
     {
       "component": "Owned idle fertilizer recovery",
@@ -341,16 +342,16 @@
   },
   "game_evidence_for_this_archive": {
     "new_full_games": 0,
-    "scope": "Bounded joint seller composed with enabled crop release, idle fertilizer, operating stock and market pressure. Earlier panel/source versions remain separately attributed.",
+    "scope": "Bounded feed-stock preservation composed with enabled joint seller, crop release, idle fertilizer, operating stock and market pressure. Earlier games remain separately attributed.",
     "evidence": "runtime/integrated-selected/CURRENT-TESTS.json",
     "historical_results_apply": false
   },
   "checkpoint": {
-    "operation": "titan-v25-joint-seller-and-crop-release-20260909",
+    "operation": "titan-v25-feed-stock-20260909",
     "runtime_entrypoint": "main.py::agent",
     "owner_authorization": "Integrate warranted observed-game and source improvements in one canonical TITAN; focused correctness/funding/shared-capacity checks; no new game panels or Kaggle submission in this task.",
     "submission_status": "current_v25_not_submitted",
-    "stage": "bounded_joint_sales_and_crop_release_enabled",
+    "stage": "bounded_feed_stock_joint_sales_and_crop_release_enabled",
     "playing_strength": "not_measured_for_changed_bytes"
   },
   "frozen_v2_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",

@@ -124,7 +124,8 @@ class FrozenSelected(SellScheduler):
         farm,private=post_units(obs,base,config)
         if (getattr(self, 'capture_post_units', False)
                 or (getattr(self, 'capture_operating_stock', False)
-                    and any(o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER']
+                    and any(o and len(o) > 2 and o[0] == 'SELL'
+                            and o[1] in ('FERTILIZER', 'WHEAT')
                             for o in base.get('market', [])))):
             self.selected_post_units = (copy.deepcopy(farm), copy.deepcopy(private))
             self.selected_post_units_binding = (
