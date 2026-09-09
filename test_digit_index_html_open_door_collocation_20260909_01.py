@@ -1,4 +1,4 @@
-"""PR 11473 repair: index DIGIT note must not collocate gate+seat."""
+"""PR 11473 repair: index DIGIT note must not collocate the admission-phrase pair."""
 from pathlib import Path
 import unittest
 import open_door_guard as guard
