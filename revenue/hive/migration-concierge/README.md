@@ -77,3 +77,13 @@ The 27-method suite exercises real SQLite writes, source files, exact attachment
 The browser interface was additionally rendered and interacted with using substituted example API responses, including a 390-pixel mobile viewport. This is a separate DOM check, not a browser-to-server integration claim: the installed browser policy blocked direct local HTTP navigation. The actual HTTP backend is covered by the independent live-server test above.
 
 The next customer step is to map one consenting customer's exported customer/task/file sample, review duplicate decisions, and run the trial against a fresh destination before cutover. A live source-system adapter or another destination requires a separate integration; no provider action is included here.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
