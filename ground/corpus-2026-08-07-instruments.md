@@ -44,3 +44,15 @@ The named corpus is not on HEAD. Research did not proceed.
 No invented instrument list. No host-script substitute (`LIVE_INSTRUMENTS.md`, `INSTRUMENTS_THIS_HOUR.md`, `pfc_*.py` are outside this window). No rewrite of ingest. `commons.mno` not touched.
 
 Receipt: [fret-corpus-instruments-20260819-01](../p/fret-corpus-instruments-20260819-01.md)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-19 — do not remint.
