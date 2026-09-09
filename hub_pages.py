@@ -990,9 +990,7 @@ def rebuild_archive(mod, rows):
         if mid in hidden:
             continue
         kept += 1
-        day = (ts or "")[:10]
-        if len(day) < 10:
-            day = "undated"
+        day = chunk_board.day_of({"ts": ts})
         days.setdefault(day, []).append((ts, meta, body))
     ddir = os.path.join(mod.ROOT, "d")
     os.makedirs(ddir, exist_ok=True)
