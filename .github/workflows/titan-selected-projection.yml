@@ -89,6 +89,7 @@ jobs:
             /revenue/kaggriculture/cloud-market-game-theory/solver.py
             /revenue/kaggriculture/cloud-full-support/
             /revenue/kaggriculture/cloud-weighted-plan-selector/
+            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/
             /revenue/kaggriculture/cloud-plan-continuation/continuation.py
             /revenue/kaggriculture/cloud-observed-fills/observed_fills.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/recourse.py
@@ -126,6 +127,7 @@ jobs:
                    'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
                    'cloud-economic-stress', 'cloud-runtime-pulse', 'cloud-full-support',
                    'cloud-weighted-plan-selector',
+                   'cloud-opponent-league/lark-responsive',
                    'cloud-plan-continuation', 'cloud-observed-fills')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
           paths.append(root/'cloud-market-game-theory/selector.py')
