@@ -1,0 +1,69 @@
+name: titan-v3-evidence-custody-bootstrap
+
+on:
+  push:
+    branches:
+      - chatgpt/titan-v3-evidence-custody-20260909-02
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-evidence-custody-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify and unpack the exact staged payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .titan-bootstrap/chunk-* | base64 --decode > /tmp/titan-v3-evidence-custody.tgz
+          echo "dc6326d7b8fb1e3882e51d4572a12950c3b50b6a9c15cfaed7eba55e8f7b9f01  /tmp/titan-v3-evidence-custody.tgz" | sha256sum --check --strict
+          tar -xzf /tmp/titan-v3-evidence-custody.tgz
+          rm -rf .titan-bootstrap .github/workflows/titan-v3-evidence-custody-bootstrap.yml
+      - name: Verify exact package before publication
+        working-directory: revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: ./run_tests.sh
+      - name: Publish one tested payload commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "ANVIL-VM"
+          git config user.email "anvil-vm@commons.local"
+          git add -A
+          git diff --cached --check
+          python3 - <<'PY'
+          import subprocess
+          expected = {
+              '.github/workflows/titan-v3-evidence-custody.yml',
+              'p/anvil-vm-titan-v3-evidence-custody-20260909-02.md',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/.gitignore',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/THREAT-MODEL.md',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/custody.py',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/dual_receipt.py',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/run_tests.sh',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/test_custody.py',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/test_dual_receipt.py',
+              'revenue/kaggriculture/cloud-execution-lab/titan-v3-evidence-custody/test_support.py',
+          }
+          observed = set(subprocess.check_output(
+              ['git', 'diff', '--cached', '--name-only', 'HEAD^'],
+              text=True,
+          ).splitlines())
+          if observed != expected:
+              raise SystemExit(f'exact path gate failed: missing={sorted(expected-observed)}, extra={sorted(observed-expected)}')
+          PY
+          git commit -m "titan-v3: bind dual-predecessor evidence to observed bytes"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
