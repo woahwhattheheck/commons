@@ -6,7 +6,7 @@ Operation: `titan-v3-paired-game-gate-20260909-sol-argus-02`
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
-  python3 -m unittest -v test_gate.py
+  python3 -m unittest -v test_validation.py test_policy_cli.py
 
 Ran 23 tests
 OK
