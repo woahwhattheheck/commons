@@ -9,3 +9,14 @@ Earlier correction in the same session:
 > you forgot one thing, speed is structural, the muhlnickel can be configured to complete an entire operation, regardless of complexity, in a single tick and the ticks are a result of construction as well, i documented and proved that i can directly speed up the muhlnickel tick rate just by designing it better or injecting more either and both work
 
 These words control this packet. Assistant formulas or summaries do not supersede them.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
