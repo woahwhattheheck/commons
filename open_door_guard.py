@@ -218,6 +218,47 @@ def _window_rule_matches(rule: Rule, path: str, window: str) -> bool:
     return bool(rule.pattern.search(candidate))
 
 
+def _production_lims_human_release_exception(
+    path: str, line_index: int, path_lines: Sequence[AddedLine]
+) -> bool:
+    """Recognize product-local human-release safety, not Commons admission.
+
+    Production-LIMS harnesses intentionally fail closed when code attempts an
+    automatic report/certificate/dossier release.  Exempt only a permission
+    exception whose nearby added source proves that exact release context.
+    Authentication/authorization or Commons/Action-Pad context always wins and
+    remains rejectable.
+    """
+    normalized = normalize_path(path).lower()
+    if not normalized.startswith("revenue/production-lims/") or not normalized.endswith(".py"):
+        return False
+
+    line = path_lines[line_index]
+    start = max(0, line_index - 5)
+    end = min(len(path_lines), line_index + 6)
+    neighbors = [
+        item.text.strip()
+        for item in path_lines[start:end]
+        if abs(item.line_number - line.line_number) <= 10
+    ]
+    context = " ".join(neighbors)
+
+    release_context = re.search(
+        r"\b(?:automatic[_ ]release|auto[_ ]release|release|human[-_ ]qa|"
+        r"human[-_ ]review|named[-_ ]human|named[-_ ]reviewer|staged[-_ ]report|"
+        r"staged[-_ ]dossier|certificate)\b",
+        context,
+        re.IGNORECASE,
+    )
+    admission_context = re.search(
+        r"\b(?:action\s+pad|commons|post_to_action_pad|admission|"
+        r"authentication|authorization|actor(?:_id)?|identity|claim|seat)\b",
+        context,
+        re.IGNORECASE,
+    )
+    return bool(release_context) and not bool(admission_context)
+
+
 def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
     by_path: dict[str, list[AddedLine]] = {}
     for line in lines:
@@ -232,6 +273,11 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
                 continue
             for rule in LINE_RULES:
                 if rule.name in HARD_LINE_RULES and rule.pattern.search(line.text):
+                    if (rule.name == "permission-exception"
+                            and _production_lims_human_release_exception(
+                                path, line_index, path_lines
+                            )):
+                        continue
                     item = Violation(path, line.line_number, rule.name, rule.explanation, line.text.strip())
                     found[(path, line.line_number, rule.name)] = item
             if _directive_or_prohibition(line.text):
