@@ -16,7 +16,11 @@ The custody-bound gate therefore separates two statements:
    inherited complete-grid and numeric-closure rules. Its bytes may equal the
    other predecessor panel when the measured outcomes are genuinely identical.
 
+Reserialization remains an alias: when file bytes differ but the canonical
+score matrix (including signed-zero normalization from #11760) matches, the
+gate still returns `INVALID`. That preserves #11743. This change removes only
+the raw outcome-byte inequality veto.
+
 The candidate artifact and candidate panel remain shared exactly across both
-comparisons. Candidate/predecessor artifact aliasing remains invalid. This
-change removes only the outcome-byte inequality veto; it does not relax closure,
-receipt, grid, policy, candidate, or single-gate custody.
+comparisons. Candidate/predecessor artifact aliasing remains invalid. Closure,
+receipt, grid, policy, candidate, and single-gate custody are unchanged.

@@ -5,15 +5,17 @@ on:
     paths:
       - '.github/workflows/titan-v3-dual-predecessor-equal-results-sol-trident.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/dual_predecessor_gate.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/_dual_predecessor_gate_core.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_dual_predecessor_gate.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_equal_result_identity.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/DUAL-PREDECESSOR.md'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/PANEL-IDENTITY.md'
   pull_request:
     paths:
       - '.github/workflows/titan-v3-dual-predecessor-equal-results-sol-trident.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/dual_predecessor_gate.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/_dual_predecessor_gate_core.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_dual_predecessor_gate.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_equal_result_identity.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/DUAL-PREDECESSOR.md'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/PANEL-IDENTITY.md'
   workflow_dispatch:
 
@@ -60,25 +62,26 @@ jobs:
             test_dual_predecessor_gate.py \
             test_equal_result_identity.py
           python -m py_compile \
-            _dual_predecessor_gate_core.py \
             dual_predecessor_gate.py \
+            test_dual_predecessor_gate.py \
             test_equal_result_identity.py
 
-      - name: Verify wrapper changes only the intended theorem
+      - name: Verify equal-byte theorem without dropping reserialization alias
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import ast
           from pathlib import Path
 
           root = Path('revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate')
-          wrapper = ast.parse((root / 'dual_predecessor_gate.py').read_text(encoding='utf-8'))
-          names = {node.name for node in wrapper.body if isinstance(node, ast.FunctionDef)}
-          if names != {'_validate_cross_comparison'}:
-              raise SystemExit(f'unexpected wrapper function surface: {sorted(names)}')
           text = (root / 'dual_predecessor_gate.py').read_text(encoding='utf-8')
-          if 'baseline_games_sha256' in text or 'panels must be byte-distinct' in text:
+          if 'panels must be byte-distinct' in text or 'drift["baseline_games_sha256"]' in text:
               raise SystemExit('unsound result-byte inequality survived in public gate')
-          print('PASS: only cross-comparison theorem is overridden')
+          if 'semantically identical' not in text:
+              raise SystemExit('reserialization semantic alias check missing')
+          if 'first_baseline_games != second_baseline_games' not in text:
+              raise SystemExit('semantic alias check must require distinct file bytes')
+          if (root / '_dual_predecessor_gate_core.py').exists():
+              raise SystemExit('frozen pre-11743 core must not land; it erases later hardening')
+          print('PASS: equal-byte admission composed with reserialization alias rejection')
           PY
