@@ -137,8 +137,27 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
     for plan in sorted(candidates):
         if sum(q for _,q in plan)>quantity:continue
         if dict(plan).get(now,0)<minimum_now:continue
-        if capacity_ok and not capacity_ok(plan):continue
-        scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]
+        # With a feasible incumbent, a nonpositive no-rival difference cannot
+        # meet the existing strict all-scenario improvement rule. Reject that
+        # economic loser before the more expensive physical ledger callback.
+        # The forced-feasibility path keeps the original evaluation order.
+        if reference_feasible:
+            first_score=model.score(plan,quantity,0,'paired',end==last)
+            if first_score[0]-baseline[0][0] <= 0:
+                continue
+            if capacity_ok and not capacity_ok(plan):continue
+            scores=[first_score]
+            competitive=True
+            for (_,r,a),b in zip(scenarios[1:],baseline[1:]):
+                score=model.score(plan,quantity,r,a,end==last)
+                if score[0]-b[0] <= 0:
+                    competitive=False
+                    break
+                scores.append(score)
+            if not competitive:continue
+        else:
+            if capacity_ok and not capacity_ok(plan):continue
+            scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]
         deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]
         key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))
         # Require improvement in every explicit scenario; ties preserve reference.
