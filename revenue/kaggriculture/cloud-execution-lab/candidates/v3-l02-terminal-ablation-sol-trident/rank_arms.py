@@ -42,6 +42,17 @@ def _sha256(value: Any, name: str) -> str:
     return value
 
 
+def _sha256_map(value: Any, name: str) -> dict[str, str]:
+    if not isinstance(value, dict) or not value:
+        raise ValueError(f"invalid SHA-256 map for {name}")
+    out: dict[str, str] = {}
+    for path, digest in value.items():
+        if not isinstance(path, str) or not path or path in out:
+            raise ValueError(f"invalid path in SHA-256 map for {name}")
+        out[path] = _sha256(digest, f"{name}:{path}")
+    return dict(sorted(out.items()))
+
+
 def _integer(value: Any, name: str, *, minimum: int = 0) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
         raise ValueError(f"invalid integer for {name}")
@@ -142,7 +153,8 @@ def _execution_context(report: Mapping[str, Any], arm: str, expected: int,
             observed_agent = (row.get("candidate") or {}).get("sha256")
             if observed_agent != expected_agent:
                 raise ValueError(f"agent digest drift in {gate_name} for arm {arm}")
-            engine = _sha256(row.get("engine_sha256"), f"{arm}:{gate_name}:{index}:engine")
+            engine = _sha256_map(row.get("engine_sha256"),
+                                 f"{arm}:{gate_name}:{index}:engine")
             loader = _sha256(row.get("loader_sha256"), f"{arm}:{gate_name}:{index}:loader")
             evaluator = _sha256(row.get("evaluator_sha256"),
                                 f"{arm}:{gate_name}:{index}:evaluator")
