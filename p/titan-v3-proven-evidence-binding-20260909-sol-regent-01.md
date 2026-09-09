@@ -29,9 +29,9 @@ This child adds a fail-closed evidence contract:
    variant, and both-seat identities; reject bool seats, extras, duplicates,
    missing cells, incomplete games, wrong episode lengths, and score/seat or
    outcome inconsistencies.
-5. Recompute W/T/L and reconcile each ledger's summary.
+5. Recompute W/T/L and reconcile each ledger's summary with exact integer types.
 6. Recompute every held-out baseline/candidate cash pair and reconcile the
-   retained paired-outcome table.
+   retained paired-outcome table with exact boolean/number types.
 7. Emit the derived evidence in the materialization receipt instead of the
    handwritten score constants.
 
@@ -56,14 +56,15 @@ Local reconstruction of the exact changed modules plus synthetic fixtures:
 ```text
 python -m compileall -q .
 python -m unittest discover -p 'test_*.py' -v
-25 tests in 0.158s — OK
+27 tests in 0.171s — OK
 ```
 
-The added attacks rehash their mutated ledgers and update the manifest/pins, so
-they prove the semantic checks rather than merely exercising the outer digest.
-The repository workflow additionally runs the materializer against the real
-source archive and real retained ledgers on Python 3.10–3.13, and asserts the
-exact derived boundary above.
+The 12 evidence attacks rehash their mutated ledgers and update the
+manifest/pins, so they prove the semantic checks rather than merely exercising
+the outer digest. They include Python bool/int type-confusion witnesses for both
+summary counts and paired `flipped` flags. The repository workflow additionally
+runs the materializer against the real source archive and real retained ledgers
+on Python 3.10–3.13, and asserts the exact derived boundary above.
 
 ## Review disposition
 
