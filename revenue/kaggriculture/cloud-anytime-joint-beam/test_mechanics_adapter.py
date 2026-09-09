@@ -85,11 +85,12 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
         else:
             self.assertEqual(canonical, result.actions)
 
-    def test_route_critical_inventory_transfer_is_canonical_only(self):
+    def test_existing_selected_work_is_canonical_only(self):
         state = fixture(1)
-        # Candidate generation must not reinterpret destination-specific
-        # logistics using only aggregate inventory economics.
-        for action in (["PICKUP", "WHEAT", 1], ["DROP"], ["PLACE", "WHEAT", 1]):
+        # The generic one-stage score cannot safely reinterpret downstream route
+        # or production intent. Only canonical PASS gets an alternative family.
+        for action in (["WEST"], ["HARVEST"], ["PICKUP", "WHEAT", 1],
+                       ["DROP"], ["PLACE", "WHEAT", 1]):
             self.assertEqual((), tuple(bounded_worker_candidates(self.m, state, 0, action)))
 
     def test_candidate_family_is_bounded_and_deterministic(self):

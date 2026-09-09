@@ -137,6 +137,23 @@ class BeamTests(unittest.TestCase):
         self.assertEqual(["SOUTH"], changed["farmer"])
         self.assertEqual([["WEST"], ["PASS"]], changed["hands"])
 
+    def test_completed_canonical_choice_preserves_exact_action_shape(self):
+        base = {
+            "farmer": ["NORTH"], "hands": [],
+            "market": [["SELL", "WHEAT", 2]], "hire": 0, "buyLand": 0,
+        }
+        proposed, result = propose_worker_action(
+            base, self.base(3), lambda *_: (["PASS"],),
+            lambda state, idx, action: copy.deepcopy(state),
+            lambda state, actions: 0,
+            hand_count=3,
+            config=BeamConfig(budget_ns=1_000_000_000),
+            now_ns=FakeClock(range(1000)),
+        )
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(base, proposed)
+        self.assertEqual([], proposed["hands"])
+
     def test_full_action_fallback_is_byte_semantic_identity(self):
         base = {
             "farmer": ["NORTH"], "hands": [["PASS"]],

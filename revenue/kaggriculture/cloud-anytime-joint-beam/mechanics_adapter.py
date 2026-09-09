@@ -12,11 +12,10 @@ from typing import Any, Callable, Iterable, Mapping
 
 from joint_action_beam import Action, State
 
-# Destination-specific logistics carry downstream route obligations that the
-# short-horizon aggregate scorer cannot infer safely. The core beam still
-# inserts canonical first; returning no alternatives here preserves the exact
-# selected transfer until a caller supplies a destination-aware obligation model.
-ROUTE_CRITICAL_OPS = frozenset({'PICKUP', 'DROP', 'PLACE'})
+# The generic short-horizon scorer cannot infer the canonical controller's
+# downstream route/production intent. The core beam remains fully general, but
+# this default mechanics provider is therefore PASS-fill only: existing selected
+# work is immutable unless a caller supplies an explicit downstream-aware model.
 
 
 @dataclass(frozen=True)
@@ -89,14 +88,14 @@ def bounded_worker_candidates(mechanics: Any, state: State, idx: int, canonical:
     The beam core inserts canonical first and caps the family. Exact mechanics
     transition remains the authority for legality and shared-resource conflicts.
 
-    PICKUP/DROP/PLACE are intentionally canonical-only here. Their value is in
-    *where* inventory is staged for a later route, while the generic score only
-    sees aggregate holdings. Replacing them under that coarse score caused an
-    observed day-boundary WHEAT pickup to be traded for fertilizer collection,
-    breaking downstream production. Callers with an explicit destination-aware
-    obligation model may provide their own candidate provider instead.
+    Existing non-PASS selected actions are canonical-only. In official-game
+    diagnosis, changing route moves, HARVEST, and destination-specific PICKUPs
+    under this coarse one-stage score caused large downstream regressions. The
+    safe default only searches a worker the canonical controller left idle.
+    Callers with an explicit downstream-aware route/obligation model may provide
+    their own candidate provider to search non-PASS actions through the same core.
     """
-    if isinstance(canonical, list) and canonical and canonical[0] in ROUTE_CRITICAL_OPS:
+    if isinstance(canonical, list) and canonical and canonical[0] != "PASS":
         return ()
     farm = state["farm"]
     private = state["private"]

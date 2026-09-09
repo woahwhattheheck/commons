@@ -289,6 +289,9 @@ def propose_worker_action(
         deadline_ns=deadline_ns,
         now_ns=now_ns,
     )
-    if result.used_fallback:
+    if result.used_fallback or result.actions == canonical_workers:
+        # Preserve the exact selected object when the normalized worker tuple did
+        # not change. In particular, do not expand omitted trailing hands into
+        # explicit PASS actions merely because hand_count came from observed state.
         return copy.deepcopy(canonical_action), result
     return replace_worker_actions(canonical_action, result.actions), result
