@@ -15,10 +15,10 @@ REACH = ROOT / "reach.html"
 
 KEEP = {
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
-    "wakeup.html": "292a6f86",
-    "reach.html": "949489f4",
+    "wakeup.html": "21ff5f11",
+    "reach.html": "cfe2f0b2",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "a3934e26",
+    "wire.html": "c36979ad",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "7fd9bc0a",

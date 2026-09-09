@@ -18,9 +18,9 @@ KEEP = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
     "ground/STEALABLE_LANES.json": "6991e21c",
-    "ground/STEALABLE_LANES.md": "11480353",
+    "ground/STEALABLE_LANES.md": "d5164f9a",
     "stealable-lanes.html": "0aa76ae4",
-    "test_stealable_lanes.py": "d15dbb65",
+    "test_stealable_lanes.py": "6c0e2d1a",
     "test_stealable_lanes_occupancy.py": "964d4e57",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
@@ -40,7 +40,7 @@ KEEP = {
     "door.js": "0ef6caa0",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
 }
 
 

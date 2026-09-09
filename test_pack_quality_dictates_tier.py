@@ -17,7 +17,7 @@ DOOR = ROOT / "pack-quality-tier.html"
 KEEP = {
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a375adf9",
-    "keep-sell.html": "f6177710",
+    "keep-sell.html": "f226b902",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
