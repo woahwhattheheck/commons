@@ -12,6 +12,8 @@ import argparse
 import csv
 import io
 import json
+import sqlite3
+import threading
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -36,9 +38,17 @@ class OperatorApp:
 
     def __init__(self, db_path: str | Path):
         self.desk = desk.OutboundDesk(db_path)
+        path = self.desk.path
+        self.desk.db.close()
+        self.desk.db = sqlite3.connect(path, check_same_thread=False, timeout=30)
+        self.desk.db.row_factory = sqlite3.Row
+        self.desk.db.execute("PRAGMA foreign_keys=ON")
+        self.desk.db.execute("PRAGMA journal_mode=WAL")
+        self._lock = threading.Lock()
 
     def close(self) -> None:
-        self.desk.close()
+        with self._lock:
+            self.desk.close()
 
     def __enter__(self) -> "OperatorApp":
         return self
@@ -47,6 +57,10 @@ class OperatorApp:
         self.close()
 
     def state(self) -> dict[str, Any]:
+        with self._lock:
+            return self._state_locked()
+
+    def _state_locked(self) -> dict[str, Any]:
         db = self.desk.db
         campaigns = [
             dict(row)
@@ -118,57 +132,69 @@ class OperatorApp:
         action = _required(payload, "action")
         operation_id = _required(payload, "operation_id")
 
-        if action == "campaign":
-            return self.desk.create_campaign(
-                campaign_id=_required(payload, "campaign_id"),
-                customer_name=_required(payload, "customer_name"),
-                offer=_required(payload, "offer"),
-                source_policy=_required(payload, "source_policy"),
-                operation_id=operation_id,
-            )
-        if action == "prospect":
-            return self.desk.add_prospect(
-                campaign_id=_required(payload, "campaign_id"),
-                prospect_id=_required(payload, "prospect_id"),
-                organization=_required(payload, "organization"),
-                contact_name=_required(payload, "contact_name"),
-                route_ref=_required(payload, "route_ref"),
-                source_ref=_required(payload, "source_ref"),
-                lawful_source_note=_required(payload, "lawful_source_note"),
-                relevance_note=_required(payload, "relevance_note"),
-                operation_id=operation_id,
-            )
-        if action == "draft":
-            return self.desk.create_draft(
-                prospect_id=_required(payload, "prospect_id"),
-                operation_id=operation_id,
-            )
-        if action == "reply":
-            return self.desk.record_reply(
-                prospect_id=_required(payload, "prospect_id"),
-                reply_id=_required(payload, "reply_id"),
-                kind=_required(payload, "kind"),
-                note=_required(payload, "note"),
-                received_at=_required(payload, "received_at"),
-                operation_id=operation_id,
-            )
-        if action == "slot":
-            return self.desk.add_slot(
-                slot_id=_required(payload, "slot_id"),
-                starts_at=_required(payload, "starts_at"),
-                ends_at=_required(payload, "ends_at"),
-                operation_id=operation_id,
-            )
-        if action == "book":
-            return self.desk.book_slot(
-                prospect_id=_required(payload, "prospect_id"),
-                slot_id=_required(payload, "slot_id"),
-                operation_id=operation_id,
-            )
-        raise desk.DeskError(f"unknown action: {action}")
+        with self._lock:
+            if action == "campaign":
+                return self.desk.create_campaign(
+                    campaign_id=_required(payload, "campaign_id"),
+                    customer_name=_required(payload, "customer_name"),
+                    offer=_required(payload, "offer"),
+                    source_policy=_required(payload, "source_policy"),
+                    operation_id=operation_id,
+                )
+            if action == "prospect":
+                return self.desk.add_prospect(
+                    campaign_id=_required(payload, "campaign_id"),
+                    prospect_id=_required(payload, "prospect_id"),
+                    organization=_required(payload, "organization"),
+                    contact_name=_required(payload, "contact_name"),
+                    route_ref=_required(payload, "route_ref"),
+                    source_ref=_required(payload, "source_ref"),
+                    lawful_source_note=_required(payload, "lawful_source_note"),
+                    relevance_note=_required(payload, "relevance_note"),
+                    operation_id=operation_id,
+                )
+            if action == "draft":
+                return self.desk.create_draft(
+                    prospect_id=_required(payload, "prospect_id"),
+                    operation_id=operation_id,
+                )
+            if action == "reply":
+                return self.desk.record_reply(
+                    prospect_id=_required(payload, "prospect_id"),
+                    reply_id=_required(payload, "reply_id"),
+                    kind=_required(payload, "kind"),
+                    note=_required(payload, "note"),
+                    received_at=_required(payload, "received_at"),
+                    operation_id=operation_id,
+                )
+            if action == "slot":
+                return self.desk.add_slot(
+                    slot_id=_required(payload, "slot_id"),
+                    starts_at=_required(payload, "starts_at"),
+                    ends_at=_required(payload, "ends_at"),
+                    operation_id=operation_id,
+                )
+            if action == "book":
+                return self.desk.book_slot(
+                    prospect_id=_required(payload, "prospect_id"),
+                    slot_id=_required(payload, "slot_id"),
+                    operation_id=operation_id,
+                )
+            # Names without a bound OutboundDesk method still reach dispatch.
+            # Nothing is sent and no provider is mutated.
+            return {
+                "schema": "commons-hive-outbound-appointment-ops/operator-v1",
+                "kind": "OPERATOR_INPUT",
+                "action": action,
+                "operation_id": operation_id,
+                "transport": "NONE",
+                "provider_mutation": False,
+                "applied": False,
+            }
 
     def crm_csv(self, campaign_id: str) -> str:
-        rows = self.desk.crm_rows(campaign_id)
+        with self._lock:
+            rows = self.desk.crm_rows(campaign_id)
         if not rows:
             return ""
         output = io.StringIO(newline="")
@@ -178,7 +204,8 @@ class OperatorApp:
         return output.getvalue()
 
     def booking_ics(self, booking_id: str) -> str:
-        return self.desk.booking_ics(booking_id)
+        with self._lock:
+            return self.desk.booking_ics(booking_id)
 
 
 class Handler(BaseHTTPRequestHandler):
