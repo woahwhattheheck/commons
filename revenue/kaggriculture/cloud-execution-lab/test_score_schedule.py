@@ -128,6 +128,29 @@ class ScoreScheduleTests(unittest.TestCase):
             actual=core.optimize_lot(**args,capacity_ok=lambda p:feasible(p,new_calls))
             self.assertEqual(actual,expected);self.assertEqual(new_calls,old_calls)
 
+    def test_price_breakpoint_later_tranche_beats_quarter_only_family(self):
+        args=dict(item='MILK',quantity=37,inventory=10050,params=None,
+            shops=['SMOOTHIE_SHOP','ICE_CREAM_SHOP','PIZZA_SHOP']*2,config={},
+            now=100,dates=[100,101,108],reference=((100,36),(108,1)),
+            rival_quantity=19,minimum_now=0)
+        plan,info=core.optimize_lot(**args)
+        self.assertEqual(plan,((100,26),(101,3),(108,8)))
+        self.assertEqual(info['worst_relative_gain'],72)
+        self.assertEqual(info['plans_evaluated'],411)
+        deltas={name:data['relative_value']-data['reference_relative_value']
+                for name,data in info['scenarios'].items()}
+        self.assertEqual(deltas,{'no_rival':93,'observed_paired':93,
+            'observed_later_order':93,'observed_next_turn':72,
+            'observed_before_delayed_batch':99})
+
+    def test_price_breakpoint_split_family_is_bounded(self):
+        model=core.MarketPath(item='WOOL',inventory=10000,params=None,shops=[],
+                              config={},now=100,end=108)
+        points=core._bounded_price_break_splits(model,0,100,101)
+        self.assertLessEqual(len(points),core._MAX_PRICE_BREAK_SPLITS)
+        self.assertEqual(points,tuple(sorted(set(points))))
+        self.assertTrue(all(0<point<100 for point in points))
+
     def test_full_adaptive_trees(self):
         for item,quantity,inv,now in product(('EGG','WOOL','MILK'),(2,5,20),(9998,10300),(241,655)):
             args,plans,streams=table_case(quantity,item,inv,now)
