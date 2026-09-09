@@ -1,0 +1,75 @@
+name: Astra SOL tender recovery probe
+on:
+  push:
+    branches:
+      - astra-sol/tender-recovery-probe-20260909-01
+
+permissions:
+  contents: read
+
+jobs:
+  recover-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Recover immutable ASTRA-HIVE carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/tender-recovered
+          mkdir -p /tmp/tender-recovered
+          python3 - <<'PY'
+          import base64, hashlib, io, lzma, pathlib, subprocess, tarfile
+          head = "507c108866b186ee79aa8bc0caf4afac29082955"
+          root = "revenue/hive/tender-response-desk"
+          parts = []
+          for i in range(7):
+              path = f"{root}/source.tar.xz.b64.part-{i:02d}"
+              data = subprocess.check_output(["git", "show", f"{head}:{path}"])
+              if data.endswith(b"\n"):
+                  data = data[:-1]
+              parts.append(data)
+              print(f"CARRIER {i:02d} chars={len(data)} sha256={hashlib.sha256(data).hexdigest()}")
+          encoded = b"".join(parts)
+          if len(encoded) != 24400:
+              raise SystemExit(f"unexpected carrier length {len(encoded)}")
+          raw = base64.b64decode(encoded, validate=True)
+          print(f"ARCHIVE_B64 chars={len(encoded)} sha256={hashlib.sha256(encoded).hexdigest()}")
+          print(f"ARCHIVE_XZ bytes={len(raw)} sha256={hashlib.sha256(raw).hexdigest()}")
+          tar_bytes = lzma.decompress(raw)
+          print(f"ARCHIVE_TAR bytes={len(tar_bytes)} sha256={hashlib.sha256(tar_bytes).hexdigest()}")
+          out = pathlib.Path('/tmp/tender-recovered')
+          with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode='r:') as tf:
+              members = tf.getmembers()
+              for m in members:
+                  p = pathlib.PurePosixPath(m.name)
+                  if p.is_absolute() or '..' in p.parts:
+                      raise SystemExit(f"unsafe archive member: {m.name}")
+                  if not (m.isdir() or m.isfile()):
+                      raise SystemExit(f"unsupported archive member type: {m.name}")
+              tf.extractall(out, members=members, filter='data')
+          files = sorted(p for p in out.rglob('*') if p.is_file())
+          print(f"RECOVERED_FILE_COUNT {len(files)}")
+          for p in files:
+              rel = p.relative_to(out).as_posix()
+              b = p.read_bytes()
+              print(f"MANIFEST {rel} bytes={len(b)} sha256={hashlib.sha256(b).hexdigest()} mode={oct(p.stat().st_mode & 0o777)}")
+              print(f"FILE_B64_BEGIN {rel}")
+              print(base64.b64encode(b).decode('ascii'))
+              print(f"FILE_B64_END {rel}")
+          PY
+      - name: Compile recovered Python
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t pyfiles < <(find /tmp/tender-recovered -type f -name '*.py' -print | sort)
+          if ((${#pyfiles[@]})); then python3 -m py_compile "${pyfiles[@]}"; fi
+      - name: Run recovered focused tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/tender-recovered
+          PYTHONWARNINGS=error::ResourceWarning python3 -B -m unittest discover -s . -p 'test_*.py' -v
