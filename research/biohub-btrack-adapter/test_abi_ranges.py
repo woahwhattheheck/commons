@@ -8,6 +8,7 @@ from adapter import (
     Detection,
     Scale,
     VoxelBounds,
+    _positive_btrack_float,
     build_btrack_payload,
     solve_dataset,
 )
@@ -56,6 +57,42 @@ class AbiRangeTests(unittest.TestCase):
                 tracker_factory=forbidden_factory,
             )
         self.assertFalse(factory_called)
+
+    def test_search_radius_float32_boundary_is_preserved(self):
+        float32_max = 3.4028234663852886e38
+        self.assertEqual(
+            _positive_btrack_float(float32_max, "max_search_radius"),
+            float32_max,
+        )
+
+    def test_search_radius_float32_overflow_and_underflow_fail_before_tracker_factory(self):
+        detection = Detection(
+            dataset="dataset_a",
+            t=0,
+            detection_id=0,
+            z=1,
+            y=1,
+            x=1,
+        )
+        for radius in (1e39, 1e-50):
+            with self.subTest(radius=radius):
+                factory_called = False
+
+                def forbidden_factory():
+                    nonlocal factory_called
+                    factory_called = True
+                    raise AssertionError("tracker factory must not be reached")
+
+                with self.assertRaisesRegex(AdapterError, "float32"):
+                    solve_dataset(
+                        [detection],
+                        scale=Scale(1.0, 1.0, 1.0),
+                        bounds=VoxelBounds(0, 2, 0, 2, 0, 2),
+                        configuration=object(),
+                        max_search_radius=radius,
+                        tracker_factory=forbidden_factory,
+                    )
+                self.assertFalse(factory_called)
 
     def test_scaled_detection_coordinate_must_remain_finite(self):
         detection = Detection(
