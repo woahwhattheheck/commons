@@ -59,7 +59,8 @@ jobs:
           python -m unittest -v \
             test_materialize.py \
             test_compare.py \
-            test_custody_repair.py
+            test_custody_repair.py \
+            test_real_evaluator_receipt.py
           python -m py_compile \
             materialize.py \
             materialize_ordered.py \
@@ -69,7 +70,8 @@ jobs:
             compare_bound.py \
             test_materialize.py \
             test_compare.py \
-            test_custody_repair.py
+            test_custody_repair.py \
+            test_real_evaluator_receipt.py
 
       - name: Materialize order-preserving arm, bound entries, and exact evaluator
         shell: bash
