@@ -52,18 +52,23 @@ quote future cash, or claim a game result.
 
 ```text
 python3 -B -m unittest -v
-Ran 13 tests in 1.254s — OK
+Ran 13 tests in 1.327s — OK
 
 syntax compile of capacity_ledger.py, test_capacity_ledger.py,
 run_witnesses.py — OK
 
 two independent run_witnesses.py outputs — byte-identical
+workflow YAML local parse — OK
 ```
 
 The tests include 5,184 exhaustively enumerated post-market-room states and 880
 same-unit-stage retained-PLACE ordering states: 6,064 enumerated states total.
 The machine receipt is `RESULTS.json`; `run_witnesses.py` emits the five
 positive/counterexample traces deterministically.
+A dedicated NEW `.github/workflows/titan-w08-capacity-throughput.yml`
+replays the same proof on pull requests and retains logs, witness JSON, and
+hashes. Its remote result is intentionally reported in the PR/Slack receipt,
+not pre-claimed here.
 
 ## Authored file identities before Git publication
 
@@ -72,8 +77,9 @@ positive/counterexample traces deterministically.
 | `capacity_ledger.py` | `2b698df6e0cf61e604a8446af78f7ed6bebad49eb6a0cd4584014496df84745f` |
 | `test_capacity_ledger.py` | `9d87b26d022b88f8c9f93569e1cce59be7e6f37aef603f22febb6e9aa8a38b22` |
 | `run_witnesses.py` | `8adc05e70ec9b5cc5909ada048e1133108579908e02868636fb3b4a11fa480d9` |
-| `README.md` | `375366929a348a29ed302af6eabaf36ec4765af9882a0264faab1f43661965c9` |
-| `RESULTS.json` | `0ffc30991fda164871483f5b3e346fd632786af2b17d906371fb4eb2ba20919d` |
+| `README.md` | `85db4808a6ff6c391782151e59acf8adaeda7622aacc768a2b5070f9ce3e2f87` |
+| `.github/workflows/titan-w08-capacity-throughput.yml` | `a962b1aa366061437cb62c02b7d357b3b98f034a2f5f6268b122ebaea1f81136` |
+| `RESULTS.json` | `cbff12da530d3762a62e273c1a0df59e486bb1862e94f8a715c035f87da8f477` |
 
 ## Boundary and next integration
 

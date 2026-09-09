@@ -55,6 +55,10 @@ python3 -B -m py_compile capacity_ledger.py test_capacity_ledger.py run_witnesse
 python3 -B run_witnesses.py --output WITNESSES.json
 ```
 
+The same proof runs on pull requests through
+`.github/workflows/titan-w08-capacity-throughput.yml`, which retains the test
+log, deterministic witness output, and SHA-256 inventory as a workflow artifact.
+
 The suite covers 13 named tests, including 5,184 post-market-room states and 880
 same-unit-stage ordering states. The generated witness JSON records the positive
 intervening-sale case and the no-sale, buy-refill, and retained-PLACE

@@ -13,10 +13,15 @@
   },
   "executed_at_utc": "2026-09-09T18:23:29.416199+00:00",
   "files": {
+    ".github/workflows/titan-w08-capacity-throughput.yml": {
+      "bytes": 1998,
+      "git_blob": "2c5e3cc37b238290e5f79545f6def608ff6f29fa",
+      "sha256": "a962b1aa366061437cb62c02b7d357b3b98f034a2f5f6268b122ebaea1f81136"
+    },
     "README.md": {
-      "bytes": 3359,
-      "git_blob": "f30f9b16153979cb7387614915ba04dde805a5de",
-      "sha256": "375366929a348a29ed302af6eabaf36ec4765af9882a0264faab1f43661965c9"
+      "bytes": 3564,
+      "git_blob": "e6e1bfa525b8acb0ebac4f05e0ab6d25d6a2d02f",
+      "sha256": "85db4808a6ff6c391782151e59acf8adaeda7622aacc768a2b5070f9ce3e2f87"
     },
     "capacity_ledger.py": {
       "bytes": 15774,
@@ -57,7 +62,7 @@
     },
     "unittest": {
       "command": "python3 -B -m unittest -v",
-      "elapsed_seconds": 2.513,
+      "elapsed_seconds": 1.327,
       "successful": true,
       "tests": 13
     },
@@ -66,6 +71,11 @@
       "command": "python3 -B run_witnesses.py --output <path>",
       "successful": true,
       "two_independent_outputs_byte_identical": true
+    },
+    "workflow_definition": {
+      "github_actions_result": "pending",
+      "local_yaml_parse": true,
+      "path": ".github/workflows/titan-w08-capacity-throughput.yml"
     }
   },
   "witness_admission": {
