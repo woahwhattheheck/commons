@@ -126,6 +126,18 @@ Verified product pages only — no invented Stripe links. Front door used to bur
 
 Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](./commerce.html). Cite forge tip-shelf / spark autopsy / coil MANUAL — do not remint.
 
+
+## Tools board (invented tools)
+
+Coil door: **TOOLS**. Drive Bryce's invented tools — not Action Pad verbs, not Hands STDIO.
+
+- Board: [tools.html](./tools.html) · catalog [tools.json](./tools.json) · living [manual.html](./manual.html)
+- File one job: [job.html](./job.html) (`to: TOOLS`)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die)
+- Harness road: `tools-board` in [harnesses/catalog.json](./harnesses/catalog.json)
+
+Cite `coil-harness-tools-board-road-20260905-01` / `coil-tools-json-job-hook-20260905-01`. Dest FROM FILE. Do not remint.
+
 ## titanmcp pad (contest product)
 
 Live judge pad (not Commons Shared Pad / not Commons `/mcp`):
