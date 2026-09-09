@@ -1,0 +1,57 @@
+name: titan-v3-frozen-atomic-projection-sol-vector
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - sol-vector/titan-v3-frozen-atomic-projection-20260909-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/**"
+      - ".github/workflows/titan-v3-frozen-atomic-projection-sol-vector.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/**"
+      - ".github/workflows/titan-v3-frozen-atomic-projection-sol-vector.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-frozen-atomic-projection-sol-vector/test_audit.py
+      - name: Exact route and downstream audit
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-frozen-atomic-projection-sol-vector/audit.py \
+              --output analysis/v3-frozen-atomic-projection-sol-vector/REPORT.json \
+              | tee analysis/v3-frozen-atomic-projection-sol-vector/run.log
+          sha256sum \
+            analysis/v3-frozen-atomic-projection-sol-vector/REPORT.json \
+            analysis/v3-frozen-atomic-projection-sol-vector/run.log \
+            analysis/v3-frozen-atomic-projection-sol-vector/audit.py \
+            analysis/v3-frozen-atomic-projection-sol-vector/test_audit.py \
+            > analysis/v3-frozen-atomic-projection-sol-vector/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-frozen-atomic-projection-sol-vector
+          if-no-files-found: error
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/REPORT.json
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/run.log
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/SHA256SUMS
