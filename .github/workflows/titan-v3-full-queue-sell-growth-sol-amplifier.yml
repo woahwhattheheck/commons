@@ -48,8 +48,10 @@ jobs:
           ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier
           python "$ROOT/audit_change.py" --json "$RUNNER_TEMP/SOURCE-SEAM.json"
           cd "$ROOT"
-          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python -m unittest -v test_full_queue_sell_growth.py
-          python -m py_compile candidate.py growth_patch.py audit_change.py run_panel.py test_full_queue_sell_growth.py
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python -m unittest -v \
+            test_full_queue_sell_growth.py test_action_bound_panel.py
+          python -m py_compile candidate.py growth_patch.py audit_change.py run_panel.py \
+            test_full_queue_sell_growth.py test_action_bound_panel.py
 
       - name: Verify canonical release remains unchanged
         shell: bash
@@ -68,7 +70,7 @@ jobs:
             "$APEX/source/policy.cpp" "$APEX/submission_bridge.cpp"
           sha256sum "$APEX/agent.so" | tee "$RUNNER_TEMP/apex-agent.sha256"
 
-      - name: Run 32-cell official-engine screen
+      - name: Run 32-cell action-bound official-engine screen
         shell: bash
         run: |
           set -euo pipefail
