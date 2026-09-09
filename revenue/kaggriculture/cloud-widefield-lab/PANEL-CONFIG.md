@@ -30,3 +30,7 @@ that combined source. The `sha256`, `valid_report`, `run_job` and
 sibling-error preservation remain its implementation and evidence; no second
 writer was added. TANDEM's separate reuse/source-binding branch is not included
 in this composition or claimed as tested by it.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -50,3 +50,7 @@ The official interpreter remains pinned to
 `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`. Development compute was run in
 the cloud workspace only. No competition submission or account mutation was
 performed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

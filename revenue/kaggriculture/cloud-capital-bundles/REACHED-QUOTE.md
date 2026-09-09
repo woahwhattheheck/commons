@@ -37,3 +37,7 @@ The actual source case is TRACE's saved DELVE development control input, not a r
 The earlier capital-agent export and its16-test report remain byte-identical. This follow-through is an offline comparison consumer; it is not included automatically in that submission-shaped archive and does not alter the selected TITAN entrypoint.
 
 DATE's additive completed-replay extension landed during this integration. This consumer uses its current nominal API at blob `5e418aeca191e71d281f669a9fdd9f4b0730617f`; all18 methods passed again, and the complete saved-case comparison remained identical apart from source provenance. Its new physical-outcome branch is not called here. Earlier direct-comparison output is preserved privately with its original source identity.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

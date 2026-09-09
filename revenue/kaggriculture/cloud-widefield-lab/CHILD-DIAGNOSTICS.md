@@ -25,3 +25,7 @@ TITAN_PANEL_PATH=/absolute/path/to/run_panel.py \
 ```
 
 The new suite reuses only fixture construction from existing `test_report_reuse.py`; it does not run those31 methods again internally. `child-diagnostics-evidence.json` retains source/log identities and the actual before/after and CLI outcomes. Canonical TITAN source, archives, experiments, game seeds and running processes are untouched.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

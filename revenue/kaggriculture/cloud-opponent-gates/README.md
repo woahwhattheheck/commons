@@ -115,3 +115,7 @@ those are historical coverage, not additional current-package tests.
 Development `9894001` is already consumed. No held evaluation, new Kaggle upload,
 new spend, owner-PC execution, policy promotion or general-strength claim follows
 from these measurements. The synthetic positive predicate tests are not games.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -32,3 +32,7 @@ Eight retained observation tapes (5,752 calls) with exact evaluator Struct conve
 A separate first-call benchmark used the original retained 2,775-byte request, unmodified f6 evaluator Actor/worker, sequential fresh processes, fixed one-second parent deadline and 12 alternating AB/BA pairs. Baseline is the existing selected-core/public-snapshot composition plus PULSE's observed projection helper; candidate adds only this suffix construction. All 24 first calls returned identical actions, and all 12 candidate pairs were faster. Median actor call time was 39.728 to 35.520 milliseconds (10.59% lower); median parent RPC was 40.160 to 35.993 milliseconds. These percentages are not added to hot-path results or compared across different protocols.
 
 This is a local cold-input measurement, not a hosted guarantee, new strength evidence, or explanation/repair of the original unanswered timeout. The original failure remains intact with unknown child timing/stage. Private input, source freeze, native profile, raw paired timings, tests and executable reproduction are delivered only within the participating-owner project Library.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

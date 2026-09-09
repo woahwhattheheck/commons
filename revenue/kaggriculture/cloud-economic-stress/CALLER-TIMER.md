@@ -50,3 +50,7 @@ Use `--adapter /path/to/baseline/deadline_adapter.py` to reproduce the negative 
 - Existing loader: source artifact `10030763484`, `20260907-offline-agent/evaluate.py`; no new export or installation.
 
 FINCH/ECON-STRESS can use the updated existing adapter in the next source-pinned deadline run. Previous full-game timing and economic results remain tied to their original source. No additional workflow, game panel, seed claim, upload, or spend is needed to consume this repair.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

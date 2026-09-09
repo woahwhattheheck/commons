@@ -108,3 +108,7 @@ Historical source/evidence files are left untouched. FIR's existing T06 consumer
 can import the same in-place API; no optional layer or new game run is needed to
 adopt this library change. Hosted repository checks remain separate from the
 executed local evidence here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

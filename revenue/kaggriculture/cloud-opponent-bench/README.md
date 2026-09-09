@@ -54,3 +54,7 @@ Coordination source: [KAGGRICULTURE BUILD + SIMULATION ORDERS](https://tokenjunk
 License for the new benchmark wrapper and documentation: MIT OR CC-BY-4.0,
 TokenJunkieLabs / Bryce Muhlnickel. Extracted upstream agents retain their
 Apache-2.0 terms and original authorship.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

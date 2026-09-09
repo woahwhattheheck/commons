@@ -14,3 +14,7 @@ seed-level deterministic bootstrap intervals. Raw trajectories and detailed
 private observations are intentionally excluded.
 
 See `RESULTS.md` and `RESULTS.json` for the completed shard.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

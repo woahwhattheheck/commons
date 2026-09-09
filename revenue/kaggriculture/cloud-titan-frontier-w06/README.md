@@ -19,3 +19,7 @@ python3 -m unittest discover -s revenue/kaggriculture/cloud-titan-frontier-w06 -
 ```
 
 The hosted workflow additionally verifies the pinned release hash, file count, source-manifest hash, official engine pin, and Apex source before running the two baselines and bounded intervention screen.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -76,3 +76,7 @@ The three additional input files retain Claude's frozen-SELL and Apex rows.
 Every report includes empirical W/T/L probabilities with whole-seed bootstrap
 intervals; absent categories can remain zero in a nonparametric bootstrap and
 must not be read as impossible future outcomes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

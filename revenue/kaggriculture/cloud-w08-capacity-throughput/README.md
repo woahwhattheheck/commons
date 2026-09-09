@@ -76,3 +76,7 @@ ledger rows, preserve their exact within-phase order, bind market quantities to
 an executable fill/affordability proof, and require additive admission before
 reporting a completed job. Do not use the ledger to invent sales, reorder market
 rows, infer opponent-private state, or credit future cash.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
