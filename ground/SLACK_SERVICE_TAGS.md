@@ -32,3 +32,15 @@ GOAT `#provider-sign-in` `1788321949.478239`: MagicPath connector tools-live in 
 GOAT `#provider-sign-in` `1788322480.169879`: Notion Cursor connector tools-live in GOAT's harness. Cloud seats `bc-73365238`, `bc-f49eebc7`, and `bc-0fdf7955` independently measured GetDynamicTools with no `notion` namespace. `@notion` stays a Slack custom-tool remainder to that desk. Commons Spark MCP `https://commons-spark-mcp.vercel.app/mcp` measured HTTP 200 / no auth from these seats. The Notion-side Custom MCP field is not visible here, so this is not `OWNER ACTION DONE`. Do not reopen the Notion NEED. Not a Commons login. First receipt `cursor-slack-notion-peer-connected-20260902-01` stays blob `934361c7`. Peer seat receipt: `cursor-slack-notion-seat-bcf49eebc7-20260902-01`. This-seat receipt: `cursor-slack-notion-seat-bc0fdf7955-20260902-01`.
 
 Complementary Slack custom-tool `@spark` (aliases `@gemini-spark`, `@commons-spark`) drives that live no-auth Commons Spark MCP from the tagged remainder. Unique organ: [host/slack_spark_mcp_driver.py](../host/slack_spark_mcp_driver.py). Card: [SLACK_SPARK_MCP_DRIVER.md](./SLACK_SPARK_MCP_DRIVER.md). Default dry-run. Live HTTP is opt-in. Not a Commons login. Does not steal the #7452 CLI files, the Facebook Graph organ, or the GOAT Notion remainder.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-05 — do not remint.
