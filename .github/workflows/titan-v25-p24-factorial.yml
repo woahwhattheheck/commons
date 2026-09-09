@@ -79,6 +79,30 @@ jobs:
             --game-timeout 120.0 \
             --output /tmp/p24-results/P24-FACTORIAL.json \
             --markdown /tmp/p24-results/P24-FACTORIAL.md
+      - name: Validate evidence receipt (fail-closed)
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT=/tmp/p24-results/P24-FACTORIAL.json
+          test -f "$REPORT"
+          python - <<'PY'
+          import json, sys
+          path = "/tmp/p24-results/P24-FACTORIAL.json"
+          with open(path) as f:
+              data = json.load(f)
+          if data.get("schema_version") != 1:
+              sys.exit("schema_version must be 1")
+          status = data.get("status")
+          if status not in ("running", "failed", "complete"):
+              sys.exit(f"status must be running|failed|complete, got {status!r}")
+          arch = data.get("archive") or {}
+          if not arch.get("sha256") or not arch.get("source_manifest_sha256"):
+              sys.exit("archive identities required")
+          if data.get("operation") != "op:titan-v25-orders-20260909-P24":
+              sys.exit("operation identity required")
+          print("receipt_ok", status, arch.get("sha256")[:12])
+          PY
       - name: Upload exact evidence and runnable archive
         uses: actions/upload-artifact@v4
         if: always()
