@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Canonical TITAN entrypoint with one V1 horizon-liquidity factor restored."""
+"""Canonical TITAN entrypoint with V1 carry discount in V3's real optimizer."""
 from __future__ import annotations
 
 import importlib.util
@@ -33,19 +33,19 @@ _LAST_INSTALL_RECEIPT: dict[str, Any] | None = None
 
 
 def _candidate_new_instance(root: Path, feature_data: dict[str, Any]):
-    """Install before canonical lazy initialization, then construct unchanged."""
+    """Patch the selected optimizer before canonical lazy initialization."""
     global _LAST_INSTALL_RECEIPT
-    import scheduler
+    import selected_sell_core
 
-    _LAST_INSTALL_RECEIPT = install(scheduler)
+    _LAST_INSTALL_RECEIPT = install(selected_sell_core)
     instance = _ORIGINAL_NEW_INSTANCE(root, feature_data)
     instance.horizon_liquidity_receipt = dict(_LAST_INSTALL_RECEIPT)
     return instance
 
 
-# canonical ``agent`` resolves this global at runtime.  Replacing only this hook
+# Canonical ``agent`` resolves this global at runtime. Replacing only this hook
 # retains its prelude, whole-call deadline, fallback, reconstruction, and final
-# pressure ordering byte-for-byte.
+# pressure ordering byte-for-byte. The hook itself executes inside that timer.
 _CANONICAL._new_instance = _candidate_new_instance
 
 
