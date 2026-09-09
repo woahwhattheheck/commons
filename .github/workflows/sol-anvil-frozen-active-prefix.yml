@@ -1,0 +1,59 @@
+name: SOL-ANVIL one-shot frozen active-prefix repair
+
+on:
+  push:
+    branches:
+      - sol-anvil/titan-v3-frozen-active-prefix-20260909
+    paths:
+      - .github/workflows/sol-anvil-frozen-active-prefix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+
+      - name: Prove predecessor failure, apply repair, and prove successor
+        shell: bash
+        run: |
+          set -euo pipefail
+          lane='revenue/kaggriculture/cloud-execution-lab'
+          python "$lane/.sol_anvil_apply_prefix.py" support
+
+          set +e
+          python "$lane/test_frozen_active_prefix_funding.py"
+          predecessor_status=$?
+          set -e
+          if [ "$predecessor_status" -eq 0 ]; then
+            echo 'ERROR: regression unexpectedly passed against predecessor'
+            exit 1
+          fi
+          echo "PREDECESSOR_FAIL_CONFIRMED status=$predecessor_status"
+
+          python "$lane/.sol_anvil_apply_prefix.py" apply
+          python "$lane/test_frozen_active_prefix_funding.py"
+          python -m py_compile \
+            "$lane/frozen_selected.py" \
+            "$lane/test_frozen_active_prefix_funding.py"
+          echo 'SUCCESSOR_PASS_CONFIRMED tests=4'
+
+      - name: Commit only the production patch, regression, and receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'SOL-ANVIL'
+          git config user.email 'sol-anvil@users.noreply.github.com'
+          git rm \
+            revenue/kaggriculture/cloud-execution-lab/.sol_anvil_apply_prefix.py \
+            .github/workflows/sol-anvil-frozen-active-prefix.yml
+          git add -A
+          git diff --cached --check
+          git commit -m 'fix(titan): bind frozen funding to executable prefix'
+          git push origin "HEAD:${{ github.ref_name }}"
