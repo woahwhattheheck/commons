@@ -51,3 +51,13 @@ The consumer suite exercises the real matcher, SQLite reopen/history, original-b
 A separate development check exercised the rendered HTML in system Chromium at desktop 1440×1080 and mobile 390×844. Because that cloud browser denies localhost navigation, it used an in-memory fetch binding to the real Store. The complete sample/edit/history/correction DOM workflow passed with no page errors or horizontal mobile overflow. HTTP behavior was tested separately; this is not a full browser-network end-to-end or hosted-deployment claim.
 
 Hive demand: `bm-hive-20260908-040`. This addition ships a working local browser consumer. It does not claim a customer sale, document OCR, supplier message, accounting-system import, approval or payment.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
