@@ -21,7 +21,7 @@ BODY_SHA256 = "4e64d46e75b9dab032e758e52e19a4156fd9da00b5dcd18c3d126f315faf0250"
 KEEP = {
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     ".github/workflows/commons-board.yml": "c9da64cb",
-    "board_ingest.py": "b8f8d8c6",
+    "board_ingest.py": "a8a5f52c",
     "open_door_guard.py": "877e148d",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
     "fix_first.py": "a57aee1c",

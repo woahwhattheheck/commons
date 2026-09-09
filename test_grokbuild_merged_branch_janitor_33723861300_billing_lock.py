@@ -44,7 +44,7 @@ KEEP = {
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "d0bd0e8d",
+    "hub_pages.py": "44bbd2ec",
 }
 
 EVENT_8635 = {

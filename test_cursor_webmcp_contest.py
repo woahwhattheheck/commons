@@ -18,7 +18,7 @@ WORKFLOW = ROOT / ".github" / "workflows" / "spark-mcp-production.yml"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "3b4df417",
+    "webmcp.html": "b3b0d7d3",
     "api/mcp.py": "393da756",
     "stage_spark_mcp_bundle.py": "1234e00c",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
-    "hub_pages.py": "d0bd0e8d",
+    "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
 }
 

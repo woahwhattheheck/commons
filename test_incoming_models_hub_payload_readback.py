@@ -17,7 +17,7 @@ KEEP = {
     "host/incoming_models.py": "7f4ae3bf",
     "test_incoming_models.py": "d8f2ddbd",
     "ground/INCOMING_MODELS.json": "6b5e89dc",
-    "ground/INCOMING_MODELS.md": "eeec0809",
+    "ground/INCOMING_MODELS.md": "7d83d8fa",
     "incoming-models.html": "ef42b9d5",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "ground/OWNER_NOW.md": "0a574d94",

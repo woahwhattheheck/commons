@@ -18,14 +18,14 @@ DOOR = ROOT / "commons-slack-chunk.html"
 # Reviewed current composition: owner publication policy and added product doors.
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/commons_slack_full_body.py": "3bf97dc1",
+    "host/commons_slack_full_body.py": "f0bb6a2a",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "2db9f0e5",
-    "test_commons_slack_full_body.py": "d0cae678",
-    "host/slack_mirror.py": "c94f6fa5",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "eece8b1a",
+    "test_commons_slack_full_body.py": "df72b093",
+    "host/slack_mirror.py": "95d6aff3",
     "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",
-    "commons-slack.html": "ddf89b44",
+    "commons-slack.html": "2317e64c",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
