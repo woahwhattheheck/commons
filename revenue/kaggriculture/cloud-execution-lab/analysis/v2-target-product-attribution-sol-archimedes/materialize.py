@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
 """Materialize exact frozen-V2 SELL target-domain attribution arms.
 
-Every arm copies the frozen V2 package byte-for-byte and changes only
-``scheduler.py``.  ``CORE`` restores the inherited V1 target expression.  A
-product arm restores that core expression and then widens exactly one product
-to all positive shed stock.  The frozen source tree is never modified.
+Every arm copies the frozen V2 package byte-for-byte. ``CONTROL`` preserves the
+all-shed scheduler exactly, ``CORE`` restores the inherited V1 target expression,
+and a product arm restores that core expression before widening exactly one
+product to all positive shed stock. The frozen source tree is never modified.
 """
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ PRODUCT_ARMS = (
     "MILK",
     "WOOL",
 )
-VALID_ARMS = ("CORE",) + PRODUCT_ARMS
+VALID_ARMS = ("CONTROL", "CORE") + PRODUCT_ARMS
 
 OLD = (
     "        targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS "
@@ -116,6 +116,8 @@ def normalize_arm(arm: str) -> str:
 
 def replacement_for(arm: str) -> str:
     arm = normalize_arm(arm)
+    if arm == "CONTROL":
+        return OLD
     if arm == "CORE":
         return CORE
     return (
@@ -182,15 +184,24 @@ def materialize(
         for relative in sorted(before)
         if before[relative]["sha256"] != after[relative]["sha256"]
     ]
-    if changed != ["scheduler.py"]:
-        raise MaterializeError(f"one-file boundary violated: changed={changed!r}")
+    expected_changed = [] if arm == "CONTROL" else ["scheduler.py"]
+    if changed != expected_changed:
+        raise MaterializeError(
+            f"one-file boundary violated for {arm}: changed={changed!r}"
+        )
     if scheduler.read_bytes() != original or inventory(source) != before:
         raise MaterializeError("frozen source tree changed during materialization")
-    if patched.count(CORE.encode("utf-8")) != 1:
-        raise MaterializeError("materialized core expression count is not one")
-    if patched.count(old) != 0:
-        raise MaterializeError("V2 all-shed expression survived materialization")
-    if arm != "CORE":
+    expected_core = 0 if arm == "CONTROL" else 1
+    expected_old = 1 if arm == "CONTROL" else 0
+    if patched.count(CORE.encode("utf-8")) != expected_core:
+        raise MaterializeError(
+            f"materialized core expression count is not {expected_core}"
+        )
+    if patched.count(old) != expected_old:
+        raise MaterializeError(
+            f"materialized all-shed expression count is not {expected_old}"
+        )
+    if arm in PRODUCT_ARMS:
         widening = (
             f'        if shed.get("{arm}",0)>0:\n'
             f'            targets["{arm}"]=max(0,int(shed.get("{arm}",0)))\n'
