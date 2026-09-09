@@ -2,7 +2,7 @@
 
 Operation: `titan-v3-aggregate-seed-budget-20260909-01`
 
-Evidence base: current main `78b1c3647d58407da1a315fb5e13b93bff635650`, inherited by non-force merge commit `fe879ef9ccf591237f61ebf1b21fca8e488bb015`.
+Evidence base: current main `bdb428d05487b16dbad83bbbb6286a5d1a77836d`, inherited by non-force merge commit `ca73e17d55b020d493d81d75abc87329b5506f35`.
 
 ## Hypothesis
 
