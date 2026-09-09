@@ -213,9 +213,12 @@ class CentroidClassifier:
             return Prediction(None, 0)
 
         probabilities = _normalize_positive([score for _, score in scored])
-        best_probability = max(probabilities)
-        best_local = next(i for i, value in enumerate(probabilities) if value == best_probability)
-        family_index = scored[best_local][0]
+        best_score = max(score for _, score in scored)
+        best_locals = [i for i, (_, score) in enumerate(scored) if score == best_score]
+        best_probability = max(probabilities[i] for i in best_locals)
+        if len(best_locals) != 1:
+            return Prediction(None, best_probability)
+        family_index = scored[best_locals[0]][0]
         return Prediction(FAMILIES[family_index], best_probability)
 
 

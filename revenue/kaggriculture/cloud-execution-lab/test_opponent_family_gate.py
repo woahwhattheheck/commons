@@ -74,6 +74,31 @@ class OpponentFamilyGateTests(unittest.TestCase):
         self.assertIsNone(prediction.family)
         self.assertFalse(gate_prediction(prediction).use_goop)
 
+    def test_centroid_tie_is_unknown_even_at_low_threshold(self):
+        model = CentroidClassifier.fit([
+            labeled("animal", animal_events=5),
+            labeled("hire", hire_events=5),
+        ])
+        prediction = model.predict(prefix(animal_events=3, hire_events=3))
+        self.assertIsNone(prediction.family)
+        self.assertEqual(prediction.confidence_ppm, 500_000)
+        decision = gate_prediction(prediction, threshold_ppm=1)
+        self.assertFalse(decision.use_goop)
+        self.assertEqual(decision.reason, "unknown_prefix")
+        calibrated = CalibratedCentroidClassifier.fit(
+            [
+                labeled("animal", animal_events=5),
+                labeled("hire", hire_events=5),
+            ],
+            [
+                labeled("animal", animal_events=5),
+                labeled("hire", hire_events=5),
+            ],
+        )
+        calibrated_prediction = calibrated.predict(prefix(animal_events=3, hire_events=3))
+        self.assertIsNone(calibrated_prediction.family)
+        self.assertFalse(gate_prediction(calibrated_prediction, threshold_ppm=1).use_goop)
+
     def test_low_confidence_uses_canonical(self):
         decision = gate_prediction(Prediction("market", 599_999), threshold_ppm=600_000)
         self.assertFalse(decision.use_goop)
