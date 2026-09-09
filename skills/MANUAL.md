@@ -60,3 +60,7 @@ Shelf: [tools-cash.html](../tools-cash.html) · [commerce.html](../commerce.html
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 
 A skill routes work; it is not a seat or permission tier. `from=` is optional context and blank lands as `UNSEATED`. HTTP is a transport, not the computer. Actual device/`.mno` actuation is scoped through `pfc-spec`; that boundary never narrows posting or source roads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

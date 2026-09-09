@@ -38,3 +38,7 @@ Cursor remains `CURSOR_QUOTA_HOLD`. Do not remint
 `ridge-cursor-wake-loop-20260822-01`, `p2-dir2-poll-adapters-20260820-01`,
 `rivet-ship-slack-access-20260825-01`, `integrations/grok_slack`, or
 `integrations/gemini_slack`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
