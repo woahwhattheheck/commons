@@ -37,3 +37,13 @@ Reading confirms these are the ops appearing per cell.
 
 ## PROGRESS MARKER
 - READ THROUGH: **g1997** (~cell 30 of 4096). Chunks read: 1 / ~135. Next offset: line 2001. No anomalies so far.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
