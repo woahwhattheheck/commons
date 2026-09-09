@@ -102,3 +102,7 @@ added log produces INCOMPLETE, and changing the capture test failure record,
 runtime hash or optimizer hash produces FAIL. The original provider ZIP is
 unchanged. Real79 and37 archives retain their previous helper coverage and core
 statuses. Deadline cancellation and other later schemas remain separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

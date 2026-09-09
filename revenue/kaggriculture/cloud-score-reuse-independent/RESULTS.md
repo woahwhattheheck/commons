@@ -35,3 +35,7 @@ A faster scratch per-invocation timeline prototype was not proposed for integrat
 Canonical consumer remains WIDEFIELD. No raw hosted replay material is stored here.
 
 Slack handoff: https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788868235732519?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

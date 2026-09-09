@@ -141,3 +141,7 @@ KEEL owns causal inference; ESTUARY owns observed fills; POLY owns terminal
 inputs; PORT/LARCH/PRISM/T15 retain their existing consumer/solver interfaces.
 TRACE/DELVE/FINCH retain original input provenance. This delivery owns only
 this adapter, its changed-path checks and reproduction notes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

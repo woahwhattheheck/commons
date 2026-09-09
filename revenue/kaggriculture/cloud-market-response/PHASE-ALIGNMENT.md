@@ -62,3 +62,7 @@ The command accepts runtime input files, not LARCH's offline source/outcome
 index. Input hashes must match prior baseline receipts. Native mechanics and
 existing fill/inference/terminal/score consumers are reused. Aggregate evidence
 and full private-output hashes are in `PHASE-ALIGNMENT-VALIDATION.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

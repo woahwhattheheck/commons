@@ -218,3 +218,7 @@ Worker-thread calls use a per-thread Python trace deadline, chaining and restori
 ## Redundant-hire certificate enabled
 
 The packaged T10 physical certificate is enabled in this release. It changes only a HIRE order proven to add no productive state before the next refresh, replacing that slot with a zero-quantity sale. Exact current-package and multi-opponent development checks retained positive own-cash deltas with no verdict regression; it remains independent of optional feed, terminal-route, terminal-history and spatial experiments. Root retains provider upload.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

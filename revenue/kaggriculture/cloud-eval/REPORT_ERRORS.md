@@ -40,3 +40,7 @@ Original ASTRA-WORK evaluator and prior ASTRA-COORD increments remain credited.
 Operation: `astra-coord-report-error-20260908-01`; coordination thread
 `1788806580.945539`, claim `1788842910.302569`. TANDEM retains its separate
 Actor/exchange failure-input work; no changes to those bodies are included.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

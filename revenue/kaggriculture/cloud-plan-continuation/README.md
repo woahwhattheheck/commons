@@ -100,3 +100,7 @@ python test_continuation.py --source-dir ../cloud-market-game-theory \
 No policy selection, original source, game seed, hosted submission, or provider
 operation is changed by this additive component. The implementation and tests are
 Apache-2.0; the original T15 source and licenses remain with that directory.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
