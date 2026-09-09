@@ -41,15 +41,18 @@ jobs:
       - name: Install exact interpreter dependency
         run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
 
-      - name: Prove the V1 to V2/current seam and pure contracts
+      - name: Prove source seam, production target, and candidate-action custody
         shell: bash
         run: |
           set -euo pipefail
           ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler
           python "$ROOT/audit_change.py" --json "$RUNNER_TEMP/SOURCE-SEAM.json"
           cd "$ROOT"
-          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python -m unittest -v test_liquidity_haircut.py
-          python -m py_compile candidate.py liquidity_haircut.py audit_change.py run_panel.py test_liquidity_haircut.py
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python -m unittest -v test_liquidity_haircut.py test_panel_activation.py
+          python -m py_compile \
+            candidate.py liquidity_haircut.py audit_change.py run_panel.py \
+            test_liquidity_haircut.py test_panel_activation.py
 
       - name: Verify canonical release remains unchanged
         shell: bash
