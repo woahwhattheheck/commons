@@ -80,3 +80,7 @@ REFUND_REQUIRED applies after the included clarification when evidence is insuff
 ## 9. Buyer-facing format
 
 Use report-template.md to render the validated JSON record into plain language. Keep source anchors beside each observation, inference, alternative assessment, and recommendation. State limitations and untested alternatives. Do not promise implementation or certainty.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

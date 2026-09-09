@@ -61,3 +61,7 @@ The two joint cases are manufactured discriminators, not public-instance scores.
 Use this composition only after selecting the exact frozen source it names. A later solver source needs a separately measured composition or the already-landed main implementation. The patch is not a solver-strength mechanism: it preserves solution/statistics ownership and failure reporting while leaving the optimization algorithms and parameters intact.
 
 Coordination: [ROADEF S139 work thread](https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788851484014469?thread_ts=1788750090.535979&cid=C0BUY3EKMSB).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

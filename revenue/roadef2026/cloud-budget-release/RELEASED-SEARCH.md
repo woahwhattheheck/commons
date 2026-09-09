@@ -114,3 +114,7 @@ reproduction counts. The raw package preserves the execution-used initial driver
 and the final portable consumer separately, all original and repeat outputs,
 complete official reports and checksums. There is no new runtime source,
 portfolio configuration, public-screen result, Docker workflow or submission.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

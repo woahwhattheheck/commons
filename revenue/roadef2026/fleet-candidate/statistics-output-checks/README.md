@@ -108,3 +108,7 @@ source/vendor transport and QUARTZ's verified checker context were reused;
 neither source exporter nor benchmark was repeated. RapidJSON and checker
 sources retain their own notices. Only the output-preservation change and its
 new regression suite are this contribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

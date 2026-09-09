@@ -13,3 +13,7 @@ This is why LANDING's saved-incumbent continuation result cannot be transferred 
 the current portfolio without a separate staged-handoff implementation and
 comparison. This note makes no claim that such staging will improve hidden
 instances or total equal-resource performance.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

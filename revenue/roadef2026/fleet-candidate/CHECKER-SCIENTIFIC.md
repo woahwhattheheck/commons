@@ -75,3 +75,7 @@ The checker came from QUARTZ's verified context (source2885d176, bootstrap repai
 directory and found no source; the subsequent explicit-directory compile
 succeeded. No solver binaries, Docker run, qualification draft, attachment,
 submission, or existing benchmark process were changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

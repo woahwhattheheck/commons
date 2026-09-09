@@ -88,3 +88,7 @@ Time measurement purpose: descriptive economics only; never a quality cap
 Payment/refund reason: [INSUFFICIENT_AFTER_CLARIFICATION, CANNOT_FIT_BOUNDARY, QUARANTINED_EVIDENCE_REMAINS_UNUSABLE, NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW, or not applicable]
 
 Payment/refund note: [private provider reference remains outside this report]
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

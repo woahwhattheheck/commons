@@ -123,3 +123,7 @@ SEDGE/FLORA and the fleet author retain their solver credit. DOCK retains the ca
 The environment was Python3.13.5, GCC14.2, a four-CPU cgroup quota and 4GiB memory in an isolated cloud container. There was no owner-PC execution, Docker certification, new paid resource, submission, held-draft edit, or organizer message.
 
 `PUBLISHED-MANIFEST.json` covers this compact Git subset. Full raw results, failed attempts, the generated bank and exact source-input archives are retained in the account Library package named in the receipt. The actual coordination update was posted in the existing ROADEF thread; no unsent handoff text is part of this Git delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

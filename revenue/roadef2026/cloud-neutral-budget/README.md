@@ -94,3 +94,7 @@ New witness code is MIT-licensed. DATE owns the neutral operator; SEDGE/FLORA an
 the fleet author own the original ECMP/search kernel. Orange's checker and its
 dependencies retain their existing licenses in the reused context. OSPREY supplies
 this independent graph, consumer, and official-checker comparison only.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

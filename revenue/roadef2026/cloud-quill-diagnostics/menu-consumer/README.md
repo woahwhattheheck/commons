@@ -81,3 +81,7 @@ python -B -m unittest -v test_menu_consumer
 ## Interpretation and next consumer
 
 The result establishes that QUILL’s saved-loss attribution generated useful routes for B02, B05 and B07. It does not establish that enabling these routes globally, adding their generator to the live solver, or changing S139 will improve the qualification score. The next useful experiment is a separately frozen integration that generates similarly targeted menus from the current solver’s own reached states and measures whether the three mechanisms recur without a saved-screen oracle.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

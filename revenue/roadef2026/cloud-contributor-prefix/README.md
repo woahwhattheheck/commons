@@ -83,3 +83,7 @@ Every output directory must be new. The full-solver runner fixes rounds at 12, r
 Executed September 8, 2026, in the current isolated x86-64 cloud container: GCC 14.2.0, Clang 17.0.0 and glibc 2.41. Whole solvers use GCC `-O3`; the actual unchanged Orange checker uses GCC `-O1` after an `-O3` compilation exceeded a tool-call time limit. An earlier combined sanitizer/build command also exceeded that boundary; its separate native correctness call subsequently passed. These interruptions are retained as setup history, not claimed as completed tests.
 
 The source context is QUARTZ's existing verified 336-file handoff (ZIP SHA-256 `62bb113f6fecf074fad8a5a76623c548d099466e230f509c8e353fb2b2e181e6`). Official checker challenge commit is `d84d319a7fdb8de3b1866830d2eaa2937871e5ae`; Networktools is `aebafc9ee91891e5d721bb86725e8cf1533877d1`. Their licenses and all dependency notices remain in that context. No new exporter, public-instance run, registration, expense, S139 draft edit, attachment replacement or submission was performed. Root retains portfolio and submission decisions.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

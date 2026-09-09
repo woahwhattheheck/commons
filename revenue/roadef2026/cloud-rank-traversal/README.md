@@ -26,3 +26,7 @@ python3 -B build_rank_traversal.py e801-main.cpp \
 The exact base is e8014d78f40df5546d80f0ff6f1c6bc3a97944a526d7c347eb0dcdbe77728e46 (47,011 bytes). The generated draft is d85ee6187607b1e04c9d77073d42e3eba699fe42309ee3f3324f25528a8f945e (50,431 bytes). rank_traversal.patch is 9d18568c3cefada7c2f3af964b863a740d5024da34ad4923f92019e1727f47f6 (7,408 bytes).
 
 Completed source controls are recorded in SOURCE-RECEIPT.json: exact base identity, unchanged kernel/writer and proposal/ejection regions, unchanged ordinary run/guard/main, repeat generation, exact patch application and altered-input rejection. Python source generation completed; C++ compilation, scheduler execution, performance and termination tests have not run. There is no workflow or execution trigger in this draft. A cloud test decision follows the separate e801 cold result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

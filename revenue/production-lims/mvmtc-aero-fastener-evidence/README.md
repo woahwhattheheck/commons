@@ -30,3 +30,7 @@ python revenue/production-lims/mvmtc-aero-fastener-evidence/mvmtc_fastener_evide
 ```
 
 Only Python standard-library modules are used.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

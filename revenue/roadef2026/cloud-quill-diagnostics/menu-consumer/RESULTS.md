@@ -10,3 +10,7 @@ Status: **complete public-development consumer**.
 - Delivery boundary: no S139 package, Gmail draft, attachment, qualification submission, or final-B state changed.
 
 The machine-readable authority is `RESULTS.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

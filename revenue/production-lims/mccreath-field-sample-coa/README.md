@@ -36,3 +36,7 @@ mutation, and all 75 CoAs remaining `STAGED_HUMAN_REVIEW` unless a non-empty nam
 and approval ID are explicitly supplied to `release_coa`.
 
 PRE-SALE TRANSPORT: NONE.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

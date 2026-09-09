@@ -40,3 +40,7 @@ python basciences_stability_intake.py
 ## Boundary
 
 Synthetic/deidentified fixtures and simulated/read-only state only. Synthetic route/method IDs are fixture assertions, not claims about buyer production configuration. No production LIMS, provider, customer, controlled-substance, regulatory, compliance, report-send, outreach, demo, payment, or spend action is performed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -61,3 +61,7 @@ This is public-case mechanism evidence only. It is not a cold run, hidden-rank
 forecast, selected-policy recommendation, package selection, S139 change or
 submission. No runtime/default, qualification artifact, organizer/customer
 message, or incumbent was changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

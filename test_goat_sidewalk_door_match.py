@@ -46,7 +46,12 @@ class GoatSidewalkDoorMatchTests(unittest.TestCase):
         self.assertEqual(self.result["door_baseline_blob"], "638e60b4")
         self.assertEqual(
             self.result["door_successors"],
-            ["sold-once-css-v1", "sold-once-copy-v1", "live-cash-v1"],
+            [
+                "sold-once-css-v1",
+                "sold-once-copy-v1",
+                "live-cash-v1",
+                "titanmcp-pad-pointer-v1",
+            ],
         )
         self.assertGreater(self.result["door_size"], 6893)
         self.assertEqual(self.result["checkout"], "NOT_MINTED")

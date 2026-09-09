@@ -25,6 +25,15 @@ DOOR_LIVE_CASH_V1 = (
     '<a href="../../repair-booking-preflight.html">$199 repair</a> · '
     '<a href="../../plant-downtime-handoff.html">$199 plant</a>.</p>\n\n'
 ).encode("utf-8")
+DOOR_TITANMCP_PAD_POINTER_V1 = (
+    '<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">\n'
+    '  <strong>titanmcp pad (contest):</strong> '
+    '<a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — '
+    '<code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · '
+    '<a href="../../titanmcp.html">titanmcp.html</a>. '
+    'Commons Shared Pad / <code>/mcp</code> KEEP separate.\n'
+    '</section>\n\n'
+).encode("utf-8")
 DOOR_SOLD_ONCE_CSS_V1 = (
     ".badge{display:inline-block;border:1px solid #d98a00;color:#7a4b00;"
     "border-radius:999px;padding:.2rem .7rem;font-size:.9rem;margin:.2rem 0}\n"
@@ -118,6 +127,7 @@ def normalized_observation(rel: str) -> dict[str, Any]:
             ("sold-once-css-v1", DOOR_SOLD_ONCE_CSS_V1, b""),
             ("sold-once-copy-v1", DOOR_SOLD_ONCE_COPY_V1, DOOR_SOLD_ONCE_COPY_BASELINE),
             ("live-cash-v1", DOOR_LIVE_CASH_V1, b""),
+            ("titanmcp-pad-pointer-v1", DOOR_TITANMCP_PAD_POINTER_V1, b""),
         )
     elif rel == ".github/workflows/pages-deploy.yml":
         replacements = (("pages-cron-offset-v1", PAGES_CRON_CURRENT, PAGES_CRON_AT_LAND),)

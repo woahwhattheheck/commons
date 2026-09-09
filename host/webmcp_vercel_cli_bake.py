@@ -180,7 +180,7 @@ def keep_errors() -> list[str]:
         errors.append("adapter_size_reminted")
     if not adapter_blob.startswith("393da756"):
         errors.append("adapter_reminted")
-    if not pad_blob.startswith("3b4df417"):
+    if not pad_blob.startswith("b3b0d7d3"):
         errors.append("pad_reminted")
     if not git_blob("vercel.json").startswith("86c5b13a"):
         errors.append("vercel_json_reminted")

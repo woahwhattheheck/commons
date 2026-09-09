@@ -94,3 +94,7 @@ a source that also includes later peer changes. Run the focused tests on that
 new combination and record its new source identity separately. Source publication
 and merge status are recorded in the owning thread; this package alone is not a
 claim that the production hunk has reached main.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
