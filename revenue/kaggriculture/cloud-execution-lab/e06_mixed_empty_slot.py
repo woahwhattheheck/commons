@@ -55,8 +55,12 @@ def _normalize_receipt(receipt: Mapping) -> dict:
         raise ValueError("complete receipt requires non-empty scenario_value mapping")
     if not isinstance(acquisitions, Mapping):
         raise ValueError("complete receipt requires successful_acquisitions mapping")
+    if any(not isinstance(scenario, str) or not scenario for scenario in values):
+        raise ValueError("scenario ids must be non-empty strings")
+    if any(not isinstance(scenario, str) or not scenario for scenario in acquisitions):
+        raise ValueError("scenario ids must be non-empty strings")
     if set(values) != set(acquisitions):
-        raise ValueError("receipt scenario sets must match")
+        raise ValueError("receipt scenario sets must match exactly")
     normalized_values = {}
     normalized_acquisitions = {}
     for scenario in values:
@@ -66,8 +70,10 @@ def _normalize_receipt(receipt: Mapping) -> dict:
         rows = acquisitions[scenario]
         if not isinstance(rows, (list, tuple)):
             raise ValueError("successful acquisition receipts must be ordered sequences")
-        normalized_values[str(scenario)] = float(value)
-        normalized_acquisitions[str(scenario)] = tuple(copy.deepcopy(rows))
+        # Preserve validated scenario ids exactly. Never stringify arbitrary keys:
+        # raw 1 and raw "1" are distinct inputs and must not alias at the gate.
+        normalized_values[scenario] = float(value)
+        normalized_acquisitions[scenario] = tuple(copy.deepcopy(rows))
     return {
         "complete": True,
         "scenario_value": normalized_values,

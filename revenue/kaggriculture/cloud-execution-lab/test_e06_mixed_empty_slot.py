@@ -158,6 +158,33 @@ class MixedEmptySlotTests(unittest.TestCase):
         self.assertEqual(result, market)
         self.assertEqual(report["reason"], "baseline_receipt_incomplete")
 
+    def test_int_vs_string_scenario_ids_cannot_alias(self):
+        market = full_mixed(vacancy=0)
+        def evaluate(queue):
+            inserted = any(row == ["SELL", "MILK", 4] for row in queue)
+            key = 1 if inserted else "1"
+            return {
+                "complete": True,
+                "scenario_value": {key: 105 if inserted else 100},
+                "successful_acquisitions": {key: (("HIRE",),)},
+            }
+        with self.assertRaisesRegex(ValueError, "scenario ids must be non-empty strings"):
+            reclaim_mixed_empty_slot(
+                market, {"MILK": 4}, max_orders=10, evaluate=evaluate
+            )
+
+    def test_mixed_raw_scenario_keys_are_rejected_before_collision(self):
+        market = full_mixed(vacancy=0)
+        bad = {
+            "complete": True,
+            "scenario_value": {1: 100, "1": 101},
+            "successful_acquisitions": {1: (("HIRE",),), "1": (("HIRE",),)},
+        }
+        with self.assertRaisesRegex(ValueError, "scenario ids must be non-empty strings"):
+            reclaim_mixed_empty_slot(
+                market, {"MILK": 4}, max_orders=10, evaluate=lambda queue: bad
+            )
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
