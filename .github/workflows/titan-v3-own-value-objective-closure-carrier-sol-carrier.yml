@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 3
+          fetch-depth: 4
           persist-credentials: false
 
       - name: Bind exact carrier head and repaired ancestor
@@ -126,17 +126,18 @@ jobs:
           for root in destinations:
               materialize(root)
 
-          def tree_digest(root: Path):
+          def tree_digest(root: Path, names):
               rows = []
-              for path in sorted(p for p in root.rglob('*') if p.is_file()):
-                  rel = path.relative_to(root).as_posix()
-                  rows.append(rel + '\0' + hashlib.sha256(path.read_bytes()).hexdigest())
+              for name in sorted(names):
+                  path = root / name
+                  rows.append(name + '\0' + hashlib.sha256(path.read_bytes()).hexdigest())
               return hashlib.sha256('\n'.join(rows).encode()).hexdigest()
 
-          control_digest = tree_digest(destinations[0])
-          candidate_digest = tree_digest(destinations[1])
+          canonical_names = sorted([*mapping.keys(), 'SOURCE.json'])
+          control_digest = tree_digest(destinations[0], canonical_names)
+          candidate_digest = tree_digest(destinations[1], canonical_names)
           if control_digest != candidate_digest:
-              raise SystemExit('control/candidate canonical closure trees differ before overlay wrapper')
+              raise SystemExit('control/candidate canonical closure trees differ before candidate staging')
 
           binding = {
               'carrier_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
@@ -145,10 +146,11 @@ jobs:
               'archive_sha256': archive_sha256,
               'archive_bytes': len(archive_bytes),
               'runtime_files': len(mapping),
+              'canonical_names': canonical_names,
               'source_json_sha256': hashlib.sha256(archived['SOURCE.json']).hexdigest(),
               'source_map_sha256': hashlib.sha256(json.dumps(mapping, sort_keys=True, separators=(',', ':')).encode()).hexdigest(),
               'control_tree_sha256': control_digest,
-              'candidate_tree_sha256_before_wrapper': candidate_digest,
+              'candidate_tree_sha256_before_staging': candidate_digest,
               'mapped_observed_clone': mapping.get('observed_clone.py'),
               'source_rows': source_rows,
           }
@@ -158,7 +160,7 @@ jobs:
           print(json.dumps({k: binding[k] for k in ('archive_sha256','runtime_files','source_map_sha256','control_tree_sha256','mapped_observed_clone')}, indent=2, sort_keys=True))
           PY
 
-      - name: Prove mapped root imports and generate candidate wrapper inside its closure
+      - name: Prove root imports and stage exact reviewed candidate inside its closure
         shell: bash
         run: |
           set -euo pipefail
@@ -168,6 +170,7 @@ jobs:
           CANDIDATE="$OUT/candidate-runtime"
           CASE="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective"
           CONTROL="$CONTROL" CANDIDATE="$CANDIDATE" CASE="$CASE" OUT="$OUT" python - <<'PY'
+          import hashlib
           import json
           import os
           from pathlib import Path
@@ -192,28 +195,50 @@ jobs:
               'main': str(Path(main.__file__).resolve()),
           }}, sort_keys=True))
           """
-              completed = subprocess.run([sys.executable, '-c', probe], check=True, capture_output=True, text=True, timeout=45)
+              completed = subprocess.run([sys.executable, '-B', '-c', probe], check=True, capture_output=True, text=True, timeout=45)
               paths = json.loads(completed.stdout.strip().splitlines()[-1])
               for module_name, actual in paths.items():
                   if Path(actual).parent != root:
                       raise SystemExit(f'{label} {module_name} escaped materialized root: {actual}')
               (out / f'{label.upper()}-IMPORT-CLOSURE.json').write_text(json.dumps(paths, indent=2, sort_keys=True) + '\n', encoding='utf-8')
 
-          wrapper = candidate / 'own_value_candidate.py'
-          wrapper.write_text(f'''# generated evidence wrapper; not repository source\nfrom __future__ import annotations\nimport importlib.util\nfrom pathlib import Path\nimport sys\nROOT = Path(__file__).resolve().parent\nCASE = Path({str(case)!r})\nif str(ROOT) not in sys.path:\n    sys.path.insert(0, str(ROOT))\nspec = importlib.util.spec_from_file_location("_closure_own_value_objective", CASE / "own_value_objective.py")\nif spec is None or spec.loader is None:\n    raise ImportError("cannot load own-value objective overlay")\npatch = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(patch)\nINSTALL_RECEIPT = patch.install(expected_root=ROOT)\nimport main as canonical_main\ndef agent(observation, configuration=None):\n    return canonical_main.agent(observation, configuration)\n''', encoding='utf-8')
+          expected_blobs = {
+              'candidate.py': 'a642b3dd6fc272d74ca58cd528dfbd86aa1504fd',
+              'own_value_objective.py': '17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0',
+          }
+          staged_rel_dir = Path('analysis/titan-v3-own-value-objective-sol-objective')
+          staged_dir = candidate / staged_rel_dir
+          staged_dir.mkdir(parents=True, exist_ok=False)
+          staged = {}
+          for name, expected_blob in expected_blobs.items():
+              source = case / name
+              data = source.read_bytes()
+              actual_blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+              if actual_blob != expected_blob:
+                  raise SystemExit(f'reviewed {name} Git blob drift: expected {expected_blob}, got {actual_blob}')
+              target = staged_dir / name
+              target.write_bytes(data)
+              staged[name] = {
+                  'relative_path': target.relative_to(candidate).as_posix(),
+                  'git_blob': actual_blob,
+                  'sha256': hashlib.sha256(data).hexdigest(),
+                  'bytes': len(data),
+              }
+          (out / 'CANDIDATE-SOURCE-BINDING.json').write_text(json.dumps(staged, indent=2, sort_keys=True) + '\n', encoding='utf-8')
 
+          candidate_entry = staged_dir / 'candidate.py'
           smoke = f"""
           import importlib.util, json
           from pathlib import Path
-          path = Path({str(wrapper)!r})
+          path = Path({str(candidate_entry)!r})
           spec = importlib.util.spec_from_file_location('_closure_candidate_smoke', path)
           if spec is None or spec.loader is None:
-              raise SystemExit('candidate wrapper spec unavailable')
+              raise SystemExit('candidate spec unavailable')
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
           print(json.dumps(module.INSTALL_RECEIPT, sort_keys=True))
           """
-          completed = subprocess.run([sys.executable, '-c', smoke], check=True, capture_output=True, text=True, timeout=45)
+          completed = subprocess.run([sys.executable, '-B', '-c', smoke], check=True, capture_output=True, text=True, timeout=45)
           receipt = json.loads(completed.stdout.strip().splitlines()[-1])
           if Path(receipt['source_path']).resolve() != (candidate / 'selected_sell_core.py').resolve():
               raise SystemExit('overlay did not bind extracted candidate SELL core')
@@ -245,7 +270,7 @@ jobs:
             --recheck-first \
             --output "$OUT/control.json"
 
-      - name: Run complete-closure own-value candidate panel
+      - name: Run retained reviewed candidate panel from complete closure
         shell: bash
         run: |
           set -euo pipefail
@@ -255,7 +280,7 @@ jobs:
           python "$KAG/cloud-eval/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --candidate "$OUT/candidate-runtime/own_value_candidate.py::agent" \
+            --candidate "$OUT/candidate-runtime/analysis/titan-v3-own-value-objective-sol-objective/candidate.py::agent" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
             --seeds "$SEEDS" \
@@ -281,6 +306,119 @@ jobs:
           cat "$OUT/PAIRED-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
           printf '\n> Evidence-only closure rerun. No promotion/submission authority; comparator repair is tracked separately.\n' >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Bind report fingerprints and re-inventory both roots post-panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          OUT="$RUNNER_TEMP/titan-v3-own-value-closure"
+          CONTROL="$OUT/control-runtime"
+          CANDIDATE="$OUT/candidate-runtime"
+          OUT="$OUT" CONTROL="$CONTROL" CANDIDATE="$CANDIDATE" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          out = Path(os.environ['OUT']).resolve()
+          control = Path(os.environ['CONTROL']).resolve()
+          candidate = Path(os.environ['CANDIDATE']).resolve()
+          binding = json.loads((out / 'CLOSURE-BINDING.json').read_text())
+          staged = json.loads((out / 'CANDIDATE-SOURCE-BINDING.json').read_text())
+          control_report = json.loads((out / 'control.json').read_text())
+          candidate_report = json.loads((out / 'candidate.json').read_text())
+          paired = json.loads((out / 'PAIRED-REPORT.json').read_text())
+
+          def sha256(path: Path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          expected_runtime = {row['member']: row for row in binding['source_rows']}
+          canonical_names = set(binding['canonical_names'])
+          staged_names = {row['relative_path'] for row in staged.values()}
+
+          def inventory(root: Path):
+              result = {}
+              for path in sorted(p for p in root.rglob('*') if p.is_file()):
+                  rel = path.relative_to(root).as_posix()
+                  result[rel] = {'sha256': sha256(path), 'bytes': path.stat().st_size}
+              return result
+
+          control_inv = inventory(control)
+          candidate_inv = inventory(candidate)
+          if set(control_inv) != canonical_names:
+              raise SystemExit('control post-run member set drift')
+          if set(candidate_inv) != canonical_names | staged_names:
+              raise SystemExit('candidate post-run member set drift')
+
+          for name, row in expected_runtime.items():
+              for label, inv in [('control', control_inv), ('candidate', candidate_inv)]:
+                  actual = inv.get(name)
+                  if actual != {'sha256': row['sha256'], 'bytes': row['bytes']}:
+                      raise SystemExit(f'{label} runtime byte drift: {name}')
+          source_expected = {'sha256': binding['source_json_sha256'], 'bytes': (control / 'SOURCE.json').stat().st_size}
+          if control_inv['SOURCE.json'] != source_expected or candidate_inv['SOURCE.json'] != source_expected:
+              raise SystemExit('SOURCE.json post-run drift')
+          for row in staged.values():
+              actual = candidate_inv[row['relative_path']]
+              if actual != {'sha256': row['sha256'], 'bytes': row['bytes']}:
+                  raise SystemExit(f"staged candidate byte drift: {row['relative_path']}")
+
+          control_entry = control / 'main.py'
+          candidate_entry = candidate / staged['candidate.py']['relative_path']
+          expected_control_fp = {'entry': 'main.py', 'callable': 'agent', 'sha256': sha256(control_entry)}
+          expected_candidate_fp = {'entry': 'candidate.py', 'callable': 'agent', 'sha256': sha256(candidate_entry)}
+          if control_report.get('candidate') != expected_control_fp:
+              raise SystemExit('control evaluator fingerprint is not exact retained entry')
+          if candidate_report.get('candidate') != expected_candidate_fp:
+              raise SystemExit('candidate evaluator fingerprint is not exact retained entry')
+          if paired.get('control_fingerprint') != expected_control_fp or paired.get('candidate_fingerprint') != expected_candidate_fp:
+              raise SystemExit('paired report fingerprint drift')
+
+          for label, report in [('control', control_report), ('candidate', candidate_report)]:
+              progress = report.get('progress') or {}
+              if progress.get('state') != 'complete' or progress.get('recorded_games') != 32 or progress.get('planned_games') != 32:
+                  raise SystemExit(f'{label} evaluator report is not complete 32/32')
+              if any(game.get('status') != 'complete' for game in report.get('games', [])):
+                  raise SystemExit(f'{label} contains failed/noncomplete game')
+              reproduction = report.get('reproducibility') or {}
+              if reproduction.get('checked') is not True or reproduction.get('same_trace_and_scores') is not True:
+                  raise SystemExit(f'{label} reproducibility recheck failed')
+          if paired.get('git_head') != 'aa33226abb0d5158510d85f2576f8207d53c2a85':
+              raise SystemExit('paired report source head drift')
+          if paired.get('promotion_authorized') is not False or paired.get('hosted_leaderboard_claim') is not False:
+              raise SystemExit('paired report crossed evidence-only boundary')
+
+          def canonical_digest(inv):
+              rows = [name + '\0' + inv[name]['sha256'] for name in sorted(canonical_names)]
+              return hashlib.sha256('\n'.join(rows).encode()).hexdigest()
+          control_post = canonical_digest(control_inv)
+          candidate_post = canonical_digest(candidate_inv)
+          if control_post != binding['control_tree_sha256']:
+              raise SystemExit('control canonical tree digest drift after games')
+          if candidate_post != binding['candidate_tree_sha256_before_staging']:
+              raise SystemExit('candidate canonical tree digest drift after games')
+
+          receipt = {
+              'carrier_head': binding['carrier_head'],
+              'repaired_parent': binding['repaired_parent'],
+              'control_entry': {'path': str(control_entry), **expected_control_fp},
+              'candidate_entry': {'path': str(candidate_entry), **expected_candidate_fp},
+              'control_member_count': len(control_inv),
+              'candidate_member_count': len(candidate_inv),
+              'canonical_member_count': len(canonical_names),
+              'staged_candidate_members': staged,
+              'control_canonical_tree_sha256_postrun': control_post,
+              'candidate_canonical_tree_sha256_postrun': candidate_post,
+              'paired_verdict': paired.get('verdict'),
+              'paired_cells': (paired.get('overall') or {}).get('cells'),
+              'promotion_authorized': paired.get('promotion_authorized'),
+              'hosted_leaderboard_claim': paired.get('hosted_leaderboard_claim'),
+              'status': 'BOUND_AND_POSTRUN_CLEAN',
+          }
+          (out / 'POSTRUN-BINDING.json').write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
       - name: Retain exact closure evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -292,7 +430,11 @@ jobs:
             ${{ runner.temp }}/titan-v3-own-value-closure/CLOSURE-BINDING.json
             ${{ runner.temp }}/titan-v3-own-value-closure/CONTROL-IMPORT-CLOSURE.json
             ${{ runner.temp }}/titan-v3-own-value-closure/CANDIDATE-IMPORT-CLOSURE.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/CANDIDATE-SOURCE-BINDING.json
             ${{ runner.temp }}/titan-v3-own-value-closure/CANDIDATE-INSTALL-RECEIPT.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/POSTRUN-BINDING.json
+            ${{ runner.temp }}/titan-v3-own-value-closure/candidate-runtime/analysis/titan-v3-own-value-objective-sol-objective/candidate.py
+            ${{ runner.temp }}/titan-v3-own-value-closure/candidate-runtime/analysis/titan-v3-own-value-objective-sol-objective/own_value_objective.py
             ${{ runner.temp }}/titan-v3-own-value-closure/control.json
             ${{ runner.temp }}/titan-v3-own-value-closure/candidate.json
             ${{ runner.temp }}/titan-v3-own-value-closure/PAIRED-REPORT.json
