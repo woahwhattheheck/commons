@@ -1,0 +1,10 @@
+{
+  "schema": "titan-v3-operating-stock-active-prefix-binding/v1",
+  "base_commit": "46e1c1d9be56c75e21f32ea2ad11b0684375fa8c",
+  "operating_stock_git_blob": "781aa90da0d85d0ba23c665e29d6087d182c085e",
+  "official_engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "max_certified_market_orders": 10,
+  "canonical_files_modified": false,
+  "score_claim": false,
+  "submission_authorized": false
+}

@@ -1,0 +1,62 @@
+name: titan-v3-operating-stock-active-prefix
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-operating-stock-active-prefix/**'
+      - '.github/workflows/titan-operating-stock-active-prefix.yml'
+  push:
+    branches:
+      - 'sol-coupler/titan-v3-operating-stock-active-prefix-20260909-01'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-operating-stock-active-prefix/**'
+      - '.github/workflows/titan-operating-stock-active-prefix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-operating-stock-prefix-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact source bindings
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/operating_stock.py)" = \
+            "781aa90da0d85d0ba23c665e29d6087d182c085e"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py)" = \
+            "3c202c7ee921da239356789e266b694635103fc4"
+      - name: Run focused and incumbent contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONPYCACHEPREFIX: /tmp/titan-prefix-pycache
+          PYTHONHASHSEED: '0'
+        run: |
+          set -euo pipefail
+          python candidates/v3-operating-stock-active-prefix/test_active_prefix.py
+          python test_operating_stock.py
+          python -m py_compile \
+            candidates/v3-operating-stock-active-prefix/active_prefix.py \
+            candidates/v3-operating-stock-active-prefix/candidate.py \
+            candidates/v3-operating-stock-active-prefix/test_active_prefix.py
+      - name: Verify clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          test -z "$(git status --porcelain)"
