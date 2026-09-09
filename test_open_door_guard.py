@@ -281,6 +281,41 @@ def main():
         "protected-set",
     }, rules(sample_source_lookalike)
 
+    # Polar AS9100 #11191 landed PermissionError raises whose nearby source did
+    # not prove production-LIMS human-release context, so open-door-guard failed
+    # on the merge SHA. Keep the fail-closed product behavior, but require the
+    # existing human-release vocabulary. Commons-path copies stay rejectable.
+    polar_old_lock = diff(
+        "revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py",
+        [
+            'raise PermissionError("held evidence cannot be approved")',
+            'raise PermissionError("automatic disposition disabled")',
+        ],
+    )
+    assert rules(polar_old_lock) == {"permission-exception"}, rules(polar_old_lock)
+    polar_release = diff(
+        "revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py",
+        [
+            'if pack["status"] != "REVIEW_READY":',
+            '    raise PermissionError("held evidence cannot release a report")',
+            'def automatic_disposition(self, *_args, **_kwargs):',
+            '    raise PermissionError("automatic release is disabled")',
+        ],
+    )
+    assert guard.scan_diff(polar_release) == [], guard.scan_diff(polar_release)
+    assert "permission-exception" in rules(diff("commons_mcp.py", [
+        'raise PermissionError("automatic release is disabled")',
+    ]))
+    polar_path = Path("revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py")
+    polar_added = [
+        guard.AddedLine(polar_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(polar_path.read_text(encoding="utf-8").splitlines(), 1)
+    ]
+    polar_violations = [
+        item for item in guard.scan_added(polar_added) if item.rule == "permission-exception"
+    ]
+    assert polar_violations == [], polar_violations
+
     # Compact catalog exclusion lists may name retired mechanisms only when they
     # do not collocate claim/seat with "gate" on one line. PR 4924's compact
     # out_of_scope one-liners failed open-door-guard on this collocation.
