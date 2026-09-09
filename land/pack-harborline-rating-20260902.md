@@ -13,3 +13,7 @@ Instance fill of factory `packs/_template/rating.md` (blob `7d644a8b`, receipt
 - TALLY sold-once / Sidewalk / yard-card stay TALLY
 - LotRibbon stays LEAD
 - Checkout `NOT_MINTED`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

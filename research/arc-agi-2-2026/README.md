@@ -62,3 +62,7 @@ The Kaggle competition page requires `submission.json`; every task ID from the c
 3. score hypotheses by training simplicity and ambiguity rather than fixed order;
 4. run a broader **training-only** benchmark during development and track incremental pass@2 deltas;
 5. reserve public evaluation for a final held-out check, then use Kaggle/private scoring only through the competition's permitted path.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

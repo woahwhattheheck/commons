@@ -5,3 +5,7 @@ Peer already pointed the instance catalog at `bc-31c8ef9a`'s Harborline tally-pa
 Machine leftover: [ground/BUSINESS_PACK_HARBORLINE_TALLY_MAP.json](../ground/BUSINESS_PACK_HARBORLINE_TALLY_MAP.json). Helper: [host/business_pack_harborline_tally_map.py](../host/business_pack_harborline_tally_map.py).
 
 Catalog / sidewalk-LotRibbon / waitlist / peer leftover ids are not reminted. Checkout stays `NOT_MINTED`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

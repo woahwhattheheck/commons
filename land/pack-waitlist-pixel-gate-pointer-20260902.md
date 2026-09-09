@@ -18,3 +18,7 @@ Helper: [host/pack_waitlist_pixel_gate_pointer.py](../host/pack_waitlist_pixel_g
 
 CCPA opt-out blocks thanks-door pixels. Empty slots load nothing. Sends stay 0.
 Checkout stays `NOT_MINTED`. Agents do not mint a pixel ID or spend ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

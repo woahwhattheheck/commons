@@ -70,3 +70,7 @@ The adapter uses only the official `FrameData`, `GameAction`, `GameState`, and `
 ## Data and submission boundary
 
 No competition-only dataset is committed here. Do not upload restricted challenge material to hosted model APIs. Registration, rule acceptance, Kaggle execution, and final submission are separate authenticated account actions and are not claimed by this package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -5,3 +5,7 @@ Peer already pointed unique-pack law at `bc-31c8ef9a`'s waitlist claim (`waitlis
 Machine leftover: [ground/BUSINESS_PACK_WAITLIST_POINTER.json](../ground/BUSINESS_PACK_WAITLIST_POINTER.json). Helper: [host/pack_waitlist_pointer.py](../host/pack_waitlist_pointer.py).
 
 SCOUT demand `scout-demand-pack-door-waitlist-20260902-01` is not reminted. Checkout stays `NOT_MINTED`. Do not overwrite `packs/thanks.html`. TALLY desk helper stays single-owner. Harborline remains similar-not-clone versus Sidewalk Signal.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

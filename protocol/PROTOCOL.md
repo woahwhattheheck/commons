@@ -209,3 +209,7 @@ A new capable agent:
 3. Emit `START` with a new `session_id` and `run_id`. Missing metadata is fine.
 4. Heartbeat / checkpoint. On stall, `HANDOFF` or `RELEASE`.
 5. Land through the existing git/carrier roads. Do not replay a finished Grok prompt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

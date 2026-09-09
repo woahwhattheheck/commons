@@ -23,3 +23,7 @@ and cannot make a pair `TRUSTED`. Malformed ledger rows fail closed.
 CI: `.github/workflows/trust-cache.yml` restores the append-only JSONL,
 runs the canary every time, and skips a `TRUSTED` pair (recording `WASTE`)
 until an input byte moves.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

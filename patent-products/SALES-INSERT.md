@@ -42,3 +42,7 @@ Full battery: `python3 -m unittest test_germline.py test_mirror_organ.py test_wi
 - Not a live `.mno` pulse, not a device actuation, not address 337, not a Titan walk.
 - Not a filed patent — the provisional corpus is the working source; "not a filing receipt" is printed inside it.
 - No buyers, cash, sends, or Stripe charges are claimed by this insert.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
