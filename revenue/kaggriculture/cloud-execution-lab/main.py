@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: Apache-2.0
-from copy import deepcopy
 """Canonical TITAN entrypoint. Feature choices are deterministic package data."""
 _INSTANCE = None
 
@@ -22,61 +21,18 @@ def _new_instance(root, feature_data):
                 return selected
             return super()._market_pressure_selected(obs, cfg, selected)
 
-        def _finish_production(self, obs, returned, cfg=None):
-            # Mirror TitanAgent's finalization boundary so the pressure result is
-            # what every receipt/history owner observes, rather than mutating the
-            # action after those ledgers have committed it.
-            if self.spatial is not None:
-                self.spatial.observe_crop_receipts(
-                    obs, None if self.history is None else self.history.fill_result,
-                    self.controller.cur)
-            if self.spatial is not None:
-                returned = self.spatial.guard_returned(
-                    obs, returned,
-                    repair_fallback=self.diagnostics.get('status') == 'deadline_fallback')
-            post = self._selected_snapshot(obs, returned) if self.history is not None else None
-            if self.spatial is not None:
-                returned = self.spatial.guard_crop_returned(obs, returned, post)
-            returned = self._feed_stock_selected(obs, cfg or {}, returned)
-            returned = self._early_capital_selected(obs, cfg or {}, returned)
-            if self.diagnostics.get('status') == 'completed':
-                self._final_pressure_boundary = True
-                try:
-                    returned = super()._market_pressure_selected(
-                        obs, cfg or {}, returned)
-                finally:
-                    self._final_pressure_boundary = False
-            if self.quadrant is not None:
-                self.quadrant.finish(obs, returned)
-                self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
-                if self._quadrant_admission is not None:
-                    self.diagnostics['fourth_quadrant_admission'] = deepcopy(
-                        self._quadrant_admission.last_report)
-            if self.spatial is not None:
-                self.spatial.finish(obs, returned, post)
-                self.spatial.finish_crop(
-                    obs, returned, post, self.controller.cur,
-                    seller_completed=self.diagnostics.get('status') == 'completed')
-                self.diagnostics['route_events'] = list(self.spatial.events)
-                self.diagnostics['idle_fertilizer_receipts'] = list(
-                    self.spatial.receipt_events)
-                self.diagnostics['idle_fertilizer_obligation'] = deepcopy(
-                    self.spatial.sale_obligation)
-                if self.features.crop_release:
-                    self.diagnostics['crop_release'] = deepcopy(self.spatial.crop_intent)
-                    self.diagnostics['crop_release_action'] = deepcopy(
-                        self.spatial.crop_report)
-            if self.history is not None:
-                needed = (
-                    self.features.terminal_history or
-                    (self.spatial is not None and
-                     (self.spatial.sale_obligation is not None or
-                      self.spatial.crop_intent is not None))
-                )
-                self.history.remember(
-                    obs, cfg or {}, returned, post if needed else None)
-                self.diagnostics['history'] = self.history.diagnostics
-            return returned
+        def _early_capital_selected(self, obs, cfg, selected):
+            # TitanAgent._finish_production calls this after every stock/crop
+            # guard and before every receipt/history commit. Reuse that stable
+            # boundary instead of copying the finalizer or mutating afterward.
+            returned = super()._early_capital_selected(obs, cfg, selected)
+            if self.diagnostics.get('status') != 'completed':
+                return returned
+            self._final_pressure_boundary = True
+            try:
+                return super()._market_pressure_selected(obs, cfg, returned)
+            finally:
+                self._final_pressure_boundary = False
 
     admission = None
     if features.fourth_quadrant:
