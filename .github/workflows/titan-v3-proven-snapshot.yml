@@ -1,0 +1,85 @@
+name: titan-v3-proven-snapshot
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3/proven-snapshot/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/ARTIFACTS.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/FILES.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-sell-v3-source.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/development-v3.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/heldout-v3.json'
+      - '.github/workflows/titan-v3-proven-snapshot.yml'
+  push:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3/proven-snapshot/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/ARTIFACTS.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/FILES.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-sell-v3-source.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/development-v3.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/heldout-v3.json'
+      - '.github/workflows/titan-v3-proven-snapshot.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-proven-snapshot-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile implementation and tests
+        run: >-
+          python -m compileall -q
+          revenue/kaggriculture/cloud-execution-lab/titan-v3/proven-snapshot
+      - name: Run adversarial unit suite
+        run: >-
+          python -m unittest discover
+          -s revenue/kaggriculture/cloud-execution-lab/titan-v3/proven-snapshot
+          -p 'test_*.py' -v
+      - name: Verify real frozen source and materialize runnable candidate
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: >-
+          python titan-v3/proven-snapshot/restore.py
+          --output "${RUNNER_TEMP}/titan-v3-proven.tar.gz"
+          --receipt "${RUNNER_TEMP}/titan-v3-proven.receipt.json"
+      - name: Check receipt contract
+        run: |
+          python - <<'PY'
+          import json, os, pathlib
+          receipt = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'titan-v3-proven.receipt.json').read_text())
+          assert receipt['status'] == 'PASS'
+          assert receipt['candidate']['entrypoint'] == 'main.py::agent'
+          assert receipt['source']['commit'] == '9f89a2cd75c5c89198caa1617a9e399900553ce3'
+          assert receipt['policy_delta'] == 'generated main.py alias only; frozen policy bytes unchanged'
+          evidence = receipt['evidence_scope']
+          assert evidence['status'] == 'BOUND_CONTROL_ONLY'
+          assert evidence['development']['candidate'] == {
+              'W': 12, 'T': 0, 'L': 0, 'failed': 0, 'games': 12,
+          }
+          assert evidence['held_out']['candidate'] == {
+              'W': 8, 'T': 0, 'L': 0, 'failed': 0, 'games': 8,
+          }
+          paired = evidence['held_out']['paired']
+          assert paired['cells'] == 8
+          assert paired['sum_own_cash_delta'] == 1317.0
+          assert paired['mean_own_cash_delta'] == 164.625
+          assert paired['minimum_own_cash_delta'] == -1031.0
+          assert paired['negative_cells'] == 1
+          assert paired['uniform_non_regression'] is False
+          boundary = evidence['strength_boundary']
+          assert boundary['hosted_leaderboard_claim'] is False
+          assert boundary['promotion'] == 'FULL_CURRENT_MATCHED_PANEL_REQUIRED'
+          PY
