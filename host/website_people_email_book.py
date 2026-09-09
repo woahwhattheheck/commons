@@ -18,7 +18,7 @@ import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -218,6 +218,7 @@ class _WebsiteAttributes(HTMLParser):
         self.description = ""
         self.og_description = ""
         self.book_url = ""
+        self.base_href: str | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         # Keep the first occurrence, as HTML does for duplicate attributes.
@@ -232,6 +233,8 @@ class _WebsiteAttributes(HTMLParser):
             if values.get("property", "").strip().casefold() == "og:description":
                 if not self.og_description:
                     self.og_description = content
+        elif tag == "base" and self.base_href is None and "href" in values:
+            self.base_href = values["href"].strip()
         elif tag == "a" and "data-book-url" in values and not self.book_url:
             self.book_url = values.get("href", "").strip()
 
@@ -249,6 +252,19 @@ def extract_website(html: str, source: str) -> dict[str, Any]:
         cal = CAL_RE.search(html)
         if cal:
             book = cal.group(0).rstrip(">\"'")
+    if book:
+        # A draft leaves the source page, so relative hrefs need its document URL.
+        # File fixtures have no known web origin; keep their original URL text.
+        try:
+            origin = urlparse(source)
+            if origin.scheme in {"http", "https"} and origin.netloc:
+                base = source
+                if attributes.base_href is not None:
+                    base = urljoin(source, attributes.base_href)
+                book = urljoin(base, book)
+        except ValueError:
+            # An invalid source/base URL must not discard other extracted data.
+            pass
     return {
         "source": source,
         "title": title,
