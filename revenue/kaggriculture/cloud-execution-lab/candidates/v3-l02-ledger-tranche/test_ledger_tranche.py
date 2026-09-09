@@ -68,6 +68,25 @@ class ProductTrancheTests(unittest.TestCase):
         self.assertEqual(action, before)
         self.assertFalse(report["changed"])
 
+    def test_later_malformed_target_does_not_partially_commit_predecessor(self):
+        """Predecessor CARROT must not commit when a later tracked SELL is malformed."""
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [
+                ["SELL", "CARROT", 4],
+                ["SELL", "MILK"],  # len-2 malformed active target
+            ],
+        }
+        before = copy.deepcopy(action)
+        shed = {"CARROT": 40, "MILK": 7}
+        returned, report = l02.apply_product_tranche(action, shed, OBS, CFG)
+        self.assertIs(returned, action)
+        self.assertEqual(action, before)
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "malformed_active_sell")
+        self.assertEqual(returned["market"][0], ["SELL", "CARROT", 4])
+
 
 class LedgerTests(unittest.TestCase):
     def test_reconciliation_uses_active_physical_fills_and_trims_future(self):
