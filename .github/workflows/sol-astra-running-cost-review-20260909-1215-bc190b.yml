@@ -1,0 +1,52 @@
+name: sol-astra-running-cost-review-20260909-1215-bc190b
+
+on:
+  push:
+    branches:
+      - sol-astra-running-cost-review-20260909-1215-bc190b
+
+permissions:
+  contents: read
+
+jobs:
+  running-cost-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Focused running-cost contract
+        run: python3 -m unittest -v test_business_pack_running_cost.py
+      - name: Truth invariants
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          law = json.loads(Path('ground/BUSINESS_PACK_RUNNING_COST.json').read_text())
+          assert law['id'] == 'cursor-business-pack-running-cost-20260902-01'
+          assert law['running_cost'] == 'OWNER_UNSET'
+          assert law['running_cost_usd'] is None
+          assert law['owner_pasted_running_cost'] is False
+          assert law['checkout'] == 'NOT_MINTED'
+          assert law['agents_spend_ads'] is False
+          assert law['gate'] is False and law['commons_admission'] is False
+          print('RUNNING_COST_TRUTH=PASS')
+          PY
+      - name: Reviewed path blobs
+        shell: bash
+        run: |
+          for p in \
+            business-packs.html \
+            ground/BUSINESS_PACKS.json \
+            ground/BUSINESS_PACKS.md \
+            ground/BUSINESS_PACK_RUNNING_COST.json \
+            ground/BUSINESS_PACK_RUNNING_COST.md \
+            host/business_pack_running_cost.py \
+            p/cursor-business-pack-running-cost-20260902-01.md \
+            packs/_template/day.md \
+            packs/_template/offer.md \
+            packs/_template/running-cost.md \
+            test_business_pack_running_cost.py; do
+            printf '%s ' "$p"
+            git hash-object "$p"
+          done
