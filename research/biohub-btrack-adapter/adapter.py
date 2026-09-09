@@ -348,6 +348,7 @@ def tracks_to_rows(
         raise AdapterError("tracks_to_rows accepts exactly one dataset")
     ordered = sorted(detections)
     node_ids = {item.detection_id: index for index, item in enumerate(ordered)}
+    detection_by_id = {item.detection_id: item for item in ordered}
     rows: list[dict[str, object]] = [
         {
             "dataset": dataset,
@@ -434,6 +435,8 @@ def tracks_to_rows(
             child_parent = child.parent
             if child_parent is None or _as_int(child_parent, f"track {child_id} parent") != track_id:
                 raise AdapterError(f"track {track_id} child declaration disagrees with child {child_id} parent")
+        if len(seen_children) > 2:
+            raise AdapterError(f"track {track_id} declares more than two children")
         if len(seen_children) not in (0, 2):
             raise AdapterError(
                 f"track {track_id} must declare exactly 0 or 2 children for pinned BTrack output"
@@ -445,8 +448,8 @@ def tracks_to_rows(
     for source_detection_id, target_detection_id in ordered_edges:
         if source_detection_id not in node_ids or target_detection_id not in node_ids:
             raise AdapterError("edge identity escaped the current dataset")
-        source = next(item for item in ordered if item.detection_id == source_detection_id)
-        target = next(item for item in ordered if item.detection_id == target_detection_id)
+        source = detection_by_id[source_detection_id]
+        target = detection_by_id[target_detection_id]
         if target.t != source.t + 1:
             raise AdapterError("only adjacent-frame edges may be emitted")
         incoming[target_detection_id] += 1
