@@ -28,28 +28,38 @@ class MaterializeTests(unittest.TestCase):
         (source / "other.txt").write_text("untouched\n", encoding="utf-8")
         return source
 
-    def test_all_arms_are_one_file_and_source_stays_exact(self) -> None:
+    def test_all_arms_are_exact_and_source_stays_unchanged(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = self.source(root)
             before = materialize.inventory(source)
+            source_closure = materialize.closure_sha256(before)
             expected = materialize.git_blob_sha1((source / "scheduler.py").read_bytes())
             closures = set()
+            blobs = set()
             for arm in materialize.VALID_ARMS:
                 receipt = materialize.materialize(
                     source, root / arm, arm=arm, expected_scheduler_blob=expected
                 )
                 self.assertEqual(receipt["arm"], arm)
-                self.assertEqual(receipt["candidate"]["changed_files"], ["scheduler.py"])
-                self.assertEqual(receipt["source"]["closure_sha256"], materialize.closure_sha256(before))
+                expected_changed = [] if arm == "CONTROL" else ["scheduler.py"]
+                self.assertEqual(receipt["candidate"]["changed_files"], expected_changed)
+                self.assertEqual(receipt["source"]["closure_sha256"], source_closure)
                 self.assertEqual(materialize.inventory(source), before)
                 closures.add(receipt["candidate"]["closure_sha256"])
+                blobs.add(receipt["candidate"]["scheduler_git_blob_sha1"])
                 text = (root / arm / "scheduler.py").read_text(encoding="utf-8")
-                self.assertIn(materialize.CORE, text)
-                self.assertNotIn(materialize.OLD, text)
-                if arm != "CORE":
+                if arm == "CONTROL":
+                    self.assertIn(materialize.OLD, text)
+                    self.assertNotIn(materialize.CORE, text)
+                    self.assertEqual(receipt["candidate"]["closure_sha256"], source_closure)
+                else:
+                    self.assertIn(materialize.CORE, text)
+                    self.assertNotIn(materialize.OLD, text)
+                if arm in materialize.PRODUCT_ARMS:
                     self.assertIn(f'targets["{arm}"]', text)
             self.assertEqual(len(closures), len(materialize.VALID_ARMS))
+            self.assertEqual(len(blobs), len(materialize.VALID_ARMS))
 
     def test_rejects_unknown_arm_and_blob_mismatch(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -71,7 +81,7 @@ class MaterializeTests(unittest.TestCase):
                 materialize.materialize(
                     source,
                     source / "nested",
-                    arm="CORE",
+                    arm="CONTROL",
                     expected_scheduler_blob=expected,
                 )
 
