@@ -39,7 +39,6 @@ KEEP = {
     "p/grokbuild-pr-collision-notice-33699939369-billing-lock-20260903-01.md": "3110f1c7",
     "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "b99d1bad",
     "p/grokbuild-pr-collision-notice-33717734032-billing-lock-20260903-01.md": "a558758f",
-    "test_grokbuild_pr_collision_notice_33717734032_billing_lock.py": "5f9c490d",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
