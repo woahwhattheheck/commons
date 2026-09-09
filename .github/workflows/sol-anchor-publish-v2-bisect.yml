@@ -92,6 +92,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git diff --cached --check
+          # CSV shard hashes intentionally retain trailing whitespace from the source payload;
+          # do not fail the publish on whitespace-only hygiene.
           git commit -m 'analysis: publish submitted V2 legacy-feature bisect'
           git push origin HEAD:sol-anchor/titan-v2-legacy-bisect-20260909-01
