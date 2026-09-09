@@ -2,8 +2,8 @@
 """Experimental TITAN candidate with structurally compiled JIT seed routes.
 
 This module is intentionally separate from ``titan_runtime.py``.  It does not
-change the submitted/default agent.  Instantiate ``CapillaryTitanAgent`` only in
-an explicit candidate panel.
+change the submitted/default agent.  Use ``capillary_main.agent`` for exact
+canonical entrypoint, deadline, reset, and final-pressure composition.
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from titan_runtime import TitanAgent
 
 
 class CapillaryTitanAgent(TitanAgent):
-    """TITAN with first-day expensive seed prepayment redistributed JIT."""
+    """Canonical TITAN composition with day-zero seed prepayment staged JIT."""
 
     def __init__(self, features=None, *, fourth_quadrant_admission=None):
         super().__init__(
@@ -27,6 +27,23 @@ class CapillaryTitanAgent(TitanAgent):
             "certified": False,
             "reason": "not_initialized",
         }
+
+    def _market_pressure_selected(self, obs, cfg, selected):
+        """Retain canonical pressure only at the final completed-action boundary."""
+        if not getattr(self, "_final_pressure_boundary", False):
+            return selected
+        return super()._market_pressure_selected(obs, cfg, selected)
+
+    def _early_capital_selected(self, obs, cfg, selected):
+        """Mirror canonical main.py's capital-then-final-pressure composition."""
+        returned = super()._early_capital_selected(obs, cfg, selected)
+        if self.diagnostics.get("status") != "completed":
+            return returned
+        self._final_pressure_boundary = True
+        try:
+            return super()._market_pressure_selected(obs, cfg, returned)
+        finally:
+            self._final_pressure_boundary = False
 
     def _initialize(self):
         super()._initialize()
@@ -41,11 +58,20 @@ class CapillaryTitanAgent(TitanAgent):
         cfg = self._capillary_configuration
         max_orders = int(cfg.get("maxMarketOrdersPerTurn", 10))
         turns_per_day = int(cfg.get("turnsPerDay", 24))
-        staged, report = compile_jit_expensive_seed_routes(
-            self.controller.R,
-            max_orders=max_orders,
-            turns_per_day=turns_per_day,
-        )
+        try:
+            staged, report = compile_jit_expensive_seed_routes(
+                self.controller.R,
+                max_orders=max_orders,
+                turns_per_day=turns_per_day,
+            )
+        except (TypeError, ValueError, OverflowError) as error:
+            self._capillary_compile_report = {
+                "changed": False,
+                "certified": False,
+                "reason": "compiler_input_invalid",
+                "error_type": type(error).__name__,
+            }
+            return
         self._capillary_compile_report = report
         if not report["certified"]:
             return
@@ -56,6 +82,14 @@ class CapillaryTitanAgent(TitanAgent):
         # rebinding controller.R would make the wrapper restore predecessor
         # routes before the first selected action.
         routes = self.controller.R
+        if self.spatial is not None and self.spatial._crop_routes is not routes:
+            self._capillary_compile_report = {
+                **report,
+                "changed": False,
+                "certified": False,
+                "reason": "spatial_route_binding_mismatch",
+            }
+            return
         routes.clear()
         routes.update(staged)
         self.seed_budget = self.seed_budget.__class__(routes)

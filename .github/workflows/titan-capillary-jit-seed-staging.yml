@@ -5,6 +5,7 @@ on:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py"
       - "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py"
+      - "revenue/kaggriculture/cloud-execution-lab/capillary_main.py"
       - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py"
       - "revenue/kaggriculture/cloud-execution-lab/test_capillary_lifecycle.py"
       - "revenue/kaggriculture/cloud-execution-lab/receipts/capillary_jit_seed_staging.json"
@@ -23,10 +24,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run deterministic route, replay, and lifecycle certificates
+      - name: Run deterministic route, replay, lifecycle, and carrier certificates
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: python -m unittest -v test_jit_seed_staging.py test_capillary_lifecycle.py
-      - name: Compile candidate and real runtime seam
+      - name: Compile candidate and canonical carrier
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
-          python -m py_compile jit_seed_staging.py titan_capillary.py test_jit_seed_staging.py test_capillary_lifecycle.py
+          python -m py_compile jit_seed_staging.py titan_capillary.py capillary_main.py test_jit_seed_staging.py test_capillary_lifecycle.py
