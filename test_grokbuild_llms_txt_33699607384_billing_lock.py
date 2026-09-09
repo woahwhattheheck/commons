@@ -56,7 +56,7 @@ KEEP = {
     "test_grokbuild_llms_txt_33694253456_billing_lock.py": "887dccc5",
     "test_grokbuild_llms_txt_33694402716_billing_lock.py": "91695732",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "ecf68ecb",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "52634a26",
 }
 
 

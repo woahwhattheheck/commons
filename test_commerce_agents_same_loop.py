@@ -21,7 +21,7 @@ SPEC.loader.exec_module(loop)
 KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "265d91de",
+    "test_commerce_agents.py": "09ce11a1",
     "commerce-agents.html": "dfedb16a",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
     ".agents/skills/commerce-agents/SKILL.md": "81d9eccd",
@@ -35,7 +35,7 @@ KEEP = {
     "host/payment_capability.py": "de9d6a84",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "hub_pages.py": "d0bd0e8d",
     "ground/OWNER_NOW.md": "0a574d94",
     "host/slack_mirror.py": "c94f6fa5",

@@ -20,7 +20,7 @@ KEEP = {
     "host/stealable_lanes.py": "c90284fb",
     "ground/STEALABLE_ROLES.json": "ab601590",
     "ground/STEALABLE_ROLES.md": "b9d8eb79",
-    "test_stealable_lanes.py": "6c0e2d1a",
+    "test_stealable_lanes.py": "555668bb",
     "ground/STEALABLE_LANES.json": "6991e21c",
     "ground/STEALABLE_LANES.md": "d5164f9a",
     "stealable-lanes.html": "53c70430",
@@ -34,7 +34,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "autogtm.html": "dbbc96a5",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",
 }

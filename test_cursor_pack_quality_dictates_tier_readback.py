@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "test_pack_quality_dictates_tier.py": "60ec4174",
+    "test_pack_quality_dictates_tier.py": "99372f69",
     "pack-quality-tier.html": "2abe6ef6",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a375adf9",
@@ -38,7 +38,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "ground/OWNER_NOW.md": "0a574d94",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
 }
 
