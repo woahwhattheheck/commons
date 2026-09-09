@@ -118,10 +118,10 @@ def agent(observation, configuration=None):
     fallback = _entrypoint_fallback(None, observation, cfg, deadline)
     remaining = budget-(time.perf_counter()-entry_started)
     if remaining <= 0:
-        # Construction is part of runtime work. Once the prelude has exhausted
-        # the budget, starting a fresh lazy controller outside any timer would
-        # turn this fallback branch into an unbounded call. Leave the instance
-        # absent; the next visible observation can initialize it normally.
+        # Construction is runtime work. Once the prelude has exhausted the
+        # budget, starting a fresh lazy controller outside any timer would turn
+        # this fallback branch into an unbounded call. Leave the instance absent;
+        # the next visible observation can initialize it normally.
         if replace:
             _INSTANCE = None
             return fallback
