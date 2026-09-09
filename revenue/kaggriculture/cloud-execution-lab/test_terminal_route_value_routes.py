@@ -2,14 +2,13 @@
 import unittest
 
 from terminal_route_value import best_candidate, certify_candidate
-from terminal_route_value_test_support import M, observation, row
+from terminal_route_value_test_support import M, observation, plant, row
 
 
 class TerminalRouteValueRouteTests(unittest.TestCase):
     def test_near_wheat_route_certifies_before_terminal(self):
         obs = observation(step=712, farmer=(4, 4))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 1, "yield_units": 2}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 1, 2)
         route = [row() for _ in range(720)]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
         self.assertTrue(report["certified"])
@@ -21,8 +20,7 @@ class TerminalRouteValueRouteTests(unittest.TestCase):
 
     def test_richer_far_harvest_after_718_is_rejected(self):
         obs = observation(step=712, farmer=(4, 4))
-        obs["farms"][0]["tiles"][0][0] = {"kind": "PLANT", "crop": "MELON",
-                                               "planted_day": 0, "yield_units": 6}
+        obs["farms"][0]["tiles"][0][0] = plant("MELON", 0, 6)
         route = [row() for _ in range(720)]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(0, 0))
         self.assertIsNone(candidate)
@@ -50,8 +48,7 @@ class TerminalRouteValueRouteTests(unittest.TestCase):
 
     def test_step_718_harvest_needs_unavailable_later_drop(self):
         obs = observation(step=718, farmer=(3, 4))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 1, "yield_units": 1}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 1, 1)
         route = [row() for _ in range(720)]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
         self.assertIsNone(candidate)
@@ -59,8 +56,7 @@ class TerminalRouteValueRouteTests(unittest.TestCase):
 
     def test_existing_worker_commitment_is_not_displaced(self):
         obs = observation(step=712, farmer=(4, 4))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 1, "yield_units": 1}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 1, 1)
         route = [row() for _ in range(720)]; route[713]["farmer"] = ["CARE"]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
         self.assertIsNone(candidate)
@@ -68,8 +64,7 @@ class TerminalRouteValueRouteTests(unittest.TestCase):
 
     def test_other_worker_drop_collision_fails_closed(self):
         obs = observation(step=712, farmer=(4, 4), hands=((5, 4),))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 1, "yield_units": 1}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 1, 1)
         route = [row(hands=1) for _ in range(720)]; route[714]["hands"][0] = ["DROP"]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
         self.assertIsNone(candidate)
@@ -77,16 +72,15 @@ class TerminalRouteValueRouteTests(unittest.TestCase):
 
     def test_preterminal_market_mutation_fails_closed(self):
         obs = observation(step=712, farmer=(4, 4))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 1, "yield_units": 1}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 1, 1)
         route = [row() for _ in range(720)]; route[713]["market"] = [["SELL", "WHEAT", 1]]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
         self.assertIsNone(candidate)
         self.assertEqual(report["reason"], "preterminal_market_mutation_out_of_scope")
+
     def test_unmatured_plant_is_not_terminal_value(self):
         obs = observation(step=712, farmer=(3, 4))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 29, "yield_units": 1}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 29, 1)
         route = [row() for _ in range(720)]
         candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
         self.assertIsNone(candidate)
@@ -94,15 +88,38 @@ class TerminalRouteValueRouteTests(unittest.TestCase):
 
     def test_best_candidate_prefers_reachable_positive_cash(self):
         obs = observation(step=712, farmer=(4, 4))
-        obs["farms"][0]["tiles"][4][3] = {"kind": "PLANT", "crop": "WHEAT",
-                                               "planted_day": 1, "yield_units": 2}
-        obs["farms"][0]["tiles"][0][0] = {"kind": "PLANT", "crop": "MELON",
-                                               "planted_day": 0, "yield_units": 6}
+        obs["farms"][0]["tiles"][4][3] = plant("WHEAT", 1, 2)
+        obs["farms"][0]["tiles"][0][0] = plant("MELON", 0, 6)
         route = [row() for _ in range(720)]
         winner, report = best_candidate(M, obs, {}, route)
         self.assertTrue(report["certified"])
         self.assertEqual(winner.product, "WHEAT")
         self.assertEqual(winner.target, (3, 4))
+
+    def test_route_cannot_cross_end_of_day_reset(self):
+        obs = observation(step=695, farmer=(0, 0), inventories=[{"MILK": 1}])
+        route = [row() for _ in range(720)]
+        candidate, report = certify_candidate(M, obs, {}, route, worker=0,
+                                              carried_product="MILK")
+        self.assertIsNone(candidate)
+        self.assertEqual(report["reason"], "route_crosses_day_boundary")
+
+    def test_terminal_step_before_reset_remains_available(self):
+        obs = observation(step=695, farmer=(4, 4), inventories=[{"MILK": 1}])
+        route = [row() for _ in range(720)]
+        candidate, report = certify_candidate(M, obs, {}, route, worker=0,
+                                              carried_product="MILK")
+        self.assertTrue(report["certified"])
+        self.assertEqual(candidate.terminal_step, 695)
+
+    def test_missing_decay_metadata_fails_closed(self):
+        obs = observation(step=712, farmer=(3, 4))
+        obs["farms"][0]["tiles"][4][3] = {
+            "kind": "PLANT", "crop": "WHEAT", "planted_day": 1, "yield_units": 1}
+        route = [row() for _ in range(720)]
+        candidate, report = certify_candidate(M, obs, {}, route, worker=0, target=(3, 4))
+        self.assertIsNone(candidate)
+        self.assertEqual(report["reason"], "source_decay_state_unobserved")
 
 
 if __name__ == "__main__":

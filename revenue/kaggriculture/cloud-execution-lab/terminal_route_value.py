@@ -10,7 +10,8 @@ from collections.abc import Mapping
 from copy import deepcopy
 from dataclasses import dataclass
 from terminal_route_value_primitives import (distance, harvest_lot, integer, other_shed_collision,
-    path, positive, preterminal_market_clear, route_row, shed_access, worker_idle)
+    other_source_collision, path, positive, preterminal_market_clear, route_row, shed_access,
+    source_decay_before_harvest, worker_idle)
 from terminal_route_value_market import append_after_commitments, quiet_sale_receipts, sale_only
 
 @dataclass(frozen=True)
@@ -62,7 +63,8 @@ def certify_candidate(mechanics, observation, configuration, route, *, worker,
         target = (int(target[0]), int(target[1])); lot, error = harvest_lot(mechanics, farm, day, target)
         if lot is None:
             return None, {"certified": False, "reason": error}
-        product, quantity = lot; actions = path(start, target) + [["HARVEST"]]
+        product, quantity = lot; source_path = path(start, target)
+        harvest_step = now + len(source_path); actions = source_path + [["HARVEST"]]
         source = "harvest"; after_source = target
     else:
         product = carried_product
@@ -71,6 +73,7 @@ def certify_candidate(mechanics, observation, configuration, route, *, worker,
         if len(current_inventory) != 1:
             return None, {"certified": False, "reason": "mixed_carried_inventory_out_of_scope"}
         quantity = current_inventory[product]; actions = []; source = "carried"; after_source = start
+        harvest_step = None
     board = integer((configuration or {}).get("boardSize", len(farm.get("tiles", []))), "boardSize", 2, 100)
     shed_target = min(shed_access(board), key=lambda p: (distance(after_source, p), p))
     actions += path(after_source, shed_target) + [["DROP"]]
@@ -78,10 +81,29 @@ def certify_candidate(mechanics, observation, configuration, route, *, worker,
     if terminal_step > last:
         return None, {"certified": False, "reason": "route_finishes_after_terminal",
                       "required_terminal_step": terminal_step, "last_action_step": last}
+    if now // turns != terminal_step // turns:
+        return None, {"certified": False, "reason": "route_crosses_day_boundary",
+                      "start_step": now, "required_terminal_step": terminal_step}
     idle, conflict_step, conflict_action = worker_idle(route, worker, now, terminal_step)
     if not idle:
         return None, {"certified": False, "reason": "worker_has_existing_commitment",
                       "conflict_step": conflict_step, "conflict_action": deepcopy(conflict_action)}
+    if target is not None:
+        tile = farm["tiles"][target[1]][target[0]]
+        decay, decay_step = source_decay_before_harvest(tile, now, harvest_step)
+        if decay == "unobserved":
+            return None, {"certified": False, "reason": "source_decay_state_unobserved",
+                          "harvest_step": harvest_step}
+        if decay == "decay":
+            return None, {"certified": False, "reason": "source_decay_before_harvest",
+                          "harvest_step": harvest_step, "conflict_step": decay_step}
+        source_collision = other_source_collision(
+            route, positions, worker, now, harvest_step, target, board)
+        if source_collision is not None:
+            step, index, action = source_collision
+            return None, {"certified": False, "reason": "other_actor_source_collision",
+                          "harvest_step": harvest_step, "conflict_step": step,
+                          "conflict_worker": index, "conflict_action": deepcopy(action)}
     collision = other_shed_collision(route, worker, now, terminal_step)
     if collision is not None:
         step, index, action = collision
@@ -121,9 +143,10 @@ def certify_candidate(mechanics, observation, configuration, route, *, worker,
     return result, {"certified": True, "reason": "complete_terminal_route",
                     "worker": worker, "source": source, "product": product,
                     "quantity": quantity, "terminal_step": terminal_step,
+                    "harvest_step": harvest_step,
                     "last_action_step": last, "quiet_incremental_cash": incremental,
                     "sale_slot": slot,
-                    "scope": "idle-worker current-yield/carried-good; static preterminal own market; quiet-rival receipt diagnostic"}
+                    "scope": "idle-worker source-persistent current-yield/carried-good; same-day static own route/market; quiet-rival receipt diagnostic"}
 
 
 def best_candidate(mechanics, observation, configuration, route):

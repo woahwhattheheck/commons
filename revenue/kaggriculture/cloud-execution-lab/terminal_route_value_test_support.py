@@ -17,6 +17,11 @@ def row(hands=0, market=None):
             "market": [] if market is None else deepcopy(market)}
 
 
+def plant(crop, planted_day, yield_units, max_lifespan_step=720):
+    return {"kind": "PLANT", "crop": crop, "planted_day": planted_day,
+            "yield_units": yield_units, "max_lifespan_step": max_lifespan_step}
+
+
 def observation(step=710, *, farmer=(4, 4), hands=(), shed=None, inventories=None):
     tiles = [[None for _ in range(10)] for _ in range(10)]
     farm = {"farmer": list(farmer), "hands": [list(p) for p in hands], "money": 1000,

@@ -5,6 +5,8 @@ from collections.abc import Mapping
 PASS = ["PASS"]
 SHED_TOUCH = {"DROP", "PLACE"}
 MOVES = {(1, 0): ["EAST"], (-1, 0): ["WEST"], (0, 1): ["SOUTH"], (0, -1): ["NORTH"]}
+MOVE_DELTAS = {action[0]: delta for delta, action in MOVES.items()}
+SOURCE_SAFE = {"PASS", *MOVE_DELTAS}
 
 
 def integer(value, name, low=0, high=1_000_000):
@@ -74,6 +76,59 @@ def other_shed_collision(route, worker, start, end):
             if index != worker and isinstance(action, list) and action and action[0] in SHED_TOUCH:
                 return step, index, action
     return None
+
+
+def other_source_collision(route, positions, worker, start, harvest_step, target, board):
+    """Find another observed actor that can mutate ``target`` before HARVEST.
+
+    The interpreter applies the main farmer and then hands in index order. At the
+    selected worker's HARVEST step only lower-index actors can pre-empt it; on
+    earlier steps every other observed actor can. Movement is replayed exactly
+    enough to know which actor is standing on the source tile.
+    """
+    live = []
+    for position in positions:
+        if not isinstance(position, (list, tuple)) or len(position) != 2:
+            raise ValueError("worker positions must be two-item coordinates")
+        x, y = int(position[0]), int(position[1])
+        if not (0 <= x < board and 0 <= y < board):
+            raise ValueError("worker positions must be on the board")
+        live.append([x, y])
+    for step in range(start, harvest_step + 1):
+        before_selected = worker if step == harvest_step else len(live)
+        for index in range(before_selected):
+            if index == worker:
+                continue
+            action = unit(route_row(route, step), index)
+            if not isinstance(action, list) or not action:
+                continue
+            op = action[0]
+            if tuple(live[index]) == target and op not in SOURCE_SAFE:
+                return step, index, action
+            delta = MOVE_DELTAS.get(op)
+            if delta is None:
+                continue
+            nx, ny = live[index][0] + delta[0], live[index][1] + delta[1]
+            if 0 <= nx < board and 0 <= ny < board:
+                live[index] = [nx, ny]
+    return None
+
+
+def source_decay_before_harvest(tile, start, harvest_step):
+    """Return the first exact plant-decay tick before HARVEST, if any."""
+    if not isinstance(tile, Mapping) or tile.get("kind") != "PLANT":
+        return None, None
+    lifespan = tile.get("max_lifespan_step")
+    if type(lifespan) is not int or lifespan < -1:
+        return "unobserved", None
+    if lifespan < 0 or harvest_step <= start:
+        return None, None
+    first = max(start, lifespan)
+    if (first - lifespan) % 2:
+        first += 1
+    if first < harvest_step:
+        return "decay", first
+    return None, None
 
 
 def preterminal_market_clear(route, start, end, limit):
