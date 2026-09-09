@@ -1,0 +1,399 @@
+{
+  "arlene_negative_clusters": 9,
+  "arlene_positive_clusters": 7,
+  "arlene_seed_cluster_bootstrap95": [
+    -753.71875,
+    466.1875
+  ],
+  "arlene_seed_cluster_mean_margin_delta": -152.6875,
+  "arlene_seed_cluster_median_margin_delta": -252.0,
+  "arlene_zero_clusters": 0,
+  "best_clusters": [
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": 2368.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        2368.0,
+        2368.0
+      ],
+      "seed": 1653504516,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": 2368.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": 1957.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        1957.0,
+        1957.0
+      ],
+      "seed": 1610249076,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": 1957.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": 1045.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        1045.0,
+        1045.0
+      ],
+      "seed": 1910750044,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": 1045.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": 702.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        702.0,
+        702.0
+      ],
+      "seed": 972196432,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": 702.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": 524.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        524.0,
+        524.0
+      ],
+      "seed": 825168616,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": 524.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": 259.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        259.0,
+        259.0
+      ],
+      "seed": 1012961651,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": 259.0
+    }
+  ],
+  "by_opponent": {
+    "arlene": {
+      "base_wtl": {
+        "L": 0,
+        "T": 0,
+        "W": 32
+      },
+      "max_base_call_seconds": 0.20094000600010986,
+      "max_base_peak_rss_kib": 106604,
+      "max_margin_delta": 2368.0,
+      "max_new_call_seconds": 0.19193023399975573,
+      "max_new_peak_rss_kib": 106596,
+      "mean_base_candidate_cpu": 1.8973257330625006,
+      "mean_candidate_cash_delta": 780.0,
+      "mean_margin_delta": -152.6875,
+      "mean_new_candidate_cpu": 2.2602646587187505,
+      "median_candidate_cash_delta": 410.0,
+      "median_margin_delta": -41.0,
+      "min_margin_delta": -2353.0,
+      "new_wtl": {
+        "L": 4,
+        "T": 0,
+        "W": 28
+      },
+      "seat_pairs": 32,
+      "trace_changed": 32,
+      "wtl_changed": 4
+    },
+    "starter": {
+      "base_wtl": {
+        "L": 0,
+        "T": 0,
+        "W": 32
+      },
+      "max_base_call_seconds": 0.1177075440000408,
+      "max_base_peak_rss_kib": 106700,
+      "max_margin_delta": 0.0,
+      "max_new_call_seconds": 0.11498525400020299,
+      "max_new_peak_rss_kib": 106924,
+      "mean_base_candidate_cpu": 2.01630938371875,
+      "mean_candidate_cash_delta": 0.0,
+      "mean_margin_delta": 0.0,
+      "mean_new_candidate_cpu": 1.9672858192812497,
+      "median_candidate_cash_delta": 0.0,
+      "median_margin_delta": 0.0,
+      "min_margin_delta": 0.0,
+      "new_wtl": {
+        "L": 0,
+        "T": 0,
+        "W": 32
+      },
+      "seat_pairs": 32,
+      "trace_changed": 0,
+      "wtl_changed": 0
+    }
+  },
+  "complete_games": {
+    "base": 64,
+    "failed_base": 0,
+    "failed_new": 0,
+    "new": 64
+  },
+  "decision": "DO_NOT_MERGE_UNGATED",
+  "design": {
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "games_per_variant": 64,
+    "opponents": {
+      "arlene": {
+        "seeds": [
+          1454334853,
+          1817264000,
+          1610249076,
+          1266793089,
+          1012961651,
+          1653504516,
+          825168616,
+          972196432,
+          1910750044,
+          419818137,
+          340951864,
+          614776397,
+          778566992,
+          1573330380,
+          1664293305,
+          933742179
+        ]
+      },
+      "starter": {
+        "seeds": [
+          2027,
+          194505610,
+          142330331,
+          344548109,
+          1660410103,
+          2103800402,
+          2138871119,
+          1165719565,
+          266784790,
+          1014893561,
+          28184900,
+          621755270,
+          1452690782,
+          1513194591,
+          5429143,
+          510855780
+        ]
+      }
+    },
+    "pairs_total": 32,
+    "seats_per_pair": 2,
+    "variants": [
+      "inherited",
+      "E02"
+    ]
+  },
+  "extra_attempts": {
+    "clean_smoke_recheck_seed_2027": "both variants; E02 reproducibility recheck passed; baseline reproducibility recheck passed",
+    "exploratory_arlene_seed_1165719565": {
+      "base_margin_per_seat": 1309,
+      "complete_games_per_variant": 2,
+      "delta_per_seat": 977,
+      "new_margin_per_seat": 2286
+    },
+    "externally_cut_driver_batches": 3,
+    "note": "Three multi-seed driver invocations were terminated by the session tool wall after emitting partial complete-game log lines; they are excluded from the atomic 64-game/variant screen and preserved separately. No agent/game timeout is inferred from those wrapper cuts."
+  },
+  "operation": "titan-v25-orders-20260909-E02",
+  "overall": {
+    "base_wtl": {
+      "L": 0,
+      "T": 0,
+      "W": 64
+    },
+    "max_base_call_seconds": 0.20094000600010986,
+    "max_base_peak_rss_kib": 106700,
+    "max_margin_delta": 2368.0,
+    "max_new_call_seconds": 0.19193023399975573,
+    "max_new_peak_rss_kib": 106924,
+    "mean_base_candidate_cpu": 1.9568175583906253,
+    "mean_candidate_cash_delta": 390.0,
+    "mean_margin_delta": -76.34375,
+    "mean_new_candidate_cpu": 2.113775239,
+    "median_candidate_cash_delta": 0.0,
+    "median_margin_delta": 0.0,
+    "min_margin_delta": -2353.0,
+    "new_wtl": {
+      "L": 4,
+      "T": 0,
+      "W": 60
+    },
+    "seat_pairs": 64,
+    "trace_changed": 32,
+    "wtl_changed": 4
+  },
+  "reason": "Arlene activates E02 but has material negative seed clusters and W/L regressions; bounded screen does not justify canonical integration without repair/gating.",
+  "schema": "titan.e02.first-screen.v1",
+  "worst_clusters": [
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": -2353.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        -2353.0,
+        -2353.0
+      ],
+      "seed": 1664293305,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": -2353.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": -1734.0,
+      "new_outcomes": [
+        "L",
+        "L"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        -1734.0,
+        -1734.0
+      ],
+      "seed": 614776397,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": -1734.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": -1669.0,
+      "new_outcomes": [
+        "L",
+        "L"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        -1669.0,
+        -1669.0
+      ],
+      "seed": 1454334853,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": -1669.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": -629.5,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        11.0,
+        -1270.0
+      ],
+      "seed": 778566992,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": -1270.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": -1199.0,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        -1199.0,
+        -1199.0
+      ],
+      "seed": 1266793089,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": -1199.0
+    },
+    {
+      "base_outcomes": [
+        "W",
+        "W"
+      ],
+      "mean_margin_delta": -581.5,
+      "new_outcomes": [
+        "W",
+        "W"
+      ],
+      "opponent": "arlene",
+      "seat_margin_deltas": [
+        -751.0,
+        -412.0
+      ],
+      "seed": 340951864,
+      "trace_changed_seats": 2,
+      "worst_margin_delta": -751.0
+    }
+  ]
+}
