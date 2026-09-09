@@ -153,3 +153,14 @@ Nothing promoted yet on-device (one measured model). External evidence for candi
 cross-harness reproduction (~5 transformers re-induced by the same σ text; Translate = the graded low-dose point) and
 the cross-model swap hold (E_A). Candidates awaiting the E2B measurement: JSON contracts, exemplar continuation,
 Never-prohibitions, `:=` definitional headers, the ⟦TAG⟧ re-entry.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

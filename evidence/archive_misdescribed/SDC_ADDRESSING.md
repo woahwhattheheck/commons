@@ -85,3 +85,14 @@ was addressed into existence, not precomputed. This is the initial "generative c
 *Patent note: content-addressable generative computation — a stored gate-net where the address is the function input and
 the addressed read generates the output on power (a self-materializing function table, SIMD over the address space at ~0
 marginal storage) — is owed as an INV extension of the SDC umbrella.*
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

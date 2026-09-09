@@ -97,3 +97,14 @@ verdicts into a thin answer map and measures the amortized cands/sec climb on a 
 The fold stack (swarm × receiver × bit-address × thin × dedup × MLC × **memoize**) plus the fabric (verify · generative ·
 render · route · flywheel) says the SDC is a **general storage-first compute substrate**, and mining was the reach that
 built it — exactly as intended.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

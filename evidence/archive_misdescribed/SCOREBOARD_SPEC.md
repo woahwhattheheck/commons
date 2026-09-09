@@ -161,3 +161,14 @@ null-safe access everywhere):
 1. TaskHistory stats + orchestrator/service threading (Part 1).
 2. ScoreboardActivity + manifest + Task log entry point (Part 2).
 3. GauntletRunner + Settings storage + hooks + docs (Part 3).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
