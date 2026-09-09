@@ -239,6 +239,23 @@ def main() -> int:
     comparator = load_frozen_comparator(comparator_path)
 
     inputs = validate_inputs(official)
+    # The workflow uploads this result directory under ``if: always()``.
+    # Retain the complete 60-file census before the first expensive case.
+    (output / "INPUTS.json").write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "frozen_commit": FROZEN_COMMIT,
+                "candidate_source_sha256": CANDIDATE_SHA256,
+                "official_commit": OFFICIAL_COMMIT,
+                "sprint_reference_sha256": SPRINT_SHA256,
+                "input_files": inputs,
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     run_records: list[dict[str, Any]] = []
     started = time.time()
     expected_search, expected_reserve = expected_portfolio_timing(args.seconds)
@@ -291,13 +308,26 @@ def main() -> int:
                      "--srpaths", str(solution), "--max-decimal-places", "6"],
                     stdout=checker, stderr=case / "checker.stderr", timeout=30)
         checker_elapsed = time.monotonic() - checker_started
-        checker_doc = read_json(checker) if checker.is_file() else None
+        checker_doc = None
+        checker_parse_error = None
+        if checker.is_file():
+            try:
+                checker_doc = read_json(checker)
+            except (OSError, UnicodeError, json.JSONDecodeError) as error:
+                checker_parse_error = type(error).__name__
         if check.returncode != 0 or not isinstance(checker_doc, dict) or checker_doc.get("valid") is not True:
             record = {"instance": label,
                       "portfolio_elapsed_seconds": round(portfolio_elapsed, 6),
                       "checker_elapsed_seconds": round(checker_elapsed, 6),
+                      "portfolio_returncode": result.returncode,
+                      "solution_exists": solution.is_file(),
+                      "solution_sha256": sha256(solution) if solution.is_file() else None,
+                      "receipt_exists": receipt.is_file(),
+                      "receipt_sha256": sha256(receipt) if receipt.is_file() else None,
                       "checker_returncode": check.returncode,
                       "checker_exists": checker.is_file(),
+                      "checker_sha256": sha256(checker) if checker.is_file() else None,
+                      "checker_parse_error": checker_parse_error,
                       "checker_valid": (checker_doc.get("valid")
                                         if isinstance(checker_doc, dict) else None)}
             run_records.append(record)

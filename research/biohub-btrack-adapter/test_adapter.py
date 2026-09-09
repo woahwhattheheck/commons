@@ -286,8 +286,9 @@ class AdapterTests(unittest.TestCase):
             track_from_refs(payload, track_id=3, refs=[3], parent=1),
             track_from_refs(payload, track_id=4, refs=[4], parent=1),
         ]
+        covering = track_from_refs(payload, track_id=5, refs=[1])
         with self.assertRaisesRegex(AdapterError, "more than two children"):
-            tracks_to_rows("a", detections, [parent, *children], refs, self.scale)
+            tracks_to_rows("a", detections, [parent, *children, covering], refs, self.scale)
 
     def test_two_datasets_use_two_fresh_engines_and_match_isolated_runs(self):
         combined = self.detections("a")[:2] + self.detections("b")[:2]

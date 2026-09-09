@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from .services import EquipmentError, redacted
+from integrations.shared_equipment.provider_io import EquipmentError, redacted
 
 
 def publish(operation, arguments, operation_id, *, runner=None, client=None):
