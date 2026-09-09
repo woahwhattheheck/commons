@@ -7,10 +7,10 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/**'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  build:
+  publish:
     if: ${{ github.event.pull_request.head.ref == 'sol/titan-e18-acceptance-20260909-1124' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
@@ -20,7 +20,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          persist-credentials: false
+          fetch-depth: 1
+          persist-credentials: true
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/titan-e18-canonical-build.yml
@@ -30,13 +31,16 @@ jobs:
             /revenue/kaggriculture/cloud-opponent-league/lark-responsive/
             /revenue/kaggriculture/cloud-committed-seed-retry/
             /revenue/kaggriculture/cloud-economic-stress/funded_payback/
-      - name: Build exact E18 canonical publication
+      - name: Build verify and atomically publish E18 canonical bytes
         shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
           LAB='revenue/kaggriculture/cloud-execution-lab'
-          OUT="$RUNNER_TEMP/e18-canonical-build"
-          mkdir -p "$OUT"
           OLD_HASH=$(python3 - <<'PY'
           import hashlib
           from pathlib import Path
@@ -44,58 +48,39 @@ jobs:
           print(hashlib.sha256(p.read_bytes()).hexdigest())
           PY
           )
-          python3 -B "$LAB/build_integrated.py" | tee "$OUT/build.json"
-          python3 -B "$LAB/build_integrated.py" --check | tee "$OUT/check.json"
-          (cd "$LAB" && python3 -B -m unittest -v test_e18_acceptance_rules) 2>&1 | tee "$OUT/e18-tests.log"
+          python3 -B "$LAB/build_integrated.py"
+          python3 -B "$LAB/build_integrated.py" --check
+          (cd "$LAB" && python3 -B -m unittest -v test_e18_acceptance_rules)
           HIST="$LAB/exports/historical/titan-${OLD_HASH}.tar.gz"
           test -f "$HIST"
+          git add -- \
+            "$LAB/exports/titan-current.tar.gz" \
+            "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" \
+            "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" \
+            "$HIST"
+          git rm -- .github/workflows/titan-e18-canonical-build.yml
           python3 - <<'PY'
           import os, subprocess
-          root='revenue/kaggriculture/cloud-execution-lab/'
-          allowed={
-            root+'exports/titan-current.tar.gz',
-            root+'runtime/integrated-selected/CURRENT-SOURCE.json',
-            root+'runtime/integrated-selected/CURRENT-ARCHIVE.json',
+          lab='revenue/kaggriculture/cloud-execution-lab/'
+          staged=set(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines())
+          required={
+            lab+'exports/titan-current.tar.gz',
+            lab+'runtime/integrated-selected/CURRENT-SOURCE.json',
+            lab+'runtime/integrated-selected/CURRENT-ARCHIVE.json',
+            '.github/workflows/titan-e18-canonical-build.yml',
           }
-          old=os.environ.get('OLD_HASH_ENV')
-          # The historical filename is checked separately by prefix/suffix because
-          # the old digest is produced inside the shell step.
-          rows=subprocess.check_output(['git','status','--porcelain','--untracked-files=all','--',root],text=True).splitlines()
-          changed=[]
-          for row in rows:
-            path=row[3:]
-            changed.append(path)
-            if path in allowed: continue
-            if path.startswith(root+'exports/historical/titan-') and path.endswith('.tar.gz'): continue
-            raise SystemExit('unexpected builder write: '+path)
-          if not changed:
-            raise SystemExit('builder produced no publication delta')
-          print('builder writes:', *changed, sep='\n')
+          allowed=set(required)
+          allowed.update(p for p in staged if p.startswith(lab+'exports/historical/titan-') and p.endswith('.tar.gz'))
+          missing=required-staged
+          unexpected=staged-allowed
+          if missing or unexpected:
+            raise SystemExit(f'bad staged publication missing={sorted(missing)} unexpected={sorted(unexpected)}')
+          print('staged publication:', *sorted(staged), sep='\n')
           PY
-          mkdir -p "$OUT/files"
-          cp --parents "$LAB/exports/titan-current.tar.gz" "$OUT/files"
-          cp --parents "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" "$OUT/files"
-          cp --parents "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" "$OUT/files"
-          cp --parents "$HIST" "$OUT/files"
-          python3 - <<'PY'
-          import hashlib, json, os
-          from pathlib import Path
-          out=Path(os.environ['RUNNER_TEMP'])/'e18-canonical-build'
-          files={}
-          for p in sorted((out/'files').rglob('*')):
-            if p.is_file():
-              b=p.read_bytes(); files[str(p.relative_to(out/'files'))]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
-          receipt={'schema':'titan.e18.canonical-build.v1','workflow_sha':os.environ['GITHUB_SHA'],
-                   'head_sha':os.environ.get('GITHUB_HEAD_SHA',''),'run_id':os.environ['GITHUB_RUN_ID'],
-                   'files':files,'full_games':0,'scope':'deterministic canonical package build and E18 contracts only'}
-          (out/'RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          print(json.dumps(receipt,sort_keys=True))
-          PY
-        env:
-          GITHUB_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: titan-e18-canonical-${{ github.run_id }}
-          path: ${{ runner.temp }}/e18-canonical-build/
-          if-no-files-found: error
-          retention-days: 7
+          git diff --cached --check
+          git config user.name 'titan-e18-vm'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Titan E18: publish canonical package bytes'
+          NEW_HEAD=$(git rev-parse HEAD)
+          git push origin "HEAD:refs/heads/$HEAD_BRANCH"
+          echo "published_head=$NEW_HEAD"
