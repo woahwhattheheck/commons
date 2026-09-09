@@ -251,8 +251,8 @@
         },
         {
           "path": "host/feature_tracker.py",
-          "sha256": "030c6bf040e6cf875e621c25d718324a37c5f6590dbb10f5e0d3cdda90842f8c",
-          "bytes": 37260
+          "sha256": "621313d1edc82b5ed271a23f89ddbf7eef909714b1ab352cbc752df7bdfb4d9b",
+          "bytes": 38115
         },
         {
           "path": "test_feature_tracker.py",
@@ -266,13 +266,13 @@
         },
         {
           "path": "resources.html",
-          "sha256": "1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad",
+          "sha256": "37c9ed538a8d72b4572ddab5893b4dd086837572c6f8f79b811ddee0ca121775",
           "bytes": 12738
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334",
-          "bytes": 123097
+          "sha256": "4936f29fe482d1f288d07f017618673733d766fcfaf8d01f82f00956650ea3ba",
+          "bytes": 154474
         },
         {
           "path": "host/resource_ledger.py",
