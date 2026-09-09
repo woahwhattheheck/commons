@@ -235,7 +235,7 @@ class TitanAgent:
                 self.quadrant = FourthQuadrant(m, self._quadrant_admission)
             self.quadrant.install(self.controller)
             self._seed_plan = None
-        if f.spatial_pathing or f.spatial_tempo:
+        if f.consumer == 'frozen' and not f.terminal_route:
             from spatial_tempo import SpatialTempo
             from scheduler import m
             if self.spatial is None:
@@ -247,6 +247,7 @@ class TitanAgent:
                     return transform(obs, selected, controller)
                 self.spatial.transform = compatible_transform
             self.spatial.install(self.controller)
+            self.spatial.seed_reserve = lambda crop, step, current: self.seed_budget.remaining(crop, step, current)
         self._restore_seller_state()
         self.ready = True
 
@@ -259,6 +260,7 @@ class TitanAgent:
                     self._quadrant_admission.last_report)
         if self.spatial is not None:
             self.spatial.finish(obs, returned)
+            self.diagnostics['route_events'] = list(self.spatial.events)
 
     def _seed_selected(self, obs, cfg, selected):
         if not self.features.seed or not any(o and o[0] == 'BUY_SEED' for o in selected['market']):
@@ -267,7 +269,9 @@ class TitanAgent:
         snapshot = getattr(self.consumer, 'selected_post_units', None)
         farm, private = snapshot if snapshot is not None else post_units(obs, selected, cfg)
         proposed = self.seed_budget.apply(selected, private['seeds'], int(obs['step']),
-                                         self.controller.cur, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+                                         self.controller.cur, int(cfg.get('maxMarketOrdersPerTurn', 10)),
+                                         extra_requests={} if self.spatial is None else
+                                             self.spatial.future_seed_requests(int(obs['step'])))
         edits = [i for i, (a, b) in enumerate(zip(selected['market'], proposed['market'])) if a != b]
         dependent = any(o and o[0] in ('HIRE', 'BUY_LAND', 'BUY_PRODUCT', 'BUY_ANIMAL')
                         for i in edits for o in selected['market'][i+1:])

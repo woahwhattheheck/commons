@@ -27,15 +27,12 @@
     }
   },
   "checkpoint": {
-    "operation": "titan-kaggriculture-checkpoint-20260908-01",
-    "owner_authorization": "Submission authorized for this single checkpoint; builder does not duplicate upload",
-    "pending_research": "Terminal route/history and broader capital changes remain test-only; redundant-hire certificate is enabled from current-package and multi-opponent evidence. Root retains provider upload.",
+    "operation": "titan-v2-weed-continuation-20260909",
+    "owner_authorization": "Continue the existing targeted v2 recovery/integration. No new simulation panels in this analysis pass. No Kaggle submission.",
+    "playing_strength": "not_measured_for_changed_bytes",
     "runtime_entrypoint": "main.py::agent",
-    "upload_executor": "root",
-    "validation_consumers": [
-      "WIDEFIELD",
-      "ECON"
-    ]
+    "stage": "source_and_native_validation",
+    "submission_status": "not_submitted"
   },
   "components": [
     {
@@ -126,6 +123,35 @@
       "consumed_result": "Exact current87d7 protocol case +5 own/+0 rival both seats; CEDAR 12-pair interaction has zero feed interaction and positive reached/null T10 effects; 24-pair multi-opponent gate has no verdict regressions. Enabled by T08 integration; no new runtime source.",
       "enabled": true,
       "source_pin": "PR10382 / a881284d6b59366536ebc5e77f0f7c7f2923599dfb8588fd8b1ed6166bd51483"
+    },
+    {
+      "callsite": "TitanAgent._market_pressure_selected",
+      "component": "LARK market pressure",
+      "consumed_result": "Previously reported paired panel: candidate16W versus parent8W8L, mean margin+549.5. Historical development evidence, not a current-archive or leaderboard estimate.",
+      "enabled": true,
+      "source_pin": "PR10728; current manifest pressure_priority.py and sell_priority.py"
+    },
+    {
+      "callsite": "TitanAgent._committed_seed_retry_selected",
+      "component": "Committed seed retry",
+      "consumed_result": "Packaged source and boundary checks; subsequent64-game activation panel reported zero activations. Remains disabled.",
+      "enabled": false,
+      "source_pin": "PR10774; current manifest seed_retry.py"
+    },
+    {
+      "callsite": "FrozenSelected public snapshot; scheduler post_units; SeedBudget derivation",
+      "component": "QUICKSTEP/PULSE reuse",
+      "consumed_result": "Landed source is reused byte-for-byte. Earlier matched-game timing reports retain their original artifact scope; no new speed claim.",
+      "enabled": true,
+      "source_pin": "Current manifest seller_snapshot.py, observed_clone.py, plant_suffix.py"
+    },
+    {
+      "admission": "One displaced PLANT/BUILD, same actor and day, PASS absorption before reset/branch/hire; same-day watering for PLANT; preserve all later compatible-route seed requests from observed stock; recheck actual next observation; preserve market rows and unrelated actors.",
+      "callsite": "TitanAgent frozen production -> SpatialTempo; finish commits emitted actor stream",
+      "component": "Observed weed continuation",
+      "consumed_result": "Exact DELTA rejoin and SPRUCE native prefix, ASH later-seed/reset rejections, and source boundaries. A historical implementation was not recovered; its tests and development games are not attributed to these bytes. New whole-game strength remains unmeasured.",
+      "enabled": true,
+      "source_pin": "Current manifest spatial_tempo.py, titan_runtime.py, seed_budget.py and checks/test_weed_continuation.py"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -178,6 +204,23 @@
   },
   "entrypoint": "main.py::agent",
   "game_evidence_for_this_archive": {
+    "evidence": "runtime/integrated-selected/WEED-CONTINUATION-TESTS.json",
+    "historical_results_apply": false,
+    "new_full_games": 0,
+    "scope": "Native/source-validated weed-continuation iteration. Whole-game playing strength has not been measured for these changed bytes. Owner paused new simulation panels for source/mechanism review."
+  },
+  "historical_checkpoint": {
+    "operation": "titan-kaggriculture-checkpoint-20260908-01",
+    "owner_authorization": "Submission authorized for this single checkpoint; builder does not duplicate upload",
+    "pending_research": "Terminal route/history and broader capital changes remain test-only; redundant-hire certificate is enabled from current-package and multi-opponent evidence. Root retains provider upload.",
+    "runtime_entrypoint": "main.py::agent",
+    "upload_executor": "root",
+    "validation_consumers": [
+      "WIDEFIELD",
+      "ECON"
+    ]
+  },
+  "historical_component_game_evidence": {
     "cedar_interaction_pairs": 12,
     "cedar_multi_opponent_pairs": 24,
     "current87d7_protocol": {
@@ -302,8 +345,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 4789,
-      "sha256": "d1e5d727e100c367d10f9c6ce46af964e2bda5eba6a8dac31ee18526eab14daf",
+      "bytes": 5830,
+      "sha256": "8fd65d5fed957cb857e7895fdb6bf642a3959a2bd01df7d748553d7ba2cbe4d6",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -345,6 +388,21 @@
       "bytes": 3049,
       "sha256": "455024a4179a95ad597492e1f4b94de7bd3bfe7a3a88fd0dce46001f629ec3cd",
       "source_path": "reference/historical/seed_budget-before-derived-cache.py"
+    },
+    "checks/reference/weed-continuation/ash-native.json.gz": {
+      "bytes": 2658,
+      "sha256": "6ad0a1d07f1edf7b16bd9182bbffe57d7d507d515a69911dd181219c14f9eb0c",
+      "source_path": "reference/weed-continuation/ash-native.json.gz"
+    },
+    "checks/reference/weed-continuation/delta-native.json.gz": {
+      "bytes": 5226,
+      "sha256": "f9a043a4e00692a602d83f4aa03d4cf0ad83ac7b2ed3ef6b19f819a2ae811004",
+      "source_path": "reference/weed-continuation/delta-native.json.gz"
+    },
+    "checks/reference/weed-continuation/spruce-native.json.gz": {
+      "bytes": 3380,
+      "sha256": "358d62f111046b9be3ada25ebdd6a198c0bf3e0a5d55ee3a358bb1f22be5b9be",
+      "source_path": "reference/weed-continuation/spruce-native.json.gz"
     },
     "checks/test_committed_seed_retry_runtime.py": {
       "bytes": 2269,
@@ -400,6 +458,11 @@
       "bytes": 7847,
       "sha256": "d4d025d21c6c941d34056d9584cd875c77c9d07975a53ed8c089fb599e292aee",
       "source_path": "test_terminal_history_join.py"
+    },
+    "checks/test_weed_continuation.py": {
+      "bytes": 16037,
+      "sha256": "ec25b5707539fc6d987705c02cf06c3a4fbb138b71d2684c48ac8c8123c6bdfc",
+      "source_path": "test_weed_continuation.py"
     },
     "checks/test_worker_deadline.py": {
       "bytes": 5437,
@@ -487,8 +550,8 @@
       "source_path": "reference/integrated-selected/UPSTREAM.json"
     },
     "reference/integrated-selected/alder/seed_budget.py": {
-      "bytes": 4430,
-      "sha256": "f869ae7834a9b5e49cbace09c9d01c116182e7c3d74a5ca53ee21cd31834473a",
+      "bytes": 4723,
+      "sha256": "9ab840edbb60cea36e96a13d42cc30989daaf5614afe0665a8e2f5ce571e0dde",
       "source_path": "reference/integrated-selected/alder/seed_budget.py"
     },
     "reference/integrated-selected/claude/LICENSE-APACHE-2.0.txt": {
@@ -622,9 +685,9 @@
       "source_path": "reference/next-panel/vendor/arlene.py"
     },
     "reference/titan-current/vendor/sell/scheduler.py": {
-      "bytes": 19829,
-      "sha256": "2915af42b6b4cb280526f105705257b6ed35173391d1f11bb80dd73d55fc48f7",
-      "source_path": "scheduler.py"
+      "bytes": 19766,
+      "sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+      "source_path": "../cloud-titan-composition/vendor/sell/scheduler.py"
     },
     "reference/titan-current/vendor/terminal.py": {
       "bytes": 18390,
@@ -732,8 +795,8 @@
       "source_path": "../cloud-quickstep/seller_snapshot.py"
     },
     "spatial_tempo.py": {
-      "bytes": 14557,
-      "sha256": "ecbbc482939b12471d3b002e9db7eb6dfc433e8f2d7e89dcb38c5c05f211d86f",
+      "bytes": 24309,
+      "sha256": "1ace1547a0f091ce36de1bbb8e023baa7b9699346968ebbc1468433733dbd50d",
       "source_path": "spatial_tempo.py"
     },
     "terminal_history_join.py": {
@@ -742,8 +805,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 24486,
-      "sha256": "a1a2a77c28a1be8e8341c057084f76b75073998d149e7d24eb5c97b11ffa27dc",
+      "bytes": 24872,
+      "sha256": "1edef56ca288df5e0cff2b9fa5c7dd6aa4e872091c2c87f1d739d1c1a1791903",
       "source_path": "titan_runtime.py"
     }
   },

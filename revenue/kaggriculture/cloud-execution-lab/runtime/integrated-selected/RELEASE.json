@@ -90,6 +90,35 @@
       "callsite": "TitanAgent.transform_selected -> _redundant_hire_selected before seed funding",
       "enabled": true,
       "consumed_result": "Exact current87d7 protocol case +5 own/+0 rival both seats; CEDAR 12-pair interaction has zero feed interaction and positive reached/null T10 effects; 24-pair multi-opponent gate has no verdict regressions. Enabled by T08 integration; no new runtime source."
+    },
+    {
+      "component": "LARK market pressure",
+      "source_pin": "PR10728; current manifest pressure_priority.py and sell_priority.py",
+      "callsite": "TitanAgent._market_pressure_selected",
+      "enabled": true,
+      "consumed_result": "Previously reported paired panel: candidate16W versus parent8W8L, mean margin+549.5. Historical development evidence, not a current-archive or leaderboard estimate."
+    },
+    {
+      "component": "Committed seed retry",
+      "source_pin": "PR10774; current manifest seed_retry.py",
+      "callsite": "TitanAgent._committed_seed_retry_selected",
+      "enabled": false,
+      "consumed_result": "Packaged source and boundary checks; subsequent64-game activation panel reported zero activations. Remains disabled."
+    },
+    {
+      "component": "QUICKSTEP/PULSE reuse",
+      "source_pin": "Current manifest seller_snapshot.py, observed_clone.py, plant_suffix.py",
+      "callsite": "FrozenSelected public snapshot; scheduler post_units; SeedBudget derivation",
+      "enabled": true,
+      "consumed_result": "Landed source is reused byte-for-byte. Earlier matched-game timing reports retain their original artifact scope; no new speed claim."
+    },
+    {
+      "component": "Observed weed continuation",
+      "source_pin": "Current manifest spatial_tempo.py, titan_runtime.py, seed_budget.py and checks/test_weed_continuation.py",
+      "callsite": "TitanAgent frozen production -> SpatialTempo; finish commits emitted actor stream",
+      "enabled": true,
+      "consumed_result": "Exact DELTA rejoin and SPRUCE native prefix, ASH later-seed/reset rejections, and source boundaries. A historical implementation was not recovered; its tests and development games are not attributed to these bytes. New whole-game strength remains unmeasured.",
+      "admission": "One displaced PLANT/BUILD, same actor and day, PASS absorption before reset/branch/hire; same-day watering for PLANT; preserve all later compatible-route seed requests from observed stock; recheck actual next observation; preserve market rows and unrelated actors."
     }
   ],
   "next_increments": [
@@ -182,22 +211,6 @@
     "version": "1.32.7",
     "commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
   },
-  "game_evidence_for_this_archive": {
-    "scope": "same runtime bytes with redundant_hire enabled; development/compatibility evidence, not hosted leaderboard",
-    "current87d7_protocol": {
-      "seed": 9922999,
-      "seats": 2,
-      "control_own": 190319,
-      "candidate_own": 190324,
-      "rival": 3550,
-      "margin_delta": 5,
-      "errors": 0
-    },
-    "cedar_interaction_pairs": 12,
-    "cedar_multi_opponent_pairs": 24,
-    "verdict_regressions": 0,
-    "limits": "mirrored seats are dependent; feed interaction and opponent-conditioned cells retain their original labels"
-  },
   "current": {
     "entrypoint": "main.py::agent",
     "archive": "exports/titan-current.tar.gz",
@@ -259,7 +272,23 @@
     "reserve_decision": "Keep 10 ms; measurements do not establish original cause or a 73 ms reserve requirement",
     "terminal_route_decision": "Keep off: 272-game research; frozen matchup default42W20T2L -> route54W0T10L, no robust gain demonstrated"
   },
-  "checkpoint": {
+  "historical_component_game_evidence": {
+    "scope": "same runtime bytes with redundant_hire enabled; development/compatibility evidence, not hosted leaderboard",
+    "current87d7_protocol": {
+      "seed": 9922999,
+      "seats": 2,
+      "control_own": 190319,
+      "candidate_own": 190324,
+      "rival": 3550,
+      "margin_delta": 5,
+      "errors": 0
+    },
+    "cedar_interaction_pairs": 12,
+    "cedar_multi_opponent_pairs": 24,
+    "verdict_regressions": 0,
+    "limits": "mirrored seats are dependent; feed interaction and opponent-conditioned cells retain their original labels"
+  },
+  "historical_checkpoint": {
     "operation": "titan-kaggriculture-checkpoint-20260908-01",
     "upload_executor": "root",
     "owner_authorization": "Submission authorized for this single checkpoint; builder does not duplicate upload",
@@ -269,5 +298,19 @@
       "ECON"
     ],
     "pending_research": "Terminal route/history and broader capital changes remain test-only; redundant-hire certificate is enabled from current-package and multi-opponent evidence. Root retains provider upload."
+  },
+  "game_evidence_for_this_archive": {
+    "new_full_games": 0,
+    "scope": "Native/source-validated weed-continuation iteration. Whole-game playing strength has not been measured for these changed bytes. Owner paused new simulation panels for source/mechanism review.",
+    "evidence": "runtime/integrated-selected/WEED-CONTINUATION-TESTS.json",
+    "historical_results_apply": false
+  },
+  "checkpoint": {
+    "operation": "titan-v2-weed-continuation-20260909",
+    "runtime_entrypoint": "main.py::agent",
+    "owner_authorization": "Continue the existing targeted v2 recovery/integration. No new simulation panels in this analysis pass. No Kaggle submission.",
+    "submission_status": "not_submitted",
+    "stage": "source_and_native_validation",
+    "playing_strength": "not_measured_for_changed_bytes"
   }
 }
