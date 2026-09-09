@@ -28,3 +28,6 @@ All execution occurred in the existing cloud VM. No new seed, VM, dependency,
 paid service, Kaggle upload, notebook edit, alternate runtime or submission
 package was created.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -37,3 +37,7 @@ Existing reusable source transport: artifact10030763484, source7f92f6c0f4e3961be
 See RESULTS.md and scores.csv for all64 official-engine score records, SOURCE-FREEZE.json for the pre-held runtime freeze, and EXPORT-RECEIPT.json / EXPORT-PARITY.json for the reproducible standalone package. Twenty-six tests pass. The64-game raw archive is retained separately in the originating Chat session; RAW-SHA256SUMS.txt commits its per-file identities, not the observation payloads themselves. No additional independent wins are counted for the two source/export packaging checks.
 
 The existing shared TITAN selection is unchanged. All execution stayed in cloud compute; no Kaggle upload, hosted rating claim, new spend, or owner-PC execution occurred. New bridge code is MIT; unchanged T05, SELL, mechanics, receipt math and Arlene retain Apache-2.0 notices and licenses. Existing opponent/engine licenses remain intact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

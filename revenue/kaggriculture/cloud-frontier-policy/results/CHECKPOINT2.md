@@ -24,3 +24,7 @@ On seed9400109 Kaito self-play earns102348 each; the sale edit earns100306 versu
 ## Leader replay used as context
 
 Read ../cloud-frontier-trace/OBSERVATIONS.md for episode106392861. Tomato diversification and realized sale prices are evidence to investigate, not copied inventory targets. This lane has not installed a copied one-game crop mix, replayed hidden future actions, or claimed a current leaderboard rating. Root owns submission.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

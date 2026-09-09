@@ -17,3 +17,7 @@ records remain external because each contains roughly 7.9 MB of repeated
 720-step traces; their exact SHA-256 digests are recorded in that summary.
 
 Status: **REJECT / research only / not composed / not uploaded**.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

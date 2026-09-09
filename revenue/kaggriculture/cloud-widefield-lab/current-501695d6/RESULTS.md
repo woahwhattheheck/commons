@@ -92,3 +92,7 @@ A negative identity test supplied an all-zero expected current-archive digest.
 The runner exited nonzero before extraction or game execution and reported the
 actual `501695d6...` digest. `--help` also completed successfully. These checks
 show that the published command is runnable and fails closed on archive drift.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

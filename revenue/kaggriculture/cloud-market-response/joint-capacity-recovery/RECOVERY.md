@@ -109,3 +109,7 @@ Source was read through the connected repository and recovered from Library rece
 BIRCH retains implementation and native-test attribution. BRIDGE adds only durable
 publication of the exact patch plus the 11-method patch-level acceptance check.
 No credentials are bundled and no provider/account action occurred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

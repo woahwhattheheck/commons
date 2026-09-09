@@ -37,3 +37,7 @@ Production allocation is the larger next question. On 9500109, Arlene sold 261 m
 Arlene then beat Apex in 8/8 fresh head-to-head games on 9500301, 9500319, 9500337 and 9500355. The first four margins were +9277, +112, +1827 and +2559; the next four +8453, +8453, +3719, +3719. Arlene is a stronger foundation on this sample, not a leaderboard-winning claim. Its existing milk-glut branch is chosen at step 433 although its route first diverges at 577. A separately named next experiment defers that same threshold decision to the common-prefix boundary, keeping every source route and inherited execution guard. Results for that experiment are pending in this checkpoint.
 
 Reproduction: prepare.py, then build_experiment.py VARIANT --runtime DIRECTORY, then measure.py with the generated adapter and the recorded seeds. All policy builds/tests occurred in cloud; no credentials were retrieved, no notebook setup cells ran, and no paid compute or submission occurred. offline-guard.json confirms socket creation and subprocess execution were denied by the installed filter.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -57,3 +57,7 @@ Expected: PASS
 
 Each derived-numeric test invokes the real CLI and requires exit 2 plus a
 persisted, machine-readable `INVALID` report.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

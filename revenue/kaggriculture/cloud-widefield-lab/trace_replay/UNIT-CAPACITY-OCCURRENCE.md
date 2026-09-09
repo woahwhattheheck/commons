@@ -82,3 +82,7 @@ The recorded interpreter replays are source-correspondence checks, not new score
 games. New policy calls, game seeds and provider writes are zero. Mirrored seats,
 file aliases and repeated action patterns are retained explicitly and are not
 presented as statistically independent evidence.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

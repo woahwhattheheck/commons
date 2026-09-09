@@ -90,3 +90,7 @@ Activation still requires E11's matched official-engine screen: 32 balanced
 seed/opponent pairs × both seats = 64 complete games per variant, followed by an
 untouched holdout. Focused contracts are correctness evidence, not a
 playing-strength claim. No Kaggle submission is authorized from this order.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

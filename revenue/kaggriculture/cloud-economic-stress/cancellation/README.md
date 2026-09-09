@@ -89,3 +89,7 @@ Partial producer mutation, BaseException-catching code, native-extension
 interruptibility and nesting with an existing process timer remain separate
 integration concerns. This small repair changes none of those contracts. Tests
 must run in a fresh subprocess rather than replace a caller's active timer.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

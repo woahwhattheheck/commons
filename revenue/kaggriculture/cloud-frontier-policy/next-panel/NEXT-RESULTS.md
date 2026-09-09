@@ -66,3 +66,7 @@ After the reserved protocol completed, the extracted baseline archive played dep
 Process startup separately ranged58.6–109.5ms; cold first call includes native official-loader initialization. Summed candidate call CPU per complete game was0.308–0.363s. Full-game wall includes both agents, interpreter and measurement. Raw reports retain per-call maxima and RSS; RSS/cumulative child accounting can reflect shared driver sampling and should not be treated as isolated policy memory.
 
 **Recommend unchanged Arlene**: source1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4, native callable `agent`; archive7dcb73bb0d8bc6d0d003b107fcb47c93f9e77c4d8c64d39fec8bd54d406bb407,33,908bytes. Demand-dairy remains a separately attributed research variant. It is not consistently better than Arlene in the reserved comparison, while the legal unchanged foundation is clearly useful against the tested deployed policy and other public sources. This is a disclosed choice among the pretested baseline and derivative, not a claim of a new independent selection-validation set. Root owns next submission designation; no account action occurred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

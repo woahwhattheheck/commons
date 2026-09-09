@@ -31,3 +31,7 @@ python -B revenue/kaggriculture/cloud-frontier-decision/execution/benchmark.py -
 ```
 
 Run baseline-execution.py and demand-execution.py separately for paired ablations. The evaluator is the existing official-engine cloud harness at engine pin 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c. No alternate simulator, Kaggle upload, owner-PC execution, model install or new paid compute is involved. Runtime wrappers depend on the checkout and are runnable research agents, not a standalone submission archive. See RESULTS.md for actual completed results and selection status.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

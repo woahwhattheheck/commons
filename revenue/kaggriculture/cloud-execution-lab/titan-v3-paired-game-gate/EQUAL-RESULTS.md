@@ -24,3 +24,7 @@ the raw outcome-byte inequality veto.
 The candidate artifact and candidate panel remain shared exactly across both
 comparisons. Candidate/predecessor artifact aliasing remains invalid. Closure,
 receipt, grid, policy, candidate, and single-gate custody are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

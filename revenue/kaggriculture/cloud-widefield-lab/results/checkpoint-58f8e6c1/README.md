@@ -26,3 +26,7 @@ Frozen SELL opponent mean own111567/rival111327; all four margins+240. Apex mean
 Configuration: consumer=frozen,seed=true,funding=true,terminal_route=false,terminal_history=false,committed=true (ordered-only),budget_seconds1.0,reserve_seconds.01. Official engine28b6d8af with existing evaluator.Actor/play,1sRPC/10sstartup/120sgame, one worker. FrozenSELL opponent is the accepted exact scheduler32c8610c via its unchanged wrapper; Apex and COK10 retain bank source identities in originals and the existing source-freeze.json. No opponent source changes.
 
 run_checkpoint.py is a scoped consumer of the existing evaluator; summarize_checkpoint.py summarizes its originals. Full records and SOURCE.json are in the bundle described by bundle.json; concatenate listed binary parts and verify its SHA256 before extraction. All computation ran in existing cloud VM/task https://chatgpt.com/c/6a9f4095-0eac-83ea-adc2-ac11f4e09613 . Root owns checkpoint submission; no duplicate Kaggle write, runtime repair, new VM or spend. T08/root received early completed shard and final12-game scores before publication.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

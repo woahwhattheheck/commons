@@ -55,3 +55,7 @@ The private delivery archive carries the original six development traces and
 full test logs; they are not added to the repository patch. These are repeated
 observations from the original development dataset, not independent performance
 samples, fresh held evaluation, a new rating, or evidence of a stronger policy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
