@@ -1,0 +1,63 @@
+name: sol-orbit-command-center-activity-as-of
+on:
+  push:
+    branches: ['sol-orbit/command-center-activity-as-of-20260909-01']
+    paths: ['.github/workflows/sol-orbit-command-center-activity-as-of.yml']
+permissions:
+  contents: write
+jobs:
+  patch-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol-orbit/command-center-activity-as-of-20260909-01
+          fetch-depth: 1
+      - name: Apply exact activity semantics repair
+        shell: python
+        run: |
+          from pathlib import Path
+
+          collectors = Path('integrations/command_center/collectors.py')
+          text = collectors.read_text()
+          replacements = [
+              (
+                  'def latest(items):\n    values = [timestamp(item.get("updated_at")) for item in items]\n',
+                  'def latest(items):\n    values = [timestamp(item.get("activity_observed_at")) for item in items]\n',
+              ),
+              (
+                  '                observed = timestamp(row.get("observed_at"))\n                updated = timestamp(row.get("updated_at") or row.get("last_change") or provider.get("event_at"))\n',
+                  '                observed = timestamp(row.get("observed_at"))\n                updated = timestamp(row.get("updated_at") or row.get("last_change") or provider.get("event_at"))\n                activity = timestamp(row.get("activity_observed_at"))\n',
+              ),
+              (
+                  '                    "updated_at": updated, "activity_observed_at": updated,\n',
+                  '                    "updated_at": updated, "activity_observed_at": activity,\n',
+              ),
+          ]
+          for old, new in replacements:
+              if text.count(old) != 1:
+                  raise SystemExit(f'collector preimage count {text.count(old)} != 1 for {old!r}')
+              text = text.replace(old, new, 1)
+          collectors.write_text(text)
+
+          tests = Path('integrations/command_center/test_collectors.py')
+          text = tests.read_text()
+          old = '''        self.assertEqual("2026-01-01T00:00:00Z", feature["updated_at"])\n        self.assertIsNone(vm["activity_observed_at"])\n        self.assertIsNone(vm["updated_at"])\n        self.assertEqual(OBSERVED, vm["refs"]["resource_observed_at"])\n        self.assertEqual("2026-01-01T00:00:00Z", batch["source"]["activity_as_of"])\n'''
+          new = '''        self.assertEqual("2026-01-01T00:00:00Z", feature["updated_at"])\n        self.assertIsNone(feature["activity_observed_at"])\n        self.assertIsNone(vm["activity_observed_at"])\n        self.assertIsNone(vm["updated_at"])\n        self.assertEqual(OBSERVED, vm["refs"]["resource_observed_at"])\n        self.assertIsNone(batch["source"]["activity_as_of"])\n'''
+          if text.count(old) != 1:
+              raise SystemExit(f'test preimage count {text.count(old)} != 1')
+          tests.write_text(text.replace(old, new, 1))
+      - name: Focused collector contracts
+        run: python3 -m unittest integrations.command_center.test_collectors -v
+      - name: Compile target files
+        run: python3 -m py_compile integrations/command_center/collectors.py integrations/command_center/test_collectors.py
+      - name: Commit only target files
+        run: |
+          git config user.name sol-orbit
+          git config user.email sol-orbit@users.noreply.github.com
+          git add integrations/command_center/collectors.py integrations/command_center/test_collectors.py
+          test "$(git diff --cached --name-only | wc -l)" -eq 2
+          git diff --cached --check
+          git commit -m 'Keep command-center activity timestamps explicit'
+          git push origin HEAD:sol-orbit/command-center-activity-as-of-20260909-01
