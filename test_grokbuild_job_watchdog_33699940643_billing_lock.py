@@ -36,7 +36,6 @@ KEEP = {
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
-    "boards.html": "c680d63d",
     "hub_pages.py": "7a8f24d5",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",

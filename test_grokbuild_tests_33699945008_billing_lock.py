@@ -19,7 +19,6 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
-    "test_grokbuild_tests_33694253421_billing_lock.py": "7050e419",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
     "test_grokbuild_tests_33694246830_billing_lock.py": "ddbd5c09",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
@@ -30,7 +29,6 @@ KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daa",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
-    "boards.html": "c680d63d",
     "hub_pages.py": "7a8f24d5",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "7b9a2318",

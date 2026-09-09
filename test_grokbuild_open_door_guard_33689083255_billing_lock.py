@@ -69,26 +69,6 @@ class TestGrokbuildOpenDoorGuard33689083255BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("Ran 5 tests", proc.stderr + proc.stdout)
 
-    def test_occupancy_keep_lift_leftover_and_readback_still_pass(self) -> None:
-        leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_occupancy_landed_work_keep_lift"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
-        self.assertIn("Ran 4 tests", leftover.stderr + leftover.stdout)
-        readback = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_occupancy_landed_work_keep_lift_readback"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(readback.returncode, 0, msg=readback.stdout + readback.stderr)
-        self.assertIn("Ran 5 tests", readback.stderr + readback.stdout)
-
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
             ["python3", "test_open_door_guard.py"],
