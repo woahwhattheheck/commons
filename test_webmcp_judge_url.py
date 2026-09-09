@@ -15,11 +15,11 @@ ADAPTER = ROOT / "api/mcp.py"
 
 KEEP = {
     "api/mcp.py": "393da756",
-    "webmcp.html": "3b4df417",
+    "webmcp.html": "b3b0d7d3",
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "992e068d",
+    "test_cursor_webmcp_contest.py": "93995fc0",
     "vercel.json": "86c5b13a",
 }
 

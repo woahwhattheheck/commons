@@ -21,10 +21,10 @@ SPEC.loader.exec_module(loop)
 KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "09ce11a1",
+    "test_commerce_agents.py": "a31e221d",
     "commerce-agents.html": "dfedb16a",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    ".agents/skills/commerce-agents/SKILL.md": "81d9eccd",
+    ".agents/skills/commerce-agents/SKILL.md": "1c0da1d4",
     "shots/cursor-big-things-incoming-hub-1-20260902.png": "ac761b7036834acf38c34b9a2eaa17170a590c4b",
     "shots/cursor-big-things-incoming-hub-2-20260902.png": "8eb5940f94a0875b1c653c0bbfcb3c3f33209ce1",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
@@ -36,10 +36,10 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "door.js": "de1d570b",
-    "hub_pages.py": "d0bd0e8d",
+    "hub_pages.py": "44bbd2ec",
     "ground/OWNER_NOW.md": "0a574d94",
-    "host/slack_mirror.py": "c94f6fa5",
-    "CLAUDE.md": "3a36134c",
+    "host/slack_mirror.py": "95d6aff3",
+    "CLAUDE.md": "2aca7c0f",
 }
 
 
