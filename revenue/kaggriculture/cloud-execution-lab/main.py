@@ -15,6 +15,8 @@ def _new_instance(root, feature_data):
         feed and capital repairs are now allowed to finish first, then pressure
         may reorder only the resulting supported SELL blocks. Deadline fallback
         keeps its existing path and does not start a new optional transform.
+        The physical-equivalence cardinality guard runs after pressure so no
+        later transform can reintroduce impossible HIRE or worker suffixes.
         """
         def _market_pressure_selected(self, obs, cfg, selected):
             if not getattr(self, '_final_pressure_boundary', False):
@@ -30,9 +32,18 @@ def _new_instance(root, feature_data):
                 return returned
             self._final_pressure_boundary = True
             try:
-                return super()._market_pressure_selected(obs, cfg, returned)
+                returned = super()._market_pressure_selected(obs, cfg, returned)
             finally:
                 self._final_pressure_boundary = False
+            # The engine silently ignores unavailable workers and failed HIREs.
+            # Reconcile only those exact no-ops after every policy transform,
+            # without mutating the incumbent route or calling another policy.
+            import mechanics
+            from hire_cardinality import reconcile_hire_cardinality
+            returned, report = reconcile_hire_cardinality(
+                mechanics, obs, cfg, returned)
+            self.diagnostics['hire_cardinality'] = report
+            return returned
 
     admission = None
     if features.fourth_quadrant:
