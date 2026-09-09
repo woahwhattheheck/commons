@@ -59,6 +59,13 @@ class ChessStoreTests(unittest.TestCase):
                 self.error(422, lambda: self.store.create({**payload(), "questions": [question]}))
         self.assertEqual(self.store.listing(), [])
 
+    def test_duplicate_canonical_piece_square_is_rejected_before_event_creation(self):
+        base = chess_question()["chess"]
+        duplicate = {**base, "pieces": {"g1": "N", " g1 ": "B", "e8": "k"}}
+        question = {**chess_question(), "chess": duplicate}
+        self.error(422, lambda: self.store.create({**payload(), "questions": [question]}))
+        self.assertEqual(self.store.listing(), [])
+
     def test_open_state_attaches_board_but_hides_correct_index(self):
         event = self.store.create(payload())["id"]
         state = self.store.state(event)
