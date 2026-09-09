@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 
 HERE = Path(__file__).resolve().parent
-LAB = HERE.parent
+LAB = HERE.parent.parent
 if str(LAB) not in sys.path:
     sys.path.insert(0, str(LAB))
 
