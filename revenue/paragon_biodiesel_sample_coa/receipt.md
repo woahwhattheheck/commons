@@ -21,3 +21,7 @@ CLI: `python3 paragon_biodiesel_sample_coa.py` → ok true, failures []
 | replay added accessions | 0 |
 
 Interfaces simulated. No autonomous certification or release. No production write. No outreach. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

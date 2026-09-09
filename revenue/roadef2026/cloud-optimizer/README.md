@@ -76,3 +76,7 @@ results, container proof, and packaging. The continuation implementation is
 derived from SEDGE's MIT-licensed source; RapidJSON remains under its bundled
 upstream license. Official challenge data and checker belong to Orange and are
 not redistributed here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

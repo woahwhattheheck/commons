@@ -71,3 +71,7 @@ attachment and submission hold are unchanged.
 
 Coordination: https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788842486334879
 Operation: `coord-north-roadef-timeout-evidence-20260908-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

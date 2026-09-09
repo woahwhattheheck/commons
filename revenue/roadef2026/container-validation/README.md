@@ -93,3 +93,7 @@ Prior PR10181 B01/early-TERM execution remains frozen in its separate receipt;
 this candidate and acceptance contract are a distinct execution. Neither proves
 competition rank, hidden-instance performance, official-hardware behavior or a
 complete final-drain timing matrix.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

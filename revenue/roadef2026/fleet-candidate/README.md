@@ -93,3 +93,7 @@ resource contention can change search progress. No dominance, largest-instance
 memory bound, hidden-instance quality, or winning rank is established by its
 design alone. Those require equal-resource, full-budget measured trials and
 official validation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

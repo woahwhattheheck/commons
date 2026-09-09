@@ -66,3 +66,7 @@ The standard-library parser, five passing integrity regressions, machine-readabl
 `5b55adc6497903f065cf5567dba1df0baa9ef53ff4efe4f574b07db2dbb1dd5a`.
 The reader verifies the provider digest and every consumed archive member against
 `MANIFEST.json`; it never extracts or executes archive contents.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
