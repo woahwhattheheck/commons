@@ -1,14 +1,19 @@
---- tools/v25_sims/gauntlet.py POOL
-+++ bank/v3-adversarial/gauntlet_s11.py POOL
-@@
+--- gauntlet.py POOL
++++ gauntlet_s11.py POOL
+@@ -17,6 +17,19 @@ POOL = {
+     "public_bt12":  f"{R}/cloud-frontier-decision/public-opponent/submission.py::agent",
      "v1_submitted": str(SP / "v1/main.py") + "::agent",
-+    "official_pass":   "{BANK}/official_pass/main.py::agent",
-+    "official_random": "{BANK}/official_random/main.py::agent",
-+    "deepesh_farmbrain":"{BANK}/deepesh_farmbrain/main.py::agent",
-+    "lonespear_main":  "{BANK}/lonespear_main/main.py::agent",
-+    "lonespear_livestock":"{BANK}/lonespear_livestock/main.py::agent",
-+    "amey_v43":        "{BANK}/amey_v43/main.py::agent",
-+    "amey_v16":        "{BANK}/amey_v16/main.py::agent",
++    # S11 adversarial bank (new; licensed public opponents). Run paths were /tmp/bank.
++    "official_starter": "/tmp/bank/official_starter/agent.py::agent",
++    "official_random":  "/tmp/bank/official_random/agent.py::agent",
++    "official_pass":    "/tmp/bank/official_pass/agent.py::agent",
++    "deepesh_wheat":    "/tmp/bank/deepesh_wheat/agent.py::agent",
++    "amey_premium":     "/tmp/bank/amey_premium/agent.py::agent",
++    "amey_plan":        "/tmp/bank/amey_plan/agent.py::agent",
++    "barnyard_v5":      "/tmp/bank/barnyard_v5/agent.py::agent",
++    "moon_melons":      "/tmp/bank/moon_melons/agent.py::agent",
++    "lonespear_care":   "/tmp/bank/lonespear_care/agent.py::agent",
++    "soil_rain":        "/tmp/bank/soil_rain/agent.py::agent",
++    "c95_highscore":    "/tmp/bank/c95_highscore/agent.py::agent",
++    "apache_builder":   "/tmp/bank/apache_builder/agent.py::agent",
  }
-# BANK default: this directory. Runtime copy used /tmp/bank during S11.
-# starter remains official_starter token.
