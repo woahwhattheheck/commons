@@ -27,3 +27,14 @@ Built 2026-08-04.
 **Measured at fabrication:** the shipped netlist reproduces an independent reference on all
 65,536 shots, 0 mismatches. Single-sense shots publish 0 on all 65,536 shots and the datapath
 goes dead - the both-senses law, demonstrated rather than claimed.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
