@@ -1,6 +1,7 @@
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 import importlib.util, json, os, random, sys, tempfile, time
+from s05_completeness import require_complete_panel
 ROOT=Path(os.environ['S05_RUNTIME_ROOT']).resolve();EVAL=ROOT/'checks/reference/evaluator/evaluate.py';ENGINE=ROOT/'checks/reference/engine';LOADER=ROOT/'checks/reference/evaluator/loader.py';OPP=str(ROOT/'main.py')+'::agent'
 CANDS={'control':OPP,'shadow':str(ROOT/'s05_agent_shadow.py')+'::agent','prior':str(ROOT/'s05_agent_prior.py')+'::agent'}
 
@@ -44,4 +45,5 @@ def main():
  order={k:i for i,k in enumerate(CANDS)};out.sort(key=lambda r:(order[r['variant']],r['index'],r['candidate_seat']))
  report={'schema':1,'operation':'titan-v25-orders-20260909-S05','dispatch_main':os.environ.get('S05_DISPATCH_MAIN'),'runtime_root':str(ROOT),'seeds':seeds,'games':out,'wall_seconds':time.time()-started}
  dest=Path(os.environ.get('S05_RESULT_PATH','S05-S-SCREEN.json'));dest.write_text(json.dumps(report,indent=2)+'\n');print('S05_SCREEN_DONE',len(out),report['wall_seconds'],flush=True)
+ require_complete_panel(report, nseeds)
 if __name__=='__main__':main()

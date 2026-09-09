@@ -40,8 +40,10 @@ jobs:
           cp "$SRC/s05_event_macros.py" /tmp/s05-runtime/
           cp "$SRC/s05_agent_shadow.py" /tmp/s05-runtime/
           cp "$SRC/s05_agent_prior.py" /tmp/s05-runtime/
+          cp "$SRC/s05_completeness.py" /tmp/s05-runtime/
           cp "$SRC/test_s05_event_macros.py" /tmp/s05-runtime/
           cp "$SRC/test_s05_engine_precision.py" /tmp/s05-runtime/
+          cp "$SRC/test_s05_completeness.py" /tmp/s05-runtime/
           cp "$SRC/run_s05_full.py" /tmp/s05-runtime/
           cp "$SRC/summarize_s05.py" /tmp/s05-runtime/
       - name: Exact predicate and counterexample contracts
@@ -49,6 +51,7 @@ jobs:
         run: |
           set -euo pipefail
           cd /tmp/s05-runtime
+          PYTHONPATH=. python test_s05_completeness.py -v
           S05_RUNTIME_ROOT=/tmp/s05-runtime PYTHONPATH=. python test_s05_event_macros.py -v
           S05_RUNTIME_ROOT=/tmp/s05-runtime PYTHONPATH=. python test_s05_engine_precision.py -v
       - name: Fresh exact-agent S panel
@@ -57,7 +60,7 @@ jobs:
           set -euo pipefail
           cd /tmp/s05-runtime
           S05_RUNTIME_ROOT=/tmp/s05-runtime S05_DISPATCH_MAIN=741d76f345921ded3cd436dab02fe5b8555f2d25 S05_SEEDS=16 S05_WORKERS=2 S05_RESULT_PATH="$RUNNER_TEMP/S05-S-SCREEN.json" PYTHONPATH=. python run_s05_full.py
-          S05_RUNTIME_ROOT=/tmp/s05-runtime S05_RESULT_PATH="$RUNNER_TEMP/S05-S-SCREEN.json" S05_SUMMARY_PATH="$RUNNER_TEMP/S05-SUMMARY.json" S05_ARCHIVE_SHA=0215384841e2eec7f919f82ea900f343f1dc75665747a45e8df8f6b33316c1e5 PYTHONPATH=. python summarize_s05.py
+          S05_RUNTIME_ROOT=/tmp/s05-runtime S05_RESULT_PATH="$RUNNER_TEMP/S05-S-SCREEN.json" S05_SUMMARY_PATH="$RUNNER_TEMP/S05-SUMMARY.json" S05_ARCHIVE_SHA=0215384841e2eec7f919f82ea900f343f1dc75665747a45e8df8f6b33316c1e5 S05_SEEDS=16 PYTHONPATH=. python summarize_s05.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

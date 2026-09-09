@@ -2,6 +2,7 @@ import json, os, statistics, hashlib
 from collections import Counter
 from pathlib import Path
 from s05_event_macros import build_library,library_sha256
+from s05_completeness import completeness_errors, expected_per_variant, expected_total, nseeds_from
 root=Path(os.environ['S05_RUNTIME_ROOT']);report=json.load(open(os.environ['S05_RESULT_PATH']));games=report['games'];lib=build_library(root/'reference/next-panel/vendor/arlene.py')
 by={v:[g for g in games if g['variant']==v] for v in ('control','shadow','prior')}
 def candidate_cash(g):return float(g['scores'][g['candidate_seat']])
@@ -19,4 +20,7 @@ def paired(v):
 shadow=[g.get('macro_trace') or {} for g in by['shadow']];prior=[g.get('macro_trace') or {} for g in by['prior']]
 ptr=json.load(open(root/'SOURCE.json'));archive_sha=os.environ.get('S05_ARCHIVE_SHA')
 out={'schema':1,'operation':report['operation'],'dispatch_main':report.get('dispatch_main'),'archive_sha256':archive_sha,'source_manifest_sha256':hashlib.sha256((root/'SOURCE.json').read_bytes()).hexdigest(),'runtime_files':len(ptr.get('runtime',{})),'library':{'macros':len(lib),'sha256':library_sha256(lib),'families':dict(sorted(Counter(m['family'] for m in lib).items())),'route_memberships':sum(len(m['routes']) for m in lib)},'variants':{v:summary(by[v]) for v in by},'paired_vs_control':{'shadow':paired('shadow'),'prior':paired('prior')},'shadow':{'candidates':sum(x.get('candidates',0) for x in shadow),'preserved_candidates':sum(x.get('preserved_candidates',0) for x in shadow),'fires':sum(x.get('fires',0) for x in shadow),'revalidations':sum(x.get('revalidations',0) for x in shadow),'revalidation_failures':sum(x.get('revalidation_failures',0) for x in shadow),'beam_checks':sum(x.get('beam_checks',0) for x in shadow),'changed_recommendations':sum(x.get('changed_recommendations',0) for x in shadow),'fire_families':{k:sum((x.get('fire_families') or {}).get(k,0) for x in shadow) for k in ('reset','unlock','hire','escape','maturity','pickup_drop','settlement')}},'prior':{'switches':sum(x.get('switches',0) for x in prior),'revalidations':sum(x.get('revalidations',0) for x in prior),'revalidation_failures':sum(x.get('revalidation_failures',0) for x in prior),'rollbacks':sum(x.get('rollbacks',0) for x in prior)},'wall_seconds':report.get('wall_seconds')}
+nseeds=nseeds_from(report, os.environ);errors=completeness_errors(report, nseeds)
+out['completeness']={'nseeds':nseeds,'expected_total':expected_total(nseeds) if nseeds>0 else 0,'expected_per_variant':expected_per_variant(nseeds) if nseeds>0 else 0,'ok':not errors,'errors':errors}
 Path(os.environ['S05_SUMMARY_PATH']).write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print('S05_SUMMARY_JSON='+json.dumps(out,sort_keys=True,separators=(',',':')))
+if errors: raise SystemExit('S05_INCOMPLETE '+';'.join(errors[:24]))
