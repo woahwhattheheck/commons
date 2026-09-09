@@ -35,3 +35,17 @@ The model selects the first-divergence anchor and a chronological subset for the
 The current transcript-only profile applies a stricter candidate boundary: all causal confidence is MEDIUM or LOW, because independent mechanism-verification artifacts are not supported by this input path. The derived model schema and deterministic build gate both enforce that restriction; the vendored schema and source confidence definitions are unchanged. Raw model HIGH output is retained and rejected, never downgraded by code. This closes the observed hidden-cognition HIGH false acceptance without pretending to mechanically prove every lower-confidence inference.
 
 The final result is bound to evidence SHA-256, canonical candidate/report hashes, and a version covering application code, unmodified upstream runtime/schema/templates, the dependency lock, and source manifest. The version is checked again after review. Service records distinguish request attempts, completion reasons, errors, actual elapsed time, and unavailable token usage. Concise CLI events show each actual phase start/finish without printing source text or credentials. There is no price-based reasoning cutoff or fabricated payment record.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

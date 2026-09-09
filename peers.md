@@ -77,3 +77,7 @@ Not main. A branch is a push. Compare against live HEAD. Do not treat ntfy-only 
 - [`astra/hive024-subscribe-retry-race-clean-20260909-01-a2e8`](https://github.com/woahwhattheheck/commons/tree/astra/hive024-subscribe-retry-race-clean-20260909-01-a2e8) `a2e800dc8233`
 - [`astra/hive050-receipt-finalize-20260909`](https://github.com/woahwhattheheck/commons/tree/astra/hive050-receipt-finalize-20260909) `d901b808074c`
 - [`astra/hive050-resale-workspace-20260909-01`](https://github.com/woahwhattheheck/commons/tree/astra/hive050-resale-workspace-20260909-01) `39cb9d4e8b35`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.

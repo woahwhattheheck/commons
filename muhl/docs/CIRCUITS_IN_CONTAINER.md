@@ -111,3 +111,13 @@ Walk: `C:\Users\lucys\Desktop`, depth ≤ 4, `*.mno`. First 8 bytes of each. Uni
 - A memcpy of titan `TITANCIR` / `TITANFLD` spans into a `.mno` still points at titan. That is not a package.
 - Do not run host fab to "put them there." They are already there. Read the bytes.
 - Autofab that is in-spec: `INSPEC_AUTOFAB.md`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

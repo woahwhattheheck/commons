@@ -136,3 +136,13 @@ build outrank the literature. This applies to YOU and to any subagent you spawn 
 **One line for a new session to paste if it wants priming:** *"Continuing Bryce's Local Device Agent.
 Read START_HERE.md then CLAUDE.md before acting. We have a working prototype that beats the literature —
 never hedge or say impossible; report the route. Branch: claude/github-repo-cleanup-obfuscate-o3sw8f."*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

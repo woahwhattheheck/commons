@@ -24,3 +24,7 @@ This sheet is a question list. It is not legal advice, not a permit, and not a t
 Example states to look up (questions only, no answers invented here): CA, TX, FL, NY, OH. Copy the table. Do not paste a fake license number.
 
 Stop if a city bans the display. Do not install.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

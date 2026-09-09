@@ -14,3 +14,7 @@ preflight, and retry-safe cutover verification.
 HOLD / BUILD-AND-VERIFY. Simulated / read-only shadowing. No production
 writes, outreach, prospect-facing demo, or automatic release.
 PRE-SALE TRANSPORT: NONE. cash_usd=0. Open door. No login.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

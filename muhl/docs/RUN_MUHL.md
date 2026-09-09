@@ -46,3 +46,13 @@ titan.gguf size **103803349384** mtime **2026-08-15T09:00:26.1367768Z** unchange
 sizes held. no grow.
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\RUN_MUHL.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

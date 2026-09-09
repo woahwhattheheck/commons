@@ -57,3 +57,13 @@ SEED0 was already shot 3+5=8. Recv `00000001`. Organ latched — a new OR shot c
 No gate-ripple. No dc.mno. No 337. No titan 78.
 
 **button died y.**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

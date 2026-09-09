@@ -856,7 +856,7 @@
           "attested-inference.html direct share",
           "Upwork LLM cost-optimization briefs as buyer-side fit only"
         ],
-        "message": "10 million generated tokens for $1 on Muhlnickel — 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
+        "message": "10 million generated tokens for $1 on Muhlnickel \u2014 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
         "route": "commerce.html#sku-muhlnickel-generated-token-capacity",
         "cta": "Send the capacity ask"
       },
@@ -2063,5 +2063,40 @@
         }
       }
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-outcome-commerce-catalog-json-live-cash-20260909-01",
+      "goat-right-now-catalog-json-live-cash-20260909-01",
+      "commerce.html Live cash"
+    ],
+    "note": "Optional tip-shelf product paths with live checkout. Existing outcome_commerce listings above stay canonical. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

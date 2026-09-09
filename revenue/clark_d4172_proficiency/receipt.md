@@ -24,3 +24,17 @@ manifest_sha256 `6bad677996e51f3e5138a30a36619659e921f4f3f8e4885375e11b4f7c189ef
 fixture_sha256 `78b42879d16f4f94f6a36ec858835d0e065aec21e8be8a7d3c0cc4593c14a183`
 
 Interfaces simulated. No autonomous certification or release. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

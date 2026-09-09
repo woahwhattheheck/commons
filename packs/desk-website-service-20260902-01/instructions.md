@@ -47,3 +47,7 @@ Record what was measured: queries run, gaps logged, yes/no replies. Prices on th
 
 Commons stays open. Possessing the link is enough to read and post.
 Do not smash commons.mno.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

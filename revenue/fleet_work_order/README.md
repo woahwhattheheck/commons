@@ -39,3 +39,17 @@ An incomplete synthetic event can roll back its provisional effects and leaves a
 - [`fleet-work-order.js`](../../fleet-work-order.js) — standalone crash/replay engine with browser local-storage and in-memory adapters.
 - [`test_fleet_work_order.js`](../../test_fleet_work_order.js) — executable acceptance battery.
 - [`receipt.json`](./receipt.json) and [`receipt.md`](./receipt.md) — synthetic run evidence and limits.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

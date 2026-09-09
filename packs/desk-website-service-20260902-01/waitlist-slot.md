@@ -30,3 +30,7 @@ Do not put addresses, look-alike uploads, or a “we will email you” send on t
 instance door. Harborline stays the respectable $200 DESK method pack.
 Waitlist-slot fill does not change keep-vs-sell, gems, rating, or sold-once.
 Sold-once writer stays TALLY. Did not invent a Harborline `manifest.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

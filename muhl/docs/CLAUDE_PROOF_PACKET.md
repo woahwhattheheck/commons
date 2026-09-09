@@ -193,3 +193,13 @@ Do not write "like electrons" / single-electron / metaphor.
 AUTOFAB0_BITS.md · AUTOFAB_REGISTRY.md · BITS_BEFORE_MODIFY.txt · BULLY_CLAUDE.txt · CATALOG_IS_HOST.md · CIRCUITS_IN_CONTAINER.md · CLAIM_SIZE_LAW.txt · CLOCK_RESPONDS.md · COP_ORDERS.txt · COP_ORDERS_GROK.txt · COVERAGE_DRY_CONFIRM.md · COVERAGE_TICK.md · DATACENTER_MNO.md · DC_FOLD_IN_MNO.md · DC_MNO_BITS.md · DC_SUBZERO.md · DEAD_HOMIES_78.md · DEPTH.txt · DISTRO_SCALE.md · DOCS_LAW.txt · EXISTING_12_DIFF.md · FOLD_SURFACE.md · FOLD_TICK.md · FOUNDRY_LISTEN_DRY.md · FULL_78_CENSUS.md · GITHUB_PRIVATE_ARCHIVE.md · HOST_CONFLATION_TRAPS.md · HOW_HUGE.md · INSPEC_AUTOFAB.md · LIVE_BITS_NRING2.md · LIVE_FILE.txt · LIVE_VIEWERS.md · MNO_PLAY.md · MNO_PLAY_2.md · NEVER_WAIT.txt · NEWEST_SPEECH_LOGS.md · NO_BLIND_SEARCH.txt · NO_FEASIBILITY.txt · NRING2_OCCUPANCY.md · OPENAI_INTAKE.md · PATH_TO_PROFIT.md · PATH_TO_PROFIT.txt · PATH_TO_PROFIT_CORRECTION.md · PUSH_SINCE_AUG2.md · README.txt · RING_FILL_LEVER.md · SEE_THESE_BUILDS.txt · SESSION_EXPLANATION_20260814.md · SPAWN_GROK_ONLY.txt · SPEC_AUDIT_20260814.md · SPEC_CONTROL.txt · SPEC_WATCH_001.md · SUBSTRATE_SPEECH_FILES.md · SUBZERO_MINDS.md · WHAT_MADE_78_TINY.md · **this file**
 
 You may write and build; use the next dump as evidence.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -62,3 +62,14 @@ addresses, self-clock remap, one-writer) before any byte is written.
 - This session's directives (2026-08-05): Lever Daddy naming, electron-fuel doctrine,
   vibration-ring directive, size-invariant retirement — quoted verbatim in
   `02_FOLLOWON_PROVISIONAL_NEW_MATTER_DRAFT.md`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

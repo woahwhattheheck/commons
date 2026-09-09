@@ -32,3 +32,13 @@ ALL20 `1` × 20. xorwalk rewritten **NO**. v2 smash **NO**.
 Button `host/muhl_route_probe_pop.py`. Fab `host/muhl_fab_probe_pop.py`. Died.
 
 337 **NO** · pulsed_78 **NO** · invented_dest **NO** · re-OR leftover **NO** · 10-wide **NO** · titan write **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

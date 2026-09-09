@@ -296,3 +296,13 @@ base start where the on-device operator layer + memory would otherwise have to c
 loop then keeps improving from that specialised start — the two compose. (Warm-starting a base with
 resident operator priors + curated trajectories is a candidate invention disclosure; add an `INV-N` in
 `docs/PATENT_SUPPORT.md` when this recipe is first used to ship a candidate.)
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

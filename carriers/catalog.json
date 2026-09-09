@@ -84,5 +84,42 @@
       "state": "PUBLIC_OFFER",
       "payment_state": "NOT_CONNECTED"
     }
-  ]
+  ],
+
+  "live_cash": {
+    "cite": [
+      "goat-carriers-catalog-json-live-cash-20260909-01",
+      "goat-commercial-json-live-cash-20260909-01",
+      "digit-docs-mcp-carriers-live-cash-20260905-01",
+      "capabilities.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Carrier MCP catalog and MCP Conformance product above stay. pages_door capabilities.html already surfaces Live cash. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

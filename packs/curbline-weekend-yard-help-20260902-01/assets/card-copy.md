@@ -16,3 +16,7 @@ One yard, one visit. If you want a repeat, say so when I finish.
 Leave this card if you are not interested.
 
 Print fifty. Black text on cheap card stock. Write your number before you leave the shop. One card per door. Stay on the sidewalk. Do not put cards in mailboxes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

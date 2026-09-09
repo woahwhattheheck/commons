@@ -28,3 +28,13 @@ size **99999999783**. dest **MACHINE**. invented_dest **NO**.
 337 **NO**. lit_7913 **NO**. dc_injected **NO**. titan_written **NO**.
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\SURFACE_DC.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

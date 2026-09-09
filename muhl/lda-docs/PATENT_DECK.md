@@ -143,3 +143,13 @@ It is a real, working system the owner uses daily, running fully on-device.
 | Use = training | Every step is captured in the exact form used to later train a faster on-device model. |
 | Fail usefully | Every give-up carries a typed reason + a plain "here's what you can do" — never a silent spin or a fake success. |
 | Blind ≠ lost | When the phone starves its eyes, it recognizes blindness and stops with the right fix instead of looping. |
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

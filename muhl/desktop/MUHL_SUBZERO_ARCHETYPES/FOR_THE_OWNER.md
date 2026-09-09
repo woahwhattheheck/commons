@@ -100,3 +100,14 @@ confirmed is exactly **0**. The 1,024 foundry-stamped entries carry the stamp in
 (`foundry_genome`) that those four names do not cover. **Same defect class as the sweep that missed
 `sdc_os_circuit`: a zero from a query that looked in one namespace, reported as an absence.** Nothing
 here needs your decision — it is recorded so the sentence stops propagating.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

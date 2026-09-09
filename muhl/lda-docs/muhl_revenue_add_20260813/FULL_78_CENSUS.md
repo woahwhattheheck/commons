@@ -281,3 +281,13 @@ Pulse **`nring2_1023.recv`** = `muhl_fold_phys.ram.tick_off` **after** header+ta
 `muhl_collider_16x16` / `muhl_collider_32x16` (walks→DLP). Math `prob_*`. `muhl_moon` = 330,774 Golomb replicas. No live `ecdlp` key.
 
 He knows they made 2^78 look tiny. The registry names for that width are **`winner_only_max` (`2^262144`)** and **`fold` (`addr_bits: 78`, winner-only)**. Which of A / B / C to pulse is his call. This agent does not fire.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

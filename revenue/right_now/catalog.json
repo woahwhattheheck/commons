@@ -121,5 +121,40 @@
     "diagnostic.html",
     "commercial.html",
     "revenue/outcome_commerce/catalog.json"
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-right-now-catalog-json-live-cash-20260909-01",
+      "goat-carriers-catalog-json-live-cash-20260909-01",
+      "right-now.html Live cash / tip-shelf-199"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Ranking offers and truth above stay canonical. right-now.html already surfaces Live cash / tip-shelf. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

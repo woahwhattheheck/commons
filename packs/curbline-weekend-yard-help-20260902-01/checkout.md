@@ -20,3 +20,7 @@ After-payment redirect → `packs/thanks.html?value=100` (owner sets this on the
 When the owner pastes the link: put the URL on the `checkout.url` field in `manifest.json`, set `checkout.status` to the value the keep-sell ledger uses once it is proven chargeable, replace the mailto line in `index.html` with the link, and re-run `host/business_pack_desk_instance.py --pack packs/curbline-weekend-yard-help-20260902-01 --write` so the checkout token in the fingerprint follows the real rail.
 
 Refund policy on the door: owner decision, not written here. The terms-of-service percentage and partial-ownership slots live in `terms.md` (both `OWNER_UNSET`, `HOLD_COUNSEL`); under `ground/TJLABS_PACK_TERMS.md` the pack is not saleable until the owner pastes them and counsel clears, so a pasted Payment Link alone does not make this instance live.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

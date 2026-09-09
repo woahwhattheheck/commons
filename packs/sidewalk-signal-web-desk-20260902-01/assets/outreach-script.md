@@ -86,3 +86,7 @@ Send this reply the same day:
 Every message goes in the worksheet with the date, the subject used, and the
 status. A dated zero is a real result: write "2026-09-06: 6 sent, 0 replies,
 zip 46220, categories auto/HVAC/bakery" rather than nothing.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

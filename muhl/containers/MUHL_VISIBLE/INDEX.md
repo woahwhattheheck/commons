@@ -364,3 +364,14 @@ All 1,024 rings carry ONE genome — the round-1 winner. The space was never sea
 - Nothing here is registered in `titan_circuits.json` — these are standalone containers.
 
 _All figures 2026-08-07. Re-read before trusting: a recorded reading is a timestamp._
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

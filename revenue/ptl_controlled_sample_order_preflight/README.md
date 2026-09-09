@@ -12,3 +12,7 @@ decision is only `READY_FOR_NAMED_HUMAN_ACCESSION` or fail-closed `HOLD` with a
 stable reason code and SHA-256 evidence. The tool does not accession samples,
 judge SDS/DEA/customs obligations, execute payment, release results, or transmit
 data. Synthetic/redacted fixtures only in the locked acceptance run.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -93,3 +93,7 @@ WebSearch queries run (condensed; each ran once unless noted):
 65. instantmarkets.com LIMS "laboratory information" due "Sep 2026" OR "Oct 2026" OR "Nov 2026"
 
 Key verification fetches (beyond the three evidence URLs): OCWD RFP list (all three LIMS items due Apr 16 / Jul 31 / Aug 20, 2026 — closed), Montgomery County MD RFP #1181605 via HigherGov (due Mar 2, 2026 — closed), Billings city bids page (no LIMS listed; Starbridge showed due Sep 5, 2026), MWD Salt Lake & Sandy bids page (no LIMS open), University of Iowa eBid list (no LIMS), Allegheny County DHS solicitations (no LIMS), Kansas DOA RFP page (none), Four Rivers Sanitation Authority (closed 2018, awarded), Padre Dam MWD (closed 2023), Olmsted County MN RFP2025-328 (closed Mar 7, 2025), Clean Water Services Bid Locker (award pending, closed), Houston HHD RFP-2025-0047 (closed Dec 12, 2025), Abilene CB-2558 (closed Sep 19, 2025), Bureau of Reclamation LIMS 140R8125Q0224 (awarded Sep 24, 2025), FBI LIMS (pre-RFP forecast only), MD OCME LIMS (post-bid 2023), CanadaBuys open-tender CSV grep (no LIMS matches).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

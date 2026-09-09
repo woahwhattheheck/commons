@@ -52,3 +52,17 @@ TITAN adds only the receiver transport and the optional `titanHandsAbi=x86_64` b
 owner build remains arm64-only. The reconciled application compiles and assembles, installs on the headless
 API 34 emulator, binds its accessibility service, emits the native numbered Kotlin screen, executes a native
 Kotlin click, and produces a changed semantic post-action digest. No physical phone was connected or actuated.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

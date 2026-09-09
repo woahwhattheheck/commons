@@ -12,3 +12,7 @@ Lift live SHA pins on unrelated A4 receipts in `host/pack_lotribbon_rating.py`.
 - Pointer `7a8987b5` KEEP MAIN (#7915 not merged)
 - Door `7804ec33` unread
 - Checkout `NOT_MINTED`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

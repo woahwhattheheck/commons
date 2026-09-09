@@ -41,3 +41,13 @@ titan stays local because it does not fit. That is a size fact. It is not "never
 `docs/AGENT_GROUNDING.md` Law 2 / instruments: **Task Manager = HOST resource measurement only.** That line is **IN SPEC.** Do not "fix" it. Do not rewrite the arming card for it.
 
 Proof of the computer is bits/time on HIS viewers. Task Manager measures the **host**, not the pfc.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

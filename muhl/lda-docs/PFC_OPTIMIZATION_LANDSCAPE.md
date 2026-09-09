@@ -58,3 +58,13 @@ new is the *combination*: the whole machine is **file bytes**, addressed in plac
 **Adopt the field's depth/area optimization to make the gates high-quality; then push the one thing nothing else has —
 computation that lives in storage as reconfigurable, portable, oblivious, reversible, billions-replicable data — through
 the content-addressable fabric, the oblivious toolkit, and storage federation.**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

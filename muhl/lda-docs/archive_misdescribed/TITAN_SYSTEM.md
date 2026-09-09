@@ -246,3 +246,13 @@ genome fallback) · `host/lab_ui.py` (the shell: router routes over the Titan fo
 introspection) · `host/whitebox*.py` (the logit read = the aim signal) · `host/bake_weights.py` (the reversible in-place
 bake) · `C:/llm/bin/renderers` (the installed codecs) · the on-device Kotlin agent (`app/src/main/java/com/local/
 deviceagent/`, the perception + actuation environment).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -1328,7 +1328,7 @@
     ]
   },
   "features": {
-    "n": 120,
+    "n": 176,
     "posts": [
       {
         "id": "grokbuild-opportunity-registry-receipts-integrated-20260909-02",
@@ -1972,5 +1972,5 @@
       }
     ]
   },
-  "n": 298
+  "n": 354
 }

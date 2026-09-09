@@ -7,3 +7,7 @@ Machine law for independent channels: [ground/BUSINESS_PACK_THANKS_CHANNELS.json
 When the door owner composes later, each of X / TikTok / Meta stays empty-by-default. Empty independently loads zero third-party scripts. A filled id fires one `Purchase` for that platform only. `?value=` is the pack tier price, not an earnings claim.
 
 Checkout stays `NOT_MINTED`. Agents do not mint pixel IDs and do not spend ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

@@ -24,10 +24,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Resolve expected exact-head SHA
+        id: expected
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            expected="${{ github.event.pull_request.head.sha }}"
+          else
+            expected="${{ github.sha }}"
+          fi
+          test -n "$expected"
+          echo "sha=$expected" >> "$GITHUB_OUTPUT"
+
       - name: Check out exact revision
         uses: actions/checkout@v4
         with:
+          ref: ${{ steps.expected.outputs.sha }}
           fetch-depth: 1
+
+      - name: Fail closed unless workspace HEAD matches expected SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ steps.expected.outputs.sha }}"
+          actual="$(git rev-parse HEAD)"
+          if [[ "$actual" != "$expected" ]]; then
+            echo "HEAD $actual does not equal expected exact-head $expected" >&2
+            exit 1
+          fi
+          echo "Verified exact-head checkout: $actual"
 
       - name: Select Python
         uses: actions/setup-python@v5
@@ -51,6 +77,38 @@ jobs:
             --pretty \
             --allow-empty
 
+      - name: Bind verified checkout SHA into the JSON evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ steps.expected.outputs.sha }}"
+          python - "$expected" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          expected = sys.argv[1]
+          path = Path("/tmp/titan-w10-producer-surface.json")
+          report = json.loads(path.read_text(encoding="utf-8"))
+          if report.get("checkout_sha") not in (None, expected):
+              raise SystemExit(
+                  f"checkout_sha already bound to {report.get('checkout_sha')!r}"
+              )
+          report["checkout_sha"] = expected
+          # Recompute result_sha256 over the body that now includes checkout_sha.
+          body = {k: v for k, v in report.items() if k != "result_sha256"}
+          payload = json.dumps(
+              body, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+          )
+          import hashlib
+          report["result_sha256"] = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+          path.write_text(
+              json.dumps(report, sort_keys=True, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"Bound checkout_sha={expected} result_sha256={report['result_sha256']}")
+          PY
+
       - name: Publish ranked candidates to the job summary
         run: |
           python - <<'PY'
@@ -65,6 +123,7 @@ jobs:
               '# TITAN W10 producer-surface inventory',
               '',
               f"- Decision: **{report['decision']}**",
+              f"- Checkout SHA: `{report.get('checkout_sha', 'unset')}`",
               f"- Scanned Python files: {report['counts']['scanned_python_files']}",
               f"- Candidate files: {report['counts']['candidate_files']}",
               f"- Report SHA-256: `{report['result_sha256']}`",
@@ -94,7 +153,7 @@ jobs:
       - name: Upload the exact JSON inventory
         uses: actions/upload-artifact@v4
         with:
-          name: titan-w10-producer-surface-${{ github.sha }}
+          name: titan-w10-producer-surface-${{ steps.expected.outputs.sha }}
           path: /tmp/titan-w10-producer-surface.json
           if-no-files-found: error
           retention-days: 14

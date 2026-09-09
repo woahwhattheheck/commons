@@ -151,3 +151,7 @@ Each sold unit is a distinct instance. Similar vertical/pattern is allowed. Copy
 Mystery box / the nuts: rare valuable ideas mixed into each price pool. Not a lottery. Not gambling. TJLabs generosity. No invented odds.
 Marketing is still owner-owned. Checkout URLs are pasted, never invented.
 337 NO.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

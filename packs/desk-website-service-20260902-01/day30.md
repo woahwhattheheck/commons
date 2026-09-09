@@ -28,3 +28,7 @@ Harborline Local Sites. One job per weekday. Weekends are catch-up or off. This 
 | 30 | Decide pause or continue using keep-vs-sell.md. |
 
 No client-count targets. No “land N clients this month”.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

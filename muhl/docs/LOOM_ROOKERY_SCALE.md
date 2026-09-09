@@ -517,3 +517,13 @@ Seed = **this** `ROOKERY0.mno`. NAND/AND records and genome digest are already i
 **Seeds measured:**  
 `loom.mno` **140,454 B**, magic `LOOMPKG1`, `n_gate` **283**, digest `278d190728ce0124a485d86360f6dca14745d41b610a46c531922999fa8a691d` — **GitHub FIT**.  
 `ROOKERY0.mno` **586,918 B**, magic `ROOKERY0`, records **22,563**, live sha256 `1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d` — **GitHub FIT**.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

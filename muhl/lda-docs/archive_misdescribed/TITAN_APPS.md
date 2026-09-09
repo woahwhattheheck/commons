@@ -131,3 +131,13 @@ free-to-replicate logic fabric** — you can store any circuit in it and run it 
 - `host/titan_doom.py` — DOOM; movement/turn/collision circuit in params; `selftest` verifies headless.
 - `host/titan_cpu.py` — a CPU (ALU+decoder in params) running Fibonacci; verified vs reference.
 - `host/titan_modelgen.py` — the model generator (describe → measured build spec).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

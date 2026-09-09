@@ -25,3 +25,7 @@ CLI: `python3 preinnewhof_pfas_fieldblank_gate.py` → ok true, failures []
 | manifest_sha256 | d59f935752025c3a82e124151294daaa7178b537d3fe060f0565a0b79459bb2b |
 
 Simulated adapters. No autonomous certification or release. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

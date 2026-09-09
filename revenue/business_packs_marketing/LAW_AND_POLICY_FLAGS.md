@@ -83,3 +83,17 @@ Recorded verbatim in `#marketing-research` (ts 1788327xxx). Consequences for thi
 6. Confirm NPRM status with counsel before scaling past test budgets.
 7. X Pixel thank-you page exists (see X_ADS_BRIEF §5).
 8. The advertising handle is verified (Premium Business from $200/month, or an individual Premium subscription), posts are public, and the bio URL is live and ungated; X will not accept campaigns otherwise ([eligibility](https://business.x.com/en/help/ads-policies/campaign-considerations/about-eligibility-for-x-ads), [Premium Business pricing](https://help.x.com/en/using-x/premium-business)). Financial step; owner's.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

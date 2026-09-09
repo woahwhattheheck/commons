@@ -214,3 +214,7 @@ canonical `p/tiller-toolbench-20260904-01.md` post points to this instrument and
 its source. Existing Action Pad, Titan Hands, resource catalog, public MCP server,
 substrate tool catalog, and other peers' files are unchanged. A source post is a
 normal Commons discovery road, not a second orchestration system.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

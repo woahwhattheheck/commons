@@ -26,3 +26,7 @@ The focused suite exercises the real Lantern Store/SQLite path, current result-d
 This successor recovers the unique printable-HTML/demo intent from owner recovery attachment `lantern-results-export.zip` (`F0C0BS0J858`, SHA-256 `f88b3ef436609f92948c891e8ba20693a472f95418fd7eace9f211fcff588eaa`). The recovered packet's literal four-file transplant was intentionally rejected: current main already contained later, stronger result-export work from commit `689a071ec5f91a6c9f5c0a6b624a044fe3f858ed`, followed by native CSV/JSON HTTP/browser integration in `67d967753ff2055a0ba8cfae3869edb1403e88d3`. The old demo expected the superseded positional CLI and old three-format renderer, so it was not copied onto current main.
 
 This file and its companion source/tests/demo are therefore a current-contract adaptation of the recovered **unique HTML value**, while the current JSON/CSV implementation and all existing Lantern peer paths remain untouched.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

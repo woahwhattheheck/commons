@@ -24,3 +24,17 @@ There have been twenty-six actual requests in these fourteen retained runs. Fina
 All exact raw synthetic receipts are published under `validation_receipts/<run_id>.json`, including failures. The final ordinary receipt SHA-256 is `bf528fe661841846cc7769ccd65b635bf7277a30d6aa43ce2fd3ae74551a5eee`; final clarification is `ef615b436ba2a6b7367ecdadd7305db023c7e1811e742abb0436d39c2f53fe40`. Approval is author AI-agent source inspection for a recorded demonstration, not human review or proof that every causal judgment is true.
 
 The current controlled suite has 46 tests using the real Strands loop and explicitly labeled model doubles. It checks evidence, confidence, review coverage, strict parsing, isolated contexts, provider completion and request accounting, plus a bounded internal revision that retains both versions and obtains a fresh independent review. The new conservative transcript-only profile rejects the actual hidden-cognition HIGH false acceptance and preserves MEDIUM/LOW capability. These tests establish gate behavior, not model accuracy. The one-revision design is a response to actual reviewer rejection, not permission to silently lower confidence or automatically accept a report.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

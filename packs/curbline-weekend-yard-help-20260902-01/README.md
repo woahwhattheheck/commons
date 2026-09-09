@@ -51,3 +51,7 @@ Verifier: `python3 host/business_pack_desk_instance.py --pack packs/curbline-wee
 Support: public Commons post or `mailto:tokenjunkielabs@gmail.com`. Price: `OWNER_UNSET`.
 
 Checkout `OWNER_PASTE_REQUIRED` / `NOT_MINTED`. Marketing stays Bryce. Agents do not spend ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

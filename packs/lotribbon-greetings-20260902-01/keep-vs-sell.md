@@ -26,3 +26,7 @@ Factory saleable stays false until `ground/TJLABS_PACK_TERMS.json` slots are own
 
 Lane: Slack `#business-packs` `C0BU7JAPUH3`.
 This decision is not a Commons admission condition.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

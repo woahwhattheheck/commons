@@ -19,3 +19,17 @@ CLI: `python3 csanalytical_expansion_crossline_lims.py`
 - report_digest `74515e546b1f5ed49cd9c13d55812067043bc4eccbda41138baf29a1ba595353`
 
 AquaTrace HOLD / BUILD-AND-VERIFY. Synthetic/read-only adapters. No compliance decision. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

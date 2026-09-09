@@ -16,3 +16,7 @@ Travel beyond 15 miles: operator quotes a mileage add before accepting. Do not i
 Pack SKU tier for the LotRibbon instance itself: 1000 USD. Checkout NOT_MINTED. Running cost OWNER_UNSET until Bryce pastes it.
 
 Do not write a Payment Link. Do not promise a number of jobs. Do not write payback copy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

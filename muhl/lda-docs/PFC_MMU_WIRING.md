@@ -84,3 +84,13 @@ python host/pfc_diff.py                             # fwd_answer must CHANGE and
 Tier 1 mechanism-correctness is then complete. Only then do Tier 2 (XB=10 + per-sub-block activation scale, 29× less
 error) and Tier 3 (MoE α 10.3×, memoize fold, KV/cache_prompt ~100×, output contract 110×) mean anything — they all
 multiply a forward pass that must first exist.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

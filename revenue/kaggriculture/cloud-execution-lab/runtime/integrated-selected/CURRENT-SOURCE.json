@@ -472,14 +472,24 @@
       "source_path": "test_engine_semantics.py"
     },
     "checks/test_entrypoint_clock.py": {
-      "bytes": 3112,
-      "sha256": "3e2c3122a1330dfb7cb38d16f9f66965810052a429b2e10688854c75c9534b04",
+      "bytes": 3674,
+      "sha256": "f8151a19ce1253d35b43f4b649e581f1e985c5486c45d3bb9e0b9b734b1f9939",
       "source_path": "test_entrypoint_clock.py"
+    },
+    "checks/test_entrypoint_deadline.py": {
+      "bytes": 9374,
+      "sha256": "c22614304a85b2a656751c38f08ffe5053818d0d76c127bfefcbcc5743251cf3",
+      "source_path": "test_entrypoint_deadline.py"
     },
     "checks/test_feed_stock.py": {
       "bytes": 10919,
       "sha256": "670dd0a4977466998653766c0446f361bd55b2193bc61b1ad493185b284a1b7d",
       "source_path": "test_feed_stock.py"
+    },
+    "checks/test_final_market_pressure_entrypoint.py": {
+      "bytes": 4447,
+      "sha256": "ffea92b06ec9897c25c0d3f331156380917cbf5de8a26e187bdf71e2165e5ef9",
+      "source_path": "test_final_market_pressure_entrypoint.py"
     },
     "checks/test_funded_payback_runtime.py": {
       "bytes": 4847,
@@ -597,8 +607,8 @@
       "source_path": "reference/titan-current/latest/integrated_selected.py"
     },
     "main.py": {
-      "bytes": 1942,
-      "sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "bytes": 7924,
+      "sha256": "c4c22d0f2b1071cadf6a9f74effccc8cb20ea9f4d10ca1cf9f1fe57351709dc1",
       "source_path": "main.py"
     },
     "mechanics.py": {
@@ -907,8 +917,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 33182,
-      "sha256": "371c9aae9c5c2b7d45950688d69fd8bf598658df84c42d56bf7b3c47176dc454",
+      "bytes": 33885,
+      "sha256": "da391af2dbdec0f6e4a25749ed539cdd39578ace8861c0e225b5fbfef90d75a8",
       "source_path": "titan_runtime.py"
     }
   },

@@ -65,3 +65,7 @@ python3 -m py_compile revenue/road_barbados_ocr/baseline.py
 The suite includes a real Tesseract invocation on a generated line image. It
 also checks schema preservation, ID-set equality, traversal rejection, image
 resolution and confidence parsing without using any challenge data.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

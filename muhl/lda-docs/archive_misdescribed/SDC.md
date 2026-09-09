@@ -132,3 +132,13 @@ hero-demo floor, not the ceiling.
 *Patent: the SDC umbrella — reconfiguring stored, already-paid-for parameters (curated from a global pool by quality ×
 diversity) into a generative, semantically-alterable digital computer, with the universal-truth-of-generation grounding —
 is the umbrella INV over INV-43/95/109/115/119/149/151.*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

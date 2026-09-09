@@ -115,3 +115,13 @@ python -m py_compile workflow.py test_workflow.py browser_smoke.py
 The 22 automated tests exercise real SQLite files and loopback HTTP, including concurrent intake, an acknowledgement lost after receiver commit, retries, lease recovery, mapping changes, task persistence, and malformed input. See `VALIDATION.md` for the recorded run. The optional `browser_smoke.py` uses Playwright and Chromium for interactive UI checks; it is not a runtime dependency. Browser navigation was blocked by this build environment's administrator policy, so interactive browser and mobile-layout results are not claimed.
 
 This version does not send email/SMS, confirm appointments, collect payments, synchronize subsequent task edits to an external CRM, edit task titles, or run a multi-tenant service. A concrete first installation uses a customer's own request schema, an existing private deployment location, and the chosen provider's supported interface. The Hive queue's $1,500 setup / $199 monthly offer is a proposed service scope, not an implemented subscription, signed sale, or earned revenue.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

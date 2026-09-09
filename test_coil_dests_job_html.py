@@ -17,7 +17,12 @@ class CoilDestsJobHtmlTest(unittest.TestCase):
         self.assertIn("./tools.json", text)
         self.assertIn("python host/muhl_tools_once.py --go", text)
         self.assertIn("Dest FROM FILE", text)
-        self.assertIn("337 NO", text)
+        # invented closer never Bryce law; DIGIT dests drop-void leftover
+        self.assertNotIn("337 NO", text)
+        idx = text.index('id="tools-jobs"')
+        window = text[idx : idx + 500]
+        self.assertIn("job.html", window)
+        self.assertIn("Dest FROM FILE", window)
         # not tools-board note remint class
         self.assertNotIn('id="tools-board"', text)
 

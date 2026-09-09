@@ -118,3 +118,13 @@ The model already calibrates its OWN operating state at boot (INV-52: it compose
 of its epistemic-axis operators, INV-98). The CALIBRATE dashboard is the **owner-facing end of that same
 mechanism** — it sets the σ/posture + reasoning depth the model reads AND measures the result — unified with a
 measurement bench. One surface, both roles. §2-clean: it sets σ and knobs and measures; it never scripts an action.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

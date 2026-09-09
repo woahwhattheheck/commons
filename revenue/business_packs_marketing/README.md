@@ -18,3 +18,17 @@ Laws this research lives under: [ground/BUSINESS_PACKS.md](../../ground/BUSINESS
 
 Update rule: when a pack lands or changes tier, add or edit its row in `PACK_BUYER_MAP.json` and its finding in `BUYER_TIERS.md`; post the delta in `#marketing-research` with the SHA.
 | `PRICE_ANCHORS.md` | what each buyer compares the pack to ($27 kit, $695 Starter Story, $997 coaching, $5,800 Accelerator, $9,500 done-for-you build, $10,350 franchise fee); how each tier sits on the ladder; one door line per tier |
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

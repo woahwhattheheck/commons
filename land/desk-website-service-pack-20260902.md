@@ -7,3 +7,7 @@ This is a unique-instance SELL at the desk tier. The buyer gets a name, a door, 
 The pack does not include leads or customers. TALLY's reusable showcase attachments stay on private `woahwhattheheck/smb-showcase-inventory` (`0d91231e`). Checkout stays owner-paste. Marketing stays with Bryce.
 
 Helper: [host/desk_website_service_pack.py](../host/desk_website_service_pack.py). Law: [ground/BUSINESS_PACK_DESK_WEBSITE.json](../ground/BUSINESS_PACK_DESK_WEBSITE.json).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

@@ -41,3 +41,7 @@ $5 once. One small door: a print pack, a paid-build bump, or a session note.
 The file still lands public on HEAD. Money buys speed or a pack, not secrecy.
 
 Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
