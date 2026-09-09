@@ -1,0 +1,84 @@
+{
+  "archive_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+  "candidate_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+  "engine_sha256": {
+    "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+    "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+  },
+  "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+  "game": {
+    "actors": [
+      {
+        "call_cpu_seconds": 3.016294837000002,
+        "calls": 719,
+        "cpu_seconds": 3.442492,
+        "exit_code": 0,
+        "max_call_seconds": 0.11699602299999867,
+        "max_rpc_seconds": 0.11752397499999745,
+        "mean_call_seconds": 0.004196716847009842,
+        "mean_rpc_seconds": 0.005049994506258898,
+        "peak_rss_kib": 32840,
+        "resource_sample": "child_rusage_plus_linux_procfs",
+        "startup_seconds": 0.053710901999991734
+      },
+      {
+        "call_cpu_seconds": 0.032563989999999786,
+        "calls": 719,
+        "cpu_seconds": 0.47291300000000003,
+        "exit_code": 0,
+        "max_call_seconds": 0.006205746999995654,
+        "max_rpc_seconds": 0.006624846999997658,
+        "mean_call_seconds": 4.5888870654026114e-05,
+        "mean_rpc_seconds": 0.0009183592378300266,
+        "peak_rss_kib": 28332,
+        "resource_sample": "child_rusage_plus_linux_procfs",
+        "startup_seconds": 0.05798605800001155
+      }
+    ],
+    "candidate_action_trace_sha256": "4a62232782799df31844ea979f483f27f33ed959447b7026f674ffb84b7d0d15",
+    "candidate_seat": 0,
+    "failure": null,
+    "finding_counts": {
+      "eod_pickup_roundtrip": 1
+    },
+    "findings": [
+      {
+        "action": [
+          "PICKUP",
+          "FERTILIZER"
+        ],
+        "actual_state_sha256": "d5ada58b006600d9524c35d265b124559be320afc2de9e96fa81ce3fdaee60f5",
+        "day": 20,
+        "kind": "eod_pickup_roundtrip",
+        "market": [],
+        "pass_delta": {},
+        "pass_state_equivalent": true,
+        "pass_state_sha256": "d5ada58b006600d9524c35d265b124559be320afc2de9e96fa81ce3fdaee60f5",
+        "position": [
+          5,
+          4
+        ],
+        "productive_replacements": [],
+        "step": 503,
+        "worker": 1
+      }
+    ],
+    "productive_eod_pickup_replacements": 0,
+    "rng_seed": 20260907,
+    "scores": [
+      88184.0,
+      87850.0
+    ],
+    "seed": 261140014,
+    "state_equivalent_eod_pickups": 1,
+    "status": "complete",
+    "steps": 719,
+    "wall_seconds": 5.736604905999997
+  },
+  "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+  "operation": "titan-frontier-W14-realized-rule-composition-20260909-01",
+  "opponent_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+  "schema_version": 1,
+  "source_commit": "71c40b5f58978d4e3a156e19d478c3a42d56840e"
+}
