@@ -66,3 +66,14 @@ wrapper's checks. The existing harness `ask` operation is refused because
 generation cap. The wrapper reports the exact underlying command but does not
 run it. This preserves the no-whole-titan-map and fail-closed laws without
 editing or replacing the existing harness.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

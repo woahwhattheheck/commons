@@ -56,3 +56,14 @@ python host/muhl_serve_spec_add.py --model C:/llm/models/other.gguf --run load
 - No NumPy / Torch / TensorFlow / JAX.
 - This launcher never fabricates, never writes titan, never WhiteBoxes Llama.
 - Missing `pfc_load.py` or `pfc_harness.py` fails closed. There is no fallback.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
