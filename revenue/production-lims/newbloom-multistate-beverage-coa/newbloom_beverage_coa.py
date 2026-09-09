@@ -4,6 +4,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -262,10 +263,9 @@ def _named_human(name: str, approval_id: str) -> tuple[str, str]:
     if not isinstance(name, str):
         raise PermissionError("named human reviewer required")
     normalized = " ".join(name.strip().split())
-    lowered = normalized.casefold()
-    tokens = lowered.replace("_", "-").split("-")
-    words = [part for part in normalized.replace("-", " ").split() if any(c.isalpha() for c in part)]
-    if not normalized or lowered in RESERVED or any(token in RESERVED for token in tokens) or len(words) < 2:
+    identity_tokens = re.findall(r"[^\W_]+", normalized.casefold())
+    words = [token for token in identity_tokens if any(c.isalpha() for c in token)]
+    if not normalized or any(token in RESERVED for token in identity_tokens) or len(words) < 2:
         raise PermissionError("two-token named human reviewer required")
     if not isinstance(approval_id, str):
         raise PermissionError("approval id required")
