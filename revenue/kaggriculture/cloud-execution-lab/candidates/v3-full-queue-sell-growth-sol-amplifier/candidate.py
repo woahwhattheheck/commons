@@ -6,8 +6,9 @@ import hashlib
 import importlib.util
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import sys
+import tempfile
 from typing import Any, Mapping
 
 HERE = Path(__file__).resolve().parent
@@ -33,6 +34,8 @@ REQUIRED_ROOT_MODULES = {
     "seller_snapshot",
     "titan_runtime",
 }
+_SOURCE_TREE_HOLDER: tempfile.TemporaryDirectory[str] | None = None
+_SOURCE_ROOT: Path | None = None
 
 
 def _regular_repository_file(path: Path) -> Path:
@@ -62,6 +65,10 @@ def _git_blob_sha1(path: Path) -> str:
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(_regular_repository_file(path).read_bytes()).hexdigest()
+
+
+def _sha256_unrestricted(path: Path) -> str:
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def _load_private(name: str, path: Path):
@@ -96,16 +103,24 @@ def _manifest_runtime() -> Mapping[str, Mapping[str, Any]]:
     return runtime
 
 
-def _verify_and_install_source_roots() -> dict[str, Any]:
-    """Bind source-tree bare imports to the canonical archive source closure.
+def _safe_member(member: str) -> PurePosixPath:
+    path = PurePosixPath(member)
+    if not member or path.is_absolute() or any(part in ("", ".", "..") for part in path.parts):
+        raise RuntimeError(f"SOL-AMPLIFIER unsafe archive member: {member!r}")
+    return path
 
-    ``frozen_selected`` imports ``scheduler``, which imports ``observed_clone``
-    from a repository sibling mapped beside it in the canonical archive.  A
-    raw source-tree loader otherwise sees only the candidate and lab parents.
-    Derive the full mapping from the pinned canonical builder, verify every
-    mapped byte against the pinned current manifest, then expose only the
-    mapped root parents in canonical source-tree order.
+
+def _verify_and_install_source_roots() -> dict[str, Any]:
+    """Materialize the verified canonical archive closure for bare imports.
+
+    Canonical source members can be mapped from byte-distinct repository files
+    whose own directories do not contain their packaged relative dependencies.
+    Verify every source byte against the pinned current manifest, copy those
+    bytes into one private archive-shaped tree, and expose only that tree after
+    the candidate-local path.  This preserves package-relative file access and
+    prevents same-named LAB mirrors from entering the execution closure.
     """
+    global _SOURCE_TREE_HOLDER, _SOURCE_ROOT
     builder = _load_private("_sol_amplifier_build_integrated", BUILD_INTEGRATED)
     mapping = builder.source_files()
     if not isinstance(mapping, dict) or not mapping:
@@ -118,110 +133,119 @@ def _verify_and_install_source_roots() -> dict[str, Any]:
             f"SOL-AMPLIFIER source-map/manifest mismatch; missing={missing[:4]} extra={extra[:4]}"
         )
 
+    holder = tempfile.TemporaryDirectory(prefix="sol-amplifier-source-")
+    materialized_root = Path(holder.name).resolve()
     source_records: dict[str, dict[str, Any]] = {}
     root_records: dict[str, dict[str, Any]] = {}
-    mapped_parents: list[Path] = []
-    seen_parents: set[Path] = {LAB.resolve()}
     closure_digest = hashlib.sha256()
 
-    for member in sorted(mapping):
-        raw_source = mapping[member]
-        if not isinstance(member, str) or not isinstance(raw_source, str):
-            raise RuntimeError("SOL-AMPLIFIER source map must contain string paths")
-        record = runtime.get(member)
-        if not isinstance(record, dict):
-            raise RuntimeError(f"SOL-AMPLIFIER manifest record missing for {member}")
-        origin = _regular_repository_file(LAB / raw_source)
-        data = origin.read_bytes()
-        digest = hashlib.sha256(data).hexdigest()
-        if (
-            record.get("source_path") != raw_source
-            or type(record.get("bytes")) is not int
-            or record.get("bytes") != len(data)
-            or record.get("sha256") != digest
-        ):
-            raise RuntimeError(f"SOL-AMPLIFIER manifest byte mismatch for {member}")
-        relative_origin = origin.relative_to(REPOSITORY).as_posix()
-        source_records[member] = {
-            "source_path": raw_source,
-            "repository_path": relative_origin,
-            "bytes": len(data),
-            "sha256": digest,
-        }
-        closure_digest.update(member.encode("utf-8") + b"\0")
-        closure_digest.update(relative_origin.encode("utf-8") + b"\0")
-        closure_digest.update(bytes.fromhex(digest))
+    try:
+        for member in sorted(mapping):
+            raw_source = mapping[member]
+            if not isinstance(member, str) or not isinstance(raw_source, str):
+                raise RuntimeError("SOL-AMPLIFIER source map must contain string paths")
+            member_path = _safe_member(member)
+            record = runtime.get(member)
+            if not isinstance(record, dict):
+                raise RuntimeError(f"SOL-AMPLIFIER manifest record missing for {member}")
+            origin = _regular_repository_file(LAB / raw_source)
+            data = origin.read_bytes()
+            digest = hashlib.sha256(data).hexdigest()
+            if (
+                record.get("source_path") != raw_source
+                or type(record.get("bytes")) is not int
+                or record.get("bytes") != len(data)
+                or record.get("sha256") != digest
+            ):
+                raise RuntimeError(f"SOL-AMPLIFIER manifest byte mismatch for {member}")
 
-        member_path = Path(member)
-        if member_path.parent != Path(".") or member_path.suffix != ".py":
-            continue
-        module_name = member_path.stem
-        if not module_name.isidentifier() or module_name in root_records:
-            raise RuntimeError(f"SOL-AMPLIFIER invalid root module mapping: {member}")
-        allowed = {origin}
-        mirror = Path(os.path.abspath(LAB / member))
-        if mirror != origin and mirror.is_file() and not mirror.is_symlink():
-            mirror = _regular_repository_file(mirror)
-            if _sha256(mirror) == digest:
-                allowed.add(mirror)
-        root_records[module_name] = {
-            "member": member,
-            "declared_origin": relative_origin,
-            "allowed_origins": sorted(
-                path.relative_to(REPOSITORY).as_posix() for path in allowed
-            ),
-            "sha256": digest,
-        }
-        parent = origin.parent
-        if parent not in seen_parents:
-            seen_parents.add(parent)
-            mapped_parents.append(parent)
+            relative_origin = origin.relative_to(REPOSITORY).as_posix()
+            target = materialized_root.joinpath(*member_path.parts)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("xb") as stream:
+                stream.write(data)
+                stream.flush()
+                os.fsync(stream.fileno())
+            if target.is_symlink() or target.resolve(strict=True) != target:
+                raise RuntimeError(f"SOL-AMPLIFIER materialized source changed: {member}")
+            if target.stat().st_size != len(data) or _sha256_unrestricted(target) != digest:
+                raise RuntimeError(f"SOL-AMPLIFIER materialized byte mismatch for {member}")
 
-    if not REQUIRED_ROOT_MODULES.issubset(root_records):
-        absent = sorted(REQUIRED_ROOT_MODULES - set(root_records))
-        raise RuntimeError(f"SOL-AMPLIFIER required root modules absent: {absent}")
+            source_records[member] = {
+                "source_path": raw_source,
+                "repository_path": relative_origin,
+                "materialized_member": member,
+                "bytes": len(data),
+                "sha256": digest,
+            }
+            closure_digest.update(member.encode("utf-8") + b"\0")
+            closure_digest.update(relative_origin.encode("utf-8") + b"\0")
+            closure_digest.update(bytes.fromhex(digest))
 
-    # Candidate-local modules win first.  Verified mapped roots must precede
-    # the raw lab fallback because several archive members intentionally map to
-    # byte-distinct historical/vendor sources with same-named LAB mirrors.
-    ordered = [HERE.resolve(), *mapped_parents, LAB.resolve()]
-    for root in reversed(ordered):
-        value = str(root)
-        while value in sys.path:
-            sys.path.remove(value)
-        sys.path.insert(0, value)
+            if member_path.parent != PurePosixPath(".") or member_path.suffix != ".py":
+                continue
+            module_name = member_path.stem
+            if not module_name.isidentifier() or module_name in root_records:
+                raise RuntimeError(f"SOL-AMPLIFIER invalid root module mapping: {member}")
+            root_records[module_name] = {
+                "member": member,
+                "declared_origin": relative_origin,
+                "materialized_member": member,
+                "sha256": digest,
+            }
 
-    for module_name, record in root_records.items():
-        allowed = {REPOSITORY / path for path in record["allowed_origins"]}
-        loaded = sys.modules.get(module_name)
-        if loaded is not None:
-            loaded_file = getattr(loaded, "__file__", None)
-            if not loaded_file or _regular_repository_file(Path(loaded_file)) not in allowed:
+        if not REQUIRED_ROOT_MODULES.issubset(root_records):
+            absent = sorted(REQUIRED_ROOT_MODULES - set(root_records))
+            raise RuntimeError(f"SOL-AMPLIFIER required root modules absent: {absent}")
+
+        ordered = [HERE.resolve(), materialized_root]
+        for root in reversed(ordered):
+            value = str(root)
+            while value in sys.path:
+                sys.path.remove(value)
+            sys.path.insert(0, value)
+
+        for module_name, record in root_records.items():
+            expected = materialized_root.joinpath(*PurePosixPath(record["member"]).parts)
+            loaded = sys.modules.get(module_name)
+            if loaded is not None:
+                loaded_file = getattr(loaded, "__file__", None)
+                if not loaded_file or Path(loaded_file).resolve(strict=True) != expected:
+                    raise RuntimeError(
+                        f"SOL-AMPLIFIER preloaded module collision: {module_name}"
+                    )
+            spec = importlib.util.find_spec(module_name)
+            if spec is None or spec.origin is None:
+                raise RuntimeError(f"SOL-AMPLIFIER root module is not importable: {module_name}")
+            actual = Path(spec.origin).resolve(strict=True)
+            if actual != expected or _sha256_unrestricted(actual) != record["sha256"]:
                 raise RuntimeError(
-                    f"SOL-AMPLIFIER preloaded module collision: {module_name}"
+                    f"SOL-AMPLIFIER root module resolves outside closure: "
+                    f"{module_name} -> {actual}"
                 )
-        spec = importlib.util.find_spec(module_name)
-        if spec is None or spec.origin is None:
-            raise RuntimeError(f"SOL-AMPLIFIER root module is not importable: {module_name}")
-        actual = _regular_repository_file(Path(spec.origin))
-        if actual not in allowed or _sha256(actual) != record["sha256"]:
-            raise RuntimeError(
-                f"SOL-AMPLIFIER root module resolves outside closure: "
-                f"{module_name} -> {actual}"
-            )
-        record["import_origin"] = actual.relative_to(REPOSITORY).as_posix()
+            record["import_origin"] = record["materialized_member"]
 
-    observed = root_records["observed_clone"]
-    return {
-        "mapped_files": len(source_records),
-        "mapped_sha256": closure_digest.hexdigest(),
-        "root_modules": root_records,
-        "pythonpath": [path.relative_to(REPOSITORY).as_posix() for path in ordered],
-        "observed_clone": {
-            "import_origin": observed["import_origin"],
-            "sha256": observed["sha256"],
-        },
-    }
+        _SOURCE_TREE_HOLDER = holder
+        _SOURCE_ROOT = materialized_root
+        observed = root_records["observed_clone"]
+        return {
+            "mapped_files": len(source_records),
+            "mapped_sha256": closure_digest.hexdigest(),
+            "root_modules": root_records,
+            "pythonpath": ["candidate", "materialized-current-archive"],
+            "materialization": {
+                "mode": "verified-private-copy",
+                "files": len(source_records),
+                "root_retained_for_process_lifetime": True,
+            },
+            "observed_clone": {
+                "import_origin": observed["import_origin"],
+                "sha256": observed["sha256"],
+            },
+        }
+    except BaseException:
+        holder.cleanup()
+        raise
 
 
 _ENTRY_FILES = _verify_entry_files()
@@ -243,9 +267,12 @@ def _candidate_new_instance(root: Path, feature_data: dict[str, Any]):
     instance = _ORIGINAL_NEW_INSTANCE(root, feature_data)
     import frozen_selected
 
-    expected = REPOSITORY / _SOURCE_CLOSURE["root_modules"]["frozen_selected"]["import_origin"]
-    actual = _regular_repository_file(Path(frozen_selected.__file__))
-    if actual != expected:
+    record = _SOURCE_CLOSURE["root_modules"]["frozen_selected"]
+    if _SOURCE_ROOT is None:
+        raise RuntimeError("SOL-AMPLIFIER materialized source root is unavailable")
+    expected = _SOURCE_ROOT.joinpath(*PurePosixPath(record["member"]).parts)
+    actual = Path(frozen_selected.__file__).resolve(strict=True)
+    if actual != expected or _sha256_unrestricted(actual) != record["sha256"]:
         raise RuntimeError(f"SOL-AMPLIFIER selected consumer alias: {actual} != {expected}")
     _LAST_INSTALL_RECEIPT = {
         **attach(instance, frozen_selected),
