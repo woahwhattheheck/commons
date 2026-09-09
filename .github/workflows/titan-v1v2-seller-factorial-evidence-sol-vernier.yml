@@ -1,0 +1,155 @@
+name: TITAN V1/V2 factorial strict evidence SOL-VERNIER
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v1v2-seller-factorial-evidence-sol-vernier.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/strict_*.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/test_strict_*.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/README.md"
+      - "p/sol-vernier-titan-v1v2-factorial-evidence-20260909-01.md"
+  push:
+    paths:
+      - ".github/workflows/titan-v1v2-seller-factorial-evidence-sol-vernier.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/strict_*.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/test_strict_*.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/README.md"
+      - "p/sol-vernier-titan-v1v2-factorial-evidence-20260909-01.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v1v2-factorial-evidence-sol-vernier-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Verify exact event head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git status --short
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile strict admission sources
+        shell: bash
+        env:
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix
+          python -B -m py_compile \
+            strict_factorial.py strict_materialize.py \
+            test_strict_factorial.py test_strict_materialize.py
+
+      - name: Run predecessor-discriminating contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix
+          python -B -m unittest -v test_strict_factorial test_strict_materialize
+
+      - name: Materialize all four strict arm entrypoints
+        shell: bash
+        env:
+          CONTRACT_ROOT: ${{ runner.temp }}/sol-vernier-factorial-contract
+        run: |
+          set -euo pipefail
+          rm -rf "$CONTRACT_ROOT"
+          mkdir -p "$CONTRACT_ROOT/arms" "$CONTRACT_ROOT/receipts"
+          tool="revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/strict_materialize.py"
+          for arm in control carry_095 force_end both; do
+            python -B "$tool" \
+              --arm "$arm" \
+              --output "$CONTRACT_ROOT/arms/$arm" \
+              --receipt "$CONTRACT_ROOT/receipts/$arm.json"
+          done
+
+      - name: Verify distinct closures and publish contract receipt
+        shell: bash
+        env:
+          CONTRACT_ROOT: ${{ runner.temp }}/sol-vernier-factorial-contract
+          EXACT_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["CONTRACT_ROOT"])
+          arms = ("control", "carry_095", "force_end", "both")
+          rows = {}
+          for arm in arms:
+              path = root / "receipts" / f"{arm}.json"
+              receipt = json.loads(path.read_text(encoding="utf-8"))
+              assert receipt["arm"] == arm
+              assert receipt["entrypoint"]["import_ownership"] == "candidate+scheduler-under-bound-root-v1"
+              origins = receipt["entrypoint"]["runtime_origins"]
+              assert origins["candidate"].endswith("/candidate.py")
+              assert origins["scheduler"].endswith("/scheduler.py")
+              repair = receipt["evidence_repair"]
+              assert repair["repair"] == "sol-vernier-factorial-import-ownership-v1"
+              assert repair["policy_bytes_changed"] is False
+              rows[arm] = {
+                  "entry_sha256": receipt["entrypoint"]["sha256"],
+                  "closure_sha256": receipt["closure_bound_at_entry"]["sha256"],
+                  "bundle_sha256": receipt["materialized_bundle"]["sha256"],
+                  "receipt_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                  "interventions": receipt["patch"],
+              }
+          for field in ("entry_sha256", "closure_sha256", "bundle_sha256", "receipt_sha256"):
+              assert len({rows[arm][field] for arm in arms}) == 4, field
+          report = {
+              "schema_version": 1,
+              "operation": "titan-v3-v1v2-seller-factorial-20260909-01",
+              "repair": "sol-vernier-factorial-admission-v1",
+              "git_head": os.environ["EXACT_HEAD"],
+              "arms": rows,
+              "games_run": 0,
+              "scope": "contracts-only; no score or promotion conclusion",
+          }
+          (root / "CONTRACT.json").write_text(
+              json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps({"status": "PASS", "arms": list(rows), "games_run": 0}, sort_keys=True))
+          PY
+
+      - name: Verify canonical package and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+
+      - name: Retain contracts-only materialization receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sol-vernier-factorial-contract-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/sol-vernier-factorial-contract
+          if-no-files-found: warn
+          retention-days: 14
