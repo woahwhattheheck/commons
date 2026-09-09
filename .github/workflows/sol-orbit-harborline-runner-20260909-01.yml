@@ -1,0 +1,53 @@
+name: sol-orbit-harborline-runner-20260909-01
+
+on:
+  push:
+    branches:
+      - sol-orbit/harborline-runner-20260909-1204-ec083c2
+
+permissions:
+  contents: read
+
+jobs:
+  harborline-focused-runner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Prove exact current-main parent and carrier-only delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          parent="$(git rev-parse HEAD^)"
+          head="$(git rev-parse HEAD)"
+          echo "carrier_parent=$parent"
+          echo "carrier_head=$head"
+          test "$parent" = "ec083c2feb41c944dbf76481c50f5f0c6817569e"
+          changed="$(git diff --name-only HEAD^ HEAD)"
+          printf 'carrier_changed=%s\n' "$changed"
+          test "$changed" = ".github/workflows/sol-orbit-harborline-runner-20260909-01.yml"
+          test "$(git hash-object test_desk_website_service_pack.py)" = "084192a62849d362022498050fea6b5d4ad63c87"
+          test "$(git hash-object host/desk_website_service_pack.py)" = "965c433a47a9370e7b75b5139b70873b08eb4e5d"
+          test "$(git hash-object packs/desk-website-service-20260902-01/door.html)" = "cd2be48f7b4d46a2cd518efd51b41e2931ef0520"
+          echo "084192a62849d362022498050fea6b5d4ad63c87 test_desk_website_service_pack.py"
+          echo "965c433a47a9370e7b75b5139b70873b08eb4e5d host/desk_website_service_pack.py"
+          echo "cd2be48f7b4d46a2cd518efd51b41e2931ef0520 packs/desk-website-service-20260902-01/door.html"
+
+      - name: Harborline focused current suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -W error::ResourceWarning -m unittest -v test_desk_website_service_pack.py
+          python3 -m py_compile host/desk_website_service_pack.py test_desk_website_service_pack.py
+          python3 host/desk_website_service_pack.py > "$RUNNER_TEMP/harborline.json"
+          python3 - "$RUNNER_TEMP/harborline.json" <<'PY'
+          import json, sys
+          payload = json.load(open(sys.argv[1], encoding='utf-8'))
+          assert payload['verdict'] == 'PACK_OK'
+          assert payload['law_id'] == 'cursor-desk-website-service-pack-20260902-01'
+          assert payload['instance_brand'] == 'Harborline Local Sites'
+          print('direct_cli=PACK_OK')
+          PY
