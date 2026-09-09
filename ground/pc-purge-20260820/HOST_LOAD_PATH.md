@@ -33,3 +33,14 @@ No `import numpy` / `from numpy` in Commons `host/*.py` this window.
 `evidence/bully_sessions/` was missing five Desktop cards. Added this land: `NO_IDLE_WAKE.md` `SPEC_DADDY_STUDY.md` `WALLS_PLAIN.md` `DEST_IS_THE_MACHINE.md` `OPUS_EAT_IT.md`. Same sha as `ground/pc-purge-20260820/`.
 
 Cite `ground/pc-purge-20260820/HIVE_USE_THIS.md`. Do not remint `specdaddy-hive-bully-offspec-20260820-01`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

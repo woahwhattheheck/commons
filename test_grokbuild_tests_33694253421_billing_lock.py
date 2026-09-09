@@ -18,13 +18,13 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "7abd85d6",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "ddd66030",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "3cf32bf4",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "8f71e798",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "a0225a40",
+    "catalog.html": "35a7069f",
     "hub_pages.py": "d0bd0e8d",
-    "wire.html": "5e2f94f4",
+    "wire.html": "3f030862",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "877e148d",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",

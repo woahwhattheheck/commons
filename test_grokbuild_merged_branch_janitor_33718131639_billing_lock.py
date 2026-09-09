@@ -39,7 +39,7 @@ KEEP = {
     "p/grokbuild-merged-branch-janitor-33699944798-billing-lock-20260903-01.md": "1fcd7e61",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
-    "catalog.html": "a0225a40",
+    "catalog.html": "35a7069f",
     "hub_pages.py": "d0bd0e8d",
 }
 

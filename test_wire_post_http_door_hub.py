@@ -65,12 +65,12 @@ class WirePostHttpDoorHubTests(unittest.TestCase):
         grounding = (ROOT / "test_cursor_mcp_get_grounding_readback.py").read_text(
             encoding="utf-8"
         )
-        self.assertIn('"door.js": "0ef6caa0"', grounding)
+        self.assertIn('"door.js": "de1d570b"', grounding)
         self.assertNotIn('"door.js": "de1d570b"', grounding)
         battery = (ROOT / "test_cursor_webmcp_adapter_keep_lift_battery.py").read_text(
             encoding="utf-8"
         )
-        self.assertIn('"door.js": "dc59355d"', battery)
+        self.assertIn('"door.js": "de1d570b"', battery)
         self.assertNotIn('"door.js": "de1d570b"', battery)
 
 

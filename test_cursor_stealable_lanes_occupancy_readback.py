@@ -17,7 +17,7 @@ DOOR = ROOT / "stealable-lanes.html"
 KEEP = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
-    "ground/STEALABLE_LANES.json": "6991e21c",
+    "ground/STEALABLE_LANES.json": "d194b0ad",
     "ground/STEALABLE_LANES.md": "d5164f9a",
     "stealable-lanes.html": "53c70430",
     "test_stealable_lanes.py": "555668bb",

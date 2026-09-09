@@ -120,3 +120,14 @@ F0B40F73A20E19DFEA707714FFF25EC57E759AACF8449F8B72FDAB2E80957FFB 139018 C:\llm\L
 ```
 
 Did not open the paper. Union, not a winner.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

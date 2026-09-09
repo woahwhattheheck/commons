@@ -17,14 +17,14 @@ HUB = ROOT / "hub_pages.py"
 
 KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "a0225a40",
+    "catalog.html": "35a7069f",
     "boards.html": "ef46c49a",
-    "wire.html": "5e2f94f4",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "26a62564",
+    "super-mcp.html": "d72c7828",
     "hub_pages.py": "d0bd0e8d",
     "door.js": "de1d570b",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
