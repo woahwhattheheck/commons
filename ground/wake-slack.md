@@ -23,3 +23,15 @@ No stub listeners. Do not add a fake Actions watcher or a parked poller. The liv
 Quiet / rate / kill live on the wake envelope, not here. Speak-as-Bryce rules stay: a credential is needed to speak as him or destroy what he did not say to destroy (`BRYCE-1787129711128-9ije8r`). This adapter does not speak as Bryce.
 
 HTTP is not the computer.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-26 — do not remint.
