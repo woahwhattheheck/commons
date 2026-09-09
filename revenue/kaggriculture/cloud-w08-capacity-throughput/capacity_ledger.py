@@ -44,13 +44,19 @@ def _count_map(value: Mapping[str, Any] | None, name: str) -> dict[str, int]:
     return out
 
 
-def _event_key(event: Mapping[str, Any], offset: int) -> tuple[int, int, int, int]:
+def _order_key(event: Mapping[str, Any]) -> tuple[int, int, int]:
+    """Engine-bound ordering key without input-offset tie-breakers."""
     step = _uint(event.get("step"), "event.step")
     phase = event.get("phase")
     if phase not in PHASE_ORDER:
         raise ValueError(f"event.phase must be one of {tuple(PHASE_ORDER)}")
     sequence = _uint(event.get("sequence", 0), "event.sequence")
-    return step, PHASE_ORDER[phase], sequence, offset
+    return step, PHASE_ORDER[phase], sequence
+
+
+def _event_key(event: Mapping[str, Any], offset: int) -> tuple[int, int, int, int]:
+    step, phase_ord, sequence = _order_key(event)
+    return step, phase_ord, sequence, offset
 
 
 def _normalise_events(events: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
@@ -58,6 +64,7 @@ def _normalise_events(events: Iterable[Mapping[str, Any]]) -> list[dict[str, Any
         raise ValueError("events must be an iterable of mappings")
     out: list[tuple[tuple[int, int, int, int], dict[str, Any]]] = []
     ids: set[str] = set()
+    order_keys: dict[tuple[int, int, int], str] = {}
     for offset, raw in enumerate(events):
         if not isinstance(raw, Mapping):
             raise ValueError(f"event {offset} must be a mapping")
@@ -86,7 +93,27 @@ def _normalise_events(events: Iterable[Mapping[str, Any]]) -> list[dict[str, Any
             event["actor"] = _uint(event.get("actor"), f"event {event_id!r}.actor")
         elif "actor" in event:
             event["actor"] = _uint(event["actor"], f"event {event_id!r}.actor")
+        # Shed-oracle boundary: PLACE must be explicitly destination-bound to shed.
+        # Engine routes PLACE <ANIMAL> on a matching structure to board placement;
+        # only shed-adjacent non-structure PLACE takes the inventory path.
+        if op == "PLACE":
+            dest = event.get("destination")
+            if dest != "shed":
+                raise ValueError(
+                    f"event {event_id!r} PLACE requires destination='shed' "
+                    f"(got {dest!r}); structure/animal board placement is outside "
+                    "this shed-capacity oracle"
+                )
         key = _event_key(event, offset)
+        order = _order_key(event)
+        if order in order_keys:
+            raise ValueError(
+                f"duplicate ordering key {order} for events "
+                f"{order_keys[order]!r} and {event_id!r}; "
+                "supply distinct engine-bound sequence (actor / market row / EOD) "
+                "rather than relying on cross-list insertion order"
+            )
+        order_keys[order] = event_id
         out.append((key, event))
     out.sort(key=lambda row: row[0])
     return [event for _, event in out]
@@ -145,10 +172,12 @@ def simulate_capacity(
 
     Engine-faithful distinctions:
     * DROP and EOD_DROP delete overflow from carried inventory.
-    * PLACE leaves any unplaced remainder carried.
+    * PLACE leaves any unplaced remainder carried; requires destination='shed'.
     * SELL and PICKUP clip to current shed stock.
     * BUY_PRODUCT/BUY_ANIMAL clip to remaining shed room.
     * unit events precede market events at the same step; EOD is last.
+    * Duplicate (step, phase, sequence) keys are rejected; order is not
+      inferred from baseline-vs-additive list position.
     """
     cap = _uint(capacity, "capacity", 1)
     shed = _count_map(initial_shed, "initial_shed")

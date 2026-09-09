@@ -14,13 +14,16 @@ SPEC.loader.exec_module(LEDGER)
 
 
 def e(event_id, step, phase, op, *, sequence=0, actor=None, item=None,
-      quantity=None, available=None):
+      quantity=None, available=None, destination=None):
     event = {"id": event_id, "step": step, "phase": phase,
              "sequence": sequence, "op": op}
     if actor is not None: event["actor"] = actor
     if item is not None: event["item"] = item
     if quantity is not None: event["quantity"] = quantity
     if available is not None: event["available"] = available
+    if destination is not None: event["destination"] = destination
+    if op == "PLACE" and destination is None:
+        event["destination"] = "shed"
     return event
 
 
@@ -202,6 +205,66 @@ class CapacityLedgerTests(unittest.TestCase):
             LEDGER.simulate_capacity(capacity=1, initial_shed={}, initial_carried={},
                                      events=bad)
 
+    def test_duplicate_ordering_keys_are_rejected(self):
+        """Ambiguous same-phase sequence must not silently prefer baseline order."""
+        baseline = [e("pickup", 1, "unit", "PICKUP", actor=1, item="WHEAT",
+                      quantity=1, sequence=0)]
+        additive = [e("place", 1, "unit", "PLACE", actor=0, item="MILK",
+                      quantity=1, sequence=0)]
+        with self.assertRaisesRegex(ValueError, "duplicate ordering key"):
+            LEDGER.admit_additive_events(
+                capacity=1, initial_shed={"WHEAT": 1},
+                initial_carried={0: {"MILK": 1}, 1: {}},
+                baseline_events=baseline, additive_events=additive,
+                required_complete=["place"])
+        additive2 = [e("place", 1, "unit", "PLACE", actor=0, item="MILK",
+                       quantity=1, sequence=1)]
+        report = LEDGER.admit_additive_events(
+            capacity=1, initial_shed={"WHEAT": 1},
+            initial_carried={0: {"MILK": 1}, 1: {}},
+            baseline_events=baseline, additive_events=additive2,
+            required_complete=["place"])
+        self.assertTrue(report["admitted"], report)
+        baseline_rev = [e("pickup", 1, "unit", "PICKUP", actor=1, item="WHEAT",
+                          quantity=1, sequence=1)]
+        additive_rev = [e("place", 1, "unit", "PLACE", actor=0, item="MILK",
+                          quantity=1, sequence=0)]
+        report_rev = LEDGER.admit_additive_events(
+            capacity=1, initial_shed={"WHEAT": 1},
+            initial_carried={0: {"MILK": 1}, 1: {}},
+            baseline_events=baseline_rev, additive_events=additive_rev,
+            required_complete=["place"])
+        self.assertFalse(report_rev["admitted"])
+        self.assertEqual(report_rev["reason"], "required-event-incomplete")
+
+    def test_place_requires_destination_shed_and_rejects_animal_board_path(self):
+        """PLACE without destination=shed is rejected; no fabricated animal stock."""
+        with self.assertRaisesRegex(ValueError, "destination='shed'"):
+            LEDGER.simulate_capacity(
+                capacity=5, initial_shed={}, initial_carried={0: {"COW": 1}},
+                events=[{"id": "place-cow", "step": 1, "phase": "unit", "op": "PLACE",
+                         "actor": 0, "item": "COW", "quantity": 1}])
+        with self.assertRaisesRegex(ValueError, "destination='shed'"):
+            LEDGER.simulate_capacity(
+                capacity=5, initial_shed={}, initial_carried={0: {"COW": 1}},
+                events=[{"id": "place-cow", "step": 1, "phase": "unit", "op": "PLACE",
+                         "actor": 0, "item": "COW", "quantity": 1,
+                         "destination": "barn"}])
+        result = LEDGER.simulate_capacity(
+            capacity=5, initial_shed={}, initial_carried={0: {"MILK": 1}},
+            events=[
+                e("place-milk", 1, "unit", "PLACE", actor=0, item="MILK", quantity=1),
+                e("pickup-milk", 2, "unit", "PICKUP", actor=0, item="MILK", quantity=1),
+            ])
+        self.assertEqual([r["realized"] for r in result["receipts"]], [1, 1])
+        with self.assertRaisesRegex(ValueError, "destination='shed'"):
+            LEDGER.simulate_capacity(
+                capacity=5, initial_shed={}, initial_carried={0: {"COW": 1}},
+                events=[
+                    {"id": "place-cow", "step": 1, "phase": "unit", "op": "PLACE",
+                     "actor": 0, "item": "COW", "quantity": 1},
+                    e("pickup-cow", 2, "unit", "PICKUP", actor=0, item="COW", quantity=1),
+                ])
 
     def test_exhaustive_post_market_room_family_matches_closed_form(self):
         cases = 0
