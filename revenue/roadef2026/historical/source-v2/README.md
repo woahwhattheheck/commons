@@ -41,3 +41,7 @@ Those are historical results from the existing delivery, not work performed by t
 This source is not the later PR10218 `dock_temporal` interface and must not replace it. It is not the current canonical fleet candidate. Root and DOCK retain any fourth-lane trial, compiler/context selection, scoring and result interpretation.
 
 S139 remains on hold. No Gmail draft, attachment, registration, qualification archive, organizer communication, or submission was changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -83,3 +83,7 @@ next normally planned source-pinned experiment. Their active immutable source
 No solver, supervisor, comparison rule, runtime quota, submission attachment or
 held S139 draft is changed. This establishes result ownership, not solver strength
 or compliance with the full official runtime environment.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

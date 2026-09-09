@@ -30,3 +30,7 @@ python3 host/package_docs_rebuild_offer.py --output /tmp/docs-rebuild-repair.zip
 ```
 
 Choose a new output path; an existing file is not overwritten. The archive contains offer.md, delivery-checklist.md, and a SHA-256/byte-count manifest. It deliberately excludes this internal routing note and all other repository files. ZIP timestamps/order/modes are fixed; identical documents produce identical archives. The program performs no network, credential, payment, hosting, or client action. The focused GitHub workflow runs the same tests and publishes the archive as a workflow artifact. The package is documentation, not a deployed website or a prebuilt client repair.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

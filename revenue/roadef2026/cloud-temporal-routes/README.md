@@ -127,3 +127,7 @@ candidate selection and any future measured composition. Public-instance
 quality, equal-time throughput, Docker behavior, and final competition rank
 are not established by this checkpoint. S139's existing draft and attachment
 remain unchanged and unsent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

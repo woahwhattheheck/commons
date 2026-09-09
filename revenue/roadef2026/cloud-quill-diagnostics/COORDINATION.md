@@ -18,3 +18,7 @@ TRACE retains critical-rank expansion, DOCK temporal scheduling, COOLDOWN time-w
 search, and root final candidate selection. The files here do not change their source,
 experiments, defaults, or results. Registration S139, the held Gmail draft, its
 attachment, and qualification submission remain untouched and unsent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

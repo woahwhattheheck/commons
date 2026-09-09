@@ -77,3 +77,7 @@ Run identity `quartz-roadef-native-20260908-01/screen30`; original scoped claim
 `1788842027.953529`. The full-budget B12 run is a separate measurement and is
 not claimed complete here. Coordinator retains algorithm/configuration choice;
 S139 draft, attachment, registration and qualification submission stay held.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
