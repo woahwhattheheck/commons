@@ -113,21 +113,27 @@ def install(agent: Any) -> dict[str, Any]:
 
 
 def wrap(agent: Any) -> Any:
-    """Wrap exactly one agent instance; identity when already wrapped."""
+    """Wrap one agent and patch every controller produced by initialization."""
     if getattr(agent, "_land_admission_wrapped", False):
         return agent
 
     original_initialize = agent._initialize
     state: dict[str, Any] = {
         "installed": False,
+        "installations": 0,
         "receipt": None,
     }
 
     def _initialize() -> None:
+        # TitanAgent can reconstruct its consumer/controller after a deadline or
+        # recovery boundary. Reapply after every successful parent initialize;
+        # patch_routes is idempotent if a parent ever reuses the same route bank.
         original_initialize()
-        if not state["installed"]:
-            state["receipt"] = install(agent)
-            state["installed"] = True
+        receipt = install(agent)
+        state["receipt"] = receipt
+        state["installed"] = bool(receipt.get("installed"))
+        if state["installed"]:
+            state["installations"] += 1
 
     agent._initialize = _initialize
     agent._land_admission_wrapped = True
