@@ -449,6 +449,47 @@ def main():
     e17_violations = guard.scan_added(e17_lines)
     assert e17_violations == [], e17_violations
 
+    # Run 34381521847 / SHA f2fc2b7f: Polar AS9100 traveler evidence shadow
+    # raised PermissionError for held-pack approval and automatic disposition
+    # without nearby production-LIMS human-release context. Those two lines
+    # are product-local fail-closed release, not Commons admission, once the
+    # named-human / automatic-release wording is present. Bare permission
+    # exceptions and Commons-path copies still fail.
+    polar_path = "revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py"
+    polar_blocked = "\n".join(
+        [
+            diff(polar_path, ['raise PermissionError("held evidence cannot be approved")']),
+            diff(polar_path, ['raise PermissionError("automatic disposition disabled")']),
+        ]
+    )
+    assert rules(polar_blocked) == {"permission-exception"}, rules(polar_blocked)
+    polar_allowed = "\n".join(
+        [
+            diff(
+                polar_path,
+                ['raise PermissionError("held evidence cannot release; named human review required")'],
+            ),
+            diff(
+                polar_path,
+                ['raise PermissionError("automatic release is disabled; named human review is required")'],
+            ),
+        ]
+    )
+    assert guard.scan_diff(polar_allowed) == [], guard.scan_diff(polar_allowed)
+    commons_copy = diff(
+        "commons_mcp.py",
+        ['raise PermissionError("automatic release is disabled; named human review is required")'],
+    )
+    assert "permission-exception" in rules(commons_copy), rules(commons_copy)
+    polar_live = Path(polar_path)
+    polar_lines = [
+        guard.AddedLine(polar_live.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            polar_live.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    polar_violations = guard.scan_added(polar_lines)
+    assert polar_violations == [], polar_violations
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.

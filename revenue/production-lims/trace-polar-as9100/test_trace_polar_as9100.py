@@ -92,10 +92,13 @@ class PolarAs9100Tests(unittest.TestCase):
         self.assertEqual("Jordan Reviewer", released["disposed_by"])
         self.assertFalse(released["sent"])
         self.assertEqual(original, shadow.evidence_packs["W1"])
-        with self.assertRaises(PermissionError):
+        with self.assertRaises(PermissionError) as held:
             shadow.disposition_copy("W2", "Jordan Reviewer")
-        with self.assertRaises(PermissionError):
+        self.assertIn("named human review", str(held.exception))
+        self.assertIn("release", str(held.exception))
+        with self.assertRaises(PermissionError) as automatic:
             shadow.automatic_disposition("W1")
+        self.assertIn("automatic release", str(automatic.exception))
 
     def test_fixture_and_manifest_tampering_fail_closed(self):
         module_dir = Path(polar.__file__).resolve().parent
