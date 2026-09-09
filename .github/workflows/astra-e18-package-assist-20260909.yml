@@ -1,0 +1,65 @@
+name: astra-e18-package-assist
+
+on:
+  push:
+    branches:
+      - sol/astra-e18-package-assist-20260909-1143
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/
+            /revenue/kaggriculture/cloud-economic-stress/funded_payback/
+            /revenue/kaggriculture/cloud-quickstep/
+            /revenue/kaggriculture/cloud-runtime-pulse/
+            /revenue/kaggriculture/cloud-committed-seed-retry/
+            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/
+      - name: Regenerate deterministic canonical package
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          OUT="$RUNNER_TEMP/titan-e18-canonical-package"
+          mkdir -p "$OUT"
+          python3 - <<'PY' > "$RUNNER_TEMP/old_sha.txt"
+          import json
+          from pathlib import Path
+          p=Path('revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json')
+          print(json.loads(p.read_text())['sha256'])
+          PY
+          python3 -B "$LAB/build_integrated.py" | tee "$OUT/build-receipt.json"
+          python3 -B "$LAB/build_integrated.py" --check | tee "$OUT/check-receipt.json"
+          cp "$LAB/exports/titan-current.tar.gz" "$OUT/titan-current.tar.gz"
+          cp "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" "$OUT/CURRENT-SOURCE.json"
+          cp "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" "$OUT/CURRENT-ARCHIVE.json"
+          OLD_SHA="$(cat "$RUNNER_TEMP/old_sha.txt")"
+          HIST="$LAB/exports/historical/titan-$OLD_SHA.tar.gz"
+          test -f "$HIST"
+          cp "$HIST" "$OUT/titan-$OLD_SHA.tar.gz"
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          out=Path(os.environ['RUNNER_TEMP'])/'titan-e18-canonical-package'
+          rows={}
+          for p in sorted(out.iterdir()):
+              data=p.read_bytes()
+              rows[p.name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+          (out/'SHA256SUMS.json').write_text(json.dumps(rows,indent=2,sort_keys=True)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: astra-e18-canonical-package-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/titan-e18-canonical-package/
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
