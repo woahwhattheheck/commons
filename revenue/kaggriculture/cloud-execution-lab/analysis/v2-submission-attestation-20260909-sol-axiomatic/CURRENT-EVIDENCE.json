@@ -1,0 +1,30 @@
+{
+  "provider": {
+    "artifact": {
+      "bytes": 377624,
+      "filename": "titan-current.tar.gz",
+      "sha256": null
+    },
+    "competition": "kaggriculture",
+    "competition_submission_id": null,
+    "execution_status": "SUCCESS",
+    "notebook_name": "TITAN V2",
+    "notebook_output_sha256": null,
+    "notebook_ref": "tokenjunkielabs/tokenjunkielabs-farm-manager",
+    "notebook_version": 348505068,
+    "observed_score": 904.4,
+    "observed_score_observed_at": "2026-09-09T11:07:59Z",
+    "submission_status": "COMPLETE",
+    "submitted_at": "2026-09-09T10:31:22Z"
+  },
+  "repository": {
+    "archive_receipt_path": "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json",
+    "release_commit": "7fcf729c06d69f6e14f4d8e50fc89ecb657bdc8f",
+    "source_manifest_path": "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json"
+  },
+  "schema": "titan-v2-submission-provider-evidence/v1",
+  "validation": {
+    "replay_filename": "episode-107095737-replay.json",
+    "replay_sha256": null
+  }
+}
