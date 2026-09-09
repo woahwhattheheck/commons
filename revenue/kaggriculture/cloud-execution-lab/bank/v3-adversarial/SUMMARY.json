@@ -1,0 +1,20 @@
+{
+  "wall_seconds": 290.1,
+  "workers": 8,
+  "scheduled": 128,
+  "completed": 128,
+  "failed": 0,
+  "throughput_games_per_min": 26.47,
+  "shard_seconds": [282.0, 289.3, 284.9, 284.9, 284.3, 290.1, 288.5, 280.9],
+  "per_opponent": {
+    "official_pass": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 170312.438},
+    "official_random": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 149454.562},
+    "starter": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 173205.188},
+    "deepesh_farmbrain": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 156251.375},
+    "lonespear_main": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 55288.688},
+    "lonespear_livestock": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 74753.375},
+    "amey_v43": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 19834.812},
+    "amey_v16": {"games": 16, "W": 16, "T": 0, "L": 0, "mean_margin": 19748.562}
+  },
+  "failures": []
+}

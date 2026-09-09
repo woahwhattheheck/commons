@@ -1,0 +1,14 @@
+{
+  "schema": "titan.v3-adversarial-bank.v1",
+  "candidate_archive": "exports/titan-current.tar.gz",
+  "candidate_sha256": "f8f1750266b3cfaea0ebfe663f287aa9c5a2682f6fc47bc932957e1d48e63f1c",
+  "entries": {
+    "official_pass": {"path": "official_pass/main.py", "sha256": "eb87413b5442c4be7e9b25e3a202906741d285f2d3a3af2938300262afbc7666", "license": "Apache-2.0", "source": "Kaggle/kaggle-environments 1.32.7 pass_agent"},
+    "official_random": {"path": "official_random/main.py", "sha256": "3626391433a8d28f0b88520a7f21f16b478d452a71ab89b3cd823b0e3f843ffc", "license": "Apache-2.0", "source": "Kaggle/kaggle-environments 1.32.7 random_agent"},
+    "deepesh_farmbrain": {"path": "deepesh_farmbrain/main.py", "sha256": "bad9dd849ee6b828183ee938d2a5732835715a23fcb25082269ba95c54808cf6", "license": "MIT", "source": "https://github.com/deepeshumrao/kaggriculture-agent deliverables/kaggriculture_submission.py"},
+    "lonespear_main": {"path": "lonespear_main/main.py", "sha256": "eb5b5f59a8ec2d40b77cc99d4ffe3b932136fdcf9f6b6e168726b7f07ab47cb0", "license": "MIT", "source": "https://github.com/lonespear/kaggriculture main.py (v18)"},
+    "lonespear_livestock": {"path": "lonespear_livestock/main.py", "sha256": "c985cf938333d1ba0d4424143ee632d1be173e91724ae6c5d3f1cc82f94ae2ee", "license": "MIT", "source": "https://github.com/lonespear/kaggriculture main_v23.py (v11 livestock header)"},
+    "amey_v43": {"path": "amey_v43/main.py", "sha256": "43e6fc901e85a5fc69f659b43454523becead213ac688e074bcad20b70db9669", "license": "Apache-2.0", "source": "https://github.com/Amey-Thakur/KAGGLE-COMPETITIONS kaggriculture-premium-first-market-agent.ipynb"},
+    "amey_v16": {"path": "amey_v16/main.py", "sha256": "f029fa0cb66a9eb509afbe44e3f59b800332d0419db91607183410e4089c4d19", "license": "Apache-2.0", "source": "https://github.com/Amey-Thakur/KAGGLE-COMPETITIONS kaggriculture-deterministic-farm-planning-agent.ipynb"}
+  }
+}
