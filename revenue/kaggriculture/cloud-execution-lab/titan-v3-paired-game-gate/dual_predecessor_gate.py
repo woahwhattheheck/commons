@@ -15,6 +15,7 @@ Exit 3 = valid evidence, but at least one predecessor comparison was REJECTED.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -143,6 +144,23 @@ def _normalized_grid(report: Mapping[str, Any]) -> dict[str, Any]:
         "seats": sorted(grid["seats"]),
         "expected_cells": grid["expected_cells"],
     }
+
+
+def _baseline_semantic_sha256(report: Mapping[str, Any]) -> str:
+    normalized = [
+        {
+            "key": cell["key"],
+            "scores": cell["baseline_scores"],
+        }
+        for cell in report["metrics"]["cells"]
+    ]
+    encoded = json.dumps(
+        normalized,
+        sort_keys=True,
+        separators=(",", ":"),
+        allow_nan=False,
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def _bind_inner_inputs(
@@ -415,6 +433,17 @@ def _validate_cross_comparison(
             "value": first_baseline_games,
         }
 
+    first_baseline_semantic = _baseline_semantic_sha256(first)
+    second_baseline_semantic = _baseline_semantic_sha256(second)
+    if first_baseline_semantic == second_baseline_semantic:
+        drift["baseline_semantic_sha256"] = {
+            "error": (
+                "predecessor game panels are semantically identical; "
+                "reserialization is not evidence of a second execution"
+            ),
+            "value": first_baseline_semantic,
+        }
+
     declared_candidate = first_shared["candidate_artifact_sha256"]
     observed_candidate = outer_hashes["candidate_artifact"]
     declared_aliases = []
@@ -454,6 +483,10 @@ def _validate_cross_comparison(
             "candidate_artifact": outer_hashes["candidate_artifact"],
         },
         "candidate_games_sha256": candidate_games_sha256,
+        "predecessor_baseline_semantic_sha256": {
+            "predecessor_a": first_baseline_semantic,
+            "predecessor_b": second_baseline_semantic,
+        },
         "grid": first_grid,
         "policy": first["policy"],
     }

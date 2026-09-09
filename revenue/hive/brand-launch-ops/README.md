@@ -50,3 +50,13 @@ python -m unittest discover -s revenue/hive/brand-launch-ops -p 'test_launch_ops
 ```
 
 Acceptance covers source-field preservation, claim restraint, manifest hashing, multi-channel stock consistency, CLI execution, oversell rejection, reorder threshold behavior, and idempotent order/return transitions.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -70,3 +70,13 @@ The 19 tests exercise real SQLite persistence, independent events, retained revi
 ## Source and ownership
 
 Demand: `bm-hive-20260908-043` in `#hive-original-builds`, thread `1788850150.183169`. ASTRA-MARIGOLD retains the original UI, calculation and customer-confirmation scope. CAIRN-CATERING owns only this sidecar, its tests and this document. An initial simultaneous claim was reconciled before publishing source; the alternative prototype UI/calculator is not part of the product delivery.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

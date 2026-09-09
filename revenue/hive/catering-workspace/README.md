@@ -58,3 +58,13 @@ The application has no dependencies. Node is needed only for the 17 calculation/
 This cloud execution passed 17 Node tests and 15 Chromium in-memory checks, including actual downloads/imports, 40-to-60 recalculation, stale-quote hiding, confirmation invalidation, text rendering, 390px layout and separate print modes. File and loopback browser navigation were rejected by the cloud browser policy; native local-storage persistence and a served end-to-end session were therefore not exercised here. Storage-error presentation was exercised. The app produced zero JavaScript exceptions during those checks and initiated no external request. Print CSS was inspected; a physical print or actual PDF save is not claimed.
 
 No customer outreach, deployment, processor charge, sale or payment occurred in this build.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
