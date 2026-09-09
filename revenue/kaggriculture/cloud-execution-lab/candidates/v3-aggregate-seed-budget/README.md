@@ -17,6 +17,12 @@ This candidate does **not** aggregate arbitrary purchase queues. It edits only t
 
 On decline, the original action object is returned by identity. On admission, one copied market slot is reduced (or replaced by `[]` when its realized fill is wholly surplus). Farmer, hands, all preceding rows, inactive tail rows, route state, seller ledger, and canonical bytes are untouched.
 
+## Runtime adapter
+
+`candidate_runtime.py` consumes only an already completed frozen-TITAN action. It binds the exact route, normalized step, post-unit seed stock, and every branch-compatible remaining request (including spatial additions). `main.py` calls canonical TITAN exactly once, edits no controller or ledger state, and attempts the bounded transform only inside the parent's remaining reserved time. Any missing binding, unsupported mode, malformed state, timeout, or exception returns canonical bytes.
+
+`test_official_engine.py` runs the preserved competition interpreter and proves that trimming the final MELON row from four units to one leaves every prior and rival effect unchanged while preserving exactly three seed costs in cash. It separately proves the partial-funding abort semantics used by the pure simulator.
+
 ## Evidence boundary
 
 `audit_routes.py` decodes the exact current four-route Arlene bank and inventories duplicate same-crop seed rows inside the official first-N market prefix. A route shape is only an opportunity witness; it is not a gameplay or score claim. Promotion would additionally require realized activation telemetry and complete identical-cell, both-seat official-engine games against unchanged current canonical TITAN.
@@ -24,12 +30,14 @@ On decline, the original action object is returned by identity. On admission, on
 ## Local acceptance
 
 ```bash
-python -m py_compile aggregate_seed_budget.py audit_routes.py test_aggregate_seed_budget.py
-python -m unittest -v test_aggregate_seed_budget.py
+python -m py_compile aggregate_seed_budget.py audit_routes.py candidate_runtime.py main.py \
+  test_aggregate_seed_budget.py test_candidate_runtime.py test_official_engine.py
+python -m unittest -v test_aggregate_seed_budget.py test_candidate_runtime.py
 python audit_routes.py --output route-audit.json
+# Hosted CI installs kaggle-environments==1.32.7 and also runs test_official_engine.py.
 ```
 
-The focused suite covers funded over-retention, partial-funding preservation, surplus that spills into an earlier row, SELL/variable-prefix ambiguity, active-prefix truncation, branch-compatible demand, zero-tail idempotence, mixed fixed-price seed rows, invalid numeric input, and route-audit classification.
+The 18 network-independent contracts cover funded over-retention, partial-funding preservation, surplus that spills into an earlier row, SELL/variable-prefix ambiguity, active-prefix truncation, branch-compatible demand, zero-tail idempotence, mixed fixed-price seed rows, invalid numeric input, route-audit classification, completed-action binding, spatial demand, day/hour normalization, player validation, and exact projection fallback. Hosted CI adds two preserved-engine contracts.
 
 ## Non-claims
 
