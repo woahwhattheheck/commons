@@ -77,6 +77,13 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaises(AssertionError):
             p24.validate_games(games, variants, ["rival"], [1])
 
+    def test_valid_hash_64hex(self):
+        self.assertTrue(p24.valid_hash("a" * 64))
+        self.assertFalse(p24.valid_hash("x"))
+        self.assertFalse(p24.valid_hash("A" * 64))
+        self.assertFalse(p24.valid_hash("a" * 63))
+        self.assertFalse(p24.valid_hash(None))
+
 
 class ConfigTests(unittest.TestCase):
     def test_only_factors_change(self):
