@@ -128,8 +128,10 @@
       "callsite": "TitanAgent._market_pressure_selected",
       "component": "LARK market pressure",
       "consumed_result": "Previously reported paired panel: candidate16W versus parent8W8L, mean margin+549.5. Historical development evidence, not a current-archive or leaderboard estimate.",
+      "current_source_validation": "10 focused contracts, including 3645 paired-sale arithmetic cases. Whole sale-only executable prefixes may compact known empty/zero-sale slots; purchases, positive operating inputs, malformed orders and incompatible quotes decline. No new game panel or current score estimate.",
       "enabled": true,
-      "source_pin": "PR10728; current manifest pressure_priority.py and sell_priority.py"
+      "mechanism_intake": "Research desk MIDFIELD-FIND-04, 2026-09-09, tetsutani Market-Smart Farming V4/source348250931; source mechanism independently implemented without literal code reuse.",
+      "source_pin": "PR10728 ancestor; current manifest pressure_priority.py and sell_priority.py"
     },
     {
       "callsite": "TitanAgent._committed_seed_retry_selected",
@@ -354,8 +356,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 7953,
-      "sha256": "f3c9237d27e951d1964b5e587888180a90cb1722c53abc2a319b4310da110afe",
+      "bytes": 8953,
+      "sha256": "2143ea67a588d50ae485f905f7c26f0d1c16fb360fce6b886cedf7a3f92ce6f4",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -434,8 +436,8 @@
       "source_path": "test_funded_payback_runtime.py"
     },
     "checks/test_market_pressure_runtime.py": {
-      "bytes": 1992,
-      "sha256": "2968302e5e2db6786a7081fbb36c53110c702aa9a31f4e7174d55b9dbf389ce3",
+      "bytes": 7072,
+      "sha256": "26858662554f713478cd800d81dc3d3f18404eb225e379416248c0a8b714ae8f",
       "source_path": "test_market_pressure_runtime.py"
     },
     "checks/test_module_recovery.py": {
@@ -544,8 +546,8 @@
       "source_path": "../cloud-runtime-pulse/plant_suffix.py"
     },
     "pressure_priority.py": {
-      "bytes": 6273,
-      "sha256": "635f11abdc29b97422fd24ef0d5a8a52f070fab2754e5c3b24ec3e7370ac7824",
+      "bytes": 9811,
+      "sha256": "d2dbdc038e2622103c73f53675b3a45ba18958e22052c4e9bb1bf163ae5c6ccb",
       "source_path": "../cloud-opponent-league/lark-responsive/pressure_priority.py"
     },
     "reference/decision/README.md": {
@@ -824,8 +826,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 26358,
-      "sha256": "70245afcc4a544e671f5b9d591238bcf3fb935a076352de273ea5d87fc090958",
+      "bytes": 26366,
+      "sha256": "31b9366d8f04f0d7df71ceb9d3a0ce84548f2f4d419f4e9e72bf665d0192778a",
       "source_path": "titan_runtime.py"
     }
   },

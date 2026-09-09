@@ -2,7 +2,8 @@
 
 The same-sized rival lot is an explicit proxy, never observed hidden inventory.
 The injected quote function must be the pinned engine's pure public price curve.
-Only adjacent SELL orders move; parent quantities and production remain intact.
+Contiguous SELL blocks may reorder. A wholly sale-only executable prefix may
+also compact known empty slots; parent quantities and production remain intact.
 """
 from __future__ import annotations
 
@@ -12,11 +13,77 @@ import time
 from collections.abc import Callable, Mapping
 from typing import Any
 
-from sell_priority import _quote
+from sell_priority import PRODUCTS, _quote
 
 PriceFunction = Callable[[str, int, Mapping | None], int | float]
 MAX_SCORING_UNITS = 256
 MAX_SCORING_ORDERS = 64
+SALE_ONLY_GOODS = frozenset(("CARROT", "TOMATO", "STRAWBERRY", "MELON", "EGG", "MILK", "WOOL"))
+
+
+def compact_sale_only_prefix(orders: list, end: int, market: Mapping,
+                             configuration: Mapping, quote: PriceFunction) -> list:
+    """Move sales across known empty slots in a wholly sale-only prefix.
+
+    Relative positive-sale order, quantities, row length and the non-executable
+    suffix stay intact. Buyable operating inputs and every economic/unknown
+    order decline compaction. This is a current-turn ordering rule: it does not
+    project future purchases, crops, or opponent policy responses.
+
+    With no intra-market town consumption or purchases of these goods, moving
+    an own sale earlier crosses only rival sales. A nonincreasing price curve
+    weakly improves the changed commodity's own-minus-rival sale receipts,
+    including paired quotes and the floor. This is not a full-game guarantee.
+    """
+    prefix = orders[:end]; positive = []; empty = []; totals = {}
+    cfg_capacity = configuration.get('shedCapacity', 100)
+    if isinstance(cfg_capacity, bool) or cfg_capacity != 100:
+        return orders
+    for order in prefix:
+        if order == []:
+            empty.append(order); continue
+        if not isinstance(order, list) or len(order) != 3 or order[0] != 'SELL':
+            return orders
+        item, quantity = order[1:]
+        if (not isinstance(item, str) or item not in PRODUCTS
+                or isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0):
+            return orders
+        if quantity == 0:
+            empty.append(order); continue
+        if item not in SALE_ONLY_GOODS:
+            return orders
+        positive.append(order); totals[item] = totals.get(item, 0) + quantity
+    candidate = positive + empty
+    if not positive or not empty or candidate == prefix or sum(totals.values()) > cfg_capacity:
+        return orders
+    prices = market.get('prices', {}); inventories = market.get('inventory', {})
+    params = market.get('params')
+    if (not isinstance(prices, Mapping) or not isinstance(inventories, Mapping)
+            or (params is not None and not isinstance(params, Mapping))):
+        return orders
+    exposed = False
+    try:
+        for item, quantity in totals.items():
+            inventory = inventories.get(item)
+            if isinstance(inventory, bool) or not isinstance(inventory, int):
+                return orders
+            visible = prices.get(item)
+            if (isinstance(visible, bool) or not isinstance(visible, (int, float))
+                    or not math.isfinite(visible) or visible < 1):
+                return orders
+            curve = [quote(item, inventory + k, params)
+                     for k in range(quantity + cfg_capacity + 1)]
+            if any(isinstance(p, bool) or not isinstance(p, (int, float))
+                   or not math.isfinite(p) or p < 1 for p in curve):
+                return orders
+            if curve[0] != visible or any(a < b for a, b in zip(curve, curve[1:])):
+                return orders
+            exposed |= curve[0] > curve[-1]
+    except (ArithmeticError, LookupError, TypeError, ValueError):
+        return orders
+    if not exposed:
+        return orders
+    return candidate + orders[end:]
 
 
 def lot_pressure(order: Any, market: Mapping, quote: PriceFunction) -> float | None:
@@ -67,8 +134,9 @@ def transform(action: dict, observation: Mapping,
               configuration: Mapping | None = None, *, quote: PriceFunction) -> dict:
     """Sort contiguous supported SELL lots by public same-lot delay exposure.
 
-    Preserve all orders, quantities, duplicate orders, non-SELL positions,
-    executable-prefix boundaries and unit instructions. Economic feedback can
+    Preserve all orders, quantities, duplicate lots, economic barriers,
+    executable-prefix boundaries and unit instructions. Known empty slots can
+    move only inside a wholly eligible sale-only prefix. Economic feedback can
     still change later parent choices; this is not a global optimality claim.
     """
     if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
@@ -98,6 +166,7 @@ def transform(action: dict, observation: Mapping,
         ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])
         orders[start:stop] = [order for order, _ in ranked]
         start = stop
+    result['market'] = compact_sale_only_prefix(orders, end, market, cfg, quote)
     return result
 
 

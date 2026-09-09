@@ -1,13 +1,15 @@
 {
   "schema_version": 1,
-  "archive_sha256": "f6967e16a2e98d576eedd09367f577660139a3fb503b7fc80b3672ff9e241ac3",
-  "source_manifest_sha256": "5ff9160e2254d614b63a810f3ccbe902caedb55ef3f83a874e4e4403752b12c1",
-  "status": "bounded_behavior_enabled_due_day_water_and_funding_checked",
-  "details": "OPERATING-STOCK-TESTS.json",
-  "tests": 29,
+  "archive_sha256": "6705147ba96fe4c6c3762197f024ff1d47d38004f03d0059055ef4467bb5b88e",
+  "source_manifest_sha256": "5d1773235e4ca470dcb9f911c70819745000a0c3560db235fee83cac837794a2",
+  "status": "operating_stock_and_bounded_sale_gap_behavior_enabled",
+  "details": "MARKET-GAP-TESTS.json",
+  "tests": 39,
+  "release_consistency_checks": 1,
   "new_full_games": 0,
   "new_simulation_panels": 0,
   "playing_strength_measured": false,
   "previous_weed_evidence": "WEED-CONTINUATION-TESTS.json",
-  "previous_exact_db34_archive_evidence": "WEED-ARCHIVE-TESTS.json"
+  "previous_exact_db34_archive_evidence": "WEED-ARCHIVE-TESTS.json",
+  "previous_exact_f696_stock_evidence": "OPERATING-STOCK-TESTS.json"
 }

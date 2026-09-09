@@ -93,10 +93,12 @@
     },
     {
       "component": "LARK market pressure",
-      "source_pin": "PR10728; current manifest pressure_priority.py and sell_priority.py",
+      "source_pin": "PR10728 ancestor; current manifest pressure_priority.py and sell_priority.py",
       "callsite": "TitanAgent._market_pressure_selected",
       "enabled": true,
-      "consumed_result": "Previously reported paired panel: candidate16W versus parent8W8L, mean margin+549.5. Historical development evidence, not a current-archive or leaderboard estimate."
+      "consumed_result": "Previously reported paired panel: candidate16W versus parent8W8L, mean margin+549.5. Historical development evidence, not a current-archive or leaderboard estimate.",
+      "current_source_validation": "10 focused contracts, including 3645 paired-sale arithmetic cases. Whole sale-only executable prefixes may compact known empty/zero-sale slots; purchases, positive operating inputs, malformed orders and incompatible quotes decline. No new game panel or current score estimate.",
+      "mechanism_intake": "Research desk MIDFIELD-FIND-04, 2026-09-09, tetsutani Market-Smart Farming V4/source348250931; source mechanism independently implemented without literal code reuse."
     },
     {
       "component": "Committed seed retry",
