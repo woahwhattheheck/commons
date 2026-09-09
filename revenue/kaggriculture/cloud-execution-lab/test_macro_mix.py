@@ -6,6 +6,7 @@ from macro_mix import (
     MACROS,
     MacroMixer,
     PublicFeedback,
+    STEP_MAX,
     UnsafeMacroFeedback,
     WEIGHT_TOTAL,
     compare_policies,
@@ -49,6 +50,30 @@ class MacroMixTests(unittest.TestCase):
             with self.subTest(row=row):
                 with self.assertRaises(UnsafeMacroFeedback):
                     PublicFeedback.from_mapping({"step": 1, "loss_bp": row})
+
+    def test_direct_public_feedback_object_obeys_step_bound(self):
+        valid_loss = loss()
+        accepted = PublicFeedback(step=STEP_MAX, loss_bp=valid_loss)
+        self.assertEqual(accepted.step, STEP_MAX)
+        mixer = MacroMixer.uniform().observe(accepted)
+        self.assertEqual(mixer.last_step, STEP_MAX)
+        for bad_step in (STEP_MAX + 1, -1, True, False):
+            with self.subTest(step=bad_step):
+                with self.assertRaises(UnsafeMacroFeedback):
+                    PublicFeedback(step=bad_step, loss_bp=valid_loss)
+                bypass = PublicFeedback.__new__(PublicFeedback)
+                object.__setattr__(bypass, "step", bad_step)
+                object.__setattr__(bypass, "loss_bp", valid_loss)
+                with self.assertRaises(UnsafeMacroFeedback):
+                    MacroMixer.uniform().observe(bypass)
+
+    def test_mixer_last_step_rejects_unbounded_and_bool_values(self):
+        with self.assertRaises(UnsafeMacroFeedback):
+            MacroMixer(last_step=STEP_MAX + 1)
+        with self.assertRaises(UnsafeMacroFeedback):
+            MacroMixer(last_step=True)
+        with self.assertRaises(UnsafeMacroFeedback):
+            MacroMixer(last_step=-2)
 
     def test_update_penalizes_only_observed_losses(self):
         mixer = MacroMixer.uniform().observe({
@@ -168,6 +193,9 @@ class MacroMixTests(unittest.TestCase):
         report = compare_policies(mixer, {macro: 250_000 for macro in MACROS}, held_out)
         self.assertGreaterEqual(report["mixed_worst_regret_bp"], report["canonical_worst_regret_bp"])
         self.assertFalse(report["mixed_beats_canonical_worst_family"])
+        self.assertEqual(report["canonical_worst_regret_bp"], 6_250)
+        self.assertEqual(report["mixed_worst_regret_bp"], 6_955)
+        self.assertEqual(report["deterministic_worst_regret_bp"], 9_000)
 
     def test_constructor_rejects_noncanonical_weight_state(self):
         with self.assertRaises(UnsafeMacroFeedback):

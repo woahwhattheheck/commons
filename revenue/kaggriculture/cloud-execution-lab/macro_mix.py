@@ -23,6 +23,7 @@ MACRO_SET = frozenset(MACROS)
 LOSS_MAX_BP = 10_000
 WEIGHT_TOTAL = 1_000_000
 UPDATE_DENOMINATOR = 100_000_000  # 10_000 bp * 10_000 bp.
+STEP_MAX = 2_147_483_647
 
 
 class UnsafeMacroFeedback(ValueError):
@@ -72,6 +73,11 @@ class PublicFeedback:
     step: int
     loss_bp: Mapping[str, int]
 
+    def __post_init__(self) -> None:
+        _bounded_int(self.step, "step", 0, STEP_MAX)
+        # Validate on every construction path, including direct objects.
+        _exact_macro_row(self.loss_bp, "loss_bp")
+
     @classmethod
     def from_mapping(cls, row: Mapping[str, Any]) -> "PublicFeedback":
         if not isinstance(row, Mapping):
@@ -82,10 +88,7 @@ class PublicFeedback:
             missing = sorted(expected - keys)
             extra = sorted(keys - expected, key=repr)
             raise UnsafeMacroFeedback(f"feedback fields mismatch: missing={missing} extra={extra}")
-        step = _bounded_int(row["step"], "step", 0, 2_147_483_647)
-        # Validate here so forbidden identity-bearing extras cannot hide inside the row.
-        _exact_macro_row(row["loss_bp"], "loss_bp")
-        return cls(step=step, loss_bp=row["loss_bp"])
+        return cls(step=row["step"], loss_bp=row["loss_bp"])
 
     def losses(self) -> tuple[int, ...]:
         return _exact_macro_row(self.loss_bp, "loss_bp")
@@ -107,8 +110,8 @@ class MacroMixer:
         if normalized != self.weights:
             raise UnsafeMacroFeedback(f"weights must already sum exactly to {WEIGHT_TOTAL}")
         _bounded_int(self.learning_rate_bp, "learning_rate_bp", 1, 5_000)
-        if isinstance(self.last_step, bool) or not isinstance(self.last_step, int) or self.last_step < -1:
-            raise UnsafeMacroFeedback("last_step must be an int >= -1")
+        if isinstance(self.last_step, bool) or not isinstance(self.last_step, int) or not -1 <= self.last_step <= STEP_MAX:
+            raise UnsafeMacroFeedback(f"last_step must be an int in [-1, {STEP_MAX}]")
         if isinstance(self.observations, bool) or not isinstance(self.observations, int) or self.observations < 0:
             raise UnsafeMacroFeedback("observations must be a nonnegative int")
 
@@ -136,6 +139,10 @@ class MacroMixer:
     def observe(self, feedback: PublicFeedback | Mapping[str, Any]) -> "MacroMixer":
         if not isinstance(feedback, PublicFeedback):
             feedback = PublicFeedback.from_mapping(feedback)
+        else:
+            # Revalidate the object surface even if a caller bypassed from_mapping.
+            _bounded_int(feedback.step, "step", 0, STEP_MAX)
+            feedback.losses()
         if feedback.step <= self.last_step:
             raise UnsafeMacroFeedback("feedback step must increase strictly")
         losses = feedback.losses()

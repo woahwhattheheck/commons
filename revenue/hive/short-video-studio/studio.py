@@ -165,6 +165,39 @@ def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
     return subprocess.run(command, check=True, text=True, capture_output=True)
 
 
+def _paths_alias(left: pathlib.Path, right: pathlib.Path) -> bool:
+    """Return True for the same canonical path or the same existing file."""
+    left = left.resolve()
+    right = right.resolve()
+    if left == right:
+        return True
+    try:
+        return left.exists() and right.exists() and left.samefile(right)
+    except OSError:
+        return False
+
+
+def _guard_render_outputs(
+    project_path: pathlib.Path,
+    output_path: pathlib.Path,
+    srt_path: pathlib.Path,
+    normalized: dict[str, Any],
+) -> None:
+    protected: list[tuple[str, pathlib.Path]] = [("project", project_path)]
+    for index, segment in enumerate(normalized["segments"], 1):
+        if segment["asset"]:
+            protected.append((f"segment {index} asset", pathlib.Path(segment["asset"])))
+    if normalized["audio"]["kind"] == "file":
+        protected.append(("audio source", pathlib.Path(normalized["audio"]["path"])))
+
+    if _paths_alias(output_path, srt_path):
+        raise ProjectError("render output and caption output must be distinct files")
+    for output_label, candidate in (("render output", output_path), ("caption output", srt_path)):
+        for source_label, source in protected:
+            if _paths_alias(candidate, source):
+                raise ProjectError(f"{output_label} aliases protected {source_label}: {candidate}")
+
+
 def render_project(project_path: pathlib.Path, output_path: pathlib.Path) -> dict[str, Any]:
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         raise RuntimeError("ffmpeg and ffprobe are required")
@@ -173,8 +206,9 @@ def render_project(project_path: pathlib.Path, output_path: pathlib.Path) -> dic
     project = json.loads(project_path.read_text(encoding="utf-8"))
     normalized = validate_project(project, project_dir)
     output_path = output_path.resolve()
-    output_path.parent.mkdir(parents=True, exist_ok=True)
     srt_path = output_path.with_suffix(".srt")
+    _guard_render_outputs(project_path, output_path, srt_path, normalized)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     write_srt(normalized, srt_path)
 
     width, height, fps = normalized["width"], normalized["height"], normalized["fps"]

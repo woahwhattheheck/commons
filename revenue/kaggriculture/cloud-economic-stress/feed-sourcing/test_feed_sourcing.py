@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import importlib.util
+import subprocess
 import sys
 from pathlib import Path
 import unittest
@@ -230,6 +231,32 @@ class FeedSourcingContracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             observed_feed_reserve_units(
                 (105,), now_step=100, turns_per_day=10, reserve_days=3)
+
+    def test_owned_certificate_docs_pass_open_door_guard(self):
+        repo = Path(__file__).resolve().parents[4]
+        guard = repo / "open_door_guard.py"
+        if not guard.is_file():
+            self.skipTest("full Commons source tree not present")
+        here = Path(__file__).resolve().parent
+        chunks = []
+        for name in ("README.md", "feed_sourcing.py"):
+            rel = f"revenue/kaggriculture/cloud-economic-stress/feed-sourcing/{name}"
+            lines = (here / name).read_text(encoding="utf-8").splitlines()
+            chunks.append(f"diff --git a/{rel} b/{rel}\n")
+            chunks.append("--- /dev/null\n")
+            chunks.append(f"+++ b/{rel}\n")
+            chunks.append(f"@@ -0,0 +1,{len(lines)} @@\n")
+            for line in lines:
+                chunks.append(f"+{line}\n")
+        proc = subprocess.run(
+            [sys.executable, str(guard), "--diff-file", "-"],
+            input="".join(chunks),
+            text=True,
+            capture_output=True,
+            cwd=str(repo),
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + "\n" + proc.stderr)
 
     @unittest.skipUnless(
         (Path(__file__).resolve().parents[2] / "cloud-execution-lab" / "mechanics.py").is_file(),
