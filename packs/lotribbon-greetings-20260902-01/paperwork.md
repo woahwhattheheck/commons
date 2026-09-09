@@ -20,3 +20,7 @@ Slots stay `OWNER_UNSET` / `HOLD_COUNSEL` until the operator's own counsel or st
 “Paperwork included” on this door means the checklist is filled. It does not mean tjlabs completed a filing.
 
 See insurance-licensing.md and sop-delivery.md. Checkout stays NOT_MINTED.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
