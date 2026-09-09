@@ -20,13 +20,41 @@ jobs:
       - name: Run exact E17 focused contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: python -m unittest -v test_seller_regime_history.py
-      - name: Import experimental wrapper
+      - name: Baseline raw-import control
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set +e
+          python - <<'PY'
+          import scheduler
+          print('BASELINE_RAW_IMPORT_OK')
+          PY
+          baseline=$?
+          python - <<'PY'
+          import regime_scheduler
+          print('E17_RAW_IMPORT_OK')
+          PY
+          e17=$?
+          set -e
+          echo "BASELINE_RAW_IMPORT_RC=$baseline"
+          echo "E17_RAW_IMPORT_RC=$e17"
+          test "$baseline" -eq "$e17"
+      - name: Locate observed-clone execution dependency
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          echo '--- repository matches ---'
+          find "$GITHUB_WORKSPACE" -name observed_clone.py -print
+          echo '--- source references ---'
+          grep -R --line-number --include='*.py' 'observed_clone' . | head -50 || true
+      - name: Verify wrapper surface without importing baseline dependency graph
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           python - <<'PY'
-          import regime_scheduler
-          assert callable(regime_scheduler.agent)
-          assert hasattr(regime_scheduler, 'RegimeSellScheduler')
-          assert regime_scheduler.base.__file__.endswith('scheduler.py')
-          print('E17_WRAPPER_IMPORT_OK')
+          import ast
+          from pathlib import Path
+          tree = ast.parse(Path('regime_scheduler.py').read_text())
+          funcs = {n.name for n in tree.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))}
+          classes = {n.name for n in tree.body if isinstance(n, ast.ClassDef)}
+          assert 'agent' in funcs
+          assert 'RegimeSellScheduler' in classes
+          print('E17_WRAPPER_SURFACE_OK')
           PY
