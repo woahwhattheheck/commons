@@ -8,6 +8,13 @@ from pathlib import Path
 import sys
 
 from snapshot_build import materialize
+from snapshot_evidence import (
+    EXPECTED_BENCHMARK_SHA256,
+    EXPECTED_ENGINE_REFERENCE,
+    EXPECTED_ENGINE_SHA256,
+    EXPECTED_EVALUATOR_SHA256,
+    validate_evidence,
+)
 from snapshot_model import (
     FREEZE_PATHS,
     MAIN_BYTES,
@@ -17,6 +24,7 @@ from snapshot_model import (
     SCHEMA,
     SOURCE_ENTRYPOINT,
     SOURCE_MEMBERS,
+    EvidenceLedgerPin,
     Pin,
     SnapshotError,
     read_archive,
