@@ -30,8 +30,9 @@ Manifest SHA-256: `c077e8f0261ca1b3bdf90669245ddb4a565b6235457513b4b3e93e38d445c
 Shared full-bundle artifact: `still-computes-stage1-pack.zip`  
 Bundle SHA-256: `420d32b82febd6d734c36c8d1b3751820f23f6f50e0ed4f1cbe0932570cfa4ad`
 
-The complete bundle is transferred through the canonical Slack thread and the
-sponsor fallback email; the readable campaign pack is published in Commons.
+The complete bundle is attached to the sponsor fallback email. The canonical
+Slack thread carries the bundle SHA, public PR, and sponsor receipt; the
+readable campaign pack is published in Commons.
 
 ## Validation performed before publication
 
