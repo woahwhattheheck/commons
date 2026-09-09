@@ -731,8 +731,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "reference/titan-current/latest/selected_sell_core.py": {
-      "bytes": 14969,
-      "sha256": "e3b46c2a87142029a701766dfb03dc13052784281e6cb937c90eb472c2c788ed",
+      "bytes": 16338,
+      "sha256": "d659ec78d7174f68cf89ca3fc91a0ecb09f5da908b1255786ef7453d98465b30",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "reference/titan-current/redundant_hire.py": {
@@ -866,8 +866,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "selected_sell_core.py": {
-      "bytes": 14969,
-      "sha256": "e3b46c2a87142029a701766dfb03dc13052784281e6cb937c90eb472c2c788ed",
+      "bytes": 16338,
+      "sha256": "d659ec78d7174f68cf89ca3fc91a0ecb09f5da908b1255786ef7453d98465b30",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "sell_priority.py": {

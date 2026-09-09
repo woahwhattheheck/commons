@@ -126,6 +126,36 @@ def shared_slot_ledger(plans, orders_by_step, max_orders):
             return None
     return ledger
 
+_MAX_PRICE_BREAK_SPLITS=8
+
+
+def _bounded_price_break_splits(model, first, remaining, step, limit=_MAX_PRICE_BREAK_SPLITS):
+    """Return bounded tranche boundaries where the exact rounded quote changes."""
+    if remaining<=1 or step<=model.now or limit<1:
+        return ()
+    # Candidate generation uses only the public quiet path: today's own first
+    # tranche plus deterministic town absorption before the later sale. Exact
+    # rival/scenario admission remains in score(), so these are proposals only.
+    _,inv=model.single(model.inventory,first)
+    for t in range(model.now,step):
+        inv-=absorption(model.item,t,model.shops,model.config)
+    points=[]
+    price=model.quote(inv)
+    for sold in range(1,remaining):
+        if price>1:
+            inv+=1
+        next_price=model.quote(inv)
+        if next_price!=price:
+            points.append(sold)
+        price=next_price
+    if len(points)<=limit:
+        return tuple(points)
+    if limit==1:
+        return (points[len(points)//2],)
+    indexes={round(i*(len(points)-1)/(limit-1)) for i in range(limit)}
+    return tuple(points[i] for i in sorted(indexes))
+
+
 def _acceptance_rule(config):
     rule=str((config or {}).get('sellAcceptanceRule','strict')).strip().lower()
     return rule if rule in ('strict','expected_downside','minimax_regret') else 'strict'
@@ -169,9 +199,12 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
         for date in future:
             candidates.add(((now,first),(date,remaining)))
         if len(future)>=2:
-            for share in (1,2,3):
-                a=remaining*share//4
+            splits={remaining*share//4 for share in (1,2,3)}
+            splits.update(_bounded_price_break_splits(model,first,remaining,future[0]))
+            for a in splits:
                 candidates.add(((now,first),(future[0],a),(future[-1],remaining-a)))
+    # Enumerates every legal first quantity plus bounded quarter and exact
+    # rounded-price-break later-tranche candidates.
     rule=_acceptance_rule(config)
     names=[name for name,_,_ in scenarios]
     weights=_scenario_weights(names,config)
