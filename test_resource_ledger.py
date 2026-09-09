@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788926994.785209")
+        self.assertEqual(catalog["slack_ts"], "1788937929.677399")
         self.assertEqual(
             catalog["source_id"],
-            "codex-human-outcomes-input-validator-activation-20260909-01",
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+        )
+        self.assertIn(
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-human-outcomes-input-validator-activation-20260909-01",
@@ -295,17 +299,20 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-human-outcomes-input-validator-activation-20260909-01.json",
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
-        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "human-outcomes-input-validator"
+            current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION"
         )
-        self.assertEqual(current_activation["projection"]["resources"], 85)
-        self.assertEqual(current_activation["projection"]["producing"], 57)
+        self.assertEqual(
+            current_activation["selected_resource"],
+            "titan-official-engine-benchmark-evidence",
+        )
+        self.assertEqual(current_activation["projection"]["resources"], 86)
+        self.assertEqual(current_activation["projection"]["producing"], 58)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -500,6 +507,10 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertIn(
             "inventory/resources/records/codex-google-research-grok-automation-resource-delta-20260902-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
             raw.get("record_sources") or [],
         )
         self.assertFalse(catalog["cache_as_capacity"])
@@ -720,6 +731,29 @@ class TestResourceLedger(unittest.TestCase):
             "bef953d9caea4210d92a23a46fdbd30ab2322c04",
             human_validator["exact_safe_probe"],
         )
+        benchmark = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "titan-official-engine-benchmark-evidence"
+        )
+        self.assertEqual(benchmark["capacity"], "LIVE")
+        self.assertEqual(benchmark["stage"], "PRODUCING")
+        self.assertEqual(benchmark["condition"], "CONSTRAINED")
+        self.assertEqual(
+            benchmark["last_receipt"],
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+        )
+        self.assertIn("EXACT_ENGINE_SOURCE_ARCHIVE_SEED_AND_SEAT_BINDING", benchmark["authority"])
+        self.assertIn("PRIVATE_RAW_BUNDLE_STAYS_PRIVATE", benchmark["authority"])
+        self.assertIn("NO_GAME_RERUN_OR_KAGGLE_PROVIDER_WRITE", benchmark["authority"])
+        self.assertIn(
+            "faeb4338e5ec8bd0d53fe6f3a4e8fda9847183be",
+            benchmark["exact_safe_probe"],
+        )
+        self.assertIn(
+            "f55e5aaf49c57f47314a77087204615cf5aa78ed",
+            benchmark["exact_safe_probe"],
+        )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
@@ -731,6 +765,34 @@ class TestResourceLedger(unittest.TestCase):
             measured["resource_count"],
         )
         self.assertTrue(set(measured["freshness_counts"]).issubset(RESOURCE_FRESHNESS_STATES))
+
+    def test_titan_official_benchmark_activation_binds_exact_completed_panel(self):
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        truth = activation["production_truth"]
+        self.assertEqual(
+            truth["operation_id"],
+            "titan-official-fullgame-6705-v1-20260909-01",
+        )
+        self.assertEqual(truth["source_pr"], 11005)
+        self.assertEqual(truth["exact_games"], 128)
+        self.assertEqual(truth["completed"], 128)
+        self.assertEqual(truth["errors"], 0)
+        self.assertEqual(truth["timeouts"], 0)
+        self.assertEqual(truth["current_v2"]["games"], 80)
+        self.assertEqual(truth["current_v2"]["losses"], 0)
+        self.assertEqual(truth["current_v2_vs_submitted_v1"]["wins"], 16)
+        self.assertEqual(activation["projection"]["resources"], 86)
+        self.assertEqual(activation["projection"]["producing"], 58)
+        self.assertIn("hosted score", activation["verification"]["zero_fabrication"])
+        self.assertIn("does not copy", truth["private_bundle"])
 
     def test_producing_github_actions_leaves_activation_queue(self):
         catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
