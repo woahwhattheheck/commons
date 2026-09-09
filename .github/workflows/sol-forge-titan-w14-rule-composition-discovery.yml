@@ -1,0 +1,124 @@
+name: sol-forge-titan-w14-rule-composition-discovery
+
+on:
+  push:
+    branches:
+      - "sol-forge/titan-w14-realized-rule-composition-20260909-01"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-forge-titan-w14-rule-composition-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    if: ${{ !contains(github.event.head_commit.message, '[w14-discovery]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Pin checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify canonical archive and extract
+        shell: bash
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/titan"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          lab = Path(os.environ["LAB"])
+          receipt = json.loads(
+              (lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text()
+          )
+          archive = lab / receipt["path"]
+          source = lab / receipt["source_manifest"]
+          assert archive.stat().st_size == receipt["bytes"]
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == receipt["sha256"]
+          assert hashlib.sha256(source.read_bytes()).hexdigest() == receipt["source_manifest_sha256"]
+          Path(os.environ["RUNNER_TEMP"], "archive_sha256").write_text(receipt["sha256"])
+          PY
+          tar -xzf "$LAB/exports/titan-current.tar.gz" -C "$RUNNER_TEMP/titan"
+          test -f "$RUNNER_TEMP/titan/checks/reference/engine/kaggriculture.py"
+          test -f "$RUNNER_TEMP/titan/main.py"
+
+      - name: Compile discovery tool
+        shell: bash
+        env:
+          TOOL: revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/discover.py
+        run: |
+          set -euo pipefail
+          python3 -B -m py_compile "$TOOL"
+          find "$(dirname "$TOOL")" -name __pycache__ -type d -prune -exec rm -rf {} +
+
+      - name: Run engine-exact route and care census
+        shell: bash
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          OUT="$LAB/analysis/w14-realized-rule-composition/discovery.json"
+          python3 -B "$LAB/analysis/w14-realized-rule-composition/discover.py" \
+            --loader revenue/kaggriculture/20260907-offline-agent/evaluate.py \
+            --engine-dir "$RUNNER_TEMP/titan/checks/reference/engine" \
+            --arlene "$LAB/reference/next-panel/vendor/arlene.py" \
+            --source-commit "$GITHUB_SHA" \
+            --archive-sha256 "$(cat "$RUNNER_TEMP/archive_sha256")" \
+            --output "$OUT"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/discovery.json")
+          report = json.loads(path.read_text())
+          assert report["conclusion_gate"]["engine_anchor_marginal_wool_units"] == 5
+          assert report["conclusion_gate"]["engine_anchor_marginal_base_value"] == 1000
+          assert report["conclusion_gate"]["default_activation_authorized"] is False
+          assert report["route_census"]
+          print(json.dumps(report["conclusion_gate"], indent=2, sort_keys=True))
+          PY
+
+      - name: Publish exact discovery receipt
+        shell: bash
+        env:
+          OWNED: revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition
+          WORKFLOW: .github/workflows/sol-forge-titan-w14-rule-composition-discovery.yml
+        run: |
+          set -euo pipefail
+          git fetch origin "$GITHUB_REF_NAME:refs/remotes/origin/$GITHUB_REF_NAME"
+          test "$(git rev-parse "origin/$GITHUB_REF_NAME")" = "$GITHUB_SHA"
+          git rm "$WORKFLOW"
+          git add "$OWNED/discovery.json"
+          git diff --cached --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = {
+              ".github/workflows/sol-forge-titan-w14-rule-composition-discovery.yml",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/discovery.json",
+          }
+          paths = set(
+              subprocess.check_output(
+                  ["git", "diff", "--cached", "--name-only"], text=True
+              ).splitlines()
+          )
+          if paths != allowed:
+              raise SystemExit(f"unexpected staged paths: {sorted(paths)}")
+          PY
+          git config user.name "SOL-FORGE"
+          git config user.email "sol-forge@commons.local"
+          git commit -m "analysis(titan): bind W14 care-stack mechanics [w14-discovery]"
+          git push origin "HEAD:$GITHUB_REF_NAME"
