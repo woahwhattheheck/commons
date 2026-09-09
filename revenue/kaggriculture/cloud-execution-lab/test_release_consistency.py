@@ -51,8 +51,13 @@ class ReleaseTests(unittest.TestCase):
    names=t.getnames()
    self.assertIn('early_capital.py',names)
    self.assertIn('checks/test_early_capital.py',names)
+   self.assertIn('checks/test_final_market_pressure_entrypoint.py',names)
    config=json.load(t.extractfile('TITAN-CONFIG.json'))
    self.assertTrue(config.get('early_capital'))
    self.assertIn(b'def _early_capital_selected',t.extractfile('titan_runtime.py').read())
+   main=t.extractfile('main.py').read()
+   self.assertEqual(main,(b.ROOT/'main.py').read_bytes())
+   self.assertIn(b'class FinalPressureAgent',main)
+   self.assertIn(b'_final_pressure_boundary',main)
 
 if __name__=='__main__':unittest.main()
