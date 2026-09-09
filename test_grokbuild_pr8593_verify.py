@@ -20,7 +20,7 @@ KEEP = {
     "test_pr_collision_notice.py": "a4890883",
     ".github/workflows/pr-collision-notice.yml": "b0a853dd",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7f07e2f2",
+    "test_open_door_guard.py": "7ced9bb7",
 }
 
 
