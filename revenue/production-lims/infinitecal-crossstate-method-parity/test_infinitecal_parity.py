@@ -170,6 +170,15 @@ class InfiniteCALParityTests(unittest.TestCase):
             "AI2 Reviewer",
             "agent007 reviewer",
             "service2 account",
+            "A I Reviewer",
+            "A-I Reviewer",
+            "a.i reviewer",
+            "a_i reviewer",
+            "S Y S T E M Reviewer",
+            "s.y.s.t.e.m reviewer",
+            "B O T Reviewer",
+            "b.o.t reviewer",
+            "S E R V I C E Account",
         ):
             with self.subTest(reviewer=reviewer):
                 with self.assertRaisesRegex(ValueError, "NAMED_HUMAN_REVIEWER_REQUIRED"):

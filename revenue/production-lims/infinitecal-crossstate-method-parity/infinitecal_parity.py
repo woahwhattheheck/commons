@@ -278,7 +278,12 @@ def run_records(records: Iterable[Mapping[str, Any]], ledger: Ledger | None = No
 def _named_human_reviewer(reviewer: str) -> str:
     reviewer = (reviewer or "").strip()
     tokens = re.findall(r"[a-z]+", reviewer.casefold())
-    if not reviewer or any(token in _RESERVED_AUTOMATION_REVIEWER_TOKENS for token in tokens):
+    reserved = any(
+        "".join(tokens[i:j]) in _RESERVED_AUTOMATION_REVIEWER_TOKENS
+        for i in range(len(tokens))
+        for j in range(i + 1, len(tokens) + 1)
+    )
+    if not reviewer or reserved:
         raise ValueError("NAMED_HUMAN_REVIEWER_REQUIRED")
     return reviewer
 
