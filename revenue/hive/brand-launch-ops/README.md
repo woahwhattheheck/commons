@@ -35,6 +35,8 @@ python revenue/hive/brand-launch-ops/launch_ops.py return \
   --order-id DEMO-001 --return-id RET-001 --disposition restock
 ```
 
+The `--out` directory must be new or empty of prior launch_ops artifacts (`state.json` / `manifest.json`). Re-running `build` against an existing managed workspace fails closed so that order/return state is never erased.
+
 Generated output is intentionally local. A later provider adapter may consume `listings.json`, `inventory_handoff.json`, or the state transitions, but this package never treats local acceptance as a live sale or refund.
 
 ## Product input contract
