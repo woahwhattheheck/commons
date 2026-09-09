@@ -1,0 +1,78 @@
+{
+  "canonical_archive_at_claim": {
+    "bytes": 420356,
+    "runtime_files": 105,
+    "sha256": "3b4b083ec2647bb0e715978c2565e916da0ee94c08b234902e3a7e4d3418c320",
+    "source_manifest_sha256": "c0778c8286fbf7450137c9473abde6302eb9e37ca0428aab50c8cd90e2cc30c8"
+  },
+  "claim_base": "8669b28742bfa3f80024e254a1f392daca649cde",
+  "engine_source_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "environment": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "executed_at_utc": "2026-09-09T18:23:29.416199+00:00",
+  "files": {
+    "README.md": {
+      "bytes": 3359,
+      "git_blob": "f30f9b16153979cb7387614915ba04dde805a5de",
+      "sha256": "375366929a348a29ed302af6eabaf36ec4765af9882a0264faab1f43661965c9"
+    },
+    "capacity_ledger.py": {
+      "bytes": 15774,
+      "git_blob": "defc8a1b01e5663267d2f7fbf22b87d96aa6c855",
+      "sha256": "2b698df6e0cf61e604a8446af78f7ed6bebad49eb6a0cd4584014496df84745f"
+    },
+    "run_witnesses.py": {
+      "bytes": 5403,
+      "git_blob": "901cdfbf9bc2b150be578f6520abd19a2fac3800",
+      "sha256": "8adc05e70ec9b5cc5909ada048e1133108579908e02868636fb3b4a11fa480d9"
+    },
+    "test_capacity_ledger.py": {
+      "bytes": 12174,
+      "git_blob": "9342383bd01fdc9fe6e38f678ec045695f119dcf",
+      "sha256": "9d87b26d022b88f8c9f93569e1cce59be7e6f37aef603f22febb6e9aa8a38b22"
+    }
+  },
+  "operation": "titan-frontier-W08-shed-capacity-throughput-20260909-01",
+  "owner": "SOL-KESTREL-89",
+  "publication_base": "b5b19ce971339fe10eef6992059bad5091cd49a0",
+  "schema": "titan.w08.capacity-throughput-results.v1",
+  "scope": {
+    "canonical_runtime_changed": false,
+    "full_games": 0,
+    "kaggle_submission": false,
+    "playing_strength_claim": null,
+    "purpose": "phase-ordered physical inventory proof for producer-owned consumers"
+  },
+  "verification": {
+    "exhaustive_states": {
+      "post_market_room": 5184,
+      "same_unit_stage_retained_place": 880,
+      "total": 6064
+    },
+    "syntax_compile": {
+      "files": 3,
+      "successful": true
+    },
+    "unittest": {
+      "command": "python3 -B -m unittest -v",
+      "elapsed_seconds": 2.513,
+      "successful": true,
+      "tests": 13
+    },
+    "witness_replay": {
+      "cases": 5,
+      "command": "python3 -B run_witnesses.py --output <path>",
+      "successful": true,
+      "two_independent_outputs_byte_identical": true
+    }
+  },
+  "witness_admission": {
+    "buy_refills_sale_room_and_rejects": false,
+    "candidate_cannot_reduce_retained_place": false,
+    "eod_drop_uses_post_market_room": true,
+    "intervening_sale_admits_later_deposit": true,
+    "missing_sale_rejects_real_discard": false
+  }
+}
