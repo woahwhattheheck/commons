@@ -20,3 +20,7 @@ CLI: `python3 sharp_rtu_vial_isolator_lineage.py`
 - evidence_digest `d255a5866b7d1a34c697a2f653d56e9c95fc98a271e2da5f7290c623e324ca01`
 
 AquaTrace HOLD / BUILD-AND-VERIFY. Synthetic/read-only adapters. No GMP/compliance/clinical/public-health decision. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

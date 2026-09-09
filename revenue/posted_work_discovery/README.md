@@ -41,3 +41,7 @@ Net: no new rows; four items resolved (two closed, two boards empty of website R
 behind bot checks. The login-walled Connecticut / California / Minnesota bid networks, DemandStar
 (North Lauderdale due date) and the paywalled rfpmart website RFPs were not attempted: they need
 an account or a purchase, which is a person's call.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

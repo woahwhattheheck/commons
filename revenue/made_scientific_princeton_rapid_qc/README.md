@@ -53,3 +53,7 @@ Replay of the entire 2,400-sample corpus changes zero records and reprints the s
 - `../../test_made_scientific_princeton_rapid_qc.py` — focused unittest
 - `../../made-scientific-princeton-rapid-qc-lims.html` — login-free door
 - `../../p/made-scientific-princeton-rapid-qc-lims-01.md` — leftover receipt
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

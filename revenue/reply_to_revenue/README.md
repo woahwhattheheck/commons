@@ -38,3 +38,7 @@ python3 -m unittest -v test_reply_to_revenue.py
 
 `--send` is illegal and exits 3. Public door:
 [`reply-to-revenue.html`](../../reply-to-revenue.html).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

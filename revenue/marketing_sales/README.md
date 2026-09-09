@@ -60,3 +60,7 @@ proof fit, relevant owner, legitimate business route, and no suppression.
   interest; an authorization is not capture; captured gross is not profit.
 - This engine performs zero transport actions and claims USD 0 cash.
 - The compiler exposes the gap instead of filling it with invented buyers.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

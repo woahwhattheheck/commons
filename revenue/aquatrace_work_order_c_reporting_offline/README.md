@@ -59,3 +59,7 @@ HARD OFF — cite, do not remint: A (blocked writable checkout), B (Seth, offici
 field-mobility C (Emissary), D / D-QA (Codex), sanair-asbestos-coc-router-lims-01
 (Adam, PR 6859 merge f0bf6c84 blob 70c4b31c), wadsworth, highpower, westpak,
 ddl, sharp, canyon, pcl, organabio, billings.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

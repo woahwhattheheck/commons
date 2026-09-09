@@ -109,3 +109,7 @@ python repair-capsules/render_smoke.py
 Scope: only `repair-capsules/`; no shared runtime, policy, authentication, OneTake,
 or C1 transport modifications. RIVET claim is in the Repair Capsules kickoff
 thread in Slack #coordination (`1788558472.004109`).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

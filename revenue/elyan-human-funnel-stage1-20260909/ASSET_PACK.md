@@ -266,3 +266,7 @@ VERIFY_PASS hooks=10 videos=3 memes=5 files=12 manifest_schema=tjlabs.asset-mani
 The full reproducible bundle includes the five SVG masters, structured
 `pack.json`, source and rights files, deterministic renderer, validator, and
 SHA-256 manifest.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

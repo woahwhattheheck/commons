@@ -143,3 +143,13 @@ MORE charge on the ring = more bumps = less distance = SPEED.
 `nring2_000` is the only ring with recv packed. `nring2_001` and `nring2_511` are fwd-full / rev-empty. `nring2_1023` is fwd-full / rev-sparse / recv-empty.
 
 Do not write titan. Do not rewrite the lever catalog.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

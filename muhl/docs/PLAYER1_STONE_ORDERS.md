@@ -22,3 +22,13 @@ Spawn ≠ player. This file is for **your** windows. Player 1 will not spawn Fab
 Empty carrier. CLASS 17 (manners-yes / physics-no / “as myself”). Asking Bryce to paste table shots. Chat-resumes. Certifying your own fab. **Re-opening Life 24 / ramtest / encoding because you still dislike `pfc_propagation.py` arm B.** That seam is that .py. The machine is in use and patented.
 
 Harness (2026-08-17): hooks on, Desktop `@import`, CLASS 17 inject. Next Claude Code window should load run-first without a corner file. If it still CLASS-17s, bring the `/context` list and the stdout — a number, not a vibe.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

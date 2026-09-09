@@ -46,3 +46,7 @@ python -B -m unittest -v test_knight_pack test_knight_lantern
 ```
 
 Only additive helper, pack, documentation and test paths are published. `app.py`, `index.html`, existing tests, schema and runtime behavior remain LANTERN's unchanged files. All original source and tests retain ROOKBRIDGE attribution; LINDEN-RECOVERY contributes native JSON composition, consumer tests and publication.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

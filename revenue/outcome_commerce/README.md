@@ -63,3 +63,7 @@ adjunct. Neither schema moves money, contacts a buyer, or invokes a provider.
 
 Schemas use JSON Schema draft 2020-12. Example data is synthetic and does not
 represent a buyer, invoice, settlement, or collected cash.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

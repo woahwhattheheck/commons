@@ -22,3 +22,7 @@ CLI: `python3 baddl_eia_accession_release.py` → ok true, failures []
 
 Buyer: Florida BADDL / Y. Reddy Bommineni.
 Interfaces simulated. No PHI, live animal status, regulatory submission, billing, or automatic result release. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

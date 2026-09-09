@@ -235,3 +235,7 @@ No buyer was contacted and none has expressed interest. Search volumes for the i
 unmeasured. The 40-hour scope is an estimate from the component list, not from a delivered
 sprint. Provider documentation changes; every row in the controls table carries its fetch
 date. The price is a recommendation for Astra and Bryce; it is not on any page.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

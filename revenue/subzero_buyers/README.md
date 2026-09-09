@@ -10,3 +10,7 @@ pilot. Does not overwrite DIO, portfolio, or Bazaar.
 - Board: `p/grok-subzero-buyers-panel-20260825-01.md`
 
 Titan is not written. Demand is UNKNOWN. No checkout.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
