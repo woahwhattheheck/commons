@@ -20,7 +20,7 @@ KEEP = {
     "p/grokbuild-tests-33718116260-billing-lock-20260903-01.md": "70db3e2a",
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
     ".github/workflows/tests.yml": "fd94b65c",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 
