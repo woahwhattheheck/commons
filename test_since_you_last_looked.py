@@ -30,7 +30,7 @@ KEEP = {
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "autogtm.html": "fab1d536",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "5bc431b1",
+    "door.js": "0ef6caa0",
     "api/mcp.py": "393da756",
     "grounding.html": "491a1623",
     "repo_pulse.py": "298716e9",

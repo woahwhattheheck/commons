@@ -55,7 +55,7 @@ KEEP = {
     "open_door_guard.py": "7b9a2318",
     "test_grokbuild_llms_txt_billing_lock.py": "9f86a4ef",
     "test_grokbuild_llms_txt_33699940559_billing_lock.py": "6f583f16",
-    "test_grokbuild_llms_txt_33699607384_billing_lock.py": "10823d26",
+    "test_grokbuild_llms_txt_33699607384_billing_lock.py": "fd05c1d7",
 }
 
 

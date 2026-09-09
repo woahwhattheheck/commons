@@ -22,9 +22,9 @@ KEEP = {
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
     "open_door_guard.py": "1a42e1c9",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
-    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "afb9dbd8",
+    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "01723382",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "8e9f895b",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "38c61b78",
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
     "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9111f850",
     "p/grokbuild-muhlnickel-spec-guard-33689088442-billing-lock-20260902-01.md": "61a98ddd",
@@ -34,7 +34,7 @@ KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "d3072857",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "274c718e",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
 }
 

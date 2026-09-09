@@ -29,7 +29,7 @@ KEEP = {
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "5bc431b1",
+    "door.js": "0ef6caa0",
 }
 
 

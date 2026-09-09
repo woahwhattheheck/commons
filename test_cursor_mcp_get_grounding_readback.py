@@ -22,7 +22,7 @@ KEEP = {
     "test_grounding_door.py": "ef9a7982",
     "commons_mcp.py": "23996ca3",
     "hub_pages.py": "5ac12648",
-    "door.js": "dc59355d",
+    "door.js": "0ef6caa0",
     "api/mcp.py": "9ae34f64",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
