@@ -81,20 +81,21 @@
     "inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json",
     "inventory/resources/records/codex-human-outcomes-input-validator-activation-20260909-01.json",
     "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
-    "inventory/resources/records/codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json"
+    "inventory/resources/records/codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json",
+    "inventory/resources/records/codex-titan-v25-joint-sell-resource-activation-20260909-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788948890.322939",
+  "slack_ts": "1788959538.867059",
   "snapshot": {
-    "base_main_sha": "97b7a7a69764974191eb01368209f7a5d3e42d3e",
-    "observed_at": "2026-09-09T10:15:16Z",
+    "base_main_sha": "b9a76bf995e479e554b688403258d055ecd3cac3",
+    "observed_at": "2026-09-09T13:12:18Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+  "source_id": "codex-titan-v25-joint-sell-resource-activation-20260909-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -103,8 +104,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — source-pinned TITAN V2.5 cloud simulation order queue producing for canonical experiment routing",
+  "subject": "MASTER RESOURCE LEDGER — bounded joint SELL planner producing inside the canonical TITAN V2.5 package",
   "supersedes_source_ids": [
+    "codex-titan-v25-joint-sell-resource-activation-20260909-01",
     "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
     "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
     "codex-human-outcomes-input-validator-activation-20260909-01",
@@ -1087,6 +1089,28 @@
       "stale_after": "next queue index, order claim/result, source pin, official-engine binding, canonical TITAN merge, provider terms, quota or owner-routing change",
       "quantity": 72,
       "priority": 99
+    },
+    {
+      "name": "titan-v25-joint-sell-planner",
+      "kind": "BOUNDED_MULTI_PRODUCT_MARKET_COMPOSITION",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / canonical TITAN V2.5 writer",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_ARCHIVE_SOURCE_MANIFEST_CASH_CAPACITY_SLOT_AND_OPERATION_BINDING_REQUIRED; NO_GAME_RERUN_TITAN_DEVICE_MUTATION_KAGGLE_SUBMISSION_OR_PROVIDER_WRITE",
+      "consumer": "The existing canonical TITAN V2.5 writer and owner-managed experiment queue consuming bounded two-product SELL composition without duplicating the E05 source lane",
+      "value": "Current canonical TITAN can compose at most two SELL products across the top four candidates while enforcing prepaid fixed capital, shared no-sale capacity through the next boundary, retained-plan commitments and actual duplicate-stock emitter constraints.",
+      "next_action": "Let the existing canonical writer and already-created experiment roots consume the exact current archive in a new source-pinned paired official-engine panel when assigned; preserve stable operation IDs and do not claim a playing-strength gain until that distinct result lands.",
+      "source": "E05 PR #11053 head d9636fe6af454b667c0b6fb96e6faf1402d74010, merge 596a5cd9987bf8aadee17387f581dcc8813b30d0; operation titan-v25-joint-seller-and-crop-release-20260909; #titan-kaggriculture shipped receipt 1788955588.087119",
+      "evidence_ts": "2026-09-09T13:12:18Z",
+      "auth_surface": "Public current-main source, package metadata, exact archive manifest and public ship receipt; existing private reports remain on their fixed private path",
+      "exact_safe_probe": "Current archive SHA-256 fb292c5c323335acc7a9e31fdaace590b6f3bff9767c5495f1406c5211e32f23, 401937 bytes and 103 runtime files; source manifest SHA-256 203675db8029df369fdf3677bae797a8d018d4a47370e188157ca660b8bf214d; 144/144 focused source methods, 81/81 exact-archive methods and all 103 runtime-member hashes passed. Exact source blobs include selected_sell_core.py 318257934d8c7d72702ecae936535f170a75ba4c and test_joint_market_slots.py e4d21d038e13ae5e6992d71fbcae5a6b21ced5e9.",
+      "rate_plan_boundary": "Focused composition contracts and a packaged current archive do not prove a new game, playing-strength gain, hosted score, leaderboard rank, live provider capacity, quota reset, Kaggle submission, prize, payout, payment, revenue or cash.",
+      "assigned_backlog": "Existing canonical TITAN writer and owner-created experiment roots only; do not remint E05, create a parallel TITAN, rerun accepted checks as new evidence, or request credentials",
+      "last_receipt": "codex-titan-v25-joint-sell-resource-activation-20260909-01",
+      "last_used_at": "2026-09-09T12:06:28Z",
+      "stale_after": "next joint-sell source, archive, source manifest, config, exact tests, paired-game result, provider terms, quota or canonical TITAN decision change",
+      "priority": 98
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",

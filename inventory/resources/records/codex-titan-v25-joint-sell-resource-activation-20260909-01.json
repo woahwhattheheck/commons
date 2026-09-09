@@ -1,0 +1,133 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-v25-joint-sell-resource-activation-20260909-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "titan-v25-joint-sell-planner",
+  "observed_at": "2026-09-09T13:12:18Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_PR_WORKFLOW_SLACK_AND_EXACT_BLOB_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_ARCHIVE_SOURCE_MANIFEST_CASH_CAPACITY_SLOT_AND_OPERATION_BINDING_REQUIRED; NO_GAME_RERUN_TITAN_DEVICE_MUTATION_KAGGLE_SUBMISSION_OR_PROVIDER_WRITE",
+    "holder": "Commons / canonical TITAN V2.5 writer",
+    "activation_base_main_sha": "b9a76bf995e479e554b688403258d055ecd3cac3"
+  },
+  "concrete_consumer": "The existing canonical TITAN V2.5 writer and owner-managed experiment queue consuming bounded two-product SELL composition without duplicating the E05 source lane.",
+  "measurable_outcome": "The landed bounded joint-SELL component is now separately routable in the canonical resource graph with its exact package, source-manifest, shared-capacity, fixed-capital, retained-plan and duplicate-prevention boundaries. No source or provider operation was repeated.",
+  "production_truth": {
+    "activation_operation_id": "codex-titan-v25-joint-sell-resource-20260909-01",
+    "source_operation_id": "titan-v25-joint-seller-and-crop-release-20260909",
+    "source_pr": 11053,
+    "source_head_sha": "d9636fe6af454b667c0b6fb96e6faf1402d74010",
+    "source_merge_sha": "596a5cd9987bf8aadee17387f581dcc8813b30d0",
+    "donor_head_sha": "d7445804acb9e5aea39ac51e9a98ef20a4e38f6d",
+    "archive_sha256": "fb292c5c323335acc7a9e31fdaace590b6f3bff9767c5495f1406c5211e32f23",
+    "archive_bytes": 401937,
+    "archive_runtime_files": 103,
+    "source_manifest_sha256": "203675db8029df369fdf3677bae797a8d018d4a47370e188157ca660b8bf214d",
+    "source_validation": {
+      "methods": 144,
+      "passed": 144
+    },
+    "archive_validation": {
+      "methods": 81,
+      "passed": 81,
+      "runtime_member_hashes_verified": 103
+    },
+    "new_full_games": 0,
+    "playing_strength_for_changed_bytes": "NOT_MEASURED",
+    "exact_blobs_at_claim_main": {
+      "revenue/kaggriculture/cloud-execution-lab/TITAN-RELEASE.md": "44bdc95806d2fd4df84752fdd235d5101bc598c6",
+      "revenue/kaggriculture/cloud-execution-lab/build_integrated.py": "07fe07113e4e8f20774868d7a60ec4242f7d92bd",
+      "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz": "7f346bbae42df8daadeb17fae094203551067bc1",
+      "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py": "05ee4806a6f3fdbf455f6b48c3cff3f7678ce0c4",
+      "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-TESTS.json": "0bf8093e76633005a33fc0aaf1ba3c8e8d99b76c",
+      "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/RELEASE.json": "9b3568cd3823790b839752b1066789eb39bcbdf0",
+      "revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py": "318257934d8c7d72702ecae936535f170a75ba4c",
+      "revenue/kaggriculture/cloud-execution-lab/test_joint_market_slots.py": "e4d21d038e13ae5e6992d71fbcae5a6b21ced5e9"
+    },
+    "completed_workflows": [
+      "titan-selected-projection",
+      "source-parses",
+      "open-door",
+      "path-manifest",
+      "muhlnickel-spec-guard"
+    ],
+    "contract": "At most two products are composed from the top four candidates. Prepaid fixed capital, no-sale shared capacity through the next boundary, actual duplicate stock, retained plans and the emitted queue remain jointly bounded. Unsupported cases keep the existing single-product choice."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "67f847a496abf2bec000ddec77e51c35de0d42a2",
+    "main_sha_at_claim": "b9a76bf995e479e554b688403258d055ecd3cac3",
+    "commits_in_delta": 47,
+    "merge_commits_in_delta": 14,
+    "non_merge_commits_in_delta": 33,
+    "changed_paths_in_delta": 557,
+    "remote_branches_observed": 1723,
+    "remote_branch_count_change": 4,
+    "remote_branch_set_digest_sha256": "19d647b0a7501e07983b9520d060ad0ed7e7a72059ce1420ff49b29fd16a2648",
+    "recent_outcomes": "PR #11053 landed the bounded joint SELL component and refreshed canonical package; later source and board-maintenance merges advanced main without registering this component as its own resource. E05, E06, TITAN, queue and unrelated lanes retain their existing owners.",
+    "prior_terminal_slack_ts": "1788949898.625259",
+    "prior_handoff_commons_slack_ts": "1788952197.352569",
+    "prior_handoff_delegations_slack_ts": "1788952213.188149",
+    "source_shipped_slack_ts": "1788955588.087119",
+    "source_accounting_update_slack_ts": "1788957144.167609",
+    "commons_claim_slack_ts": "1788959538.867059",
+    "delegations_state": "No nonduplicate joint-SELL build gap survived the existing E05/E06 roots and shipped source receipts.",
+    "todo_state": "No new resource result after the prior handoff watermark.",
+    "shipped_builds_state": "No new resource result after the prior handoff watermark.",
+    "products_state": "Account-rotation handoff only; no collision with the selected resource paths.",
+    "leads_state": "No new resource result after the prior handoff watermark.",
+    "sales_state": "No new resource result after the prior handoff watermark.",
+    "automations": "The Resource Master entry was observed disabled and restored to enabled under its standing keep-enabled instruction; no new automation was created.",
+    "provider_observation": "No direct usage meter, live provider session, credential, Kaggle write or hosted result was probed."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The joint-SELL implementation is landed, E05 has an existing owner-created root and ship receipt, E06 is an existing support lane, and current TITAN and experiment queues already have owners. Another order would duplicate or collide.",
+  "verification": {
+    "focused_tests": "Resource-ledger assertions bind the new row, exact package identities, 144/144 source methods, 81/81 archive methods, 103 runtime-member hashes and zero new games.",
+    "privacy": "No credential, private account identifier, private file name, customer data, raw private report or incident narrative is copied into canonical metadata.",
+    "open_door": "The source, package metadata, exact aggregate validation and activation record are public current-main artifacts requiring no authentication.",
+    "zero_fabrication": "Landed source and focused validation remain distinct from a new game, playing-strength gain, provider session, hosted score, quota reset, deployment, submission, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. TITAN source/runtime/config/archive/current pointers, E05/E06 roots, provider state and peer-owned paths remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-09T13:12:18Z",
+    "prior_terminal_main_sha": "67f847a496abf2bec000ddec77e51c35de0d42a2",
+    "main_sha_at_claim": "b9a76bf995e479e554b688403258d055ecd3cac3",
+    "prior_terminal_slack_ts": "1788949898.625259",
+    "commons_claim_slack_ts": "1788959538.867059",
+    "source_shipped_slack_ts": "1788955588.087119",
+    "source_accounting_update_slack_ts": "1788957144.167609",
+    "delegations_latest_known_slack_ts": "1788952213.188149",
+    "remote_branches_observed": 1723,
+    "remote_branch_set_digest_sha256": "19d647b0a7501e07983b9520d060ad0ed7e7a72059ce1420ff49b29fd16a2648",
+    "automations": "Commons Resource Master enabled at 2026-09-09T13:18:34Z",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 88,
+    "producing": 60
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788959538867059",
+    "source_ship": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788955588087119?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2",
+    "source_accounting_update": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788957144167609?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/11053",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.md"
+  },
+  "non_claims": [
+    "No TITAN source, runtime, configuration, archive, current pointer, experiment root, claim or result thread was changed by this activation.",
+    "No Claude session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No game, model, provider, Kaggle, credential, deployment, quota-spend, reset-purchase or owner-device operation occurred.",
+    "No new playing-strength result, hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}
