@@ -346,7 +346,7 @@ def _base_submission(index: int) -> dict[str, Any]:
         "result_unit": method["unit"],
         "result_qualifier": method["qualifier"],
         "instrument_id": method["instrument"],
-        "instrument_uri": f"synthetic://instrument/{method["instrument"].lower()}.json",
+        "instrument_uri": f"synthetic://instrument/{method['instrument'].lower()}.json",
         "qc_status": "PASS",
         "qc_oos": False,
         "synthetic": True,

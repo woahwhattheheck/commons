@@ -1,0 +1,106 @@
+{
+  "canonical_archive_at_claim": {
+    "bytes": 420356,
+    "runtime_files": 105,
+    "sha256": "3b4b083ec2647bb0e715978c2565e916da0ee94c08b234902e3a7e4d3418c320",
+    "source_manifest_sha256": "c0778c8286fbf7450137c9473abde6302eb9e37ca0428aab50c8cd90e2cc30c8"
+  },
+  "claim_base": "8669b28742bfa3f80024e254a1f392daca649cde",
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "engine_source_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "environment": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "executed_at_utc": "2026-09-09T18:45:05.303235+00:00",
+  "files": {
+    ".github/workflows/titan-w08-capacity-throughput.yml": {
+      "bytes": 2391,
+      "git_blob": "0fbdb856be223d7091c2fd40695126390870cb56",
+      "sha256": "d9617f572375a753bab30f2e13557300477fc3981091038e02a33d83b3f0b13d"
+    },
+    "revenue/kaggriculture/cloud-w08-capacity-throughput/README.md": {
+      "bytes": 3864,
+      "git_blob": "15080a7bf4482f5d25ff5132f8fe4983e990a71f",
+      "sha256": "3987e9fa382663bb5f694acc5a63c6fa1335251d3ad6485f83cf9e3277fbe3ea"
+    },
+    "revenue/kaggriculture/cloud-w08-capacity-throughput/capacity_ledger.py": {
+      "bytes": 17300,
+      "git_blob": "cbd2496733c3624dc44c4a4c3d99cda5637a87a3",
+      "sha256": "98d5c014cd4744249b9190d9a9bf5b990a6a59951860dbcb0abd5049035637d1"
+    },
+    "revenue/kaggriculture/cloud-w08-capacity-throughput/run_witnesses.py": {
+      "bytes": 5403,
+      "git_blob": "901cdfbf9bc2b150be578f6520abd19a2fac3800",
+      "sha256": "8adc05e70ec9b5cc5909ada048e1133108579908e02868636fb3b4a11fa480d9"
+    },
+    "revenue/kaggriculture/cloud-w08-capacity-throughput/test_capacity_ledger.py": {
+      "bytes": 13910,
+      "git_blob": "8fc1add7b3be1917ae2fa5c728f252e1d75591a4",
+      "sha256": "7ab7dd95c2c2289a02f2b0a4c7448cab49e7459c901715cfb341730f56fbeb03"
+    },
+    "revenue/kaggriculture/cloud-w08-capacity-throughput/test_engine_parity.py": {
+      "bytes": 12766,
+      "git_blob": "7c33a0cacf54a2f9d7b591bffa4c39c25457300f",
+      "sha256": "ba082b93ecacbad5156b09239adff233d904856cf5f54c771224149b130364cb"
+    }
+  },
+  "operation": "titan-frontier-W08-shed-capacity-throughput-20260909-01",
+  "owner": "SOL-KESTREL-89",
+  "publication_base": "b5b19ce971339fe10eef6992059bad5091cd49a0",
+  "schema": "titan.w08.capacity-throughput-results.v2",
+  "scope": {
+    "canonical_runtime_changed": false,
+    "full_games": 0,
+    "kaggle_submission": false,
+    "playing_strength_claim": null,
+    "purpose": "phase-ordered physical inventory proof for producer-owned consumers"
+  },
+  "verification": {
+    "enumerated_transitions": {
+      "model_post_market_room": 5184,
+      "model_same_unit_stage_retained_place": 880,
+      "official_engine_differential": 2211,
+      "total": 8275
+    },
+    "local_unittest": {
+      "command": "W08_ALLOW_ENGINE_STUB=1 python3 -B -m unittest -v",
+      "elapsed_seconds": 1.469,
+      "passed": 19,
+      "skipped": 1,
+      "skipped_reason": "hosted-only exact full-engine Git-blob assertion",
+      "successful": true,
+      "tests": 20
+    },
+    "official_engine_differential": {
+      "cases": 2211,
+      "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+      "hosted_full_engine_result": "pending_exact_head",
+      "local_primitive_smoke": true,
+      "test_methods": 6
+    },
+    "syntax_compile": {
+      "files": 4,
+      "successful": true
+    },
+    "witness_replay": {
+      "cases": 5,
+      "command": "python3 -B run_witnesses.py --output <path>",
+      "successful": true,
+      "two_independent_outputs_byte_identical": true
+    },
+    "workflow_definition": {
+      "exact_trigger_head_checkout": true,
+      "github_actions_result": "pending_exact_head",
+      "local_yaml_parse": true,
+      "path": ".github/workflows/titan-w08-capacity-throughput.yml"
+    }
+  },
+  "witness_admission": {
+    "buy_refills_sale_room_and_rejects": false,
+    "candidate_cannot_reduce_retained_place": false,
+    "eod_drop_uses_post_market_room": true,
+    "intervening_sale_admits_later_deposit": true,
+    "missing_sale_rejects_real_discard": false
+  }
+}

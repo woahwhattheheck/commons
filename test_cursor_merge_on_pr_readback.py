@@ -18,12 +18,12 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
     "ground/MERGE_ON_PR.json": "4e7967dc",
-    "merge-on-pr.html": "853dc2aa",
-    "test_merge_on_pr.py": "ae27aa52",
+    "merge-on-pr.html": "a31298c2",
+    "test_merge_on_pr.py": "8c8ac2ef",
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_pr7915_closed_unmerged.py": "7f7f9b50",
+    "test_pr7915_closed_unmerged.py": "67240310",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
@@ -40,7 +40,7 @@ KEEP = {
     "door.js": "0ef6caa0",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
 }
 
 

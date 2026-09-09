@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
 }
 
 

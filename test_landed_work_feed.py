@@ -26,7 +26,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
     "hub_pages.py": "d0bd0e8d",
     "repo_pulse.py": "298716e9",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",

@@ -1,6 +1,9 @@
 --- frozen_selected.py
 +++ frozen_selected.py
-@@ after seller_public_observation(obs)
+@@ -714,4 +714,15 @@
+             self.pending[item]=max(0,q-sold)
+             if not self.pending[item]:self.planned.pop(item,None)
+         self.previous=seller_public_observation(obs)
 +        try:
 +            from e11_rival_sell import apply_e11, enabled as _e11
 +            if _e11():
