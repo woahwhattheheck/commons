@@ -48,7 +48,8 @@ jobs:
           python -B -m unittest discover -v
           PYTHONPYCACHEPREFIX=/tmp/solstice-pyc python -B -m py_compile \
             evidence.py variants.py panel_analysis.py game_runner.py \
-            run_final_pressure_panel.py test_evidence_variants.py test_analysis_game.py
+            run_final_pressure_panel.py decision_gate.py \
+            test_evidence_variants.py test_analysis_game.py test_decision_gate.py
           cd - >/dev/null
           git diff --check
           test -z "$(git status --porcelain)"
@@ -90,6 +91,17 @@ jobs:
             --output /tmp/solstice-results/FINAL-PRESSURE-THREE-ARM.json \
             --markdown /tmp/solstice-results/FINAL-PRESSURE-THREE-ARM.md
 
+      - name: Apply fail-closed development decision
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab
+          LANE="$ROOT/analysis/v3-final-pressure-three-arm-20260909-solstice"
+          python -B "$LANE/decision_gate.py" \
+            --report /tmp/solstice-results/FINAL-PRESSURE-THREE-ARM.json \
+            --markdown /tmp/solstice-results/FINAL-PRESSURE-THREE-ARM.md \
+            --decision /tmp/solstice-results/FINAL-PRESSURE-DECISION.json
+
       - name: Validate complete receipt
         if: always()
         shell: bash
@@ -109,11 +121,28 @@ jobs:
               raise SystemExit(f"panel incomplete: {data.get('status')!r}")
           if data.get("scheduled_games") != 48 or len(data.get("games", [])) != 48:
               raise SystemExit("exact 48-game panel required")
-          if set((data.get("summary") or {}).get("by_variant", {})) != {
+          summary = data.get("summary") or {}
+          if set(summary.get("by_variant", {})) != {
               "pressure_off", "legacy_in_pipeline", "final_boundary"
           }:
               raise SystemExit("three exact arms required")
-          print("complete", data["summary"]["development_signal"])
+          decision = data.get("decision_gate")
+          if not isinstance(decision, dict):
+              raise SystemExit("fail-closed decision receipt required")
+          if summary.get("development_signal") != decision.get("development_signal"):
+              raise SystemExit("summary/decision signal mismatch")
+          if not isinstance(summary.get("raw_margin_signal"), str):
+              raise SystemExit("raw margin signal must be preserved separately")
+          if data.get("automatic_promotion") is not False:
+              raise SystemExit("development panel cannot authorize promotion")
+          if decision.get("automatic_promotion") is not False:
+              raise SystemExit("decision receipt cannot authorize promotion")
+          print(
+              "complete",
+              summary["development_signal"],
+              "raw_margin_signal=",
+              summary["raw_margin_signal"],
+          )
           PY
 
       - name: Upload exact evidence
@@ -124,6 +153,7 @@ jobs:
           path: |
             /tmp/solstice-results/FINAL-PRESSURE-THREE-ARM.json
             /tmp/solstice-results/FINAL-PRESSURE-THREE-ARM.md
+            /tmp/solstice-results/FINAL-PRESSURE-DECISION.json
             /tmp/solstice-dispatch/revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
             /tmp/solstice-dispatch/revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
             /tmp/solstice-dispatch/revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json
