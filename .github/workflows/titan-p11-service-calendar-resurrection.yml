@@ -4,6 +4,7 @@ name: titan-p11-service-calendar-resurrection
   pull_request:
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/**'
+      - 'p/sol-p11-manifest-custody-repair-20260909-01.md'
       - '.github/workflows/titan-p11-service-calendar-resurrection.yml'
   workflow_dispatch:
 
@@ -25,10 +26,102 @@ jobs:
       - name: Verify exact requested head
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Verify manifest binds exact head tree
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          REPO = Path.cwd().resolve()
+          PACKET_REL = Path("revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909")
+          MANIFEST = REPO / PACKET_REL / "MANIFEST.json"
+
+          def object_pairs(pairs):
+              result = {}
+              for key, value in pairs:
+                  if key in result:
+                      raise ValueError(f"duplicate JSON key: {key}")
+                  result[key] = value
+              return result
+
+          def reject_constant(value):
+              raise ValueError(f"non-finite JSON constant: {value}")
+
+          data = json.loads(
+              MANIFEST.read_text(encoding="utf-8"),
+              object_pairs_hook=object_pairs,
+              parse_constant=reject_constant,
+          )
+          if data.get("schema") != "titan-p11-service-calendar-manifest/v2":
+              raise SystemExit("unexpected P11 manifest schema")
+          packet = (REPO / data.get("packet_root", "")).resolve()
+          expected_packet = (REPO / PACKET_REL).resolve()
+          if packet != expected_packet:
+              raise SystemExit("P11 manifest packet_root drift")
+
+          def verify(rows, base, label):
+              if not isinstance(rows, list) or not rows:
+                  raise SystemExit(f"{label} must be a non-empty list")
+              seen = set()
+              verified = {}
+              for row in rows:
+                  if not isinstance(row, dict) or set(row) != {"bytes", "path", "sha256"}:
+                      raise SystemExit(f"malformed {label} entry")
+                  rel = row["path"]
+                  if not isinstance(rel, str) or not rel or rel in seen:
+                      raise SystemExit(f"duplicate/invalid {label} path: {rel!r}")
+                  seen.add(rel)
+                  target = (base / rel).resolve()
+                  try:
+                      target.relative_to(base)
+                  except ValueError as exc:
+                      raise SystemExit(f"{label} path escapes root: {rel}") from exc
+                  if not target.is_file():
+                      raise SystemExit(f"missing {label} file: {rel}")
+                  raw = target.read_bytes()
+                  digest = hashlib.sha256(raw).hexdigest()
+                  if type(row["bytes"]) is not int or row["bytes"] != len(raw):
+                      raise SystemExit(f"byte-size mismatch: {rel}")
+                  if row["sha256"] != digest:
+                      raise SystemExit(f"sha256 mismatch: {rel}")
+                  verified[rel] = digest
+              return verified
+
+          packet_files = verify(data.get("files"), packet, "packet")
+          repo_files = verify(data.get("repository_files"), REPO, "repository")
+
+          required_packet = {
+              "_service_calendar_core.py": "2f86a7dd5d5cc3d36927b2c5c448ebc17384fc289a9ac635c004d17ae5d87980",
+              "service_calendar.py": "45928db7552b64b9af4c6b982ad6245e761ded47f09879483ca598d1c8d47f78",
+              "test_service_calendar_strict_fields.py": "1435eafa5e5f447b4eb670d401dc622e1fe87ec049f5fb4f8b46513b4efa7aa7",
+          }
+          for rel, digest in required_packet.items():
+              if packet_files.get(rel) != digest:
+                  raise SystemExit(f"required strict P11 binding mismatch: {rel}")
+
+          required_repo = {
+              "p/sol-chronos-titan-v3-p11-service-calendar-resurrection-20260909-01.md":
+                  "8fadaef3f9f91e31e5fb3d9b9d60f87ce266999a2f84a9f0b296e17e76cc648e",
+              "p/sol-p11-manifest-custody-repair-20260909-01.md":
+                  "005461bf60d60e5bb06ae941991227e219a4a1f0eb7f991f8e57030dd75a1c86",
+              ".github/workflows/titan-p11-service-calendar-resurrection.yml": None,
+          }
+          for rel, digest in required_repo.items():
+              observed = repo_files.get(rel)
+              if observed is None:
+                  raise SystemExit(f"required repository binding missing: {rel}")
+              if digest is not None and observed != digest:
+                  raise SystemExit(f"required repository binding mismatch: {rel}")
+
+          print(f"manifest verified: {len(packet_files)} packet files + {len(repo_files)} repository files")
+          PY
       - name: Compile P11 packet
         working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
         run: >-
