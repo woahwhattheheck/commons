@@ -18,7 +18,7 @@ KEEP = {
     "host/commons_slack_full_body.py": "3bf97dc1",
     "test_commons_slack_full_body.py": "d2f4b15b",
     "ground/COMMONS_SLACK_FULL_BODY.json": "2db9f0e5",
-    "ground/COMMONS_SLACK_FULL_BODY.md": "d40e5ccd",
+    "ground/COMMONS_SLACK_FULL_BODY.md": "9203dd5b",
     "commons-slack.html": "ddf89b44",
     "host/slack_mirror.py": "c94f6fa5",
     "slack_ingest.py": "a35169fe",

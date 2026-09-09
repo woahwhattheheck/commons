@@ -17,7 +17,7 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 KEEP = {
     "p/cursor-harborline-merchant-portal-20260903-01.md": "18f06c0d",
     "host/harborline_merchant_portal.py": "c54f35e2",
-    "test_harborline_merchant_portal.py": "717c3b93",
+    "test_harborline_merchant_portal.py": "4cc1bbaa",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "838dfe4f",
     "host/harborline_commerce_compose.py": "75128e5d",
@@ -30,7 +30,7 @@ KEEP = {
     "p/cursor-desk-website-harborline-20260902-01.md": "655b9eb1",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "ground/CLAUDE_PEER_CHECK.md": "2c19c4fb",
+    "ground/CLAUDE_PEER_CHECK.md": "043a8d4a",
 }
 
 

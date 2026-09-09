@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "806ab0e9",
+    "test_since_you_last_looked.py": "82bbaaad",
     "since-you-last-looked.html": "7c9af81f",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",

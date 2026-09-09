@@ -20,7 +20,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "landed-work.html": "a79ca428",
+    "landed-work.html": "c7510c57",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "host/stealable_lanes.py": "c90284fb",

@@ -26,7 +26,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
-    "ground/CLAUDE_PEER_CHECK.md": "2c19c4fb",
+    "ground/CLAUDE_PEER_CHECK.md": "043a8d4a",
 }
 
 

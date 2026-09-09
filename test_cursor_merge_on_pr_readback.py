@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
     "ground/MERGE_ON_PR.json": "4e7967dc",
-    "merge-on-pr.html": "853dc2aa",
+    "merge-on-pr.html": "a31298c2",
     "test_merge_on_pr.py": "8c8ac2ef",
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",

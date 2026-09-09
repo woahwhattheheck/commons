@@ -16,7 +16,7 @@ HELPER = ROOT / "host/owner_now_revenue.py"
 
 KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "owner-now-revenue.html": "9b1c59fb",
+    "owner-now-revenue.html": "7c98199a",
     "land/owner-now-revenue-20260902.md": "db81f250",
     "pay.js": "65a960f2",
     "ground/OWNER_NOW.md": "0a574d94",

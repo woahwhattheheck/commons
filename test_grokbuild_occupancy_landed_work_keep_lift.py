@@ -52,7 +52,7 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertTrue(git_blob("test_stealable_lanes.py").startswith("6c0e2d1a"))
         self.assertTrue(git_blob("test_landed_work_feed.py").startswith("638c5d14"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("6f6b2d76")
+            git_blob("test_landed_work_feed_readback.py").startswith("c73dd928")
         )
 
     def test_living_owner_now_stays_clear_of_invented_signature(self) -> None:

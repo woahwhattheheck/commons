@@ -23,7 +23,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "owner-now-revenue.html": "9b1c59fb",
+    "owner-now-revenue.html": "7c98199a",
     "autogtm.html": "dbbc96a5",
     "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
