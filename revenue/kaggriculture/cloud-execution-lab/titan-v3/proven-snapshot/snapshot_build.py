@@ -14,6 +14,7 @@ import tempfile
 import uuid
 from typing import Mapping
 
+from snapshot_evidence import validate_evidence
 from snapshot_model import (
     MAIN_BYTES,
     OUTPUT_ENTRYPOINT,
@@ -109,9 +110,10 @@ def materialize(
     run_smoke: bool = True,
     pin: Pin = PRODUCTION_PIN,
 ) -> dict:
-    """Validate the immutable source and optionally publish a runnable archive."""
+    """Validate the immutable source and evidence, then optionally publish a runnable archive."""
     lab_root = lab_root.resolve()
     members, freeze, selected, source_imports = validate_source(lab_root, pin)
+    evidence = validate_evidence(lab_root, pin)
     output_members = dict(members)
     if "main.py" in output_members:
         raise SnapshotError("source archive unexpectedly owns generated main.py")
@@ -146,11 +148,7 @@ def materialize(
             for name, payload in sorted(output_members.items())
         },
         "imports": {"source": source_imports, "candidate": candidate_imports},
-        "evidence_scope": {
-            "development": {"wins": 12, "ties": 0, "losses": 0, "games": 12},
-            "held_out": {"wins": 8, "ties": 0, "losses": 0, "games": 8},
-            "kind": "recorded local official-interpreter games; not hosted rating",
-        },
+        "evidence_scope": evidence,
         "policy_delta": "generated main.py alias only; frozen policy bytes unchanged",
     }
     receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
