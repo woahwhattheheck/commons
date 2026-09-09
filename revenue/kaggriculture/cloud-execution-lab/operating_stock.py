@@ -64,6 +64,10 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
             or int(cfg.get('episodeSteps', 720)) != 720 or day >= 29):
         report['reason'] = 'outside_supported_production_window'
         return selected, report
+    day_end = min((day + 1) * 24, len(route))
+    if any(now < int(t) < day_end for t in checkpoints):
+        report['reason'] = 'unresolved_same_day_branch'
+        return selected, report
     end = min((day + 1) * 24 - 1, 719,
               *[int(t) for t in checkpoints if now < int(t)])
     positions = [tuple(post_farm['farmer']), *map(tuple, post_farm['hands'])]
@@ -161,6 +165,9 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     if not withheld:
         report['reason'] = 'sale_already_leaves_required_stock'
         return selected, report
+    if withheld > 2:
+        report['reason'] = 'reservation_exceeds_bounded_units'
+        return selected, report
     # Includes all current stock and requested arrivals; no future purchase is
     # credited as fertilizer and no future sale is credited as capacity relief.
     capacity = int(cfg.get('shedCapacity', 100))
@@ -175,7 +182,9 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
         for tile in row:
             if isinstance(tile, dict) and tile.get('kind') == 'PLANT':
                 own_yield[tile['crop']] += max(0, int(tile.get('yield_units', 0)))
-    extra = Counter(o['crop'] for o in obligations[-required:])
+    # Existing carried and unsold stock already funds the earlier services.
+    # Only the final otherwise-unfunded uses are incremental to this sale edit.
+    extra = Counter(o['crop'] for o in obligations[-withheld:])
     product_value = sum(mechanics.market_price(crop, market['inventory'][crop] + own_yield[crop] + 100 + j, params)
                         for crop, amount in extra.items() for j in range(amount))
     # The 100-unit rival buffer is a stress scenario, not a bound on multi-day
@@ -186,7 +195,10 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     # Use actual saved cash. Reserve current requested spending and a liquidity
     # cushion; neither withheld nor future sale proceeds fund this proposal.
     spending = 0
-    for row in [selected, *route[now + 1:end]]:
+    # Funding extends through today's reset, even when the useful input segment
+    # rejoins before a later capital order. Never hide that order by truncating
+    # the service window at its hiring boundary.
+    for row in [selected, *route[now + 1:day_end]]:
         for order in row.get('market', []):
             if not order:
                 continue
@@ -200,7 +212,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
             elif op == 'BUY_PRODUCT':
                 report['reason'] = 'intervening_variable_price_purchase'
                 return selected, report
-    if float(post_farm['money']) < spending + 20 * input_value:
+    if float(post_farm['money']) < spending + 100 * input_value:
         report['reason'] = 'actual_cash_cushion_insufficient'
         return selected, report
     out = deepcopy(selected)
@@ -215,5 +227,6 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
                   withheld_units=withheld, obligations=obligations,
                   input_value_scenario=input_value, product_value_scenario=product_value,
                   rival_supply_scenario_units=100, cash_spending_reserve=spending,
+                  funding_through_step=day_end - 1, cash_input_cushion_multiple=100,
                   future_cash_gain_measured=False)
     return out, report

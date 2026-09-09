@@ -1,46 +1,40 @@
 {
   "schema_version": 1,
-  "operation": "titan-v2-operating-stock-20260909",
-  "status": "integrated_candidate_source_checked_default_disabled",
+  "operation": "titan-v2-operating-stock-active-20260909",
+  "status": "bounded_behavior_enabled_source_contract_checked",
   "archive": {
     "path": "exports/titan-current.tar.gz",
     "entrypoint": "main.py::agent",
     "config": "TITAN-CONFIG.json",
-    "sha256": "abfc78cdfeb7e9ca15343931ca14110a76b9534d4bab2c20adc68a976abaa88e",
-    "bytes": 356580,
+    "sha256": "73ae010923cb66198b837baade34f273dff25e2fd4c8318d8bb61adcef31be0e",
+    "bytes": 357431,
     "runtime_files": 98,
     "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json",
-    "source_manifest_sha256": "c8d0ee7a6710b089e1fd3e41669614ebbba6caa718e249d2ad9c2bd56da5b42a"
+    "source_manifest_sha256": "a0b9eda9fd8ccf532c3a1a4e5f2872e68086161ecba0170ec23f29dba9db73b0"
   },
-  "predecessor_archive_sha256": "db34f9d2ce0ecf4c88e0a0ed5a9966a7ef18484a5efb53f20ba24162c543599d",
+  "predecessor_archive_sha256": "abfc78cdfeb7e9ca15343931ca14110a76b9534d4bab2c20adc68a976abaa88e",
   "submission_status": "not_submitted",
-  "default_operating_stock": false,
+  "default_operating_stock": true,
   "source_sha256": {
-    "operating_stock.py": "cc403727b3ea31f9590f37e8eb784f1798b2c50a42bd3ba83d321eba6e6c4b78",
-    "test_operating_stock.py": "98eaea62f59c72c519778632508d65bf477d5cdd9f4d456f9a194819fdcb66b6",
+    "operating_stock.py": "ca1f57be0a05b4be1fcae5c8490ae716f5f949cef3e115cf1438d7edae2b1f4c",
+    "test_operating_stock.py": "aa876714b8eb519963567a229ef0f64a47eab87df0107bf809401c9d2a666178",
     "titan_runtime.py": "70245afcc4a544e671f5b9d591238bcf3fb935a076352de273ea5d87fc090958",
     "frozen_selected.py": "afeaab24b23e4c50a40c345d51bc97186f859da91914e2f50b77cbb9e137480a",
-    "TITAN-CONFIG.json": "1e96fc1d9e80e69d273e0466fa71e794bd269b3e67b7ab81c28b27845bfe052e",
+    "TITAN-CONFIG.json": "0a56ba29d6806c798a318c4c1c7214df0836b5ee47c9358bdf1d82ec05c464ca",
     "build_integrated.py": "63761f8e456b284cbbf75fa49d7e14034b084fce0a490e33dace793e03f5067b"
   },
   "test_evidence": [
     {
       "command": "PYTHONPATH=../cloud-runtime-pulse:../cloud-quickstep python -m unittest -q test_operating_stock",
-      "tests": 20,
-      "passed": 20,
-      "scope": "stateless source proposals and final runtime callback; no game-state advancement"
+      "tests": 24,
+      "passed": 24,
+      "scope": "stateless proposals, funding, capacity, runtime boundary and canonical configuration; no state advancement"
     },
     {
       "command": "python -m unittest -q checks.test_operating_stock",
-      "tests": 20,
-      "passed": 20,
-      "scope": "the same 20 contracts from the exact extracted standalone archive; not 20 additional distinct cases"
-    },
-    {
-      "command": "python -m unittest -q test_release_consistency",
-      "tests": 1,
-      "passed": 1,
-      "scope": "new canonical source mapping, deterministic publication and retained historical archive"
+      "tests": 24,
+      "passed": 24,
+      "scope": "the same 24 contracts from this exact extracted archive; not 24 additional cases"
     }
   ],
   "game_evidence": {
@@ -50,21 +44,21 @@
     "new_agent_act_calls": 0,
     "playing_strength_measured": false
   },
-  "mechanism": [
-    "Use the completed selected-unit snapshot and the same current controller route.",
-    "Apply after final SELL ordering; preserve all non-fertilizer slots and every unit action.",
-    "Derive same-day useful consumption from existing actors/assets; distinguish carried fertilizer from shed stock.",
-    "Do not cross pickup allocation, hiring, branch or reset ambiguities; preserve capacity without credit for later sales.",
-    "Release reservations after the pickup and decline obsolete or low-value target service.",
-    "Use actual saved cash; never credit unfilled input purchases."
+  "activation_changes": [
+    "Canonical operating_stock=true; frozen consumer captures the completed selected-unit state.",
+    "At most two withheld fertilizer units for an existing actor and existing ongoing crops.",
+    "Value only final otherwise-unfunded consumption; incumbent carried/unsold stock is excluded from incremental benefit.",
+    "Reject unresolved same-day branch and include funding commitments through the full current day, even after a shorter service rejoin.",
+    "Require actual cash covering all same-day fixed spending plus 100 times the input-price scenario; no future sale credit.",
+    "Preserve all unit actions and market slot ordering; decline shared-allocation/capacity ambiguities."
   ],
   "limits": [
-    "The 100-unit rival-supply stress value and 20-times-input liquidity cushion are explicit policy heuristics.",
-    "Future watering, output, operating purchases and final cash are not certified by these source checks.",
-    "Recorded-input review is separate retrospective evidence; no later candidate action was executed.",
-    "The option remains false until its coupled economic behavior is validated; no score promotion is claimed."
+    "100-unit rival-supply value and 100-times-input cash cushion are explicit policy heuristics.",
+    "Future watering, harvest/deposit execution, multiday operating cash, opponent behavior and final score remain unmeasured.",
+    "Historical input proposals are not newly executed candidate games."
   ],
   "retained_predecessor_evidence": {
+    "disabled_stock": "OPERATING-STOCK-DISABLED-TESTS.json",
     "weed_continuation": "WEED-CONTINUATION-TESTS.json",
     "exact_db34_archive_checks": "WEED-ARCHIVE-TESTS.json"
   }

@@ -1,13 +1,13 @@
 {
-  "archive_sha256": "abfc78cdfeb7e9ca15343931ca14110a76b9534d4bab2c20adc68a976abaa88e",
-  "evidence": "OPERATING-STOCK-TESTS.json",
-  "source_contract_cases": 20,
-  "packaged_contract_cases": 20,
-  "same_cases_in_both_locations": true,
-  "release_consistency_cases": 1,
-  "new_games": 0,
-  "new_interpreter_transitions": 0,
-  "new_agent_act_calls": 0,
-  "operating_stock_default": false,
-  "historical_db34_archive_checks": "WEED-ARCHIVE-TESTS.json"
+  "schema_version": 1,
+  "archive_sha256": "73ae010923cb66198b837baade34f273dff25e2fd4c8318d8bb61adcef31be0e",
+  "source_manifest_sha256": "a0b9eda9fd8ccf532c3a1a4e5f2872e68086161ecba0170ec23f29dba9db73b0",
+  "status": "enabled_bounded_operating_stock_source_contracts_passed",
+  "details": "OPERATING-STOCK-TESTS.json",
+  "tests": 24,
+  "new_full_games": 0,
+  "new_simulation_panels": 0,
+  "playing_strength_measured": false,
+  "previous_weed_evidence": "WEED-CONTINUATION-TESTS.json",
+  "previous_exact_db34_archive_evidence": "WEED-ARCHIVE-TESTS.json"
 }
