@@ -1,11 +1,9 @@
 name: e14-scheduler-vm
 
 on:
-  pull_request:
-    paths:
-      - '.github/workflows/e14-scheduler-vm.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/scheduler.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/test_scheduler_overflow_timing.py'
+  push:
+    branches:
+      - 'astra/e14-shed-overflow-20260909-1144'
 
 permissions:
   contents: write
@@ -16,8 +14,6 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: E14 scheduler regressions and existing scheduler suite
         working-directory: revenue/kaggriculture/cloud-execution-lab
         env:
@@ -29,12 +25,7 @@ jobs:
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
-          old_sha="$(python3 - <<'PY'
-import json
-from pathlib import Path
-print(json.loads(Path('runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())['sha256'])
-PY
-)"
+          old_sha="$(python3 -c 'import json; print(json.load(open("runtime/integrated-selected/CURRENT-ARCHIVE.json"))["sha256"])')"
           mkdir -p exports/historical
           historical="exports/historical/titan-${old_sha}.tar.gz"
           if [ -e "$historical" ]; then
@@ -46,12 +37,11 @@ PY
           python3 -B build_integrated.py --check
           sha256sum exports/titan-current.tar.gz
           cat runtime/integrated-selected/CURRENT-ARCHIVE.json
-      - name: Stage exact generated Git blobs and remove carrier
+      - name: Stage exact generated Git blobs
         run: |
           set -euo pipefail
           git config user.name "e14-vm-carrier"
           git config user.email "actions@users.noreply.github.com"
-          git rm .github/workflows/e14-scheduler-vm.yml
           git add \
             revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
             revenue/kaggriculture/cloud-execution-lab/exports/historical/ \
@@ -60,4 +50,4 @@ PY
           git diff --cached --check
           git diff --cached --stat
           git commit -m "Stage E14 canonical runtime artifacts"
-          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
