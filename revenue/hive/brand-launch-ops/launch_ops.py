@@ -10,7 +10,10 @@ REQ=("sku","name","description","price_cents","currency","stock","reorder_at","s
 CHAN=re.compile(r"^[a-z0-9][a-z0-9_-]{0,39}$")
 
 def canon(v:Any)->bytes:
-    return (json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False)+"\n").encode()
+    try:
+        return (json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False)+"\n").encode()
+    except (TypeError, ValueError, UnicodeError) as e:
+        raise LaunchError("value must contain strict finite JSON data") from e
 def sha(p:Path)->str: return hashlib.sha256(p.read_bytes()).hexdigest()
 def text(v:Any,n:str)->str:
     if not isinstance(v,str) or not v.strip(): raise LaunchError(f"{n} must be a non-empty string")
@@ -37,6 +40,9 @@ def validate(p:Any)->dict[str,Any]:
     if any(not isinstance(v,str) or not CHAN.fullmatch(v) for v in p["channels"]): raise LaunchError("invalid channel slug")
     c=p.get("creative_constraints",[])
     if not isinstance(c,list) or any(not isinstance(v,str) or not v.strip() for v in c): raise LaunchError("creative_constraints must be strings")
+    # Canonicalize once during validation so unsupported scalar values such as
+    # NaN/Infinity fail before build() creates or changes any managed file.
+    canon(p)
     return p
 
 def inventory(s:dict[str,Any])->dict[str,Any]:
@@ -44,7 +50,12 @@ def inventory(s:dict[str,Any])->dict[str,Any]:
     return {"sku":s["sku"],"available":s["available"],"reorder_at":s["reorder_at"],"reorder_needed":need,"action":"DRAFT_REORDER_ONLY" if need else "NONE"}
 
 def build(p:Any,out:str|Path)->dict[str,Any]:
-    p=validate(p); out=Path(out); out.mkdir(parents=True,exist_ok=True)
+    p=validate(p); out=Path(out)
+    if out.exists():
+        if not out.is_dir() or any(out.iterdir()):
+            raise LaunchError("output directory must be new or empty")
+    else:
+        out.mkdir(parents=True,exist_ok=False)
     listing={k:{"channel":k,**{x:copy.deepcopy(p[x]) for x in ("sku","name","description","price_cents","currency","shipping_terms","return_days","attributes","benefits")},"source":"operator_supplied"} for k in p["channels"]}
     constraints="\n".join(f"- {v}" for v in p.get("creative_constraints",[])) or "- None supplied."
     brief=f"# Creative brief — {p['name']}\n\nSKU: `{p['sku']}`\n\n## Source description\n{p['description']}\n\n## Supplied benefits\n"+"\n".join(f"- {v}" for v in p["benefits"])+f"\n\n## Constraints\n{constraints}\n\nUse only supplied facts. Do not invent performance, health, safety, scarcity, endorsement, or fulfillment claims.\n"

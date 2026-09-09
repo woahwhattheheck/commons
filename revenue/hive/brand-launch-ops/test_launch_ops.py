@@ -39,6 +39,19 @@ class T(unittest.TestCase):
  def test_unknown_order_return_rejected(self):
   self.b()
   with self.assertRaises(launch_ops.LaunchError): launch_ops.ret(self.out/"state.json","NO","R1","restock")
+ def test_build_refuses_nonempty_workspace_without_state_loss(self):
+  self.b(); launch_ops.order(self.out/"state.json","O1",2); before={p.name:p.read_bytes() for p in self.out.iterdir() if p.is_file()}
+  with self.assertRaisesRegex(launch_ops.LaunchError,"new or empty"): self.b()
+  after={p.name:p.read_bytes() for p in self.out.iterdir() if p.is_file()}
+  self.assertEqual(before,after); self.assertEqual(2,self.state()["available"]); self.assertEqual(["O1"],list(self.state()["orders"]))
+ def test_empty_existing_directory_is_allowed(self):
+  self.out.mkdir()
+  self.b()
+  self.assertEqual(4,self.state()["available"])
+ def test_nonfinite_source_fact_fails_before_files(self):
+  p=dict(P); p["attributes"]={**P["attributes"],"weight":float("nan")}
+  with self.assertRaisesRegex(launch_ops.LaunchError,"strict finite JSON"): self.b(p)
+  self.assertFalse(self.out.exists())
  def test_cli_round_trip(self):
   f=self.root/"p.json"; f.write_text(json.dumps(P)); s=Path(launch_ops.__file__).resolve()
   for cmd in ([sys.executable,str(s),"build",str(f),"--out",str(self.out)],[sys.executable,str(s),"order","--state",str(self.out/"state.json"),"--order-id","C1","--quantity","1"],[sys.executable,str(s),"return","--state",str(self.out/"state.json"),"--order-id","C1","--return-id","CR1","--disposition","restock"]): self.assertEqual(0,subprocess.run(cmd,capture_output=True).returncode)
