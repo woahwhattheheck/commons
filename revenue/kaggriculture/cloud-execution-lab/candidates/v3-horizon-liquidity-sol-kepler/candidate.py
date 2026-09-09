@@ -38,9 +38,7 @@ def _candidate_new_instance(root: Path, feature_data: dict[str, Any]):
     import selected_sell_core
 
     _LAST_INSTALL_RECEIPT = install(selected_sell_core)
-    instance = _ORIGINAL_NEW_INSTANCE(root, feature_data)
-    instance.horizon_liquidity_receipt = dict(_LAST_INSTALL_RECEIPT)
-    return instance
+    return _ORIGINAL_NEW_INSTANCE(root, feature_data)
 
 
 # Canonical ``agent`` resolves this global at runtime. Replacing only this hook
