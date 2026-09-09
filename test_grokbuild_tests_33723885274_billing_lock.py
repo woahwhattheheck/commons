@@ -21,12 +21,12 @@ KEEP = {
     "p/grokbuild-tests-33718131413-billing-lock-20260903-01.md": "9fa188cb",
     "p/grokbuild-tests-33718116260-billing-lock-20260903-01.md": "70db3e2a",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "97f683f1",
+    "catalog.html": "6227b6f5",
     "hub_pages.py": "d0bd0e8d",
     ".github/workflows/tests.yml": "fd94b65c",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",
 }
 

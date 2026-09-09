@@ -51,35 +51,41 @@ quote future cash, or claim a game result.
 ## Verification actually run
 
 ```text
-python3 -B -m unittest -v
-Ran 13 tests in 1.327s — OK
+W08_ALLOW_ENGINE_STUB=1 python3 -B -m unittest -v
+Ran 20 tests in 1.469s — OK (19 pass, 1 hosted-only engine-blob pin skipped)
 
 syntax compile of capacity_ledger.py, test_capacity_ledger.py,
-run_witnesses.py — OK
+test_engine_parity.py, run_witnesses.py — OK
 
 two independent run_witnesses.py outputs — byte-identical
 workflow YAML local parse — OK
 ```
 
-The tests include 5,184 exhaustively enumerated post-market-room states and 880
-same-unit-stage retained-PLACE ordering states: 6,064 enumerated states total.
+The model tests include 5,184 exhaustively enumerated post-market-room states
+and 880 same-unit-stage retained-PLACE ordering states. The differential suite
+adds 2,211 DROP/PLACE/PICKUP/market/EOD/intervening-sale comparisons against the
+pinned official-engine primitives: 8,275 deterministic transitions total. The
+local workspace used a byte-visible primitive stub and intentionally skipped only
+the full-engine Git-blob assertion; hosted CI imports the checked-in interpreter
+and must pass exact blob `3c202c7ee921da239356789e266b694635103fc4`.
 The machine receipt is `RESULTS.json`; `run_witnesses.py` emits the five
 positive/counterexample traces deterministically.
 A dedicated NEW `.github/workflows/titan-w08-capacity-throughput.yml`
-replays the same proof on pull requests and retains logs, witness JSON, and
-hashes. Its remote result is intentionally reported in the PR/Slack receipt,
-not pre-claimed here.
+checks out and asserts the exact triggering head, replays the same proof on pull
+requests, and retains logs, witness JSON, and hashes. Its remote result is
+intentionally reported in the PR/Slack receipt, not pre-claimed here.
 
 ## Authored file identities before Git publication
 
 | File | SHA-256 |
 |---|---|
-| `capacity_ledger.py` | `2b698df6e0cf61e604a8446af78f7ed6bebad49eb6a0cd4584014496df84745f` |
-| `test_capacity_ledger.py` | `9d87b26d022b88f8c9f93569e1cce59be7e6f37aef603f22febb6e9aa8a38b22` |
+| `capacity_ledger.py` | `98d5c014cd4744249b9190d9a9bf5b990a6a59951860dbcb0abd5049035637d1` |
+| `test_capacity_ledger.py` | `7ab7dd95c2c2289a02f2b0a4c7448cab49e7459c901715cfb341730f56fbeb03` |
+| `test_engine_parity.py` | `ba082b93ecacbad5156b09239adff233d904856cf5f54c771224149b130364cb` |
 | `run_witnesses.py` | `8adc05e70ec9b5cc5909ada048e1133108579908e02868636fb3b4a11fa480d9` |
-| `README.md` | `85db4808a6ff6c391782151e59acf8adaeda7622aacc768a2b5070f9ce3e2f87` |
-| `.github/workflows/titan-w08-capacity-throughput.yml` | `a962b1aa366061437cb62c02b7d357b3b98f034a2f5f6268b122ebaea1f81136` |
-| `RESULTS.json` | `cbff12da530d3762a62e273c1a0df59e486bb1862e94f8a715c035f87da8f477` |
+| `README.md` | `3987e9fa382663bb5f694acc5a63c6fa1335251d3ad6485f83cf9e3277fbe3ea` |
+| `.github/workflows/titan-w08-capacity-throughput.yml` | `d9617f572375a753bab30f2e13557300477fc3981091038e02a33d83b3f0b13d` |
+| `RESULTS.json` | `0f6d304f2f4b4335b6ba334113e29b50373bf53a36305191ee59a62dae8673c0` |
 
 ## Boundary and next integration
 

@@ -123,3 +123,15 @@ Grok Bot persistent VM, phone GPU, laptop CPU: same OUT. [lda/MUHLNICKEL_RUNNER_
 - Fire 337 / pulse titan 78 / mmap dc.
 
 Fix is not "run it on this VM." Fix is: computation stays in the `.mno`. Host only reaches.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-25 — do not remint.

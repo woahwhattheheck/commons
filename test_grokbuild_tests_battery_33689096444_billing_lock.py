@@ -33,7 +33,7 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
 }
 

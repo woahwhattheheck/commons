@@ -51,7 +51,7 @@ From this directory:
 
 ```bash
 python3 -B -m unittest -v
-python3 -B -m py_compile capacity_ledger.py test_capacity_ledger.py run_witnesses.py
+python3 -B -m py_compile capacity_ledger.py test_capacity_ledger.py test_engine_parity.py run_witnesses.py
 python3 -B run_witnesses.py --output WITNESSES.json
 ```
 
@@ -59,10 +59,13 @@ The same proof runs on pull requests through
 `.github/workflows/titan-w08-capacity-throughput.yml`, which retains the test
 log, deterministic witness output, and SHA-256 inventory as a workflow artifact.
 
-The suite covers 13 named tests, including 5,184 post-market-room states and 880
-same-unit-stage ordering states. The generated witness JSON records the positive
-intervening-sale case and the no-sale, buy-refill, and retained-PLACE
-counterexamples. These are deterministic source-level fixtures, not full games
+The suite covers 20 named tests. The model-level contracts enumerate 5,184
+post-market-room states and 880 same-unit-stage ordering states. A separate
+differential suite executes 2,211 DROP, PLACE, PICKUP, market BUY/SELL, EOD, and
+intervening-sale cases against the checked-in official interpreter, whose exact
+Git blob is pinned. Together these cover 8,275 deterministic state transitions.
+The generated witness JSON records the positive intervening-sale case and the
+no-sale, buy-refill, and retained-PLACE counterexamples. These are deterministic source-level fixtures, not full games
 or a playing-strength estimate.
 
 ## Canonical integration boundary

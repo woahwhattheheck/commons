@@ -158,6 +158,40 @@ class CapacityLedgerTests(unittest.TestCase):
                                  initial_carried=carried, events=events)
         self.assertEqual((shed, carried, events), before)
 
+    def test_admission_ids_and_event_sequences_fail_closed(self):
+        baseline = [e("base", 0, "unit", "PASS")]
+        additive = [e("new", 1, "unit", "PASS")]
+        with self.assertRaisesRegex(ValueError, "must identify additive events"):
+            LEDGER.admit_additive_events(
+                capacity=1, initial_shed={}, initial_carried={},
+                baseline_events=baseline, additive_events=additive,
+                required_complete=["base"],
+            )
+        with self.assertRaisesRegex(ValueError, "must identify additive events"):
+            LEDGER.admit_additive_events(
+                capacity=1, initial_shed={}, initial_carried={},
+                baseline_events=baseline, additive_events=additive,
+                required_complete=["missing"],
+            )
+        with self.assertRaisesRegex(ValueError, "duplicate required_complete"):
+            LEDGER.admit_additive_events(
+                capacity=1, initial_shed={}, initial_carried={},
+                baseline_events=baseline, additive_events=additive,
+                required_complete=["new", "new"],
+            )
+        with self.assertRaisesRegex(ValueError, "sequence of additive event IDs"):
+            LEDGER.admit_additive_events(
+                capacity=1, initial_shed={}, initial_carried={},
+                baseline_events=baseline, additive_events=additive,
+                required_complete="new",
+            )
+        with self.assertRaisesRegex(ValueError, "sequence of mappings"):
+            LEDGER.admit_additive_events(
+                capacity=1, initial_shed={}, initial_carried={},
+                baseline_events=baseline, additive_events={"id": "new"},
+                required_complete=[],
+            )
+
     def test_duplicate_ids_and_bool_quantities_fail_closed(self):
         duplicate = [e("x", 1, "unit", "PASS"), e("x", 2, "unit", "PASS")]
         with self.assertRaisesRegex(ValueError, "duplicate event id"):

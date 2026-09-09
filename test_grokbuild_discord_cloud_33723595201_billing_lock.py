@@ -47,9 +47,9 @@ KEEP = {
     "p/grok-build-discord-cloud-33718131448-billing-lock-20260903-01.md": "861911cb",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "03d03e22",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "5aa976c0",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
@@ -57,9 +57,9 @@ KEEP = {
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
-    "test_grokbuild_owner_net_33723510040_billing_lock.py": "f17f7635",
+    "test_grokbuild_owner_net_33723510040_billing_lock.py": "4acaf69b",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
     "commons_discord.py": "f6f1a374",
     "discord_ingest.py": "4866672a",
     "test_commons_discord.py": "5881bb78",
@@ -68,7 +68,7 @@ KEEP = {
     "infra/discord/test_windows_runtime.py": "158feb48",
     "infra/discord/assert_ready.py": "ad33fdba",
     ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
-    "open_door_guard.py": "1a42e1c9",
+    "open_door_guard.py": "877e148d",
 }
 
 

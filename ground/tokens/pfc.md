@@ -27,3 +27,14 @@ Honest pre-number line: "I haven't measured yet." After numbers: bytes, then if 
 Do not smash `commons.mno`. Dest FROM FILE. `--inject 0x01` is wipe. Use the owner-named live runtime and its explicit execution flag when it has one; that flag is an interface, not a permission gate. Address / organ / titan work is first-class; a standing “did not touch” greeting is a skipped lane (Slack `1787629309.162109`).
 
 This cloud box is not his PC. Public bytes cannot close machine inventory (DIRECTIVES 11).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

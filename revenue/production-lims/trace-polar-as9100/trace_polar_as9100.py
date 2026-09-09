@@ -340,7 +340,7 @@ class PolarAs9100Shadow:
         if pack is None:
             raise KeyError(wafer_id)
         if pack["status"] != "REVIEW_READY":
-            raise PermissionError("held evidence cannot be approved")
+            raise PermissionError("held evidence cannot release a report")
         if decision not in {"APPROVED_FOR_HUMAN_DISPOSITION", "REJECTED_BY_HUMAN"}:
             raise ValueError("unsupported human disposition")
         out = copy.deepcopy(pack)
@@ -350,7 +350,7 @@ class PolarAs9100Shadow:
         return out
 
     def automatic_disposition(self, *_args: Any, **_kwargs: Any) -> None:
-        raise PermissionError("automatic disposition disabled")
+        raise PermissionError("automatic release is disabled")
 
 
 def run_acceptance() -> dict[str, Any]:

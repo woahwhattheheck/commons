@@ -24,7 +24,7 @@ KEEP = {
     "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "648caa8b",
     ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
     "commons_discord.py": "f6f1a374",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 

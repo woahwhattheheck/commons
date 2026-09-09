@@ -25,7 +25,7 @@ KEEP = {
     "test_job_watchdog_land.py": "2f055030",
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/grok-build-job-watchdog-33718131418-billing-lock-20260903-01.md": "716e86bd",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-job-watchdog-33718116277-billing-lock-20260903-01.md": "664bd6de",

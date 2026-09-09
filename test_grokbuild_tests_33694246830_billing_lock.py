@@ -23,7 +23,7 @@ KEEP = {
     "p/grokbuild-tests-33689243523-billing-lock-20260902-01.md": "119ccb17",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 

@@ -303,6 +303,32 @@ def simulate_capacity(
     }
 
 
+def _copy_event_sequence(value: Any, name: str) -> list[dict[str, Any]]:
+    if isinstance(value, (str, bytes, Mapping)) or not isinstance(value, Sequence):
+        raise ValueError(f"{name} must be a sequence of mappings")
+    out: list[dict[str, Any]] = []
+    for offset, event in enumerate(value):
+        if not isinstance(event, Mapping):
+            raise ValueError(f"{name}[{offset}] must be a mapping")
+        out.append(copy.deepcopy(dict(event)))
+    return out
+
+
+def _required_event_ids(value: Any) -> list[str]:
+    if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
+        raise ValueError("required_complete must be a sequence of additive event IDs")
+    out: list[str] = []
+    seen: set[str] = set()
+    for offset, event_id in enumerate(value):
+        if not isinstance(event_id, str) or not event_id:
+            raise ValueError(f"required_complete[{offset}] must be a non-empty string")
+        if event_id in seen:
+            raise ValueError(f"duplicate required_complete event id: {event_id}")
+        seen.add(event_id)
+        out.append(event_id)
+    return out
+
+
 def admit_additive_events(
     *,
     capacity: int,
@@ -319,16 +345,25 @@ def admit_additive_events(
     every required additive event completes without discard, and total discard
     does not increase for any item.
     """
+    base_events = _copy_event_sequence(baseline_events, "baseline_events")
+    new_events = _copy_event_sequence(additive_events, "additive_events")
+    required_ids = _required_event_ids(required_complete)
     baseline = simulate_capacity(capacity=capacity, initial_shed=initial_shed,
                                  initial_carried=initial_carried,
-                                 events=baseline_events)
-    combined_events = [copy.deepcopy(dict(e)) for e in baseline_events]
-    combined_events.extend(copy.deepcopy(dict(e)) for e in additive_events)
+                                 events=base_events)
     candidate = simulate_capacity(capacity=capacity, initial_shed=initial_shed,
                                   initial_carried=initial_carried,
-                                  events=combined_events)
+                                  events=[*base_events, *new_events])
     base_by_id = {r["id"]: r for r in baseline["receipts"]}
     cand_by_id = {r["id"]: r for r in candidate["receipts"]}
+    additive_ids = set(cand_by_id).difference(base_by_id)
+    invalid_required = [event_id for event_id in required_ids
+                        if event_id not in additive_ids]
+    if invalid_required:
+        raise ValueError(
+            "required_complete IDs must identify additive events: "
+            + ", ".join(invalid_required)
+        )
     regressions = []
     for event_id, old in base_by_id.items():
         new = cand_by_id[event_id]
@@ -337,7 +372,7 @@ def admit_additive_events(
                 regressions.append({"id": event_id, "field": field,
                                     "baseline": old[field], "candidate": new[field]})
     incomplete = []
-    for event_id in required_complete:
+    for event_id in required_ids:
         receipt = cand_by_id.get(event_id)
         if receipt is None:
             incomplete.append({"id": event_id, "reason": "missing"})
