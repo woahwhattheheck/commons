@@ -14,21 +14,15 @@ class FakeFeatures:
     def __init__(self, market_pressure=False, fourth_quadrant=False, **kwargs):
         self.market_pressure = market_pressure
         self.fourth_quadrant = fourth_quadrant
-        self.terminal_history = bool(kwargs.get('terminal_history', False))
-        self.crop_release = bool(kwargs.get('crop_release', False))
         self.budget_seconds = float(kwargs.get('budget_seconds', 1.0))
 
 
 class FakeHistory:
-    fill_result = None
-
     def __init__(self):
         self.remembered = []
-        self.diagnostics = {'remembered': 0}
 
-    def remember(self, obs, cfg, returned, post):
+    def remember(self, returned):
         self.remembered.append(deepcopy(returned))
-        self.diagnostics = {'remembered': len(self.remembered)}
 
 
 class FakeTitanAgent:
@@ -36,9 +30,6 @@ class FakeTitanAgent:
         self.features = features
         self.diagnostics = {}
         self.calls = []
-        self.spatial = None
-        self.quadrant = None
-        self._quadrant_admission = fourth_quadrant_admission
         self.history = FakeHistory()
 
     def _market_pressure_selected(self, obs, cfg, selected):
@@ -53,9 +44,6 @@ class FakeTitanAgent:
         }
         return result
 
-    def _selected_snapshot(self, obs, returned=None):
-        return {'snapshot': True}
-
     def _feed_stock_selected(self, obs, cfg, selected):
         self.calls.append('feed')
         result = deepcopy(selected)
@@ -67,6 +55,12 @@ class FakeTitanAgent:
         result = deepcopy(selected)
         result['trace'] = result.get('trace', []) + ['capital']
         return result
+
+    def _finish_production(self, obs, returned, cfg=None):
+        returned = self._feed_stock_selected(obs, cfg or {}, returned)
+        returned = self._early_capital_selected(obs, cfg or {}, returned)
+        self.history.remember(returned)
+        return returned
 
 
 class FinalMarketPressureEntrypointTests(unittest.TestCase):
