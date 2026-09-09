@@ -10,6 +10,11 @@
       "sha256": "4990b2c1f26fc3d2fa4923afdea1079c70c0a24f32bcdd37253d0910e01181cb"
     },
     {
+      "bytes": 2075,
+      "path": "DERIVED-NUMERIC-CLOSURE.md",
+      "sha256": "75f3cca009588eb8b3dc93bac7840dc66a6136f40d4dda8576bbd0f052f2f569"
+    },
+    {
       "bytes": 261,
       "path": "LICENSE-NOTE.md",
       "sha256": "bbc62f8ffdfa9a73fd882f95f9b80b217d25f974793da12d866e4cd221bec830"
@@ -65,14 +70,19 @@
       "sha256": "55ea743ba1236c2572b518a1aff6237dce5ff24f8278b6a996a0a6ad432a8923"
     },
     {
-      "bytes": 6435,
+      "bytes": 8003,
       "path": "metrics.py",
-      "sha256": "e3cb706f7f5c7d4a1a8a299435b52c60842e282dcd2ad33f94964e8891037187"
+      "sha256": "9e68f4bd1aba92917af53a59a0471370e1131f18694c0d3aefea83d18750dcbe"
     },
     {
       "bytes": 3175,
       "path": "panel_load.py",
       "sha256": "340054b8403827bad0ff086b1c84b0e3abdd052dedeb5622b5ad56bb168aa287"
+    },
+    {
+      "bytes": 3271,
+      "path": "test_derived_numeric_closure.py",
+      "sha256": "30340398935e1d63102406cd2ce245ee054135ebc1b6ac66f9193a479e0a80e3"
     },
     {
       "bytes": 5604,
@@ -96,11 +106,17 @@
     "parent_head": "22e764944d246fce5555f8ae09c7f14345179219",
     "scope": "single-open immutable input snapshots, strict schema typing, numeric overflow closure"
   },
+  "derived_numeric_closure": {
+    "actor": "SOL-CIPHER",
+    "operation": "titan-v3-paired-game-derived-numeric-closure-20260909-sol-cipher-02",
+    "parent_head": "3816ed79509f3fe529834008acfb765fc1ec8f43",
+    "scope": "finite checked margins, paired deltas, means, medians, and exact-stratum errors"
+  },
   "operation": "titan-v3-paired-game-gate-20260909-sol-argus-02",
   "tests": {
-    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py",
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py test_derived_numeric_closure.py",
     "errors": 0,
     "failed": 0,
-    "passed": 27
+    "passed": 31
   }
 }
