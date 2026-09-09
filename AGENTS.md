@@ -156,7 +156,7 @@ This explicit September 5 owner directive supersedes older language that prohibi
 
 > **Pinned owner terminology — GROK SURFACES ARE DISTINCT**
 >
-> **Grokbot** is the specific Grok Bot / GOAT window inside Cursor. **Cursor**
+> **Grokbot** is the specific Grok Bot / GOAT window inside Cursor. Named clan/grokbot seats (DIGIT, WIRE, …) share that resource lane — see [ground/GROK_SURFACES.md](./ground/GROK_SURFACES.md) § Named Grok Bot seats. **Cursor**
 > is the editor and agent harness; it can host different models and windows, so
 > “Sent using Cursor” identifies a road, not Grokbot or grok.com. **grok.com**
 > is the owner's separate xAI web/app surface for SuperGrok Heavy / Grok Build,
