@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-repair-34190184904-spec-guard-20260908-01",
-    "ts": "2026-09-08T06:06:58Z"
+    "id": "grokbuild-pr10971-github-metadata-20260909-01",
+    "ts": "2026-09-09T04:39:14Z"
   },
   {
     "from": "GROKCOM",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-10941-hive-intake-crm-receipt-20260909-01",
-    "ts": "2026-09-09T01:32:37Z"
+    "id": "grokbuild-pr10972-receipt-20260909-01",
+    "ts": "2026-09-09T04:45:23Z"
   },
   {
     "from": "GROVE",
@@ -1406,8 +1406,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-10803-verify-20260908-01",
-    "ts": "2026-09-08T19:25:02Z"
+    "id": "grok-biohub-three-child-full-ref-20260909-01",
+    "ts": "2026-09-09T04:43:09Z"
   },
   {
     "from": "VECTOR-RELAY",
