@@ -97,6 +97,22 @@ class TrackMembershipTests(unittest.TestCase):
         with self.assertRaisesRegex(AdapterError, "declares duplicate child 2"):
             tracks_to_rows("a", detections, [parent, child], ref_map, scale)
 
+    def test_singleton_child_declaration_is_rejected(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [
+            Detection("a", 0, 10, 5, 5, 5),
+            Detection("a", 1, 11, 5, 6, 5),
+        ]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        parent = track_from_refs(payload, 1, [0])
+        child = track_from_refs(payload, 2, [1])
+        parent.children = [2]
+        child.parent = 1
+
+        with self.assertRaisesRegex(AdapterError, "exactly 0 or 2 children"):
+            tracks_to_rows("a", detections, [parent, child], ref_map, scale)
+
     def test_parent_relation_requires_reciprocal_child_declaration(self):
         scale = Scale()
         bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
