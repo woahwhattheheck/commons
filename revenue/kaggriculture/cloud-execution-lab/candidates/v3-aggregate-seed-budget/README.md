@@ -1,14 +1,20 @@
-# TITAN v3 aggregate seed-budget candidate
+# TITAN v3 aggregate seed-budget candidate — NO SIGNAL
 
 Operation: `titan-v3-aggregate-seed-budget-20260909-01`
 
-Evidence base: current main `bdb428d05487b16dbad83bbbb6286a5d1a77836d`, inherited by non-force merge commit `ca73e17d55b020d493d81d75abc87329b5506f35`.
+Evidence base: main `bdb428d05487b16dbad83bbbb6286a5d1a77836d`, inherited by non-force merge commit `ca73e17d55b020d493d81d75abc87329b5506f35`.
 
-## Hypothesis
+## Disposition
 
-The landed `SeedBudget.apply()` bounds each executable `BUY_SEED` row against the same post-unit seed stock. When the live market prefix contains two rows for the same crop, both rows can independently fit the remaining-route bound while their **aggregate realized fills** exceed every branch-compatible future `PLANT` request. The excess is fixed-price cash converted into seed stock that the frozen route cannot use.
+**REJECT BEFORE GAMES on the current public feature set.** Independent exact-route review decoded the same four-route Arlene bank and found zero duplicate same-crop rows in the official active market prefix and zero strict trailing opportunities. The hosted workflow now invokes `audit_routes.py --require-tail-safe` and exits nonzero with `NO_SIGNAL / REJECT BEFORE GAMES` when that count is zero. Passing source contracts cannot override missing applicability.
 
-This candidate does **not** aggregate arbitrary purchase queues. It edits only the final non-empty active row when all of the following are proven from current public state and immutable route data:
+The mechanism remains a bounded reference implementation for a future route or final-action callsite that actually emits multiple funded same-crop seed rows. It is not a current TITAN v3 gameplay candidate, should not consume paired panel cells, and must not be merged or promoted without a realized final-action activation witness on an exact executable closure.
+
+## Hypothesis and safety boundary
+
+The landed `SeedBudget.apply()` bounds each executable `BUY_SEED` row against the same post-unit seed stock. If a live market prefix ever contains two rows for the same crop, both rows can independently fit the remaining-route bound while their **aggregate realized fills** exceed every branch-compatible future `PLANT` request. The excess is fixed-price cash converted into seed stock that the frozen route cannot use.
+
+This implementation does **not** aggregate arbitrary purchase queues. It edits only the final non-empty active row when all of the following are proven from current public state and immutable route data:
 
 1. the target is the second-or-later `BUY_SEED` for one crop;
 2. every non-empty active row through the target is a strict fixed-price `BUY_SEED`;
@@ -21,13 +27,9 @@ On decline, the original action object is returned by identity. On admission, on
 
 ## Runtime adapter
 
-`candidate_runtime.py` consumes only an already completed frozen-TITAN action. It binds the exact route, normalized step, post-unit seed stock, exact positive-integer active-prefix capacity, and every branch-compatible remaining request (including spatial additions). `main.py` calls canonical TITAN exactly once, edits no controller or ledger state, and attempts the bounded transform only inside the parent's remaining reserved time. Candidate-local modules are loaded by exact resolved paths under unique names, so evaluator loading does not depend on the process working directory or the candidate directory appearing on `sys.path`. A candidate-local import failure is retained as a diagnostic only after canonical parent bytes are obtained. Any missing binding, unsupported mode, malformed state/configuration, timeout, import failure, or exception returns canonical bytes.
+`candidate_runtime.py` consumes only an already completed frozen-TITAN action. It binds the exact route, normalized step, post-unit seed stock, exact positive-integer active-prefix capacity, and every branch-compatible remaining request (including spatial additions). `main.py` calls canonical TITAN exactly once, edits no controller or ledger state, and attempts the bounded transform only inside the parent's remaining reserved time. Candidate-local modules are loaded by exact resolved paths under unique names. A candidate-local import failure is retained as a diagnostic only after canonical parent bytes are obtained. Every missing binding, unsupported mode, malformed state/configuration, timeout, import failure, or exception returns canonical bytes.
 
-`test_entrypoint_load.py` copies only the candidate entrypoint and siblings into a temporary evaluator-shaped tree, loads the entrypoint from outside that directory, proves path-bound sibling resolution and exactly one parent call, then corrupts the candidate runtime and proves the parent action still returns. `test_official_engine.py` runs the preserved competition interpreter and proves that trimming the final MELON row from four units to one leaves every prior and rival effect unchanged while preserving exactly three seed costs in cash. It separately proves the partial-funding abort semantics used by the pure simulator.
-
-## Evidence boundary
-
-`audit_routes.py` decodes the exact inherited four-route Arlene bank and inventories duplicate same-crop seed rows inside the official first-N market prefix. A route shape is only an opportunity witness; it is not a gameplay or score claim. Promotion would additionally require realized activation telemetry and complete identical-cell, both-seat official-engine games against unchanged current canonical TITAN.
+`test_entrypoint_load.py` copies only the candidate entrypoint and siblings into a temporary evaluator-shaped tree, loads the entrypoint from outside that directory, proves path-bound sibling resolution and exactly one parent call, then corrupts the candidate runtime and proves the parent action still returns. `test_official_engine.py` runs the preserved competition interpreter and proves the fixed-price cash/fill invariant used by the pure simulator.
 
 ## Local acceptance
 
@@ -37,12 +39,11 @@ python -m py_compile aggregate_seed_budget.py audit_routes.py candidate_runtime.
   test_official_engine.py
 python -m unittest -v \
   test_aggregate_seed_budget.py test_candidate_runtime.py test_entrypoint_load.py
-python audit_routes.py --output route-audit.json
-# Hosted CI installs kaggle-environments==1.32.7 and also runs test_official_engine.py.
+python audit_routes.py --output route-audit.json --require-tail-safe
 ```
 
-The 21 network-independent contracts cover funded over-retention, partial-funding preservation, surplus that spills into an earlier row, SELL/variable-prefix ambiguity, active-prefix truncation, branch-compatible demand, zero-tail idempotence, mixed fixed-price seed rows, invalid numeric input, route-audit classification, completed-action binding, spatial demand, day/hour normalization, player validation, exact projection fallback, strict positive-integer active-prefix configuration, evaluator-shaped path loading, single-parent invocation, and candidate-local import fail-closure. Hosted CI adds two preserved-engine contracts for 23 total.
+The 21 network-independent contracts pass. Hosted CI adds two preserved-engine contracts for 23 total, then deliberately fails on the exact current route bank unless at least one strict trailing opportunity exists. A green semantic suite plus a red applicability gate is the expected and correct current result.
 
 ## Non-claims
 
-This additive packet does not change `seed_budget.py`, `titan_runtime.py`, canonical `main.py`, `TITAN-CONFIG.json`, the canonical archive or pointers, provider state, or any Kaggle submission. It makes no playing-strength, leaderboard, or first-place claim without complete official evidence.
+This additive packet changes no canonical runtime, `SeedBudget`, config, archive, pointer, provider state, or Kaggle submission. It makes no playing-strength, leaderboard, first-place, regression-repair, activation, or promotion claim.
