@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
 from copy import deepcopy
+import hashlib
 import math
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 import gate
 from test_support import Harness, contract, evidence, rows
@@ -43,6 +45,29 @@ class ValidEvidenceTests(unittest.TestCase):
             ).run()
         self.assertEqual(code, 0)
         self.assertEqual(report["provenance"]["engine_commit"], "c" * 64)
+
+    def test_hash_and_parser_share_one_immutable_snapshot(self):
+        with tempfile.TemporaryDirectory() as td:
+            harness = Harness(Path(td))
+            candidate_preimage = harness.candidate.read_bytes()
+            real_snapshot = gate.snapshot_regular_file
+
+            def mutate_after_snapshot(path, **kwargs):
+                snapshot = real_snapshot(path, **kwargs)
+                if Path(path) == harness.candidate:
+                    harness.candidate.write_text("", encoding="utf-8")
+                return snapshot
+
+            with mock.patch.object(gate, "snapshot_regular_file", side_effect=mutate_after_snapshot):
+                report, code = harness.run()
+
+        self.assertEqual((code, report["verdict"]), (0, "PROMOTE"))
+        self.assertEqual(
+            report["input_sha256"]["candidate_games"],
+            hashlib.sha256(candidate_preimage).hexdigest(),
+        )
+        self.assertEqual(report["input_bytes"]["candidate_games"], len(candidate_preimage))
+        self.assertEqual(report["metrics"]["aggregate"]["own_delta"]["mean"], 10.0)
 
 
 class StructuralInvalidityTests(unittest.TestCase):
@@ -92,6 +117,12 @@ class StructuralInvalidityTests(unittest.TestCase):
             "non-finite JSON constant",
         )
 
+    def test_huge_integer_score_is_invalid(self):
+        self.assert_invalid(
+            lambda _c, _e, _b, candidate: candidate[0].__setitem__("scores", [10 ** 400, 0]),
+            "expected a finite number",
+        )
+
     def test_wrong_score_cardinality_is_invalid(self):
         self.assert_invalid(
             lambda _c, _e, _b, candidate: candidate[0].__setitem__("scores", [1]),
@@ -118,6 +149,18 @@ class StructuralInvalidityTests(unittest.TestCase):
         def mutate(contract_value, _e, _b, _candidate):
             contract_value["seats"], contract_value["expected_cells"] = [0], 4
         self.assert_invalid(mutate, "must contain exactly")
+
+    def test_boolean_contract_schema_version_is_invalid(self):
+        self.assert_invalid(
+            lambda contract_value, _e, _b, _candidate: contract_value.__setitem__("schema_version", True),
+            "schema_version must equal integer 1",
+        )
+
+    def test_boolean_evidence_schema_version_is_invalid(self):
+        self.assert_invalid(
+            lambda _c, evidence_value, _b, _candidate: evidence_value.__setitem__("schema_version", True),
+            "schema_version must equal integer 1",
+        )
 
     def test_duplicate_json_object_key_is_invalid(self):
         with tempfile.TemporaryDirectory() as td:

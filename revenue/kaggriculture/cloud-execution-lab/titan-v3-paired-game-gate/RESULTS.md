@@ -1,14 +1,17 @@
 # Verification receipt
 
-Operation: `titan-v3-paired-game-gate-20260909-sol-argus-02`
+Parent operation: `titan-v3-paired-game-gate-20260909-sol-argus-02`
 
-## Executed before publication
+Hardening operation:
+`titan-v3-paired-game-gate-snapshot-binding-20260909-sol-kiln-01`
+
+## Executed on the hardening bytes before publication
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
   python3 -m unittest -v test_validation.py test_policy_cli.py
 
-Ran 23 tests
+Ran 27 tests in 1.413s
 OK
 ```
 
@@ -17,20 +20,14 @@ python3 -m compileall -q .
 PASS
 ```
 
-```text
-python3 gate.py \
-  --contract example/CONTRACT.json \
-  --evidence example/PROVENANCE.json \
-  --baseline example/canonical.GAMES.jsonl \
-  --candidate example/challenger.GAMES.jsonl \
-  --report /tmp/titan-v3-example-gate.json --quiet
+The added race contract snapshots a valid candidate file and then truncates its
+original path before parsing begins. The gate still reports the SHA-256 and byte
+count of the preimage and evaluates that same preimage. This directly exercises
+the prior hash-then-reopen time-of-check-to-time-of-use defect.
 
-exit 0; verdict PROMOTE; cells 8; mean own delta 10.0
-```
-
-The example is synthetic interface evidence only. No official game, hosted run,
-Kaggle submission, leaderboard query, runtime mutation, archive replacement, or
-promotion action was performed.
+The example and test fixtures are synthetic interface evidence only. No official
+game, hosted run, Kaggle submission, leaderboard query, runtime mutation,
+archive replacement, or promotion action was performed.
 
 ## Adversarial coverage
 
@@ -38,10 +35,13 @@ The test suite proves fail-closed behavior for:
 
 - missing, extra, duplicate, failed, and timed-out cells;
 - baseline failures as well as candidate failures;
-- non-finite values, malformed score cardinality, and invalid seats;
-- duplicate JSON object keys and duplicate seed declarations;
+- non-finite values, numeric overflow, malformed score cardinality, and invalid
+  seats;
+- duplicate JSON object keys, boolean schema versions, and duplicate seed
+  declarations;
 - omission of either candidate seat;
 - provenance mismatch and terminal symlink substitution;
+- replacement of an original input after its single-open snapshot;
 - a positive global cash mean hiding a W-to-L regression;
 - a positive global cash mean hiding a negative opponent stratum;
 - an unchanged candidate when change is required;

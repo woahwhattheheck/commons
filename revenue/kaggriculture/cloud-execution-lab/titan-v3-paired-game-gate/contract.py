@@ -149,8 +149,8 @@ def validate_contract(obj: Mapping[str, Any]) -> dict[str, Any]:
     missing, extra = sorted(fields - set(obj)), sorted(set(obj) - fields)
     if missing or extra:
         raise GateError(f"contract keys mismatch; missing={missing}, extra={extra}")
-    if obj["schema_version"] != SCHEMA_VERSION:
-        raise GateError(f"contract.schema_version must equal {SCHEMA_VERSION}")
+    if not is_int(obj["schema_version"]) or obj["schema_version"] != SCHEMA_VERSION:
+        raise GateError(f"contract.schema_version must equal integer {SCHEMA_VERSION}")
     for key in ("panel_id", "baseline_name", "candidate_name"):
         if not isinstance(obj[key], str) or not obj[key].strip():
             raise GateError(f"contract.{key}: expected a non-empty string")
@@ -183,8 +183,8 @@ def validate_evidence(obj: Mapping[str, Any], contract: Mapping[str, Any]) -> di
     missing, extra = sorted(fields - set(obj)), sorted(set(obj) - fields)
     if missing or extra:
         raise GateError(f"evidence keys mismatch; missing={missing}, extra={extra}")
-    if obj["schema_version"] != SCHEMA_VERSION:
-        raise GateError(f"evidence.schema_version must equal {SCHEMA_VERSION}")
+    if not is_int(obj["schema_version"]) or obj["schema_version"] != SCHEMA_VERSION:
+        raise GateError(f"evidence.schema_version must equal integer {SCHEMA_VERSION}")
     if obj["panel_id"] != contract["panel_id"]:
         raise GateError("evidence.panel_id does not match contract")
     if not isinstance(obj["exact_command"], str) or not obj["exact_command"].strip():

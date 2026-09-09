@@ -2,6 +2,9 @@
 
 Operation: `titan-v3-paired-game-gate-20260909-sol-argus-02`
 
+Snapshot-binding hardening:
+`titan-v3-paired-game-gate-snapshot-binding-20260909-sol-kiln-01`
+
 This is a fail-closed evidence adapter for the Kaggriculture evaluator's native
 `GAMES.jsonl` rows. It evaluates paired game cells, not prediction rows: each
 cell is identified by `(opponent, seed, candidate_seat)` and carries the two
@@ -23,8 +26,16 @@ Before looking at an average, the gate requires:
 - exactly two finite terminal scores per cell;
 - exact match between expected and observed engine, runner, baseline archive,
   and candidate archive identities;
-- duplicate-key-safe JSON parsing, regular non-symlink inputs, bounded input
-  sizes, deterministic output, and atomic report replacement.
+- integer, non-boolean schema versions and finite numeric conversion;
+- each input opened once and copied into a private snapshot while its SHA-256 is
+  computed, so the parser consumes the exact bytes named by the report;
+- post-evaluation snapshot digest verification, duplicate-key-safe JSON parsing,
+  regular non-symlink inputs, bounded sizes, deterministic output, and atomic
+  report replacement.
+
+A source path may be replaced after its snapshot without changing the evaluated
+bytes or reported digest. Mutation during snapshot construction, or mutation of
+a private snapshot before the final digest check, invalidates the run.
 
 A partial panel cannot become a smaller sample by accident. Invalid evidence is
 reported as `INVALID` and exits 2.
@@ -81,17 +92,19 @@ python3 gate.py \
 ## Tests
 
 ```bash
-python3 -m unittest -v test_validation.py test_policy_cli.py
+PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+  python3 -m unittest -v test_validation.py test_policy_cli.py
 python3 -m compileall -q .
 ```
 
-Current prepublication result: **23/23 passed**. Covered attacks include partial
+Current hardening result: **27/27 passed**. Covered attacks include partial
 positive panels, extra and duplicate cells, non-complete rows, baseline errors,
-NaN, malformed score vectors, bad seats, provenance drift, duplicate contract
-seeds, missing second seat, duplicate JSON keys, symlink substitution, global
-mean hiding W→L regression, global mean hiding a negative opponent stratum,
-identity candidates, worst-cell violations, deterministic reports, and stable
-CLI exit codes.
+NaN, oversized integers that cannot become finite floats, malformed score
+vectors, bad seats, provenance drift, boolean schema versions, duplicate
+contract seeds, missing second seat, duplicate JSON keys, symlink substitution,
+source replacement between acquisition and evaluation, global mean hiding W→L
+regression, global mean hiding a negative opponent stratum, identity candidates,
+worst-cell violations, deterministic reports, and stable CLI exit codes.
 
 ## L01 adapter
 
@@ -112,9 +125,10 @@ other rows abort. Correct the arm semantics before producing its contract.
 
 ## Files
 
-- `gate.py` — zero-dependency CLI/orchestrator.
-- `gate_common.py` — strict JSON, file, hash, and atomic-write primitives.
-- `contract.py` — frozen grid, provenance, and policy validation.
+- `gate.py` — zero-dependency CLI/orchestrator and private snapshot lifecycle.
+- `gate_common.py` — strict JSON, single-open snapshot, hash, and atomic-write
+  primitives.
+- `contract.py` — frozen grid, provenance, schema, and policy validation.
 - `panel_load.py` — exact Cartesian game-grid loading and validation.
 - `metrics.py` — paired cash/result metrics, strata, and declared policy checks.
 - `test_support.py`, `test_validation.py`, `test_policy_cli.py` — adversarial contracts.

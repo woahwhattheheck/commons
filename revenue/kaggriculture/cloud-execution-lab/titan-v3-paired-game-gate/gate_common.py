@@ -8,6 +8,7 @@ import json
 import math
 import os
 from pathlib import Path
+import stat
 import tempfile
 from typing import Any, Mapping, Sequence
 
@@ -53,6 +54,15 @@ class Game:
         return "W" if self.margin > 0 else ("T" if self.margin == 0 else "L")
 
 
+@dataclass(frozen=True)
+class FileSnapshot:
+    """Private immutable copy whose digest covers exactly the bytes later parsed."""
+
+    path: Path
+    sha256: str
+    bytes: int
+
+
 def is_int(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
 
@@ -60,7 +70,10 @@ def is_int(value: Any) -> bool:
 def finite_number(value: Any, *, label: str) -> float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise GateError(f"{label}: expected a number")
-    result = float(value)
+    try:
+        result = float(value)
+    except OverflowError as exc:
+        raise GateError(f"{label}: expected a finite number") from exc
     if not math.isfinite(result):
         raise GateError(f"{label}: expected a finite number")
     return result
@@ -108,6 +121,88 @@ def regular_file(path: Path, *, max_bytes: int, label: str) -> Path:
     if size > max_bytes:
         raise GateError(f"{label}: {size} bytes exceeds limit {max_bytes}")
     return path
+
+
+def snapshot_regular_file(
+    path: Path, *, directory: Path, max_bytes: int, label: str
+) -> FileSnapshot:
+    """Open an input once and hash the exact bytes copied to a private snapshot."""
+
+    raw = Path(path)
+    if raw.is_symlink():
+        raise GateError(f"{label}: symbolic links are not accepted")
+
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_BINARY", 0)
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    source_fd: int | None = None
+    destination_fd: int | None = None
+    destination_name: str | None = None
+    try:
+        try:
+            source_fd = os.open(raw, flags)
+        except OSError as exc:
+            raise GateError(f"{label}: cannot open regular file: {exc}") from exc
+
+        before = os.fstat(source_fd)
+        if not stat.S_ISREG(before.st_mode):
+            raise GateError(f"{label}: expected a regular file")
+        if before.st_size > max_bytes:
+            raise GateError(f"{label}: {before.st_size} bytes exceeds limit {max_bytes}")
+
+        directory.mkdir(parents=True, exist_ok=True)
+        destination_fd, destination_name = tempfile.mkstemp(
+            prefix=".input-", suffix=".snapshot", dir=directory
+        )
+        digest = hashlib.sha256()
+        total = 0
+        with os.fdopen(source_fd, "rb", closefd=True) as source:
+            source_fd = None
+            with os.fdopen(destination_fd, "wb", closefd=True) as destination:
+                destination_fd = None
+                for chunk in iter(lambda: source.read(1024 * 1024), b""):
+                    total += len(chunk)
+                    if total > max_bytes:
+                        raise GateError(
+                            f"{label}: input grew beyond limit {max_bytes} while reading"
+                        )
+                    digest.update(chunk)
+                    destination.write(chunk)
+                destination.flush()
+                os.fsync(destination.fileno())
+
+            after = os.fstat(source.fileno())
+            before_identity = (
+                before.st_dev,
+                before.st_ino,
+                before.st_size,
+                before.st_mtime_ns,
+                before.st_ctime_ns,
+            )
+            after_identity = (
+                after.st_dev,
+                after.st_ino,
+                after.st_size,
+                after.st_mtime_ns,
+                after.st_ctime_ns,
+            )
+            if before_identity != after_identity or total != after.st_size:
+                raise GateError(f"{label}: changed while being snapshotted")
+
+        snapshot_path = Path(destination_name)
+        return FileSnapshot(snapshot_path, digest.hexdigest(), total)
+    except Exception:
+        if source_fd is not None:
+            os.close(source_fd)
+        if destination_fd is not None:
+            os.close(destination_fd)
+        if destination_name is not None:
+            try:
+                os.unlink(destination_name)
+            except FileNotFoundError:
+                pass
+        raise
 
 
 def read_json(path: Path, *, label: str) -> Mapping[str, Any]:

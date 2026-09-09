@@ -10,15 +10,21 @@
   twice.
 - **Provenance substitution:** engine, runner, control archive, and candidate
   archive identities must match the frozen contract.
-- **NaN/Infinity and malformed numeric evidence:** non-finite JSON constants,
-  booleans-as-numbers, and score vectors other than length two are rejected.
+- **NaN/Infinity, overflow, and malformed numeric evidence:** non-finite JSON
+  constants, booleans-as-numbers, integers that cannot convert to a finite
+  float, and score vectors other than length two are rejected.
 - **Mean-only selection:** result flips, pair balance, opponent strata, seat
   strata, median, and worst-cell behavior are explicit checks.
 - **Policy drift:** every policy field is mandatory and embedded in the report.
-- **Parser ambiguity:** duplicate JSON object keys and unknown schema keys are
-  rejected.
-- **Input replacement:** symlink inputs are rejected; exact input hashes are
-  written to deterministic output.
+- **Parser ambiguity:** duplicate JSON object keys, boolean schema versions, and
+  unknown schema keys are rejected.
+- **Hash/parse time-of-check-to-time-of-use:** every input is opened once with a
+  no-follow regular-file check, copied into a private snapshot while hashing,
+  and parsed only from that copy. The report records that digest and byte count.
+  Source-path replacement after acquisition therefore cannot change evaluation.
+- **Concurrent input mutation:** size and identity metadata are compared before
+  and after snapshot construction. A post-evaluation digest check catches
+  mutation of a private snapshot.
 - **Torn reports:** reports are written and fsynced to a temporary file, then
   atomically replaced.
 
@@ -28,6 +34,9 @@
 - Incorrect engine/source hashes supplied identically to contract and evidence.
   Independent artifact construction and receipt review remain necessary.
 - Hidden-state leakage or an invalid opponent implementation.
+- A process with enough privilege to alter this gate's code or memory while it
+  executes. The snapshot contract binds file bytes; it is not a process sandbox
+  or a signature authority.
 - Multiple-hypothesis bias, confidence intervals, or generalization beyond the
   declared seeds. Use a separately frozen development selector and disjoint
   holdout contract; generic statistical tooling may consume this gate's aligned
