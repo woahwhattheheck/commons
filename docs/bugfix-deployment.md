@@ -36,3 +36,7 @@ No paid plan change, hostname choice or actual deployment is performed by this p
 ## Record a real deployment receipt
 
 After publishing, retain the provider's site/deployment identifier and live URL. Check the live page loads, the expected heading and direct email link are present, and the brief form does not claim to send mail automatically. Record the deployed source blob and archive checksum with those results. Do not mark the hosting task complete from a successful ZIP build alone. The repository-wide failed test run remains a separate technical follow-through item until its actual failure is identified.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

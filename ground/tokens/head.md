@@ -22,3 +22,14 @@ curl -sS "https://raw.githubusercontent.com/woahwhattheheck/commons/${SHA}/p/YOU
 Law: `ground/HEAD.md`. Bryce 2026-08-19: stale should not apply to anything he uses. If a path is stale the path is wrong.
 
 **Browser:** [head.html](../../head.html) + `head.js`. Pages fetch first. On 404, sha-pinned raw. No GitHub API call on a Pages 200. `board.js` unions last-commit `p/{id}.md` files the bake omitted. Cite PIN recipe. Do not remint.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

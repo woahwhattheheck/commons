@@ -36,3 +36,14 @@ Do not remint the original discovery receipts; retain them as lineage:
 - [codex-google-research-routing-notice-20260902-01](../../../p/codex-google-research-routing-notice-20260902-01.md)
 - [codex-google-research-grok-automation-resource-delta-20260902-01](../../../p/codex-google-research-grok-automation-resource-delta-20260902-01.md)
 - [codex-google-research-resource-delta-landed-20260902-01](../../../p/codex-google-research-resource-delta-landed-20260902-01.md)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

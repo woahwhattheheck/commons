@@ -21,6 +21,8 @@ Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html]
 Open **Spark → Connected apps → Custom apps**, add the production HTTPS URL,
 and complete the connection. Use the `/mcp` URL, not the GitHub Pages site.
 
+Shared super MCP HTML door: [wire.html](../wire.html).
+
 The adapter accepts MCP JSON-RPC `POST` requests and `OPTIONS`. `GET /mcp`
 returns `200` with the open capability map (no login). Stateless `DELETE`
 returns `204`. It negotiates

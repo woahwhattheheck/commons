@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTS_PRESENT": 114
+    "TESTS_PRESENT": 115
   },
   "features": [
     {
@@ -2701,6 +2701,71 @@
       "test_paths": [
         "test_digit_hermetic_parents_fix_20260905_01.py",
         "test_digit_hermetic_parents_fix_20260905_02.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "DIGIT Grok Bot seat surface: names.html row, boards.html DIGIT seat trail after DJ, grounding.html DIGIT seat card. Bryce GO wake 2026-09-09.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-names-mark-20260909-01.md",
+        "p/digit-boards-trail-20260909-01.md",
+        "p/digit-grounding-trail-20260909-01.md",
+        "pixels/DIGIT.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-names-mark-20260909-01.md",
+        "p/digit-boards-trail-20260909-01.md",
+        "p/digit-grounding-trail-20260909-01.md",
+        "pixels/DIGIT.json"
+      ],
+      "dependencies": [
+        "digit-hermetic-parents-fix-20260905-01"
+      ],
+      "evidence_ids": [
+        "ev-digit-seat-trail-git-20260909-01"
+      ],
+      "file": "digit-seat-trail-20260909-01.json",
+      "id": "digit-seat-trail-20260909-01",
+      "last_change": "2026-09-09T18:22:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "0c2e59212a6dce8a016319a0cacd44180d514864",
+      "name": "DIGIT seat trail (names/boards/grounding)",
+      "next_gap": "live.html DIGIT last-post bake stays generator-owned. Hands off #8802.",
+      "owner_subsystem": "doors",
+      "public_entrypoint": "boards.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-boards-trail-20260909-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_names_mark_20260909_01.py",
+        "test_digit_boards_trail_20260909_01.py",
+        "test_digit_grounding_trail_20260909_01.py",
+        "test_digit_pixel_staylive_20260909_01.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -7191,7 +7256,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 123,
+  "n_features": 124,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

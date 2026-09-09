@@ -16,3 +16,14 @@ Evidence: base/head SHAs, overlapping paths, git blob hashes, rule ids
 Checker: `python3 host/sprint_integration.py --self-test`.
 Policy: `ground/SPRINT_INTEGRATION.json`. Law: `ground/SPRINT_INTEGRATION.md`.
 Pulse teaches the rule every digest.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

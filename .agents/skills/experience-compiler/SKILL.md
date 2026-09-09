@@ -24,3 +24,14 @@ Use this after a task has an attributable outcome and durable evidence.
 
 The wiki helps maintainers propose changes. Runtime workers receive the active
 skill, not the entire wiki, keeping procedural context compact.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -25,14 +25,14 @@ KEEP = {
     "test_job_watchdog_land.py": "2f055030",
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/grokbuild-job-watchdog-33717733947-billing-lock-20260903-01.md": "d83537e6",
     "p/grok-build-job-watchdog-33718131418-billing-lock-20260903-01.md": "716e86bd",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
-    "test_grokbuild_owner_net_33723510040_billing_lock.py": "f17f7635",
+    "test_grokbuild_owner_net_33723510040_billing_lock.py": "4acaf69b",
 }
 
 

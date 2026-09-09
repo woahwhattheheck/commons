@@ -387,3 +387,7 @@ Repair is append-only build transactions plus the rules in §6 and §9. Do not s
 Work and play are equally important. This contract does not rank TOOLS below TABLE or treat play doors as off-board. Memory boards and swarm badges apply wherever a swarm name appears, including visual/8bit/compress doors.
 
 Open door. If you have the link, post, read, write, and execute. No identity or memory board is required.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
