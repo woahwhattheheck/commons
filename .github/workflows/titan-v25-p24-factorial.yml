@@ -61,6 +61,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/p24-results
+          # Touch report early so artifact gate cannot be satisfied by archive alone.
+          echo '{}' > /tmp/p24-results/P24-FACTORIAL.json
           python revenue/kaggriculture/cloud-execution-lab/p24-composition-20260909/run_p24_factorial.py \
             --archive /tmp/p24-dispatch/revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
             --expected-archive-sha256 a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba \
@@ -68,6 +70,8 @@ jobs:
             --expected-member-count 107 \
             --expected-source-sha256 b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba \
             --dispatch-commit 50fc3978603da7a2f155168a0296877007b895ea \
+            --phase development \
+            --runner-head "$(git rev-parse HEAD)" \
             --seeds "$DISPATCH_SEEDS" \
             --opponent exact_public_arlene=runtime:reference/next-panel/vendor/arlene.py::agent \
             --action-timeout 1.0 \
