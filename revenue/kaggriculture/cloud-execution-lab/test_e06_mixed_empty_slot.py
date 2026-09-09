@@ -135,6 +135,21 @@ class MixedEmptySlotTests(unittest.TestCase):
         self.assertEqual(report1["candidate_count"], 2)
         self.assertEqual(report1["chosen"]["product"], "MILK")
 
+    def test_evaluator_receives_exact_executable_prefix_not_clipped_suffix(self):
+        market = full_mixed(vacancy=0)
+        seen = []
+        def evaluate(queue):
+            seen.append(copy.deepcopy(queue))
+            self.assertEqual(len(queue), 10)
+            self.assertNotIn(["SELL", "STRAWBERRY", 4], queue)
+            return receipt(queue)
+        result, report = reclaim_mixed_empty_slot(
+            market, {"MILK": 4}, max_orders=10, evaluate=evaluate
+        )
+        self.assertTrue(report["changed"])
+        self.assertGreaterEqual(len(seen), 2)
+        self.assertEqual(result[10], ["SELL", "STRAWBERRY", 4])
+
     def test_incomplete_baseline_is_exact_noop(self):
         market = full_mixed(vacancy=0)
         result, report = reclaim_mixed_empty_slot(

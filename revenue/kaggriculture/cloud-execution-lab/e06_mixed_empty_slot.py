@@ -142,7 +142,7 @@ def reclaim_mixed_empty_slot(
         report["reason"] = "no_remaining_sale"
         return original, report
 
-    baseline = _normalize_receipt(evaluate(copy.deepcopy(original)))
+    baseline = _normalize_receipt(evaluate(copy.deepcopy(original[:max_orders])))
     if not baseline.get("complete"):
         report["reason"] = "baseline_receipt_incomplete"
         return original, report
@@ -150,11 +150,11 @@ def reclaim_mixed_empty_slot(
     slot = vacancies[0]
     best = None
     scenario_names = set(baseline["scenario_value"])
-    for product, quantity in eligible:
+    for candidate_index, (product, quantity) in enumerate(eligible):
         candidate = copy.deepcopy(original)
         candidate[slot] = ["SELL", product, quantity]
         report["candidate_count"] += 1
-        receipt = _normalize_receipt(evaluate(copy.deepcopy(candidate)))
+        receipt = _normalize_receipt(evaluate(copy.deepcopy(candidate[:max_orders])))
         if not receipt.get("complete"):
             continue
         if set(receipt["scenario_value"]) != scenario_names:
@@ -172,7 +172,7 @@ def reclaim_mixed_empty_slot(
         if not deltas or min(deltas.values()) <= 0:
             continue
         report["accepted_count"] += 1
-        rank = (min(deltas.values()), sum(deltas.values()), -slot, product)
+        rank = (min(deltas.values()), sum(deltas.values()), -candidate_index)
         if best is None or rank > best[0]:
             best = (rank, candidate, product, quantity, deltas)
 
