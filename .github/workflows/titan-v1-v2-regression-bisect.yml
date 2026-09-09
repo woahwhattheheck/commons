@@ -1,0 +1,235 @@
+name: TITAN exact V1-V2-current regression bisect
+
+on:
+  push:
+    branches:
+      - sol-palisade/titan-v3-v1-v2-regression-bisect-20260909-01
+    paths:
+      - .github/workflows/titan-v1-v2-regression-bisect.yml
+      - revenue/kaggriculture/cloud-execution-lab/analysis/v1-v2-regression-bisect/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v1-v2-regression-bisect-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-cell-bisect:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      KAG: revenue/kaggriculture
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      ANALYSIS: revenue/kaggriculture/cloud-execution-lab/analysis/v1-v2-regression-bisect
+    steps:
+      - name: Checkout exact branch commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Materialize reviewed source bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          BUNDLE="$RUNNER_TEMP/titan-v1-v2-regression-source.tar.gz"
+          cat "$ANALYSIS/.bootstrap"/part-* | base64 --decode > "$BUNDLE"
+          echo "067c7b410133e44e01503fb657ecb0c32cf770856c0304edb46482f34fe08689  $BUNDLE" | sha256sum --check --strict
+          tar -xzf "$BUNDLE" -C .
+          rm -rf "$ANALYSIS/.bootstrap"
+          test -f "$ANALYSIS/regression_bisect.py"
+          test -f p/sol-palisade-titan-v3-v1-v2-regression-bisect-20260909-01.md
+
+      - name: Unit and syntax tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest discover -v "$ANALYSIS" 'test_*.py'
+          python3 -m py_compile "$ANALYSIS"/*.py
+
+      - name: Validate immutable sources and archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          kag = Path("revenue/kaggriculture")
+          lab = kag / "cloud-execution-lab"
+          expected = {
+              lab / "reference/next-panel/vendor/arlene.py": ("1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4", None),
+              lab / "exports/historical/titan-4ca5de6ba4b3f1d2ec63cece6abcd666a926daa4a783160736db2de5afcb5744.tar.gz": ("4ca5de6ba4b3f1d2ec63cece6abcd666a926daa4a783160736db2de5afcb5744", 376342),
+              lab / "exports/historical/titan-e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58.tar.gz": ("e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58", 377624),
+              kag / "cloud-model-lab/frozen_sell_opponent.py": ("ca810092542eed9d862466df71ef6ee723170a54d5ad5764babd3d4a727202ae", None),
+              kag / "cloud-titan-composition/arms/sell.py": ("401ad5051a5100875b029eec5ec75bce77b385b8906e3172230d564512179178", None),
+              kag / "cloud-titan-composition/vendor/sell/scheduler.py": ("32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9", None),
+          }
+          for path, (wanted_hash, wanted_bytes) in expected.items():
+              data = path.read_bytes()
+              got_hash = hashlib.sha256(data).hexdigest()
+              assert got_hash == wanted_hash, (path, got_hash, wanted_hash)
+              if wanted_bytes is not None:
+                  assert len(data) == wanted_bytes, (path, len(data), wanted_bytes)
+
+          pointer_path = lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+          pointer = json.loads(pointer_path.read_text())
+          archive = lab / pointer["path"]
+          data = archive.read_bytes()
+          assert hashlib.sha256(data).hexdigest() == pointer["sha256"]
+          assert len(data) == pointer["bytes"]
+          assert pointer["entrypoint"] == "main.py::agent"
+          print(json.dumps({
+              "source_commit": "${{ github.sha }}",
+              "current_archive_sha256": pointer["sha256"],
+              "current_archive_bytes": pointer["bytes"],
+              "pins_checked": len(expected) + 1,
+          }, sort_keys=True))
+          PY
+
+      - name: Extract exact policy generations
+        id: extract
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/titan-regression-bisect"
+          rm -rf "$ROOT"
+          mkdir -p "$ROOT"/{v1,pre-v2,v2,current}
+          cp "$LAB/reference/next-panel/vendor/arlene.py" "$ROOT/v1/main.py"
+          tar -xzf "$LAB/exports/historical/titan-4ca5de6ba4b3f1d2ec63cece6abcd666a926daa4a783160736db2de5afcb5744.tar.gz" -C "$ROOT/pre-v2"
+          tar -xzf "$LAB/exports/historical/titan-e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58.tar.gz" -C "$ROOT/v2"
+          tar -xzf "$LAB/exports/titan-current.tar.gz" -C "$ROOT/current"
+          for policy in v1 pre-v2 v2 current; do
+            test -f "$ROOT/$policy/main.py"
+          done
+          test -d "$ROOT/current/checks/reference/engine"
+          echo "root=$ROOT" >> "$GITHUB_OUTPUT"
+
+      - name: Run exact Arlene-v14 cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='${{ steps.extract.outputs.root }}'
+          mkdir -p "$ANALYSIS/results"
+          python3 -B "$ANALYSIS/regression_bisect.py" \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --loader "$LAB/reference/next-panel/loader_runtime.py" \
+            --engine-dir "$ROOT/current/checks/reference/engine" \
+            --policy "HOSTED_V1_ARLENE=$ROOT/v1" \
+            --policy "PRE_V2_4CA5=$ROOT/pre-v2" \
+            --policy "SUBMITTED_V2_E363=$ROOT/v2" \
+            --policy "CURRENT=$ROOT/current" \
+            --artifact "HOSTED_V1_ARLENE=$LAB/reference/next-panel/vendor/arlene.py" \
+            --artifact "PRE_V2_4CA5=$LAB/exports/historical/titan-4ca5de6ba4b3f1d2ec63cece6abcd666a926daa4a783160736db2de5afcb5744.tar.gz" \
+            --artifact "SUBMITTED_V2_E363=$LAB/exports/historical/titan-e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58.tar.gz" \
+            --artifact "CURRENT=$LAB/exports/titan-current.tar.gz" \
+            --opponent "$LAB/reference/next-panel/vendor/arlene.py" \
+            --opponent-label ARLENE_V14 \
+            --environment-seeds 9903101 9903103 9903105 9903107 \
+            --candidate-seats 0 1 \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15.0 \
+            --game-timeout 240.0 \
+            --source-commit "$GITHUB_SHA" \
+            --output "$ANALYSIS/results/arlene-v14.json"
+
+      - name: Run exact frozen-SELL cells
+        shelll: bash
+        run: |
+          set -euo pipefail
+          ROOT='${{ steps.extract.outputs.root }}'
+          python3 -B "$ANALYSIS/regression_bisect.py" \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --loader "$LAB/reference/next-panel/loader_runtime.py" \
+            --engine-dir "$ROOT/current/checks/reference/engine" \
+            --policy "HOSTED_V1_ARLENE=$ROOT/v1" \
+            --policy "PRE_V2_4CA5=$ROOT/pre-v2" \
+            --policy "SUBMITTED_V2_E363=$ROOT/v2" \
+            --policy "CURRENT=$ROOT/current" \
+            --artifact "HOSTED_V1_ARLENE=$LAB/reference/next-panel/vendor/arlene.py" \
+            --artifact "PRE_V2_4CA5=$LAB/exports/historical/titan-4ca5de6ba4b3f1d2ec63cece6abcd666a926daa4a783160736db2de5afcb5744.tar.gz" \
+            --artifact "SUBMITTED_V2_E363=$LAB/exports/historical/titan-e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58.tar.gz" \
+            --artifact "CURRENT=$LAB/exports/titan-current.tar.gz" \
+            --opponent "$KAG/cloud-model-lab/frozen_sell_opponent.py" \
+            --opponent-label T08_FROZEN_SELL \
+            --opponent-dependency-root "ARMS=$KAG/cloud-titan-composition/arms" \
+            --opponent-dependency-root "SELL_VENDOR=$KAG/cloud-titan-composition/vendor/sell" \
+            --environment-seeds 9903101 9903103 9903105 9903107 \
+            --candidate-seats 0 1 \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15.0 \
+            --game-timeout 240.0 \
+            --source-commit "$GITHUB_SHA" \
+            --output "$ANALYSIS/results/t08-frozen-sell.json"
+
+      - name: Combine opponent evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B "$ANALYSIS/summarize_bisect.py" \
+            --report "ARLENE_V14=$ANALYSIS/results/arlene-v14.json" \
+            --report "T08_FROZEN_SELLD=$ANALYSIS/results/t08-frozen-sell.json" \
+            --json-output "$ANALYSIS/results/summary.json" \
+            --markdown-output "$ANALYSIS/EVIDENCE.md"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          analysis = Path("revenue/kaggriculture/cloud-execution-lab/analysis/v1-v2-regression-bisect")
+          outputs = [
+              analysis / "results/arlene-v14.json",
+              analysis / "results/t08-frozen-sell.json",
+              analysis / "results/summary.json",
+              analysis / "EVIDENCE.md",
+          ]
+          receipt = {
+              "schema_version": 1,
+              "operation": "titan-v3-v1-v2-regression-bisect-20260909-01",
+              "source_commit": os.environ["GITHUB_SHA"],
+              "workflow_run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "workflow_run_attempt": int(os.environ["GITHUB_RUN_ATTEMPT"]),
+              "outputs": {
+                  str(path): {
+                      "bytes": path.stat().st_size,
+                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                  }
+                  for path in outputs
+              },
+              "deployment_authorized": False,
+              "submission_authorized": False,
+          }
+          target = analysis / "results/run-receipt.json"
+          target.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload immutable evidence bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v1-v2-regression-bisect-${{ github.run_id }}
+          path: |
+            ${{ env.ANALYSIS }}/EVIDENCE.md
+            ${{ env.ANALYSIS }}/results/*.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit evidence to owning branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A "$ANALYSIS" p/sol-palisade-titan-v3-v1-v2-regression-bisect-20260909-01.md
+          if git diff --cached --quiet; then
+            echo 'No evidence delta to commit.'
+            exit 0
+          fi
+          git commit -m 'SOL-PALISADE: exact V1/V2/current regression evidence [skip ci]'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
