@@ -61,6 +61,10 @@ class PanelDeltaTests(unittest.TestCase):
         self.assertLess(report["overall"]["mean_own_delta"], 0)
         self.assertEqual(report["overall"]["new_losses"], 0)
         self.assertEqual(report["verdict"], "reject")
+        self.assertEqual(
+            report["leaderboard_admission"]["negative_own_score_seats"],
+            ["0"],
+        )
         self.assertIn("regresses overall", report["verdict_reason"])
 
     def test_positive_aggregate_with_negative_opponent_stratum_rejects(self):
@@ -81,6 +85,28 @@ class PanelDeltaTests(unittest.TestCase):
             ["b"],
         )
         self.assertIn("opponent strata: b", report["verdict_reason"])
+
+    def test_positive_aggregate_and_opponents_with_negative_seat_rejects(self):
+        baseline = {}
+        candidate = {}
+        for opponent in ("a", "b"):
+            baseline[(opponent, 1, 0)] = game(opponent, 1, 0, 100, 50)
+            baseline[(opponent, 1, 1)] = game(opponent, 1, 1, 100, 50)
+            candidate[(opponent, 1, 0)] = game(opponent, 1, 0, 120, 40)
+            candidate[(opponent, 1, 1)] = game(opponent, 1, 1, 95, 40)
+        report = compare(baseline, candidate)
+        self.assertGreater(report["overall"]["mean_own_delta"], 0)
+        self.assertTrue(all(
+            metrics["mean_own_delta"] > 0
+            for metrics in report["by_opponent"].values()
+        ))
+        self.assertGreater(report["overall"]["mean_margin_delta"], 0)
+        self.assertEqual(report["verdict"], "reject")
+        self.assertEqual(
+            report["leaderboard_admission"]["negative_own_score_seats"],
+            ["1"],
+        )
+        self.assertIn("seat strata: 1", report["verdict_reason"])
 
     def test_zero_own_score_with_positive_margin_holds(self):
         baseline = {("x", 1, 0): game("x", 1, 0, 100, 90)}
@@ -122,6 +148,7 @@ class PanelDeltaTests(unittest.TestCase):
             text.index("Mean candidate-score Δ"), text.index("Mean margin Δ")
         )
         self.assertIn("Opponent strata with negative candidate-score Δ: x", text)
+        self.assertIn("Seat strata with negative candidate-score Δ: 0", text)
 
     def test_loader_and_grid_are_fail_closed(self):
         with tempfile.TemporaryDirectory() as raw:
