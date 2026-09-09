@@ -83,6 +83,20 @@ class WorkspaceTests(unittest.TestCase):
         r=self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="operator removed listing",request_id="c")
         self.assertEqual("HUMAN_CONFIRMED",r["remote_changed"]); self.assertEqual("CONFIRMED",r["status"])
 
+    def test_confirmation_requires_exact_positive_integer_task_id(self):
+        self.w.record_listing(item_id="I1",channel="a",remote_url="https://a.test/i1",request_id="l")
+        task=self.w.mark_sold(item_id="I1",sold_at="t",request_id="s")["close_tasks"][0]
+        self.assertEqual(1,task["task_id"])
+        before=self.w.item_snapshot("I1")
+        for rid,bad in (("true",True),("false",False),("str","1"),("float",1.0),("none",None),("zero",0),("neg",-1)):
+            with self.subTest(task_id=bad):
+                with self.assertRaises(WorkspaceError):
+                    self.w.confirm_remote_close(task_id=bad,confirmation_note="operator removed listing",request_id=rid)
+                self.assertEqual(before,self.w.item_snapshot("I1"))
+        first=self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="operator removed listing",request_id="valid")
+        self.assertEqual("CONFIRMED",first["status"])
+        self.assertEqual(first,self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="operator removed listing",request_id="valid"))
+
     def test_confirmation_requires_nonblank_text_and_is_one_way(self):
         self.w.record_listing(item_id="I1",channel="a",remote_url="https://a.test/i1",request_id="l")
         task=self.w.mark_sold(item_id="I1",sold_at="t",request_id="s")["close_tasks"][0]
