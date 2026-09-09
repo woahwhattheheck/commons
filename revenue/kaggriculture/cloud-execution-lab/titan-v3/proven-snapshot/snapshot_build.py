@@ -53,7 +53,7 @@ def smoke_import(candidate_data: bytes) -> None:
             target.write_bytes(payload)
         program = (
             "import os,sys; sys.path.insert(0, os.getcwd()); "
-            "import candidate,main; assert callable(main.agent); "
+            "import main,candidate; assert callable(main.agent); "
             "assert main.agent is candidate.agent; print(main.agent.__module__)"
         )
         env = dict(os.environ)
@@ -98,6 +98,36 @@ def atomic_write(path: Path, payload: bytes, *, overwrite: bool) -> None:
             temporary.unlink(missing_ok=True)
         except OSError:
             pass
+
+
+def _seed_list(freeze: Mapping[str, object], name: str) -> list[int]:
+    value = freeze.get(name)
+    if (
+        not isinstance(value, list)
+        or not value
+        or any(type(seed) is not int or seed < 0 for seed in value)
+        or len(set(value)) != len(value)
+    ):
+        raise SnapshotError(f"SOURCE-FREEZE.json {name} must be a unique non-negative integer list")
+    return list(value)
+
+
+def bound_evidence_scope(freeze: Mapping[str, object], pin: Pin) -> dict:
+    """Report only evidence encoded in the hash-bound source freeze."""
+    held_out_status = freeze.get("held_out_status")
+    if held_out_status is not None and (
+        not isinstance(held_out_status, str) or not held_out_status.strip()
+    ):
+        raise SnapshotError("SOURCE-FREEZE.json held_out_status must be null or a non-empty string")
+    return {
+        "source_freeze_sha256": pin.source_freeze_sha256,
+        "development_seeds": _seed_list(freeze, "development_seeds"),
+        "held_out_seeds": _seed_list(freeze, "held_out_seeds"),
+        "held_out_status": held_out_status,
+        "results_bound": False,
+        "results_note": "SOURCE-FREEZE.json binds panel seeds/status, not game-result artifacts",
+        "fresh_promotion_panels_required": True,
+    }
 
 
 def materialize(
@@ -146,11 +176,7 @@ def materialize(
             for name, payload in sorted(output_members.items())
         },
         "imports": {"source": source_imports, "candidate": candidate_imports},
-        "evidence_scope": {
-            "development": {"wins": 12, "ties": 0, "losses": 0, "games": 12},
-            "held_out": {"wins": 8, "ties": 0, "losses": 0, "games": 8},
-            "kind": "recorded local official-interpreter games; not hosted rating",
-        },
+        "evidence_scope": bound_evidence_scope(freeze, pin),
         "policy_delta": "generated main.py alias only; frozen policy bytes unchanged",
     }
     receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
