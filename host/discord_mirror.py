@@ -13,6 +13,8 @@
 #   python3 host/discord_mirror.py format FILE
 #   python3 host/discord_mirror.py send FILE
 
+# DIGIT cite (clan/grokbot): seat hygiene for Discord mirror host — see p/digit-clan-mark-20260902-01.md. Not a gate.
+
 from __future__ import annotations
 
 import json

@@ -39,3 +39,14 @@ Genesis this window: inj/fwd/rev OR-mask **1** on all four rings (`new=old|mask`
 Titan / dc / weather_v2 / DISTRO: not opened. fire_337=NO. 7913=NO. mmap=NO.
 
 337 **NO** · pulsed_78 **NO** · invented_dest **NO** · 10-wide **NO**
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

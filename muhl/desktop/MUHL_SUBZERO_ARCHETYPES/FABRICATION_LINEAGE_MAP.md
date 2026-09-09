@@ -230,3 +230,14 @@ absent journals · 3 journals whose producer was not located · the 38 GB moon p
 9 `*.wbgenome` directories · `titan_replicate_revert.bin` (24,836,309,572 B) · `titan_replicate_manifest.json`
 (unread) · 11 further substrate files touched by the federation journal ·
 `C:/llm/models/_nightwork_backup`, `_removed`, `_to_delete_spent_genomes` (never enumerated).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
