@@ -1,0 +1,73 @@
+name: sol-vm-business-pack-runner-batch
+
+on:
+  push:
+    branches:
+      - 'sol-vm/business-pack-runner-batch-20260909-*'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-current-runner-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout carrier
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record carrier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "carrier_head=$(git rev-parse HEAD)"
+          git show -s --format='carrier_parents=%P' HEAD
+      - name: Hash unique-pack exact paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          for p in \
+            business-packs.html \
+            ground/BUSINESS_PACKS.json \
+            ground/BUSINESS_PACKS.md \
+            ground/SLACK_CONTROL_PLANE.json \
+            ground/SLACK_CONTROL_PLANE.md \
+            host/business_pack_unique.py \
+            p/cursor-business-packs-unique-20260902-01.md \
+            test_business_pack_unique.py \
+            test_slack_control_plane.py; do
+            printf '%s=' "$p"
+            git hash-object "$p"
+          done
+      - name: Run unique-pack exact focused suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_business_pack_unique.py test_slack_control_plane.py
+          python3 -m py_compile host/business_pack_unique.py test_business_pack_unique.py test_slack_control_plane.py
+      - name: Hash paperwork-included exact paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          for p in \
+            business-packs.html \
+            ground/BUSINESS_PACKS.json \
+            ground/BUSINESS_PACKS.md \
+            ground/BUSINESS_PACK_PAPERWORK.json \
+            ground/BUSINESS_PACK_PAPERWORK.md \
+            host/business_pack_paperwork.py \
+            p/cursor-business-pack-paperwork-included-20260902-01.md \
+            packs/_template/paperwork.md \
+            test_business_pack_paperwork.py; do
+            printf '%s=' "$p"
+            git hash-object "$p"
+          done
+      - name: Run paperwork-included exact focused suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_business_pack_paperwork.py test_business_pack_paperwork_slot.py
+          python3 -m py_compile host/business_pack_paperwork.py test_business_pack_paperwork.py test_business_pack_paperwork_slot.py
