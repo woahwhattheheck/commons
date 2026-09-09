@@ -63,6 +63,7 @@ class Features:
     fourth_quadrant: bool = False
     market_pressure: bool = False
     committed_seed_retry: bool = False
+    operating_stock: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -202,6 +203,7 @@ class TitanAgent:
             from frozen_selected import FrozenSelected
             self.consumer = FrozenSelected()
             self.consumer.capture_post_units = f.terminal_history
+            self.consumer.capture_operating_stock = f.operating_stock
             self.controller = self.consumer.controller
             self.production = self.controller
             if f.terminal_route:
@@ -285,6 +287,29 @@ class TitanAgent:
         result, report = self.funding_module.select_seed_queue(
             m, post, deepcopy(selected), deepcopy(proposed), deepcopy(cfg))
         self.diagnostics['seed_funding'] = report
+        return result
+
+    def _operating_stock_selected(self, obs, cfg, selected):
+        """Protect a current producer input at the final market boundary."""
+        if (not self.features.operating_stock or self.features.consumer != 'frozen'
+                or self.features.terminal_route):
+            return selected
+        if not any(o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER']
+                   for o in selected.get('market', [])):
+            return selected
+        snapshot = getattr(self.consumer, 'selected_post_units', None)
+        if (snapshot is None or self.selected is None
+                or selected.get('farmer') != self.selected.get('farmer')
+                or selected.get('hands') != self.selected.get('hands')):
+            self.diagnostics['operating_stock'] = {'changed': False, 'reason': 'no_completed_unit_snapshot'}
+            return selected
+        from operating_stock import protect_operating_stock
+        from scheduler import m, parent
+        farm, private = snapshot
+        result, report = protect_operating_stock(
+            m, obs, cfg, selected, farm, private, self.controller.R[self.controller.cur],
+            [item[0] for item in parent.DECISIONS])
+        self.diagnostics['operating_stock'] = report
         return result
 
     def _redundant_hire_selected(self, obs, cfg, selected):
@@ -436,6 +461,8 @@ class TitanAgent:
                         deadline=started+self.features.budget_seconds-self.features.reserve_seconds)
                 stage = 'market_pressure'
                 output = self._market_pressure_selected(obs, cfg, output)
+                stage = 'operating_stock'
+                output = self._operating_stock_selected(obs, cfg, output)
                 if self.history is not None:
                     self.history.remember(obs,cfg,output,self.post)
                     self.diagnostics['history'] = self.history.diagnostics

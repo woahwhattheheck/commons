@@ -41,7 +41,7 @@ def source_files():
     mapping['seed_retry.py']='../cloud-committed-seed-retry/seed_retry.py'
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
-              'funded_payback_runtime.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+              'funded_payback_runtime.py','operating_stock.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
     # Package ECON's landed callback from its attributed source rather than
     # maintaining a second implementation in the canonical runtime tree.
@@ -66,6 +66,7 @@ def source_files():
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
     mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
     mapping['checks/test_weed_continuation.py']='test_weed_continuation.py'
+    mapping['checks/test_operating_stock.py']='test_operating_stock.py'
     mapping['checks/reference/weed-continuation/delta-native.json.gz']='reference/weed-continuation/delta-native.json.gz'
     mapping['checks/reference/weed-continuation/ash-native.json.gz']='reference/weed-continuation/ash-native.json.gz'
     mapping['checks/reference/weed-continuation/spruce-native.json.gz']='reference/weed-continuation/spruce-native.json.gz'

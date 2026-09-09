@@ -27,11 +27,11 @@
     }
   },
   "checkpoint": {
-    "operation": "titan-v2-weed-continuation-20260909",
-    "owner_authorization": "Continue the existing targeted v2 recovery/integration. No new simulation panels in this analysis pass. No Kaggle submission.",
+    "operation": "titan-v2-operating-stock-20260909",
+    "owner_authorization": "Continue the same targeted v2 integration and actual-game analysis without new simulation panels or Kaggle submission.",
     "playing_strength": "not_measured_for_changed_bytes",
     "runtime_entrypoint": "main.py::agent",
-    "stage": "source_and_native_validation",
+    "stage": "source_contract_validation_candidate_disabled",
     "submission_status": "not_submitted"
   },
   "components": [
@@ -152,6 +152,14 @@
       "consumed_result": "Exact DELTA rejoin and SPRUCE native prefix, ASH later-seed/reset rejections, and source boundaries. A historical implementation was not recovered; its tests and development games are not attributed to these bytes. New whole-game strength remains unmeasured.",
       "enabled": true,
       "source_pin": "Current manifest spatial_tempo.py, titan_runtime.py, seed_budget.py and checks/test_weed_continuation.py"
+    },
+    {
+      "callsite": "TitanAgent._operating_stock_selected after market_pressure; completed FrozenSelected unit snapshot",
+      "component": "Observed operating-stock obligations",
+      "consumed_result": "20 stateless source contract checks; retrospective recorded-input proposals without game advancement. Future operating cash and outcome effects are not certified.",
+      "enabled": false,
+      "role": "integrated candidate; operating_stock=false",
+      "source_pin": "Current source manifest operating_stock.py"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -172,6 +180,7 @@
     "fourth_quadrant": false,
     "funding": true,
     "market_pressure": true,
+    "operating_stock": false,
     "redundant_hire": true,
     "reserve_seconds": 0.01,
     "seed": true,
@@ -204,10 +213,10 @@
   },
   "entrypoint": "main.py::agent",
   "game_evidence_for_this_archive": {
-    "evidence": "runtime/integrated-selected/WEED-CONTINUATION-TESTS.json",
+    "evidence": "runtime/integrated-selected/OPERATING-STOCK-TESTS.json",
     "historical_results_apply": false,
     "new_full_games": 0,
-    "scope": "Native/source-validated weed-continuation iteration. Whole-game playing strength has not been measured for these changed bytes. Owner paused new simulation panels for source/mechanism review."
+    "scope": "Disabled operating-stock integration and package/source checks. Prior native weed evidence belongs to db34; no new game evidence."
   },
   "historical_checkpoint": {
     "operation": "titan-kaggriculture-checkpoint-20260908-01",
@@ -340,13 +349,13 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 305,
-      "sha256": "0750a0340ef799b7cfe6d5e6d5db23c3b4dd630617d1859a08ca0bf9f48dbe9a",
+      "bytes": 333,
+      "sha256": "1e96fc1d9e80e69d273e0466fa71e794bd269b3e67b7ab81c28b27845bfe052e",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 5830,
-      "sha256": "8fd65d5fed957cb857e7895fdb6bf642a3959a2bd01df7d748553d7ba2cbe4d6",
+      "bytes": 6840,
+      "sha256": "d3e2b5fe4b22343a305eb87f114a0cc85ec98a12d028873b24fe95d36ffc1792",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -434,6 +443,11 @@
       "sha256": "930244277af14cb493b4d63f542b1446820e25f46a7e6c7be06be3ee303e2b93",
       "source_path": "test_module_recovery.py"
     },
+    "checks/test_operating_stock.py": {
+      "bytes": 9890,
+      "sha256": "98eaea62f59c72c519778632508d65bf477d5cdd9f4d456f9a194819fdcb66b6",
+      "source_path": "test_operating_stock.py"
+    },
     "checks/test_ordered_selected_sell.py": {
       "bytes": 11682,
       "sha256": "0b0a700eb2b8efe0bdc59e5a3dde982fa14c1a5e9b847c9fb41438ed8e1700a0",
@@ -480,8 +494,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 6623,
-      "sha256": "8d37c610af3e0c91b3265ccc85697428ef7c22d1c3e7d77f01610841f3aad1a2",
+      "bytes": 6836,
+      "sha256": "afeaab24b23e4c50a40c345d51bc97186f859da91914e2f50b77cbb9e137480a",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
@@ -513,6 +527,11 @@
       "bytes": 1442,
       "sha256": "ab92d3c18c8edb63cbdd31626ada447783b85bbe9ed32bb546e6c7834a99b152",
       "source_path": "../cloud-runtime-pulse/observed_clone.py"
+    },
+    "operating_stock.py": {
+      "bytes": 11092,
+      "sha256": "cc403727b3ea31f9590f37e8eb784f1798b2c50a42bd3ba83d321eba6e6c4b78",
+      "source_path": "operating_stock.py"
     },
     "ordered_selected_sell.py": {
       "bytes": 5101,
@@ -805,8 +824,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 24872,
-      "sha256": "1edef56ca288df5e0cff2b9fa5c7dd6aa4e872091c2c87f1d739d1c1a1791903",
+      "bytes": 26358,
+      "sha256": "70245afcc4a544e671f5b9d591238bcf3fb935a076352de273ea5d87fc090958",
       "source_path": "titan_runtime.py"
     }
   },

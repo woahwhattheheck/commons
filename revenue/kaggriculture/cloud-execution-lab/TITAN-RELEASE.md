@@ -16,6 +16,22 @@ tests and games do not validate these newly authored bytes, and no new playing
 strength or leaderboard claim is made. Optional spatial pathing/tempo, terminal
 features, fourth-quadrant investment and committed seed retry remain disabled.
 
+The same package now includes an operating-stock proposal at the final frozen
+market boundary. It can reserve fertilizer for one reachable same-day pickup
+and useful consumption on existing ongoing crops, preserving all unit actions
+and other market slots. The consumer supplies its completed unit snapshot; a
+changed unit action, competing pickup, reset, branch, hiring, capacity conflict
+or unfunded current spending retains the selected action. Obligations are
+recomputed from each observation, so carried inputs and completed pickups
+release shed reservations.
+
+`operating_stock` remains false. Twenty stateless source-contract checks cover
+the proposal and runtime boundary; recorded-input review exercises the actual
+sale-conflict mechanism without advancing a game. The price screen's rival
+supply and liquidity assumptions do not certify future watering, output,
+operating cash or final receipts. This is one integrated candidate capability,
+with no new simulation panel or claimed score improvement.
+
 Run `python build_integrated.py` to generate `exports/titan-current.tar.gz` from current source. Run `python build_integrated.py --check` to reject any divergence between selected source, archive, configuration and receipt. There is no public variant selector. Executors finish their existing frozen checkpoint, then consume this stream at an immutable commit and report the archive hash before attributing games.
 
 The sole public entrypoint is `main.py::agent`. Its deterministic `TITAN-CONFIG.json` retains the strongest supported frozen SELL controller, actual ALDER/JUNIPER funding and the integrated deadline consumer. Each turn selects one parent action. Current entrypoint timing accounts for lazy initialization and prelude; it does not guarantee external serialization, IPC or scheduling time. The 10 ms reserve remains unchanged pending measured outer-protocol calibration.
