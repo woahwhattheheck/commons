@@ -19,6 +19,8 @@ EXPECTED_EXECUTION_BLOBS = {
     "main": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
     "titan_runtime": "b952c9c228ecbde592bf3d2df01638677abb0d24",
     "config": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "build_integrated": "05994d946885ff0fe2a2ce77439fd335174900aa",
+    "source_manifest": "f5d8a9f1338dbef5396de8f23262453b0f70e832",
 }
 EXPECTED_BLOBS = {
     "v1": "cbc502a92fe9d790cfaf763f6990d1057bc9b82d",
@@ -27,6 +29,9 @@ EXPECTED_BLOBS = {
     "main": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
     "titan_runtime": "b952c9c228ecbde592bf3d2df01638677abb0d24",
     "config": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "build_integrated": "05994d946885ff0fe2a2ce77439fd335174900aa",
+    "source_manifest": "f5d8a9f1338dbef5396de8f23262453b0f70e832",
+    "observed_clone": "f810d53193d3035655a36c21021e18ba1d415916",
 }
 QUEUE_NEEDLE = "if q>offered:return False"
 CAP_NEEDLE = "q=min(max(0,int(o[2])),remaining.get(item,0),max(0,available.get(item,0)))"
@@ -96,6 +101,9 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         "main": lab / "main.py",
         "titan_runtime": lab / "titan_runtime.py",
         "config": lab / "TITAN-CONFIG.json",
+        "build_integrated": lab / "build_integrated.py",
+        "source_manifest": lab / "runtime/integrated-selected/CURRENT-SOURCE.json",
+        "observed_clone": lab / "../cloud-runtime-pulse/observed_clone.py",
         "growth_patch": HERE / "growth_patch.py",
         "candidate": HERE / "candidate.py",
         "panel_adapter": HERE / "run_panel.py",
@@ -109,6 +117,8 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         raise FileNotFoundError("missing source: " + ", ".join(missing))
     blobs = {name: path.read_bytes() for name, path in paths.items()}
     text = {name: data.decode("utf-8") for name, data in blobs.items()}
+    source_manifest = json.loads(text["source_manifest"])
+    source_runtime = source_manifest.get("runtime", {})
     checks = {
         "exact_historical_and_current_blobs": all(
             git_blob_sha1(blobs[name]) == expected
@@ -148,7 +158,8 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         "candidate_attaches_inside_canonical_new_instance": (
             text["candidate"].count("instance = _ORIGINAL_NEW_INSTANCE(root, feature_data)") == 1
             and text["candidate"].count("**attach(instance, frozen_selected)") == 1
-            and text["candidate"].count('"execution_closure": dict(_EXECUTION_CLOSURE)') == 1
+            and text["candidate"].count('"entry_files": dict(_ENTRY_FILES)') == 1
+            and text["candidate"].count('"source_closure": dict(_SOURCE_CLOSURE)') == 1
         ),
         "candidate_self_verifies_exact_execution_closure_before_import": (
             all(
@@ -156,10 +167,46 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
                 and expected in text["candidate"]
                 for name, expected in EXPECTED_EXECUTION_BLOBS.items()
             )
-            and text["candidate"].count("_EXECUTION_CLOSURE = _verify_execution_closure()") == 1
-            and text["candidate"].index("_EXECUTION_CLOSURE = _verify_execution_closure()")
-                < text["candidate"].index("from growth_patch import attach")
-            and text["candidate"].count("path.is_symlink()") == 1
+            and text["candidate"].count("_ENTRY_FILES = _verify_entry_files()") == 1
+            and text["candidate"].count(
+                "_SOURCE_CLOSURE = _verify_and_install_source_roots()"
+            ) == 1
+            and text["candidate"].index("_ENTRY_FILES = _verify_entry_files()")
+                < text["candidate"].index(
+                    "_SOURCE_CLOSURE = _verify_and_install_source_roots()"
+                )
+                < text["candidate"].index("_GROWTH_PATCH = _load_private(")
+            and text["candidate"].count("cursor.is_symlink()") == 1
+            and text["candidate"].count("relative = lexical.relative_to(REPOSITORY)") == 1
+        ),
+        "candidate_derives_and_verifies_canonical_source_roots": (
+            text["build_integrated"].count(
+                "mapping['observed_clone.py']='../cloud-runtime-pulse/observed_clone.py'"
+            ) == 1
+            and isinstance(source_runtime.get("observed_clone.py"), dict)
+            and source_runtime["observed_clone.py"].get("source_path")
+                == "../cloud-runtime-pulse/observed_clone.py"
+            and source_runtime["observed_clone.py"].get("bytes")
+                == len(blobs["observed_clone"])
+            and source_runtime["observed_clone.py"].get("sha256")
+                == sha256_bytes(blobs["observed_clone"])
+            and text["candidate"].count("mapping = builder.source_files()") == 1
+            and text["candidate"].count("if set(mapping) != set(runtime):") == 1
+            and text["candidate"].count(
+                'record.get("sha256") != digest'
+            ) == 1
+            and text["candidate"].count(
+                '"observed_clone",'
+            ) >= 1
+            and text["candidate"].count("importlib.util.find_spec(module_name)") == 1
+            and text["candidate"].count("preloaded module collision") == 1
+            and text["candidate"].count("root module resolves outside closure") == 1
+        ),
+        "candidate_private_loaders_do_not_publish_global_aliases": (
+            text["candidate"].count("def _load_private") == 1
+            and text["candidate"].count("spec.loader.exec_module(module)") == 1
+            and "sys.modules[" not in text["candidate"]
+            and text["candidate"].count("sys.modules.get(module_name)") == 1
         ),
         "patch_reuses_exact_transform_code_with_private_globals": (
             text["growth_patch"].count("base_transform.__code__") == 1
