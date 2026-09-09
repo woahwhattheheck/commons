@@ -12,13 +12,18 @@ import tarfile
 from pathlib import Path
 from typing import Any
 
+# Hook the single construction boundary rather than individual call sites.  The
+# current deadline-aware entrypoint can reconstruct an agent from more than one
+# branch; wrapping the constructor return covers every fresh instance while
+# preserving those control-flow and fallback paths byte-for-byte.
 ENTRYPOINT_NEEDLE = (
-    "        _INSTANCE = _new_instance("
-    "root, json.loads((root/'TITAN-CONFIG.json').read_text()))\n"
+    "    return FinalPressureAgent(features, fourth_quadrant_admission=admission)\n"
 )
-ENTRYPOINT_REPLACEMENT = ENTRYPOINT_NEEDLE + (
-    "        from land_admission import wrap as _wrap_land_admission\n"
-    "        _INSTANCE = _wrap_land_admission(_INSTANCE)\n"
+ENTRYPOINT_REPLACEMENT = (
+    "    from land_admission import wrap as _wrap_land_admission\n"
+    "    return _wrap_land_admission(\n"
+    "        FinalPressureAgent(features, fourth_quadrant_admission=admission)\n"
+    "    )\n"
 )
 
 
@@ -69,7 +74,8 @@ def patch_entrypoint(path: Path) -> dict[str, Any]:
     count = source.count(ENTRYPOINT_NEEDLE)
     if count != 1:
         raise ValueError(
-            f"expected exactly one current entrypoint insertion site, found {count}"
+            "expected exactly one current constructor hook site, "
+            f"found {count}"
         )
     patched = source.replace(ENTRYPOINT_NEEDLE, ENTRYPOINT_REPLACEMENT, 1)
     compile(patched, str(path), "exec")
@@ -78,6 +84,7 @@ def patch_entrypoint(path: Path) -> dict[str, Any]:
     path.write_text(patched, encoding="utf-8")
     return {
         "insertion_count": 1,
+        "hook_surface": "_new_instance.return",
         "baseline_main_sha256": before,
         "candidate_main_sha256": after,
     }
