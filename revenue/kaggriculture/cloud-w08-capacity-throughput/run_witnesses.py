@@ -11,7 +11,10 @@ import capacity_ledger as ledger
 
 
 def event(event_id: str, step: int, phase: str, op: str, **kwargs: Any) -> dict[str, Any]:
-    return {"id": event_id, "step": step, "phase": phase, "op": op, **kwargs}
+    payload = {"id": event_id, "step": step, "phase": phase, "op": op, **kwargs}
+    if op == "PLACE" and payload.get("destination") is None:
+        payload["destination"] = "shed"
+    return payload
 
 
 def build_witnesses() -> dict[str, Any]:

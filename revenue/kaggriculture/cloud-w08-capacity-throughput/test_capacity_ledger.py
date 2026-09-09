@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import importlib.util
+import json
 import pathlib
 import unittest
 
@@ -265,6 +267,66 @@ class CapacityLedgerTests(unittest.TestCase):
                      "actor": 0, "item": "COW", "quantity": 1},
                     e("pickup-cow", 2, "unit", "PICKUP", actor=0, item="COW", quantity=1),
                 ])
+
+    def test_witness_runner_survives_place_destination_barrier(self):
+        """run_witnesses.py must bind destination=shed; the merge left it crashing."""
+        spec = importlib.util.spec_from_file_location(
+            "w08_run_witnesses_repair", HERE / "run_witnesses.py")
+        module = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(module)
+        first = module.build_witnesses()
+        second = module.build_witnesses()
+        self.assertEqual(
+            json.dumps(first, sort_keys=True, indent=2),
+            json.dumps(second, sort_keys=True, indent=2),
+        )
+        expected = {
+            "intervening_sale_admits_later_deposit": True,
+            "missing_sale_rejects_real_discard": False,
+            "buy_refills_sale_room_and_rejects": False,
+            "candidate_cannot_reduce_retained_place": False,
+            "eod_drop_uses_post_market_room": True,
+        }
+        self.assertEqual(first["observed_admission"], expected)
+        place = module.event(
+            "retained-place", 62, "unit", "PLACE", actor=0,
+            item="WHEAT", quantity=1)
+        self.assertEqual(place["destination"], "shed")
+        with self.assertRaisesRegex(ValueError, "destination='shed'"):
+            LEDGER.simulate_capacity(
+                capacity=100, initial_shed={"WHEAT": 99},
+                initial_carried={0: {"WHEAT": 1}},
+                events=[{
+                    "id": "legacy-witness-place", "step": 62, "phase": "unit",
+                    "op": "PLACE", "actor": 0, "item": "WHEAT", "quantity": 1,
+                }])
+
+    def test_results_json_pins_current_source_identities(self):
+        """RESULTS.json must describe the files that actually landed."""
+        results = json.loads((HERE / "RESULTS.json").read_text(encoding="utf-8"))
+        repo = HERE.parents[2]
+        mismatches = []
+        for rec_path, rec in results["files"].items():
+            payload = (repo / rec_path).read_bytes()
+            sha256 = hashlib.sha256(payload).hexdigest()
+            git_blob = hashlib.sha1(
+                f"blob {len(payload)}\0".encode("ascii") + payload,
+                usedforsecurity=False,
+            ).hexdigest()
+            actual = {
+                "bytes": len(payload),
+                "sha256": sha256,
+                "git_blob": git_blob,
+            }
+            claimed = {
+                "bytes": rec.get("bytes"),
+                "sha256": rec.get("sha256"),
+                "git_blob": rec.get("git_blob"),
+            }
+            if actual != claimed:
+                mismatches.append({"path": rec_path, "claimed": claimed, "actual": actual})
+        self.assertEqual(mismatches, [])
 
     def test_exhaustive_post_market_room_family_matches_closed_form(self):
         cases = 0
