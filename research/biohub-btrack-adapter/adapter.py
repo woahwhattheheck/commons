@@ -370,6 +370,8 @@ def tracks_to_rows(
 
     for track in tracks:
         track_id = _as_int(track.ID, "track ID")
+        if track_id <= 0:
+            raise AdapterError("track ID must be positive; 0 is reserved as the no-parent lineage sentinel")
         if track_id in track_by_id:
             raise AdapterError(f"duplicate track ID {track_id}")
         track_by_id[track_id] = track

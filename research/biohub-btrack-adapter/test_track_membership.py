@@ -56,6 +56,17 @@ class TrackMembershipTests(unittest.TestCase):
         with self.assertRaisesRegex(AdapterError, "appears in multiple track observations"):
             tracks_to_rows("a", detections, tracks, ref_map, scale)
 
+    def test_nonpositive_track_ids_are_rejected(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [Detection("a", 0, 10, 5, 5, 5)]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        for track_id in (0, -1):
+            with self.subTest(track_id=track_id):
+                track = track_from_refs(payload, track_id, [0])
+                with self.assertRaisesRegex(AdapterError, "track ID must be positive"):
+                    tracks_to_rows("a", detections, [track], ref_map, scale)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
