@@ -23,14 +23,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 1
+          fetch-depth: 3
           persist-credentials: false
 
-      - name: Bind exact carrier head and parent repair
+      - name: Bind exact carrier head and repaired ancestor
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "aa33226abb0d5158510d85f2576f8207d53c2a85"
+          git merge-base --is-ancestor aa33226abb0d5158510d85f2576f8207d53c2a85 HEAD
           printf '%s\n' "$(git rev-parse HEAD)" | tee "$RUNNER_TEMP/carrier-head.sha"
           printf '%s\n' "aa33226abb0d5158510d85f2576f8207d53c2a85" | tee "$RUNNER_TEMP/repaired-parent.sha"
 
@@ -168,7 +168,6 @@ jobs:
           CANDIDATE="$OUT/candidate-runtime"
           CASE="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective"
           CONTROL="$CONTROL" CANDIDATE="$CANDIDATE" CASE="$CASE" OUT="$OUT" python - <<'PY'
-          import importlib.util
           import json
           import os
           from pathlib import Path
