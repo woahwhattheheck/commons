@@ -79,20 +79,21 @@
     "inventory/resources/records/codex-gpt-6-astra-carrier-activation-20260908-01.json",
     "inventory/resources/records/codex-hive-trade-quote-schedule-activation-20260908-01.json",
     "inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json",
-    "inventory/resources/records/codex-human-outcomes-input-validator-activation-20260909-01.json"
+    "inventory/resources/records/codex-human-outcomes-input-validator-activation-20260909-01.json",
+    "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788926994.785209",
+  "slack_ts": "1788937929.677399",
   "snapshot": {
-    "base_main_sha": "641db1651acb9caaf8fc23ec5f825b197c3b6991",
-    "observed_at": "2026-09-09T04:11:07Z",
+    "base_main_sha": "bbbb6c39608c93011039980e575a2a756c2c44c6",
+    "observed_at": "2026-09-09T07:14:44Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-human-outcomes-input-validator-activation-20260909-01",
+  "source_id": "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -101,8 +102,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — fail-closed human-outcomes input validation producing for Commons commercial operators",
+  "subject": "MASTER RESOURCE LEDGER — exact official-engine TITAN benchmark evidence producing for promotion and regression decisions",
   "supersedes_source_ids": [
+    "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
     "codex-human-outcomes-input-validator-activation-20260909-01",
     "codex-hive-intake-crm-workflow-activation-20260909-01",
     "codex-hive-trade-quote-schedule-activation-20260908-01",
@@ -1038,6 +1040,28 @@
       "last_used_at": "2026-09-09T04:11:07Z",
       "stale_after": "next parser, pack schema, input-path, offer, gate, buyer, provider, payment or current-root measurement change",
       "priority": 94
+    },
+    {
+      "name": "titan-official-engine-benchmark-evidence",
+      "kind": "SOURCE_BOUND_OFFICIAL_INTERPRETER_BENCHMARK_EVIDENCE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / T08 and TITAN promotion and regression-decision consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_AGGREGATE_RECEIPT_READ_AND_COMPARE; EXACT_ENGINE_SOURCE_ARCHIVE_SEED_AND_SEAT_BINDING_REQUIRED; PRIVATE_RAW_BUNDLE_STAYS_PRIVATE; NO_GAME_RERUN_OR_KAGGLE_PROVIDER_WRITE",
+      "consumer": "The existing T08 and canonical TITAN decision lanes selecting, rejecting or diagnosing source-fixed candidate changes against submitted V1 and exact public opponents",
+      "value": "One immutable 128-game official-interpreter panel supplies source-bound aggregate and paired-margin evidence: current V2 completed 80 games at 64W/16T/0L, including 16W/0T/0L versus exact submitted V1, while the Reyhan paired cells expose a consistent relative margin regression that aggregate wins alone would hide.",
+      "next_action": "Consume the exact public receipt for current source-bound promotion and regression decisions; keep the private raw bundle on its existing private path, quarantine the excluded Kaito materialization, and require a new operation ID and immutable bindings for any future panel rather than rerunning this one.",
+      "source": "Operation titan-official-fullgame-6705-v1-20260909-01; source commit 8b423189acf382541ec48ebbcd3b65ff4124c70e; PR #11005 merge f72efff19ab150b836b1b2463f74cf236111ac76; #titan-kaggriculture shipped receipt 1788935829.492319",
+      "evidence_ts": "2026-09-09T07:14:44Z",
+      "auth_surface": "Public current-main aggregate receipt and README; exact private raw evaluator bundle remains on the existing private Slack file path and is not copied into canonical public metadata",
+      "exact_safe_probe": "Receipt blob faeb4338e5ec8bd0d53fe6f3a4e8fda9847183be (SHA-256 5a9e4abf14e433619929ebc79c78777555735671e1d78357ddd247fe6f23a03c) and README blob f55e5aaf49c57f47314a77087204615cf5aa78ed (SHA-256 6ba7a4251066c5f4a70f9a761ef099c4c18ea42fd7a7488dd88215e6591a246d). Engine kaggle-environments 1.32.7; 128/128 DONE/DONE, 0 errors and 0 timeouts; exact current archive SHA-256 6705147ba96fe4c6c3762197f024ff1d47d38004f03d0059055ef4467bb5b88e.",
+      "rate_plan_boundary": "Official-interpreter local play is not hosted Kaggle scoring, leaderboard rank, future performance, live provider capacity, quota, submission, prize, payout, revenue or cash. The private bundle's existence is not public artifact access.",
+      "assigned_backlog": "Existing T08 and canonical TITAN evidence consumption only; do not remint the completed benchmark, mutate TITAN source, repeat games, retrieve credentials, or duplicate its private reporting path",
+      "last_receipt": "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+      "last_used_at": "2026-09-09T07:14:44Z",
+      "stale_after": "next official-interpreter version, source/archive/opponent/seed/seat binding, benchmark operation, private-bundle integrity, hosted result or canonical TITAN promotion decision change",
+      "priority": 98
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",
