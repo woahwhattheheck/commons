@@ -1,0 +1,28 @@
+name: titan-hire-reserve-causal-bridge-sol-flywheel
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/hire-reserve-causal-bridge-20260909-sol-flywheel/**"
+      - ".github/workflows/titan-hire-reserve-causal-bridge-sol-flywheel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-hire-reserve-causal-bridge-sol-flywheel-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify causal receipt and mechanics contract
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/hire-reserve-causal-bridge-20260909-sol-flywheel
+        run: ./run_tests.sh
