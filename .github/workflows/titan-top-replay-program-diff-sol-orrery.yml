@@ -61,10 +61,86 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: titan-top-replay-program-diff-sol-orrery-${{ github.run_id }}
+          name: titan-top-replay-program-diff-sol-orrery-contracts-${{ github.run_id }}
           path: |
             CHECKOUT.sha
             SOURCE-SHA256.txt
             revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/TESTS.txt
           if-no-files-found: error
+          retention-days: 14
+
+  episode-107130860:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+          printf '%s\n' "$actual" > CHECKOUT-EPISODE.sha
+      - name: Fetch and analyze exact Apa replay
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://kaggleusercontent.com/episodes/107130860.json'
+          curl -fsSL \
+            --retry 4 --retry-all-errors --retry-delay 2 \
+            --connect-timeout 15 --max-time 240 \
+            -A 'titan-replay-program-diff/1.0' \
+            -H 'Accept: application/json' \
+            -H 'Accept-Encoding: identity' \
+            "$url" -o 107130860.json
+          test -s 107130860.json
+          sha256sum 107130860.json > EPISODE-INPUT-SHA256.txt
+          python replay_program_diff.py 107130860.json \
+            --expect-episode-id 107130860 \
+            --player-a 1 --player-b 0 \
+            --output-json ORRERY.json \
+            --output-markdown ORRERY.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path('ORRERY.json').read_text(encoding='utf-8'))
+          expected_canonical = '81ee3b351d511a720b526600ceb87a58f25c6a00d2ae1b837c5fd4caf33df77c'
+          assert report['schema'] == 'titan.kaggriculture.replay-program-diff.v1'
+          assert report['source']['episode_id'] == 107130860
+          assert report['source']['canonical_replay_sha256'] == expected_canonical
+          assert report['comparison']['player_a'] == 1
+          assert report['comparison']['player_b'] == 0
+          assert report['players']['1']['terminal']['reward'] == 114765.0
+          assert report['players']['0']['terminal']['reward'] == 127877.0
+          assert report['comparison']['action_steps'] > 0
+          Path('EPISODE-ASSERTIONS.txt').write_text(
+              'episode_id=107130860\n'
+              'canonical_replay_sha256=' + expected_canonical + '\n'
+              'player_a=1\nplayer_a_reward=114765\n'
+              'player_b=0\nplayer_b_reward=127877\n'
+              'status=PASS\n',
+              encoding='utf-8',
+          )
+          PY
+          rm -f 107130860.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-top-replay-program-diff-sol-orrery-episode-107130860-${{ github.run_id }}
+          path: |
+            CHECKOUT-EPISODE.sha
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/EPISODE-INPUT-SHA256.txt
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/EPISODE-ASSERTIONS.txt
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/ORRERY.json
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/ORRERY.md
+          if-no-files-found: warn
           retention-days: 14
