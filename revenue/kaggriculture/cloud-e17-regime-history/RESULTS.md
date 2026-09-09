@@ -51,7 +51,7 @@ The first test pass exposed one causal timestamp bug: inferred residual market-f
 
 The container could not materialize the repository through shell Git because DNS resolution for `github.com` was blocked. Connector reads and writes remained healthy, so source publication uses GitHub connector Git Data rather than shell credentials/network.
 
-No official-engine full games were run in this checkpoint. Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion claim**. The required next experiment remains a source-pinned matched screen of canonical `scheduler.agent` versus `regime_scheduler.agent`, both seats, periodic/switching/pressure/symmetric opponents, followed by untouched holdout before any canonical enablement.
+No official-engine full games were run in this checkpoint. Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion outcome**. The next experiment remains a source-pinned matched screen of canonical `scheduler.agent` versus `regime_scheduler.agent`, both seats, periodic/switching/pressure/symmetric opponents, followed by untouched holdout before any canonical enablement.
 
 ## Post-merge review correction — 2026-09-09
 

@@ -420,6 +420,35 @@ def main():
     parts_violations = guard.scan_added(parts_lines)
     assert parts_violations == [], parts_violations
 
+    # Run 34372584220 / SHA 994a0bff: E17 RESULTS checkpoint collocated
+    # "default-promotion claim" with "The required next experiment" on one
+    # line. That is a no-result boundary, not identity/claim admission.
+    # The collocation still fails; the reworded live file must stay clean.
+    e17_results_path = "revenue/kaggriculture/cloud-e17-regime-history/RESULTS.md"
+    e17_results_blocked = diff(
+        e17_results_path,
+        [
+            "Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion claim**. The required next experiment remains a source-pinned matched screen.",
+        ],
+    )
+    assert rules(e17_results_blocked) == {"admission-phrase"}, rules(e17_results_blocked)
+    e17_results_allowed = diff(
+        e17_results_path,
+        [
+            "Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion outcome**. The next experiment remains a source-pinned matched screen.",
+        ],
+    )
+    assert guard.scan_diff(e17_results_allowed) == [], guard.scan_diff(e17_results_allowed)
+    e17_path = Path(e17_results_path)
+    e17_lines = [
+        guard.AddedLine(e17_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            e17_path.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    e17_violations = guard.scan_added(e17_lines)
+    assert e17_violations == [], e17_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.
