@@ -36,6 +36,165 @@ def sale_quantities(orders):
             result[o[1]]=result.get(o[1],0)+max(0,int(o[2]))
     return result
 
+def _stressed_sale_receipt(item, quantity, inventory, market, shops, config, now,
+                            rival_quantity):
+    """Worst receipt across the selected scheduler's explicit same-turn rival cases."""
+    quantity=max(0,int(quantity))
+    if quantity<=0 or item not in m.PRODUCTS:return 0,int(inventory),'none'
+    rival=max(0,int(rival_quantity or 0))
+    model=MarketPath(item,int(inventory),market.get('params'),shops,config,now,now)
+    cases={}
+    for name,r,alignment in (
+            ('no_rival',0,'paired'),
+            ('observed_paired',rival,'paired'),
+            ('observed_before',rival,'before')):
+        cases[name]=model.joint(int(inventory),quantity,r,alignment)
+    name,(cash,_other,ending)=min(
+        cases.items(),key=lambda entry:(int(entry[1][0]),-int(entry[1][2]),entry[0]))
+    return int(cash),int(ending),name
+
+
+def _market_prefix_state(orders, farm, private, market, shops, config, now,
+                         rival_quantity, stop):
+    """Execute our queue prefix with exact fixed costs and conservative SELL receipts."""
+    money=int(farm['money']);hires=int(farm['hires_today'])
+    unlocked=list(farm['unlocked_quadrants']);shed=dict(private['shed'])
+    inventory=dict(market['inventory']);cap=int(config.get('shedCapacity',100))
+    outcomes={};stress=[]
+    stop=min(int(stop),len(orders)-1)
+    for index,order in enumerate(orders[:stop+1]):
+        if not order:continue
+        op=order[0]
+        if op=='SELL' and len(order)>2 and order[1] in m.PRODUCTS:
+            item=order[1];requested=max(0,int(order[2]))
+            sold=min(requested,max(0,int(shed.get(item,0))))
+            rival=(rival_quantity(item) if callable(rival_quantity)
+                   else dict(rival_quantity or {}).get(item,0))
+            cash,ending,scenario=_stressed_sale_receipt(
+                item,sold,inventory[item],market,shops,config,now,rival)
+            money+=cash;shed[item]=max(0,int(shed.get(item,0))-sold)
+            inventory[item]=ending
+            stress.append({'index':index,'item':item,'quantity':sold,
+                           'receipt':cash,'scenario':scenario})
+            continue
+        if op=='BUY_PRODUCT':
+            return {'money':money,'outcomes':outcomes,'unsupported_index':index,
+                    'shed':shed,'inventory':inventory,'sale_stress':stress}
+        if op=='HIRE':
+            cost,_=scheduling._order_spend(
+                order,{'unlocked_quadrants':unlocked},inventory,market.get('params'),
+                hires,config)
+            completed=1 if money>=cost else 0
+            if completed:money-=cost;hires+=1
+            outcomes[index]={'required':1,'completed':completed,'cost_per_unit':cost}
+            continue
+        if op=='BUY_LAND':
+            required=1 if len(unlocked)<=len(m.LAND_ORDER) else 0
+            if not required:continue
+            cost,_=scheduling._order_spend(
+                order,{'unlocked_quadrants':unlocked},inventory,market.get('params'),
+                hires,config)
+            completed=1 if money>=cost else 0
+            if completed:
+                money-=cost
+                unlocked.append(m.LAND_ORDER[len(unlocked)-1])
+            outcomes[index]={'required':1,'completed':completed,'cost_per_unit':cost}
+            continue
+        if op=='BUY_SEED' and len(order)>2 and order[1] in m.CROPS:
+            required=max(0,int(order[2]));cost=int(m.CROPS[order[1]]['seed'])
+            completed=0
+            for _ in range(required):
+                if money<cost:break
+                money-=cost;completed+=1
+            outcomes[index]={'required':required,'completed':completed,
+                             'cost_per_unit':cost}
+            continue
+        if op=='BUY_ANIMAL' and len(order)>2 and order[1] in m.ANIMALS:
+            item=order[1];required=max(0,int(order[2]));cost=int(m.ANIMALS[item]['cost'])
+            completed=0
+            for _ in range(required):
+                if money<cost or sum(max(0,int(n)) for n in shed.values())>=cap:break
+                money-=cost;shed[item]=int(shed.get(item,0))+1;completed+=1
+            outcomes[index]={'required':required,'completed':completed,
+                             'cost_per_unit':cost}
+    return {'money':money,'outcomes':outcomes,'unsupported_index':None,
+            'shed':shed,'inventory':inventory,'sale_stress':stress}
+
+
+def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now,
+                               targets, rival_quantity):
+    """Move only already-planned SELL units ahead of the first failing fixed buy.
+
+    Producer order indexes never move. A sale can occupy an earlier empty slot or
+    enlarge an earlier SELL of the same product. Total same-turn sale quantities
+    are invariant, so this only realizes proceeds earlier; it never invents stock
+    or future cash. BUY_PRODUCT is a hard boundary because its unit price changes
+    with same-index market interleaving.
+    """
+    original=copy.deepcopy(orders)
+    if not original:return original,None
+    baseline=_market_prefix_state(
+        original,farm,private,market,shops,config,now,rival_quantity,len(original)-1)
+    target=None
+    for index in sorted(baseline['outcomes']):
+        outcome=baseline['outcomes'][index]
+        if outcome['required']>outcome['completed']:
+            target=index;break
+    barrier=baseline.get('unsupported_index')
+    if target is None:
+        return original,({'applied':False,'reason':'unsupported-buy-product',
+                          'barrier_index':barrier} if barrier is not None else None)
+    if barrier is not None and barrier<target:
+        return original,{'applied':False,'reason':'unsupported-buy-product',
+                         'barrier_index':barrier}
+    before=baseline['outcomes'][target]
+    candidates=[]
+    targets=set(targets)
+    for source in range(target+1,len(original)):
+        row=original[source]
+        if not (row and len(row)>2 and row[0]=='SELL'
+                and row[1] in targets and int(row[2])>0):continue
+        item=row[1];available=max(0,int(row[2]))
+        same=[i for i in range(target)
+              if original[i] and len(original[i])>2
+              and original[i][0]=='SELL' and original[i][1]==item]
+        empty=[i for i in range(target) if not original[i]]
+        if same:destination=max(same)
+        elif empty:destination=max(empty)
+        else:continue
+        for moved in range(1,available+1):
+            candidate=copy.deepcopy(original)
+            if candidate[destination]:
+                candidate[destination][2]=int(candidate[destination][2])+moved
+            else:candidate[destination]=['SELL',item,moved]
+            remaining=available-moved
+            candidate[source]=['SELL',item,remaining] if remaining else []
+            if sale_quantities(candidate)!=sale_quantities(original):continue
+            state=_market_prefix_state(
+                candidate,farm,private,market,shops,config,now,rival_quantity,target)
+            outcome=state['outcomes'].get(target,{})
+            if outcome.get('completed',0)<before['required']:continue
+            candidates.append((
+                (moved,int(state['money']),source-target,target-destination,item),
+                candidate,
+                {'applied':True,'target_index':target,
+                 'target_order':copy.deepcopy(original[target]),
+                 'baseline_completed':before['completed'],
+                 'funded_completed':outcome['completed'],
+                 'source_index':source,'destination_index':destination,
+                 'item':item,'moved_quantity':moved,
+                 'remaining_cash_after_target':int(state['money']),
+                 'sale_stress':state['sale_stress'],
+                 'sale_quantities_preserved':True}))
+            break
+    if not candidates:
+        return original,{'applied':False,'reason':'no-safe-prefix-sale',
+                         'target_index':target,
+                         'baseline_completed':before['completed'],
+                         'required':before['required']}
+    _rank,best,info=min(candidates,key=lambda entry:entry[0])
+    return best,info
+
 
 def joint_resource_bound(obs, config, base, farm, private, route, end):
     """Prepaid capital and a same-day stock upper bound without sale credit.
@@ -117,6 +276,14 @@ def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end
     return shared_slot_ledger(all_plans,orders_at,max_orders)
 
 
+def seller_choice_rank(info):
+    """Return active admission plus deterministic rank for one optimizer report."""
+    forced=bool(info.get('forced_feasibility',False))
+    accepted=bool(info.get('accepted',float(info.get('worst_relative_gain',0.0))>0))
+    score=float(info.get('acceptance_score',info.get('worst_relative_gain',0.0)))
+    return forced or accepted,(forced,score)
+
+
 class FrozenSelected(SellScheduler):
     def transform(self, obs, config, base):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
@@ -190,17 +357,16 @@ class FrozenSelected(SellScheduler):
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
             self.diagnostics['evaluations'].append(info)
-            eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)
-            rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])
+            eligible,rank=seller_choice_rank(info)
             if eligible:
                 options.append((item,plan,info,reference))
-                if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):best=(item,plan,info)
+                if best is None or rank>seller_choice_rank(best[2])[1]:best=(item,plan,info)
         # Compose the peer's ordinary per-product plans only inside a prepaid,
         # shared-capacity bound. A failed pair never changes the legacy single.
         if (farm['money']>=budget and len(options)>1
                 and not getattr(self,'joint_producer_busy',False)
                 and not (best and best[2].get('forced_feasibility',False))):
-            ranked=sorted(options,key=lambda x:(x[2].get('forced_feasibility',False),x[2]['worst_relative_gain']),reverse=True)[:4]
+            ranked=sorted(options,key=lambda x:seller_choice_rank(x[2])[1],reverse=True)[:4]
             route=self.controller.R[self.controller.cur]
             bound=joint_resource_bound(obs,config,base,farm,private,route,end)
             def orders_at(step):
@@ -229,9 +395,11 @@ class FrozenSelected(SellScheduler):
                            'plans':{entry[0]:list(entry[1]) for entry in pair},
                            'slot_ledger':ledger,'resource_bound':bound,**metrics,
                            'named_worst_relative_gain':metrics['worst_relative_gain'],
-                           'worst_relative_gain':independent}
+                           'worst_relative_gain':independent,
+                           'accepted':True,'acceptance_score':independent,
+                           'acceptance_rule':'joint_strict'}
                     rank=(False,independent)
-                    if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):
+                    if best is None or rank>seller_choice_rank(best[2])[1]:
                         best=('__joint__',plans,joint)
         if best:
             item,plan,info=best
@@ -242,10 +410,14 @@ class FrozenSelected(SellScheduler):
             self.diagnostics['chosen']=info
         out=copy.deepcopy(base)
         # Preserve every original order index, including withheld SELL positions.
-        # Extra stock is offered only after inherited orders: never consolidate a
-        # later SELL ahead of a cash-dependent purchase or shift its rival pairing.
+        # Extra stock is offered only after inherited orders unless moving an
+        # already-selected sale earlier is required to fund a fixed acquisition.
         out['market']=materialize_sales(out['market'],current,shed,targets,
                                         int(config.get('maxMarketOrdersPerTurn',10)))
+        out['market'],funding=fund_same_turn_acquisition(
+            out['market'],farm,private,obs['market'],shops,config,now,targets,
+            lambda product:self.rival_supply(obs,product))
+        if funding is not None:self.diagnostics['same_turn_funding']=funding
         for item,q in targets.items():
             sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
             self.pending[item]=max(0,q-sold)
