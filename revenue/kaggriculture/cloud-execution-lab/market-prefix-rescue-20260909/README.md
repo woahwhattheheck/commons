@@ -6,7 +6,7 @@ Operation: `op:titan-v3-market-prefix-rescue-20260909-01`
 
 The canonical feed- and fertilizer-stock guards can fully withhold a selected sale by replacing its market row with the exact placeholder `[]`. The official Kaggriculture engine first truncates the raw market list to `maxMarketOrdersPerTurn`, then parses each retained row. Therefore an empty row inside the live prefix consumes one issued position while a later valid order outside the prefix is silently excluded.
 
-This candidate repairs only that transport interaction. It stable-packs exact `[]` placeholders behind all non-empty rows **only when** an engine-executable row whose original index was beyond the cap crosses into the prefix. Every non-empty row keeps the same value and relative order. No purchase, sale, quantity, route, asset, or timing decision is invented.
+This candidate repairs only that transport interaction under a suffix-only constraint. It stable-packs exact `[]` placeholders that form a contiguous suffix of the live prefix behind all non-empty rows **only when** an engine-executable row whose original index was beyond the cap crosses into the prefix. Every non-empty row keeps the same value and relative order; already-live non-empty rows keep their absolute market indices so they are not retimed against the opponent. Interior blanks are refused. No purchase, sale, quantity, route, asset, or timing decision for already-live rows is invented.
 
 ## Scope and safety
 

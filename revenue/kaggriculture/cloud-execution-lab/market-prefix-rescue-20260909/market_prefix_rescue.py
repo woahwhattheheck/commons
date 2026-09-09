@@ -8,12 +8,14 @@ no-op.  This module performs one narrow, stable transformation:
 
 * only exact ``[]`` placeholders may move;
 * every non-empty value keeps its relative order and value;
+* blanks must form a contiguous suffix of the live prefix so that already-live
+  non-empty rows keep their absolute market indices (no cross-player retiming);
 * a queue changes only when at least one structurally executable order from
   beyond the cap crosses into the executable prefix; and
 * the input object is never mutated.
 
 The function is deliberately observation-free.  It repairs queue transport; it
-does not choose purchases, sales, quantities, or timing.
+does not choose purchases, sales, quantities, or timing of already-live rows.
 """
 from __future__ import annotations
 
@@ -86,13 +88,23 @@ def _digest(value: Any) -> str:
     ).hexdigest()
 
 
+def _blanks_form_prefix_suffix(blank_slots: list[int], prefix_len: int) -> bool:
+    """True iff every blank occupies a trailing contiguous slot of the prefix."""
+    if not blank_slots:
+        return False
+    n = len(blank_slots)
+    expected = list(range(prefix_len - n, prefix_len))
+    return blank_slots == expected
+
+
 def rescue_market_prefix(action: Any, configuration: Any = None):
     """Return ``(action_or_copy, report)`` after one fail-closed stable packing.
 
-    Exact empty lists are moved behind all non-empty market rows.  The edit is
-    committed only when an executable row whose original index was outside the
-    engine cap lands inside it.  This avoids changing harmless interior timing
-    merely because a queue contains a blank.
+    Exact empty lists that form a contiguous suffix of the live prefix are moved
+    behind all non-empty market rows.  The edit is committed only when an
+    executable row whose original index was outside the engine cap lands inside
+    it.  Interior blanks are refused so that already-live non-empty rows keep
+    their absolute indices and are not retimed against the opponent.
     """
     limit = market_limit(configuration)
     report = {
@@ -113,13 +125,17 @@ def rescue_market_prefix(action: Any, configuration: Any = None):
         report["reason"] = "market_not_list"
         return action, report
 
-    prefix = market[:limit]
+    prefix_len = min(len(market), limit)
+    prefix = market[:prefix_len]
     blank_slots = [index for index, order in enumerate(prefix) if order == []]
     report["blank_prefix_slots"] = blank_slots
     report["market_length"] = len(market)
     report["prefix_executable_before"] = sum(is_engine_executable_order(order) for order in prefix)
     if not blank_slots:
         report["reason"] = "no_exact_blank_in_prefix"
+        return action, report
+    if not _blanks_form_prefix_suffix(blank_slots, prefix_len):
+        report["reason"] = "interior_blank_refused_to_avoid_retiming"
         return action, report
 
     tagged = list(enumerate(market))
