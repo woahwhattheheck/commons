@@ -118,3 +118,14 @@ The category is realized by the component inventions (`PATENT_SUPPORT.md`): the 
 (43/95/109), storage-first (61/115), the generative layers (116/118/119/120), the memoize/System-1 floor (117), and
 the self-reprogramming keystone (86/121). `MODEL_COMPUTER.md` is the part-by-part machine; this doc is the category it
 belongs to. Titan's first application + proving ground is the on-device phone agent (the S24 Ultra that *is* Titan).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
