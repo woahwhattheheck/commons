@@ -29,7 +29,7 @@ KEEP = {
     "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "autogtm.html": "fab1d536",
-    "hub_pages.py": "7a8f24d5",
+    "hub_pages.py": "d0bd0e8d",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
     "grounding.html": "491a1623",
