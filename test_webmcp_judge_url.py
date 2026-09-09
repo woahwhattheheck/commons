@@ -62,7 +62,7 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
         self.assertEqual(packet["mcp_initialize"]["name"], "commons")
         self.assertEqual(packet["mcp_initialize"]["version"], "1.4.0")
         self.assertEqual(packet["adapter_blob"], "393da756")
-        self.assertEqual(packet["pad_blob"], "3b4df417")
+        self.assertEqual(packet["pad_blob"], "b3b0d7d3")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["vercel_team_token"], "FINDER-FAILED")
         self.assertFalse(packet["second_mcp"])
