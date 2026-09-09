@@ -1,5 +1,11 @@
 from copy import deepcopy
+import json
+import math
+import os
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
 
 from opening_turnover import prioritize_opening_seeds
 
@@ -103,6 +109,75 @@ class OpeningTurnoverTests(unittest.TestCase):
         got, report = prioritize_opening_seeds(M, obs(20), {}, src, mode='wheat')
         self.assertIs(got, src)
         self.assertEqual(report['reason'], 'no_mixed_target_seed_frontier')
+
+
+class EvidenceBindingTests(unittest.TestCase):
+    """Regression coverage for P01 evidence-binding repairs."""
+
+    def test_emit_binds_cell_identity_and_unique_path(self):
+        import p01_agent as agent_mod
+
+        with tempfile.TemporaryDirectory() as tmp:
+            env = {
+                "P01_TRACE_DIR": tmp,
+                "P01_MODE": "annual",
+                "P01_CELL_SEED": "2909010001",
+                "P01_CELL_SEAT": "0",
+                "P01_CELL_LABEL": "annual",
+                "P01_TRACE_FRONTIERS": "1",
+            }
+            with mock.patch.dict(os.environ, env, clear=False):
+                # Force re-read of module-level MODE is already set; emit uses env.
+                observation = obs(55, step=1)
+                before = action([['BUY_SEED', 'TOMATO', 1], ['BUY_SEED', 'WHEAT', 1]])
+                after = action([['BUY_SEED', 'WHEAT', 1], ['BUY_SEED', 'TOMATO', 1]])
+                report = {"changed": True, "day": 0, "reason": "funded_target_seed_priority"}
+                agent_mod._emit(observation, before, after, report)
+                paths = list(Path(tmp).glob("p01-annual-s2909010001-seat0-annual-*.jsonl"))
+                self.assertEqual(len(paths), 1)
+                line = paths[0].read_text(encoding="utf-8").strip()
+                row = json.loads(line)
+                self.assertEqual(row["seed"], 2909010001)
+                self.assertEqual(row["candidate_seat"], 0)
+                self.assertEqual(row["label"], "annual")
+                self.assertTrue(row["changed"])
+                self.assertNotEqual(row["before_action_sha256"], row["after_action_sha256"])
+
+    def test_validate_complete_row_rejects_nan_and_bad_digest(self):
+        import run_p01_hosted_screen as screen
+
+        good = {
+            "label": "control",
+            "seed": 1,
+            "candidate_seat": 0,
+            "status": "complete",
+            "failure": None,
+            "scores": [10.0, 9.0],
+            "steps": 239,
+            "episode_steps": 240,
+            "trace_sha256": "a" * 64,
+        }
+        screen._validate_complete_row(good, expected_label="control", seed=1, seat=0)
+
+        bad_nan = dict(good, scores=[float("nan"), 1.0])
+        with self.assertRaises(ValueError):
+            screen._validate_complete_row(bad_nan, expected_label="control", seed=1, seat=0)
+
+        bad_digest = dict(good, trace_sha256="not-hex")
+        with self.assertRaises(ValueError):
+            screen._validate_complete_row(bad_digest, expected_label="control", seed=1, seat=0)
+
+        bad_steps = dict(good, steps=100)
+        with self.assertRaises(ValueError):
+            screen._validate_complete_row(bad_steps, expected_label="control", seed=1, seat=0)
+
+        bad_failure = dict(good, failure="boom")
+        with self.assertRaises(ValueError):
+            screen._validate_complete_row(bad_failure, expected_label="control", seed=1, seat=0)
+
+    def test_json_allow_nan_false_rejects_nonfinite(self):
+        with self.assertRaises(ValueError):
+            json.dumps({"x": float("nan")}, allow_nan=False)
 
 
 if __name__ == '__main__':

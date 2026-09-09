@@ -4,6 +4,9 @@ on:
     paths:
       - '.github/workflows/titan-p01-opening-turnover.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/p01-opening-turnover-20260909/**'
+concurrency:
+  group: titan-p01-opening-turnover-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -19,15 +22,20 @@ jobs:
       P01_MAX_DAY: '10'
       P01_TRACE_DIR: /tmp/p01-traces
       P01_TRACE_FRONTIERS: '1'
-      P01_CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha }}
+      P01_CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - name: Verify immutable PR event head
         shell: bash
-        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+        run: |
+          set -euo pipefail
+          EXPECTED="${{ github.event.pull_request.head.sha || github.sha }}"
+          ACTUAL="$(git rev-parse HEAD)"
+          test "$ACTUAL" = "$EXPECTED"
+          echo "candidate_head=$ACTUAL"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

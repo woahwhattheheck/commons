@@ -37,6 +37,27 @@ def _has_seed_frontier(action) -> bool:
     return False
 
 
+def _cell_identity() -> dict:
+    """Source-bound cell identity supplied by the hosted screen runner."""
+    seed_raw = os.environ.get("P01_CELL_SEED", "").strip()
+    seat_raw = os.environ.get("P01_CELL_SEAT", "").strip()
+    label = os.environ.get("P01_CELL_LABEL", "").strip()
+    out: dict = {}
+    if seed_raw:
+        try:
+            out["seed"] = int(seed_raw)
+        except ValueError:
+            out["seed"] = seed_raw
+    if seat_raw:
+        try:
+            out["candidate_seat"] = int(seat_raw)
+        except ValueError:
+            out["candidate_seat"] = seat_raw
+    if label:
+        out["label"] = label
+    return out
+
+
 def _emit(observation, before, after, report) -> None:
     day = report.get("day")
     audit_frontier = (TRACE_FRONTIERS and isinstance(day, int) and not isinstance(day, bool)
@@ -45,7 +66,13 @@ def _emit(observation, before, after, report) -> None:
         return
     directory = Path(os.environ.get("P01_TRACE_DIR", "/tmp/p01-traces"))
     directory.mkdir(parents=True, exist_ok=True)
-    path = directory / f"p01-{MODE}-{os.getpid()}.jsonl"
+    cell = _cell_identity()
+    # Unique path per cell when identity is supplied; fall back to pid-only.
+    if "seed" in cell and "candidate_seat" in cell and "label" in cell:
+        stem = f"p01-{MODE}-s{cell['seed']}-seat{cell['candidate_seat']}-{cell['label']}-{os.getpid()}"
+    else:
+        stem = f"p01-{MODE}-{os.getpid()}"
+    path = directory / f"{stem}.jsonl"
     row = {
         "schema": 1,
         "mode": MODE,
@@ -58,9 +85,14 @@ def _emit(observation, before, after, report) -> None:
         "before_market": before.get("market", []),
         "after_market": after.get("market", []),
         "report": report,
+        **cell,
     }
+    # Prefer official info.seed when the observation carries it.
+    info = observation.get("info") if isinstance(observation, dict) else None
+    if isinstance(info, dict) and info.get("seed") is not None and "seed" not in row:
+        row["seed"] = info["seed"]
     with path.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n")
+        handle.write(json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n")
 
 
 def agent(observation, configuration=None):
