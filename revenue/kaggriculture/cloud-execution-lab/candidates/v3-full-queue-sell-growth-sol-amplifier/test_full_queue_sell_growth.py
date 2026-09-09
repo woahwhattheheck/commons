@@ -317,18 +317,25 @@ class ExactSourceIntegrationTests(unittest.TestCase):
         self.assertEqual(report["decision"], "PASS")
         self.assertTrue(all(report["checks"].values()))
 
-    def test_source_closure_resolves_observed_clone_to_manifest_origin(self):
+    def test_source_closure_resolves_mapped_roots_to_manifest_origins(self):
         import observed_clone
+        import selected_action_sell
 
         candidate = self.candidate
-        root_record = candidate._SOURCE_CLOSURE["root_modules"]["observed_clone"]
-        expected = (candidate.REPOSITORY / root_record["import_origin"]).resolve()
-        self.assertEqual(Path(observed_clone.__file__).resolve(), expected)
+        modules = {
+            "observed_clone": observed_clone,
+            "selected_action_sell": selected_action_sell,
+        }
+        for name, module_object in modules.items():
+            root_record = candidate._SOURCE_CLOSURE["root_modules"][name]
+            expected = (candidate.REPOSITORY / root_record["declared_origin"]).resolve()
+            self.assertEqual(root_record["import_origin"], root_record["declared_origin"])
+            self.assertEqual(Path(module_object.__file__).resolve(), expected)
+            self.assertEqual(candidate._sha256(expected), root_record["sha256"])
         self.assertEqual(
-            root_record["import_origin"],
+            candidate._SOURCE_CLOSURE["root_modules"]["observed_clone"]["import_origin"],
             candidate._SOURCE_CLOSURE["observed_clone"]["import_origin"],
         )
-        self.assertEqual(candidate._sha256(expected), root_record["sha256"])
 
     def test_real_frozen_selected_reuses_transform_code_without_global_mutation(self):
         import frozen_selected
