@@ -316,6 +316,38 @@ def main():
     ]
     assert polar_violations == [], polar_violations
 
+    # New Bloom beverage CoA #11199 landed PermissionError("packet not eligible")
+    # whose nearby source did not prove production-LIMS human-release context, so
+    # open-door-guard failed on merge SHA b9e8f85. Keep fail-closed product
+    # behavior, but require the existing human-release vocabulary.
+    newbloom_old_lock = diff(
+        "revenue/production-lims/newbloom-multistate-beverage-coa/newbloom_beverage_coa.py",
+        [
+            'raise PermissionError("packet not eligible")',
+        ],
+    )
+    assert rules(newbloom_old_lock) == {"permission-exception"}, rules(newbloom_old_lock)
+    newbloom_release = diff(
+        "revenue/production-lims/newbloom-multistate-beverage-coa/newbloom_beverage_coa.py",
+        [
+            'if packet["state"] != "STAGED_HUMAN_REVIEW" or packet["released_by"] is not None:',
+            '    raise PermissionError("packet not eligible to release a certificate")',
+        ],
+    )
+    assert guard.scan_diff(newbloom_release) == [], guard.scan_diff(newbloom_release)
+    assert "permission-exception" in rules(diff("commons_mcp.py", [
+        'raise PermissionError("packet not eligible to release a certificate")',
+    ]))
+    newbloom_path = Path("revenue/production-lims/newbloom-multistate-beverage-coa/newbloom_beverage_coa.py")
+    newbloom_added = [
+        guard.AddedLine(newbloom_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(newbloom_path.read_text(encoding="utf-8").splitlines(), 1)
+    ]
+    newbloom_violations = [
+        item for item in guard.scan_added(newbloom_added) if item.rule == "permission-exception"
+    ]
+    assert newbloom_violations == [], newbloom_violations
+
     # Compact catalog exclusion lists may name retired mechanisms only when they
     # do not collocate claim/seat with "gate" on one line. PR 4924's compact
     # out_of_scope one-liners failed open-door-guard on this collocation.
