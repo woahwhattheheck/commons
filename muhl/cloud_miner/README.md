@@ -97,3 +97,14 @@ Default configuration uses `stratum.ckpool.org:3333` and the owner's public rece
 Subscribe, authorize, job retrieval and submission share one TCP session. Every lease binds the session, job generation, extranonce and nonce range. Clean jobs retire old work; reconnects retire the previous session. Checkpoints retain issued ranges and observed frontiers, and never authorize submitting work from a retired session.
 
 A surfaced candidate is checked against the current job and its network `nBits` target before submission. An ambiguous submit retains the candidate for retry/reconciliation while that session remains live. Pool acceptance is recorded as a provider outcome; it is not a payment receipt or independent confirmation that the network accepted a block.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
