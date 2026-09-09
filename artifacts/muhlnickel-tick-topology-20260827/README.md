@@ -61,3 +61,14 @@ Those decoded counts are the evidence used here. The packet does not ask anyone 
 - `SLACK_RECEIPTS.md` — live coordination receipts in `#commons`.
 
 No giant binary is copied here. The receipt pins the observed snapshot hash, dimensions, decoded records, and topology while the operational container remains on its own substrate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
