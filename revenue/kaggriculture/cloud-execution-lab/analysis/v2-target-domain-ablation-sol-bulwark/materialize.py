@@ -25,8 +25,8 @@ OLD = (
     "if shed.get(p,0)>0}\n"
 )
 NEW = (
-    "        targets={p:min(max(0,int(shed.get(p,0))),q+self.pending.get(p,0))\n"
-    "                 for p,q in {**{p:0 for p in self.pending},**baseline_q}.items()}\n"
+    "        targets={p:min(max(0,int(shed.get(p,0))),baseline_q.get(p,0)+self.pending.get(p,0))\n"
+    "                 for p in PRODUCTS if p in self.pending or p in baseline_q}\n"
 )
 
 
@@ -131,7 +131,7 @@ def materialize(
             f"expected exactly one V2 target expression, found {original.count(old)}"
         )
     if new in original:
-        raise MaterializeError("V1 target-domain expression already exists in V2 source")
+        raise MaterializeError("V1 ownership-domain expression already exists in V2 source")
 
     shutil.copytree(source, output, symlinks=False)
     patched = original.replace(old, new, 1)
