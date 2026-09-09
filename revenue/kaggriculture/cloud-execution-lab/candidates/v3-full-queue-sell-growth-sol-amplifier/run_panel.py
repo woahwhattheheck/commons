@@ -88,6 +88,14 @@ def _expected_keys() -> set[tuple[str, int, int]]:
     }
 
 
+def _expected_opponent_seat_keys() -> set[str]:
+    return {
+        f"{opponent}|seat-{seat}"
+        for opponent in EXPECTED_OPPONENTS
+        for seat in EXPECTED_SEATS
+    }
+
+
 def _validate_action_receipt(game: Mapping[str, Any], key: tuple[str, int, int], arm: str) -> None:
     opponent, seed, seat = key
     if game.get("opponent") != opponent:
@@ -170,6 +178,14 @@ def _mean_by(rows: Sequence[Mapping[str, Any]], key: str) -> dict[str, float]:
     return {name: statistics.fmean(values) for name, values in sorted(groups.items())}
 
 
+def _mean_by_opponent_seat(rows: Sequence[Mapping[str, Any]]) -> dict[str, float]:
+    groups: dict[str, list[float]] = {}
+    for row in rows:
+        name = f'{row["opponent"]}|seat-{row["candidate_seat"]}'
+        groups.setdefault(name, []).append(float(row["own_delta"]))
+    return {name: statistics.fmean(values) for name, values in sorted(groups.items())}
+
+
 def strict_verdict(
     global_summary: Mapping[str, Any],
     per_opponent: Mapping[str, Mapping[str, Any]],
@@ -181,6 +197,13 @@ def strict_verdict(
         for row in rows
     }
     per_seat_own = _mean_by(rows, "candidate_seat") if rows else {}
+    per_opponent_seat_own = _mean_by_opponent_seat(rows) if rows else {}
+    expected_opponent_seats = _expected_opponent_seat_keys()
+    negative_opponent_seats = sorted(
+        name
+        for name, value in per_opponent_seat_own.items()
+        if not math.isfinite(value) or value < 0
+    )
     changed = [row for row in rows if row.get("candidate_action_changed") is True]
     score_changed = [
         row
@@ -214,11 +237,20 @@ def strict_verdict(
             set(per_seat_own) == {"0", "1"}
             and all(value >= 0 for value in per_seat_own.values())
         ),
+        "all_opponent_seat_strata_present": (
+            set(per_opponent_seat_own) == expected_opponent_seats
+        ),
+        "no_opponent_seat_mean_own_regression": (
+            set(per_opponent_seat_own) == expected_opponent_seats
+            and not negative_opponent_seats
+        ),
     }
     return {
         "decision": "ADVANCE" if all(checks.values()) else "REJECT",
         "checks": checks,
         "per_seat_mean_own_delta": per_seat_own,
+        "per_opponent_seat_mean_own_delta": per_opponent_seat_own,
+        "negative_opponent_seat_mean_own_strata": negative_opponent_seats,
         "scope": "action-bound development panel only; not a Kaggle or leaderboard claim",
     }
 
@@ -288,11 +320,28 @@ def main(argv=None) -> int:
 
     def markdown(report):
         text = original_markdown(report)
-        return text.replace(
+        text = text.replace(
             "# TITAN L02 ledger-coherent tranche — development panel",
             "# TITAN V3 saturated-queue SELL expansion — action-bound development panel",
             1,
         )
+        verdict_data = report.get("verdict") or {}
+        strata = verdict_data.get("per_opponent_seat_mean_own_delta") or {}
+        failures = verdict_data.get("negative_opponent_seat_mean_own_strata") or []
+        if strata:
+            lines = ["## Opponent × seat own-cash admission", ""]
+            for name, value in sorted(strata.items()):
+                lines.append(f"- `{name}`: {float(value):+.3f}")
+            if failures:
+                lines.extend(
+                    [
+                        "",
+                        "Rejected opponent × seat strata: "
+                        + ", ".join(f"`{name}`" for name in failures),
+                    ]
+                )
+            text = text.rstrip() + "\n\n" + "\n".join(lines) + "\n"
+        return text
 
     runner._agent_spec = agent_spec
     runner.patch_evaluator = patch_evaluator
