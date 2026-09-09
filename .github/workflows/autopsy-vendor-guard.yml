@@ -4,10 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'revenue/agents_for_humans/vendor/**'
-      - 'revenue/agents_for_humans/LICENSE'
-      - 'revenue/agents_for_humans/SOURCE_MANIFEST.json'
-      - 'revenue/agents_for_humans/scripts/restore_vendor.py'
+      - 'revenue/agents_for_humans/**'
       - '.github/workflows/autopsy-vendor-guard.yml'
   workflow_dispatch:
 
@@ -49,13 +46,7 @@ jobs:
             )
 
             mapfile -t changed_paths < <(
-              RESTORE_JSON="$restore_json" python - <<'PY'
-import json
-import os
-
-for path in json.loads(os.environ["RESTORE_JSON"])["changed"]:
-    print(path)
-PY
+              RESTORE_JSON="$restore_json" python -c 'import json, os; print(*json.loads(os.environ["RESTORE_JSON"])["changed"], sep="\n")'
             )
             if (( ${#changed_paths[@]} == 0 )); then
               echo "Attributed vendor bytes already match SOURCE_MANIFEST."
