@@ -18,7 +18,7 @@ mechanics:
 - WHEAT seed cost is read from `mechanics.CROPS["WHEAT"]`, not hard-coded into
   the evaluator.
 - Planting starts at `consecutive_unwatered = 1`; a route that weeds before its
-  harvest is rejected. Because this evaluator has no actor-order identity, it
+  harvest is not certified. Because this evaluator has no actor-order proof, it
   conservatively declines a WATER on the exact PLANT step rather than inventing
   a same-step handoff; a later action on the planting day is certifiable.
 - HARVEST must reach the official first-yield age. Unfertilized WATER actions in
