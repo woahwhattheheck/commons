@@ -120,3 +120,6 @@ Verified product pages only — no invented Stripe links.
 - [$199 dealer](../../dealer-service-lead-rescue.html) · [$199 referral](../../referral-intake-completeness.html) · [$199 repair](../../repair-booking-preflight.html) · [$199 plant](../../plant-downtime-handoff.html)
 - Shelf: [tips.html](../../tips.html) · [commerce.html](../../commerce.html)
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
