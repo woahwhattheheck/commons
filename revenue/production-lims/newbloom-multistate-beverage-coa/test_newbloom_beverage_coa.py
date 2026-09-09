@@ -94,7 +94,12 @@ class NewBloomBeverageCoATests(unittest.TestCase):
         shadow.replay(self.records, self.manifest)
         record_id = next(iter(shadow.staged_packets))
         before = copy.deepcopy(shadow.staged_packets[record_id])
-        for bad_name in ("", "auto", "system", "bot", "service-account", "AI", "Jordan"):
+        for bad_name in (
+            "", "auto", "system", "bot", "service-account", "AI", "Jordan",
+            "System Reviewer", "AI Reviewer", "Bot Reviewer",
+            "system/reviewer", "pipeline_reviewer", "service-account reviewer",
+            "Worker.Reviewer",
+        ):
             with self.assertRaises(PermissionError):
                 shadow.release_packet(record_id, bad_name, "APR-SYN-0001")
         for bad_approval in ("", "A", "APPROVED", "APR 0001", "APR-"):
