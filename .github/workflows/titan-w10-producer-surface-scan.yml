@@ -1,0 +1,100 @@
+name: titan-w10-producer-surface-scan
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/**"
+      - ".github/workflows/titan-w10-producer-surface-scan.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-w10-producer-surface-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  W10_DIR: revenue/kaggriculture/cloud-execution-lab/analysis/w10-fertilizer-cycle
+
+jobs:
+  scan:
+    name: content-addressed producer seam inventory
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Select Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prove the scanner contract
+        run: |
+          python -m py_compile \
+            "$W10_DIR/producer_surface_scan.py" \
+            "$W10_DIR/test_producer_surface_scan.py"
+          python -m unittest -v \
+            "$W10_DIR/test_producer_surface_scan.py"
+
+      - name: Scan the live cloud-execution source tree
+        run: |
+          python "$W10_DIR/producer_surface_scan.py" \
+            --root "$GITHUB_WORKSPACE" \
+            --scope revenue/kaggriculture/cloud-execution-lab \
+            --output /tmp/titan-w10-producer-surface.json \
+            --pretty \
+            --allow-empty
+
+      - name: Publish ranked candidates to the job summary
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report = json.loads(
+              Path('/tmp/titan-w10-producer-surface.json').read_text(encoding='utf-8')
+          )
+          lines = [
+              '# TITAN W10 producer-surface inventory',
+              '',
+              f"- Decision: **{report['decision']}**",
+              f"- Scanned Python files: {report['counts']['scanned_python_files']}",
+              f"- Candidate files: {report['counts']['candidate_files']}",
+              f"- Report SHA-256: `{report['result_sha256']}`",
+              '',
+              '| Rank | Score | Full cycle | Path | Phases | Source SHA-256 |',
+              '|---:|---:|:---:|---|---|---|',
+          ]
+          for rank, candidate in enumerate(report['candidates'][:20], start=1):
+              phases = ', '.join(candidate['phases'])
+              full_cycle = 'yes' if candidate['full_cycle_candidate'] else 'no'
+              lines.append(
+                  f"| {rank} | {candidate['score']} | {full_cycle} | "
+                  f"`{candidate['path']}` | {phases} | `{candidate['sha256']}` |"
+              )
+          if not report['candidates']:
+              lines.append('| — | — | — | No lexical producer surface found | — | — |')
+          lines.extend(
+              [
+                  '',
+                  '> Lexical/AST rank is a navigation aid, not runtime proof or mutation authority.',
+              ]
+          )
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as handle:
+              handle.write('\n'.join(lines) + '\n')
+          PY
+
+      - name: Upload the exact JSON inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-w10-producer-surface-${{ github.sha }}
+          path: /tmp/titan-w10-producer-surface.json
+          if-no-files-found: error
+          retention-days: 14
