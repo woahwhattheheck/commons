@@ -114,3 +114,14 @@ python wb_proof_ref.py --artifact artifacts/SmolLM2-360M-Instruct-Q8_0-CLEAN__pr
 real host work on a clearance laptop. Read-only, writes one JSON. His law says tell him first.
 
 _All figures read 2026-08-07. Re-read before trusting: a recorded reading is a timestamp._
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
