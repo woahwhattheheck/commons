@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import importlib.util
 import json
 from pathlib import Path
 import sys
@@ -272,16 +273,42 @@ class FullQueueSellGrowthTests(unittest.TestCase):
         self.assertIs(sys.modules.get("frozen_selected"), prior)
 
 
-LAB = Path(__file__).resolve().parents[2]
+HERE = Path(__file__).resolve().parent
+LAB = HERE.parents[1]
 SOURCE_AVAILABLE = (LAB / "frozen_selected.py").is_file()
+
+
+def _load_exact_candidate():
+    """Load this candidate by path so a raw LAB path cannot shadow it."""
+    name = "_sol_amplifier_exact_source_test_candidate"
+    loaded = sys.modules.get(name)
+    if loaded is not None:
+        if Path(loaded.__file__).resolve() != (HERE / "candidate.py").resolve():
+            raise RuntimeError("exact candidate test module collision")
+        return loaded
+    path = (HERE / "candidate.py").resolve()
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load exact candidate {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        if sys.modules.get(name) is module:
+            sys.modules.pop(name, None)
+        raise
+    return module
 
 
 @unittest.skipUnless(SOURCE_AVAILABLE, "requires the complete cloud-execution-lab tree")
 class ExactSourceIntegrationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        if str(LAB) not in sys.path:
-            sys.path.insert(0, str(LAB))
+        # The candidate derives and verifies the canonical source map before any
+        # bare runtime import.  Private path loading prevents LAB/candidate.py
+        # from shadowing this candidate when the suite runs from another cwd.
+        cls.candidate = _load_exact_candidate()
 
     def test_source_audit_passes_on_exact_checkout(self):
         import audit_change
@@ -289,6 +316,19 @@ class ExactSourceIntegrationTests(unittest.TestCase):
         report = audit_change.build_report()
         self.assertEqual(report["decision"], "PASS")
         self.assertTrue(all(report["checks"].values()))
+
+    def test_source_closure_resolves_observed_clone_to_manifest_origin(self):
+        import observed_clone
+
+        candidate = self.candidate
+        root_record = candidate._SOURCE_CLOSURE["root_modules"]["observed_clone"]
+        expected = (candidate.REPOSITORY / root_record["import_origin"]).resolve()
+        self.assertEqual(Path(observed_clone.__file__).resolve(), expected)
+        self.assertEqual(
+            root_record["import_origin"],
+            candidate._SOURCE_CLOSURE["observed_clone"]["import_origin"],
+        )
+        self.assertEqual(candidate._sha256(expected), root_record["sha256"])
 
     def test_real_frozen_selected_reuses_transform_code_without_global_mutation(self):
         import frozen_selected
@@ -307,7 +347,7 @@ class ExactSourceIntegrationTests(unittest.TestCase):
         self.assertTrue(receipt["canonical_code_object_reused"])
 
     def test_candidate_attaches_before_real_lazy_initialization(self):
-        import candidate
+        candidate = self.candidate
         import frozen_selected
 
         config = json.loads((LAB / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
