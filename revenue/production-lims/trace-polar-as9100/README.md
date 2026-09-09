@@ -27,3 +27,7 @@ python trace_polar_as9100.py
 ## Boundary
 
 Synthetic/mock read-only evidence only. The `R4` revision, calibration validity, signoffs, and all identifiers are fixture-only evidence assertions, not process specifications or fabrication guidance. No live QMS, NCR, traveler, recipe, equipment, material, customer, production, disposition, certification, or reporting action occurs. This package makes no AS9100/IATF/ISO compliance or accreditation determination; real acceptance requires buyer-owned schemas, controls, and named human review.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

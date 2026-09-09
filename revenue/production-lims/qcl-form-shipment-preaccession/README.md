@@ -29,3 +29,7 @@ python -m unittest -v test_qcl_preaccession.py
 ```
 
 No production writes, outreach, prospect-facing demo, automatic release, or real-record processing are part of this build.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
