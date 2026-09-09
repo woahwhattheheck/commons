@@ -15,6 +15,26 @@ def route():
     return [{'farmer':['PASS'],'hands':[],'market':[]} for _ in range(720)]
 
 
+def farm_at(pos=(4,4), money=100):
+    tiles=[[None for _ in range(10)] for _ in range(10)]
+    return {
+        'money':money,
+        'unlocked_quadrants':['NW'],
+        'hires_today':0,
+        'farmer':list(pos),
+        'hands':[],
+        'tiles':tiles,
+    }
+
+
+def private_state(*, shed=None, inventory=None):
+    return {
+        'shed':dict(shed or {}),
+        'inventories':[dict(inventory or {})],
+        'seeds':{},
+    }
+
+
 class EventAwareHorizonTests(unittest.TestCase):
     def test_product_absorption_just_outside_old_window_extends_to_real_slot(self):
         tape=route()
@@ -66,21 +86,56 @@ class EventAwareHorizonTests(unittest.TestCase):
                 {'townShopSellInterval':4,'townCenterSellInterval':24})
         self.assertEqual(end,18)
         self.assertEqual(info['service_dates'],{})
-        self.assertIsNone(info['unit_event'])
         self.assertFalse(info['extended'])
 
-    def test_represented_deposit_or_harvest_event_can_extend_capacity_window(self):
-        for op in (['HARVEST'],['DROP'],['PLACE','MILK',2]):
-            with self.subTest(op=op):
-                tape=route();tape[20]['farmer']=op
-                with mock.patch.object(fs.parent,'DECISIONS',()), \
-                     mock.patch.dict(fs.m.SHOPS,{'CARROT_ONLY':['CARROT']},clear=False):
-                    end,info=fs.event_aware_horizon(
-                        10,718,tape,{'MILK':4},['CARROT_ONLY'],
-                        {'townShopSellInterval':4,'townCenterSellInterval':24})
-                self.assertEqual(info['unit_event'],20)
-                self.assertEqual(end,20)
-                self.assertTrue(info['extended'])
+    def test_bare_harvest_is_not_a_shed_event(self):
+        tape=route()
+        tape[20]['farmer']=['HARVEST']
+        farm=farm_at((0,0))
+        farm['tiles'][0][0]={'kind':'PLANT','crop':'CARROT','planted_day':-3,
+                             'yield_units':2,'watered_today':False,
+                             'consecutive_unwatered':0,'max_lifespan_step':999,
+                             'fertilized_until_day':-1}
+        private=private_state(shed={'MILK':4})
+        event=fs.represented_shed_event(
+            10,18,23,tape,farm,private,
+            {'turnsPerDay':24,'shedCapacity':100})
+        self.assertIsNone(event)
+
+    def test_harvest_then_represented_drop_extends_to_actual_deposit(self):
+        tape=route()
+        # Farmer begins one step from a shed-access tile. Harvest -> move -> DROP.
+        tape[19]['farmer']=['HARVEST']
+        tape[20]['farmer']=['EAST']
+        tape[21]['farmer']=['DROP']
+        farm=farm_at((3,4))
+        farm['tiles'][4][3]={'kind':'PLANT','crop':'CARROT','planted_day':-3,
+                             'yield_units':2,'watered_today':False,
+                             'consecutive_unwatered':0,'max_lifespan_step':999,
+                             'fertilized_until_day':-1}
+        private=private_state(shed={'MILK':4})
+        event=fs.represented_shed_event(
+            10,18,23,tape,farm,private,
+            {'turnsPerDay':24,'shedCapacity':100})
+        self.assertEqual(event,21)
+
+    def test_invalid_drop_does_not_extend(self):
+        tape=route();tape[20]['farmer']=['DROP']
+        event=fs.represented_shed_event(
+            10,18,23,tape,farm_at((0,0)),
+            private_state(shed={'MILK':4},inventory={'CARROT':2}),
+            {'turnsPerDay':24,'shedCapacity':100})
+        self.assertIsNone(event)
+
+    def test_animal_place_is_not_mistaken_for_shed_deposit(self):
+        tape=route();tape[20]['farmer']=['PLACE','COW']
+        farm=farm_at((0,0))
+        farm['tiles'][0][0]={'kind':'PASTURE'}
+        event=fs.represented_shed_event(
+            10,18,23,tape,farm,
+            private_state(shed={'MILK':4},inventory={'COW':1}),
+            {'turnsPerDay':24,'shedCapacity':100})
+        self.assertIsNone(event)
 
     def test_checkpoint_before_event_prevents_extension(self):
         tape=route()
@@ -137,20 +192,19 @@ class EventAwareHorizonTests(unittest.TestCase):
         agent.receipt_profile=mock.Mock(return_value=lambda _plan: True)
         return agent
 
-    def _minimal_obs(self, money=10):
+    def _minimal_obs(self, money=10, shops=None):
         own={'money':money,'unlocked_quadrants':['NW'],'hires_today':0}
         return {'step':10,'player':0,'farms':[own,{}],
                 'market':{'inventory':{'MILK':10000},'params':None,'prices':{'MILK':160}},
-                'town':{'unlocked_shops':['MILK_ONLY']}}
+                'town':{'unlocked_shops':list(shops or ['MILK_ONLY'])}}
 
     def test_extended_service_window_prices_known_future_funding(self):
         tape=route();tape[20]['market']=[['BUY_SEED','CARROT',1]]
         agent=self._minimal_agent(tape)
         obs=self._minimal_obs(money=10)
         base={'farmer':['PASS'],'hands':[],'market':[['SELL','MILK',1]]}
-        farm={'money':10,'unlocked_quadrants':['NW'],'hires_today':0,
-              'tiles':[[{} for _ in range(10)] for _ in range(10)]}
-        private={'shed':{'MILK':4},'inventories':[{}]}
+        farm=farm_at((4,4),money=10)
+        private=private_state(shed={'MILK':4})
         seen={}
         def optimizer(**kwargs):
             seen.update(kwargs)
@@ -161,21 +215,22 @@ class EventAwareHorizonTests(unittest.TestCase):
              mock.patch.object(fs,'post_units',return_value=(farm,private)), \
              mock.patch.object(fs,'seller_public_observation',return_value={}), \
              mock.patch.object(fs,'optimize_lot',side_effect=optimizer):
-            out=agent.transform(obs,{'townShopSellInterval':4,'townCenterSellInterval':24},base)
+            out=agent.transform(
+                obs,{'townShopSellInterval':4,'townCenterSellInterval':24},base)
         self.assertEqual(seen['dates'][-1],21)
-        self.assertEqual(seen['minimum_now'],1,
-                         'The turn-20 seed purchase must be prepaid inside the extended window')
+        self.assertEqual(
+            seen['minimum_now'],1,
+            'The turn-20 seed purchase must be prepaid inside the extended window')
         self.assertEqual(agent.diagnostics['horizon']['service_dates'],{'MILK':21})
         self.assertEqual(out['market'],base['market'])
 
-    def test_represented_unit_event_extends_receipt_capacity_check(self):
+    def test_actual_future_drop_extends_receipt_capacity_check(self):
         tape=route();tape[20]['farmer']=['DROP']
         agent=self._minimal_agent(tape)
-        obs=self._minimal_obs(money=100)
+        obs=self._minimal_obs(money=100,shops=['CARROT_ONLY'])
         base={'farmer':['PASS'],'hands':[],'market':[]}
-        farm={'money':100,'unlocked_quadrants':['NW'],'hires_today':0,
-              'tiles':[[{} for _ in range(10)] for _ in range(10)]}
-        private={'shed':{'MILK':4},'inventories':[{}]}
+        farm=farm_at((4,4),money=100)
+        private=private_state(shed={'MILK':4},inventory={'CARROT':2})
         seen={}
         def optimizer(**kwargs):
             seen.update(kwargs)
@@ -187,7 +242,8 @@ class EventAwareHorizonTests(unittest.TestCase):
              mock.patch.object(fs,'seller_public_observation',return_value={}), \
              mock.patch.object(fs,'optimize_lot',side_effect=optimizer):
             agent.receipt_profile=mock.Mock(return_value=lambda _plan: True)
-            agent.transform(obs,{'townShopSellInterval':4,'townCenterSellInterval':24},base)
+            agent.transform(
+                obs,{'townShopSellInterval':4,'townCenterSellInterval':24},base)
         self.assertEqual(agent.diagnostics['horizon']['unit_event'],20)
         self.assertEqual(seen['dates'][-1],20)
         self.assertEqual(agent.receipt_profile.call_args.args[4],20)

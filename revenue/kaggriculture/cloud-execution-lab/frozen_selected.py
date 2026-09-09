@@ -118,53 +118,87 @@ def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end
 
 
 def event_aware_horizon(now, last, route, targets, shops, config):
-    """Extend to the first represented service or stock-pressure event.
+    """Bound SELL lookahead to represented public market-service events.
 
-    The inherited eight-turn window remains the baseline. Extension cannot cross
-    the current day, an unresolved controller checkpoint, the terminal boundary,
-    or the represented controller tape. A product service date must have a real
-    market slot (or an inherited SELL slot for that product). A represented
-    HARVEST/DROP/PLACE just outside the old window may also extend the bound so
-    the existing receipt ledger can decide whether it creates real shed pressure.
+    The inherited eight-turn window is the baseline.  Extension cannot cross
+    the current day, terminal boundary, represented controller tape, or the
+    first unresolved controller checkpoint.  A later product service date is
+    useful only when that product has an executable market slot there.
     """
     represented_end=min(last,(now//24+1)*24-1,max(now,len(route)-1))
     checkpoints=[checkpoint for checkpoint,*_ in parent.DECISIONS
                  if now<checkpoint<=represented_end]
-    if checkpoints:represented_end=min(represented_end,min(checkpoints)-1)
+    if checkpoints:
+        represented_end=min(represented_end,min(checkpoints)-1)
     baseline_end=min(now+HORIZON,represented_end)
     max_orders=int(config.get('maxMarketOrdersPerTurn',10))
     service_dates={}
     for item in sorted(targets):
         for date in range(baseline_end+1,represented_end+1):
-            if not absorption(item,date-1,shops,config):continue
+            if not absorption(item,date-1,shops,config):
+                continue
             orders=route[date].get('market',[]) if date<len(route) else []
             has_slot=len(orders)<max_orders
-            has_item_slot=any(o and len(o)>2 and o[0]=='SELL' and o[1]==item
-                              for o in orders)
+            has_item_slot=any(
+                o and len(o)>2 and o[0]=='SELL' and o[1]==item
+                for o in orders)
             if has_slot or has_item_slot:
                 service_dates[item]=date
                 break
-    unit_event=None
-    if targets:
-        for date in range(baseline_end+1,represented_end+1):
-            action=route[date] if date<len(route) else parent.PASS
-            acts=[action.get('farmer',['PASS']),*action.get('hands',[])]
-            if any(a and a[0] in ('HARVEST','DROP','PLACE') for a in acts):
-                unit_event=date
-                break
-    candidates=[baseline_end,*service_dates.values()]
-    if unit_event is not None:candidates.append(unit_event)
-    end=max(candidates)
+    end=max([baseline_end,*service_dates.values()])
     return end,{'baseline_end':baseline_end,'hard_end':represented_end,
-                'service_dates':service_dates,'unit_event':unit_event,
+                'service_dates':service_dates,'unit_event':None,
                 'extended':end>baseline_end}
+
+
+def represented_shed_event(now, baseline_end, hard_end, route, farm, private, config):
+    """Return the first represented post-baseline unit stage that adds shed load.
+
+    HARVEST alone only creates carried inventory, so it is not an extension
+    trigger.  We execute the unchanged represented tape on copied public/private
+    own state and trigger only when DROP or shed-PLACE (or another exact unit
+    sequence) actually increases requested shed occupancy before market.  The
+    oversized projection capacity matches receipt_profile: overflow pressure
+    must remain visible rather than being clipped away by the real cap.
+    """
+    if hard_end<=baseline_end:
+        return None
+    f,p=copy.deepcopy(farm),copy.deepcopy(private)
+    size=len(f['tiles'])
+    turns_per_day=int(config.get('turnsPerDay',24))
+    for t in range(now+1,hard_end+1):
+        action=route[t] if t<len(route) else parent.PASS
+        before=sum(p['shed'].values())
+        acts=[action.get('farmer',['PASS']),*action.get('hands',[])]
+        for i,a in enumerate(acts):
+            m._apply_unit_action(
+                f,p,i,a,size,t//turns_per_day,turns_per_day,10**6)
+        after=sum(p['shed'].values())
+        if t>baseline_end and after>before:
+            return t
+        # Keep later represented unit legality/state aligned with receipt_profile.
+        for order in action.get('market',[]):
+            if not order:
+                continue
+            if order[0]=='SELL' and len(order)>2:
+                p['shed'][order[1]]=max(
+                    0,p['shed'].get(order[1],0)-max(0,int(order[2])))
+            elif order[0] in ('BUY_PRODUCT','BUY_ANIMAL') and len(order)>2:
+                p['shed'][order[1]]=p['shed'].get(order[1],0)+max(0,int(order[2]))
+            elif order[0]=='HIRE':
+                f['hands'].append(m._spawn_hand(f,size))
+                p['inventories'].append({})
+    return None
+
 
 def product_event_dates(item, now, end, shops, config):
     """Executable SELL dates use only this product's exact public absorption."""
     dates=[now]+[t for t in range(now+1,end+1)
                  if absorption(item,t-1,shops,config)]
-    if len(dates)>3:dates=dates[:2]+dates[-1:]
-    if dates[-1]!=end:dates.append(end)
+    if len(dates)>3:
+        dates=dates[:2]+dates[-1:]
+    if dates[-1]!=end:
+        dates.append(end)
     return sorted(set(dates))
 
 
@@ -197,12 +231,20 @@ class FrozenSelected(SellScheduler):
         route=self.controller.R[self.controller.cur]
         shops=obs.get('town',{}).get('unlocked_shops',[])
         end,horizon=event_aware_horizon(now,last,route,targets,shops,config)
+        unit_event=(represented_shed_event(
+            now,horizon['baseline_end'],horizon['hard_end'],route,farm,private,config)
+                    if targets else None)
+        if unit_event is not None:
+            end=max(end,unit_event)
+        horizon['unit_event']=unit_event
+        horizon['extended']=end>horizon['baseline_end']
         self.diagnostics['horizon']=horizon
         budget=self.cash_reserve(obs,config,base,end)
         best=None;options=[]
         for item,quantity in targets.items():
             if quantity<=0:continue
-            item_end=max(horizon['baseline_end'],horizon['service_dates'].get(item,horizon['baseline_end']),
+            item_end=max(horizon['baseline_end'],
+                         horizon['service_dates'].get(item,horizon['baseline_end']),
                          horizon['unit_event'] or horizon['baseline_end'])
             dates=product_event_dates(item,now,item_end,shops,config)
             reference=[(now,current[item])]
@@ -222,8 +264,10 @@ class FrozenSelected(SellScheduler):
                 take=min(quantity,6)
                 if farm['money']<item_budget or now%24==23:take=max(take,current[item])
                 if take!=current[item]:
-                    info={'item':item,'quantity':quantity,'worst_relative_gain':0,'plan':[(now,take),(min(last,now+1),quantity-take)],
-                          'baseline_horizon_end':horizon['baseline_end'],'horizon_end':item_end}
+                    info={'item':item,'quantity':quantity,'worst_relative_gain':0,
+                          'plan':[(now,take),(min(last,now+1),quantity-take)],
+                          'baseline_horizon_end':horizon['baseline_end'],
+                          'horizon_end':item_end}
                     best=(item,tuple(info['plan']),info);break
                 continue
             if len(dates)<2:continue
@@ -252,6 +296,7 @@ class FrozenSelected(SellScheduler):
                 and not getattr(self,'joint_producer_busy',False)
                 and not (best and best[2].get('forced_feasibility',False))):
             ranked=sorted(options,key=lambda x:(x[2].get('forced_feasibility',False),x[2]['worst_relative_gain']),reverse=True)[:4]
+            route=self.controller.R[self.controller.cur]
             bound=joint_resource_bound(obs,config,base,farm,private,route,end)
             def orders_at(step):
                 return base['market'] if step==now else route[step].get('market',[]) if step<len(route) else []
