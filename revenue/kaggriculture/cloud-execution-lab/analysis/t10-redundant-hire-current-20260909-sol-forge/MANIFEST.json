@@ -1,1 +1,29 @@
-PLACEHOLDER
+{
+  "dispatch_canonical": {
+    "archive_bytes": 423575,
+    "archive_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+    "artifact_id": 10119413771,
+    "artifact_workflow_run_id": 10119413771,
+    "source_manifest_sha256": "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
+  },
+  "engine": {
+    "ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "files": {},
+    "evaluator": {"path": "evaluator.py", "sha256": "placeholder"},
+    "loader": {"path": "loader.py", "sha256": "placeholder"}
+  },
+  "evidence": {
+    "summary_bytes": 11266,
+    "summary_sha256": "d19d6f705e544e47b43cf5fdcd34fb5bd91d1977"
+  },
+  "experiment": {
+    "factor": "redundant_hire",
+    "control": false,
+    "treatment": true,
+    "seeds": [2609097001, 2609097002, 2609097003, 2609097004],
+    "opponents": ["v1", "arlene", "apex", "kaito", "reyhan"],
+    "seats": [0, 1]
+  },
+  "opponents": {},
+  "schema_version": 1
+}
