@@ -145,7 +145,12 @@
     "formation_partner_link": "OWNER_UNSET",
     "running_cost_amount": "OWNER_UNSET",
     "running_cost_owner_pasted": "no",
-    "support_subscription_price": "OWNER_UNSET"
+    "support_subscription_price": "OWNER_UNSET",
+    "rating_badge_url": "OWNER_UNSET",
+    "rating_report_url": "OWNER_UNSET",
+    "rating_partner_name": "OWNER_UNSET",
+    "rating_bulk_price": "OWNER_UNSET",
+    "rating_owner_pasted": "no"
   },
   "terms": {
     "profit_share_percent": "OWNER_UNSET",
@@ -154,5 +159,8 @@
     "counsel_cleared": false
   },
   "terms_verdict": "TOS_INCOMPLETE",
-  "saleable": false
+  "saleable": false,
+  "anchor_line": "OWNER_UNSET",
+  "sold_once": true,
+  "badge_line": "Instance 1 of 1. This brand, this domain, this door are sold once."
 }
