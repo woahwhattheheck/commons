@@ -20,7 +20,7 @@ KEEP = {
     "host/super_mcp.py": "defaf19f",
     "super-mcp/catalog.json": "f087937c",
     "test_super_mcp.py": "29cdec41",
-    ".agents/skills/super-mcp/SKILL.md": "93a381b8",
+    ".agents/skills/super-mcp/SKILL.md": "11eae655",
     "ground/tokens/super-mcp.md": "716526ba",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "5e2f94f4",

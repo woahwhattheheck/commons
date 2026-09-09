@@ -14,15 +14,15 @@ PRIOR = ROOT / "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md"
 
 KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "1d997a98",
-    "test_harborline_commerce_compose_keep_lift.py": "b97b09ec",
+    "test_harborline_commerce_compose.py": "7d3f476b",
+    "test_harborline_commerce_compose_keep_lift.py": "fd490fec",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f9162b2c",
+    "test_commerce_agents_same_loop.py": "66f8fc45",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
-    "test_cursor_harborline_commerce_compose_readback.py": "23937fc6",
+    "test_cursor_harborline_commerce_compose_readback.py": "267ca17f",
 }
 
 

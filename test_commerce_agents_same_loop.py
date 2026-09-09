@@ -21,10 +21,10 @@ SPEC.loader.exec_module(loop)
 KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "abf04fe4",
+    "test_commerce_agents.py": "265d91de",
     "commerce-agents.html": "dfedb16a",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    ".agents/skills/commerce-agents/SKILL.md": "e5947726",
+    ".agents/skills/commerce-agents/SKILL.md": "81d9eccd",
     "shots/cursor-big-things-incoming-hub-1-20260902.png": "ac761b7036834acf38c34b9a2eaa17170a590c4b",
     "shots/cursor-big-things-incoming-hub-2-20260902.png": "8eb5940f94a0875b1c653c0bbfcb3c3f33209ce1",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
