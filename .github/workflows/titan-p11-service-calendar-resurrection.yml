@@ -38,6 +38,10 @@ jobs:
           run_service_calendar_certificate.py
           test_service_calendar.py
           test_service_calendar_strict_fields.py
+          verify_custody.py
+      - name: Verify exact P11 custody manifest
+        working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
+        run: python verify_custody.py
       - name: Run focused P11 contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
         run: python -m unittest -v test_service_calendar test_service_calendar_strict_fields
