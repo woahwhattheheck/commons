@@ -7,7 +7,7 @@ Original scheduler and sale valuation remain intact.
 """
 from scheduler import *
 from seller_snapshot import seller_public_observation
-from selected_sell_core import optimize_lot
+from selected_sell_core import optimize_lot, joint_plan_metrics, shared_slot_ledger
 
 class FrozenSelected(SellScheduler):
     def transform(self, obs, config, base):
@@ -44,7 +44,7 @@ class FrozenSelected(SellScheduler):
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
         budget=self.cash_reserve(obs,config,base,end)
-        best=None
+        best=None;options=[]
         for item,quantity in targets.items():
             if quantity<=0:continue
             reference=[(now,current[item])]
@@ -83,10 +83,36 @@ class FrozenSelected(SellScheduler):
             self.diagnostics['evaluations'].append(info)
             eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)
             rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])
-            if eligible and (best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain'])):best=(item,plan,info)
+            if eligible:
+                options.append((item,plan,info,reference))
+                if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):best=(item,plan,info)
+        # Pair only already-funded, independently feasible improvements.  This
+        # prevents two delayed receipts from jointly starving an inherited buy.
+        if farm['money']>=budget and len(options)>1:
+            ranked=sorted(options,key=lambda x:(x[2].get('forced_feasibility',False),x[2]['worst_relative_gain']),reverse=True)[:4]
+            route=self.controller.R[self.controller.cur]
+            def orders_at(step):
+                return base['market'] if step==now else route[step].get('market',[]) if step<len(route) else []
+            for left in range(len(ranked)):
+                for right in range(left+1,len(ranked)):
+                    pair=(ranked[left],ranked[right])
+                    if any(entry[2].get('forced_feasibility',False) for entry in pair):continue
+                    plans={entry[0]:entry[1] for entry in pair}
+                    ledger=shared_slot_ledger(plans,orders_at,config.get('maxMarketOrdersPerTurn',10))
+                    metrics=joint_plan_metrics([entry[2] for entry in pair])
+                    if ledger is None or metrics is None or metrics['worst_relative_gain']<=0:continue
+                    joint={'items':[entry[0] for entry in pair],
+                           'plans':{entry[0]:list(entry[1]) for entry in pair},
+                           'slot_ledger':ledger,**metrics}
+                    rank=(False,metrics['worst_relative_gain'])
+                    if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):
+                        best=('__joint__',plans,joint)
         if best:
-            item,plan,info=best;current[item]=dict(plan).get(now,0)
-            self.planned[item]=[(t,q) for t,q in plan if t>now and q>0]
+            item,plan,info=best
+            selected_plans=plan if item=='__joint__' else {item:plan}
+            for selected_item,selected_plan in selected_plans.items():
+                current[selected_item]=dict(selected_plan).get(now,0)
+                self.planned[selected_item]=[(t,q) for t,q in selected_plan if t>now and q>0]
             self.diagnostics['chosen']=info
         out=copy.deepcopy(base);market=[];remaining=dict(current)
         available=dict(shed)
