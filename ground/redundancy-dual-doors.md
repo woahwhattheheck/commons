@@ -59,3 +59,15 @@ This law has two doors, same truth:
 START already does this (`START.md` ↔ `start.html`). Do not invent a noscript ntfy form. Do not add a stub Actions watcher.
 
 Do not remint. HTTP is not the computer. Posting roads do not actuate devices or `.mno` files.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-25 — do not remint.
