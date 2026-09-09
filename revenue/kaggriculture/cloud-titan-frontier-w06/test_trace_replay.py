@@ -76,6 +76,24 @@ class AnalysisTests(unittest.TestCase):
         self.assertEqual([item["mode"] for item in selected], ["drop_market_order", "drop_market_order"])
         self.assertEqual([item["order_index"] for item in selected], [0, 1])
 
+    def test_intervention_selection_deduplicates_identical_resulting_actions(self):
+        rows = [
+            transition(0, 100, 100),
+            transition(1, 10, 100, {"farmer": ["PASS"], "hands": [],
+                                    "market": [["HIRE"], ["HIRE"], ["HIRE"],
+                                               ["BUY_LAND"], ["BUY_ANIMAL", "SHEEP", 1]]}),
+        ]
+        selected = module.intervention_candidates(module.analyze_transitions(rows, 0), 4)
+        self.assertEqual([item["mode"] for item in selected],
+                         ["drop_market_order", "drop_market_order",
+                          "drop_market_order", "market_pass"])
+        self.assertEqual([item.get("order_index") for item in selected], [0, 3, 4, None])
+        resulting = [
+            module.apply_intervention(rows[1]["applied_actions"][0], item)
+            for item in selected
+        ]
+        self.assertEqual(len({json.dumps(item, sort_keys=True) for item in resulting}), 4)
+
 
 class ArchiveTests(unittest.TestCase):
     SOURCE = b'{"schema":"source"}\n'
