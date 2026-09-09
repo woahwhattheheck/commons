@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Exact-mechanics adapter and bounded economics scorer for the S01 beam.
+"""Interpreter-faithful worker-prefix adapter and bounded economics scorer.
 
 This module depends only on the preserved ``mechanics.py`` primitives. It does
 not own the canonical controller and never touches market order emission.
@@ -16,6 +16,10 @@ from joint_action_beam import Action, State
 # downstream route/production intent. The core beam remains fully general, but
 # this default mechanics provider is therefore PASS-fill only: existing selected
 # work is immutable unless a caller supplies an explicit downstream-aware model.
+
+# Prefix metadata is internal to one beam search. It is ignored by the scorer and
+# never appears in the emitted Kaggriculture action object.
+_TRANSITION_META_KEY = "__s01_mechanics_transition__"
 
 
 @dataclass(frozen=True)
@@ -45,32 +49,144 @@ class ScoreContext:
     weights: ScoreWeights = ScoreWeights()
 
 
-def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[[State, int, Action], State | None]:
-    """Return an exact sequential worker transition using preserved engine code.
+def _plant_crop(action: Action) -> str | None:
+    if isinstance(action, list) and len(action) >= 2 and action[0] == "PLANT":
+        return action[1]
+    return None
 
-    A non-PASS action that leaves official state unchanged is treated as an
-    illegal/ineffective candidate and pruned. PASS remains a legal no-op.
-    """
-    def transition(state: State, idx: int, action: Action) -> State | None:
-        farm = copy.deepcopy(state["farm"])
-        private = copy.deepcopy(state["private"])
+
+def _replay_worker_prefix(
+    mechanics: Any,
+    context: MechanicsContext,
+    origin_farm: Any,
+    origin_private: Any,
+    actions: tuple[Action, ...],
+    blocked_plants: frozenset[str],
+) -> tuple[Any, Any]:
+    """Replay one tentative worker prefix with interpreter-level PLANT gating."""
+    farm = copy.deepcopy(origin_farm)
+    private = copy.deepcopy(origin_private)
+    for idx, action in enumerate(actions):
+        crop = _plant_crop(action)
+        effective = ["PASS"] if crop in blocked_plants else copy.deepcopy(action)
         mechanics._apply_unit_action(
             farm,
             private,
             idx,
-            copy.deepcopy(action),
+            effective,
             context.board_size,
             context.day,
             context.turns_per_day,
             context.shed_capacity,
         )
-        op = action[0] if isinstance(action, list) and action else None
+    return farm, private
+
+
+def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[[State, int, Action], State | None]:
+    """Return an interpreter-faithful incremental worker-prefix transition.
+
+    Kaggriculture validates PLANT requests atomically across the whole worker
+    tuple before applying any unit action: if requests for one crop exceed the
+    pre-turn seed count, every PLANT for that crop becomes PASS. That rule is not
+    prefix-monotone, so merely calling ``_apply_unit_action`` sequentially is not
+    exact. This adapter records the tentative prefix and replays it from the
+    origin whenever a crop first becomes oversubscribed. Replay also restores
+    downstream actions whose legality changed when an earlier tentative PLANT
+    was rolled back.
+
+    The official interpreter treats invalid worker actions as silent no-ops.
+    Most ineffective non-PLANT candidates are still returned as ``None`` for
+    bounded-search pruning. Once an unblocked tentative PLANT exists, however,
+    later no-ops are retained in the prefix because a future atomic rollback can
+    make them effective. Syntactic PLANT requests are always retained because
+    even an otherwise ineffective request contributes to atomic demand.
+    """
+    def transition(state: State, idx: int, action: Action) -> State | None:
+        # idx==0 starts a fresh worker tuple, which also permits callers to reuse
+        # a prior successor as the initial state of a later turn.
+        metadata = None if idx == 0 else state.get(_TRANSITION_META_KEY)
+        if metadata is None:
+            # A missing prefix at idx>0 can only follow canonical non-PLANT no-ops
+            # that the beam retained while the adapter pruned their successor.
+            # PASS placeholders are state-equivalent and safe because there was
+            # no tentative PLANT whose later rollback could reactivate them.
+            origin_farm = state["farm"]
+            origin_private = state["private"]
+            prior_actions: tuple[Action, ...] = tuple(["PASS"] for _ in range(idx))
+            prior_demand: dict[str, int] = {}
+            prior_blocked: frozenset[str] = frozenset()
+        else:
+            origin_farm = metadata["origin_farm"]
+            origin_private = metadata["origin_private"]
+            prior_actions = tuple(metadata["actions"])
+            if idx < len(prior_actions):
+                raise ValueError("mechanics transition requires increasing worker indices")
+            if idx > len(prior_actions):
+                prior_actions += tuple(["PASS"] for _ in range(idx - len(prior_actions)))
+            prior_demand = dict(metadata["plant_demand"])
+            prior_blocked = frozenset(metadata["blocked_plants"])
+
+        next_action = copy.deepcopy(action)
+        actions = prior_actions + (next_action,)
+        demand = dict(prior_demand)
+        blocked = set(prior_blocked)
+        crop = _plant_crop(next_action)
+        newly_blocked = False
+        if crop is not None:
+            demand[crop] = demand.get(crop, 0) + 1
+            available = int(origin_private.get("seeds", {}).get(crop, 0))
+            if demand[crop] > available and crop not in blocked:
+                blocked.add(crop)
+                newly_blocked = True
+        blocked_plants = frozenset(blocked)
+
+        if newly_blocked:
+            farm, private = _replay_worker_prefix(
+                mechanics,
+                context,
+                origin_farm,
+                origin_private,
+                actions,
+                blocked_plants,
+            )
+        else:
+            farm = copy.deepcopy(state["farm"])
+            private = copy.deepcopy(state["private"])
+            effective = ["PASS"] if crop in blocked_plants else next_action
+            mechanics._apply_unit_action(
+                farm,
+                private,
+                idx,
+                copy.deepcopy(effective),
+                context.board_size,
+                context.day,
+                context.turns_per_day,
+                context.shed_capacity,
+            )
+
         changed = farm != state["farm"] or private != state["private"]
-        if not changed and op != "PASS":
+        op = next_action[0] if isinstance(next_action, list) and next_action else None
+        active_tentative_plant = any(
+            n > 0 and crop_name not in blocked_plants
+            for crop_name, n in demand.items()
+        )
+        if (
+            not changed
+            and op not in {"PASS", "PLANT"}
+            and not active_tentative_plant
+        ):
             return None
+
         out = dict(state)
         out["farm"] = farm
         out["private"] = private
+        out[_TRANSITION_META_KEY] = {
+            "origin_farm": origin_farm,
+            "origin_private": origin_private,
+            "actions": actions,
+            "plant_demand": demand,
+            "blocked_plants": blocked_plants,
+        }
         return out
     return transition
 
