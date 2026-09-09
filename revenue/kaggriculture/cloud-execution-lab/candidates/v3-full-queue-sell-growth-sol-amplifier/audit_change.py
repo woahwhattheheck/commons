@@ -13,6 +13,13 @@ HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
 OPERATION = "titan-v3-full-queue-same-product-sell-growth-20260909-sol-amplifier-01"
 EXPECTED_PATCH_BLOB = "f1803dafb558745376f28d3c9e005c4688ff4452"
+EXPECTED_EXECUTION_BLOBS = {
+    "growth_patch": EXPECTED_PATCH_BLOB,
+    "frozen_selected": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "main": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "titan_runtime": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "config": "3a3bef83899d3010fad623b628d9e95d9978111b",
+}
 EXPECTED_BLOBS = {
     "v1": "cbc502a92fe9d790cfaf763f6990d1057bc9b82d",
     "v2": "7c068b7078c3d7c09bb3836590ad42b0af934cdf",
@@ -144,16 +151,18 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
             and text["candidate"].count('"execution_closure": dict(_EXECUTION_CLOSURE)') == 1
         ),
         "candidate_self_verifies_exact_execution_closure_before_import": (
-            git_blob_sha1(blobs["growth_patch"]) == EXPECTED_PATCH_BLOB
-            and all(value in text["candidate"] for value in EXPECTED_BLOBS.values())
-            and EXPECTED_PATCH_BLOB in text["candidate"]
+            all(
+                git_blob_sha1(blobs[name]) == expected
+                and expected in text["candidate"]
+                for name, expected in EXPECTED_EXECUTION_BLOBS.items()
+            )
             and text["candidate"].count("_EXECUTION_CLOSURE = _verify_execution_closure()") == 1
             and text["candidate"].index("_EXECUTION_CLOSURE = _verify_execution_closure()")
                 < text["candidate"].index("from growth_patch import attach")
             and text["candidate"].count("path.is_symlink()") == 1
         ),
         "patch_reuses_exact_transform_code_with_private_globals": (
-            text["growth_patch"].count("base_transform.__code__") >= 2
+            text["growth_patch"].count("base_transform.__code__") == 1
             and text["growth_patch"].count('"optimize_lot": _build_optimizer') == 1
             and text["growth_patch"].count('"materialize_sales": _build_materializer') == 1
         ),
