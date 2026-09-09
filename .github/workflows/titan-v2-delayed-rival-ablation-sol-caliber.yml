@@ -8,6 +8,7 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py"
       - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/compare.py"
       - "p/sol-caliber-titan-v2-delayed-rival-ablation-20260909-01.md"
+      - "p/sol-meridian-titan-v2-delayed-rival-runtime-custody-20260909-01.md"
   workflow_dispatch:
 
 permissions:
@@ -50,10 +51,13 @@ jobs:
           test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/compare.py")" = "6d66238b2ce1f11f26752049c106502be5ef0ec7"
           test "$(git hash-object "$CASE/materialize.py")" = "f115eaf5119e14c8c13d8e799b5ef30e8bd66a7d"
           test "$(git hash-object "$CASE/compare.py")" = "02081854c9eec31667b3399fff476d7a9e20e25a"
+          test "$(git hash-object "$CASE/compare_runtime_bound.py")" = "5a60ac4bfc2c0c17295257f0c1ea35072d88df0e"
           test "$(git hash-object "$CASE/test_materialize.py")" = "c8d2d1fcf38cf7fc127368c1d8a8d9d1d4467ed2"
           test "$(git hash-object "$CASE/test_compare.py")" = "1f324a3e59e7e2862b571a792427c57395fd1f3b"
+          test "$(git hash-object "$CASE/test_runtime_custody.py")" = "0f825c3482a457d34ab5482956bf19da99dbf69d"
           test "$(git hash-object "$CASE/README.md")" = "a25dff8c95d780d5d9ba42fae2be3e90f02f4546"
           test "$(git hash-object "p/sol-caliber-titan-v2-delayed-rival-ablation-20260909-01.md")" = "916e672ced6798fa35e7907e5acef3b7134a38c5"
+          test "$(git hash-object "p/sol-meridian-titan-v2-delayed-rival-runtime-custody-20260909-01.md")" = "a2df8c5febaefcd0dd59e2077fe1ac439601b5e3"
           git diff --exit-code -- .
           test -z "$(git status --porcelain)"
           printf 'exact_head=%s\n' "$EXPECTED_HEAD"
@@ -71,8 +75,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B -m unittest -v test_materialize.py test_compare.py
-          python -B -m py_compile materialize.py compare.py test_materialize.py test_compare.py
+          python -B -m unittest -v test_materialize.py test_compare.py test_runtime_custody.py
+          python -B -m py_compile materialize.py compare.py compare_runtime_bound.py test_materialize.py test_compare.py test_runtime_custody.py
 
       - name: Materialize exact frozen V2 ablation
         shell: bash
@@ -141,7 +145,7 @@ jobs:
         run: |
           set +e
           OUT="$RUNNER_TEMP/v2-delayed-rival-ablation"
-          python -B "$CASE/compare.py" \
+          python -B "$CASE/compare_runtime_bound.py" \
             --control "$OUT/control.json" \
             --candidate "$OUT/candidate.json" \
             --receipt "$OUT/MATERIALIZATION.json" \
