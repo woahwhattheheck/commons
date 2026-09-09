@@ -45,3 +45,13 @@ python -m py_compile queue_cancel.py test_queue_cancel.py
 ```
 
 The focused suite covers active and queued cancellation, explicit `cancelled`/`complete` separation, stale and terminal refusal, concurrent operators, missing-database safety, and exact-id confirmation. The test schema matches the current Fieldwork tables and partial unique index for one active request per workspace.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

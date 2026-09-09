@@ -85,3 +85,13 @@ python -B browser_check.py
 ```
 
 The bundle tests use the adjacent runner. Set `PARCEL_RUNNER_DIR` when the exact source was materialized elsewhere. Node is needed for tests, not the Python runtime. Browser checks additionally use Playwright and `/usr/bin/chromium`; they deliberately label their in-memory storage adapter and do not establish native persistence. Runtime packages use only the Python standard library. `VALIDATION.md` records the actual checks and source hashes.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

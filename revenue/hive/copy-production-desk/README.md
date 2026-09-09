@@ -65,3 +65,13 @@ python3 -m py_compile server.py test_desk.py
 The initial delivery passed 27 tests with real temporary SQLite files, concurrent threads, process-style database reopen, ZIP readback, and a real HTTP server/client. They cover one-active-request enforcement, next-item ordering, immutable revisions, changed-brand handling, stale edits, retry safety, malformed data, example loading, and transport errors. Browser JavaScript also passed `node --check` when extracted from the inline script.
 
 The attempted system-Chromium workflow could not navigate to the local server: the browser returned `net::ERR_BLOCKED_BY_ADMINISTRATOR`. Therefore actual browser interaction and desktop/mobile visual layout are not claimed tested. HTTP responses and persistence were tested separately. No full Commons battery, hosted CI result, production deployment, customer delivery, or email send is claimed by these local results.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
