@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Binding-corrected runner for the SOL-COMPASS WHEAT carry audit.
 
-The original audit engine is retained byte-for-byte. This runner corrects one
-preflight label before execution: the SELL product universe is defined by
-scheduler.py, while frozen_selected.py imports that universe. Both files remain
-independently pinned, and the final report records both source identities.
+The original audit engine is retained byte-for-byte. This runner corrects source
+labels before execution: the SELL product universe is defined by scheduler.py,
+and MAX_SHOP_INSTANCES is defined only by the pinned official engine. Every
+source remains independently pinned in the final report.
 """
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from hashlib import sha256
 import importlib.util
 import json
 from pathlib import Path
+import re
 import sys
 
 SCHEDULER_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
@@ -114,6 +115,7 @@ def add_hidden_rival_wheat_stress(report: dict) -> None:
 
 def main() -> int:
     here = Path(__file__).resolve().parent
+    root = here.parent
     legacy_path = here / "sol_compass_market_carry_wheat_audit.py"
     legacy = load_legacy(legacy_path)
 
@@ -126,6 +128,29 @@ def main() -> int:
     # the original exact bytes.
     legacy.PATHS["frozen"] = "scheduler.py"
     legacy.EXPECTED_BLOBS["frozen"] = SCHEDULER_BLOB
+
+    # mechanics.py intentionally extracts deterministic primitives but omits
+    # MAX_SHOP_INSTANCES. Derive that audit bound from the already pinned
+    # official engine source at load time; reject absent or ambiguous values.
+    original_module_loader = legacy.load_module
+
+    def load_with_engine_bound(name, path):
+        module = original_module_loader(name, path)
+        if name == "_sol_compass_mechanics":
+            engine_text = (root / "reference/engine/kaggriculture.py").read_text(
+                encoding="utf-8"
+            )
+            matches = re.findall(
+                r"^MAX_SHOP_INSTANCES\s*=\s*([0-9]+)\s*$",
+                engine_text,
+                flags=re.MULTILINE,
+            )
+            if len(matches) != 1:
+                raise AssertionError("ambiguous official MAX_SHOP_INSTANCES")
+            module.MAX_SHOP_INSTANCES = int(matches[0])
+        return module
+
+    legacy.load_module = load_with_engine_bound
 
     # Complete the synthetic private schema used only for parent liquidation.
     # The legacy fixture already supplies every product and crop key. Official
@@ -156,9 +181,11 @@ def main() -> int:
     report["audit_engine_source_sha256"] = report.pop("audit_source_sha256")
     report["audit_runner_source_sha256"] = sha256(Path(__file__).read_bytes()).hexdigest()
     report["binding_correction"] = {
-        "reason": "SELL product universe is defined in scheduler.py and imported by frozen_selected.py",
+        "reason": "SELL universe comes from scheduler.py; shop cap comes from official engine",
         "scheduler_blob": scheduler,
         "frozen_selected_blob": frozen_selected,
+        "max_shop_instances_source": "reference/engine/kaggriculture.py",
+        "max_shop_instances": int(sys.modules["_sol_compass_mechanics"].MAX_SHOP_INSTANCES),
         "calculation_engine_unchanged": True,
         "synthetic_private_schema_complete": True,
     }
@@ -173,8 +200,9 @@ def main() -> int:
         handle.write(
             "\n## Source-binding correction\n\n"
             "The executable audit pins `scheduler.py` as the source of the "
-            "WHEAT/FERTILIZER SELL exclusion and independently pins "
-            "`frozen_selected.py` as its importing consumer. The synthetic "
+            "WHEAT/FERTILIZER SELL exclusion, independently pins "
+            "`frozen_selected.py` as its importing consumer, and parses "
+            "`MAX_SHOP_INSTANCES` from the pinned official engine. The synthetic "
             "private state includes zero-valued official animal shed keys. No "
             "economic calculation or parent-route logic was changed.\n\n"
             "## Hidden rival WHEAT stress\n\n"
