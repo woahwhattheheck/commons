@@ -62,3 +62,7 @@ python commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/measure.py
 Use `arlene-adapter.py` for controls; these seeds are now consumed. `check_ordered.py` reuses the existing pinned engine and compressed baseline observations for the bounded mechanics comparison. `--reference-arlene` enables passive same-observation order diagnostics in the driver; it never feeds actions back to the candidate and adds driver work to that report's timing. Source execution remains under the existing official-loader/offline adapters. No source re-download, new simulator, paid compute, owner-PC work, model-UI action or submission occurred.
 
 Any later public Kaggle distribution should retain CARROT-DEMAND-NOTICE.txt, full license and upstream link, and its actual public forum/code URL should be retained by the account owner. This GitHub checkpoint is not a claim that such an announcement or upload occurred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

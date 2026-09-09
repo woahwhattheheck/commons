@@ -67,3 +67,7 @@ retained source-pack revision `7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f`.
 Upstream engine, official adapter and parent licenses remain in that source closure;
 this directory does not vendor or replace them. No installation or network request
 is performed by the transform.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

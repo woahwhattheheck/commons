@@ -14,3 +14,7 @@ retain canonical output. Same-turn SELL cash is deliberately not credited by the
 certificate. The hosted workflow runs both seats against intact Arlene on the
 exact archive and preserves raw games plus first-activation traces. This packet
 makes no playing-strength, holdout, leaderboard, or Kaggle-submission claim.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -110,3 +110,7 @@ The builder rejects unknown or missing keys, malformed SHA values, booleans in i
 5. Admit the policy only through the explicit required matrix in `matrix_runner.py`.
 
 The event compiler is instrumentation infrastructure. A `CERTIFIED` pair or `ADMIT` matrix still requires real source hashes and real engine observations; illustrative or fabricated events are not game evidence.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

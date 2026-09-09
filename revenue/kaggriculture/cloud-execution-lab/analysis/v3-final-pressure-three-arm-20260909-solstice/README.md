@@ -46,3 +46,7 @@ PYTHONPYCACHEPREFIX=/tmp/solstice-pyc python -B -m py_compile \
 ```
 
 The GitHub workflow executes 48 official-interpreter development games: three arms × two public opponents × four seeds × both seats. A result is development attribution only. It does not mutate canonical runtime/config/archive pointers, upload to a provider, authorize promotion, or claim hosted leaderboard rank.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

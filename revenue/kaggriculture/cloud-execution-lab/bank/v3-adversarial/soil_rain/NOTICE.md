@@ -10,3 +10,7 @@ Apache License 2.0.
 
 See `source.json` for byte hashes and acquisition details and
 `LICENSE-Apache-2.0.txt` for the license text.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -70,3 +70,7 @@ python3 benchmark.py --runtime runtime/reproduce --variants candidate,baseline -
 ```
 
 Those seeds are consumed reproduction seeds, not a new hold-out. For the measured naive comparator, point preparation at `runtime/variants/v1/naive.py`; the current `naive.py` is not the frozen v1 snapshot. Reproduction remains cloud-only. `python3 scenario_crosscheck.py` compares three existing development transitions with SORREL's separately pinned adapter; it runs no games and does not modify the candidate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

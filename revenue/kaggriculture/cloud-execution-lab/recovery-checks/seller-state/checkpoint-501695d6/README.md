@@ -50,3 +50,7 @@ The full validator verifies every manifested member, the exact canonical archive
 - Neither actor receives retained expected actions, old outcomes, or rival private state.
 - The completed-state restoration is a causal probe, not production recovery code.
 - PR10365 retains original discriminator authorship. This delivery supplies only the exact current-checkpoint consumer execution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

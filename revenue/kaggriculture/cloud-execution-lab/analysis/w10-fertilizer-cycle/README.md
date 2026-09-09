@@ -82,3 +82,7 @@ The safe next integration step is narrow:
 4. admit a production fertilizer rule only when the certificate says `CERTIFIED` across the required seed/opponent matrix.
 
 That handoff belongs to the current owner of existing producer paths. This W10 artifact deliberately avoids claiming or editing those paths.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

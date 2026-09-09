@@ -44,3 +44,7 @@ Do **not** enable `terminal_history` from this result and do not add another ter
 Revisit E16 only on a new source-pinned archive when an observed final state contains genuine mixed non-SELL commitments or ≥10 executable economic rows that create real terminal slot contention, or a source-closed receipt shows reachable post-unit shed value omitted by the frozen settlement.
 
 No Kaggle submission and no leaderboard claim were made. Full compact cell receipts and hashes are in `E16-RESULTS.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

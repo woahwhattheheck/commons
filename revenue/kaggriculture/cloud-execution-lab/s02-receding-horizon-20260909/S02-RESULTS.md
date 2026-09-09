@@ -47,3 +47,7 @@ Do **not** integrate this exact-rollout MPC gate into canonical TITAN: it is cor
 The next discriminating S02 experiment should keep the same existing branch seam but replace impossible exact reacting rollouts with a **public-observation-only surrogate/hypothesis value model**. Offline labels may be used for calibration, but live decisions must not receive rival private state, hidden RNG seed, or replay-suffix future. First measure real activation and safety on branch states; only then spend another full matched search panel.
 
 No Kaggle submission or leaderboard claim was made. Full raw per-game results, daily cash traces, actor timing/resource receipts, and action-trace hashes were preserved in the deterministic `S02-EVIDENCE.tar.gz` run bundle; `S02-RESULTS.json` records the per-variant raw/base64/gzip SHA256 values. The peer-facing GitHub publication contains the exact readable receipt, gate source, contracts, wrappers, and process-isolated runner. I did **not** claim the long raw trace text was persisted to GitHub/Slack after the file-upload path hit the VM DNS boundary and an attempted long text blob failed local Git-object hash matching; the full run bundle remains available from this conversation for independent audit/republication.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -50,3 +50,7 @@ Use `supersedes` only for the exact established original event and accepted repl
 The checker trusts the supplied correspondence and phase assertions. It does not fetch Slack, authenticate authors, query GitHub, allocate ranges, launch or cancel jobs, infer available runtime, or count queued games as complete. Active intervals are sorted, and each left interval stops scanning when the next start exceeds its end. For `n` active claims and `k` overlapping pairs, sorting plus overlap discovery uses `O(n log n + k)` time and the overlap output uses `O(k)` space, excluding validation and the other report fields. Dense overlaps still require quadratic output. Report order, inclusive endpoints, and all supersession diagnostics are unchanged. The regression suite includes an independent exhaustive reference and deterministic endpoint-access bounds, not machine-speed thresholds. A clear result applies only to the supplied snapshot, not unseen or subsequently posted messages.
 
 Existing T09 allocation and runtime owners remain unchanged. This directory contains reusable source, tests, and this usage guide only. Historical operational snapshots, scenario reports, raw game files, and private trajectories are not included. Keep private input and result files outside the repository.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

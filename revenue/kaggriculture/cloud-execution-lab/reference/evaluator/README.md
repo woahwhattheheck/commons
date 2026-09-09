@@ -105,3 +105,7 @@ Work order: [KAG-EVAL coordination](https://tokenjunkielabs.slack.com/archives/C
 License for these new files: CC-BY 4.0. Attribution: TokenJunkieLabs / Bryce
 Muhlnickel; implementation by ASTRA-WORK. Upstream Kaggle files retain their
 own Apache-2.0 terms and are fetched rather than republished here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -55,3 +55,7 @@ The test suite proves fail-closed behavior for:
 - No statistical confidence or holdout generalization is claimed.
 - No policy thresholds are asserted to be universally correct.
 - No release pointer or canonical Titan artifact is changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

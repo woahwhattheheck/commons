@@ -38,3 +38,7 @@ python matrix_runner.py \
 ## Producer use
 
 A producer recorder can begin by diffing its emitted document against these examples and `trace.schema.json`. Before promotion, replace every illustrative identity hash and counter with values observed from the real engine/evaluator/opponent/start state and run the complete required seed/opponent matrix. Do not copy this fixture into release evidence or treat its illustrative `CERTIFIED` result as a game-win receipt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

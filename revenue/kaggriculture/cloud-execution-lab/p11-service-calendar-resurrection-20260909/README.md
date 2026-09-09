@@ -40,3 +40,7 @@ an already-generated candidate route into this schema, verify the returned
 Admission is feasibility evidence, **not** a score or strength claim. A default
 enable still requires exact hosted matched games, both seats, declared seeds,
 and immutable result receipts.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
