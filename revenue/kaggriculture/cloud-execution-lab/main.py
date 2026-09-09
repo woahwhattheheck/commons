@@ -7,6 +7,30 @@ def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
     features = Features(**feature_data)
+
+    class FinalPressureAgent(TitanAgent):
+        """Keep public-curve pressure at the returned-action boundary.
+
+        Pressure was originally the final SELL transform. Later stock, crop,
+        feed and capital repairs are now allowed to finish first, then pressure
+        may reorder only the resulting supported SELL blocks. Deadline fallback
+        keeps its existing path and does not start a new optional transform.
+        """
+        def _market_pressure_selected(self, obs, cfg, selected):
+            if not getattr(self, '_final_pressure_boundary', False):
+                return selected
+            return super()._market_pressure_selected(obs, cfg, selected)
+
+        def _finish_production(self, obs, returned, cfg=None):
+            returned = super()._finish_production(obs, returned, cfg)
+            if self.diagnostics.get('status') != 'completed':
+                return returned
+            self._final_pressure_boundary = True
+            try:
+                return super()._market_pressure_selected(obs, cfg or {}, returned)
+            finally:
+                self._final_pressure_boundary = False
+
     admission = None
     if features.fourth_quadrant:
         source = root/'funded_payback.py'
@@ -19,7 +43,7 @@ def _new_instance(root, feature_data):
                        root/'funded_payback_runtime.py', cache=True)
         admission = adapter.make_admission(module.FundedPaybackAdmission)(
             seconds=features.budget_seconds, max_proposals=24)
-    return TitanAgent(features, fourth_quadrant_admission=admission)
+    return FinalPressureAgent(features, fourth_quadrant_admission=admission)
 
 
 def agent(observation, configuration=None):
