@@ -2,9 +2,9 @@
 """Derive the one-factor TITAN terminal-deadline candidate from pinned sources.
 
 This script never edits a repository checkout unless both canonical source blobs
-match the exact reviewed preimages. It is intended for a disposable worktree;
-the canonical archive, pointers, configuration, and provider state are outside
-its scope.
+match the exact reviewed preimages. It is intended for a clean detached worktree
+whose exact HEAD descends from the reviewed source-preimage commit; the canonical
+archive, pointers, configuration, and provider state are outside its scope.
 """
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import subprocess
 from typing import Final
 
 OPERATION: Final = "titan-v3-terminal-deadline-liquidation-preservation-20260909-01"
@@ -99,6 +100,92 @@ def patch_runtime(text: str) -> str:
     return _replace_exact(text, _RUNTIME_OLD, _RUNTIME_NEW, "titan_runtime.py")
 
 
+def _git(lab: Path, *arguments: str) -> subprocess.CompletedProcess[str]:
+    try:
+        return subprocess.run(
+            ["git", "-C", str(lab), *arguments],
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+    except OSError as exc:
+        raise CandidateError(f"cannot execute git for {lab}: {exc}") from exc
+
+
+def _full_commit(value: str, label: str) -> str:
+    commit = value.strip().lower()
+    if len(commit) != 40 or any(c not in "0123456789abcdef" for c in commit):
+        raise CandidateError(f"{label} must be a full 40-character hexadecimal commit")
+    return commit
+
+
+def checkout_provenance(lab: Path, expected_head: str) -> dict[str, object]:
+    """Bind a clean detached derivation checkout to an exact descendant HEAD."""
+    lab = lab.resolve(strict=True)
+    if not lab.is_dir() or lab.is_symlink():
+        raise CandidateError(f"refusing non-directory lab root: {lab}")
+    expected = _full_commit(expected_head, "expected derivation head")
+
+    root_result = _git(lab, "rev-parse", "--show-toplevel")
+    if root_result.returncode != 0:
+        raise CandidateError(
+            f"lab is not in a Git worktree: {root_result.stderr.strip() or lab}"
+        )
+    try:
+        root = Path(root_result.stdout.strip()).resolve(strict=True)
+        lab.relative_to(root)
+    except (OSError, ValueError) as exc:
+        raise CandidateError("lab root escaped its reported Git worktree") from exc
+
+    head_result = _git(lab, "rev-parse", "--verify", "HEAD^{commit}")
+    if head_result.returncode != 0:
+        raise CandidateError(
+            f"cannot resolve derivation HEAD: {head_result.stderr.strip()}"
+        )
+    actual = _full_commit(head_result.stdout, "actual derivation head")
+    if actual != expected:
+        raise CandidateError(
+            f"derivation HEAD mismatch: expected {expected}, got {actual}"
+        )
+
+    ancestor = _git(lab, "merge-base", "--is-ancestor", BASE_COMMIT, actual)
+    if ancestor.returncode == 1:
+        raise CandidateError(
+            f"reviewed source-preimage commit {BASE_COMMIT} is not an ancestor of {actual}"
+        )
+    if ancestor.returncode != 0:
+        raise CandidateError(
+            "cannot prove source-preimage ancestry: "
+            f"{ancestor.stderr.strip() or ancestor.returncode}"
+        )
+
+    symbolic = _git(lab, "symbolic-ref", "-q", "HEAD")
+    if symbolic.returncode == 0:
+        raise CandidateError(
+            f"derivation checkout must be detached, found {symbolic.stdout.strip()}"
+        )
+    if symbolic.returncode != 1:
+        raise CandidateError(
+            f"cannot verify detached HEAD: {symbolic.stderr.strip() or symbolic.returncode}"
+        )
+
+    status = _git(lab, "status", "--porcelain", "--untracked-files=no")
+    if status.returncode != 0:
+        raise CandidateError(f"cannot inspect derivation checkout: {status.stderr.strip()}")
+    if status.stdout:
+        raise CandidateError("derivation checkout is not clean before candidate generation")
+
+    return {
+        "source_preimage_commit": BASE_COMMIT,
+        "source_preimage_commit_is_ancestor": True,
+        "derivation_head": actual,
+        "derivation_head_expected": expected,
+        "derivation_detached_head": True,
+        "derivation_checkout_clean_before_patch": True,
+    }
+
+
 def _read_exact(path: Path, expected_blob: str) -> bytes:
     if path.is_symlink() or not path.is_file():
         raise CandidateError(f"refusing non-regular source: {path}")
@@ -129,7 +216,7 @@ def _atomic_write(path: Path, data: bytes) -> None:
 
 
 def apply_candidate(lab: Path) -> dict[str, object]:
-    """Patch both pinned sources and return a content-addressed receipt."""
+    """Patch both pinned source preimages and return the semantic receipt."""
     lab = lab.resolve(strict=True)
     if not lab.is_dir() or lab.is_symlink():
         raise CandidateError(f"refusing non-directory lab root: {lab}")
@@ -153,7 +240,8 @@ def apply_candidate(lab: Path) -> dict[str, object]:
 
     receipt: dict[str, object] = {
         "operation": OPERATION,
-        "base_commit": BASE_COMMIT,
+        "source_preimage_commit": BASE_COMMIT,
+        "source_preimage_commit_role": "reviewed origin of exact source blobs",
         "changed_paths": ["main.py", "titan_runtime.py"],
         "before_git_blobs": {
             name: git_blob_sha(before[name]) for name in sorted(before)
@@ -177,9 +265,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--lab", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--expect-head", required=True)
     args = parser.parse_args()
 
+    provenance = checkout_provenance(args.lab, args.expect_head)
     receipt = apply_candidate(args.lab)
+    receipt.update(provenance)
     args.manifest.parent.mkdir(parents=True, exist_ok=True)
     args.manifest.write_text(
         json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
