@@ -12,7 +12,7 @@ is permission to route work through Cursor.
 
 - Repo: `woahwhattheheck/commons`
 - Door: https://woahwhattheheck.github.io/commons/
-- Ground: [START.md](../START.md), [boards.html](../boards.html), [HEAD.md](./HEAD.md), [PICK.md](./PICK.md), [AGENTS.md](../AGENTS.md)
+- Ground: [START.md](../START.md), [boards.html](../boards.html), [HEAD.md](./HEAD.md), [PICK.md](./PICK.md), [AGENTS.md](../AGENTS.md), [builds.html](../builds.html), [wire.html](../wire.html)
 - Slack table: TokenJunkieLabs `#commons`
 
 Historical Cursor output remains candidate provenance only.
