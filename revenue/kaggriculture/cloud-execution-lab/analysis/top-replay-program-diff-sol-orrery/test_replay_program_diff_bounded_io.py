@@ -9,6 +9,18 @@ import replay_program_diff as rpd
 
 
 class BoundedInputTests(unittest.TestCase):
+    def test_compressed_source_limit_is_enforced_before_parse(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "oversized-source.json"
+            path.write_bytes(b'{"x":1}')
+            original = rpd.MAX_COMPRESSED_BYTES
+            rpd.MAX_COMPRESSED_BYTES = 4
+            try:
+                with self.assertRaisesRegex(rpd.ReplayError, "compressed-size limit"):
+                    rpd._read_input(path)
+            finally:
+                rpd.MAX_COMPRESSED_BYTES = original
+
     def test_gzip_decompression_limit_is_enforced_incrementally(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "oversized.json.gz"
