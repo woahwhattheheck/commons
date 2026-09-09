@@ -2,6 +2,8 @@
 
 Operation: `titan-v3-aggregate-seed-budget-20260909-01`
 
+Evidence base: current main `78b1c3647d58407da1a315fb5e13b93bff635650`, inherited by non-force merge commit `fe879ef9ccf591237f61ebf1b21fca8e488bb015`.
+
 ## Hypothesis
 
 The landed `SeedBudget.apply()` bounds each executable `BUY_SEED` row against the same post-unit seed stock. When the live market prefix contains two rows for the same crop, both rows can independently fit the remaining-route bound while their **aggregate realized fills** exceed every branch-compatible future `PLANT` request. The excess is fixed-price cash converted into seed stock that the frozen route cannot use.
