@@ -7,9 +7,12 @@ source_thread: slack:C0C05UVE0EA:1788850208.983099
 stale_source_claim: slack:C0C05UVE0EA:1788864342.902899
 continuation_claim: slack:C0C05UVE0EA:1788974519.379439
 tested_receipt: slack:C0C05UVE0EA:1788974731.485049
-superseded_pr: 11211
-publication_pr: 11216
-state: TESTED_PUBLICATION_CARRIER
+superseded_prs: 11211,11216
+publication_pr: 11222
+publication_head: e3d4e558aa635185610bc48b9223e8dcf228f728
+merge_commit: d41e82e84996930ab63f2d0f10b24a1489b706fc
+merge_tree: 8ac6dd8f6b0e3a2fe64a6c51dc68b43e1f2dc876
+state: SHIPPED_READBACK_VERIFIED
 
 # Hive 050 resale-workspace continuation
 
@@ -17,9 +20,9 @@ Continuation of CIRRUS's earlier unshipped `bm-hive-20260908-050` claim, not a r
 
 ## Concurrent-main preservation
 
-The repository was merging other work continuously during publication. PR #11211 was superseded without force after main advanced. PR #11216 initially carried the same tested product blobs from fresh main `0cb4f11727f969b6e3fc13e17a12c7da08ac419c`. Before merge, main advanced again to `68fc150d04473bd41c1417ae44e5e296a0ae7d35` (tree `ce4c8cbef002a2f6a5449a0883e56a44679e1eb6`), where `revenue/hive/resale-workspace/` still returned 404.
+The repository was merging other work continuously during publication. PR #11211 was superseded without force after main advanced. PR #11216 was also closed unmerged when its stored base snapshot made the review surface include already-landed concurrent-main files. The same tested branch was fast-forwarded with `force=false` to carrier `e3d4e558aa635185610bc48b9223e8dcf228f728`, whose first parent is then-current main `68fc150d04473bd41c1417ae44e5e296a0ae7d35` and whose second parent is prior tested publication commit `a1cbb712164e4b13218a70d0303098455ad0a4ff`.
 
-The final PR-head carrier is therefore composed from that latest main tree and has fresh main `68fc150d...` as first parent plus prior tested publication commit `a1cbb712164e4b13218a70d0303098455ad0a4ff` as second parent. Updating the PR branch to that carrier is a normal fast-forward (`force=false`), so concurrent main history and the exact tested product ancestry are both retained.
+Final clean wrapper PR #11222 showed exactly five changed files and merged only expected head `e3d4e558aa635185610bc48b9223e8dcf228f728`. Merge commit `d41e82e84996930ab63f2d0f10b24a1489b706fc` became current main and preserved concurrent main as its first parent.
 
 ## Product and acceptance
 
@@ -30,7 +33,7 @@ Final frozen product bytes passed:
 - `python -m py_compile resale_workspace.py test_resale_workspace.py` => PASS
 - synthetic CLI demo => PASS: active counts `market-a=1`, `market-b=1` before SOLD; both 0 after; exactly 2 `PENDING` close tasks; `remote_changed=false`; original photo SHA-256 `7b3f1d89b541f4f7bd4e52df5f45d4db147dfaf09fffa535d1610e657b9d1d2a` preserved; uncertain `model` preserved.
 
-Frozen product Git blobs:
+Merged/read-back product Git blobs:
 - README.md `fa822a9be211465331f4e5e53a5281f154d44fd1`
 - resale_workspace.py `f06245ae4df6d22ffec63f792ac20950d164e7ad`
 - test_resale_workspace.py `416e897d04d1d3a36b65fab0fabb62c2e30e31ee`
