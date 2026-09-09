@@ -23,7 +23,7 @@ def _new_instance(root, feature_data):
 
 
 def _entrypoint_fallback(instance, observation, configuration, deadline):
-    """Return only a completed producer action or a visible-state legal fallback."""
+    """Return a completed current action, otherwise the visible-state fallback."""
     from copy import deepcopy
     selected = None if instance is None else getattr(instance, 'selected', None)
     if selected is not None:
@@ -40,7 +40,7 @@ def _entrypoint_fallback(instance, observation, configuration, deadline):
 
 
 def _record_entrypoint_deadline(instance, stage, started):
-    """Leave an inspectable receipt on the discarded instance."""
+    """Retain both the inner receipt and the whole-call cancellation boundary."""
     if instance is None:
         return
     import time
@@ -77,26 +77,42 @@ def agent(observation, configuration=None):
     instance = None if replace else _INSTANCE
     feature_data = (json.loads((root/'TITAN-CONFIG.json').read_text())
                     if replace else None)
-    if replace:
-        # A cancelled step-zero construction must not leave the prior game's
-        # instance available to a later nonzero call.
-        _INSTANCE = None
     from titan_runtime import deadline
-    owner = instance
-    budget = (float(owner.features.budget_seconds) if owner is not None
+    budget = (float(instance.features.budget_seconds) if instance is not None
               else float(feature_data.get('budget_seconds', 1.0)))
-    reserve = (float(owner.features.reserve_seconds) if owner is not None
+    reserve = (float(instance.features.reserve_seconds) if instance is not None
                else float(feature_data.get('reserve_seconds', 0.01)))
-    if reserve < 0 or budget <= reserve:
-        raise ValueError('budget_seconds must exceed non-negative reserve_seconds')
-    # Never reuse the prior step's selected action as a current fallback.
+    if not 0 <= reserve < budget <= 1:
+        raise ValueError('invalid action deadline')
+    # TitanAgent clears this itself, but clear it before arming the outer timer
+    # so an immediate whole-call cancellation cannot reuse the prior step.
     if instance is not None:
         instance.selected = None
     fallback = _entrypoint_fallback(None, observation, cfg, deadline)
-    remaining = budget-reserve-(time.perf_counter()-entry_started)
+    remaining = budget-(time.perf_counter()-entry_started)
     if remaining <= 0:
-        _record_entrypoint_deadline(instance, 'entrypoint_prelude', entry_started)
-        _INSTANCE = None
+        # Preserve the existing prelude contract without invoking finalizers on
+        # an object whose lazy controller was never initialized.
+        if replace:
+            instance = _new_instance(root, feature_data)
+            _INSTANCE = instance
+        obs = dict(observation)
+        obs['step'] = step
+        if instance.features.consumer == 'frozen':
+            instance.ready = False
+        instance.selected = None
+        instance.post = None
+        instance._remember_seller_fallback(obs)
+        instance.diagnostics = {
+            'consumer': instance.features.consumer,
+            'parent_calls': 0,
+            'entrypoint_prelude_seconds': time.perf_counter()-entry_started,
+            'status': 'deadline_fallback',
+            'fallback_stage': 'entrypoint_prelude',
+            'elapsed_seconds': time.perf_counter()-entry_started,
+            'act_cpu_seconds': 0.0,
+            'entrypoint_guard': True,
+        }
         return fallback
     timer = deadline._DeadlineTimer(remaining)
     stage = 'entrypoint_construction' if replace else 'entrypoint_runtime'
@@ -116,14 +132,10 @@ def agent(observation, configuration=None):
             stage = 'entrypoint_finalization'
         fallback = _entrypoint_fallback(instance, observation, cfg, deadline)
         _record_entrypoint_deadline(instance, stage, entry_started)
-        _INSTANCE = None
-        return fallback
-    # Main-thread signal delivery cannot interrupt every native call. Refuse a
-    # result that crossed the same internal boundary even if the timer callback
-    # could not run until after that call returned.
-    if time.perf_counter()-entry_started >= budget-reserve:
-        fallback = _entrypoint_fallback(instance, observation, cfg, deadline)
-        _record_entrypoint_deadline(instance, 'entrypoint_postcheck', entry_started)
+        if instance is not None:
+            instance.ready = False
+        # Finalization may have been interrupted mid-mutation. Never expose that
+        # object to the next observation; reconstruction starts from public state.
         _INSTANCE = None
         return fallback
     return output
