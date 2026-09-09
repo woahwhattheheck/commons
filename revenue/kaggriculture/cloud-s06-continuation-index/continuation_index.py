@@ -11,6 +11,7 @@ from dataclasses import dataclass
 import hashlib
 import json
 import math
+import sys
 from typing import Any, Callable, Iterable
 
 FEATURE_FIELDS = (
@@ -28,6 +29,12 @@ DEFAULT_QUANTA = {
 }
 DEFAULT_MAX_BYTES = 128 * 1024 * 1024
 DEFAULT_RETRIEVE = 32
+# Admission uses recursive Python object size, then doubles it and adds an
+# explicit per-record reserve.  The margin covers index-container growth and
+# allocator slack instead of pretending serialized payload bytes equal resident
+# index footprint.
+ADMISSION_SAFETY_FACTOR = 2
+ADMISSION_RECORD_RESERVE = 1024
 
 
 def _stable_json(value: Any) -> str:
@@ -73,6 +80,29 @@ def action_key(action: Any) -> str:
     return hashlib.sha256(_stable_json(action).encode('utf-8')).hexdigest()
 
 
+def _deep_size(value: Any, seen: set[int] | None = None) -> int:
+    """Recursive owned Python-object footprint using ``sys.getsizeof``.
+
+    Shared references are charged once within one measurement.  This is used as
+    a deterministic structural admission bound, not as an RSS profiler.
+    """
+    if seen is None:
+        seen = set()
+    identity = id(value)
+    if identity in seen:
+        return 0
+    seen.add(identity)
+    size = sys.getsizeof(value)
+    if isinstance(value, dict):
+        size += sum(_deep_size(k, seen) + _deep_size(v, seen)
+                    for k, v in value.items())
+    elif isinstance(value, (list, tuple, set, frozenset)):
+        size += sum(_deep_size(item, seen) for item in value)
+    elif hasattr(value, '__dict__'):
+        size += _deep_size(vars(value), seen)
+    return size
+
+
 def collision_reasons(action: Any, state: dict[str, Any]) -> tuple[str, ...]:
     """Fail historical candidates closed on explicit funding/seed/route conflicts.
 
@@ -82,9 +112,14 @@ def collision_reasons(action: Any, state: dict[str, Any]) -> tuple[str, ...]:
     """
     if not isinstance(action, dict):
         return ()
-    requires = action.get('requires') or {}
-    if not isinstance(requires, dict):
-        return ('malformed_requirements',)
+    # Missing requirements mean no extra commitment.  Any *explicit* value must
+    # be a mapping; do not let falsy malformed values collapse through ``or {}``.
+    if 'requires' not in action:
+        requires = {}
+    else:
+        requires = action['requires']
+        if not isinstance(requires, dict):
+            return ('malformed_requirements',)
     resources = state.get('resources') or {}
     commitments = state.get('commitments') or {}
     reasons = []
@@ -152,35 +187,44 @@ class ContinuationIndex:
         self._exact: dict[str, list[int]] = {}
         self._product: dict[str, list[int]] = {}
         self._seen: set[tuple[str, str, str]] = set()
-        self._estimated_bytes = 0
+        # Charge the actual empty index-owned graph up front.  Every later record
+        # is charged from its decoded Python object graph with an additional
+        # safety factor + reserve, so the admission counter is intentionally
+        # above the retained structural footprint rather than below it.
+        self._admission_bytes = _deep_size((self._records, self._exact,
+                                             self._product, self._seen,
+                                             self.quanta)) + sys.getsizeof(self)
+        if self._admission_bytes > self.max_bytes:
+            raise MemoryError('continuation index memory budget below empty index footprint')
 
     @staticmethod
-    def _record_cost(exact_key: str, product_key: str, action_blob: str,
-                     trajectory_id: str) -> int:
-        # Conservative deterministic accounting for payload + two bucket refs,
-        # list/dict/set entries and Python-object overhead.  This is a hard
-        # admission budget, not a claim about allocator-resident RSS.
-        return 640 + len(exact_key) + len(product_key) + len(action_blob.encode('utf-8')) + len(trajectory_id.encode('utf-8'))
+    def _record_cost(record: _Record, identity: tuple[str, str, str]) -> int:
+        structural = _deep_size((record, identity))
+        return ADMISSION_RECORD_RESERVE + ADMISSION_SAFETY_FACTOR * structural
 
     def add(self, state: dict[str, Any], action: Any, trajectory_id: str) -> bool:
         exact_key = exact_state_hash(state)
         product_key = product_quantized_key(state, self.quanta)
         akey = action_key(action)
-        identity = (exact_key, akey, str(trajectory_id))
+        trajectory_id = str(trajectory_id)
+        identity = (exact_key, akey, trajectory_id)
         if identity in self._seen:
             return False
         action_blob = _stable_json(action)
-        cost = self._record_cost(exact_key, product_key, action_blob, str(trajectory_id))
-        if self._estimated_bytes + cost > self.max_bytes:
-            raise MemoryError('continuation index memory budget exceeded')
+        # Decode the exact retained representation before admission and charge
+        # that object graph, not only its compact JSON bytes.  Nothing is linked
+        # into the index until the charge passes.
         record = _Record(exact_key, product_key, json.loads(action_blob), akey,
-                         str(trajectory_id), len(self._records))
+                         trajectory_id, len(self._records))
+        cost = self._record_cost(record, identity)
+        if self._admission_bytes + cost > self.max_bytes:
+            raise MemoryError('continuation index memory budget exceeded')
         index = len(self._records)
         self._records.append(record)
         self._exact.setdefault(exact_key, []).append(index)
         self._product.setdefault(product_key, []).append(index)
         self._seen.add(identity)
-        self._estimated_bytes += cost
+        self._admission_bytes += cost
         return True
 
     def _history_pool(self, state: dict[str, Any], mode: str) -> list[_Record]:
@@ -248,7 +292,7 @@ class ContinuationIndex:
             'records': len(self._records),
             'exact_buckets': len(self._exact),
             'product_buckets': len(self._product),
-            'estimated_bytes': self._estimated_bytes,
+            'admission_bytes': self._admission_bytes,
             'max_bytes': self.max_bytes,
             'retrieve_limit': self.retrieve_limit,
         }
