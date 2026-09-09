@@ -48,9 +48,9 @@ Checked 2026-09-09 UTC. Team TokenJunkieLabs is already registered under the
 single existing team account; do not create another registration or teammate account.
 
 - [Official event](https://create.gosim.org/factory26/): registration closed September 7
-  23:59 Beijing (15:59 UTC). An organizer follow-up on September 9 moved the
-  bootcamp/start-of-preparation instruction to September 10; scored qualifier remains
-  September 21–30 with a simultaneous start; top 20 finals October 1–7.
+  23:59 Beijing (15:59 UTC). An organizer follow-up on September 9 says the
+  bootcamp now starts September 10; scored qualifier remains September 21–30 with
+  a simultaneous start; top 20 finals October 1–7.
 - Organizer account follow-through from the September 9 email: the captain/main
   contact should use the existing login's “编辑报名信息” flow to complete newly added
   fields, verify every teammate is under the correct team, and add any missing members
