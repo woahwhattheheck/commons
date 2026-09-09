@@ -17,3 +17,7 @@ No observation, private inventory, complete action stream, opponent source, or
 raw game record is added to this directory. `RESULTS.json` contains aggregate
 counts, ranges, and digests only. Existing dependency licenses, original policy
 authorship, and OSPREY's development/held designations remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -52,3 +52,7 @@ python work/run_panel.py --seed 9852001 --seat 0 --arm candidate --opponent sell
 The last command creates a separate output directory, not overwritten historical evidence. ZIP layout is `work/`, `runtime/`, `bank/`, `engine-bank/engine/`, `results/`; its full README gives commands, retained source phases and limits. A fresh extraction verified all 295 manifested members, passed 28 methods and reproduced raw719 correspondence. No new engine game was needed for relocation acceptance.
 
 Official engine pin: Kaggle/kaggle-environments `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`; engine SHA256 `bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e`. Tested TitanAgent SHA256 `58ea0d32db8e5f40de86f45f3709d065c3ccdb7c09ee11adcae3ebc0ee6ef9d7`. This is source-closure consumption, not materialized-current-tar acceptance. [NOTICE.md](NOTICE.md) preserves upstream lineage. No canonical runtime/package, peer source, owner PC, new spend or Kaggle write was changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

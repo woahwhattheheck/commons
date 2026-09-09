@@ -95,3 +95,7 @@ checkpoint submission. The complete caller still owns future economic selection.
 New source is Apache-2.0. Existing Arlene, frozen SELL, evaluator, and official
 engine source remain under their original licenses and attribution. See
 `NOTICE.md` and the retained package for the full dependency closure.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

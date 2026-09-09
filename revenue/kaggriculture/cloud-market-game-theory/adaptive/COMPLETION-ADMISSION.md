@@ -62,3 +62,7 @@ that lifecycle method as a no-op; its original assertions and production source
 remain intact. All 22 capture methods pass locally with the merged runtime.
 The seven real-runtime completion methods remain the expiry evidence; the
 capture fixture is not presented as an independent lifecycle implementation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

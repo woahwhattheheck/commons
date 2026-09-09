@@ -98,3 +98,7 @@ reallocates a unit before these commands.
 
 New source is Apache-2.0. The Kaggriculture interpreter and OSPREY records retain
 their existing licenses, provenance and ownership.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

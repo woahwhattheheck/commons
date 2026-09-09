@@ -16,3 +16,7 @@ The nine consumer methods are separate synthetic report/field cases, not additio
 `run_slice.py` consumes the unchanged COORD/TANDEM cloud-eval.play implementation, blobda355637250befe60ef863bf8e12c626d4882d7a from4815a336. `current_entry.py` lazily calls the preserved official file-agent loader and unchanged main.py. Both files run in the bundled workload layout; they are not a second evaluator or release entrypoint. Complete commands and dependencies are in the bundle README. Runtime:Python3.13.5,NumPy2.3.5,SciPy1.17.0,one game at a time,1s RPC,no overage. Startup and process cleanup are recorded separately. Internal fallback counters were not independently instrumented.
 
 BRIDGE/COVER PR10259 provided the exact279687B a8af archive through existing artifact10042091629; ORBIT's alternative copy proposal was not integrated. Canonical source/config/archive, prior Barnyard/bank results, IRIS's corrections, WIDEFIELD's older58f8 evidence and the owner upload remain unchanged. This checkpoint does not count previous games or claim hosted CI success.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

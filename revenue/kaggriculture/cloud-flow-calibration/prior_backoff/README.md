@@ -56,3 +56,7 @@ The comparison reuses the PR10263 public/own-input replay. Current rival actions
 ## Source bindings
 
 `backoff.py` SHA-256: `ae4b7f98b4340f04f6c2f0da6dae32d5043b4be63aa0e3fd5068fac8f44466a4`. Existing calibration blob: `75e67d65583ab83847b95dee426ff3a49dee1c87`; assessor: `765874398a98603e48109f5c92db86461bc0290f`; T12 flow: `7b3c1c383e98ce1eb5bf539caddf0ab4351f8633`; official engine: `3c202c7ee921da239356789e266b694635103fc4`. Existing codec/ledger and licenses are retained through the PR9975 archive. New files are MIT. No source takeover, default change, Kaggle write, owner-PC computation or spend.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

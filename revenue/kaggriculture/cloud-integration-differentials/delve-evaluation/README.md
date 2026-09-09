@@ -91,3 +91,7 @@ all218 member digests were checked. Interrupted streams remain explicitly partia
 Preserve CEDAR's funding authorship, JUNIPER/CYPRESS's join, ALDER's demand logic,
 Claude's producer and the existing projection/seller/evaluator contributors.
 DELVE changes only cash representation and supplies this consumer evaluation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

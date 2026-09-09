@@ -111,3 +111,7 @@ outcomes, failed/missing cells, duplicate keys, invalid cash and source mismatch
 No full games, seed use, engine modification, Kaggle access, new workflow or
 rerun of the accepted 79 component methods occurred. TANDEM's timing utility and
 all assembler/controller files remain untouched.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

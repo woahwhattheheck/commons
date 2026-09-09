@@ -84,3 +84,7 @@ The frozen scheduler indexes `obs['step']` directly, and the engine omits that k
 from a seat-1 observation, so a seat-1 game raises `KeyError` before any policy
 runs. `sell_arm.py` normalises it in the harness, as Arlene does internally. Same
 missing key already reported for `build_arrival_contract`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

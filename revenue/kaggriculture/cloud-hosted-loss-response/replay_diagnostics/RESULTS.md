@@ -88,3 +88,7 @@ subsequent planting: the continuation stops with NONFINANCIAL_DIVERGENCE and
 reports no gain. Corrupt baselines likewise cannot generate a claimed benefit.
 No full-game seeds were consumed by this diagnostic component; no agent default,
 Kaggle submission, transport-owner file or peer policy path was changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

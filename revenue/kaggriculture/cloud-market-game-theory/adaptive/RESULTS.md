@@ -90,3 +90,7 @@ Kaggle upload or notebook writes were repeated.
 The result remains an optional research candidate. Development win flips are
 real; extra held wins and recourse-specific W/T/L superiority are not observed.
 Frozen selected SELL and other peers' source remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

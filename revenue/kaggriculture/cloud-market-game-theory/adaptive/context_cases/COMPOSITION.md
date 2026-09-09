@@ -21,3 +21,7 @@ The exact same eight constructed official-interpreter trajectories are retained 
 Remaining source pins are unchanged: core `d2cded3d35d4a60318e0dff71602c6b395dac3b8`, recourse `c5111333c15b35854198a5f1cf5417d8c2a2094f`, selector `546b71188fd44dc47cac99623d1967bc81413da7`, continuation `165890d9e2534785ee4114e39549528e3f14ad82`, official interpreter `3c202c7ee921da239356789e266b694635103fc4`. The existing 6.79-microsecond context-only measurement is not rerun or recast as whole-agent performance.
 
 Run the same command from README. Its optional engine path must include the existing sibling kaggriculture.json file. The Library reproduction bundle retains both original and composed source-bound reports separately. Source publication and main merge status are recorded in PR #10066, not inferred from this local execution note.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

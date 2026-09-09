@@ -284,3 +284,7 @@ at 6 burners `cpu_max` rose to 0.0609 s from 0.0212 s: under heavy load the CPU
 accounting itself inflates, so `act_cpu_seconds` is a floor on real work rather
 than a clean isolate. Still supports descheduling as a possibility; still not an
 exclusive cause claim about the original failure.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

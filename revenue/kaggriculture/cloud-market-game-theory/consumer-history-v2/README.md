@@ -77,3 +77,7 @@ No model/component test battery or new timing framework was substituted for game
 Own harness source is Apache-2.0. Official engine, package and public-bank sources
 retain their existing licenses and exact source pins. Selected default unchanged;
 no Kaggle upload, notebook write, owner-PC compute, new VM or paid execution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

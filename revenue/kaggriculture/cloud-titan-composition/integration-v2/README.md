@@ -107,3 +107,7 @@ before importing the unchanged SELL module. Normal imported-module loading uses
 hash and two retained-observation parity cases through the actual pinned
 `cloud-pack/official.py::make_agent` file loader. This is a targeted packaging
 check, not another SIGNAL historical replay or a full game. No policy changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -89,3 +89,7 @@ Use existing cloud-frontier-policy/next-panel/prepare.py to prepare the offline
 Arlene/Apex runtime, and the pinned three engine source files. No new source
 export job or dependency installation is required. Existing scored panels are
 preserved; new experiments need new seeds and an explicit source freeze.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

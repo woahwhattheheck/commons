@@ -47,3 +47,7 @@ The coordinator refuses an occupied output directory, makes detached source copi
 ## Consumer
 
 FINCH, RULE and BIRCH can use this source-bound result directly. The optimization already delivered in PR10063 remains useful when multiple windows precede a first admission, but this measured actor never reaches that regime. Prioritize reached full-call costs rather than another offer layer or a synthetic speed ratio. BIRCH retains current CI bindings; WREN/SPRUCE keep their separately measured changes. No running experiment needs a restart.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

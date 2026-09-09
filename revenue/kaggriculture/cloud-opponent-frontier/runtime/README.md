@@ -100,3 +100,7 @@ report after every game and records both evaluator and full-trace hashes.
 
 No Kaggle upload, notebook write, leaderboard-strength claim, revenue claim,
 or whole-repository CI claim is made.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

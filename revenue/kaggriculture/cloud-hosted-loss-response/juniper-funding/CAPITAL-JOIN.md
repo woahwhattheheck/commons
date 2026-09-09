@@ -122,3 +122,7 @@ inspection are retained. Earlier PR10116 evidence remains separate and intact.
 FIR / OSPREY / ALDER can use this existing-actor interface in a separately frozen
 candidate. No route/scenario/physical model, scheduler, certificate, existing
 workflow, selected default, owner-PC state or hosted submission is changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

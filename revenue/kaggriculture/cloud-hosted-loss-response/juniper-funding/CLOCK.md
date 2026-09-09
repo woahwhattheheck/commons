@@ -90,3 +90,7 @@ consumes frameN's own observation and is compared with frameN+1's authored actio
 No rival private observation or current rival action is passed to the policy.
 The checker reports partial completion explicitly and returns nonzero on a
 source-action/state or dispatch mismatch.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
