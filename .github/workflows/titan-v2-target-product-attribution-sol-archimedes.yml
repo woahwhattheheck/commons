@@ -15,13 +15,15 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
+env:
+  SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
+  ARMS: 'CONTROL CORE CARROT TOMATO STRAWBERRY MELON EGG MILK WOOL'
+  PYTHONDONTWRITEBYTECODE: '1'
+
 jobs:
-  exact-product-attribution:
+  preflight:
     runs-on: ubuntu-24.04
-    timeout-minutes: 55
-    env:
-      SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
-      ARMS: 'CORE CARROT TOMATO STRAWBERRY MELON EGG MILK WOOL'
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,33 +38,27 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
-          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install pinned official-interpreter dependency
-        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
-
-      - name: Run materializer and comparator contracts
+      - name: Run fail-closed contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-product-attribution-sol-archimedes
         shell: bash
         run: |
           set -euo pipefail
-          export PYTHONDONTWRITEBYTECODE=1
           python -m unittest -v test_materialize.py test_compare.py
           python -m py_compile materialize.py compare.py test_materialize.py test_compare.py
 
-      - name: Materialize exact product arms
+      - name: Reconstruct every exact arm
         shell: bash
         run: |
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           CASE="$LAB/analysis/v2-target-product-attribution-sol-archimedes"
-          OUT="$RUNNER_TEMP/v2-target-product-attribution"
-          rm -rf "$OUT"
-          mkdir -p "$OUT/arms" "$OUT/receipts" "$OUT/results"
+          OUT="$RUNNER_TEMP/preflight-arms"
+          mkdir -p "$OUT/arms" "$OUT/receipts"
           for arm in $ARMS; do
             python "$CASE/materialize.py" \
               --source "$LAB/runtime/variants/v2" \
@@ -70,6 +66,25 @@ jobs:
               --receipt "$OUT/receipts/$arm.json" \
               --arm "$arm"
           done
+          python - "$OUT/receipts" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          root = Path(sys.argv[1])
+          arms = "CONTROL CORE CARROT TOMATO STRAWBERRY MELON EGG MILK WOOL".split()
+          receipts = [json.loads((root / f"{arm}.json").read_text()) for arm in arms]
+          source = {item["source"]["closure_sha256"] for item in receipts}
+          candidates = {item["candidate"]["closure_sha256"] for item in receipts}
+          blobs = {item["candidate"]["scheduler_git_blob_sha1"] for item in receipts}
+          assert len(source) == 1
+          assert len(candidates) == len(arms)
+          assert len(blobs) == len(arms)
+          assert receipts[0]["candidate"]["closure_sha256"] == next(iter(source))
+          assert receipts[0]["candidate"]["changed_files"] == []
+          assert all(item["candidate"]["changed_files"] == ["scheduler.py"] for item in receipts[1:])
+          print(json.dumps({"arms": len(arms), "source_closure": next(iter(source))}, sort_keys=True))
+          PY
 
       - name: Verify canonical package stayed unchanged
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -79,44 +94,173 @@ jobs:
           python build_integrated.py --check
           git diff --exit-code -- .
 
-      - name: Run all-shed control and exact product panel
+  evaluate_arm:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        arm:
+          - CONTROL
+          - CORE
+          - CARROT
+          - TOMATO
+          - STRAWBERRY
+          - MELON
+          - EGG
+          - MILK
+          - WOOL
+    env:
+      ARM: ${{ matrix.arm }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
         shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Materialize and run exact arm
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
-          OUT="$RUNNER_TEMP/v2-target-product-attribution"
-          run_eval() {
-            local arm="$1"
-            local candidate="$2"
-            echo "::group::evaluate $arm"
-            python "$KAG/cloud-eval/evaluate.py" \
-              --engine-dir "$LAB/reference/engine" \
-              --loader "$KAG/20260907-offline-agent/evaluate.py" \
-              --candidate "$candidate" \
-              --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
-              --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
-              --seeds "$SEEDS" \
-              --rng-seed 20260909 \
-              --action-timeout 1.0 \
-              --startup-timeout 15 \
-              --game-timeout 180 \
-              --output "$OUT/results/$arm.json"
-            echo '::endgroup::'
-          }
-          run_eval CONTROL "$LAB/runtime/variants/v2/candidate.py::agent"
+          CASE="$LAB/analysis/v2-target-product-attribution-sol-archimedes"
+          BUNDLE="$RUNNER_TEMP/arm-bundle"
+          CANDIDATE="$BUNDLE/candidates/$ARM"
+          rm -rf "$BUNDLE"
+          mkdir -p "$BUNDLE/candidates" "$BUNDLE/receipts" "$BUNDLE/results" "$BUNDLE/heads"
+          printf '%s\n' "$EXPECTED_HEAD" > "$BUNDLE/heads/$ARM.sha"
+          python "$CASE/materialize.py" \
+            --source "$LAB/runtime/variants/v2" \
+            --output "$CANDIDATE" \
+            --receipt "$BUNDLE/receipts/$ARM.json" \
+            --arm "$ARM"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$CANDIDATE/candidate.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$BUNDLE/results/$ARM.json"
+          python - "$BUNDLE/results/$ARM.json" "$ARM" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          document = json.loads(Path(sys.argv[1]).read_text())
+          arm = sys.argv[2]
+          expected = 8 * 2 * 2
+          assert document["schema_version"] == 1
+          assert len(document["games"]) == expected
+          assert all(game["status"] == "complete" and game["failure"] is None for game in document["games"])
+          print(json.dumps({"arm": arm, "complete_cells": expected}, sort_keys=True))
+          PY
+          git diff --exit-code -- .
+
+      - name: Retain exact arm evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v2-target-product-arm-${{ github.run_id }}-${{ matrix.arm }}
+          path: ${{ runner.temp }}/arm-bundle/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
+
+  aggregate:
+    if: ${{ always() }}
+    needs:
+      - preflight
+      - evaluate_arm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" > "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all arm evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: titan-v2-target-product-arm-${{ github.run_id }}-*
+          path: ${{ runner.temp }}/combined
+          merge-multiple: true
+
+      - name: Verify exact-head and arm inventory
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/combined"
           for arm in $ARMS; do
-            run_eval "$arm" "$OUT/arms/$arm/candidate.py::agent"
+            test "$(cat "$OUT/heads/$arm.sha")" = "$EXPECTED_HEAD"
+            test -s "$OUT/results/$arm.json"
+            test -s "$OUT/receipts/$arm.json"
+            test -f "$OUT/candidates/$arm/candidate.py"
           done
+          test "$(find "$OUT/heads" -maxdepth 1 -type f -name '*.sha' | wc -l)" -eq 9
+          test "$(find "$OUT/results" -maxdepth 1 -type f -name '*.json' | wc -l)" -eq 9
+          test "$(find "$OUT/receipts" -maxdepth 1 -type f -name '*.json' | wc -l)" -eq 9
+
+      - name: Re-run classifier contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-product-attribution-sol-archimedes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_materialize.py test_compare.py
+          python -m py_compile materialize.py compare.py test_materialize.py test_compare.py
 
       - name: Classify exact product marginals
         id: classify
-        if: always()
         shell: bash
         run: |
           set +e
           CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-product-attribution-sol-archimedes
-          OUT="$RUNNER_TEMP/v2-target-product-attribution"
+          OUT="$RUNNER_TEMP/combined"
           python "$CASE/compare.py" \
             --results "$OUT/results" \
             --receipts "$OUT/receipts" \
@@ -132,21 +276,21 @@ jobs:
         if: always()
         shell: bash
         run: |
-          REPORT="$RUNNER_TEMP/v2-target-product-attribution/ATTRIBUTION-REPORT.md"
+          REPORT="$RUNNER_TEMP/combined/ATTRIBUTION-REPORT.md"
           if [[ -f "$REPORT" ]]; then
             cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
           else
             echo '# Product attribution did not reach classification' >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Retain exact evidence
+      - name: Retain combined exact evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: titan-v2-target-product-attribution-${{ github.run_id }}
           path: |
             ${{ runner.temp }}/exact-head.sha
-            ${{ runner.temp }}/v2-target-product-attribution/
+            ${{ runner.temp }}/combined/
           if-no-files-found: error
           retention-days: 30
 
@@ -154,7 +298,15 @@ jobs:
         if: always()
         run: git diff --exit-code -- .
 
-      - name: Require complete attribution panel
+      - name: Require complete exact attribution
         if: always()
         shell: bash
-        run: test "${{ steps.classify.outputs.exit_code }}" = '0'
+        env:
+          PREFLIGHT_RESULT: ${{ needs.preflight.result }}
+          EVALUATE_RESULT: ${{ needs.evaluate_arm.result }}
+          CLASSIFY_EXIT: ${{ steps.classify.outputs.exit_code }}
+        run: |
+          set -euo pipefail
+          test "$PREFLIGHT_RESULT" = success
+          test "$EVALUATE_RESULT" = success
+          test "$CLASSIFY_EXIT" = 0
