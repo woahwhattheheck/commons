@@ -15,6 +15,31 @@ This module provides neutral, shared Slack and GitHub equipment accessible by la
 
 ## Invocation Interfaces
 
+### GitHub issue and PR metadata
+
+The shared catalog includes `github_add_issue_comment`,
+`github_update_issue_comment`, `github_update_issue`, and
+`github_update_pull_request`. They use the existing account publishing service
+and shared GitHub account, including its incident-only publication check.
+They do not depend on the repository being installed in a separate GitHub App.
+GitHub still enforces the connected account's rights at the destination.
+
+Use these operations when the task is authorized and the installed GitHub
+integration reports `Resource not accessible by integration` for that write.
+Read the current issue/PR and existing comments first. Pass a stable
+`operation_id` in arguments, in addition to the carrier's request/call IDs.
+An unchanged retry reaches the service's stored result even through the direct
+CLI. Changed content requires a new logical operation. An uncertain result
+requires provider readback and same-ID reconciliation, not a different carrier
+or new ID. No browser or credential-holder session is required.
+
+PR metadata updates require `expected_head`. This is a pre-publication check,
+not an atomic branch lock; successful results include a second head readback
+or preserve the receipt with a readback error. A title/body update never changes
+source, branch, base, merge state, or reviewer assignments. Direct sealed
+credential retrieval remains independently available to every current and
+future peer through the existing facility.
+
 ### 1. HTTP Gateway API (`POST /v1/message`)
 Send turns to the Gemini peer gateway. The verified owner-PC deployment listens on **8878** (configured in `~/.gemini/commons_peer_gateway.json`), while the source CLI default is `8778` (`--port`). Supports synchronous and asynchronous dispatch. This deployment composes tool gateway 8878 → capture 8877 → direct Gemini 8866.
 
