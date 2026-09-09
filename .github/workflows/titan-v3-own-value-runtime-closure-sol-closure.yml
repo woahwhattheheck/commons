@@ -1,0 +1,106 @@
+name: titan-v3-own-value-runtime-closure-sol-closure
+
+"on":
+  push:
+    paths:
+      - '.github/workflows/titan-v3-own-value-runtime-closure-sol-closure.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective/runtime_closure.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective/test_runtime_closure.py'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-own-value-runtime-closure-sol-closure.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective/runtime_closure.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective/test_runtime_closure.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-runtime-closure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact requested head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile and run closure contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective
+        run: |
+          set -euo pipefail
+          python -m py_compile runtime_closure.py test_runtime_closure.py
+          python -m unittest -v test_runtime_closure.py
+
+      - name: Materialize exact canonical archive closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-own-value-runtime-closure"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          python "$CASE/runtime_closure.py" \
+            --lab "$LAB" \
+            --output "$OUT/runtime" \
+            --receipt "$OUT/RUNTIME-CLOSURE.json"
+
+      - name: Fresh-process import exact materialized root
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/titan-v3-own-value-runtime-closure/runtime"
+          python -I - "$ROOT" <<'PY'
+          import importlib
+          import json
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1]).resolve()
+          sys.path.insert(0, str(root))
+          names = [
+              'main', 'observed_clone', 'seller_snapshot', 'plant_suffix',
+              'sell_priority', 'pressure_priority', 'seed_retry', 'funded_payback',
+          ]
+          loaded = {}
+          for name in names:
+              module = importlib.import_module(name)
+              path = Path(module.__file__).resolve()
+              loaded[name] = path.relative_to(root).as_posix()
+          assert callable(importlib.import_module('main').agent)
+          assert loaded['observed_clone'] == 'observed_clone.py'
+          print(json.dumps(loaded, sort_keys=True))
+          PY
+
+      - name: Prove canonical checkout stayed unchanged
+        run: git diff --exit-code -- .
+
+      - name: Retain closure receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-value-runtime-closure-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/exact-head.sha
+            ${{ runner.temp }}/titan-v3-own-value-runtime-closure/RUNTIME-CLOSURE.json
+            ${{ runner.temp }}/titan-v3-own-value-runtime-closure/runtime/SOURCE.json
+          if-no-files-found: error
+          retention-days: 30
