@@ -109,10 +109,12 @@ class MaterializationContracts(unittest.TestCase):
 class FakeController:
     def __init__(self):
         self.cur = 0
-        self.R = [
+        route = [
             {"farmer": ["PASS"], "hands": [], "market": []}
             for _ in range(720)
         ]
+        # Agent.R is a bank of complete routes; SellScheduler selects R[cur].
+        self.R = [route]
 
     def act(self, _observation):
         return {"farmer": ["PASS"], "hands": [], "market": []}
