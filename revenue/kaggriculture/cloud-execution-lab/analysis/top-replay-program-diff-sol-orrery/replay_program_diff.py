@@ -10,6 +10,8 @@ from __future__ import annotations
 import gzip
 import hashlib
 import io
+import os
+import stat
 from pathlib import Path
 from typing import Any, Sequence
 
@@ -22,6 +24,37 @@ MAX_DECOMPRESSED_BYTES = 2 * 1024 * 1024 * 1024
 
 def _sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def _bounded_source_read(path: Path) -> bytes:
+    """Read one regular file without ever consuming more than the input cap.
+
+    ``Path.read_bytes()`` would allocate an arbitrarily large local input before
+    the size check.  Opening first, checking the descriptor, and reading at
+    most ``MAX_COMPRESSED_BYTES + 1`` makes the compressed/source ceiling an
+    admission boundary rather than only a post-allocation assertion.
+    """
+    try:
+        with path.open("rb") as stream:
+            descriptor = os.fstat(stream.fileno())
+            if not stat.S_ISREG(descriptor.st_mode):
+                raise ReplayError("input must resolve to a regular file")
+            if descriptor.st_size > MAX_COMPRESSED_BYTES:
+                raise ReplayError(
+                    "input exceeds compressed-size limit: "
+                    f"{descriptor.st_size} > {MAX_COMPRESSED_BYTES}"
+                )
+            raw = stream.read(MAX_COMPRESSED_BYTES + 1)
+    except ReplayError:
+        raise
+    except OSError as exc:
+        raise ReplayError(f"could not read replay input: {exc}") from exc
+    if len(raw) > MAX_COMPRESSED_BYTES:
+        raise ReplayError(
+            "input exceeds compressed-size limit: "
+            f"> {MAX_COMPRESSED_BYTES}"
+        )
+    return raw
 
 
 def _bounded_gzip_decompress(raw: bytes) -> bytes:
@@ -49,11 +82,7 @@ def _bounded_gzip_decompress(raw: bytes) -> bytes:
 
 
 def _read_input(path: Path) -> tuple[Any, dict[str, Any]]:
-    raw = path.read_bytes()
-    if len(raw) > MAX_COMPRESSED_BYTES:
-        raise ReplayError(
-            f"input exceeds compressed-size limit: {len(raw)} > {MAX_COMPRESSED_BYTES}"
-        )
+    raw = _bounded_source_read(path)
     is_gzip = raw.startswith(b"\x1f\x8b")
     decoded = _bounded_gzip_decompress(raw) if is_gzip else raw
     if len(decoded) > MAX_DECOMPRESSED_BYTES:
