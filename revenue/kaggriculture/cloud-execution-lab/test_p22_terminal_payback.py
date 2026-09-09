@@ -146,6 +146,44 @@ class TerminalPaybackPureTests(unittest.TestCase):
                 current_step=0,
             )
 
+    def test_10_rejects_negative_minimum_net(self):
+        candidate = TerminalCandidate(
+            "zero-net",
+            "new_investment",
+            [event("sale", 710, 711, 712, 10, 0)],
+            entry_cost=10,
+        )
+        with self.assertRaises(ValueError) as ctx:
+            evaluate_candidate(candidate, current_step=709, minimum_net=-1)
+        self.assertIn("minimum_net", str(ctx.exception))
+
+        with self.assertRaises(ValueError):
+            evaluate_candidate(candidate, current_step=709, minimum_net=float("-inf"))
+
+    def test_11_zero_and_negative_net_remain_liquidate_under_nonneg_floor(self):
+        zero = TerminalCandidate(
+            "zero-net",
+            "new_investment",
+            [event("sale", 710, 711, 712, 10, 0)],
+            entry_cost=10,
+        )
+        neg = TerminalCandidate(
+            "neg-net",
+            "new_investment",
+            [event("sale", 710, 711, 712, 5, 0)],
+            entry_cost=10,
+        )
+        # Default floor 0: exact zero and negative stay liquidate.
+        self.assertEqual(evaluate_candidate(zero, current_step=709).mode, "liquidate")
+        self.assertEqual(evaluate_candidate(neg, current_step=709).mode, "liquidate")
+        # Explicit non-negative floor still rejects them.
+        self.assertEqual(
+            evaluate_candidate(zero, current_step=709, minimum_net=0.0).mode, "liquidate"
+        )
+        self.assertEqual(
+            evaluate_candidate(neg, current_step=709, minimum_net=0.0).mode, "liquidate"
+        )
+
 
 @unittest.skipUnless(
     EVALUATOR.exists() and LOADER.exists() and ENGINE_DIR.exists(),
