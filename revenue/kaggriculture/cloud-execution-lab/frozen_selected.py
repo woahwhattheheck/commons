@@ -196,6 +196,188 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
     return best,info
 
 
+def _funding_prefix_end(trace, now, end):
+    """Stop before the next actually executed positive-cash future sale.
+
+    Requested future revenue is not cash. A requested SELL that clips to
+    zero fill does not terminate the prefix.
+    """
+    for t, _item, _units, cash in trace.get('executed_sales', ()):
+        if t > now and cash > 0:
+            return t - 1, t
+    return end, None
+
+
+def _funding_trace(obs, config, farm, private, route, now, end, current_market,
+                   stress_units=0):
+    """Execute the bounded own market tape and return actual acquisition fills.
+
+    Only the current turn's materialized sales may fund the prefix.  Future unit
+    actions are applied before their market turn so shed clipping remains real.
+    `stress_units` is a named prior rival draw from every BUY_PRODUCT market.
+    Future SELL rows are simulated for prefix discovery; only positive-cash
+    fills count as funding events.
+    """
+    f, p = copy.deepcopy(farm), copy.deepcopy(private)
+    inventory = {k: int(v) for k, v in obs['market']['inventory'].items()}
+    params = obs['market'].get('params')
+    cap = int(config.get('shedCapacity', 100))
+    max_orders = int(config.get('maxMarketOrdersPerTurn', 10))
+    hires = int(f.get('hires_today', 0))
+    buy_items = set()
+    for t in range(now, end + 1):
+        orders = current_market if t == now else (route[t].get('market', []) if t < len(route) else [])
+        for o in orders[:max_orders]:
+            if o and len(o) > 2 and o[0] == 'BUY_PRODUCT':
+                buy_items.add(o[1])
+    if stress_units:
+        for item in buy_items:
+            inventory[item] = inventory.get(item, 0) - int(stress_units)
+    acquisitions = []
+    executed_sales = []
+    for t in range(now, end + 1):
+        if t > now:
+            action = route[t] if t < len(route) else parent.PASS
+            acts = [action.get('farmer', ['PASS']), *action.get('hands', [])]
+            for i, a in enumerate(acts):
+                m._apply_unit_action(f, p, i, a, len(f['tiles']), t // 24, 24, 10**6)
+        if t > now and t % 24 == 0:
+            hires = 0
+        orders = current_market if t == now else (route[t].get('market', []) if t < len(route) else [])
+        for index, order in enumerate(orders[:max_orders]):
+            if not order:
+                continue
+            op = order[0]
+            item = order[1] if len(order) > 1 else ''
+            requested = max(0, int(order[2])) if len(order) > 2 else 1
+            executed = 0
+            if op == 'SELL' and len(order) > 2:
+                cash = 0
+                for _ in range(requested):
+                    if p['shed'].get(item, 0) <= 0:
+                        break
+                    price = m.market_price(item, inventory[item], params)
+                    p['shed'][item] -= 1
+                    f['money'] += price
+                    cash += price
+                    executed += 1
+                    if price > 1:
+                        inventory[item] += 1
+                if t > now:
+                    executed_sales.append((t, item, executed, cash))
+            elif op == 'HIRE':
+                price = m._hire_cost(hires, int(config.get('farmHandCostMult', 1)))
+                if f['money'] >= price:
+                    f['money'] -= price
+                    hires += 1
+                    executed = 1
+                    f['hands'].append(m._spawn_hand(f, len(f['tiles'])))
+                    p['inventories'].append({})
+                acquisitions.append(((t, index, op, ''), executed))
+            elif op == 'BUY_LAND':
+                land_index = len(f['unlocked_quadrants']) - 1
+                price = m.LAND_PRICES[land_index] if land_index < len(m.LAND_PRICES) else 0
+                if f['money'] >= price:
+                    f['money'] -= price
+                    executed = 1
+                    if len(f['unlocked_quadrants']) <= len(m.LAND_ORDER):
+                        f['unlocked_quadrants'].append(
+                            m.LAND_ORDER[len(f['unlocked_quadrants']) - 1])
+                acquisitions.append(((t, index, op, ''), executed))
+            elif op == 'BUY_SEED' and len(order) > 2 and item in m.CROPS:
+                price = int(m.CROPS[item]['seed'])
+                for _ in range(requested):
+                    if f['money'] < price:
+                        break
+                    f['money'] -= price
+                    p['seeds'][item] = p['seeds'].get(item, 0) + 1
+                    executed += 1
+                acquisitions.append(((t, index, op, item), executed))
+            elif op == 'BUY_ANIMAL' and len(order) > 2 and item in m.ANIMALS:
+                price = int(m.ANIMALS[item]['cost'])
+                for _ in range(requested):
+                    if f['money'] < price or sum(p['shed'].values()) >= cap:
+                        break
+                    f['money'] -= price
+                    p['shed'][item] = p['shed'].get(item, 0) + 1
+                    executed += 1
+                acquisitions.append(((t, index, op, item), executed))
+            elif op == 'BUY_PRODUCT' and len(order) > 2 and item in m.PRODUCTS:
+                for _ in range(requested):
+                    if sum(p['shed'].values()) >= cap:
+                        break
+                    price = m.market_price(item, inventory[item] - 1, params)
+                    if f['money'] < price:
+                        break
+                    f['money'] -= price
+                    inventory[item] -= 1
+                    p['shed'][item] = p['shed'].get(item, 0) + 1
+                    executed += 1
+                acquisitions.append(((t, index, op, item), executed))
+    return {'cash': int(f['money']), 'acquisitions': acquisitions,
+            'executed_sales': executed_sales}
+
+
+def funded_minimum_now(obs, config, base, farm, private, route, end,
+                       current, targets, item, stress_units=32):
+    """Smallest current sale that preserves the inherited executable prefix."""
+    now = int(obs['step'])
+    baseline = max(0, int(current.get(item, 0)))
+    max_orders = int(config.get('maxMarketOrdersPerTurn', 10))
+    certificate = {
+        'item': item, 'baseline_now': baseline, 'prefix_end': end,
+        'funding_turn': None, 'stress_units': int(stress_units),
+        'fallback': False,
+    }
+    try:
+        reference_market = materialize_sales(
+            base['market'], current, private['shed'], targets, max_orders)
+        scout = _funding_trace(
+            obs, config, farm, private, route, now, end,
+            reference_market, stress_units=0)
+        prefix_end, funding_turn = _funding_prefix_end(scout, now, end)
+        certificate['prefix_end'] = prefix_end
+        certificate['funding_turn'] = funding_turn
+        if prefix_end == end:
+            reference = scout
+        else:
+            reference = _funding_trace(
+                obs, config, farm, private, route, now, prefix_end,
+                reference_market, stress_units=0)
+        required = {key: units for key, units in reference['acquisitions'] if units > 0}
+        certificate['reference_acquisitions'] = sum(required.values())
+        certificate['reference_terminal_cash'] = reference['cash']
+        if not required:
+            certificate['minimum_now'] = 0
+            return 0, certificate
+        for quantity in range(baseline + 1):
+            totals = dict(current)
+            totals[item] = quantity
+            candidate_market = materialize_sales(
+                base['market'], totals, private['shed'], targets, max_orders)
+            traces = [
+                _funding_trace(obs, config, farm, private, route, now, prefix_end,
+                               candidate_market, stress_units=0),
+                _funding_trace(obs, config, farm, private, route, now, prefix_end,
+                               candidate_market, stress_units=stress_units),
+            ]
+            safe = True
+            for trace in traces:
+                filled = dict(trace['acquisitions'])
+                if any(filled.get(key, 0) < units for key, units in required.items()):
+                    safe = False
+                    break
+            if safe:
+                certificate['minimum_now'] = quantity
+                certificate['scenario_terminal_cash'] = [trace['cash'] for trace in traces]
+                return quantity, certificate
+    except Exception as exc:
+        certificate['error'] = f'{type(exc).__name__}: {exc}'[:500]
+    certificate['fallback'] = True
+    certificate['minimum_now'] = baseline
+    return baseline, certificate
+
+
 def joint_resource_bound(obs, config, base, farm, private, route, end):
     """Prepaid capital and a same-day stock upper bound without sale credit.
 
@@ -450,7 +632,10 @@ class FrozenSelected(SellScheduler):
                 continue
             if len(dates)<2:continue
             item_budget=self.cash_reserve(obs,config,base,item_end)
-            minimum=current[item] if farm['money']<item_budget else 0
+            minimum,funding=funded_minimum_now(obs,config,base,farm,private,route,item_end,
+                                                current,targets,item)
+            funding['nominal_future_spend']=item_budget
+            self.diagnostics.setdefault('funding_certificates',{})[item]=funding
             receipt_feasible=self.receipt_profile(obs,base,farm,private,item_end,item,config)
             def feasible(plan):
                 for t,q in plan:
