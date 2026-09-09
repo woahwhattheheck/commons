@@ -13,6 +13,7 @@ on:
       - "revenue/kaggriculture/cloud-eval/evaluate.py"
       - "revenue/kaggriculture/20260907-offline-agent/evaluate.py"
       - "p/sol-keel-titan-v2-forced-feasibility-ablation-20260909-01.md"
+      - "p/sol-suture-titan-v2-forced-feasibility-contract-repair-20260909-02.md"
   push:
     branches:
       - main
@@ -27,6 +28,7 @@ on:
       - "revenue/kaggriculture/cloud-eval/evaluate.py"
       - "revenue/kaggriculture/20260907-offline-agent/evaluate.py"
       - "p/sol-keel-titan-v2-forced-feasibility-ablation-20260909-01.md"
+      - "p/sol-suture-titan-v2-forced-feasibility-contract-repair-20260909-02.md"
   workflow_dispatch:
 
 permissions:
@@ -77,11 +79,13 @@ jobs:
           test "$(git hash-object "$CASE/materialize.py")" = "06515514ec864776f29571d63d3f343376e5865b"
           test "$(git hash-object "$CASE/compare.py")" = "49614b4ec0eb5e5c09f5d345dd13c3c982b6ab39"
           test "$(git hash-object "$CASE/bind_execution.py")" = "3bf8cfb22f2708be37b0f7955444e7a36a6e258d"
-          test "$(git hash-object "$CASE/materialize_evaluator.py")" = "fe535fda2573ce198e34da4c4639ab14587ba8b8"
+          test "$(git hash-object "$CASE/materialize_evaluator.py")" = "b7eb56c79b5db1fd5478f0e47f0f54fab1f037be"
           test "$(git hash-object "$CASE/compare_bound.py")" = "ab516c55b909ed922b2a821ccebc52c1dfd831df"
-          test "$(git hash-object "$CASE/test_materialize.py")" = "ac21d87c15bda94b3154d6e52921a1b77bb6acfb"
+          test "$(git hash-object "$CASE/compare_exact.py")" = "fa7b9d503a83a51523c5ff1c1bc4a9e823c4d582"
+          test "$(git hash-object "$CASE/test_materialize.py")" = "16d493b0cd8f1a942b3449a7692e5fbd5a6b6bb1"
           test "$(git hash-object "$CASE/test_compare.py")" = "0aa5ebee8940512ed6d530076bdee3d2c6dc62b3"
           test "$(git hash-object "$CASE/test_custody.py")" = "a243978f0b805953f039f3952b24b22d6f65f64d"
+          test "$(git hash-object "$CASE/test_contract_repair.py")" = "f537a166022c33283ce07d469f156c15d2159c46"
           git diff --exit-code -- .
           test -z "$(git status --porcelain --untracked-files=all)"
           printf 'exact_head=%s\n' "$EXPECTED_HEAD"
@@ -102,7 +106,8 @@ jobs:
           python -B -m unittest -v \
             test_materialize.py \
             test_compare.py \
-            test_custody.py
+            test_custody.py \
+            test_contract_repair.py
           python -B - <<'PY'
           from pathlib import Path
           for path in sorted(Path('.').glob('*.py')):
@@ -184,14 +189,14 @@ jobs:
             --game-timeout 180 \
             --output "$OUT/candidate.json"
 
-      - name: Classify closure-bound candidate-action own-cash signal
+      - name: Classify exact-derived closure-bound candidate-action signal
         id: classify
         if: always()
         shell: bash
         run: |
           set +e
           OUT="$RUNNER_TEMP/v2-forced-feasibility-ablation"
-          python -B "$CASE/compare_bound.py" \
+          python -B "$CASE/compare_exact.py" \
             --control "$OUT/control.json" \
             --candidate "$OUT/candidate.json" \
             --materialization-receipt "$OUT/MATERIALIZATION.json" \
