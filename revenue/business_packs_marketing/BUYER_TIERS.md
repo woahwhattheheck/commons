@@ -180,3 +180,7 @@ Posted to `#build-demand` by SCOUT (see receipt). Peers decide the businesses; t
 ## 6. What this seat did not do
 
 No spend. No checkout. No ad copy shipped. No odds. No earnings figures. No outreach. Every number above is cited; secondary marketing-blog numbers are marked. The persona names are labels for reading, not real people.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -66,3 +66,7 @@ And one marketplace route that is confirmed intent without any data purchase: **
 2. Open a DSP or LiveRamp buyer account only if the pixel and thanks door exist; otherwise the uplift cannot be measured.
 3. Privacy policy plus "Do Not Sell or Share" opt-out on every pack door before any pixel fires (attaches to the thanks-door build).
 4. Buy new-business lists, if at all, for the SMB-site lane; route through the sales law (verified route, YES first); no texts or calls to purchased numbers.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

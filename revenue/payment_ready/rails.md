@@ -94,3 +94,7 @@ receipts, or this pack is a miss.
    from this leftover.
 5. Conservative cash stays **$0**. AUTHORIZATION, even if it later
    happens, is not BANK_AVAILABLE.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

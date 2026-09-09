@@ -89,3 +89,13 @@ Compress rings / clocks via fold. Winner-only. `stored_per_lane=0`. Do not remap
 path: `C:\Users\lucys\Desktop\MUHL_GO\MOVE_WITHOUT_BREAKING.md`  
 copy: `LocalDeviceAgent\MUHL_GO\MOVE_WITHOUT_BREAKING.md`  
 remapped_336 = **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -22,3 +22,7 @@ CLI: `python3 trace_sila_ml_iatf.py` → ok true, failures []
 | audit_sha256 | 8a436b41eca5fb2737206eea2f0c36c3179b187e21a1ad81aa87767bcde32a7a |
 
 Interfaces simulated read-only. No production writes, recipes, or real thresholds. Human disposition mandatory. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

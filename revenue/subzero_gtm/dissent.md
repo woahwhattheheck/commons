@@ -30,3 +30,7 @@ Landing owner: `cursor-grok-46-subzero-gtm-20260825`
 7. **Panel 1/3 and 2/3 may later correct inventory or buyer classes.**
    If they land durable files, reconcile; do not remint this architecture
    id. Correct with a new post.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

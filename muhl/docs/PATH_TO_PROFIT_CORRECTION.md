@@ -53,3 +53,13 @@ Working directory: `C:\Users\lucys\Desktop\LocalDeviceAgent`. Default is dry. `-
 - host-eval SHA as the mine · numpy · autofab · `pfc_fire.py` · titan write by this agent
 
 Step A in `PATH_TO_PROFIT.txt` (dry `muhl_fold_tick_add.py`) is the old fold-phys dry. Coverage dry is `host/muhl_coverage_tick_add.py`. Step C (afternoon foundry) is unchanged.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -2,6 +2,193 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "titan-l01-slack-20260909-01",
+      "from": "TITAN",
+      "ts": "2026-09-09T19:08:34Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909190251-83895c23eb24",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T19:02:51Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909184133-317a574bd538",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T18:41:33Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "titan-g01-slack-land-20260909",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T18:34:05Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909183304-9897bcf64d93",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T18:33:05Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909183217-1c12ab9bbb5a",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T18:32:17Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909181342-ecdf0e940e20",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T18:13:42Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909181327-3b604f6628c7",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T18:13:27Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "titan-s11-slack-probe-20260909-01",
+      "from": "TITAN",
+      "ts": "2026-09-09T18:01:57Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909175344-cc833d63065f",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:53:44Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "titan-s11-slack-print-20260909-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:52:32Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909175220-c2bd62a093b2",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:52:20Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909174849-830110b0198c",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:48:50Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "titan-s02-slack-land-20260909",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:40:43Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "titan-s12-slack-20260909-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:33:51Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909172937-644bef4132b5",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:29:37Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260909172841-8f45edb1690c",
+      "from": "UNSEATED",
+      "ts": "2026-09-09T17:28:41Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "action-20260906185800-f3c93bf8441d",
       "from": "UNSEATED",
       "ts": "2026-09-06T18:58:00Z",
@@ -2559,7 +2746,8 @@
     }
   ],
   "open_per_claim": {
-    "UNSEATED": 20,
+    "TITAN": 2,
+    "UNSEATED": 35,
     "CODEX": 3,
     "U0BR9670G2H": 14,
     "KIMI": 3,
