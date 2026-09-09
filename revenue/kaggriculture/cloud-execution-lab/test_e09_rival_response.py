@@ -24,6 +24,24 @@ class ResponseBranchTests(unittest.TestCase):
         self.assertTrue(by_name["next_turn_compete"].reacts_to_intervention)
         self.assertNotIn((100, 3), by_name["next_turn_compete"].plan)
 
+    def test_fixed_path_preserves_current_turn_while_reaction_is_next_turn(self):
+        branches = build_response_branches(
+            current_step=100,
+            horizon_end=110,
+            intervention_product="MILK",
+            stress_quantity=3,
+            fixed_rival_plan=((100, 5),),
+        )
+        by_name = {branch.name: branch for branch in branches}
+        self.assertEqual(by_name["fixed_path"].plan, ((100, 5),))
+        self.assertFalse(by_name["fixed_path"].reacts_to_intervention)
+        self.assertEqual(by_name["next_turn_compete"].plan, ((101, 3),))
+        self.assertNotIn((100, 5), by_name["next_turn_compete"].plan)
+        self.assertEqual(
+            same_item_rival_plan(by_name["fixed_path"], "MILK"),
+            ((100, 5),),
+        )
+
     def test_delayed_branch_occurs_after_absorption_or_is_inapplicable(self):
         branches = build_response_branches(
             current_step=50,
@@ -65,15 +83,19 @@ class ResponseBranchTests(unittest.TestCase):
             horizon_end=20,
             intervention_product="EGG",
             stress_quantity=0,
+            fixed_rival_plan=((12, 2),),
         )
         terminal = build_response_branches(
             current_step=20,
             horizon_end=20,
             intervention_product="EGG",
             stress_quantity=3,
+            fixed_rival_plan=((18, 1),),
         )
         self.assertEqual([b.name for b in zero], ["fixed_path"])
         self.assertEqual([b.name for b in terminal], ["fixed_path"])
+        self.assertEqual(zero[0].plan, ((12, 2),))
+        self.assertEqual(terminal[0].plan, ((18, 1),))
 
     def test_explicit_stress_quantity_is_bounded_not_inferred(self):
         with self.assertRaises(ValueError):
@@ -90,6 +112,14 @@ class ResponseBranchTests(unittest.TestCase):
                 horizon_end=10,
                 intervention_product="CARROT",
                 stress_quantity=-1,
+            )
+        with self.assertRaises(ValueError):
+            build_response_branches(
+                current_step=0,
+                horizon_end=10,
+                intervention_product="CARROT",
+                stress_quantity=1,
+                fixed_rival_plan=((0, 101),),
             )
 
     def test_single_product_adapter_rejects_cross_product_switch(self):

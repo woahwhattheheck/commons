@@ -49,6 +49,31 @@ def _canonical_product(value: object) -> str:
     return product
 
 
+def _canonical_plan(
+    plan: Sequence[object],
+    *,
+    cap: int,
+) -> tuple[tuple[int, int], ...]:
+    """Preserve a caller-supplied dated plan; do not shift its steps."""
+
+    rows: list[tuple[int, int]] = []
+    seen: set[int] = set()
+    for raw in plan:
+        if not isinstance(raw, (tuple, list)) or len(raw) != 2:
+            raise ValueError("plan rows must be (step, quantity)")
+        step = int(raw[0])
+        quantity = int(raw[1])
+        if step < 0:
+            raise ValueError("plan steps must be non-negative")
+        if quantity < 0 or quantity > cap:
+            raise ValueError("stress quantity exceeds the bounded scenario cap")
+        if step in seen:
+            raise ValueError("plan steps must be unique")
+        seen.add(step)
+        rows.append((step, quantity))
+    return tuple(rows)
+
+
 def build_response_branches(
     *,
     current_step: int,
@@ -59,6 +84,7 @@ def build_response_branches(
     switch_products: Sequence[str] = (),
     exposed_products: Sequence[str] = (),
     max_stress_quantity: int = 100,
+    fixed_rival_plan: Sequence[object] = (),
 ) -> tuple[ResponseBranch, ...]:
     """Build a bounded family of causal *future* rival-response hypotheses.
 
@@ -67,7 +93,11 @@ def build_response_branches(
     animal production evidence; it merely admits a switch branch.  It does not
     certify that the rival has a saleable unit.
 
-    The returned ``fixed_path`` branch is the no-response control.  Same-item
+    ``fixed_rival_plan`` is the no-response control: the caller-supplied dated
+    rival plan, preserved verbatim, including any current-turn row.  An omitted
+    or empty plan is the explicit zero-sale control; ``MarketPath.score`` maps
+    ``()`` to zero rival units for the whole horizon, so callers that already
+    have a concrete pre-intervention path must pass that path here.  Same-item
     branches can be passed directly to the current ``MarketPath.score`` rival
     plan input.  Cross-product switch branches require a multi-product/history
     adapter and must not be silently projected into the single-product scorer.
@@ -83,13 +113,14 @@ def build_response_branches(
         raise ValueError("stress quantity exceeds the bounded scenario cap")
 
     item = _canonical_product(intervention_product)
+    control = _canonical_plan(fixed_rival_plan, cap=cap)
     branches = [
         ResponseBranch(
             "fixed_path",
             item,
-            (),
+            control,
             False,
-            "control: rival plan is independent of this intervention",
+            "control: caller-supplied rival plan is independent of this intervention",
         )
     ]
     if quantity == 0 or now >= end:
