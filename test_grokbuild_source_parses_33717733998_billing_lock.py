@@ -24,8 +24,8 @@ KEEP = {
     "p/grokbuild-source-parses-33699980140-billing-lock-20260903-01.md": "2494f79a",
     "test_grokbuild_source_parses_33699980140_billing_lock.py": "dc42d741",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "47e90c71",
-    "open_door_guard.py": "7b9a2318",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "6aeadb98",
+    "open_door_guard.py": "1a42e1c9",
 }
 
 
