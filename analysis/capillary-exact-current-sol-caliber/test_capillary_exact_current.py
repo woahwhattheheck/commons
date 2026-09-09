@@ -100,6 +100,8 @@ class ExactCurrentRouteOwnershipTests(unittest.TestCase):
         shared = parent.routes()
         shared_snapshot = deepcopy(shared)
         shared_digest = digest(shared_snapshot)
+        expected_staged, _ = certified_marker_stage(shared_snapshot)
+        expected_staged_digest = digest(expected_staged)
 
         plain = TitanAgent()
         plain._initialize()
@@ -127,6 +129,7 @@ class ExactCurrentRouteOwnershipTests(unittest.TestCase):
                 "shared_sha256": digest(shared),
                 "plain_sha256": digest(plain.controller.R),
                 "candidate_sha256": digest(candidate.controller.R),
+                "expected_candidate_sha256": expected_staged_digest,
                 "compile_report": candidate._capillary_compile_report,
             }
             print("CAPILLARY_EXACT_CURRENT_OWNERSHIP=" + json.dumps(receipt, sort_keys=True))
@@ -134,6 +137,9 @@ class ExactCurrentRouteOwnershipTests(unittest.TestCase):
             self.assertTrue(candidate._capillary_compile_report.get("certified"), receipt)
             self.assertIsNot(candidate.controller.R, shared, receipt)
             self.assertIsNot(candidate.controller.R, plain.controller.R, receipt)
+            self.assertEqual(candidate.controller.R, expected_staged, receipt)
+            self.assertEqual(digest(candidate.controller.R), expected_staged_digest, receipt)
+            self.assertNotEqual(expected_staged_digest, shared_digest, receipt)
             self.assertIs(candidate.spatial._crop_routes, candidate.controller.R, receipt)
             self.assertEqual(parent.routes(), shared_snapshot, receipt)
             self.assertEqual(plain.controller.R, shared_snapshot, receipt)
