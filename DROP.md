@@ -23,6 +23,8 @@ Verified product pages only — no invented Stripe links. DROP used to omit cash
 
 Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html). Cite bass offer/todo — do not remint.
 
+> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md). Not a gate. DROP hygiene seat.
+
 ## The format
 
 Headers, a line with three dashes alone, then the file content.
