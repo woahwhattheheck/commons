@@ -353,12 +353,12 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 10943,
+   "number": 10950,
    "author": "woahwhattheheck",
-   "title": "Biohub: reject duplicate BTrack object membership",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10943",
+   "title": "TITAN v2: preserve weed-displaced work and future seed commitments",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10950",
    "base_freshness": {
-    "base_sha": "0f0aac703ba7ef59c8d0ba616d978e5e91c7f02d",
+    "base_sha": "b904b0267520e435f8045dabd7bba87c6a9487e9",
     "main_sha": "55dda0866db62662519cfe1408fd88860cbcbd39",
     "ahead_by": null,
     "behind_by": null,
