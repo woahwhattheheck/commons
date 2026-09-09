@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Isolated Titan runtime binding for the KESTREL early-capital candidate."""
 from titan_runtime import TitanAgent
-from kestrel_early_capital import order_early_capital
+from lockstep_early_capital import order_early_capital
 
 
 class KestrelTitanAgent(TitanAgent):
@@ -17,8 +17,8 @@ class KestrelTitanAgent(TitanAgent):
 
         # Bind only a captured FrozenSelected post-unit pair. The PASS-only
         # shortcut in TitanAgent._selected_snapshot returns the raw observation
-        # when no pair exists; that is not a completed snapshot, so the helper
-        # reconstructs with the official unit primitive instead.
+        # when no pair exists; that is not a completed snapshot, so the safety
+        # wrapper reconstructs the official atomic unit stage instead.
         pair = getattr(getattr(self, 'consumer', None), 'selected_post_units', None)
         post_unit = (
             self._selected_snapshot(obs, selected) if pair is not None else None
@@ -34,7 +34,7 @@ class KestrelTitanAgent(TitanAgent):
         )
         report['runtime_binding'] = (
             'selected_post_units' if post_unit is not None
-            else 'official_unit_replay'
+            else 'official_atomic_unit_replay'
         )
         self.diagnostics['early_capital'] = report
         return result
