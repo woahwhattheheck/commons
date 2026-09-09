@@ -82,6 +82,22 @@ class EvidenceBindingTests(unittest.TestCase):
         with self.assertRaisesRegex(restore.SnapshotError, "must be an integer"):
             restore.materialize(fx.root, pin=pin, run_smoke=False)
 
+    def test_bool_summary_count_is_not_accepted_as_integer(self):
+        fx = fixture(self)
+        document = self._document(fx, "development")
+        document["summary"]["W_T_L_first"]["candidate"]["W"] = True
+        pin = self._repin(fx, "development", document)
+        with self.assertRaisesRegex(restore.SnapshotError, "must be an integer"):
+            restore.materialize(fx.root, pin=pin, run_smoke=False)
+
+    def test_numeric_flipped_flag_is_not_accepted_as_boolean(self):
+        fx = fixture(self)
+        document = self._document(fx, "held_out")
+        document["summary"]["paired_outcomes"][0]["flipped"] = 1
+        pin = self._repin(fx, "held_out", document)
+        with self.assertRaisesRegex(restore.SnapshotError, "must be a boolean"):
+            restore.materialize(fx.root, pin=pin, run_smoke=False)
+
     def test_summary_lie_fails_after_rehash(self):
         fx = fixture(self)
         document = self._document(fx, "development")
