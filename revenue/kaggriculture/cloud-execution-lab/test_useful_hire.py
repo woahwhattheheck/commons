@@ -91,3 +91,11 @@ def test_nonredundant_existing_job_is_never_rewritten():
     assert out['market']==[['HIRE']]
     assert rep['reason']=='no_redundant_trailing_worker'
     assert r[59]['hands']==[['HARVEST']]
+
+def test_one_productive_hire_preserves_contiguous_order_and_removes_later_tail():
+    r=route();o=obs({'kind':'PLANT','crop':'WHEAT','planted_day':0,'yield_units':1},price=10)
+    action={'farmer':['PASS'],'hands':[],'market':[['HIRE'],['HIRE']]}
+    out,rep=rh.propose_redundant_hires(M,o,CFG,action,route=r,route_id='x',route_switch_steps=[])
+    assert out['market']==[['HIRE'],['SELL','WHEAT',0]]
+    assert rep['protected_workers']==1 and rep['removed_workers']==1
+    assert rep['productive_detours'][0]['worker']==1
