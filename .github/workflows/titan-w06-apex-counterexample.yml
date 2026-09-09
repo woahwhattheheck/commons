@@ -25,8 +25,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+
+      - name: Bind exact candidate checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_HEAD"
+          printf '%s\n' "$actual" | tee "$RUNNER_TEMP/titan-w06-checkout.sha"
 
       - name: Unit contracts
         run: python3 -B -m unittest discover -s revenue/kaggriculture/cloud-titan-frontier-w06 -p 'test_*.py' -v
@@ -97,6 +107,7 @@ jobs:
         with:
           name: titan-w06-apex-counterexample-${{ github.run_id }}
           path: |
+            ${{ runner.temp }}/titan-w06-checkout.sha
             ${{ runner.temp }}/titan-w06-results/
             ${{ runner.temp }}/titan-w06-release.json
             ${{ runner.temp }}/titan-w06-run.log
