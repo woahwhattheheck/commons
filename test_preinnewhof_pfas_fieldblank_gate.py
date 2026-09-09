@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import unittest
 from collections import Counter
+from copy import deepcopy
 
 import preinnewhof_pfas_fieldblank_gate as gate
 
@@ -139,6 +140,20 @@ class PreinnewhofPfasFieldblankGateTests(unittest.TestCase):
         self.assertEqual(replay["hold_count"], 30)
         self.assertEqual(replay["replay_noops"], 120)
 
+    def test_changed_content_same_row_replay_fails_closed_without_mutation(self) -> None:
+        journal = gate.empty_journal()
+        row = next(item for item in gate.build_acceptance_fixture() if item["truth"] == "VALID")
+        first = gate.ingest_row(journal, row)
+        self.assertEqual(first["kind"], "ACCESSION")
+        before = deepcopy(journal)
+        changed = deepcopy(row)
+        changed["source_image_id"] = "IMG-CHANGED"
+        gate._stamp_hashes(changed)
+        conflict = gate.ingest_row(journal, changed)
+        self.assertEqual(conflict["kind"], "REPLAY_CONFLICT")
+        self.assertEqual(conflict["code"], "REPLAY_PAYLOAD_CONFLICT")
+        self.assertEqual(before, journal)
+
     def test_human_review_controls_release(self) -> None:
         journal = gate.empty_journal()
         row = next(item for item in gate.build_acceptance_fixture() if item["truth"] == "VALID")
@@ -148,7 +163,7 @@ class PreinnewhofPfasFieldblankGateTests(unittest.TestCase):
         self.assertEqual(gate.report_status(record), "STAGED_BLOCKED_MISSING_RESULT")
         self.assertEqual(record["portal_result"], "STAGED")
 
-        denied = gate.release_report(journal, acc_id, actor_role="RELEASER", actor="reviewer-1")
+        denied = gate.release_report(journal, acc_id, actor_role="RELEASER", actor="Jordan Rivera")
         self.assertFalse(denied["ok"])
         self.assertEqual(denied["code"], "REPORT_BLOCKED")
 
@@ -157,16 +172,32 @@ class PreinnewhofPfasFieldblankGateTests(unittest.TestCase):
         gate.qc_signoff(journal, acc_id)
         self.assertEqual(record["report_status"], "STAGED_READY_FOR_HUMAN_RELEASE")
 
-        autonomous = gate.release_report(journal, acc_id, actor_role="SYSTEM", actor="autonomous")
+        before_denials = deepcopy(journal)
+        autonomous = gate.release_report(journal, acc_id, actor_role="SYSTEM", actor="Jordan Rivera")
         self.assertFalse(autonomous["ok"])
         self.assertEqual(autonomous["code"], "AUTONOMOUS_RELEASE_DENIED")
+        self.assertEqual(before_denials, journal)
+
+        for actor in ("", "system", "Auto Reviewer", "12 34", None):
+            with self.subTest(actor=actor):
+                before = deepcopy(journal)
+                rejected = gate.release_report(
+                    journal,
+                    acc_id,
+                    actor_role="RELEASER",
+                    actor=actor,  # type: ignore[arg-type]
+                )
+                self.assertFalse(rejected["ok"])
+                self.assertEqual(rejected["code"], "AUTONOMOUS_RELEASE_DENIED")
+                self.assertEqual(before, journal)
+
         self.assertFalse(record["released"])
         self.assertEqual(record["portal_result"], "STAGED")
 
-        human = gate.release_report(journal, acc_id, actor_role="RELEASER", actor="reviewer-1")
+        human = gate.release_report(journal, acc_id, actor_role="RELEASER", actor="Jordan Rivera")
         self.assertTrue(human["ok"])
         self.assertEqual(record["report_status"], "RELEASED")
-        self.assertEqual(record["released_by"], "reviewer-1")
+        self.assertEqual(record["released_by"], "Jordan Rivera")
         self.assertEqual(record["portal_result"], "RELEASED")
 
     def test_classifier_matches_each_hold_defect_independently(self) -> None:

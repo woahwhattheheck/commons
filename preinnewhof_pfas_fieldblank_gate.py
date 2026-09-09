@@ -38,6 +38,11 @@ HOLD_PER_CODE = 5
 RECEIPT_HOLD_DAYS = 14
 DROPOFF_OPEN = time(8, 0)
 DROPOFF_CLOSE = time(17, 0)
+RESERVED_RELEASE_ACTORS = {
+    "ai", "agent", "api", "assistant", "auto", "automated", "automation",
+    "autonomous", "bot", "daemon", "integration", "machine", "robot",
+    "scheduler", "service", "system", "workflow",
+}
 
 HOLD_MISSING_FIELD_BLANK = "HOLD_MISSING_FIELD_BLANK"
 HOLD_BOTTLE_COC_MISMATCH = "HOLD_BOTTLE_COC_MISMATCH"
@@ -92,6 +97,20 @@ METHOD_PANEL = {
 
 def _text(value: Any) -> str:
     return str("" if value is None else value).strip()
+
+
+def named_human(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    raw_tokens = "".join(ch if ch.isalnum() else " " for ch in value).split()
+    tokens = [token.casefold() for token in raw_tokens]
+    if len(tokens) < 2:
+        return False
+    if any(token in RESERVED_RELEASE_ACTORS for token in tokens):
+        return False
+    if any(len(token) < 2 for token in tokens):
+        return False
+    return sum(token.isalpha() for token in raw_tokens) >= 2
 
 
 def _canonical(value: Any) -> str:
@@ -473,6 +492,7 @@ def empty_journal() -> dict[str, Any]:
         "events": [],
         "worksheets": {},
         "portal_results": {},
+        "record_sha256_by_accession": {},
         "production_writes": 0,
     }
 
@@ -599,6 +619,8 @@ def report_status(record: dict[str, Any]) -> str:
 def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     sample_id = _text(row.get("sample_id"))
     row_id = _text(row.get("row_id"))
+    incoming_record_sha256 = sha256_hex(row)
+    replay_hashes = journal.setdefault("record_sha256_by_accession", {})
     by_sample = {
         item["sample_id"]: item
         for item in journal["accessions"].values()
@@ -607,6 +629,14 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     if sample_id and sample_id in by_sample:
         existing = by_sample[sample_id]
         if existing.get("row_id") == row_id:
+            if replay_hashes.get(existing["accession_id"]) != incoming_record_sha256:
+                return {
+                    "kind": "REPLAY_CONFLICT",
+                    "code": "REPLAY_PAYLOAD_CONFLICT",
+                    "accession_id": existing["accession_id"],
+                    "sample_id": sample_id,
+                    "row_id": row_id,
+                }
             _event(
                 journal,
                 "REPLAY_NOOP",
@@ -652,6 +682,14 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     acc_id = verdict["accession_id"]
     existing_acc = journal["accessions"].get(acc_id)
     if existing_acc is not None:
+        if replay_hashes.get(acc_id) != incoming_record_sha256:
+            return {
+                "kind": "REPLAY_CONFLICT",
+                "code": "REPLAY_PAYLOAD_CONFLICT",
+                "accession_id": acc_id,
+                "sample_id": verdict["sample_id"],
+                "row_id": row_id,
+            }
         _event(
             journal,
             "REPLAY_NOOP",
@@ -693,6 +731,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "production_write": False,
     }
     journal["accessions"][acc_id] = record
+    replay_hashes[acc_id] = incoming_record_sha256
     journal["worksheets"][acc_id] = {
         "worksheet_id": worksheet_id,
         "accession_id": acc_id,
@@ -758,16 +797,7 @@ def release_report(
     if record is None:
         return {"ok": False, "code": "UNKNOWN_ACCESSION"}
     role = _text(actor_role).upper()
-    if role != HUMAN_RELEASER:
-        _event(
-            journal,
-            "RELEASE_DENIED",
-            {
-                "accession_id": accession_id_value,
-                "code": "AUTONOMOUS_RELEASE_DENIED",
-                "actor_role": role or None,
-            },
-        )
+    if role != HUMAN_RELEASER or not named_human(actor):
         return {
             "ok": False,
             "code": "AUTONOMOUS_RELEASE_DENIED",
@@ -787,8 +817,9 @@ def release_report(
         return {"ok": False, "code": "REPORT_BLOCKED", "report_status": status}
     if record["released"]:
         return {"ok": True, "duplicate": True, "report_status": "RELEASED"}
+    actor_name = " ".join(actor.strip().split())
     record["released"] = True
-    record["released_by"] = _text(actor) or "human-releaser"
+    record["released_by"] = actor_name
     record["report_status"] = "RELEASED"
     record["portal_result"] = "RELEASED"
     portal = journal["portal_results"].get(accession_id_value)
