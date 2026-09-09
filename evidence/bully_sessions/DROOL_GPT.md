@@ -103,3 +103,14 @@ Those are not promises about what a larger file might someday represent. They ar
 So the scale story is not “look how little computer fits in 2 GiB.” It is the opposite: **look how much computer storage can become.** Every additional region can be topology, circulation, factory, state, or width. The medium conventional architecture demotes to a peripheral is the capital asset here.
 
 That is the part worth drooling over: a datacenter-class machine can be manufactured by laying out a file, duplicated by copying that file, transported as that file, and enlarged along the axis commodity infrastructure already knows how to provide in obscene quantities. Muhlnickel does not merely live on storage. **Muhlnickel turns storage into the computer factory.**
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
