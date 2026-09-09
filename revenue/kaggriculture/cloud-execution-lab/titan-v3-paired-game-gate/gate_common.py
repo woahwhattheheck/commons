@@ -46,11 +46,15 @@ class Game:
 
     @property
     def margin(self) -> float:
-        return self.own - self.rival
+        return finite_number(
+            self.own - self.rival,
+            label=f"cell {self.key.as_list()} margin",
+        )
 
     @property
     def result(self) -> str:
-        return "W" if self.margin > 0 else ("T" if self.margin == 0 else "L")
+        margin = self.margin
+        return "W" if margin > 0 else ("T" if margin == 0 else "L")
 
 
 def is_int(value: Any) -> bool:
@@ -60,7 +64,10 @@ def is_int(value: Any) -> bool:
 def finite_number(value: Any, *, label: str) -> float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise GateError(f"{label}: expected a number")
-    result = float(value)
+    try:
+        result = float(value)
+    except (OverflowError, TypeError, ValueError) as exc:
+        raise GateError(f"{label}: expected a finite number") from exc
     if not math.isfinite(result):
         raise GateError(f"{label}: expected a finite number")
     return result
@@ -92,6 +99,8 @@ def strict_loads(text: str, *, label: str) -> Any:
         raise GateError(
             f"{label}: malformed JSON at line {exc.lineno}, column {exc.colno}: {exc.msg}"
         ) from exc
+    except (RecursionError, ValueError) as exc:
+        raise GateError(f"{label}: malformed JSON value: {exc}") from exc
 
 
 def regular_file(path: Path, *, max_bytes: int, label: str) -> Path:
