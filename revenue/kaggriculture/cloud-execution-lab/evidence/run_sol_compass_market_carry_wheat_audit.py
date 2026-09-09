@@ -28,6 +28,90 @@ def load_legacy(path: Path):
     return module
 
 
+def add_hidden_rival_wheat_stress(report: dict) -> None:
+    """Stress each admitted best lot against the rival's unobserved shed stock.
+
+    This is deliberately favorable to the candidate: acquisition has no rival
+    BUY pressure and liquidation is immediate after same-tick rival supply and
+    town demand. Any loss here survives seller-latency uncertainty.
+    """
+    mechanics = sys.modules["_sol_compass_mechanics"]
+    carry_module = sys.modules["_sol_compass_market_carry"]
+    carry = carry_module.MarketCarry(mechanics)
+    params = mechanics.MARKET_PARAMS
+    rows = []
+    for feasible in report["scan"]["feasible_rows"]:
+        best = feasible["best"]
+        inventory = int(best["inventory"])
+        quantity = int(best["quantity"])
+        demand = int(feasible["demand"])
+        modeled_supply = int(feasible["rival_supply_stress"])
+        acquisition_cost, after_buy = carry.buy_cost(
+            "WHEAT", inventory, quantity, params
+        )
+        profile = []
+        first_below_min_profit = None
+        first_negative = None
+        for actual_supply in range(0, 101):
+            receipt, _ = carry.sale_receipt(
+                "WHEAT",
+                after_buy + actual_supply - demand,
+                quantity,
+                params,
+            )
+            profit = int(receipt) - int(acquisition_cost)
+            profile.append(
+                {
+                    "actual_same_tick_rival_supply": actual_supply,
+                    "receipt": int(receipt),
+                    "profit": profit,
+                }
+            )
+            if first_below_min_profit is None and profit < carry.min_profit:
+                first_below_min_profit = actual_supply
+            if first_negative is None and profit < 0:
+                first_negative = actual_supply
+        rows.append(
+            {
+                "modeled_supply_stress": modeled_supply,
+                "visible_rival_supply": int(feasible["visible_rival_supply"]),
+                "demand": demand,
+                "inventory": inventory,
+                "quantity": quantity,
+                "candidate_worst_profit": int(best["worst_profit"]),
+                "favorable_acquisition_cost": int(acquisition_cost),
+                "profit_at_modeled_supply": profile[modeled_supply]["profit"],
+                "first_actual_supply_below_min_profit": first_below_min_profit,
+                "first_actual_supply_negative": first_negative,
+                "profit_at_rival_shed_cap": profile[100]["profit"],
+                "selected_profile": [
+                    profile[index]
+                    for index in (0, modeled_supply, 4, 8, 12, 25, 50, 100)
+                    if 0 <= index < len(profile)
+                ],
+            }
+        )
+    negative_thresholds = [
+        row["first_actual_supply_negative"]
+        for row in rows
+        if row["first_actual_supply_negative"] is not None
+    ]
+    report["hidden_rival_wheat_stress"] = {
+        "interpretation": (
+            "Immediate-liquidation upper bound with no rival BUY pressure. "
+            "Actual rival WHEAT shed stock is private and may contribute up to "
+            "the shed capacity; the candidate models only unseen_rival_supply=1."
+        ),
+        "max_actual_supply": 100,
+        "negative_threshold_min": min(negative_thresholds, default=None),
+        "negative_threshold_max": max(negative_thresholds, default=None),
+        "rows": rows,
+    }
+    report["disposition"]["required_repair"].append(
+        "account for unobserved rival WHEAT shed supply or admit only after realized post-market evidence"
+    )
+
+
 def main() -> int:
     here = Path(__file__).resolve().parent
     legacy_path = here / "sol_compass_market_carry_wheat_audit.py"
@@ -78,10 +162,12 @@ def main() -> int:
         "calculation_engine_unchanged": True,
         "synthetic_private_schema_complete": True,
     }
+    add_hidden_rival_wheat_stress(report)
     report_path.write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
 
+    hidden = report["hidden_rival_wheat_stress"]
     summary = Path("WHEAT-AUDIT.md")
     with summary.open("a", encoding="utf-8") as handle:
         handle.write(
@@ -90,7 +176,14 @@ def main() -> int:
             "WHEAT/FERTILIZER SELL exclusion and independently pins "
             "`frozen_selected.py` as its importing consumer. The synthetic "
             "private state includes zero-valued official animal shed keys. No "
-            "economic calculation or parent-route logic was changed.\n"
+            "economic calculation or parent-route logic was changed.\n\n"
+            "## Hidden rival WHEAT stress\n\n"
+            "Even under immediate liquidation and no rival BUY pressure, the "
+            f"best admitted bands become negative at actual same-tick rival supply "
+            f"between `{hidden['negative_threshold_min']}` and "
+            f"`{hidden['negative_threshold_max']}` units. The rival shed is private "
+            "and may hold up to 100 total units; the candidate hard-codes one "
+            "unseen rival unit. See `WHEAT-AUDIT.json` for every band.\n"
         )
 
     print("FINAL_REPORT_SHA256", sha256(report_path.read_bytes()).hexdigest())
