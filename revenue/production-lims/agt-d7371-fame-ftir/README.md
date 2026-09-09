@@ -21,3 +21,7 @@ python -m unittest -v test_agt_d7371_fame_ftir.py
 python -m py_compile agt_d7371_fame_ftir.py test_agt_d7371_fame_ftir.py
 python agt_d7371_fame_ftir.py fixtures/agt_100_records.json fixtures/manifest.json
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
