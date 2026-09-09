@@ -39,12 +39,15 @@ def source_digest(job: Mapping[str, Any]) -> str:
 def named_human(value: str) -> bool:
     if not isinstance(value, str):
         return False
-    tokens = [token.casefold() for token in re.findall(r"[A-Za-z0-9]+", value)]
+    raw_tokens = re.findall(r"[A-Za-z0-9]+", value)
+    tokens = [token.casefold() for token in raw_tokens]
     if len(tokens) < 2:
         return False
     if any(token in RESERVED_ACTOR_TOKENS for token in tokens):
         return False
-    return all(len(token) >= 2 for token in tokens)
+    if any(len(token) < 2 for token in tokens):
+        return False
+    return sum(token.isalpha() for token in raw_tokens) >= 2
 
 
 def build_registry() -> Dict[str, Dict[str, Any]]:
