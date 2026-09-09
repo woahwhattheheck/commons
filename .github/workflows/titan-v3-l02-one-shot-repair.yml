@@ -1,0 +1,50 @@
+name: titan-v3-l02-one-shot-repair
+
+on:
+  push:
+    branches:
+      - sol/titan-v3-l02-ledger-tranche-20260909-01
+    paths:
+      - '.github/workflows/titan-v3-l02-one-shot-repair.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-l02-one-shot-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol/titan-v3-l02-ledger-tranche-20260909-01
+          fetch-depth: 1
+
+      - name: Apply exact repair, prove contracts, and remove carrier
+        shell: bash
+        env:
+          PATCH_B64: >-
+            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
+        run: |
+          set -euo pipefail
+          printf '%s' "$PATCH_B64" | base64 -d | gzip -d > /tmp/l02-repair.patch
+          git apply --check /tmp/l02-repair.patch
+          git apply /tmp/l02-repair.patch
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v test_ledger_tranche.py test_panel.py
+          python3 -m py_compile candidate.py ledger_tranche.py run_panel.py test_ledger_tranche.py test_panel.py
+          cd ../../../../..
+          python3 revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check
+          git diff --check
+          git rm .github/workflows/titan-v3-l02-one-shot-repair.yml
+          git config user.name 'SOL-MOMENTUM'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git add revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/README.md \
+                  revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/run_panel.py \
+                  revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/test_panel.py
+          git commit -m 'titan: repair L02 isolated-worker source path'
+          git push origin HEAD:sol/titan-v3-l02-ledger-tranche-20260909-01
