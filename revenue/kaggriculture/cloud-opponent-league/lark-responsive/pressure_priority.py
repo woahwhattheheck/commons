@@ -86,14 +86,19 @@ def compact_sale_only_prefix(orders: list, end: int, market: Mapping,
     return candidate + orders[end:]
 
 
-def lot_pressure(order: Any, market: Mapping, quote: PriceFunction) -> float | None:
-    """Return same-lot delay loss, or None when the order is an opaque barrier.
+def lot_pressure(order: Any, market: Mapping, quote: PriceFunction,
+                 rival_quantity: int | None = None) -> float | None:
+    """Return public-flow delay loss, or None when the order is an opaque barrier.
 
-    For own requested quantity n at public inventory I, compare sum price(I+k)
-    with sum price(I+n+k), k=0..n-1. The hypothetical rival n is deliberately
-    the parent's requested lot size, not inferred private stock or future sales.
-    Current quote consistency is required. Above the bounded scoring limits,
-    retain the order in place instead of silently approximating its quantity.
+    For own requested quantity ``n`` at public inventory ``I``, compare the own
+    receipt now against the same own lot after ``rival_quantity`` public units.
+    When ``rival_quantity`` is omitted, retain the historical same-sized ``n``
+    rival lot exactly as the explicit fallback/proxy stress.  A supplied zero is
+    a real zero-flow scenario.  Supplied quantities are public scenario inputs,
+    never inferred private stock or future sales.
+
+    Current quote consistency is required. Above bounded scoring limits, retain
+    the order in place instead of silently approximating either quantity.
     """
     prices, inventory = market.get('prices', {}), market.get('inventory', {})
     if not isinstance(prices, Mapping) or not isinstance(inventory, Mapping):
@@ -104,6 +109,13 @@ def lot_pressure(order: Any, market: Mapping, quote: PriceFunction) -> float | N
     item, n = order[1], int(order[2])
     if n > MAX_SCORING_UNITS:
         return None
+    if rival_quantity is None:
+        rival_n = n
+    else:
+        if (isinstance(rival_quantity, bool) or not isinstance(rival_quantity, int)
+                or rival_quantity < 0 or rival_quantity > MAX_SCORING_UNITS):
+            return None
+        rival_n = rival_quantity
     stock = inventory.get(item)
     if isinstance(stock, bool) or not isinstance(stock, int):
         return None
@@ -123,7 +135,7 @@ def lot_pressure(order: Any, market: Mapping, quote: PriceFunction) -> float | N
         if checked(stock) != visible:
             return None
         ahead = sum(checked(stock + k) for k in range(n))
-        delayed = sum(checked(stock + n + k) for k in range(n))
+        delayed = sum(checked(stock + rival_n + k) for k in range(n))
     except (ArithmeticError, LookupError, TypeError, ValueError):
         return None
     # Negative deterioration is not urgency. Equal scores keep parent order.
@@ -131,8 +143,14 @@ def lot_pressure(order: Any, market: Mapping, quote: PriceFunction) -> float | N
 
 
 def transform(action: dict, observation: Mapping,
-              configuration: Mapping | None = None, *, quote: PriceFunction) -> dict:
-    """Sort contiguous supported SELL lots by public same-lot delay exposure.
+              configuration: Mapping | None = None, *, quote: PriceFunction,
+              rival_supply: Mapping[str, int] | None = None) -> dict:
+    """Sort contiguous supported SELL lots by public rival-flow delay exposure.
+
+    ``rival_supply`` is an optional product->public-quantity scenario.  Missing
+    product keys retain the historical same-sized proxy for that product; an
+    explicit zero means no rival flow.  Malformed supplied values are barriers,
+    so ambiguous data cannot silently turn into invented hidden inventory.
 
     Preserve all orders, quantities, duplicate lots, economic barriers,
     executable-prefix boundaries and unit instructions. Known empty slots can
@@ -145,6 +163,8 @@ def transform(action: dict, observation: Mapping,
     market = observation.get('market', {}) if isinstance(observation, Mapping) else {}
     if not isinstance(market, Mapping):
         return result
+    if rival_supply is not None and not isinstance(rival_supply, Mapping):
+        return result
     cfg = configuration if isinstance(configuration, Mapping) else {}
     try:
         limit = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
@@ -154,7 +174,17 @@ def transform(action: dict, observation: Mapping,
     end = min(len(orders), limit)
     if end > MAX_SCORING_ORDERS:
         return result
-    scores = [lot_pressure(order, market, quote) for order in orders[:end]]
+
+    def supplied_quantity(order: Any) -> int | None:
+        if rival_supply is None or not isinstance(order, list) or len(order) != 3:
+            return None
+        item = order[1]
+        if item not in rival_supply:
+            return None
+        return rival_supply[item]
+
+    scores = [lot_pressure(order, market, quote, supplied_quantity(order))
+              for order in orders[:end]]
     start = 0
     while start < end:
         if scores[start] is None:

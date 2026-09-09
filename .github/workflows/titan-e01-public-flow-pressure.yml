@@ -1,0 +1,32 @@
+name: titan-e01-public-flow-pressure
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-e01-public-flow-pressure.yml'
+      - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py'
+      - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_priority.py'
+      - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_priority_public_flow.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  public-flow-pressure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Run legacy pressure contracts and E01 public-flow regressions
+        working-directory: revenue/kaggriculture/cloud-opponent-league/lark-responsive
+        run: |
+          python3 -B test_pressure_priority.py -v
+          python3 -B test_pressure_priority_public_flow.py -v
