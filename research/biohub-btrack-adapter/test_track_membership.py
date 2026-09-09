@@ -156,6 +156,27 @@ class TrackMembershipTests(unittest.TestCase):
         with self.assertRaisesRegex(AdapterError, "track 2 has no real observations"):
             tracks_to_rows("a", detections, [all_dummy], ref_map, scale)
 
+    def test_all_dummy_track_is_rejected_even_when_real_ref_coverage_is_complete(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [Detection("a", 0, 10, 5, 5, 5)]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        real_track = track_from_refs(payload, 1, [0])
+        all_dummy = FakeTrack(
+            ID=2,
+            refs=[-1],
+            dummy=[True],
+            t=[1],
+            x=[0.0],
+            y=[0.0],
+            z=[0.0],
+            detection_tags=[-1],
+            children=[],
+        )
+
+        with self.assertRaisesRegex(AdapterError, "track 2 has no real observations"):
+            tracks_to_rows("a", detections, [real_track, all_dummy], ref_map, scale)
+
     def test_nonpositive_track_ids_are_rejected(self):
         scale = Scale()
         bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
