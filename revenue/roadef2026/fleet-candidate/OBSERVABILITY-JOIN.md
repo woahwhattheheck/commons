@@ -66,3 +66,7 @@ RENEW retains Docker execution and the full-build/run resource evidence; this
 result does not establish Docker behavior, target hardware or official score.
 All C++ algorithms, original experiment pins and S139 draft/attachment stay
 unchanged. No submission or organizer message was sent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

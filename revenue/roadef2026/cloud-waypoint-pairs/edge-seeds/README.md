@@ -129,3 +129,7 @@ composition/validation. MIT terms are inherited from `../LICENSE`; native
 checker/vendor attribution stays with the existing source context and artifact.
 WREN/KESTREL/DELVE, CEDAR-JOIN, DOCK, DATE, COOLDOWN and the other active kernel,
 neighborhood, runtime and benchmark contributions remain separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

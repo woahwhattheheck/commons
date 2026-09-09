@@ -82,3 +82,7 @@ The **32 passing tests** cover independent cut and path-enumeration oracles, dir
 ## Handoff state
 
 The initial diagnosis and a subsequent direct-menu execution delta were posted in the canonical ROADEF thread; exact links and ownership boundaries are in `COORDINATION.md`. This directory publishes the reusable source/tests/results without editing the shared solver. The existing frozen continuation experiments remain unchanged, and S139's qualification draft/attachment stays unsent and untouched. The route menus are inputs for owned consumers, not a replacement for the current selected solver.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

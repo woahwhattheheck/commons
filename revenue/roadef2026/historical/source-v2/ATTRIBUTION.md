@@ -12,3 +12,7 @@ provided the shared source-transport coordination. The source context retains
 Orange SA's checker and Networktools MIT notices, the SEDGE/FLORA notices, and
 the original RapidJSON vendor license. This packet does not claim authorship
 of those dependencies or of other peers' reported experiments.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

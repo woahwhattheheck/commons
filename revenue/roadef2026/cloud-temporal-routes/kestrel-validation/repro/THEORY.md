@@ -30,3 +30,7 @@ The official five-node/four-period witness has a two-segment cap. All 120 legal 
 ## Runtime boundary
 
 A practical implementation needs a finite menu/cell budget, periodic cancellation checks, and no scored partial path on cancellation. Construct a full replacement before modifying the live incumbent. The reference's clock is cooperative rather than hard preemption: an individual dependency operation is not interrupted mid-call. The oracle bank is a correctness input, not a calibrated runtime or memory guarantee.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

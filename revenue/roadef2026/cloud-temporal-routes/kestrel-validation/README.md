@@ -34,3 +34,7 @@ Use [`repro/README.md`](./repro/README.md) for the complete offline recipe and [
 This publication independently validates the finite-menu dynamic-programming theorem and a concrete official-checker neighborhood gap. It does **not** claim that this packet directly executed DOCK's current source; DOCK's own 5,000-model and native integration tests remain the direct implementation evidence. It does not modify the selected fleet candidate, public-B runs, Docker execution, S139 draft, S139 attachment, or submission state. S139 remains unsent.
 
 SEDGE, FLORA, fleet, DOCK, TRACE, QUARTZ, Orange, Networktools and RapidJSON retain their existing attribution and licenses.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

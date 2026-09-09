@@ -20,3 +20,7 @@ Run `python -m unittest -v test_mvtl_nemagene_pairing.py`, `python -m py_compile
 ## Boundary
 
 Synthetic/deidentified data and a read-only mock incumbent-LIMS snapshot only. No biological/diagnostic interpretation, live LIMS/state/provider/customer write, report send, outreach, spend, or autonomous release. The two-business-day rule and all identifiers are fixture assertions pending buyer/vendor golden validation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

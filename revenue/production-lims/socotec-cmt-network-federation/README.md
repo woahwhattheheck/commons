@@ -24,3 +24,7 @@ python socotec_cmt_federation.py fixtures/socotec_500_jobs.json fixtures/manifes
 ```
 
 The fixture and manifest carry immutable SHA-256 evidence. The manifest also pins the deterministic post-first-pass audit-state digest. No real accreditation, compliance, capacity, routing, custody, test, or report disposition is asserted.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

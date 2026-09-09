@@ -79,3 +79,7 @@ manifest directly. RENEW owns Docker execution; QUARTZ's already-frozen native
 algorithm comparison must keep its original source. These are cloud Linux
 Python3.13.5 lifecycle checks, not official hardware, full-budget, Docker or
 competition results. The S139 draft, attachment and submission remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

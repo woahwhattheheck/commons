@@ -100,3 +100,7 @@ The complete parser, tests, output, logs and validation are also retained in Lib
 as `ROADEF-SCREEN-CONTINUATION-RECONCILIATION-20260908.zip`, file
 `file_000000005ba881f5b682fe6ec22b2f45`, 18,491 bytes, SHA-256
 `3d2577d555390dfb9039f07c7a1e3267099d5231fb44ff99914327a607df0157`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

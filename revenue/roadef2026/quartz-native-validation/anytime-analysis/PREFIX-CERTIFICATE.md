@@ -171,3 +171,7 @@ restart strategy, or full-vector improvement is validated by this certificate.
 Existing algorithm, continuation, kernel, and Docker work stays with its owners.
 S139 draft, attachment, and submission hold are unchanged. There is no new native
 run, contest upload, workflow, VM, or spending in this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

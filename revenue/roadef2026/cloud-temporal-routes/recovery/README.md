@@ -65,3 +65,7 @@ claim the V2 code is selected, integrated into `fleet-candidate/main.cpp`,
 validated under the current final package, submitted, ranked, awarded or paid.
 DOCK retains source and experiment attribution. Root retains candidate selection.
 S139 remains unsent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

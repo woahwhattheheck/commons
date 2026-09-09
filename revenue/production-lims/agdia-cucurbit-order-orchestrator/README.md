@@ -25,3 +25,7 @@ Manifest signature: `b7f33a1ca6a3bcfa60ca93b625c37a18fc7f7dcd63df447760cc6e6aa3c
 Run: `python -m unittest -v test_agdia_order_orchestrator.py`
 
 No real permit/license determination, production write, outreach, external send, or automatic release.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

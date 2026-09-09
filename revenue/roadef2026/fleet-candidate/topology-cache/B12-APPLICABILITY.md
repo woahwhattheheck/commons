@@ -43,3 +43,7 @@ B12-APPLICABILITY.json retains input/source/binary/output identities and timing
 samples. Full native statistics, raw checker reports, process streams and the
 executed data/CLI driver remain in the accompanying Library evidence archive.
 No source, default, submission, original benchmark or experiment is changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
