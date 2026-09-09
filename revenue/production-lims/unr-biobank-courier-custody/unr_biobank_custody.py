@@ -119,8 +119,14 @@ def named_human(value:str)->bool:
     tokens=[token.casefold() for token in re.findall(r"[A-Za-z0-9]+",value)]
     alpha_tokens=[token for token in tokens if any(char.isalpha() for char in token)]
     if len(tokens)<2 or len(alpha_tokens)<2:return False
-    if any(token in RESERVED_ACTOR_TOKENS for token in tokens):return False
     if any(len(token)<2 for token in tokens):return False
+    alpha_segments=re.findall(r"[a-z]+",value.casefold())
+    reserved=any(
+        "".join(alpha_segments[i:j]) in RESERVED_ACTOR_TOKENS
+        for i in range(len(alpha_segments))
+        for j in range(i+1,len(alpha_segments)+1)
+    )
+    if reserved:return False
     return True
 
 @dataclass

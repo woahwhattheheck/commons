@@ -84,11 +84,17 @@ class UNRBiobankCustodyTests(unittest.TestCase):
     def test_reserved_automation_tokens_and_short_labels_are_rejected_without_mutation(self):
         s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest)
         before=s.state_digest()
-        for bad in ("system","AI Reviewer","Service Account","bot agent","12 34","A B","auto"):
+        for bad in (
+            "system","AI Reviewer","Service Account","bot agent","12 34","A B","auto",
+            "Serv ice Account","Sys tem Reviewer","Work flow Account","Assist ant Reviewer",
+            "service2 account","AI2 Reviewer",
+        ):
             with self.assertRaises(PermissionError):s.authorize_research_use("UNR-SHIP-0001",bad)
             self.assertFalse(s.specimens["UNR-SHIP-0001"]["research_available"])
             self.assertNotIn("UNR-SHIP-0001",s.research_use)
         self.assertEqual(before,s.state_digest())
+        for good in ("Named Biobank Reviewer","Aisha Reviewer","Agentson Reviewer","Serviceman Reviewer"):
+            self.assertTrue(named_human(good),good)
 
     def test_one_way_authorization_does_not_overwrite_reviewed_by(self):
         s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest)
