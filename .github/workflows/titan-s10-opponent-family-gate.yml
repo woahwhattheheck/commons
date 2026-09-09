@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Identity-free family-gate contracts
+      - name: Public-prefix family contracts
         run: python3 -B -m unittest -v test_opponent_family_gate
 
       - name: Family-disjoint audit and 1 MiB / 2 ms admission
