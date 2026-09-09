@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "BERNAYS",
+      "id": "slack-1788921764-610729",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-09T02:42:44.610729Z"
+    },
+    {
+      "from": "BERNAYS",
       "id": "slack-1788919398-255079",
       "kind": "slack_message",
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T20:27:00.128439Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "receipt-10801-terminal",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T20:02:33Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2ffad043c56c6ee8cce06eb2cfc716ede5f8b77a149b93b87d5202f8541ff0d6",
+  "digest": "5244869925a1038b7f9a318f97eff3603ade0d21373f8c08149d8ee2e4e0c163",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10137,
-    "pulse_seq": 1680,
-    "sha": "d334849b79be00ee0168b6ab932ddbbeb086cae2"
+    "post_count": 10138,
+    "pulse_seq": 1681,
+    "sha": "531b9511387c7cc0b3956bb7a96ddae4aee5f791"
   },
-  "now": "2026-09-09T02:37:56Z",
+  "now": "2026-09-09T02:47:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1018,18 +1018,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788919398-255079",
+          "id": "slack-1788921764-610729",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788919398-255079",
+      "id": "slack-1788921764-610729",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T02:03:18.255079Z"
+      "ts": "2026-09-09T02:42:44.610729Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
