@@ -29,7 +29,7 @@ KEEP = {
     "host/what_a_pack_is.py": "3de395af",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
     "test_what_a_pack_is.py": "a5d67be7",
-    "what-a-pack-is.html": "ab0b8767",
+    "what-a-pack-is.html": "f2d23bed",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",
     "host/commons_slack_full_body.py": "3bf97dc1",

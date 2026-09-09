@@ -16,14 +16,14 @@ DOOR = ROOT / "super-mcp.html"
 
 KEEP = {
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "7fd9bc0a",
+    "super-mcp.html": "26a62564",
     "host/super_mcp.py": "defaf19f",
     "super-mcp/catalog.json": "f087937c",
     "test_super_mcp.py": "29cdec41",
     ".agents/skills/super-mcp/SKILL.md": "93a381b8",
     "ground/tokens/super-mcp.md": "716526ba",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "c36979ad",
+    "wire.html": "5e2f94f4",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",

@@ -17,10 +17,10 @@ LAW = ROOT / "ground/WIRE_SUPER_MCP.md"
 
 KEEP = {
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "c36979ad",
+    "wire.html": "5e2f94f4",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "7fd9bc0a",
+    "super-mcp.html": "26a62564",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "a0225a40",

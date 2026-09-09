@@ -23,7 +23,7 @@ KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_cursor_stealable_lanes_occupancy_readback.py": "695992f1",
+    "test_cursor_stealable_lanes_occupancy_readback.py": "eee9a951",
     "test_stealable_lanes_occupancy.py": "964d4e57",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
