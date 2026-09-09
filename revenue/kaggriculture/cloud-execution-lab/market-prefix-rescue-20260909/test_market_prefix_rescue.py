@@ -14,15 +14,17 @@ class ConfigObject:
 
 
 class MarketPrefixRescueTests(unittest.TestCase):
-    def test_rescues_tail_order_across_exact_blank(self):
+    def test_rescues_tail_order_into_suffix_blank(self):
         action = {
             "farmer": ["PASS"],
-            "market": [[], ["HIRE"], ["BUY_LAND"], ["SELL", "WHEAT", 3]],
+            "market": [["HIRE"], [], ["BUY_LAND"], ["SELL", "WHEAT", 3]],
             "opaque": {"keep": True},
         }
         original = deepcopy(action)
         output, report = rescue_market_prefix(action, {"maxMarketOrdersPerTurn": 2})
         self.assertTrue(report["changed"])
+        self.assertEqual(report["schema_version"], 2)
+        self.assertEqual(report["activation_class"], "suffix_only")
         self.assertEqual(output["market"], [
             ["HIRE"], ["BUY_LAND"], ["SELL", "WHEAT", 3], []
         ])
@@ -34,14 +36,29 @@ class MarketPrefixRescueTests(unittest.TestCase):
         self.assertEqual(report["prefix_executable_after"], 2)
 
     def test_preserves_all_nonempty_values_and_relative_order(self):
-        rows = [["SELL", "EGG", 2], [], {"opaque": 1}, ["BUY_SEED", "WHEAT", 1], [], ["HIRE"]]
+        rows = [["SELL", "EGG", 2], {"opaque": 1}, [], ["BUY_SEED", "WHEAT", 1], [], ["HIRE"]]
         output, report = rescue_market_prefix({"market": deepcopy(rows)}, {"maxMarketOrdersPerTurn": 3})
         self.assertTrue(report["changed"])
         self.assertEqual([row for row in output["market"] if row != []], [row for row in rows if row != []])
         self.assertEqual(len(output["market"]), len(rows))
         self.assertEqual(sum(row == [] for row in output["market"]), 2)
+        # Existing live rows at indices 0 and 1 did not move.
+        self.assertEqual(output["market"][:2], rows[:2])
 
-    def test_does_not_retime_blank_without_executable_tail(self):
+    def test_declines_interior_blank_that_would_retime_active_order(self):
+        action = {"market": [[], ["BUY_PRODUCT", "WHEAT", 1], ["HIRE"], ["BUY_SEED", "WHEAT", 1]]}
+        original = deepcopy(action)
+        output, report = rescue_market_prefix(action, {"maxMarketOrdersPerTurn": 3})
+        self.assertIs(output, action)
+        self.assertEqual(action, original)
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "interior_blank_would_retime_active_order")
+        self.assertEqual(report["blocked_active_rows"], [
+            {"from_index": 1, "order": ["BUY_PRODUCT", "WHEAT", 1]},
+            {"from_index": 2, "order": ["HIRE"]},
+        ])
+
+    def test_does_not_retime_suffix_blank_without_executable_tail(self):
         action = {"market": [["HIRE"], [], ["UNKNOWN", "X", 1], ["SELL", "WHEAT", 0]]}
         output, report = rescue_market_prefix(action, {"maxMarketOrdersPerTurn": 2})
         self.assertIs(output, action)
@@ -55,7 +72,7 @@ class MarketPrefixRescueTests(unittest.TestCase):
         self.assertEqual(report["reason"], "no_exact_blank_in_prefix")
 
     def test_idempotent(self):
-        action = {"market": [[], ["HIRE"], ["BUY_LAND"]]}
+        action = {"market": [["HIRE"], [], ["BUY_LAND"]]}
         first, first_report = rescue_market_prefix(action, ConfigObject())
         second, second_report = rescue_market_prefix(first, ConfigObject())
         self.assertTrue(first_report["changed"])
@@ -93,7 +110,7 @@ class MarketPrefixRescueTests(unittest.TestCase):
         self.assertEqual(market_limit({"maxMarketOrdersPerTurn": "bad"}), 10)
 
     def test_candidate_production_entrypoint_never_emits_marker(self):
-        base_action = {"farmer": ["PASS"], "market": [[], ["HIRE"], ["BUY_LAND"]]}
+        base_action = {"farmer": ["PASS"], "market": [["HIRE"], [], ["BUY_LAND"]]}
         previous = candidate._BASE_MODULE
         candidate._BASE_MODULE = SimpleNamespace(agent=lambda observation, configuration=None: deepcopy(base_action))
         try:
@@ -103,9 +120,10 @@ class MarketPrefixRescueTests(unittest.TestCase):
         finally:
             candidate._BASE_MODULE = previous
 
-    def test_instrumented_entrypoint_marks_only_real_edits(self):
+    def test_instrumented_entrypoint_marks_only_real_suffix_edits(self):
         previous = candidate._BASE_MODULE
         actions = iter([
+            {"market": [["HIRE"], [], ["BUY_LAND"]]},
             {"market": [[], ["HIRE"], ["BUY_LAND"]]},
             {"market": [["HIRE"], ["BUY_LAND"]]},
         ])
@@ -115,10 +133,15 @@ class MarketPrefixRescueTests(unittest.TestCase):
                 {"step": 11, "player": 1}, {"maxMarketOrdersPerTurn": 2}
             )
             self.assertTrue(changed[candidate.DIAGNOSTIC_KEY]["changed"])
+            self.assertEqual(changed[candidate.DIAGNOSTIC_KEY]["activation_class"], "suffix_only")
             self.assertEqual(changed[candidate.DIAGNOSTIC_KEY]["step"], 11)
             self.assertEqual(changed[candidate.DIAGNOSTIC_KEY]["player"], 1)
-            unchanged = candidate.instrumented_agent(
+            blocked = candidate.instrumented_agent(
                 {"step": 12, "player": 1}, {"maxMarketOrdersPerTurn": 2}
+            )
+            self.assertNotIn(candidate.DIAGNOSTIC_KEY, blocked)
+            unchanged = candidate.instrumented_agent(
+                {"step": 13, "player": 1}, {"maxMarketOrdersPerTurn": 2}
             )
             self.assertNotIn(candidate.DIAGNOSTIC_KEY, unchanged)
         finally:
