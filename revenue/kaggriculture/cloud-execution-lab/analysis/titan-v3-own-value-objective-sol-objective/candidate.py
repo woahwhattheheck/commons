@@ -23,10 +23,11 @@ _patch = importlib.util.module_from_spec(_patch_spec)
 _patch_spec.loader.exec_module(_patch)
 INSTALL_RECEIPT = dict(_patch.install(expected_root=LAB))
 
-_main_path = (LAB / "main.py").resolve()
-if _main_path.is_symlink() or not _main_path.is_file():
-    raise ImportError(f"canonical TITAN main is not one regular file: {_main_path}")
-_main_blob = _patch.git_blob_sha1(_main_path)
+_raw_main_path = LAB / "main.py"
+if _raw_main_path.is_symlink() or not _raw_main_path.is_file():
+    raise ImportError(f"canonical TITAN main is not one regular file: {_raw_main_path}")
+_main_path = _raw_main_path.resolve()
+_main_blob = _patch.git_blob_sha1(_raw_main_path)
 if _main_blob != EXPECTED_MAIN_BLOB:
     raise ImportError(
         f"canonical TITAN main Git blob drift: expected {EXPECTED_MAIN_BLOB}, got {_main_blob}"
