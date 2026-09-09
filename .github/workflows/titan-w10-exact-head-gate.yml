@@ -227,7 +227,7 @@ jobs:
             echo '```'
             echo '</details>'
             echo
-            echo 'This receipt proves the additive evidence gate at the named SHA. It is not a live-game win claim and does not authorize provider, Kaggle, spend, or canonical-release mutation.'
+            echo 'This receipt proves the additive exact-head evidence at the named SHA. It is not a live-game win and does not mutate provider, Kaggle, spend, or canonical-release state.'
           } > /tmp/w10-pr-comment.md
           gh pr comment "$PR_NUMBER" \
             --repo "$GITHUB_REPOSITORY" \
