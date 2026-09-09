@@ -1,0 +1,41 @@
+{
+  "schema": "titan.w06.apex-counterexample.pin.v1",
+  "operation": "titan-frontier-W06-apex-counterexample-20260909-01",
+  "base_commit": "0204b44fefab0f3d5a3e54d14fd35406b907e9a7",
+  "release": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
+    "entrypoint": "main.py::agent",
+    "config": "TITAN-CONFIG.json",
+    "sha256": "385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492",
+    "bytes": 423561,
+    "runtime_files": 107,
+    "source_manifest": "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json",
+    "source_manifest_sha256": "9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f"
+  },
+  "engine": {
+    "ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "directory": "revenue/kaggriculture/cloud-execution-lab/reference/engine"
+  },
+  "opponent": {
+    "name": "Apex V7 God Emperor",
+    "entrypoint": "revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/apex/main.py::agent"
+  },
+  "counterexample": {
+    "seed": 2611002002,
+    "seats": [
+      0,
+      1
+    ],
+    "historical_hold_only": {
+      "candidate_seat_0_scores": [
+        9830,
+        16718
+      ],
+      "candidate_seat_1_scores": [
+        10053,
+        8989
+      ],
+      "warning": "Historical HOLD evidence; not asserted for the pinned current archive."
+    }
+  }
+}
