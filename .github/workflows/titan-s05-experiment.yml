@@ -17,6 +17,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Pinned archive materialize contract
+        working-directory: revenue/kaggriculture/cloud-execution-lab/s05-experiment-20260909
+        run: python test_s05_materialize.py -v
       - name: Install exact evaluator dependency
         run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
       - name: Materialize pinned current runtime
@@ -25,13 +28,18 @@ jobs:
           set -euo pipefail
           DISPATCH=741d76f345921ded3cd436dab02fe5b8555f2d25
           ROOT=revenue/kaggriculture/cloud-execution-lab
+          ARCHIVE_SHA=0215384841e2eec7f919f82ea900f343f1dc75665747a45e8df8f6b33316c1e5
+          SOURCE_SHA=374ebfbed35ee9102fe75db855de03e848a3dbca487f13d66bca29248c71bb54
           git worktree add --detach /tmp/s05-dispatch "$DISPATCH"
           cd /tmp/s05-dispatch/$ROOT
-          python build_integrated.py --check
-          test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = '0215384841e2eec7f919f82ea900f343f1dc75665747a45e8df8f6b33316c1e5'
+          # Pin the published archive bytes. Do not call build_integrated.py --check:
+          # verify_current() re-renders gzip from live source at DISPATCH, which is
+          # merge 741d76f3 whose source no longer matches the frozen 105-file archive.
+          test "$(python3 -c "import json; print(json.load(open('runtime/integrated-selected/CURRENT-ARCHIVE.json'))['sha256'])")" = "$ARCHIVE_SHA"
+          test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = "$ARCHIVE_SHA"
           rm -rf /tmp/s05-runtime && mkdir /tmp/s05-runtime
           tar -xzf exports/titan-current.tar.gz -C /tmp/s05-runtime
-          test "$(sha256sum /tmp/s05-runtime/SOURCE.json | awk '{print $1}')" = '374ebfbed35ee9102fe75db855de03e848a3dbca487f13d66bca29248c71bb54'
+          test "$(sha256sum /tmp/s05-runtime/SOURCE.json | awk '{print $1}')" = "$SOURCE_SHA"
       - name: Stage S05 experiment into pinned runtime
         shell: bash
         run: |
