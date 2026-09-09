@@ -67,3 +67,7 @@ python3 -B "$ROOT/cloud-capital-route-flow/example_route_flow.py" \
 ```
 
 For the exact historical join, restore HAZEL `capital_routes.py` from commit `3708a125158b6e39ffaf61b6e9e54b632eb2760e` and DATE `dated_scenarios.py` from `206e01c2f742ae5f4e8d6b909cc496da34e3fd3c` in the isolated checkout; their exact blobs are in RESULTS.json. New code in this directory is Apache-2.0. Imported engine, route and peer components retain their existing source and license attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

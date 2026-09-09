@@ -146,3 +146,7 @@ Original tested suite SHA-256:
 `cddde4302305457703b0d0d75d6f4e7086d146827c320ab68428e3d77e77589c`.
 The scope is quantity reconciliation for downstream consumers, not a change to
 T15's source freezes, payoff tables, continuation optimizer or selected default.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

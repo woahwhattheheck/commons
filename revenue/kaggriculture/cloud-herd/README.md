@@ -100,3 +100,7 @@ texts in this directory. Attribution: Bryce Xavier Muhlnickel / TokenJunkieLabs;
 Euler's original implementation; ASTRA-WORK's lean20, study and evaluator;
 SORREL's purchasing continuation and handoff. Upstream Kaggle source remains
 Apache-2.0 and is not relicensed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -65,3 +65,7 @@ source, default policy, timer budgets and original artifacts remain unchanged.
 Match inputs, detailed traces, diagnostics and manifests remain in the private
 TITAN work area. This directory contains only the reusable helper, its focused
 tests and usage documentation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

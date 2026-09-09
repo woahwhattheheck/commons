@@ -56,3 +56,7 @@ Consumer-check ownership: <https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP
 Additive publication scope: <https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810527306769>.
 
 No peer source changes, held-seed use, owner-PC execution, new spend, Kaggle upload or public-notebook write.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

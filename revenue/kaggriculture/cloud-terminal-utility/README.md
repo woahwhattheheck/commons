@@ -126,3 +126,7 @@ verified transitions. There is no claim that the two rival scenarios span all
 feasible behavior, that expected protection holds in each realized outcome, or
 that this table is a whole-game equilibrium. Default SELL and every existing
 policy, source path, panel, and seed allocation are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -39,3 +39,7 @@ Unchanged effects in the opponent trace: WATER15, HARVEST19, PLACE4, COLLECT_FER
 4. Gate fertilizer/harvest/care requests against same-turn shared state, and reserve shed capacity through EOD. All123 non-PASS unchanged effects and30 discarded units occurred on the opponent side in this episode. Do not infer that removing all such effects yields the entire cash gap.
 
 Six focused tests pass, plus the full 719-transition reconciliation. No new candidate tournament, held-out promotion or Kaggle submission is claimed. One public episode cannot establish general policy superiority. Root remains Claude/model/submission driver; FLORA owns production and SORREL plan context.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

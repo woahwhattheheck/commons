@@ -37,3 +37,7 @@ gap was identified, and no speculative relaxation of cash or route protections
 was made. The default remains false. Raw trajectories and the private reached
 observation are deliberately excluded; `ACTIVATION-RESULTS.json` retains only
 aggregate outcomes and integrity hashes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

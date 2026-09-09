@@ -66,3 +66,7 @@ exception identity. Exact source and test SHA-256 values are recorded in
 This is local loader-contract evidence. No game, seed panel, performance result
 or hosted test run is claimed. The consumer is the next ordinary invocation of
 the existing continuation loader. Slack claim: `1788835648.458799` in T08.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

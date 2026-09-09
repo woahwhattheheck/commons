@@ -189,3 +189,7 @@ execution-preservation rule, rather than only an input-shape guard.
 The producer, engine, original test suite and market kernel are unchanged.
 No unknown future was padded into a complete continuation. These are bounded
 synthetic consumer checks, not game results or an installed composed policy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

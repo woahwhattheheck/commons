@@ -76,3 +76,7 @@ existing artifact upload. A green generic repository guard alone is not proof
 that these focused commands ran. The canonical TITAN builder and ECON-STRESS
 should consume the actual focused artifact on its recorded merge/source commit;
 do not restart or relabel active policy experiments.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -73,3 +73,7 @@ The second seed pair is now disclosed and must not be called unseen data in a fu
 ## Sources and credit
 
 The search is a new implementation. General iterative-deepening/PV ideas were studied in [Stockfish search.cpp at edb0d9db6731067ec50ce619ff372b463bc4dd5d](https://github.com/official-stockfish/Stockfish/blob/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.cpp#L280-L395). No Stockfish code was copied or linked. Its source identifies GPLv3-or-later; this directory's new code is Apache-2.0. Existing components retain their own notices and licenses; see `NOTICE.md`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

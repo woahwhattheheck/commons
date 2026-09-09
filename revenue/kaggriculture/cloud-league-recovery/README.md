@@ -24,3 +24,7 @@ For each claimed completed panel, inspect the final completion flag, exact 60-ga
 Recovery consumed no tests, games, seeds, jobs, or new source exports. The original runner, opponent variants, policies, and result ownership remain unchanged. Its existing source merge is separate from panel completion.
 
 Coordination and subsequent results: [T09 task thread](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805928334039).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

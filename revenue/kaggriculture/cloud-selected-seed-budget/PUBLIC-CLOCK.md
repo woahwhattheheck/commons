@@ -82,3 +82,7 @@ logs, original runtime, explicit-input comparison records and the reproduction
 script are retained in the companion delivery ZIP. No scored panel, hidden game
 seed, canonical archive, live default, Kaggle submission or owner-PC execution
 is changed by this repair. Hosted checks are recorded separately on its PR.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

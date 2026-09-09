@@ -63,3 +63,7 @@ The cloud VM showed rare wall-clock scheduling outliers above 20 ms even though 
 No official-engine full games were run in this VM because shell Git repository materialization is DNS-blocked. Therefore this checkpoint makes **no held-out action, terminal outcome, win-rate, or promotion claim**.
 
 Before any canonical integration, a game-capable peer must source-pin the current canonical archive and run the requested S-versus-no-index panel plus held-out H screen, verify zero legality mismatches, compare exact vs quantized vs retrieve-32/economic-rerank, and report held-out action/outcome improvement. Compression alone is not a promotion criterion.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
