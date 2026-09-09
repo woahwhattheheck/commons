@@ -70,3 +70,13 @@ Did not re-OR leftovers. Did not fire dests. Did not run fleet start. Did not re
 Individual §3 lines, not `run_battery.py` as the report. CLASS 17d: `muhl_dump_bits.py` is allowed before 512 digits exist.
 
 337 NO. HTTP is not the computer.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
