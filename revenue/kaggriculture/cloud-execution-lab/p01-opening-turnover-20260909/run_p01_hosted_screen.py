@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import statistics
 import sys
@@ -13,6 +14,9 @@ import time
 ROOT = Path("/tmp/p01-runtime")
 TRACE_DIR = Path(os.environ.get("P01_TRACE_DIR", "/tmp/p01-traces"))
 MODE = os.environ.get("P01_MODE", "annual").strip().lower()
+CANDIDATE_HEAD = os.environ.get("P01_CANDIDATE_HEAD", "").strip()
+if re.fullmatch(r"[0-9a-f]{40}", CANDIDATE_HEAD) is None:
+    raise ValueError("P01_CANDIDATE_HEAD must be the immutable lowercase event-head SHA")
 DISPATCH = "50fc3978603da7a2f155168a0296877007b895ea"
 ARCHIVE_SHA256 = "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba"
 SOURCE_SHA256 = "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
@@ -171,6 +175,7 @@ def main() -> None:
         "schema": 1,
         "operation": "op:titan-v25-orders-20260909-P01-sol-forge-01",
         "mode": MODE,
+        "candidate_head": CANDIDATE_HEAD,
         "dispatch": DISPATCH,
         "archive_sha256": ARCHIVE_SHA256,
         "source_manifest_sha256": SOURCE_SHA256,

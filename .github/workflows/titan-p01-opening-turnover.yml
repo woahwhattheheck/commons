@@ -19,10 +19,15 @@ jobs:
       P01_MAX_DAY: '10'
       P01_TRACE_DIR: /tmp/p01-traces
       P01_TRACE_FRONTIERS: '1'
+      P01_CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+      - name: Verify immutable PR event head
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
