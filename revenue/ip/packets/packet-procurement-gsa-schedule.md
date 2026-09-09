@@ -44,14 +44,14 @@ ANALYSIS: Procurement channel gsa-schedule is composed from the distribution lay
 - `host/feature_tracker.py` sha256 `02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0` (38400 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `caf48b75521d144801d3c709b49721f89fc286c07e2ede5593a88dba8df49785` (12738 bytes)
+- `resources.html` sha256 `d96d98607d38418658a07c29b60fe07b1d4d7a44b46108f200211667cfe0bdb1` (13024 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `b61a3f5c96c19ae205b1ee09a966d3908906935568c513cf1feb29c9eeaac1f5` (161041 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
 - `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `f63fc39de2ad57455ff3cee9fa99260b4e4e433a9e88b15d8fb29bde4537ab3a` (3641 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8` (4197 bytes)
 
 ## Stated funding (not expected value)
 

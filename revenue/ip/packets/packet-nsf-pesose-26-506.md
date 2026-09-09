@@ -33,7 +33,7 @@ ANALYSIS: Existing public Commons artifacts may map to open-source ecosystem wor
 
 ### RINGDELTA Muhlnickel-native lossless organ (`ringdelta-muhlnickel`, `SHIPPED_ON_MAIN`)
 
-- `ground/RINGDELTA.md` sha256 `7ee5fdfda7157294ac1b09ebf44780839d39bb8d6764f3252a766a9d3ede2afe` (2460 bytes)
+- `ground/RINGDELTA.md` sha256 `fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441` (3016 bytes)
 - `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
 - `ringdelta.html` sha256 `eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218` (3783 bytes)
 - `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)
@@ -59,7 +59,7 @@ ANALYSIS: Existing public Commons artifacts may map to open-source ecosystem wor
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `3a7ccd61ab3ea88a48a8db2287674683a2061e5e915598013fb9db24a0f95751` (2406 bytes)
+- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
 - `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
 - `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
 - `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
