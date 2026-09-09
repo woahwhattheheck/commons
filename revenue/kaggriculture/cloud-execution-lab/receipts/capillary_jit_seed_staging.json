@@ -1,0 +1,233 @@
+{
+  "base_observation": {
+    "candidate_player": "Bryce Muhlnickel",
+    "candidate_reward": 114765,
+    "canonical_json_sha256": "81ee3b351d511a720b526600ceb87a58f25c6a00d2ae1b837c5fd4caf33df77c",
+    "episode_id": 107130860,
+    "gzip_sha256": "9337c7c734eff0804400f732d48c155dedb6d6f12b3afdefbc620f78fdfc686b",
+    "reward_gap": 13112,
+    "seed": 539131249,
+    "winner": "Apa",
+    "winner_reward": 127877
+  },
+  "generated_utc": "2026-09-09T20:52:00Z",
+  "limitations": [
+    "No official paired score panel has been run for these candidate bytes.",
+    "The compiler proves route/quantity/prefix invariants, not affordability or score uplift.",
+    "The separate candidate class is not enabled by the submitted/default Titan runtime."
+  ],
+  "local_gate": {
+    "command": "python -m unittest -v test_jit_seed_staging.py",
+    "errors": 0,
+    "failures": 0,
+    "syntax_command": "python -m py_compile jit_seed_staging.py titan_capillary.py test_jit_seed_staging.py",
+    "syntax_status": "PASS",
+    "tests_run": 36
+  },
+  "replay_certificate": {
+    "baseline_missed_plants": 0,
+    "baseline_peak_paid_seed_inventory": 12,
+    "baseline_seed_purchases": 12,
+    "bulk_purchase": {
+      "cash_locked_at_seed_price": 960,
+      "crop": "MELON",
+      "quantity": 12,
+      "step": 2
+    },
+    "candidate_missed_plants": 0,
+    "candidate_peak_paid_seed_inventory": 2,
+    "candidate_seed_purchases": 12,
+    "jit_targets": [
+      {
+        "quantity": 1,
+        "step": 4
+      },
+      {
+        "quantity": 1,
+        "step": 6
+      },
+      {
+        "quantity": 1,
+        "step": 7
+      },
+      {
+        "quantity": 2,
+        "step": 9
+      },
+      {
+        "quantity": 2,
+        "step": 12
+      },
+      {
+        "quantity": 1,
+        "step": 13
+      },
+      {
+        "quantity": 2,
+        "step": 15
+      },
+      {
+        "quantity": 1,
+        "step": 16
+      },
+      {
+        "quantity": 1,
+        "step": 19
+      }
+    ],
+    "structural_report": {
+      "certified": true,
+      "changed": true,
+      "changed_routes": [
+        "BRYCE"
+      ],
+      "changed_steps": {
+        "BRYCE": [
+          2,
+          4,
+          6,
+          7,
+          9,
+          12,
+          13,
+          15,
+          16,
+          19
+        ]
+      },
+      "expensive_crops": [
+        "MELON",
+        "STRAWBERRY"
+      ],
+      "first_day_only": true,
+      "invariants": {
+        "actor_surface_exact": true,
+        "branch_topology_exact": true,
+        "inactive_market_suffix_exact": true,
+        "seed_quantity_exact": true
+      },
+      "max_orders": 10,
+      "plans": [
+        {
+          "anchor_slot": 2,
+          "anchor_step": 2,
+          "crop": "MELON",
+          "day_start": 0,
+          "placements": {
+            "BRYCE": [
+              {
+                "quantity": 1,
+                "slot": 2,
+                "step": 4
+              },
+              {
+                "quantity": 1,
+                "slot": 2,
+                "step": 6
+              },
+              {
+                "quantity": 1,
+                "slot": 2,
+                "step": 7
+              },
+              {
+                "quantity": 2,
+                "slot": 2,
+                "step": 9
+              },
+              {
+                "quantity": 2,
+                "slot": 1,
+                "step": 12
+              },
+              {
+                "quantity": 1,
+                "slot": 0,
+                "step": 13
+              },
+              {
+                "quantity": 2,
+                "slot": 0,
+                "step": 15
+              },
+              {
+                "quantity": 1,
+                "slot": 0,
+                "step": 16
+              },
+              {
+                "quantity": 1,
+                "slot": 0,
+                "step": 19
+              }
+            ]
+          },
+          "quantity": 12,
+          "routes": [
+            "BRYCE"
+          ],
+          "targets": [
+            {
+              "quantity": 1,
+              "step": 4
+            },
+            {
+              "quantity": 1,
+              "step": 6
+            },
+            {
+              "quantity": 1,
+              "step": 7
+            },
+            {
+              "quantity": 2,
+              "step": 9
+            },
+            {
+              "quantity": 2,
+              "step": 12
+            },
+            {
+              "quantity": 1,
+              "step": 13
+            },
+            {
+              "quantity": 2,
+              "step": 15
+            },
+            {
+              "quantity": 1,
+              "step": 16
+            },
+            {
+              "quantity": 1,
+              "step": 19
+            }
+          ]
+        }
+      ],
+      "reason": "staged",
+      "rejections": [],
+      "turns_per_day": 24
+    }
+  },
+  "schema": "titan.capillary.jit-seed-staging.receipt.v1",
+  "scope": {
+    "candidate": "CapillaryTitanAgent",
+    "default_runtime_modified": false,
+    "expensive_crops": [
+      "MELON",
+      "STRAWBERRY"
+    ],
+    "first_day_only": true,
+    "max_market_orders": 10,
+    "turns_per_day": 24
+  },
+  "source_sha256": {
+    "jit_seed_staging.py": "a4ef18e159d307c9bcdeb3b6b8f583b4ca9e0ec29419b9b3f184a04ffb0c4360",
+    "test_jit_seed_staging.py": "097b7dcc1a46263a72bc69ca264d625f425fcb2fa766bc8b282ea603f355beb6",
+    "titan-capillary-jit-seed-staging.yml": "05179397c22e5763c8e671a0bcb8a4b2dc329d23718ae2efef9cd32a14123d6f",
+    "titan_capillary.py": "3548e8158b01f18accf049091842376afe7aca693172ec76c671713b5598d7fe"
+  },
+  "status": "STRUCTURAL_GATE_PASS_OFFICIAL_PANEL_PENDING"
+}

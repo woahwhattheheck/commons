@@ -1,0 +1,149 @@
+name: titan-capillary-priority-safe-keystone
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/capillary_priority_guard.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py"
+      - "revenue/kaggriculture/cloud-execution-lab/capillary_main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_capillary_lifecycle.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_capillary_priority_safe_keystone.py"
+      - "revenue/kaggriculture/cloud-execution-lab/receipts/capillary_jit_seed_staging.json"
+      - "analysis/capillary-priority-safe-keystone/**"
+      - ".github/workflows/titan-capillary-priority-safe-keystone.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-execution-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind exact event head and allowed scope
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git diff --check
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          allowed = (
+              ".github/workflows/titan-capillary-priority-safe-keystone.yml",
+              "analysis/capillary-priority-safe-keystone/",
+              "revenue/kaggriculture/cloud-execution-lab/capillary_main.py",
+              "revenue/kaggriculture/cloud-execution-lab/capillary_priority_guard.py",
+              "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py",
+              "revenue/kaggriculture/cloud-execution-lab/receipts/capillary_jit_seed_staging.json",
+              "revenue/kaggriculture/cloud-execution-lab/test_capillary_lifecycle.py",
+              "revenue/kaggriculture/cloud-execution-lab/test_capillary_priority_safe_keystone.py",
+              "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py",
+              "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py",
+          )
+          base = subprocess.check_output(
+              ["git", "merge-base", "HEAD", "origin/main"], text=True
+          ).strip()
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}...HEAD"], text=True
+          ).splitlines()
+          unexpected = [
+              path for path in changed
+              if not any(path == item or path.startswith(item) for item in allowed)
+          ]
+          if unexpected:
+              raise SystemExit(f"unexpected paths: {unexpected}")
+          if not changed:
+              raise SystemExit("empty candidate delta")
+          print("KEYSTONE_ALLOWED_PATHS=" + "\n".join(changed))
+          PY
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile exact candidate packet
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            jit_seed_staging.py \
+            capillary_priority_guard.py \
+            titan_capillary.py \
+            capillary_main.py \
+            test_jit_seed_staging.py \
+            test_capillary_lifecycle.py \
+            test_capillary_priority_safe_keystone.py
+
+      - name: Run compiler, lifecycle, custody, and official-interpreter gates
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -m unittest -v \
+            test_jit_seed_staging.py \
+            test_capillary_lifecycle.py \
+            test_capillary_priority_safe_keystone.py \
+            2>&1 | tee keystone-test-output.txt
+
+      - name: Emit exact-head receipt
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import subprocess
+
+          root = Path.cwd()
+          paths = [
+              ".github/workflows/titan-capillary-priority-safe-keystone.yml",
+              "analysis/capillary-priority-safe-keystone/README.md",
+              "revenue/kaggriculture/cloud-execution-lab/capillary_main.py",
+              "revenue/kaggriculture/cloud-execution-lab/capillary_priority_guard.py",
+              "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py",
+              "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py",
+              "revenue/kaggriculture/cloud-execution-lab/test_capillary_lifecycle.py",
+              "revenue/kaggriculture/cloud-execution-lab/test_capillary_priority_safe_keystone.py",
+              "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py",
+          ]
+          receipt = {
+              "schema_version": 1,
+              "operation": "titan-v3-capillary-priority-safe-20260909-keystone-01",
+              "head": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "files": {},
+          }
+          for rel in paths:
+              data = (root / rel).read_bytes()
+              receipt["files"][rel] = {
+                  "bytes": len(data),
+                  "sha256": hashlib.sha256(data).hexdigest(),
+              }
+          out = root / "keystone-capillary-priority-receipt.json"
+          out.write_text(json.dumps(receipt, sort_keys=True, indent=2) + "\n")
+          print(out.read_text())
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: keystone-capillary-priority-${{ github.run_id }}
+          path: |
+            keystone-capillary-priority-receipt.json
+            revenue/kaggriculture/cloud-execution-lab/keystone-test-output.txt
+          if-no-files-found: error
+
+      - name: Require clean source tree
+        if: success()
+        run: test -z "$(git status --porcelain --untracked-files=no)"
