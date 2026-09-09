@@ -15,6 +15,11 @@
       "sha256": "bbc62f8ffdfa9a73fd882f95f9b80b217d25f974793da12d866e4cd221bec830"
     },
     {
+      "bytes": 2034,
+      "path": "NUMERIC-CLOSURE.md",
+      "sha256": "90e7b3dd96b8a4229b62155b326b83536b5c45f7ddd226f7d08eaf9d89894c6a"
+    },
+    {
       "bytes": 5379,
       "path": "README.md",
       "sha256": "0993bfa4a7dbc89d8412a18e9df42f752ac35014fdd75b6daf00a7c976aead96"
@@ -37,7 +42,7 @@
     {
       "bytes": 1252,
       "path": "example/CONTRACT.json",
-      "sha256": "85df87510d763cd67494010bd04a2879a8fb679135e588f6c406d053a474c0e7"
+      "sha256": "85df87510d763cd67494010bd04a2879a8fb679135e588f6c4063722188d301"
     },
     {
       "bytes": 705,
@@ -60,19 +65,24 @@
       "sha256": "068f3814c5a40b1f3f13a18a1c1699ca8f1c9375e60bc7b507a6fe77e8725215"
     },
     {
-      "bytes": 4109,
+      "bytes": 4485,
       "path": "gate_common.py",
-      "sha256": "2b72ed8ddabd34647d2bd80094d1fbf8e7e183c5098b66e68dddfb6a35c6fc1b"
+      "sha256": "f3e9bd009c37865eeb0a2db0e031b9b41d3cb8e960f8b375dfa93b72169f3e50"
     },
     {
-      "bytes": 6435,
+      "bytes": 7273,
       "path": "metrics.py",
-      "sha256": "e3cb706f7f5c7d4a1a8a299435b52c60842e282dcd2ad33f94964e8891037187"
+      "sha256": "c5be10c78bc2a2045406b9d5a4f34ee5432bc23d7ee8ca643eacc1694ebbccc5"
     },
     {
       "bytes": 3175,
       "path": "panel_load.py",
       "sha256": "340054b8403827bad0ff086b1c84b0e3abdd052dedeb5622b5ad56bb168aa287"
+    },
+    {
+      "bytes": 2859,
+      "path": "test_numeric_closure.py",
+      "sha256": "0f6a3e588548d91e4c44c9490dc3320dc29ddbe13905df7346002758c7b83fa9"
     },
     {
       "bytes": 5604,
@@ -92,9 +102,10 @@
   ],
   "operation": "titan-v3-paired-game-gate-20260909-sol-argus-02",
   "tests": {
-    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py",
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py test_numeric_closure.py",
     "errors": 0,
     "failed": 0,
-    "passed": 23
-  }
+    "passed": 26
+  },
+  "repair_operation": "titan-v3-paired-game-numeric-closure-20260909-sol-cipher-01"
 }
