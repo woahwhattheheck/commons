@@ -72,6 +72,7 @@ def source_files():
     mapping['checks/test_crop_release.py']='test_crop_release.py'
     mapping['checks/test_selected_pruning.py']='test_selected_pruning.py'
     mapping['checks/test_joint_market_slots.py']='test_joint_market_slots.py'
+    mapping['checks/test_funded_prefix.py']='test_funded_prefix.py'
     mapping['checks/reference/weed-continuation/delta-native.json.gz']='reference/weed-continuation/delta-native.json.gz'
     mapping['checks/reference/weed-continuation/ash-native.json.gz']='reference/weed-continuation/ash-native.json.gz'
     mapping['checks/reference/weed-continuation/spruce-native.json.gz']='reference/weed-continuation/spruce-native.json.gz'

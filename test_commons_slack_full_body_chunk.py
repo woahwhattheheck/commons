@@ -21,7 +21,7 @@ KEEP = {
     "host/commons_slack_full_body.py": "3bf97dc1",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "ground/COMMONS_SLACK_FULL_BODY.json": "2db9f0e5",
-    "test_commons_slack_full_body.py": "c8651832",
+    "test_commons_slack_full_body.py": "8d435aca",
     "host/slack_mirror.py": "c94f6fa5",
     "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",

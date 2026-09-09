@@ -38,9 +38,9 @@ KEEP = {
     "p/grokbuild-merged-branch-janitor-33699940277-billing-lock-20260903-01.md": "caeb6ac3",
     "p/grokbuild-merged-branch-janitor-33699944798-billing-lock-20260903-01.md": "1fcd7e61",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
     "catalog.html": "97f683f1",
-    "hub_pages.py": "7a8f24d5",
+    "hub_pages.py": "d0bd0e8d",
 }
 
 EVENT_8584 = {

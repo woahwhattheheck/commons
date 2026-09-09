@@ -350,16 +350,32 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 22,
  "open_prs": [
   {
-   "number": 10978,
+   "number": 11121,
    "author": "woahwhattheheck",
-   "title": "Scope GitHub publication imports and retain unknown activity contract",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10978",
+   "title": "TITAN S07: add fail-closed exact dominance pruning",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11121",
    "base_freshness": {
-    "base_sha": "20aaaa0fa45132b8850aff2bb87329767a40f773",
-    "main_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
+    "base_sha": "d56c11b0199d3fcf7820922023a3aa8d98370888",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11120,
+   "author": "woahwhattheheck",
+   "title": "TITAN P15: stage animal admission horizon certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11120",
+   "base_freshness": {
+    "base_sha": "d56c11b0199d3fcf7820922023a3aa8d98370888",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,16 +385,320 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 11092,
+   "number": 11126,
    "author": "woahwhattheheck",
-   "title": "Close focused TITAN LARK source snapshot",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11092",
+   "title": "TITAN E09: stage public rival-response scenarios",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11126",
    "base_freshness": {
-    "base_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
-    "main_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
+    "base_sha": "a8c940504fede46d310da027a31e6b98620f1fc7",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11119,
+   "author": "woahwhattheheck",
+   "title": "TITAN E02: date public rival harvest arrivals",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11119",
+   "base_freshness": {
+    "base_sha": "9ac5c74fa4dff89454a8b09b68d71b74467fa4c3",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11133,
+   "author": "woahwhattheheck",
+   "title": "TITAN S08: add five-scenario maximin economics contract",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11133",
+   "base_freshness": {
+    "base_sha": "fb449442fe515b7912d81d886402e54a990b6d3c",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11136,
+   "author": "woahwhattheheck",
+   "title": "TITAN S09: identity-free regret macro mix harness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11136",
+   "base_freshness": {
+    "base_sha": "b87b968b433773bd7f8f4ac4908c82b64a29a677",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11130,
+   "author": "woahwhattheheck",
+   "title": "TITAN E20: protect profitable complete hire jobs",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11130",
+   "base_freshness": {
+    "base_sha": "ec083c2feb41c944dbf76481c50f5f0c6817569e",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11135,
+   "author": "woahwhattheheck",
+   "title": "Titan V2.5 E15: value-of-information contract",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11135",
+   "base_freshness": {
+    "base_sha": "b87b968b433773bd7f8f4ac4908c82b64a29a677",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11144,
+   "author": "woahwhattheheck",
+   "title": "TITAN E03: calibrate public behavior scenario weights",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11144",
+   "base_freshness": {
+    "base_sha": "bc190bb8a73900a9cd2cd486efecbc21c0713097",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11155,
+   "author": "woahwhattheheck",
+   "title": "Titan E07: fresh-main same-turn funding carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11155",
+   "base_freshness": {
+    "base_sha": "6293ee2773c883681c62e73a1a0da151ae2a0025",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11151,
+   "author": "woahwhattheheck",
+   "title": "Revert TITAN E04 price-break expansion after full-game regression",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11151",
+   "base_freshness": {
+    "base_sha": "56b1a698eb1579ece33c6d48ac67ba77859dda57",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11127,
+   "author": "woahwhattheheck",
+   "title": "TITAN S01: bounded anytime joint-action beam experiment",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11127",
+   "base_freshness": {
+    "base_sha": "a8c940504fede46d310da027a31e6b98620f1fc7",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11137,
+   "author": "woahwhattheheck",
+   "title": "TEST ONLY: verify exact E04 + E07 + E14 Titan composition",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11137",
+   "base_freshness": {
+    "base_sha": "bc190bb8a73900a9cd2cd486efecbc21c0713097",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11157,
+   "author": "woahwhattheheck",
+   "title": "TITAN P22: add per-candidate terminal payback horizon",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11157",
+   "base_freshness": {
+    "base_sha": "7929bd1885b868c770d6523fbcf84662aead2004",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11117,
+   "author": "woahwhattheheck",
+   "title": "E13: funded-prefix working-capital certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11117",
+   "base_freshness": {
+    "base_sha": "b6d81548d994840ed6f5d865668f35997a4902c0",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11134,
+   "author": "woahwhattheheck",
+   "title": "TITAN E01: score explicit public rival-flow quantities",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11134",
+   "base_freshness": {
+    "base_sha": "b87b968b433773bd7f8f4ac4908c82b64a29a677",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11153,
+   "author": "woahwhattheheck",
+   "title": "Build CSU malt cutoff and method expansion bridge",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11153",
+   "base_freshness": {
+    "base_sha": "6293ee2773c883681c62e73a1a0da151ae2a0025",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11148,
+   "author": "woahwhattheheck",
+   "title": "TITAN E06: evaluate inert-slot reuse in mixed queues",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11148",
+   "base_freshness": {
+    "base_sha": "711ef54b9de626cea674aa8b51023e3218d0961b",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11152,
+   "author": "woahwhattheheck",
+   "title": "TITAN S10: identity-free opponent-family gate harness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11152",
+   "base_freshness": {
+    "base_sha": "6293ee2773c883681c62e73a1a0da151ae2a0025",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11115,
+   "author": "woahwhattheheck",
+   "title": "E08: choose SELL horizon from represented market events",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11115",
+   "base_freshness": {
+    "base_sha": "b6d81548d994840ed6f5d865668f35997a4902c0",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11114,
+   "author": "woahwhattheheck",
+   "title": "Titan E07: fund fixed buys from same-turn realized sales",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11114",
+   "base_freshness": {
+    "base_sha": "ba35d86c56ce5be0a53bef65838895ec23a4742d",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11163,
+   "author": "woahwhattheheck",
+   "title": "Independent review: GOAT business packs factory scaffold",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11163",
+   "base_freshness": {
+    "base_sha": "ba35d86c56ce5be0a53bef65838895ec23a4742d",
+    "main_sha": "bc80ac7d7e487008397b5f351fb2e1a9fd43b1d0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

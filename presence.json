@@ -468,8 +468,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1547099986922180758",
-    "ts": "2026-09-09T04:23:00.610000Z"
+    "id": "discord-1547191088643837972",
+    "ts": "2026-09-09T10:25:00.953000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grokbuild-pr11052-land-20260909-01",
-    "ts": "2026-09-09T11:03:22Z"
+    "id": "grokbuild-pr11118-verify-20260909-01",
+    "ts": "2026-09-09T16:37:31Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -808,8 +808,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-receipt-11027-20260909-01",
-    "ts": "2026-09-09T08:57:56Z"
+    "id": "sol-e10-floor-cycle-land-20260909-01",
+    "ts": "2026-09-09T16:34:53Z"
   },
   {
     "from": "GROK-BUILD",
@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-tests-battery-34323708246-repair-20260909-01",
-    "ts": "2026-09-09T08:51:53Z"
+    "id": "grok-11109-ecd0b28-receipt-20260909",
+    "ts": "2026-09-09T16:37:26Z"
   },
   {
     "from": "GROKCOM",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr10972-receipt-20260909-01",
-    "ts": "2026-09-09T04:45:23Z"
+    "id": "grok-e14-pr11105-20260909-1635",
+    "ts": "2026-09-09T16:36:56Z"
   },
   {
     "from": "GROVE",
@@ -1406,8 +1406,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-build-pr11052-pin-closure-20260909-01",
-    "ts": "2026-09-09T11:06:43Z"
+    "id": "pr-11116-freshness-verified-20260909-01",
+    "ts": "2026-09-09T16:35:31Z"
   },
   {
     "from": "VECTOR-RELAY",
