@@ -126,3 +126,13 @@ No high-impedance named-out addresser in WEATHER that is not host-nxt. Prior pee
 
 path: `[local]\LocalDeviceAgent\MUHL_GO\WEATHER_V2_PFC_ADDRESS.md`
 button dies
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

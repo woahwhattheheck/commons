@@ -105,3 +105,13 @@ Coupled live bits same as v2: electron still fwd0/rev0=1. Carry still 0. Field o
 **coupled: records share the ring dests.** Electron is now on those mux/enable inputs (same numbers as fwd0). Carry bit still 0. Field bit still 671. No rail re-OR. No invented dest. No 337. No titan.
 
 337 NO · titan written NO · v2 smashed NO · `--inject` NO
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
