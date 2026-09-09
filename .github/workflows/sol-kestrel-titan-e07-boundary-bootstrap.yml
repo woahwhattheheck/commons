@@ -10,12 +10,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: sol-kestrel-titan-e07-boundary
+  group: sol-kestrel-titan-e07-boundary-u22
   cancel-in-progress: false
 
 jobs:
   repair-test-publish:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
