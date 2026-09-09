@@ -1,0 +1,239 @@
+name: titan-v3-own-value-objective-sol-objective
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-own-value-objective-sol-objective.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective/**'
+      - 'p/sol-objective-titan-v3-own-value-objective-20260909-01.md'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-own-value-objective-sol-objective.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective/**'
+      - 'p/sol-objective-titan-v3-own-value-objective-20260909-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  paired-own-value-screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Bind the one-factor source closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          verify_blob() {
+            local path="$1" expected="$2"
+            local actual
+            actual="$(git hash-object "$path")"
+            printf '%s  %s\n' "$actual" "$path"
+            test "$actual" = "$expected"
+          }
+          {
+            verify_blob "$LAB/selected_sell_core.py" f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3
+            verify_blob "$LAB/main.py" 4a8cf7bcda1f0fea231a144692cb84a779a9e73e
+            verify_blob "$KAG/cloud-eval/evaluate.py" 077feb2208b6e0c1727835eb4f8089709bf67f3b
+            verify_blob "$LAB/runtime/variants/v1/candidate.py" 8db1262a2d38cc3115d06732383e18e1132ccfba
+            verify_blob "$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py" bdb9cf58148a3c7961c085f4902759537decabf6
+          } | tee "$RUNNER_TEMP/source-blobs.txt"
+
+      - name: Run overlay, witness, and comparator contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          python -m unittest -v test_own_value_objective.py test_compare.py
+          python -m py_compile \
+            own_value_objective.py candidate.py mechanism_witness.py compare.py \
+            test_own_value_objective.py test_compare.py
+          python mechanism_witness.py
+          cp MECHANISM-WITNESS.json "$RUNNER_TEMP/MECHANISM-WITNESS.json"
+
+      - name: Prove candidate binds before runtime construction
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective
+          CASE="$CASE" OUT="$RUNNER_TEMP/INSTALL-RECEIPT.json" python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          import sys
+
+          path = Path(os.environ["CASE"]) / "candidate.py"
+          sys.path.insert(0, str(path.parent))
+          spec = importlib.util.spec_from_file_location("_sol_objective_candidate_smoke", path)
+          if spec is None or spec.loader is None:
+              raise SystemExit("candidate spec unavailable")
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          receipt = dict(module.INSTALL_RECEIPT)
+          if receipt.get("changed_field") != "MarketPath.score[0]":
+              raise SystemExit("wrong objective field")
+          if receipt.get("canonical_files_modified") is not False:
+              raise SystemExit("overlay claimed a canonical mutation")
+          Path(os.environ["OUT"]).write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Verify canonical package stayed unchanged
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Run canonical V3 control panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/titan-v3-own-value-objective"
+          mkdir -p "$OUT"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$LAB/main.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --recheck-first \
+            --output "$OUT/control.json"
+
+      - name: Run own-value objective candidate panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CASE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-own-value-objective"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$CASE/candidate.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --recheck-first \
+            --output "$OUT/candidate.json"
+
+      - name: Classify paired own-cash evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective
+          OUT="$RUNNER_TEMP/titan-v3-own-value-objective"
+          python "$CASE/compare.py" \
+            --control "$OUT/control.json" \
+            --candidate "$OUT/candidate.json" \
+            --head "$(git rev-parse HEAD)" \
+            --output "$OUT/PAIRED-REPORT.json" \
+            --markdown "$OUT/PAIRED-REPORT.md"
+          cat "$OUT/PAIRED-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Write complete provenance manifest
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-objective-sol-objective
+          OUT="$RUNNER_TEMP/titan-v3-own-value-objective"
+          mkdir -p "$OUT"
+          CASE="$CASE" OUT="$OUT/PROVENANCE.json" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          case = Path(os.environ["CASE"])
+          paths = [
+              case / "candidate.py",
+              case / "own_value_objective.py",
+              case / "mechanism_witness.py",
+              case / "compare.py",
+              case / "test_own_value_objective.py",
+              case / "test_compare.py",
+              case / "README.md",
+          ]
+          data = {
+              "git_head": subprocess.check_output(
+                  ["git", "rev-parse", "HEAD"], text=True
+              ).strip(),
+              "files": {
+                  str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+                  for path in paths
+                  if path.is_file()
+              },
+          }
+          Path(os.environ["OUT"]).write_text(
+              json.dumps(data, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-value-objective-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/exact-head.sha
+            ${{ runner.temp }}/source-blobs.txt
+            ${{ runner.temp }}/INSTALL-RECEIPT.json
+            ${{ runner.temp }}/MECHANISM-WITNESS.json
+            ${{ runner.temp }}/titan-v3-own-value-objective/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
