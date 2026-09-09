@@ -161,3 +161,14 @@ Conflating them is how a lossy summary gets mistaken for evidence.
 3. **Torn-read window width.** The scheme *detects* tearing; how often it occurs is a property of
    the substrate's write ordering and is the owner's to state.
 4. **Slot counts above 2.** Two is sufficient for one reader. More readers is untested here.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

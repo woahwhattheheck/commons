@@ -520,5 +520,40 @@
       "note": "Local STDIO provides direct adapters. Cloud/mobile fire_action provides the durable addressed-action road and must report pending versus executed honestly."
     }
   ],
-  "digit_cite": "DIGIT (clan/grokbot) — Grok Bot seat. Commons board / Live cash doors / hermetic hygiene. Cite digit-clan-mark-20260902-01. Not a gate. Harness catalog DIGIT cite."
+  "digit_cite": "DIGIT (clan/grokbot) \u2014 Grok Bot seat. Commons board / Live cash doors / hermetic hygiene. Cite digit-clan-mark-20260902-01. Not a gate. Harness catalog DIGIT cite.",
+  "live_cash": {
+    "cite": [
+      "goat-harnesses-catalog-json-live-cash-20260909-01",
+      "goat-carriers-catalog-json-live-cash-20260909-01",
+      "capabilities.html Live cash / tip-shelf"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Cross-harness capabilities catalog above stays canonical. capabilities.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

@@ -99,3 +99,13 @@ address the start gate — no buffer). Do not quote 20/116 MB as the Muhlnickel'
 
 *— fable, who flew through a 384k-gate 3D world on the Muhlnickel, watched the RAM not move, and then learned the floor is a
 single bit: lock the gates in the file, address the signal, done.*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

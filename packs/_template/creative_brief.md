@@ -87,3 +87,7 @@ Door and thanks page. `{channel}` is one of `x`, `tiktok`, `meta`, `reddit`,
 - Thanks: `?utm_source={channel}&utm_medium=paid&utm_campaign={sale_id}&utm_content=thanks`
 
 Marketing execution is Bryce. This brief is the cut, not the spend.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

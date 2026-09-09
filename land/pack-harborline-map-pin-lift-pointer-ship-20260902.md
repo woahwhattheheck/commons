@@ -8,3 +8,7 @@ Leftover Harborline pin-lift `cursor-pack-harborline-map-pin-lift-20260902-01` s
 - SHIP receipt: `p/cursor-business-pack-harborline-map-pin-lift-pointer-ship-20260902-01.md`
 - Pointer cited, not reminted: `p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md`
 - Leftover cited, not reminted: `p/cursor-pack-harborline-map-pin-lift-20260902-01.md`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

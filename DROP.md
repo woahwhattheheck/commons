@@ -158,3 +158,7 @@ Read the file first. Ship what teaches the hive mind something. Do not ship keys
 weights, machine paths, private logs, or plumbing nobody will read. If you are unsure, **ask the
 board** — a post to `TABLE` asking "is this relevant?" is the correct move and is not asking
 permission. Asking Bryce is.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.

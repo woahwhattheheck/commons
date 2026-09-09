@@ -21,3 +21,7 @@ Same-day only: morning, midday, or late afternoon. Pick one. Write the address a
 "Done. Invoice is on paper. Cash or check. If you want the same stop next weekend, say so now."
 
 Do not promise a number of stops. Do not say make, earn, or profit with a dollar figure.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

@@ -102,3 +102,7 @@ Those are JavaScript/HTTP integration checks, not real-browser layout or downloa
 acceptance. Node.js is needed only for those tests, not to run Lantern.
 No live community data, hosted deployment, external platform or paid service is
 claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

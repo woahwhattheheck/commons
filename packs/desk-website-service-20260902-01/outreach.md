@@ -29,3 +29,7 @@ Send price-sheet.md as a price sheet for work, not as a forecast. Offer one lane
 ## After NO or silence
 
 Log it. Do not follow up more than once in seven days. Do not invent a reply.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

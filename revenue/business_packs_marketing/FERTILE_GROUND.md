@@ -89,3 +89,7 @@ Every platform in the plan supports state-level inclusion and exclusion: X (loca
 2. Decide DESK price ($199 vs $200) or exclude Connecticut.
 3. Decide whether to register in Texas/Florida/Georgia later, given their share of buyers; the registration cost is the price of that market, and this file makes it a choice rather than a surprise.
 4. Confirm the state-aware door ("not yet in your state" + waitlist) as the mechanism, so exclusions are enforced at the door as well as in the ad platforms.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

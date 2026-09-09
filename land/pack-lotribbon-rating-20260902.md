@@ -15,3 +15,7 @@ Harborline unpin landed.
 - Pointer `7a8987b5` KEEP MAIN (#7915 not merged)
 - Yard A4 late-land blob `0603616c` KEEP MAIN; desk A4 `193cf232` not reminted
 - Checkout `NOT_MINTED`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

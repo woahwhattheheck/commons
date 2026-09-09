@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import unittest
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent
+PAGES = ['integrations/claude_headless/ACCEPTANCE.md', 'integrations/claude_headless/README.md', 'integrations/claude_headless/RUNNER.md', 'integrations/command_center/DOCUMENT-RETENTION.md', 'integrations/command_center/INTAKE-RETENTION.md', 'integrations/command_center/README.md', 'integrations/command_center/REFRESH-INTENT.md', 'integrations/commons_network_plugin/README.md', 'integrations/commons_network_plugin/skills/commons-network/SKILL.md', 'integrations/commons_publication_hooks/README.md', 'integrations/gemini_slack/README.md', 'integrations/grok_slack/README.md', 'integrations/grokbot_control/README.md', 'integrations/owner_context/README.md', 'integrations/shared_equipment/R4_CLAIMS.md', 'integrations/shared_equipment/README.md', 'integrations/slack_custom_tools/README.md', 'integrations/slack_service_tags/README.md', 'integrations/transferable_roles/R4_CLAIMS_HANDOFF.md', 'integrations/transferable_roles/README.md', 'land/business-pack-paperwork-20260902.md', 'land/business-pack-paperwork-filled-20260902.md', 'land/business-pack-paperwork-included-20260902.md', 'land/business-pack-template-20260902.md', 'land/harborline-tally-map-pointer-helper-20260902.md', 'land/pack-gems-in-house-20260902.md', 'land/pack-harborline-desk-finder-20260902.md', 'land/pack-harborline-map-pin-lift-20260902.md', 'land/pack-harborline-map-pin-lift-pointer-ship-20260902.md', 'land/pack-harborline-rating-peer-unpin-20260902.md', 'land/pack-lotribbon-rating-20260902.md', 'land/pack-waitlist-20260902.md', 'land/pack-waitlist-delete-20260902.md', 'land/plant-sold-once-badge-20260902.md', 'land/plant-yard-greeting-20260902.md', 'land/revenue-ideas-20260826.md', 'land/sidewalk-lotribbon-waitlist-pointer-20260902.md', 'land/sku-business-packs-20260902.md', 'land/sku-monthly-tip-20260826.md', 'land/sku-tip-20260826.md', 'land/sku-whitebox-hour-20260826.md', 'land/stripe-payment-links-20260826.md', '.agents/README.md', '.agents/skills/autogtm/SKILL.md', '.agents/skills/bazaar/SKILL.md', '.agents/skills/cloud-current/SKILL.md', '.agents/skills/commerce-agents/SKILL.md', '.agents/skills/commons-worker/SKILL.md', '.agents/skills/court/SKILL.md', '.agents/skills/distribution/SKILL.md', '.agents/skills/drop-image/SKILL.md', '.agents/skills/elitist-way/SKILL.md', '.agents/skills/experience-compiler/PURPOSE.md', '.agents/skills/experience-compiler/SKILL.md', '.agents/skills/feature-tracker/SKILL.md', '.agents/skills/github-issue-post/SKILL.md', '.agents/skills/google-ai-mode-hall-pass/SKILL.md', '.agents/skills/grok-web-commons/SKILL.md', '.agents/skills/grok-web-commons/references/connector-contract.md', '.agents/skills/harness-offer/SKILL.md']
+REQUIRED = ["https://webmcp-pad.vercel.app/", "1.4.5"]
+class T(unittest.TestCase):
+    def test_all(self):
+        for name in PAGES:
+            with self.subTest(page=name):
+                text=(ROOT/name).read_text(encoding='utf-8')
+                for n in REQUIRED: self.assertIn(n, text)
+if __name__ == '__main__':
+    unittest.main()

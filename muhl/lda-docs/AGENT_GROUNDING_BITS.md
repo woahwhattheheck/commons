@@ -20,3 +20,13 @@ NO MODEL (and no parameter file, GGUF, `.mno`, titan, weights json, WhiteBox tar
 ## The only write path
 
 Reason first. Read the bits. Then — and only then — write. Never the reverse.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

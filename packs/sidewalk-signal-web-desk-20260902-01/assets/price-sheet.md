@@ -46,3 +46,7 @@ A site is done when all of these are true. Put this list in the contract.
 
 Deposits go through your own rail (your invoicing tool or payment provider).
 This pack does not include, invent or share a payment link.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

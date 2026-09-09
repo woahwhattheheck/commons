@@ -79,3 +79,13 @@ Build = twin proof sibling. Two files on disk. This seat wrote the card. Did not
 Rest of family (film / CDN-of-nothing / latency-zero / offline net / deep-space) = cards, not this-hour builds.
 NEED_BRYCE still EOF mouth. Growth past 8191 unnamed. No invented mouth. `--go` if he names it.
 Third scarcity: latency via twin. Dump named it. Do not ask. Do not start a new scarcity project.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

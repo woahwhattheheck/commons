@@ -121,3 +121,7 @@ The consumer angle (§1–3) shouts; this one states. The buyers at these tiers 
 - Door as a prospectus: a table of inclusions, a table of exclusions ("what you do not get"), the audit seal and report link, the support boundary, the refund policy, the price once. Serif headline, whitespace, one image (the instance's own door), no stock photos of people smiling at laptops.
 - Ads: for X, a text-first founder post promoted as-is (the native register; build-in-public beats produced creative for B2B on X); for Google Search intent ("buy a business", "franchise under 10k", "add a service line"), a plain headline with sitelinks to the inventory list, the support boundary, and the audit; for video, fifteen seconds of the documents themselves scrolling with a founder voice, no music drop.
 - Response time is part of the product at $10,000: franchise-recruitment data puts a five-minute reply at ~9x conversion versus slow follow-up (§5). The lead form should hand off to a human the same hour.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -114,3 +114,13 @@ path: `C:\Users\lucys\Desktop\MUHL_GO\ELECTRON_BURN.md`
 copy: `LocalDeviceAgent\MUHL_GO\ELECTRON_BURN.md`  
 called_storage_idle = **NO**  
 invented_burn_dest = **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

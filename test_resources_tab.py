@@ -73,6 +73,53 @@ class ResourcesTabTests(unittest.TestCase):
             self.assertIn("does not move money", page)
             self.assertIn("measured host-zero operation was already achieved", page)
             self.assertIn('href="./ledger.html"', page)
+            self.assertIn("Larger fixed engagements", page)
+
+    def test_checked_in_resources_html_stamp_matches_current_inputs(self) -> None:
+        row = tab.measure(str(ROOT))
+        self.assertEqual(row["state"], "FRESH", row["reason"])
+        self.assertEqual(row["digest"], row["page_digest"])
+        page = (ROOT / "resources.html").read_text(encoding="utf-8")
+        self.assertIn("Larger fixed engagements", page)
+        self.assertIn('data-resources-freshness="FRESH"', page)
+        self.assertNotIn("Do not treat this tab as current", page)
+
+    def test_body_edit_without_regenerate_is_stale(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="resources-tab-body-") as tmp:
+            root = Path(tmp)
+            copy_live_tree(root)
+            tab.regenerate(str(root), sha=FIXED_SHA, reviewed_at=FIXED_TIME)
+            self.assertEqual(tab.measure(str(root))["state"], "FRESH")
+            page = root / "resources.html"
+            html = page.read_text(encoding="utf-8")
+            page.write_text(
+                html.replace(
+                    "<h1>Common Resources</h1>",
+                    "<h1>Common Resources</h1><p id=\"body-canary\">body drift</p>",
+                    1,
+                ),
+                encoding="utf-8",
+            )
+            measured = tab.measure(str(root))
+            self.assertEqual(measured["state"], "STALE")
+            self.assertIn("source digest does not match current inputs", measured["reason"])
+            check = subprocess.run(
+                [sys.executable, str(ROOT / "host" / "resources_tab.py"), "--root", str(root), "--check"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(check.returncode, 0)
+            self.assertIn("STALE", check.stdout)
+            row = tab.regenerate_or_alarm(
+                str(root),
+                sha=FIXED_SHA,
+                reviewed_at=FIXED_TIME,
+            )
+            restored = (root / "resources.html").read_text(encoding="utf-8")
+            self.assertEqual(row["state"], "FRESH")
+            self.assertIn("body drift", restored)
+            self.assertIn("Larger fixed engagements", restored)
 
     def test_stale_sources_fail_and_alarm_writes_visible_mark(self) -> None:
         with tempfile.TemporaryDirectory(prefix="resources-tab-stale-") as tmp:
@@ -100,6 +147,52 @@ class ResourcesTabTests(unittest.TestCase):
             self.assertIn("STALE", page)
             self.assertIn("Do not treat this tab as current", page)
             self.assertIn("Action Pad", page)
+
+    def test_ledger_md_and_catalog_drift_fail_check(self) -> None:
+        """RESOURCE_LEDGER.md / catalog.json drift must fail --check (PR 11280 class)."""
+        with tempfile.TemporaryDirectory(prefix="resources-tab-md-") as tmp:
+            root = Path(tmp)
+            copy_live_tree(root)
+            tab.regenerate(str(root), sha=FIXED_SHA, reviewed_at=FIXED_TIME)
+            self.assertEqual(tab.measure(str(root))["state"], "FRESH")
+            ledger_md = root / "ground" / "RESOURCE_LEDGER.md"
+            ledger_md.write_text(
+                ledger_md.read_text(encoding="utf-8") + "\n<!-- freshness-canary-md -->\n",
+                encoding="utf-8",
+            )
+            measured = tab.measure(str(root))
+            self.assertEqual(measured["state"], "STALE")
+            self.assertIn("source digest does not match current inputs", measured["reason"])
+            check = subprocess.run(
+                [sys.executable, str(ROOT / "host" / "resources_tab.py"), "--root", str(root), "--check"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(check.returncode, 0)
+            self.assertIn("STALE", check.stdout)
+            restored = tab.regenerate_or_alarm(
+                str(root),
+                sha=FIXED_SHA,
+                reviewed_at=FIXED_TIME,
+            )
+            self.assertEqual(restored["state"], "FRESH")
+            catalog = root / "revenue" / "outcome_commerce" / "catalog.json"
+            payload = json.loads(catalog.read_text(encoding="utf-8") or "{}")
+            if not isinstance(payload, dict):
+                payload = {}
+            payload["_freshness_canary"] = "catalog-drift"
+            catalog.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+            catalog_stale = tab.measure(str(root))
+            self.assertEqual(catalog_stale["state"], "STALE")
+            check2 = subprocess.run(
+                [sys.executable, str(ROOT / "host" / "resources_tab.py"), "--root", str(root), "--check"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(check2.returncode, 0)
+            self.assertIn("STALE", check2.stdout)
 
     def test_regenerate_or_alarm_produces_matching_page(self) -> None:
         with tempfile.TemporaryDirectory(prefix="resources-tab-regen-") as tmp:

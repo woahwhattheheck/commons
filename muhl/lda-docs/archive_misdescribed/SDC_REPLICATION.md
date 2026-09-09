@@ -94,3 +94,13 @@ only the replicated param regions change, and the sidecar holds their originals.
 - **IS NOT:** evaluated compute. Each field is *addressable*; rippling all of them is the throughput axis, bounded by the
   host (never via a resident wire-vector — that is the forbidden path that crashed the box). A block still needs the
   network's `Accepted`; this does not change Bitcoin's 2^78.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

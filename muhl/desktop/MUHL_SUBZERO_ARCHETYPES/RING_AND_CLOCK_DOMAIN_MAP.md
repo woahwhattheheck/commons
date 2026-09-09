@@ -274,3 +274,14 @@ the tool, **not** a substrate discrepancy.
 4. Byte inspection of the 17 registry-present clock entries listed in §7.
 5. Parsing `titan_selfclock_genome.jsonl` (35.7 MB, 6 records).
 6. Resolution of the 9 + 1 declared-but-unpointed ring slots — **NOT classified as empty or inactive.**
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

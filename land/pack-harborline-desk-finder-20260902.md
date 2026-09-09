@@ -9,3 +9,7 @@ This leftover finds the Harborline layout. It does not invent a Harborline `mani
 - Receipt: `p/cursor-harborline-desk-finder-20260902-01.md`
 - Desk remeasure cited, not reminted: `p/cursor-claude-peer-check-desk-remeasure-20260902-01.md`
 - WIRE card cited, not reminted: `p/wire-claude-peer-check-20260902-01.md` / `ground/CLAUDE_PEER_CHECK.md`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

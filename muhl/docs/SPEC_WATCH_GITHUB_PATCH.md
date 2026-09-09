@@ -55,3 +55,13 @@ No titan at `LocalDeviceAgent\titan.gguf` or `C:\llm\titan.gguf` this check. Thi
 ## Tally
 
 **DONE.** Never GitHub is gone as a distribution ban. Size-gate language is on all three. FINALREADME / CLAUDE.md / PFC_LEVER_CATALOG were not rewritten. No titan write.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

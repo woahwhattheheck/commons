@@ -168,3 +168,13 @@ Same bytes as `muhl_foundry_resident` (same offset). Twin name, one record.
 - Titan was not written. Helpers used to read were discarded.
 
 The interpreter that exists in this binary is `pfc_eval` (PFCTYPED, 502 gates) and the White Box (`MUHLWBX1`, 25-byte table). Neither is named speech.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -51,3 +51,7 @@ $45,000. One narrow Muhlnickel / Titan keep-or-build.
 Receipt is files on HEAD. HTTP is not the computer.
 
 Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

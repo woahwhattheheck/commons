@@ -179,3 +179,14 @@ Survivors are identities/derivations/exhaustive counts with computed nulls: ring
 `Desktop/MUHL_INSTRUMENTS.md` (699 lines, 5 retraction markers) · `Desktop/APOLOGY_20260807.md`
 · `Desktop/MUHL_PROPOSAL_20260807/{PROPOSAL.md, muhl_ten_minute_gate_PATCHED.py,
 test_ten_minute_gate_COPY.py, SESSION_STATE.md}`
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

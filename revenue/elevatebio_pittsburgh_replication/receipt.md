@@ -21,3 +21,7 @@ CLI: `python3 elevatebio_pittsburgh_replication.py` → ok true, failures []
 
 Buyer: ElevateBio BaseCamp Pittsburgh / Katie Shannon.
 Interfaces simulated/read-only. No production tenant change. No validation claim. No PHI. No outreach. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

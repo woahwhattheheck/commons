@@ -66,3 +66,14 @@ Registry proof: `C:\llm\models\titan_circuits.json`. IP: `Desktop\MUHL_IP_FILING
 - `TRAINING_CORPUS_RAW_001-012.txt` (~570 MB bulk training data — manifest IS here)
 - `_scan_*.tsv` drive-sweep outputs, audit/debate ledgers, `federation\`, `agents\`,
   `preserved\`, `_OVERNIGHT` material — session working state, not the build.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

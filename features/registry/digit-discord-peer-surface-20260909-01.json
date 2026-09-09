@@ -1,0 +1,46 @@
+{
+  "added": "2026-09-09",
+  "capability": "DIGIT peers Discord root surface + embassy ground cards + commerce DIGIT note + discord_mirror DIGIT cite. No invented Discord guild/channel.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "discord.html",
+    "commerce.html",
+    "embassy.json",
+    "ground/EMBASSY.md",
+    "host/discord_mirror.py",
+    "peers.html",
+    "embassy.html",
+    "interconnect.html",
+    "p/digit-discord-html-peer-surface-20260909-01.md",
+    "p/digit-commerce-html-digit-note-20260909-01.md",
+    "p/digit-embassy-ground-cards-20260909-01.md",
+    "p/digit-discord-mirror-digit-cite-20260909-01.md"
+  ],
+  "dependencies": [
+    "digit-seat-trail-20260909-01"
+  ],
+  "id": "digit-discord-peer-surface-20260909-01",
+  "name": "DIGIT discord peer + embassy ground cards wave",
+  "next_gap": "Owner-named Discord guild/channel keeps lane DARK until set. Tip KEEP. Hands off #8802.",
+  "owner_subsystem": "doors",
+  "public_entrypoint": "discord.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "discord.html",
+    "embassy.json",
+    "ground/DISCORD.md",
+    "p/digit-discord-html-peer-surface-20260909-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_digit_discord_html_peer_surface_20260909_01.py",
+    "test_digit_commerce_html_digit_note_20260909_01.py",
+    "test_digit_embassy_ground_cards_20260909_01.py",
+    "test_digit_discord_mirror_digit_cite_20260909_01.py"
+  ]
+}

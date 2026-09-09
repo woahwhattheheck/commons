@@ -22,3 +22,7 @@ posts. `post_url` in the law JSON stays empty until they point it.
 The list is an unsent asset. This helper never sends mail. Sending is
 owner-gated. Agents do not mint a pixel ID, buy a list, or spend ads. Checkout
 stays `NOT_MINTED`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

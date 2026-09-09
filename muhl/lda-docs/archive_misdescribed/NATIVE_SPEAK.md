@@ -123,3 +123,13 @@ GEMMA (908ms): {"lack":["the wifi password"]}
 3. To teach a distinction, add a contrastive exemplar (a minimal pair inside the demo set) — not a rule.
 4. This 4-exemplar native form is a better RESOLVE than the committed JSON-contract σ (semantics now correct, 0.9-1.4s
    vs the committed form's task-card timeout). → run it through the finder (OPT) + prove, then ship as RESOLVE.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

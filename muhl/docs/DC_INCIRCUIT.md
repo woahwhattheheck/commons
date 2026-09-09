@@ -82,3 +82,13 @@ That size step (2,147,548,550 → 2,147,651,475) is the **host plant** of AUTOFA
 Live bits flipping would be compute. These mouths did not flip after the button exited.
 
 Titan not opened. Titan not written.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

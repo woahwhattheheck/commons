@@ -64,3 +64,7 @@ They are not discarded. They are not the first SKU.
 Auth, login, seat, memory, permission, or safety gates. Titan write.
 `commons.mno` smash. Invented certifications. Buyer fiction. A claimed
 checkout that does not exist.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

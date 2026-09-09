@@ -350,80 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 7,
+ "n_open_prs": 13,
  "open_prs": [
   {
-   "number": 11137,
+   "number": 11127,
    "author": "woahwhattheheck",
-   "title": "TEST ONLY: verify exact E04 + E07 + E14 Titan composition",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11137",
+   "title": "TITAN S01: bounded anytime joint-action beam experiment",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11127",
    "base_freshness": {
-    "base_sha": "bc190bb8a73900a9cd2cd486efecbc21c0713097",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11120,
-   "author": "woahwhattheheck",
-   "title": "TITAN P15: stage animal admission horizon certificate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11120",
-   "base_freshness": {
-    "base_sha": "d56c11b0199d3fcf7820922023a3aa8d98370888",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11181,
-   "author": "woahwhattheheck",
-   "title": "TITAN S19: exact-checkpoint constraint-repair splice",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11181",
-   "base_freshness": {
-    "base_sha": "78e88f0434703c1b10244d5e6fb77fe18432c24d",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11182,
-   "author": "woahwhattheheck",
-   "title": "S24: freeze Titan champion and run fresh robustness H",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11182",
-   "base_freshness": {
-    "base_sha": "f312ed24cdf55470540dc347da75f138c1cd236a",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11183,
-   "author": "woahwhattheheck",
-   "title": "Bowser-Morner: add synthetic cross-lab method custody gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11183",
-   "base_freshness": {
-    "base_sha": "f312ed24cdf55470540dc347da75f138c1cd236a",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -438,8 +374,8 @@
    "title": "TITAN P22: add per-candidate terminal payback horizon",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11157",
    "base_freshness": {
-    "base_sha": "7929bd1885b868c770d6523fbcf84662aead2004",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -449,13 +385,173 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 11127,
+   "number": 11228,
    "author": "woahwhattheheck",
-   "title": "TITAN S01: bounded anytime joint-action beam experiment",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11127",
+   "title": "TITAN P21: stage terminal physical route certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11228",
    "base_freshness": {
-    "base_sha": "a8c940504fede46d310da027a31e6b98620f1fc7",
-    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11459,
+   "author": "woahwhattheheck",
+   "title": "L01: 3b4b leader-mechanism flag candidates",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11459",
+   "base_freshness": {
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11120,
+   "author": "woahwhattheheck",
+   "title": "TITAN P15: stage animal admission horizon certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11120",
+   "base_freshness": {
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11137,
+   "author": "woahwhattheheck",
+   "title": "TEST ONLY: verify exact E04 + E07 + E14 Titan composition",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11137",
+   "base_freshness": {
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11248,
+   "author": "woahwhattheheck",
+   "title": "TITAN P02: stage funded land-unlock timing certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11248",
+   "base_freshness": {
+    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11629,
+   "author": "woahwhattheheck",
+   "title": "titan: restore byte-frozen v3 as runnable control",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11629",
+   "base_freshness": {
+    "base_sha": "5b96f00d030261f888ea437f033e83f9ed040653",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11642,
+   "author": "woahwhattheheck",
+   "title": "TITAN P11: fail closed on unknown nested fields",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11642",
+   "base_freshness": {
+    "base_sha": "5c202d3d471e77df2bcbf4add371fa2b8aaaf308",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11632,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: test append-only town-absorption market carry",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11632",
+   "base_freshness": {
+    "base_sha": "784194262d1f448e5012c16503e8c2811e551c97",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11656,
+   "author": "woahwhattheheck",
+   "title": "titan v3: port L01 LAND to current archive with 384-game holdout",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11656",
+   "base_freshness": {
+    "base_sha": "28e8d1ba8d9bd5b5a80a8c9327d8278fa0752820",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11263,
+   "author": "woahwhattheheck",
+   "title": "TITAN P06: stage frequency-weighted placement score",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11263",
+   "base_freshness": {
+    "base_sha": "2b34ad8a710cb88bfbb7d6cdf95ca6a408de58dd",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11667,
+   "author": "woahwhattheheck",
+   "title": "TITAN L02 follow-up: make multi-product malformed state fail closed",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11667",
+   "base_freshness": {
+    "base_sha": "b28312321226d317b24bd1326f1f568ec430d696",
+    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

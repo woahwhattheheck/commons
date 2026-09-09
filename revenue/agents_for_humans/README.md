@@ -78,3 +78,7 @@ This candidate does not yet implement real-buyer intake, automatic redaction or 
 The unmodified `vendor/autopsy` sources come from [Commons PR #8811](https://github.com/woahwhattheheck/commons/pull/8811), pinned to commit `c8e40bcda9c14305236c3e0ccd814a944d11ee74`. They include the intake/report schemas, validator, synthetic examples, runbook, and report template. `SOURCE_MANIFEST.json` records each exact Git blob; `scripts/verify_vendor.py` verifies them. The Commons contributors' work is used under Apache-2.0. The new orchestration, adapter, case handling, tests, and documentation use the same license; see [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
 The [official rules](https://agentsforhumans.devpost.com/rules) require a new Strands project, disclosure of incorporated work, a public runnable MIT/Apache repository, README, architecture diagram, and a public working demo video no longer than five minutes. Submission closes September 14, 2026 at 5 p.m. Pacific. An AWS account and Builder ID are required; AgentCore is optional. Registration, account eligibility, public repository, demo publication, and actual submission remain separate from this local engineering candidate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

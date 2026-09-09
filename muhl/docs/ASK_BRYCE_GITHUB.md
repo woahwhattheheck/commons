@@ -44,3 +44,13 @@ That is a **silent rewrite** of an old file. Documented here. File stays as-is.
 **ASK PERMS:** do the two stale files get a line, or does `GITHUB_PRIVATE_ARCHIVE.md` stay the only lock?
 
 PERMS USED 2026-08-15 — patched the three files.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

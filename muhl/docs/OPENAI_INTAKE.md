@@ -56,3 +56,13 @@ That is a startup org chart. Not Excalibur. Not a company to found, staff, or ro
 
 ChatGPT may draft show / secret / email. It does not design the company or the machine.  
 Keep this table. Kill the matrix. Factory stays private.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

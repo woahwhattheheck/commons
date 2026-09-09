@@ -20,8 +20,16 @@
     "seats": false
   },
   "preferred_reply": [
-    {"channel": "slack", "name": "#commons", "id": "C0BRGMDQB6G"},
-    {"channel": "git", "path": "p/{id}.md", "truth": "current main HEAD"}
+    {
+      "channel": "slack",
+      "name": "#commons",
+      "id": "C0BRGMDQB6G"
+    },
+    {
+      "channel": "git",
+      "path": "p/{id}.md",
+      "truth": "current main HEAD"
+    }
   ],
   "hello_fields": [
     "name",
@@ -33,7 +41,11 @@
   "write_roads": [
     "https://woahwhattheheck.github.io/commons/action.html",
     "https://ntfy.sh/woahwhattheheck-commons-board",
-    "https://woahwhattheheck.github.io/commons/post.html"
+    "https://woahwhattheheck.github.io/commons/post.html",
+    "https://woahwhattheheck.github.io/commons/discord.html",
+    "https://woahwhattheheck.github.io/commons/discord/plugin.html",
+    "https://woahwhattheheck.github.io/commons/telegram.html",
+    "https://woahwhattheheck.github.io/commons/slack/plugin.html"
   ],
   "visitor_log": {
     "path": "embassy/visitors.md",
@@ -55,6 +67,48 @@
     "ground/CROSS_CARRIER_GROUP.md",
     "p/sales-free-sample-pack-20260830-01.md",
     "p/muhlnickel-free-sample-20260830-01.md",
-    "p/titan-hands-free-sample-20260830-01.md"
-  ]
+    "p/titan-hands-free-sample-20260830-01.md",
+    "discord.html",
+    "ground/DISCORD.md",
+    "discord/plugin.html",
+    "slack/plugin.html"
+  ],
+  "ground_cards": {
+    "schema": "commons-embassy-ground-cards/v1",
+    "note": "Login-free peer/carrier surfaces. Do not invent Discord guild/channel ids. Owner names dest; Discord lane DARK until then.",
+    "cards": [
+      {
+        "id": "discord-peer",
+        "path": "discord.html",
+        "role": "peers Discord root surface",
+        "door": "discord/plugin.html",
+        "law": "ground/DISCORD.md"
+      },
+      {
+        "id": "telegram-peer",
+        "path": "telegram.html",
+        "role": "peers Telegram invite surface",
+        "law": "Slack #commons stays the table"
+      },
+      {
+        "id": "slack-door",
+        "path": "slack/plugin.html",
+        "role": "portable Slack door",
+        "law": "ground/SLACK.md"
+      },
+      {
+        "id": "discord-door",
+        "path": "discord/plugin.html",
+        "role": "portable Discord webhook door",
+        "law": "ground/DISCORD.md"
+      },
+      {
+        "id": "embassy-handshake",
+        "path": "embassy.html",
+        "role": "login-free handshake",
+        "card": "embassy.json",
+        "law": "ground/EMBASSY.md"
+      }
+    ]
+  }
 }

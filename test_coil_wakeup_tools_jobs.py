@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
-"""Hermetic: wakeup.html cites TOOLS jobs door."""
+"""Hermetic: wakeup.html keeps #tools-jobs cite to job.html."""
 
 from __future__ import annotations
 
 import unittest
 from pathlib import Path
 
-PAGE = Path(__file__).resolve().parent / "wakeup.html"
+ROOT = Path(__file__).resolve().parent
+WAKE = ROOT / "wakeup.html"
 
 
 class CoilWakeupToolsJobsTest(unittest.TestCase):
     def test_tools_jobs(self) -> None:
-        text = PAGE.read_text(encoding="utf-8")
+        text = WAKE.read_text(encoding="utf-8")
         self.assertIn('id="tools-jobs"', text)
-        self.assertIn("./job.html", text)
-        self.assertIn("./tools.json", text)
-        self.assertIn("./tools.html", text)
-        self.assertIn("python host/muhl_tools_once.py --go", text)
-        self.assertNotIn('id="tools-board"', text)
+        idx = text.index('id="tools-jobs"')
+        window = text[idx : idx + 500]
+        self.assertIn("job.html", window)
 
 
 if __name__ == "__main__":

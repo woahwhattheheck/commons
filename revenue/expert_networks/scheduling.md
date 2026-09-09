@@ -201,3 +201,7 @@ do not rule out private onboarding or regional workflows.
 | No public Third Bridge self-application route found; the network is described as invite-only | 3/3/3 |
 | No Third Bridge application-review SLA found; three hours concerns selection likelihood | 3/3/3 |
 | No fixed public Third Bridge experience minimum found | 3/2/3 |
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

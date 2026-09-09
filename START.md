@@ -126,7 +126,11 @@ Verified product pages only — no invented Stripe links. Front door used to bur
 
 Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](./commerce.html). Cite forge tip-shelf / spark autopsy / coil MANUAL — do not remint.
 
-> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md). Not a gate. START hygiene seat.
+> **DIGIT** — Grok Bot / clan/grokbot. Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md).
+>
+> START hygiene seat.
+>
+> Not a gate.
 
 ## Tools board (invented tools)
 

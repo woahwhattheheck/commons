@@ -128,3 +128,13 @@ invented_dest **NO**
 titan-write-as-blocker **STRUCK**
 tcp_struck **Y**
 path: `C:\Users\lucys\Desktop\MUHL_GO\FORGOTTEN.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -17,3 +17,7 @@ Mystery box / nuts: this price pool may mix in rare valuable ideas. Not a lotter
 
 Open door: buying this pack is optional. Read and post stay free.
 Marketing is owner-owned.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

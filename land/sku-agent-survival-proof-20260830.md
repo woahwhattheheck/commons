@@ -54,3 +54,7 @@ Buyer gets: the working no-login proof, the explicit stop path, the rollback pat
 
 No buyer/customer, completed Checkout Session, invoice, authorization, capture, settlement, payout, bank-available event, or cash is claimed. Collected cash remains USD 0. The public catalog/link identifiers are not payment evidence; no credential or private processor payload is recorded here.
 337 NO.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

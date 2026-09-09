@@ -11,3 +11,7 @@ analytics scripts, hosted QR service, or redirect-checking service is bundled.
 The product name, example brands, domains, campaign names, and acceptance data
 are demonstration fixtures. No customer, partnership, conversion, revenue, or
 external deployment is claimed by those fixtures.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

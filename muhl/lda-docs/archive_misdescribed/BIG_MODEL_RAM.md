@@ -190,3 +190,13 @@ is slower (pure streaming) — the point is it RUNS; throughput is the separate 
   (39.6 GB) BOUND + emitted a correct token on 7.2 GB RAM**, committed memory just **298 MB** (Phi-4 **112 MB**).
   Committed collapsed from ~0.7× file to the anonymous set — the repack copy was the whole committed footprint.
   Physical WorkingSet ~4 GB for both (OS cache, size-independent). See the `--no-repack` breakthrough section above.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

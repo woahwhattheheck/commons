@@ -71,3 +71,7 @@ python3 test_dio_revenue_contract.py
 
 `foundation.json` is the compact manifest. The three JSON Schemas use JSON
 Schema 2020-12 and remain usable independently of the test harness.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

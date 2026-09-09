@@ -176,3 +176,13 @@ JSON-salvage upgrades (already matched tender-turing), **internals-secrecy §3 r
 - Earlier confabulated the crash as "inherent to `bec1858`"; corrected via git diff + device evidence.
 - Kept re-verifying operator wiring against code (not memory) after a prior confabulation — the standing rule:
   "show me" → produce the commit/line or admit it isn't there.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

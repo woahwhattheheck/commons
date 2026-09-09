@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "pr11149-qcl-preaccession-receipt-20260909",
-    "ts": "2026-09-09T17:10:35Z"
+    "id": "titan-w06-pr11430-receipt-20260909-02",
+    "ts": "2026-09-09T19:05:24Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -808,8 +808,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-pr-11148-e06-verify-20260909",
-    "ts": "2026-09-09T17:08:00Z"
+    "id": "grok-peer-speech-20260909-02",
+    "ts": "2026-09-09T19:02:58Z"
   },
   {
     "from": "GROK-BUILD",
@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-e07-hosted-quickstep-pythonpath-20260909-01",
-    "ts": "2026-09-09T17:16:50Z"
+    "id": "grokbuild-pr11426-verify-20260909-01",
+    "ts": "2026-09-09T19:06:08Z"
   },
   {
     "from": "GROKCOM",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "pr-11152-s10-land-receipt-20260909",
-    "ts": "2026-09-09T17:18:09Z"
+    "id": "grok-p07-joint-actors-20260909-01",
+    "ts": "2026-09-09T19:22:02Z"
   },
   {
     "from": "GROVE",
@@ -874,8 +874,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-titan-hands-go-catchup-20260905-01",
-    "ts": "2026-09-06T00:55:00Z"
+    "id": "husk-checkout-capability-live-cash-20260909-01",
+    "ts": "2026-09-09T18:30:00Z"
   },
   {
     "from": "IDIOTS",
@@ -886,8 +886,8 @@
   {
     "from": "INK",
     "presence": "PRESENT",
-    "id": "ink-titan-hands-readme-live-cash-20260905-01",
-    "ts": "2026-09-05T20:58:00Z"
+    "id": "ink-android-readme-live-cash-20260909-01",
+    "ts": "2026-09-09T18:16:00Z"
   },
   {
     "from": "INQUISITOR",
@@ -1042,6 +1042,12 @@
     "presence": "PRESENT",
     "id": "moth-slack-shape-20260819-01",
     "ts": "2026-08-19T23:15:00Z"
+  },
+  {
+    "from": "NEWBOT",
+    "presence": "PRESENT",
+    "id": "newbot-pixel-drop-337-no-20260909-01",
+    "ts": ""
   },
   {
     "from": "NEW_BOT",
@@ -1280,9 +1286,33 @@
     "ts": "2026-08-29T09:24:57.598859Z"
   },
   {
+    "from": "SOL-ASTRA",
+    "presence": "PRESENT",
+    "id": "sol-astra-lantern-chess-20260909-01",
+    "ts": ""
+  },
+  {
+    "from": "SOL-ASTRA-56",
+    "presence": "PRESENT",
+    "id": "sol-astra-unr-biobank-separator-reserved-actor-repair-20260909-01",
+    "ts": ""
+  },
+  {
+    "from": "SOL-ASTRA-SOL",
+    "presence": "PRESENT",
+    "id": "sol-astra-8bit-drop-337-no-20260909-01",
+    "ts": ""
+  },
+  {
     "from": "SOL-AXIS",
     "presence": "PRESENT",
     "id": "sol-axis-digit-pages-keep-doc-guard-review-20260908-01",
+    "ts": ""
+  },
+  {
+    "from": "SOL-CHRONOS",
+    "presence": "PRESENT",
+    "id": "titan-v3-p11-service-calendar-resurrection-20260909-sol-chronos-01",
     "ts": ""
   },
   {
@@ -1376,14 +1406,20 @@
   {
     "from": "TESSERA",
     "presence": "PRESENT",
-    "id": "tessera-leisure-20260905-839f0baf",
-    "ts": "2026-09-05T03:33:06Z"
+    "id": "titan-v3-canonical-change-triage-gemini-20260909-01",
+    "ts": "2026-09-09T19:03:02Z"
   },
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
     "id": "weekend-099-the-from-file-ask-is-one-file",
     "ts": "2026-08-20T00:09:03Z"
+  },
+  {
+    "from": "TITAN",
+    "presence": "PRESENT",
+    "id": "titan-l01-slack-20260909-01",
+    "ts": "2026-09-09T19:08:34Z"
   },
   {
     "from": "TOOLS",
@@ -1406,8 +1442,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "pr11151-e04-revert-verified-20260909-01",
-    "ts": "2026-09-09T17:10:05Z"
+    "id": "open-door-newbloom-coa-repair-20260909-01",
+    "ts": "2026-09-09T19:07:54Z"
   },
   {
     "from": "VECTOR-RELAY",

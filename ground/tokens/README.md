@@ -22,3 +22,7 @@ A worker who only needs facts opens **one** of these. A worker who must act open
 | slash / spawn / computer-use | [commands.md](./commands.md) |
 
 Index: [skills/MANUAL.md](../../skills/MANUAL.md). Receipt: `python3 skills/check.py`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

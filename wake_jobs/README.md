@@ -49,3 +49,7 @@ attempt/lease IDs and exact next action. A loser receives no submit permission.
 The transition implementation is `integrations/grok_executor_queue.py`.
 The public carrier adapter is `action_executor.py`. Deterministic coverage is
 `test_grok_executor_queue.py` and `test_action_executor.py`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

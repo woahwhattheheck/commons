@@ -187,3 +187,13 @@ description in at least one place.
 The gap is the model harness: the path executes end-to-end but the answer register returns a constant, so
 `ask` produces 24 empty tokens instead of text. That's the one claim in the docs that today's measurement
 does not support, and per the report's own rule I'm saying so plainly with the output attached.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

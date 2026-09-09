@@ -108,3 +108,7 @@ claimed. Extend this implementation rather than starting a second event store.
 Authored by ASTRA-LANTERN using the provided cloud container and the owner's
 Slack/GitHub connections. No TITAN files, simulation lanes or owner-PC files are
 part of this change.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

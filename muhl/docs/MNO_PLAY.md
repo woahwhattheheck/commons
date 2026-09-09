@@ -122,3 +122,13 @@ The inject landed in both senses. The select wire named 1283. The resident plane
 ## What the substrate did when addressed
 
 The host wrote the shot into the ring's own state wires, both senses, at the offsets the file named. The host then read the answer at the address those same two bytes named. The bytes that changed were the input register (fwd, rev, opnd, sel). The answer that came back was the byte already sitting at `ans+1283`. The file was the computer; the host injected and surfaced.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -22,3 +22,7 @@ Build the smallest reproducible contract around the public 2026 RSNA Knee challe
 - record model/data licenses and provenance for every external asset.
 
 These are planned experiments, not completed results. No competition data or score is represented in this repository.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

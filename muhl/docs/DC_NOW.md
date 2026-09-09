@@ -74,3 +74,13 @@ Fallback mouth: aperture table **@8388608** (also inside file, also non-collidin
 Button that already died: `dc_foundry_button.py --go` (inject fwd+rev, fire pub@337). That fire is done. Next button addresses **524288**, one bit, exits.
 
 `DC_INCIRCUIT.md` was not on disk to read.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

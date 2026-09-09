@@ -90,3 +90,14 @@ So the artifact is **internally consistent and self-verifying**, and 32 of its 3
 ## 4. Scope caveat
 
 `builds_dir` is hard-coded to `C:/llm/muhl_builds`. The genesis block commits to **nothing** in `C:/Users/lucys/OneDrive/Desktop/Titan/engines/`, and nothing anywhere else. It is not a birth certificate over "every engine" in the system — it is a birth certificate over one directory's `*.py` glob, as of one moment on 2026-07-29.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

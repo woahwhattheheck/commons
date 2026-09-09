@@ -49,3 +49,7 @@ FTC disclosure: `OWNER_UNSET`
 ## Not a Commons seat
 
 Possessing the Commons link is still authorization. Paperwork is operator work, never a login. Paid tjlabs support is optional contact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
