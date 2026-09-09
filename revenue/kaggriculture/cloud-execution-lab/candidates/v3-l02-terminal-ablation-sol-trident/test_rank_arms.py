@@ -28,7 +28,11 @@ def report(arm, own, margin, worst=-20, changed=4):
     }
     context = {
         "opponents": opponent_evidence,
-        "engine_sha256": digest("engine"),
+        "engine_sha256": {
+            "kaggriculture.json": digest("engine:config"),
+            "kaggriculture.py": digest("engine:main"),
+            "utils.py": digest("engine:utils"),
+        },
         "loader_sha256": loader,
         "evaluator_sha256": evaluator,
         "limits": {"action_timeout": 1.0, "startup_timeout": 15.0,
@@ -162,8 +166,16 @@ class RankTests(unittest.TestCase):
             root = Path(tmp)
             reports = complete_reports()
             for gate in ("baseline_gate", "candidate_gate"):
-                reports[3][gate]["provenance"][0]["engine_sha256"] = digest("other engine")
+                reports[3][gate]["provenance"][0]["engine_sha256"]["utils.py"] = digest("other engine")
             with self.assertRaisesRegex(ValueError, "one execution context"):
+                rank_arms.rank(self.paths(root, reports))
+
+    def test_engine_map_requires_exact_sha256_values(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reports = complete_reports()
+            reports[2]["baseline_gate"]["provenance"][0]["engine_sha256"]["utils.py"] = "not-a-digest"
+            with self.assertRaisesRegex(ValueError, "invalid SHA-256"):
                 rank_arms.rank(self.paths(root, reports))
 
     def test_agent_provenance_and_gate_completeness_fail_closed(self):
