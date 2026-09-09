@@ -363,7 +363,17 @@ def evaluate_feed_supply(
                 "net_completed_value": float("-inf"),
                 "service_reports": [],
             }
-        if row["consecutive_unfed"] >= 1 and row["escape_deadline"] is not None:
+        if row["consecutive_unfed"] >= 1:
+            if row["escape_deadline"] is None:
+                return {
+                    **base,
+                    "physical": False,
+                    "admissible": False,
+                    "reason": "missing_escape_deadline",
+                    "completion_value": 0.0,
+                    "net_completed_value": float("-inf"),
+                    "service_reports": [],
+                }
             if not row["feed_steps"] or row["feed_steps"][0] > row["escape_deadline"]:
                 return {
                     **base,
