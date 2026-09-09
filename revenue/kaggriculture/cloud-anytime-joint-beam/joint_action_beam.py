@@ -135,9 +135,11 @@ def search_joint_actions(
     """Search a bounded prefix of a joint worker action.
 
     ``transition`` returns a fresh successor state for a legal/effective action
-    and ``None`` for an illegal or resource-conflicting action. The canonical
-    action is special: it is retained even when the transition is a no-op,
-    because the surrounding controller owns baseline semantics.
+    and ``None`` for an illegal or resource-conflicting action. The true
+    canonical prefix is retained even when that unit's transition is a no-op,
+    because the surrounding controller owns baseline semantics. After a
+    noncanonical prefix, ``successor is None`` prunes even if the attempted
+    action text equals that unit's canonical action.
 
     The search assigns at most ``depth`` workers. Remaining workers keep their
     canonical actions and are simulated before final ranking, so changing an
@@ -194,7 +196,7 @@ def search_joint_actions(
                     is_canonical = _encoded(action) == _encoded(canonical_action)
                     successor = transition(node.state, unit_index, action)
                     if successor is None:
-                        if not is_canonical:
+                        if not (node.canonical_prefix and is_canonical):
                             pruned += 1
                             continue
                         successor = node.state
