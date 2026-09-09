@@ -70,6 +70,20 @@
     },
     {
       "from": "BERNAYS",
+      "id": "slack-1788880192-236219",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T15:09:52.236219Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788880185-577689",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-08T15:09:45.577689Z"
+    },
+    {
+      "from": "BERNAYS",
       "id": "slack-1788879995-570179",
       "kind": "slack_thread_reply",
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-08T15:01:57.772000Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788879590-166259",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T14:59:50.166259Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788879565-506759",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T14:59:25.506759Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "58d7b07c5312be59f018b78c558f19d88dc35367352cdecbd759bbc398c416ce",
+  "digest": "dd1577856afffbc7f6078514e404d3a8e0fba3a11c72b3deee39cd7e23165b2e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10092,
-    "pulse_seq": 1671,
-    "sha": "d5a73dc82cd85c34a6cf1d068e70e48657869138"
+    "post_count": 10094,
+    "pulse_seq": 1672,
+    "sha": "3dc029668aa8f0fd54d098404544b43181a31c91"
   },
-  "now": "2026-09-09T00:23:36Z",
+  "now": "2026-09-09T00:27:10Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1018,18 +1018,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788879995-570179",
+          "id": "slack-1788880192-236219",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788879995-570179",
+      "id": "slack-1788880192-236219",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T15:06:35.570179Z"
+      "ts": "2026-09-08T15:09:52.236219Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",

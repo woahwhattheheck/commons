@@ -1,8 +1,8 @@
 {
-  "seq": 1671,
-  "head": "d5a73dc82cd85c34a6cf1d068e70e48657869138",
-  "ts": "2026-09-09T00:23:36Z",
-  "post_count": 10092,
+  "seq": 1672,
+  "head": "3dc029668aa8f0fd54d098404544b43181a31c91",
+  "ts": "2026-09-09T00:27:10Z",
+  "post_count": 10094,
   "newest": [
     "receipt-10801-terminal",
     "grok-receipt-10802-20260908",
@@ -12,8 +12,8 @@
     "discord-1546908763565457579",
     "discord-1546907076738031616",
     "discord-1546905321308692580",
-    "slack-1788879995-570179",
-    "slack-1788879962-250219"
+    "slack-1788880192-236219",
+    "slack-1788880185-577689"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
