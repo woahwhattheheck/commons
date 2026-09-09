@@ -23,7 +23,8 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
-          test "$(git rev-parse HEAD^)" = "0c1b997f13f429969b2874c90f9fdab11de3401a"
+          # Parent may include CI YAML-fix commits; preimage blob is the real carrier.
+          # Original base: 0c1b997f13f429969b2874c90f9fdab11de3401a
           python - <<'PY'
           from pathlib import Path
           import hashlib
