@@ -19,3 +19,7 @@ CLI: `python3 csanalytical_expansion_crossline_lims.py`
 - report_digest `74515e546b1f5ed49cd9c13d55812067043bc4eccbda41138baf29a1ba595353`
 
 AquaTrace HOLD / BUILD-AND-VERIFY. Synthetic/read-only adapters. No compliance decision. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

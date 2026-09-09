@@ -156,3 +156,7 @@ The challenge requires publication in the Hugging Face Discussion for the model 
 - no Hugging Face tokens, personal cache paths, private data, intranet addresses, or model-weight uploads
 
 Do not claim the USD 100 prize is earned merely by submitting; it is a judged winner award.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

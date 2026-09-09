@@ -252,3 +252,7 @@ schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY
 pointer `lm-gtm-billings-material-reply-20260831-01`. Do not remint
 `lm-gtm-billings-floor-status-20260831-01` or
 `lm-gtm-billings-runner-status-20260831-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

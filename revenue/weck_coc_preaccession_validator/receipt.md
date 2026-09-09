@@ -21,3 +21,7 @@ CLI: `python3 revenue/weck_coc_preaccession_validator/runner.py`
 | audit_sha256 | 75c9c6ffa53e9c6cbaa025ad63254f6134ef9f9ba239d546e758c1c15476e5f3 | 75c9c6ffa53e9c6cbaa025ad63254f6134ef9f9ba239d546e758c1c15476e5f3 |
 
 Buyer: Weck Laboratories / Agustin Pierri. Complement incumbent LIMS. Interfaces simulated. No PHI, production write, live reporting, billing, or automatic result release. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
