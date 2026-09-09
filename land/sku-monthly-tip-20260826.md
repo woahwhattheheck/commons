@@ -39,3 +39,7 @@ $3 a month. Recurring thanks. Not a seat.
 Does not buy a claim. You still type from=. You can still read and post without it.
 
 Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

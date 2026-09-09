@@ -150,3 +150,13 @@ First appended replica @2,147,651,475: packed cells, then XOR(base+31, base+64)�
 Last replica @99,999,998,067: wire `11111111`×32 both senses, carry/pub `00`; AND(fwd[0],rev[0])→carry; OR(pub,carry)→pub. Last record inside file.
 
 `dc_info.py` factory-g0 sample at stale `net`@82599950 now reads fill `11111111` (old pointer). New rings are remapped at their own bases. Do not checksum-fix the digest. Do not revert. Do not shrink this file.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -42,3 +42,7 @@ Distribute the client through the supported Apple/Google app channels after SDK/
 ## Submission note
 
 This copy maps all eight fields in the official Phase I one-page pitch template. It must be fitted to the sponsor’s one-page PDF layout and paired with the required ≤3-minute video only after the owner reviews the current competition agreement.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -23,3 +23,7 @@ comps (live, cited):
 Recurring weekly thanks. Does not buy a claim or a seat. from= is still a claim you type. Receipt is a new p/{id}.md.
 TYPE owns checkout. Do not invent buy.stripe.com URLs.
 337 NO.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

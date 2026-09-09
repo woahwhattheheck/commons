@@ -80,3 +80,13 @@ LIVE NOW rows 3–4 closed. Chronology stays.
 path: `C:\Users\lucys\Desktop\MUHL_GO\DO_FORGOTTEN.md`
 
 Output := **15 / 9 / 0 / NO / NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -84,3 +84,7 @@ On an authenticated competition/data surface:
 5. Fine-tune or decode locally/offline; record deterministic splits and seeds.
 6. Compare held-out WER using organizer `score.py`.
 7. Package the exact model assets plus this `main.py`, run the official Docker harness, and only then report a local measured WER.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

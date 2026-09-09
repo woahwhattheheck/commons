@@ -26,3 +26,7 @@ The implementation has no third-party runtime dependencies. The focused test sui
 ## Explicit non-claims
 
 No competition data was downloaded or redistributed for this readiness layer. No Kaggle entry, notebook submission, leaderboard score, efficiency score, rank, award, clinical claim, or payout is represented by these files.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

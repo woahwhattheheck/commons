@@ -29,3 +29,13 @@ Per-cell chain (24 gates): `WEATHER\weather_v2_shallow_acre_DEPTH.md` — ship t
 Did not hit 28→14 (~40k). Open lane was the denominator; this is the cut that verified byte-exact. Further cut is still open.
 
 337 **NO** · pulsed_78 **NO** · invented_dest **NO** · acre smash **NO** · 10-wide **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
