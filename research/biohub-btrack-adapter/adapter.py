@@ -434,6 +434,10 @@ def tracks_to_rows(
             child_parent = child.parent
             if child_parent is None or _as_int(child_parent, f"track {child_id} parent") != track_id:
                 raise AdapterError(f"track {track_id} child declaration disagrees with child {child_id} parent")
+        if len(seen_children) not in (0, 2):
+            raise AdapterError(
+                f"track {track_id} must declare exactly 0 or 2 children for pinned BTrack output"
+            )
 
     incoming: Counter[int] = Counter()
     outgoing: Counter[int] = Counter()
