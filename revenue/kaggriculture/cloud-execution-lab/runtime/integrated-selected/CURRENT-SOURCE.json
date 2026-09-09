@@ -27,11 +27,11 @@
     }
   },
   "checkpoint": {
-    "operation": "titan-v25-joint-seller-and-crop-release-20260909",
+    "operation": "titan-v25-feed-stock-20260909",
     "owner_authorization": "Integrate warranted observed-game and source improvements in one canonical TITAN; focused correctness/funding/shared-capacity checks; no new game panels or Kaggle submission in this task.",
     "playing_strength": "not_measured_for_changed_bytes",
     "runtime_entrypoint": "main.py::agent",
-    "stage": "bounded_joint_sales_and_crop_release_enabled",
+    "stage": "bounded_feed_stock_joint_sales_and_crop_release_enabled",
     "submission_status": "current_v25_not_submitted"
   },
   "components": [
@@ -156,12 +156,13 @@
       "source_pin": "Current manifest spatial_tempo.py, titan_runtime.py, seed_budget.py and checks/test_weed_continuation.py"
     },
     {
-      "callsite": "TitanAgent._operating_stock_selected after market_pressure; completed FrozenSelected unit snapshot",
+      "callsite": "TitanAgent._operating_stock_selected and final _feed_stock_selected; matching completed FrozenSelected unit snapshot",
       "component": "Observed operating-stock obligations",
-      "consumed_result": "29 focused source contracts, including production-day WATER and funded post-reset worker availability. At most two withheld units, incremental product valuation, full same-day funding and a 100-times-input cash cushion. No new game panel or measured score effect.",
+      "consumed_result": "53 stock contracts: 29 existing fertilizer plus 24 feed-stock. At most two owned WHEAT units for reachable existing-animal feeds, actual carry/shared pickup prefixes, prepaid boundary capital, physical room and producer receipt ownership. Six independent original own-unit observations unchanged. No new game panel or measured score effect.",
       "enabled": true,
       "role": "active bounded operating-stock reservation; canonical operating_stock=true",
-      "source_pin": "Current source manifest operating_stock.py"
+      "source_pin": "Current source manifest operating_stock.py",
+      "wheat_scope": "Same-day service window, or next-day service only from current day close. No requested wheat receipt or future sale cash credit; prior pickups must fully consume their requested input. Empty/duplicate slots and all worker actions preserved."
     },
     {
       "callsite": "SpatialTempo -> selected producer -> common returned-action commit -> existing ObservedFillLedger",
@@ -252,7 +253,7 @@
     "evidence": "runtime/integrated-selected/CURRENT-TESTS.json",
     "historical_results_apply": false,
     "new_full_games": 0,
-    "scope": "Bounded joint seller composed with enabled crop release, idle fertilizer, operating stock and market pressure. Earlier panel/source versions remain separately attributed."
+    "scope": "Bounded feed-stock preservation composed with enabled joint seller, crop release, idle fertilizer, operating stock and market pressure. Earlier games remain separately attributed."
   },
   "historical_checkpoint": {
     "operation": "titan-kaggriculture-checkpoint-20260908-01",
@@ -390,8 +391,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 16703,
-      "sha256": "cf7672cc74c8f6aed23af4bb54d583c17a55a719d845be3a878fe99f427d2b14",
+      "bytes": 18313,
+      "sha256": "3709f74fed107caf20dc8538acf72b641e23ee780a56066bce1f0b819aba36fd",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -468,6 +469,11 @@
       "bytes": 3112,
       "sha256": "3e2c3122a1330dfb7cb38d16f9f66965810052a429b2e10688854c75c9534b04",
       "source_path": "test_entrypoint_clock.py"
+    },
+    "checks/test_feed_stock.py": {
+      "bytes": 10919,
+      "sha256": "670dd0a4977466998653766c0446f361bd55b2193bc61b1ad493185b284a1b7d",
+      "source_path": "test_feed_stock.py"
     },
     "checks/test_funded_payback_runtime.py": {
       "bytes": 4847,
@@ -555,8 +561,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 14966,
-      "sha256": "76755e5553d8be2e77f9839c4426395aa7244a372b8e0e45c2e181f0165530b1",
+      "bytes": 15013,
+      "sha256": "e718de0acd5982041a1db3e6bdaffb91653986bfc651e795590d6551334851a2",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
@@ -590,8 +596,8 @@
       "source_path": "../cloud-runtime-pulse/observed_clone.py"
     },
     "operating_stock.py": {
-      "bytes": 16427,
-      "sha256": "9181beb34754975377bbc4ed6e5766cbb63bb691f57c2fa50e0c4f67459e62af",
+      "bytes": 30781,
+      "sha256": "c940dd3cfcbe1ce30b1707080f382a293895ca1b563c3413a7ba582a6b297dc4",
       "source_path": "operating_stock.py"
     },
     "ordered_selected_sell.py": {
@@ -885,8 +891,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 30783,
-      "sha256": "9d9667d1471ea3d9182249eba3e0d64a5b2c857b7491964013623947fb8aacb4",
+      "bytes": 32373,
+      "sha256": "0ce997403109f6defdb1f07c1f0c7e5166175e07ce88fcd079f1e8625daeccc9",
       "source_path": "titan_runtime.py"
     }
   },
