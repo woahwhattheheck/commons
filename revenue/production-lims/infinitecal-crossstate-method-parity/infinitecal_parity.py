@@ -14,6 +14,7 @@ import argparse
 import copy
 import hashlib
 import json
+import re
 
 TASK_ID = "infinitecal-crossstate-method-parity-lims-01"
 STATES = ("CA", "MI", "NY")
@@ -24,6 +25,9 @@ DUPLICATE_ACCESSION = "DUPLICATE_ACCESSION"
 MISSING_SOURCE_FILE = "MISSING_SOURCE_FILE"
 STAGED = "STAGED_HUMAN_REVIEW"
 RELEASED = "RELEASED_BY_NAMED_HUMAN"
+_RESERVED_AUTOMATION_REVIEWER_TOKENS = frozenset(
+    {"auto", "automated", "automation", "bot", "robot", "system"}
+)
 
 
 def _canonical_json(value: Any) -> bytes:
@@ -271,10 +275,16 @@ def run_records(records: Iterable[Mapping[str, Any]], ledger: Ledger | None = No
     return {"ledger": ledger, "outcomes": outcomes, "statuses": statuses, "delta": delta}
 
 
-def release_draft(ledger: Ledger, record_id: str, reviewer: str) -> Dict[str, Any]:
+def _named_human_reviewer(reviewer: str) -> str:
     reviewer = (reviewer or "").strip()
-    if not reviewer:
+    tokens = re.findall(r"[a-z0-9]+", reviewer.casefold())
+    if not reviewer or any(token in _RESERVED_AUTOMATION_REVIEWER_TOKENS for token in tokens):
         raise ValueError("NAMED_HUMAN_REVIEWER_REQUIRED")
+    return reviewer
+
+
+def release_draft(ledger: Ledger, record_id: str, reviewer: str) -> Dict[str, Any]:
+    reviewer = _named_human_reviewer(reviewer)
     draft = ledger.drafts.get(record_id)
     if draft is None:
         raise KeyError("DRAFT_NOT_FOUND")
