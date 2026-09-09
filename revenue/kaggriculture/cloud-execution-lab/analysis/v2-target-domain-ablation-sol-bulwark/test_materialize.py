@@ -53,14 +53,13 @@ class MaterializeTests(unittest.TestCase):
             module = importlib.util.module_from_spec(spec)
             assert spec.loader is not None
             spec.loader.exec_module(module)
-            # V2 would target both positive shed products.  The ablation keeps
+            # V2 would target both positive shed products. The ablation keeps
             # only baseline-owned or pending-owned intent, with quantity capped
-            # by physical stock.
+            # by physical stock, while retaining V2 PRODUCTS iteration order.
             probe = module.Probe({"EGG": 3})
-            self.assertEqual(
-                probe.targets({"MILK": 7, "EGG": 5}, {"MILK": 2}),
-                {"EGG": 3, "MILK": 2},
-            )
+            targets = probe.targets({"MILK": 7, "EGG": 5}, {"MILK": 2})
+            self.assertEqual(targets, {"EGG": 3, "MILK": 2})
+            self.assertEqual(list(targets), ["MILK", "EGG"])
 
     def test_duplicate_target_expression_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
