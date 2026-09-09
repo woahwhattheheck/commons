@@ -31,10 +31,31 @@ jobs:
           python-version: '3.11'
       - name: Compile P11 packet
         working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
-        run: python -m py_compile service_calendar.py run_service_calendar_certificate.py test_service_calendar.py
+        run: >-
+          python -m py_compile
+          _service_calendar_core.py
+          service_calendar.py
+          run_service_calendar_certificate.py
+          test_service_calendar.py
+          test_service_calendar_strict_fields.py
       - name: Run focused P11 contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
-        run: python -m unittest -v test_service_calendar
+        run: python -m unittest -v test_service_calendar test_service_calendar_strict_fields
+      - name: Prove malformed nested fields fail closed at the CLI
+        working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
+        run: |
+          set +e
+          printf '%s\n' '{"state":{"current_turn":0,"terminal_turn":0,"cash":0},"obligations":[{"key":"buy","earliest_turn":0,"latest_turn":0,"cash_dleta":-999}]}' | python run_service_calendar_certificate.py >/tmp/p11-invalid-out.json 2>/tmp/p11-invalid-err.json
+          rc=$?
+          set -e
+          test "$rc" -eq 1
+          test ! -s /tmp/p11-invalid-out.json
+          python - <<'PY'
+          import json
+          result = json.load(open('/tmp/p11-invalid-err.json', encoding='utf-8'))
+          assert result['schema'] == 'titan-p11-service-calendar/v1'
+          assert result['error'] == 'obligations[0] contains unknown fields: cash_dleta'
+          PY
       - name: Prove deterministic certificate readback
         working-directory: revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909
         run: |
