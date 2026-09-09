@@ -11,7 +11,11 @@
 +    except Exception:
 +        pass
      return n
+ 
+ 
 @@ -383,6 +389,17 @@
+             self.pending[item]=max(0,q-sold)
+             if not self.pending[item]:self.planned.pop(item,None)
          self.previous=copy.deepcopy(obs)
 +        try:
 +            from e11_rival_sell import apply_e11, enabled as _e11
@@ -25,3 +29,5 @@
 +        except Exception:
 +            pass
          return out
+ 
+ 
