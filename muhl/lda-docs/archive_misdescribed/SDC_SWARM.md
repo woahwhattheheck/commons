@@ -158,3 +158,13 @@ on ~584 GB free ≈ **~5 trillion lanes**.
 2. **The swarm power + read buttons** — start-style one-way buttons: power all receivers, sweep all answer cells in one read, submit any "1" to the wallet. (Owner's "new button for ripple rate.")
 3. **Device federation** — roster across the 3 machines on the LAN (tiny sync), each pool contributing its dense lanes.
 4. **Pipelining the vector (INV-157 latches)** — raise per-lane ripple rate toward ~10⁹/s (the @1e9 column).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

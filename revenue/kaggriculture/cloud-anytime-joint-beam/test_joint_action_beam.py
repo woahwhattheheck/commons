@@ -186,5 +186,83 @@ class BeamTests(unittest.TestCase):
         self.assertIsNot(base, proposed)
 
 
+class ManualClock:
+    def __init__(self):
+        self.value = 0
+    def __call__(self):
+        return self.value
+    def advance(self, amount):
+        self.value += amount
+
+
+class DeadlineBarrierTests(unittest.TestCase):
+    def test_last_expansion_transition_overrun_fails_closed(self):
+        clock = ManualClock()
+        canonical = (["PASS"],)
+        def slow_transition(state, idx, action):
+            out = copy.deepcopy(state)
+            if action == ["GAIN"]:
+                out["value"] += 1
+                clock.advance(11)
+            return out
+        result = search_joint_actions(
+            {"value": 0}, canonical,
+            lambda *_: (["GAIN"],), slow_transition,
+            lambda state, actions: state["value"],
+            config=BeamConfig(width=4, depth=1, budget_ns=10),
+            now_ns=clock,
+        )
+        self.assertTrue(result.used_fallback)
+        self.assertEqual(canonical, result.actions)
+        self.assertEqual("deadline-during-search", result.reason)
+
+    def test_final_scorer_overrun_fails_closed(self):
+        clock = ManualClock()
+        canonical = (["PASS"],)
+        calls = {"n": 0}
+        def slow_final_score(state, actions):
+            calls["n"] += 1
+            if calls["n"] == 4:
+                clock.advance(11)
+            return state["value"]
+        def gain_transition(state, idx, action):
+            out = copy.deepcopy(state)
+            if action == ["GAIN"]:
+                out["value"] += 1
+            return out
+        result = search_joint_actions(
+            {"value": 0}, canonical,
+            lambda *_: (["GAIN"],), gain_transition, slow_final_score,
+            config=BeamConfig(width=4, depth=1, budget_ns=10),
+            now_ns=clock,
+        )
+        self.assertTrue(result.used_fallback)
+        self.assertEqual(canonical, result.actions)
+        self.assertEqual("deadline-during-finalization", result.reason)
+
+    def test_last_suffix_transition_overrun_fails_closed(self):
+        clock = ManualClock()
+        canonical = (["PASS"], ["SLOW"])
+        def slow_suffix_transition(state, idx, action):
+            out = copy.deepcopy(state)
+            if action == ["GAIN"]:
+                out["armed"] = True
+                out["value"] = -1  # keep canonical finalist first
+            if action == ["SLOW"] and out.get("armed"):
+                out["value"] = 10
+                clock.advance(11)  # changed finalist is last and becomes best
+            return out
+        result = search_joint_actions(
+            {"value": 0, "armed": False}, canonical,
+            lambda *_: (["GAIN"],), slow_suffix_transition,
+            lambda state, actions: state["value"],
+            config=BeamConfig(width=4, depth=1, budget_ns=10),
+            now_ns=clock,
+        )
+        self.assertTrue(result.used_fallback)
+        self.assertEqual(canonical, result.actions)
+        self.assertEqual("deadline-during-finalization", result.reason)
+
+
 if __name__ == "__main__":
     unittest.main()

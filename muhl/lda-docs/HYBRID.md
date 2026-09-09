@@ -116,3 +116,13 @@ Scaling = fabricate the leanest/shallowest unit, replicate it, and drive it with
 `available ÷ cost`, tiered storage → RAM → cores — holding each STATE in whichever tier its need demands and switching
 (a cache, not a choice; UNIFY the tiers), batch size as the contain↔unleash dial.** The crutch wasn't a compromise — it
 was noticing the third resource; fabrication is the root beneath all of them.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

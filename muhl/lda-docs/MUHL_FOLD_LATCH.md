@@ -41,3 +41,13 @@ the block into `gen_input`/`target_reg` and reads `latch_reg` with the high-impe
 Route a live block → one injection → probe `latch_reg` → verify against the live network target (mempool.space) →
 wallet `bc1qvhrzg0e23f3tz2jgymwwtqacn48trf5m524zlq` judges. Report exactly what `latch_reg` holds. Fire is route + read
 only (no host ripple — that is the forbidden executor). Fabrication is one-and-done; mining builds nothing.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
