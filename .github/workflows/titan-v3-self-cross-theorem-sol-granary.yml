@@ -1,0 +1,120 @@
+name: titan-v3 self-cross theorem sol-granary
+
+on:
+  push:
+    branches:
+      - sol-granary/titan-v3-self-cross-theorem-review-20260909-01
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary/**
+      - .github/workflows/titan-v3-self-cross-theorem-sol-granary.yml
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary/**
+      - .github/workflows/titan-v3-self-cross-theorem-sol-granary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-self-cross-theorem-sol-granary-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-engine-theorem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned official-engine dependency
+        run: python -m pip install --disable-pip-version-check kaggle-environments==1.32.7
+
+      - name: Compile and run exact-engine contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary
+        run: |
+          set -euo pipefail
+          python -m py_compile official_witness.py test_official_witness.py
+          python -m unittest -v test_official_witness.py
+
+      - name: Emit and verify theorem receipt
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary
+        run: |
+          set -euo pipefail
+          python official_witness.py \
+            --output SELF-CROSS-THEOREM.json \
+            --require-opponent-contingency | tee SELF-CROSS-THEOREM.stdout.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report = json.loads(Path("SELF-CROSS-THEOREM.json").read_text(encoding="utf-8"))
+          if report.get("schema") != "titan-v3-self-cross-opponent-contingency/v1":
+              raise SystemExit("unexpected theorem schema")
+          engine = report.get("engine", {})
+          if engine.get("git_blob") != "3c202c7ee921da239356789e266b694635103fc4":
+              raise SystemExit("official engine identity mismatch")
+          cases = report.get("cases", {})
+          expected = {
+              "seat0_rival_buy": ("REPLAY_BENEFIT", 1.0, -1.0),
+              "seat1_rival_buy": ("REPLAY_BENEFIT", 1.0, -1.0),
+              "seat0_rival_sell": ("REPLAY_HARM", -1.0, 1.0),
+              "seat1_rival_sell": ("REPLAY_HARM", -1.0, 1.0),
+          }
+          if set(cases) != set(expected):
+              raise SystemExit("unexpected theorem case inventory")
+          for name, (verdict, own_delta, rival_delta) in expected.items():
+              case = cases[name]
+              if not case.get("terminal_non_money_state_equal"):
+                  raise SystemExit(f"{name}: non-money state differs")
+              if case.get("verdict") != verdict:
+                  raise SystemExit(f"{name}: expected {verdict}")
+              delta = case.get("cancelled_minus_baseline", {})
+              if delta.get("own_money") != own_delta or delta.get("rival_money") != rival_delta:
+                  raise SystemExit(f"{name}: cash delta mismatch")
+          floor = report.get("price_floor_case", {})
+          if floor.get("terminal_non_money_state_equal") is not False:
+              raise SystemExit("price-floor asymmetry was not reproduced")
+          conclusion = report.get("conclusion", {})
+          if conclusion.get("verdict") != "OPPONENT_CONTINGENT":
+              raise SystemExit("missing opponent-contingent verdict")
+          if conclusion.get("runtime_dominance_proven") is not False:
+              raise SystemExit("bound replay was mislabeled as runtime dominance")
+
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a", encoding="utf-8") as handle:
+                  handle.write("## Self-cross theorem\n\n")
+                  handle.write("- exact engine: `3c202c7ee921da239356789e266b694635103fc4`\n")
+                  handle.write("- rival BUY: own `+1`, rival `-1`, non-money state equal\n")
+                  handle.write("- rival SELL: own `-1`, rival `+1`, non-money state equal\n")
+                  handle.write("- price-floor public-state asymmetry: reproduced\n")
+                  handle.write("- disposition: **OPPONENT_CONTINGENT / NO RUNTIME DOMINANCE**\n")
+          PY
+
+      - name: Bind exact source and receipt bytes
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary
+        run: |
+          set -euo pipefail
+          sha256sum \
+            official_witness.py test_official_witness.py README.md \
+            SELF-CROSS-THEOREM.json SELF-CROSS-THEOREM.stdout.json \
+            > SELF-CROSS-SOURCE.sha256
+          cat SELF-CROSS-SOURCE.sha256
+
+      - name: Upload exact theorem evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-self-cross-theorem-sol-granary
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary/SELF-CROSS-THEOREM.json
+            revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary/SELF-CROSS-THEOREM.stdout.json
+            revenue/kaggriculture/cloud-execution-lab/analysis/self-cross-cancel-review-sol-granary/SELF-CROSS-SOURCE.sha256
+          if-no-files-found: error
+          retention-days: 14
