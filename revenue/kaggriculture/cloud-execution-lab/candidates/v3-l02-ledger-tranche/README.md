@@ -24,10 +24,12 @@ The policy deliberately reproduces the L01 tranche shape rather than inventing a
 
 The default development matrix is 8 seeds × 6 opponents × 2 seats × 2 variants = **192 complete games**. `ADVANCE` is a development decision only; it is not a hosted Kaggle, leaderboard, or automatic canonical-promotion claim.
 
+The hosted workflow still fail-closes on `REJECT` when `candidate.py`, `ledger_tranche.py`, or `run_panel.py` change. `panel_trigger.py` skips only that 192-game matrix when an event did not mutate those executable bytes (GitHub new-branch path filters otherwise re-run the known development REJECT). Unit tests always run. `workflow_dispatch` always runs the panel. ADVANCE vs REJECT is unchanged.
+
 ## Local contracts
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v test_ledger_tranche.py test_panel.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v test_ledger_tranche.py test_panel.py test_panel_trigger.py
 ```
 
 No canonical runtime, configuration, archive, release pointer, provider state, or Kaggle submission is mutated by this lane.
