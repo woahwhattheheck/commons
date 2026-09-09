@@ -1,0 +1,83 @@
+name: SOL Anchor publish V2 legacy bisect
+
+on:
+  push:
+    branches:
+      - sol-anchor/titan-v2-legacy-bisect-20260909-01
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol-anchor/titan-v2-legacy-bisect-20260909-01
+          fetch-depth: 0
+
+      - name: Reassemble and verify payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/sol-anchor
+          cat .sol-anchor-publish/chunk* | tr -d '\n\r' | base64 -d > /tmp/sol-anchor/payload.tar.gz
+          printf '%s  %s\n' \
+            'c79d549b538a8c88f77c090896c4a406b9ebef37237dd55fc2fc24095ffa48af' \
+            '/tmp/sol-anchor/payload.tar.gz' | sha256sum -c -
+          tar -tzf /tmp/sol-anchor/payload.tar.gz > /tmp/sol-anchor/members.txt
+          python3 - <<'PY'
+          from pathlib import PurePosixPath
+
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/run_bisect.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/test_run_bisect.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/RESULTS.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/SUMMARY.json',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/PAIRED-CELLS.csv',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/SHARD-HASHES.csv',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/ISOLATION.json',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect/HARNESS.json',
+              'p/titan-v2-submitted-legacy-feature-bisect-20260909-01.md',
+          }
+          members = {
+              line.strip()
+              for line in open('/tmp/sol-anchor/members.txt', encoding='utf-8')
+              if line.strip()
+          }
+          if members != expected:
+              raise SystemExit(
+                  f'payload member mismatch; missing={sorted(expected - members)} '
+                  f'extra={sorted(members - expected)}'
+              )
+          for name in members:
+              path = PurePosixPath(name)
+              if path.is_absolute() or '..' in path.parts or '.' in path.parts:
+                  raise SystemExit(f'unsafe payload member: {name}')
+          PY
+          tar -xzf /tmp/sol-anchor/payload.tar.gz
+
+      - name: Verify published lane
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/analysis/v2-legacy-feature-bisect
+          python3 -m unittest -v test_run_bisect.py
+          python3 -m py_compile run_bisect.py test_run_bisect.py
+
+      - name: Commit final additive evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .sol-anchor-publish
+          rm -f .github/workflows/sol-anchor-publish-v2-bisect.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'analysis: publish submitted V2 legacy-feature bisect'
+          git push origin HEAD:sol-anchor/titan-v2-legacy-bisect-20260909-01
