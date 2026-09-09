@@ -57,7 +57,6 @@ ACTIONS_JOB = "97740082275"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
-    os.path.join("host", "review_lane.py"),
     os.path.join("ground", "FOREIGN_MAIN.md"),
     os.path.join("ground", "MUHL_RECEIPT_LANE.md"),
     os.path.join("ground", "LDA_RECEIPT.md"),

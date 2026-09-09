@@ -64,6 +64,9 @@ class TestReviewLane(unittest.TestCase):
         self.assertEqual(catalog["candidates"], [])
         self.assertEqual(catalog["error"], "candidates is not a list")
 
+    def test_validator_source_is_not_phrase_evidence(self):
+        self.assertNotIn(os.path.join("host", "review_lane.py"), SEARCH_SPACE)
+
     def test_non_boolean_open_door_flags_do_not_impersonate_true(self):
         for literal in ('"true"', '"false"', "1", "0", "[]", "{}", "null"):
             with self.subTest(literal=literal):

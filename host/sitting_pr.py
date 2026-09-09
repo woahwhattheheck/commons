@@ -36,7 +36,6 @@ DIO_RECEIPT = os.path.join("p", "dio-titan-move-containment-hardening-20260825-0
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
-    os.path.join("host", "sitting_pr.py"),
     os.path.join("ground", "CASH_NOW.md"),
     os.path.join("host", "cash_now.py"),
     DIO_RECEIPT,
