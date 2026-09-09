@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - sol-forge/titan-v3-branch-tournament-20260909-01
+      - sol-lockstep/titan-v3-tournament-execution-seal-20260909-01
     paths:
       - revenue/kaggriculture/cloud-execution-lab/analysis/v3-branch-tournament-20260909-sol-forge/**
       - .github/workflows/titan-v3-branch-tournament-sol-forge.yml
@@ -45,8 +46,8 @@ jobs:
       - name: Run dependency-closure and tournament contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-branch-tournament-20260909-sol-forge
         run: |
-          python -B -m unittest -v test_titan_branch_tournament.py
-          python -B -m py_compile tournament_contracts.py tournament_evidence.py titan_branch_tournament.py test_titan_branch_tournament.py
+          python -B -m unittest -v test_titan_branch_tournament.py test_execution_seal.py
+          python -B -m py_compile tournament_contracts.py tournament_evidence.py titan_branch_tournament.py test_titan_branch_tournament.py test_execution_seal.py
 
       - name: Verify clean diff semantics
         run: git diff --check
