@@ -21,6 +21,7 @@ from review_lane import (
     SEARCH_SPACE,
     SLACK_TS,
     classify,
+    is_pr3_candidate,
     load_catalog,
     measure_from_rows,
     measure_root,
@@ -72,6 +73,23 @@ class TestReviewLane(unittest.TestCase):
                 )
                 self.assertIs(catalog["no_auth"], False)
                 self.assertIs(catalog["no_gate"], False)
+
+    def test_candidate_requires_open_pr_and_successful_ci(self):
+        candidate = {
+            "number": PR_NUMBER,
+            "candidate_sha": CANDIDATE_SHA,
+            "official_main": OFFICIAL_MAIN,
+            "pr_state": "OPEN",
+            "land_state": "CANDIDATE",
+            "receipt_on_official_main": "ABSENT",
+            "ci": "SUCCESS",
+        }
+        self.assertTrue(is_pr3_candidate(candidate))
+        for key, value in (("pr_state", "CLOSED"), ("ci", "FAILURE"), ("ci", "")):
+            with self.subTest(key=key, value=value):
+                invalid = dict(candidate)
+                invalid[key] = value
+                self.assertFalse(is_pr3_candidate(invalid))
 
     def test_claiming_pr3_integrated_is_not_landed(self):
         measured = measure_from_rows(

@@ -130,6 +130,16 @@ def load_catalog(text):
     }
 
 
+def is_2207_superseded(item):
+    """True only while PR 2207 is the measured open-dirty remint."""
+    item = item if isinstance(item, dict) else {}
+    return (
+        str(item.get("number")) == "2207"
+        and item.get("pr_state") == "OPEN_DIRTY"
+        and item.get("land_state") == "SUPERSEDED"
+    )
+
+
 def measure_from_rows(facts):
     """Classify measured file/phrase facts. Missing calibration is UNMEASURED."""
     facts = facts or {}
@@ -251,10 +261,7 @@ def measure_root(root):
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
     sitting = catalog.get("sitting_remints") or []
-    names_2207_superseded = any(
-        str(item.get("number")) == "2207" and item.get("land_state") == "SUPERSEDED"
-        for item in sitting
-    )
+    names_2207_superseded = any(is_2207_superseded(item) for item in sitting)
     claims_2207_integrated = any(
         str(item.get("number")) == "2207" and item.get("land_state") == "INTEGRATED"
         for item in sitting
