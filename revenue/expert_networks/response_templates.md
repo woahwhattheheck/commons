@@ -128,3 +128,7 @@ template.
 - Third Bridge: <https://www.thirdbridge.com/en-us/experts>,
   <https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions>,
   <https://www.thirdbridge.com/en-us/about-us/compliance>
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

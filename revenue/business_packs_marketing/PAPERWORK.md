@@ -62,3 +62,7 @@ The middle column is also what X's "non-existent features" clause and TikTok's d
 
 - Paperwork help is "significant assistance" under the Franchise Rule's second element; harmless while the first element (a tjlabs trademark on the buyer's business) stays absent (LAW_AND_POLICY_FLAGS §8a).
 - A paperwork page that includes the buyer's location and entity data is personal information the door collects; it belongs under the same privacy notice the pixel work already requires (DATA_BUYING §6).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

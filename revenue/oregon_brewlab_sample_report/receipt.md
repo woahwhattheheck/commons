@@ -20,3 +20,7 @@ CLI: `python3 oregon_brewlab_sample_report.py`
 | report_digest | 2e22f1f918744479a2e00b420323f9de02a7d1936e8feb0f0e323efd4bd9ef3a | match |
 
 Buyer: Oregon BrewLab / Dana Garves. Form/container reconcile, public 4 oz / 12 oz and micro-VDK cold-chain gates, ASBC routing, QC, report-class, simulated notify, staged human release. Interfaces simulated. No production write, outreach, or automatic release. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

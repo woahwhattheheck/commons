@@ -15,3 +15,7 @@ Default state: `NOT_READY`. Missing hash or freshness fails closed. The runner n
 Cite private AquaTrace `e380a587e1ba12a3a07b248c4054940afa3f61a9` (`e380a58`) and later official SHA `b616894fd3329c48867dba8c18376ce22e7f78a8` as citations only. Do not clone `woahwhattheheck/aquatrace-lims`. Do not duplicate private docs.
 
 HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0. No City contact. No bid. No certification claim.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
