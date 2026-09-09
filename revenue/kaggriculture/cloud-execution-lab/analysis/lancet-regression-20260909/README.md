@@ -1,82 +1,86 @@
-# LANCET: exact-byte TITAN regression gate
+# LANCET: exact-byte TITAN regression evidence
 
-TITAN currently has at least four independent identities that can drift:
+TITAN has several independent identities that can drift:
 
 1. source and deterministic build inputs;
 2. the canonical `titan-current.tar.gz` receipt;
-3. tests or games that name some archive;
-4. the artifact registry used by executors and submission owners.
+3. tests or games that name an archive;
+4. the artifact registry used by executors and submission owners;
+5. the executable closure, engine, opponent bundle, grid, and seat schedule used
+   for a score claim.
 
-A passing unit suite on archive **A** is not evidence for archive **B**. A score
-from V1, V2, or a predecessor is not a regression panel unless the engine,
-environment seed, opponent artifact, and candidate seat are paired exactly.
-`titan_regression_gate.py` makes those rules executable.
+A passing test suite on archive **A** is not evidence for archive **B**. A score
+from V1, V2, or a successor is not a regression panel unless every compared row
+is tied to the intended executable closures and the same engine, environment
+seed, opponent artifact, and candidate seat.
 
-## Canonical audit
+## Containment status
 
-From `revenue/kaggriculture/cloud-execution-lab`:
+PR #11727 landed the first LANCET provenance diagnostic. Its stale-receipt and
+unregistered-artifact findings remain useful, but its **promotion and partial-
+panel paths are HOLD** pending the SOL-SENTINEL containment successor. Do not use
+`audit --require-games`, `--allow-partial-panel`, or a `COMPARABLE` result from
+that landed revision as release authority.
 
-```bash
-python titan_regression_gate.py audit --root .
-```
-
-This verifies:
-
-- canonical archive bytes, size, and receipt SHA;
-- source-manifest bytes and receipt SHA;
-- exact identity parity between `CURRENT-ARCHIVE.json` and
-  `CURRENT-TESTS.json`;
-- an exact canonical archive path/SHA binding in `exports/ARTIFACTS.json`;
-- any positive full-game count is explicitly bound to the canonical archive.
-
-Promotion mode additionally requires exact current-archive full games:
-
-```bash
-python titan_regression_gate.py audit --root . --require-games \
-  --report-json artifacts/titan-provenance.json
-```
-
-Exit code `0` means the requested gate passed. `2` means the audit is blocked.
-Integrity can pass while promotion remains false when no current games exist.
+The exact review gaps are material: a positive scalar count can be accepted
+without a complete game ledger; JSON parsing is not strict; omitted status is
+implicitly treated as complete; seed/seat/digest domains are underconstrained;
+and partial comparison can exit successfully. LANCET will consume the hardened
+successor rather than race the two owned files.
 
 ## Archive inventory gate
 
-The archive itself has an independent one-read verifier:
+`titan_archive_inventory_gate.py` is the independent follow-up in PR #11749.
+From `revenue/kaggriculture/cloud-execution-lab`:
 
 ```bash
 python titan_archive_inventory_gate.py --root . \
   --report-json artifacts/titan-archive-inventory.json
 ```
 
-It hashes the exact tar bytes, checks the receipt byte length and regular-file
-count, requires the declared entrypoint member, and emits a deterministic
-inventory fingerprint. It never extracts the archive. Links, special members,
-absolute or parent-traversing paths, backslashes, duplicate JSON keys, and
-normalized path aliases fail closed.
+The gate reads the archive bytes once and never extracts them. It verifies:
 
-## Exact paired comparison
+- archive SHA-256 and byte length;
+- strict duplicate-key-free receipt JSON;
+- exactly one regular root `SOURCE.json`;
+- embedded `SOURCE.json` equality with the external source manifest;
+- both embedded and external source-manifest SHA-256 values;
+- the established cardinality contract:
+  `regular_files == runtime_files + 1`, where the one excluded member is root
+  `SOURCE.json`;
+- declared entrypoint presence among runtime members;
+- deterministic runtime and all-regular-member inventory fingerprints.
 
-Each ledger is a JSON object with one archive identity, one engine identity, and
-completed rows:
+Links, special members, absolute or parent-traversing paths, backslashes,
+normalized path aliases, malformed tar payloads, missing source manifests, and
+source-byte divergence fail closed.
 
-```json
-{
-  "archive_sha256": "...",
-  "engine_sha256": "...",
-  "rows": [
-    {
-      "environment_seed": 9600901,
-      "opponent_sha256": "...",
-      "seat": 0,
-      "candidate_score": 1000,
-      "opponent_score": 900,
-      "status": "DONE"
-    }
-  ]
-}
+### Count-interpretation correction
+
+The initial LANCET statement that “110 regular files versus `runtime_files: 109`”
+was a defect is **retracted**. Merged W06 repair #11430 established that root
+`SOURCE.json` is a separately sealed provenance manifest and is excluded from
+`runtime_files`. Therefore 110 regular members can correctly mean 109 runtime
+members plus one root source manifest.
+
+At exact main `977767e3c7a7a1a2f4414a5cf2b46a13267b8006`, the unchanged archive
+`17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86`
+has a pointer declaring `runtime_files: 110`. The exact artifact inventory
+reports 110 regular members total. Under the established contract, the runtime
+count is therefore 109, so the newer pointer/build semantic is the mismatch.
+PR #11744 owns restoring that contract while retaining the constructor repair;
+PR #11749 only verifies the resulting bytes and receipt.
+
+## Landed diagnostic commands — not promotion authority
+
+The landed `titan_regression_gate.py` can still expose stale identity surfaces:
+
+```bash
+python titan_regression_gate.py audit --root .
 ```
 
-Run:
+Its paired comparator accepts ledgers shaped around archive, engine, seed,
+opponent, seat, and margins:
 
 ```bash
 python titan_regression_gate.py compare \
@@ -85,45 +89,41 @@ python titan_regression_gate.py compare \
   --report-json artifacts/v1-v2-paired.json
 ```
 
-The default refuses partial schedules. `--allow-partial-panel` permits an
-explicitly labeled intersection report, but never fills missing cells or
-extrapolates a leaderboard score. Duplicate cells, unfinished rows, errors,
-timeouts, changed engines, changed opponents, or changed seats fail closed.
+Until the SOL-SENTINEL successor lands, treat both outputs as forensic hints
+only. No TITAN release, promotion, merge/revert, or score claim should depend on
+the current promotion/partial-panel semantics.
 
-## Current observed break, 2026-09-09
+## Current observed evidence break, 2026-09-09
 
-At repository main `021a91b2bed219a84f882de87efaa8245be167f2`, the canonical receipt names:
+At exact main `977767e3c7a7a1a2f4414a5cf2b46a13267b8006`:
 
-- archive SHA-256 `17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86`;
-- 427,870 bytes;
-- 109 runtime files;
-- source-manifest SHA-256
-  `1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083`.
+- the canonical archive pointer names SHA-256
+  `17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86`,
+  427,870 bytes, source-manifest SHA-256
+  `1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083`,
+  and the disputed `runtime_files: 110` count;
+- `CURRENT-TESTS.json` still names archive
+  `6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1`,
+  408,621 bytes, 104 runtime files, and source manifest
+  `8f65a8b4c9c6c73a8080995731a954bdc963b72e29614961572f525eb10b8c17`;
+- `exports/ARTIFACTS.json` still points at the old sell-lab packages rather than
+  binding the canonical archive path and SHA;
+- no complete exact-current full-game ledger is bound to the changed bytes and
+  executable closure.
 
-The checked-in test receipt instead names archive
-`6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1`,
-408,621 bytes, 104 runtime files, with a different source manifest. The artifact
-registry does not bind the canonical archive; it names an older sell-lab source
-package. The current source manifest says historical results do not transfer and
-reports zero new full games for the changed bytes. An exact artifact inspection from
-workflow run `34403631157` additionally counted 110 regular files in the tar
-while the canonical receipt declares 109. PR #11721 owns the builder/count
-repair; this gate independently verifies the repaired output rather than
-duplicating that implementation.
+The current V2.5/V3 tree may contain useful mechanisms, but these evidence
+surfaces cannot support a current-byte playing-strength or regression claim.
+The safe repair order is:
 
-Therefore the current V2.5/V3 working package may contain useful mechanisms, but
-its checked-in test receipt and historical scores cannot support a current-byte
-playing-strength or regression claim. Repair order:
+1. consume #11744 or an equivalent preservation of the 109-runtime + one-source
+   archive contract;
+2. consume SOL-SENTINEL's strict game-ledger and comparison containment;
+3. regenerate exact-archive tests and bind them to the canonical SHA and source;
+4. register the canonical archive path/SHA;
+5. run fresh unused-seed, both-seat panels against exact submitted V1 and frozen
+   V2 using fixed executable closures, engine, opponents, runner, and grid;
+6. apply the hardened dual-predecessor and provenance gates before any policy
+   promotion.
 
-1. land the archive-count/builder repair and regenerate one internally consistent
-   archive receipt;
-2. regenerate exact-archive tests and bind their receipt to the canonical SHA;
-3. register the canonical archive path/SHA;
-4. run fresh unused-seed panels against both exact submitted V1 and frozen V2,
-   both seats, with fixed opponent artifacts and engine;
-5. compare only the exact cell intersection using this tool;
-6. promote policy changes only after the dual-predecessor gate and provenance
-   gate both pass.
-
-This change does not alter TITAN runtime bytes, build an archive, launch games,
-or submit to Kaggle.
+This work changes no TITAN runtime policy, archive bytes, provider state, game
+panel, or Kaggle submission.
