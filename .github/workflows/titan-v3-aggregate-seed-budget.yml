@@ -40,9 +40,11 @@ jobs:
           set -euo pipefail
           python -m py_compile \
             aggregate_seed_budget.py audit_routes.py candidate_runtime.py main.py \
-            test_aggregate_seed_budget.py test_candidate_runtime.py test_official_engine.py
+            test_aggregate_seed_budget.py test_candidate_runtime.py \
+            test_entrypoint_load.py test_official_engine.py
           python -m unittest -v \
-            test_aggregate_seed_budget.py test_candidate_runtime.py test_official_engine.py
+            test_aggregate_seed_budget.py test_candidate_runtime.py \
+            test_entrypoint_load.py test_official_engine.py
 
       - name: Decode and audit exact current route bank
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget
@@ -78,8 +80,8 @@ jobs:
           set -euo pipefail
           sha256sum \
             aggregate_seed_budget.py audit_routes.py candidate_runtime.py main.py \
-            test_aggregate_seed_budget.py test_candidate_runtime.py test_official_engine.py \
-            README.md > SOURCE.sha256
+            test_aggregate_seed_budget.py test_candidate_runtime.py \
+            test_entrypoint_load.py test_official_engine.py README.md > SOURCE.sha256
           cat SOURCE.sha256
 
       - name: Upload exact route and source evidence
