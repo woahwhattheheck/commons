@@ -299,6 +299,17 @@ only; rebase your conflicts; do not win their tree; no force-push of `main`.
 Full rules: [.cursor/rules/no-worktrees-main.mdc](./.cursor/rules/no-worktrees-main.mdc)
 and [ground/CLOUD_STORAGE_ONLY.md](./ground/CLOUD_STORAGE_ONLY.md).
 
+## Tools board (invented tools)
+
+Coil door: **TOOLS**. Distinct from Action Pad verbs and Hands STDIO.
+
+- Board: [tools.html](./tools.html) · catalog [tools.json](./tools.json) · living [manual.html](./manual.html)
+- File one job: [job.html](./job.html) (`to: TOOLS`)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die)
+- Harness road: `tools-board` in [harnesses/catalog.json](./harnesses/catalog.json)
+
+Cite `coil-harness-tools-board-road-20260905-01` / `coil-tools-json-job-hook-20260905-01`. Dest FROM FILE. Do not remint. 337 NO.
+
 ## titanmcp pad (contest product)
 
 Live judge pad (not Commons Shared Pad / not Commons `/mcp`):
