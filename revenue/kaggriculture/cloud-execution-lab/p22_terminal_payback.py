@@ -127,15 +127,15 @@ def evaluate_candidate(
 
     Admission is strict: ``net_value`` must exceed ``minimum_net``. Exact ties
     therefore preserve the caller's canonical/no-new-commitment behavior.
+    ``minimum_net`` itself must be finite and non-negative so a negative
+    tolerance cannot reopen zero- or negative-return commitments.
     """
 
     current = int(current_step)
     terminal = terminal_decision_step(episode_steps)
     if current < 0:
         raise ValueError("current_step must be non-negative")
-    threshold = float(minimum_net)
-    if not math.isfinite(threshold):
-        raise ValueError("minimum_net must be finite")
+    threshold = _finite_nonnegative(minimum_net, "minimum_net")
     if candidate.kind not in ("new_investment", "sunk_service"):
         raise ValueError("kind must be 'new_investment' or 'sunk_service'")
 
