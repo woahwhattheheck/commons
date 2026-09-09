@@ -1,0 +1,43 @@
+name: paperwork-included-focused-runner
+on:
+  push:
+    branches: ['sol-astra/paperwork-included-runner-20260909-01']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Prove runner-only branch delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git diff --name-only HEAD^ HEAD)" = ".github/workflows/paperwork-included-focused-runner.yml"
+          printf 'HEAD=%s\nPARENT=%s\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^)"
+      - name: Pin exact focused inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          for p in \
+            test_business_pack_paperwork.py \
+            host/business_pack_paperwork.py \
+            ground/BUSINESS_PACK_PAPERWORK.json \
+            ground/BUSINESS_PACK_PAPERWORK.md \
+            packs/_template/paperwork.md \
+            packs/_template/day.md \
+            packs/_template/offer.md \
+            ground/BUSINESS_PACKS.json \
+            ground/BUSINESS_PACK_PAPERWORK_SLOT.json \
+            revenue/business_packs_marketing/PAPERWORK.md; do
+            test -f "$p"
+            printf '%s  %s\n' "$(git hash-object "$p")" "$p"
+          done
+      - name: Focused paperwork contract
+        run: python -m unittest -v test_business_pack_paperwork.py
+      - name: Compile focused source
+        run: python -m py_compile host/business_pack_paperwork.py test_business_pack_paperwork.py
