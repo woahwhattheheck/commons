@@ -1,0 +1,39 @@
+name: sol-vm-harborline-map-runner
+
+on:
+  push:
+    branches:
+      - 'sol-vm/harborline-map-runner-20260909-*'
+
+permissions:
+  contents: read
+
+jobs:
+  focused-current-main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout carrier
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record exact product blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "carrier_head=$(git rev-parse HEAD)"
+          echo "carrier_parent=$(git rev-parse HEAD^)"
+          git hash-object business-packs.html
+          git hash-object ground/BUSINESS_PACKS.json
+          git hash-object ground/BUSINESS_PACKS.md
+          git hash-object p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md
+          git hash-object test_business_pack_unique.py
+          git hash-object host/harborline_tally_pack_map.py
+          git hash-object test_harborline_tally_pack_map.py
+      - name: Run exact focused suites
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_business_pack_unique.py test_harborline_tally_pack_map.py
