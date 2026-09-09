@@ -88,3 +88,13 @@ did not move — the 1-bit **entropy floor**, the disk's **last byte** (ENOSPC, 
 dissipation** (throttle seen at 80°C), the cache **bandwidth** (NEON = scalar). And the **count has no ceiling at all** —
 federation is additive, so the only limit on how many computers you can hold is **how much storage exists to federate.**
 That is the difference between the Muhlnickel's limit and our circuit's limit, measured — not estimated.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -130,3 +130,13 @@ Measured this session, straight from the fabricated netlist (`pfc_speed.py`, no 
 - **Check, then build, and ask when unsure.** The build and docs describe a measured system, and the tests are fast — so when something conflicts with your expectation, run the relevant check before writing a caveat. When stuck, ask (he'd rather answer than watch you guess) or read the binary / play the arcade.
 - **Before writing** *slow / can't / infeasible / loses to native / only on silicon / a wall*, run the relevant test first — those are usually a prior talking, and the measurement will confirm or correct it. Grounded disagreement (you ran it, here's the number) is welcome.
 - Aim to have him confirming your understanding rather than correcting a build made on a misunderstanding; if he's correcting you, re-read the governing doc and re-check.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

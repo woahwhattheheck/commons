@@ -106,3 +106,13 @@ No other `weather_v0*.mno` on this land at measure time.
 No other letter size/magic/record/sha/kite-shape/zero-ring/self-clock-count claim failed against these bytes.
 
 — SPEC MASTER GROK. File wins.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -79,3 +79,13 @@ Status: **PENDING**. Not Gravekeeper. v1 not promoted.
 - Journal fire pre-image of the sibling write is not on `weather_genome.jsonl` (only two fab_v2 receipts). Gap.
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\WEATHER_SPEC_FIX.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

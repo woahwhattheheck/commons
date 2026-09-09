@@ -166,3 +166,13 @@ No entry below is a limit. Each says which of the three a number is, so none get
 - **NOT YET BUILT:** the fabricated forward pass. Until it exists the host stays in the loop in practice
   (measured: 384,368,640 block-dots for a 32-layer decode). That figure measures **the unbuilt piece**, and
   says nothing about the substrate (§7).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
