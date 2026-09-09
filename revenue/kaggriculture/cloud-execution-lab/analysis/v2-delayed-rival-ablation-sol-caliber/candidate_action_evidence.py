@@ -12,6 +12,11 @@ REPAIR = "sol-caliber-candidate-action-evidence-v1"
 EXPECTED_EVALUATOR_BLOB = "077feb2208b6e0c1727835eb4f8089709bf67f3b"
 EXPECTED_EPISODE_STEPS = 720
 EXPECTED_ACTIONS = EXPECTED_EPISODE_STEPS - 1
+EXPECTED_PATCH_RETENTION = {
+    "candidate digest initialization": 0,
+    "pre-interpreter candidate action capture": 1,
+    "candidate digest publication": 0,
+}
 
 GameKey = tuple[str, int, int]
 
@@ -64,7 +69,7 @@ def validate_evaluator_materialization(
     source_evaluator: Path,
     patched_evaluator: Path,
 ) -> dict[str, Any]:
-    """Bind the receipt to the exact canonical and patched evaluator bytes."""
+    """Bind the receipt to exact evaluator bytes and zero unconsumed patch sites."""
     if receipt.get("schema_version") != 1:
         raise CandidateActionEvidenceError("evaluator materialization schema mismatch")
     if receipt.get("operation") != OPERATION:
@@ -111,20 +116,34 @@ def validate_evaluator_materialization(
         raise CandidateActionEvidenceError("candidate action capture phase mismatch")
 
     patches = patched.get("patches")
-    if not isinstance(patches, list) or len(patches) != 3:
+    if not isinstance(patches, list) or len(patches) != len(EXPECTED_PATCH_RETENTION):
         raise CandidateActionEvidenceError("evaluator patch receipt is incomplete")
+    seen: set[str] = set()
     for index, row in enumerate(patches):
         row = _mapping(row, f"evaluator patch {index}")
+        label = row.get("label")
+        if type(label) is not str or label not in EXPECTED_PATCH_RETENTION or label in seen:
+            raise CandidateActionEvidenceError(
+                f"evaluator patch {index} label is invalid or duplicated"
+            )
+        seen.add(label)
+        retained = row.get("old_occurrences_retained_in_replacement")
+        raw_after = row.get("old_occurrences_after")
+        unconsumed = row.get("unconsumed_old_occurrences_after")
         if (
             row.get("old_occurrences_before") != 1
-            or row.get("old_occurrences_after") != 0
+            or retained != EXPECTED_PATCH_RETENTION[label]
+            or raw_after != retained
+            or unconsumed != 0
             or row.get("new_occurrences_after") != 1
         ):
             raise CandidateActionEvidenceError(
-                f"evaluator patch {index} cardinality is invalid"
+                f"evaluator patch {index} consumed-site cardinality is invalid"
             )
         _hex(row.get("old_sha256"), f"evaluator patch {index} old SHA-256", 64)
         _hex(row.get("new_sha256"), f"evaluator patch {index} new SHA-256", 64)
+    if seen != set(EXPECTED_PATCH_RETENTION):
+        raise CandidateActionEvidenceError("evaluator patch labels are incomplete")
 
     return {
         "source_git_blob_sha1": source_blob,
@@ -146,7 +165,6 @@ def _normalize_report(
     *,
     label: str,
 ) -> tuple[dict[str, Any], dict[GameKey, str]]:
-    """Deep-copy a report and put candidate-only digest in the legacy activation slot."""
     normalized = deepcopy(dict(report))
     games = normalized.get("games")
     if not isinstance(games, list) or not games:
@@ -237,7 +255,6 @@ def annotate_report(
     report: Mapping[str, Any],
     evidence: Mapping[str, Any],
 ) -> dict[str, Any]:
-    """Label comparator trace deltas as candidate-action deltas and retain whole-trace state."""
     output = deepcopy(dict(report))
     whole_changed = evidence.get("whole_trace_changed")
     if not isinstance(whole_changed, Mapping):
@@ -256,10 +273,9 @@ def annotate_report(
         row["candidate_action_changed"] = bool(row.get("trace_changed"))
         row["whole_trace_changed"] = bool(whole_changed[key])
 
-    for name in ("overall",):
-        values = output.get(name)
-        if isinstance(values, dict) and "changed_cells" in values:
-            values["candidate_action_changed_cells"] = values["changed_cells"]
+    overall = output.get("overall")
+    if isinstance(overall, dict) and "changed_cells" in overall:
+        overall["candidate_action_changed_cells"] = overall["changed_cells"]
     for name in ("by_opponent", "by_opponent_seat"):
         groups = output.get(name)
         if isinstance(groups, Mapping):

@@ -92,7 +92,20 @@ class EvaluatorMaterializationTests(unittest.TestCase):
             root = Path(temporary)
             source, patched, receipt, _ = evaluator_fixture(root)
             self.assertTrue(source.is_file())
-            self.assertEqual(len(receipt["patched"]["patches"]), 3)
+            rows = receipt["patched"]["patches"]
+            self.assertEqual(len(rows), 3)
+            self.assertEqual(
+                [row["old_occurrences_retained_in_replacement"] for row in rows],
+                [0, 1, 0],
+            )
+            self.assertEqual(
+                [row["old_occurrences_after"] for row in rows],
+                [0, 1, 0],
+            )
+            self.assertEqual(
+                [row["unconsumed_old_occurrences_after"] for row in rows],
+                [0, 0, 0],
+            )
             self.assertEqual(
                 receipt["patched"]["capture_phase"],
                 "after both returned actions, before interpreter",
@@ -142,6 +155,18 @@ class CandidateActionEvidenceTests(unittest.TestCase):
                 source_evaluator=source,
                 patched_evaluator=patched,
             )
+
+    def test_real_materializer_receipt_is_accepted(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, patched, receipt, source_blob = evaluator_fixture(root)
+            with mock.patch.object(evidence, "EXPECTED_EVALUATOR_BLOB", source_blob):
+                binding = evidence.validate_evaluator_materialization(
+                    receipt,
+                    source_evaluator=source,
+                    patched_evaluator=patched,
+                )
+            self.assertFalse(binding["whole_trace_is_activation"])
 
     def test_whole_trace_change_with_same_candidate_actions_normalizes_to_no_action_change(self):
         with tempfile.TemporaryDirectory() as temporary:

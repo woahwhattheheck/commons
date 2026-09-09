@@ -100,14 +100,23 @@ def materialize_evaluator(
             raise EvaluatorMaterializeError(
                 f"{label} cardinality mismatch: old={old_before}, new={new_before}"
             )
+        retained_in_replacement = new.count(old)
         patched = patched.replace(old, new, 1)
+        raw_old_after = patched.count(old)
+        unconsumed_old_after = raw_old_after - retained_in_replacement
+        if unconsumed_old_after != 0:
+            raise EvaluatorMaterializeError(
+                f"{label} left {unconsumed_old_after} unconsumed patch site(s)"
+            )
         patches.append(
             {
                 "label": label,
                 "old_sha256": sha256(old),
                 "new_sha256": sha256(new),
                 "old_occurrences_before": old_before,
-                "old_occurrences_after": patched.count(old),
+                "old_occurrences_retained_in_replacement": retained_in_replacement,
+                "old_occurrences_after": raw_old_after,
+                "unconsumed_old_occurrences_after": unconsumed_old_after,
                 "new_occurrences_after": patched.count(new),
             }
         )
