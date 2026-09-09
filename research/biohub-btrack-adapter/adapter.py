@@ -366,6 +366,7 @@ def tracks_to_rows(
     track_by_id: dict[int, TrackLike] = {}
     real_by_id: dict[int, list[tuple[int, Detection]]] = {}
     edges: set[tuple[int, int]] = set()
+    seen_real_refs: dict[int, int] = {}
 
     for track in tracks:
         track_id = _as_int(track.ID, "track ID")
@@ -373,6 +374,10 @@ def tracks_to_rows(
             raise AdapterError(f"duplicate track ID {track_id}")
         track_by_id[track_id] = track
         real = _real_observations(track, ref_map, scale)
+        for ref, _ in real:
+            if ref in seen_real_refs:
+                raise AdapterError(f"object ID {ref} appears in multiple track observations")
+            seen_real_refs[ref] = track_id
         real_by_id[track_id] = real
         for (_, source), (_, target) in zip(real, real[1:]):
             if target.t != source.t + 1:
