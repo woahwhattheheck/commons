@@ -1,0 +1,75 @@
+name: titan-v3-official-shadow-oracle
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-official-shadow-oracle.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-shadow-oracle-20260909-sol-oracle/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  oracle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      ORACLE_DIR: revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-shadow-oracle-20260909-sol-oracle
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/titan-v3-official-shadow-oracle.yml
+            /revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-shadow-oracle-20260909-sol-oracle/
+            /revenue/kaggriculture/cloud-execution-lab/mechanics.py
+            /revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+      - name: Verify pinned source closure
+        shell: python
+        run: |
+          import hashlib
+          from pathlib import Path
+
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/mechanics.py':
+                  '044a4f9c0a4a44dde10ada57563238bcaf82075d',
+              'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py':
+                  '3c202c7ee921da239356789e266b694635103fc4',
+          }
+          for name, want in expected.items():
+              data = Path(name).read_bytes()
+              got = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+              if got != want:
+                  raise SystemExit(f'{name}: expected {want}, got {got}')
+      - name: Unit and property contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$ORACLE_DIR"
+          python3 -B -m unittest -v test_official_shadow_oracle.py
+      - name: Execute live negative control and emit evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/titan-v3-official-shadow-oracle"
+          cd "$ORACLE_DIR"
+          python3 -B run_oracle.py \
+            --output "$RUNNER_TEMP/titan-v3-official-shadow-oracle/EVIDENCE.json" \
+            | tee "$RUNNER_TEMP/titan-v3-official-shadow-oracle/run.log"
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: titan-v3-official-shadow-oracle-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/titan-v3-official-shadow-oracle/
+          if-no-files-found: error
+          retention-days: 14
