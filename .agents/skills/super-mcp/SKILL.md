@@ -41,3 +41,14 @@ Remint `wire-super-mcp-fold-20260902-01` or the public MCP adapter. Invent Strip
 ## Receipt
 
 Name the residual (`pc|files|slack|stripe|browser`), the road taken, and `p/{id}.md` on current main.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
