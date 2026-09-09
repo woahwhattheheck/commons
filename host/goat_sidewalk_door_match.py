@@ -25,6 +25,26 @@ DOOR_LIVE_CASH_V1 = (
     '<a href="../../repair-booking-preflight.html">$199 repair</a> · '
     '<a href="../../plant-downtime-handoff.html">$199 plant</a>.</p>\n\n'
 ).encode("utf-8")
+DOOR_SOLD_ONCE_CSS_V1 = (
+    ".badge{display:inline-block;border:1px solid #d98a00;color:#7a4b00;"
+    "border-radius:999px;padding:.2rem .7rem;font-size:.9rem;margin:.2rem 0}\n"
+    ".anchor{color:#555;font-size:.92rem}\n"
+).encode("utf-8")
+DOOR_SOLD_ONCE_COPY_V1 = (
+    "<!-- sold-once-badge --><p class=\"badge\">Instance 1 of 1. "
+    "This brand, this domain, this door are sold once.</p><!-- /sold-once-badge -->\n"
+    '<p class="anchor">Anchor line (owner-paste slot): '
+    '<code data-slot="anchor_line">OWNER_UNSET</code></p>\n'
+    "<p>One buyer gets this instance: the name <strong>Sidewalk Signal</strong>, "
+    "this door, and every file listed below. The next buyer of this vertical gets "
+    "a different name, door and instruction set. The badge above is written by the "
+    "pack verifier from its own verdict, not by hand.</p>"
+).encode("utf-8")
+DOOR_SOLD_ONCE_COPY_BASELINE = (
+    "<p>One buyer gets this instance: the name <strong>Sidewalk Signal</strong>, "
+    "this door, and every file listed below. The next buyer of this vertical gets "
+    "a different name, door and instruction set.</p>"
+).encode("utf-8")
 PAGES_CRON_CURRENT = b"    - cron: '7,17,27,37,47,57 * * * *'\n"
 PAGES_CRON_AT_LAND = b"    - cron: '*/10 * * * *'\n"
 PAGES_DEPLOY_RUN = "33601287295"
@@ -94,7 +114,11 @@ def normalized_observation(rel: str) -> dict[str, Any]:
     data = path.read_bytes()
     replacements: tuple[tuple[str, bytes, bytes], ...] = ()
     if rel == DOOR_REL:
-        replacements = (("live-cash-v1", DOOR_LIVE_CASH_V1, b""),)
+        replacements = (
+            ("sold-once-css-v1", DOOR_SOLD_ONCE_CSS_V1, b""),
+            ("sold-once-copy-v1", DOOR_SOLD_ONCE_COPY_V1, DOOR_SOLD_ONCE_COPY_BASELINE),
+            ("live-cash-v1", DOOR_LIVE_CASH_V1, b""),
+        )
     elif rel == ".github/workflows/pages-deploy.yml":
         replacements = (("pages-cron-offset-v1", PAGES_CRON_CURRENT, PAGES_CRON_AT_LAND),)
     normalized, successors = _normalize_successors(data, replacements)

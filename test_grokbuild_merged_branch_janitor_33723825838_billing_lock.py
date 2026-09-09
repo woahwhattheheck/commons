@@ -40,7 +40,7 @@ KEEP = {
     "p/grokbuild-merged-branch-janitor-33699944798-billing-lock-20260903-01.md": "1fcd7e61",
     "p/grokbuild-merged-branch-janitor-33718131639-billing-lock-20260903-01.md": "010f253e",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
-    "catalog.html": "97f683f1",
+    "catalog.html": "a0225a40",
     "hub_pages.py": "d0bd0e8d",
 }
 

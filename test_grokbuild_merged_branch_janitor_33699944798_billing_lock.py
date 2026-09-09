@@ -37,7 +37,7 @@ KEEP = {
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "catalog.html": "97f683f1",
+    "catalog.html": "a0225a40",
     "hub_pages.py": "d0bd0e8d",
 }
 
