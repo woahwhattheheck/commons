@@ -118,11 +118,13 @@ def agent(observation, configuration=None):
     fallback = _entrypoint_fallback(None, observation, cfg, deadline)
     remaining = budget-(time.perf_counter()-entry_started)
     if remaining <= 0:
-        # Preserve the existing prelude contract without invoking finalizers on
-        # an object whose lazy controller was never initialized.
+        # Construction is runtime work. Once the prelude has exhausted the
+        # budget, starting a fresh lazy controller outside any timer would turn
+        # this fallback branch into an unbounded call. Leave the instance absent;
+        # the next visible observation can initialize it normally.
         if replace:
-            instance = _new_instance(root, feature_data)
-            _INSTANCE = instance
+            _INSTANCE = None
+            return fallback
         obs = dict(observation)
         obs['step'] = step
         if instance.features.consumer == 'frozen':

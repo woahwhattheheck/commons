@@ -2,7 +2,6 @@
 """Only the new main-to-existing-timer clock boundary; no timer-suite replay."""
 import copy,json,time,unittest
 from pathlib import Path
-from types import SimpleNamespace
 from unittest.mock import patch
 import main
 import titan_runtime as T
@@ -12,7 +11,7 @@ ROWS=[]
 class EntryClock(unittest.TestCase):
  @classmethod
  def setUpClass(cls):OrderedSelectedSellTests.setUpClass();cls.h=OrderedSelectedSellTests()
- def test_main_prelude_exhaustion_never_starts_parent(self):
+ def test_main_prelude_exhaustion_never_constructs_or_starts_parent(self):
   obs,cfg,_,_=self.h.fixture(0);loads=json.loads;calls=[]
   def delayed(s,*a,**k):
    parsed=loads(s,*a,**k)
@@ -26,12 +25,22 @@ class EntryClock(unittest.TestCase):
    calls.append(1)
    return original_initialize(obj)
   main._INSTANCE=None
-  with patch.object(json,'loads',side_effect=delayed),patch.object(T.TitanAgent,'_initialize',initialize):
+  with patch.object(json,'loads',side_effect=delayed),\
+       patch.object(T.TitanAgent,'_initialize',initialize),\
+       patch.object(main,'_new_instance',side_effect=AssertionError('post-deadline construction')) as constructor:
    start=time.perf_counter();out=main.agent(obs,cfg);elapsed=time.perf_counter()-start
+  constructor.assert_not_called()
   self.assertEqual(calls,[]);self.assertEqual(out,T.deadline.legal_pass(obs))
-  self.assertEqual(main._INSTANCE.diagnostics['fallback_stage'],'entrypoint_prelude')
-  self.assertGreaterEqual(main._INSTANCE.diagnostics['entrypoint_prelude_seconds'],.03)
-  ROWS.append({'case':'count_main_prelude_before_parent','wall_seconds':elapsed,'diagnostics':main._INSTANCE.diagnostics})
+  self.assertIsNone(main._INSTANCE);self.assertGreaterEqual(elapsed,.03)
+  ROWS.append({'case':'cold_prelude_returns_without_construction','wall_seconds':elapsed,'instance':None})
+  # The next visible observation owns a fresh, normally initialized controller.
+  resumed_obs,resumed_cfg,_,_=self.h.fixture(1)
+  with patch.object(T.TitanAgent,'_initialize',initialize):
+   resumed=main.agent(resumed_obs,resumed_cfg)
+  self.assertEqual(calls,[1]);self.assertIsNotNone(main._INSTANCE)
+  self.assertIsInstance(resumed,dict)
+  for key in ('farmer','hands','market'):self.assertIn(key,resumed)
+  ROWS.append({'case':'deferred_cold_start_recovers','parent_initializations':len(calls),'diagnostics':main._INSTANCE.diagnostics})
  def test_elapsed_includes_fallback_copy_after_timer(self):
   obs,cfg,_,_=self.h.fixture(100);obj=T.TitanAgent(T.Features(budget_seconds=.025,reserve_seconds=.01));obj._initialize()
   selected=action(hands=[['PASS']]);obj.production.act=lambda _:copy.deepcopy(selected)
