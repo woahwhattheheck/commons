@@ -34,6 +34,7 @@ def main() -> int:
     if not isinstance(files, list) or not files:
         raise SystemExit("manifest custody_files missing")
 
+    root = ROOT.resolve()
     seen: set[str] = set()
     for row in files:
         if not isinstance(row, dict) or set(row) not in ({"path", "git_blob_sha1"}, {"path", "sha256"}):
@@ -42,12 +43,15 @@ def main() -> int:
         if not isinstance(rel, str) or not rel or rel in seen:
             raise SystemExit("invalid or duplicate custody path")
         seen.add(rel)
-        path = (ROOT / rel).resolve()
+        raw_path = ROOT / rel
+        if raw_path.is_symlink():
+            raise SystemExit(f"custody path must not be a symlink: {rel}")
         try:
-            path.relative_to(ROOT.resolve())
-        except ValueError as exc:
-            raise SystemExit(f"custody path escapes repository: {rel}") from exc
-        if not path.is_file() or path.is_symlink():
+            path = raw_path.resolve(strict=True)
+            path.relative_to(root)
+        except (OSError, ValueError) as exc:
+            raise SystemExit(f"custody path is missing or escapes repository: {rel}") from exc
+        if not path.is_file():
             raise SystemExit(f"custody path is not one regular file: {rel}")
         data = path.read_bytes()
         if "git_blob_sha1" in row:
@@ -59,8 +63,11 @@ def main() -> int:
             if actual != row["sha256"]:
                 raise SystemExit(f"sha256 mismatch: {rel}: {actual}")
 
-    required = set(manifest.get("required_paths", []))
-    if seen != required:
+    required_value = manifest.get("required_paths")
+    if not isinstance(required_value, list) or any(not isinstance(item, str) for item in required_value):
+        raise SystemExit("manifest required_paths must be a list of strings")
+    required = set(required_value)
+    if len(required) != len(required_value) or seen != required:
         raise SystemExit(f"custody path set mismatch: seen={sorted(seen)!r} required={sorted(required)!r}")
 
     manifest_blob = git_blob_sha1(MANIFEST.read_bytes())

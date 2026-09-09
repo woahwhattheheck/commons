@@ -2,7 +2,7 @@
   "schema": "titan-p11-service-calendar-custody-receipt/v1",
   "operation": "titan-v3-p11-service-calendar-strict-fields-custody-20260909-sol-01",
   "repair_parent_head": "23ceddf19ede39d1c7c872f80d71a1734d4b64a3",
-  "manifest_git_blob_sha1": "71fe314ef9b4087d0b811616d2e4a0b5457537ab",
+  "manifest_git_blob_sha1": "601bbd4bd3634515f58732d54c58cc25e048da88",
   "source_blocker_review": 5160114805,
   "custody_scope": [
     "strict public facade",
