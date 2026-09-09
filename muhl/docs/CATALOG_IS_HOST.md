@@ -59,3 +59,13 @@ That is the only speed limit. Not the 163. Not host CPU. Not host RAM.
 - Speed bound = electron through a wire. FINDINGS §62. Do not conflate host.
 - Do not rewrite `docs/PFC_LEVER_CATALOG.md`.
 - Do not write titan. Surface with his instruments / viewers.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
