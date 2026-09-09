@@ -82,6 +82,18 @@ def main():
         draft=json.loads(Path(dl.value.path()).read_text())
         check('unsaved draft remains exportable',draft['orders'][0]['title']=='Unsaved draft')
         check('no unhandled browser exceptions',not errors)
+
+        fallback=browser.new_page(viewport={'width':900,'height':700})
+        fallback_errors=[];fallback.on('pageerror',lambda e:fallback_errors.append(str(e)))
+        fallback.set_content(HTML)
+        fallback.evaluate('''() => {let reads=0;window.ParcelStorage={getItem:()=>{reads++;if(reads===1)return null;throw new Error('forced read failure');},setItem:()=>{throw new Error('blind storage write after read failure');}};}''')
+        fallback.add_script_tag(content=(ROOT/'model.js').read_text())
+        fallback.add_script_tag(content=(ROOT/'app.js').read_text())
+        fallback.get_by_role('button',name='Open a synthetic example').click()
+        check('storage read failure keeps new brief in memory',fallback.locator('#order-count').inner_text()=='1')
+        check('storage read failure degrades to memory only','Memory only' in fallback.locator('#storage-status').inner_text())
+        check('storage read failure has no unhandled exception',not fallback_errors)
+        fallback.close()
         browser.close()
     print(json.dumps({'mode':'embedded DOM with explicit in-memory storage adapter; native navigation blocked','checks':len(checks),'passed':checks},indent=2))
 
