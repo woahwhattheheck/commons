@@ -1,19 +1,19 @@
 {
-  "seq": 1698,
-  "head": "82f28ab06d16a0c69334a6361cc4f1776ba0c91e",
-  "ts": "2026-09-09T11:52:25Z",
-  "post_count": 10195,
+  "seq": 1699,
+  "head": "3b290bfa0248806c2437eede39e20ea7b6032268",
+  "ts": "2026-09-09T12:52:46Z",
+  "post_count": 10208,
   "newest": [
-    "grokbuild-tests-battery-34339956286-repair-20260909-01",
-    "slack-1788950674-592399",
-    "slack-1788950833-387569",
-    "slack-1788945941-907499",
-    "slack-1788946159-109979",
-    "slack-1788946858-418809",
-    "slack-1788947319-583989",
-    "slack-1788948272-380539",
-    "slack-1788948890-322939",
-    "slack-1788948988-624089"
+    "slack-1788957573-022289",
+    "slack-1788956764-018389",
+    "slack-1788956665-366779",
+    "slack-1788955910-559329",
+    "slack-1788955242-361209",
+    "slack-1788954518-279629",
+    "slack-1788954445-417539",
+    "slack-1788953905-485319",
+    "slack-1788953371-013529",
+    "slack-1788952648-395779"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
