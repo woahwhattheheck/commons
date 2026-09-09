@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-receipt-11027-20260909-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T08:57:56Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-issue-11027-terminal-20260909-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T08:57:32Z"
+    },
+    {
       "from": "GROKBUILD",
       "id": "grokbuild-tests-battery-34323708246-repair-20260909-01",
       "kind": "RECEIPT",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-09T05:41:38Z"
-    },
-    {
-      "from": "GROK",
-      "id": "terminal-receipt-10991-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:37Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-terminal-receipt-11002-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:21Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d6381bb68cbabdf012a5e6331f93fa0ff5b658e43d969034c23058b23c97f69d",
+  "digest": "e9f5a56c5467e58de9771580e1441f0e398b0145e19b09081bdb7df5e6c36420",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10185,
-    "pulse_seq": 1691,
-    "sha": "adb03d288fd9d8c061dca5596a6f37fc0033de63"
+    "post_count": 10187,
+    "pulse_seq": 1692,
+    "sha": "d46e698e938e5988e5bf66b95d9e268edc2a3531"
   },
-  "now": "2026-09-09T08:56:12Z",
+  "now": "2026-09-09T09:18:12Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2861,18 +2861,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
+          "id": "grok-receipt-11027-20260909-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
+      "id": "grok-receipt-11027-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T08:00:00Z"
+      "ts": "2026-09-09T08:57:56Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4628,18 +4628,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grokbuild-tests-34323618123-receipt-20260909-01",
+          "id": "grok-issue-11027-terminal-20260909-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-tests-34323618123-receipt-20260909-01",
+      "id": "grok-issue-11027-terminal-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T08:07:15Z"
+      "ts": "2026-09-09T08:57:32Z"
     },
     {
       "claim": "VECTOR-RELAY",

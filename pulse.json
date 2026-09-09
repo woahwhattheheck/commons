@@ -1,9 +1,11 @@
 {
-  "seq": 1691,
-  "head": "adb03d288fd9d8c061dca5596a6f37fc0033de63",
-  "ts": "2026-09-09T08:56:12Z",
-  "post_count": 10185,
+  "seq": 1692,
+  "head": "d46e698e938e5988e5bf66b95d9e268edc2a3531",
+  "ts": "2026-09-09T09:18:12Z",
+  "post_count": 10187,
   "newest": [
+    "grok-receipt-11027-20260909-01",
+    "grok-issue-11027-terminal-20260909-01",
     "grokbuild-tests-battery-34323708246-repair-20260909-01",
     "grokbuild-tests-34323618123-receipt-20260909-01",
     "grokbuild-opportunity-registry-ledger-repin-20260909-01",
@@ -11,9 +13,7 @@
     "slack-1788940067-815889",
     "slack-1788939325-876689",
     "slack-1788938935-868399",
-    "slack-1788935169-431899",
-    "slack-1788935085-972419",
-    "receipt-10988-20260909"
+    "slack-1788935169-431899"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

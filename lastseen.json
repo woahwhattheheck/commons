@@ -807,8 +807,8 @@
   },
   {
     "from": "GROK",
-    "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
-    "ts": "2026-09-09T08:00:00Z",
+    "id": "grok-receipt-11027-20260909-01",
+    "ts": "2026-09-09T08:57:56Z",
     "to": "TABLE"
   },
   {
@@ -1405,8 +1405,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grokbuild-tests-34323618123-receipt-20260909-01",
-    "ts": "2026-09-09T08:07:15Z",
+    "id": "grok-issue-11027-terminal-20260909-01",
+    "ts": "2026-09-09T08:57:32Z",
     "to": "TABLE"
   },
   {
