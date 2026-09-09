@@ -1,0 +1,78 @@
+name: titan-v3 aggregate seed budget
+
+on:
+  push:
+    branches:
+      - sol-granary/titan-v3-aggregate-seed-budget-20260909-01
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/**
+      - .github/workflows/titan-v3-aggregate-seed-budget.yml
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/**
+      - .github/workflows/titan-v3-aggregate-seed-budget.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-aggregate-seed-budget-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts-and-route-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile and run focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget
+        run: |
+          set -euo pipefail
+          python -m py_compile aggregate_seed_budget.py audit_routes.py test_aggregate_seed_budget.py
+          python -m unittest -v test_aggregate_seed_budget.py
+
+      - name: Decode and audit exact current route bank
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget
+        run: |
+          set -euo pipefail
+          python audit_routes.py --output route-audit.json | tee route-audit.stdout.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report = json.loads(Path("route-audit.json").read_text(encoding="utf-8"))
+          if report.get("schema") != "titan-v3-aggregate-seed-route-audit/v1":
+              raise SystemExit("unexpected route-audit schema")
+          if report.get("route_count") != 4:
+              raise SystemExit(f"expected exact four-route bank, got {report.get('route_count')!r}")
+          if report.get("duplicate_count") != len(report.get("duplicates", [])):
+              raise SystemExit("duplicate count mismatch")
+          if report.get("tail_safe_count") != len(report.get("tail_safe", [])):
+              raise SystemExit("tail-safe count mismatch")
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a", encoding="utf-8") as handle:
+                  handle.write("## Exact route audit\n\n")
+                  handle.write(f"- routes: {report['route_count']}\n")
+                  handle.write(f"- duplicate same-crop active-prefix rows: {report['duplicate_count']}\n")
+                  handle.write(f"- strict trailing opportunities: {report['tail_safe_count']}\n")
+          PY
+
+      - name: Upload exact route audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-aggregate-seed-route-audit
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/route-audit.json
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/route-audit.stdout.json
+          if-no-files-found: error
+          retention-days: 14
