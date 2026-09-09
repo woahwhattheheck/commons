@@ -113,21 +113,26 @@ def install(agent: Any) -> dict[str, Any]:
 
 
 def wrap(agent: Any) -> Any:
-    """Wrap exactly one agent instance; identity when already wrapped."""
+    """Wrap one agent instance and patch every controller initialization.
+
+    ``TitanAgent`` deliberately reconstructs its controller after a deadline
+    cancellation. Installation therefore cannot be a one-shot per-agent flag:
+    every completed ``_initialize`` must re-apply the idempotent route patch to
+    the current controller route bank.
+    """
     if getattr(agent, "_land_admission_wrapped", False):
         return agent
 
     original_initialize = agent._initialize
     state: dict[str, Any] = {
-        "installed": False,
+        "initializations": 0,
         "receipt": None,
     }
 
     def _initialize() -> None:
         original_initialize()
-        if not state["installed"]:
-            state["receipt"] = install(agent)
-            state["installed"] = True
+        state["initializations"] += 1
+        state["receipt"] = install(agent)
 
     agent._initialize = _initialize
     agent._land_admission_wrapped = True
