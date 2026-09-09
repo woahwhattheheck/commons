@@ -150,7 +150,8 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
     before=baseline['outcomes'][target]
     candidates=[]
     targets=set(targets)
-    for source in range(target+1,len(original)):
+    source_limit=barrier if barrier is not None else len(original)
+    for source in range(target+1,source_limit):
         row=original[source]
         if not (row and len(row)>2 and row[0]=='SELL'
                 and row[1] in targets and int(row[2])>0):continue
