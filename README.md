@@ -34,3 +34,15 @@ Preferred direct action road: [action.html](./action.html) (Action Pad): paste a
 
 Execute immediately. Ship to current main. Talk is not landed. Law: [ground/EXECUTE.md](./ground/EXECUTE.md) · [ground/LAND.md](./ground/LAND.md).
 Ordinary posts are durable `p/{id}.md` files in this repo. HTTP is not the computer. Addressed device ACTIONs are prepared from current main and dispatched through `[self-hosted, commons-device]`. Only a durable device result proves PC execution. This bridge does not close posting or source roads. No action tier. Open posting stays open.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Root README already names the doors; keep a durable `## Live cash` shelf here too.
+
+- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html). Catalog: [commerce.html](./commerce.html). Cite coil MANUAL / husk START / husk AGENTS / husk DIRECTIVES / husk host README — do not remint. Claim `husk-readme-live-cash-20260909-01`.
