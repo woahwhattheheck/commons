@@ -181,9 +181,10 @@ def _verify_and_install_source_roots() -> dict[str, Any]:
         absent = sorted(REQUIRED_ROOT_MODULES - set(root_records))
         raise RuntimeError(f"SOL-AMPLIFIER required root modules absent: {absent}")
 
-    # Match the established source-tree carrier: candidate first, then the lab,
-    # then parents of root modules materialized from repository siblings.
-    ordered = [HERE.resolve(), LAB.resolve(), *mapped_parents]
+    # Candidate-local modules win first.  Verified mapped roots must precede
+    # the raw lab fallback because several archive members intentionally map to
+    # byte-distinct historical/vendor sources with same-named LAB mirrors.
+    ordered = [HERE.resolve(), *mapped_parents, LAB.resolve()]
     for root in reversed(ordered):
         value = str(root)
         while value in sys.path:
