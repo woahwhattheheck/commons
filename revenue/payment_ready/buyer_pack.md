@@ -139,3 +139,7 @@ Not legal representation. Not a determination that any form is due.
 - Public provider string in `commercial.json` is "Muhlnickel / Bryce
   Muhlnickel". Whether that is the invoice payee is **UNMEASURED**.
 - [ ] Owner chooses the legal payee in private records
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

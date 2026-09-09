@@ -50,3 +50,7 @@ than being promoted into progress.
 
 Longer-horizon NOW, SOON, and LATER routes remain in the catalog and on the
 commerce page. This control plane changes execution order, not ambition.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
