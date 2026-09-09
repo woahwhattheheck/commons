@@ -16,6 +16,9 @@ class DummyController:
     def __init__(self, routes):
         self.R = routes
 
+    def act(self, obs):
+        return deepcopy(self.R["MAIN"][int(obs["step"])])
+
 
 class DummyAgent:
     def __init__(self, routes):
@@ -25,6 +28,40 @@ class DummyAgent:
 
     def _initialize(self):
         self.calls += 1
+
+
+class SpatialRebuilder:
+    """Minimal predecessor matching SpatialTempo.install/_begin route behavior."""
+
+    def __init__(self):
+        self.calls = 0
+        self._crop_routes = None
+
+    def install(self, controller):
+        pristine = controller.R
+        self._crop_routes = pristine
+        original = controller.act
+
+        def act(obs):
+            self.calls += 1
+            controller.R = {key: list(rows) for key, rows in pristine.items()}
+            return original(obs)
+
+        controller.act = act
+
+
+class SpatialAgent:
+    def __init__(self, routes):
+        self.source_routes = routes
+        self.controller = None
+        self.spatial = SpatialRebuilder()
+        self.diagnostics = {}
+        self.calls = 0
+
+    def _initialize(self):
+        self.calls += 1
+        self.controller = DummyController(self.source_routes)
+        self.spatial.install(self.controller)
 
 
 class LandOverlayContracts(unittest.TestCase):
@@ -89,6 +126,7 @@ class LandOverlayContracts(unittest.TestCase):
         self.assertIs(agent.controller.R, first)
         self.assertEqual(agent.calls, 2)
         self.assertEqual(agent._land_7498_report.insertions, 2)
+        self.assertFalse(agent._land_7498_spatial_rebound)
 
     def test_wrap_reinstalls_after_controller_replacement(self):
         agent = DummyAgent({"MAIN": self.route()})
@@ -106,6 +144,52 @@ class LandOverlayContracts(unittest.TestCase):
         self.assertEqual(agent.controller.R["MAIN"][98]["market"], [["BUY_LAND"]])
         self.assertEqual(replacement_source[74]["market"], [])
         self.assertIs(agent._land_7498_controller, agent.controller)
+
+    def test_spatial_predecessor_keeps_candidate_rows_live_and_control_isolated(self):
+        source = {"MAIN": self.route()}
+        before = deepcopy(source)
+        agent = SpatialAgent(source)
+        land.wrap(agent)
+        agent._initialize()
+
+        installed = agent.controller.R
+        self.assertIsNot(installed, source)
+        self.assertIs(agent.spatial._crop_routes, installed)
+        self.assertTrue(agent._land_7498_spatial_rebound)
+        self.assertTrue(agent.diagnostics["land_74_98"]["spatial_pristine_rebound"])
+
+        # SpatialTempo-style _begin rebuilds controller.R from its captured
+        # pristine mapping before the producer reads the current step.
+        first = agent.controller.act({"step": 74})
+        second = agent.controller.act({"step": 98})
+        self.assertIn(["BUY_LAND"], first["market"])
+        self.assertIn(["BUY_LAND"], second["market"])
+
+        # The shared source remains byte/value clean for a same-process control.
+        self.assertEqual(source, before)
+        control = DummyController(source)
+        self.assertNotIn(["BUY_LAND"], control.act({"step": 74})["market"])
+        self.assertNotIn(["BUY_LAND"], control.act({"step": 98})["market"])
+
+        # Reconstructing the controller creates a fresh captured mapping; the
+        # wrapper must bind that predecessor again rather than trust agent state.
+        first_controller = agent.controller
+        agent._initialize()
+        self.assertIsNot(agent.controller, first_controller)
+        self.assertTrue(agent._land_7498_spatial_rebound)
+        self.assertIn(["BUY_LAND"], agent.controller.act({"step": 74})["market"])
+        self.assertIn(["BUY_LAND"], agent.controller.act({"step": 98})["market"])
+        self.assertEqual(source, before)
+
+    def test_unrecognized_spatial_wrapper_fails_before_route_publication(self):
+        source = {"MAIN": self.route()}
+        agent = DummyAgent(source)
+        agent.spatial = object()
+        original = agent.controller.R
+        with self.assertRaisesRegex(RuntimeError, "SpatialTempo producer wrapper"):
+            land.install(agent)
+        self.assertIs(agent.controller.R, original)
+        self.assertEqual(source["MAIN"][74]["market"], [])
 
     def test_invalid_inputs_rejected(self):
         with self.assertRaises(TypeError):
