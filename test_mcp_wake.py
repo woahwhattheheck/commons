@@ -8,14 +8,18 @@ import os
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
+import mcp_wake as mcp_wake_module
 from mcp_wake import (
+    FINDER_UNVERIFIED,
     JOB_ID,
     OTHER_BC,
     PRODUCTION_CANARY_ID,
+    PRODUCTION_CANARY_PATH,
     SURFACES,
     TEST_FILES,
     catalog_from_row,
@@ -213,9 +217,25 @@ class TestMcpWake(unittest.TestCase):
                 {"job_id": PRODUCTION_CANARY_ID, "status": "DONE", "owner_claim": "SPECTER"}
             )
         )
+        self.assertEqual(row["finder_state"], "CALIBRATED")
+        self.assertTrue(row["calibrated"])
+        self.assertEqual(row["calibration_id"], PRODUCTION_CANARY_PATH)
+        self.assertEqual(row["find_state"], "FOUND")
+        self.assertEqual(row["find_count"], 3)
         self.assertEqual(row["wake"], "VERIFIED")
 
-    def test_tick_receipt_is_not_counted_as_a_job(self):
+    def test_missing_wake_jobs_directory_is_finder_unverified(self):
+        with tempfile.TemporaryDirectory() as root:
+            row = measure_root(root)
+        self.assertIsNone(row["wake_job_json"])
+        self.assertEqual(row["wake_jobs"], [])
+        self.assertEqual(row["finder_state"], FINDER_UNVERIFIED)
+        self.assertEqual(row["wake"], FINDER_UNVERIFIED)
+        self.assertEqual(classify(row)["state"], FINDER_UNVERIFIED)
+        self.assertIsNone(catalog_from_row(row)["wake_job_json"])
+        self.assertIn("wake_jobs/*.json", row["search_space"]["pattern"])
+
+    def test_tick_receipt_only_directory_is_finder_unverified(self):
         with tempfile.TemporaryDirectory() as root:
             folder = os.path.join(root, "wake_jobs")
             os.makedirs(folder)
@@ -224,9 +244,49 @@ class TestMcpWake(unittest.TestCase):
             ) as handle:
                 json.dump({"state": "TICKED", "wake_count": 0}, handle)
             row = measure_root(root)
-        self.assertEqual(row["wake_job_json"], 0)
+        self.assertIsNone(row["wake_job_json"])
         self.assertEqual(row["wake_jobs"], [])
-        self.assertEqual(row["wake"], "EMPTY")
+        self.assertEqual(row["finder_state"], FINDER_UNVERIFIED)
+        self.assertEqual(row["wake"], FINDER_UNVERIFIED)
+        self.assertIn(PRODUCTION_CANARY_PATH, row["calibration_missed"])
+        self.assertEqual(classify(row)["state"], FINDER_UNVERIFIED)
+        self.assertIsNone(catalog_from_row(row)["wake_job_json"])
+
+    def test_queue_without_known_present_canary_is_finder_unverified(self):
+        with tempfile.TemporaryDirectory() as root:
+            folder = os.path.join(root, "wake_jobs")
+            os.makedirs(folder)
+            with open(
+                os.path.join(folder, "grok-community-evidence-portable-20260828.json"),
+                "w",
+                encoding="utf-8",
+            ) as handle:
+                json.dump(
+                    {
+                        "job_id": "grok-community-evidence-portable-20260828",
+                        "status": "LEASED",
+                        "owner_claim": "GROK_EXECUTOR",
+                    },
+                    handle,
+                )
+            row = measure_root(root)
+        self.assertEqual(row["finder_state"], FINDER_UNVERIFIED)
+        self.assertIsNone(row["wake_job_json"])
+        self.assertEqual(row["wake"], FINDER_UNVERIFIED)
+        self.assertIn(PRODUCTION_CANARY_PATH, row["calibration_missed"])
+        self.assertEqual(classify(row)["state"], FINDER_UNVERIFIED)
+
+    def test_unreadable_listing_is_finder_unverified(self):
+        with tempfile.TemporaryDirectory() as root:
+            os.makedirs(os.path.join(root, "wake_jobs"))
+            with mock.patch.object(
+                mcp_wake_module.os, "listdir", side_effect=OSError("denied")
+            ):
+                census = mcp_wake_module._wake_job_census(root)
+        self.assertIsNone(census["wake_job_json"])
+        self.assertEqual(census["finder_state"], FINDER_UNVERIFIED)
+        self.assertIn("unreadable", census["finder_note"])
+        self.assertIsNone(census["find_count"])
 
     def test_real_job_tick_does_not_invoke_or_write_repo(self):
         job = verify_job()
@@ -265,6 +325,11 @@ class TestMcpWake(unittest.TestCase):
         self.assertTrue(row["inventory"])
         self.assertGreaterEqual(row["surface_count"], 4)
         self.assertTrue(row["job_tools"])
+        self.assertEqual(row["finder_state"], "CALIBRATED")
+        self.assertTrue(row["calibrated"])
+        self.assertEqual(row["calibration_id"], PRODUCTION_CANARY_PATH)
+        self.assertEqual(row["find_state"], "FOUND")
+        self.assertGreaterEqual(row["find_count"], 1)
         self.assertGreaterEqual(row["wake_job_json"], 1)
         canary = next(
             item
@@ -292,6 +357,8 @@ class TestMcpWake(unittest.TestCase):
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
         self.assertFalse(catalog["job"]["wrote_wake_jobs"])
         self.assertFalse(catalog["idle"]["live_resume"])
+        self.assertEqual(catalog["finder_state"], "CALIBRATED")
+        self.assertTrue(catalog["calibrated"])
         with open(os.path.join(ROOT, "ground", "MCP_WAKE.json"), encoding="utf-8") as handle:
             wake_catalog = json.load(handle)
         specter = next(

@@ -37,6 +37,11 @@ if ROOT not in sys.path:
 from harness_wake.idle_resume import probe_idle_resume
 from independent_commons_mcp.jobs import JobStore
 
+if __package__:
+    from .finder_zero import FINDER_UNVERIFIED, calibrate, report_find, search_space
+else:
+    from finder_zero import FINDER_UNVERIFIED, calibrate, report_find, search_space
+
 
 DEFAULT_INVENTORY = os.path.join("ground", "MCP_INVENTORY.json")
 DEFAULT_CATALOG = os.path.join("ground", "MCP_WAKE.json")
@@ -70,6 +75,8 @@ ADAPTER_PATHS = (
 )
 WAKE_JOBS = "wake_jobs"
 PRODUCTION_CANARY_ID = "specter-watchdog-head-proof-20260825-01"
+PRODUCTION_CANARY_PATH = os.path.join(WAKE_JOBS, PRODUCTION_CANARY_ID + ".json").replace("\\", "/")
+WAKE_JOB_PATTERN = "wake_jobs/*.json excluding _last_tick.json"
 
 
 def _exists(root, rel):
@@ -80,10 +87,103 @@ def _wake_job_json_count(root):
     return _wake_job_census(root)["wake_job_json"]
 
 
+def _wake_job_search_space(root):
+    """Name the exact filesystem finder space used by the wake census."""
+    folder = os.path.abspath(os.path.join(root, WAKE_JOBS))
+    return search_space(
+        query="mcp-wake canonical JSON census plus known-present %s"
+        % PRODUCTION_CANARY_PATH,
+        path=folder,
+        pattern=WAKE_JOB_PATTERN,
+    )
+
+
+def _wake_job_listing(root):
+    """Return one filtered directory snapshot, or a named finder failure."""
+    folder = os.path.abspath(os.path.join(root, WAKE_JOBS))
+    space = _wake_job_search_space(root)
+    if not os.path.isdir(folder):
+        return None, None, space, (
+            "wake_jobs directory unavailable: %s; absence is %s, never 0"
+            % (folder, FINDER_UNVERIFIED)
+        )
+    try:
+        entries = sorted(os.listdir(folder))
+    except OSError as exc:
+        return None, None, space, (
+            "wake_jobs directory unreadable: %s (%s); absence is %s, never 0"
+            % (folder, exc, FINDER_UNVERIFIED)
+        )
+    names = []
+    hits = []
+    for name in entries:
+        path = os.path.join(folder, name)
+        if (
+            not name.endswith(".json")
+            or name == "_last_tick.json"
+            or not os.path.isfile(path)
+        ):
+            continue
+        names.append(name)
+        hits.append(os.path.join(WAKE_JOBS, name).replace("\\", "/"))
+    return names, hits, space, ""
+
+
+def _finder_wake_failure(space, note, calibration=None):
+    calibration = calibration or {}
+    return {
+        "wake_jobs": [],
+        "wake_job_json": None,
+        "finder_state": FINDER_UNVERIFIED,
+        "finder_note": str(note or "wake_jobs finder failed"),
+        "search_space": space,
+        "calibrated": False,
+        "calibration_id": PRODUCTION_CANARY_PATH,
+        "calibration_state": calibration.get("state") or FINDER_UNVERIFIED,
+        "calibration_missed": list(calibration.get("missed") or []),
+        "find_state": FINDER_UNVERIFIED,
+        "find_count": None,
+        "find_note": str(note or "wake_jobs finder failed"),
+    }
+
+
 def _wake_job_census(root):
-    """One snapshot: count and rows come from the same listing."""
-    rows = _wake_job_rows(root)
-    return {"wake_jobs": rows, "wake_job_json": len(rows)}
+    """One calibrated snapshot: rows and count come from the same listing."""
+    names, hits, space, error = _wake_job_listing(root)
+    if names is None:
+        return _finder_wake_failure(space, error)
+
+    calibration = calibrate(hits, [PRODUCTION_CANARY_PATH])
+    if not calibration.get("calibrated"):
+        return _finder_wake_failure(
+            space,
+            calibration.get("note") or "known-present wake calibration failed",
+            calibration,
+        )
+
+    find = report_find(hits, space, True)
+    if find.get("state") == FINDER_UNVERIFIED:
+        return _finder_wake_failure(
+            space,
+            find.get("note") or "calibrated wake listing was not measurable",
+            calibration,
+        )
+
+    rows = _wake_job_rows(root, names=names)
+    return {
+        "wake_jobs": rows,
+        "wake_job_json": len(rows),
+        "finder_state": "CALIBRATED",
+        "finder_note": calibration.get("note") or "finder calibrated",
+        "search_space": space,
+        "calibrated": True,
+        "calibration_id": PRODUCTION_CANARY_PATH,
+        "calibration_state": calibration.get("state") or "CALIBRATED",
+        "calibration_missed": [],
+        "find_state": find.get("state"),
+        "find_count": find.get("count"),
+        "find_note": find.get("note"),
+    }
 
 
 def is_canonical_wake_job(item):
@@ -110,6 +210,8 @@ def is_canonical_wake_job(item):
 def _wake_state(wake_json, wake_jobs):
     """VERIFIED only when every canonical row is DONE. Else CANDIDATE/EMPTY."""
     rows = list(wake_jobs or [])
+    if wake_json is None:
+        return FINDER_UNVERIFIED
     if wake_json <= 0:
         return "EMPTY"
     if len(rows) != int(wake_json):
@@ -126,21 +228,28 @@ def _wake_state(wake_json, wake_jobs):
     return "CANDIDATE"
 
 
-def _wake_job_rows(root):
-    """Read every job file. Invalid files stay visible, never silent.
+def _wake_job_rows(root, names=None):
+    """Read every listed job file. Invalid files stay visible, never silent.
 
     Executor-queue rows stay in the census. VERIFIED uses canonical canaries.
+    When names are supplied they are the already-filtered calibrated snapshot.
     """
     folder = os.path.join(root, WAKE_JOBS)
-    if not os.path.isdir(folder):
-        return []
+    supplied_names = names is not None
+    if names is None:
+        if not os.path.isdir(folder):
+            return []
+        try:
+            names = sorted(os.listdir(folder))
+        except OSError:
+            return []
     rows = []
-    for name in sorted(os.listdir(folder)):
+    for name in names:
         path = os.path.join(folder, name)
         if (
             not name.endswith(".json")
             or name == "_last_tick.json"
-            or not os.path.isfile(path)
+            or (not supplied_names and not os.path.isfile(path))
         ):
             continue
         stem = name[:-5]
@@ -327,8 +436,12 @@ def measure_from_rows(facts):
     inventory_surfaces = list(facts.get("inventory_surfaces") or [])
     tests = list(facts.get("tests") or [])
     wake_jobs = list(facts.get("wake_jobs") or [])
-    if "wake_job_json" in facts:
-        wake_json = int(facts.get("wake_job_json") or 0)
+    finder_state = str(facts.get("finder_state") or "")
+    if finder_state == FINDER_UNVERIFIED:
+        wake_json = None
+    elif "wake_job_json" in facts:
+        raw_wake_json = facts.get("wake_job_json")
+        wake_json = None if raw_wake_json is None else int(raw_wake_json)
     else:
         wake_json = len(wake_jobs)
     inventory = bool(facts.get("inventory"))
@@ -355,6 +468,16 @@ def measure_from_rows(facts):
         "wake": wake,
         "wake_job_json": wake_json,
         "wake_jobs": wake_jobs,
+        "finder_state": finder_state,
+        "finder_note": str(facts.get("finder_note") or ""),
+        "search_space": facts.get("search_space") or {},
+        "calibrated": bool(facts.get("calibrated")),
+        "calibration_id": str(facts.get("calibration_id") or ""),
+        "calibration_state": str(facts.get("calibration_state") or ""),
+        "calibration_missed": list(facts.get("calibration_missed") or []),
+        "find_state": str(facts.get("find_state") or ""),
+        "find_count": facts.get("find_count"),
+        "find_note": str(facts.get("find_note") or ""),
         "job": job,
         "grok": grok,
         "idle": idle,
@@ -379,6 +502,15 @@ def classify(row):
         return {
             "state": "NOT_LANDED",
             "note": "census tried to record secrets. Drop them. Status only.",
+        }
+    if (
+        row.get("finder_state") == FINDER_UNVERIFIED
+        or row.get("wake") == FINDER_UNVERIFIED
+    ):
+        return {
+            "state": FINDER_UNVERIFIED,
+            "note": row.get("finder_note")
+            or "wake_jobs finder failed execution or calibration. Absence is unverified.",
         }
     job = row.get("job") or {}
     idle = row.get("idle") or {}
@@ -459,6 +591,16 @@ def measure_root(root):
         "job_tools": _has_job_tools(root),
         "wake_job_json": census["wake_job_json"],
         "wake_jobs": census["wake_jobs"],
+        "finder_state": census.get("finder_state"),
+        "finder_note": census.get("finder_note"),
+        "search_space": census.get("search_space"),
+        "calibrated": census.get("calibrated"),
+        "calibration_id": census.get("calibration_id"),
+        "calibration_state": census.get("calibration_state"),
+        "calibration_missed": census.get("calibration_missed"),
+        "find_state": census.get("find_state"),
+        "find_count": census.get("find_count"),
+        "find_note": census.get("find_note"),
         "job": verify_job(),
         "grok_exists": os.path.exists(grok_home),
         "idle": probe_idle_resume(OTHER_BC),
@@ -476,6 +618,7 @@ def catalog_from_row(row):
     grok = row.get("grok") or {}
     idle = row.get("idle") or {}
     job = row.get("job") or {}
+    wake_json = row.get("wake_job_json")
     return {
         "source_id": "rivet-ship-mcp-wake-20260825-01",
         "slack_ts": SLACK_TS,
@@ -486,8 +629,16 @@ def catalog_from_row(row):
         "inventory": bool(row.get("inventory")),
         "job_tools": bool(row.get("job_tools")),
         "wake": row.get("wake"),
-        "wake_job_json": int(row.get("wake_job_json") or 0),
+        "wake_job_json": None if wake_json is None else int(wake_json),
         "wake_jobs": list(row.get("wake_jobs") or []),
+        "finder_state": row.get("finder_state"),
+        "finder_note": row.get("finder_note"),
+        "search_space": row.get("search_space") or {},
+        "calibrated": bool(row.get("calibrated")),
+        "calibration_id": row.get("calibration_id"),
+        "calibration_state": row.get("calibration_state"),
+        "find_state": row.get("find_state"),
+        "find_count": row.get("find_count"),
         "production_canaries": [
             {
                 "job_id": str(item.get("job_id") or ""),
@@ -593,14 +744,14 @@ def _self_test():
             "tests": list(TEST_FILES),
             "job_tools": True,
             "wake_job_json": 0,
-                "job": {
-                    "ok": True,
-                    "state": "TICKED",
-                    "action": "STOP",
-                    "reason": "NOT_DUE",
-                    "invoke_model": False,
-                    "wrote_wake_jobs": False,
-                },
+            "job": {
+                "ok": True,
+                "state": "TICKED",
+                "action": "STOP",
+                "reason": "NOT_DUE",
+                "invoke_model": False,
+                "wrote_wake_jobs": False,
+            },
             "grok_exists": False,
             "idle": probe_idle_resume(OTHER_BC),
         }
