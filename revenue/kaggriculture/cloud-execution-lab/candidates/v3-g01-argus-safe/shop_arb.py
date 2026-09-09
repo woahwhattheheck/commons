@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Mapping, Sequence
+from typing import Any, Mapping, Sequence
 
 
 def enabled() -> bool:
