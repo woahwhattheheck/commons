@@ -611,6 +611,8 @@ def solve_all(
     optimizer_distance_units: str | None = None,
     tracker_factory: Callable[[], TrackerLike] | None = None,
 ) -> list[dict[str, object]]:
+    if not detections:
+        raise AdapterError("cannot solve an empty detection collection")
     rows: list[dict[str, object]] = []
     groups = group_detections(detections)
     if isinstance(bounds, Mapping):
