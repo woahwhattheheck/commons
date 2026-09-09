@@ -42,12 +42,16 @@ def main(argv=None) -> int:
         receipt["sha256"]["liquidity_haircut"] = runner.sha256_file(
             HERE / "liquidity_haircut.py"
         )
+        receipt["sha256"]["selected_sell_core"] = runner.sha256_file(
+            runner.LAB / "selected_sell_core.py"
+        )
         receipt["sha256"]["source_audit"] = runner.sha256_file(HERE / "audit_change.py")
         receipt["candidate_bundle"] = runner.tree_sha256(HERE)
         receipt["ablation"] = {
             "operation": "titan-v3-horizon-liquidity-20260909-sol-kepler-01",
             "factor": 0.95,
-            "only_runtime_change": "MarketPath artificial-horizon carry factor 1.0 -> 0.95",
+            "target": "selected_sell_core.MarketPath.score",
+            "only_runtime_change": "selected optimizer carry contribution 1.0 -> 0.95",
             "canonical_files_modified": False,
         }
         return receipt
