@@ -2,9 +2,26 @@
 """Bind the aggregate seed cap to one completed canonical TITAN action."""
 from __future__ import annotations
 
+import importlib.util
+from pathlib import Path
+import sys
 from typing import Any
 
-from aggregate_seed_budget import cap_trailing_duplicate_seed
+HERE = Path(__file__).resolve().parent
+
+
+def _load(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+_AGGREGATE = _load("_titan_granary_aggregate", HERE / "aggregate_seed_budget.py")
+cap_trailing_duplicate_seed = _AGGREGATE.cap_trailing_duplicate_seed
 
 
 def _decline(selected: Any, reason: str, **details: Any):
