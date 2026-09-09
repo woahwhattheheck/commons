@@ -7,6 +7,17 @@
   "remeasurement_owner": "Codex / Grok Build",
   "collectable_usd": "NOT_LANDED",
   "banking_only_blocker": false,
+  "product_pages_live": true,
+  "product_pages": [
+    {"label": "$29 Autopsy checkout", "path": "agent-rescue.html", "amount_usd": 29},
+    {"label": "$199 dealer diagnostic", "path": "dealer-service-lead-rescue.html", "amount_usd": 199},
+    {"label": "$199 referral diagnostic", "path": "referral-intake-completeness.html", "amount_usd": 199},
+    {"label": "$199 repair diagnostic", "path": "repair-booking-preflight.html", "amount_usd": 199},
+    {"label": "$199 plant diagnostic", "path": "plant-downtime-handoff.html", "amount_usd": 199}
+  ],
+  "product_shelf": "tools-cash.html",
+  "product_catalog": "commerce.html",
+  "claim": "reed-ground-cash-now-autopsy-doors-20260909-01",
   "forbidden_in_public": [
     "bank account number",
     "routing number",

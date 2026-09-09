@@ -94,9 +94,16 @@ class MvmtcFastenerEvidenceTests(unittest.TestCase):
         shadow = mod.MvmtcEvidenceShadow()
         shadow.replay(self.records, self.manifest)
         lot_id = sorted(shadow.evidence_packs)[0]
-        for bad in ("", "auto", "system", "bot", "x"):
-            with self.assertRaises(ValueError):
-                shadow.release_evidence_pack(lot_id, bad)
+        before = shadow.state_digest()
+        for bad in (
+            "", "auto", "system", "bot", "x",
+            "System Reviewer", "AI Reviewer", "Bot Reviewer", "service account",
+            "agent007 reviewer", "pipeline/reviewer", None, 42,
+        ):
+            with self.subTest(bad=bad):
+                with self.assertRaises(ValueError):
+                    shadow.release_evidence_pack(lot_id, bad)
+                self.assertEqual(before, shadow.state_digest())
         released = shadow.release_evidence_pack(lot_id, "A. Reviewer")
         self.assertEqual(released["status"], "RELEASED_HUMAN_REVIEW")
         self.assertEqual(released["released_by"], "A. Reviewer")

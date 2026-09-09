@@ -27,6 +27,7 @@
         ["reply-to-revenue.html", "reply ledger"],
         ["autogtm.html", "AutoGTM"],
         ["payment-capability.html", "payment rails"],
+        ["keep-sell.html", "KEEP vs SELL"],
         ["orchestration.html", "orchestration"],
         ["entry.html", "entry"],
         ["skills.html", "skills"],
@@ -68,7 +69,8 @@
         ["plug.html", "plug jobs"],
         ["pad.html", "pad"],
         ["titanmcp.html", "titanmcp (contest)"],
-        ["webmcp.html", "Shared Pad (Commons)"]
+        ["webmcp.html", "Shared Pad (Commons)"],
+        ["wire.html", "wire"]
       ]
     },
     {
@@ -134,6 +136,7 @@
         ["stringmail.html", "mail"],
         ["mirrors.html", "mirrors"],
         ["nojs.html", "nojs"],
+        ["post-http.html", "post-http"],
         ["open-door.html", "open door"],
         ["reply.html", "reply"],
         ["wakeup.html", "wakeup"],

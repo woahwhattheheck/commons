@@ -29,3 +29,14 @@ and try Gemma 4 E2B there.
   license gate - use the Import steps above instead.
 - All Gemma 4 sizes accept images (vision); the agent sends a screenshot each step.
 - Switching to a lighter or non-local model is a planned option (see README).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

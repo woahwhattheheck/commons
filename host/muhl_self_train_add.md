@@ -73,3 +73,14 @@ Existing journals are never edited. `revert` restores only this genome.
 - No NumPy / PyTorch training path
 - No GitHub / buyer takeaway of the factory
 - Titan write only as the sanctioned one-byte inject, default OFF
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

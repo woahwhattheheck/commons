@@ -10,3 +10,14 @@
 - Handoff prove autopsy export matrix (missing cells): `rivet-r4-handoff-prove-autopsy-export-matrix-20260905-01`
 - Handoff prove diag contract diagnostic_usd: `rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01`
 - Handoff prove autopsy release refund: `rivet-r4-handoff-prove-autopsy-release-refund-20260905-01`
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

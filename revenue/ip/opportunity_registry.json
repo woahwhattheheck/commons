@@ -116,8 +116,8 @@
       "receipts": [
         {
           "path": "ground/RINGDELTA.md",
-          "sha256": "7ee5fdfda7157294ac1b09ebf44780839d39bb8d6764f3252a766a9d3ede2afe",
-          "bytes": 2460
+          "sha256": "fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441",
+          "bytes": 3016
         },
         {
           "path": "ground/RINGDELTA.json",
@@ -185,8 +185,8 @@
         },
         {
           "path": "ground/03_EVIDENCE_ANNEX.md",
-          "sha256": "f63fc39de2ad57455ff3cee9fa99260b4e4e433a9e88b15d8fb29bde4537ab3a",
-          "bytes": 3641
+          "sha256": "2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8",
+          "bytes": 4197
         }
       ]
     },
@@ -214,8 +214,8 @@
       "receipts": [
         {
           "path": "ground/TRUST.md",
-          "sha256": "3a7ccd61ab3ea88a48a8db2287674683a2061e5e915598013fb9db24a0f95751",
-          "bytes": 2406
+          "sha256": "9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2",
+          "bytes": 2962
         },
         {
           "path": "trust.html",
@@ -266,8 +266,8 @@
         },
         {
           "path": "resources.html",
-          "sha256": "caf48b75521d144801d3c709b49721f89fc286c07e2ede5593a88dba8df49785",
-          "bytes": 12738
+          "sha256": "d96d98607d38418658a07c29b60fe07b1d4d7a44b46108f200211667cfe0bdb1",
+          "bytes": 13024
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",

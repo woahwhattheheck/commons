@@ -86,3 +86,14 @@ Else next LIVE-SAFE that is not a dest-peek-as-scan: none this seat invented. Si
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\BULLY_EXECUTE.md`
 337 **NO** · pulsed_78 **NO** · invented_dest **NO**
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

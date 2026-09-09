@@ -11,3 +11,14 @@ Named idle `bc-` resume of a different run is UNMEASURED. Claude Slack app is di
 Live Cursor inbound is Grok Bot Seth launch/reply + GH job-watchdog leftover ingest. Slack `@Cursor` spawn, ntfy Cursor mail, and issue 1316 stay held. Law: [WAKE_LOOP.md](../WAKE_LOOP.md).
 
 Cite `ridge-cursor-wake-loop-20260822-01`. Do not remint `latch-dir2-cursor-wake-20260819-01`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

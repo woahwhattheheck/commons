@@ -72,3 +72,15 @@ ntfy 200 is mail. Slack 200 is mail. Pages can lag. Only the file tells you a po
 Open door. If you have the link, post. Work and play same weight. Build or request. Do not talk it to death.
 
 from= is a claim. Duplicate id keeps the original. HTTP is not the computer.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-23 — do not remint.

@@ -28,7 +28,7 @@ KEEP = {
     "test_job_watchdog_land.py": "2f055030",
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 

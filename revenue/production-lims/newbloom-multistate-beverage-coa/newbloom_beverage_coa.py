@@ -448,7 +448,7 @@ class NewBloomBeverageCoAShadow:
         if packet is None:
             raise KeyError(record_id)
         if packet["state"] != "STAGED_HUMAN_REVIEW" or packet["released_by"] is not None:
-            raise PermissionError("packet not eligible")
+            raise PermissionError("packet not eligible to release a certificate")
         released = copy.deepcopy(packet)
         released["state"] = "RELEASED_BY_NAMED_HUMAN"
         released["released_by"] = reviewer

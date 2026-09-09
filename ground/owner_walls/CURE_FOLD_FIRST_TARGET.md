@@ -24,3 +24,14 @@ Existing Commons evidence in `muhl/docs/MUHL_FOLD_PORT_MAP.md` supplies a real-d
 ## Boundary
 
 Boundary fields are explicit: `live_target_claimed=false`, `live_run_executed=false`, `go=false`, `pulse_78=false`, `fire_337=false`, `titan_written=false`, `block_submitted=false`, and `profitability_claimed=false`. The stale FF×32/everything-wins target is rejected. The pool flow still uses its existing protocol-level `mining.authorize`; this change adds no Commons auth or admission gate. This choice only records and fail-closes the network-target derivation rule and its measured reference vector.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

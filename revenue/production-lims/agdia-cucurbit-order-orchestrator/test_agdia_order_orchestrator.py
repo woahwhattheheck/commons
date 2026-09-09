@@ -89,4 +89,16 @@ class AgdiaOrderTests(unittest.TestCase):
         with self.assertRaises(PermissionError):s.release_report("AGDIA-CASE-0001","Second Reviewer")
         self.assertEqual("Named QA Reviewer",s.staged_reports["AGDIA-CASE-0001"]["released_by"])
 
+    def test_release_rejects_reserved_tokens_and_single_token_labels_without_mutation(self):
+        s=AgdiaOrderShadow(); s.replay(self.records,self.manifest)
+        before=copy.deepcopy(s.staged_reports["AGDIA-CASE-0001"])
+        for actor in ("System Reviewer","AI Reviewer","Service Account","bot-reviewer","agent_01",
+                      "Serv ice Account","Sys tem Reviewer","Autom ation Reviewer",
+                      "Autono mous Reviewer","A I Reviewer","Reviewer","12 34",None):
+            with self.subTest(actor=actor):
+                with self.assertRaises(PermissionError):s.release_report("AGDIA-CASE-0001",actor)
+                self.assertEqual(before,s.staged_reports["AGDIA-CASE-0001"])
+        x=s.release_report("AGDIA-CASE-0001","QA Reviewer")
+        self.assertEqual(("RELEASED_BY_NAMED_HUMAN","QA Reviewer"),(x["state"],x["released_by"]))
+
 if __name__=="__main__":unittest.main()

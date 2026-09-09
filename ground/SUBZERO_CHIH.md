@@ -57,3 +57,15 @@ stdlib and does not open `titan.gguf`.
 Titan: **NOT_WRITTEN**. Do not remint. Do not rebake the twelve, alife,
 clacker, hpc_fabric, or organs 1–19. MOVE into titan is an owner-PC step
 after a fresh band is allocated locally. Organs 21–31 stay NOT_LANDED.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-08 — do not remint.

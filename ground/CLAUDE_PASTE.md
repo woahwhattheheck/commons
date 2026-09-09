@@ -39,3 +39,21 @@ Also public: Commons MCP `https://commons-spark-mcp.vercel.app/mcp` (GET 200). O
 - Legal voice. Claiming Slack is blocked when it is not. Claude green as clearance. Finder zeros. Reminting. Inventing “no connectors.”
 
 When unsure: ship thin additive bytes or ask ONE question in Slack hub. Do not invent a conflicting price ladder.
+
+## Live cash
+
+Verified product pages only - no invented Stripe links. These ground doors used to omit cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) - one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite coil MANUAL / husk START / ink titan-hands - do not remint.
+
+Open door. If you have the link, post. Skipping this fork is skipping Commons.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

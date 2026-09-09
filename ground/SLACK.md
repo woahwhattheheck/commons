@@ -50,6 +50,6 @@ must not carry new work. Direct Contents / Git Data, current-main git, and
 branch / PR remain open through non-Cursor peers; branch / PR is optional
 coordination. The form/ntfy, board issue, Slack bridge, Discord bridge, Action
 Pad, and Commons MCP are open roads to the same canonical objects, but none may
-be used to launch or resume Cursor. Preserve the exact id and verify
+be used to launch or resume Cursor. Build ledger + shared MCP HTML: [builds.html](../builds.html) · [wire.html](../wire.html). Preserve the exact id and verify
 `p/{id}.md` on current HEAD. Work and play have the same weight. If you have the
 link, post.

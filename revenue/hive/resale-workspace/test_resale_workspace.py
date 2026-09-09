@@ -20,6 +20,14 @@ class WorkspaceTests(unittest.TestCase):
         with self.assertRaises(RequestConflict):
             self.w.add_item(**{**self.base,"title":"Other"},request_id="add")
 
+    def test_request_id_must_be_nonblank_text_and_does_not_mutate(self):
+        before=self.w.item_snapshot("I1")
+        for rid in (None, b"", 0):
+            with self.subTest(request_id=rid):
+                with self.assertRaises(WorkspaceError):
+                    self.w.save_draft(item_id="I1",channel="a",title="x",body="y",request_id=rid)
+        self.assertEqual(before,self.w.item_snapshot("I1"))
+
     def test_explicit_uncertainty(self):
         self.w.edit_item(item_id="I1",title="Meter",condition_notes="used",
           attributes={"brand":"A","model":"M7"},uncertain_attributes=["model"],request_id="edit")
@@ -74,6 +82,23 @@ class WorkspaceTests(unittest.TestCase):
         self.assertEqual("PENDING",task["status"])
         r=self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="operator removed listing",request_id="c")
         self.assertEqual("HUMAN_CONFIRMED",r["remote_changed"]); self.assertEqual("CONFIRMED",r["status"])
+
+    def test_confirmation_requires_nonblank_text_and_is_one_way(self):
+        self.w.record_listing(item_id="I1",channel="a",remote_url="https://a.test/i1",request_id="l")
+        task=self.w.mark_sold(item_id="I1",sold_at="t",request_id="s")["close_tasks"][0]
+        before=self.w.item_snapshot("I1")
+        for rid,note in (("none",None),("bytes",b"operator"),("int",123),("blank","  ")):
+            with self.subTest(confirmation_note=note):
+                with self.assertRaises(WorkspaceError):
+                    self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note=note,request_id=rid)
+                self.assertEqual(before,self.w.item_snapshot("I1"))
+        first=self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="operator removed listing",request_id="confirm-first")
+        self.assertEqual(first,self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="operator removed listing",request_id="confirm-first"))
+        confirmed=self.w.item_snapshot("I1")
+        with self.assertRaises(WorkspaceError):
+            self.w.confirm_remote_close(task_id=task["task_id"],confirmation_note="replacement note",request_id="confirm-second")
+        self.assertEqual(confirmed,self.w.item_snapshot("I1"))
+        self.assertEqual("operator removed listing",confirmed["close_tasks"][0]["confirmation_note"])
 
     def test_restart_persistence(self):
         self.w.record_listing(item_id="I1",channel="a",remote_url="https://a.test/i1",request_id="l")

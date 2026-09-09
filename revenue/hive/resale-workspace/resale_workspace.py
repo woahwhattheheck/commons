@@ -30,7 +30,7 @@ INSERT OR IGNORE INTO s VALUES(1,'{"items":{},"next":1}');""")
         try: return json.loads(c.execute("SELECT doc FROM s WHERE id=1").fetchone()[0])
         finally: c.close()
     def _write(self,rid,op,payload,fn):
-        if not str(rid).strip(): raise WorkspaceError("request_id required")
+        if not isinstance(rid,str) or not rid.strip(): raise WorkspaceError("request_id required")
         h=_hash(payload); c=self._c()
         try:
             c.execute("BEGIN IMMEDIATE"); old=c.execute("SELECT * FROM r WHERE id=?",(rid,)).fetchone()
@@ -112,12 +112,13 @@ INSERT OR IGNORE INTO s VALUES(1,'{"items":{},"next":1}');""")
         return self._write(request_id,"sold",p,f)
 
     def confirm_remote_close(self,*,task_id,confirmation_note,request_id):
-        if not str(confirmation_note).strip(): raise WorkspaceError("confirmation required")
+        if not isinstance(confirmation_note,str) or not confirmation_note.strip(): raise WorkspaceError("confirmation required")
         p={"task_id":task_id,"confirmation_note":confirmation_note}
         def f(d):
             for item_id,i in d["items"].items():
                 for t in i["close_tasks"]:
                     if t["task_id"]==task_id:
+                        if t["status"]!="PENDING": raise WorkspaceError("close task already confirmed")
                         t["status"]="CONFIRMED"; t["confirmation_note"]=confirmation_note
                         return {"task_id":task_id,"item_id":item_id,"channel":t["channel"],"remote_url":t["remote_url"],
                           "status":"CONFIRMED","confirmation_note":confirmation_note,"remote_changed":"HUMAN_CONFIRMED"}

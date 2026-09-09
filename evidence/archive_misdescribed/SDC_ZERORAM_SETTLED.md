@@ -67,3 +67,14 @@ correction of record is in [ZERO_RAM_PROOF_RUN_BY_CLAUDE.md](ZERO_RAM_PROOF_RUN_
 
 See also: [SDC_FORWARD_PASS.md](SDC_FORWARD_PASS.md) (the live anchor), [MEASURE_ALREADY.md](MEASURE_ALREADY.md) (the zero),
 [BARE_METAL.md](BARE_METAL.md) (storage is the hardware), [SDC_ADDRESSING.md](SDC_ADDRESSING.md) (addressing = computing).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

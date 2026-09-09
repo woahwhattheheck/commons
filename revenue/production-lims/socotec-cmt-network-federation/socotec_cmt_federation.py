@@ -54,14 +54,23 @@ def build_registry() -> Dict[str, Dict[str, Any]]:
     return registry
 
 
+def _namespace_number(value: Any) -> int | None:
+    if not isinstance(value, str):
+        return None
+    match = re.fullmatch(r"SOC-(\d{2})", value)
+    if match is None:
+        return None
+    number = int(match.group(1))
+    return number if 1 <= number <= 25 else None
+
+
 def allowed_transfer(origin: str, destination: str) -> bool:
-    if origin == destination:
-        return True
-    try:
-        origin_n = int(origin.split("-")[-1])
-        destination_n = int(destination.split("-")[-1])
-    except (ValueError, IndexError):
+    origin_n = _namespace_number(origin)
+    destination_n = _namespace_number(destination)
+    if origin_n is None or destination_n is None:
         return False
+    if origin_n == destination_n:
+        return True
     predecessor = 25 if destination_n == 1 else destination_n - 1
     return origin_n == predecessor
 
@@ -74,7 +83,8 @@ def named_human(value: str) -> bool:
     if not isinstance(value, str):
         return False
     tokens = [token.casefold() for token in re.findall(r"[A-Za-z0-9]+", value)]
-    if len(tokens) < 2:
+    alpha_tokens = [token for token in tokens if any(char.isalpha() for char in token)]
+    if len(tokens) < 2 or len(alpha_tokens) < 2:
         return False
     if any(token in RESERVED_ACTOR_TOKENS for token in tokens):
         return False
@@ -418,6 +428,7 @@ def cli(argv: List[str] | None = None) -> int:
     args = parser.parse_args(argv)
     manifest = verify_manifest(args.fixture, args.manifest)
     jobs = load_fixture(args.fixture)
+    expanded_fixture_sha256 = sha256_text(canonical_json(jobs))
     federation = SocotecCmtFederation()
     first = federation.process_many(jobs)
     first_summary = summarize(first)
@@ -427,6 +438,7 @@ def cli(argv: List[str] | None = None) -> int:
     replay_summary = summarize(replay)
     ok = (
         len(jobs) == manifest["fixture_count"] == 500
+        and expanded_fixture_sha256 == manifest["expanded_fixture_sha256"]
         and first_summary["states"] == {"READY": 400, "HOLD": 100}
         and first_summary["hold_codes"] == manifest["expected_hold_codes"]
         and len(federation.state.accessions) == 400
@@ -444,6 +456,7 @@ def cli(argv: List[str] | None = None) -> int:
         "reports_staged": len(federation.state.staged_reports),
         "audit_sha256": after_replay,
         "fixture_sha256": manifest["fixture_sha256"],
+        "expanded_fixture_sha256": expanded_fixture_sha256,
         "manifest_sha256": manifest["manifest_sha256"],
     }))
     return 0 if ok else 1
