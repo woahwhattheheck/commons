@@ -58,3 +58,7 @@ covered. S139's held Gmail draft and attachment are unchanged and unsent.
 
 Original portfolio and SEDGE/FLORA solver authorship remains intact. HAZEL owns
 the separate checker-format repair; algorithm and benchmark ownership is unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -415,7 +415,7 @@ class DualPredecessorGateTests(unittest.TestCase):
             {"predecessor_a": 0, "predecessor_b": 3},
         )
 
-    def test_rejects_relabelled_copy_of_first_predecessor_panel(self):
+    def test_identical_panel_bytes_are_valid_for_distinct_closures(self):
         (
             paths,
             _,
@@ -436,11 +436,18 @@ class DualPredecessorGateTests(unittest.TestCase):
             second,
         )
 
-        with self.assertRaisesRegex(
-            GateError,
-            "predecessor game panels must be byte-distinct",
-        ):
-            dual.run_dual_gate(**paths)
+        report, code = dual.run_dual_gate(**paths)
+
+        self.assertEqual(code, 0)
+        self.assertEqual(report["verdict"], "PROMOTE")
+        self.assertEqual(
+            report["input_sha256"]["predecessor_a_games"],
+            report["input_sha256"]["predecessor_b_games"],
+        )
+        self.assertNotEqual(
+            report["input_sha256"]["predecessor_a_artifact"],
+            report["input_sha256"]["predecessor_b_artifact"],
+        )
 
     def test_rejects_semantic_copy_with_different_jsonl_bytes(self):
         (
@@ -460,6 +467,50 @@ class DualPredecessorGateTests(unittest.TestCase):
         self.assertNotEqual(
             _sha256(paths["predecessor_a_games_path"]),
             _sha256(paths["predecessor_b_games_path"]),
+        )
+        _rewrite_contract_evidence_receipt(
+            paths,
+            "b",
+            second,
+        )
+
+        with self.assertRaisesRegex(
+            GateError,
+            "semantically identical",
+        ):
+            dual.run_dual_gate(**paths)
+
+    def test_rejects_signed_zero_semantic_copy(self):
+        (
+            paths,
+            first,
+            second,
+            _,
+            _,
+            first_rows,
+            _,
+            _,
+        ) = _write_case(self.tmp_path)
+        first_rows = deepcopy(first_rows)
+        second_rows = deepcopy(first_rows)
+        first_rows[0]["scores"][0] = 0.0
+        second_rows[0]["scores"][0] = -0.0
+        _write_jsonl(
+            paths["predecessor_a_games_path"],
+            first_rows,
+        )
+        _write_jsonl(
+            paths["predecessor_b_games_path"],
+            reversed(second_rows),
+        )
+        self.assertNotEqual(
+            _sha256(paths["predecessor_a_games_path"]),
+            _sha256(paths["predecessor_b_games_path"]),
+        )
+        _rewrite_contract_evidence_receipt(
+            paths,
+            "a",
+            first,
         )
         _rewrite_contract_evidence_receipt(
             paths,

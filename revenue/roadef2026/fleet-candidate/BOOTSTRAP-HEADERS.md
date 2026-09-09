@@ -45,3 +45,7 @@ Native run identity: `quartz-roadef-native-20260908-01`. Initial claim
 existing ROADEF thread. Public-instance measurements are separate evidence and
 are not claimed by this build repair. The S139 draft, attachment and submission
 remain held. Original SEDGE, FLORA, candidate and Orange attribution is retained.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

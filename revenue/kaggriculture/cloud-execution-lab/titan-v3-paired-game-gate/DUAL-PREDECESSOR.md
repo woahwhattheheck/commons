@@ -39,19 +39,22 @@ The gate requires:
 - the same observed candidate artifact and candidate panel in both comparisons;
 - the same engine, runner, normalized seeds, opponents, seats, expected-cell
   count, and policy;
-- distinct predecessor names, observed executable artifact bytes, baseline
-  panel bytes, and canonicalized baseline score matrices;
+- distinct predecessor names and observed executable artifact bytes;
 - declared artifact hashes that equal the hashes of the supplied artifact
   bundles;
 - a candidate artifact that does not alias either predecessor artifact;
 - exact command and panel identity agreement among contract, evidence, receipt,
   and the inherited single-gate report.
 
-Exact-byte and semantic predecessor-panel alias checks are intentionally
-conservative. Two genuinely distinct predecessor executions can theoretically
-produce identical score matrices. Without stronger independently trusted run
-custody, that equality is indistinguishable from counting one execution twice,
-so the gate returns `INVALID` instead of certifying a dual-predecessor win.
+Canonical semantic identity is derived from each validated and sorted cell key
+plus its baseline score vector. Numerically equivalent signed zeros are
+normalized so `0.0` and `-0.0` cannot create different semantic identities.
+
+Byte-identical predecessor panels are valid when the two observed, receipt-bound
+closure artifacts remain distinct. Reserialized or signed-zero copies whose
+file bytes differ but whose canonical score matrices match stay `INVALID`:
+different serialization is not evidence of a second execution. Closure artifacts
+are the execution theorem; result bytes are the observation.
 
 Each comparison must independently satisfy the existing complete-grid,
 provenance, metric, numeric-closure, and policy rules in `gate.py`.
@@ -138,15 +141,17 @@ matrix hashes, and each comparison exit code.
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
-  python3 -m unittest -v test_dual_predecessor_gate.py
+  python3 -m unittest -v test_dual_predecessor_gate.py test_equal_result_bytes.py
 ```
 
-The thirteen-case adversarial suite covers custody-bound two-predecessor
-promotion, one-sided rejection, exact-byte and reserialized semantic copies of
-the first predecessor panel, candidate and engine artifact declaration drift,
-duplicate predecessor artifact bytes, candidate/predecessor artifact aliasing,
-receipt tamper, post-receipt candidate-panel substitution, exact-command drift,
-stale inner candidate bytes, and the CLI/report path.
+The fifteen-case adversarial suite covers custody-bound two-predecessor
+promotion, one-sided rejection, byte-identical panels with distinct closures,
+reserialized semantic copies of the first predecessor panel, signed-zero
+semantic equivalence, candidate and
+engine artifact declaration drift, duplicate predecessor artifact bytes,
+candidate/predecessor artifact aliasing, receipt tamper, post-receipt
+candidate-panel substitution, exact-command drift, stale inner candidate
+bytes, and the CLI/report path.
 
 `PROMOTE` proves only the supplied custody-bound panel under the inherited
 paired-gate threat model. A receipt is an immutable hash binding, not a digital

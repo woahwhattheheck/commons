@@ -70,3 +70,7 @@ Changed:
 
 The solver, checker, fixtures, portfolio, S139 draft, qualification attachment,
 and submission state are unchanged. No organizer message or submission was sent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

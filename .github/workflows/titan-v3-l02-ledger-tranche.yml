@@ -42,18 +42,65 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install exact interpreter dependency
-        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+      - name: Classify whether the 192-game panel is required
+        id: trigger
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PUSH_BASE_SHA: ${{ github.event.before }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/l02-results"
+          zero="0000000000000000000000000000000000000000"
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            base="${PR_BASE_SHA:-}"
+          else
+            base="${PUSH_BASE_SHA:-}"
+          fi
+          if [ -n "$base" ] && [ "$base" != "$zero" ] && ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            git fetch --quiet --depth=1 origin "$base" || true
+          fi
+          args=()
+          unknown=()
+          if [ -n "$base" ] && [ "$base" != "$zero" ] && git cat-file -e "$base^{commit}" 2>/dev/null; then
+            git diff --name-only "$base" HEAD > "$RUNNER_TEMP/l02-changed.txt"
+            while IFS= read -r path; do
+              [ -n "$path" ] && args+=(--changed-file "$path")
+            done < "$RUNNER_TEMP/l02-changed.txt"
+          else
+            # A branch-creation push has an all-zero before SHA. Do not replace
+            # that unknown history with HEAD^: a multi-commit new branch could
+            # have changed executable L02 bytes before its tip commit.
+            unknown=(--unknown-base)
+            base=""
+          fi
+          python revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/panel_trigger.py \
+            --event "$EVENT_NAME" \
+            --head "$(git rev-parse HEAD)" \
+            --base "${base:-}" \
+            --output "$RUNNER_TEMP/l02-results/L02-TRIGGER.json" \
+            --markdown "$RUNNER_TEMP/l02-results/L02-PANEL.md" \
+            "${unknown[@]+"${unknown[@]}"}" \
+            "${args[@]+"${args[@]}"}"
+          run_panel="$(python -c 'import json,os; print(str(json.load(open(os.environ["RUNNER_TEMP"]+"/l02-results/L02-TRIGGER.json"))["run_panel"]).lower())')"
+          echo "run_panel=$run_panel" >> "$GITHUB_OUTPUT"
+          echo "L02 panel required: $run_panel"
 
       - name: Pure state and evidence contracts
         shell: bash
         run: |
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche
-          PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_ledger_tranche.py test_panel.py
-          python -m py_compile candidate.py ledger_tranche.py run_panel.py test_ledger_tranche.py test_panel.py
+          PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_ledger_tranche.py test_panel.py test_panel_trigger.py
+          python -m py_compile candidate.py ledger_tranche.py run_panel.py panel_trigger.py test_ledger_tranche.py test_panel.py test_panel_trigger.py
+
+      - name: Install exact interpreter dependency
+        if: steps.trigger.outputs.run_panel == 'true'
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
 
       - name: Verify unchanged canonical release source
+        if: steps.trigger.outputs.run_panel == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -62,6 +109,7 @@ jobs:
           git diff --exit-code -- .
 
       - name: Build the pinned Apex opponent once
+        if: steps.trigger.outputs.run_panel == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -71,6 +119,7 @@ jobs:
           sha256sum "$APEX/agent.so" | tee "$RUNNER_TEMP/apex-agent.sha256"
 
       - name: Run complete 192-game development comparison
+        if: steps.trigger.outputs.run_panel == 'true'
         shell: bash
         run: |
           set -euo pipefail

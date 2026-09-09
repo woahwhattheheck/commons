@@ -69,3 +69,7 @@ decision or a claim of stronger hidden-instance performance. The separate S139
 qualification attachment and submission state are untouched. SEDGE retains base
 solver credit, FLORA continuation credit, and the coordinator candidate-selection
 ownership. Original Slack claim: `1788838451.219639`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

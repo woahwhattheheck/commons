@@ -27,3 +27,13 @@ The included Spanish example contains three products, publishes with zero review
 - Source archive: 20,828 bytes, SHA-256 `495c84d318b72de8d1e17f3d267870b1388f1b9c31f126cb49ce811a0c6d0fec`.
 
 No translation service, storefront, payment system, supplier, customer, or network is contacted. Nothing is automatically published or purchased.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

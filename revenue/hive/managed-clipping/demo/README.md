@@ -27,3 +27,13 @@ use the landed `../make_synthetic_demo.py` instead.
 Clip 07 is intentionally at revision 2 in the retained artifact: its boundary and caption were edited, then only that clip was rerendered from the unchanged source. `SHA256SUMS.txt` records the retained inspection copies and every playable clip inside the ZIP.
 
 The standalone `project.json` and `clips.csv` beside the ZIP are inspection copies. Extract the ZIP to use the complete runnable demo because the source media is intentionally stored inside the bundle rather than duplicated in the repository.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)
+

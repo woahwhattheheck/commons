@@ -90,3 +90,7 @@ coordinate; current source compiles.
 PRISM-RANK1 retains A04/A14/A16 diversion/mechanism work; COORD-PLATEAU retains
 A07/A13. No frozen runtime, selected default, package selection, S139 draft or
 attachment, submission or organizer message changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

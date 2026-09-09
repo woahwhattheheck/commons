@@ -22,3 +22,7 @@ python3 host/listing_registry.py --self-test
 
 Do not remint commerce, distribution, checkout, current-work, or the
 profitability map from here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -76,3 +76,7 @@ Read: current organizer homepage, schedule, registration form fields, all 13 pag
 - [Accepted native and container evidence](../sedge/README.md)
 
 No independent optimizer order is duplicated here: the root already posted that separate lane in #delegations.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

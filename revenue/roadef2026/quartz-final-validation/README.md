@@ -35,3 +35,7 @@ worker samples are not dedicated-host, equal-work or Docker certification.
 
 This completes claim `1788846312.934629`. No policy default, runtime, S139
 draft/attachment, submission or organizer message changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

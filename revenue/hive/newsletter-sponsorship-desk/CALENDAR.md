@@ -87,3 +87,13 @@ This is a downloadable snapshot, **not calendar synchronization**. It does not e
 The implementation follows the relevant [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545.html) representation rules: CRLF lines; folding by 75 UTF-8 octets; TEXT escaping; UTC timestamp properties; persistent UID and source SEQUENCE; DATE-valued starts with whole-day duration. For snapshots without METHOD, DTSTAMP tracks LAST-MODIFIED, not file-export time. No METHOD, ORGANIZER or ATTENDEE is emitted. A calendar must contain a component, so an empty export reports no placements rather than inventing one.
 
 The 30-method standard-library test suite executes the real formatter, separate byte-level unfolding, real temporary SQLite reopen/reschedule/cancel operations, real CLI subprocesses and filesystem writes, and a standalone loopback HTTP adapter. That adapter demonstrates consumption of the component, not integration with the desk's production route. No third-party calendar-client interoperability, full application workflow, customer fulfillment, deployment or revenue result is asserted by this component's test result.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

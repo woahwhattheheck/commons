@@ -110,3 +110,13 @@ script reports its mode explicitly and preserves the distinction.
 
 Only fictitious customer data was used. No customer, sale, payment, hosted
 availability, live rental booking or outbound delivery is claimed.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -1144,3 +1144,7 @@ This corpus translates the official RFP's Section 3 functional requirements, Sec
 ## Non-Claims
 
 No City or prospect contact, bid submission, instrument compatibility, customer reference, security certification, independent audit, production deployment, regulatory release, or external transmission is claimed. No secrets or live data are present.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

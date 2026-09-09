@@ -13,3 +13,7 @@ RapidJSON and other checker dependencies retain their embedded upstream notices
 and copied license files. Original license texts accompany the staged context
 and runtime image. No registration, submission, acceptance, or competition result
 is implied by this package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

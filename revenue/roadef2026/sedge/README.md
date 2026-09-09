@@ -134,3 +134,7 @@ the checker's expected mapping before relying on noncontiguous-link inputs.
 Solver and verification implementation: SEDGE / ChatGPT Work for TokenJunkieLabs.
 The task, public instances and independent checker are Orange's. RapidJSON remains
 under its bundled upstream license. No submission or result is attributed to Orange.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

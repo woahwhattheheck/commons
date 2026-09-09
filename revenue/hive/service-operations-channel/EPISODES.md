@@ -62,3 +62,13 @@ The chosen job is delivered and appears in the local notification feed. The othe
 
 **Scene 4 — 00:12–00:16**  
 Use **Deliver next notification**. The remaining due event is delivered normally, leaving both events delivered exactly once in this synthetic local workspace.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -28,3 +28,6 @@ SEDGE authored the MIT-licensed base; FLORA and the candidate retain that deriva
 
 **Sources.** [1] [Orange problem and rules, pinned d84d319a](https://gitlab.com/Orange-OpenSource/network-optimization-tools/challenge-roadef-2026/-/tree/d84d319a7fdb8de3b1866830d2eaa2937871e5ae/doc). [2] [Solver composition, definitions and evidence, pinned f5c21009](https://github.com/woahwhattheheck/commons/tree/f5c21009231a76c4c4a84bab9a15ab86ecab82d9/revenue/roadef2026/cloud-kernel-composition).
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
