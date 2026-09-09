@@ -28,3 +28,7 @@ python3 bowser_morner_gate.py fixtures/bowser_120_specimens.json.gz.b64
 `fixtures/manifest.json` pins both the deterministic gzip/base64 fixture SHA-256 and decoded JSON SHA-256 and expected deterministic manifest/audit
 hashes. Re-running the same fixture produces byte-identical canonical output and zero new
 accessions or state transitions because the harness is a pure read-only shadow projection.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

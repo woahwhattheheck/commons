@@ -76,3 +76,7 @@ Keep the public offer accurate. Do not invent buyers or cash. Fulfill only again
 `LIVE_OFFER_NOT_AN_APPLICATION` — not a numeric forecast.
 
 submission_status: `NOT_APPLICABLE`. award_status: `NOT_AWARDED`. cash_received_usd: `0`. contacted: `false`. partnership_claimed: `false`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -17,3 +17,7 @@ python -m unittest -v test_newbloom_beverage_coa.py
 python -m py_compile newbloom_beverage_coa.py test_newbloom_beverage_coa.py
 python newbloom_beverage_coa.py
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

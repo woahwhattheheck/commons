@@ -104,3 +104,7 @@ Ranked by distance from a complete argument, from the saved index (`open_index.t
 * Sources: saved index of all prize-bearing Erdős problems; `cdl.txt` (arXiv:2505.04283 in full);
   Beeson's *Triangle Tiling* slides (59 pp., read in full); `faq.html`, `flogin.html` (the route
   evidence quoted above); the exact problem pages consulted.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

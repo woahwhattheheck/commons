@@ -23,3 +23,7 @@ The compact fixture is a signed deterministic generator. `manifest.json` pins bo
 ## Boundary
 
 Synthetic/deidentified inputs only. This package makes no public-health, regulatory, accreditation, compliance, diagnostic, or release decision. It performs no production/state/provider/customer write, no external send, no outreach, no spend, and no autonomous release. A real integration requires buyer/vendor-approved schemas and golden round trips outside this repository fixture.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

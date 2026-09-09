@@ -20,3 +20,7 @@ python -m unittest -v test_thompson_canton_cmt.py
 python -m py_compile thompson_canton_cmt.py test_thompson_canton_cmt.py
 python thompson_canton_cmt.py fixtures/thompson_100_jobs.json fixtures/manifest.json
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -30,3 +30,7 @@ python -m unittest -v test_delaware_newlab_lineage.py
 ```
 
 All adapters remain simulated/read-only. Production schemas, buyer-approved methods, facility identifiers, QC policy, de-identified golden round trips, and named release roles remain buyer-owned inputs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
