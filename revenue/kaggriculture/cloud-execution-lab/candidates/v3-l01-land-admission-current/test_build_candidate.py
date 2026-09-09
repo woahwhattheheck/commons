@@ -2,17 +2,48 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
+import runpy
 import tarfile
 import tempfile
 import unittest
 from pathlib import Path
 
-from build_candidate import ENTRYPOINT_NEEDLE, build
+from build_candidate import (
+    ENTRYPOINT_NEEDLE,
+    ENTRYPOINT_REPLACEMENT,
+    build,
+    patch_entrypoint,
+)
+
+LANE = Path(__file__).resolve().parent
+LAB = LANE.parents[1]
 
 
 class BuildCandidateTests(unittest.TestCase):
-    def test_build_is_archive_bound_and_additive(self):
+    def test_current_release_receipt_counts_embedded_source_manifest(self):
+        builder = runpy.run_path(str(LAB / "build_integrated.py"))
+        data, _source, rendered = builder["render"]()
+        with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as handle:
+            regular = [member.name for member in handle.getmembers() if member.isfile()]
+
+        committed = json.loads(
+            (LAB / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertIn("SOURCE.json", regular)
+        self.assertEqual(rendered["runtime_files"], len(regular))
+        self.assertEqual(committed, rendered)
+        self.assertEqual(
+            hashlib.sha256(
+                (LAB / committed["path"]).read_bytes()
+            ).hexdigest(),
+            committed["sha256"],
+        )
+
+    def test_build_is_archive_bound_and_wraps_every_reconstruction(self):
         with tempfile.TemporaryDirectory() as raw:
             root = Path(raw)
             lab = root / "lab"
@@ -21,13 +52,28 @@ class BuildCandidateTests(unittest.TestCase):
             export.mkdir(parents=True)
             runtime.mkdir(parents=True)
 
+            # Model the current deadline-aware shape: _new_instance has one
+            # construction boundary but agent can call it from two branches.
             source_main = (
-                "_INSTANCE = None\n"
-                "def agent(root, json):\n"
-                "    global _INSTANCE\n"
-                "    if _INSTANCE is None:\n"
+                "_INSTANCE = None\n\n"
+                "def _new_instance(root, feature_data):\n"
+                "    def FinalPressureAgent(*args, **kwargs):\n"
+                "        return object()\n"
+                "    features = feature_data\n"
+                "    admission = None\n"
                 + ENTRYPOINT_NEEDLE
-                + "    return _INSTANCE\n"
+                + "\n"
+                "def agent(step):\n"
+                "    global _INSTANCE\n"
+                "    replace = _INSTANCE is None or step == 0\n"
+                "    if step < 0 and replace:\n"
+                "        _INSTANCE = _new_instance(None, {})\n"
+                "    try:\n"
+                "        if replace:\n"
+                "            _INSTANCE = _new_instance(None, {})\n"
+                "    except TimeoutError:\n"
+                "        _INSTANCE = None\n"
+                "    return _INSTANCE\n"
             )
             package = root / "package"
             package.mkdir()
@@ -71,13 +117,31 @@ class BuildCandidateTests(unittest.TestCase):
             baseline = (root / "out/baseline/main.py").read_text(encoding="utf-8")
             candidate = (root / "out/land/main.py").read_text(encoding="utf-8")
             self.assertEqual(baseline, source_main)
-            self.assertIn("_wrap_land_admission", candidate)
+            self.assertEqual(candidate.count(ENTRYPOINT_REPLACEMENT), 1)
+            self.assertNotIn(ENTRYPOINT_NEEDLE.rstrip("\n"), candidate.splitlines())
+            self.assertEqual(
+                candidate.count(
+                    "from land_admission import wrap as _wrap_land_admission"
+                ),
+                1,
+            )
+            self.assertEqual(candidate.count("_INSTANCE = _new_instance"), 2)
+            self.assertEqual(receipt["hook_surface"], "_new_instance.return")
             self.assertEqual(receipt["baseline_runtime_files"], 2)
             self.assertEqual(receipt["candidate_runtime_files"], 3)
             self.assertNotEqual(
                 receipt["baseline_tree_sha256"],
                 receipt["candidate_tree_sha256"],
             )
+
+    def test_patch_rejects_constructor_drift_without_writing(self):
+        with tempfile.TemporaryDirectory() as raw:
+            path = Path(raw) / "main.py"
+            source = "def _new_instance():\n    return object()\n"
+            path.write_text(source, encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "constructor hook site"):
+                patch_entrypoint(path)
+            self.assertEqual(path.read_text(encoding="utf-8"), source)
 
 
 if __name__ == "__main__":
