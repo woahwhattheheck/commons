@@ -1,0 +1,112 @@
+name: TITAN V3 frozen seller exact-prefix ledger
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-frozen-seller-prefix-ledger.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-frozen-seller-prefix-ledger/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-frozen-seller-prefix-ledger-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-prefix-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind immutable triggering head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          [[ "$EXPECTED_HEAD" =~ ^[0-9a-f]{40}$ ]]
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/HEAD.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact official dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Compile and execute focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-frozen-seller-prefix-ledger
+          python -m py_compile prefix_ledger.py main.py run_development_screen.py test_prefix_ledger.py test_current_source_contract.py
+          PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_prefix_ledger.py test_current_source_contract.py
+
+      - name: Verify unchanged canonical package
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Run source-bound public development smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/prefix-ledger"
+          python revenue/kaggriculture/cloud-execution-lab/candidates/v3-frozen-seller-prefix-ledger/run_development_screen.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --runner-head "$(git rev-parse HEAD)" \
+            --seeds 2609099901,2609099902 \
+            --action-timeout 1.0 \
+            --startup-timeout 10.0 \
+            --game-timeout 180.0 \
+            --output "$RUNNER_TEMP/prefix-ledger/SCREEN.json" \
+            --markdown "$RUNNER_TEMP/prefix-ledger/SCREEN.md"
+
+      - name: Validate and publish readable receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/prefix-ledger/SCREEN.json"
+          test -s "$REPORT"
+          python - "$REPORT" "$RUNNER_TEMP/HEAD.sha" <<'PY'
+          import json, sys
+          from pathlib import Path
+          report = json.loads(Path(sys.argv[1]).read_text())
+          expected_head = Path(sys.argv[2]).read_text().strip()
+          assert report["schema_version"] == 1
+          assert report["operation"] == "op:titan-v3-frozen-seller-phantom-tail-ledger-20260909-01"
+          assert report["runner_head"] == expected_head
+          assert report["status"] in {"running", "failed", "complete"}
+          if report["status"] == "complete":
+              assert report["all_complete"]
+              assert len(report["completed_keys"]) == report["expected_games"]
+              assert report["summary"]["paired"]["decision"] in {
+                  "NO_SIGNAL", "DEVELOPMENT_SIGNAL", "REGRESSION_SIGNAL", "MIXED"
+              }
+          print("receipt_ok", report["status"], report["runner_head"][:12])
+          PY
+          if [[ -s "$RUNNER_TEMP/prefix-ledger/SCREEN.md" ]]; then
+            cat "$RUNNER_TEMP/prefix-ledger/SCREEN.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload exact-head evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-frozen-seller-prefix-ledger-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/HEAD.sha
+            ${{ runner.temp }}/prefix-ledger/
+          if-no-files-found: error
+          retention-days: 30
