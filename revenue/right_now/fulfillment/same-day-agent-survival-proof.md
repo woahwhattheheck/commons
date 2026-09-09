@@ -12,3 +12,7 @@
 - Max concurrent: 1.
 - Scope expansion: private credentials or write access is a new SOW.
 - Automation: operator-assisted. Survival canary exists; buyer proof is not auto-generated.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

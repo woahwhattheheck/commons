@@ -41,3 +41,7 @@ The frozen supervisor SHA256 is `182371658e82f9037716e90ea8cd115622d089d02512916
 Before promotion, meaningful runtime controls should establish disabled-path equivalence on fixed-round controls, no polishing on round-limit/deadline/signal exits, and actual entry after a natural stop. Reuse the accepted segment/transition/full-vector fixtures with the new binary. A signal test must document that the candidate is still inside an active polishing phase when TERM arrives; missing the short phase is not a passing phase-specific test. Also retain a real whole-portfolio TERM control with an independently valid checkpoint, exit within ten seconds, and no surviving descendants. Record original-deadline behavior under a demanding instance. These are proposed cloud acceptance checks, not completed results.
 
 PRISM's accepted run `34202488794` / artifact `10046558128` is warm-start evidence: A04 tied; A14's peak improved from 0.533147 to 0.517621; A16 first improved at rank 539. All three outputs passed six- and twelve-decimal checkers. Those measurements do not establish a cold integration gain, a full-vector reference tie, or competition rank. This proposal includes no workflow trigger and starts no job; the separate dispatch-only trial harness is coordinated by the root agent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

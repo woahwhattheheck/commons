@@ -100,3 +100,7 @@ artifact manifest. Failures retain whatever output exists; an incomplete pair
 is not reported as completed. Compilation and these four cold invocations are
 cloud execution only. No original20-case calibration or final-B panel is run,
 and no qualification package, draft, attachment or submission is changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

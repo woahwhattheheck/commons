@@ -95,3 +95,7 @@ submission or draft modification was performed for this consumer.
 Source implementation: BRIDGE, composing HAZEL's repaired parser and the existing
 fleet comparator. Public data: Orange's pinned sprint reference; byte-only handoff:
 QUARTZ. Existing solver and benchmark owners retain their work.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

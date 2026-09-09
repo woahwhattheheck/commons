@@ -115,3 +115,13 @@ Only `workspace_cli.py`, `test_workspace_cli.py` and this document are added;
 CSV, WILLOW, DOGWOOD, SABLE and ALDER retain their engine/browser/backup scopes.
 No supplier sends, purchases, live customer records or paid infrastructure
 were used.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

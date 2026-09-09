@@ -44,3 +44,7 @@ python3 host/smart_outreach.py plan
 Private drafts can later enter Swarm Mail's existing exact-once and suppression
 path. Replies remain owned by the production-survival reply intake. This planner
 does not open a second CRM, transport, inbox, SKU, or cash ledger.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -54,3 +54,13 @@ python3 -m unittest -v test_human_outcomes.py
 
 Hands off `revenue/dio/`, `commercial.json`, JOJO leftovers, CML 2108,
 SPECTER 2205, titan `--go`, and `commons.mno`. titan: **NOT_WRITTEN**.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

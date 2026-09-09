@@ -22,7 +22,8 @@ CHUNKS_DIR = "chunks"
 
 
 def day_of(rec: dict) -> str:
-    ts = str(rec.get("ts") or rec.get("durable_ts") or rec.get("carrier_ts") or "")
+    ts = str(rec.get("ts") or rec.get("durable_ts") or rec.get("carrier_ts") or "").strip()
+    ts = ts.strip("\"'")
     day = ts[:10]
     if len(day) == 10 and re.match(r"^\d{4}-\d{2}-\d{2}$", day):
         return day

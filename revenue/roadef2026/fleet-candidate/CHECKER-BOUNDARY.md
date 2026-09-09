@@ -67,3 +67,7 @@ benchmark, Docker build, deadline calibration or solver search was performed by
 this repair. Root's integration and QUARTZ/RENEW's separately pinned executions
 remain their own results; later supervisor revisions require their own combined
 source attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

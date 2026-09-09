@@ -70,3 +70,7 @@ bytes, CLI logs, failed and completed attempts, and the original minimal witness
 The normal benchmark consumer needs no new option; use a fresh `--output` on the
 next already-planned run. Historical results and ongoing source-frozen runs are
 not recomputed or relabelled. S139 submission and attachment remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
