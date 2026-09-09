@@ -124,7 +124,7 @@ class EntrypointDeadlineTests(unittest.TestCase):
         self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_finalization')
         self.assertTrue(fake.diagnostics['entrypoint_guard'])
 
-    def test_exhausted_prelude_keeps_receipt_without_starting_runtime(self):
+    def test_exhausted_cold_prelude_returns_without_constructing(self):
         fake = _FakeInstance(self.selected, duration=0)
         real_loads = __import__('json').loads
 
@@ -136,22 +136,29 @@ class EntrypointDeadlineTests(unittest.TestCase):
                 pass
             return feature_data
 
-        fake.features.budget_seconds = 0.02
-        fake.features.reserve_seconds = 0.005
         self.observation['step'] = 0
         with patch('json.loads', side_effect=delayed_loads), \
-                patch.object(self.main, '_new_instance', return_value=fake), \
-                patch.object(fake, 'act', side_effect=AssertionError('runtime started')):
+                patch.object(
+                    self.main, '_new_instance',
+                    side_effect=AssertionError('constructor started after deadline'),
+                ) as constructor:
             output = self.main.agent(self.observation, self.configuration)
         self.assertEqual(
             output,
             {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []},
         )
+        constructor.assert_not_called()
+        self.assertIsNone(self.main._INSTANCE)
+
+        # Deferring cold construction is recoverable: the next visible state
+        # initializes normally instead of retaining a partial step-zero object.
+        self.observation['step'] = 1
+        with patch.object(self.main, '_new_instance', return_value=fake) as constructor:
+            output = self.main.agent(self.observation, self.configuration)
+        constructor.assert_called_once()
+        self.assertEqual(output, self.selected)
         self.assertIs(self.main._INSTANCE, fake)
-        self.assertFalse(fake.ready)
-        self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_prelude')
-        self.assertGreaterEqual(fake.diagnostics['entrypoint_prelude_seconds'], 0.025)
-        self.assertEqual(fake.fallback_observations[-1]['step'], 0)
+        self.assertTrue(fake.ready)
 
     def test_late_runtime_is_bounded_and_returns_current_selected(self):
         later = deepcopy(self.selected)
