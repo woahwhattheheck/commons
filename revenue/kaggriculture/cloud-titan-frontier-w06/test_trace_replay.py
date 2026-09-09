@@ -94,6 +94,17 @@ class AnalysisTests(unittest.TestCase):
         ]
         self.assertEqual(len({json.dumps(item, sort_keys=True) for item in resulting}), 4)
 
+    def test_intervention_candidates_zero_limit_returns_empty(self):
+        rows = [
+            transition(0, 100, 100),
+            transition(1, 10, 100, {"farmer": ["PASS"], "hands": [],
+                                    "market": [["HIRE"], ["BUY_SEED", "WHEAT", 5]]}),
+        ]
+        selected = module.intervention_candidates(module.analyze_transitions(rows, 0), 0)
+        self.assertEqual(selected, [])
+        selected_neg = module.intervention_candidates(module.analyze_transitions(rows, 0), -1)
+        self.assertEqual(selected_neg, [])
+
 
 class ArchiveTests(unittest.TestCase):
     SOURCE = b'{"schema":"source"}\n'

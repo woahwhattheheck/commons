@@ -198,6 +198,8 @@ def _action_identity(action: dict[str, Any]) -> bytes:
 
 
 def intervention_candidates(analysis: dict[str, Any], limit: int) -> list[dict[str, Any]]:
+    if limit <= 0:
+        return []
     candidates: list[dict[str, Any]] = []
     seen_specs: set[tuple[Any, ...]] = set()
     seen_actions: set[tuple[int, bytes]] = set()
