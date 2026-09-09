@@ -30,7 +30,7 @@ INSERT OR IGNORE INTO s VALUES(1,'{"items":{},"next":1}');""")
         try: return json.loads(c.execute("SELECT doc FROM s WHERE id=1").fetchone()[0])
         finally: c.close()
     def _write(self,rid,op,payload,fn):
-        if not str(rid).strip(): raise WorkspaceError("request_id required")
+        if not isinstance(rid,str) or not rid.strip(): raise WorkspaceError("request_id required")
         h=_hash(payload); c=self._c()
         try:
             c.execute("BEGIN IMMEDIATE"); old=c.execute("SELECT * FROM r WHERE id=?",(rid,)).fetchone()
