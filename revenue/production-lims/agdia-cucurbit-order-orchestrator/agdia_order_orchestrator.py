@@ -144,7 +144,10 @@ class AgdiaOrderShadow:
         if not isinstance(reviewer_name,str):raise PermissionError("named human reviewer is required")
         reviewer=reviewer_name.strip()
         tokens=re.findall(r"[a-z]+",reviewer.casefold())
-        if len(tokens)<2 or any(token in RESERVED_RELEASE_ACTORS for token in tokens):raise PermissionError("named human reviewer is required")
+        reserved=any("".join(tokens[start:end]) in RESERVED_RELEASE_ACTORS
+                     for start in range(len(tokens))
+                     for end in range(start+1,len(tokens)+1))
+        if len(tokens)<2 or reserved:raise PermissionError("named human reviewer is required")
         report=self.staged_reports.get(case_id)
         if report is None:raise KeyError(case_id)
         if report["state"]!="STAGED_HUMAN_REVIEW" or report["released_by"] is not None:raise PermissionError("report is not awaiting human review")
