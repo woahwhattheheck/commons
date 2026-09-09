@@ -1,0 +1,292 @@
+name: titan-v1v2-seller-factorial-sol-helix
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v1v2-seller-factorial-sol-helix.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix/**'
+      - 'p/sol-helix-titan-v1v2-seller-factorial-20260909-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  PACKAGE: revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix
+  SEEDS: '2611092201,2611092203,2611092205,2611092207'
+  OPPONENTS: 'arlene,apex,public_bt12,v1'
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run pure contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$PACKAGE"
+          python -m unittest -v test_factorial.py
+          python -m py_compile materialize.py run_arm.py factorial_report.py test_factorial.py
+
+      - name: Prove all four exact-source materializations
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/contracts/arms" "$RUNNER_TEMP/contracts/receipts"
+          for arm in control carry_095 force_end both; do
+            python "$PACKAGE/materialize.py" \
+              --arm "$arm" \
+              --output "$RUNNER_TEMP/contracts/arms/$arm" \
+              --receipt "$RUNNER_TEMP/contracts/receipts/$arm.json"
+            python -B "$RUNNER_TEMP/contracts/arms/$arm/bound_entry.py" >/dev/null
+          done
+          test "$(find "$RUNNER_TEMP/contracts/receipts" -type f -name '*.json' | wc -l)" -eq 4
+
+      - name: Verify canonical release remains unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Retain contract receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v1v2-factorial-contracts-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            ${{ runner.temp }}/contracts/receipts/
+          if-no-files-found: error
+          retention-days: 30
+
+  screen:
+    needs: contracts
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        arm: [control, carry_095, force_end, both]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 70
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Build pinned Apex opponent
+        shell: bash
+        run: |
+          set -euo pipefail
+          APEX=revenue/kaggriculture/cloud-policy-portfolio/vendor/apex
+          g++ -O3 -std=c++17 -shared -fPIC -I"$APEX/source/include" -o "$APEX/agent.so" \
+            "$APEX/source/policy.cpp" "$APEX/submission_bridge.cpp"
+          sha256sum "$APEX/agent.so" | tee "$RUNNER_TEMP/apex-agent.sha256"
+
+      - name: Materialize closure-bound arm
+        shell: bash
+        env:
+          ARM: ${{ matrix.arm }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/arms" "$RUNNER_TEMP/evidence/$ARM"
+          python "$PACKAGE/materialize.py" \
+            --arm "$ARM" \
+            --output "$RUNNER_TEMP/arms/$ARM" \
+            --receipt "$RUNNER_TEMP/evidence/$ARM/MATERIALIZATION.json"
+
+      - name: Run official-engine arm grid
+        shell: bash
+        env:
+          ARM: ${{ matrix.arm }}
+        run: |
+          set -euo pipefail
+          set +e
+          python "$PACKAGE/run_arm.py" \
+            --arm "$ARM" \
+            --entry "$RUNNER_TEMP/arms/$ARM/bound_entry.py" \
+            --receipt "$RUNNER_TEMP/evidence/$ARM/MATERIALIZATION.json" \
+            --head "$(git rev-parse HEAD)" \
+            --seeds "$SEEDS" \
+            --opponents "$OPPONENTS" \
+            --workers 2 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$RUNNER_TEMP/evidence/$ARM/ARM.json" \
+            --markdown "$RUNNER_TEMP/evidence/$ARM/ARM.md"
+          rc=$?
+          set -e
+          printf '%s\n' "$rc" > "$RUNNER_TEMP/evidence/$ARM/exit-code.txt"
+          exit "$rc"
+
+      - name: Publish arm summary
+        if: always()
+        shell: bash
+        env:
+          ARM: ${{ matrix.arm }}
+        run: |
+          if [[ -f "$RUNNER_TEMP/evidence/$ARM/ARM.md" ]]; then
+            cat "$RUNNER_TEMP/evidence/$ARM/ARM.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            printf '# Factorial arm `%s` produced no report\n' "$ARM" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact arm evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v1v2-factorial-${{ matrix.arm }}-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            ${{ runner.temp }}/apex-agent.sha256
+            ${{ runner.temp }}/arms/${{ matrix.arm }}/
+            ${{ runner.temp }}/evidence/${{ matrix.arm }}/
+          if-no-files-found: error
+          retention-days: 30
+
+  analyze:
+    needs: [contracts, screen]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download independent arm artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: titan-v1v2-factorial-*-${{ github.run_id }}
+          path: ${{ runner.temp }}/download
+          merge-multiple: false
+
+      - name: Compute factorial main effects and interaction
+        id: analyze
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p "$RUNNER_TEMP/factorial" "$RUNNER_TEMP/missing"
+          printf '2\n' > "$RUNNER_TEMP/factorial/exit-code.txt"
+          for arm in control carry_095 force_end both; do
+            found="$(find "$RUNNER_TEMP/download" -type f -path "*/evidence/$arm/ARM.json" -print -quit 2>/dev/null || true)"
+            if [[ -z "$found" ]]; then
+              found="$RUNNER_TEMP/missing/$arm.json"
+            fi
+            printf '%s=%s\n' "$arm" "$found" | tee -a "$RUNNER_TEMP/factorial/input-paths.txt"
+            declare "path_${arm}=$found"
+          done
+          set +e
+          python "$PACKAGE/factorial_report.py" \
+            --control "$path_control" \
+            --carry-095 "$path_carry_095" \
+            --force-end "$path_force_end" \
+            --both "$path_both" \
+            --head "$(git rev-parse HEAD)" \
+            --bootstrap-draws 5000 \
+            --output "$RUNNER_TEMP/factorial/FACTORIAL.json" \
+            --markdown "$RUNNER_TEMP/factorial/FACTORIAL.md"
+          rc=$?
+          set -e
+          printf '%s\n' "$rc" > "$RUNNER_TEMP/factorial/exit-code.txt"
+          exit 0
+
+      - name: Publish factorial verdict
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f "$RUNNER_TEMP/factorial/FACTORIAL.md" ]]; then
+            cat "$RUNNER_TEMP/factorial/FACTORIAL.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# Factorial aggregation produced no verdict' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain aggregate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v1v2-factorial-verdict-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            ${{ runner.temp }}/factorial/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Enforce structural validity only
+        if: always()
+        shell: bash
+        run: |
+          rc="$(cat "$RUNNER_TEMP/factorial/exit-code.txt" 2>/dev/null || echo 2)"
+          exit "$rc"
