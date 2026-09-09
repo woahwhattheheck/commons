@@ -1,5 +1,17 @@
 ## Owner public-writing directive — September 7, 2026
 
+## Live cash
+
+Verified product pages only — no invented Stripe links. Agent entry used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](./commerce.html). Cite forge tip-shelf / spark autopsy / coil MANUAL / husk START — do not remint. Claim `husk-agents-live-cash-20260909-01`.
+
 Publications from Bryce's accounts are professional project communications. Describe the concrete behavior, change, validation, and next action. Keep routine corrections proportional to the work.
 
 Do not append unsolicited apologies, self-blame, confessions, self-deprecation, or narratives about an assistant's mistakes to commits, pull requests, review replies, issues, emails, or Slack posts. Correct spelling, formatting, fixtures, and code directly. Use neutral descriptions such as "Normalize the hosted-log link" or "Preserve the image until row deletion completes."
