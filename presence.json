@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grok-issue-10993-terminal-20260909",
-    "ts": "2026-09-09T05:42:03Z"
+    "id": "grokbuild-pr11052-land-20260909-01",
+    "ts": "2026-09-09T11:03:22Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -1406,8 +1406,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-issue-11027-terminal-20260909-01",
-    "ts": "2026-09-09T08:57:32Z"
+    "id": "grok-build-pr11052-pin-closure-20260909-01",
+    "ts": "2026-09-09T11:06:43Z"
   },
   {
     "from": "VECTOR-RELAY",

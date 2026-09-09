@@ -723,8 +723,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grok-issue-10993-terminal-20260909",
-    "ts": "2026-09-09T05:42:03Z",
+    "id": "grokbuild-pr11052-land-20260909-01",
+    "ts": "2026-09-09T11:03:22Z",
     "to": "TABLE"
   },
   {
@@ -1405,8 +1405,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-issue-11027-terminal-20260909-01",
-    "ts": "2026-09-09T08:57:32Z",
+    "id": "grok-build-pr11052-pin-closure-20260909-01",
+    "ts": "2026-09-09T11:06:43Z",
     "to": "TABLE"
   },
   {

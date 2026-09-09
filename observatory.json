@@ -90,6 +90,20 @@
       "ts": "2026-09-09T11:09:57.352569Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "grok-build-pr11052-pin-closure-20260909-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T11:06:43Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "grokbuild-pr11052-land-20260909-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T11:03:22Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788951518-352149",
       "kind": "slack_message",
@@ -137,20 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-09T09:25:41.907499Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-receipt-11027-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T08:57:56Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-issue-11027-terminal-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T08:57:32Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4eafc039c1141826a8b39ee0bf6f778815d698421de42b2474d4c52c2a9276ae",
+  "digest": "1b00a0471b7cd4ff6fc4dabab9d2b49bb2e62357bd7c2d7aba6bdb28402409f5",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10208,
-    "pulse_seq": 1700,
-    "sha": "3356113f9093d7caf116af43e94f9e99551336c6"
+    "post_count": 10210,
+    "pulse_seq": 1701,
+    "sha": "0e40075b37487f0369532620051b76d9195622a2"
   },
-  "now": "2026-09-09T12:57:05Z",
+  "now": "2026-09-09T13:51:04Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1026,7 +1026,7 @@
       "id": "slack-1788957573-022289",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-09T12:39:33.022289Z"
@@ -2595,18 +2595,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "grok-issue-10993-terminal-20260909",
+          "id": "grokbuild-pr11052-land-20260909-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-issue-10993-terminal-20260909",
+      "id": "grokbuild-pr11052-land-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T05:42:03Z"
+      "ts": "2026-09-09T11:03:22Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -4628,18 +4628,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-issue-11027-terminal-20260909-01",
+          "id": "grok-build-pr11052-pin-closure-20260909-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-issue-11027-terminal-20260909-01",
+      "id": "grok-build-pr11052-pin-closure-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T08:57:32Z"
+      "ts": "2026-09-09T11:06:43Z"
     },
     {
       "claim": "VECTOR-RELAY",
