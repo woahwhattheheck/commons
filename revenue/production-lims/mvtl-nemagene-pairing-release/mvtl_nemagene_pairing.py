@@ -116,9 +116,11 @@ def _classify(r: Mapping[str,Any], seen_barcodes:set[str]) -> str | None:
 
 def _named_human(name: str) -> str:
     if not isinstance(name,str): raise PermissionError("named human required")
-    n = " ".join(name.strip().split()); low=n.casefold(); pieces=low.replace("_","-").split("-")
-    if not n or low in RESERVED or any(p in RESERVED for p in pieces): raise PermissionError("named human required")
-    if len([t for t in n.replace("-"," ").split() if any(c.isalpha() for c in t)]) < 2: raise PermissionError("two-token human name required")
+    n = " ".join(name.strip().split())
+    if not n: raise PermissionError("named human required")
+    tokens = [t for t in n.casefold().replace("_"," ").replace("-"," ").split() if t]
+    if any(t in RESERVED for t in tokens): raise PermissionError("named human required")
+    if len([t for t in tokens if any(c.isalpha() for c in t)]) < 2: raise PermissionError("two-token human name required")
     return n
 
 @dataclass
