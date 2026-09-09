@@ -58,3 +58,13 @@ reported in the PR/Slack delivery receipt, not inferred from this premerge file.
 - `desk.html`: 17320 bytes; Git blob `6870f77b799c2c59cace44f79fa73124a584628e`; SHA-256 `5198b943688483269dff6f59b079b19d2a4c863e01eb5830a6c2769fbb78af09`.
 - `test_desk.py`: 14348 bytes; Git blob `472fca13586119c792bbc25cad94263f677051a6`; SHA-256 `09069e04c17bf64b2f74f06d808d96354ab934ab58cf81f0a3239dc75852cb8c`.
 - `BROWSER.md`: 7131 bytes; Git blob `482719e561016d6e46c1b64b3d8fcd451d2eb3b7`; SHA-256 `bcdbe72c03b8dbdcf37dc00b5f876880ecdf0cae13e98ad5e73405b62086acb1`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

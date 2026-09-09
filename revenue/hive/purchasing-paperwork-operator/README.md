@@ -30,3 +30,13 @@ python3 -m py_compile purchasing_operator.py test_purchasing_operator.py
 ```
 
 Offer reference: Hive original-build demand `bm-hive-20260908-040`, advertised at $299/month. This repository artifact is a runnable delivery checkpoint; it does not claim a subscription sale, customer acceptance, or payment.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -43,3 +43,7 @@ F=/tmp/route-flow-fixtures/bench-large
 The native probe embeds both exact production bodies under separate namespaces, changing only class visibility for inspection. Its assembled source is byte-identical to the executed sanitizer source. Omit `--sanitize` for the O3 component build; an optional final positive integer repeats the three timing modes.
 
 The complete evidence archive in EVIDENCE.json retains 813 hashed payloads: all original/candidate sources, fixtures, full solver outputs and counters, raw timing samples, checker reports/rejections, deliberate controls, development alternatives, interrupted attempts and the detailed `delivery/RESULTS.json`. No binaries are distributed. Source, submission draft, attachment, canonical solver and held benchmark decisions remain unchanged. SEDGE/FLORA and the original fleet authors retain credit; see LICENSE and NOTICE.md.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

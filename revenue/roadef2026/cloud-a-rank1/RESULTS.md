@@ -11,3 +11,7 @@ Exact PR source head `160bfecef362c3372bd52669ab661d147f532f48` completed dedica
 All three outputs pass the pinned official checker at both six and twelve decimals. A14 closes the named six-decimal peak gap: the resulting maximum is 0.517621, equal to the published reference peak scalar. The artifact does not contain the published reference's complete vector, so this is **not** a full-vector reference win or tie claim. A16 leaves its named maximum and leading ranks unchanged; its gain begins at rank 539. A04 terminates after one no-change pass with byte-identical output.
 
 These are three warm-started public-development cases, not a qualification submission, hidden-instance result, set-wide superiority claim, or S139 status change. The full raw vectors, input identities, solutions, stats, reports, stdout/stderr, generated source, and test source remain in the workflow artifact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

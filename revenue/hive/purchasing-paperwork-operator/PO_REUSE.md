@@ -51,3 +51,13 @@ A retained two-process upgrade check uses the actual prior and repaired engine
 versions with one synthetic SQLite database: revision 1 retains its original
 two export rows; explicit recomputation creates revision 2 with zero export
 rows and two unsent drafts. No historical payload is rewritten.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

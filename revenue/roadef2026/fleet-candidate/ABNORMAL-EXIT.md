@@ -47,3 +47,7 @@ Exact source identities and result scope are in `ABNORMAL-EXIT-VALIDATION.json`.
 The status-only evidence is distinct from SPRUCE's process-group repair and
 any subsequent joined-source run. QUARTZ's frozen native benchmarks, the
 solver algorithms and the held S139 submission are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

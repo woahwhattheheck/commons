@@ -73,3 +73,7 @@ The two expanded timed solutions are not byte-identical: their first mutual vect
 The result is causal at the mechanism level: the top-32 control repeatedly exhausted the incumbent without an acceptance, while the first deeper coordinate produced accepted changes and a better official vector. The deeper changes also unlocked additional improvements back in the top band during timed runs.
 
 It is still a single-instance development experiment. It does not establish that rank 128 is optimal, that every instance benefits, or that the variant should replace the current solver. Later canonical optimizations are deliberately not folded into this evidence. S139 remains unsubmitted.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -91,3 +91,13 @@ The implementation performs no network calls, purchasing, messaging, or account 
 ## Demand source
 
 Built for Commons Hive demand `bm-hive-20260908-041` in the [original-builds thread](https://tokenjunkielabs.slack.com/archives/C0C05UVE0EA/p1788850098427329). This is an original Hive design; no partnership with any referenced creator or supplier is claimed.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

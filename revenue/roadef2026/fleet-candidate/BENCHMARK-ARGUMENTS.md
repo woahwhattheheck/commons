@@ -69,3 +69,7 @@ The original recovered package was source-ready but unpublished. This repository
 delivery reran the same 23 methods against the rebased source and retains the
 original negative controls. Generic hosted checks and merge status are recorded on
 the pull request rather than inferred from this local test receipt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
