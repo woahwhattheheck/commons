@@ -687,7 +687,7 @@
     "reference/titan-current/vendor/sell/scheduler.py": {
       "bytes": 19766,
       "sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
-      "source_path": "../cloud-titan-composition/vendor/sell/scheduler.py"
+      "source_path": "reference/titan-current/vendor/sell/scheduler.py"
     },
     "reference/titan-current/vendor/terminal.py": {
       "bytes": 18390,

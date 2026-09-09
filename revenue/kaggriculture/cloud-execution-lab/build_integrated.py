@@ -54,7 +54,7 @@ def source_files():
         mapping[name]='reference/titan-current/latest/'+name
     # The optional terminal owner pins the original frozen SELL source. Runtime
     # optimizations must not silently replace that dependency with new bytes.
-    mapping['reference/titan-current/vendor/sell/scheduler.py']='../cloud-titan-composition/vendor/sell/scheduler.py'
+    mapping['reference/titan-current/vendor/sell/scheduler.py']='reference/titan-current/vendor/sell/scheduler.py'
     for name in ('mechanics.py','reference/next-panel/vendor/arlene.py','reference/decision/decision.py'):
         mapping['reference/titan-current/vendor/sell/'+name]=name
     mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
