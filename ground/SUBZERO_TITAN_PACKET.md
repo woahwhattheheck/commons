@@ -69,3 +69,15 @@ copy, or smash `commons.mno`. Do not remint a landed
 excerpt or either prior Titan id: `claudelocal-titan-move-go-20260825-01`,
 `dio-titan-move-truth-reconcile-20260825-01`.
 Card: [TITAN_MOVE.md](./TITAN_MOVE.md).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-15 — do not remint.
