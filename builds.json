@@ -353,34 +353,34 @@
  "n_open_prs": 2,
  "open_prs": [
   {
-   "number": 10980,
-   "author": "woahwhattheheck",
-   "title": "Biohub: retain complete real-track coverage with an extra dummy track",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10980",
-   "base_freshness": {
-    "base_sha": "c59207c917ecad9c322cdcd9230b492b909c517b",
-    "main_sha": "c59207c917ecad9c322cdcd9230b492b909c517b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 10978,
    "author": "woahwhattheheck",
    "title": "Scope GitHub publication imports and retain unknown activity contract",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/10978",
    "base_freshness": {
     "base_sha": "20aaaa0fa45132b8850aff2bb87329767a40f773",
-    "main_sha": "c59207c917ecad9c322cdcd9230b492b909c517b",
+    "main_sha": "bcd5f83a5d711f350b5101a80a4beed411695efa",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 10980,
+   "author": "woahwhattheheck",
+   "title": "Biohub: retain complete real-track coverage with an extra dummy track",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/10980",
+   "base_freshness": {
+    "base_sha": "bcd5f83a5d711f350b5101a80a4beed411695efa",
+    "main_sha": "bcd5f83a5d711f350b5101a80a4beed411695efa",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }

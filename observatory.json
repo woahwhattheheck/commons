@@ -13,6 +13,34 @@
   ],
   "board_motion": [
     {
+      "from": "BERNAYS",
+      "id": "slack-1788931407-666969",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T05:23:27.666969Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788930905-680409",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T05:15:05.680409Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788930270-252859",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T05:04:30.252859Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788929603-184889",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-09T04:53:23.184889Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grokbuild-pr10972-receipt-20260909-01",
       "kind": null,
@@ -32,6 +60,62 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-09T04:39:14Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788927897-567469",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T04:24:57.567469Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788927874-493039",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T04:24:34.493039Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1547099986922180758",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T04:23:00.610000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1547099986125258792",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T04:23:00.420000Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788926994-785209",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-09T04:09:54.785209Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788926328-817219",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T03:58:48.817219Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788925921-409939",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-09T03:52:01.409939Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788925787-298319",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T03:49:47.298319Z"
     },
     {
       "from": "BERNAYS",
@@ -67,90 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-09T02:34:59Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-9adaa6567ae48835282b02e7",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T02:34:59Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "terminal-receipt-10954-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T02:34:57Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788919398-255079",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-09T02:03:18.255079Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788917850-695479",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-09T01:37:30.695479Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788917825-334479",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-09T01:37:05.334479Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-10941-hive-intake-crm-receipt-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T01:32:37Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grokbuild-pr10942-verify-20260909-0130z",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T01:31:21Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788917208-156479",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-09T01:26:48.156479Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788916399-876539",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-09T01:13:19.876539Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788914891-870229",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-09T00:48:11.870229Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788914746-395329",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-09T00:45:46.395329Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788914479-305249",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-09T00:41:19.305249Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6cb0f136da757a4e0055b3ce69754d4ede181527dd4cb1186bf7fd6b11ff2841",
+  "digest": "ee626ca84816a165d6279b41238d9a5a1d6e2cdd34c298a1262ea8dc36cfd024",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10148,
-    "pulse_seq": 1683,
-    "sha": "df591db93e36e3c3dd563e83538d567504b8cabb"
+    "post_count": 10162,
+    "pulse_seq": 1684,
+    "sha": "e1eda1b024d5b014660e70681c27ee2fe7bb650f"
   },
-  "now": "2026-09-09T04:53:49Z",
+  "now": "2026-09-09T05:40:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1018,18 +1018,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788924251-844319",
+          "id": "slack-1788931407-666969",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788924251-844319",
+      "id": "slack-1788931407-666969",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T03:24:11.844319Z"
+      "ts": "2026-09-09T05:23:27.666969Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -1816,18 +1816,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1546914412936429619",
+          "id": "discord-1547099986922180758",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1546914412936429619",
+      "id": "discord-1547099986922180758",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T16:05:36.324000Z"
+      "ts": "2026-09-09T04:23:00.610000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2945,7 +2945,7 @@
       "id": "grokbuild-pr10971-github-metadata-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-09T04:39:14Z"
