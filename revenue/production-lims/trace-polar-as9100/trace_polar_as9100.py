@@ -7,6 +7,7 @@ import json
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
+import re
 from typing import Any, Mapping
 
 DEMAND_ID = "trace-polar-as9100-lims-01"
@@ -201,11 +202,19 @@ def _named_human(name: str) -> str:
     if not isinstance(name, str):
         raise PermissionError("named human reviewer required")
     normalized = " ".join(name.strip().split())
-    lowered = normalized.casefold()
-    pieces = lowered.replace("_", "-").split("-")
-    if not normalized or lowered in RESERVED_REVIEWERS or any(piece in RESERVED_REVIEWERS for piece in pieces):
+    if not normalized:
         raise PermissionError("named human reviewer required")
-    alpha_tokens = [token for token in normalized.replace("-", " ").split() if any(char.isalpha() for char in token)]
+    lowered = normalized.casefold()
+    # Tokenize across whitespace and punctuation; reject any reserved automation token anywhere.
+    tokens = [t for t in re.split(r"[^a-z0-9]+", lowered) if t]
+    compact = re.sub(r"[^a-z0-9]", "", lowered)
+    if (
+        lowered in RESERVED_REVIEWERS
+        or any(t in RESERVED_REVIEWERS for t in tokens)
+        or any(res in tokens or res == compact for res in RESERVED_REVIEWERS)
+    ):
+        raise PermissionError("named human reviewer required")
+    alpha_tokens = [token for token in re.split(r"[^A-Za-z0-9]+", normalized) if any(char.isalpha() for char in token)]
     if len(alpha_tokens) < 2:
         raise PermissionError("two-token human name required")
     return normalized

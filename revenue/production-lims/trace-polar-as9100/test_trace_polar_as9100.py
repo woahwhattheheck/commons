@@ -77,8 +77,13 @@ class PolarAs9100Tests(unittest.TestCase):
         shadow = polar.PolarAs9100Shadow()
         shadow.replay(self.steps, self.manifest)
         original = copy.deepcopy(shadow.evidence_packs["W1"])
-        for bad in ("", "system", "bot", "AI", "Jordan"):
-            with self.assertRaises(PermissionError):
+        for bad in (
+            "", "system", "bot", "AI", "Jordan",
+            "System Reviewer", "AI Reviewer", "Bot Reviewer",
+            "system-bot", "System-Reviewer", "Service Account",
+            "auto worker", "ai-reviewer",
+        ):
+            with self.assertRaises(PermissionError, msg=f"should reject {bad!r}"):
                 shadow.disposition_copy("W1", bad)
         released = shadow.disposition_copy("W1", "Jordan Reviewer")
         self.assertEqual("APPROVED_FOR_HUMAN_DISPOSITION", released["disposition_state"])
