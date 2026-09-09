@@ -17,7 +17,7 @@ DOOR = ROOT / "merge-on-pr.html"
 KEEP = {
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
-    "ground/SPRINT_INTEGRATION.md": "57dc0024",
+    "ground/SPRINT_INTEGRATION.md": "03d00758",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
     "test_pr7915_closed_unmerged.py": "67240310",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
@@ -31,7 +31,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "hub_pages.py": "d0bd0e8d",
+    "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",

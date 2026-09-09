@@ -25,7 +25,7 @@ KEEP = {
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "c302ea4d",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "2a3c7b5c",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
     "test_grokbuild_tests_33689281316_billing_lock.py": "f41bd020",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
@@ -34,7 +34,7 @@ KEEP = {
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "d0bd0e8d",
+    "hub_pages.py": "44bbd2ec",
 }
 
 

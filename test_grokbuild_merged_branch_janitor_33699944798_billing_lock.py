@@ -38,7 +38,7 @@ KEEP = {
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "d0bd0e8d",
+    "hub_pages.py": "44bbd2ec",
 }
 
 EVENT_8528 = {

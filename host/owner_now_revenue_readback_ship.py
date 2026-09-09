@@ -32,8 +32,8 @@ READBACK_TEST = "c7d491e4"
 KEEP = {
     f"p/{READBACK_ID}.md": READBACK_BLOB,
     f"p/{ASK_ID}.md": LEFTOVER_BLOB,
-    "owner-now-revenue.html": "9b1c59fb",
-    "land/owner-now-revenue-20260902.md": "db81f250",
+    "owner-now-revenue.html": "7c98199a",
+    "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "65a960f2",
     "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",

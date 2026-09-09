@@ -15,7 +15,7 @@ READBACK = ROOT / "p/cursor-harborline-qualify-live-probe-readback-20260902-01.m
 
 KEEP = {
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "test_harborline_qualify_live_probe.py": "e8dbc466",
+    "test_harborline_qualify_live_probe.py": "0d7166c6",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "autogtm.html": "dbbc96a5",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",

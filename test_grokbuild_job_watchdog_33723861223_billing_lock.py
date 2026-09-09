@@ -30,7 +30,7 @@ KEEP = {
     "p/grok-build-job-watchdog-33718131418-billing-lock-20260903-01.md": "716e86bd",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "4d5f069a",
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
     "test_grokbuild_owner_net_33723510040_billing_lock.py": "4acaf69b",
 }
