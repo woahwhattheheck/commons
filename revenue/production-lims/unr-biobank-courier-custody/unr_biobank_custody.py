@@ -1,6 +1,6 @@
 """Synthetic/deidentified UNR biobank courier-to-freezer custody shadow."""
 from __future__ import annotations
-import copy, hashlib, json
+import copy, hashlib, json, re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,6 +10,11 @@ DEMAND_ID="unr-biobank-courier-custody-lims-01"
 MANIFEST_PREFIX="UNR-BIOBANK-SYNTHETIC-MANIFEST-V1\n"
 HOLD_CODES=("IRB_MTA_REFERENCE_INVALID","CUSTODY_TEMPERATURE_FAIL","DUPLICATE_BARCODE","SPECIMEN_MANIFEST_MISMATCH","UNAPPROVED_TRANSPORT_ROUTE")
 FORBIDDEN_PHI_KEYS={"patient","patient_name","name","dob","date_of_birth","mrn","medical_record_number","address","phone","email","ssn"}
+RESERVED_ACTOR_TOKENS={
+    "ai","agent","api","assistant","auto","automated","automation",
+    "bot","daemon","integration","machine","robot","scheduler",
+    "service","system","workflow",
+}
 
 class IntegrityError(ValueError): pass
 def _canonical(v:Any)->str:return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False)
@@ -109,6 +114,15 @@ def _classify(r,seen,approved):
     if r["manifest_specimen_id"]!=r["specimen_id"]:return "SPECIMEN_MANIFEST_MISMATCH"
     if r["route"] not in approved:return "UNAPPROVED_TRANSPORT_ROUTE"
 
+def named_human(value:str)->bool:
+    if not isinstance(value,str):return False
+    tokens=[token.casefold() for token in re.findall(r"[A-Za-z0-9]+",value)]
+    alpha_tokens=[token for token in tokens if any(char.isalpha() for char in token)]
+    if len(tokens)<2 or len(alpha_tokens)<2:return False
+    if any(token in RESERVED_ACTOR_TOKENS for token in tokens):return False
+    if any(len(token)<2 for token in tokens):return False
+    return True
+
 @dataclass
 class ReplayReport:
     ready_for_storage:int; hold:int; replayed:int; hold_counts:dict[str,int]; specimens_added:int; aliquots_added:int; positions_added:int; holds_added:int; events_added:int; state_digest:str; outcomes:list[dict[str,Any]]
@@ -152,11 +166,16 @@ class UNRBiobankCustodyShadow:
         self.authoritative_fingerprint
         return ReplayReport(ready,hold,replayed,dict(sorted(counts.items())),sa,aa,pa,ha,ea,self.state_digest(),outcomes)
     def authorize_research_use(self,shipment_id,reviewer_name):
-        reviewer=reviewer_name.strip()
-        if not reviewer:raise PermissionError("named human reviewer is required")
+        if not isinstance(reviewer_name,str) or not named_human(reviewer_name):
+            raise PermissionError("named human reviewer is required")
         if shipment_id not in self.specimens:raise KeyError(shipment_id)
+        if shipment_id in self.research_use:
+            return self.research_use[shipment_id]
+        reviewer=reviewer_name.strip()
         self.specimens[shipment_id]["research_available"]=True
         for a in self.aliquots.values():
             if a["shipment_id"]==shipment_id:a["research_available"]=True
-        receipt={"shipment_id":shipment_id,"state":"RESEARCH_USE_AUTHORIZED_BY_NAMED_HUMAN","reviewed_by":reviewer}; self.research_use[shipment_id]=receipt; return receipt
+        receipt={"shipment_id":shipment_id,"state":"RESEARCH_USE_AUTHORIZED_BY_NAMED_HUMAN","reviewed_by":reviewer}
+        self.research_use[shipment_id]=receipt
+        return receipt
     def automatic_research_release(self,*_,**__):raise PermissionError("automatic research-use release is disabled; named human approval is required")
