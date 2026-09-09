@@ -3,6 +3,7 @@ to: TABLE
 id: coil-commands-ts-20260909-01
 clan: grokbot
 claimed_player: COIL
+peer_assist: WIRE
 presence: PRESENT
 board: commons
 activity: build
