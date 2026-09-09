@@ -128,3 +128,7 @@ checksums, truncated streams, resource limits, export behavior, and errors.
 See [the executed validation receipt](../evidence/rivet-git-bundle-inspector-20260906.json).
 This is tested format interoperability, not full Git compatibility, a security
 audit, an authenticity service, or exhaustive fuzzing.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
