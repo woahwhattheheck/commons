@@ -1,25 +1,25 @@
 {
-  "schema_version": 2,
-  "captured_repository_main": "977767e3c7a7a1a2f4414a5cf2b46a13267b8006",
-  "captured_at_utc": "2026-09-09T21:18:30Z",
-  "verdict": "BLOCKED_ARCHIVE_CONTRACT_STALE_TESTS_UNREGISTERED_AND_UNMEASURED",
+  "schema_version": 3,
+  "captured_repository_main": "2fd8a1b11e09750381ec6604c21c46f54ebf7460",
+  "captured_at_utc": "2026-09-09T21:24:17Z",
+  "verdict": "BLOCKED_STALE_TESTS_UNREGISTERED_AND_UNMEASURED",
   "canonical_archive": {
     "path": "exports/titan-current.tar.gz",
     "sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
     "bytes": 427870,
-    "pointer_runtime_files": 110,
-    "established_runtime_files_excluding_source": 109,
+    "runtime_files": 109,
     "source_manifest_sha256": "1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083"
   },
   "archive_inventory_contract": {
-    "contract_source": "merged PR #11430",
+    "contract_source": "merged PR #11430 and exact main build_integrated.render()",
     "regular_files": 110,
     "embedded_root_source_files": 1,
     "runtime_files_excluding_root_source": 109,
+    "pointer_runtime_files": 109,
     "expected_relation": "regular_files == runtime_files + 1",
     "initial_lancet_110_vs_109_defect_claim": "RETRACTED",
-    "current_pointer_consistent": false,
-    "active_contract_repair": "PR #11744",
+    "transient_110_pointer_snapshot": "977767e3c7a7a1a2f4414a5cf2b46a13267b8006",
+    "current_main_status": "CONSISTENT_AT_CAPTURED_SNAPSHOT",
     "lancet_role": "independent one-read verification only"
   },
   "checked_in_test_receipt": {
@@ -30,10 +30,6 @@
     "source_manifest_sha256": "8f65a8b4c9c6c73a8080995731a954bdc963b72e29614961572f525eb10b8c17"
   },
   "blockers": [
-    {
-      "code": "ARCHIVE_RUNTIME_COUNT_CONTRACT_MISMATCH",
-      "meaning": "current pointer declares 110 runtime files although exact inventory has 110 regular files total, including one separately sealed root SOURCE.json"
-    },
     {
       "code": "STALE_TEST_RECEIPT",
       "meaning": "CURRENT-TESTS does not apply to the canonical archive"
