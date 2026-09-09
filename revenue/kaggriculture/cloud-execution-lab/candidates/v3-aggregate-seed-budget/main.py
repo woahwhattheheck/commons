@@ -12,20 +12,37 @@ ROOT = HERE.parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+_MISSING = object()
+
 
 def _load(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise ImportError(f"cannot load {path}")
     module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
+    previous = sys.modules.get(name, _MISSING)
+    try:
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+    except BaseException:
+        if sys.modules.get(name) is module:
+            if previous is _MISSING:
+                sys.modules.pop(name, None)
+            else:
+                sys.modules[name] = previous
+        raise
     return module
 
 
 _PARENT = _load("_titan_granary_parent", ROOT / "main.py")
-_RUNTIME = _load("_titan_granary_runtime", HERE / "candidate_runtime.py")
-apply_completed_action = _RUNTIME.apply_completed_action
+_RUNTIME = None
+_RUNTIME_ERROR = None
+try:
+    _RUNTIME = _load("_titan_granary_runtime", HERE / "candidate_runtime.py")
+except Exception as error:
+    # A candidate-local import must not suppress the already-loadable canonical
+    # parent. The action path records the failure after obtaining parent bytes.
+    _RUNTIME_ERROR = type(error).__name__
 
 
 def _record(instance, report):
@@ -40,6 +57,13 @@ def agent(observation, configuration=None):
     selected = _PARENT.agent(observation, configuration)
     instance = getattr(_PARENT, "_INSTANCE", None)
     if instance is None:
+        return selected
+    if _RUNTIME is None:
+        _record(instance, {
+            "changed": False,
+            "reason": "candidate_runtime_import_failed",
+            "error": _RUNTIME_ERROR,
+        })
         return selected
 
     features = getattr(instance, "features", None)
@@ -71,7 +95,7 @@ def agent(observation, configuration=None):
     timer = timer_type(remaining - guard)
     try:
         with timer:
-            result, report = apply_completed_action(
+            result, report = _RUNTIME.apply_completed_action(
                 instance, dict(observation), dict(configuration or {}), selected)
     except deadline_error as error:
         if error is not timer.expired:
