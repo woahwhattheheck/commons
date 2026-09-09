@@ -80,8 +80,9 @@ def _productive_detour(
     """Return one producer-route harvest/deposit/rejoin witness, or None.
 
     This screen is deliberately stricter than the engine: it refuses a target
-    touched by another actor, any concurrent pre-deposit DROP or product/animal
-    buy, and any job that cannot rejoin the incumbent endpoint before reset.
+    touched by another actor, any concurrent pre-deposit DROP, shed-access PLACE,
+    or product/animal buy, and any job that cannot rejoin the incumbent endpoint
+    before reset.
     """
     if worker >= len(final_positions) or not hasattr(route, "__setitem__"):
         return None
@@ -129,8 +130,13 @@ def _productive_detour(
                 drop_offset = (_distance(start, target) + 1 + _distance(target, shed))
                 drop_step = step + 1 + drop_offset
                 conflict = False
+                sheds_set = set(sheds)
                 for e in events:
-                    if e[1] != worker and step < e[0] <= drop_step and e[2] == "DROP":
+                    if e[1] == worker or not (step < e[0] <= drop_step):
+                        continue
+                    if e[2] == "DROP":
+                        conflict = True; break
+                    if e[2] == "PLACE" and (e[3], e[4]) in sheds_set:
                         conflict = True; break
                 if conflict:
                     continue

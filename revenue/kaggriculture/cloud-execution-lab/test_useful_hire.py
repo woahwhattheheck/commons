@@ -1,7 +1,10 @@
 import copy, importlib.util, pathlib
 
-spec=importlib.util.spec_from_file_location('rh', pathlib.Path(__file__).parent/'reference'/'titan-current'/'redundant_hire.py')
+HERE=pathlib.Path(__file__).parent
+spec=importlib.util.spec_from_file_location('rh', HERE/'reference'/'titan-current'/'redundant_hire.py')
 rh=importlib.util.module_from_spec(spec);spec.loader.exec_module(rh)
+mspec=importlib.util.spec_from_file_location('mech', HERE/'mechanics.py')
+mech=importlib.util.module_from_spec(mspec);mspec.loader.exec_module(mech)
 
 class M:
     PRODUCTS=['WHEAT','EGG']
@@ -99,3 +102,26 @@ def test_one_productive_hire_preserves_contiguous_order_and_removes_later_tail()
     assert out['market']==[['HIRE'],['SELL','WHEAT',0]]
     assert rep['protected_workers']==1 and rep['removed_workers']==1
     assert rep['productive_detours'][0]['worker']==1
+
+
+def test_retained_worker_shed_place_blocks_unrealized_deposit():
+    wheat={'kind':'PLANT','crop':'WHEAT','planted_day':0,'yield_units':1}
+    farm={'farmer':[2,4],'hands':[[4,4]],'tiles':[[None]*10 for _ in range(10)],
+          'money':100,'hires_today':1}
+    farm['tiles'][4][2]=copy.deepcopy(wheat); farm['tiles'][4][6]=copy.deepcopy(wheat)
+    private={'shed':{'WHEAT':99},'inventories':[{},{}],'seeds':{}}
+    for action in (['HARVEST'],['EAST'],['EAST'],['PLACE','WHEAT']):
+        mech._apply_unit_action(farm,private,0,action,10,2,24,100)
+    assert farm['farmer']==[4,4] and sum(private['shed'].values())==100
+    assert private['inventories'][0]=={}
+    for action in (['EAST'],['EAST'],['HARVEST'],['WEST'],['DROP']):
+        mech._apply_unit_action(farm,private,1,action,10,2,24,100)
+    assert private['inventories'][1]=={} and private['shed']=={'WHEAT':100}
+
+    o=obs(wheat,price=10,main=(2,4))
+    o['farms'][0]['tiles'][4][2]=copy.deepcopy(wheat)
+    o['private']['shed']={'WHEAT':99}
+    r=route({59:['HARVEST'],60:['EAST'],61:['EAST'],62:['PLACE','WHEAT']})
+    out,rep=call(o,r)
+    assert out['market'][0]==['SELL','WHEAT',0]
+    assert rep['completed_jobs']==0 and not rep['route_changed']
