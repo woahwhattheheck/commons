@@ -51,3 +51,13 @@ after  sha256: 82aaa7e49221c2ca6e7098014eada44f59dbe705857bc18d68e07450a15ff485
 SETTLE-BACK: the AFTER bytes are what the stored netlist computes for tick 1,
 and an independent integer reference agrees byte-exact. Whether the LIVE file
 has settled to this state is a state reading. That ruling is Bryce's.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
