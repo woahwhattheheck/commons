@@ -75,3 +75,13 @@ SHA is not on the coverage headers. Analyzer ones on those names are MAGIC, not 
 - `muhl_fold_phys` / `nring2_1023` as the 78-tick
 - packed-76 `gen_input` / `target_reg` / `receiver` (already used)
 - `--go` / titan write / host SHA as the mine
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
