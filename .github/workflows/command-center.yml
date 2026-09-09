@@ -32,4 +32,4 @@ jobs:
           node --check integrations/command_center/web/app.js
           node --check integrations/command_center/web/work.js
       - name: Dashboard presentation contracts
-        run: node --test integrations/command_center/test_web.cjs integrations/command_center/test_work_detail.cjs
+        run: node --test integrations/command_center/test_web.cjs integrations/command_center/test_work_detail.cjs integrations/command_center/test_work_activity_timestamp.cjs integrations/command_center/test_work_continuous_refresh.cjs
