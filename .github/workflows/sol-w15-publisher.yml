@@ -1,0 +1,283 @@
+name: SOL W15 verified payload publisher
+
+on:
+  push:
+    branches:
+      - "sol/w15-exact-game-throughput-20260909-01"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-w15-publisher-20260909-01
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact triggering commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Require unchanged remote branch head
+        shell: bash
+        env:
+          BRANCH: sol/w15-exact-game-throughput-20260909-01
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          remote_head="$(git ls-remote origin "refs/heads/$BRANCH" | awk '{print $1}')"
+          test "$remote_head" = "$EXPECTED_HEAD"
+      - name: Decode and inspect exact payload
+        shell: bash
+        env:
+          PAYLOAD_SHA256: fc4005edbf605205375578733634f32ad7f7edc99f72d5d5f4d7c9d07d9339d8
+        run: |
+          set -euo pipefail
+          cat > /tmp/w15payload.b64 <<'EOF_PAYLOAD'
+          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
+          9X8O/vXcMAIAAAAAAAAAGPEP/wdo21ngAKgAAA==
+          EOF_PAYLOAD
+          base64 -d /tmp/w15payload.b64 > /tmp/w15payload.tar.gz
+          echo "$PAYLOAD_SHA256  /tmp/w15payload.tar.gz" | sha256sum -c -
+          python - <<'PY_VERIFY'
+          import tarfile
+          expected = {
+              '.github/workflows/titan-w15-throughput.yml',
+              'p/sol-w15-exact-game-throughput-20260909-01.md',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/__init__.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/benchmark.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/exact_pool.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/fake_evaluator.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/test_exact_pool.py'
+          }
+          with tarfile.open('/tmp/w15payload.tar.gz', 'r:gz') as archive:
+              members = archive.getmembers()
+              names = []
+              for member in members:
+                  if not member.isfile() or member.issym() or member.islnk():
+                      raise SystemExit(f'payload member is not a regular file: {member.name}')
+                  if member.name.startswith('/') or '..' in member.name.split('/'):
+                      raise SystemExit(f'unsafe payload path: {member.name}')
+                  names.append(member.name)
+              if len(names) != len(set(names)):
+                  raise SystemExit('duplicate payload member')
+              if set(names) != expected:
+                  raise SystemExit(f'payload path mismatch: missing={sorted(expected-set(names))}, unexpected={sorted(set(names)-expected)}')
+              print('payload_paths_ok', len(names))
+          PY_VERIFY
+          tar xzf /tmp/w15payload.tar.gz
+          rm .github/workflows/sol-w15-publisher.yml
+      - name: Require exact changed-path ownership
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY_STATUS'
+          import subprocess
+          expected = {
+              '.github/workflows/titan-w15-throughput.yml',
+              'p/sol-w15-exact-game-throughput-20260909-01.md',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/__init__.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/benchmark.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/exact_pool.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/fake_evaluator.py',
+              'revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/test_exact_pool.py',
+              '.github/workflows/sol-w15-publisher.yml'
+          }
+          raw = subprocess.check_output(['git','status','--porcelain=v1','-z'])
+          entries = [entry for entry in raw.decode().split(chr(0)) if entry]
+          paths = []
+          for entry in entries:
+              if len(entry) < 4:
+                  raise SystemExit(f'malformed git status entry: {entry!r}')
+              path = entry[3:]
+              if ' -> ' in path:
+                  path = path.split(' -> ', 1)[1]
+              paths.append(path)
+          if set(paths) != expected or len(paths) != len(expected):
+              raise SystemExit(f'changed path mismatch: observed={sorted(paths)} expected={sorted(expected)}')
+          print('owned_paths_ok', len(paths))
+          PY_STATUS
+      - name: Verify exact payload bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat <<'EOF_HASHES' | sha256sum -c -
+          4d5f4c3f355db779968fb6f639cf9fd6842507868ec32f2e44b33eb151227161  .github/workflows/titan-w15-throughput.yml
+          879e10ba609eeca9e44cfb5e675095ac8810517ef2926fc22e1b94f357a6c650  p/sol-w15-exact-game-throughput-20260909-01.md
+          b4e17526d6093e1d95864335912ec2275ad76481316c9762a40b18f4199f9b37  revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/README.md
+          6d73da17f76dcd7a290745c2f2bee75fad1c125690a455fbb2b6f95a36d93f2f  revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/__init__.py
+          ff29a880299bae28fba5631d77fb3eeffb57fd407d27a74ba2367b770fdb7e61  revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/benchmark.py
+          d62607261a34169ee08be2b3ee50a3d193d071e2f7ac461e3393a419d21337ea  revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/exact_pool.py
+          e8a28a1a0a5fc21e1f3a8dae467824ebe3a3e509378bf36b7b9931e4affb588a  revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/fake_evaluator.py
+          2a0d488706e3ab024d9027f8cbeb577093377281e6aeba8c876ab0c7a1d3e16d  revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput/test_exact_pool.py
+          EOF_HASHES
+          git diff --check
+      - name: Run all W15 acceptance contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONPYCACHEPREFIX: /tmp/w15-pyc
+        run: |
+          set -euo pipefail
+          python -m compileall -q .
+          python -B -m unittest -v test_exact_pool.py
+          python -B benchmark.py --rounds 3 | tee /tmp/w15-publisher-benchmark.json
+      - name: Recheck remote head, commit verified payload, and push non-force
+        shell: bash
+        env:
+          BRANCH: sol/w15-exact-game-throughput-20260909-01
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          remote_head="$(git ls-remote origin "refs/heads/$BRANCH" | awk '{print $1}')"
+          test "$remote_head" = "$EXPECTED_HEAD"
+          git config user.name 'SOL-W15-VELOCITY'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git add -A -- \
+            .github/workflows/sol-w15-publisher.yml \
+            .github/workflows/titan-w15-throughput.yml \
+            revenue/kaggriculture/cloud-execution-lab/tools/w15_throughput \
+            p/sol-w15-exact-game-throughput-20260909-01.md
+          git diff --cached --check
+          git commit -m 'Add exact adaptive TITAN game throughput runner'
+          git push origin HEAD:"$BRANCH"
