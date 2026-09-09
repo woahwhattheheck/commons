@@ -1,0 +1,63 @@
+name: titan-capillary-exact-current-sol-caliber
+
+on:
+  pull_request:
+    paths:
+      - "analysis/capillary-exact-current-sol-caliber/**"
+      - ".github/workflows/titan-capillary-exact-current-sol-caliber.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py"
+      - "revenue/kaggriculture/cloud-execution-lab/capillary_main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/scheduler.py"
+      - "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-capillary-exact-current-sol-caliber-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  exact-current-admission:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout exact pull-request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+      - name: Bind exact head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+          printf 'exact_head=%s\n' "$actual"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile review witness and candidate seam
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            analysis/capillary-exact-current-sol-caliber/test_capillary_exact_current.py \
+            revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py \
+            revenue/kaggriculture/cloud-execution-lab/titan_capillary.py \
+            revenue/kaggriculture/cloud-execution-lab/capillary_main.py
+      - name: Run unmocked current-bank and same-interpreter ownership gates
+        run: |
+          set -euo pipefail
+          python analysis/capillary-exact-current-sol-caliber/test_capillary_exact_current.py
+      - name: Prove checkout remained clean
+        if: always()
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          test -z "$(git status --porcelain)"
