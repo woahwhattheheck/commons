@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Experimental TITAN candidate with structurally compiled JIT seed routes.
+"""Experimental TITAN candidate with order-preserving JIT seed routes.
 
 This module is intentionally separate from ``titan_runtime.py``. It does not
 change the submitted/default agent. Use ``capillary_main.agent`` so canonical
@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 
-from jit_seed_staging import compile_jit_expensive_seed_routes
+from jit_seed_order_rail import compile_jit_expensive_seed_routes
 from titan_runtime import TitanAgent
 
 

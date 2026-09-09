@@ -1,0 +1,132 @@
+{
+  "mutation_boundary": {
+    "archive_or_pointer": false,
+    "canonical_entrypoint": false,
+    "canonical_runtime": false,
+    "configuration": false,
+    "provider_or_kaggle_state": false,
+    "submission": false
+  },
+  "new_sources": {
+    ".github/workflows/titan-capillary-order-rail-sol-rail.yml": {
+      "bytes": 4923,
+      "git_blob_sha1": "7e0ffb841149fcf911c5768c21cb721510f0e26c",
+      "sha256": "fbd52731ab9c9ac2de46ba2949dbf62c2aa8ff8541625f5bb6045e278515869c"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/jit_seed_order_rail.py": {
+      "bytes": 25240,
+      "git_blob_sha1": "f5d2c3775bc527ef7f950a850eac8036bd71e865",
+      "sha256": "abf5fe51301873502ca1ba2a4a34e422e09b843f797ff17a741d65638820ce99"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_order_rail.py": {
+      "bytes": 12118,
+      "git_blob_sha1": "29af14ff7e0d2a0c986e0dd37b951d56e3293403",
+      "sha256": "4cac66f8a07694b8ea6a5aa50d70acec628cf038f9746cc326c4148e81ca6488"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py": {
+      "bytes": 3673,
+      "git_blob_sha1": "f138f3015da5d59b7ff5c6ac1ce5d0dbd760abe4",
+      "sha256": "67995a5d38f1b15eb1b159d72b2ac7a27524218da73ad3bd031ab863b30e062f"
+    }
+  },
+  "operation": "titan-capillary-order-rail-20260909-sol-rail-01",
+  "predecessor": {
+    "carrier_git_blob_sha1": "468d9068468810fe1cb62535bc0ba80b689ec6c8",
+    "carrier_path": "revenue/kaggriculture/cloud-execution-lab/capillary_main.py",
+    "compiler_git_blob_sha1": "e1cf2485ab869cf3c6f5eec455b0a25f6aeaa505",
+    "compiler_path": "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py",
+    "known_defect": "The first empty active market slot can place a staged BUY_SEED before an inherited later live row. Ordered affordability can then make that inherited HIRE, LAND, product, or animal order lose a fill.",
+    "lifecycle_test_git_blob_sha1": "1ec33d04636e7f2fa306001392af0d5ece7660a9"
+  },
+  "predecessor_discriminator": {
+    "cash_witness": {
+      "illustrative_costs": {
+        "BUY_ANIMAL_COW_1": 500,
+        "BUY_SEED_MELON_1": 80,
+        "HIRE": 100
+      },
+      "predecessor_inherited_animal_fills": false,
+      "scope": "deterministic order-sensitivity witness, not an official-engine score claim",
+      "starting_cash": 600,
+      "successor_inherited_animal_fills": true
+    },
+    "predecessor_result": [
+      [
+        "HIRE"
+      ],
+      [
+        "BUY_SEED",
+        "MELON",
+        1
+      ],
+      [
+        "BUY_ANIMAL",
+        "COW",
+        1
+      ]
+    ],
+    "successor_result": [
+      [
+        "HIRE"
+      ],
+      [],
+      [
+        "BUY_ANIMAL",
+        "COW",
+        1
+      ],
+      [
+        "BUY_SEED",
+        "MELON",
+        1
+      ]
+    ],
+    "target_market": [
+      [
+        "HIRE"
+      ],
+      [],
+      [
+        "BUY_ANIMAL",
+        "COW",
+        1
+      ]
+    ]
+  },
+  "repair": {
+    "input_boundary": "Validate route, action, unit, market, and exact non-boolean integer quantity shapes before predecessor conversion.",
+    "placement_policy": "append_or_trailing_active_prefix_blank_only",
+    "postconditions": [
+      "Every inherited nonblank market row remains byte-exact at the same index.",
+      "Every staged non-anchor seed order is strictly after the last inherited nonblank active-prefix row.",
+      "Actor surfaces, all other action keys, and inactive market suffixes remain exact.",
+      "Every changed market position is bound to a plan anchor or positive placement receipt.",
+      "Malformed or unreceipted output returns the original routes with a non-certified report."
+    ],
+    "source_isolation": "Clone predecessor functions with private globals; never mutate predecessor module globals."
+  },
+  "schema_version": 1,
+  "stack": {
+    "child_branch": "sol-rail/capillary-order-rail-20260909-01",
+    "parent_branch": "sol-janus/capillary-route-identity-repair-20260909-01",
+    "parent_head": "fcb4bea645af0676283b5c44b969ee8690ea1ee7",
+    "repository": "woahwhattheheck/commons"
+  },
+  "status": "SOURCE_READY_HOSTED_VALIDATION_REQUIRED",
+  "validation": {
+    "hosted_exact_head": "REQUIRED",
+    "local": [
+      {
+        "command": "python -m py_compile jit_seed_order_rail.py test_jit_seed_order_rail.py titan_capillary.py",
+        "result": "PASS"
+      },
+      {
+        "authority": "non-hosted synthetic smoke only",
+        "command": "dependency-shape mock smoke covering internal-hole predecessor, append repair, cap fail-closed, trailing blank, malformed quantity",
+        "result": "PASS"
+      }
+    ],
+    "official_games": "NOT_RUN",
+    "score_or_promotion_claim": false
+  }
+}

@@ -1,0 +1,119 @@
+name: titan-capillary-order-rail-sol-rail
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-capillary-order-rail-sol-rail.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/jit_seed_order_rail.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py"
+      - "revenue/kaggriculture/cloud-execution-lab/capillary_main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_order_rail.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_capillary_lifecycle.py"
+      - "revenue/kaggriculture/cloud-execution-lab/receipts/capillary_order_rail_sol_rail.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-order-certificate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    env:
+      LAB: revenue/kaggriculture/cloud-execution-lab
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind predecessor, carrier, and successor source identities
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git hash-object "$LAB/jit_seed_staging.py")" = "e1cf2485ab869cf3c6f5eec455b0a25f6aeaa505"
+          test "$(git hash-object "$LAB/capillary_main.py")" = "468d9068468810fe1cb62535bc0ba80b689ec6c8"
+          test "$(git hash-object "$LAB/test_jit_seed_staging.py")" = "c669eeaaa53a62b8ca2b4f7062fa55b6f070274d"
+          test "$(git hash-object "$LAB/test_capillary_lifecycle.py")" = "1ec33d04636e7f2fa306001392af0d5ece7660a9"
+          test "$(git hash-object "$LAB/main.py")" = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
+          test "$(git hash-object "$LAB/titan_runtime.py")" = "b952c9c228ecbde592bf3d2df01638677abb0d24"
+          test "$(git hash-object "$LAB/TITAN-CONFIG.json")" = "3a3bef83899d3010fad623b628d9e95d9978111b"
+          test "$(git hash-object "$LAB/jit_seed_order_rail.py")" = "f5d2c3775bc527ef7f950a850eac8036bd71e865"
+          test "$(git hash-object "$LAB/test_jit_seed_order_rail.py")" = "29af14ff7e0d2a0c986e0dd37b951d56e3293403"
+          test "$(git hash-object "$LAB/titan_capillary.py")" = "f138f3015da5d59b7ff5c6ac1ce5d0dbd760abe4"
+          git diff --exit-code -- .
+          printf 'exact_head=%s\n' "$EXPECTED_HEAD"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run predecessor, order-rail, lifecycle, and carrier contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v \
+            test_jit_seed_staging.py \
+            test_jit_seed_order_rail.py \
+            test_capillary_lifecycle.py
+
+      - name: Prove isolated placement ownership
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import jit_seed_staging as predecessor
+          import jit_seed_order_rail as successor
+          import titan_capillary
+
+          before = predecessor._place_seed_order
+          compiler = successor._isolated_compiler()
+          assert callable(compiler)
+          assert predecessor._place_seed_order is before
+          assert successor._base_blob() == (
+              successor.EXPECTED_BASE_COMPILER_GIT_BLOB,
+              None,
+          )
+          assert (
+              titan_capillary.compile_jit_expensive_seed_routes
+              is successor.compile_jit_expensive_seed_routes
+          )
+          print("ISOLATED_ORDER_RAIL_PASS")
+          PY
+
+      - name: Compile every candidate and contract module
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            jit_seed_staging.py \
+            jit_seed_order_rail.py \
+            titan_capillary.py \
+            capillary_main.py \
+            test_jit_seed_staging.py \
+            test_jit_seed_order_rail.py \
+            test_capillary_lifecycle.py
+
+      - name: Assert exact head stayed clean
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git diff --exit-code -- .
