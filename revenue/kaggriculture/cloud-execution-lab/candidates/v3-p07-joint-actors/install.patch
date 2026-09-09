@@ -1,0 +1,53 @@
+--- /tmp/v25/cand_f8f1/TITAN-CONFIG.json	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/v25/cand_p07/TITAN-CONFIG.json	2026-09-09 19:09:45.487551598 +0000
+@@ -13,5 +13,6 @@
+   "committed_seed_retry": false,
+   "operating_stock": true,
+   "idle_fertilizer": true,
+-  "crop_release": true
++  "crop_release": true,
++  "joint_actors": true
+ }
+--- /tmp/v25/cand_f8f1/spatial_tempo.py	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/v25/cand_p07/spatial_tempo.py	2026-09-09 19:09:45.487551598 +0000
+@@ -485,6 +485,13 @@
+             self._begin(controller,pristine,obs)
+             selected=original(obs)
+             result=self.transform(obs,selected,controller)
++            # Joint reconciliation owns continuation after independent per-actor
++            # assembly (Arlene.act + SpatialTempo.transform) and before commit.
++            if getattr(self,'joint_actors_enabled',False):
++                from joint_actors import reconcile
++                result,self.joint_report=reconcile(self,obs,result,controller)
++            else:
++                self.joint_report={'changed':False,'reason':'disabled'}
+             if self.crop_release:
+                 from crop_release import offer_crop
+                 result,self._crop_offered=offer_crop(self.crop_intent,obs,result)
+--- /tmp/v25/cand_f8f1/titan_runtime.py	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/v25/cand_p07/titan_runtime.py	2026-09-09 19:09:45.487551598 +0000
+@@ -66,6 +66,7 @@
+     operating_stock: bool = False
+     idle_fertilizer: bool = False
+     crop_release: bool = False
++    joint_actors: bool = False
+ 
+     def __post_init__(self):
+         if self.consumer not in ('frozen', 'ordered', 'parent'):
+@@ -253,6 +254,7 @@
+                         return selected
+                     return transform(obs, selected, controller)
+                 self.spatial.transform = compatible_transform
++            self.spatial.joint_actors_enabled = bool(f.joint_actors)
+             self.spatial.install(self.controller)
+             self.spatial.seed_reserve = lambda crop, step, current: self.seed_budget.remaining(crop, step, current)
+         self._restore_seller_state()
+@@ -285,6 +287,8 @@
+             self.diagnostics['route_events'] = list(self.spatial.events)
+             self.diagnostics['idle_fertilizer_receipts'] = list(self.spatial.receipt_events)
+             self.diagnostics['idle_fertilizer_obligation'] = deepcopy(self.spatial.sale_obligation)
++            if getattr(self.spatial, 'joint_report', None) is not None:
++                self.diagnostics['joint_actors'] = deepcopy(self.spatial.joint_report)
+             if self.features.crop_release:
+                 self.diagnostics['crop_release']=deepcopy(self.spatial.crop_intent)
+                 self.diagnostics['crop_release_action']=deepcopy(self.spatial.crop_report)
