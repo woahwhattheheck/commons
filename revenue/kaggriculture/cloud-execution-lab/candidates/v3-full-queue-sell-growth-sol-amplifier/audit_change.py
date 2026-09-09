@@ -18,6 +18,7 @@ EXPECTED_BLOBS = {
     "frozen_selected": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
     "main": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
     "titan_runtime": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "config": "3a3bef83899d3010fad623b628d9e95d9978111b",
 }
 QUEUE_NEEDLE = "if q>offered:return False"
 CAP_NEEDLE = "q=min(max(0,int(o[2])),remaining.get(item,0),max(0,available.get(item,0)))"
@@ -85,6 +86,7 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         "frozen_selected": lab / "frozen_selected.py",
         "main": lab / "main.py",
         "titan_runtime": lab / "titan_runtime.py",
+        "config": lab / "TITAN-CONFIG.json",
         "growth_patch": HERE / "growth_patch.py",
         "candidate": HERE / "candidate.py",
     }
@@ -121,6 +123,9 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         "actual_runtime_imports_frozen_selected_at_lazy_init": (
             text["titan_runtime"].count("from frozen_selected import FrozenSelected") == 1
             and text["titan_runtime"].count("self.consumer = FrozenSelected()") == 1
+        ),
+        "current_config_selects_frozen_consumer": (
+            json.loads(text["config"]).get("consumer") == "frozen"
         ),
         "candidate_delegates_canonical_outer_agent": (
             text["candidate"].count("return _CANONICAL.agent(observation, configuration)") == 1
