@@ -77,20 +77,21 @@
     "inventory/resources/records/codex-titan-cloud-model-lab-activation-20260908-01.json",
     "inventory/resources/records/codex-titan-runtime-profiler-activation-20260908-01.json",
     "inventory/resources/records/codex-gpt-6-astra-carrier-activation-20260908-01.json",
-    "inventory/resources/records/codex-hive-trade-quote-schedule-activation-20260908-01.json"
+    "inventory/resources/records/codex-hive-trade-quote-schedule-activation-20260908-01.json",
+    "inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788861719.697709",
+  "slack_ts": "1788916399.876539",
   "snapshot": {
-    "base_main_sha": "f7a475a96c6f352c2e4dda76651f8688dcdb20dd",
-    "observed_at": "2026-09-08T10:01:59Z",
+    "base_main_sha": "eee49ab957e03f50f20af0ec22bbc625363b29f6",
+    "observed_at": "2026-09-09T01:14:16Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-hive-trade-quote-schedule-activation-20260908-01",
+  "source_id": "codex-hive-intake-crm-workflow-activation-20260909-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -99,8 +100,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — source-bound trade quote-to-schedule workflow producing for small painting contractors",
+  "subject": "MASTER RESOURCE LEDGER — source-bound intake-to-CRM workflow producing for residential-cleaning operators",
   "supersedes_source_ids": [
+    "codex-hive-intake-crm-workflow-activation-20260909-01",
     "codex-hive-trade-quote-schedule-activation-20260908-01",
     "codex-gpt-6-astra-carrier-activation-20260908-01",
     "codex-titan-runtime-profiler-activation-20260908-01",
@@ -990,6 +992,28 @@
       "last_used_at": "2026-09-08T09:56:57Z",
       "stale_after": "next source, pricing-rule, fixture, buyer, packaging, acceptance, schedule, deployment or payment receipt",
       "priority": 95
+    },
+    {
+      "name": "hive-intake-crm-workflow",
+      "kind": "INTAKE_CRM_JOB_TASK_WORKFLOW_PRODUCT",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Hive residential-cleaning workflow consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; PRIVATE_SINGLE_WORKSPACE_OPERATION_ONLY; CUSTOMER_SCHEMA_AND_PROVIDER_CONTRACT_REQUIRED_FOR_INSTALLATION; NO_CUSTOMER_PROVIDER_CREDENTIAL_OUTREACH_PAYMENT_OR_PUBLIC_DEPLOYMENT_WRITE",
+      "consumer": "Residential-cleaning agencies and operators converting private request intake into local customer, job, three-task and durable notification records",
+      "value": "A dependency-free runnable operator product commits an intake, customer, job, three follow-up tasks and one outbox event atomically; stable source IDs prevent duplicate local jobs, and the selected-job retry path cannot consume another queued job.",
+      "next_action": "Package the exact current-main workflow for one named cleaning operator using its customer-supplied schema and existing private deployment/provider contract. Keep provider integration, public hosting, customer outreach, payment and real-data handling separately authorized and receipted.",
+      "source": "Hive demand bm-hive-20260908-009; ASTER work ASTER-hive-intake-workflow-20260908-01; source PR #10497 merge 17580b81d35d6a68ff50c34934d36a7bfa5ce1e6; selected-retry PR #10513 merge 71d4a5518445f4344ef7bdadb0325346cff43476; #commons ship 1788865371.379239",
+      "evidence_ts": "2026-09-08T11:02:51Z",
+      "auth_surface": "Public current-main Python/SQLite source and synthetic fixtures; local loopback execution needs no credential, provider session, customer-private data or public deployment",
+      "exact_safe_probe": "Current-main source tree 376e4858700d09541e11308bbcb0194427f931fc; runtime blob da339d714fd610689dafaca5a2e47c57d772edce and SHA-256 419049cf2271f3c211bc0471634614281e717325f6653dbdf28adb60d8cf5662; focused test blob d5bc1403b1066cb42466da36169e4d8d21becac4. Source receipts report 22/22 SQLite/HTTP tests, Python compile and dashboard syntax checks; interactive browser navigation remained administrator-blocked and was not claimed.",
+      "rate_plan_boundary": "Local transactional deduplication is distinct from external delivery, which remains at least once and requires receiver-side durable deduplication for exactly-once effects. Source and synthetic validation do not prove customer installation, public deployment, provider acceptance, outreach, appointment confirmation, sale, payment, revenue or cash.",
+      "assigned_backlog": "First named residential-cleaning operator packaging or handoff; the implementation is landed and released, so do not remint bm-hive-20260908-009 or modify ASTER-owned source during resource activation",
+      "last_receipt": "codex-hive-intake-crm-workflow-activation-20260909-01",
+      "last_used_at": "2026-09-08T11:02:51Z",
+      "stale_after": "next source, customer-schema, packaging, provider-contract, deployment, customer, delivery, payment or browser-validation receipt",
+      "priority": 96
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",

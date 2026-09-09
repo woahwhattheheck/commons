@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788861719.697709")
+        self.assertEqual(catalog["slack_ts"], "1788916399.876539")
         self.assertEqual(
             catalog["source_id"],
-            "codex-hive-trade-quote-schedule-activation-20260908-01",
+            "codex-hive-intake-crm-workflow-activation-20260909-01",
+        )
+        self.assertIn(
+            "codex-hive-intake-crm-workflow-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-hive-trade-quote-schedule-activation-20260908-01",
@@ -287,17 +291,17 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-hive-trade-quote-schedule-activation-20260908-01.json",
+            "codex-hive-intake-crm-workflow-activation-20260909-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "hive-trade-quote-schedule"
+            current_activation["selected_resource"], "hive-intake-crm-workflow"
         )
-        self.assertEqual(current_activation["projection"]["resources"], 83)
-        self.assertEqual(current_activation["projection"]["producing"], 55)
+        self.assertEqual(current_activation["projection"]["resources"], 84)
+        self.assertEqual(current_activation["projection"]["producing"], 56)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -677,6 +681,20 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("NO_OUTREACH_PAYMENT_OR_EXTERNAL_CALENDAR_WRITE", trade_quote["authority"])
         self.assertIn("a75dae6308ce4bab3e0b2625638c953ee2d25dcd", trade_quote["exact_safe_probe"])
         self.assertIn("fd3d56b6dad06c1177795ec92e1916fb24aa6955", trade_quote["exact_safe_probe"])
+        intake_crm = next(
+            row for row in catalog["surfaces"] if row["name"] == "hive-intake-crm-workflow"
+        )
+        self.assertEqual(intake_crm["capacity"], "LIVE")
+        self.assertEqual(intake_crm["stage"], "PRODUCING")
+        self.assertEqual(intake_crm["condition"], "CONSTRAINED")
+        self.assertEqual(
+            intake_crm["last_receipt"],
+            "codex-hive-intake-crm-workflow-activation-20260909-01",
+        )
+        self.assertIn("PRIVATE_SINGLE_WORKSPACE_OPERATION_ONLY", intake_crm["authority"])
+        self.assertIn("NO_CUSTOMER_PROVIDER_CREDENTIAL", intake_crm["authority"])
+        self.assertIn("376e4858700d09541e11308bbcb0194427f931fc", intake_crm["exact_safe_probe"])
+        self.assertIn("da339d714fd610689dafaca5a2e47c57d772edce", intake_crm["exact_safe_probe"])
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
