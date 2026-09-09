@@ -23,6 +23,16 @@ class MaterializeTests(unittest.TestCase):
             self.assertEqual(parsed[name], payload, name)
         self.assertEqual(json.loads(receipt_path.read_text()), receipt)
 
+        freeze = json.loads(fx.members["SOURCE-FREEZE.json"])
+        scope = receipt["evidence_scope"]
+        self.assertEqual(scope["source_freeze_sha256"], fx.pin.source_freeze_sha256)
+        self.assertEqual(scope["development_seeds"], freeze["development_seeds"])
+        self.assertEqual(scope["held_out_seeds"], freeze["held_out_seeds"])
+        self.assertEqual(scope["held_out_status"], freeze.get("held_out_status"))
+        self.assertFalse(scope["results_bound"])
+        self.assertTrue(scope["fresh_promotion_panels_required"])
+        self.assertNotIn('"wins"', json.dumps(scope, sort_keys=True))
+
     def test_output_is_byte_deterministic_across_directories(self):
         left = fixture(self)
         right = fixture(self)
