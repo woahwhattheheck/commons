@@ -1,0 +1,54 @@
+name: titan-seed-prefix-dependency
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/**'
+      - '.github/workflows/titan-seed-prefix-dependency.yml'
+      - 'p/titan-v3-seed-prefix-dependency-20260909-sol-parallax.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-seed-prefix-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Assert immutable triggering head
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and run active-prefix source contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          TITAN_REQUIRE_EXACT_SOURCE: '1'
+        run: |
+          set -euo pipefail
+          python -m py_compile seed_prefix_dependency.py candidate_main.py seed_prefix_test_support.py \
+            test_prefix_classification.py test_installer.py test_exact_current.py
+          python -m unittest -v test_prefix_classification.py test_installer.py test_exact_current.py 2>&1 | tee "$RUNNER_TEMP/titan-seed-prefix-tests.log"
+          test "$(grep -c '^test_' "$RUNNER_TEMP/titan-seed-prefix-tests.log")" -eq 21
+          ! grep -Eq 'skipped|FAILED|ERROR' "$RUNNER_TEMP/titan-seed-prefix-tests.log"
+      - name: Verify candidate paths do not mutate canonical release surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -type d -name __pycache__ -prune -exec rm -rf '{}' +
+          git diff --exit-code
+          test -z "$(git status --porcelain)"

@@ -1,0 +1,124 @@
+{
+  "branch": "sol-parallax/titan-v3-seed-prefix-dependency-20260909-01",
+  "canonical_surfaces_changed": false,
+  "files": {
+    ".github/workflows/titan-seed-prefix-dependency.yml": {
+      "bytes": 2128,
+      "git_blob": "afed1f27e53bc512c46cf9c90580ab6d27ee92dc",
+      "sha256": "8acb312a58c366342c69652ba09ffb1c3328d4fbc7b961e3662e1621431731fc"
+    },
+    "README.md": {
+      "bytes": 5741,
+      "git_blob": "7620a17b150d5b5faaf293cedabd7eb121b23ad5",
+      "sha256": "217db276de27b97f370d396c37749fed09712924d2e9a46224deea4db6abfb14"
+    },
+    "__init__.py": {
+      "bytes": 376,
+      "git_blob": "36c344d44726abb5e76407b2e72ac655f2783911",
+      "sha256": "aecb1c50987a9e291c0ff95d96dd86e1daad49c4c9c50edfea122c4ccc804b5c"
+    },
+    "candidate_main.py": {
+      "bytes": 4051,
+      "git_blob": "0ba4aee38b4e6f4da40d7120f0562e53718b1a92",
+      "sha256": "bc2f785cc33e130b5f883990437888e3b09d5680a63dc97d9960c223bf963bd7"
+    },
+    "install.patch": {
+      "bytes": 1469,
+      "git_blob": "eb08900311359ccf37ae1157f50ab8c7177ce55d",
+      "sha256": "2ac4b423d1255623f55251bb24835351328b094202ac3bcf4bc943e9bd3431cd"
+    },
+    "p/titan-v3-seed-prefix-dependency-20260909-sol-parallax.md": {
+      "bytes": 1436,
+      "git_blob": "852cc49e54de6981d0962fc34e2faadad016725b",
+      "sha256": "c9cded84a9a8d605981b9e5f4645868a30ccddb32c40af4907d2c6af59494771"
+    },
+    "seed_prefix_dependency.py": {
+      "bytes": 13693,
+      "git_blob": "2bbabd734a4723cb17d89390d5b7bb03d676e5bc",
+      "sha256": "f4a4de486e66536aec84fc97f5df1df9a7a6e1a197e35dd5fc1d4c76d18ecc06"
+    },
+    "seed_prefix_test_support.py": {
+      "bytes": 4788,
+      "git_blob": "0841d74d62e1230eb3884df7d0476bfc17761890",
+      "sha256": "f19cb26f82617fde443e6f2c0cd53d97bef894c1712c111c8d29a8e4aae5367d"
+    },
+    "test_exact_current.py": {
+      "bytes": 7258,
+      "git_blob": "4bd66af480fe101f5d19b1f0401b2cc005e5c613",
+      "sha256": "ffed872192c0dd1775748e3426ee3284a20fb2b8f0f9640eadfb970ae8e0e40a"
+    },
+    "test_installer.py": {
+      "bytes": 7106,
+      "git_blob": "446bcff66d419cefc00e1b0bbce968779ab5c0af",
+      "sha256": "f01d0b767bdf7e21b45531cfd7c9450987857c26a8561dacd2bbdce859d8b091"
+    },
+    "test_prefix_classification.py": {
+      "bytes": 5972,
+      "git_blob": "a3669010fa0b1dff0483bf9017caedfae742b059",
+      "sha256": "fc8b5f9e69bc72e4d98c5c52ffda8ca287295a28e509c733964dd53c636b9a42"
+    }
+  },
+  "finding": {
+    "counterexample": {
+      "active_order": [
+        "BUY_SEED",
+        "WHEAT",
+        2
+      ],
+      "candidate_cash_after_market": 10,
+      "cash_before": 10,
+      "cash_delta": 10,
+      "claim_scope": "one exact current market transition",
+      "inactive_tail_order": [
+        "HIRE"
+      ],
+      "inactive_tail_order_slot": 10,
+      "max_orders": 10,
+      "predecessor_cash_after_market": 0
+    },
+    "current_dependency_scan": "all serialized rows after each edited seed slot",
+    "official_execution_boundary": "market[:maxMarketOrdersPerTurn]",
+    "repair": "release the demand-valid proposal only when all downstream capital dependencies are outside the active prefix"
+  },
+  "gameplay": {
+    "kaggle_write": false,
+    "leaderboard_claim": false,
+    "status": "unmeasured"
+  },
+  "hosted_validation": {
+    "exact_methods_required": 21,
+    "skips_allowed": 0,
+    "status": "pending"
+  },
+  "implementation": {
+    "activation": "candidate entrypoint only; canonical default unchanged",
+    "adapter": "source-bound instance-local selected-action method wrapper",
+    "additional_seed_budget_calls": 0,
+    "canonical_funding_module_replaced": false,
+    "entrypoint": "private canonical main module; wrapped _new_instance factory; full canonical agent delegation"
+  },
+  "local_validation": {
+    "command": "python -m unittest -v test_prefix_classification.py test_installer.py test_exact_current.py",
+    "errors": 0,
+    "failures": 0,
+    "fuzz_cases": 1000,
+    "limitation": "connector worker has no repository checkout; exact current tests are mandatory in PR CI",
+    "methods_total": 21,
+    "passed": 17,
+    "py_compile": "pass",
+    "seconds_observed": 0.052,
+    "skipped_exact_repository": 4
+  },
+  "operation": "titan-v3-seed-prefix-dependency-20260909-01",
+  "owner": "SOL-PARALLAX",
+  "schema": "titan-v3-seed-prefix-dependency-results-v1",
+  "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788985395120849",
+  "source_base": {
+    "commit": "e2b99bb417675ad574aa4d12cf1c32e5795124c5",
+    "official_engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "runtime_git_blob": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "seed_funding_git_blob": "3d0c19cdf9f1260f56be3f6a7beb191b37b3d568",
+    "seed_selected_source_sha256": "b3bf094820b77a7b871b017c78fdfa18ef3663c94970c96c2eb572e5c693ff01",
+    "tree": "a525e55b771e0cf5588c55b3188a507da7095195"
+  }
+}
