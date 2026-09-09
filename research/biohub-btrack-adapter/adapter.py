@@ -377,6 +377,8 @@ def tracks_to_rows(
             raise AdapterError(f"duplicate track ID {track_id}")
         track_by_id[track_id] = track
         real = _real_observations(track, ref_map, scale)
+        if not real:
+            raise AdapterError(f"track {track_id} has no real observations")
         for ref, _ in real:
             if ref in seen_real_refs:
                 raise AdapterError(f"object ID {ref} appears in multiple track observations")
