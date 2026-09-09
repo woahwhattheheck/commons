@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -20,6 +21,14 @@ REQUIRED = [
     "$199 dealer diagnostic",
 ]
 
+PRODUCT_HREFS = [
+    "./agent-rescue.html",
+    "./dealer-service-lead-rescue.html",
+    "./referral-intake-completeness.html",
+    "./repair-booking-preflight.html",
+    "./plant-downtime-handoff.html",
+]
+
 
 class CoilCapabilitiesLiveCashTest(unittest.TestCase):
     def test_direct_product_doors(self) -> None:
@@ -28,8 +37,20 @@ class CoilCapabilitiesLiveCashTest(unittest.TestCase):
         for needle in REQUIRED:
             self.assertIn(needle, text, f"missing {needle}")
         self.assertNotIn("buy.stripe.com", text)
-        # different mechanism: no tools-cash pointer clone
-        self.assertNotIn("tools-cash.html", text)
+        section = re.search(
+            r'<section\s+id="live-cash"[^>]*>(.*?)</section>',
+            text,
+            re.S | re.I,
+        )
+        self.assertIsNotNone(section, "live-cash section missing")
+        ul = re.search(r"<ul>(.*?)</ul>", section.group(1), re.S | re.I)
+        self.assertIsNotNone(ul, "live-cash product list missing")
+        products = ul.group(1)
+        # Product doors stay the five verified pages. Catalog shelf cite is a
+        # different mechanism (#cash-hook), not a product-list clone.
+        self.assertNotIn("tools-cash.html", products)
+        for href in PRODUCT_HREFS:
+            self.assertIn(href, products, f"product list missing {href}")
 
 
 if __name__ == "__main__":
