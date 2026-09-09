@@ -21,7 +21,7 @@ WORKFLOW = ROOT / ".github/workflows/commons-board.yml"
 
 KEEP = {
     ".github/workflows/commons-board.yml": "c9da64cb",
-    "board_ingest.py": "b8f8d8c6",
+    "board_ingest.py": "a8a5f52c",
     "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",

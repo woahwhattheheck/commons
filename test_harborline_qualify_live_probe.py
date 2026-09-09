@@ -22,7 +22,7 @@ KEEP = {
     "p/cursor-autogtm-peer-ack-lead-landed-readback-20260902-01.md": "d3be87c2",
     "p/cursor-autogtm-peer-readback-ack-20260902-01.md": "d9d1008e",
     "p/cursor-autogtm-explee-same-loop-20260902-01.md": "c437f4d6",
-    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "packs/desk-website-service-20260902-01/door.html": "299b01fd",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }
 

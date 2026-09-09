@@ -227,6 +227,10 @@ def render_html() -> str:
 <body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./commons-slack.html">full-body leftover</a> · <a href="./p/cursor-commons-slack-full-body-chunk-20260902-01.md">receipt</a> · <a href="./action.html">ACTION PAD</a></p>
 <h1>4000-char channel + thread remainder</h1>
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
+</section>
+
 
 <section id="live-cash" aria-label="Live cash">
   <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>

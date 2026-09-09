@@ -15,12 +15,12 @@ LEFTOVER = ROOT / "p/cursor-commons-slack-full-body-20260902-01.md"
 
 KEEP = {
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "3bf97dc1",
-    "test_commons_slack_full_body.py": "d0cae678",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "2db9f0e5",
+    "host/commons_slack_full_body.py": "f0bb6a2a",
+    "test_commons_slack_full_body.py": "df72b093",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "eece8b1a",
     "ground/COMMONS_SLACK_FULL_BODY.md": "9203dd5b",
-    "commons-slack.html": "ddf89b44",
-    "host/slack_mirror.py": "c94f6fa5",
+    "commons-slack.html": "2317e64c",
+    "host/slack_mirror.py": "95d6aff3",
     "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",
 }

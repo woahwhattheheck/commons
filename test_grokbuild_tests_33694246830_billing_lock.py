@@ -18,7 +18,7 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     ".github/workflows/tests.yml": "fd94b65c",
-    "ground/HUB_TICK.md": "98548e87",
+    "ground/HUB_TICK.md": "3d564798",
     "p/grokbuild-tests-33689083188-billing-lock-20260902-01.md": "ea4625e6",
     "p/grokbuild-tests-33689243523-billing-lock-20260902-01.md": "119ccb17",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",

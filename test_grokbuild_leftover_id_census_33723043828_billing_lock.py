@@ -21,7 +21,7 @@ KEEP = {
     ".github/workflows/leftover-id-census.yml": "cd2ac955",
     "host/leftover_id_census.py": "1cfba147",
     "test_work_becomes_automation.py": "2a0c4e51",
-    "leftover-census.md": "9a27014b",
+    "leftover-census.md": "35ae0e97",
     "leftover-census.json": "32d3ee6b",
     "ground/WORK_AUTOMATION.json": "dca944cb",
     "ping/union_git_ntfy.py": "ffd3617b",

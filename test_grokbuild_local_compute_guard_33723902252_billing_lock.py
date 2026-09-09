@@ -39,7 +39,7 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "66449d72",
     "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "d91f17d9",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "4d5f069a",
     "llms_txt.py": "70daec62",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
