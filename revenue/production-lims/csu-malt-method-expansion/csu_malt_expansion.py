@@ -14,8 +14,8 @@ def file_sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 @dataclass
 class Ledger:
-    seen:set[str]=field(default_factory=set); accessions:dict=field(default_factory=dict)
-    jobs:dict=field(default_factory=dict); reports:dict=field(default_factory=dict)
+    seen:set[str]=field(default_factory=set); seen_payloads:dict[str,str]=field(default_factory=dict)
+    accessions:dict=field(default_factory=dict); jobs:dict=field(default_factory=dict); reports:dict=field(default_factory=dict)
     holds:dict=field(default_factory=dict); events:list=field(default_factory=list)
     def counts(self): return {"processed":len(self.seen),"accessions":len(self.accessions),"jobs":len(self.jobs),"reports":len(self.reports),"holds":len(self.holds),"events":len(self.events)}
 
@@ -38,16 +38,23 @@ def row(i,phase,package,sample="AUTO",grain="BARLEY",fault=None,qc="QC-01",ok=Tr
     if sample=="AUTO": sample=f"MALT-{i:03d}"
     return {"submission_id":f"SUB-{i:03d}","sample_id":sample,"grain":grain,"package":package,"received_phase":phase,"qc_batch":qc,"qc_ok":ok,"seeded_fault":fault,"source_ref":f"synthetic://csu/malt/{i:03d}.json"}
 
+def reserved_samples(L):
+    return set(L.accessions) | {h["sample_id"] for h in L.holds.values() if h.get("sample_id")}
+
 def classify(r,L,m):
     if not r["sample_id"] or not r["package"]: return MISS
-    if r["sample_id"] in L.accessions: return DUP
+    phase=r.get("received_phase")
+    if phase not in ("BEFORE_CUTOFF","AFTER_CUTOFF"): raise ValueError("RECEIVED_PHASE_INVALID")
+    if r["sample_id"] in reserved_samples(L): return DUP
     if r["grain"] not in m["supported_grains_by_package"].get(r["package"],[]): return UNSUP
-    return CURRENT if r["received_phase"]=="BEFORE_CUTOFF" else NEXT
+    return CURRENT if phase=="BEFORE_CUTOFF" else NEXT
 
 def process(r,L,m):
-    sid=r["submission_id"]
-    if sid in L.seen: return "IDEMPOTENT_REPLAY"
-    L.seen.add(sid); status=classify(r,L,m)
+    sid=r["submission_id"]; fingerprint=digest(r)
+    if sid in L.seen:
+        if L.seen_payloads.get(sid)!=fingerprint: raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH")
+        return "IDEMPOTENT_REPLAY"
+    status=classify(r,L,m); L.seen.add(sid); L.seen_payloads[sid]=fingerprint
     if status in (DUP,UNSUP,MISS):
         L.holds[sid]={"sample_id":r["sample_id"],"hold_code":status}; L.events.append((sid,"HOLD",status)); return status
     sample=r["sample_id"]; L.accessions[sample]={"submission_id":sid,"sample_id":sample,"package":r["package"],"week_route":status,"source_hash":digest([r["source_ref"],sample])}
