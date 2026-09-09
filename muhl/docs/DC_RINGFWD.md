@@ -180,3 +180,13 @@ Planted AUTOFAB0 records still decode:
 The python button is not the computer. It addressed 524288, ORed one bit, died.
 
 Named-mouth 1s and 0s after the pulse are the measure. Length changing at EOF is a different write (sibling grow). Length holding still would also not prove the ring did nothing.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
