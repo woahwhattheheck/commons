@@ -177,11 +177,22 @@ class PublicRegimeHistory:
         harvest_short = sum(q for t, q in harvest if t >= short_cutoff)
         flow_short = sum(q for t, q in flows if t >= short_cutoff)
         short = max(harvest_short, flow_short)
-        support = len({t for t, _ in harvest} | {t for t, _ in flows})
-        long_total = max(sum(q for _, q in harvest), sum(q for _, q in flows))
-        long_rate = 0
-        if support >= self.minimum_repeat and long_total:
-            long_rate = ceil(long_total * self.short_window / self.long_window)
+        # Repeat admission is stream-local. A large old harvest and one tiny
+        # later residual-flow observation are two different public explanations,
+        # not evidence that either explanation repeated. Mixing their timestamps
+        # would let cross-stream noise resurrect an old outlier.
+        harvest_support = len({t for t, _ in harvest})
+        flow_support = len({t for t, _ in flows})
+        harvest_total = sum(q for _, q in harvest)
+        flow_total = sum(q for _, q in flows)
+        harvest_long_rate = 0
+        flow_long_rate = 0
+        if harvest_support >= self.minimum_repeat and harvest_total:
+            harvest_long_rate = ceil(harvest_total * self.short_window / self.long_window)
+        if flow_support >= self.minimum_repeat and flow_total:
+            flow_long_rate = ceil(flow_total * self.short_window / self.long_window)
+        long_rate = max(harvest_long_rate, flow_long_rate)
+        support = max(harvest_support, flow_support)
         stress = min(self.capacity, max(visible, short, long_rate))
         return {
             'product': product,
@@ -189,6 +200,8 @@ class PublicRegimeHistory:
             'short': short,
             'long_rate': long_rate,
             'repeat_support': support,
+            'harvest_repeat_support': harvest_support,
+            'flow_repeat_support': flow_support,
             'stress': stress,
             'regime_step': self.regime_step,
             'interpretation': 'bounded public stress sizes; no calibrated probability or hidden stock',

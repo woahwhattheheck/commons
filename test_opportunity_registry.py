@@ -186,6 +186,17 @@ class OpportunityRegistryTests(unittest.TestCase):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         self.assertIn(ledger[0]["sha256"][:16], html)
 
+    def test_resources_html_receipt_tracks_live_bytes(self):
+        recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
+        html_recs = [rec for rec in recs if rec["path"] == "resources.html"]
+        self.assertEqual(len(html_recs), 1, "resources.html must have one capability receipt")
+        path = ROOT / "resources.html"
+        self.assertTrue(path.is_file())
+        self.assertEqual(mod.sha256_file(path), html_recs[0]["sha256"])
+        self.assertEqual(path.stat().st_size, html_recs[0]["bytes"])
+        html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
+        self.assertIn(html_recs[0]["sha256"][:16], html)
+
     def test_packets_and_js_off_html(self):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         proof = (ROOT / "proof-to-proposal.html").read_text(encoding="utf-8")

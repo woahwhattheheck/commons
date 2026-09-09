@@ -1,0 +1,44 @@
+{
+  "schema": "roadef.keel.route_flow.delivery.v1",
+  "status": "OPTIONAL_EXPERIMENT_NOT_PROMOTED",
+  "source_commit": "2885d176373c33410148829fef93c310c3752c0b",
+  "source_sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1",
+  "candidate_sha256": "856f0a455a793ba7254cf1f9b390bc496542a29f10cea97e5e32ccf8b40b2801",
+  "canonical_solver_changed": false,
+  "submission_changed": false,
+  "existing_context": {
+    "library_name": "ROADEF-QUARTZ-verified-context-2885d176.zip",
+    "file_id": "file_000000008c8481f783a95eb409c035fb",
+    "sha256": "62bb113f6fecf074fad8a5a76623c548d099466e230f509c8e353fb2b2e181e6",
+    "verified_payloads": 336
+  },
+  "complete_evidence": {
+    "library_path": "/ROADEF-KEEL-route-flow-evidence.zip",
+    "file_id": "file_000000004cfc81f582fcd4d305d0b2b7",
+    "library_file_id": "libfile_36e021bfff608191879df7a45aec16e3",
+    "bytes": 1183559,
+    "sha256": "67f2dd65f576d660c1f610c52a1c3768f596127d03cf3e77ef5a8cb044ce7720",
+    "verified_payloads": 813,
+    "manifest": "MANIFEST.json",
+    "detailed_results": "delivery/RESULTS.json",
+    "detailed_results_sha256": "2e187cbf23875b25c720bcb817062ad51d4f2812bf1bf85c2d782d0f8e974fce"
+  },
+  "measured_summary": {
+    "exact_flow_comparisons": 46707,
+    "generated_graphs": 14,
+    "sanitizer_repeated_large_graph_comparisons": 41856,
+    "additional_boundary_controls": 13,
+    "deliberate_bad_variants_detected": 3,
+    "application_tests_passed": 8,
+    "fixed_work_pairs_per_compiler": 24,
+    "compilers": ["GCC 14.2", "Clang 17"],
+    "official_checker_accepted_outputs": 18,
+    "kernel_fixture_outputs_rejected": 6,
+    "compared_load_coordinates": 1152,
+    "maximum_load_difference": 8.574252419180084e-13,
+    "full_cold_timing_pairs": 9,
+    "full_resumed_timing_pairs": 8,
+    "whole_solver_speed_improvement_established": false
+  },
+  "claim": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788843623401639?thread_ts=1788750090.535979&cid=C0BUY3EKMSB"
+}

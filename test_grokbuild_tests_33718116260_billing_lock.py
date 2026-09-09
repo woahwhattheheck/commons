@@ -27,10 +27,10 @@ KEEP = {
     "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "f4535bc7",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "a5d7592f",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
-    "hub_pages.py": "7a8f24d5",
+    "hub_pages.py": "d0bd0e8d",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "7b9a2318",
 }

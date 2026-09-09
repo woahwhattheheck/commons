@@ -1,7 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0
 """E13 funded-prefix working-capital regressions."""
 import copy
+import sys
 import unittest
+from pathlib import Path
+
+_LAB = Path(__file__).resolve().parent
+for _extra in (_LAB.parent / 'cloud-runtime-pulse', _LAB.parent / 'cloud-quickstep'):
+    _path = str(_extra)
+    if _path not in sys.path:
+        sys.path.append(_path)
 
 import frozen_selected as fs
 
@@ -100,6 +108,33 @@ class FundedPrefixTests(unittest.TestCase):
             [['SELL', 'MILK', 10]], {'MILK': 10}, end=self.now + 2)
         self.assertEqual(minimum, 3)
         self.assertEqual(certificate['funding_turn'], self.now + 2)
+
+    def test_zero_fill_future_sale_does_not_terminate_prefix(self):
+        """A requested future SELL with no executable shed stock is not cash."""
+        self.private['shed']['MILK'] = 10
+        self.route[self.now + 1] = {'market': [['SELL', 'WOOL', 1]]}
+        self.route[self.now + 2] = {'market': [['BUY_ANIMAL', 'COW', 1]]}
+        minimum, certificate = self.minimum(
+            [['SELL', 'MILK', 10]], {'MILK': 10}, end=self.now + 2)
+        self.assertEqual(minimum, 3)
+        self.assertEqual(certificate['reference_acquisitions'], 1)
+        self.assertIsNone(certificate['funding_turn'])
+        self.assertEqual(certificate['prefix_end'], self.now + 2)
+        self.assertFalse(certificate['fallback'])
+
+    def test_zero_fill_does_not_hide_later_executable_funding_event(self):
+        self.private['shed']['MILK'] = 10
+        self.private['shed']['EGG'] = 1
+        self.route[self.now + 1] = {'market': [['SELL', 'WOOL', 1]]}
+        self.route[self.now + 2] = {'market': [['BUY_ANIMAL', 'COW', 1]]}
+        self.route[self.now + 3] = {'market': [['SELL', 'EGG', 1]]}
+        minimum, certificate = self.minimum(
+            [['SELL', 'MILK', 10]], {'MILK': 10}, end=self.now + 3)
+        self.assertEqual(minimum, 3)
+        self.assertEqual(certificate['reference_acquisitions'], 1)
+        self.assertEqual(certificate['funding_turn'], self.now + 3)
+        self.assertEqual(certificate['prefix_end'], self.now + 2)
+        self.assertFalse(certificate['fallback'])
 
 
 if __name__ == '__main__':

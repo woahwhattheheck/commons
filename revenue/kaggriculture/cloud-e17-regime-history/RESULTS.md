@@ -52,3 +52,26 @@ The first test pass exposed one causal timestamp bug: inferred residual market-f
 The container could not materialize the repository through shell Git because DNS resolution for `github.com` was blocked. Connector reads and writes remained healthy, so source publication uses GitHub connector Git Data rather than shell credentials/network.
 
 No official-engine full games were run in this checkpoint. Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion claim**. The required next experiment remains a source-pinned matched screen of canonical `scheduler.agent` versus `regime_scheduler.agent`, both seats, periodic/switching/pressure/symmetric opponents, followed by untouched holdout before any canonical enablement.
+
+## Post-merge review correction — 2026-09-09
+
+Independent exact-head review of PR #11110 found two bounded source regressions. This source-author follow-up corrects both without changing the canonical scheduler entrypoint or enabling the candidate by default.
+
+1. **Opening regime lifecycle.** The run-only wrapper now feeds the opening public observation into `PublicRegimeHistory` before any transition exists. That seeds only the public production baseline; a step0→1 production-mix switch now enters the existing two-observation confirmation path instead of being silently adopted as the initial baseline.
+2. **Cross-stream repeat noise.** Long-memory admission is now evaluated per evidence stream. Harvest history needs repeated harvest timestamps before harvest magnitude contributes; residual-flow history independently needs repeated flow timestamps before flow magnitude contributes. Distinct timestamps split across the two streams no longer combine to reactivate an old outlier.
+
+Corrected local checks:
+
+```text
+python -m unittest -v test_seller_regime_history.py
+Ran 12 tests in 0.004s
+OK
+
+AST_OK seller_regime_history.py
+AST_OK regime_scheduler.py
+AST_OK test_seller_regime_history.py
+```
+
+New adversarial contracts cover the opening wrapper lifecycle, the exact review witness `harvest=(2,90)` plus `flow=(10,1)` at step 20 (now `long_rate=0`, `stress=0`), and the positive control that two repeated flow events still form bounded long memory.
+
+This correction remains **source-only and run-only**. It does not add official-engine full-game evidence, terminal-cash or win-rate evidence, or a default-promotion claim. The matched E17 screen and untouched holdout are still required before any canonical enablement.

@@ -25,7 +25,7 @@ KEEP_UNREAD = {
     "p/grokbuild-pr8353-stealable-lanes-20260902-01.md": "87bdb237",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
     "ground/OWNER_NOW.md": "0a574d94",
-    "hub_pages.py": "7a8f24d5",
+    "hub_pages.py": "d0bd0e8d",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
     "autogtm.html": "fab1d536",
