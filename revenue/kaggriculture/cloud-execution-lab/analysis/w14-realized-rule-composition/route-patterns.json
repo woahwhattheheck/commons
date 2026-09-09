@@ -1,0 +1,5447 @@
+{
+  "aggregate": {
+    "final_hour_drops": 14,
+    "final_hour_hires": 0,
+    "final_hour_pickups": 4,
+    "final_hour_pickups_without_same_item_sale": 4,
+    "routes": 4,
+    "same_step_deposit_then_pickup": 35
+  },
+  "archive_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+  "arlene_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+  "operation": "titan-frontier-W14-realized-rule-composition-20260909-01",
+  "routes": {
+    "7015cc00acfa4922": {
+      "final_hour_drop_count": 4,
+      "final_hour_drops": [
+        {
+          "day": 3,
+          "market": [],
+          "step": 95,
+          "worker": 5
+        },
+        {
+          "day": 8,
+          "market": [],
+          "step": 215,
+          "worker": 1
+        },
+        {
+          "day": 17,
+          "market": [],
+          "step": 431,
+          "worker": 7
+        },
+        {
+          "day": 17,
+          "market": [],
+          "step": 431,
+          "worker": 10
+        }
+      ],
+      "final_hour_hire_count": 0,
+      "final_hour_hires": [],
+      "final_hour_markets": [
+        {
+          "day": 0,
+          "market": [],
+          "market_ops": [],
+          "step": 23
+        },
+        {
+          "day": 1,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 47
+        },
+        {
+          "day": 2,
+          "market": [],
+          "market_ops": [],
+          "step": 71
+        },
+        {
+          "day": 3,
+          "market": [],
+          "market_ops": [],
+          "step": 95
+        },
+        {
+          "day": 4,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 119
+        },
+        {
+          "day": 5,
+          "market": [],
+          "market_ops": [],
+          "step": 143
+        },
+        {
+          "day": 6,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              0
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 167
+        },
+        {
+          "day": 7,
+          "market": [],
+          "market_ops": [],
+          "step": 191
+        },
+        {
+          "day": 8,
+          "market": [],
+          "market_ops": [],
+          "step": 215
+        },
+        {
+          "day": 9,
+          "market": [],
+          "market_ops": [],
+          "step": 239
+        },
+        {
+          "day": 10,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 263
+        },
+        {
+          "day": 11,
+          "market": [],
+          "market_ops": [],
+          "step": 287
+        },
+        {
+          "day": 12,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 311
+        },
+        {
+          "day": 13,
+          "market": [],
+          "market_ops": [],
+          "step": 335
+        },
+        {
+          "day": 14,
+          "market": [],
+          "market_ops": [],
+          "step": 359
+        },
+        {
+          "day": 15,
+          "market": [],
+          "market_ops": [],
+          "step": 383
+        },
+        {
+          "day": 16,
+          "market": [],
+          "market_ops": [],
+          "step": 407
+        },
+        {
+          "day": 17,
+          "market": [],
+          "market_ops": [],
+          "step": 431
+        },
+        {
+          "day": 18,
+          "market": [],
+          "market_ops": [],
+          "step": 455
+        },
+        {
+          "day": 19,
+          "market": [],
+          "market_ops": [],
+          "step": 479
+        },
+        {
+          "day": 20,
+          "market": [],
+          "market_ops": [],
+          "step": 503
+        },
+        {
+          "day": 21,
+          "market": [],
+          "market_ops": [],
+          "step": 527
+        },
+        {
+          "day": 22,
+          "market": [],
+          "market_ops": [],
+          "step": 551
+        },
+        {
+          "day": 23,
+          "market": [],
+          "market_ops": [],
+          "step": 575
+        },
+        {
+          "day": 24,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 599
+        },
+        {
+          "day": 25,
+          "market": [],
+          "market_ops": [],
+          "step": 623
+        },
+        {
+          "day": 26,
+          "market": [],
+          "market_ops": [],
+          "step": 647
+        },
+        {
+          "day": 27,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 671
+        },
+        {
+          "day": 28,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              21
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 695
+        },
+        {
+          "day": 29,
+          "market": [],
+          "market_ops": [],
+          "step": 719
+        }
+      ],
+      "final_hour_pickup_count": 1,
+      "final_hour_pickups": [
+        {
+          "action": [
+            "PICKUP",
+            "FERTILIZER"
+          ],
+          "day": 20,
+          "market": [],
+          "same_item_sale": false,
+          "step": 503,
+          "worker": 1
+        }
+      ],
+      "final_hour_pickups_without_same_item_sale": 1,
+      "final_hour_services": [
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 0
+        },
+        {
+          "action": [
+            "FEED"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 1
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 9
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 2
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 4
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 9
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 3
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 7
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 2
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 10
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 4
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 7
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 7
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 6
+        },
+        {
+          "action": [
+            "FERTILIZE"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 8
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 3
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 1
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 0
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 1
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 6
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 11
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 1
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 2
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 8
+        }
+      ],
+      "final_hour_unit_counts": {
+        "CARE": 6,
+        "COLLECT_FERTILIZER": 10,
+        "DROP": 4,
+        "EAST": 1,
+        "FEED": 1,
+        "FERTILIZE": 1,
+        "HARVEST": 25,
+        "NORTH": 3,
+        "PASS": 169,
+        "PICKUP": 1,
+        "PLACE": 1,
+        "SOUTH": 4,
+        "WATER": 76,
+        "WEST": 2
+      },
+      "hire_by_hour": {
+        "0": 215,
+        "1": 67,
+        "3": 1
+      },
+      "same_step_deposit_then_pickup": [
+        {
+          "day": 0,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT"
+          ],
+          "destination_worker": 4,
+          "hour": 5,
+          "source_action": [
+            "PLACE",
+            "COW"
+          ],
+          "source_worker": 1,
+          "step": 5
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 0,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 2,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 6,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 7,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            1
+          ],
+          "destination_worker": 11,
+          "hour": 15,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 4,
+          "step": 255
+        },
+        {
+          "day": 14,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            2
+          ],
+          "destination_worker": 10,
+          "hour": 3,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 8,
+          "step": 339
+        },
+        {
+          "day": 18,
+          "destination_action": [
+            "PICKUP",
+            "FERTILIZER",
+            2
+          ],
+          "destination_worker": 11,
+          "hour": 8,
+          "source_action": [
+            "PLACE",
+            "WOOL",
+            6
+          ],
+          "source_worker": 0,
+          "step": 440
+        }
+      ],
+      "same_step_deposit_then_pickup_count": 8,
+      "steps": 720
+    },
+    "a84d06f1d12add7c": {
+      "final_hour_drop_count": 4,
+      "final_hour_drops": [
+        {
+          "day": 3,
+          "market": [],
+          "step": 95,
+          "worker": 5
+        },
+        {
+          "day": 8,
+          "market": [],
+          "step": 215,
+          "worker": 1
+        },
+        {
+          "day": 17,
+          "market": [],
+          "step": 431,
+          "worker": 7
+        },
+        {
+          "day": 17,
+          "market": [],
+          "step": 431,
+          "worker": 10
+        }
+      ],
+      "final_hour_hire_count": 0,
+      "final_hour_hires": [],
+      "final_hour_markets": [
+        {
+          "day": 0,
+          "market": [],
+          "market_ops": [],
+          "step": 23
+        },
+        {
+          "day": 1,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 47
+        },
+        {
+          "day": 2,
+          "market": [],
+          "market_ops": [],
+          "step": 71
+        },
+        {
+          "day": 3,
+          "market": [],
+          "market_ops": [],
+          "step": 95
+        },
+        {
+          "day": 4,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 119
+        },
+        {
+          "day": 5,
+          "market": [],
+          "market_ops": [],
+          "step": 143
+        },
+        {
+          "day": 6,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              0
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 167
+        },
+        {
+          "day": 7,
+          "market": [],
+          "market_ops": [],
+          "step": 191
+        },
+        {
+          "day": 8,
+          "market": [],
+          "market_ops": [],
+          "step": 215
+        },
+        {
+          "day": 9,
+          "market": [],
+          "market_ops": [],
+          "step": 239
+        },
+        {
+          "day": 10,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 263
+        },
+        {
+          "day": 11,
+          "market": [],
+          "market_ops": [],
+          "step": 287
+        },
+        {
+          "day": 12,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 311
+        },
+        {
+          "day": 13,
+          "market": [],
+          "market_ops": [],
+          "step": 335
+        },
+        {
+          "day": 14,
+          "market": [],
+          "market_ops": [],
+          "step": 359
+        },
+        {
+          "day": 15,
+          "market": [],
+          "market_ops": [],
+          "step": 383
+        },
+        {
+          "day": 16,
+          "market": [],
+          "market_ops": [],
+          "step": 407
+        },
+        {
+          "day": 17,
+          "market": [],
+          "market_ops": [],
+          "step": 431
+        },
+        {
+          "day": 18,
+          "market": [],
+          "market_ops": [],
+          "step": 455
+        },
+        {
+          "day": 19,
+          "market": [],
+          "market_ops": [],
+          "step": 479
+        },
+        {
+          "day": 20,
+          "market": [],
+          "market_ops": [],
+          "step": 503
+        },
+        {
+          "day": 21,
+          "market": [],
+          "market_ops": [],
+          "step": 527
+        },
+        {
+          "day": 22,
+          "market": [],
+          "market_ops": [],
+          "step": 551
+        },
+        {
+          "day": 23,
+          "market": [],
+          "market_ops": [],
+          "step": 575
+        },
+        {
+          "day": 24,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 599
+        },
+        {
+          "day": 25,
+          "market": [],
+          "market_ops": [],
+          "step": 623
+        },
+        {
+          "day": 26,
+          "market": [],
+          "market_ops": [],
+          "step": 647
+        },
+        {
+          "day": 27,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              4
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 671
+        },
+        {
+          "day": 28,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              37
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 695
+        },
+        {
+          "day": 29,
+          "market": [],
+          "market_ops": [],
+          "step": 719
+        }
+      ],
+      "final_hour_pickup_count": 1,
+      "final_hour_pickups": [
+        {
+          "action": [
+            "PICKUP",
+            "FERTILIZER"
+          ],
+          "day": 20,
+          "market": [],
+          "same_item_sale": false,
+          "step": 503,
+          "worker": 1
+        }
+      ],
+      "final_hour_pickups_without_same_item_sale": 1,
+      "final_hour_services": [
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 0
+        },
+        {
+          "action": [
+            "FEED"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 1
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 9
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 2
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 4
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 9
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 3
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 7
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 2
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 10
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 4
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 7
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 7
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 6
+        },
+        {
+          "action": [
+            "FERTILIZE"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 8
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 3
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 6
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 6
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 11
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 1
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 2
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 8
+        }
+      ],
+      "final_hour_unit_counts": {
+        "CARE": 4,
+        "COLLECT_FERTILIZER": 10,
+        "DROP": 4,
+        "FEED": 1,
+        "FERTILIZE": 1,
+        "HARVEST": 24,
+        "NORTH": 3,
+        "PASS": 174,
+        "PICKUP": 1,
+        "PLACE": 1,
+        "SOUTH": 4,
+        "WATER": 74,
+        "WEST": 2
+      },
+      "hire_by_hour": {
+        "0": 215,
+        "1": 66,
+        "3": 1
+      },
+      "same_step_deposit_then_pickup": [
+        {
+          "day": 0,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT"
+          ],
+          "destination_worker": 4,
+          "hour": 5,
+          "source_action": [
+            "PLACE",
+            "COW"
+          ],
+          "source_worker": 1,
+          "step": 5
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 0,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 2,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 6,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 7,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            1
+          ],
+          "destination_worker": 11,
+          "hour": 15,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 4,
+          "step": 255
+        },
+        {
+          "day": 14,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            2
+          ],
+          "destination_worker": 10,
+          "hour": 3,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 8,
+          "step": 339
+        },
+        {
+          "day": 18,
+          "destination_action": [
+            "PICKUP",
+            "FERTILIZER",
+            2
+          ],
+          "destination_worker": 11,
+          "hour": 8,
+          "source_action": [
+            "PLACE",
+            "WOOL",
+            6
+          ],
+          "source_worker": 0,
+          "step": 440
+        }
+      ],
+      "same_step_deposit_then_pickup_count": 8,
+      "steps": 720
+    },
+    "ab9669b9abfbea4e": {
+      "final_hour_drop_count": 4,
+      "final_hour_drops": [
+        {
+          "day": 3,
+          "market": [],
+          "step": 95,
+          "worker": 5
+        },
+        {
+          "day": 8,
+          "market": [],
+          "step": 215,
+          "worker": 1
+        },
+        {
+          "day": 17,
+          "market": [
+            [
+              "SELL",
+              "WOOL",
+              6
+            ]
+          ],
+          "step": 431,
+          "worker": 7
+        },
+        {
+          "day": 17,
+          "market": [
+            [
+              "SELL",
+              "WOOL",
+              6
+            ]
+          ],
+          "step": 431,
+          "worker": 10
+        }
+      ],
+      "final_hour_hire_count": 0,
+      "final_hour_hires": [],
+      "final_hour_markets": [
+        {
+          "day": 0,
+          "market": [],
+          "market_ops": [],
+          "step": 23
+        },
+        {
+          "day": 1,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 47
+        },
+        {
+          "day": 2,
+          "market": [],
+          "market_ops": [],
+          "step": 71
+        },
+        {
+          "day": 3,
+          "market": [],
+          "market_ops": [],
+          "step": 95
+        },
+        {
+          "day": 4,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 119
+        },
+        {
+          "day": 5,
+          "market": [],
+          "market_ops": [],
+          "step": 143
+        },
+        {
+          "day": 6,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              0
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 167
+        },
+        {
+          "day": 7,
+          "market": [],
+          "market_ops": [],
+          "step": 191
+        },
+        {
+          "day": 8,
+          "market": [],
+          "market_ops": [],
+          "step": 215
+        },
+        {
+          "day": 9,
+          "market": [],
+          "market_ops": [],
+          "step": 239
+        },
+        {
+          "day": 10,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 263
+        },
+        {
+          "day": 11,
+          "market": [],
+          "market_ops": [],
+          "step": 287
+        },
+        {
+          "day": 12,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 311
+        },
+        {
+          "day": 13,
+          "market": [],
+          "market_ops": [],
+          "step": 335
+        },
+        {
+          "day": 14,
+          "market": [],
+          "market_ops": [],
+          "step": 359
+        },
+        {
+          "day": 15,
+          "market": [],
+          "market_ops": [],
+          "step": 383
+        },
+        {
+          "day": 16,
+          "market": [],
+          "market_ops": [],
+          "step": 407
+        },
+        {
+          "day": 17,
+          "market": [
+            [
+              "SELL",
+              "WOOL",
+              6
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 431
+        },
+        {
+          "day": 18,
+          "market": [],
+          "market_ops": [],
+          "step": 455
+        },
+        {
+          "day": 19,
+          "market": [],
+          "market_ops": [],
+          "step": 479
+        },
+        {
+          "day": 20,
+          "market": [],
+          "market_ops": [],
+          "step": 503
+        },
+        {
+          "day": 21,
+          "market": [],
+          "market_ops": [],
+          "step": 527
+        },
+        {
+          "day": 22,
+          "market": [],
+          "market_ops": [],
+          "step": 551
+        },
+        {
+          "day": 23,
+          "market": [],
+          "market_ops": [],
+          "step": 575
+        },
+        {
+          "day": 24,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 599
+        },
+        {
+          "day": 25,
+          "market": [],
+          "market_ops": [],
+          "step": 623
+        },
+        {
+          "day": 26,
+          "market": [],
+          "market_ops": [],
+          "step": 647
+        },
+        {
+          "day": 27,
+          "market": [],
+          "market_ops": [],
+          "step": 671
+        },
+        {
+          "day": 28,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              25
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 695
+        },
+        {
+          "day": 29,
+          "market": [],
+          "market_ops": [],
+          "step": 719
+        }
+      ],
+      "final_hour_pickup_count": 1,
+      "final_hour_pickups": [
+        {
+          "action": [
+            "PICKUP",
+            "FERTILIZER"
+          ],
+          "day": 20,
+          "market": [],
+          "same_item_sale": false,
+          "step": 503,
+          "worker": 1
+        }
+      ],
+      "final_hour_pickups_without_same_item_sale": 1,
+      "final_hour_services": [
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 0
+        },
+        {
+          "action": [
+            "FEED"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 1
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 9
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 2
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 3
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 2
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 10
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 4
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 7
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 7
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 6
+        },
+        {
+          "action": [
+            "FERTILIZE"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 8
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 0
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 1
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 6
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 11
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 1
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 2
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 8
+        }
+      ],
+      "final_hour_unit_counts": {
+        "CARE": 6,
+        "COLLECT_FERTILIZER": 10,
+        "DROP": 4,
+        "EAST": 1,
+        "FEED": 1,
+        "FERTILIZE": 1,
+        "HARVEST": 16,
+        "NORTH": 3,
+        "PASS": 178,
+        "PICKUP": 1,
+        "PLACE": 1,
+        "SOUTH": 4,
+        "WATER": 76,
+        "WEST": 2
+      },
+      "hire_by_hour": {
+        "0": 214,
+        "1": 67,
+        "3": 1
+      },
+      "same_step_deposit_then_pickup": [
+        {
+          "day": 0,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT"
+          ],
+          "destination_worker": 4,
+          "hour": 5,
+          "source_action": [
+            "PLACE",
+            "COW"
+          ],
+          "source_worker": 1,
+          "step": 5
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 0,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 2,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 6,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 7,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            1
+          ],
+          "destination_worker": 11,
+          "hour": 15,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 4,
+          "step": 255
+        },
+        {
+          "day": 14,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            2
+          ],
+          "destination_worker": 10,
+          "hour": 3,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 8,
+          "step": 339
+        },
+        {
+          "day": 18,
+          "destination_action": [
+            "PICKUP",
+            "FERTILIZER",
+            2
+          ],
+          "destination_worker": 11,
+          "hour": 8,
+          "source_action": [
+            "PLACE",
+            "WOOL",
+            6
+          ],
+          "source_worker": 0,
+          "step": 440
+        }
+      ],
+      "same_step_deposit_then_pickup_count": 8,
+      "steps": 720
+    },
+    "dc76e4003029ac51": {
+      "final_hour_drop_count": 2,
+      "final_hour_drops": [
+        {
+          "day": 3,
+          "market": [],
+          "step": 95,
+          "worker": 5
+        },
+        {
+          "day": 8,
+          "market": [],
+          "step": 215,
+          "worker": 1
+        }
+      ],
+      "final_hour_hire_count": 0,
+      "final_hour_hires": [],
+      "final_hour_markets": [
+        {
+          "day": 0,
+          "market": [],
+          "market_ops": [],
+          "step": 23
+        },
+        {
+          "day": 1,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 47
+        },
+        {
+          "day": 2,
+          "market": [],
+          "market_ops": [],
+          "step": 71
+        },
+        {
+          "day": 3,
+          "market": [],
+          "market_ops": [],
+          "step": 95
+        },
+        {
+          "day": 4,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 119
+        },
+        {
+          "day": 5,
+          "market": [],
+          "market_ops": [],
+          "step": 143
+        },
+        {
+          "day": 6,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              0
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 167
+        },
+        {
+          "day": 7,
+          "market": [],
+          "market_ops": [],
+          "step": 191
+        },
+        {
+          "day": 8,
+          "market": [],
+          "market_ops": [],
+          "step": 215
+        },
+        {
+          "day": 9,
+          "market": [],
+          "market_ops": [],
+          "step": 239
+        },
+        {
+          "day": 10,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 263
+        },
+        {
+          "day": 11,
+          "market": [],
+          "market_ops": [],
+          "step": 287
+        },
+        {
+          "day": 12,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 311
+        },
+        {
+          "day": 13,
+          "market": [],
+          "market_ops": [],
+          "step": 335
+        },
+        {
+          "day": 14,
+          "market": [],
+          "market_ops": [],
+          "step": 359
+        },
+        {
+          "day": 15,
+          "market": [],
+          "market_ops": [],
+          "step": 383
+        },
+        {
+          "day": 16,
+          "market": [
+            [
+              "SELL",
+              "MILK",
+              9
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 407
+        },
+        {
+          "day": 17,
+          "market": [
+            [
+              "SELL",
+              "STRAWBERRY",
+              6
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 431
+        },
+        {
+          "day": 18,
+          "market": [],
+          "market_ops": [],
+          "step": 455
+        },
+        {
+          "day": 19,
+          "market": [],
+          "market_ops": [],
+          "step": 479
+        },
+        {
+          "day": 20,
+          "market": [],
+          "market_ops": [],
+          "step": 503
+        },
+        {
+          "day": 21,
+          "market": [],
+          "market_ops": [],
+          "step": 527
+        },
+        {
+          "day": 22,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 551
+        },
+        {
+          "day": 23,
+          "market": [],
+          "market_ops": [],
+          "step": 575
+        },
+        {
+          "day": 24,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              3
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 599
+        },
+        {
+          "day": 25,
+          "market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 623
+        },
+        {
+          "day": 26,
+          "market": [],
+          "market_ops": [],
+          "step": 647
+        },
+        {
+          "day": 27,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              1
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 671
+        },
+        {
+          "day": 28,
+          "market": [
+            [
+              "SELL",
+              "WHEAT",
+              20
+            ]
+          ],
+          "market_ops": [
+            "SELL"
+          ],
+          "step": 695
+        },
+        {
+          "day": 29,
+          "market": [],
+          "market_ops": [],
+          "step": 719
+        }
+      ],
+      "final_hour_pickup_count": 1,
+      "final_hour_pickups": [
+        {
+          "action": [
+            "PICKUP",
+            "FERTILIZER"
+          ],
+          "day": 20,
+          "market": [],
+          "same_item_sale": false,
+          "step": 503,
+          "worker": 1
+        }
+      ],
+      "final_hour_pickups_without_same_item_sale": 1,
+      "final_hour_services": [
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 6,
+          "step": 167,
+          "worker": 8
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 7,
+          "step": 191,
+          "worker": 6
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 8,
+          "step": 215,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 0
+        },
+        {
+          "action": [
+            "FEED"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 9,
+          "step": 239,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 1
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 9
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 10,
+          "step": 263,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 11,
+          "step": 287,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 12,
+          "step": 311,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 13,
+          "step": 335,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 2
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 14,
+          "step": 359,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 4
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 15,
+          "step": 383,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 16,
+          "step": 407,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 17,
+          "step": 431,
+          "worker": 12
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 4
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 7
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 18,
+          "step": 455,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 7
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 11
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 19,
+          "step": 479,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 5
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 20,
+          "step": 503,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 6
+        },
+        {
+          "action": [
+            "FERTILIZE"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 10
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 21,
+          "step": 527,
+          "worker": 12
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 0
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 8
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 22,
+          "step": 551,
+          "worker": 12
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 3
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 23,
+          "step": 575,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 6
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 9
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 24,
+          "step": 599,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 0
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 2
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 25,
+          "step": 623,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 1
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 7
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 8
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 10
+        },
+        {
+          "action": [
+            "WATER"
+          ],
+          "day": 26,
+          "step": 647,
+          "worker": 11
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 0
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 1
+        },
+        {
+          "action": [
+            "CARE"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 5
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 6
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 27,
+          "step": 671,
+          "worker": 11
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 1
+        },
+        {
+          "action": [
+            "HARVEST"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 2
+        },
+        {
+          "action": [
+            "COLLECT_FERTILIZER"
+          ],
+          "day": 28,
+          "step": 695,
+          "worker": 8
+        }
+      ],
+      "final_hour_unit_counts": {
+        "CARE": 4,
+        "COLLECT_FERTILIZER": 8,
+        "DROP": 2,
+        "EAST": 2,
+        "FEED": 1,
+        "FERTILIZE": 1,
+        "HARVEST": 16,
+        "NORTH": 3,
+        "PASS": 190,
+        "PICKUP": 1,
+        "PLACE": 3,
+        "PLANT": 1,
+        "SOUTH": 3,
+        "WATER": 69,
+        "WEST": 2
+      },
+      "hire_by_hour": {
+        "0": 213,
+        "1": 70,
+        "3": 1
+      },
+      "same_step_deposit_then_pickup": [
+        {
+          "day": 0,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT"
+          ],
+          "destination_worker": 4,
+          "hour": 5,
+          "source_action": [
+            "PLACE",
+            "COW"
+          ],
+          "source_worker": 1,
+          "step": 5
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 0,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 2,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 6,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            3
+          ],
+          "destination_worker": 9,
+          "hour": 10,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 7,
+          "step": 250
+        },
+        {
+          "day": 10,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            1
+          ],
+          "destination_worker": 11,
+          "hour": 15,
+          "source_action": [
+            "PLACE",
+            "MELON",
+            6
+          ],
+          "source_worker": 4,
+          "step": 255
+        },
+        {
+          "day": 14,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            2
+          ],
+          "destination_worker": 10,
+          "hour": 3,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 8,
+          "step": 339
+        },
+        {
+          "day": 16,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            5
+          ],
+          "destination_worker": 2,
+          "hour": 2,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 1,
+          "step": 386
+        },
+        {
+          "day": 16,
+          "destination_action": [
+            "PICKUP",
+            "FERTILIZER"
+          ],
+          "destination_worker": 6,
+          "hour": 2,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 1,
+          "step": 386
+        },
+        {
+          "day": 16,
+          "destination_action": [
+            "PICKUP",
+            "WHEAT",
+            5
+          ],
+          "destination_worker": 7,
+          "hour": 2,
+          "source_action": [
+            "PLACE",
+            "MILK",
+            3
+          ],
+          "source_worker": 1,
+          "step": 386
+        },
+        {
+          "day": 18,
+          "destination_action": [
+            "PICKUP",
+            "FERTILIZER",
+            2
+          ],
+          "destination_worker": 11,
+          "hour": 8,
+          "source_action": [
+            "PLACE",
+            "WOOL",
+            6
+          ],
+          "source_worker": 0,
+          "step": 440
+        }
+      ],
+      "same_step_deposit_then_pickup_count": 11,
+      "steps": 720
+    }
+  },
+  "schema_version": 1,
+  "source_commit": "fba29b4f8987a8e8f75c4afd7eee37738797875f"
+}
