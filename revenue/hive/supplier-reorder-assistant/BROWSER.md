@@ -120,3 +120,13 @@ Next customer step: privately map one consenting retailer's stock/rule/catalog
 exports to these column names and walk through a saved draft and actual delivery
 receipt. This source delivery is not a customer acceptance, deployment, sale,
 subscription, payment, or supplier integration.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
