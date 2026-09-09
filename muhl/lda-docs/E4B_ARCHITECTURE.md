@@ -287,3 +287,13 @@ truly *stock* if it was stashed at import before any edit; otherwise the diff is
 1. Paste the `[selfmodel]` lines.
 2. Append a dated row to §6 and a `### vN` subsection with the raw quote + what changed.
 3. Update the affected table/number in §1–§4 in place; never delete a prior finding — annotate it.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

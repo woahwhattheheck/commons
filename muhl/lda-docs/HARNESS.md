@@ -83,3 +83,13 @@ components toward a goal — the big model still does the thinking each step; NO
 
 *Patent: the outcome-driven self-verifying coding harness + the generative-runtime (a model as a program's runtime,
 emitting frames a codec displays, so software runs on generation not execution) are owed as INVs as they mature.*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
