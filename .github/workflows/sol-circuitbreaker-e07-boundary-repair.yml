@@ -68,23 +68,23 @@ jobs:
           test_path = lab / "test_e07_same_turn_funding.py"
           tests = test_path.read_text(encoding="utf-8")
           marker = "    def test_variable_price_buy_is_a_hard_boundary(self):\n"
-          case = '''    def test_sale_after_later_variable_price_buy_cannot_fund_earlier_target(self):
-        obs,base=fixture(shed={'WHEAT':3},money=0)
-        base['market']=[[],['BUY_SEED','CARROT',1],
-                        ['BUY_PRODUCT','WHEAT',1],['SELL','WHEAT',3]]
-        original=deepcopy(base['market'])
-        out,info=fund(obs,base,{'WHEAT'})
-        self.assertEqual(out,original)
-        self.assertIsNotNone(info)
-        self.assertFalse(info['applied'])
-        self.assertEqual(info['reason'],'no-safe-prefix-sale')
-        self.assertEqual(info['target_index'],1)
-        self.assertEqual(info['baseline_completed'],0)
-        self.assertEqual(info['required'],1)
-        self.assertEqual(sale_quantities(out),sale_quantities(original))
-        self.assertEqual(base['market'],original)
-
-'''
+          case = (
+              "    def test_sale_after_later_variable_price_buy_cannot_fund_earlier_target(self):\n"
+              "        obs,base=fixture(shed={'WHEAT':3},money=0)\n"
+              "        base['market']=[[],['BUY_SEED','CARROT',1],\n"
+              "                        ['BUY_PRODUCT','WHEAT',1],['SELL','WHEAT',3]]\n"
+              "        original=deepcopy(base['market'])\n"
+              "        out,info=fund(obs,base,{'WHEAT'})\n"
+              "        self.assertEqual(out,original)\n"
+              "        self.assertIsNotNone(info)\n"
+              "        self.assertFalse(info['applied'])\n"
+              "        self.assertEqual(info['reason'],'no-safe-prefix-sale')\n"
+              "        self.assertEqual(info['target_index'],1)\n"
+              "        self.assertEqual(info['baseline_completed'],0)\n"
+              "        self.assertEqual(info['required'],1)\n"
+              "        self.assertEqual(sale_quantities(out),sale_quantities(original))\n"
+              "        self.assertEqual(base['market'],original)\n\n"
+          )
           if tests.count(marker) != 1:
               raise SystemExit("E07 test insertion point is absent or ambiguous")
           if "test_sale_after_later_variable_price_buy_cannot_fund_earlier_target" in tests:
