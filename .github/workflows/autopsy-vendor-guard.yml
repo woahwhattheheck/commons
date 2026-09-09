@@ -41,18 +41,28 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
 
-            python revenue/agents_for_humans/scripts/restore_vendor.py --apply
+            restore_json="$(python revenue/agents_for_humans/scripts/restore_vendor.py --apply)"
+            echo "$restore_json"
             (
               cd revenue/agents_for_humans
               python scripts/verify_vendor.py
             )
 
-            git add -- revenue/agents_for_humans/vendor revenue/agents_for_humans/LICENSE
-            if git diff --cached --quiet; then
+            mapfile -t changed_paths < <(
+              RESTORE_JSON="$restore_json" python - <<'PY'
+import json
+import os
+
+for path in json.loads(os.environ["RESTORE_JSON"])["changed"]:
+    print(path)
+PY
+            )
+            if (( ${#changed_paths[@]} == 0 )); then
               echo "Attributed vendor bytes already match SOURCE_MANIFEST."
               exit 0
             fi
 
+            git add -- "${changed_paths[@]}"
             git commit -m "guard: restore attributed vendor blobs"
             if git push origin HEAD:main; then
               exit 0
