@@ -39,6 +39,21 @@ python titan_regression_gate.py audit --root . --require-games \
 Exit code `0` means the requested gate passed. `2` means the audit is blocked.
 Integrity can pass while promotion remains false when no current games exist.
 
+## Archive inventory gate
+
+The archive itself has an independent one-read verifier:
+
+```bash
+python titan_archive_inventory_gate.py --root . \
+  --report-json artifacts/titan-archive-inventory.json
+```
+
+It hashes the exact tar bytes, checks the receipt byte length and regular-file
+count, requires the declared entrypoint member, and emits a deterministic
+inventory fingerprint. It never extracts the archive. Links, special members,
+absolute or parent-traversing paths, backslashes, duplicate JSON keys, and
+normalized path aliases fail closed.
+
 ## Exact paired comparison
 
 Each ledger is a JSON object with one archive identity, one engine identity, and
@@ -90,18 +105,24 @@ The checked-in test receipt instead names archive
 408,621 bytes, 104 runtime files, with a different source manifest. The artifact
 registry does not bind the canonical archive; it names an older sell-lab source
 package. The current source manifest says historical results do not transfer and
-reports zero new full games for the changed bytes.
+reports zero new full games for the changed bytes. An exact artifact inspection from
+workflow run `34403631157` additionally counted 110 regular files in the tar
+while the canonical receipt declares 109. PR #11721 owns the builder/count
+repair; this gate independently verifies the repaired output rather than
+duplicating that implementation.
 
 Therefore the current V2.5/V3 working package may contain useful mechanisms, but
 its checked-in test receipt and historical scores cannot support a current-byte
 playing-strength or regression claim. Repair order:
 
-1. regenerate exact-archive tests and bind their receipt to the canonical SHA;
-2. register the canonical archive path/SHA;
-3. run fresh unused-seed panels against both exact submitted V1 and frozen V2,
+1. land the archive-count/builder repair and regenerate one internally consistent
+   archive receipt;
+2. regenerate exact-archive tests and bind their receipt to the canonical SHA;
+3. register the canonical archive path/SHA;
+4. run fresh unused-seed panels against both exact submitted V1 and frozen V2,
    both seats, with fixed opponent artifacts and engine;
-4. compare only the exact cell intersection using this tool;
-5. promote policy changes only after the dual-predecessor gate and provenance
+5. compare only the exact cell intersection using this tool;
+6. promote policy changes only after the dual-predecessor gate and provenance
    gate both pass.
 
 This change does not alter TITAN runtime bytes, build an archive, launch games,
