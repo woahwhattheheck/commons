@@ -7,6 +7,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import threading
 import time
 import unittest
 from unittest.mock import patch
@@ -167,6 +168,50 @@ class KestrelExportedEntrypointTests(unittest.TestCase):
                 self.entry._new_instance(LAB, dict(self.feature_data))
         self.assertIs(caught.exception, error)
         self.assertIs(self.titan_runtime.TitanAgent, self.predecessor_base)
+
+    def test_live_base_stays_canonical_during_blocked_construction(self):
+        entered = threading.Event()
+        release = threading.Event()
+        result = []
+        errors = []
+
+        def blocked_factory(_root, _feature_data):
+            entered.set()
+            if not release.wait(2.0):
+                raise TimeoutError("construction witness was not released")
+            carrier = type("FinalPressureAgent", (self.candidate_base,), {})
+            return object.__new__(carrier)
+
+        def construct():
+            try:
+                result.append(
+                    self.entry._new_instance(LAB, dict(self.feature_data))
+                )
+            except BaseException as error:
+                errors.append(error)
+
+        with patch.object(
+            self.entry,
+            "_CANONICAL_NEW_INSTANCE",
+            new=blocked_factory,
+        ):
+            worker = threading.Thread(target=construct, daemon=True)
+            worker.start()
+            self.assertTrue(entered.wait(1.0))
+            try:
+                self.assertIs(
+                    self.titan_runtime.TitanAgent,
+                    self.predecessor_base,
+                )
+            finally:
+                release.set()
+            worker.join(2.0)
+
+        self.assertFalse(worker.is_alive())
+        self.assertEqual(errors, [])
+        self.assertEqual(len(result), 1)
+        self.assertIs(type(result[0]).__mro__[1], self.candidate_base)
+        self.assertIs(type(result[0]).__mro__[2], self.predecessor_base)
 
     def test_final_pressure_runs_after_kestrel_exactly_once(self):
         calls = []
