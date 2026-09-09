@@ -74,6 +74,20 @@ post-state orientation, observed transition mismatches, digest tampering, and
 rehash attempts that change sealed facts. In a Commons checkout it also compares
 its HIRE costs and MELON seed price with the current extracted `mechanics.py`.
 
+## Evidence modes
+
+The GitHub Actions workflow checks out `${{ github.event.pull_request.head.sha }}`
+(or `github.sha` under manual dispatch), asserts that exact commit, verifies the
+committed receipt plus the current mechanics contract, and retains the head SHA
+with `BRIDGE.json`. It is intentionally a **manifest-mode exact-head** check.
+The Slack custody gzip is not committed and is not available to hosted CI, so a
+hosted green result must not be described as raw-replay reproduction.
+
+Raw-custody reproduction is a separate mode. It requires the exact Slack object
+and verifies both transport and decoded hashes before recomputing the receipt.
+Independent review on PR #11930 reproduced that mode directly from
+`F0C0KEQ5MFY`; the workflow does not substitute for that custody check.
+
 ## Verify
 
 Committed receipt and source-mechanics contract:
@@ -100,9 +114,9 @@ Source identities:
 
 ```text
 gzip bytes   474669
- gzip SHA-256 9337c7c734eff0804400f732d48c155dedb6d6f12b3afdefbc620f78fdfc686b
+gzip SHA-256 9337c7c734eff0804400f732d48c155dedb6d6f12b3afdefbc620f78fdfc686b
 JSON bytes   31790508
- JSON SHA-256 468845b1bc00f11a4d4a3deb2cc785a2ee222db31e6a0e88df2d7057f14ec6b1
+JSON SHA-256 468845b1bc00f11a4d4a3deb2cc785a2ee222db31e6a0e88df2d7057f14ec6b1
 receipt SHA  1a66999a5aa86d3c4bf9d3e585a02f92b1d7e1c23af82dad10182c5348e6bfa5
 ```
 
