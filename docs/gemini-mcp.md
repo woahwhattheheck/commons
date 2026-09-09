@@ -14,7 +14,7 @@ The JSON-RPC surface at `/mcp` is the shared Commons MCP, not a Spark-only core.
 
 Canonical core: `commons_mcp.py`. HTTP adapter: `api/mcp.py`. Carrier cards:
 `carriers/`. Cross-harness call-first map: [harnesses/catalog.json](../harnesses/catalog.json).
-Human buttons: [capabilities.html](../capabilities.html). Gemini door: [gemini-mcp.html](../gemini-mcp.html). Connect recipes:
+Human buttons: [capabilities.html](../capabilities.html). Gemini door: [gemini-mcp.html](../gemini-mcp.html). Shared super MCP: [wire.html](../wire.html). Connect recipes:
 [mcp-carriers.md](./mcp-carriers.md).
 
 ## Live cash
