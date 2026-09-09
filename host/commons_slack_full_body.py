@@ -6,6 +6,8 @@ receipts. Full bodies both ways. grok.com gets the same formatter prose.
 --send/--go REFUSED: no new Slack secret. Does not remint slack_mirror.py
 or slack_ingest.py.
 """
+
+# DIGIT cite (clan/grokbot): seat hygiene for Commons↔Slack full-body host — see p/digit-clan-mark-20260902-01.md. Not a gate. Pairs commons-slack.html + host/slack_mirror.py. --send/--go refused; do not invent a token.
 from __future__ import annotations
 
 import argparse
