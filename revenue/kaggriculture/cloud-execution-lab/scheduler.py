@@ -29,7 +29,7 @@ HORIZON = 8
 MAX_PLANS = 700
 
 
-def post_units(obs, action, config):
+def post_units(obs, action, config, *, shed_capacity=None):
     """Exact deterministic engine unit stage on the player's observed farm."""
     farm = detached_json_value(obs['farms'][obs['player']])
     private = detached_json_value(obs['private'])
@@ -39,9 +39,10 @@ def post_units(obs, action, config):
         if a and a[0]=='PLANT' and len(a)>1:
             demand[a[1]]=demand.get(a[1],0)+1
     blocked={p for p,n in demand.items() if n>private['seeds'].get(p,0)}
+    capacity=int(config.get('shedCapacity',100)) if shed_capacity is None else int(shed_capacity)
     for i,a in enumerate(acts):
         if a and a[0]=='PLANT' and a[1] in blocked:a=['PASS']
-        m._apply_unit_action(farm,private,i,a,len(farm['tiles']),int(obs['step'])//int(config.get('turnsPerDay',24)),int(config.get('turnsPerDay',24)),int(config.get('shedCapacity',100)))
+        m._apply_unit_action(farm,private,i,a,len(farm['tiles']),int(obs['step'])//int(config.get('turnsPerDay',24)),int(config.get('turnsPerDay',24)),capacity)
     return farm, private
 
 
@@ -245,13 +246,14 @@ class SellScheduler:
 
         Follow the unchanged current tape, no RNG or new shops. Enlarging the
         projection shed records requested arrivals so overflow cannot disappear
-        from feasibility. Other current sells and later tape sells release room.
+        from feasibility. Market sales release room only after the unit-stage
+        checkpoint for their turn.
         """
         now=int(obs['step']);cap=int(config.get('shedCapacity',100))
-        f,p=copy.deepcopy(farm),copy.deepcopy(private)
-        for o in base['market']:
-            if o and o[0]=='SELL' and len(o)>2 and o[1]!=item:
-                p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
+        # Re-run the current unit stage without a shed cap only for feasibility.
+        # Executable stock remains the real capped `private` passed by act(); this
+        # projection merely remembers arrivals the engine discarded before market.
+        f,p=post_units(obs,base,config,shed_capacity=10**6)
         profile=[]
         route=self.controller.R[self.controller.cur]
         for t in range(now,end+1):
@@ -265,7 +267,7 @@ class SellScheduler:
             orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
             for o in orders:
                 if not o:continue
-                if o[0]=='SELL' and t>now and o[1]!=item:
+                if o[0]=='SELL' and o[1]!=item:
                     p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
                 elif o[0] in ('BUY_PRODUCT','BUY_ANIMAL') and len(o)>2:
                     p['shed'][o[1]]=p['shed'].get(o[1],0)+int(o[2])
@@ -280,7 +282,9 @@ class SellScheduler:
             sold=0;orders=dict(plan)
             for t,phase,total in profile:
                 if phase=='after':sold+=orders.get(t,0)
-                if t==now and phase=='before':continue
+                if t==now and phase=='before':
+                    if total>cap:return False
+                    continue
                 if total-sold>cap-1:return False
             return True
         return feasible

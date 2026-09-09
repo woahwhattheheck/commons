@@ -19,9 +19,9 @@ PRIOR = ROOT / "p/grokbuild-source-parses-33699980140-billing-lock-20260903-01.m
 
 KEEP = {
     "p/grokbuild-source-parses-33717733998-billing-lock-20260903-01.md": "4bcbb973",
-    "test_grokbuild_source_parses_33717733998_billing_lock.py": "17cfa099",
+    "test_grokbuild_source_parses_33717733998_billing_lock.py": "4d536961",
     "p/grokbuild-source-parses-33699980140-billing-lock-20260903-01.md": "2494f79a",
-    "test_grokbuild_source_parses_33699980140_billing_lock.py": "3d36bf0b",
+    "test_grokbuild_source_parses_33699980140_billing_lock.py": "dc42d741",
     "source_parses.py": "abba903d",
     "test_source_parses.py": "595e543c",
     ".github/workflows/source-parses.yml": "9b4be350",

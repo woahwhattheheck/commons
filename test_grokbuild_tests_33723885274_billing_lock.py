@@ -24,7 +24,7 @@ KEEP = {
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
-    "hub_pages.py": "7a8f24d5",
+    "hub_pages.py": "d0bd0e8d",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "7b9a2318",
     "fix_first.py": "a57aee1c",
