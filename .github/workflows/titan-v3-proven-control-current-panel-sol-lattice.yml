@@ -1,0 +1,145 @@
+name: titan-v3-proven-control-current-panel-sol-lattice
+
+on:
+  push:
+    branches:
+      - sol-lattice/titan-v3-proven-control-current-panel-20260909-01
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-proven-control-current-panel-sol-lattice/**'
+      - '.github/workflows/titan-v3-proven-control-current-panel-sol-lattice.yml'
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-proven-control-current-panel-sol-lattice/**'
+      - '.github/workflows/titan-v3-proven-control-current-panel-sol-lattice.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-proven-control-current-panel-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONHASHSEED: '0'
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+
+jobs:
+  contracts-and-panel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - name: Checkout exact panel head with history
+        uses: actions/checkout@v4
+        with:
+          path: panel
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout exact current canonical source
+        uses: actions/checkout@v4
+        with:
+          path: current
+          repository: woahwhattheheck/commons
+          ref: a2e72fbe20479edfedd8f6856a86d93a27042be6
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Bind exact revisions and run contracts
+        shell: bash
+        env:
+          EXPECTED_PANEL_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git -C panel rev-parse HEAD)" = "$EXPECTED_PANEL_HEAD"
+          test "$(git -C current rev-parse HEAD)" = 'a2e72fbe20479edfedd8f6856a86d93a27042be6'
+          printf '%s\n' "$EXPECTED_PANEL_HEAD" | tee "$RUNNER_TEMP/panel-head.sha"
+          printf '%s\n' 'a2e72fbe20479edfedd8f6856a86d93a27042be6' | tee "$RUNNER_TEMP/current-head.sha"
+          LANE=panel/revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-proven-control-current-panel-sol-lattice
+          python -B -m py_compile "$LANE/proven_control_panel.py" "$LANE/test_proven_control_panel.py"
+          (
+            cd "$LANE"
+            python -B -m unittest -v test_proven_control_panel.py
+          )
+          git -C panel diff --check
+
+      - name: Prove both canonical release receipts before execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          (
+            cd panel/revenue/kaggriculture/cloud-execution-lab
+            python -B build_integrated.py --check
+          )
+          (
+            cd current/revenue/kaggriculture/cloud-execution-lab
+            python -B build_integrated.py --check
+          )
+
+      - name: Build pinned Apex opponent once
+        shell: bash
+        run: |
+          set -euo pipefail
+          APEX=panel/revenue/kaggriculture/cloud-policy-portfolio/vendor/apex
+          g++ -O3 -std=c++17 -shared -fPIC -I"$APEX/source/include" -o "$APEX/agent.so" \
+            "$APEX/source/policy.cpp" "$APEX/submission_bridge.cpp"
+          sha256sum "$APEX/agent.so" | tee "$RUNNER_TEMP/apex-agent.sha256"
+
+      - name: Run 128-game closure-distinct matched panel
+        shell: bash
+        env:
+          PANEL_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          LANE="$GITHUB_WORKSPACE/panel/revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-proven-control-current-panel-sol-lattice"
+          OUT="$RUNNER_TEMP/titan-v3-proven-control-current-panel"
+          mkdir -p "$OUT"
+          python -B "$LANE/proven_control_panel.py" \
+            --panel-repo "$GITHUB_WORKSPACE/panel" \
+            --panel-head "$PANEL_HEAD" \
+            --current-repo "$GITHUB_WORKSPACE/current" \
+            --work "$OUT/work" \
+            --output "$OUT/PANEL.json" \
+            --markdown "$OUT/PANEL.md" \
+            --workers 4 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180
+
+      - name: Publish exact panel summary
+        if: always()
+        shell: bash
+        run: |
+          OUT="$RUNNER_TEMP/titan-v3-proven-control-current-panel"
+          if [[ -f "$OUT/PANEL.md" ]]; then
+            cat "$OUT/PANEL.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# TITAN V3 matched panel produced no final report' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact panel evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-proven-control-current-panel-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/panel-head.sha
+            ${{ runner.temp }}/current-head.sha
+            ${{ runner.temp }}/apex-agent.sha256
+            ${{ runner.temp }}/titan-v3-proven-control-current-panel/PANEL.json
+            ${{ runner.temp }}/titan-v3-proven-control-current-panel/PANEL.md
+            ${{ runner.temp }}/titan-v3-proven-control-current-panel/work/reports/
+            ${{ runner.temp }}/titan-v3-proven-control-current-panel/work/bundles/frozen-v3-receipt.json
+          if-no-files-found: error
+          retention-days: 30
