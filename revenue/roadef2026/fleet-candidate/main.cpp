@@ -574,20 +574,14 @@ public:
         routes.resize(demands.size() * h); routed.resize(routes.size());
         loads.assign(h * m, 0); delta.resize(loads.size()); marked.assign(loads.size(), 0);
         // Do not overwrite a resume file before reading it when the caller uses
-        // the same path for the incumbent and output. A cold run checkpoints its
-        // zero-change routing immediately; a resume checkpoints after validation.
-        if (!std::getenv("CLOUD_INITIAL_SOLUTION")) writeSolution();
-        for (std::size_t d = 0; d < demands.size(); ++d) for (int t = 0; t < h; ++t) {
-            auto& flow = routed[d * h + t];
-            if (!routeFlow(static_cast<int>(d), t, {}, flow))
-                throw std::runtime_error("A demand is unreachable in the supplied topology");
-            for (auto [e, ratio] : flow) loads[t * m + e] += demands[d].volume[t] * ratio;
-        }
-        if (const char* incumbentPath = std::getenv("CLOUD_INITIAL_SOLUTION")) {
+        // the same path for the incumbent and output. Parse and validate a resume
+        // directly into the one route bank that will be evaluated; a cold run
+        // still checkpoints its zero-change routing before reachability work.
+        const char* incumbentPath = std::getenv("CLOUD_INITIAL_SOLUTION");
+        if (incumbentPath) {
             auto incumbent = readJson(incumbentPath);
             if (!incumbent.HasMember("srpaths") || !incumbent["srpaths"].IsArray())
                 throw std::runtime_error("Initial solution has no srpaths array");
-            std::vector<Route> nextRoutes(routes.size());
             std::set<std::pair<int, int>> seen;
             for (const auto& item : incumbent["srpaths"].GetArray()) {
                 if (!item.HasMember("d") || !item.HasMember("t") || !item.HasMember("w") ||
@@ -608,28 +602,28 @@ public:
                 std::set<int> unique(route.begin(), route.end());
                 if (unique.size() != route.size() || unique.count(demands[d].from) || unique.count(demands[d].to))
                     throw std::runtime_error("Initial route repeats an endpoint or waypoint");
-                nextRoutes[d * h + t] = std::move(route);
+                routes[d * h + t] = std::move(route);
             }
-            std::vector<Sparse> nextRouted(routes.size());
-            std::vector<double> nextLoads(loads.size(), 0);
-            for (std::size_t d = 0; d < demands.size(); ++d) for (int t = 0; t < h; ++t) {
-                auto& flow = nextRouted[d * h + t];
-                if (!routeFlow(static_cast<int>(d), t, nextRoutes[d * h + t], flow))
-                    throw std::runtime_error("Initial route is unreachable");
-                for (auto [e, ratio] : flow)
-                    nextLoads[t * m + e] += demands[d].volume[t] * ratio;
-            }
-            std::vector<int> nextUsed(h, 0);
+        } else {
+            writeSolution();
+        }
+
+        for (std::size_t d = 0; d < demands.size(); ++d) for (int t = 0; t < h; ++t) {
+            auto& flow = routed[d * h + t];
+            if (!routeFlow(static_cast<int>(d), t, routes[d * h + t], flow))
+                throw std::runtime_error(incumbentPath
+                    ? "Initial route is unreachable"
+                    : "A demand is unreachable in the supplied topology");
+            for (auto [e, ratio] : flow)
+                loads[t * m + e] += demands[d].volume[t] * ratio;
+        }
+        if (incumbentPath) {
             for (int t = 1; t < h; ++t) {
                 for (std::size_t d = 0; d < demands.size(); ++d)
-                    nextUsed[t] += distance(static_cast<int>(d), nextRoutes[d * h + t - 1], nextRoutes[d * h + t]);
-                if (nextUsed[t] > budget[t])
+                    used[t] += distance(static_cast<int>(d), routes[d * h + t - 1], routes[d * h + t]);
+                if (used[t] > budget[t])
                     throw std::runtime_error("Initial route exceeds transition budget");
             }
-            routes = std::move(nextRoutes);
-            routed = std::move(nextRouted);
-            loads = std::move(nextLoads);
-            used = std::move(nextUsed);
             resumed = true;
             writeSolution();
         }
