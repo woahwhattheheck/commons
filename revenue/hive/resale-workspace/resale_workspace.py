@@ -112,6 +112,7 @@ INSERT OR IGNORE INTO s VALUES(1,'{"items":{},"next":1}');""")
         return self._write(request_id,"sold",p,f)
 
     def confirm_remote_close(self,*,task_id,confirmation_note,request_id):
+        if type(task_id) is not int or task_id<=0: raise WorkspaceError("valid task_id required")
         if not isinstance(confirmation_note,str) or not confirmation_note.strip(): raise WorkspaceError("confirmation required")
         p={"task_id":task_id,"confirmation_note":confirmation_note}
         def f(d):
