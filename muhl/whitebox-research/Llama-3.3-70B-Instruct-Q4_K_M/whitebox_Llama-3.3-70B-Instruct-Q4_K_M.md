@@ -40,3 +40,13 @@
 - **IPC BUS (interprocess comm.)** ← attention routes data between positions — 64 channels over 8 shared KV lines (GQA×8) · mean channel 542.464
 - **STORAGE (disk / DRAM cells)** ← the parameter file (weights = stored charge) — 70.55 B params · 42.52 GB on disk · 80 layers
 - **I/O CODEC (in / out)** ← token_embd (decode-in) + output head (encode-out) — vocab 128256 × hidden 8192 (the tokenizer bus)
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

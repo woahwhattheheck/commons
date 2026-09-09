@@ -24,3 +24,13 @@ Full key list: muhl/whitebox-data/titan_circuits_keys_20260820.txt
 White Box _INDEX.json sha256 78d4f55d… already on HEAD. WHITEBOX_ALL_MODELS.md 1717195 B sha256 7dee7332… MATCH archive this window. Did not remint.
 
 Do not add to spec. Do not rewrite FINALREADME.md.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
