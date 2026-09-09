@@ -27,8 +27,8 @@ KEEP_UNREAD = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/grokbuild-pr8350-verify-20260902-01.md": "538a4d1e",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
-    "ground/OWNER_NOW.md": "59b1fd37",
-    "autogtm.html": "9d8b3e85",
+    "ground/OWNER_NOW.md": "0a574d94",
+    "autogtm.html": "fab1d536",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -60,11 +60,11 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
             self.assertNotEqual(keep.get("door.js"), "1f9e8d14", name)
             self.assertNotEqual(unread.get("hub_pages.py"), "14eeedb0", name)
             self.assertNotEqual(unread.get("door.js"), "1f9e8d14", name)
-        self.assertNotIn('"hub_pages.py": "55bffe39"', SLACK_TEST.read_text(encoding="utf-8"))
-        self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
-        self.assertTrue(git_blob("door.js").startswith("dc59355d"))
-        self.assertFalse(git_blob("door.js").startswith("1f9e8d14"))
+        self.assertNotIn('"hub_pages.py": "7a8f24d5"', SLACK_TEST.read_text(encoding="utf-8"))
+        self.assertTrue(git_blob("hub_pages.py").startswith("7a8f24d5"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("7a8f24d5"))
+        self.assertTrue(git_blob("door.js").startswith("5bc431b1"))
+        self.assertFalse(git_blob("door.js").startswith("5bc431b1"))
 
     def test_slack_helper_still_renders_and_refuses_send(self) -> None:
         proc = subprocess.run(

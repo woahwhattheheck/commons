@@ -266,7 +266,9 @@ def main():
         board_ingest.push_origin_main = push_with_two_recordless_races
         st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html"])
         board_ingest.push_origin_main = real_push
-        assert st == "push-fail", st
+        # Recordless bake with a matching projection receipt on refreshed origin
+        # keeps the recorded source outcome (unchanged), per bounded bake retry.
+        assert st == "unchanged", st
         bake_receipts = [row for row in push_receipts if row[0] is True]
         assert bake_receipts == [
             (True, None, "bake-reset"),

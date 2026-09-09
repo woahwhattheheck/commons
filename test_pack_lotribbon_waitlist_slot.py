@@ -90,10 +90,10 @@ class PackLotribbonWaitlistSlotTest(unittest.TestCase):
         self.assertTrue(result["did_not_write_harborline_slot"])
         self.assertTrue(result["did_not_merge_7915"])
         self.assertEqual(result["blobs"]["packs/_template/waitlist-slot.md"], "50602561")
-        self.assertEqual(result["blobs"]["packs/waitlist.html"], "bdcaa7ea")
+        self.assertEqual(result["blobs"]["packs/waitlist.html"], "b312ed6d")
         self.assertEqual(
             result["blobs"]["packs/lotribbon-greetings-20260902-01/index.html"],
-            "7804ec33",
+            "4372916d",
         )
         dumped = json.dumps(result)
         self.assertNotIn("337 NO", dumped)

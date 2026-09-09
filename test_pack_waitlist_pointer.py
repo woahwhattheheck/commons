@@ -82,7 +82,7 @@ class PackWaitlistPointerTest(unittest.TestCase):
         thanks = self.result["thanks_door"]
         self.assertTrue(thanks["present"])
         self.assertTrue(thanks["blob_prefix_ok"])
-        self.assertTrue(thanks["blob"].startswith("7ec0bf86"))
+        self.assertTrue(thanks["blob"].startswith("76388c9a"))
         self.assertTrue(thanks["did_not_overwrite"])
         self.assertIn("packs/thanks.html", pointer.DO_NOT_OVERWRITE)
         self.assertEqual(self.law["thanks_door"], "packs/thanks.html")

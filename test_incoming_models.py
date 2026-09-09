@@ -107,11 +107,17 @@ class IncomingModelsTest(unittest.TestCase):
         self.assertTrue(report["ok"])
         written = im.write_html()
         self.assertTrue(written.exists())
-        body = written.read_text(encoding="utf-8")
-        self.assertIn("muse-spark-1.3", body)
-        self.assertIn("gpt-6-astra", body)
-        self.assertIn("REACHABLE_HERE", body)
-        self.assertIn("ABSENT_HERE", body)
+        try:
+            body = written.read_text(encoding="utf-8")
+            self.assertIn("muse-spark-1.3", body)
+            self.assertIn("gpt-6-astra", body)
+            self.assertIn("REACHABLE_HERE", body)
+            self.assertIn("ABSENT_HERE", body)
+        finally:
+            subprocess.check_call(
+                ["git", "checkout", "--", "incoming-models.html"],
+                cwd=ROOT,
+            )
 
     def test_does_not_steal_autogtm_leftovers(self) -> None:
         keep = " ".join(self.data["keep_unread"])

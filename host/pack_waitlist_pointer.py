@@ -47,7 +47,7 @@ THIS_SEAT_PATHS = (
     "land/pack-waitlist-pointer-20260902.md",
     "p/cursor-business-pack-waitlist-pointer-20260902-01.md",
 )
-THANKS_BLOB_PREFIX = "7ec0bf86"
+THANKS_BLOB_PREFIX = "76388c9a"
 
 
 def load_json(path: Path) -> dict[str, Any]:

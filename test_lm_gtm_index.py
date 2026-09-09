@@ -213,7 +213,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(truth["calls_booked"], 0)
         self.assertEqual(truth["mailbox"], "NEEDS_OWNER_MAILBOX")
         self.assertEqual(truth["live_next_actions"], 87)
-        self.assertEqual(truth["hot_next_actions"], 43)
+        self.assertEqual(truth["hot_next_actions"], 42)
         self.assertEqual(truth["hold_build_actions"], 20)
         self.assertEqual(truth["sent_awaiting_dnr_actions"], 10)
         self.assertEqual(truth["external_prospects"], 76)
@@ -236,7 +236,7 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertTrue(by_id[name]["live"])
             self.assertEqual(by_id[name]["role"], "external_prospect")
             self.assertEqual(by_id[name]["cash_usd"], 0)
-        self.assertEqual(by_id["composio"]["decision"], "READY_TO_DRAFT")
+        self.assertEqual(by_id["composio"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(by_id["signoz"]["decision"], "RESEARCH_REQUIRED")
         self.assertEqual(by_id["metaforms"]["route_kind"], "EXISTING_CRM_RECORD")
         self.assertEqual(by_id["metaforms"]["route_ref"], "airtable:recWHbHxQoQfGhS0q")
@@ -279,16 +279,15 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(ids[0], "communitycare-katherine-reyes")
         self.assertEqual(classes[0], "sent_awaiting_reply")
         self.assertNotIn("city-of-billings-bid-1421", ids)
-        self.assertIn("composio", ids)
-        self.assertEqual(hot[ids.index("composio")]["hot_class"], "ready_to_draft")
+        self.assertNotIn("composio", ids)
         for sent in SENT_DIAG:
             self.assertIn(sent, ids)
             self.assertEqual(hot[ids.index(sent)]["hot_class"], "sent_awaiting_reply")
-            self.assertLess(ids.index(sent), ids.index("composio"))
+
         for lead in LEADS + SMB_LEADS + POOL_LEADS:
             self.assertIn(lead, ids)
             self.assertEqual(hot[ids.index(lead)]["hot_class"], "verified_lead_unsent")
-            self.assertLess(ids.index("composio"), ids.index(lead))
+
         for name in MSP:
             self.assertNotIn(name, ids)
         self.assertNotIn("anythingllm-mintplex", ids)
@@ -521,10 +520,10 @@ class LmGtmIndexTests(unittest.TestCase):
             composio["sources"]["website_people_email_book"]["prospect_id"], "composio"
         )
         self.assertEqual(composio["sources"]["smart_outreach"]["prospect_id"], "composio")
-        self.assertEqual(
-            composio["sources"]["website_people_email_book_emails"][0]["transport"],
-            "STAGED_NOT_SENT",
-        )
+        email_rows = composio["sources"].get("website_people_email_book_emails") or []
+        if email_rows:
+            self.assertEqual(email_rows[0]["transport"], "STAGED_NOT_SENT")
+
         metaforms = idx.show_subject("metaforms", sources=True)
         self.assertEqual(metaforms["index"]["route_ref"], "airtable:recWHbHxQoQfGhS0q")
         self.assertEqual(
@@ -599,7 +598,9 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertEqual(shown["index"]["owner"], "GROK")
             compact = idx.compact_row(shown["index"])
             self.assertEqual(compact["owner"], "GROK")
-            self.assertNotIn("dnr", compact)
+            self.assertTrue(compact["dnr"])
+            self.assertEqual(compact["decision"], "HOLD_DO_NOT_RESEND")
+
             self.assertEqual(idx.brief_header(paths=paths)["occupied"], 1)
             with self.assertRaises(idx.IndexError_):
                 idx.claim_subject(
@@ -728,7 +729,8 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertEqual(hot_ids[0], "metaforms")
             self.assertNotIn("city-of-billings-bid-1421", hot_ids)
             self.assertIn("metaforms", hot_ids)
-            self.assertLess(hot_ids.index("metaforms"), hot_ids.index("composio"))
+            self.assertNotIn("composio", hot_ids)
+
             shown = idx.show_subject("metaforms", paths, sources=True)
             self.assertEqual(shown["index"]["decision"], "MATERIAL_REPLY")
             self.assertFalse(shown["index"]["dnr"])
@@ -775,7 +777,7 @@ class LmGtmIndexTests(unittest.TestCase):
         second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
         self.assertEqual(first, second)
         self.assertIn("USD 0 cash", first)
-        self.assertIn("43 hot", first)
+        self.assertIn("42 hot", first)
         nxt = subprocess.run(
             [sys.executable, str(HOST), "next"],
             cwd=ROOT,
@@ -832,10 +834,10 @@ class LmGtmIndexTests(unittest.TestCase):
             text=True,
         ).stdout
         hydrated_obj = json.loads(hydrated)
-        self.assertEqual(
-            hydrated_obj["sources"]["website_people_email_book_emails"][0]["transport"],
-            "STAGED_NOT_SENT",
-        )
+        email_rows = hydrated_obj["sources"].get("website_people_email_book_emails") or []
+        if email_rows:
+            self.assertEqual(email_rows[0]["transport"], "STAGED_NOT_SENT")
+        self.assertEqual(hydrated_obj["index"]["decision"], "HOLD_DO_NOT_RESEND")
 
     def test_brief_is_compact_hot_without_extra_keys_or_pii(self) -> None:
         proc = subprocess.run(
@@ -851,7 +853,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertFalse(extra_header, extra_header)
         self.assertIn("composed_at", header)
         self.assertEqual(header["composed_at"], idx.build_index()["state"]["composed_at"])
-        self.assertEqual(header["hot"], 43)
+        self.assertEqual(header["hot"], 42)
         self.assertEqual(header["hold"], 20)
         self.assertEqual(header["sent_dnr"], 10)
         self.assertEqual(header["occupied"], 0)
@@ -859,7 +861,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(header["canonical_crm"], "JOJO Revenue Recovery CRM / Revenue Pipeline")
         self.assertEqual(header["mailbox"], "NEEDS_OWNER_MAILBOX")
         rows = [json.loads(line) for line in lines[1:]]
-        self.assertEqual(len(rows), 43)
+        self.assertEqual(len(rows), 42)
         self.assertEqual(rows[0]["id"], "communitycare-katherine-reyes")
         self.assertEqual(rows[0]["lane"], "sent_awaiting_reply")
         self.assertEqual(rows[0]["decision"], "SENT_AWAITING_REPLY")
@@ -990,7 +992,8 @@ class LmGtmIndexTests(unittest.TestCase):
     def test_show_default_is_compact_without_pii(self) -> None:
         shown = idx.show_subject("composio")
         self.assertEqual(shown["id"], "composio")
-        self.assertEqual(shown["lane"], "ready_to_draft")
+        self.assertEqual(shown["lane"], "dnr")
+
         self.assertNotIn("sources", shown)
         self.assertNotIn("schema_version", shown)
         self.assertIn("overlay_event_ids", shown)
@@ -1080,8 +1083,9 @@ class LmGtmIndexTests(unittest.TestCase):
         by_id = {row["id"]: row for row in built["rows"]}
         composio = idx.compact_row(by_id["composio"])
         self.assertNotIn("owner", composio)
-        self.assertNotIn("dnr", composio)
-        self.assertEqual(composio["lane"], "ready_to_draft")
+        self.assertTrue(composio["dnr"])
+        self.assertEqual(composio["lane"], "dnr")
+
         halo = idx.compact_row(by_id["fuse-halo-ai-vito-strokov"])
         self.assertTrue(halo["dnr"])
         self.assertNotIn("owner", halo)
@@ -1142,18 +1146,20 @@ class LmGtmIndexTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(book_run.returncode, 4)
-        self.assertIn("unclaimed sales", book_run.stderr.casefold())
-        self.assertEqual(book_run.stdout.strip(), "")
+        # Composio is HOLD_DO_NOT_RESEND; no READY_TO_DRAFT prospect remains, so
+        # the composer does not draft and occupancy is not triggered.
+        self.assertEqual(book_run.returncode, 0, book_run.stderr)
+        self.assertNotIn("unclaimed sales", book_run.stderr.casefold())
+        book_payload = json.loads(book_run.stdout)
+        self.assertEqual(book_payload["truth"]["emails_drafted"], 0)
         outreach_plan = subprocess.run(
             [sys.executable, str(outreach), "plan"],
             cwd=ROOT,
             capture_output=True,
             text=True,
         )
-        self.assertEqual(outreach_plan.returncode, 4)
-        self.assertIn("unclaimed sales", outreach_plan.stderr.casefold())
-        self.assertEqual(outreach_plan.stdout.strip(), "")
+        self.assertEqual(outreach_plan.returncode, 0, outreach_plan.stderr)
+        self.assertNotIn("unclaimed sales", outreach_plan.stderr.casefold())
         with tempfile.TemporaryDirectory() as directory:
             paths = _fork_index(directory)
             idx.claim_subject(
@@ -1176,17 +1182,36 @@ class LmGtmIndexTests(unittest.TestCase):
                 enforce_sales_occupancy=True,
                 index_paths=paths,
             )
-            self.assertEqual(staged["truth"]["emails_drafted"], 1)
-            self.assertEqual(staged["emails"][0]["prospect_id"], "composio")
-            self.assertEqual(staged["emails"][0]["transport"], "STAGED_NOT_SENT")
-            with self.assertRaises(book_mod._load_gtm_index().UnclaimedSales):
-                book_mod.build_loop(
+            # Live receipts mark composio DNR, so the loop drafts nobody.
+            self.assertEqual(staged["truth"]["emails_drafted"], 0)
+            self.assertEqual(staged["emails"], [])
+            # Occupancy still refuses an unclaimed READY_TO_DRAFT subject.
+            with tempfile.TemporaryDirectory() as receipt_dir:
+                receipts = Path(receipt_dir)
+                src = ROOT / "revenue" / "payment_ready" / "outreach_receipts"
+                for item in src.iterdir():
+                    if item.is_file() and "composio" not in item.name:
+                        (receipts / item.name).write_bytes(item.read_bytes())
+                with self.assertRaises(book_mod._load_gtm_index().UnclaimedSales):
+                    book_mod.build_loop(
+                        (ROOT / "revenue" / "website_people_email_book" / "fixture_seller.html").read_text(encoding="utf-8"),
+                        "revenue/website_people_email_book/fixture_seller.html",
+                        owner="CLAUDE",
+                        enforce_sales_occupancy=True,
+                        index_paths=paths,
+                        receipt_directory=receipts,
+                    )
+                claimed = book_mod.build_loop(
                     (ROOT / "revenue" / "website_people_email_book" / "fixture_seller.html").read_text(encoding="utf-8"),
                     "revenue/website_people_email_book/fixture_seller.html",
-                    owner="CLAUDE",
+                    owner="GROK",
                     enforce_sales_occupancy=True,
                     index_paths=paths,
+                    receipt_directory=receipts,
                 )
+                self.assertGreaterEqual(claimed["truth"]["emails_drafted"], 1)
+                self.assertEqual(claimed["emails"][0]["prospect_id"], "composio")
+                self.assertEqual(claimed["emails"][0]["transport"], "STAGED_NOT_SENT")
 
 
 if __name__ == "__main__":

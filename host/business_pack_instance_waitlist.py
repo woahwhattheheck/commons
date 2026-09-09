@@ -31,7 +31,7 @@ OBSERVED_AT_LAND = {
 }
 # Historical byte observations; live pages/helpers may evolve independently.
 EXPECTED_BLOBS = {
-    "packs/waitlist.html": "bdcaa7ea",
+    "packs/waitlist.html": "b312ed6d",
 }
 RECEIPT_BLOBS = {f"p/{POINTER_ID}.md": "2c584983"}
 

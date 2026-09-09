@@ -95,8 +95,8 @@ class BusinessPackWaitlistPixelGatePointerTest(unittest.TestCase):
                 "b3f26525"
             )
         )
-        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
-        self.assertTrue(pointer.EXPECTED_BLOBS["packs/thanks.html"].startswith("7ec0bf86"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("b312ed6d"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/thanks.html"].startswith("76388c9a"))
         self.assertTrue(
             self.result["blobs"][
                 "p/cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md"

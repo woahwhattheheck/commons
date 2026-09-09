@@ -130,7 +130,7 @@ class PackWaitlistPointerRootsTest(unittest.TestCase):
         self.assertIs(result["commons_admission"], False)
         self.assertIs(result["did_not_write_owner_paths"], True)
         self.assertIs(result["harborline"]["similar_is_not_clone"], True)
-        self.assertEqual(self.pointer.THANKS_BLOB_PREFIX, "7ec0bf86")
+        self.assertEqual(self.pointer.THANKS_BLOB_PREFIX, "76388c9a")
 
 
 if __name__ == "__main__":

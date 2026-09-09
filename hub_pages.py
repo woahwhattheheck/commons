@@ -156,7 +156,10 @@ def _load(mod, name, default):
 
 
 def _page(mod, title, body, extra_head="", body_lead=""):
+    if 'id="live-cash"' not in body and 'id="live-cash"' not in (body_lead or ""):
+        body = LIVE_CASH_PRODUCTS_HTML + body
     page = """<!DOCTYPE html>
+
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

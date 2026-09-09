@@ -43,12 +43,12 @@ OBSERVED_AT_LAND = {
     "packs/lotribbon-greetings-20260902-01/waitlist-slot.md": "absent",
     "packs/curbline-weekend-yard-help-20260902-01/waitlist-slot.md": "absent",
 }
-WAITLIST_DOOR_BLOB = "bdcaa7ea"
-WAITLIST_HELPER_BLOB = "08cfc14d"
+WAITLIST_DOOR_BLOB = "b312ed6d"
+WAITLIST_HELPER_BLOB = "dafcf444"
 WAITLIST_LAW_BLOB = "c687691c"
-DOOR_BLOB = "d3d6fcc7"
+DOOR_BLOB = "cd2be48f"
 RATING_BLOB = "7fe8667a"
-SIDECAR_BLOB = "2fbc987b"
+SIDECAR_BLOB = "0abcd651"
 POINTER_RECEIPT_BLOB = "7a8987b5"
 SLOT_POINTER_RECEIPT_BLOB = "2db10af8"
 CCPA_PHRASE = "Do Not Sell or Share My Personal Information"

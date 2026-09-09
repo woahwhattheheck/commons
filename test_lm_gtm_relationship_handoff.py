@@ -250,10 +250,11 @@ class RelationshipHandoffTests(unittest.TestCase):
 
     def test_composio_hot_handoff_surfaces_ready_to_draft(self) -> None:
         packet = handoff_mod.relationship_handoff("composio")
-        self.assertEqual(packet["decision"], "READY_TO_DRAFT")
-        self.assertEqual(packet["lane"], "ready_to_draft")
+        self.assertEqual(packet["decision"], "HOLD_DO_NOT_RESEND")
+        self.assertEqual(packet["lane"], "dnr")
         self.assertEqual(packet["relationship_evidence"]["event_ids"], [])
         self.assertEqual(packet["fields"]["successor_next_action"]["status"], "SOURCED")
+
 
     def test_cli_billings_and_send_exit(self) -> None:
         ok = subprocess.run(

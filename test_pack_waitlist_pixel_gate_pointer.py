@@ -101,8 +101,8 @@ class PackWaitlistPixelGatePointerTest(unittest.TestCase):
     def test_waitlist_and_thanks_doors_stay_peer_bytes(self) -> None:
         self.assertTrue(self.result["did_not_overwrite_waitlist_html"])
         self.assertTrue(self.result["did_not_overwrite_thanks_html"])
-        self.assertTrue(self.result["waitlist_door"]["blob"].startswith("bdcaa7ea"))
-        self.assertTrue(self.result["thanks_door"]["blob"].startswith("7ec0bf86"))
+        self.assertTrue(self.result["waitlist_door"]["blob"].startswith("b312ed6d"))
+        self.assertTrue(self.result["thanks_door"]["blob"].startswith("76388c9a"))
         waitlist = self.unique["waitlist"]
         self.assertEqual(waitlist["pixel_gate_claimed_by"], "bc-31c8ef9a")
         self.assertEqual(
