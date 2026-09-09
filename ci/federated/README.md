@@ -27,3 +27,14 @@ Engine: `host_offload/federated_ci.py`. Tests: `test_federated_ci.py`. Human pag
 Receipt shape: source SHA, test identity, command envelope, exit code, duration, artifact paths/hashes, provider, run URL (nullable), terminal state. Reconciler findings: EQUIVALENT, MISSING_SHARD, STALE_SOURCE, ARTIFACT_DRIFT, CONTRADICTORY_EXIT, RETRY_LINEAGE, DUPLICATE_RECEIPT, HASH_MISMATCH, CANCELLED, MALFORMED.
 
 Never invent external execution, URLs, quota, success, or failover.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
