@@ -139,7 +139,7 @@ jobs:
             --output "$ANALYSIS/results/arlene-v14.json"
 
       - name: Run exact frozen-SELL cells
-        shelll: bash
+        shell: bash
         run: |
           set -euo pipefail
           ROOT='${{ steps.extract.outputs.root }}'
@@ -174,7 +174,7 @@ jobs:
           set -euo pipefail
           python3 -B "$ANALYSIS/summarize_bisect.py" \
             --report "ARLENE_V14=$ANALYSIS/results/arlene-v14.json" \
-            --report "T08_FROZEN_SELLD=$ANALYSIS/results/t08-frozen-sell.json" \
+            --report "T08_FROZEN_SELL=$ANALYSIS/results/t08-frozen-sell.json" \
             --json-output "$ANALYSIS/results/summary.json" \
             --markdown-output "$ANALYSIS/EVIDENCE.md"
           python3 - <<'PY'
