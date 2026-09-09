@@ -26,9 +26,12 @@ class T(unittest.TestCase):
  def test_replay(s):
   L,_=s.first(); before=L.counts().copy(); _,x,d=M.run(copy.deepcopy(s.rows),s.m,L); s.assertEqual(d,{k:0 for k in before}); s.assertEqual(x,{"IDEMPOTENT_REPLAY":80}); s.assertEqual(L.counts(),before)
  def test_release(s):
-  L,_=s.first(); sample=next(iter(L.reports)); old=copy.deepcopy(L.reports[sample]);
-  with s.assertRaisesRegex(ValueError,"NAMED_HUMAN"): M.release(L,sample,"")
-  out=M.release(L,sample,"QA Reviewer"); s.assertEqual((out["status"],out["reviewer"]),(M.RELEASED,"QA Reviewer")); s.assertEqual(L.reports[sample],old)
+  L,_=s.first(); sample=next(iter(L.reports)); old=copy.deepcopy(L.reports[sample])
+  for bad in ("",None,123,"system","System Reviewer","AI Reviewer","Service Account","bot123 reviewer","Agent_Reviewer"):
+   with s.assertRaisesRegex(ValueError,"NAMED_HUMAN"): M.release(L,sample,bad)
+   s.assertEqual(L.reports[sample],old)
+  for good in ("QA Reviewer","Jordan Smith","Anne-Marie Jones"):
+   out=M.release(L,sample,good); s.assertEqual((out["status"],out["reviewer"]),(M.RELEASED,good)); s.assertEqual(L.reports[sample],old)
 
  def test_unknown_phase_fails_closed_without_mutation(s):
   L=M.Ledger(); r=M.row(901,"UNKNOWN_CUTOFF","CORE"); before=copy.deepcopy(L)
