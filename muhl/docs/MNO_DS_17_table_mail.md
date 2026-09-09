@@ -32,3 +32,13 @@ Runtime button does **not** host-ripple the netlist. Ding dests this seat are in
 Cloud seats (Kite / Axiom) do not see this disk. NEED_BRYCE to open those. HTTP is not the computer.
 
 Buttons: `host/muhl_fab_table_mail.py` (refuses if exists) · `host/muhl_route_table.py` · `host/muhl_surface_table.py`. Card `MUHL_COMMONS\TABLE_IS_THE_FILE.md`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

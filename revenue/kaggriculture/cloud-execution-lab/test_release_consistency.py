@@ -59,5 +59,8 @@ class ReleaseTests(unittest.TestCase):
    self.assertEqual(main,(b.ROOT/'main.py').read_bytes())
    self.assertIn(b'class FinalPressureAgent',main)
    self.assertIn(b'_final_pressure_boundary',main)
+   self.assertIn(b'def _entrypoint_fallback',main)
+   self.assertIn(b'entrypoint_guard',main)
+   self.assertIn('checks/test_entrypoint_deadline.py',names)
 
 if __name__=='__main__':unittest.main()
