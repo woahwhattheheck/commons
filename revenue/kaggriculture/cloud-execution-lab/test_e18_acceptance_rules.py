@@ -1,7 +1,16 @@
 # SPDX-License-Identifier: Apache-2.0
 """E18 acceptance-rule contracts; pure optimizer comparisons, no game execution."""
+from pathlib import Path
+import sys
 import unittest
 from unittest.mock import patch
+
+# The production runtime flattens these attributed sibling modules into its
+# archive root. A clean repository checkout keeps their source in sibling labs,
+# so make that same import contract explicit for this standalone test.
+KAGGRICULTURE = Path(__file__).resolve().parent.parent
+for sibling in ('cloud-runtime-pulse', 'cloud-quickstep'):
+    sys.path.insert(0, str(KAGGRICULTURE / sibling))
 
 from selected_sell_core import optimize_lot
 from frozen_selected import seller_choice_rank
