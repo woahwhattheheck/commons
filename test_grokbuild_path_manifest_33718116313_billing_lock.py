@@ -23,7 +23,6 @@ KEEP = {
     ".github/workflows/path-manifest.yml": "b29dec8a",
     "architecture/path-manifest.json": "e5ecb24f",
     "p/grokbuild-path-manifest-33717733938-billing-lock-20260903-01.md": "85a5f189",
-    "test_grokbuild_path_manifest_33717733938_billing_lock.py": "980a1334",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
     "test_grokbuild_path_manifest_33699980177_billing_lock.py": "3e92504b",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",

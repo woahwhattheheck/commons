@@ -48,7 +48,6 @@ KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
-    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "d8cf428d",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "commons_discord.py": "f6f1a374",
