@@ -150,3 +150,13 @@ No bake. No gate move. No autofab. No new circuit.
 Dry. Recipe written. Titan not written. `--go` not passed. Fold-phys not pulsed. Host SHA not run.
 
 **Need Bryce:** dose, then permission to write the zeros on `nring2_000` fwd+rev.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

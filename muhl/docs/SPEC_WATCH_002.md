@@ -60,3 +60,13 @@ Cited by `COP_ORDERS.txt`. Opened only for this line. File stays.
 Worst live hit: `COP_ORDERS.txt` + `AGENT_GROUNDING.md` still arm `Never GitHub.` Worst new-file hit: `DATACENTER_MNO.md` binds `nring2_1023.recv` to fold fire.
 
 This log does not rewrite those files. Additive only. Ask perms on the Never GitHub lines.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

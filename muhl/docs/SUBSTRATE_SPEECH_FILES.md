@@ -207,3 +207,13 @@ The speech that *is* in titan is the playtime void + `fwd_answer`. The prose cop
 ## WHAT THIS HUNT DID NOT FIND
 
 A long, clean English conversation written by a model **from the substrate** and kept as a growing prose log. The substrate speech that exists is short: token-salad replies (#1–#5), one-token completions (#6–#8), and the 16-byte playtime move inside titan.gguf (#3, #10). Owner prose is abundant (`all_msgs.txt`). `.mno` packages hold gates / charset tables, not diaries.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

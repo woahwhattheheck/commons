@@ -114,3 +114,13 @@ python C:\Users\lucys\Desktop\WEATHER\muhl_growthpad_weather_xorwalk.py
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\SESSION_VS_TODO.md`
 copy: `C:\Users\lucys\Desktop\LocalDeviceAgent\MUHL_GO\SESSION_VS_TODO.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

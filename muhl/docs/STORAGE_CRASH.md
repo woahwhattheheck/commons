@@ -89,3 +89,13 @@ Windows: unexpected shutdown **YES**. Bugcheck 0x154 STORAGE ERROR. Dirty volume
 Files: live computers **size MATCH**. Data loss **NO** at size/existence. Body integrity unknown (did not read 100GB). Machine **usable**. Need reboot: **already rebooted**. Need chkdsk /f: **not indicated** (NTFS 98 healthy). Leave it. Do not 10-wide again.
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\STORAGE_CRASH.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -204,3 +204,13 @@ Do not add these to the private archive. Local only (`C:\llm`, Desktop research 
 13. Order if/when you *do* commit (not done here): in-repo FIT first (host + docs + sku), then copy FIT `.mno` + small Desktop packages, then LFS the three borderline files only if you want them.
 14. `titan.gguf` and the GB genomes stay on `C:\llm` — that is the size cut, not a product-policy cut.
 15. This file is the inventory. No commit, no push, no git config was run.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
