@@ -19,3 +19,7 @@ Base main at write: `ed705e0f599f6a701130c352bfbf64a4057ec565`
 | Cash-now leftover | `host/cash_now.py`, `p/` absent for the DEMON taking | taking stays CARRIER_ONLY |
 
 Run/model receipt: Cursor Grok 4.6, Cursor Automation, landing owner `cursor-grok-46-demon-redteam-20260825`. No Claude verdict. No Direct Grok Build. No titan write. No outreach. No bank data.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

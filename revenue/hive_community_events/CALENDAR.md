@@ -130,3 +130,7 @@ presentation check passed nine checks, including links and widths 320, 390 and
 returned `ERR_BLOCKED_BY_ADMINISTRATOR`; embedded rendering is not native-browser
 acceptance. No Outlook, Apple Calendar, Google Calendar or community-platform
 installation was performed. No whole-repository CI result is claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

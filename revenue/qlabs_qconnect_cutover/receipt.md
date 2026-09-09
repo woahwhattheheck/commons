@@ -18,3 +18,7 @@ CLI: `python3 revenue/qlabs_qconnect_cutover/runner.py` → ok true, failures []
 | manifest_sha256 | d484e7c953fb8aa2acff16044596f39684b44ba5d84bfb83dc6b68b64ba37ef5 |
 
 Interfaces simulated. Read-only shadowing. No production writes. No outreach. No automatic release. Named human QA (`SYN-QA-OFFICER`) releases the build. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

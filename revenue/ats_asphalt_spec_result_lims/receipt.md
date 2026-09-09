@@ -21,3 +21,7 @@ CLI: `python3 ats_asphalt_spec_result_lims.py` → ok true, failures []
 
 Buyer: Asphalt Testing Solutions & Engineering / Tanya Nash.
 Interfaces simulated/read-only. No live QC decision, production write, billing, or automatic report release. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

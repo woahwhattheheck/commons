@@ -42,3 +42,7 @@ attribution, or paid without.
 ## What this package is not
 
 Not a license. Not a sale. Not legal advice. No rights are granted by this file.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

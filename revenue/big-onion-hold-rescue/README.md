@@ -30,3 +30,7 @@ python big_onion_hold_rescue.py
 ## Boundary
 
 Synthetic fixtures only. No real customer or payment data, no outreach, no reminders or collections, no payment/provider/customer/system write, no transport, no spend, and no autonomous action. `HUMAN_REVIEW_ONLY` is a recommendation label, not a send or collection instruction.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
