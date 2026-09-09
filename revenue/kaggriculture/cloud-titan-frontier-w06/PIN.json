@@ -1,16 +1,16 @@
 {
   "schema": "titan.w06.apex-counterexample.pin.v1",
   "operation": "titan-frontier-W06-apex-counterexample-20260909-01",
-  "base_commit": "0204b44fefab0f3d5a3e54d14fd35406b907e9a7",
+  "base_commit": "bdecd9738a0be0c6755699b1c5860cf8a394dec3",
   "release": {
     "path": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
     "entrypoint": "main.py::agent",
     "config": "TITAN-CONFIG.json",
-    "sha256": "385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492",
-    "bytes": 423561,
+    "sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+    "bytes": 423575,
     "runtime_files": 107,
     "source_manifest": "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json",
-    "source_manifest_sha256": "9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f"
+    "source_manifest_sha256": "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
   },
   "engine": {
     "ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
