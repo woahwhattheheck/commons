@@ -1,0 +1,164 @@
+{
+  "counterexamples": [
+    {
+      "candidate": {
+        "blocked_crops": [],
+        "executable": [
+          [
+            "PLANT",
+            "WHEAT"
+          ],
+          [
+            "PASS"
+          ]
+        ],
+        "remaining_seeds": [
+          [
+            "WHEAT",
+            0
+          ]
+        ],
+        "requested": [
+          [
+            "PLANT",
+            "WHEAT"
+          ],
+          [
+            "PLANT",
+            "WHEAT"
+          ]
+        ]
+      },
+      "fingerprint": "bcc7f03db8a1403545fd5132b80b8c50f2aaf53e32ed0ebeb5f1d8d88c9b358f",
+      "fixture": {
+        "actions": [
+          [
+            "PLANT",
+            "WHEAT"
+          ],
+          [
+            "PLANT",
+            "WHEAT"
+          ]
+        ],
+        "seeds": {
+          "WHEAT": 1
+        }
+      },
+      "official": {
+        "blocked_crops": [
+          "WHEAT"
+        ],
+        "executable": [
+          [
+            "PASS"
+          ],
+          [
+            "PASS"
+          ]
+        ],
+        "remaining_seeds": [
+          [
+            "WHEAT",
+            1
+          ]
+        ],
+        "requested": [
+          [
+            "PLANT",
+            "WHEAT"
+          ],
+          [
+            "PLANT",
+            "WHEAT"
+          ]
+        ]
+      },
+      "rule": "atomic-same-crop-plant",
+      "source": {
+        "base_commit": "9519f3b9b6a970c12ee37c64abb3e8e2246d53e1",
+        "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+        "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+        "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+        "negative_control": {
+          "head": "cce9e8e94211706d95e21325c54d121cebc16e11",
+          "pr": 11127
+        }
+      }
+    },
+    {
+      "candidate": {
+        "cash_delta": [
+          20,
+          19
+        ],
+        "ending_inventory": 12,
+        "quotes": [
+          [
+            20
+          ],
+          [
+            19
+          ]
+        ],
+        "sold_units": [
+          1,
+          1
+        ]
+      },
+      "fingerprint": "7d9988d86c23ee211b464b2ed956c6fb3d45ecdd45bfa7d614930e0c11b4ea2e",
+      "fixture": {
+        "inventory": 10,
+        "quantities": [
+          1,
+          1
+        ],
+        "stocks": [
+          1,
+          1
+        ]
+      },
+      "official": {
+        "cash_delta": [
+          20,
+          20
+        ],
+        "ending_inventory": 12,
+        "quotes": [
+          [
+            20
+          ],
+          [
+            20
+          ]
+        ],
+        "sold_units": [
+          1,
+          1
+        ]
+      },
+      "rule": "joint-market-precommit-quote",
+      "source": {
+        "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+        "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+      }
+    }
+  ],
+  "evidence_hash": "87b51c0aafa70cdac352d52eae5daba40c9a9eb2ed9cabfea0eb553cab1177ea",
+  "rules": {
+    "atomic-plant-sentry": true,
+    "buy-product-domain": true,
+    "exact-shed-cap": true,
+    "lockstep-market-sentry": true,
+    "malformed-hands-normalize": true,
+    "raw-market-prefix": true,
+    "state-not-action-activation": true
+  },
+  "schema": "titan.v3.official-shadow-oracle.v1",
+  "source": {
+    "base_commit": "9519f3b9b6a970c12ee37c64abb3e8e2246d53e1",
+    "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d"
+  }
+}
