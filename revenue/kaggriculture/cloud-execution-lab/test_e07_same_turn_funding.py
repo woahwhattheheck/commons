@@ -1,10 +1,16 @@
 # SPDX-License-Identifier: Apache-2.0
 """E07 same-turn realized-sale funding contracts; no game execution."""
+import hashlib
+import json
 import unittest
 from copy import deepcopy
+from pathlib import Path
 
 from frozen_selected import fund_same_turn_acquisition, sale_quantities
 from scheduler import MarketPath, m, post_units
+
+
+ROOT = Path(__file__).resolve().parent
 
 
 def fixture(shed=None, money=0, now=100):
@@ -96,6 +102,20 @@ class SameTurnFundingContracts(unittest.TestCase):
         self.assertEqual(out,original)
         self.assertEqual(info['reason'],'unsupported-buy-product')
         self.assertEqual(info['barrier_index'],0)
+
+
+class CanonicalSameTurnFundingBinding(unittest.TestCase):
+    def test_committed_current_release_matches_same_turn_funding_source(self):
+        from build_integrated import source_files, verify_current
+        receipt = verify_current()
+        self.assertEqual(source_files()['frozen_selected.py'], 'frozen_selected.py')
+        source = (ROOT/'frozen_selected.py').read_bytes()
+        recorded = json.loads((ROOT/'runtime/integrated-selected/CURRENT-SOURCE.json').read_text())['runtime']['frozen_selected.py']
+        self.assertEqual(recorded['sha256'], hashlib.sha256(source).hexdigest())
+        self.assertEqual(recorded['bytes'], len(source))
+        self.assertIn(b'def fund_same_turn_acquisition(', source)
+        self.assertEqual(receipt['path'], 'exports/titan-current.tar.gz')
+        self.assertEqual(receipt['sha256'], hashlib.sha256((ROOT/receipt['path']).read_bytes()).hexdigest())
 
 
 if __name__=='__main__':
