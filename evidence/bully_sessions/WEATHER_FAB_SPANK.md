@@ -159,3 +159,14 @@ New land only. Do not overwrite v1 until Gravekeeper/Bryce says so. Copy if you 
 9. **Still dark:** no titan mmap, no 337, no 336 remap, no 7913, no `--inject 0x01`, no dest invention, no pulse titan 78.
 
 v1 `weather.mno` / `WEATHER1` / host `settle()` / `nxt` — **do not promote.**
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
