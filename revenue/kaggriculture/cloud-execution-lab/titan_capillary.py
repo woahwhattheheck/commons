@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Experimental TITAN candidate with structurally compiled JIT seed routes.
 
-This module is intentionally separate from ``titan_runtime.py``.  It does not
-change the submitted/default agent.  Use ``capillary_main.agent`` for exact
-canonical entrypoint, deadline, reset, and final-pressure composition.
+This module is intentionally separate from ``titan_runtime.py``. It does not
+change the submitted/default agent. Use ``capillary_main.agent`` so canonical
+``main.py`` supplies final-pressure, deadline, reset, and fallback composition.
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from titan_runtime import TitanAgent
 
 
 class CapillaryTitanAgent(TitanAgent):
-    """Canonical TITAN composition with day-zero seed prepayment staged JIT."""
+    """TITAN base with first-day expensive seed prepayment redistributed JIT."""
 
     def __init__(self, features=None, *, fourth_quadrant_admission=None):
         super().__init__(
@@ -27,23 +27,6 @@ class CapillaryTitanAgent(TitanAgent):
             "certified": False,
             "reason": "not_initialized",
         }
-
-    def _market_pressure_selected(self, obs, cfg, selected):
-        """Retain canonical pressure only at the final completed-action boundary."""
-        if not getattr(self, "_final_pressure_boundary", False):
-            return selected
-        return super()._market_pressure_selected(obs, cfg, selected)
-
-    def _early_capital_selected(self, obs, cfg, selected):
-        """Mirror canonical main.py's capital-then-final-pressure composition."""
-        returned = super()._early_capital_selected(obs, cfg, selected)
-        if self.diagnostics.get("status") != "completed":
-            return returned
-        self._final_pressure_boundary = True
-        try:
-            return super()._market_pressure_selected(obs, cfg, returned)
-        finally:
-            self._final_pressure_boundary = False
 
     def _initialize(self):
         super()._initialize()

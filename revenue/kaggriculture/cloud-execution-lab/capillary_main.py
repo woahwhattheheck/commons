@@ -1,66 +1,74 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Canonical whole-call entrypoint for the isolated Capillary candidate."""
+"""Canonical-entrypoint-preserving carrier for the isolated Capillary candidate.
+
+The candidate changes exactly one runtime seam: the base class used by canonical
+``main.py::_new_instance``. Canonical ``FinalPressureAgent`` construction,
+whole-call deadlines, fallback selection, interrupted-instance reconstruction,
+and module-owned lifecycle remain the exact control implementation.
+"""
 from __future__ import annotations
 
-import importlib.util
 from pathlib import Path
-import sys
+from types import ModuleType
+from typing import Any
 
 
-HERE = Path(__file__).resolve().parent
-if str(HERE) not in sys.path:
-    sys.path.insert(0, str(HERE))
+_CANONICAL: ModuleType | None = None
+_CANONICAL_MODULE_NAME = "_titan_capillary_canonical_main_sol_janus"
 
 
-def _load_control_main():
-    path = HERE / "main.py"
-    spec = importlib.util.spec_from_file_location(
-        "_sol_janus_capillary_exact_control_main",
-        path,
+def _canonical_module() -> ModuleType:
+    """Load canonical ``main.py`` once and wrap only its instance factory."""
+    global _CANONICAL
+    if _CANONICAL is not None:
+        return _CANONICAL
+
+    import sys
+
+    root = Path(__file__).resolve().parent
+    canonical_path = root / "main.py"
+    if not canonical_path.is_file():
+        raise FileNotFoundError(f"canonical entrypoint missing: {canonical_path}")
+    text = str(root)
+    if text not in sys.path:
+        sys.path.insert(0, text)
+
+    import titan_runtime as runtime
+    from titan_capillary import CapillaryTitanAgent
+
+    module = runtime.load(
+        _CANONICAL_MODULE_NAME,
+        canonical_path,
+        cache=True,
     )
-    if spec is None or spec.loader is None:
-        raise ImportError(f"Cannot import exact control entrypoint: {path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
+    canonical_factory = getattr(module, "_new_instance", None)
+    canonical_agent = getattr(module, "agent", None)
+    if not callable(canonical_factory) or not callable(canonical_agent):
+        raise RuntimeError("canonical entrypoint contract unavailable")
+
+    def capillary_factory(
+        factory_root: Path,
+        feature_data: dict[str, Any],
+    ):
+        # Canonical _new_instance imports TitanAgent inside the call and defines
+        # FinalPressureAgent(TitanAgent). Substitute the candidate base only
+        # while that exact class is constructed, then restore shared runtime
+        # state even if admission construction fails.
+        previous = runtime.TitanAgent
+        runtime.TitanAgent = CapillaryTitanAgent
+        try:
+            return canonical_factory(factory_root, feature_data)
+        finally:
+            runtime.TitanAgent = previous
+
+    module._new_instance = capillary_factory
+    _CANONICAL = module
     return module
 
 
-_CONTROL_MAIN = _load_control_main()
-
-
-def _new_instance(root, feature_data):
-    """Replace only construction inside the exact canonical outer entrypoint."""
-    from titan_capillary import CapillaryTitanAgent
-    from titan_runtime import Features, load
-
-    features = Features(**feature_data)
-    admission = None
-    if features.fourth_quadrant:
-        source = root / "funded_payback.py"
-        if not source.is_file():
-            source = root / "../cloud-economic-stress/funded_payback/funded_payback.py"
-        module = load("_titan_capillary_funded_payback", source, cache=True)
-        adapter = load(
-            "_titan_capillary_funded_payback_runtime",
-            root / "funded_payback_runtime.py",
-            cache=True,
-        )
-        admission = adapter.make_admission(module.FundedPaybackAdmission)(
-            seconds=features.budget_seconds,
-            max_proposals=24,
-        )
-    return CapillaryTitanAgent(
-        features,
-        fourth_quadrant_admission=admission,
-    )
-
-
-# Reuse canonical configuration loading, singleton/reset semantics, completed
-# fallback selection, and the whole-call deadline. Only the runtime factory is
-# replaced inside this candidate-local module instance.
-_CONTROL_MAIN._new_instance = _new_instance
-
-
 def agent(observation, configuration=None):
-    return _CONTROL_MAIN.agent(observation, configuration)
+    """Delegate the complete call to the exact canonical entrypoint."""
+    return _canonical_module().agent(observation, configuration)
+
+
+__all__ = ["agent"]

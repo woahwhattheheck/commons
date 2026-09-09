@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -10,9 +11,11 @@ from unittest.mock import patch
 import capillary_main as candidate_entrypoint
 import titan_capillary as capillary_module
 from titan_capillary import CapillaryTitanAgent
-from titan_runtime import Features, TitanAgent
+from titan_runtime import TitanAgent
+import titan_runtime
 
 
+LAB = Path(__file__).resolve().parent
 _MARKER = ["BUY_SEED", "MELON", 1]
 
 
@@ -142,96 +145,122 @@ class CapillaryLifecycleTests(unittest.TestCase):
         self.assertIs(agent.spatial._crop_routes, agent.controller.R)
 
 
-class FinalPressureParityTests(unittest.TestCase):
-    def test_direct_runtime_keeps_canonical_capital_then_pressure_order(self):
-        agent = CapillaryTitanAgent(Features(market_pressure=True))
-        agent.diagnostics = {"status": "completed"}
-        selected = {"stage": "selected"}
-        after_capital = {"stage": "capital"}
-        after_pressure = {"stage": "pressure"}
-        calls = []
+class CanonicalEntrypointParityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.canonical = candidate_entrypoint._canonical_module()
+        cls.feature_data = json.loads((LAB / "TITAN-CONFIG.json").read_text())
 
-        def early(_agent, obs, cfg, row):
-            calls.append(("early", obs, cfg, row))
-            return after_capital
+    def new_instance(self):
+        return self.canonical._new_instance(LAB, dict(self.feature_data))
 
-        def pressure(_agent, obs, cfg, row):
-            self.assertTrue(_agent._final_pressure_boundary)
-            calls.append(("pressure", obs, cfg, row))
-            return after_pressure
+    def test_adapter_delegates_to_exact_canonical_main(self):
+        self.assertEqual(
+            Path(self.canonical.__file__).resolve(),
+            (LAB / "main.py").resolve(),
+        )
+        self.assertTrue(callable(self.canonical._entrypoint_fallback))
+        self.assertTrue(callable(self.canonical._record_entrypoint_deadline))
+        self.assertTrue(hasattr(self.canonical, "_INSTANCE"))
+        self.assertFalse(hasattr(candidate_entrypoint, "_INSTANCE"))
 
-        obs, cfg = object(), object()
-        with patch.object(TitanAgent, "_early_capital_selected", new=early), patch.object(
+        sentinel = object()
+        observation = {"step": 17}
+        configuration = {"episodeSteps": 720}
+        with patch.object(self.canonical, "agent", return_value=sentinel) as delegated:
+            result = candidate_entrypoint.agent(observation, configuration)
+
+        self.assertIs(result, sentinel)
+        delegated.assert_called_once_with(observation, configuration)
+
+    def test_factory_preserves_final_pressure_over_capillary_mro(self):
+        original_runtime_base = titan_runtime.TitanAgent
+        instance = self.new_instance()
+
+        self.assertIs(titan_runtime.TitanAgent, original_runtime_base)
+        self.assertIsInstance(instance, CapillaryTitanAgent)
+        mro = type(instance).__mro__
+        self.assertEqual(mro[0].__name__, "FinalPressureAgent")
+        self.assertIs(mro[1], CapillaryTitanAgent)
+        self.assertIs(mro[2], original_runtime_base)
+        self.assertTrue(instance.features.market_pressure)
+        self.assertTrue(instance.features.early_capital)
+
+    def test_final_pressure_is_suppressed_then_runs_once_after_capillary(self):
+        instance = self.new_instance()
+        instance.diagnostics = {"status": "completed"}
+        before = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["BUY_LAND"], ["SELL", "WOOL", 1]],
+        }
+        after_capillary = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "WOOL", 1], ["BUY_LAND"]],
+        }
+        events = []
+
+        def fake_capillary(_self, _obs, _cfg, selected):
+            events.append(("capillary", selected))
+            return after_capillary
+
+        def fake_pressure(_self, _obs, _cfg, selected):
+            self.assertTrue(_self._final_pressure_boundary)
+            events.append(("pressure", selected))
+            return selected
+
+        with patch.object(
+            CapillaryTitanAgent,
+            "_early_capital_selected",
+            new=fake_capillary,
+        ), patch.object(
             TitanAgent,
             "_market_pressure_selected",
-            new=pressure,
+            new=fake_pressure,
         ):
-            # Pressure remains suppressed at its legacy earlier call site.
-            self.assertIs(agent._market_pressure_selected(obs, cfg, selected), selected)
-            self.assertEqual(calls, [])
+            # Canonical FinalPressureAgent suppresses the earlier in-pipeline
+            # call. No legacy pressure transform may run before Capillary.
+            early = instance._market_pressure_selected({}, {}, before)
+            self.assertIs(early, before)
+            self.assertEqual(events, [])
 
-            result = agent._early_capital_selected(obs, cfg, selected)
+            result = instance._early_capital_selected({}, {}, before)
 
-        self.assertIs(result, after_pressure)
-        self.assertEqual(
-            calls,
-            [
-                ("early", obs, cfg, selected),
-                ("pressure", obs, cfg, after_capital),
-            ],
-        )
-        self.assertFalse(agent._final_pressure_boundary)
+        self.assertIs(result, after_capillary)
+        self.assertEqual([event[0] for event in events], ["capillary", "pressure"])
+        self.assertIs(events[0][1], before)
+        self.assertIs(events[1][1], after_capillary)
+        self.assertFalse(getattr(instance, "_final_pressure_boundary", False))
 
     def test_deadline_fallback_does_not_start_optional_final_pressure(self):
-        agent = CapillaryTitanAgent(Features(market_pressure=True))
-        agent.diagnostics = {"status": "deadline_fallback"}
+        instance = self.new_instance()
+        instance.diagnostics = {"status": "deadline_fallback"}
         selected = object()
-        after_capital = object()
+        after_capillary = object()
         calls = []
 
-        def early(_agent, _obs, _cfg, _row):
-            calls.append("early")
-            return after_capital
+        def fake_capillary(_self, _obs, _cfg, _row):
+            calls.append("capillary")
+            return after_capillary
 
-        def pressure(_agent, _obs, _cfg, _row):
+        def fake_pressure(_self, _obs, _cfg, _row):
             calls.append("pressure")
             return object()
 
-        with patch.object(TitanAgent, "_early_capital_selected", new=early), patch.object(
+        with patch.object(
+            CapillaryTitanAgent,
+            "_early_capital_selected",
+            new=fake_capillary,
+        ), patch.object(
             TitanAgent,
             "_market_pressure_selected",
-            new=pressure,
+            new=fake_pressure,
         ):
-            result = agent._early_capital_selected(object(), object(), selected)
+            result = instance._early_capital_selected({}, {}, selected)
 
-        self.assertIs(result, after_capital)
-        self.assertEqual(calls, ["early"])
-
-
-class CanonicalEntrypointParityTests(unittest.TestCase):
-    def test_factory_changes_only_the_runtime_class(self):
-        instance = candidate_entrypoint._new_instance(
-            Path("."),
-            {"market_pressure": True},
-        )
-        self.assertIsInstance(instance, CapillaryTitanAgent)
-        self.assertTrue(instance.features.market_pressure)
-        self.assertIs(
-            candidate_entrypoint._CONTROL_MAIN._new_instance,
-            candidate_entrypoint._new_instance,
-        )
-
-    def test_agent_delegates_to_exact_canonical_whole_call_guard(self):
-        observation, configuration, returned = object(), object(), object()
-        with patch.object(
-            candidate_entrypoint._CONTROL_MAIN,
-            "agent",
-            return_value=returned,
-        ) as delegated:
-            result = candidate_entrypoint.agent(observation, configuration)
-
-        self.assertIs(result, returned)
-        delegated.assert_called_once_with(observation, configuration)
+        self.assertIs(result, after_capillary)
+        self.assertEqual(calls, ["capillary"])
 
 
 if __name__ == "__main__":
