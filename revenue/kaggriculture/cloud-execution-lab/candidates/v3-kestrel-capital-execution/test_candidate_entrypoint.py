@@ -6,7 +6,6 @@ from copy import deepcopy
 import importlib.util
 import json
 from pathlib import Path
-from types import SimpleNamespace
 import sys
 import time
 import unittest
@@ -135,7 +134,17 @@ class KestrelExportedEntrypointTests(unittest.TestCase):
             self.entry._new_instance,
         )
 
-    def test_real_factory_builds_exact_final_pressure_kestrel_mro(self):
+    def test_real_factory_uses_canonical_code_and_exact_mro(self):
+        isolated_factory = self.entry._factory_with_candidate_base(
+            self.candidate_base,
+            self.predecessor_base,
+        )
+        self.assertIs(
+            isolated_factory.__code__,
+            self.entry._CANONICAL_NEW_INSTANCE.__code__,
+        )
+        self.assertIs(self.titan_runtime.TitanAgent, self.predecessor_base)
+
         instance = self.entry._new_instance(LAB, dict(self.feature_data))
         mro = type(instance).__mro__
         self.assertEqual(type(instance).__name__, "FinalPressureAgent")
@@ -143,12 +152,16 @@ class KestrelExportedEntrypointTests(unittest.TestCase):
         self.assertIs(mro[2], self.predecessor_base)
         self.assertIs(self.titan_runtime.TitanAgent, self.predecessor_base)
 
-    def test_factory_restores_canonical_base_after_construction_error(self):
+    def test_factory_never_mutates_live_base_when_construction_raises(self):
         error = RuntimeError("synthetic construction failure")
+
+        def explode(_root, _feature_data):
+            raise error
+
         with patch.object(
             self.entry,
             "_CANONICAL_NEW_INSTANCE",
-            side_effect=error,
+            new=explode,
         ):
             with self.assertRaises(RuntimeError) as caught:
                 self.entry._new_instance(LAB, dict(self.feature_data))
