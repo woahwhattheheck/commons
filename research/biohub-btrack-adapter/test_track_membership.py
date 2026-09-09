@@ -25,6 +25,40 @@ class FakeTrack:
         return {"commons_detection_id": self.detection_tags}
 
 
+class CountingDetection:
+    detection_id_reads = 0
+
+    def __init__(self, dataset: str, t: int, detection_id: int, z: int, y: int, x: int):
+        self.dataset = dataset
+        self.t = t
+        self._detection_id = detection_id
+        self.z = z
+        self.y = y
+        self.x = x
+
+    @property
+    def detection_id(self) -> int:
+        type(self).detection_id_reads += 1
+        return self._detection_id
+
+    def __lt__(self, other: "CountingDetection") -> bool:
+        return (
+            self.dataset,
+            self.t,
+            self._detection_id,
+            self.z,
+            self.y,
+            self.x,
+        ) < (
+            other.dataset,
+            other.t,
+            other._detection_id,
+            other.z,
+            other.y,
+            other.x,
+        )
+
+
 def track_from_refs(payload: dict[str, list[Any]], track_id: int, refs: list[int]) -> FakeTrack:
     return FakeTrack(
         ID=track_id,
@@ -40,6 +74,23 @@ def track_from_refs(payload: dict[str, list[Any]], track_id: int, refs: list[int
 
 
 class TrackMembershipTests(unittest.TestCase):
+    def test_edge_endpoint_resolution_is_linear_in_detection_count(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 100, 0, 100, 0, 100)
+        count = 64
+        detections = [
+            CountingDetection("a", index, 1000 + index, 5, 5, 5)
+            for index in range(count)
+        ]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        track = track_from_refs(payload, 1, list(range(count)))
+
+        CountingDetection.detection_id_reads = 0
+        rows = tracks_to_rows("a", detections, [track], ref_map, scale)
+
+        self.assertEqual(count - 1, sum(row["row_type"] == "edge" for row in rows))
+        self.assertLess(CountingDetection.detection_id_reads, count * 10)
+
     def test_real_ref_cannot_appear_in_two_tracklets(self):
         scale = Scale()
         bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
