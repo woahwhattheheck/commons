@@ -1,0 +1,39 @@
+name: SOL SOL VM paperwork state current tests
+
+on:
+  push:
+    branches:
+      - sol-sol-vm/paperwork-state-current-tests-20260909-01
+
+permissions:
+  contents: read
+
+jobs:
+  paperwork-state:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact carrier head
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original paperwork state contract
+        run: python3 test_business_pack_paperwork.py
+      - name: Included-paperwork successor contract
+        run: python3 test_business_pack_paperwork_included.py
+      - name: Shared paperwork-slot successor contract
+        run: python3 test_business_pack_paperwork_slot.py
+      - name: Shared business-pack catalog contract
+        run: python3 test_business_pack_unique.py
+      - name: Compile focused helpers and tests
+        run: >-
+          python3 -m py_compile
+          host/business_pack_paperwork.py
+          host/business_pack_paperwork_included.py
+          host/business_pack_paperwork_slot.py
+          test_business_pack_paperwork.py
+          test_business_pack_paperwork_included.py
+          test_business_pack_paperwork_slot.py
+          test_business_pack_unique.py
