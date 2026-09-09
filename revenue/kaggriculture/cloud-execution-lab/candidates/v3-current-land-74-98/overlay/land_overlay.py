@@ -5,6 +5,12 @@ The only policy change is to append one ``BUY_LAND`` order at steps 74 and 98
 when the selected route row has room and does not already contain that order.
 The source route bank and every untouched route/row/order object remain intact,
 so controls created in the same interpreter cannot inherit candidate mutations.
+
+Current TITAN wraps the producer with SpatialTempo during lazy initialization.
+That wrapper captures the route mapping in a closure and rebuilds from it before
+each producer call. Installation therefore rebinds that captured route source
+to the isolated candidate mapping; assigning ``controller.R`` alone would be
+silently erased on the first real action.
 """
 from __future__ import annotations
 
@@ -147,6 +153,51 @@ def patch_routes(
     return patched, report
 
 
+def _rebind_spatial_route_source(
+    agent: Any,
+    controller: Any,
+    source_routes: Mapping[Any, Sequence[Mapping[str, Any]]],
+    candidate_routes: Mapping[Any, Sequence[Mapping[str, Any]]],
+) -> bool:
+    """Rebind SpatialTempo's captured pristine bank without mutating the source.
+
+    SpatialTempo.install stores ``pristine = controller.R`` in the closure of
+    ``controller.act`` and rebuilds ``controller.R`` from that object on every
+    call. Exact-current TITAN always installs that wrapper for frozen mode.
+    Refuse an unrecognized binding rather than ship an inert policy.
+    """
+    spatial = getattr(agent, "spatial", None)
+    if spatial is None:
+        return False
+
+    wrapped = getattr(controller, "act", None)
+    code = getattr(wrapped, "__code__", None)
+    closure = getattr(wrapped, "__closure__", None)
+    if code is None or not closure:
+        raise RuntimeError("SpatialTempo producer wrapper closure required")
+
+    cells = dict(zip(code.co_freevars, closure))
+    pristine_cell = cells.get("pristine")
+    controller_cell = cells.get("controller")
+    spatial_cell = cells.get("self")
+    if pristine_cell is None:
+        raise RuntimeError("SpatialTempo pristine route binding unavailable")
+    if pristine_cell.cell_contents is not source_routes:
+        raise RuntimeError("SpatialTempo pristine route binding does not match controller.R")
+    if controller_cell is not None and controller_cell.cell_contents is not controller:
+        raise RuntimeError("SpatialTempo controller binding does not match initialized controller")
+    if spatial_cell is not None and spatial_cell.cell_contents is not spatial:
+        raise RuntimeError("SpatialTempo owner binding does not match initialized spatial state")
+
+    crop_routes = getattr(spatial, "_crop_routes", source_routes)
+    if crop_routes is not source_routes:
+        raise RuntimeError("SpatialTempo crop route binding does not match controller.R")
+
+    pristine_cell.cell_contents = candidate_routes
+    spatial._crop_routes = candidate_routes
+    return True
+
+
 def install(agent: Any, *, max_orders: int = DEFAULT_MAX_ORDERS) -> PatchReport:
     """Install once per initialized controller, including deadline reinitialization.
 
@@ -166,12 +217,16 @@ def install(agent: Any, *, max_orders: int = DEFAULT_MAX_ORDERS) -> PatchReport:
         return existing
 
     patched, report = patch_routes(routes, max_orders=max_orders)
+    spatial_rebound = _rebind_spatial_route_source(agent, controller, routes, patched)
     controller.R = patched
     agent._land_7498_controller = controller
     agent._land_7498_report = report
+    agent._land_7498_spatial_rebound = spatial_rebound
     diagnostics = getattr(agent, "diagnostics", None)
     if isinstance(diagnostics, MutableMapping):
-        diagnostics["land_74_98"] = report.to_dict()
+        payload = report.to_dict()
+        payload["spatial_pristine_rebound"] = spatial_rebound
+        diagnostics["land_74_98"] = payload
     return report
 
 
