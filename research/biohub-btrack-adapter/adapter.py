@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import ctypes
 import importlib
 import math
 import tempfile
@@ -41,6 +42,25 @@ SUBMISSION_COLUMNS = (
 
 class AdapterError(ValueError):
     """Raised when input, tracker output, or runtime provenance is unsafe."""
+
+
+def _positive_btrack_float(value: object, label: str) -> float:
+    """Narrow one positive physical distance through BTrack's c_float ABI."""
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AdapterError(f"{label} must be a finite physical distance > 0") from exc
+    if not math.isfinite(numeric) or numeric <= 0:
+        raise AdapterError(f"{label} must be a finite physical distance > 0")
+    try:
+        narrowed = ctypes.c_float(numeric).value
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AdapterError(f"{label} must fit the pinned BTrack float32 ABI") from exc
+    if not math.isfinite(narrowed) or narrowed <= 0:
+        raise AdapterError(
+            f"{label} must remain finite and > 0 after pinned BTrack float32 conversion"
+        )
+    return float(narrowed)
 
 
 @dataclass(frozen=True, order=True)
@@ -555,8 +575,7 @@ def solve_dataset(
         raise AdapterError("cannot solve an empty dataset")
     if len({item.dataset for item in detections}) != 1:
         raise AdapterError("solve_dataset accepts exactly one dataset")
-    if not math.isfinite(max_search_radius) or max_search_radius <= 0:
-        raise AdapterError("max_search_radius must be a finite physical distance > 0")
+    btrack_search_radius = _positive_btrack_float(max_search_radius, "max_search_radius")
     if optimise and optimizer_distance_units != "physical":
         raise AdapterError(
             "optimise=True requires explicit optimizer_distance_units='physical'; "
@@ -579,7 +598,7 @@ def solve_dataset(
                 "reserved adapter-only BTrack feature(s) are not allowed: "
                 + ", ".join(reserved_features)
             )
-        tracker.max_search_radius = float(max_search_radius)
+        tracker.max_search_radius = btrack_search_radius
         tracker.volume = bounds.physical_btrack(scale)
         tracker.append(payload)
         tracker.track()
