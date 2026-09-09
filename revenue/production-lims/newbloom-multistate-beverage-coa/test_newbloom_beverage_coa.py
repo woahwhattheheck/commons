@@ -114,6 +114,10 @@ class NewBloomBeverageCoATests(unittest.TestCase):
         self.assertEqual(before, shadow.staged_packets[record_id])
         with self.assertRaises(PermissionError):
             shadow.automatic_release(record_id)
+        shadow.staged_packets[record_id]["released_by"] = "Already Released"
+        with self.assertRaises(PermissionError) as ineligible:
+            shadow.release_packet(record_id, "Jordan Reviewer", "APR-SYN-0001")
+        self.assertIn("release", str(ineligible.exception).casefold())
 
     def test_manifest_fixture_and_expanded_records_fail_closed_on_tamper(self):
         module_dir = Path(nb.__file__).resolve().parent
