@@ -1722,10 +1722,13 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
 def _classify_bounded_bake_reset(env, recorded):
     """Classify a second bake replay reset without making a third push.
 
-    The refreshed origin is acceptable only when it already carries an exact
+    The refreshed origin is acceptable when it already carries an exact
     receipt for the current source corpus: either the projection converged or
-    the durable pending marker schedules the ordinary heal. A stale checkout
-    without either source-bound receipt remains a failure.
+    the durable pending marker schedules the ordinary heal. A recordless
+    checkout without either source-bound receipt remains a failure. A source
+    record that already pushed must not become PUSH_FAIL because the derived
+    bake lost: measured 2026-09-09 run 34399022514 landed the record, reset
+    the bake twice, then failed the job on a missing projection receipt.
     """
     source = post_source_snapshot()
     converged_rel = _projection_receipt_rel(source["sha256"], "converged")
@@ -1738,6 +1741,13 @@ def _classify_bounded_bake_reset(env, recorded):
         print("bake retry deferred after one bounded attempt; projection pending", flush=True)
         refresh_projection_status(env)
         return "pushed" if recorded == "pushed" else "unchanged"
+    if recorded == "pushed":
+        print(
+            "bake retry deferred after one bounded attempt; record is durable, projection receipt missing",
+            flush=True,
+        )
+        refresh_projection_status(env)
+        return "pushed"
     print(
         "bake retry failed after one bounded attempt; no matching projection receipt",
         flush=True,
