@@ -15,7 +15,6 @@ import re
 import sqlite3
 from pathlib import Path
 from typing import Any, Iterable
-from urllib.parse import quote
 
 SCHEMA = "commons.slack_operation_audit.v1"
 _SLACK_TS = re.compile(r"^[0-9]+(?:\.[0-9]+)?$")
@@ -29,7 +28,7 @@ def _connect_read_only(path: Path) -> sqlite3.Connection:
     resolved = path.expanduser().resolve()
     if not resolved.is_file():
         raise AuditError("tool journal does not exist")
-    uri = "file:" + quote(str(resolved), safe="/:") + "?mode=ro"
+    uri = resolved.as_uri() + "?mode=ro"
     db = sqlite3.connect(uri, uri=True)
     db.row_factory = sqlite3.Row
     return db
@@ -70,6 +69,8 @@ def _slack_result(result_json: str | None) -> tuple[str | None, str | None, bool
         payload = result
     else:
         payload = value
+    if error is None and isinstance(payload.get("error"), str):
+        error = payload["error"]
 
     channel = payload.get("channel") if isinstance(payload.get("channel"), str) else None
     ts = payload.get("ts") if isinstance(payload.get("ts"), str) else None
@@ -151,6 +152,7 @@ def correlate(path: str | Path, observed_slack_ts: Iterable[str]) -> dict[str, A
         "schema": SCHEMA,
         "read_only": True,
         "matching_rule": "exact_returned_slack_timestamp",
+        "journal_key_semantics": "one_execution_row_per_request_id_and_call_id",
         "message_body_inspected": False,
         "journal_receipt_count": len(receipts),
         "observations": matches,

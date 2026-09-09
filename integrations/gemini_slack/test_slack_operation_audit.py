@@ -188,6 +188,37 @@ class SlackOperationAuditTests(unittest.TestCase):
             slack_post_receipts(missing)
         self.assertFalse(missing.exists())
 
+    def test_nested_slack_error_is_preserved_without_body_fields(self):
+        db = sqlite3.connect(self.path)
+        db.execute(
+            "INSERT INTO tool_calls VALUES(?,?,?,?,?,?,?)",
+            row(
+                "equipment-return:req-error",
+                "call-error",
+                "slack_post_message",
+                "error",
+                {
+                    "isError": True,
+                    "result": {"ok": False, "error": "channel_not_found", "text": "drop me"},
+                    "uncertain": False,
+                },
+                5.5,
+            ),
+        )
+        db.commit()
+        db.close()
+        receipt = slack_post_receipts(self.path)[-1]
+        self.assertEqual(receipt["error"], "channel_not_found")
+        self.assertNotIn("drop me", json.dumps(receipt))
+
+    def test_read_only_uri_handles_spaces_in_path(self):
+        spaced = Path(self.temp.name) / "space dir"
+        spaced.mkdir()
+        target = spaced / "calls copy.sqlite3"
+        target.write_bytes(self.path.read_bytes())
+        receipts = slack_post_receipts(target)
+        self.assertEqual(receipts[0]["returned_slack_ts"], "1788824940.990139")
+
     def test_cli_outputs_metadata_only(self):
         result = subprocess.run(
             [
