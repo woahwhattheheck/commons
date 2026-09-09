@@ -1,0 +1,59 @@
+name: SOL Astra P15 independent review
+
+on:
+  push:
+    branches:
+      - sol-astra/p15-independent-review-20260909-01
+
+permissions:
+  contents: read
+
+jobs:
+  p15-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact P15 focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -m unittest -v test_animal_admission.py
+      - name: Compile exact P15 source
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -m py_compile animal_admission.py test_animal_admission.py mechanics.py
+      - name: Reproduce pre-yield fertilizer counterexample
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python - <<'PY'
+          import animal_admission as p15
+          import mechanics as m
+
+          # P15's own late-goose example: buy at step 625. It vetoes because
+          # first product yield would be step 720, beyond last actionable 718.
+          selected = {
+              'farmer': ['PASS'],
+              'hands': [],
+              'market': [['BUY_ANIMAL', 'GOOSE', 1]],
+          }
+          obs = {
+              'step': 625,
+              'market': {'inventory': {k: 10000 for k in m.PRODUCTS}},
+          }
+          screened, report = p15.screen_selected(m, obs, {}, selected)
+          row = report['orders'][0]
+          assert report['changed'] is True
+          assert row['first_production_step'] == 720
+          assert row['last_action_step'] == 718
+
+          # Yet if that selected goose is bought and placed on the next step's
+          # day (26), the preserved engine daily refresh makes fertilizer
+          # collectible on the next day even though first product day is 30.
+          goose = m._new_animal('GOOSE', 26)
+          farm = {'tiles': [[goose]]}
+          m._daily_refresh_animals(farm, 26)
+          live = farm['tiles'][0][0]
+          assert live['animal'] == 'GOOSE'
+          assert live['yield_units'] == 0
+          assert live['fertilizer_available'] is True
+          assert live['consecutive_unfed'] == 1
+          print('P15_COUNTEREXAMPLE_CONFIRMED: vetoed_no_product_goose_has_pre_yield_fertilizer')
+          PY
