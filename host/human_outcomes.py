@@ -109,6 +109,14 @@ def load_pack(text):
     if not isinstance(data, dict):
         return {"error": "offers is not an object"}
     gate = data.get("gate") if isinstance(data.get("gate"), dict) else {}
+    # Missing/null arrays retain their empty defaults. Other JSON containers
+    # must not be iterated as keys/characters or escape as Python exceptions.
+    for name in ("offers", "does_not_replace", "fulfillment_modules_remain"):
+        value = data.get(name)
+        if value is not None and not isinstance(value, list):
+            return {"error": name + " is not an array"}
+    if gate.get("open") is not None and not isinstance(gate.get("open"), list):
+        return {"error": "gate.open is not an array"}
     offers = []
     for item in data.get("offers") or []:
         if isinstance(item, dict) and item.get("id"):
@@ -173,6 +181,8 @@ def measure_commercial(text):
         data = json.loads(str(text or "") or "{}")
     except ValueError:
         return {"error": "commercial is not JSON", "offer_id": "", "fixed_amount": 0}
+    if not isinstance(data, dict):
+        return {"error": "commercial is not an object", "offer_id": "", "fixed_amount": 0}
     offer = data.get("offer") if isinstance(data.get("offer"), dict) else {}
     fee = offer.get("fee") if isinstance(offer.get("fee"), dict) else {}
     return {
@@ -187,6 +197,8 @@ def measure_payment_pack(text):
         data = json.loads(str(text or "") or "{}")
     except ValueError:
         return {"error": "payment pack is not JSON", "offer_id": "", "fixed_amount": 0}
+    if not isinstance(data, dict):
+        return {"error": "payment pack is not an object", "offer_id": "", "fixed_amount": 0}
     offer = data.get("offer") if isinstance(data.get("offer"), dict) else {}
     return {
         "error": "",
