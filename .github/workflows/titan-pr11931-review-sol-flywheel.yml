@@ -1,0 +1,126 @@
+name: titan-pr11931-review-sol-flywheel
+
+on:
+  push:
+    branches:
+      - sol-flywheel/pr11931-exact-review-20260909-01
+    paths:
+      - '.github/workflows/titan-pr11931-review-sol-flywheel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONHASHSEED: '0'
+
+jobs:
+  decode-and-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Bind review carrier and decode exact payload
+        shell: bash
+        env:
+          EXPECTED_PARENT: 9cf7399e4dd5049be3157332a3b6d0bc87d025f3
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT"
+          printf '%s\n' "$(git rev-parse HEAD)" | tee "$RUNNER_TEMP/review-head.sha"
+          printf '%s\n' "$EXPECTED_PARENT" | tee "$RUNNER_TEMP/reviewed-head.sha"
+          LANE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-proven-control-current-panel-sol-lattice
+          export LANE OUT="$RUNNER_TEMP/pr11931-review"
+          mkdir -p "$OUT"
+          python - <<'PY'
+          import ast
+          import base64
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import zlib
+
+          lane = Path(os.environ['LANE'])
+          out = Path(os.environ['OUT'])
+          parts = sorted(lane.glob('proven_control_panel.py.zlib.b64.*'))
+          expected = [lane / f'proven_control_panel.py.zlib.b64.{i:02d}' for i in range(len(parts))]
+          if not parts or parts != expected:
+              raise SystemExit(f'non-contiguous chunks: {[p.name for p in parts]}')
+          encoded = ''.join(''.join(p.read_text(encoding='ascii').split()) for p in parts)
+          source = zlib.decompress(base64.b64decode(encoded, validate=True))
+          source_path = out / 'proven_control_panel.impl.py'
+          source_path.write_bytes(source)
+          compile(source, str(source_path), 'exec')
+          tree = ast.parse(source, filename=str(source_path))
+          functions = sorted(node.name for node in ast.walk(tree) if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)))
+          classes = sorted(node.name for node in ast.walk(tree) if isinstance(node, ast.ClassDef))
+          imports = sorted({
+              alias.name
+              for node in ast.walk(tree)
+              if isinstance(node, ast.Import)
+              for alias in node.names
+          } | {
+              node.module or ''
+              for node in ast.walk(tree)
+              if isinstance(node, ast.ImportFrom)
+          })
+          calls = []
+          for node in ast.walk(tree):
+              if not isinstance(node, ast.Call):
+                  continue
+              func = node.func
+              if isinstance(func, ast.Name):
+                  name = func.id
+              elif isinstance(func, ast.Attribute):
+                  chain = [func.attr]
+                  base = func.value
+                  while isinstance(base, ast.Attribute):
+                      chain.append(base.attr)
+                      base = base.value
+                  if isinstance(base, ast.Name):
+                      chain.append(base.id)
+                  name = '.'.join(reversed(chain))
+              else:
+                  continue
+              if any(token in name for token in ('subprocess', 'Popen', 'run', 'check_output', 'eval', 'exec', 'pickle', 'tarfile', 'extract', 'unlink', 'rmtree')):
+                  calls.append({'name': name, 'line': node.lineno})
+          report = {
+              'schema': 'sol-flywheel.pr11931-decoded-review.v1',
+              'reviewed_head': os.environ.get('EXPECTED_PARENT'),
+              'chunks': [p.name for p in parts],
+              'encoded_bytes': len(encoded.encode('ascii')),
+              'source_bytes': len(source),
+              'source_sha256': hashlib.sha256(source).hexdigest(),
+              'functions': functions,
+              'classes': classes,
+              'imports': imports,
+              'security_relevant_calls': sorted(calls, key=lambda row: row['line']),
+          }
+          (out / 'AST-REPORT.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(json.dumps(report, indent=2, sort_keys=True))
+          PY
+          python -B -m py_compile "$OUT/proven_control_panel.impl.py" "$LANE/proven_control_panel.py" "$LANE/test_proven_control_panel.py"
+          (
+            cd "$LANE"
+            python -B -m unittest -v test_proven_control_panel.py 2>&1 | tee "$OUT/unit-tests.log"
+          )
+          python -B "$LANE/proven_control_panel.py" --help > "$OUT/help.txt"
+          git diff --check
+          test -z "$(git status --porcelain)"
+      - name: Retain decoded exact-head review material
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-pr11931-review-sol-flywheel-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/review-head.sha
+            ${{ runner.temp }}/reviewed-head.sha
+            ${{ runner.temp }}/pr11931-review/
+          if-no-files-found: error
+          retention-days: 7
