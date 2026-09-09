@@ -52,3 +52,13 @@ python3 -m unittest -v \
 No source supplies pH-meter/balance models, any firmware/software versions, vendor transport schemas, representative device payloads, source IDs, sequence/retry semantics, QC/error mappings, or device acceptance thresholds. No product build, production environment, or verified evidence exists for the remaining 23 gates. Addendum 3 remains safely unread, and Addendum 4 is a header-only template.
 
 No new City/prospect contact, submission, form, price, spend, secret, production claim, certification/reference claim, policy change, or external-model use occurred in this lane.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

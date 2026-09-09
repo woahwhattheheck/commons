@@ -46,9 +46,13 @@ class ReleaseTests(unittest.TestCase):
  def test_live_current_includes_early_capital(self):
   receipt=b.verify_current()
   self.assertEqual(receipt['path'],b.ARCHIVE)
-  self.assertGreaterEqual(receipt['runtime_files'],108)
   with tarfile.open(b.ROOT/b.ARCHIVE) as t:
+   regular=[m.name for m in t.getmembers() if m.isfile()]
    names=t.getnames()
+   runtime=[name for name in regular if name != 'SOURCE.json']
+   self.assertEqual(receipt['runtime_files'], len(runtime))
+   self.assertIn('SOURCE.json', regular)
+   self.assertEqual(len(regular), receipt['runtime_files'] + 1)
    self.assertIn('early_capital.py',names)
    self.assertIn('checks/test_early_capital.py',names)
    self.assertIn('checks/test_final_market_pressure_entrypoint.py',names)

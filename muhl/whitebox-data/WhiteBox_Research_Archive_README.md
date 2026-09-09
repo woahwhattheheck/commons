@@ -16,3 +16,13 @@ network. The three Titan/SDC files are excluded (they were modified by the White
 | gemma-4-31B-it-qat-UD-Q4_K_XL.gguf | 60 | 18/24 | 1729.2 |
 | mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf | 32 | 17/24 | 3769.6 |
 | Llama-3.3-70B-Instruct-Q4_K_M.gguf | 80 | 17/24 | 2362.5 |
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

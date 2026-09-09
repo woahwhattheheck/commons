@@ -225,3 +225,13 @@ SAME-or-UP**, per device tier. Default flips only after the meter clears it. Fla
 **Patent:** the bidirectional agent-native codec (perception compression + constrained action expansion)
 with the model-initiated perception-request loop and warm-KV continuity is INV-40 (loop) + a new INV for the
 codec itself once it ships (disclose in the commit that lands the renderer, per §0).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

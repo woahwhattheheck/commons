@@ -240,3 +240,13 @@ Same class of prior: already in the binary, treated as impossible.
 - **`pfc_full_miner` / `gen_win`**: complete SHA+compare+latch, depth ~11.7k, already stored and speed-probed.
 
 The profitable moonshot is the one the file already allows: **one tick, winner-only, block reward.** Press the fold, not a smaller story.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

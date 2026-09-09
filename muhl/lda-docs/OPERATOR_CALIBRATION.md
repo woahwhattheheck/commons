@@ -217,3 +217,13 @@ compact game STATE and the render-operator expands it. Consequences:
   the operator-fix trigger (no model-judge).
 - The **ADJUST / communication-layer** operator (reconcile generation with real-world data), universal to the operated
   transformer including the author.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

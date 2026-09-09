@@ -107,3 +107,13 @@ target_mass_on` (how much fabrication-mass the operator removed); for `promote`,
   fabric; staged for later.
 - **Interrogate the models** on how to improve the operators/tests (LAB-9 revealed/stated preference,
   verify-what-it-says) — do this on the host models next.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

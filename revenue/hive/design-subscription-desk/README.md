@@ -122,3 +122,13 @@ https://tokenjunkielabs.slack.com/archives/C0C05UU6WKG/p1788866991935159
 
 The source demand's $1,500/month amount is a proposed offer, not a configured
 checkout, paid customer, revenue result, or promise of a delivery turnaround.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

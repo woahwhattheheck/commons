@@ -255,3 +255,13 @@ fix in `fab_problems.py` from landing — §6.)*
 
 Unchanged and still true: `pfc_executor` and `pfc_full_miner` records were not touched; every edit is
 additive and genome-journalled; `titan.gguf` reports GGUF-valid after every fabrication.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

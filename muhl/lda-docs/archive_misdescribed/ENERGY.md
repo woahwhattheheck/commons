@@ -163,3 +163,13 @@ why the S24 Ultra's ~5 W budget is the truest test of the whole thesis.
 *Patent: measuring an operator/router optimization as an ENERGY unlock (compute↓+speed↑+accuracy↑ together = joules/
 useful-output down) is the metric owed as an INV when `test_unlock` lands. The no-tradeoff is `CALIBRATION.md`'s
 reasoning⇄speed-is-one-axis + accuracy-orthogonal, expressed in joules.*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

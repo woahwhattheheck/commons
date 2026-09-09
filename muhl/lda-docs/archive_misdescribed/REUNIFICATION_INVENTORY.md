@@ -206,3 +206,13 @@ on-screen viewer produces.
    verb-anchor / model-opens-the-app version instead.
 5. **Project name = "Agent"** — RESOLVED: strip "Hermes"; do NOT adopt "Agentic Handset Operator" (easter-egg
    persona only).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
