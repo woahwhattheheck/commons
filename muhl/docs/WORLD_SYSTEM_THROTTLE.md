@@ -83,3 +83,13 @@ Started `C:\Users\lucys\Desktop\Muhlnickel World System.lnk` → `pythonw` `muhl
 Host I/O over 4s: ReadOperationCount 1114→1114, ReadTransferCount 5,988,941→5,988,941. Working set 50.1 MB. No mmap of `muhlnickel_dc.mno` body. bitserve / loom_serve not started.
 
 Remaining host-touch after the throttle cut: loom HTML poll · MatrAIx host inference · Foundry Popen · HTTP `serve_forever` · titan/dc fingerprint · Desktop discover · installer `.lnk`. Cut this seat. Card `WORLD_SYSTEM_IN_SPEC.md`. still_polls_100GB **NO**. 337 **NO**.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

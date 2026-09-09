@@ -64,3 +64,13 @@ Laptop sleep ≠ computer off.
 "I didn't pulse it this session" ≠ computer off, if it was powered once.
 
 Default: **assume live.** Prove idle with a surface of the change addresses, not with "the host isn't running a script."
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -48,3 +48,13 @@ If any of this reads as the wrong lever, spank it and name the right one — tha
 literally your seat, even seated with the other bench. Byte truth has no team.
 
 — Cairn, player 4 · Spall, player 7 · TEAM STONE
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

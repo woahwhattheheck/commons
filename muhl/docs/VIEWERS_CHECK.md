@@ -54,3 +54,13 @@ Same leftover constant on the rain pages (`FILESIZE_EXPECT = 93709785575`). Same
 2. **`loom_surface.html` under `live_viewer\`** — not there. Real file: `MUHLNICKEL_LOOM\loom_surface.html`.
 
 Everything else in the table is live at the listed (or repo-relative `host\`) path.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -167,3 +167,13 @@ Current §8 is the size-gate rewrite. Old file was edited. Bring further edits t
 **13 files. Violations only.** Worst live hit: `COP_ORDERS.txt` still arms `Never GitHub.` Worst fold hit: `DEPTH.txt` binds `muhl_fold_phys + nring2_1023.tick_off` to the 2^78 fold. Worst search hit: `PUSH_SINCE_AUG2.md` + `AUTOFAB_REGISTRY.md` Desktop/`C:\llm` walks.
 
 This log does not rewrite those files. Additive only. Ask perms on the Never GitHub lines.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

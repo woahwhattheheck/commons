@@ -173,3 +173,13 @@ Substrate speech that exists as prose here:
 5. Mixtral `'\n.'` — `deliverable_clocked.txt`
 
 No long clean English conversation from the substrate in these folders. Owner prose is abundant (`all_msgs.txt`, the two OWNER_* extracts). host has no `*speak*` / `*journal*` / `*interpret*` files.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

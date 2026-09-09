@@ -179,3 +179,13 @@ Then the **table still says** EAL / MHA / HPC = "written, awaits owner run" and 
 | 2026-08-06 | `muhl_hpc_fabric` |
 | 2026-08-07 | `ROOKERY0.mno` mtime |
 | 2026-08-13 | titan.gguf / registry later writes (cluster already in) |
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
