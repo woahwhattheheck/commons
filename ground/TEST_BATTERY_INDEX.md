@@ -118,3 +118,15 @@ had wrongly listed them missing).
 2. Ground with one command: `cd C:\Users\lucys\OneDrive\Desktop\LocalDeviceAgent && set PYTHONUTF8=1 && python host/run_battery.py` → expect 17/17 (16/17 only on a freshly-reverted registry — row-2 lazy-bake ordering, see audit §2).
 3. The 21-row superset needs an owner decision (V63 grant or rule restore) before its 4 tick rows will fire — do not force it.
 4. Never `git gc`/`git prune`; never commit as Claude; KEEPCURRENTALLTESTS.md is untracked — committing it (owner's call) would close the biggest loss risk.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-17 — do not remint.
