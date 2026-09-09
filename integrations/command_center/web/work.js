@@ -33,6 +33,8 @@
   const nativeTask=i=>i.source_id==='codex-native-fleet'&&i.kind==='native_task';
   const nativeRead=i=>[md(i).list_observed_at,i.refs?.list_observed_at].find(v=>typeof v==='string'&&Number.isFinite(Date.parse(v)))??null;
   const activity=i=>first(i.activity_observed_at);
+  const AUTO_REFRESH_MS=300000;
+  let lastCollectorRefresh=0;
   let snapshot=null,loading=null,queuedRefresh=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
   const kinds={work:null,builds:['build','pull_request','feature'],inbox:['email','slack_thread'],marketing:['campaign','deal']};
   const labels={work:'Work',builds:'Builds',inbox:'Inbox',marketing:'Marketing'};
@@ -271,6 +273,7 @@
     })();
     return loading;
   }
+  function autoRefresh(){const now=Date.now(),force=lastCollectorRefresh===0||now<lastCollectorRefresh||now-lastCollectorRefresh>=AUTO_REFRESH_MS;if(force)lastCollectorRefresh=now;return refresh(force);}
   function renderAll(){
     Object.keys(labels).forEach(renderView);renderOverview();renderFleetJobs();renderNativeTasks();
     if(detail.open&&selected){
@@ -281,7 +284,7 @@
   }
   window.addEventListener('commons-state',renderAll);
   $('refresh-button').addEventListener('click',()=>refresh(true));
-  setInterval(()=>{if(!document.hidden)refresh();},30000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
-  api.navigate(location.hash.slice(1));renderAll();refresh();
+  setInterval(()=>{if(!document.hidden)autoRefresh();},30000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)autoRefresh();});
+  api.navigate(location.hash.slice(1));renderAll();if(document.hidden)refresh();else autoRefresh();
 })();
