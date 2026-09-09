@@ -21,6 +21,8 @@ jobs:
           persist-credentials: false
       - name: E14 scheduler regressions and existing scheduler suite
         working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONPATH: .:../cloud-runtime-pulse
         run: |
           set -euo pipefail
           python3 -B -m unittest -v test_scheduler_overflow_timing test_scheduler
