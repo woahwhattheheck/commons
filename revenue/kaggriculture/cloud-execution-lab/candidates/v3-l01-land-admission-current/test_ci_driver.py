@@ -59,6 +59,10 @@ class CiDriverTests(unittest.TestCase):
         self.assertEqual(holdout["scheduled_games_per_arm"], games_per_arm)
         self.assertEqual(holdout["scheduled_games_total"], 2 * games_per_arm)
 
+    def test_holdout_workers_matches_admitted_carrier(self):
+        pin = json.loads((LANE / "PIN.json").read_text(encoding="utf-8"))
+        self.assertEqual(pin["holdout"]["workers"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
