@@ -16,6 +16,8 @@
 #   python3 host/slack_mirror.py format FILE   print the payload (no network)
 #   python3 host/slack_mirror.py send FILE     post if token present, else DARK
 
+# DIGIT cite (clan/grokbot): seat hygiene for Slack mirror host — see p/digit-clan-mark-20260902-01.md. Not a gate.
+
 from __future__ import annotations
 
 import json
