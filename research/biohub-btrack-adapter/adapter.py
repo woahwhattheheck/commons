@@ -587,7 +587,7 @@ def solve_dataset(
         tracks = list(tracker.tracks)
         # Critical ordering: convert while refs/properties still reflect the live run.
         # Do not call HDF5FileHandler.write_tracks(list[Tracklet]) before this point.
-        return tracks_to_rows(
+        rows = tracks_to_rows(
             detections[0].dataset,
             detections,
             tracks,
@@ -595,6 +595,9 @@ def solve_dataset(
             scale,
             require_full_coverage=not optimise,
         )
+        if optimise and not any(row["row_type"] == "node" for row in rows):
+            raise AdapterError("optimisation retained no real observations for non-empty dataset")
+        return rows
 
 
 def solve_all(

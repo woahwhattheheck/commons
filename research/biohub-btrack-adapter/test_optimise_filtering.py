@@ -4,7 +4,7 @@ import unittest
 from dataclasses import dataclass
 from typing import Any, Callable
 
-from adapter import Detection, Scale, VoxelBounds, solve_dataset
+from adapter import AdapterError, Detection, Scale, VoxelBounds, solve_dataset
 
 
 @dataclass
@@ -114,6 +114,36 @@ class OptimiseFilteringTests(unittest.TestCase):
         self.assertEqual([0, 1], [row["t"] for row in node_rows])
         self.assertEqual(1, len(edge_rows))
         self.assertEqual((0, 1), (edge_rows[0]["source_id"], edge_rows[0]["target_id"]))
+
+    def test_optimise_mode_rejects_empty_retained_subset(self) -> None:
+        detections = [
+            Detection("a", 0, 10, 5, 5, 5),
+            Detection("a", 1, 11, 5, 6, 5),
+        ]
+        trackers: list[FakeTracker] = []
+
+        def factory() -> FakeTracker:
+            tracker = FakeTracker(lambda payload: [])
+            trackers.append(tracker)
+            return tracker
+
+        with self.assertRaisesRegex(
+            AdapterError,
+            "optimisation retained no real observations for non-empty dataset",
+        ):
+            solve_dataset(
+                detections,
+                scale=Scale(1.0, 1.0, 1.0),
+                bounds=VoxelBounds(0, 10, 0, 10, 0, 10),
+                configuration=FakeConfig([]),
+                max_search_radius=2.0,
+                optimise=True,
+                optimizer_distance_units="physical",
+                tracker_factory=factory,
+            )
+
+        self.assertEqual(1, len(trackers))
+        self.assertTrue(trackers[0].optimised)
 
 
 if __name__ == "__main__":
