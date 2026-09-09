@@ -1,0 +1,70 @@
+name: titan-top-replay-program-diff-sol-orrery
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/**'
+      - '.github/workflows/titan-top-replay-program-diff-sol-orrery.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+          printf '%s\n' "$actual" > CHECKOUT.sha
+      - name: Compile and run strict replay contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            replay_program_diff.py \
+            replay_program_diff_core.py \
+            test_replay_program_diff.py \
+            test_replay_program_diff_bounded_io.py
+          python -m unittest -v \
+            test_replay_program_diff.py \
+            test_replay_program_diff_bounded_io.py \
+            2>&1 | tee TESTS.txt
+      - name: Retain source and test hashes
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum \
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/replay_program_diff.py \
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/replay_program_diff_core.py \
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/test_replay_program_diff.py \
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/test_replay_program_diff_bounded_io.py \
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/README.md \
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/RECEIPT.md \
+            .github/workflows/titan-top-replay-program-diff-sol-orrery.yml \
+            > SOURCE-SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-top-replay-program-diff-sol-orrery-${{ github.run_id }}
+          path: |
+            CHECKOUT.sha
+            SOURCE-SHA256.txt
+            revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/TESTS.txt
+          if-no-files-found: error
+          retention-days: 14
