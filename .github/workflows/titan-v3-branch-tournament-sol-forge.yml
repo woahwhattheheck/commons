@@ -1,0 +1,106 @@
+name: titan-v3-branch-tournament-sol-forge
+
+on:
+  push:
+    branches:
+      - sol-forge/titan-v3-branch-tournament-20260909-01
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/analysis/v3-branch-tournament-20260909-sol-forge/**
+      - .github/workflows/titan-v3-branch-tournament-sol-forge.yml
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/analysis/v3-branch-tournament-20260909-sol-forge/**
+      - .github/workflows/titan-v3-branch-tournament-sol-forge.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-branch-tournament-sol-forge-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONHASHSEED: "0"
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event revision with candidate history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run dependency-closure and tournament contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-branch-tournament-20260909-sol-forge
+        run: |
+          python -B -m unittest -v test_titan_branch_tournament.py
+          python -B -m py_compile tournament_contracts.py tournament_evidence.py titan_branch_tournament.py test_titan_branch_tournament.py
+
+      - name: Verify clean diff semantics
+        run: git diff --check
+
+  official-engine-smoke:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact event revision with full commit history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prepare the pinned official engine cache
+        run: |
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python -B "$LAB/reference/evaluator/evaluate.py" \
+            --loader "$LAB/reference/evaluator/loader.py" \
+            --prepare-engine "$RUNNER_TEMP/titan-engine"
+
+      - name: Run immutable self-identity tournament smoke
+        run: |
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          LANE="$LAB/analysis/v3-branch-tournament-20260909-sol-forge"
+          python -B "$LANE/titan_branch_tournament.py" \
+            --repo . \
+            --engine-dir "$RUNNER_TEMP/titan-engine" \
+            --manifest "$LANE/smoke-manifest.json" \
+            --output-dir "$RUNNER_TEMP/titan-branch-tournament"
+          python -B "$LANE/titan_branch_tournament.py" \
+            --verify-output "$RUNNER_TEMP/titan-branch-tournament"
+          python - <<'PY'
+          import json, os, pathlib
+          report = json.loads((pathlib.Path(os.environ["RUNNER_TEMP"]) / "titan-branch-tournament/TOURNAMENT.json").read_text())
+          assert report["champion"] == "pre-unrelated-merge", report["champion"]
+          assert report["promotable_challenger"] is False
+          rows = {row["name"]: row for row in report["ranking"]}
+          assert rows["post-unrelated-merge"]["decision"] == "IDENTITY_ONLY"
+          assert rows["post-unrelated-merge"]["paired_vs_baseline"]["mean_margin_delta"] == 0
+          PY
+
+      - name: Upload exact smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-branch-tournament-smoke-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-branch-tournament
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "tournament_id": "titan-v3-provenance-self-identity-20260909-01",
+  "evaluator": {
+    "ref": "0378dd40e6fff3dbd9af8191bae101ff8db821c8",
+    "commit": "0378dd40e6fff3dbd9af8191bae101ff8db821c8",
+    "path": "revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py",
+    "sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "loader_path": "revenue/kaggriculture/cloud-execution-lab/reference/evaluator/loader.py",
+    "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e"
+  },
+  "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "engine_sha256": {
+    "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+    "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+  },
+  "seeds": [2609099001],
+  "rng_seed": 20260907,
+  "recheck_first": true,
+  "limits": {
+    "action_timeout": 1.0,
+    "startup_timeout": 10.0,
+    "game_timeout": 120.0,
+    "episode_steps": 48
+  },
+  "process_timeout_seconds": 900,
+  "opponents": [
+    {
+      "label": "starter",
+      "kind": "official_starter"
+    }
+  ],
+  "baseline": "pre-unrelated-merge",
+  "candidates": [
+    {
+      "name": "pre-unrelated-merge",
+      "role": "baseline",
+      "ref": "9519f3b9b6a970c12ee37c64abb3e8e2246d53e1",
+      "commit": "9519f3b9b6a970c12ee37c64abb3e8e2246d53e1",
+      "project_dir": "revenue/kaggriculture/cloud-execution-lab",
+      "archive_receipt": "runtime/integrated-selected/CURRENT-ARCHIVE.json",
+      "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json"
+    },
+    {
+      "name": "post-unrelated-merge",
+      "role": "challenger",
+      "ref": "0378dd40e6fff3dbd9af8191bae101ff8db821c8",
+      "commit": "0378dd40e6fff3dbd9af8191bae101ff8db821c8",
+      "project_dir": "revenue/kaggriculture/cloud-execution-lab",
+      "archive_receipt": "runtime/integrated-selected/CURRENT-ARCHIVE.json",
+      "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json"
+    }
+  ],
+  "ranking": {
+    "bootstrap_samples": 2000,
+    "confidence": 0.95,
+    "bootstrap_seed": 20260909,
+    "min_mean_delta": 0.0,
+    "min_ci_lower_delta": 0.0,
+    "min_worst_opponent_delta": 0.0
+  }
+}

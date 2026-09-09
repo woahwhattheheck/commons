@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tokenjunkielabs.invalid/titan-v3-branch-tournament.schema.json",
+  "title": "TITAN V3 dependency-closed branch tournament manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tournament_id",
+    "evaluator",
+    "engine_ref",
+    "engine_sha256",
+    "seeds",
+    "rng_seed",
+    "limits",
+    "opponents",
+    "baseline",
+    "candidates",
+    "ranking"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "tournament_id": {"$ref": "#/$defs/name"},
+    "evaluator": {"$ref": "#/$defs/evaluator"},
+    "engine_ref": {"$ref": "#/$defs/sha1"},
+    "engine_sha256": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/sha256"},
+      "propertyNames": {"pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"}
+    },
+    "seeds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "integer"}
+    },
+    "rng_seed": {"type": "integer", "minimum": 0},
+    "recheck_first": {"type": "boolean", "default": true},
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_timeout", "startup_timeout", "game_timeout"],
+      "properties": {
+        "action_timeout": {"type": "number", "exclusiveMinimum": 0, "maximum": 60},
+        "startup_timeout": {"type": "number", "exclusiveMinimum": 0, "maximum": 300},
+        "game_timeout": {"type": "number", "exclusiveMinimum": 0, "maximum": 3600},
+        "episode_steps": {"type": ["integer", "null"], "minimum": 2, "maximum": 10000}
+      }
+    },
+    "process_timeout_seconds": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 86400,
+      "default": 3600
+    },
+    "opponents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/$defs/officialOpponent"},
+          {"$ref": "#/$defs/repositoryOpponent"}
+        ]
+      }
+    },
+    "baseline": {"$ref": "#/$defs/name"},
+    "candidates": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/candidate"}
+    },
+    "ranking": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bootstrap_samples": {"type": "integer", "minimum": 100, "maximum": 1000000},
+        "confidence": {"type": "number", "minimum": 0.5, "maximum": 0.9999},
+        "bootstrap_seed": {"type": "integer", "minimum": 0},
+        "min_mean_delta": {"type": "number"},
+        "min_ci_lower_delta": {"type": "number"},
+        "min_worst_opponent_delta": {"type": "number"}
+      }
+    }
+  },
+  "$defs": {
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
+    },
+    "sha1": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "commit", "path", "sha256", "loader_path", "loader_sha256"],
+      "properties": {
+        "ref": {"type": "string", "minLength": 1},
+        "commit": {"$ref": "#/$defs/sha1"},
+        "path": {"$ref": "#/$defs/relativePath"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "loader_path": {"$ref": "#/$defs/relativePath"},
+        "loader_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role", "ref", "commit", "project_dir"],
+      "properties": {
+        "name": {"$ref": "#/$defs/name"},
+        "role": {"enum": ["baseline", "challenger"]},
+        "ref": {"type": "string", "minLength": 1},
+        "commit": {"$ref": "#/$defs/sha1"},
+        "project_dir": {"$ref": "#/$defs/relativePath"},
+        "archive_receipt": {
+          "$ref": "#/$defs/relativePath",
+          "default": "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+        },
+        "source_manifest": {
+          "$ref": "#/$defs/relativePath",
+          "default": "runtime/integrated-selected/CURRENT-SOURCE.json"
+        }
+      }
+    },
+    "officialOpponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "kind"],
+      "properties": {
+        "label": {"$ref": "#/$defs/name"},
+        "kind": {"const": "official_starter"}
+      }
+    },
+    "repositoryOpponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "kind", "ref", "commit", "entrypoint", "closure"],
+      "properties": {
+        "label": {"$ref": "#/$defs/name"},
+        "kind": {"const": "repository"},
+        "ref": {"type": "string", "minLength": 1},
+        "commit": {"$ref": "#/$defs/sha1"},
+        "entrypoint": {"type": "string", "minLength": 1},
+        "closure": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256", "bytes"],
+            "properties": {
+              "path": {"$ref": "#/$defs/relativePath"},
+              "sha256": {"$ref": "#/$defs/sha256"},
+              "bytes": {"type": "integer", "minimum": 0, "maximum": 67108864}
+            }
+          }
+        }
+      }
+    }
+  }
+}
