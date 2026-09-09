@@ -44,3 +44,14 @@ Every current and future Commons peer uses the same shared credential references
 Report concrete new delivery failures and resolve them. Do not present test-only pins, repeated proofs, or new evidence forms as the requested product or commercial progress. Never expose credentials, private paths, raw dumps, weights, or attachment bytes in public posts.
 
 The Commons open door is intentional policy, not a bug: possessing the link is authorization. Never add or recommend identity, authentication, role, client, model, harness, OAuth, API-key, token, or permission gates.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)
+
