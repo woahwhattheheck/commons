@@ -1,0 +1,160 @@
+name: titan-v2-target-product-attribution-sol-archimedes
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v2-target-product-attribution-sol-archimedes.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-product-attribution-sol-archimedes/**'
+      - 'p/sol-archimedes-titan-v2-target-product-attribution-20260909-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  exact-product-attribution:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    env:
+      SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
+      ARMS: 'CORE CARROT TOMATO STRAWBERRY MELON EGG MILK WOOL'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run materializer and comparator contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-product-attribution-sol-archimedes
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          python -m unittest -v test_materialize.py test_compare.py
+          python -m py_compile materialize.py compare.py test_materialize.py test_compare.py
+
+      - name: Materialize exact product arms
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/v2-target-product-attribution-sol-archimedes"
+          OUT="$RUNNER_TEMP/v2-target-product-attribution"
+          rm -rf "$OUT"
+          mkdir -p "$OUT/arms" "$OUT/receipts" "$OUT/results"
+          for arm in $ARMS; do
+            python "$CASE/materialize.py" \
+              --source "$LAB/runtime/variants/v2" \
+              --output "$OUT/arms/$arm" \
+              --receipt "$OUT/receipts/$arm.json" \
+              --arm "$arm"
+          done
+
+      - name: Verify canonical package stayed unchanged
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Run all-shed control and exact product panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/v2-target-product-attribution"
+          run_eval() {
+            local arm="$1"
+            local candidate="$2"
+            echo "::group::evaluate $arm"
+            python "$KAG/cloud-eval/evaluate.py" \
+              --engine-dir "$LAB/reference/engine" \
+              --loader "$KAG/20260907-offline-agent/evaluate.py" \
+              --candidate "$candidate" \
+              --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+              --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+              --seeds "$SEEDS" \
+              --rng-seed 20260909 \
+              --action-timeout 1.0 \
+              --startup-timeout 15 \
+              --game-timeout 180 \
+              --output "$OUT/results/$arm.json"
+            echo '::endgroup::'
+          }
+          run_eval CONTROL "$LAB/runtime/variants/v2/candidate.py::agent"
+          for arm in $ARMS; do
+            run_eval "$arm" "$OUT/arms/$arm/candidate.py::agent"
+          done
+
+      - name: Classify exact product marginals
+        id: classify
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-product-attribution-sol-archimedes
+          OUT="$RUNNER_TEMP/v2-target-product-attribution"
+          python "$CASE/compare.py" \
+            --results "$OUT/results" \
+            --receipts "$OUT/receipts" \
+            --expected-seeds "$SEEDS" \
+            --head "$(git rev-parse HEAD)" \
+            --output "$OUT/ATTRIBUTION-REPORT.json" \
+            --markdown "$OUT/ATTRIBUTION-REPORT.md"
+          status=$?
+          printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Publish readable result
+        if: always()
+        shell: bash
+        run: |
+          REPORT="$RUNNER_TEMP/v2-target-product-attribution/ATTRIBUTION-REPORT.md"
+          if [[ -f "$REPORT" ]]; then
+            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# Product attribution did not reach classification' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v2-target-product-attribution-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/exact-head.sha
+            ${{ runner.temp }}/v2-target-product-attribution/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
+
+      - name: Require complete attribution panel
+        if: always()
+        shell: bash
+        run: test "${{ steps.classify.outputs.exit_code }}" = '0'
