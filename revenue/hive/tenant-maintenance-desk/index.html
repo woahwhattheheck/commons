@@ -16,7 +16,11 @@ header{border-bottom:1px solid var(--line);background:white}header .wrap{display
 <main class="wrap">
 <div id="message" role="status" aria-live="polite" hidden></div>
 <section id="queue-view">
-<div class="hero"><div><span class="eyebrow">A clear next step for every repair</span><h1>Nothing falls through.</h1><p class="muted">One place for requests, repair appointments, and the updates tenants need. Replace unavailable vendors without losing the history.</p></div><div class="row"><button id="new-request" class="primary">+ New request</button><button class="refresh">Refresh</button><a class="button" href="/api/export" download>Export queue</a></div></div>
+<div class="hero"><div><span class="eyebrow">A clear next step for every repair</span><h1>Nothing falls through.</h1>
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="../../../titanmcp.html">titanmcp.html</a>. Commons Shared Pad / <code>/mcp</code> KEEP separate.
+</section>
+<p class="muted">One place for requests, repair appointments, and the updates tenants need. Replace unavailable vendors without losing the history.</p></div><div class="row"><button id="new-request" class="primary">+ New request</button><button class="refresh">Refresh</button><a class="button" href="/api/export" download>Export queue</a></div></div>
 <div class="metrics"><div class="metric"><b id="open-count">0</b><span>Open requests</span></div><div class="metric"><b id="reschedule-count">0</b><span>Need replacement</span></div><div class="metric"><b id="scheduled-count">0</b><span>Appointments set</span></div></div>
 <div class="grid"><div><div class="card" id="intake-card" hidden><h2>Tell us what needs fixing</h2><form id="intake-form">
 <label for="intake-property">Property</label><select id="intake-property" required></select><div class="form-row"><div><label for="unit">Unit / location</label><input id="unit" maxlength="100" required placeholder="e.g. 2B · kitchen"></div><div><label for="urgency">Priority</label><select id="urgency"><option value="routine">Routine</option><option value="urgent">Urgent</option><option value="emergency">Emergency flag</option></select></div></div>
