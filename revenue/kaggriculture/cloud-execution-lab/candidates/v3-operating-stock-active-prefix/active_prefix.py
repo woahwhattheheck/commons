@@ -1,19 +1,18 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Exact first-N market boundary for the existing operating-stock guard.
+"""Exact first-N boundary for a *final* operating-stock market action.
 
-This module is an additive, default-off experiment.  It does not reimplement
-operating-stock economics.  It presents the existing guard only the market
-rows the official engine can execute, then restores the inert suffix exactly.
+This module is additive and default-off.  It does not project future route rows:
+those rows have not passed through later runtime transforms and their raw suffix
+cannot yet be called inert.  The caller must invoke this adapter only after the
+current action's late market reordering has completed.
 """
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Mapping
 from copy import deepcopy
-from functools import wraps
 from typing import Any, Callable
 
 MAX_CERTIFIED_MARKET_ORDERS = 10
-PATCH_MARKER = "__titan_v3_operating_stock_active_prefix__"
 
 
 def _market_limit(configuration: Mapping[str, Any] | None) -> int:
@@ -27,68 +26,28 @@ def _market_limit(configuration: Mapping[str, Any] | None) -> int:
         limit = max(1, int(raw))
     except (TypeError, ValueError, OverflowError) as error:
         raise ValueError("invalid_market_limit") from error
-    # The incumbent guard contains one independently hard-coded [:10] room
-    # projection. Refuse wider configurations rather than certify only part
-    # of an official executable prefix.
+    # The incumbent guard contains an independently hard-coded [:10] room
+    # projection. Refuse wider configurations rather than certify only part of
+    # the official executable prefix.
     if limit > MAX_CERTIFIED_MARKET_ORDERS:
         raise ValueError("market_limit_above_certified_bound")
     return limit
 
 
-def _trim_row(row: Any, limit: int) -> Any:
-    """Return a market-prefix view while retaining every unit instruction."""
-    if not isinstance(row, Mapping):
-        return row
-    market = row.get("market")
-    if market is None:
-        return row
-    if not isinstance(market, list):
-        return row
-    trimmed = dict(row)
-    trimmed["market"] = deepcopy(market[:limit])
-    return trimmed
-
-
-class PrefixRoute(Sequence):
-    """Lazy route view that truncates only each row's market list."""
-
-    def __init__(self, route: Sequence, limit: int):
-        if not hasattr(route, "__len__") or not hasattr(route, "__getitem__"):
-            raise ValueError("route_not_indexable")
-        self._route = route
-        self._limit = limit
-        self._cache: dict[int, Any] = {}
-
-    def __len__(self) -> int:
-        return len(self._route)
-
-    def __getitem__(self, index):
-        if isinstance(index, slice):
-            start, stop, stride = index.indices(len(self))
-            return [self[i] for i in range(start, stop, stride)]
-        if not isinstance(index, int):
-            raise TypeError("route indices must be integers or slices")
-        normalized = index if index >= 0 else len(self) + index
-        if normalized < 0 or normalized >= len(self):
-            raise IndexError(index)
-        if normalized not in self._cache:
-            self._cache[normalized] = _trim_row(self._route[normalized], self._limit)
-        return self._cache[normalized]
-
-
 def _declined(selected: Any, reason: str, *, limit: int | None = None):
     return selected, {
         "changed": False,
-        "reason": f"active_prefix_{reason}",
-        "active_prefix": {
+        "reason": f"final_prefix_{reason}",
+        "final_current_prefix": {
             "accepted": False,
             "limit": limit,
             "reason": reason,
+            "future_route_trimmed": False,
         },
     }
 
 
-def protect_with_active_prefix(
+def protect_final_current_prefix(
     original: Callable,
     mechanics: Any,
     observation: Mapping[str, Any],
@@ -96,14 +55,20 @@ def protect_with_active_prefix(
     selected: Any,
     post_farm: Mapping[str, Any],
     post_private: Mapping[str, Any],
-    route: Sequence,
+    route: Any,
     checkpoints=(),
 ):
-    """Apply ``original`` to the executable prefix and restore its inert tail.
+    """Apply ``original`` to the final current prefix and restore its suffix.
+
+    ``route`` is deliberately passed through unchanged.  A future raw route row
+    can still be reordered or otherwise transformed before the engine sees it,
+    so pruning its suffix here would manufacture execution knowledge.
 
     Invalid adapter inputs fail closed to the exact selected object. Exceptions
     raised by the incumbent economic guard are intentionally not hidden.
     """
+    if not callable(original):
+        return _declined(selected, "incumbent_not_callable")
     try:
         limit = _market_limit(configuration)
     except ValueError as error:
@@ -113,19 +78,15 @@ def protect_with_active_prefix(
     orders = selected.get("market", [])
     if not isinstance(orders, list):
         return _declined(selected, "market_not_list", limit=limit)
-    try:
-        prefix_route = PrefixRoute(route, limit)
-    except ValueError as error:
-        return _declined(selected, str(error), limit=limit)
 
     active = deepcopy(orders[:limit])
     suffix = deepcopy(orders[limit:])
     prefix_selected = dict(selected)
     prefix_selected["market"] = active
     prefix_configuration = dict(configuration or {})
-    # Match the official engine's max(1, int(raw)) normalization in every
-    # incumbent helper, rather than trimming rows while leaving a raw 0/negative
-    # bound inside its reservation arithmetic.
+    # Match the official engine's max(1, int(raw)) normalization in incumbent
+    # helpers rather than trimming rows while leaving a raw zero/negative bound
+    # inside reservation arithmetic.
     prefix_configuration["maxMarketOrdersPerTurn"] = limit
 
     proposed, report = original(
@@ -135,18 +96,19 @@ def protect_with_active_prefix(
         prefix_selected,
         post_farm,
         post_private,
-        prefix_route,
+        route,
         checkpoints,
     )
     if not isinstance(report, Mapping):
         return _declined(selected, "incumbent_report_not_mapping", limit=limit)
     adapted_report = dict(report)
-    adapted_report["active_prefix"] = {
+    adapted_report["final_current_prefix"] = {
         "accepted": True,
         "limit": limit,
         "active_rows": len(active),
         "suffix_rows": len(suffix),
         "suffix_preserved": True,
+        "future_route_trimmed": False,
     }
 
     if not report.get("changed"):
@@ -162,25 +124,3 @@ def protect_with_active_prefix(
     if not adapted_report["changed"]:
         return selected, adapted_report
     return result, adapted_report
-
-
-def install(module: Any):
-    """Install once into an imported ``operating_stock`` module."""
-    current = getattr(module, "protect_operating_stock", None)
-    if not callable(current):
-        raise ValueError("operating_stock_guard_missing")
-    if getattr(current, PATCH_MARKER, False):
-        return current
-
-    @wraps(current)
-    def wrapped(mechanics, observation, configuration, selected,
-                post_farm, post_private, route, checkpoints=()):
-        return protect_with_active_prefix(
-            current, mechanics, observation, configuration, selected,
-            post_farm, post_private, route, checkpoints,
-        )
-
-    setattr(wrapped, PATCH_MARKER, True)
-    setattr(wrapped, "__titan_v3_original__", current)
-    module.protect_operating_stock = wrapped
-    return wrapped

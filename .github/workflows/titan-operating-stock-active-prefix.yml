@@ -1,4 +1,4 @@
-name: titan-v3-operating-stock-active-prefix
+name: titan-v3-operating-stock-final-prefix
 
 on:
   pull_request:
@@ -17,43 +17,97 @@ permissions:
   contents: read
 
 concurrency:
-  group: titan-operating-stock-prefix-${{ github.workflow }}-${{ github.ref }}
+  group: titan-operating-stock-final-prefix-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   contracts:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPYCACHEPREFIX: /tmp/titan-final-prefix-pycache
+      PYTHONHASHSEED: '0'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Verify exact source bindings
+      - name: Verify exact checkout and source closure
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/operating_stock.py)" = \
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          root=revenue/kaggriculture/cloud-execution-lab
+          test "$(git hash-object "$root/operating_stock.py")" = \
             "781aa90da0d85d0ba23c665e29d6087d182c085e"
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py)" = \
+          test "$(git hash-object "$root/main.py")" = \
+            "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
+          test "$(git hash-object "$root/titan_runtime.py")" = \
+            "b952c9c228ecbde592bf3d2df01638677abb0d24"
+          test "$(git hash-object "$root/early_capital.py")" = \
+            "9bb3a0da4359900abda69da4a5e9154adf0818cc"
+          test "$(git hash-object "$root/spatial_tempo.py")" = \
+            "edbc423023479dbe2e78131495334384a87b607f"
+          test "$(git hash-object "$root/TITAN-CONFIG.json")" = \
+            "3a3bef83899d3010fad623b628d9e95d9978111b"
+          test "$(git hash-object "$root/reference/engine/kaggriculture.py")" = \
             "3c202c7ee921da239356789e266b694635103fc4"
+      - name: Verify focused contract inventory
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path('candidates/v3-operating-stock-active-prefix/test_active_prefix.py')
+          tree = ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+          tests = sorted(
+              node.name
+              for cls in tree.body if isinstance(cls, ast.ClassDef)
+              for node in cls.body
+              if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+              and node.name.startswith('test_')
+          )
+          assert len(tests) == 18, tests
+          print('focused_test_count=18')
+          PY
       - name: Run focused and incumbent contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
-        env:
-          PYTHONDONTWRITEBYTECODE: '1'
-          PYTHONPYCACHEPREFIX: /tmp/titan-prefix-pycache
-          PYTHONHASHSEED: '0'
+        shell: bash
         run: |
           set -euo pipefail
           python candidates/v3-operating-stock-active-prefix/test_active_prefix.py
           python test_operating_stock.py
+          python test_early_capital.py
           python -m py_compile \
             candidates/v3-operating-stock-active-prefix/active_prefix.py \
+            candidates/v3-operating-stock-active-prefix/final_boundary.py \
             candidates/v3-operating-stock-active-prefix/candidate.py \
             candidates/v3-operating-stock-active-prefix/test_active_prefix.py
+      - name: Import candidate without constructing a controller
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('candidates/v3-operating-stock-active-prefix/candidate.py')
+          spec = importlib.util.spec_from_file_location('_titan_final_prefix_smoke', path)
+          assert spec is not None and spec.loader is not None
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          assert callable(module._parent._new_instance)
+          assert module._parent._INSTANCE is None
+          print('candidate_import=PASS')
+          PY
       - name: Verify clean checkout
         shell: bash
         run: |

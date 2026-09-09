@@ -1,9 +1,21 @@
 {
-  "schema": "titan-v3-operating-stock-active-prefix-binding/v1",
-  "base_commit": "46e1c1d9be56c75e21f32ea2ad11b0684375fa8c",
-  "operating_stock_git_blob": "781aa90da0d85d0ba23c665e29d6087d182c085e",
-  "official_engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "schema": "titan-v3-operating-stock-final-prefix-binding/v2",
+  "candidate_parent_commit": "d817c21d08ee58ec526dd4e8745cef12f3eb7d1a",
+  "first_head_superseded": "d817c21d08ee58ec526dd4e8745cef12f3eb7d1a",
+  "fresh_main_readback_commit": "540993eecede7cc5da5b864d5927e9fc50d8957c",
+  "source_git_blobs": {
+    "operating_stock.py": "781aa90da0d85d0ba23c665e29d6087d182c085e",
+    "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "early_capital.py": "9bb3a0da4359900abda69da4a5e9154adf0818cc",
+    "spatial_tempo.py": "edbc423023479dbe2e78131495334384a87b607f",
+    "TITAN-CONFIG.json": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4"
+  },
   "max_certified_market_orders": 10,
+  "boundary": "completed_action_after_early_capital_and_final_pressure",
+  "future_route_trimmed": false,
+  "deadline_fallback_modified": false,
   "canonical_files_modified": false,
   "score_claim": false,
   "submission_authorized": false
