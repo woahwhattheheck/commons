@@ -27,11 +27,11 @@
     }
   },
   "checkpoint": {
-    "operation": "titan-v2-operating-stock-water-service-20260909",
-    "owner_authorization": "Activate warranted bounded operating-stock behavior in the single canonical TITAN using focused correctness, funding and capacity checks; no new game panels or Kaggle submission.",
+    "operation": "titan-v2-idle-fertilizer-and-active-seller-pruning-20260909",
+    "owner_authorization": "Integrate warranted observed-game and source improvements in one canonical TITAN; focused correctness/funding/shared-capacity checks; no new game panels or Kaggle submission in this task.",
     "playing_strength": "not_measured_for_changed_bytes",
     "runtime_entrypoint": "main.py::agent",
-    "stage": "bounded_behavior_enabled_due_day_water_and_funding_checked",
+    "stage": "bounded_idle_earning_and_operating_stock_enabled",
     "submission_status": "not_submitted"
   },
   "components": [
@@ -162,6 +162,20 @@
       "enabled": true,
       "role": "active bounded operating-stock reservation; canonical operating_stock=true",
       "source_pin": "Current source manifest operating_stock.py"
+    },
+    {
+      "callsite": "SpatialTempo -> selected producer -> common returned-action commit -> existing ObservedFillLedger",
+      "component": "Owned idle fertilizer recovery",
+      "consumed_result": "23 source/primitive/runtime contracts; original recording privately checked; no full-game gain claim",
+      "enabled": true,
+      "source_pin": "Current manifest spatial_tempo.py and titan_runtime.py"
+    },
+    {
+      "callsite": "FrozenSelected.transform -> optimize_lot",
+      "component": "Active frozen seller early pruning",
+      "consumed_result": "4 focused arithmetic methods compare exact optimizer plans/reports against preserved loop; no game runs",
+      "enabled": true,
+      "source_pin": "scheduler main 7d8e27296313bdbfbad255a4d6b5e1d85fa31737 ported to reference/titan-current/latest/selected_sell_core.py"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -181,6 +195,7 @@
     "consumer": "frozen",
     "fourth_quadrant": false,
     "funding": true,
+    "idle_fertilizer": true,
     "market_pressure": true,
     "operating_stock": true,
     "redundant_hire": true,
@@ -215,10 +230,10 @@
   },
   "entrypoint": "main.py::agent",
   "game_evidence_for_this_archive": {
-    "evidence": "runtime/integrated-selected/OPERATING-STOCK-TESTS.json",
+    "evidence": "runtime/integrated-selected/IDLE-FERTILIZER-TESTS.json",
     "historical_results_apply": false,
     "new_full_games": 0,
-    "scope": "Disabled operating-stock integration and package/source checks. Prior native weed evidence belongs to db34; no new game evidence."
+    "scope": "Enabled idle fertilizer recovery, existing operating-stock behavior, active seller pruning, source/primitive/cancellation checks. Peer panels on archive 6705147b remain separately attributed."
   },
   "historical_checkpoint": {
     "operation": "titan-kaggriculture-checkpoint-20260908-01",
@@ -351,13 +366,13 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 332,
-      "sha256": "0a56ba29d6806c798a318c4c1c7214df0836b5ee47c9358bdf1d82ec05c464ca",
+      "bytes": 359,
+      "sha256": "d2f33bc4ced9e590a5acf1a6367b89aa37a41bca015916b922b5055bdcf7c4d5",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 8953,
-      "sha256": "2143ea67a588d50ae485f905f7c26f0d1c16fb360fce6b886cedf7a3f92ce6f4",
+      "bytes": 11128,
+      "sha256": "9235313cd8192e8e279ea5b42c5b9ce367f3c2632db4401254516695e5a020d3",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -435,6 +450,11 @@
       "sha256": "debea504799ed40eb43dc5df2451625ece6331af8546ea01123bb5c420e9f03b",
       "source_path": "test_funded_payback_runtime.py"
     },
+    "checks/test_idle_fertilizer.py": {
+      "bytes": 21022,
+      "sha256": "be27dd17f6595b5df21e2a7ec7f5663cda2fd711574eb73153b9332d7d3ae6de",
+      "source_path": "test_idle_fertilizer.py"
+    },
     "checks/test_market_pressure_runtime.py": {
       "bytes": 7072,
       "sha256": "26858662554f713478cd800d81dc3d3f18404eb225e379416248c0a8b714ae8f",
@@ -470,6 +490,11 @@
       "sha256": "6180896c9f355bb8ad36d7e086f37706461724adb10ff95a6ed3bd3ce6e606be",
       "source_path": "../cloud-committed-seed-retry/test_seed_retry.py"
     },
+    "checks/test_selected_pruning.py": {
+      "bytes": 3673,
+      "sha256": "90886784fabbc9002b01d8edeeae8ed0ceabc1ffd678e56c6107806b72e580b9",
+      "source_path": "test_selected_pruning.py"
+    },
     "checks/test_terminal_history_join.py": {
       "bytes": 7847,
       "sha256": "d4d025d21c6c941d34056d9584cd875c77c9d07975a53ed8c089fb599e292aee",
@@ -496,8 +521,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 6836,
-      "sha256": "afeaab24b23e4c50a40c345d51bc97186f859da91914e2f50b77cbb9e137480a",
+      "bytes": 7011,
+      "sha256": "5ce139b84dcb5d8983b7a150abbd1aa2674cdaa1e891f31b56a785a7a12e77d5",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
@@ -666,8 +691,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "reference/titan-current/latest/selected_sell_core.py": {
-      "bytes": 7015,
-      "sha256": "63198d3b642847a02fee8f3553b9983341b4931b4975013209ad10777b5d1199",
+      "bytes": 7953,
+      "sha256": "4b3c3e4b89a0e404dc31fd634d761842e356e7ad6e76576c7f70382910ff26e7",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "reference/titan-current/redundant_hire.py": {
@@ -786,8 +811,8 @@
       "source_path": "reference/titan-history/weighted_selector.py"
     },
     "scheduler.py": {
-      "bytes": 19829,
-      "sha256": "2915af42b6b4cb280526f105705257b6ed35173391d1f11bb80dd73d55fc48f7",
+      "bytes": 20767,
+      "sha256": "d30dec2d06b5e53977c895657963cd18046e89fbc3212e0e5117de021f4cf2d1",
       "source_path": "scheduler.py"
     },
     "seed_retry.py": {
@@ -801,8 +826,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "selected_sell_core.py": {
-      "bytes": 7015,
-      "sha256": "63198d3b642847a02fee8f3553b9983341b4931b4975013209ad10777b5d1199",
+      "bytes": 7953,
+      "sha256": "4b3c3e4b89a0e404dc31fd634d761842e356e7ad6e76576c7f70382910ff26e7",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "sell_priority.py": {
@@ -816,18 +841,18 @@
       "source_path": "../cloud-quickstep/seller_snapshot.py"
     },
     "spatial_tempo.py": {
-      "bytes": 24309,
-      "sha256": "1ace1547a0f091ce36de1bbb8e023baa7b9699346968ebbc1468433733dbd50d",
+      "bytes": 47592,
+      "sha256": "0afbb1235bba27927ef4d38bd2dac21376fad9fc5309c45dbf66c8d770108aeb",
       "source_path": "spatial_tempo.py"
     },
     "terminal_history_join.py": {
-      "bytes": 4796,
-      "sha256": "30d26ec5020abb01b30f2754edd3531c37c8d5f025ccbd214e5736ddcbc632a4",
+      "bytes": 5505,
+      "sha256": "e1482ba22eeb2784157f337e2abc055cf4e9ac7cc8d464fe75a67cc38ec41582",
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 26366,
-      "sha256": "31b9366d8f04f0d7df71ceb9d3a0ce84548f2f4d419f4e9e72bf665d0192778a",
+      "bytes": 28406,
+      "sha256": "7e2f7d5f5bca1a8bee7a9c2c7a30ffe6664dc5e2181a75dde9172d243946568e",
       "source_path": "titan_runtime.py"
     }
   },
