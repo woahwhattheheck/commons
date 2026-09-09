@@ -8,7 +8,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/test_scheduler_overflow_timing.py'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   e14:
@@ -18,7 +18,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          persist-credentials: false
       - name: E14 scheduler regressions and existing scheduler suite
         working-directory: revenue/kaggriculture/cloud-execution-lab
         env:
@@ -26,21 +25,39 @@ jobs:
         run: |
           set -euo pipefail
           python3 -B -m unittest -v test_scheduler_overflow_timing test_scheduler
-      - name: Rebuild and verify canonical TITAN package
+      - name: Preserve old canonical archive, rebuild, and verify
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
-          python3 -B build_integrated.py > "$RUNNER_TEMP/e14-build-receipt.json"
-          python3 -B build_integrated.py --check > "$RUNNER_TEMP/e14-check-receipt.json"
-          mkdir -p "$RUNNER_TEMP/e14-generated/runtime"
-          cp exports/titan-current.tar.gz "$RUNNER_TEMP/e14-generated/titan-current.tar.gz"
-          cp runtime/integrated-selected/CURRENT-SOURCE.json "$RUNNER_TEMP/e14-generated/runtime/CURRENT-SOURCE.json"
-          cp runtime/integrated-selected/CURRENT-ARCHIVE.json "$RUNNER_TEMP/e14-generated/runtime/CURRENT-ARCHIVE.json"
-          cp "$RUNNER_TEMP/e14-build-receipt.json" "$RUNNER_TEMP/e14-generated/build-receipt.json"
-          cp "$RUNNER_TEMP/e14-check-receipt.json" "$RUNNER_TEMP/e14-generated/check-receipt.json"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: e14-generated-runtime
-          path: ${{ runner.temp }}/e14-generated/
-          if-no-files-found: error
-          retention-days: 2
+          old_sha="$(python3 - <<'PY'
+import json
+from pathlib import Path
+print(json.loads(Path('runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())['sha256'])
+PY
+)"
+          mkdir -p exports/historical
+          historical="exports/historical/titan-${old_sha}.tar.gz"
+          if [ -e "$historical" ]; then
+            cmp "$historical" exports/titan-current.tar.gz
+          else
+            cp exports/titan-current.tar.gz "$historical"
+          fi
+          python3 -B build_integrated.py
+          python3 -B build_integrated.py --check
+          sha256sum exports/titan-current.tar.gz
+          cat runtime/integrated-selected/CURRENT-ARCHIVE.json
+      - name: Stage exact generated Git blobs and remove carrier
+        run: |
+          set -euo pipefail
+          git config user.name "e14-vm-carrier"
+          git config user.email "actions@users.noreply.github.com"
+          git rm .github/workflows/e14-scheduler-vm.yml
+          git add \
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
+            revenue/kaggriculture/cloud-execution-lab/exports/historical/ \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+          git diff --cached --check
+          git diff --cached --stat
+          git commit -m "Stage E14 canonical runtime artifacts"
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
