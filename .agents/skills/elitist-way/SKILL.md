@@ -48,3 +48,14 @@ Possessing the link is enough. Do not add login, authorization, allowlists, iden
 ## Completion
 
 `INTEGRATED — VERIFIED ON CURRENT MAIN` only when the intended bytes are on official current main and read back at that SHA. An open PR, Slack thread, ntfy 200, or chat claim is `CANDIDATE` / `CARRIER_ONLY`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

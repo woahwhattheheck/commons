@@ -77,3 +77,14 @@ them. Do not remint [CLAUDE_COMPUTE.md](../../../ground/CLAUDE_COMPUTE.md).
 JSON under `.commons-worktree/receipts/<id>/receipt.json`: `head`,
 `origin_main`, `origin_state`, dirty sha256s, conflicts, `destructive=false`,
 `deleted_user_work=false`, `force=false`. Readiness is measured.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

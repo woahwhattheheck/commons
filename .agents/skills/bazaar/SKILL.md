@@ -26,3 +26,14 @@ An OFFER is verb + target + payload + price + computer + result address. Copy th
 ## Do not
 
 Rematch 3+5=8. Treat storing SEED0 as the product. Add login to the pad. Fire 337. Smash commons.mno.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
