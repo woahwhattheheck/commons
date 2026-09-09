@@ -55,21 +55,23 @@ Links, special members, absolute or parent-traversing paths, backslashes,
 normalized path aliases, malformed tar payloads, missing source manifests, and
 source-byte divergence fail closed.
 
-### Count-interpretation correction
+### Count-interpretation correction and resolution
 
 The initial LANCET statement that “110 regular files versus `runtime_files: 109`”
 was a defect is **retracted**. Merged W06 repair #11430 established that root
 `SOURCE.json` is a separately sealed provenance manifest and is excluded from
-`runtime_files`. Therefore 110 regular members can correctly mean 109 runtime
+`runtime_files`. Therefore 110 regular members correctly mean 109 runtime
 members plus one root source manifest.
 
-At exact main `977767e3c7a7a1a2f4414a5cf2b46a13267b8006`, the unchanged archive
-`17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86`
-has a pointer declaring `runtime_files: 110`. The exact artifact inventory
-reports 110 regular members total. Under the established contract, the runtime
-count is therefore 109, so the newer pointer/build semantic is the mismatch.
-PR #11744 owns restoring that contract while retaining the constructor repair;
-PR #11749 only verifies the resulting bytes and receipt.
+A transient main snapshot, `977767e3c7a7a1a2f4414a5cf2b46a13267b8006`,
+changed the pointer to `runtime_files: 110`; that state is historical and must
+not be used as the current contract. At exact main
+`2fd8a1b11e09750381ec6604c21c46f54ebf7460`, `build_integrated.render()` emits
+`runtime_files: len(mapping)` before the separately embedded source manifest is
+counted, and `CURRENT-ARCHIVE.json` is restored to 109. The reported exact
+archive inventory is 110 regular members total, so the count contract is
+consistent at this snapshot. PR #11749 verifies this boundary independently; it
+does not own or alter the builder.
 
 ## Landed diagnostic commands — not promotion authority
 
@@ -95,13 +97,12 @@ the current promotion/partial-panel semantics.
 
 ## Current observed evidence break, 2026-09-09
 
-At exact main `977767e3c7a7a1a2f4414a5cf2b46a13267b8006`:
+At exact main `2fd8a1b11e09750381ec6604c21c46f54ebf7460`:
 
 - the canonical archive pointer names SHA-256
   `17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86`,
-  427,870 bytes, source-manifest SHA-256
-  `1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083`,
-  and the disputed `runtime_files: 110` count;
+  427,870 bytes, 109 runtime files, and source-manifest SHA-256
+  `1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083`;
 - `CURRENT-TESTS.json` still names archive
   `6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1`,
   408,621 bytes, 104 runtime files, and source manifest
@@ -111,12 +112,11 @@ At exact main `977767e3c7a7a1a2f4414a5cf2b46a13267b8006`:
 - no complete exact-current full-game ledger is bound to the changed bytes and
   executable closure.
 
-The current V2.5/V3 tree may contain useful mechanisms, but these evidence
-surfaces cannot support a current-byte playing-strength or regression claim.
-The safe repair order is:
+The archive count contract is no longer the blocker. The remaining evidence
+surfaces still cannot support a current-byte playing-strength or regression
+claim. The safe repair order is:
 
-1. consume #11744 or an equivalent preservation of the 109-runtime + one-source
-   archive contract;
+1. merge or otherwise consume the independent archive verifier after review;
 2. consume SOL-SENTINEL's strict game-ledger and comparison containment;
 3. regenerate exact-archive tests and bind them to the canonical SHA and source;
 4. register the canonical archive path/SHA;
