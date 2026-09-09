@@ -16,6 +16,14 @@ assert SPEC.loader is not None
 SPEC.loader.exec_module(RECOVERY)
 
 
+def _seller_public(step, player=0, marker=1):
+    farms = [{"tiles": []}, {"tiles": []}]
+    farms[1 - int(player)] = {
+        "tiles": [[{"kind": "PLANT", "crop": "MILK", "yield_units": marker}]]
+    }
+    return {"step": int(step), "player": int(player), "farms": farms}
+
+
 class _Features:
     def __init__(self, budget_seconds=0.04, reserve_seconds=0.015):
         self.budget_seconds = budget_seconds
@@ -24,26 +32,36 @@ class _Features:
 
 
 class _Instance:
-    def __init__(self, *, duration, route=None, ready=True):
+    def __init__(self, *, duration, route=None, ready=True, commit_before_delay=False):
         self.features = _Features()
         self.duration = duration
+        self.commit_before_delay = commit_before_delay
         self.ready = ready
         self.controller_cur = route or "MAIN"
         self._completed_route = route
         self._completed_seller_state = {
             "planned": {"MILK": [[361, 2]]},
             "pending": {"MILK": 2},
-            "previous": {"step": 359},
+            "previous": _seller_public(359, marker=360),
             "observed_harvests": {"MILK": [[359, 1]]},
         } if route else None
         self._seller_fallback_observations = []
         self.replayed = []
+        self.remember_calls = 0
         self.selected = None
         self.post = None
         self.diagnostics = {}
 
     def _remember_seller_fallback(self, observation):
-        self._seller_fallback_observations.append(deepcopy(dict(observation)))
+        self.remember_calls += 1
+        row = _seller_public(
+            int(observation["step"]), int(observation.get("player", 0)),
+            marker=int(observation["step"]) + 1,
+        )
+        if self._seller_fallback_observations and int(self._seller_fallback_observations[-1]["step"]) == row["step"]:
+            self._seller_fallback_observations[-1] = row
+        else:
+            self._seller_fallback_observations.append(row)
 
     def act(self, observation, _configuration=None, *, entry_started=None):
         if not self.ready:
@@ -55,6 +73,16 @@ class _Instance:
             "hands": [],
             "market": [["ROUTE", self.controller_cur, int(observation["step"])]],
         }
+        if self.commit_before_delay:
+            step = int(observation["step"])
+            self._completed_route = self.controller_cur
+            self._completed_seller_state = {
+                "planned": {"MILK": [[step + 1, 2]]},
+                "pending": {"MILK": 2},
+                "previous": _seller_public(step, marker=step + 1),
+                "observed_harvests": {"MILK": [[step, 1]]},
+            }
+            self._seller_fallback_observations = []
         end = time.perf_counter() + self.duration
         while time.perf_counter() < end:
             pass
@@ -75,7 +103,7 @@ def _obs(step):
     return {
         "step": step,
         "player": 0,
-        "farms": [{"hands": []}, {"hands": []}],
+        "farms": [{"hands": [], "tiles": []}, {"hands": [], "tiles": [[{"kind": "PLANT"}]]}],
         "private": {},
     }
 
@@ -103,6 +131,28 @@ class CurrentEntrypointIntegrationTests(unittest.TestCase):
         second = main.agent(_obs(361), {"episodeSteps": 720})
         self.assertEqual(second["market"][0][1], "MAIN")
         self.assertEqual(fresh.replayed, [])
+
+    def test_real_entrypoint_does_not_requeue_a_completed_current_checkpoint(self):
+        main = _load_main("checkpointed")
+        old = _Instance(
+            duration=0.08, route="YARN_CARROT", commit_before_delay=True
+        )
+        fresh = _Instance(duration=0, ready=False)
+        main._INSTANCE = old
+        main._new_instance = lambda _root, _features: fresh
+        carrier = RECOVERY.RecoveryCarrier(main)
+
+        first = carrier.agent(_obs(360), {"episodeSteps": 720})
+        self.assertEqual(first["market"][0][1], "YARN_CARROT")
+        self.assertIsNone(main._INSTANCE)
+        self.assertEqual(carrier.last_report["status"], "captured")
+        self.assertEqual(carrier.last_report["public_observation"], "checkpointed")
+        self.assertEqual(old.remember_calls, 0)
+
+        second = carrier.agent(_obs(361), {"episodeSteps": 720})
+        self.assertEqual(second["market"][0][1], "YARN_CARROT")
+        self.assertEqual(fresh.replayed, [])
+        self.assertEqual(fresh._completed_seller_state["previous"]["step"], 360)
 
     def test_real_entrypoint_with_carrier_restores_only_committed_state(self):
         main = _load_main("candidate")

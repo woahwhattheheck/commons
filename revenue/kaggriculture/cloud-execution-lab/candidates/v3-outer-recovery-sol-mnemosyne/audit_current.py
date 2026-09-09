@@ -197,10 +197,59 @@ def _audit_runtime(tree: ast.Module) -> dict[str, Any]:
         raise AuditError("TitanAgent._initialize no longer calls _restore_seller_state")
     _function(tree, "_restore_seller_state", owner="TitanAgent")
     _function(tree, "_remember_seller_fallback", owner="TitanAgent")
+
+    act = _function(tree, "act", owner="TitanAgent")
+    commit_lines = [
+        node.lineno for node in ast.walk(act)
+        if isinstance(node, ast.Call) and _dotted(node.func) == "self._commit_seller_state"
+    ]
+    finish_lines = [
+        node.lineno for node in ast.walk(act)
+        if isinstance(node, ast.Call) and _dotted(node.func) == "self._finish_production"
+    ]
+    if len(commit_lines) != 1:
+        raise AuditError(
+            f"expected one completed seller commit in TitanAgent.act, found {len(commit_lines)}"
+        )
+    late_finish_lines = [line for line in finish_lines if line > commit_lines[0]]
+    if not late_finish_lines:
+        raise AuditError("completed seller checkpoint no longer precedes a late finalizer")
+
+    deadline_handlers = []
+    for node in ast.walk(act):
+        if isinstance(node, ast.Try):
+            deadline_handlers.extend(
+                handler for handler in node.handlers
+                if _dotted(handler.type) == "deadline.DeadlineExceeded"
+            )
+    if len(deadline_handlers) != 1:
+        raise AuditError(
+            f"expected one inner DeadlineExceeded handler, found {len(deadline_handlers)}"
+        )
+    inner_remember_lines = [
+        node.lineno for node in ast.walk(deadline_handlers[0])
+        if isinstance(node, ast.Call)
+        and _dotted(node.func) == "self._remember_seller_fallback"
+    ]
+    inner_finish_lines = [
+        node.lineno for node in ast.walk(deadline_handlers[0])
+        if isinstance(node, ast.Call) and _dotted(node.func) == "self._finish_production"
+    ]
+    if len(inner_remember_lines) != 1:
+        raise AuditError(
+            f"expected one inner-deadline seller observation, found {len(inner_remember_lines)}"
+        )
+    if not inner_finish_lines or inner_remember_lines[0] >= min(inner_finish_lines):
+        raise AuditError("inner fallback observation no longer precedes its late finalizer")
+
     return {
         "safe_fields": sorted(SAFE_FIELDS),
         "route_restore": True,
         "seller_restore": True,
+        "completed_seller_commit_line": commit_lines[0],
+        "completed_late_finalizer_line": min(late_finish_lines),
+        "inner_fallback_record_line": inner_remember_lines[0],
+        "inner_late_finalizer_line": min(inner_finish_lines),
     }
 
 

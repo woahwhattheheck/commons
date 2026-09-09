@@ -2,12 +2,14 @@
 """Candidate carrier that preserves only committed TITAN continuity state.
 
 Canonical ``main.py`` intentionally discards an instance if its whole-call timer
-interrupts a late finalizer.  Discarding the possibly-mutated object is correct,
-but the outer handler does not preserve the current public observation and the
+interrupts a call.  Discarding the possibly-mutated object is correct, but the
 object also owns three explicitly committed/replayable fields:
 ``_completed_route``, ``_completed_seller_state``, and
-``_seller_fallback_observations``.  This candidate transfers only those fields to
-the next fresh instance.  Policy, controller, finalizers, and returned actions
+``_seller_fallback_observations``.  Depending on the interruption point, the
+current public observation may already be represented by the seller checkpoint,
+may already be queued as a fallback, or may still be missing.  This candidate
+transfers only those fields and records the current observation only when neither
+safe surface covers it.  Policy, controller, finalizers, and returned actions
 remain canonical.
 
 The capsule is JSON-canonical, content-addressed, deep-copied, and cleared at a
@@ -55,6 +57,186 @@ def _absolute_step(observation: Mapping[str, Any], configuration: Mapping[str, A
     )
 
 
+def _step_from_public(value: Any) -> int | None:
+    """Return one non-boolean public step, or ``None`` for malformed state."""
+    if not isinstance(value, Mapping) or "step" not in value:
+        return None
+    raw = value.get("step")
+    return _nonnegative_int(raw)
+
+
+def _nonnegative_int(value: Any) -> int | None:
+    if isinstance(value, bool) or not isinstance(value, int):
+        return None
+    return value if value >= 0 else None
+
+
+def _public_observation_shape(value: Any) -> tuple[int, int, tuple[int, ...]] | None:
+    """Validate TITAN's exact seller-public observation projection.
+
+    Return ``(step, player, rival_row_widths)`` so a caller can also prove that
+    every replay row shares one board shape and seat.
+    """
+    if not isinstance(value, Mapping) or set(value) != {"step", "player", "farms"}:
+        return None
+    step = _nonnegative_int(value.get("step"))
+    player = _nonnegative_int(value.get("player"))
+    farms = value.get("farms")
+    if step is None or player not in (0, 1) or not isinstance(farms, list) or len(farms) != 2:
+        return None
+    for index, farm in enumerate(farms):
+        if not isinstance(farm, Mapping) or set(farm) != {"tiles"}:
+            return None
+        tiles = farm.get("tiles")
+        if not isinstance(tiles, list):
+            return None
+        if index == player:
+            if tiles:
+                return None
+            continue
+        for row in tiles:
+            if not isinstance(row, list):
+                return None
+            if any(tile is not None and not isinstance(tile, Mapping) for tile in row):
+                return None
+    rival = farms[1 - player]["tiles"]
+    return step, player, tuple(len(row) for row in rival)
+
+
+def _schedule_map_shape(value: Any) -> bool:
+    if not isinstance(value, Mapping):
+        return False
+    for item, rows in value.items():
+        if not isinstance(item, str) or not isinstance(rows, (list, tuple)):
+            return False
+        for row in rows:
+            if not isinstance(row, (list, tuple)) or len(row) != 2:
+                return False
+            if _nonnegative_int(row[0]) is None or _nonnegative_int(row[1]) is None:
+                return False
+    return True
+
+
+def _seller_payload_shape(seller: Any, fallbacks: Any) -> tuple[bool, str]:
+    """Validate every field consumed by ``TitanAgent._restore_seller_state``."""
+    if seller is not None:
+        if not isinstance(seller, Mapping):
+            return False, "malformed_checkpoint"
+        if set(seller) != {"planned", "pending", "previous", "observed_harvests"}:
+            return False, "malformed_checkpoint_keys"
+        if not _schedule_map_shape(seller.get("planned")):
+            return False, "malformed_planned"
+        pending = seller.get("pending")
+        if not isinstance(pending, Mapping) or any(
+            not isinstance(item, str) or _nonnegative_int(quantity) is None
+            for item, quantity in pending.items()
+        ):
+            return False, "malformed_pending"
+        if not _schedule_map_shape(seller.get("observed_harvests")):
+            return False, "malformed_harvests"
+    if not isinstance(fallbacks, list):
+        return False, "malformed_fallbacks"
+
+    public_rows = []
+    if seller is not None and seller.get("previous") is not None:
+        public_rows.append(("checkpoint", seller.get("previous")))
+    public_rows.extend(("fallback", row) for row in fallbacks)
+    parsed = []
+    for kind, row in public_rows:
+        shape = _public_observation_shape(row)
+        if shape is None:
+            return False, f"malformed_{kind}_observation"
+        parsed.append((kind, shape))
+    if parsed:
+        first_player = parsed[0][1][1]
+        first_widths = parsed[0][1][2]
+        if any(shape[1] != first_player for _kind, shape in parsed):
+            return False, "seller_player_drift"
+        if any(shape[2] != first_widths for _kind, shape in parsed):
+            return False, "seller_board_drift"
+    return True, "valid"
+
+
+def _committed_shape(route: Any, seller: Any, fallbacks: Any) -> tuple[bool, str]:
+    if route is not None and not isinstance(route, str):
+        return False, "route"
+    return _seller_payload_shape(seller, fallbacks)
+
+
+def _seller_observation_coverage(instance: Any, step: int) -> tuple[bool, str]:
+    """Prove whether committed seller state already represents ``step``.
+
+    A completed call checkpoints ``consumer.previous`` at the current step and
+    clears the fallback queue.  An inner deadline instead leaves the prior
+    checkpoint and queues the current public observation.  The outer timer can
+    interrupt after either event, so blindly appending would double-observe a
+    completed step.  Reject malformed, reordered, or future state rather than
+    guessing which mutation completed.
+    """
+    features = getattr(instance, "features", None)
+    consumer = getattr(features, "consumer", None)
+    if consumer is not None and consumer != "frozen":
+        return True, "not_applicable"
+
+    seller = getattr(instance, "_completed_seller_state", None)
+    fallbacks = getattr(instance, "_seller_fallback_observations", None)
+    valid, reason = _seller_payload_shape(seller, fallbacks)
+    if not valid:
+        return False, reason
+
+    checkpoint_step = None
+    if seller is not None:
+        previous = seller.get("previous")
+        if previous is not None:
+            checkpoint_step = _step_from_public(previous)
+            if checkpoint_step is None:
+                return False, "malformed_checkpoint_previous"
+
+    fallback_steps: list[int] = []
+    for row in fallbacks:
+        row_step = _step_from_public(row)
+        if row_step is None:
+            return False, "malformed_fallback"
+        fallback_steps.append(row_step)
+    if fallback_steps != sorted(set(fallback_steps)):
+        return False, "malformed_fallback_order"
+    if checkpoint_step is not None and any(row_step <= checkpoint_step for row_step in fallback_steps):
+        return False, "fallback_before_checkpoint"
+
+    represented = ([checkpoint_step] if checkpoint_step is not None else []) + fallback_steps
+    if any(row_step > step for row_step in represented):
+        return False, "future_state"
+    if checkpoint_step == step:
+        return True, "checkpointed"
+    if step in fallback_steps:
+        return True, "queued"
+    return False, "missing"
+
+
+def ensure_public_observation(
+    instance: Any, observation: Mapping[str, Any], step: int
+) -> tuple[bool, str]:
+    """Ensure exactly one reconstruction-safe representation of this call."""
+    covered, reason = _seller_observation_coverage(instance, step)
+    if covered:
+        return True, reason
+    if reason != "missing":
+        return False, reason
+    remember = getattr(instance, "_remember_seller_fallback", None)
+    if not callable(remember):
+        return False, "no_recorder"
+    observed = deepcopy(dict(observation))
+    observed["step"] = step
+    try:
+        remember(observed)
+    except (AttributeError, TypeError, ValueError, IndexError, KeyError, OverflowError, RecursionError):
+        return False, "record_failed"
+    covered, reason = _seller_observation_coverage(instance, step)
+    if not covered:
+        return False, f"record_unverified:{reason}"
+    return True, "queued_now" if reason == "queued" else reason
+
+
 def capture_committed(instance: Any) -> dict[str, Any] | None:
     """Return an immutable-content capsule or ``None`` on unsafe source state.
 
@@ -66,13 +248,10 @@ def capture_committed(instance: Any) -> dict[str, Any] | None:
         route = getattr(instance, "_completed_route", None)
         seller = getattr(instance, "_completed_seller_state", None)
         fallbacks = getattr(instance, "_seller_fallback_observations", None)
-        if route is not None and not isinstance(route, str):
-            return None
-        if seller is not None and not isinstance(seller, dict):
-            return None
         if fallbacks is None:
             fallbacks = []
-        if not isinstance(fallbacks, list) or any(not isinstance(row, dict) for row in fallbacks):
+        valid, _reason = _committed_shape(route, seller, fallbacks)
+        if not valid:
             return None
         payload = {
             "route": deepcopy(route),
@@ -106,12 +285,9 @@ def restore_committed(instance: Any, capsule: Mapping[str, Any] | None) -> tuple
     route = payload.get("route")
     seller = payload.get("seller")
     fallbacks = payload.get("fallbacks")
-    if route is not None and not isinstance(route, str):
-        return False, "route"
-    if seller is not None and not isinstance(seller, dict):
-        return False, "seller"
-    if not isinstance(fallbacks, list) or any(not isinstance(row, dict) for row in fallbacks):
-        return False, "fallbacks"
+    valid, reason = _committed_shape(route, seller, fallbacks)
+    if not valid:
+        return False, reason
     try:
         encoded = _canonical_bytes(payload)
     except (TypeError, ValueError, OverflowError, RecursionError):
@@ -197,22 +373,16 @@ class RecoveryCarrier:
         after = self.canonical._INSTANCE
         if after is None:
             victim = self._constructed if self._constructed is not None else before
-            recorded = False
+            covered = False
+            observation_state = "no_victim"
             if victim is not None:
-                # Current canonical main discards without recording this public
-                # observation.  Reuse TitanAgent's own idempotent recorder after
-                # the deadline context has exited; a future upstream recorder is
-                # harmless because equal-step inputs replace rather than append.
-                remember = getattr(victim, "_remember_seller_fallback", None)
-                if callable(remember):
-                    observed = deepcopy(dict(observation))
-                    observed["step"] = step
-                    try:
-                        remember(observed)
-                        recorded = True
-                    except (AttributeError, TypeError, ValueError, IndexError, KeyError, RecursionError):
-                        recorded = False
-            captured = capture_committed(victim) if victim is not None and recorded else None
+                # The outer timer may fire before seller observation, after an
+                # inner fallback queued it, or after the completed checkpoint
+                # already covers it.  Add only the genuinely missing case.
+                covered, observation_state = ensure_public_observation(
+                    victim, observation, step
+                )
+            captured = capture_committed(victim) if victim is not None and covered else None
             if captured is not None:
                 self._capsule = captured
                 self.last_report = {
@@ -220,12 +390,14 @@ class RecoveryCarrier:
                     "capsule_sha256": captured["sha256"],
                     "route": captured["payload"]["route"],
                     "fallback_count": len(captured["payload"]["fallbacks"]),
-                    "recorded_current_step": True,
+                    "public_observation": observation_state,
+                    "recorded_current_step": observation_state == "queued_now",
                 }
             elif self._capsule is None:
                 self.last_report = {
                     "status": "canonical_empty",
-                    "recorded_current_step": recorded,
+                    "public_observation": observation_state,
+                    "recorded_current_step": observation_state == "queued_now",
                 }
         else:
             # A live canonical object is the sole source of truth; do not keep a

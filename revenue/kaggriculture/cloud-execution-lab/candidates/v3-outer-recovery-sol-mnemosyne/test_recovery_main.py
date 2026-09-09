@@ -15,6 +15,14 @@ class ForeignDeadline(RuntimeError):
     pass
 
 
+def seller_public(step, player=0, marker=1):
+    farms = [{"tiles": []}, {"tiles": []}]
+    farms[1 - int(player)] = {
+        "tiles": [[{"kind": "PLANT", "crop": "MILK", "yield_units": marker}]]
+    }
+    return {"step": int(step), "player": int(player), "farms": farms}
+
+
 class FakeInstance:
     def __init__(self, *, ready=False):
         self.ready = ready
@@ -23,6 +31,7 @@ class FakeInstance:
         self._completed_seller_state = None
         self._seller_fallback_observations = []
         self.replayed_fallback_steps = []
+        self.remember_calls = 0
         self.partial_finalizer = {"status": "clean"}
         self.history = {"unsafe": "fresh"}
         self.spatial = {"unsafe": "fresh"}
@@ -30,8 +39,9 @@ class FakeInstance:
         self.diagnostics = {"unsafe": "fresh"}
 
     def _remember_seller_fallback(self, observation):
-        row = deepcopy(dict(observation))
-        step = int(row.get("step", 0))
+        self.remember_calls += 1
+        step = int(observation.get("step", 0))
+        row = seller_public(step, int(observation.get("player", 0)), marker=step + 1)
         if self._seller_fallback_observations:
             prior = int(self._seller_fallback_observations[-1].get("step", -1))
             if step < prior:
@@ -104,14 +114,27 @@ class FakeCanonical:
         }
         if behavior == "foreign":
             raise self.foreign
-        if behavior in ("timeout", "timeout_recorded"):
+        if behavior in ("timeout", "timeout_recorded", "timeout_committed"):
             if hasattr(instance, "_completed_seller_state"):
-                instance._completed_seller_state = {
-                    "planned": {"MILK": [[step + 1, 2]]},
-                    "pending": {"MILK": 2},
-                    "previous": {"step": step - 1},
-                    "observed_harvests": {"MILK": [[step - 1, 1]]},
-                }
+                if behavior == "timeout_committed":
+                    # Model a successful inner action whose completed seller
+                    # checkpoint was published before the outer timer fired in
+                    # the late finalizer.  Replaying this observation again
+                    # would double-observe it.
+                    instance._completed_seller_state = {
+                        "planned": {"MILK": [[step + 1, 2]]},
+                        "pending": {"MILK": 2},
+                        "previous": seller_public(step, marker=step + 1),
+                        "observed_harvests": {"MILK": [[step, 1]]},
+                    }
+                    instance._seller_fallback_observations = []
+                elif instance._completed_seller_state is None:
+                    instance._completed_seller_state = {
+                        "planned": {"MILK": [[step + 1, 2]]},
+                        "pending": {"MILK": 2},
+                        "previous": seller_public(step - 1, marker=step),
+                        "observed_harvests": {"MILK": [[step - 1, 1]]},
+                    }
                 if behavior == "timeout_recorded":
                     instance._remember_seller_fallback(observation)
             instance.partial_finalizer = {"status": "corrupt", "step": step}
@@ -169,6 +192,28 @@ class RecoveryCarrierTests(unittest.TestCase):
         self.assertIsNone(carrier.capsule())
         self.assertEqual(carrier.last_report["status"], "restored")
 
+    def test_completed_current_checkpoint_is_not_requeued(self):
+        canonical = FakeCanonical(("timeout_committed", "success"))
+        original = FakeInstance(ready=True)
+        canonical._INSTANCE = original
+        carrier = MODULE.RecoveryCarrier(canonical)
+
+        first = carrier.agent(observation(360), {})
+        capsule = carrier.capsule()
+        self.assertEqual(first["market"][0][1], "YARN_CARROT")
+        self.assertEqual(carrier.last_report["status"], "captured")
+        self.assertEqual(carrier.last_report["public_observation"], "checkpointed")
+        self.assertFalse(carrier.last_report["recorded_current_step"])
+        self.assertEqual(original.remember_calls, 0)
+        self.assertEqual(capsule["payload"]["seller"]["previous"]["step"], 360)
+        self.assertEqual(capsule["payload"]["fallbacks"], [])
+
+        second = carrier.agent(observation(361), {})
+        rebuilt = canonical.created[-1]
+        self.assertEqual(second["market"][0][1], "YARN_CARROT")
+        self.assertEqual(rebuilt.replayed_fallback_steps, [])
+        self.assertEqual(rebuilt._completed_seller_state["previous"]["step"], 360)
+
     def test_partial_finalizer_objects_are_never_transferred(self):
         canonical = FakeCanonical(("timeout", "success"))
         original = FakeInstance(ready=True)
@@ -217,14 +262,72 @@ class RecoveryCarrierTests(unittest.TestCase):
 
     def test_future_upstream_record_is_same_step_deduplicated(self):
         canonical = FakeCanonical(("timeout_recorded", "success"))
-        canonical._INSTANCE = FakeInstance(ready=True)
+        original = FakeInstance(ready=True)
+        canonical._INSTANCE = original
         carrier = MODULE.RecoveryCarrier(canonical)
 
         carrier.agent(observation(360), {})
         capsule = carrier.capsule()
         self.assertEqual([row["step"] for row in capsule["payload"]["fallbacks"]], [360])
+        self.assertEqual(carrier.last_report["public_observation"], "queued")
+        self.assertFalse(carrier.last_report["recorded_current_step"])
+        self.assertEqual(original.remember_calls, 1)
+        self.assertIsNone(canonical._INSTANCE)
         carrier.agent(observation(361), {})
         self.assertEqual(canonical.created[-1].replayed_fallback_steps, [360])
+
+    def test_future_or_reordered_seller_state_fails_closed(self):
+        source = FakeInstance(ready=True)
+        source._completed_route = "YARN"
+        source._completed_seller_state = {
+            "planned": {}, "pending": {}, "previous": seller_public(400),
+            "observed_harvests": {},
+        }
+        covered, reason = MODULE.ensure_public_observation(source, observation(360), 360)
+        self.assertFalse(covered)
+        self.assertEqual(reason, "future_state")
+        self.assertEqual(source.remember_calls, 0)
+
+        source._completed_seller_state["previous"] = seller_public(359)
+        source._seller_fallback_observations = [seller_public(360), seller_public(360)]
+        covered, reason = MODULE.ensure_public_observation(source, observation(360), 360)
+        self.assertFalse(covered)
+        self.assertEqual(reason, "malformed_fallback_order")
+        self.assertEqual(source.remember_calls, 0)
+
+    def test_digest_valid_incomplete_checkpoint_is_rejected_atomically(self):
+        payload = {"route": "YARN", "seller": {}, "fallbacks": []}
+        capsule = {
+            "schema": MODULE.SCHEMA,
+            "sha256": MODULE.hashlib.sha256(MODULE._canonical_bytes(payload)).hexdigest(),
+            "payload": payload,
+        }
+        target = FakeInstance(ready=False)
+        restored, reason = MODULE.restore_committed(target, capsule)
+        self.assertFalse(restored)
+        self.assertEqual(reason, "malformed_checkpoint_keys")
+        self.assertIsNone(target._completed_route)
+        self.assertIsNone(target._completed_seller_state)
+        self.assertEqual(target._seller_fallback_observations, [])
+
+    def test_player_board_and_numeric_drift_are_rejected(self):
+        source = FakeInstance(ready=True)
+        source._completed_route = "YARN"
+        source._completed_seller_state = {
+            "planned": {}, "pending": {}, "previous": seller_public(359),
+            "observed_harvests": {},
+        }
+        other_player = seller_public(360, player=1)
+        source._seller_fallback_observations = [other_player]
+        self.assertIsNone(MODULE.capture_committed(source))
+
+        source._seller_fallback_observations = [seller_public(360)]
+        source._seller_fallback_observations[0]["farms"][1]["tiles"].append([])
+        self.assertIsNone(MODULE.capture_committed(source))
+
+        source._seller_fallback_observations = [seller_public(360)]
+        source._completed_seller_state["pending"] = {"MILK": 1.5}
+        self.assertIsNone(MODULE.capture_committed(source))
 
     def test_digest_tamper_is_rejected_without_partial_restore(self):
         canonical = FakeCanonical(("success",))
@@ -233,7 +336,7 @@ class RecoveryCarrierTests(unittest.TestCase):
         source._completed_route = "YARN"
         source._completed_seller_state = {"planned": {}, "pending": {}, "previous": None,
                                           "observed_harvests": {}}
-        source._seller_fallback_observations = [{"step": 226}]
+        source._seller_fallback_observations = [seller_public(226)]
         capsule = MODULE.capture_committed(source)
         capsule["payload"]["route"] = "MUTATED"
         carrier._capsule = capsule
@@ -251,7 +354,7 @@ class RecoveryCarrierTests(unittest.TestCase):
         carrier = MODULE.RecoveryCarrier(canonical)
         source = FakeInstance(ready=True)
         source._completed_route = "YARN"
-        source._seller_fallback_observations = [{"step": 226}]
+        source._seller_fallback_observations = [seller_public(226)]
         carrier._capsule = MODULE.capture_committed(source)
 
         out = carrier.agent(observation(227), {})
@@ -298,6 +401,8 @@ class RecoveryCarrierTests(unittest.TestCase):
         source._completed_seller_state = {"bad": object()}
         self.assertIsNone(MODULE.capture_committed(source))
         source._completed_seller_state = {}
+        source._seller_fallback_observations = []
+        self.assertIsNone(MODULE.capture_committed(source))
         source._seller_fallback_observations = ["not-an-observation"]
         self.assertIsNone(MODULE.capture_committed(source))
 

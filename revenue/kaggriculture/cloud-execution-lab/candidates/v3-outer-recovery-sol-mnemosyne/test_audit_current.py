@@ -45,6 +45,21 @@ class TitanAgent:
         pass
     def _remember_seller_fallback(self, obs):
         pass
+    def _commit_seller_state(self, checkpoint):
+        pass
+    def _finish_production(self, obs, output, cfg):
+        return output
+    def act(self, obs, cfg=None):
+        try:
+            output = self.production.act(obs)
+        except deadline.DeadlineExceeded as error:
+            self._remember_seller_fallback(obs)
+            output = self._finish_production(obs, fallback, cfg)
+            return output
+        self._completed_route = selected_checkpoint[1]
+        self._commit_seller_state(seller_checkpoint)
+        output = self._finish_production(obs, output, cfg)
+        return output
 '''
 ARLENE = '''
 DECISIONS = ((226, "a", 1, "A"), (360, "b", 2, "B"), (433, "c", 3, "C"))
@@ -116,6 +131,30 @@ class SourceAuditTests(unittest.TestCase):
             root = Path(tmp)
             make_tree(root, runtime=broken)
             with self.assertRaisesRegex(AUDIT.AuditError, "no longer restores"):
+                AUDIT.audit(root)
+
+    def test_completed_checkpoint_must_precede_late_finalizer(self):
+        broken = RUNTIME.replace(
+            "        self._commit_seller_state(seller_checkpoint)\n"
+            "        output = self._finish_production(obs, output, cfg)",
+            "        output = self._finish_production(obs, output, cfg)\n"
+            "        self._commit_seller_state(seller_checkpoint)",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_tree(root, runtime=broken)
+            with self.assertRaisesRegex(AUDIT.AuditError, "checkpoint no longer precedes"):
+                AUDIT.audit(root)
+
+    def test_inner_fallback_must_record_before_late_finalizer(self):
+        broken = RUNTIME.replace(
+            "            self._remember_seller_fallback(obs)\n",
+            "            pass\n",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_tree(root, runtime=broken)
+            with self.assertRaisesRegex(AUDIT.AuditError, "inner-deadline seller observation"):
                 AUDIT.audit(root)
 
     def test_non_exact_route_switch_fails(self):
