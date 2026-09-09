@@ -20,8 +20,6 @@ from typing import Any, Mapping, Sequence
 
 NO_ORDER = ["SELL", "WHEAT", 0]
 MOVES = {"NORTH": (0, -1), "SOUTH": (0, 1), "WEST": (-1, 0), "EAST": (1, 0)}
-SHEDS = ((4, 4), (5, 4), (4, 5), (5, 5))
-
 
 def _uint(value: Any, name: str, minimum: int = 0) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
@@ -77,7 +75,7 @@ def _productive_detour(
     mechanics: Any, observation: Mapping[str, Any], post_farm: Mapping[str, Any],
     post_private: Mapping[str, Any], route: Sequence[Mapping[str, Any]], events: list[tuple],
     final_positions: list[list[int]], worker: int, wage: int,
-    step: int, end: int, cap: int, limit: int, reserved: set[tuple[int, int]],
+    step: int, end: int, board: int, cap: int, limit: int, reserved: set[tuple[int, int]],
 ) -> dict | None:
     """Return one producer-route harvest/deposit/rejoin witness, or None.
 
@@ -102,7 +100,6 @@ def _productive_detour(
     inventory = market.get("inventory", {})
     params = market.get("params")
     day = step // max(1, int(observation.get("turnsPerDay", 24)))
-    # Observations normally provide day explicitly; prefer it when present.
     day = int(observation.get("day", day))
     touched = {(e[3], e[4]) for e in events
                if e[1] != worker and e[2] not in (*MOVES, "PASS")}
@@ -118,7 +115,9 @@ def _productive_detour(
             item, quantity = item_qty
             if stock + quantity > cap or item not in inventory:
                 continue
-            for shed in SHEDS:
+            half = board // 2
+            sheds = ((half-1, half-1), (half, half-1), (half-1, half), (half, half))
+            for shed in sheds:
                 harvest_step = step + 1 + _distance(start, target)
                 expiry = tile.get("max_lifespan_step", -1) if isinstance(tile, dict) else -1
                 if isinstance(expiry, int) and expiry >= 0 and expiry <= harvest_step:
@@ -283,9 +282,6 @@ def propose_redundant_hires(
     if not best:
         report["reason"] = "no_redundant_trailing_worker"; return out, report
 
-    # Productive capacity belongs to the producer-owned route: only the earliest
-    # member of the removable suffix may be rescued first, preserving contiguous
-    # trailing HIRE omission and therefore spawn/actor ordering for every keeper.
     protected = 0; reserved: set[tuple[int, int]] = set(); detours = []
     first_removed = 1 + existing + len(hires) - best
     cost_start = len(hires) - best
@@ -293,10 +289,11 @@ def propose_redundant_hires(
         worker = first_removed + offset
         witness = _productive_detour(mechanics, observation, farm, private, route, events, positions,
                                       worker, costs[cost_start + offset], step, end,
-                                      cap, limit, reserved)
+                                      board, cap, limit, reserved)
         if witness is None:
             break
         detours.append(witness); reserved.add(tuple(witness["target"])); protected += 1
+        break
     for witness in detours:
         for offset, action in enumerate(witness.pop("sequence")):
             t = step + 1 + offset
