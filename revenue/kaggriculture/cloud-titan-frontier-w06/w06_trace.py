@@ -5,7 +5,7 @@ import copy
 import math
 from typing import Any, Iterable
 
-from w06_common import plain
+from w06_common import canonical, plain
 
 LOSS_THRESHOLDS = (0.10, 0.25, 0.50, 0.75, 1.00)
 
@@ -188,33 +188,45 @@ def analyze_transitions(transitions: Iterable[dict[str, Any]], candidate_seat: i
     }
 
 
+def _action_identity(action: dict[str, Any]) -> bytes:
+    """Canonical bytes for the exact action sent to the engine."""
+    return canonical({
+        "farmer": action.get("farmer"),
+        "hands": action.get("hands"),
+        "market": action.get("market"),
+    })
+
+
 def intervention_candidates(analysis: dict[str, Any], limit: int) -> list[dict[str, Any]]:
     candidates: list[dict[str, Any]] = []
-    seen: set[tuple[Any, ...]] = set()
+    seen_specs: set[tuple[Any, ...]] = set()
+    seen_actions: set[tuple[int, bytes]] = set()
     events = analysis["largest_candidate_cash_outflows"] + analysis["largest_one_step_deficit_expansions"]
     for event in events:
         step = event["game_step"]
         action = event["candidate_action"]
         market = action["market"]
         for index, order in enumerate(market):
-            key = (step, "drop_market_order", index)
-            if key not in seen:
-                candidates.append({
-                    "game_step": step,
-                    "mode": "drop_market_order",
-                    "order_index": index,
-                    "target_order": order,
-                    "selection_basis": {
-                        "candidate_money_delta": event["candidate_money_delta"],
-                        "money_margin_delta": event["money_margin_delta"],
-                    },
-                })
-                seen.add(key)
-                if len(candidates) >= limit:
-                    return candidates
+            spec = {"mode": "drop_market_order", "order_index": index}
+            action_key = (step, _action_identity(apply_intervention(action, spec)))
+            if action_key in seen_actions:
+                continue
+            candidates.append({
+                "game_step": step,
+                **spec,
+                "target_order": order,
+                "selection_basis": {
+                    "candidate_money_delta": event["candidate_money_delta"],
+                    "money_margin_delta": event["money_margin_delta"],
+                },
+            })
+            seen_actions.add(action_key)
+            if len(candidates) >= limit:
+                return candidates
         if market:
             key = (step, "market_pass", None)
-            if key not in seen:
+            action_key = (step, _action_identity(apply_intervention(action, {"mode": "market_pass"})))
+            if key not in seen_specs and action_key not in seen_actions:
                 candidates.append({
                     "game_step": step,
                     "mode": "market_pass",
@@ -223,7 +235,8 @@ def intervention_candidates(analysis: dict[str, Any], limit: int) -> list[dict[s
                         "money_margin_delta": event["money_margin_delta"],
                     },
                 })
-                seen.add(key)
+                seen_specs.add(key)
+                seen_actions.add(action_key)
                 if len(candidates) >= limit:
                     return candidates
         farmer, hands = action["farmer"], action["hands"]
@@ -232,7 +245,8 @@ def intervention_candidates(analysis: dict[str, Any], limit: int) -> list[dict[s
         ) or any(isinstance(item, list) and item and item[0] != "PASS" for item in hands)
         if unit_nonpass:
             key = (step, "units_pass", None)
-            if key not in seen:
+            action_key = (step, _action_identity(apply_intervention(action, {"mode": "units_pass"})))
+            if key not in seen_specs and action_key not in seen_actions:
                 candidates.append({
                     "game_step": step,
                     "mode": "units_pass",
@@ -241,7 +255,8 @@ def intervention_candidates(analysis: dict[str, Any], limit: int) -> list[dict[s
                         "money_margin_delta": event["money_margin_delta"],
                     },
                 })
-                seen.add(key)
+                seen_specs.add(key)
+                seen_actions.add(action_key)
                 if len(candidates) >= limit:
                     return candidates
     return candidates
