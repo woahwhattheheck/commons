@@ -138,11 +138,46 @@ class StoreTests(unittest.TestCase):
         with self.assertRaises(DomainError):
             self.command('fulfill', dict(id='order-1'))
         self.assert_stock(10, 2)
-        self.fulfill()
-        self.fulfill()
+        first = self.fulfill()
+        self.assertEqual(first.get('shipment_ref'), 'fixture-handoff')
+        second = self.fulfill()
+        self.assertEqual(second['status'], 'fulfilled')
+        self.assertEqual(second['shipment_ref'], 'fixture-handoff')
         self.assert_stock(8, 0)
         with self.assertRaises(DomainError):
             self.command('cancel', dict(id='order-1'))
+
+    def test_fulfill_fresh_key_exact_reference_replays_without_movement(self):
+        self.seed()
+        self.reserve()
+        self.fulfill()
+        before = self.store.snapshot()
+        again = self.command('fulfill', dict(id='order-1', shipment_ref='fixture-handoff'), key='fresh-exact')
+        self.assertEqual(again['status'], 'fulfilled')
+        self.assertEqual(again['shipment_ref'], 'fixture-handoff')
+        self.assertEqual(before, self.store.snapshot())
+
+    def test_fulfill_fresh_key_changed_reference_conflicts(self):
+        self.seed()
+        self.reserve()
+        self.fulfill()
+        before = self.store.snapshot()
+        with self.assertRaisesRegex(DomainError, 'does not match'):
+            self.command('fulfill', dict(id='order-1', shipment_ref='different-handoff'), key='fresh-changed')
+        self.assertEqual(before, self.store.snapshot())
+
+    def test_fulfill_fresh_key_blank_reference_rejected(self):
+        self.seed()
+        self.reserve()
+        self.fulfill()
+        before = self.store.snapshot()
+        with self.assertRaises(DomainError):
+            self.command('fulfill', dict(id='order-1'), key='fresh-blank')
+        with self.assertRaises(DomainError):
+            self.command('fulfill', dict(id='order-1', shipment_ref=''), key='fresh-blank2')
+        with self.assertRaises(DomainError):
+            self.command('fulfill', dict(id='order-1', shipment_ref='   '), key='fresh-blank3')
+        self.assertEqual(before, self.store.snapshot())
 
     def test_return_requires_fulfilled_line_and_explicit_inspection(self):
         self.seed()
