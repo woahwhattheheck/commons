@@ -15,19 +15,24 @@
       "sha256": "bbc62f8ffdfa9a73fd882f95f9b80b217d25f974793da12d866e4cd221bec830"
     },
     {
-      "bytes": 6203,
-      "path": "README.md",
-      "sha256": "6300862dc21a69789337d91b4219b15b9e629f5e13cea54fd17b5ef26865659b"
+      "bytes": 1833,
+      "path": "NUMERIC-CLOSURE.md",
+      "sha256": "d8644d23412156358cc3040b0f8aeb7e3908a1c302d237a82235ab9885195f38"
     },
     {
-      "bytes": 2086,
-      "path": "RESULTS.md",
-      "sha256": "26597d94df7900e7fdd7c6a732b7772e457eca90aa8f0b8985a04d7a113a52e6"
+      "bytes": 6709,
+      "path": "README.md",
+      "sha256": "bd94082265688e8576a70e980406aaa15e0f4732c5aed0bb11595fe26a811d7b"
     },
     {
       "bytes": 2948,
+      "path": "RESULTS.md",
+      "sha256": "b601f9fd0d3705691ecc4b0c7a91495f4517ef50af30a51e72656ed79eafb6c5"
+    },
+    {
+      "bytes": 3074,
       "path": "THREAT-MODEL.md",
-      "sha256": "96bf50ce23b6ee5114adac7d09c6e0a12547a926b88d92080596f90afa80b470"
+      "sha256": "ada0e537493d2042aa1decce555f355d92ab4de8f9a585d69b6b2ad8178ab9b8"
     },
     {
       "bytes": 9190,
@@ -60,19 +65,24 @@
       "sha256": "e79b8b98e456a42ba7d27479295a086b8f41959e3ee039d0c40384bf28c73aa6"
     },
     {
-      "bytes": 7451,
+      "bytes": 7710,
       "path": "gate_common.py",
-      "sha256": "55ea743ba1236c2572b518a1aff6237dce5ff24f8278b6a996a0a6ad432a8923"
+      "sha256": "53e552b7e7105b35e0b6b18a07ff38524ae409ebd08dda263d3cc3a54b8aac45"
     },
     {
-      "bytes": 6435,
+      "bytes": 7273,
       "path": "metrics.py",
-      "sha256": "e3cb706f7f5c7d4a1a8a299435b52c60842e282dcd2ad33f94964e8891037187"
+      "sha256": "c5be10c78bc2a2045406b9d5a4f34ee5432bc23d7ee8ca643eacc1694ebbccc5"
     },
     {
       "bytes": 3175,
       "path": "panel_load.py",
       "sha256": "340054b8403827bad0ff086b1c84b0e3abdd052dedeb5622b5ad56bb168aa287"
+    },
+    {
+      "bytes": 2859,
+      "path": "test_numeric_closure.py",
+      "sha256": "0f6a3e588548d91e4c44c9490dc3320dc29ddbe13905df7346002758c7b83fa9"
     },
     {
       "bytes": 5604,
@@ -94,13 +104,21 @@
     "actor": "SOL-KILN",
     "operation": "titan-v3-paired-game-gate-snapshot-binding-20260909-sol-kiln-01",
     "parent_head": "22e764944d246fce5555f8ae09c7f14345179219",
-    "scope": "single-open immutable input snapshots, strict schema typing, numeric overflow closure"
+    "scope": "single-open immutable input snapshots, strict schema typing, finite derived arithmetic"
+  },
+  "numeric_closure": {
+    "integration_parent": "3816ed79509f3fe529834008acfb765fc1ec8f43",
+    "operation": "titan-v3-paired-game-numeric-closure-20260909-sol-cipher-01",
+    "receipt_policy": "regenerated from composed bytes; source manifest not copied",
+    "source_actor": "SOL-CIPHER",
+    "source_head": "23fd92cb015eda1ea7c04253972bd0c93364b20a",
+    "source_pr": 11603
   },
   "operation": "titan-v3-paired-game-gate-20260909-sol-argus-02",
   "tests": {
-    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py",
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py test_numeric_closure.py",
     "errors": 0,
     "failed": 0,
-    "passed": 27
+    "passed": 30
   }
 }

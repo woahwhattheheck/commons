@@ -5,6 +5,9 @@ Operation: `titan-v3-paired-game-gate-20260909-sol-argus-02`
 Snapshot-binding hardening:
 `titan-v3-paired-game-gate-snapshot-binding-20260909-sol-kiln-01`
 
+Numeric-closure integration:
+`titan-v3-paired-game-numeric-closure-20260909-sol-cipher-01`
+
 This is a fail-closed evidence adapter for the Kaggriculture evaluator's native
 `GAMES.jsonl` rows. It evaluates paired game cells, not prediction rows: each
 cell is identified by `(opponent, seed, candidate_seat)` and carries the two
@@ -27,6 +30,8 @@ Before looking at an average, the gate requires:
 - exact match between expected and observed engine, runner, baseline archive,
   and candidate archive identities;
 - integer, non-boolean schema versions and finite numeric conversion;
+- finite derived margins, cell deltas, medians, pair means, opponent/seat strata,
+  and aggregate means; overflow invalidates evidence instead of being clipped;
 - each input opened once and copied into a private snapshot while its SHA-256 is
   computed, so the parser consumes the exact bytes named by the report;
 - post-evaluation snapshot digest verification, duplicate-key-safe JSON parsing,
@@ -93,18 +98,21 @@ python3 gate.py \
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
-  python3 -m unittest -v test_validation.py test_policy_cli.py
+  python3 -m unittest -v \
+  test_validation.py test_policy_cli.py test_numeric_closure.py
 python3 -m compileall -q .
 ```
 
-Current hardening result: **27/27 passed**. Covered attacks include partial
-positive panels, extra and duplicate cells, non-complete rows, baseline errors,
-NaN, oversized integers that cannot become finite floats, malformed score
-vectors, bad seats, provenance drift, boolean schema versions, duplicate
-contract seeds, missing second seat, duplicate JSON keys, symlink substitution,
-source replacement between acquisition and evaluation, global mean hiding W→L
-regression, global mean hiding a negative opponent stratum, identity candidates,
-worst-cell violations, deterministic reports, and stable CLI exit codes.
+Current composed hardening result: **30/30 passed**. Covered attacks include
+partial positive panels, extra and duplicate cells, non-complete rows, baseline
+errors, NaN, oversized integers that cannot become finite floats, finite score
+endpoints whose subtraction overflows, finite cell deltas whose pair mean
+overflows, malformed score vectors, bad seats, provenance drift, boolean schema
+versions, duplicate contract seeds, missing second seat, duplicate JSON keys,
+symlink substitution, source replacement between acquisition and evaluation,
+global mean hiding W→L regression, global mean hiding a negative opponent
+stratum, identity candidates, worst-cell violations, deterministic reports, and
+stable CLI exit codes.
 
 ## L01 adapter
 
@@ -126,12 +134,14 @@ other rows abort. Correct the arm semantics before producing its contract.
 ## Files
 
 - `gate.py` — zero-dependency CLI/orchestrator and private snapshot lifecycle.
-- `gate_common.py` — strict JSON, single-open snapshot, hash, and atomic-write
-  primitives.
+- `gate_common.py` — strict JSON, single-open snapshot, hash, finite scalar, and
+  atomic-write primitives.
 - `contract.py` — frozen grid, provenance, schema, and policy validation.
 - `panel_load.py` — exact Cartesian game-grid loading and validation.
-- `metrics.py` — paired cash/result metrics, strata, and declared policy checks.
-- `test_support.py`, `test_validation.py`, `test_policy_cli.py` — adversarial contracts.
+- `metrics.py` — finite paired cash/result metrics, strata, and policy checks.
+- `test_support.py`, `test_validation.py`, `test_policy_cli.py`, and
+  `test_numeric_closure.py` — adversarial contracts.
 - `CONTRACT.md` — exact JSON schemas and policy semantics.
 - `THREAT-MODEL.md` — evidence threats and non-goals.
+- `NUMERIC-CLOSURE.md` — composed arithmetic-overflow repair receipt.
 - `example/` — synthetic complete 2×2×2 panel; not gameplay evidence.

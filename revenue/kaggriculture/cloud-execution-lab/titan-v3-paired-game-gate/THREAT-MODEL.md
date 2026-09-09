@@ -12,12 +12,13 @@
   archive identities must match the frozen contract.
 - **NaN/Infinity, overflow, and malformed numeric evidence:** non-finite JSON
   constants, booleans-as-numbers, integers that cannot convert to a finite
-  float, and score vectors other than length two are rejected.
+  float, score vectors other than length two, and non-finite derived margins,
+  deltas, medians, pair means, strata means, or aggregate means are rejected.
 - **Mean-only selection:** result flips, pair balance, opponent strata, seat
   strata, median, and worst-cell behavior are explicit checks.
 - **Policy drift:** every policy field is mandatory and embedded in the report.
-- **Parser ambiguity:** duplicate JSON object keys, boolean schema versions, and
-  unknown schema keys are rejected.
+- **Parser ambiguity:** duplicate JSON object keys, boolean schema versions,
+  oversized/malformed JSON values, and unknown schema keys are rejected.
 - **Hash/parse time-of-check-to-time-of-use:** every input is opened once with a
   no-follow regular-file check, copied into a private snapshot while hashing,
   and parsed only from that copy. The report records that digest and byte count.
