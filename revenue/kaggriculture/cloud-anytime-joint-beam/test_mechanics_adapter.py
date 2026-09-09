@@ -58,8 +58,8 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
     def setUpClass(cls):
         cls.m = load_mechanics()
         cls.ctx = MechanicsContext(board_size=10, day=0, turns_per_day=24)
-        cls.transition = mechanics_transition(cls.m, cls.ctx)
-        cls.score = mechanics_scorer(cls.m)
+        cls.transition = staticmethod(mechanics_transition(cls.m, cls.ctx))
+        cls.score = staticmethod(mechanics_scorer(cls.m))
 
     def test_exact_plant_consumes_shared_seed_and_second_conflict_prunes(self):
         initial = fixture(2)
@@ -84,6 +84,13 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
             self.assertGreater(result.pruned_illegal, 0)
         else:
             self.assertEqual(canonical, result.actions)
+
+    def test_route_critical_inventory_transfer_is_canonical_only(self):
+        state = fixture(1)
+        # Candidate generation must not reinterpret destination-specific
+        # logistics using only aggregate inventory economics.
+        for action in (["PICKUP", "WHEAT", 1], ["DROP"], ["PLACE", "WHEAT", 1]):
+            self.assertEqual((), tuple(bounded_worker_candidates(self.m, state, 0, action)))
 
     def test_candidate_family_is_bounded_and_deterministic(self):
         state = fixture(1)

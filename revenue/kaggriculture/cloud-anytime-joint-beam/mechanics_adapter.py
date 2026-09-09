@@ -12,6 +12,12 @@ from typing import Any, Callable, Iterable, Mapping
 
 from joint_action_beam import Action, State
 
+# Destination-specific logistics carry downstream route obligations that the
+# short-horizon aggregate scorer cannot infer safely. The core beam still
+# inserts canonical first; returning no alternatives here preserves the exact
+# selected transfer until a caller supplies a destination-aware obligation model.
+ROUTE_CRITICAL_OPS = frozenset({'PICKUP', 'DROP', 'PLACE'})
+
 
 @dataclass(frozen=True)
 class MechanicsContext:
@@ -82,7 +88,16 @@ def bounded_worker_candidates(mechanics: Any, state: State, idx: int, canonical:
 
     The beam core inserts canonical first and caps the family. Exact mechanics
     transition remains the authority for legality and shared-resource conflicts.
+
+    PICKUP/DROP/PLACE are intentionally canonical-only here. Their value is in
+    *where* inventory is staged for a later route, while the generic score only
+    sees aggregate holdings. Replacing them under that coarse score caused an
+    observed day-boundary WHEAT pickup to be traded for fertilizer collection,
+    breaking downstream production. Callers with an explicit destination-aware
+    obligation model may provide their own candidate provider instead.
     """
+    if isinstance(canonical, list) and canonical and canonical[0] in ROUTE_CRITICAL_OPS:
+        return ()
     farm = state["farm"]
     private = state["private"]
     pos = mechanics._farmer_position(farm, idx)
