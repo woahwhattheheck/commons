@@ -77,14 +77,27 @@ def materialize_evaluator(
                 f"{label} cardinality mismatch: old={before_count}, new={new_before}"
             )
         patched = patched.replace(old, new, 1)
+        raw_old_after = patched.count(old)
+        new_after = patched.count(new)
+        retained_old_per_new = new.count(old)
+        # Some insert-only replacements intentionally retain the old bytes inside
+        # the new replacement (patch 1 does this).  Distinguish those raw nested
+        # bytes from an unconsumed patch site; consumers care about the latter.
+        unconsumed_old_after = raw_old_after - (new_after * retained_old_per_new)
+        if unconsumed_old_after < 0:
+            raise EvaluatorMaterializeError(
+                f"{label} retained-old accounting underflow"
+            )
         patch_receipts.append(
             {
                 "label": label,
                 "old_sha256": helper.sha256(old),
                 "new_sha256": helper.sha256(new),
                 "old_occurrences_before": before_count,
-                "old_occurrences_after": patched.count(old),
-                "new_occurrences_after": patched.count(new),
+                "old_occurrences_after": unconsumed_old_after,
+                "raw_old_occurrences_after": raw_old_after,
+                "retained_old_occurrences_per_new": retained_old_per_new,
+                "new_occurrences_after": new_after,
             }
         )
     if patched == original:

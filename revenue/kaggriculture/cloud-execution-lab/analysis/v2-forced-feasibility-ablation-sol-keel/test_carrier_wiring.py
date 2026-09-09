@@ -10,6 +10,7 @@ import unittest
 from unittest import mock
 
 import compare_bound as subject
+import materialize_evaluator as evaluator_materializer
 
 
 HERE = Path(__file__).resolve().parent
@@ -178,6 +179,33 @@ class EvaluatorCustodyContracts(unittest.TestCase):
                 "patches": patches,
             },
         }
+
+    def test_real_materializer_receipt_matches_consumer_cardinality(self):
+        source_path = REPO / "revenue/kaggriculture/cloud-eval/evaluate.py"
+        with tempfile.TemporaryDirectory() as temporary:
+            patched_path = Path(temporary) / "evaluate_bound.py"
+            receipt = evaluator_materializer.materialize_evaluator(
+                source_path,
+                patched_path,
+            )
+            patches = receipt["patched"]["patches"]
+            self.assertEqual(
+                [row["raw_old_occurrences_after"] for row in patches],
+                [0, 1, 0],
+            )
+            self.assertEqual(
+                [row["retained_old_occurrences_per_new"] for row in patches],
+                [0, 1, 0],
+            )
+            self.assertEqual(
+                [row["old_occurrences_after"] for row in patches],
+                [0, 0, 0],
+            )
+            subject.validate_evaluator(
+                receipt,
+                source_path=source_path,
+                patched_path=patched_path,
+            )
 
     def test_post_materialization_evaluator_tamper_is_rejected(self):
         with tempfile.TemporaryDirectory() as temporary:

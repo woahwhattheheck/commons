@@ -76,11 +76,11 @@ jobs:
           test "$(git hash-object "$CASE/materialize.py")" = "06515514ec864776f29571d63d3f343376e5865b"
           test "$(git hash-object "$CASE/compare.py")" = "49614b4ec0eb5e5c09f5d345dd13c3c982b6ab39"
           test "$(git hash-object "$CASE/bind_execution.py")" = "3bf8cfb22f2708be37b0f7955444e7a36a6e258d"
-          test "$(git hash-object "$CASE/materialize_evaluator.py")" = "fe535fda2573ce198e34da4c4639ab14587ba8b8"
+          test "$(git hash-object "$CASE/materialize_evaluator.py")" = "3e92dd1839dd2cebefeddf97fa02d2989df8f933"
           test "$(git hash-object "$CASE/compare_bound.py")" = "f13c068cf227bf88a8bee2ad407943ec7dc252bf"
           test "$(git hash-object "$CASE/test_materialize.py")" = "ac21d87c15bda94b3154d6e52921a1b77bb6acfb"
           test "$(git hash-object "$CASE/test_compare.py")" = "0aa5ebee8940512ed6d530076bdee3d2c6dc62b3"
-          test "$(git hash-object "$CASE/test_carrier_wiring.py")" = "649ffc2c006f6e74dcb9907061b7c9d93338846c"
+          test "$(git hash-object "$CASE/test_carrier_wiring.py")" = "aa4529d73465e3ec7853d787739d21c1a5f6176d"
           git diff --exit-code -- .
           printf 'exact_head=%s\n' "$EXPECTED_HEAD"
 
