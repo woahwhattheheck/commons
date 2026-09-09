@@ -166,7 +166,7 @@
     {
       "callsite": "SpatialTempo -> selected producer -> common returned-action commit -> existing ObservedFillLedger",
       "component": "Owned idle fertilizer recovery",
-      "consumed_result": "23 source/primitive/runtime contracts; original recording privately checked; no full-game gain claim",
+      "consumed_result": "27 source/primitive/runtime contracts; real initialized Arlene/FrozenSelected direct and delayed terminal deliveries retain one DROP, unique existing FERT1 sale and observed receipt. Preexisting/competing fertilizer declines before departure; actual terminal purchases/inputs and larger or duplicate lots decline delivery. No full-game gain claim.",
       "enabled": true,
       "source_pin": "Current manifest spatial_tempo.py and titan_runtime.py"
     },
@@ -371,8 +371,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 11128,
-      "sha256": "9235313cd8192e8e279ea5b42c5b9ce367f3c2632db4401254516695e5a020d3",
+      "bytes": 11984,
+      "sha256": "f2bdb5c4f3a4510117557f8ee6558de4ec47766e5647442f63a76e716bd22ce5",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -451,8 +451,8 @@
       "source_path": "test_funded_payback_runtime.py"
     },
     "checks/test_idle_fertilizer.py": {
-      "bytes": 21022,
-      "sha256": "be27dd17f6595b5df21e2a7ec7f5663cda2fd711574eb73153b9332d7d3ae6de",
+      "bytes": 27637,
+      "sha256": "234999794ae80b9e2e22a8c9c90db1b0a01c3c653cdb79b589d5ee557580a983",
       "source_path": "test_idle_fertilizer.py"
     },
     "checks/test_market_pressure_runtime.py": {
@@ -841,8 +841,8 @@
       "source_path": "../cloud-quickstep/seller_snapshot.py"
     },
     "spatial_tempo.py": {
-      "bytes": 47592,
-      "sha256": "0afbb1235bba27927ef4d38bd2dac21376fad9fc5309c45dbf66c8d770108aeb",
+      "bytes": 50433,
+      "sha256": "1ff467d2e028f229b8c5c74547e6fc3cb88e206a26d94893174fc712f9d8fbdf",
       "source_path": "spatial_tempo.py"
     },
     "terminal_history_join.py": {
