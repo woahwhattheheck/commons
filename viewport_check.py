@@ -59,11 +59,15 @@ def _bounded_diagnostic(text: str, limit: int = 240) -> str:
 
 def tracked_pages() -> List[str]:
     """Return every tracked ``.html`` path, at any depth, deterministically."""
-    done = subprocess.run(
-        ["git", "ls-files", "-z", "--", "*.html"],
-        capture_output=True,
-        check=False,
-    )
+    try:
+        done = subprocess.run(
+            ["git", "ls-files", "-z", "--", "*.html"],
+            capture_output=True,
+            check=False,
+        )
+    except OSError as exc:
+        detail = _bounded_diagnostic(str(exc))
+        raise GitInventoryError("git ls-files could not start: %s" % detail) from exc
     if done.returncode != 0:
         raw = done.stderr or done.stdout
         detail = _bounded_diagnostic(raw.decode("utf-8", errors="replace"))
