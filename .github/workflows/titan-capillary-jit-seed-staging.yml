@@ -1,0 +1,35 @@
+name: titan-capillary-jit-seed-staging
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py"
+      - "revenue/kaggriculture/cloud-execution-lab/receipts/capillary_jit_seed_staging.json"
+      - ".github/workflows/titan-capillary-jit-seed-staging.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structural-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run deterministic route and replay certificates
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -m unittest -v test_jit_seed_staging.py
+      - name: Compile candidate and import the real runtime seam
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -m py_compile jit_seed_staging.py titan_capillary.py test_jit_seed_staging.py
+          python - <<'PY'
+          from titan_capillary import CapillaryTitanAgent
+          assert CapillaryTitanAgent.__name__ == "CapillaryTitanAgent"
+          PY
