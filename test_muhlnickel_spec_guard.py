@@ -1,3 +1,4 @@
+import ast
 import hashlib
 import json
 import subprocess
@@ -346,6 +347,65 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         errors = self.errors(root)
         self.assertEqual(len(errors), 1)
         self.assertIn("host tensor/model/gate computation", errors[0])
+
+    def test_relative_services_import_plus_host_launch_hits_core_basename_collision(self):
+        """PR 10971 / run 34311401719: importing basename services closed over a
+        titan-bearing core.py plus submit plus a host process launch."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "integrations/command_center").mkdir(parents=True)
+        (root / "integrations/shared_equipment").mkdir(parents=True)
+        (root / "integrations/command_center/core.py").write_text(
+            "titan = 'command-center surface'\n",
+            encoding="utf-8",
+        )
+        (root / "integrations/shared_equipment/services.py").write_text(
+            "from core import titan\n"
+            "def submit(job):\n    return titan\n",
+            encoding="utf-8",
+        )
+        (root / "integrations/shared_equipment/github_publication.py").write_text(
+            "import subprocess\n"
+            "from .services import submit\n"
+            "def publish():\n"
+            "    submit(1)\n"
+            "    return subprocess.run(['python3', 'publish.py'])\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        hit = [item for item in errors if "github_publication.py" in item]
+        self.assertEqual(len(hit), 1)
+        self.assertIn("dynamic host code", hit[0])
+
+    def test_github_publication_does_not_import_services_or_close_over_titan_core(self):
+        """Live publisher stays on provider_io so CI rglob order of core.py is irrelevant."""
+        here = Path(__file__).resolve().parent
+        source_path = here / "integrations/shared_equipment/github_publication.py"
+        tree = ast.parse(source_path.read_text(encoding="utf-8"))
+        imported = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ImportFrom) and node.module:
+                imported.add(node.module)
+                imported.add(node.module.split(".")[0])
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    imported.add(alias.name)
+                    imported.add(alias.name.split(".")[0])
+        self.assertNotIn("services", imported)
+        self.assertIn("integrations.shared_equipment.provider_io", imported)
+
+        by_module, by_path = guard.load_module_facts()
+        pub = "integrations/shared_equipment/github_publication.py"
+        self.assertIn(pub, by_path)
+
+        class ForcedCore(dict):
+            def get(self, key, default=None):
+                if key == "core":
+                    return by_path["integrations/command_center/core.py"]
+                return super().get(key, default)
+
+        closed = guard.closure(by_path[pub], ForcedCore(by_module))
+        self.assertEqual(guard.fact_reasons(closed), [])
 
 
 if __name__ == "__main__":
