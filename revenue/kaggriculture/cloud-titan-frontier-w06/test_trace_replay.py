@@ -164,5 +164,53 @@ class ArchiveTests(unittest.TestCase):
                 module.verify_and_extract(archive, pin, root / "out")
 
 
+class LivePinTests(unittest.TestCase):
+    REPO = HERE.parents[2]
+    PIN_PATH = HERE / "PIN.json"
+    CANON_ARCHIVE = (
+        REPO / "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json"
+    )
+
+    def test_pin_matches_living_current_source_and_archive(self):
+        pin = json.loads(self.PIN_PATH.read_text(encoding="utf-8"))
+        release = pin["release"]
+        source = self.REPO / release["source_manifest"]
+        archive = self.REPO / release["path"]
+        source_digest = hashlib.sha256(source.read_bytes()).hexdigest()
+        archive_digest = module.sha256_file(archive)
+        self.assertEqual(source_digest, release["source_manifest_sha256"])
+        self.assertEqual(archive_digest, release["sha256"])
+        self.assertEqual(archive.stat().st_size, release["bytes"])
+        canon = json.loads(self.CANON_ARCHIVE.read_text(encoding="utf-8"))
+        self.assertEqual(canon["sha256"], release["sha256"])
+        self.assertEqual(canon["bytes"], release["bytes"])
+        self.assertEqual(canon["runtime_files"], release["runtime_files"])
+        self.assertEqual(canon["source_manifest_sha256"], release["source_manifest_sha256"])
+
+    def test_stale_source_manifest_hash_is_rejected_before_extract(self):
+        pin = json.loads(self.PIN_PATH.read_text(encoding="utf-8"))
+        release = pin["release"]
+        source = self.REPO / release["source_manifest"]
+        actual = hashlib.sha256(source.read_bytes()).hexdigest()
+        stale = "9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f"
+        self.assertNotEqual(actual, stale)
+        self.assertEqual(actual, release["source_manifest_sha256"])
+
+    def test_living_release_extracts_under_the_reminted_pin(self):
+        pin = json.loads(self.PIN_PATH.read_text(encoding="utf-8"))
+        release = pin["release"]
+        with tempfile.TemporaryDirectory() as td:
+            receipt = module.verify_and_extract(
+                self.REPO / release["path"],
+                self.PIN_PATH,
+                Path(td) / "out",
+            )
+            self.assertEqual(receipt["extraction"]["runtime_files"], release["runtime_files"])
+            self.assertEqual(
+                receipt["extraction"]["source_manifest"]["sha256"],
+                release["source_manifest_sha256"],
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
