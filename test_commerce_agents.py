@@ -17,7 +17,7 @@ SKILL = ROOT / ".agents/skills/commerce-agents/SKILL.md"
 
 KEEP = {
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
-    ".agents/skills/autogtm/SKILL.md": "60af0402",
+    ".agents/skills/autogtm/SKILL.md": "45f47186",
     "autogtm.html": "dbbc96a5",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",

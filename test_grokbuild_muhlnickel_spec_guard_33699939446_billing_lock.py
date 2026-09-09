@@ -29,7 +29,7 @@ KEEP = {
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
     "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "bd092dc0",
     "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9111f850",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "8a760e83",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "312dcdcb",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",

@@ -15,12 +15,12 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 
 KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "838dfe4f",
+    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "815a5a2b",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "1d997a98",
-    "test_harborline_commerce_compose_keep_lift.py": "b97b09ec",
+    "test_harborline_commerce_compose.py": "7d3f476b",
+    "test_harborline_commerce_compose_keep_lift.py": "fd490fec",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",

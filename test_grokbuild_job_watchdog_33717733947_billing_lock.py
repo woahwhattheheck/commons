@@ -28,7 +28,7 @@ KEEP = {
     "open_door_guard.py": "877e148d",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
-    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "9819e5e0",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "f77c6542",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
     "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "7c315adf",
     "p/grok-build-job-watchdog-33699986556-billing-lock-20260903-01.md": "4754031d",
