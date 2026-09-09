@@ -32,7 +32,7 @@ KEEP = {
     "wire.html": "5e2f94f4",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
 }
 
 

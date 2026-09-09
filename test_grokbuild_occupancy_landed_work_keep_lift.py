@@ -49,7 +49,7 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertNotEqual(
             terminal.KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08"
         )
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("6c0e2d1a"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("555668bb"))
         self.assertTrue(git_blob("test_landed_work_feed.py").startswith("638c5d14"))
         self.assertTrue(
             git_blob("test_landed_work_feed_readback.py").startswith("c73dd928")

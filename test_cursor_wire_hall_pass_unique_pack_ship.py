@@ -20,7 +20,7 @@ HALL = ROOT / "p/cursor-google-ai-mode-hall-pass-20260902-01.md"
 KEEP = {
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
-    "test_cursor_wire_super_mcp_fold_readback.py": "62863c08",
+    "test_cursor_wire_super_mcp_fold_readback.py": "0adb570a",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "5e2f94f4",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
@@ -28,7 +28,7 @@ KEEP = {
     "test_google_ai_mode_hall_pass.py": "9fe45498",
     "api/mcp.py": "393da756",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "26a62564",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",

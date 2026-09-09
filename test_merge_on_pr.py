@@ -32,7 +32,7 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
     "autogtm.html": "dbbc96a5",
