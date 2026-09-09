@@ -1,15 +1,24 @@
 --- titan_runtime.py
 +++ titan_runtime.py
 @@ -66,6 +66,8 @@
+     operating_stock: bool = False
+     idle_fertilizer: bool = False
      crop_release: bool = False
 +    rival_dump_price_drop: float = 15.0
 +    rival_dump_lookback_steps: int = 8
+ 
+     def __post_init__(self):
+         if self.consumer not in ('frozen', 'ordered', 'parent'):
 @@ -588,7 +590,26 @@
+         self._commit_seller_state(seller_checkpoint)
+         self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
+                                 act_cpu_seconds=time.process_time()-cpu_started)
 +        output = self._g01_post(obs, cfg, output)
          output = self._finish_production(obs, output, cfg)
          return output
-+
+ 
 +    def _g01_post(self, obs, cfg, output):
++        """O01 rival model + O02 hire guard. No-ops when env flags are off."""
 +        try:
 +            from rival_model import apply_rival_model
 +            prev=getattr(self,'_g01_prev_prices',None)
@@ -25,3 +34,5 @@
 +        except Exception as e:
 +            self.diagnostics['e20_hire']={'error':type(e).__name__}
 +        return output
++
+     __call__ = act
