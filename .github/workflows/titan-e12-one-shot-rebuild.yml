@@ -1,0 +1,67 @@
+name: titan-e12-one-shot-rebuild
+
+on:
+  push:
+    branches:
+      - sol/titan-v25-e12-operating-stock-20260909-01
+    paths:
+      - .github/workflows/titan-e12-one-shot-rebuild.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Assert isolated E12 branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/sol/titan-v25-e12-operating-stock-20260909-01"
+          test -z "$(git status --porcelain)"
+      - name: Rebuild canonical TITAN release with repository builder
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check
+      - name: Audit and commit generated release bytes only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+          allowed = {
+              'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz',
+              'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json',
+              'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json',
+          }
+          changed = []
+          for line in subprocess.check_output(['git','status','--porcelain'], text=True).splitlines():
+              path = line[3:]
+              if ' -> ' in path:
+                  path = path.split(' -> ',1)[1]
+              changed.append(path)
+          unexpected = [p for p in changed if p not in allowed and not p.startswith('revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-')]
+          if unexpected:
+              raise SystemExit('unexpected generated paths: ' + repr(unexpected))
+          if not changed:
+              raise SystemExit('builder produced no release delta')
+          print('generated paths:')
+          print('\n'.join(changed))
+          PY
+          git add -- \
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
+            revenue/kaggriculture/cloud-execution-lab/exports/historical/ \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Titan V2.5 E12: rebuild canonical release"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
