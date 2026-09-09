@@ -4,6 +4,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -202,10 +203,15 @@ def _named_human(name: str) -> str:
         raise PermissionError("named human reviewer required")
     normalized = " ".join(name.strip().split())
     lowered = normalized.casefold()
-    pieces = lowered.replace("_", "-").split("-")
-    if not normalized or lowered in RESERVED_REVIEWERS or any(piece in RESERVED_REVIEWERS for piece in pieces):
+    reviewer_tokens = re.findall(r"[^\W\d_]+", lowered, flags=re.UNICODE)
+    reserved_tokens = {
+        token
+        for reserved in RESERVED_REVIEWERS
+        for token in re.findall(r"[^\W\d_]+", reserved.casefold(), flags=re.UNICODE)
+    }
+    if not normalized or any(token in reserved_tokens for token in reviewer_tokens):
         raise PermissionError("named human reviewer required")
-    alpha_tokens = [token for token in normalized.replace("-", " ").split() if any(char.isalpha() for char in token)]
+    alpha_tokens = [token for token in reviewer_tokens if any(char.isalpha() for char in token)]
     if len(alpha_tokens) < 2:
         raise PermissionError("two-token human name required")
     return normalized
