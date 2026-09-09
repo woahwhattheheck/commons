@@ -28,3 +28,14 @@ Allowed ledger (HIS, not a 12th spec item): CPU joules spent. RAM flat. Depth = 
 `seated_claude = NO`. Claude writes nothing. Compaction returns measured-false default priors — this inject fires again on compact/resume.
 
 **After `/compact` (community pattern, not a 12th spec item):** PreCompact writes `~\.claude\muhl_compact_marker.json`. SessionStart `source=compact` injects `MUHL_GO\CLAUDE_COMPACT_INDEX.md` (~20 lines of PLAY), not this card. Always-on is `MUHL_GO\CAIRN_PLAY.md`. Battery is skill `pfc-run-first` only for a physics verdict without this-window numbers. Statusline should read `HOOKS ON | PLAY`. New Claude Code window to load hooks. Map: `MUHL_GO\CLAUDE_PLAYER_FIX.md`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

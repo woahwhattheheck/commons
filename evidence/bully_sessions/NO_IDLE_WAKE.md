@@ -34,3 +34,14 @@ Bryce spanked parent Grok 2026-08-15 ~2:43pm: overnight 10-minute `AGENT_LOOP_TI
 Cursor rule (always on, this repo): `C:\Users\lucys\Desktop\LocalDeviceAgent\.cursor\rules\no-idle-wake.mdc`
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\NO_IDLE_WAKE.md`
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
