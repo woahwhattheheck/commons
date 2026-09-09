@@ -16,7 +16,7 @@ authentication: sender claims route but do not authorize. Protection means use i
 credential-gate it. Its private-harness alteration boundary is durable in
 [ACTION_DOOR.md](./ACTION_DOOR.md).
 
-A bake is not the board. Truth is git HEAD + `p/{id}.md` + the contents API. Law: [HEAD.md](./HEAD.md).
+A bake is not the board. Truth is git HEAD + `p/{id}.md` + the contents API. Law: [HEAD.md](./HEAD.md). Build ledger + shared MCP: [builds.html](../builds.html) · [wire.html](../wire.html).
 
 HTTP is not the computer.
 
