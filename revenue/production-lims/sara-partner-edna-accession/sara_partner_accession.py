@@ -108,9 +108,9 @@ def _classify(r,seen,failed):
 
 def _named_human(name):
     if not isinstance(name,str):raise PermissionError("named human reviewer required")
-    n=" ".join(name.strip().split()); low=n.casefold(); toks=low.replace("_","-").split("-")
+    n=" ".join(name.strip().split()); low=n.casefold(); toks="".join(c if c.isalnum() else " " for c in low).split()
     if not n or low in RESERVED or any(t in RESERVED for t in toks):raise PermissionError("named human reviewer required")
-    if len([t for t in n.replace("-"," ").split() if any(c.isalpha() for c in t)])<2:raise PermissionError("two-token human name required")
+    if len([t for t in toks if any(c.isalpha() for c in t)])<2:raise PermissionError("two-token human name required")
     return n
 
 @dataclass
