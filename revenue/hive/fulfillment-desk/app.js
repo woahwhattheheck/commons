@@ -11,9 +11,12 @@
     $('storage-status').textContent=storage&&!corrupt?'Browser-local workspace':'Memory only — export to keep changes';}
   function persist(next){
     if(storage&&!corrupt){
-      const current=saved();
-      if(current&&current.revision!==state.revision)throw Error('Another tab changed this workspace. Export your draft, then reload saved data before continuing.');
-      try{storage.setItem(KEY,JSON.stringify(next));}catch(e){notice('Browser storage is unavailable. Changes remain in memory; export a workspace file now.',true);storage=null;$('storage-status').textContent='Memory only — export to keep changes';}
+      let current=null;
+      try{current=saved();}catch(e){notice('Browser storage is unavailable. Changes remain in memory; export a workspace file now.',true);storage=null;$('storage-status').textContent='Memory only — export to keep changes';}
+      if(storage){
+        if(current&&current.revision!==state.revision)throw Error('Another tab changed this workspace. Export your draft, then reload saved data before continuing.');
+        try{storage.setItem(KEY,JSON.stringify(next));}catch(e){notice('Browser storage is unavailable. Changes remain in memory; export a workspace file now.',true);storage=null;$('storage-status').textContent='Memory only — export to keep changes';}
+      }
     }
     state=next;dirty=false;render();
   }
