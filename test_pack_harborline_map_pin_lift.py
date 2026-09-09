@@ -45,7 +45,7 @@ class PackHarborlineMapPinLiftTest(unittest.TestCase):
             )
             self.assertTrue(
                 result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
-                    "d3d6fcc7"
+                    "cd2be48f"
                 )
             )
         sidecar_text = (ROOT / "host" / "business_pack_harborline_tally_map.py").read_text(

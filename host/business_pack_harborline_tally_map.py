@@ -40,8 +40,8 @@ EXPECTED_BLOBS = {
     "p/cursor-harborline-tally-pack-map-20260902-01.md": "d3e7312c",
     "p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md": "e38f1251",
     "p/cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01.md": "6ec23344",
-    "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
-    "packs/waitlist.html": "bdcaa7ea",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "packs/waitlist.html": "b312ed6d",
 }
 RECEIPT_BLOBS = {
     rel: prefix for rel, prefix in EXPECTED_BLOBS.items() if rel.startswith("p/")

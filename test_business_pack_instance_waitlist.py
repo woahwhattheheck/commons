@@ -92,7 +92,7 @@ class BusinessPackInstanceWaitlistTest(unittest.TestCase):
     def test_historical_waitlist_hash_and_shared_helper_stay_available(self) -> None:
         self.assertTrue(self.result["receipt_blobs_match"])
         self.assertEqual(self.result["missing_files"], [])
-        self.assertTrue(helper.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(helper.EXPECTED_BLOBS["packs/waitlist.html"].startswith("b312ed6d"))
         self.assertEqual(self.block["shared_desk_helper"], "host/business_pack_desk_instance.py")
         self.assertEqual(self.block["checkout"], "NOT_MINTED")
         self.assertNotIn("337 NO", json.dumps(self.block))

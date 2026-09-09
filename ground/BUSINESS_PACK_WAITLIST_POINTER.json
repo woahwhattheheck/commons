@@ -20,7 +20,7 @@
   ],
   "did_not_write_owner_paths": true,
   "thanks_door": "packs/thanks.html",
-  "thanks_door_blob_prefix": "7ec0bf86",
+  "thanks_door_blob_prefix": "76388c9a",
   "did_not_overwrite_thanks_door": true,
   "tally_helper": "host/business_pack_desk_instance.py",
   "tally_helper_single_owner": true,

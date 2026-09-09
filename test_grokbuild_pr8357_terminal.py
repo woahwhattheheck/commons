@@ -20,21 +20,21 @@ RECEIPT = ROOT / "p/grokbuild-pr8357-terminal-20260902-01.md"
 PEER = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 
 KEEP = {
-    "host/harborline_pack_market_render_ship.py": "781c1a9c",
-    "test_harborline_pack_market_render_ship.py": "932d089d",
+    "host/harborline_pack_market_render_ship.py": "cafe72c9",
+    "test_harborline_pack_market_render_ship.py": "4b7417b0",
     "p/cursor-harborline-pack-market-render-ship-20260902-01.md": "89457966",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "e8f8703c",
+    "test_harborline_pack_market_render.py": "ba38bdf8",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-slack-render-20260902-01.md": "0d95f2ab",
     "host/harborline_pack_market_slack_render.py": "a03534da",
-    "test_harborline_pack_market_slack_render.py": "23a840b5",
+    "test_harborline_pack_market_slack_render.py": "9c904a4d",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "6b8ee988",
+    "ground/OWNER_NOW.md": "0a574d94",
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "4ea55398",
+    "test_grokbuild_pr8345_terminal.py": "895beeb6",
 }
 
 
@@ -52,8 +52,8 @@ class TestGrokbuildPr8357Terminal(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
+        self.assertTrue(git_blob("hub_pages.py").startswith("7a8f24d5"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("7a8f24d5"))
 
     def test_ship_helper_still_ships_standalone_store(self) -> None:
         proc = subprocess.run(

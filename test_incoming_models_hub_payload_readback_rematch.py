@@ -16,10 +16,10 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "test_incoming_models_hub_payload_readback.py": "8d2f4bd0",
+    "test_incoming_models_hub_payload_readback.py": "d5411e2f",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "host/incoming_models.py": "7f4ae3bf",
-    "test_incoming_models.py": "f33cbd6c",
+    "test_incoming_models.py": "d8f2ddbd",
     "ground/INCOMING_MODELS.json": "6b5e89dc",
     "ground/INCOMING_MODELS.md": "eeec0809",
     "incoming-models.html": "721bb312",

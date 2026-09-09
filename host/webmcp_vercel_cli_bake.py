@@ -186,7 +186,7 @@ def keep_errors() -> list[str]:
         errors.append("vercel_json_reminted")
     if not git_blob("stage_spark_mcp_bundle.py").startswith("1234e00c"):
         errors.append("stager_reminted")
-    if not git_blob(".github/workflows/spark-mcp-production.yml").startswith("fddb0bea"):
+    if not git_blob(".github/workflows/spark-mcp-production.yml").startswith("eaad2cca"):
         errors.append("workflow_reminted")
     if not git_blob("p/cursor-webmcp-contest-20260903-01.md").startswith("98fb6b6f"):
         errors.append("contest_leftover_reminted")

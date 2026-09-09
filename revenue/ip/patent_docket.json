@@ -28,9 +28,9 @@
   },
   "status_provenance": {
     "path": "GRANTS.md",
-    "blob_sha": "0205e9804957a849f9038b366dec5afb0239fd43",
-    "sha256": "74b9e6522c12741f481704c9950d6ef1ce948438b326d5d182da67812b357983",
-    "byte_count": 9496,
+    "blob_sha": "82ed25227ec988515979be28cd95cdf8c72f3411",
+    "sha256": "53a1e9692ae7ec26d65f016fcaddf8373a16c8872153623a94c77f662d16cfa4",
+    "byte_count": 9497,
     "public_url": "https://github.com/woahwhattheheck/commons/blob/main/GRANTS.md",
     "evidence_key": "G10",
     "statement": "GRANTS.md records Bryce's owner report that provisionals are filed. This docket does not publish or independently verify filing receipts or application numbers."
@@ -40,7 +40,9 @@
       "id": "stored-digital-computer",
       "title": "The Stored Digital Computer",
       "invention_summary": "A stored-parameter generative computer whose operator selects active parameters per step, with gradient-free reversible baking and storage-streamed execution.",
-      "inventors": ["Bryce Muhlnickel"],
+      "inventors": [
+        "Bryce Muhlnickel"
+      ],
       "jurisdiction": "US",
       "filing_type": "PROVISIONAL",
       "filing_status": "OWNER_REPORTED_FILED",
@@ -65,7 +67,9 @@
       "id": "white-box-parameter-inspection",
       "title": "The White Box",
       "invention_summary": "Direct measurement, interpretation, and reversible editing of meaning stored in parameter-file bits without model inference.",
-      "inventors": ["Bryce Muhlnickel"],
+      "inventors": [
+        "Bryce Muhlnickel"
+      ],
       "jurisdiction": "US",
       "filing_type": "PROVISIONAL",
       "filing_status": "OWNER_REPORTED_FILED",
@@ -90,7 +94,9 @@
       "id": "agentic-handset-operator",
       "title": "The Agentic Handset Operator",
       "invention_summary": "An on-device language model pilots a handset through accessibility while deterministic code is limited to perception, actuation, and safety gating.",
-      "inventors": ["Bryce Muhlnickel"],
+      "inventors": [
+        "Bryce Muhlnickel"
+      ],
       "jurisdiction": "US",
       "filing_type": "PROVISIONAL",
       "filing_status": "OWNER_REPORTED_FILED",

@@ -20,14 +20,14 @@ HALL = ROOT / "p/cursor-google-ai-mode-hall-pass-20260902-01.md"
 KEEP = {
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
-    "test_cursor_wire_super_mcp_fold_readback.py": "fbc7698e",
+    "test_cursor_wire_super_mcp_fold_readback.py": "48e93213",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "a3934e26",
     "ground/WIRE_SUPER_MCP.md": "aecb9b00",
     "p/cursor-google-ai-mode-hall-pass-20260902-01.md": "4bb8b78d",
     "test_google_ai_mode_hall_pass.py": "9fe45498",
     "api/mcp.py": "393da756",
-    "hub_pages.py": "97004993",
+    "hub_pages.py": "7a8f24d5",
     "door.js": "5bc431b1",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "7fd9bc0a",
@@ -43,9 +43,9 @@ KEEP = {
 # and its behavioral tests can evolve without rewriting that historical proof.
 HISTORICAL_TREE = "b4ea49b49a1d6dda16b611c811c174be43bc850d"
 HISTORICAL_GOOGLE_FILES = {
-    "test_cursor_google_ai_mode_hall_pass_readback.py": "c1a35a43",
-    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
-    "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
+    "test_cursor_google_ai_mode_hall_pass_readback.py": "e7bb0982",
+    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "b33b2d20",
+    "ground/tokens/google-ai-mode-hall-pass.md": "01a93607",
 }
 
 

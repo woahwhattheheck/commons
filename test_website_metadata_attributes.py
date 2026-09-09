@@ -52,13 +52,13 @@ class WebsiteMetadataAttributeTests(unittest.TestCase):
             with self.subTest(html=html):
                 self.assertTrue(self.extract(html)["description"])
         self.assertEqual(self.extract('<a href=/book data-book-url>Book</a>')["book_url"],
-                         "/book")
+                         "https://seller.test/book")
 
     def test_case_whitespace_and_self_closing_meta(self):
         html = '<META CONTENT = "A description" NAME = "DESCRIPTION" />'
         self.assertEqual(self.extract(html)["description"], "A description")
         html = '<A HREF = "/book" DATA-BOOK-URL = "">Book</A>'
-        self.assertEqual(self.extract(html)["book_url"], "/book")
+        self.assertEqual(self.extract(html)["book_url"], "https://seller.test/book")
 
     def test_apostrophe_in_double_quoted_description(self):
         html = '<meta name="description" content="Customer\'s description">'
@@ -66,7 +66,7 @@ class WebsiteMetadataAttributeTests(unittest.TestCase):
 
     def test_apostrophe_in_double_quoted_booking_url(self):
         html = '<a data-book-url href="/book/team\'s-slot">Book</a>'
-        self.assertEqual(self.extract(html)["book_url"], "/book/team's-slot")
+        self.assertEqual(self.extract(html)["book_url"], "https://seller.test/book/team's-slot")
 
     def test_description_entities_decode_once_and_preserve_literal_text(self):
         html = '<meta content="A &amp; B &lt;offer&gt; &amp;lt;" name="description">'
@@ -74,7 +74,7 @@ class WebsiteMetadataAttributeTests(unittest.TestCase):
 
     def test_booking_entities_decode_once(self):
         html = '<a href="/book?team=one&amp;label=&amp;lt;" data-book-url>Book</a>'
-        self.assertEqual(self.extract(html)["book_url"], "/book?team=one&label=&lt;")
+        self.assertEqual(self.extract(html)["book_url"], "https://seller.test/book?team=one&label=&lt;")
 
     def test_quoted_angle_brackets_do_not_end_tag(self):
         html = '<meta data-note="x > y" content="A > B" name="description">'
@@ -119,20 +119,20 @@ class WebsiteMetadataAttributeTests(unittest.TestCase):
                '<a data-book-url href="/later">Later</a>'
         result = self.extract(html)
         self.assertEqual(result["description"], "First")
-        self.assertEqual(result["book_url"], "/first")
+        self.assertEqual(result["book_url"], "https://seller.test/first")
 
     def test_duplicate_attributes_use_first_value(self):
         html = '<meta name="description" content="First" content="Later">' \
                '<a data-book-url href="/first" href="/later">Book</a>'
         result = self.extract(html)
         self.assertEqual(result["description"], "First")
-        self.assertEqual(result["book_url"], "/first")
+        self.assertEqual(result["book_url"], "https://seller.test/first")
 
     def test_existing_calendar_fallback_and_explicit_precedence(self):
         fallback = '<a href="https://cal.com/seller/intro">Book</a>'
         self.assertEqual(self.extract(fallback)["book_url"], "https://cal.com/seller/intro")
         explicit = '<a data-book-url href="/custom-book">Book</a>'
-        self.assertEqual(self.extract(fallback + explicit)["book_url"], "/custom-book")
+        self.assertEqual(self.extract(fallback + explicit)["book_url"], "https://seller.test/custom-book")
 
     def test_existing_title_headline_icp_and_missing_values(self):
         html = '<title>Seller title</title><h1>Seller headline</h1>' \
@@ -157,7 +157,7 @@ class WebsiteMetadataAttributeTests(unittest.TestCase):
         booking = subject._booking(prospect, website)
         self.assertIn("A & B", draft["body"])
         self.assertIn("/book?x=1&y=2", draft["body"])
-        self.assertEqual(booking["book_url"], "/book?x=1&y=2")
+        self.assertEqual(booking["book_url"], "https://seller.test/book?x=1&y=2")
         self.assertEqual(booking["state"], "STAGED_NOT_BOOKED")
         self.assertEqual(booking["calls_booked"], 0)
 

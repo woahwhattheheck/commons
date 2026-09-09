@@ -78,10 +78,10 @@ class BusinessPackHarborlineTallyMapPointerTest(unittest.TestCase):
         )
         self.assertTrue(
             pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"].startswith(
-                "d3d6fcc7"
+                "cd2be48f"
             )
         )
-        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("b312ed6d"))
         self.assertEqual(
             self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
             "a550ae1b",

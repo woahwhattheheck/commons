@@ -41,8 +41,8 @@ ORIGINAL_SIDEWALK_LOTRIBBON_RECEIPT = "2c584983"
 # of the catalog pointer. Canonical receipt continuity is checked separately.
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a7a49b77",
-    "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
-    "packs/waitlist.html": "bdcaa7ea",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "packs/waitlist.html": "b312ed6d",
     "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md": "269e874a",
     "p/cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01.md": "2c584983",
 }

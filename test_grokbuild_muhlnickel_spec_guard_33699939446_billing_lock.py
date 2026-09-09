@@ -18,8 +18,8 @@ SIBLING = ROOT / "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-202
 WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
-    "muhlnickel_spec_guard.py": "74423d71",
-    "test_muhlnickel_spec_guard.py": "742c8fcf",
+    "muhlnickel_spec_guard.py": "8bd147aa",
+    "test_muhlnickel_spec_guard.py": "c023622f",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
     "open_door_guard.py": "7b9a2318",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
@@ -27,9 +27,9 @@ KEEP = {
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
-    "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "2db98741",
-    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "3f026bfd",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "10a046b3",
+    "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "0b27ecca",
+    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9d4fc1b5",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "abaeb302",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",

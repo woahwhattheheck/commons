@@ -29,11 +29,11 @@ PIXEL_GATE_ENGINE = "host/pack_waitlist_pixel_gate.py"
 SCOUT_WAITLIST_ID = "scout-demand-pack-door-waitlist-20260902-01"
 # Historical byte observations; live pages/helpers may evolve independently.
 EXPECTED_BLOBS = {
-    "host/pack_waitlist_pixel_gate_pointer.py": "b3f26525",
-    "host/business_pack_waitlist_pixel_gate_pointer.py": "527f812d",
+    "host/pack_waitlist_pixel_gate_pointer.py": "cc94a911",
+    "host/business_pack_waitlist_pixel_gate_pointer.py": "a2694cc2",
     "host/pack_waitlist_pixel_gate.py": "4df0f64e",
-    "packs/waitlist.html": "bdcaa7ea",
-    "packs/thanks.html": "7ec0bf86",
+    "packs/waitlist.html": "b312ed6d",
+    "packs/thanks.html": "76388c9a",
     "p/cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md": "6f981cf8",
     "p/cursor-business-pack-waitlist-pixel-gate-pointer-helper-20260902-01.md": "af68f245",
     "p/cursor-business-pack-pixel-gate-helper-pointer-20260902-01.md": "a866c00e",
