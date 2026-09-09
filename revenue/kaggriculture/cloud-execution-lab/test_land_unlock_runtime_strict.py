@@ -31,7 +31,8 @@ class StrictOverlayTests(unittest.TestCase):
         overlay.apply(subject, obs(99), {}, row())
         moved = row([["SELL", "WHEAT", 1], ["BUY_LAND"]])
         result, report = overlay.apply(subject, obs(100, unlocked=2), {}, moved)
-        self.assertEqual(report["reason"], "suppression_slot_mismatch")
+        self.assertEqual(report["reason"], "suppression_declined")
+        self.assertEqual(report["decline_reason"], "slot_mismatch")
         self.assertEqual(result, moved)
         self.assertIsNone(overlay.pending)
 
@@ -42,7 +43,27 @@ class StrictOverlayTests(unittest.TestCase):
             analyzer=Analyzer([Cert(95, 99)]), mechanics=object(), decision_steps=())
         moved = row([["SELL", "WHEAT", 1], ["BUY_LAND"]])
         result, report = overlay.apply(agent(route), obs(95), {}, moved)
-        self.assertEqual(report["reason"], "deferral_slot_mismatch")
+        self.assertEqual(report["reason"], "deferral_declined")
+        self.assertEqual(report["decline_reason"], "slot_mismatch")
+        self.assertEqual(result, moved)
+        self.assertIsNone(overlay.pending)
+
+    def test_same_step_deferral_replay_with_slot_drift_is_declined(self):
+        route = [row() for _ in range(110)]
+        route[95] = row([["BUY_LAND"]])
+        overlay = LandUnlockOverlay(
+            analyzer=Analyzer([Cert(95, 99)]), mechanics=object(), decision_steps=())
+        subject = agent(route)
+        original = row([["BUY_LAND"]])
+        first, first_report = overlay.apply(subject, obs(95), {}, original)
+        self.assertEqual(first_report["reason"], "original_deferred")
+        self.assertEqual(first["market"], [[]])
+        moved = row([["SELL", "WHEAT", 1], ["BUY_LAND"]])
+        result, report = overlay.apply(subject, obs(95), {}, moved)
+        self.assertEqual(report["reason"], "deferral_declined")
+        self.assertEqual(report["decline_reason"], "slot_mismatch")
+        self.assertEqual(report["slots"], [1])
+        self.assertEqual(report["expected_slot"], 0)
         self.assertEqual(result, moved)
         self.assertIsNone(overlay.pending)
 

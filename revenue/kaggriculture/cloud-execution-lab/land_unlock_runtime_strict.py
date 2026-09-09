@@ -51,6 +51,17 @@ class LandUnlockOverlay(_BaseLandUnlockOverlay):
         if memo is not None and int(memo["step"]) == now:
             if action == memo["input"]:
                 return deepcopy(memo["output"]), deepcopy(memo["report"])
+            pending = self.pending
+            if (pending is not None
+                    and pending.get("phase") == "defer_scheduled"
+                    and now == int(pending["original_step"])):
+                slots = _land_slots(action, limit)
+                expected = int(pending["original_slot"])
+                if slots != [expected]:
+                    return self._decline(
+                        now, action, "deferral_declined",
+                        decline_reason="slot_mismatch",
+                        slots=slots, expected_slot=expected)
             return self._decline(now, action, "same_step_action_changed")
         if memo is not None and (now == 0 or now < int(memo["step"])):
             self._strict_memo = None
@@ -62,7 +73,8 @@ class LandUnlockOverlay(_BaseLandUnlockOverlay):
             expected = int(pending["original_slot"])
             if slots != [expected]:
                 return self._decline(
-                    now, action, "suppression_slot_mismatch",
+                    now, action, "suppression_declined",
+                    decline_reason="slot_mismatch",
                     slots=slots, expected_slot=expected)
 
         before_pending = deepcopy(self.pending)
@@ -79,7 +91,8 @@ class LandUnlockOverlay(_BaseLandUnlockOverlay):
                 self.events = before_events
                 self.last_step = now
                 return self._decline(
-                    now, action, "suppression_slot_mismatch",
+                    now, action, "suppression_declined",
+                    decline_reason="slot_mismatch",
                     slot=actual, expected_slot=expected)
 
         if report.get("reason") == "original_deferred":
@@ -90,7 +103,8 @@ class LandUnlockOverlay(_BaseLandUnlockOverlay):
                 self.events = before_events
                 self.last_step = now
                 return self._decline(
-                    now, action, "deferral_slot_mismatch",
+                    now, action, "deferral_declined",
+                    decline_reason="slot_mismatch",
                     slot=actual, expected_slot=expected)
 
         return self._remember(now, action, result, report)
