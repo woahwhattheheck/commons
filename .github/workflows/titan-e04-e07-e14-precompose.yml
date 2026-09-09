@@ -1,0 +1,94 @@
+name: titan-e04-e07-e14-precompose
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-e04-e07-e14-precompose.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/titan-current/latest/selected_sell_core.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_score_schedule.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/frozen_selected.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_e07_same_turn_funding.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/scheduler.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_scheduler_overflow_timing.py'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: ${{ github.event.pull_request.head.ref == 'sol/titan-e04-e07-e14-precompose-20260909-1205' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Run combined authored focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v \
+            test_score_schedule \
+            test_e07_same_turn_funding \
+            test_joint_market_slots \
+            test_scheduler_overflow_timing \
+            test_scheduler
+      - name: Rebuild and verify deterministic canonical package
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/precompose"
+          python3 -B build_integrated.py | tee "$RUNNER_TEMP/precompose/build.json"
+          python3 -B build_integrated.py --check | tee "$RUNNER_TEMP/precompose/check.json"
+      - name: Emit exact evidence receipt
+        shell: python
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import subprocess
+
+          root = pathlib.Path(os.environ['LAB'])
+          out = pathlib.Path(os.environ['RUNNER_TEMP']) / 'precompose'
+          generated = {}
+          for rel in (
+              'exports/titan-current.tar.gz',
+              'runtime/integrated-selected/CURRENT-SOURCE.json',
+              'runtime/integrated-selected/CURRENT-ARCHIVE.json',
+          ):
+              path = root / rel
+              data = path.read_bytes()
+              generated[rel] = {
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+              }
+          payload = {
+              'schema': 'titan.e04-e07-e14.precompose.v1',
+              'checkout': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+              'workflow_sha': os.environ['GITHUB_SHA'],
+              'run_id': os.environ['GITHUB_RUN_ID'],
+              'generated': generated,
+              'working_tree_status': subprocess.check_output(
+                  ['git','status','--porcelain','--untracked-files=all'], text=True
+              ).splitlines(),
+              'full_games': 0,
+              'scope': 'exact authored E04/E07/E14 source composition; focused contracts and deterministic package build only',
+          }
+          (out / 'RECEIPT.json').write_text(json.dumps(payload, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(payload, sort_keys=True))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-e04-e07-e14-precompose-${{ github.run_id }}
+          path: ${{ runner.temp }}/precompose/
+          if-no-files-found: error
+          retention-days: 7
