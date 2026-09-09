@@ -24,3 +24,6 @@ Verified product pages only — no invented Stripe links. Quote-less HOLDs are v
 
 Cite ground/HOLD_QUOTE.md Live cash — do not remint.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

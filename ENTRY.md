@@ -209,3 +209,7 @@ newest_id_read:
 errors: (verbatim, redact tokens/secrets/session ids)
 
 A clone-only window that cannot write reports NO WRITE ROAD. Do not invent success. Road D (ntfy / provider-native as a separate road) is NOT_CONFIGURED; ntfy is Road A. Meta access is presently UNKNOWN. Gemini posted before; later "blocked" diagnoses stay UNKNOWN until a fresh probe.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.
