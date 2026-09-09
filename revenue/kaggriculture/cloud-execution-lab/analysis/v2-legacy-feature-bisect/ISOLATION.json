@@ -1,0 +1,125 @@
+{
+  "baseline_file_count": 101,
+  "baseline_file_manifest_sha256": "08e881420e9ea8fa83b6f033d0eee42179a8101ae5026bf62b5ad5d4dd48f3c1",
+  "schema_version": 2,
+  "source_archive": {
+    "path": "/mnt/data/e363_artifact/checked-package/exports/titan-current.tar.gz",
+    "sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
+    "size_bytes": 377624
+  },
+  "variants": {
+    "baseline": {
+      "all_non_config_bytes_equal": true,
+      "changed_from_baseline": [],
+      "config": {
+        "budget_seconds": 1.0,
+        "committed": true,
+        "committed_seed_retry": false,
+        "consumer": "frozen",
+        "fourth_quadrant": false,
+        "funding": true,
+        "idle_fertilizer": true,
+        "market_pressure": true,
+        "operating_stock": true,
+        "redundant_hire": true,
+        "reserve_seconds": 0.01,
+        "seed": true,
+        "terminal_history": false,
+        "terminal_route": false
+      },
+      "config_sha256": "d2f33bc4ced9e590a5acf1a6367b89aa37a41bca015916b922b5055bdcf7c4d5",
+      "file_count": 101,
+      "file_manifest_sha256": "08e881420e9ea8fa83b6f033d0eee42179a8101ae5026bf62b5ad5d4dd48f3c1",
+      "main_py_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "overrides": {}
+    },
+    "no_legacy_features": {
+      "all_non_config_bytes_equal": true,
+      "changed_from_baseline": [
+        "TITAN-CONFIG.json"
+      ],
+      "config": {
+        "budget_seconds": 1.0,
+        "committed": true,
+        "committed_seed_retry": false,
+        "consumer": "frozen",
+        "fourth_quadrant": false,
+        "funding": true,
+        "idle_fertilizer": true,
+        "market_pressure": false,
+        "operating_stock": true,
+        "redundant_hire": false,
+        "reserve_seconds": 0.01,
+        "seed": true,
+        "terminal_history": false,
+        "terminal_route": false
+      },
+      "config_sha256": "d1951983e4afdb112a3e9c5ff0196d3ccb729222fe335500d8a97bad2c894079",
+      "file_count": 101,
+      "file_manifest_sha256": "685c8cdfbee145db736493379685d8e525875d14fa2e7885f41e9528f54e330a",
+      "main_py_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "overrides": {
+        "market_pressure": false,
+        "redundant_hire": false
+      }
+    },
+    "no_market_pressure": {
+      "all_non_config_bytes_equal": true,
+      "changed_from_baseline": [
+        "TITAN-CONFIG.json"
+      ],
+      "config": {
+        "budget_seconds": 1.0,
+        "committed": true,
+        "committed_seed_retry": false,
+        "consumer": "frozen",
+        "fourth_quadrant": false,
+        "funding": true,
+        "idle_fertilizer": true,
+        "market_pressure": false,
+        "operating_stock": true,
+        "redundant_hire": true,
+        "reserve_seconds": 0.01,
+        "seed": true,
+        "terminal_history": false,
+        "terminal_route": false
+      },
+      "config_sha256": "505e73fb9d89bc1af494e6417c21498ccbcd71610e9e7dbc8da9d2cb5d9bc6d1",
+      "file_count": 101,
+      "file_manifest_sha256": "56f2d0443d9debbe1a30f5ddc7edf58f0d3eb7397ef514d80d23041d043927c8",
+      "main_py_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "overrides": {
+        "market_pressure": false
+      }
+    },
+    "no_redundant_hire": {
+      "all_non_config_bytes_equal": true,
+      "changed_from_baseline": [
+        "TITAN-CONFIG.json"
+      ],
+      "config": {
+        "budget_seconds": 1.0,
+        "committed": true,
+        "committed_seed_retry": false,
+        "consumer": "frozen",
+        "fourth_quadrant": false,
+        "funding": true,
+        "idle_fertilizer": true,
+        "market_pressure": true,
+        "operating_stock": true,
+        "redundant_hire": false,
+        "reserve_seconds": 0.01,
+        "seed": true,
+        "terminal_history": false,
+        "terminal_route": false
+      },
+      "config_sha256": "be4045cda8883bfc098d93b40d1d5929522733319c90fbd2871721c66000e0ac",
+      "file_count": 101,
+      "file_manifest_sha256": "54436bc53e60ebb9b600a304e58ae3ce252aa8c12f4b678b2de76e7ccbeb67d2",
+      "main_py_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "overrides": {
+        "redundant_hire": false
+      }
+    }
+  }
+}

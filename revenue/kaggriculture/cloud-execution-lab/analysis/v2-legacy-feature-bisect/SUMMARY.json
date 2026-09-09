@@ -1,0 +1,88 @@
+{
+  "decisions": {
+    "legacy_pair": {
+      "enabled_margin_effect": {
+        "count": 32,
+        "max": 964.0,
+        "mean": 258.3125,
+        "median": 32.5,
+        "min": -91.0
+      },
+      "negative_cells": 12,
+      "positive_cells": 18,
+      "reason": "Enabled feature improved paired mean margin without a severe opponent-level reversal.",
+      "recommendation": "keep",
+      "regression_cause_assessment": "ruled_out_on_this_panel",
+      "trace_divergences": 32,
+      "zero_cells": 2
+    },
+    "market_pressure": {
+      "enabled_margin_effect": {
+        "count": 32,
+        "max": 959.0,
+        "mean": 252.0625,
+        "median": 27.5,
+        "min": -96.0
+      },
+      "negative_cells": 15,
+      "positive_cells": 17,
+      "reason": "Enabled feature improved paired mean margin without a severe opponent-level reversal.",
+      "recommendation": "keep",
+      "regression_cause_assessment": "ruled_out_on_this_panel",
+      "trace_divergences": 32,
+      "zero_cells": 0
+    },
+    "redundant_hire": {
+      "enabled_margin_effect": {
+        "count": 32,
+        "max": 12.0,
+        "mean": 3.5,
+        "median": 5.0,
+        "min": -26.0
+      },
+      "negative_cells": 2,
+      "positive_cells": 30,
+      "reason": "Observed effects are small, mixed, or matchup-dependent.",
+      "recommendation": "inconclusive",
+      "regression_cause_assessment": "ruled_out_on_this_panel",
+      "trace_divergences": 32,
+      "zero_cells": 0
+    }
+  },
+  "expected_cells_per_variant": 32,
+  "expected_shards": 64,
+  "harness": {
+    "agent_rng_seed": 20260907,
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "limits": {
+      "action_rpc_seconds": 1.2,
+      "game_seconds_between_steps": 180.0,
+      "remaining_overage_time": 0,
+      "startup_seconds": 15.0
+    },
+    "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+    "opponents": {
+      "apex": "1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a",
+      "arlene": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+      "kaito": "d9dc24ce5429ec628ead0621a160bee90725350683d7dfcc4686fcaf511f3aab",
+      "reyhan": "d39dba50793d9777c990347443bf0c481c78adaea86055f6f6b0600dcfcd9f2e"
+    },
+    "schema_version": 1
+  },
+  "result": null,
+  "schema_version": 2,
+  "source_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
+  "source_file_manifest_sha256": "08e881420e9ea8fa83b6f033d0eee42179a8101ae5026bf62b5ad5d4dd48f3c1",
+  "variants": [
+    "baseline",
+    "no_redundant_hire",
+    "no_market_pressure",
+    "no_legacy_features"
+  ]
+}
