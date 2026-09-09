@@ -12,3 +12,7 @@ The factory paperwork sheet stays empty until an instance fills it. This land na
 Same DESK vertical. Distinct instance fingerprints. Similar is not a clone. TALLY helper stays single-owner. SCOUT research files were not taken.
 
 Checkout `NOT_MINTED`. Formation partner `OWNER_UNSET`. Not legal advice.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
