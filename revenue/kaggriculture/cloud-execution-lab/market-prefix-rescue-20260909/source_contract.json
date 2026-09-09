@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "operation": "op:titan-v3-market-prefix-rescue-20260909-01",
+  "base_commit": "bd1dfdaac4ddff191cdf7ffafe3349ac1f00f3da",
+  "git_blobs": {
+    "../main.py": "b9db6c3ec9c64cb52ade0c26b23edf22710d77c9",
+    "../titan_runtime.py": "ee2714e5702b219717ddd75122672a6d621fb268",
+    "../operating_stock.py": "781aa90da0d85d0ba23c665e29d6087d182c085e",
+    "../build_integrated.py": "7c19950f8a2fa8232d600bfa63fc24e865cc8052",
+    "../reference/evaluator/evaluate.py": "1fb6b655bb4ca1e1684be165a8ef513e2e6c2325",
+    "../reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4"
+  },
+  "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "expected_transport": {
+    "source_guard_placeholder": "[]",
+    "engine_queue_rule": "raw queue sliced before _parse_order"
+  }
+}
