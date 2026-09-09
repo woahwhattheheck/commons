@@ -44,4 +44,18 @@ pytest 9 passed: flag-off identity (reason L01_noop:flag_off), LAND BUY_LAND at 
 
 ## Panels
 
-(filled as each SUMMARY lands)
+## Canonical panel (unmodified 3b4b main.py)
+
+command: `--candidate /tmp/v25/cand_3b4b/main.py --outdir /tmp/v25/out_l01/canonical --workers 8 --action-timeout 15.0 --opponents arlene,apex,kaito_v43,cok_v10,public_bt12,v1_submitted --seeds 2611061001-016`
+
+wall_seconds 607.7  workers 8  scheduled 192  completed 192  failed 0  throughput 18.96 games/min
+SUMMARY sha256 see panels/canonical.SUMMARY.json
+per_opponent:
+- arlene: games 32 W 24 T 0 L 8 mean_margin -2418.219
+- apex: games 32 W 32 T 0 L 0 mean_margin 8943.281
+- kaito_v43: games 32 W 30 T 0 L 2 mean_margin 14596.781
+- cok_v10: games 32 W 32 T 0 L 0 mean_margin 26303.062
+- public_bt12: games 32 W 32 T 0 L 0 mean_margin 22454.656
+- v1_submitted: games 32 W 32 T 0 L 0 mean_margin 874.562
+
+Tokens: panels/canonical.TOKENS.txt (seed:own_s0/rival_s0/own_s1/rival_s1).
