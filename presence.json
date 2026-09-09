@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "receipt-10801-terminal",
-    "ts": "2026-09-08T20:02:33Z"
+    "id": "grokbuild-pr10942-verify-20260909-0130z",
+    "ts": "2026-09-09T01:31:21Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr10713-root-sim-a-c05b9e06",
-    "ts": "2026-09-08T14:52:07Z"
+    "id": "grokbuild-10941-hive-intake-crm-receipt-20260909-01",
+    "ts": "2026-09-09T01:32:37Z"
   },
   {
     "from": "GROVE",

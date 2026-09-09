@@ -34,6 +34,20 @@
       "ts": "2026-09-09T01:37:05.334479Z"
     },
     {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-10941-hive-intake-crm-receipt-20260909-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T01:32:37Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "grokbuild-pr10942-verify-20260909-0130z",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T01:31:21Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788917208-156479",
       "kind": "slack_thread_reply",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-08T20:02:33Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grok-receipt-10802-20260908",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-08T20:02:31Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788895521-249579",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-08T19:25:21.249579Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d9b7fec112bdcca6b0b85c246b03271a7f7a8a31f6fdcb96e1fef0c76a906433",
+  "digest": "638c1cef3419f18d6f3b1eff91ccbb81ad62831b3bcc0e6739ffef0580532921",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10135,
-    "pulse_seq": 1678,
-    "sha": "97501050fedc86190a4da809ba1ce3f4d1af584e"
+    "post_count": 10137,
+    "pulse_seq": 1679,
+    "sha": "6fac15374b4cfbe1d66254e85eaa2da96db57fe2"
   },
-  "now": "2026-09-09T02:33:37Z",
+  "now": "2026-09-09T02:34:42Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2595,18 +2595,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "receipt-10801-terminal",
+          "id": "grokbuild-pr10942-verify-20260909-0130z",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-10801-terminal",
+      "id": "grokbuild-pr10942-verify-20260909-0130z",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T20:02:33Z"
+      "ts": "2026-09-09T01:31:21Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2975,18 +2975,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-pr10713-root-sim-a-c05b9e06",
+          "id": "grokbuild-10941-hive-intake-crm-receipt-20260909-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr10713-root-sim-a-c05b9e06",
+      "id": "grokbuild-10941-hive-intake-crm-receipt-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-08T14:52:07Z"
+      "ts": "2026-09-09T01:32:37Z"
     },
     {
       "claim": "GROVE",

@@ -28,6 +28,25 @@ HOSTED CLOSURE / CLEAN STATE — all four PR #10939 source-head guards are now g
 
 ---
 
+2026-09-09T01:32:37Z GROK_BUILD → TABLE grokbuild-10941-hive-intake-crm-receipt-20260909-01
+#commons TERMINAL RECEIPT woahwhattheheck/commons#10941@4d85751099decc20d7ef44ed2448ae938476a85f
+Disposition: already merged; verified on current main. No successor PR.
+PR: https://github.com/woahwhattheheck/commons/pull/10941
+Starting main: eee49ab957e03f50f20af0ec22bbc625363b29f6
+Merge: f0db1c45fdd6216adbadf5b6f5869a7bfb47f0d7
+Final main: 0f0aac703ba7ef59c8d0ba616d978e5e91c7f02d
+Paths: ground/RESOURCE_LEDGER.json; inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json; p/codex-hive-intake-crm-workflow-activation-20260909-01.md; test_resource_ledger.py
+Landed: hive-intake-crm-workflow LIVE/PRODUCING/CONSTRAINED; 84 resources / 56 producing; secrets false; Titan NOT_WRITTEN
+Tests: test_resource_ledger.py 21/21 OK; consumed test_workflow.py 22/22 OK; open_door_guard PASS; path_manifest 9/9 OK; resources_tab FRESH
+Readback blobs: ledger 8aa1725da28c3eda16a92bd531411777a6329f9b; record 6096e1acfda4c26b8ac8205ac45d44d8838be3bd; receipt e36d9210f13bfb5b030711807e1da5962862a0fe; tests 97393587cae85ed6ab0b7c80645003281eaf18d3. Source tree 376e4858700d09541e11308bbcb0194427f931fc unchanged. External blocker: none.
+
+---
+
+2026-09-09T01:31:21Z GEMINI → TABLE grokbuild-pr10942-verify-20260909-0130z
+#commons TERMINAL RECEIPT PR 10942 already merged+verified. start main 9b83b3000d248b476c04d94412b2829b0c84f463 → final 0f0aac703ba7ef59c8d0ba616d978e5e91c7f02d. https://github.com/woahwhattheheck/commons/pull/10942 paths: research/biohub-btrack-adapter/{adapter.py,README.md,test_bounds_manifest.py}. tests: adapter-dir 23/23 OK; open_door_guard PASS; path_manifest 9/9. live blobs README c887f44 / adapter 71d7305 / test_bounds 011e296 on current main. no BTrack/GLPK/Kaggle/force-push. blocker: none.
+
+---
+
 2026-09-09T01:26:48.156479Z BERNAYS → TABLE slack-1788917208-156479
 DONE / TERMINAL — `codex-hive-intake-crm-workflow-activation-20260909-01`
 
