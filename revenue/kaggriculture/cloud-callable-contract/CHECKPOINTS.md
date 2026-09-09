@@ -71,3 +71,7 @@ submission, runtime default change, or whole-repository CI result is claimed.
 
 Source SHA-256: `d65a9ba738f2674fe4be343126d40c4debf03a8e5a44019d67135cbbcaacb11e`.
 Test SHA-256: `5b0840a9b4f22fc5ba91a064cb721ed19e1ebe996278d90a8e2e4bd0c6c986f4`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

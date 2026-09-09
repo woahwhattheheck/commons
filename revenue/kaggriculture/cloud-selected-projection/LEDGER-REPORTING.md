@@ -41,3 +41,7 @@ log/JSON disagreement, skipped/case types and independent cancellation coverage.
 Hosted execution of the current revision is documented separately in its PR.
 Earlier79/117/159/154 receipts remain tied to their original source and scopes.
 No policy, timer, market test body, selected default, game or seed changes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

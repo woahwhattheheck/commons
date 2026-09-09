@@ -77,3 +77,7 @@ These are bounded market fixtures using explicit rival scenarios, not full games
 new strategy evidence, universal rival guarantees or canonical-package changes.
 Exact identities and log digests are in PRODUCER-PIN-VALIDATION.json; the companion
 Library ZIP retains original/current source, complete reports and offline inputs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

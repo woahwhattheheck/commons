@@ -41,3 +41,7 @@ The four engine comparisons use its exact loaded primitives, not a second game
 simulator or a regeneration of accepted herd/plan studies.
 
 Price-floor repair recomputed only these existing current-state forecast calls, not games or replay transitions. Schema-1 strawberry ranges 3–204 at step457, 1–233 at601 and 1–244 at649 are superseded: discarded floor-sale units no longer depress later inventory-derived prices. Current quotes remain unchanged. The new engine comparison invokes the official `_process_market` for two dated batches, with intervening consumption, checking actual cash, stock removal and inventory for one and two active seats. Both seats receive the same pre-commit per-unit quote.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

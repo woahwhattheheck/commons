@@ -235,3 +235,7 @@ margin is dominated by transaction placement rather than by production volume.
 This lane holds the instrument that measures it -- paired arms with an identical
 recorded RNG path plus per-seat order attribution -- and is putting a sensitivity
 profile of that channel behind it rather than another production overlay.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

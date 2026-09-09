@@ -124,3 +124,7 @@ Test source SHA256
 `a6113b09b70fd766d0ed24880d0284a3a39847cdeb603346f8402278866d6468`.
 The earlier PR9974 component result remains separate from these direct-consumer
 checks. No whole-agent latency or whole-repository CI claim is made here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -118,3 +118,7 @@ were reused. No new source exporter, workflow, game panel, policy-default change
 Kaggle write, owner-machine operation or spending was involved. Coordination and
 subsequent consumer results are in the
 [T06 task thread](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805915221339).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

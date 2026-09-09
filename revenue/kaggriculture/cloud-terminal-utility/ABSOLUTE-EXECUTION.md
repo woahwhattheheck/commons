@@ -129,3 +129,7 @@ publication are distinct from hosted execution of this consumer.
 New checker code is Apache-2.0. Consumed components retain their existing
 Apache-2.0 notices; the official engine remains pinned to
 Kaggle/kaggle-environments@28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

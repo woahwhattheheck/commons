@@ -93,3 +93,7 @@ Its 15368294-byte JSON additionally retains original reports, selected observati
 snapshots, prior failed attempts, runtime manifests, source variants and test
 output. That full archive is not a GitHub-hosted file; its hash is recorded here
 without pretending that a local conversation artifact is a repository URL.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
