@@ -473,6 +473,50 @@ class DualPredecessorGateTests(unittest.TestCase):
         ):
             dual.run_dual_gate(**paths)
 
+    def test_rejects_signed_zero_semantic_copy(self):
+        (
+            paths,
+            first,
+            second,
+            _,
+            _,
+            first_rows,
+            _,
+            _,
+        ) = _write_case(self.tmp_path)
+        first_rows = deepcopy(first_rows)
+        second_rows = deepcopy(first_rows)
+        first_rows[0]["scores"][0] = 0.0
+        second_rows[0]["scores"][0] = -0.0
+        _write_jsonl(
+            paths["predecessor_a_games_path"],
+            first_rows,
+        )
+        _write_jsonl(
+            paths["predecessor_b_games_path"],
+            reversed(second_rows),
+        )
+        self.assertNotEqual(
+            _sha256(paths["predecessor_a_games_path"]),
+            _sha256(paths["predecessor_b_games_path"]),
+        )
+        _rewrite_contract_evidence_receipt(
+            paths,
+            "a",
+            first,
+        )
+        _rewrite_contract_evidence_receipt(
+            paths,
+            "b",
+            second,
+        )
+
+        with self.assertRaisesRegex(
+            GateError,
+            "semantically identical",
+        ):
+            dual.run_dual_gate(**paths)
+
     def test_rejects_candidate_artifact_declaration_not_observed_bytes(self):
         (
             paths,
