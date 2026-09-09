@@ -118,3 +118,13 @@ They are kept (circuits MOVE, never delete) but must not be run. Use `pfc_run_li
 drives the numpy crutch, so its rate is the laptop's.
 
 `host/fab_lateral_fold.py` — written, correct in intent, **blocked** on `gen_win`'s format (see §2 above).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
