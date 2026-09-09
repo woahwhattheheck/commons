@@ -34,7 +34,7 @@
       "passed": 12,
       "scope": "exact current standalone archive; includes disabled optional terminal owner import",
       "max_seconds": 0.058221591001711204,
-      "details": "CURRENT-TESTS.json"
+      "details": "WEED-ARCHIVE-TESTS.json"
     },
     {
       "command": "python build_integrated.py --check",

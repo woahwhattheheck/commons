@@ -14,7 +14,10 @@ class FrozenSelected(SellScheduler):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
         self.observe(obs)
         farm,private=post_units(obs,base,config)
-        if getattr(self, 'capture_post_units', False):
+        if (getattr(self, 'capture_post_units', False)
+                or (getattr(self, 'capture_operating_stock', False)
+                    and any(o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER']
+                            for o in base.get('market', [])))):
             self.selected_post_units = (copy.deepcopy(farm), copy.deepcopy(private))
         shed=private['shed'];self.diagnostics={'step':now,'evaluations':[]}
         # Operating WHEAT/FERTILIZER and animal stock remain baseline-controlled.
