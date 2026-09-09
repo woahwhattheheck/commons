@@ -27,7 +27,6 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONHASHSEED: '0'
-      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
     steps:
       - uses: actions/checkout@v4
         with:
@@ -101,7 +100,6 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONHASHSEED: '0'
-      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
     steps:
       - uses: actions/checkout@v4
         with:
@@ -204,7 +202,6 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONHASHSEED: '0'
-      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
     steps:
       - uses: actions/checkout@v4
         with:
