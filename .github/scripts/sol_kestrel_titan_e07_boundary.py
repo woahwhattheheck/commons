@@ -202,6 +202,8 @@ def validate_surface(old_sha: str, historical: Path) -> list[str]:
     source_manifest = LAB / "runtime/integrated-selected/CURRENT-SOURCE.json"
     archive_receipt = LAB / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
     changed = set(output("git", "diff", "--name-only").splitlines())
+    changed.update(output("git", "ls-files", "--others", "--exclude-standard").splitlines())
+    changed.discard("")
     allowed = {
         str(SOURCE.relative_to(ROOT)),
         str(TESTS.relative_to(ROOT)),
