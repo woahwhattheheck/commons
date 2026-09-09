@@ -1,0 +1,105 @@
+name: SOL-FOUNDRY TITAN archive carrier bootstrap
+on:
+  push:
+    branches: [sol-foundry/titan-11899-archive-carrier-toolkit-20260909-01]
+    paths:
+      - '.bootstrap/sol-foundry/**'
+      - '.github/workflows/sol-foundry-carrier-bootstrap.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sol-foundry-titan-archive-carrier-bootstrap
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'woahwhattheheck/commons'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Reconstruct the exact allowlisted bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, hashlib, io, shutil, stat
+          from pathlib import Path, PurePosixPath
+          from zipfile import ZipFile
+
+          stage = Path('.bootstrap/sol-foundry')
+          boot = Path('.github/workflows/sol-foundry-carrier-bootstrap.yml')
+          chunks = [f'{i:02d}.b64' for i in range(9)]
+          files = [
+              '.github/workflows/titan-v3-own-value-archive-carrier-contract-sol-foundry.yml',
+              'p/sol-foundry-titan-pr11899-archive-closure-carrier-20260909-01.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry/RECEIPT.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry/archive_carrier.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry/archive_runtime_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry/test_archive_carrier.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry/verify_panel_binding.py',
+          ]
+          actual = sorted(p.name for p in stage.iterdir())
+          if actual != chunks or any(p.is_symlink() or not p.is_file() for p in stage.iterdir()):
+              raise SystemExit(f'BOOTSTRAP_FAIL chunk set: {actual!r}')
+          parts = []
+          for name in chunks:
+              raw = (stage / name).read_bytes()
+              if not raw.endswith(b'\n') or raw.count(b'\n') != 1 or b'\r' in raw:
+                  raise SystemExit(f'BOOTSTRAP_FAIL chunk framing: {name}')
+              parts.append(raw[:-1])
+          bundle = base64.b64decode(b''.join(parts), validate=True)
+          digest = hashlib.sha256(bundle).hexdigest()
+          if len(bundle) != 25232 or digest != '22f82197994565571b23f59da3bb46c6e50cc6072a76c7961c72c6b946bfc813':
+              raise SystemExit(f'BOOTSTRAP_FAIL bundle identity: {len(bundle)} {digest}')
+          with ZipFile(io.BytesIO(bundle)) as archive:
+              if archive.namelist() != files or len(files) != len(set(files)):
+                  raise SystemExit('BOOTSTRAP_FAIL ZIP allowlist')
+              for info in archive.infolist():
+                  pure = PurePosixPath(info.filename)
+                  mode = (info.external_attr >> 16) & 0o170000
+                  if (pure.is_absolute() or pure.as_posix() != info.filename or '..' in pure.parts
+                          or info.is_dir() or mode == stat.S_IFLNK):
+                      raise SystemExit(f'BOOTSTRAP_FAIL unsafe member: {info.filename!r}')
+                  out = Path(*pure.parts)
+                  if out.exists() or out.is_symlink():
+                      raise SystemExit(f'BOOTSTRAP_FAIL non-additive target: {info.filename!r}')
+                  out.parent.mkdir(parents=True, exist_ok=True)
+                  out.write_bytes(archive.read(info))
+          shutil.rmtree(stage)
+          boot.unlink()
+          print(f'BOOTSTRAP_OK bundle_sha256={digest} files={len(files)}')
+          PY
+      - name: Run all carrier contracts and publish one clean commit
+        shell: bash
+        env:
+          BRANCH: sol-foundry/titan-11899-archive-carrier-toolkit-20260909-01
+        run: |
+          set -euo pipefail
+          CASE='revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-archive-carrier-sol-foundry'
+          python - "$CASE" <<'PY'
+          from pathlib import Path
+          import sys
+          case = Path(sys.argv[1])
+          for name in ('archive_runtime_guard.py', 'archive_carrier.py',
+                       'verify_panel_binding.py', 'test_archive_carrier.py'):
+              path = case / name
+              compile(path.read_bytes(), str(path), 'exec')
+          print('SYNTAX_OK files=4')
+          PY
+          (cd "$CASE" && PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_archive_carrier.py)
+          if find "$CASE" -type d -name __pycache__ -print -quit | grep -q .; then
+            echo 'BOOTSTRAP_FAIL bytecode cache escaped suppression' >&2
+            exit 1
+          fi
+          git diff --check
+          git config user.name 'SOL-FOUNDRY'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git diff --cached --name-status
+          git commit -m 'TITAN V3: add source-bound archive carrier toolkit'
+          git push origin "HEAD:${BRANCH}"
