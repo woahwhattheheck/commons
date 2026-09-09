@@ -1,11 +1,13 @@
 # SPDX-License-Identifier: Apache-2.0
 """Whole-entrypoint deadline containment for canonical TITAN."""
+from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 import importlib.util
 from pathlib import Path
 import sys
 import time
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent
 if ROOT.name == 'checks':
@@ -22,15 +24,16 @@ def load_entrypoint():
 
 
 class _Features:
-    budget_seconds = 0.03
-    reserve_seconds = 0.005
+    def __init__(self, budget_seconds=0.04, reserve_seconds=0.015):
+        self.budget_seconds = budget_seconds
+        self.reserve_seconds = reserve_seconds
+        self.consumer = 'frozen'
 
 
 class _FakeInstance:
-    features = _Features()
-
     def __init__(self, action, *, returned=None, publish_selected=True,
                  diagnostics=None, duration=0.08, error=None):
+        self.features = _Features()
         self.action = deepcopy(action)
         self.returned = deepcopy(action if returned is None else returned)
         self.publish_selected = publish_selected
@@ -38,8 +41,16 @@ class _FakeInstance:
         self.diagnostics = dict(diagnostics or {})
         self.duration = duration
         self.error = error
+        self.ready = True
+        self.post = None
+        self.fallback_observations = []
+
+    def _remember_seller_fallback(self, observation):
+        self.fallback_observations.append(deepcopy(observation))
 
     def act(self, _observation, _configuration=None, *, entry_started=None):
+        # Match TitanAgent's stale-selection boundary.
+        self.selected = None
         if self.publish_selected:
             self.selected = deepcopy(self.action)
         if self.error is not None:
@@ -48,6 +59,31 @@ class _FakeInstance:
         while time.perf_counter() < end:
             pass
         return deepcopy(self.returned)
+
+
+class _NestedFinalizer(_FakeInstance):
+    """Exercise the actual inner/outer DeadlineTimer ownership protocol."""
+    def act(self, _observation, _configuration=None, *, entry_started=None):
+        from titan_runtime import deadline
+        self.selected = deepcopy(self.action)
+        inner = deadline._DeadlineTimer(
+            self.features.budget_seconds-self.features.reserve_seconds)
+        try:
+            with inner:
+                while True:
+                    pass
+        except deadline.DeadlineExceeded as error:
+            if error is not inner.expired:
+                raise
+            self.diagnostics = {
+                'status': 'deadline_fallback',
+                'fallback_stage': 'selected_transform',
+                'elapsed_seconds': self.features.budget_seconds-self.features.reserve_seconds,
+            }
+        # This models the currently unguarded post-controller finalizer. The
+        # entrypoint's outer budget must cancel it on both signal and trace paths.
+        while True:
+            pass
 
 
 class EntrypointDeadlineTests(unittest.TestCase):
@@ -74,6 +110,49 @@ class EntrypointDeadlineTests(unittest.TestCase):
             'market': [['SELL', 'CARROT', 1]],
         }
 
+    def run_agent(self):
+        started = time.perf_counter()
+        output = self.main.agent(self.observation, self.configuration)
+        return output, time.perf_counter()-started
+
+    def assert_outer_fallback(self, fake, output, elapsed):
+        self.assertEqual(output, self.selected)
+        self.assertIsNone(self.main._INSTANCE)
+        self.assertFalse(fake.ready)
+        self.assertLess(elapsed, 0.5)
+        self.assertEqual(fake.diagnostics['status'], 'deadline_fallback')
+        self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_finalization')
+        self.assertTrue(fake.diagnostics['entrypoint_guard'])
+
+    def test_exhausted_prelude_keeps_receipt_without_starting_runtime(self):
+        fake = _FakeInstance(self.selected, duration=0)
+        real_loads = __import__('json').loads
+
+        def delayed_loads(raw, *args, **kwargs):
+            feature_data = real_loads(raw, *args, **kwargs)
+            feature_data.update(budget_seconds=0.02, reserve_seconds=0.005)
+            end = time.perf_counter() + 0.025
+            while time.perf_counter() < end:
+                pass
+            return feature_data
+
+        fake.features.budget_seconds = 0.02
+        fake.features.reserve_seconds = 0.005
+        self.observation['step'] = 0
+        with patch('json.loads', side_effect=delayed_loads), \
+                patch.object(self.main, '_new_instance', return_value=fake), \
+                patch.object(fake, 'act', side_effect=AssertionError('runtime started')):
+            output = self.main.agent(self.observation, self.configuration)
+        self.assertEqual(
+            output,
+            {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []},
+        )
+        self.assertIs(self.main._INSTANCE, fake)
+        self.assertFalse(fake.ready)
+        self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_prelude')
+        self.assertGreaterEqual(fake.diagnostics['entrypoint_prelude_seconds'], 0.025)
+        self.assertEqual(fake.fallback_observations[-1]['step'], 0)
+
     def test_late_runtime_is_bounded_and_returns_current_selected(self):
         later = deepcopy(self.selected)
         later['market'][0][2] = 2
@@ -83,25 +162,32 @@ class EntrypointDeadlineTests(unittest.TestCase):
             diagnostics={'status': 'completed'},
         )
         self.main._INSTANCE = fake
-        started = time.perf_counter()
-        output = self.main.agent(self.observation, self.configuration)
-        elapsed = time.perf_counter() - started
-        self.assertEqual(output, self.selected)
-        self.assertIsNone(self.main._INSTANCE)
-        self.assertLess(elapsed, 0.5)
-        self.assertEqual(fake.diagnostics['status'], 'deadline_fallback')
-        self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_finalization')
-        self.assertTrue(fake.diagnostics['entrypoint_guard'])
+        output, elapsed = self.run_agent()
+        self.assert_outer_fallback(fake, output, elapsed)
+
+    def test_nested_main_thread_timer_reserves_finalization_window(self):
+        fake = _NestedFinalizer(self.selected)
+        self.main._INSTANCE = fake
+        output, elapsed = self.run_agent()
+        self.assert_outer_fallback(fake, output, elapsed)
+        self.assertEqual(fake.diagnostics['inner_fallback_stage'], 'selected_transform')
+
+    def test_nested_worker_timer_reserves_finalization_window(self):
+        fake = _NestedFinalizer(self.selected)
+        self.main._INSTANCE = fake
+        with ThreadPoolExecutor(1) as pool:
+            output, elapsed = pool.submit(self.run_agent).result(timeout=2)
+        self.assert_outer_fallback(fake, output, elapsed)
+        self.assertIsNone(sys.gettrace())
+        self.assertIsNone(self.deadline._ACTIVE_TIMER.get())
 
     def test_prior_step_selected_is_never_reused(self):
         stale = deepcopy(self.selected)
         stale['market'] = [['SELL', 'MILK', 99]]
-        later = deepcopy(self.selected)
-        later['market'] = [['SELL', 'EGG', 3]]
-        fake = _FakeInstance(self.selected, returned=later, publish_selected=False)
+        fake = _FakeInstance(self.selected, publish_selected=False)
         fake.selected = stale
         self.main._INSTANCE = fake
-        output = self.main.agent(self.observation, self.configuration)
+        output, _elapsed = self.run_agent()
         self.assertEqual(
             output,
             {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []},
@@ -112,9 +198,10 @@ class EntrypointDeadlineTests(unittest.TestCase):
     def test_normal_runtime_preserves_output_and_instance(self):
         fake = _FakeInstance(self.selected, duration=0)
         self.main._INSTANCE = fake
-        output = self.main.agent(self.observation, self.configuration)
+        output, _elapsed = self.run_agent()
         self.assertEqual(output, self.selected)
         self.assertIs(self.main._INSTANCE, fake)
+        self.assertTrue(fake.ready)
         self.assertNotIn('entrypoint_guard', fake.diagnostics)
 
     def test_foreign_deadline_sentinel_propagates_by_identity(self):
@@ -125,6 +212,7 @@ class EntrypointDeadlineTests(unittest.TestCase):
             self.main.agent(self.observation, self.configuration)
         self.assertIs(caught.exception, foreign)
         self.assertIs(self.main._INSTANCE, fake)
+        self.assertTrue(fake.ready)
 
     def test_inner_deadline_receipt_is_retained(self):
         fake = _FakeInstance(
@@ -136,9 +224,8 @@ class EntrypointDeadlineTests(unittest.TestCase):
             },
         )
         self.main._INSTANCE = fake
-        output = self.main.agent(self.observation, self.configuration)
-        self.assertEqual(output, self.selected)
-        self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_finalization')
+        output, elapsed = self.run_agent()
+        self.assert_outer_fallback(fake, output, elapsed)
         self.assertEqual(fake.diagnostics['inner_fallback_stage'], 'selected_transform')
         self.assertEqual(fake.diagnostics['inner_elapsed_seconds'], 0.02)
 
