@@ -305,9 +305,9 @@ def _load_exact_candidate():
 class ExactSourceIntegrationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # The candidate derives and verifies the canonical source map before any
-        # bare runtime import.  Private path loading prevents LAB/candidate.py
-        # from shadowing this candidate when the suite runs from another cwd.
+        # The candidate derives, verifies, and materializes the canonical source
+        # map before any bare runtime import. Private path loading prevents the
+        # generic LAB/candidate.py from shadowing this candidate.
         cls.candidate = _load_exact_candidate()
 
     def test_source_audit_passes_on_exact_checkout(self):
@@ -317,21 +317,28 @@ class ExactSourceIntegrationTests(unittest.TestCase):
         self.assertEqual(report["decision"], "PASS")
         self.assertTrue(all(report["checks"].values()))
 
-    def test_source_closure_resolves_mapped_roots_to_manifest_origins(self):
+    def test_source_closure_resolves_roots_inside_materialized_archive(self):
         import observed_clone
         import selected_action_sell
 
         candidate = self.candidate
+        self.assertIsNotNone(candidate._SOURCE_ROOT)
+        self.assertEqual(
+            candidate._SOURCE_CLOSURE["materialization"]["mode"],
+            "verified-private-copy",
+        )
         modules = {
             "observed_clone": observed_clone,
             "selected_action_sell": selected_action_sell,
         }
         for name, module_object in modules.items():
             root_record = candidate._SOURCE_CLOSURE["root_modules"][name]
-            expected = (candidate.REPOSITORY / root_record["declared_origin"]).resolve()
-            self.assertEqual(root_record["import_origin"], root_record["declared_origin"])
-            self.assertEqual(Path(module_object.__file__).resolve(), expected)
-            self.assertEqual(candidate._sha256(expected), root_record["sha256"])
+            expected = candidate._SOURCE_ROOT / root_record["materialized_member"]
+            self.assertEqual(root_record["import_origin"], root_record["materialized_member"])
+            self.assertEqual(Path(module_object.__file__).resolve(), expected.resolve())
+            self.assertEqual(candidate._sha256_unrestricted(expected), root_record["sha256"])
+            source = candidate.REPOSITORY / root_record["declared_origin"]
+            self.assertEqual(candidate._sha256(source), root_record["sha256"])
         self.assertEqual(
             candidate._SOURCE_CLOSURE["root_modules"]["observed_clone"]["import_origin"],
             candidate._SOURCE_CLOSURE["observed_clone"]["import_origin"],
