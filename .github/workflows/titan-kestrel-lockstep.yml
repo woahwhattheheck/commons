@@ -50,7 +50,8 @@ jobs:
             candidates/v3-kestrel-capital-execution/test_kestrel_early_capital.py \
             candidates/v3-kestrel-capital-execution/test_runtime_binding.py \
             candidates/v3-kestrel-capital-execution/test_kestrel_lockstep_repair.py \
-            candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py
+            candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py \
+            candidates/v3-kestrel-capital-execution/test_candidate_load_isolation.py
 
       - name: Run predecessor, successor, and exported-entrypoint contracts
         shell: bash
@@ -60,7 +61,8 @@ jobs:
             candidates/v3-kestrel-capital-execution/test_kestrel_early_capital.py \
             candidates/v3-kestrel-capital-execution/test_runtime_binding.py \
             candidates/v3-kestrel-capital-execution/test_kestrel_lockstep_repair.py \
-            candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py
+            candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py \
+            candidates/v3-kestrel-capital-execution/test_candidate_load_isolation.py
 
       - name: Verify frozen predecessor receipt
         shell: bash
