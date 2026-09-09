@@ -3,6 +3,7 @@
 # Runs V2 against the full runnable panel, both seats, official engine.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+export V25_REPO="$ROOT"
 W="${V25_WORK:-/tmp/v25}"
 START="$1"; COUNT="$2"; OUT="$3"
 SEEDS=$(python3 -c "print(','.join(str($START+i) for i in range($COUNT)))")

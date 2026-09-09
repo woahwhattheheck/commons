@@ -2,6 +2,7 @@
 # One-time setup. Idempotent. No arguments.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+export V25_REPO="$ROOT"
 W="${V25_WORK:-/tmp/v25}"
 mkdir -p "$W"
 python3 -m venv "$W/.venv" 2>/dev/null || true

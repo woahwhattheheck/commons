@@ -10,10 +10,9 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 SP = Path(os.environ.get("V25_WORK","/tmp/v25"))
-R = Path("/home/user/commons/revenue/kaggriculture")
 PY = str(SP / ".venv/bin/python")
 EVAL = str(SP / "v2/checks/reference/evaluator/evaluate.py")
-R = Path("/home/user/commons/revenue/kaggriculture")
+R = Path(os.environ.get("V25_REPO", Path(__file__).resolve().parents[2])) / "revenue/kaggriculture"
 
 POOL = {
     "starter":      "official_starter",
@@ -95,6 +94,11 @@ def main():
                "failures": [g for g in games if g["status"] != "complete"]}
     (outdir / "SUMMARY.json").write_text(json.dumps(summary, indent=2))
     (outdir / "GAMES.jsonl").write_text("".join(json.dumps(g) + "\n" for g in games))
+    if len(done) == 0:
+        sys.stderr.write("FATAL: 0 games completed. shard stderr:\n")
+        for sh in shards:
+            sys.stderr.write("shard %d rc=%s\n%s\n" % (sh["shard"], sh["rc"], sh["stderr"]))
+        sys.exit(2)
     print("SUMMARY " + json.dumps(summary))
 
 main()
