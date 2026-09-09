@@ -366,6 +366,15 @@ def compare(source: dict[str, Any], live: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _receipt_shape(body: str) -> str | None:
+    scripts_dir = os.path.dirname(os.path.abspath(__file__))
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+    import peer_speech
+
+    return peer_speech.receipt_shape(body)
+
+
 def write_canary(
     url: str,
     canary_id: str,
@@ -374,6 +383,9 @@ def write_canary(
     timeout: float = TIMEOUT_S,
     opener: OpenerDirector | None = None,
 ) -> dict[str, Any]:
+    blocked = _receipt_shape(body)
+    if blocked:
+        return {"http": 0, "ok": False, "error": blocked, "response": None}
     status, _, payload = rpc(
         url,
         "tools/call",
@@ -382,7 +394,7 @@ def write_canary(
         timeout=timeout,
         opener=opener,
     )
-    return {"http": status, "response": payload}
+    return {"http": status, "ok": status == 200, "response": payload}
 
 
 def build_report(
