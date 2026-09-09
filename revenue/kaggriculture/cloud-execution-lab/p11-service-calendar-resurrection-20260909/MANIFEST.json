@@ -1,61 +1,68 @@
 {
+  "schema": "titan-p11-service-calendar-manifest/v2",
+  "operation": "titan-v3-p11-service-calendar-strict-fields-custody-20260909-sol-01",
+  "repair_parent_head": "23ceddf19ede39d1c7c872f80d71a1734d4b64a3",
   "canonical_runtime_mutation": false,
-  "files": [
+  "strength_claim": null,
+  "hosted_acceptance": "REQUIRED_EXACT_HEAD",
+  "acceptance_contract": {
+    "python": "3.11",
+    "unit_modules": [
+      "test_service_calendar",
+      "test_service_calendar_strict_fields"
+    ],
+    "expected_unit_tests": 24,
+    "requires_cli_unknown_field_rejection": true,
+    "requires_deterministic_certificate_readback": true,
+    "requires_custody_verification": true
+  },
+  "required_paths": [
+    ".github/workflows/titan-p11-service-calendar-resurrection.yml",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/_service_calendar_core.py",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/run_service_calendar_certificate.py",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/sample-feasible.json",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/service-calendar.schema.json",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/service_calendar.py",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/test_service_calendar.py",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/test_service_calendar_strict_fields.py",
+    "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/verify_custody.py"
+  ],
+  "custody_files": [
     {
-      "bytes": 1884,
-      "path": "README.md",
-      "sha256": "668f637d7e2961c86a9d87e053af3fed232e20c5b2e958f03770b475bc9e1277"
+      "path": ".github/workflows/titan-p11-service-calendar-resurrection.yml",
+      "git_blob_sha1": "777fa365524dd5586a104aa7754639b27ce25830"
     },
     {
-      "bytes": 1459,
-      "path": "RECEIPT.md",
-      "sha256": "4476a8e303931b2f91f1450471371d4c1195e99642123c82ec83b56835fb58cc"
-    },
-    {
-      "bytes": 900,
-      "path": "p/sol-chronos-titan-v3-p11-service-calendar-resurrection-20260909-01.md",
-      "sha256": "8fadaef3f9f91e31e5fb3d9b9d60f87ce266999a2f84a9f0b296e17e76cc648e"
-    },
-    {
-      "bytes": 1582,
-      "path": "run_service_calendar_certificate.py",
-      "sha256": "f7557e8e493bd73b84ffc700d339c1773a19df67f710c70ad2aae08648108bfe"
-    },
-    {
-      "bytes": 2006,
-      "path": "sample-feasible.json",
-      "sha256": "e85bdd2d65ac2ccb572a5909274249233a1da7797a1681e59494e18191331cc6"
-    },
-    {
-      "bytes": 3377,
-      "path": "service-calendar.schema.json",
-      "sha256": "bbf0b25e3ba7181009bda20c7dad98ebfabb9276acf8622d1a2d7b0462c52bb9"
-    },
-    {
-      "bytes": 45426,
-      "path": "service_calendar.py",
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/_service_calendar_core.py",
       "sha256": "2f86a7dd5d5cc3d36927b2c5c448ebc17384fc289a9ac635c004d17ae5d87980"
     },
     {
-      "bytes": 14633,
-      "path": "test_service_calendar.py",
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/run_service_calendar_certificate.py",
+      "sha256": "f7557e8e493bd73b84ffc700d339c1773a19df67f710c70ad2aae08648108bfe"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/sample-feasible.json",
+      "sha256": "e85bdd2d65ac2ccb572a5909274249233a1da7797a1681e59494e18191331cc6"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/service-calendar.schema.json",
+      "sha256": "bbf0b25e3ba7181009bda20c7dad98ebfabb9276acf8622d1a2d7b0462c52bb9"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/service_calendar.py",
+      "git_blob_sha1": "7b88abe144dca4f4dfb637aac438de62ad95a496"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/test_service_calendar.py",
       "sha256": "c689805809c580af07883a97115b8ccebd134960b2cf67d8e497d786428a2994"
     },
     {
-      "bytes": 2300,
-      "path": "titan-p11-service-calendar-resurrection.yml",
-      "sha256": "083b7d7c3ab51fee6a7b5f75ebd501bef649822f5c34711cb5196c095b2a82b7"
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/test_service_calendar_strict_fields.py",
+      "git_blob_sha1": "5f67543db9dd445b20a3389e9af4a3be3bc81cf7"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/p11-service-calendar-resurrection-20260909/verify_custody.py",
+      "git_blob_sha1": "56ed2ed6644f64c5de93cb27dcfc5d9990667946"
     }
-  ],
-  "local_acceptance": {
-    "compile": "PASS",
-    "deterministic_cli_readback": "PASS",
-    "focused_tests": {
-      "failed": 0,
-      "passed": 18
-    }
-  },
-  "operation": "titan-v3-p11-service-calendar-resurrection-20260909-sol-chronos-01",
-  "schema": "titan-p11-service-calendar-manifest/v1",
-  "strength_claim": null
+  ]
 }
