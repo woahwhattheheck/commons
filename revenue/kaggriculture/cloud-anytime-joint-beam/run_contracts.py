@@ -86,6 +86,15 @@ def main() -> int:
                 raise SystemExit("worker proposer changed controller fields")
             complete_outputs.add(json.dumps(proposed, sort_keys=True, separators=(",", ":")))
 
+    deadline_fallbacks = sum(n for reason, n in reasons.items() if reason.startswith("deadline-"))
+    if deadline_fallbacks:
+        raise SystemExit(f"deadline fallbacks fail closed: {deadline_fallbacks} {reasons}")
+    if fallbacks:
+        raise SystemExit(f"non-complete searches fail closed: {fallbacks} {reasons}")
+    max_elapsed = max(elapsed_ms) if elapsed_ms else 0.0
+    if max_elapsed > 35:
+        raise SystemExit(f"max elapsed {max_elapsed} ms exceeds 35 ms contract")
+
     if len(complete_outputs) > 1:
         raise SystemExit("complete searches were not deterministic")
     rss_kib = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
