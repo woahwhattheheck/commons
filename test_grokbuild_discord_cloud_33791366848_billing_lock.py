@@ -53,11 +53,11 @@ KEEP = {
     "p/grok-build-discord-cloud-33723861224-billing-lock-20260903-01.md": "707298ba",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "03d03e22",
     "p/grokbuild-slack-service-tags-33741230551-billing-lock-20260903-01.md": "1e1d7999",
-    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "9369df66",
+    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "9dc0683e",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grokbuild-llms-txt-33791642614-billing-lock-20260903-01.md": "06329978",
@@ -72,7 +72,7 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
     "p/grokbuild-staleness-alarm-33767754124-billing-lock-20260903-01.md": "49d0ad65",
-    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "cd9efbe0",
+    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "7ad5f076",
     "p/grokbuild-resources-tab-freshness-33767588782-billing-lock-20260903-01.md": "eca6f65c",
     "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "d78c5386",
     "commons_discord.py": "f6f1a374",
@@ -83,7 +83,7 @@ KEEP = {
     "infra/discord/test_windows_runtime.py": "158feb48",
     "infra/discord/assert_ready.py": "ad33fdba",
     ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "1a42e1c9",
 }
 
 

@@ -33,9 +33,9 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "1a42e1c9",
 }
 
 

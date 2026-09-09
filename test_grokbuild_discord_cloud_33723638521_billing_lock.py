@@ -52,9 +52,9 @@ KEEP = {
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "03d03e22",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
@@ -66,7 +66,7 @@ KEEP = {
     "infra/discord/test_windows_runtime.py": "158feb48",
     "infra/discord/assert_ready.py": "ad33fdba",
     ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "1a42e1c9",
 }
 
 
