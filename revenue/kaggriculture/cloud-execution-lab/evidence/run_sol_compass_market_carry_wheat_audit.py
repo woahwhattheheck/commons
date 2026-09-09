@@ -43,6 +43,20 @@ def main() -> int:
     legacy.PATHS["frozen"] = "scheduler.py"
     legacy.EXPECTED_BLOBS["frozen"] = SCHEDULER_BLOB
 
+    # Complete the synthetic private schema used only for parent liquidation.
+    # The legacy fixture already supplies every product and crop key. Official
+    # private state also includes animal objects in shed; add zero-valued keys
+    # so the optimistic parent probe cannot depend on a partial mapping.
+    original_synthetic = legacy.synthetic_observation
+
+    def complete_synthetic(parent, step, wheat):
+        observation = original_synthetic(parent, step, wheat)
+        for animal in parent.ANIMALS:
+            observation["private"]["shed"].setdefault(animal, 0)
+        return observation
+
+    legacy.synthetic_observation = complete_synthetic
+
     result = int(legacy.main())
 
     report_path = Path("WHEAT-AUDIT.json")
@@ -62,6 +76,7 @@ def main() -> int:
         "scheduler_blob": scheduler,
         "frozen_selected_blob": frozen_selected,
         "calculation_engine_unchanged": True,
+        "synthetic_private_schema_complete": True,
     }
     report_path.write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
@@ -73,8 +88,9 @@ def main() -> int:
             "\n## Source-binding correction\n\n"
             "The executable audit pins `scheduler.py` as the source of the "
             "WHEAT/FERTILIZER SELL exclusion and independently pins "
-            "`frozen_selected.py` as its importing consumer. No calculation "
-            "or parent-route logic was changed.\n"
+            "`frozen_selected.py` as its importing consumer. The synthetic "
+            "private state includes zero-valued official animal shed keys. No "
+            "economic calculation or parent-route logic was changed.\n"
         )
 
     print("FINAL_REPORT_SHA256", sha256(report_path.read_bytes()).hexdigest())
