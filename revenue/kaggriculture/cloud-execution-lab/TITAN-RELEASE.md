@@ -1,5 +1,37 @@
 # Current TITAN release
 
+The same producer now uses a bounded idle interval to collect otherwise unclaimed
+fertilizer from an animal that is about to escape. `idle_fertilizer` is enabled.
+There is one outstanding job at most: collect, return to the shed, deposit with
+one surplus sale in the same emitted action, and rejoin the original position.
+The worker's original rows must be idle through reset; the trip fits six actions
+and ends before a hire, branch or EOD. Same-day input obligations and other
+collectors decline the job. A physical stock bound counts carried goods,
+standing yield, possible annual WATER bonuses and requested purchases without
+crediting future sales. The delivery uses an empty producer market row.
+
+The actual final fertilizer-sale slot is bound after existing SELL ordering.
+Cancelled deposits cancel the added sale as well. Already collected stock stays
+owned through cancellation, rejoin and EOD; a missed deadline may finish that
+owned return, but cannot start another job. The existing own-fill ledger verifies
+the returned lot. An unknown receipt or unaccounted later fertilizer transfer
+cannot authorize a duplicate sale of replacement stock. This collection-only
+use does not enable or load the optional terminal optimizer.
+
+Twenty-three focused idle/runtime contracts cover these boundaries. An original
+recording was also checked privately using the existing unit and market
+primitives. Its earning receipt concerns one bounded action window, with no
+full-game score estimate or measured win gain. Originals and tactical analysis
+remain outside the release.
+
+The active frozen `selected_sell_core` also receives the scheduler's reviewed
+early pruning. With a feasible reference it rejects nonpositive no-rival
+improvement before the physical-capacity callback, then stops at the first
+nonpositive remaining scenario. The forced-feasibility path and result ordering
+are unchanged. Focused comparisons against the preserved loop retain exact
+plans/reports and reduce capacity calls in the floor-tie case. No game-speed or
+playing-strength improvement is inferred from those arithmetic checks.
+
 The current working v2 includes bounded recovery of a PLANT or BUILD displaced by
 the existing weed DIG. `SpatialTempo` remains the route owner inside the single
 `main.py::agent` production path. A same-day PASS absorbs the inserted operation;
@@ -11,7 +43,8 @@ only against its actually returned action.
 
 This is source/native validation of an unsubmitted v2 iteration. Its exact
 DELTA, ASH and SPRUCE fixtures and regression tests are in `checks/`. New full-game
-panels are paused for the owner's mechanism-review pass. Historical A candidate
+panels are not launched by this integration pass. Other executors retain their
+frozen artifacts and separate evidence labels. Historical A candidate
 tests and games do not validate these newly authored bytes, and no new playing
 strength or leaderboard claim is made. Optional spatial pathing/tempo, terminal
 features, fourth-quadrant investment and committed seed retry remain disabled.

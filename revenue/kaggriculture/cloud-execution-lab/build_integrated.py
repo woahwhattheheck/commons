@@ -67,6 +67,8 @@ def source_files():
     mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
     mapping['checks/test_weed_continuation.py']='test_weed_continuation.py'
     mapping['checks/test_operating_stock.py']='test_operating_stock.py'
+    mapping['checks/test_idle_fertilizer.py']='test_idle_fertilizer.py'
+    mapping['checks/test_selected_pruning.py']='test_selected_pruning.py'
     mapping['checks/reference/weed-continuation/delta-native.json.gz']='reference/weed-continuation/delta-native.json.gz'
     mapping['checks/reference/weed-continuation/ash-native.json.gz']='reference/weed-continuation/ash-native.json.gz'
     mapping['checks/reference/weed-continuation/spruce-native.json.gz']='reference/weed-continuation/spruce-native.json.gz'

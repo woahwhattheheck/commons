@@ -11,5 +11,6 @@
   "fourth_quadrant": false,
   "market_pressure": true,
   "committed_seed_retry": false,
-  "operating_stock": true
+  "operating_stock": true,
+  "idle_fertilizer": true
 }

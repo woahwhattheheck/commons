@@ -19,6 +19,9 @@ class FrozenSelected(SellScheduler):
                     and any(o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER']
                             for o in base.get('market', [])))):
             self.selected_post_units = (copy.deepcopy(farm), copy.deepcopy(private))
+            self.selected_post_units_binding = (
+                now, int(obs['player']), copy.deepcopy(base['farmer']),
+                copy.deepcopy(base.get('hands', [])))
         shed=private['shed'];self.diagnostics={'step':now,'evaluations':[]}
         # Operating WHEAT/FERTILIZER and animal stock remain baseline-controlled.
         if now==last:
