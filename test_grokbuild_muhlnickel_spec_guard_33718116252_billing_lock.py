@@ -24,11 +24,11 @@ KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
-    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "072b39fd",
+    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "8ca105da",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "abaeb302",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "2f17ec7e",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "2e64c492",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "4be3563a",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
     "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "1dd49e10",
     "wire.html": "a3934e26",
@@ -74,7 +74,7 @@ class TestGrokbuildMuhlnickelSpecGuard33718116252BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

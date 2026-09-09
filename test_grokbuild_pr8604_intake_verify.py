@@ -30,7 +30,7 @@ class TestGrokbuildPr8604IntakeVerify(unittest.TestCase):
             )
         )
         self.assertTrue(
-            git_blob("test_grokbuild_path_manifest_33718116313_billing_lock.py").startswith("7a4faf35")
+            git_blob("test_grokbuild_path_manifest_33718116313_billing_lock.py").startswith("9ed291a5")
         )
 
     def test_verify_receipt_is_unique(self) -> None:

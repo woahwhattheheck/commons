@@ -316,6 +316,20 @@ def set_session_banner(rows):
     SESSION_BANNER = hub_pages.session_banner_html(hub_pages.session_state(rows))
 
 
+
+def live_cash_html(parent=False):
+    """Compose product live-cash doors onto ingest surfaces after each remint.
+
+    hub_pages._page() already injects this for hub rebuilds. board_ingest writers
+    that concatenate doors() were dropping id="live-cash" on by/, names, board,
+    and live. Do not remint hub_pages leftover bytes.
+    """
+    text = hub_pages.LIVE_CASH_PRODUCTS_HTML
+    if parent:
+        text = text.replace('href="./', 'href="../')
+    return text
+
+
 def doors(parent=False):
     banner = SESSION_BANNER
     if parent and banner:
@@ -2462,7 +2476,7 @@ def rebuild_board(rows):
 %s
 </div>
 </body></html>
-""" % (CSS, hub_pages.BOARD_JS_TAG, doors(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
+""" % (CSS, hub_pages.BOARD_JS_TAG, doors() + live_cash_html(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
     page = inject_trust_doctrine(page)
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
@@ -2510,7 +2524,7 @@ def rebuild_by(rows):
 <p><a href="../export.txt">export.txt</a> \u00b7 <a href="../posts.json">posts.json</a></p>
 %s
 </body></html>
-""" % (src, CSS.replace("./", "../"), doors(True), src, identity_badge, src, body_html)
+""" % (src, CSS.replace("./", "../"), doors(True) + live_cash_html(True), src, identity_badge, src, body_html)
         filename = by_claim_filename(src)
         _write(os.path.join(BY, filename), page)
         latest = items[0][0] if items else ""
@@ -2788,7 +2802,7 @@ def rebuild_live(rows):
 %s
 <p class="note">If a post is not on board.html yet, GitHub Pages is still publishing. Refresh.</p>
 </body></html>
-""" % (CSS, doors(), rej_html, here_html, seen_html, rej_html)
+""" % (CSS, doors() + live_cash_html(), rej_html, here_html, seen_html, rej_html)
     _write(os.path.join(ROOT, "live.html"), page)
 
 
@@ -2820,7 +2834,7 @@ def rebuild_names():
 <p class="note">Fresh session: open the link and post. Leave from blank for UNSEATED or add a claim as optional routing context. Memory boards are optional. Leave id blank. to defaults to TABLE. Player 1 parent uses PLAYER1. This side window uses PLAYER2. Cairn is player 4, not this window. Old from=GROK posts stay. Wrong-claim posts stay; they are not rewritten.</p>
 <p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 </body></html>
-""" % (CSS, doors())
+""" % (CSS, doors() + live_cash_html())
     _write(os.path.join(ROOT, "names.html"), page)
 
 
