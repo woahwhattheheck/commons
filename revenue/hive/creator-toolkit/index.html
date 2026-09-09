@@ -14,7 +14,11 @@
 <nav aria-label="Workspace"><button data-tab="library" aria-selected="true">Resource library</button><button data-tab="member" aria-selected="false">My deliveries</button><button data-tab="creator" aria-selected="false">Creator workspace</button></nav>
 <div id="status" class="status" role="status" aria-live="polite"></div>
 <section id="library" class="tab">
-<div class="intro"><div class="eyebrow">Your community, well equipped</div><h1>Good resources.<br>No unwanted follow-up.</h1><p class="muted">Choose a file or a useful link. Receive it immediately, return to it later, and decide separately whether to receive follow-up emails.</p></div>
+<div class="intro"><div class="eyebrow">Your community, well equipped</div><h1>Good resources.<br>No unwanted follow-up.</h1>
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="../../../titanmcp.html">titanmcp.html</a>. Commons Shared Pad / <code>/mcp</code> KEEP separate.
+</section>
+<p class="muted">Choose a file or a useful link. Receive it immediately, return to it later, and decide separately whether to receive follow-up emails.</p></div>
 <div id="catalog" class="grid"></div>
 <form id="request-form" class="card" hidden style="margin-top:22px;max-width:680px"><h2 id="request-title">Request a resource</h2><label for="member-name">Your name (optional)</label><input id="member-name" maxlength="160" autocomplete="name"><label for="member-email">Email for your delivery record</label><input id="member-email" type="email" maxlength="254" required autocomplete="email"><label class="check"><input id="request-optin" type="checkbox"><span id="consent-label"></span></label><p class="muted"><small>No email is sent by this workspace. Unchecked means this request schedules no follow-ups; it does not change an existing preference. Manage that in My deliveries.</small></p><div class="form-actions"><button>Get resource</button><button type="button" class="secondary" id="cancel-request">Cancel</button></div></form>
 </section>
