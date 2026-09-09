@@ -184,10 +184,10 @@ class MaterializationContracts(unittest.TestCase):
 class FakeController:
     def __init__(self):
         self.cur = 0
-        self.R = [
+        self.R = [[
             {"farmer": ["PASS"], "hands": [], "market": []}
             for _ in range(720)
-        ]
+        ]]
 
     def act(self, _observation):
         return {"farmer": ["PASS"], "hands": [], "market": []}

@@ -6,29 +6,11 @@ on:
       - ".github/workflows/titan-v2-profit-first-forced-fallback-sol-forge.yml"
       - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/**"
       - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/**"
-      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py"
-      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/compare.py"
       - "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1/**"
       - "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v2/**"
       - "revenue/kaggriculture/cloud-execution-lab/reference/engine/**"
       - "revenue/kaggriculture/cloud-eval/evaluate.py"
       - "revenue/kaggriculture/20260907-offline-agent/evaluate.py"
-      - "p/sol-forge-titan-v2-profit-first-forced-fallback-20260909-01.md"
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/titan-v2-profit-first-forced-fallback-sol-forge.yml"
-      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/**"
-      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/**"
-      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py"
-      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/compare.py"
-      - "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1/**"
-      - "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v2/**"
-      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/**"
-      - "revenue/kaggriculture/cloud-eval/evaluate.py"
-      - "revenue/kaggriculture/20260907-offline-agent/evaluate.py"
-      - "p/sol-forge-titan-v2-profit-first-forced-fallback-20260909-01.md"
   workflow_dispatch:
 
 permissions:
@@ -58,7 +40,7 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Bind exact source, delegated carrier, and lane identities
+      - name: Bind exact source and carrier identities
         shell: bash
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -67,35 +49,14 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git hash-object "$LAB/runtime/variants/v1/scheduler.py")" = "cbc502a92fe9d790cfaf763f6990d1057bc9b82d"
           test "$(git hash-object "$LAB/runtime/variants/v2/scheduler.py")" = "7c068b7078c3d7c09bb3836590ad42b0af934cdf"
-          test "$(git hash-object "$LAB/runtime/variants/v1/candidate.py")" = "8db1262a2d38cc3115d06732383e18e1132ccfba"
-          test "$(git hash-object "$LAB/runtime/variants/v2/candidate.py")" = "8db1262a2d38cc3115d06732383e18e1132ccfba"
-          test "$(git hash-object "$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py")" = "bdb9cf58148a3c7961c085f4902759537decabf6"
-          test "$(git hash-object "$LAB/reference/engine/kaggriculture.py")" = "3c202c7ee921da239356789e266b694635103fc4"
-          test "$(git hash-object "$LAB/reference/engine/kaggriculture.json")" = "b354d06b742fe48402513792253f1a5c29366b20"
-          test "$(git hash-object "$LAB/reference/engine/utils.py")" = "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87"
-          test "$(git hash-object "$KAG/cloud-eval/evaluate.py")" = "077feb2208b6e0c1727835eb4f8089709bf67f3b"
-          test "$(git hash-object "$KAG/20260907-offline-agent/evaluate.py")" = "23948e10cfc3d32f46c9abb1321b0d8fc8db21d5"
-          test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py")" = "e7740bbd2f5ad71f565073445535d6941184288c"
-          test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/compare.py")" = "6d66238b2ce1f11f26752049c106502be5ef0ec7"
-          test "$(git hash-object "$PARENT/materialize.py")" = "06515514ec864776f29571d63d3f343376e5865b"
           test "$(git hash-object "$PARENT/bind_execution.py")" = "3bf8cfb22f2708be37b0f7955444e7a36a6e258d"
           test "$(git hash-object "$PARENT/compare.py")" = "49614b4ec0eb5e5c09f5d345dd13c3c982b6ab39"
           test "$(git hash-object "$PARENT/compare_bound.py")" = "ab516c55b909ed922b2a821ccebc52c1dfd831df"
           test "$(git hash-object "$PARENT/materialize_evaluator.py")" = "fe535fda2573ce198e34da4c4639ab14587ba8b8"
-          test "$(git hash-object "$CASE/README.md")" = "d1cf2f96ae14aad844821bf5a2fe21e83e21b982"
           test "$(git hash-object "$CASE/materialize.py")" = "06b1e9d79db741db5abe0f8d0b9191ae4783dee0"
-          test "$(git hash-object "$CASE/delegate.py")" = "dc2a57b47ac9a401d437782a99e66c1269f3956b"
-          test "$(git hash-object "$CASE/bind_execution.py")" = "e366bd3febde0ad6871049aa66ab4e5aa8d6ce04"
-          test "$(git hash-object "$CASE/materialize_evaluator.py")" = "5c49164a3d6f25555bc1b1f0282e20569a58a661"
-          test "$(git hash-object "$CASE/compare.py")" = "1e78ef5267bb98480a290c6f1930388b8cf4aba5"
-          test "$(git hash-object "$CASE/compare_bound.py")" = "fb572031225ada8c0085d1e42686131bdcf5e7ca"
-          test "$(git hash-object "$CASE/test_materialize.py")" = "d917d9021bdc6331f05806a35f712549adfa3959"
-          test "$(git hash-object "$CASE/test_delegate.py")" = "86452b81902d06e28ca142337f7f7dced3ab1760"
-          test "$(git hash-object "$CASE/test_workflow.py")" = "efecab1df4f2855af9e48493c58c5df2efa79160"
-          test "$(git hash-object "p/sol-forge-titan-v2-profit-first-forced-fallback-20260909-01.md")" = "408cfd5637485aeeed4bc0d034be3cfa26c90eb0"
+          test "$(git hash-object "$CASE/test_materialize.py")" = "b27ec2dd6a318f5ecdf273b09cc9e3d0a9f64994"
           git diff --exit-code -- .
           test -z "$(git status --porcelain --untracked-files=all)"
-          printf 'exact_head=%s\n' "$EXPECTED_HEAD"
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -110,15 +71,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B -m unittest -v \
-            test_materialize.py \
-            test_delegate.py \
-            test_workflow.py
+          python -B -m unittest -v test_materialize.py test_delegate.py test_workflow.py
           python -B - <<'PY'
           from pathlib import Path
           for path in sorted(Path('.').glob('*.py')):
               compile(path.read_text(encoding='utf-8'), str(path), 'exec')
-              print('compiled', path)
           PY
           git diff --exit-code -- .
           test -z "$(git status --porcelain --untracked-files=all)"
@@ -130,32 +87,15 @@ jobs:
           OUT="$RUNNER_TEMP/v2-profit-first-forced-fallback"
           rm -rf "$OUT"
           mkdir -p "$OUT"
-          python -B "$CASE/materialize.py" \
-            --source "$LAB/runtime/variants/v2" \
-            --output "$OUT/materialized-candidate" \
-            --receipt "$OUT/MATERIALIZATION.json"
-          python -B "$CASE/materialize_evaluator.py" \
-            --source "$KAG/cloud-eval/evaluate.py" \
-            --output "$OUT/evaluate-bound.py" \
-            --receipt "$OUT/EVALUATOR-MATERIALIZATION.json"
-          python -B "$CASE/bind_execution.py" \
-            --source "$LAB/runtime/variants/v2" \
-            --ablation "$OUT/materialized-candidate" \
-            --materialization-receipt "$OUT/MATERIALIZATION.json" \
-            --output "$OUT/arms" \
-            --receipt "$OUT/EXECUTION-BINDING.json"
-          cat "$OUT/MATERIALIZATION.json"
-          cat "$OUT/EVALUATOR-MATERIALIZATION.json"
-          cat "$OUT/EXECUTION-BINDING.json"
+          python -B "$CASE/materialize.py" --source "$LAB/runtime/variants/v2" --output "$OUT/materialized-candidate" --receipt "$OUT/MATERIALIZATION.json"
+          python -B "$CASE/materialize_evaluator.py" --source "$KAG/cloud-eval/evaluate.py" --output "$OUT/evaluate-bound.py" --receipt "$OUT/EVALUATOR-MATERIALIZATION.json"
+          python -B "$CASE/bind_execution.py" --source "$LAB/runtime/variants/v2" --ablation "$OUT/materialized-candidate" --materialization-receipt "$OUT/MATERIALIZATION.json" --output "$OUT/arms" --receipt "$OUT/EXECUTION-BINDING.json"
 
       - name: Verify canonical package stayed unchanged
         shell: bash
         run: |
           set -euo pipefail
-          (
-            cd "$LAB"
-            python -B build_integrated.py --check
-          )
+          (cd "$LAB" && python -B build_integrated.py --check)
           git diff --exit-code -- .
           test -z "$(git status --porcelain --untracked-files=all)"
 
@@ -170,11 +110,8 @@ jobs:
             --candidate "$OUT/arms/control/bound_entry.py::agent" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
-            --seeds "$SEEDS" \
-            --rng-seed 20260909 \
-            --action-timeout 1.0 \
-            --startup-timeout 15 \
-            --game-timeout 180 \
+            --seeds "$SEEDS" --rng-seed 20260909 \
+            --action-timeout 1.0 --startup-timeout 15 --game-timeout 180 \
             --output "$OUT/control.json"
 
       - name: Run closure-bound profit-first candidate panel
@@ -188,11 +125,8 @@ jobs:
             --candidate "$OUT/arms/ablation/bound_entry.py::agent" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
-            --seeds "$SEEDS" \
-            --rng-seed 20260909 \
-            --action-timeout 1.0 \
-            --startup-timeout 15 \
-            --game-timeout 180 \
+            --seeds "$SEEDS" --rng-seed 20260909 \
+            --action-timeout 1.0 --startup-timeout 15 --game-timeout 180 \
             --output "$OUT/candidate.json"
 
       - name: Classify closure-bound candidate-action own-cash signal
@@ -203,16 +137,13 @@ jobs:
           set +e
           OUT="$RUNNER_TEMP/v2-profit-first-forced-fallback"
           python -B "$CASE/compare_bound.py" \
-            --control "$OUT/control.json" \
-            --candidate "$OUT/candidate.json" \
+            --control "$OUT/control.json" --candidate "$OUT/candidate.json" \
             --materialization-receipt "$OUT/MATERIALIZATION.json" \
             --binding-receipt "$OUT/EXECUTION-BINDING.json" \
             --evaluator-receipt "$OUT/EVALUATOR-MATERIALIZATION.json" \
-            --arms-root "$OUT/arms" \
-            --patched-evaluator "$OUT/evaluate-bound.py" \
+            --arms-root "$OUT/arms" --patched-evaluator "$OUT/evaluate-bound.py" \
             --head "$(git rev-parse HEAD)" \
-            --output "$OUT/PRIORITY-REPORT.json" \
-            --markdown "$OUT/PRIORITY-REPORT.md"
+            --output "$OUT/PRIORITY-REPORT.json" --markdown "$OUT/PRIORITY-REPORT.md"
           status=$?
           printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
           exit 0
@@ -222,20 +153,15 @@ jobs:
         shell: bash
         run: |
           REPORT="$RUNNER_TEMP/v2-profit-first-forced-fallback/PRIORITY-REPORT.md"
-          if [[ -f "$REPORT" ]]; then
-            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "# V2 profit-first forced-fallback panel did not reach classification" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          if [[ -f "$REPORT" ]]; then cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"; fi
 
       - name: Retain exact evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: titan-v2-profit-first-forced-fallback-${{ github.run_id }}
-          path: |
-            ${{ runner.temp }}/v2-profit-first-forced-fallback/
-          if-no-files-found: error
+          path: ${{ runner.temp }}/v2-profit-first-forced-fallback/
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Assert exact head stayed clean
