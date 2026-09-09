@@ -71,3 +71,7 @@ python test_compare_official_local.py
 ```
 
 Authoring checkpoint: **4/4 PASS**, plus both `py_compile` checks PASS. Tests cover a complete A/B receipt, exact environment version evidence, parsed score/action differences, SHA-256 log evidence, original-agent restoration, parser refusal without a game row, positive action-budget enforcement, and absence of a competition-submission invocation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

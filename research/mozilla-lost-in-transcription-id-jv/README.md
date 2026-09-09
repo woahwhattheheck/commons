@@ -84,3 +84,7 @@ Open-weight pretrained models are permitted by the published competition descrip
 ## Status
 
 Engineering baseline/tooling only. No registration, official smoke test, leaderboard submission, rank, prize, award, or payment is claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

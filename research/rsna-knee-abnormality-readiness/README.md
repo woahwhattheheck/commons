@@ -54,3 +54,7 @@ Do not commit or paste RSNA/Kaggle competition data, radiology reports, DICOMs, 
 ## Next paid-work step
 
 Use this guard inside the actual competition notebook after the human entrant accepts the Kaggle rules and obtains authorized data access. A modeling lane can then optimize the real multimodal pipeline while this directory catches submission-shape, ID-coverage, probability, metric, and runtime failures before a submission attempt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

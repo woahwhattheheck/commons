@@ -21,3 +21,7 @@ Receipt: [p/cursor-owner-now-revenue-20260902-01.md](../p/cursor-owner-now-reven
 New Payment Links stay EXTERNAL_PROVIDER_ACTION until a private connector
 mints one. `NOT_MINTED` is a measurement, not a freeze. Cash stays USD 0
 until BANK_AVAILABLE.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

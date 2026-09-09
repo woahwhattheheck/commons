@@ -45,3 +45,7 @@ No leaderboard score, placement, award, or submission status belongs in this doc
 train or validation by SHA-256 of `(seed, filename)`, records the exact source
 CSV SHA-256, and deliberately omits transcript/metadata payloads. This gives a
 reproducible split receipt without placing competition data in Commons.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
