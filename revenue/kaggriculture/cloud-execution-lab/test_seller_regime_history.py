@@ -1,3 +1,6 @@
+import importlib.util
+from pathlib import Path
+import tempfile
 import unittest
 
 from seller_regime_history import PublicRegimeHistory
@@ -69,6 +72,27 @@ class RegimeHistoryTests(unittest.TestCase):
         self.assertEqual(signal['long_rate'], 6)
         self.assertEqual(signal['stress'], 6)
 
+    def test_cross_stream_noise_cannot_resurrect_old_outlier(self):
+        h = PublicRegimeHistory()
+        h.harvests['CARROT'] = [(2, 90)]
+        h.flows['CARROT'] = [(10, 1)]
+        signal = h.signal(20, 'CARROT')
+        self.assertEqual(signal['short'], 0)
+        self.assertEqual(signal['harvest_repeat_support'], 1)
+        self.assertEqual(signal['flow_repeat_support'], 1)
+        self.assertEqual(signal['repeat_support'], 1)
+        self.assertEqual(signal['long_rate'], 0)
+        self.assertEqual(signal['stress'], 0)
+
+    def test_repeated_flow_events_can_form_bounded_long_memory(self):
+        h = PublicRegimeHistory()
+        h.flows['CARROT'] = [(2, 3), (10, 3)]
+        signal = h.signal(20, 'CARROT')
+        self.assertEqual(signal['short'], 0)
+        self.assertEqual(signal['flow_repeat_support'], 2)
+        self.assertEqual(signal['long_rate'], 2)
+        self.assertEqual(signal['stress'], 2)
+
     def test_town_absorption_is_not_misattributed_to_rival(self):
         h = PublicRegimeHistory()
         before = obs(0, inventory={'CARROT': 10, 'MILK': 10})
@@ -110,6 +134,50 @@ class RegimeHistoryTests(unittest.TestCase):
                   product_of=product_of, absorption=no_absorption)
         self.assertEqual(h.regime_step, 3)
         self.assertEqual(h.signal(3, 'CARROT')['stress'], 0)
+
+    def test_wrapper_initializes_opening_mix_before_first_transition(self):
+        here = Path(__file__).resolve().parent
+        stub = """\
+PRODUCTS = ('CARROT', 'MILK')
+class _M:
+    ANIMALS = {}
+m = _M()
+def absorption(*args):
+    return 0
+class SellScheduler:
+    def __init__(self, mode='candidate'):
+        self.previous = None
+        self.diagnostics = {}
+    def observe(self, obs):
+        self.previous = obs
+    def act(self, obs, configuration=None):
+        self.observe(obs)
+        return {'market': []}
+"""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / 'scheduler.py').write_text(stub)
+            (root / 'seller_regime_history.py').write_text(
+                (here / 'seller_regime_history.py').read_text())
+            (root / 'regime_scheduler.py').write_text(
+                (here / 'regime_scheduler.py').read_text())
+            spec = importlib.util.spec_from_file_location(
+                'e17_wrapper_lifecycle_test', root / 'regime_scheduler.py')
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            scheduler = module.RegimeSellScheduler()
+            opening = obs(0, rival_tile=tile('CARROT', 0))
+            shifted1 = obs(1, rival_tile=tile('MILK', 0))
+            shifted2 = obs(2, rival_tile=tile('MILK', 0))
+            scheduler.act(opening, {})
+            self.assertEqual(scheduler.regime_history.regime_step, 0)
+            self.assertEqual(scheduler.regime_history.candidate_streak, 0)
+            scheduler.act(shifted1, {})
+            self.assertEqual(scheduler.regime_history.regime_step, 0)
+            self.assertEqual(scheduler.regime_history.candidate_streak, 1)
+            scheduler.act(shifted2, {})
+            self.assertEqual(scheduler.regime_history.regime_step, 2)
+            self.assertEqual(scheduler.regime_history.candidate_streak, 0)
 
     def test_stress_is_capacity_bounded(self):
         h = PublicRegimeHistory(capacity=100)

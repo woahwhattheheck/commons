@@ -128,14 +128,23 @@ class LiveCollectors:
         return self.equipment.github(endpoint, method="GET")
 
     def _pages(self, endpoint, key=None):
-        result, total, incomplete = [], None, False
+        result, total, incomplete, seen_ids = [], None, False, set()
         for page in range(1, self.max_pages + 1):
             suffix = "&" if "?" in endpoint else "?"
             response = self._github(endpoint + suffix + urlencode({"per_page": self.page_size, "page": page}))
             rows = response.get(key) if key and isinstance(response, dict) else response
             if not isinstance(rows, list):
                 raise SourceFailure("github_response_shape")
-            result.extend(rows)
+            # GitHub page boundaries can overlap while results change between requests.
+            # Stable provider ids must count once or overlap can manufacture completeness.
+            for row in rows:
+                row_id = row.get("id") if isinstance(row, dict) else None
+                marker = ((type(row_id), row_id) if isinstance(row_id, (str, int))
+                          and not isinstance(row_id, bool) else None)
+                if marker is None or marker not in seen_ids:
+                    result.append(row)
+                    if marker is not None:
+                        seen_ids.add(marker)
             if isinstance(response, dict):
                 if "total_count" in response:
                     total = response["total_count"]
