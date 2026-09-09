@@ -21,3 +21,13 @@ Exact SHA-256 values from the executed example:
 - receipt log: `a2b43a041d6bc0963d1bba62e87c81839c1d6293fee3a4a4588bda433e29a5fb`
 
 No purchase order was sent, no substitute was approved, and no supplier, customer, payment, or account operation occurred.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

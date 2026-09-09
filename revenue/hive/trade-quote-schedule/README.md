@@ -38,3 +38,13 @@ python3 -m py_compile trade_quote.py test_trade_quote.py
 ```
 
 Offer reference: Hive demand `bm-hive-20260908-039`, advertised at $499 setup plus $149/month. This is a runnable delivery checkpoint, not a subscription sale or payment claim.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

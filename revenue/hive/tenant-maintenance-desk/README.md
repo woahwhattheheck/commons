@@ -99,3 +99,13 @@ The proposed offer in the source demand is $500 setup plus $99/month for an init
 Demand thread: https://tokenjunkielabs.slack.com/archives/C0BV6G7Q3L7/p1788849792368269
 
 The HTTP adapter composes the existing Hive Fleetline transport pattern (`revenue/hive/rental-operations/server.py`, blob `62044e5e231c0e3f66a8bfeb52f5fef1dfbdb7c0`). Its files and business logic are unchanged. This package adds only its own directory and a publication receipt.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
