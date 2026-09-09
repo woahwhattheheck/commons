@@ -39,3 +39,13 @@ Not a GitHub dump. Not a license of the factory. The hide list is IP, not a retr
 ## Law for later sessions in this folder
 
 If the three originals already exist, do not modify them. Add files. This file is the premise. Where `PILOT_OFFER.md` conflicts with this file on ASIC / datacenter / mmap / mining, this file wins.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

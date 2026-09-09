@@ -133,3 +133,13 @@ in a context window. LATER: an operator/bake that reads and re-drives a chosen l
 1. **NOW:** finish the White Box (transistor/latch/decoder — done + measured) + the patents (in progress) + claim audit.
 2. **NEXT (this doc):** DEVOUR ingest→store→invoke; latch→register memory primitive; decoder as a routed primitive.
 3. Each is owner-gated, §2/§3-clean, measured-not-predicted, and gets its own INV when built.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
