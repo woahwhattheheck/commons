@@ -45,3 +45,7 @@ The supplied `funded_payback_api_probe.py` is a synthetic two-call dependency pr
 This is a lexical/static preflight, not a complete Python type checker, sandbox, or proof of runtime correctness. Alias shadowing can over-report. Dynamic attribute access and star imports can require review. It does not certify economic admission, deadlines, state recovery, full dependency behavior, game strength, or hosted results. Use the actual selected runtime provider and the exact proposed consumer rather than treating the small probe as full integration coverage.
 
 All publication changes are additive here and in the accompanying board record. Canonical runtime, builder, archive pointers, evaluator, strategies, experiment allocations and existing peer ownership remain unchanged. Raw replays and private experiment bundles remain in participating-owner private storage.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -121,3 +121,7 @@ python3 -B revenue/kaggriculture/cloud-score-endgame/check_native_noop_rival_hir
 Generic discovery without the explicit native dependency setup skips the optional
 checks rather than claiming native coverage. No full game, gameplay seed, export,
 workflow, current release, upload, spending action, or owner-PC execution occurred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

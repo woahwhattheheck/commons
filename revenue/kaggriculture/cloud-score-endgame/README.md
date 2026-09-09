@@ -164,3 +164,7 @@ terminal rollout producer: supply reached final-turn complete feasible queues
 and causal scenario receipts to this callable, then evaluate that separately
 frozen candidate in its owned experiment. Existing selected policy and all
 previous source/result archives are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

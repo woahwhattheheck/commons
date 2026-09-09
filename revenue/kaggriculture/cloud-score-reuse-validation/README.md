@@ -47,3 +47,7 @@ Private reproduction kit: 6,606,336 bytes, SHA256
 The owner-project Library holds exact inputs, source, raw traces and prior results.
 
 Prior delivery: https://github.com/woahwhattheheck/commons/pull/10518#issuecomment-5584491927
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

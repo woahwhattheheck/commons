@@ -73,3 +73,7 @@ deduplication, integrity, and input preservation. Synthetic test histories are
 not provider evidence. Only reusable source, synthetic tests, and documentation belong in this public
 directory. Keep match reports and original replays in private project storage.
 Publication status is recorded separately from the generated analysis report.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

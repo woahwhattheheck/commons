@@ -70,3 +70,7 @@ is a compact result; full comparison and original inputs remain in the separate
 `titan-rill-model-contrast-20260908.zip` Library package. Its root README contains
 the extracted-package command. New files are Apache-2.0; the existing normalizer
 retains its MIT license and attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

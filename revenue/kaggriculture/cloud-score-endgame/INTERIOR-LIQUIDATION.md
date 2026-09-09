@@ -131,3 +131,7 @@ The next consumer is the canonical builder's terminal-model work: keep the
 current release unchanged and use this fixed negative result to avoid treating
 these eleven additional patterns as an established improvement. The broader
 terminal-special-case and floor-censoring issues from PR10158 remain open.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

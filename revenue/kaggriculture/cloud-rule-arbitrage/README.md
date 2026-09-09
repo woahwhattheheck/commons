@@ -45,3 +45,7 @@ python ../cloud-eval/evaluate.py \
 
 No hosted replay, private opponent source, network service, credential, model,
 Kaggle notebook, or upload is used by the policy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

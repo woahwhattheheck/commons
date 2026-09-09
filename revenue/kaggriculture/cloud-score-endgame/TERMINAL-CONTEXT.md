@@ -101,3 +101,7 @@ ordinary source pin. No wrapper, solver, scenario producer or running-panel
 restart is needed. Keep prior source-specific evidence and selected policy
 unchanged. Full before/after outputs, source and logs are retained in the
 ANCHOR Library evidence package; the adjacent JSON is the compact receipt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

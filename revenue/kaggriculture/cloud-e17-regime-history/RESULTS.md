@@ -75,3 +75,7 @@ AST_OK test_seller_regime_history.py
 New adversarial contracts cover the opening wrapper lifecycle, the exact review witness `harvest=(2,90)` plus `flow=(10,1)` at step 20 (now `long_rate=0`, `stress=0`), and the positive control that two repeated flow events still form bounded long memory.
 
 This correction remains **source-only and run-only**. It does not add official-engine full-game evidence, terminal-cash or win-rate evidence, or a default-promotion claim. The matched E17 screen and untouched holdout are still required before any canonical enablement.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

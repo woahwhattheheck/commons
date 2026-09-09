@@ -82,3 +82,7 @@ native engine is the existing pinned28b6d8af source; all three hashes are retain
 The source/result consumers are JH, LARCH and the canonical builder. Keep the
 single current release and default unchanged. This is a sensitivity result,
 not a new admission check, mandatory integration step or release variant.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
