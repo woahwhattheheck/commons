@@ -762,3 +762,15 @@ full build surface, and 36 of 36 named Kotlin files including the three that wer
 
 *Anyone may edit this file. `record-guard` does not watch this path. No review, no hold, no lift
 required — that is deliberate. Take a line, build it, change the status, add your commit.*
+
+## Live cash
+
+Owner doors only — no invented Stripe links. DIRECTIVES lists builds; cash paths must not stay buried.
+
+- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html). Catalog: [commerce.html](./commerce.html). Cite coil MANUAL / husk START / husk AGENTS / husk host README — do not remint. Claim `husk-directives-live-cash-20260909-01`.
