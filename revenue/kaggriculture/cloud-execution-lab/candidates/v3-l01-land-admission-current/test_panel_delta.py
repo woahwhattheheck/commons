@@ -11,6 +11,7 @@ from panel_delta import (
     compare,
     ensure_grid,
     load_games,
+    markdown,
 )
 
 
@@ -41,8 +42,61 @@ class PanelDeltaTests(unittest.TestCase):
         report = compare(baseline, candidate)
         self.assertEqual(report["changed_only"]["transitions"], {"L->W": 1})
         self.assertEqual(report["overall"]["sum_margin_delta"], 25)
+        self.assertEqual(report["overall"]["sum_own_delta"], 10)
         self.assertEqual(report["seat_normalization"]["matches"], 1)
         self.assertEqual(report["verdict"], "advance")
+        self.assertTrue(
+            report["leaderboard_admission"]["checks"]
+            ["positive_mean_candidate_score"]
+        )
+        self.assertEqual(
+            report["admission_rule"], "leaderboard-own-score-first-v1"
+        )
+
+    def test_margin_only_gain_with_negative_own_score_rejects(self):
+        baseline = {("x", 1, 0): game("x", 1, 0, 100, 200)}
+        candidate = {("x", 1, 0): game("x", 1, 0, 90, 50)}
+        report = compare(baseline, candidate)
+        self.assertGreater(report["overall"]["mean_margin_delta"], 0)
+        self.assertLess(report["overall"]["mean_own_delta"], 0)
+        self.assertEqual(report["overall"]["new_losses"], 0)
+        self.assertEqual(report["verdict"], "reject")
+        self.assertIn("regresses overall", report["verdict_reason"])
+
+    def test_positive_aggregate_with_negative_opponent_stratum_rejects(self):
+        baseline = {
+            ("a", 1, 0): game("a", 1, 0, 100, 50),
+            ("b", 1, 0): game("b", 1, 0, 100, 50),
+        }
+        candidate = {
+            ("a", 1, 0): game("a", 1, 0, 120, 45),
+            ("b", 1, 0): game("b", 1, 0, 95, 40),
+        }
+        report = compare(baseline, candidate)
+        self.assertGreater(report["overall"]["mean_own_delta"], 0)
+        self.assertGreater(report["overall"]["mean_margin_delta"], 0)
+        self.assertEqual(report["verdict"], "reject")
+        self.assertEqual(
+            report["leaderboard_admission"]["negative_own_score_opponents"],
+            ["b"],
+        )
+        self.assertIn("opponent strata: b", report["verdict_reason"])
+
+    def test_zero_own_score_with_positive_margin_holds(self):
+        baseline = {("x", 1, 0): game("x", 1, 0, 100, 90)}
+        candidate = {("x", 1, 0): game("x", 1, 0, 100, 80)}
+        report = compare(baseline, candidate)
+        self.assertEqual(report["overall"]["mean_own_delta"], 0)
+        self.assertGreater(report["overall"]["mean_margin_delta"], 0)
+        self.assertEqual(report["verdict"], "hold")
+
+    def test_positive_own_score_without_positive_margin_holds(self):
+        baseline = {("x", 1, 0): game("x", 1, 0, 100, 50)}
+        candidate = {("x", 1, 0): game("x", 1, 0, 110, 70)}
+        report = compare(baseline, candidate)
+        self.assertGreater(report["overall"]["mean_own_delta"], 0)
+        self.assertLess(report["overall"]["mean_margin_delta"], 0)
+        self.assertEqual(report["verdict"], "hold")
 
     def test_new_loss_rejects(self):
         baseline = {("x", 1, 0): game("x", 1, 0, 10, 9)}
@@ -50,6 +104,24 @@ class PanelDeltaTests(unittest.TestCase):
         report = compare(baseline, candidate)
         self.assertEqual(report["overall"]["new_losses"], 1)
         self.assertEqual(report["verdict"], "reject")
+        self.assertIn("new head-to-head losses", report["verdict_reason"])
+
+    def test_no_change_is_null(self):
+        baseline = {("x", 1, 0): game("x", 1, 0, 10, 9)}
+        report = compare(baseline, dict(baseline))
+        self.assertEqual(report["verdict"], "null")
+        self.assertEqual(report["overall"]["sum_own_delta"], 0)
+
+    def test_markdown_leads_with_candidate_score_not_margin(self):
+        baseline = {("x", 1, 0): game("x", 1, 0, 100, 200)}
+        candidate = {("x", 1, 0): game("x", 1, 0, 90, 50)}
+        text = markdown(compare(baseline, candidate))
+        self.assertIn("Mean candidate-score Δ: -10.000", text)
+        self.assertIn("Mean margin Δ: +140.000", text)
+        self.assertLess(
+            text.index("Mean candidate-score Δ"), text.index("Mean margin Δ")
+        )
+        self.assertIn("Opponent strata with negative candidate-score Δ: x", text)
 
     def test_loader_and_grid_are_fail_closed(self):
         with tempfile.TemporaryDirectory() as raw:
@@ -115,6 +187,13 @@ class PanelDeltaTests(unittest.TestCase):
         assert_historical_l01(report)
         self.assertTrue(report["historical_l01_profile"]["passed"])
         self.assertEqual(report["overall"]["sum_margin_delta"], 129576)
+        self.assertEqual(report["overall"]["sum_own_delta"], -68040)
+        self.assertEqual(report["overall"]["mean_own_delta"], -354.375)
+        self.assertEqual(
+            report["by_opponent"]["arlene"]["mean_own_delta"], -2126.25
+        )
+        self.assertEqual(report["verdict"], "reject")
+        self.assertIn("regresses overall", report["verdict_reason"])
 
 
 if __name__ == "__main__":
