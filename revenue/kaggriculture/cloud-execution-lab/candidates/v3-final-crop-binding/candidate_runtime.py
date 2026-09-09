@@ -17,6 +17,12 @@ class FinalCropBindingAgent(TitanAgent):
     Optional late reordering is useful on ordinary rows, but it must not move an
     appended WHEAT buy or a WHEAT-sale reservation after the repair proposal has
     frozen exact order indices for the shared fill ledger.
+
+    Ownership is only claimed when the proposal is still bindable to the
+    post-guard_returned action and post snapshot. A stale proposal created
+    inside crop_market() that no longer matches the action being finalized
+    (deadline fallback, unit-guard change) is retired before feed-stock and
+    early-capital so canonical late transforms still run.
     """
 
     def _market_pressure_selected(self, obs, cfg, selected):
@@ -25,9 +31,44 @@ class FinalCropBindingAgent(TitanAgent):
             return selected
         return super()._market_pressure_selected(obs, cfg, selected)
 
-    def _crop_repair_owns_market(self) -> bool:
+    def _crop_repair_still_bound(self, obs, returned, post) -> bool:
+        """True only when the proposal matches the action that will be returned."""
         spatial = getattr(self, "spatial", None)
-        return spatial is not None and getattr(spatial, "_crop_repair", None) is not None
+        if spatial is None:
+            return False
+        p = getattr(spatial, "_crop_repair", None)
+        if p is None:
+            return False
+        try:
+            from crop_release import units
+        except Exception:
+            return False
+        return (
+            int(obs["step"]) == p["step"]
+            and int(obs["player"]) == p["player"]
+            and units(returned) == p["unit_binding"]
+            and post is not None
+            and int(post["step"]) == p["step"]
+            and int(post["player"]) == p["player"]
+            and returned.get("market", []) == p["expected_market"]
+        )
+
+    def _crop_repair_owns_market(self) -> bool:
+        """Ownership is the validated live-repair flag, not mere proposal existence."""
+        return bool(getattr(self, "_crop_repair_live", False))
+
+    def _retire_unbound_crop_repair(self, obs, returned, post):
+        """Cancel/restore and clear a proposal that cannot bind to this final action."""
+        spatial = getattr(self, "spatial", None)
+        if spatial is None:
+            return returned
+        p = getattr(spatial, "_crop_repair", None)
+        if p is None:
+            return returned
+        returned = spatial.guard_crop_returned(obs, returned, post)
+        spatial._crop_repair = None
+        self._crop_repair_live = False
+        return returned
 
     def _early_capital_selected(self, obs, cfg, selected):
         """Compose capital/pressure only when no crop receipt owns this queue."""
@@ -55,8 +96,22 @@ class FinalCropBindingAgent(TitanAgent):
         finally:
             self._final_pressure_boundary = False
 
+    def _feed_stock_selected(self, obs, cfg, selected):
+        """Mirror base feed-stock ownership exclusion using the validated live flag."""
+        if self._crop_repair_owns_market():
+            diagnostics = getattr(self, "diagnostics", None)
+            if isinstance(diagnostics, dict):
+                diagnostics["feed_stock"] = {
+                    "changed": False,
+                    "certified": False,
+                    "reason": _CROP_QUEUE_OWNER,
+                }
+            return selected
+        return super()._feed_stock_selected(obs, cfg, selected)
+
     def _finish_production(self, obs, returned, cfg=None):
         """Apply every market mutator before the crop proposal's binding guard."""
+        self._crop_repair_live = False
         if self.spatial is not None:
             self.spatial.observe_crop_receipts(
                 obs,
@@ -71,14 +126,15 @@ class FinalCropBindingAgent(TitanAgent):
             )
         post = self._selected_snapshot(obs, returned) if self.history is not None else None
 
-        # These are the last market-edit seams. A receipt-critical crop repair
-        # makes them identities for this action; ordinary actions retain the
-        # canonical feed -> capital -> final-pressure composition.
+        if self.spatial is not None and getattr(self.spatial, "_crop_repair", None) is not None:
+            if self._crop_repair_still_bound(obs, returned, post):
+                self._crop_repair_live = True
+            else:
+                returned = self._retire_unbound_crop_repair(obs, returned, post)
+
         returned = self._feed_stock_selected(obs, cfg or {}, returned)
         returned = self._early_capital_selected(obs, cfg or {}, returned)
 
-        # Bind against the exact action that can now be returned and recorded.
-        # No later method in this finalizer is allowed to mutate the market.
         if self.spatial is not None:
             returned = self.spatial.guard_crop_returned(obs, returned, post)
 
