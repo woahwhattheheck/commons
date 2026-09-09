@@ -65,7 +65,7 @@ def make_lab(
     (package / "main.py").write_text(source_main, encoding="utf-8")
     (package / "TITAN-CONFIG.json").write_text("{}\n", encoding="utf-8")
 
-    source_bytes = b'{"schema":"test"}\n'
+    source_bytes = b'{\"schema\":\"test\"}\n'
     source_manifest = runtime / "CURRENT-SOURCE.json"
     source_manifest.write_bytes(source_bytes)
     if include_embedded_source:
@@ -80,7 +80,7 @@ def make_lab(
             package / "TITAN-CONFIG.json",
             arcname="TITAN-CONFIG.json",
         )
-        if include_embdded_source:
+        if include_embedded_source:
             handle.add(package / SOURCE_MEMBER, arcname=SOURCE_MEMBER)
 
     manifest = {
@@ -156,7 +156,7 @@ class BuildCandidateTests(unittest.TestCase):
             self.assertEqual(
                 receipt["embedded_source_sha256"],
                 receipt["source_manifest_sha256"],
-             )
+            )
             self.assertNotEqual(
                 receipt["baseline_tree_sha256"],
                 receipt["candidate_tree_sha256"],
@@ -174,7 +174,7 @@ class BuildCandidateTests(unittest.TestCase):
             root = Path(raw)
             lab, mechanism, _ = make_lab(
                 root,
-                embedded_source=b'{"schema":"wrong"}\n',
+                embedded_source=b'{\"schema\":\"wrong\"}\n',
             )
             with self.assertRaisesRegex(ValueError, "embedded source manifest mismatch"):
                 build(lab, root / "out", mechanism)
