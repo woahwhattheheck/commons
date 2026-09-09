@@ -1,7 +1,7 @@
 """Deterministic synthetic/read-only MVMTC fastener and additive-coupon evidence shadow."""
 from __future__ import annotations
 
-import copy, hashlib, json
+import copy, hashlib, json, re
 from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
@@ -19,7 +19,10 @@ METHOD_SPECS = (
     ("METALLOGRAPHY", "A2LA-SIM-METALLOGRAPHY", "TITANIUM_ALLOY", "ASTM-E3", "R2", "um"),
     ("ADDITIVE_COUPON_TENSILE", "A2LA-SIM-ADDITIVE", "TI6AL4V", "ASTM-E8", "R5", "MPa"),
 )
-RESERVED_REVIEWERS = {"", "auto", "automatic", "bot", "system", "scheduler", "agent"}
+RESERVED_REVIEWERS = {
+    "", "auto", "automatic", "automation", "bot", "system", "scheduler", "agent",
+    "ai", "service", "worker", "pipeline", "anonymous", "unknown",
+}
 
 class IntegrityError(ValueError):
     pass
@@ -165,6 +168,15 @@ def classify(r, seen, allowed):
     if not r["qc_ok"]: return "QC_FAIL"
     return None
 
+def _named_human(reviewer):
+    if not isinstance(reviewer, str):
+        raise ValueError("named human reviewer required")
+    name = " ".join(reviewer.strip().split())
+    tokens = re.findall(r"[^\W\d_]+", name.casefold())
+    if len(tokens) < 2 or any(token in RESERVED_REVIEWERS for token in tokens):
+        raise ValueError("named human reviewer required")
+    return name
+
 class MvmtcEvidenceShadow:
     def __init__(self, authoritative_state=None):
         self.authoritative_state = copy.deepcopy(authoritative_state or {})
@@ -214,8 +226,7 @@ class MvmtcEvidenceShadow:
             state_digest=self.state_digest(), outcomes=outcomes,
         )
     def release_evidence_pack(self, lot_id, reviewer):
-        name = reviewer.strip()
-        if name.lower() in RESERVED_REVIEWERS or len(name) < 3: raise ValueError("named human reviewer required")
+        name = _named_human(reviewer)
         pack = self.evidence_packs.get(lot_id)
         if pack is None: raise KeyError(lot_id)
         if pack["status"] != "STAGED_HUMAN_REVIEW": raise ValueError("evidence pack is not awaiting human review")

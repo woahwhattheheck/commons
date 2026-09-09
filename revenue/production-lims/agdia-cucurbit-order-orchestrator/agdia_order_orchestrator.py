@@ -1,6 +1,6 @@
 """Synthetic/deidentified Agdia cucurbit mail-in order orchestration shadow."""
 from __future__ import annotations
-import copy, hashlib, json
+import copy, hashlib, json, re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -15,7 +15,7 @@ SPECS=(
     ("SQUASH","CUC-PATHOGEN-C","R4"),
 )
 FORBIDDEN_PHI_KEYS={"patient","patient_name","dob","mrn","medical_record_number","diagnosis","ssn"}
-RESERVED_RELEASE_ACTORS={"agent","automation","system","bot","autonomous","auto"}
+RESERVED_RELEASE_ACTORS={"agent","automation","system","bot","autonomous","auto","service","ai"}
 
 class IntegrityError(ValueError): pass
 def _canon(v:Any)->str:return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False)
@@ -143,7 +143,8 @@ class AgdiaOrderShadow:
     def release_report(self,case_id,reviewer_name):
         if not isinstance(reviewer_name,str):raise PermissionError("named human reviewer is required")
         reviewer=reviewer_name.strip()
-        if not reviewer or reviewer.casefold() in RESERVED_RELEASE_ACTORS:raise PermissionError("named human reviewer is required")
+        tokens=re.findall(r"[a-z]+",reviewer.casefold())
+        if len(tokens)<2 or any(token in RESERVED_RELEASE_ACTORS for token in tokens):raise PermissionError("named human reviewer is required")
         report=self.staged_reports.get(case_id)
         if report is None:raise KeyError(case_id)
         if report["state"]!="STAGED_HUMAN_REVIEW" or report["released_by"] is not None:raise PermissionError("report is not awaiting human review")

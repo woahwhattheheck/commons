@@ -3,14 +3,23 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
-import argparse, copy, hashlib, json
+import argparse, copy, hashlib, json, re
 
 TASK_ID="csu-malt-method-expansion-lims-01"; CURRENT="CURRENT_WEEK"; NEXT="NEXT_WEEK"
 DUP="DUPLICATE_ID"; UNSUP="UNSUPPORTED_GRAIN_METHOD"; MISS="MISSING_IDENTITY_PACKAGE"
 STAGED="STAGED_HUMAN_REVIEW"; RELEASED="RELEASED_BY_NAMED_HUMAN"
+RESERVED_REVIEWER_TOKENS=frozenset({"ai","agent","auto","automated","automation","bot","robot","service","system"})
 
 def digest(v): return hashlib.sha256((json.dumps(v,sort_keys=True,separators=(",",":"))+"\n").encode()).hexdigest()
 def file_sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+def _named_human(reviewer):
+    if not isinstance(reviewer,str): return None
+    name=reviewer.strip()
+    if not name: return None
+    tokens=[t.casefold() for t in re.findall(r"[A-Za-z]+",name)]
+    if len(tokens)<2 or any(t in RESERVED_REVIEWER_TOKENS for t in tokens): return None
+    return name
 
 @dataclass
 class Ledger:
@@ -76,8 +85,8 @@ def run(rows,m,L=None):
     after=L.counts(); return L,statuses,{k:after[k]-before[k] for k in before}
 
 def release(L,sample,reviewer):
-    reviewer=(reviewer or "").strip()
-    if not reviewer: raise ValueError("NAMED_HUMAN_REVIEWER_REQUIRED")
+    reviewer=_named_human(reviewer)
+    if reviewer is None: raise ValueError("NAMED_HUMAN_REVIEWER_REQUIRED")
     if sample not in L.reports: raise KeyError("REPORT_NOT_FOUND")
     out=copy.deepcopy(L.reports[sample]); out.update(status=RELEASED,reviewer=reviewer); return out
 

@@ -7,9 +7,14 @@ from pathlib import Path
 
 from socotec_cmt_federation import (
     SocotecCmtFederation,
+    allowed_transfer,
     build_registry,
+    canonical_json,
+    expected_transfer_ticket,
+    legacy_payload_digest,
     load_fixture,
     named_human,
+    sha256_text,
     summarize,
     verify_manifest,
 )
@@ -29,6 +34,10 @@ class SocotecCmtFederationTests(unittest.TestCase):
         self.assertEqual(500, self.manifest["fixture_count"])
         self.assertEqual(25, self.manifest["namespace_count"])
         self.assertEqual(500, len(self.jobs))
+        self.assertEqual(
+            self.manifest["expanded_fixture_sha256"],
+            sha256_text(canonical_json(self.jobs)),
+        )
         self.assertEqual(
             {
                 "CAPACITY_EXCEEDED": 16,
@@ -83,10 +92,27 @@ class SocotecCmtFederationTests(unittest.TestCase):
         probe["transfer_ticket"] = "not-authorized"
         probe["legacy_payload"]["job_id"] = probe["job_id"]
         probe["legacy_payload"]["source_namespace"] = probe["origin_namespace"]
-        from socotec_cmt_federation import legacy_payload_digest
         probe["legacy_payload_sha256"] = legacy_payload_digest(probe["legacy_payload"])
         result = federation.process(probe)
         self.assertEqual(("HOLD", "UNAUTHORIZED_TRANSFER"), (result["state"], result["code"]))
+
+        self.assertTrue(allowed_transfer("SOC-25", "SOC-01"))
+        malformed_origins = ("FAKE-25", "SOC-025", "SOC-00", "SOC-26", "25")
+        for index, bad_origin in enumerate(malformed_origins, start=1):
+            with self.subTest(bad_origin=bad_origin):
+                self.assertFalse(allowed_transfer(bad_origin, "SOC-01"))
+                malformed = copy.deepcopy(self.jobs[0])
+                malformed["submission_id"] = f"PROBE-MALFORMED-NAMESPACE-{index}"
+                malformed["job_id"] = f"PROBE-MALFORMED-NAMESPACE-{index}"
+                malformed["origin_namespace"] = bad_origin
+                malformed["transfer_ticket"] = expected_transfer_ticket(
+                    bad_origin, malformed["expected_route_namespace"], malformed["job_id"]
+                )
+                malformed["legacy_payload"]["job_id"] = malformed["job_id"]
+                malformed["legacy_payload"]["source_namespace"] = bad_origin
+                malformed["legacy_payload_sha256"] = legacy_payload_digest(malformed["legacy_payload"])
+                result = federation.process(malformed)
+                self.assertEqual(("HOLD", "UNAUTHORIZED_TRANSFER"), (result["state"], result["code"]))
 
     def test_05_mock_legacy_payload_hashes_reconcile_read_only(self) -> None:
         federation, _ = self._run()
@@ -151,6 +177,7 @@ class SocotecCmtFederationTests(unittest.TestCase):
         rejected = [
             "auto reviewer", "System Reviewer", "bot operator", "Automation Service",
             "Jordan System", "AI Reviewer", "workflow agent", "service account", "Madonna",
+            "12 34", "1234 5678", "Jordan 12", "1234 Rivera",
         ]
         for reviewer in rejected:
             with self.subTest(reviewer=reviewer):

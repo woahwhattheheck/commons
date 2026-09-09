@@ -20,6 +20,14 @@ class WorkspaceTests(unittest.TestCase):
         with self.assertRaises(RequestConflict):
             self.w.add_item(**{**self.base,"title":"Other"},request_id="add")
 
+    def test_request_id_must_be_nonblank_text_and_does_not_mutate(self):
+        before=self.w.item_snapshot("I1")
+        for rid in (None, b"", 0):
+            with self.subTest(request_id=rid):
+                with self.assertRaises(WorkspaceError):
+                    self.w.save_draft(item_id="I1",channel="a",title="x",body="y",request_id=rid)
+        self.assertEqual(before,self.w.item_snapshot("I1"))
+
     def test_explicit_uncertainty(self):
         self.w.edit_item(item_id="I1",title="Meter",condition_notes="used",
           attributes={"brand":"A","model":"M7"},uncertain_attributes=["model"],request_id="edit")

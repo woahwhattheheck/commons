@@ -1,0 +1,14 @@
+--- tools/v25_sims/gauntlet.py POOL
++++ bank/v3-adversarial/gauntlet_s11.py POOL
+@@
+     "v1_submitted": str(SP / "v1/main.py") + "::agent",
++    "official_pass":   "{BANK}/official_pass/main.py::agent",
++    "official_random": "{BANK}/official_random/main.py::agent",
++    "deepesh_farmbrain":"{BANK}/deepesh_farmbrain/main.py::agent",
++    "lonespear_main":  "{BANK}/lonespear_main/main.py::agent",
++    "lonespear_livestock":"{BANK}/lonespear_livestock/main.py::agent",
++    "amey_v43":        "{BANK}/amey_v43/main.py::agent",
++    "amey_v16":        "{BANK}/amey_v16/main.py::agent",
+ }
+# BANK default: this directory. Runtime copy used /tmp/bank during S11.
+# starter remains official_starter token.

@@ -10,7 +10,10 @@ REQ=("sku","name","description","price_cents","currency","stock","reorder_at","s
 CHAN=re.compile(r"^[a-z0-9][a-z0-9_-]{0,39}$")
 
 def canon(v:Any)->bytes:
-    return (json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False)+"\n").encode()
+    try:
+        return (json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False)+"\n").encode()
+    except ValueError as e:
+        raise LaunchError(f"non-finite number in JSON payload: {e}") from e
 def sha(p:Path)->str: return hashlib.sha256(p.read_bytes()).hexdigest()
 def text(v:Any,n:str)->str:
     if not isinstance(v,str) or not v.strip(): raise LaunchError(f"{n} must be a non-empty string")
@@ -43,8 +46,15 @@ def inventory(s:dict[str,Any])->dict[str,Any]:
     need=s["available"]<=s["reorder_at"]
     return {"sku":s["sku"],"available":s["available"],"reorder_at":s["reorder_at"],"reorder_needed":need,"action":"DRAFT_REORDER_ONLY" if need else "NONE"}
 
+def _is_managed_workspace(out:Path)->bool:
+    """True when the destination already holds a prior launch_ops workspace."""
+    return (out / "state.json").is_file() or (out / "manifest.json").is_file()
+
 def build(p:Any,out:str|Path)->dict[str,Any]:
-    p=validate(p); out=Path(out); out.mkdir(parents=True,exist_ok=True)
+    p=validate(p); out=Path(out)
+    if out.exists() and _is_managed_workspace(out):
+        raise LaunchError("output directory already contains a managed launch workspace; use a fresh/empty directory")
+    out.mkdir(parents=True,exist_ok=True)
     listing={k:{"channel":k,**{x:copy.deepcopy(p[x]) for x in ("sku","name","description","price_cents","currency","shipping_terms","return_days","attributes","benefits")},"source":"operator_supplied"} for k in p["channels"]}
     constraints="\n".join(f"- {v}" for v in p.get("creative_constraints",[])) or "- None supplied."
     brief=f"# Creative brief — {p['name']}\n\nSKU: `{p['sku']}`\n\n## Source description\n{p['description']}\n\n## Supplied benefits\n"+"\n".join(f"- {v}" for v in p["benefits"])+f"\n\n## Constraints\n{constraints}\n\nUse only supplied facts. Do not invent performance, health, safety, scarcity, endorsement, or fulfillment claims.\n"

@@ -93,6 +93,28 @@ class YardHelpInstanceTests(unittest.TestCase):
         for phrase in ("we handle your legal paperwork", "we set up your llc", "compliance guaranteed", "paperwork included", "become a business owner", "for this price"):
             self.assertNotIn(phrase, door, phrase)
 
+    def test_sold_once_badge_is_rendered_from_the_verdict(self):
+        self.assertIs(self.manifest["sold_once"], True)
+        self.assertEqual(self.manifest["badge_line"], desk.SOLD_ONCE_LINE)
+        self.assertEqual(self.manifest["anchor_line"], "OWNER_UNSET")
+        door = (PACK / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(desk.door_badge(door), desk.badge_html(desk.SOLD_ONCE_LINE))
+        self.assertIn('<code data-slot="anchor_line">OWNER_UNSET</code>', door)
+
+    def test_hand_edited_badge_fails_closed(self):
+        import shutil
+
+        with tempfile.TemporaryDirectory() as tmp:
+            dest = Path(tmp) / "packs" / PACK.name
+            shutil.copytree(PACK, dest)
+            door = dest / "index.html"
+            door.write_text(
+                door.read_text(encoding="utf-8").replace(desk.SOLD_ONCE_LINE, "Sold to thousands."),
+                encoding="utf-8",
+            )
+            result = desk.verify(dest)
+            self.assertTrue(any("badge" in item for item in result["errors"]), result["errors"])
+
     def test_claimed_files_present(self):
         for name in desk.TEMPLATE_FILES + ("paperwork.md", "running-cost.md", "day.md", "rating.md", "creative_brief.md", "gems.md"):
             self.assertTrue((PACK / name).is_file(), name)
