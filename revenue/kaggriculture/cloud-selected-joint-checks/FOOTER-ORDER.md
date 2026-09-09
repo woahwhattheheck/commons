@@ -37,3 +37,7 @@ Six existing downloaded ZIPs were consumed with matching retained provider diges
 The last artifact contains159 methods;119 is explicitly the recognized subset before JOINT's separate helper extension, not a new159-method result. Its provider SHA256 is `ddacdc557419258c072e1c2ef62ebe4d101a5f3b79e6967a153a650268a6d42d`, checkout4ab883af10561fa7f685f90a79e98f80f7061fc0, run34175970193, attempt1.
 
 All prior source-bound41-reader/26-independent/22-helper receipts remain attached to their original sources. This result does not relabel the independent26 methods as executed on the corrected reader. No archived test methods, engine transitions, games or seeds were rerun. Only receipt-consumer regression methods executed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

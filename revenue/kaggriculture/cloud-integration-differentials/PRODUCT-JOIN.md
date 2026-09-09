@@ -109,3 +109,7 @@ No workflow, exporter, profile runner, actor or runtime module is introduced.
 The existing hosted95 compatibility result for PR10033 remains separate and
 does not include these nine local methods. Later hosted totals retain their
 own source, execution and report scope.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

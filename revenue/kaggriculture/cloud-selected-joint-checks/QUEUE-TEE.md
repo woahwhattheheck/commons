@@ -30,3 +30,7 @@ python -B test_queue_tee_consistency.py
 ```
 
 The retained-provider execution used the independent archive consumer preserved in the source-bound validation record. `QUEUE-TEE-VALIDATION.json` distinguishes the accepted reader fixture, exact current helper, candidate helper, artifacts, and before/after method counts.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

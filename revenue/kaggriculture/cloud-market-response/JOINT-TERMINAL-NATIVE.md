@@ -43,3 +43,7 @@ Exhausted cell budgets retain missing receipts and the complete fallback action.
 Pass a ready joint family's complete `scenarios` to the existing terminal producer. An unavailable family must preserve the caller's already-selected action; do not replace missing or censored history with zero or silently trim scenarios. Runtime integration remains with the existing CEDAR/POLY/canonical consumers.
 
 This delivery recovers previously saved tests. It does not add their repeated execution to old game or sample counts, and no hosted CI or merge status is inferred from a local result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

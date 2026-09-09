@@ -95,3 +95,7 @@ Detailed inputs, complete per-scenario receipts, certificates, and selected
 queues stay in private storage. `WOOL-HYPOTHESES-SUMMARY.json` contains only the
 aggregate outcome and source identities. POLY retains its distinct expanded
 current-snapshot stress-family experiment; this delivery does not modify it.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

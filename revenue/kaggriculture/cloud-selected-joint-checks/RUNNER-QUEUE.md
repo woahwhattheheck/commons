@@ -60,3 +60,7 @@ python -B check_joint_receipt.py /path/to/artifact10039313918.zip \
 The original logs, all saved-artifact API results, actual-archive mutations, CLI outputs and exact source snapshots are saved in Bryce's Library as `TITAN_RECEIPT_9162_runner_queue_20260908.zip`, file ID `file_00000000895081f581aeb92bed901ce2`. Size 104,774 bytes; SHA-256 `cf2aab27627e90fec973dc2ee15fb8680e7861594b4d036b843794d6f20d8fe4`. All 26 payload members are manifested and hash-checked (27 ZIP members including the manifest). The provider ZIPs and frozen runtime are intentionally not duplicated.
 
 This is evidence-consumer implementation and execution, not independent attestation of hosted execution, policy strength, canonical package acceptance or whole-repository CI. No archived method, producer, engine transition, game or seed was executed; no workflow dispatch, release or provider upload was performed. Current BIRCH/COVER workflow additions remain separate until their actual source and output contracts are consumed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

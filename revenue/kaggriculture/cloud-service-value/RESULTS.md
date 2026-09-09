@@ -58,3 +58,7 @@ Run `python unpack_evidence.py --output evidence` from this directory. The resul
 Archive SHA256: `7035aca6ff94349c98168b0db69d059461c1ac2fa335550748f73e7625fd8f25`.
 
 The evidence supports a narrow, reusable mechanism and a small held simulation benefit. It does not establish general win rate, population significance, dominance over a varied opponent league, compatibility with other overlays, or a hosted leaderboard improvement. There are only four unique environment seeds across v2. Future composition must consider the substantial computation cost and use new evaluation seeds. No Kaggle upload or current-policy promotion occurred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

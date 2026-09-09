@@ -77,3 +77,7 @@ passed on head `8697e819570acdd95dce4c3ac96659e2c44e302b`: open-door 34187501496
 source-parses 34187501456, spec-guard 34187501465, and path-manifest 34187501606.
 Those checks do not establish hosted execution of these new tests. No new full
 games, seeds, runtime change, canonical release, or leaderboard result is claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

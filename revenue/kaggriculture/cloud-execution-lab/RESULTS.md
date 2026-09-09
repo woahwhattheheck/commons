@@ -75,3 +75,7 @@ The planning mechanism is attributed to [Boyd et al., section 5](https://web.sta
 | [Held-out report](runtime/heldout-v3.json) | `b903365f7ce4cf61580c4ae0de7001f640534a338238fdb5383a2bde9aa3ab77` |
 
 [FINAL-EVALUATION-SUMMARY.json](runtime/FINAL-EVALUATION-SUMMARY.json) collects the selected source, W/T/L, paired flips, timings, terminal state, and these report hashes. The callable interface and composition boundaries are documented in [README.md](README.md). This lane performed no Kaggle submissions, public-notebook writes, paid-service work, or real financial trades.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

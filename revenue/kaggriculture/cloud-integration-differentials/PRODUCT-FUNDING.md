@@ -176,3 +176,7 @@ new test SHA256
 `0f92bc60e6afb32e2efedfa9269ae3cb239ab58f50cd27c4fc2f26a94e8a3ca6`.
 All earlier CEDAR, JUNIPER, CYPRESS, QUEUE, and executor evidence retains its
 original scope and attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

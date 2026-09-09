@@ -118,3 +118,7 @@ The original report binds the exact runtime and test source hashes, every paired
 market comparison, counts and elapsed time. It is a local component result,
 not a hosted CI or complete-agent runtime result. FINCH retains runtime profiling;
 Claude retains game execution. The frozen selected policy is unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

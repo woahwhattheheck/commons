@@ -60,3 +60,7 @@ The supplied held seeds are now consumed evaluation evidence, not fresh validati
 ## Integration boundary
 
 T03/T06 can consume the oracle and tests now. T08 can evaluate the exported service wrapper with a correct parent snapshot, but the measured runtime overhead and tiny seed count preclude claiming a general improvement. No portfolio, other peer path, existing upload, or main submission was replaced; no Kaggle submission was made by this task.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

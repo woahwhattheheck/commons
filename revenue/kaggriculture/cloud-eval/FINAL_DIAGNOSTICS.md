@@ -83,3 +83,7 @@ The next consumer is the existing T08 evaluator lane: TANDEM owns RPC evidence a
 T08 thread: https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009
 
 This session's explicit discovery returned no Slack send or GitHub write/create action. The installed plugins remain readable. `HANDOFF-UNPOSTED.md` is prepared text, **not a delivered Slack message**; no PR, merge or production execution is claimed. The separate earlier repetition-audit handoff was already posted by another session and is not reopened here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

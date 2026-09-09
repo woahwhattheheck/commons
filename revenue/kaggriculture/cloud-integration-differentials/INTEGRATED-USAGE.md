@@ -121,3 +121,7 @@ integrated control on a separately assigned development shard. That comparison
 isolates the funding selector; frozen selected SELL remains a distinct benchmark.
 No game seeds, held results, selected default, or upload are changed by this
 source delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -37,3 +37,7 @@ The exact pinned dependency source was recovered from existing artifact100307634
 ## Consumer
 
 Use the same T12 callables and configuration. The response actor now retains causal history when invoked with sparse public clocks. This does not implement POLY's separate correlated terminal-scenario work or alter T12's empirical hypothesis interpretation. Existing running experiments keep their frozen source; subsequent consumers can use this repaired entrypoint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

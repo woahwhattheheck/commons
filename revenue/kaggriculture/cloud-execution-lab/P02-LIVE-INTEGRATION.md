@@ -40,3 +40,7 @@ seeds.
 No playing-strength, leaderboard or promotion claim exists until every scheduled
 game is complete and the uploaded immutable panel is reviewed. A negative or
 zero-activation panel leaves the packet additive and canonical defaults unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

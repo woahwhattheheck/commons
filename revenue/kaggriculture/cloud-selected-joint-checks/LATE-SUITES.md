@@ -65,3 +65,7 @@ The before/after parser logs, complete four-archive API outputs, full 26-method 
 - SHA-256 `509030b39fa037bbc2812d7fc80ebd8bc21a01411be77e4a6936b93e8cc1741e`
 
 Every included member is manifested and hash-checked. Retrieve that existing file through Files search/materialize; the provider ZIPs and frozen runtime archive are not duplicated. No archived test, policy, engine transition, game, seed or workflow was executed by this consumer. The parallel base-footer repair remains RECEIPT-9096's separate source; this result does not retroactively claim it was tested.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

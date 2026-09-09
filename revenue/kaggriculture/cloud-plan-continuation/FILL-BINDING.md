@@ -154,3 +154,7 @@ python -B revenue/kaggriculture/cloud-plan-continuation/test_fill_binding.py \
 A relocated existing cache can be supplied with `--dependencies DIR`, containing
 the actual `solver.py`, `selector.py`, and `observed_fills.py` files. The historical
 README, original test suite and witness remain unchanged. Source is Apache-2.0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

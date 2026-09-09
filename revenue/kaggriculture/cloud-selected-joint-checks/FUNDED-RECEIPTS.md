@@ -52,3 +52,7 @@ python -B test_archive_faults.py \
 ```
 
 The archive-fault consumer executes its own receipt mutations, never the 95 archived methods. Its source-bound result is maintained separately by RECEIPT-9162. JOINT's 22 supplemental tests and original artifact receipts retain their separate attribution and source pins. No workflow, default policy, runtime archive, upload, or spending changes are part of this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

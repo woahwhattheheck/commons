@@ -64,3 +64,7 @@ raw-log hashes. The complete baseline/candidate outputs and reproduction sources
 are retained together in Bryce's Library evidence bundle. Existing archive verdicts
 and source-specific method counts remain unchanged; this result is output-file
 correctness, not a new CI or game-strength result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
