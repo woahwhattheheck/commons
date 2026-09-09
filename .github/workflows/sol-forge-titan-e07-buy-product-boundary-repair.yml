@@ -108,74 +108,76 @@ jobs:
               f"https://github.com/{os.environ['GITHUB_REPOSITORY']}"
               f"/actions/runs/{os.environ['GITHUB_RUN_ID']}"
           )
-          text = f"""# SOL-FORGE — TITAN E07 BUY_PRODUCT source-boundary repair
-
-Operation: `TITAN-E07-BUY-PRODUCT-SOURCE-BOUNDARY-REPAIR-20260909-01`
-
-## Source identity
-
-- Fresh base: `{os.environ['BASE_SHA']}`
-- Builder event head: `{os.environ['GITHUB_SHA']}`
-- `frozen_selected.py` preimage blob: `{os.environ['FROZEN_PREIMAGE']}`
-- `test_e07_same_turn_funding.py` preimage blob: `{os.environ['TEST_PREIMAGE']}`
-
-## Defect and repair
-
-`fund_same_turn_acquisition()` previously considered every later selected SELL
-as a funding source. When the first failing fixed-price acquisition appeared
-before a later variable-price `BUY_PRODUCT`, a SELL after that hard boundary
-could be moved ahead of both orders, changing market interleaving that the
-prefix model explicitly refuses to simulate.
-
-The repair caps source enumeration at the first `BUY_PRODUCT` barrier. A sale
-before the barrier remains eligible; a sale after it remains in place. No
-market row, sale quantity, actor action, acquisition target, or rival state is
-invented.
-
-## Verification
-
-PASS on the exact runner checkout:
-
-- `SameTurnFundingContracts`, including the new blocked-after-boundary witness
-  and the preserving before-boundary countercase.
-- `test_e07_hosted_source_path`
-- `test_e07_same_turn_funding`
-- `test_joint_market_slots`
-- `test_e10_floor_cycle`
-- `test_release_consistency`
-- `test_build_publication`
-- `python3 -B build_integrated.py --check`
-
-Hosted run: {run_url}
-
-## Regenerated canonical release
-
-- Archive: `{archive_receipt['sha256']}` / {archive_receipt['bytes']} B /
-  {archive_receipt['runtime_files']} runtime files
-- Archive bytes verified: `{sha256(archive)}`
-- Source-manifest receipt: `{archive_receipt['source_manifest_sha256']}`
-- Source-manifest bytes verified: `{sha256(source_manifest)}`
-- Patched source SHA256: `{sha256(source)}`
-- Patched test SHA256: `{sha256(tests)}`
-
-Changed paths generated before publication:
-
-```text
-{chr(10).join(changed)}
-```
-
-No gameplay, Kaggle submission, provider mutation, purchased infrastructure,
-hidden-state assumption, or playing-strength claim was made.
-"""
+          lines = [
+              "# SOL-FORGE — TITAN E07 BUY_PRODUCT source-boundary repair",
+              "",
+              "Operation: `TITAN-E07-BUY-PRODUCT-SOURCE-BOUNDARY-REPAIR-20260909-01`",
+              "",
+              "## Source identity",
+              "",
+              f"- Fresh base: `{os.environ['BASE_SHA']}`",
+              f"- Builder event head: `{os.environ['GITHUB_SHA']}`",
+              f"- `frozen_selected.py` preimage blob: `{os.environ['FROZEN_PREIMAGE']}`",
+              f"- `test_e07_same_turn_funding.py` preimage blob: `{os.environ['TEST_PREIMAGE']}`",
+              "",
+              "## Defect and repair",
+              "",
+              "`fund_same_turn_acquisition()` previously considered every later selected SELL",
+              "as a funding source. When the first failing fixed-price acquisition appeared",
+              "before a later variable-price `BUY_PRODUCT`, a SELL after that hard boundary",
+              "could be moved ahead of both orders, changing market interleaving that the",
+              "prefix model explicitly refuses to simulate.",
+              "",
+              "The repair caps source enumeration at the first `BUY_PRODUCT` barrier. A sale",
+              "before the barrier remains eligible; a sale after it remains in place. No",
+              "market row, sale quantity, actor action, acquisition target, or rival state is",
+              "invented.",
+              "",
+              "## Verification",
+              "",
+              "PASS on the exact runner checkout:",
+              "",
+              "- `SameTurnFundingContracts`, including the new blocked-after-boundary witness",
+              "  and the preserving before-boundary countercase.",
+              "- `test_e07_hosted_source_path`",
+              "- `test_e07_same_turn_funding`",
+              "- `test_joint_market_slots`",
+              "- `test_e10_floor_cycle`",
+              "- `test_release_consistency`",
+              "- `test_build_publication`",
+              "- `python3 -B build_integrated.py --check`",
+              "",
+              f"Hosted run: {run_url}",
+              "",
+              "## Regenerated canonical release",
+              "",
+              f"- Archive: `{archive_receipt['sha256']}` / {archive_receipt['bytes']} B / "
+              f"{archive_receipt['runtime_files']} runtime files",
+              f"- Archive bytes verified: `{sha256(archive)}`",
+              f"- Source-manifest receipt: `{archive_receipt['source_manifest_sha256']}`",
+              f"- Source-manifest bytes verified: `{sha256(source_manifest)}`",
+              f"- Patched source SHA256: `{sha256(source)}`",
+              f"- Patched test SHA256: `{sha256(tests)}`",
+              "",
+              "Changed paths generated before publication:",
+              "",
+              "```text",
+              *changed,
+              "```",
+              "",
+              "No gameplay, Kaggle submission, provider mutation, purchased infrastructure,",
+              "hidden-state assumption, or playing-strength claim was made.",
+              "",
+          ]
           destination = root / os.environ["RECEIPT_PATH"]
           destination.parent.mkdir(parents=True, exist_ok=True)
-          destination.write_text(text, encoding="utf-8")
+          destination.write_text("\n".join(lines), encoding="utf-8")
 
       - name: Guard changed paths and publish exact generated bytes
         shell: bash
         run: |
           set -euo pipefail
-          git fetch origin "$GITHUB_REF_NAME"
+          git fetch origin "$GITHUB_REF_NAME:refs/remotes/origin/$GITHUB_REF_NAME"
           test "$(git rev-parse "origin/$GITHUB_REF_NAME")" = "$GITHUB_SHA"
 
           git add \
