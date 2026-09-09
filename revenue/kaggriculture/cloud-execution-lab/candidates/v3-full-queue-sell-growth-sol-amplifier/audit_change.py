@@ -12,6 +12,7 @@ from typing import Any
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
 OPERATION = "titan-v3-full-queue-same-product-sell-growth-20260909-sol-amplifier-01"
+EXPECTED_PATCH_BLOB = "f1803dafb558745376f28d3c9e005c4688ff4452"
 EXPECTED_BLOBS = {
     "v1": "cbc502a92fe9d790cfaf763f6990d1057bc9b82d",
     "v2": "7c068b7078c3d7c09bb3836590ad42b0af934cdf",
@@ -80,6 +81,7 @@ def _one_function(text: str, name: str) -> bool:
 
 
 def build_report(lab: Path = LAB) -> dict[str, Any]:
+    root = lab.parents[2]
     paths = {
         "v1": lab / "runtime/variants/v1/scheduler.py",
         "v2": lab / "runtime/variants/v2/scheduler.py",
@@ -89,6 +91,11 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         "config": lab / "TITAN-CONFIG.json",
         "growth_patch": HERE / "growth_patch.py",
         "candidate": HERE / "candidate.py",
+        "panel_adapter": HERE / "run_panel.py",
+        "action_tests": HERE / "test_action_bound_panel.py",
+        "panel_source": HERE.parent / "v3-l02-ledger-tranche/run_panel.py",
+        "evaluator_source": root / "revenue/kaggriculture/cloud-eval/evaluate.py",
+        "workflow": root / ".github/workflows/titan-v3-full-queue-sell-growth-sol-amplifier.yml",
     }
     missing = [str(path) for path in paths.values() if not path.is_file()]
     if missing:
@@ -133,7 +140,17 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
         ),
         "candidate_attaches_inside_canonical_new_instance": (
             text["candidate"].count("instance = _ORIGINAL_NEW_INSTANCE(root, feature_data)") == 1
-            and text["candidate"].count("_LAST_INSTALL_RECEIPT = attach(instance, frozen_selected)") == 1
+            and text["candidate"].count("**attach(instance, frozen_selected)") == 1
+            and text["candidate"].count('"execution_closure": dict(_EXECUTION_CLOSURE)') == 1
+        ),
+        "candidate_self_verifies_exact_execution_closure_before_import": (
+            git_blob_sha1(blobs["growth_patch"]) == EXPECTED_PATCH_BLOB
+            and all(value in text["candidate"] for value in EXPECTED_BLOBS.values())
+            and EXPECTED_PATCH_BLOB in text["candidate"]
+            and text["candidate"].count("_EXECUTION_CLOSURE = _verify_execution_closure()") == 1
+            and text["candidate"].index("_EXECUTION_CLOSURE = _verify_execution_closure()")
+                < text["candidate"].index("from growth_patch import attach")
+            and text["candidate"].count("path.is_symlink()") == 1
         ),
         "patch_reuses_exact_transform_code_with_private_globals": (
             text["growth_patch"].count("base_transform.__code__") >= 2
@@ -152,12 +169,47 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
             and "sys.modules[" not in text["growth_patch"]
             and "sys.modules." not in text["growth_patch"]
         ),
+        "panel_instruments_candidate_actions_before_interpreter": (
+            text["panel_adapter"].count("def instrument_candidate_actions") == 1
+            and text["panel_adapter"].count(
+                'candidate_actions.update(encoded({"step": step, "action": actions[candidate_seat]}))'
+            ) == 1
+            and text["panel_adapter"].count('result["candidate_action_count"] += 1') == 1
+            and text["panel_adapter"].count(
+                'result["candidate_action_sha256"] = candidate_actions.hexdigest()'
+            ) == 1
+            and text["evaluator_source"].count("actors, trace = [], hashlib.sha256()") == 1
+            and text["evaluator_source"].count(
+                '                actions.append(response["action"])\n            for seat in range(2):'
+            ) == 1
+        ),
+        "panel_requires_literal_action_bound_own_cash_grid": (
+            all(value in text["panel_adapter"] for value in (
+                "EXPECTED_EPISODE_STEPS = 720",
+                "EXPECTED_ACTION_COUNT = 719",
+                'EXPECTED_OPPONENTS = ("arlene", "apex", "public_bt12", "v1")',
+                "literal_complete_grid",
+                "candidate_actions_activated",
+                "every_score_change_action_bound",
+                "positive_global_own_cash",
+                "no_opponent_mean_own_regression",
+                "no_seat_mean_own_regression",
+            ))
+            and text["panel_adapter"].count("runner.patch_evaluator = patch_evaluator") == 1
+            and text["panel_adapter"].count("runner.pair_games = pair_games") == 1
+            and text["panel_adapter"].count("runner.verdict = verdict") == 1
+        ),
+        "workflow_executes_both_contract_suites_and_exact_grid": (
+            "test_full_queue_sell_growth.py test_action_bound_panel.py" in text["workflow"]
+            and "2611092201,2611092203,2611092205,2611092207" in text["workflow"]
+            and "arlene,apex,public_bt12,v1" in text["workflow"]
+            and "Run 32-cell action-bound official-engine screen" in text["workflow"]
+        ),
         "canonical_sources_are_read_only_targets": all(
             path.parent != HERE for name, path in paths.items()
             if name in EXPECTED_BLOBS
         ),
     }
-    root = lab.parents[2]
     return {
         "schema_version": 1,
         "operation": OPERATION,
@@ -173,6 +225,8 @@ def build_report(lab: Path = LAB) -> dict[str, Any]:
             "new_slot_created": False,
             "order_index_changed": False,
             "canonical_files_modified": False,
+            "candidate_action_receipt": "719 pre-interpreter actions per complete cell",
+            "score_gate": "positive global own cash with no opponent or seat mean regression",
         },
         "checks": checks,
         "sources": {
