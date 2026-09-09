@@ -202,7 +202,7 @@ def _named_human(name: str) -> str:
     if not isinstance(name, str):
         raise PermissionError("named human reviewer required")
     normalized = " ".join(name.strip().split())
-    identity_tokens = re.findall(r"[^\W_]+", normalized.casefold())
+    identity_tokens = re.findall(r"[^\W\d_]+", normalized.casefold())
     if not normalized or any(token in RESERVED_REVIEWERS for token in identity_tokens):
         raise PermissionError("named human reviewer required")
     alpha_tokens = [token for token in identity_tokens if any(char.isalpha() for char in token)]

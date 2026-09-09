@@ -82,6 +82,8 @@ class PolarAs9100Tests(unittest.TestCase):
             "System Reviewer", "AI Reviewer", "Bot Reviewer",
             "system/reviewer", "pipeline_reviewer", "service-account reviewer",
             "Worker.Reviewer",
+            "System2 Operator", "AI2 Reviewer", "bot123 user",
+            "agent007 reviewer", "service2 account",
         ):
             with self.assertRaises(PermissionError):
                 shadow.disposition_copy("W1", bad)
