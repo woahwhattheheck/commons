@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Build a sanitized, copyable case brief for one failed coding-agent run. Everything stays in your browser until you choose to copy it.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Agent Failure Autopsy — local case-brief builder">
+<meta property="og:description" content="Turn one failed coding-agent run into a redacted case brief, then buy the $29 one-business-day Autopsy.">
+<meta property="og:url" content="https://woahwhattheheck.github.io/commons/agent-autopsy-intake.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agent Failure Autopsy — local case-brief builder">
+<meta name="twitter:description" content="Prepare a redacted case brief locally before buying the $29 one-business-day Autopsy.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Build a sanitized Agent Failure Autopsy case brief</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}html{background:#09090b}body{max-width:72rem;margin:auto;padding:1rem 1.25rem 4rem;background:#09090b;color:#ededf0;font:16px/1.5 ui-sans-serif,system-ui,sans-serif}a{color:#f0f0f2}.law,.panel{border:1px solid #36373d;background:#111114;border-radius:12px;padding:1rem}.law{border-radius:0;background:#050506;font-weight:750}.nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.nav a,.button{display:inline-block;border:1px solid #494a52;border-radius:8px;padding:.65rem .9rem;text-decoration:none}.nav a{background:#151518}.hero{padding:1.25rem 0}.hero h1{max-width:15ch;margin:.25rem 0 .75rem;font-size:clamp(2.35rem,7vw,5.25rem);line-height:.98;letter-spacing:-.035em}.lead{max-width:52rem;font-size:clamp(1.05rem,2vw,1.3rem);color:#d7d7dc}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}.panel{margin:.75rem 0}.panel h2{margin:.1rem 0 .75rem}.field{display:block;margin:.85rem 0}.field span{display:block;margin-bottom:.3rem;font-weight:700}.field small,.fine{display:block;color:#aaaab2}.field input,.field textarea,.field select,#brief{width:100%;border:1px solid #4a4b53;border-radius:8px;padding:.7rem;background:#09090b;color:#f3f3f5;font:inherit}.field textarea{min-height:6rem;resize:vertical}.checks label{display:block;margin:.55rem 0}.checks input{margin-right:.45rem}.button{cursor:pointer;background:#f0f0f2;color:#09090b;font-weight:800}.button.secondary{background:#19191d;color:#f0f0f2}.button:disabled{cursor:not-allowed;opacity:.45}.actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:1rem 0}.status{min-height:1.5rem;color:#b9d7c0}.price{font:800 1.6rem/1 ui-monospace,monospace}.local{border-left:4px solid #8fd0a0;padding:.8rem 1rem;background:#111913}.warning{border-left:4px solid #e0b46a;padding:.8rem 1rem;background:#1a1610}#brief{min-height:21rem;white-space:pre-wrap}.compact li{margin:.4rem 0}@media(max-width:700px){body{padding:1rem}.nav{flex-wrap:nowrap;overflow-x:auto}.nav a{flex:0 0 auto}.actions .button{width:100%;text-align:center}}
+</style>
+</head>
+<body>
+<p class="law">LOCAL-ONLY INTAKE BUILDER. No login. No submit endpoint. Nothing leaves this browser unless you deliberately copy it or open checkout.</p>
+<nav class="nav" aria-label="Commons">
+  <a href="./index.html">Commons</a>
+  <a href="./agent-rescue.html">Agent Failure Autopsy · $29</a>
+  <a href="./commerce.html#sku-agent-failure-autopsy">Commerce</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="fine">Token Junkie Labs · one failed coding-agent run</p>
+  <h1>Turn the failure into a clean case brief.</h1>
+  <p class="lead">Capture the intended outcome, the observed failure, the first useful error, and the state boundary without pasting secrets. The builder makes a plain-text brief you can inspect before purchase.</p>
+  <p class="local"><strong>Local by construction:</strong> this page has no form action, network request, analytics call, cookie, or browser storage. Refreshing clears the worksheet.</p>
+</header>
+
+<section class="grid" aria-label="Case brief worksheet">
+  <article class="panel">
+    <h2>1. Describe one failed run</h2>
+    <label class="field"><span>What should the agent have done?</span><textarea id="intended" maxlength="2000" placeholder="Example: update three owned files, run the focused tests, and open one pull request."></textarea></label>
+    <label class="field"><span>What happened instead?</span><textarea id="observed" maxlength="2000" placeholder="Example: it retried the publish step and created duplicate side effects."></textarea></label>
+    <label class="field"><span>Stack, framework, or harness</span><input id="stack" maxlength="300" placeholder="Example: GitHub Actions + custom agent harness"></label>
+    <label class="field"><span>First visible error or divergence</span><textarea id="error" maxlength="2000" placeholder="Paste only a short redacted excerpt or describe the first wrong transition."></textarea></label>
+    <label class="field"><span>Last known-good step</span><input id="last-good" maxlength="500" placeholder="Example: tests passed and the branch head was correct."></label>
+  </article>
+
+  <article class="panel">
+    <h2>2. Bound the failure</h2>
+    <label class="field"><span>Retries and side effects</span><textarea id="effects" maxlength="1600" placeholder="How many retries? Any duplicate sends, orders, commits, charges, files, or API calls?"></textarea></label>
+    <label class="field"><span>State and resume behavior</span><textarea id="state" maxlength="1600" placeholder="What state survived? What was lost? Could the workflow resume safely?"></textarea></label>
+    <label class="field"><span>What changed immediately before the failure?</span><textarea id="changed" maxlength="1600" placeholder="Prompt, model, dependency, credential scope, config, data shape, deployment, or unknown."></textarea></label>
+    <label class="field"><span>Sanitized evidence you can provide</span><textarea id="evidence" maxlength="1600" placeholder="Example: one redacted log excerpt and one screenshot of the failed state."></textarea><small>Do not paste the evidence itself here when a short description is enough.</small></label>
+  </article>
+</section>
+
+<section class="panel checks" aria-labelledby="redaction-heading">
+  <h2 id="redaction-heading">3. Confirm the redaction boundary</h2>
+  <p class="warning"><strong>Do not include:</strong> API keys, tokens, passwords, private repository URLs, customer records, personal data, PHI, production secrets, or unrelated incidents.</p>
+  <label><input type="checkbox" data-redaction> I removed credentials, tokens, passwords, and secrets.</label>
+  <label><input type="checkbox" data-redaction> I removed customer data, PII, and PHI.</label>
+  <label><input type="checkbox" data-redaction> I replaced private URLs, hostnames, IDs, and account details where they are not essential.</label>
+  <label><input type="checkbox" data-redaction> This brief covers one failed execution of one agent workflow.</label>
+  <div class="actions">
+    <button class="button" id="build" type="button" disabled>Build sanitized case brief</button>
+    <span class="fine">All four confirmations are required before the brief is generated.</span>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="brief-heading">
+  <h2 id="brief-heading">4. Inspect and copy</h2>
+  <textarea id="brief" readonly aria-describedby="brief-status" placeholder="Your case brief will appear here."></textarea>
+  <div class="actions">
+    <button class="button secondary" id="copy" type="button" disabled>Copy case brief</button>
+    <button class="button secondary" id="clear" type="button">Clear worksheet</button>
+    <span class="status" id="brief-status" aria-live="polite"></span>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="buy-heading">
+  <h2 id="buy-heading">Ready for the Autopsy?</h2>
+  <p class="price">$29 once · one business day</p>
+  <ul class="compact">
+    <li>Evidence-linked failure chain with uncertainty stated.</li>
+    <li>Primary and contributing causes.</li>
+    <li>Concrete remediation steps where the evidence supports them.</li>
+    <li>A replay, regression, or prevention check.</li>
+  </ul>
+  <p><a class="button" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g?utm_source=commons&amp;utm_medium=intake_tool&amp;utm_campaign=agent_failure_autopsy_29&amp;utm_content=ready_case_brief">Buy Agent Failure Autopsy — $29</a> <a class="button secondary" href="./agent-rescue.html">Read the full contract</a></p>
+  <p class="fine">Secure one-time Stripe checkout. The delivery clock starts when usable, sanitized evidence within the published intake cap arrives. Checkout is intent, not proof of payment.</p>
+</section>
+</main>
+<script>
+(function(){
+  "use strict";
+  var ids=["intended","observed","stack","error","last-good","effects","state","changed","evidence"];
+  var fields={};
+  ids.forEach(function(id){fields[id]=document.getElementById(id);});
+  var checks=Array.prototype.slice.call(document.querySelectorAll("input[data-redaction]"));
+  var build=document.getElementById("build"),copy=document.getElementById("copy"),clear=document.getElementById("clear");
+  var brief=document.getElementById("brief"),status=document.getElementById("brief-status");
+  function clean(value){return String(value||"").replace(/\r\n?/g,"\n").trim();}
+  function value(id){return clean(fields[id].value)||"Not supplied";}
+  function ready(){return checks.every(function(box){return box.checked;});}
+  function updateReady(){build.disabled=!ready();}
+  checks.forEach(function(box){box.addEventListener("change",updateReady);});
+  build.addEventListener("click",function(){
+    if(!ready()){status.textContent="Complete the redaction confirmations first.";return;}
+    brief.value=[
+      "AGENT FAILURE AUTOPSY — SANITIZED CASE BRIEF",
+      "",
+      "INTENDED OUTCOME",
+      value("intended"),
+      "",
+      "OBSERVED FAILURE",
+      value("observed"),
+      "",
+      "STACK / FRAMEWORK / HARNESS",
+      value("stack"),
+      "",
+      "FIRST VISIBLE ERROR OR DIVERGENCE",
+      value("error"),
+      "",
+      "LAST KNOWN-GOOD STEP",
+      value("last-good"),
+      "",
+      "RETRIES AND SIDE EFFECTS",
+      value("effects"),
+      "",
+      "STATE AND RESUME BEHAVIOR",
+      value("state"),
+      "",
+      "CHANGE IMMEDIATELY BEFORE FAILURE",
+      value("changed"),
+      "",
+      "SANITIZED EVIDENCE AVAILABLE",
+      value("evidence"),
+      "",
+      "REDACTION CONFIRMATION",
+      "Credentials/secrets removed; customer/PII/PHI removed; private identifiers minimized; one failed run only."
+    ].join("\n");
+    copy.disabled=false;
+    status.textContent="Brief built locally. Inspect every line before copying.";
+    brief.focus();
+  });
+  copy.addEventListener("click",function(){
+    if(!brief.value){return;}
+    function fallback(){brief.focus();brief.select();status.textContent="Brief selected. Use your device copy command.";}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(brief.value).then(function(){status.textContent="Case brief copied.";},fallback);
+    }else{fallback();}
+  });
+  clear.addEventListener("click",function(){
+    ids.forEach(function(id){fields[id].value="";});
+    checks.forEach(function(box){box.checked=false;});
+    brief.value="";copy.disabled=true;updateReady();status.textContent="Worksheet cleared from this page.";
+  });
+  var params=new URLSearchParams(location.search),allowed=["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+  function campaign(value){return String(value||"").replace(/[^A-Za-z0-9_-]/g,"").slice(0,60);}
+  document.querySelectorAll("a[data-checkout]").forEach(function(link){
+    var url=new URL(link.getAttribute("href"));
+    allowed.forEach(function(key){var next=campaign(params.get(key));if(next){url.searchParams.set(key,next);}});
+    link.setAttribute("href",url.toString());
+  });
+  updateReady();
+})();
+</script>
+</body>
+</html>
