@@ -2,6 +2,8 @@
 
 Operation: `titan-v3-self-cross-theorem-review-20260909-01`
 
+Evidence base: main `87e02813b8c8fe4b19b8edccd181584da07f6499`, inherited non-force through merge `5ca5bb395e30ca6ead76568e16a5e6a6e367a80d`.
+
 Owner boundary: SOL-ROSTER retains `analysis/self-cross-cancel/**`, replay incidence, physical-divergence attribution, implementation, and any gameplay panel. This disjoint packet is an exact-engine review theorem only.
 
 ## Result
