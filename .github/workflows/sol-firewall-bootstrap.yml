@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: sol-firewall-bootstrap-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   materialize:
@@ -34,9 +34,9 @@ jobs:
               .sol-firewall-bootstrap/payload.part01 \
               .sol-firewall-bootstrap/payload.part02 \
               .sol-firewall-bootstrap/payload.part03 > /tmp/sol-firewall.b64
-          test "$(wc -c < /tmp/sol-firewall.b64)" -eq 20976
+          test "$(wc -c < /tmp/sol-firewall.b64)" -eq 21604
           base64 --decode /tmp/sol-firewall.b64 > /tmp/sol-firewall.tgz
-          echo '755e0573dab1af8d7f9355a9741b1419efcdf63dfab24e9a9373a837cb091655  /tmp/sol-firewall.tgz' | sha256sum --check --strict
+          echo 'f76baaf4e4abb2356bdc2fb427e34e5aa51facbd23b19050e7588d901c6774ce  /tmp/sol-firewall.tgz' | sha256sum --check --strict
           python3 - <<'PY'
           import tarfile
           from pathlib import PurePosixPath
