@@ -169,6 +169,18 @@ def apply_product_tranche(selected_action: Mapping[str, Any], shed: Mapping[str,
 
     candidate = _copy_market(market)
     inactive_before = deepcopy(market[limit:])
+    # Fail closed on any malformed active SELL for a tracked product before any edit.
+    # Partial commits across products violate the selected-state transaction contract.
+    for order in candidate[:limit]:
+        if not _is_sell(order):
+            continue
+        item = order[1]
+        if item not in TRACKED_PRODUCTS and item != "WHEAT":
+            continue
+        if _quantity(order) is None:
+            report["reason"] = "malformed_active_sell"
+            report["error"] = f"malformed active SELL for {item!r}"
+            return selected_action, report
     try:
         carrot_stock = _uint(dict(shed).get("CARROT", 0))
         if carrot_stock > 0:
