@@ -34,24 +34,34 @@ jobs:
           PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
             python analysis/v3-frozen-atomic-projection-sol-vector/test_audit.py
       - name: Exact route and downstream audit
+        id: exact_audit
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
-          set -euo pipefail
+          set -uo pipefail
+          set +e
           PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
             python analysis/v3-frozen-atomic-projection-sol-vector/audit.py \
               --output analysis/v3-frozen-atomic-projection-sol-vector/REPORT.json \
               | tee analysis/v3-frozen-atomic-projection-sol-vector/run.log
+          rc=${PIPESTATUS[0]}
+          set -e
+          printf '%s\n' "$rc" \
+            > analysis/v3-frozen-atomic-projection-sol-vector/EXIT_STATUS
           sha256sum \
             analysis/v3-frozen-atomic-projection-sol-vector/REPORT.json \
             analysis/v3-frozen-atomic-projection-sol-vector/run.log \
+            analysis/v3-frozen-atomic-projection-sol-vector/EXIT_STATUS \
             analysis/v3-frozen-atomic-projection-sol-vector/audit.py \
             analysis/v3-frozen-atomic-projection-sol-vector/test_audit.py \
             > analysis/v3-frozen-atomic-projection-sol-vector/SHA256SUMS
+          exit "$rc"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: titan-v3-frozen-atomic-projection-sol-vector
           if-no-files-found: error
           path: |
             revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/REPORT.json
             revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/run.log
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/EXIT_STATUS
             revenue/kaggriculture/cloud-execution-lab/analysis/v3-frozen-atomic-projection-sol-vector/SHA256SUMS
