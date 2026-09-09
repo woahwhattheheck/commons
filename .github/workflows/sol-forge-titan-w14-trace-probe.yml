@@ -1,0 +1,113 @@
+name: sol-forge-titan-w14-trace-probe
+
+on:
+  push:
+    branches:
+      - "sol-forge/titan-w14-realized-rule-composition-20260909-01"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-forge-titan-w14-trace-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    if: ${{ !contains(github.event.head_commit.message, '[w14-trace-probe]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Pin checkout and extract exact canonical archive
+        shell: bash
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          rm -rf "$RUNNER_TEMP/titan"
+          mkdir -p "$RUNNER_TEMP/titan"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          lab = Path(os.environ["LAB"])
+          receipt = json.loads((lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text())
+          archive = lab / receipt["path"]
+          source = lab / receipt["source_manifest"]
+          assert archive.stat().st_size == receipt["bytes"]
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == receipt["sha256"]
+          assert hashlib.sha256(source.read_bytes()).hexdigest() == receipt["source_manifest_sha256"]
+          Path(os.environ["RUNNER_TEMP"], "archive_sha256").write_text(receipt["sha256"])
+          PY
+          tar -xzf "$LAB/exports/titan-current.tar.gz" -C "$RUNNER_TEMP/titan"
+          test -f "$RUNNER_TEMP/titan/main.py"
+          test -f "$RUNNER_TEMP/titan/checks/reference/engine/kaggriculture.py"
+
+      - name: Compile probe
+        shell: bash
+        env:
+          TOOL: revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/trace_probe.py
+        run: |
+          set -euo pipefail
+          python3 -B -m py_compile "$TOOL"
+          find "$(dirname "$TOOL")" -name __pycache__ -type d -prune -exec rm -rf {} +
+
+      - name: Run one complete both-policy official game with exact one-step branches
+        shell: bash
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          OUT="$LAB/analysis/w14-realized-rule-composition/trace-probe.json"
+          python3 -B "$LAB/analysis/w14-realized-rule-composition/trace_probe.py" \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --loader revenue/kaggriculture/20260907-offline-agent/evaluate.py \
+            --engine-dir "$RUNNER_TEMP/titan/checks/reference/engine" \
+            --candidate "$RUNNER_TEMP/titan/main.py" \
+            --opponent "$LAB/reference/next-panel/vendor/arlene.py" \
+            --seed 261140014 \
+            --candidate-seat 0 \
+            --rng-seed 20260907 \
+            --source-commit "$GITHUB_SHA" \
+            --archive-sha256 "$(cat "$RUNNER_TEMP/archive_sha256")" \
+            --output "$OUT"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/trace-probe.json").read_text())
+          game = report["game"]
+          assert game["status"] == "complete", game["failure"]
+          assert game["steps"] == 719
+          assert len(game["candidate_action_trace_sha256"]) == 64
+          print(json.dumps({
+              "scores": game["scores"],
+              "finding_counts": game["finding_counts"],
+              "state_equivalent_eod_pickups": game["state_equivalent_eod_pickups"],
+              "productive_eod_pickup_replacements": game["productive_eod_pickup_replacements"],
+          }, indent=2, sort_keys=True))
+          PY
+
+      - name: Publish exact trace receipt
+        shell: bash
+        env:
+          OUT: revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/trace-probe.json
+          WORKFLOW: .github/workflows/sol-forge-titan-w14-trace-probe.yml
+        run: |
+          set -euo pipefail
+          git fetch origin "$GITHUB_REF_NAME:refs/remotes/origin/$GITHUB_REF_NAME"
+          test "$(git rev-parse "origin/$GITHUB_REF_NAME")" = "$GITHUB_SHA"
+          git rm "$WORKFLOW"
+          git add "$OUT"
+          git diff --cached --check
+          test "$(git diff --cached --name-only | sort)" = "$(printf '%s\n%s\n' "$WORKFLOW" "$OUT" | sort)"
+          git config user.name "SOL-FORGE"
+          git config user.email "sol-forge@commons.local"
+          git commit -m "analysis(titan): publish exact W14 official trace probe [w14-trace-probe]"
+          git push origin "HEAD:$GITHUB_REF_NAME"
