@@ -462,6 +462,14 @@ jobs:
           (cd "$RUNTIME" && PYTHONPATH="$RUNTIME" \
             python3 -B -m unittest -v checks.test_final_market_pressure_entrypoint) \
             2>&1 | tee "$RUNNER_TEMP/canonical-validation/final-pressure-archive-tests.log"
+      - name: Whole-entrypoint deadline containment tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_entrypoint_deadline \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/entrypoint-deadline-tests.log"
       - name: Committed seed retry source and canonical boundary tests
         if: ${{ !cancelled() }}
         shell: bash
