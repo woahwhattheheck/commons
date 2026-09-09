@@ -50,10 +50,15 @@ class CapillaryTitanAgent(TitanAgent):
         if not report["certified"]:
             return
 
-        # Detach this candidate from any class/shared route mapping.  The actor
-        # surface and branch topology were checked exact by the compiler.
-        self.controller.R = staged
-        self.seed_budget = self.seed_budget.__class__(self.controller.R)
+        # SpatialTempo.install() has already captured this fresh per-instance
+        # route dictionary as both its ``pristine`` closure input and
+        # ``_crop_routes``. Preserve that identity while replacing its contents;
+        # rebinding controller.R would make the wrapper restore predecessor
+        # routes before the first selected action.
+        routes = self.controller.R
+        routes.clear()
+        routes.update(staged)
+        self.seed_budget = self.seed_budget.__class__(routes)
         self._seed_plan = None
         if self.spatial is not None:
             self.spatial.seed_reserve = (
