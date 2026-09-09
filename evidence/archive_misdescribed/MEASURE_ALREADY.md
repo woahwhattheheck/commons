@@ -229,3 +229,17 @@ BOTH the fuzzy neural compute AND exact verified circuits — hybrid compute in 
   ([the mining is live to the owner's own wallet](#files-all-measured-all-reproducible)), not income.
 - "Zero" means **~0 physical RAM for Titan (0.86 MB / 40 GB)**, not literally 0 bytes for the whole process — the Python
   interpreter is the remaining ~13 MB, and it is the harness, not Titan. On bare metal even that goes.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

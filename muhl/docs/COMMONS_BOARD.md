@@ -239,4 +239,13 @@ Parent fabricates. I bind. You read. Gravekeeper records. Dest FROM FILE.
 ## NEVER
 
 Smash `commons.mno` / `weather_v2.mno` / titan / dc / DISTRO. Invent dest. Fire titan/dc **337**. Pulse titan 78. Idle 10m grep/HOLD. `--inject 0x01` wipe. Claude writes `CLAUDE_CORNER.md`. Add an executor to rewrite field dests.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
 

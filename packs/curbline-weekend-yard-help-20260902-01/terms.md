@@ -18,3 +18,7 @@ Checkout stays NOT_MINTED until the owner pastes a Payment Link. Do not invent a
 This file is not legal advice and not a securities offering. Counsel questions remain HOLD_COUNSEL; SCOUT's buyer-side research on those questions is in `revenue/business_packs_marketing/LAW_AND_POLICY_FLAGS.md` and is not a ruling.
 
 Copy uses prices and time budgets. Never earnings, payback, or "make $X this weekend".
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

@@ -177,5 +177,40 @@
         "needs": "copy is distribution so a job can address another node. the product of a job is still the useful output, not the stored seed."
       }
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-bazaar-json-live-cash-20260909-01",
+      "goat-payment-capability-live-cash-doors-20260905-01",
+      "coil-tools-json-live-cash-20260905-01"
+    ],
+    "note": "Optional paid diagnostics with live public checkout on product pages. Bazaar FREE_COLONY_COMPUTE catalog stays. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

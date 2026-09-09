@@ -17,3 +17,7 @@ CLI: `python3 ace_qat_thermal_rheology_capacity.py`
 - report_digest `cfc145784c1e22cc619433d6d0aa541bbb34087e4f186aafde3c8e4a11ec7c22`
 
 AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

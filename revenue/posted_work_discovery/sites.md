@@ -108,3 +108,7 @@ WebSearch queries run (in order):
 73. Florida OR Tampa OR Indiana OR Indianapolis "website redesign" RFP "2026" proposals due October
 74. "New Jersey" website redesign RFP "September 30, 2026" proposals borough OR township OR nonprofit
 75. chamber of commerce "seeking proposals" OR "accepting proposals" website redesign September 2026
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

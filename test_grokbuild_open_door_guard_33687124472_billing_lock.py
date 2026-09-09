@@ -18,12 +18,12 @@ READBACK = ROOT / "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7f07e2f2",
+    "test_open_door_guard.py": "7ced9bb7",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_cursor_stealable_lanes_occupancy_readback.py": "7ce1a4d6",
+    "test_cursor_stealable_lanes_occupancy_readback.py": "d8b3303e",
     "test_stealable_lanes_occupancy.py": "80de69fd",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",

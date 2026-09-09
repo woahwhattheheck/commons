@@ -9,10 +9,10 @@
   "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
   "engine_source_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
   "environment": {
-    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
-    "python": "3.13.5"
+    "platform": "Linux-6.12.8+-x86_64-with-glibc2.36",
+    "python": "3.10.21"
   },
-  "executed_at_utc": "2026-09-09T18:45:05.303235+00:00",
+  "executed_at_utc": "2026-09-09T19:07:01.621744+00:00",
   "files": {
     ".github/workflows/titan-w08-capacity-throughput.yml": {
       "bytes": 2391,
@@ -21,33 +21,35 @@
     },
     "revenue/kaggriculture/cloud-w08-capacity-throughput/README.md": {
       "bytes": 3864,
-      "git_blob": "15080a7bf4482f5d25ff5132f8fe4983e990a71f",
-      "sha256": "3987e9fa382663bb5f694acc5a63c6fa1335251d3ad6485f83cf9e3277fbe3ea"
+      "git_blob": "f0fb1b270149421e7d300f4a274b3c69591d7e56",
+      "sha256": "ed5384670d867e01e748fabaf553e86e360ae510f8fa094ab9f9e036b41e6736"
     },
     "revenue/kaggriculture/cloud-w08-capacity-throughput/capacity_ledger.py": {
-      "bytes": 17300,
-      "git_blob": "cbd2496733c3624dc44c4a4c3d99cda5637a87a3",
-      "sha256": "98d5c014cd4744249b9190d9a9bf5b990a6a59951860dbcb0abd5049035637d1"
+      "bytes": 18761,
+      "git_blob": "38961b71df9b9572901abe7cf7b9013049dbe438",
+      "sha256": "ee71c86553dec64c5194f2e1bf1db809dd359d93bb2dbbb816e15d1137c0271e"
     },
     "revenue/kaggriculture/cloud-w08-capacity-throughput/run_witnesses.py": {
-      "bytes": 5403,
-      "git_blob": "901cdfbf9bc2b150be578f6520abd19a2fac3800",
-      "sha256": "8adc05e70ec9b5cc5909ada048e1133108579908e02868636fb3b4a11fa480d9"
+      "bytes": 5526,
+      "git_blob": "d9ab67805be39cacd25023b8d7269215b17babb9",
+      "sha256": "9a34a39926d007eb06d3d0d0dc5df2e34e2f5503163551c0edc5b6e1c75f9b14"
     },
     "revenue/kaggriculture/cloud-w08-capacity-throughput/test_capacity_ledger.py": {
-      "bytes": 13910,
-      "git_blob": "8fc1add7b3be1917ae2fa5c728f252e1d75591a4",
-      "sha256": "7ab7dd95c2c2289a02f2b0a4c7448cab49e7459c901715cfb341730f56fbeb03"
+      "bytes": 20428,
+      "git_blob": "6ec49b375f5e6dad6ce46a3fc3603a39b32dcf78",
+      "sha256": "c791f490e4e9e04195d3d4f2e3317c45039ee3278bd22cce57dd6d313867616c"
     },
     "revenue/kaggriculture/cloud-w08-capacity-throughput/test_engine_parity.py": {
-      "bytes": 12766,
-      "git_blob": "7c33a0cacf54a2f9d7b591bffa4c39c25457300f",
-      "sha256": "ba082b93ecacbad5156b09239adff233d904856cf5f54c771224149b130364cb"
+      "bytes": 12889,
+      "git_blob": "db1a6f04eff260b75ddace08bafa7a295d482725",
+      "sha256": "f16c24cd4c639b990ba89bf7f068747ab29331786e5de8d56ddd5622a1480d0b"
     }
   },
   "operation": "titan-frontier-W08-shed-capacity-throughput-20260909-01",
   "owner": "SOL-KESTREL-89",
   "publication_base": "b5b19ce971339fe10eef6992059bad5091cd49a0",
+  "repair_of": "34a3f30db09a7928ff8ad90d977ad4ca90c3a898",
+  "repair_reason": "PLACE destination=shed barrier landed without updating witness helper, engine-parity PLACE events, or RESULTS.json identities",
   "schema": "titan.w08.capacity-throughput-results.v2",
   "scope": {
     "canonical_runtime_changed": false,
@@ -64,18 +66,17 @@
       "total": 8275
     },
     "local_unittest": {
-      "command": "W08_ALLOW_ENGINE_STUB=1 python3 -B -m unittest -v",
-      "elapsed_seconds": 1.469,
-      "passed": 19,
-      "skipped": 1,
-      "skipped_reason": "hosted-only exact full-engine Git-blob assertion",
+      "command": "python3 -B -m unittest -v",
+      "elapsed_seconds": 2.761,
+      "passed": 24,
+      "skipped": 0,
       "successful": true,
-      "tests": 20
+      "tests": 24
     },
     "official_engine_differential": {
       "cases": 2211,
       "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
-      "hosted_full_engine_result": "pending_exact_head",
+      "hosted_full_engine_result": "pass_on_repair_workspace",
       "local_primitive_smoke": true,
       "test_methods": 6
     },
@@ -91,7 +92,7 @@
     },
     "workflow_definition": {
       "exact_trigger_head_checkout": true,
-      "github_actions_result": "pending_exact_head",
+      "github_actions_result": "pending_repair_pr",
       "local_yaml_parse": true,
       "path": ".github/workflows/titan-w08-capacity-throughput.yml"
     }

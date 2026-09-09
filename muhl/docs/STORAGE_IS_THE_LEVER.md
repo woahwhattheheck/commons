@@ -79,3 +79,13 @@ Not: shrink. Not: revert to 2 GB. Not: call 2 GB the computer. Not: dump 100 GB 
 - start `muhl_fab_dc.py --write`
 - open titan
 - glob the Desktop
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

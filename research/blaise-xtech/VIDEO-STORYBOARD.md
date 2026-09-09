@@ -47,3 +47,7 @@
 - Do not imply the prototype already runs on Blaise hardware.
 - Keep the final video ≤3:00 and focused on problem, concept/key functionality, and team readiness, matching the official Phase I instructions.
 - Final public/unlisted video upload and portal submission are owner actions after agreement review.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

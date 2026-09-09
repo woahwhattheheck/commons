@@ -23,14 +23,14 @@ KEEP = {
     "open_door_guard.py": "877e148d",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "66332f72",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "fc3da47f",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "89ba5cdd",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "3b2bb8a1",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "52634a26",
-    "wire.html": "5e2f94f4",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "5213ccf9",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
 }
 
 

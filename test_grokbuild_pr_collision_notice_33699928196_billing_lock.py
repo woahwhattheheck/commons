@@ -25,17 +25,17 @@ KEEP = {
     "test_pr_collision_notice.py": "a4890883",
     ".github/workflows/pr-collision-notice.yml": "b0a853dd",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "f4eb6dc4",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "48bc313e",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "0a79036d",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "327dd812",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "7c20b4d4",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "15f51f42",
     "p/grokbuild-pr-collision-notice-33699600937-billing-lock-20260903-01.md": "0fc75f49",
-    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "6379862f",
+    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "fbdc57ac",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "eb0364ef",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "af76de7a",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7f07e2f2",
+    "test_open_door_guard.py": "7ced9bb7",
 }
 
 

@@ -28,7 +28,7 @@ KEEP_UNREAD = {
     "hub_pages.py": "d0bd0e8d",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
 }
 
 

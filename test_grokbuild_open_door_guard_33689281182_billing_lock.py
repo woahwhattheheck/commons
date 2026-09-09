@@ -20,10 +20,10 @@ READBACK = ROOT / "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7f07e2f2",
+    "test_open_door_guard.py": "7ced9bb7",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "9e00eb5d",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "44e15cbe",
     "p/grokbuild-pr8408-verify-20260902-01.md": "0a594dda",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
     "test_grokbuild_pr8411_verify.py": "f2468c3d",
@@ -31,7 +31,7 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_cursor_stealable_lanes_occupancy_readback.py": "7ce1a4d6",
+    "test_cursor_stealable_lanes_occupancy_readback.py": "d8b3303e",
     "test_stealable_lanes_occupancy.py": "80de69fd",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",

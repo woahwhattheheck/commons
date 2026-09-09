@@ -48,3 +48,7 @@ The contract test injects minimal `arcengine`/`agents.agent` stubs so the single
 ## v2 exploration policy
 
 The drop-in now uses the same clean-room deterministic frontier model as `arc3_baseline.py`: untried legal state/action pairs first; shortest learned non-self-loop route to a reachable unexplored state second; novelty/progress UCB only as fallback. The default action ceiling is 400 (`SOL_ARC3_MAX_ACTIONS` can override it). This is still a generic baseline, not a stored `ls20` answer sequence.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -21,3 +21,7 @@ Expected discriminating results were set before the live model runs: the ordinar
 The conservative evidence profile is explicitly new design, not an attributed upstream mandate or a universal claim about transcripts. It applies to this curated input path, which cannot separately ingest mechanism-verification evidence. The source's HIGH definition remains intact. Outward agent remarks are source text, not direct access to internal cognition; prompts require cognition/context accounts to remain explicitly unverified hypotheses. MEDIUM/LOW causal judgments still require semantic inspection and are not guaranteed true by the confidence cap.
 
 The current dependency choice followed a concrete policy repair. Initial metadata-only review of SDK 1.54.0 missed its bundled llama.cpp HTTP adapter. That isolated SDK was uninstalled, with no native engine installed or executed; the installation used no persistent pip cache. The replacement v1.0.1 was selected only after the official, nontruncated package source inventory was inspected, then its 47-package base closure was audited before downloading the SDK. `sdk-source-audit.json` and `dependency-audit.json` retain the selected-version evidence. Do not treat metadata-only dependency review as sufficient for future upgrades.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -175,3 +175,13 @@ titan_78_pulsed **NO**.
 4383274620 and the current connection names the same model plus `cpu_fwd`.
 Installed/wired **YES**; fresh ask **NOT RUN**; successful answer **NOT CLAIMED**;
 historical load command **DO NOT REPLAY**.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

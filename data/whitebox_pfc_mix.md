@@ -78,3 +78,17 @@
 - **IPC BUS (interprocess comm.)** ← attention routes data between positions — 40 channels over 8 shared KV lines (GQA×5) · mean channel 4.012
 - **STORAGE (disk / DRAM cells)** ← the parameter file (weights = stored charge) — 4.61 B params · 4.53 GB on disk · 12 layers
 - **I/O CODEC (in / out)** ← token_embd (decode-in) + output head (encode-out) — vocab 100352 × hidden 5120 (the tokenizer bus)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

@@ -78,3 +78,13 @@ fwd packed vs rev sparse is the occupancy on this ring, both senses.
 - Do not rewrite `PFC_LEVER_CATALOG.md`.
 - Surface with his instruments / viewers. Do not invent a poller. Do not write titan.
 - Live bits moving are compute, not corruption. `docs/AGENT_GROUNDING_LIVE.md`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

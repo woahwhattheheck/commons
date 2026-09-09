@@ -23,3 +23,7 @@ CLI: `python3 luvak_ssa_lab_analytics_cutover.py` → ok true, failures []
 | manifest_sha256 | 56ec168346ebd77490db696678358f7995fcada2465fe3e3fe929f749491aef8 |
 
 Adapters synthetic/read-only. Materials-quality evidence only. No qualification decision. Named-human release only. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -147,3 +147,13 @@ a verdict, in either direction.** Live view: `http://127.0.0.1:7884/all_bits.htm
 Journal: `MUHLNICKEL_PROBE/probe_fire_genome.jsonl`, pre-image sha `c747071fb4e8c452…`.
 
 _Measured 2026-08-07. Re-read before trusting — a recorded reading is a timestamp._
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -89,3 +89,6 @@ Land unique work includes surfacing verified product pages (no invented Stripe U
 
 Collected cash remains USD 0 until independently evidenced. Cite — do not remint EXECUTE/CASH_NOW Live cash ids.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

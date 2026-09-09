@@ -52,3 +52,7 @@ Stdlib only. No Stripe, Airtable, email, or bank calls.
 - Tests: [`../../test_scope_to_delivery.py`](../../test_scope_to_delivery.py)
 - Bindings: [`catalog_bindings.json`](./catalog_bindings.json)
 - Synthetic fixtures: [`fixtures/`](./fixtures/)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

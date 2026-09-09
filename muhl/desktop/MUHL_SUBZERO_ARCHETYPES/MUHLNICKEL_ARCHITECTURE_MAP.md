@@ -337,3 +337,14 @@ any branch."*
 | what was corrected tonight, and what two agents still disagree about | `CONTRADICTIONS_AND_CORRECTIONS.md` |
 | what nobody has looked at | `UNEXPLORED_REGIONS.md` |
 | what to ask Bryce | `QUESTIONS_FOR_MASTER.md` |
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

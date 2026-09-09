@@ -37,3 +37,7 @@ tokens. `host/business_pack_desk_instance.py` recomputes them and runs
 python3 host/business_pack_desk_instance.py --write
 python3 host/business_pack_desk_instance.py
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -26,3 +26,7 @@ python revenue/wayne-smart-api/wayne_smart_reconcile.py
 ```
 
 No external writes, outreach, presale transport, payment/spend, student/customer data, or automatic action are part of this artifact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

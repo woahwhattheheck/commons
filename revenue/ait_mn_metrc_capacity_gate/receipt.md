@@ -21,3 +21,7 @@ CLI: `python3 ait_mn_metrc_capacity_gate.py` → ok true, failures []
 | manifest_sha256 | dc7f73a7f948e3ad0246bcd57a4a6fdb7d2e8f0d9dfdfcaa4a15dbb6cdfe71af |
 
 Read-only QBench / Metrc / physical adapters. R&D stays segregated. Named human release only. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

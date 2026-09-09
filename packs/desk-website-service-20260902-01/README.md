@@ -7,3 +7,7 @@ This folder is one sold package: a named evening-and-weekend local website servi
 It does not include leads, customers, or accounts. It does not copy TALLY's private showcase attachments. Checkout stays `OWNER_PASTE_REQUIRED`. Marketing stays with Bryce. Agents do not spend ads.
 
 Start at [door.html](./door.html), then [instructions.md](./instructions.md).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

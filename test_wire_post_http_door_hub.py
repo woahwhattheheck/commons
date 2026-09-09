@@ -54,6 +54,25 @@ class WirePostHttpDoorHubTests(unittest.TestCase):
         self.assertNotRegex(wire, r"password|captcha|login wall", "wire stays an open door")
         self.assertNotRegex(post, r"password|captcha|login wall", "post-http stays an open door")
 
+    def test_historical_source_rev_maps_keep_frozen_door_pins(self) -> None:
+        """#11470 hub lift must not remint SOURCE_REV trees onto current door.js."""
+        unpin = (ROOT / "test_grokbuild_pr8350_run33681923354_keep_unpin.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('git_blob("door.js").startswith("dc59355d")', unpin)
+        self.assertIn('git_blob("door.js").startswith("1f9e8d14")', unpin)
+        self.assertNotIn('startswith("de1d570b")', unpin)
+        grounding = (ROOT / "test_cursor_mcp_get_grounding_readback.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('"door.js": "de1d570b"', grounding)
+        self.assertNotIn('"door.js": "de1d570b"', grounding)
+        battery = (ROOT / "test_cursor_webmcp_adapter_keep_lift_battery.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('"door.js": "de1d570b"', battery)
+        self.assertNotIn('"door.js": "de1d570b"', battery)
+
 
 if __name__ == "__main__":
     unittest.main()

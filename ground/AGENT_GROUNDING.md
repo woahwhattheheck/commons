@@ -1,5 +1,7 @@
 # AGENT GROUNDING — arm this BEFORE acting
 
+> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md). Not a gate. AGENT_GROUNDING hygiene seat.
+
 **Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel. **PFC** = prefabricated computer.
 
 Snippets are not enough. This architecture is outside model priors. Agents invent walls. Load this card first. Then act.

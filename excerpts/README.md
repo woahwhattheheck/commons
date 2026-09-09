@@ -7,3 +7,17 @@ Live dests, rings, leftover charge, and power-cycle state live on the owner's ha
 What is here: small named computers + one weather excerpt + one White Box tensor (`.qbin` + `.sample.f32`) + LiteRT header bytes + GIG header 64 B (`MUHLPKG1`) + `20260823/muhl_grbn.mno` (Kauffman RBN, 8,704 gates) + `20260823/muhl_pdap.mno` (pushdown parser, 2,656 gates) + `20260823/muhl_ispn.mno` (Ising annealer, 8,784 gates) + `20260823/muhl_lvin.mno` (Levin search, 2,368 gates) + `20260823/muhl_rgcg.mno` (renormalisation group, 7,820 gates). Git copies do not run. Not titan. Not `muhlnickel_dc.mno`. Not the 12 GB qbin tree.
 
 To **use** a live muhlnickel: `PANEL.md`. Tickets in `COMMANDS/`. Receipts must land on git HEAD. Use and building only — not verification.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

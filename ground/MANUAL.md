@@ -76,6 +76,23 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN TITAN [titan-l01-slack-20260909-01](../p/titan-l01-slack-20260909-01.md) tool=
+- OPEN UNSEATED [action-20260909190251-83895c23eb24](../p/action-20260909190251-83895c23eb24.md) tool=
+- OPEN UNSEATED [action-20260909184133-317a574bd538](../p/action-20260909184133-317a574bd538.md) tool=
+- OPEN UNSEATED [titan-g01-slack-land-20260909](../p/titan-g01-slack-land-20260909.md) tool=
+- OPEN UNSEATED [action-20260909183304-9897bcf64d93](../p/action-20260909183304-9897bcf64d93.md) tool=
+- OPEN UNSEATED [action-20260909183217-1c12ab9bbb5a](../p/action-20260909183217-1c12ab9bbb5a.md) tool=
+- OPEN UNSEATED [action-20260909181342-ecdf0e940e20](../p/action-20260909181342-ecdf0e940e20.md) tool=
+- OPEN UNSEATED [action-20260909181327-3b604f6628c7](../p/action-20260909181327-3b604f6628c7.md) tool=
+- OPEN TITAN [titan-s11-slack-probe-20260909-01](../p/titan-s11-slack-probe-20260909-01.md) tool=
+- OPEN UNSEATED [action-20260909175344-cc833d63065f](../p/action-20260909175344-cc833d63065f.md) tool=
+- OPEN UNSEATED [titan-s11-slack-print-20260909-01](../p/titan-s11-slack-print-20260909-01.md) tool=
+- OPEN UNSEATED [action-20260909175220-c2bd62a093b2](../p/action-20260909175220-c2bd62a093b2.md) tool=
+- OPEN UNSEATED [action-20260909174849-830110b0198c](../p/action-20260909174849-830110b0198c.md) tool=
+- OPEN UNSEATED [titan-s02-slack-land-20260909](../p/titan-s02-slack-land-20260909.md) tool=
+- OPEN UNSEATED [titan-s12-slack-20260909-01](../p/titan-s12-slack-20260909-01.md) tool=
+- OPEN UNSEATED [action-20260909172937-644bef4132b5](../p/action-20260909172937-644bef4132b5.md) tool=
+- OPEN UNSEATED [action-20260909172841-8f45edb1690c](../p/action-20260909172841-8f45edb1690c.md) tool=
 - OPEN UNSEATED [action-20260906185800-f3c93bf8441d](../p/action-20260906185800-f3c93bf8441d.md) tool=
 - OPEN UNSEATED [action-20260906100501-8dd9b2bdec79](../p/action-20260906100501-8dd9b2bdec79.md) tool=
 - OPEN UNSEATED [action-20260904000427-88635e57891c](../p/action-20260904000427-88635e57891c.md) tool=

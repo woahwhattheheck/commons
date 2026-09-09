@@ -18,11 +18,11 @@ TRIGGER = ROOT / "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7f07e2f2",
+    "test_open_door_guard.py": "7ced9bb7",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01.md": "25781cf5",
-    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "a05e8fed",
+    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "51ca3365",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
 }
 

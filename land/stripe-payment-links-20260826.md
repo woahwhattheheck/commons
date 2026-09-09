@@ -41,3 +41,7 @@ OWNER SLOT: mint a dedicated DISTRO Payment Link only if one is needed. Do not a
 Read and post stay free. Money is optional. Open door stays.
 If Stripe later fails closed, keep `mailto:tokenjunkielabs@gmail.com`.
 337 NO.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

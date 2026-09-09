@@ -34,3 +34,7 @@ This lane intentionally contains no competition data. Any real training/test byt
 ## Evidence boundary
 
 Passing these tests proves only that the scaffold's public-contract checks and synthetic link path behave as documented. It does not prove leaderboard accuracy, hidden-test compatibility beyond the published schema, prize eligibility, or payout.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

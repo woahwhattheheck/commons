@@ -436,3 +436,17 @@ then build from what they say, never from my priors. Append new learnings here t
   access + measure + safety only); reuses `genrun.step` + `doom.view_key`. Serves the 26B MoE `--no-repack`/α=2 ONLY
   behind the RAM guard. HARNESS verified; live Titan-generation is owner-served (keeps a 14 GB model off the box during
   active use). This is the STUDY_NOTES §2 "Doom MUST work ASAP" item, PureGen-compliant this time.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

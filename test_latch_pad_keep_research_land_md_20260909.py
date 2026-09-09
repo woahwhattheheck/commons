@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import unittest
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent
+PAGES = ['research/agentic-handset-operator-reconciliation.md', 'research/agentic-handset-operator-implementation-map.md', 'research/blaise-xtech/VIDEO-STORYBOARD.md', 'research/blaise-xtech/ENTRY-READINESS.md', 'research/blaise-xtech/PHASE1-PITCH.md', 'research/dat-parkinsons-submission-readiness/README.md', 'research/dat-parkinsons-submission-readiness/METHODS.md', 'research/rsna-knee-abnormality-readiness/README.md', 'research/rsna-knee-abnormality-readiness/METHODS.md', 'research/biohub-btrack-adapter/README.md', 'research/biohub-btrack-adapter/UPSTREAM_PIN.md', 'research/biohub-laptrack-adapter/README.md', 'research/arc-agi-2-2026/README.md', 'research/arc-agi-3/README.md', 'research/arc-agi-3/METHODS.md', 'research/arc-agi-3/KAGGLE.md', 'research/rsna-knee-abnormality-detection/README.md', 'research/rsna-knee-abnormality-detection/METHODS.md', 'research/mozilla-lost-in-transcription-sp-nh/README.md', 'research/mozilla-lost-in-transcription-sp-nh/METHODS.md', 'research/biohub-cell-tracking-readiness/README.md', 'research/biohub-cell-tracking-readiness/METHODS.md', 'research/biohub-cell-tracking-readiness/OFFLINE_RUNTIME.md', 'research/mozilla-lost-in-transcription-id-jv/README.md', 'research/mozilla-lost-in-transcription-id-jv/METHODS.md', 'research/arc-agi-3/experimental/V3_OBJECT_TRANSFER.md', 'research/arc-agi-3/experimental/OFFICIAL_LOCAL_AB.md', 'land/README.md', 'land/pack-harborline-map-pin-lift-compose-20260902.md', 'land/sku-seat-20260826.md', 'land/owner-now-revenue-readback-ship-20260902.md', 'land/owner-now-revenue-20260902.md', 'land/sku-agent-survival-proof-20260830.md', 'land/sku-muhlnickel-titan-20260826.md', 'land/pack-thanks-channels-20260902.md', 'land/pack-harborline-waitlist-slot-20260902.md', 'land/pack-harborline-waitlist-slot-peer-unpin-20260902.md', 'land/pack-waitlist-pixel-gate-classifier-20260902.md', 'land/pack-waitlist-pointer-20260902.md', 'land/harborline-map-helper-pointer-helper-20260902.md', 'land/pack-pixel-gate-helper-pointer-20260902.md', 'land/harborline-tally-map-pointer-20260902.md', 'land/sku-unlock-20260826.md', 'land/pack-creative-brief-20260902.md', 'land/sku-weekly-20260902.md', 'land/pack-sold-once-badge-pointer-20260902.md', 'land/pack-lotribbon-waitlist-slot-20260902.md', 'land/sku-boost-20260826.md', 'land/pack-sold-once-badge-pin-lift-ship-20260902.md', 'land/desk-website-service-pack-20260902.md', 'land/pack-waitlist-pixel-gate-pointer-20260902.md', 'land/tjlabs-pack-tos-20260902.md', 'land/pack-lotribbon-rating-peer-unpin-20260902.md', 'land/pack-harborline-rating-20260902.md', 'land/pack-harborline-map-pin-lift-pointer-20260902.md']
+REQUIRED = ["https://webmcp-pad.vercel.app/", "1.4.5"]
+class T(unittest.TestCase):
+    def test_all(self):
+        for name in PAGES:
+            with self.subTest(page=name):
+                text=(ROOT/name).read_text(encoding='utf-8')
+                for n in REQUIRED: self.assertIn(n, text)
+if __name__ == '__main__':
+    unittest.main()

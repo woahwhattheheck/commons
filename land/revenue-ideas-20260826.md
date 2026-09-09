@@ -24,3 +24,7 @@ A dated `land/session-YYYYMMDD.md` is the product: dests, receipts, what ran.
 Charge for the hour. Publish the file. HTTP is not the computer.
 
 Law: if it is not a file on HEAD, it is talk.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

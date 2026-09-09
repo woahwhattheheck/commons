@@ -36,7 +36,7 @@ KEEP = {
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "catalog.html": "a0225a40",
+    "catalog.html": "35a7069f",
     "hub_pages.py": "d0bd0e8d",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",

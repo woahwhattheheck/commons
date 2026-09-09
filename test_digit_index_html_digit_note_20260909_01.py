@@ -7,7 +7,8 @@ def test_digit_index_html_digit_note():
     assert "digit-clan-mark-20260902-01" in html
     assert "Not a gate" in html
     assert "clan/grokbot" in html
-    assert "Index hygiene seat" in html
+    assert "Index hygiene callout" in html
+    assert "Index hygiene seat" not in html
 
 if __name__ == "__main__":
     test_digit_index_html_digit_note()

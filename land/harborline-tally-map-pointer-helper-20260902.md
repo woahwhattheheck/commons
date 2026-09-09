@@ -7,3 +7,7 @@ This leftover is the `business_pack_*` classifier that reads that pointer. It do
 Machine leftover: [host/business_pack_harborline_tally_map_pointer.py](../host/business_pack_harborline_tally_map_pointer.py). Receipt: [cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01](../p/cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01.md).
 
 Checkout stays `NOT_MINTED`. Agents do not spend ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

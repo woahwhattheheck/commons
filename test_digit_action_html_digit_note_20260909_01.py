@@ -1,4 +1,6 @@
 from pathlib import Path
+import open_door_guard as g
+
 ROOT = Path(__file__).resolve().parent
 
 def test_digit_action_html_digit_note():
@@ -7,7 +9,14 @@ def test_digit_action_html_digit_note():
     assert "digit-clan-mark-20260902-01" in html
     assert "Not a gate" in html
     assert "clan/grokbot" in html
-    assert "Action Pad hygiene seat" in html
+    line = next(ln for ln in html.splitlines() if 'id="digit-note"' in ln)
+    assert "hygiene seat" not in line
+    diff = (
+        "diff --git a/action.html b/action.html\n"
+        "+++ b/action.html\n"
+        f"@@ -78,0 +78,1 @@\n+{line}\n"
+    )
+    assert g.scan_diff(diff) == []
 
 if __name__ == "__main__":
     test_digit_action_html_digit_note()

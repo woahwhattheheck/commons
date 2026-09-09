@@ -14,3 +14,7 @@ This file is not legal advice and not a securities offering. Counsel questions r
 Copy uses prices and time budgets. Never earnings, payback, or "make $X this weekend".
 
 Shared door: `packs/tjlabs-terms.html`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

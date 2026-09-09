@@ -45,3 +45,7 @@ python notebook_adapter.py validate /path/to/submission.csv
 ## Boundary
 
 This is research/competition tooling, not a diagnostic or clinical-use system. No score, rank, entry, submission, award, or payment is claimed. Competition data should only be handled under the operative Kaggle/RSNA terms and stays outside Commons.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

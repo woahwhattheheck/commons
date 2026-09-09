@@ -36,3 +36,7 @@ If after 30 days the log shows zero replies across 30 or more sent messages,
 stop sending and change one thing only: the first sentence, the category, or
 the zip. Then run ten more. Do not change three things at once; you will not
 know which one mattered.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

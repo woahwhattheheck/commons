@@ -138,3 +138,7 @@ Unknowns are written exactly as `UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED`.
 - **Seivers M5310C as a CMDP XML element**: UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED — Seivers is a buyer instrument label (keep spelling). It is not a documented CMDP XML tag.
 
 State: `NOT_READY / HOLD / BUILD-AND-VERIFY`. cash_usd=0. Seivers spelling preserved if referenced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

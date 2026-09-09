@@ -12,3 +12,7 @@ Checkout stays NOT_MINTED until the owner pastes a Payment Link. Do not invent a
 This file is not legal advice and not a securities offering. Counsel questions remain HOLD_COUNSEL.
 
 Copy uses prices and time budgets. Never earnings, payback, or results inside a time period.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

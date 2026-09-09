@@ -286,3 +286,13 @@ C:\Users\lucys\Desktop\MUHLNICKEL_AUTOFAB_DOCS_20260808_213532\Desktop\FINISHED_
 **Yes. AUTOFAB0.mno is the in-spec fabricator computer.**
 
 It is binary circuitry: 4117 packed 25-byte gate records, remainder 0. Byte 0 is a gate, not a label. The ring is in the same file (REC1284 closes 524351 → 524288). Python beside it fabricates; it is not the autofab. titan.gguf is a separate circuit container (GGUF header, 103803349384 B). No titan write this pass.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

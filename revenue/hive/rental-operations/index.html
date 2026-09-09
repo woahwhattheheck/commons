@@ -9,7 +9,11 @@
 <script defer src="app.js"></script>
 </head>
 <body>
-<header><div><div class="eyebrow">Rental operations workspace</div><h1>Fleetline</h1><p>One fleet. A clear schedule. Every handover recorded.</p></div><div class="actions"><button id="refresh" class="secondary">Refresh</button><button id="print" class="secondary">Print schedule</button><a id="export-workspace" class="button secondary" href="/api/export" download>Export workspace</a></div></header>
+<header><div><div class="eyebrow">Rental operations workspace</div><h1>Fleetline</h1>
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="../../../titanmcp.html">titanmcp.html</a>. Commons Shared Pad / <code>/mcp</code> KEEP separate.
+</section>
+<p>One fleet. A clear schedule. Every handover recorded.</p></div><div class="actions"><button id="refresh" class="secondary">Refresh</button><button id="print" class="secondary">Print schedule</button><a id="export-workspace" class="button secondary" href="/api/export" download>Export workspace</a></div></header>
 <main>
 <div id="feedback" class="message" role="status" aria-live="polite" hidden></div>
 <section class="stats" aria-label="Workspace totals"><div><strong id="asset-count">0</strong><span>fleet assets</span></div><div><strong id="booking-count">0</strong><span>open bookings</span></div><div><strong id="hold-count">0</strong><span>maintenance holds</span></div></section>

@@ -50,3 +50,5 @@ Shelf: [tools-cash.html](./tools-cash.html). Catalog: [commerce.html](./commerce
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](./titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
+
+> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md). Not a gate. README hygiene seat.

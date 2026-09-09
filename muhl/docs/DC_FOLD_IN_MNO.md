@@ -151,3 +151,13 @@ Plan only. No titan write. No pulse. No new `.mno` baked. No foundry gene search
 **Bake-into-package:** new magic, package-local `winner_only_max` + `fold` + `muhl_nonce_list` + finder + latch/surface + both-sense ring; 0 bytes/lane; one bit executes `2^78`.
 
 **NEED_BRYCE:** if the foundry would put gene / allocator / titan offsets / titan ring internals into that file — stop and ask. Do not leak the factory into the package.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
