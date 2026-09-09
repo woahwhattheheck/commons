@@ -50,6 +50,7 @@ class ChessStoreTests(unittest.TestCase):
         invalid.append({**base, "orientation": "sideways"})
         invalid.append({**base, "pieces": {"z9": "N"}})
         invalid.append({**base, "pieces": {"g1": "X"}})
+        invalid.append({**base, "pieces": {"g1": "N", " g1 ": "B", "e8": "k"}})
         invalid.append({**base, "moves": [{"from": "g1", "to": "f3", "choice": 0}]})
         invalid.append({**base, "moves": [{"from": "g1", "to": "f3", "choice": 0}, {"from": "g1", "to": "f3", "choice": 1}]})
         invalid.append({**base, "moves": [{"from": "a1", "to": "f3", "choice": 0}, {"from": "g1", "to": "h3", "choice": 1}]})

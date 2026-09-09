@@ -49,6 +49,8 @@ def validate_chess(value, choice_count: int):
     pieces = {}
     for raw_square, raw_piece in raw_pieces.items():
         board_square = square(raw_square, "Piece square")
+        if board_square in pieces:
+            raise Problem(422, "Chess piece squares must be distinct")
         if not isinstance(raw_piece, str) or raw_piece not in PIECES:
             raise Problem(422, "Chess pieces use one of KQRBNPkqrbnp")
         pieces[board_square] = raw_piece
