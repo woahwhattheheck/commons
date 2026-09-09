@@ -39,7 +39,13 @@ DEFAULT_PACK = ROOT / "packs" / "sidewalk-signal-web-desk-20260902-01"
 
 TEMPLATE_FILES = ("offer.md", "assets.md", "instructions.md", "week1.md", "checkout.md", "keep-vs-sell.md", "terms.md", "README.md")
 # Shared factory slots (paperwork, running cost, employee day). Optional for an instance; non-empty and honest when present.
-SLOT_FILES = ("paperwork.md", "running-cost.md", "day.md")
+SLOT_FILES = ("paperwork.md", "running-cost.md", "day.md", "rating.md")
+# SCOUT scout-demand-door-sold-once-badge-20260902-01: the door badge is rendered from this verifier's own verdict.
+SOLD_ONCE_LINE = "Instance 1 of 1. This brand, this domain, this door are sold once."
+SAME_METHOD_LINE = "Built from the same method as our sold instances."
+BADGE_OPEN = "<!-- sold-once-badge -->"
+BADGE_CLOSE = "<!-- /sold-once-badge -->"
+ANCHOR_SLOT_RE = re.compile(r'<code data-slot="anchor_line">(.*?)</code>', re.S)
 # Door copy that the paperwork / running-cost / ToS laws hold back until the owner pastes the slots.
 HELD_COPY_RE = re.compile(
     r"(?i)we handle your legal paperwork|we set up your llc|compliance guaranteed|paperwork included|with the paperwork done"
@@ -132,6 +138,14 @@ def slot_status(pack: Path) -> dict[str, Any]:
     day = pack / "day.md"
     if day.is_file():
         status["support_subscription_price"] = _slot_value(read_text(day), "Price:", anywhere=True)
+    rating = pack / "rating.md"
+    if rating.is_file():
+        text = read_text(rating)
+        status["rating_badge_url"] = _slot_value(text, "Badge URL:")
+        status["rating_report_url"] = _slot_value(text, "Report URL:")
+        status["rating_partner_name"] = _slot_value(text, "Partner name:")
+        status["rating_bulk_price"] = _slot_value(text, "Bulk price:")
+        status["rating_owner_pasted"] = _slot_value(text, "Owner pasted:")
     return status
 
 
@@ -216,7 +230,15 @@ def compute(pack: Path, manifest: dict[str, Any]) -> dict[str, Any]:
     copy_verdicts = {}
     for path in text_files(pack):
         copy_verdicts[path.relative_to(pack).as_posix()] = unique.classify_copy(read_text(path))["verdict"]
+    # Sold once: this instance's fingerprint is UNIQUE among the sales the owner has recorded on the manifest,
+    # and the named-SELL rule (brand + door) holds. No number is invented; a recorded clone flips the badge.
+    recorded = [dict(row) for row in (manifest.get("sales") or []) if isinstance(row, dict)]
+    ledger = unique.classify_sales(recorded + [sale])
+    own = next((row for row in ledger["sales"] if row["sale_id"] == sale["sale_id"]), {"verdict": "MISSING_FINGERPRINT"})
+    sold_once = own["verdict"] == "UNIQUE" and sell["verdict"] == "UNIQUE_INSTANCE_SELL_OK"
     return {
+        "sold_once": sold_once,
+        "badge_line": SOLD_ONCE_LINE if sold_once else SAME_METHOD_LINE,
         "assets": rows,
         "instance_fields": fields,
         "fingerprint": fingerprint,
@@ -280,9 +302,23 @@ def verify(pack: Path, manifest: dict[str, Any] | None = None) -> dict[str, Any]
             errors.append(f"empty slot file: {name}")
 
     if computed:
-        for key in ("assets", "instance_fields", "fingerprint", "twin_sale_verdict", "sell_instance_verdict", "copy_verdicts", "slots", "terms", "terms_verdict", "saleable"):
+        for key in ("assets", "instance_fields", "fingerprint", "twin_sale_verdict", "sell_instance_verdict", "copy_verdicts", "slots", "terms", "terms_verdict", "saleable", "sold_once", "badge_line"):
             if manifest.get(key) != computed[key]:
                 errors.append(f"manifest.{key} is stale; run --write")
+        door_text = read_text(pack / DOOR)
+        rendered = door_badge(door_text)
+        if rendered is None:
+            errors.append("door must carry the sold-once badge block (<!-- sold-once-badge --> ... <!-- /sold-once-badge -->)")
+        elif rendered != badge_html(computed["badge_line"]):
+            errors.append("door badge disagrees with the verifier verdict; run --write")
+        anchor = ANCHOR_SLOT_RE.search(door_text)
+        anchor_line = str(manifest.get("anchor_line") or "OWNER_UNSET")
+        if anchor is None:
+            errors.append('door must carry the owner-paste anchor slot <code data-slot="anchor_line">')
+        elif anchor.group(1).strip() != anchor_line:
+            errors.append("door anchor slot disagrees with manifest.anchor_line")
+        if anchor_line != "OWNER_UNSET" and _load_unique().classify_copy(anchor_line)["verdict"] != "COPY_OK":
+            errors.append("anchor_line carries an earnings claim")
         slots = computed["slots"]
         link = str(slots.get("formation_partner_link") or "")
         if re.search(r"(?i)https?://", link):
@@ -294,6 +330,14 @@ def verify(pack: Path, manifest: dict[str, Any] | None = None) -> dict[str, Any]
         price = str(slots.get("support_subscription_price") or "")
         if price and price.upper() != "OWNER_UNSET" and not price.upper().startswith("OWNER_UNSET"):
             errors.append("day.md support subscription price must stay OWNER_UNSET until the owner pastes it")
+        rating_pasted = str(slots.get("rating_owner_pasted") or "").lower()
+        for key in ("rating_badge_url", "rating_report_url"):
+            value = str(slots.get(key) or "")
+            if re.search(r"(?i)https?://", value) and rating_pasted != "yes":
+                errors.append(f"rating.md {key} carries a URL the owner did not paste")
+        bulk = str(slots.get("rating_bulk_price") or "")
+        if bulk and bulk.upper() != "OWNER_UNSET" and rating_pasted != "yes":
+            errors.append("rating.md bulk price must stay OWNER_UNSET until the owner pastes it")
         for rel in ("index.html", "offer.md"):
             if (pack / rel).is_file() and HELD_COPY_RE.search(read_text(pack / rel)):
                 errors.append(f"{rel}: copy held back by the paperwork / running-cost / ToS laws until the owner pastes the slots")
@@ -363,10 +407,41 @@ def verify(pack: Path, manifest: dict[str, Any] | None = None) -> dict[str, Any]
     }
 
 
+def badge_html(badge_line: str) -> str:
+    return f'<p class="badge">{badge_line}</p>'
+
+
+def door_badge(door_text: str) -> str | None:
+    """The rendered badge between the markers, or None when the block is missing."""
+    start = door_text.find(BADGE_OPEN)
+    end = door_text.find(BADGE_CLOSE)
+    if start < 0 or end < 0 or end < start:
+        return None
+    return door_text[start + len(BADGE_OPEN):end].strip()
+
+
+def write_door_badge(pack: Path, badge_line: str) -> bool:
+    """Rewrite the marked badge block in the door from the verdict; True when the door changed."""
+    path = pack / DOOR
+    text = read_text(path)
+    if door_badge(text) is None:
+        return False
+    start = text.find(BADGE_OPEN) + len(BADGE_OPEN)
+    end = text.find(BADGE_CLOSE)
+    updated = text[:start] + badge_html(badge_line) + text[end:]
+    if updated != text:
+        path.write_text(updated, encoding="utf-8", newline="\n")
+        return True
+    return False
+
+
 def write_manifest(pack: Path) -> dict[str, Any]:
     manifest = load_manifest(pack)
+    manifest.setdefault("anchor_line", "OWNER_UNSET")
     manifest.update(compute(pack, manifest))
-    (pack / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_door_badge(pack, manifest["badge_line"])
+    # The door is an asset-free file, but its bytes are not part of the fingerprint; recompute nothing else.
+    (pack / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
 

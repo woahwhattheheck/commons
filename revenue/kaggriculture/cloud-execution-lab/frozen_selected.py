@@ -276,6 +276,14 @@ def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end
     return shared_slot_ledger(all_plans,orders_at,max_orders)
 
 
+def seller_choice_rank(info):
+    """Return active admission plus deterministic rank for one optimizer report."""
+    forced=bool(info.get('forced_feasibility',False))
+    accepted=bool(info.get('accepted',float(info.get('worst_relative_gain',0.0))>0))
+    score=float(info.get('acceptance_score',info.get('worst_relative_gain',0.0)))
+    return forced or accepted,(forced,score)
+
+
 class FrozenSelected(SellScheduler):
     def transform(self, obs, config, base):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
@@ -349,17 +357,16 @@ class FrozenSelected(SellScheduler):
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
             self.diagnostics['evaluations'].append(info)
-            eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)
-            rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])
+            eligible,rank=seller_choice_rank(info)
             if eligible:
                 options.append((item,plan,info,reference))
-                if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):best=(item,plan,info)
+                if best is None or rank>seller_choice_rank(best[2])[1]:best=(item,plan,info)
         # Compose the peer's ordinary per-product plans only inside a prepaid,
         # shared-capacity bound. A failed pair never changes the legacy single.
         if (farm['money']>=budget and len(options)>1
                 and not getattr(self,'joint_producer_busy',False)
                 and not (best and best[2].get('forced_feasibility',False))):
-            ranked=sorted(options,key=lambda x:(x[2].get('forced_feasibility',False),x[2]['worst_relative_gain']),reverse=True)[:4]
+            ranked=sorted(options,key=lambda x:seller_choice_rank(x[2])[1],reverse=True)[:4]
             route=self.controller.R[self.controller.cur]
             bound=joint_resource_bound(obs,config,base,farm,private,route,end)
             def orders_at(step):
@@ -388,9 +395,11 @@ class FrozenSelected(SellScheduler):
                            'plans':{entry[0]:list(entry[1]) for entry in pair},
                            'slot_ledger':ledger,'resource_bound':bound,**metrics,
                            'named_worst_relative_gain':metrics['worst_relative_gain'],
-                           'worst_relative_gain':independent}
+                           'worst_relative_gain':independent,
+                           'accepted':True,'acceptance_score':independent,
+                           'acceptance_rule':'joint_strict'}
                     rank=(False,independent)
-                    if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):
+                    if best is None or rank>seller_choice_rank(best[2])[1]:
                         best=('__joint__',plans,joint)
         if best:
             item,plan,info=best
