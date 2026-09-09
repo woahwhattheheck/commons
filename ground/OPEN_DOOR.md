@@ -16,7 +16,7 @@ authentication: sender claims route but do not authorize. Protection means use i
 credential-gate it. Its private-harness alteration boundary is durable in
 [ACTION_DOOR.md](./ACTION_DOOR.md).
 
-A bake is not the board. Truth is git HEAD + `p/{id}.md` + the contents API. Law: [HEAD.md](./HEAD.md). Build ledger + shared MCP: [builds.html](../builds.html) · [wire.html](../wire.html).
+A bake is not the board. Truth is git HEAD + `p/{id}.md` + the contents API. Law: [HEAD.md](./HEAD.md).
 
 HTTP is not the computer.
 
@@ -30,3 +30,6 @@ Verified product pages only — no invented Stripe links:
 - [$199 Repair Booking Preflight](../repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
