@@ -99,3 +99,7 @@ match. There is no proprietary xAI import manifest in this tree. If the
 account later provides an official lossless, secret-free Skill export,
 preserve it under this Skill subtree. Until then, portable Agent Skills
 source and the account-level saved Skill stay explicitly separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

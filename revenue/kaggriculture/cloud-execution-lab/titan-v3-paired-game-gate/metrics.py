@@ -17,11 +17,19 @@ def _mean(values: Sequence[float], *, label: str) -> float:
     return finite_number(result, label=label)
 
 
+def _median(values: Sequence[float], *, label: str) -> float:
+    try:
+        result = statistics.median(values)
+    except (OverflowError, ValueError) as exc:
+        raise GateError(f"{label}: derived median is not finite") from exc
+    return finite_number(result, label=label)
+
+
 def _summary(values: Sequence[float], *, label: str) -> dict[str, float | int]:
     return {
         "n": len(values),
         "mean": _mean(values, label=f"{label}.mean"),
-        "median": finite_number(statistics.median(values), label=f"{label}.median"),
+        "median": _median(values, label=f"{label}.median"),
         "min": min(values), "max": max(values),
         "positive": sum(value > 0 for value in values),
         "zero": sum(value == 0 for value in values),
@@ -52,11 +60,12 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
     for key in keys:
         base, cand = baseline[key], candidate[key]
         cell_label = f"cell {key.as_list()}"
-        base_margin, candidate_margin = base.margin, cand.margin
+        baseline_margin = finite_number(base.own - base.rival, label=f"{cell_label} baseline_margin")
+        candidate_margin = finite_number(cand.own - cand.rival, label=f"{cell_label} candidate_margin")
         own_delta = finite_number(cand.own - base.own, label=f"{cell_label} own_delta")
         rival_delta = finite_number(cand.rival - base.rival, label=f"{cell_label} rival_delta")
         margin_delta = finite_number(
-            candidate_margin - base_margin,
+            candidate_margin - baseline_margin,
             label=f"{cell_label} margin_delta",
         )
         own_deltas.append(own_delta)
@@ -64,21 +73,23 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
         pair_values[(key.opponent, key.seed)].append(own_delta)
         opponent_values[key.opponent].append(own_delta)
         seat_values[key.seat].append(own_delta)
+        baseline_result = "W" if baseline_margin > 0 else ("T" if baseline_margin == 0 else "L")
+        candidate_result = "W" if candidate_margin > 0 else ("T" if candidate_margin == 0 else "L")
         record = {
-            "key": key.as_list(), "baseline_result": base.result,
-            "candidate_result": cand.result, "baseline_margin": base_margin,
+            "key": key.as_list(), "baseline_result": baseline_result,
+            "candidate_result": candidate_result, "baseline_margin": baseline_margin,
             "candidate_margin": candidate_margin, "own_delta": own_delta,
         }
-        if _rank(cand.result) < _rank(base.result):
+        if _rank(candidate_result) < _rank(baseline_result):
             regressions.append(record)
-            baseline_win_regressions += base.result == "W"
-            new_losses += cand.result == "L" and base.result != "L"
-        elif _rank(cand.result) > _rank(base.result):
+            baseline_win_regressions += baseline_result == "W"
+            new_losses += candidate_result == "L" and baseline_result != "L"
+        elif _rank(candidate_result) > _rank(baseline_result):
             improvements.append(record)
         cells.append({
             "key": key.as_list(), "baseline_scores": list(base.scores),
-            "candidate_scores": list(cand.scores), "baseline_result": base.result,
-            "candidate_result": cand.result, "own_delta": own_delta,
+            "candidate_scores": list(cand.scores), "baseline_result": baseline_result,
+            "candidate_result": candidate_result, "own_delta": own_delta,
             "rival_delta": rival_delta, "margin_delta": margin_delta,
         })
 
@@ -100,6 +111,8 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
         str(key): _summary(value, label=f"seat {key} own_delta")
         for key, value in sorted(seat_values.items())
     }
+    baseline_results = [cell["baseline_result"] for cell in cells]
+    candidate_results = [cell["candidate_result"] for cell in cells]
     aggregate = {
         "cells": len(cells), "pairs": len(pairs),
         "own_delta": _summary(own_deltas, label="aggregate own_delta"),
@@ -109,8 +122,8 @@ def analyze(baseline: Mapping[CellKey, Game], candidate: Mapping[CellKey, Game])
         "positive_pair_fraction": sum(value > 0 for value in pair_means) / len(pair_means),
         "nonnegative_pair_fraction": sum(value >= 0 for value in pair_means) / len(pair_means),
         "changed_cells": sum(baseline[key].scores != candidate[key].scores for key in keys),
-        "baseline_results": _counts(baseline[key].result for key in keys),
-        "candidate_results": _counts(candidate[key].result for key in keys),
+        "baseline_results": _counts(baseline_results),
+        "candidate_results": _counts(candidate_results),
         "result_regressions": len(regressions), "result_improvements": len(improvements),
         "baseline_win_regressions": baseline_win_regressions, "new_losses": new_losses,
         "negative_opponent_strata": sum(value["mean"] < 0 for value in per_opponent.values()),

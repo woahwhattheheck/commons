@@ -25,3 +25,7 @@ Filled: offer, assets (20 costed SKUs, planning total USD 1067.50), instructions
 Factory saleable stays false until ToS slots are pasted and counsel clears.
 
 Marketing = Bryce. No ad spend. No invented Stripe URLs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

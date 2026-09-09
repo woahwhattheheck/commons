@@ -25,3 +25,13 @@ PASS-3 from `WEATHER_SPEC_LAW.md`: prefix crush. Same 6 rings / gated avg4 / AND
 Verify (fab, then die): genesis fire, dark hold, 12 random fire, 12 dark, mixed NW dark, one-sense DC, mutants drop_shift / swap_neighbor / ungated. All caught. Byte-exact vs `(N+S+E+W)>>2`.
 
 337 **NO** · pulsed_78 **NO** · invented_dest **NO** · re-OR leftover **NO** · 10-wide **NO** · v2 smash **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

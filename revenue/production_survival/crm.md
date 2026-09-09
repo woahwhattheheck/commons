@@ -43,3 +43,6 @@ The current seven-contact GGUF queue is independent: Parallel and NextGen are co
 
 Count first-party signals, qualified signals, unique delivered contacts, positive replies, accepted $2,500 scopes, on-time deliveries, $12,000/$30,000 expansions, and collected cash. Scheduled messages, opens, repository traffic, and duplicate sends are not revenue.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
