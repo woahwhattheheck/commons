@@ -24,7 +24,7 @@ KEEP = {
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
     ".github/workflows/local-compute-guard.yml": "43576548",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 

@@ -44,9 +44,9 @@ KEEP = {
     "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "648caa8b",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "03d03e22",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "5aa976c0",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
@@ -58,7 +58,7 @@ KEEP = {
     "infra/discord/test_windows_runtime.py": "158feb48",
     "infra/discord/assert_ready.py": "ad33fdba",
     ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
-    "open_door_guard.py": "1a42e1c9",
+    "open_door_guard.py": "877e148d",
 }
 
 

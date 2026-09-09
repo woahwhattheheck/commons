@@ -21,7 +21,7 @@ KEEP = {
     "p/grokbuild-llms-txt-33723861225-billing-lock-20260903-01.md": "09244cf3",
     "llms_txt.py": "70daec62",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 

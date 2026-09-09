@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parent
 SKILL = ROOT / ".agents" / "skills" / "google-ai-mode-hall-pass" / "SKILL.md"
 
 KEEP = {
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7f07e2f2",
     ".github/workflows/open-door-guard.yml": "e7321d35",
 }
 
