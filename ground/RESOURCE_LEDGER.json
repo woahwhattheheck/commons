@@ -78,20 +78,21 @@
     "inventory/resources/records/codex-titan-runtime-profiler-activation-20260908-01.json",
     "inventory/resources/records/codex-gpt-6-astra-carrier-activation-20260908-01.json",
     "inventory/resources/records/codex-hive-trade-quote-schedule-activation-20260908-01.json",
-    "inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json"
+    "inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json",
+    "inventory/resources/records/codex-human-outcomes-input-validator-activation-20260909-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788916399.876539",
+  "slack_ts": "1788926994.785209",
   "snapshot": {
-    "base_main_sha": "eee49ab957e03f50f20af0ec22bbc625363b29f6",
-    "observed_at": "2026-09-09T01:14:16Z",
+    "base_main_sha": "641db1651acb9caaf8fc23ec5f825b197c3b6991",
+    "observed_at": "2026-09-09T04:11:07Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-hive-intake-crm-workflow-activation-20260909-01",
+  "source_id": "codex-human-outcomes-input-validator-activation-20260909-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -100,8 +101,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — source-bound intake-to-CRM workflow producing for residential-cleaning operators",
+  "subject": "MASTER RESOURCE LEDGER — fail-closed human-outcomes input validation producing for Commons commercial operators",
   "supersedes_source_ids": [
+    "codex-human-outcomes-input-validator-activation-20260909-01",
     "codex-hive-intake-crm-workflow-activation-20260909-01",
     "codex-hive-trade-quote-schedule-activation-20260908-01",
     "codex-gpt-6-astra-carrier-activation-20260908-01",
@@ -1014,6 +1016,28 @@
       "last_used_at": "2026-09-08T11:02:51Z",
       "stale_after": "next source, customer-schema, packaging, provider-contract, deployment, customer, delivery, payment or browser-validation receipt",
       "priority": 96
+    },
+    {
+      "name": "human-outcomes-input-validator",
+      "kind": "FAIL_CLOSED_COMMERCIAL_INPUT_VALIDATOR",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / outcome-commerce and sales operators",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; READ_ONLY_INPUT_MEASUREMENT; FAIL_CLOSED_ON_JSON_ROOT_OR_COLLECTION_SHAPE_ERROR; NO_CUSTOMER_PROVIDER_CHECKOUT_PAYMENT_OR_OUTREACH_WRITE",
+      "consumer": "Commons commercial operators measuring the existing human-outcomes offer pack and its public-safe gate without treating malformed JSON containers as offers, replacement lists, fulfillment modules or gate states",
+      "value": "One dependency-free parser now returns stable diagnostics for malformed roots and collections, preserves empty/null defaults and valid offer measurements, and keeps bad local pack inputs at NOT_LANDED without traceback or file mutation.",
+      "next_action": "Use the exact current-main parser when a complete human-outcomes pack or compatible commercial input arrives; preserve the fail-closed diagnostics and keep real buyer, demand, checkout, payment and cash states receipt-bound.",
+      "source": "Recovered source commit 7308ab907339a18b7d5c87fed8fd63d1fcedd859; PR #10961 merge 0d19fffe9ceb121519e9880b901f81f857cd046e; #commons delivery 1788925921.409939",
+      "evidence_ts": "2026-09-09T04:11:07Z",
+      "auth_surface": "Public current-main Python source plus synthetic fixtures and read-only local-tree measurement; no credential, customer-private data, provider session or deployment is required",
+      "exact_safe_probe": "Current source blob 2dbb743400f5035fb999c06da4d5f0c7fb5c26e7 (SHA-256 afad46cea36b0e1d9fd50e7a993dfb7eceb2f04a2f11c661c6e8bf932e2ef9aa) and test blob bef953d9caea4210d92a23a46fdbd30ab2322c04 (SHA-256 4e789050130f576bb72962ea7612ea288f15ea60316834914c617579381480a9) passed 19 focused tests. A read-only current-root run returned NOT_LANDED / FINDER-FAILED with eight named absent product paths, no traceback and no cash inference.",
+      "rate_plan_boundary": "Parser correctness and a fail-closed local diagnosis do not prove a complete offer pack, demand, buyer, founder contact, checkout, acceptance, provider event, payment, settlement, payout, revenue or cash.",
+      "assigned_backlog": "First complete source-bound human-outcomes pack measurement or compatible outcome-commerce ingestion; do not remint the landed parser repair or mutate its recovered source during resource activation",
+      "last_receipt": "codex-human-outcomes-input-validator-activation-20260909-01",
+      "last_used_at": "2026-09-09T04:11:07Z",
+      "stale_after": "next parser, pack schema, input-path, offer, gate, buyer, provider, payment or current-root measurement change",
+      "priority": 94
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",

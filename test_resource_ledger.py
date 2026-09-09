@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788916399.876539")
+        self.assertEqual(catalog["slack_ts"], "1788926994.785209")
         self.assertEqual(
             catalog["source_id"],
-            "codex-hive-intake-crm-workflow-activation-20260909-01",
+            "codex-human-outcomes-input-validator-activation-20260909-01",
+        )
+        self.assertIn(
+            "codex-human-outcomes-input-validator-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-hive-intake-crm-workflow-activation-20260909-01",
@@ -291,17 +295,17 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-hive-intake-crm-workflow-activation-20260909-01.json",
+            "codex-human-outcomes-input-validator-activation-20260909-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "hive-intake-crm-workflow"
+            current_activation["selected_resource"], "human-outcomes-input-validator"
         )
-        self.assertEqual(current_activation["projection"]["resources"], 84)
-        self.assertEqual(current_activation["projection"]["producing"], 56)
+        self.assertEqual(current_activation["projection"]["resources"], 85)
+        self.assertEqual(current_activation["projection"]["producing"], 57)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -695,6 +699,27 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("NO_CUSTOMER_PROVIDER_CREDENTIAL", intake_crm["authority"])
         self.assertIn("376e4858700d09541e11308bbcb0194427f931fc", intake_crm["exact_safe_probe"])
         self.assertIn("da339d714fd610689dafaca5a2e47c57d772edce", intake_crm["exact_safe_probe"])
+        human_validator = next(
+            row for row in catalog["surfaces"]
+            if row["name"] == "human-outcomes-input-validator"
+        )
+        self.assertEqual(human_validator["capacity"], "LIVE")
+        self.assertEqual(human_validator["stage"], "PRODUCING")
+        self.assertEqual(human_validator["condition"], "CONSTRAINED")
+        self.assertEqual(
+            human_validator["last_receipt"],
+            "codex-human-outcomes-input-validator-activation-20260909-01",
+        )
+        self.assertIn("READ_ONLY_INPUT_MEASUREMENT", human_validator["authority"])
+        self.assertIn("NO_CUSTOMER_PROVIDER_CHECKOUT", human_validator["authority"])
+        self.assertIn(
+            "2dbb743400f5035fb999c06da4d5f0c7fb5c26e7",
+            human_validator["exact_safe_probe"],
+        )
+        self.assertIn(
+            "bef953d9caea4210d92a23a46fdbd30ab2322c04",
+            human_validator["exact_safe_probe"],
+        )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
