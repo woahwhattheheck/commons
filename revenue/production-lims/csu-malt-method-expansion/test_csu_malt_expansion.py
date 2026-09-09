@@ -14,7 +14,7 @@ class T(unittest.TestCase):
    if r["seeded_fault"]: d[r["seeded_fault"]]=d.get(r["seeded_fault"],0)+1
   s.assertEqual(d,{M.DUP:4,M.UNSUP:4,M.MISS:4})
  def test_exact(s):
-  L,x=s.first(); s.assertEqual(x,{M.CURRENT:60,M.NEXT:8,M.DUP:4,M.UNSUP:4,M.MISS:4}); s.assertEqual(L.counts(),{"processed":80,"accessions":68,"jobs":130,"reports":66,"holds":12,"events":80})
+  L,x=s.first(); s.assertEqual(x,{M.CURRENT:60,M.NEXT:8,M.DUP:4,M.UNSUP:4,M.MISS:4}); s.assertEqual(L.counts(),{"processed":80,"accessions":68,"jobs":130,"reports":66,"holds":12,"events":80}); s.assertEqual(set(L.submission_hashes),L.seen)
  def test_routing(s):
   L,_=s.first(); third=[j for j in L.jobs.values() if j["route"]=="THIRD_PARTY"]; s.assertEqual(len(third),6); s.assertTrue(all(j["method_id"]=="ASBC-PROTEIN" for j in third)); s.assertTrue(all(j["route"]=="INTERNAL" for j in L.jobs.values() if j["method_id"]!="ASBC-PROTEIN"))
  def test_qc(s):
@@ -24,7 +24,21 @@ class T(unittest.TestCase):
   for a in L.accessions.values(): s.assertEqual(sorted(j["method_id"] for j in L.jobs.values() if j["sample_id"]==a["sample_id"]),sorted(x["method_id"] for x in s.m["package_methods"][a["package"]]))
  def test_unique_jobs(s): L,_=s.first(); s.assertEqual(len(L.jobs),len(set(L.jobs)))
  def test_replay(s):
-  L,_=s.first(); before=L.counts().copy(); _,x,d=M.run(copy.deepcopy(s.rows),s.m,L); s.assertEqual(d,{k:0 for k in before}); s.assertEqual(x,{"IDEMPOTENT_REPLAY":80}); s.assertEqual(L.counts(),before)
+  L,_=s.first(); before=copy.deepcopy(L); _,x,d=M.run(copy.deepcopy(s.rows),s.m,L); s.assertEqual(d,{k:0 for k in before.counts()}); s.assertEqual(x,{"IDEMPOTENT_REPLAY":80}); s.assertEqual(L,before)
+ def test_unknown_phase_fails_before_mutation(s):
+  L=M.Ledger(); bad=copy.deepcopy(s.rows[0]); bad["submission_id"]="SUB-BAD-PHASE"; bad["sample_id"]="MALT-BAD-PHASE"; bad["received_phase"]="UNKNOWN_PHASE"; before=copy.deepcopy(L)
+  with s.assertRaisesRegex(ValueError,"RECEIVED_PHASE_INVALID"): M.process(bad,L,s.m)
+  s.assertEqual(L,before)
+ def test_changed_submission_replay_fails_before_mutation(s):
+  L=M.Ledger(); original=copy.deepcopy(s.rows[0]); s.assertEqual(M.process(original,L,s.m),M.CURRENT); before=copy.deepcopy(L); changed=copy.deepcopy(original); changed["qc_batch"]="QC-CHANGED"
+  with s.assertRaisesRegex(ValueError,"REPLAY_PAYLOAD_MISMATCH"): M.process(changed,L,s.m)
+  s.assertEqual(L,before)
+ def test_held_submission_replay_identity(s):
+  L=M.Ledger(); held=copy.deepcopy(s.rows[72]); s.assertEqual(M.process(held,L,s.m),M.UNSUP); before=copy.deepcopy(L); s.assertEqual(M.process(copy.deepcopy(held),L,s.m),"IDEMPOTENT_REPLAY"); s.assertEqual(L,before); changed=copy.deepcopy(held); changed["grain"]="BARLEY"
+  with s.assertRaisesRegex(ValueError,"REPLAY_PAYLOAD_MISMATCH"): M.process(changed,L,s.m)
+  s.assertEqual(L,before)
+ def test_new_submission_same_sample_is_duplicate_not_replay(s):
+  L=M.Ledger(); original=copy.deepcopy(s.rows[0]); s.assertEqual(M.process(original,L,s.m),M.CURRENT); duplicate=copy.deepcopy(original); duplicate["submission_id"]="SUB-NEW-SAME-SAMPLE"; s.assertEqual(M.process(duplicate,L,s.m),M.DUP); s.assertIn("SUB-NEW-SAME-SAMPLE",L.holds); s.assertEqual(L.holds["SUB-NEW-SAME-SAMPLE"]["hold_code"],M.DUP)
  def test_release(s):
   L,_=s.first(); sample=next(iter(L.reports)); old=copy.deepcopy(L.reports[sample]);
   with s.assertRaisesRegex(ValueError,"NAMED_HUMAN"): M.release(L,sample,"")

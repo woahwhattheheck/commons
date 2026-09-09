@@ -8,15 +8,16 @@ import argparse, copy, hashlib, json
 TASK_ID="csu-malt-method-expansion-lims-01"; CURRENT="CURRENT_WEEK"; NEXT="NEXT_WEEK"
 DUP="DUPLICATE_ID"; UNSUP="UNSUPPORTED_GRAIN_METHOD"; MISS="MISSING_IDENTITY_PACKAGE"
 STAGED="STAGED_HUMAN_REVIEW"; RELEASED="RELEASED_BY_NAMED_HUMAN"
+VALID_PHASES={"BEFORE_CUTOFF","AFTER_CUTOFF"}
 
 def digest(v): return hashlib.sha256((json.dumps(v,sort_keys=True,separators=(",",":"))+"\n").encode()).hexdigest()
 def file_sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 @dataclass
 class Ledger:
-    seen:set[str]=field(default_factory=set); accessions:dict=field(default_factory=dict)
-    jobs:dict=field(default_factory=dict); reports:dict=field(default_factory=dict)
-    holds:dict=field(default_factory=dict); events:list=field(default_factory=list)
+    seen:set[str]=field(default_factory=set); submission_hashes:dict[str,str]=field(default_factory=dict)
+    accessions:dict=field(default_factory=dict); jobs:dict=field(default_factory=dict)
+    reports:dict=field(default_factory=dict); holds:dict=field(default_factory=dict); events:list=field(default_factory=list)
     def counts(self): return {"processed":len(self.seen),"accessions":len(self.accessions),"jobs":len(self.jobs),"reports":len(self.reports),"holds":len(self.holds),"events":len(self.events)}
 
 def load(fixture,manifest):
@@ -39,15 +40,22 @@ def row(i,phase,package,sample="AUTO",grain="BARLEY",fault=None,qc="QC-01",ok=Tr
     return {"submission_id":f"SUB-{i:03d}","sample_id":sample,"grain":grain,"package":package,"received_phase":phase,"qc_batch":qc,"qc_ok":ok,"seeded_fault":fault,"source_ref":f"synthetic://csu/malt/{i:03d}.json"}
 
 def classify(r,L,m):
+    phase=r.get("received_phase")
+    if phase not in VALID_PHASES: raise ValueError("RECEIVED_PHASE_INVALID")
     if not r["sample_id"] or not r["package"]: return MISS
     if r["sample_id"] in L.accessions: return DUP
     if r["grain"] not in m["supported_grains_by_package"].get(r["package"],[]): return UNSUP
-    return CURRENT if r["received_phase"]=="BEFORE_CUTOFF" else NEXT
+    return CURRENT if phase=="BEFORE_CUTOFF" else NEXT
 
 def process(r,L,m):
-    sid=r["submission_id"]
-    if sid in L.seen: return "IDEMPOTENT_REPLAY"
-    L.seen.add(sid); status=classify(r,L,m)
+    sid=r["submission_id"]; payload_hash=digest(r)
+    if sid in L.seen:
+        original_hash=L.submission_hashes.get(sid)
+        if original_hash is None: raise ValueError("REPLAY_IDENTITY_MISSING")
+        if payload_hash!=original_hash: raise ValueError("REPLAY_PAYLOAD_MISMATCH")
+        return "IDEMPOTENT_REPLAY"
+    status=classify(r,L,m)
+    L.seen.add(sid); L.submission_hashes[sid]=payload_hash
     if status in (DUP,UNSUP,MISS):
         L.holds[sid]={"sample_id":r["sample_id"],"hold_code":status}; L.events.append((sid,"HOLD",status)); return status
     sample=r["sample_id"]; L.accessions[sample]={"submission_id":sid,"sample_id":sample,"package":r["package"],"week_route":status,"source_hash":digest([r["source_ref"],sample])}
@@ -78,6 +86,7 @@ def verify(rows,m,L,statuses):
     expected={CURRENT:60,NEXT:8,DUP:4,UNSUP:4,MISS:4}
     if statuses!=expected: raise AssertionError((statuses,expected))
     if L.counts()!={"processed":80,"accessions":68,"jobs":130,"reports":66,"holds":12,"events":80}: raise AssertionError(L.counts())
+    if len(L.submission_hashes)!=80 or set(L.submission_hashes)!=L.seen: raise AssertionError("SUBMISSION_IDENTITY_LEDGER")
     third=[j for j in L.jobs.values() if j["route"]=="THIRD_PARTY"]
     if len(third)!=6 or any(j["method_id"]!="ASBC-PROTEIN" for j in third): raise AssertionError("THIRD_PARTY_PROTEIN")
     blocked={r["sample_id"] for r in rows if r["qc_batch"]=="QC-BREACH-01"}
