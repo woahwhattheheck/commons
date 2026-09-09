@@ -32,11 +32,19 @@ reset plus 100 times the withheld-input price scenario; any capital or variable
 price purchase in that window declines the edit. An unresolved same-day branch
 also declines it. The original unit and market schedules remain intact.
 
-Twenty-four focused source checks cover stock allocation, funding, shared
-capacity, the runtime boundary and the canonical entrypoint's enabled setting.
+The fertilizer bonus also requires WATER on its actual production day. A
+bounded position and cash calculation follows the existing service route
+through that refresh, resets workers at day close, and charges each required
+hire using actual spawn occupancy and hiring order. Sales give no cash credit;
+a variable-price purchase reduces the cash lower bound to zero for any later
+hire. Paid workers can continue free movement and watering. Dry production
+days, dying/replaced crops and unresolved branches decline the reservation.
+
+Twenty-nine focused source checks cover stock allocation, funding, shared
+capacity, production-day water, the runtime boundary and the canonical entrypoint's enabled setting.
 Recorded-input review exercises the actual sale-conflict mechanism without
 advancing a game. The price screen's 100-unit rival-supply scenario and cash
-cushion are policy assumptions, not guarantees of future watering, output,
+cushion are policy assumptions, not guarantees of future execution, output,
 operating cash or receipts. The behavior is active in the single TITAN; its
 playing-strength effect has not been measured, and no new game panel was run.
 

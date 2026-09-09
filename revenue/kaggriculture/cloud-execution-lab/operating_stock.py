@@ -42,6 +42,81 @@ def _next_bonus_day(tile, day, crops, last_refresh):
     return due
 
 
+def _bonus_water_service(mechanics, observation, configuration, selected,
+                         post_farm, route, obligations, checkpoints):
+    """Check free movement/watering and paid worker availability through refresh.
+
+    This is a position and cash lower-bound calculation, not game execution.
+    Sales give no cash credit. A variable-price purchase reduces the cash lower
+    bound to zero; it can never finance a later hire. Already hired workers can
+    still move and water for free. Resets discard workers and recompute spawns.
+    """
+    now = int(observation['step']); cfg = configuration or {}
+    finish = (max(o['bonus_day'] for o in obligations) + 1) * 24 - 1
+    if finish >= len(route) or any(now < int(t) <= finish for t in checkpoints):
+        return None, 'bonus_day_crosses_unresolved_route_boundary'
+    positions = [tuple(post_farm['farmer']), *map(tuple, post_farm['hands'])]
+    sites = {tuple(o['position']): o for o in obligations}
+    watered = {p: bool(post_farm['tiles'][p[1]][p[0]].get('watered_today')) for p in sites}
+    dry = {p: int(post_farm['tiles'][p[1]][p[0]].get('consecutive_unwatered', 0)) for p in sites}
+    own_services = {(o['step'], tuple(o['position'])) for o in obligations}
+    cash = max(0.0, float(post_farm['money']))
+    hires = int(post_farm.get('hires_today', len(post_farm['hands'])))
+    hire_cost = 0; fixed_spending = 0; water_receipts = []
+    for step in range(now, finish + 1):
+        row = selected if step == now else route[step]
+        if step > now:
+            for actor, pos in enumerate(positions):
+                action = _action(row, actor); op = action[0]
+                if pos in sites and step // 24 <= sites[pos]['bonus_day']:
+                    if op in ('DIG', 'PLANT'):
+                        return None, 'bonus_target_changes_before_refresh'
+                    if op == 'FERTILIZE' and (step, pos) not in own_services:
+                        return None, 'bonus_target_has_later_fertilizer'
+                    if op == 'WATER':
+                        watered[pos] = True
+                        water_receipts.append({'step': step, 'actor': actor, 'position': pos})
+                if op in MOVES:
+                    dx, dy = MOVES[op]; q = (pos[0] + dx, pos[1] + dy)
+                    if 0 <= q[0] < 10 and 0 <= q[1] < 10:
+                        positions[actor] = q
+        for order in (row.get('market') or [])[:int(cfg.get('maxMarketOrdersPerTurn', 10))]:
+            if not order:
+                continue
+            op = order[0]
+            if op == 'HIRE':
+                cost = mechanics._hire_cost(hires, float(cfg.get('farmHandCostMult', 1)))
+                if cash < cost:
+                    return None, 'bonus_day_hire_not_funded'
+                cash -= cost; hires += 1; hire_cost += cost
+                shape = {'farmer': positions[0], 'hands': positions[1:]}
+                positions.append(tuple(mechanics._spawn_hand(shape, 10)))
+            elif op == 'BUY_PRODUCT':
+                cash = 0.0
+            elif op == 'BUY_LAND':
+                return None, 'bonus_day_has_capital_expansion'
+            elif op in ('BUY_SEED', 'BUY_ANIMAL') and len(order) > 2:
+                table = mechanics.CROPS if op == 'BUY_SEED' else mechanics.ANIMALS
+                price = table[order[1]]['seed' if op == 'BUY_SEED' else 'cost']
+                cost = max(0, int(order[2])) * price
+                cash = max(0.0, cash - cost); fixed_spending += cost
+        if step % 24 == 23:
+            day = step // 24
+            for pos, obligation in sites.items():
+                if day > obligation['bonus_day']:
+                    continue
+                dry[pos] = 0 if watered[pos] else dry[pos] + 1
+                if dry[pos] >= 2:
+                    return None, 'bonus_target_dies_before_refresh'
+                if day == obligation['bonus_day'] and not watered[pos]:
+                    return None, 'missing_bonus_day_water'
+                watered[pos] = False
+            positions = [tuple(mechanics._default_spawn(10))]; hires = 0
+    return {'through_step': finish, 'water_actions': water_receipts,
+            'funded_hire_cost': hire_cost, 'fixed_spending_without_sale_credit': fixed_spending,
+            'variable_purchase_cash_credit': 0}, None
+
+
 def protect_operating_stock(mechanics, observation, configuration, selected,
                             post_farm, post_private, route, checkpoints=()):
     """Return a same-slot fertilizer-sale proposal and its explicit limits.
@@ -215,6 +290,11 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     if float(post_farm['money']) < spending + 100 * input_value:
         report['reason'] = 'actual_cash_cushion_insufficient'
         return selected, report
+    water_service, reason = _bonus_water_service(
+        mechanics, observation, cfg, selected, post_farm, route, obligations, checkpoints)
+    if reason:
+        report['reason'] = reason
+        return selected, report
     out = deepcopy(selected)
     remaining = limit
     for index, order in enumerate(out['market']):
@@ -228,5 +308,6 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
                   input_value_scenario=input_value, product_value_scenario=product_value,
                   rival_supply_scenario_units=100, cash_spending_reserve=spending,
                   funding_through_step=day_end - 1, cash_input_cushion_multiple=100,
+                  bonus_day_water_service=water_service,
                   future_cash_gain_measured=False)
     return out, report
