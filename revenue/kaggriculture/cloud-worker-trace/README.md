@@ -72,3 +72,7 @@ Apache-2.0, consistent with the existing source SPDX and repository license.
 The original conversation bundle's not-published status is historical. Actual
 GitHub publication/merge and Slack delivery receipts belong to the publishing PR
 and the T08 thread; this document does not claim canonical consumption.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

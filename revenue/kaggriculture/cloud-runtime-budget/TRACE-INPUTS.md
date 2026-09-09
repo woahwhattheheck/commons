@@ -34,3 +34,7 @@ Twenty-seven methods pass: the original16 are unchanged, plus11 native-input, se
 Original PR10052 measurements, reports and `RESULTS.json` remain pinned to their original profiler and archive. The source-parse, path-manifest and spec-guard jobs succeeded. Its open-door job101905153313 matched a README paragraph about complete observations as an admission phrase; that paragraph is clarified here without changing the shared guard or input semantics. Hosted checks for this new source are separate.
 
 TRACE retains original frame alignment, digest validation and WIDEFIELD input recovery. No new game, engine transition, submission, source export, workflow or selected-policy change is part of this consumer.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

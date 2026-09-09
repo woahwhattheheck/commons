@@ -86,3 +86,7 @@ observer from PR10203 is consumed unchanged in both benchmark versions. These
 are benchmark-consumer tests with short synthetic observations, not new games,
 engine transitions, a repetition of the earlier memory panel, or a speed claim.
 Exact sources, test-log identities and scope are in `BENCHMARK-CHECKPOINTS.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

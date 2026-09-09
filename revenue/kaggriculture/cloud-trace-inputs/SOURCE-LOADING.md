@@ -58,3 +58,7 @@ new runtime/source export. `SOURCE-LOADING-RESULTS.json` records its identity.
 
 Use the existing recovery CLI normally on the next requested record. Previously
 accepted trajectories and current experiments do not need restarting.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

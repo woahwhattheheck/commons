@@ -27,3 +27,7 @@ Twenty new methods pass with no skips or errors: 1,218 explicit feasibility comp
 Nine alternating timing samples per implementation, eight fresh-seller transforms each, include seller initialization and ledger construction but exclude module import. On this cloud Python3.13.5 runtime, median complete-transform times in milliseconds were: empty0.1263 to0.1308; small0.4303 to0.4012; medium12.3992 to10.2610; large43.7504 to35.9137; operating-buys49.7022 to41.4820; terminal1.7827 to1.7825. Thus the three larger workloads use16.5–17.9% less time, while the empty-lot case adds approximately4.5 microseconds. Raw samples, platform, counts and source hashes are in `LEDGER-SCHEDULE-VALIDATION.json`.
 
 These are constructed bounded-call workloads and exact source-parity tests, not a full-game distribution, whole-agent latency result, deadline guarantee or leaderboard improvement. The source uses the already-landed SPRUCE core `d2cded3d` in both timing arms; those savings are not counted twice. ATLAS ordering, WREN terminal/empty-lot checks, the original optimizer decisions, frozen standalone scheduler and exported experiment archives remain unchanged. Existing hosted compatibility suites and this new suite have distinct execution receipts; only actually executed suites should be counted.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

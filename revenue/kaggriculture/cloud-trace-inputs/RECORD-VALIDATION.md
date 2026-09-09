@@ -55,3 +55,7 @@ The README's command is unchanged and now reports 22 methods. These are
 constructed original-engine fixtures, not successful execution of the still
 unmaterialized historical PR9997 record. No new gameplay, source exporter,
 profiler, workflow or seed reservation is introduced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

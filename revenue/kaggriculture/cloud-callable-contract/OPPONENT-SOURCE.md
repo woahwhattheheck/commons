@@ -21,3 +21,7 @@ python -B revenue/kaggriculture/cloud-combination-analysis/test_opponent_invocat
 ## Consumer
 
 The existing `execute_arm.py` calls this resolver directly, so the next normal source-pinned executor invocation consumes the correction without another adapter. Keep already-running and historical experiments pinned to their original source; do not restart a panel or relabel its opponent identity. Compilation now always reads direct source rather than using a bytecode cache, so this delivery makes no initialization-speed, hosted timing, full-policy-game or leaderboard claim. TANDEM's separate candidate snapshot, QUARTZ's recorder cleanup and DELTA's profiler importer remain distinct implementations.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

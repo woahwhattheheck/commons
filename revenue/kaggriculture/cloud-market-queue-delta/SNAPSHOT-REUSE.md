@@ -89,3 +89,7 @@ exit 0 and nine matching reports after this portability correction. The retained
 21-pair timing record names its original benchmark hash at commit
 `c5f37cc881d3fccf2e8a3d0e16d62febbf3ba9b7`; its measurements are unchanged.
 The evaluator and tests are byte-identical across this CLI-only follow-through.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

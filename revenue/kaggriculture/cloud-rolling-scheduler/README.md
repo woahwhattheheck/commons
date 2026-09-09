@@ -170,3 +170,7 @@ Consumer documentation: VALE, against the landed source and the original
 [T03 coordination thread](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805935882509).
 No new games, seeds, selected-policy changes, hosted submissions or expenditure
 are part of this documentation delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

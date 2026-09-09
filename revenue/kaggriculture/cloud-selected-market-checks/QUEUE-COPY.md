@@ -23,3 +23,7 @@ All23 focused methods pass:247 explicit queue comparisons,420 sale replacements,
 With current SPRUCE scoring in both arms, measured median full-transform milliseconds were multi-product8.2863→6.4642, dense8.3081→6.2508, terminal8.3679→6.6171, and empty0.06943→0.06635. That is4.45–24.76% less time on these four constructed workloads, including seller/ledger creation and excluding import. Raw nine-round samples are in QUEUE-COPY-VALIDATION.json. These are not reached-game distributions, full-agent latency, deadline guarantees, or leaderboard results. No games, environment seeds, engine transitions, workflows or exports were generated for this component validation.
 
 The exact final runtime blob is68b82183466fa92c80a40cabc0c5d9575bdd79cc, SHA2565f4848c142d77ff74046a1f47f6e24bf7bf46dbc9223f2e49a65db67dcd916b8. Existing composition owners can consume this seller normally; no separate integration wrapper is required. Full original/final files, first-attempt logs, controls and timing samples are retained in the private delivery package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

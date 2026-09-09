@@ -61,3 +61,7 @@ The consumer preserves all four existing outcomes and all 1,972 recorded market 
 DATE's original selector and completed-replay validation remain the input and default. PRISM supplies only objective options in its existing ranker and argument forwarding in the physical reader. Original dependencies were materialized byte-for-byte from the saved PR10098 package: `dated_scenarios.py` blob `5e418aeca191e71d281f669a9fdd9f4b0730617f`, `physical_outcomes.py` blob `a9a0a1fc0662182b14528ad5667ef64e65b0ad08`. The final physical reader composes DATE/REPEAT's default-horizon correction, original blob `56e34211f35c3633bb4d5deb1836c9e41eda50ff`; three omitted-default objective joins match the explicit-horizon reports.
 
 RILL's original natural-input conditional execution is PR10220; its saved archive SHA256 is `6f0b1db42c16ded162c748911167e97e9cbdcc16317d5b4f843e0b7d18e9b16e`. Its 191 manifested payloads were verified, not re-executed. Runtime source, executed tests and results are recorded in `OBJECTIVE-VALIDATION.json`; full local evidence is retained privately. No game, actor, engine or simulation execution occurs in this addition. The default selected TITAN policy and all prior experimental freezes remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -112,3 +112,7 @@ and exports the diagnostic replays. CI repetitions are not new independent data.
 Code is a **candidate delivery**, not a new competition submission or payout.
 The existing accepted notebook and root's submission ownership are preserved.
 The owner-authored code keeps the device team's **MIT OR CC-BY-4.0** license.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

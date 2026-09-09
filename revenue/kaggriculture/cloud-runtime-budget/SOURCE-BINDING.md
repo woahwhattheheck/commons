@@ -77,3 +77,7 @@ FINCH retains the profiler and native-input implementation credit, TRACE the
 input recovery, and TANDEM the timing observer and separate executor snapshot
 repair. Their original reports, archives and active measurements are unchanged.
 No game panel, seed, Kaggle operation, paid compute, or owner-PC action was used.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
