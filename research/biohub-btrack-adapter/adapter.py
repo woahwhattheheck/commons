@@ -20,6 +20,7 @@ from typing import Any, Callable, Iterable, Mapping, Protocol, Sequence
 
 PINNED_BTRACK_VERSION = "0.7.0"
 PINNED_BTRACK_COMMIT = "a3bd947915efe6837936f9db6db88417f0b51b45"
+RESERVED_ADAPTER_PROPERTIES = frozenset({"commons_detection_id"})
 INPUT_COLUMNS = ("dataset", "detection_id", "t", "z", "y", "x")
 SUBMISSION_COLUMNS = (
     "id",
@@ -117,6 +118,7 @@ class TrackLike(Protocol):
 
 
 class TrackerLike(Protocol):
+    configuration: Any
     volume: tuple[tuple[float, float], ...]
     max_search_radius: float
     tracks: Sequence[TrackLike]
@@ -443,6 +445,16 @@ def solve_dataset(
     # shape from injected fakes also prevents accidental engine reuse across datasets.
     with tracker_obj as tracker:
         tracker.configure(configuration)
+        resolved_configuration = getattr(tracker, "configuration", None)
+        features = getattr(resolved_configuration, "features", None)
+        if isinstance(features, (str, bytes)) or not isinstance(features, Sequence):
+            raise AdapterError("resolved BTrack configuration.features must be an inspectable sequence")
+        reserved_features = sorted(RESERVED_ADAPTER_PROPERTIES.intersection(features))
+        if reserved_features:
+            raise AdapterError(
+                "reserved adapter-only BTrack feature(s) are not allowed: "
+                + ", ".join(reserved_features)
+            )
         tracker.max_search_radius = float(max_search_radius)
         tracker.volume = bounds.physical_btrack(scale)
         tracker.append(payload)

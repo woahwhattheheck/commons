@@ -39,6 +39,11 @@ class FakeTrack:
         return {"commons_detection_id": self.detection_tags}
 
 
+@dataclass
+class FakeConfig:
+    features: list[str]
+
+
 class FakeTracker:
     def __init__(self, builder: Callable[[dict[str, list[Any]]], list[FakeTrack]], registry: list["FakeTracker"]):
         self.builder = builder
@@ -61,7 +66,7 @@ class FakeTracker:
         return False
 
     def configure(self, configuration):
-        self.configuration = configuration
+        self.configuration = configuration if hasattr(configuration, "features") else FakeConfig([])
 
     def append(self, objects):
         self.appended = {key: list(value) for key, value in objects.items()}
@@ -152,6 +157,20 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(tracker.max_search_radius, 8.5)
         self.assertEqual(tracker.volume, self.bounds.physical_btrack(self.scale))
         self.assertEqual([r["row_type"] for r in rows].count("edge"), 2)
+
+    def test_reserved_provenance_feature_rejects_before_append(self):
+        registry = []
+        with self.assertRaisesRegex(AdapterError, "commons_detection_id"):
+            solve_dataset(
+                self.detections(),
+                scale=self.scale,
+                bounds=self.bounds,
+                configuration=FakeConfig(["commons_detection_id"]),
+                max_search_radius=8.5,
+                tracker_factory=factory_for(lambda payload: [track_from_refs(payload)], registry),
+            )
+        self.assertEqual(len(registry), 1)
+        self.assertIsNone(registry[0].appended)
 
     def test_optimise_requires_physical_unit_attestation(self):
         with self.assertRaisesRegex(AdapterError, "optimizer_distance_units='physical'"):
