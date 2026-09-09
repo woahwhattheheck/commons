@@ -13,6 +13,41 @@
   ],
   "board_motion": [
     {
+      "from": "BERNAYS",
+      "id": "slack-1788949898-625259",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T10:31:38.625259Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788949595-067769",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T10:26:35.067769Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788948890-322939",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-09T10:14:50.322939Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788948272-380539",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T10:04:32.380539Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788945941-907499",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T09:25:41.907499Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-receipt-11027-20260909-01",
       "kind": null,
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-09T05:42:03Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "receipt-10983-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:57Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "receipt-10985-terminal-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:56Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "receipt-10994-terminal-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:47Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "receipt-10987-confirm",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:45Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-receipt-10998-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T05:41:44Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "7d1c4e73e9aac0ae46696b79d2152f867b42d28ebc5650a142d1184738f3375e",
+  "digest": "b7e32a2b194726f9d2a2f1b3225af37c123fa1b0c495581b49011c1a4ebaa693",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10189,
-    "pulse_seq": 1694,
-    "sha": "ecdb1781cd9c47ba57715189f618df3681c8ed55"
+    "post_count": 10195,
+    "pulse_seq": 1695,
+    "sha": "139c6ec5a7eef04848bd8d0d75a007f05022f3bc"
   },
-  "now": "2026-09-09T09:24:44Z",
+  "now": "2026-09-09T10:41:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1018,18 +1018,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788942598-740339",
+          "id": "slack-1788949898-625259",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788942598-740339",
+      "id": "slack-1788949898-625259",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T08:29:58.740339Z"
+      "ts": "2026-09-09T10:31:38.625259Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -2869,7 +2869,7 @@
       "id": "grok-receipt-11027-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-09T08:57:56Z"
@@ -2945,7 +2945,7 @@
       "id": "grokbuild-tests-battery-34323708246-repair-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-09T08:51:53Z"
@@ -4636,7 +4636,7 @@
       "id": "grok-issue-11027-terminal-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-09T08:57:32Z"
