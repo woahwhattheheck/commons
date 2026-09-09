@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "captured_repository_main": "021a91b2bed219a84f882de87efaa8245be167f2",
-  "captured_at_utc": "2026-09-09T20:58:11Z",
-  "verdict": "BLOCKED_STALE_AND_UNREGISTERED_EVIDENCE",
+  "captured_at_utc": "2026-09-09T21:08:11Z",
+  "verdict": "BLOCKED_STALE_UNREGISTERED_AND_COUNT_MISMATCH",
   "canonical_archive": {
     "path": "exports/titan-current.tar.gz",
     "sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
@@ -18,6 +18,10 @@
     "source_manifest_sha256": "8f65a8b4c9c6c73a8080995731a954bdc963b72e29614961572f525eb10b8c17"
   },
   "blockers": [
+    {
+      "code": "ARCHIVE_MEMBER_COUNT_MISMATCH",
+      "meaning": "exact artifact inventory reports 110 regular files while CURRENT-ARCHIVE declares 109"
+    },
     {
       "code": "STALE_TEST_RECEIPT",
       "meaning": "CURRENT-TESTS does not apply to the canonical archive"
@@ -60,5 +64,13 @@
     "archive_built": false,
     "games_launched": 0,
     "kaggle_submission": false
+  },
+  "reported_archive_inventory": {
+    "source": "exact workflow artifact 10124652516 from run 34403631157",
+    "archive_sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
+    "regular_files": 110,
+    "receipt_runtime_files": 109,
+    "repair_owner": "PR #11721",
+    "lancet_role": "independent fail-closed verification only"
   }
 }
