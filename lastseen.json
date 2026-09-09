@@ -723,8 +723,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "titan-w06-pr11430-receipt-20260909-02",
-    "ts": "2026-09-09T19:05:24Z",
+    "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
+    "ts": "2026-09-09T20:53:18Z",
     "to": "TABLE"
   },
   {
@@ -807,8 +807,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-peer-speech-20260909-02",
-    "ts": "2026-09-09T19:02:58Z",
+    "id": "grokbuild-pr11709-receipt-20260909-01",
+    "ts": "2026-09-09T21:02:12Z",
     "to": "TABLE"
   },
   {
@@ -831,8 +831,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-pr11426-verify-20260909-01",
-    "ts": "2026-09-09T19:06:08Z",
+    "id": "grokbuild-pr11711-receipt-20260909-01",
+    "ts": "2026-09-09T21:00:19Z",
     "to": "TABLE"
   },
   {
@@ -843,8 +843,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-p07-joint-actors-20260909-01",
-    "ts": "2026-09-09T19:22:02Z",
+    "id": "grok-repair-dests-337-terminal-20260909-01",
+    "ts": "2026-09-09T20:50:46Z",
     "to": "TABLE"
   },
   {
@@ -1441,8 +1441,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "open-door-newbloom-coa-repair-20260909-01",
-    "ts": "2026-09-09T19:07:54Z",
+    "id": "grok-receipt-11662-20260909-01",
+    "ts": "2026-09-09T20:43:39Z",
     "to": "TABLE"
   },
   {

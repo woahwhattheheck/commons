@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 13,
+ "n_open_prs": 52,
  "open_prs": [
-  {
-   "number": 11127,
-   "author": "woahwhattheheck",
-   "title": "TITAN S01: bounded anytime joint-action beam experiment",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11127",
-   "base_freshness": {
-    "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 11157,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11157",
    "base_freshness": {
     "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11228",
    "base_freshness": {
     "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11459",
    "base_freshness": {
     "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11120",
    "base_freshness": {
     "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11137",
    "base_freshness": {
     "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,39 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11248",
    "base_freshness": {
     "base_sha": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11629,
-   "author": "woahwhattheheck",
-   "title": "titan: restore byte-frozen v3 as runnable control",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11629",
-   "base_freshness": {
-    "base_sha": "5b96f00d030261f888ea437f033e83f9ed040653",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11642,
-   "author": "woahwhattheheck",
-   "title": "TITAN P11: fail closed on unknown nested fields",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11642",
-   "base_freshness": {
-    "base_sha": "5c202d3d471e77df2bcbf4add371fa2b8aaaf308",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11632",
    "base_freshness": {
     "base_sha": "784194262d1f448e5012c16503e8c2811e551c97",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -513,29 +465,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 11656,
+   "number": 11766,
    "author": "woahwhattheheck",
-   "title": "titan v3: port L01 LAND to current archive with 384-game holdout",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11656",
+   "title": "TITAN v3 review: self-cross cancellation is opponent-contingent",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11766",
    "base_freshness": {
-    "base_sha": "28e8d1ba8d9bd5b5a80a8c9327d8278fa0752820",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11263,
-   "author": "woahwhattheheck",
-   "title": "TITAN P06: stage frequency-weighted placement score",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11263",
-   "base_freshness": {
-    "base_sha": "2b34ad8a710cb88bfbb7d6cdf95ca6a408de58dd",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "base_sha": "87e02813b8c8fe4b19b8edccd181584da07f6499",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -545,18 +481,706 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 11667,
+   "number": 11768,
    "author": "woahwhattheheck",
-   "title": "TITAN L02 follow-up: make multi-product malformed state fail closed",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11667",
+   "title": "TITAN V3 follow-up: preserve fail-closed crop repair residue",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11768",
    "base_freshness": {
-    "base_sha": "b28312321226d317b24bd1326f1f568ec430d696",
-    "main_sha": "806c947178e93ac2eb679c648dfacdf3f6a8ca57",
+    "base_sha": "86fc51588e5958c13944786d8f6f45cc9cecb88a",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11772,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: reconcile FrozenSelected state to executable market prefix",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11772",
+   "base_freshness": {
+    "base_sha": "596076bdcd439d216052ae9207a4f59b4a61c2bd",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11629,
+   "author": "woahwhattheheck",
+   "title": "titan: restore byte-frozen v3 as runnable control",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11629",
+   "base_freshness": {
+    "base_sha": "5b96f00d030261f888ea437f033e83f9ed040653",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11771,
+   "author": "woahwhattheheck",
+   "title": "TITAN review: bind Capillary to the real route bank and route ownership",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11771",
+   "base_freshness": {
+    "base_sha": "fcb4bea645af0676283b5c44b969ee8690ea1ee7",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11779,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: eliminate KESTREL carrier global mutation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11779",
+   "base_freshness": {
+    "base_sha": "1ad4624e59ace81b0e707fa19997ef3788e9113d",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11789,
+   "author": "woahwhattheheck",
+   "title": "titan: bind frozen v3 control receipt to exact retained ledgers",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11789",
+   "base_freshness": {
+    "base_sha": "d7ce3103eed4947166d519f397bec79514208b08",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11778,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): fail closed on margin-only final-pressure attribution",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11778",
+   "base_freshness": {
+    "base_sha": "1ad4624e59ace81b0e707fa19997ef3788e9113d",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11774,
+   "author": "woahwhattheheck",
+   "title": "TITAN L02: bind durable arm rankings to one execution closure",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11774",
+   "base_freshness": {
+    "base_sha": "40c976adf1ded83abe78b8f3e8ecb80d9488ed1e",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11786,
+   "author": "woahwhattheheck",
+   "title": "TITAN V2: bind target-domain games to exact executable closures",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11786",
+   "base_freshness": {
+    "base_sha": "7983bfd81196b0ebf8d79e6b75d69ea7f8927b93",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11749,
+   "author": "woahwhattheheck",
+   "title": "TITAN: verify 109-runtime + SOURCE archive contract",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11749",
+   "base_freshness": {
+    "base_sha": "596076bdcd439d216052ae9207a4f59b4a61c2bd",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11642,
+   "author": "woahwhattheheck",
+   "title": "TITAN P11: fail closed on unknown nested fields",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11642",
+   "base_freshness": {
+    "base_sha": "5c202d3d471e77df2bcbf4add371fa2b8aaaf308",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11769,
+   "author": "woahwhattheheck",
+   "title": "feat(titan): add dependency-closed branch tournament",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11769",
+   "base_freshness": {
+    "base_sha": "be38b15acaf51e75b4abfe2c69ac17f29202847b",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11823,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): seal tournament execution closure between candidates",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11823",
+   "base_freshness": {
+    "base_sha": "c2b27ee66adb20b9e2eca400db39313681e71b2f",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11792,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: isolate KESTREL state across evaluator loads",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11792",
+   "base_freshness": {
+    "base_sha": "c7b7f6e7e7915fb31c50364f1e7b5997c80b7891",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11781,
+   "author": "woahwhattheheck",
+   "title": "titan: isolate V1 horizon-liquidity carry factor in current V3",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11781",
+   "base_freshness": {
+    "base_sha": "186e9e86bfdd55dab1306b9148d987084f127e2b",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11825,
+   "author": "woahwhattheheck",
+   "title": "titan: isolate V1/V2 seller interactions with closure-bound 2\u00d72 panel",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11825",
+   "base_freshness": {
+    "base_sha": "62bcc6b6e3326acf127f596db4e11104e8e85934",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11794,
+   "author": "woahwhattheheck",
+   "title": "Titan: bind V2 target-domain ablation execution custody",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11794",
+   "base_freshness": {
+    "base_sha": "97073c15d069914d65b13603182e1cd3c0f521b9",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11846,
+   "author": "woahwhattheheck",
+   "title": "TITAN: add cross-version action-cardinality replay corpus",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11846",
+   "base_freshness": {
+    "base_sha": "8348c0d3458da89b5ad772194eb7e4413efa9804",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11806,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: reconcile unaffordable HIRE and phantom worker cardinality",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11806",
+   "base_freshness": {
+    "base_sha": "61c459798a52a847a1b7d47476dc46bb0f866030",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11803,
+   "author": "woahwhattheheck",
+   "title": "TITAN: closure-bind the V2 target-domain causal screen",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11803",
+   "base_freshness": {
+    "base_sha": "299e164cceba75ba14700c5d5b1abf75de1f30b0",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11831,
+   "author": "woahwhattheheck",
+   "title": "titan: isolate V2 delayed-rival stress-scenario regression",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11831",
+   "base_freshness": {
+    "base_sha": "46ddd0ff883d9f17739413d6560073a61a100baf",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11827,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: preserve committed route across outer deadline reconstruction",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11827",
+   "base_freshness": {
+    "base_sha": "62bcc6b6e3326acf127f596db4e11104e8e85934",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11842,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3 L01: make candidate score the primary LAND admission metric",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11842",
+   "base_freshness": {
+    "base_sha": "0ccd56faa575593b0a280493d719edae35c5d348",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11862,
+   "author": "woahwhattheheck",
+   "title": "TITAN V2: admit real candidate-action evaluator receipts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11862",
+   "base_freshness": {
+    "base_sha": "e345d2d261207edbecf672ff0e647411b9be60c5",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11824,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: guard inherited route-sale reference echo",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11824",
+   "base_freshness": {
+    "base_sha": "62bcc6b6e3326acf127f596db4e11104e8e85934",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11835,
+   "author": "woahwhattheheck",
+   "title": "titan: attribute V2 SELL expansion by product",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11835",
+   "base_freshness": {
+    "base_sha": "91e4986ba7076bb8104100fe58c6722503dd1117",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11882,
+   "author": "woahwhattheheck",
+   "title": "Titan: unblock and harden forced-feasibility screen",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11882",
+   "base_freshness": {
+    "base_sha": "14ca164eda154e4d17d10480518d64b7908eb45b",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11847,
+   "author": "woahwhattheheck",
+   "title": "[SUBORDINATE / DRAFT] Capillary carrier and lifecycle evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11847",
+   "base_freshness": {
+    "base_sha": "8348c0d3458da89b5ad772194eb7e4413efa9804",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11832,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: restore saturated-queue same-product SELL expansion",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11832",
+   "base_freshness": {
+    "base_sha": "46ddd0ff883d9f17739413d6560073a61a100baf",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11865,
+   "author": "woahwhattheheck",
+   "title": "TITAN: add strict top-replay economic program differential",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11865",
+   "base_freshness": {
+    "base_sha": "bcf6e388b8b8d4fdca94f09d7f5493269ee14d22",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11892,
+   "author": "woahwhattheheck",
+   "title": "Titan v3: fail closed on impossible hired-hand action rows",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11892",
+   "base_freshness": {
+    "base_sha": "55d0edd0f002460203f2e2e3f119a3a88a5122d4",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11840,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: ignore engine-inactive suffix rows in receipt profile",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11840",
+   "base_freshness": {
+    "base_sha": "53e5e40596bce57bd97ad67e512fd3b5e3020576",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11871,
+   "author": "woahwhattheheck",
+   "title": "TITAN: preserve inherited market priority in Capillary JIT staging",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11871",
+   "base_freshness": {
+    "base_sha": "fcb4bea645af0676283b5c44b969ee8690ea1ee7",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11915,
+   "author": "woahwhattheheck",
+   "title": "titan: fail closed on noncanonical FULCRUM lifecycles",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11915",
+   "base_freshness": {
+    "base_sha": "4d8dd16684c0fd9fad6b52276389fa27f1a8b295",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11876,
+   "author": "woahwhattheheck",
+   "title": "titan-v3: align SELL optimizer with own-cash objective",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11876",
+   "base_freshness": {
+    "base_sha": "668fa9e905ac28e09a6e7355bf98060e296bce56",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11912,
+   "author": "woahwhattheheck",
+   "title": "TITAN OBJECTIVE: materialize exact canonical runtime closure",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11912",
+   "base_freshness": {
+    "base_sha": "17144b080205f25af1f0766d0ed61ea2253e71ad",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11909,
+   "author": "woahwhattheheck",
+   "title": "bd084: make MCP wake census finder-zero safe",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11909",
+   "base_freshness": {
+    "base_sha": "e12ef4b2bf01b518d804b138397e18139d718b95",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11908,
+   "author": "woahwhattheheck",
+   "title": "titan: isolate V2 future-rival conservatism",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11908",
+   "base_freshness": {
+    "base_sha": "e12ef4b2bf01b518d804b138397e18139d718b95",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11913,
+   "author": "woahwhattheheck",
+   "title": "TITAN v3: preserve terminal liquidation across deadline fallbacks",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11913",
+   "base_freshness": {
+    "base_sha": "8a3d57c4f2e754172d8bf9172aebe5aab68fecf6",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11907,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: reject opponent-seat own-cash regressions",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11907",
+   "base_freshness": {
+    "base_sha": "fb6f32c944ea55179ab509f6addd8db79aa26e90",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11927,
+   "author": "woahwhattheheck",
+   "title": "test(titan): prove terminal liquidation through real outer deadline",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11927",
+   "base_freshness": {
+    "base_sha": "321cc0d3016c0fe7c77503b1e2d665c56b2b72e5",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11799,
+   "author": "woahwhattheheck",
+   "title": "titan: isolate V2 forced-feasibility priority regression",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11799",
+   "base_freshness": {
+    "base_sha": "3aebf71f070cda0f0f971d25504232159cf94cc7",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11929,
+   "author": "woahwhattheheck",
+   "title": "TITAN: fix Capillary audit module literals",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11929",
+   "base_freshness": {
+    "base_sha": "14d3f58a11e14059cd237d9305a89d86a336f770",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11926,
+   "author": "woahwhattheheck",
+   "title": "TITAN: make Capillary carrier dependency-complete",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11926",
+   "base_freshness": {
+    "base_sha": "68318e3da2af99f570c9e4d91029ad22d7a995e2",
+    "main_sha": "0c718c6bf7d19cf031b0c29792d9759d2835a53e",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
