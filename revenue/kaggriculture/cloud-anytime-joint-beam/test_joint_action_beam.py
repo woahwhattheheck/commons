@@ -75,6 +75,24 @@ class BeamTests(unittest.TestCase):
         self.assertEqual(1, sum(a == ["TAKE", "W"] for a in result.actions))
         self.assertGreater(result.pruned_illegal, 0)
 
+    def test_noncanonical_prefix_prunes_canonical_text_resource_conflict(self):
+        canonical = (["PASS"], ["TAKE", "W"])
+        # Token-count greedy would keep (TAKE W, TAKE W) if the second TAKE were
+        # retained as a no-op after an alternative prefix consumed the stock.
+        def greedy(state, actions):
+            return 10 * sum(1 for a in actions if a and a[0] == "TAKE") + scorer(state, actions)
+        result = search_joint_actions(
+            self.base(), canonical,
+            lambda state, idx, base: (["TAKE", "W"], ["PASS"]),
+            transition, greedy,
+            config=BeamConfig(width=24, depth=4, budget_ns=1_000_000_000),
+            now_ns=FakeClock(range(1000)),
+        )
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(canonical, result.actions)
+        self.assertGreater(result.pruned_illegal, 0)
+        self.assertNotEqual((["TAKE", "W"], ["TAKE", "W"]), result.actions)
+
     def test_deterministic_tie_keeps_canonical(self):
         canonical = (["PASS"],)
         result = search_joint_actions(
