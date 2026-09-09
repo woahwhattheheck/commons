@@ -684,3 +684,14 @@ retrieval and authentication; inspect the actual operation result rather than
 claiming a completed response. Closing stdin ends this foreground connection;
 the CLI retains its normal visible session history. An authorized `grok -p`
 task uses the same native OIDC custody, not an API-key substitution.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

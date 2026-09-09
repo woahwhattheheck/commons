@@ -47,3 +47,14 @@ Exact delivery blobs:
 Publication follow-through rechecked the complete prepared 53-file manifest and confirmed the GitHub-created source blobs match the packaged tested bytes. These local results are separate from any subsequently recorded hosted workflow, merge or deployment receipt. The original reproduction/evidence ZIP is retained for the owner as `command-center-intake-fix-20260908.zip`; publication and hosted receipts belong to the linked PR and original Slack thread.
 
 Coordination: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788844431659059?thread_ts=1788754579.213779&cid=C0BRGMDQB6G
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
