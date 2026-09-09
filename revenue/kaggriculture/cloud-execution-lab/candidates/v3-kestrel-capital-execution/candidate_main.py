@@ -59,7 +59,17 @@ _CANDIDATE_RUNTIME = _load_exact(
     "_kestrel_candidate_runtime",
     _HERE / "candidate_runtime.py",
 )
-_CANONICAL = _load_exact("_kestrel_canonical_main", _ROOT / "main.py")
+
+# The pinned evaluator executes this entrypoint repeatedly as fresh top-level
+# module objects in one interpreter.  Canonical ``main.py`` owns mutable
+# ``_INSTANCE`` state and its factory hook, so a fixed child-module name would
+# alias otherwise independent agents.  The globals mapping remains reachable
+# through the returned agent/factory graph, making its identity a safe unique
+# namespace for the lifetime of that load.
+_CANONICAL = _load_exact(
+    f"_kestrel_canonical_main_{id(globals()):x}",
+    _ROOT / "main.py",
+)
 _CANONICAL_NEW_INSTANCE = _CANONICAL._new_instance
 
 
