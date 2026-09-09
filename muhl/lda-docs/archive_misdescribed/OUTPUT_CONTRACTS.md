@@ -133,3 +133,13 @@ Model authors content; code routes/enforces the grounded parts and membership-ch
 reason-then-format + parse-and-repair. Model-authored passes are mini-only (inert without a helper). Owner-
 facing payloads stay **on-device** and never carry secrets or leave the phone (§3/§14). Every contract is
 A/B-gated on the frozen gauntlet — ship only measured wins; keep an honest null as signal (§12).
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

@@ -127,3 +127,13 @@ The super-merge hung on launch even on a fresh, permission-less install. On a fr
 (confirmed: it hung with obfuscation fully off), **not** the manifest (byte-identical to `bec1858`),
 **not** `AgentMemory`'s eager `POLICY` regex (well-formed). Re-merge each cluster alone and flash it, so
 the one that reintroduces the hang is obvious instead of hidden in a four-way pile.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
