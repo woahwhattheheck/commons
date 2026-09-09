@@ -226,6 +226,7 @@ class Store:
         stamp = now_iso(self.clock)
         subscriber_id = uuid.uuid4().hex
         with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
             row = db.execute("SELECT id,status FROM subscribers WHERE email=?", (email,)).fetchone()
             if row:
                 if row["status"] == "unsubscribed":
