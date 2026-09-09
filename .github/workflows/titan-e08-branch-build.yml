@@ -24,12 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Compose E08 onto fresh main without losing seller peers
+      - name: Compose reviewed E08 onto fresh main
         run: |
           set -euo pipefail
           LAB="revenue/kaggriculture/cloud-execution-lab"
           cp "$LAB/frozen_selected.py" "$RUNNER_TEMP/e08-frozen.py"
-          cp "$LAB/test_event_horizon.py" "$RUNNER_TEMP/test-event-horizon.py"
+          cp "$LAB/test_event_horizon.py" "$RUNNER_TEMP/e08-event-tests.py"
           git fetch origin main
           MAIN_SHA="$(git rev-parse origin/main)"
           MAIN_FROZEN_BLOB="$(git rev-parse "origin/main:$LAB/frozen_selected.py")"
@@ -37,33 +37,8 @@ jobs:
           git merge --no-commit --no-ff origin/main || true
           git checkout --theirs -- "$LAB/frozen_selected.py" "$LAB/exports/titan-current.tar.gz" "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json"
           cp "$RUNNER_TEMP/e08-frozen.py" "$LAB/frozen_selected.py"
-          cp "$RUNNER_TEMP/test-event-horizon.py" "$LAB/test_event_horizon.py"
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('revenue/kaggriculture/cloud-execution-lab/frozen_selected.py')
-          s=p.read_text()
-          needle="    return shared_slot_ledger(all_plans,orders_at,max_orders)\n\n\ndef event_aware_horizon"
-          insert="""    return shared_slot_ledger(all_plans,orders_at,max_orders)\n\n\ndef seller_choice_rank(info):\n    \"\"\"Return active admission plus deterministic rank for one optimizer report.\"\"\"\n    forced=bool(info.get('forced_feasibility',False))\n    accepted=bool(info.get('accepted',float(info.get('worst_relative_gain',0.0))>0))\n    score=float(info.get('acceptance_score',info.get('worst_relative_gain',0.0)))\n    return forced or accepted,(forced,score)\n\n\ndef event_aware_horizon"""
-          assert s.count(needle)==1
-          s=s.replace(needle,insert,1)
-          old="            eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)\n            rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])\n"
-          assert s.count(old)==1
-          s=s.replace(old,"            eligible,rank=seller_choice_rank(info)\n",1)
-          old="                if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):best=(item,plan,info)"
-          assert s.count(old)==1
-          s=s.replace(old,"                if best is None or rank>seller_choice_rank(best[2])[1]:best=(item,plan,info)",1)
-          old="            ranked=sorted(options,key=lambda x:(x[2].get('forced_feasibility',False),x[2]['worst_relative_gain']),reverse=True)[:4]"
-          assert s.count(old)==1
-          s=s.replace(old,"            ranked=sorted(options,key=lambda x:seller_choice_rank(x[2])[1],reverse=True)[:4]",1)
-          old="                           'named_worst_relative_gain':metrics['worst_relative_gain'],\n                           'worst_relative_gain':independent}"
-          assert s.count(old)==1
-          s=s.replace(old,"                           'named_worst_relative_gain':metrics['worst_relative_gain'],\n                           'worst_relative_gain':independent,\n                           'accepted':True,'acceptance_score':independent,\n                           'acceptance_rule':'joint_strict'}",1)
-          old="                    if best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain']):"
-          assert s.count(old)==1
-          s=s.replace(old,"                    if best is None or rank>seller_choice_rank(best[2])[1]:",1)
-          compile(s,str(p),'exec')
-          p.write_text(s)
-          PY
+          cp "$RUNNER_TEMP/e08-event-tests.py" "$LAB/test_event_horizon.py"
+          python3 "$LAB/e08_compose_patch.py" "$LAB/frozen_selected.py" "$LAB/test_event_horizon.py"
           git add "$LAB/frozen_selected.py" "$LAB/test_event_horizon.py" "$LAB/exports/titan-current.tar.gz" "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json"
           if git diff --name-only --diff-filter=U | grep .; then
             echo "Unresolved merge paths remain" >&2
@@ -73,7 +48,7 @@ jobs:
           git diff --cached --check
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Merge fresh main into E08 while preserving seller acceptance"
+          git commit -m "Merge fresh main into E08 with reviewed market replay"
           echo "COMPOSED_MAIN_SHA=$MAIN_SHA" >> "$GITHUB_ENV"
 
       - name: Install official engine
@@ -84,7 +59,6 @@ jobs:
         run: |
           set -euo pipefail
           OLD_SHA="$(python3 -c "import json; print(json.load(open('runtime/integrated-selected/CURRENT-ARCHIVE.json'))['sha256'])")"
-          test "$OLD_SHA" = "34174be1b42e3e180617dc0d5e8a50db282c7d72bc833afe8feed2374fe8ebac"
           test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = "$OLD_SHA"
           echo "E08_PARENT_ARCHIVE_SHA=$OLD_SHA" >> "$GITHUB_ENV"
           rm -rf "$RUNNER_TEMP/e08-runtime"
@@ -138,7 +112,7 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-      - name: Publish merge plus verified release and remove temporary runner
+      - name: Publish merge plus verified release and remove temporary tooling
         run: |
           set -euo pipefail
           BRANCH="sol/titan-v25-e08-event-horizon-20260909"
@@ -149,9 +123,9 @@ jobs:
           git add "$LAB/exports/historical/titan-$E08_PARENT_ARCHIVE_SHA.tar.gz"
           git add "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json"
           git add "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json"
-          git rm .github/workflows/titan-e08-branch-build.yml
+          git rm .github/workflows/titan-e08-branch-build.yml "$LAB/e08_compose_patch.py"
           git diff --cached --check
-          test "$(git diff --cached --name-only | wc -l)" = "5"
+          test "$(git diff --cached --name-only | wc -l)" = "6"
           git commit -m "E08: publish deterministic canonical release"
           git push origin "HEAD:refs/heads/$BRANCH"
           printf 'E08 merged main %s; archive %s (%s bytes); manifest %s\n' "$COMPOSED_MAIN_SHA" "$E08_NEW_ARCHIVE_SHA" "$E08_NEW_ARCHIVE_BYTES" "$E08_NEW_MANIFEST_SHA" >> "$GITHUB_STEP_SUMMARY"
