@@ -1,0 +1,71 @@
+name: e04-canonical-closure-one-shot
+
+on:
+  push:
+    branches:
+      - sol/e04-canonical-closure-20260909-01
+    paths:
+      - .github/workflows/e04-canonical-closure-one-shot.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Assert isolated closure branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/sol/e04-canonical-closure-20260909-01"
+          test -z "$(git status --porcelain)"
+      - name: Verify merged E04 discriminator before packaging
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_score_schedule.ScoreScheduleTests.test_price_breakpoint_later_tranche_beats_quarter_only_family test_score_schedule.ScoreScheduleTests.test_price_breakpoint_split_family_is_bounded
+      - name: Build deterministic canonical release
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check
+      - name: Audit and commit generated release bytes only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+          allowed={
+            'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz',
+            'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json',
+            'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json',
+          }
+          changed=[]
+          for line in subprocess.check_output(['git','status','--porcelain'],text=True).splitlines():
+              path=line[3:].split(' -> ')[-1]
+              changed.append(path)
+          unexpected=[p for p in changed if p not in allowed and not p.startswith('revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-')]
+          if unexpected:
+              raise SystemExit('unexpected generated paths: '+repr(unexpected))
+          if not changed:
+              raise SystemExit('builder produced no canonical delta')
+          print('generated paths:')
+          print('\n'.join(changed))
+          PY
+          git add -- \
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
+            revenue/kaggriculture/cloud-execution-lab/exports/historical/ \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Titan E04: rebuild canonical release"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
