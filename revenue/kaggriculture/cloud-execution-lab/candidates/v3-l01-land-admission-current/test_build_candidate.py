@@ -80,7 +80,7 @@ def make_lab(
             package / "TITAN-CONFIG.json",
             arcname="TITAN-CONFIG.json",
         )
-        if include_embdded_source:
+        if include_embedded_source:
             handle.add(package / SOURCE_MEMBER, arcname=SOURCE_MEMBER)
 
     manifest = {
