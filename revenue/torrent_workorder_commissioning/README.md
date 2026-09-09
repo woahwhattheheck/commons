@@ -38,3 +38,7 @@ Ten quarantine codes, ten each. Every defect blocks with that exact code. Old an
 - Door: `../../torrent-workorder-commissioning-lims.html` (window, not the product)
 
 Cite, do not remint: bsk-multilab-accession-parity-lims-01, chemtechford-short-hold-intake-lims-01, sanair-asbestos-coc-router-lims-01, aquatrace work-order B/F/C, westpak, ddl, highpower, wadsworth, sharp, weck, pcl, canyon.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

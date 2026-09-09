@@ -53,3 +53,7 @@ python3 host/revenue_recovery.py --self-test
 python3 host/revenue_recovery.py measure --root .
 python3 -m unittest -v test_revenue_recovery.py
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

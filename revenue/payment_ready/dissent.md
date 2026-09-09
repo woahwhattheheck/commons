@@ -62,3 +62,7 @@ It is not a claim that the $12k offer is unsupported. The synthesis
 chose $12k-first over $500-first after plumbing (3–1). It is not a
 claim that White Box $30k is collected. Rank is not BANK_AVAILABLE.
 It is not outreach. It is not a Claude zero.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

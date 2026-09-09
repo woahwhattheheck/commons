@@ -57,3 +57,7 @@ Queries run via WebSearch on 2026-09-05:
 14. `site:job-boards.greenhouse.io OR site:boards.greenhouse.io "Claude" OR "MCP" AI automation engineer agent workflow`
 
 Fetches attempted but blocked or empty are itemized in "Not verified" above. Key fetches that produced verified rows: freelancer.com project page, builtin.com job page, three job-boards.greenhouse.io pages, career.intellias.com, and seven rfpmart.com detail pages (one PA chatbot RFP found had a past deadline of May 8, 2026 and was dropped without fetching).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

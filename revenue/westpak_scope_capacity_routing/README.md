@@ -54,3 +54,7 @@ Replay of the entire 240-job corpus creates zero duplicate job or custody events
 - `../../test_westpak_scope_capacity_routing.py` — fail-closed binary
 - `../../westpak-scope-capacity-routing-lims.html` — window, not the product
 - `../../p/westpak-scope-capacity-routing-lims-01.md` — first leftover receipt
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

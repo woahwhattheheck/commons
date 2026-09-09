@@ -27,3 +27,7 @@ These are Commons-owned builds on current main. They are not customer case studi
 - Limits: transport size and exact-id dedupe remain.
 
 Cash remains USD 0. An internal demonstration is not a testimonial.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
