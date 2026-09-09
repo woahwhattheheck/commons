@@ -6,17 +6,17 @@ on:
       - '.github/workflows/titan-v3-dual-predecessor-equal-results-sol-trident.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/dual_predecessor_gate.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_dual_predecessor_gate.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_equal_result_identity.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_equal_result_bytes.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/DUAL-PREDECESSOR.md'
-      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/PANEL-IDENTITY.md'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/EQUAL-RESULTS.md'
   pull_request:
     paths:
       - '.github/workflows/titan-v3-dual-predecessor-equal-results-sol-trident.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/dual_predecessor_gate.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_dual_predecessor_gate.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_equal_result_identity.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_equal_result_bytes.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/DUAL-PREDECESSOR.md'
-      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/PANEL-IDENTITY.md'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/EQUAL-RESULTS.md'
   workflow_dispatch:
 
 permissions:
@@ -49,7 +49,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run complete custody gate suite and identity regression
+      - name: Run complete custody gate suite and equal-result regression
         shell: bash
         run: |
           set -euo pipefail
@@ -60,11 +60,11 @@ jobs:
             test_numeric_closure.py \
             test_derived_numeric_closure.py \
             test_dual_predecessor_gate.py \
-            test_equal_result_identity.py
+            test_equal_result_bytes.py
           python -m py_compile \
             dual_predecessor_gate.py \
             test_dual_predecessor_gate.py \
-            test_equal_result_identity.py
+            test_equal_result_bytes.py
 
       - name: Verify equal-byte theorem without dropping reserialization alias
         shell: bash

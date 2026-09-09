@@ -53,8 +53,8 @@ normalized so `0.0` and `-0.0` cannot create different semantic identities.
 Byte-identical predecessor panels are valid when the two observed, receipt-bound
 closure artifacts remain distinct. Reserialized or signed-zero copies whose
 file bytes differ but whose canonical score matrices match stay `INVALID`:
-different serialization is not evidence of a second execution. Closure identity
-is the execution theorem; result bytes are the observation.
+different serialization is not evidence of a second execution. Closure artifacts
+are the execution theorem; result bytes are the observation.
 
 Each comparison must independently satisfy the existing complete-grid,
 provenance, metric, numeric-closure, and policy rules in `gate.py`.
@@ -141,7 +141,7 @@ matrix hashes, and each comparison exit code.
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
-  python3 -m unittest -v test_dual_predecessor_gate.py test_equal_result_identity.py
+  python3 -m unittest -v test_dual_predecessor_gate.py test_equal_result_bytes.py
 ```
 
 The fifteen-case adversarial suite covers custody-bound two-predecessor

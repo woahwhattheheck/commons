@@ -1,6 +1,6 @@
-# Dual-predecessor identity: closures, not score-file inequality
+# Dual-predecessor closures, not score-file inequality
 
-A finite game panel is an observation, not an executable identity. Two distinct
+A finite game panel is an observation, not an executable closure. Two distinct
 predecessor closures can legitimately produce the same normalized terminal rows
 on every measured cell. Conversely, copying one panel and changing whitespace,
 JSON key order, or row order changes the raw file digest without executing a
@@ -8,7 +8,7 @@ second predecessor.
 
 The custody-bound gate therefore separates two statements:
 
-1. **Execution identity:** predecessor names and both declared and observed
+1. **Execution closures:** predecessor names and both declared and observed
    closure-bundle SHA-256 values must be distinct; each strict receipt binds its
    closure to its contract, provenance evidence, engine, runner, baseline game
    bytes, and the shared candidate.

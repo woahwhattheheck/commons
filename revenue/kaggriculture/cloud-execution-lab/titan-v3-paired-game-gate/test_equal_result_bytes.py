@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Regression for closure identity versus finite-panel outcome identity."""
+"""Regression for closure distinction versus finite-panel outcome bytes."""
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -12,7 +12,7 @@ from test_dual_predecessor_gate import (
 )
 
 
-class EqualResultIdentityTests(unittest.TestCase):
+class EqualResultBytesTests(unittest.TestCase):
     def test_identical_rows_are_valid_for_distinct_bound_predecessors(self):
         with TemporaryDirectory(prefix="dual-gate-equal-results-") as directory:
             (
