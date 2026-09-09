@@ -66,6 +66,7 @@ class Features:
     operating_stock: bool = False
     idle_fertilizer: bool = False
     crop_release: bool = False
+    early_capital: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -272,6 +273,7 @@ class TitanAgent:
         # crop/idle composition and a completed selected fallback cannot undo
         # its same-slot reservation. It never executes a producer or game.
         returned = self._feed_stock_selected(obs, cfg or {}, returned)
+        returned = self._early_capital_selected(obs, cfg or {}, returned)
         if self.quadrant is not None:
             self.quadrant.finish(obs, returned)
             self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
@@ -365,6 +367,21 @@ class TitanAgent:
             m, obs, cfg, selected, post['farms'][int(obs['player'])], post['private'],
             self.controller.R[self.controller.cur], [item[0] for item in parent.DECISIONS])
         self.diagnostics['feed_stock'] = report
+        return result
+
+    def _early_capital_selected(self, obs, cfg, selected):
+        """Reorder current-queue capital after feed-stock; no new producer."""
+        if (not getattr(self.features, 'early_capital', False)
+                or self.features.consumer != 'frozen'
+                or self.features.terminal_route):
+            return selected
+        import mechanics as mechanics_mod
+        from early_capital import order_early_capital
+        from scheduler import parent
+        result, report = order_early_capital(
+            mechanics_mod, obs, cfg, selected,
+            self.controller.R[self.controller.cur], parent.DECISIONS)
+        self.diagnostics['early_capital'] = report
         return result
 
     def _redundant_hire_selected(self, obs, cfg, selected):
