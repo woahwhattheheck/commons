@@ -11,6 +11,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 
 ENGINE_HASHES = {
     "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
@@ -18,10 +19,46 @@ ENGINE_HASHES = {
     "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b",
 }
 OPERATION = "op:titan-v25-orders-20260909-P02-sol-helix-integration-01"
+ISOLATED_IMPORT_PROBE = (
+    "from observed_clone import detached_json_value\n"
+    "import scheduler\n"
+    "from p02_candidate import agent as candidate\n"
+    "from main import agent as current\n"
+    "assert callable(detached_json_value) and callable(candidate) and callable(current)\n"
+)
 
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def isolated_source_pythonpath(lab: Path) -> str:
+    """Bare imports in isolated workers resolve the archive's attributed siblings.
+
+    The official evaluator strips the worker environment and only inserts the
+    agent parent. Root modules that ``build_integrated.source_files`` copies
+    from outside the lab (observed_clone, seller_snapshot, …) must therefore
+    appear on PYTHONPATH. See test_e07_hosted_source_path and
+    test_p02_isolated_source_path.
+    """
+    lab = lab.resolve()
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+    ordered = [lab]
+    seen = {lab}
+    for member, source in source_files().items():
+        if Path(member).parent != Path("."):
+            continue
+        origin = (lab / source).resolve()
+        if not origin.is_file():
+            raise FileNotFoundError(
+                f"mapped root module {member} missing at {origin}")
+        parent = origin.parent
+        if parent not in seen:
+            seen.add(parent)
+            ordered.append(parent)
+    return os.pathsep.join(str(path) for path in ordered)
 
 
 def patch_evaluator(source: Path, target: Path) -> None:
@@ -30,18 +67,44 @@ def patch_evaluator(source: Path, target: Path) -> None:
                "PYTHONHASHSEED": str(rng_seed % (2**32)), "PYTHONDONTWRITEBYTECODE": "1"}'''
     new = old + '''
         if os.environ.get("TITAN_P02_TRACE_DIR"):
-            env["TITAN_P02_TRACE_DIR"] = os.environ["TITAN_P02_TRACE_DIR"]'''
+            env["TITAN_P02_TRACE_DIR"] = os.environ["TITAN_P02_TRACE_DIR"]
+        if os.environ.get("TITAN_P02_PYTHONPATH"):
+            env["PYTHONPATH"] = os.environ["TITAN_P02_PYTHONPATH"]'''
     if text.count(old) != 1:
         raise RuntimeError("evaluator environment seam changed")
     target.write_text(text.replace(old, new), encoding="utf-8")
 
 
-def run_bank(*, workspace: Path, work: Path, bank: str, seeds: list[int]) -> None:
+def assert_isolated_source_imports(lab: Path, pythonpath: str) -> None:
+    """Fail closed before the 64-game panel if stripped workers cannot import."""
+    with tempfile.TemporaryDirectory(prefix="kag-eval-agent-") as tmp:
+        env = {
+            "PATH": os.defpath,
+            "HOME": tmp,
+            "LANG": "C.UTF-8",
+            "PYTHONHASHSEED": "0",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": pythonpath,
+        }
+        result = subprocess.run(
+            [sys.executable, "-B", "-c", ISOLATED_IMPORT_PROBE],
+            cwd=tmp, env=env, capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                "isolated official-panel workers cannot import lab agents: "
+                + (result.stderr or result.stdout)[:1500]
+            )
+
+
+def run_bank(*, workspace: Path, work: Path, bank: str, seeds: list[int],
+             pythonpath: str) -> None:
     lab = workspace / "revenue/kaggriculture/cloud-execution-lab"
     output = work / bank
     traces = output / "traces"
     traces.mkdir(parents=True, exist_ok=True)
-    env = dict(os.environ, TITAN_P02_TRACE_DIR=str(traces))
+    env = dict(os.environ, TITAN_P02_TRACE_DIR=str(traces),
+               TITAN_P02_PYTHONPATH=pythonpath)
     command = [
         sys.executable, "-B", str(workspace / "results/v25/s24/runner.py"),
         "--python", sys.executable,
@@ -71,6 +134,8 @@ def main() -> int:
     args = parser.parse_args()
     workspace, work = args.workspace.resolve(), args.work.resolve()
     work.mkdir(parents=True, exist_ok=True)
+    lab = workspace / "revenue/kaggriculture/cloud-execution-lab"
+    pythonpath = isolated_source_pythonpath(lab)
 
     import kaggle_environments
     package = Path(kaggle_environments.__file__).resolve().parent
@@ -87,12 +152,14 @@ def main() -> int:
         if actual != ENGINE_HASHES[name]:
             raise RuntimeError(f"official engine mismatch for {name}: {actual}")
 
-    evaluator = workspace / "revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py"
+    evaluator = lab / "reference/evaluator/evaluate.py"
     patch_evaluator(evaluator, work / "evaluate-p02.py")
+    assert_isolated_source_imports(lab, pythonpath)
     banks = {"dev": list(range(2609093201, 2609093217)),
              "holdout": list(range(2609094201, 2609094217))}
     for bank, seeds in banks.items():
-        run_bank(workspace=workspace, work=work, bank=bank, seeds=seeds)
+        run_bank(workspace=workspace, work=work, bank=bank, seeds=seeds,
+                 pythonpath=pythonpath)
 
     files = {}
     for path in sorted(work.rglob("*")):
@@ -103,6 +170,7 @@ def main() -> int:
         "exact_head": args.head, "engine": {"version": "kaggle-environments==1.32.7", **ENGINE_HASHES},
         "candidate": "revenue/kaggriculture/cloud-execution-lab/p02_candidate.py::agent",
         "control": "revenue/kaggriculture/cloud-execution-lab/main.py::agent",
+        "isolated_pythonpath": pythonpath,
         "both_candidate_seats": True, "seed_banks": banks, "files_before_manifest": files,
     }
     (work / "MANIFEST.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
