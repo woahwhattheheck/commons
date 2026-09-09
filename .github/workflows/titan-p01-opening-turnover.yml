@@ -31,16 +31,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DISPATCH=9ac71bb67012efdf2a99f5ba06169f2c8dfe40c4
+          DISPATCH=de4121fcadf365c4ce22c9f5a3a136bc7a075a3d
           ROOT=revenue/kaggriculture/cloud-execution-lab
           git worktree add --detach /tmp/p01-dispatch "$DISPATCH"
           cd /tmp/p01-dispatch/$ROOT
           python build_integrated.py --check
-          test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = '3b4b083ec2647bb0e715978c2565e916da0ee94c08b234902e3a7e4d3418c320'
+          test "$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')" = '385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492'
           rm -rf /tmp/p01-runtime /tmp/p01-traces
           mkdir -p /tmp/p01-runtime /tmp/p01-traces
           tar -xzf exports/titan-current.tar.gz -C /tmp/p01-runtime
-          test "$(sha256sum /tmp/p01-runtime/SOURCE.json | awk '{print $1}')" = 'c0778c8286fbf7450137c9473abde6302eb9e37ca0428aab50c8cd90e2cc30c8'
+          test "$(sha256sum /tmp/p01-runtime/SOURCE.json | awk '{print $1}')" = '9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f'
       - name: Stage isolated P01 experiment
         shell: bash
         run: |
