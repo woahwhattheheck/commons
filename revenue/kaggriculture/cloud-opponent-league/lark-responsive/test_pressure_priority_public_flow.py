@@ -82,6 +82,22 @@ class PublicFlowPressureTests(unittest.TestCase):
             )
         self.assertEqual(transform(action, obs(), quote=curve, rival_supply=[]), action)
 
+    def test_unhashable_malformed_item_is_barrier_with_public_flow(self):
+        carrot = ['SELL', 'CARROT', 14]
+        tomato = ['SELL', 'TOMATO', 8]
+        bad = ['SELL', [], 1]
+        flow = {'CARROT': 0, 'TOMATO': 20}
+        split = {'market': [carrot, bad, tomato]}
+        self.assertEqual(
+            transform(split, obs(), quote=curve, rival_supply=flow)['market'],
+            [carrot, bad, tomato],
+        )
+        trailing = {'market': [bad, carrot, tomato]}
+        self.assertEqual(
+            transform(trailing, obs(), quote=curve, rival_supply=flow)['market'],
+            [bad, tomato, carrot],
+        )
+
     def test_explicit_flow_does_not_mutate_parent_or_observation(self):
         action = {'farmer': ['PASS'], 'market': [['SELL', 'CARROT', 14], ['SELL', 'TOMATO', 8]]}
         observation = obs()

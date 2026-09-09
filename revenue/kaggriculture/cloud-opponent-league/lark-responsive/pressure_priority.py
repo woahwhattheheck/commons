@@ -182,9 +182,16 @@ def transform(action: dict, observation: Mapping,
         if rival_supply is None or not isinstance(order, list) or len(order) != 3:
             return _UNSET_RIVAL_QUANTITY
         item = order[1]
-        if item not in rival_supply:
+        # Lookup only the inherited SELL product grammar. Unhashable or unknown
+        # items stay unset so _quote/lot_pressure remain the barrier authority.
+        if not isinstance(item, str) or item not in PRODUCTS:
             return _UNSET_RIVAL_QUANTITY
-        return rival_supply[item]
+        try:
+            if item not in rival_supply:
+                return _UNSET_RIVAL_QUANTITY
+            return rival_supply[item]
+        except TypeError:
+            return _UNSET_RIVAL_QUANTITY
 
     scores = [lot_pressure(order, market, quote, supplied_quantity(order))
               for order in orders[:end]]
