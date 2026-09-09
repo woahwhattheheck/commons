@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/titan-market-carry-wheat-audit-sol-compass.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py'
   workflow_dispatch:
 
 permissions:
@@ -33,6 +34,7 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py \
             revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
             revenue/kaggriculture/cloud-execution-lab/mechanics.py \
+            revenue/kaggriculture/cloud-execution-lab/scheduler.py \
             revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
             revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
             revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
@@ -44,18 +46,21 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py \
             revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
             revenue/kaggriculture/cloud-execution-lab/mechanics.py \
+            revenue/kaggriculture/cloud-execution-lab/scheduler.py \
             revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
             revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
             revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
 
-      - name: Compile and execute audit
+      - name: Compile and execute binding-corrected audit
         shell: bash
         run: |
           set -euo pipefail
-          python -m py_compile revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py
-          python revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py
+          python -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py \
+            revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py
+          python revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py
 
-      - name: Enforce disposition contract
+      - name: Enforce disposition and source contracts
         shell: bash
         run: |
           set -euo pipefail
@@ -63,12 +68,15 @@ jobs:
           import json
           report = json.load(open('WHEAT-AUDIT.json', encoding='utf-8'))
           assert report['source_head'] == 'b6b080a6842107f7e9086f64cb0b2b9c38377696'
+          assert report['source_blobs']['scheduler'] == 'a483b24dd72b580d7d8811636b54d2d44f391575'
+          assert report['source_blobs']['frozen_selected'] == 'fc7baf5c179818a55037f6a61d92984d81d1a21c'
+          assert report['binding_correction']['calculation_engine_unchanged'] is True
           assert report['candidate_legal_carry_universe'] == ['WHEAT']
           assert report['max_wheat_demand'] == 9
           assert report['scan']['feasible_rows']
           assert not report['disposition']['immediate_liquidation_guaranteed']
           assert not report['disposition']['promotion_ready']
-          print('DISPOSITION_CONTRACT_PASS')
+          print('DISPOSITION_AND_SOURCE_CONTRACT_PASS')
           PY
 
       - name: Publish job summary
