@@ -19,6 +19,11 @@ jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    env:
+      # The canonical runtime flattens these sibling source roots into one
+      # archive. A repository checkout keeps them separate, so focused tests
+      # need the equivalent import path explicitly.
+      PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep
     steps:
       - uses: actions/checkout@v4
         with:
