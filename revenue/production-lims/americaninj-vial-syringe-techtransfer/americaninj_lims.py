@@ -19,7 +19,7 @@ INTAKE_HOLDS = {
     "MISSING_FORMULATION_OR_METHOD_VERSION",
 }
 POST_INTAKE_HOLDS = {"IPC_FILL_FAILURE", "STERILITY_QC_FAILURE"}
-BANNED_RELEASE_ACTORS = {"agent", "automation", "system", "bot", "autonomous"}
+BANNED_RELEASE_ACTORS = {"agent", "automation", "system", "bot", "autonomous", "auto", "ai", "service"}
 
 
 def canonical(value: Any) -> str:
@@ -42,6 +42,10 @@ def evidence_payload(record: Mapping[str, Any]) -> dict[str, Any]:
 
 def evidence_sha256(record: Mapping[str, Any]) -> str:
     return sha256(evidence_payload(record))
+
+
+def record_sha256(record: Mapping[str, Any]) -> str:
+    return sha256(dict(record))
 
 
 def _blank() -> dict[str, Any]:
@@ -91,6 +95,7 @@ def _outcome(record: Mapping[str, Any], status: str, hold_code: str | None, sche
         "hold_code": hold_code, "scheduled": scheduled,
         "dossier_state": "STAGED_HUMAN_REVIEW" if status == "READY" else None,
         "lineage_sha256": evidence_sha256(record),
+        "record_sha256": record_sha256(record),
     }
 
 
@@ -135,7 +140,10 @@ def process_records(records: Iterable[Mapping[str, Any]], ledger_path: os.PathLi
 
     for record in batch:
         sid = str(record["submission_id"])
+        incoming_record_sha256 = record_sha256(record)
         if sid in ledger["submissions"]:
+            if ledger["submissions"][sid].get("record_sha256") != incoming_record_sha256:
+                raise ValueError(f"submission replay payload mismatch for {sid}")
             replayed += 1
             continue
 
@@ -208,8 +216,14 @@ def release_dossier(submission_id: str, ledger_path: os.PathLike[str] | str, *, 
     if result["status"] != "READY":
         raise ValueError("held submissions cannot release a dossier")
     dossier = ledger["dossiers"][submission_id]
-    name = human_name.strip()
-    if not named_human or len(name) < 2 or name.lower() in BANNED_RELEASE_ACTORS:
+    if not isinstance(human_name, str):
+        raise PermissionError("release requires an explicit named human")
+    name = " ".join(human_name.strip().split())
+    lowered = name.casefold()
+    compact = "".join(ch for ch in lowered if ch.isalnum())
+    tokens = "".join(ch if ch.isalnum() else " " for ch in lowered).split()
+    reserved = compact in BANNED_RELEASE_ACTORS or any(token in BANNED_RELEASE_ACTORS for token in tokens)
+    if named_human is not True or len(name) < 2 or reserved:
         raise PermissionError("release requires an explicit named human")
     if dossier["state"] == "RELEASED":
         if dossier["released_by"] != name:
