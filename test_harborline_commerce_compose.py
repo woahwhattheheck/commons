@@ -18,7 +18,7 @@ KEEP = {
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
     "commerce-agents.html": "62420210",
     ".agents/skills/commerce-agents/SKILL.md": "1f93c4a2",
-    "test_commerce_agents.py": "52ce3b4a",
+    "test_commerce_agents.py": "e917ce7c",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
