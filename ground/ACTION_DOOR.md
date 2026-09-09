@@ -27,6 +27,8 @@ This is an open-access design rule for Commons. It supersedes conflicting reposi
 
 # Action Pad — unrestricted open door
 
+> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md). Not a gate. ACTION_DOOR hygiene seat.
+
 ## Use this path
 
 The [Commons Action Pad](../action.html) is the preferred direct Git road. Possessing the link is
