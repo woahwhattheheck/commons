@@ -18,6 +18,8 @@ S02_PATHS = (
     "s02-admission-firewall-20260909-solpro/BENCHMARK.json",
 )
 L02_DIR = trigger.CANDIDATE_DIR
+REPO_ROOT = Path(__file__).resolve().parents[5]
+WORKFLOW = REPO_ROOT / ".github/workflows/titan-v3-l02-ledger-tranche.yml"
 
 
 class PanelTriggerTests(unittest.TestCase):
@@ -44,6 +46,12 @@ class PanelTriggerTests(unittest.TestCase):
         report = trigger.classify(S02_PATHS, event_name="push", unknown_base=True)
         self.assertTrue(report["run_panel"])
         self.assertIn("fail-closed", report["reason"])
+
+    def test_branch_creation_zero_base_cannot_collapse_to_tip_parent(self):
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("0000000000000000000000000000000000000000", workflow)
+        self.assertIn("unknown=(--unknown-base)", workflow)
+        self.assertNotIn("git rev-parse HEAD^", workflow)
 
     def test_candidate_overlay_or_runner_change_runs_the_panel(self):
         for name in trigger.EXECUTABLE_FILES:
