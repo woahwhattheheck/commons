@@ -125,8 +125,8 @@ jobs:
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
                    'cloud-integration-differentials', 'cloud-composition-cases/cypress',
                    'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
-                   'cloud-economic-stress', 'cloud-runtime-pulse',
-                   'cloud-opponent-league/lark-responsive', 'cloud-full-support',
+                   'cloud-economic-stress', 'cloud-runtime-pulse', 'cloud-full-support',
+                   'cloud-opponent-league/lark-responsive',
                    'cloud-weighted-plan-selector',
                    'cloud-plan-continuation', 'cloud-observed-fills')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
