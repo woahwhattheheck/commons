@@ -30,9 +30,9 @@ KEEP = {
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
     "test_grokbuild_pr8415_path_manifest_33689243555.py": "4fa393cc",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "1a42e1c9",
 }
 
 

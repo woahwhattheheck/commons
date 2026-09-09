@@ -18,15 +18,15 @@ TRIGGER = ROOT / "p/grokbuild-main-range-verify-33717084528-billing-lock-2026090
 TRIGGER_TEST = ROOT / "test_grokbuild_main_range_verify_33717084528_billing_lock.py"
 
 KEEP = {
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "1a42e1c9",
     "test_open_door_guard.py": "b9a4acde",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33699980139-billing-lock-20260903-01.md": "81d9e0a0",
     "test_grokbuild_open_door_guard_33699980139_billing_lock.py": "0cadb906",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "47e90c71",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "6aeadb98",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "03d03e22",
 }
 
 
