@@ -46,16 +46,23 @@ jobs:
             test_aggregate_seed_budget.py test_candidate_runtime.py \
             test_entrypoint_load.py test_official_engine.py
 
-      - name: Decode and audit exact current route bank
+      - name: Decode exact route bank and require an applicable shape
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget
         run: |
-          set -euo pipefail
-          python audit_routes.py --output route-audit.json | tee route-audit.stdout.json
-          python - <<'PY'
+          set -uo pipefail
+          set +e
+          python audit_routes.py \
+            --output route-audit.json \
+            --require-tail-safe | tee route-audit.stdout.json
+          audit_status=${PIPESTATUS[0]}
+          set -e
+          python - "$audit_status" <<'PY'
           import json
           import os
           from pathlib import Path
+          import sys
 
+          status = int(sys.argv[1])
           report = json.loads(Path("route-audit.json").read_text(encoding="utf-8"))
           if report.get("schema") != "titan-v3-aggregate-seed-route-audit/v1":
               raise SystemExit("unexpected route-audit schema")
@@ -65,13 +72,28 @@ jobs:
               raise SystemExit("duplicate count mismatch")
           if report.get("tail_safe_count") != len(report.get("tail_safe", [])):
               raise SystemExit("tail-safe count mismatch")
+
           summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          lines = [
+              "## Exact route audit",
+              "",
+              f"- routes: {report['route_count']}",
+              f"- duplicate same-crop active-prefix rows: {report['duplicate_count']}",
+              f"- strict trailing opportunities: {report['tail_safe_count']}",
+          ]
+          if report["tail_safe_count"] == 0:
+              lines += ["- disposition: **NO_SIGNAL / REJECT BEFORE GAMES**"]
           if summary:
               with open(summary, "a", encoding="utf-8") as handle:
-                  handle.write("## Exact route audit\n\n")
-                  handle.write(f"- routes: {report['route_count']}\n")
-                  handle.write(f"- duplicate same-crop active-prefix rows: {report['duplicate_count']}\n")
-                  handle.write(f"- strict trailing opportunities: {report['tail_safe_count']}\n")
+                  handle.write("\n".join(lines) + "\n")
+
+          if report["tail_safe_count"] == 0:
+              if status != 3:
+                  raise SystemExit(f"zero-opportunity audit returned unexpected status {status}")
+              print("NO_SIGNAL: exact routes expose no strict trailing duplicate seed order", file=sys.stderr)
+              raise SystemExit(3)
+          if status != 0:
+              raise SystemExit(f"route audit failed with status {status}")
           PY
 
       - name: Bind exact candidate source bytes
@@ -93,5 +115,5 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/route-audit.json
             revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/route-audit.stdout.json
             revenue/kaggriculture/cloud-execution-lab/candidates/v3-aggregate-seed-budget/SOURCE.sha256
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14
