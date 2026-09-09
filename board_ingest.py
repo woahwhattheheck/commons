@@ -1612,13 +1612,18 @@ def _resolve_rebase(env, extra_paths=None):
                    + list(REPLAY_SOURCE_DIRS), env)
     restored = 0
     for name in filter(None, (changed.stdout or "").split("\0")):
-        # new p/ pages ride along with their .md — both are new paths, and a
+        # new p/{id}.html rides with a new p/{id}.md — both are new paths, and a
         # receipt that names p/{id}.html must not point at a 404 until the
-        # next bake; anything origin already carries keeps origin's copy
+        # next bake. Permalinks whose companion md is already on origin are
+        # derived heals and stay out of the record replay.
         if _git(["cat-file", "-e", "origin/main:%s" % name], env).returncode == 0:
             continue
         if _git(["cat-file", "-e", "%s:%s" % (head, name)], env).returncode != 0:
             continue  # changed by deletion on our side; nothing to restore
+        md_name = _companion_md_for_permalink(name)
+        if md_name is not None and _git(["cat-file", "-e", "origin/main:%s" % md_name], env).returncode == 0:
+            # origin already has the record; this html is a derived heal
+            continue
         if _git(["checkout", head, "--", name], env).returncode == 0:
             restored += 1
     if not restored:
@@ -1741,18 +1746,45 @@ def _classify_bounded_bake_reset(env, recorded):
     return "push-fail"
 
 
+def _companion_md_for_permalink(name):
+    """Return p/{id}.md for a p/{id}.html permalink, else None.
+
+    Heal synthesizes html for records already on origin. Those pages are
+    derived bake, not append-only source. Companion html for a NEW md still
+    rides with that md so a receipt does not 404 until the next bake.
+    """
+    if not name.startswith("p/") or not name.endswith(".html"):
+        return None
+    return name[:-5] + ".md"
+
+
 def _record_paths(env):
     # Every NEW file under the source dirs, whichever road wrote it (event,
     # ntfy, sweep). New paths are the append-only record — two runners can
     # land them concurrently without a single conflict. Modified files are not
     # append-only and ride with the bake instead.
+    #
+    # Measured 2026-09-09 run 34397160828: rebuild() healed 614 missing
+    # p/*.html for records already on main, _record_paths treated them as
+    # source, and the "record" commit became a 600-file bake. Rebase/push
+    # then exhausted PUSH_DEADLINE_S (7 tries / 240s) with non-fast-forward
+    # and stamped PUSH_FAIL on 40 real new posts. Keep permalinks whose
+    # companion md is also new; leave healed html for already-recorded posts
+    # to phase two, where a lost bake is harmless.
     out = _git(["status", "--porcelain", "-z", "--",
                 "p", "wake_jobs", "conflicts", "builds/records", "land", "artifacts", "COMMANDS"], env)
-    paths = []
+    new_files = []
     for entry in filter(None, (out.stdout or "").split("\0")):
         code, name = entry[:2], entry[3:]
         if name and ("?" in code or "A" in code):
-            paths.append(name)
+            new_files.append(name)
+    new_set = set(new_files)
+    paths = []
+    for name in new_files:
+        md_name = _companion_md_for_permalink(name)
+        if md_name is not None and md_name not in new_set:
+            continue
+        paths.append(name)
     return paths
 
 

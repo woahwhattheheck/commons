@@ -25,3 +25,13 @@ Wicked-fast models on the PC corpus already built means **connect the install th
 337 **NO**.
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\CORPUS_IN_MNO.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

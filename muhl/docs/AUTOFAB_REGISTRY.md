@@ -207,3 +207,13 @@ Not the candidate: `muhl_autofab_dot32` — that is a **dot product the host scr
 Not the candidate: `host/pfc_master_autofab.py` — **FORBIDDEN runtime process**; fabrication-time searcher only; owner already said master fab itself is not a script.
 
 The full master-autofab loop (decompose × implement × order × wire × score × verify × keep) is **not** stored as one circuit. Closest stored halves: foundry = score/keep; whitebox_incircuit = the tool.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

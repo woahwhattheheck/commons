@@ -130,3 +130,13 @@ Spectator / arcade / bitserve (not Desktop-root):
 **Want a .mno computer:** `MUHL_DATACENTER\muhlnickel_dc.mno` (2GB, today) · `MUHLNICKEL_DISTRO\muhlnickel.mno` (touched 08-14) · `MUHLNICKEL_LOOM\loom.mno` (08-14) · `MUHL_VISIBLE\FOUNDRY0.mno` (08-10) · probe / rookery / aperture.
 
 **Safe to treat as leftover:** dated `*_20260808_*` extracts + their zips, duplicate CHAT_SOURCE, LOOM_v1/fixed, MUHL_READERS (1606 R_*.mno), SUBZERO copy of build-lab, TitanSDC / POST_TITAN / Whitebox dump, Desktop MUHL_*.md scatter.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

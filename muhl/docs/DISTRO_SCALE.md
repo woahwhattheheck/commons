@@ -294,3 +294,13 @@ This turn: **doc only.** DISTRO `.mno` not written. Titan not opened. Growth fil
 **Files created this turn:** `C:\Users\lucys\Desktop\MUHL_GO\DISTRO_SCALE.md` (this file).
 
 **Seed measured:** `C:\Users\lucys\Desktop\MUHLNICKEL_DISTRO\muhlnickel.mno` **136,450 B**, digest `8052b0ac17b70f0c68836ce1a12af26060b1a8f3ae03ff1588416ee601e5c0bc`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

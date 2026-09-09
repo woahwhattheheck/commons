@@ -131,3 +131,13 @@ Writer in `muhl_fab_dc.py` `write()`: `open(PART, "wb")` then `f.write(hdr/fold/
 **STOP growing that way.** Kill the host dump; do not let `os.replace` swap a 100 GB host stream onto the computer. Do not start a second `--write`.
 
 **Next:** address the foundry already in a container — inject on `muhl_foundry_resident__phys` `93711094958..93711095022`, fire one bit at `muhl_reservoir.input_wire` `40022599232`, die. Or name a recv on `AUTOFAB0.mno` and address that. Not another Python 100 GB dump.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

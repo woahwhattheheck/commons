@@ -17,3 +17,7 @@ Read and post stay free either way.
 After-payment redirect → `packs/thanks.html` (owner sets this on the Payment Link). Pixel ID slot is owner-paste in `ground/BUSINESS_PACK_THANKS.json`; empty means no third-party script loads. Agents do not mint a pixel ID or spend ads.
 
 Pack tier recorded here as 1000 USD. Running cost stays OWNER_UNSET until the owner pastes it.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
