@@ -104,6 +104,33 @@ class SameTurnFundingContracts(unittest.TestCase):
         self.assertEqual(info['barrier_index'],0)
 
 
+    def test_sell_after_buy_product_boundary_cannot_move_into_prefix(self):
+        obs,base=fixture(shed={'MILK':1},money=0)
+        base['market']=[[],['BUY_SEED','CARROT',1],
+                        ['BUY_PRODUCT','WHEAT',1],['SELL','MILK',1]]
+        original=deepcopy(base['market'])
+        out,info=fund(obs,base,{'MILK'})
+        self.assertEqual(out,original)
+        self.assertEqual(info['reason'],'no-safe-prefix-sale')
+        self.assertEqual(info['target_index'],1)
+        self.assertEqual(sale_quantities(out),sale_quantities(original))
+        self.assertEqual(base['market'],original)
+
+    def test_sell_before_buy_product_boundary_can_still_fund_fixed_buy(self):
+        obs,base=fixture(shed={'MILK':2},money=0)
+        base['market']=[[],['BUY_SEED','CARROT',1],
+                        ['SELL','MILK',2],['BUY_PRODUCT','WHEAT',1]]
+        original=deepcopy(base['market'])
+        out,info=fund(obs,base,{'MILK'})
+        self.assertTrue(info['applied'])
+        self.assertEqual((info['target_index'],info['source_index']),(1,2))
+        self.assertEqual(out[0],['SELL','MILK',1])
+        self.assertEqual(out[1],original[1])
+        self.assertEqual(out[2],['SELL','MILK',1])
+        self.assertEqual(out[3],original[3])
+        self.assertEqual(sale_quantities(out),sale_quantities(original))
+        self.assertEqual(base['market'],original)
+
 class CanonicalSameTurnFundingBinding(unittest.TestCase):
     def test_committed_current_release_matches_same_turn_funding_source(self):
         from build_integrated import source_files, verify_current
