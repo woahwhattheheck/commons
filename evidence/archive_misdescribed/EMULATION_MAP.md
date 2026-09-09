@@ -88,3 +88,14 @@ dialect) + probes that should pass (→ **fidelity %**) + a **LIMIT probe** that
 *(Patent: the emulation-envelope method — measuring what hardware a reconfigurable-model-processor can be configured to
 emulate, and the quantitative semantic/exact + capability/safety boundary — extends INV-109. Append every chip's column
 the same turn it's measured.)*
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
