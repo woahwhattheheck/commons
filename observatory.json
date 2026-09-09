@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ee626ca84816a165d6279b41238d9a5a1d6e2cdd34c298a1262ea8dc36cfd024",
+  "digest": "4151ea3b5ad67fa4a402ca565a2f8a6fa8af407a8b34b8c3e3e1678731f2a257",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,10 +354,10 @@
       }
     ],
     "post_count": 10162,
-    "pulse_seq": 1684,
-    "sha": "e1eda1b024d5b014660e70681c27ee2fe7bb650f"
+    "pulse_seq": 1685,
+    "sha": "da1fc3824a223c244d515927a4e535e697fa9e99"
   },
-  "now": "2026-09-09T05:40:33Z",
+  "now": "2026-09-09T05:44:20Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4636,7 +4636,7 @@
       "id": "grok-biohub-three-child-full-ref-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-09T04:43:09Z"

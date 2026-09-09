@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 1,
  "open_prs": [
   {
    "number": 10978,
@@ -365,22 +365,6 @@
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 10980,
-   "author": "woahwhattheheck",
-   "title": "Biohub: retain complete real-track coverage with an extra dummy track",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10980",
-   "base_freshness": {
-    "base_sha": "bcd5f83a5d711f350b5101a80a4beed411695efa",
-    "main_sha": "bcd5f83a5d711f350b5101a80a4beed411695efa",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
