@@ -117,6 +117,57 @@ def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end
     return shared_slot_ledger(all_plans,orders_at,max_orders)
 
 
+def event_aware_horizon(now, last, route, targets, shops, config):
+    """Extend to the first represented service or stock-pressure event.
+
+    The inherited eight-turn window remains the baseline. Extension cannot cross
+    the current day, an unresolved controller checkpoint, the terminal boundary,
+    or the represented controller tape. A product service date must have a real
+    market slot (or an inherited SELL slot for that product). A represented
+    HARVEST/DROP/PLACE just outside the old window may also extend the bound so
+    the existing receipt ledger can decide whether it creates real shed pressure.
+    """
+    represented_end=min(last,(now//24+1)*24-1,max(now,len(route)-1))
+    checkpoints=[checkpoint for checkpoint,*_ in parent.DECISIONS
+                 if now<checkpoint<=represented_end]
+    if checkpoints:represented_end=min(represented_end,min(checkpoints)-1)
+    baseline_end=min(now+HORIZON,represented_end)
+    max_orders=int(config.get('maxMarketOrdersPerTurn',10))
+    service_dates={}
+    for item in sorted(targets):
+        for date in range(baseline_end+1,represented_end+1):
+            if not absorption(item,date-1,shops,config):continue
+            orders=route[date].get('market',[]) if date<len(route) else []
+            has_slot=len(orders)<max_orders
+            has_item_slot=any(o and len(o)>2 and o[0]=='SELL' and o[1]==item
+                              for o in orders)
+            if has_slot or has_item_slot:
+                service_dates[item]=date
+                break
+    unit_event=None
+    if targets:
+        for date in range(baseline_end+1,represented_end+1):
+            action=route[date] if date<len(route) else parent.PASS
+            acts=[action.get('farmer',['PASS']),*action.get('hands',[])]
+            if any(a and a[0] in ('HARVEST','DROP','PLACE') for a in acts):
+                unit_event=date
+                break
+    candidates=[baseline_end,*service_dates.values()]
+    if unit_event is not None:candidates.append(unit_event)
+    end=max(candidates)
+    return end,{'baseline_end':baseline_end,'hard_end':represented_end,
+                'service_dates':service_dates,'unit_event':unit_event,
+                'extended':end>baseline_end}
+
+def product_event_dates(item, now, end, shops, config):
+    """Executable SELL dates use only this product's exact public absorption."""
+    dates=[now]+[t for t in range(now+1,end+1)
+                 if absorption(item,t-1,shops,config)]
+    if len(dates)>3:dates=dates[:2]+dates[-1:]
+    if dates[-1]!=end:dates.append(end)
+    return sorted(set(dates))
+
+
 class FrozenSelected(SellScheduler):
     def transform(self, obs, config, base):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
@@ -137,49 +188,48 @@ class FrozenSelected(SellScheduler):
             out=copy.deepcopy(base)
             out['market']=parent._terminal_settlement(shed,obs['market']['prices'],out['market'])
             self.pending={};self.previous=seller_public_observation(obs);return out
-        end=min(now+HORIZON,last,(now//24+1)*24-1)
-        # Future controller branch changes are not predicted.
-        for checkpoint,*_ in parent.DECISIONS:
-            if now<checkpoint<=end:end=checkpoint-1
-        shops=obs.get('town',{}).get('unlocked_shops',[])
-        dates=[now]+[t for t in range(now+1,end+1) if any(absorption(p,t-1,shops,config) for p in PRODUCTS)]
-        if len(dates)>3:dates=dates[:2]+dates[-1:]
-        if dates[-1]!=end:dates.append(end)
-        dates=sorted(set(dates))
         baseline_q={}
         for o in base['market']:
             if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
                 baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
+        route=self.controller.R[self.controller.cur]
+        shops=obs.get('town',{}).get('unlocked_shops',[])
+        end,horizon=event_aware_horizon(now,last,route,targets,shops,config)
+        self.diagnostics['horizon']=horizon
         budget=self.cash_reserve(obs,config,base,end)
         best=None;options=[]
         for item,quantity in targets.items():
             if quantity<=0:continue
+            item_end=max(horizon['baseline_end'],horizon['service_dates'].get(item,horizon['baseline_end']),
+                         horizon['unit_event'] or horizon['baseline_end'])
+            dates=product_event_dates(item,now,item_end,shops,config)
             reference=[(now,current[item])]
             rem=quantity-current[item]
             pending_future=[(max(now,t),q) for t,q in self.planned.get(item,[]) if t>now]
             for t,q in pending_future:
                 q=min(rem,q)
-                if q>0:reference.append((min(t,end),q));rem-=q
-            route=self.controller.R[self.controller.cur]
-            for t in range(now+1,end+1):
+                if q>0:reference.append((min(t,item_end),q));rem-=q
+            for t in range(now+1,item_end+1):
                 for order in route[t].get('market',[]) if t<len(route) else []:
                     if order and order[0]=='SELL' and order[1]==item and rem>0:
                         q=min(rem,max(0,int(order[2])));reference.append((t,q));rem-=q
             # Remaining stock keeps a continuation value; no artificial liquidation.
             reference=tuple((t,sum(q for d,q in reference if d==t)) for t in sorted({t for t,_ in reference}))
             if self.mode=='naive':
+                item_budget=self.cash_reserve(obs,config,base,item_end)
                 take=min(quantity,6)
-                if farm['money']<budget or now%24==23:take=max(take,current[item])
+                if farm['money']<item_budget or now%24==23:take=max(take,current[item])
                 if take!=current[item]:
-                    info={'item':item,'quantity':quantity,'worst_relative_gain':0,'plan':[(now,take),(min(last,now+1),quantity-take)]}
+                    info={'item':item,'quantity':quantity,'worst_relative_gain':0,'plan':[(now,take),(min(last,now+1),quantity-take)],
+                          'baseline_horizon_end':horizon['baseline_end'],'horizon_end':item_end}
                     best=(item,tuple(info['plan']),info);break
                 continue
             if len(dates)<2:continue
-            minimum=current[item] if farm['money']<budget else 0
-            receipt_feasible=self.receipt_profile(obs,base,farm,private,end,item,config)
-            route=self.controller.R[self.controller.cur]
+            item_budget=self.cash_reserve(obs,config,base,item_end)
+            minimum=current[item] if farm['money']<item_budget else 0
+            receipt_feasible=self.receipt_profile(obs,base,farm,private,item_end,item,config)
             def feasible(plan):
                 for t,q in plan:
                     if q<=0:continue
@@ -189,6 +239,7 @@ class FrozenSelected(SellScheduler):
                         if q>offered:return False
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
+            info['baseline_horizon_end']=horizon['baseline_end'];info['horizon_end']=item_end
             self.diagnostics['evaluations'].append(info)
             eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)
             rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])
@@ -201,7 +252,6 @@ class FrozenSelected(SellScheduler):
                 and not getattr(self,'joint_producer_busy',False)
                 and not (best and best[2].get('forced_feasibility',False))):
             ranked=sorted(options,key=lambda x:(x[2].get('forced_feasibility',False),x[2]['worst_relative_gain']),reverse=True)[:4]
-            route=self.controller.R[self.controller.cur]
             bound=joint_resource_bound(obs,config,base,farm,private,route,end)
             def orders_at(step):
                 return base['market'] if step==now else route[step].get('market',[]) if step<len(route) else []
