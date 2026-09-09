@@ -1,0 +1,191 @@
+name: TITAN V2 future-rival ablation — SOL-FULCRUM
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-future-rival-ablation-sol-fulcrum/**"
+      - ".github/workflows/titan-v2-future-rival-ablation-sol-fulcrum.yml"
+      - "p/sol-fulcrum-titan-v2-future-rival-ablation-20260909-01.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v2-future-rival-ablation-sol-fulcrum-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  causal-screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v2-future-rival-ablation-sol-fulcrum
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      KAG: revenue/kaggriculture
+      SEEDS: 539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207
+      PYTHONDONTWRITEBYTECODE: "1"
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+
+    steps:
+      - name: Checkout exact source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git status --short
+          printf '%s\n' "$EXPECTED_HEAD" > "$RUNNER_TEMP/EXACT-HEAD.txt"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned official-interpreter dependency
+        shell: bash
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Compile and run focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile "$CASE"/*.py
+          python -m unittest discover -s "$CASE" -p 'test_*.py' -v
+          python "$CASE/seam_contract.py" --output "$RUNNER_TEMP/FUTURE-RIVAL-SEAM.json"
+          find "$CASE" -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --exit-code -- .
+          test -z "$(git status --short)"
+
+      - name: Materialize closure-bound control and ablation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/fulcrum"
+          python "$CASE/materialize.py" \
+            --source "$LAB/runtime/variants/v2" \
+            --output "$RUNNER_TEMP/fulcrum/control" \
+            --arm control \
+            --receipt "$RUNNER_TEMP/fulcrum/CONTROL-MATERIALIZATION.json" \
+            --checkout-head "$EXPECTED_HEAD"
+          python "$CASE/materialize.py" \
+            --source "$LAB/runtime/variants/v2" \
+            --output "$RUNNER_TEMP/fulcrum/ablation" \
+            --arm ablation \
+            --receipt "$RUNNER_TEMP/fulcrum/ABLATION-MATERIALIZATION.json" \
+            --checkout-head "$EXPECTED_HEAD"
+          git diff --exit-code -- .
+          test -z "$(git status --short)"
+
+      - name: Verify canonical package remains unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd "$LAB" && python build_integrated.py --check)
+          git diff --exit-code -- .
+          test -z "$(git status --short)"
+
+      - name: Run identical official-interpreter panels
+        id: games
+        shell: bash
+        run: |
+          set +e
+          python "$CASE/activation_eval.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$RUNNER_TEMP/fulcrum/control/entry.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15.0 \
+            --game-timeout 180.0 \
+            --episode-steps 720 \
+            --recheck-first \
+            --output "$RUNNER_TEMP/fulcrum/CONTROL-GAMES.json"
+          control_status=$?
+          python "$CASE/activation_eval.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$RUNNER_TEMP/fulcrum/ablation/entry.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15.0 \
+            --game-timeout 180.0 \
+            --episode-steps 720 \
+            --recheck-first \
+            --output "$RUNNER_TEMP/fulcrum/ABLATION-GAMES.json"
+          ablation_status=$?
+          set -e
+          echo "control_status=$control_status" >> "$GITHUB_OUTPUT"
+          echo "ablation_status=$ablation_status" >> "$GITHUB_OUTPUT"
+          test "$control_status" -eq 0
+          test "$ablation_status" -eq 0
+
+      - name: Compare complete paired evidence
+        id: compare
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          python "$CASE/compare.py" \
+            --control "$RUNNER_TEMP/fulcrum/CONTROL-GAMES.json" \
+            --ablation "$RUNNER_TEMP/fulcrum/ABLATION-GAMES.json" \
+            --control-receipt "$RUNNER_TEMP/fulcrum/CONTROL-MATERIALIZATION.json" \
+            --ablation-receipt "$RUNNER_TEMP/fulcrum/ABLATION-MATERIALIZATION.json" \
+            --head "$EXPECTED_HEAD" \
+            --output "$RUNNER_TEMP/fulcrum/VERDICT.json" \
+            --markdown "$RUNNER_TEMP/fulcrum/VERDICT.md"
+          status=$?
+          set -e
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Publish human-readable result
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## SOL-FULCRUM — V2 future-rival ablation"
+            echo
+            echo "- exact head: \`$EXPECTED_HEAD\`"
+            echo "- control evaluator status: \`${{ steps.games.outputs.control_status || 'missing' }}\`"
+            echo "- ablation evaluator status: \`${{ steps.games.outputs.ablation_status || 'missing' }}\`"
+            echo "- comparator status: \`${{ steps.compare.outputs.status || 'missing' }}\`"
+            echo
+            if test -f "$RUNNER_TEMP/fulcrum/VERDICT.md"; then
+              cat "$RUNNER_TEMP/fulcrum/VERDICT.md"
+            else
+              echo "No comparator verdict was produced."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v2-future-rival-ablation-${{ github.run_id }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            ${{ runner.temp }}/EXACT-HEAD.txt
+            ${{ runner.temp }}/FUTURE-RIVAL-SEAM.json
+            ${{ runner.temp }}/fulcrum/
+
+      - name: Enforce complete upside gate
+        if: always()
+        shell: bash
+        run: |
+          test "${{ steps.games.outputs.control_status || 'missing' }}" = "0"
+          test "${{ steps.games.outputs.ablation_status || 'missing' }}" = "0"
+          test "${{ steps.compare.outputs.status || 'missing' }}" = "0"
