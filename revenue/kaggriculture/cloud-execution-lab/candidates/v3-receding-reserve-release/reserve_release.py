@@ -5,13 +5,14 @@ The inherited seller intentionally targets 99/100 occupancy so the next unit
 stage can deposit one item before market.  This candidate preserves that policy
 unless the exact represented next stage proves the spare slot cannot be used:
 
-* the current unbounded unit projection is already within the real capacity;
+* the current unbounded unit projection is exactly the real capacity;
+* Titan's dynamic selected-unit producer is explicitly idle;
 * a next action exists before the terminal boundary and no route checkpoint
   can replace it;
 * no next actor action is DROP or PLACE;
-* neither the current nor next executable market prefix contains an incoming
-  product or animal purchase; and
-* the current-to-next transition does not cross a day boundary.
+* both executable market prefixes are structurally valid and contain no
+  incoming product or animal purchase; and
+* the inherited fixed 24-turn day semantics do not cross a day boundary.
 
 Only then is the inherited feasibility calculation repeated with a synthetic
 capacity of ``real_capacity + 1``.  Because the inherited predicate reserves
@@ -59,8 +60,10 @@ def _contains_incoming_shed_buy(action: Any, maximum: int) -> bool | None:
     if market is None:
         return None
     for order in market:
-        if not isinstance(order, list) or not order:
+        if order == []:
             continue
+        if not isinstance(order, list) or not order:
+            return None
         if order[0] in ("BUY_PRODUCT", "BUY_ANIMAL"):
             return True
     return False
@@ -118,6 +121,12 @@ def reserve_release_certificate(
         or maximum is None
         or maximum < 1
     ):
+        return report
+    # The inherited scheduler simulates route days with literal 24-turn
+    # boundaries.  A non-24 configuration is outside the proven semantic
+    # boundary, so preserve the predecessor policy rather than extrapolate.
+    if turns_per_day != 24:
+        report["reason"] = "unsupported_turns_per_day"
         return report
 
     next_step = now + 1

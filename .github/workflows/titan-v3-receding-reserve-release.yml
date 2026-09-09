@@ -53,10 +53,32 @@ jobs:
         run: |
           set -euo pipefail
           export PYTHONDONTWRITEBYTECODE=1
-          python -m unittest -v test_reserve_release.py test_compare_panel.py
+          python - <<'PY'
+          import unittest
+          import test_compare_panel
+          import test_reserve_release
+          import test_strict_gate
+
+          expected = {
+              test_reserve_release: 14,
+              test_compare_panel: 5,
+              test_strict_gate: 5,
+          }
+          loader = unittest.defaultTestLoader
+          for module, count in expected.items():
+              actual = loader.loadTestsFromModule(module).countTestCases()
+              if actual != count:
+                  raise SystemExit(
+                      f"{module.__name__}: discovered {actual} tests; expected {count}"
+                  )
+              print(f"{module.__name__}: discovered {actual} tests")
+          PY
+          python -m unittest -v \
+            test_reserve_release.py test_compare_panel.py test_strict_gate.py
           python -m py_compile \
             bootstrap.py control.py candidate.py reserve_release.py \
-            compare_panel.py test_reserve_release.py test_compare_panel.py
+            compare_panel.py strict_gate.py test_reserve_release.py \
+            test_compare_panel.py test_strict_gate.py
 
       - name: Verify canonical source and archive stayed unchanged
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -121,6 +143,10 @@ jobs:
             --head "$(git rev-parse HEAD)" \
             --output "$OUT/PAIRED-REPORT.json" \
             --markdown "$OUT/PAIRED-REPORT.md"
+          python "$CASE/strict_gate.py" \
+            --report "$OUT/PAIRED-REPORT.json" \
+            --output "$OUT/STRICT-GATE.json" \
+            --markdown "$OUT/STRICT-GATE.md"
 
       - name: Publish readable result
         if: always()
@@ -130,6 +156,10 @@ jobs:
             cat "$RUNNER_TEMP/receding-reserve-panel/PAIRED-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
           else
             echo '# Receding reserve panel did not reach comparison' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [[ -f "$RUNNER_TEMP/receding-reserve-panel/STRICT-GATE.md" ]]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            cat "$RUNNER_TEMP/receding-reserve-panel/STRICT-GATE.md" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Retain exact evidence

@@ -73,25 +73,32 @@ Focused contracts cover:
 - current pre-market overflow remaining rejected;
 - next `DROP` and `PLACE` retaining the spare slot;
 - current/next incoming product or animal purchases retaining the spare slot;
-- active-prefix, route-checkpoint, day-boundary, no-mutation, idempotent install,
-  existing `FrozenSelected` inheritance, and peer-patch collision behavior;
+- active-prefix, malformed active-market rows, fixed 24-turn semantics,
+  route-checkpoint, day-boundary, no-mutation, idempotent install, existing
+  `FrozenSelected` inheritance, and peer-patch collision behavior;
+- loader discovery proving all 14 reserve-release contracts are class-level tests;
+- the inherited 5-test paired comparator suite plus a separate 5-test strict
+  own-cash gate, so rival harm cannot disguise a candidate cash loss;
 - fail-closed paired-report completeness, provenance, digest, finite-number,
-  duplicate-cell, and no-negative-cell gates.
+  duplicate-cell, trace-only/no-effect, own-cash, and margin-regression gates.
 
 Local command:
 
 ```bash
 cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release
 PYTHONDONTWRITEBYTECODE=1 python -m unittest -v \
-  test_reserve_release.py test_compare_panel.py
+  test_reserve_release.py test_compare_panel.py test_strict_gate.py
 ```
 
 The path-scoped workflow additionally runs current control and candidate through
 the pinned official interpreter against public Arlene and submitted V1, both
-seats, on the same development seeds. `ADVANCE` requires at least one changed
-complete cell, positive mean paired margin, and no negative cell. `NO_SIGNAL`
-keeps the candidate isolated. Any incomplete, duplicate, extra, nonfinite, or
-provenance-drifted cell is `INVALID`.
+seats, on the same development seeds. The original comparator must first
+accept complete, provenance-bound, no-regression margin evidence; the independent
+`strict_gate.py` must then prove at least one changed cell, positive mean paired
+own cash and paired margin, and no negative own-cash or margin cell. A trace-only
+change with no cash signal is `HOLD`; `NO_SIGNAL` keeps the candidate isolated.
+Any incomplete, duplicate, extra, nonfinite, or provenance-drifted cell is
+`INVALID`.
 
 This is development evidence only. It is not a hosted leaderboard result and
 does not authorize canonical promotion.

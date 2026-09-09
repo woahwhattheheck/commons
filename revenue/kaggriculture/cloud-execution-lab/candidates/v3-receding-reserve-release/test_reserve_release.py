@@ -87,7 +87,7 @@ class RecedingReserveReleaseTests(unittest.TestCase):
         )
 
     def test_official_engine_allows_exact_full_but_blocks_the_next_buy(self):
-        state, env, obs = self.fixture(milk=10, wheat=89, cash=100000)
+        state, env, _ = self.fixture(milk=10, wheat=89, cash=100000)
         self.helper.market(
             state, env, [["BUY_PRODUCT", "WHEAT", 1]]
         )
@@ -181,7 +181,6 @@ class RecedingReserveReleaseTests(unittest.TestCase):
             with self.subTest(name=name):
                 _, env, obs = self.fixture()
                 owner = self.scheduler(20, base, {21: next_action})
-                rr.install()
                 certificate = rr.reserve_release_certificate(
                     owner, obs, base, env.configuration
                 )
@@ -207,6 +206,30 @@ class RecedingReserveReleaseTests(unittest.TestCase):
                 owner, obs, PASS, env.configuration
             )["eligible"]
         )
+
+    def test_malformed_active_market_row_fails_closed(self):
+        _, env, obs = self.fixture()
+        next_action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": ["not-an-action-row"],
+        }
+        owner = self.scheduler(20, PASS, {21: next_action})
+        certificate = rr.reserve_release_certificate(
+            owner, obs, PASS, env.configuration
+        )
+        self.assertFalse(certificate["eligible"])
+        self.assertEqual(certificate["reason"], "malformed_next_market")
+
+    def test_non_24_turn_day_semantics_fail_closed(self):
+        _, env, obs = self.fixture()
+        env.configuration.turnsPerDay = 12
+        owner = self.scheduler(20, PASS, {21: PASS})
+        certificate = rr.reserve_release_certificate(
+            owner, obs, PASS, env.configuration
+        )
+        self.assertFalse(certificate["eligible"])
+        self.assertEqual(certificate["reason"], "unsupported_turns_per_day")
 
     def test_dynamic_unit_producer_state_fails_closed(self):
         _, env, obs = self.fixture()
