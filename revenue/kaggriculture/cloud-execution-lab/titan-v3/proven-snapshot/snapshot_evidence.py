@@ -83,6 +83,12 @@ def _integer(value: Any, label: str) -> int:
     return value
 
 
+def _boolean(value: Any, label: str) -> bool:
+    if type(value) is not bool:
+        raise SnapshotError(f"{label} must be a boolean")
+    return value
+
+
 def _finite(value: Any, label: str) -> float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise SnapshotError(f"{label} must be a finite number")
@@ -135,16 +141,10 @@ def _environment_identity(document: Mapping[str, Any], label: str) -> dict[str, 
     }
 
 
-def _validate_games(
-    document: Mapping[str, Any],
-    pin: EvidenceLedgerPin,
-) -> tuple[dict[tuple[str, int, str, int], dict[str, Any]], dict[str, dict[str, int]]]:
+def _validate_games(document: Mapping[str, Any], pin: EvidenceLedgerPin) -> tuple[dict[tuple[str, int, str, int], dict[str, Any]], dict[str, dict[str, int]]]:
     expected = set(itertools.product(pin.variants, pin.seeds, pin.opponents, (0, 1)))
     found: dict[tuple[str, int, str, int], dict[str, Any]] = {}
-    counts = {
-        variant: {"W": 0, "T": 0, "L": 0, "failed": 0, "games": 0}
-        for variant in pin.variants
-    }
+    counts = {variant: {"W": 0, "T": 0, "L": 0, "failed": 0, "games": 0} for variant in pin.variants}
 
     for index, raw in enumerate(_list(document.get("games"), f"{pin.name}.games")):
         row = _mapping(raw, f"{pin.name}.games[{index}]")
@@ -194,16 +194,13 @@ def _validate_games(
     for variant, derived in counts.items():
         variant_report = _mapping(reported.get(variant), f"{pin.name}.summary.W_T_L_first.{variant}")
         for field, value in derived.items():
-            if variant_report.get(field) != value:
+            actual = _integer(variant_report.get(field), f"{pin.name}.summary.{variant}.{field}")
+            if actual != value:
                 raise SnapshotError(f"{pin.name} summary mismatch: {variant}.{field}")
     return found, counts
 
 
-def _validate_pairs(
-    document: Mapping[str, Any],
-    pin: EvidenceLedgerPin,
-    rows: Mapping[tuple[str, int, str, int], Mapping[str, Any]],
-) -> dict[str, Any] | None:
+def _validate_pairs(document: Mapping[str, Any], pin: EvidenceLedgerPin, rows: Mapping[tuple[str, int, str, int], Mapping[str, Any]]) -> dict[str, Any] | None:
     summary = _mapping(document.get("summary"), f"{pin.name}.summary")
     reported_pairs = _list(summary.get("paired_outcomes"), f"{pin.name}.summary.paired_outcomes")
     if set(pin.variants) != {"baseline", "candidate"}:
@@ -249,7 +246,9 @@ def _validate_pairs(
         actual = reported[key]
         for field, value in expected_row.items():
             actual_value = actual.get(field)
-            if isinstance(value, float):
+            if isinstance(value, bool):
+                actual_value = _boolean(actual_value, f"{pin.name}.paired.{key}.{field}")
+            elif isinstance(value, float):
                 actual_value = _finite(actual_value, f"{pin.name}.paired.{key}.{field}")
             if actual_value != value:
                 raise SnapshotError(f"{pin.name} paired outcome mismatch: {key}.{field}")
@@ -274,16 +273,15 @@ def validate_evidence(lab_root: Path, source: Pin) -> dict[str, Any]:
     if not source.evidence_ledgers:
         raise SnapshotError("source pin has no evidence-ledger contract")
     manifest_path = lab_root / "exports" / "FILES.json"
-    manifest = _decode_object(
-        _read_bytes(manifest_path, "exports/FILES.json"),
-        "exports/FILES.json",
-    )
+    manifest = _decode_object(_read_bytes(manifest_path, "exports/FILES.json"), "exports/FILES.json")
     environment: dict[str, Any] | None = None
     result: dict[str, Any] = {}
 
     names = [pin.name for pin in source.evidence_ledgers]
     if len(names) != len(set(names)):
         raise SnapshotError("source pin contains duplicate evidence-ledger names")
+    if set(names) != {"development", "held_out"}:
+        raise SnapshotError("source pin must bind exactly development and held_out ledgers")
 
     for ledger_pin in source.evidence_ledgers:
         path = lab_root / ledger_pin.path
@@ -293,10 +291,7 @@ def validate_evidence(lab_root: Path, source: Pin) -> dict[str, Any]:
         digest = sha256(payload)
         if digest != ledger_pin.sha256:
             raise SnapshotError(f"{ledger_pin.name} ledger SHA-256 drift")
-        if manifest.get(ledger_pin.path) != {
-            "bytes": ledger_pin.bytes,
-            "sha256": ledger_pin.sha256,
-        }:
+        if manifest.get(ledger_pin.path) != {"bytes": ledger_pin.bytes, "sha256": ledger_pin.sha256}:
             raise SnapshotError(f"FILES.json does not bind {ledger_pin.path}")
 
         document = _decode_object(payload, ledger_pin.path)
@@ -312,11 +307,7 @@ def validate_evidence(lab_root: Path, source: Pin) -> dict[str, Any]:
         if candidate is None:
             raise SnapshotError(f"{ledger_pin.name} does not contain a candidate variant")
         entry: dict[str, Any] = {
-            "ledger": {
-                "path": ledger_pin.path,
-                "bytes": ledger_pin.bytes,
-                "sha256": ledger_pin.sha256,
-            },
+            "ledger": {"path": ledger_pin.path, "bytes": ledger_pin.bytes, "sha256": ledger_pin.sha256},
             "seeds": list(ledger_pin.seeds),
             "opponents": list(ledger_pin.opponents),
             "seats": [0, 1],
@@ -332,6 +323,15 @@ def validate_evidence(lab_root: Path, source: Pin) -> dict[str, Any]:
     if not isinstance(held, dict) or not isinstance(held.get("paired"), dict):
         raise SnapshotError("held_out paired control evidence is required")
     paired = held["paired"]
+    development = result.get("development")
+    if not isinstance(development, dict):
+        raise SnapshotError("development control evidence is required")
+    development_candidate = _mapping(development.get("candidate"), "development.candidate")
+    held_candidate = _mapping(held.get("candidate"), "held_out.candidate")
+    strong_control = all(
+        record.get("W") == record.get("games") and record.get("L") == 0 and record.get("failed") == 0
+        for record in (development_candidate, held_candidate)
+    )
     return {
         "status": "BOUND_CONTROL_ONLY",
         "source": {
@@ -342,7 +342,7 @@ def validate_evidence(lab_root: Path, source: Pin) -> dict[str, Any]:
         "environment": environment,
         **result,
         "strength_boundary": {
-            "strong_measured_control": True,
+            "strong_measured_control": strong_control,
             "uniform_non_regression": paired["uniform_non_regression"],
             "historical_local_only": True,
             "hosted_leaderboard_claim": False,
