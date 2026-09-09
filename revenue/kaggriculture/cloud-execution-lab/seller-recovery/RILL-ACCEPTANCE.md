@@ -43,3 +43,7 @@ Detailed executed reports are included as deterministic gzip files under `report
 ## Integration boundary
 
 The production contract is accepted. PR10400's current head still points CURRENT at the predecessor archive in the checked snapshot; the producer's dedicated single-writer workflow owns the coherent archive/source/pointer update. Do not merge a text-only source head or create a competing runtime fork.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

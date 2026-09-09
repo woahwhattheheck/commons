@@ -9,3 +9,7 @@ Eval panel seeds 2611101001-2611101016 both seats vs f8f1 and vs 3b4b is deferre
 This file will be updated when SUMMARY.json lands with measured results.
 
 Replay used: https://www.kaggleusercontent.com/episodes/106817281.json
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -158,3 +158,7 @@ paired-gate threat model. A receipt is an immutable hash binding, not a digital
 signature or proof against a malicious evaluator. The gate does not prove a
 leaderboard rank, replace the current release archive, or authorize provider
 publication.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

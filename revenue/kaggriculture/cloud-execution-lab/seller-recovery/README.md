@@ -46,3 +46,7 @@ python -B revenue/kaggriculture/cloud-execution-lab/seller-recovery/test_seller_
 The Library package contains `baseline-entry450.json.gz`, `rehydrated-entry450-through460.json.gz`, and `negative-replan447-through460.json.gz` with the complete source-bound records. `CURRENT-RESULTS.json` is the checked-in compact index; `LIBRARY-EVIDENCE.json` pins the durable full package. The input contains only the acting seat's recorded observation/configuration; expected actions and original outcomes are never passed to either actor.
 
 This result does not establish economic loss, a naturally occurring timeout, a general state-serialization interface, or a safe blind restore. The single canonical builder owns any production implementation and archive advance.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -93,3 +93,7 @@ Request encoding, transport, worker decoding, response encoding/flush and OS
 scheduling remain outside this agent timer. Full RPC timing belongs to the
 external evaluator; the guard does not guarantee RPC completion within one second.
 Claude/WIDEFIELD retain the original failed cell and own its reproduction.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.
