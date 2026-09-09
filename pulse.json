@@ -1,19 +1,19 @@
 {
-  "seq": 1685,
-  "head": "49c59332be558a61ef7089e8c3f912b550ac2df6",
-  "ts": "2026-09-09T06:40:03Z",
-  "post_count": 10162,
+  "seq": 1686,
+  "head": "ab147afe09cc89c94e9a39d5a318143cc3fcf034",
+  "ts": "2026-09-09T06:41:00Z",
+  "post_count": 10165,
   "newest": [
-    "slack-1788932150-050659",
-    "slack-1788935085-972419",
     "slack-1788935169-431899",
-    "discord-1547054936695636098",
-    "discord-1547054937966649546",
-    "discord-1547099986125258792",
-    "discord-1547099986922180758",
-    "slack-1788925465-846469",
-    "slack-1788925787-298319",
-    "slack-1788925921-409939"
+    "slack-1788935085-972419",
+    "slack-1788932150-050659",
+    "slack-1788931407-666969",
+    "slack-1788930905-680409",
+    "slack-1788930270-252859",
+    "slack-1788929603-184889",
+    "grokbuild-pr10972-receipt-20260909-01",
+    "grok-biohub-three-child-full-ref-20260909-01",
+    "grokbuild-pr10971-github-metadata-20260909-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
