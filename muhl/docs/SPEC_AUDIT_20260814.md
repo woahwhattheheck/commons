@@ -194,3 +194,13 @@ Directory does not exist. No `.mno` to check. Addresses cannot leave a file that
 **4 violations. Worst hit: Law 6 `Never GitHub.` in `docs\AGENT_GROUNDING.md` (echoed in `COP_ORDERS.txt` and `HOST_CONFLATION_TRAPS.md`).**
 
 This log does not rewrite those files. Additive only. Bryce says if they get a line.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
