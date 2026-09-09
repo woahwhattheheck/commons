@@ -4,7 +4,7 @@
 The evaluator itself is never edited. Each shard launches an independent evaluator
 process on disjoint seeds; candidate/opponent paths are supplied by the caller.
 S24 is fail-closed: every scheduled game must complete for exit status 0.
-Exact scheduled identity (opponent, seed, candidate_seat) is enforced, not only
+Exact scheduled key (opponent, seed, candidate_seat) is checked, not only
 aggregate cardinality.
 """
 from __future__ import annotations
@@ -195,7 +195,7 @@ def main() -> int:
     expected = len(seeds) * len(opponents) * 2
     expected_key_set = expected_keys(seeds, opponent_names)
 
-    # Exact scheduled identity: reject duplicates, unexpected, missing keys.
+    # Exact scheduled keys: flag duplicates, unexpected, missing keys.
     observed_keys: list[tuple[str, int, int]] = []
     key_errors: list[str] = []
     for game in games:
