@@ -126,6 +126,28 @@ def shared_slot_ledger(plans, orders_by_step, max_orders):
             return None
     return ledger
 
+def _acceptance_rule(config):
+    rule=str((config or {}).get('sellAcceptanceRule','strict')).strip().lower()
+    return rule if rule in ('strict','expected_downside','minimax_regret') else 'strict'
+
+
+def _scenario_weights(names, config):
+    raw=(config or {}).get('sellScenarioWeights',{})
+    weights=[]
+    if isinstance(raw,dict):
+        for name in names:
+            try:weights.append(max(0.0,float(raw.get(name,0.0))))
+            except (TypeError,ValueError):weights.append(0.0)
+    if len(weights)!=len(names) or sum(weights)<=0:
+        weights=[1.0 for _ in names]
+    total=sum(weights)
+    return {name:weight/total for name,weight in zip(names,weights)}
+
+
+def _weighted_gain(deltas, names, weights):
+    return sum(float(delta)*float(weights[name]) for name,delta in zip(names,deltas))
+
+
 def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
                  reference,rival_quantity,minimum_now=0,capacity_ok=None,last=718):
     end=dates[-1]
@@ -150,15 +172,25 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
             for share in (1,2,3):
                 a=remaining*share//4
                 candidates.add(((now,first),(future[0],a),(future[-1],remaining-a)))
-    # Enumerates every legal first quantity and a bounded later-tranche family.
-    for plan in sorted(candidates):
-        if sum(q for _,q in plan)>quantity:continue
-        if dict(plan).get(now,0)<minimum_now:continue
-        # With a feasible incumbent, a nonpositive no-rival difference cannot
-        # meet the existing strict all-scenario improvement rule. Reject that
-        # economic loser before the more expensive physical ledger callback.
-        # The forced-feasibility path keeps the original evaluation order.
-        if reference_feasible:
+    rule=_acceptance_rule(config)
+    names=[name for name,_,_ in scenarios]
+    weights=_scenario_weights(names,config)
+    try:downside_bound=max(0.0,float((config or {}).get('sellDownsideBound',0.0)))
+    except (TypeError,ValueError):downside_bound=0.0
+    accepted=False
+    acceptance_score=0.0
+    weighted_expected_gain=0.0
+    reference_max_regret=None
+    max_regret=None
+    scenario_regrets=None
+
+    # Preserve the exact incumbent strict-dominance behavior and its cheap
+    # no-rival prune. Alternative E18 rules deliberately evaluate the same
+    # feasible candidate family without this economic prune.
+    if reference_feasible and rule=='strict':
+        for plan in sorted(candidates):
+            if sum(q for _,q in plan)>quantity:continue
+            if dict(plan).get(now,0)<minimum_now:continue
             first_score=model.score(plan,quantity,0,'paired',end==last)
             if first_score[0]-baseline[0][0] <= 0:
                 continue
@@ -172,19 +204,98 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
                     break
                 scores.append(score)
             if not competitive:continue
-        else:
+            deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]
+            key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))
+            if key[0]>0 and key>best_key:
+                best_key,best_plan,best_scores=key,plan,scores
+                found_feasible=True
+        accepted=best_key[0]>0
+        acceptance_score=best_key[0] if accepted else 0.0
+        chosen_deltas=[s[0]-b[0] for s,b in zip(best_scores,baseline)]
+        weighted_expected_gain=_weighted_gain(chosen_deltas,names,weights)
+    elif not reference_feasible:
+        # Forced feasibility remains a physical rescue path, independent of
+        # E18's economic comparison policy.
+        for plan in sorted(candidates):
+            if sum(q for _,q in plan)>quantity:continue
+            if dict(plan).get(now,0)<minimum_now:continue
             if capacity_ok and not capacity_ok(plan):continue
             scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]
-        deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]
-        key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))
-        # Require improvement in every explicit scenario; ties preserve reference.
-        if (key[0]>0 or not reference_feasible) and key>best_key:
-            best_key,best_plan,best_scores=key,plan,scores
-            found_feasible=True
+            deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]
+            key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))
+            if key>best_key:
+                best_key,best_plan,best_scores=key,plan,scores
+                found_feasible=True
+        chosen_deltas=[s[0]-b[0] for s,b in zip(best_scores,baseline)]
+        acceptance_score=best_key[0] if found_feasible else 0.0
+        weighted_expected_gain=_weighted_gain(chosen_deltas,names,weights) if found_feasible else 0.0
+    else:
+        records=[]
+        for plan in sorted(candidates):
+            if sum(q for _,q in plan)>quantity:continue
+            if dict(plan).get(now,0)<minimum_now:continue
+            if plan==tuple(reference):
+                scores=baseline
+            else:
+                if capacity_ok and not capacity_ok(plan):continue
+                scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]
+            deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]
+            records.append({'plan':plan,'scores':scores,'deltas':deltas,
+                            'expected':_weighted_gain(deltas,names,weights)})
+        if rule=='expected_downside':
+            best_alt=None
+            for rec in records:
+                if rec['plan']==tuple(reference):continue
+                worst=min(rec['deltas'])
+                if rec['expected']<=0 or worst < -downside_bound:continue
+                key=(round(rec['expected'],8),round(worst,8),
+                     round(sum(rec['deltas']),8),float(dict(rec['plan']).get(now,0)))
+                if best_alt is None or key>best_alt[0]:
+                    best_alt=(key,rec)
+            if best_alt is not None:
+                key,rec=best_alt
+                best_plan,best_scores=rec['plan'],rec['scores']
+                best_key=(round(min(rec['deltas']),8),round(sum(rec['deltas']),8),
+                          float(dict(rec['plan']).get(now,0)))
+                accepted=True;found_feasible=True
+                acceptance_score=key[0];weighted_expected_gain=rec['expected']
+        else:
+            scenario_best=[max(rec['deltas'][i] for rec in records)
+                           for i in range(len(scenarios))]
+            reference_max_regret=max(scenario_best) if scenario_best else 0.0
+            best_alt=None
+            for rec in records:
+                regrets=[best-rec['deltas'][i] for i,best in enumerate(scenario_best)]
+                rec_max=max(regrets) if regrets else 0.0
+                improvement=reference_max_regret-rec_max
+                if rec['plan']==tuple(reference) or improvement<=0:continue
+                key=(round(improvement,8),round(rec['expected'],8),
+                     round(min(rec['deltas']),8),float(dict(rec['plan']).get(now,0)))
+                if best_alt is None or key>best_alt[0]:
+                    best_alt=(key,rec,regrets,rec_max)
+            if best_alt is not None:
+                key,rec,regrets,rec_max=best_alt
+                best_plan,best_scores=rec['plan'],rec['scores']
+                best_key=(round(min(rec['deltas']),8),round(sum(rec['deltas']),8),
+                          float(dict(rec['plan']).get(now,0)))
+                accepted=True;found_feasible=True
+                acceptance_score=key[0];weighted_expected_gain=rec['expected']
+                max_regret=rec_max
+                scenario_regrets={name:regret for name,regret in zip(names,regrets)}
+            else:
+                max_regret=reference_max_regret
+                scenario_regrets={name:best for name,best in zip(names,scenario_best)}
+
+    forced=not reference_feasible and found_feasible
     return best_plan,{'item':item,'quantity':quantity,'rival_scenario_quantity':rival_quantity,
         'reference':list(reference),'plan':list(best_plan),'minimum_now':minimum_now,
         'scenarios':{name:{'reference_relative_value':b[0],'relative_value':s[0],
                           'own_receipts':s[1],'rival_receipts':s[2],'carry_units':s[3]}
                      for (name,_,_),b,s in zip(scenarios,baseline,best_scores)},
-        'worst_relative_gain':best_key[0] if found_feasible else 0.0,'forced_feasibility':not reference_feasible and found_feasible,
-        'feasible':found_feasible,'plans_evaluated':len(candidates)}
+        'worst_relative_gain':best_key[0] if found_feasible else 0.0,
+        'forced_feasibility':forced,'feasible':found_feasible,'plans_evaluated':len(candidates),
+        'acceptance_rule':rule,'accepted':accepted,'acceptance_score':acceptance_score,
+        'scenario_weights':weights,'weighted_expected_gain':weighted_expected_gain,
+        'downside_bound':downside_bound if rule=='expected_downside' else None,
+        'reference_max_regret':reference_max_regret,'max_regret':max_regret,
+        'scenario_regrets':scenario_regrets}
