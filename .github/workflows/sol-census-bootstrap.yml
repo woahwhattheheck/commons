@@ -1,0 +1,100 @@
+name: SOL-CENSUS one-shot bootstrap
+
+on:
+  push:
+    branches:
+      - codex/titan-v123-closure-census-20260909-01
+    paths:
+      - '.sol-census-bootstrap/**'
+      - '.github/workflows/sol-census-bootstrap.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-census-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify sealed payload and extract only owned paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .sol-census-bootstrap/payload.* > /tmp/sol-census-payload.b64
+          printf '%s  %s\n' \
+            fd5929cc3742436b51e987f5e1294435bf0c18f128ef92bcf8991f0f212bdbc8 \
+            /tmp/sol-census-payload.b64 | sha256sum -c -
+          base64 --decode /tmp/sol-census-payload.b64 > /tmp/sol-census-payload.tar.gz
+          printf '%s  %s\n' \
+            d5634b745b86cfae439a8d053edabce985c039991bdc0806956c021ecfdf66d5 \
+            /tmp/sol-census-payload.tar.gz | sha256sum -c -
+          python - <<'PY'
+          import pathlib
+          import tarfile
+
+          target = pathlib.Path('/tmp/sol-census-payload.tar.gz')
+          allowed = {
+              '.github/workflows/titan-v123-closure-census-sol-census.yml',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v123-closure-census-20260909-sol-census/CLOSURE-CENSUS.json',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v123-closure-census-20260909-sol-census/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v123-closure-census-20260909-sol-census/SOURCE.json',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v123-closure-census-20260909-sol-census/closure_census.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v123-closure-census-20260909-sol-census/test_closure_census.py',
+          }
+          seen = set()
+          with tarfile.open(target, 'r:gz') as archive:
+              for member in archive.getmembers():
+                  name = member.name.removeprefix('./')
+                  pure = pathlib.PurePosixPath(name)
+                  if pure.is_absolute() or '..' in pure.parts:
+                      raise SystemExit(f'unsafe archive path: {member.name!r}')
+                  if member.issym() or member.islnk():
+                      raise SystemExit(f'archive link forbidden: {member.name!r}')
+                  if member.isfile():
+                      if name not in allowed or name in seen:
+                          raise SystemExit(f'unexpected or duplicate file: {member.name!r}')
+                      seen.add(name)
+                  elif not member.isdir():
+                      raise SystemExit(f'special archive member forbidden: {member.name!r}')
+              if seen != allowed:
+                  raise SystemExit(f'archive file set mismatch: missing={sorted(allowed-seen)}')
+              archive.extractall('.', filter='data')
+          print(f'PAYLOAD_PATH_GATE_PASS files={len(seen)}')
+          PY
+
+      - name: Run all adversarial and exact-regeneration gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          CENSUS=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v123-closure-census-20260909-sol-census
+          chmod +x "$CENSUS/closure_census.py"
+          python -m unittest discover -s "$CENSUS" -p 'test_*.py' -v
+          python "$CENSUS/closure_census.py" \
+            --variant v1=revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1 \
+            --variant v2=revenue/kaggriculture/cloud-execution-lab/runtime/variants/v2 \
+            --variant v3=revenue/kaggriculture/cloud-execution-lab/runtime/variants/v3 \
+            --expect-entry-alias \
+            --check "$CENSUS/CLOSURE-CENSUS.json"
+          sha256sum "$CENSUS/CLOSURE-CENSUS.json"
+
+      - name: Publish clean artifact commit and remove bootstrap
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .sol-census-bootstrap .github/workflows/sol-census-bootstrap.yml
+          git config user.name 'SOL-CENSUS'
+          git config user.email 'sol-census@commons.local'
+          git add -A
+          test -z "$(git status --porcelain -- .sol-census-bootstrap .github/workflows/sol-census-bootstrap.yml)" || true
+          git commit -m 'titan: bind v1-v3 executable closure identities [skip ci]'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
