@@ -1,0 +1,57 @@
+name: TITAN V3 outer recovery — SOL-MNEMOSYNE
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-outer-recovery-sol-mnemosyne/**"
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
+      - ".github/workflows/titan-v3-outer-recovery-mnemosyne.yml"
+  push:
+    branches:
+      - "sol/mnemosyne-titan-v3-outer-recovery-20260909-01"
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-outer-recovery-sol-mnemosyne/**"
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
+      - ".github/workflows/titan-v3-outer-recovery-mnemosyne.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-outer-recovery-mnemosyne-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  continuity-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-outer-recovery-sol-mnemosyne
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile candidate and tests
+        run: python -m py_compile recovery_main.py audit_current.py test_recovery_main.py test_audit_current.py test_current_entrypoint_integration.py
+      - name: Run lifecycle and real-entrypoint contracts
+        run: python -m unittest -v
+      - name: Bind current source shape twice
+        run: |
+          python audit_current.py --root ../.. --output /tmp/mnemosyne-a.json > /tmp/mnemosyne-a.stdout
+          python audit_current.py --root ../.. --output /tmp/mnemosyne-b.json > /tmp/mnemosyne-b.stdout
+          cmp /tmp/mnemosyne-a.json /tmp/mnemosyne-b.json
+          cmp /tmp/mnemosyne-a.stdout /tmp/mnemosyne-b.stdout
+          cat /tmp/mnemosyne-a.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-v3-outer-recovery-source-audit-${{ github.run_id }}
+          path: /tmp/mnemosyne-*.json
+          if-no-files-found: error
+          retention-days: 14
