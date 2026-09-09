@@ -48,7 +48,7 @@ jobs:
           python3 -B build_integrated.py | tee "$RUNNER_TEMP/e08-build-receipt.json"
           python3 -B build_integrated.py --check | tee "$RUNNER_TEMP/e08-check-receipt.json"
           sha256sum exports/titan-current.tar.gz runtime/integrated-selected/CURRENT-SOURCE.json runtime/integrated-selected/CURRENT-ARCHIVE.json | tee "$RUNNER_TEMP/e08-sha256.txt"
-          find exports/historical -maxdepth 1 -type f -name 'titan-*.tar.gz' -printf '%f %s bytes\n' | sort | tail -20 | tee "$RUNNER_TEMP/e08-history.txt"
+          test -f exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz
 
       - name: Stage generated release payload
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -57,24 +57,10 @@ jobs:
           cp exports/titan-current.tar.gz "$RUNNER_TEMP/e08-release/exports/titan-current.tar.gz"
           cp runtime/integrated-selected/CURRENT-SOURCE.json "$RUNNER_TEMP/e08-release/runtime/integrated-selected/CURRENT-SOURCE.json"
           cp runtime/integrated-selected/CURRENT-ARCHIVE.json "$RUNNER_TEMP/e08-release/runtime/integrated-selected/CURRENT-ARCHIVE.json"
-          OLD_SHA=$(python3 - <<'PY'
-import json
-from pathlib import Path
-# Build receipt history is deterministic: select the historical archive whose digest is not the new current digest
-current=json.loads(Path('runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())['sha256']
-rows=sorted(Path('exports/historical').glob('titan-*.tar.gz'))
-for p in rows:
-    digest=p.name[len('titan-'):-len('.tar.gz')]
-    if digest != current:
-        print(digest)
-PY
-)
-          test -n "$OLD_SHA"
-          cp "exports/historical/titan-$OLD_SHA.tar.gz" "$RUNNER_TEMP/e08-release/exports/historical/titan-$OLD_SHA.tar.gz"
+          cp exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz "$RUNNER_TEMP/e08-release/exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz"
           cp "$RUNNER_TEMP/e08-build-receipt.json" "$RUNNER_TEMP/e08-release/BUILD-RECEIPT.json"
           cp "$RUNNER_TEMP/e08-check-receipt.json" "$RUNNER_TEMP/e08-release/CHECK-RECEIPT.json"
           cp "$RUNNER_TEMP/e08-sha256.txt" "$RUNNER_TEMP/e08-release/SHA256SUMS.txt"
-          cp "$RUNNER_TEMP/e08-history.txt" "$RUNNER_TEMP/e08-release/HISTORY.txt"
 
       - name: Upload E08 generated release
         uses: actions/upload-artifact@v4
