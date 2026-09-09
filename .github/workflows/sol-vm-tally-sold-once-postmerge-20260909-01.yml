@@ -1,0 +1,48 @@
+name: sol-vm-tally-sold-once-postmerge
+
+on:
+  push:
+    branches:
+      - 'sol-vm/tally-sold-once-postmerge-20260909-*'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-current-sold-once:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout carrier
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record carrier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "carrier_head=$(git rev-parse HEAD)"
+          git show -s --format='carrier_parents=%P' HEAD
+      - name: Hash exact recovered TALLY paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          for p in \
+            host/business_pack_desk_instance.py \
+            test_business_pack_desk_instance.py \
+            packs/sidewalk-signal-web-desk-20260902-01/README.md \
+            packs/sidewalk-signal-web-desk-20260902-01/assets.md \
+            packs/sidewalk-signal-web-desk-20260902-01/index.html \
+            packs/sidewalk-signal-web-desk-20260902-01/manifest.json \
+            packs/sidewalk-signal-web-desk-20260902-01/rating.md; do
+            printf '%s=' "$p"
+            git hash-object "$p"
+          done
+      - name: Run exact focused suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_business_pack_desk_instance.py
+          python3 -m py_compile host/business_pack_desk_instance.py test_business_pack_desk_instance.py
