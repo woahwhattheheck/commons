@@ -22,3 +22,13 @@ PROVEN.md numbered list held. n_proven **16**. Additive stamps (pfc_load, mouths
 FINISH_TODO 2026-08-15. LIVE NOW stamped in place. Chronology held. n_throws **170**. Not a dump.
 
 STOP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
