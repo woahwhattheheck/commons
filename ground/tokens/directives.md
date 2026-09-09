@@ -23,3 +23,14 @@ As of 2026-08-20 (check the file, not this sentence):
 Direct owner instructions execute without waiting for permission, approval, Court, a bench, or a session. If scope is unclear, search his words (`GRANTS` G11) to resolve the intended build and preserve evidence; never use that search to decide who may work. Keep building the smallest compatible remainder while a public Court discussion, if any, stays advisory.
 
 Do not remint a landed id. Cite the file that already exists.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
