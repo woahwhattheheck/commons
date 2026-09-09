@@ -56,6 +56,7 @@ OWNER_DISK_MARKERS = (
 )
 
 _CONFLICT = object()
+_MISSING = object()
 
 SECRET_BASENAMES = {
     ".env",
@@ -163,8 +164,10 @@ def refuse_forbidden_argv(argv):
         raise ForbiddenGit("git stash drop/pop/apply/push is forbidden; stash create is the recovery object")
     if cmd == "clean" and any(_flag_has_f(t) for t in tokens[1:]):
         raise ForbiddenGit("git clean -f is forbidden")
+    # In a short push-option cluster, -o consumes the remaining characters.
+    # Reject a preceding -f, not an f inside the attached push-option value.
     if cmd == "push" and any(
-        t in tokens or t.startswith("--force") for t in ("-f", "--force", "--force-with-lease", "--force-if-includes")
+        re.match(r"^-[^-o]*f", t) or t.startswith("--force") for t in tokens[1:]
     ):
         raise ForbiddenGit("force-push is forbidden")
     if cmd == "worktree" and "remove" in tokens and any(_flag_has_f(t) for t in tokens):
@@ -440,21 +443,25 @@ def _is_append_only(base, side):
 def _compose_json(base, left, right):
     if left == right:
         return left
+    if left == base:
+        return right
+    if right == base:
+        return left
     if isinstance(left, dict) and isinstance(right, dict):
         base_d = base if isinstance(base, dict) else {}
         out = {}
         for key in set(left) | set(right) | set(base_d):
-            in_l = key in left
-            in_r = key in right
-            if in_l and in_r:
-                composed = _compose_json(base_d.get(key), left[key], right[key])
-                if composed is _CONFLICT:
-                    return _CONFLICT
+            # A missing key is a deletion, not the JSON value null. Compose
+            # against the base so an unchanged side cannot undo the other edit.
+            composed = _compose_json(
+                base_d.get(key, _MISSING),
+                left.get(key, _MISSING),
+                right.get(key, _MISSING),
+            )
+            if composed is _CONFLICT:
+                return _CONFLICT
+            if composed is not _MISSING:
                 out[key] = composed
-            elif in_l:
-                out[key] = left[key]
-            elif in_r:
-                out[key] = right[key]
         return out
     if isinstance(left, list) and isinstance(right, list):
         base_l = base if isinstance(base, list) else []
@@ -1086,6 +1093,10 @@ def main(argv=None):
     sub.add_parser("snapshot")
     p_rec = sub.add_parser("recover")
     p_rec.add_argument("receipt")
+    for command_parser in sub.choices.values():
+        command_parser.add_argument("--peer", default=argparse.SUPPRESS)
+        command_parser.add_argument("--worktree", default=argparse.SUPPRESS)
+        command_parser.add_argument("--json", action="store_true", default=argparse.SUPPRESS)
     args = parser.parse_args(argv)
 
     try:

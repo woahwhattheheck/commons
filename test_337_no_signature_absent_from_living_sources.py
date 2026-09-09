@@ -4,10 +4,15 @@
 Historical p/ receipts stay untouched and are excluded. The two EOF whitespace
 tests must keep their POSIX / extra-blank / CR / git-diff-check purpose without
 pinning the invented closer as a living convention.
+
+ground/OWNER_NOW.md is a living last-write-wins card. It may name the invented
+closer as never-law, but it must not carry the three-byte-space-two-byte
+signature itself. A scan exemption is a paper-over.
 """
 from __future__ import annotations
 
 from pathlib import Path
+import subprocess
 import unittest
 
 
@@ -82,6 +87,30 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
                 hits.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(hits, [], f"invented signature still in living sources: {hits}")
 
+    def test_owner_now_names_invented_closer_as_never_law_without_signature(self) -> None:
+        rel = "ground/OWNER_NOW.md"
+        path = ROOT / rel
+        self.assertTrue(path.is_file(), rel)
+        raw = path.read_bytes()
+        text = raw.decode("utf-8")
+        self.assertNotIn(SIGNATURE.encode("utf-8"), raw)
+        self.assertIn("The invented closer was never Bryce law", text)
+        self.assertIn("## Retired (peer virus, never owner law)", text)
+        self.assertIn("- invented closer\n", text)
+        blob = subprocess.check_output(["git", "-C", str(ROOT), "hash-object", rel], text=True).strip()
+        self.assertTrue(blob.startswith("0a574d94"), f"{rel} unexpected: {blob}")
+
+    def test_named_living_canaries_stay_clear_of_invented_signature(self) -> None:
+        canaries = (
+            ".cursor/rules/github-already-logged-in.mdc",
+            "ground/BUSINESS_PACK_KEEP_SELL.md",
+            "ground/HARNESS_ALREADY_LOGGED_IN.md",
+            "ground/OWNER_NOW.md",
+        )
+        for rel in canaries:
+            raw = (ROOT / rel).read_bytes()
+            self.assertNotIn(SIGNATURE.encode("utf-8"), raw, rel)
+
     def test_player2_projection_does_not_reintroduce_invented_closer(self) -> None:
         """memory/PLAYER2 is a living projection; the historical p/ receipt stays untouched."""
         for rel in ("memory/PLAYER2.json", "memory/PLAYER2.html"):
@@ -92,8 +121,6 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
         self.assertIn(SIGNATURE, receipt.read_text(encoding="utf-8"))
 
     def test_historical_chargeable_checkout_receipt_blob_is_untouched(self) -> None:
-        import subprocess
-
         receipt = "p/grok-build-chargeable-checkout-20260828-01.md"
         blob = subprocess.check_output(
             ["git", "-C", str(ROOT), "hash-object", receipt],

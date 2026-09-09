@@ -1,0 +1,310 @@
+{
+  "schema_version": "commons-agent-failure-autopsy-report/v1",
+  "kind": "AGENT_FAILURE_AUTOPSY_REPORT",
+  "record_classification": "SYNTHETIC_EXAMPLE",
+  "offer_id": "agent-failure-autopsy-29",
+  "case_id": "synthetic-generated-settings-001",
+  "intake_sha256": "c242aad2dc08cec520e7d85937a9ca0ab218c49f7150ebeb676e6c26cf82a395",
+  "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
+  "disposition": "DIAGNOSIS_DELIVERED",
+  "artifact_state": "PEER_DRAFT",
+  "delivery": {
+    "clock_started_at": "2026-09-03T09:02:00-04:00",
+    "delivery_due_at": "2026-09-04T09:02:00-04:00",
+    "delivered_at": "2026-09-03T09:20:00-04:00",
+    "within_one_business_day": true
+  },
+  "timeline": [
+    {
+      "sequence": 1,
+      "claim_type": "OBSERVED",
+      "statement": "The run begins with a generated timeout value of 5 where the focused test expects 30.",
+      "evidence_refs": [
+        "transcript-001#T1-L01"
+      ]
+    },
+    {
+      "sequence": 2,
+      "claim_type": "OBSERVED",
+      "statement": "The agent selects generated/settings.json as the edit target.",
+      "evidence_refs": [
+        "transcript-001#T1-L02"
+      ]
+    },
+    {
+      "sequence": 3,
+      "claim_type": "OBSERVED",
+      "statement": "The first patch changes the generated value from 5 to 30.",
+      "evidence_refs": [
+        "transcript-001#T1-L03"
+      ]
+    },
+    {
+      "sequence": 4,
+      "claim_type": "OBSERVED",
+      "statement": "The generator immediately rewrites generated/settings.json from config/settings.toml.",
+      "evidence_refs": [
+        "transcript-001#T1-L04"
+      ]
+    },
+    {
+      "sequence": 5,
+      "claim_type": "OBSERVED",
+      "statement": "The focused test observes 5 and fails.",
+      "evidence_refs": [
+        "transcript-001#T1-L05"
+      ]
+    },
+    {
+      "sequence": 6,
+      "claim_type": "OBSERVED",
+      "statement": "The agent repeats the same generated-file edit without changing the named generator source.",
+      "evidence_refs": [
+        "transcript-001#T1-L06",
+        "transcript-001#T1-L07"
+      ]
+    },
+    {
+      "sequence": 7,
+      "claim_type": "OBSERVED",
+      "statement": "The generator again rewrites the output from config/settings.toml.",
+      "evidence_refs": [
+        "transcript-001#T1-L08"
+      ]
+    },
+    {
+      "sequence": 8,
+      "claim_type": "OBSERVED",
+      "statement": "The second focused test fails with the same expected-30, observed-5 result.",
+      "evidence_refs": [
+        "transcript-001#T1-L09"
+      ]
+    }
+  ],
+  "first_meaningful_divergence": {
+    "timeline_sequence": 2,
+    "claim_type": "OBSERVED",
+    "statement": "The first meaningful divergence is selecting the generated output as the edit target even though the run later identifies a separate source file.",
+    "evidence_refs": [
+      "transcript-001#T1-L02",
+      "transcript-001#T1-L04"
+    ]
+  },
+  "failure_chain": [
+    {
+      "sequence": 1,
+      "claim_type": "OBSERVED",
+      "statement": "The desired value differs from the generated value exercised by the test.",
+      "evidence_refs": [
+        "transcript-001#T1-L01"
+      ]
+    },
+    {
+      "sequence": 2,
+      "claim_type": "OBSERVED",
+      "statement": "The agent changes a generated output rather than the source named by the generator.",
+      "evidence_refs": [
+        "transcript-001#T1-L02",
+        "transcript-001#T1-L03",
+        "transcript-001#T1-L04"
+      ]
+    },
+    {
+      "sequence": 3,
+      "claim_type": "OBSERVED",
+      "statement": "Generation restores the value sourced from config/settings.toml before the test runs.",
+      "evidence_refs": [
+        "transcript-001#T1-L04",
+        "transcript-001#T1-L05"
+      ]
+    },
+    {
+      "sequence": 4,
+      "claim_type": "OBSERVED",
+      "statement": "The retry repeats the same target and the same overwrite-and-fail sequence.",
+      "evidence_refs": [
+        "transcript-001#T1-L06",
+        "transcript-001#T1-L07",
+        "transcript-001#T1-L08",
+        "transcript-001#T1-L09"
+      ]
+    }
+  ],
+  "causes": {
+    "primary": [
+      {
+        "cause_id": "cause-wrong-source-target",
+        "claim_type": "CAUSAL_INFERENCE",
+        "statement": "The agent edited a generated derivative that the build command replaces from config/settings.toml, so the intended value could not survive into the test.",
+        "confidence": "HIGH",
+        "confidence_rationale": "Both attempts show the edit, an explicit rewrite from config/settings.toml, and the same post-generation value. A different source override is possible in the unseen project, but it does not explain the two recorded overwrites better than the named generator source.",
+        "evidence_refs": [
+          "transcript-001#T1-L02",
+          "transcript-001#T1-L03",
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L05",
+          "transcript-001#T1-L07",
+          "transcript-001#T1-L08",
+          "transcript-001#T1-L09"
+        ],
+        "alternatives": [
+          {
+            "explanation": "An unshown environment or runtime override could also force the value to 5.",
+            "status": "STILL_PLAUSIBLE",
+            "assessment": "The transcript does not test environment or runtime overrides. That alternative remains plausible, although it does not account for the two explicit rewrites from config/settings.toml as directly as the primary explanation.",
+            "evidence_refs": [
+              "transcript-001#T1-L04",
+              "transcript-001#T1-L05",
+              "transcript-001#T1-L08",
+              "transcript-001#T1-L09"
+            ]
+          }
+        ]
+      }
+    ],
+    "contributing": [
+      {
+        "cause_id": "cause-retry-without-source-check",
+        "claim_type": "CAUSAL_INFERENCE",
+        "statement": "The retry treated the first result as a patch-persistence problem and repeated the same edit instead of inspecting the source path printed by the generator.",
+        "confidence": "MEDIUM",
+        "confidence_rationale": "The supplied excerpt shows the persistence explanation, repeated target, and no source-file inspection. Because the excerpt is redacted, an inspection outside the excerpt cannot be excluded.",
+        "evidence_refs": [
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L06",
+          "transcript-001#T1-L07",
+          "transcript-001#T1-L08"
+        ],
+        "alternatives": [
+          {
+            "explanation": "The redacted transcript may omit a separate inspection of config/settings.toml.",
+            "status": "NOT_TESTED",
+            "assessment": "The supplied excerpt records no such inspection, but redaction prevents treating its absence as conclusive.",
+            "evidence_refs": [
+              "transcript-001#T1-L04",
+              "transcript-001#T1-L06",
+              "transcript-001#T1-L08"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "fixes": [
+    {
+      "fix_id": "fix-edit-generator-source",
+      "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+      "target": "CONFIG",
+      "addresses_cause_ids": [
+        "cause-wrong-source-target"
+      ],
+      "steps": [
+        "Inspect config/settings.toml for the timeout setting named by the generator output.",
+        "Change that source value to 30 if the surrounding configuration confirms it controls timeout_seconds.",
+        "Run python tools/build_settings.py, then rerun pytest tests/test_timeout.py."
+      ],
+      "evidence_refs": [
+        "transcript-001#T1-L04",
+        "transcript-001#T1-L05",
+        "transcript-001#T1-L08",
+        "transcript-001#T1-L09"
+      ],
+      "limits": "The report does not contain the project files, so it cannot confirm the exact key spelling or implement the configuration change."
+    },
+    {
+      "fix_id": "fix-retry-inspect-upstream",
+      "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+      "target": "PROMPT",
+      "addresses_cause_ids": [
+        "cause-retry-without-source-check"
+      ],
+      "steps": [
+        "When a build step says it rewrote an edited file from another path, stop repeating the derivative edit.",
+        "Inspect the named source path and explain the source-to-generated relationship before the next patch."
+      ],
+      "evidence_refs": [
+        "transcript-001#T1-L04",
+        "transcript-001#T1-L06",
+        "transcript-001#T1-L08"
+      ],
+      "limits": "This changes the agent instruction for future retries; it does not prove the unseen generator has no other inputs."
+    }
+  ],
+  "prevention_check": {
+    "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+    "setup": "Use a clean checkout with the intended timeout source change staged or committed.",
+    "replay_steps": [
+      "Delete or restore generated/settings.json so the check begins from generator output.",
+      "Run python tools/build_settings.py.",
+      "Run pytest tests/test_timeout.py.",
+      "Run python tools/build_settings.py a second time and verify generated/settings.json does not change."
+    ],
+    "expected_result": "Both generator runs produce timeout_seconds 30, the focused test passes, and the second generation is byte-stable.",
+    "failure_signal": "The test still observes 5, or the second generation changes generated/settings.json.",
+    "evidence_refs": [
+      "transcript-001#T1-L04",
+      "transcript-001#T1-L05",
+      "transcript-001#T1-L08",
+      "transcript-001#T1-L09"
+    ],
+    "execution_state": "PROPOSED_NOT_RUN"
+  },
+  "clarification": {
+    "rounds_used": 0,
+    "question": null,
+    "response_evidence_refs": []
+  },
+  "limitations": [
+    "Only the synthetic redacted transcript was analyzed; no project files or live reproduction were supplied.",
+    "The generator's source relationship is taken from its recorded output and was not independently executed.",
+    "The proposed fixes and replay check were not run, and no code was implemented."
+  ],
+  "operator_time": {
+    "measurement_status": "NOT_MEASURED",
+    "automated_draft_minutes": null,
+    "measurement_purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
+    "time_truncated_analysis": false,
+    "reviewer_minutes": null
+  },
+  "final_review": {
+    "state": "PEER_DRAFT",
+    "reviewer_ref": null,
+    "reviewed_at": null,
+    "evidence_link_check": false,
+    "reviewer_kind": null,
+    "independent_of_drafter": false,
+    "adversarial_challenge_check": false
+  },
+  "refund": {
+    "required": false,
+    "reason": null,
+    "provider_state": "NOT_APPLICABLE",
+    "provider_reference_public": null,
+    "reason_code": null
+  },
+  "quality": {
+    "bounded_unit": "ONE_FAILED_RUN",
+    "analysis_level": "FULL_STRENGTH",
+    "evidence_vs_inference_separated": true,
+    "adversarial_challenge_completed": true,
+    "time_measurement_truncated_analysis": false,
+    "final_autopsies": 1,
+    "iterative_consulting_included": false
+  },
+  "intake_scope": {
+    "agent_workflows": 1,
+    "failed_executions": 1,
+    "file_count": 1,
+    "file_limit": 10,
+    "raw_bytes": 910,
+    "raw_bytes_limit": 25000000,
+    "extracted_characters": 910,
+    "extracted_character_limit": 2000000,
+    "approximate_text_token_limit": 500000,
+    "boundary_hit": "NONE",
+    "selection_state": "WITHIN_CAP",
+    "embedded_instructions_trusted": false,
+    "quarantined_file_count": 0
+  },
+  "coding_stack_summary": "Codex using apply_patch and a Python settings generator before a focused pytest check on Windows."
+}

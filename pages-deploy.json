@@ -1,0 +1,25 @@
+{
+  "sha": "c994a5718a137d8b46b039503d935f42f7202d93",
+  "run_id": "33586981030",
+  "attempt": "1",
+  "excludes": [
+    ".git/",
+    ".github/",
+    "excerpts/",
+    "conflicts/",
+    "muhl/ (except muhl/docs/ and SEED0.mno)"
+  ],
+  "keeps": [
+    "chunks/",
+    "muhl/docs/",
+    "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+    "pay.html",
+    "action.html",
+    "commerce.html"
+  ],
+  "source": "in-tree-canary",
+  "survives_github_pages_bot_overwrite": true,
+  "cite": "cursor-pages-deploy-json-overwrite-20260902-01",
+  "owns_deploy_workflow": false,
+  "gate": false
+}

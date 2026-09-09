@@ -40,3 +40,15 @@ The git file is an excerpt: copies do not run. MOVE into titan is an owner-PC st
 
 Do not remint. Do not rebake organs 1–22, the twelve, alife, clacker, or hpc_fabric.
 Organs 24–31 stay NOT_LANDED.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-08 — do not remint.

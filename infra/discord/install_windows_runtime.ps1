@@ -41,6 +41,7 @@ $pythonw = (Get-Command pythonw.exe -ErrorAction Stop).Source
 $bridgeScript = Join-Path $PSScriptRoot "commons_discord_bridge.py"
 $mainRunner = Join-Path $PSScriptRoot "run_main_watcher_windows.ps1"
 $healthScript = Join-Path $PSScriptRoot "health_watch_windows_runtime.ps1"
+$noConsoleRunner = Join-Path $PSScriptRoot "run_powershell_no_console.py"
 
 $logonTrigger = New-ScheduledTaskTrigger -AtLogOn -User $identity
 $mainTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(15) `
@@ -60,9 +61,11 @@ foreach ($name in $taskNames) {
 }
 
 function New-HiddenPowerShellAction([string]$ScriptPath) {
-    New-ScheduledTaskAction -Execute $powershell `
-        -Argument ('-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File "' + `
-            $ScriptPath + '"') -WorkingDirectory $repoRoot
+    # A GUI-subsystem root plus CREATE_NO_WINDOW prevents console allocation;
+    # PowerShell -WindowStyle Hidden alone can still flash Windows Terminal.
+    New-ScheduledTaskAction -Execute $pythonw `
+        -Argument ('-B "' + $noConsoleRunner + '" "' + $ScriptPath + `
+            '" --powershell "' + $powershell + '"') -WorkingDirectory $repoRoot
 }
 
 $bridgeAction = New-ScheduledTaskAction -Execute $pythonw `

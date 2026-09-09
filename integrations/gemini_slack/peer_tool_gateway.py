@@ -7,11 +7,13 @@ import argparse
 import base64
 import datetime as dt
 import hashlib
+import http.client
 import json
 import os
 import queue
 import re
 import sqlite3
+import sys
 import threading
 import time
 import urllib.error
@@ -22,20 +24,80 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from integrations.shared_equipment.services import CombinedCatalog, redacted
+from integrations.shared_equipment.outcomes import effect_uncertain, tool_failed
+from integrations.gemini_slack.upstream_turn import UpstreamTurnError, wait_peer_turn
+from integrations.gemini_slack.tool_result_boundary import BOUNDARY_VERSION, SOURCE_DATA_RULE, tool_result_prompt
+
 
 DEFAULT_UPSTREAM = "http://127.0.0.1:8777"
 DEFAULT_MCP = "https://commons-spark-mcp.vercel.app/mcp"
 DEFAULT_EVENT_LOG = Path.home() / ".gemini" / "commons_peer_tool_gateway_events.jsonl"
 DEFAULT_CALL_DB = Path.home() / ".gemini" / "commons_peer_tool_calls.sqlite3"
 MCP_PROTOCOL = "2025-03-26"
-TERMINAL = frozenset({"completed", "error"})
+TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 CALL_OPEN = "<commons_tool_call>"
 CALL_CLOSE = "</commons_tool_call>"
 CALL_RE = re.compile(r"^\s*<commons_tool_call>(.*?)</commons_tool_call>\s*$", re.DOTALL)
 
+# The only upstream-handle metadata that may ride into an event: anything
+# else (from a stale prior event or an UpstreamTurnError's .details) is
+# dropped so it cannot collide with reserved event fields like status/message.
+UPSTREAM_HANDLE_KEYS = (
+    "upstream_request_id",
+    "upstream_status_url",
+    "upstream_status",
+    "upstream_terminal",
+    "upstream_error",
+)
+
+
+def _upstream_handle_fields(source: dict[str, Any] | None) -> dict[str, Any]:
+    if not isinstance(source, dict):
+        return {}
+    return {key: source[key] for key in UPSTREAM_HANDLE_KEYS if key in source}
+
 
 class GatewayError(RuntimeError):
-    pass
+    def __init__(self, message, *, code="gateway_error", uncertain=False, native_result=None):
+        super().__init__(message)
+        self.code = code
+        self.uncertain = uncertain
+        self.native_result = native_result
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+_HTTP = urllib.request.build_opener(_NoRedirect())
+
+
+def _response_json(response, expected_id=None):
+    if "text/event-stream" not in response.headers.get("Content-Type", "").lower():
+        return json.loads(response.read().decode("utf-8"))
+    # Multi-line SSE frames are source bytes, not one-JSON-object-per-line.
+    data_lines = []
+    while True:
+        raw = response.readline()
+        if not raw or not raw.strip():
+            if data_lines:
+                try:
+                    value = json.loads("\n".join(data_lines))
+                except ValueError:
+                    value = None
+                data_lines = []
+                if (isinstance(value, dict) and type(value.get("id")) is type(expected_id)
+                        and value.get("id") == expected_id):
+                    return value
+            if not raw:
+                raise ValueError("No correlated event-stream response")
+        else:
+            line = raw.decode("utf-8").rstrip("\r\n")
+            if line.startswith("data:"):
+                data_lines.append(line[5:].removeprefix(" "))
 
 
 def _utc_now() -> str:
@@ -60,25 +122,36 @@ def _post_json(
         headers=request_headers,
         method="POST",
     )
+    effect = payload.get("jsonrpc") != "2.0" or payload.get("method") == "tools/call"
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            value = json.loads(response.read().decode("utf-8"))
-    except (OSError, ValueError, urllib.error.URLError) as exc:
-        raise GatewayError(f"POST {url} failed: {exc}") from exc
-    if not isinstance(value, dict):
-        raise GatewayError(f"POST {url} returned a non-object")
-    return value
+        with _HTTP.open(request, timeout=timeout) as response:
+            value = _response_json(response, payload.get("id"))
+        if not isinstance(value, dict):
+            raise ValueError("No result object")
+        return value
+    except urllib.error.HTTPError as exc:
+        status = exc.code
+        exc.close()
+        raise GatewayError("POST response was HTTP " + str(status), code="post_http_error",
+                           uncertain=effect) from None
+    except (OSError, ValueError, urllib.error.URLError, http.client.HTTPException):
+        raise GatewayError("POST response could not be confirmed", code="post_response_unconfirmed",
+                           uncertain=effect) from None
 
 
 def _get_json(url: str, *, timeout: float = 15.0) -> dict[str, Any]:
     try:
-        with urllib.request.urlopen(url, timeout=timeout) as response:
-            value = json.loads(response.read().decode("utf-8"))
-    except (OSError, ValueError, urllib.error.URLError) as exc:
-        raise GatewayError(f"GET {url} failed: {exc}") from exc
-    if not isinstance(value, dict):
-        raise GatewayError(f"GET {url} returned a non-object")
-    return value
+        with _HTTP.open(url, timeout=timeout) as response:
+            value = _response_json(response)
+        if not isinstance(value, dict):
+            raise ValueError("No result object")
+        return value
+    except urllib.error.HTTPError as exc:
+        status = exc.code
+        exc.close()
+        raise GatewayError("GET response was HTTP " + str(status), code="get_http_error") from None
+    except (OSError, ValueError, urllib.error.URLError, http.client.HTTPException):
+        raise GatewayError("GET response could not be read", code="get_response_unavailable") from None
 
 
 class UpstreamClient:
@@ -88,24 +161,26 @@ class UpstreamClient:
     def health(self) -> dict[str, Any]:
         return _get_json(self.base_url + "/health", timeout=10)
 
-    def turn(self, peer: str, message: str) -> str:
-        encoded = base64.b64encode(message.encode("utf-8")).decode("ascii")
-        response = _post_json(
-            self.base_url + "/v1/message",
-            {"peer": peer, "message_utf8_base64": encoded},
-            timeout=700,
+    def turn(
+        self,
+        peer: str,
+        message: str,
+        *,
+        cancelled: Callable[[], bool] | None = None,
+        on_submitted: Callable[[dict[str, Any]], None] | None = None,
+    ) -> str:
+        # Submission is a single async POST that hands back a recoverable
+        # upstream handle; the long wait is a poll loop, not a held socket,
+        # so a lost local process no longer loses the in-flight operation.
+        return wait_peer_turn(
+            self.base_url,
+            peer,
+            message,
+            post_json=_post_json,
+            get_json=_get_json,
+            cancelled=cancelled,
+            on_submitted=on_submitted,
         )
-        if not response.get("ok"):
-            raise GatewayError("upstream peer turn failed")
-        if isinstance(response.get("reply_utf8_base64"), str):
-            try:
-                return base64.b64decode(response["reply_utf8_base64"], validate=True).decode("utf-8")
-            except (ValueError, UnicodeError) as exc:
-                raise GatewayError("upstream reply was not byte-safe UTF-8") from exc
-        reply = response.get("reply")
-        if not isinstance(reply, str):
-            raise GatewayError("upstream returned no reply")
-        return reply
 
 
 class McpCatalog:
@@ -117,19 +192,31 @@ class McpCatalog:
         self._lock = threading.Lock()
 
     def _rpc(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
+        identifier = uuid.uuid4().hex
         response = _post_json(
             self.url,
-            {"jsonrpc": "2.0", "id": uuid.uuid4().hex, "method": method, "params": params},
+            {"jsonrpc": "2.0", "id": identifier, "method": method, "params": params},
             headers={
                 "Accept": "application/json, text/event-stream",
                 "MCP-Protocol-Version": MCP_PROTOCOL,
             },
         )
-        if response.get("error"):
-            raise GatewayError(f"Commons MCP error: {response['error']}")
+        effect = method == "tools/call"
+        if (response.get("jsonrpc") != "2.0" or type(response.get("id")) is not type(identifier)
+                or response.get("id") != identifier or ("error" in response) == ("result" in response)):
+            raise GatewayError("Commons MCP returned an uncorrelated response",
+                               code="mcp_response_invalid", uncertain=effect)
+        if "error" in response:
+            error = response["error"]
+            code = error.get("code") if isinstance(error, dict) else None
+            uncertain = effect and (effect_uncertain(error) or effect_uncertain(error.get("data") if isinstance(error, dict) else None) or type(code) is not int
+                                    or code not in (-32600, -32601, -32602))
+            raise GatewayError("Commons MCP returned a request error", code="mcp_request_error",
+                               uncertain=uncertain, native_result=response)
         result = response.get("result")
         if not isinstance(result, dict):
-            raise GatewayError("Commons MCP returned no result object")
+            raise GatewayError("Commons MCP returned no result object",
+                               code="mcp_response_invalid", uncertain=effect)
         return result
 
     def tools(self, *, force: bool = False) -> list[dict[str, Any]]:
@@ -209,10 +296,17 @@ class ToolCallStore:
             ).fetchone()
             if row:
                 if row["tool_name"] != name or row["arguments_sha256"] != digest:
-                    return {"error": "call_id_reused_with_different_arguments"}
+                    return {"isError": True, "uncertain": False, "error": "call_id_reused_with_different_arguments"}
                 if row["result_json"]:
-                    return json.loads(row["result_json"])
+                    previous = json.loads(row["result_json"])
+                    if row["state"] == "error" and not tool_failed(previous):
+                        previous.setdefault("isError", True)
+                    if row["state"] == "started" and not effect_uncertain(previous):
+                        previous.update(isError=True, uncertain=True)
+                    return previous
                 return {
+                    "isError": True,
+                    "uncertain": True,
                     "error": "tool_effect_unknown_after_interruption",
                     "call_id": call_id,
                     "reconciliation": "inspect Commons before deciding whether to issue a new call",
@@ -225,10 +319,14 @@ class ToolCallStore:
             result = runner(name, arguments)
             if not isinstance(result, dict):
                 result = {"result": result}
-            state = "completed"
+            state = "started" if effect_uncertain(result) else "error" if tool_failed(result) else "completed"
         except Exception as exc:
-            result = {"error": type(exc).__name__, "message": str(exc)}
-            state = "error"
+            result = {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc)),
+                      "code": getattr(exc, "code", type(exc).__name__),
+                      "uncertain": bool(getattr(exc, "uncertain", False))}
+            if getattr(exc, "native_result", None) is not None:
+                result["result"] = exc.native_result
+            state = "started" if result["uncertain"] else "error"
         encoded = json.dumps(result, ensure_ascii=False, separators=(",", ":"))
         with self._lock, self._db:
             self._db.execute(
@@ -242,13 +340,18 @@ class ToolCallStore:
 def _tool_prompt(message: str, tools: list[dict[str, Any]]) -> str:
     catalog = json.dumps(tools, ensure_ascii=False, separators=(",", ":"))
     return (
-        "You are connected to the full live public Commons MCP through a history-preserving outer tool loop. "
+        "You are connected to the full live public Commons MCP and private shared Slack/GitHub equipment through a history-preserving outer tool loop. "
         "You may use any listed tool. When a tool is needed, reply with exactly one envelope and no "
         "surrounding text:\n"
         f"{CALL_OPEN}{{\"call_id\":\"a unique id\",\"name\":\"tool name\",\"arguments\":{{}}}}{CALL_CLOSE}\n"
         "After a result arrives, continue normally or issue another exact envelope. If no tool is needed, "
-        "reply normally. Do not invent tool names.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
+        "reply normally. Do not invent tool names. Private equipment uses existing service account access; "
+        "direct credential retrieval returns ciphertext for an ephemeral key retained by your requesting runtime; "
+        "decrypt and use values there, keeping plaintext and private keys out of this captured conversation. "
+        "Service responses may have pagination; follow it when needed.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
         + catalog
+        + "\n\n"
+        + SOURCE_DATA_RULE
         + "\n\nMESSAGE:\n"
         + message
     )
@@ -290,14 +393,28 @@ class ToolLoop:
         self.max_steps = max_steps
         self.max_protocol_retries = max_protocol_retries
 
-    def run(self, request_id: str, peer: str, message: str) -> str:
+    def run(
+        self,
+        request_id: str,
+        peer: str,
+        message: str,
+        cancelled: threading.Event | None = None,
+        on_submitted: Callable[[dict[str, Any]], None] | None = None,
+    ) -> str:
         tools = self.catalog.tools()
         names = {item["name"] for item in tools}
         prompt = _tool_prompt(message, tools)
         tool_calls = 0
         protocol_retries = 0
+        is_cancelled = cancelled.is_set if cancelled is not None else None
         while True:
-            reply = self.upstream.turn(peer, prompt)
+            if cancelled is not None and cancelled.is_set():
+                raise InterruptedError("request cancelled before next model/tool operation")
+            reply = self.upstream.turn(
+                peer, prompt, cancelled=is_cancelled, on_submitted=on_submitted
+            )
+            if cancelled is not None and cancelled.is_set():
+                raise InterruptedError("request cancelled after in-flight model turn returned")
             call, had_marker = _parse_call(reply)
             if call is None and not had_marker:
                 return reply
@@ -329,16 +446,7 @@ class ToolLoop:
                     call["arguments"],
                     self.catalog.call,
                 )
-            prompt = (
-                "Commons MCP returned this exact result. Continue the same response. Use another exact "
-                "tool envelope if useful; otherwise answer normally.\n<commons_tool_result>"
-                + json.dumps(
-                    {"call_id": call["call_id"], "name": call["name"], "result": result},
-                    ensure_ascii=False,
-                    separators=(",", ":"),
-                )
-                + "</commons_tool_result>"
-            )
+            prompt = tool_result_prompt(call["call_id"], call["name"], result)
 
 
 class EventStore:
@@ -450,6 +558,24 @@ class ToolGateway(ThreadingHTTPServer):
         self.catalog = catalog
         self._peer_state_lock = threading.RLock()
         self._peer_queues: dict[str, queue.Queue[QueuedTurn]] = {}
+        self._cancellations: dict[str, threading.Event] = {}
+        # Report interrupted execution honestly; never replay a possibly applied
+        # service write or restart an old conversation automatically.
+        for event in list(events._latest.values()):
+            if event.get("status") not in TERMINAL:
+                events.append(
+                    request_id=event["request_id"],
+                    peer=event.get("peer"),
+                    status="interrupted",
+                    message="gateway restarted; remote work may continue at the retained upstream handle",
+                    **{
+                        **_upstream_handle_fields(event),
+                        # Restart means this process lost track of the turn, not
+                        # that the upstream operation was told to stop.
+                        "upstream_status": "unknown",
+                        "upstream_terminal": False,
+                    },
+                )
 
     @staticmethod
     def normalize_peer(value: Any) -> str:
@@ -483,6 +609,8 @@ class ToolGateway(ThreadingHTTPServer):
                 work.task_done()
 
     def submit(self, peer: str, message: str) -> QueuedTurn:
+        if not isinstance(message, str) or not message.strip():
+            raise ValueError("message must be nonempty UTF-8 text")
         with self._peer_state_lock:
             request_id = uuid.uuid4().hex
             raw = message.encode("utf-8")
@@ -494,16 +622,40 @@ class ToolGateway(ThreadingHTTPServer):
                 message_sha256=hashlib.sha256(raw).hexdigest(),
             )
             item = QueuedTurn(request_id, peer, message)
+            self._cancellations[request_id] = threading.Event()
             self._queue_for(peer).put(item)
             return item
 
     def execute(self, request_id: str, peer: str, message: str) -> dict[str, Any]:
         started = time.monotonic()
+        # Latest recoverable upstream handle for this request; carried into
+        # whichever terminal event eventually closes it out, so a lost local
+        # process (or a cancellation) still leaves behind where to look upstream.
+        handle: dict[str, Any] = {}
+
+        def on_submitted(info: dict[str, Any]) -> None:
+            handle.update(
+                upstream_request_id=info.get("upstream_request_id"),
+                upstream_status_url=info.get("upstream_status_url"),
+            )
+            self.events.append(
+                request_id=request_id,
+                peer=peer,
+                status="running",
+                **handle,
+            )
+
         try:
             self.events.append(request_id=request_id, peer=peer, status="running")
-            reply = self.loop.run(request_id, peer, message)
+            reply = self.loop.run(
+                request_id,
+                peer,
+                message,
+                self._cancellations.get(request_id),
+                on_submitted,
+            )
             raw = reply.encode("utf-8")
-            return self.events.append(
+            return self._terminal_event(
                 request_id=request_id,
                 peer=peer,
                 status="completed",
@@ -511,16 +663,49 @@ class ToolGateway(ThreadingHTTPServer):
                 reply=reply,
                 reply_utf8_base64=base64.b64encode(raw).decode("ascii"),
                 reply_bytes=len(raw),
+                **handle,
             )
-        except Exception as exc:
-            return self.events.append(
+        except UpstreamTurnError as exc:
+            details = _upstream_handle_fields(getattr(exc, "details", None))
+            return self._terminal_event(
                 request_id=request_id,
                 peer=peer,
                 status="error",
                 elapsed_ms=round((time.monotonic() - started) * 1000),
                 error=type(exc).__name__,
                 message=str(exc),
+                **{**handle, **details},
             )
+        except InterruptedError as exc:
+            return self._terminal_event(request_id=request_id, peer=peer, status="cancelled",
+                elapsed_ms=round((time.monotonic() - started) * 1000), message=str(exc), **handle)
+        except Exception as exc:
+            return self._terminal_event(
+                request_id=request_id,
+                peer=peer,
+                status="error",
+                elapsed_ms=round((time.monotonic() - started) * 1000),
+                error=type(exc).__name__,
+                message=str(exc),
+                **handle,
+            )
+
+    def _terminal_event(self, **fields) -> dict:
+        with self._peer_state_lock:
+            return self.events.append(**fields)
+
+    def cancel(self, request_id: str) -> dict:
+        with self._peer_state_lock:
+            event = self.events.request(request_id, 0)
+            if event is None:
+                return {"ok": False, "error": "request_not_found"}
+            if event["status"] in TERMINAL:
+                return {"ok": True, "event": event, "already_terminal": True}
+            self._cancellations[request_id].set()
+            event = self.events.append(request_id=request_id, peer=event.get("peer"),
+                status="cancel_requested", message="cooperative cancellation; in-flight provider turn may finish, then no further tool effects",
+                **_upstream_handle_fields(event))
+            return {"ok": True, "event": event}
 
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
@@ -550,6 +735,9 @@ class Handler(BaseHTTPRequestHandler):
         parsed = urllib.parse.urlsplit(self.path)
         query = urllib.parse.parse_qs(parsed.query)
         try:
+            if parsed.path == "/v1/tools":
+                self._send(200, {"ok": True, "tools": self.server.catalog.tools()})
+                return
             if parsed.path in ("/", "/health", "/v1/peers"):
                 upstream = self.server.upstream.health()
                 tools = self.server.catalog.tools()
@@ -559,12 +747,14 @@ class Handler(BaseHTTPRequestHandler):
                         "ok": True,
                         "service": "commons-gemini-peer-tool-gateway",
                         "mode": "history-preserving-tool-sidecar",
+                        "tool_result_boundary": BOUNDARY_VERSION,
                         "upstream": self.server.upstream.base_url,
                         "upstream_ok": bool(upstream.get("ok")),
                         "peers": upstream.get("peers"),
                         "tool_count": len(tools),
                         "tools": [item["name"] for item in tools],
                         "event_cursor": self.server.events.cursor,
+                        "slack_carrier": getattr(getattr(self.server, "carrier", None), "status", {"phase": "not_configured"}),
                     },
                 )
                 return
@@ -602,6 +792,30 @@ class Handler(BaseHTTPRequestHandler):
             self._send(502, {"ok": False, "error": type(exc).__name__, "message": str(exc)})
 
     def do_POST(self) -> None:
+        route = urllib.parse.urlsplit(self.path).path
+        if route.startswith("/v1/requests/") and route.endswith("/cancel"):
+            request_id = route[len("/v1/requests/"):-len("/cancel")]
+            self._send(200, self.server.cancel(request_id))
+            return
+        if urllib.parse.urlsplit(self.path).path == "/v1/tools/call":
+            try:
+                size = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(size).decode("utf-8"))
+                for field in ("request_id", "call_id", "name"):
+                    if not isinstance(payload.get(field), str) or not payload[field].strip():
+                        raise ValueError(field + " must be a nonempty string")
+                arguments = payload.get("arguments", {})
+                if not isinstance(arguments, dict):
+                    raise ValueError("arguments must be an object")
+                result = self.server.loop.calls.execute_journaled(
+                    "equipment:" + payload["request_id"], payload["call_id"],
+                    payload["name"], arguments, self.server.catalog.call)
+                self._send(200, {"ok": not tool_failed(result), "request_id": payload["request_id"],
+                    "call_id": payload["call_id"], "result": redacted(result),
+                    "uncertain": effect_uncertain(result)})
+            except Exception as exc:
+                self._send(400, {"ok": False, "error": type(exc).__name__, "message": redacted(str(exc))})
+            return
         if urllib.parse.urlsplit(self.path).path != "/v1/message":
             self._send(404, {"ok": False, "error": "not_found"})
             return
@@ -646,13 +860,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--cache-ttl", type=float, default=300.0)
     parser.add_argument("--max-tool-steps", type=int, default=16)
     parser.add_argument("--max-protocol-retries", type=int, default=4)
+    parser.add_argument("--equipment-config", type=Path, default=Path.home() / ".commons" / "equipment.json")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     upstream = UpstreamClient(args.upstream)
-    catalog = McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl)
+    catalog = CombinedCatalog(McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl))
     calls = ToolCallStore(args.call_db)
     events = EventStore(args.event_log)
     loop = ToolLoop(
@@ -663,6 +878,19 @@ def main(argv: list[str] | None = None) -> int:
         max_protocol_retries=args.max_protocol_retries,
     )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
+    from integrations.shared_equipment.peers import GeminiEquipment, GrokBotEquipment
+    catalog.extensions.append(GeminiEquipment(server))
+    catalog.extensions.append(GrokBotEquipment())
+    carrier = None
+    if args.equipment_config.is_file():
+        from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier
+        config = json.loads(args.equipment_config.read_text(encoding="utf-8"))
+        route = config.get("slack_carrier")
+        if route:
+            carrier = SlackEquipmentCarrier(catalog, calls, route,
+                args.equipment_config.with_name("equipment_slack_cursor.json"))
+            carrier.start()
+    server.carrier = carrier
     print(
         json.dumps(
             {
@@ -677,6 +905,8 @@ def main(argv: list[str] | None = None) -> int:
     except KeyboardInterrupt:
         return 0
     finally:
+        if carrier is not None:
+            carrier.stop()
         server.server_close()
         calls.close()
     return 0

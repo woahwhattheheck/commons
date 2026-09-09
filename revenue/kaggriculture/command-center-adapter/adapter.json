@@ -1,0 +1,1563 @@
+{
+  "artifacts": [
+    {
+      "data": {
+        "artifact_id": 10030763484,
+        "availability": null,
+        "byte_size": 558610,
+        "filename": "titan-pinned-source-pack-v2.zip",
+        "local_path": null,
+        "provider": "GitHub Actions",
+        "repository": "woahwhattheheck/commons",
+        "sha256": "68f78694fa56976fa1476ffd1d1fb6b3bfd4935392dfd0023a170c7efcd35e62",
+        "source_commit": "7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f"
+      },
+      "kind": "artifact",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "69134b1163ff62da317ea8237d4b57fff68afd5b0f9a5f81d14e677632d5c6b6",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": "2026-09-07T19:24:47.812319Z",
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809087812319"
+      },
+      "subject_id": "github-artifact-10030763484"
+    },
+    {
+      "data": {
+        "artifact_id": 10005621438,
+        "availability": null,
+        "byte_size": 280148,
+        "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+        "engine_package_version": "1.32.7",
+        "filename": "kag-engine-source.zip",
+        "local_path": null,
+        "provider": "GitHub Actions",
+        "repository": "woahwhattheheck/commons",
+        "sha256": "06e526df0a87d1d94e60dd0f2ea380aa099a4f0edd40a604a7c5bd274bd189cc"
+      },
+      "kind": "artifact",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "27632914702ad37d8281ae4b072e03303a3a774510e275a4585c39a5b8f6a85d",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": "2026-09-07T19:09:24.750989Z",
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788808164750989"
+      },
+      "subject_id": "github-artifact-10005621438"
+    },
+    {
+      "data": {
+        "availability": null,
+        "byte_size": 181166,
+        "local_path": null,
+        "path": "revenue/kaggriculture/cloud-titan-composition/artifacts/titan-selected.tar.gz",
+        "repository": "woahwhattheheck/commons",
+        "sha256": "5d3a2bf3878808679820ff7f5a5ca7533c41888366c5dcd358f15ff0213f1f10",
+        "source_commit": "291957d2c9ba0b035d496243775fcf76fef6f38f"
+      },
+      "kind": "artifact",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "c714e7be16f4b38de7e8bd913f1649bdc59a87ecc6f99e1321b5efed0211b3cd",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": null,
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009"
+      },
+      "subject_id": "t08-selected-archive"
+    }
+  ],
+  "generated_at": "2026-09-07T22:05:59.575558Z",
+  "native_consumer": {
+    "adapter_path": "revenue/kaggriculture/command-center-adapter/adapter.json",
+    "branch": "codex/command-center-20260907",
+    "import_path": "integrations.command_center.core.CommandCenter",
+    "merge_ref": "https://github.com/woahwhattheheck/commons/blob/54bd539954d67ed82288e0404411c86f6e2fbe7d/integrations/command_center/core.py",
+    "schema_ref": "https://github.com/woahwhattheheck/commons/blob/54bd539954d67ed82288e0404411c86f6e2fbe7d/integrations/command_center/equipment.py",
+    "source_commit": "54bd539954d67ed82288e0404411c86f6e2fbe7d"
+  },
+  "operations": [
+    {
+      "data": {
+        "acknowledgments": [],
+        "description": "Requested the native command-center import path, schema, and test branch in T14.",
+        "expected_parts": [
+          "import_path",
+          "schema_ref",
+          "test_branch"
+        ],
+        "native_task_id": "01a07d24-eeb7-7211-97dd-0956000bbb4f",
+        "provider_operation_id": null,
+        "reported_status": "requested"
+      },
+      "kind": "operation",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "fed062174b5ab2907c49e6044c4f2192bb0577299facc8698c7aaba5ff825526",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": "2026-09-07T20:01:42.903069Z",
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811302903069"
+      },
+      "subject_id": "t14-command-center-contract-request-20260907-01"
+    }
+  ],
+  "resources": [
+    {
+      "data": {
+        "cpu_affinity": 9,
+        "cpu_cgroup_quota": 8.0,
+        "cpu_logical": 9,
+        "disk_free_bytes": 12561133568,
+        "disk_path": "/workspace/scratch/c37c4c974d24/repo/revenue/kaggriculture/command-center-adapter",
+        "disk_total_bytes": 33770192896,
+        "memory_available_bytes": 21172994048,
+        "memory_cgroup_current_bytes": 20441403392,
+        "memory_cgroup_limit_bytes": 21474836480,
+        "memory_total_bytes": 23109906432,
+        "network_egress": null,
+        "session_url": null
+      },
+      "kind": "vm",
+      "observed_at": "2026-09-07T20:14:16.399288Z",
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "bf6af772ba4445045bee83cfe4071fed255d5d30488e6aa083451e967bdf768f",
+      "recorded_at": "2026-09-07T20:14:16.399288Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "kind": "local_measurement",
+        "published_at": null,
+        "ref": "python-process-and-local-filesystem"
+      },
+      "subject_id": "work-runtime:01a07d73-a79b-7d33-8451-0c1acbc2f000"
+    }
+  ],
+  "schema_version": "titan.command-center-native.v1",
+  "sessions": [
+    {
+      "artifact_transport": null,
+      "cpu": null,
+      "gpu": null,
+      "id": "gpt-titan-vm",
+      "label": "GPT SELL",
+      "model": null,
+      "notes": null,
+      "objective": "GPT SELL",
+      "observed_at": null,
+      "origin": {
+        "catalog_subject_id": "gpt-sell",
+        "path": "revenue/kaggriculture/cloud-execution-lab/",
+        "provider_status": null,
+        "repository": "woahwhattheheck/commons",
+        "source_published_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209"
+      },
+      "provider": "ChatGPT",
+      "ram_gib": null,
+      "status": "referenced",
+      "url": "https://chatgpt.com/c/6a9ef70e-0f6c-83ea-ae06-e5093d51b5c7",
+      "workspace": null
+    },
+    {
+      "artifact_transport": null,
+      "cpu": null,
+      "gpu": null,
+      "id": "claude-titan-vm",
+      "label": "Harvest refinement",
+      "model": null,
+      "notes": null,
+      "objective": "Harvest refinement",
+      "observed_at": null,
+      "origin": {
+        "catalog_subject_id": "claude-harvest",
+        "path": "revenue/kaggriculture/cloud-model-lab/",
+        "provider_status": null,
+        "repository": "woahwhattheheck/commons",
+        "source_published_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209"
+      },
+      "provider": "Claude",
+      "ram_gib": null,
+      "status": "referenced",
+      "url": "https://claude.ai/code/session_01Ac3gyomPGcH286FrdER67e",
+      "workspace": null
+    },
+    {
+      "artifact_transport": null,
+      "cpu": null,
+      "gpu": null,
+      "id": "gpt-t11-vm",
+      "label": "T15 market game theory (existing T11 VM)",
+      "model": null,
+      "notes": null,
+      "objective": "Implement and evaluate a selector over complete feasible market plans.",
+      "observed_at": null,
+      "origin": {
+        "catalog_subject_id": "gpt-t11",
+        "path": "revenue/kaggriculture/cloud-rule-arbitrage/",
+        "provider_status": null,
+        "repository": "woahwhattheheck/commons",
+        "source_published_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209"
+      },
+      "provider": "ChatGPT",
+      "ram_gib": null,
+      "status": "referenced",
+      "url": "https://chatgpt.com/c/6a9f137c-2da8-83e9-a6aa-b1c214a182ff",
+      "workspace": null
+    },
+    {
+      "artifact_transport": {
+        "artifact_ids": [
+          10030763484,
+          10005621438
+        ],
+        "connector": "GitHub.download_workflow_artifact",
+        "provider": "GitHub Actions",
+        "provider_completion": null,
+        "reported_state": "downloaded_to_cloud_vm",
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811302903069"
+      },
+      "cpu": 9,
+      "gpu": null,
+      "id": "gpt-t14-vm",
+      "label": "T14 policy portfolio",
+      "model": null,
+      "notes": "CPU and RAM are the host-visible observation. The separate VM resource retains the cgroup CPU quota, memory limit, and current usage. The observation timestamp is retained from local-vm.json.",
+      "objective": "T14 policy portfolio",
+      "observed_at": "2026-09-07T20:14:16.399288Z",
+      "origin": {
+        "catalog_subject_id": "01a07d73-a79b-7d33-8451-0c1acbc2f000",
+        "measurement_record_id": "bf6af772ba4445045bee83cfe4071fed255d5d30488e6aa083451e967bdf768f",
+        "measurement_ref": "local-vm.json",
+        "path": "revenue/kaggriculture/cloud-policy-portfolio/",
+        "provider_status": null,
+        "repository": "woahwhattheheck/commons",
+        "source_published_at": "2026-09-07T20:07:06.659419Z",
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811626659419"
+      },
+      "provider": "ChatGPT Work",
+      "ram_gib": 21.522777557373047,
+      "status": "observed",
+      "url": "https://chatgpt.com/c/6a9f1774-69dc-83e9-a065-88f61de7f0a4",
+      "workspace": "/workspace/scratch/c37c4c974d24/repo"
+    },
+    {
+      "artifact_transport": null,
+      "cpu": null,
+      "gpu": null,
+      "id": "01a07d24-eeb7-7211-97dd-0956000bbb4f",
+      "label": "Native command center owner",
+      "model": null,
+      "notes": null,
+      "objective": "Native command center owner",
+      "observed_at": null,
+      "origin": {
+        "catalog_subject_id": "01a07d24-eeb7-7211-97dd-0956000bbb4f",
+        "path": "integrations/command_center/",
+        "provider_status": null,
+        "repository": "woahwhattheheck/commons",
+        "source_published_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209"
+      },
+      "provider": "ChatGPT Work",
+      "ram_gib": null,
+      "status": "referenced",
+      "url": null,
+      "workspace": null
+    }
+  ],
+  "sources": [
+    {
+      "data": {
+        "observed_state": "referenced",
+        "repository": "woahwhattheheck/commons",
+        "source_commit": null,
+        "source_type": "project",
+        "thread_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259",
+        "url": "https://chatgpt.com/g/g-p-6a9f15847f708191aff9765e562b65aa/project"
+      },
+      "kind": "source",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "8d082feff6e1f865bb204301439a0061f59ce6ec5e0dacd95c782156102be5aa",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": "2026-09-07T20:07:06.659419Z",
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811626659419"
+      },
+      "subject_id": "titan-project-strategy"
+    },
+    {
+      "data": {
+        "callable": "main.py::agent(obs,cfg)",
+        "merge_commit": "15e91a6c59aa25b8f5185b3b6b63eec5cad85410",
+        "path": "revenue/kaggriculture/cloud-policy-portfolio/",
+        "pull_request": 9927,
+        "reported_state": "landed",
+        "repository": "woahwhattheheck/commons",
+        "source_commit": "e987ed4eec0c27223de7432a8bce88ff7e062697"
+      },
+      "kind": "source",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "4c0b1fc6dabb85fabfad9101d50ae622f701102aca00582c8fa7dfe13b542c96",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": null,
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259"
+      },
+      "subject_id": "t14-policy-portfolio"
+    },
+    {
+      "data": {
+        "merge_commit": "c533e7ce210dbe77e078e566a71b15b175db0da9",
+        "path": "revenue/kaggriculture/cloud-titan-composition/",
+        "pull_request": 9898,
+        "reported_state": "landed",
+        "repository": "woahwhattheheck/commons",
+        "selected_policy_sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+        "source_commit": "291957d2c9ba0b035d496243775fcf76fef6f38f"
+      },
+      "kind": "source",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "1ee203eafc0765479f29045b9fda5ba62d3481f676c35e15a6c5ca7c01afd0df",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": null,
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009"
+      },
+      "subject_id": "t08-selected"
+    },
+    {
+      "data": {
+        "merge_commit": "956380f88ea948951bd56a80d69033eb98f8a9e1",
+        "path": "revenue/kaggriculture/cloud-titan-composition/integration-v2/",
+        "pull_request": 9918,
+        "reported_state": "landed",
+        "repository": "woahwhattheheck/commons",
+        "source_commit": "021c0e60cc2af15a6606e51caddb870d1f680482"
+      },
+      "kind": "source",
+      "observed_at": null,
+      "provider": {
+        "completed_at": null,
+        "event_at": null,
+        "operation_id": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "record_id": "0e8ee9da994e38e6e946fcb852efce7fd2067d47d92aaa5d259a286407943293",
+      "recorded_at": "2026-09-07T22:05:59.575558Z",
+      "schema_version": "titan.command-center-adapter.v1",
+      "source": {
+        "captured_at": "2026-09-07T20:20:06.234106Z",
+        "kind": "saved_board",
+        "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns.",
+        "published_at": null,
+        "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009"
+      },
+      "subject_id": "t08-integration-v2"
+    }
+  ],
+  "work_items": [
+    {
+      "activity_summary": "Eleven regressions pass; activating development case was running at this checkpoint.",
+      "artifact_links": [],
+      "consumer": "T08 / root",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t01",
+      "label": "Crop portfolio",
+      "landed": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": null,
+        "state": null
+      },
+      "lane": "T01",
+      "latest_activity_at": "2026-09-07T19:32:58.310709Z",
+      "latest_activity_kind": "owner_execution",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809578310709",
+      "next_action": "Recover the existing activating-case result and exact source pointer.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817924527119",
+      "notes": "The later publication request does not establish the activating-run outcome.",
+      "objective": "Implement and compare coherent crop replacements.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805891338421",
+        "label": "COVE",
+        "task_id": null
+      },
+      "pr_links": [],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805891338421",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-macro-crops/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Frozen policy and measured results are complete; eighteen tests passed.",
+      "artifact_links": [],
+      "consumer": "T08 / root",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t02",
+      "label": "Livestock capital",
+      "landed": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": null,
+        "state": null
+      },
+      "lane": "T02",
+      "latest_activity_at": "2026-09-07T19:39:00.409339Z",
+      "latest_activity_kind": "owner_execution",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809940409339",
+      "next_action": "Publish the existing frozen policy and evidence bytes.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812837475769",
+      "notes": "Nested engine_cases is landed separately; the policy source pointer remains unknown in the current handoff.",
+      "objective": "Implement and compare a funded livestock substitution.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805947909669",
+        "label": "MERIDIAN",
+        "task_id": null
+      },
+      "pr_links": [],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805947909669",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "f49ff85c4aed8d7ac002e69305c2b4f7a52b50c2",
+          "role": "separate_landed_component",
+          "url": "https://github.com/woahwhattheheck/commons/tree/f49ff85c4aed8d7ac002e69305c2b4f7a52b50c2/revenue/kaggriculture/cloud-macro-livestock/engine_cases/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-macro-livestock/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "PR9937 source is landed; the complete archive is a separate handoff.",
+      "artifact_links": [],
+      "consumer": "T08 / T06",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t03",
+      "label": "Whole-shift allocation",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T20:39:37.113749Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9937",
+        "state": "landed"
+      },
+      "lane": "T03",
+      "latest_activity_at": "2026-09-07T20:39:37.113749Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788813577113749",
+      "next_action": "Add the assigned deadline and relative-value discriminator.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788814766700479",
+      "notes": null,
+      "objective": "Plan jointly for existing workers with executable deadlines and relative cash.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788807284933579",
+        "label": "MESA",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9937"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788807284933579",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "d219669b06ae424d5a8f5cfc8133e0eaba4d7c25",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/d219669b06ae424d5a8f5cfc8133e0eaba4d7c25/revenue/kaggriculture/cloud-rolling-scheduler/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-rolling-scheduler/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "PR9908 source and its hosted checks completed.",
+      "artifact_links": [],
+      "consumer": "T08 / T06 / T10",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t04",
+      "label": "Service values",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T19:46:25.953239Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9908",
+        "state": "landed"
+      },
+      "lane": "T04",
+      "latest_activity_at": "2026-09-07T19:50:04.271049Z",
+      "latest_activity_kind": "owner_validation",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810604271049",
+      "next_action": "Consumers may reuse the frozen oracle and composition evidence.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812158921379",
+      "notes": null,
+      "objective": "Expose exact service-bundle values and a coherent service variant.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788807301741669",
+        "label": "SABLE",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9908"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788807301741669",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "252303c90624f52b9985a8a8f71f4e863fb466df",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/252303c90624f52b9985a8a8f71f4e863fb466df/revenue/kaggriculture/cloud-service-value/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-service-value/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "PR9933 is landed; the existing raw archive and score table reconcile.",
+      "artifact_links": [],
+      "consumer": "T08 / T14",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t05",
+      "label": "Terminal collection and SELL",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T20:27:43.575759Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9933",
+        "state": "landed"
+      },
+      "lane": "T05",
+      "latest_activity_at": "2026-09-07T20:31:16.085369Z",
+      "latest_activity_kind": "owner_validation",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788813076085369",
+      "next_action": "Consume the completed TerminalSell callable and evidence.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812863575759",
+      "notes": null,
+      "objective": "Deliver terminal stock through one authoritative action path.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805899688949",
+        "label": "RELAY-CI / OSPREY",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9933"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805899688949",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "09fc1260eb75f252950f90c7dc2eb66e2c7718d0",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/09fc1260eb75f252950f90c7dc2eb66e2c7718d0/revenue/kaggriculture/cloud-terminal-sell/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-terminal-sell/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "The raw-file wrapper is landed and preserves the frozen kernel.",
+      "artifact_links": [],
+      "consumer": "T08 / T03",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t06",
+      "label": "Economic search",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T20:13:47.969059Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9926",
+        "state": "landed"
+      },
+      "lane": "T06",
+      "latest_activity_at": "2026-09-07T20:13:47.969059Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812027969059",
+      "next_action": "Execute the assigned affordable-bundle discriminator and expose its callback.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788814754505459",
+      "notes": null,
+      "objective": "Search complete feasible economic bundles with bounded evaluation.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805631075579",
+        "label": "FIR",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9926"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805631075579",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "66bad21ae9a134ce22dd4eeeda47ac75d5b9bd28",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/66bad21ae9a134ce22dd4eeeda47ac75d5b9bd28/revenue/kaggriculture/cloud-search-kernel/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-search-kernel/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Public bank is ready; two README source identities were corrected without changing policies.",
+      "artifact_links": [
+        {
+          "artifact_id": 10032525998,
+          "role": "exact_public_source_and_licenses",
+          "sha256": "6601d709ffa3cd17d994228869ba770a7189bb9b69467cca07ff40e8e6023da5",
+          "url": "https://github.com/woahwhattheheck/commons/actions/runs/34160817137/artifacts/10032525998"
+        }
+      ],
+      "consumer": "T09 / T14 / T08",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t07",
+      "label": "Public opponent bank",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T21:04:21.400979Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9942",
+        "state": "landed"
+      },
+      "lane": "T07",
+      "latest_activity_at": "2026-09-07T21:51:26.191589Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817886191589",
+      "next_action": "Use the exact bank in new selector and league cases.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788815061400979",
+      "notes": null,
+      "objective": "Provide exact public opponents and explicit runtime lineage.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805905702659",
+        "label": "ORBIT / HARBOR / ELM",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9942"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805905702659",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "3d03dc0c08f539e41445082b15b982a2371db935",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/3d03dc0c08f539e41445082b15b982a2371db935/revenue/kaggriculture/cloud-opponent-frontier/runtime/public_bank/"
+        },
+        {
+          "commit": "2bcdd15bd1822eecb694bebe9a830ee5b3fb4a50",
+          "role": "source_identity_correction",
+          "url": "https://github.com/woahwhattheheck/commons/commit/2bcdd15bd1822eecb694bebe9a830ee5b3fb4a50"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-opponent-frontier/runtime/public_bank/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Root supplied the ready seed, producer and generic SELL integration packet.",
+      "artifact_links": [],
+      "consumer": "Root / T14",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t08",
+      "label": "TITAN composition",
+      "landed": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9918",
+        "state": "landed"
+      },
+      "lane": "T08",
+      "latest_activity_at": "2026-09-07T21:49:16.338709Z",
+      "latest_activity_kind": "consumer_handoff",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817756338709",
+      "next_action": "Add the separate seed+SELL arm and freeze any newly assembled composition.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817756338709",
+      "notes": "Selected SELL is separate from pending new composition arms.",
+      "objective": "Integrate compatible producer and SELL contracts into executable arms.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009",
+        "label": "SORREL",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9918"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "selected_frozen_SELL"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "956380f88ea948951bd56a80d69033eb98f8a9e1",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/956380f88ea948951bd56a80d69033eb98f8a9e1/revenue/kaggriculture/cloud-titan-composition/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-titan-composition/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Historical reconciliation is landed; underlying later results and freeze remain the requested input.",
+      "artifact_links": [],
+      "consumer": "Root / T14 / T08",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t09",
+      "label": "Opponent league",
+      "landed": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": null,
+        "state": null
+      },
+      "lane": "T09",
+      "latest_activity_at": "2026-09-07T21:40:29.647149Z",
+      "latest_activity_kind": "recovery_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817229647149",
+      "next_action": "Recover existing result, freeze and loss-trace bytes; use the ready public bank.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817229647149",
+      "notes": "Recovered 19:53 UTC reconciliation does not establish completion of later league runs.",
+      "objective": "Maintain a reusable paired league and exact result artifacts.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805234624179",
+        "label": "FLOW",
+        "task_id": null
+      },
+      "pr_links": [],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805234624179",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "0733d9bff12b46299126e88c01fc2b711dc838ba",
+          "role": "historical_reconciliation",
+          "url": "https://github.com/woahwhattheheck/commons/tree/0733d9bff12b46299126e88c01fc2b711dc838ba/revenue/kaggriculture/cloud-league-recovery/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-opponent-league/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "PR9906 source, tests and completed panel are landed.",
+      "artifact_links": [],
+      "consumer": "T08 / T03",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t10",
+      "label": "Labor and capital",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T19:40:57.215649Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9906",
+        "state": "landed"
+      },
+      "lane": "T10",
+      "latest_activity_at": "2026-09-07T19:40:57.215649Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810057215649",
+      "next_action": "Reuse the frozen hiring callable and later service composition evidence.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811936109479",
+      "notes": null,
+      "objective": "Value usable worker actions while preserving operating cash.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788807297156039",
+        "label": "DOCK",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9906"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788807297156039",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "a92d173eaf69b54b06280698e38b4cb7ccc835c2",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/a92d173eaf69b54b06280698e38b4cb7ccc835c2/revenue/kaggriculture/cloud-labor-capital/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-labor-capital/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Primary and engine-case sources are landed; the browser VM now continues T15.",
+      "artifact_links": [],
+      "consumer": "T15 / T08",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t11",
+      "label": "Rule-based economic cycles",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T20:40:26.972189Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9934",
+        "state": "landed"
+      },
+      "lane": "T11",
+      "latest_activity_at": "2026-09-07T20:40:26.972189Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788813626972189",
+      "next_action": "Preserve T11 sources while the existing VM advances T15.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788814374280299",
+      "notes": "Historical T11 lane is distinct from current T15 in existing gpt-t11-vm. No new session was created.",
+      "objective": "Retain executable rule-cycle research and its completed evidence.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809873045189",
+        "label": "FLORA / ASTRA-RULE",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9934"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809873045189",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "426216743d47a7df4142ac3f6a2474999216877a",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/426216743d47a7df4142ac3f6a2474999216877a/revenue/kaggriculture/cloud-rule-arbitrage/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-rule-arbitrage/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "PR9930 source and the 162-row ledger are landed; policy remains opt-in.",
+      "artifact_links": [],
+      "consumer": "T14 / T15 / T08",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t12",
+      "label": "Opponent response",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T21:09:42.640799Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9930",
+        "state": "landed"
+      },
+      "lane": "T12",
+      "latest_activity_at": "2026-09-07T21:09:42.640799Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788815382640799",
+      "next_action": "Reuse the callable flow model and supply any existing full evidence archive.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788815382640799",
+      "notes": null,
+      "objective": "Model observable flow histories and compare paired cash scenarios.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809875974229",
+        "label": "KEEL",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9930"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809875974229",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "4d7fd6d4d4e1f71941f7fe76b8e10274f1bfc1a6",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/4d7fd6d4d4e1f71941f7fe76b8e10274f1bfc1a6/revenue/kaggriculture/cloud-market-response/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-market-response/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Seed+SELL PR9936 and later development importer are landed.",
+      "artifact_links": [],
+      "consumer": "T08 / T14",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t13",
+      "label": "Hosted-loss response",
+      "landed": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9936",
+        "state": "landed"
+      },
+      "lane": "T13",
+      "latest_activity_at": "2026-09-07T21:03:41.596719Z",
+      "latest_activity_kind": "source_landed",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788815021596719",
+      "next_action": "T08 consumes seed+SELL; raw checkpoint gaps remain explicit.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817756338709",
+      "notes": null,
+      "objective": "Turn sourced loss diagnostics into compatible policy improvements.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809878981589",
+        "label": "ALDER / KESTREL",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9936"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809878981589",
+      "session_ref_kind": "coordination_thread",
+      "source_links": [
+        {
+          "commit": "d87f5e6ef3a578128b0d34a7a1d22959b0948e21",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/d87f5e6ef3a578128b0d34a7a1d22959b0948e21/revenue/kaggriculture/cloud-hosted-loss-response/"
+        },
+        {
+          "commit": "d8c4f7c9bafdff2684c3927a9be5a335ef89da81",
+          "role": "development_importer_addendum",
+          "url": "https://github.com/woahwhattheheck/commons/tree/d8c4f7c9bafdff2684c3927a9be5a335ef89da81/revenue/kaggriculture/cloud-hosted-loss-response/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-hosted-loss-response/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "All 192 new full games are complete. Conditional economic and SELL arms each finish 8W0T0L; economic own cash +12308 and rival -4574. Development economic is 23W0T1L, with paired own -3490 and rival +718. Research arms are retained; default SELL remains unchanged.",
+      "artifact_links": [
+        {
+          "artifact_id": null,
+          "role": "retained_revision1_complete_evidence",
+          "sha256": null,
+          "url": "https://github.com/woahwhattheheck/commons/tree/7bbaad277ef2f65b14d62ae94147bc646bf0b423/revenue/kaggriculture/cloud-policy-portfolio/artifacts/"
+        }
+      ],
+      "consumer": "T08 / root",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t14",
+      "label": "Policy portfolio simulation hub",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T21:50:17.015889Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/tree/05129d3d360f6b141d411a5c101d686b4a3ede8e/revenue/kaggriculture/cloud-policy-portfolio/revision2/",
+        "state": "branch_checkpoint"
+      },
+      "lane": "T14",
+      "latest_activity_at": "2026-09-07T22:03:13.099839Z",
+      "latest_activity_kind": "owner_execution",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788818593099839",
+      "next_action": "Package final source, complete artifacts and receipts, then complete the normal scoped merge.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788818593099839",
+      "notes": "The activity timestamp dates the cited execution report; observed_at dates this adapter source read. Revision2 is a published branch checkpoint, with final merge pending. Results remain separated by development, unconditioned held and source-condition validation. Landed revision1 retains selected.py as always-SELL.",
+      "objective": "Evaluate coherent continuation choices using observable cash and rival-flow scenarios.",
+      "observed_at": "2026-09-07T22:05:59.575558Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259",
+        "label": "ASTER",
+        "task_id": "01a07d73-a79b-7d33-8451-0c1acbc2f000"
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9940"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": "gpt-t14-vm",
+      "session_ref": "https://chatgpt.com/c/6a9f1774-69dc-83e9-a065-88f61de7f0a4",
+      "session_ref_kind": "provider_session",
+      "source_links": [
+        {
+          "commit": "05129d3d360f6b141d411a5c101d686b4a3ede8e",
+          "role": "revision2_branch_checkpoint",
+          "url": "https://github.com/woahwhattheheck/commons/tree/05129d3d360f6b141d411a5c101d686b4a3ede8e/revenue/kaggriculture/cloud-policy-portfolio/revision2/"
+        },
+        {
+          "commit": "7bbaad277ef2f65b14d62ae94147bc646bf0b423",
+          "role": "retained_landed_revision1_and_default_SELL",
+          "url": "https://github.com/woahwhattheheck/commons/tree/7bbaad277ef2f65b14d62ae94147bc646bf0b423/revenue/kaggriculture/cloud-policy-portfolio/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-policy-portfolio/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Corrected v2 development completed without activation; frozen held was completing.",
+      "artifact_links": [],
+      "consumer": "T08 / T14",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-t15",
+      "label": "Market game theory",
+      "landed": {
+        "completed_at": null,
+        "observed_at": "2026-09-07T21:26:07.899849Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/tree/4d97474b0188b0373be1b52b610c0114ceb033c8/revenue/kaggriculture/cloud-market-game-theory/",
+        "state": "branch_checkpoint"
+      },
+      "lane": "T15",
+      "latest_activity_at": "2026-09-07T21:40:05.387529Z",
+      "latest_activity_kind": "owner_execution",
+      "latest_activity_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817205387529",
+      "next_action": "Finish the unchanged frozen panel and publish exact source and ledgers.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817205387529",
+      "notes": null,
+      "objective": "Implement and evaluate a selector over complete feasible market plans.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788814374280299",
+        "label": "ASTRA-RULE",
+        "task_id": null
+      },
+      "pr_links": [],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": "gpt-t11-vm",
+      "session_ref": "https://chatgpt.com/c/6a9f137c-2da8-83e9-a6aa-b1c214a182ff",
+      "session_ref_kind": "provider_session",
+      "source_links": [
+        {
+          "commit": "4d97474b0188b0373be1b52b610c0114ceb033c8",
+          "role": "published_callable_checkpoint",
+          "url": "https://github.com/woahwhattheheck/commons/tree/4d97474b0188b0373be1b52b610c0114ceb033c8/revenue/kaggriculture/cloud-market-game-theory/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-market-game-theory/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Reusable source and consumer interface landed.",
+      "artifact_links": [],
+      "consumer": "T08",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-gpt-sell",
+      "label": "Original GPT SELL",
+      "landed": {
+        "completed_at": "2026-09-07T21:19:52Z",
+        "observed_at": "2026-09-07T21:19:52Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9943",
+        "state": "landed"
+      },
+      "lane": null,
+      "latest_activity_at": "2026-09-07T21:19:52Z",
+      "latest_activity_kind": "github_merge",
+      "latest_activity_source": "https://github.com/woahwhattheheck/commons/pull/9943",
+      "next_action": "T08 consumes the landed callable through its current composition.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817756338709",
+      "notes": "Source publication is separate from selection and hosted competition deployment.",
+      "objective": "Expose a generic selected-action SELL transform.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "label": "Original GPT SELL",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9943"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": "gpt-titan-vm",
+      "session_ref": "https://chatgpt.com/c/6a9ef70e-0f6c-83ea-ae06-e5093d51b5c7",
+      "session_ref_kind": "provider_session",
+      "source_links": [
+        {
+          "commit": "bac15b0e74af54b52fd96ae171a5901747633fab",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/bac15b0e74af54b52fd96ae171a5901747633fab/revenue/kaggriculture/cloud-execution-lab/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-execution-lab/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Reusable source and consumer interface landed.",
+      "artifact_links": [],
+      "consumer": "T08",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_uploaded"
+      },
+      "id": "titan-claude-producer",
+      "label": "Claude producer",
+      "landed": {
+        "completed_at": "2026-09-07T20:49:03Z",
+        "observed_at": "2026-09-07T20:49:03Z",
+        "source_ref": "https://github.com/woahwhattheheck/commons/pull/9939",
+        "state": "landed"
+      },
+      "lane": null,
+      "latest_activity_at": "2026-09-07T20:49:03Z",
+      "latest_activity_kind": "github_merge",
+      "latest_activity_source": "https://github.com/woahwhattheheck/commons/pull/9939",
+      "next_action": "T08 consumes the landed callable through its current composition.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788817756338709",
+      "notes": "Source publication is separate from selection and hosted competition deployment.",
+      "objective": "Expose committed producer contracts and harvest refinements.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "label": "Claude producer",
+        "task_id": null
+      },
+      "pr_links": [
+        "https://github.com/woahwhattheheck/commons/pull/9939"
+      ],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_selected"
+      },
+      "session_id": "claude-titan-vm",
+      "session_ref": "https://claude.ai/code/session_01Ac3gyomPGcH286FrdER67e",
+      "session_ref_kind": "provider_session",
+      "source_links": [
+        {
+          "commit": "9b7a0779264f4f40cbda0530d1e9e7a31c479314",
+          "role": "landed_source",
+          "url": "https://github.com/woahwhattheheck/commons/tree/9b7a0779264f4f40cbda0530d1e9e7a31c479314/revenue/kaggriculture/cloud-model-lab/"
+        }
+      ],
+      "workspace": {
+        "path": "revenue/kaggriculture/cloud-model-lab/",
+        "repository": "woahwhattheheck/commons"
+      }
+    },
+    {
+      "activity_summary": "Owner reports four completed requests across the two custom routes.",
+      "artifact_links": [],
+      "consumer": "T06 / T14 / T15",
+      "hosted": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": null,
+        "state": null
+      },
+      "id": "titan-gemini-research",
+      "label": "Gemini MERIDIAN / TESSERA",
+      "landed": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": null,
+        "state": null
+      },
+      "lane": null,
+      "latest_activity_at": null,
+      "latest_activity_kind": "owner_report",
+      "latest_activity_source": "https://chatgpt.com/c/6a9f1774-69dc-83e9-a065-88f61de7f0a4",
+      "next_action": "Builders may implement and simulate bounded source-grounded suggestions.",
+      "next_action_source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+      "notes": "Shared-equipment model requests, not separate hardware VMs. Exact activity/completion times and two request IDs remain unknown. Suggestions are not simulator results.",
+      "objective": "Provide source-grounded rival-stock and executable-deadline suggestions to builders.",
+      "observed_at": "2026-09-07T21:54:08Z",
+      "owner": {
+        "coordination_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "label": "Root",
+        "task_id": null
+      },
+      "pr_links": [],
+      "provider_completion": {
+        "completed_at": null,
+        "receipt_ref": null,
+        "status": null
+      },
+      "reported_operation": {
+        "completed_at": null,
+        "completed_requests": 4,
+        "request_ids": [
+          "5cf3a0500870467cb8c1be3b4a784b23",
+          "e36239ca2a9d400fbfa7f1192f4a9e0e"
+        ],
+        "request_ids_complete": false,
+        "source_ref": "https://chatgpt.com/c/6a9f1774-69dc-83e9-a065-88f61de7f0a4",
+        "status": "completed"
+      },
+      "selected": {
+        "completed_at": null,
+        "observed_at": null,
+        "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+        "state": "not_a_validated_policy"
+      },
+      "session_id": null,
+      "session_ref": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788567066179399",
+      "session_ref_kind": "shared_equipment_route",
+      "source_links": [
+        {
+          "role": "source_board",
+          "url": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209"
+        }
+      ],
+      "workspace": null
+    }
+  ],
+  "work_schema_version": "titan.work-items.v1"
+}

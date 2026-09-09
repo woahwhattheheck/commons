@@ -1,0 +1,10 @@
+{
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-git-20260902-01",
+  "kind": "GIT_SHA",
+  "note": "Land commit that put the employee-day runbook on official main. Support sub is not a Commons seat.",
+  "recorded_at": "2026-09-02T05:45:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "0457636a9ffaa70104458f488e2db0fcb0c11312"
+}

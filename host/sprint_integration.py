@@ -348,13 +348,30 @@ def teach_line(repo="woahwhattheheck/commons"):
 def format_slack_lines(scan, repo="woahwhattheheck/commons"):
     """Compact Slack lines. Teach the rule, then exact PR verdicts with evidence."""
     lines = [teach_line(repo)]
-    by_pr = scan.get("by_pr") or {}
-    prs = {int(p["number"]): p for p in scan.get("prs") or []}
+    by_pr = {}
+    raw_by_pr = scan.get("by_pr") or {}
+    if isinstance(raw_by_pr, dict):
+        for key, info in raw_by_pr.items():
+            try:
+                number = int(key)
+            except (TypeError, ValueError):
+                continue
+            if isinstance(info, dict):
+                by_pr[number] = info
+    prs = {}
+    for pr in scan.get("prs") or []:
+        if not isinstance(pr, dict):
+            continue
+        try:
+            number = int(pr.get("number"))
+        except (TypeError, ValueError):
+            continue
+        prs[number] = pr
     if by_pr:
         bits = []
-        for number in sorted(by_pr, key=lambda n: int(n)):
-            info = by_pr[str(number)] if str(number) in by_pr else by_pr[number]
-            pr = prs.get(int(number), {})
+        for number in sorted(by_pr):
+            info = by_pr[number]
+            pr = prs.get(number, {})
             bits.append("`#%s` *%s* `%s`→`%s`" % (
                 number,
                 info.get("verdict") or "CLEAR_TO_MERGE",
@@ -414,11 +431,19 @@ def _contents_bytes(fetch_json, repo, path, ref):
 
 
 def _pr_files(fetch_json, repo, number):
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {}
+    if number < 1:
+        return {}
     files = fetch_json("/repos/%s/pulls/%d/files" % (repo, number), per_page=100)
     if not isinstance(files, list):
         return {}
     out = {}
     for entry in files:
+        if not isinstance(entry, dict):
+            continue
         path = entry.get("filename") or ""
         if not path:
             continue
@@ -436,7 +461,14 @@ def pulse_scan(fetch_json, repo, head_sha, max_prs=20):
         pulls = []
     prs = []
     for pr in pulls:
-        number = pr.get("number")
+        if not isinstance(pr, dict):
+            continue
+        try:
+            number = int(pr.get("number"))
+        except (TypeError, ValueError):
+            continue
+        if number < 1:
+            continue
         base_sha = ((pr.get("base") or {}).get("sha")) or ""
         head = (pr.get("head") or {}).get("sha") or ""
         files = _pr_files(fetch_json, repo, number)

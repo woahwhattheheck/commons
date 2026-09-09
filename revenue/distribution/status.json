@@ -5,7 +5,7 @@
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "family":"public_marketplace",
-      "fit_count":7,
+      "fit_count":6,
       "honest_live":false,
       "id":"upwork-project-catalog",
       "listing_states":[
@@ -14,12 +14,12 @@
       ],
       "name":"Upwork Project Catalog",
       "submit_allowed":false,
-      "unfit_count":10
+      "unfit_count":15
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "family":"public_marketplace",
-      "fit_count":8,
+      "fit_count":7,
       "honest_live":false,
       "id":"upwork-job-feed",
       "listing_states":[
@@ -28,12 +28,12 @@
       ],
       "name":"Upwork job feed",
       "submit_allowed":false,
-      "unfit_count":9
+      "unfit_count":14
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "family":"public_marketplace",
-      "fit_count":5,
+      "fit_count":4,
       "honest_live":false,
       "id":"contra-services",
       "listing_states":[
@@ -42,12 +42,12 @@
       ],
       "name":"Contra Services",
       "submit_allowed":false,
-      "unfit_count":12
+      "unfit_count":17
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "family":"public_marketplace",
-      "fit_count":5,
+      "fit_count":4,
       "honest_live":false,
       "id":"fiverr-gig",
       "listing_states":[
@@ -56,12 +56,12 @@
       ],
       "name":"Fiverr Gig",
       "submit_allowed":false,
-      "unfit_count":12
+      "unfit_count":17
     },
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "family":"commons_surface",
-      "fit_count":17,
+      "fit_count":21,
       "honest_live":true,
       "id":"commons-pages",
       "listing_states":[
@@ -74,7 +74,7 @@
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "family":"partner",
-      "fit_count":17,
+      "fit_count":21,
       "honest_live":true,
       "id":"tokenjunkielabs-slack",
       "listing_states":[
@@ -87,7 +87,7 @@
     {
       "account_status":"CONTACT_RECORDED",
       "family":"partner",
-      "fit_count":17,
+      "fit_count":21,
       "honest_live":true,
       "id":"founder-email",
       "listing_states":[
@@ -109,7 +109,7 @@
       ],
       "name":"SAM.gov",
       "submit_allowed":false,
-      "unfit_count":13
+      "unfit_count":17
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -123,12 +123,12 @@
       ],
       "name":"GSA Schedule",
       "submit_allowed":false,
-      "unfit_count":13
+      "unfit_count":17
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "family":"procurement",
-      "fit_count":7,
+      "fit_count":6,
       "honest_live":false,
       "id":"public-rfp-pack",
       "listing_states":[
@@ -137,7 +137,7 @@
       ],
       "name":"Public RFP response pack",
       "submit_allowed":false,
-      "unfit_count":10
+      "unfit_count":15
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -150,7 +150,7 @@
       ],
       "name":"GitHub Marketplace",
       "submit_allowed":false,
-      "unfit_count":17
+      "unfit_count":21
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -163,7 +163,7 @@
       ],
       "name":"Public MCP registry",
       "submit_allowed":false,
-      "unfit_count":17
+      "unfit_count":21
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -176,7 +176,7 @@
       ],
       "name":"npm public registry",
       "submit_allowed":false,
-      "unfit_count":17
+      "unfit_count":21
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -189,12 +189,12 @@
       ],
       "name":"Hugging Face Hub",
       "submit_allowed":false,
-      "unfit_count":17
+      "unfit_count":21
     },
     {
       "account_status":"LIVEMODE_CHARGES_PAYOUTS_ENABLED",
       "family":"recorded_rail",
-      "fit_count":8,
+      "fit_count":13,
       "honest_live":false,
       "id":"stripe-payment-links",
       "listing_states":[
@@ -203,21 +203,21 @@
       ],
       "name":"Stripe Payment Links",
       "submit_allowed":false,
-      "unfit_count":9
+      "unfit_count":8
     }
   ],
   "conversion_rule":"Buyer interest from any channel is an OFFER-board public signal plus the listing's routes.human page. Do not open a second CRM. Existing pipeline map: revenue/production_survival/crm.md.",
   "counts":{
-    "blocked_pairs":41,
+    "blocked_pairs":36,
     "channels":15,
     "collected_cash_usd":"0.00",
-    "fit_pairs":99,
-    "live_commons_surfaces":51,
+    "fit_pairs":111,
+    "live_commons_surfaces":63,
     "live_marketplace_listings":0,
-    "offers":17,
-    "packages_ready":99,
-    "pairs":255,
-    "unfit_pairs":156,
+    "offers":21,
+    "packages_ready":111,
+    "pairs":315,
+    "unfit_pairs":204,
     "verified_customers":0,
     "verified_leads":0,
     "verified_positive_replies":0

@@ -17,6 +17,18 @@ Canonical core: `commons_mcp.py`. HTTP adapter: `api/mcp.py`. Carrier cards:
 Human buttons: [capabilities.html](../capabilities.html). Gemini door: [gemini-mcp.html](../gemini-mcp.html). Connect recipes:
 [mcp-carriers.md](./mcp-carriers.md).
 
+## Live cash
+
+Verified product pages only — no invented Stripe links. Gemini MCP docs used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
 ## Live vs leftover (measured 2026-08-26)
 
 Public MCP URL:
@@ -25,7 +37,7 @@ Public MCP URL:
 
 | Probe | Result | Meaning |
 | --- | --- | --- |
-| `GET /mcp` | **405** | Spec for this stateless adapter. Not SSO. |
+| `GET /mcp` | **200** | Open capability map. No login. Not SSO. |
 | `HEAD /mcp` | **200** | Spark reachability probe. |
 | `POST initialize` | **200** | Negotiates `2025-03-26` or `2026-07-28`. `serverInfo.name` is `commons`. |
 | `POST tools/list` | **200** | Shared tools, including call-first discovery, search, read, `fire_action`, and `get_send_link`. |
@@ -82,7 +94,7 @@ The adapter already applies these to every HTTP client, including Spark:
 
 - `append_post` / `post_to_action_pad` fast-submit → `ACCEPTED_DURABILITY_PENDING`
 - `get_send_link` read-only draft URL
-- `HEAD /mcp` 200, `GET /mcp` 405, `DELETE` 204, OAuth metadata 404
+- `HEAD /mcp` 200, `GET /mcp` 200 capability map, `DELETE` 204, OAuth metadata 404
 
 Spark-named env `COMMONS_SPARK_PUBLIC_BASE` remains an alias for
 `COMMONS_MCP_PUBLIC_BASE`.
@@ -97,3 +109,7 @@ Cite, do not remint: `codex-sol-spark-mcp-taking-20260825-01`,
 `codex-sol-spark-mcp-integrated-20260825-01`,
 `codex-sol-deploy-spark-mcp-cloud-20260825-01`,
 `wire-gemini-mcp-all-carriers-20260826-01`.
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.

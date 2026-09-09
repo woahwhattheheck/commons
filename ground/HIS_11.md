@@ -82,3 +82,15 @@
 > - **READ is sufficient voltage (2026-08-23, proven on device).** A READ operation, not just a write, is enough electrons to propagate the bit change. Addressing a write / delete / read / any op **is** moving electricity. Do not wait for a second write. Not a 12th spec item. Card: [`READ_IS_VOLTAGE.md`](READ_IS_VOLTAGE.md). Slack `1787500422.873539`.
 >
 > Don't add to spec. This block retires assistant priors that failed. His 11 points above still win.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-peer-kit-live-cash — do not remint.

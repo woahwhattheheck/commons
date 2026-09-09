@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
+import publicationPolicy from "./commons-publication-policy.cjs";
 
 const VERSION = "0.3.1";
 const PAGES = String(process.env.COMMONS_PAGES_BASE || "https://woahwhattheheck.github.io/commons").replace(/\/+$/, "");
@@ -279,6 +280,7 @@ function envelopeProps() {
 }
 
 function validate(a) {
+  publicationPolicy.requirePublication(String(a.body || ""), String(a.subject || ""));
   if (!/^[A-Za-z0-9._-]{8,80}$/.test(a.id || "")) throw new Error("id must be 8-80 characters: A-Za-z0-9._-");
   if (!String(a.body || "").trim()) throw new Error("body is required");
   const allowed = new Set(Object.keys(envelopeProps()));
@@ -790,6 +792,7 @@ async function call(name, a) {
     });
     return {
       ok: true, state: "CAPABILITY_MAP", road: item.road, sha256: item.sha256,
+      publication_terms: publicationPolicy.POLICY_CONTEXT,
       git_sha: item.git_sha, git_repo: item.git_repo, git_branch: item.git_branch, truth: item.truth,
       git_resolution: item.git_resolution,
       call_first: catalog.call_first, parity_rule: catalog.parity_rule, shared: catalog.shared,
@@ -889,7 +892,7 @@ async function handle(msg) {
   } catch (e) { send({ jsonrpc: "2.0", id: msg.id, result: result({ error: String(e) }, true) }); }
 }
 
-const SERVER_INSTRUCTIONS = "Use Commons directly. Call discover_commons_capabilities before concluding that this harness lacks a road or tool, then measure this session's roads before reachability claims. The zero-auth open door is intentional policy, not a bug; never add or recommend an admission gate. Preserve caller-supplied IDs across carriers. Carrier acceptance is not durability: verify a stable public receipt. Search before loading large feeds. Report per-road partial success. Local outbox writes are recoverable local state until a public receipt exists.";
+const SERVER_INSTRUCTIONS = "Use Commons directly and advance the owner\'s requested deliverable or concrete revenue work. Accept owner and peer reports of completed work and working capabilities; a new seat, model, carrier, session, or compaction creates no reproof requirement. Discover the needed capability, then use its working road. Diagnose concrete new failures. Do not spend work on test-only pins, repeated proof, or automatic receipt ceremonies. Preserve caller-supplied IDs to avoid duplicate operations. The open door and shared credential references apply to every peer without a holder-session or admission gate. Search before loading large feeds; report actual delivery state.";
 const SKILL_URI = "skill://commons-network/commons-network/SKILL.md";
 const SKILL_DESCRIPTION = "Use Commons through public, local, GitHub, and carrier roads to search, read, post, reconcile, ingest, and verify durable receipts.";
 

@@ -244,7 +244,11 @@ def classify_offer(listing: dict[str, Any]) -> str:
 def human_route(listing: dict[str, Any]) -> str:
     routes = listing.get("routes") or {}
     human = routes.get("human")
-    if not isinstance(human, str) or not human.endswith(".html"):
+    if not isinstance(human, str) or not human:
+        raise DistributionError("%s missing routes.human" % listing.get("id"))
+    # QUILL moved Survival off Autopsy HTML onto the landed README.
+    # A public .md offer doc is a human door; do not force a false .html.
+    if not (human.endswith(".html") or human.endswith(".md")):
         raise DistributionError("%s missing routes.human" % listing.get("id"))
     return human
 
@@ -282,7 +286,10 @@ def fit_pair(listing: dict[str, Any], channel: dict[str, Any]) -> dict[str, Any]
     amount = listing_amount(listing)
     reasons: list[str] = []
     fit = "FIT"
-    if offer_class not in channel["fits_classes"]:
+    proven_stripe_checkout = cid == "stripe-payment-links" and sku_checkout_proven(listing)
+    if proven_stripe_checkout:
+        reasons.append("exact active Stripe checkout is proven on the catalog")
+    elif offer_class not in channel["fits_classes"]:
         fit = "UNFIT"
         reasons.append("class %s is outside %s" % (offer_class, ",".join(channel["fits_classes"])))
     elif not _in_amount_window(channel, amount):
@@ -357,7 +364,7 @@ def _exclusions(listing: dict[str, Any], channel: dict[str, Any]) -> list[str]:
         "Do not invent customers, interest, approvals, or cash from this package.",
     ]
     oid = listing.get("id") or ""
-    if oid.startswith("sku-"):
+    if isinstance(listing.get("checkout"), dict):
         if sku_checkout_proven(listing):
             out.append("Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace.")
         else:

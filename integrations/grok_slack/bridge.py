@@ -30,6 +30,12 @@ from typing import Any, Callable
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+# Direct script launches resolve the shared policy from this checkout, never cwd.
+_POLICY_ROOT = str(Path(__file__).resolve().parents[2])
+if _POLICY_ROOT not in sys.path:
+    sys.path.insert(0, _POLICY_ROOT)
+from commons_publication_policy import PublicationPolicyViolation, require_publication
+
 
 SCHEMA = "commons-grok-slack-connector/v1"
 FINAL_DELIVERY_OWNER = "grok_slack_bridge"
@@ -63,6 +69,7 @@ PHASES = (
     "ECHO_SUPPRESSED",
     "DELIVERY_UNKNOWN",
     "FIRE_ACTION_UNKNOWN",
+    "PUBLICATION_REJECTED",
 )
 PRE_SUBMIT_PHASES = frozenset({"CLAIMED", "INTAKE", "WAITING_CAPACITY", "JOB_PERSISTED"})
 POST_SUBMIT_PHASES = frozenset({
@@ -315,6 +322,8 @@ def canonical_grok_url(value: str) -> str:
 
 def chunk_text(text: str, limit: int = SLACK_TEXT_LIMIT) -> list[str]:
     """Split below Slack's practical bound without dropping any UTF-8 bytes."""
+    if limit < 1:
+        raise ValueError("chunk limit must be positive")
     if len(text) <= limit:
         return [text]
     pieces: list[str] = []
@@ -671,6 +680,21 @@ def grokcom_capacity_from_env(env: dict[str, str] | None = None) -> dict[str, st
     }
 
 
+def grokcom_capacity_allows_submit(capacity: dict[str, Any] | None) -> bool:
+    """True only with observed AVAILABLE evidence. Never infers capacity from credentials.
+
+    Applied by the Slack bridge before public MCP intake and before fire_action so a
+    stale deployed route_grokcom_revenue_work cannot enqueue grok.com work.
+    """
+    row = dict(capacity or {})
+    state = str(row.get("state") or "UNKNOWN").strip().upper()
+    if state not in {"AVAILABLE", "EXHAUSTED", "UNKNOWN"}:
+        state = "UNKNOWN"
+    evidence = str(row.get("evidence") or "").strip()
+    observed_at = str(row.get("observed_at") or "").strip()
+    return state == "AVAILABLE" and bool(evidence) and bool(observed_at)
+
+
 class BridgeStore:
     """Crash-recovery routing state. Content and secrets are never stored."""
 
@@ -892,7 +916,7 @@ class BridgeStore:
             rows = self._connection.execute(
                 """
                 SELECT * FROM slack_events
-                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED', 'WAITING_CAPACITY')
+                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED', 'WAITING_CAPACITY', 'PUBLICATION_REJECTED')
                   AND NOT (
                     phase = 'FAILED'
                     AND EXISTS (
@@ -902,6 +926,18 @@ class BridgeStore:
                         AND d.state = 'SENT'
                     )
                   )
+                ORDER BY created_at
+                """
+            ).fetchall()
+        return [self._row_to_work(row) for row in rows]
+
+    def waiting_capacity(self) -> list[PendingWork]:
+        """Return capacity-paused work without storing its Slack body."""
+        with self._lock:
+            rows = self._connection.execute(
+                """
+                SELECT * FROM slack_events
+                WHERE phase = 'WAITING_CAPACITY'
                 ORDER BY created_at
                 """
             ).fetchall()
@@ -1154,6 +1190,17 @@ def classify_fire_action(
     }
 
 
+def require_mcp_publication(payload: dict[str, Any]) -> None:
+    """Keep a remote publication rejection out of public error fallback paths."""
+    if payload.get("code") == "commons_publication_terms":
+        raise PublicationPolicyViolation({
+            "allowed": False,
+            "code": "commons_publication_terms",
+            "rule": "remote_publication_terms",
+            "message": "Publication not delivered.",
+        })
+
+
 class CommonsMcpClient:
     """Public Streamable HTTP client. Does not import Commons private logic."""
 
@@ -1178,8 +1225,13 @@ class CommonsMcpClient:
 
     def call_tool(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         self.calls.append((name, arguments))
-        result = self._rpc("tools/call", {"name": name, "arguments": arguments})
+        try:
+            result = self._rpc("tools/call", {"name": name, "arguments": arguments})
+        except McpToolError as exc:
+            require_mcp_publication(exc.payload)
+            raise
         payload = unwrap_mcp_tool_payload(result)
+        require_mcp_publication(payload)
         if payload.get("isError") and _fire_action_kind(payload, None) == "rejected":
             raise McpToolError(payload)
         return payload if payload else result
@@ -1458,6 +1510,7 @@ class SlackTransport:
         index: int,
         count: int,
     ) -> SlackSendResult:
+        require_publication(text)
         key = delivery_key(event_id, phase, index, text)
         existing = self.store.get_delivery(key)
         if existing and existing["state"] == "SENT":
@@ -1631,6 +1684,12 @@ class GrokSlackBridge:
         self._active_event_id = ""
 
     def handle_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
+        try:
+            return self._handle_publication_checked_event(event_id, event)
+        except PublicationPolicyViolation:
+            return self._publication_rejected(event_id)
+
+    def _handle_publication_checked_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
         self.work_log.append("handle_event")
         self._active_event_id = event_id
         if is_direct_message(event):
@@ -1672,6 +1731,8 @@ class GrokSlackBridge:
             row = self.store.get(event_id)
             if row is None:
                 return {"ok": True, "state": "RETRY_DUPLICATE", "submit": False}
+            if row.phase == "PUBLICATION_REJECTED":
+                return {**self._publication_rejected(event_id), "submit": False}
             if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION"}:
                 return {"ok": True, "state": row.phase, "submit": False}
             if row.phase == "FAILED":
@@ -1681,8 +1742,58 @@ class GrokSlackBridge:
             return self._run_claimed(event_id, contract)
         return self._run_claimed(event_id, contract)
 
+    def _reload_waiting_contract(self, item: PendingWork) -> dict[str, Any] | None:
+        """Refetch one paused Slack event and verify its original text hash."""
+        web_client = getattr(self.sink, "web_client", None)
+        if web_client is None:
+            return None
+        history = web_client.conversations_replies(
+            channel=item.channel,
+            ts=item.thread_ts,
+        )
+        messages = (
+            history.get("messages")
+            if isinstance(history, dict)
+            else getattr(history, "messages", None)
+        )
+        if not isinstance(messages, list):
+            return None
+        for message in messages:
+            if not isinstance(message, dict):
+                continue
+            if str(message.get("ts") or "") != item.message_ts:
+                continue
+            text = str(message.get("text") or "")
+            author = str(message.get("user") or message.get("bot_id") or "")
+            if _sha256_text(text) != item.text_sha256 or author != item.author:
+                return None
+            files = message.get("files")
+            return {
+                "event_id": item.event_id,
+                "channel": item.channel,
+                "message_ts": item.message_ts,
+                "thread_ts": item.thread_ts,
+                "author": item.author,
+                "text": text,
+                "files": files if isinstance(files, list) else [],
+            }
+        return None
+
     def recover_pending(self) -> int:
         recovered = 0
+        if grokcom_capacity_allows_submit(self.grokcom_capacity):
+            for item in self.store.waiting_capacity():
+                try:
+                    contract = self._reload_waiting_contract(item)
+                    if contract is None:
+                        continue
+                    result = self._run_claimed(item.event_id, contract)
+                except PublicationPolicyViolation:
+                    result = self._publication_rejected(item.event_id)
+                except Exception:
+                    continue
+                if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT", "PUBLICATION_REJECTED"}:
+                    recovered += 1
         for item in self.store.pending():
             try:
                 if item.phase == "FAILED":
@@ -1691,17 +1802,42 @@ class GrokSlackBridge:
                     result = self._resume_output_only(item)
                 else:
                     result = self._resume_pre_submit(item)
+            except PublicationPolicyViolation:
+                result = self._publication_rejected(item.event_id)
             except Exception:
                 continue
-            if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT"}:
+            if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT", "PUBLICATION_REJECTED"}:
                 recovered += 1
         return recovered
 
+    def _publication_rejected(self, event_id: str) -> dict[str, Any]:
+        # Retain operation identity without publishing or returning rejected prose.
+        self.store.set_phase(event_id, "PUBLICATION_REJECTED")
+        return {
+            "ok": False,
+            "state": "PUBLICATION_REJECTED",
+            "code": "commons_publication_terms",
+            "delivered": False,
+        }
+
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
+        try:
+            return self._run_publication_checked(event_id, contract)
+        except PublicationPolicyViolation:
+            return self._publication_rejected(event_id)
+
+    def _run_publication_checked(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         self._active_event_id = event_id
         packet = self._intake(event_id, contract)
-        if packet.get("state") == "WAITING_CAPACITY":
-            self.store.set_phase(event_id, "WAITING_CAPACITY")
+        if (
+            packet.get("state") == "WAITING_CAPACITY"
+            or not grokcom_capacity_allows_submit(self.grokcom_capacity)
+        ):
+            self.store.set_phase(
+                event_id,
+                "WAITING_CAPACITY",
+                task_id=str(packet.get("task_id") or ""),
+            )
             return {
                 "ok": True,
                 "state": "WAITING_CAPACITY",
@@ -1735,6 +1871,8 @@ class GrokSlackBridge:
         if submitted.get("kind") == "rejected":
             self.store.set_phase(event_id, "FAILED", result_id=str(submitted.get("code") or "REJECTED"))
             self._post_rejection(event_id, contract, submitted)
+            return submitted
+        if submitted["state"] == "WAITING_CAPACITY":
             return submitted
         if submitted["state"] in {"FIRE_ACTION_UNKNOWN", "FAILED"}:
             self.store.set_phase(event_id, submitted["state"])
@@ -1786,6 +1924,15 @@ class GrokSlackBridge:
         return load_orchestrate()(arguments)
 
     def _fire_once(self, event_id: str, job_id: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        if not grokcom_capacity_allows_submit(self.grokcom_capacity):
+            self.store.set_phase(event_id, "WAITING_CAPACITY")
+            return {
+                "ok": True,
+                "state": "WAITING_CAPACITY",
+                "job_id": job_id,
+                "submit": False,
+                "kind": "waiting_capacity",
+            }
         row = self.store.get(event_id)
         if row and row.phase in POST_SUBMIT_PHASES:
             return {"ok": True, "state": "SUBMITTED", "job_id": job_id, "submit": False}
@@ -1797,6 +1944,9 @@ class GrokSlackBridge:
             self.work_log.append("mcp:fire_action")
             self.store.increment_fire_action(event_id)
             result = self.mcp.call_tool("fire_action", arguments)
+            require_mcp_publication(unwrap_mcp_tool_payload(result))
+        except PublicationPolicyViolation:
+            raise
         except Exception as exc:
             return self._classify_fire_exception(event_id, job_id, exc)
         classified = classify_fire_action(unwrap_mcp_tool_payload(result), None)
@@ -1827,6 +1977,7 @@ class GrokSlackBridge:
 
     def _classify_fire_exception(self, event_id: str, job_id: str, exc: Exception) -> dict[str, Any]:
         payload = dict(getattr(exc, "payload", {}) or {}) if isinstance(exc, McpToolError) else {}
+        require_mcp_publication(payload)
         classified = classify_fire_action(payload, exc)
         if classified["kind"] in {"accepted_pending", "pending_unverified"} or self._accepted_wake(job_id):
             self.store.set_phase(event_id, "SUBMITTED")
@@ -2460,6 +2611,7 @@ class GrokSlackBridge:
         return submitted
 
     def _post_status(self, event_id: str, contract: dict[str, Any], text: str, *, phase: str) -> SlackSendResult:
+        require_publication(text)
         pieces = chunk_text(text)
         last = SlackSendResult("FAILED")
         for index, piece in enumerate(pieces):
@@ -2477,6 +2629,7 @@ class GrokSlackBridge:
         return last
 
     def _post_rejection(self, event_id: str, contract: dict[str, Any], submitted: dict[str, Any]) -> SlackSendResult:
+        require_mcp_publication(submitted)
         code = str(submitted.get("code") or "REJECTED")
         row = self.store.get(event_id)
         calls = 0 if row is None else row.fire_action_calls
@@ -2492,6 +2645,8 @@ class GrokSlackBridge:
                 text = text + " " + diag[:remain]
         try:
             return self._post_status(event_id, contract, text, phase="rejected")
+        except PublicationPolicyViolation:
+            raise
         except Exception:
             return SlackSendResult("FAILED")
 
@@ -2500,6 +2655,7 @@ class GrokSlackBridge:
             # Executor automation is not the final Slack owner.
             pass
         message = str(envelope.get("message") or "")
+        require_publication(message)
         pieces = chunk_text(message)
         last = SlackSendResult("SENT")
         for index, piece in enumerate(pieces):
@@ -2783,6 +2939,25 @@ def _redact_blob(value: Any) -> Any:
     return json.loads(redacted)
 
 
+def _slack_publication_text(payload: dict[str, Any]) -> str:
+    """Collect displayed Slack prose, including blocks-only message edits."""
+    parts: list[str] = []
+
+    def collect(value: Any) -> None:
+        if isinstance(value, list):
+            for item in value:
+                collect(item)
+        elif isinstance(value, dict):
+            for key, item in value.items():
+                if key in {"text", "title", "pretext", "fallback", "alt_text", "value"} and isinstance(item, str):
+                    parts.append(item)
+                elif isinstance(item, (dict, list)):
+                    collect(item)
+
+    collect({key: payload[key] for key in ("text", "blocks", "attachments") if key in payload})
+    return "\n".join(parts)
+
+
 def slack_web_call(
     method: str,
     token: str,
@@ -2791,6 +2966,8 @@ def slack_web_call(
     opener: Callable[..., Any] | None = None,
 ) -> dict[str, Any]:
     """POST a Slack Web API method. Token never appears in returned JSON."""
+    if method in {"chat.postMessage", "chat.update", "chat.postEphemeral", "chat.scheduleMessage"}:
+        require_publication(_slack_publication_text(payload or {}))
     if not token:
         raise RuntimeUnconfigured("missing Slack token")
     body = json.dumps(payload or {}, separators=(",", ":")).encode("utf-8")

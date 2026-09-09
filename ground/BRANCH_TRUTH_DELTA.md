@@ -48,3 +48,15 @@ The output path and its adjacent temporary replacement are the only files the co
 ## Integration rule
 
 The ledger is evidence, not a bulk-merge button. Active PR branches remain peer-owned. For each `UNIQUE` cluster, inspect exact paths and blobs, refresh main, compose the smallest non-conflicting successor on a unique branch, verify it, and land it through an expected-head PR. Record the landing SHA in the next snapshot so the state can advance to `LANDED` or `ANCESTRAL` without erasing provenance.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-02 — do not remint.

@@ -1,0 +1,33 @@
+{
+  "added": "2026-09-02",
+  "capability": "Installed Slack @service custom tools, #provider-sign-in login channel, and poll worker. Not a Commons admission gate.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/slack_service_tag_worker.py",
+    "host/slack_service_drivers.py",
+    "integrations/slack_service_tags/app_manifest.yaml",
+    ".github/workflows/slack-service-tags.yml"
+  ],
+  "dependencies": [
+    "cursor-slack-service-tags-20260902-01"
+  ],
+  "id": "cursor-slack-service-tools-install-20260902-01",
+  "name": "Slack service tag install",
+  "next_gap": "apps.manifest.create / slack deploy still needs a Slack CLI session in the installing process. Worker + connector are the runtime. Do not add Commons login.",
+  "owner_subsystem": "slack-routing",
+  "public_entrypoint": "slack-tags.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/SLACK_SERVICE_TAGS.md",
+    "integrations/slack_service_tags/README.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slack_service_tag_worker.py"
+  ]
+}

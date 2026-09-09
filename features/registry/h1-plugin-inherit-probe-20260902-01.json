@@ -1,0 +1,34 @@
+{
+  "added": "2026-09-02",
+  "capability": "Live H1 inherit-source probe. Reads user-level ~/.claude enabledPlugins and classifies SEAT_CLEAR / INHERIT_SOURCE_PRESENT / H1_HIT / FINDER-FAILED. Composes grok inspect evaluation. Never writes Claude settings. Does not remint GROK_CLAUDE_HYGIENE.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/h1_plugin_inherit.py",
+    "test_h1_plugin_inherit.py"
+  ],
+  "dependencies": [
+    "open-door-guard-20260822-01"
+  ],
+  "id": "h1-plugin-inherit-probe-20260902-01",
+  "name": "H1 Grok←Claude plugin inherit probe",
+  "next_gap": "Owner-machine Grok Build live grok inspect --json remains FINDER-UNVERIFIED from cloud seats without that CLI. Do not rewrite Claude settings.",
+  "owner_subsystem": "hygiene",
+  "public_entrypoint": "host/h1_plugin_inherit.py",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/GROK_CLAUDE_HYGIENE.md",
+    "ground/CLAUDE_PEER_CHECK.md",
+    "p/wire-claude-peer-check-20260902-01.md",
+    "p/ink-claude-h1-hygiene-20260902-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_h1_plugin_inherit.py",
+    "test_grok_claude_hygiene.py"
+  ]
+}

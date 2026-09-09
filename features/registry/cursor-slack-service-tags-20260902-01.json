@@ -1,0 +1,32 @@
+{
+  "added": "2026-09-02",
+  "capability": "Slack @service tags emit Slack custom-tool jobs when the harness lacks that provider; owner sign-in queues on #needs-bryce. Not a Commons admission gate.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/SLACK_SERVICE_TAGS.json",
+    "ground/SLACK_SERVICE_TAGS.md",
+    "host/slack_service_tag.py",
+    "slack-tags.html"
+  ],
+  "dependencies": [],
+  "id": "cursor-slack-service-tags-20260902-01",
+  "name": "Slack service tags",
+  "next_gap": "Installing the actual Slack custom tools / provider apps is EXTERNAL_PROVIDER_ACTION. Do not add Commons login.",
+  "owner_subsystem": "slack-routing",
+  "public_entrypoint": "slack-tags.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/SLACK_SERVICE_TAGS.md",
+    "ground/NEEDS_BRYCE.md",
+    "slack-tags.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slack_service_tags.py"
+  ]
+}

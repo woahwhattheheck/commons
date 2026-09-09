@@ -186,10 +186,31 @@ class OpportunityRegistryTests(unittest.TestCase):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         self.assertIn(ledger[0]["sha256"][:16], html)
 
+    def test_resources_html_receipt_tracks_live_bytes(self):
+        recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
+        html_recs = [rec for rec in recs if rec["path"] == "resources.html"]
+        self.assertEqual(len(html_recs), 1, "resources.html must have one capability receipt")
+        path = ROOT / "resources.html"
+        self.assertTrue(path.is_file())
+        self.assertEqual(mod.sha256_file(path), html_recs[0]["sha256"])
+        self.assertEqual(path.stat().st_size, html_recs[0]["bytes"])
+        html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
+        self.assertIn(html_recs[0]["sha256"][:16], html)
+
     def test_packets_and_js_off_html(self):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         proof = (ROOT / "proof-to-proposal.html").read_text(encoding="utf-8")
         self.assertIn("OPEN OPPORTUNITY DOOR", html)
+        cash_pattern = r'<section id="live-cash"[^>]*>.*?</section>'
+        for page, rendered in (
+            (html, mod.render_opportunity_html(self.registry)),
+            (proof, mod.render_proof_html(self.registry)),
+        ):
+            current_cash = re.search(cash_pattern, page, re.S)
+            generated_cash = re.search(cash_pattern, rendered, re.S)
+            self.assertIsNotNone(current_cash, "the published cash doors must remain visible")
+            self.assertIsNotNone(generated_cash, "compilation must preserve the published cash doors")
+            self.assertEqual(generated_cash.group(0), current_cash.group(0))
         self.assertIn("nsf-pesose-26-506", html)
         self.assertIn("TITAN Hands", html)
         self.assertIn("RINGDELTA", html)

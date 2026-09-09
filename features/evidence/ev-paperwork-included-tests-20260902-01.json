@@ -1,0 +1,12 @@
+{
+  "feature_id": "cursor-business-pack-paperwork-included-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-included-tests-20260902-01",
+  "kind": "TEST_PATHS",
+  "note": "Factory sheet homework filled; empty Do X unsubstantiated; filing-as-lawyer flagged; factory id not reminted.",
+  "paths": [
+    "test_business_pack_paperwork_included.py"
+  ],
+  "recorded_at": "2026-09-02T05:56:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

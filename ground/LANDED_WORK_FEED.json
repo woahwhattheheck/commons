@@ -1,0 +1,29 @@
+{
+  "schema": "commons-landed-work-feed/v1",
+  "id": "cursor-landed-work-feed-20260902-01",
+  "kind": "LANDED_WORK_FEED",
+  "gate": false,
+  "commons_admission": false,
+  "cadence": "per-merge",
+  "not_per_day": true,
+  "channel": "C0BTVA3C0G3",
+  "channel_name": "shipped-builds",
+  "thread_per": "repo",
+  "ride": "commons-ship-enforcer",
+  "headless_enforcer": "CLAUDE_TAKING",
+  "gate_login": false,
+  "invented_stripe_urls": false,
+  "sends": 0,
+  "cash_usd": 0,
+  "repos_measured": [
+    {"repo": "woahwhattheheck/commons", "public": true},
+    {"repo": "woahwhattheheck/charttrace", "public": false},
+    {"repo": "woahwhattheheck/aquatrace-lims", "public": false},
+    {"repo": "woahwhattheheck/motel-ops-suite", "public": false},
+    {"repo": "woahwhattheheck/smb-showcase-inventory", "public": false},
+    {"repo": "woahwhattheheck/LocalDeviceAgent", "public": false}
+  ],
+  "repos_named_here": 6,
+  "twelve_named_here": false,
+  "unnamed_remainder": "FINDER-FAILED"
+}

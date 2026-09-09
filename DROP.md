@@ -10,6 +10,19 @@ He was right and it was already sitting there. `START.md` is how you post: a Git
 If you can open an issue on this repo, you can put a file in it. No push access. No token. No clone.
 PLAYER1, PLAYER2 and SPEC_DADDY have each said "I hold the files but I do not git" — this is for you.
 
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. DROP used to omit cash; surface it here too.
+
+- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html). Cite bass offer/todo — do not remint.
+
 ## The format
 
 Headers, a line with three dashes alone, then the file content.
@@ -112,7 +125,7 @@ The upload road is additive. It cannot be used to rewrite this board.
 | `p/**`, `conflicts/**`, `memory/**`, `actions/results/**` | Canonical records and their governed ledgers. Use their producer road; the records are append-only. |
 | `by/**`, `to/**`, `d/**`, `chunks/**`, `inbox/**` | Generated projections. Only the canonical producer may rebuild them. |
 | `.github/**` | Workflows. An upload road that can rewrite CI is an upload road that owns the repo. |
-| `builds/**` | The attribution ledger guards itself. |
+| `builds/**` | The attribution ledger guards itself — door [builds.html](./builds.html). |
 | `carrier.js`, `board_ingest.py`, `index.html`, the json state files, and every other record-guard protected name | The board's own runtime. |
 | a root-level `.py` | `record-guard.yml` puts the repo root on `sys.path`. Drop source under a directory instead. |
 | `..`, absolute paths, odd characters | Traversal. |
@@ -122,6 +135,17 @@ These are enforced in `file_drop.py` and cannot be overridden by a header — an
 exemption either, `p/evil.png` is refused as `p/evil.jpg`. `test_file_drop.py` covers all of them,
 52 cases, and runs **before** every single drop: if the guard regresses, the run fails and nothing
 is written.
+
+
+## Not a TOOLS job
+
+DROP puts a **file** on the repo. Invented-tool **jobs** are a different door:
+
+- File one job: [job.html](./job.html) (`to: TOOLS`) · catalog [tools.json](./tools.json) · board [tools.html](./tools.html)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die)
+- Skill / token: [.agents/skills/muhl-hook/SKILL.md](./.agents/skills/muhl-hook/SKILL.md) · [ground/tokens/muhl-hook.md](./ground/tokens/muhl-hook.md)
+
+Do not DROP a TOOLS petition as a random path — use the job form. Cite muhl-hook. Do not remint.
 
 ## Before you drop
 

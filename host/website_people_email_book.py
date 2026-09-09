@@ -15,9 +15,10 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,19 +32,7 @@ MEASURED_AT = "2026-08-30T15:20:37Z"
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
-META_DESC_RE = re.compile(
-    r"<meta\s+[^>]*name=[\"']description[\"'][^>]*content=[\"']([^\"']+)[\"']",
-    re.I,
-)
-OG_DESC_RE = re.compile(
-    r"<meta\s+[^>]*property=[\"']og:description[\"'][^>]*content=[\"']([^\"']+)[\"']",
-    re.I,
-)
 ICP_RE = re.compile(r"data-icp[^>]*>(.*?)</", re.I | re.S)
-BOOK_ATTR_RE = re.compile(
-    r"<a[^>]*data-book-url[^>]*href=[\"']([^\"']+)[\"']",
-    re.I,
-)
 CAL_RE = re.compile(r"https://(?:www\.)?(?:cal\.com|calendly\.com)/[^\s\"']+", re.I)
 PERSON_RE = re.compile(
     r"<(?P<tag>article|div|section|li)(?P<attrs>[^>]*\bdata-person\b[^>]*)>(?P<body>.*?)</(?P=tag)>",
@@ -176,6 +165,11 @@ def _page_people(html: str) -> list[dict[str, Any]]:
             continue
         if not name and email:
             name = email.split("@", 1)[0]
+        # Apply the same first-seen identity rule as the JSON-LD fallback below.
+        if email and email in seen_email:
+            continue
+        if not email and name.casefold() in seen_name:
+            continue
         person = {
             "name": name,
             "role": role,
@@ -216,19 +210,61 @@ def _page_people(html: str) -> list[dict[str, Any]]:
     return people
 
 
+class _WebsiteAttributes(HTMLParser):
+    """Read metadata and explicit booking links independently of attribute order."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.description = ""
+        self.og_description = ""
+        self.book_url = ""
+        self.base_href: str | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        # Keep the first occurrence, as HTML does for duplicate attributes.
+        values: dict[str, str] = {}
+        for name, value in attrs:
+            values.setdefault(name, value or "")
+        if tag == "meta":
+            content = squeeze(values.get("content", ""))
+            if values.get("name", "").strip().casefold() == "description":
+                if not self.description:
+                    self.description = content
+            if values.get("property", "").strip().casefold() == "og:description":
+                if not self.og_description:
+                    self.og_description = content
+        elif tag == "base" and self.base_href is None and "href" in values:
+            self.base_href = values["href"].strip()
+        elif tag == "a" and "data-book-url" in values and not self.book_url:
+            self.book_url = values.get("href", "").strip()
+
+
 def extract_website(html: str, source: str) -> dict[str, Any]:
     title = _first(TITLE_RE, html)
     headline = _first(H1_RE, html) or title
-    description = _first(META_DESC_RE, html) or _first(OG_DESC_RE, html)
+    attributes = _WebsiteAttributes()
+    attributes.feed(html)
+    attributes.close()
+    description = attributes.description or attributes.og_description
     icp = _first(ICP_RE, html)
-    book = ""
-    book_match = BOOK_ATTR_RE.search(html)
-    if book_match:
-        book = book_match.group(1).strip()
+    book = attributes.book_url
     if not book:
         cal = CAL_RE.search(html)
         if cal:
             book = cal.group(0).rstrip(">\"'")
+    if book:
+        # A draft leaves the source page, so relative hrefs need its document URL.
+        # File fixtures have no known web origin; keep their original URL text.
+        try:
+            origin = urlparse(source)
+            if origin.scheme in {"http", "https"} and origin.netloc:
+                base = source
+                if attributes.base_href is not None:
+                    base = urljoin(source, attributes.base_href)
+                book = urljoin(base, book)
+        except ValueError:
+            # An invalid source/base URL must not discard other extracted data.
+            pass
     return {
         "source": source,
         "title": title,
@@ -287,6 +323,23 @@ def _booking(prospect: dict[str, Any], website: dict[str, Any]) -> dict[str, Any
         "calls_booked": 0,
         "next_action": "copy the book URL into the draft; do not write a live calendar event",
     }
+
+
+_GTM_INDEX = None
+
+
+def _load_gtm_index() -> Any:
+    global _GTM_INDEX
+    if _GTM_INDEX is not None:
+        return _GTM_INDEX
+    path = ROOT / "host" / "lm_gtm_index.py"
+    spec = importlib.util.spec_from_file_location("commons_lm_gtm_index", path)
+    if spec is None or spec.loader is None:
+        raise LoopError("cannot load LLM-native GTM index")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    _GTM_INDEX = module
+    return module
 
 
 def _load_smart_outreach() -> Any:
@@ -412,6 +465,9 @@ def build_loop(
     receipt_directory: Path = DEFAULT_RECEIPTS,
     generated_at: str = MEASURED_AT,
     mailbox_status: dict[str, Any] | None = None,
+    owner: str | None = None,
+    enforce_sales_occupancy: bool = False,
+    index_paths: dict[str, Path] | None = None,
 ) -> dict[str, Any]:
     if not isinstance(html, str) or not html.strip():
         raise LoopError("html must be non-empty")
@@ -423,9 +479,16 @@ def build_loop(
     mailbox_state = _mailbox_state(mailbox_status)
     emails: list[dict[str, Any]] = []
     bookings: list[dict[str, Any]] = []
+    gtm = _load_gtm_index() if enforce_sales_occupancy else None
     for prospect in prospects:
         if prospect["decision"] != "READY_TO_DRAFT":
             continue
+        if gtm is not None:
+            gtm.assert_sales_owner(
+                subject_id=prospect["prospect_id"],
+                owner=owner or "",
+                paths=index_paths,
+            )
         emails.append(
             {
                 "prospect_id": prospect["prospect_id"],
@@ -544,6 +607,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     run.add_argument("--output", type=Path)
     run.add_argument("--generated-at", default=MEASURED_AT)
+    run.add_argument("--owner", default="", help="live occupant; sales/draft/outreach without a match exits 4")
     subparsers.add_parser("validate").add_argument("--input", type=Path, default=DEFAULT_LOOP)
     return parser
 
@@ -577,14 +641,24 @@ def main(argv: list[str] | None = None) -> int:
         if args.mailbox_status
         else None
     )
-    loop = build_loop(
-        html,
-        source,
-        prospect_catalog=catalog,
-        receipt_directory=args.receipts,
-        generated_at=args.generated_at,
-        mailbox_status=mailbox_status,
-    )
+    gtm = _load_gtm_index()
+    try:
+        loop = build_loop(
+            html,
+            source,
+            prospect_catalog=catalog,
+            receipt_directory=args.receipts,
+            generated_at=args.generated_at,
+            mailbox_status=mailbox_status,
+            owner=args.owner,
+            enforce_sales_occupancy=True,
+        )
+    except gtm.UnclaimedSales as error:
+        sys.stderr.write(str(error) + "\n")
+        return 4
+    except gtm.IndexError_ as error:
+        sys.stderr.write(str(error) + "\n")
+        return 1
     validate_loop(loop)
     rendered = canonical_text(loop)
     if args.output:

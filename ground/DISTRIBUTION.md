@@ -49,3 +49,15 @@ outcomes, or the production-survival offer. Marketplace acquisition order stays
 [marketplaces.md](../revenue/production_survival/marketplaces.md). Public
 checkout exposure is [CHECKOUT_CAPABILITY.md](./CHECKOUT_CAPABILITY.md): this
 layer still does not mark Payment Links as marketplace `LIVE`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-09 — do not remint.

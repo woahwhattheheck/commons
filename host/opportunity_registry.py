@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import html
 import json
+import math
 from datetime import date, datetime
 from pathlib import Path
 import re
@@ -136,12 +137,20 @@ def _reject_nonfinite(value: str):
     raise RegistryError("non-finite JSON constant %s" % value)
 
 
+def _finite_float(value: str) -> float:
+    # parse_constant does not see JSON numbers whose float conversion overflows.
+    number = float(value)
+    _require(math.isfinite(number), "non-finite JSON number %s" % value)
+    return number
+
+
 def _parse_json(raw: str, at: str):
     try:
         return json.loads(
             raw,
             object_pairs_hook=_reject_duplicate_pairs,
             parse_constant=_reject_nonfinite,
+            parse_float=_finite_float,
         )
     except json.JSONDecodeError as exc:
         raise RegistryError("%s is malformed JSON" % at) from exc
@@ -350,7 +359,7 @@ def compile_registry(root: Path) -> dict:
     collab_src = _source(root, "revenue/ip/collaboration_targets.json")
     offer_src = _source(root, "revenue/ip/whitebox_collaboration_offers.json")
     channel_src = _source(root, "revenue/distribution/channels.json")
-    seed_src = _source(root, str(SEED_PATH))
+    seed_src = _source(root, SEED_PATH.as_posix())
     titan_hour_src = _source(root, "titan-hour.html")
 
     rows = []
@@ -912,6 +921,19 @@ table{font-size:.86rem}
 <header class="hero">
 <p class="note">Opportunity registry · <code>host/opportunity_registry.py</code> · as_of __AS_OF__</p>
 <h1>Verified public technology. Honest non-dilutive doors. Zero invented money.</h1>
+
+<section id="live-cash" aria-label="Live cash">
+  <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
+  <ul>
+    <li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p>Full catalog: <a href="./commerce.html">commerce.html</a>. Cite forge tip-shelf / spark autopsy — do not remint.</p>
+</section>
+
 <p class="lead">Commons already shipped TITAN Hands, RINGDELTA, carrier roads, evidence records, agent-swarm prep, and trust-cache reliability. This desk maps those receipts onto public grants, live pilot offers, licensing blockers, procurement channels, and research targets. It composes, and does not remint, the listing registry (offer × surface marketplace copies). It does not file, register, or cash anything.</p>
 </header>
 <section class="panel" aria-labelledby="honest-heading">
@@ -1021,6 +1043,20 @@ def render_proof_html(registry: dict) -> str:
 {items}
 </ul>
 <p class="note">Applicant eligibility UNKNOWN. Submitted 0. Awarded 0. Cash 0.</p>
+
+<section id="live-cash">
+  <h2>Live cash</h2>
+  <p>Verified product pages only — no invented Stripe links.</p>
+  <ul>
+    <li><a href="agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p>Shelf: <a href="tools-cash.html">tools-cash.html</a>. Catalog: <a href="commerce.html">commerce.html</a>. Cite spy-html-money-doors-live-cash-20260905-02 — do not remint.</p>
+</section>
+
 </body>
 </html>
 """.format(items="\n".join(items))
@@ -1070,10 +1106,12 @@ def main(argv=None) -> int:
         schema = _parse_json((root / SCHEMA_PATH).read_text(encoding="utf-8"), "schema")
         if args.command == "compile":
             registry = compile_registry(root)
-            write_surfaces(root, registry)
         else:
             registry = _parse_json((root / REGISTRY_PATH).read_text(encoding="utf-8"), "registry")
         result = validate(root, registry, schema)
+        if args.command == "compile":
+            # Preserve prior outputs when the candidate fails validation.
+            write_surfaces(root, registry)
         if args.command == "list":
             result = {"status": "VALID", "opportunities": registry["opportunities"], "counts": registry["counts"]}
         elif args.command == "due":

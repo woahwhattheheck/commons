@@ -1,0 +1,10 @@
+{
+  "feature_id": "digit-seat-trail-20260909-01",
+  "from": "DIGIT",
+  "id": "ev-digit-seat-trail-git-20260909-01",
+  "kind": "GIT_SHA",
+  "note": "Grounding DIGIT seat card squash merge (follows names #11316 boards #11320 pixel #11311).",
+  "recorded_at": "2026-09-09T18:22:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "0c2e59212a6dce8a016319a0cacd44180d514864"
+}

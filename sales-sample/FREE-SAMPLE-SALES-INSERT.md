@@ -35,7 +35,7 @@ Labels on the door: **STRUCTURAL** vs **OWNER-PC-ONLY** vs **RUNTIME-MISSING**.
 - Not a working computer from a catalog.
 - Not inference, not a live walk, not owner-PC titan MOVE.
 - Not factory, foundry, live offsets, or a transferred White Box.
-- Not a live agent-crash demo. If you mention the $2,500 same-day SKU, point only at `agent-rescue.html` and existing public receipts/tests.
+- Not a live agent-crash demo. Live paid agent door is Agent Failure Autopsy · $29 on `agent-rescue.html`. The $2,500 Same-Day Survival Proof has no dedicated Commons HTML (`revenue/production_survival/README.md`). Point only at existing public receipts/tests.
 - Not buyers, invoices, cash, CRM, or email. This insert is for a package already in motion.
 
 ## Map to existing paid path cards (do not remint)

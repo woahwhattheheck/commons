@@ -1,0 +1,12 @@
+{
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-tests-20260902-01",
+  "kind": "TEST_PATHS",
+  "note": "Operator-day classifier: incomplete without do-X list, invented support price, earnings-in-ads, not a Commons gate.",
+  "paths": [
+    "test_business_pack_operator.py"
+  ],
+  "recorded_at": "2026-09-02T05:45:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

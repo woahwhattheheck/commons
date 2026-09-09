@@ -8,6 +8,19 @@ Do not skim `ground/`. That tree is the library. These packs are the job.
 
 Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.md` YAML + body). Clients that discover `.agents/skills/` can load them without a hunt.
 
+## Live cash
+
+Verified product pages only — no invented Stripe links. The one-job door used to omit cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html) · [commerce.html](../commerce.html). Cite coil MANUAL / bass PICK / coil START — do not remint.
+
+
 | if your job is | open this skill | facts only |
 |---|---|---|
 | I do not know yet | [commons-worker](../.agents/skills/commons-worker/SKILL.md) | — |
@@ -39,6 +52,10 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | evidence-derived shipped-state tracker | [feature-tracker](../.agents/skills/feature-tracker/SKILL.md) | [ground/FEATURE_TRACKER.md](../ground/FEATURE_TRACKER.md) |
 | canonical listing registry for marketplace/MCP/procurement packs | [listing-registry](../.agents/skills/listing-registry/SKILL.md) | [ground/LISTING_REGISTRY.md](../ground/LISTING_REGISTRY.md) |
 | compile verified outcomes into reusable skill patterns | [experience-compiler](../.agents/skills/experience-compiler/SKILL.md) | [experience/README.md](../experience/README.md) |
+| Explee AutoGTM / paste website / qualify while you sleep | [autogtm](../.agents/skills/autogtm/SKILL.md) | [tokens/autogtm](../ground/tokens/autogtm.md) |
+| Claude Commerce Agents / shopping + merchant blueprint | [commerce-agents](../.agents/skills/commerce-agents/SKILL.md) | — |
+| crawler/fetch blocked / Google AI Mode hall pass | [google-ai-mode-hall-pass](../.agents/skills/google-ai-mode-hall-pass/SKILL.md) | [tokens/google-ai-mode-hall-pass](../ground/tokens/google-ai-mode-hall-pass.md) |
+| shared super MCP / thin-harness residual reach | [super-mcp](../.agents/skills/super-mcp/SKILL.md) | [tokens/super-mcp](../ground/tokens/super-mcp.md) |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 

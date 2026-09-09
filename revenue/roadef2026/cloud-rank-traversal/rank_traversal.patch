@@ -1,0 +1,142 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -639,11 +639,14 @@
+                   << " slots; initial MLU " << initialMlu << "; preparation " << elapsed() << "s\n";
+     }
+ 
+-    // PRISM rankOne() body reused verbatim from commons PR10430,
++    // PRISM proposal body retained from commons PR10430,
+     // merged 73a805e290cee36981917ac09e7ce2133f35afd7 (cloud-a-rank1).
+-    // Natural-exhaustion dispatch below is a separate opt-in integration.
+-
+-    // Opt-in hard-case pass: exhaust the current rank-one coordinate before
++    // Scheduler idea: PR10451 / TRACE; PRISM owns the proposal mechanism.
++    // PR10451 merge: 4b1dcaa793f9b54f13c287d766e6094f2faf4ac8.
++    // This separate opt-in uses a finite sweep, not rank-band cycling.
++    // The e801 natural-exhaustion guard and allowance remain unchanged.
++
++    // Opt-in bounded proposals at the selected load coordinate before
+     // returning to the ordinary search. All proposed routes still enter through
+     // move()/moveTogether(), so exact ECMP, segment limits, transition budgets,
+     // and the full sorted six-decimal acceptance rule remain authoritative.
+@@ -652,12 +655,19 @@
+         int demandLimitSetting = static_cast<int>(std::min(256.0, setting("FLEET_RANK1_DEMANDS", 32)));
+         int pairNodeLimit = static_cast<int>(std::min(96.0, setting("FLEET_RANK1_PAIR_NODES", 24)));
+         const char* reportPath = std::getenv("FLEET_RANK1_REPORT");
++        bool rankTraversal = setting("FLEET_POLISH_RANK_TRAVERSAL", 0) != 0;
++        int rankLimit = std::min<int>(static_cast<int>(loads.size()), passLimit);
++        int rankCursor = 0;
++        std::vector<int> coordinateOrder;
++        const char* schedulerStop = "pass_budget";
+         struct PassRecord {
+             int pass, t, edge, from, to, contributors;
+             double before, after;
+             long long attemptsBefore, attemptsAfter, acceptedBefore, acceptedAfter;
+             bool ejection;
+             std::vector<std::pair<int, double>> top;
++            int selectedRank = 1;
++            const char* passOutcome = "configured_pass_exhaustion";
+         };
+         std::vector<PassRecord> records;
+         auto appendWindow = [](std::vector<std::pair<int, int>>& windows, int left, int right) {
+@@ -666,8 +676,20 @@
+         };
+         for (int pass = 0; pass < passLimit && !finished(); ++pass) {
+             int position = 0;
+-            for (int i = 1; i < static_cast<int>(loads.size()); ++i)
+-                if (loads[i] > loads[position]) position = i;
++            if (rankTraversal) {
++                if (rankCursor == 0) {
++                    coordinateOrder.resize(loads.size());
++                    std::iota(coordinateOrder.begin(), coordinateOrder.end(), 0);
++                    std::partial_sort(coordinateOrder.begin(), coordinateOrder.begin() + rankLimit,
++                                      coordinateOrder.end(), [&](int a, int b) {
++                        return loads[a] != loads[b] ? loads[a] > loads[b] : a < b;
++                    });
++                }
++                position = coordinateOrder[rankCursor];
++            } else {
++                for (int i = 1; i < static_cast<int>(loads.size()); ++i)
++                    if (loads[i] > loads[position]) position = i;
++            }
+             int t = position / m, edge = position % m;
+             double before = loads[position];
+             auto contributing = contributors(t, edge);
+@@ -743,11 +765,46 @@
+             record.after = loads[t * m + edge];
+             record.attemptsAfter = attempted;
+             record.acceptedAfter = accepted;
++            if (rankTraversal) {
++                record.selectedRank = rankCursor + 1;
++                record.passOutcome = accepted != acceptedBefore ? "accepted_move"
++                    : interrupted ? "signal" : elapsed() >= seconds ? "deadline"
++                    : "configured_pass_exhaustion";
++            }
+             records.push_back(std::move(record));
+             writeSolution();
+-            // No state change means the deterministic exhaustive pass would
+-            // repeat the same proposals. Preserve that measured stopping point.
+-            if (accepted == acceptedBefore) break;
++            // A no-accept result exhausts this configured pass, not all routes.
++            if (!rankTraversal) {
++                if (accepted == acceptedBefore) break;
++                continue;
++            }
++            const auto& completed = records.back();
++            std::cerr << "FLEET_POLISH {\"event\":\"rank_pass\",\"pass\":" << pass
++                      << ",\"selected_rank\":" << completed.selectedRank
++                      << ",\"coordinate\":" << position << ",\"outcome\":\""
++                      << completed.passOutcome << "\",\"attempted\":"
++                      << (completed.attemptsAfter - completed.attemptsBefore)
++                      << ",\"accepted\":" << (completed.acceptedAfter - completed.acceptedBefore)
++                      << "}\n";
++            if (finished()) {
++                schedulerStop = interrupted ? "signal" : "deadline";
++                break;
++            }
++            if (accepted != acceptedBefore) {
++                rankCursor = 0;
++            } else if (++rankCursor >= rankLimit) {
++                schedulerStop = "configured_sweep_exhaustion";
++                break;
++            }
++        }
++        if (rankTraversal) {
++            if (interrupted) schedulerStop = "signal";
++            else if (elapsed() >= seconds) schedulerStop = "deadline";
++            std::cerr << "FLEET_POLISH {\"event\":\"rank_stop\",\"reason\":\""
++                      << schedulerStop << "\",\"passes\":" << records.size()
++                      << ",\"pass_limit\":" << passLimit << ",\"rank_limit\":" << rankLimit
++                      << ",\"last_selected_rank\":"
++                      << (records.empty() ? 0 : records.back().selectedRank) << "}\n";
+         }
+         writeSolution();
+         statistics();
+@@ -760,7 +817,12 @@
+             for (std::size_t i = 0; i < records.size(); ++i) {
+                 if (i) out << ',';
+                 const auto& r = records[i];
+-                out << "{\"pass\":" << r.pass << ",\"t\":" << r.t
++                out << "{\"pass\":" << r.pass;
++                if (rankTraversal) {
++                    out << ",\"selected_rank\":" << r.selectedRank
++                        << ",\"outcome\":\"" << r.passOutcome << "\"";
++                }
++                out << ",\"t\":" << r.t
+                     << ",\"edge\":" << r.edge << ",\"from\":" << r.from
+                     << ",\"to\":" << r.to << ",\"before\":" << r.before
+                     << ",\"after\":" << r.after << ",\"contributors\":" << r.contributors
+@@ -775,7 +837,12 @@
+                 out << "]}";
+             }
+             out << "],\"attempted\":" << attempted << ",\"accepted\":" << accepted
+-                << ",\"elapsed\":" << elapsed() << "}\n";
++                << ",\"elapsed\":" << elapsed();
++            if (rankTraversal) {
++                out << ",\"rank_traversal\":true,\"rank_limit\":" << rankLimit
++                    << ",\"stop_reason\":\"" << schedulerStop << "\"";
++            }
++            out << "}\n";
+             out.close();
+             if (!out) throw std::runtime_error("Failed writing " + temporary);
+             std::filesystem::rename(temporary, reportPath);

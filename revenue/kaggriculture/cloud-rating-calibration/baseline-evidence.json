@@ -1,0 +1,26 @@
+{
+  "archive": {
+    "bytes": 33908,
+    "candidate_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "path": "revenue/kaggriculture/cloud-frontier-policy/next-panel/exports/arlene-baseline/submission.tar.gz",
+    "sha256": "7dcb73bb0d8bc6d0d003b107fcb47c93f9e77c4d8c64d39fec8bd54d406bb407"
+  },
+  "hosted_submission": {
+    "description": "TITAN — Arlene v14 baseline; op titan-kaggriculture-arlene-20260907-02",
+    "file_name": "submission.tar.gz",
+    "provider_content_digest_available": false,
+    "provider_recorded_bytes": 33908,
+    "submission_id": 56081391,
+    "submitted_at": "2026-09-07T17:13:57.233Z"
+  },
+  "identity_conclusion": "The retained archive and its committed export receipt agree on exact size and SHA-256. The provider record agrees on size, filename and Arlene-v14 description but exposes no remote content digest; exact remote byte identity remains unverified pending the hosted-build owner receipt.",
+  "timestamped_checkpoints": [
+    {"observed_at": "2026-09-07T18:56:41.650179Z", "score": 2176.3, "rank": 732, "public_games": 24, "record": {"W": 18, "T": 4, "L": 2}, "source": "cloud-submission/receipts/watch-1856-summary.json"},
+    {"observed_at": "2026-09-07T19:45:03.540806Z", "score": 2215.4, "rank": 684, "public_games": 41, "record": {"W": 25, "T": 8, "L": 8}, "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810383735639"},
+    {"observed_at": "2026-09-07T21:24:39.659709Z", "score": 2166.7, "rank": 762, "public_games": 72, "record": {"W": 35, "T": 15, "L": 22}, "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788816519316279"},
+    {"observed_at": "2026-09-07T22:03:37.228769Z", "score": 2196.5, "rank": 717, "public_games": 88, "record": {"W": 44, "T": 18, "L": 26}, "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788818805191239"},
+    {"observed_at": "2026-09-07T23:12:04.671282Z", "score": 2191.1, "rank": 744, "public_games": 100, "record": {"W": 49, "T": 19, "L": 32}, "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788822842913769"},
+    {"observed_at": "2026-09-08T01:24:38.364247Z", "score": 2203.3, "rank": 722, "public_games": 113, "record": {"W": 56, "T": 21, "L": 36}, "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788830798103579"}
+  ],
+  "checkpoint_use": "These are longitudinal observations of one changing submission and leaderboard. They quantify drift but are not a same-time cross-sectional score-to-rank map."
+}

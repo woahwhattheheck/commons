@@ -375,6 +375,19 @@ class StaleMcp(FakeMcp):
         return super().call_tool(name, arguments)
 
 
+class StaleLiveRouteMcp(FakeMcp):
+    """Deployed MCP advertises route_grokcom_revenue_work but still queues work without capacity."""
+
+    def call_tool(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        if name == "route_grokcom_revenue_work":
+            self.calls.append((name, arguments))
+            self.network_calls += 1
+            forced = dict(arguments)
+            forced["grokcom_capacity"] = CAPACITY
+            return orchestrate(forced)
+        return super().call_tool(name, arguments)
+
+
 class CrashSubmitStore(bridge.BridgeStore):
     def set_phase(self, event_id: str, phase: str, **fields: Any) -> None:
         if phase == "SUBMITTED":
@@ -422,8 +435,170 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(store.get("Ev-no-capacity").phase, "WAITING_CAPACITY")
             self.assertEqual(slack.posts, [])
             self.assertEqual([name for name, _ in mcp.calls if name == "fire_action"], [])
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "route_grokcom_revenue_work"]), 1)
+            self.assertEqual(service.recover_pending(), 0)
+            retry = service.handle_event("Ev-no-capacity", event_payload("do not claim this"))
+            self.assertEqual(retry["state"], "WAITING_CAPACITY")
+            self.assertFalse(retry["submit"])
+            self.assertEqual(slack.posts, [])
+            self.assertEqual([name for name, _ in mcp.calls if name == "fire_action"], [])
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "route_grokcom_revenue_work"]), 2)
+            service.grokcom_capacity = dict(CAPACITY)
+            resumed = service.handle_event("Ev-no-capacity", event_payload("do not claim this"))
+            self.assertEqual(resumed["state"], "DELIVERED")
+            self.assertEqual(store.get("Ev-no-capacity").phase, "DELIVERED")
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
+            intake_calls = [
+                arguments
+                for name, arguments in mcp.calls
+                if name == "route_grokcom_revenue_work" and arguments.get("stage") == "INTAKE"
+            ]
+            self.assertEqual(len(intake_calls), 3)
+            store.close()
+
+    def test_stale_live_mcp_unverified_capacity_never_fires(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            mcp = StaleLiveRouteMcp(FakeGitHub())
+            service, slack, _github, mcp, store = build_bridge(
+                directory,
+                mcp=mcp,
+                grokcom_capacity={},
+            )
+            result = service.handle_event("Ev-stale-mcp", event_payload("still dry"))
+            self.assertEqual(result["state"], "WAITING_CAPACITY")
+            self.assertFalse(result["submit"])
+            self.assertEqual(store.get("Ev-stale-mcp").phase, "WAITING_CAPACITY")
+            self.assertEqual(store.get("Ev-stale-mcp").fire_action_calls, 0)
+            self.assertEqual(slack.posts, [])
+            self.assertEqual([name for name, _ in mcp.calls if name == "fire_action"], [])
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "route_grokcom_revenue_work"]), 1)
             self.assertEqual(service.recover_pending(), 0)
             store.close()
+
+    def test_waiting_capacity_restart_refetches_exact_slack_event_and_resumes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            event = event_payload("resume this exact body")
+            slack = FakeSlack()
+            slack.history.append({
+                "ts": event["ts"],
+                "user": event["user"],
+                "text": event["text"],
+                "files": [],
+            })
+            github = FakeGitHub()
+            first_mcp = StaleLiveRouteMcp(github)
+            service, _slack, _github, _mcp, store = build_bridge(
+                directory,
+                slack=slack,
+                github=github,
+                mcp=first_mcp,
+                grokcom_capacity={},
+            )
+            first = service.handle_event("Ev-capacity-restart", event)
+            self.assertEqual(first["state"], "WAITING_CAPACITY")
+            self.assertEqual(slack.posts, [])
+            store.close()
+
+            resumed_mcp = StaleLiveRouteMcp(github)
+            service2, _slack2, _github2, _mcp2, store2 = build_bridge(
+                directory,
+                slack=slack,
+                github=github,
+                mcp=resumed_mcp,
+                grokcom_capacity=CAPACITY,
+            )
+            self.assertEqual(service2.recover_pending(), 1)
+            self.assertEqual(store2.get("Ev-capacity-restart").phase, "DELIVERED")
+            intake_calls = [
+                arguments
+                for name, arguments in resumed_mcp.calls
+                if name == "route_grokcom_revenue_work" and arguments.get("stage") == "INTAKE"
+            ]
+            self.assertEqual(len(intake_calls), 1)
+            self.assertEqual(len([name for name, _ in resumed_mcp.calls if name == "fire_action"]), 1)
+            self.assertEqual(store2.get("Ev-capacity-restart").fire_action_calls, 1)
+            store2.close()
+
+    def test_waiting_capacity_restart_refuses_changed_slack_bytes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            event = event_payload("original waiting body")
+            slack = FakeSlack()
+            github = FakeGitHub()
+            service, _slack, _github, _mcp, store = build_bridge(
+                directory,
+                slack=slack,
+                github=github,
+                grokcom_capacity={},
+            )
+            first = service.handle_event("Ev-capacity-hash", event)
+            self.assertEqual(first["state"], "WAITING_CAPACITY")
+            store.close()
+
+            slack.history.append({
+                "ts": event["ts"],
+                "user": event["user"],
+                "text": "changed after claim",
+                "files": [],
+            })
+            resumed_mcp = StaleLiveRouteMcp(github)
+            service2, _slack2, _github2, _mcp2, store2 = build_bridge(
+                directory,
+                slack=slack,
+                github=github,
+                mcp=resumed_mcp,
+                grokcom_capacity=CAPACITY,
+            )
+            self.assertEqual(service2.recover_pending(), 0)
+            self.assertEqual(store2.get("Ev-capacity-hash").phase, "WAITING_CAPACITY")
+            self.assertEqual(resumed_mcp.calls, [])
+            store2.close()
+
+    def test_exhausted_capacity_never_calls_stale_live_mcp(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            mcp = StaleLiveRouteMcp(FakeGitHub())
+            service, slack, _github, mcp, store = build_bridge(
+                directory,
+                mcp=mcp,
+                grokcom_capacity={
+                    "state": "EXHAUSTED",
+                    "evidence": "authenticated surface reports no remaining tokens",
+                    "observed_at": "2026-08-30T05:15:00Z",
+                },
+            )
+            result = service.handle_event("Ev-exhausted", event_payload("do not queue grok.com"))
+            self.assertEqual(result["state"], "WAITING_CAPACITY")
+            self.assertFalse(result["submit"])
+            self.assertEqual(slack.posts, [])
+            self.assertEqual([name for name, _ in mcp.calls if name == "fire_action"], [])
+            self.assertEqual(len([name for name, _ in mcp.calls if name == "route_grokcom_revenue_work"]), 1)
+            store.close()
+
+    def test_incomplete_available_capacity_is_unknown_and_silent(self) -> None:
+        cases = (
+            {"state": "AVAILABLE", "observed_at": "2026-08-30T05:15:00Z"},
+            {"state": "AVAILABLE", "evidence": "capacity shown"},
+        )
+        for index, capacity in enumerate(cases):
+            with tempfile.TemporaryDirectory() as directory:
+                service, slack, _github, mcp, store = build_bridge(
+                    directory,
+                    grokcom_capacity=capacity,
+                )
+                event_id = f"Ev-incomplete-{index}"
+                result = service.handle_event(event_id, event_payload("incomplete available"))
+                self.assertEqual(result["state"], "WAITING_CAPACITY")
+                self.assertFalse(result["submit"])
+                self.assertEqual(slack.posts, [])
+                self.assertEqual([name for name, _ in mcp.calls if name == "fire_action"], [])
+                self.assertEqual(len([name for name, _ in mcp.calls if name == "route_grokcom_revenue_work"]), 1)
+                store.close()
+
+    def test_capacity_boundary_matches_orchestrator_can_submit(self) -> None:
+        self.assertFalse(bridge.grokcom_capacity_allows_submit({}))
+        self.assertFalse(bridge.grokcom_capacity_allows_submit({"state": "UNKNOWN"}))
+        self.assertFalse(bridge.grokcom_capacity_allows_submit({"state": "EXHAUSTED", "evidence": "dry", "observed_at": "t"}))
+        self.assertFalse(bridge.grokcom_capacity_allows_submit({"state": "AVAILABLE", "evidence": "shown"}))
+        self.assertTrue(bridge.grokcom_capacity_allows_submit(CAPACITY))
 
     def test_bridge_owned_windows_subprocesses_never_open_terminal_windows(self) -> None:
         windows = bridge.subprocess_window_kwargs("win32")

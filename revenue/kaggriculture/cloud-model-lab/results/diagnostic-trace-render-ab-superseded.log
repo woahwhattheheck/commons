@@ -1,0 +1,123 @@
+===== RENDER=verbose =====
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x3fc7b660, name=GPU WebGPU
+INFO: [gpu_registry.cc:87] Statically linked GPU accelerator registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x3fc7cbb0, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x40e819a0, name=GPU WebGPU
+INFO: [gpu_registry.cc:87] Statically linked GPU accelerator registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x42720010, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+WARNING: Logging before InitGoogle() is written to STDERR
+W0000 00:00:1788771668.660812    6956 litert_lm_loader.cc:291] Section not found: 	
+W0000 00:00:1788771668.661349    6956 litert_lm_loader.cc:291] Section not found: 	
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1340, num_signatures=4
+INFO: [magic_number_utils.cc:109]   signature=decode, subgraph_index=0, num_tensors=3514, num_inputs=53, num_outputs=50, num_ops=2712
+INFO: [magic_number_utils.cc:109]   signature=prefill_1024, subgraph_index=1, num_tensors=2309, num_inputs=53, num_outputs=48, num_ops=1773
+INFO: [magic_number_utils.cc:109]   signature=prefill_128, subgraph_index=2, num_tensors=2309, num_inputs=53, num_outputs=48, num_ops=1773
+INFO: [magic_number_utils.cc:109]   signature=verify, subgraph_index=3, num_tensors=3606, num_inputs=53, num_outputs=50, num_ops=2801
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [magic_number_utils.cc:536] 577 tensors of signature decode have been updated for magic number  32003 to target number 4096
+INFO: [magic_number_utils.cc:536] 426 tensors of signature prefill_1024 have been updated for magic number  32003 to target number 4096
+INFO: [magic_number_utils.cc:536] 426 tensors of signature prefill_128 have been updated for magic number  32003 to target number 4096
+INFO: [magic_number_utils.cc:536] 581 tensors of signature verify have been updated for magic number  32003 to target number 4096
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x47c264a0, name=GPU WebGPU
+INFO: [gpu_registry.cc:87] Statically linked GPU accelerator registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x487d2240, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=embedder, subgraph_index=0, num_tensors=16, num_inputs=1, num_outputs=1, num_ops=8
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=eoa, subgraph_index=0, num_tensors=1, num_inputs=0, num_outputs=1, num_ops=0
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: [compiled_model.cc:1790] Tracked constant output tensor eoa_embedding with locked address
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=eoi, subgraph_index=0, num_tensors=1, num_inputs=0, num_outputs=1, num_ops=0
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: [compiled_model.cc:1790] Tracked constant output tensor eoi_embedding with locked address
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=per_layer_embedder, subgraph_index=0, num_tensors=97, num_inputs=1, num_outputs=1, num_ops=49
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+W0000 00:00:1788771672.203718    6956 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788771672.598264    6956 init-domain.cc:132] Fiber init: default domain = futex, concurrency = 4, prefix = futex-default
+I0000 00:00:1788771673.664097    6956 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 777.478431ms
+W0000 00:00:1788771705.797395    6971 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788771718.869596    6971 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   3 day 0 h 3 ['PLACE', 'SHEEP', 1]      hands=3 mkt=[['BUY_SEED', 'MELON', 2]]         legal 42.80s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: cash +29","farmer":["NORTH"],"hands":[["SOUTH"],["EAST"],["BUILD_PASTURE"]],"mar
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"feed: productive tile/unit work","farmer":["FEED"],"hands":[["PLACE","SHEEP"],["PLACE",
+        plan: build_pasture_and_plant_melon
+        outcome: warehoused -- PLACE SHEEP deposited the animal into the shed instead of installing it; the unit was not on an empty matching structure
+W0000 00:00:1788771718.996326    6956 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788771719.880529    6956 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 514.51331ms
+W0000 00:00:1788771739.578792    6971 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788771744.455795    6971 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   4 day 0 h 4 ['CARE']                   hands=3 mkt=[['BUY_SEED', 'MELON', 1]]         legal 22.64s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: cash +29","farmer":["NORTH"],"hands":[["SOUTH"],["EAST"],["BUILD_PASTURE"]],"mar
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"feed: productive tile/unit work","farmer":["FEED"],"hands":[["PLACE","SHEEP"],["PLACE",
+        plan: build_pasture_and_plant_melon
+        outcome: ineffective -- unit1 ['CARE'] did nothing in context (2 of 4 ops)
+W0000 00:00:1788771744.559171    6956 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788771745.332342    6956 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 418.284659ms
+W0000 00:00:1788771763.464718    6971 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788771768.745757    6971 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   5 day 0 h 5 ['NORTH']                  hands=3 mkt=[['BUY_SEED', 'MELON', 1]]         legal 21.70s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: cash +29","farmer":["NORTH"],"hands":[["SOUTH"],["EAST"],["BUILD_PASTURE"]],"mar
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"feed: productive tile/unit work","farmer":["FEED"],"hands":[["PLACE","SHEEP"],["PLACE",
+        plan: feed_and_plant_melon
+        outcome: production -- animals installed 1->2, cash -80  [BANKED]
+W0000 00:00:1788771768.860377    6956 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788771769.699673    6956 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 478.397017ms
+W0000 00:00:1788771787.910403    6971 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788771791.858706    6971 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   6 day 0 h 6 ['BUILD_PASTURE']          hands=3 mkt=[]                                 legal 20.11s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: build pasture and plant melon
+        outcome: ineffective -- unit3 ['PLANT', 'MELON'] did nothing in context (1 of 4 ops)
+W0000 00:00:1788771791.977756    6956 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788771792.760189    6956 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 405.811993ms
+W0000 00:00:1788771810.964093    6971 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: === 
+third_party/odml/litert/litert/cc/litert_macros.h:547

@@ -1,0 +1,21 @@
+--- a/selected_sell_core.py
++++ b/selected_sell_core.py
+@@ -4,6 +4,7 @@
+ The selected standalone scheduler is preserved separately.
+ """
+ from functools import lru_cache
++from scoped_method_cache import scoped_method_cache
+ from pathlib import Path
+ import importlib.util
+ import mechanics as m
+@@ -27,8 +28,8 @@
+         self.item,self.inventory,self.params=item,inventory,params
+         self.shops,self.config,self.now,self.end=shops,config,now,end
+         self.quote=lru_cache(maxsize=2048)(lambda inv:m.market_price(item,inv,params))
+-        self.single=lru_cache(maxsize=8192)(self._single)
+-        self.joint=lru_cache(maxsize=8192)(self._joint)
++        self.single=scoped_method_cache(self._single,maxsize=8192)
++        self.joint=scoped_method_cache(self._joint,maxsize=8192)
+ 
+     def _single(self, inv, quantity):
+         # Reuse SORREL's repaired receipt interface; admission is derived from

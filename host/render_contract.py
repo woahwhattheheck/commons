@@ -46,8 +46,15 @@ def load_catalog(text):
         return {"runs": [], "error": "catalog is not JSON"}
     if not isinstance(data, dict):
         return {"runs": [], "error": "catalog is not an object"}
+    errors = []
+    raw_runs = data.get("runs")
+    if raw_runs is None:
+        raw_runs = []
+    elif not isinstance(raw_runs, list):
+        errors.append("runs is not a list")
+        raw_runs = []
     runs = []
-    for item in data.get("runs") or []:
+    for item in raw_runs:
         if not isinstance(item, dict):
             continue
         run_id = item.get("id")
@@ -68,13 +75,24 @@ def load_catalog(text):
                 "event": event,
             }
         )
-    return {
+    raw_hands_off = data.get("hands_off")
+    if raw_hands_off is None:
+        hands_off = []
+    elif isinstance(raw_hands_off, list):
+        hands_off = list(raw_hands_off)
+    else:
+        errors.append("hands_off is not a list")
+        hands_off = []
+    catalog = {
         "runs": runs,
         "slack_ts": str(data.get("slack_ts") or "").strip(),
         "source_id": str(data.get("source_id") or "").strip(),
-        "hands_off": list(data.get("hands_off") or []),
+        "hands_off": hands_off,
         "titan": str(data.get("titan") or "NOT_WRITTEN").strip() or "NOT_WRITTEN",
     }
+    if errors:
+        catalog["error"] = "; ".join(errors)
+    return catalog
 
 
 def folded_body(text):
@@ -217,6 +235,8 @@ def measure_root(root):
         row["runs"] = catalog.get("runs") or []
         row["catalog_present"] = True
         row["hands_off"] = catalog.get("hands_off") or []
+        if catalog.get("error"):
+            row["catalog_error"] = catalog["error"]
     else:
         row["runs"] = []
         row["catalog_present"] = False

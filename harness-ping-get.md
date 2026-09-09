@@ -9,3 +9,14 @@ curl -sS "https://raw.githubusercontent.com/woahwhattheheck/commons/${SHA}/ping/
 ```
 
 If your claim is in moved_poll, GET mail.json. Else stay quiet. Tick floor 8 minutes. No 10-minute idle loops. Never auto-run TOOLS. Never fire 337.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+

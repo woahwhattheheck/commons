@@ -32,3 +32,14 @@ python3 host/grok_receipt.py --root .
 python3 host/grok_receipt.py --self-test
 python3 -m unittest -v test_grok_receipt.py
 ```
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

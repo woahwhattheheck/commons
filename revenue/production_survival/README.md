@@ -15,13 +15,24 @@ keep/change/stop handoff. The buyer does not need to provide a GGUF,
 runnable harness, NDA, repository access, credentials, or private data
 for this entry SKU.
 
-The public buyer page is [`agent-rescue.html`](../../agent-rescue.html).
-Canonical terms are in [`offer.json`](./offer.json).
+## Public entry (page-route truth)
 
-The page does not collect payment or private input. The public sender
-and reply route is `tokenjunkielabs@gmail.com`. Payment, signatures,
-private-system access, and any production integration stay in official
-private systems after written acceptance.
+There is **no dedicated Commons HTML sell page** for Same-Day Agent Survival
+Proof after ASTRA #8889 put Agent Failure Autopsy ($29) on
+[`agent-rescue.html`](../../agent-rescue.html). Do not send Survival Proof
+buyers to that page for a $2,500 Buy button.
+
+Entry routes (see [`offer.json`](./offer.json) `public_entry_routes` and
+[`INTAKE.md`](./INTAKE.md)):
+
+- store mailbox `tokenjunkielabs@gmail.com`
+- marketplace listings in [`marketplaces.md`](./marketplaces.md)
+- live Stripe Payment Link for the $2,500 authorization (SURETY / dashboard;
+  not pasted in-repo)
+
+Canonical machine-readable terms remain in [`offer.json`](./offer.json).
+Payment, signatures, private-system access, and any production integration
+stay in official private systems after written acceptance.
 
 ## Positioning rule
 
@@ -32,7 +43,18 @@ noun.
 
 ## Evidence boundary
 
-The market numbers on the page come from primary publisher pages in
-`offer.json`. The page deliberately does not repeat the weakly sourced
-“89% of pilots fail” headline. Commons itself is the live demonstration;
-it is not represented as customer proof or collected revenue.
+The market numbers in `offer.json` come from primary publisher pages.
+Commons itself is the live demonstration; it is not represented as
+customer proof or collected revenue.
+
+## Live cash
+
+Verified Commons product pages only — no invented Stripe links. Survival Proof ($2,500) has **no** dedicated HTML sell page; do not send buyers to Autopsy for that SKU.
+
+- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run (separate SKU)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Survival entry: store mailbox / marketplaces / SURETY dashboard (see above). Cite coil MANUAL / husk START — do not remint. Claim `husk-survival-readme-live-cash-20260909-01`.

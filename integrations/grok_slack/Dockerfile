@@ -14,6 +14,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN useradd --system --uid 10001 --create-home --home-dir /var/lib/commons commons
 
 WORKDIR /opt/commons
+COPY commons_publication_policy.py /opt/commons/commons_publication_policy.py
 COPY integrations/grok_slack/requirements.txt /opt/commons/requirements.txt
 RUN pip install --no-cache-dir -r /opt/commons/requirements.txt
 RUN mkdir -p /opt/commons/integrations/grok_slack /opt/commons/integrations/grokcom_revenue

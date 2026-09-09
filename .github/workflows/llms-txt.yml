@@ -12,6 +12,13 @@ on:
       - "llms_txt.py"
       - "owner_pin.py"
   workflow_dispatch:
+concurrency:
+  # Every bake checks out current main (ref: main below) and republishes the
+  # same paths, so any newer bake supersedes a queued one.  One group for
+  # schedule + push + dispatch: the running bake finishes, one newest waits.
+  group: llms-txt-main
+  cancel-in-progress: false
+
 permissions:
   contents: write
 jobs:

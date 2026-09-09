@@ -1,0 +1,47 @@
+{
+  "schema": "commons-pack-is-ready-to-run/v1",
+  "id": "cursor-pack-is-ready-to-run-20260902-01",
+  "kind": "PACK_IS_READY_TO_RUN",
+  "item": 12,
+  "complementary_to": "cursor-pack-quality-dictates-tier-20260902-01",
+  "gate": false,
+  "login": false,
+  "commons_is_store": false,
+  "pack": {
+    "kind": "ready_to_run_business",
+    "not_instructions": true,
+    "includes": [
+      "code",
+      "repo",
+      "accounts",
+      "paperwork_prepared_for_buyer_to_sign",
+      "everything_needed_to_hit_the_ground_running"
+    ],
+    "public": "descriptions_and_methods",
+    "withheld": "access_to_the_build_pack",
+    "never_contains": "you_need_a_budget_of_X_go_buy_this",
+    "only_extra_buy": "supporting_product_or_service_from_tjlabs"
+  },
+  "quality_dictates_tier": true,
+  "undercut_to_fit_tier": false,
+  "floor_usd": 20,
+  "tos": {
+    "shape": "OPEN_QUESTION",
+    "residual_pct": "FINDER-FAILED",
+    "buyout": "FINDER-FAILED",
+    "per_tier": "FINDER-FAILED",
+    "peer_opinions": false,
+    "note": "Shape is Bryce's and his lawyer's. This leftover does not invent numbers."
+  },
+  "ride_quality_leftover": true,
+  "remint_quality_leftover": false,
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788387501.942889",
+    "claim_ts": "1788387675.053019"
+  },
+  "invented_stripe_urls": false,
+  "sends": 0,
+  "cash_usd": 0,
+  "checkout": "FINDER-FAILED"
+}

@@ -14,6 +14,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,16 @@ SCHEMA = "commons-agent-receipt-liveness/v1"
 SOURCE_PATHS = ("presence.json", "lastseen.json", "claims.json")
 FRESH_SECONDS = 6 * 60 * 60
 RECENT_SECONDS = 24 * 60 * 60
+RFC3339_RE = re.compile(
+    r"\A[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})\Z",
+    re.ASCII,
+)
+RFC3339_LOCAL_RE = re.compile(
+    r"\A[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]+)?\Z",
+    re.ASCII,
+)
 
 
 class AgentLivenessError(ValueError):
@@ -43,16 +54,46 @@ def _text(value: object) -> str:
 
 
 def _timestamp(value: object, at: str, *, allow_blank: bool = False) -> dt.datetime | None:
-    text = _text(value)
+    raw = str(value or "")
+    text = raw.strip()
     if not text and allow_blank:
         return None
     _require(bool(text), f"{at} must be nonempty")
+    _require(raw == text, f"{at} must be RFC3339")
+    if RFC3339_LOCAL_RE.fullmatch(text):
+        raise AgentLivenessError(f"{at} must include a timezone")
+    _require(RFC3339_RE.fullmatch(text) is not None, f"{at} must be RFC3339")
+    normalized = text[:-1] + "+00:00" if text[-1] in "Zz" else text
+    offset = normalized[-6:]
+    _require(int(offset[1:3]) <= 23 and int(offset[4:6]) <= 59, f"{at} must be RFC3339")
+    _require(offset != "-00:00", f"{at} must use a known UTC offset")
+    leap_second = normalized[17:19] == "60"
+    if leap_second:
+        normalized = normalized[:17] + "59" + normalized[19:]
     try:
-        parsed = dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
-    except ValueError as exc:
+        parsed = dt.datetime.fromisoformat(normalized)
+        if leap_second:
+            utc_base = parsed.astimezone(dt.timezone.utc)
+            _require(
+                (utc_base.month, utc_base.day, utc_base.hour, utc_base.minute, utc_base.second)
+                in {(6, 30, 23, 59, 59), (12, 31, 23, 59, 59)},
+                f"{at} must be RFC3339",
+            )
+            parsed += dt.timedelta(seconds=1)
+        normalized_utc = parsed.astimezone(dt.timezone.utc)
+    except (OverflowError, ValueError) as exc:
         raise AgentLivenessError(f"{at} must be RFC3339") from exc
-    _require(parsed.tzinfo is not None, f"{at} must include a timezone")
-    return parsed.astimezone(dt.timezone.utc)
+    return normalized_utc
+
+
+def _fractional_digits(value: object) -> str:
+    """Canonical fractional seconds for an already validated timestamp.
+
+    Removing trailing zeros makes lexicographic order equal decimal order,
+    including an absent/zero fraction. No float or precision cap is needed.
+    """
+    match = re.search(r"\.([0-9]+)", str(value))
+    return match.group(1).rstrip("0") if match else ""
 
 
 def git_blob_sha(raw: bytes) -> str:
@@ -101,15 +142,19 @@ def build_index(
 ) -> dict[str, Any]:
     observed = _timestamp(observed_at, "observed_at")
     assert observed is not None
+    observed_fraction = _fractional_digits(observed_at)
+    observed = observed.replace(microsecond=0)
     source_commit = _text(source_commit).lower()
     _require(
         len(source_commit) == 40 and all(ch in "0123456789abcdef" for ch in source_commit),
         "source_commit must be a 40-character Git SHA",
     )
+    _require(isinstance(source_blobs, dict), "source_blobs must be an object")
     _require(set(source_blobs) == set(SOURCE_PATHS), "source_blobs must name exactly the three source files")
     for path, oid in source_blobs.items():
         _require(
-            len(oid) == 40 and all(ch in "0123456789abcdef" for ch in oid),
+            isinstance(oid, str) and len(oid) == 40
+            and all(ch in "0123456789abcdef" for ch in oid),
             f"source blob for {path} must be a 40-character Git SHA",
         )
 
@@ -145,21 +190,29 @@ def build_index(
         p_row = presence_by_actor[actor]
         l_row = last_by_actor[actor]
         _require(_text(p_row.get("id")) == _text(l_row.get("id")), f"{actor}: receipt id mismatch")
-        _require(_text(p_row.get("ts")) == _text(l_row.get("ts")), f"{actor}: timestamp mismatch")
+        presence_ts = str(p_row.get("ts") or "")
+        lastseen_ts = str(l_row.get("ts") or "")
+        _require(presence_ts == lastseen_ts, f"{actor}: timestamp mismatch")
         receipt_id = _text(l_row["id"])
-        raw_ts = _text(l_row.get("ts"))
-        parsed = _timestamp(raw_ts, f"lastseen[{actor}].ts", allow_blank=True)
+        parsed = _timestamp(lastseen_ts, f"lastseen[{actor}].ts", allow_blank=True)
+        raw_ts = "" if parsed is None else lastseen_ts
         age_seconds: int | None
         if parsed is None:
             freshness = "UNKNOWN_TS"
             age_seconds = None
         else:
-            delta = int((observed - parsed).total_seconds())
-            _require(delta >= 0, f"{actor}: last-seen timestamp is in the future")
-            age_seconds = delta
-            if delta <= FRESH_SECONDS:
+            # Validate and classify before discarding fractional seconds.
+            # Truncation can admit future receipts and extend freshness windows.
+            # datetime truncates after six fractional digits. Compare the
+            # whole-second delta with the original exact decimal fractions.
+            delta = observed - parsed.replace(microsecond=0)
+            receipt_fraction = _fractional_digits(lastseen_ts)
+            elapsed = (delta, observed_fraction)
+            _require(elapsed >= (dt.timedelta(0), receipt_fraction), f"{actor}: last-seen timestamp is in the future")
+            age_seconds = delta // dt.timedelta(seconds=1) - (observed_fraction < receipt_fraction)
+            if elapsed <= (dt.timedelta(seconds=FRESH_SECONDS), receipt_fraction):
                 freshness = "FRESH_6H"
-            elif delta <= RECENT_SECONDS:
+            elif elapsed <= (dt.timedelta(seconds=RECENT_SECONDS), receipt_fraction):
                 freshness = "RECENT_24H"
             else:
                 freshness = "STALE"
@@ -213,12 +266,22 @@ def build_index(
     }
 
 
+def _decode_json(raw: str | bytes, at: str) -> Any:
+    """Keep parser diagnostics, but normalize integer conversion limit errors."""
+    try:
+        return json.loads(raw)
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        raise
+    except ValueError as exc:
+        raise AgentLivenessError(f"{at}: invalid JSON: {exc}") from exc
+
+
 def scan(root: Path, observed_at: str, source_commit: str) -> dict[str, Any]:
     documents: dict[str, object] = {}
     blobs: dict[str, str] = {}
     for path in SOURCE_PATHS:
         raw = (root / path).read_bytes()
-        documents[path] = json.loads(raw)
+        documents[path] = _decode_json(raw, str(root / path))
         blobs[path] = git_blob_sha(raw)
     return build_index(
         presence=documents["presence.json"],
@@ -231,10 +294,14 @@ def scan(root: Path, observed_at: str, source_commit: str) -> dict[str, Any]:
 
 
 def check_snapshot(root: Path, path: Path) -> dict[str, Any]:
-    expected = json.loads(path.read_text(encoding="utf-8"))
+    expected = _decode_json(path.read_text(encoding="utf-8"), str(path))
+    _require(isinstance(expected, dict), f"{path} must be an object")
     _require(expected.get("schema") == SCHEMA, f"{path} is not {SCHEMA}")
     actual = scan(root, _text(expected.get("observed_at")), _text(expected.get("source_commit")))
-    if actual != expected:
+    # JSON booleans and numbers are distinct even when Python equates them.
+    # Canonical comparison also preserves nested scalar types without making
+    # object key order or whitespace part of the snapshot contract.
+    if canonical_text(actual) != canonical_text(expected):
         raise AgentLivenessError(f"{path} differs from its exact source inputs")
     return actual
 
@@ -268,7 +335,7 @@ def main(argv: list[str] | None = None) -> int:
         else:
             sys.stdout.write(rendered)
         return 0
-    except (AgentLivenessError, OSError, json.JSONDecodeError) as exc:
+    except (AgentLivenessError, OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
         sys.stderr.write(f"agent-liveness-index: {exc}\n")
         return 2
 

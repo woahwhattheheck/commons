@@ -140,11 +140,30 @@ def parse_event(raw: Any) -> dict[str, Any]:
     harness = _opt(raw.get("harness"), maximum=200)
     classification = classify_runtime(raw.get("classification") or raw.get("runtime"), harness, tools)
     artifacts = []
-    for item in raw.get("artifacts") or []:
+    artifact_errors = []
+    raw_artifacts = raw.get("artifacts")
+    if raw_artifacts is None:
+        raw_artifacts = []
+    elif not isinstance(raw_artifacts, list):
+        artifact_errors.append({
+            "source": "artifacts", "grade": "UNKNOWN",
+            "detail": "artifacts was not an array",
+            "raw_type": type(raw_artifacts).__name__,
+        })
+        raw_artifacts = []
+    for index, item in enumerate(raw_artifacts):
+        if not isinstance(item, dict):
+            artifact_errors.append({
+                "source": "artifacts", "grade": "UNKNOWN",
+                "detail": "artifact was not an object", "index": index,
+                "raw_type": type(item).__name__,
+            })
         row = _obj(item)
         art = {
             "path": _opt(row.get("path"), maximum=2000),
-            "sha256": _text(row.get("sha256"), maximum=64).lower(),
+            # Retain an extra character so an overlong digest cannot become
+            # a different, apparently valid digest by clipping its suffix.
+            "sha256": _text(row.get("sha256"), maximum=65).lower(),
             "size_bytes": row.get("size_bytes") if isinstance(row.get("size_bytes"), int) and row.get("size_bytes") >= 0 else None,
             "url": _text(row.get("url"), maximum=2000),
             "provider_private": row.get("provider_private") is True,
@@ -203,7 +222,8 @@ def parse_event(raw: Any) -> dict[str, Any]:
         "supersedes": _opt(raw.get("supersedes") or raw.get("superseded_event_id"), maximum=80),
         "attention_reason": _opt(raw.get("attention_reason"), maximum=2000),
         "grok_url": _text(raw.get("grok_url") or raw.get("conversation_url"), maximum=2000),
-        "head_sha": _text(raw.get("head_sha") or raw.get("base_sha"), maximum=40).lower(),
+        # Preserve overlength for the exact-width validation below.
+        "head_sha": _text(raw.get("head_sha") or raw.get("base_sha"), maximum=41).lower(),
         "parse_state": "OK" if kind != UNKNOWN else "PARTIAL",
         "fields_observed": sorted(str(key) for key in raw.keys()),
         "fields_inferred": [],
@@ -223,6 +243,10 @@ def parse_event(raw: Any) -> dict[str, Any]:
         event["evidence"].append({"source": "event", "grade": "OBSERVED", "event_id": event["event_id"]})
     if not isinstance(raw.get("kind"), str) or ("ts" in raw and event["ts"] == UNKNOWN):
         event["parse_state"] = "MALFORMED" if event["parse_state"] == "OK" else event["parse_state"]
+    if artifact_errors:
+        # Bad metadata must not abort the batch or hide the original event.
+        event["parse_state"] = "MALFORMED"
+        event["evidence"].extend(artifact_errors)
     return event
 
 

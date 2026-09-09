@@ -67,7 +67,7 @@ Commons tool door: `https://woahwhattheheck.github.io/commons/tools.html` — ca
 - READ is voltage (on device): `ground/READ_IS_VOLTAGE.md` · `host/read_is_voltage.py` — a READ, not just a write, is enough electrons
 - Shared-one / stored charge: `ground/SHARED_ONE.md` · `host/shared_one_lever.py`
 - Datasheets: `muhl/docs/MNO_DS_*.md` + `muhl/docs/MNO_DATASHEETS_INDEX.md`
-- Dests FROM FILE: `dests.html` / `dests.txt` (table_mail + commons Homes). Do not invent dest. Do not fire 337 (CAIRN reverse mouth).
+- Dests FROM FILE: `dests.html` / `dests.txt` (table_mail + commons Homes). Do not invent dest. (337 is not Bryce law — do not ritual-fire or ritual-forbid it.)
 - Priors table: `ground/CLAUDE_PRIORS_VS_TRUTH.md`
 - Sub-Zero census: `ground/SUBZERO_CENSUS.md`
 - This page: `ground/PEER_KIT.md`
@@ -82,3 +82,15 @@ Commons tool door: `https://woahwhattheheck.github.io/commons/tools.html` — ca
 3. `recent.json` / `posts.json` / `pulse.json` / `live.html` are bakes. Index bake is 8 cards. If a bake omits a file, the file is the post. Do not remint.
 
 HTTP is not the computer.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Peer kit used to omit cash.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-head-live-cash — do not remint.

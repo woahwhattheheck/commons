@@ -145,10 +145,98 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788256871.664259")
+        self.assertEqual(catalog["slack_ts"], "1788959538.867059")
         self.assertEqual(
             catalog["source_id"],
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01",
+        )
+        self.assertIn(
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-human-outcomes-input-validator-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-hive-intake-crm-workflow-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-hive-trade-quote-schedule-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-gpt-6-astra-carrier-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-titan-runtime-profiler-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-titan-cloud-model-lab-activation-20260908-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-commons-operation-command-center-activation-20260907-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-kaggle-account-binding-exercised-20260907-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-github-repository-portfolio-live-expansion-20260907-03",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-github-repository-portfolio-live-expansion-20260907-02",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-github-repository-portfolio-privacy-refresh-20260907-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-upwork-marketplace-capacity-activation-20260902-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-business-pack-factory-activation-20260902-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-coil-pfc-host-toolchain-activation-20260902-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-connected-capability-fleet-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-vercel-capacity-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-agent-address-memory-liveness-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
             "codex-commons-skill-toolset-consumption-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-github-repository-portfolio-activation-20260901-01",
@@ -219,15 +307,24 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-commons-skill-toolset-consumption-activation-20260901-01.json",
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
-        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "commons-skill-and-tool-set"
+            current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION"
         )
+        self.assertEqual(
+            current_activation["selected_resource"],
+            "titan-v25-joint-sell-planner",
+        )
+        self.assertEqual(current_activation["projection"]["resources"], 88)
+        self.assertEqual(current_activation["projection"]["producing"], 60)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 11053)
+        self.assertEqual(current_activation["production_truth"]["source_validation"]["passed"], 144)
+        self.assertEqual(current_activation["production_truth"]["archive_validation"]["passed"], 81)
+        self.assertEqual(current_activation["production_truth"]["new_full_games"], 0)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -277,6 +374,9 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1788304349.282199")
+        self.assertNotEqual(catalog["slack_ts"], "1788300060.035449")
+        self.assertNotEqual(catalog["slack_ts"], "1788256871.664259")
         self.assertNotEqual(catalog["slack_ts"], "1788105886.420729")
         self.assertNotEqual(catalog["slack_ts"], "1788083921.230169")
         self.assertNotEqual(catalog["slack_ts"], "1788062418.023819")
@@ -304,6 +404,24 @@ class TestResourceLedger(unittest.TestCase):
         rows = {row["name"]: row for row in catalog["surfaces"]}
         self.assertEqual(rows["supergrok-heavy"]["stage"], "PRODUCING")
         self.assertEqual(rows["supergrok-heavy"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["quantity"], 72)
+        self.assertEqual(rows["titan-v25-joint-sell-planner"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v25-joint-sell-planner"]["condition"], "CONSTRAINED")
+        self.assertIn("EXACT_ARCHIVE_SOURCE_MANIFEST", rows["titan-v25-joint-sell-planner"]["authority"])
+        self.assertIn("fb292c5c323335acc7a9e31fdaace590b6f3bff9767c5495f1406c5211e32f23", rows["titan-v25-joint-sell-planner"]["exact_safe_probe"])
+        self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
+        self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
+        self.assertEqual(rows["google-ai-mode-browser-mesh"]["condition"], "LIVE")
+        self.assertEqual(rows["gemini-google-research-fleet"]["quantity"], 2)
+        self.assertEqual(rows["gemini-google-research-fleet"]["stage"], "PRODUCING")
+        self.assertEqual(rows["grokcom-triggered-automation-fleet"]["quantity"], 14)
+        self.assertEqual(rows["grokcom-triggered-automation-fleet"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["google-spark-research-candidate"]["stage"], "DECLARED")
+        self.assertEqual(rows["google-spark-research-candidate"]["capacity"], "UNMEASURED")
+        self.assertEqual(rows["grokbot-pool-pair"]["quantity"], 2)
+        self.assertEqual(rows["grokbot-pool-pair"]["condition"], "HELD")
         self.assertEqual(rows["github-actions"]["stage"], "PRODUCING")
         self.assertEqual(rows["github-actions"]["condition"], "DEGRADED")
         self.assertEqual(rows["muhlnickel-distro-public-sales-door"]["stage"], "PRODUCING")
@@ -328,6 +446,11 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["lexington-mrf-diversion-gate"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["lm-gtm-agent-brief-floor"]["stage"], "PRODUCING")
         self.assertEqual(rows["lm-gtm-agent-brief-floor"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["coil-pfc-host-toolchain"]["stage"], "PRODUCING")
+        self.assertEqual(rows["coil-pfc-host-toolchain"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["commons-business-pack-factory"]["stage"], "PRODUCING")
+        self.assertEqual(rows["commons-business-pack-factory"]["condition"], "CONSTRAINED")
+        self.assertIn("NOT_MINTED", rows["commons-business-pack-factory"]["rate_plan_boundary"])
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
         self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
         self.assertEqual(activation["projection"]["resources"], 66)
@@ -385,12 +508,37 @@ class TestResourceLedger(unittest.TestCase):
             "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
             raw.get("record_sources") or [],
         )
+        self.assertIn(
+            "inventory/resources/records/codex-commons-skill-toolset-consumption-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-vercel-capacity-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-connected-capability-fleet-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-google-research-grok-automation-resource-delta-20260902-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
         names = [row["name"] for row in catalog["surfaces"]]
         self.assertIn("github", names)
         self.assertIn("huggingface", names)
         self.assertIn("vercel", names)
+        self.assertIn("chatgpt-connected-capability-fleet", names)
         for row in catalog["surfaces"]:
             if row["capacity"] == "LIVE":
                 for field in REQUIRED_FIELDS:
@@ -422,9 +570,12 @@ class TestResourceLedger(unittest.TestCase):
         self.assertNotIn("titan-hands-windows", queue_names)
         self.assertIn("titan-hands-windows", measured["expired_resources"])
         self.assertNotIn("github-actions", queue_names)
-        self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
-        self.assertEqual(measured["activation_queue"][0]["priority"], 72)
+        self.assertEqual(measured["activation_queue"][0]["name"], "upwork-marketplace-account")
+        self.assertEqual(measured["activation_queue"][0]["priority"], 70)
+        self.assertIn("outcome-commerce-bridge", measured["expired_resources"])
         self.assertNotIn("commons-skill-and-tool-set", queue_names)
+        self.assertNotIn("chatgpt-connected-capability-fleet", queue_names)
+        self.assertNotIn("resource-master-office", queue_names)
         skills = next(
             row
             for row in catalog["surfaces"]
@@ -434,6 +585,193 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             skills["last_receipt"],
             "codex-commons-skill-toolset-consumption-activation-20260901-01",
+        )
+        fleet = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "chatgpt-connected-capability-fleet"
+        )
+        self.assertEqual(fleet["stage"], "PRODUCING")
+        self.assertEqual(
+            fleet["last_receipt"],
+            "codex-github-repository-portfolio-live-expansion-20260907-02",
+        )
+        office = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "resource-master-office"
+        )
+        self.assertEqual(office["stage"], "PRODUCING")
+        self.assertEqual(
+            office["last_receipt"],
+            "codex-resource-master-delta-engine-activation-20260901-01",
+        )
+        upwork = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "upwork-marketplace-account"
+        )
+        self.assertEqual(upwork["stage"], "REACHABLE")
+        self.assertEqual(upwork["condition"], "CONSTRAINED")
+        self.assertEqual(
+            upwork["last_receipt"],
+            "codex-upwork-marketplace-capacity-activation-20260902-01",
+        )
+        kaggle = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "kaggle-account-binding"
+        )
+        self.assertEqual(kaggle["stage"], "PRODUCING")
+        self.assertEqual(kaggle["condition"], "CONSTRAINED")
+        self.assertEqual(
+            kaggle["last_receipt"],
+            "codex-kaggle-account-binding-exercised-20260907-01",
+        )
+        sell = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "titan-cloud-sell-scheduler"
+        )
+        self.assertEqual(sell["capacity"], "LIVE")
+        self.assertEqual(sell["stage"], "PRODUCING")
+        self.assertEqual(sell["condition"], "CONSTRAINED")
+        self.assertEqual(
+            sell["last_receipt"],
+            "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+        )
+        self.assertIn("NO_KAGGLE_PROVIDER_WRITE", sell["authority"])
+        self.assertIn(
+            "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+            sell["exact_safe_probe"],
+        )
+        command_center = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "commons-operation-command-center"
+        )
+        self.assertEqual(command_center["capacity"], "LIVE")
+        self.assertEqual(command_center["stage"], "PRODUCING")
+        self.assertEqual(command_center["condition"], "CONSTRAINED")
+        self.assertEqual(
+            command_center["last_receipt"],
+            "codex-commons-operation-command-center-activation-20260907-01",
+        )
+        self.assertIn("STABLE_OPERATION_ID", command_center["authority"])
+        self.assertIn("NO_CREDENTIAL_VALUE_DISPLAY", command_center["authority"])
+        self.assertIn("eight command_center_* tools", command_center["value"])
+        model_lab = next(
+            row for row in catalog["surfaces"] if row["name"] == "titan-cloud-model-lab"
+        )
+        self.assertEqual(model_lab["capacity"], "LIVE")
+        self.assertEqual(model_lab["stage"], "PRODUCING")
+        self.assertEqual(model_lab["condition"], "CONSTRAINED")
+        self.assertEqual(
+            model_lab["last_receipt"],
+            "codex-titan-cloud-model-lab-activation-20260908-01",
+        )
+        self.assertIn("ONE_POLICY_INSTANCE_PER_ACTOR_MATCH", model_lab["authority"])
+        self.assertIn("NO_KAGGLE_PROVIDER_WRITE", model_lab["authority"])
+        self.assertIn("4f1a541c4145ddf0b3cdb73919b44001e9baebdb", model_lab["exact_safe_probe"])
+        self.assertIn("d65a9ba738f2674fe4be343126d40c4debf03a8e5a44019d67135cbbcaacb11e", model_lab["exact_safe_probe"])
+        profiler = next(
+            row for row in catalog["surfaces"] if row["name"] == "titan-runtime-profiler"
+        )
+        self.assertEqual(profiler["capacity"], "LIVE")
+        self.assertEqual(profiler["stage"], "PRODUCING")
+        self.assertEqual(profiler["condition"], "CONSTRAINED")
+        self.assertEqual(
+            profiler["last_receipt"],
+            "codex-titan-runtime-profiler-activation-20260908-01",
+        )
+        self.assertIn("NO_ENGINE_ADVANCE", profiler["authority"])
+        self.assertIn("NO_PROVIDER_OR_KAGGLE_WRITE", profiler["authority"])
+        self.assertIn("8ae01c736bd44ffc424f91f657c2861126115d24", profiler["exact_safe_probe"])
+        self.assertIn("0f7b1cacba615b614ae2b93833c53a87bd6567df", profiler["exact_safe_probe"])
+        astra = next(
+            row for row in catalog["surfaces"] if row["name"] == "gpt-6-astra-codex-carrier"
+        )
+        self.assertEqual(astra["capacity"], "LIVE")
+        self.assertEqual(astra["stage"], "PRODUCING")
+        self.assertEqual(astra["condition"], "CONSTRAINED")
+        self.assertEqual(
+            astra["last_receipt"],
+            "codex-gpt-6-astra-carrier-activation-20260908-01",
+        )
+        self.assertIn("NO_QUOTA_OR_GLOBAL_AVAILABILITY_INFERENCE", astra["authority"])
+        self.assertIn("06616531b56ec4dfcc421bce82db8f8e04091b15", astra["exact_safe_probe"])
+        self.assertIn("c3ddcb017d5b1ad53f2bf08d6efe2986cc6ac3a9", astra["exact_safe_probe"])
+        trade_quote = next(
+            row for row in catalog["surfaces"] if row["name"] == "hive-trade-quote-schedule"
+        )
+        self.assertEqual(trade_quote["capacity"], "LIVE")
+        self.assertEqual(trade_quote["stage"], "PRODUCING")
+        self.assertEqual(trade_quote["condition"], "CONSTRAINED")
+        self.assertEqual(
+            trade_quote["last_receipt"],
+            "codex-hive-trade-quote-schedule-activation-20260908-01",
+        )
+        self.assertIn("NO_GUESSED_MEASUREMENTS", trade_quote["authority"])
+        self.assertIn("NO_OUTREACH_PAYMENT_OR_EXTERNAL_CALENDAR_WRITE", trade_quote["authority"])
+        self.assertIn("a75dae6308ce4bab3e0b2625638c953ee2d25dcd", trade_quote["exact_safe_probe"])
+        self.assertIn("fd3d56b6dad06c1177795ec92e1916fb24aa6955", trade_quote["exact_safe_probe"])
+        intake_crm = next(
+            row for row in catalog["surfaces"] if row["name"] == "hive-intake-crm-workflow"
+        )
+        self.assertEqual(intake_crm["capacity"], "LIVE")
+        self.assertEqual(intake_crm["stage"], "PRODUCING")
+        self.assertEqual(intake_crm["condition"], "CONSTRAINED")
+        self.assertEqual(
+            intake_crm["last_receipt"],
+            "codex-hive-intake-crm-workflow-activation-20260909-01",
+        )
+        self.assertIn("PRIVATE_SINGLE_WORKSPACE_OPERATION_ONLY", intake_crm["authority"])
+        self.assertIn("NO_CUSTOMER_PROVIDER_CREDENTIAL", intake_crm["authority"])
+        self.assertIn("376e4858700d09541e11308bbcb0194427f931fc", intake_crm["exact_safe_probe"])
+        self.assertIn("da339d714fd610689dafaca5a2e47c57d772edce", intake_crm["exact_safe_probe"])
+        human_validator = next(
+            row for row in catalog["surfaces"]
+            if row["name"] == "human-outcomes-input-validator"
+        )
+        self.assertEqual(human_validator["capacity"], "LIVE")
+        self.assertEqual(human_validator["stage"], "PRODUCING")
+        self.assertEqual(human_validator["condition"], "CONSTRAINED")
+        self.assertEqual(
+            human_validator["last_receipt"],
+            "codex-human-outcomes-input-validator-activation-20260909-01",
+        )
+        self.assertIn("READ_ONLY_INPUT_MEASUREMENT", human_validator["authority"])
+        self.assertIn("NO_CUSTOMER_PROVIDER_CHECKOUT", human_validator["authority"])
+        self.assertIn(
+            "2dbb743400f5035fb999c06da4d5f0c7fb5c26e7",
+            human_validator["exact_safe_probe"],
+        )
+        self.assertIn(
+            "bef953d9caea4210d92a23a46fdbd30ab2322c04",
+            human_validator["exact_safe_probe"],
+        )
+        benchmark = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "titan-official-engine-benchmark-evidence"
+        )
+        self.assertEqual(benchmark["capacity"], "LIVE")
+        self.assertEqual(benchmark["stage"], "PRODUCING")
+        self.assertEqual(benchmark["condition"], "CONSTRAINED")
+        self.assertEqual(
+            benchmark["last_receipt"],
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+        )
+        self.assertIn("EXACT_ENGINE_SOURCE_ARCHIVE_SEED_AND_SEAT_BINDING", benchmark["authority"])
+        self.assertIn("PRIVATE_RAW_BUNDLE_STAYS_PRIVATE", benchmark["authority"])
+        self.assertIn("NO_GAME_RERUN_OR_KAGGLE_PROVIDER_WRITE", benchmark["authority"])
+        self.assertIn(
+            "faeb4338e5ec8bd0d53fe6f3a4e8fda9847183be",
+            benchmark["exact_safe_probe"],
+        )
+        self.assertIn(
+            "f55e5aaf49c57f47314a77087204615cf5aa78ed",
+            benchmark["exact_safe_probe"],
         )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
@@ -446,6 +784,54 @@ class TestResourceLedger(unittest.TestCase):
             measured["resource_count"],
         )
         self.assertTrue(set(measured["freshness_counts"]).issubset(RESOURCE_FRESHNESS_STATES))
+
+    def test_titan_official_benchmark_activation_binds_exact_completed_panel(self):
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        truth = activation["production_truth"]
+        self.assertEqual(
+            truth["operation_id"],
+            "titan-official-fullgame-6705-v1-20260909-01",
+        )
+        self.assertEqual(truth["source_pr"], 11005)
+        self.assertEqual(truth["exact_games"], 128)
+        self.assertEqual(truth["completed"], 128)
+        self.assertEqual(truth["errors"], 0)
+        self.assertEqual(truth["timeouts"], 0)
+        self.assertEqual(truth["current_v2"]["games"], 80)
+        self.assertEqual(truth["current_v2"]["losses"], 0)
+        self.assertEqual(truth["current_v2_vs_submitted_v1"]["wins"], 16)
+        self.assertEqual(activation["projection"]["resources"], 86)
+        self.assertEqual(activation["projection"]["producing"], 58)
+        self.assertIn("hosted score", activation["verification"]["zero_fabrication"])
+        self.assertIn("does not copy", truth["private_bundle"])
+
+    def test_titan_joint_sell_activation_binds_current_package_without_game_claim(self):
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        truth = activation["production_truth"]
+        self.assertEqual(truth["source_head_sha"], "d9636fe6af454b667c0b6fb96e6faf1402d74010")
+        self.assertEqual(truth["source_merge_sha"], "596a5cd9987bf8aadee17387f581dcc8813b30d0")
+        self.assertEqual(truth["archive_bytes"], 401937)
+        self.assertEqual(truth["archive_runtime_files"], 103)
+        self.assertEqual(truth["archive_validation"]["runtime_member_hashes_verified"], 103)
+        self.assertEqual(truth["playing_strength_for_changed_bytes"], "NOT_MEASURED")
+        self.assertEqual(activation["build_orders"], [])
+        self.assertIn("hosted score", activation["verification"]["zero_fabrication"])
 
     def test_producing_github_actions_leaves_activation_queue(self):
         catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
@@ -689,16 +1075,17 @@ class TestResourceLedger(unittest.TestCase):
             rows = {row["name"]: row for row in load_catalog(handle.read())["surfaces"]}
         self.assertEqual(rows["bryce-owner-operator"]["kind"], "HUMAN")
         self.assertEqual(rows["bryce-owner-operator"]["stage"], "PRODUCING")
-        self.assertEqual(rows["cursor-ultra"]["capacity"], "CACHE")
-        self.assertEqual(rows["cursor-ultra"]["condition"], "HELD")
+        self.assertEqual(rows["cursor-ultra"]["capacity"], "LIVE")
+        self.assertEqual(rows["cursor-ultra"]["stage"], "PRODUCING")
+        self.assertEqual(rows["cursor-ultra"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["claude"]["condition"], "HELD")
-        self.assertIn("not tester/verifier", rows["claude"]["assigned_backlog"].lower())
+        self.assertIn("owner-handled", rows["claude"]["assigned_backlog"].lower())
         self.assertEqual(rows["titan-hands-windows"]["stage"], "EXERCISED")
         self.assertEqual(rows["owner-workstation"]["capacity"], "NOT_VERIFIED")
         self.assertEqual(rows["owner-workstation"]["condition"], "BLOCKED")
         self.assertEqual(rows["public-commerce-road"]["stage"], "PRODUCING")
         self.assertEqual(rows["public-commerce-road"]["condition"], "CONSTRAINED")
-        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 3)
+        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 7)
         self.assertEqual(rows["kite-task-forge-r0"]["stage"], "PRODUCING")
         self.assertEqual(rows["kite-task-forge-r0"]["condition"], "LIVE")
         self.assertEqual(rows["commons-network-plugin"]["stage"], "PRODUCING")

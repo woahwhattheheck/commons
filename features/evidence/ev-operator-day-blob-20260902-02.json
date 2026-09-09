@@ -1,0 +1,11 @@
+{
+  "blob": "917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-blob-20260902-02",
+  "kind": "BLOB",
+  "note": "Day sheet after running-cost compose on 7ccdc11a2. Do-X list and tjlabs-not-a-seat text kept. Append-only; does not overwrite ev-operator-day-blob-20260902-01.",
+  "path": "packs/_template/day.md",
+  "recorded_at": "2026-09-02T05:48:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

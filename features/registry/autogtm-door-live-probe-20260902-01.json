@@ -1,0 +1,31 @@
+{
+  "added": "2026-09-02",
+  "capability": "AutoGTM door live-probes Explee GET /public/api/v1/autogtm/projects from the browser with credentials=omit. 401 Missing API key is FINDER-FAILED, never a door lock. No login.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "autogtm.html",
+    "test_autogtm_door_live_probe.py",
+    "ground/tokens/autogtm.md",
+    "p/cursor-autogtm-door-live-probe-20260902-01.md"
+  ],
+  "dependencies": ["autogtm-same-loop-20260902-01"],
+  "id": "autogtm-door-live-probe-20260902-01",
+  "name": "AutoGTM door live Explee probe",
+  "next_gap": "Owner mailbox and private Explee/Exa/Instantly credentials on an agent surface. Do not invent sent mail, booked demos, or cash.",
+  "owner_subsystem": "autogtm",
+  "public_entrypoint": "autogtm.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "autogtm.html",
+    "p/cursor-autogtm-door-live-probe-20260902-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_autogtm_door_live_probe.py"
+  ]
+}

@@ -45,8 +45,12 @@ POINTER_MACHINE_REL = os.path.join("ground", "OPEN_WORK.json")
 LISTING_REL = os.path.join("ground", "open-work-listing")
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+# A quoted marker is literal. For an unquoted marker, extract_work_ids strips
+# prose-final periods while preserving periods inside the identifier.
 WORK_MARK_RE = re.compile(
-    r"(?:WORK[ \t]+ORDER|OWNER[ \t]+LAND[ \t]+ORDER)\s*[:=]?\s*`?([A-Za-z0-9._-]{8,80})`?",
+    r"(?:WORK[ \t]+ORDER|OWNER[ \t]+LAND[ \t]+ORDER)\s*[:=]?\s*"
+    r"(?:`(?P<quoted>[A-Za-z0-9._-]{8,80})`|(?P<plain>[A-Za-z0-9._-]{8,80}))"
+    r"(?![A-Za-z0-9._-])",
     re.I,
 )
 SENT_USING_RE = re.compile(r"\*Sent using\*", re.I)
@@ -157,6 +161,10 @@ def listing_filename(ident, klass):
     title = str(ident or "")
     klass = str(klass or "open").lower()
     stem = "%s-%s" % (title, klass)
+    # The 80-character bound belongs to work IDs, not derived filenames.
+    # Retain the complete ID so distinct suffixes cannot overwrite one listing.
+    if ID_RE.fullmatch(title) and klass.upper() in CLASSES:
+        return "%s.md" % stem
     if len(stem) > 80:
         keep = 80 - (len(klass) + 1)
         if keep >= 8:
@@ -172,7 +180,8 @@ def extract_work_ids(text):
     found = []
     seen = set()
     for match in WORK_MARK_RE.finditer(str(text or "")):
-        ident = match.group(1)
+        quoted = match.group("quoted")
+        ident = quoted if quoted is not None else match.group("plain").rstrip(".")
         if ident not in seen and is_work_id(ident):
             seen.add(ident)
             found.append(ident)
@@ -567,6 +576,18 @@ def render_pointer(snapshot):
             "",
             "Checked SHA: `%s`" % sha,
             "",
+            "## Live cash",
+            "",
+            "Verified product pages only — no invented Stripe links.",
+            "",
+            "- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run",
+            "- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)",
+            "- [$199 referral diagnostic](../referral-intake-completeness.html)",
+            "- [$199 repair diagnostic](../repair-booking-preflight.html)",
+            "- [$199 plant diagnostic](../plant-downtime-handoff.html)",
+            "",
+            "Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-19 — do not remint.",
+            "",
         ]
     )
 
@@ -663,6 +684,15 @@ def self_test():
     assert work["action"] is True
     assert work["owner_directive"] is True
     assert "missing-work-fixture-20260829-01" in work["work_ids"]
+    assert extract_work_ids("WORK ORDER sentence-final-work-20260830-01. Done") == [
+        "sentence-final-work-20260830-01"
+    ]
+    assert extract_work_ids("WORK ORDER dotted.namespace-work-20260830-01") == [
+        "dotted.namespace-work-20260830-01"
+    ]
+    assert extract_work_ids("WORK ORDER `literal-terminal-dot-20260830-01.`") == [
+        "literal-terminal-dot-20260830-01."
+    ]
     assert classify_record({"work": True}, True) == "LANDED"
     assert classify_record({"work": True}, False) == "OPEN"
     assert classify_record({"work": True}, False, slack_claimed=True) == "DEAD_CLAIM"

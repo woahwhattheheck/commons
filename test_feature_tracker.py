@@ -102,8 +102,8 @@ def test_derivation_and_no_prose_promotion():
         check("claimed LIVE ignored", alpha["author_claim_ignored"] == "LIVE")
         check("no live without measurement", alpha["live_status"] == "UNMEASURED")
         check("source built from paths", alpha["source_status"] == "SOURCE_BUILT")
-        check("tested from test paths", alpha["test_status"] == "TESTED")
-        check("rollup tested not live", alpha["rollup"] == "TESTED")
+        check("test files present without execution", alpha["test_status"] == "TESTS_PRESENT")
+        check("rollup tests present not live", alpha["rollup"] == "TESTS_PRESENT")
         check("planned empty paths", by_id["beta-planned-20260828-01"]["rollup"] == "PLANNED")
 
         _write(
@@ -189,6 +189,47 @@ def test_derivation_and_no_prose_promotion():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def test_test_files_do_not_prove_execution():
+    tmp = tempfile.mkdtemp(prefix="commons-ft-presence-")
+    try:
+        _write(os.path.join(tmp, "source.py"), "value = 1\n")
+        failing_path = os.path.join(tmp, "test_failing.py")
+        _write(failing_path, "raise AssertionError('deliberately failing test')\n")
+        failed = subprocess.run([sys.executable, failing_path], capture_output=True, text=True)
+        check("failing fixture actually fails", failed.returncode != 0)
+        feature = _sample_feature(claimed_paths=["source.py"], test_paths=["test_failing.py"])
+        row = ft.derive_feature(feature, [], tmp)
+        check("failed test file proves presence only", row["test_status"] == "TESTS_PRESENT", row)
+        check("failed test file does not claim successful execution", row["rollup"] == "TESTS_PRESENT", row)
+
+        no_source = ft.derive_feature(dict(feature, claimed_paths=[]), [], tmp)
+        check("test file alone leaves feature planned", no_source["rollup"] == "PLANNED", no_source)
+        check("planned feature preserves test presence", no_source["test_status"] == "TESTS_PRESENT", no_source)
+
+        no_tests = ft.derive_feature(dict(feature, test_paths=[]), [], tmp)
+        check("no declared tests stays untested", no_tests["test_status"] == "UNTESTED", no_tests)
+        missing_test = ft.derive_feature(dict(feature, test_paths=["missing_test.py"]), [], tmp)
+        check("missing test remains degraded", missing_test["test_status"] == "DEGRADED" and missing_test["rollup"] == "DEGRADED", missing_test)
+
+        for kind in ("TEST_PATHS", "RECEIPT"):
+            prose = [{"id": "claimed-test-run-20260905-01", "feature_id": feature["id"],
+                      "kind": kind, "result": "PASS", "claimed_status": "TESTED",
+                      "sha": "a" * 40, "receipt": "claimed-green-run-20260905-01"}]
+            claimed = ft.derive_feature(feature, prose, tmp, {"claimed_status": "TESTED"})
+            check("%s prose cannot establish test execution" % kind,
+                  claimed["test_status"] == "TESTS_PRESENT", claimed)
+
+        _write(os.path.join(tmp, ft.REGISTRY_DIR, feature["id"] + ".json"), feature)
+        projection = ft.project(tmp)
+        page = ft.render_html(projection)
+        check("JSON explains unmeasured execution", "test execution is unmeasured" in projection["law"])
+        check("HTML explains unmeasured execution", "test execution is unmeasured" in page)
+        check("status filter names test presence", '<option value="TESTS_PRESENT">TESTS_PRESENT</option>' in page)
+        check("status filter does not claim tested", '<option value="TESTED">' not in page)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def test_append_only_and_deterministic():
     tmp = tempfile.mkdtemp(prefix="commons-ft-det-")
     try:
@@ -249,7 +290,7 @@ def test_live_tree_shape_and_golden():
     check("tracker row present", isinstance(tracker, dict))
     if tracker:
         check("tracker source built", tracker["source_status"] == "SOURCE_BUILT", tracker)
-        check("tracker tests present", tracker["test_status"] == "TESTED", tracker)
+        check("tracker tests present", tracker["test_status"] == "TESTS_PRESENT", tracker)
         check("tracker live unmeasured until Pages evidence", tracker["live_status"] == "UNMEASURED", tracker)
     order = {key: idx for idx, key in enumerate(ft.ROLLUP_SORT)}
     pairs = [(row.get("rollup"), row.get("id")) for row in proj.get("features") or []]
@@ -273,22 +314,22 @@ def test_live_tree_shape_and_golden():
             by_id["payment-capability-hub-failover-20260828-02"]["live_status"] == "UNMEASURED",
         )
         check(
-            "hub-failover tested",
-            by_id["payment-capability-hub-failover-20260828-02"]["test_status"] == "TESTED",
+            "hub-failover tests present",
+            by_id["payment-capability-hub-failover-20260828-02"]["test_status"] == "TESTS_PRESENT",
         )
     check("arbitrage row", "arbitrage-opportunity-road-20260830-01" in by_id, sorted(by_id))
     check("data-license row", "unique-data-license-door-20260830-01" in by_id, sorted(by_id))
     if "arbitrage-opportunity-road-20260830-01" in by_id:
         arb = by_id["arbitrage-opportunity-road-20260830-01"]
         check("arbitrage source built", arb["source_status"] == "SOURCE_BUILT", arb)
-        check("arbitrage tested", arb["test_status"] == "TESTED", arb)
+        check("arbitrage tests present", arb["test_status"] == "TESTS_PRESENT", arb)
         check("arbitrage live measured", arb["live_status"] == "LIVE" and arb["rollup"] == "LIVE", arb)
         check("arbitrage live cites sha", bool(arb.get("main_sha")), arb)
         check("arbitrage does not claim commerce.html", "commerce.html" not in arb["claimed_paths"], arb)
     if "unique-data-license-door-20260830-01" in by_id:
         data = by_id["unique-data-license-door-20260830-01"]
         check("data-license source built", data["source_status"] == "SOURCE_BUILT", data)
-        check("data-license tested", data["test_status"] == "TESTED", data)
+        check("data-license tests present", data["test_status"] == "TESTS_PRESENT", data)
         check("data-license live measured", data["live_status"] == "LIVE" and data["rollup"] == "LIVE", data)
         check("data-license live cites sha", bool(data.get("main_sha")), data)
         check("data-license does not claim commerce.html", "commerce.html" not in data["claimed_paths"], data)
@@ -313,7 +354,7 @@ def test_live_tree_shape_and_golden():
     if "unbuilt-items-surface-20260830-01" in by_id:
         ub = by_id["unbuilt-items-surface-20260830-01"]
         check("unbuilt-items source built", ub["source_status"] == "SOURCE_BUILT", ub)
-        check("unbuilt-items tested", ub["test_status"] == "TESTED", ub)
+        check("unbuilt-items tests present", ub["test_status"] == "TESTS_PRESENT", ub)
         check("unbuilt-items live measured", ub["live_status"] == "LIVE" and ub["rollup"] == "LIVE", ub)
         check("unbuilt-items does not claim hub_pages", "hub_pages.py" not in ub["claimed_paths"], ub)
         ub_blob = ft.tree_blob(ROOT, "unbuilt-items.html")
@@ -326,9 +367,9 @@ def test_live_tree_shape_and_golden():
     if "website-people-email-book-20260830-01" in by_id:
         loop = by_id["website-people-email-book-20260830-01"]
         check("website-people-email-book source built", loop["source_status"] == "SOURCE_BUILT", loop)
-        check("website-people-email-book tested", loop["test_status"] == "TESTED", loop)
+        check("website-people-email-book tests present", loop["test_status"] == "TESTS_PRESENT", loop)
         check("website-people-email-book live unmeasured", loop["live_status"] == "UNMEASURED", loop)
-        check("website-people-email-book rollup tested", loop["rollup"] == "TESTED", loop)
+        check("website-people-email-book rollup tests present", loop["rollup"] == "TESTS_PRESENT", loop)
         check(
             "website-people-email-book door is the public entry",
             loop.get("public_entrypoint") == "website-people-email-book.html",
@@ -338,9 +379,9 @@ def test_live_tree_shape_and_golden():
     if "lm-gtm-index-20260831-01" in by_id:
         gtm = by_id["lm-gtm-index-20260831-01"]
         check("lm-gtm-index source built", gtm["source_status"] == "SOURCE_BUILT", gtm)
-        check("lm-gtm-index tested", gtm["test_status"] == "TESTED", gtm)
+        check("lm-gtm-index tests present", gtm["test_status"] == "TESTS_PRESENT", gtm)
         check("lm-gtm-index live unmeasured", gtm["live_status"] == "UNMEASURED", gtm)
-        check("lm-gtm-index rollup tested", gtm["rollup"] == "TESTED", gtm)
+        check("lm-gtm-index rollup tests present", gtm["rollup"] == "TESTS_PRESENT", gtm)
         check(
             "lm-gtm-index door is the public entry",
             gtm.get("public_entrypoint") == "lm-gtm-index.html",
@@ -350,9 +391,9 @@ def test_live_tree_shape_and_golden():
     if "lm-gtm-hot-lane-20260831-01" in by_id:
         hot = by_id["lm-gtm-hot-lane-20260831-01"]
         check("lm-gtm-hot-lane source built", hot["source_status"] == "SOURCE_BUILT", hot)
-        check("lm-gtm-hot-lane tested", hot["test_status"] == "TESTED", hot)
+        check("lm-gtm-hot-lane tests present", hot["test_status"] == "TESTS_PRESENT", hot)
         check("lm-gtm-hot-lane live unmeasured", hot["live_status"] == "UNMEASURED", hot)
-        check("lm-gtm-hot-lane rollup tested", hot["rollup"] == "TESTED", hot)
+        check("lm-gtm-hot-lane rollup tests present", hot["rollup"] == "TESTS_PRESENT", hot)
         check(
             "lm-gtm-hot-lane door is the public entry",
             hot.get("public_entrypoint") == "lm-gtm-index.html",
@@ -362,9 +403,9 @@ def test_live_tree_shape_and_golden():
     if "lm-gtm-floor-sync-20260831-01" in by_id:
         sync = by_id["lm-gtm-floor-sync-20260831-01"]
         check("lm-gtm-floor-sync source built", sync["source_status"] == "SOURCE_BUILT", sync)
-        check("lm-gtm-floor-sync tested", sync["test_status"] == "TESTED", sync)
+        check("lm-gtm-floor-sync tests present", sync["test_status"] == "TESTS_PRESENT", sync)
         check("lm-gtm-floor-sync live unmeasured", sync["live_status"] == "UNMEASURED", sync)
-        check("lm-gtm-floor-sync rollup tested", sync["rollup"] == "TESTED", sync)
+        check("lm-gtm-floor-sync rollup tests present", sync["rollup"] == "TESTS_PRESENT", sync)
         check(
             "lm-gtm-floor-sync door is the public entry",
             sync.get("public_entrypoint") == "lm-gtm-index.html",
@@ -374,9 +415,9 @@ def test_live_tree_shape_and_golden():
     if "lm-gtm-agent-brief-20260831-01" in by_id:
         brief = by_id["lm-gtm-agent-brief-20260831-01"]
         check("lm-gtm-agent-brief source built", brief["source_status"] == "SOURCE_BUILT", brief)
-        check("lm-gtm-agent-brief tested", brief["test_status"] == "TESTED", brief)
+        check("lm-gtm-agent-brief tests present", brief["test_status"] == "TESTS_PRESENT", brief)
         check("lm-gtm-agent-brief live unmeasured", brief["live_status"] == "UNMEASURED", brief)
-        check("lm-gtm-agent-brief rollup tested", brief["rollup"] == "TESTED", brief)
+        check("lm-gtm-agent-brief rollup tests present", brief["rollup"] == "TESTS_PRESENT", brief)
         check(
             "lm-gtm-agent-brief door is the public entry",
             brief.get("public_entrypoint") == "lm-gtm-index.html",
@@ -386,9 +427,9 @@ def test_live_tree_shape_and_golden():
     if "lm-gtm-truth-sync-20260831-02" in by_id:
         truth = by_id["lm-gtm-truth-sync-20260831-02"]
         check("lm-gtm-truth-sync source built", truth["source_status"] == "SOURCE_BUILT", truth)
-        check("lm-gtm-truth-sync tested", truth["test_status"] == "TESTED", truth)
+        check("lm-gtm-truth-sync tests present", truth["test_status"] == "TESTS_PRESENT", truth)
         check("lm-gtm-truth-sync live unmeasured", truth["live_status"] == "UNMEASURED", truth)
-        check("lm-gtm-truth-sync rollup tested", truth["rollup"] == "TESTED", truth)
+        check("lm-gtm-truth-sync rollup tests present", truth["rollup"] == "TESTS_PRESENT", truth)
         check(
             "lm-gtm-truth-sync door is the public entry",
             truth.get("public_entrypoint") == "lm-gtm-index.html",
@@ -398,9 +439,9 @@ def test_live_tree_shape_and_golden():
     if "lm-gtm-contract-brief-20260901-01" in by_id:
         contract = by_id["lm-gtm-contract-brief-20260901-01"]
         check("lm-gtm-contract-brief source built", contract["source_status"] == "SOURCE_BUILT", contract)
-        check("lm-gtm-contract-brief tested", contract["test_status"] == "TESTED", contract)
+        check("lm-gtm-contract-brief tests present", contract["test_status"] == "TESTS_PRESENT", contract)
         check("lm-gtm-contract-brief live unmeasured", contract["live_status"] == "UNMEASURED", contract)
-        check("lm-gtm-contract-brief rollup tested", contract["rollup"] == "TESTED", contract)
+        check("lm-gtm-contract-brief rollup tests present", contract["rollup"] == "TESTS_PRESENT", contract)
         check(
             "lm-gtm-contract-brief door is the public entry",
             contract.get("public_entrypoint") == "lm-gtm-index.html",
@@ -410,9 +451,9 @@ def test_live_tree_shape_and_golden():
     if "patent-products-20260831-01" in by_id:
         pp = by_id["patent-products-20260831-01"]
         check("patent-products source built", pp["source_status"] == "SOURCE_BUILT", pp)
-        check("patent-products tested", pp["test_status"] == "TESTED", pp)
+        check("patent-products tests present", pp["test_status"] == "TESTS_PRESENT", pp)
         check("patent-products live unmeasured", pp["live_status"] == "UNMEASURED", pp)
-        check("patent-products rollup tested", pp["rollup"] == "TESTED", pp)
+        check("patent-products rollup tests present", pp["rollup"] == "TESTS_PRESENT", pp)
         check(
             "patent-products door is the public entry",
             pp.get("public_entrypoint") == "patent-products.html",
@@ -451,6 +492,7 @@ def main():
     test_self_test()
     test_schema_and_conflict()
     test_derivation_and_no_prose_promotion()
+    test_test_files_do_not_prove_execution()
     test_append_only_and_deterministic()
     test_live_tree_shape_and_golden()
     if FAILED:

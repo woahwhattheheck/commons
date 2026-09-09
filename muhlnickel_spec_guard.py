@@ -176,7 +176,7 @@ def analyze_python(path: str, data: bytes) -> Facts:
     facts = Facts(path)
     try:
         tree = ast.parse(data.decode("utf-8"))
-    except (UnicodeDecodeError, SyntaxError) as exc:
+    except (UnicodeDecodeError, SyntaxError, ValueError) as exc:
         facts.parse_error = str(exc)
         return facts
     visitor = Analyzer(path)
@@ -192,9 +192,13 @@ def is_python(path: Path, data: bytes) -> bool:
     # An executable can be renamed away from .py.  For an unknown extension,
     # accept it as Python when the bytes parse and contain executable Python
     # structure.  Requirements such as ``numpy>=1.24`` do not meet this test.
+    # Null bytes (corpus .mno / packed tensors) are not Python; ast.parse
+    # raises ValueError rather than SyntaxError.
+    if b"\x00" in data:
+        return False
     try:
         tree = ast.parse(data.decode("utf-8"))
-    except (UnicodeDecodeError, SyntaxError):
+    except (UnicodeDecodeError, SyntaxError, ValueError):
         return False
     strong = (
         ast.Import, ast.ImportFrom, ast.FunctionDef, ast.AsyncFunctionDef,
@@ -216,6 +220,7 @@ def module_names(path: Path) -> set[str]:
 def load_module_facts() -> tuple[dict[str, Facts], dict[str, Facts]]:
     by_module: dict[str, Facts] = {}
     by_path: dict[str, Facts] = {}
+    basename_hits: dict[str, list[Facts]] = {}
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:
             continue
@@ -229,7 +234,17 @@ def load_module_facts() -> tuple[dict[str, Facts], dict[str, Facts]]:
         facts = analyze_python(rel, data)
         by_path[rel] = facts
         for name in module_names(path):
-            by_module[name] = facts
+            if "." in name:
+                by_module[name] = facts
+            else:
+                basename_hits.setdefault(name, []).append(facts)
+    # Basename aliases are last-writer-wins and rglob-order dependent when two
+    # files share a stem (`core.py`). Only register an unambiguous basename so
+    # `integrations/shared_equipment/services.py` cannot inherit titan+submit
+    # from `integrations/command_center/core.py`.
+    for name, hits in basename_hits.items():
+        if len(hits) == 1:
+            by_module[name] = hits[0]
     return by_module, by_path
 
 

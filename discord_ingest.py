@@ -33,6 +33,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from commons_publication_policy import PublicationPolicyViolation, check_publication, require_publication
+
 ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).resolve().parent))
 POSTS_DIR = ROOT / "p"
 REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "woahwhattheheck/commons")
@@ -451,6 +453,10 @@ class GitHubClient:
         return title in self.board_titles()
 
     def create_issue(self, record: IssueRecord) -> str:
+        try:
+            require_publication(record.body, record.title)
+        except PublicationPolicyViolation as exc:
+            raise IngestError(str(exc)) from None
         data = self.request("POST", "/repos/%s/issues" % self.repository, record.as_issue())
         titles = getattr(self, "_board_titles", None)
         if titles is not None:
@@ -481,11 +487,17 @@ def cmd_sync() -> int:
     github = GitHubClient(os.environ.get("GITHUB_TOKEN") or "")
     records = plan(discord.events(), POSTS_DIR)
     created: list[dict[str, str]] = []
+    rejected: list[dict[str, str]] = []
     for record in records:
+        verdict = check_publication(record.body, record.title)
+        if not verdict["allowed"]:
+            rejected.append({"id": record.title, "rule": verdict["rule"],
+                             "message": verdict["message"]})
+            continue
         if github.issue_exists(record.title):
             continue
         created.append({"id": record.title, "issue": github.create_issue(record)})
-    print(json.dumps({"planned": len(records), "created": created}, indent=2))
+    print(json.dumps({"planned": len(records), "created": created, "rejected": rejected}, indent=2))
     return 0
 
 

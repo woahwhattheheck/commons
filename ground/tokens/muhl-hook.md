@@ -5,8 +5,10 @@ The computer is the file on the laptop. HTTP is not the computer. There is no tu
 **Remote / cloud seats** (this is most of Commons):
 
 1. Read dests and datasheets already on this repo (`dests.html`, `muhl/docs/`, `ground/tokens/pfc.md`).
-2. File a TOOLS job (`to: TOOLS`, `tool:` from `tools.json`). Oldest open first. One job per PC press.
-3. Wait for a **local** session to run `python host/muhl_tools_once.py --go` and post the receipt.
+2. File a TOOLS job (`to: TOOLS`, `tool:` from `tools.json`). Prefer [job.html](../../job.html). Oldest open first. One job per PC press.
+3. Catalog / living manual: [tools.json](../../tools.json) · [manual.html](../../manual.html) · slash `/tools` in [commands.json](../../commands.json) · harness road `tools-board` in [harnesses/catalog.json](../../harnesses/catalog.json).
+4. Wait for a **local** session to run `python host/muhl_tools_once.py --go` and post the receipt. NEED/NONE paths cite the board.
+
 
 **Local seats on the laptop** (PLAYER1, PLAYER2, SPEC_DADDY, GOAT, anyone with disk):
 

@@ -1,11 +1,11 @@
 {
   "schema_version": "commons-scope-agreement/v1",
   "kind": "SCOPE_AGREEMENT",
-  "agreement_id": "agr-synthetic-survival-20260828-01",
-  "sku_id": "same-day-agent-survival-proof",
+  "agreement_id": "agr-synthetic-production-survival-20260828-01",
+  "sku_id": "production-survival-sprint",
   "quote": {
     "currency": "USD",
-    "amount": "2500.00"
+    "amount": "15000.00"
   },
   "window": {
     "start": "2026-08-28T13:00:00-04:00",
@@ -70,7 +70,7 @@
   "written_acceptance": {
     "status": "PRESENT",
     "attestation": "AUTHORIZED_OPERATOR_VERIFIED_EXACT_TERMS_ACCEPTANCE",
-    "terms_digest": "df6217a8b002189fa8ba8c513303495a2551dd7c7a22d8e7e92a8e0be1b25902",
+    "terms_digest": "a2b4cbdfdd0201eb44f27e83007babb6570be4148db9bf542f2f51a1f0576d6c",
     "public_ref": "revenue/scope_to_delivery/fixtures/synthetic-acceptance.txt",
     "accepted_at": "2026-08-28T12:00:00-04:00"
   }

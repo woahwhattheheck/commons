@@ -13,3 +13,14 @@ curl -sS -o /dev/null -w "raw_AGENTS %{http_code}\n" "https://raw.githubusercont
 
 Pages 404 + raw SHA 200 = bake lag, not "not a file."
 UNMEASURED on purpose: agent idle, queue depth, Prometheus.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+

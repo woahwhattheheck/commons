@@ -649,8 +649,8 @@
   ],
   "schema_version": "commons-marketing-sales-pipeline/v1",
   "seed_audit": {
-    "canonical_hard_dnr_contacts": 12,
-    "canonical_historical_contacts": 12,
+    "canonical_hard_dnr_contacts": 13,
+    "canonical_historical_contacts": 13,
     "payment_evidence": 0,
     "positive_human_replies": 0,
     "production_survival_cash_usd": 0,

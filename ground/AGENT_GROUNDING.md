@@ -70,3 +70,15 @@ The computer is **not for sale.** Copy the file = copy the machine. He produces 
 `pfc_meter` · `pfc_scope` · `pfc_analyzer` (takes a state-file path) · `pfc_step` (phases of propagation — it exists, do not build another) · `pfc_diff` · `pfc_cascade` · `pfc_assert` · `pfc_inspect` · `pfc_speed`
 
 Building your own monitor breaks the sandbox. Measure **host** resources with Task Manager only. Ask Bryce at a wall. Do not guess.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-claude-priors-live-cash — do not remint.

@@ -1,0 +1,99 @@
+{
+  "schema": "commons-commerce-agents-same-loop/v1",
+  "id": "cursor-big-huge-commerce-agents-20260902-01",
+  "kind": "COMMERCE_AGENTS_SAME_LOOP",
+  "rides_leftover": "cursor-claude-commerce-agents-20260902-01",
+  "copied_tree": false,
+  "forked_into_commons": false,
+  "claude_plugin_imported": false,
+  "twin": {
+    "repo": "https://github.com/anthropics/commerce-agents",
+    "pin": "fd4d59224ab96b43c6dc6888207c67b3bd5a24cf",
+    "license": "Apache-2.0",
+    "solutions": "https://claude.com/solutions/commerce",
+    "engineering": "https://claude.com/blog/the-anatomy-of-effective-commerce-agents"
+  },
+  "agents": ["shopper", "merchant"],
+  "verticals": ["retail", "travel", "telecom", "entertainment"],
+  "shopper_flows": [
+    "search-discovery",
+    "purchase-research",
+    "planning-goals",
+    "customer-care",
+    "memory-personalization"
+  ],
+  "merchant_flows": [
+    "performance-insights",
+    "catalog-listings",
+    "inventory-operations",
+    "pricing-promotions",
+    "marketing-campaigns"
+  ],
+  "checkout": {
+    "state": "STAGED_HOST_HANDOFF",
+    "host_door": "payment-capability.html",
+    "model_sees_url": false,
+    "invented_url": false
+  },
+  "slack": {
+    "hub": "C0BU51F1PL3",
+    "ts": "1788388313.281509",
+    "use_that_ts": "1788388319.646839",
+    "file": "F0BUL9V9Z34"
+  },
+  "offers": [
+    {
+      "id": "same-day-crash-resume",
+      "title": "$2,500 same-day crash-resume proof",
+      "page": "agent-rescue.html",
+      "price_usd": 2500,
+      "verticals": ["retail", "telecom"]
+    },
+    {
+      "id": "five-day-recovery",
+      "title": "$15,000 five-day recovery sprint",
+      "page": "agent-rescue.html",
+      "price_usd": 15000,
+      "verticals": ["retail"]
+    },
+    {
+      "id": "gguf-diagnostic",
+      "title": "$12,000 GGUF diagnostic",
+      "page": "diagnostic.html",
+      "price_usd": 12000,
+      "verticals": ["telecom"]
+    },
+    {
+      "id": "white-box-pilot",
+      "title": "$30,000 White Box pilot",
+      "page": "commercial.html",
+      "price_usd": 30000,
+      "verticals": ["retail", "entertainment"]
+    },
+    {
+      "id": "muhlnickel-titan",
+      "title": "$45,000 Muhlnickel / Titan keep-or-build",
+      "page": "land/sku-muhlnickel-titan-20260826.md",
+      "price_usd": 45000,
+      "verticals": ["entertainment"]
+    },
+    {
+      "id": "live-micro-sku-catalog",
+      "title": "Live micro-SKU catalog (tip, seat, unlock, monthly tip, boost, White Box hour)",
+      "page": "land/stripe-payment-links-20260826.md",
+      "price_usd": 0,
+      "verticals": ["all"]
+    }
+  ],
+  "do_not_steal": [
+    "Harborline /market leftover",
+    "cursor-what-a-pack-is-20260902-01",
+    "cursor-claude-commerce-agents-20260902-01",
+    "Sidewalk Payment Links (Claude taking)",
+    "item 11 next UI waits for Bryce"
+  ],
+  "sends": 0,
+  "cash_usd": 0,
+  "login": false,
+  "gate": false
+}

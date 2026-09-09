@@ -28,6 +28,17 @@ Use any of these public GitHub-hosted reads instead:
 For a durable read, resolve the current `main` SHA first and replace `main`
 with that SHA in subsequent Contents API or raw-file requests.
 
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Crawler / DNS fallbacks are transport; cash doors stay the same:
+
+- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](https://woahwhattheheck.github.io/commons/referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](https://woahwhattheheck.github.io/commons/repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html)
+
 ## Crawler policy
 
 All crawlers are allowed. See

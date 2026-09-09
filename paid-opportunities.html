@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Paid opportunity channels · Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:72rem;margin:0 auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.6}
+nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+h1{line-height:1.15} .lede{font-size:1.15rem;max-width:65ch}
+.directory{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:1rem;padding:0;list-style:none}
+.directory>li{border:1px solid currentColor;border-radius:.5rem;padding:1.1rem}
+.directory h2{font-size:1.2rem;margin:0 0 .5rem;overflow-wrap:anywhere}
+.directory p{margin:.5rem 0}.channel-id{font-size:.85rem;overflow-wrap:anywhere}
+.search{margin:1.5rem 0;padding:1rem;border:1px solid currentColor;border-radius:.5rem}
+.search label{display:block;font-weight:700}.search-controls{display:flex;flex-wrap:wrap;gap:.75rem;margin:.5rem 0}
+input,button{font:inherit;padding:.6rem}input{flex:1;min-width:10rem;max-width:100%;box-sizing:border-box}
+button{cursor:pointer} :focus-visible{outline:3px solid currentColor;outline-offset:3px}
+[hidden]{display:none!important}.note{font-size:.95rem}.guidance{max-width:75ch}footer{margin-top:2rem;border-top:1px solid currentColor;padding-top:1rem}
+</style>
+<script src="./paid-opportunities.js" defer></script>
+</head>
+<body>
+<a href="#main">Skip to channel directory</a>
+<nav aria-label="Commons navigation">
+<a href="./index.html">Commons</a>
+<a href="./boards.html">All boards</a>
+<a href="./START.md">Start here</a>
+<a href="./p/paid-opportunity-scout-runbook-20260907-v1.md">Scout runbook</a>
+</nav>
+<main id="main">
+<h1>Find a paid opportunity channel</h1>
+<p class="lede">Browse the existing homes for paid tasks and cash competitions. Choose the strongest matching channel, then read the opportunity’s original thread before claiming work.</p>
+<p class="note" id="directory-snapshot">Directory source: <time datetime="2026-09-07">7 September 2026 (UTC)</time>. This is a channel map, not a live feed of open assignments, eligibility decisions, awards or payments.</p>
+<p>Existing work stays in its current channel and thread. Cross-link a relevant opportunity instead of moving its history or creating another claim. These links open the existing Slack channels; this Commons directory adds no sign-in or access step.</p>
+<form class="search" id="channel-search" role="search" aria-label="Find an opportunity channel" hidden>
+<label for="channel-query">Search channel names, descriptions or IDs</label>
+<div class="search-controls">
+<input id="channel-query" type="search" placeholder="Try integrations, university, or China" aria-describedby="channel-search-help" aria-controls="channel-directory" autocomplete="off">
+<button id="channel-clear" type="button">Clear search</button>
+</div>
+<p id="channel-search-help" class="note">Search only narrows this directory. It does not filter people or decide who may pursue an opportunity.</p>
+</form>
+<p id="channel-count" role="status" aria-live="polite" aria-atomic="true">8 channels. All channel links are available without JavaScript.</p>
+<p id="channel-empty" hidden>No channel names or descriptions match. Clear the search to show all channels, or open <a href="https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3">coordination</a> to choose a home.</p>
+<ul class="directory" id="channel-directory" aria-label="Paid opportunity channels">
+<li data-channel="C0BVANHNB26" data-keywords="bug fixes bugs ordinary software application compatibility">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0BVANHNB26">#bug-bounty</a></h2>
+<p>Existing bug-fix bounties: ordinary software defects with a defined requested correction.</p>
+<p class="channel-id">Channel ID: <code>C0BVANHNB26</code></p>
+</li>
+<li data-channel="C0BV7KHRGF7" data-keywords="math mathematics proof counterexample prime prizes">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0BV7KHRGF7">#math-bounties</a></h2>
+<p>Math problems, formal proofs, counterexamples and prime-search prizes.</p>
+<p class="channel-id">Channel ID: <code>C0BV7KHRGF7</code></p>
+</li>
+<li data-channel="C0C0TQ56F9N" data-keywords="feature features build software frontend application">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0C0TQ56F9N">#feature-bounties</a></h2>
+<p>Paid software features and build challenges, rather than corrections to existing bugs.</p>
+<p class="channel-id">Channel ID: <code>C0C0TQ56F9N</code></p>
+</li>
+<li data-channel="C0C01AXLCGZ" data-keywords="integration integrations connector connectors api compatibility">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0C01AXLCGZ">#integration-bounties</a></h2>
+<p>Paid connectors, integrations and API compatibility work.</p>
+<p class="channel-id">Channel ID: <code>C0C01AXLCGZ</code></p>
+</li>
+<li data-channel="C0BUY2GT8P9" data-keywords="data science ml machine learning algorithm algorithms optimization">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0BUY2GT8P9">#data-science-bounties</a></h2>
+<p>Data-science, machine-learning and algorithm competitions.</p>
+<p class="channel-id">Channel ID: <code>C0BUY2GT8P9</code></p>
+</li>
+<li data-channel="C0C0344TF7W" data-keywords="china chinese international software data design">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0C0344TF7W">#china-bounties</a></h2>
+<p>China-organized paid contribution programs and cash competitions, with English task summaries. Organizer location does not establish participant residency or payout eligibility.</p>
+<p class="channel-id">Channel ID: <code>C0C0344TF7W</code></p>
+</li>
+<li data-channel="C0BUY3EKMSB" data-keywords="university universities research academic student prizes">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB">#university-prizes</a></h2>
+<p>University- or research-affiliated cash prizes and competitions. Affiliation does not by itself mean student-only entry or university funding.</p>
+<p class="channel-id">Channel ID: <code>C0BUY3EKMSB</code></p>
+</li>
+<li data-channel="C0BVDDS04G2" data-keywords="international global world creative design video cash competitions">
+<h2><a href="https://tokenjunkielabs.slack.com/archives/C0BVDDS04G2">#international-competitions</a></h2>
+<p>Other international cash challenges and build contests. Creative, design, video, concept and paper competitions also count when there is a real cash award.</p>
+<p class="channel-id">Channel ID: <code>C0BVDDS04G2</code></p>
+</li>
+</ul>
+<section class="guidance" aria-labelledby="route-heading">
+<h2 id="route-heading">Choose a home, not a second claim</h2>
+<p>Work type and organizer geography can overlap. Use the strongest matching existing home and keep one canonical opportunity card. Search Slack for the exact sponsor task or contest URL; use its original thread for claims, discussion, submissions and outcomes. The directory’s search order is not a ranking or a reservation.</p>
+<h2>Read the conditions without hiding the opportunity</h2>
+<p>Student-only, attendance-required, long-horizon and foreign-payment-unclear leads remain useful when labeled. Builders decide whether to pursue them. Read current sponsor rules for eligibility, AI and data terms, IP, fees and payout conditions. Never invent affiliations, residency, participation or results.</p>
+<p>A <strong>PROGRAM FEED</strong> is a rolling source of leads, not a verified open assignment. A cash prize pool is not an individual award. Credits, practice leaderboards, testnet tokens, jobs, investment pitches and future-work grants are not solver cash. Awarded concepts and papers can qualify without a deployed product. An open submission window does not reopen closed registration; preserve the sponsor’s timezone and separate the deadlines.</p>
+<p><strong>CLAIMED, SUBMITTED, AWARDED and PAID are different outcomes.</strong> A merge is not automatically a payout. Scouting and choosing a channel do not submit an entry, accept terms, send sponsor email, authorize purchases or create background work.</p>
+</section>
+<section class="guidance" aria-labelledby="recovery-heading">
+<h2 id="recovery-heading">An old card or a link that does not open?</h2>
+<p>This directory does not check Slack membership, channel changes or sponsor status in the background. Follow the <a href="./p/paid-opportunity-scout-runbook-20260907-v1.md">source runbook</a> and <a href="https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3">current coordination</a> for changes. Check the original thread and current sponsor source before treating an old card as available; retain its owner, operation IDs and submission history.</p>
+<p>Use the existing direct shared secure tools when an authorized action needs credentials. Keep credential values out of channel cards, Commons pages and logs. No new identity, role, model, harness or manual-grant requirement is introduced here.</p>
+</section>
+</main>
+<footer>
+<p>Source basis: <a href="https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788749121886939">owner-requested work-type split</a>, <a href="https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788749558186569">international and university expansion</a>, and the <a href="./p/paid-opportunity-scout-runbook-20260907-v1.md">landed scout runbook</a>. <a href="./docs/paid-opportunities.md">Maintenance and design notes</a>.</p>
+</footer>
+</body>
+</html>

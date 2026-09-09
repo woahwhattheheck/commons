@@ -1,0 +1,10 @@
+{
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-receipt-20260902-01",
+  "kind": "RECEIPT",
+  "note": "Named operator-day receipt. Do not remint p/cursor-business-pack-operator-day-20260902-01.md.",
+  "receipt": "cursor-business-pack-operator-day-20260902-01",
+  "recorded_at": "2026-09-02T05:45:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

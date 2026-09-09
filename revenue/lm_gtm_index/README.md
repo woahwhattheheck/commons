@@ -30,9 +30,122 @@ are live and queryable, not hot, and PRE-SALE TRANSPORT NONE.
 
 Occupancy (`claim` / `release`) writes an overlay event onto the INDEX `owner`
 field. It does not rewrite `loop.json`. A second occupancy on a seated live
-one fails closed unless `--steal` is explicit. That is collision-avoidance
-for two harnesses hitting the same live one, not an admission gate. Both
-positional subject and `--subject` work; `--owner` is required.
+one fails closed unless `--steal` is explicit. Occupancy is admission for
+sales/draft/outreach only; `brief` remains the listing floor. Unclaimed
+sales are illegal and exit 4. Both positional subject and `--subject` work;
+`--owner` is still named on claim/release.
+
+## SALES_FLOOR
+
+Agents doing sales use `brief` then `claim`. No claim = no draft.
+`python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU` exits 0
+only when the live occupant matches YOU. UNSEATED or a different occupant
+exits 4. Listing stays open. Still not a second CRM. `--send` exits 3.
+
+## RELATIONSHIP_HANDOFF (CRM6)
+
+When a peer's context window is gone, the successor continues from evidence:
+
+```sh
+python3 host/lm_gtm_relationship_handoff.py SUBJECT
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
+```
+
+Returns kind `LM_GTM_RELATIONSHIP_HANDOFF` with SOURCED or ABSENT fields for
+wants, learned, promised, sent_communication, unresolved,
+next_time_sensitive, and successor_next_action. A typed
+`SENT_AWAITING_REPLY` record is communication evidence only and is surfaced as
+`sent_communication`; it does not establish what anyone promised. `promised`
+remains ABSENT until a source-reading mechanism supplies separately verified
+commitment content. Pointer prose stays `SUMMARY_POINTER` even when it cites a
+Gmail or Slack message: the pointer is retained, but this composer does not
+claim it fetched or quoted the linked source. Event chronology is
+ timezone-aware.
+
+`relationship_handoff_evidence.jsonl` is a narrow, validated,
+source-pointer-only supplement for facts that must reach the successor without
+rewriting the canonical INDEX overlay or copying private mail into Git. The
+packet labels those records `RELATIONSHIP_EVIDENCE`, labels canonical overlay
+records `INDEX_OVERLAY`, lists the relationship event ids, and reports
+`canonical_index_mutated: false`. The supplement is not a second CRM.
+
+The Billings example now distinguishes these facts:
+
+- main proposal and separate confidential-pricing package: `SUBMISSION_SENT`;
+- recipient acknowledgement, acceptance, award, and payment: not established;
+- effective state: OWNER_HOLD / DNR_OUTREACH / NOT_HOT;
+- next action: do not resend or contact Cheri; wait for acknowledgement or a
+  buyer reply;
+- next time-sensitive source target: 2026-09-28, not the expired submission
+  deadline.
+
+Canaries:
+
+```sh
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py
+```
+
+## Saved INDEX freshness
+
+`python3 host/lm_gtm_index.py freshness` reads the committed INDEX header
+(or state.json when INDEX is absent) and compares its `composed_at` with the
+current UTC time. `--as-of 2026-09-06T00:00:00Z` makes that comparison
+reproducible. It prints JSON: FRESH through exactly 12 hours, STALE above
+12 hours, with `age_hours`, `threshold_hours`, and the existing warning.
+Exit codes are 0 for FRESH, 2 for STALE, and 1 for a missing, invalid, or
+future timestamp. Reading freshness does not rebuild or stamp the index.
+
+The timestamp is the newest source timestamp used by the existing composer;
+FRESH does not prove every source or referenced message is current. Compare
+the saved index with live source evidence when deciding the next action.
+
+Use `--index-freshness` on the relationship handoff command to include this
+metadata in its JSON or `--brief` output; `--as-of` also works there.
+STALE preserves the full packet, next action, and successful handoff exit.
+Unavailable metadata becomes UNKNOWN while the packet remains usable.
+These are descriptive data states and never restrict credentials, service
+tools, peer access, or operations.
+
+Source record: `ledger-crm6-composed-at-freshness-gate-20260905-01`.
+Focused check: `python3 -m unittest -v tests/test_ledger_crm6_composed_at_freshness_gate.py`.
+
+## Mailbox buyer-reply verify (CRM6)
+
+Hermetic pin (landed `#9237` / `ledger-crm6-mailbox-buyer-reply-verify-20260905-01`):
+
+```sh
+python3 host/lm_gtm_mailbox_buyer_reply_verify.py city-of-billings-bid-1421
+```
+
+Returns `NO_BUYER_REPLY` or `BUYER_REPLY_OBSERVED` from fixtures only.
+`verified_human_yes` is always false — never invent `VERIFIED_HUMAN_YES`.
+Registry: [`mailbox_buyer_reply_registry.json`](./mailbox_buyer_reply_registry.json).
+
+Optional handoff annotate (mirrors `--index-freshness`):
+
+```sh
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --mailbox-verify
+```
+
+Billings stamps `NO_BUYER_REPLY`. Missing fixtures become UNKNOWN while
+the packet and next action remain usable. Handoff `--send` exits 3
+(this composer never transports mail).
+
+Source record: `ledger-crm6-handoff-mailbox-verify-annotate-20260906-01`.
+Focused check: `python3 -m unittest -v tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py`.
+
+Mailbox CLI `--send` exits 3 (same refuse as index/handoff). `state.json`
+`contract` pins `mailbox_verify`, `handoff_mailbox_verify`, and
+`mailbox_send` = `illegal; exits 3`.
+
+Source record: `ledger-crm6-mailbox-send-refuse-state-contract-20260906-01`.
+Focused check: `python3 -m unittest -v tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py`.
+
+Landed registry pins (features/registry + mailbox registry send-refuse row +
+HTML cite): `ledger-crm6-landed-registry-pins-20260906-01` (#9237 / #9267 /
+#9268 / #9269). Focused check:
+`python3 -m unittest -v tests/test_ledger_crm6_landed_registry_pins.py`.
 
 ## Cross-harness contract
 
@@ -55,8 +168,10 @@ Read (any harness with git):
    `metaforms` and the MSP SENT rows hydrate `route.kind: EXISTING_CRM_RECORD`
    / `airtable:rec…`. Emails and phones stay in source ledgers; the INDEX
    does not copy them.
+7. Relationship handoff for a successor peer:
+   `python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421`
 
-Write (overlay only):
+Write (canonical overlay only):
 
 ```sh
 python3 host/lm_gtm_index.py append-event \
@@ -65,9 +180,11 @@ python3 host/lm_gtm_index.py append-event \
   --body "draft remains STAGED_NOT_SENT; no transport"
 
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
+python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
 # contract form is TOKEN placeholders (survive JSON/markdown/HTML):
 # python3 host/lm_gtm_index.py claim SUBJECT --owner YOU
+# python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU
 # equivalent flag form:
 python3 host/lm_gtm_index.py claim --subject composio --owner YOURNAME
 # second occupancy fails closed unless:
@@ -95,7 +212,11 @@ python3 host/lm_gtm_index.py hold
 python3 host/lm_gtm_index.py show city-of-billings-bid-1421
 python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
+python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
 python3 -m unittest -v test_lm_gtm_index.py
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py
 ```
 
 Door: [`lm-gtm-index.html`](../../lm-gtm-index.html).
@@ -110,15 +231,21 @@ State: [`state.json`](./state.json).
 - `revenue/marketing_sales/pipeline.json` (research-universe summary only; the
   ~1000 `RESEARCH_REQUIRED` GitHub entities are not live sales next-actions)
 - `revenue/swarm_mail/inboxes.json`
-- `revenue/lm_gtm_index/events.jsonl` (overlay pointers + occupancy)
+- `revenue/lm_gtm_index/events.jsonl` (canonical overlay pointers + occupancy)
+- `revenue/lm_gtm_index/relationship_handoff_evidence.jsonl` (validated
+  source-pointer supplement used only by CRM6 handoff; not canonical CRM and
+  not an INDEX mutation)
 
 Seller contacts from the website loop stay `seller_context` and are never
-live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
+live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX` for the
+canonical public projection; CRM6 handoff can cite specific verified message
+ids without copying addresses or message bodies.
 
 Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
 `lm-gtm-floor-sync-20260831-01`, `lm-gtm-agent-brief-20260831-01`,
 `lm-gtm-truth-sync-20260831-02`, `lm-gtm-contract-brief-20260901-01`,
 `lm-gtm-contract-tokens-leads-20260901-01`,
+`lm-gtm-require-claim-20260904-01`,
 `website-people-email-book-20260830-01`, or
 `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
 schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY

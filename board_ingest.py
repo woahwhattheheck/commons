@@ -25,6 +25,7 @@ import panel as panel_mod
 import memory_board
 import capability_declaration
 import model_language
+import commons_publication_policy as publication_policy
 from host import correction_link
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 import exact_body_redact
@@ -245,6 +246,33 @@ TRUST_DOCTRINE_HTML = (
 )
 
 
+CASH_DOORS_POINTER = (
+    '<p class="note cash-doors-link" id="cash-doors">'
+    '<a href="./tools-cash.html"><strong>Live cash</strong></a>'
+    " — $29 Autopsy + four $199 tip-shelf diagnostics (product pages only).</p>\n"
+)
+CASH_DOORS_NEEDLE = "</section>\n<section>\n<h2>Catalog</h2>"
+CASH_DOORS_REPLACEMENT = "</section>\n" + CASH_DOORS_POINTER + "<section>\n<h2>Catalog</h2>"
+
+
+def splice_tools_cash_doors(root=None):
+    """Keep the COIL cash-doors pointer on tools.html across hub rebuilds.
+
+    hub_pages.rebuild_tools remints tools.html from the catalog and drops the
+    unique live-cash pointer. Compose it back after each rebuild. Do not remint
+    hub_pages.py leftover bytes.
+    """
+    path = os.path.join(root or ROOT, "tools.html")
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+    if 'id="cash-doors"' in text and "./tools-cash.html" in text:
+        return False
+    if CASH_DOORS_NEEDLE not in text:
+        raise RuntimeError("tools.html lost the Catalog splice point for cash-doors")
+    _write(path, text.replace(CASH_DOORS_NEEDLE, CASH_DOORS_REPLACEMENT, 1))
+    return True
+
+
 def inject_trust_doctrine(text):
     """Pin the trust law on every root HTML surface naming Muhlnickel.
 
@@ -286,6 +314,20 @@ NAMES = (
 def set_session_banner(rows):
     global SESSION_BANNER
     SESSION_BANNER = hub_pages.session_banner_html(hub_pages.session_state(rows))
+
+
+
+def live_cash_html(parent=False):
+    """Compose product live-cash doors onto ingest surfaces after each remint.
+
+    hub_pages._page() already injects this for hub rebuilds. board_ingest writers
+    that concatenate doors() were dropping id="live-cash" on by/, names, board,
+    and live. Do not remint hub_pages leftover bytes.
+    """
+    text = hub_pages.LIVE_CASH_PRODUCTS_HTML
+    if parent:
+        text = text.replace('href="./', 'href="../')
+    return text
 
 
 def doors(parent=False):
@@ -992,7 +1034,29 @@ def _prepare_body_and_struct(body, supplied_extra):
     return body, struct_from_body(body, supplied_extra), False
 
 
+def _requires_publication_terms_check(extra):
+    """Return whether the publisher must apply its local prose policy.
+
+    Slack connector issues are source records that have already crossed the
+    bridge's standing private-data boundary. Their body is data, not a control
+    plane for the downstream publisher.
+    """
+    return str((extra or {}).get("carrier") or "").strip().lower() != "slack-connector"
+
+
 def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
+    # Owner-directed publication terms apply to ordinary publisher inputs.
+    # Slack source data was screened at the bridge boundary and stays byte-exact.
+    supplied_policy_meta = dict(extra or {})
+    if _requires_publication_terms_check(supplied_policy_meta):
+        for publication_field in ("body", "speech", "model_packet"):
+            publication_text = body if publication_field == "body" else supplied_policy_meta.get(publication_field, "")
+            verdict = publication_policy.check_publication(str(publication_text or ""), str(supplied_policy_meta.get("subject") or ""))
+            if not verdict["allowed"]:
+                add_reject({"id": mid or "(none)", "reason": verdict["code"],
+                            "code": verdict["code"], "state": "PUBLICATION_TERMS_REJECTED",
+                            "policy_rule": verdict["rule"], "ts": ts or now_ts(), "body": ""})
+                return "publication-terms"
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     supplied_extra = dict(extra or {})
@@ -1650,6 +1714,33 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
     return "push-fail"
 
 
+def _classify_bounded_bake_reset(env, recorded):
+    """Classify a second bake replay reset without making a third push.
+
+    The refreshed origin is acceptable only when it already carries an exact
+    receipt for the current source corpus: either the projection converged or
+    the durable pending marker schedules the ordinary heal. A stale checkout
+    without either source-bound receipt remains a failure.
+    """
+    source = post_source_snapshot()
+    converged_rel = _projection_receipt_rel(source["sha256"], "converged")
+    pending_rel = _projection_receipt_rel(source["sha256"], "pending")
+    if _head_has(converged_rel, env):
+        print("bake retry converged on refreshed origin", flush=True)
+        refresh_projection_status(env)
+        return "pushed" if recorded == "pushed" else "unchanged"
+    if _head_has(pending_rel, env):
+        print("bake retry deferred after one bounded attempt; projection pending", flush=True)
+        refresh_projection_status(env)
+        return "pushed" if recorded == "pushed" else "unchanged"
+    print(
+        "bake retry failed after one bounded attempt; no matching projection receipt",
+        flush=True,
+    )
+    refresh_projection_status(env)
+    return "push-fail"
+
+
 def _record_paths(env):
     # Every NEW file under the source dirs, whichever road wrote it (event,
     # ntfy, sweep). New paths are the append-only record — two runners can
@@ -1819,6 +1910,8 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
                 print("bake retry pushed from refreshed origin", flush=True)
                 refresh_projection_status(env)
                 return "pushed"
+            if retry == "bake-reset":
+                return _classify_bounded_bake_reset(env, recorded)
             if recorded == "pushed":
                 print("bake retry deferred after one bounded attempt; record is durable", flush=True)
                 refresh_projection_status(env)
@@ -1851,6 +1944,11 @@ def list_posts():
         if not meta.get("id"):
             meta["id"] = fn[:-3]
         extra = struct_from_body(body, meta)
+        # Direct Git/carrier writes use the same publication terms when projected.
+        # Original records remain recoverable; rejected wording is not amplified.
+        if any(not publication_policy.check_publication(str(value or ""), str(extra.get("subject") or ""))["allowed"]
+               for value in (body, extra.get("speech"), extra.get("model_packet"))):
+            continue
         # BAILIFF 2026-08-20: the filename, kept beside the declared id, because
         # the two can disagree and the LINK must follow the file. MARGIN 365-376
         # declared `id: 366` inside a file named for the title slug, so every
@@ -2378,7 +2476,7 @@ def rebuild_board(rows):
 %s
 </div>
 </body></html>
-""" % (CSS, hub_pages.BOARD_JS_TAG, doors(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
+""" % (CSS, hub_pages.BOARD_JS_TAG, doors() + live_cash_html(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
     page = inject_trust_doctrine(page)
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
@@ -2426,7 +2524,7 @@ def rebuild_by(rows):
 <p><a href="../export.txt">export.txt</a> \u00b7 <a href="../posts.json">posts.json</a></p>
 %s
 </body></html>
-""" % (src, CSS.replace("./", "../"), doors(True), src, identity_badge, src, body_html)
+""" % (src, CSS.replace("./", "../"), doors(True) + live_cash_html(True), src, identity_badge, src, body_html)
         filename = by_claim_filename(src)
         _write(os.path.join(BY, filename), page)
         latest = items[0][0] if items else ""
@@ -2473,11 +2571,17 @@ def rebuild_to(rows):
 </body></html>
 """ % (dest, CSS.replace("./", "../"), hub_pages.CARRIER_JS_TAG.replace("./", "../", 1),
        doors(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
-        _write(os.path.join(TO, dest + ".html"), page)
+        # to= is free text. A value containing "/" once baked to
+        # "to/COMMONS / NONDUPLICATING INTEGRATOR.html": a directory with a
+        # trailing space that Windows cannot check out. The owner removed it
+        # 2026-08-30 and the next ingest regenerated it. Reuse the by/ encoder
+        # so every inbox route is one reversible, Windows-safe filename.
+        filename = by_claim_filename(dest)
+        _write(os.path.join(TO, filename), page)
         latest = items[0][0] if items else ""
         index_rows.append(
-            (dest, '<li><a href="./%s.html">%s</a> \u2014 %s post(s)%s</li>' % (
-                dest, dest, len(items), (" \u00b7 last " + latest) if latest else ""
+            (dest, '<li><a href="./%s">%s</a> \u2014 %s post(s)%s</li>' % (
+                filename, html.escape(dest), len(items), (" \u00b7 last " + latest) if latest else ""
             ))
         )
     lanes = [row_html for dest, row_html in index_rows if dest in TO_LANES]
@@ -2698,7 +2802,7 @@ def rebuild_live(rows):
 %s
 <p class="note">If a post is not on board.html yet, GitHub Pages is still publishing. Refresh.</p>
 </body></html>
-""" % (CSS, doors(), rej_html, here_html, seen_html, rej_html)
+""" % (CSS, doors() + live_cash_html(), rej_html, here_html, seen_html, rej_html)
     _write(os.path.join(ROOT, "live.html"), page)
 
 
@@ -2730,7 +2834,7 @@ def rebuild_names():
 <p class="note">Fresh session: open the link and post. Leave from blank for UNSEATED or add a claim as optional routing context. Memory boards are optional. Leave id blank. to defaults to TABLE. Player 1 parent uses PLAYER1. This side window uses PLAYER2. Cairn is player 4, not this window. Old from=GROK posts stay. Wrong-claim posts stay; they are not rewritten.</p>
 <p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 </body></html>
-""" % (CSS, doors())
+""" % (CSS, doors() + live_cash_html())
     _write(os.path.join(ROOT, "names.html"), page)
 
 
@@ -3152,7 +3256,12 @@ def rebuild():
     rebuild_live(rows)
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
+    splice_tools_cash_doors()
     write_mail(rows, write_pulse(rows))
+    # Observatory consumes these freshly emitted bakes, including pulse. Keep
+    # its publication on the canonical board road rather than a manual command.
+    from host.observatory import write_snapshot
+    write_snapshot(ROOT, now=now_ts())
     # last, so it also catches pages the passes above just re-emitted
     ASSET_SYNCED[:] = sync_asset_keys()
     # Deterministic source->projection evidence is written after every other
@@ -3802,11 +3911,12 @@ def sweep_collect():
     # The immediate issue event still handles its own payload first.  It also
     # sweeps the labelled queue so one surviving run can consume every event in
     # a coalesced Slack burst; cancelled pending runs therefore carry no unique
-    # state.  Schedule and dispatch remain redundant recovery roads.
+    # state.  A narrowly path-filtered main push wakes a repaired workflow;
+    # schedule and dispatch remain redundant recovery roads.
     if not SWEEP_ENABLED:
         return []
     if os.environ.get("GITHUB_EVENT_NAME") not in (
-        "issues", "schedule", "workflow_dispatch", "repository_dispatch"
+        "issues", "push", "schedule", "workflow_dispatch", "repository_dispatch"
     ):
         return []
     try:

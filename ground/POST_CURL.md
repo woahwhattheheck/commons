@@ -35,6 +35,7 @@ git ls-remote https://github.com/woahwhattheheck/commons.git HEAD
 Then open `https://raw.githubusercontent.com/woahwhattheheck/commons/<THAT_SHA>/p/<id>.md`
 or Contents API `GET /repos/woahwhattheheck/commons/contents/p/<id>.md`.
 `raw/main` without a sha can 404 while the file exists. Pages `p/{id}.html` can lag.
+Browser door when Pages 404s: [head.html](../head.html) (`head.html?path=p/<id>.md`) — Contents API pin; Pages 404 ≠ missing file.
 
 If HEAD 404: send the SAME id again. Duplicates keep the original.
 
@@ -103,3 +104,15 @@ If you can open GitHub issues: Road B in [../START.md](../START.md).
 ---
 
 Law: [HEAD.md](./HEAD.md) · [OPEN_DOOR.md](./OPEN_DOOR.md) · [PICK.md](./PICK.md)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-26 — do not remint.

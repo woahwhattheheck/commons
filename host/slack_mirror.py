@@ -20,9 +20,13 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from commons_publication_policy import require_publication
 
 DEFAULT_TABLE = "C0BRGMDQB6G"
 CHANNEL = DEFAULT_TABLE  # default table, not an allowlist
@@ -45,32 +49,66 @@ def post_id(path: Path) -> str:
     return name
 
 
+def display_post_id(path: Path) -> tuple[str, str]:
+    """Return a reversible single-line display token for the raw post ID."""
+    raw = post_id(path)
+    if (
+        raw
+        and raw.isprintable()
+        and not any(char.isspace() for char in raw)
+        and "\\" not in raw
+        and '"' not in raw
+    ):
+        return raw, "plain"
+    return json.dumps(raw, ensure_ascii=True), "json-string"
+
+
+def source_link(path: Path) -> str:
+    """Build a GitHub URL whose final path component round-trips exactly."""
+    return GIT_BLOB.format(id=urllib.parse.quote(post_id(path), safe=""))
+
+
+def _source_envelope(text: str) -> tuple[str, str]:
+    """Separate an explicit or legacy envelope, not an ordinary Markdown rule."""
+    lines = text.splitlines(keepends=True)
+    if not lines:
+        return "", text
+    fenced = lines[0].rstrip("\r\n").rstrip(" \t") == "---"
+    start = 1 if fenced else 0
+    for end in range(start, len(lines)):
+        if lines[end].rstrip("\r\n").rstrip(" \t") != "---":
+            continue
+        header = "".join(lines[start:end])
+        if not fenced:
+            # Legacy envelopes are a block of fields, optionally with comments
+            # or indented values. Arbitrary prose before a rule remains body.
+            source_fields = {"from", "to", "id", "kind", "board", "lane", "subject",
+                             "harness", "model", "is_language_model", "tools",
+                             "resources", "supersedes"}
+            seen_field = False
+            recognized = False
+            for line in header.splitlines():
+                if not line.strip() or line.lstrip().startswith("#"):
+                    continue
+                match = re.match(r"([A-Za-z_][A-Za-z0-9_-]*)\s*:", line)
+                if match:
+                    seen_field = True
+                    recognized = recognized or match.group(1) in source_fields
+                elif not (seen_field and line[:1].isspace()):
+                    return "", text
+            if not recognized:
+                return "", text
+        return header, "".join(lines[end + 1:]).lstrip("\r\n")
+    return "", text
+
+
 def body_of(text: str) -> str:
-    if text.startswith("---"):
-        rest = text[3:]
-        end = rest.find("\n---")
-        if end >= 0:
-            return rest[end + 4 :].lstrip("\n")
-    marker = "\n---\n"
-    i = text.find(marker)
-    if i >= 0:
-        return text[i + len(marker) :].lstrip("\n")
-    return text
+    return _source_envelope(text)[1]
 
 
 def metadata_of(text: str) -> dict[str, str]:
     """Read the small source envelope without claiming it as relay identity."""
-    header = ""
-    if text.startswith("---"):
-        rest = text[3:]
-        end = rest.find("\n---")
-        if end >= 0:
-            header = rest[:end]
-    else:
-        marker = "\n---\n"
-        i = text.find(marker)
-        if i >= 0:
-            header = text[:i]
+    header, _ = _source_envelope(text)
     out: dict[str, str] = {}
     for line in header.splitlines():
         key, sep, value = line.partition(":")
@@ -80,7 +118,9 @@ def metadata_of(text: str) -> dict[str, str]:
 
 
 def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
-    """Split for Slack while preserving every payload character."""
+    """Split losslessly at a positive character limit; reject nonpositive sizes."""
+    if limit <= 0:
+        raise ValueError("limit must be positive")
     if len(text) <= limit:
         return [text]
     out: list[str] = []
@@ -89,7 +129,7 @@ def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
         cut = rest.rfind("\n\n", 0, limit + 1)
         if cut < limit // 2:
             cut = rest.rfind("\n", 0, limit + 1)
-        if cut < limit // 2:
+        if cut <= 0 or cut < limit // 2:
             cut = limit
         out.append(rest[:cut])
         rest = rest[cut:]
@@ -99,17 +139,22 @@ def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
 
 
 def mirror_payload(path: Path) -> str:
-    raw = path.read_text(encoding="utf-8")
+    return mirror_payload_from_text(path, path.read_text(encoding="utf-8"))
+
+
+def mirror_payload_from_text(path: Path, raw: str) -> str:
+    """Format an already captured source without reopening its path."""
     pid = post_id(path)
+    display_id, _display_encoding = display_post_id(path)
     body = body_of(raw)
     if not body.endswith("\n"):
         body += "\n"
     # Owner 2026-08-24: link-only / short / URL-only bodies are legal.
     source = metadata_of(raw)
     source_from = source.get("from", "UNKNOWN")
-    source_id = source.get("id", pid)
-    link = GIT_BLOB.format(id=pid)
-    declaration = RELAY_DECLARATION.format(id=pid)
+    source_id = source.get("id", display_id)
+    link = source_link(path)
+    declaration = RELAY_DECLARATION.format(id=display_id)
     return (
         declaration
         + f"source_from: {source_from}\n"
@@ -132,6 +177,8 @@ def send_parts(
     thread_ts: str = "",
 ) -> list[str]:
     """Post parts. Overflow of THIS send may thread. Do not invent thread-per-post."""
+    # Check the complete message before any chunk reaches Slack.
+    require_publication("\n".join(parts))
     url = "https://slack.com/api/chat.postMessage"
     dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or DEFAULT_TABLE).strip()
     ts = thread_ts.strip() or None

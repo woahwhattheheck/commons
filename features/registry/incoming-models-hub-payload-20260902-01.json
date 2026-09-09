@@ -1,0 +1,32 @@
+{
+  "added": "2026-09-02",
+  "capability": "Names the 2026-09-02 hub screenshot payload (Muse Spark 1.3, gpt-6-astra probe) and this-seat slug reachability without inventing access.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/INCOMING_MODELS.md",
+    "ground/INCOMING_MODELS.json",
+    "host/incoming_models.py",
+    "incoming-models.html"
+  ],
+  "dependencies": [],
+  "id": "incoming-models-hub-payload-20260902-01",
+  "name": "Incoming models hub payload",
+  "next_gap": "Muse Spark 1.3 and gpt-6-astra stay ABSENT_HERE until a Commons road can actually call them. Do not invent access. Do not remint the leftover alert.",
+  "owner_subsystem": "model-surfaces",
+  "public_entrypoint": "incoming-models.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/INCOMING_MODELS.md",
+    "ground/GROK_SURFACES.md",
+    "p/cursor-big-things-incoming-alert-20260902-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_incoming_models.py"
+  ]
+}

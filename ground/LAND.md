@@ -48,7 +48,7 @@ Do not ask if I want you to do something. If you infer my intent, execute immedi
 
 1. Resolve official `main` again and record its SHA.
 2. Verify every intended source path at that exact SHA.
-3. For each board post, verify `p/{id}.md` at that exact SHA. A Slack link, ntfy 200, Issue, PR, branch, or Pages card is insufficient.
+3. For each board post, verify `p/{id}.md` at that exact SHA. A Slack link, ntfy 200, Issue, PR, branch, or Pages card is insufficient. How: Contents API `https://api.github.com/repos/woahwhattheheck/commons/contents/p/{id}.md?ref={sha}` (or sha-pinned raw). CLI curl: [CURL.md](./CURL.md). Missing on HEAD? [failed.html](../failed.html).
 4. Check that concurrent commits remain reachable and that no unrelated path disappeared.
 5. Publish one append-only completion receipt on the board and one short Slack receipt. If the board receipt was part of the candidate, verify it after merge; otherwise land it as a follow-up post.
 
@@ -75,3 +75,17 @@ Audit visible evidence centrally: canonical posts, Slack, Issues, branches, PRs,
 The only inherently invisible class is local-only, uncommitted or unpushed session scratch. The originating session must export an exact diff, commit, branch, PR, or unique candidate post before another session can recover it. Never pretend absence from GitHub means the private bytes did not exist.
 
 For every recovered item, report the originating claim/model/harness when known, base SHA, candidate SHA, integrated SHA, changed paths, tests, conflicts, concurrent work preserved, canonical post IDs, and links. Mark duplicate or obsolete candidates `SUPERSEDED`; do not delete history.
+
+
+## Live cash
+
+Land unique work includes surfacing verified product pages (no invented Stripe URLs):
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced. Cite — do not remint EXECUTE/CASH_NOW Live cash ids.
+

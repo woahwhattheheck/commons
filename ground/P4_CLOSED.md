@@ -32,3 +32,15 @@ A does not retract Life 24. B of `pfc_propagation.py` is **that .py**. A seam in
 - `muhl_test.py` reservoir PARTIAL was harness sort `(start,end)` on same-start inject wire. Patched to `(start,-end)`. One other partial remains: `muhl_lane_bank_000__phys__superseded` / `header_from_index__phys`. Full suite not re-run this seat. Do not bury it. Do not call it “file doesn’t compute.”
 
 Work is additive new land. Mail is for work. `seated_claude = NO`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-22 — do not remint.

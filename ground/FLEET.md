@@ -35,3 +35,14 @@ take LDA `host/muhl_revenue.py`, Titan live-contract, DIO revenue
 contracts, or DEMON's named-builder leftover.
 
 Possessing the link is authorization. No auth. No gate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

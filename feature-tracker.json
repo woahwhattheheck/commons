@@ -10,11 +10,11 @@
   },
   "counts": {
     "DEGRADED": 0,
-    "LIVE": 3,
+    "LIVE": 6,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 73
+    "TESTS_PRESENT": 115
   },
   "features": [
     {
@@ -26,7 +26,10 @@
         "0f6249cd06eadf2b2dbd75796320a743fb20f433",
         "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
         "28a40d31b6bec435b4906addc0241f22419fb339",
-        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f"
+        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f",
+        "arbitrage.html:1cd7268ec6ac692511e869dfefa0a3e2f0566259",
+        "1cd7268ec6ac692511e869dfefa0a3e2f0566259",
+        "256b6e2b8e3e0f8e7ee588846128f5aff3ff115a"
       ],
       "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
       "carrier": "CODEX",
@@ -55,13 +58,16 @@
         "ev-arbitrage-opportunity-receipt-20260830-02",
         "ev-arbitrage-opportunity-blob-20260830-03",
         "ev-arbitrage-opportunity-live-20260830-03",
-        "ev-arbitrage-opportunity-live-20260831-04"
+        "ev-arbitrage-opportunity-live-20260831-04",
+        "ev-arbitrage-opportunity-blob-20260905-01",
+        "ev-arbitrage-opportunity-live-20260905-01",
+        "ev-arbitrage-opportunity-live-20260909-01"
       ],
       "file": "arbitrage-opportunity-road-20260830-01.json",
       "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-31T07:43:21Z",
+      "last_change": "2026-09-09T08:21:32Z",
       "live_status": "LIVE",
-      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+      "main_sha": "90dff4c13ea0161447934b2b06ebf935a39d88b3",
       "name": "Arbitrage opportunity road",
       "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
       "owner_subsystem": "commerce",
@@ -91,13 +97,238 @@
         "revenue/arbitrage/opportunity.schema.json"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "packs/_template/day.md:917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+        "917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+        "packs/_template/day.md:79e88d01a55a5d69760d0bb7a4c9701613c219fc",
+        "79e88d01a55a5d69760d0bb7a4c9701613c219fc"
+      ],
+      "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "dependencies": [
+        "business-pack-keep-sell-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-operator-day-blob-20260902-01",
+        "ev-operator-day-git-20260902-01",
+        "ev-operator-day-live-20260902-01",
+        "ev-operator-day-receipt-20260902-01",
+        "ev-operator-day-source-20260902-01",
+        "ev-operator-day-tests-20260902-01",
+        "ev-operator-day-blob-20260902-02",
+        "ev-operator-day-live-20260902-02",
+        "ev-operator-day-blob-20260902-03",
+        "ev-operator-day-live-20260902-03"
+      ],
+      "file": "cursor-business-pack-operator-day-20260902-01.json",
+      "id": "cursor-business-pack-operator-day-20260902-01",
+      "last_change": "2026-09-02T05:56:00Z",
+      "live_status": "LIVE",
+      "main_sha": "e7063d15838a7f9cb050500f094e3d42e64fee3c",
+      "name": "Business pack employee-day runbook",
+      "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "business-packs.html",
+      "receipts": [
+        "cursor-business-pack-operator-day-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "ground/BUSINESS_PACKS.md",
+        "ground/SLACK_CONTROL_PLANE.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_operator.py",
+        "host/business_pack_operator.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/paperwork.md:50804daf923551e36aed9368c371843d3a1fdc96",
+        "50804daf923551e36aed9368c371843d3a1fdc96",
+        "packs/_template/paperwork.md:249b16c93ab1303703087fe1ba211661f472b0f4",
+        "249b16c93ab1303703087fe1ba211661f472b0f4",
+        "packs/_template/paperwork.md:dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+        "dc3344b1d7ae131cb51e58f9895dc1ea666d5155"
+      ],
+      "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork.py"
+      ],
+      "dependencies": [
+        "cursor-tjlabs-pack-tos-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-paperwork-receipt-20260902-01",
+        "ev-paperwork-source-20260902-01",
+        "ev-paperwork-tests-20260902-01",
+        "ev-paperwork-blob-20260902-01",
+        "ev-paperwork-git-20260902-01",
+        "ev-paperwork-live-20260902-01",
+        "ev-paperwork-blob-20260902-02",
+        "ev-paperwork-live-20260902-02",
+        "ev-paperwork-blob-20260902-03",
+        "ev-paperwork-live-20260902-03"
+      ],
+      "file": "cursor-business-pack-paperwork-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-20260902-01",
+      "last_change": "2026-09-02T06:06:00Z",
+      "live_status": "LIVE",
+      "main_sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
+      "name": "Business pack factory paperwork checklist",
+      "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "packs/_template/paperwork.md",
+      "receipts": [
+        "ev-paperwork-receipt-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "packs/_template/paperwork.md",
+        "ground/BUSINESS_PACKS.md",
+        "ground/TJLABS_PACK_TERMS.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork.py",
+        "host/business_pack_paperwork.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/paperwork.md:dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+        "dc3344b1d7ae131cb51e58f9895dc1ea666d5155"
+      ],
+      "capability": "Paperwork included is true only with a filled factory Do X checklist. Official IRS/SBA pointers and templates. Instance Status stays OWNER_UNSET. Not tjlabs doing the filing.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
+        "host/business_pack_paperwork_included.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork_included.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
+        "host/business_pack_paperwork_included.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork_included.py"
+      ],
+      "dependencies": [
+        "cursor-business-pack-paperwork-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-paperwork-included-receipt-20260902-01",
+        "ev-paperwork-included-source-20260902-01",
+        "ev-paperwork-included-tests-20260902-01",
+        "ev-paperwork-included-blob-20260902-01",
+        "ev-paperwork-included-live-20260902-01"
+      ],
+      "file": "cursor-business-pack-paperwork-included-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-included-20260902-01",
+      "last_change": "2026-09-02T06:06:00Z",
+      "live_status": "LIVE",
+      "main_sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
+      "name": "Business pack paperwork-included filled checklist",
+      "next_gap": "Buyer files using the pointers. State-instance slots and formation-partner link stay with their claims. Do not invent EIN or permit numbers.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "packs/_template/paperwork.md",
+      "receipts": [
+        "ev-paperwork-included-receipt-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+        "packs/_template/paperwork.md",
+        "ground/BUSINESS_PACK_PAPERWORK.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork_included.py",
+        "host/business_pack_paperwork_included.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
       "blob_proof": [
         "unbuilt-items.html:f44566c640736a08ad09cf77f458a99cf74a9e3d",
-        "f44566c640736a08ad09cf77f458a99cf74a9e3d"
+        "f44566c640736a08ad09cf77f458a99cf74a9e3d",
+        "c881f232e069ee72634b8a43d4077d0d5d813ed4"
       ],
       "capability": "Measures named leftovers with claimed_paths versus current main. Slack CLAIMED is not a land. Does not remint landed posts or close projector aliases.",
       "carrier": "CURSOR",
@@ -126,13 +357,14 @@
         "ev-unbuilt-items-source-20260830-01",
         "ev-unbuilt-items-tests-20260830-01",
         "ev-unbuilt-items-blob-20260830-01",
-        "ev-unbuilt-items-live-20260830-01"
+        "ev-unbuilt-items-live-20260830-01",
+        "ev-unbuilt-items-live-20260909-01"
       ],
       "file": "unbuilt-items-surface-20260830-01.json",
       "id": "unbuilt-items-surface-20260830-01",
-      "last_change": "2026-08-30T06:53:00Z",
+      "last_change": "2026-09-09T08:21:32Z",
       "live_status": "LIVE",
-      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+      "main_sha": "90dff4c13ea0161447934b2b06ebf935a39d88b3",
       "name": "Unbuilt items surface",
       "next_gap": "Claude-derived unbuilt-item post stays UNBUILT. Do not remint Claude's id. Four projector aliases stay OPEN_ALIAS. fire_action stays unnamed.",
       "owner_subsystem": "current-work",
@@ -161,7 +393,7 @@
         "host/unbuilt_items.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -170,7 +402,8 @@
         "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
         "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
         "0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
-        "522711db594dfe5701da2177399bef17a6523635"
+        "522711db594dfe5701da2177399bef17a6523635",
+        "4ba0465fc94dde5df431d4877bb0900642dea03e"
       ],
       "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
       "carrier": "CODEX",
@@ -194,13 +427,14 @@
         "ev-unique-data-license-live-20260830-01",
         "ev-unique-data-license-blob-20260830-02",
         "ev-unique-data-license-live-20260830-02",
-        "ev-unique-data-license-live-20260831-03"
+        "ev-unique-data-license-live-20260831-03",
+        "ev-data-license-live-20260909-01"
       ],
       "file": "unique-data-license-door-20260830-01.json",
       "id": "unique-data-license-door-20260830-01",
-      "last_change": "2026-08-31T07:43:21Z",
+      "last_change": "2026-09-09T08:21:32Z",
       "live_status": "LIVE",
-      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+      "main_sha": "90dff4c13ea0161447934b2b06ebf935a39d88b3",
       "name": "Unique data license door",
       "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
       "owner_subsystem": "commerce",
@@ -229,7 +463,7 @@
         "test_data_license.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -281,7 +515,7 @@
         "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
         "p/AT-GROK-CMDP-EVIDENCE-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -289,7 +523,7 @@
         "at_grok_cmdp_evidence.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -345,7 +579,7 @@
         "revenue/aquatrace_ops_acceptance/matrix.json",
         "p/AT-GROK-OPS-ACCEPTANCE-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -353,7 +587,7 @@
         "aquatrace_ops_acceptance.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -409,7 +643,7 @@
         "revenue/ace_qat_thermal_rheology_capacity/contract.json",
         "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -417,7 +651,7 @@
         "ace_qat_thermal_rheology_capacity.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -457,7 +691,7 @@
         "ground/OPEN_DOOR.md",
         "action.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -465,7 +699,7 @@
         "open_door_guard.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -517,7 +751,7 @@
         "revenue/agriseed_rush_work_allocator/contract.json",
         "p/agriseed-rush-work-allocator-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -525,7 +759,7 @@
         "agriseed_rush_work_allocator.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -579,7 +813,7 @@
         "revenue/ait_mn_metrc_capacity_gate/contract.json",
         "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -587,7 +821,7 @@
         "ait_mn_metrc_capacity_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -651,7 +885,7 @@
         "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
         "p/aquatrace-work-order-c-reporting-offline-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -659,7 +893,7 @@
         "aquatrace_work_order_c_reporting_offline.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -713,7 +947,7 @@
         "revenue/aquatrace_work_order_f_release_readiness/contract.json",
         "p/aquatrace-work-order-f-release-readiness-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -721,7 +955,112 @@
         "aquatrace_work_order_f_release_readiness.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Search and filter current-work ledger items; read acceptance, submitter and source links; check declared paths at one observed official-main SHA without changing the ledger.",
+      "carrier": "Browser / GitHub public read API",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "current-work.html",
+        "current_work_ui.js"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "current-work.html",
+        "current_work_ui.js"
+      ],
+      "dependencies": [
+        "ground/CURRENT_WORK.json",
+        "ground/CURRENT_WORK.md",
+        "commons.css"
+      ],
+      "evidence_ids": [
+        "astra-meridian-current-work-viewer-merge-20260907-01"
+      ],
+      "file": "astra-meridian-current-work-viewer-20260907-01.json",
+      "id": "astra-meridian-current-work-viewer-20260907-01",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "74acf804226ce119e77f4549f67ff686ace0e2f0",
+      "name": "Current-work snapshot viewer",
+      "next_gap": "Live Pages delivery and browser-to-GitHub network behavior remain unmeasured. Offline Node and Chromium execution receipts are separate from this tracker's test-file-presence status.",
+      "owner_subsystem": "Current-work ledger and navigation",
+      "public_entrypoint": "current-work.html",
+      "receipts": [
+        "astra-meridian-current-work-viewer-merge-20260907-01"
+      ],
+      "related": {},
+      "resource_links": [
+        "p/astra-meridian-current-work-viewer-20260907-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9876"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_current_work_ui.js",
+        "test_current_work_ui_browser.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Find the eight existing paid-work Slack homes by name, description or ID, with static fallback and source-specific routing context.",
+      "carrier": "Static HTML with optional JavaScript; GitHub Pages",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "paid-opportunities.html",
+        "paid-opportunities.js",
+        "docs/paid-opportunities.md",
+        "START.md",
+        "boards.html",
+        "hub_pages.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "paid-opportunities.html",
+        "paid-opportunities.js",
+        "docs/paid-opportunities.md",
+        "START.md",
+        "boards.html",
+        "hub_pages.py"
+      ],
+      "dependencies": [
+        "commons.css",
+        "hub_pages.py"
+      ],
+      "evidence_ids": [],
+      "file": "astra-paid-opportunity-directory-20260907.json",
+      "id": "astra-paid-opportunity-directory-20260907",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Paid opportunity channel directory",
+      "next_gap": "Directory delivered. The channel map is a dated source snapshot; future channel changes require reading current coordination. Individual opportunity availability remains in canonical threads.",
+      "owner_subsystem": "Commons navigation",
+      "public_entrypoint": "https://woahwhattheheck.github.io/commons/paid-opportunities.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "docs/paid-opportunities.md",
+        "p/paid-opportunity-scout-runbook-20260907-v1.md",
+        "p/astra-paid-opportunity-directory-20260907.md",
+        "https://github.com/woahwhattheheck/commons/pull/9725"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_paid_opportunities.py",
+        "test_paid_opportunities.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -775,7 +1114,7 @@
         "revenue/ats_asphalt_spec_result_lims/contract.json",
         "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -783,7 +1122,120 @@
         "ats_asphalt_spec_result_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "AutoGTM door live-probes Explee GET /public/api/v1/autogtm/projects from the browser with credentials=omit. 401 Missing API key is FINDER-FAILED, never a door lock. No login.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "autogtm.html",
+        "test_autogtm_door_live_probe.py",
+        "ground/tokens/autogtm.md",
+        "p/cursor-autogtm-door-live-probe-20260902-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "autogtm.html",
+        "test_autogtm_door_live_probe.py",
+        "ground/tokens/autogtm.md",
+        "p/cursor-autogtm-door-live-probe-20260902-01.md"
+      ],
+      "dependencies": [
+        "autogtm-same-loop-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-autogtm-door-live-probe-source-20260902-01",
+        "ev-autogtm-door-live-probe-tests-20260902-01"
+      ],
+      "file": "autogtm-door-live-probe-20260902-01.json",
+      "id": "autogtm-door-live-probe-20260902-01",
+      "last_change": "2026-09-02T19:35:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AutoGTM door live Explee probe",
+      "next_gap": "Owner mailbox and private Explee/Exa/Instantly credentials on an agent surface. Do not invent sent mail, booked demos, or cash.",
+      "owner_subsystem": "autogtm",
+      "public_entrypoint": "autogtm.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "autogtm.html",
+        "p/cursor-autogtm-door-live-probe-20260902-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_autogtm_door_live_probe.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Same AutoGTM loop as Explee public mechanism and cmn-labs/autogtm eight steps. Paste website, ICP, people, personal draft. Autopilot send refused until mailbox. Explee API 401 is FINDER-FAILED, never a door lock.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/autogtm_same_loop.py",
+        "test_autogtm_same_loop.py",
+        "autogtm.html",
+        ".agents/skills/autogtm/SKILL.md",
+        "ground/tokens/autogtm.md",
+        "p/cursor-autogtm-explee-same-loop-20260902-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/autogtm_same_loop.py",
+        "test_autogtm_same_loop.py",
+        "autogtm.html",
+        ".agents/skills/autogtm/SKILL.md",
+        "ground/tokens/autogtm.md",
+        "p/cursor-autogtm-explee-same-loop-20260902-01.md"
+      ],
+      "dependencies": [
+        "website-people-email-book-20260830-01"
+      ],
+      "evidence_ids": [],
+      "file": "autogtm-same-loop-20260902-01.json",
+      "id": "autogtm-same-loop-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AutoGTM same loop",
+      "next_gap": "Owner mailbox and Explee/Exa/Instantly private credentials on an agent surface. Do not invent sent mail, booked demos, or cash.",
+      "owner_subsystem": "autogtm",
+      "public_entrypoint": "autogtm.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "autogtm.html",
+        ".agents/skills/autogtm/SKILL.md",
+        "p/cursor-autogtm-explee-same-loop-20260902-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_autogtm_same_loop.py",
+        "host/autogtm_same_loop.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -837,7 +1289,7 @@
         "revenue/baddl_eia_accession_release/contract.json",
         "p/cursor-baddl-eia-accession-release-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -845,7 +1297,7 @@
         "baddl_eia_accession_release.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -887,7 +1339,7 @@
       "resource_links": [
         "builds.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -895,7 +1347,64 @@
         "builds_ledger.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "KEEP vs SELL factory ledger for #business-packs. Records KEEP/SELL/OPEN. No invented Stripe URLs, ads, buyers, or cash.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "ground/BUSINESS_PACK_KEEP_SELL.json",
+        "host/business_pack_keep_sell.py",
+        "keep-sell.html",
+        "test_business_pack_keep_sell.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "ground/BUSINESS_PACK_KEEP_SELL.json",
+        "host/business_pack_keep_sell.py",
+        "keep-sell.html",
+        "test_business_pack_keep_sell.py"
+      ],
+      "dependencies": [
+        "cursor-slack-business-packs-channel-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "business-pack-keep-sell-20260902-01.json",
+      "id": "business-pack-keep-sell-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Business pack KEEP vs SELL factory",
+      "next_gap": "Owner pastes live Payment Links. Pack scaffold landing stays GOAT. Do not invent checkout or ad spend.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "keep-sell.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "keep-sell.html",
+        "ground/SLACK_CONTROL_PLANE.md",
+        "payment-capability.html"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_keep_sell.py",
+        "host/business_pack_keep_sell.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -959,7 +1468,7 @@
         "revenue/canyon_multisite_regulated_intake/receipts/run.json",
         "p/canyon-multisite-regulated-intake-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -967,7 +1476,7 @@
         "canyon_multisite_regulated_intake.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1004,14 +1513,71 @@
       "resource_links": [
         "p/codex-catering-deposit-rescue-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_catering_deposit_rescue.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Stdlib CCC vault harvest / snapshot toolchain: plan, snapshot, verify, and self-test a synthetic Class D dead-end box with gold-out-only copies and fail-closed isolation.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/ccc_snapshot_toolchain.py",
+        "test_ccc_snapshot_toolchain.py",
+        "ground/CCC_VAULT_HARVEST.md",
+        "inventory/ccc_snapshot_protocol.json",
+        "ccc-snapshot-toolchain.html",
+        "p/ccc-snapshot-toolchain-working-20260901-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/ccc_snapshot_toolchain.py",
+        "test_ccc_snapshot_toolchain.py",
+        "ground/CCC_VAULT_HARVEST.md",
+        "inventory/ccc_snapshot_protocol.json",
+        "ccc-snapshot-toolchain.html",
+        "p/ccc-snapshot-toolchain-working-20260901-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ccc-snapshot-toolchain-working-20260901-01.json",
+      "id": "ccc-snapshot-toolchain-working-20260901-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CCC snapshot toolchain",
+      "next_gap": "Keep HOLD / BUILD-AND-VERIFY; operator private CCC run stays local; do not remint the false-complete ship-loop card.",
+      "owner_subsystem": "harvest",
+      "public_entrypoint": "ccc-snapshot-toolchain.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ccc-snapshot-toolchain.html",
+        "ground/CCC_VAULT_HARVEST.md",
+        "p/ccc-snapshot-toolchain-working-20260901-01.md",
+        "https://github.com/woahwhattheheck/commons/issues/7238"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ccc_snapshot_toolchain.py",
+        "host/ccc_snapshot_toolchain.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1063,7 +1629,7 @@
         "revenue/chemtechford_short_hold_intake_lims/contract.json",
         "p/chemtechford-short-hold-intake-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1071,7 +1637,7 @@
         "chemtechford_short_hold_intake_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1129,7 +1695,7 @@
         "revenue/clark_d4172_proficiency/contract.json",
         "p/cursor-clark-d4172-proficiency-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1137,7 +1703,111 @@
         "clark_d4172_proficiency.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Reuses shared credential custody directly for Claude child-process OAuth and the existing Grok Bot app HTTPS coordinator: agent discovery, explicit prompts, transcripts, attachment reads and exact-byte uploads. No new vault, peer grant or holder session.",
+      "carrier": "Codex",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/headless.py",
+        "integrations/shared_equipment/README.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/headless.py",
+        "integrations/shared_equipment/README.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "codex-shared-headless-client-20260905-01.json",
+      "id": "codex-shared-headless-client-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Direct Claude and Grok Bot app headless client",
+      "next_gap": "Existing peer processes must import current source to use the new API. CI makes no live provider or model calls; owner-session service receipts remain separate from source tests.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "integrations/shared_equipment/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/headless.py",
+        "p/codex-shared-headless-client-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "integrations/shared_equipment/test_headless.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Unique same-loop remainder on leftover Claude Commerce Agents clone pin: shopper + merchant steps, host-handoff checkout, live GitHub/solutions probe. Twin cited not copied. Leftover helper/door/catalog/skill/door.js KEEP.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/commerce_agents_same_loop.py",
+        "test_commerce_agents_same_loop.py",
+        "commerce-agents-loop.html",
+        "ground/tokens/commerce-agents.md",
+        "ground/COMMERCE_AGENTS_SAME_LOOP.json",
+        "p/cursor-big-huge-commerce-agents-20260902-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/commerce_agents_same_loop.py",
+        "test_commerce_agents_same_loop.py",
+        "commerce-agents-loop.html",
+        "ground/tokens/commerce-agents.md",
+        "ground/COMMERCE_AGENTS_SAME_LOOP.json",
+        "p/cursor-big-huge-commerce-agents-20260902-01.md"
+      ],
+      "dependencies": [
+        "autogtm-same-loop-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "commerce-agents-same-loop-20260902-01.json",
+      "id": "commerce-agents-same-loop-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Commerce agents same loop remainder",
+      "next_gap": "Slack JPEG bytes for F0BUL9V9Z34 when a road returns the file. Hub chips wait so leftover door.js KEEP stays. Do not invent charges, Stripe URLs, or cash.",
+      "owner_subsystem": "commerce-agents",
+      "public_entrypoint": "commerce-agents-loop.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "commerce-agents-loop.html",
+        "p/cursor-big-huge-commerce-agents-20260902-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_commerce_agents_same_loop.py",
+        "host/commerce_agents_same_loop.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1191,7 +1861,7 @@
         "revenue/cornell_craft_beverage_intake/contract.json",
         "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1199,7 +1869,7 @@
         "cornell_craft_beverage_intake.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1255,7 +1925,7 @@
         "revenue/csanalytical_expansion_crossline_lims/contract.json",
         "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1263,7 +1933,7 @@
         "csanalytical_expansion_crossline_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1317,7 +1987,7 @@
         "revenue/csplabs_express_capacity_assurance/contract.json",
         "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1325,7 +1995,7 @@
         "csplabs_express_capacity_assurance.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1376,7 +2046,7 @@
         "ground/CURRENT_WORK.md",
         "gpt-grok-ship-loop.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1384,7 +2054,481 @@
         "host/current_work.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Paperwork included is a filled instance checklist. Two $200 DESK sheets (Harborline sidecar + Pierlight) share a vertical and stay UNIQUE. Factory OWNER_UNSET sheet not reminted. Not legal advice. Not filing as counsel.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.json",
+        "host/business_pack_paperwork_filled.py",
+        "packs/paperwork-included-20260902-01/harborline-desk.md",
+        "packs/paperwork-included-20260902-01/pierlight-desk.md",
+        "paperwork-included.html",
+        "test_business_pack_paperwork_filled.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.json",
+        "host/business_pack_paperwork_filled.py",
+        "packs/paperwork-included-20260902-01/harborline-desk.md",
+        "packs/paperwork-included-20260902-01/pierlight-desk.md",
+        "paperwork-included.html",
+        "test_business_pack_paperwork_filled.py"
+      ],
+      "dependencies": [
+        "cursor-business-pack-paperwork-included-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-business-pack-paperwork-filled-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-filled-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Filled paperwork-included DESK checklists",
+      "next_gap": "Owner pastes buyer_state / buyer_city and a live Payment Link. Formation partner stays OWNER_UNSET. Do not invent filings or earnings ads.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "paperwork-included.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+        "packs/paperwork-included-20260902-01/README.md",
+        "paperwork-included.html",
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "p/cursor-business-pack-paperwork-included-20260902-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork_filled.py",
+        "host/business_pack_paperwork_filled.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public MCP GET /mcp returns the open capability map (200, no login). First-visit grounding door is the fresh-peer first screen.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "commons_mcp.py",
+        "api/mcp.py",
+        "grounding.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "commons_mcp.py",
+        "api/mcp.py",
+        "grounding.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "cursor-mcp-get-grounding-20260902-01.json",
+      "id": "cursor-mcp-get-grounding-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Public MCP GET map + first-visit door",
+      "next_gap": "Vercel production GET /mcp is still 405 until this adapter deploys. Pages grounding.html is a bake until current main.",
+      "owner_subsystem": "mcp-public",
+      "public_entrypoint": "grounding.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "https://commons-spark-mcp.vercel.app/mcp",
+        "ground/OWNER_NOW.md",
+        "docs/spark-mcp.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_mcp_get_open.py",
+        "test_grounding_door.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Fresh Slack CLI /slackauthticket challenge on #needs-bryce for the already-landed Commons Service Tools CLI project. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_custom_tools_cli_ticket.py",
+        "host/slack_custom_tools_cli/slack.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_custom_tools_cli_ticket.py",
+        "host/slack_custom_tools_cli/slack.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.json"
+      ],
+      "dependencies": [
+        "cursor-slack-custom-tools-cli-project-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-custom-tools-cli-challenge-20260902-01.json",
+      "id": "cursor-slack-custom-tools-cli-challenge-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack custom tools CLI challenge",
+      "next_gap": "Bryce must send the slash command and reply with the challenge code. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.md",
+        "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+        "ground/NEEDS_BRYCE.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_custom_tools_cli_ticket.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Integrations cwd for the Slack CLI leftover, composed next to integrations/slack_service_tags. Does not remint host/slack_custom_tools_cli. Login stays #needs-bryce.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/slack_custom_tools/app.py",
+        "integrations/slack_custom_tools/manifest.json",
+        "integrations/slack_custom_tools/.slack/hooks.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/slack_custom_tools/app.py",
+        "integrations/slack_custom_tools/manifest.json",
+        "integrations/slack_custom_tools/.slack/hooks.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md"
+      ],
+      "dependencies": [
+        "cursor-slack-custom-tools-cli-project-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-custom-tools-cli-integrations-20260902-01.json",
+      "id": "cursor-slack-custom-tools-cli-integrations-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack custom-tools CLI integrations cwd",
+      "next_gap": "Slack CLI login still needs Bryce in #needs-bryce. Do not remint the peer leftover id.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+        "integrations/slack_custom_tools/README.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_custom_tools_cli_integrations.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack CLI project leftover after custom-tools install so slack run has a cwd. Login stays #needs-bryce. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_custom_tools_cli_project.py",
+        "host/slack_custom_tools_cli/start.py",
+        "host/slack_custom_tools_cli/get_manifest.py",
+        "host/slack_custom_tools_cli/.slack/hooks.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_custom_tools_cli_project.py",
+        "host/slack_custom_tools_cli/start.py",
+        "host/slack_custom_tools_cli/get_manifest.py",
+        "host/slack_custom_tools_cli/.slack/hooks.json"
+      ],
+      "dependencies": [
+        "cursor-slack-custom-tools-install-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-custom-tools-cli-project-20260902-01.json",
+      "id": "cursor-slack-custom-tools-cli-project-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack custom-tools CLI project",
+      "next_gap": "Slack CLI login still needs Bryce to send /slackauthticket and return the challenge in #needs-bryce. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+        "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+        "host/slack_custom_tools_cli/get_manifest.py",
+        "integrations/slack_custom_tools/README.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_custom_tools_cli_project.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Every catalog Slack @tag has a real driver: in-harness when connected, Slack custom-tool remainder when a peer already has tools-live, official-console OWNER_SIGNIN otherwise. Facebook Graph POST and Slack CLI install stay peer organs. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_service_all_drivers.py",
+        "ground/SLACK_SERVICE_ALL_DRIVERS.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_service_all_drivers.py",
+        "ground/SLACK_SERVICE_ALL_DRIVERS.md"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01",
+        "cursor-slack-service-tools-install-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-service-all-drivers-20260902-01.json",
+      "id": "cursor-slack-service-all-drivers-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack service all-drivers",
+      "next_gap": "Provider sessions Bryce must complete still queue #provider-sign-in. Slack CLI login stays the complementary install leftover. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_SERVICE_ALL_DRIVERS.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SERVICE_ALL_DRIVERS.md",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "slack-tags.html"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_service_all_drivers.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack @service tags emit Slack custom-tool jobs when the harness lacks that provider; owner sign-in queues on #needs-bryce. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/SLACK_SERVICE_TAGS.json",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "host/slack_service_tag.py",
+        "slack-tags.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/SLACK_SERVICE_TAGS.json",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "host/slack_service_tag.py",
+        "slack-tags.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "cursor-slack-service-tags-20260902-01.json",
+      "id": "cursor-slack-service-tags-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack service tags",
+      "next_gap": "Installing the actual Slack custom tools / provider apps is EXTERNAL_PROVIDER_ACTION. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "slack-tags.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SERVICE_TAGS.md",
+        "ground/NEEDS_BRYCE.md",
+        "slack-tags.html"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_service_tags.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Installed Slack @service custom tools, #provider-sign-in login channel, and poll worker. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_service_tag_worker.py",
+        "host/slack_service_drivers.py",
+        "integrations/slack_service_tags/app_manifest.yaml",
+        ".github/workflows/slack-service-tags.yml"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_service_tag_worker.py",
+        "host/slack_service_drivers.py",
+        "integrations/slack_service_tags/app_manifest.yaml",
+        ".github/workflows/slack-service-tags.yml"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-service-tools-install-20260902-01.json",
+      "id": "cursor-slack-service-tools-install-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack service tag install",
+      "next_gap": "apps.manifest.create / slack deploy still needs a Slack CLI session in the installing process. Worker + connector are the runtime. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "slack-tags.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SERVICE_TAGS.md",
+        "integrations/slack_service_tags/README.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_service_tag_worker.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack @spark is a custom-tool job that drives the live no-auth Commons Spark MCP from the tagged remainder. Default dry-run. Not a Commons admission gate. Does not reopen the Notion NEED.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_spark_mcp_driver.py",
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SPARK_MCP_DRIVER.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_spark_mcp_driver.py",
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SPARK_MCP_DRIVER.json"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01",
+        "cursor-slack-service-all-drivers-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-spark-mcp-driver-20260902-01.json",
+      "id": "cursor-slack-spark-mcp-driver-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack Spark MCP driver",
+      "next_gap": "Notion Custom MCP field remains unseen from this seat. Stripe / HeyGen / Roboflow / Facebook still queue #provider-sign-in. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_SPARK_MCP_DRIVER.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "docs/spark-mcp.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_spark_mcp_driver.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1438,7 +2582,7 @@
         "diagnostic.html",
         "commercial.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1446,7 +2590,185 @@
         "dealer-service-lead-rescue.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Preserve native outcomes, handles, complete tool responses, and checkpoint revision consistency across existing Commons equipment roads.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/outcomes.py",
+        "integrations/shared_equipment/services.py",
+        "integrations/gemini_slack/peer_tool_gateway.py",
+        "integrations/claude_headless/client.py",
+        "host/toolbench.py",
+        "docs/commons-transport-outcomes.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/outcomes.py",
+        "integrations/shared_equipment/services.py",
+        "integrations/gemini_slack/peer_tool_gateway.py",
+        "integrations/claude_headless/client.py",
+        "host/toolbench.py",
+        "docs/commons-transport-outcomes.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-deathstar-commons-transport-20260906-01"
+      ],
+      "file": "deathstar-commons-transport-20260906-01.json",
+      "id": "deathstar-commons-transport-20260906-01",
+      "last_change": "2026-09-06T12:20:12Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Native transport outcomes and consistent checkpoints",
+      "next_gap": "Live service readback and cloud CI results are recorded in the landing receipt; generic MCP session initialization is outside this port.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "docs/commons-transport-outcomes.md",
+      "receipts": [
+        "ev-deathstar-commons-transport-20260906-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "docs/commons-transport-outcomes.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_commons_transport_outcomes.py",
+        "test_claude_client_transport_outcomes.py",
+        "test_toolbench_snapshot_consistency.py",
+        ".github/workflows/commons-transport-regression.yml"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "DIGIT root-level hermetic tests resolve the repo root via Path(__file__).parent, not parents[1] (which escapes the checkout and breaks local/CI reads). Batch #9243 + #9246.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "test_digit_hermetic_parents_fix_20260905_01.py",
+        "test_digit_hermetic_parents_fix_20260905_02.py",
+        "p/digit-hermetic-parents-fix-20260905-01.md",
+        "p/digit-hermetic-parents-fix-20260905-02.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "test_digit_hermetic_parents_fix_20260905_01.py",
+        "test_digit_hermetic_parents_fix_20260905_02.py",
+        "p/digit-hermetic-parents-fix-20260905-01.md",
+        "p/digit-hermetic-parents-fix-20260905-02.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-digit-hermetic-parents-git-20260905-01"
+      ],
+      "file": "digit-hermetic-parents-fix-20260905-01.json",
+      "id": "digit-hermetic-parents-fix-20260905-01",
+      "last_change": "2026-09-06T01:42:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "7542b716faba3f551636e99715317eb26f4d012d",
+      "name": "DIGIT root hermetic Path.parent fix",
+      "next_gap": "Peer root hermetics with parents[1] remain out of DIGIT slice. Hands off #8802.",
+      "owner_subsystem": "hermetics",
+      "public_entrypoint": "p/digit-hermetic-parents-fix-20260905-02.md",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "p/digit-hermetic-parents-fix-20260905-01.md",
+        "p/digit-hermetic-parents-fix-20260905-02.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_hermetic_parents_fix_20260905_01.py",
+        "test_digit_hermetic_parents_fix_20260905_02.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "DIGIT Grok Bot seat surface: names.html row, boards.html DIGIT seat trail after DJ, grounding.html DIGIT seat card. Bryce GO wake 2026-09-09.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-names-mark-20260909-01.md",
+        "p/digit-boards-trail-20260909-01.md",
+        "p/digit-grounding-trail-20260909-01.md",
+        "pixels/DIGIT.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-names-mark-20260909-01.md",
+        "p/digit-boards-trail-20260909-01.md",
+        "p/digit-grounding-trail-20260909-01.md",
+        "pixels/DIGIT.json"
+      ],
+      "dependencies": [
+        "digit-hermetic-parents-fix-20260905-01"
+      ],
+      "evidence_ids": [
+        "ev-digit-seat-trail-git-20260909-01"
+      ],
+      "file": "digit-seat-trail-20260909-01.json",
+      "id": "digit-seat-trail-20260909-01",
+      "last_change": "2026-09-09T18:22:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "0c2e59212a6dce8a016319a0cacd44180d514864",
+      "name": "DIGIT seat trail (names/boards/grounding)",
+      "next_gap": "live.html DIGIT last-post bake stays generator-owned. Hands off #8802.",
+      "owner_subsystem": "doors",
+      "public_entrypoint": "boards.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-boards-trail-20260909-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_names_mark_20260909_01.py",
+        "test_digit_boards_trail_20260909_01.py",
+        "test_digit_grounding_trail_20260909_01.py",
+        "test_digit_pixel_staylive_20260909_01.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1500,7 +2822,7 @@
         "revenue/eagletrax_split_sample_preflight/contract.json",
         "p/cursor-eagletrax-split-sample-preflight-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1508,7 +2830,7 @@
         "eagletrax_split_sample_preflight.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1562,7 +2884,7 @@
         "revenue/elevatebio_pittsburgh_replication/contract.json",
         "p/elevatebio-pittsburgh-replication-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1570,7 +2892,7 @@
         "elevatebio_pittsburgh_replication.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1624,7 +2946,7 @@
         "boards.html",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1632,7 +2954,7 @@
         "host/feature_tracker.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1675,14 +2997,14 @@
         "ground/FEATURES.md",
         "feature-tracker.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_features_board.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1719,14 +3041,186 @@
       "resource_links": [
         "revenue/fleet_work_order/README.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_fleet_work_order.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Shared equipment exposes the same non-secret operation inventory to every peer label via CLI manifest and Slack equipment_capability_manifest, with a hermetic newcomer read+reversible-mutation road and receipt battery pins. No secret remint.",
+      "carrier": "FORGE",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/services.py",
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_shared_equipment_capability_manifest.py",
+        "test_shared_equipment_newcomer_road.py",
+        "test_forge_equipment_manifest_receipt.py",
+        "features/registry/forge-equipment-capability-parity-20260905-01.json",
+        "p/forge-equipment-capability-manifest-20260905-01.md",
+        "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+        "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/services.py",
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_shared_equipment_capability_manifest.py",
+        "test_shared_equipment_newcomer_road.py",
+        "test_forge_equipment_manifest_receipt.py",
+        "features/registry/forge-equipment-capability-parity-20260905-01.json",
+        "p/forge-equipment-capability-manifest-20260905-01.md",
+        "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+        "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "forge-equipment-capability-parity-20260905-01.json",
+      "id": "forge-equipment-capability-parity-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Shared equipment capability parity",
+      "next_gap": "feature_tracker --write deferred until LEDGER #8867 HOLD clears. Direct vault retrieval remains Equipment-governor / ASTRA #8819. Do not remint secrets. Hands off #8802.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "integrations/shared_equipment/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/README.md",
+        "p/forge-equipment-capability-manifest-20260905-01.md",
+        "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+        "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_shared_equipment_capability_manifest.py",
+        "test_shared_equipment_newcomer_road.py",
+        "test_forge_equipment_manifest_receipt.py",
+        "test_forge_equipment_feature_registry.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Live H1 inherit-source probe. Reads user-level ~/.claude enabledPlugins and classifies SEAT_CLEAR / INHERIT_SOURCE_PRESENT / H1_HIT / FINDER-FAILED. Composes grok inspect evaluation. Never writes Claude settings. Does not remint GROK_CLAUDE_HYGIENE.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/h1_plugin_inherit.py",
+        "test_h1_plugin_inherit.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/h1_plugin_inherit.py",
+        "test_h1_plugin_inherit.py"
+      ],
+      "dependencies": [
+        "open-door-guard-20260822-01"
+      ],
+      "evidence_ids": [],
+      "file": "h1-plugin-inherit-probe-20260902-01.json",
+      "id": "h1-plugin-inherit-probe-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "H1 Grok\u2190Claude plugin inherit probe",
+      "next_gap": "Owner-machine Grok Build live grok inspect --json remains FINDER-UNVERIFIED from cloud seats without that CLI. Do not rewrite Claude settings.",
+      "owner_subsystem": "hygiene",
+      "public_entrypoint": "host/h1_plugin_inherit.py",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/GROK_CLAUDE_HYGIENE.md",
+        "ground/CLAUDE_PEER_CHECK.md",
+        "p/wire-claude-peer-check-20260902-01.md",
+        "p/ink-claude-h1-hygiene-20260902-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_h1_plugin_inherit.py",
+        "test_grok_claude_hygiene.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Names the 2026-09-02 hub screenshot payload (Muse Spark 1.3, gpt-6-astra probe) and this-seat slug reachability without inventing access.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/INCOMING_MODELS.md",
+        "ground/INCOMING_MODELS.json",
+        "host/incoming_models.py",
+        "incoming-models.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/INCOMING_MODELS.md",
+        "ground/INCOMING_MODELS.json",
+        "host/incoming_models.py",
+        "incoming-models.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-incoming-models-source-20260902-01",
+        "ev-incoming-models-tests-20260902-01"
+      ],
+      "file": "incoming-models-hub-payload-20260902-01.json",
+      "id": "incoming-models-hub-payload-20260902-01",
+      "last_change": "2026-09-02T20:35:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Incoming models hub payload",
+      "next_gap": "Muse Spark 1.3 and gpt-6-astra stay ABSENT_HERE until a Commons road can actually call them. Do not invent access. Do not remint the leftover alert.",
+      "owner_subsystem": "model-surfaces",
+      "public_entrypoint": "incoming-models.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/INCOMING_MODELS.md",
+        "ground/GROK_SURFACES.md",
+        "p/cursor-big-things-incoming-alert-20260902-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_incoming_models.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1778,7 +3272,7 @@
         "revenue/kincell_rtp_qc_release_bridge/fixture.json",
         "p/kincell-rtp-qc-release-bridge-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1786,7 +3280,324 @@
         "revenue/kincell_rtp_qc_release_bridge/runner.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Reports saved INDEX timestamp age against the existing 12-hour warning, with reproducible as-of time and an optional nonblocking freshness annotation on successor handoff packets.",
+      "carrier": "Codex",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ledger-crm6-composed-at-freshness-gate-20260905-01.json",
+      "id": "ledger-crm6-composed-at-freshness-gate-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 saved INDEX freshness for successors",
+      "next_gap": "A recent composed_at is the newest source timestamp, not proof that every source or linked message is current.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "p/ledger-crm6-composed-at-freshness-gate-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_composed_at_freshness_gate.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Optional successor handoff annotate mirroring --index-freshness: stamps mailbox_verify from hermetic pin; invent-YES fail-closed to UNKNOWN; Billings NO_BUYER_REPLY.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_relationship_handoff.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_registry.json",
+        "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_relationship_handoff.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_registry.json",
+        "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+        "ledger-crm6-composed-at-freshness-gate-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01.json",
+      "id": "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01",
+      "last_change": "2026-09-06",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 optional handoff --mailbox-verify annotate",
+      "next_gap": "Landed #9267 @ e2b71676599e20bc7e1d7c02bf36eb9c41aa3000. Never invent VERIFIED_HUMAN_YES.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "p/ledger-crm6-handoff-mailbox-verify-annotate-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9267"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Thin additive how-to on public lm-gtm-index.html for brief/freshness/mailbox/--mailbox-verify/--send exit 3 + hermetic pins so successors find README-landed doors.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "lm-gtm-index.html",
+        "tests/test_ledger_crm6_html_successor_doors.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "lm-gtm-index.html",
+        "tests/test_ledger_crm6_html_successor_doors.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-composed-at-freshness-gate-20260905-01",
+        "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+        "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-html-successor-doors-20260906-01.json",
+      "id": "ledger-crm6-html-successor-doors-20260906-01",
+      "last_change": "2026-09-06",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 HTML successor doors how-to",
+      "next_gap": "Landed #9268 @ 2ad83fa6112f13cb43f7507b9ab6f53ba363804d. No Autopsy/tip remint.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "p/ledger-crm6-html-successor-doors-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9268"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_html_successor_doors.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Hermetic mailbox-only pin returning NO_BUYER_REPLY or BUYER_REPLY_OBSERVED from fixtures. Never invents VERIFIED_HUMAN_YES. Billings stays NO_BUYER_REPLY.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures",
+        "tests/test_ledger_crm6_mailbox_buyer_reply_verify.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures",
+        "tests/test_ledger_crm6_mailbox_buyer_reply_verify.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-relationship-handoff-20260904-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-mailbox-buyer-reply-verify-20260905-01.json",
+      "id": "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 hermetic mailbox buyer-reply verify",
+      "next_gap": "Live Gmail verify remains out of scope; fixtures only. Landed #9237 @ 515d8c3ff6d3f55f0cd04f457cdcd8b373fd7e06.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "p/ledger-crm6-mailbox-buyer-reply-verify-20260905-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9237"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_mailbox_buyer_reply_verify.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Mailbox CLI --send/send exits 3 (refuse transport). state.json contract pins mailbox_verify, handoff_mailbox_verify, mailbox_send=illegal; exits 3.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/state.json",
+        "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/state.json",
+        "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-mailbox-buyer-reply-verify-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-mailbox-send-refuse-state-contract-20260906-01.json",
+      "id": "ledger-crm6-mailbox-send-refuse-state-contract-20260906-01",
+      "last_change": "2026-09-06",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 mailbox --send refuse + state.json contract",
+      "next_gap": "Landed #9269 @ bd7263e382c33c2d0bb12abec733a97622671efa. Never invent VERIFIED_HUMAN_YES.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "revenue/lm_gtm_index/state.json",
+        "p/ledger-crm6-mailbox-send-refuse-state-contract-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9269"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "CRM6 relationship handoff: a successor peer continues an existing GTM/JOJO relationship from source-linked wants, learned state, sent communication, unresolved state, due target, and next action. Promise content stays ABSENT until separately verified. Not a second CRM. Billings OWNER_HOLD and no-new-contact are preserved after submission.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_handoff_provenance.py",
+        "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+        "revenue/lm_gtm_index/README.md",
+        "lm-gtm-index.html",
+        "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
+        "p/ledger-crm6-relationship-handoff-20260904-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_handoff_provenance.py",
+        "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+        "revenue/lm_gtm_index/README.md",
+        "lm-gtm-index.html",
+        "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
+        "p/ledger-crm6-relationship-handoff-20260904-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-require-claim-20260904-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-relationship-handoff-20260904-01.json",
+      "id": "ledger-crm6-relationship-handoff-20260904-01",
+      "last_change": "2026-09-04",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 relationship survives context window",
+      "next_gap": "Billings submission is source-linked as SENT, but recipient acknowledgement, acceptance, award, and payment remain unestablished. Do not resend or contact Cheri. Use the business mailbox only to verify a future buyer reply. Do not mint a second CRM. Canonical INDEX composed_at may still be stale; the handoff-only evidence file is explicitly not the canonical CRM or an INDEX mutation.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+        "p/ledger-crm6-relationship-handoff-20260904-01.md",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_handoff_provenance.py",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1840,7 +3651,7 @@
         "revenue/lexington_mrf_diversion_gate/contract.json",
         "p/cursor-lexington-mrf-diversion-gate-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1848,7 +3659,7 @@
         "lexington_mrf_diversion_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1897,7 +3708,7 @@
         "ground/PROFITABILITY_BUILD_MAP.md",
         "resources.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1905,7 +3716,7 @@
         "host/listing_registry.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1958,7 +3769,7 @@
         "p/lm-gtm-agent-brief-20260831-01.md",
         "p/lm-gtm-floor-sync-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1966,7 +3777,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2017,7 +3828,7 @@
         "p/lm-gtm-contract-brief-20260901-01.md",
         "p/lm-gtm-truth-sync-20260831-02.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2025,7 +3836,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2078,7 +3889,7 @@
         "p/lm-gtm-contract-tokens-leads-20260901-01.md",
         "p/lm-gtm-contract-brief-20260901-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2086,7 +3897,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2139,7 +3950,7 @@
         "p/lm-gtm-floor-sync-20260831-01.md",
         "p/lm-gtm-hot-lane-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2147,7 +3958,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2200,7 +4011,7 @@
         "p/lm-gtm-hot-lane-20260831-01.md",
         "p/lm-gtm-index-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2208,7 +4019,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2259,7 +4070,7 @@
         "website-people-email-book.html",
         "p/lm-gtm-index-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2267,7 +4078,76 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Unique leftover after PR 6998: sales occupancy is admission for draft/outreach only. require-claim SUBJECT --owner YOU exits 0 on match and 4 when UNSEATED or wrong occupant. Composers refuse draft without a live occupant. Brief remains the listing floor. Not a second CRM.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "host/website_people_email_book.py",
+        "host/smart_outreach.py",
+        "test_lm_gtm_index.py",
+        "test_website_people_email_book.py",
+        "test_smart_outreach.py",
+        "revenue/lm_gtm_index/state.json",
+        "revenue/lm_gtm_index/README.md",
+        "lm-gtm-index.html",
+        "p/lm-gtm-require-claim-20260904-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "host/website_people_email_book.py",
+        "host/smart_outreach.py",
+        "test_lm_gtm_index.py",
+        "test_website_people_email_book.py",
+        "test_smart_outreach.py",
+        "revenue/lm_gtm_index/state.json",
+        "revenue/lm_gtm_index/README.md",
+        "lm-gtm-index.html",
+        "p/lm-gtm-require-claim-20260904-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-contract-tokens-leads-20260901-01"
+      ],
+      "evidence_ids": [],
+      "file": "lm-gtm-require-claim-20260904-01.json",
+      "id": "lm-gtm-require-claim-20260904-01",
+      "last_change": "2026-09-04",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "LLM-native GTM sales occupancy before draft",
+      "next_gap": "Owner mailbox still required for live send. Agents do not contact Cheri or submit Bid 1421. Do not resend BOUNCED or SENT-DNR. Do not mint a second CRM. Do not remint PR 6998.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "p/lm-gtm-require-claim-20260904-01.md",
+        "p/lm-gtm-contract-tokens-leads-20260901-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_index.py",
+        "test_website_people_email_book.py",
+        "test_smart_outreach.py",
+        "host/lm_gtm_index.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2320,7 +4200,7 @@
         "p/lm-gtm-truth-sync-20260831-02.md",
         "p/lm-gtm-agent-brief-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2328,7 +4208,54 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Composes named Slack/GitHub service tools and Gemini lifecycle operations into the existing Gemini gateway, with the same tool envelopes available to other local and Slack-connected harnesses. Existing provider credentials remain in service custody.",
+      "carrier": "Codex desktop with Gemini gateway peers",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/",
+        "integrations/gemini_slack/peer_tool_gateway.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/",
+        "integrations/gemini_slack/peer_tool_gateway.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "maxwell-shared-service-equipment-20260905-01.json",
+      "id": "maxwell-shared-service-equipment-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Shared Slack, GitHub and Gemini equipment",
+      "next_gap": "Other provider tools can compose through the same equipment. Cloud reach must be demonstrated from the actual calling harness, and cooperative cancellation cannot stop a provider request already in flight.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "integrations/shared_equipment/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/role_equipment.json"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "integrations/shared_equipment/test_equipment.py",
+        "test_gemini_peer_tool_gateway.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2381,14 +4308,14 @@
         "revenue/muhlnickel_inference/token_capacity_offer.json",
         "revenue/muhlnickel_inference/shopify_token_capacity.csv"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_muhlnickel_inference_offer.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2432,14 +4359,14 @@
         "resources.html",
         "commerce.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_muhlnickel_free_sample.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2501,7 +4428,7 @@
         "revenue/muhlnickel_inference/shopify_local_handoff.json",
         "revenue/outcome_commerce/catalog.json"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2510,7 +4437,7 @@
         "test_distribution.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2549,7 +4476,7 @@
         "ground/OPEN_DOOR.md",
         "AGENTS.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2557,7 +4484,7 @@
         "open_door_guard.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2588,14 +4515,66 @@
       "receipts": [],
       "related": {},
       "resource_links": [],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_open_model_release_receipt.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Shared operations state and a human control surface for canonical resources, connected services, observed fleet sessions, budgets, tool calls and reversible feed housekeeping. The same state is available through existing shared-equipment carriers.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/command_center/",
+        "integrations/shared_equipment/services.py",
+        ".github/workflows/command-center.yml"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/command_center/",
+        "integrations/shared_equipment/services.py",
+        ".github/workflows/command-center.yml"
+      ],
+      "dependencies": [
+        "shared-equipment"
+      ],
+      "evidence_ids": [],
+      "file": "operation-command-center-20260907.json",
+      "id": "operation-command-center-20260907",
+      "last_change": "2026-09-07",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Operation command center",
+      "next_gap": "Only schemas reported by a live registered gateway are callable there. Provider metadata, reported VM capacity and current operational outcomes remain distinct. Model drivers use the existing APIs; this interface does not create an autonomous model loop.",
+      "owner_subsystem": "operations",
+      "public_entrypoint": "integrations/command_center/README.md",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/RESOURCE_LEDGER.json",
+        "inventory/resources/connected_capabilities.json",
+        "revenue/kaggriculture/command-center-adapter/adapter.json"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "integrations/command_center/test_core.py",
+        "integrations/command_center/test_server.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2651,7 +4630,7 @@
         "revenue/oregon_brewlab_sample_report/contract.json",
         "p/cursor-oregon-brewlab-sample-report-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2659,7 +4638,7 @@
         "oregon_brewlab_sample_report.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2711,7 +4690,7 @@
         "revenue/organabio_multisite_donor_coa/fixture.json",
         "p/organabio-multisite-donor-coa-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2719,7 +4698,7 @@
         "organabio_multisite_donor_coa.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2771,7 +4750,7 @@
         "revenue/pace_lebanon_microbial_volume_evidence/contract.json",
         "p/pace-lebanon-microbial-volume-evidence-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2779,7 +4758,7 @@
         "pace_lebanon_microbial_volume_evidence.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2808,14 +4787,14 @@
       "receipts": [],
       "related": {},
       "resource_links": [],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_pages_readback.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2869,7 +4848,7 @@
         "revenue/paragon_biodiesel_sample_coa/contract.json",
         "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2877,7 +4856,7 @@
         "paragon_biodiesel_sample_coa.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2932,7 +4911,7 @@
         "muhl/docs/PROVISIONAL_SESSION.md",
         "p/patent-products-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2941,7 +4920,7 @@
         "test_winner_fold.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2988,7 +4967,7 @@
         "pay.html",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2996,7 +4975,7 @@
         "host/payment_capability.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3054,7 +5033,7 @@
         "ground/RESOURCE_LEDGER.json",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3064,7 +5043,7 @@
         "test_payment_capability_compose.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3101,14 +5080,14 @@
       "resource_links": [
         "p/codex-permit-intake-receipt-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_permit_intake_receipt.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3162,7 +5141,7 @@
         "diagnostic.html",
         "commercial.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3170,7 +5149,7 @@
         "plant-downtime-handoff.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3224,7 +5203,7 @@
         "revenue/preinnewhof_pfas_fieldblank_gate/contract.json",
         "p/cursor-preinnewhof-pfas-fieldblank-gate-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3232,7 +5211,62 @@
         "preinnewhof_pfas_fieldblank_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Working succinct-argument runner: Merkle-committed pi/mod execution trace, adjacent-step openings, naive-sampling miss of a million-step needle, and PCP 3-coloring amplification so a verifier neither redoes the work nor blindly trusts.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "proof_spiral_succinct_argument.py",
+        "test_proof_spiral_succinct_argument.py",
+        "proof-spiral-succinct-argument.html",
+        "p/proof-spiral-succinct-argument-20260901-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "proof_spiral_succinct_argument.py",
+        "test_proof_spiral_succinct_argument.py",
+        "proof-spiral-succinct-argument.html",
+        "p/proof-spiral-succinct-argument-20260901-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-proof-spiral-succinct-argument-source-20260901-01",
+        "ev-proof-spiral-succinct-argument-tests-20260901-01"
+      ],
+      "file": "proof-spiral-succinct-argument-20260901-01.json",
+      "id": "proof-spiral-succinct-argument-20260901-01",
+      "last_change": "2026-09-01T15:50:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Proof spiral succinct argument",
+      "next_gap": "Keep HOLD / BUILD-AND-VERIFY; do not invent buyers, cash, or outreach. Projector may pick this registry row on the next --write.",
+      "owner_subsystem": "proof",
+      "public_entrypoint": "proof-spiral-succinct-argument.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "proof-spiral-succinct-argument.html",
+        "p/proof-spiral-succinct-argument-20260901-01.md",
+        "https://youtu.be/jVHeHmufZhk"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_proof_spiral_succinct_argument.py",
+        "proof_spiral_succinct_argument.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3284,7 +5318,7 @@
         "revenue/ptl_controlled_sample_order_preflight/contract.json",
         "p/ptl-controlled-sample-order-preflight-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3292,7 +5326,7 @@
         "ptl_controlled_sample_order_preflight.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3352,7 +5386,7 @@
         "revenue/qlabs_qconnect_cutover/contract.json",
         "p/cursor-qlabs-qconnect-cutover-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3360,7 +5394,7 @@
         "revenue/qlabs_qconnect_cutover/runner.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3414,7 +5448,7 @@
         "diagnostic.html",
         "commercial.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3422,7 +5456,7 @@
         "referral-intake-completeness.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3470,7 +5504,7 @@
         "revenue/repair_booking_preflight/contract.json",
         "p/repair-booking-exactly-once-preflight-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3478,7 +5512,52 @@
         "repair-booking-preflight.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Recover available Git bundle objects offline with explicit unresolved deltas and prerequisite history, without claiming repository restoration.",
+      "carrier": "RIVET / ChatGPT GitHub and Slack connectors",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/git_bundle_inspect.py",
+        "docs/GIT_BUNDLE_INSPECTOR.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/git_bundle_inspect.py",
+        "docs/GIT_BUNDLE_INSPECTOR.md"
+      ],
+      "dependencies": [
+        "Python standard library"
+      ],
+      "evidence_ids": [],
+      "file": "rivet-git-bundle-inspect-20260906-01.json",
+      "id": "rivet-git-bundle-inspect-20260906-01",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Offline Git bundle object recovery",
+      "next_gap": "Native Git repository restoration requires the missing prerequisite history; root integration coverage does not certify the complete Commons battery.",
+      "owner_subsystem": "handoff-recovery",
+      "public_entrypoint": "docs/GIT_BUNDLE_INSPECTOR.md",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "evidence/rivet-git-bundle-inspector-20260906.json",
+        "p/rivet-bundle-recovery-ci-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9329"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_git_bundle_recovery_ci.py",
+        "tests/test_git_bundle_inspect.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3527,7 +5606,7 @@
         "resources.html",
         "ground/RESOURCE_LEDGER.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3535,7 +5614,7 @@
         "host/resource_ledger.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3589,7 +5668,7 @@
         "revenue/rmb_crosssite_courier_accession/contract.json",
         "p/cursor-rmb-crosssite-courier-accession-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3597,7 +5676,7 @@
         "rmb_crosssite_courier_accession.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3651,7 +5730,7 @@
         "revenue/rosecity_olcc_metrc_sampling/contract.json",
         "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3659,7 +5738,7 @@
         "rosecity_olcc_metrc_sampling.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3713,7 +5792,7 @@
         "revenue/roslinct_hopkinton_paperless_qc/contract.json",
         "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3721,7 +5800,7 @@
         "roslinct_hopkinton_paperless_qc.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3768,14 +5847,14 @@
         "subzero.html",
         "sales-sample/FREE-SAMPLE-SALES-INSERT.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_sales_free_sample_pack.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3806,14 +5885,14 @@
       "receipts": [],
       "related": {},
       "resource_links": [],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_salesforce_contact_preflight.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3875,7 +5954,7 @@
         "revenue/sanair_asbestos_coc_router/contract.json",
         "p/sanair-asbestos-coc-router-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3883,7 +5962,7 @@
         "sanair_asbestos_coc_router.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3939,7 +6018,7 @@
         "revenue/savant_fe8_order_report/contract.json",
         "p/cursor-savant-fe8-order-report-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3947,7 +6026,7 @@
         "savant_fe8_order_report.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4009,7 +6088,7 @@
         "revenue/sc_labs_multistate_coa_gate/contract.json",
         "p/sc-labs-multistate-coa-rule-version-gate-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4017,7 +6096,7 @@
         "sc_labs_multistate_coa_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4073,7 +6152,7 @@
         "revenue/sgspsi_thermal_rheology_lineage/contract.json",
         "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4081,7 +6160,7 @@
         "sgspsi_thermal_rheology_lineage.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4137,7 +6216,7 @@
         "revenue/sharp_rtu_vial_isolator_lineage/contract.json",
         "p/sharp-rtu-vial-isolator-lineage-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4145,7 +6224,7 @@
         "sharp_rtu_vial_isolator_lineage.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4199,7 +6278,7 @@
         "revenue/slo_cls_cutover_evidence/contract.json",
         "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4207,7 +6286,423 @@
         "slo_cls_cutover_evidence.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Loopback peer gateway and shared-equipment tools so any Commons coordinator can submit/inspect/follow-up/cancel/events/pools/health against existing GrokBot pools with returned output and attribution. Not grok.com interactive; not Cursor accounts.",
+      "carrier": "Grok Bot / Cursor (SPARK)",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "p/spark-astra-g2-grokbot-control-20260904-01.md",
+        "p/spark-g2-equipment-health-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "p/spark-astra-g2-grokbot-control-20260904-01.md",
+        "p/spark-g2-equipment-health-20260905-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "spark-astra-g2-grokbot-control-20260904-01.json",
+      "id": "spark-astra-g2-grokbot-control-20260904-01",
+      "last_change": "2026-09-04",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Astra G2 reusable GrokBot peer control",
+      "next_gap": "Project this registry row onto feature-tracker.json via host/feature_tracker.py --write after LEDGER #8867 HOLD clears. Do not relaunch :8881 residents on owner PC until RAM incident cleared.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/grokbot_control/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/role_equipment.json",
+        "p/spark-astra-g2-grokbot-control-20260904-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "test_shared_equipment_cli_grokbot.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Hermetic builder maps Autopsy offer.json + opaque case_ref/client_reference_id into grokbot_control case for grokbot_submit. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_paid_case.py",
+        "features/registry/spark-g2-autopsy-case-submit-helper-20260905-01.json",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_paid_case.py",
+        "features/registry/spark-g2-autopsy-case-submit-helper-20260905-01.json",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-attribution-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-autopsy-case-submit-helper-20260905-01.json",
+      "id": "spark-g2-autopsy-case-submit-helper-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Autopsy \u2192 G2 case submit helper",
+      "next_gap": "When a real paid Autopsy case is assigned, coordinator calls grokbot_submit with case_from_autopsy_offer. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/grokbot_control/paid_case.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/paid_case.py",
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_paid_case.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Hermetic pin: Autopsy agent-rescue X-campaign client_reference_id=afa29_x_a_v1 survives onto a G2 run case via submit/inspect. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "test_grokbot_client_reference_roundtrip.py",
+        "features/registry/spark-g2-client-reference-roundtrip-20260905-01.json",
+        "p/spark-g2-client-reference-roundtrip-20260905-01.md",
+        "integrations/grokbot_control/README.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "test_grokbot_client_reference_roundtrip.py",
+        "features/registry/spark-g2-client-reference-roundtrip-20260905-01.json",
+        "p/spark-g2-client-reference-roundtrip-20260905-01.md",
+        "integrations/grokbot_control/README.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-attribution-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-client-reference-roundtrip-20260905-01.json",
+      "id": "spark-g2-client-reference-roundtrip-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 client_reference_id round-trip verify",
+      "next_gap": "When a real X-campaign Stripe payment arrives, coordinator copies client_reference_id into case_from_autopsy_offer / grokbot_submit. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "test_grokbot_client_reference_roundtrip.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "agent-rescue.html",
+        "p/spark-g2-client-reference-roundtrip-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_client_reference_roundtrip.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Equipment tools grokbot_case_from_autopsy_offer + grokbot_receipt_row_from_case (local, no :8881) expose paid_case builders; receipt_from_g2_submit binds submit/inspect run_id+session_id onto opaque case_row. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-receipt-surface-20260905-01",
+        "spark-g2-autopsy-case-submit-helper-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-equipment-paid-case-tools-20260905-01.json",
+      "id": "spark-g2-equipment-paid-case-tools-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 equipment paid-case builder tools",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator builds case via grokbot_case_from_autopsy_offer, submits with grokbot_submit, then binds receipt via grokbot_receipt_row_from_case(submit_response=...). No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/shared_equipment/peers.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/peers.py",
+        "integrations/grokbot_control/paid_case.py",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "GrokBot control persists optional paid-case metadata (offer_id/case_ref/client_reference_id/sku) on submit so inspect/session recover ties runs to a paid job before completion. Follow-up inherits parent case. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/store.py",
+        "integrations/grokbot_control/gateway.py",
+        "integrations/grokbot_control/client.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-paid-case-attribution-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/store.py",
+        "integrations/grokbot_control/gateway.py",
+        "integrations/grokbot_control/client.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-paid-case-attribution-20260905-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "spark-g2-paid-case-attribution-20260905-01.json",
+      "id": "spark-g2-paid-case-attribution-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 paid-case attribution on submit",
+      "next_gap": "Closed by spark-g2-autopsy-case-submit-helper-20260905-01 (case_from_autopsy_offer). Live paid-case submit still waits on REAL_STRIPE_PAYMENT_OBSERVED. No Autopsy plink remint.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/grokbot_control/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/README.md",
+        "p/spark-g2-paid-case-attribution-20260905-01.md",
+        "integrations/grokbot_control/paid_case.py"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Opaque Autopsy seats case_row shape + receipt_row_from_case binds paid job to optional G2 run/session ids without buyer PII. case_rows stay empty until REAL_STRIPE_PAYMENT_OBSERVED. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/seats.json",
+        "revenue/agent_failure_autopsy/SEATS.md",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json",
+        "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/seats.json",
+        "revenue/agent_failure_autopsy/SEATS.md",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json",
+        "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-attribution-20260905-01",
+        "spark-g2-autopsy-case-submit-helper-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-paid-case-receipt-surface-20260905-01.json",
+      "id": "spark-g2-paid-case-receipt-surface-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 paid-case opaque receipt surface",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator appends one opaque case_row via receipt_row_from_case and submits G2 work with case_from_autopsy_offer. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "revenue/agent_failure_autopsy/SEATS.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/paid_case.py",
+        "revenue/agent_failure_autopsy/seats.json",
+        "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_paid_case_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "RUNBOOK \u00a710 documents peer equipment paid-case path + receipt bind; hermetic live-echo e2e in test_grokbot_shared_equipment.test_paid_case_equipment_live_e2e chains case_from_autopsy_offer \u2192 grokbot_submit(case) \u2192 receipt_row_from_case(submit_response). No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_shared_equipment.py",
+        "integrations/grokbot_control/README.md",
+        "features/registry/spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+        "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_shared_equipment.py",
+        "integrations/grokbot_control/README.md",
+        "features/registry/spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+        "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-equipment-paid-case-tools-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+      "id": "spark-g2-runbook-equipment-receipt-e2e-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 runbook equipment receipt e2e",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, follow RUNBOOK \u00a710 equipment path and append opaque case_row. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "revenue/agent_failure_autopsy/RUNBOOK.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_shared_equipment.py",
+        "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_shared_equipment.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4261,7 +6756,7 @@
         "revenue/trace_sila_ml_iatf/contract.json",
         "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4269,7 +6764,7 @@
         "trace_sila_ml_iatf.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4317,7 +6812,7 @@
         "revenue/wadsworth_five_site_consolidation_lims/contract.json",
         "p/wadsworth-five-site-consolidation-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4325,7 +6820,7 @@
         "wadsworth_five_site_consolidation_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4379,7 +6874,7 @@
         "revenue/ward_feed_nirs_intake_validator/contract.json",
         "p/ward-feed-nirs-intake-validator-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4387,7 +6882,7 @@
         "ward_feed_nirs_intake_validator.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4433,7 +6928,7 @@
         "revenue/website_people_email_book/README.md",
         "p/website-people-email-book-20260830-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4441,7 +6936,7 @@
         "host/website_people_email_book.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4491,7 +6986,7 @@
         "revenue/website_people_email_book/README.md",
         "p/website-prospect-boundary-repair-20260830-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4500,7 +6995,7 @@
         "host/website_people_email_book.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4558,7 +7053,7 @@
         "revenue/weck_coc_preaccession_validator/contract.json",
         "p/weck-coc-preaccession-validator-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4566,7 +7061,64 @@
         "revenue/weck_coc_preaccession_validator/runner.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Machine catalog and catalog door for the shared super MCP leftover: what tools, who connects, how a thin harness reaches PC/files/Slack/Stripe/browser hall-pass. Folds the live public MCP. Does not remint wire.html.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "super-mcp/catalog.json",
+        "super-mcp.html",
+        "host/super_mcp.py",
+        "test_super_mcp.py",
+        ".agents/skills/super-mcp/SKILL.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "super-mcp/catalog.json",
+        "super-mcp.html",
+        "host/super_mcp.py",
+        "test_super_mcp.py",
+        ".agents/skills/super-mcp/SKILL.md"
+      ],
+      "dependencies": [
+        "cursor-mcp-get-grounding-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "wire-shared-super-mcp-catalog-20260902-01.json",
+      "id": "wire-shared-super-mcp-catalog-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Shared super MCP catalog leftover",
+      "next_gap": "COIL leftover is Desktop Commander-class terminal MCP headless. PLUG leftover is stealable slice dispatch. Do not remint the public /mcp.",
+      "owner_subsystem": "mcp-public",
+      "public_entrypoint": "super-mcp.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "https://commons-spark-mcp.vercel.app/mcp",
+        "wire.html",
+        "ground/WIRE_SUPER_MCP.md",
+        "super-mcp/catalog.json"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_super_mcp.py",
+        "host/super_mcp.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4703,8 +7255,8 @@
       "test_status": "UNTESTED"
     }
   ],
-  "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 79,
+  "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
+  "n_features": 124,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

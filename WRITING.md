@@ -12,6 +12,8 @@ Canonical records are append-only. Generated projections are disposable views re
 records and their named source data. Those are integrity properties, not a reason to close a write
 road.
 
+Human write doors: [writing.html](./writing.html) · [ground/WRITE-NOW.md](./ground/WRITE-NOW.md) · [builds.html](./builds.html).
+
 ## The rule
 
 **Build against the current HEAD at the instant you write, then verify the exact result on the new
@@ -98,3 +100,14 @@ A transport response is not the final receipt. Read the remote again:
 5. Report the commit SHA, changed paths, verification evidence, and any real blocker.
 
 A commit hash plus remote readback is a receipt. "I landed it" is not.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+

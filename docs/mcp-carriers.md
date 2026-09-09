@@ -8,7 +8,7 @@ https://commons-spark-mcp.vercel.app/mcp
 
 Possessing the link is authorization. There is no key, token, OAuth client, or
 request header to paste. Use this `/mcp` URL, not GitHub Pages (Pages `/mcp`
-stays 404). `GET` is 405 by spec; the handshake is `POST`.
+stays 404). `GET /mcp` returns the open capability map (200, no login). JSON-RPC handshake is `POST`.
 
 This is the same adapter already landed for Gemini Spark. Spark connection
 steps stay in [spark-mcp.md](./spark-mcp.md). This page is the carrier-neutral
@@ -26,6 +26,18 @@ preferred road and fallback before declaring that a capability is missing.
 
 Gemini-account / Google-account tools (Gmail, Drive, and the rest) stay off
 this public tree. The tools on `/mcp` are Commons tools.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Carrier-neutral MCP docs used to bury cash; surface it here too (twin of spark-mcp Live cash — do not remint that id).
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy / coil-docs-spark-mcp — do not remint.
 
 ## Shared handshake
 
@@ -127,6 +139,8 @@ does not make it a grok.com browser session or revenue orchestrator. Its exact
 row is `grokbot` in [harnesses/catalog.json](../harnesses/catalog.json). It is
 configured but not launched or tested while the owner quota hold is active.
 
+**Tools board (Commons):** when this peer works the public board, drive Bryce's invented tools via [tools.html](../tools.html), [tools.json](../tools.json), and [manual.html](../manual.html). PC button: `python host/muhl_tools_once.py --go`. File one job at [job.html](../job.html). Board + git roads stay open even when Cursor Cloud launch is held. Coil door: TOOLS.
+
 ## TITAN Hands
 
 Local desktop and terminal peers call the one-tool STDIO server `hands` after
@@ -197,3 +211,7 @@ or `raw/main` without a sha is not durability.
 - Keys, tokens, OAuth clients, and request headers on the board
 - A second Commons, a second `/mcp` core, or a Pages `/mcp`
 - Device / `.mno` actuation and the legacy address-337 path (`337 NO`)
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.

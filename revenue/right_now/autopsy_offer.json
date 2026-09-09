@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "RIGHT_NOW_CANONICAL_OFFER",
+  "id": "agent-failure-autopsy-29",
+  "name": "Agent Failure Autopsy",
+  "status": "PUBLIC_OFFER",
+  "currency": "USD",
+  "fixed_amount": 29,
+  "delivery_window": "one business day",
+  "buyer_input": "One failure sentence, the coding harness or stack name, and one or more redacted transcript, log, or screenshot artifacts inside the intake boundary.",
+  "deliverable": "An evidence-linked timeline and failure chain, primary and contributing causes with calibrated confidence, adversarial challenge, concrete fix steps only where evidence supports them, and one replay or regression-prevention check.",
+  "payment_collection": "LIVE_PUBLIC_CHECKOUT_PAGE",
+  "acceptance": [
+    "the buyer failure sentence is reproduced exactly",
+    "evidence vs inference is separated",
+    "each causal explanation is adversarially challenged",
+    "delivery stays inside the recorded one-business-day window or refunds",
+    "no code implementation or production access is claimed"
+  ],
+  "refund": "Refund USD 29 when accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable, when a seemingly usable case does not survive adversarial review, or when a defensible diagnosis cannot be delivered within the recorded one-business-day window.",
+  "out_of_scope": [
+    "code implementation",
+    "repository or production access",
+    "secrets or unredacted credentials",
+    "guaranteed certainty",
+    "the separate $2,500 same-day survival proof"
+  ],
+  "source_paths": [
+    "right-now.html#agent-failure-autopsy-29",
+    "agent-rescue.html",
+    "revenue/agent_failure_autopsy/offer.json"
+  ],
+  "canonical_live_offer": "revenue/agent_failure_autopsy/offer.json",
+  "public_checkout_page": "agent-rescue.html"
+}

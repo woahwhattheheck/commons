@@ -1,0 +1,38 @@
+{
+  "id": "cursor-business-pack-operator-day-20260902-01",
+  "kind": "BUSINESS_PACK_OPERATOR_DAY",
+  "gate": false,
+  "commons_admission": false,
+  "source_slack_ts": "1788327136.593709",
+  "source_channel_id": "C0BU51F1PL3",
+  "source_channel_name": "#coordination-channel-created-today-please-use",
+  "treat_customer_as": "employee",
+  "required": ["onboarding", "training", "daily_tasks"],
+  "daily_tasks": "direct_do_x_list",
+  "support": {
+    "paid_subscription_to": "tjlabs",
+    "required_for": "commons_support_contact",
+    "not_required_for": "commons_read_post_or_action_pad",
+    "price_usd": null,
+    "price": "OWNER_UNSET",
+    "commons_admission": false
+  },
+  "fail_to_profit_framing": "owner_runbook_not_ad_copy",
+  "ads_copy": "prices_and_time_budgets_never_earnings",
+  "did_not_write_lead_tos_paths": true,
+  "did_not_invent_percent_or_equity": true,
+  "checkout": "NOT_MINTED",
+  "agents_spend_ads": false,
+  "no_fake_stripe_urls": true,
+  "verdicts": [
+    "OPERATOR_DAY_OK",
+    "OPERATOR_INCOMPLETE",
+    "SUPPORT_PRICE_INVENTED",
+    "EARNINGS_IN_ADS"
+  ],
+  "not": "commons_admission_gate",
+  "helper": "host/business_pack_operator.py",
+  "day_sheet": "packs/_template/day.md",
+  "card": "ground/BUSINESS_PACK_OPERATOR.md",
+  "receipt": "p/cursor-business-pack-operator-day-20260902-01.md"
+}

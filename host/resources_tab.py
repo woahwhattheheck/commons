@@ -55,7 +55,7 @@ def utc_now(explicit=""):
 
 
 def git_sha(root, explicit=""):
-    text = str(explicit or os.environ.get("GITHUB_SHA") or "").strip()
+    text = str(explicit or "").strip()
     if SHA_RE.match(text):
         return text
     try:
@@ -65,9 +65,14 @@ def git_sha(root, explicit=""):
             text=True,
         )
     except (OSError, subprocess.CalledProcessError):
-        return ""
+        out = ""
     got = out.strip()
-    return got if SHA_RE.match(got) else ""
+    if SHA_RE.match(got):
+        return got
+    # An Actions event SHA can predate a moving-branch checkout or rebase.
+    # Keep it only as a fallback for source exports without Git metadata.
+    fallback = str(os.environ.get("GITHUB_SHA") or "").strip()
+    return fallback if SHA_RE.match(fallback) else ""
 
 
 def read_bytes(root, rel):
@@ -82,6 +87,16 @@ def read_bytes(root, rel):
 def read_text(root, rel):
     raw = read_bytes(root, rel)
     return raw.decode("utf-8", errors="replace")
+
+
+def digest_relpath(rel):
+    """Return the repository-style path hashed on every operating system."""
+    return str(rel or "").replace("\\", "/")
+
+
+def digest_source_bytes(raw):
+    """Normalize text source line endings before hashing."""
+    return bytes(raw or b"").replace(b"\r\n", b"\n").replace(b"\r", b"\n")
 
 
 def write_text(root, rel, text):
@@ -107,12 +122,12 @@ def strip_stamp(html):
 def source_digest(root, body=""):
     hasher = hashlib.sha256()
     for rel in source_relpaths(root):
-        hasher.update(rel.encode("utf-8"))
+        hasher.update(digest_relpath(rel).encode("utf-8"))
         hasher.update(b"\0")
-        hasher.update(read_bytes(root, rel))
+        hasher.update(digest_source_bytes(read_bytes(root, rel)))
         hasher.update(b"\n")
     hasher.update(b"resources.html#body\0")
-    hasher.update(strip_stamp(body).encode("utf-8"))
+    hasher.update(digest_source_bytes(strip_stamp(body).encode("utf-8")))
     hasher.update(b"\n")
     return hasher.hexdigest()
 

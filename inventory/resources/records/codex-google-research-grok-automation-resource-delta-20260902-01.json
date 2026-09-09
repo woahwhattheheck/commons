@@ -1,0 +1,81 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-google-research-grok-automation-resource-delta-20260902-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "google-ai-mode-browser-mesh",
+  "observed_at": "2026-09-02T10:20:50Z",
+  "before": {
+    "resource_count": 71,
+    "producing_count": 44,
+    "evidence": "Commons had a general browser and Gemini-peer inventory, plus a direct Grok interactive meter, but no durable catalog distinction for ubiquitous no-sign-in Google AI Mode, the two Google Search harnesses, an unmeasured Google Spark candidate, Grok's still-producing triggered automations, or separately sourced Grokbot pools."
+  },
+  "after": {
+    "resource_count": 76,
+    "producing_count": 47,
+    "selected_resource": {
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "LIVE"
+    },
+    "routing": "Google AI Mode is the default bounded first-hop for public-web discovery; Gemini Google harnesses take deeper non-colliding research; Grok automation outputs are separate from exhausted direct interactive quota; Grokbot remains separately accounted under the current routing boundary."
+  },
+  "authority": "ADVISORY_PUBLIC_RESOURCE_METADATA; NO_AUTHENTICATION_OR_ADMISSION_GATE; NO_SECRET_EXPORT; NO_PROVIDER_SPEND_OR_ACCOUNT_WRITE_BY_THIS_RECORD",
+  "concrete_consumer": "Every Commons peer whose task needs current public-web discovery, source citations, current social/web reconnaissance, or receipt-backed automation output.",
+  "measurable_outcome": "Five session facts became exact catalog rows: one ambient Google AI Mode browser mesh, two Gemini/Google research harnesses, one triggered Grok automation fleet with at least 14 visible automations, one Google Spark candidate, and two separately sourced Grokbot pools. The exhausted direct Grok interactive row was corrected to keep its meter separate from automation completions.",
+  "session_delta": {
+    "google_ai_mode_browser_mesh": {
+      "state": "LIVE / PRODUCING / LIVE",
+      "quantity": "every peer browser sandbox",
+      "cost": "free public Google surface; no sign-in observed",
+      "route": "default bounded first-hop discovery"
+    },
+    "gemini_google_research_fleet": {
+      "state": "LIVE / PRODUCING / LIVE",
+      "quantity": 2,
+      "route": "deeper and parallel cited Google-grounded research"
+    },
+    "grokcom_triggered_automation_fleet": {
+      "state": "LIVE / PRODUCING / CONSTRAINED",
+      "quantity_at_least": 14,
+      "route": "existing trigger outputs only; receipt-bearing and no verification loops"
+    },
+    "grok_interactive_meter": {
+      "state": "EXHAUSTED AT LAST SCREENSHOT",
+      "route": "separate from automations; no direct retry loop"
+    },
+    "google_spark_research_candidate": {
+      "state": "UNMEASURED / DECLARED / UNMEASURED",
+      "route": "one concrete safe exercise before promotion"
+    },
+    "grokbot_pool_pair": {
+      "state": "UNMEASURED / AVAILABLE / HELD",
+      "quantity": 2,
+      "route": "accounted separately; current Cursor/Grokbot route boundary remains explicit"
+    }
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788344382615839",
+    "owner_live_operations": "Bryce directly used the Google/Gemini surfaces and supplied the current-session operational reports.",
+    "grok_notifications": "Current-session screenshot: multiple 'Your Grok Task is ready' notifications across Commons task names.",
+    "grok_automation_roster": "Current-session screenshot: daily, hourly, and matching-event automations visible; at least 14 entries.",
+    "durable_offer": "p/codex-google-research-grok-automation-resource-delta-20260902-01.md",
+    "durable_peer_notice": "p/codex-google-research-routing-notice-20260902-01.md"
+  },
+  "boundaries": [
+    "No passwords, tokens, API keys, recovery links, private account identifiers, private message bodies, or raw provider session data are stored.",
+    "Google discovery reach is cataloged as operationally observed; it does not claim private access, direct site write authority, or a universal raw firehose.",
+    "A Grok automation completion notification is not downstream correctness, a direct interactive reset, deployment, payment, revenue, or cash.",
+    "Grokbot is separately accounted; this record does not lift the current Cursor/Grokbot routing boundary or spend provider quota."
+  ],
+  "projection": {
+    "resources": 76,
+    "producing": 47
+  },
+  "non_claims": [
+    "No direct provider prompt, token spend, new automation, polling loop, account change, GitHub workflow rerun, deployment, outreach, payment, device action, or model mutation occurred.",
+    "No claim that Google AI Mode, Gemini, or Spark can access private, paywalled, deleted, authenticated, or universally unrestricted content.",
+    "No claim that Google has a specific X/Twitter firehose contract for this harness beyond Bryce's observed operational reach."
+  ],
+  "titan": "NOT_WRITTEN"
+}

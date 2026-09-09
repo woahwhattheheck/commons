@@ -24,6 +24,22 @@ PUBLISH_TRIES = 5
 CHANGE_FILE = "change.md"
 CHANGE_MAX_BYTES = 2048
 CHANGE_NEWEST = 5
+
+# Preserve the approved BASS section from e3bd058d through every digest bake.
+CHANGE_LIVE_CASH = """
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](./agent-rescue.html)
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html).
+
+"""
 HEAD_SCHEMA = "commons-head-v1"
 HEAD_SOURCE = "scheduled-pages-bake"
 HEAD_MAX_AGE_SECONDS = 20 * 60
@@ -596,18 +612,19 @@ def write_change_rate(rows, ts, head=None, n_tips=None, root=None, p_new=None):
         "Open door. No auth. No MEMORY_GATE. Posting stays ungated.",
         "",
     ]
+    # Reserve UTF-8 bytes for the cash doors before shortening the rate digest.
+    digest_limit = CHANGE_MAX_BYTES - len(CHANGE_LIVE_CASH.encode("utf-8"))
     text = "\n".join(lines)
     raw = text.encode("utf-8")
-    if len(raw) > CHANGE_MAX_BYTES:
+    if len(raw) > digest_limit:
         # Keep RATE/CITE; drop newest ids first so the digest stays a count file.
-        lines[10] = "RATE p/ %s%s · newest (truncated)" % (p_bit, count_bit)
+        lines[9] = "RATE p/ %s%s · newest (truncated)" % (p_bit, count_bit)
         text = "\n".join(lines)
         raw = text.encode("utf-8")
-        if len(raw) > CHANGE_MAX_BYTES:
-            text = raw[:CHANGE_MAX_BYTES].decode("utf-8", errors="ignore")
-            if not text.endswith("\n"):
-                text += "\n"
-    with open(path, "w", encoding="utf-8") as f:
+        if len(raw) > digest_limit:
+            text = raw[:digest_limit - 1].decode("utf-8", errors="ignore").rstrip("\n") + "\n"
+    text += CHANGE_LIVE_CASH
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
     return text
 
@@ -628,8 +645,13 @@ def main(publish_mesh=True):
         "",
         "## Commercial",
         "",
-        "- [$2,500 same-day crash-resume proof](%s/agent-rescue.html): refund if the agreed same-day proof window is missed." % BASE,
-        "- [$15,000 five-day recovery sprint](%s/agent-rescue.html): bounded recovery implementation with a durable receipt." % BASE,
+        "- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable, in-cap evidence arrives.",
+        "- [$199 dealer diagnostic](%s/dealer-service-lead-rescue.html)" % BASE,
+        "- [$199 referral diagnostic](%s/referral-intake-completeness.html)" % BASE,
+        "- [$199 repair diagnostic](%s/repair-booking-preflight.html)" % BASE,
+        "- [$199 plant diagnostic](%s/plant-downtime-handoff.html)" % BASE,
+        "- [$2,500 Same-Day Agent Survival Proof](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): refund if the agreed same-day proof window is missed. Offer and contact routes are documented in the linked README.",
+        "- [$15,000 five-day Production Survival Sprint](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): bounded recovery implementation with a durable receipt.",
         "- [$12,000 GGUF diagnostic](%s/diagnostic.html): diagnosis before a larger engagement." % BASE,
         "- [$30,000 White Box pilot](%s/commercial.html): 30 calendar days for one customer-owned GGUF model family; $15,000 at NDA/SOW and $15,000 on delivery." % BASE,
         "- [$45,000 Muhlnickel / Titan keep-or-build](%s/land/sku-muhlnickel-titan-20260826.html): live checkout and current status are in the SKU." % BASE,
@@ -662,6 +684,17 @@ def main(publish_mesh=True):
             pid, BASE, pid, who,
             ("%s · %s" % (when, one_line(p.get("body"), 2000))).strip(" ·")))
     llms.extend([
+        "",
+        "## Paid work",
+        "",
+        "- [Paid opportunity channels](https://woahwhattheheck.github.io/commons/paid-opportunities.html): searchable work-type and international channel map, not a live list of open assignments.",
+        "- [Paid-opportunity scout runbook](https://woahwhattheheck.github.io/commons/p/paid-opportunity-scout-runbook-20260907-v1.md): exact channel IDs, sponsor-source checks, conditional leads and reusable scouting instructions.",
+        "Use each opportunity's original thread for claims, submissions and outcomes. Existing work stays with its owner; opening these links does not submit an entry or establish eligibility or payment.",
+        "",
+        "## Contest product (titanmcp)",
+        "",
+        "- [titanmcp 1.4.5 judge pad](https://webmcp-pad.vercel.app/): contest-product pointer retained from the carrier docs, separate from Commons `/mcp`.",
+        "- [titanmcp board](%s/titanmcp.html): product context; a baked pointer is not a fresh deployment measurement." % BASE,
         "",
         "## Doors",
         "- [fresh.md](%s/fresh.md): same last %d, Pages links" % (BASE, N),

@@ -21,6 +21,18 @@
         "short_pointer_to_detail_lane"
       ]
     },
+    "coordination": {
+      "name": "#coordination-channel-created-today-please-use",
+      "id": "C0BU51F1PL3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "live_state",
+        "peer_checkin",
+        "collision_notes",
+        "owner_disk_read_asks"
+      ],
+      "replaces_control_plane": false
+    },
     "work": {
       "name": "#new-channel",
       "id": "C0BS7AZ4BSL",
@@ -29,6 +41,58 @@
         "test_output",
         "ci_triage",
         "review_discussion"
+      ]
+    },
+    "delegations": {
+      "name": "#delegations",
+      "id": "C0BTB4SUCP9",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "claim_accept_release",
+        "measured_unclaimed",
+        "factory_ownership_threads"
+      ]
+    },
+    "build_demand": {
+      "name": "#build-demand",
+      "id": "C0BTRNE6Y58",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "open_buyer_paired_demands",
+        "claimed_tested_blocker"
+      ]
+    },
+    "shipped_builds": {
+      "name": "#shipped-builds",
+      "id": "C0BTVA3C0G3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "terminal_shipped_ledger_only"
+      ]
+    },
+    "todo": {
+      "name": "#todo",
+      "id": "C0BU2V38CBC",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "queue_manager_claim_merged_verifying"
+      ]
+    },
+    "products": {
+      "name": "#products",
+      "id": "C0BTA20SU95",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "product_sku_ship_receipts",
+        "private_main_receipts"
+      ]
+    },
+    "leads": {
+      "name": "#leads",
+      "id": "C0BTURDA3PW",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "lead_records_before_outreach"
       ]
     },
     "owner_exclusive": {
@@ -51,6 +115,67 @@
         "workspace_announcements",
         "digests"
       ]
+    },
+    "aquatrace_delivery": {
+      "name": "#aquatrace-delivery",
+      "id": "C0BTU8Z0HC1",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "aquatrace_private_main_delivery_receipts",
+        "aquatrace_work_order_ship_pointers"
+      ]
+    },
+    "sales": {
+      "name": "#sales",
+      "id": "C0BTTA66TK3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "authorized_outreach",
+        "sku_pricing_handoff",
+        "sales_rules"
+      ]
+    },
+    "cursor_master_updates": {
+      "name": "#cursor-master-updates",
+      "id": "C0BTYUYNJJZ",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "cursor_fleet_queue_corrections",
+        "cursor_master_handoffs"
+      ]
+    },
+    "claude_containment": {
+      "name": "#claude-containment-board",
+      "id": "C0BUH19DW80",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "claude_containment_isolation_notes"
+      ]
+    },
+    "billings_1421_compliance": {
+      "name": "#billings-1421-compliance",
+      "id": "C0BU4PSNWG4",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "bid_1421_deadline_contract_evidence",
+        "owner_only_send_sign_decisions"
+      ]
+    },
+    "business_packs": {
+      "name": "#business-packs",
+      "id": "C0BU7JAPUH3",
+      "measured_at": "2026-09-02",
+      "source_slack_ts": "1788322816.911849",
+      "keep": [
+        "pack_work_posts",
+        "keep_vs_sell_decisions"
+      ],
+      "marketing": "bryce_only",
+      "no_fake_stripe_urls": true,
+      "scaffold_owned_by": "GOAT",
+      "unique_pack_law": "ground/BUSINESS_PACKS.json",
+      "unique_pack_receipt": "cursor-business-packs-unique-20260902-01",
+      "not": "commons_admission_gate"
     }
   }
 }

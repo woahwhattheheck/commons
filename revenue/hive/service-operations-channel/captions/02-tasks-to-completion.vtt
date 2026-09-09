@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.000
+A new synthetic job begins with all three service-operation tasks open.
+
+2
+00:00:04.000 --> 00:00:08.000
+Completing the first task moves the job into in-progress while the remaining work stays visible.
+
+3
+00:00:08.000 --> 00:00:12.000
+Complete the second task and the same job remains in-progress with one action left.
+
+4
+00:00:12.000 --> 00:00:16.000
+Completing the final task changes the job to complete; the customer and source record stay linked.

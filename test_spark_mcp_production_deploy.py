@@ -23,6 +23,7 @@ REQUIRED_WATCH = (
     "api/mcp.py",
     "api/owner_context.py",
     "commons_mcp.py",
+    "webmcp.html",
     "vercel.json",
     ".vercelignore",
     "stage_spark_mcp_bundle.py",
@@ -54,13 +55,65 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("workflow_dispatch:", text)
         self.assertIn("pull_request:", text)
         self.assertIn("spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}", text)
-        self.assertIn("cancel-in-progress: true", text)
+        # PR #9123: finish active main deploys; only PR synchronize cancels.
+        # Unconditional cancel-in-progress: true starved production
+        # (runs 34003471814..34011409746 cancelled behind 34003449776).
+        self.assertIn("cancel-in-progress: ${{ github.event_name == 'pull_request' }}", text)
+        self.assertNotIn("cancel-in-progress: true", text)
+        self.assertNotIn("cancel-in-progress: false", text)
+        self.assertIn("must not starve production deployment", text)
+        self.assertIn("Finish active main deployments; coalesce pending updates.", text)
         push_paths = _path_block(text, "push")
         for path in REQUIRED_WATCH:
             self.assertIn(path, push_paths)
         for path in CORPUS_PATHS:
             self.assertNotIn(path, push_paths)
         self.assertIn("Queue fuse", text)
+
+    def test_concurrency_cancels_stale_prs_without_starving_main_deploys(self) -> None:
+        """Runs 34003471814-34011409746 cancelled in-flight main deploys when
+        cancel-in-progress was a blanket true on the shared main group.
+        7508600270b2 switched cancel to PR-only; this pins that contract.
+        """
+        from test_tests_pr_concurrency import github_ctx, interpolate
+
+        text = WORKFLOW.read_text(encoding="utf-8")
+        match = re.search(
+            r"(?m)^concurrency:\n"
+            r"  group: (?P<group>[^\n]+)\n"
+            r"(?:  #[^\n]*\n)*"
+            r"  cancel-in-progress: (?P<cancel>[^\n]+)\n",
+            text,
+        )
+        if not match:
+            raise AssertionError("missing workflow concurrency block")
+        group_template = match.group("group").strip().strip('"')
+        cancel_template = match.group("cancel").strip()
+        self.assertEqual(
+            group_template,
+            "spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}",
+        )
+        self.assertEqual(
+            cancel_template,
+            "${{ github.event_name == 'pull_request' }}",
+        )
+        # PR identity is stable across synchronize runs, unlike the run ID.
+        for event_name, run_id, pr_number, want_cancel in (
+            ("pull_request", 1, 17, True),
+            ("pull_request", 2, 17, True),
+            ("pull_request", 3, 18, True),
+            ("push", 4, None, False),
+            ("workflow_dispatch", 5, None, False),
+        ):
+            with self.subTest(event=event_name, run_id=run_id, pr_number=pr_number):
+                ctx = github_ctx(
+                    event_name,
+                    run_id,
+                    "woahwhattheheck:x" if event_name == "pull_request" else None,
+                    pr_number=pr_number,
+                )
+                got = interpolate(cancel_template, ctx)
+                self.assertEqual(got == "true", want_cancel, event_name)
 
     def test_pull_request_never_deploys(self) -> None:
         text = WORKFLOW.read_text(encoding="utf-8")
@@ -162,6 +215,7 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("api/mcp.py", copied)
         self.assertIn("api/owner_context.py", copied)
         self.assertIn("commons_mcp.py", copied)
+        self.assertIn("webmcp.html", copied)
         self.assertIn("relay-manifest.json", copied)
         self.assertIn("relay_manifest.py", copied)
         self.assertIn("vercel.json", copied)
@@ -220,6 +274,15 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("fire_action", adapter.SHARED_HTTP_TOOL_NAMES)
         self.assertIn("get_send_link", adapter.SHARED_HTTP_TOOL_NAMES)
         self.assertIn("ACTION_RESULT_PENDING", Path(cm.__file__).read_text(encoding="utf-8"))
+
+    def test_wait_step_requires_live_webmcp_html(self) -> None:
+        """A bake that starts cannot ship /mcp without the judge HTML URL."""
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("https://commons-spark-mcp.vercel.app/webmcp", text)
+        self.assertIn("text/html", text)
+        self.assertIn("document.modelContext", text)
+        self.assertIn("LIVE_WEBMCP_HTML", text)
+        self.assertIn("LIVE_SOURCE_PARITY", text)
 
 
 if __name__ == "__main__":

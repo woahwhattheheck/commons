@@ -36,7 +36,6 @@ DIO_RECEIPT = os.path.join("p", "dio-titan-move-containment-hardening-20260825-0
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
-    os.path.join("host", "sitting_pr.py"),
     os.path.join("ground", "CASH_NOW.md"),
     os.path.join("host", "cash_now.py"),
     DIO_RECEIPT,
@@ -123,11 +122,21 @@ def load_catalog(text):
         "slack_ts": str(data.get("slack_ts") or "").strip() or SLACK_TS,
         "titan": str(data.get("titan") or "NOT_WRITTEN").strip().upper() or "NOT_WRITTEN",
         "posting": str(data.get("posting") or "").strip(),
-        "no_auth": bool(data.get("no_auth", True)),
-        "no_gate": bool(data.get("no_gate", True)),
+        "no_auth": data.get("no_auth", True) is True,
+        "no_gate": data.get("no_gate", True) is True,
         "sitting_remints": rows,
         "error": "",
     }
+
+
+def is_2207_superseded(item):
+    """True only while PR 2207 is the measured open-dirty remint."""
+    item = item if isinstance(item, dict) else {}
+    return (
+        str(item.get("number")) == "2207"
+        and item.get("pr_state") == "OPEN_DIRTY"
+        and item.get("land_state") == "SUPERSEDED"
+    )
 
 
 def measure_from_rows(facts):
@@ -251,10 +260,7 @@ def measure_root(root):
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
     sitting = catalog.get("sitting_remints") or []
-    names_2207_superseded = any(
-        str(item.get("number")) == "2207" and item.get("land_state") == "SUPERSEDED"
-        for item in sitting
-    )
+    names_2207_superseded = any(is_2207_superseded(item) for item in sitting)
     claims_2207_integrated = any(
         str(item.get("number")) == "2207" and item.get("land_state") == "INTEGRATED"
         for item in sitting

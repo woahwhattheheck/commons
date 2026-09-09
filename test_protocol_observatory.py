@@ -64,7 +64,13 @@ class ProjectorTests(unittest.TestCase):
         snap = project([], now="2026-08-28T09:30:00Z")
         self.assertEqual(snap["sessions"], [])
         self.assertEqual(snap["cockpit"]["counts"]["confirmed_active"], 0)
-        self.assertEqual(snap["economy"]["collected_cash_usd"], 0)
+        self.assertIsNone(snap["economy"]["collected_cash_usd"])
+        self.assertIn("UNKNOWN", snap["briefing"]["economic_truth"])
+
+    def test_offer_amount_is_not_cash_truth(self):
+        snap = project([], legacy={"recovery": {"offer": {"collected_cash_usd": 500}}})
+        self.assertIsNone(snap["economy"]["collected_cash_usd"])
+        self.assertEqual(snap["economy"]["evidence"][0]["grade"], "UNKNOWN")
 
     def test_quiet_presence_is_not_a_session(self):
         legacy = load_json("protocol/fixtures/legacy_partial.json")
@@ -82,6 +88,9 @@ class ProjectorTests(unittest.TestCase):
         }
         snap = project([], now="2026-08-28T09:30:00Z", legacy=legacy)
         self.assertEqual(snap["sessions"], [])
+        self.assertEqual([row["id"] for row in snap["board_motion"]], ["slack-1", "slack-2"])
+        self.assertEqual(snap["timeline"], [])
+        self.assertEqual(snap["briefing"]["recent_landings"], [])
 
     def test_duplicate_start_does_not_double_spend(self):
         event = emit("START", session_id="dup-session-01", task_id="t-dup", run_id="r-dup", ts="2026-08-28T08:00:00Z", dedupe_key="same")
@@ -282,6 +291,52 @@ class ProjectorTests(unittest.TestCase):
 
 
 class HostAndSurfaceTests(unittest.TestCase):
+    def test_publisher_refreshes_observatory_after_emitting_inputs(self):
+        import tempfile
+        import board_ingest as board
+        from contextlib import ExitStack
+        from unittest import mock
+        stamp = "2026-09-04T12:00:00Z"
+        with tempfile.TemporaryDirectory() as root, ExitStack() as stack:
+            for name, value in (("ROOT", root), ("POSTS", str(Path(root) / "p")),
+                                ("BY", str(Path(root) / "by")), ("TO", str(Path(root) / "to"))):
+                stack.enter_context(mock.patch.object(board, name, value))
+            stack.enter_context(mock.patch.object(board, "now_ts", return_value=stamp))
+            stack.enter_context(mock.patch.object(board.builds_ledger, "fetch_public_open_prs", return_value=[]))
+            stack.enter_context(mock.patch.object(board.builds_ledger, "resolve_main_sha", return_value="1" * 40))
+            Path(root, "p").mkdir()
+            Path(root, "index.html").write_text("<!doctype html>" + board.INDEX_FEED_START + board.INDEX_FEED_END, encoding="utf-8")
+            board.write_post("SAGAN", "TABLE", "obs-motion-check-001", "observed post", stamp)
+            board.rebuild()
+            snap = json.loads(Path(root, "observatory.json").read_text(encoding="utf-8"))
+            pulse = json.loads(Path(root, "pulse.json").read_text(encoding="utf-8"))
+            self.assertEqual(snap["now"], stamp)
+            self.assertEqual(snap["head"]["post_count"], pulse["post_count"])
+            self.assertEqual(snap["board_motion"][0]["id"], "obs-motion-check-001")
+            self.assertEqual(snap["cockpit"]["counts"]["presence_claims"], 1)
+            self.assertEqual(snap["sessions"], [])
+
+    def test_missing_sources_are_recorded_not_reported_as_complete(self):
+        import tempfile
+        from host import observatory as obs
+        with tempfile.TemporaryDirectory() as root:
+            snap = obs.snapshot(root)
+        self.assertTrue(all(row["state"] == "MISSING" for row in snap["source_coverage"]))
+        self.assertIsNone(snap["economy"]["collected_cash_usd"])
+        self.assertIn("not the whole fleet", snap["coverage_note"])
+
+    def test_read_time_freshness_does_not_change_bake_digest(self):
+        from host import observatory as obs
+        snap = project([], now="2026-08-28T00:00:00Z")
+        original = deepcopy(snap)
+        for view in ("snapshot", "briefing", "census"):
+            row = obs.select_snapshot(snap, {"view": view}, now="2026-09-04T00:00:00Z")
+            self.assertEqual(row["freshness"]["state"], "STALE")
+            self.assertEqual(row["provenance"]["digest"], snap["digest"])
+        self.assertEqual(snap, original)
+        self.assertEqual(obs.freshness(snap, "2026-08-28T00:01:00Z")["state"], "FRESH")
+        self.assertEqual(obs.freshness({"now": "bad"})["state"], "UNKNOWN")
+
     def test_host_projector_reads_legacy_bakes(self):
         from host import observatory as obs
         snap = obs.snapshot(str(HERE), now="2026-08-28T09:30:00Z")

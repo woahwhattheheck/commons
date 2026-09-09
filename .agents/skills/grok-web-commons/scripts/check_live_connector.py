@@ -330,7 +330,7 @@ def compare(source: dict[str, Any], live: dict[str, Any]) -> dict[str, Any]:
     transport_ok = (
         live.get("http", {}).get("initialize") == 200
         and live.get("http", {}).get("tools_list") == 200
-        and live.get("http", {}).get("GET") == 405
+        and live.get("http", {}).get("GET") == 200
         and live.get("session") in (None, "")
         and all(status == 404 for status in (live.get("oauth_metadata") or {}).values())
     )

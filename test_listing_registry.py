@@ -152,8 +152,8 @@ class ListingRegistryTests(unittest.TestCase):
             self.assertIn("append_post", lowered)
             self.assertIn("commerce.html", lowered)
 
-    def test_survival_proof_upwork_blocked_account(self):
-        row = self.rows["same-day-agent-survival-proof__upwork-project-catalog"]
+    def test_bounded_service_upwork_blocked_account(self):
+        row = self.rows["ho-issue-to-pr__upwork-project-catalog"]
         self.assertEqual(row["fit"], "FIT")
         self.assertEqual(row["package_state"], "PACKAGE_READY")
         self.assertEqual(row["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
@@ -174,6 +174,15 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["chargeability_state"], "ACTIVE_CHARGEABLE")
         self.assertEqual(row["listing_state"], "SURFACE_LIVE")
         self.assertIs(row["submitted"], False)
+
+        autopsy = self.rows["agent-failure-autopsy-29__commons-service-catalog"]
+        self.assertEqual(autopsy["fit"], "FIT")
+        self.assertEqual(autopsy["published_status"], "SURFACE_PUBLISHED")
+        self.assertEqual(autopsy["chargeability_state"], "ACTIVE_CHARGEABLE")
+        self.assertEqual(
+            autopsy["chargeability"]["url"],
+            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        )
 
     def test_external_surface_not_chargeable_even_with_stripe(self):
         row = self.rows["sku-tip-20260826__upwork-project-catalog"]
@@ -196,13 +205,18 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["account_status"], "OWNER_PLATFORM")
         self.assertIn("owner", row["next_action"].lower())
 
-    def test_show_hn_draft_only(self):
-        row = self.rows["same-day-agent-survival-proof__show-hn-post"]
-        self.assertEqual(row["fit"], "FIT")
-        self.assertEqual(row["published_status"], "NOT_PUBLISHED")
-        self.assertIsNone(row["url"])
-        tip = self.rows["sku-tip-20260826__show-hn-post"]
-        self.assertEqual(tip["fit"], "UNFIT")
+    def test_show_hn_draft_tracks_the_current_autopsy_offer_without_submitting(self):
+        rows = [
+            row for row in self.registry["listings"]
+            if row["surface_id"] == "show-hn-post"
+        ]
+        self.assertTrue(rows)
+        fit = [row for row in rows if row["fit"] == "FIT"]
+        self.assertEqual([row["offer_id"] for row in fit], ["agent-failure-autopsy-29"])
+        self.assertEqual(fit[0]["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
+        self.assertFalse(fit[0]["submitted"])
+        asset_ids = {row["id"] for row in self.assets["assets"]}
+        self.assertIn(fit[0]["id"], asset_ids)
 
     def test_assets_ready_match_fit_and_forbid_live_claims(self):
         fit_ids = {r["id"] for r in self.registry["listings"] if r["fit"] == "FIT"}
@@ -233,6 +247,35 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(exported["kind"], self.registry["kind"])
         self.assertEqual(exported["counts"], self.registry["counts"])
         self.assertEqual(len(exported["listings"]), len(self.registry["listings"]))
+
+    def test_survival_and_autopsy_routes_match_canonical_offers(self):
+        expected = {
+            "production-survival-sprint": "revenue/production_survival/README.md",
+            "agent-failure-autopsy-29": "agent-rescue.html",
+        }
+        exported_registry = json.loads((REG / "registry.json").read_text(encoding="utf-8"))
+        exported_assets = json.loads((REG / "assets.json").read_text(encoding="utf-8"))
+        for label, registry, assets in (
+            ("generated", self.registry, self.assets),
+            ("checked-in", exported_registry, exported_assets),
+        ):
+            for offer_id, route in expected.items():
+                with self.subTest(source=label, offer=offer_id):
+                    rows = [r for r in registry["listings"] if r["offer_id"] == offer_id]
+                    self.assertTrue(rows)
+                    self.assertEqual({r["human_route"] for r in rows}, {route})
+                    public_rows = [r for r in rows if r["published_status"] == "SURFACE_PUBLISHED"]
+                    self.assertTrue(public_rows)
+                    self.assertEqual(
+                        {r["url"] for r in public_rows},
+                        {self.mod.PAGES + "/" + route},
+                    )
+                    asset = next(
+                        a for a in assets["assets"]
+                        if a["id"] == offer_id + "__commons-service-catalog"
+                    )
+                    self.assertEqual(asset["url"], self.mod.PAGES + "/" + route)
+                    self.assertIn("Conversion: " + asset["url"], asset["copy"])
 
     def test_cli_self_test(self):
         proc = subprocess.run(

@@ -86,7 +86,12 @@ class GptActionPacketTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(nxt.stdout.strip(), "draft packet for composio without sending")
+        self.assertEqual(
+            nxt.stdout.strip(),
+            "Keep inbound doors live (agent-triage.html, agent-rescue.html, "
+            "tokenjunkielabs@gmail.com). Do not resend held prospects. "
+            "Founder still must evidence a chargeable processor path.",
+        )
 
 
 if __name__ == "__main__":

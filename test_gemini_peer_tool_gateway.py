@@ -6,6 +6,7 @@ import sys
 import tempfile
 import threading
 import time
+import urllib.parse
 import unittest
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -23,38 +24,70 @@ SPEC.loader.exec_module(module)
 class UpstreamHandler(BaseHTTPRequestHandler):
     replies = []
     prompts = []
+    payloads = []
+    pending = {}
+    next_id = 0
 
     def log_message(self, _format, *_args):
         return
 
-    def _send(self, value):
+    def _send(self, value, status=200):
         raw = json.dumps(value).encode()
-        self.send_response(200)
+        self.send_response(status)
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(raw)))
         self.end_headers()
         self.wfile.write(raw)
 
     def do_GET(self):
-        self._send(
-            {
-                "ok": True,
-                "mode": "fake",
-                "peers": [{"name": "TESSERA"}, {"name": "MERIDIAN"}],
-            }
-        )
+        parsed = urllib.parse.urlsplit(self.path)
+        if parsed.path in ("/", "/health"):
+            self._send(
+                {
+                    "ok": True,
+                    "mode": "fake",
+                    "peers": [{"name": "TESSERA"}, {"name": "MERIDIAN"}],
+                }
+            )
+            return
+        prefix = "/v1/requests/"
+        if parsed.path.startswith(prefix):
+            request_id = parsed.path[len(prefix) :]
+            reply = self.pending.get(request_id)
+            if reply is None:
+                self._send({"ok": False, "error": "request_not_found"}, status=404)
+                return
+            encoded = base64.b64encode(reply.encode()).decode()
+            self._send(
+                {
+                    "ok": True,
+                    "request_id": request_id,
+                    "event": {
+                        "request_id": request_id,
+                        "status": "completed",
+                        "reply": reply,
+                        "reply_utf8_base64": encoded,
+                    },
+                }
+            )
+            return
+        self._send({"ok": False, "error": "not_found"}, status=404)
 
     def do_POST(self):
         size = int(self.headers["Content-Length"])
         payload = json.loads(self.rfile.read(size))
+        self.payloads.append(payload)
         text = base64.b64decode(payload["message_utf8_base64"]).decode()
         self.prompts.append(text)
         reply = self.replies.pop(0)
+        UpstreamHandler.next_id += 1
+        request_id = "up%d" % UpstreamHandler.next_id
+        self.pending[request_id] = reply
         self._send(
             {
                 "ok": True,
-                "reply": reply,
-                "reply_utf8_base64": base64.b64encode(reply.encode()).decode(),
+                "request_id": request_id,
+                "status": "queued",
             }
         )
 
@@ -98,6 +131,9 @@ class Fixture:
     def __enter__(self):
         UpstreamHandler.replies = []
         UpstreamHandler.prompts = []
+        UpstreamHandler.payloads = []
+        UpstreamHandler.pending = {}
+        UpstreamHandler.next_id = 0
         McpHandler.calls = []
         self.upstream_server = ThreadingHTTPServer(("127.0.0.1", 0), UpstreamHandler)
         self.mcp_server = ThreadingHTTPServer(("127.0.0.1", 0), McpHandler)
@@ -165,7 +201,7 @@ class ToolGatewayTests(unittest.TestCase):
                 timeout=2,
             ) as response:
                 event = json.loads(response.read())["event"]
-            if event["status"] in {"completed", "error"}:
+            if event["status"] in {"completed", "error", "cancelled", "interrupted"}:
                 return event
             time.sleep(0.02)
         raise AssertionError(f"request {request_id} did not complete: {event}")
@@ -191,6 +227,12 @@ class ToolGatewayTests(unittest.TestCase):
                 "hello secret-input",
                 (fixture.root / "events.jsonl").read_text(),
             )
+            self.assertTrue(UpstreamHandler.payloads[0]["async"])
+            self.assertNotIn("message", UpstreamHandler.payloads[0])
+            latest = fixture.events.last("TESSERA")
+            self.assertEqual(latest["status"], "completed")
+            self.assertTrue(str(latest["upstream_request_id"]).startswith("up"))
+            self.assertIn("/v1/requests/", latest["upstream_status_url"])
 
     def test_multiple_arbitrary_tools_feed_results_through_same_upstream(self):
         with Fixture() as fixture:
@@ -379,6 +421,42 @@ class ToolGatewayTests(unittest.TestCase):
             with self.assertRaisesRegex(module.GatewayError, "exceeded 16"):
                 fixture.loop.run("r1", "AURORA", "bounded")
             self.assertEqual(len(McpHandler.calls), 16)
+
+    def test_restart_retains_upstream_handle_without_replay(self):
+        directory = tempfile.TemporaryDirectory()
+        try:
+            events = module.EventStore(Path(directory.name) / "events.jsonl")
+            events.append(
+                request_id="local-1",
+                peer="AURORA",
+                status="running",
+                upstream_request_id="up9",
+                upstream_status_url="http://127.0.0.1:9/v1/requests/up9",
+                upstream_status="running",
+                upstream_terminal=False,
+            )
+            gateway = module.ToolGateway(
+                ("127.0.0.1", 0),
+                object(),
+                events,
+                module.UpstreamClient("http://127.0.0.1:9"),
+                object(),
+            )
+            try:
+                latest = events.request("local-1", 0)
+                self.assertEqual(latest["status"], "interrupted")
+                self.assertEqual(latest["upstream_request_id"], "up9")
+                self.assertEqual(
+                    latest["upstream_status_url"],
+                    "http://127.0.0.1:9/v1/requests/up9",
+                )
+                self.assertEqual(latest["upstream_status"], "unknown")
+                self.assertIs(latest["upstream_terminal"], False)
+                self.assertIn("retained upstream handle", latest["message"])
+            finally:
+                gateway.server_close()
+        finally:
+            directory.cleanup()
 
 
 if __name__ == "__main__":

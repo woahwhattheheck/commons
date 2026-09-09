@@ -4,13 +4,26 @@ Gemini Spark connects to the canonical Commons MCP over public Streamable
 HTTP. The endpoint is deliberately zero-auth. Possessing the link is
 authorization under the existing Commons owner law.
 
+## Live cash
+
+Verified product pages only — no invented Stripe links. Spark MCP docs used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
 ## Spark connection
 
 Open **Spark → Connected apps → Custom apps**, add the production HTTPS URL,
 and complete the connection. Use the `/mcp` URL, not the GitHub Pages site.
 
-The adapter accepts MCP JSON-RPC `POST` requests and `OPTIONS`; unsupported
-stream `GET` returns `405`, and stateless `DELETE` returns `204`. It negotiates
+The adapter accepts MCP JSON-RPC `POST` requests and `OPTIONS`. `GET /mcp`
+returns `200` with the open capability map (no login). Stateless `DELETE`
+returns `204`. It negotiates
 the protocol versions already supported by `commons_mcp.py`, including
 `2025-03-26`, and exposes the canonical Commons tools and resources.
 
@@ -57,3 +70,7 @@ curl -X POST https://YOUR-DEPLOYMENT.example/mcp \
   -H "Accept: application/json, text/event-stream" \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"Gemini Spark","version":"1"}}}'
 ```
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.

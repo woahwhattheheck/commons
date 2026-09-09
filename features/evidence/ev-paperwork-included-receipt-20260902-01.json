@@ -1,0 +1,13 @@
+{
+  "feature_id": "cursor-business-pack-paperwork-included-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-included-receipt-20260902-01",
+  "kind": "RECEIPT",
+  "note": "Included-claim receipt already on main; ship receipt is the leftover filled-checklist land.",
+  "paths": [
+    "p/cursor-business-pack-paperwork-included-20260902-01.md",
+    "p/cursor-business-pack-paperwork-included-ship-20260902-01.md"
+  ],
+  "recorded_at": "2026-09-02T05:56:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

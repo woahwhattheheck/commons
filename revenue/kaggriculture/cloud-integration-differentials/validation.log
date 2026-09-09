@@ -1,0 +1,20 @@
+test_capacity_clipped_animals_are_identical (__main__.FundingTests.test_capacity_clipped_animals_are_identical) ... ok
+test_changed_nonseed_or_inserted_slot_not_certified (__main__.FundingTests.test_changed_nonseed_or_inserted_slot_not_certified) ... ok
+test_changed_units_or_other_fields_not_certified (__main__.FundingTests.test_changed_units_or_other_fields_not_certified) ... ok
+test_custom_multiplier_and_exhausted_land (__main__.FundingTests.test_custom_multiplier_and_exhausted_land) ... ok
+test_funded_hire_executes_in_both_arms (__main__.FundingTests.test_funded_hire_executes_in_both_arms) ... ok
+test_ignored_edit_is_not_a_cash_saving (__main__.FundingTests.test_ignored_edit_is_not_a_cash_saving) ... ok
+test_no_seed_change_and_malformed_input (__main__.FundingTests.test_no_seed_change_and_malformed_input) ... ok
+test_output_is_detached_and_custom_fallback_preserved (__main__.FundingTests.test_output_is_detached_and_custom_fallback_preserved) ... ok
+test_real_market_grid_both_seats (__main__.FundingTests.test_real_market_grid_both_seats) ... ok
+test_repeated_seed_reductions_and_order_positions (__main__.FundingTests.test_repeated_seed_reductions_and_order_positions) ... ok
+test_sales_are_not_spendable_in_the_bound (__main__.FundingTests.test_sales_are_not_spendable_in_the_bound) ... ok
+test_seed_increase_and_product_substitution_not_certified (__main__.FundingTests.test_seed_increase_and_product_substitution_not_certified) ... ok
+test_truncated_product_order_does_not_block (__main__.FundingTests.test_truncated_product_order_does_not_block) ... ok
+test_underfunded_hire_preserves_original (__main__.FundingTests.test_underfunded_hire_preserves_original) ... ok
+test_unknown_product_price_preserves_fallback (__main__.FundingTests.test_unknown_product_price_preserves_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.049s
+
+OK

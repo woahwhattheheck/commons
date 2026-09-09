@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.000
+Two synthetic jobs are queued independently, each with its own durable delivery event.
+
+2
+00:00:04.000 --> 00:00:08.000
+Choose Retry delivery on the newest job: the UI sends that event ID to the selected-process path.
+
+3
+00:00:08.000 --> 00:00:12.000
+Only the chosen job is delivered and appears in the local notification feed; the other event remains pending.
+
+4
+00:00:12.000 --> 00:00:16.000
+The normal Deliver next notification action can then process the remaining due event without duplicating the first.

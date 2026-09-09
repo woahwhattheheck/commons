@@ -10,7 +10,7 @@ The written acceptance records the exact input, expected output, public-safe env
 
 ## Quote-to-clock path
 
-1. The buyer uses the provider-hosted link in [`../../agent-rescue.html`](../../agent-rescue.html), entering the required non-confidential failure sentence and, optionally, one public evidence link.
+1. The buyer starts from [`README.md`](./README.md) (operator entry for Same-Day Agent Survival Proof · $2,500) and uses the **buyer-specific** provider-hosted Payment Link / handoff issued for that scope — **not** [`../../agent-rescue.html`](../../agent-rescue.html) (that page is Agent Failure Autopsy · $29 only). Enter the required non-confidential failure sentence and, optionally, one public evidence link.
 2. Successful checkout creates a Stripe customer and attempts a USD 2,500 authorization with manual capture. It is not capture, settlement, payout, or cash.
 3. Bernays returns the Given/When/Then test, delivery environment, exact America/New_York window, exclusions, fixed USD 2,500 price, and refund choice.
 4. The buyer accepts those terms in writing before capture. If the scope is a bad fit or is not accepted, the authorization is canceled and no delivery clock starts.

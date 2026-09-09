@@ -45,7 +45,7 @@ class PaymentCapabilityComposeTests(unittest.TestCase):
                 rail["charges_enabled"] = False
                 rail["payouts_enabled"] = False
                 rail["public_presentation"] = "INERT"
-        projected = CAP.project(dead)
+        projected = CAP.project(dead, LISTING.load_catalog())
         self.assertEqual(CAP.storefront_policy_errors(projected), [])
         self.assertFalse(projected["has_public_storefront"])
         self.assertFalse(projected["has_lawfully_chargeable_path"])

@@ -17,3 +17,15 @@ Source: `ReasoningOperators.kt`. PLAYER1 catalog. Names + when-to-use only.
 ANCHOR, PLAN, EXPLORE, CLUSTER, MIRROR, CRITIC, RECOVER, DOUBT, REFLECT, VERIFY, FOCUS, PREMORTEM, INFO_GAIN, GROUND, REGROUND, EVIDENCE, PROVE, DEMONSTRATE, REFUSE, RESOLVE, COMMON_SENSE, DISCOVER, REDUCE, CALIBRATE, AFFORD, PERMANENCE, CAUSE, REVERSIBILITY, MAGNITUDE, APPROPRIATE, SALIENCE, ANALOGIZE, INTROSPECT, CONFIDENCE, DREAD, TEMPORAL, PREFER, REFINE, SCHEMA, NAVIGATE, VERB, LAYOUT, PROGRESS, SPEED, THRIFT, GUARD, ALIGN, CERTAIN, CONSERVE, OBSERVE, WAIT.
 
 Always-on base: GUARD, ALIGN, CERTAIN. DIRECT is off-equivalent (no clause).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-08 — do not remint.

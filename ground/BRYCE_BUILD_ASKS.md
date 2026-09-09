@@ -66,3 +66,15 @@ id is the durable post id (short suffix when present).
 | BRYCE-1787138047922-544zwf | operator docs from his corpus into commons | OPEN |
 
 Not listed: court/session acts, investigation orders, presence, "keep working", IP/grant speech with no product ask.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-04 — do not remint.

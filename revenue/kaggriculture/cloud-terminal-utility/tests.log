@@ -1,0 +1,35 @@
+test_bad_weights_and_value_are_not_accepted (test_terminal_utility.ExistingSolver.test_bad_weights_and_value_are_not_accepted) ... ok
+test_cli_invalid_json_returns_nonzero (test_terminal_utility.ExistingSolver.test_cli_invalid_json_returns_nonzero) ... ok
+test_cli_round_trip_with_actual_t15 (test_terminal_utility.ExistingSolver.test_cli_round_trip_with_actual_t15) ... ok
+test_exact_mixture_when_baseline_utility_constant (test_terminal_utility.ExistingSolver.test_exact_mixture_when_baseline_utility_constant) ... ok
+test_no_solver_call_on_nonterminal_projection (test_terminal_utility.ExistingSolver.test_no_solver_call_on_nonterminal_projection) ... ok
+test_relative_mode_is_explicitly_a_different_objective (test_terminal_utility.ExistingSolver.test_relative_mode_is_explicitly_a_different_objective) ... ok
+test_varying_baseline_does_not_masquerade_as_absolute (test_terminal_utility.ExistingSolver.test_varying_baseline_does_not_masquerade_as_absolute) ... ok
+test_winning_baseline_remains_optimal (test_terminal_utility.ExistingSolver.test_winning_baseline_remains_optimal) ... ok
+test_exact_decimal_boundary (test_terminal_utility.Numbers.test_exact_decimal_boundary) ... ok
+test_exact_fraction_tie (test_terminal_utility.Numbers.test_exact_fraction_tie) ... ok
+test_large_integer_not_rounded (test_terminal_utility.Numbers.test_large_integer_not_rounded) ... ok
+test_nonfinite_and_boolean_values (test_terminal_utility.Numbers.test_nonfinite_and_boolean_values) ... ok
+test_win_loss_tie (test_terminal_utility.Numbers.test_win_loss_tie) ... ok
+test_bad_done_is_not_truthiness (test_terminal_utility.PairedTables.test_bad_done_is_not_truthiness) ... ok
+test_baseline_is_first_without_changing_column_order (test_terminal_utility.PairedTables.test_baseline_is_first_without_changing_column_order) ... ok
+test_duplicate_labels_and_missing_baseline (test_terminal_utility.PairedTables.test_duplicate_labels_and_missing_baseline) ... ok
+test_duplicate_pair_is_a_data_error (test_terminal_utility.PairedTables.test_duplicate_pair_is_a_data_error) ... ok
+test_exact_centered_and_absolute_objectives (test_terminal_utility.PairedTables.test_exact_centered_and_absolute_objectives) ... ok
+test_input_and_output_are_detached (test_terminal_utility.PairedTables.test_input_and_output_are_detached) ... ok
+test_missing_cell_stays_incomplete (test_terminal_utility.PairedTables.test_missing_cell_stays_incomplete) ... ok
+test_missing_done_is_not_inferred_from_cash (test_terminal_utility.PairedTables.test_missing_done_is_not_inferred_from_cash) ... ok
+test_missing_hashes_reported_without_fabrication (test_terminal_utility.PairedTables.test_missing_hashes_reported_without_fabrication) ... ok
+test_nonterminal_values_are_only_margin_proxy (test_terminal_utility.PairedTables.test_nonterminal_values_are_only_margin_proxy) ... ok
+test_null_cash_is_not_inferred_as_zero (test_terminal_utility.PairedTables.test_null_cash_is_not_inferred_as_zero) ... ok
+test_plan_binding_does_not_change_by_scenario (test_terminal_utility.PairedTables.test_plan_binding_does_not_change_by_scenario) ... ok
+test_public_decision_binding_is_shared (test_terminal_utility.PairedTables.test_public_decision_binding_is_shared) ... ok
+test_rival_cash_is_part_of_outcome (test_terminal_utility.PairedTables.test_rival_cash_is_part_of_outcome) ... ok
+test_scenario_binding_is_shared_by_all_plans (test_terminal_utility.PairedTables.test_scenario_binding_is_shared_by_all_plans) ... ok
+test_unknown_receipt_label (test_terminal_utility.PairedTables.test_unknown_receipt_label) ... ok
+test_all_retained_receipts_rebuild_exact_tables (test_terminal_utility.RetainedEngineEvidence.test_all_retained_receipts_rebuild_exact_tables) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 3.027s
+
+OK

@@ -65,3 +65,15 @@ source commit, artifact hash, and readback. Cloudflare
 Workers/D1 first needs reviewed source on `main`, then a deployed binding and
 end-to-end submit -> canonical exact-hash receipt. R2, KV, Oracle, Deno, Kaggle,
 Colab, and HF Spaces remain missing until their own evidence exists.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-11 — do not remint.

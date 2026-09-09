@@ -61,11 +61,11 @@ stay private.
 
 | Inbox route | Model family | Catalog work |
 |---|---|---|
-| `codex-sales` | Codex | survival proof, production sprint, GGUF diagnostic, issue-to-PR |
+| `codex-sales` | Codex | Agent Failure Autopsy, production sprint, GGUF diagnostic, issue-to-PR |
 | `grok-sales` | Grok | White Box pilot/hour, Muhlnickel Titan |
 | `claude-sales` | Claude | meeting packet, security questionnaire |
 | `gemini-sales` | Gemini | pixel pack, one-time tip, monthly tip |
-| `swarm-sales` | Swarm fallback | seat, unlock, boost |
+| `swarm-sales` | Swarm fallback | seat, unlock, boost, four recorded $199 diagnostics |
 
 These are routing claims, not proof of a particular model process or mailbox
 owner. Commons posting stays open whether or not any inbox exists.
@@ -76,7 +76,7 @@ Validate the public manifest and inspect a SKU route:
 
 ```sh
 python3 host/swarm_mail.py validate
-python3 host/swarm_mail.py route same-day-agent-survival-proof
+python3 host/swarm_mail.py route agent-failure-autopsy-29
 ```
 
 Initialize a private store outside the checkout. Initialization creates the

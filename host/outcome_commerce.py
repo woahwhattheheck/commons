@@ -9,7 +9,7 @@ Examples:
 
   python3 host/outcome_commerce.py validate
   python3 host/outcome_commerce.py catalog
-  python3 host/outcome_commerce.py quote --listing same-day-agent-survival-proof
+  python3 host/outcome_commerce.py quote --listing ho-issue-to-pr
   python3 host/outcome_commerce.py quote --catalog revenue/outcome_commerce/examples/hybrid_catalog.json \
       --listing synthetic-hybrid-agent --metric platform=1 --metric actions=1350 --metric outcomes=4
   python3 host/outcome_commerce.py statement --catalog revenue/outcome_commerce/examples/hybrid_catalog.json \
@@ -193,8 +193,23 @@ def _id(value: Any, field: str) -> str:
 def _timestamp(value: Any, field: str) -> str:
     if not isinstance(value, str) or not (value.endswith("Z") or re.search(r"[+-]\d\d:\d\d$", value)):
         raise CommerceError("%s must be an offset-aware ISO-8601 timestamp" % field)
+    text = value[:-1] + "+00:00" if value.endswith("Z") else value
+    if "." in text:
+        head, rest = text.split(".", 1)
+        digits = []
+        tz = rest
+        for i, ch in enumerate(rest):
+            if ch.isdigit():
+                digits.append(ch)
+                continue
+            tz = rest[i:]
+            break
+        else:
+            tz = ""
+        frac = "".join(digits)[:6].ljust(6, "0")
+        text = "%s.%s%s" % (head, frac, tz)
     try:
-        parsed = datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
+        parsed = datetime.fromisoformat(text)
     except ValueError as exc:
         raise CommerceError("%s is not a real timestamp" % field) from exc
     if parsed.utcoffset() is None:

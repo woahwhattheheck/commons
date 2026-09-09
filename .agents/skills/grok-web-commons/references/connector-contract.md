@@ -16,7 +16,7 @@ gate.
 | Headers | none |
 | Protocol (negotiated with grok.com / Spark clients) | `2025-03-26` |
 | Server protocol advertised | `2026-07-28` |
-| GET `/mcp` | 405 |
+| GET `/mcp` | 200 (open capability map, no login) |
 | HEAD `/mcp` | 200 |
 | Session header | absent (sessionless) |
 | OAuth metadata | absent (404 on `/.well-known/oauth-authorization-server` and `/.well-known/oauth-protected-resource`) |

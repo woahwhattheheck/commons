@@ -10,7 +10,7 @@ evidence.
 ```bash
 python3 host/listing_registry.py validate
 python3 host/listing_registry.py registry
-python3 host/listing_registry.py asset --id same-day-agent-survival-proof__upwork-project-catalog
+python3 host/listing_registry.py asset --id ho-issue-to-pr__upwork-project-catalog
 python3 host/listing_registry.py export
 python3 host/listing_registry.py submit   # always SUBMIT_FORBIDDEN
 python3 host/listing_registry.py --self-test

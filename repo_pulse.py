@@ -35,6 +35,8 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
+from commons_publication_policy import require_publication
+
 API = "https://api.github.com"
 MIRROR_CLAIM = "COMMONS_SLACK_MIRROR"
 UA = "repo-pulse/2.1"
@@ -210,6 +212,11 @@ def esc(text):
     out = out.replace("<", "&" + "lt;")
     out = out.replace(">", "&" + "gt;")
     return out
+
+
+def ident(text):
+    """Quote a token or GitHub string as an identifier, not pulse prose."""
+    return "`%s`" % esc(text).replace("`", "'")
 
 
 # ---------------------------------------------------------------- http
@@ -756,7 +763,7 @@ def commit_line(repo, commit):
     elif short:
         parts.append("`%s`" % short)
     if commit.get("title"):
-        parts.append(esc(commit["title"]))
+        parts.append(ident(commit["title"]))
     if commit.get("author"):
         parts.append("— `%s`" % esc(commit["author"]))
     extras = []
@@ -764,15 +771,16 @@ def commit_line(repo, commit):
         extras.append("+%d/-%d" % (commit["adds"], commit["dels"]))
     pr = commit.get("pr") or {}
     if pr.get("number") is not None:
-        label = "#%s" % pr["number"]
+        label = ["#%s" % pr["number"]]
         if pr.get("state"):
-            label += " %s" % pr["state"]
+            label.append(pr["state"])
         if pr.get("title"):
-            label += " %s" % pr["title"]
+            label.append(ident(pr["title"]))
+        shown = " ".join(label)
         if pr.get("url"):
-            extras.append("<%s|%s>" % (pr["url"], esc(label)))
+            extras.append("<%s|%s>" % (pr["url"], shown))
         else:
-            extras.append(esc(label))
+            extras.append(shown)
     if extras:
         parts.append(" ".join(extras))
     surfaces = []
@@ -810,7 +818,7 @@ def render(ctx):
 
     span = "%s→%s" % (str(ctx.get("window_from") or "")[11:19], now.strftime("%H:%M:%S"))
     quiet = ctx.get("quiet_for")
-    lead = [status]
+    lead = [ident(status)]
     if repo:
         lead.append("`%s`" % repo.split("/")[-1])
     if span.strip("→"):
@@ -843,9 +851,9 @@ def render(ctx):
             if job.get("workflow"):
                 name = "%s / %s" % (job["workflow"], name)
             if job.get("url"):
-                L.append(":red_circle: *%s* <%s|job log>" % (esc(name), job["url"]))
+                L.append(":red_circle: %s <%s|job log>" % (ident(name), job["url"]))
             else:
-                L.append(":red_circle: *%s*" % esc(name))
+                L.append(":red_circle: %s" % ident(name))
     for gap in gaps:
         L.append(":warning: `%s`" % gap)
     pages = hp.get("pages") or {}
@@ -859,7 +867,7 @@ def render(ctx):
             bits.append("<%s|build>" % pages["url"])
         L.append(" ".join(bits))
     if ctx.get("exhausted"):
-        L.append(":warning: event feed exhausted — window exceeds retained pages")
+        L.append(":warning: event feed truncated — window exceeds retained pages")
     for line in settings[:4]:
         L.append(":gear: %s" % line)
 
@@ -881,16 +889,16 @@ def render(ctx):
             if pr.get("number") is not None:
                 label.append("#%s" % pr["number"])
             if pr.get("title"):
-                label.append(pr["title"])
+                label.append(ident(pr["title"]))
             if pr.get("state") and pr["state"] not in ("open",):
                 label.append("(%s)" % pr["state"])
             text = " ".join(label)
             if not text:
                 continue
             if pr.get("url"):
-                shown.append("<%s|%s>" % (pr["url"], esc(text)))
+                shown.append("<%s|%s>" % (pr["url"], text))
             else:
-                shown.append(esc(text))
+                shown.append(text)
         if shown:
             L.append("*open PRs* " + " · ".join(shown))
 
@@ -958,7 +966,7 @@ def render(ctx):
         if rest > 0 and evidence:
             L.append("• …%d more in <%s|the run evidence>" % (rest, evidence))
 
-    checks = " ".join("%s %d" % (k, v) for k, v in sorted((hp.get("checks") or {}).items()))
+    checks = " ".join("%s %d" % (ident(k), v) for k, v in sorted((hp.get("checks") or {}).items()))
     check_bits = []
     if checks:
         check_bits.append(checks)
@@ -990,13 +998,14 @@ def render(ctx):
     if evidence:
         tail += " · <%s|evidence>" % evidence
     L.append("_%s_" % tail)
-    L.append("_inference: %s is the action lead; EVENT_GAP is an accounting remainder, not a missing SHA._" % status)
+    L.append("_inference: %s is the action lead; EVENT_GAP is an accounting remainder, not a missing SHA._" % ident(status))
     return "\n".join(L)
 
 
 # ---------------------------------------------------------------- slack / evidence
 
 def post_slack(text, webhook, bot_token, channel, summary_path, dry_run=False):
+    require_publication(text)
     if dry_run:
         print(text)
         return "dry-run"

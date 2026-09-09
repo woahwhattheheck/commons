@@ -1,0 +1,206 @@
+"""Private Slack request/return carrier attached to the existing tool gateway.
+
+Any equipped workspace harness can use the same catalog. No public MCP route
+is added, and Slack credentials remain in the existing local service adapter.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import threading
+import time
+from pathlib import Path
+
+from .outcomes import effect_uncertain, tool_failed
+from .services import build_capability_manifest, redacted
+
+OPEN = "<commons_equipment_request>"
+CLOSE = "</commons_equipment_request>"
+
+
+def slack_timestamp(value) -> str:
+    """Slack accepts microsecond precision; extra digits silently miss replies.
+
+    Preserve received timestamps exactly and truncate any higher precision
+    startup clock value instead of floating-point rounding a stored cursor up.
+    """
+    whole, _, fraction = str(value).partition(".")
+    return whole + "." + fraction[:6].ljust(6, "0")
+
+
+def parse_request(text: str) -> dict | None:
+    text = text.strip()
+    if text.startswith("&lt;commons_equipment_request&gt;"):
+        # Slack's Claude connector escapes its text fallback while rendering
+        # literal brackets in rich_text. Decode exactly one transport layer;
+        # ampersand last preserves an original literal '&lt;' in an argument.
+        text = text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+    if not text.startswith(OPEN):
+        return None
+    body, found, _footer = text[len(OPEN):].partition(CLOSE)
+    if not found:
+        raise ValueError("equipment request envelope is incomplete")
+    value = json.loads(body)
+    if not isinstance(value, dict):
+        raise ValueError("equipment request must be an object")
+    for key in ("request_id", "call_id", "name"):
+        if not isinstance(value.get(key), str) or not value[key].strip():
+            raise ValueError(key + " must be a nonempty string")
+    if not isinstance(value.get("arguments", {}), dict):
+        raise ValueError("arguments must be an object")
+    return value
+
+
+def terminal_delivery_rejection(delivery: dict) -> bool:
+    """Recognize only a recorded, definitive pre-transport policy rejection."""
+    return (
+        isinstance(delivery, dict)
+        and delivery.get("isError") is True
+        and delivery.get("uncertain") is False
+        and not effect_uncertain(delivery)
+        and delivery.get("error") == "PublicationPolicyViolation"
+        and delivery.get("code") == "commons_publication_terms"
+    )
+
+
+def _catalog_json(value) -> str:
+    """Lossless JSON for a code-rendered schema, including embedded fences/tags."""
+    return (json.dumps(value, ensure_ascii=False)
+            .replace("`", "\\u0060").replace("<", "\\u003c"))
+
+
+class SlackEquipmentCarrier:
+    def __init__(self, catalog, calls, route: dict, cursor_path: Path):
+        self.catalog = catalog
+        self.calls = calls
+        self.channel = route["channel_id"]
+        self.thread_ts = route.get("thread_ts")
+        self.interval = max(5, float(route.get("poll_seconds", 15)))
+        self.path = cursor_path
+        self.cursor = slack_timestamp(time.time())
+        if self.path.is_file():
+            self.cursor = json.loads(self.path.read_text(encoding="utf-8")).get("cursor", self.cursor)
+        self.cursor = slack_timestamp(self.cursor)
+        self._stop = threading.Event()
+        self._thread = threading.Thread(target=self.run, daemon=True, name="shared-equipment-slack-carrier")
+        self.status = {"ok": True, "phase": "configured", "channel_id": self.channel,
+            "thread_ts": self.thread_ts, "cursor": self.cursor}
+        if not self.path.is_file():
+            self._save(self.cursor)
+
+    def start(self):
+        self._thread.start()
+
+    def stop(self):
+        self._stop.set()
+        self._thread.join(timeout=35)
+
+    def _save(self, cursor):
+        cursor = slack_timestamp(cursor)
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        temp = self.path.with_suffix(".tmp")
+        temp.write_text(json.dumps({"cursor": cursor, "channel_id": self.channel, "thread_ts": self.thread_ts}), encoding="utf-8")
+        temp.replace(self.path)
+        self.cursor = cursor
+
+    def process(self, message):
+        try:
+            request = parse_request(message.get("text", ""))
+        except (ValueError, TypeError) as exc:
+            # Malformed transport input must not strand later valid requests.
+            self.catalog.services.call("slack_post_message", {"channel_id": self.channel,
+                "thread_ts": message.get("thread_ts") or message["ts"],
+                "text": "Equipment request parse error: " + str(exc)})
+            return
+        if request is None:
+            return
+        rid, cid = request["request_id"], request["call_id"]
+        if request["name"] == "equipment_catalog":
+            runner = lambda _name, _args: {"tools": self.catalog.tools()}
+        elif request["name"] == "equipment_capability_manifest":
+            runner = lambda _name, args: build_capability_manifest(
+                catalog=self.catalog, peer=(args or {}).get("peer")
+            )
+        else:
+            runner = self.catalog.call
+        result = self.calls.execute_journaled("equipment:" + rid, cid,
+            request["name"], request.get("arguments", {}), runner)
+        metadata_reply = (
+            not tool_failed(result) and not effect_uncertain(result)
+            and isinstance(result, dict)
+            and ((request["name"] == "equipment_catalog" and isinstance(result.get("tools"), list))
+                 or (request["name"] == "equipment_capability_manifest"
+                     and result.get("schema") == "commons.shared_equipment.capability_manifest.v1"
+                     and isinstance(result.get("operations"), list)))
+        )
+        encode = _catalog_json if metadata_reply else lambda value: json.dumps(value, ensure_ascii=False)
+        response = encode(redacted({"request_id": rid, "call_id": cid, "result": result}))
+        # Slack text has a finite message size. Multiple parts preserve the full
+        # JSON; consumers join content between the per-part wrappers in order.
+        parts = [response[i:i + 28000] for i in range(0, len(response), 28000)]
+        digest = hashlib.sha256(response.encode("utf-8")).hexdigest()
+        for index, part in enumerate(parts, start=1):
+            text = (f"<commons_equipment_result request_id={encode(rid)} call_id={encode(cid)} "
+                f"part=\"{index}/{len(parts)}\" sha256=\"{digest}\">\n{part}\n</commons_equipment_result>")
+            if metadata_reply:
+                # Catalogs are source schemas, not assertions about an operation.
+                # The code fence is OUTSIDE the unchanged result envelope, so
+                # existing consumers still join JSON between the original tags.
+                # Ordinary results and catalog errors keep their original path.
+                text = "```\n" + text + "\n```"
+            delivery = self.calls.execute_journaled("equipment-return:" + rid,
+                cid + ":" + message["ts"] + ":" + str(index), "slack_post_message",
+                {"channel_id": self.channel, "thread_ts": message.get("thread_ts") or message["ts"], "text": text},
+                self.catalog.services.call)
+            if tool_failed(delivery) or effect_uncertain(delivery):
+                if terminal_delivery_rejection(delivery):
+                    # Retain the journaled rejection and omit remaining parts.
+                    # This is a terminal delivery outcome, never a sent receipt.
+                    return {"request_id": rid, "call_id": cid,
+                        "code": delivery["code"], "part": index,
+                        "parts": len(parts), "delivered_parts": index - 1}
+                raise RuntimeError("equipment result delivery failed; inspect journal before retry")
+
+    def once(self):
+        args = {"channel": self.channel, "oldest": slack_timestamp(self.cursor), "limit": 100}
+        method = "conversations.history"
+        if self.thread_ts:
+            method = "conversations.replies"
+            args["ts"] = self.thread_ts
+        messages = []
+        while True:
+            page = self.catalog.services.slack(method, args)
+            if not page.get("ok"):
+                raise RuntimeError("Slack carrier read failed: " + str(page.get("error", "unknown")))
+            messages.extend(m for m in page.get("messages", []) if float(m["ts"]) > float(self.cursor))
+            cursor = page.get("response_metadata", {}).get("next_cursor")
+            if not cursor:
+                break
+            args["cursor"] = cursor
+        terminal_failures = 0
+        last_terminal_failure = None
+        for message in sorted(messages, key=lambda m: float(m["ts"])):
+            terminal_failure = self.process(message)
+            if terminal_failure is not None:
+                terminal_failures += 1
+                last_terminal_failure = terminal_failure
+            # The cursor records a handled request, not successful delivery.
+            # Definitive rejected replies remain in the existing tool journal.
+            self._save(message["ts"])
+        return {"terminal_delivery_failures": terminal_failures,
+            "last_terminal_delivery_failure": last_terminal_failure}
+
+    def run(self):
+        while not self._stop.is_set():
+            try:
+                delivery_status = self.once()
+                self.status = {"ok": True, "phase": "polling", "channel_id": self.channel,
+                    "thread_ts": self.thread_ts, "cursor": self.cursor, "time": time.time(),
+                    **delivery_status}
+            except Exception as exc:
+                self.status = {"ok": False, "phase": "error", "error": type(exc).__name__,
+                    "message": redacted(str(exc)), "cursor": self.cursor, "time": time.time()}
+            # One redacted diagnostic snapshot; no source message/secret log.
+            diagnostic = self.path.with_name("equipment_slack_status.json")
+            diagnostic.write_text(json.dumps(self.status), encoding="utf-8")
+            self._stop.wait(self.interval)

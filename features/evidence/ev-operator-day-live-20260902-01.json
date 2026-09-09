@@ -1,0 +1,13 @@
+{
+  "blob": "8940fb578b074f057f4d3c6477d75543b6e5e560",
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-live-20260902-01",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "SHA-pinned raw day sheet. Not a Pages bake. Support sub is not a Commons seat.",
+  "path": "packs/_template/day.md",
+  "recorded_at": "2026-09-02T05:45:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "0457636a9ffaa70104458f488e2db0fcb0c11312",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/0457636a9ffaa70104458f488e2db0fcb0c11312/packs/_template/day.md"
+}

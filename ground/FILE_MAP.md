@@ -175,3 +175,15 @@ Built by (NOT shipped, live in `C:\llm\muhl_builds\`):
 - `muhl_distro_tamper_test.py` — two-layer tamper + answer-provenance test.
 
 Not in git. Small enough for the private GitHub vault if you want it backed up there.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-shared-one-live-cash — do not remint.

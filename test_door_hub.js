@@ -54,6 +54,7 @@ doors.TABS.forEach(function (tab) {
       const homeHref = depth ? "../".repeat(depth) + "index.html" : "./index.html";
       assert(
         hasSessionScript(page) ||
+          page.indexOf('href="https://woahwhattheheck.github.io/commons/"') !== -1 ||
           page.indexOf('href="' + homeHref + '"') !== -1 ||
           (depth === 0 && page.indexOf('href="./"') !== -1),
         "door returns home: " + href
@@ -65,6 +66,9 @@ assert(seen["gpt-grok-ship-loop.html"], "hub surfaces gpt-grok-ship-loop.html");
 assert(seen["feature-tracker.html"], "hub surfaces feature-tracker.html");
 assert(seen["swarm-dc.html"], "hub surfaces swarm-dc.html");
 assert(seen["telegram.html"], "hub surfaces telegram.html");
+assert(seen["pay.html"], "hub surfaces pay.html");
+assert(seen["autogtm.html"], "hub surfaces autogtm.html");
+assert(seen["clans.html"], "hub surfaces clans.html");
 assert(Object.keys(seen).length >= 40, "hub surfaces a full door set, got " + Object.keys(seen).length);
 
 const hubHtml = index.match(/<nav id="door-hub"[\s\S]*?<\/nav>/);
@@ -124,6 +128,7 @@ assert(rootHtmlPages.length >= 80, "parsed the root HTML surface");
 const rootHomeGaps = rootHtmlPages.filter(function (name) {
   const page = fs.readFileSync(path.join(root, name), "utf8");
   return !hasSessionScript(page) &&
+    page.indexOf('href="https://woahwhattheheck.github.io/commons/"') === -1 &&
     page.indexOf('href="./index.html"') === -1 &&
     page.indexOf('href="./"') === -1;
 });
@@ -139,12 +144,15 @@ const namedHomeReturnCanaries = [
   "permit-intake-receipt.html",
   "repair-booking-preflight.html",
   "salesforce-contact-preflight.html",
+  "webmcp.html",
+  "toolbench.html",
 ];
 namedHomeReturnCanaries.forEach(function (name) {
   assert(rootHtmlPages.indexOf(name) !== -1, "named home-return canary is a root page: " + name);
   const page = fs.readFileSync(path.join(root, name), "utf8");
   assert(
     hasSessionScript(page) ||
+          page.indexOf('href="https://woahwhattheheck.github.io/commons/"') !== -1 ||
       page.indexOf('href="./index.html"') !== -1 ||
       page.indexOf('href="./"') !== -1,
     "named home-return canary returns home: " + name

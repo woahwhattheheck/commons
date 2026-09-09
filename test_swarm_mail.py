@@ -27,7 +27,7 @@ NOW = "2026-08-27T00:30:00Z"
 LATER = "2026-08-27T00:31:00Z"
 PROOF_BUNDLE = b"measured mx/spf/dkim/dmarc proof bundle\n"
 MTA_EVIDENCE = b"trusted local MTA envelope receipt\n"
-BASE_SKU = "same-day-agent-survival-proof"
+BASE_SKU = "ho-issue-to-pr"
 SECOND_SKU = "production-survival-sprint"
 BUYER = "buyer@example.com"
 SUBJECT = "Bounded production proof"
@@ -79,6 +79,22 @@ class SwarmMailManifestTests(unittest.TestCase):
         ):
             self.assertIn(sku, grok["sku_ids"])
             self.assertEqual(mail.route_sku(sku)["inbox_id"], "grok-sales")
+        swarm = next(item for item in manifest["inboxes"] if item["inbox_id"] == "swarm-sales")
+        diagnostics = {
+            "dealer-service-lead-rescue",
+            "plant-downtime-handoff",
+            "referral-intake-completeness",
+            "repair-booking-exactly-once-v1",
+        }
+        self.assertTrue(diagnostics.issubset(set(swarm["sku_ids"])))
+        for sku in diagnostics:
+            self.assertEqual(mail.route_sku(sku)["inbox_id"], "swarm-sales")
+        codex = next(item for item in manifest["inboxes"] if item["inbox_id"] == "codex-sales")
+        self.assertIn("agent-failure-autopsy-29", codex["sku_ids"])
+        self.assertEqual(
+            mail.route_sku("agent-failure-autopsy-29")["inbox_id"],
+            "codex-sales",
+        )
         for sku in routed:
             route = mail.route_sku(sku)
             self.assertEqual(route["sku_id"], sku)

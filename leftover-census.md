@@ -24,3 +24,14 @@ Cite, do not remint: repo-pulse · change.md bake · job-watchdog · finder-zero
 
 Card: [ground/WORK_AUTOMATION.md](./ground/WORK_AUTOMATION.md). Receipt: [p/work-becomes-automation-20260830-01.md](./p/work-becomes-automation-20260830-01.md).
 <!-- leftover-id-census:end -->
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+

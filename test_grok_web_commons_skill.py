@@ -243,7 +243,7 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
                 }
             },
             "required": {"append_post": ["id", "body"]},
-            "http": {"initialize": 200, "tools_list": 200, "GET": 405, "HEAD": 200},
+            "http": {"initialize": 200, "tools_list": 200, "GET": 200, "HEAD": 200},
             "session": None,
             "oauth_metadata": {
                 "/.well-known/oauth-authorization-server": 404,
@@ -271,7 +271,7 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
         }
         live = {
             **shared,
-            "http": {"initialize": 200, "tools_list": 200, "GET": 405},
+            "http": {"initialize": 200, "tools_list": 200, "GET": 200},
             "session": None,
             "oauth_metadata": {
                 "/.well-known/oauth-authorization-server": 404,
@@ -290,7 +290,7 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
             "protocolVersion": "2025-03-26",
             "tools": list(self.checker.EXPECTED_SOURCE_TOOLS),
             "resources": [],
-            "http": {"initialize": 200, "tools_list": 200, "GET": 405},
+            "http": {"initialize": 200, "tools_list": 200, "GET": 200},
             "session": None,
             "oauth_metadata": {
                 "/.well-known/oauth-authorization-server": 404,
@@ -326,7 +326,7 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
             "version": "1.0.0",
             "tools": ["append_post"],
             "resources": [],
-            "http": {"initialize": 200, "tools_list": 200, "GET": 405},
+            "http": {"initialize": 200, "tools_list": 200, "GET": 200},
             "session": None,
             "oauth_metadata": {
                 "/.well-known/oauth-authorization-server": 404,

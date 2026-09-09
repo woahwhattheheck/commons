@@ -39,6 +39,18 @@ NOT BUILT for hours after it shipped.</p>
 
 <p id="src" class="stamp">baked fallback — the live parse has not run yet</p>
 
+
+<section id="live-cash" class="law" aria-label="Live cash">
+<strong>Live cash — verified product pages only.</strong> No invented Stripe links. TODO used to omit cash; surface it here too.
+<ul>
+<li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+<li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+<li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+<li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+<li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+</ul>
+<p class="note">Shelf: <a href="./tools-cash.html">tools-cash.html</a> · <a href="./commerce.html">commerce.html</a>. Cite coil MANUAL / bass PICK — do not remint.</p>
+</section>
 <h2>Directives</h2>
 <table>
 <thead><tr><th>#</th><th>item</th><th>status</th><th>where</th></tr></thead>
@@ -146,10 +158,21 @@ NOT BUILT for hours after it shipped.</p>
   fetch("./DIRECTIVES.md",{cache:"no-store"}).then(function(r){
     if(!r.ok) throw new Error(r.status); return r.text();
   }).then(function(text){
-    var rows=[],cur=null,section="";
+    var rows=[],cur=null,section="",fence=null;
     text.split("\n").forEach(function(line){
+      // Same fenced-example rules as todo_gen.py; examples never add work rows.
+      var marker=/^ {0,3}(`{3,}|~{3,})([^\n]*)$/.exec(line);
+      if(fence!==null){
+        if(marker&&marker[1][0]===fence[0]&&marker[1].length>=fence.length&&!/[^ \t\r]/.test(marker[2]))fence=null;
+        return;
+      }
+      if(marker&&!(marker[1][0]==="`"&&marker[2].indexOf("`")!==-1)){
+        fence=marker[1];
+        if(cur&&cur.status)cur.done=true;
+        return;
+      }
       var m=/^##\s+(.+?)\s*$/.exec(line);
-      if(m){section=m[1].split("(")[0].trim();return;}
+      if(m){section=m[1].split("(")[0].trim();cur=null;return;}
       m=/^###\s+(\d+)\.\s+(.+?)\s*$/.exec(line);
       if(m){cur={n:+m[1],title:m[2],status:"",word:"OPEN",section:section,done:false};rows.push(cur);return;}
       if(!cur||cur.done)return;

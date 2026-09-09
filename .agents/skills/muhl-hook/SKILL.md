@@ -19,6 +19,17 @@ Facts: [ground/tokens/muhl-hook.md](../../../ground/tokens/muhl-hook.md). Spec: 
 
 HTTP is not the computer. Remote seats file TOOLS jobs. Local seats press `python host/muhl_tools_once.py --go` and DROP missing **docs**. Size is the gate. No titan. No live `.mno`. No 337.
 
+
+## File a TOOLS job
+
+- Catalog: [tools.json](../../../tools.json) (machine-readable `job` + `button`) · living [manual.html](../../../manual.html)
+- File one: [job.html](../../../job.html) (`to: TOOLS`)
+- Slash recipe: `/tools` in [commands.json](../../../commands.json)
+- Harness road: `tools-board` in [harnesses/catalog.json](../../../harnesses/catalog.json)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die; NEED/NONE paths cite the board)
+
+Not an Action Pad verb. Cite `coil-tools-json-job-hook-20260905-01` / `coil-commands-json-tools-enrich-20260905-01`. Do not remint.
+
 ## Do this
 
 **On the laptop:** open `DROP.md`. Put datasheets, dests FROM FILE, instrument receipts at new paths. Then take the oldest TOOLS job.

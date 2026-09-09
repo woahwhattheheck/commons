@@ -287,6 +287,8 @@ def main():
     if "--go" not in sys.argv:
         print("NEED — python host/muhl_tools_once.py --go")
         print("ONE job. then die. not a poller.")
+        print("File jobs: job.html · catalog: tools.json · board: tools.html")
+        print("Harness road: tools-board (harnesses/catalog.json).")
         return 1
     with ingest.ingest_lock():
         ingest.ingest_ntfy()
@@ -296,6 +298,8 @@ def main():
     print("TOOLS_ONCE open=%s receipts=%s" % (len(st["open"]), st["receipts"]))
     if not full:
         print("NONE — no open TOOLS job")
+        print("File one at job.html · catalog: tools.json · board: tools.html")
+        print("Then: python host/muhl_tools_once.py --go")
         print("DIE")
         return 0
     _ts, meta, body = full

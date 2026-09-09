@@ -1,0 +1,13 @@
+# Invoice — one visit
+
+CURBLINE WEEKEND
+Invoice for one visit
+
+Date: _______________
+Address: _______________
+Job: bin-out $40 / tidy $60 / brush pile $80
+Amount due: $________
+Paid: cash / check / owner-pasted Payment Link
+Repeat requested: yes / no
+
+No account. No login. No invented checkout URL.

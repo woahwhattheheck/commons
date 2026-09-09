@@ -16,6 +16,7 @@
     "hostname_leftover": "commons-spark-mcp is the Spark-era Vercel alias. The JSON-RPC contract is shared.",
     "pages_mcp": "https://woahwhattheheck.github.io/commons/mcp",
     "pages_mcp_status": "404 by design. Pages is static and does not host the Python adapter.",
+    "GET /mcp": 200,
     "measured_20260826": {
       "GET /mcp": 405,
       "HEAD /mcp": 200,
@@ -24,6 +25,10 @@
       "GET /login": 404,
       "GET /.well-known/oauth-protected-resource/mcp": 404,
       "SSO_401": false
+    },
+    "measured_20260902": {
+      "GET /mcp": 200,
+      "note": "405 was the bug. GET serves the open capability map. No login."
     }
   },
   "carriers": [

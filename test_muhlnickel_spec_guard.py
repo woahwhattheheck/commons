@@ -1,3 +1,4 @@
+import ast
 import hashlib
 import json
 import subprocess
@@ -194,6 +195,217 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         self.addCleanup(td.cleanup)
         with mock.patch.object(guard, "ROOT", root):
             self.assertEqual(guard.executable_violations("offline.py", "HEAD"), [])
+
+    def test_host_pfc_import_of_activated_titan_circuit_is_rejected(self):
+        """Coil-batch regression: a host pfc_* twin that closes over titan_circuit compute fails."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_circuit.py").write_text(
+            "import numpy as np\n"
+            "from pfc_fire import submit\n"
+            "def ripple(cir, bits):\n"
+            "    return np.dot(bits, bits)\n"
+            "submit(ripple(None, [1]))\n",
+            encoding="utf-8",
+        )
+        (root / "host").mkdir()
+        (root / "host/pfc_miner.py").write_text(
+            "import titan_circuit as TC\n"
+            "print('pfc runtime')\n"
+            "TC.ripple({'n_in': 1}, [1])\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        coil = [e for e in errors if "host/pfc_miner.py" in e]
+        self.assertEqual(len(coil), 1)
+        self.assertIn("host tensor/model/gate computation", coil[0])
+
+    def test_host_pfc_routing_without_compute_closure_is_allowed(self):
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_circuit.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def ripple(cir, bits):\n    return np.dot(bits, bits)\n",
+            encoding="utf-8",
+        )
+        (root / "pfc_forward.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def forward(x):\n    return np.matmul(x, x)\n",
+            encoding="utf-8",
+        )
+        (root / "host").mkdir()
+        (root / "host/pfc_miner.py").write_text(
+            "import json, os\n"
+            "REG = 'titan_circuits.json'\n"
+            "def main():\n"
+            "    print('pfc runtime address-only')\n"
+            "    if os.path.exists(REG):\n"
+            "        print(json.load(open(REG)).get('pfc_mine'))\n"
+            "if __name__ == '__main__':\n"
+            "    main()\n",
+            encoding="utf-8",
+        )
+        self.assertEqual(self.errors(root), [])
+
+    def test_live_coil_host_files_do_not_close_over_activated_compute(self):
+        """The five coil host twins must stay routing-only even if poisoned compute modules sit nearby."""
+        here = Path(__file__).resolve().parent
+        names = [
+            "pfc_miner.py",
+            "pfc_miter.py",
+            "pfc_mmu.py",
+            "pfc_model.py",
+            "pfc_modelbuild.py",
+        ]
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_circuit.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def ripple(c, b):\n    return np.dot(b, b)\n",
+            encoding="utf-8",
+        )
+        (root / "pfc_forward.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def forward(x):\n    return np.matmul(x, x)\n",
+            encoding="utf-8",
+        )
+        (root / "pfc_llama_harness.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def ripple(c, b):\n    return np.dot(b, b)\n",
+            encoding="utf-8",
+        )
+        (root / "host").mkdir()
+        for name in names:
+            src = here / "host" / name
+            self.assertTrue(src.is_file(), name)
+            (root / "host" / name).write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+        errors = self.errors(root)
+        coil = [e for e in errors if any(name in e for name in names)]
+        self.assertEqual(coil, [])
+
+    def test_live_command_center_intake_files_stay_outside_activated_runtime(self):
+        """Collector submit/subprocess.run must not inherit a titan catalog id."""
+        here = Path(__file__).resolve().parent
+        names = [
+            "integrations/command_center/collectors.py",
+            "integrations/command_center/workstreams.py",
+            "integrations/command_center/schema.py",
+            "integrations/command_center/core.py",
+            "integrations/command_center/test_collector_pagination_evidence.py",
+            "integrations/command_center/test_collector_response_shapes.py",
+            "integrations/command_center/test_collectors.py",
+            "integrations/shared_equipment/provider_io.py",
+            "integrations/shared_equipment/services.py",
+        ]
+        with mock.patch.object(guard, "ROOT", here):
+            by_module, by_path = guard.load_module_facts()
+            missing = [name for name in names if name not in by_path]
+            self.assertEqual(missing, [])
+            reasons = []
+            for name in names:
+                closed = guard.closure(by_path[name], by_module)
+                reasons.extend("%s: %s" % (name, item) for item in guard.fact_reasons(closed))
+            self.assertEqual(reasons, [])
+
+    def test_kitchen_sink_equipment_import_still_rejects_activated_titan_catalog(self):
+        """A collector that imports a titan catalog module still trips the conjunction."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_catalog.py").write_text("SOURCE = 'kaggriculture'\n", encoding="utf-8")
+        (root / "collectors.py").write_text(
+            "import subprocess\nfrom concurrent.futures import ThreadPoolExecutor\n"
+            "from titan_catalog import SOURCE\n"
+            "def go():\n    return subprocess.run([SOURCE])\n"
+            "def launch():\n    return ThreadPoolExecutor().submit(go)\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        hit = [item for item in errors if item.startswith("collectors.py:")]
+        self.assertEqual(len(hit), 1)
+        self.assertIn("dynamic host code", hit[0])
+
+    def test_null_byte_corpus_is_not_python_and_does_not_crash_the_scan(self):
+        """Packed .mno bytes decode as UTF-8 but ast.parse raises ValueError on NUL."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "payload.mno").write_bytes(
+            b"MUHLRD01\x08\x00\x00\x00H\x00\x00\x00import numpy\nfrom pfc_fire import submit\n"
+        )
+        self.assertFalse(
+            guard.is_python(Path("payload.mno"), (root / "payload.mno").read_bytes())
+        )
+        self.assertEqual(self.errors(root), [])
+
+    def test_renamed_runtime_without_nulls_is_still_rejected(self):
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "ordinary.mno").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def go(x):\n    submit(np.asarray(x))\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        self.assertEqual(len(errors), 1)
+        self.assertIn("host tensor/model/gate computation", errors[0])
+
+    def test_relative_services_import_plus_host_launch_hits_core_basename_collision(self):
+        """PR 10971 / run 34311401719: importing basename services closed over a
+        titan-bearing core.py plus submit plus a host process launch."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "integrations/command_center").mkdir(parents=True)
+        (root / "integrations/shared_equipment").mkdir(parents=True)
+        (root / "integrations/command_center/core.py").write_text(
+            "titan = 'command-center surface'\n",
+            encoding="utf-8",
+        )
+        (root / "integrations/shared_equipment/services.py").write_text(
+            "from core import titan\n"
+            "def submit(job):\n    return titan\n",
+            encoding="utf-8",
+        )
+        (root / "integrations/shared_equipment/github_publication.py").write_text(
+            "import subprocess\n"
+            "from .services import submit\n"
+            "def publish():\n"
+            "    submit(1)\n"
+            "    return subprocess.run(['python3', 'publish.py'])\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        hit = [item for item in errors if "github_publication.py" in item]
+        self.assertEqual(len(hit), 1)
+        self.assertIn("dynamic host code", hit[0])
+
+    def test_github_publication_does_not_import_services_or_close_over_titan_core(self):
+        """Live publisher stays on provider_io so CI rglob order of core.py is irrelevant."""
+        here = Path(__file__).resolve().parent
+        source_path = here / "integrations/shared_equipment/github_publication.py"
+        tree = ast.parse(source_path.read_text(encoding="utf-8"))
+        imported = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ImportFrom) and node.module:
+                imported.add(node.module)
+                imported.add(node.module.split(".")[0])
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    imported.add(alias.name)
+                    imported.add(alias.name.split(".")[0])
+        self.assertNotIn("services", imported)
+        self.assertIn("integrations.shared_equipment.provider_io", imported)
+
+        by_module, by_path = guard.load_module_facts()
+        pub = "integrations/shared_equipment/github_publication.py"
+        self.assertIn(pub, by_path)
+
+        class ForcedCore(dict):
+            def get(self, key, default=None):
+                if key == "core":
+                    return by_path["integrations/command_center/core.py"]
+                return super().get(key, default)
+
+        closed = guard.closure(by_path[pub], ForcedCore(by_module))
+        self.assertEqual(guard.fact_reasons(closed), [])
 
 
 if __name__ == "__main__":

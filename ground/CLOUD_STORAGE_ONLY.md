@@ -63,3 +63,15 @@ mirrors) are opened with `python3 host/cloud_current_worktree.py open`.
 That road composes with this freeze; it does not create clones on Bryce's
 machine and it does not replace this copy-only evacuation.
 [CLOUD_CURRENT.md](./CLOUD_CURRENT.md).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-11 — do not remint.

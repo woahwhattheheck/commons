@@ -1,0 +1,128 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -63,6 +63,9 @@
+     std::vector<Demand> demands;
+     std::vector<std::vector<int>> incoming, outgoing;
+     std::vector<std::vector<bool>> offline;
++    // Immutable maintenance-equivalent slots share only topology-derived data.
++    // Traffic, routes, loads and transition budgets remain indexed by real time.
++    std::vector<int> topologySlot;
+     std::vector<std::unique_ptr<Dag>> dags;
+     std::unordered_map<std::uint64_t, Sparse> cache;
+     std::vector<Route> routes;
+@@ -91,7 +94,7 @@
+     bool finished() const { return interrupted || elapsed() >= seconds; }
+ 
+     Dag& dag(int t, int target) {
+-        auto& ptr = dags[t * n + target];
++        auto& ptr = dags[topologySlot[t] * n + target];
+         if (ptr) return *ptr;
+         auto result = std::make_unique<Dag>();
+         auto& dist = result->distance;
+@@ -132,7 +135,7 @@
+     // A unit flow splits equally at EACH forwarding node, not across whole paths.
+     // Values are fractions divided by link capacity, ready for load accumulation.
+     const Sparse& segment(int t, int source, int target) {
+-        std::uint64_t key = (static_cast<std::uint64_t>(t) * n + source) * n + target;
++        std::uint64_t key = (static_cast<std::uint64_t>(topologySlot[t]) * n + source) * n + target;
+         auto found = cache.find(key);
+         if (found != cache.end()) return found->second;
+         if (cache.size() >= 300000) cache.clear();
+@@ -190,6 +193,34 @@
+ 
+     int distance(int d, const Route& a, const Route& b) const {
+         if (a == b) return 0;
++        // At most eight segments fit in fixed local storage. Retain unique
++        // directed-segment semantics, including repeated/degenerate waypoints.
++        // Longer caller routes use the original general-length implementation.
++        if (a.size() <= 7 && b.size() <= 7) {
++            using Segment = std::pair<int, int>;
++            Segment x[8], y[8];
++            auto collect = [&](const Route& path, Segment* out) {
++                int count = 0;
++                int from = demands[d].from;
++                auto append = [&](int to) {
++                    Segment value{from, to};
++                    int j = 0;
++                    while (j < count && out[j] != value) ++j;
++                    if (j == count) out[count++] = value;
++                    from = to;
++                };
++                for (int to : path) append(to);
++                append(demands[d].to);
++                return count;
++            };
++            int nx = collect(a, x), ny = collect(b, y), common = 0;
++            for (int i = 0; i < nx; ++i) {
++                int j = 0;
++                while (j < ny && x[i] != y[j]) ++j;
++                common += static_cast<int>(j < ny);
++            }
++            return nx + ny - 2 * common;
++        }
+         auto segments = [&](const Route& path) {
+             std::set<std::pair<int, int>> result;
+             int from = demands[d].from;
+@@ -201,6 +232,32 @@
+         int common = 0;
+         for (auto item : x) common += static_cast<int>(y.count(item));
+         return static_cast<int>(x.size() + y.size()) - 2 * common;
++    }
++
++    // Exact first-stratum shortcut; all unresolved comparisons retain the
++    // original full descending sort. Quantization remains at the call site.
++    static bool quantizedImproves(std::vector<long long>& before,
++                                  std::vector<long long>& after) {
++        if (before.size() == after.size() && !before.empty()) {
++            long long bmax = before.front(), amax = after.front();
++            std::size_t bcount = 0, acount = 0;
++            for (std::size_t i = 0; i < before.size(); ++i) {
++                const auto b = before[i], a = after[i];
++                if (b > bmax) { bmax = b; bcount = 1; }
++                else if (b == bmax) { ++bcount; }
++                if (a > amax) { amax = a; acount = 1; }
++                else if (a == amax) { ++acount; }
++            }
++            if (amax != bmax) {
++                return amax < bmax;
++            }
++            if (acount != bcount) {
++                return acount < bcount;
++            }
++        }
++        std::sort(before.begin(), before.end(), std::greater<long long>());
++        std::sort(after.begin(), after.end(), std::greater<long long>());
++        return after < before;
+     }
+ 
+     // Simultaneous moves are evaluated against the same incumbent. No tentative
+@@ -259,9 +316,7 @@
+             before.push_back(static_cast<long long>(std::floor(std::max(0.0, loads[i] - 1e-10) * 1e6)));
+             after.push_back(static_cast<long long>(std::floor(std::max(0.0, loads[i] + delta[i] + 1e-10) * 1e6)));
+         }
+-        std::sort(before.begin(), before.end(), std::greater<long long>());
+-        std::sort(after.begin(), after.end(), std::greater<long long>());
+-        if (!(after < before)) return false;
++        if (!quantizedImproves(before, after)) return false;
+         for (int i : touched) loads[i] += delta[i];
+         used = std::move(costs);
+         for (std::size_t k = 0; k < changes.size(); ++k) {
+@@ -502,6 +557,18 @@
+             int t = item["t"].GetInt();
+             for (const auto& link : item["links"].GetArray()) offline.at(t).at(edgeIndex.at(link.GetInt())) = true;
+         }
++        // Equality uses the complete link mask, including nonconsecutive slots
++        // and bits past a machine word; equal counts alone are insufficient.
++        topologySlot.resize(h);
++        for (int t = 0; t < h; ++t) {
++            topologySlot[t] = t;
++            for (int prior = 0; prior < t; ++prior) {
++                if (offline[t] == offline[prior]) {
++                    topologySlot[t] = topologySlot[prior];
++                    break;
++                }
++            }
++        }
+         budget.assign(h, 0); used.assign(h, 0);
+         for (const auto& item : scenario["budget"].GetArray()) budget.at(item["t"].GetInt()) = item["value"].GetInt();
+         dags.resize(h * n);

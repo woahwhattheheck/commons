@@ -1,12 +1,13 @@
 {
   "schema": "commons-repair-booking-contract-v1",
   "id": "repair-booking-exactly-once-v1",
-  "version": 1,
+  "version": 2,
   "offer": {
     "diagnostic_price_usd": 199,
     "diagnostic_delivery": "one business day",
     "proof_price_usd": 2500,
-    "proof_gate": "only after diagnostic fit"
+    "proof_gate": "only after diagnostic fit",
+    "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
   },
   "scope": {
     "public_runner": "synthetic_only",

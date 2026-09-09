@@ -76,6 +76,16 @@ The production bridge reads the same descriptive state from
 cannot enqueue provider work. These values report capacity only; they contain
 no provider credential and create no admission control.
 
+The Slack bridge always carries the body through public MCP intake. It applies
+the capacity boundary after intake, before any queued Slack status, and again
+immediately before `fire_action`. A deployed `route_grokcom_revenue_work` that
+still returns `GROKCOM_WORK` without observed capacity cannot enqueue grok.com
+work or post a `DURABILITY_NEVER_APPEARED` rejection while capacity is
+unverified or exhausted. A same-event retry rechecks fresh capacity. After a
+restart, the bridge refetches a waiting event from its Slack coordinates and
+verifies the original text hash before resuming it; message bodies are not
+stored in the bridge database.
+
 ## Build and review loop
 
 1. `INTAKE` returns `GROKCOM_WORK`, a `QUEUED` Slack acknowledgement, and an
@@ -118,3 +128,17 @@ roads remain composed as-is: HUSK Slack-to-board, the grok.com GitHub connection
 the public Commons MCP, GPT verification, and Moth board-to-Slack. Do not remint
 those roads and do not route this pool through Cursor, Grokbot, or a local Grok
 CLI.
+
+
+## Live cash
+
+Revenue orchestrator docs used to bury tip checkout doors. Verified product pages only — no invented Stripe links:
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced.
+

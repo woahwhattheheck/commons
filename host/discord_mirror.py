@@ -22,6 +22,9 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from commons_publication_policy import PublicationPolicyViolation, require_publication
+
 DISCORD_LIMIT = 2000
 GIT_BLOB = "https://github.com/woahwhattheheck/commons/blob/main/p/{id}.md"
 API = "https://discord.com/api/v10"
@@ -119,6 +122,10 @@ def format_mirror(path: Path) -> list[str]:
 
 
 def _post_json(url: str, payload: dict, headers: dict) -> dict:
+    try:
+        require_publication(str(payload.get("content") or ""))
+    except PublicationPolicyViolation as exc:
+        raise SystemExit(str(exc)) from None
     merged = {"User-Agent": USER_AGENT, **headers}
     req = urllib.request.Request(
         url,
@@ -148,6 +155,13 @@ def send_parts(
     channel: str = "",
     thread_id: str = "",
 ) -> list[str]:
+    # Check the complete outgoing message before sending its first chunk.
+    # Rejected wording stays private; other batch records continue.
+    try:
+        require_publication("\n".join(parts))
+    except PublicationPolicyViolation as exc:
+        sys.stderr.write(str(exc) + "\n")
+        return []
     receipts: list[str] = []
     dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()
     parent = (thread_id or os.environ.get("COMMONS_DISCORD_THREAD_ID") or "").strip()
@@ -214,6 +228,8 @@ def main(argv: list[str]) -> int:
         sys.stdout.write("DARK: no DISCORD_BOT_TOKEN and no DISCORD_WEBHOOK_URL. Lane idle.\n")
         return 0
     receipts = send_parts(parts, token=token, webhook=webhook)
+    if not receipts:
+        return 0
     sys.stdout.write("sent id=" + ",".join(receipts) + "\n")
     return 0
 

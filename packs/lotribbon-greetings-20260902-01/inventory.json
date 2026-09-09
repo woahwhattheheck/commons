@@ -1,0 +1,268 @@
+{
+  "id": "lotribbon-greetings-20260902-01-inventory",
+  "brand": "LotRibbon Greetings",
+  "planning_total_usd": "1067.50",
+  "currency": "USD",
+  "planning_not_owner_pasted_running_cost": true,
+  "note": "Planning figures only. Operator verifies a current supplier quote before buying. This total is not the owner-pasted running-cost slot.",
+  "item_count": 20,
+  "items": [
+    {
+      "sku": "letter-H",
+      "name": "18-inch corrugated letter H",
+      "qty": 4,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "38.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-A",
+      "name": "18-inch corrugated letter A",
+      "qty": 4,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "38.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-P",
+      "name": "18-inch corrugated letter P",
+      "qty": 4,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "38.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-Y",
+      "name": "18-inch corrugated letter Y",
+      "qty": 3,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "28.50",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-B",
+      "name": "18-inch corrugated letter B",
+      "qty": 3,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "28.50",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-I",
+      "name": "18-inch corrugated letter I",
+      "qty": 3,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "28.50",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-R",
+      "name": "18-inch corrugated letter R",
+      "qty": 3,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "28.50",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-T",
+      "name": "18-inch corrugated letter T",
+      "qty": 3,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "28.50",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "letter-D",
+      "name": "18-inch corrugated letter D",
+      "qty": 2,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "19.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "vowel-extra",
+      "name": "18-inch extra vowels E O U (12 pieces)",
+      "qty": 12,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "114.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "consonant-extra",
+      "name": "18-inch extra consonants pack (20 pieces)",
+      "qty": 20,
+      "unit_cost_usd": "9.50",
+      "line_total_usd": "190.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "glyph-heart",
+      "name": "18-inch heart glyph",
+      "qty": 4,
+      "unit_cost_usd": "12.00",
+      "line_total_usd": "48.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "glyph-star",
+      "name": "18-inch star glyph",
+      "qty": 4,
+      "unit_cost_usd": "12.00",
+      "line_total_usd": "48.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "stakes-10pk",
+      "name": "H-stakes 10-pack",
+      "qty": 8,
+      "unit_cost_usd": "11.25",
+      "line_total_usd": "90.00",
+      "supplier_options": [
+        "landscape-stake supplier",
+        "farm-and-fleet",
+        "big-box garden"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "tote-set",
+      "name": "letter tote",
+      "qty": 3,
+      "unit_cost_usd": "18.00",
+      "line_total_usd": "54.00",
+      "supplier_options": [
+        "moving-supply aisle",
+        "craft-storage aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "overlay-baby",
+      "name": "baby-announcement overlay set",
+      "qty": 1,
+      "unit_cost_usd": "48.00",
+      "line_total_usd": "48.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "overlay-grad",
+      "name": "graduation overlay set",
+      "qty": 1,
+      "unit_cost_usd": "48.00",
+      "line_total_usd": "48.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "overlay-holiday",
+      "name": "holiday overlay set",
+      "qty": 1,
+      "unit_cost_usd": "52.00",
+      "line_total_usd": "52.00",
+      "supplier_options": [
+        "corrugated-letter specialty",
+        "local sign shop",
+        "big-box craft aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "storage-bin",
+      "name": "lidded storage bin",
+      "qty": 4,
+      "unit_cost_usd": "21.00",
+      "line_total_usd": "84.00",
+      "supplier_options": [
+        "moving-supply aisle",
+        "craft-storage aisle"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    },
+    {
+      "sku": "work-glove",
+      "name": "work glove pair",
+      "qty": 2,
+      "unit_cost_usd": "8.00",
+      "line_total_usd": "16.00",
+      "supplier_options": [
+        "hardware aisle",
+        "farm-and-fleet"
+      ],
+      "status": "PLANNING_OPERATOR_VERIFIES"
+    }
+  ]
+}

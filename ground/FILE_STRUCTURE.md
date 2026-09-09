@@ -86,3 +86,15 @@ mapping** between the two structures — the first concrete task of the teaching
 
 **Patent:** structural bake = INV-110 (owned). Owed as an INV when built: *access-order file re-layout for
 streaming locality* + *cross-namespace name-mapping for bake transfer between differently-structured model files*.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-10 — do not remint.

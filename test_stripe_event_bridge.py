@@ -28,7 +28,15 @@ class StripeEventBridgeTests(unittest.TestCase):
         self.secret = "whsec_test_fixture_not_a_real_secret"
         self.now = 1787802000
         self.request = json.loads((ROOT / "revenue" / "checkout_handoff" / "example_request.json").read_text())
-        self.catalog = json.loads((ROOT / "revenue" / "outcome_commerce" / "catalog.json").read_text())
+        # The historical request and price form a self-contained bridge fixture.
+        # The live storefront may retire the offer without invalidating event replay.
+        self.catalog = {"listings": [{
+            "id": "same-day-agent-survival-proof",
+            "name": "Same-Day Agent Survival Proof",
+            "pricing": {"currency": "USD", "components": [
+                {"id": "entry_fee", "kind": "fixed", "amount": "2500.00"}
+            ]},
+        }]}
         self.metadata = {
             "commons_request_id": self.request["request_id"],
             "commons_crm_record": self.request["crm"]["record_id"],
@@ -286,6 +294,10 @@ class StripeEventBridgeTests(unittest.TestCase):
             payload = root / "payload.json"
             signature = root / "signature.txt"
             receipts = root / "receipts"
+            request = root / "request.json"
+            request.write_text(json.dumps(self.request), encoding="utf-8")
+            catalog = root / "catalog.json"
+            catalog.write_text(json.dumps(self.catalog), encoding="utf-8")
             payload.write_bytes(raw)
             signature.write_text(self.signature(raw))
             env = dict(os.environ)
@@ -294,7 +306,8 @@ class StripeEventBridgeTests(unittest.TestCase):
                 [
                     sys.executable,
                     str(HOST / "stripe_event_bridge.py"),
-                    "--request", str(ROOT / "revenue" / "checkout_handoff" / "example_request.json"),
+                    "--request", str(request),
+                    "--catalog", str(catalog),
                     "--payload", str(payload),
                     "--signature-file", str(signature),
                     "--secret-env", "BRIDGE_TEST_SECRET",

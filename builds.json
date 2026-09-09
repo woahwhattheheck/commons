@@ -350,16 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 9,
+ "n_open_prs": 7,
  "open_prs": [
   {
-   "number": 7010,
+   "number": 11137,
    "author": "woahwhattheheck",
-   "title": "ChartTrace lane E: commercial isolation, workload pricing, live ops OFF",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
+   "title": "TEST ONLY: verify exact E04 + E07 + E14 Titan composition",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11137",
    "base_freshness": {
-    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "bc190bb8a73900a9cd2cd486efecbc21c0713097",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,13 +369,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7009,
+   "number": 11120,
    "author": "woahwhattheheck",
-   "title": "ChartTrace lane D: review line, .ctpkg, and counsel gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
+   "title": "TITAN P15: stage animal admission horizon certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11120",
    "base_freshness": {
-    "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "d56c11b0199d3fcf7820922023a3aa8d98370888",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -385,45 +385,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7006,
+   "number": 11181,
    "author": "woahwhattheheck",
-   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
+   "title": "TITAN S19: exact-checkpoint constraint-repair splice",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11181",
    "base_freshness": {
-    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7015,
-   "author": "woahwhattheheck",
-   "title": "BevSource lab pilot QA genealogy LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
-   "base_freshness": {
-    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7012,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace v1.1 Lane A evidence and storage contracts",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
-   "base_freshness": {
-    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "78e88f0434703c1b10244d5e6fb77fe18432c24d",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -433,13 +401,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7020,
+   "number": 11182,
    "author": "woahwhattheheck",
-   "title": "Lane B: fail-closed swarm, quarantine, and authority dates",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7020",
+   "title": "S24: freeze Titan champion and run fresh robustness H",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11182",
    "base_freshness": {
-    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "f312ed24cdf55470540dc347da75f138c1cd236a",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -449,50 +417,50 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7011,
+   "number": 11183,
    "author": "woahwhattheheck",
-   "title": "ChartTrace lane C: native window, legal gates, unsigned packaging",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
+   "title": "Bowser-Morner: add synthetic cross-lab method custody gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11183",
    "base_freshness": {
-    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "f312ed24cdf55470540dc347da75f138c1cd236a",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7021,
+   "number": 11157,
    "author": "woahwhattheheck",
-   "title": "Denton bacteriology acceptance + reporting LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
+   "title": "TITAN P22: add per-candidate terminal payback horizon",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11157",
    "base_freshness": {
-    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "7929bd1885b868c770d6523fbcf84662aead2004",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7295,
+   "number": 11127,
    "author": "woahwhattheheck",
-   "title": "caliper-slack-relay-adapter-01: Slack dest adapter for uncredentialed local bridges",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7295",
+   "title": "TITAN S01: bounded anytime joint-action beam experiment",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11127",
    "base_freshness": {
-    "base_sha": "9e6528e27ce037ac77aa14bd01fad1e113311fcc",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "a8c940504fede46d310da027a31e6b98620f1fc7",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }

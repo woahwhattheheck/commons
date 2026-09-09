@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "project": "Kaggriculture",
+  "agent_name": "TITAN",
+  "assembled_by": "LARK / Codex Work",
+  "recipient": "root / Sanskrit Juggernaut",
+  "recipient_evidence": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788762339088829",
+  "working_thread": "https://tokenjunkielabs.slack.com/archives/C0BUY2GT8P9/p1788752325435209",
+  "baseline_source_ref": "22cd224184b6c0d183d9aa2fc06d845ababfacac",
+  "latest_main_inspected": "802f3b276dec9399a210289a81fdc6d4d4a57e81",
+  "engine": {
+    "ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "equivalent_ref": "bbda347572cf5134e56f0eb49e8058e2560f9844",
+    "verification": "All three engine/spec/utils Git blob IDs independently read from GitHub directory listings at bbda3475 match the frozen 28b6d8af values; full upstream repositories are not asserted identical.",
+    "blobs": {
+      "kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+      "kaggriculture.json": "b354d06b742fe48402513792253f1a5c29366b20",
+      "utils.py": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87"
+    }
+  },
+  "lanes": [
+    {
+      "owner": "Euler",
+      "status": "landed-source-verified",
+      "path": "revenue/kaggriculture/20260907-offline-agent",
+      "candidate": "main.py",
+      "sha256": "acf541d46ceb2002caf0a3bba834109a92b755fb36afa4bda9e3d966665550ac",
+      "reference": "22cd224184b6c0d183d9aa2fc06d845ababfacac",
+      "purpose": "Original implementation, current Euler28, preserved original36 and economics; fully covered by manifest.json."
+    },
+    {
+      "owner": "ASTRA-WORK",
+      "status": "landed-source-verified; prior successful Actions run independently read",
+      "path": "revenue/kaggriculture/cloud-market",
+      "evaluator_path": "revenue/kaggriculture/cloud-eval",
+      "candidate": "main.py",
+      "sha256": "d9487c031b50ede06a706acc8bcb40e0b5a681d9b5e92c1a1a96492b26c2dd62",
+      "reference": "5d9fe82d288ee2933b38e8db8871602e688410af",
+      "evidence_run": "https://github.com/woahwhattheheck/commons/actions/runs/34087144544",
+      "evidence_artifact": "https://github.com/woahwhattheheck/commons/actions/runs/34087144544/artifacts/10005701500",
+      "prior_results": {
+        "tests": 42,
+        "development_games": 96,
+        "validation_games": 64,
+        "validation_wins": {
+          "euler28": "15/16",
+          "compact22": "15/16",
+          "original36": "16/16",
+          "starter": "16/16"
+        }
+      },
+      "qualification": "Prior official-interpreter evidence; neither strong-public-opponent performance nor a new hosted submission."
+    },
+    {
+      "owner": "ROWAN",
+      "status": "landed-source-and-selection-read; new simulations not rerun by LARK",
+      "path": "revenue/kaggriculture/cloud-dispatch",
+      "reference": "515cdabbde75ae3066fe096bcce65081f33e709d",
+      "pr": 9764,
+      "candidate": "revenue/kaggriculture/cloud-dispatch/candidate.py",
+      "variant": "dispatch_sales",
+      "sha256": "d87fafab8c9267d508533cd04e7ab8fa8e7c5f71414d9935ec4ddd977f0e7f74",
+      "source_url": "https://github.com/woahwhattheheck/commons/tree/515cdabbde75ae3066fe096bcce65081f33e709d/revenue/kaggriculture/cloud-dispatch",
+      "archive_url": "https://github.com/woahwhattheheck/commons/raw/515cdabbde75ae3066fe096bcce65081f33e709d/revenue/kaggriculture/cloud-dispatch/rowan-dispatch-handoff.tar.gz",
+      "archive_sha256": "00112849fc8faf565f04f885ef78e1c102e01ec1aeda1641481d4e20c75cbe45",
+      "archive_bytes": 149828,
+      "development": {
+        "games": 36,
+        "seeds": [
+          1879,
+          3547,
+          7919
+        ],
+        "selected": {
+          "euler28": {
+            "completed": 6,
+            "failures": 0,
+            "games": 6,
+            "losses": 0,
+            "mean_margin": 4592.666666666667,
+            "min_margin": 1734,
+            "note": "Seat-paired seed bootstrap; descriptive, not a multiple-selection-corrected guarantee.",
+            "paired_seeds": 3,
+            "seed_bootstrap_95_percentile": [
+              1969,
+              7992
+            ],
+            "ties": 0,
+            "wins": 6
+          },
+          "lean20": {
+            "completed": 6,
+            "failures": 0,
+            "games": 6,
+            "losses": 0,
+            "mean_margin": 5759.666666666667,
+            "min_margin": 1573,
+            "note": "Seat-paired seed bootstrap; descriptive, not a multiple-selection-corrected guarantee.",
+            "paired_seeds": 3,
+            "seed_bootstrap_95_percentile": [
+              1573,
+              9482
+            ],
+            "ties": 0,
+            "wins": 6
+          }
+        }
+      },
+      "reserved_validation": {
+        "games": 80,
+        "seeds": [
+          11003,
+          22003,
+          33013,
+          44017,
+          55021,
+          66029,
+          77041,
+          88037,
+          99041,
+          123457
+        ],
+        "run": false
+      },
+      "next_action": "Use additional strong-public-opponent development before consuming the original internal-opponent reserved validation. Preserve the original selection and source if a new selection differs.",
+      "commands": [
+        "python -B revenue/kaggriculture/cloud-dispatch/study.py validation --output /tmp/rowan-validation --engine-dir /tmp/rowan-engine --workers 2"
+      ],
+      "command_prerequisites": [
+        "Prepare the pinned engine, copy this lane's selection.json into /tmp/rowan-validation/selection.json.",
+        "See README for stronger-field development: use existing cloud-eval/evaluate.py against Kaito and Igor on seeds 6700417,15485863,32452843 in both seats before reserved validation."
+      ],
+      "edge_cases": [
+        "Competing worker jobs and index ordering",
+        "Shared feed/seed reservations",
+        "DROP shed overflow",
+        "Same-turn sale order truncation and retaining feed"
+      ]
+    },
+    {
+      "owner": "SORREL",
+      "status": "landed-source-manifest-read; prepared-not-simulated",
+      "path": "revenue/kaggriculture/cloud-herd",
+      "reference": "a233848288e7fe27b569bcdfef5b0c00ec50abec",
+      "merge": "c862fe2516ae9e776d5d472d324a001f47e4817b",
+      "pr": 9765,
+      "source_url": "https://github.com/woahwhattheheck/commons/tree/a233848288e7fe27b569bcdfef5b0c00ec50abec/revenue/kaggriculture/cloud-herd",
+      "prompt_url": "https://github.com/woahwhattheheck/commons/blob/a233848288e7fe27b569bcdfef5b0c00ec50abec/revenue/kaggriculture/cloud-herd/CLAUDE_PROMPT.md",
+      "candidate_count": 8,
+      "includes_unchanged_control": true,
+      "candidates": {
+        "balanced": {
+          "bytes": 17851,
+          "options": {
+            "capital_weight": 0.5,
+            "pipeline": true
+          },
+          "sha256": "6a87042578984d2b5e54fb3c7cc38ff0f42a29036345719e833b4c07e61aba06"
+        },
+        "batch_marginal": {
+          "bytes": 17849,
+          "options": {
+            "marginal_batch": 3,
+            "pipeline": true
+          },
+          "sha256": "5b5eb4b5c9fc5f2d442901f530dbad7d46c0c54b9ae3a4bfdfd291e46419cdab"
+        },
+        "capital": {
+          "bytes": 17851,
+          "options": {
+            "capital_weight": 1,
+            "pipeline": true
+          },
+          "sha256": "99a0757c13262a6a23234e1bf645cd1c0896396fcd58b40d86be602fe5b0e077"
+        },
+        "future_capital": {
+          "bytes": 17876,
+          "options": {
+            "capital_weight": 0.5,
+            "pipeline": true,
+            "town_expectation": 1
+          },
+          "sha256": "f9198a3dbd1ecbf1684a545099bb61b18ca783aab7462d5f675bb087ad7a795b"
+        },
+        "future_town": {
+          "bytes": 17853,
+          "options": {
+            "pipeline": true,
+            "town_expectation": 1
+          },
+          "sha256": "3447afe81cff43e778f5ecb134aa83af4be3cfa8f726a5d162006ca5e11e77ae"
+        },
+        "lean20": {
+          "bytes": 15645,
+          "options": {},
+          "sha256": "d9487c031b50ede06a706acc8bcb40e0b5a681d9b5e92c1a1a96492b26c2dd62"
+        },
+        "pipeline": {
+          "bytes": 17828,
+          "options": {
+            "pipeline": true
+          },
+          "sha256": "644b3a788d0e5a389dfdd3955c87cb9ee2af6c34fe0b3d1badc80ead4a497482"
+        },
+        "pipeline_single": {
+          "bytes": 17845,
+          "options": {
+            "batch_size": 1,
+            "pipeline": true
+          },
+          "sha256": "198c702739e82164c000fe54166b50e9b6fa94f15e70a7e49b1aea74b125d602"
+        }
+      },
+      "experiment_sha256": "af410a455cfdc817acf259c03255a50456d39d685c7a56bca7d8e9974770f989",
+      "development_seeds": [
+        1543,
+        4787,
+        9431
+      ],
+      "validation_seeds": [
+        10657,
+        15467,
+        27653,
+        39019,
+        56393,
+        79139,
+        110221,
+        190027
+      ],
+      "simulations_run": 0,
+      "new_contract_tests_run": 0,
+      "games_with_kaito_and_igor": {
+        "development": 192,
+        "validation": 96,
+        "replays": 6
+      },
+      "commands": [
+        "python -B revenue/kaggriculture/cloud-herd/experiment.py prepare --root /tmp/sorrel-herd",
+        "python -B revenue/kaggriculture/cloud-herd/experiment.py candidates --root /tmp/sorrel-herd",
+        "python -B revenue/kaggriculture/cloud-herd/experiment.py development --root /tmp/sorrel-herd --opponent kaito=ACTUAL_KAITO_FILE::agent --opponent igor=ACTUAL_IGOR_FILE::agent",
+        "python -B revenue/kaggriculture/cloud-herd/experiment.py validation --root /tmp/sorrel-herd --opponent kaito=ACTUAL_KAITO_FILE::agent --opponent igor=ACTUAL_IGOR_FILE::agent"
+      ],
+      "command_prerequisites": [
+        "Replace ACTUAL_KAITO_FILE and ACTUAL_IGOR_FILE with the existing VM's verified source paths and callable names.",
+        "Run the new behavioral tests requested in this lane's Claude prompt before simulation."
+      ]
+    },
+    {
+      "owner": "KESTREL",
+      "status": "original unmodified archive recovered and hash-verified; original rejected GitHub branch is NOT_LANDED",
+      "archive_path": "revenue/kaggriculture/claude-handoff/peer-packets/kestrel-handoff.zip",
+      "archive_sha256": "0fc85adde06875da8ad0d1b1ac417756d09a589d3a9781abe16a79e799c8a23a",
+      "archive_git_blob": "584b85f73654db388f8093f9800ea290c734a7f5",
+      "archive_bytes": 150147,
+      "source_path_after_extraction": "revenue/kaggriculture/cloud-harvest",
+      "source_ref": "22cd224184b6c0d183d9aa2fc06d845ababfacac",
+      "candidate_count": 5,
+      "includes_unchanged_control": true,
+      "simulations_run": 0,
+      "new_variants_status": "UNTESTED_UNMEASURED",
+      "hypotheses": [
+        "Crop timing/basic yield corrections",
+        "Inclusive terminal routes",
+        "Projected same-turn deposit sales including shed capacity",
+        "Combination and unchanged lean20 control"
+      ],
+      "development": {
+        "games": 80,
+        "seeds": [
+          1901,
+          5087,
+          12011,
+          30011
+        ]
+      },
+      "validation": {
+        "games": 64,
+        "replays": 4,
+        "seeds": [
+          80021,
+          80039,
+          80051,
+          80071,
+          80077,
+          80099,
+          80107,
+          80111
+        ]
+      },
+      "commands": [
+        "KAG_EVAL_ENGINE_DIR=engine python -B revenue/kaggriculture/cloud-harvest/test_variants.py",
+        "python -B revenue/kaggriculture/cloud-harvest/run_study.py --engine-dir engine --output /tmp/kestrel-results --phase development",
+        "python -B revenue/kaggriculture/cloud-harvest/run_study.py --engine-dir engine --output /tmp/kestrel-results --phase validation"
+      ],
+      "command_prerequisites": [
+        "Extract the archive into its own directory and run commands there; check all BUNDLE_SHA256.json entries.",
+        "Original metadata says recipient_route_unresolved; preserve it as history. Root's explicit identification now resolves the transfer destination.",
+        "Add strong-public-opponent development as a separately named experiment before consuming the reserved internal-only validation; do not silently change the original study contract.",
+        "This version does not implement the subsequently requested ongoing TOMATO/STRAWBERRY expansion. That would be new code and needs new evidence."
+      ]
+    },
+    {
+      "owner": "root / Sanskrit Juggernaut",
+      "path": "revenue/kaggriculture/cloud-model-lab",
+      "status": "active Claude VM; source location supplied by root, no current-main package independently read by LARK",
+      "role": "Integrate source/operator context, drive the existing Claude prompt stream, synthesize experiments, retain hosted-submission ownership."
+    },
+    {
+      "owner": "FLORA",
+      "status": "landed; accepted completed public-opponent benchmark",
+      "path": "revenue/kaggriculture/cloud-opponent-bench",
+      "reference": "cf7ee70da605f19a974905854249baab72c1d017",
+      "pr": 9768,
+      "results": "RESULTS.md",
+      "sources": "UPSTREAM.json",
+      "games": 20,
+      "complete": 20,
+      "lean20_wins": 0,
+      "lean20_losses": 20,
+      "development_seeds": [
+        9000011,
+        9000049,
+        9000061
+      ],
+      "used_validation_seeds": [
+        9000077,
+        9000091
+      ],
+      "qualification": "Accepted peer evidence; these validation seeds are now used. Root and FLORA own the next composition work."
+    },
+    {
+      "owner": "LARK",
+      "status": "new additive export increment; measured local packaging parity",
+      "path": "revenue/kaggriculture/cloud-pack",
+      "revision_resolution": "Use the commit containing this updated manifest; exact source and archive hashes are in cloud-pack/evidence/receipt.json.",
+      "prompt": "CLAUDE_PROMPT.md",
+      "readme": "README.md",
+      "new_tests": 9,
+      "full_packaging_games": 8,
+      "exact_source_export_comparisons": 4,
+      "packaging_seed": 6100003,
+      "exports": {
+        "lean20": {
+          "path": "exports/lean20/submission.tar.gz",
+          "sha256": "9bf553da0ff3c057cbc167150ce5c1c88d8ee18eb031648a4f055fa21532227d",
+          "candidate_sha256": "d9487c031b50ede06a706acc8bcb40e0b5a681d9b5e92c1a1a96492b26c2dd62"
+        },
+        "dispatch_sales": {
+          "path": "exports/dispatch_sales/submission.tar.gz",
+          "sha256": "ec3158cc293c09d958c2f06e04c18c62972013a870bf48b64b0179505495ba6e",
+          "candidate_sha256": "d87fafab8c9267d508533cd04e7ab8fa8e7c5f71414d9935ec4ddd977f0e7f74"
+        }
+      },
+      "pending": "Constrained container and hosted runtime execution by Sanskrit \u2192 Claude; select actual integration from stronger-opponent development before any replacement submit."
+    }
+  ],
+  "public_opponents": [
+    {
+      "name": "kaito43",
+      "author": "Kaito Fukami",
+      "notebook_version": 344404785,
+      "url": "https://www.kaggle.com/code/kaitofukami/103-128-fresh-public-v43-sparse-shop-hybrid?scriptVersionId=344404785",
+      "source_sha256": "69f06a802b62aa08f28705dab5728eb924bb6a7c23ffe0164f65b104cc3dadf3",
+      "source_bytes": 63309,
+      "license": "Apache-2.0 per root source inspection; preserve supplied notices",
+      "location": "Already decoded in Claude VM; root supplies actual path",
+      "verification": "Version/hash/size reported by root; LARK did not re-download or execute this agent"
+    },
+    {
+      "name": "igor",
+      "author": "Igor Zharov",
+      "notebook_version": 343725556,
+      "url": "https://www.kaggle.com/code/flexonafft/kaggriculture-multi-route-farming-agent?scriptVersionId=343725556",
+      "source_sha256": "8ac34abce129cf5c9456776c90edf7d2233b3a280bbdcf7622628825ef3669a0",
+      "source_bytes": 148200,
+      "license": "Apache-2.0 per root source inspection; preserve supplied notices",
+      "location": "Already decoded in Claude VM; root supplies actual path",
+      "verification": "Version/hash/size reported by root; LARK did not re-download or execute this agent"
+    }
+  ],
+  "root_reports": [
+    {
+      "url": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788762578857229",
+      "games": 8,
+      "result": "lean20 mean margins -45,704 vs Kaito and -48,820 vs Igor; two seeds, both seats",
+      "status": "root-reported; raw game rows not independently read here"
+    },
+    {
+      "url": "https://tokenjunkielabs.slack.com/archives/C0BUY2GT8P9/p1788762791612329",
+      "seeds": [
+        999331,
+        1299709
+      ],
+      "games": 4,
+      "result": "Kaito 4/4 vs Igor; mean +12,994",
+      "status": "root-reported exploratory reference, not a universal ranking"
+    },
+    {
+      "url": "https://tokenjunkielabs.slack.com/archives/C0BUY2GT8P9/p1788762485018309",
+      "seeds": [
+        271828,
+        141421
+      ],
+      "result": "Kaito sales attribution: 432 strawberry and net221 wheat in both reported seasons; differing realized receipts",
+      "status": "exploratory mechanism input, not proof of a globally fixed plan"
+    }
+  ],
+  "next_priority": "Sanskrit/root drives existing Claude VM; use peer development and strong public opponents for composition, then export the selected integration through cloud-pack with exact assets/notices, first-action loader parity and constrained-container checks. Existing seed banks and source/result studies remain complete.",
+  "continuation_main_inspected": "e0c36132b6dea404ba8cf8f900181483ecf73095"
+}

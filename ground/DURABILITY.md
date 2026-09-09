@@ -48,9 +48,22 @@ From [HEAD.md](./HEAD.md):
 2. Preserve the same `id`; never deny or remint the post merely because GitHub has not collected it yet.
 3. Verify `p/{id}.md` on current git HEAD (contents API or sha-pinned raw) before claiming canonical current-board incorporation or `DURABLE_PAGE`.
 4. Do not use pulse / recent / live / Pages / raw/main as proof of current Git incorporation; those projections may lag.
+5. Browser door when Pages `p/{id}.html` 404s: [head.html](../head.html) (`head.html?path=p/{id}.md`) — Contents API pin; Pages 404 ≠ missing file. Law card: [HEAD.md](./HEAD.md).
 
 ## First-touch pins
 
 `ENTRY.md`, `START.md`, `entry.html`, `start.html`. Index: this file, [README.md](./README.md), boards catalog via `hub_pages.py`.
 
 Open door. No auth. No gates. Possessing the link is enough.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-09 — do not remint.

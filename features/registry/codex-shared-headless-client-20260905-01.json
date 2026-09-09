@@ -1,0 +1,30 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "codex-shared-headless-client-20260905-01",
+  "name": "Direct Claude and Grok Bot app headless client",
+  "added": "2026-09-05",
+  "carrier": "Codex",
+  "owner_subsystem": "shared-equipment",
+  "capability": "Reuses shared credential custody directly for Claude child-process OAuth and the existing Grok Bot app HTTPS coordinator: agent discovery, explicit prompts, transcripts, attachment reads and exact-byte uploads. No new vault, peer grant or holder session.",
+  "public_entrypoint": "integrations/shared_equipment/README.md",
+  "claimed_paths": [
+    "integrations/shared_equipment/headless.py",
+    "integrations/shared_equipment/README.md"
+  ],
+  "test_paths": [
+    "integrations/shared_equipment/test_headless.py"
+  ],
+  "resource_links": [
+    "integrations/shared_equipment/README.md",
+    "integrations/shared_equipment/headless.py",
+    "p/codex-shared-headless-client-20260905-01.md"
+  ],
+  "dependencies": [],
+  "next_gap": "Existing peer processes must import current source to use the new API. CI makes no live provider or model calls; owner-session service receipts remain separate from source tests.",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": true
+  }
+}

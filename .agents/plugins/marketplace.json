@@ -15,6 +15,17 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "commons-network",
+      "source": {
+        "source": "local",
+        "path": "./integrations/commons_network_plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }

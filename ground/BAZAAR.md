@@ -33,3 +33,15 @@ Zero-auth Action Pad stays. Do not add login, credentials, identity proof, trust
 Failure resistance is redundancy: ntfy failover hosts, Action Pad, GitHub issue, `actions/results/`, replay. One carrier going dark must not kill the action or its receipt.
 
 Door: `bazaar.html`. Catalog: `bazaar.json`. CLI: `python3 host/bazaar.py`. HTTP is not the computer.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-03 — do not remint.

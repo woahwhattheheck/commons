@@ -1,0 +1,113 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-kaggle-account-binding-exercised-20260907-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "kaggle-account-binding",
+  "observed_at": "2026-09-07T10:07:05Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "REACHABLE",
+    "condition": "CONSTRAINED",
+    "evidence_freshness": "EXPIRED_BY_PROVIDER_CREATE_AND_EXACT_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; TASK_SCOPED_STANDING_AUTHORITY; COORDINATION_RECORD_REQUIRED; PROVIDER_TERMS_AND_QUOTA_BOUNDARIES_APPLY; NO_PERSONAL_OWNER_ACTION_OR_REPEAT_APPROVAL_FOR_ALREADY_AUTHORIZED_OPERATION; NO_RETRY_FOR_TITAN_KAGGRICULTURE_FRONTIER_20260907_01",
+    "holder": "Commons",
+    "activation_base_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b"
+  },
+  "concrete_consumer": "TITAN Kaggriculture frontier submission and its read-only validation, hosted-episode and score monitor.",
+  "measurable_outcome": "Kaggle created and validated submission 56074364 for the exact designated 57,711-byte artifact. Provider readback found exactly one matching stable operation, two completed public competitive wins, public score 790.0, observed account rank 3981, and quota moved from one used/four remaining to two used/three remaining.",
+  "provider_truth": {
+    "provider": "Kaggle",
+    "operation_id": "titan-kaggriculture-frontier-20260907-01",
+    "submission_reference": 56074364,
+    "artifact_sha256": "79b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b",
+    "artifact_bytes": 57711,
+    "matching_operations": 1,
+    "created_at": "2026-09-07T10:01:29.190Z",
+    "readback_at": "2026-09-07T10:10:29.150715Z",
+    "validation_status": "COMPLETE",
+    "validation_episode_reference": 106416828,
+    "competitive_episode_references": [106416987, 106417872],
+    "competitive_record": {
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "seats_observed": [0]
+    },
+    "public_score": "790.0",
+    "observed_account_rank": 3981,
+    "quota": {
+      "used_today": 2,
+      "used_total": 2,
+      "remaining_now": 3,
+      "future_reset_state": "UNOBSERVED"
+    },
+    "public_source_notebook_complete": true,
+    "existing_farm_manager_v2_modified": false,
+    "additional_dispatches_performed_by_resource_master": 0
+  },
+  "delta": {
+    "previous_terminal_main_sha": "c9757edc91caac0b54ff86457c6dbabc884fb647",
+    "measurement_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b",
+    "material_state_changes": [
+      "The Kaggle account route advanced from reachable account evidence to one validated provider submission, two completed public competitive wins and exact readback.",
+      "PRs #9813, #9814 and #9818 landed the provider create response, validation, first two public episodes, exact one-match readback, artifact identity, public-notebook boundary and quota state on current main.",
+      "Three new public owner repositories became reachable, expanding the separately held GitHub portfolio from 33 to 36 accessible repositories: 23 public and 13 private. Their bounty and upstream lanes are already active, so this activation does not claim or modify them.",
+      "Kaggriculture production, composition, frontier-source, opponent, service-hire, model-lab and provider-monitoring work already landed or remains owned by its current claimant; none is reminted here.",
+      "Post-watermark Gmail contained no new messages and no new material resource receipt."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No new build order survived deduplication. The remaining submission validation/hosted-episode work is already a named read-only ROWAN/root monitor; production, frontier-decision, opponent and model-lab lanes are already claimed or landed; the three newly reachable public repositories already have active bounty or upstream consumers.",
+  "verification": {
+    "focused_tests": "Resource-ledger and connected-capability assertions pass.",
+    "privacy": "No credential, signed storage URL, private account identifier, mail body or private repository identity is persisted.",
+    "open_door": "The graph records provider lifecycle and dedupe boundaries without adding authentication, identity, permission, admission, seat or capability gates to Commons.",
+    "zero_fabrication": "Submission creation, validation, public score, observed account rank, prize, payout, revenue and cash remain separate; only creation, validation, two public episodes, public score, observed rank and contemporaneous quota are proven.",
+    "collision": "Commons had zero open pull requests at claim time; all KAG implementation and monitoring paths and all new public-repository lanes are excluded from this metadata-only activation."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-07T10:22:14Z",
+    "prior_terminal_slack_ts": "1788765710.699899",
+    "main_sha_at_claim": "554c7827676ca9fc9db2cd063b47b1d5fa0f91a5",
+    "commons_slack_ts": "1788775586.762069",
+    "delegations_slack_ts": "1788769708.092549",
+    "delegations_latest_thread_ts": "1788776440.606499",
+    "todo_slack_ts": "1788754613.268629",
+    "shipped_builds_slack_ts": "1788754611.976789",
+    "products_slack_ts": "1788754607.030009",
+    "leads_slack_ts": "1788754610.349349",
+    "sales_slack_ts": "1788757299.756899",
+    "gmail_checked_through": "2026-09-07T10:22:14Z",
+    "gmail_new_material_resources": 0,
+    "gmail_next_page": null,
+    "automations": "14 total; 6 enabled; 7 paused; 1 completed",
+    "connected_tools": "442 callable tools; 427 app tools",
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset; prior quota state retained."
+  },
+  "projection": {
+    "resources": 77,
+    "producing": 48
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788775586762069",
+    "provider_submission_pr": "https://github.com/woahwhattheheck/commons/pull/9813",
+    "provider_validation_pr": "https://github.com/woahwhattheheck/commons/pull/9814",
+    "provider_first_matches_pr": "https://github.com/woahwhattheheck/commons/pull/9818",
+    "provider_submission_main": "https://github.com/woahwhattheheck/commons/commit/554c7827676ca9fc9db2cd063b47b1d5fa0f91a5",
+    "prior_terminal_receipt": "p/codex-github-repository-portfolio-live-expansion-20260907-03.md"
+  },
+  "non_claims": [
+    "A public score and observed account rank are receipted; no leaderboard superiority, prize, award, payout, revenue or cash is claimed.",
+    "No submission, upload, notebook, dataset, entry, terms, provider-account or quota mutation was performed by this Resource Master activation.",
+    "No private repository identity, head, branch, URL, file name or content is persisted.",
+    "No Cursor, Claude, Grok Bot, grok.com or Titan model quota was consumed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

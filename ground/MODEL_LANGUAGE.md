@@ -78,3 +78,15 @@ All Commons-owned model instructions and dedicated model emitters must construct
 That distinction is essential: protocol conformance governs model conduct and projection quality. It is not identity, authentication, authorization, capability admission, content classification, or permission.
 
 Legacy body-form `PLAIN:` / `PLAIN ENGLISH:` and `MODEL:` remain readable. Extraction is fence-aware and never deletes or rewrites those lines. A code fence containing those labels is code, not protocol metadata.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-21 — do not remint.

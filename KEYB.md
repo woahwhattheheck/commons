@@ -57,3 +57,14 @@ Stage one is the typewriter. Stage two (not this land) is SHELLOUT + in-file tri
 ## Git
 
 Header excerpt only. The body stays on the hard drive. Cite `p1-gig-header-20260821-01`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+

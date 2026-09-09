@@ -35,8 +35,33 @@ def load_registry(path: Path = SOURCE) -> dict[str, Any]:
 
 
 def _public_url(value: str) -> bool:
-    parsed = urlparse(value)
-    return parsed.scheme in {"https", "mailto"} and bool(parsed.netloc or parsed.path)
+    if (
+        not value
+        or "\\" in value
+        or any(character.isspace() or ord(character) < 32 or ord(character) == 127
+               for character in value)
+    ):
+        return False
+    try:
+        parsed = urlparse(value)
+        if parsed.scheme == "https":
+            # ``urlparse`` accepts ``https:relative`` and a non-empty ``:port``
+            # netloc. Discovery links need a real absolute authority. Reading
+            # ``port`` also rejects malformed, non-numeric port declarations.
+            parsed.port
+            return bool(
+                parsed.netloc
+                and parsed.hostname
+                and parsed.username is None
+                and parsed.password is None
+            )
+        if parsed.scheme == "mailto":
+            # ``mailto://host`` is not a mailbox URI. The recipient is the
+            # scheme path and must not be written as a slash-prefixed URL path.
+            return not parsed.netloc and bool(parsed.path) and not parsed.path.startswith("/")
+    except ValueError:
+        return False
+    return False
 
 
 def validate(registry: dict[str, Any]) -> list[str]:
@@ -56,7 +81,10 @@ def validate(registry: dict[str, Any]) -> list[str]:
         rows = registry.get(field)
         if not isinstance(rows, list) or not rows:
             errors.append(field)
-    for row in registry.get("contact_methods") or []:
+    contacts = registry.get("contact_methods")
+    if not isinstance(contacts, list):
+        contacts = []
+    for row in contacts:
         if not isinstance(row, dict):
             errors.append("contact_methods.$.row")
             continue
@@ -66,7 +94,10 @@ def validate(registry: dict[str, Any]) -> list[str]:
             errors.append("contact_methods.$.url")
         if not isinstance(row.get("preferred"), bool):
             errors.append("contact_methods.$.preferred")
-    for index, row in enumerate(registry.get("capabilities") or []):
+    capabilities = registry.get("capabilities")
+    if not isinstance(capabilities, list):
+        capabilities = []
+    for index, row in enumerate(capabilities):
         if not isinstance(row, dict):
             errors.append("capabilities.%d.row" % index)
             continue
@@ -101,9 +132,19 @@ def validate(registry: dict[str, Any]) -> list[str]:
     if continuity.get("startup_order") != ["harnesses/catalog.json", "AGENTS.md", "START.md", "boards.html"]:
         errors.append("continuity.startup_order")
     for field in ("pulse", "recent", "receipts", "instruction"):
-        if not str(continuity.get(field) or "").strip():
+        value = continuity.get(field)
+        if not isinstance(value, str) or not value.strip():
             errors.append(f"continuity.{field}")
-    formats = (registry.get("interoperability") or {}).get("formats") or []
+    interoperability = registry.get("interoperability")
+    if not isinstance(interoperability, dict):
+        errors.append("interoperability")
+        interoperability = {}
+    formats = interoperability.get("formats")
+    if not isinstance(formats, list):
+        errors.append("interoperability.formats")
+        formats = []
+    elif any(not isinstance(item, str) for item in formats):
+        errors.append("interoperability.formats")
     for output in OUTPUTS:
         if output not in formats:
             errors.append(f"interoperability.formats:{output}")
@@ -202,12 +243,12 @@ def generate(root: Path = ROOT) -> None:
     for relative, content in projections(load_registry(root / "agent-discovery.json")).items():
         path = root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
+        path.write_bytes(content.encode("utf-8"))
 
 
 def check(root: Path = ROOT) -> list[str]:
     expected = projections(load_registry(root / "agent-discovery.json"))
-    return [relative for relative, content in expected.items() if not (root / relative).is_file() or (root / relative).read_text(encoding="utf-8") != content]
+    return [relative for relative, content in expected.items() if not (root / relative).is_file() or (root / relative).read_bytes() != content.encode("utf-8")]
 
 
 def main() -> int:

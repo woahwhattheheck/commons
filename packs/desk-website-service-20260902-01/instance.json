@@ -1,0 +1,27 @@
+{
+  "sale_id": "desk-website-service-20260902-01-harborline",
+  "template_id": "desk-website-service",
+  "vertical": "local_website_service",
+  "family": "business_packs",
+  "keep_or_sell": "SELL",
+  "unique_instance_sell": true,
+  "kit_not_unique_instance": false,
+  "brand": "Harborline Local Sites",
+  "door": "packs/desk-website-service-20260902-01/door.html",
+  "checkout": "OWNER_PASTE_REQUIRED",
+  "assets": "packs/desk-website-service-20260902-01/assets.md",
+  "instructions": "packs/desk-website-service-20260902-01/instructions.md",
+  "ops": "packs/desk-website-service-20260902-01/day.md",
+  "tier_usd": 200,
+  "ftc_437_customers_included": false,
+  "method_not_customers": true,
+  "tally_showcase": {
+    "repo": "woahwhattheheck/smb-showcase-inventory",
+    "sha": "0d91231e",
+    "copied_into_this_pack": false,
+    "note": "pointer only; do not copy private attachments into Commons"
+  },
+  "marketing": "bryce_only",
+  "agents_spend_ads": false,
+  "no_fake_stripe_urls": true
+}

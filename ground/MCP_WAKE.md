@@ -65,3 +65,19 @@ MCP/wake real-job verification without this leftover is
 **CLAIMED**.
 
 Possessing the link is authorization. No auth. No gate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
+## Contest product (titanmcp)
+
+Not this wake leftover: live judge pad https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools. Board [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate.

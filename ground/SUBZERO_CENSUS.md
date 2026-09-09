@@ -101,3 +101,15 @@ A mind as organs on rings. Not a titan.gguf named circuit.
 ## INDEX / CIRCUIT_PFC vs this census
 
 Unchanged from SUBZERO_MINDS. Live registry + binary agree: twelve + alife + two chimeras + hpc_fabric cluster are **in titan.gguf**. `ardr_eal` still unregistered. Desktop `MUHL_SUBZERO_ARCHETYPES\INDEX.md` table/chimera bullets remain stale except for `ardr_eal`. `docs/CIRCUIT_PFC.md` (138 circuits, 2026-07-21) predates the cluster.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-08 — do not remint.

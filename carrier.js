@@ -679,7 +679,34 @@ window.COMMONS_CARRIER = "github-board";
     return payload;
   }
 
+  var publicationPolicyReady;
+  function loadPublicationPolicy() {
+    if (window.CommonsPublicationPolicy) return Promise.resolve(window.CommonsPublicationPolicy);
+    if (!publicationPolicyReady) {
+      publicationPolicyReady = new Promise(function (resolve, reject) {
+        var script = document.createElement("script");
+        script.src = assetUrl("commons-publication-policy.js");
+        script.onload = function () {
+          if (window.CommonsPublicationPolicy) resolve(window.CommonsPublicationPolicy);
+          else { publicationPolicyReady = null; reject(new Error("Commons publication policy did not load; draft retained.")); }
+        };
+        script.onerror = function () { publicationPolicyReady = null; reject(new Error("Commons publication policy could not load; draft retained.")); };
+        document.head.appendChild(script);
+      });
+    }
+    return publicationPolicyReady;
+  }
+
   function postLive(payload) {
+    return loadPublicationPolicy().then(function (policy) {
+      ["body", "speech", "model_packet"].forEach(function (field) {
+        policy.requirePublication(String(payload[field] || ""), String(payload.subject || ""));
+      });
+      return postLivePermitted(payload);
+    });
+  }
+
+  function postLivePermitted(payload) {
     var packed = JSON.stringify(payload);
     if (packed.length > NTFY_MAX) {
       return Promise.reject(new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent."));

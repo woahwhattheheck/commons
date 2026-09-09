@@ -1,0 +1,358 @@
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x2311e070, name=GPU WebGPU
+INFO: [gpu_registry.cc:87] Statically linked GPU accelerator registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x23122920, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x234b1b40, name=GPU WebGPU
+INFO: [gpu_registry.cc:87] Statically linked GPU accelerator registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x24d50320, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+WARNING: Logging before InitGoogle() is written to STDERR
+W0000 00:00:1788769507.280202    4580 litert_lm_loader.cc:291] Section not found: 	
+W0000 00:00:1788769507.280275    4580 litert_lm_loader.cc:291] Section not found: 	
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1340, num_signatures=4
+INFO: [magic_number_utils.cc:109]   signature=decode, subgraph_index=0, num_tensors=3514, num_inputs=53, num_outputs=50, num_ops=2712
+INFO: [magic_number_utils.cc:109]   signature=prefill_1024, subgraph_index=1, num_tensors=2309, num_inputs=53, num_outputs=48, num_ops=1773
+INFO: [magic_number_utils.cc:109]   signature=prefill_128, subgraph_index=2, num_tensors=2309, num_inputs=53, num_outputs=48, num_ops=1773
+INFO: [magic_number_utils.cc:109]   signature=verify, subgraph_index=3, num_tensors=3606, num_inputs=53, num_outputs=50, num_ops=2801
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [magic_number_utils.cc:536] 577 tensors of signature decode have been updated for magic number  32003 to target number 4096
+INFO: [magic_number_utils.cc:536] 426 tensors of signature prefill_1024 have been updated for magic number  32003 to target number 4096
+INFO: [magic_number_utils.cc:536] 426 tensors of signature prefill_128 have been updated for magic number  32003 to target number 4096
+INFO: [magic_number_utils.cc:536] 581 tensors of signature verify have been updated for magic number  32003 to target number 4096
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x2a2ad100, name=GPU WebGPU
+INFO: [gpu_registry.cc:87] Statically linked GPU accelerator registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0x2ade2530, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=embedder, subgraph_index=0, num_tensors=16, num_inputs=1, num_outputs=1, num_ops=8
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=eoa, subgraph_index=0, num_tensors=1, num_inputs=0, num_outputs=1, num_ops=0
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: [compiled_model.cc:1790] Tracked constant output tensor eoa_embedding with locked address
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=eoi, subgraph_index=0, num_tensors=1, num_inputs=0, num_outputs=1, num_ops=0
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: [compiled_model.cc:1790] Tracked constant output tensor eoi_embedding with locked address
+INFO: [magic_number_utils.cc:101] Loaded: num_subgraphs=1, num_signatures=1
+INFO: [magic_number_utils.cc:109]   signature=per_layer_embedder, subgraph_index=0, num_tensors=97, num_inputs=1, num_outputs=1, num_ops=49
+INFO: [magic_number_utils.cc:113] Magic number configs: num_configs=1
+INFO: [magic_number_utils.cc:120]   config[0]: magic_number=32003, target_number=4096, signature_prefix=null
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+W0000 00:00:1788769507.868357    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769507.964394    4580 init-domain.cc:132] Fiber init: default domain = futex, concurrency = 4, prefix = futex-default
+I0000 00:00:1788769508.707681    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 441.965779ms
+W0000 00:00:1788769532.462343    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769543.252153    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   3 day 0 h 3 ['PLACE', 'SHEEP', 1]      hands=3 mkt=[['BUY_ANIMAL', 'COW', 1]]         legal 32.50s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: cash +29","farmer":["NORTH"],"hands":[["SOUTH"],["EAST"],["BUILD_PASTURE"]],"mar
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"feed: productive tile/unit work","farmer":["FEED"],"hands":[["PLACE","SHEEP"],["PLACE",
+        plan: Expand livestock and start planting high-value crops
+W0000 00:00:1788769543.357924    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769544.107698    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 401.835989ms
+W0000 00:00:1788769560.895698    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769565.853094    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   4 day 0 h 4 ['CARE']                   hands=3 mkt=[['BUY_SEED', 'WHEAT', 1]]         legal 19.85s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: cash +29","farmer":["NORTH"],"hands":[["SOUTH"],["EAST"],["BUILD_PASTURE"]],"mar
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"feed: productive tile/unit work","farmer":["FEED"],"hands":[["PLACE","SHEEP"],["PLACE",
+        plan: Feed the existing sheep and prepare for expansion
+W0000 00:00:1788769565.963146    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769566.783456    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 461.478623ms
+W0000 00:00:1788769583.036165    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769586.989744    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   5 day 0 h 5 ['NORTH']                  hands=3 mkt=[['BUY_SEED', 'CARROT', 1]]        legal 18.38s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: cash +29","farmer":["NORTH"],"hands":[["SOUTH"],["EAST"],["BUILD_PASTURE"]],"mar
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"feed: productive tile/unit work","farmer":["FEED"],"hands":[["PLACE","SHEEP"],["PLACE",
+        plan: feed sheep and prepare for expansion
+W0000 00:00:1788769587.094481    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769587.858006    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 406.350548ms
+W0000 00:00:1788769603.144856    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769606.500262    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   6 day 0 h 6 ['BUILD_PASTURE']          hands=3 mkt=[]                                 legal 16.90s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: , prepare for expansion and feed sheep
+W0000 00:00:1788769606.609718    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769607.358118    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 413.048226ms
+W0000 00:00:1788769623.631113    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769627.499343    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   7 day 0 h 7 ['WEST']                   hands=3 mkt=[]                                 legal 18.40s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: prepare for animal expansion and planting
+W0000 00:00:1788769627.621969    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769628.471584    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 437.522302ms
+W0000 00:00:1788769644.486447    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769647.680843    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   8 day 0 h 8 ['WEST']                   hands=3 mkt=[]                                 legal 17.34s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: prepare for animal expansion and planting
+W0000 00:00:1788769647.799667    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769648.563972    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 418.961455ms
+W0000 00:00:1788769664.195260    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769668.709555    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step   9 day 0 h 9 ['BUILD_PASTURE']          hands=3 mkt=[]                                 legal 18.38s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish initial infrastructure and plant high-value crops
+W0000 00:00:1788769668.825985    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769669.644793    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 443.989299ms
+W0000 00:00:1788769686.250460    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769689.833629    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  10 day 0 h10 ['DIG']                    hands=3 mkt=[]                                 legal 18.25s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: Establish initial infrastructure and plant high-value crops
+W0000 00:00:1788769689.958165    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769690.824878    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 449.897226ms
+W0000 00:00:1788769706.623461    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769711.505980    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  11 day 0 h11 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 18.78s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish initial infrastructure and plant high-value crops
+W0000 00:00:1788769711.633815    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769712.409161    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 423.034653ms
+W0000 00:00:1788769728.721249    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769731.966645    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  12 day 0 h12 ['WEST']                   hands=3 mkt=[]                                 legal 17.74s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: establish initial production and secure resources
+W0000 00:00:1788769732.069925    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769732.837778    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 418.094801ms
+W0000 00:00:1788769747.925272    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769752.335143    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  13 day 0 h13 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 17.69s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish initial production by building necessary structures and planting crops in the NW quadrant.
+W0000 00:00:1788769752.442579    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769753.199418    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 407.281413ms
+W0000 00:00:1788769770.236718    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769774.699742    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  14 day 0 h14 ['WEST']                   hands=3 mkt=[]                                 legal 19.71s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: build infrastructure and plant high-value crops
+W0000 00:00:1788769774.822552    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769775.590238    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 410.479159ms
+W0000 00:00:1788769792.106890    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769796.381764    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  15 day 0 h15 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 18.97s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish basic infrastructure and plant initial crops
+W0000 00:00:1788769796.503600    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769797.292825    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 424.724218ms
+W0000 00:00:1788769814.972940    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769819.343984    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  16 day 0 h16 ['DIG']                    hands=3 mkt=[]                                 legal 20.19s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: establish initial infrastructure and plant crops
+W0000 00:00:1788769819.492380    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769820.329938    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 443.876048ms
+W0000 00:00:1788769835.936171    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769839.890464    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  17 day 0 h17 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 17.60s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish initial infrastructure and plant crops
+W0000 00:00:1788769840.009722    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769840.825393    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 462.748345ms
+W0000 00:00:1788769857.971552    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769861.925092    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  18 day 0 h18 ['NORTH']                  hands=3 mkt=[]                                 legal 19.20s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: establish infrastructure and plant crops
+W0000 00:00:1788769862.054623    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769862.889294    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 456.915336ms
+W0000 00:00:1788769877.755748    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769881.352460    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  19 day 0 h19 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 16.62s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: , establish infrastructure and plant crops
+W0000 00:00:1788769881.475555    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769882.325069    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 469.157727ms
+W0000 00:00:1788769899.271349    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769903.059900    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  20 day 0 h20 ['DIG']                    hands=3 mkt=[]                                 legal 18.89s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: establish infrastructure and plant crops
+W0000 00:00:1788769903.182834    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769903.968225    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 438.3413ms
+W0000 00:00:1788769918.954242    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769922.435791    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  21 day 0 h21 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 16.70s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish initial infrastructure and plant high-value crops
+W0000 00:00:1788769922.565920    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769923.293464    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 373.707155ms
+W0000 00:00:1788769939.108701    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769942.569486    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  22 day 0 h22 ['DIG']                    hands=3 mkt=[]                                 legal 17.51s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"north: productive tile/unit work","farmer":["NORTH"],"hands":[["PLANT","MELON"],["CARE"
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"west: productive tile/unit work","farmer":["WEST"],"hands":[["FEED"],["NORTH"],["PLANT"
+        plan: west: infrastructure and initial planting
+W0000 00:00:1788769942.678578    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769943.398756    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 385.261594ms
+W0000 00:00:1788769960.921446    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769964.796644    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  23 day 0 h23 ['BUILD_COOP']             hands=3 mkt=[]                                 legal 19.70s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"plant melon: productive tile/unit work","farmer":["PLANT","MELON"],"hands":[["NORTH"],[
+        plan: Establish initial infrastructure and plant high-value crops
+W0000 00:00:1788769964.891543    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769965.664536    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 433.787781ms
+W0000 00:00:1788769981.197879    4595 tasks.cc:490] Failed to get prefill profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+W0000 00:00:1788769985.559430    4595 tasks.cc:672] Failed to get decode profile summary: INVALID_ARGUMENT: ERROR: [third_party/odml/litert_lm/runtime/executor/llm_litert_compiled_model_executor.cc:1763]
+└ ERROR: [third_party/odml/litert/litert/cc/litert_profiler.h:91]
+=== Source Location Trace: ===
+third_party/odml/litert/litert/cc/litert_macros.h:547
+step  24 day 1 h 0 ['CARE']                   hands=0 mkt=[]                                 legal 18.15s
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"pickup wheat 1: cash +189","farmer":["PICKUP","WHEAT",1],"hands":[],"market":[["SELL","
+        example[teacher:../cloud-dispatch/candidate.py::agent] {"plan":"pickup wheat 2: cash +272","farmer":["PICKUP","WHEAT",2],"hands":[],"market":[["SELL","
+        plan: , farmer: [CARE, COLLECT_FERTILIZER, EAST, PASS, PASS, PASS, PASS, PASS, PASS, PASS], 
+W0000 00:00:1788769985.650737    4580 mel_filterbank.cc:137] Missing 10 bands  starting at 0 in mel-frequency design. Perhaps too many channels or not enough frequency resolution in spectrum. (fft_length: 257 sample_rate: 16000 mel_channel_count: 128 lower_frequency_limit: 0 upper_frequency_limit: 8000
+I0000 00:00:1788769986.420030    4580 vocab_utils.cc:467] Converted 262158 tokens into 278614 state FST in 400.611505ms

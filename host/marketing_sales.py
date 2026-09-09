@@ -84,6 +84,8 @@ def parse_time(value: str) -> dt.datetime:
 
 
 def exact_keys(value: dict[str, Any], expected: set[str], where: str) -> None:
+    if not isinstance(value, dict):
+        raise MarketingSalesError(f"{where} must be an object")
     actual = set(value)
     if actual != expected:
         raise MarketingSalesError(
@@ -352,7 +354,7 @@ def discover(
                 stars = item.get("stargazers_count")
                 if (
                     not isinstance(login, str) or not login or
-                    owner_type not in {"Organization", "User"} or
+                    not isinstance(owner_type, str) or owner_type not in {"Organization", "User"} or
                     not isinstance(full_name, str) or not isinstance(url, str) or
                     not url.startswith("https://github.com/") or
                     not isinstance(pushed_at, str) or type(stars) is not int or stars < 0
@@ -469,9 +471,7 @@ def validate_universe(value: dict[str, Any]) -> dict[str, Any]:
     entities = value["entities"]
     if not isinstance(entities, list):
         raise MarketingSalesError("universe.entities must be an array")
-    canonical_names = [item.get("entity_name", "") for item in entities if isinstance(item, dict)]
-    if canonical_names != sorted(canonical_names, key=str.casefold):
-        raise MarketingSalesError("universe.entities must be canonically sorted")
+    canonical_names: list[str] = []
     seen: set[str] = set()
     organizations = 0
     for index, entity in enumerate(entities):
@@ -496,11 +496,12 @@ def validate_universe(value: dict[str, Any]) -> dict[str, Any]:
             raise MarketingSalesError(f"{where}.entity_name is not a GitHub owner name")
         if entity["entity_id"] != f"github:{name}":
             raise MarketingSalesError(f"{where}.entity_id must derive exactly from entity_name")
+        canonical_names.append(name)
         identity = name.casefold()
         if identity in seen:
             raise MarketingSalesError(f"duplicate entity identity: {name}")
         seen.add(identity)
-        if entity["owner_type"] not in {"Organization", "User"}:
+        if not isinstance(entity["owner_type"], str) or entity["owner_type"] not in {"Organization", "User"}:
             raise MarketingSalesError(f"{where}.owner_type is invalid")
         organizations += entity["owner_type"] == "Organization"
         if entity["qualification_state"] != "RESEARCH_REQUIRED":
@@ -519,12 +520,6 @@ def validate_universe(value: dict[str, Any]) -> dict[str, Any]:
         repositories = entity["repositories"]
         if not isinstance(repositories, list) or not repositories:
             raise MarketingSalesError(f"{where}.repositories must be non-empty")
-        expected_repo_order = sorted(
-            repositories,
-            key=lambda item: (str(item.get("full_name", "")).casefold(), str(item.get("query_id", ""))),
-        )
-        if repositories != expected_repo_order:
-            raise MarketingSalesError(f"{where}.repositories must be canonically sorted")
         seen_repositories: set[tuple[str, str]] = set()
         for repository in repositories:
             if not isinstance(repository, dict):
@@ -552,6 +547,12 @@ def validate_universe(value: dict[str, Any]) -> dict[str, Any]:
             if repository_key in seen_repositories:
                 raise MarketingSalesError(f"{where}.repositories contains a duplicate provenance row")
             seen_repositories.add(repository_key)
+        expected_repo_order = sorted(
+            repositories,
+            key=lambda item: (str(item.get("full_name", "")).casefold(), str(item.get("query_id", ""))),
+        )
+        if repositories != expected_repo_order:
+            raise MarketingSalesError(f"{where}.repositories must be canonically sorted")
         repo_query_ids = sorted({repository["query_id"] for repository in repositories})
         if repo_query_ids != entity["source_query_ids"]:
             raise MarketingSalesError(f"{where}.source_query_ids do not match repository provenance")
@@ -560,6 +561,8 @@ def validate_universe(value: dict[str, Any]) -> dict[str, Any]:
         )
         if entity["research_score"] != expected_score:
             raise MarketingSalesError(f"{where}.research_score does not match evidence")
+    if canonical_names != sorted(canonical_names, key=str.casefold):
+        raise MarketingSalesError("universe.entities must be canonically sorted")
     if truth["research_entities"] != len(entities):
         raise MarketingSalesError("truth.research_entities does not match entities")
     if truth["github_organization_entities"] != organizations:

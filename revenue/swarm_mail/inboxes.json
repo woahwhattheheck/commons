@@ -44,7 +44,7 @@
       "inbox_id": "codex-sales", "agent_claim": "CODEX_SOL", "model_family": "CODEX", "local_part": "codex",
       "address_state": "UNPROVISIONED", "public_address": null, "purpose": "TARGETED_OUTREACH_AND_SALES", "send_mode": "DRAFT_ONLY",
       "daily_new_thread_limit": 10,
-      "sku_ids": ["same-day-agent-survival-proof", "production-survival-sprint", "gguf-diagnostic-10d-12k", "ho-issue-to-pr"],
+      "sku_ids": ["production-survival-sprint", "agent-failure-autopsy-29", "gguf-diagnostic-10d-12k", "ho-issue-to-pr"],
       "reply_owner": "CODEX_SOL", "handoff_classes": ["QUESTION", "POSITIVE_SCOPE", "NEEDS_HUMAN", "OPT_OUT", "COMPLAINT", "BOUNCE"]
     },
     {
@@ -72,7 +72,7 @@
       "inbox_id": "swarm-sales", "agent_claim": "COMMONS_SALES", "model_family": "SWARM", "local_part": "swarm",
       "address_state": "UNPROVISIONED", "public_address": null, "purpose": "TARGETED_OUTREACH_AND_SALES", "send_mode": "DRAFT_ONLY",
       "daily_new_thread_limit": 10,
-      "sku_ids": ["sku-seat-20260826", "sku-unlock-20260826", "sku-boost-20260826"],
+      "sku_ids": ["sku-seat-20260826", "sku-unlock-20260826", "sku-boost-20260826", "dealer-service-lead-rescue", "plant-downtime-handoff", "referral-intake-completeness", "repair-booking-exactly-once-v1"],
       "reply_owner": "COMMONS_SALES", "handoff_classes": ["QUESTION", "POSITIVE_SCOPE", "NEEDS_HUMAN", "OPT_OUT", "COMPLAINT", "BOUNCE"]
     }
   ]

@@ -179,8 +179,12 @@ class GeminiMcpCarrierTests(unittest.TestCase):
 
             connection.request("GET", "/mcp")
             stream = connection.getresponse()
-            stream.read()
-            self.assertEqual(stream.status, 405)
+            payload = json.loads(stream.read().decode("utf-8"))
+            self.assertEqual(stream.status, 200)
+            self.assertEqual(payload["name"], "commons")
+            self.assertEqual(payload["auth"], "none")
+            self.assertTrue(payload["open_door"])
+            self.assertIn("get_send_link", payload["tools"])
         finally:
             connection.close()
             httpd.shutdown()

@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import copy
+import json
 import unittest
+from pathlib import Path
 
 from host.repository_portfolio import PortfolioError, classify, validate
 
@@ -111,6 +113,35 @@ class RepositoryPortfolioTests(unittest.TestCase):
         data["public_repositories"][0]["head_sha"] = "f" * 40
         with self.assertRaisesRegex(PortfolioError, "canonical repository head differs"):
             validate(data)
+
+    def test_general_public_reference_is_supported(self) -> None:
+        data = fixture()
+        data["public_repositories"].append(
+            {
+                "full_name": "owner/public-tool",
+                "visibility": "public",
+                "head_sha": "1" * 40,
+                "role": "PUBLIC_REFERENCE",
+                "condition": "REFERENCE",
+            }
+        )
+        data["summary"]["accessible_repositories"] += 1
+        data["summary"]["public_repositories"] += 1
+        data["summary"]["reference_repositories"] += 1
+        self.assertEqual(validate(data), data["summary"])
+
+    def test_live_projection_reconciles_public_safe_expansion(self) -> None:
+        path = Path(__file__).resolve().parent / "inventory" / "resources" / "repository_portfolio.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(validate(data), data["summary"])
+        self.assertEqual(data["summary"]["accessible_repositories"], 33)
+        self.assertEqual(data["summary"]["public_repositories"], 20)
+        self.assertEqual(data["summary"]["private_repositories"], 13)
+        self.assertEqual(len(data["public_repositories"]), 20)
+        app = next(row for row in data["public_repositories"] if row["full_name"] == "woahwhattheheck/App")
+        self.assertEqual(app["head_sha"], "0283d2bebad28796ca74b9506d358232988fe376")
+        self.assertEqual(app["purpose"], "OWNER_FORK_BOUNTY_PR_ROAD")
+        self.assertFalse(data["private_aggregate"]["details_persisted"])
 
 
 if __name__ == "__main__":

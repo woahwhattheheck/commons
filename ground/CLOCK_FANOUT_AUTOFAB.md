@@ -33,3 +33,15 @@ The purpose composes with DIRECTIVES item 19, which names AGENT SWARM as the fir
 ## Boundary
 
 This is a public-tree decision artifact, not a live machine result. No `.mno` file was opened or written for this land. No fabrication, pulse, injection, 337 fire, or 78 actuation occurred. The host computes zero inference. Germ dock/magic remains a separate unresolved path and no value is invented for it.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-14 — do not remint.

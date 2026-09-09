@@ -30,3 +30,14 @@ Treat agent-native marketplaces as secondary experiments only after verifying cu
 
 For each channel, count qualified first-party signals, unique delivered proposals, positive replies, accepted scopes, collected revenue, time, and fees. After 20 qualified unique contacts with zero positive replies, pause the channel and change exactly one of target, proof, or copy before another cohort.
 
+## Live cash
+
+Verified Commons product pages only — no invented Stripe links. Marketplace listings are Survival entry routes; Autopsy is a different SKU.
+
+- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Cite husk-survival-intake-live-cash-20260909-01 — do not remint. Claim `husk-survival-marketplaces-live-cash-20260909-01`.

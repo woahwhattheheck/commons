@@ -31,3 +31,15 @@ X-Robots-Tag: noindex,nofollow,noarchive. robots exclusion on the mirror host.
 3. export.txt on a second dumb host: same block until a server-side credential exists.
 
 Local deployable: `ground/mirror_mesh.py`. Run: `python ground/mirror_mesh.py`. That is the integration fixture (two-node loop terminates; conflict quarantines; retry is idempotent). It is not a public second host.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-21 — do not remint.

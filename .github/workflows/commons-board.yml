@@ -1,5 +1,12 @@
 name: commons-board
 on:
+  # A workflow syntax repair cannot rely on the disabled workflow's issue or
+  # schedule events to wake itself.  Restrict the push recovery road to main
+  # changes of this workflow file; publisher commits to p/ do not match it.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/commons-board.yml"
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
@@ -17,8 +24,10 @@ concurrency:
   # Coalesce only slack-connector issue runs.  The running and newest pending
   # run both sweep the complete labelled issue queue, so a cancelled pending
   # run owns no unique source bytes. Ordinary issue events keep their distinct
-  # groups, and schedule/dispatch retain their own recovery groups.
-  group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
+  # groups, and push/schedule/dispatch retain their own recovery groups.
+  # v2 rotates future Slack issue events away from the pre-repair run whose
+  # already-frozen device tail still owns the original slack-batch group.
+  group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch-v2' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
   cancel-in-progress: false
 jobs:
   ingest:
@@ -40,6 +49,19 @@ jobs:
           # a stale event SHA cannot replay an old renderer/parser onto main.
           ref: main
           fetch-depth: 0
+      - name: poll ntfy on ordinary issue runs
+        # Issue ingest skips ntfy so Slack-connector bursts do not allocate one
+        # carrier poll per Slack message. Ordinary issues must still read the
+        # topic: Spark ACCEPTED_DURABILITY_PENDING is mail, not a page, and the
+        # five-minute schedule is often starved. Do not replace the canonical
+        # publisher invoke in the ingest-and-publish step. Do not PUT board_ingest.py.
+        # Quote the complete scalar: the literal contains `: `, which YAML
+        # otherwise parses as an unexpected mapping separator before Actions
+        # can evaluate the expression.
+        if: "${{ github.event_name == 'issues' && !contains(github.event.issue.body, 'carrier: slack-connector') }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 -m host.ntfy_issue_poll
       - name: ingest and publish
         id: publish
         env:
@@ -292,7 +314,11 @@ jobs:
 
   device:
     needs: ingest
-    if: always() && needs.ingest.outputs.ingest_complete == 'true' && needs.ingest.outputs.has_pending_device == 'true'
+    # A Slack-batch ingest owns only public record publication.  Letting its
+    # unrelated device tail wait on a second runner keeps the workflow-level
+    # concurrency group occupied and starves the next complete Slack sweep.
+    # Ordinary issue, schedule, and dispatch runs retain device follow-through.
+    if: "${{ always() && needs.ingest.outputs.ingest_complete == 'true' && needs.ingest.outputs.has_pending_device == 'true' && !(github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector')) }}"
     runs-on: ubuntu-latest
     steps:
       - name: retain physical-device actions without automatic laptop dispatch

@@ -37,8 +37,9 @@ SPARK_FAST_TOOL_NAMES = {
 SPARK_FAST_DESCRIPTION = (
     "Spark fast-submit mode: sends the canonical carrier envelope immediately and "
     "returns ACCEPTED_DURABILITY_PENDING instead of waiting for Git durability. "
-    "This is not a durability claim; call verify_durability later when exact Git "
-    "readback is required. "
+    "This is not a durability claim; call verify_durability later only when there "
+    "is a concrete delivery problem or an explicit user request. Reuse successful "
+    "existing results; do not reopen a result just because the seat or compaction changed. "
 )
 
 POST_TO_ACTION_PAD_SCHEMA = copy.deepcopy(
@@ -236,6 +237,12 @@ class FastSubmitGateway(cm.CommonsGateway):
             raise cm.CommonsError(
                 "CANCELLED", "request cancelled before carrier submission", state="NOT_SENT"
             )
+        # Carrier-specific validation remains carrier-owned.  Ask an exposing
+        # carrier to fail closed before adapters or mocks can bypass its limit;
+        # submit repeats the same check immediately before relay I/O.
+        validate = getattr(self.carrier, "validate", None)
+        if callable(validate):
+            validate(payload)
         receipt = self.carrier.submit(payload)
         return {
             "ok": True,
@@ -248,7 +255,9 @@ class FastSubmitGateway(cm.CommonsGateway):
             "carrier": receipt,
             "message": (
                 "Carrier accepted the post; Git durability is still pending. "
-                "Use verify_durability later for exact readback."
+                "Reuse successful existing results; do not reopen a result just "
+                "because the seat or compaction changed. Use verify_durability "
+                "only for concrete delivery problems or explicit user requests."
             ),
         }
 
@@ -277,7 +286,9 @@ class FastSubmitGateway(cm.CommonsGateway):
             "verify_tool": "verify_durability",
             "message": (
                 "Carrier accepted the action envelope; its durable page and "
-                "executor result are pending. Verify this id later; do not replay it."
+                "executor result are pending. Reuse successful existing results; "
+                "do not reopen a result just because the seat or compaction changed. "
+                "Verify this id only for concrete delivery problems or explicit requests; do not replay it."
             ),
         }
 
@@ -286,6 +297,7 @@ class SendLinkGateway(cm.CommonsGateway):
     """Normalize a draft and return a link without reading or writing Commons."""
 
     def _preflight(self, payload: dict[str, Any]) -> dict[str, Any] | None:
+        cm.enforce_publication(payload)
         del payload
         return None
 
@@ -354,8 +366,8 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
         raise cm.RpcError(-32600, "Invalid request body size")
     try:
         message = cm._wire_json_loads(raw.decode("utf-8"))
-    except (json.JSONDecodeError, UnicodeError, ValueError) as exc:
-        raise cm.RpcError(-32700, "Parse error") from exc
+    except (json.JSONDecodeError, UnicodeError, ValueError) as visc:
+        raise cm.RpcError(-32700, "Parse error") from visc
     cm.validate_http_headers(headers, message)
     cancel_event = threading.Event()
     method = message.get("method") if isinstance(message, dict) else None
@@ -449,8 +461,8 @@ class handler(BaseHTTPRequestHandler):
             )
         try:
             length = int(values[0])
-        except (TypeError, ValueError) as exc:
-            raise cm.RpcError(-32600, "Invalid request body size") from exc
+        except (TypeError, ValueError) as visc:
+            raise cm.RpcError(-32600, "Invalid request body size") from visc
         if length <= 0 or length > MAX_REQUEST_BYTES:
             raise cm.RpcError(-32600, "Invalid request body size")
         return self.rfile.read(length)
@@ -465,6 +477,18 @@ class handler(BaseHTTPRequestHandler):
         path = urllib.parse.urlsplit(self.path).path
         if path == SEND_PATH:
             self._send_html(200, SEND_PAGE_HTML)
+            return
+        if path in {"/webmcp", "/webmcp.html"}:
+            html_path = Path(__file__).resolve().parent.parent / "webmcp.html"
+            try:
+                body = html_path.read_bytes()
+            except OSError:
+                self.send_response(404)
+                self._common_headers()
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return
+            self._send_html(200, body)
             return
         if path == "/carriers" or path.startswith("/carriers/"):
             name = "" if path == "/carriers" else path[len("/carriers/"):]
@@ -484,8 +508,17 @@ class handler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path in {"/mcp", "/mcp/", "/"}:
+            self._send_json(
+                200,
+                cm.public_mcp_capability_map(
+                    extra_tools=(GET_SEND_LINK_TOOL["name"],),
+                    url=PUBLIC_MCP_URL,
+                ),
+            )
+            return
         self.send_response(405)
-        self.send_header("Allow", "POST, OPTIONS, DELETE")
+        self.send_header("Allow", "GET, HEAD, POST, OPTIONS, DELETE")
         self._common_headers()
         self.send_header("Content-Length", "0")
         self.end_headers()
@@ -514,10 +547,10 @@ class handler(BaseHTTPRequestHandler):
                     result = FAST_SUBMIT_GATEWAY.append_post(
                         _send_payload_arguments(payload)
                     )
-                except (json.JSONDecodeError, UnicodeError, ValueError) as exc:
+                except (json.JSONDecodeError, UnicodeError, ValueError) as visc:
                     raise cm.CommonsError(
                         "SCHEMA", "send payload must be valid JSON", state="NOT_SENT"
-                    ) from exc
+                    ) from visc
                 self._send_json(200, result)
                 return
             try:
@@ -528,11 +561,11 @@ class handler(BaseHTTPRequestHandler):
                 pass
             status, response = handle_json(raw, self.headers)
             self._send_json(status, response)
-        except cm.RpcError as exc:
-            self._send_json(exc.http_status, cm.error_response(request_id, exc))
-        except cm.CommonsError as exc:
-            self._send_json(400, exc.payload())
-        except Exception as exc:
+        except cm.RpcError as visc:
+            self._send_json(visc.http_status, cm.error_response(request_id, visc))
+        except cm.CommonsError as visc:
+            self._send_json(400, visc.payload())
+        except Exception as visc:
             self._send_json(
                 500,
                 cm.error_response(
@@ -540,7 +573,7 @@ class handler(BaseHTTPRequestHandler):
                     cm.RpcError(
                         -32603,
                         "Internal error",
-                        data={"type": type(exc).__name__},
+                        data={"type": type(visc).__name__},
                         http_status=500,
                     ),
                 ),

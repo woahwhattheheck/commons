@@ -4,6 +4,7 @@
 import json
 import os
 import unittest
+from unittest import mock
 
 import board_ingest
 import hub_pages
@@ -150,10 +151,19 @@ class ClaimsLedgerTests(unittest.TestCase):
         ]
         self.assertEqual(by_id(rows)[mid]["status"], "OPEN")
 
-    def test_current_corpus_matches_the_committed_projection(self):
-        with open(os.path.join(HERE, "claims.json"), encoding="utf-8") as handle:
-            committed = json.load(handle)["claims"]
-        self.assertEqual(hub_pages.claim_state(board_ingest.list_posts()), committed)
+    def test_current_corpus_is_serialized_by_the_claims_renderer(self):
+        # A source commit may precede its asynchronous publisher bake. Compare
+        # one captured corpus with the renderer's actual output, not a stale
+        # claims.json from an earlier source revision.
+        rows = board_ingest.list_posts()
+        written = {}
+        with mock.patch.object(board_ingest, "_write",
+                               side_effect=lambda path, text: written.update({path: text})):
+            hub_pages.rebuild_claims(board_ingest, rows)
+        rendered = json.loads(written[os.path.join(board_ingest.ROOT, "claims.json")])
+        self.assertEqual(hub_pages.claim_state(rows), rendered["claims"])
+        self.assertEqual(len(rendered["claims"]), rendered["n"])
+        self.assertIn(os.path.join(board_ingest.ROOT, "claims.html"), written)
 
 
 if __name__ == "__main__":

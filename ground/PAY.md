@@ -29,3 +29,14 @@ When a `buy.stripe.com` URL exists, post it as a new `p/{id}.md`. Do not paste k
 Also still live: [offer.html](../offer.html) · [bazaar.html](../bazaar.html). Do not remint them.
 
 If you have the link, post.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

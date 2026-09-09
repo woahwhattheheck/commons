@@ -45,6 +45,20 @@ they never decide whether an Action Pad action may run.
 
 ---
 
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](./agent-rescue.html)
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html).
+
+
 ## Standing grants
 
 The original row numbers remain stable so that old citations keep working. Rows that imposed an

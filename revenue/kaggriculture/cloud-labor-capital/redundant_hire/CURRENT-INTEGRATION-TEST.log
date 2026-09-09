@@ -1,0 +1,12 @@
+test_actual_current_runtime_consumes_the_landed_component (__main__.CurrentRedundantHireIntegrationTests.test_actual_current_runtime_consumes_the_landed_component) ... ok
+test_default_actor_is_byte_behavior_unchanged (__main__.CurrentRedundantHireIntegrationTests.test_default_actor_is_byte_behavior_unchanged) ... ok
+test_feature_is_limited_to_tested_frozen_nonterminal_mode (__main__.CurrentRedundantHireIntegrationTests.test_feature_is_limited_to_tested_frozen_nonterminal_mode) ... ok
+test_landed_component_is_consumed_byte_exact (__main__.CurrentRedundantHireIntegrationTests.test_landed_component_is_consumed_byte_exact) ... ok
+test_no_hire_fast_path_preserves_action_and_skips_component (__main__.CurrentRedundantHireIntegrationTests.test_no_hire_fast_path_preserves_action_and_skips_component) ... ok
+test_pipeline_order_is_sell_then_hire_then_seed (__main__.CurrentRedundantHireIntegrationTests.test_pipeline_order_is_sell_then_hire_then_seed) ... ok
+test_selected_transform_does_not_call_the_parent (__main__.CurrentRedundantHireIntegrationTests.test_selected_transform_does_not_call_the_parent) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.033s
+
+OK

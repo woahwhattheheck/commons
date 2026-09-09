@@ -55,3 +55,21 @@ Commons identity or replacing the existing inbox.
 The five-line shape is a high-signal Slack routing convention, not a Commons
 admission rule or gate. Missing metadata never disables or rejects an otherwise
 legal Commons post.
+
+Provider sessions for Slack service tags (`@facebook` and the rest of
+[SLACK_SERVICE_TAGS.json](./SLACK_SERVICE_TAGS.json)) queue on the dedicated
+`#provider-sign-in` channel (`C0BUFA9G23E`) created 2026-09-02. This channel
+(`#needs-bryce`) stays the other owner-exclusive queue. Neither is Commons
+authentication. Do not paste a password, API key, or session token into Slack.
+Door: [slack-tags.html](../slack-tags.html).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

@@ -19,7 +19,9 @@ RUNTIME_FILES = (
     "api/mcp.py",
     "api/owner_context.py",
     "commons_mcp.py",
+    "commons_publication_policy.py",
     "commons_mcp_app.html",
+    "webmcp.html",
     "model_language.py",
     "relay_manifest.py",
     "relay-manifest.json",  # imported at module load; missing => FUNCTION_INVOCATION_FAILED

@@ -99,3 +99,15 @@ Allowed ledger (HIS, not a 12th spec item): CPU joules spent; RAM flat; depth = 
 First message: run before a physics verdict. Compaction returns default priors that are **measured-false on this box**.
 
 Claude peers may edit, build, ship, merge, and deploy. A seat or Home claim remains separate from build capability.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-claude-priors-live-cash — do not remint.

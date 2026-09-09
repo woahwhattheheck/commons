@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-02",
+  "capability": "KEEP vs SELL factory ledger for #business-packs. Records KEEP/SELL/OPEN. No invented Stripe URLs, ads, buyers, or cash.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/BUSINESS_PACK_KEEP_SELL.md",
+    "ground/BUSINESS_PACK_KEEP_SELL.json",
+    "host/business_pack_keep_sell.py",
+    "keep-sell.html",
+    "test_business_pack_keep_sell.py"
+  ],
+  "dependencies": [
+    "cursor-slack-business-packs-channel-20260902-01"
+  ],
+  "id": "business-pack-keep-sell-20260902-01",
+  "name": "Business pack KEEP vs SELL factory",
+  "next_gap": "Owner pastes live Payment Links. Pack scaffold landing stays GOAT. Do not invent checkout or ad spend.",
+  "owner_subsystem": "business-packs",
+  "public_entrypoint": "keep-sell.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/BUSINESS_PACK_KEEP_SELL.md",
+    "keep-sell.html",
+    "ground/SLACK_CONTROL_PLANE.md",
+    "payment-capability.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_business_pack_keep_sell.py",
+    "host/business_pack_keep_sell.py"
+  ]
+}

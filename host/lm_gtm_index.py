@@ -13,8 +13,9 @@ Live send is refused. Cash stays USD 0 without payment evidence.
 Agent floor: `python3 host/lm_gtm_index.py brief` lists compact HOT
 rows. `sent` lists HARD_DO_NOT_RESEND including bounced DNR.
 OWNER_HOLD is live and not hot. Occupancy (`claim` / `release`)
-is an overlay event on the owner field; it does not rewrite loop.json
-and is not an admission gate.
+IS admission for sales/draft/outreach. Brief remains the floor for
+listing. Still not a second CRM. It does not rewrite loop.json.
+`--send` exits 3. Unclaimed sales exit 4.
 """
 
 from __future__ import annotations
@@ -142,6 +143,9 @@ CONTRACT = {
     "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
     "read_state": "revenue/lm_gtm_index/state.json",
     "list_brief": "python3 host/lm_gtm_index.py brief",
+    "check_freshness": "python3 host/lm_gtm_index.py freshness",
+    "mailbox_verify": "python3 host/lm_gtm_mailbox_buyer_reply_verify.py SUBJECT",
+    "handoff_mailbox_verify": "python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-verify",
     "list_next": "python3 host/lm_gtm_index.py next",
     "list_hot": "python3 host/lm_gtm_index.py hot",
     "list_hold": "python3 host/lm_gtm_index.py hold",
@@ -150,7 +154,10 @@ CONTRACT = {
     "append_event": 'python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body "NOTE"',
     "claim": "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU",
     "release": "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
+    "require-claim": "python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU",
     "send": "illegal; exits 3",
+    "mailbox_send": "illegal; exits 3",
+    "sales_without_claim": "illegal; exits 4",
 }
 
 
@@ -160,6 +167,10 @@ class IndexError_(ValueError):
 
 class SendError(IndexError_):
     """Live send was requested. This composer never transports mail."""
+
+
+class UnclaimedSales(Exception):
+    """Sales/draft/outreach without a live occupant matching --owner."""
 
 
 def canonical_text(value: Any) -> str:
@@ -197,6 +208,8 @@ def rel(root: Path, path: Path) -> str:
 
 
 def parse_time(value: str) -> dt.datetime:
+    if not isinstance(value, str):
+        raise IndexError_(f"invalid date-time: {value}")
     text = value[:-1] + "+00:00" if value.endswith("Z") else value
     try:
         parsed = dt.datetime.fromisoformat(text)
@@ -204,7 +217,10 @@ def parse_time(value: str) -> dt.datetime:
         raise IndexError_(f"invalid date-time: {value}") from error
     if parsed.tzinfo is None:
         raise IndexError_("date-time must include a timezone")
-    return parsed.astimezone(dt.timezone.utc)
+    try:
+        return parsed.astimezone(dt.timezone.utc)
+    except (OverflowError, ValueError) as error:
+        raise IndexError_(f"invalid date-time: {value}") from error
 
 
 def iso_z(value: dt.datetime) -> str:
@@ -218,7 +234,8 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     if not text.strip():
         return []
-    for line_no, line in enumerate(text.splitlines(), start=1):
+    # JSONL records use LF; Unicode line separators inside strings are data.
+    for line_no, line in enumerate(text.split("\n"), start=1):
         if not line.strip():
             continue
         try:
@@ -1192,6 +1209,37 @@ def release_subject(
     return {"event": event, "index": written, "status": "released", "owner": "UNSEATED"}
 
 
+def assert_sales_owner(
+    *,
+    subject_id: str,
+    owner: str,
+    paths: dict[str, Path] | None = None,
+) -> dict[str, Any]:
+    """Exit-0 helper: live occupant after compose must equal YOU.
+
+    UNSEATED or a different occupant raises UnclaimedSales (CLI exit 4).
+    Unknown / non-live subjects stay IndexError_ (CLI exit 1).
+    """
+    paths = paths or default_paths()
+    name = (owner or "").strip() or "UNSEATED"
+    row = _live_row(subject_id, paths)
+    current = row.get("owner") or "UNSEATED"
+    if current == "UNSEATED" or current != name:
+        raise UnclaimedSales(
+            f"unclaimed sales {subject_id}: live owner is {current}, --owner is {name}; "
+            "sales/draft/outreach illegal without matching occupancy (exit 4)"
+        )
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "kind": "LM_GTM_SALES_OCCUPANCY",
+        "status": "occupied",
+        "subject_id": subject_id,
+        "owner": name,
+        "cash_usd": 0,
+        "transport": "NONE",
+    }
+
+
 def occupancy_subject(args: argparse.Namespace) -> str:
     positional = str(getattr(args, "subject_pos", "") or "").strip()
     flagged = str(getattr(args, "subject_flag", "") or "").strip()
@@ -1218,6 +1266,61 @@ def _add_occupancy_args(parser: argparse.ArgumentParser, *, steal: bool) -> None
     parser.add_argument("--ts")
 
 
+def read_committed_composed_at(paths: dict[str, Path] | None = None) -> str:
+    """Read the saved INDEX timestamp, or state.json when INDEX is absent."""
+    paths = paths or default_paths()
+    rows = load_jsonl(paths["index"])
+    if rows:
+        if rows[0].get("kind") != KIND_HEADER:
+            raise IndexError_("INDEX first row must be its header")
+        stamp = rows[0].get("composed_at")
+    elif paths["state"].exists():
+        stamp = read_object(paths["state"]).get("composed_at")
+    else:
+        raise IndexError_("INDEX/state missing composed_at")
+    if not isinstance(stamp, str) or not stamp.strip():
+        raise IndexError_("INDEX/state missing composed_at")
+    return stamp.strip()
+
+
+def composed_at_freshness(
+    paths: dict[str, Path] | None = None,
+    *,
+    now: dt.datetime | None = None,
+    composed_at_value: str | None = None,
+) -> dict[str, Any]:
+    """Describe timestamp age; this does not grant or restrict any operation."""
+    composed = (
+        read_committed_composed_at(paths)
+        if composed_at_value is None else composed_at_value
+    )
+    if not isinstance(composed, str) or not composed.strip():
+        raise IndexError_("composed_at must be a nonempty timestamp")
+    stamped = parse_time(composed)
+    instant = now if now is not None else dt.datetime.now(dt.timezone.utc)
+    if instant.tzinfo is None or instant.utcoffset() is None:
+        raise IndexError_("as_of must include a timezone")
+    age = instant - stamped
+    if age < dt.timedelta(0):
+        raise IndexError_("composed_at is later than as_of; freshness is unknown")
+    stale = age > STALE_AFTER
+    payload = {
+        "schema_version": SCHEMA_VERSION,
+        "kind": "LM_GTM_COMPOSED_AT_FRESHNESS",
+        "status": "STALE" if stale else "FRESH",
+        "composed_at": composed,
+        "as_of": iso_z(instant),
+        "age_hours": round(age.total_seconds() / 3600.0, 6),
+        "threshold_hours": STALE_AFTER.total_seconds() / 3600.0,
+        "canonical_crm": CANONICAL_CRM,
+        "cash_usd": 0,
+    }
+    if stale:
+        payload["stale_warning"] = STALE_WARNING
+    _assert_no_pii_in_index_blob(json.dumps(payload, sort_keys=True, ensure_ascii=False))
+    return payload
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -1226,6 +1329,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("snapshot")
     sub.add_parser("next")
     sub.add_parser("brief")
+    freshness = sub.add_parser("freshness", help="describe saved INDEX age")
+    freshness.add_argument("--as-of", help="timezone-aware time; defaults to current UTC")
     sub.add_parser("sent")
     hot = sub.add_parser("hot")
     hot.add_argument("--brief", action="store_true")
@@ -1244,6 +1349,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_occupancy_args(occupy, steal=True)
     release = sub.add_parser("release")
     _add_occupancy_args(release, steal=False)
+    need = sub.add_parser("require-claim")
+    _add_occupancy_args(need, steal=False)
     return parser
 
 
@@ -1285,6 +1392,10 @@ def main(argv: list[str] | None = None) -> int:
             built = build_index()
             sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
             return 0
+        if args.command == "freshness":
+            result = composed_at_freshness(now=parse_time(args.as_of) if args.as_of else None)
+            print(canonical_text(result), end="")
+            return 0 if result["status"] == "FRESH" else 2
         if args.command == "sent":
             sys.stdout.write(emit_jsonl(compact_sent_rows()))
             return 0
@@ -1336,10 +1447,20 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(canonical_text(result.get("event") or result), end="")
             return 0
+        if args.command == "require-claim":
+            result = assert_sales_owner(
+                subject_id=occupancy_subject(args),
+                owner=args.owner,
+            )
+            print(canonical_text(result), end="")
+            return 0
         raise IndexError_(f"unknown command {args.command}")
     except SendError as error:
         print(str(error), file=sys.stderr)
         return 3
+    except UnclaimedSales as error:
+        print(str(error), file=sys.stderr)
+        return 4
     except IndexError_ as error:
         print(str(error), file=sys.stderr)
         return 1

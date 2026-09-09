@@ -1,0 +1,16 @@
+{
+  "feature_id": "cursor-business-pack-paperwork-included-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-included-source-20260902-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Filled factory Do X homework plus included-claim helper. Does not remint the paperwork factory id.",
+  "paths": [
+    "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+    "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
+    "host/business_pack_paperwork_included.py",
+    "packs/_template/paperwork.md",
+    "test_business_pack_paperwork_included.py"
+  ],
+  "recorded_at": "2026-09-02T05:56:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
