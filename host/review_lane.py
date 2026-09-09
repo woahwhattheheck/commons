@@ -154,6 +154,20 @@ def load_catalog(text):
     }
 
 
+def is_pr3_candidate(item):
+    """True only for the exact measured review-lane candidate state."""
+    item = item if isinstance(item, dict) else {}
+    return (
+        str(item.get("number")) == PR_NUMBER
+        and item.get("candidate_sha") == CANDIDATE_SHA
+        and item.get("official_main") == OFFICIAL_MAIN
+        and item.get("pr_state") == "OPEN"
+        and item.get("land_state") == "CANDIDATE"
+        and item.get("receipt_on_official_main") == "ABSENT"
+        and item.get("ci") == "SUCCESS"
+    )
+
+
 def measure_from_rows(facts):
     """Classify measured file/phrase facts. Missing calibration is UNMEASURED."""
     facts = facts or {}
@@ -298,14 +312,7 @@ def measure_root(root):
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
     candidates = catalog.get("candidates") or []
-    names_pr3_candidate = any(
-        str(item.get("number")) == PR_NUMBER
-        and item.get("land_state") == "CANDIDATE"
-        and item.get("candidate_sha") == CANDIDATE_SHA
-        and item.get("official_main") == OFFICIAL_MAIN
-        and item.get("receipt_on_official_main") == "ABSENT"
-        for item in candidates
-    )
+    names_pr3_candidate = any(is_pr3_candidate(item) for item in candidates)
     claims_pr3_integrated = any(
         str(item.get("number")) == PR_NUMBER
         and item.get("land_state") in {"INTEGRATED", "FOREIGN_INTEGRATED"}
