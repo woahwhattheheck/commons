@@ -11,6 +11,7 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_staging.py"
       - "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_order_rail.py"
       - "revenue/kaggriculture/cloud-execution-lab/test_capillary_lifecycle.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_capillary_carrier_isolation.py"
       - "revenue/kaggriculture/cloud-execution-lab/receipts/capillary_order_rail_sol_rail.json"
   workflow_dispatch:
 
@@ -31,7 +32,7 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Bind predecessor, carrier, and successor source identities
+      - name: Bind predecessor, carrier, route-bank, and successor identities
         shell: bash
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -39,17 +40,21 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git hash-object "$LAB/jit_seed_staging.py")" = "e1cf2485ab869cf3c6f5eec455b0a25f6aeaa505"
-          test "$(git hash-object "$LAB/capillary_main.py")" = "468d9068468810fe1cb62535bc0ba80b689ec6c8"
           test "$(git hash-object "$LAB/test_jit_seed_staging.py")" = "c669eeaaa53a62b8ca2b4f7062fa55b6f070274d"
           test "$(git hash-object "$LAB/test_capillary_lifecycle.py")" = "1ec33d04636e7f2fa306001392af0d5ece7660a9"
           test "$(git hash-object "$LAB/main.py")" = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
           test "$(git hash-object "$LAB/titan_runtime.py")" = "b952c9c228ecbde592bf3d2df01638677abb0d24"
+          test "$(git hash-object "$LAB/spatial_tempo.py")" = "edbc423023479dbe2e78131495334384a87b607f"
+          test "$(git hash-object "$LAB/scheduler.py")" = "a483b24dd72b580d7d8811636b54d2d44f391575"
+          test "$(git hash-object "$LAB/reference/next-panel/vendor/arlene.py")" = "bdb9cf58148a3c7961c085f4902759537decabf6"
           test "$(git hash-object "$LAB/TITAN-CONFIG.json")" = "3a3bef83899d3010fad623b628d9e95d9978111b"
           test "$(git hash-object "$LAB/build_integrated.py")" = "05994d946885ff0fe2a2ce77439fd335174900aa"
           test "$(git hash-object "$LAB/../cloud-runtime-pulse/observed_clone.py")" = "f810d53193d3035655a36c21021e18ba1d415916"
           test "$(git hash-object "$LAB/jit_seed_order_rail.py")" = "f5d2c3775bc527ef7f950a850eac8036bd71e865"
           test "$(git hash-object "$LAB/test_jit_seed_order_rail.py")" = "29af14ff7e0d2a0c986e0dd37b951d56e3293403"
-          test "$(git hash-object "$LAB/titan_capillary.py")" = "f138f3015da5d59b7ff5c6ac1ce5d0dbd760abe4"
+          test "$(git hash-object "$LAB/capillary_main.py")" = "e545a65d99f81f7982ee70fd4c336b78ad957afc"
+          test "$(git hash-object "$LAB/titan_capillary.py")" = "afbfb0859d7a3219d2f3e5c4178d72c128f31911"
+          test "$(git hash-object "$LAB/test_capillary_carrier_isolation.py")" = "85fd539ae42780c9ae993fe38ed8bf14a40a5f36"
           git diff --exit-code -- .
           printf 'exact_head=%s\n' "$EXPECTED_HEAD"
 
@@ -108,18 +113,25 @@ jobs:
           python -B -m unittest -v \
             test_jit_seed_staging.py \
             test_jit_seed_order_rail.py \
-            test_capillary_lifecycle.py
+            test_capillary_lifecycle.py \
+            test_capillary_carrier_isolation.py
 
-      - name: Prove isolated placement ownership
+      - name: Prove isolated compiler and carrier ownership
         working-directory: revenue/kaggriculture/cloud-execution-lab
         env:
           PYTHONDONTWRITEBYTECODE: "1"
         run: |
           set -euo pipefail
           python -B - <<'PY'
+          from pathlib import Path
+          import sys
+
+          import capillary_main
           import jit_seed_staging as predecessor
           import jit_seed_order_rail as successor
+          import main as public_main
           import titan_capillary
+          import titan_runtime
 
           before = predecessor._place_seed_order
           compiler = successor._isolated_compiler()
@@ -133,7 +145,13 @@ jobs:
               titan_capillary.compile_jit_expensive_seed_routes
               is successor.compile_jit_expensive_seed_routes
           )
-          print("ISOLATED_ORDER_RAIL_PASS")
+          private_main = capillary_main._canonical_module()
+          assert private_main is not public_main
+          assert Path(private_main.__file__).resolve() == Path('main.py').resolve()
+          assert private_main._new_instance is capillary_main._new_instance
+          assert titan_runtime.TitanAgent is titan_capillary.CapillaryTitanAgent.__mro__[1]
+          assert not any(value is private_main for value in sys.modules.values())
+          print("ISOLATED_ORDER_RAIL_AND_CARRIER_PASS")
           PY
 
       - name: Compile every candidate and contract module
@@ -149,7 +167,8 @@ jobs:
             capillary_main.py \
             test_jit_seed_staging.py \
             test_jit_seed_order_rail.py \
-            test_capillary_lifecycle.py
+            test_capillary_lifecycle.py \
+            test_capillary_carrier_isolation.py
 
       - name: Assert exact head stayed clean
         if: always()

@@ -1,4 +1,11 @@
 {
+  "carrier_identity_pins": {
+    "arlene_git_blob_sha1": "bdb9cf58148a3c7961c085f4902759537decabf6",
+    "canonical_main_git_blob_sha1": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "scheduler_git_blob_sha1": "a483b24dd72b580d7d8811636b54d2d44f391575",
+    "spatial_tempo_git_blob_sha1": "edbc423023479dbe2e78131495334384a87b607f",
+    "titan_runtime_git_blob_sha1": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+  },
   "mutation_boundary": {
     "archive_or_pointer": false,
     "canonical_entrypoint": false,
@@ -9,14 +16,24 @@
   },
   "new_sources": {
     ".github/workflows/titan-capillary-order-rail-sol-rail.yml": {
-      "bytes": 6805,
-      "git_blob_sha1": "bb0de18f681fa61f6a5b31b9a733c3939996f4ce",
-      "sha256": "1dd09948ccdc3dc64ba87ffe7f804b78c49711546a842477ba542b7b0e968257"
+      "bytes": 8077,
+      "git_blob_sha1": "aa85c49276e5e89abac3e53f74f3710657bc677c",
+      "sha256": "e2c95860b62b30237b482bca326f3e4a2694c0c498869939fcdd7f6be4e29417"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/capillary_main.py": {
+      "bytes": 5126,
+      "git_blob_sha1": "e545a65d99f81f7982ee70fd4c336b78ad957afc",
+      "sha256": "5fb713d9de9e1d914910aa9dff7762fd061756c3d4b05224cea72c63befb09bc"
     },
     "revenue/kaggriculture/cloud-execution-lab/jit_seed_order_rail.py": {
       "bytes": 25240,
       "git_blob_sha1": "f5d2c3775bc527ef7f950a850eac8036bd71e865",
       "sha256": "abf5fe51301873502ca1ba2a4a34e422e09b843f797ff17a741d65638820ce99"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/test_capillary_carrier_isolation.py": {
+      "bytes": 6688,
+      "git_blob_sha1": "85fd539ae42780c9ae993fe38ed8bf14a40a5f36",
+      "sha256": "5a843a3866cf4537f62c9e919a377ce7552f66fce89b4c212c64840fc446a582"
     },
     "revenue/kaggriculture/cloud-execution-lab/test_jit_seed_order_rail.py": {
       "bytes": 12118,
@@ -24,12 +41,24 @@
       "sha256": "4cac66f8a07694b8ea6a5aa50d70acec628cf038f9746cc326c4148e81ca6488"
     },
     "revenue/kaggriculture/cloud-execution-lab/titan_capillary.py": {
-      "bytes": 3673,
-      "git_blob_sha1": "f138f3015da5d59b7ff5c6ac1ce5d0dbd760abe4",
-      "sha256": "67995a5d38f1b15eb1b159d72b2ac7a27524218da73ad3bd031ab863b30e062f"
+      "bytes": 8059,
+      "git_blob_sha1": "afbfb0859d7a3219d2f3e5c4178d72c128f31911",
+      "sha256": "2798b8546d048f826b420b1138a1c7e1feb35a8ca91489af75e5a7fd428ba46d"
     }
   },
   "operation": "titan-capillary-order-rail-20260909-sol-rail-01",
+  "peer_lineage": {
+    "actor": "SOL-KEYSTONE",
+    "adopted_evidence": [
+      "module-global Arlene route dictionaries must be detached before candidate mutation",
+      "SpatialTempo must be reinstalled so both its closure pristine cell and _crop_routes bind the private dictionary",
+      "canonical main.py mutable _INSTANCE must be private to each evaluator/module load",
+      "candidate construction must not patch the live titan_runtime module"
+    ],
+    "disposition": "proven carrier-isolation mechanisms integrated into owner PR #11871 with retained authorship; subordinate draft remains non-independent",
+    "subordinate_head": "bbbb1d468fcdef811454d6af0a5fd4e91dc94912",
+    "subordinate_pr": 11847
+  },
   "predecessor": {
     "carrier_git_blob_sha1": "468d9068468810fe1cb62535bc0ba80b689ec6c8",
     "carrier_path": "revenue/kaggriculture/cloud-execution-lab/capillary_main.py",
@@ -94,6 +123,12 @@
     ]
   },
   "repair": {
+    "carrier_isolation": {
+      "entrypoint": "Execute canonical main.py privately per evaluator load and clone its exact _new_instance code with an isolated titan_runtime import view whose only substitution is TitanAgent = CapillaryTitanAgent.",
+      "failure_policy": "Unrecognized SpatialTempo closure shape or failed private rebind declines compilation and preserves the original wrapper and route source.",
+      "live_module_boundary": "Never mutate public main._new_instance, public main._INSTANCE, or titan_runtime.TitanAgent.",
+      "route_bank": "Verify the installed SpatialTempo closure, unwrap exactly that layer, deep-copy the inherited Arlene route bank, reinstall SpatialTempo over the private object, and rebuild SeedBudget before and after compilation."
+    },
     "input_boundary": "Validate route, action, unit, market, and exact non-boolean integer quantity shapes before predecessor conversion.",
     "placement_policy": "append_or_trailing_active_prefix_blank_only",
     "postconditions": [
@@ -105,6 +140,14 @@
     ],
     "source_isolation": "Clone predecessor functions with private globals; never mutate predecessor module globals."
   },
+  "runtime_import_closure": {
+    "build_map_git_blob_sha1": "05994d946885ff0fe2a2ce77439fd335174900aa",
+    "build_map_path": "revenue/kaggriculture/cloud-execution-lab/build_integrated.py",
+    "mapped_member": "observed_clone.py",
+    "mapped_source_git_blob_sha1": "f810d53193d3035655a36c21021e18ba1d415916",
+    "mapped_source_path": "revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py",
+    "policy": "derive top-level Python import roots from canonical build_integrated.source_files() in deterministic mapping order; reject any missing mapped source"
+  },
   "schema_version": 1,
   "stack": {
     "child_branch": "sol-rail/capillary-order-rail-20260909-01",
@@ -112,12 +155,30 @@
     "parent_head": "fcb4bea645af0676283b5c44b969ee8690ea1ee7",
     "repository": "woahwhattheheck/commons"
   },
-  "status": "HOSTED_IMPORT_CLOSURE_REPAIR_PUSHED",
+  "status": "HOSTED_CARRIER_ISOLATION_REPAIR_PUSHED",
   "validation": {
     "hosted_exact_head": "REQUIRED",
+    "hosted_runs": [
+      {
+        "classification": "undeclared repository import-root closure in the focused workflow; no order-rail assertion failed",
+        "evidence": "57 compiler/order-rail contracts passed; 3 lifecycle contracts stopped at ModuleNotFoundError: observed_clone before candidate initialization",
+        "head": "76a913fd280ea9d64399df46a9551d7747ecf8d1",
+        "repair": "bind build_integrated.py and observed_clone source blobs, derive all top-level Python import roots from source_files(), and prove observed_clone resolves to the declared mapped source before rerunning 64 contracts",
+        "result": "FAIL_CLOSED",
+        "run_id": 34410545747
+      },
+      {
+        "classification": "pre-existing exact-parent carrier isolation defects beneath the compiler boundary; no order-rail assertion failed",
+        "evidence": "Canonical mapped import closure passed and all 57 predecessor/order-rail contracts passed. The lifecycle suite then exposed two carrier failures: SpatialTempo was not bound to controller.R after staging, and separate frozen consumers shared the same route dictionary.",
+        "head": "8ce44b36634b010274fa186b56fb8e769a21143b",
+        "repair": "integrate verified SpatialTempo unwrap/private-reinstall route detachment plus a private canonical main.py instance per evaluator load, with six new adversarial carrier tests",
+        "result": "FAIL_CLOSED",
+        "run_id": 34411121544
+      }
+    ],
     "local": [
       {
-        "command": "python -m py_compile jit_seed_order_rail.py test_jit_seed_order_rail.py titan_capillary.py",
+        "command": "python -m py_compile capillary_main.py titan_capillary.py jit_seed_order_rail.py test_jit_seed_order_rail.py test_capillary_carrier_isolation.py",
         "result": "PASS"
       },
       {
@@ -126,25 +187,17 @@
         "result": "PASS"
       }
     ],
+    "next_hosted_gate": {
+      "expected_contracts": 70,
+      "required": "all green at exact event head before any game launch",
+      "suites": [
+        "test_jit_seed_staging.py",
+        "test_jit_seed_order_rail.py",
+        "test_capillary_lifecycle.py",
+        "test_capillary_carrier_isolation.py"
+      ]
+    },
     "official_games": "NOT_RUN",
-    "score_or_promotion_claim": false,
-    "hosted_runs": [
-      {
-        "run_id": 34410545747,
-        "head": "76a913fd280ea9d64399df46a9551d7747ecf8d1",
-        "result": "FAIL_CLOSED",
-        "evidence": "57 compiler/order-rail contracts passed; 3 lifecycle contracts stopped at ModuleNotFoundError: observed_clone before candidate initialization",
-        "classification": "undeclared repository import-root closure in the focused workflow; no order-rail assertion failed",
-        "repair": "bind build_integrated.py and observed_clone source blobs, derive all top-level Python import roots from source_files(), and prove observed_clone resolves to the declared mapped source before rerunning 64 contracts"
-      }
-    ]
-  },
-  "runtime_import_closure": {
-    "build_map_path": "revenue/kaggriculture/cloud-execution-lab/build_integrated.py",
-    "build_map_git_blob_sha1": "05994d946885ff0fe2a2ce77439fd335174900aa",
-    "mapped_member": "observed_clone.py",
-    "mapped_source_path": "revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py",
-    "mapped_source_git_blob_sha1": "f810d53193d3035655a36c21021e18ba1d415916",
-    "policy": "derive top-level Python import roots from canonical build_integrated.source_files() in deterministic mapping order; reject any missing mapped source"
+    "score_or_promotion_claim": false
   }
 }
