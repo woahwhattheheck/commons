@@ -97,6 +97,29 @@ class TrackMembershipTests(unittest.TestCase):
         with self.assertRaisesRegex(AdapterError, "declares duplicate child 2"):
             tracks_to_rows("a", detections, [parent, child], ref_map, scale)
 
+    def test_parent_relation_requires_reciprocal_child_declaration(self):
+        scale = Scale()
+        bounds = VoxelBounds(0, 20, 0, 20, 0, 20)
+        detections = [
+            Detection("a", 0, 10, 5, 5, 5),
+            Detection("a", 1, 11, 5, 6, 5),
+            Detection("a", 1, 12, 5, 4, 5),
+        ]
+        payload, ref_map = build_btrack_payload(detections, scale, bounds)
+        parent = track_from_refs(payload, 1, [0])
+        child_one = track_from_refs(payload, 2, [1])
+        child_two = track_from_refs(payload, 3, [2])
+        child_one.parent = 1
+        child_two.parent = 1
+
+        with self.assertRaisesRegex(AdapterError, "missing reciprocal parent child declaration"):
+            tracks_to_rows("a", detections, [parent, child_one, child_two], ref_map, scale)
+
+        parent.children = [2, 3]
+        rows = tracks_to_rows("a", detections, [parent, child_one, child_two], ref_map, scale)
+        edge_rows = [row for row in rows if row["row_type"] == "edge"]
+        self.assertEqual(2, len(edge_rows))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -400,6 +400,14 @@ def tracks_to_rows(
         parent_track = track_by_id.get(parent_id)
         if parent_track is None:
             raise AdapterError(f"track {track_id} references unknown parent track {parent_id}")
+        declared_children = {
+            _as_int(raw_child, f"track {parent_id} child")
+            for raw_child in list(parent_track.children or [])
+        }
+        if track_id not in declared_children:
+            raise AdapterError(
+                f"lineage {parent_id}->{track_id} is missing reciprocal parent child declaration"
+            )
         parent_real = real_by_id[parent_id]
         child_real = real_by_id[track_id]
         if not parent_real or not child_real:
