@@ -121,21 +121,68 @@ jobs:
             exit 1
           }
 
-          python - "$GITHUB_SHA" "$GITHUB_OUTPUT" <<'PY' <<<"$prs"
+          printf '%s\n' "$prs" > /tmp/w10-open-prs.json
+          python - \
+            "$GITHUB_SHA" \
+            "$head" \
+            "$repo" \
+            "$GITHUB_OUTPUT" \
+            /tmp/w10-open-prs.json <<'PY'
           import json
           import sys
+          from pathlib import Path
 
-          pushed_sha, output_path = sys.argv[1:]
-          items = json.load(sys.stdin)
-          item = items[0]
-          if item['headRefOid'] != pushed_sha:
+          def reject_duplicate_keys(pairs):
+              result = {}
+              for key, value in pairs:
+                  if key in result:
+                      raise ValueError(f'duplicate JSON key: {key}')
+                  result[key] = value
+              return result
+
+          pushed_sha, expected_head, expected_repo, output_path, prs_path = sys.argv[1:]
+          try:
+              raw = Path(prs_path).read_bytes()
+              text = raw.decode('utf-8')
+              items = json.loads(text, object_pairs_hook=reject_duplicate_keys)
+          except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as exc:
+              raise SystemExit(f'unable to parse open PR inventory: {exc}') from exc
+
+          if not isinstance(items, list):
+              raise SystemExit('open PR inventory must be a JSON array')
+          if len(items) != 1:
               raise SystemExit(
-                  f"PR head {item['headRefOid']} does not equal pushed SHA {pushed_sha}"
+                  f'expected exactly one open PR inventory item, found {len(items)}'
               )
+
+          item = items[0]
+          if not isinstance(item, dict):
+              raise SystemExit('open PR inventory item must be an object')
+
+          number = item.get('number')
+          url = item.get('url')
+          head_ref = item.get('headRefName')
+          head_oid = item.get('headRefOid')
+          if isinstance(number, bool) or not isinstance(number, int) or number <= 0:
+              raise SystemExit('PR number must be a positive integer')
+          expected_url = f'https://github.com/{expected_repo}/pull/{number}'
+          if url != expected_url:
+              raise SystemExit(
+                  f'PR URL {url!r} does not equal expected URL {expected_url!r}'
+              )
+          if head_ref != expected_head:
+              raise SystemExit(
+                  f'PR head ref {head_ref!r} does not equal expected ref {expected_head!r}'
+              )
+          if head_oid != pushed_sha:
+              raise SystemExit(
+                  f'PR head {head_oid} does not equal pushed SHA {pushed_sha}'
+              )
+
           with open(output_path, 'a', encoding='utf-8') as handle:
-              handle.write(f"number={item['number']}\n")
-              handle.write(f"url={item['url']}\n")
-              handle.write(f"head_sha={item['headRefOid']}\n")
+              handle.write(f'number={number}\n')
+              handle.write(f'url={url}\n')
+              handle.write(f'head_sha={head_oid}\n')
           PY
 
       - name: Inventory the exact diff against current main
