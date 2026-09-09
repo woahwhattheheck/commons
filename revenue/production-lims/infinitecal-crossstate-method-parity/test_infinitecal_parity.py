@@ -161,6 +161,15 @@ class InfiniteCALParityTests(unittest.TestCase):
             "automation reviewer",
             "automated-reviewer",
             "robot reviewer",
+            "AI Reviewer",
+            "Agent Reviewer",
+            "Service Account",
+            "ai-reviewer",
+            "agent.reviewer",
+            "service_account",
+            "AI2 Reviewer",
+            "agent007 reviewer",
+            "service2 account",
         ):
             with self.subTest(reviewer=reviewer):
                 with self.assertRaisesRegex(ValueError, "NAMED_HUMAN_REVIEWER_REQUIRED"):
@@ -175,6 +184,11 @@ class InfiniteCALParityTests(unittest.TestCase):
         self.assertEqual(released["status"], mod.RELEASED)
         self.assertEqual(released["reviewer"], "QA Reviewer")
         self.assertEqual(result["ledger"].drafts[record_id], original)
+        for reviewer in ("Aisha Reviewer", "Agentson Reviewer", "Serviceman Reviewer"):
+            with self.subTest(reviewer=reviewer):
+                released = mod.release_draft(result["ledger"], record_id, reviewer)
+                self.assertEqual(released["reviewer"], reviewer)
+                self.assertEqual(result["ledger"].drafts[record_id], original)
 
     def test_fixture_tamper_is_rejected(self):
         fixture = json.loads(self.fixture_path.read_text(encoding="utf-8"))

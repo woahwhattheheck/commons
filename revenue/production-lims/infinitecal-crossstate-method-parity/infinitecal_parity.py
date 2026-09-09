@@ -26,7 +26,7 @@ MISSING_SOURCE_FILE = "MISSING_SOURCE_FILE"
 STAGED = "STAGED_HUMAN_REVIEW"
 RELEASED = "RELEASED_BY_NAMED_HUMAN"
 _RESERVED_AUTOMATION_REVIEWER_TOKENS = frozenset(
-    {"auto", "automated", "automation", "bot", "robot", "system"}
+    {"agent", "ai", "auto", "automated", "automation", "bot", "robot", "service", "system"}
 )
 
 
@@ -277,7 +277,7 @@ def run_records(records: Iterable[Mapping[str, Any]], ledger: Ledger | None = No
 
 def _named_human_reviewer(reviewer: str) -> str:
     reviewer = (reviewer or "").strip()
-    tokens = re.findall(r"[a-z0-9]+", reviewer.casefold())
+    tokens = re.findall(r"[a-z]+", reviewer.casefold())
     if not reviewer or any(token in _RESERVED_AUTOMATION_REVIEWER_TOKENS for token in tokens):
         raise ValueError("NAMED_HUMAN_REVIEWER_REQUIRED")
     return reviewer
