@@ -1,0 +1,133 @@
+name: Materialize TITAN S02 admission firewall packet
+
+on:
+  push:
+    branches:
+      - solpro/titan-s02-admission-firewall-20260909-01
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-s02-admission-firewall-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    if: contains(github.event.head_commit.message, '[bootstrap-s02]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TARGET: revenue/kaggriculture/cloud-execution-lab/analysis/s02-admission-firewall-20260909-solpro
+      EXPECTED_ARCHIVE_SHA256: ffd132c4424745ead25cb3446b918833d06ca723a2b5a0bc829ea5f1e472765b
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+
+      - name: Verify archive and materialize exact packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat "$TARGET"/.bootstrap/part*.b64 | base64 --decode > "$RUNNER_TEMP/packet.tar.gz"
+          echo "$EXPECTED_ARCHIVE_SHA256  $RUNNER_TEMP/packet.tar.gz" | sha256sum -c -
+
+          python - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          import os
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          target = PurePosixPath(os.environ["TARGET"])
+          archive = Path(os.environ["RUNNER_TEMP"]) / "packet.tar.gz"
+          expected_count = 18
+
+          with tarfile.open(archive, "r:gz") as bundle:
+              members = bundle.getmembers()
+              if len(members) != expected_count:
+                  raise SystemExit(f"archive member count {len(members)} != {expected_count}")
+              names: set[str] = set()
+              for member in members:
+                  name = PurePosixPath(member.name)
+                  if name.is_absolute() or ".." in name.parts:
+                      raise SystemExit(f"unsafe archive path: {member.name}")
+                  if not member.isfile():
+                      raise SystemExit(f"non-regular archive member: {member.name}")
+                  if target not in name.parents:
+                      raise SystemExit(f"out-of-scope archive member: {member.name}")
+                  if member.name in names:
+                      raise SystemExit(f"duplicate archive member: {member.name}")
+                  names.add(member.name)
+
+              for member in members:
+                  source = bundle.extractfile(member)
+                  if source is None:
+                      raise SystemExit(f"unreadable archive member: {member.name}")
+                  destination = Path(member.name)
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  destination.write_bytes(source.read())
+                  destination.chmod(0o644)
+
+          target_path = Path(target.as_posix())
+          manifest = json.loads((target_path / "MANIFEST.json").read_text(encoding="utf-8"))
+          expected = {row["path"]: row for row in manifest["files"]}
+          if len(expected) != expected_count:
+              raise SystemExit(f"manifest file count {len(expected)} != {expected_count}")
+
+          actual = {
+              path.relative_to(target_path).as_posix()
+              for path in target_path.rglob("*")
+              if path.is_file() and ".bootstrap" not in path.parts
+          }
+          if actual != set(expected):
+              raise SystemExit(
+                  "manifest path mismatch: "
+                  f"missing={sorted(set(expected) - actual)} "
+                  f"extra={sorted(actual - set(expected))}"
+              )
+
+          for relative, row in sorted(expected.items()):
+              payload = (target_path / relative).read_bytes()
+              observed = hashlib.sha256(payload).hexdigest()
+              if len(payload) != int(row["bytes"]):
+                  raise SystemExit(f"size mismatch: {relative}")
+              if observed != row["sha256"]:
+                  raise SystemExit(f"sha256 mismatch: {relative}")
+          print(f"verified {len(expected)} packet files")
+          PY
+
+      - name: Execute packet tests and fail-closed receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --quiet pytest
+          cd "$TARGET"
+          python -m py_compile planner_mpc.py main.py canonical_main.py validate_panel.py test_planner_mpc.py test_validate_panel.py benchmark_guard.py
+          pytest -q
+          set +e
+          python validate_panel.py s02_observed_smoke.jsonl \
+            --schedule S02-OBSERVED-SCHEDULE.json \
+            --min-pairs 4 \
+            --output "$RUNNER_TEMP/S02-OBSERVED-VERDICT.json"
+          verdict_rc=$?
+          set -e
+          test "$verdict_rc" -eq 2
+          cmp -s "$RUNNER_TEMP/S02-OBSERVED-VERDICT.json" S02-OBSERVED-VERDICT.json
+
+      - name: Commit verified packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "titan-s02-verifier"
+          git config user.email "titan-s02-verifier@users.noreply.github.com"
+          git add "$TARGET"
+          if git diff --cached --quiet; then
+            echo "Packet already materialized"
+            exit 0
+          fi
+          git commit -m "titan: land verified S02 admission firewall packet"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
