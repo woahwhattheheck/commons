@@ -28,6 +28,14 @@ METHOD_SPECS = (
     ("MICROBIOLOGY", "WATER", "SM-9223B", "R2", "MPN/100mL"),
     ("MOLECULAR", "WATER", "PCR-ENTERO", "R1", "copies/mL"),
 )
+RESERVED_RELEASE_ACTORS = {
+    "agent",
+    "automation",
+    "system",
+    "bot",
+    "autonomous",
+    "auto",
+}
 
 
 class IntegrityError(ValueError):
@@ -495,14 +503,19 @@ class DelawareNewLabShadow:
         )
 
     def release_report(self, request_id: str, reviewer_name: str) -> dict[str, str]:
+        if not isinstance(reviewer_name, str):
+            raise PermissionError("named human reviewer is required")
         reviewer = reviewer_name.strip()
-        if not reviewer:
+        reviewer_key = "".join(ch for ch in reviewer.casefold() if ch.isalnum())
+        if not reviewer or reviewer_key in RESERVED_RELEASE_ACTORS:
             raise PermissionError("named human reviewer is required")
         report = self.reports.get(request_id)
         if report is None:
             raise KeyError(request_id)
         if request_id in self.holds:
             raise PermissionError("held request cannot release a report")
+        if report["state"] != "STAGED_HUMAN_REVIEW" or report["released_by"] is not None:
+            raise PermissionError("report is not awaiting human review")
         report["state"] = "RELEASED_BY_NAMED_HUMAN"
         report["released_by"] = reviewer
         return {
