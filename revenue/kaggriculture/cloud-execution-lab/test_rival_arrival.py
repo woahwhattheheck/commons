@@ -8,7 +8,7 @@ import unittest
 
 import scheduler as scheduling
 import selected_sell_core as selected_core
-from seller_snapshot import seller_public_observation
+from seller_snapshot import seller_public_observation as base_seller_public_observation
 
 HERE = Path(__file__).resolve().parent
 _spec = importlib.util.spec_from_file_location(
@@ -41,14 +41,14 @@ def observation(step, rival_farm):
 class RivalArrivalTests(unittest.TestCase):
     def scheduler_with_previous(self, old):
         agent = scheduling.SellScheduler()
-        agent.previous = seller_public_observation(old)
+        agent.previous = e02.seller_public_observation(old)
         return agent
 
     def test_snapshot_retains_only_public_rival_actor_geometry(self):
         rival = farm(actor=(1, 2), hands=((3, 4),),
                      tile_at=(1, 2, {'kind': 'PLANT', 'crop': 'TOMATO', 'yield_units': 2}))
         obs = observation(17, rival)
-        snap = seller_public_observation(obs)
+        snap = e02.seller_public_observation(obs)
         self.assertEqual(snap['step'], 17)
         self.assertEqual(snap['farms'][1]['farmer'], [1, 2])
         self.assertEqual(snap['farms'][1]['hands'], [[3, 4]])
