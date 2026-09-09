@@ -8,8 +8,10 @@ from pathlib import Path
 from socotec_cmt_federation import (
     SocotecCmtFederation,
     build_registry,
+    canonical_json,
     load_fixture,
     named_human,
+    sha256_text,
     summarize,
     verify_manifest,
 )
@@ -29,6 +31,10 @@ class SocotecCmtFederationTests(unittest.TestCase):
         self.assertEqual(500, self.manifest["fixture_count"])
         self.assertEqual(25, self.manifest["namespace_count"])
         self.assertEqual(500, len(self.jobs))
+        self.assertEqual(
+            self.manifest["expanded_fixture_sha256"],
+            sha256_text(canonical_json(self.jobs)),
+        )
         self.assertEqual(
             {
                 "CAPACITY_EXCEEDED": 16,
