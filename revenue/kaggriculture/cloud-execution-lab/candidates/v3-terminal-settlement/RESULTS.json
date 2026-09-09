@@ -25,8 +25,8 @@
       "sha256": "288bb60ab8b50bc8a2abb8e1b88d20aa6d4e7623966b1a8945dcd2997c4767e4"
     },
     "test_terminal_settlement.py": {
-      "bytes": 13461,
-      "sha256": "0224cf36c2c11fac0697a22958987aeaa64738f8b5c233c96fa97ecf44eef03c"
+      "bytes": 13460,
+      "sha256": "cdb7e55a633c2c39e473189c0d46799ed0b1d2fe667974fce550f6df8e8ae122"
     }
   },
   "limitations": [
