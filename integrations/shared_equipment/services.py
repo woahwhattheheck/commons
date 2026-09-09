@@ -84,6 +84,10 @@ TOOLS = [
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
     _schema("github_read_pull_request", "Read PR state, head/base SHAs, changed files and checks. Use page for further file pages.", {"repository": "string", "pull_number": "integer"}, {"page": "integer"}),
+    _schema("github_add_issue_comment", "Comment on an issue or PR through the existing owner account publishing service. Reuse operation_id for retries; inspect its actual receipt. Available to every peer.", {"repository": "string", "issue_number": "integer", "body": "string", "operation_id": "string"}),
+    _schema("github_update_issue_comment", "Update an existing issue/PR conversation comment through the account publishing service, preserving the comment ID. Reuse operation_id for retries.", {"repository": "string", "comment_id": "integer", "body": "string", "operation_id": "string"}),
+    _schema("github_update_issue", "Update issue title/body through the existing account publishing service. GitHub enforces author/repository permissions. Reuse operation_id for retries.", {"repository": "string", "issue_number": "integer", "operation_id": "string"}, {"title": "string", "body": "string"}),
+    _schema("github_update_pull_request", "Update PR title/body through the existing account publishing service. Reads expected_head before publication and returns after-write head readback; it does not lock the branch. Reuse operation_id for retries.", {"repository": "string", "pull_number": "integer", "expected_head": "string", "operation_id": "string"}, {"title": "string", "body": "string"}),
     _schema("github_create_branch", "Create a branch from base_ref (default main), resolving its commit internally. base_sha remains a compatible override and also accepts a ref. Returns an existing branch only when its head matches the resolved base; never moves an existing branch.", {"repository": "string", "branch": "string"}, {"base_ref": {"type": "string", "default": "main", "description": "Source branch, tag, ref, or commit; resolved internally. Defaults to main."}, "base_sha": {"type": "string", "description": "Compatibility override for base_ref: an existing commit SHA or ref."}}),
     _schema("github_commit_files", "Commit UTF-8 files to an existing branch, comparing expected_head first. Supply full file contents. Returns commit SHA; never force-updates a ref.", {"repository": "string", "branch": "string", "expected_head": "string", "message": "string"}, {"files": {"type": "array", "items": {"type": "object", "properties": {"path": {"type": "string"}, "content": {"type": "string"}}, "required": ["path", "content"]}}}),
     _schema("github_create_pull_request", "Open a useful PR for existing task work. Returns an existing open PR for the same head/base on retry.", {"repository": "string", "head": "string", "base": "string", "title": "string", "body": "string"}, {"draft": "boolean"}),
@@ -245,6 +249,44 @@ class ServiceEquipment(GitHubSlackEquipment):
             return result
         repo = _repo(a)
         root = "repos/" + repo
+        publication_tools = {
+            "github_add_issue_comment": ("issue.comment.create", "issue_number"),
+            "github_update_issue_comment": ("issue.comment.update", "comment_id"),
+            "github_update_issue": ("issue.update", "issue_number"),
+            "github_update_pull_request": ("pull.update", "pull_number"),
+        }
+        if name in publication_tools:
+            from .github_publication import publish
+            operation, number_key = publication_tools[name]
+            number = a.get(number_key)
+            if isinstance(number, bool) or not isinstance(number, int) or number < 1:
+                raise EquipmentError(number_key + " must be a positive integer")
+            owner, repository_name = repo.split("/")
+            outgoing = {"owner": owner, "repo": repository_name, number_key: number}
+            fields = ("body",) if "comment" in name else ("title", "body")
+            for field in fields:
+                if field in a:
+                    if not isinstance(a[field], str) or field == "title" and not a[field].strip():
+                        raise EquipmentError(field + " must be text")
+                    outgoing[field] = a[field]
+            if not any(field in outgoing for field in fields):
+                raise EquipmentError("supply the intended title or body")
+            expected = None
+            if name == "github_update_pull_request":
+                expected = _string(a, "expected_head")
+                current = self.github(f"{root}/pulls/{number}")
+                if current["head"]["sha"] != expected:
+                    raise EquipmentError("PR head changed; read the current PR before updating its description")
+            result = publish(operation, outgoing, _string(a, "operation_id"))
+            if expected is not None and result["ok"]:
+                # Publication already succeeded. A failed read cannot erase its receipt.
+                try:
+                    current = self.github(f"{root}/pulls/{number}")
+                    result["head_after"] = current["head"]["sha"]
+                    result["head_unchanged"] = result["head_after"] == expected
+                except Exception:
+                    result["readback_error"] = "PR head readback unavailable; retain publication receipt"
+            return result
         if name == "github_read_file":
             path = "/".join(_quote(part) for part in _string(a, "path").split("/"))
             endpoint = root + "/contents/" + path
