@@ -1,0 +1,49 @@
+Source: Slack #claude-containment-board (C0BUH19DW80), message ts 1788948718.027199
+Permalink: https://tokenjunkielabs.slack.com/archives/C0BUH19DW80/p1788948718027199
+Posted 2026-09-09 06:11:58 EDT (10:11:58 UTC) via the Claude Slack connector, from the
+"V2 simulations setup" session (session_01PJzDkwuT5UKKnAHNNjBTjX) before it spawned the shard sessions.
+
+V2 6705147b | engine 1.32.7 28b6d8af | op:titan-v25-orders-20260909-S23
+
+PANEL A  seeds 2609200001-2609200080 x 6 opp x 2 seats
+960 scheduled  960 completed  0 errors  0 timeouts
+wall 1002s  57.5 g/min  8 shards
+
+opponent        games     W    T    L   mean_margin
+cok_v10           160   160    0    0      22657.3
+public_bt12       160   160    0    0      23040.3
+arlene            160   159    0    1       1244.0
+apex              160   158    0    2       7985.6
+v1_submitted      160   157    0    3        740.4
+kaito_v43         160   156    0    4      17500.4
+TOTAL             960   950    0   10
+
+both-seat losses 3
+apex       2609200002  -2468
+kaito_v43  2609200020   -314
+kaito_v43  2609200024   -201
+
+PANEL B  seeds 1909090901-1909090950 x 7 opp x 2 seats
+700 scheduled  700 completed  0 errors  0 timeouts
+wall 854s  49.2 g/min
+
+opponent        games     W    T    L   mean_margin
+cok_v10           100   100    0    0      22447.0
+public_bt12       100   100    0    0      25084.5
+starter           100   100    0    0     154093.4
+arlene            100    99    0    1       1360.5
+v1_submitted      100    98    0    2        858.4
+kaito_v43         100    96    0    4      16535.3
+apex              100    94    0    6       7539.8
+TOTAL             700   687    0   13
+
+both-seat losses 4
+apex       1909090904  -4738
+kaito_v43  1909090922  -1961
+kaito_v43  1909090944  -1231
+apex       1909090937   -815
+
+vs v1_submitted  260 games  mean +795.9  median +715.0
+
+S23 identity  workers 1 vs 8  36/36 byte-identical
+throughput  serial 6.7  w4 47.4  w6 61.5  w8 63.9  w12 64.3 g/min

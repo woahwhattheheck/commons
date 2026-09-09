@@ -1,0 +1,3 @@
+e12becfb71889f772cbfe29450b58caee4f188ef 2026-09-09 10:35:52 +0000 Derive repo path in sim runner; fail loudly on empty panel
+72507b1c944ab6f0b4eaed5d727340c0cf773719 2026-09-09 09:51:06 +0000 Add faithful sharded v25 sim runner
+fb5b848db4d64cffd2559dcdd2c1088dbc0c2dfb 2026-09-09 07:04:18 +0000 gitignore: exclude compiled opponent bridges (*.so)

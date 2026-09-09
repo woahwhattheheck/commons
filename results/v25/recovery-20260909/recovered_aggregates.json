@@ -1,0 +1,362 @@
+{
+  "source": "Slack #claude-containment-board ts 1788948718.027199 (parent session results) + Claude Code Remote session summaries",
+  "candidate": "V2 archive 6705147ba96fe4c6c3762197f024ff1d47d38004f03d0059055ef4467bb5b88e",
+  "engine": "kaggle-environments 1.32.7 (upstream 28b6d8af)",
+  "parent_session_panels": [
+    {
+      "label": "PANEL A",
+      "seeds": "2609200001-2609200080",
+      "opponents": 6,
+      "seats": 2,
+      "scheduled": 960,
+      "completed": 960,
+      "errors": 0,
+      "timeouts": 0,
+      "wall_seconds": 1002,
+      "games_per_min": 57.5,
+      "shards": 8,
+      "per_opponent": {
+        "cok_v10": {
+          "games": 160,
+          "W": 160,
+          "T": 0,
+          "L": 0,
+          "mean_margin": 22657.3
+        },
+        "public_bt12": {
+          "games": 160,
+          "W": 160,
+          "T": 0,
+          "L": 0,
+          "mean_margin": 23040.3
+        },
+        "arlene": {
+          "games": 160,
+          "W": 159,
+          "T": 0,
+          "L": 1,
+          "mean_margin": 1244.0
+        },
+        "apex": {
+          "games": 160,
+          "W": 158,
+          "T": 0,
+          "L": 2,
+          "mean_margin": 7985.6
+        },
+        "v1_submitted": {
+          "games": 160,
+          "W": 157,
+          "T": 0,
+          "L": 3,
+          "mean_margin": 740.4
+        },
+        "kaito_v43": {
+          "games": 160,
+          "W": 156,
+          "T": 0,
+          "L": 4,
+          "mean_margin": 17500.4
+        }
+      },
+      "total": {
+        "games": 960,
+        "W": 950,
+        "T": 0,
+        "L": 10
+      },
+      "both_seat_losses": [
+        {
+          "opponent": "apex",
+          "seed": 2609200002,
+          "margin": -2468
+        },
+        {
+          "opponent": "kaito_v43",
+          "seed": 2609200020,
+          "margin": -314
+        },
+        {
+          "opponent": "kaito_v43",
+          "seed": 2609200024,
+          "margin": -201
+        }
+      ]
+    },
+    {
+      "label": "PANEL B",
+      "seeds": "1909090901-1909090950",
+      "opponents": 7,
+      "seats": 2,
+      "scheduled": 700,
+      "completed": 700,
+      "errors": 0,
+      "timeouts": 0,
+      "wall_seconds": 854,
+      "games_per_min": 49.2,
+      "per_opponent": {
+        "cok_v10": {
+          "games": 100,
+          "W": 100,
+          "T": 0,
+          "L": 0,
+          "mean_margin": 22447.0
+        },
+        "public_bt12": {
+          "games": 100,
+          "W": 100,
+          "T": 0,
+          "L": 0,
+          "mean_margin": 25084.5
+        },
+        "starter": {
+          "games": 100,
+          "W": 100,
+          "T": 0,
+          "L": 0,
+          "mean_margin": 154093.4
+        },
+        "arlene": {
+          "games": 100,
+          "W": 99,
+          "T": 0,
+          "L": 1,
+          "mean_margin": 1360.5
+        },
+        "v1_submitted": {
+          "games": 100,
+          "W": 98,
+          "T": 0,
+          "L": 2,
+          "mean_margin": 858.4
+        },
+        "kaito_v43": {
+          "games": 100,
+          "W": 96,
+          "T": 0,
+          "L": 4,
+          "mean_margin": 16535.3
+        },
+        "apex": {
+          "games": 100,
+          "W": 94,
+          "T": 0,
+          "L": 6,
+          "mean_margin": 7539.8
+        }
+      },
+      "total": {
+        "games": 700,
+        "W": 687,
+        "T": 0,
+        "L": 13
+      },
+      "both_seat_losses": [
+        {
+          "opponent": "apex",
+          "seed": 1909090904,
+          "margin": -4738
+        },
+        {
+          "opponent": "kaito_v43",
+          "seed": 1909090922,
+          "margin": -1961
+        },
+        {
+          "opponent": "kaito_v43",
+          "seed": 1909090944,
+          "margin": -1231
+        },
+        {
+          "opponent": "apex",
+          "seed": 1909090937,
+          "margin": -815
+        }
+      ]
+    }
+  ],
+  "parent_session_extra": {
+    "vs_v1_submitted": {
+      "games": 260,
+      "mean_margin": 795.9,
+      "median_margin": 715.0
+    },
+    "s23_identity": "workers 1 vs 8: 36/36 byte-identical",
+    "throughput_games_per_min": {
+      "serial": 6.7,
+      "w4": 47.4,
+      "w6": 61.5,
+      "w8": 63.9,
+      "w12": 64.3
+    }
+  },
+  "shard_sessions": [
+    {
+      "title": "v25 sim shard A",
+      "session_id": "session_01UMxHsjdoA9R1rzAGzrkYS8",
+      "status": "archived at start; no run recorded",
+      "games_scheduled": null,
+      "games_failed": null,
+      "games_per_min": null
+    },
+    {
+      "title": "v25 sim shard B",
+      "session_id": "session_01BEfbCpCyHig6aaNjyPYzL3",
+      "status": "completed",
+      "games_scheduled": 720,
+      "games_failed": 0,
+      "games_per_min": null
+    },
+    {
+      "title": "v25 sim shard C",
+      "session_id": "session_01LfXjktpwoMpYMxsUc8FwHv",
+      "status": "completed; SUMMARY.json displayed",
+      "games_scheduled": 720,
+      "games_failed": null,
+      "games_per_min": null
+    },
+    {
+      "title": "v25 sim shard D",
+      "session_id": "session_01RYsCHSxeHXFTGz3NjS1yaY",
+      "status": "completed",
+      "games_scheduled": 720,
+      "games_failed": null,
+      "games_per_min": 50.71
+    },
+    {
+      "title": "v25 sim shard E",
+      "session_id": "session_014udW9T2jABMkdZdiUdJByC",
+      "status": "completed",
+      "games_scheduled": 720,
+      "games_failed": null,
+      "games_per_min": 47.7
+    },
+    {
+      "title": "v25 sim shard F",
+      "session_id": "session_01XYvadk8paTqPzhd4gpKN8U",
+      "status": "did not run (asked for the full second command)",
+      "games_scheduled": null,
+      "games_failed": null,
+      "games_per_min": null
+    },
+    {
+      "title": "v25 sim shard G",
+      "session_id": "session_018iKDkvLmKge59qdxQcnTZ1",
+      "status": "completed",
+      "games_scheduled": 720,
+      "games_failed": null,
+      "games_per_min": 56.81
+    },
+    {
+      "title": "v25 sim shard H",
+      "session_id": "session_01DD1DUEzZfqANW2TjzpeULn",
+      "status": "did not run (awaiting confirmation)",
+      "games_scheduled": null,
+      "games_failed": null,
+      "games_per_min": null
+    },
+    {
+      "title": "v25 sim shard I",
+      "session_id": "session_01G4GKqQS5WwRd8fZUkM7J9S",
+      "status": "completed, 720/720 passed",
+      "games_scheduled": 720,
+      "games_failed": 0,
+      "games_per_min": 39.69
+    },
+    {
+      "title": "v25 cloud shard R",
+      "session_id": "session_01SuKtS3duDdQHGGMMErUWaC",
+      "status": "completed 96/96 in 112.3s; apex 14/16, all other opponents 16/16",
+      "games_scheduled": 96,
+      "games_failed": 0,
+      "games_per_min": 51.3
+    },
+    {
+      "title": "v25 cloud shard S",
+      "session_id": "session_01AGrpymYoXngWJogUtbRuMW",
+      "status": "completed 96/96, all wins",
+      "games_scheduled": 96,
+      "games_failed": 0,
+      "games_per_min": 44.94
+    },
+    {
+      "title": "v25 cloud shard T",
+      "session_id": "session_01BXymi7hbJPCpETEDbzDT5q",
+      "status": "94/96 complete; 2 apex games failed (corrupt .so bridge)",
+      "games_scheduled": 96,
+      "games_failed": 2,
+      "games_per_min": 49.67
+    },
+    {
+      "title": "v25 cloud shard U",
+      "session_id": "session_01XEsEBcvRG1URcTYSbeDoUj",
+      "status": "95/96 complete; 1 apex failure; other opponents 16-0",
+      "games_scheduled": 96,
+      "games_failed": 1,
+      "games_per_min": 61.94
+    },
+    {
+      "title": "v25 cloud shard V",
+      "session_id": "session_011zPyQ7nerMp5De7UrMCfSH",
+      "status": "completed 96/96 in 126s, all passed",
+      "games_scheduled": 96,
+      "games_failed": 0,
+      "games_per_min": 45.7
+    },
+    {
+      "title": "v25 cloud shard W",
+      "session_id": "session_01MTCDSWG4xuabJe6rG4jb9c",
+      "status": "completed 96/96 in 156s; all 6 opponents swept 16-0",
+      "games_scheduled": 96,
+      "games_failed": 0,
+      "games_per_min": 36.92
+    },
+    {
+      "title": "v25 cloud shard X",
+      "session_id": "session_01GFvuU69nBiZzGxkBvYYoEw",
+      "status": "completed 96/96",
+      "games_scheduled": 96,
+      "games_failed": 0,
+      "games_per_min": 45.69
+    },
+    {
+      "title": "v25 cloud shard Y",
+      "session_id": "session_01FhwgJDQUWQqLFghDLSA2EN",
+      "status": "completed 96/96 in 122.9s, 0 failed",
+      "games_scheduled": 96,
+      "games_failed": 0,
+      "games_per_min": 46.86
+    }
+  ],
+  "fire_sessions": {
+    "launched_background_run": [
+      "03",
+      "04",
+      "08",
+      "09",
+      "12",
+      "14",
+      "22"
+    ],
+    "did_not_launch": [
+      "01",
+      "02",
+      "05",
+      "06",
+      "10",
+      "11",
+      "16",
+      "17",
+      "18",
+      "20",
+      "21"
+    ],
+    "no_session_exists": [
+      "07",
+      "13",
+      "15",
+      "19"
+    ]
+  },
+  "games_completed_in_stranded_shard_containers": 5088
+}
