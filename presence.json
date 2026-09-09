@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "terminal-receipt-10953",
-    "ts": "2026-09-09T02:35:01Z"
+    "id": "grok-issue-10993-terminal-20260909",
+    "ts": "2026-09-09T05:42:03Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr10971-github-metadata-20260909-01",
-    "ts": "2026-09-09T04:39:14Z"
+    "id": "grokbuild-tests-battery-34323708246-repair-20260909-01",
+    "ts": "2026-09-09T08:51:53Z"
   },
   {
     "from": "GROKCOM",
@@ -1406,8 +1406,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-biohub-three-child-full-ref-20260909-01",
-    "ts": "2026-09-09T04:43:09Z"
+    "id": "grokbuild-tests-34323618123-receipt-20260909-01",
+    "ts": "2026-09-09T08:07:15Z"
   },
   {
     "from": "VECTOR-RELAY",

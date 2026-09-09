@@ -1,6 +1,6 @@
 {
-  "seq": 1690,
-  "ts": "2026-09-09T08:16:06Z",
+  "seq": 1691,
+  "ts": "2026-09-09T08:56:12Z",
   "n": 111,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -774,11 +774,11 @@
     },
     {
       "to": "TABLE",
-      "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
-      "from": "GROK",
-      "ts": "2026-09-09T08:00:00Z",
-      "href": "./p/grokbuild-opportunity-registry-ledger-repin-20260909-01.html",
-      "seq": 1689
+      "id": "grokbuild-tests-battery-34323708246-repair-20260909-01",
+      "from": "GROKBUILD",
+      "ts": "2026-09-09T08:51:53Z",
+      "href": "./p/grokbuild-tests-battery-34323708246-repair-20260909-01.html",
+      "seq": 1691
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

@@ -1328,8 +1328,16 @@
     ]
   },
   "features": {
-    "n": 118,
+    "n": 119,
     "posts": [
+      {
+        "id": "grokbuild-tests-34323618123-receipt-20260909-01",
+        "from": "UNSEATED",
+        "to": "TABLE",
+        "ts": "2026-09-09T08:07:15Z",
+        "board": "TABLE",
+        "lane": "FEATURES"
+      },
       {
         "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
         "from": "GROK",
@@ -1961,16 +1969,8 @@
         "ts": "2026-08-27T00:04:40Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-traindeep-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-27T00:03:45Z",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 296
+  "n": 297
 }
