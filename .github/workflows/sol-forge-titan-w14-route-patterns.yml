@@ -1,0 +1,86 @@
+name: sol-forge-titan-w14-route-patterns
+
+on:
+  push:
+    branches:
+      - "sol-forge/titan-w14-realized-rule-composition-20260909-01"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-forge-titan-w14-route-patterns
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    if: ${{ !contains(github.event.head_commit.message, '[w14-patterns]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Pin checkout and canonical receipt
+        shell: bash
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          lab = Path(os.environ["LAB"])
+          receipt = json.loads((lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text())
+          archive = lab / receipt["path"]
+          assert archive.stat().st_size == receipt["bytes"]
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == receipt["sha256"]
+          Path(os.environ["RUNNER_TEMP"], "archive_sha256").write_text(receipt["sha256"])
+          PY
+
+      - name: Compile and execute pattern census
+        shell: bash
+        env:
+          LAB: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          TOOL="$LAB/analysis/w14-realized-rule-composition/route_patterns.py"
+          OUT="$LAB/analysis/w14-realized-rule-composition/route-patterns.json"
+          python3 -B -m py_compile "$TOOL"
+          find "$(dirname "$TOOL")" -name __pycache__ -type d -prune -exec rm -rf {} +
+          python3 -B "$TOOL" \
+            --arlene "$LAB/reference/next-panel/vendor/arlene.py" \
+            --source-commit "$GITHUB_SHA" \
+            --archive-sha256 "$(cat "$RUNNER_TEMP/archive_sha256")" \
+            --output "$OUT"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/route-patterns.json").read_text())
+          assert report["aggregate"]["routes"] == 4
+          assert set(report["routes"])
+          print(json.dumps(report["aggregate"], indent=2, sort_keys=True))
+          PY
+
+      - name: Publish exact pattern receipt
+        shell: bash
+        env:
+          OUT: revenue/kaggriculture/cloud-execution-lab/analysis/w14-realized-rule-composition/route-patterns.json
+          WORKFLOW: .github/workflows/sol-forge-titan-w14-route-patterns.yml
+        run: |
+          set -euo pipefail
+          git fetch origin "$GITHUB_REF_NAME:refs/remotes/origin/$GITHUB_REF_NAME"
+          test "$(git rev-parse "origin/$GITHUB_REF_NAME")" = "$GITHUB_SHA"
+          git rm "$WORKFLOW"
+          git add "$OUT"
+          git diff --cached --check
+          test "$(git diff --cached --name-only | sort)" = "$(printf '%s\n%s\n' "$WORKFLOW" "$OUT" | sort)"
+          git config user.name "SOL-FORGE"
+          git config user.email "sol-forge@commons.local"
+          git commit -m "analysis(titan): bind W14 reset and relay patterns [w14-patterns]"
+          git push origin "HEAD:$GITHUB_REF_NAME"
