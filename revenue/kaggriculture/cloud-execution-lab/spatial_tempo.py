@@ -2,8 +2,9 @@
 """Bounded route improvements over an existing selected production controller.
 
 Uses own observed state and authored commitments. Market valuation is a current
-quote screen, not a forecast. No investment, hiring or input orders are added.
-An idle fertilizer delivery may append one sale with its own deposit.
+quote screen, not a forecast. An idle fertilizer delivery may append one sale.
+The bounded annual crop release owns its fresh seed, input replacement and
+observed product receipts within this same producer.
 """
 from copy import deepcopy
 from itertools import permutations
@@ -35,7 +36,8 @@ def path(a,b):
 def distance(a,b):return abs(a[0]-b[0])+abs(a[1]-b[1])
 
 class SpatialTempo:
-    def __init__(self,mechanics,pathing=True,tempo=True,seed_reserve=None,idle_fertilizer=False):
+    def __init__(self,mechanics,pathing=True,tempo=True,seed_reserve=None,idle_fertilizer=False,
+                 crop_release=False):
         self.m=mechanics;self.pathing=pathing;self.tempo=tempo
         self.events=[];self.edits=[];self.active={};self.reserved=set();self.day=None
         self.plans={};self._committed=None;self._pending=None;self._selected=None
@@ -46,13 +48,91 @@ class SpatialTempo:
         self.sale_obligation=None
         self.receipt_events=[]
         self._sale_proposal=None
+        self.crop_release=crop_release
+        self.crop_intent=None
+        self._crop_preparation=None
+        self._crop_repair=None
+        self._crop_offered=False
+        self.crop_report={}
+        self.configuration={}
 
     def configure(self, configuration):
         cfg=configuration or {}
+        self.configuration=dict(cfg)
         self.supported=(int(cfg.get('turnsPerDay',24))==24
                         and int(cfg.get('episodeSteps',720))==720
                         and int(cfg.get('shedCapacity',100))==100)
         self.idle_supported=cfg.get('maxMarketOrdersPerTurn',10)==10
+
+    def observe_crop_receipts(self,obs,fill_result,current):
+        if not self.crop_release:return
+        from crop_release import observe_crop,observe_crop_sale,observe_input_repair
+        p=self.crop_intent
+        if p is not None and (int(obs['player'])!=p['player']
+                or int(obs['step'])<p.get('last_observed_step',p['prepared_step'])):
+            self.crop_intent=None;return
+        p=observe_input_repair(p,obs,fill_result)
+        p=observe_crop_sale(p,obs,fill_result)
+        self.crop_intent=observe_crop(p,obs,current)
+        if (self.crop_intent is not None
+                and self.crop_intent['status']=='awaiting_seed_and_site_observation'
+                and int(obs['step'])>self.crop_intent['plant_step']):
+            self.crop_intent=None  # No final PLANT was committed.
+
+    def crop_market(self,obs,selected,post,controller):
+        """Use the same selected snapshot and final market composition."""
+        if not self.crop_release or not self.supported:return selected
+        from crop_release import prepare_release,propose_input_repair
+        now=int(obs['step'])
+        if now==372 and self.crop_intent is None and not self.plans:
+            selected,self._crop_preparation,self.crop_report=prepare_release(
+                self.m,obs,self.configuration,selected,post,self._crop_routes,controller.cur,
+                extra_seed_obligations=sum(self.future_seed_requests(now).values()))
+        selected,self._crop_repair,repair_report=propose_input_repair(
+            self.m,self.crop_intent,obs,self.configuration,selected,post,
+            self._crop_routes[controller.cur])
+        if self.crop_intent is not None:self.crop_report=repair_report
+        return selected
+
+    def finish_crop(self,obs,returned,post,current,*,seller_completed=False):
+        """A site intent persists across resets; only final returns commit it."""
+        if not self.crop_release:return
+        from crop_release import (commit_preparation,commit_plant,commit_harvest,
+            commit_deposit,commit_crop_sale,commit_input_repair)
+        now=int(obs['step']);p=self.crop_intent
+        if self._crop_preparation is not None:
+            p=commit_preparation(self._crop_preparation,obs,returned)
+        if p is not None and now==p['plant_step']:
+            p=commit_plant(p,obs,returned,current)
+        p=commit_harvest(p,obs,returned)
+        p=commit_deposit(p,obs,returned,post)
+        p=commit_crop_sale(p,obs,returned,post,offered=self._crop_offered,
+                           seller_completed=seller_completed)
+        p=commit_input_repair(p,self._crop_repair,obs,returned,post)
+        self.crop_intent=p
+        self._crop_preparation=None;self._crop_repair=None;self._crop_offered=False
+
+    def guard_crop_returned(self,obs,returned,post):
+        """Cancel the appended input buy if another final guard changed units."""
+        p=self._crop_repair
+        if p is None:return returned
+        from crop_release import units
+        bound=(int(obs['step'])==p['step'] and int(obs['player'])==p['player']
+               and units(returned)==p['unit_binding'] and post is not None
+               and int(post['step'])==p['step'] and int(post['player'])==p['player']
+               and returned.get('market',[])==p['expected_market'])
+        market=returned.get('market',[])
+        if (not bound and p['kind']=='buy' and p['slot']==len(market)-1
+                and market[p['slot']]==['BUY_PRODUCT','WHEAT',p['units']]):
+            returned=deepcopy(returned);returned['market'].pop()
+            self.crop_report={'changed':False,'reason':'final_unit_guard_canceled_unbound_repair'}
+        elif not bound and p['kind']=='withhold':
+            returned=deepcopy(returned)
+            for slot in p['original_sale_slots']:
+                if returned.get('market',[])[slot:slot+1]==p['expected_market'][slot:slot+1]:
+                    returned['market'][slot]=deepcopy(p['inherited_market'][slot])
+            self.crop_report={'changed':False,'reason':'final_unit_guard_canceled_unbound_reservation'}
+        return returned
 
     def finish(self, observation, returned_action, post=None):
         """Commit only after TitanAgent returns, including its selected fallback.
@@ -247,6 +327,7 @@ class SpatialTempo:
 
     def _begin(self, controller, pristine, obs):
         now=int(obs['step']);state=self._committed
+        self._crop_preparation=None;self._crop_repair=None;self._crop_offered=False
         self.observe_owned_stock(obs)
         self._sale_proposal=None
         if self.sale_obligation is not None and now<self.sale_obligation['step']:
@@ -398,11 +479,15 @@ class SpatialTempo:
     def install(self,controller):
         """Bind to the same producer; caller must call finish after each return."""
         pristine=controller.R
+        self._crop_routes=pristine
         original=controller.act
         def act(obs):
             self._begin(controller,pristine,obs)
             selected=original(obs)
             result=self.transform(obs,selected,controller)
+            if self.crop_release:
+                from crop_release import offer_crop
+                result,self._crop_offered=offer_crop(self.crop_intent,obs,result)
             self._pending={'previous':self._base_state,
                 'events':list(self.events),'plans':dict(self.plans)}
             self._selected=deepcopy(result)
@@ -757,6 +842,11 @@ class SpatialTempo:
     def transform(self,obs,selected,controller):
         now=int(obs['step']);board=len(obs['farms'][obs['player']]['tiles'])
         if board!=10 or not self.supported:return selected
+        if self.crop_release:
+            from crop_release import observed_plant,WORKER
+            planted,changed=observed_plant(self.crop_intent,obs,selected,controller.cur,
+                actor_owned=WORKER in self.plans)
+            if changed:return planted
         delivery=self._deliver_idle_fertilizer(obs,selected,controller)
         if delivery is not None:return delivery
         end=min((now//24+1)*24,719,*[x for x in CHECKPOINTS if x>now]) if any(x>now for x in CHECKPOINTS) else min((now//24+1)*24,719)

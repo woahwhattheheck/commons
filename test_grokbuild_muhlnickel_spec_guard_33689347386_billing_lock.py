@@ -71,7 +71,7 @@ class TestGrokbuildMuhlnickelSpecGuard33689347386BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

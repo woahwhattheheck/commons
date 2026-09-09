@@ -25,7 +25,7 @@ KEEP = {
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
     "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",
     "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01.md": "25781cf5",
-    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "9168fdef",
+    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "968e888d",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
     "hub_pages.py": "7a8f24d5",

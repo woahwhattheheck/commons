@@ -15,9 +15,9 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-readback-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "7cee38c4",
+    "test_grokbuild_pr8414_verify.py": "c9840921",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "20c6fbed",
+    "test_cursor_merge_on_pr_readback.py": "9408c4b5",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
     "test_merge_on_pr.py": "227b99c0",

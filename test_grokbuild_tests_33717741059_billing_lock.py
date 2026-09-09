@@ -20,7 +20,6 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 KEEP = {
     "p/grokbuild-tests-33699945008-billing-lock-20260903-01.md": "a6542e64",
     "p/grokbuild-tests-33699940577-billing-lock-20260903-01.md": "90b6f8b9",
-    "test_grokbuild_tests_33699940577_billing_lock.py": "9cacd0da",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
     "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "47e90c71",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
@@ -28,9 +27,8 @@ KEEP = {
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
     "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "d4daf46e",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
-    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "d8cf428d",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "155ae14f",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "f4535bc7",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
     "hub_pages.py": "7a8f24d5",

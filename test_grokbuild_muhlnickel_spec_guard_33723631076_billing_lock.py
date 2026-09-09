@@ -23,15 +23,15 @@ KEEP = {
     "open_door_guard.py": "7b9a2318",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "4f434aac",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "3cadd5a4",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "d36bccac",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "a180ccc5",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
-    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "072b39fd",
+    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "8ca105da",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "abaeb302",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "2f17ec7e",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "2e64c492",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "4be3563a",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
     "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "1dd49e10",
@@ -78,7 +78,7 @@ class TestGrokbuildMuhlnickelSpecGuard33723631076BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

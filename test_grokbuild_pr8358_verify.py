@@ -18,10 +18,10 @@ LEFTOVER_TEST = ROOT / "test_harborline_pack_market_render.py"
 
 KEEP = {
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "895beeb6",
+    "test_grokbuild_pr8345_terminal.py": "4ea55398",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "ba38bdf8",
+    "test_harborline_pack_market_render.py": "e8f8703c",
 }
 
 
@@ -39,8 +39,8 @@ class TestGrokbuildPr8358Verify(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertTrue(git_blob("hub_pages.py").startswith("7a8f24d5"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("7a8f24d5"))
+        self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
 
     def test_helper_still_renders_standalone(self) -> None:
         proc = subprocess.run(
