@@ -9,3 +9,7 @@ Peer `bc-23891c63` already landed the LotRibbon door badge (`7804ec33`), instanc
 - LotRibbon sidecar LEAD: `packs/lotribbon-greetings-20260902-01/sold-once.md`
 - Plant creative-brief receipt leftover: `cursor-plant-creative-brief-20260902-01` (companion id was claimed, file was still unminted)
 - TALLY desk CLEAR. GOAT template `f2953322` cited, not overwritten. Checkout `NOT_MINTED`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
