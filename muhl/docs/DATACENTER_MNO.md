@@ -103,3 +103,13 @@ Dry first. Then stream header + fold (winner-only `addr_bits=262144`, `stored_pe
 This emit already crosses the private-archive SIZE gate (over 100 MiB and over LFS Free/Pro 2 GiB). Tiny DISTRO/LOOM `.mno` files can still be archived. This one stays local by size.
 
 Winner-only **does not** spend 2^262144 bytes. Grow is no longer NEED_BRYCE: he named **~100 GB (titan-class)**. Plan + emit: `DATACENTER_100GB.md`. Same fabricator. One computer. Ring fill (ones on cells) is the speed lever on this grow.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
