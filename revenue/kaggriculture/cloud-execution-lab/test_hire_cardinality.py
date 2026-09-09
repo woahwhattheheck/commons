@@ -5,39 +5,8 @@ from __future__ import annotations
 from copy import deepcopy
 import unittest
 
+import mechanics
 from hire_cardinality import NO_ORDER, reconcile_hire_cardinality
-
-
-class FakeMechanics:
-    PRODUCTS = ["WHEAT", "CARROT"]
-
-    @staticmethod
-    def _fib(n):
-        a, b = 1, 1
-        for _ in range(n):
-            a, b = b, a + b
-        return a
-
-    @classmethod
-    def _hire_cost(cls, hires_today, multiplier=1):
-        return cls._fib(hires_today) * multiplier
-
-    @classmethod
-    def apply_hire_only_market(cls, farm, action, limit, multiplier=1):
-        """Exact engine HIRE behavior for HIRE/zero-SELL-only test queues."""
-        result = deepcopy(farm)
-        for order in action.get("market", [])[:limit]:
-            if not isinstance(order, list) or not order:
-                continue
-            if order[0] != "HIRE":
-                continue
-            cost = cls._hire_cost(result["hires_today"], multiplier)
-            if result["money"] < cost:
-                continue
-            result["money"] -= cost
-            result["hires_today"] += 1
-            result["hands"].append([4, 4])
-        return result
 
 
 def observation(*, money=6, hires_today=0, hands=0):
@@ -46,16 +15,27 @@ def observation(*, money=6, hires_today=0, hands=0):
         "farms": [{
             "money": money,
             "hires_today": hires_today,
+            "farmer": [4, 4],
             "hands": [[4, 4] for _ in range(hands)],
         }],
     }
+
+
+def apply_hire_only_market(farm, action, limit, multiplier=1):
+    """Execute the tested queue with the mechanically extracted HIRE primitive."""
+    result = deepcopy(farm)
+    private = {"inventories": [{} for _ in range(1 + len(result["hands"]))]}
+    for order in action.get("market", [])[:limit]:
+        if isinstance(order, list) and order and order[0] == "HIRE":
+            mechanics._do_hire(result, private, 10, multiplier)
+    return result
 
 
 class HireCardinalityTests(unittest.TestCase):
     def reconcile(self, obs, action, **cfg):
         config = {"maxMarketOrdersPerTurn": 10, "farmHandCostMult": 1}
         config.update(cfg)
-        return reconcile_hire_cardinality(FakeMechanics, obs, config, action)
+        return reconcile_hire_cardinality(mechanics, obs, config, action)
 
     def test_replay_107130860_fourth_hire_is_replaced_and_transition_is_equal(self):
         obs = observation(money=6, hands=0)
@@ -71,10 +51,8 @@ class HireCardinalityTests(unittest.TestCase):
             ["HIRE"], ["HIRE"], ["HIRE"], list(NO_ORDER),
         ])
         self.assertEqual(action, original, "caller-owned selected action mutated")
-        before = FakeMechanics.apply_hire_only_market(
-            obs["farms"][0], action, limit=10)
-        after = FakeMechanics.apply_hire_only_market(
-            obs["farms"][0], returned, limit=10)
+        before = apply_hire_only_market(obs["farms"][0], action, limit=10)
+        after = apply_hire_only_market(obs["farms"][0], returned, limit=10)
         self.assertEqual(after, before)
         self.assertEqual(len(after["hands"]), 3)
         self.assertEqual(after["money"], 2)
@@ -120,9 +98,18 @@ class HireCardinalityTests(unittest.TestCase):
         self.assertEqual(report["executable_hires"], 3)
         self.assertEqual(report["removed_order_indices"], [3])
         self.assertEqual(
-            FakeMechanics.apply_hire_only_market(obs["farms"][0], action, 3),
-            FakeMechanics.apply_hire_only_market(obs["farms"][0], returned, 3),
+            apply_hire_only_market(obs["farms"][0], action, 3),
+            apply_hire_only_market(obs["farms"][0], returned, 3),
         )
+
+    def test_zero_quantity_sell_is_a_proved_noop_before_hire(self):
+        obs = observation(money=1)
+        action = {"hands": [], "market": [list(NO_ORDER), ["HIRE"]]}
+        returned, report = self.reconcile(obs, action)
+        self.assertEqual(returned, action)
+        self.assertTrue(report["market_guard_applied"])
+        self.assertEqual(report["hire_costs"], [1])
+        self.assertEqual(report["executable_hires"], 1)
 
     def test_fully_funded_queue_is_byte_shape_unchanged(self):
         obs = observation(money=7, hands=2)
@@ -154,7 +141,7 @@ class HireCardinalityTests(unittest.TestCase):
     def test_missing_observation_fails_closed(self):
         action = {"hands": [["PASS"]], "market": [["HIRE"]]}
         returned, report = reconcile_hire_cardinality(
-            FakeMechanics, {}, {}, action)
+            mechanics, {}, {}, action)
         self.assertEqual(returned, action)
         self.assertFalse(report["changed"])
         self.assertEqual(report["reason"], "observation_unavailable")
