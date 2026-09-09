@@ -124,7 +124,7 @@ def validate_wheat_route(
     water_steps = tuple(_whole(step, "route.water_step") for step in route.water_steps)
     if tuple(sorted(water_steps)) != water_steps or len(set(water_steps)) != len(water_steps):
         raise ValueError("route.water_steps must be unique and sorted")
-    # Without actor/order identity this certificate cannot prove a same-step
+    # Without actor/order proof this certificate cannot certify a same-step
     # PLANT->WATER handoff, so require each WATER on the authored route to be
     # strictly later than PLANT and strictly earlier than HARVEST.  This is
     # intentionally conservative; a producer with a richer actor-order proof can
