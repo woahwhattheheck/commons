@@ -54,5 +54,9 @@ class ReleaseTests(unittest.TestCase):
    config=json.load(t.extractfile('TITAN-CONFIG.json'))
    self.assertTrue(config.get('early_capital'))
    self.assertIn(b'def _early_capital_selected',t.extractfile('titan_runtime.py').read())
+   packed=t.extractfile('main.py').read()
+   self.assertIn(b'def _entrypoint_fallback',packed)
+   self.assertIn(b'entrypoint_guard',packed)
+   self.assertIn('checks/test_entrypoint_deadline.py',names)
 
 if __name__=='__main__':unittest.main()

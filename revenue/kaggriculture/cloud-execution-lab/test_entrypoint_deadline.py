@@ -8,6 +8,8 @@ import time
 import unittest
 
 ROOT = Path(__file__).resolve().parent
+if ROOT.name == 'checks':
+    ROOT = ROOT.parent
 
 
 def load_entrypoint():

@@ -448,6 +448,14 @@ jobs:
           set -euo pipefail
           python3 -B -m unittest -v test_release_consistency \
             2>&1 | tee "$RUNNER_TEMP/canonical-validation/release-consistency-tests.log"
+      - name: Whole-entrypoint deadline containment tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_entrypoint_deadline \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/entrypoint-deadline-tests.log"
       - name: Committed seed retry source and canonical boundary tests
         if: ${{ !cancelled() }}
         shell: bash
