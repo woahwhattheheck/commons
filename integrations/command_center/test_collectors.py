@@ -175,6 +175,21 @@ class CollectorTests(unittest.TestCase):
         self.assertFalse(failed["source"]["coverage"]["complete"])
         self.assertEqual([], failed["items"])
 
+    def test_source_activity_summary_ignores_newer_metadata_timestamp(self):
+        collector = LiveCollectors(self.store, {"github": {"enabled": False}},
+                                   equipment=self.provider, clock=lambda: OBSERVED)
+        source = collector._source("synthetic", "GitHub", "Synthetic", {"scope": "test"})
+        batch = collector._batch(source, [{
+            "id": "work", "updated_at": "2026-09-07T21:00:00Z",
+            "activity_observed_at": "2026-09-07T20:00:00Z",
+        }])
+        self.assertEqual("2026-09-07T20:00:00Z", batch["source"]["activity_as_of"])
+        metadata_only = collector._batch(source, [{
+            "id": "metadata-only", "updated_at": "2026-09-07T21:00:00Z",
+            "activity_observed_at": None,
+        }])
+        self.assertIsNone(metadata_only["source"]["activity_as_of"])
+
     def test_canonical_feature_and_vm_freshness_remain_source_grounded(self):
         self.collect({"github": {"enabled": False}, "documents": [{
             "repository": "operator/alpha", "path": "feature-tracker.json",
