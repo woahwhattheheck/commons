@@ -1,0 +1,119 @@
+name: sol-sequencer-l02-transactional-repair
+
+on:
+  push:
+    branches:
+      - sol-sequencer/l02-transactional-rollback-20260909-01
+    paths:
+      - '.github/workflows/sol-sequencer-l02-transactional-repair.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol-sequencer/l02-transactional-rollback-20260909-01
+          fetch-depth: 0
+
+      - name: Apply predecessor-discriminating transactional repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche')
+          overlay = root / 'ledger_tranche.py'
+          tests = root / 'test_ledger_tranche.py'
+
+          source = overlay.read_text(encoding='utf-8')
+          needle = '''    candidate = _copy_market(market)
+              inactive_before = deepcopy(market[limit:])
+          '''
+          replacement = '''    # Validate every active L02-owned SELL before the first mutation.  A
+              # malformed later product must not allow an earlier product edit to survive.
+              malformed_items = [
+                  order[1] for order in market[:limit]
+                  if (_is_sell(order) and order[1] in TRACKED_PRODUCTS
+                      and _quantity(order) is None)
+              ]
+              if malformed_items:
+                  report.update(reason="malformed_active_sell",
+                                malformed_items=sorted(set(malformed_items)))
+                  return selected_action, report
+
+              candidate = _copy_market(market)
+              inactive_before = deepcopy(market[limit:])
+          '''
+          if source.count(needle) != 1:
+              raise SystemExit(f'overlay patch anchor count={source.count(needle)}')
+          overlay.write_text(source.replace(needle, replacement), encoding='utf-8')
+
+          test_source = tests.read_text(encoding='utf-8')
+          test_anchor = '''
+
+          class LedgerTests(unittest.TestCase):
+          '''
+          regression = '''
+
+              def test_later_malformed_target_rolls_back_all_product_edits_and_state(self):
+                  class Consumer:
+                      def __init__(self):
+                          self.planned = {"CARROT": [(690, 28)], "MILK": [(690, 7)]}
+                          self.pending = {"CARROT": 36, "MILK": 7}
+
+                  consumer = Consumer()
+                  action = {"farmer": ["PASS"], "hands": [], "market": [
+                      ["SELL", "CARROT", 4],
+                      ["SELL", "MILK"],
+                  ]}
+                  before_action = copy.deepcopy(action)
+                  before_planned = copy.deepcopy(consumer.planned)
+                  before_pending = copy.deepcopy(consumer.pending)
+                  returned, report = l02.apply_and_reconcile(
+                      consumer, action, {"CARROT": 40, "MILK": 7}, OBS, CFG)
+                  self.assertIs(returned, action)
+                  self.assertEqual(action, before_action)
+                  self.assertFalse(report["changed"])
+                  self.assertEqual(report["reason"], "malformed_active_sell")
+                  self.assertEqual(report["malformed_items"], ["MILK"])
+                  self.assertEqual(consumer.planned, before_planned)
+                  self.assertEqual(consumer.pending, before_pending)
+
+
+          class LedgerTests(unittest.TestCase):
+          '''
+          if test_source.count(test_anchor) != 1:
+              raise SystemExit(f'test patch anchor count={test_source.count(test_anchor)}')
+          tests.write_text(test_source.replace(test_anchor, regression), encoding='utf-8')
+          PY
+
+      - name: Run exact focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_ledger_tranche.py test_panel.py
+          python -B -m py_compile candidate.py ledger_tranche.py run_panel.py test_ledger_tranche.py test_panel.py
+
+      - name: Publish clean two-file child commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git rm .github/workflows/sol-sequencer-l02-transactional-repair.yml
+          changed="$(git status --short)"
+          printf '%s\n' "$changed"
+          test "$(printf '%s\n' "$changed" | wc -l)" -eq 3
+          git config user.name 'SOL-SEQUENCER'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git add revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/ledger_tranche.py \
+                  revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/test_ledger_tranche.py
+          git commit -m 'fix(titan): make L02 product edits transactional'
+          git push origin HEAD:sol-sequencer/l02-transactional-rollback-20260909-01
