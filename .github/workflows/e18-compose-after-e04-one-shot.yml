@@ -1,0 +1,117 @@
+name: e18-compose-after-e04-one-shot
+
+on:
+  push:
+    branches:
+      - sol/e18-compose-after-e04-20260909-01
+    paths:
+      - .github/workflows/e18-compose-after-e04-one-shot.yml
+
+permissions:
+  contents: write
+
+jobs:
+  compose-test-package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Assert composition base contains E04 merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/sol/e18-compose-after-e04-20260909-01"
+          git merge-base --is-ancestor 227cc86c368b1e0a05d89255d9e4fb7c1827ef93 HEAD
+          test -z "$(git status --porcelain)"
+      - name: Compose E18 semantics over landed E04 seller core
+        shell: bash
+        run: |
+          set -euo pipefail
+          E18=0723ed31d5a5cd08af2f355ca852fa94660d009e
+          ROOT=revenue/kaggriculture/cloud-execution-lab
+          git show "$E18:$ROOT/reference/titan-current/latest/selected_sell_core.py" > "$RUNNER_TEMP/e18_core.py"
+          git show "$E18:$ROOT/frozen_selected.py" > "$ROOT/frozen_selected.py"
+          git show "$E18:$ROOT/test_e18_acceptance_rules.py" > "$ROOT/test_e18_acceptance_rules.py"
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('revenue/kaggriculture/cloud-execution-lab')
+          src=Path(__import__('os').environ['RUNNER_TEMP'])/'e18_core.py'
+          s=src.read_text()
+          marker="def _acceptance_rule(config):\n"
+          helper='''_MAX_PRICE_BREAK_SPLITS=8\n\n\ndef _bounded_price_break_splits(model, first, remaining, step, limit=_MAX_PRICE_BREAK_SPLITS):\n    \"\"\"Return bounded tranche boundaries where the exact rounded quote changes.\"\"\"\n    if remaining<=1 or step<=model.now or limit<1:\n        return ()\n    _,inv=model.single(model.inventory,first)\n    for t in range(model.now,step):\n        inv-=absorption(model.item,t,model.shops,model.config)\n    points=[]\n    price=model.quote(inv)\n    for sold in range(1,remaining):\n        if price>1:\n            inv+=1\n        next_price=model.quote(inv)\n        if next_price!=price:\n            points.append(sold)\n        price=next_price\n    if len(points)<=limit:\n        return tuple(points)\n    if limit==1:\n        return (points[len(points)//2],)\n    indexes={round(i*(len(points)-1)/(limit-1)) for i in range(limit)}\n    return tuple(points[i] for i in sorted(indexes))\n\n\n'''
+          if s.count(marker)!=1:
+              raise SystemExit('E18 acceptance insertion marker mismatch')
+          s=s.replace(marker,helper+marker,1)
+          old='''        if len(future)>=2:\n            for share in (1,2,3):\n                a=remaining*share//4\n                candidates.add(((now,first),(future[0],a),(future[-1],remaining-a)))\n'''
+          new='''        if len(future)>=2:\n            splits={remaining*share//4 for share in (1,2,3)}\n            splits.update(_bounded_price_break_splits(model,first,remaining,future[0]))\n            for a in splits:\n                candidates.add(((now,first),(future[0],a),(future[-1],remaining-a)))\n'''
+          if s.count(old)!=1:
+              raise SystemExit('E04 price-break composition marker mismatch')
+          s=s.replace(old,new,1)
+          for path in (root/'selected_sell_core.py',root/'reference/titan-current/latest/selected_sell_core.py'):
+              path.write_text(s)
+          PY
+          cmp "$ROOT/selected_sell_core.py" "$ROOT/reference/titan-current/latest/selected_sell_core.py"
+      - name: Run composed E04 and E18 contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_e18_acceptance_rules.py
+          python3 -B -m unittest -v \
+            test_score_schedule.ScoreScheduleTests.test_price_breakpoint_later_tranche_beats_quarter_only_family \
+            test_score_schedule.ScoreScheduleTests.test_price_breakpoint_split_family_is_bounded
+          python3 -B -m unittest -v test_selected_action_sell.py
+      - name: Rebuild deterministic combined canonical release
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+          python3 -B revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check
+      - name: Audit and commit composition only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+          allowed={
+            'revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py',
+            'revenue/kaggriculture/cloud-execution-lab/reference/titan-current/latest/selected_sell_core.py',
+            'revenue/kaggriculture/cloud-execution-lab/frozen_selected.py',
+            'revenue/kaggriculture/cloud-execution-lab/test_e18_acceptance_rules.py',
+            'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz',
+            'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json',
+            'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json',
+          }
+          changed=[]
+          for line in subprocess.check_output(['git','status','--porcelain'],text=True).splitlines():
+              path=line[3:].split(' -> ')[-1]
+              changed.append(path)
+          unexpected=[p for p in changed if p not in allowed and not p.startswith('revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-')]
+          if unexpected:
+              raise SystemExit('unexpected composition paths: '+repr(unexpected))
+          required={
+            'revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py',
+            'revenue/kaggriculture/cloud-execution-lab/reference/titan-current/latest/selected_sell_core.py',
+            'revenue/kaggriculture/cloud-execution-lab/frozen_selected.py',
+            'revenue/kaggriculture/cloud-execution-lab/test_e18_acceptance_rules.py',
+          }
+          if not required.issubset(changed):
+              raise SystemExit('missing composed source/test delta: '+repr(changed))
+          print('\n'.join(changed))
+          PY
+          git add -- \
+            revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/titan-current/latest/selected_sell_core.py \
+            revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+            revenue/kaggriculture/cloud-execution-lab/test_e18_acceptance_rules.py \
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
+            revenue/kaggriculture/cloud-execution-lab/exports/historical/ \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Titan E18: compose acceptance harness after E04"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
