@@ -16,3 +16,7 @@ Share percent and ownership fraction are `OWNER_UNSET`. Checkout is `NOT_MINTED`
 - No franchise / partnership / securities ruling
 - No thanks-pixel, yard-card, desk, or plant demand
 - No grok Slack capacity files
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

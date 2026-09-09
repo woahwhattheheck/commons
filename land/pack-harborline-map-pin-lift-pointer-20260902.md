@@ -9,3 +9,7 @@ Pointer only at leftover `cursor-pack-harborline-map-pin-lift-20260902-01` blob 
 - TALLY sold-once stays TALLY
 - Unique-pack id not reminted
 - Checkout `NOT_MINTED`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

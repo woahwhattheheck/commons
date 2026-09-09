@@ -11,3 +11,7 @@ This kit separates **public submission mechanics** from **restricted competition
 7. Before packaging, run the data-exclusion guard. The public packer refuses NIfTI files and competition-format/output CSVs so accidental dataset publication is harder.
 8. Run the organizer’s official local Docker test and an authenticated platform smoke test only from an eligible participant environment. Those steps are not performed or claimed here.
 9. Do not claim leaderboard score, clinical performance, diagnostic utility, prize eligibility, submission, or award without the corresponding executed evidence.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -1,0 +1,112 @@
+name: titan-v3-l02-ledger-tranche
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-l02-ledger-tranche.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/**'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-l02-ledger-tranche.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  contracts-and-panel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact candidate checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/l02-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Pure state and evidence contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche
+          PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_ledger_tranche.py test_panel.py
+          python -m py_compile candidate.py ledger_tranche.py run_panel.py test_ledger_tranche.py test_panel.py
+
+      - name: Verify unchanged canonical release source
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Build the pinned Apex opponent once
+        shell: bash
+        run: |
+          set -euo pipefail
+          APEX=revenue/kaggriculture/cloud-policy-portfolio/vendor/apex
+          g++ -O3 -std=c++17 -shared -fPIC -I"$APEX/source/include" -o "$APEX/agent.so" \
+            "$APEX/source/policy.cpp" "$APEX/submission_bridge.cpp"
+          sha256sum "$APEX/agent.so" | tee "$RUNNER_TEMP/apex-agent.sha256"
+
+      - name: Run complete 192-game development comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/l02-results"
+          python revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/run_panel.py \
+            --head "$(git rev-parse HEAD)" \
+            --seeds '2611092201,2611092202,2611092203,2611092204,2611092205,2611092206,2611092207,2611092208' \
+            --opponents 'arlene,apex,kaito_v43,cok_v10,public_bt12,v1' \
+            --workers 4 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$RUNNER_TEMP/l02-results/L02-PANEL.json" \
+            --markdown "$RUNNER_TEMP/l02-results/L02-PANEL.md"
+
+      - name: Publish readable summary
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f "$RUNNER_TEMP/l02-results/L02-PANEL.md" ]]; then
+            cat "$RUNNER_TEMP/l02-results/L02-PANEL.md" >> "$GITHUB_STEP_SUMMARY"
+          elif [[ -f "$RUNNER_TEMP/l02-results/L02-PANEL.json" ]]; then
+            echo '# L02 panel did not reach a markdown verdict' >> "$GITHUB_STEP_SUMMARY"
+            cat "$RUNNER_TEMP/l02-results/L02-PANEL.json" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# L02 produced no panel receipt' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact L02 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-l02-ledger-tranche-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/l02-head.sha
+            ${{ runner.temp }}/apex-agent.sha256
+            ${{ runner.temp }}/l02-results/
+          if-no-files-found: error
+          retention-days: 30

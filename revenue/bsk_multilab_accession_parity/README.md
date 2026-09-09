@@ -54,3 +54,7 @@ Replay of the entire 600-COC corpus creates zero new records and reprints the sa
 - `../../test_bsk_multilab_accession_parity.py` — fail-closed binary
 - `../../bsk-multilab-accession-parity-lims.html` — window, not the product
 - `../../p/bsk-multilab-accession-parity-lims-01.md` — first leftover receipt
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

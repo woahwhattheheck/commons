@@ -11,3 +11,7 @@ receipt `cursor-pack-door-waitlist-20260902-01`) onto LotRibbon Greetings.
 - Zero sends. No addresses on the sheet. No invented Stripe.
 - Harborline waitlist-slot leftover unread (`bc-31c8ef9a`)
 - Checkout `NOT_MINTED`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

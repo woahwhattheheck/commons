@@ -25,3 +25,7 @@ drift without adding a sixth receipt field.
 
 Commands run without a shell. Captured stdout/stderr are represented by hashes
 in the receipt, not copied into the ledger.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

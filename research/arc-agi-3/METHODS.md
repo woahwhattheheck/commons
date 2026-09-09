@@ -33,3 +33,7 @@ The core is Python standard library only and deterministic for an identical obse
 Frontier coverage is still not the same as task progress. Full-grid hashes cannot yet recognize structurally equivalent states after an object translates, learned edges model only observed one-step outcomes, and the policy does not yet infer persistent object roles or latent mechanism state. The next empirical work should therefore measure: (1) v1 novelty/UCB versus v2 frontier routing on identical public game versions, (2) full-grid identity versus role-free object-centric abstraction, (3) observed one-step graph routing versus learned action-effect planning, and (4) coordinate salience heuristics versus systematic coordinate-region exploration. Any improvement should be accepted only on reproducible public/local ARC runs, not on synthetic fixtures alone.
 
 No leaderboard, milestone placement, submission, or award is claimed in this note.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -209,3 +209,13 @@ Visor link: `WORLD_VISOR.html` → `FILM_GO.md` · `FILM_ORGAN.md`
 SEED0 film mouth still unnamed. Do not invent.
 
 Output := **RAN / 2081 / True / 4 / 4.4s / 24 / 24 / pfc_life.pfc / NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

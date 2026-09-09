@@ -16,3 +16,7 @@ This land record is a compose on the already-shipped LotRibbon instance. It is n
 - Instance creative brief at `packs/lotribbon-greetings-20260902-01/assets/creative_brief.md` (claimed leftover path) and the GOAT instance copy location `packs/lotribbon-greetings-20260902-01/creative_brief.md`. Same fill. Not added to `REQUIRED_FILES`. GOAT still owns the shared template file.
 
 Checkout stays `NOT_MINTED`. Running cost stays `OWNER_UNSET`. Factory saleable stays false.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
