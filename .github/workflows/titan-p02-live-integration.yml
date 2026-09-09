@@ -5,7 +5,7 @@ on:
     paths:
       - '.github/workflows/titan-p02-live-integration.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/land_unlock_*'
-      - 'revenue/kaggriculture/cloud-execution-lab/p02_candidate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/p02_candidate*.py'
       - 'revenue/kaggriculture/cloud-execution-lab/summarize_p02_panel.py'
       - 'revenue/kaggriculture/cloud-execution-lab/run_p02_live_panel.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_land_unlock_*'
@@ -39,12 +39,12 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile land_unlock_timing.py land_unlock_timing_test_support.py \
-            land_unlock_runtime.py land_unlock_runtime_support.py p02_candidate.py \
+            land_unlock_runtime.py land_unlock_runtime_support.py land_unlock_runtime_strict.py p02_candidate.py p02_candidate_base.py p02_candidate_strict.py \
             summarize_p02_panel.py run_p02_live_panel.py test_land_unlock_timing.py \
             test_land_unlock_timing_engine.py test_land_unlock_runtime.py \
-            test_land_unlock_runtime_integration.py
+            test_land_unlock_runtime_integration.py test_land_unlock_runtime_strict.py
           python -m unittest -v test_land_unlock_timing test_land_unlock_timing_engine \
-            test_land_unlock_runtime test_land_unlock_runtime_integration
+            test_land_unlock_runtime test_land_unlock_runtime_integration test_land_unlock_runtime_strict
           python build_integrated.py --check
           test -z "$(git status --porcelain)"
 
