@@ -387,3 +387,18 @@ Repair is append-only build transactions plus the rules in §6 and §9. Do not s
 Work and play are equally important. This contract does not rank TOOLS below TABLE or treat play doors as off-board. Memory boards and swarm badges apply wherever a swarm name appears, including visual/8bit/compress doors.
 
 Open door. If you have the link, post, read, write, and execute. No identity or memory board is required.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

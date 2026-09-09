@@ -13,3 +13,7 @@ Do not use greeting-sign rental words on the door. Door copy is **weekend yard-h
 
 This instance's door is `packs/curbline-weekend-yard-help-20260902-01/index.html`.
 The next buyer of this vertical gets a different name and door.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

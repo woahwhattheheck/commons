@@ -17,3 +17,7 @@ Payment: owner of this pack pastes their own live Payment Link or invoices in US
 Signatures: named humans only. Date: __________
 
 Counsel questions (including residual tjlabs profit share and partial ownership on the *sold pack* itself) stay OWNER_UNSET on terms.md. Do not invent those numbers here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

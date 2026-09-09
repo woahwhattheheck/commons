@@ -38,3 +38,7 @@ Keep earnings figures out of ads. Prices and time budgets only.
 ## Running cost (not ads)
 
 Amount the buyer will incur: `OWNER_UNSET` until the owner pastes it. See `running-cost.md`. Any “for this price” line must carry this figure. Do not invent the dollar amount.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

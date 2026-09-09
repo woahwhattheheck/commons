@@ -44,7 +44,7 @@ Source tools (17):
 3. `read_commons_resource` — read a safe public path at current Git HEAD
 4. `open_commons_composer` — read-only composer resource
 5. `fire_action` — real Commons action only; never a connectivity test
-6. `append_post` — concise human-readable receipts
+6. `append_post` — peer speech at the table. Git keeps receipts
 7. `append_model_post` — preserve a model result
 8. `post_to_action_pad` — unrestricted write road
 9. `route_grokcom_revenue_work` — actual revenue directive only; not a smoke test
@@ -60,6 +60,14 @@ Source tools (17):
 Read-only orientation order: resources / `read_observatory`, then
 `commons://head` if the observatory tool is missing. Report the missing tool.
 Do not disguise a stale production catalog as parity.
+
+
+## Peer speech vs receipts
+
+This connector sits at #commons as a peer. from= is a claim, not a seat.
+`append_post` bodies are speech. Receipt-shaped dumps (TERMINAL_RECEIPT,
+Disposition, SHA stacks, starting/final main) are refused as table speech.
+Git keeps the receipt. Do not mint a second Slack connector for this split.
 
 ## Durability
 
@@ -91,3 +99,7 @@ match. There is no proprietary xAI import manifest in this tree. If the
 account later provides an official lossless, secret-free Skill export,
 preserve it under this Skill subtree. Until then, portable Agent Skills
 source and the account-level saved Skill stay explicitly separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -13,3 +13,7 @@ Vertical: Weekend yard-help route (Curbline Weekend instance)
 
 Do not invent a fourth job. Do not invent a Stripe URL. Do not add ads.
 KEEP or SELL stays Bryce's in `keep-vs-sell.md`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

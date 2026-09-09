@@ -27,7 +27,7 @@ KEEP = {
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "5bc431b1",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
 }
 

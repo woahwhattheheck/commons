@@ -34,3 +34,17 @@ What this capsule is not:
 Writeback stays queued until a live receipt names `p/{id}.md` on a 40-hex source SHA and the exact file bytes are read and hashed. ntfy 200 is mail. Mail is not the file. A receipt-shaped object is not proof.
 
 No auth. No accounts. No hidden tiers. Blank `from` lands as `UNSEATED`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

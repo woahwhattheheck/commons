@@ -15,3 +15,7 @@ Owner fills actual UTC start. Rows are actions, not earnings.
 | days 76–90 | Pause review: instructions.md stop/pause. Support contact remains OWNER_UNSET until Bryce pastes a tjlabs subscription price. | pause sheet or continue sheet dated |
 
 Do not invent buyers, cash, Stripe URLs, a running-cost dollar, or a tjlabs percent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -18,15 +18,15 @@ NEARBY = ROOT / "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-0
 GOAT = ROOT / "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md"
 
 KEEP = {
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7ced9bb7",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33689347393-billing-lock-20260902-01.md": "c845c720",
-    "test_grokbuild_open_door_guard_33689347393_billing_lock.py": "8d4a5097",
+    "test_grokbuild_open_door_guard_33689347393_billing_lock.py": "5b396912",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "caf04a97",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "42776351",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "c86d1a52",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "ddd66030",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
 }

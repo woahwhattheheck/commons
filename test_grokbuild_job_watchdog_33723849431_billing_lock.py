@@ -25,11 +25,11 @@ KEEP = {
     "test_job_watchdog_land.py": "2f055030",
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
-    "open_door_guard.py": "1a42e1c9",
+    "open_door_guard.py": "877e148d",
     "p/grok-build-job-watchdog-33723631044-billing-lock-20260903-01.md": "dc553557",
     "p/grok-build-job-watchdog-33718131418-billing-lock-20260903-01.md": "716e86bd",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
 }
 

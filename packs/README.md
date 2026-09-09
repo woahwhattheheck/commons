@@ -9,3 +9,7 @@ Fragment catalog: [../revenue/outcome_commerce/business_packs_catalog.json](../r
 Factory loop: generate → measure revenue signal → KEEP (internal) or SELL (packaged).
 Copy `_template/` to a **new** slug directory. Each sold unit is a distinct instance / fresh package. Similar vertical/pattern is allowed. Do not remint an existing slug. Do not copy-paste a sold pack.
 Marketing is still owner-owned. Marketing may stand on uniqueness only when the instance is actually unique. Mystery box / the nuts: rare valuable ideas in each price pool; not a lottery; not gambling; no invented odds. Owner pastes live Payment Link. 337 NO.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

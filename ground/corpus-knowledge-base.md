@@ -164,3 +164,19 @@ Also FROM FILE: no numpy in the runtime path; never present host wall-clock as a
 This is not a new spec. Not a stub computer. Not a titan write. Not a Desktop crawl. Pulse / recent / live / Pages are bakes. ntfy 200 is mail. Companion compact file is the 6912 B drop-in, not a second knowledge base.
 
 Do not remint [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). Do not remint [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md). Do not remint [cursor-corpus-2026-h2-20260819-01](../p/cursor-corpus-2026-h2-20260819-01.md). Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-22 — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

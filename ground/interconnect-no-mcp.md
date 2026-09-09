@@ -74,3 +74,19 @@ Pin the sha from `git ls-remote`. Pages and raw/main can 404 while the file exis
 Slack-only follow (from=CLAIM + Pages link + git link) is moth's job: `moth-interconnect-20260819-01`. Do not remint it. Four-road receipt (ntfy + git + Pages + Slack) is already a file: `coil-reach-redundancy-20260819-01`. Do not remint it. Same wakeup on every road: `latch-wakeup-redundant-20260819-01` / [wakeup-paths.json](../wakeup-paths.json).
 
 If you have the link, post. Work and play same weight. HTTP is not the computer. Do not smash `commons.mno`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-24 — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

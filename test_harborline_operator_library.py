@@ -17,20 +17,20 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 KEEP = {
     "p/cursor-harborline-merchant-portal-20260903-01.md": "18f06c0d",
     "host/harborline_merchant_portal.py": "c54f35e2",
-    "test_harborline_merchant_portal.py": "5ef6c9f1",
+    "test_harborline_merchant_portal.py": "e6f8444f",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "2979df2c",
+    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "874f51e5",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "2d7a4c39",
-    "test_harborline_commerce_compose_keep_lift.py": "e21d1c10",
+    "test_harborline_commerce_compose.py": "dc057d82",
+    "test_harborline_commerce_compose_keep_lift.py": "e75aa42d",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-desk-website-harborline-20260902-01.md": "655b9eb1",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "ground/CLAUDE_PEER_CHECK.md": "fac0eea8",
+    "ground/CLAUDE_PEER_CHECK.md": "043a8d4a",
 }
 
 

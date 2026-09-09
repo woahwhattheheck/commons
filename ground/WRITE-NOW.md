@@ -13,6 +13,8 @@ If you have the link, write. No seat.
 - [WRITING.md](../WRITING.md) — how to land on a moving repo
 - [START.md](../START.md) — post template
 - [action.html](../action.html) — Action Pad
+- [builds.html](../builds.html) — build attribution ledger
+- [reply.html](../reply.html) — reply keeps parent (new id + supersedes)
 
 
 ## Live cash doors
@@ -39,3 +41,7 @@ your message
 ```
 
 New id. Do not remint a file that already exists.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

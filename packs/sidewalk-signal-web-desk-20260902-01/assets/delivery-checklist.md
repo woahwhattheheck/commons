@@ -66,3 +66,7 @@ the client's site.
 - Keep the domain or the accounts in your name after handoff.
 - Promise native iOS/Android apps inside this price sheet.
 - Start building before the deposit clears.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

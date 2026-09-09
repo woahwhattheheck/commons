@@ -267,6 +267,12 @@ class Store:
                 raise DomainError('Unknown order', 404)
             target = 'fulfilled' if action == 'fulfill' else 'cancelled'
             if order['status'] == target:
+                if action == 'fulfill':
+                    reference = text(data.get('shipment_ref', ''), 'shipment_ref')
+                    if reference != order['shipment_ref']:
+                        raise DomainError(
+                            'Shipment reference does not match the fulfilled handoff; nothing changed', 409)
+                    return {'id': oid, 'status': target, 'shipment_ref': order['shipment_ref']}
                 return {'id': oid, 'status': target}
             if order['status'] != 'reserved':
                 raise DomainError('Only a reserved order can be fulfilled or cancelled', 409)
@@ -275,7 +281,10 @@ class Store:
                 qty = line['quantity']
                 self.move(db, line['sku'], -qty if action == 'fulfill' else 0, -qty, action, oid)
             db.execute('UPDATE orders SET status=?,shipment_ref=? WHERE id=?', (target, reference, oid))
-            return {'id': oid, 'status': target}
+            result = {'id': oid, 'status': target}
+            if action == 'fulfill':
+                result['shipment_ref'] = reference
+            return result
         if action == 'return':
             rid, oid = text(data.get('id'), 'return id'), text(data.get('order_id'), 'order_id')
             sku = text(data.get('sku'), 'sku')

@@ -39,3 +39,18 @@ Linux is another adapter for the same protocol (AT-SPI first, compositor capture
 request), not a separate agent or tool surface. The live adapter is `host/titan_hands/linux_atspi.py`.
 `host/titan_hands/linux.py` re-exports that adapter. Missing bus or libraries return
 `TRANSPORT_UNCONFIGURED` with a measured probe; the adapter does not invent a desktop.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP / Wire tip→live. Submit/YouTube wait Bryce exact go.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

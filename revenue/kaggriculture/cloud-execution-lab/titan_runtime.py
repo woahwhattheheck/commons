@@ -501,7 +501,9 @@ class TitanAgent:
             self._remember_seller_fallback(obs)
             self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',
                 elapsed_seconds=time.perf_counter()-started,act_cpu_seconds=time.process_time()-cpu_started)
-            fallback = self._finish_production(obs, fallback, cfg)
+            # The lazy controller does not exist yet, and the budget is already
+            # exhausted. The queued public observation is sufficient for the
+            # next reconstruction; no post-controller finalizer is safe here.
             return fallback
         timer = deadline._DeadlineTimer(seconds)
         try:
@@ -597,6 +599,9 @@ class TitanAgent:
                                     elapsed_seconds=time.perf_counter()-started,
                                     act_cpu_seconds=time.process_time()-cpu_started)
             output = self._finish_production(obs, output, cfg)
+            # Include the reserved fallback/finalizer window in the receipt.
+            self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,
+                                    act_cpu_seconds=time.process_time()-cpu_started)
             return output
         # The deadline context has exited successfully.  Commit mutable state
         # only now, so a final trace/signal cancellation cannot bind planning for
@@ -606,6 +611,10 @@ class TitanAgent:
         self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
                                 act_cpu_seconds=time.process_time()-cpu_started)
         output = self._finish_production(obs, output, cfg)
+        # A completed action receipt covers the exact bytes returned, including
+        # late market guards and their state commits.
+        self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,
+                                act_cpu_seconds=time.process_time()-cpu_started)
         return output
 
     __call__ = act

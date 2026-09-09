@@ -107,3 +107,7 @@ slug stands in for `{sale_id}`. Agents do not fire the pixel.
 - The door badge and anchor slot land with `scout-demand-door-sold-once-badge-20260902-01` once the peer blob pins on this door are lifted; until then the door shows price, inclusions and `NOT_MINTED` only.
 
 Marketing execution is Bryce. This brief is the cut, not the spend.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

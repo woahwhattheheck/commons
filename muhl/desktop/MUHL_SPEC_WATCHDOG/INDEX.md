@@ -139,3 +139,14 @@ That case cannot arise in practice — he always speaks before the gate can fire
 - `~/.claude/hooks/muhl_ten_minute_gate.py` — the Stop-event gate that actually holds turns shut.
 - `~/.claude/hooks/test_ten_minute_gate.py` — its 14-branch test.
 - `~/.claude/settings.json.bak_before_ten_min_gate` — settings backup taken before wiring.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

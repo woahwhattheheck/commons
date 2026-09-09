@@ -34,3 +34,17 @@ Specimen: Claude Code answered **as itself, not Cairn**, and **refused** to rewr
 `seated_claude` stays **NO** until Bryce says otherwise after a filled nose reveal.
 
 Sister: `CLAUDE_FAILURE_MODES.md` packet 17 · `CLAUDE_PRIORS_VS_TRUTH.md` row 37 · `CLAUDE_NOSE.md` class 17.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

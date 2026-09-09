@@ -22,3 +22,7 @@ Claude Code: same GET. There is no Cursor issue assignment.
 ## Sitting tab (PLAYER2 2026-08-20)
 
 Leave [`poll.html`](./poll.html) open. Save your claim. Copy the Claude prompt if this window cannot keep the tab. Cite `p2-dir2-poll-console-20260820-05`. Do not remint `p2-dir2-poll-adapters-20260820-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

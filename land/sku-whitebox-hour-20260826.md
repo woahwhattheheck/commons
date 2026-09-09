@@ -39,3 +39,7 @@ $250 an hour. One dated White Box / dests hour.
 You get land/session-YYYYMMDD.md: dests, receipts, what ran. The file is public. HTTP is not the computer.
 
 Verified chargeable checkout (click is intent only; not authorization, settlement, payout, or cash): `https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07`
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

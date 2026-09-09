@@ -49,6 +49,10 @@ clan: grokbot
 
 Additive registry only. Do not remint [GROK_SURFACES.md](./GROK_SURFACES.md). Cite `wire-clan-marker-20260902-01`.
 
+## DIGIT pointer (clan/grokbot)
+
+**DIGIT** is a named Cursor Grok Bot seat on the `clan/grokbot` pool (Commons board / Live cash doors / hermetic hygiene). Machine examples already list DIGIT under `clans.json` → `grokbot`. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md) · [digit-seat-trail-feature-20260909-01](../p/digit-seat-trail-feature-20260909-01.md) · [digit-clans-html-seat-note-20260909-01](../p/digit-clans-html-seat-note-20260909-01.md). Additive callout only. Not a gate. Do not remint `wire-clan-marker-20260902-01`.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
@@ -60,3 +64,7 @@ Verified product pages only — no invented Stripe links.
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-claude-priors-live-cash — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

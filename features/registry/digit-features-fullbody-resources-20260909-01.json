@@ -1,0 +1,39 @@
+{
+  "added": "2026-09-09",
+  "capability": "DIGIT FEATURES ground note + commons_slack_full_body cite + resources.html note. No invented Slack/Stripe.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/FEATURES.md",
+    "host/commons_slack_full_body.py",
+    "resources.html",
+    "p/digit-features-md-digit-note-20260909-01.md",
+    "p/digit-commons-slack-full-body-digit-cite-20260909-01.md",
+    "p/digit-resources-html-digit-note-20260909-01.md"
+  ],
+  "dependencies": [
+    "digit-slack-discord-ground-twin-20260909-01",
+    "digit-seat-trail-20260909-01"
+  ],
+  "id": "digit-features-fullbody-resources-20260909-01",
+  "name": "DIGIT FEATURES + full-body + resources wave",
+  "next_gap": "Coil peer-assist when Wire not in flight. Pixel stay-live when DIGIT.json >2h stale. Tip KEEP. Hands off #8802.",
+  "owner_subsystem": "doors",
+  "public_entrypoint": "features.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": false,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/FEATURES.md",
+    "host/commons_slack_full_body.py",
+    "resources.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_digit_features_md_digit_note_20260909_01.py",
+    "test_digit_commons_slack_full_body_digit_cite_20260909_01.py",
+    "test_digit_resources_html_digit_note_20260909_01.py"
+  ]
+}

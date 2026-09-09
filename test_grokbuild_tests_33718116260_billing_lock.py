@@ -22,17 +22,17 @@ KEEP = {
     "p/grokbuild-tests-33717733992-billing-lock-20260903-01.md": "e91d0547",
     "p/grokbuild-tests-33699945008-billing-lock-20260903-01.md": "a6542e64",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "03d03e22",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "5aa976c0",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "c05eb032",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "2810ff76",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "97f683f1",
+    "catalog.html": "35a7069f",
     "hub_pages.py": "d0bd0e8d",
     ".github/workflows/tests.yml": "fd94b65c",
-    "open_door_guard.py": "1a42e1c9",
+    "open_door_guard.py": "877e148d",
 }
 
 

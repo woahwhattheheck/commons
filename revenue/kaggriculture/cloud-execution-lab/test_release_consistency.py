@@ -25,6 +25,8 @@ class ReleaseTests(unittest.TestCase):
     self.assertIn('terminal_history_join.py',t.getnames())
     self.assertIn('funded_payback.py',t.getnames())
     self.assertIn('seed_retry.py',t.getnames())
+    self.assertIn('early_capital.py',t.getnames())
+    self.assertIn('checks/test_early_capital.py',t.getnames())
     self.assertEqual(manifest['runtime']['seed_retry.py']['source_path'],
                      '../cloud-committed-seed-retry/seed_retry.py')
     self.assertTrue(any(p.startswith('reference/titan-history/') for p in t.getnames()))
@@ -40,5 +42,25 @@ class ReleaseTests(unittest.TestCase):
    self.assertEqual(call('--check').returncode,0)
    for flag in ['--history-v2','--entry-clock-v3','--version']:
     self.assertNotEqual(call(flag).returncode,0)
+
+ def test_live_current_includes_early_capital(self):
+  receipt=b.verify_current()
+  self.assertEqual(receipt['path'],b.ARCHIVE)
+  self.assertGreaterEqual(receipt['runtime_files'],107)
+  with tarfile.open(b.ROOT/b.ARCHIVE) as t:
+   names=t.getnames()
+   self.assertIn('early_capital.py',names)
+   self.assertIn('checks/test_early_capital.py',names)
+   self.assertIn('checks/test_final_market_pressure_entrypoint.py',names)
+   config=json.load(t.extractfile('TITAN-CONFIG.json'))
+   self.assertTrue(config.get('early_capital'))
+   self.assertIn(b'def _early_capital_selected',t.extractfile('titan_runtime.py').read())
+   main=t.extractfile('main.py').read()
+   self.assertEqual(main,(b.ROOT/'main.py').read_bytes())
+   self.assertIn(b'class FinalPressureAgent',main)
+   self.assertIn(b'_final_pressure_boundary',main)
+   self.assertIn(b'def _entrypoint_fallback',main)
+   self.assertIn(b'entrypoint_guard',main)
+   self.assertIn('checks/test_entrypoint_deadline.py',names)
 
 if __name__=='__main__':unittest.main()

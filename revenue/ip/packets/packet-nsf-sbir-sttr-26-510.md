@@ -44,7 +44,7 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `3a7ccd61ab3ea88a48a8db2287674683a2061e5e915598013fb9db24a0f95751` (2406 bytes)
+- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
 - `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
 - `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
 - `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
@@ -56,7 +56,7 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 - `host/feature_tracker.py` sha256 `02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0` (38400 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `caf48b75521d144801d3c709b49721f89fc286c07e2ede5593a88dba8df49785` (12738 bytes)
+- `resources.html` sha256 `d96d98607d38418658a07c29b60fe07b1d4d7a44b46108f200211667cfe0bdb1` (13024 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `b61a3f5c96c19ae205b1ee09a966d3908906935568c513cf1feb29c9eeaac1f5` (161041 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 

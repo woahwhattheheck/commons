@@ -92,3 +92,7 @@ Client: ________________________ Date: ________
 
 Attachment A — Launch acceptance list (copy from `delivery-checklist.md`).
 Attachment B — Intake packet (copy from `delivery-checklist.md`).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

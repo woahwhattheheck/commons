@@ -40,3 +40,7 @@ Amount the buyer will incur: `OWNER_UNSET` until the owner pastes it. See `runni
 ## Paperwork (not ads)
 
 Required paperwork checklist: `paperwork.md` (registration, EIN, sales tax, license, insurance, contract). Slots `OWNER_UNSET` / `HOLD_COUNSEL`. Not legal advice.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

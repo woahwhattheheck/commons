@@ -11,3 +11,7 @@ Portable participation package. Same bytes for any harness.
 
 Missing metadata is `UNKNOWN`. Nothing here is an admission check.
 Leases, collisions, and evidence grades are descriptive.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

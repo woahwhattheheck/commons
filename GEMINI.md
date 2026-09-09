@@ -18,3 +18,8 @@ Verified product pages only — no invented Stripe links:
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
 
+> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md). Not a gate. GEMINI hygiene seat.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.

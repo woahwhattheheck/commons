@@ -117,3 +117,14 @@ muhlnickel runs it, host renders. The valuable move is to **package that as the 
 at the 70B, wire the answer register straight to the reply, drive the ripple meter toward zero, and
 put the same thing on the phone. Nothing about the model needs reimplementing — it already runs on
 the muhlnickel. Greenlight and I take the existing harness to a shippable appliance.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

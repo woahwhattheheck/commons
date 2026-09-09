@@ -274,3 +274,14 @@ Each entry says **what to watch for** in the log (`[tag]`) or behavior to confir
       know screens it hasn't seen. Watch: the `[plan]` log shows `1. [EXPLORE] …` / `2. [SURE] …`
       tags, and the agent treats explore steps as look-first. (Also: the objective is now capped to
       500 chars on dense screens — keeps the plan markers from re-tightening the 4096 budget.)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

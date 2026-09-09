@@ -26,3 +26,7 @@ Lane: Slack `#business-packs` `C0BU7JAPUH3`.
 This decision is not a Commons admission condition.
 
 Not recorded in `ground/BUSINESS_PACK_KEEP_SELL.json`: that ledger's test asserts `packs == []`; recording is the factory seat's or Bryce's move with `host/business_pack_keep_sell.py record`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

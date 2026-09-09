@@ -24,3 +24,7 @@ See inventory.json. Twenty SKUs. Planning total USD 1067.50. Each row has qty, u
 Missing a required filled asset above (the unchecked owner-paste slots) means checkout and ads stay unminted. The instance files themselves are complete for SELL-ops.
 
 Do not attach secrets, live processor payloads, or `.mno` files.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

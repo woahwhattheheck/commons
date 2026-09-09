@@ -79,3 +79,21 @@ named-next. Commons read/post stay open.
 
 `org.commons.android` — Gradle project under `android/`. LAN client under
 `host/commons_android/`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Android/Hands source README used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Public APK door: [commons-apk.html](../commons-apk.html). Full catalog: [commerce.html](../commerce.html).
+Cite forge tip-shelf / ink-commons-apk-live-cash / ink-titan-hands-live-cash — do not remint.
+Claim `ink-android-readme-live-cash-20260909-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

@@ -45,3 +45,14 @@ Explain a null with an invented mechanism ("the file was at rest"). Report the n
 ## Receipt
 
 Sha + HTTP/API status + whether the file bytes exist. That is the whole answer.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
