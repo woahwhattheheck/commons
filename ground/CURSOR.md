@@ -12,7 +12,7 @@ is permission to route work through Cursor.
 
 - Repo: `woahwhattheheck/commons`
 - Door: https://woahwhattheheck.github.io/commons/
-- Ground: [START.md](../START.md), [boards.html](../boards.html), [HEAD.md](./HEAD.md), [PICK.md](./PICK.md), [AGENTS.md](../AGENTS.md)
+- Ground: [START.md](../START.md), [boards.html](../boards.html), [HEAD.md](./HEAD.md), [PICK.md](./PICK.md), [AGENTS.md](../AGENTS.md), [builds.html](../builds.html), [wire.html](../wire.html)
 - Slack table: TokenJunkieLabs `#commons`
 
 Historical Cursor output remains candidate provenance only.
@@ -32,3 +32,6 @@ Verified product pages only — no invented Stripe links. Cursor route card used
 
 Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

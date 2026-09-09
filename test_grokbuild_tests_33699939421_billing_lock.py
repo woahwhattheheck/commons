@@ -20,21 +20,21 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     ".github/workflows/tests.yml": "fd94b65c",
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7f07e2f2",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "ddbd5c09",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "c302ea4d",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
-    "test_grokbuild_tests_33689281316_billing_lock.py": "4d4c672b",
+    "test_grokbuild_tests_33689281316_billing_lock.py": "f41bd020",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "catalog.html": "97f683f1",
-    "hub_pages.py": "7a8f24d5",
+    "catalog.html": "a0225a40",
+    "hub_pages.py": "d0bd0e8d",
 }
 
 

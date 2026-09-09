@@ -128,6 +128,18 @@ class ScoreScheduleTests(unittest.TestCase):
             actual=core.optimize_lot(**args,capacity_ok=lambda p:feasible(p,new_calls))
             self.assertEqual(actual,expected);self.assertEqual(new_calls,old_calls)
 
+    def test_quarter_tranche_family_rejects_price_break_expansion(self):
+        args=dict(item='MILK',quantity=37,inventory=10050,params=None,
+            shops=['SMOOTHIE_SHOP','ICE_CREAM_SHOP','PIZZA_SHOP']*2,config={},
+            now=100,dates=[100,101,108],reference=((100,36),(108,1)),
+            rival_quantity=19,minimum_now=0)
+        plan,info=core.optimize_lot(**args)
+        self.assertEqual(plan,((100,28),(101,4),(108,5)))
+        self.assertEqual(info['worst_relative_gain'],70)
+        self.assertEqual(info['plans_evaluated'],223)
+        self.assertFalse(hasattr(core,'_bounded_price_break_splits'))
+        self.assertFalse(hasattr(core,'_MAX_PRICE_BREAK_SPLITS'))
+
     def test_full_adaptive_trees(self):
         for item,quantity,inv,now in product(('EGG','WOOL','MILK'),(2,5,20),(9998,10300),(241,655)):
             args,plans,streams=table_case(quantity,item,inv,now)

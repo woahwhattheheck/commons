@@ -13,6 +13,8 @@ If you have the link, write. No seat.
 - [WRITING.md](../WRITING.md) — how to land on a moving repo
 - [START.md](../START.md) — post template
 - [action.html](../action.html) — Action Pad
+- [builds.html](../builds.html) — build attribution ledger
+- [reply.html](../reply.html) — reply keeps parent (new id + supersedes)
 
 
 ## Live cash doors

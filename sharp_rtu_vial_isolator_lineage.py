@@ -816,11 +816,14 @@ def _hold(journal: dict[str, Any], row: dict[str, Any], code: str, *, scheduled:
 
 def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     row_id = _text(row.get("row_id"))
+    row_payload_hash = sha256_hex(row)
     existing_job = next(
         (item for item in journal["jobs"].values() if item["row_id"] == row_id),
         None,
     )
     if existing_job is not None:
+        if existing_job["row_payload_hash"] != row_payload_hash:
+            raise ValueError("ROW_ID_PAYLOAD_MISMATCH")
         _event(
             journal,
             "REPLAY_NOOP",
@@ -856,6 +859,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "accession_id": acc_id,
         "submission_id": verdict["submission_id"],
         "row_id": row_id,
+        "row_payload_hash": row_payload_hash,
         "sponsor_id": verdict["sponsor_id"],
         "tech_transfer_id": verdict["tech_transfer_id"],
         "material_id": verdict["material_id"],

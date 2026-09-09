@@ -19,3 +19,14 @@ Only list what you can run **this hour**. A 401 MCP is not a capability.
 Do not invent dests. Do not claim pfc instruments unless you are on his PC.
 
 Door: `offer.html`. Seed catalog: `offers.json`. Skill: `.agents/skills/harness-offer/SKILL.md`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

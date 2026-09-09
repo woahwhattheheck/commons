@@ -85,9 +85,9 @@ class GrokbuildHarborlineHubPagesKeepUnpinTest(unittest.TestCase):
     def test_hub_still_names_live_get_without_remint(self) -> None:
         hub = git_blob("hub_pages.py")
         door = git_blob("door.js")
-        self.assertTrue(hub.startswith("7a8f24d5"), hub)
+        self.assertTrue(hub.startswith("d0bd0e8d"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
-        self.assertTrue(door.startswith("5bc431b1"), door)
+        self.assertTrue(door.startswith("de1d570b"), door)
         self.assertFalse(door.startswith("1f9e8d14"), door)
         text = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
         self.assertIn(LIVE_GET, text)

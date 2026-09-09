@@ -14,8 +14,8 @@ RECEIPT = ROOT / "p/cursor-owner-now-readback-20260902-01.md"
 KEEP = {
     "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "autogtm.html": "fab1d536",
-    "hub_pages.py": "7a8f24d5",
+    "autogtm.html": "dbbc96a5",
+    "hub_pages.py": "d0bd0e8d",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }

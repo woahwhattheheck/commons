@@ -17,15 +17,15 @@ SKILL = ROOT / ".agents/skills/commerce-agents/SKILL.md"
 
 KEEP = {
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
-    ".agents/skills/autogtm/SKILL.md": "1c5b3e0c",
-    "autogtm.html": "fab1d536",
+    ".agents/skills/autogtm/SKILL.md": "45f47186",
+    "autogtm.html": "dbbc96a5",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "hub_pages.py": "7a8f24d5",
-    "door.js": "5bc431b1",
+    "hub_pages.py": "d0bd0e8d",
+    "door.js": "de1d570b",
     "ground/OWNER_NOW.md": "0a574d94",
 }
 

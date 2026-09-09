@@ -9,7 +9,7 @@ product: one accepted one-business-day agent survival proof (stop path + rollbac
 checkout: `https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a`
 canonical terms: `revenue/production_survival/offer.json`
 acceptance contract: `revenue/production_survival/acceptance_contract.md`
-sales page: `agent-rescue.html`
+sales page: `revenue/production_survival/README.md`  # Autopsy $29 owns agent-rescue.html; Survival has no dedicated Commons HTML
 arbitrage record: `revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json` (QUOTABLE, unit edge $2,377.20 before tax)
 status: ACTIVE_CHARGEABLE
 provider: stripe

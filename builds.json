@@ -350,16 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 7,
  "open_prs": [
   {
-   "number": 10978,
+   "number": 11137,
    "author": "woahwhattheheck",
-   "title": "Scope GitHub publication imports and retain unknown activity contract",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/10978",
+   "title": "TEST ONLY: verify exact E04 + E07 + E14 Titan composition",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11137",
    "base_freshness": {
-    "base_sha": "20aaaa0fa45132b8850aff2bb87329767a40f773",
-    "main_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
+    "base_sha": "bc190bb8a73900a9cd2cd486efecbc21c0713097",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,16 +369,96 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 11092,
+   "number": 11120,
    "author": "woahwhattheheck",
-   "title": "Close focused TITAN LARK source snapshot",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11092",
+   "title": "TITAN P15: stage animal admission horizon certificate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11120",
    "base_freshness": {
-    "base_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
-    "main_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
+    "base_sha": "d56c11b0199d3fcf7820922023a3aa8d98370888",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11181,
+   "author": "woahwhattheheck",
+   "title": "TITAN S19: exact-checkpoint constraint-repair splice",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11181",
+   "base_freshness": {
+    "base_sha": "78e88f0434703c1b10244d5e6fb77fe18432c24d",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11182,
+   "author": "woahwhattheheck",
+   "title": "S24: freeze Titan champion and run fresh robustness H",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11182",
+   "base_freshness": {
+    "base_sha": "f312ed24cdf55470540dc347da75f138c1cd236a",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11183,
+   "author": "woahwhattheheck",
+   "title": "Bowser-Morner: add synthetic cross-lab method custody gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11183",
+   "base_freshness": {
+    "base_sha": "f312ed24cdf55470540dc347da75f138c1cd236a",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11157,
+   "author": "woahwhattheheck",
+   "title": "TITAN P22: add per-candidate terminal payback horizon",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11157",
+   "base_freshness": {
+    "base_sha": "7929bd1885b868c770d6523fbcf84662aead2004",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11127,
+   "author": "woahwhattheheck",
+   "title": "TITAN S01: bounded anytime joint-action beam experiment",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11127",
+   "base_freshness": {
+    "base_sha": "a8c940504fede46d310da027a31e6b98620f1fc7",
+    "main_sha": "3b4960c3dade048c15f2e0823b55a83fbc0967ee",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

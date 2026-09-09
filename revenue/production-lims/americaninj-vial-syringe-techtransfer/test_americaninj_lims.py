@@ -115,6 +115,26 @@ class AmericanInjectablesLineageTests(unittest.TestCase):
         self.assertEqual(first["totals"], second["totals"])
         self.assertEqual(before, after)
 
+    def test_08b_changed_content_same_id_fails_closed_without_mutation(self):
+        self.first_run()
+        before = self.ledger.read_bytes()
+        changed = copy.deepcopy(self.records[0])
+        changed["material_lot"] = "MAT-CHANGED"
+        changed["source_sha256"] = lims.evidence_sha256(changed)
+        with self.assertRaisesRegex(ValueError, "replay payload mismatch"):
+            lims.process_records([changed], self.ledger)
+        self.assertEqual(before, self.ledger.read_bytes())
+
+    def test_08c_unbound_legacy_replay_fails_closed_without_mutation(self):
+        self.first_run()
+        ledger = self.load_ledger()
+        del ledger["submissions"]["SUB-000"]["record_sha256"]
+        self.ledger.write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        before = self.ledger.read_bytes()
+        with self.assertRaisesRegex(ValueError, "replay payload mismatch"):
+            lims.process_records([self.records[0]], self.ledger)
+        self.assertEqual(before, self.ledger.read_bytes())
+
     def test_09_tampered_source_hash_aborts_before_write(self):
         tampered = copy.deepcopy(self.records)
         tampered[0]["material_lot"] = "TAMPERED"
@@ -127,12 +147,14 @@ class AmericanInjectablesLineageTests(unittest.TestCase):
         with self.assertRaises(PermissionError):
             lims.release_dossier("SUB-000", self.ledger, human_name="Reviewer One", named_human=False)
 
-    def test_11_release_rejects_blank_and_system_actor(self):
+    def test_11_release_rejects_reserved_actor_variants_without_mutation(self):
         self.first_run()
-        for actor in ("", "system", "agent", "bot"):
+        before = self.ledger.read_bytes()
+        for actor in ("", "system", "agent", "bot", "auto", " System Reviewer ", "BOT-Reviewer", "a-u-t-o", "AI Reviewer", "service_account", None):
             with self.subTest(actor=actor):
                 with self.assertRaises(PermissionError):
-                    lims.release_dossier("SUB-000", self.ledger, human_name=actor, named_human=True)
+                    lims.release_dossier("SUB-000", self.ledger, human_name=actor, named_human=True)  # type: ignore[arg-type]
+                self.assertEqual(before, self.ledger.read_bytes())
 
     def test_12_named_human_can_release_ready_dossier(self):
         self.first_run()

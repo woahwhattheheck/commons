@@ -19,13 +19,13 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "5529d68f",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "aaf85f88",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "2133dc20",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "e1efdd81",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
-    "test_stealable_lanes_occupancy.py": "98b713de",
+    "test_stealable_lanes_occupancy.py": "80de69fd",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     ".github/workflows/tests.yml": "fd94b65c",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -35,8 +35,8 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "ground/OWNER_NOW.md": "0a574d94",
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7f07e2f2",
 }
 
 

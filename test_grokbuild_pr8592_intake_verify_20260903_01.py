@@ -19,12 +19,12 @@ SIBLING_TEST = ROOT / "test_grokbuild_path_manifest_33699980177_billing_lock.py"
 KEEP = {
     "p/grokbuild-path-manifest-33717733938-billing-lock-20260903-01.md": "85a5f189",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
-    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "6d0db7a6",
+    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "81a1b9d4",
     "test_path_manifest.py": "c6de797a",
     "host/path_manifest.py": "dcc94697",
     ".github/workflows/path-manifest.yml": "b29dec8a",
     "architecture/path-manifest.json": "e5ecb24f",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
 }
 
 

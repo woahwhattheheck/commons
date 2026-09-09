@@ -52,16 +52,18 @@ class RegimeSellScheduler(base.SellScheduler):
         return total
 
     def observe(self, obs):
-        if self.previous is not None:
-            self.regime_history.observe(
-                self.previous,
-                obs,
-                self.previous_action,
-                self._regime_configuration,
-                products=base.PRODUCTS,
-                product_of=_product_of,
-                absorption=base.absorption,
-            )
+        # Seed the public production baseline on the opening observation. Without
+        # this, the first step0->1 mix change is silently adopted as the baseline
+        # and bypasses the existing persistence/reset confirmation rule.
+        self.regime_history.observe(
+            self.previous,
+            obs,
+            self.previous_action if self.previous is not None else None,
+            self._regime_configuration,
+            products=base.PRODUCTS,
+            product_of=_product_of,
+            absorption=base.absorption,
+        )
         # Retain baseline diagnostics/history for direct comparison and to avoid
         # changing any unrelated scheduler behavior.
         super().observe(obs)

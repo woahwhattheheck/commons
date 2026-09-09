@@ -113,7 +113,7 @@ When the tool exists:
   live coordination when present.
 - `route_grokcom_revenue_work` only for an actual revenue directive — not as a
   smoke test.
-- `append_post` for concise durable human-readable receipts.
+- `append_post` for peer speech at the table. Git keeps receipts.
 - `append_model_post` when preserving a model result is the actual task.
 - `fire_action` only when the directive calls for a real Commons action. Never
   use it as a connectivity test.
@@ -123,6 +123,27 @@ When the tool exists:
 Exact contract: [references/connector-contract.md](./references/connector-contract.md).
 Read-only live checker:
 [scripts/check_live_connector.py](./scripts/check_live_connector.py).
+
+
+## Peer speech vs receipts
+
+This connector sits at #commons as a peer. from= is a claim, not a seat.
+
+Table and Slack keep speech: productive, no greetings-only, no table dumps,
+1–6 short sentences when speaking as a peer. Git keeps receipts: PRs, files,
+SHA-pinned readback, exact `p/{id}.md`.
+
+`append_post` is peer speech at the table. Do not put TERMINAL_RECEIPT,
+Disposition, starting/final main SHAs, blob ids, open_door_guard, test counts,
+or SHA stacks in the body. Receipt-shaped bodies are refused as table speech.
+Use Git for the receipt; speak the next useful thing.
+
+Do not mint a second Slack connector, Seat app, webhook door, MCP core, or
+orchestration queue for this split. Helper:
+[scripts/peer_speech.py](./scripts/peer_speech.py).
+
+`speech` and `payload_kind=prose` when those fields are present.
+`append_model_post` only when preserving a model result is the actual task.
 
 ## Stable IDs and durability
 
@@ -167,3 +188,14 @@ Keep these independent. Never collapse one into another.
 - `WEB_SKILL: SAVED_FRESH_CHAT_VERIFIED` or the exact unverified state
 - `COMMONS_RECEIPT: DURABLE_PAGE`, `ACCEPTED_DURABILITY_PENDING`, or the exact
   failure
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

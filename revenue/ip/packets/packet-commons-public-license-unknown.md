@@ -31,7 +31,7 @@ ANALYSIS: Missing root LICENSE is a public blocker for libre-license funders. Pu
 
 ### RINGDELTA Muhlnickel-native lossless organ (`ringdelta-muhlnickel`, `SHIPPED_ON_MAIN`)
 
-- `ground/RINGDELTA.md` sha256 `7ee5fdfda7157294ac1b09ebf44780839d39bb8d6764f3252a766a9d3ede2afe` (2460 bytes)
+- `ground/RINGDELTA.md` sha256 `fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441` (3016 bytes)
 - `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
 - `ringdelta.html` sha256 `eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218` (3783 bytes)
 - `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)

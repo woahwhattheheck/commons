@@ -13,5 +13,6 @@
   "committed_seed_retry": false,
   "operating_stock": true,
   "idle_fertilizer": true,
-  "crop_release": true
+  "crop_release": true,
+  "early_capital": true
 }

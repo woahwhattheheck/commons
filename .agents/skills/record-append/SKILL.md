@@ -36,3 +36,14 @@ This skill does not actuate devices or the legacy address-337 path against `comm
 ## Receipt
 
 Original canonical bytes unchanged · exact id/path · integrated current-main SHA · remote blob/readback · relevant tests · correction id when used.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

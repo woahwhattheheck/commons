@@ -281,6 +281,73 @@ def main():
         "protected-set",
     }, rules(sample_source_lookalike)
 
+    # Polar AS9100 #11191 landed PermissionError raises whose nearby source did
+    # not prove production-LIMS human-release context, so open-door-guard failed
+    # on the merge SHA. Keep the fail-closed product behavior, but require the
+    # existing human-release vocabulary. Commons-path copies stay rejectable.
+    polar_old_lock = diff(
+        "revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py",
+        [
+            'raise PermissionError("held evidence cannot be approved")',
+            'raise PermissionError("automatic disposition disabled")',
+        ],
+    )
+    assert rules(polar_old_lock) == {"permission-exception"}, rules(polar_old_lock)
+    polar_release = diff(
+        "revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py",
+        [
+            'if pack["status"] != "REVIEW_READY":',
+            '    raise PermissionError("held evidence cannot release a report")',
+            'def automatic_disposition(self, *_args, **_kwargs):',
+            '    raise PermissionError("automatic release is disabled")',
+        ],
+    )
+    assert guard.scan_diff(polar_release) == [], guard.scan_diff(polar_release)
+    assert "permission-exception" in rules(diff("commons_mcp.py", [
+        'raise PermissionError("automatic release is disabled")',
+    ]))
+    polar_path = Path("revenue/production-lims/trace-polar-as9100/trace_polar_as9100.py")
+    polar_added = [
+        guard.AddedLine(polar_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(polar_path.read_text(encoding="utf-8").splitlines(), 1)
+    ]
+    polar_violations = [
+        item for item in guard.scan_added(polar_added) if item.rule == "permission-exception"
+    ]
+    assert polar_violations == [], polar_violations
+
+    # New Bloom beverage CoA #11199 landed PermissionError("packet not eligible")
+    # whose nearby source did not prove production-LIMS human-release context, so
+    # open-door-guard failed on merge SHA b9e8f85. Keep fail-closed product
+    # behavior, but require the existing human-release vocabulary.
+    newbloom_old_lock = diff(
+        "revenue/production-lims/newbloom-multistate-beverage-coa/newbloom_beverage_coa.py",
+        [
+            'raise PermissionError("packet not eligible")',
+        ],
+    )
+    assert rules(newbloom_old_lock) == {"permission-exception"}, rules(newbloom_old_lock)
+    newbloom_release = diff(
+        "revenue/production-lims/newbloom-multistate-beverage-coa/newbloom_beverage_coa.py",
+        [
+            'if packet["state"] != "STAGED_HUMAN_REVIEW" or packet["released_by"] is not None:',
+            '    raise PermissionError("packet not eligible to release a certificate")',
+        ],
+    )
+    assert guard.scan_diff(newbloom_release) == [], guard.scan_diff(newbloom_release)
+    assert "permission-exception" in rules(diff("commons_mcp.py", [
+        'raise PermissionError("packet not eligible to release a certificate")',
+    ]))
+    newbloom_path = Path("revenue/production-lims/newbloom-multistate-beverage-coa/newbloom_beverage_coa.py")
+    newbloom_added = [
+        guard.AddedLine(newbloom_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(newbloom_path.read_text(encoding="utf-8").splitlines(), 1)
+    ]
+    newbloom_violations = [
+        item for item in guard.scan_added(newbloom_added) if item.rule == "permission-exception"
+    ]
+    assert newbloom_violations == [], newbloom_violations
+
     # Compact catalog exclusion lists may name retired mechanisms only when they
     # do not collocate claim/seat with "gate" on one line. PR 4924's compact
     # out_of_scope one-liners failed open-door-guard on this collocation.
@@ -419,6 +486,35 @@ def main():
     ]
     parts_violations = guard.scan_added(parts_lines)
     assert parts_violations == [], parts_violations
+
+    # Run 34372584220 / SHA 994a0bff: E17 RESULTS checkpoint collocated
+    # "default-promotion claim" with "The required next experiment" on one
+    # line. That is a no-result boundary, not identity/claim admission.
+    # The collocation still fails; the reworded live file must stay clean.
+    e17_results_path = "revenue/kaggriculture/cloud-e17-regime-history/RESULTS.md"
+    e17_results_blocked = diff(
+        e17_results_path,
+        [
+            "Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion claim**. The required next experiment remains a source-pinned matched screen.",
+        ],
+    )
+    assert rules(e17_results_blocked) == {"admission-phrase"}, rules(e17_results_blocked)
+    e17_results_allowed = diff(
+        e17_results_path,
+        [
+            "Therefore there is **no terminal-cash, win-rate, downside, runtime, or default-promotion outcome**. The next experiment remains a source-pinned matched screen.",
+        ],
+    )
+    assert guard.scan_diff(e17_results_allowed) == [], guard.scan_diff(e17_results_allowed)
+    e17_path = Path(e17_results_path)
+    e17_lines = [
+        guard.AddedLine(e17_path.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            e17_path.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    e17_violations = guard.scan_added(e17_lines)
+    assert e17_violations == [], e17_violations
 
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They

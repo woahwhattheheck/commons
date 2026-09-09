@@ -1,0 +1,41 @@
+{
+  "author": "Roman Rozen",
+  "fixed_download_sha256": "ebccc5b170a4d0cd0ea55dd77b3acac5190cfaba24ca4cd30a2ebd7c6e6dddb5",
+  "intake_artifact_id": 10031005553,
+  "intake_run_id": 34156092496,
+  "intake_zip_sha256": "06df0f8dcc38d67720526e804ad9f2ad2d58ed39f26e8cdf4f7b5c2c1534e35c",
+  "license": {
+    "caveat": "License is explicit in indexed page text, not the downloaded pull metadata. Rendered body was empty. The included LICENSE is the standard Apache 2.0 legal text, not another agent attribution.",
+    "evidence_kind": "Kaggle public-page index as retrieved by HARBOR; legacy slug redirects to the exact requested V7 URL",
+    "evidence_slack": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810264614619",
+    "evidence_url": "https://www.kaggle.com/code/romanrozen/strong-statr-barnyard-economist",
+    "spdx": "Apache-2.0"
+  },
+  "main_sha256": "997e6bfc5234534e246e945bc61c87858ebf997ab85b0a5c9427dd4ed710f1b6",
+  "normalization": "31 cell sources/types match fixed download and public pull. Extract cell 15, remove only first %%writefile main.py line. No policy modifications.",
+  "owner": "romanrozen",
+  "pull_response_sha256": "93056d180b802155a80a4c3fbf3912391efd8eedfd30aeb14c5c9f28fc87baf2",
+  "review": {
+    "entrypoint": "_kaggle_submission_entrypoint(obs)",
+    "imports": [
+      "base64",
+      "copy",
+      "json",
+      "math",
+      "zlib"
+    ],
+    "lineage_limits": "ELM static comparison found no full-source/AST/full-route equality with supplied Arlene/Apex. This does not prove independent authorship or runtime behavior. Kaito and historical BreakingtheTie references were not supplied at this checkpoint.",
+    "mechanisms": [
+      "published complete own-season route",
+      "actor-local weed DIG/replay",
+      "demand-weighted SELL-slot ordering",
+      "public-near-clone 3/2/1-turn premium sale advance with due repayment",
+      "terminal liquidation"
+    ]
+  },
+  "schema": "titan.t07.public-opponent.v1",
+  "script_version_id": 341074820,
+  "slug": "strong-barnyard-economist",
+  "source_url": "https://www.kaggle.com/code/romanrozen/strong-barnyard-economist?scriptVersionId=341074820",
+  "version_number": 7
+}

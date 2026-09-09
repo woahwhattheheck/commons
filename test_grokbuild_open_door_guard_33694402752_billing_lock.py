@@ -16,13 +16,13 @@ SIBLING = ROOT / "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-
 SIBLING_TEST = ROOT / "test_grokbuild_open_door_guard_33689357297_billing_lock.py"
 
 KEEP = {
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7f07e2f2",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "51b1ee34",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "84808a37",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "109e326f",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "9e00eb5d",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
 }
 

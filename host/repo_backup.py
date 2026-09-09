@@ -162,7 +162,9 @@ def snapshot(source: Path, output_dir: Path) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     bundle = output_dir / f"commons-{stamp}-{head_sha[:12]}.bundle"
-    if bundle.exists():
+    # Path.exists() follows the name, so a dangling symlink looks absent.
+    # Git and os.link can still replace that occupied name.
+    if os.path.lexists(bundle):
         raise BackupError(f"refusing to overwrite snapshot: {bundle}")
     # Git may replace an existing bundle path. Build privately on the same
     # filesystem, then publish with an exclusive hard link: an existence check

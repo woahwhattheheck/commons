@@ -26,8 +26,8 @@ KEEP = {
     "p/cursor-mcp-get-grounding-readback-20260902-01.md": "4d7bc317",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "hub_pages.py": "7a8f24d5",
-    "door.js": "5bc431b1",
+    "hub_pages.py": "d0bd0e8d",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
 }
 

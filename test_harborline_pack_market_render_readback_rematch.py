@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-rematch-20260902-01.md": "c6707847",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
 }
 
 
@@ -69,7 +69,7 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
 
     def test_leftover_hub_pages_keep_unpinned_on_later_main(self) -> None:
         hub = git_blob("hub_pages.py")
-        self.assertTrue(hub.startswith("7a8f24d5"), hub)
+        self.assertTrue(hub.startswith("d0bd0e8d"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
         import test_harborline_pack_market_render as leftover
         self.assertNotEqual(leftover.KEEP.get("hub_pages.py"), "14eeedb0")

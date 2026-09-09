@@ -41,7 +41,7 @@ KEEP = {
     "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "d91f17d9",
     "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "8604cd4b",
     "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "66449d72",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
     "llms_txt.py": "70daec62",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",

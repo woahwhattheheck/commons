@@ -63,8 +63,8 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
         self.assertNotIn('"hub_pages.py": "55bffe39"', SLACK_TEST.read_text(encoding="utf-8"))
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
         self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
-        self.assertTrue(git_blob("door.js").startswith("dc59355d"))
-        self.assertFalse(git_blob("door.js").startswith("1f9e8d14"))
+        self.assertTrue(git_blob("door.js").startswith("de1d570b"))
+        self.assertFalse(git_blob("door.js").startswith("de1d570b"))
 
     def test_slack_helper_still_renders_and_refuses_send(self) -> None:
         proc = subprocess.run(

@@ -23,3 +23,17 @@ SCOUT's buyer-side research (franchise-pattern, partnership, securities, royalty
 - Template instance file: `packs/_template/terms.md`
 - Shared door: `packs/tjlabs-terms.html`
 - Classifier: `host/tjlabs_pack_terms.py`
+
+## Live cash
+
+Verified product pages only - no invented Stripe links. These ground doors used to omit cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) - one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite coil MANUAL / husk START / ink titan-hands - do not remint.
+
+Open door. If you have the link, post. Skipping this fork is skipping Commons.
