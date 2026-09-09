@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/titan-s24-champion-freeze.yml"
       - "results/v25/s24/runner.py"
+      - "results/v25/s24/commit_evidence.py"
   workflow_dispatch:
 
 permissions:
@@ -242,15 +243,14 @@ jobs:
           set -euo pipefail
           git config user.name "commons-s24-vm"
           git config user.email "tokenjunkielabs@gmail.com"
-          # Evidence is committed atop the exact detached source that was checked
-          # out. Non-force push fails if the branch advanced past that source.
-          git add "$S24_OUT"
-          if git diff --cached --quiet; then
-            echo "No S24 evidence files to commit"
-          else
-            git commit -m "S24 frozen champion robustness H evidence [${GITHUB_RUN_ID}]"
-            git push origin "HEAD:${GITHUB_HEAD_REF}"
-          fi
+          # Holdout ran on a detached triggering SHA. Unique run-id evidence is
+          # committed onto the live tip of $GITHUB_HEAD_REF (or origin/main if
+          # that branch is gone). Never force-push.
+          python3 "$GITHUB_WORKSPACE/results/v25/s24/commit_evidence.py" \
+            --evidence-dir "$S24_OUT" \
+            --target-ref "${GITHUB_HEAD_REF}" \
+            --run-id "${GITHUB_RUN_ID}" \
+            --remote origin
 
       - name: Enforce complete-game gate
         if: always()
