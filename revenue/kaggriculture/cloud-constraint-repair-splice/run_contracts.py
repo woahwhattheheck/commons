@@ -41,11 +41,17 @@ def main() -> int:
             projector=lambda st: st['material'],
             config=cfg,
         )
-        elapsed.append((time.perf_counter_ns() - t0) / 1_000_000)
+        wall_ms = (time.perf_counter_ns() - t0) / 1_000_000
+        elapsed.append(wall_ms)
         reasons[result.reason] = reasons.get(result.reason, 0) + 1
         nodes.append(result.nodes_seen)
         if result.nodes_seen > 128:
             raise SystemExit('node cap exceeded')
+        # Hard admission boundary: wall elapsed must stay under the 10 ms budget
+        # for this finite cooperative harness. Search-loop + raw-pull bounds are
+        # the enforceable contract; a single blocking callback remains cooperative.
+        if wall_ms > 10.0:
+            raise SystemExit(f'wall budget exceeded: {wall_ms:.3f} ms > 10 ms')
         if result.found:
             outputs.add(json.dumps(result.actions, separators=(',', ':')))
             if result.actions != ('A', 'A', 'A'):
@@ -61,7 +67,13 @@ def main() -> int:
     report = {
         'schema': 'titan.s19.contract.v1',
         'runs': args.runs,
-        'config': {'max_nodes': 128, 'max_depth': 8, 'budget_ms': 10, 'max_candidates': 8},
+        'config': {
+            'max_nodes': 128,
+            'max_depth': 8,
+            'budget_ms': 10,
+            'max_candidates': 8,
+            'max_raw_pulls': cfg.max_raw_pulls,
+        },
         'reasons': reasons,
         'deterministic_success_outputs': len(outputs),
         'max_nodes_seen': max(nodes),
@@ -73,6 +85,7 @@ def main() -> int:
         },
         'max_rss_kib': rss_kib,
         'fail_closed': True,
+        'wall_budget_enforced': True,
         'gameplay_claim': False,
     }
     Path(args.output).write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')

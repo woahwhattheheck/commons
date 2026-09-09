@@ -4,6 +4,9 @@ import unittest
 
 from constraint_repair import (
     RepairConfig,
+    _bounded_actions,
+    _jsonable,
+    canonical_bytes,
     checkpoint_sha256,
     find_shortest_splice,
     kaggriculture_material_checkpoint,
@@ -83,6 +86,31 @@ class SourceCaseTests(unittest.TestCase):
         a = kaggriculture_material_checkpoint(base, producer_values={'future_sale_value': 80})
         b = kaggriculture_material_checkpoint(base, producer_values={'future_sale_value': 0})
         self.assertNotEqual(checkpoint_sha256(a), checkpoint_sha256(b))
+
+
+class CanonicalKeyTests(unittest.TestCase):
+    def test_non_string_mapping_key_fails_closed(self):
+        with self.assertRaises(ValueError) as ctx:
+            _jsonable({1: 'x'})
+        self.assertIn('non-string mapping key', str(ctx.exception))
+
+    def test_int_and_str_keys_do_not_collide_into_false_exact(self):
+        # Previously str(1) == "1" collapsed distinct maps.
+        a = {1: 'x'}
+        b = {'1': 'y'}
+        with self.assertRaises(ValueError):
+            canonical_bytes(a)
+        # string-keyed map remains valid
+        self.assertIsInstance(canonical_bytes(b), bytes)
+
+    def test_mixed_int_str_keys_in_same_map_fail_closed(self):
+        with self.assertRaises(ValueError):
+            canonical_bytes({1: 'x', '1': 'y'})
+
+    def test_string_keys_remain_order_independent(self):
+        a = canonical_bytes({'b': 1, 'a': 2})
+        b = canonical_bytes({'a': 2, 'b': 1})
+        self.assertEqual(a, b)
 
 
 class SearchTests(unittest.TestCase):
@@ -200,6 +228,44 @@ class SearchTests(unittest.TestCase):
         self.assertTrue(result.found)
         self.assertEqual('already-equal', result.reason)
         self.assertEqual(0, result.depth)
+
+    def test_duplicate_heavy_provider_is_raw_pull_bounded(self):
+        pulls = {'n': 0}
+        def infinite_dupes(st, depth):
+            while True:
+                pulls['n'] += 1
+                yield 'SAME'
+        result = find_shortest_splice(
+            {'id': 0}, {'id': 1},
+            infinite_dupes,
+            lambda s, a: None,
+            projector=lambda st: st,
+            config=RepairConfig(max_nodes=8, max_depth=2, budget_ns=1_000_000_000,
+                                max_candidates=4, max_raw_pulls=16),
+            now_ns=FakeClock(range(100000)),
+        )
+        self.assertFalse(result.found)
+        self.assertIn(result.reason, {'no-match', 'node-cap'})
+        # One expansion level at depth 0: at most max_raw_pulls pulls.
+        self.assertLessEqual(pulls['n'], 16)
+
+    def test_candidate_enumeration_honors_deadline(self):
+        clock = FakeClock([0, 0, 0, 5, 5, 5, 5])  # expire mid-enumeration
+        def slow_dupes(st, depth):
+            for i in range(1000):
+                yield 'X'
+        result = find_shortest_splice(
+            {'id': 0}, {'id': 1},
+            slow_dupes,
+            lambda s, a: None,
+            projector=lambda st: st,
+            config=RepairConfig(max_nodes=32, max_depth=2, budget_ns=4,
+                                max_candidates=8, max_raw_pulls=1000),
+            now_ns=clock,
+        )
+        self.assertFalse(result.found)
+        self.assertTrue(result.used_fallback)
+        self.assertIn(result.reason, {'deadline', 'deadline-before-search', 'no-match'})
 
 
 if __name__ == '__main__':

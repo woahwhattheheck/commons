@@ -32,6 +32,9 @@ class RepairConfig:
     max_depth: int = 8
     budget_ns: int = 10_000_000
     max_candidates: int = 32
+    # Hard bound on raw candidate pulls so a duplicate-heavy or infinite
+    # provider cannot stall past the wall deadline while unique collection runs.
+    max_raw_pulls: int = 256
 
     def validate(self) -> "RepairConfig":
         if self.max_nodes < 1:
@@ -42,6 +45,8 @@ class RepairConfig:
             raise ValueError("budget_ns must be non-negative")
         if self.max_candidates < 1:
             raise ValueError("max_candidates must be positive")
+        if self.max_raw_pulls < 1:
+            raise ValueError("max_raw_pulls must be positive")
         return self
 
 
@@ -67,7 +72,18 @@ def _jsonable(value: Any) -> Any:
             raise ValueError("non-finite float in checkpoint")
         return value
     if isinstance(value, Mapping):
-        return {str(k): _jsonable(v) for k, v in sorted(value.items(), key=lambda kv: str(kv[0]))}
+        # Fail closed on non-string keys: str(k) collapses distinct keys
+        # (e.g. 1 and "1") and permits false exact-checkpoint matches.
+        encoded: list[tuple[str, Any]] = []
+        for k, v in value.items():
+            if not isinstance(k, str):
+                raise ValueError(
+                    f"non-string mapping key {k!r} (type {type(k).__name__}) "
+                    "in checkpoint; exact equality requires string keys"
+                )
+            encoded.append((k, _jsonable(v)))
+        encoded.sort(key=lambda kv: kv[0])
+        return {k: v for k, v in encoded}
     if isinstance(value, (list, tuple)):
         return [_jsonable(v) for v in value]
     if isinstance(value, (set, frozenset)):
@@ -136,9 +152,26 @@ def _action_key(action: Action) -> bytes:
     return canonical_bytes(action)
 
 
-def _bounded_actions(actions: Iterable[Action], cap: int) -> list[Action]:
+def _bounded_actions(
+    actions: Iterable[Action],
+    cap: int,
+    *,
+    max_raw_pulls: int,
+    expired: Callable[[], bool] | None = None,
+) -> list[Action]:
+    """Collect up to ``cap`` unique actions under a raw-pull and optional deadline bound.
+
+    A provider that yields only duplicates (or blocks) cannot run past
+    ``max_raw_pulls`` iterations or past ``expired()`` when supplied.
+    """
     unique: dict[bytes, Action] = {}
+    raw_pulls = 0
     for action in actions:
+        if expired is not None and expired():
+            break
+        raw_pulls += 1
+        if raw_pulls >= max_raw_pulls:
+            break
         key = _action_key(action)
         if key not in unique:
             unique[key] = action
@@ -165,6 +198,11 @@ def find_shortest_splice(
     order. ``transition`` must return a fresh legal successor or ``None`` for an
     illegal action. Any callback error, node cap, or deadline returns no splice.
     The caller's initial state is never returned or mutated by this function.
+
+    Candidate enumeration is deadline-aware and raw-pull bounded so a
+    duplicate-heavy or infinite provider cannot stall past the wall budget.
+    Blocking callbacks remain cooperative only; the contract is hard on the
+    search loop and on raw pulls, not on a single non-yielding call.
     """
     config.validate()
     try:
@@ -217,9 +255,17 @@ def find_shortest_splice(
         if len(path) >= config.max_depth:
             continue
         try:
-            offered = _bounded_actions(candidates(state, len(path)), config.max_candidates)
+            offered = _bounded_actions(
+                candidates(state, len(path)),
+                config.max_candidates,
+                max_raw_pulls=config.max_raw_pulls,
+                expired=expired,
+            )
         except Exception:
             return failure("candidate-error", nodes_seen=nodes_seen, expanded=expanded,
+                           pruned=pruned, duplicates=duplicates)
+        if expired():
+            return failure("deadline", nodes_seen=nodes_seen, expanded=expanded,
                            pruned=pruned, duplicates=duplicates)
         for action in offered:
             if expired():
