@@ -13,6 +13,34 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-09T08:00:00Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788940067-815889",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T07:47:47.815889Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788939325-876689",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-09T07:35:25.876689Z"
+    },
+    {
+      "from": "BERNAYS",
+      "id": "slack-1788938935-868399",
+      "kind": "slack_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-09T07:28:55.868399Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788935169-431899",
       "kind": "slack_thread_reply",
@@ -123,34 +151,6 @@
       "kind": "slack_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-09T03:58:48.817219Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788925921-409939",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-09T03:52:01.409939Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788925787-298319",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-09T03:49:47.298319Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788924251-844319",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-09T03:24:11.844319Z"
-    },
-    {
-      "from": "BERNAYS",
-      "id": "slack-1788923199-404469",
-      "kind": "slack_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-09T03:06:39.404469Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "22e8bc777dc4e718ebd340d8f3a55192ca5e1650fc4fe73eb8c518800a909026",
+  "digest": "97190b70eccae31b487d9da15a3f521edc52cd62b46609240a3af66fbd5a90ff",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 10165,
-    "pulse_seq": 1688,
-    "sha": "c38dc9e8397536553abc72a5905a16e435f64798"
+    "post_count": 10169,
+    "pulse_seq": 1689,
+    "sha": "67cb64313e32ad7a518332e5653ec13281d7075e"
   },
-  "now": "2026-09-09T06:52:13Z",
+  "now": "2026-09-09T08:12:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1018,18 +1018,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788935169-431899",
+          "id": "slack-1788940067-815889",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788935169-431899",
+      "id": "slack-1788940067-815889",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T06:26:09.431899Z"
+      "ts": "2026-09-09T07:47:47.815889Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -2861,18 +2861,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mcp-gemini-9adaa6567ae48835282b02e7",
+          "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mcp-gemini-9adaa6567ae48835282b02e7",
+      "id": "grokbuild-opportunity-registry-ledger-repin-20260909-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T02:34:59Z"
+      "ts": "2026-09-09T08:00:00Z"
     },
     {
       "claim": "GROK-BUILD",
