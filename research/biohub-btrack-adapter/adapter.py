@@ -376,27 +376,13 @@ def tracks_to_rows(
     tracks: Sequence[TrackLike],
     ref_map: Mapping[int, Detection],
     scale: Scale,
+    *,
+    require_full_coverage: bool = True,
 ) -> list[dict[str, object]]:
     """Convert BTrack tracklets immediately, before any list-mode HDF export."""
     if any(item.dataset != dataset for item in detections):
         raise AdapterError("tracks_to_rows accepts exactly one dataset")
     ordered = sorted(detections)
-    node_ids = {item.detection_id: index for index, item in enumerate(ordered)}
-    detection_by_id = {item.detection_id: item for item in ordered}
-    rows: list[dict[str, object]] = [
-        {
-            "dataset": dataset,
-            "row_type": "node",
-            "node_id": node_ids[item.detection_id],
-            "t": item.t,
-            "z": item.z,
-            "y": item.y,
-            "x": item.x,
-            "source_id": -1,
-            "target_id": -1,
-        }
-        for item in ordered
-    ]
 
     track_by_id: dict[int, TrackLike] = {}
     real_by_id: dict[int, list[tuple[int, Detection]]] = {}
@@ -427,8 +413,30 @@ def tracks_to_rows(
             edges.add((source.detection_id, target.detection_id))
 
     missing_real_refs = sorted(set(ref_map) - set(seen_real_refs))
-    if missing_real_refs:
+    if missing_real_refs and require_full_coverage:
         raise AdapterError(f"tracker output omitted real object ID {missing_real_refs[0]}")
+
+    if require_full_coverage:
+        emitted = ordered
+    else:
+        retained_detection_ids = {ref_map[ref].detection_id for ref in seen_real_refs}
+        emitted = [item for item in ordered if item.detection_id in retained_detection_ids]
+    node_ids = {item.detection_id: index for index, item in enumerate(emitted)}
+    detection_by_id = {item.detection_id: item for item in emitted}
+    rows: list[dict[str, object]] = [
+        {
+            "dataset": dataset,
+            "row_type": "node",
+            "node_id": node_ids[item.detection_id],
+            "t": item.t,
+            "z": item.z,
+            "y": item.y,
+            "x": item.x,
+            "source_id": -1,
+            "target_id": -1,
+        }
+        for item in emitted
+    ]
 
     # Validate declared lineage and add one parent-last -> child-first edge.
     for track_id, track in track_by_id.items():
@@ -579,7 +587,14 @@ def solve_dataset(
         tracks = list(tracker.tracks)
         # Critical ordering: convert while refs/properties still reflect the live run.
         # Do not call HDF5FileHandler.write_tracks(list[Tracklet]) before this point.
-        return tracks_to_rows(detections[0].dataset, detections, tracks, ref_map, scale)
+        return tracks_to_rows(
+            detections[0].dataset,
+            detections,
+            tracks,
+            ref_map,
+            scale,
+            require_full_coverage=not optimise,
+        )
 
 
 def solve_all(
