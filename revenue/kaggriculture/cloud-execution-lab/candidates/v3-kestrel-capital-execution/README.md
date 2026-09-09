@@ -84,40 +84,41 @@ fallback, stale-selection, reconstruction, and interrupted-instance destruction
 contract. The 27-test semantic receipt therefore remains useful for the theorem
 only; it is not paired-game evidence.
 
-`candidate_main.py` now copies no entrypoint control flow. It exact-loads the
-canonical source-tree `main.py` and exports that module's `agent` function object
-itself. The candidate changes only construction:
+`candidate_main.py` now copies no entrypoint or factory control flow. It
+exact-loads canonical source-tree `main.py` and exports that module's `agent`
+function object itself. The candidate changes only the factory's import view:
 
 1. verify the live `titan_runtime.TitanAgent` object is the exact predecessor
    base of `KestrelTitanAgent`;
-2. under a process-local lock, substitute `KestrelTitanAgent` for that one
-   factory symbol;
-3. call the unchanged canonical `_new_instance`, causing its local
-   `FinalPressureAgent` to be defined directly over KESTREL;
-4. restore the predecessor symbol in `finally`; and
+2. create a private `titan_runtime` module view whose only changed binding is
+   `TitanAgent = KestrelTitanAgent`;
+3. construct a function from canonical `_new_instance`'s exact code object and
+   an isolated builtins map whose import hook returns that private view;
+4. execute that unchanged bytecode without mutating the live runtime module; and
 5. reject construction unless the resulting MRO is exactly
    `FinalPressureAgent -> KestrelTitanAgent -> TitanAgent`.
 
-Canonical function globals still own `_INSTANCE`, the outer deadline timer,
-terminal/PASS fallback, seller fallback receipt, readiness invalidation, and
-partial-instance destruction. Canonical final pressure still runs after the
-KESTREL early-capital call exactly once and remains suppressed at its old
-in-pipeline position.
+The live `titan_runtime.TitanAgent` symbol never changes, including when factory
+construction raises. Canonical function globals still own `_INSTANCE`, the outer
+deadline timer, terminal/PASS fallback, seller fallback receipt, readiness
+invalidation, and partial-instance destruction. Canonical final pressure still
+runs after the KESTREL early-capital call exactly once and remains suppressed at
+its old in-pipeline position.
 
 `test_candidate_entrypoint.py` loads the carrier with the candidate directory
-absent from `sys.path`, constructs the real MRO, proves factory restoration on
-success and exception, checks KESTREL-before-pressure ordering, invokes the
-exported canonical function in the ordinary path, and trips the real outer timer
-to prove current selected fallback, stale-selection clearing, and reconstruction
-via `_INSTANCE = None`.
+absent from `sys.path`, proves canonical factory code identity and the real MRO,
+proves the live runtime base is unchanged on success and exception, checks
+KESTREL-before-pressure ordering, invokes the exported canonical function in the
+ordinary path, and trips the real outer timer to prove current selected fallback,
+stale-selection clearing, and reconstruction via `_INSTANCE = None`.
 
 ## Files
 
 - `kestrel_early_capital.py` — unchanged predecessor proposal and own replay.
 - `lockstep_early_capital.py` — atomic unit reconstruction and lockstep theorem.
 - `candidate_runtime.py` — candidate-only early-capital override.
-- `candidate_main.py` — exact canonical-entrypoint delegation and factory-only
-  KESTREL carrier.
+- `candidate_main.py` — exact canonical entrypoint plus same-code factory import
+  isolation for the KESTREL base.
 - `test_kestrel_early_capital.py` — original adversarial contracts.
 - `test_runtime_binding.py` — captured-snapshot and atomic-fallback binding.
 - `test_kestrel_lockstep_repair.py` — pinned-engine rival witnesses, PLANT
