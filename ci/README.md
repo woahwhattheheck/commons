@@ -36,3 +36,14 @@ reconciler, not a code repair agent; a paused publisher or paused legacy review
 automation is not silently restarted by taking this role. No second watcher is
 needed to own and fix the current queue. Record an exact continuation owner and
 remaining cause when work transfers; do not mark an open repair complete.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
