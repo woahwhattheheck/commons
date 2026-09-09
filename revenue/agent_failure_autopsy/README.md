@@ -36,3 +36,13 @@ Archives, executables, repository dumps, credentials, and unrelated incidents ar
     python -m unittest test_agent_failure_autopsy.py
 
 The synthetic report is deliberately PEER_DRAFT with operator time NOT_MEASURED. It demonstrates structure and evidence fidelity; it does not establish delivery time, review time, buyer satisfaction, sales, or revenue.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
