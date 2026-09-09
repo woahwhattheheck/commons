@@ -22,3 +22,7 @@ directory and rejects automation or self-asserted reviewers.
 HOLD / BUILD-AND-VERIFY. Synthetic/read-only. PRE-SALE TRANSPORT: NONE.
 No customer data, live integration, outreach, spend, production write,
 analytical interpretation, regulatory approval decision, or automatic release.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

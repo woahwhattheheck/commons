@@ -20,3 +20,7 @@ CLI: `python3 sgspsi_thermal_rheology_lineage.py`
 | report_digest | 3341fe765f072d291c9c3422d40651edbb7f2041839d3e103e3b5880de439738 | match |
 
 Buyer: Kyle Copeland / SGS Polymer Solutions. DSC-250 / HR-20 lineage lane. Interfaces simulated. No production write, outreach, or automatic release. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

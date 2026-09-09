@@ -13,3 +13,7 @@ Landing owner: `cursor-grok-46-demon-redteam-20260825`
 5. **Marketplace last is not contempt.** `bazaar.json` is honest: free colony compute, price 0. A marketplace that listed titan or foundry would violate product law. Later pocket-mind / receipt SKUs remain speakable.
 
 6. **This file is not a buyer list and not a payment rail.** Absence of private buyer names is not a zero of demand. Demand was not measured here. Search space for demand: public `OFFER` posts + owner-private inbox. Failure mode: treating no public buyer name as "no buyers."
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

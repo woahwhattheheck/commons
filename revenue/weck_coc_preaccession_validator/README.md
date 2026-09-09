@@ -39,3 +39,7 @@ Ten hold codes, eight each. Every exception blocks with that exact code. Replay 
 - Door: `../../weck-coc-preaccession-validator-lims.html`
 
 Do not remint `baddl-eia-accession-release-lims-01`, `trace-sila-ml-iatf-lims-01`, `roslinct-hopkinton-paperless-qc-lims-01`, or Billings Bid 1421 / AquaTrace instrument fixtures.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

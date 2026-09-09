@@ -109,3 +109,7 @@ Use `contact@upvest.co`; do not use the prospective-investment-product customer 
 > Would that bounded test be useful, yes or no?
 
 Follow-up: “If not, reply no and I won’t follow up again. If yes, one non-confidential outcome sentence starts the proof.”
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -148,6 +148,52 @@ class ResourcesTabTests(unittest.TestCase):
             self.assertIn("Do not treat this tab as current", page)
             self.assertIn("Action Pad", page)
 
+    def test_ledger_md_and_catalog_drift_fail_check(self) -> None:
+        """RESOURCE_LEDGER.md / catalog.json drift must fail --check (PR 11280 class)."""
+        with tempfile.TemporaryDirectory(prefix="resources-tab-md-") as tmp:
+            root = Path(tmp)
+            copy_live_tree(root)
+            tab.regenerate(str(root), sha=FIXED_SHA, reviewed_at=FIXED_TIME)
+            self.assertEqual(tab.measure(str(root))["state"], "FRESH")
+            ledger_md = root / "ground" / "RESOURCE_LEDGER.md"
+            ledger_md.write_text(
+                ledger_md.read_text(encoding="utf-8") + "\n<!-- freshness-canary-md -->\n",
+                encoding="utf-8",
+            )
+            measured = tab.measure(str(root))
+            self.assertEqual(measured["state"], "STALE")
+            self.assertIn("source digest does not match current inputs", measured["reason"])
+            check = subprocess.run(
+                [sys.executable, str(ROOT / "host" / "resources_tab.py"), "--root", str(root), "--check"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(check.returncode, 0)
+            self.assertIn("STALE", check.stdout)
+            restored = tab.regenerate_or_alarm(
+                str(root),
+                sha=FIXED_SHA,
+                reviewed_at=FIXED_TIME,
+            )
+            self.assertEqual(restored["state"], "FRESH")
+            catalog = root / "revenue" / "outcome_commerce" / "catalog.json"
+            payload = json.loads(catalog.read_text(encoding="utf-8") or "{}")
+            if not isinstance(payload, dict):
+                payload = {}
+            payload["_freshness_canary"] = "catalog-drift"
+            catalog.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+            catalog_stale = tab.measure(str(root))
+            self.assertEqual(catalog_stale["state"], "STALE")
+            check2 = subprocess.run(
+                [sys.executable, str(ROOT / "host" / "resources_tab.py"), "--root", str(root), "--check"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(check2.returncode, 0)
+            self.assertIn("STALE", check2.stdout)
+
     def test_regenerate_or_alarm_produces_matching_page(self) -> None:
         with tempfile.TemporaryDirectory(prefix="resources-tab-regen-") as tmp:
             root = Path(tmp)
