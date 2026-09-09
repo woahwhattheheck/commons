@@ -25,3 +25,13 @@ Configured service/area pairs select a local calendar. Out-of-area inquiries bec
 ## Production handoff boundary
 
 Before customer use, replace the fictional config with explicit service areas and availability, map the customer's approved intake fields to this schema, and connect any approved send/calendar actions through the customer's existing tools. Keep provider credentials and customer records out of Git.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

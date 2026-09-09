@@ -7,7 +7,6 @@ on:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/analysis/w10-fertilizer-cycle/**"
       - ".github/workflows/titan-w10-*.yml"
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -20,6 +19,9 @@ concurrency:
 env:
   PYTHONDONTWRITEBYTECODE: "1"
   W10_DIR: revenue/kaggriculture/cloud-execution-lab/analysis/w10-fertilizer-cycle
+  EXPECTED_REPOSITORY: woahwhattheheck/commons
+  EXPECTED_HEAD_REF: sol/verdant-w10-realized-fertilizer-certificate-20260909-03
+  EXPECTED_BASE_REF: main
   GREEN_REF: ci/verdant-w10-green-20260909-03
 
 jobs:
@@ -28,6 +30,38 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Bind the run to the frozen W10 owner branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - \
+            "$GITHUB_REPOSITORY" \
+            "$GITHUB_REF_TYPE" \
+            "$GITHUB_REF" \
+            "$GITHUB_REF_NAME" \
+            "$EXPECTED_REPOSITORY" \
+            "$EXPECTED_HEAD_REF" <<'PY'
+          import sys
+
+          repository, ref_type, ref, ref_name, expected_repository, expected_head = sys.argv[1:]
+          expected_ref = f'refs/heads/{expected_head}'
+          failures = []
+          if repository != expected_repository:
+              failures.append(
+                  f'repository {repository!r} does not equal {expected_repository!r}'
+              )
+          if ref_type != 'branch':
+              failures.append(f'ref type {ref_type!r} is not branch')
+          if ref != expected_ref:
+              failures.append(f'ref {ref!r} does not equal {expected_ref!r}')
+          if ref_name != expected_head:
+              failures.append(
+                  f'ref name {ref_name!r} does not equal {expected_head!r}'
+              )
+          if failures:
+              raise SystemExit('refuse unbound W10 run: ' + '; '.join(failures))
+          PY
+
       - name: Check out the pushed head
         uses: actions/checkout@v4
         with:
@@ -81,17 +115,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          repo="$GITHUB_REPOSITORY"
-          head="$GITHUB_REF_NAME"
+          repo="$EXPECTED_REPOSITORY"
+          head="$EXPECTED_HEAD_REF"
+          base="$EXPECTED_BASE_REF"
           prs="$(gh pr list \
             --repo "$repo" \
             --head "$head" \
-            --base main \
+            --base "$base" \
             --state open \
             --limit 10 \
-            --json number,url,headRefName,headRefOid)"
+            --json number,url,baseRefName,headRefName,headRefOid,isCrossRepository,headRepositoryOwner)"
 
-          count="$(python -c 'import json,sys; print(len(json.load(sys.stdin)))' <<<"$prs")"
+          count="$(python -c 'import json,sys; value=json.load(sys.stdin); print(len(value) if isinstance(value,list) else -1)' <<<"$prs")"
           if [[ "$count" == 0 ]]; then
             cat > /tmp/w10-pr-body.md <<'BODY'
           ## W10 objective
@@ -103,21 +138,21 @@ jobs:
             gh pr create \
               --repo "$repo" \
               --head "$head" \
-              --base main \
+              --base "$base" \
               --title "titan: certify realized fertilizer cycles, not local yield quotes" \
               --body-file /tmp/w10-pr-body.md >/tmp/w10-pr-url.txt
             prs="$(gh pr list \
               --repo "$repo" \
               --head "$head" \
-              --base main \
+              --base "$base" \
               --state open \
               --limit 10 \
-              --json number,url,headRefName,headRefOid)"
-            count="$(python -c 'import json,sys; print(len(json.load(sys.stdin)))' <<<"$prs")"
+              --json number,url,baseRefName,headRefName,headRefOid,isCrossRepository,headRepositoryOwner)"
+            count="$(python -c 'import json,sys; value=json.load(sys.stdin); print(len(value) if isinstance(value,list) else -1)' <<<"$prs")"
           fi
 
           [[ "$count" == 1 ]] || {
-            echo "expected exactly one open PR for $head, found $count" >&2
+            echo "expected exactly one open PR for $head -> $base, found $count" >&2
             exit 1
           }
 
@@ -125,6 +160,7 @@ jobs:
           python - \
             "$GITHUB_SHA" \
             "$head" \
+            "$base" \
             "$repo" \
             "$GITHUB_OUTPUT" \
             /tmp/w10-open-prs.json <<'PY'
@@ -140,13 +176,25 @@ jobs:
                   result[key] = value
               return result
 
-          pushed_sha, expected_head, expected_repo, output_path, prs_path = sys.argv[1:]
+          (
+              pushed_sha,
+              expected_head,
+              expected_base,
+              expected_repo,
+              output_path,
+              prs_path,
+          ) = sys.argv[1:]
           try:
               raw = Path(prs_path).read_bytes()
               text = raw.decode('utf-8')
               items = json.loads(text, object_pairs_hook=reject_duplicate_keys)
           except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as exc:
               raise SystemExit(f'unable to parse open PR inventory: {exc}') from exc
+
+          repo_parts = expected_repo.split('/')
+          if len(repo_parts) != 2 or not all(repo_parts):
+              raise SystemExit(f'invalid expected repository {expected_repo!r}')
+          expected_owner = repo_parts[0]
 
           if not isinstance(items, list):
               raise SystemExit('open PR inventory must be a JSON array')
@@ -161,14 +209,21 @@ jobs:
 
           number = item.get('number')
           url = item.get('url')
+          base_ref = item.get('baseRefName')
           head_ref = item.get('headRefName')
           head_oid = item.get('headRefOid')
+          cross_repository = item.get('isCrossRepository')
+          head_owner = item.get('headRepositoryOwner')
           if isinstance(number, bool) or not isinstance(number, int) or number <= 0:
               raise SystemExit('PR number must be a positive integer')
           expected_url = f'https://github.com/{expected_repo}/pull/{number}'
           if url != expected_url:
               raise SystemExit(
                   f'PR URL {url!r} does not equal expected URL {expected_url!r}'
+              )
+          if base_ref != expected_base:
+              raise SystemExit(
+                  f'PR base ref {base_ref!r} does not equal expected base {expected_base!r}'
               )
           if head_ref != expected_head:
               raise SystemExit(
@@ -177,6 +232,17 @@ jobs:
           if head_oid != pushed_sha:
               raise SystemExit(
                   f'PR head {head_oid} does not equal pushed SHA {pushed_sha}'
+              )
+          if cross_repository is not False:
+              raise SystemExit(
+                  f'PR must use a same-repository head, got isCrossRepository={cross_repository!r}'
+              )
+          if (
+              not isinstance(head_owner, dict)
+              or head_owner.get('login') != expected_owner
+          ):
+              raise SystemExit(
+                  f'PR head owner {head_owner!r} does not equal {expected_owner!r}'
               )
 
           with open(output_path, 'a', encoding='utf-8') as handle:
@@ -190,8 +256,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --no-tags origin main
-          git diff --name-only "origin/main...$GITHUB_SHA" | LC_ALL=C sort > /tmp/w10-paths.txt
+          git fetch --no-tags origin "$EXPECTED_BASE_REF"
+          git diff --name-only "origin/$EXPECTED_BASE_REF...$GITHUB_SHA" | LC_ALL=C sort > /tmp/w10-paths.txt
           path_count="$(wc -l < /tmp/w10-paths.txt | tr -d ' ')"
           test "$path_count" -gt 0
           echo "path_count=$path_count" >> "$GITHUB_OUTPUT"
@@ -206,14 +272,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          run_url="https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          run_url="https://github.com/$EXPECTED_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           {
             echo '<!-- titan-w10-exact-head-gate -->'
             echo '## TITAN W10 exact-head gate'
             echo
             echo "- PR: #$PR_NUMBER"
             echo "- Tested head: \`$GITHUB_SHA\`"
-            echo "- Ref: \`$GITHUB_REF_NAME\`"
+            echo "- Ref: \`$EXPECTED_HEAD_REF\`"
             echo "- Python: \`3.12\`"
             echo "- Result: **$TEST_COUNT tests passed**"
             echo "- Changed paths against current main: **$PATH_COUNT**"
@@ -230,7 +296,7 @@ jobs:
             echo 'This receipt proves the additive exact-head evidence at the named SHA. It is not a live-game win and does not mutate provider, Kaggle, spend, or canonical-release state.'
           } > /tmp/w10-pr-comment.md
           gh pr comment "$PR_NUMBER" \
-            --repo "$GITHUB_REPOSITORY" \
+            --repo "$EXPECTED_REPOSITORY" \
             --body-file /tmp/w10-pr-comment.md
 
       - name: Fast-forward the durable green marker to the tested SHA

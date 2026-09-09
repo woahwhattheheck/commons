@@ -75,6 +75,25 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
         self.assertEqual(1, initial["private"]["seeds"]["WHEAT"])
         self.assertIsNone(initial["farm"]["tiles"][1][1])
 
+    def test_illegal_plant_request_still_counts_toward_atomic_demand(self):
+        initial = fixture(2)
+        initial["farm"]["hands"][0] = [2, 1]
+        initial["farm"]["tiles"][1][1] = {"kind": "COOP"}
+
+        # The first request cannot plant on its occupied tile, but the official
+        # prepass counts syntactic demand before checking per-worker legality.
+        first = self.transition(initial, 0, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(first)
+        self.assertEqual(1, first["private"]["seeds"]["WHEAT"])
+        self.assertEqual({"kind": "COOP"}, first["farm"]["tiles"][1][1])
+        self.assertIsNone(first["farm"]["tiles"][1][2])
+
+        second = self.transition(first, 1, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(second)
+        self.assertEqual(1, second["private"]["seeds"]["WHEAT"])
+        self.assertEqual({"kind": "COOP"}, second["farm"]["tiles"][1][1])
+        self.assertIsNone(second["farm"]["tiles"][1][2])
+
     def test_atomic_rollback_reactivates_downstream_action(self):
         initial = fixture(3)
         first = self.transition(initial, 0, ["PLANT", "WHEAT"])
@@ -92,6 +111,27 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
         self.assertIsNotNone(third)
         self.assertEqual({"kind": "COOP"}, third["farm"]["tiles"][1][1])
         self.assertEqual(1, third["private"]["seeds"]["WHEAT"])
+
+    def test_lazy_replay_preserves_preplant_actions_and_worker_indices(self):
+        initial = fixture(4)
+        initial["farm"]["farmer"] = [0, 0]
+
+        moved = self.transition(initial, 0, ["EAST"])
+        self.assertIsNotNone(moved)
+        self.assertEqual([1, 0], moved["farm"]["farmer"])
+
+        planted = self.transition(moved, 1, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(planted)
+        blocked_build = self.transition(planted, 2, ["BUILD_COOP"])
+        self.assertIsNotNone(blocked_build)
+        rolled_back = self.transition(blocked_build, 3, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(rolled_back)
+
+        # Replay begins at worker 1 from the already-moved state. Rewinding to
+        # worker 0 or enumerating the suffix from zero would place work wrongly.
+        self.assertEqual([1, 0], rolled_back["farm"]["farmer"])
+        self.assertEqual({"kind": "COOP"}, rolled_back["farm"]["tiles"][1][1])
+        self.assertEqual(1, rolled_back["private"]["seeds"]["WHEAT"])
 
     def test_beam_resolves_shared_plant_demand_atomically(self):
         canonical = (["PASS"], ["PASS"])

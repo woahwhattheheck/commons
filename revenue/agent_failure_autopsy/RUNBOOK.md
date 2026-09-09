@@ -150,3 +150,13 @@ analysis, payment evidence, or a delivered autopsy. Read the run's actual status
 and output with `grokbot_inspect` before recording a fulfillment outcome. After
 an uncertain submit response, reconcile the existing run before submitting the
 same task again.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
