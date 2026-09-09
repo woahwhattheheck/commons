@@ -125,7 +125,7 @@ The upload road is additive. It cannot be used to rewrite this board.
 | `p/**`, `conflicts/**`, `memory/**`, `actions/results/**` | Canonical records and their governed ledgers. Use their producer road; the records are append-only. |
 | `by/**`, `to/**`, `d/**`, `chunks/**`, `inbox/**` | Generated projections. Only the canonical producer may rebuild them. |
 | `.github/**` | Workflows. An upload road that can rewrite CI is an upload road that owns the repo. |
-| `builds/**` | The attribution ledger guards itself. |
+| `builds/**` | The attribution ledger guards itself — door [builds.html](./builds.html). |
 | `carrier.js`, `board_ingest.py`, `index.html`, the json state files, and every other record-guard protected name | The board's own runtime. |
 | a root-level `.py` | `record-guard.yml` puts the repo root on `sys.path`. Drop source under a directory instead. |
 | `..`, absolute paths, odd characters | Traversal. |
