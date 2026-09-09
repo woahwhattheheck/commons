@@ -101,6 +101,7 @@ class LiquidityHaircutTests(unittest.TestCase):
         selected_core = self.module()
         prior = sys.modules.get("selected_sell_core")
         original = candidate._ORIGINAL_NEW_INSTANCE
+        original_receipt = candidate._LAST_INSTALL_RECEIPT
         seen = []
 
         def constructor(root, feature_data):
@@ -120,17 +121,17 @@ class LiquidityHaircutTests(unittest.TestCase):
                 Path("/tmp/root"), {"consumer": "frozen"}
             )
         finally:
+            receipt = dict(candidate._LAST_INSTALL_RECEIPT or {})
             candidate._ORIGINAL_NEW_INSTANCE = original
+            candidate._LAST_INSTALL_RECEIPT = original_receipt
             if prior is None:
                 sys.modules.pop("selected_sell_core", None)
             else:
                 sys.modules["selected_sell_core"] = prior
         self.assertEqual(seen, [0.95])
-        self.assertEqual(instance.horizon_liquidity_receipt["factor"], 0.95)
-        self.assertEqual(
-            instance.horizon_liquidity_receipt["target"],
-            "selected_sell_core.MarketPath",
-        )
+        self.assertIsNotNone(instance)
+        self.assertEqual(receipt["factor"], 0.95)
+        self.assertEqual(receipt["target"], "selected_sell_core.MarketPath")
 
     def test_candidate_delegates_outer_entrypoint_unchanged(self):
         original = candidate._CANONICAL.agent
