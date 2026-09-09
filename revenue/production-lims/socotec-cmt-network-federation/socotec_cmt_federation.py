@@ -54,14 +54,23 @@ def build_registry() -> Dict[str, Dict[str, Any]]:
     return registry
 
 
+def _namespace_number(value: Any) -> int | None:
+    if not isinstance(value, str):
+        return None
+    match = re.fullmatch(r"SOC-(\d{2})", value)
+    if match is None:
+        return None
+    number = int(match.group(1))
+    return number if 1 <= number <= 25 else None
+
+
 def allowed_transfer(origin: str, destination: str) -> bool:
-    if origin == destination:
-        return True
-    try:
-        origin_n = int(origin.split("-")[-1])
-        destination_n = int(destination.split("-")[-1])
-    except (ValueError, IndexError):
+    origin_n = _namespace_number(origin)
+    destination_n = _namespace_number(destination)
+    if origin_n is None or destination_n is None:
         return False
+    if origin_n == destination_n:
+        return True
     predecessor = 25 if destination_n == 1 else destination_n - 1
     return origin_n == predecessor
 
@@ -74,7 +83,8 @@ def named_human(value: str) -> bool:
     if not isinstance(value, str):
         return False
     tokens = [token.casefold() for token in re.findall(r"[A-Za-z0-9]+", value)]
-    if len(tokens) < 2:
+    alpha_tokens = [token for token in tokens if any(char.isalpha() for char in token)]
+    if len(tokens) < 2 or len(alpha_tokens) < 2:
         return False
     if any(token in RESERVED_ACTOR_TOKENS for token in tokens):
         return False
