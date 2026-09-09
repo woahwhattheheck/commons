@@ -41,11 +41,11 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 
 - `ground/FEATURES.md` sha256 `bd2b7c314d28529ceaf40fc7368e8ac6a30e9e8807f4affabb4b639560cc8085` (1344 bytes)
 - `ground/FEATURE_TRACKER.md` sha256 `0792cdb75797bb71fa44b1280070b56a06516582ec46d9c9e5c6eff20bebb4b7` (4615 bytes)
-- `host/feature_tracker.py` sha256 `030c6bf040e6cf875e621c25d718324a37c5f6590dbb10f5e0d3cdda90842f8c` (37260 bytes)
+- `host/feature_tracker.py` sha256 `621313d1edc82b5ed271a23f89ddbf7eef909714b1ab352cbc752df7bdfb4d9b` (38115 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad` (12738 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334` (123097 bytes)
+- `resources.html` sha256 `37c9ed538a8d72b4572ddab5893b4dd086837572c6f8f79b811ddee0ca121775` (12738 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `4936f29fe482d1f288d07f017618673733d766fcfaf8d01f82f00956650ea3ba` (154474 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
