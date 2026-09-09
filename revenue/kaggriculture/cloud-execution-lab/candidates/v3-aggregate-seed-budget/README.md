@@ -21,9 +21,9 @@ On decline, the original action object is returned by identity. On admission, on
 
 ## Runtime adapter
 
-`candidate_runtime.py` consumes only an already completed frozen-TITAN action. It binds the exact route, normalized step, post-unit seed stock, and every branch-compatible remaining request (including spatial additions). `main.py` calls canonical TITAN exactly once, edits no controller or ledger state, and attempts the bounded transform only inside the parent's remaining reserved time. Any missing binding, unsupported mode, malformed state, timeout, or exception returns canonical bytes.
+`candidate_runtime.py` consumes only an already completed frozen-TITAN action. It binds the exact route, normalized step, post-unit seed stock, and every branch-compatible remaining request (including spatial additions). `main.py` calls canonical TITAN exactly once, edits no controller or ledger state, and attempts the bounded transform only inside the parent's remaining reserved time. Candidate-local modules are loaded by exact resolved paths under unique names, so evaluator loading does not depend on the process working directory or the candidate directory appearing on `sys.path`. Any missing binding, unsupported mode, malformed state, timeout, import failure, or exception returns canonical bytes.
 
-`test_official_engine.py` runs the preserved competition interpreter and proves that trimming the final MELON row from four units to one leaves every prior and rival effect unchanged while preserving exactly three seed costs in cash. It separately proves the partial-funding abort semantics used by the pure simulator.
+`test_entrypoint_load.py` copies only the candidate entrypoint and siblings into a temporary evaluator-shaped tree, loads the entrypoint from outside that directory, proves path-bound sibling resolution, and proves the parent is invoked exactly once. `test_official_engine.py` runs the preserved competition interpreter and proves that trimming the final MELON row from four units to one leaves every prior and rival effect unchanged while preserving exactly three seed costs in cash. It separately proves the partial-funding abort semantics used by the pure simulator.
 
 ## Evidence boundary
 
@@ -33,14 +33,16 @@ On decline, the original action object is returned by identity. On admission, on
 
 ```bash
 python -m py_compile aggregate_seed_budget.py audit_routes.py candidate_runtime.py main.py \
-  test_aggregate_seed_budget.py test_candidate_runtime.py test_official_engine.py
-python -m unittest -v test_aggregate_seed_budget.py test_candidate_runtime.py
+  test_aggregate_seed_budget.py test_candidate_runtime.py test_entrypoint_load.py \
+  test_official_engine.py
+python -m unittest -v \
+  test_aggregate_seed_budget.py test_candidate_runtime.py test_entrypoint_load.py
 python audit_routes.py --output route-audit.json
 # Hosted CI installs kaggle-environments==1.32.7 and also runs test_official_engine.py.
 ```
 
-The 18 network-independent contracts cover funded over-retention, partial-funding preservation, surplus that spills into an earlier row, SELL/variable-prefix ambiguity, active-prefix truncation, branch-compatible demand, zero-tail idempotence, mixed fixed-price seed rows, invalid numeric input, route-audit classification, completed-action binding, spatial demand, day/hour normalization, player validation, and exact projection fallback. Hosted CI adds two preserved-engine contracts.
+The 19 network-independent contracts cover funded over-retention, partial-funding preservation, surplus that spills into an earlier row, SELL/variable-prefix ambiguity, active-prefix truncation, branch-compatible demand, zero-tail idempotence, mixed fixed-price seed rows, invalid numeric input, route-audit classification, completed-action binding, spatial demand, day/hour normalization, player validation, exact projection fallback, evaluator-shaped path loading, and single-parent invocation. Hosted CI adds two preserved-engine contracts for 21 total.
 
 ## Non-claims
 
-This additive packet does not change `seed_budget.py`, `titan_runtime.py`, `main.py`, `TITAN-CONFIG.json`, the canonical archive or pointers, provider state, or any Kaggle submission. It makes no playing-strength, leaderboard, or first-place claim without complete official evidence.
+This additive packet does not change `seed_budget.py`, `titan_runtime.py`, canonical `main.py`, `TITAN-CONFIG.json`, the canonical archive or pointers, provider state, or any Kaggle submission. It makes no playing-strength, leaderboard, or first-place claim without complete official evidence.
