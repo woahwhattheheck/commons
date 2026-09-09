@@ -92,7 +92,9 @@ class AgdiaOrderTests(unittest.TestCase):
     def test_release_rejects_reserved_tokens_and_single_token_labels_without_mutation(self):
         s=AgdiaOrderShadow(); s.replay(self.records,self.manifest)
         before=copy.deepcopy(s.staged_reports["AGDIA-CASE-0001"])
-        for actor in ("System Reviewer","AI Reviewer","Service Account","bot-reviewer","agent_01","Reviewer","12 34",None):
+        for actor in ("System Reviewer","AI Reviewer","Service Account","bot-reviewer","agent_01",
+                      "Serv ice Account","Sys tem Reviewer","Autom ation Reviewer",
+                      "Autono mous Reviewer","A I Reviewer","Reviewer","12 34",None):
             with self.subTest(actor=actor):
                 with self.assertRaises(PermissionError):s.release_report("AGDIA-CASE-0001",actor)
                 self.assertEqual(before,s.staged_reports["AGDIA-CASE-0001"])
