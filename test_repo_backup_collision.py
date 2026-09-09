@@ -111,12 +111,34 @@ class BundleCollisionTests(unittest.TestCase):
             self.bundle.symlink_to(missing)
         except (OSError, NotImplementedError) as exc:
             self.skipTest(f"symbolic links unavailable on this platform: {exc}")
-        with self.assertRaises(backup.BackupError):
+        # Windows pathlib stores an extended-length \\?\ target. Compare the
+        # occupied name's stored bytes, not Path(missing) object equality.
+        stored_target = os.readlink(self.bundle)
+        self.assertTrue(os.path.lexists(self.bundle))
+        self.assertFalse(self.bundle.exists())
+        with self.assertRaisesRegex(backup.BackupError, "refusing to overwrite snapshot"):
             backup.snapshot(self.source, self.output)
         self.assertTrue(self.bundle.is_symlink())
-        self.assertEqual(self.bundle.readlink(), missing)
+        self.assertEqual(os.readlink(self.bundle), stored_target)
         self.assertFalse(missing.exists())
         self.assert_output_only(self.bundle)
+
+    def test_windows_extended_path_readlink_is_not_missing_path_equality(self):
+        # Hosted Windows pathlib returns //?/C:/... from Path.readlink(); that
+        # Path is not equal to the original missing Path used in symlink_to.
+        from pathlib import PureWindowsPath
+
+        missing = PureWindowsPath(
+            "C:/Users/RUNNER~1/AppData/Local/Temp/backups/intentionally-absent"
+        )
+        stored = PureWindowsPath(
+            "//?/C:/Users/RUNNER~1/AppData/Local/Temp/backups/intentionally-absent"
+        )
+        self.assertNotEqual(stored, missing)
+        self.assertEqual(
+            os.path.normcase(os.path.normpath(str(stored)[4:])),
+            os.path.normcase(os.path.normpath(str(missing))),
+        )
 
     def test_failed_git_generation_leaves_no_published_partial_bundle(self):
         real_run = backup._run

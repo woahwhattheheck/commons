@@ -27,6 +27,10 @@ FORBIDDEN_KEYS = frozenset({
     "card_number", "account_number", "bank_account", "routing_number",
     "payment_token", "payment_method", "password", "secret", "api_key",
 })
+FORBIDDEN_KEY_SHAPES = frozenset(
+    "".join(char for char in key.casefold() if char.isalnum())
+    for key in FORBIDDEN_KEYS
+)
 
 
 class IntegrityError(ValueError):
@@ -79,8 +83,21 @@ def _parse_timestamp(value: Any) -> dt.datetime | None:
     return parsed.astimezone(dt.timezone.utc)
 
 
-def _sensitive_keys(value: Mapping[str, Any]) -> set[str]:
-    return {str(key).casefold() for key in value} & FORBIDDEN_KEYS
+def _key_shape(value: Any) -> str:
+    return "".join(char for char in str(value).casefold() if char.isalnum())
+
+
+def _sensitive_keys(value: Any) -> set[str]:
+    found: set[str] = set()
+    if isinstance(value, Mapping):
+        for key, child in value.items():
+            if _key_shape(key) in FORBIDDEN_KEY_SHAPES:
+                found.add(str(key))
+            found.update(_sensitive_keys(child))
+    elif isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        for child in value:
+            found.update(_sensitive_keys(child))
+    return found
 
 
 def _event_decision(event: Any, as_of: dt.datetime, cutoff_hours: int) -> tuple[bool, str, int | None]:

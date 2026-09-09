@@ -79,10 +79,42 @@ class BigOnionHoldRescueTests(unittest.TestCase):
                 rescue.load_fixture(fixture, bad_manifest_path)
 
     def test_sensitive_shaped_fields_fail_closed(self):
+        variants = []
+
         event = copy.deepcopy(self.payload["events"][0])
         event["email"] = "synthetic@example.invalid"
-        with self.assertRaises(rescue.IntegrityError):
-            rescue.BigOnionHoldRescue().evaluate([event], as_of=self.payload["as_of"])
+        variants.append(("canonical", event))
+
+        event = copy.deepcopy(self.payload["events"][0])
+        event["customerName"] = "Synthetic Person"
+        variants.append(("camel_case", event))
+
+        event = copy.deepcopy(self.payload["events"][0])
+        event["payment-token"] = "synthetic-token"
+        variants.append(("punctuation", event))
+
+        event = copy.deepcopy(self.payload["events"][0])
+        event["card number"] = "4111"
+        variants.append(("space", event))
+
+        event = copy.deepcopy(self.payload["events"][0])
+        event["metadata"] = {"email": "synthetic@example.invalid"}
+        variants.append(("nested_mapping", event))
+
+        event = copy.deepcopy(self.payload["events"][0])
+        event["metadata"] = [{"paymentMethod": "synthetic"}]
+        variants.append(("nested_list", event))
+
+        for label, event in variants:
+            with self.subTest(label=label):
+                with self.assertRaises(rescue.IntegrityError):
+                    rescue.BigOnionHoldRescue().evaluate([event], as_of=self.payload["as_of"])
+
+    def test_benign_nested_metadata_remains_eligible(self):
+        event = copy.deepcopy(self.payload["events"][0])
+        event["metadata"] = {"note": "synthetic-only", "labels": ["fixture"]}
+        result = rescue.BigOnionHoldRescue().evaluate([event], as_of=self.payload["as_of"])
+        self.assertEqual([item["event_id"] for item in result.recommendations], ["E1"])
 
     def test_run_acceptance_summary(self):
         summary = rescue.run_acceptance()

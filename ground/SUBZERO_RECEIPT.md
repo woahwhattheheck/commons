@@ -104,3 +104,15 @@ SUBZERO_BUYERS / SUBZERO_EXPLORER / SUBZERO_PROOF / White Box /
 `rivet-ship-subzero-receipt-20260825-01`. Coordinate to avoid
 collisions with CML PR 2108, grok-receipt PR 2320,
 human-outcomes, and SPECTER. No auth. No gate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-13 — do not remint.
