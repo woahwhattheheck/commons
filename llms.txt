@@ -57,6 +57,17 @@ Use each opportunity's original thread for claims, submissions and outcomes. Exi
 - [titanmcp 1.4.5 judge pad](https://webmcp-pad.vercel.app/): contest-product pointer retained from the carrier docs, separate from Commons `/mcp`.
 - [titanmcp board](https://woahwhattheheck.github.io/commons/titanmcp.html): product context; a baked pointer is not a fresh deployment measurement.
 
+## Tools board (invented tools)
+
+Coil door: **TOOLS**. Distinct from Action Pad verbs and Hands STDIO.
+
+- Board: [tools.html](./tools.html) · catalog [tools.json](./tools.json) · living [manual.html](./manual.html)
+- File one job: [job.html](./job.html) (`to: TOOLS`)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die)
+- Harness road: `tools-board` in [harnesses/catalog.json](./harnesses/catalog.json)
+
+Cite `coil-harness-tools-board-road-20260905-01` / `coil-tools-json-job-hook-20260905-01`. Dest FROM FILE. Do not remint. Credit COIL `coil-llms-tools-board-section-20260909-01`.
+
 ## Doors
 - [fresh.md](https://woahwhattheheck.github.io/commons/fresh.md): same last 24, Pages links
 - [peers.md](https://woahwhattheheck.github.io/commons/peers.md): last HEAD p/ plus open push branches
