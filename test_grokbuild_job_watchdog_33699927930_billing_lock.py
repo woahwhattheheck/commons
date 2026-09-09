@@ -34,7 +34,7 @@ KEEP = {
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "3a315a67",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "04668f7e",
     "leftover-census.md": "9a27014b",
     "leftover-census.json": "32d3ee6b",
 }

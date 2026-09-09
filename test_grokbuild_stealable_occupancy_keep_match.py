@@ -26,7 +26,7 @@ KEEP_UNREAD = {
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
     "ground/OWNER_NOW.md": "0a574d94",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "5bc431b1",
+    "door.js": "0ef6caa0",
     "api/mcp.py": "393da756",
     "autogtm.html": "fab1d536",
 }

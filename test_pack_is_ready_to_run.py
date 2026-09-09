@@ -31,7 +31,7 @@ KEEP = {
     "host/slack_mirror.py": "c94f6fa5",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "5bc431b1",
+    "door.js": "0ef6caa0",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",
 }

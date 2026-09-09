@@ -34,7 +34,7 @@ KEEP = {
     "ground/HEAVY_LANES.json": "7849eac9",
     "autogtm.html": "fab1d536",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "5bc431b1",
+    "door.js": "0ef6caa0",
     "api/mcp.py": "393da756",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }

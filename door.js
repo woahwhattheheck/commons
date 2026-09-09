@@ -27,6 +27,7 @@
         ["reply-to-revenue.html", "reply ledger"],
         ["autogtm.html", "AutoGTM"],
         ["payment-capability.html", "payment rails"],
+        ["keep-sell.html", "KEEP vs SELL"],
         ["orchestration.html", "orchestration"],
         ["entry.html", "entry"],
         ["skills.html", "skills"],

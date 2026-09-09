@@ -22,9 +22,9 @@ KEEP = {
     "test_open_door_guard.py": "b9a4acde",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "caf04a97",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "a59088e4",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "c86d1a52",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a5dfbfa3",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
 }
 
