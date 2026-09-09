@@ -10,12 +10,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: sol-circuitbreaker-e07-boundary-repair-${{ github.ref }}
+  group: sol-circuitbreaker-e07-boundary-repair
   cancel-in-progress: false
 
 jobs:
   repair:
-    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[e07-boundary-generated]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
@@ -28,19 +27,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify exact base and apply narrow boundary repair
+      - name: Verify branch preimage and apply narrow boundary repair
         shell: python
         run: |
           import os
+          import subprocess
           from pathlib import Path
 
           base = os.environ["BASE_SHA"]
-          import subprocess
-          parent = subprocess.check_output(
-              ["git", "rev-parse", "HEAD^"], text=True
-          ).strip()
-          if parent != base:
-              raise SystemExit(f"unexpected branch base: {parent} != {base}")
+          workflow = os.environ["WORKFLOW"]
+          subprocess.run(
+              ["git", "merge-base", "--is-ancestor", base, "HEAD"], check=True
+          )
+          preexisting = subprocess.check_output(
+              ["git", "diff", "--name-only", base, "HEAD"], text=True
+          ).splitlines()
+          if preexisting != [workflow]:
+              raise SystemExit(f"unexpected preexisting branch paths: {preexisting}")
 
           lab = Path(os.environ["LAB"])
           source_path = lab / "frozen_selected.py"
@@ -90,11 +93,9 @@ jobs:
 
       - name: Prove the discriminating source contracts before packaging
         working-directory: revenue/kaggriculture/cloud-execution-lab
-        env:
-          PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep:${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab
         run: |
-          python3 -B -m unittest -v \
-            test_e07_same_turn_funding.SameTurnFundingContracts
+          export PYTHONPATH="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-runtime-pulse:$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-quickstep:$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab"
+          python3 -B -m unittest -v test_e07_same_turn_funding.SameTurnFundingContracts
 
       - name: Rebuild and verify deterministic canonical release
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -104,9 +105,8 @@ jobs:
 
       - name: Run E07 and neighboring canonical regressions
         working-directory: revenue/kaggriculture/cloud-execution-lab
-        env:
-          PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep:${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab
         run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-runtime-pulse:$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-quickstep:$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab"
           python3 -B -m unittest -v \
             test_e07_hosted_source_path \
             test_e07_same_turn_funding \
@@ -127,21 +127,17 @@ jobs:
 
           root = Path.cwd()
           lab = root / os.environ["LAB"]
-          workflow = root / os.environ["WORKFLOW"]
-          workflow.unlink()
-
+          (root / os.environ["WORKFLOW"]).unlink()
           current = json.loads(
               (lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text()
           )
           source_path = lab / "frozen_selected.py"
           test_path = lab / "test_e07_same_turn_funding.py"
-          net_paths = subprocess.check_output(
-              ["git", "diff", "--name-only", os.environ["BASE_SHA"]],
-              text=True,
+          paths = subprocess.check_output(
+              ["git", "diff", "--name-only", os.environ["BASE_SHA"]], text=True
           ).splitlines()
           receipt_rel = os.environ["RECEIPT"]
-          if receipt_rel not in net_paths:
-              net_paths.append(receipt_rel)
+          paths.append(receipt_rel)
           lines = [
               "# SOL-CIRCUITBREAKER — E07 BUY_PRODUCT source-boundary repair",
               "",
@@ -150,16 +146,15 @@ jobs:
               "",
               "## Repair",
               "",
-              "`fund_same_turn_acquisition` now bounds candidate SELL sources to indexes strictly before the first `BUY_PRODUCT` barrier. A fixed acquisition before that barrier may still use an earlier legal SELL, but it can never pull a later SELL across variable-price market state.",
+              "Candidate SELL sources are now bounded to indexes strictly before the first `BUY_PRODUCT` barrier. A fixed acquisition before that barrier may use an earlier legal SELL, but no later SELL can be pulled across variable-price market state.",
               "",
-              "The discriminating regression fixes the exact target=1 / barrier=2 / source=3 shape and proves: returned orders are unchanged, the reason is `no-safe-prefix-sale`, the fixed target remains unfilled, sale quantities are invariant, and the caller-owned base queue is unchanged.",
+              "The target=1 / barrier=2 / source=3 regression proves unchanged orders, `no-safe-prefix-sale`, an unfilled fixed target, invariant sale quantities, and an unchanged caller-owned queue.",
               "",
               "## Verification",
               "",
               "- `SameTurnFundingContracts`: PASS, including the new boundary case.",
-              "- `test_e07_hosted_source_path`, full `test_e07_same_turn_funding`, `test_joint_market_slots`, `test_e10_floor_cycle`, `test_release_consistency`, and `test_build_publication`: PASS.",
-              "- `build_integrated.py` and `build_integrated.py --check`: PASS.",
-              "- `git diff --check`: PASS.",
+              "- E07 source-path/full tests, joint-market, E10 floor-cycle, release-consistency, and build-publication suites: PASS.",
+              "- `build_integrated.py`, `build_integrated.py --check`, and `git diff --check`: PASS.",
               "- No games, Kaggle submission, provider action, spend, or strategy default change.",
               "",
               "## Generated current package",
@@ -172,7 +167,7 @@ jobs:
               "",
               "## Net paths against base",
               "",
-              *[f"- `{path}`" for path in sorted(net_paths)],
+              *[f"- `{path}`" for path in sorted(set(paths))],
               "",
           ]
           receipt = root / receipt_rel
