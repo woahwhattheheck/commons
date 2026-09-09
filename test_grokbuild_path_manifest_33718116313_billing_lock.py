@@ -24,15 +24,15 @@ KEEP = {
     "architecture/path-manifest.json": "e5ecb24f",
     "p/grokbuild-path-manifest-33717733938-billing-lock-20260903-01.md": "85a5f189",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
-    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "cd3a78ef",
+    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "41301e7e",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",
-    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "c4813015",
+    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "af9b8a04",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
     "test_grokbuild_pr8415_path_manifest_33689243555.py": "4fa393cc",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "open_door_guard.py": "1a42e1c9",
+    "open_door_guard.py": "877e148d",
 }
 
 

@@ -75,3 +75,17 @@ dc / titan **NOT TESTED**. `ones_surface` refuses them.
 337 **NO** · 7913 **NO** · titan 78 **NO** · `--inject 0x01` **NO** · invented dest **NO** · mmap dc/titan **NO** · 10-wide **NO** · unnamed `pfc_*` **NO** · dest-peek **NO** · visor **NO**
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\BULLY_EXECUTE_2.md`
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

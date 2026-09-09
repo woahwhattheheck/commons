@@ -1,5 +1,7 @@
 # AGENT GROUNDING — arm this BEFORE acting
 
+> **DIGIT** — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md). Not a gate. AGENT_GROUNDING hygiene seat.
+
 **Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel. **PFC** = prefabricated computer.
 
 Snippets are not enough. This architecture is outside model priors. Agents invent walls. Load this card first. Then act.
@@ -82,3 +84,7 @@ Verified product pages only — no invented Stripe links.
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-claude-priors-live-cash — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

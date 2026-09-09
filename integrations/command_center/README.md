@@ -55,3 +55,14 @@ Direct GitHub/Slack readers use workstreams.config.json in the shared private st
 GET /api/work?refresh=1 or command_center_refresh_work starts one bounded read and returns observations with progress. An OS-held lock prevents duplicate collectors across UI/gateway processes. No scheduler is installed. Connector-fed sources refresh through their actual connector-equipped peers and the same ingest API; direct refresh does not impersonate those connectors.
 
 POST /api/work/item or command_center_work_item sets priority, next_action or a prepared job for an exact source_id/item_id. Provider evidence is preserved and prepared packets record not_dispatched. Fleet also exposes actual Gemini submit/inspect/follow-up/cancel routes from the live shared catalog, retaining provider receipts. Native task actions use their actual harness routes.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

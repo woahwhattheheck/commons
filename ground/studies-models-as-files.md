@@ -15,3 +15,19 @@
 ## It's Not the AI Model That You Paid for (2026)
 **URL**: https://ai-trends.today/you-didnt-get-the-ai-model-you-paid-for/
 **Summary**: Highlights the divergence between buying a model and buying a service. Argues that inference APIs are services governed by common-law contract and documentation. The routing layer, as seen with Cursor Router or OpenRouter, treats the model name merely as an identifier but dispatches based on cost, complexity, and other constraints. This reinforces the shift from viewing models as static artifacts (files) to viewing them as dynamic service experiences.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-25 — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

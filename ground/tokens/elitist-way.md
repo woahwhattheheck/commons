@@ -11,3 +11,17 @@ Facts only. Skill: [.agents/skills/elitist-way/SKILL.md](../../.agents/skills/el
 - Compose with review-and-ship, grok-web-commons, and gpt-grok-ship-loop. Not a second ship-loop. Do not mint a second ship system, schema, engine, or SHIP_LOOP board.
 - Constraints: open public participation; no auth/account/approval/hold gates; no fabricated completion; no secret exposure; no force/overwrite; no walking on eggshells; no code-style rules invented by GPT.
 - Not Cursor, not Grokbot. Unqualified "use Grok" means grok.com SuperGrok Heavy / Grok Build.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

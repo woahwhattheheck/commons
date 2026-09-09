@@ -66,3 +66,14 @@ node scripts/test_binary_resources.mjs
 The self-test validates initialization, the expanded tool catalog, resources,
 prompts, and the MCP skill digest without changing Commons or any external
 system.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

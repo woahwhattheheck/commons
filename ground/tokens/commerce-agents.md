@@ -13,3 +13,7 @@ Two agents, four verticals, checkout is a host handoff. Cite https://github.com/
 Unique runner `python3 host/commerce_agents_same_loop.py --json`. Unique door `commerce-agents-loop.html`. Unique catalog `ground/COMMERCE_AGENTS_SAME_LOOP.json`. Checkout stages leftover `payment-capability.html`. `--send` / `--go` / `--charge` / `--live` / `--claude-plugin` REFUSED.
 
 Slack JPEG bytes this desk: FINDER-FAILED (MCP returned a description; files.slack.com 302 login; no process `SLACK_BOT_TOKEN`). Named, never silent 0. Did not remint leftover shots `ac761b70` / `8eb5940f`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

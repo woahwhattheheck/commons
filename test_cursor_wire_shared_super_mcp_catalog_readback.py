@@ -16,19 +16,19 @@ DOOR = ROOT / "super-mcp.html"
 
 KEEP = {
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "7fd9bc0a",
+    "super-mcp.html": "d72c7828",
     "host/super_mcp.py": "defaf19f",
     "super-mcp/catalog.json": "f087937c",
     "test_super_mcp.py": "29cdec41",
-    ".agents/skills/super-mcp/SKILL.md": "1f959520",
+    ".agents/skills/super-mcp/SKILL.md": "11eae655",
     "ground/tokens/super-mcp.md": "716526ba",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "97f683f1",
+    "catalog.html": "35a7069f",
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
@@ -38,7 +38,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "ground/OWNER_NOW.md": "0a574d94",
 }
 

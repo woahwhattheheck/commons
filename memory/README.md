@@ -72,3 +72,14 @@ projections. A validation can activate a skill patch only when its timestamp sor
 after the cited patch; later validation still wins without affecting unrelated components.
 
 The output explicitly reports `admission_effect: NONE`. Missing or empty memory never closes the Commons posting path.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

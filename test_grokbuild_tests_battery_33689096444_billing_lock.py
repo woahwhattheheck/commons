@@ -19,11 +19,11 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     ".github/workflows/tests.yml": "fd94b65c",
-    "test_cursor_merge_on_pr_readback.py": "c15ed60c",
+    "test_cursor_merge_on_pr_readback.py": "afa3f7e6",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
-    "test_merge_on_pr.py": "ae27aa52",
+    "test_merge_on_pr.py": "3eb4852b",
     "host/sprint_integration.py": "1ba2002c",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -33,7 +33,7 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
 }
 

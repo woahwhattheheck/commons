@@ -22,14 +22,14 @@ KEEP = {
     "api/mcp.py": "393da756",
     "stage_spark_mcp_bundle.py": "1234e00c",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
 }
 
 

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import tempfile
 import threading
@@ -127,6 +128,17 @@ class OperatorAppTests(unittest.TestCase):
             self.operator.action(changed)
         self.assertEqual(self.operator.state()["status"]["counts"]["prospects"], 1)
 
+    def test_send_name_reaches_dispatch_without_transport(self):
+        result = self.operator.action({"action": "send", "operation_id": "op-send"})
+        self.assertEqual(result["kind"], "OPERATOR_INPUT")
+        self.assertEqual(result["action"], "send")
+        self.assertEqual(result["transport"], "NONE")
+        self.assertFalse(result["provider_mutation"])
+        self.assertFalse(result["applied"])
+        state = self.operator.state()
+        self.assertEqual(state["transport"], "NONE")
+        self.assertEqual(state["status"]["counts"].get("transport_actions", 0), 0)
+
 
 class HttpTests(unittest.TestCase):
     def setUp(self):
@@ -188,18 +200,26 @@ class HttpTests(unittest.TestCase):
         state = json.loads(body)
         self.assertEqual(state["campaigns"][0]["campaign_id"], "http-campaign")
 
-    def test_unknown_action_fails_closed(self):
-        req = urllib.request.Request(
-            self.base + "/api",
-            data=json.dumps({"action": "send", "operation_id": "op-send"}).encode(),
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with self.assertRaises(urllib.error.HTTPError) as ctx:
-            urllib.request.urlopen(req, timeout=5)
-        self.assertEqual(ctx.exception.code, 409)
-        payload = json.loads(ctx.exception.read())
-        self.assertIn("unknown action", payload["error"])
+    def test_send_name_http_has_no_transport(self):
+        status, result = self.post({"action": "send", "operation_id": "op-send"})
+        self.assertEqual(status, 200)
+        self.assertEqual(result["transport"], "NONE")
+        self.assertFalse(result["provider_mutation"])
+        self.assertFalse(result["applied"])
+        _, _, body = self.get("/state")
+        state = json.loads(body)
+        self.assertEqual(state["transport"], "NONE")
+
+    def test_http_state_survives_concurrent_worker_threads(self):
+        def once():
+            status, content_type, body = self.get("/state")
+            self.assertEqual(status, 200)
+            self.assertEqual(content_type, "application/json")
+            return json.loads(body)["transport"]
+
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(lambda _: once(), range(16)))
+        self.assertEqual(results, ["NONE"] * 16)
 
 
 if __name__ == "__main__":

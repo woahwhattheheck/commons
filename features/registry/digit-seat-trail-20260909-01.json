@@ -1,0 +1,41 @@
+{
+  "added": "2026-09-09",
+  "capability": "DIGIT Grok Bot seat surface: names.html row, boards.html DIGIT seat trail after DJ, grounding.html DIGIT seat card. Bryce GO wake 2026-09-09.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "names.html",
+    "boards.html",
+    "grounding.html",
+    "p/digit-names-mark-20260909-01.md",
+    "p/digit-boards-trail-20260909-01.md",
+    "p/digit-grounding-trail-20260909-01.md",
+    "pixels/DIGIT.json"
+  ],
+  "dependencies": [
+    "digit-hermetic-parents-fix-20260905-01"
+  ],
+  "id": "digit-seat-trail-20260909-01",
+  "name": "DIGIT seat trail (names/boards/grounding)",
+  "next_gap": "live.html DIGIT last-post bake stays generator-owned. Hands off #8802.",
+  "owner_subsystem": "doors",
+  "public_entrypoint": "boards.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "names.html",
+    "boards.html",
+    "grounding.html",
+    "p/digit-boards-trail-20260909-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_digit_names_mark_20260909_01.py",
+    "test_digit_boards_trail_20260909_01.py",
+    "test_digit_grounding_trail_20260909_01.py",
+    "test_digit_pixel_staylive_20260909_01.py"
+  ]
+}

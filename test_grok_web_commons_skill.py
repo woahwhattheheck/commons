@@ -16,6 +16,7 @@ SKILL_DIR = ROOT / ".agents" / "skills" / "grok-web-commons"
 SKILL = SKILL_DIR / "SKILL.md"
 CONTRACT = SKILL_DIR / "references" / "connector-contract.md"
 CHECKER = SKILL_DIR / "scripts" / "check_live_connector.py"
+PEER = SKILL_DIR / "scripts" / "peer_speech.py"
 PUBLIC_MCP_URL = "https://commons-spark-mcp.vercel.app/mcp"
 SECRET_RE = re.compile(
     r"(?:sk-[A-Za-z0-9]{10,}|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}"
@@ -65,10 +66,11 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
         cls.skill = SKILL.read_text(encoding="utf-8")
         cls.contract = CONTRACT.read_text(encoding="utf-8")
         cls.checker_src = CHECKER.read_text(encoding="utf-8")
+        cls.peer_src = PEER.read_text(encoding="utf-8")
         cls.registry = json.loads((ROOT / "skills.json").read_text(encoding="utf-8"))
         cls.manual = (ROOT / "skills" / "MANUAL.md").read_text(encoding="utf-8")
         cls.checker = load_checker()
-        cls.owned = "\n".join([cls.skill, cls.contract, cls.checker_src])
+        cls.owned = "\n".join([cls.skill, cls.contract, cls.checker_src, cls.peer_src])
 
     def test_required_frontmatter_and_directory_name_match(self):
         meta = frontmatter(self.skill)
@@ -153,7 +155,48 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
         ):
             self.assertIn(marker, self.skill)
 
+    def test_peer_speech_vs_receipts(self):
+        for marker in (
+            "This connector sits at #commons as a peer",
+            "from= is a claim, not a seat",
+            "`append_post` for peer speech at the table. Git keeps receipts.",
+            "`append_post` is peer speech at the table",
+            "Receipt-shaped bodies are refused as table speech",
+            "Do not mint a second Slack connector, Seat app",
+            "scripts/peer_speech.py",
+        ):
+            self.assertIn(marker, self.skill)
+        self.assertIn("peer speech at the table. Git keeps receipts", self.contract)
+        self.assertIn("Receipt-shaped dumps", self.contract)
+        self.assertNotIn(
+            "`append_post` for concise durable human-readable receipts.",
+            self.skill,
+        )
+        self.assertNotIn("`append_post` — concise human-readable receipts", self.contract)
+        self.assertTrue(PEER.is_file())
+        self.assertIn("Refuse receipt-shaped bodies", self.peer_src)
+
+    def test_peer_speech_helper_refuses_receipts_and_allows_speech(self):
+        spec = importlib.util.spec_from_file_location("peer_speech", PEER)
+        module = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(module)
+        speech = "Sitting in #commons as a peer. Git keeps the file. from= is a claim."
+        self.assertTrue(module.is_peer_speech(speech))
+        self.assertIsNone(module.receipt_shape(speech))
+        dump = (
+            "#commons TERMINAL_RECEIPT Disposition: MERGED starting main "
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa final main "
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        )
+        reason = module.receipt_shape(dump)
+        self.assertIsNotNone(reason)
+        self.assertFalse(module.is_peer_speech(dump))
+        self.assertIsNotNone(module.receipt_shape("grokbuild-pr11104-verify-20260909-01"))
+        self.assertIsNotNone(module.receipt_shape(""))
+
     def test_github_and_mcp_operating_rules(self):
+
         for marker in (
             "search_connected_tools",
             "call_connected_tool",

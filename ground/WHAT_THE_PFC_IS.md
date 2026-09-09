@@ -110,3 +110,19 @@ logic on secret data without leaking it, over spaces too big to store, on hardwa
   ~34 MB, oblivious, byte-exact — dedup/allowlist/PSI/genomics), **OBLIVIOUS AES-128** (byte-exact vs FIPS KAT, no
   cache-timing leak), **REVERSIBLE PROVENANCE** (a tamper-evident signed seal inside the file, verifiable + detected +
   reversible, zero compute). (`host/pfc_membership.py`, `host/pfc_aes.py`, `host/pfc_provenance.py`, INV-160.)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-18 — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

@@ -42,6 +42,7 @@ Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html]
 ## Door
 
 - Human door: `wire.html`
+- Build ledger: [builds.html](../builds.html)
 - Connect cards: `gemini-mcp.html`, `capabilities.html`, `docs/mcp-carriers.md`, `carriers/catalog.json`
 - Prior receipts: `wire-gemini-mcp-all-carriers-20260826-01` (do not remint)
 

@@ -55,3 +55,14 @@ them.
 - A local edit, branch, issue, PR, or carrier receipt is not completion.
 - Completion is the change inherited by current `main`, with exact readback and
   a live/runtime receipt appropriate to the change.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

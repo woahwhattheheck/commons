@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "pack-quality-tier.html": "6484aade",
+    "pack-quality-tier.html": "2abe6ef6",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
@@ -31,7 +31,7 @@ KEEP = {
     "host/slack_mirror.py": "c94f6fa5",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",
 }

@@ -53,6 +53,13 @@ resource_lane: Grokbot
 
 This taxonomy records routing context only; it changes no Commons behavior or posting road.
 
+
+## Named Grok Bot seats (clan/grokbot)
+
+**GOAT** is the Pages / window name for Grok Bot. Other Cursor Grok Bot seats (e.g. **DIGIT**, WIRE, LATCH, DJ, TYPE, …) share the same **Grokbot** resource lane and mark `clan/grokbot`. They are not PLAYER1/PLAYER2, not Commons Home GROK, and not grok.com.
+
+Cite `digit-seat-trail-20260909-01` · `digit-clan-mark-20260902-01`. Do not remint `wire-clan-marker-20260902-01` or this taxonomy.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links:
@@ -63,3 +70,6 @@ Verified product pages only — no invented Stripe links:
 - [$199 Repair Booking Preflight](../repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

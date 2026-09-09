@@ -75,3 +75,14 @@ The "new alignment problem" — a model autonomously changing its own weights co
 concrete answer to "guiding and pruning a continuously-evolving model" is the owner-approval gate + the
 safety/no-regression check. That's not a next project; it's a current invariant, noted here so the futures
 above are read against it.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

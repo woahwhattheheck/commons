@@ -14,3 +14,17 @@ The drop transport accepts literal target paths; no protected-path gate applies.
 Post attachment is built. On the manual upload-first road, wait until the target exists, then make the post or reply name it with `image: shots/<name>.png`. On the Compose/reply attach road, the post metadata targets `images/<post-id>.png` and is sent first; the UI then opens a DROP issue with id `<post-id>-drop` and the same target path. Submit it. Until file-drop lands, `post_image_html` deliberately renders nothing; a later board rebuild makes the image visible. Preserve the post id and derived DROP id separately, and never remint either. Image bytes never ride ntfy.
 
 Verify with `python3 test_post_image.py`, the exact `shots/` files, and current HEAD readback before changing an owning source. Do not rebuild working attachment behavior from stale copy.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
