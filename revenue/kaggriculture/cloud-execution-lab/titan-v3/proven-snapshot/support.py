@@ -55,6 +55,78 @@ def tar_bytes(
     return raw.getvalue()
 
 
+def _outcome(own: float, rival: float) -> str:
+    return "W" if own > rival else "L" if own < rival else "T"
+
+
+def _game(variant: str, seed: int, opponent: str, seat: int, own: float, rival: float) -> dict:
+    return {
+        "seed": seed,
+        "candidate_seat": seat,
+        "status": "complete",
+        "scores": [own, rival] if seat == 0 else [rival, own],
+        "failure": None,
+        "steps": 719,
+        "episode_steps": 720,
+        "variant": variant,
+        "opponent": opponent,
+        "own_final_cash": own,
+        "rival_final_cash": rival,
+        "outcome": _outcome(own, rival),
+    }
+
+
+def _summary(games: list[dict], paired: list[dict]) -> dict:
+    counts: dict[str, dict[str, int]] = {}
+    for game in games:
+        variant = game["variant"]
+        record = counts.setdefault(variant, {"W": 0, "T": 0, "L": 0, "failed": 0, "games": 0})
+        record[game["outcome"]] += 1
+        record["games"] += 1
+    return {"W_T_L_first": counts, "paired_outcomes": paired}
+
+
+def _paired(baseline: list[dict], candidate: list[dict]) -> list[dict]:
+    baseline_by_key = {
+        (game["seed"], game["opponent"], game["candidate_seat"]): game for game in baseline
+    }
+    rows: list[dict] = []
+    for game in candidate:
+        key = (game["seed"], game["opponent"], game["candidate_seat"])
+        parent = baseline_by_key[key]
+        rows.append({
+            "variant": "candidate",
+            "seed": key[0],
+            "opponent": key[1],
+            "seat": key[2],
+            "baseline": parent["outcome"],
+            "candidate": game["outcome"],
+            "flipped": parent["outcome"] != game["outcome"],
+            "own_cash_delta": game["own_final_cash"] - parent["own_final_cash"],
+            "rival_cash_delta": game["rival_final_cash"] - parent["rival_final_cash"],
+        })
+    return rows
+
+
+def _ledger_document(games: list[dict], freeze: dict, paired: list[dict]) -> dict:
+    return {
+        "engine_reference": restore.EXPECTED_ENGINE_REFERENCE,
+        "engine_sha256": restore.EXPECTED_ENGINE_SHA256,
+        "evaluator_sha256": restore.EXPECTED_EVALUATOR_SHA256,
+        "benchmark_sha256": restore.EXPECTED_BENCHMARK_SHA256,
+        "runtime_manifest": {
+            "targets": {"candidate": {"sha256": freeze["files"]["candidate.py"]}},
+            "lane_python_sources": {
+                name: {"sha256": freeze["files"][name]}
+                for name in ("scheduler.py", "candidate.py", "mechanics.py")
+            },
+        },
+        "freeze": freeze,
+        "games": games,
+        "summary": _summary(games, paired),
+    }
+
+
 class Fixture:
     def __init__(
         self,
@@ -89,7 +161,51 @@ class Fixture:
         archive_path = root / "exports" / "titan-sell-v3-source.tar.gz"
         archive_path.parent.mkdir(parents=True)
         archive_path.write_bytes(archive)
+
+        development_games = [_game("candidate", 1, "arlene", seat, 101.0, 100.0) for seat in (0, 1)]
+        baseline_games = [_game("baseline", 2, "arlene", seat, 100.0, 100.0) for seat in (0, 1)]
+        candidate_games = [
+            _game("candidate", 2, "arlene", 0, 102.0, 100.0),
+            _game("candidate", 2, "arlene", 1, 99.0, 100.0),
+        ]
+        documents = {
+            "development": _ledger_document(development_games, freeze, []),
+            "held_out": _ledger_document(
+                baseline_games + candidate_games,
+                freeze,
+                _paired(baseline_games, candidate_games),
+            ),
+        }
+        paths = {
+            "development": "runtime/development-v3.json",
+            "held_out": "runtime/heldout-v3.json",
+        }
+        domains = {
+            "development": ((1,), ("arlene",), ("candidate",)),
+            "held_out": ((2,), ("arlene",), ("baseline", "candidate")),
+        }
+        evidence_ledgers: list[restore.EvidenceLedgerPin] = []
+        ledger_records: dict[str, dict[str, int | str]] = {}
+        for name, document in documents.items():
+            payload = (json.dumps(document, sort_keys=True, separators=(",", ":")) + "\n").encode()
+            path = paths[name]
+            target = root / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(payload)
+            ledger_records[path] = {"bytes": len(payload), "sha256": sha(payload)}
+            seeds, opponents, variants = domains[name]
+            evidence_ledgers.append(restore.EvidenceLedgerPin(
+                name=name,
+                path=path,
+                sha256=sha(payload),
+                bytes=len(payload),
+                seeds=seeds,
+                opponents=opponents,
+                variants=variants,
+            ))
+
         files = {name: {"bytes": len(payload), "sha256": sha(payload)} for name, payload in members.items()}
+        files.update(ledger_records)
         (root / "exports" / "FILES.json").write_text(json.dumps(files), encoding="utf-8")
         selected = {
             "file": "exports/titan-sell-v3-source.tar.gz",
@@ -110,6 +226,7 @@ class Fixture:
             source_freeze_sha256=sha(members["SOURCE-FREEZE.json"]),
             source_freeze_version="finite-horizon-v3",
             frozen_hashes=frozen_hashes,
+            evidence_ledgers=tuple(evidence_ledgers),
         )
 
 
@@ -132,3 +249,26 @@ def install_archive(fx: Fixture, archive: bytes, *, member_count: int | None = N
         "source_archive_bytes": len(archive),
         "source_member_count": count,
     })
+
+
+def install_ledger(fx: Fixture, name: str, payload: bytes):
+    selected = next(pin for pin in fx.pin.evidence_ledgers if pin.name == name)
+    path = fx.root / selected.path
+    path.write_bytes(payload)
+    manifest_path = fx.root / "exports" / "FILES.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest[selected.path] = {"bytes": len(payload), "sha256": sha(payload)}
+    manifest_path.write_text(json.dumps(manifest))
+    ledgers = tuple(
+        restore.EvidenceLedgerPin(
+            name=pin.name,
+            path=pin.path,
+            sha256=sha(payload),
+            bytes=len(payload),
+            seeds=pin.seeds,
+            opponents=pin.opponents,
+            variants=pin.variants,
+        ) if pin.name == name else pin
+        for pin in fx.pin.evidence_ledgers
+    )
+    return restore.Pin(**{**fx.pin.__dict__, "evidence_ledgers": ledgers})
