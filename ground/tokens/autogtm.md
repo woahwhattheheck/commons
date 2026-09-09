@@ -31,3 +31,7 @@ https://github.com/cmn-labs/autogtm (AGPL). Cite the steps. Do not copy the tree
 Does not remint `website-people-email-book-20260830-01` or Smart Outreach. New files own the named eight-step skill + Explee probe. Does not remint LEAD `.cursor/skills/explee-autogtm` / `host/explee_autogtm_local.py` or Harborline `/qualify`.
 
 Live send/book/cash stay 0 until mailbox/calendar exist. Never invent them.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
