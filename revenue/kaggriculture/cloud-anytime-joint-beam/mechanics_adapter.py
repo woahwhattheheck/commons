@@ -58,6 +58,44 @@ def _plant_crop(action: Action) -> str | None:
     return None
 
 
+def _clone_worker_state(farm: Any, private: Any) -> tuple[Any, Any]:
+    """Clone the mutable worker-phase state without recursive deepcopy cost.
+
+    The pinned ``_apply_unit_action`` primitive can mutate only farmer/hand
+    positions, one flat tile record, seeds, shed contents, and flat worker
+    inventories. Cloning those complete structures preserves sibling-state
+    isolation while avoiding a recursive walk through every scalar board cell.
+    """
+    next_farm = dict(farm)
+    farmer = farm.get("farmer")
+    if isinstance(farmer, list):
+        next_farm["farmer"] = list(farmer)
+    hands = farm.get("hands")
+    if isinstance(hands, list):
+        next_farm["hands"] = [
+            list(pos) if isinstance(pos, list) else pos for pos in hands
+        ]
+    tiles = farm.get("tiles")
+    if isinstance(tiles, list):
+        next_farm["tiles"] = [
+            [dict(tile) if isinstance(tile, dict) else tile for tile in row]
+            if isinstance(row, list) else row
+            for row in tiles
+        ]
+
+    next_private = dict(private)
+    for key in ("shed", "seeds"):
+        value = private.get(key)
+        if isinstance(value, dict):
+            next_private[key] = dict(value)
+    inventories = private.get("inventories")
+    if isinstance(inventories, list):
+        next_private["inventories"] = [
+            dict(inv) if isinstance(inv, dict) else inv for inv in inventories
+        ]
+    return next_farm, next_private
+
+
 def _replay_worker_prefix(
     mechanics: Any,
     context: MechanicsContext,
@@ -68,8 +106,7 @@ def _replay_worker_prefix(
     blocked_plants: frozenset[str],
 ) -> tuple[Any, Any]:
     """Replay one tentative worker suffix with interpreter-level PLANT gating."""
-    farm = copy.deepcopy(origin_farm)
-    private = copy.deepcopy(origin_private)
+    farm, private = _clone_worker_state(origin_farm, origin_private)
     for offset, action in enumerate(actions):
         crop = _plant_crop(action)
         effective = ["PASS"] if crop in blocked_plants else action
@@ -121,8 +158,7 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
         # any predecessor. Preserve the original fast sequential transition and
         # do not allocate replay metadata on this common path.
         if metadata is None and crop is None:
-            farm = copy.deepcopy(state["farm"])
-            private = copy.deepcopy(state["private"])
+            farm, private = _clone_worker_state(state["farm"], state["private"])
             mechanics._apply_unit_action(
                 farm,
                 private,
@@ -194,8 +230,7 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
                 blocked_plants,
             )
         else:
-            farm = copy.deepcopy(state["farm"])
-            private = copy.deepcopy(state["private"])
+            farm, private = _clone_worker_state(state["farm"], state["private"])
             effective = ["PASS"] if crop in blocked_plants else next_action
             mechanics._apply_unit_action(
                 farm,
