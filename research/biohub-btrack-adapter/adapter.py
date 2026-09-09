@@ -20,6 +20,7 @@ from typing import Any, Callable, Iterable, Mapping, Protocol, Sequence
 
 PINNED_BTRACK_VERSION = "0.7.0"
 PINNED_BTRACK_COMMIT = "a3bd947915efe6837936f9db6db88417f0b51b45"
+BTRACK_UINT32_MAX = (1 << 32) - 1
 RESERVED_ADAPTER_PROPERTIES = frozenset({"commons_detection_id"})
 INPUT_COLUMNS = ("dataset", "detection_id", "t", "z", "y", "x")
 BOUNDS_COLUMNS = ("dataset", "zlo", "zhi", "ylo", "yhi", "xlo", "xhi")
@@ -66,6 +67,17 @@ class Scale:
         return self
 
 
+def _physical_value(value: int | float, spacing: float, label: str) -> float:
+    """Scale one BTrack coordinate and fail closed if the native double is non-finite."""
+    try:
+        result = float(value * spacing)
+    except (OverflowError, ValueError) as exc:
+        raise AdapterError(f"{label} exceeds finite BTrack coordinate range") from exc
+    if not math.isfinite(result):
+        raise AdapterError(f"{label} exceeds finite BTrack coordinate range")
+    return result
+
+
 @dataclass(frozen=True)
 class VoxelBounds:
     """Inclusive voxel-coordinate bounds, kept explicit instead of inferred."""
@@ -92,9 +104,18 @@ class VoxelBounds:
         self.validate()
         scale.validate()
         return (
-            (self.xlo * scale.x, self.xhi * scale.x),
-            (self.ylo * scale.y, self.yhi * scale.y),
-            (self.zlo * scale.z, self.zhi * scale.z),
+            (
+                _physical_value(self.xlo, scale.x, "volume xlo"),
+                _physical_value(self.xhi, scale.x, "volume xhi"),
+            ),
+            (
+                _physical_value(self.ylo, scale.y, "volume ylo"),
+                _physical_value(self.yhi, scale.y, "volume yhi"),
+            ),
+            (
+                _physical_value(self.zlo, scale.z, "volume zlo"),
+                _physical_value(self.zhi, scale.z, "volume zhi"),
+            ),
         )
 
     def contains(self, item: Detection) -> bool:
@@ -253,6 +274,10 @@ def build_btrack_payload(
         raise AdapterError("build_btrack_payload accepts exactly one dataset")
     ordered = sorted(detections)
     for item in ordered:
+        if item.t > BTRACK_UINT32_MAX:
+            raise AdapterError(
+                f"detection {item.detection_id} time {item.t} exceeds pinned BTrack uint32 range"
+            )
         if not bounds.contains(item):
             raise AdapterError(f"detection {item.detection_id} lies outside configured voxel volume")
     # btrack.io.localizations_to_objects replaces caller IDs with np.arange(n).
@@ -260,9 +285,18 @@ def build_btrack_payload(
     ref_map = {index: item for index, item in enumerate(ordered)}
     payload: dict[str, list[Any]] = {
         "t": [item.t for item in ordered],
-        "x": [item.x * scale.x for item in ordered],
-        "y": [item.y * scale.y for item in ordered],
-        "z": [item.z * scale.z for item in ordered],
+        "x": [
+            _physical_value(item.x, scale.x, f"detection {item.detection_id} x")
+            for item in ordered
+        ],
+        "y": [
+            _physical_value(item.y, scale.y, f"detection {item.detection_id} y")
+            for item in ordered
+        ],
+        "z": [
+            _physical_value(item.z, scale.z, f"detection {item.detection_id} z")
+            for item in ordered
+        ],
         # Extra properties survive PyTrackObject.from_dict and provide an independent
         # identity check if a later operation mutates object IDs/Tracklet.refs.
         "commons_detection_id": [item.detection_id for item in ordered],
