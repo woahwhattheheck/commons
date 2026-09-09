@@ -33,7 +33,7 @@ jobs:
         shell: bash
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-          EXPECTED_PARENT: 68318e3da2af99f570c9e4d91029ad22d7a995e2
+          EXPECTED_PARENT: 8568d4a8cf54f34ef386c4e645c2b430368a92d0
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
