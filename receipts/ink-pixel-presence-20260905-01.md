@@ -21,3 +21,7 @@ Additive stay-live pixel presence for INK. `pixels/INK.json` was missing while D
 
 ## Owner
 Bryce merge-now. No unlock theater.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

@@ -22,3 +22,7 @@ CLI: `python3 eagletrax_split_sample_preflight.py` → ok true, failures []
 | audit_sha256 | 4713d639759868af9475cdddfeed2ff335f004041f55602a2fa36877418d4e4c |
 
 Interfaces simulated and read-only. No production writes. No autonomous certification or release. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

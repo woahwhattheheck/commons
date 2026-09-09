@@ -42,3 +42,7 @@ The regression test reruns the completed operation and asserts that the receipt 
 ```text
 python -m unittest revenue/production_survival/test_survival_canary.py
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -36,3 +36,7 @@ python3 -m unittest -v test_portfolio_overdrive.py
 ```
 
 Hands off DIO `revenue/dio/`, JOJO outreach, CML 2108, SPECTER 2205, titan `--go`, and `commons.mno`. titan: **NOT_WRITTEN**. No auth. No gate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

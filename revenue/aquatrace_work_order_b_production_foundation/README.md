@@ -64,3 +64,7 @@ Replay of the entire scenario creates zero new effects and reprints the same aud
 - `../../test_aquatrace_work_order_b_production_foundation.py` — fail-closed binary
 - `../../aquatrace-work-order-b-production-foundation.html` — window, not the product
 - `../../p/aquatrace-work-order-b-production-foundation-20260831-01.md` — first leftover receipt
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

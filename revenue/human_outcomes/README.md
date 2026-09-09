@@ -40,3 +40,7 @@ python3 -m unittest -v test_human_outcomes.py
 
 Hands off `revenue/dio/`, `commercial.json`, JOJO leftovers, CML 2108,
 SPECTER 2205, titan `--go`, and `commons.mno`. titan: **NOT_WRITTEN**.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
