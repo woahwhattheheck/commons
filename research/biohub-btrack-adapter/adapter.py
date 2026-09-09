@@ -22,6 +22,7 @@ PINNED_BTRACK_VERSION = "0.7.0"
 PINNED_BTRACK_COMMIT = "a3bd947915efe6837936f9db6db88417f0b51b45"
 RESERVED_ADAPTER_PROPERTIES = frozenset({"commons_detection_id"})
 INPUT_COLUMNS = ("dataset", "detection_id", "t", "z", "y", "x")
+BOUNDS_COLUMNS = ("dataset", "zlo", "zhi", "ylo", "yhi", "xlo", "xhi")
 SUBMISSION_COLUMNS = (
     "id",
     "dataset",
@@ -146,6 +147,21 @@ def _integer(value: object, field: str, row_number: int) -> int:
     return result
 
 
+def _finite_float(value: object, field: str, row_number: int) -> float:
+    if isinstance(value, bool):
+        raise AdapterError(f"row {row_number}: {field} must be a finite number")
+    text = str(value)
+    if not text or text != text.strip():
+        raise AdapterError(f"row {row_number}: {field} must be a finite number with no surrounding whitespace")
+    try:
+        result = float(text)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AdapterError(f"row {row_number}: {field} must be a finite number") from exc
+    if not math.isfinite(result):
+        raise AdapterError(f"row {row_number}: {field} must be a finite number")
+    return result
+
+
 def parse_detections(rows: Sequence[Mapping[str, object]]) -> list[Detection]:
     result: list[Detection] = []
     seen: set[tuple[str, int]] = set()
@@ -184,6 +200,37 @@ def read_detections(path: Path) -> list[Detection]:
             return parse_detections(list(reader))
     except OSError as exc:
         raise AdapterError(f"cannot read {path}: {exc}") from exc
+
+
+def read_bounds_manifest(path: Path) -> dict[str, VoxelBounds]:
+    """Read an exact dataset -> voxel-bounds manifest for multi-dataset CLI runs."""
+    try:
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            if tuple(reader.fieldnames or ()) != BOUNDS_COLUMNS:
+                raise AdapterError(f"bounds header must exactly equal {','.join(BOUNDS_COLUMNS)}")
+            result: dict[str, VoxelBounds] = {}
+            for row_number, row in enumerate(reader, start=2):
+                dataset = str(row.get("dataset", ""))
+                if not dataset or dataset != dataset.strip() or dataset.endswith(".zarr"):
+                    raise AdapterError(
+                        f"row {row_number}: bounds dataset must be non-empty, omit .zarr, and have no surrounding whitespace"
+                    )
+                if dataset in result:
+                    raise AdapterError(f"row {row_number}: duplicate bounds dataset {dataset!r}")
+                result[dataset] = VoxelBounds(
+                    _finite_float(row.get("zlo", ""), "zlo", row_number),
+                    _finite_float(row.get("zhi", ""), "zhi", row_number),
+                    _finite_float(row.get("ylo", ""), "ylo", row_number),
+                    _finite_float(row.get("yhi", ""), "yhi", row_number),
+                    _finite_float(row.get("xlo", ""), "xlo", row_number),
+                    _finite_float(row.get("xhi", ""), "xhi", row_number),
+                ).validate()
+            if not result:
+                raise AdapterError("bounds manifest must contain at least one dataset row")
+            return {dataset: result[dataset] for dataset in sorted(result)}
+    except OSError as exc:
+        raise AdapterError(f"cannot read bounds manifest {path}: {exc}") from exc
 
 
 def group_detections(detections: Sequence[Detection]) -> dict[str, list[Detection]]:
@@ -480,6 +527,18 @@ def solve_all(
 ) -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
     groups = group_detections(detections)
+    if isinstance(bounds, Mapping):
+        expected = set(groups)
+        actual = set(bounds)
+        if actual != expected:
+            missing = sorted(expected - actual)
+            extra = sorted(actual - expected)
+            details = []
+            if missing:
+                details.append("missing=" + ",".join(missing))
+            if extra:
+                details.append("extra=" + ",".join(extra))
+            raise AdapterError("bounds mapping must exactly match detection datasets (" + "; ".join(details) + ")")
     for dataset, items in groups.items():
         dataset_bounds = bounds[dataset] if isinstance(bounds, Mapping) else bounds
         rows.extend(
@@ -520,12 +579,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--scale-z", type=float, default=Scale.z)
     parser.add_argument("--scale-y", type=float, default=Scale.y)
     parser.add_argument("--scale-x", type=float, default=Scale.x)
-    parser.add_argument("--zlo", type=float, required=True)
-    parser.add_argument("--zhi", type=float, required=True)
-    parser.add_argument("--ylo", type=float, required=True)
-    parser.add_argument("--yhi", type=float, required=True)
-    parser.add_argument("--xlo", type=float, required=True)
-    parser.add_argument("--xhi", type=float, required=True)
+    parser.add_argument("--bounds-csv", type=Path, help="exact per-dataset voxel-bounds manifest for multi-dataset runs")
+    parser.add_argument("--zlo", type=float)
+    parser.add_argument("--zhi", type=float)
+    parser.add_argument("--ylo", type=float)
+    parser.add_argument("--yhi", type=float)
+    parser.add_argument("--xlo", type=float)
+    parser.add_argument("--xhi", type=float)
     parser.add_argument("--optimise", action="store_true")
     parser.add_argument(
         "--optimizer-distance-units",
@@ -534,12 +594,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
     try:
-        detections_path = args.detections.resolve()
-        config_path = args.config.resolve()
+        input_paths = [args.detections, args.config]
+        if args.bounds_csv is not None:
+            input_paths.append(args.bounds_csv)
+        resolved_inputs = {input_path.resolve() for input_path in input_paths}
         output_path = args.output.resolve()
-        if output_path in {detections_path, config_path}:
-            raise AdapterError("output must not overwrite detections or configuration input")
-        for input_path in (args.detections, args.config):
+        if output_path in resolved_inputs:
+            raise AdapterError("output must not overwrite any adapter input")
+        for input_path in input_paths:
             try:
                 aliases_input = args.output.samefile(input_path)
             except FileNotFoundError:
@@ -547,10 +609,32 @@ def main(argv: Sequence[str] | None = None) -> int:
             except OSError as exc:
                 raise AdapterError(f"cannot verify output file identity: {exc}") from exc
             if aliases_input:
-                raise AdapterError("output must not overwrite detections or configuration input")
+                raise AdapterError("output must not overwrite any adapter input")
         detections = read_detections(args.detections)
+        datasets = sorted(group_detections(detections))
         scale = Scale(args.scale_z, args.scale_y, args.scale_x).validate()
-        bounds = VoxelBounds(args.zlo, args.zhi, args.ylo, args.yhi, args.xlo, args.xhi).validate()
+        scalar_bounds = (args.zlo, args.zhi, args.ylo, args.yhi, args.xlo, args.xhi)
+        if args.bounds_csv is not None:
+            if any(value is not None for value in scalar_bounds):
+                raise AdapterError("use either --bounds-csv or the six scalar bounds flags, not both")
+            bounds: VoxelBounds | Mapping[str, VoxelBounds] = read_bounds_manifest(args.bounds_csv)
+            if set(bounds) != set(datasets):
+                missing = sorted(set(datasets) - set(bounds))
+                extra = sorted(set(bounds) - set(datasets))
+                details = []
+                if missing:
+                    details.append("missing=" + ",".join(missing))
+                if extra:
+                    details.append("extra=" + ",".join(extra))
+                raise AdapterError("bounds manifest must exactly match detection datasets (" + "; ".join(details) + ")")
+        else:
+            if any(value is None for value in scalar_bounds):
+                raise AdapterError("single-dataset CLI requires all six scalar bounds flags or --bounds-csv")
+            if len(datasets) != 1:
+                raise AdapterError("multi-dataset detections require --bounds-csv with one exact bounds row per dataset")
+            zlo, zhi, ylo, yhi, xlo, xhi = scalar_bounds
+            assert None not in scalar_bounds
+            bounds = VoxelBounds(zlo, zhi, ylo, yhi, xlo, xhi).validate()
         rows = solve_all(
             detections,
             scale=scale,
