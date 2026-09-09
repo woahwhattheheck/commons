@@ -160,6 +160,21 @@ class TerminalRouteValueEngineTests(unittest.TestCase):
         self.assertTrue(report["certified"])
         self.assertEqual(report["harvest_step"], 704)
 
+    def test_later_actor_pickup_siphons_candidate_drop_is_rejected(self):
+        # Witness: at 718 both on shed-access; worker 0 carries WHEAT 1; hand 1 does PICKUP WHEAT 2;
+        # certificate would DROP then SELL but actual order DROP then PICKUP empties shed before SELL.
+        obs = observation(718, farmer=(4, 4), hands=((4, 4),),
+                          shed={"WHEAT": 1},
+                          inventories=[{"WHEAT": 1}, {}])
+        route = [row(hands=1) for _ in range(720)]
+        route[718]["hands"][0] = ["PICKUP", "WHEAT", 2]
+        candidate, report = certify_candidate(m, obs, {}, route, worker=0,
+                                              carried_product="WHEAT")
+        self.assertIsNone(candidate)
+        self.assertEqual(report["reason"], "other_actor_shed_collision")
+        self.assertEqual(report["conflict_step"], 718)
+        self.assertEqual(report["conflict_worker"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

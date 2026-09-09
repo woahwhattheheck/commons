@@ -3,7 +3,7 @@
 from collections.abc import Mapping
 
 PASS = ["PASS"]
-SHED_TOUCH = {"DROP", "PLACE"}
+SHED_TOUCH = {"DROP", "PLACE", "PICKUP"}
 MOVES = {(1, 0): ["EAST"], (-1, 0): ["WEST"], (0, 1): ["SOUTH"], (0, -1): ["NORTH"]}
 MOVE_DELTAS = {action[0]: delta for delta, action in MOVES.items()}
 SOURCE_SAFE = {"PASS", *MOVE_DELTAS}
