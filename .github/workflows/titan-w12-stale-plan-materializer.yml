@@ -27,260 +27,24 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 2
+          fetch-depth: 8
 
-      - name: Verify immutable parent and exact source blob
+      - name: Verify immutable source ancestry and blob
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "$SOURCE_PARENT"
+          test "$(git merge-base "$SOURCE_PARENT" "$GITHUB_SHA")" = "$SOURCE_PARENT"
           test "$(git hash-object "$SOURCE_PATH")" = edbc423023479dbe2e78131495334384a87b607f
+          test -f .github/titan-w12-materialize.py
 
-      - name: Install narrow generic-extra prerequisite guard
+      - name: Patch source and write focused contracts
         shell: bash
         run: |
           set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
+          python3 .github/titan-w12-materialize.py patch
+          python3 -m py_compile "$SOURCE_PATH" "$LAB/test_w12_stale_plan_state.py"
 
-          path = Path('revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py')
-          text = path.read_text(encoding='utf-8')
-
-          helper_anchor = "    def _begin(self, controller, pristine, obs):\n"
-          assert text.count(helper_anchor) == 1
-          helper = r'''    @staticmethod
-    def _stock_total(stock):
-        """Return a strict nonnegative observed stock total or ``None``."""
-        if not isinstance(stock,dict):return None
-        total=0
-        for value in stock.values():
-            if type(value) is not int or value<0:return None
-            total+=value
-        return total
-
-    def _generic_extra_invalid_reason(self,obs,plan,worker,positions):
-        """Recheck a retained optional HARVEST against the next public state.
-
-        Generic tempo plans are authored from one observation but may survive
-        intervening own actions.  Only a still-pending optional harvest is
-        guarded here; once it has executed, its delivery suffix remains owned by
-        the existing recovery path.
-        """
-        if not isinstance(plan,dict):return 'malformed_extra_plan'
-        extra=plan.get('extra')
-        if extra is None or plan.get('kind') in ('idle_fertilizer','weed_continuation'):
-            return None
-        replacement=plan.get('replacement');step=plan.get('step')
-        if not isinstance(replacement,list) or type(step) is not int:
-            return 'malformed_extra_plan'
-        offset=int(obs['step'])-step
-        if offset<0:return 'malformed_extra_plan'
-        remaining=replacement[offset:]
-        if not any(isinstance(a,(list,tuple)) and a and a[0]=='HARVEST'
-                   for a in remaining):
-            return None
-        if type(worker) is not int or worker<0 or worker>=len(positions):
-            return 'extra_actor_changed'
-        if not isinstance(extra,dict):return 'malformed_extra_prerequisite'
-        tile_ref=extra.get('tile');item=extra.get('item');quantity=extra.get('quantity')
-        if (not isinstance(tile_ref,(list,tuple)) or len(tile_ref)!=2
-                or any(type(v) is not int for v in tile_ref)
-                or not isinstance(item,str) or type(quantity) is not int or quantity<=0):
-            return 'malformed_extra_prerequisite'
-        x,y=tile_ref;farm=obs.get('farms',[{}])[obs.get('player',0)]
-        tiles=farm.get('tiles') if isinstance(farm,dict) else None
-        if (not isinstance(tiles,list) or y<0 or y>=len(tiles)
-                or not isinstance(tiles[y],list) or x<0 or x>=len(tiles[y])):
-            return 'malformed_extra_prerequisite'
-        tile=tiles[y][x]
-        if not isinstance(tile,dict):return 'extra_harvest_changed'
-        actual=None
-        animal=tile.get('animal')
-        crop=tile.get('crop')
-        if animal in self.m.ANIMALS:
-            spec=self.m.ANIMALS[animal]
-            if isinstance(spec,dict):actual=spec.get('product')
-        elif crop in self.m.CROPS:
-            spec=self.m.CROPS[crop]
-            planted=tile.get('planted_day')
-            first=spec.get('first_yield_day') if isinstance(spec,dict) else None
-            if (not isinstance(spec,dict) or not spec.get('ongoing')
-                    or type(planted) is not int or type(first) is not int):
-                return 'extra_harvest_changed'
-            try:day=int(obs['day'])
-            except (KeyError,TypeError,ValueError):return 'malformed_extra_prerequisite'
-            if day-planted<first:return 'extra_harvest_changed'
-            actual=crop
-        visible=tile.get('yield_units')
-        if actual!=item or type(visible) is not int or visible!=quantity:
-            return 'extra_harvest_changed'
-        private=obs.get('private')
-        if not isinstance(private,dict):return 'malformed_extra_prerequisite'
-        shed=self._stock_total(private.get('shed'))
-        inventories=private.get('inventories')
-        if shed is None or not isinstance(inventories,list):
-            return 'malformed_extra_prerequisite'
-        carried=[]
-        for inventory in inventories:
-            value=self._stock_total(inventory)
-            if value is None:return 'malformed_extra_prerequisite'
-            carried.append(value)
-        if shed+sum(carried)+quantity>100:return 'extra_capacity_changed'
-        return None
-
-    def _abandon_generic_extra(self,obs,plan,position,reason):
-        """Remove optional work while preserving its endpoint and deadline."""
-        now=int(obs['step']);end=plan.get('end')
-        if type(end) is not int or end<=now:return None
-        goal_ref=plan.get('goal')
-        if (not isinstance(goal_ref,(list,tuple)) or len(goal_ref)!=2
-                or any(type(v) is not int for v in goal_ref)):
-            goal=position
-        else:goal=tuple(goal_ref)
-        left=end-now;trial=path(position,goal)
-        if len(trial)>left:
-            # Internal plans normally make this impossible.  On a malformed
-            # continuation, retain only movement/PASS and never stale work.
-            start=max(0,now-plan.get('step',now)) if type(plan.get('step')) is int else 0
-            old=plan.get('replacement',[])
-            old=old[start:start+left] if isinstance(old,list) else []
-            trial=[list(a) if isinstance(a,(list,tuple)) and a and a[0] in MOVES
-                   else ['PASS'] for a in old]
-            trial=(trial+[['PASS']]*left)[:left]
-        else:trial+=[['PASS']]*(left-len(trial))
-        return dict(plan,step=now,origin=position,replacement=trial,extra=None,
-                    invalidated_extra={'step':now,'reason':reason})
-
-'''
-          text = text.replace(helper_anchor, helper + helper_anchor)
-
-          begin_anchor = """        farm=obs['farms'][obs['player']]\n        positions=[tuple(farm['farmer']),*[tuple(p) for p in farm['hands']]]\n        for i,plan in list(self.plans.items()):\n"""
-          assert text.count(begin_anchor) == 1
-          begin_guard = """        farm=obs['farms'][obs['player']]\n        positions=[tuple(farm['farmer']),*[tuple(p) for p in farm['hands']]]\n        released=set()\n        for i,plan in list(self.plans.items()):\n            reason=self._generic_extra_invalid_reason(obs,plan,i,positions)\n            if reason is None:continue\n            extra=plan.get('extra') if isinstance(plan,dict) else None\n            tile_ref=extra.get('tile') if isinstance(extra,dict) else None\n            if (isinstance(tile_ref,(list,tuple)) and len(tile_ref)==2\n                    and all(type(v) is int for v in tile_ref)):\n                released.add(tuple(tile_ref))\n            if type(i) is not int or i<0 or i>=len(positions):\n                del self.plans[i]\n            else:\n                updated=self._abandon_generic_extra(obs,plan,positions[i],reason)\n                if updated is None:del self.plans[i]\n                else:self.plans[i]=updated\n            self.events.append({'kind':'generic_extra_invalidated','step':now,\n                'worker':i,'reason':reason,'tile':tuple(tile_ref) if tile_ref is not None\n                and isinstance(tile_ref,(list,tuple)) else None})\n        for i,plan in list(self.plans.items()):\n"""
-          text = text.replace(begin_anchor, begin_guard)
-
-          state_anchor = """        if state:\n            state=dict(state,plans=dict(self.plans),events=list(self.events))\n"""
-          assert text.count(state_anchor) == 1
-          state_replacement = """        if state:\n            state=dict(state,plans=dict(self.plans),events=list(self.events),\n                       reserved=set(state.get('reserved',()))-released)\n"""
-          text = text.replace(state_anchor, state_replacement)
-          path.write_text(text,encoding='utf-8')
-          PY
-          python3 -m py_compile "$SOURCE_PATH"
-
-      - name: Write deterministic W12 regression contracts
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat > "$LAB/test_w12_stale_plan_state.py" <<'PY'
-          import copy
-          import unittest
-
-          from spatial_tempo import SpatialTempo, unit
-
-
-          class Mechanics:
-              CROPS={'CORN':{'ongoing':True,'first_yield_day':0}}
-              ANIMALS={'COW':{'product':'MILK'}}
-
-              @staticmethod
-              def _farmer_position(farm,worker):
-                  return farm['farmer'] if worker==0 else farm['hands'][worker-1]
-
-
-          class Controller:
-              def __init__(self,rows):
-                  self.cur='R'
-                  self.R={'R':rows}
-
-
-          def route_rows():
-              rows=[]
-              for _ in range(24):
-                  rows.append({'farmer':['PASS'],'hands':[['NORTH']],
-                               'market':[['BUY_PRODUCT','WHEAT',1]]})
-              return rows
-
-
-          def observation(*,step=11,yield_units=2,shed=None,tile=True):
-              tiles=[[None for _ in range(10)] for _ in range(10)]
-              if tile:
-                  tiles[0][1]={'kind':'PLANT','crop':'CORN','planted_day':0,
-                               'yield_units':yield_units}
-              return {'step':step,'day':0,'player':0,
-                      'farms':[{'farmer':(1,0),'hands':[(9,9)],'tiles':tiles}],
-                      'private':{'shed':{} if shed is None else dict(shed),
-                                 'inventories':[{},{}], 'seeds':{}},
-                      'market':{'inventory':{},'params':{}}}
-
-
-          def committed(extra=None):
-              if extra is None:
-                  extra={'tile':(1,0),'item':'CORN','quantity':2,'deposit_step':13}
-              plan={'step':10,'worker':0,'end':15,'route':'R','origin':(0,0),
-                    'goal':(0,0),'saved_travel':0,'extra':extra,
-                    'original':[['PASS'] for _ in range(5)],
-                    'replacement':[['EAST'],['HARVEST'],['WEST'],['DROP'],['PASS']]}
-              return {'step':10,'day':0,'plans':{0:plan},'events':[],
-                      'reserved':{(1,0)},'patches':{},'active':{0:15}}
-
-
-          def begin(obs,state=None):
-              rows=route_rows();controller=Controller(rows)
-              tempo=SpatialTempo(Mechanics())
-              tempo._committed=copy.deepcopy(committed() if state is None else state)
-              tempo._begin(controller,controller.R,copy.deepcopy(obs))
-              return tempo,controller
-
-
-          class W12StalePlanStateTests(unittest.TestCase):
-              def test_changed_tile_abandons_only_extra_and_preserves_row(self):
-                  tempo,controller=begin(observation(yield_units=1))
-                  row=controller.R['R'][11]
-                  self.assertEqual(['WEST'],unit(row,0))
-                  self.assertEqual([['NORTH']],row['hands'])
-                  self.assertEqual([['BUY_PRODUCT','WHEAT',1]],row['market'])
-                  self.assertIsNone(tempo.plans[0]['extra'])
-                  self.assertNotIn((1,0),tempo.reserved)
-                  self.assertEqual('extra_harvest_changed',
-                      [e for e in tempo.events if e.get('kind')=='generic_extra_invalidated'][-1]['reason'])
-
-              def test_same_state_preserves_exact_committed_action(self):
-                  tempo,controller=begin(observation())
-                  self.assertEqual(['HARVEST'],unit(controller.R['R'][11],0))
-                  self.assertEqual((1,0),tempo.plans[0]['extra']['tile'])
-                  self.assertIn((1,0),tempo.reserved)
-                  self.assertFalse(any(e.get('kind')=='generic_extra_invalidated'
-                                       for e in tempo.events))
-
-              def test_successful_stock_arrival_invalidates_before_harvest(self):
-                  tempo,controller=begin(observation(shed={'MILK':99}))
-                  self.assertEqual(['WEST'],unit(controller.R['R'][11],0))
-                  self.assertEqual('extra_capacity_changed',
-                      tempo.plans[0]['invalidated_extra']['reason'])
-
-              def test_malformed_prerequisite_declines_without_exception(self):
-                  state=committed({'tile':(1,), 'item':'CORN','quantity':2,'deposit_step':13})
-                  tempo,controller=begin(observation(),state)
-                  self.assertEqual(['WEST'],unit(controller.R['R'][11],0))
-                  self.assertEqual('malformed_extra_prerequisite',
-                      tempo.plans[0]['invalidated_extra']['reason'])
-
-              def test_after_harvest_delivery_suffix_is_not_rewritten(self):
-                  obs=observation(step=12,tile=False)
-                  obs['private']['inventories'][0]={'CORN':2}
-                  tempo,controller=begin(obs)
-                  self.assertEqual(['WEST'],unit(controller.R['R'][12],0))
-                  self.assertIsNotNone(tempo.plans[0]['extra'])
-                  self.assertFalse(any(e.get('kind')=='generic_extra_invalidated'
-                                       for e in tempo.events))
-
-
-          if __name__=='__main__':
-              unittest.main()
-          PY
-          python3 -m py_compile "$LAB/test_w12_stale_plan_state.py"
-
-      - name: Prove predecessor failure and current focused contracts
+      - name: Prove predecessor failure and current contracts
         shell: bash
         run: |
           set -euo pipefail
@@ -292,99 +56,31 @@ jobs:
           set -e
           test "$predecessor_status" -ne 0
           grep -q 'FAILED' predecessor.log
+          printf '%s\n' "$predecessor_status" > predecessor.status
           cp /tmp/spatial_tempo.patched.py "$SOURCE_PATH"
           (cd "$LAB" && python3 -B -m unittest test_w12_stale_plan_state -v) 2>&1 | tee focused.log
           grep -q '^OK$' focused.log
-          printf '%s\n' "$predecessor_status" > predecessor.status
 
       - name: Run adjacent retained-plan contracts
         shell: bash
         run: |
           set -euo pipefail
-          (cd "$LAB" && python3 -B -m unittest \
-            test_idle_fertilizer test_weed_continuation -v) 2>&1 | tee adjacent.log
+          (cd "$LAB" && python3 -B -m unittest test_idle_fertilizer test_weed_continuation -v) 2>&1 | tee adjacent.log
           grep -q '^OK$' adjacent.log
 
-      - name: Prove canonical package rebuild and check in disposable copy
+      - name: Prove disposable canonical build and check
         shell: bash
         run: |
           set -euo pipefail
           rm -rf /tmp/w12-cloud-execution-lab
           cp -a "$LAB" /tmp/w12-cloud-execution-lab
-          (cd /tmp/w12-cloud-execution-lab && \
-            python3 -B build_integrated.py && \
-            python3 -B build_integrated.py --check) 2>&1 | tee build-check.log
+          (cd /tmp/w12-cloud-execution-lab && python3 -B build_integrated.py && python3 -B build_integrated.py --check) 2>&1 | tee build-check.log
 
-      - name: Write durable witness and verification receipt
+      - name: Write durable evidence
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$LAB/analysis/w12-stale-plan-state" p
-          python3 - <<'PY'
-          import json, os
-          from pathlib import Path
-
-          base=Path('revenue/kaggriculture/cloud-execution-lab/analysis/w12-stale-plan-state')
-          witness={
-            'operation':'titan-frontier-W12-stale-plan-state-fingerprint-20260909-01',
-            'source_parent':os.environ['SOURCE_PARENT'],
-            'carrier_commit':os.environ['GITHUB_SHA'],
-            'owner_path':'revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py',
-            'predecessor_witness':{
-              'observation_step':11,
-              'retained_action':'HARVEST',
-              'target':[1,0],
-              'authored_quantity':2,
-              'observed_changed_quantity':1,
-              'predecessor_result':'replayed stale HARVEST',
-              'patched_result':'WEST toward certified endpoint; optional work released'
-            },
-            'invalidated_only_while_harvest_pending':True,
-            'public_prerequisites':['actor exists','tile coordinates','derived product',
-                                    'exact visible yield','observed physical storage headroom'],
-            'excluded':['post-HARVEST delivery','idle_fertilizer','weed_continuation',
-                        'market rows','unrelated actors','runtime/config/default/archive activation']
-          }
-          verification={
-            'predecessor_unittest_exit':int(Path('predecessor.status').read_text().strip()),
-            'current_focused':'PASS (5 contracts)',
-            'adjacent':'PASS: test_idle_fertilizer + test_weed_continuation',
-            'disposable_canonical_build_check':'PASS',
-            'official_matched_games':'NOT RUN: correctness patch is not activated in canonical bytes by this PR',
-            'workflow_run':os.environ['GITHUB_SERVER_URL']+'/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID']
-          }
-          (base/'witness.json').write_text(json.dumps(witness,indent=2,sort_keys=True)+'\n')
-          (base/'verification.json').write_text(json.dumps(verification,indent=2,sort_keys=True)+'\n')
-
-          receipt=Path('p/sol-relay-titan-w12-stale-plan-state-20260909-01.md')
-          receipt.write_text(f'''# TITAN frontier W12 — retained optional-work state fingerprint
-
-Operation: `titan-frontier-W12-stale-plan-state-fingerprint-20260909-01`
-
-- Immutable parent: `{os.environ['SOURCE_PARENT']}`
-- Materializer carrier: `{os.environ['GITHUB_SHA']}`
-- Existing owner path: `revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py`
-- New regression: `test_w12_stale_plan_state.py`
-- Earliest invalidation point: `_begin`, after the next own observation and before retained routes are republished.
-- Scope: generic tempo `extra` segments only while their optional `HARVEST` remains pending.
-
-## Proved behavior
-
-The predecessor replays `HARVEST` after its authored target quantity changes from two units to one. Current code abandons only that optional work, routes the same actor from its actual position to the segment's already certified endpoint, pads to the original deadline, releases the tile reservation, and records the invalidation. An unchanged observation preserves the exact retained `HARVEST`. A newly observed stock arrival that removes immediate headroom invalidates before harvest. Malformed prerequisite data declines without throwing. Once harvest has executed, this guard does not rewrite the owned delivery suffix.
-
-Unrelated actor actions and market rows are unchanged.
-
-## Verification actually run
-
-- Parent source + new regression: expected nonzero exit and `FAILED`.
-- Patched source + five W12 contracts: PASS.
-- `test_idle_fertilizer` and `test_weed_continuation`: PASS.
-- Disposable canonical `build_integrated.py` rebuild followed by `--check`: PASS.
-- Workflow: {verification['workflow_run']}
-
-No official matched games were attributed: this source-only correctness PR does not activate rebuilt canonical bytes. No controller, runtime, configuration, default, archive, Kaggle, provider, credential, spend, or owner-PC action was changed.
-''',encoding='utf-8')
-          PY
+          python3 .github/titan-w12-materialize.py receipt
 
       - name: Commit exact guarded patch and remove materializer
         shell: bash
@@ -393,26 +89,16 @@ No official matched games were attributed: this source-only correctness PR does 
           git fetch origin "$BRANCH"
           test "$(git rev-parse "origin/$BRANCH")" = "$GITHUB_SHA"
           rm .github/workflows/titan-w12-stale-plan-materializer.yml
+          rm .github/titan-w12-materialize.py
           git add -- \
             .github/workflows/titan-w12-stale-plan-materializer.yml \
+            .github/titan-w12-materialize.py \
             "$SOURCE_PATH" \
             "$LAB/test_w12_stale_plan_state.py" \
             "$LAB/analysis/w12-stale-plan-state/witness.json" \
             "$LAB/analysis/w12-stale-plan-state/verification.json" \
             p/sol-relay-titan-w12-stale-plan-state-20260909-01.md
-          python3 - <<'PY'
-          import subprocess
-          changed=set(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines())
-          expected={
-            '.github/workflows/titan-w12-stale-plan-materializer.yml',
-            'revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py',
-            'revenue/kaggriculture/cloud-execution-lab/test_w12_stale_plan_state.py',
-            'revenue/kaggriculture/cloud-execution-lab/analysis/w12-stale-plan-state/witness.json',
-            'revenue/kaggriculture/cloud-execution-lab/analysis/w12-stale-plan-state/verification.json',
-            'p/sol-relay-titan-w12-stale-plan-state-20260909-01.md',
-          }
-          assert changed==expected,(changed^expected,changed)
-          PY
+          python3 -c "import subprocess; c=set(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()); e={'.github/workflows/titan-w12-stale-plan-materializer.yml','.github/titan-w12-materialize.py','revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py','revenue/kaggriculture/cloud-execution-lab/test_w12_stale_plan_state.py','revenue/kaggriculture/cloud-execution-lab/analysis/w12-stale-plan-state/witness.json','revenue/kaggriculture/cloud-execution-lab/analysis/w12-stale-plan-state/verification.json','p/sol-relay-titan-w12-stale-plan-state-20260909-01.md'}; assert c==e,(c^e,c)"
           git config user.name 'SOL-RELAY W12'
           git config user.email 'tokenjunkielabs@gmail.com'
           git commit -m 'fix(titan): invalidate stale optional harvest plans'
