@@ -9,3 +9,7 @@
 - `Titan.bat` / `titan.py` / `titan.html` / `titan_live.html` — the engine harness + dashboards (14 engines in `engines/`).
 - `dumps/` — `muhl_dump_<timestamp>.json`, one file per DUMP click: every ring's publish gate and state bytes,
   every answer register, the genome journal, and the last fire event.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
