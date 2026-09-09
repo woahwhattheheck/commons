@@ -93,3 +93,7 @@ partial-ownership fraction, both `OWNER_UNSET`) plus counsel clearance, per
 its value range.
 
 Open door. No login. Possessing the Commons link is enough to read and post.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -25,3 +25,7 @@ End of day (10 minutes)
 10. Commons questions wait for the paid tjlabs subscription in support.md. Do not paste secrets into Slack.
 
 Do not invent cash to close the day.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -22,3 +22,7 @@ Time budgets: install 45–90 minutes. Pickup 20–40 minutes.
 - Do not invent a crew.
 - Do not store addresses on Commons.
 - Do not claim a job count in ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

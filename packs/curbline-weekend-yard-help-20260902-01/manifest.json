@@ -59,58 +59,58 @@
   "assets": [
     {
       "path": "assets/brand.md",
-      "bytes": 687,
-      "sha256": "1202553c73efbd36eb2f19aebaa43880491ff1221ab154451e981116ed7ea5a6"
+      "bytes": 984,
+      "sha256": "e275323dd90dece630c797a5b0cf8bf0ed081aa9cc6798595d7b52a4a4a10b43"
     },
     {
       "path": "assets/card-copy.md",
-      "bytes": 546,
-      "sha256": "b6b420f3671ff82000a90efc49f83c5da80454690b22e825a5f25b07001850d8"
+      "bytes": 843,
+      "sha256": "cc9f1a70ce9ddc795a71677046f7b79199a4543248dd1ae1878a58bda1f33ca2"
     },
     {
       "path": "assets/days-8-30.md",
-      "bytes": 988,
-      "sha256": "f8d45b5f95c7614d8bf6ae076a15f14fffd2eb9a72fa3ff6ca0de9f4fc311a2d"
+      "bytes": 1285,
+      "sha256": "f3ab0ffa64189ac85bab97f5ba1ce42770b9b03cc3772f1e201e199ab10c1cc6"
     },
     {
       "path": "assets/invoice-text.md",
-      "bytes": 302,
-      "sha256": "c54f42e8f8de86a32e16860ad6f2951700fcf3143b2a3ef3da16f4845696aa36"
+      "bytes": 599,
+      "sha256": "804bd4922ec6b0225bf88b68e90d6707af56223a812966d436e1c6902e6ef57d"
     },
     {
       "path": "assets/job-checklist.md",
-      "bytes": 811,
-      "sha256": "0606f874f3e9f2879c55d9cd5abf73cefac73a4b2bc00dbfe9aaebfac4b3b816"
+      "bytes": 1108,
+      "sha256": "4ae198903741e35fd231599cff6fcfcfc754570dd3c781f9c128c228956b1f4c"
     },
     {
       "path": "assets/paperwork-checklist.md",
-      "bytes": 1532,
-      "sha256": "62c5332a745702062dc75f70431c4d157e58b5f55dfc1e2896f6d33a7f367f5d"
+      "bytes": 1829,
+      "sha256": "dd81737b71039dc274eeae4d63e1491be991e75a7c8d69ff1d411b3fc9ba4ead"
     },
     {
       "path": "assets/phone-script.md",
-      "bytes": 840,
-      "sha256": "800b4683548787fae4c6e628a7d0eafbea8cb032f19173bea1670479eb55dbc8"
+      "bytes": 1137,
+      "sha256": "0ba1049a2d52983622ed7a9083e73cbf06f9a96c0e359ec5ed8493a6ddf05dd4"
     },
     {
       "path": "assets/price-sheet.md",
-      "bytes": 775,
-      "sha256": "0ff2ba5c8e7be30e5ada21dd3e5a7071efdd7148338c6a8fe1891b178daf64c0"
+      "bytes": 1072,
+      "sha256": "cd5f1690487576984ef50f0fad6d17e306dde6fba5b5a1cbc1112a4c018c7f0c"
     },
     {
       "path": "assets/route-log.md",
-      "bytes": 581,
-      "sha256": "d1fe63268c955547b446a605863c1c3bc1943c49ed8a91860a7e27bd2cfc3e7c"
+      "bytes": 878,
+      "sha256": "448cc3e82485b1fa4963b3bb43f35d1ac882ac28d41baad36b90d4e9c3c2f082"
     }
   ],
   "instance_fields": {
-    "assets_sha256": "a808069c41224a86b55485667d1f77e5eab6f32d8ea13d3fd7829770645922da",
+    "assets_sha256": "ba2165b2bbb81183f0c631ee8cf753d2fc9baff8f03c44381ff0d17629ad6222",
     "brand": "Curbline Weekend",
     "checkout": "OWNER_PASTE_REQUIRED:curbline-weekend-yard-help-20260902-01",
-    "instructions_sha256": "2e4289417068766731afbe1ca0bfb918ca5c818c0c63265a3cd6db764b805354",
-    "ops_sha256": "576a2644a7ddd849d221baf088073add468863ddaeddd946bb5f5e9ebd4d9a32"
+    "instructions_sha256": "4d2c7d195bc47cedf5b2f89cf5f2dff18ead46bef1afa76fdc979b4c1510c0e9",
+    "ops_sha256": "d9f5ca233da7c27e7807cf273ce896f658e681d86556266a73bf7819a1ec790e"
   },
-  "fingerprint": "4548fcd79fb70500192e9595bfcf70df67a46518aea826b87617dda93d4fdfd9",
+  "fingerprint": "d2db046f892c61ba46945c73346da2ae4e4c7f5c294cf3277f7f54decdef74b6",
   "twin_sale_verdict": "CLONE_STAMP",
   "sell_instance_verdict": "UNIQUE_INSTANCE_SELL_OK",
   "copy_verdicts": {

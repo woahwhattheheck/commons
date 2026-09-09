@@ -75,3 +75,7 @@ Status values: `FOUND` → `SENT` → `REPLIED` → `YES` / `NO` / `NO_REPLY` �
 - Record the date. Sites change; your first sentence must be true on the day you send it.
 - A single guest review or complaint is one person's report, not a finding. Do not repeat it to the owner.
 - Never describe a business as failing, embarrassing, or losing money. You saw one thing; you can fix that thing.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
