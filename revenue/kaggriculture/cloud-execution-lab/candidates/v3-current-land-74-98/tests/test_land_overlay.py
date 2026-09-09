@@ -27,6 +27,36 @@ class DummyAgent:
         self.calls += 1
 
 
+class SpatialLikeAgent:
+    """Model the live wrapper that captures controller.R before LAND installs."""
+
+    def __init__(self, route_factory):
+        self.route_factory = route_factory
+        self.controller = None
+        self.diagnostics = {}
+        self.sources = []
+        self.calls = 0
+
+    def _initialize(self):
+        self.calls += 1
+        source = self.route_factory()
+        self.sources.append(source)
+        controller = DummyController({"MAIN": source})
+        pristine = controller.R
+
+        def producer(step):
+            return deepcopy(controller.R["MAIN"][step])
+
+        def spatial_act(step):
+            # SpatialTempo._begin rebuilds from the mapping captured by install().
+            controller.R = {key: list(rows) for key, rows in pristine.items()}
+            return producer(step)
+
+        controller.act = spatial_act
+        controller.captured_routes = pristine
+        self.controller = controller
+
+
 class LandOverlayContracts(unittest.TestCase):
     @staticmethod
     def route(length=300):
@@ -106,6 +136,26 @@ class LandOverlayContracts(unittest.TestCase):
         self.assertEqual(agent.controller.R["MAIN"][98]["market"], [["BUY_LAND"]])
         self.assertEqual(replacement_source[74]["market"], [])
         self.assertIs(agent._land_7498_controller, agent.controller)
+
+    def test_spatial_captured_route_bank_keeps_land_initially_and_after_reinit(self):
+        agent = SpatialLikeAgent(self.route)
+        land.wrap(agent)
+
+        agent._initialize()
+        first_controller = agent.controller
+        self.assertEqual(first_controller.act(74)["market"], [["BUY_LAND"]])
+        self.assertEqual(first_controller.act(98)["market"], [["BUY_LAND"]])
+        self.assertEqual(agent.sources[0][74]["market"], [])
+        self.assertEqual(agent.sources[0][98]["market"], [])
+
+        agent._initialize()
+        second_controller = agent.controller
+        self.assertIsNot(second_controller, first_controller)
+        self.assertEqual(second_controller.act(74)["market"], [["BUY_LAND"]])
+        self.assertEqual(second_controller.act(98)["market"], [["BUY_LAND"]])
+        self.assertEqual(agent.sources[1][74]["market"], [])
+        self.assertEqual(agent.sources[1][98]["market"], [])
+        self.assertEqual(agent.calls, 2)
 
     def test_invalid_inputs_rejected(self):
         with self.assertRaises(TypeError):
