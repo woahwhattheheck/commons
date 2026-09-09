@@ -65,5 +65,7 @@ jobs:
           path: |
             ${{ runner.temp }}/S05-S-SCREEN.json
             ${{ runner.temp }}/S05-SUMMARY.json
+            /tmp/s05-dispatch/revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+            /tmp/s05-runtime/SOURCE.json
           if-no-files-found: warn
           retention-days: 30
