@@ -1,0 +1,50 @@
+name: sol-astra-e08-review-evidence
+
+on:
+  push:
+    branches:
+      - sol-astra/e08-review-carrier-20260909-1210-01
+
+permissions:
+  contents: read
+
+jobs:
+  exact-e08:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Assert immutable E08 parent and carrier-only delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "33ec398e78d201b23fa12e5e63e8c0f7b83919b1"
+          test "$(git diff --name-only HEAD^ HEAD)" = ".github/workflows/sol-astra-e08-review-20260909.yml"
+      - name: Run exact E08 and adjacent joint-market contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD:$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-runtime-pulse:$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-quickstep"
+          python3 -B -m unittest -v test_event_horizon test_joint_market_slots
+      - name: Rebuild and verify deterministic canonical package in ephemeral checkout
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B build_integrated.py > "$RUNNER_TEMP/e08-build.json"
+          python3 -B build_integrated.py --check > "$RUNNER_TEMP/e08-check.json"
+          cat "$RUNNER_TEMP/e08-check.json"
+      - name: Prove source bytes remained unchanged by evidence run
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "33ec398e78d201b23fa12e5e63e8c0f7b83919b1"
+          git diff --exit-code HEAD -- \
+            revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+            revenue/kaggriculture/cloud-execution-lab/test_event_horizon.py
+          echo "E08 source/test bytes unchanged; only ephemeral generated release outputs may differ."
