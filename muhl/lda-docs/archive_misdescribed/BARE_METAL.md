@@ -92,3 +92,13 @@ Touch **only storage** (address, don't copy), use **only electricity** (ZERO hos
 it's the OS doing the work, forbidden), render to the **display**, take **user input** — bare metal, not the OS. Scale is
 bounded by time/heat/electricity, never by the host. Build to the dedicated bare-metal device; use mmap as its stand-in
 today.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
