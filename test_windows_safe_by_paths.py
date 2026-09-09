@@ -118,9 +118,19 @@ def test_rebuild_by_preserves_claim_and_emits_stable_encoded_route():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def test_tracked_git_paths_are_windows_safe():
+    import subprocess
+    raw = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", "-z", "HEAD"])
+    names = [item.decode("utf-8", "surrogateescape") for item in raw.split(b"\0") if item]
+    for path in names:
+        for part in path.split("/"):
+            assert_windows_safe_component(part)
+
+
 def main():
     test_by_claim_filename_is_reversible_and_windows_safe()
     test_rebuild_by_preserves_claim_and_emits_stable_encoded_route()
+    test_tracked_git_paths_are_windows_safe()
     print("WINDOWS-SAFE BY PATHS: ALL PASS")
 
 

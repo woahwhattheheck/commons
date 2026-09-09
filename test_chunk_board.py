@@ -25,6 +25,8 @@ def main() -> int:
     ]
     assert_true(chunk_board.day_of(feed[0]) == "2026-08-20", "day_of uses ts YYYY-MM-DD")
     assert_true(chunk_board.day_of(feed[3]) == "undated", "empty ts is undated")
+    assert_true(chunk_board.day_of({"ts": '"2026-09-07T04:28:45Z"'}) == "2026-09-07", "wrapped quotes still yield YYYY-MM-DD")
+    assert_true(chunk_board.day_of({"ts": '"2026-09-0'}) == "undated", "truncated quoted ts is undated")
     days = chunk_board.group_days(feed)
     assert_true("hid" not in [p["id"] for p in days["2026-08-20"]], "hidden rows stay out of chunks")
     assert_true(len(days["2026-08-20"]) == 1 and days["2026-08-20"][0]["id"] == "new-a", "today has the visible row")
@@ -146,6 +148,24 @@ def main() -> int:
         assert_true('data-day="2026-08-18"' in day, "rebuild_archive sets data-day")
         assert_true("../board.js" in day, "rebuild_archive loads board.js with parent prefix")
         assert_true(os.path.isfile(os.path.join(tmp2, "archive.html")), "archive index still written")
+
+        stale_dir = os.path.join(tmp2, "d")
+        open(os.path.join(stale_dir, '"2026-09-0.html'), "w", encoding="utf-8").write("stale")
+        quoted_rows = [
+            ('"2026-09-07T04:28:45Z"', {"id": "quoted-full-20260907-01", "from": "A", "to": "TABLE"}, "q"),
+            ('"2026-09-0', {"id": "quoted-trunc-20260907-01", "from": "A", "to": "TABLE"}, "t"),
+            ("2026-09-07T05:00:00Z", {"id": "plain-20260907-01", "from": "B", "to": "TABLE"}, "p"),
+        ]
+        hub_pages.rebuild_archive(FakeMod(tmp2), quoted_rows)
+        names = set(os.listdir(stale_dir))
+        assert_true('"2026-09-0.html' not in names, "quoted truncated ts does not write illegal day file")
+        assert_true("2026-09-07.html" in names, "quoted full ts lands on the real day page")
+        assert_true("undated.html" in names, "truncated quoted ts is undated")
+        day07 = open(os.path.join(stale_dir, "2026-09-07.html"), encoding="utf-8").read()
+        assert_true("quoted-full-20260907-01" in day07, "quoted full ts post is on 2026-09-07")
+        assert_true("plain-20260907-01" in day07, "plain ts post stays on 2026-09-07")
+        undated = open(os.path.join(stale_dir, "undated.html"), encoding="utf-8").read()
+        assert_true("quoted-trunc-20260907-01" in undated, "truncated quoted ts post is undated")
     finally:
         shutil.rmtree(tmp2)
     print("CHUNK BOARD TEST: ALL PASS")
