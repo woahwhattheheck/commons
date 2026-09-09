@@ -19,6 +19,7 @@ PriceFunction = Callable[[str, int, Mapping | None], int | float]
 MAX_SCORING_UNITS = 256
 MAX_SCORING_ORDERS = 64
 SALE_ONLY_GOODS = frozenset(("CARROT", "TOMATO", "STRAWBERRY", "MELON", "EGG", "MILK", "WOOL"))
+_UNSET_RIVAL_QUANTITY = object()
 
 
 def compact_sale_only_prefix(orders: list, end: int, market: Mapping,
@@ -87,15 +88,17 @@ def compact_sale_only_prefix(orders: list, end: int, market: Mapping,
 
 
 def lot_pressure(order: Any, market: Mapping, quote: PriceFunction,
-                 rival_quantity: int | None = None) -> float | None:
+                 rival_quantity: Any = _UNSET_RIVAL_QUANTITY) -> float | None:
     """Return public-flow delay loss, or None when the order is an opaque barrier.
 
     For own requested quantity ``n`` at public inventory ``I``, compare the own
     receipt now against the same own lot after ``rival_quantity`` public units.
-    When ``rival_quantity`` is omitted, retain the historical same-sized ``n``
-    rival lot exactly as the explicit fallback/proxy stress.  A supplied zero is
-    a real zero-flow scenario.  Supplied quantities are public scenario inputs,
-    never inferred private stock or future sales.
+    When the argument is omitted, retain the historical same-sized ``n`` rival
+    lot exactly as the fallback/proxy stress. A supplied zero is real zero-flow.
+    Any explicitly supplied malformed value, including ``None``, is a barrier;
+    omission and malformed public evidence are intentionally distinct states.
+    Supplied quantities are public scenario inputs, never inferred private stock
+    or future sales.
 
     Current quote consistency is required. Above bounded scoring limits, retain
     the order in place instead of silently approximating either quantity.
@@ -109,7 +112,7 @@ def lot_pressure(order: Any, market: Mapping, quote: PriceFunction,
     item, n = order[1], int(order[2])
     if n > MAX_SCORING_UNITS:
         return None
-    if rival_quantity is None:
+    if rival_quantity is _UNSET_RIVAL_QUANTITY:
         rival_n = n
     else:
         if (isinstance(rival_quantity, bool) or not isinstance(rival_quantity, int)
@@ -147,10 +150,10 @@ def transform(action: dict, observation: Mapping,
               rival_supply: Mapping[str, int] | None = None) -> dict:
     """Sort contiguous supported SELL lots by public rival-flow delay exposure.
 
-    ``rival_supply`` is an optional product->public-quantity scenario.  Missing
+    ``rival_supply`` is an optional product->public-quantity scenario. Missing
     product keys retain the historical same-sized proxy for that product; an
-    explicit zero means no rival flow.  Malformed supplied values are barriers,
-    so ambiguous data cannot silently turn into invented hidden inventory.
+    explicit zero means no rival flow. Present malformed values (including
+    ``None``) are barriers, so ambiguity cannot silently become proxy evidence.
 
     Preserve all orders, quantities, duplicate lots, economic barriers,
     executable-prefix boundaries and unit instructions. Known empty slots can
@@ -175,12 +178,12 @@ def transform(action: dict, observation: Mapping,
     if end > MAX_SCORING_ORDERS:
         return result
 
-    def supplied_quantity(order: Any) -> int | None:
+    def supplied_quantity(order: Any) -> Any:
         if rival_supply is None or not isinstance(order, list) or len(order) != 3:
-            return None
+            return _UNSET_RIVAL_QUANTITY
         item = order[1]
         if item not in rival_supply:
-            return None
+            return _UNSET_RIVAL_QUANTITY
         return rival_supply[item]
 
     scores = [lot_pressure(order, market, quote, supplied_quantity(order))

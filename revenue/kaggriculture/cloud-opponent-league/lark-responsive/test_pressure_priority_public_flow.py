@@ -69,7 +69,7 @@ class PublicFlowPressureTests(unittest.TestCase):
                 ['SELL', 'TOMATO', 8],
             ]
         }
-        for bad in (True, -1, 1.5, '20', 257):
+        for bad in (None, True, -1, 1.5, '20', 257):
             self.assertIsNone(lot_pressure(action['market'][0], obs()['market'], curve, bad))
             self.assertEqual(
                 transform(
