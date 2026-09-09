@@ -55,3 +55,13 @@
 - `host/pfc_physical_gates.py` — the first faithful build: a gate network whose wires ARE physical file bit-addresses,
   baked permanently (genome), then powered (button/receiver flip) and probed, with the ripple crutch as the B arm.
 - See `docs/PFC_LEVER_DATADUMP.md` §U for the measured A/B data.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -66,3 +66,13 @@ federated Muhlnickel realize it — compute-via-address per Muhlnickel, held cap
 **X (compute-via-address, measured 0-RAM byte-exact) × N Muhlnickel (each ~2 MB storage, divide the work, federate unbounded)
 × the mathematical guarantee (coverage ≥ difficulty, proven before runtime) = Bitcoin, hit by division and proof, not by
 waiting.** Every clause above is a test that ran on this box and produced the number next to it.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
