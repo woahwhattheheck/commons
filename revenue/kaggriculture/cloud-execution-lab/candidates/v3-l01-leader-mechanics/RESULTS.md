@@ -70,3 +70,13 @@ wall_seconds 549.1  workers 8  scheduled 192  completed 192  failed 0  throughpu
 - public_bt12: games 32 W 32 T 0 L 0 mean_margin 22454.656
 - v1_submitted: games 32 W 32 T 0 L 0 mean_margin 874.562
 
+## sheep panel
+
+wall_seconds 489.3  workers 8  scheduled 192  completed 192  failed 0  throughput 23.54
+- arlene: games 32 W 0 T 0 L 32 mean_margin -38372.844
+- apex: games 32 W 0 T 0 L 32 mean_margin -30175.469
+- kaito_v43: games 32 W 1 T 0 L 31 mean_margin -34046.406
+- cok_v10: games 32 W 7 T 0 L 25 mean_margin -13328.719
+- public_bt12: games 32 W 6 T 0 L 26 mean_margin -20192.125
+- v1_submitted: games 32 W 0 T 0 L 32 mean_margin -40895.969
+
