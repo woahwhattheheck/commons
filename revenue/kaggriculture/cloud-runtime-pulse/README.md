@@ -38,3 +38,7 @@ The timing baseline consumed QUICKSTEP's described existing `selected_sell_core`
 Eight retained observation sequences, three repetitions and alternating fresh-process AB/BA order produced 17,256 calls per arm. Exact evaluator `f6fbb8a6` Struct wrapping was used outside the measured entrypoint calls. All actions and serialized completed SELL/route/diagnostic state matched. No caller-observation mutations or deadline fallbacks occurred.
 
 Unprofiled summed entrypoint time fell from 33.9796 to 25.7545 seconds, a 24.2% reduction beyond that compact-snapshot baseline. Individual paired reductions ranged from 18.0% to 30.2%. Hot-call median changed from 1.085 to 0.679 milliseconds and hot p99 from 9.155 to 7.803 milliseconds. These are local retained-input measurements, not hosted latency, new full games, winning-strength evidence or a cold-start timeout repair. Canonical runtime defaults and archives were not changed by this source addition.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

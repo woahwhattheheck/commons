@@ -66,3 +66,7 @@ In all12 capacity development games both agents reached the10-order cap on22
 turns, but unfed-without-buy diagnostic counts were0. That does not prove every
 possible order state safe; it does mean missing-feed orders were not observed
 as the cause of these losses, and no unmeasured ordering patch was made.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

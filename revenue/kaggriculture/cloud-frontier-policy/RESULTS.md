@@ -47,3 +47,7 @@ There were76 development/control games,16 reserved validation games and4 new-can
 The first reconstruction combined multiple edits and truncated hire orders. Its eight losses did not identify route switching as causal. Route-only Igor control matched actual Igor exactly; a slot-preserving sale edit gave only+121 against Igor and still lost to Kaito. The selected implementation calls Kaito's ACTUAL entrypoint once and changes no worker action, route selector, seed/feed/capital order or parent state progression. For visible farm-signature distance<=2 it adjusts finished-product quantities and adds sales only in free slots; otherwise it returns the parent action. It uses existing public state only, no opponent private inventory or environment seed. The gate improved development cash versus unconditional sales while retaining wins; this is not a universal immediate-sale claim.
 
 Winning margin is the competition objective. On one control seed earlier sales lowered both players' cash but improved margin, so the edit was not rejected solely for lower own cash. ROWAN's leader replay contextualized productive scheduling and endogenous sale prices; no one-game crop counts were copied into this policy. Submission/account transport remains with root/ROWAN.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -113,3 +113,7 @@ Prefer reading the saved outcome when it answers the same question. Reproduction
 is the same conditional experiment, not an independent sample. No provider job,
 full game, Kaggle write or owner-PC action is required. New source is Apache-2.0;
 unchanged dependencies retain their source and license attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

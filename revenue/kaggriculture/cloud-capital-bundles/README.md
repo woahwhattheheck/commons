@@ -31,3 +31,7 @@ All16 new delivery methods pass with the existing pinned official engine and raw
 These checkpoint fixtures use official initialization with an explicitly constructed clock. They are binding fixtures, not natural reached step226 observations, full games, or a replay of an earlier panel. No new game outcome or strength claim follows from these tests. Existing authored experiment reports and any retained raw payloads remain distinct from this delivery log.
 
 Native package:54,693 bytes; SHA25664656154ce6d3279a03d5aac01bd90aa5ad768daa78e916ca0a9634a79696c99. Byte-identical rebuild passed. `EXPORT-RECEIPT.json` and `DELIVERY-TEST-OUTPUT.txt` retain the measured output. This delivery makes the existing optional policy available; it does not restore missing historical experiment payloads or claim a new empirical selector result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

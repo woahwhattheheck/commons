@@ -94,3 +94,7 @@ state. Unknown caller cancellations are propagated, not converted into success.
 Actual-source compatibility is pinned to PR9997's frozen closure, not a claim to
 have tested every later current-main optimization. The adapter's prior timer
 proofs, frozen game outcomes and other workers' suites were reused, not reminted.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

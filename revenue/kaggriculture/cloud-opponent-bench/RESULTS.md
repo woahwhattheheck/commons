@@ -58,3 +58,7 @@ Kaito v43 and Igor Multi-Route as minimum development gates for TITAN. A
 candidate that only beats Euler28, compact22, or the official starter is not
 ready for promotion. This evidence does not establish leaderboard rank,
 universal dominance, a submission, an award or a payment.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -47,3 +47,7 @@ The participating owner's private Library handoff retains the complete original 
 ## Attribution
 
 Apache-2.0. This only changes ownership of memoized methods around the existing market calculations; all existing runtime, seller, receipt-math and performance contributions retain their attribution. The canonical writer continues to own release integration.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

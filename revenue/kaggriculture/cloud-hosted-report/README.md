@@ -53,3 +53,7 @@ The reporter retains input byte counts and SHA-256 digests; equivalent copies co
 Own logs bind to the exact filename episode and seat, not to another replay or the rival. The log format supplies no independent embedded identity. Frame-count mismatches are reported. Recorded timing percentiles and maxima are not independent measurements of hosted deadline enforcement or proof that all runtime faults are absent.
 
 This directory contains only generic source, synthetic tests, and validation metadata. Keep raw replays, own-agent logs, generated reports, and their private source references in participating-owner private storage. No agent runtime, release pointer, evaluation runner, seed allocation, or submission is modified by this utility.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

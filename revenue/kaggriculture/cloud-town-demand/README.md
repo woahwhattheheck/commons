@@ -58,3 +58,7 @@ A fresh main read found PR10216's completion-deadline repair. The new integratio
 `RESULTS.json` retains source identities, measured scope and compact conditional results. Complete reports, old-source results, original source/engine evidence and setup logs stay in the AMBER Library delivery. One measured quote/flow/ranking execution is not a whole-agent latency guarantee. Neither the selected candidate nor any frozen game panel changes.
 
 Existing consumer thread: https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805915221339
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
