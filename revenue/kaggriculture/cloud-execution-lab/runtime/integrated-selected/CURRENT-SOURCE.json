@@ -481,6 +481,11 @@
       "sha256": "670dd0a4977466998653766c0446f361bd55b2193bc61b1ad493185b284a1b7d",
       "source_path": "test_feed_stock.py"
     },
+    "checks/test_final_market_pressure_entrypoint.py": {
+      "bytes": 4447,
+      "sha256": "ffea92b06ec9897c25c0d3f331156380917cbf5de8a26e187bdf71e2165e5ef9",
+      "source_path": "test_final_market_pressure_entrypoint.py"
+    },
     "checks/test_funded_payback_runtime.py": {
       "bytes": 4847,
       "sha256": "debea504799ed40eb43dc5df2451625ece6331af8546ea01123bb5c420e9f03b",
@@ -597,8 +602,8 @@
       "source_path": "reference/titan-current/latest/integrated_selected.py"
     },
     "main.py": {
-      "bytes": 1942,
-      "sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "bytes": 3318,
+      "sha256": "1a53397e1f6df56b474cb17452e4ed7e1bf1af31baa6a921d956cf26bfd0e86b",
       "source_path": "main.py"
     },
     "mechanics.py": {
