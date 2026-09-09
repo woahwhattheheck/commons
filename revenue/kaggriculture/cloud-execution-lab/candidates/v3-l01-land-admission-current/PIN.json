@@ -60,7 +60,7 @@
     "seed_count": 16,
     "seed_start": 2611092001,
     "v1_submitted_archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
-    "workers": 8
+    "workers": 2
   },
   "mechanism": {
     "market_action": [
