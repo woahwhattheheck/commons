@@ -127,18 +127,26 @@ def normalize_future_plan(
             )
             return None, report
 
+        # Preserve the canonical checkpoint's row order and multiplicity.  The
+        # only permitted edit is consuming the inherited floor from rows at the
+        # same step; unrelated duplicate rows must not be coalesced as a side
+        # effect of this guard.
         normalized: list[tuple[int, int]] = []
-        removed: dict[int, int] = {}
-        for step in sorted(totals):
-            route_quantity = inherited.get(step, 0)
-            scheduler_quantity = totals[step] - route_quantity
-            removed[step] = route_quantity
+        remaining_route = dict(inherited)
+        removed: dict[int, int] = defaultdict(int)
+        for step, quantity in canonical_rows:
+            route_quantity = min(quantity, remaining_route.get(step, 0))
+            if route_quantity:
+                removed[step] += route_quantity
+                remaining_route[step] -= route_quantity
+            scheduler_quantity = quantity - route_quantity
             if scheduler_quantity:
                 normalized.append((step, scheduler_quantity))
 
         report.update(
             status="NORMALIZED",
-            canonical_future=[[step, quantity] for step, quantity in sorted(totals.items())],
+            canonical_future=[[step, quantity] for step, quantity in canonical_rows],
+            canonical_totals=[[step, quantity] for step, quantity in sorted(totals.items())],
             inherited_route=[[step, inherited[step]] for step in sorted(inherited)],
             scheduler_owned=[[step, quantity] for step, quantity in normalized],
             removed_route_echo=[[step, removed[step]] for step in sorted(removed) if removed[step]],
@@ -245,7 +253,7 @@ class RouteEchoGuardedFrozenSelected(CanonicalFrozenSelected):
             selected_plan, route, item, now, end=end
         )
         self.diagnostics["route_reference_echo"] = report
-        if normalized is None or normalized == list(existing):
+        if normalized is None or not report.get("changed") or normalized == list(existing):
             return returned
         if normalized:
             self.planned[item] = normalized

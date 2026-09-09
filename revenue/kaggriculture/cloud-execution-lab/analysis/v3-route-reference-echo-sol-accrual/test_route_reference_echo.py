@@ -77,10 +77,19 @@ class NormalizeTests(unittest.TestCase):
         self.assertIsNone(normalized)
         self.assertEqual((report["status"], report["deficits"]), ("UNREPRESENTABLE_ROUTE_FLOOR", [[12, 2]]))
 
-    def test_duplicate_selected_rows_are_aggregated(self):
+    def test_duplicate_selected_rows_consume_floor_without_unrelated_reordering(self):
         normalized, report = normalize_future_plan([(12, 1), (12, 4)], route(), ITEM, 10, end=12)
         self.assertEqual(normalized, [(12, 3)])
         self.assertEqual(report["canonical_quantity"], 5)
+
+    def test_no_route_echo_preserves_duplicate_row_shape_and_order(self):
+        value = route()
+        value[12]["market"] = []
+        selected = [(12, 1), (13, 4), (12, 2)]
+        normalized, report = normalize_future_plan(selected, value, ITEM, 10, end=13)
+        self.assertEqual(normalized, selected)
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["canonical_future"], [[12, 1], [13, 4], [12, 2]])
 
 
 class TransformTests(unittest.TestCase):
