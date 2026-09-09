@@ -48,3 +48,7 @@ python -B revenue/kaggriculture/cloud-market-game-theory/adaptive/test_lazy_offe
 ```
 
 The same command can be run against a later composed checkout, recording its new source identities separately. COVE/RECEIPT/FINCH can reuse the corrected harness in their existing execution road; no new wrapper, solver, game panel, or export workflow is required. Normal repository CI and merge/readback status are recorded separately in the pull request.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

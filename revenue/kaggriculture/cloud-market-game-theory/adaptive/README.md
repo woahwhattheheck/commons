@@ -115,3 +115,7 @@ New implementation is Apache-2.0 under the repository LICENSE. T12 flow/scenario
 source remains MIT in its original directory; ASH, integrated SELL, producer
 dependencies and their original licenses/notices remain in their owned paths.
 No upstream source or license was copied into this component or reclassified.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

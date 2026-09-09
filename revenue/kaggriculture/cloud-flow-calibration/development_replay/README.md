@@ -40,3 +40,7 @@ The output directory must not already exist. The six selected members and semant
 Existing calibration: PR9986, Git blob `75e67d65583ab83847b95dee426ff3a49dee1c87`, MIT. T12 flow: commit `4d7fd6d4d4e1f71941f7fe76b8e10274f1bfc1a6`, blob `7b3c1c383e98ce1eb5bf539caddf0ab4351f8633`, MIT. Official engine: Kaggle/kaggle-environments commit `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`, blob `3c202c7ee921da239356789e266b694635103fc4`, Apache-2.0. T14 codec, evaluator, ledger and development archive are reused from PR9975/source `5be6099f5ab2b3a20855bdee1e1e42f336eab678`; their exact input blobs are retained in the protocol.
 
 This is an offline bounded-dataset assessor, not a streaming production agent or a market-order-alignment predictor. It holds decoded traces/results in memory. No new games, seeds, uploads, purchases or owner-PC execution. The next model choice needs independent game/family validation and actual action evidence; this assessment does not replace IRIS behavior, JOINT-HISTORY joint scenarios, T12 flow, T15 selection or TITAN rating calibration.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

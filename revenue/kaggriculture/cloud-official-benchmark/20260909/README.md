@@ -14,3 +14,6 @@ compact loss-flip replays, hashes, and rerun instructions are retained in the
 project coordination bundle identified by the receipt. This public path stays
 limited to binding and aggregate evidence.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

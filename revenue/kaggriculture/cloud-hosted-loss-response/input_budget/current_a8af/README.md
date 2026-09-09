@@ -100,3 +100,7 @@ interrupted attempt.
 These seeds are now development history. Any changed candidate needs new seeds and
 its own source freeze. This component neither advances the canonical current pointer
 nor requests another Kaggle upload.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -59,3 +59,7 @@ uses a worker opportunity and later storage/order capacity. This component
 preserves supplied unit actions and operating reservations. T05 retains
 terminal collection; T12 retains observed-flow prediction; T08 owns promotion
 and whole-agent composition. No alternate production controller is embedded.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

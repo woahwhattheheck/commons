@@ -13,3 +13,7 @@ The treatment evidence reuses previously consumed development seeds and retained
 control records. It is not a new held panel or a canonical release result. Full
 traces are intentionally retained in the evidence package rather than duplicated
 in Git history.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

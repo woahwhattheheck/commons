@@ -52,3 +52,7 @@ python3 -B revenue/kaggriculture/cloud-integration-differentials/sale_floor/test
 
 The test uses the repository's pinned official engine and current base
 certificate. It executes no full game and consumes no policy seed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

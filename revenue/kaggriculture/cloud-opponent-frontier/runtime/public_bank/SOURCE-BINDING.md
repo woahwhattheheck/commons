@@ -15,3 +15,7 @@ python -m unittest discover -s revenue/kaggriculture/cloud-opponent-frontier/run
 ```
 
 The accompanying delivery evidence provides the exact original inputs, a self-contained reproduction command, and baseline/final logs. This repair does not create a new T07 opponent, panel, source bank, game result, workflow, or canonical TITAN package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

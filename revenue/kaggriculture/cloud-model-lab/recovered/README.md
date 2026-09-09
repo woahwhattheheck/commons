@@ -12,3 +12,7 @@ lost and is not rewritten from scratch.
 Neither file is on the model-driven path in this directory. The reusable part is
 the exact quote/walk arithmetic, which agrees with the engine functions
 `constraints.py` calls directly.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

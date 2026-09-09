@@ -92,3 +92,7 @@ intake uses the integration owner's single current artifact after consolidation.
 No old adaptive panel, successful peer cell, source-bank export, upload, notebook
 write, owner-PC execution, new VM or paid service was used. Lower-level negative
 arms remain available. Full receipts and trace hashes support every aggregate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

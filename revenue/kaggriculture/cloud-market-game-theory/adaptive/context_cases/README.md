@@ -39,3 +39,7 @@ Normal `Agent.act` produces the context automatically. External callers construc
 `validation-summary.json` retains source blobs, all eight paired cash/inventory traces, exact failing-method names and timing blocks. The full original/fixed JSON output documents and test logs are also preserved in `TITAN_BIRCH_context_repair.zip` in Bryce's connected Library. Repository code regenerates the full reports with the command above; source-bound constructed receipts, rather than copied opaque binary strings, are the publication format here.
 
 The selected archive and all historical development/held results remain unchanged. A future measured consumer can count `market_context_changed` and `market_context_unknown` in the existing decision diagnostics before considering any further context-aware re-optimization.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

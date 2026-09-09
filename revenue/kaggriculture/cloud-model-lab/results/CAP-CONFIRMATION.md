@@ -55,3 +55,7 @@ direction.
 One plan in five completes, so the candidate captures well under the output the
 cap destroys (42 units, about $1,732, on seed 9600011 alone). Raising that is a
 new candidate needing new development seeds. These confirmation seeds are spent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

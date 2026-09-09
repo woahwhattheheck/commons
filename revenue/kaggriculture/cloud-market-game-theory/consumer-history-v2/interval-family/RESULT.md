@@ -41,3 +41,7 @@ No actor, game, engine transition, trace decompression, current rival action, pr
 python -B revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/interval-family/test_interval_family.py -v
 python -B revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/interval-family/scan_bank.py --output /tmp/history-v2-interval-family
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

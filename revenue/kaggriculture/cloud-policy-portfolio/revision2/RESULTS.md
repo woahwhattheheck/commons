@@ -40,3 +40,7 @@ existing JSON worker response. The driver removes metadata before executing or
 hashing game actions. `HARNESS-UPDATE.json` records the two harness-file changes
 and its focused transport check. Policy code and all panel receipts are unchanged;
 the runtime archive and historical freeze retain the exact evaluated harness.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

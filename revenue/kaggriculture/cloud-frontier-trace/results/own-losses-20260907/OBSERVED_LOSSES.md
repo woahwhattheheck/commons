@@ -30,3 +30,7 @@ At503 against ymg_aq we sell one just-deposited strawberry for1. At504 the now-v
 Reuse existing `analyze.py`, `moments.py` and `summarize.py` with the two public replay bodies; run `extract_loss_cases.py --input INPUT --output OUTPUT --parser-dir PATH_TO_cloud-frontier-trace`. Input names are documented in the script. `observed-results.json.gz` contains full economic summaries; `*-cases.json.gz` contains selected reconciled events; `*-raw-cases.json.gz` preserves their exact original before/after frames. Sixteen moments per episode, no third replay fetched. No competitor code is executed, no new policy is promoted, and no submission or notebook is written.
 
 These future replay timelines are **offline analysis fixtures only**. Runtime candidates may use only their current legal observations and source-derived rules. Preserve original source/license notices; this package redistributes no rival agent source or engine source.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

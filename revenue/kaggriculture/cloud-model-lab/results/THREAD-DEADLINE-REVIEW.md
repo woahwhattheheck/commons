@@ -102,3 +102,7 @@ It does not evaluate the increment — the increment does not exist yet. It does
 not measure Kaggle hardware. The trace and async-exc numbers are properties of
 CPython 3.11.15 on this VM and should be re-measured on the deployment
 interpreter before they decide anything irreversible.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

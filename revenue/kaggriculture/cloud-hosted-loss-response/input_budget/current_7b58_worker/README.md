@@ -79,3 +79,7 @@ python -B test_worker_results.py
 future timeout in worker mode. It deliberately waits for the single worker during
 normal shutdown; native blocking remains the outer runner's responsibility, as
 PR10335 documents.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

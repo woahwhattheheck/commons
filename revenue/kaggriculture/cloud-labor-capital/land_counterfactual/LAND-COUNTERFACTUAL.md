@@ -39,3 +39,7 @@ Against the exact submitted TITAN checkpoint `7b58fa06…`, retained protocol se
 - the complete official-engine both-seat comparison for 250→265 was terminal-neutral (`190319/3550` in both arms), with no new policy claim.
 
 These are one retained episode's conditional mechanics and economic evidence, not a fresh strength panel. Exact trace bytes remain in the separately retained Library packet; this repository delivery publishes the reusable callback, independent unit tests, and compact source/result receipt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
