@@ -13,6 +13,7 @@ import argparse
 import csv
 import importlib
 import math
+import tempfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -647,15 +648,33 @@ def solve_all(
 
 
 def write_submission(path: Path, rows: Sequence[Mapping[str, object]]) -> None:
+    staging_path: Path | None = None
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open("w", encoding="utf-8", newline="") as handle:
+        with tempfile.NamedTemporaryFile(
+            "w",
+            encoding="utf-8",
+            newline="",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            staging_path = Path(handle.name)
             writer = csv.DictWriter(handle, fieldnames=SUBMISSION_COLUMNS)
             writer.writeheader()
             for row in rows:
                 writer.writerow({key: row[key] for key in SUBMISSION_COLUMNS})
-    except (KeyError, OSError) as exc:
+        staging_path.replace(path)
+        staging_path = None
+    except (csv.Error, KeyError, OSError) as exc:
         raise AdapterError(f"cannot write {path}: {exc}") from exc
+    finally:
+        if staging_path is not None:
+            try:
+                staging_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
 
 def main(argv: Sequence[str] | None = None) -> int:
