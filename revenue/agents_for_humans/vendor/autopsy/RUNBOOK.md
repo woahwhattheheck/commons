@@ -80,3 +80,13 @@ REFUND_REQUIRED applies after the included clarification when evidence is insuff
 ## 9. Buyer-facing format
 
 Use report-template.md to render the validated JSON record into plain language. Keep source anchors beside each observation, inference, alternative assessment, and recommendation. State limitations and untested alternatives. Do not promise implementation or certainty.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)
+
