@@ -1,6 +1,6 @@
 """Synthetic/deidentified UNR biobank courier-to-freezer custody shadow."""
 from __future__ import annotations
-import copy, hashlib, json
+import copy, hashlib, json, re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,6 +10,13 @@ DEMAND_ID="unr-biobank-courier-custody-lims-01"
 MANIFEST_PREFIX="UNR-BIOBANK-SYNTHETIC-MANIFEST-V1\n"
 HOLD_CODES=("IRB_MTA_REFERENCE_INVALID","CUSTODY_TEMPERATURE_FAIL","DUPLICATE_BARCODE","SPECIMEN_MANIFEST_MISMATCH","UNAPPROVED_TRANSPORT_ROUTE")
 FORBIDDEN_PHI_KEYS={"patient","patient_name","name","dob","date_of_birth","mrn","medical_record_number","address","phone","email","ssn"}
+_RESERVED_AUTOMATION_REVIEWER_TOKENS={"agent","ai","auto","automated","automation","bot","robot","service","system"}
+
+def _named_human_reviewer(value):
+    if not isinstance(value,str):raise PermissionError("named human reviewer is required")
+    reviewer=value.strip(); tokens=re.findall(r"[a-z]+",reviewer.casefold())
+    if not reviewer or not tokens or any(token in _RESERVED_AUTOMATION_REVIEWER_TOKENS for token in tokens):raise PermissionError("named human reviewer is required")
+    return reviewer
 
 class IntegrityError(ValueError): pass
 def _canonical(v:Any)->str:return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False)
@@ -152,9 +159,9 @@ class UNRBiobankCustodyShadow:
         self.authoritative_fingerprint
         return ReplayReport(ready,hold,replayed,dict(sorted(counts.items())),sa,aa,pa,ha,ea,self.state_digest(),outcomes)
     def authorize_research_use(self,shipment_id,reviewer_name):
-        reviewer=reviewer_name.strip()
-        if not reviewer:raise PermissionError("named human reviewer is required")
+        reviewer=_named_human_reviewer(reviewer_name)
         if shipment_id not in self.specimens:raise KeyError(shipment_id)
+        if shipment_id in self.research_use:raise PermissionError("research use is already authorized")
         self.specimens[shipment_id]["research_available"]=True
         for a in self.aliquots.values():
             if a["shipment_id"]==shipment_id:a["research_available"]=True

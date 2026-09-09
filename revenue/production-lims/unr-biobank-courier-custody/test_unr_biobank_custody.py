@@ -81,4 +81,28 @@ class UNRBiobankCustodyTests(unittest.TestCase):
         self.assertTrue(s.specimens["UNR-SHIP-0001"]["research_available"])
         self.assertTrue(all(a["research_available"] for a in s.aliquots.values() if a["shipment_id"]=="UNR-SHIP-0001"))
 
+    def test_reserved_automation_reviewer_labels_fail_before_mutation(self):
+        s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest); before=s.state_digest()
+        for reviewer in (None,"123","system","SYSTEM Reviewer","AI Reviewer","Service Account","bot_user","agent.007 reviewer","service2 account","automation-reviewer"):
+            with self.subTest(reviewer=reviewer):
+                with self.assertRaises(PermissionError):s.authorize_research_use("UNR-SHIP-0001",reviewer)
+                self.assertEqual(before,s.state_digest()); self.assertNotIn("UNR-SHIP-0001",s.research_use)
+                self.assertFalse(s.specimens["UNR-SHIP-0001"]["research_available"])
+                self.assertTrue(all(not a["research_available"] for a in s.aliquots.values() if a["shipment_id"]=="UNR-SHIP-0001"))
+
+    def test_research_authorization_is_one_way_and_keeps_first_reviewer(self):
+        s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest)
+        first=s.authorize_research_use("UNR-SHIP-0001","Named Biobank Reviewer"); before=s.state_digest()
+        with self.assertRaisesRegex(PermissionError,"already authorized"):
+            s.authorize_research_use("UNR-SHIP-0001","Another Human Reviewer")
+        self.assertEqual(before,s.state_digest()); self.assertEqual(first,s.research_use["UNR-SHIP-0001"])
+        self.assertEqual("Named Biobank Reviewer",s.research_use["UNR-SHIP-0001"]["reviewed_by"])
+
+    def test_human_names_containing_reserved_substrings_remain_valid(self):
+        for reviewer in ("Aisha Reviewer","Agentson Reviewer","Serviceman Reviewer"):
+            with self.subTest(reviewer=reviewer):
+                s=UNRBiobankCustodyShadow(); s.replay(self.records,self.manifest)
+                x=s.authorize_research_use("UNR-SHIP-0001",reviewer)
+                self.assertEqual(reviewer,x["reviewed_by"])
+
 if __name__=="__main__":unittest.main()
