@@ -80,3 +80,13 @@ wall_seconds 489.3  workers 8  scheduled 192  completed 192  failed 0  throughpu
 - public_bt12: games 32 W 6 T 0 L 26 mean_margin -20192.125
 - v1_submitted: games 32 W 0 T 0 L 32 mean_margin -40895.969
 
+## day0buy panel
+
+wall_seconds 505.0  workers 8  scheduled 192  completed 192  failed 0  throughput 22.81
+- arlene: games 32 W 0 T 0 L 32 mean_margin -12346.031
+- apex: games 32 W 6 T 0 L 26 mean_margin -6196.844
+- kaito_v43: games 32 W 16 T 0 L 16 mean_margin -803.219
+- cok_v10: games 32 W 23 T 0 L 9 mean_margin 7479.594
+- public_bt12: games 32 W 26 T 0 L 6 mean_margin 6311.438
+- v1_submitted: games 32 W 0 T 0 L 32 mean_margin -13090.0
+
