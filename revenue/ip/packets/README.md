@@ -23,3 +23,13 @@ Generated from the opportunity registry. Packets are not filings.
 - [SAM.gov](./packet-procurement-sam-gov-procurement.md) — `PROCUREMENT` `NOT_APPLICABLE` `BLOCKED_REGISTRATION`
 - [GSA Schedule](./packet-procurement-gsa-schedule.md) — `PROCUREMENT` `NOT_APPLICABLE` `BLOCKED_REGISTRATION`
 - [Public RFP response pack](./packet-procurement-public-rfp-pack.md) — `PROCUREMENT` `NOT_APPLICABLE` `BLOCKED_REGISTRATION`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
