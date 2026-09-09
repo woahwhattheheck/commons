@@ -9,7 +9,7 @@ from pathlib import Path as _Path
 import zlib as _zlib
 
 _EXPECTED_PARTS = 2
-_EXPECTED_SHA256 = "9ffc3ea5f8c208227fa804eced4b837644700dad74fcf0c4bec05ab0c8fe0641"
+_EXPECTED_SHA256 = "639c90dc225cd2fd8a57c8bca0958a8ead6775d669da7fcbe22b78002658d477"
 _prefix = _Path(__file__).name + ".zlib.b64."
 _parts = sorted(_Path(__file__).parent.glob(_prefix + "*"))
 if len(_parts) != _EXPECTED_PARTS or [p.name for p in _parts] != [f"{_prefix}{i:02d}" for i in range(_EXPECTED_PARTS)]:
