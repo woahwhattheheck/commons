@@ -39,3 +39,7 @@ These are post-interpreter frames, not already-normalized actor inputs. Frame 0 
 The source is DELVE's integrated funding-OFF control with SELL enabled: the bundled frozen dependencies plus JUNIPER's integration hook, built by `funded_main.make_agent(funded=False)`. It is not byte-identical frozen PR9997 and must not be labeled as such. Its source manifest, observer and entrypoint are retained in the same archive. One persistent exact-source actor must consume the prefix to restore internal state; that profiling execution was not performed by this intake. A frozen-PR9997 replay would need an explicit source/action-correspondence result.
 
 The separate WIDEFIELD development9921001 archive member from `BOUNDARY-CONTRACT.md` remains unmaterialized here. The PR10009 source-parses workflow has no downloadable artifact. The DELVE prefix is an available additional development workload, not a replacement name for that missing historical record. No repeated games or another exporter are needed to use this existing data.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

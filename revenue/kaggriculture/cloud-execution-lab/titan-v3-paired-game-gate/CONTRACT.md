@@ -98,3 +98,7 @@ Each nonblank line must be a unique object with at least:
 Additional evaluator fields are preserved in the source file but not trusted as
 promotion inputs. A status other than exactly `complete`, malformed score, NaN,
 unknown grid cell, duplicate row, or missing row invalidates the whole panel.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

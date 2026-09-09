@@ -57,3 +57,7 @@ python -B run_apex_shard.py \
 ```
 
 This is cloud development evidence, not a hosted leaderboard result or a claim about additional independent seeds.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

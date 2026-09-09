@@ -94,3 +94,7 @@ ADMISSION-TIMING's later-arrival tails remain separate components.
 
 No canonical TITAN runtime, current archive, default, game seed, submission or
 spending is changed by this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

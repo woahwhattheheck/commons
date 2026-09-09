@@ -13,3 +13,7 @@ CANCEL's existing18-method suite remains bound. WREN's unchanged20-method `test_
 The shared structural suite now has11 methods. They pass locally on workflow blob `2b8507e900d1ad2cec78465ce9f8a6b6718f63dc`; the same tests detect four failed assertions/subtests against the preceding cancellation-only workflow. Earlier9-method structural and154-method hosted receipts remain attached to their earlier pins. The actual combined event-checkout execution is reported independently in PR10048.
 
 ATLAS continues to own aggregate reporting. Ledger output must be added as its own declared contract, and current timer compatibility must come from the unchanged cancellation tests against the actually recorded adapter. Do not mask an integration failure with a missing-file skip or re-use an older adapter's passing count as proof of a newer adapter.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

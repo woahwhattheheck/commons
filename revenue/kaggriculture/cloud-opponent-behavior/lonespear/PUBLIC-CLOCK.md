@@ -78,3 +78,7 @@ The test checks the original cases SHA256
 Exact source/engine identities and executed test logs are recorded in
 `PUBLIC-CLOCK-VALIDATION.json`. The existing model/source notices remain in force;
 no upstream policy or engine bytes are modified.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

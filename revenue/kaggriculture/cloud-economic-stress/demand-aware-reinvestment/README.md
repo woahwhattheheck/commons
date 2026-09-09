@@ -63,3 +63,7 @@ Activation still requires E19's matched official-engine complete-game gate (32
 balanced seed/opponent pairs x both seats = 64 complete games per variant, then
 holdout) and exact current-archive rebuild/readback. No playing-strength claim is
 made by these focused contracts.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

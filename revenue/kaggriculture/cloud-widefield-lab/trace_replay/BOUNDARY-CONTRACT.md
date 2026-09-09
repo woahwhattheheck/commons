@@ -58,3 +58,7 @@ Executed dependencies were downloaded through existing GitHub artifact roads, wi
 ## Actor-state boundary
 
 A verified observation stream is not a saved actor checkpoint. FINCH must instantiate the exact intended source once with the original loading/RNG contract and consume the complete prefix in order to rebuild persisted state. Feed only each frame's observation and actor configuration to the policy; source metadata and expected actions are verifier data. A fresh actor at step 683 is a different workload. Record action divergence or source changes rather than labeling them on-policy parity.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

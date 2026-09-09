@@ -78,3 +78,7 @@ For the existing path-based executor, `cloud-execution-lab/integrated_main.py`
 is the unchanged no-callback control. `integrated_parent.py` disables SELL and is
 not the funding-only control. Keep frozen SELL as a separately labelled benchmark;
 new full-game/held comparisons remain with existing executor owners.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

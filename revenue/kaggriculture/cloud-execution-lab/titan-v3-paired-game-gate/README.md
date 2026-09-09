@@ -135,3 +135,7 @@ other rows abort. Correct the arm semantics before producing its contract.
 - `CONTRACT.md` — exact JSON schemas and policy semantics.
 - `THREAT-MODEL.md` — evidence threats and non-goals.
 - `example/` — synthetic complete 2×2×2 panel; not gameplay evidence.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

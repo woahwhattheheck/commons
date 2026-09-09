@@ -17,3 +17,7 @@ bounded standard-library implementation adapted from these modelling ideas.
 
 The pinned Arlene source and its existing provenance remain under
 `cloud-frontier-policy/next-panel/vendor/` and are not modified here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

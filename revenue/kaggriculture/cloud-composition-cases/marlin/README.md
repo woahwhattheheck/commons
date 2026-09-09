@@ -113,3 +113,7 @@ New join and new regression code: ASTRA-MARLIN, Apache-2.0. OSPREY's composition
 is MIT; the T05 planner, selected SELL, ATLAS projection and official engine keep
 their existing Apache-2.0 notices. The frozen Arlene and receipt helper retain
 their existing notices. No upstream source is redistributed in this directory.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

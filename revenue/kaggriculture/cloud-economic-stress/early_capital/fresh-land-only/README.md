@@ -14,3 +14,7 @@ day ending step 263, differed by exactly the land cost at step 287, and retained
 that difference through terminal settlement. The purchase therefore activated
 but generated no realized return in this slice. This arm is rejected and must
 not be enabled in the canonical controller.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

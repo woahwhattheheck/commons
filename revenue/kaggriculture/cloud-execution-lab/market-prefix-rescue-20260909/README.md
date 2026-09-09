@@ -36,3 +36,7 @@ python run_panel.py \
 - Positive activated development strata: expand to the current opponent matrix, then freeze selection before any held-seed evaluation.
 
 No Kaggle submission, hosted-score claim, leaderboard claim, spend, or canonical promotion is made here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

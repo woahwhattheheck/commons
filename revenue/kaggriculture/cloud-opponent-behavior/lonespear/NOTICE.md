@@ -13,3 +13,7 @@ recorded-state analysis, market-response proposal and consumer tests here.
 The earlier IRIS step0 observation is used as a fixed test input, not represented
 as a new game. All lonespear empirical records are the development traces named
 in INPUTS.json. No hosted/private opponent source is retrieved or distributed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
