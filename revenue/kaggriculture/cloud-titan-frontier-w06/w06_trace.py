@@ -127,8 +127,7 @@ def transition_rows(transitions: Iterable[dict[str, Any]], candidate_seat: int) 
             "game_step": step,
             "clock": _clock(observation),
             "candidate_money": candidate_money,
-            "rival_money": rival_money,
-            "money_margin": margin,
+            "rival_money": rival_money,\n            "money_margin": margin,
             "money_margin_delta": None if margin is None or previous_margin is None else margin - previous_margin,
             "candidate_money_delta": None if candidate_money is None or previous_candidate_money is None else candidate_money - previous_candidate_money,
             "rival_money_delta": None if rival_money is None or previous_rival_money is None else rival_money - previous_rival_money,
@@ -198,6 +197,8 @@ def _action_identity(action: dict[str, Any]) -> bytes:
 
 
 def intervention_candidates(analysis: dict[str, Any], limit: int) -> list[dict[str, Any]]:
+    if limit <= 0:
+        return []
     candidates: list[dict[str, Any]] = []
     seen_specs: set[tuple[Any, ...]] = set()
     seen_actions: set[tuple[int, bytes]] = set()
