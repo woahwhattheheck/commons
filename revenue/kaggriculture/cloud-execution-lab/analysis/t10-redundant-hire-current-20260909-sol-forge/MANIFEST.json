@@ -34,9 +34,9 @@
     "ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
   },
   "evidence": {
-    "summary_bytes": 30803,
+    "summary_bytes": 11266,
     "summary_path": "SUMMARY.json",
-    "summary_sha256": "482bed9218866e8985c36e03be47c09e3ee252fa61fa5e67c3de824b759e7cb5"
+    "summary_sha256": "2454ea456ff007e13424b476f1c8a907d4501fc718dfee06daebefad822baa68"
   },
   "experiment": {
     "agent_rng_seed": 20260909,
