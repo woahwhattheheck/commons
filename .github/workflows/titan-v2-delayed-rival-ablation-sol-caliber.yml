@@ -49,9 +49,9 @@ jobs:
           test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py")" = "e7740bbd2f5ad71f565073445535d6941184288c"
           test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/compare.py")" = "6d66238b2ce1f11f26752049c106502be5ef0ec7"
           test "$(git hash-object "$CASE/materialize.py")" = "f115eaf5119e14c8c13d8e799b5ef30e8bd66a7d"
-          test "$(git hash-object "$CASE/compare.py")" = "90c1f79dff43c9cd4501b778962abdd2d00c52fa"
+          test "$(git hash-object "$CASE/compare.py")" = "02081854c9eec31667b3399fff476d7a9e20e25a"
           test "$(git hash-object "$CASE/test_materialize.py")" = "c8d2d1fcf38cf7fc127368c1d8a8d9d1d4467ed2"
-          test "$(git hash-object "$CASE/test_compare.py")" = "aa5eb034603aa5b61bd313bf3824de6cbae4aff8"
+          test "$(git hash-object "$CASE/test_compare.py")" = "1f324a3e59e7e2862b571a792427c57395fd1f3b"
           test "$(git hash-object "$CASE/README.md")" = "a25dff8c95d780d5d9ba42fae2be3e90f02f4546"
           test "$(git hash-object "p/sol-caliber-titan-v2-delayed-rival-ablation-20260909-01.md")" = "916e672ced6798fa35e7907e5acef3b7134a38c5"
           git diff --exit-code -- .
