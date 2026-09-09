@@ -14,3 +14,7 @@ Checkout for *this pack* stays owner-paste. Do not invent a Stripe URL here.
 Time budgets, not forecasts: fix-and-form is a two-to-three evening job when the current host stays; seven-day brochure is seven calendar days from YES; custom is scoped in the contract before work starts.
 
 Do not write “you will bill $X this month”. Do not write a client count. The sheet is a menu.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

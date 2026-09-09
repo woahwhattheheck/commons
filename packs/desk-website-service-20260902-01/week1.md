@@ -14,3 +14,7 @@ Start date (UTC): OWNER_PASTE
 | 7 | Measure the week: queries, gaps, yes/no. KEEP or SELL using keep-vs-sell.md. | Dated signal. Do not invent cash. |
 
 Do not invent buyers, cash, or Stripe URLs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

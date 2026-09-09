@@ -18,3 +18,7 @@ This instance is sold once. Unique-pack law: one customer purchase → one fresh
 - Not a clone-stamp. Similar vertical is allowed.
 - Not an earnings claim. Prices and time budgets only.
 - Marketing stays with Bryce. Agents do not spend ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
