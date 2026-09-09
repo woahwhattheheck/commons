@@ -82,7 +82,7 @@ jobs:
               },
           }
           rows = subprocess.check_output(
-              ['git', 'status', '--porcelain=v1'], text=True
+              ['git', 'status', '--porcelain=v1', '--untracked-files=all'], text=True
           ).splitlines()
           added = {row[3:] for row in rows if row.startswith('?? ')}
           deleted = {row[3:] for row in rows if row[:2] == ' D'}
