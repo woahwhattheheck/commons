@@ -1,0 +1,32 @@
+name: SOL Astra E17 hosted review
+
+on:
+  push:
+    branches:
+      - sol-astra/e17-hosted-review-20260909-01
+
+permissions:
+  contents: read
+
+jobs:
+  e17-focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile exact E17 sources
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -m py_compile seller_regime_history.py regime_scheduler.py test_seller_regime_history.py
+      - name: Run exact E17 focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -m unittest -v test_seller_regime_history.py
+      - name: Import experimental wrapper
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python - <<'PY'
+          import regime_scheduler
+          assert callable(regime_scheduler.agent)
+          assert hasattr(regime_scheduler, 'RegimeSellScheduler')
+          assert regime_scheduler.base.__file__.endswith('scheduler.py')
+          print('E17_WRAPPER_IMPORT_OK')
+          PY
