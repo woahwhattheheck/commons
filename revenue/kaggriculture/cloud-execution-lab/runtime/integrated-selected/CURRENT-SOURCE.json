@@ -480,6 +480,11 @@
       "sha256": "debea504799ed40eb43dc5df2451625ece6331af8546ea01123bb5c420e9f03b",
       "source_path": "test_funded_payback_runtime.py"
     },
+    "checks/test_funded_prefix.py": {
+      "bytes": 6009,
+      "sha256": "790331d10ffa2502e706d4585f569aacbd2d2fdcec1a29d5b05eaf66c5156573",
+      "source_path": "test_funded_prefix.py"
+    },
     "checks/test_idle_fertilizer.py": {
       "bytes": 27637,
       "sha256": "234999794ae80b9e2e22a8c9c90db1b0a01c3c653cdb79b589d5ee557580a983",
@@ -561,8 +566,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 28615,
-      "sha256": "7c1ff8229517e703ae7ca3442905429904a968663bc26b0336007059588a82f4",
+      "bytes": 37439,
+      "sha256": "0255893a4662939925e1aa96e40fb94381cee88f5b96b521cf0a60dbe79f0d64",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
