@@ -9,9 +9,9 @@
   },
   "new_sources": {
     ".github/workflows/titan-capillary-order-rail-sol-rail.yml": {
-      "bytes": 4923,
-      "git_blob_sha1": "7e0ffb841149fcf911c5768c21cb721510f0e26c",
-      "sha256": "fbd52731ab9c9ac2de46ba2949dbf62c2aa8ff8541625f5bb6045e278515869c"
+      "bytes": 6805,
+      "git_blob_sha1": "bb0de18f681fa61f6a5b31b9a733c3939996f4ce",
+      "sha256": "1dd09948ccdc3dc64ba87ffe7f804b78c49711546a842477ba542b7b0e968257"
     },
     "revenue/kaggriculture/cloud-execution-lab/jit_seed_order_rail.py": {
       "bytes": 25240,
@@ -112,7 +112,7 @@
     "parent_head": "fcb4bea645af0676283b5c44b969ee8690ea1ee7",
     "repository": "woahwhattheheck/commons"
   },
-  "status": "SOURCE_READY_HOSTED_VALIDATION_REQUIRED",
+  "status": "HOSTED_IMPORT_CLOSURE_REPAIR_PUSHED",
   "validation": {
     "hosted_exact_head": "REQUIRED",
     "local": [
@@ -127,6 +127,24 @@
       }
     ],
     "official_games": "NOT_RUN",
-    "score_or_promotion_claim": false
+    "score_or_promotion_claim": false,
+    "hosted_runs": [
+      {
+        "run_id": 34410545747,
+        "head": "76a913fd280ea9d64399df46a9551d7747ecf8d1",
+        "result": "FAIL_CLOSED",
+        "evidence": "57 compiler/order-rail contracts passed; 3 lifecycle contracts stopped at ModuleNotFoundError: observed_clone before candidate initialization",
+        "classification": "undeclared repository import-root closure in the focused workflow; no order-rail assertion failed",
+        "repair": "bind build_integrated.py and observed_clone source blobs, derive all top-level Python import roots from source_files(), and prove observed_clone resolves to the declared mapped source before rerunning 64 contracts"
+      }
+    ]
+  },
+  "runtime_import_closure": {
+    "build_map_path": "revenue/kaggriculture/cloud-execution-lab/build_integrated.py",
+    "build_map_git_blob_sha1": "05994d946885ff0fe2a2ce77439fd335174900aa",
+    "mapped_member": "observed_clone.py",
+    "mapped_source_path": "revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py",
+    "mapped_source_git_blob_sha1": "f810d53193d3035655a36c21021e18ba1d415916",
+    "policy": "derive top-level Python import roots from canonical build_integrated.source_files() in deterministic mapping order; reject any missing mapped source"
   }
 }

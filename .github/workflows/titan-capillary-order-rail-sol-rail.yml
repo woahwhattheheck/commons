@@ -45,6 +45,8 @@ jobs:
           test "$(git hash-object "$LAB/main.py")" = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
           test "$(git hash-object "$LAB/titan_runtime.py")" = "b952c9c228ecbde592bf3d2df01638677abb0d24"
           test "$(git hash-object "$LAB/TITAN-CONFIG.json")" = "3a3bef83899d3010fad623b628d9e95d9978111b"
+          test "$(git hash-object "$LAB/build_integrated.py")" = "05994d946885ff0fe2a2ce77439fd335174900aa"
+          test "$(git hash-object "$LAB/../cloud-runtime-pulse/observed_clone.py")" = "f810d53193d3035655a36c21021e18ba1d415916"
           test "$(git hash-object "$LAB/jit_seed_order_rail.py")" = "f5d2c3775bc527ef7f950a850eac8036bd71e865"
           test "$(git hash-object "$LAB/test_jit_seed_order_rail.py")" = "29af14ff7e0d2a0c986e0dd37b951d56e3293403"
           test "$(git hash-object "$LAB/titan_capillary.py")" = "f138f3015da5d59b7ff5c6ac1ce5d0dbd760abe4"
@@ -55,6 +57,47 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - name: Bind canonical standalone import closure
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOTS="$(python -B - <<'PY'
+          import os
+          from pathlib import Path
+          from build_integrated import source_files
+
+          lab = Path.cwd().resolve()
+          ordered = [lab]
+          seen = {lab}
+          for member, source in source_files().items():
+              if Path(member).parent != Path('.') or not member.endswith('.py'):
+                  continue
+              origin = (lab / source).resolve()
+              if not origin.is_file():
+                  raise FileNotFoundError(
+                      f'mapped root module {member} missing at {origin}'
+                  )
+              if origin.parent not in seen:
+                  seen.add(origin.parent)
+                  ordered.append(origin.parent)
+          print(os.pathsep.join(str(root) for root in ordered))
+          PY
+          )"
+          printf 'PYTHONPATH=%s\n' "$ROOTS" >> "$GITHUB_ENV"
+          PYTHONPATH="$ROOTS" python -B - <<'PY'
+          from pathlib import Path
+          import build_integrated
+          import observed_clone
+
+          lab = Path.cwd().resolve()
+          mapped = (lab / build_integrated.source_files()['observed_clone.py']).resolve()
+          actual = Path(observed_clone.__file__).resolve()
+          assert actual == mapped, (actual, mapped)
+          assert observed_clone.detached_json_value({'x': [1]}) == {'x': [1]}
+          print(f'DECLARED_IMPORT_CLOSURE_PASS observed_clone={actual}')
+          PY
 
       - name: Run predecessor, order-rail, lifecycle, and carrier contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
