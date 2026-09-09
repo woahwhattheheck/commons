@@ -1,0 +1,73 @@
+name: titan-v3-executable-receipt-profile-sol-quoin
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-executable-receipt-profile-sol-quoin.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-executable-receipt-profile-sol-quoin/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-and-physics:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/head.sha"
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Audit exact source factor and run contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3-executable-receipt-profile-sol-quoin
+          python "$ROOT/audit_change.py" --json "$RUNNER_TEMP/RECEIPT-PROFILE-SOURCE.json"
+          cd "$ROOT"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python -m unittest -v test_executable_receipt_profile.py
+          python -m py_compile candidate.py executable_receipt_profile.py audit_change.py test_executable_receipt_profile.py
+
+      - name: Verify canonical release remains unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
+
+      - name: Retain exact source receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-executable-receipt-profile-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/head.sha
+            ${{ runner.temp }}/RECEIPT-PROFILE-SOURCE.json
+          if-no-files-found: error
+          retention-days: 30
