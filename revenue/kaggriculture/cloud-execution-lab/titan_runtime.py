@@ -65,6 +65,7 @@ class Features:
     committed_seed_retry: bool = False
     operating_stock: bool = False
     idle_fertilizer: bool = False
+    crop_release: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -73,7 +74,7 @@ class Features:
             raise ValueError('terminal_route is the tested frozen SELL composition')
         if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')
-        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer) and (self.consumer != 'frozen' or self.terminal_route):
+        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('spatial routes require nonterminal frozen SELL')
         if self.terminal_history and (self.consumer == 'parent' or self.history_hypotheses is None):
             raise ValueError('terminal_history needs a SELL snapshot and explicit scenario hypotheses')
@@ -221,7 +222,7 @@ class TitanAgent:
                       HERE.parent/'cloud-committed-seed-retry/seed_retry.py')
             self.committed_seed_retry_module = load(
                 '_titan_committed_seed_retry', source, cache=True)
-        if (f.terminal_history or f.idle_fertilizer) and self.history is None:
+        if (f.terminal_history or f.idle_fertilizer or f.crop_release) and self.history is None:
             from terminal_history_join import TerminalHistoryJoin
             self.history = TerminalHistoryJoin(hypotheses=f.history_hypotheses,
                                                tie_break=f.terminal_tie_break,
@@ -244,7 +245,8 @@ class TitanAgent:
             from scheduler import m
             if self.spatial is None:
                 self.spatial = SpatialTempo(m, pathing=f.spatial_pathing, tempo=f.spatial_tempo,
-                                            idle_fertilizer=f.idle_fertilizer)
+                                            idle_fertilizer=f.idle_fertilizer,
+                                            crop_release=f.crop_release)
                 transform = self.spatial.transform
                 def compatible_transform(obs, selected, controller):
                     if self.quadrant is not None and (self.quadrant.plan is not None or self.quadrant.pending is not None):
@@ -258,9 +260,14 @@ class TitanAgent:
 
     def _finish_production(self, obs, returned, cfg=None):
         if self.spatial is not None:
+            self.spatial.observe_crop_receipts(obs,
+                None if self.history is None else self.history.fill_result,self.controller.cur)
+        if self.spatial is not None:
             returned = self.spatial.guard_returned(obs, returned,
                 repair_fallback=self.diagnostics.get('status')=='deadline_fallback')
         post = self._selected_snapshot(obs, returned) if self.history is not None else None
+        if self.spatial is not None:
+            returned=self.spatial.guard_crop_returned(obs,returned,post)
         if self.quadrant is not None:
             self.quadrant.finish(obs, returned)
             self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
@@ -269,12 +276,18 @@ class TitanAgent:
                     self._quadrant_admission.last_report)
         if self.spatial is not None:
             self.spatial.finish(obs, returned, post)
+            self.spatial.finish_crop(obs,returned,post,self.controller.cur,
+                                     seller_completed=self.diagnostics.get('status')=='completed')
             self.diagnostics['route_events'] = list(self.spatial.events)
             self.diagnostics['idle_fertilizer_receipts'] = list(self.spatial.receipt_events)
             self.diagnostics['idle_fertilizer_obligation'] = deepcopy(self.spatial.sale_obligation)
+            if self.features.crop_release:
+                self.diagnostics['crop_release']=deepcopy(self.spatial.crop_intent)
+                self.diagnostics['crop_release_action']=deepcopy(self.spatial.crop_report)
         if self.history is not None:
             needed = (self.features.terminal_history or
-                      (self.spatial is not None and self.spatial.sale_obligation is not None))
+                      (self.spatial is not None and (self.spatial.sale_obligation is not None
+                                                     or self.spatial.crop_intent is not None)))
             self.history.remember(obs,cfg or {},returned,
                                   post if needed else None)
             self.diagnostics['history'] = self.history.diagnostics
@@ -458,6 +471,8 @@ class TitanAgent:
                 if self.spatial is not None:
                     self.spatial.observe_market_receipt(obs,
                         None if self.history is None else self.history.fill_result)
+                    self.spatial.observe_crop_receipts(obs,
+                        None if self.history is None else self.history.fill_result,self.controller.cur)
                 if self.features.consumer == 'ordered':
                     self.consumer.last_packet = None
                 else:
@@ -488,7 +503,9 @@ class TitanAgent:
                 stage = 'selected_transform'
                 if self.features.consumer == 'frozen':
                     self.consumer.capture_post_units = (self.features.terminal_history or
-                        (self.spatial is not None and self.spatial.sale_obligation is not None))
+                        (self.spatial is not None and (self.spatial.sale_obligation is not None
+                            or (self.features.crop_release and
+                                (int(obs['step'])==372 or self.spatial.crop_intent is not None)))))
                 output = self.transform_selected(obs, cfg, selected)
                 if self.history is not None:
                     self.post = self._selected_snapshot(obs)
@@ -499,6 +516,10 @@ class TitanAgent:
                 output = self._market_pressure_selected(obs, cfg, output)
                 stage = 'operating_stock'
                 output = self._operating_stock_selected(obs, cfg, output)
+                if self.spatial is not None and self.features.crop_release:
+                    stage='crop_release'
+                    output=self.spatial.crop_market(obs,output,self._selected_snapshot(obs,output),
+                                                    self.controller)
                 # Build the checkpoint while the deadline is still active, but
                 # publish it only after the context exits without cancellation.
                 if self.features.consumer == 'frozen':

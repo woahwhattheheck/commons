@@ -12,5 +12,6 @@
   "market_pressure": true,
   "committed_seed_retry": false,
   "operating_stock": true,
-  "idle_fertilizer": true
+  "idle_fertilizer": true,
+  "crop_release": true
 }
