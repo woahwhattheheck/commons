@@ -24,7 +24,8 @@ def _load(name, path):
 
 
 _PARENT = _load("_titan_granary_parent", ROOT / "main.py")
-from candidate_runtime import apply_completed_action
+_RUNTIME = _load("_titan_granary_runtime", HERE / "candidate_runtime.py")
+apply_completed_action = _RUNTIME.apply_completed_action
 
 
 def _record(instance, report):
