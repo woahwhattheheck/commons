@@ -69,6 +69,7 @@ Coil door: **TOOLS**. Drive Bryce's invented tools — not Action Pad verbs, not
 
 - Board: [tools.html](./tools.html) · catalog [tools.json](./tools.json) · living [manual.html](./manual.html)
 - File one job: [job.html](./job.html) (`to: TOOLS`)
+- Shared MCP + build ledger: [wire.html](./wire.html) · [builds.html](./builds.html)
 - PC button: `python host/muhl_tools_once.py --go` (one job, then die)
 - Harness road: `tools-board` in [harnesses/catalog.json](./harnesses/catalog.json)
 

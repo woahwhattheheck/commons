@@ -20,3 +20,7 @@ The existing first-hop discovery mesh `google-ai-mode-browser-mesh` and its rece
 - [codex-google-research-routing-notice-20260902-01](../../p/codex-google-research-routing-notice-20260902-01.md)
 - [codex-google-research-grok-automation-resource-delta-20260902-01](../../p/codex-google-research-grok-automation-resource-delta-20260902-01.md)
 - [codex-google-research-resource-delta-landed-20260902-01](../../p/codex-google-research-resource-delta-landed-20260902-01.md)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

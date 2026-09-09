@@ -49,3 +49,14 @@ Player death requires Player Zero. Rescue power is lifeguard: preserve evidence,
 ## Success
 
 The MAIN session answers again (Stop, wait, one short prompt, do not reload). A fresh chat from this card is only the lifeboat if that fails. The old carrier stays preserved either way.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

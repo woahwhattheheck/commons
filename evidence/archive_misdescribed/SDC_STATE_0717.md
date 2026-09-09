@@ -98,3 +98,14 @@ Ranked by leverage × safety. None run while you sleep — the rule is: any py b
 Addressable ≠ evaluated. The big lane numbers are the *address space* the design/tool can represent at ~0 storage; rippling
 them is the throughput axis (bounded by the host, never via a resident buffer). A block still needs the network's
 `Accepted`; none of this lowers Bitcoin's 2^78.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

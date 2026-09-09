@@ -17,11 +17,11 @@ DOOR = ROOT / "stealable-lanes.html"
 KEEP = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
-    "ground/STEALABLE_LANES.json": "6991e21c",
-    "ground/STEALABLE_LANES.md": "11480353",
-    "stealable-lanes.html": "0aa76ae4",
-    "test_stealable_lanes.py": "d15dbb65",
-    "test_stealable_lanes_occupancy.py": "964d4e57",
+    "ground/STEALABLE_LANES.json": "d194b0ad",
+    "ground/STEALABLE_LANES.md": "d5164f9a",
+    "stealable-lanes.html": "53c70430",
+    "test_stealable_lanes.py": "555668bb",
+    "test_stealable_lanes_occupancy.py": "80de69fd",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
@@ -37,10 +37,10 @@ KEEP = {
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "dbbc96a5",
 }
 
 

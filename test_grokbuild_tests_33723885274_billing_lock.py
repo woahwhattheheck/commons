@@ -23,7 +23,7 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "c60f584b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "6227b6f5",
+    "catalog.html": "35a7069f",
     "hub_pages.py": "d0bd0e8d",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "877e148d",

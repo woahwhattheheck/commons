@@ -52,3 +52,14 @@ Thinking-model dispatch of one grok.com Grok Build or Grok Heavy lane is [elitis
 ## Output
 
 Repairs landed (path / test / SHA) · proved `NOT_BUG` observations · exact external blockers after attempted repair · base main SHA · candidate/PR URL and candidate SHA when applicable · exact changed and overlap paths · tests · completion state · integrated main SHA or `NOT_LANDED` · remote path/blob readback · concurrent-commit reachability and unrelated-path preservation evidence · for integrated work, exact board completion-receipt id plus current-HEAD `p/{id}.md` readback and short Slack receipt link/timestamp. Do not emit a standalone bug report.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

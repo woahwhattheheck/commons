@@ -139,3 +139,14 @@ mine.
 | Formerly invisible desktop sidecar, preserved and marked superseded | `host/muhl_lda_edge_add.md` | companion evidence |
 
 *Corrections belong in this file, in place. If you run any of it, replace an inference with a number.*
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

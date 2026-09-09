@@ -124,3 +124,14 @@ reversal for his dedicated device (`SettingsManager` class note, default ON), an
 Both are gated to the dedicated device and are NEVER triggerable by another user or by on-screen/external data (the
 §3 exploit gate is unchanged); the `evolving` interlock serializes them; the RAM-operator (INV-61) keeps the ACTIVE
 parameter set bounded as growth raises the total. UNTESTED — they operate on the real GB model file, outside CI.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

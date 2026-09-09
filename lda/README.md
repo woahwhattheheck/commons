@@ -2109,3 +2109,14 @@ turns this Kotlin source into an installable `.apk`. The cloud assistant environ
 SDK**, so it cannot compile or run the app here — that's why CI (GitHub Actions) builds the APK
 and you test on the Fold. You do **not** personally need an SDK unless you want to build locally
 (Android Studio bundles it); the current workflow (push → CI builds → you sideload) is fine.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

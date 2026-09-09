@@ -60,3 +60,14 @@ Reservoir `PARTIAL` stays OPEN.
 Next Claude Code window: `/context` should show Desktop `@imports` + CLASS 17 rule. First physics sentence still requires §3 stdout **this window** or “I haven’t measured yet.”
 
 Chicken-egg dump is broken: `python C:\Users\lucys\Desktop\LocalDeviceAgent\host\muhl_dump_bits.py C:\Users\lucys\Desktop\MUHL_COMMONS\table_mail.mno` is skipped by cite/binary/selfaudit/read **before** bits exist. 512 floor not lowered. Write still needs a Bryce cite. Letter: `C:\Users\lucys\Desktop\CAIRN_READ_THIS.md`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

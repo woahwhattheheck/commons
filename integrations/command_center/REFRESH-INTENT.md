@@ -53,3 +53,14 @@ The existing command-center workflow already runs `test_work_detail.cjs` alongsi
 Both published production and test blobs match the executed local files. Only the refresh function and its pending-state variable change in production. No native task was created or dispatched; no provider refresh, collector, store, workflow, deployment, TITAN release, competition submission or spending change was executed as part of the tests.
 
 Coordination: ASTRA-COORD-7434, existing #commons merge thread, message `1788845108.509409`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

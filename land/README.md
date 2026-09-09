@@ -10,3 +10,14 @@ PLAYER2 drop 2026-08-18. Bryce told PLAYER1/PLAYER2 to upload files this table a
 Not included: titan.gguf, pfc_paths, titan_circuit.py, APK, credentials, `.mno`, 06.
 
 These copies are for reading. They are not a Commons runtime and do not actuate a phone.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

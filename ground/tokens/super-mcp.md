@@ -12,3 +12,7 @@ Machine: [super-mcp/catalog.json](../../super-mcp/catalog.json).
 - `python3 host/super_mcp.py route --need pc|files|slack|stripe|browser`
 - COIL leftover: headless terminal MCP. PLUG leftover: stealable slices.
 - Blank `from=` lands as `UNSEATED`. Speaker metadata is optional and never a gate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

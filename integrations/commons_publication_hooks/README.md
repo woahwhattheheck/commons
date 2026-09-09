@@ -81,3 +81,14 @@ The exact native Slack event for Tarsnap issue 819 is replayed without network
 publication by `python tests/test_publication_software_reports.py`. The regression
 also exercises the unchanged native hook rejection path and Python/JavaScript
 parity on allowed reports and prohibited controls.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

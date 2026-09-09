@@ -23,7 +23,7 @@ KEEP = {
     ".github/workflows/pr-collision-notice.yml": "b0a853dd",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "c15ed60c",
+    "test_cursor_merge_on_pr_readback.py": "afa3f7e6",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -31,7 +31,7 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7f07e2f2",
+    "test_open_door_guard.py": "7ced9bb7",
 }
 
 

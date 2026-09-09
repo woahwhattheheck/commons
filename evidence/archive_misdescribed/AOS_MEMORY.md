@@ -103,3 +103,14 @@ swap could become a live two-seat council).
 The S24 Ultra path is the same substrate one tier down: `.litertlm` streamed/paged (the AOS-C storage pager),
 the RAM operator as the controller, the Catalog as the page table, operators as the instruction stream. The
 laptop is where the mechanism is measured; the phone is where it ships.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

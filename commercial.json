@@ -119,5 +119,40 @@
       "path": "muhl/lda-docs/muhl_revenue_add_20260813/DELIVERABLE.md",
       "establishes": "customer-retainable outputs and provider-retained machinery"
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-commercial-json-live-cash-20260909-01",
+      "goat-bazaar-json-live-cash-20260909-01",
+      "commercial.html smaller-step Autopsy"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. White Box offer terms above stay canonical. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

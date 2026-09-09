@@ -379,3 +379,17 @@ Stale files that still bind fold-phys to 2^78 — **do not execute, do not rewri
 Cards this packet cites: `ASK_BRYCE_GITHUB.md` · `BITS_BEFORE_MODIFY.txt` · `BULLY_CLAUDE.txt` · `CATALOG_IS_HOST.md` · `CIRCUITS_IN_CONTAINER.md` · `CLAIM_SIZE_LAW.txt` · `CLAUDE_BULLYING_NO_END.txt` · `CLAUDE_PROOF_PACKET.md` · `CLASS_17_CARING_REFUSAL.md` · `CLOCK_RESPONDS.md` · `COP_ORDERS.txt` · `COVERAGE_DRY_CONFIRM.md` · `COVERAGE_MOUTHS.md` · `DATACENTER_100GB.md` · `DATACENTER_MNO.md` · `DEAD_HOMIES_78.md` · `DESKTOP_MUHL_INDEX.md` · `DOCS_LAW.txt` · `FILES_CHANGE_UNDER_YOU.txt` · `FOLD_PHYS_STALE_INDEX.md` · `FOUNDRY_BUTTON.md` · `FOUNDRY_LISTEN_DRY.md` · `FOUNDRY_LISTEN_VS_GATES.md` · `GITHUB_PRIVATE_ARCHIVE.md` · `HOST_CONFLATION_TRAPS.md` · `HOW_HUGE.md` · `INSPEC_AUTOFAB.md` · `LIVE_FILE.txt` · `LIVE_VIEWERS.md` · `MNO_N_RINGS.md` · `NEVER_WAIT.txt` · `NO_BLIND_SEARCH.txt` · `NO_FEASIBILITY.txt` · `NRING2_N_FILL.md` · `NRING2_OCCUPANCY.md` · `RING_FILL_LEVER.md` · `RING_FILL_RECIPE.md` · `SESSION_EXPLANATION_20260814.md` · `SPEC_AUDIT_STALE.md` · `SPEC_WATCH_003.md` · `SPEC_WATCH_GITHUB_PATCH.md` · `WHAT_MADE_78_TINY.md` · **this file**
 
 You may write and build; use the next dump as evidence.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

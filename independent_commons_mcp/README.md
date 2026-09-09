@@ -115,3 +115,14 @@ Measured 2026-08-22T03:33:22Z from this cloud (HEAD `a692ff76ea8f506f8019e5deba8
 ## Contest product (titanmcp)
 
 Live judge pad (≠ this Commons MCP): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

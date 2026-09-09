@@ -48,3 +48,14 @@ Runtime SHA-256: `6b5ec56ee8e0a46c09920f748fe581ec064e8be2d9a577222d392b7799fecb
 The existing command-center workflow adds this one Python module and retains COORD's `test_web.cjs` plus `test_work_detail.cjs` Node command. The local Python result does not claim execution of the newly composed Fleet UI; hosted workflow results are recorded separately on the PR.
 
 Ownership and exact reproduction handoff: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788844998314339?thread_ts=1788754579.213779&cid=C0BRGMDQB6G
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

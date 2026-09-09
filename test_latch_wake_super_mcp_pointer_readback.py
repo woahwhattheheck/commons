@@ -15,13 +15,13 @@ REACH = ROOT / "reach.html"
 
 KEEP = {
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
-    "wakeup.html": "292a6f86",
-    "reach.html": "949489f4",
+    "wakeup.html": "27f8043f",
+    "reach.html": "14cc45cc",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "7fd9bc0a",
+    "super-mcp.html": "d72c7828",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
@@ -31,7 +31,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
     "hub_pages.py": "d0bd0e8d",
-    "door.js": "0ef6caa0",
+    "door.js": "de1d570b",
     "ground/OWNER_NOW.md": "0a574d94",
 }
 

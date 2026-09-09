@@ -34,11 +34,11 @@ KEEP = {
     "p/grokbuild-merged-branch-janitor-33694252910-billing-lock-20260902-01.md": "36a6483a",
     "p/grokbuild-merged-branch-janitor-33699606864-billing-lock-20260903-01.md": "135dacee",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "11a81499",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "af76de7a",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "catalog.html": "6227b6f5",
+    "catalog.html": "35a7069f",
     "hub_pages.py": "d0bd0e8d",
 }
 

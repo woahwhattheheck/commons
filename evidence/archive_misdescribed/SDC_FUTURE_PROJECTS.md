@@ -97,3 +97,14 @@ Both projects are PARKED (design/idea, not built) and gated on the CPU-circuit s
 #2/#6). No compute-cluster, no download needed — same existing pool + the circuit baker; the only axis is gate count,
 which storage (not RAM) pays for. Revisit when the current live-mining swarm + the dense fold are where the owner wants
 them.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
