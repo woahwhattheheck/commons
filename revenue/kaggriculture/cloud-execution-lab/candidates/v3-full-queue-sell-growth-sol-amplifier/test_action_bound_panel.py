@@ -79,6 +79,11 @@ class ActionBoundEvidenceTests(unittest.TestCase):
         self.assertEqual(verdict["decision"], "ADVANCE")
         self.assertTrue(all(verdict["checks"].values()))
         self.assertEqual(summary["candidate_action_changed_cells"], 32)
+        self.assertEqual(
+            set(verdict["per_opponent_seat_mean_own_delta"]),
+            run_panel._expected_opponent_seat_keys(),
+        )
+        self.assertEqual(verdict["negative_opponent_seat_mean_own_strata"], [])
 
     def test_same_candidate_actions_cannot_claim_score_gain(self):
         import run_panel
@@ -118,6 +123,52 @@ class ActionBoundEvidenceTests(unittest.TestCase):
         self.assertGreater(summary["mean_own_delta"], 0)
         self.assertEqual(verdict["decision"], "REJECT")
         self.assertFalse(verdict["checks"]["no_opponent_mean_own_regression"])
+
+    def test_positive_marginals_cannot_mask_opponent_seat_regression(self):
+        import run_panel
+
+        rows, baseline, candidate = self._grid()
+        for row in rows:
+            opponent = row["opponent"]
+            seat = row["candidate_seat"]
+            if opponent == "arlene" and seat == 0:
+                value = -10.0
+            elif opponent == "arlene" and seat == 1:
+                value = 30.0
+            elif seat == 0:
+                value = 30.0
+            else:
+                value = 10.0
+            row["own_delta"] = value
+            row["margin_delta"] = value
+
+        bound = run_panel.bind_candidate_actions(rows, baseline, candidate)
+        summary, per_opponent = self._summaries(bound)
+        verdict = run_panel.strict_verdict(summary, per_opponent, bound)
+
+        self.assertEqual(summary["mean_own_delta"], 17.5)
+        self.assertTrue(all(
+            float(per_opponent[name]["mean_own_delta"]) >= 0
+            for name in run_panel.EXPECTED_OPPONENTS
+        ))
+        self.assertEqual(
+            run_panel._mean_by(bound, "candidate_seat"),
+            {"0": 20.0, "1": 15.0},
+        )
+        self.assertTrue(verdict["checks"]["no_opponent_mean_own_regression"])
+        self.assertTrue(verdict["checks"]["no_seat_mean_own_regression"])
+        self.assertEqual(verdict["decision"], "REJECT")
+        self.assertFalse(
+            verdict["checks"]["no_opponent_seat_mean_own_regression"]
+        )
+        self.assertEqual(
+            verdict["negative_opponent_seat_mean_own_strata"],
+            ["arlene|seat-0"],
+        )
+        self.assertEqual(
+            verdict["per_opponent_seat_mean_own_delta"]["arlene|seat-0"],
+            -10.0,
+        )
 
     def test_bool_seat_and_wrong_action_count_fail_closed(self):
         import run_panel
