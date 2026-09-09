@@ -581,8 +581,8 @@
       "source_path": "reference/titan-current/latest/integrated_selected.py"
     },
     "main.py": {
-      "bytes": 1942,
-      "sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+      "bytes": 2105,
+      "sha256": "992e6a22f436438e0766f23b12675a8869c12123b8385e6dc80a7b6851937865",
       "source_path": "main.py"
     },
     "mechanics.py": {
@@ -739,6 +739,11 @@
       "bytes": 9036,
       "sha256": "a881284d6b59366536ebc5e77f0f7c7f2923599dfb8588fd8b1ed6166bd51483",
       "source_path": "reference/titan-current/redundant_hire.py"
+    },
+    "reference/titan-current/rival_arrival.py": {
+      "bytes": 17452,
+      "sha256": "81ca208262c515050271c09e4520dfac0dba8f30056e8ab0c65c8657c68340d3",
+      "source_path": "reference/titan-current/rival_arrival.py"
     },
     "reference/titan-current/seed_funding.py": {
       "bytes": 13630,
