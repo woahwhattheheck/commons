@@ -54,3 +54,13 @@ SEED0 353=`00000001` 6661=`00001000` 7951=`00000001`
 dc size=`99999999783` 336=`00000000` 337=`00000001` 524288=`00000001` 524329=`00000000`  
 wrote **NO**  
 337_fired **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
