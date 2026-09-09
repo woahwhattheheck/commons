@@ -48,6 +48,20 @@ cushion are policy assumptions, not guarantees of future execution, output,
 operating cash or receipts. The behavior is active in the single TITAN; its
 playing-strength effect has not been measured, and no new game panel was run.
 
+The existing enabled market-pressure stage also moves positive sales across
+known empty or zero-quantity SELL slots when the whole executable prefix is
+sale-only. It preserves positive lot order, quantities, actor actions, row
+length and every order outside that prefix. Purchases, HIRE, capital orders,
+positive WHEAT/FERTILIZER sales and unknown orders decline this extra step.
+The current public quote must match a finite nonincreasing price curve through
+the bounded own lot plus rival shed capacity. Flat floor-price cases remain
+unchanged. This reuses the existing market stage; there is no additional agent,
+route variant or setting. The mechanism was suggested by the public-source
+research desk's Market-Smart Farming review; no competitor code was copied.
+Ten focused contracts include 3,645 isolated paired-sale arithmetic cases for
+rounding, floor handling and same-commodity relative receipts. These checks
+do not establish future controller responses or a full-game score improvement.
+
 Run `python build_integrated.py` to generate `exports/titan-current.tar.gz` from current source. Run `python build_integrated.py --check` to reject any divergence between selected source, archive, configuration and receipt. There is no public variant selector. Executors finish their existing frozen checkpoint, then consume this stream at an immutable commit and report the archive hash before attributing games.
 
 The sole public entrypoint is `main.py::agent`. Its deterministic `TITAN-CONFIG.json` retains the strongest supported frozen SELL controller, actual ALDER/JUNIPER funding and the integrated deadline consumer. Each turn selects one parent action. Current entrypoint timing accounts for lazy initialization and prelude; it does not guarantee external serialization, IPC or scheduling time. The 10 ms reserve remains unchanged pending measured outer-protocol calibration.

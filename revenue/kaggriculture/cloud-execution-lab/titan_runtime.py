@@ -355,7 +355,7 @@ class TitanAgent:
         return self._committed_seed_retry_selected(obs, cfg, result)
 
     def _market_pressure_selected(self, obs, cfg, selected):
-        """Order the final contiguous SELL blocks by public delay exposure.
+        """Order SELL blocks and eligible empty sale-only slots by public exposure.
 
         Source-tree tests load the landed LARK modules from their attributed
         directory.  The standalone release maps the same bytes beside this
