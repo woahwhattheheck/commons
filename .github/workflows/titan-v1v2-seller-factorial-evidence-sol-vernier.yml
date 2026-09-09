@@ -59,7 +59,9 @@ jobs:
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/analysis/v1v2-seller-factorial-sol-helix
           python -B -m py_compile \
-            strict_factorial.py strict_materialize.py \
+            strict_types.py strict_entry.py strict_common.py \
+            strict_artifacts.py strict_shards.py strict_evidence.py \
+            strict_factorial.py strict_materialize.py strict_test_fixture.py \
             test_strict_factorial.py test_strict_materialize.py
 
       - name: Run predecessor-discriminating contracts
