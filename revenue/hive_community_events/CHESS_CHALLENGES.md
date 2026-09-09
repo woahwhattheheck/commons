@@ -47,3 +47,7 @@ The sidecar persists only display metadata (`orientation`, `pieces`, and authore
 - Board metadata is public to participants once the question opens. Do not put private information in it.
 - Existing result exports remain governed by their current allowlists; the sidecar does not add participant references, individual answer records, or question keys to exports.
 - Running plain `app.py` against the same database is a compatible fallback: the underlying choices still work, but board metadata is not rendered.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

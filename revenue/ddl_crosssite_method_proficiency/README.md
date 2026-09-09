@@ -54,3 +54,7 @@ Replay of the entire 160-study corpus creates zero duplicate study or evidence e
 - `../../test_ddl_crosssite_method_proficiency.py` — fail-closed binary
 - `../../ddl-crosssite-method-proficiency-lims.html` — window, not the product
 - `../../p/ddl-crosssite-method-proficiency-lims-01.md` — first leftover receipt
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

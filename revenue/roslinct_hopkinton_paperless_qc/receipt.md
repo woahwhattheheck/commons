@@ -21,3 +21,7 @@ CLI: `python3 roslinct_hopkinton_paperless_qc.py` → ok true, failures []
 
 Buyer: RoslinCT US Hopkinton / Lisa Mello.
 Interfaces simulated/read-only. No real Part 11 validation claim. No production writes, billing, transfers, material disposition, or automatic release. AquaTrace HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -38,3 +38,7 @@ Hold codes: `HOLD_MISSING_SIGNATURE`, `HOLD_DUPLICATE_SAMPLE_ID`, `HOLD_INVALID_
 - Door: `../../sanair-asbestos-coc-router-lims.html`
 
 Cite, do not remint: wadsworth-five-site-consolidation-lims-01, highpower-ssf-receiving-gate-lims-01, westpak-scope-capacity-routing-lims-01, ddl-crosssite-method-proficiency-lims-01, sharp-rtu-vial-isolator-lineage-lims-01, canyon, pcl, organabio, billings.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

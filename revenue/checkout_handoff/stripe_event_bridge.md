@@ -74,3 +74,6 @@ verification, signs `timestamp + "." + raw_body` with HMAC-SHA256, can include
 multiple v1 signatures during secret rotation, and recommends a five-minute
 timestamp tolerance plus event-id deduplication.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
