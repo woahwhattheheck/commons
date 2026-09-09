@@ -19,6 +19,7 @@ class FundedPrefixTests(unittest.TestCase):
         self.inventory = {item: 10000 for item in fs.m.PRODUCTS}
         self.farm = {
             'money': 0,
+            'farmer': [4, 4],
             'unlocked_quadrants': ['SOUTHEAST'],
             'hires_today': 0,
             'tiles': [[None for _ in range(10)] for _ in range(10)],
@@ -28,7 +29,7 @@ class FundedPrefixTests(unittest.TestCase):
         self.private = {
             'shed': shed,
             'seeds': {item: 0 for item in fs.m.CROPS},
-            'inventories': [],
+            'inventories': [{}],
         }
         self.obs = {
             'step': self.now,
