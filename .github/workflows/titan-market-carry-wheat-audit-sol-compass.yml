@@ -8,6 +8,8 @@ on:
       - '.github/workflows/titan-market-carry-wheat-audit-sol-compass.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py'
       - 'revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit_v2.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_route_lifecycle_finalize.py'
   workflow_dispatch:
 
 permissions:
@@ -51,14 +53,17 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
             revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
 
-      - name: Compile and execute binding-corrected audit
+      - name: Compile and execute exact audit
         shell: bash
         run: |
           set -euo pipefail
           python -m py_compile \
             revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py \
-            revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py
-          python revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py
+            revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit.py \
+            revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit_v2.py \
+            revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_route_lifecycle_finalize.py
+          python revenue/kaggriculture/cloud-execution-lab/evidence/run_sol_compass_market_carry_wheat_audit_v2.py
+          python revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_route_lifecycle_finalize.py
 
       - name: Enforce disposition and source contracts
         shell: bash
@@ -71,12 +76,24 @@ jobs:
           assert report['source_blobs']['scheduler'] == 'a483b24dd72b580d7d8811636b54d2d44f391575'
           assert report['source_blobs']['frozen_selected'] == 'fc7baf5c179818a55037f6a61d92984d81d1a21c'
           assert report['binding_correction']['calculation_engine_unchanged'] is True
+          assert report['binding_correction']['max_shop_instances'] == 8
+          assert report['schema_alias_correction']['calculation_changed'] is False
           assert report['candidate_legal_carry_universe'] == ['WHEAT']
           assert report['max_wheat_demand'] == 9
           assert report['scan']['feasible_rows']
+          hidden = report['hidden_rival_wheat_stress']
+          assert hidden['max_actual_supply'] == 100
+          assert 7 <= hidden['negative_threshold_min'] <= hidden['negative_threshold_max'] <= 10
+          lifecycle = report['route_liquidation']
+          assert lifecycle['active_max_age'] == 8
+          assert lifecycle['source_head'] == report['source_head']
+          assert sum(
+              row['residual_attribution_erased_at_cooldown']
+              for row in lifecycle['by_quantity'].values()
+          ) > 0
           assert not report['disposition']['immediate_liquidation_guaranteed']
           assert not report['disposition']['promotion_ready']
-          print('DISPOSITION_AND_SOURCE_CONTRACT_PASS')
+          print('DISPOSITION_SOURCE_AND_LIFECYCLE_CONTRACT_PASS')
           PY
 
       - name: Publish job summary
