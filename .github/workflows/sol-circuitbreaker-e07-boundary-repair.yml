@@ -1,0 +1,190 @@
+name: sol-circuitbreaker-e07-boundary-repair
+
+on:
+  push:
+    branches:
+      - "sol/circuitbreaker-e07-buy-product-boundary-20260909-02"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-circuitbreaker-e07-boundary-repair-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[e07-boundary-generated]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      BASE_SHA: de4121fcadf365c4ce22c9f5a3a136bc7a075a3d
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      RECEIPT: p/sol-circuitbreaker-e07-buy-product-boundary-20260909-02.md
+      WORKFLOW: .github/workflows/sol-circuitbreaker-e07-boundary-repair.yml
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact base and apply narrow boundary repair
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+
+          base = os.environ["BASE_SHA"]
+          import subprocess
+          parent = subprocess.check_output(
+              ["git", "rev-parse", "HEAD^"], text=True
+          ).strip()
+          if parent != base:
+              raise SystemExit(f"unexpected branch base: {parent} != {base}")
+
+          lab = Path(os.environ["LAB"])
+          source_path = lab / "frozen_selected.py"
+          source = source_path.read_text(encoding="utf-8")
+          old = (
+              "    before=baseline['outcomes'][target]\n"
+              "    candidates=[]\n"
+              "    targets=set(targets)\n"
+              "    for source in range(target+1,len(original)):\n"
+          )
+          new = (
+              "    before=baseline['outcomes'][target]\n"
+              "    candidates=[]\n"
+              "    targets=set(targets)\n"
+              "    source_limit=barrier if barrier is not None else len(original)\n"
+              "    for source in range(target+1,source_limit):\n"
+          )
+          if source.count(old) != 1:
+              raise SystemExit("E07 source preimage is absent or ambiguous")
+          source_path.write_text(source.replace(old, new, 1), encoding="utf-8")
+
+          test_path = lab / "test_e07_same_turn_funding.py"
+          tests = test_path.read_text(encoding="utf-8")
+          marker = "    def test_variable_price_buy_is_a_hard_boundary(self):\n"
+          case = '''    def test_sale_after_later_variable_price_buy_cannot_fund_earlier_target(self):
+        obs,base=fixture(shed={'WHEAT':3},money=0)
+        base['market']=[[],['BUY_SEED','CARROT',1],
+                        ['BUY_PRODUCT','WHEAT',1],['SELL','WHEAT',3]]
+        original=deepcopy(base['market'])
+        out,info=fund(obs,base,{'WHEAT'})
+        self.assertEqual(out,original)
+        self.assertIsNotNone(info)
+        self.assertFalse(info['applied'])
+        self.assertEqual(info['reason'],'no-safe-prefix-sale')
+        self.assertEqual(info['target_index'],1)
+        self.assertEqual(info['baseline_completed'],0)
+        self.assertEqual(info['required'],1)
+        self.assertEqual(sale_quantities(out),sale_quantities(original))
+        self.assertEqual(base['market'],original)
+
+'''
+          if tests.count(marker) != 1:
+              raise SystemExit("E07 test insertion point is absent or ambiguous")
+          if "test_sale_after_later_variable_price_buy_cannot_fund_earlier_target" in tests:
+              raise SystemExit("E07 regression already exists")
+          test_path.write_text(tests.replace(marker, case + marker, 1), encoding="utf-8")
+
+      - name: Prove the discriminating source contracts before packaging
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep:${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python3 -B -m unittest -v \
+            test_e07_same_turn_funding.SameTurnFundingContracts
+
+      - name: Rebuild and verify deterministic canonical release
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python3 -B build_integrated.py | tee "$RUNNER_TEMP/e07-build.json"
+          python3 -B build_integrated.py --check | tee "$RUNNER_TEMP/e07-check.json"
+
+      - name: Run E07 and neighboring canonical regressions
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep:${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python3 -B -m unittest -v \
+            test_e07_hosted_source_path \
+            test_e07_same_turn_funding \
+            test_joint_market_slots \
+            test_e10_floor_cycle \
+            test_release_consistency \
+            test_build_publication
+          git diff --check
+
+      - name: Write source-bound receipt and retire this one-shot carrier
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          root = Path.cwd()
+          lab = root / os.environ["LAB"]
+          workflow = root / os.environ["WORKFLOW"]
+          workflow.unlink()
+
+          current = json.loads(
+              (lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text()
+          )
+          source_path = lab / "frozen_selected.py"
+          test_path = lab / "test_e07_same_turn_funding.py"
+          net_paths = subprocess.check_output(
+              ["git", "diff", "--name-only", os.environ["BASE_SHA"]],
+              text=True,
+          ).splitlines()
+          receipt_rel = os.environ["RECEIPT"]
+          if receipt_rel not in net_paths:
+              net_paths.append(receipt_rel)
+          lines = [
+              "# SOL-CIRCUITBREAKER — E07 BUY_PRODUCT source-boundary repair",
+              "",
+              "Operation: `TITAN-E07-BUY-PRODUCT-SOURCE-BOUNDARY-REPAIR-20260909-02`",
+              f"Base: `{os.environ['BASE_SHA']}`",
+              "",
+              "## Repair",
+              "",
+              "`fund_same_turn_acquisition` now bounds candidate SELL sources to indexes strictly before the first `BUY_PRODUCT` barrier. A fixed acquisition before that barrier may still use an earlier legal SELL, but it can never pull a later SELL across variable-price market state.",
+              "",
+              "The discriminating regression fixes the exact target=1 / barrier=2 / source=3 shape and proves: returned orders are unchanged, the reason is `no-safe-prefix-sale`, the fixed target remains unfilled, sale quantities are invariant, and the caller-owned base queue is unchanged.",
+              "",
+              "## Verification",
+              "",
+              "- `SameTurnFundingContracts`: PASS, including the new boundary case.",
+              "- `test_e07_hosted_source_path`, full `test_e07_same_turn_funding`, `test_joint_market_slots`, `test_e10_floor_cycle`, `test_release_consistency`, and `test_build_publication`: PASS.",
+              "- `build_integrated.py` and `build_integrated.py --check`: PASS.",
+              "- `git diff --check`: PASS.",
+              "- No games, Kaggle submission, provider action, spend, or strategy default change.",
+              "",
+              "## Generated current package",
+              "",
+              f"- Archive SHA256: `{current['sha256']}`",
+              f"- Bytes/runtime files: `{current['bytes']}` / `{current['runtime_files']}`",
+              f"- Source-manifest SHA256: `{current['source_manifest_sha256']}`",
+              f"- `frozen_selected.py`: `{len(source_path.read_bytes())}` B / `{hashlib.sha256(source_path.read_bytes()).hexdigest()}`",
+              f"- `test_e07_same_turn_funding.py`: `{len(test_path.read_bytes())}` B / `{hashlib.sha256(test_path.read_bytes()).hexdigest()}`",
+              "",
+              "## Net paths against base",
+              "",
+              *[f"- `{path}`" for path in sorted(net_paths)],
+              "",
+          ]
+          receipt = root / receipt_rel
+          receipt.parent.mkdir(parents=True, exist_ok=True)
+          receipt.write_text("\n".join(lines), encoding="utf-8")
+
+      - name: Commit generated source, tests, package, and receipt
+        run: |
+          git config user.name "SOL-CIRCUITBREAKER"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git add -A
+          git diff --cached --check
+          git status --short
+          git commit -m "titan: stop E07 sales at BUY_PRODUCT boundary [e07-boundary-generated]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
