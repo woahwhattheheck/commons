@@ -4,12 +4,16 @@ on:
   pull_request:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/**"
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json"
       - ".github/workflows/titan-kestrel-lockstep.yml"
   push:
     branches:
       - main
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/**"
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json"
       - ".github/workflows/titan-kestrel-lockstep.yml"
 
 permissions:
@@ -27,33 +31,53 @@ jobs:
       run:
         working-directory: revenue/kaggriculture/cloud-execution-lab
     steps:
-      - name: Check out tested commit
+      - name: Check out exact tested head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: Enforce exact checkout and entrypoint custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+          test "$(git hash-object main.py)" = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
+          test "$(git hash-object candidates/v3-kestrel-capital-execution/candidate_main.py)" = "a2acddf84b2cfd7b07457e873dc728bb873b3b1e"
+          git diff --exit-code
+          printf 'exact_head=%s\n' "$actual"
+          printf 'canonical_main_blob=%s\n' "$(git hash-object main.py)"
+          printf 'candidate_main_blob=%s\n' "$(git hash-object candidates/v3-kestrel-capital-execution/candidate_main.py)"
+
       - name: Record tested source identity
         shell: bash
         run: |
           set -euo pipefail
-          printf 'event_sha=%s\n' "${GITHUB_SHA}"
-          printf 'head_sha=%s\n' "${{ github.event.pull_request.head.sha || github.sha }}"
           sha256sum \
+            main.py \
+            TITAN-CONFIG.json \
+            candidates/v3-kestrel-capital-execution/candidate_main.py \
             candidates/v3-kestrel-capital-execution/kestrel_early_capital.py \
             candidates/v3-kestrel-capital-execution/lockstep_early_capital.py \
             candidates/v3-kestrel-capital-execution/candidate_runtime.py \
+            candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py \
             candidates/v3-kestrel-capital-execution/test_kestrel_early_capital.py \
             candidates/v3-kestrel-capital-execution/test_runtime_binding.py \
             candidates/v3-kestrel-capital-execution/test_kestrel_lockstep_repair.py
 
-      - name: Run predecessor and successor semantic contracts
+      - name: Run predecessor, successor, and canonical-entrypoint contracts
         shell: bash
         run: |
           set -euo pipefail
           python -m unittest -v \
+            candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py \
             candidates/v3-kestrel-capital-execution/test_kestrel_early_capital.py \
             candidates/v3-kestrel-capital-execution/test_runtime_binding.py \
             candidates/v3-kestrel-capital-execution/test_kestrel_lockstep_repair.py
@@ -70,3 +94,10 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile candidates/v3-kestrel-capital-execution/*.py
+
+      - name: Verify tests left the exact head clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          git diff --exit-code
