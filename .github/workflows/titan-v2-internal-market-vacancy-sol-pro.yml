@@ -1,0 +1,124 @@
+name: titan-v2-internal-market-vacancy-sol-pro
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v2-internal-market-vacancy-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-internal-market-vacancy-sol-pro/**'
+      - 'p/sol-pro-titan-v2-internal-market-vacancy-20260909-01.md'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v2-internal-market-vacancy-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-internal-market-vacancy-sol-pro/**'
+      - 'p/sol-pro-titan-v2-internal-market-vacancy-20260909-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-engine-mechanism:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install preserved-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run local contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-internal-market-vacancy-sol-pro
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          python -m unittest -v test_materialize.py test_probe.py
+          python -m py_compile materialize.py probe.py test_materialize.py test_probe.py
+
+      - name: Materialize exact frozen-V2 arm
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/v2-internal-market-vacancy-sol-pro"
+          OUT="$RUNNER_TEMP/v2-internal-market-vacancy"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          python "$CASE/materialize.py" \
+            --source "$LAB/runtime/variants/v2" \
+            --output "$OUT/candidate" \
+            --receipt "$OUT/MATERIALIZATION.json"
+
+      - name: Execute preserved-engine discriminator
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/v2-internal-market-vacancy-sol-pro"
+          OUT="$RUNNER_TEMP/v2-internal-market-vacancy"
+          python "$CASE/probe.py" \
+            --lab "$LAB" \
+            --candidate "$OUT/candidate" \
+            --materialization "$OUT/MATERIALIZATION.json" \
+            --output "$OUT/MECHANISM.json" \
+            --markdown "$OUT/MECHANISM.md"
+          cat "$OUT/MECHANISM.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify canonical package stayed unchanged
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v2-internal-market-vacancy-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/exact-head.sha
+            ${{ runner.temp }}/v2-internal-market-vacancy/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
+
+      - name: Require truthful mechanism-only verdict
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report = json.loads(
+              (Path(os.environ["RUNNER_TEMP"]) / "v2-internal-market-vacancy" / "MECHANISM.json").read_text()
+          )
+          assert report["verdict"] == "MECHANISM_CONFIRMED_ACTIVATION_UNMEASURED"
+          assert report["claim_boundary"]["official_game_strength"] is False
+          assert report["claim_boundary"]["canonical_admission"] is False
+          PY
