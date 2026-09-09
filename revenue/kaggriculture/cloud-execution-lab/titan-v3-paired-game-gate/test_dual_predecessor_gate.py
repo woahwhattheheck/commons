@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 from copy import deepcopy
+import json
 
 import pytest
 
@@ -162,3 +163,26 @@ def test_rejects_cached_or_wrong_inner_candidate_bytes(tmp_path, monkeypatch):
 
     with pytest.raises(GateError, match="input binding drift"):
         dual.run_dual_gate(**paths)
+
+
+def test_cli_writes_promote_report_with_stable_exit_code(tmp_path):
+    paths, _, _, _, _ = _write_case(tmp_path)
+    report_path = tmp_path / "dual-report.json"
+
+    code = dual.main([
+        "--predecessor-a-contract", str(paths["predecessor_a_contract_path"]),
+        "--predecessor-a-evidence", str(paths["predecessor_a_evidence_path"]),
+        "--predecessor-a-games", str(paths["predecessor_a_games_path"]),
+        "--predecessor-b-contract", str(paths["predecessor_b_contract_path"]),
+        "--predecessor-b-evidence", str(paths["predecessor_b_evidence_path"]),
+        "--predecessor-b-games", str(paths["predecessor_b_games_path"]),
+        "--candidate-games", str(paths["candidate_games_path"]),
+        "--report", str(report_path),
+        "--quiet",
+    ])
+
+    payload = json.loads(report_path.read_text(encoding="utf-8"))
+    assert code == 0
+    assert payload["valid"] is True
+    assert payload["verdict"] == "PROMOTE"
+    assert payload["mode"] == "dual-predecessor"
