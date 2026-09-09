@@ -22,7 +22,7 @@ import json
 import sys
 from collections import Counter
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
@@ -144,10 +144,18 @@ def projection_trace(
         orders = (
             current_market
             if step == now
-            else (route[step].get("market", []) if step < len(route) else [])
+            else (
+                route[step].get("market", [])
+                if step < len(route)
+                else []
+            )
         )
         for order in orders[:max_orders]:
-            if order and len(order) > 2 and order[0] == "BUY_PRODUCT":
+            if (
+                order
+                and len(order) > 2
+                and order[0] == "BUY_PRODUCT"
+            ):
                 buy_items.add(order[1])
     if stress_units:
         for item in buy_items:
@@ -185,7 +193,11 @@ def projection_trace(
         orders = (
             current_market
             if step == now
-            else (route[step].get("market", []) if step < len(route) else [])
+            else (
+                route[step].get("market", [])
+                if step < len(route)
+                else []
+            )
         )
         for index, order in enumerate(orders[:max_orders]):
             if not order:
@@ -200,7 +212,9 @@ def projection_trace(
                 for _ in range(requested):
                     if p["shed"].get(item, 0) <= 0:
                         break
-                    price = mechanics.market_price(item, inventory[item], params)
+                    price = mechanics.market_price(
+                        item, inventory[item], params
+                    )
                     p["shed"][item] -= 1
                     f["money"] += price
                     cash += price
@@ -217,7 +231,9 @@ def projection_trace(
                     f["money"] -= price
                     hires += 1
                     executed = 1
-                    f["hands"].append(mechanics._spawn_hand(f, len(f["tiles"])))
+                    f["hands"].append(
+                        mechanics._spawn_hand(f, len(f["tiles"]))
+                    )
                     p["inventories"].append({})
                 acquisitions.append(((step, index, op, ""), executed))
             elif op == "BUY_LAND":
@@ -230,12 +246,20 @@ def projection_trace(
                 if f["money"] >= price:
                     f["money"] -= price
                     executed = 1
-                    if len(f["unlocked_quadrants"]) <= len(mechanics.LAND_ORDER):
+                    if len(f["unlocked_quadrants"]) <= len(
+                        mechanics.LAND_ORDER
+                    ):
                         f["unlocked_quadrants"].append(
-                            mechanics.LAND_ORDER[len(f["unlocked_quadrants"]) - 1]
+                            mechanics.LAND_ORDER[
+                                len(f["unlocked_quadrants"]) - 1
+                            ]
                         )
                 acquisitions.append(((step, index, op, ""), executed))
-            elif op == "BUY_SEED" and len(order) > 2 and item in mechanics.CROPS:
+            elif (
+                op == "BUY_SEED"
+                and len(order) > 2
+                and item in mechanics.CROPS
+            ):
                 price = int(mechanics.CROPS[item]["seed"])
                 for _ in range(requested):
                     if f["money"] < price:
@@ -244,20 +268,33 @@ def projection_trace(
                     p["seeds"][item] = p["seeds"].get(item, 0) + 1
                     executed += 1
                 acquisitions.append(((step, index, op, item), executed))
-            elif op == "BUY_ANIMAL" and len(order) > 2 and item in mechanics.ANIMALS:
+            elif (
+                op == "BUY_ANIMAL"
+                and len(order) > 2
+                and item in mechanics.ANIMALS
+            ):
                 price = int(mechanics.ANIMALS[item]["cost"])
                 for _ in range(requested):
-                    if f["money"] < price or sum(p["shed"].values()) >= cap:
+                    if (
+                        f["money"] < price
+                        or sum(p["shed"].values()) >= cap
+                    ):
                         break
                     f["money"] -= price
                     p["shed"][item] = p["shed"].get(item, 0) + 1
                     executed += 1
                 acquisitions.append(((step, index, op, item), executed))
-            elif op == "BUY_PRODUCT" and len(order) > 2 and item in mechanics.PRODUCTS:
+            elif (
+                op == "BUY_PRODUCT"
+                and len(order) > 2
+                and item in mechanics.PRODUCTS
+            ):
                 for _ in range(requested):
                     if sum(p["shed"].values()) >= cap:
                         break
-                    price = mechanics.market_price(item, inventory[item] - 1, params)
+                    price = mechanics.market_price(
+                        item, inventory[item] - 1, params
+                    )
                     if f["money"] < price:
                         break
                     f["money"] -= price
@@ -301,12 +338,19 @@ def _blank_farm() -> dict[str, Any]:
 
 
 def _blank_private() -> dict[str, Any]:
-    shed = {item: 0 for item in [*mechanics.PRODUCTS, *mechanics.ANIMALS.keys()]}
+    shed = {
+        item: 0
+        for item in [
+            *mechanics.PRODUCTS,
+            *mechanics.ANIMALS.keys(),
+        ]
+    }
     shed["WHEAT"] = 99
     return {
         "shed": shed,
         "seeds": {
-            crop: (1 if crop == "WHEAT" else 0) for crop in mechanics.CROPS
+            crop: (1 if crop == "WHEAT" else 0)
+            for crop in mechanics.CROPS
         },
         "inventories": [{"COW": 1}, {}],
     }
@@ -314,7 +358,11 @@ def _blank_private() -> dict[str, Any]:
 
 def downstream_witness() -> dict[str, Any]:
     """A minimized trace where the unit-stage mismatch changes a funded acquisition."""
-    pass_row = {"farmer": ["PASS"], "hands": [["PASS"]], "market": []}
+    pass_row = {
+        "farmer": ["PASS"],
+        "hands": [["PASS"]],
+        "market": [],
+    }
     route = [
         copy.deepcopy(pass_row),
         {
@@ -338,10 +386,13 @@ def downstream_witness() -> dict[str, Any]:
             "market": [["BUY_ANIMAL", "SHEEP", 1]],
         },
     ]
+    market_inventory = {
+        item: 10_000 for item in mechanics.PRODUCTS
+    }
     obs = {
         "step": 0,
         "player": 0,
-        "market": {"inventory": {item: 10_000 for item in mechanics.PRODUCTS}},
+        "market": {"inventory": market_inventory},
     }
     config = {
         "shedCapacity": 100,
@@ -390,7 +441,9 @@ def downstream_witness() -> dict[str, Any]:
         "acquisitions": mirrored_sequential["acquisitions"],
         "executed_sales": mirrored_sequential["executed_sales"],
     }:
-        raise AssertionError("local mirror drifted from current FrozenSelected._funding_trace")
+        raise AssertionError(
+            "local mirror drifted from current FrozenSelected._funding_trace"
+        )
     key = (4, 0, "BUY_ANIMAL", "SHEEP")
     seq_fills = dict(sequential["acquisitions"]).get(key)
     atomic_fills = dict(atomic["acquisitions"]).get(key)
@@ -401,8 +454,7 @@ def downstream_witness() -> dict[str, Any]:
         "target_acquisition": list(key),
         "sequential_fill": seq_fills,
         "atomic_fill": atomic_fills,
-        "changed": sequential
-        != {
+        "changed": sequential != {
             "cash": atomic["cash"],
             "acquisitions": atomic["acquisitions"],
             "executed_sales": atomic["executed_sales"],
@@ -423,7 +475,9 @@ def route_census() -> dict[str, Any]:
         route_lengths[str(route_id)] = len(route)
         for step, row in enumerate(route):
             if not isinstance(row, dict):
-                raise RuntimeError(f"route {route_id!r} step {step} is not a dict")
+                raise RuntimeError(
+                    f"route {route_id!r} step {step} is not a dict"
+                )
             counts: Counter[str] = Counter()
             actors: dict[str, list[int]] = {}
             for actor, action in enumerate(unit_actions(row)):
@@ -444,7 +498,9 @@ def route_census() -> dict[str, Any]:
                             "crop": crop,
                             "demand": quantity,
                             "actors": actors[crop],
-                            "row_sha256": hashlib.sha256(canonical_json(row)).hexdigest(),
+                            "row_sha256": hashlib.sha256(
+                                canonical_json(row)
+                            ).hexdigest(),
                         }
                     )
     return {
@@ -505,7 +561,11 @@ def main() -> int:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(rendered, encoding="utf-8")
     print(rendered, end="")
-    return 2 if report["disposition"] == "INVALID" else 0
+    if report["disposition"] == "INVALID":
+        return 2
+    if report["disposition"] == "DORMANT":
+        return 3
+    return 0
 
 
 if __name__ == "__main__":
