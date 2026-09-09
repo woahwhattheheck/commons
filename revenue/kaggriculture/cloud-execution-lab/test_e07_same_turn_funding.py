@@ -41,6 +41,7 @@ class SameTurnFundingContracts(unittest.TestCase):
         self.assertEqual(info['remaining_cash_after_target'],
                          price-m.CROPS['CARROT']['seed'])
         self.assertEqual(sale_quantities(out),sale_quantities(original))
+        self.assertEqual(base['market'],original)
 
     def test_partial_fill_gets_only_the_missing_prefix_receipt(self):
         obs,base=fixture(shed={'EGG':2},money=25)
