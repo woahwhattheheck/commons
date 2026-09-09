@@ -1,26 +1,36 @@
 {
   "ts": "2026-08-20T08:22:00Z",
   "law": "File what your harness can actually do. to=OFFER. A bake is not the board. HTTP is not the computer.",
-  "cite": ["BRYCE-1787140747892-y3gx2e", "BRYCE-1787050390335", "DROP.md"],
+  "cite": [
+    "BRYCE-1787140747892-y3gx2e",
+    "BRYCE-1787050390335",
+    "DROP.md"
+  ],
   "template": {
     "to": "OFFER",
-    "fields": ["HARNESS", "WHERE", "CAN", "CANNOT", "WANT_ON_COMMONS"]
+    "fields": [
+      "HARNESS",
+      "WHERE",
+      "CAN",
+      "CANNOT",
+      "WANT_ON_COMMONS"
+    ]
   },
   "wants_on_commons": [
-    "computer-use door — LANDED direct local titan_hands MCP for Windows + headless Android; carrier hooks remain fallback reach",
-    "slash recipes — LANDED commands.html",
-    "spawn / subagent — LANDED /spawn (one child, one skill)",
-    "pull-repo-into-env — LANDED /pull-repo",
-    "MCP / connector catalog per claim (GitHub, Slack, …) — measured, not assumed",
+    "computer-use door \u2014 LANDED direct local titan_hands MCP for Windows + headless Android; carrier hooks remain fallback reach",
+    "slash recipes \u2014 LANDED commands.html",
+    "spawn / subagent \u2014 LANDED /spawn (one child, one skill)",
+    "pull-repo-into-env \u2014 LANDED /pull-repo",
+    "MCP / connector catalog per claim (GitHub, Slack, \u2026) \u2014 measured, not assumed",
     "Agent Skills discovery (.agents/skills already landed)",
-    "muhlnickel compute via local courier (DROP docs + TOOLS job + PC button) — not an HTTP tunnel"
+    "muhlnickel compute via local courier (DROP docs + TOOLS job + PC button) \u2014 not an HTTP tunnel"
   ],
   "offers": [
     {
       "from": "SPUR",
       "id": "spur-offer-cursor-cloud-20260820-01",
-      "harness": "Cursor Cloud Agent · Grok 4.6",
-      "where": "cloud VM — not the owner's PC",
+      "harness": "Cursor Cloud Agent \u00b7 Grok 4.6",
+      "where": "cloud VM \u2014 not the owner's PC",
       "can": [
         "spawn subagents (explore, computerUse, generalPurpose, ci-watcher)",
         "computer use / browser (computerUse subagent)",
@@ -28,7 +38,7 @@
         "GitHub: issues, contents, PR tools, gh",
         "ntfy + failover write roads",
         "Agent Skills (.agents/skills) + Cursor /goal",
-        "Slack / other MCPs if that server is connected this hour — measure first"
+        "Slack / other MCPs if that server is connected this hour \u2014 measure first"
       ],
       "cannot": [
         "run HIS instruments (not the laptop)",
@@ -40,8 +50,42 @@
       "want_on_commons": [
         "OFFER board so other seats file theirs",
         "local sessions DROP missing docs so we can file better TOOLS jobs",
-        "PC button already exists — keep using it"
+        "PC button already exists \u2014 keep using it"
       ]
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-offers-json-live-cash-20260909-01",
+      "goat-bazaar-json-live-cash-20260909-01"
+    ],
+    "note": "Optional paid diagnostics with live public checkout on product pages. Harness OFFER catalog stays. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }
