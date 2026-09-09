@@ -15,6 +15,10 @@ from compare_common import (
     require_hex,
 )
 
+EXPECTED_EPISODE_STEPS = 720
+EXPECTED_ACTION_STEPS = EXPECTED_EPISODE_STEPS - 1
+
+
 def validate_games(report: dict[str, Any], arm: str) -> dict[tuple[str, int, int], dict[str, Any]]:
     games = report.get("games")
     if not isinstance(games, list) or len(games) != EXPECTED_CELLS:
@@ -44,11 +48,17 @@ def validate_games(report: dict[str, Any], arm: str) -> dict[tuple[str, int, int
             raise CompareError(f"{arm} game {key} scores mismatch")
         finite_number(scores[0], f"{arm} game {key} score 0")
         finite_number(scores[1], f"{arm} game {key} score 1")
-        if type(game.get("episode_steps")) is not int or game.get("episode_steps") != 720:
+        if (
+            type(game.get("episode_steps")) is not int
+            or game.get("episode_steps") != EXPECTED_EPISODE_STEPS
+        ):
             raise CompareError(f"{arm} game {key} episode length mismatch")
         steps = game.get("steps")
-        if type(steps) is not int or steps <= 0 or steps > 720:
-            raise CompareError(f"{arm} game {key} completed-step count mismatch")
+        if type(steps) is not int or steps != EXPECTED_ACTION_STEPS:
+            raise CompareError(
+                f"{arm} game {key} does not match the exact "
+                f"{EXPECTED_EPISODE_STEPS}-state/{EXPECTED_ACTION_STEPS}-action lifecycle"
+            )
         require_hex(game.get("trace_sha256"), 64, f"{arm} game {key} trace digest")
         by_seat = game.get("action_sha256_by_seat")
         if not isinstance(by_seat, list) or len(by_seat) != 2:
@@ -68,12 +78,15 @@ def validate_games(report: dict[str, Any], arm: str) -> dict[tuple[str, int, int
         if (
             not isinstance(digest_steps, list)
             or len(digest_steps) != 2
-            or any(type(value) is not int or value != steps for value in digest_steps)
+            or any(
+                type(value) is not int or value != EXPECTED_ACTION_STEPS
+                for value in digest_steps
+            )
         ):
             raise CompareError(f"{arm} game {key} seat action digests are incomplete")
         if (
             type(game.get("candidate_action_digest_steps")) is not int
-            or game.get("candidate_action_digest_steps") != steps
+            or game.get("candidate_action_digest_steps") != EXPECTED_ACTION_STEPS
         ):
             raise CompareError(f"{arm} game {key} candidate action digest is incomplete")
         indexed[key] = game
@@ -87,6 +100,7 @@ def validate_games(report: dict[str, Any], arm: str) -> dict[tuple[str, int, int
     if set(indexed) != expected:
         raise CompareError(f"{arm} game grid is incomplete")
     return indexed
+
 
 def _paired_identity(control: dict[str, Any], ablation: dict[str, Any]) -> None:
     for key in (
@@ -108,6 +122,7 @@ def _paired_identity(control: dict[str, Any], ablation: dict[str, Any]) -> None:
         raise CompareError("control and ablation reused one invocation identity")
     if control["candidate"]["sha256"] == ablation["candidate"]["sha256"]:
         raise CompareError("control and ablation candidate entries are aliased")
+
 
 def _score(game: dict[str, Any], seat: int) -> tuple[float, float, float]:
     own = finite_number(game["scores"][seat], "candidate score")
