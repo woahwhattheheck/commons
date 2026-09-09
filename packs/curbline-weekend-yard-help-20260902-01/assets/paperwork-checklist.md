@@ -16,3 +16,7 @@ Not legal advice. Nobody files for you. Typical costs are ranges to check, not q
 | 10 | Bank / cash | Your own account | $0 | Cash or check on site; no invented Payment Link |
 
 Slots in `paperwork.md` stay `OWNER_UNSET` / `HOLD_COUNSEL` until you or counsel fill them.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
