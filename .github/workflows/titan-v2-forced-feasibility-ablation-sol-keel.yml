@@ -1,0 +1,191 @@
+name: titan-v2-forced-feasibility-ablation-sol-keel
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v2-forced-feasibility-ablation-sol-keel.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/**"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/compare.py"
+      - "p/sol-keel-titan-v2-forced-feasibility-ablation-20260909-01.md"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/titan-v2-forced-feasibility-ablation-sol-keel.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/**"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/compare.py"
+      - "p/sol-keel-titan-v2-forced-feasibility-ablation-20260909-01.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  exact-causal-screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      KAG: revenue/kaggriculture
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel
+      SEEDS: "539131249,1834999074,2609097301,2611092207"
+    steps:
+      - name: Check out exact tested head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact source identities
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git hash-object "$LAB/runtime/variants/v1/scheduler.py")" = "cbc502a92fe9d790cfaf763f6990d1057bc9b82d"
+          test "$(git hash-object "$LAB/runtime/variants/v2/scheduler.py")" = "7c068b7078c3d7c09bb3836590ad42b0af934cdf"
+          test "$(git hash-object "$LAB/runtime/variants/v2/candidate.py")" = "8db1262a2d38cc3115d06732383e18e1132ccfba"
+          test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py")" = "e7740bbd2f5ad71f565073445535d6941184288c"
+          test "$(git hash-object "$LAB/analysis/v2-target-domain-ablation-sol-bulwark/compare.py")" = "6d66238b2ce1f11f26752049c106502be5ef0ec7"
+          test "$(git hash-object "$CASE/materialize.py")" = "06515514ec864776f29571d63d3f343376e5865b"
+          test "$(git hash-object "$CASE/compare.py")" = "49614b4ec0eb5e5c09f5d345dd13c3c982b6ab39"
+          git diff --exit-code -- .
+          printf 'exact_head=%s\n' "$EXPECTED_HEAD"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check "kaggle-environments==1.32.7"
+
+      - name: Run one-factor and actual-source contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          python -B -m unittest -v test_materialize.py test_compare.py
+          python -B -m py_compile materialize.py compare.py test_materialize.py test_compare.py
+
+      - name: Materialize exact frozen V2 ablation
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v2-forced-feasibility-ablation"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          PYTHONDONTWRITEBYTECODE=1 python -B "$CASE/materialize.py" \
+            --source "$LAB/runtime/variants/v2" \
+            --output "$OUT/candidate" \
+            --receipt "$OUT/MATERIALIZATION.json"
+          cat "$OUT/MATERIALIZATION.json"
+
+      - name: Verify canonical package stayed unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          (
+            cd "$LAB"
+            PYTHONDONTWRITEBYTECODE=1 python -B build_integrated.py --check
+          )
+          git diff --exit-code -- .
+
+      - name: Run frozen V2 control panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v2-forced-feasibility-ablation"
+          PYTHONDONTWRITEBYTECODE=1 python -B "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$LAB/runtime/variants/v2/candidate.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$OUT/control.json"
+
+      - name: Run forced-feasibility ablation panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v2-forced-feasibility-ablation"
+          PYTHONDONTWRITEBYTECODE=1 python -B "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$OUT/candidate/candidate.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260909 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$OUT/candidate.json"
+
+      - name: Classify one-factor own-cash signal
+        id: classify
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          OUT="$RUNNER_TEMP/v2-forced-feasibility-ablation"
+          PYTHONDONTWRITEBYTECODE=1 python -B "$CASE/compare.py" \
+            --control "$OUT/control.json" \
+            --candidate "$OUT/candidate.json" \
+            --receipt "$OUT/MATERIALIZATION.json" \
+            --head "$(git rev-parse HEAD)" \
+            --output "$OUT/ABLATION-REPORT.json" \
+            --markdown "$OUT/ABLATION-REPORT.md"
+          status=$?
+          printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Publish readable result
+        if: always()
+        shell: bash
+        run: |
+          REPORT="$RUNNER_TEMP/v2-forced-feasibility-ablation/ABLATION-REPORT.md"
+          if [[ -f "$REPORT" ]]; then
+            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "# V2 forced-feasibility ablation did not reach classification" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v2-forced-feasibility-ablation-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/v2-forced-feasibility-ablation/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert exact head stayed clean
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git diff --exit-code -- .
+
+      - name: Require broad own-cash upside
+        if: always()
+        shell: bash
+        run: test "${{ steps.classify.outputs.exit_code }}" = "0"
