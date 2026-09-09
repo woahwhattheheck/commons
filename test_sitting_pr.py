@@ -61,6 +61,9 @@ class TestSittingPr(unittest.TestCase):
         self.assertEqual(catalog["sitting_remints"], [])
         self.assertEqual(catalog["error"], "sitting_remints is not a list")
 
+    def test_validator_source_is_not_phrase_evidence(self):
+        self.assertNotIn(os.path.join("host", "sitting_pr.py"), SEARCH_SPACE)
+
     def test_open_door_flags_default_true_but_reject_non_booleans(self):
         defaults = load_catalog('{"sitting_remints": []}')
         self.assertIs(defaults["no_auth"], True)
