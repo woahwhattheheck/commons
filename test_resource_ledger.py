@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788937929.677399")
+        self.assertEqual(catalog["slack_ts"], "1788948890.322939")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+            "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+        )
+        self.assertIn(
+            "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
@@ -299,7 +303,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
+            "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -309,10 +313,13 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "titan-official-engine-benchmark-evidence",
+            "titan-v25-cloud-simulation-order-queue",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 86)
-        self.assertEqual(current_activation["projection"]["producing"], 58)
+        self.assertEqual(current_activation["projection"]["resources"], 87)
+        self.assertEqual(current_activation["projection"]["producing"], 59)
+        self.assertEqual(current_activation["production_truth"]["order_roots"], 72)
+        self.assertEqual(current_activation["production_truth"]["pagination_pages"], 2)
+        self.assertEqual(current_activation["production_truth"]["messages_read"], 136)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -392,6 +399,9 @@ class TestResourceLedger(unittest.TestCase):
         rows = {row["name"]: row for row in catalog["surfaces"]}
         self.assertEqual(rows["supergrok-heavy"]["stage"], "PRODUCING")
         self.assertEqual(rows["supergrok-heavy"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["quantity"], 72)
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["condition"], "LIVE")

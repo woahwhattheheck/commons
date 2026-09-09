@@ -80,20 +80,21 @@
     "inventory/resources/records/codex-hive-trade-quote-schedule-activation-20260908-01.json",
     "inventory/resources/records/codex-hive-intake-crm-workflow-activation-20260909-01.json",
     "inventory/resources/records/codex-human-outcomes-input-validator-activation-20260909-01.json",
-    "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json"
+    "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
+    "inventory/resources/records/codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788937929.677399",
+  "slack_ts": "1788948890.322939",
   "snapshot": {
-    "base_main_sha": "bbbb6c39608c93011039980e575a2a756c2c44c6",
-    "observed_at": "2026-09-09T07:14:44Z",
+    "base_main_sha": "97b7a7a69764974191eb01368209f7a5d3e42d3e",
+    "observed_at": "2026-09-09T10:15:16Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+  "source_id": "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -102,8 +103,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — exact official-engine TITAN benchmark evidence producing for promotion and regression decisions",
+  "subject": "MASTER RESOURCE LEDGER — source-pinned TITAN V2.5 cloud simulation order queue producing for canonical experiment routing",
   "supersedes_source_ids": [
+    "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
     "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
     "codex-human-outcomes-input-validator-activation-20260909-01",
     "codex-hive-intake-crm-workflow-activation-20260909-01",
@@ -1062,6 +1064,29 @@
       "last_used_at": "2026-09-09T07:14:44Z",
       "stale_after": "next official-interpreter version, source/archive/opponent/seed/seat binding, benchmark operation, private-bundle integrity, hosted result or canonical TITAN promotion decision change",
       "priority": 98
+    },
+    {
+      "name": "titan-v25-cloud-simulation-order-queue",
+      "kind": "SOURCE_PINNED_CLOUD_EXPERIMENT_ORDER_QUEUE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / owner-managed TITAN V2.5 cloud experiment workers and canonical TITAN integration writer",
+      "authority": "SHARED_READ_CLAIM_RESULT_AND_SOURCE_HANDOFF; OWNER_MANAGES_CLAUDE; EXACT_SOURCE_ENGINE_SEED_SEAT_AND_OPERATION_BINDING_REQUIRED; NO_CLAUDE_WAKE_TESTER_VERIFIER_OR_LANDING_AUTHORITY; NO_KAGGLE_SUBMISSION_OR_PROVIDER_WRITE",
+      "consumer": "The already-designated owner-managed cloud experiment pool and the existing canonical TITAN writer selecting measured V2.5 improvements without duplicating cells",
+      "value": "One indexed queue exposes 72 distinct, executable and thread-addressable experiment lanes across production/spatial/capital, market/GOOP, and search/opponents/throughput, with claim and portable-result contracts that feed one canonical TITAN.",
+      "next_action": "Owner-managed workers may claim one exact order thread, pin its declared source and official-engine inputs, publish measured intermediate and terminal receipts there, and hand proven source forward to the existing canonical writer. Check prior claims and results before running any cell.",
+      "source": "#titan-v25-sim-runs index operation titan-v25-orders-20260909-index at Slack 1788946727.112159; exhaustive two-page channel read through 1788948162.263629; current canonical TITAN readback PR #11035 merge 7fcf729c06d69f6e14f4d8e50fc89ecb657bdc8f",
+      "evidence_ts": "2026-09-09T10:15:16Z",
+      "auth_surface": "Public Slack order index and order threads plus public current-main source manifests; private result bundles and owner-managed model sessions remain on their existing private paths",
+      "exact_safe_probe": "Two Slack pages exposed 136 queue messages and the complete indexed P01-P24, E01-E24 and S01-S24 order families (72 roots). Bootstrap and run operation identifiers are stable. PR #11035 is merged from head 4c5d876388f71f0e91fa58898515f7818e338121 at 7fcf729c06d69f6e14f4d8e50fc89ecb657bdc8f; current archive metadata reads e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58, 377624 bytes and 100 runtime files. Existing frozen orders retain their own source pins.",
+      "rate_plan_boundary": "An order, claim or queue message is not a live model session, completed experiment, measured gain, source merge, Kaggle submission, hosted score, quota reset, deployment, prize, payment, revenue or cash. Each run remains receipt-bound and exact-source-specific.",
+      "assigned_backlog": "Existing 72 owner-created order roots only; no order reminting, Claude wake, duplicate cell, parallel TITAN fork, provider submission, credential request, or replacement integration writer",
+      "last_receipt": "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+      "last_used_at": "2026-09-09T10:15:16Z",
+      "stale_after": "next queue index, order claim/result, source pin, official-engine binding, canonical TITAN merge, provider terms, quota or owner-routing change",
+      "quantity": 72,
+      "priority": 99
     },
     {
       "assigned_backlog": "no direct interactive spend while exhausted; consume only receipt-backed results from existing triggered automations",
