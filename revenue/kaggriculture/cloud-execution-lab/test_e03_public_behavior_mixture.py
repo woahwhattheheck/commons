@@ -109,6 +109,40 @@ class PublicBehaviorMixtureTests(unittest.TestCase):
                 minimum_support=1,
             )
 
+    def test_parsed_sample_scalars_are_strictly_validated_before_filtering(self):
+        scenarios = [StressScenario("zero", 0), StressScenario("flow", 20)]
+        bad_samples = [
+            PublicFlowSample(True, "MILK", 1, 1, "identified"),
+            PublicFlowSample(1.5, "MILK", 1, 1, "identified"),
+            PublicFlowSample(1, "", 1, 1, "identified"),
+            PublicFlowSample(1, 7, 1, 1, "identified"),
+            PublicFlowSample(1, "MILK", True, 1, "identified"),
+            PublicFlowSample(1, "MILK", 1.5, 2, "identified"),
+            PublicFlowSample(1, "MILK", 1, True, "identified"),
+            PublicFlowSample(1, "MILK", 1, 2.5, "identified"),
+            PublicFlowSample(1, "MILK", 1, 1, ""),
+            PublicFlowSample(1, "MILK", 1, 1, 9),
+            PublicFlowSample(1, "MILK", 1, 1, "identified", "any"),
+            PublicFlowSample(1, "MILK", 1, 1, "identified", "bogus"),
+            PublicFlowSample(1, "MILK", 1, 1, "identified", None, 1),
+        ]
+        for sample in bad_samples:
+            with self.subTest(sample=sample):
+                with self.assertRaises(ValueError):
+                    rolling_public_mixture(
+                        "MILK", scenarios, [sample], now=4, minimum_support=1
+                    )
+        # Validation happens before product/time filtering, so malformed unrelated
+        # evidence cannot be silently retained in a parsed history stream.
+        with self.assertRaises(ValueError):
+            rolling_public_mixture(
+                "MILK",
+                scenarios,
+                [PublicFlowSample(99, "WOOL", True, True, "identified")],
+                now=4,
+                minimum_support=1,
+            )
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
