@@ -52,7 +52,10 @@ def source_files():
                 name=str(p.relative_to(ROOT));mapping[name]=name
     for name in ('integrated_selected.py','selected_action_sell.py','selected_sell_core.py','ordered_selected_sell.py'):
         mapping[name]='reference/titan-current/latest/'+name
-    for name in ('scheduler.py','mechanics.py','reference/next-panel/vendor/arlene.py','reference/decision/decision.py'):
+    # The optional terminal owner pins the original frozen SELL source. Runtime
+    # optimizations must not silently replace that dependency with new bytes.
+    mapping['reference/titan-current/vendor/sell/scheduler.py']='reference/titan-current/vendor/sell/scheduler.py'
+    for name in ('mechanics.py','reference/next-panel/vendor/arlene.py','reference/decision/decision.py'):
         mapping['reference/titan-current/vendor/sell/'+name]=name
     mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
     # Controls and experimental configuration are reproduction inputs only.
@@ -62,6 +65,10 @@ def source_files():
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
     mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
+    mapping['checks/test_weed_continuation.py']='test_weed_continuation.py'
+    mapping['checks/reference/weed-continuation/delta-native.json.gz']='reference/weed-continuation/delta-native.json.gz'
+    mapping['checks/reference/weed-continuation/ash-native.json.gz']='reference/weed-continuation/ash-native.json.gz'
+    mapping['checks/reference/weed-continuation/spruce-native.json.gz']='reference/weed-continuation/spruce-native.json.gz'
     mapping['checks/test_seed_retry.py']='../cloud-committed-seed-retry/test_seed_retry.py'
     for name in ('reference/historical/seed_budget-before-derived-cache.py','reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
                  'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):

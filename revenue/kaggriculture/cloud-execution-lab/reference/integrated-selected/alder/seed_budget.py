@@ -77,7 +77,7 @@ class SeedBudget:
                     for name, s in self.suffixes.items()
                     if name == current or self.prefix_lengths[current, name] > after_step), default=0)
 
-    def apply(self, action, post_unit_seeds, step, current, max_orders=10):
+    def apply(self, action, post_unit_seeds, step, current, max_orders=10, *, extra_requests=None):
         result = deepcopy(action)
         stock = dict(post_unit_seeds)
         for slot, order in enumerate(result.get('market', [])[:max_orders]):
@@ -86,7 +86,10 @@ class SeedBudget:
             crop, requested = order[1], int(order[2])
             if requested <= 0:
                 continue
-            bound = self.remaining(crop, step, current)
+            # Route recovery adds only its explicit, still-future PLANT request.
+            # Keep the original branch-compatible bound instead of deriving a
+            # new prefix table from temporarily patched actor rows.
+            bound = self.remaining(crop, step, current) + int((extra_requests or {}).get(crop,0))
             retained = min(requested, max(0, bound - int(stock.get(crop, 0))))
             if retained != requested:
                 result['market'][slot] = ['BUY_SEED', crop, retained] if retained else []

@@ -1,5 +1,21 @@
 # Current TITAN release
 
+The current working v2 includes bounded recovery of a PLANT or BUILD displaced by
+the existing weed DIG. `SpatialTempo` remains the route owner inside the single
+`main.py::agent` production path. A same-day PASS absorbs the inserted operation;
+market rows and other actors retain their original schedule. A PLANT requires
+same-day watering and observed seeds above the entire remaining compatible-route
+demand. The next actual observation must still show the same actor, position,
+empty target and sufficient seed reserve. Each actor's future stream commits
+only against its actually returned action.
+
+This is source/native validation of an unsubmitted v2 iteration. Its exact
+DELTA, ASH and SPRUCE fixtures and regression tests are in `checks/`. New full-game
+panels are paused for the owner's mechanism-review pass. Historical A candidate
+tests and games do not validate these newly authored bytes, and no new playing
+strength or leaderboard claim is made. Optional spatial pathing/tempo, terminal
+features, fourth-quadrant investment and committed seed retry remain disabled.
+
 Run `python build_integrated.py` to generate `exports/titan-current.tar.gz` from current source. Run `python build_integrated.py --check` to reject any divergence between selected source, archive, configuration and receipt. There is no public variant selector. Executors finish their existing frozen checkpoint, then consume this stream at an immutable commit and report the archive hash before attributing games.
 
 The sole public entrypoint is `main.py::agent`. Its deterministic `TITAN-CONFIG.json` retains the strongest supported frozen SELL controller, actual ALDER/JUNIPER funding and the integrated deadline consumer. Each turn selects one parent action. Current entrypoint timing accounts for lazy initialization and prelude; it does not guarantee external serialization, IPC or scheduling time. The 10 ms reserve remains unchanged pending measured outer-protocol calibration.
@@ -8,7 +24,7 @@ History observe/transform/remember and its complete vendored dependency closure 
 
 The exact ancestor 70554dc0 has reported 27W/4T/1L against the strongest retained frozen control in 32 games (PR10156), with no timeout/errors. Its broad 320 original cells reported 309W/2L plus nine timeouts (four candidate, five opponent); failed-only jobs1 resolution produced 318W/2L (PR10153). Original outcomes remain evidence. These game results do not transfer to the current clock/history/package bytes; current archive verification is source and offline actor coverage only.
 
-Before replacing the canonical archive, the builder preserves its previous bytes under `exports/historical/titan-<sha256>.tar.gz`. Existing named archives remain unchanged and historical/test-only. Current selection uses only CURRENT-ARCHIVE.json. Apache-2.0 and MIT attribution is included. Engine reproduction uses official 1.32.7 / 28b6d8af. Owner authorizes root to submit this checkpoint under operation `titan-kaggriculture-checkpoint-20260908-01` after its exact-package checks; this builder does not duplicate the upload.
+Before replacing the canonical archive, the builder preserves its previous bytes under `exports/historical/titan-<sha256>.tar.gz`. Existing named archives remain unchanged and historical/test-only. Current selection uses only CURRENT-ARCHIVE.json. Apache-2.0 and MIT attribution is included. Engine reproduction uses official 1.32.7 / 28b6d8af. The earlier submission checkpoint is retained as historical metadata. This working v2 iteration does not authorize or perform a Kaggle submission.
 
 Completed funding and seed-budget module code is reused across recovery and matches. Only a fully executed module enters the cache; interrupted loads restore the prior module registration. Controller, route-derived seed budget and SELL ledger instances are reconstructed after cancellation and created afresh for each match. This removes repeated execution of those two stateless modules. Completed SeedBudget suffix/prefix derivations now also reuse a bounded four-entry process cache keyed by complete route contents. Immutable nested mappings/tuples have no mutable route aliases; events remain per instance. Builtin route contents are encoded locally with marshal version 2 (no reference-count sharing tags), never deserialized; unsupported object types are derived uncached. The cache does not establish the cause of the original external RPC failure.
 
@@ -19,4 +35,3 @@ Worker-thread calls use a per-thread Python trace deadline, chaining and restori
 ## Redundant-hire certificate enabled
 
 The packaged T10 physical certificate is enabled in this release. It changes only a HIRE order proven to add no productive state before the next refresh, replacing that slot with a zero-quantity sale. Exact current-package and multi-opponent development checks retained positive own-cash deltas with no verdict regression; it remains independent of optional feed, terminal-route, terminal-history and spatial experiments. Root retains provider upload.
-
