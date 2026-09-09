@@ -23,10 +23,10 @@ LAB = HERE.parents[1]
 def _install_repository_import_roots() -> list[Path]:
     """Resolve bare integrated-source imports from the canonical build map.
 
-    The checked-in lab modules intentionally use bare root imports.  Several of
+    The checked-in lab modules intentionally use bare root imports. Several of
     those roots (for example ``observed_clone``) are mapped from sibling source
     directories by ``build_integrated.source_files`` rather than stored directly
-    in the lab.  Exact-tree tests must reproduce that declared source closure,
+    in the lab. Exact-tree tests must reproduce that declared source closure,
     not depend on an ambient developer PYTHONPATH.
     """
     lab = LAB.resolve()
@@ -50,7 +50,7 @@ def _install_repository_import_roots() -> list[Path]:
             seen.add(parent)
             ordered.append(parent)
 
-    # Preserve the build map's deterministic priority while removing any stale
+    # Preserve the build map's deterministic priority while removing stale
     # ambient copies of these roots.
     for root in reversed(ordered):
         value = str(root)
@@ -182,8 +182,10 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
     def setUpClass(cls):
         cls.import_roots = _install_repository_import_roots()
         import frozen_selected
+        import scheduler
 
         cls.fs = frozen_selected
+        cls.scheduler = scheduler
         cls.predecessor = frozen_selected.FrozenSelected
 
     @staticmethod
@@ -204,7 +206,7 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
         return farm, private
 
     def _profile(self, cls, route):
-        fs = self.fs
+        scheduler = self.scheduler
         obj = object.__new__(cls)
         obj.controller = SimpleNamespace(cur=0, R=[route])
         farm, private = self._physical_state()
@@ -212,8 +214,12 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
         def projected(*_args, **_kwargs):
             return copy.deepcopy(farm), copy.deepcopy(private)
 
-        with mock.patch.object(fs, "post_units", side_effect=projected), \
-             mock.patch.object(fs.m, "_apply_unit_action", return_value=None):
+        # ``receipt_profile`` is inherited from scheduler.SellScheduler. Its
+        # helper lookups resolve in scheduler.__dict__, not frozen_selected's
+        # module globals. Patch the exact defining globals so this witness cannot
+        # silently fall through to a malformed synthetic observation.
+        with mock.patch.object(scheduler, "post_units", side_effect=projected), \
+             mock.patch.object(scheduler.m, "_apply_unit_action", return_value=None):
             return obj.receipt_profile(
                 {"step": 0},
                 {"farmer": ["PASS"], "hands": [], "market": []},
@@ -223,6 +229,12 @@ class ExactRepositoryWitnessTests(unittest.TestCase):
                 "CARROT",
                 {"shedCapacity": 4, "maxMarketOrdersPerTurn": 1},
             )
+
+    def test_receipt_profile_helpers_resolve_from_defining_scheduler_module(self):
+        globals_table = self.predecessor.receipt_profile.__globals__
+        self.assertIs(globals_table, self.scheduler.__dict__)
+        self.assertIs(globals_table["post_units"], self.scheduler.post_units)
+        self.assertIs(globals_table["m"], self.scheduler.m)
 
     def test_repository_import_closure_uses_declared_source_map(self):
         self.assertIn(LAB.resolve(), self.import_roots)
