@@ -1,0 +1,30 @@
+name: SOL Astra E07 hosted diagnostic
+
+on:
+  push:
+    branches:
+      - sol-astra/e07-hosted-diag-20260909-01
+
+permissions:
+  contents: read
+
+jobs:
+  e07-diag:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab
+    steps:
+      - uses: actions/checkout@v4
+      - name: Focused E07 and neighboring market contracts with packaged dependency path
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python3 -B -m unittest -v test_e07_same_turn_funding test_joint_market_slots
+      - name: Compile exact E07 touched runtime surface
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python3 -B -m py_compile frozen_selected.py test_e07_same_turn_funding.py scheduler.py ../cloud-runtime-pulse/observed_clone.py
+      - name: Rebuild canonical package ephemerally from exact E07 source
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python3 -B build_integrated.py | tee "$RUNNER_TEMP/e07-build.json"
+          python3 -B build_integrated.py --check | tee "$RUNNER_TEMP/e07-check.json"
