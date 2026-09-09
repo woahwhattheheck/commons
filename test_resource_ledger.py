@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788948890.322939")
+        self.assertEqual(catalog["slack_ts"], "1788959538.867059")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01",
+        )
+        self.assertIn(
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
@@ -303,7 +307,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json",
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -313,13 +317,14 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "titan-v25-cloud-simulation-order-queue",
+            "titan-v25-joint-sell-planner",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 87)
-        self.assertEqual(current_activation["projection"]["producing"], 59)
-        self.assertEqual(current_activation["production_truth"]["order_roots"], 72)
-        self.assertEqual(current_activation["production_truth"]["pagination_pages"], 2)
-        self.assertEqual(current_activation["production_truth"]["messages_read"], 136)
+        self.assertEqual(current_activation["projection"]["resources"], 88)
+        self.assertEqual(current_activation["projection"]["producing"], 60)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 11053)
+        self.assertEqual(current_activation["production_truth"]["source_validation"]["passed"], 144)
+        self.assertEqual(current_activation["production_truth"]["archive_validation"]["passed"], 81)
+        self.assertEqual(current_activation["production_truth"]["new_full_games"], 0)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -402,6 +407,10 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["stage"], "PRODUCING")
         self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["titan-v25-cloud-simulation-order-queue"]["quantity"], 72)
+        self.assertEqual(rows["titan-v25-joint-sell-planner"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v25-joint-sell-planner"]["condition"], "CONSTRAINED")
+        self.assertIn("EXACT_ARCHIVE_SOURCE_MANIFEST", rows["titan-v25-joint-sell-planner"]["authority"])
+        self.assertIn("fb292c5c323335acc7a9e31fdaace590b6f3bff9767c5495f1406c5211e32f23", rows["titan-v25-joint-sell-planner"]["exact_safe_probe"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["condition"], "LIVE")
@@ -803,6 +812,26 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(activation["projection"]["producing"], 58)
         self.assertIn("hosted score", activation["verification"]["zero_fabrication"])
         self.assertIn("does not copy", truth["private_bundle"])
+
+    def test_titan_joint_sell_activation_binds_current_package_without_game_claim(self):
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-titan-v25-joint-sell-resource-activation-20260909-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        truth = activation["production_truth"]
+        self.assertEqual(truth["source_head_sha"], "d9636fe6af454b667c0b6fb96e6faf1402d74010")
+        self.assertEqual(truth["source_merge_sha"], "596a5cd9987bf8aadee17387f581dcc8813b30d0")
+        self.assertEqual(truth["archive_bytes"], 401937)
+        self.assertEqual(truth["archive_runtime_files"], 103)
+        self.assertEqual(truth["archive_validation"]["runtime_member_hashes_verified"], 103)
+        self.assertEqual(truth["playing_strength_for_changed_bytes"], "NOT_MEASURED")
+        self.assertEqual(activation["build_orders"], [])
+        self.assertIn("hosted score", activation["verification"]["zero_fabrication"])
 
     def test_producing_github_actions_leaves_activation_queue(self):
         catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
