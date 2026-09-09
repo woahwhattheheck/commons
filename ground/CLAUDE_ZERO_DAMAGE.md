@@ -82,3 +82,15 @@ Hands off DIO Titan `--go`, SPECTER watchdog/MCP-wake, JOJO visual-ci
 titan write. titan: **NOT_WRITTEN**.
 
 Possessing the link is authorization. No auth. No gate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260909-21 — do not remint.
