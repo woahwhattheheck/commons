@@ -47,6 +47,10 @@ The gate requires:
 - exact command and panel identity agreement among contract, evidence, receipt,
   and the inherited single-gate report.
 
+Canonical semantic identity is derived from each validated and sorted cell key
+plus its baseline score vector. Numerically equivalent signed zeros are
+normalized so `0.0` and `-0.0` cannot create different semantic identities.
+
 Exact-byte and semantic predecessor-panel alias checks are intentionally
 conservative. Two genuinely distinct predecessor executions can theoretically
 produce identical score matrices. Without stronger independently trusted run
@@ -141,12 +145,13 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
   python3 -m unittest -v test_dual_predecessor_gate.py
 ```
 
-The thirteen-case adversarial suite covers custody-bound two-predecessor
+The fourteen-case adversarial suite covers custody-bound two-predecessor
 promotion, one-sided rejection, exact-byte and reserialized semantic copies of
-the first predecessor panel, candidate and engine artifact declaration drift,
-duplicate predecessor artifact bytes, candidate/predecessor artifact aliasing,
-receipt tamper, post-receipt candidate-panel substitution, exact-command drift,
-stale inner candidate bytes, and the CLI/report path.
+the first predecessor panel, signed-zero semantic equivalence, candidate and
+engine artifact declaration drift, duplicate predecessor artifact bytes,
+candidate/predecessor artifact aliasing, receipt tamper, post-receipt
+candidate-panel substitution, exact-command drift, stale inner candidate
+bytes, and the CLI/report path.
 
 `PROMOTE` proves only the supplied custody-bound panel under the inherited
 paired-gate threat model. A receipt is an immutable hash binding, not a digital

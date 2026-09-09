@@ -150,7 +150,10 @@ def _baseline_semantic_sha256(report: Mapping[str, Any]) -> str:
     normalized = [
         {
             "key": cell["key"],
-            "scores": cell["baseline_scores"],
+            "scores": [
+                0.0 if score == 0.0 else score
+                for score in cell["baseline_scores"]
+            ],
         }
         for cell in report["metrics"]["cells"]
     ]
