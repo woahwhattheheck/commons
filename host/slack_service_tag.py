@@ -3,7 +3,9 @@
 
 Owner hub 1788319779.597119: if the harness has Slack but not Facebook,
 @facebook is a Slack custom-tool job over the tagged body. Provider
-sessions only Bryce can complete go to #needs-bryce. Not a Commons gate.
+sessions only Bryce can complete go to #provider-sign-in. #needs-bryce
+remains the separate owner-exclusive queue for non-provider actions. Not a
+Commons gate.
 """
 from __future__ import annotations
 
@@ -193,7 +195,7 @@ def route(
 
 
 def format_owner_blocker(job: dict[str, Any]) -> str:
-    """Five-line #needs-bryce shape. Never includes secrets."""
+    """Provider-sign-in OWNER_BLOCKER shape. Never includes secrets."""
     tag = str(job.get("tag") or "service")
     body = str(job.get("body") or "").strip()
     return (
