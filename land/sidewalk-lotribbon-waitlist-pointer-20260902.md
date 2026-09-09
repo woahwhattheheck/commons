@@ -7,3 +7,7 @@ This leftover is the extra classifier plus machine card. It does not remint the 
 Machine leftover: [ground/BUSINESS_PACK_SIDEWALK_LOTRIBBON_WAITLIST.json](../ground/BUSINESS_PACK_SIDEWALK_LOTRIBBON_WAITLIST.json). Helper: [host/business_pack_sidewalk_lotribbon_waitlist.py](../host/business_pack_sidewalk_lotribbon_waitlist.py). Receipt: [cursor-business-pack-sidewalk-lotribbon-waitlist-helper-20260902-01](../p/cursor-business-pack-sidewalk-lotribbon-waitlist-helper-20260902-01.md).
 
 Did not overwrite TALLY sidewalk door `638e60b4`, LEAD LotRibbon door `ac60db02`, Harborline `door.html`, `packs/waitlist.html`, or `host/business_pack_desk_instance.py`. Checkout stays `NOT_MINTED`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
