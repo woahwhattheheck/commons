@@ -33,8 +33,9 @@ class MvtlTests(unittest.TestCase):
         auth={'lims':{'rows':12},'mode':'read-only'}; before=copy.deepcopy(auth); s=m.MvtlNemageneShadow(auth); fp=s.authoritative_fingerprint; s.replay(self.records,self.manifest); self.assertEqual(before,auth); self.assertEqual(fp,s.authoritative_fingerprint)
     def test_human_release_copy_only(self):
         s=m.MvtlNemageneShadow(); s.replay(self.records,self.manifest); oid=next(iter(s.reports)); before=copy.deepcopy(s.reports[oid])
-        for bad in ('','auto','system','bot','Jordan'):
+        for bad in ('','auto','system','bot','Jordan','System Reviewer','Bot Operator','Automation Service','Jordan System'):
             with self.assertRaises(PermissionError): s.release_report(oid,bad)
+            self.assertEqual(before,s.reports[oid])
         out=s.release_report(oid,'Jordan Reviewer'); self.assertEqual('RELEASED_BY_NAMED_HUMAN',out['state']); self.assertFalse(out['sent']); self.assertEqual(before,s.reports[oid])
         with self.assertRaises(PermissionError): s.automatic_release(oid)
     def test_tamper_fail_closed(self):

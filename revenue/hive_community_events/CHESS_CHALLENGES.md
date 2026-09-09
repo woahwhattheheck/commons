@@ -1,0 +1,49 @@
+# Lantern chess-style challenges
+
+This is an **additive presentation companion** for the existing Lantern community-event app. It uses the same SQLite `events`, `members`, and `answers` records and the same scheduling, first-answer-wins, reconnect, scoring, and leaderboard behavior from `app.py`.
+
+It is deliberately **not a chess engine**. The host authors a board position plus one square-to-square move for each normal answer choice. Clicking a start and destination square only selects the matching authored choice. Lantern never decides whether a move is legal, best, or valid under chess rules.
+
+## Run
+
+From `revenue/hive_community_events/`:
+
+```text
+python3 chess_challenge.py --db /private/path/events.sqlite3 --port 8765
+```
+
+Open `http://127.0.0.1:8765/chess`. The ordinary Lantern UI remains at `/`; both use the same event database. Use the chess launcher when creating/rendering board-aware questions. Existing trivia events and question packs remain compatible.
+
+## Authoring schema
+
+A normal Lantern question may add a `chess` object:
+
+```json
+{
+  "prompt": "Choose the authored knight move.",
+  "choices": ["g1→f3", "g1→h3"],
+  "correct": 0,
+  "points": 100,
+  "chess": {
+    "orientation": "white",
+    "pieces": {"e1": "K", "g1": "N", "e8": "k"},
+    "moves": [
+      {"from": "g1", "to": "f3", "choice": 0},
+      {"from": "g1", "to": "h3", "choice": 1}
+    ]
+  }
+}
+```
+
+`pieces` uses standard one-letter piece symbols: uppercase `KQRBNP` and lowercase `kqrbnp`. Squares are `a1` through `h8`. Orientation is `white` or `black`. Every ordinary answer choice must have exactly one distinct authored move, and every move must start on an occupied square.
+
+The sidecar persists only display metadata (`orientation`, `pieces`, and authored move→choice mappings). The event's existing `correct` choice remains the scoring key and stays hidden from participant state until the event finishes.
+
+## Behavioral boundaries
+
+- Free entry and non-cash points only; no wagering or prizes.
+- No chess legality, best-move, engine, rating, identity, anti-cheat, or tournament claims.
+- No platform/community-provider installation is implied.
+- Board metadata is public to participants once the question opens. Do not put private information in it.
+- Existing result exports remain governed by their current allowlists; the sidecar does not add participant references, individual answer records, or question keys to exports.
+- Running plain `app.py` against the same database is a compatible fallback: the underlying choices still work, but board metadata is not rendered.

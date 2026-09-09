@@ -147,6 +147,26 @@ class InfiniteCALParityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "NAMED_HUMAN_REVIEWER_REQUIRED"):
             mod.release_draft(result["ledger"], record_id, "")
 
+    def test_reserved_automation_reviewer_identities_are_rejected(self):
+        result = self.first_run()
+        record_id = next(iter(result["ledger"].drafts))
+        original = copy.deepcopy(result["ledger"].drafts[record_id])
+        for reviewer in (
+            "auto",
+            "SYSTEM",
+            "bot",
+            "Auto Reviewer",
+            "system.operator",
+            "bot_user",
+            "automation reviewer",
+            "automated-reviewer",
+            "robot reviewer",
+        ):
+            with self.subTest(reviewer=reviewer):
+                with self.assertRaisesRegex(ValueError, "NAMED_HUMAN_REVIEWER_REQUIRED"):
+                    mod.release_draft(result["ledger"], record_id, reviewer)
+                self.assertEqual(result["ledger"].drafts[record_id], original)
+
     def test_named_human_release_returns_copy_only(self):
         result = self.first_run()
         record_id = next(iter(result["ledger"].drafts))
