@@ -11,9 +11,12 @@ Worker lane: `sol-astra-titan-p18-feed-sourcing-20260909-01`
 - Claim base: `b87b968b433773bd7f8f4ac4908c82b64a29a677`
 - Claim tree: `fce71aa934f422cf4d969e742a4e89b626eb122f`
 - The claim base includes merged E11 PR #11131, which P18 reuses rather than forks.
-- Final publication base after concurrent merges: `a4decf6502feed84a95db6054b50bb3d9b48fc79`
-- Final publication tree: `860bcce9b0616654f31080f127ab912b7f792a4d`
+- First atomic publication base after concurrent merges: `a4decf6502feed84a95db6054b50bb3d9b48fc79`
+- First atomic publication tree: `860bcce9b0616654f31080f127ab912b7f792a4d`
 - All five owned destination paths were re-read at that exact tip and returned 404 before the atomic tree/commit mutation.
+- Main advanced again before PR merge. Non-force reconciliation base: `711ef54b9de626cea674aa8b51023e3218d0961b`
+- Reconciliation base tree: `b3b88d3b9da602851e3f40fda1c3fce074772e34`
+- All five owned destination paths were re-read at that reconciliation tip and again returned 404. The branch is reconciled by a merge commit with the original P18 commit and fresh main as parents; no history rewrite or force-push.
 
 ## Owned scope
 
