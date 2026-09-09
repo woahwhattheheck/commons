@@ -14,6 +14,7 @@ RESERVED_ACTOR_TOKENS = {
     "bot", "daemon", "integration", "machine", "robot", "scheduler",
     "service", "system", "workflow",
 }
+NAMESPACE_RE = re.compile(r"^SOC-(0[1-9]|1[0-9]|2[0-5])$")
 
 
 def canonical_json(value: Any) -> str:
@@ -54,14 +55,22 @@ def build_registry() -> Dict[str, Dict[str, Any]]:
     return registry
 
 
+def _namespace_number(value: str) -> int | None:
+    if not isinstance(value, str):
+        return None
+    match = NAMESPACE_RE.fullmatch(value)
+    if match is None:
+        return None
+    return int(match.group(1))
+
+
 def allowed_transfer(origin: str, destination: str) -> bool:
-    if origin == destination:
-        return True
-    try:
-        origin_n = int(origin.split("-")[-1])
-        destination_n = int(destination.split("-")[-1])
-    except (ValueError, IndexError):
+    origin_n = _namespace_number(origin)
+    destination_n = _namespace_number(destination)
+    if origin_n is None or destination_n is None:
         return False
+    if origin_n == destination_n:
+        return True
     predecessor = 25 if destination_n == 1 else destination_n - 1
     return origin_n == predecessor
 
@@ -73,14 +82,14 @@ def expected_transfer_ticket(origin: str, destination: str, job_id: str) -> str:
 def named_human(value: str) -> bool:
     if not isinstance(value, str):
         return False
-    tokens = [token.casefold() for token in re.findall(r"[A-Za-z0-9]+", value)]
-    if len(tokens) < 2:
-        return False
+    raw_tokens = re.findall(r"[A-Za-z0-9]+", value)
+    tokens = [token.casefold() for token in raw_tokens]
     if any(token in RESERVED_ACTOR_TOKENS for token in tokens):
         return False
     if any(len(token) < 2 for token in tokens):
         return False
-    return True
+    alpha_tokens = [token for token in raw_tokens if token.isalpha()]
+    return len(alpha_tokens) >= 2
 
 
 @dataclass

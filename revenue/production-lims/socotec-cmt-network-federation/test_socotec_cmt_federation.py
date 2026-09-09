@@ -7,8 +7,11 @@ from pathlib import Path
 
 from socotec_cmt_federation import (
     SocotecCmtFederation,
+    allowed_transfer,
     build_registry,
     canonical_json,
+    expected_transfer_ticket,
+    legacy_payload_digest,
     load_fixture,
     named_human,
     sha256_text,
@@ -89,10 +92,40 @@ class SocotecCmtFederationTests(unittest.TestCase):
         probe["transfer_ticket"] = "not-authorized"
         probe["legacy_payload"]["job_id"] = probe["job_id"]
         probe["legacy_payload"]["source_namespace"] = probe["origin_namespace"]
-        from socotec_cmt_federation import legacy_payload_digest
         probe["legacy_payload_sha256"] = legacy_payload_digest(probe["legacy_payload"])
         result = federation.process(probe)
         self.assertEqual(("HOLD", "UNAUTHORIZED_TRANSFER"), (result["state"], result["code"]))
+
+    def test_04b_namespace_grammar_is_canonical_and_fake_prefix_fails_closed(self) -> None:
+        self.assertTrue(allowed_transfer("SOC-25", "SOC-01"))
+        self.assertTrue(allowed_transfer("SOC-01", "SOC-01"))
+        self.assertTrue(allowed_transfer("SOC-01", "SOC-02"))
+        for origin, destination in (
+            ("FAKE-25", "SOC-01"),
+            ("SOC-25", "FAKE-01"),
+            ("SOC-00", "SOC-01"),
+            ("SOC-26", "SOC-01"),
+            ("soc-25", "SOC-01"),
+            ("FAKE-25", "FAKE-25"),
+        ):
+            with self.subTest(origin=origin, destination=destination):
+                self.assertFalse(allowed_transfer(origin, destination))
+
+        federation = SocotecCmtFederation()
+        probe = copy.deepcopy(self.jobs[0])
+        probe["submission_id"] = "PROBE-FAKE-NAMESPACE"
+        probe["job_id"] = "PROBE-FAKE-NAMESPACE"
+        probe["origin_namespace"] = "FAKE-25"
+        probe["transfer_ticket"] = expected_transfer_ticket(
+            probe["origin_namespace"], probe["expected_route_namespace"], probe["job_id"]
+        )
+        probe["legacy_payload"]["job_id"] = probe["job_id"]
+        probe["legacy_payload"]["source_namespace"] = probe["origin_namespace"]
+        probe["legacy_payload_sha256"] = legacy_payload_digest(probe["legacy_payload"])
+        result = federation.process(probe)
+        self.assertEqual(("HOLD", "UNAUTHORIZED_TRANSFER"), (result["state"], result["code"]))
+        self.assertEqual(0, len(federation.state.accessions))
+        self.assertEqual(0, len(federation.state.staged_reports))
 
     def test_05_mock_legacy_payload_hashes_reconcile_read_only(self) -> None:
         federation, _ = self._run()
@@ -151,18 +184,21 @@ class SocotecCmtFederationTests(unittest.TestCase):
         self.assertFalse(released["sent"])
         self.assertEqual(before, federation.state.staged_reports[job_id])
 
-    def test_10_reserved_automation_identities_and_one_token_names_are_rejected(self) -> None:
+    def test_10_reserved_and_nonhuman_identities_are_rejected_without_mutation(self) -> None:
         federation, _ = self._run()
         job_id = federation.state.accessions[0]["job_id"]
+        before = federation.state.digest()
         rejected = [
-            "auto reviewer", "System Reviewer", "bot operator", "Automation Service",
-            "Jordan System", "AI Reviewer", "workflow agent", "service account", "Madonna",
+            "auto reviewer", "System Reviewer", "System-Reviewer", "bot operator",
+            "Automation Service", "Jordan System", "AI Reviewer", "workflow agent",
+            "service account", "service_account", "12 34", "9 10", "Madonna",
         ]
         for reviewer in rejected:
             with self.subTest(reviewer=reviewer):
                 self.assertFalse(named_human(reviewer))
                 with self.assertRaises(PermissionError):
                     federation.release_report(job_id, reviewer)
+                self.assertEqual(before, federation.state.digest())
         self.assertTrue(named_human("Jordan Rivera"))
 
     def test_11_automatic_release_disabled(self) -> None:
