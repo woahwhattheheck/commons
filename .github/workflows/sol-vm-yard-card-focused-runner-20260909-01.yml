@@ -1,0 +1,49 @@
+name: sol-vm-yard-card-focused-runner
+
+on:
+  push:
+    branches:
+      - 'sol-vm/yard-card-focused-runner-20260909-*'
+
+permissions:
+  contents: read
+
+jobs:
+  yard-card-current-main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout carrier
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record carrier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "carrier_head=$(git rev-parse HEAD)"
+          git show -s --format='carrier_parents=%P' HEAD
+      - name: Hash exact yard-card paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          for p in \
+            host/pack_keep_sell_candidate.py \
+            p/cursor-business-pack-yard-card-20260902-01.md \
+            revenue/pack_keep_sell_candidates/yard-card-route-20260902-01/RUNBOOK.md \
+            revenue/pack_keep_sell_candidates/yard-card-route-20260902-01/assets/card-copy.txt \
+            revenue/pack_keep_sell_candidates/yard-card-route-20260902-01/assets/invoice-text.txt \
+            revenue/pack_keep_sell_candidates/yard-card-route-20260902-01/assets/price-sheet.md \
+            revenue/pack_keep_sell_candidates/yard-card-route-20260902-01/manifest.json \
+            test_pack_keep_sell_candidate.py; do
+            printf '%s=' "$p"
+            git hash-object "$p"
+          done
+      - name: Run exact focused suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_pack_keep_sell_candidate.py
+          python3 -m py_compile host/pack_keep_sell_candidate.py test_pack_keep_sell_candidate.py
