@@ -59,3 +59,14 @@ per_opponent:
 - v1_submitted: games 32 W 32 T 0 L 0 mean_margin 874.562
 
 Tokens: panels/canonical.TOKENS.txt (seed:own_s0/rival_s0/own_s1/rival_s1).
+
+## land panel
+
+wall_seconds 549.1  workers 8  scheduled 192  completed 192  failed 0  throughput 20.98
+- arlene: games 32 W 32 T 0 L 0 mean_margin 1631.031
+- apex: games 32 W 32 T 0 L 0 mean_margin 8943.281
+- kaito_v43: games 32 W 30 T 0 L 2 mean_margin 14596.781
+- cok_v10: games 32 W 32 T 0 L 0 mean_margin 26303.062
+- public_bt12: games 32 W 32 T 0 L 0 mean_margin 22454.656
+- v1_submitted: games 32 W 32 T 0 L 0 mean_margin 874.562
+
