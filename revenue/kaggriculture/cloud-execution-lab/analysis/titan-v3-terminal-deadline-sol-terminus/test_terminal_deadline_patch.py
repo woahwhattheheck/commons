@@ -140,19 +140,20 @@ class DerivationTests(unittest.TestCase):
 class RuntimeFallbackTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        sys.path.insert(0, str(CANDIDATE))
-        cls.runtime = _load("_terminus_candidate_runtime", CANDIDATE / "titan_runtime.py")
-        cls.entrypoint = _load("_terminus_candidate_entrypoint", CANDIDATE / "main.py")
+        cls.control_runtime = _load(
+            "_terminus_control_runtime", CONTROL / "titan_runtime.py"
+        )
+        cls.candidate_runtime = _load(
+            "_terminus_candidate_runtime", CANDIDATE / "titan_runtime.py"
+        )
+        cls.control_entrypoint = _load(
+            "_terminus_control_entrypoint", CONTROL / "main.py"
+        )
+        cls.candidate_entrypoint = _load(
+            "_terminus_candidate_entrypoint", CANDIDATE / "main.py"
+        )
 
-    @classmethod
-    def tearDownClass(cls) -> None:
-        try:
-            sys.path.remove(str(CANDIDATE))
-        except ValueError:
-            pass
-
-    def _deadline_agent(self, step: int):
-        runtime = self.runtime
+    def _deadline_agent(self, runtime, step: int):
         expiry = runtime.deadline.DeadlineExceeded("forced selected-transform expiry")
 
         class FakeTimer:
@@ -185,9 +186,12 @@ class RuntimeFallbackTests(unittest.TestCase):
         agent.transform_selected = expire_transform
         return agent.act(_observation(step), _configuration())
 
-    def test_inner_terminal_transform_expiry_keeps_liquidation(self) -> None:
-        result = self._deadline_agent(718)
-        expected = self.runtime.deadline.terminal_liquidation_fallback(
+    def test_predecessor_inner_terminal_expiry_returns_raw_selection(self) -> None:
+        self.assertEqual(self._deadline_agent(self.control_runtime, 718), RAW_SELECTED)
+
+    def test_candidate_inner_terminal_expiry_keeps_liquidation(self) -> None:
+        result = self._deadline_agent(self.candidate_runtime, 718)
+        expected = self.candidate_runtime.deadline.terminal_liquidation_fallback(
             _observation(718), _configuration()
         )
         self.assertEqual(result, expected)
@@ -196,28 +200,46 @@ class RuntimeFallbackTests(unittest.TestCase):
         self.assertEqual(_sales(result), {"WHEAT": 4, "MILK": 1, "CARROT": 2})
         self.assertNotEqual(result, RAW_SELECTED)
 
-    def test_inner_nonterminal_transform_expiry_keeps_selected_behavior(self) -> None:
-        self.assertEqual(self._deadline_agent(717), RAW_SELECTED)
+    def test_candidate_nonterminal_expiry_keeps_selected_behavior(self) -> None:
+        self.assertEqual(
+            self._deadline_agent(self.candidate_runtime, 717), RAW_SELECTED
+        )
 
-    def test_outer_terminal_finalization_fallback_overrides_selected(self) -> None:
+    def test_predecessor_outer_terminal_fallback_returns_raw_selection(self) -> None:
         instance = types.SimpleNamespace(selected=copy.deepcopy(RAW_SELECTED))
-        result = self.entrypoint._entrypoint_fallback(
-            instance, _observation(718), _configuration(), self.runtime.deadline
+        result = self.control_entrypoint._entrypoint_fallback(
+            instance,
+            _observation(718),
+            _configuration(),
+            self.control_runtime.deadline,
+        )
+        self.assertEqual(result, RAW_SELECTED)
+
+    def test_candidate_outer_terminal_fallback_overrides_selected(self) -> None:
+        instance = types.SimpleNamespace(selected=copy.deepcopy(RAW_SELECTED))
+        result = self.candidate_entrypoint._entrypoint_fallback(
+            instance,
+            _observation(718),
+            _configuration(),
+            self.candidate_runtime.deadline,
         )
         self.assertEqual(
             result,
-            self.runtime.deadline.terminal_liquidation_fallback(
+            self.candidate_runtime.deadline.terminal_liquidation_fallback(
                 _observation(718), _configuration()
             ),
         )
         self.assertEqual(result["farmer"], ["DROP"])
         self.assertEqual(_sales(result), {"WHEAT": 4, "MILK": 1, "CARROT": 2})
 
-    def test_outer_nonterminal_fallback_keeps_deepcopied_selected(self) -> None:
+    def test_candidate_outer_nonterminal_fallback_keeps_deepcopied_selected(self) -> None:
         selected = copy.deepcopy(RAW_SELECTED)
         instance = types.SimpleNamespace(selected=selected)
-        result = self.entrypoint._entrypoint_fallback(
-            instance, _observation(717), _configuration(), self.runtime.deadline
+        result = self.candidate_entrypoint._entrypoint_fallback(
+            instance,
+            _observation(717),
+            _configuration(),
+            self.candidate_runtime.deadline,
         )
         self.assertEqual(result, RAW_SELECTED)
         self.assertIsNot(result, selected)
