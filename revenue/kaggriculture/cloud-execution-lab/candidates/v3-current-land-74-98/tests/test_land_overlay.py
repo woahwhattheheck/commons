@@ -107,6 +107,71 @@ class LandOverlayContracts(unittest.TestCase):
         self.assertEqual(replacement_source[74]["market"], [])
         self.assertIs(agent._land_7498_controller, agent.controller)
 
+    def test_spatial_tempo_predecessor_preserves_buy_land_activation(self):
+        """SpatialTempo captures pristine = controller.R before this overlay runs.
+        Its wrapped act rebuilds routes from that capture and reassigns controller.R.
+        In-place identity preservation is required so steps 74/98 still carry BUY_LAND.
+        """
+        class SpatialTempoLike:
+            def __init__(self, controller):
+                self.pristine = controller.R
+                original_act = controller.act
+
+                def act(obs=None):
+                    routes = dict(self.pristine)
+                    controller.R = routes
+                    return original_act(obs)
+
+                controller.act = act
+
+        class ProducingController:
+            def __init__(self, routes):
+                self.R = routes
+                self.seen = []
+
+            def act(self, obs=None):
+                self.seen.append(
+                    (
+                        self.R["MAIN"][74]["market"],
+                        self.R["MAIN"][98]["market"],
+                    )
+                )
+                return "ok"
+
+        class Agent:
+            def __init__(self):
+                self.controller = None
+                self.diagnostics = {}
+                self.calls = 0
+
+            def _initialize(self):
+                self.calls += 1
+                if self.controller is None:
+                    source = LandOverlayContracts.route()
+                    self.controller = ProducingController({"MAIN": source})
+                    SpatialTempoLike(self.controller)
+
+        agent = Agent()
+        land.wrap(agent)
+        agent._initialize()
+        agent.controller.act({})
+        self.assertEqual(
+            agent.controller.seen[-1],
+            ([["BUY_LAND"]], [["BUY_LAND"]]),
+        )
+        self.assertIs(agent.controller.R, agent._land_7498_controller.R)
+
+        source2 = LandOverlayContracts.route()
+        agent.controller = ProducingController({"MAIN": source2})
+        SpatialTempoLike(agent.controller)
+        agent._initialize()
+        agent.controller.act({})
+        self.assertEqual(
+            agent.controller.seen[-1],
+            ([["BUY_LAND"]], [["BUY_LAND"]]),
+        )
+        self.assertEqual(source2[74]["market"], [])
+
     def test_invalid_inputs_rejected(self):
         with self.assertRaises(TypeError):
             land.patch_routes([])
