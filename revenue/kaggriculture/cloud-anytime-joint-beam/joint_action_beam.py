@@ -195,6 +195,8 @@ def search_joint_actions(
                     expanded += 1
                     is_canonical = _encoded(action) == _encoded(canonical_action)
                     successor = transition(node.state, unit_index, action)
+                    if expired():
+                        return fallback("deadline-during-search")
                     if successor is None:
                         if not (node.canonical_prefix and is_canonical):
                             pruned += 1
@@ -203,6 +205,8 @@ def search_joint_actions(
                     actions = node.actions + (copy.deepcopy(action),)
                     canonical_prefix = node.canonical_prefix and is_canonical
                     value = int(score(successor, actions))
+                    if expired():
+                        return fallback("deadline-during-search")
                     next_frontier.append(_Node(successor, actions, value, canonical_prefix))
             except Exception:
                 return fallback("callback-error")
@@ -226,15 +230,21 @@ def search_joint_actions(
                 successor = transition(state, unit_index, action)
             except Exception:
                 return fallback("callback-error")
+            if expired():
+                return fallback("deadline-during-finalization")
             state = state if successor is None else successor
             actions.append(copy.deepcopy(action))
         try:
             value = int(score(state, tuple(actions)))
         except Exception:
             return fallback("callback-error")
+        if expired():
+            return fallback("deadline-during-finalization")
         finalists.append(_Node(state, tuple(actions), value, node.canonical_prefix))
 
     finalists.sort(key=_rank)
+    if expired():
+        return fallback("deadline-during-finalization")
     best = finalists[0]
     return BeamResult(best.actions, best.score, True, False, expanded, pruned,
                       peak, planned_depth, "complete")
