@@ -54,9 +54,10 @@ class PatchRoutesTests(unittest.TestCase):
         self.assertEqual(receipt["existing"], 1)
         self.assertEqual(shared["market"], [[BUY_LAND]])
 
-    def test_wrap_installs_after_original_initialize_once(self):
+    def test_wrap_rechecks_same_controller_without_duplicate(self):
         class Controller:
-            R = {"MAIN": route()}
+            def __init__(self):
+                self.R = {"MAIN": route()}
 
         class Agent:
             def __init__(self):
@@ -69,13 +70,44 @@ class PatchRoutesTests(unittest.TestCase):
         agent = wrap(Agent())
         self.assertIs(wrap(agent), agent)
         agent._initialize()
+        first_receipt = agent._land_admission_state["receipt"]
         agent._initialize()
+        second_receipt = agent._land_admission_state["receipt"]
         self.assertEqual(agent.initializations, 2)
-        self.assertEqual(
-            agent._land_admission_state["receipt"]["activations"],
-            2,
-        )
+        self.assertEqual(agent._land_admission_state["initializations"], 2)
+        self.assertEqual(first_receipt["activations"], 2)
+        self.assertEqual(second_receipt["activations"], 0)
+        self.assertEqual(second_receipt["existing"], 2)
         self.assertEqual(agent.controller.R["MAIN"][74]["market"], [[BUY_LAND]])
+
+    def test_wrap_reinstalls_after_controller_replacement(self):
+        class Controller:
+            def __init__(self):
+                self.R = {"MAIN": route()}
+
+        class Agent:
+            def __init__(self):
+                self.controller = None
+                self.initializations = 0
+
+            def _initialize(self):
+                self.initializations += 1
+                self.controller = Controller()
+
+        agent = wrap(Agent())
+        agent._initialize()
+        first_controller = agent.controller
+        self.assertEqual(first_controller.R["MAIN"][74]["market"], [[BUY_LAND]])
+        self.assertEqual(first_controller.R["MAIN"][98]["market"], [[BUY_LAND]])
+
+        # Canonical TitanAgent sets ready=False after deadline cancellation and
+        # then _initialize() constructs a fresh FrozenSelected/controller.
+        agent._initialize()
+        self.assertIsNot(agent.controller, first_controller)
+        self.assertEqual(agent.controller.R["MAIN"][74]["market"], [[BUY_LAND]])
+        self.assertEqual(agent.controller.R["MAIN"][98]["market"], [[BUY_LAND]])
+        self.assertEqual(agent._land_admission_state["initializations"], 2)
+        self.assertEqual(agent._land_admission_state["receipt"]["activations"], 2)
 
 
 if __name__ == "__main__":
