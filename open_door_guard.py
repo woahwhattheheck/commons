@@ -12,6 +12,7 @@ import ast
 import importlib.util
 import io
 import os
+import re
 from pathlib import Path
 import textwrap
 import tokenize
@@ -198,6 +199,25 @@ _directive_or_prohibition = types.FunctionType(
 )
 
 
+def _window_rule_matches(rule: Rule, path: str, window: str) -> bool:
+    """Match structural window rules without confusing argparse configuration.
+
+    ``argparse.add_argument(..., action=...)`` uses ``action`` as a parser
+    behavior keyword, not as an Action Pad field.  Mask only that keyword
+    before the structural enum scan; actual ``--action`` options and
+    action/verb schema fields remain visible to the existing rule.
+    """
+    candidate = window
+    if rule.name == "verb-enum" and path.lower().endswith(".py"):
+        candidate = re.sub(
+            r"(\badd_argument\s*\([^)]{0,240}?)\baction\s*=",
+            r"\1argparse_action=",
+            candidate,
+            flags=re.IGNORECASE,
+        )
+    return bool(rule.pattern.search(candidate))
+
+
 def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
     by_path: dict[str, list[AddedLine]] = {}
     for line in lines:
@@ -238,7 +258,7 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
             if not window or _directive_or_prohibition(window):
                 continue
             for rule in WINDOW_RULES:
-                if rule.pattern.search(window):
+                if _window_rule_matches(rule, path, window):
                     item = Violation(path, line.line_number, rule.name, rule.explanation, window[:240])
                     found[(path, line.line_number, rule.name)] = item
     return sorted(found.values(), key=lambda item: (item.path, item.line_number, item.rule))

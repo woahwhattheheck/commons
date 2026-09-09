@@ -39,7 +39,7 @@ def timestamp(value):
 
 
 def latest(items):
-    values = [timestamp(item.get("updated_at")) for item in items]
+    values = [timestamp(item.get("activity_observed_at")) for item in items]
     return max((value for value in values if value),
                key=lambda value: datetime.fromisoformat(value.replace("Z", "+00:00")), default=None)
 
