@@ -7,6 +7,8 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/exports/ARTIFACTS.json'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/FILES.json'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-sell-v3-source.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/development-v3.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/heldout-v3.json'
       - '.github/workflows/titan-v3-proven-snapshot.yml'
   push:
     paths:
@@ -14,6 +16,8 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/exports/ARTIFACTS.json'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/FILES.json'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-sell-v3-source.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/development-v3.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/heldout-v3.json'
       - '.github/workflows/titan-v3-proven-snapshot.yml'
 
 permissions:
@@ -60,4 +64,22 @@ jobs:
           assert receipt['candidate']['entrypoint'] == 'main.py::agent'
           assert receipt['source']['commit'] == '9f89a2cd75c5c89198caa1617a9e399900553ce3'
           assert receipt['policy_delta'] == 'generated main.py alias only; frozen policy bytes unchanged'
+          evidence = receipt['evidence_scope']
+          assert evidence['status'] == 'BOUND_CONTROL_ONLY'
+          assert evidence['development']['candidate'] == {
+              'W': 12, 'T': 0, 'L': 0, 'failed': 0, 'games': 12,
+          }
+          assert evidence['held_out']['candidate'] == {
+              'W': 8, 'T': 0, 'L': 0, 'failed': 0, 'games': 8,
+          }
+          paired = evidence['held_out']['paired']
+          assert paired['cells'] == 8
+          assert paired['sum_own_cash_delta'] == 1317.0
+          assert paired['mean_own_cash_delta'] == 164.625
+          assert paired['minimum_own_cash_delta'] == -1031.0
+          assert paired['negative_cells'] == 1
+          assert paired['uniform_non_regression'] is False
+          boundary = evidence['strength_boundary']
+          assert boundary['hosted_leaderboard_claim'] is False
+          assert boundary['promotion'] == 'FULL_CURRENT_MATCHED_PANEL_REQUIRED'
           PY
