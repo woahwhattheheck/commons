@@ -370,3 +370,13 @@ That write **is** the start signal. The ring circulates. Adjacent fwd cells diff
 7. **Net vs ring** — AND/NAND on avg4/mux; XOR/OR opcodes on ring only.
 
 Then run the fab as **new land** `weather_v2.mno` (do not smash v1). Store **six** rings, both senses, stated purposes. Then a button: inject ∨ surface ∨ die on **that** file. A card with no stored gates is not a computer. Measured 2026-08-16: `weather_v2.mno` ABSENT. `weather.mno` still zero rings. `NO_KNEECAP.md`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

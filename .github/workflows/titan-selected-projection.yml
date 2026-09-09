@@ -448,14 +448,20 @@ jobs:
           set -euo pipefail
           python3 -B -m unittest -v test_release_consistency \
             2>&1 | tee "$RUNNER_TEMP/canonical-validation/release-consistency-tests.log"
-      - name: Whole-entrypoint deadline containment tests
+      - name: Final pre-ledger market-pressure entrypoint tests
         if: ${{ !cancelled() }}
         working-directory: revenue/kaggriculture/cloud-execution-lab
         shell: bash
         run: |
           set -euo pipefail
-          python3 -B -m unittest -v test_entrypoint_deadline \
-            2>&1 | tee "$RUNNER_TEMP/canonical-validation/entrypoint-deadline-tests.log"
+          python3 -B -m unittest -v test_final_market_pressure_entrypoint \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/final-pressure-entrypoint-tests.log"
+          RUNTIME="$RUNNER_TEMP/canonical-validation/final-pressure-runtime"
+          mkdir -p "$RUNTIME"
+          tar -xzf exports/titan-current.tar.gz -C "$RUNTIME"
+          (cd "$RUNTIME" && PYTHONPATH="$RUNTIME" \
+            python3 -B -m unittest -v checks.test_final_market_pressure_entrypoint) \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/final-pressure-archive-tests.log"
       - name: Committed seed retry source and canonical boundary tests
         if: ${{ !cancelled() }}
         shell: bash

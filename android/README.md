@@ -94,3 +94,6 @@ Public APK door: [commons-apk.html](../commons-apk.html). Full catalog: [commerc
 Cite forge tip-shelf / ink-commons-apk-live-cash / ink-titan-hands-live-cash — do not remint.
 Claim `ink-android-readme-live-cash-20260909-01`.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

@@ -52,3 +52,7 @@ Aggregate WER by these buckets **only using locally permitted annotations**. Do 
 - [ ] Official container local run succeeds with network blocked.
 - [ ] Official smoke test (if used) recorded as smoke test, not leaderboard score.
 - [ ] Methods/replay commands and final ZIP SHA-256 saved.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

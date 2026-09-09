@@ -10,3 +10,7 @@ KEEP MAIN remint of pointer `p/cursor-business-pack-harborline-map-pin-lift-poin
 - Peer SHIP cited, not reminted: `p/cursor-business-pack-harborline-map-pin-lift-compose-ship-20260902-01.md`
 - Pointer cited, not reminted: `p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md`
 - Did not merge #7915
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

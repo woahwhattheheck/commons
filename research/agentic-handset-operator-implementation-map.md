@@ -118,3 +118,7 @@ Not found: a first-class owner-editable values record injected into decision con
 ## Boundary
 
 This is a pinned source survey, not an on-device test or patent certification. It does not certify the local Windows tree, any unpushed patent bytes, emulator behavior, or physical-device behavior. Bryce's phone remained benched throughout.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

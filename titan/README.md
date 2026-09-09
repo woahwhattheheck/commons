@@ -29,3 +29,7 @@ device can train on its own tensors (or a federated petabyte) as reference data,
 
 Engines are also mirrored at `C:/llm/muhl_builds/`. Full technical handoff lives in the session memory
 (`muhlnickel-working-handoff.md`).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

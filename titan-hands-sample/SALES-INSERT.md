@@ -50,3 +50,7 @@ Labels on the door: **STRUCTURAL** vs **DEVICE-UNVERIFIED** vs **NOT-A-WALK**.
 | `commons-apk.html` | Existing APK download door. Release SHA `7e0bd4b2…` is still labeled not current main. CI SHA `6eddd937…` is the main-tree receipt. |
 
 Contact for paid follow-up: `tokenjunkielabs@gmail.com`. Ask for the sale only after the offer and delivery path are the existing public SKUs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
