@@ -41,7 +41,7 @@ def source_files():
     mapping['seed_retry.py']='../cloud-committed-seed-retry/seed_retry.py'
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
-              'funded_payback_runtime.py','operating_stock.py','crop_release.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+              'funded_payback_runtime.py','operating_stock.py','crop_release.py','early_capital.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
     # Package ECON's landed callback from its attributed source rather than
     # maintaining a second implementation in the canonical runtime tree.
@@ -70,6 +70,7 @@ def source_files():
     mapping['checks/test_feed_stock.py']='test_feed_stock.py'
     mapping['checks/test_idle_fertilizer.py']='test_idle_fertilizer.py'
     mapping['checks/test_crop_release.py']='test_crop_release.py'
+    mapping['checks/test_early_capital.py']='test_early_capital.py'
     mapping['checks/test_selected_pruning.py']='test_selected_pruning.py'
     mapping['checks/test_joint_market_slots.py']='test_joint_market_slots.py'
     mapping['checks/test_funded_prefix.py']='test_funded_prefix.py'
