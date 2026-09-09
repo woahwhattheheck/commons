@@ -27,12 +27,12 @@
     }
   },
   "checkpoint": {
-    "operation": "titan-v2-idle-fertilizer-and-active-seller-pruning-20260909",
+    "operation": "titan-v25-joint-seller-and-crop-release-20260909",
     "owner_authorization": "Integrate warranted observed-game and source improvements in one canonical TITAN; focused correctness/funding/shared-capacity checks; no new game panels or Kaggle submission in this task.",
     "playing_strength": "not_measured_for_changed_bytes",
     "runtime_entrypoint": "main.py::agent",
-    "stage": "bounded_idle_earning_and_operating_stock_enabled",
-    "submission_status": "not_submitted"
+    "stage": "bounded_joint_sales_and_crop_release_enabled",
+    "submission_status": "current_v25_not_submitted"
   },
   "components": [
     {
@@ -184,6 +184,14 @@
       "enabled": true,
       "role": "active bounded production adaptation; canonical crop_release=true",
       "source_pin": "Current manifest crop_release.py, spatial_tempo.py and titan_runtime.py"
+    },
+    {
+      "callsite": "FrozenSelected.transform -> joint_resource_bound / joint_queue_ledger -> existing emitter",
+      "component": "Bounded joint SELL composition",
+      "consumed_result": "28 focused joint contracts, including actual per-item optimizer composition. Fixed cash and capacity through next boundary; all retained plans and actual stock share the emitted queue. Zero new games or measured playing-strength gain.",
+      "enabled": true,
+      "limits": "No variable-price purchases, DROP/EOD or branch boundary; active producer continuations and terminal windows retain the existing single-product choice.",
+      "source_pin": "E05 PR11053/d7445804acb9e5aea39ac51e9a98ef20a4e38f6d; integrated current source"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -241,10 +249,10 @@
   "entrypoint": "main.py::agent",
   "frozen_v2_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
   "game_evidence_for_this_archive": {
-    "evidence": "runtime/integrated-selected/IDLE-FERTILIZER-TESTS.json",
+    "evidence": "runtime/integrated-selected/CURRENT-TESTS.json",
     "historical_results_apply": false,
     "new_full_games": 0,
-    "scope": "Enabled idle fertilizer recovery, existing operating-stock behavior, active seller pruning, source/primitive/cancellation checks. Peer panels on archive 6705147b remain separately attributed."
+    "scope": "Bounded joint seller composed with enabled crop release, idle fertilizer, operating stock and market pressure. Earlier panel/source versions remain separately attributed."
   },
   "historical_checkpoint": {
     "operation": "titan-kaggriculture-checkpoint-20260908-01",
@@ -382,8 +390,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 14719,
-      "sha256": "ab44ef840d10e79d964ead8e5bb2eec7a8eeb485181156632b4fcd1518ba0029",
+      "bytes": 16703,
+      "sha256": "cf7672cc74c8f6aed23af4bb54d583c17a55a719d845be3a878fe99f427d2b14",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -471,6 +479,11 @@
       "sha256": "234999794ae80b9e2e22a8c9c90db1b0a01c3c653cdb79b589d5ee557580a983",
       "source_path": "test_idle_fertilizer.py"
     },
+    "checks/test_joint_market_slots.py": {
+      "bytes": 12863,
+      "sha256": "341dc1db3e333ccad8d2ee39def335ef18f384047ae651e0ee350b864fc37eeb",
+      "source_path": "test_joint_market_slots.py"
+    },
     "checks/test_market_pressure_runtime.py": {
       "bytes": 7072,
       "sha256": "26858662554f713478cd800d81dc3d3f18404eb225e379416248c0a8b714ae8f",
@@ -542,8 +555,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 7011,
-      "sha256": "5ce139b84dcb5d8983b7a150abbd1aa2674cdaa1e891f31b56a785a7a12e77d5",
+      "bytes": 14966,
+      "sha256": "76755e5553d8be2e77f9839c4426395aa7244a372b8e0e45c2e181f0165530b1",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
@@ -712,8 +725,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "reference/titan-current/latest/selected_sell_core.py": {
-      "bytes": 7953,
-      "sha256": "4b3c3e4b89a0e404dc31fd634d761842e356e7ad6e76576c7f70382910ff26e7",
+      "bytes": 9478,
+      "sha256": "dbf42795b108787c522e289ad15894a3bf463f824639863df49a981e3bc9bb62",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "reference/titan-current/redundant_hire.py": {
@@ -847,8 +860,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "selected_sell_core.py": {
-      "bytes": 7953,
-      "sha256": "4b3c3e4b89a0e404dc31fd634d761842e356e7ad6e76576c7f70382910ff26e7",
+      "bytes": 9478,
+      "sha256": "dbf42795b108787c522e289ad15894a3bf463f824639863df49a981e3bc9bb62",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "sell_priority.py": {
@@ -872,8 +885,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 29944,
-      "sha256": "ca89fdcbf4eba9b36e74779dd8695bff9f1d69b86ff969f9390b886f5a9f76f8",
+      "bytes": 30783,
+      "sha256": "9d9667d1471ea3d9182249eba3e0d64a5b2c857b7491964013623947fb8aacb4",
       "source_path": "titan_runtime.py"
     }
   },

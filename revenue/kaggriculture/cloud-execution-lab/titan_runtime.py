@@ -506,6 +506,17 @@ class TitanAgent:
                         (self.spatial is not None and (self.spatial.sale_obligation is not None
                             or (self.features.crop_release and
                                 (int(obs['step'])==372 or self.spatial.crop_intent is not None)))))
+                    # Joint market admission follows the unchanged future tape.
+                    # Keep producer-owned continuations outside that new path.
+                    pending={} if self.spatial is None else (self.spatial._pending or {})
+                    self.consumer.joint_producer_busy=bool(
+                        self.features.terminal_route or self.features.fourth_quadrant
+                        or self.features.spatial_pathing or self.features.spatial_tempo
+                        or (self.spatial is not None and
+                            (self.spatial.plans or pending.get('plans')
+                             or self.spatial.crop_intent is not None
+                             or self.spatial.sale_obligation is not None))
+                        or (self.features.crop_release and int(obs['step'])==372))
                 output = self.transform_selected(obs, cfg, selected)
                 if self.history is not None:
                     self.post = self._selected_snapshot(obs)

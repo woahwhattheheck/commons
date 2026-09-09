@@ -1,5 +1,34 @@
 # Current TITAN release
 
+The existing frozen seller can now compose two ordinary per-product plans among
+its four strongest eligible lots. This integrates E05 PR11053 into the current
+package with additional funding, shared-capacity and full-queue admission.
+Each component must improve every existing named scenario; ranking uses the sum
+of the separate worst gains rather than assuming the products' rival scenarios
+move together. Forced-feasibility and single-product decisions stay on the
+existing path. No new optimizer, controller or feature selector is introduced.
+
+Actual cash prepays every fixed commitment through the next turn after the
+planning horizon. Variable-price purchases and unresolved branch boundaries
+decline a pair. With no DROP or EOD, the shed upper bound counts every literal
+PLACE quantity and animal acquisition through that same boundary; it gives no
+credit for sales or pickups. Carried harvest remains carried until a deposit.
+Pairs preserve future pickup commitments and every inherited market index.
+The real emitter checks current quantities against one physical stock budget,
+while future slot bounds include all retained products and possibly unfilled
+earlier plans. Active crop, idle or spatial continuations keep their producer
+ownership and the existing single-product seller. Unknown future sales are
+neither cash nor released capacity. The same completed seller checkpoint owns
+the chosen plans; cancellation and fallback reuse the existing recovery path.
+
+Twenty-eight focused joint contracts include the shared-purchase ordering gap,
+boundary HIRE/deposit, duplicate lots, retained future slots, actual optimizer
+composition and unchanged floor/terminal cases. Together with affected crop,
+stock, route and market contracts,144 source methods pass. Isolated historical
+observations436/437 pass the physical bound but have only one economically
+eligible lot, so their action remains unchanged. No new full games or measured
+score gain accompany this seller change.
+
 This V2.5 increment enables a bounded annual crop release in the same producer.
 The frozen V2 archive is retained unchanged as
 `e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58`.

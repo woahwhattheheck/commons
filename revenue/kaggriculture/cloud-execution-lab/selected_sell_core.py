@@ -91,6 +91,41 @@ class MarketPath:
             carry=float(self.single(inv,remaining)[0])
         return own_cash+carry-other_cash, own_cash,other_cash,remaining
 
+def joint_plan_metrics(infos):
+    """Sum comparable per-product scenario deltas without double-counting slots."""
+    if not infos:
+        return None
+    names=tuple(infos[0].get('scenarios',{}))
+    if not names or any(tuple(info.get('scenarios',{}))!=names for info in infos[1:]):
+        return None
+    deltas={}
+    for name in names:
+        deltas[name]=sum(float(info['scenarios'][name]['relative_value'])-
+                         float(info['scenarios'][name]['reference_relative_value'])
+                         for info in infos)
+    return {'scenario_deltas':deltas,'worst_relative_gain':min(deltas.values()),
+            'total_relative_gain':sum(deltas.values())}
+
+
+def shared_slot_ledger(plans, orders_by_step, max_orders):
+    """Return an exact per-date queue ledger, or None when additions clip."""
+    dates=sorted({t for plan in plans.values() for t,_ in plan})
+    ledger={}
+    for step in dates:
+        orders=list(orders_by_step(step) or [])
+        extras=[]
+        for item,plan in sorted(plans.items()):
+            wanted=max(0,int(dict(plan).get(step,0)))
+            offered=sum(max(0,int(o[2])) for o in orders
+                        if o and len(o)>2 and o[0]=='SELL' and o[1]==item)
+            if wanted>offered:
+                extras.append(item)
+        ledger[step]={'inherited_slots':len(orders),'extra_items':extras,
+                      'total_slots':len(orders)+len(extras)}
+        if ledger[step]['total_slots']>int(max_orders):
+            return None
+    return ledger
+
 def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
                  reference,rival_quantity,minimum_now=0,capacity_ok=None,last=718):
     end=dates[-1]
