@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import threading
+import time
 import unittest
 import urllib.error
 import urllib.request
@@ -111,6 +112,35 @@ class StoreTests(unittest.TestCase):
         row = self.store.snapshot()["subscribers"][0]
         self.assertEqual(row["topics"], [])
         self.assertEqual(row["frequency"], "weekly")
+
+    def test_duplicate_subscribe_waits_for_inflight_writer_then_replays(self):
+        result = {}
+        errors = []
+        with self.store.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+
+            def retry_same_email():
+                try:
+                    result.update(self.store.subscribe({
+                        "email": "RACE@example.invalid", "topics": [], "frequency": "weekly"
+                    }))
+                except BaseException as exc:  # Surface raw SQLite races to the test thread.
+                    errors.append(exc)
+
+            thread = threading.Thread(target=retry_same_email)
+            thread.start()
+            time.sleep(0.05)
+            db.execute(
+                "INSERT INTO subscribers VALUES(?,?,?,?,?,?,?)",
+                ("winner", "race@example.invalid", "[]", "weekly", "active",
+                 "2026-09-09T00:00:00Z", "2026-09-09T00:00:00Z"),
+            )
+
+        thread.join(2)
+        self.assertFalse(thread.is_alive())
+        self.assertEqual(errors, [])
+        self.assertEqual(result, {"id": "winner", "replayed": True})
+        self.assertEqual(len(self.store.snapshot()["subscribers"]), 1)
 
     def test_export_contains_manifest_sources_issue_and_recipient_packets(self):
         self.seed()
