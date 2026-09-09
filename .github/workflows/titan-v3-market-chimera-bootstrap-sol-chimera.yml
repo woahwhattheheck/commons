@@ -1,0 +1,114 @@
+name: titan-v3-market-chimera-bootstrap-sol-chimera
+
+on:
+  push:
+    branches:
+      - sol-chimera/titan-v3-market-causal-ablation-20260909-01
+    paths:
+      - '.github/workflows/titan-v3-market-chimera-bootstrap-sol-chimera.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v1-market-v2-body-sol-chimera-transport/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-market-chimera-bootstrap-sol-chimera
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind bootstrap checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$GITHUB_REF_NAME" = 'sol-chimera/titan-v3-market-causal-ablation-20260909-01'
+          test "$(git status --porcelain)" = ''
+
+      - name: Materialize checksum-bound final tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          python revenue/kaggriculture/cloud-execution-lab/analysis/v1-market-v2-body-sol-chimera-transport/materialize.py             | tee "$RUNNER_TEMP/MATERIALIZE-RECEIPT.json"
+
+      - name: Prove final contracts before ref update
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v1-market-v2-body-sol-chimera
+          "$CASE/run_tests.sh"
+          python "$CASE/verify_source_contract.py"             --repo .             --output "$RUNNER_TEMP/SOURCE-RECEIPT.json"
+          python - <<'PY'
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+
+          final = {
+              '.github/workflows/titan-v3-market-chimera-sol-chimera.yml',
+              'p/sol-chimera-titan-v3-market-causal-ablation-20260909-01.md',
+              *{
+                  f'revenue/kaggriculture/cloud-execution-lab/analysis/v1-market-v2-body-sol-chimera/{name}'
+                  for name in (
+                      'README.md', 'SOURCE-CONTRACT.json', 'bundle.py', 'candidate.py',
+                      'compare.py', 'materialize_evaluator.py', 'run_tests.sh',
+                      'test_bundle.py', 'test_candidate.py', 'test_compare.py',
+                      'test_materialize_evaluator.py', 'test_source_contract.py',
+                      'verify_source_contract.py',
+                  )
+              },
+          }
+          transport = {
+              '.github/workflows/titan-v3-market-chimera-bootstrap-sol-chimera.yml',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v1-market-v2-body-sol-chimera-transport/materialize.py',
+              *{
+                  f'revenue/kaggriculture/cloud-execution-lab/analysis/v1-market-v2-body-sol-chimera-transport/parts/part-{index:03d}.txt'
+                  for index in range(7)
+              },
+          }
+          rows = subprocess.check_output(
+              ['git', 'status', '--porcelain=v1'], text=True
+          ).splitlines()
+          added = {row[3:] for row in rows if row.startswith('?? ')}
+          deleted = {row[3:] for row in rows if row[:2] == ' D'}
+          if added != final or deleted != transport:
+              raise SystemExit(json.dumps({
+                  'unexpected_added': sorted(added - final),
+                  'missing_added': sorted(final - added),
+                  'unexpected_deleted': sorted(deleted - transport),
+                  'missing_deleted': sorted(transport - deleted),
+                  'raw_status': rows,
+              }, indent=2))
+          print(json.dumps({'final_additions': len(added), 'transport_deletions': len(deleted)}, sort_keys=True))
+          PY
+
+      - name: Commit and non-force fast-forward exact branch
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          remote_head="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | awk '{print $1}')"
+          test "$remote_head" = "$EXPECTED_HEAD"
+          git config user.name 'sol-chimera[bot]'
+          git config user.email 'sol-chimera@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'TITAN: add live V1/V2 market-body causal factorial'
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_HEAD"
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
