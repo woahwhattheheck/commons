@@ -33,6 +33,18 @@ def valid_receipt() -> dict:
     }
 
 
+def valid_report() -> dict:
+    report = copy.deepcopy(subject.expected_report_custody())
+    report["games"] = [
+        {
+            "opponent": "arlene",
+            "seed": subject.EXPECTED_SEEDS[0],
+            "candidate_seat": 0,
+        }
+    ]
+    return report
+
+
 class ComparatorAdapterContracts(unittest.TestCase):
     def test_valid_receipt_reuses_strict_closure_gate(self):
         identity = subject.validate_receipt(valid_receipt())
@@ -74,6 +86,32 @@ class ComparatorAdapterContracts(unittest.TestCase):
                     receipt["ablation"]["preserved_v2_markers"][marker] = False
                 with self.assertRaises(subject.CompareError):
                     subject.validate_receipt(receipt)
+
+    def test_report_custody_requires_literal_workflow_seed_grid(self):
+        report = valid_report()
+        subject.validate_report_custody(report, "control")
+        report["seeds"] = list(subject.EXPECTED_SEEDS[:-1])
+        with self.assertRaises(subject.CompareError):
+            subject.validate_report_custody(report, "control")
+
+    def test_boolean_candidate_seat_is_not_integer_identity(self):
+        report = valid_report()
+        report["games"][0]["candidate_seat"] = True
+        with self.assertRaises(subject.CompareError):
+            subject.validate_report_custody(report, "control")
+
+    def test_report_custody_binds_on_disk_evaluator_and_opponent_bytes(self):
+        for mutation in ("loader", "evaluator", "opponent"):
+            with self.subTest(mutation=mutation):
+                report = valid_report()
+                if mutation == "loader":
+                    report["loader_sha256"] = "0" * 64
+                elif mutation == "evaluator":
+                    report["evaluator_sha256"] = "0" * 64
+                else:
+                    report["opponents"]["arlene"]["sha256"] = "0" * 64
+                with self.assertRaises(subject.CompareError):
+                    subject.validate_report_custody(report, "control")
 
     def test_duplicate_and_nonfinite_json_remain_fail_closed(self):
         with tempfile.TemporaryDirectory() as directory:
