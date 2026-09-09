@@ -56,8 +56,8 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 - `host/feature_tracker.py` sha256 `02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0` (38400 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `221aebb9c8779aaee07a9feef54817d27cc451408bc9a1b3451e8c3017c3d1ff` (12738 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `4597808acb86ac8aa9bc53e188483a3bd5b4d09240bf693ff061331503da287d` (157874 bytes)
+- `resources.html` sha256 `caf48b75521d144801d3c709b49721f89fc286c07e2ede5593a88dba8df49785` (12738 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `b61a3f5c96c19ae205b1ee09a966d3908906935568c513cf1feb29c9eeaac1f5` (161041 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ## Stated funding (not expected value)

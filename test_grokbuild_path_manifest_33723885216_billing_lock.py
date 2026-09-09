@@ -25,17 +25,17 @@ KEEP = {
     "p/grokbuild-path-manifest-33718116313-billing-lock-20260903-01.md": "02c74649",
     "p/grokbuild-path-manifest-33717733938-billing-lock-20260903-01.md": "85a5f189",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
-    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "6d0db7a6",
+    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "350af906",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",
-    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "3bd5f384",
+    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "6e109d96",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
     "test_grokbuild_pr8415_path_manifest_33689243555.py": "4fa393cc",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "15fecc7b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "1a42e1c9",
 }
 
 

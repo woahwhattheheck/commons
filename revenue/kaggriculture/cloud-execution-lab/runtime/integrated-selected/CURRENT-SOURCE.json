@@ -480,6 +480,11 @@
       "sha256": "debea504799ed40eb43dc5df2451625ece6331af8546ea01123bb5c420e9f03b",
       "source_path": "test_funded_payback_runtime.py"
     },
+    "checks/test_funded_prefix.py": {
+      "bytes": 6009,
+      "sha256": "790331d10ffa2502e706d4585f569aacbd2d2fdcec1a29d5b05eaf66c5156573",
+      "source_path": "test_funded_prefix.py"
+    },
     "checks/test_idle_fertilizer.py": {
       "bytes": 27637,
       "sha256": "234999794ae80b9e2e22a8c9c90db1b0a01c3c653cdb79b589d5ee557580a983",
@@ -561,8 +566,8 @@
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 15013,
-      "sha256": "e718de0acd5982041a1db3e6bdaffb91653986bfc651e795590d6551334851a2",
+      "bytes": 37439,
+      "sha256": "0255893a4662939925e1aa96e40fb94381cee88f5b96b521cf0a60dbe79f0d64",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
@@ -611,8 +616,8 @@
       "source_path": "../cloud-runtime-pulse/plant_suffix.py"
     },
     "pressure_priority.py": {
-      "bytes": 9811,
-      "sha256": "d2dbdc038e2622103c73f53675b3a45ba18958e22052c4e9bb1bf163ae5c6ccb",
+      "bytes": 11728,
+      "sha256": "8c2294cc98b86eaf1adbe3fc8461b5989f1b3bafaf40f188ba36d847c06f6d4a",
       "source_path": "../cloud-opponent-league/lark-responsive/pressure_priority.py"
     },
     "reference/decision/README.md": {
@@ -731,13 +736,13 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "reference/titan-current/latest/selected_sell_core.py": {
-      "bytes": 9478,
-      "sha256": "dbf42795b108787c522e289ad15894a3bf463f824639863df49a981e3bc9bb62",
+      "bytes": 15050,
+      "sha256": "6588b37ebb8237422513eb65ba1b5478a426dd193da34d42e0b4b7e6c13f4846",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "reference/titan-current/redundant_hire.py": {
-      "bytes": 9036,
-      "sha256": "a881284d6b59366536ebc5e77f0f7c7f2923599dfb8588fd8b1ed6166bd51483",
+      "bytes": 16007,
+      "sha256": "d481d34c12b365ce9320c72e4ffa197eb0d06a750328746097d082bdbeb3f2ba",
       "source_path": "reference/titan-current/redundant_hire.py"
     },
     "reference/titan-current/seed_funding.py": {
@@ -851,8 +856,8 @@
       "source_path": "reference/titan-history/weighted_selector.py"
     },
     "scheduler.py": {
-      "bytes": 20767,
-      "sha256": "d30dec2d06b5e53977c895657963cd18046e89fbc3212e0e5117de021f4cf2d1",
+      "bytes": 21035,
+      "sha256": "00d72a5c6b511e73ed1923ea402c4a36e0f9490f3b4c177490ddc72440f4a64a",
       "source_path": "scheduler.py"
     },
     "seed_retry.py": {
@@ -866,8 +871,8 @@
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "selected_sell_core.py": {
-      "bytes": 9478,
-      "sha256": "dbf42795b108787c522e289ad15894a3bf463f824639863df49a981e3bc9bb62",
+      "bytes": 15050,
+      "sha256": "6588b37ebb8237422513eb65ba1b5478a426dd193da34d42e0b4b7e6c13f4846",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "sell_priority.py": {
