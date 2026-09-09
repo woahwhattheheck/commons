@@ -1,0 +1,111 @@
+name: QUORUM expand Titan V3 sequential futility payload
+
+on:
+  push:
+    branches:
+      - "quorum/titan-v3-sequential-futility-20260909-01"
+    paths:
+      - ".quorum-bootstrap/titan-v3-sequential-futility/**"
+      - ".github/workflows/quorum-expand-titan-v3-sequential-futility.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quorum-expand-titan-v3-sequential-futility
+  cancel-in-progress: false
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: quorum/titan-v3-sequential-futility-20260909-01
+          fetch-depth: 0
+      - name: Verify, test, and commit exact payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          carrier=".quorum-bootstrap/titan-v3-sequential-futility"
+          archive="$RUNNER_TEMP/quorum-analysis.tar.gz"
+          target="revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum"
+
+          cat "$carrier"/chunk-* | base64 --decode > "$archive"
+          echo "eb7bc8b9f0a313df22c85cfccbcbb58f458074b08810cb27b18b361332c1fdbc  $archive" | sha256sum -c -
+
+          python3 - "$archive" <<'PY'
+          import pathlib
+          import sys
+          import tarfile
+
+          archive = pathlib.Path(sys.argv[1])
+          prefix = "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum"
+          expected = {
+              prefix,
+              f"{prefix}/LICENSE-NOTE.md",
+              f"{prefix}/README.md",
+              f"{prefix}/RESULTS.md",
+              f"{prefix}/example",
+              f"{prefix}/example/CONTRACT.json",
+              f"{prefix}/example/FUTILITY.json",
+              f"{prefix}/example/PROVENANCE.json",
+              f"{prefix}/example/canonical.GAMES.jsonl",
+              f"{prefix}/example/challenger.partial.GAMES.jsonl",
+              f"{prefix}/futility.py",
+              f"{prefix}/test_futility.py",
+          }
+          with tarfile.open(archive, "r:gz") as handle:
+              members = handle.getmembers()
+              names = {member.name.rstrip("/") for member in members}
+              if names != expected:
+                  raise SystemExit(f"archive member mismatch: missing={sorted(expected - names)}, extra={sorted(names - expected)}")
+              for member in members:
+                  path = pathlib.PurePosixPath(member.name)
+                  if path.is_absolute() or ".." in path.parts:
+                      raise SystemExit(f"unsafe member: {member.name}")
+                  if not (member.isdir() or member.isfile()):
+                      raise SystemExit(f"non-regular member rejected: {member.name}")
+              handle.extractall(".", members=members, filter="data")
+          PY
+
+          sha256sum -c <<'SUMS'
+          8f0a3965bfc91be77332cce955ab1627decec463a1504e903576118868ae28c1  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/LICENSE-NOTE.md
+          77559932df7c4a7c21e824a2eace1f04270d3f735a2e1b3985c3e194af3bd3e7  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/README.md
+          a9cd9b439703b751b156ef32311bb90d8c9557fd4ef9c371d5574c5d10698138  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/RESULTS.md
+          3eaf34be0e9a579ec0eb6cc3568630423fc6e092cced3bc613b6c3b3c353ec04  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/CONTRACT.json
+          23fadb260be9a71216980f35f09bab8ab180e53717209461689f69b0d90988bf  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/FUTILITY.json
+          10fae815ca5cf1e071f460080fa0dd08ce926bbecd9d906aced114d2838c913f  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/PROVENANCE.json
+          162b9d6861f098b0fdc284ad6253fda8b86e296b240ea569c96e68248956aba8  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/canonical.GAMES.jsonl
+          0e0a1cba5fef0267486f0228243da815a2bb35f27b3fa583d585c9dea212281b  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/challenger.partial.GAMES.jsonl
+          36cd6a923fc9a2bba32cba43f3d3d014a6b0bce75655fd17ca8d30d0a0d2f73c  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/futility.py
+          e0a1493b8a17697cd1ccffdcabecdef69a06169512138db3539fd1cf011fa074  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/test_futility.py
+          SUMS
+
+          (
+            cd "$target"
+            PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -q test_futility.py
+            PYTHONPYCACHEPREFIX="$RUNNER_TEMP/pycache" python3 -m py_compile futility.py test_futility.py
+          )
+
+          git add "$target"
+          git diff --cached --name-only | sort > "$RUNNER_TEMP/actual-paths"
+          cat > "$RUNNER_TEMP/expected-paths" <<'PATHS'
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/LICENSE-NOTE.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/README.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/RESULTS.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/CONTRACT.json
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/FUTILITY.json
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/PROVENANCE.json
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/canonical.GAMES.jsonl
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/example/challenger.partial.GAMES.jsonl
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/futility.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-sequential-futility-20260909-quorum/test_futility.py
+          PATHS
+          diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/actual-paths"
+
+          git config user.name QUORUM
+          git config user.email quorum@commons.local
+          git commit -m "titan v3: add fail-closed sequential futility gate"
+          git push origin HEAD:quorum/titan-v3-sequential-futility-20260909-01
