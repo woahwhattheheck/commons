@@ -418,6 +418,7 @@ def cli(argv: List[str] | None = None) -> int:
     args = parser.parse_args(argv)
     manifest = verify_manifest(args.fixture, args.manifest)
     jobs = load_fixture(args.fixture)
+    expanded_fixture_sha256 = sha256_text(canonical_json(jobs))
     federation = SocotecCmtFederation()
     first = federation.process_many(jobs)
     first_summary = summarize(first)
@@ -427,6 +428,7 @@ def cli(argv: List[str] | None = None) -> int:
     replay_summary = summarize(replay)
     ok = (
         len(jobs) == manifest["fixture_count"] == 500
+        and expanded_fixture_sha256 == manifest["expanded_fixture_sha256"]
         and first_summary["states"] == {"READY": 400, "HOLD": 100}
         and first_summary["hold_codes"] == manifest["expected_hold_codes"]
         and len(federation.state.accessions) == 400
@@ -444,6 +446,7 @@ def cli(argv: List[str] | None = None) -> int:
         "reports_staged": len(federation.state.staged_reports),
         "audit_sha256": after_replay,
         "fixture_sha256": manifest["fixture_sha256"],
+        "expanded_fixture_sha256": expanded_fixture_sha256,
         "manifest_sha256": manifest["manifest_sha256"],
     }))
     return 0 if ok else 1
