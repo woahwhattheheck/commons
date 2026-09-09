@@ -32,3 +32,13 @@ python3 -B -m unittest -v test_workspace_copy test_toolkit
 ```
 
 The 18 new snapshot tests use actual SQLite/filesystem, committed WAL, concurrent writes, a real CLI subprocess and a real HTTP download. They cover every-table equality, original binary data, delivery reuse, stopped preferences, non-overwrite, broken relationships/hashes, transfer limits, and cleanup. Together with the 29 application tests, the executed suite is 47 methods. Test members and records are fictional.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

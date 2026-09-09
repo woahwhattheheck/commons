@@ -1,7 +1,7 @@
 {
   "current_release": {
     "archive_manifest": "runtime/integrated-selected/CURRENT-ARCHIVE.json",
-    "entrypoint_patch": "single fail-closed insertion after _new_instance",
+    "entrypoint_patch": "single fail-closed wrap of _new_instance return",
     "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json"
   },
   "historical_source": {
@@ -12,7 +12,7 @@
       1
     ],
     "head_commit": "c817c06af6c8d184c04c1d17fe9c1b42fcf1a65a",
-    "land_games_git_blob": "694ef44b813ff1dfdcce24a70ac1afdf4405cdb3",
+    "land_games_git_blob": "694ef44cd53047b15a61d9b351e66b8147d7f11f",
     "opponents": [
       "arlene",
       "apex",
@@ -60,7 +60,7 @@
     "seed_count": 16,
     "seed_start": 2611092001,
     "v1_submitted_archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
-    "workers": 8
+    "workers": 2
   },
   "mechanism": {
     "market_action": [

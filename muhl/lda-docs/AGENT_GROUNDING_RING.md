@@ -75,3 +75,13 @@ Lever file: `C:\Users\lucys\Desktop\MUHL_GO\RING_FILL_LEVER.md`.
 - Treat AMOUNT (bigger circuit) as this lever.
 - Write titan. Revert. Autofab. `titan --go`.
 - Invent a poller. Use his instruments / `LIVE_VIEWERS.md`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

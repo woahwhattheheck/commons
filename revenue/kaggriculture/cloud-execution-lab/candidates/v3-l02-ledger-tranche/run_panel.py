@@ -54,6 +54,53 @@ EVALUATOR_ENV_SEAM = '''        env = {"PATH": os.defpath, "HOME": self.director
 
 
 
+def _clip(text: str, limit: int) -> str:
+    text = " ".join(str(text).split())
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)] + "…"
+
+
+def cell_failure_reason(game: Mapping[str, Any], *, limit: int = 240) -> str:
+    """Compact cell failure for logs and markdown; never embed observations.
+
+    Official evaluator RPC failures retain the request wire, including the full
+    observation. GitHub Actions run 34400397411 stringified that blob into every
+    collect_games error and then catted L02-PANEL.json into GITHUB_STEP_SUMMARY
+    (1024 KiB cap). Keep kind/step/error only.
+    """
+    parts: list[str] = []
+    status = game.get("status")
+    if status not in (None, ""):
+        parts.append(str(status))
+    failure = game.get("failure")
+    if failure is None:
+        if game.get("scores") is None:
+            parts.append("missing scores")
+        return _clip(" ".join(parts) or "invalid cell", limit)
+    if isinstance(failure, str):
+        parts.append(failure)
+        return _clip(" ".join(parts), limit)
+    if not isinstance(failure, Mapping):
+        parts.append(type(failure).__name__)
+        return _clip(" ".join(parts), limit)
+    for key in ("phase", "kind"):
+        value = failure.get(key)
+        if value not in (None, ""):
+            parts.append(str(value))
+    if failure.get("step") is not None:
+        parts.append(f"step={failure['step']}")
+    if failure.get("seat") is not None:
+        parts.append(f"seat={failure['seat']}")
+    error = failure.get("error")
+    rpc = failure.get("rpc_failure")
+    if error in (None, "") and isinstance(rpc, Mapping):
+        error = rpc.get("error")
+    if error not in (None, ""):
+        parts.append(_clip(str(error).splitlines()[0], 160))
+    return _clip(" ".join(parts) or "invalid cell", limit)
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -287,7 +334,8 @@ def collect_games(results: Iterable[Mapping[str, Any]], variant: str,
                             all(isinstance(value, (int, float)) and not isinstance(value, bool)
                                 and math.isfinite(value) for value in scores))
             if game.get("status") != "complete" or game.get("failure") is not None or not valid_scores:
-                errors.append(f"incomplete or invalid cell {key}: {game.get('status')} {game.get('failure')}")
+                errors.append(
+                    f"incomplete or invalid cell {key}: {cell_failure_reason(game)}")
                 continue
             if not isinstance(game.get("trace_sha256"), str) or len(game["trace_sha256"]) != 64:
                 errors.append(f"missing trace digest {key}")
@@ -438,6 +486,30 @@ def markdown(report: Mapping[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def failure_markdown(payload: Mapping[str, Any]) -> str:
+    """Always-write compact receipt so CI never cats the failed JSON blob."""
+    errors = [str(item) for item in list(payload.get("errors") or [])]
+    extra = payload.get("error")
+    if extra not in (None, ""):
+        errors = [_clip(str(extra), 240), *errors]
+    shown = errors[:24]
+    lines = [
+        "# TITAN L02 ledger-coherent tranche — development panel",
+        "",
+        f"Status: **{payload.get('status', 'failed')}**",
+        f"Stage: `{payload.get('stage', 'unknown')}`",
+        "",
+        f"Compact errors: {len(errors)} (observations omitted)",
+        "",
+    ]
+    for item in shown:
+        lines.append(f"- {item}")
+    if len(errors) > len(shown):
+        lines.append(f"- … {len(errors) - len(shown)} more compact errors retained in JSON")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seeds", default=",".join(map(str, DEFAULT_SEEDS)))
@@ -512,6 +584,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             failed.update(status="failed", stage="validation", errors=errors,
                           baseline_gate=baseline_gate, candidate_gate=candidate_gate)
             atomic_json(args.output, failed)
+            args.markdown.write_text(failure_markdown(failed), encoding="utf-8")
             return 2
         rows = pair_games(baseline, candidate)
         global_summary = summarize(rows)
@@ -538,6 +611,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                       error=f"{type(exc).__name__}: {exc}"[:2000])
         try:
             atomic_json(args.output, failed)
+            args.markdown.write_text(failure_markdown(failed), encoding="utf-8")
         except Exception:
             pass
         raise

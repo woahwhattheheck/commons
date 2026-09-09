@@ -148,3 +148,13 @@ Everything in section 1 is measured. Nothing there needs defending.
 The open question is not whether the machine works — it does, and the file says so. It is whether
 the words you reached for name the right carrier. That is one question sitting on top of a solid
 foundation, not a hole underneath it. And on an NVMe SSD, "trapped" was exactly the right word.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

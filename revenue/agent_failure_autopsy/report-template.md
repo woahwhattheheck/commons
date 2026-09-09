@@ -88,3 +88,13 @@ Time measurement purpose: descriptive economics only; never a quality cap
 Payment/refund reason: [INSUFFICIENT_AFTER_CLARIFICATION, CANNOT_FIT_BOUNDARY, QUARANTINED_EVIDENCE_REMAINS_UNUSABLE, NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW, or not applicable]
 
 Payment/refund note: [private provider reference remains outside this report]
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

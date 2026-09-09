@@ -128,3 +128,13 @@ State/meaning is encoded in **brightness + label + confirmation**, never in colo
 - **If sketching in Claude Design:** upload this as the design system / brand so mockups look like the app —
   then the built Kotlin still matches, because both sides reference the same blueprint.
 - **Keep it honest:** if `Ui.kt` gains a token/component, add it here in the same change.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

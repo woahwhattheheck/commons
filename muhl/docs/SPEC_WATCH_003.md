@@ -56,3 +56,13 @@ Files stay.
 **2 violations. 1 cop.** Blind count: Desktop `**` / 834 / 17 into `CIRCUITS_IN_CONTAINER.md`. Product-as-fabricator: `muhl_autofab_dot32` 180083 treated as autofab; fabricators are `muhl_foundry_resident` 1296 + `AUTOFAB0.mno` 4117.
 
 This log does not rewrite those cards. Additive only. No titan. No recount.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

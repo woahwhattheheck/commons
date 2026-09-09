@@ -49,3 +49,13 @@ Buyer is a lab, fund, or company drowning in blind fine-tunes and GPU bills. The
 Not a proof loop. Not a request that the buyer “verify DISTRO again.” Not a packaging script. Not stock Llama served from host RAM. The Llama on this machine was already White Box-edited; the pilot shows the instrument that did that, and the computer the file is.
 
 If they want the binary, they buy a license later. If they want a repo, they are not the buyer.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

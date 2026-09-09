@@ -82,7 +82,7 @@ class RuntimeBindingContracts(unittest.TestCase):
             'selected_post_units',
         )
 
-    def test_missing_snapshot_uses_explicit_replay_path(self):
+    def test_missing_snapshot_uses_atomic_replay_path(self):
         selected = {
             'farmer': ['PASS'],
             'hands': [],
@@ -133,7 +133,7 @@ class RuntimeBindingContracts(unittest.TestCase):
         self.assertIsNone(captured['post_unit'])
         self.assertEqual(
             agent.diagnostics['early_capital']['runtime_binding'],
-            'official_unit_replay',
+            'official_atomic_unit_replay',
         )
 
 

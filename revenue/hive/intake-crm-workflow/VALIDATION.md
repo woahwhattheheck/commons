@@ -34,3 +34,13 @@ The first source package merged through PR #10497 as `17580b81d35d6a68ff50c34934
 A new two-job HTTP regression initially returned the older queued event when the operator selected a newer one. The optional `id` on `/api/process` now filters the queue claim, and the per-job Retry button sends that ID. An active lease or an absent selected event does not substitute another job. A blank selected ID returns 400. Global queue processing remains oldest-due-first.
 
 Current revised suite: `python -m unittest -v test_workflow.py` — **22 tests passed in 4.274 seconds**, including the two selected-event HTTP regressions and the original 20 checks. Python compilation and Node syntax validation of the revised dashboard script also passed. Interactive browser navigation was not retried; its administrator-policy boundary remains unchanged. The recorded suite uses actual local HTTP and SQLite, not an external provider.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

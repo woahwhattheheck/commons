@@ -146,3 +146,13 @@ RAM is decoupled from stored size and coupled to access locality — the knob th
 
 *(Patent: the storage-first resident-set bound + operator-locality streaming cost is the quantitative core of
 the AOS R5→R4 pager and INV-95; this note is its derivation. Correct it in place if a measured run disagrees.)*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

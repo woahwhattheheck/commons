@@ -149,3 +149,13 @@ python host/sdc_checker.py 20                   # live, non-stale verdict inside
 python host/sdc_fold_storage.py revert          # delete the disk fold
 python host/sdc_federate.py revert              # restore every model file byte-exact
 ```
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

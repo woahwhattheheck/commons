@@ -90,3 +90,13 @@ Open a model, run ANY White Box op, and watch the **server process's own memory*
 none of the compute). The child appears, does the work over storage, writes the file, and disappears. If the server's
 RSS climbs during an op, the op is running in-process — a spec violation to fix. (`MEASURE_ALREADY.md`: the model's own
 host-RAM cost is ~0; the only RAM used is the server rendering the STATIC result after the child is dead.)
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
