@@ -17,3 +17,7 @@ Toolbench checkpoints read their revision from the completed SQLite backup, so t
 No credential retrieval, tool discovery, peer admission, or service operation policy is changed. Existing direct credential roads and source-data prompt framing remain in place.
 
 Regression entry point: `.github/workflows/commons-transport-regression.yml`. The suite covers real loopback HTTP connections, SQLite replay/interleaving, native failure envelopes, and the existing gateway/client/equipment behavior.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
