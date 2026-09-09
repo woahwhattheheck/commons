@@ -23,7 +23,7 @@ NEEDLES: tuple[tuple[bytes, bytes, str], ...] = (
         b"            for seat in range(2):\n"
         b"                state[seat].action = actions[seat]\n",
         b"            candidate_trace.update(encoded({\"step\": step, \"action\": actions[candidate_seat]}))\n"
-        b"            for seat in range(2):\n"
+        b"            for seat in range(0, 2):\n"
         b"                state[seat].action = actions[seat]\n",
         "pre-interpreter candidate action capture",
     ),
