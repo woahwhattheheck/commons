@@ -1,0 +1,89 @@
+name: SOL-CROOK Titan pasture contention smoke
+on:
+  push:
+    branches:
+      - sol-crook/titan-v3-pasture-harvest-contention-20260909
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v3-sol-crook-pasture-contention/**
+      - .github/workflows/sol-crook-titan-pasture-smoke.yml
+permissions:
+  contents: write
+jobs:
+  exact-tests-and-paired-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3-sol-crook-pasture-contention
+      TITAN_CROOK_LOG: /tmp/sol-crook-pasture.jsonl
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Exact mechanics and fail-closed contract tests
+        working-directory: ${{ env.LANE }}
+        run: python -m unittest -v test_pasture_contention.py
+      - name: Prepare current-TITAN control and guarded candidate
+        working-directory: ${{ env.LAB }}
+        run: |
+          rm -f "$TITAN_CROOK_LOG"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from prepare_runtime import prepare
+          root = Path.cwd()
+          lane = root / "candidates/v3-sol-crook-pasture-contention"
+          runtime = Path(os.environ["RUNNER_TEMP"]) / "sol-crook-runtime"
+          prepare(runtime, {"baseline": root / "main.py", "candidate": lane / "agent.py"})
+          print(runtime)
+          PY
+      - name: Pinned official-engine paired development panel
+        working-directory: ${{ env.LAB }}
+        run: |
+          python benchmark.py \
+            --runtime "$RUNNER_TEMP/sol-crook-runtime" \
+            --variants baseline,candidate \
+            --opponents arlene,apex \
+            --seeds 9600803,9600821,9600839 \
+            --seats 0,1 \
+            --game-timeout 120 \
+            --stop-on-failure \
+            --output "$RUNNER_TEMP/sol-crook/benchmark.json"
+      - name: Validate activation boundary and make concise receipt
+        working-directory: ${{ env.LANE }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          from evidence import validate
+          result = validate(os.environ["TITAN_CROOK_LOG"])
+          target = Path(os.environ["RUNNER_TEMP"]) / "sol-crook/activation-audit.json"
+          target.parent.mkdir(parents=True, exist_ok=True)
+          target.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          print(json.dumps(result, sort_keys=True))
+          if not result["valid"]:
+              raise SystemExit(1)
+          PY
+          python summarize_smoke.py \
+            --benchmark "$RUNNER_TEMP/sol-crook/benchmark.json" \
+            --audit "$RUNNER_TEMP/sol-crook/activation-audit.json" \
+            --output "$RUNNER_TEMP/sol-crook/SMOKE-SUMMARY.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sol-crook-pasture-smoke-${{ github.run_id }}
+          path: ${{ runner.temp }}/sol-crook/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Commit concise evidence to the experiment branch
+        run: |
+          cp "$RUNNER_TEMP/sol-crook/SMOKE-SUMMARY.json" "$LANE/SMOKE-SUMMARY.json"
+          git config user.name "SOL-CROOK"
+          git config user.email "sol-crook@commons.local"
+          git add "$LANE/SMOKE-SUMMARY.json"
+          if ! git diff --cached --quiet; then
+            git commit -m "sol-crook: record official paired pasture smoke [skip ci]"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
