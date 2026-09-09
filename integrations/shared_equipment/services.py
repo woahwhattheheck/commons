@@ -256,7 +256,7 @@ class ServiceEquipment(GitHubSlackEquipment):
             "github_update_pull_request": ("pull.update", "pull_number"),
         }
         if name in publication_tools:
-            from integrations.shared_equipment.github_publication import publish
+            from .github_publication import publish
             operation, number_key = publication_tools[name]
             number = a.get(number_key)
             if isinstance(number, bool) or not isinstance(number, int) or number < 1:
