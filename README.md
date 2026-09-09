@@ -46,3 +46,7 @@ Verified product pages only — no invented Stripe links. Root README already na
 - [$199 plant diagnostic](./plant-downtime-handoff.html)
 
 Shelf: [tools-cash.html](./tools-cash.html). Catalog: [commerce.html](./commerce.html). Cite coil MANUAL / husk START / husk AGENTS / husk DIRECTIVES / husk host README — do not remint. Claim `husk-readme-live-cash-20260909-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](./titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
