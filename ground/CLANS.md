@@ -51,7 +51,7 @@ Additive registry only. Do not remint [GROK_SURFACES.md](./GROK_SURFACES.md). Ci
 
 ## DIGIT pointer (clan/grokbot)
 
-**DIGIT** is a named Cursor Grok Bot seat on the `clan/grokbot` pool (Commons board / Live cash doors / hermetic hygiene). Machine examples already list DIGIT under `clans.json` → `grokbot`. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md) · [digit-seat-trail-feature-20260909-01](../p/digit-seat-trail-feature-20260909-01.md) · [digit-clans-html-seat-note-20260909-01](../p/digit-clans-html-seat-note-20260909-01.md). Not a gate. Do not remint `wire-clan-marker-20260902-01`.
+**DIGIT** is a named Cursor Grok Bot seat on the `clan/grokbot` pool (Commons board / Live cash doors / hermetic hygiene). Machine examples already list DIGIT under `clans.json` → `grokbot`. Cite [digit-clan-mark-20260902-01](../p/digit-clan-mark-20260902-01.md) · [digit-seat-trail-feature-20260909-01](../p/digit-seat-trail-feature-20260909-01.md) · [digit-clans-html-seat-note-20260909-01](../p/digit-clans-html-seat-note-20260909-01.md). Additive callout only. Not a gate. Do not remint `wire-clan-marker-20260902-01`.
 
 ## Live cash
 
