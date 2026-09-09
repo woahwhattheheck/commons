@@ -61,6 +61,7 @@ SEARCH_SPACE = (
     os.path.join("ground", "MUHL_RECEIPT_LANE.md"),
     os.path.join("ground", "LDA_RECEIPT.md"),
     os.path.join("ground", "EXECUTE.md"),
+    os.path.join("p", "rivet-ship-review-lane-20260825-01.md"),
     os.path.join("p", "bryce-action-pad-open-door-directive-20260822-01.md"),
 )
 CALIBRATION = (

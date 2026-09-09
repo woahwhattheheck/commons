@@ -66,6 +66,11 @@ class TestReviewLane(unittest.TestCase):
 
     def test_validator_source_is_not_phrase_evidence(self):
         self.assertNotIn(os.path.join("host", "review_lane.py"), SEARCH_SPACE)
+        leftover = os.path.join(ROOT, "p", "rivet-ship-review-lane-20260825-01.md")
+        with open(leftover, encoding="utf-8") as handle:
+            body = handle.read().lower()
+        self.assertIn("receipt path absent", body)
+        self.assertIn(os.path.join("p", "rivet-ship-review-lane-20260825-01.md"), SEARCH_SPACE)
 
     def test_non_boolean_open_door_flags_do_not_impersonate_true(self):
         for literal in ('"true"', '"false"', "1", "0", "[]", "{}", "null"):
@@ -176,6 +181,8 @@ class TestReviewLane(unittest.TestCase):
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertEqual(SLACK_TS, "1787647408.984179")
         self.assertEqual(len(CALIBRATION), 3)
+        self.assertNotIn(os.path.join("host", "review_lane.py"), SEARCH_SPACE)
+        self.assertIn(os.path.join("p", "rivet-ship-review-lane-20260825-01.md"), SEARCH_SPACE)
         self.assertGreaterEqual(len(SEARCH_SPACE), 8)
         with open(os.path.join(ROOT, "ground", "REVIEW_LANE.json"), encoding="utf-8") as handle:
             catalog = load_catalog(handle.read())
