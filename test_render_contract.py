@@ -128,6 +128,21 @@ class TestRenderContract(unittest.TestCase):
         self.assertEqual(ids, [32815228177, 32812516738, 32812503966, 32812350086])
         self.assertEqual(catalog["slack_ts"], "1787637223.298509")
 
+    def test_catalog_rejects_scalar_runs(self):
+        catalog = load_catalog('{"runs": 1}')
+        self.assertEqual(catalog["runs"], [])
+        self.assertEqual(catalog["error"], "runs is not a list")
+
+    def test_catalog_rejects_scalar_hands_off(self):
+        catalog = load_catalog('{"hands_off": 1}')
+        self.assertEqual(catalog["hands_off"], [])
+        self.assertEqual(catalog["error"], "hands_off is not a list")
+
+    def test_catalog_rejects_string_hands_off(self):
+        catalog = load_catalog('{"hands_off": "receipt-id"}')
+        self.assertEqual(catalog["hands_off"], [])
+        self.assertEqual(catalog["error"], "hands_off is not a list")
+
     def test_live_workflow_keeps_the_exact_command(self):
         with open(os.path.join(ROOT, WORKFLOW), "r", encoding="utf-8") as handle:
             text = handle.read()
