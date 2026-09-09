@@ -45,3 +45,7 @@ The default member is `evaluation/pilot/9965001-p0-control.frames.jsonl.gz`; fra
 - Test: blob `ea1b72641c056ef482be5d5018402448cab92c3c`, SHA256 `3d2d4709786bc20ac2fd93516e262afd751490e0eccff2ae52965962966398cb`.
 
 This is a completed local source-bound execution, not a claim that a hosted workflow ran the new suite. Ordinary repository checks remain separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

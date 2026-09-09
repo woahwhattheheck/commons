@@ -13,3 +13,7 @@ The evaluator uses the unmodified official Kaggle engine at commit
 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c. Runtime strategies use normal observable
 game actions only. Rival private inventories in engine fixtures are evaluator
 inputs used to define hypothetical columns, never runtime policy inputs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -86,3 +86,7 @@ evidence; keep it out of the selected competition submission absent an integrati
 The retained economic-pack-profile.json relocates the old source to variants/ for
 rebuilding; its bytes differ from the original profile hash in economic-export/receipt.json.
 Archive/source hashes remain exact; the old receipt records the original build input.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

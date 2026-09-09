@@ -89,3 +89,7 @@ T07 had no admitted new opponent source at the latest thread read; Arlene/Apex
 remain the tested opponents.
 No future shop draws, hidden seed, or evaluation-only opponent actions are live
 policy inputs. Existing weaker branches remain reproducible as separate arms.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

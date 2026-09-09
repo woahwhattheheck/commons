@@ -142,3 +142,7 @@ An early GitHub transport copy lost a parenthesis in the otherwise unchanged
 stress-family line. That branch-only copy was corrected before PR creation;
 the published runtime now exactly matches the already-executed local blob.
 No test success is attributed to the malformed transport copy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

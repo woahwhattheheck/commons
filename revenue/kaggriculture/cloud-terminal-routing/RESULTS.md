@@ -94,3 +94,7 @@ the original file lengths and SHA256 values. Archive SHA256:
 
 No Kaggle submission, public notebook write, new spending, owner-PC computation,
 leaderboard rating change or earned-payment claim is part of this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

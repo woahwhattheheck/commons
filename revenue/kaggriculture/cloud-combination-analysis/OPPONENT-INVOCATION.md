@@ -30,3 +30,7 @@ TITAN_OPPONENT_RESOLVER=/absolute/path/to/arlene_arm.py \
 The owning Claude branch additionally has a public-bank registry absent from this main source. Its original resolver is `1132023eab7af9f2ea2325437880c6b2e6d7526e`; applying only the same invocation delta produces `4885d62f7fba568a483e63ed57ca1b136b7c35ee`. The bank paths are retained, not replaced by the main file. Branch integration and the existing executor's direct consumption of PR9999 timing are separate delivery steps, not claims made by this main-source receipt.
 
 No policy decisions, opponent source, existing result files, running processes, full panels, default selections or held data are changed. This repair does not retroactively relabel completed games, and the focused local result is not a whole-repository CI claim.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

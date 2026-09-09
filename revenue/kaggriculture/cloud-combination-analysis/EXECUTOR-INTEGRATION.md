@@ -29,3 +29,7 @@ python -B revenue/kaggriculture/cloud-combination-analysis/opponent_policy_smoke
 ```
 
 Run `execute_arm.py` with its existing arguments for subsequent assigned jobs; no new flag or wrapper is required. The observer must be retained at its existing sibling path. Branch source integration does not establish consumption by an already-running VM process, whole-repository CI success, policy strength or any new game result. The model-lab owner's ordinary main delivery can carry these exact changes without touching its saved experiment data.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -67,3 +67,7 @@ see that builder's CLI. Use cloud-eval/evaluate.py with the exact pinned engine 
 Owner-authored code is MIT OR CC-BY-4.0; both full grants accompany the export.
 Copyright 2026 Bryce Xavier Muhlnickel / TokenJunkieLabs. Baseline authorship remains
 Euler / ASTRA-WORK / ROWAN / SORREL / FLORA. Third-party source retains its license.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

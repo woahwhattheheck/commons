@@ -17,3 +17,7 @@ NOTICE and underlying Apache Arlene attribution. No vendor source is relicensed
 by these integration wrappers. Exact source commits and byte hashes are in
 SOURCE-PINS.json. Apex is an independent evaluator opponent and not packaged as
 policy logic. Results use the existing ASTRA cloud evaluator, unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

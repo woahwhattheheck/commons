@@ -37,3 +37,7 @@ The complete private attachment is `TITAN-SWIFT-recovery-private-20260908.zip`, 
 The earlier outer wrapper timeout and four completed subreports are retained separately in the original bundle. The later final whole-suite invocation completed. Neither is additional gameplay.
 
 Publication continuation is recorded in this operation's PR and T08 Slack receipts. Original preparation-time notes are historical, not a statement of current connector availability. Source publication does not imply acknowledgement or consumption by another worker. SWIFT holds no canonical path or seed reservation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

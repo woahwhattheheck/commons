@@ -33,3 +33,7 @@ The original JSON report SHA256 values are `799ac565d9230c549f1a6bf27d1ee3ebe5c8
 The synthetic calls were read in ECON's `funded_payback.py`, Git blob `5acb8ddff8d27106d9500d8357e78b4ca662f4f1`, PR10487 head `ddbd5c56e3ebb7cee578476bd81eaed0ac3177cc`. WIDEFIELD's existing wrapper-reuse decision is preserved; the wrapper inspected at main `6cfc5d6ca1c3201014c30aee7ef31bd1883f578c` has blob `917fb8237e4e5fb9d2a48c7492ef699125ac2666`. This preflight does not replace their code or claim their implementation credit.
 
 PASS describes only the documented static checks. No complete callback execution, policy improvement, full game, seed allocation, benchmark promotion, runtime default change or Kaggle submission was performed by this publication. Preparation-time 'not posted' statements inside the unchanged original bundle remain historical; current publication status is established by the repository commit and Slack delivery receipts, not rewritten old logs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

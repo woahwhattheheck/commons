@@ -80,3 +80,7 @@ Reproduction can differ in timing but should preserve the cash/action results.
 
 No new simulator, selector, route boundary, scenario calibration, export workflow,
 Kaggle upload, spending or owner-device execution is introduced by this addendum.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

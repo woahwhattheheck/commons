@@ -20,3 +20,7 @@ another engine copy or relabel those existing engine executions as new work.
 NumPy and SciPy are used only by validate.py as independent development-time
 linear programming references. They are not runtime dependencies, copied
 source, or bundled packages.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

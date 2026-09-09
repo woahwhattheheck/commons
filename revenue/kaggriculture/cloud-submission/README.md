@@ -17,3 +17,7 @@ Direct file submission does not require a notebook commit. The public notebook i
 Actual provider receipts are under receipts/. Source publication and submission creation succeeded; validation and first hosted matches are monitored separately. The official SDK omits default PENDING status from to_dict output.
 
 `narrow_archive_upload.py` sends only the exact designated archive to the exact provider-returned HTTPS storage URL using a new unauthenticated session. It disables netrc, cookies, redirects, and retries. The managed runtime proxy and CA bundle are applied explicitly while TLS verification remains enabled. A direct connection failed before creation, then a proxy attempt failed certificate verification before creation; their receipts are retained. Signed URLs and account credentials are never written to receipts. The successful receipt records the destination URL hash, payload hash, HTTP status, and absence of Authorization headers.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

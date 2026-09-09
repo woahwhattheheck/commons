@@ -39,3 +39,7 @@ python3 -B /abs/commons/revenue/kaggriculture/cloud-ultra-league/run_league.py \
 python3 -B analyze_results.py --repo /abs/commons --job-root /abs/job \
   --output RESULTS.json
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
