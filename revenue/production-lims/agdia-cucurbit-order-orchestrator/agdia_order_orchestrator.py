@@ -15,6 +15,7 @@ SPECS=(
     ("SQUASH","CUC-PATHOGEN-C","R4"),
 )
 FORBIDDEN_PHI_KEYS={"patient","patient_name","dob","mrn","medical_record_number","diagnosis","ssn"}
+RESERVED_RELEASE_ACTORS={"agent","automation","system","bot","autonomous","auto"}
 
 class IntegrityError(ValueError): pass
 def _canon(v:Any)->str:return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False)
@@ -140,10 +141,12 @@ class AgdiaOrderShadow:
         self.authoritative_fingerprint
         return ReplayReport(ready,hold,replayed,dict(sorted(counts.items())),aa,pa,ala,ra,ha,ea,self.state_digest(),outcomes)
     def release_report(self,case_id,reviewer_name):
+        if not isinstance(reviewer_name,str):raise PermissionError("named human reviewer is required")
         reviewer=reviewer_name.strip()
-        if not reviewer:raise PermissionError("named human reviewer is required")
+        if not reviewer or reviewer.casefold() in RESERVED_RELEASE_ACTORS:raise PermissionError("named human reviewer is required")
         report=self.staged_reports.get(case_id)
         if report is None:raise KeyError(case_id)
+        if report["state"]!="STAGED_HUMAN_REVIEW" or report["released_by"] is not None:raise PermissionError("report is not awaiting human review")
         report["state"]="RELEASED_BY_NAMED_HUMAN"; report["released_by"]=reviewer
         return {"case_id":case_id,"state":report["state"],"released_by":reviewer,"designated_contact_id":report["designated_contact_id"]}
     def automatic_release(self,*_,**__):raise PermissionError("automatic release is disabled; named human approval is required")
