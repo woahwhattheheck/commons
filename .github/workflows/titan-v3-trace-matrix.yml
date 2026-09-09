@@ -1,0 +1,71 @@
+name: Titan V3 trace matrix
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-trace-matrix.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json"
+      - "revenue/kaggriculture/cloud-execution-lab/titan-v3-trace-matrix/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+        working-directory: revenue/kaggriculture/cloud-execution-lab/titan-v3-trace-matrix
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Compile and run adversarial tests
+        run: |
+          set -euo pipefail
+          python -m py_compile trace_gate.py matrix.py test_trace_gate.py test_matrix.py
+          python -m unittest -v test_trace_gate.py test_matrix.py
+
+      - name: Require byte-stable complete matrix
+        run: |
+          set -euo pipefail
+          generated="$(mktemp)"
+          python matrix.py \
+            --base ../TITAN-CONFIG.json \
+            --spec MATRIX-CONTRACT.json \
+            --output "$generated"
+          if ! cmp -s MATRIX.json "$generated"; then
+            echo "MATRIX.json is stale or nondeterministic; regenerate it with matrix.py." >&2
+            diff -u MATRIX.json "$generated" || true
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("MATRIX.json").read_text(encoding="utf-8"))
+          coverage = report["coverage"]
+          assert report["verdict"] == "COMPLETE", report["verdict"]
+          assert report["complete"] is True
+          assert coverage["uncovered_interactions"] == 0, coverage
+          assert coverage["covered_interactions"] == coverage["reachable_interactions"], coverage
+          assert coverage["coverage_fraction"] == 1.0, coverage
+          print(
+              "verified COMPLETE matrix:",
+              report["matrix_size"],
+              "rows;",
+              coverage["reachable_interactions"],
+              "reachable interactions",
+          )
+          PY
