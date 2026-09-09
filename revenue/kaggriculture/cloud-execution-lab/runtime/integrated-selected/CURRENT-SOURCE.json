@@ -176,6 +176,14 @@
       "consumed_result": "4 focused arithmetic methods compare exact optimizer plans/reports against preserved loop; no game runs",
       "enabled": true,
       "source_pin": "scheduler main 7d8e27296313bdbfbad255a4d6b5e1d85fa31737 ported to reference/titan-current/latest/selected_sell_core.py"
+    },
+    {
+      "callsite": "Existing SpatialTempo producer -> FrozenSelected completed snapshot -> crop_market -> final emitted-action commit -> shared observed-fill ledger",
+      "component": "Funded annual crop release",
+      "consumed_result": "22 focused contracts plus recorded step372 admission probe; public-inventory funding bound, complete source-family services, later seed stock, exclusive observed crop/carrier/deposit/sale, late wheat replacement and executable-sale reservation, duplicate lots, EOD, boundary capital and final-guard/deadline cancellation. No new game panel or measured strength gain.",
+      "enabled": true,
+      "role": "active bounded production adaptation; canonical crop_release=true",
+      "source_pin": "Current manifest crop_release.py, spatial_tempo.py and titan_runtime.py"
     }
   ],
   "config": "TITAN-CONFIG.json",
@@ -193,6 +201,7 @@
     "committed": true,
     "committed_seed_retry": false,
     "consumer": "frozen",
+    "crop_release": true,
     "fourth_quadrant": false,
     "funding": true,
     "idle_fertilizer": true,
@@ -204,6 +213,7 @@
     "terminal_history": false,
     "terminal_route": false
   },
+  "development_version": "V2.5",
   "diagnostic_intake": {
     "artifact": "70554dc0",
     "contention_wall_cpu_ratio": [
@@ -229,6 +239,7 @@
     ]
   },
   "entrypoint": "main.py::agent",
+  "frozen_v2_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
   "game_evidence_for_this_archive": {
     "evidence": "runtime/integrated-selected/IDLE-FERTILIZER-TESTS.json",
     "historical_results_apply": false,
@@ -366,13 +377,13 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 359,
-      "sha256": "d2f33bc4ced9e590a5acf1a6367b89aa37a41bca015916b922b5055bdcf7c4d5",
+      "bytes": 383,
+      "sha256": "99728141121ffea589483ccebd5f11c4bedebf07582d1b2f3551beab3346c753",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 11984,
-      "sha256": "f2bdb5c4f3a4510117557f8ee6558de4ec47766e5647442f63a76e716bd22ce5",
+      "bytes": 14719,
+      "sha256": "ab44ef840d10e79d964ead8e5bb2eec7a8eeb485181156632b4fcd1518ba0029",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -434,6 +445,11 @@
       "bytes": 2269,
       "sha256": "b48b6b1704186ef9b3ad9828b190019415d68dde5b6e624784958a7638a47fca",
       "source_path": "test_committed_seed_retry_runtime.py"
+    },
+    "checks/test_crop_release.py": {
+      "bytes": 31283,
+      "sha256": "ed950524cc6bfaaea4a22af9c9c67bb4e2fb8cb81ac08a325917b22860c82704",
+      "source_path": "test_crop_release.py"
     },
     "checks/test_engine_semantics.py": {
       "bytes": 15070,
@@ -514,6 +530,11 @@
       "bytes": 5328,
       "sha256": "bcd9a56fc7af87d70b4fb168e7109614a44a52b9aacbcd1e208bb36ecc13b034",
       "source_path": "test_worker_episode.py"
+    },
+    "crop_release.py": {
+      "bytes": 40073,
+      "sha256": "86dd3186af6ee137c848c1722c9f8c2676264a34c5a703b07e47ecd999116f49",
+      "source_path": "crop_release.py"
     },
     "fourth_quadrant.py": {
       "bytes": 17915,
@@ -841,8 +862,8 @@
       "source_path": "../cloud-quickstep/seller_snapshot.py"
     },
     "spatial_tempo.py": {
-      "bytes": 50433,
-      "sha256": "1ff467d2e028f229b8c5c74547e6fc3cb88e206a26d94893174fc712f9d8fbdf",
+      "bytes": 55439,
+      "sha256": "9efe9588013b97452813f43dcfe0f5f2c311c2668b5ad64e53f173b7c457a60e",
       "source_path": "spatial_tempo.py"
     },
     "terminal_history_join.py": {
@@ -851,8 +872,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 28406,
-      "sha256": "7e2f7d5f5bca1a8bee7a9c2c7a30ffe6664dc5e2181a75dde9172d243946568e",
+      "bytes": 29944,
+      "sha256": "ca89fdcbf4eba9b36e74779dd8695bff9f1d69b86ff969f9390b886f5a9f76f8",
       "source_path": "titan_runtime.py"
     }
   },

@@ -1,5 +1,45 @@
 # Current TITAN release
 
+This V2.5 increment enables a bounded annual crop release in the same producer.
+The frozen V2 archive is retained unchanged as
+`e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58`.
+At an observed mature-wheat harvest on step372, the complete compatible MAIN
+and MILK route prefixes, actual worker/site, exclusive carrot source, shared
+seeds and current demand/cash screen can admit one fresh CARROT seed. The next
+observation must show that additional seed above all preexisting carrot stock
+before the same worker replaces PLANT WHEAT with PLANT CARROT on373. All other
+actors and source rows remain intact. Existing WATER/harvest services are reused;
+the ordinary wheat replant on445 remains in place.
+
+The service funding bound charges every scheduled hire and purchase through456
+without future sale income. Physical-input price bounds include negative market
+inventory, bounded rival net purchases and duplicate town-shop demand. This is
+a source feasibility calculation; future requests are not observed receipts.
+The current marginal price screen, including a100-unit rival-supply stress, is
+a policy assumption rather than a prediction of later profit.
+
+An owned site intent survives daily worker resets. Harvest, carried product,
+EOD455 shed arrival and final sales require successive actual observations.
+The three replaced wheat units remain carried until455 in the admitted recipe.
+Starting at that delivery date, the owner can append only the remaining wheat
+deficit after existing market rows, or withhold it from actually executable
+wheat sales. Shared capacity counts physical purchases and all EOD carry with
+no sale credit; actual cash must also cover boundary hires and purchases.
+Mandatory pickups and feeds are unchanged. Duplicate sale lots share one stock
+budget. The existing fill ledger retires only observed purchases/reservations;
+unknown receipts block another repair. Any final guard that invalidates the
+snapshot also cancels the added buy or restores the owned sale reductions.
+
+The observed carrot lot is offered to the existing selected seller after the
+full456 hiring row, preserving all inherited slots. That seller may defer it.
+Lost/replaced stock, mismatched final actions, unsupported branches and gaps
+block attribution; no requested sale is counted as cash. The producer, completed
+unit snapshot, emitted-action commit and fill ledger are shared with the other
+active components. `crop_release` is enabled in the canonical configuration.
+Focused source/native contracts and recorded-observation admission checks cover
+these boundaries. No new full games or measured playing-strength gain accompany
+this increment; the separate V2 submission is not a score for these later bytes.
+
 The same producer now uses a bounded idle interval to collect otherwise unclaimed
 fertilizer from an animal that is about to escape. `idle_fertilizer` is enabled.
 There is one outstanding job at most: collect, return to the shed, deposit with

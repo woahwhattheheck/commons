@@ -143,6 +143,14 @@
       "callsite": "FrozenSelected.transform -> optimize_lot",
       "enabled": true,
       "consumed_result": "4 focused arithmetic methods compare exact optimizer plans/reports against preserved loop; no game runs"
+    },
+    {
+      "component": "Funded annual crop release",
+      "source_pin": "Current manifest crop_release.py, spatial_tempo.py and titan_runtime.py",
+      "callsite": "Existing SpatialTempo producer -> FrozenSelected completed snapshot -> crop_market -> final emitted-action commit -> shared observed-fill ledger",
+      "enabled": true,
+      "consumed_result": "22 focused contracts plus recorded step372 admission probe; public-inventory funding bound, complete source-family services, later seed stock, exclusive observed crop/carrier/deposit/sale, late wheat replacement and executable-sale reservation, duplicate lots, EOD, boundary capital and final-guard/deadline cancellation. No new game panel or measured strength gain.",
+      "role": "active bounded production adaptation; canonical crop_release=true"
     }
   ],
   "next_increments": [
@@ -336,5 +344,7 @@
     "submission_status": "not_submitted",
     "stage": "bounded_idle_earning_and_operating_stock_enabled",
     "playing_strength": "not_measured_for_changed_bytes"
-  }
+  },
+  "frozen_v2_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
+  "development_version": "V2.5"
 }
