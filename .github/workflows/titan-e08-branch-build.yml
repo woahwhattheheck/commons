@@ -7,7 +7,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: titan-e08-event-horizon-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   e08-build:
@@ -18,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          fetch-depth: 0
 
       - name: Install official engine
         run: python3 -m pip install -q 'kaggle-environments==1.32.7'
@@ -47,17 +51,25 @@ jobs:
           export PYTHONPATH="$PWD:$RUNNER_TEMP/e08-runtime"
           python3 -B build_integrated.py | tee "$RUNNER_TEMP/e08-build-receipt.json"
           python3 -B build_integrated.py --check | tee "$RUNNER_TEMP/e08-check-receipt.json"
-          sha256sum exports/titan-current.tar.gz runtime/integrated-selected/CURRENT-SOURCE.json runtime/integrated-selected/CURRENT-ARCHIVE.json | tee "$RUNNER_TEMP/e08-sha256.txt"
+          NEW_SHA="$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')"
+          NEW_BYTES="$(stat -c%s exports/titan-current.tar.gz)"
+          MANIFEST_SHA="$(sha256sum runtime/integrated-selected/CURRENT-SOURCE.json | awk '{print $1}')"
+          test "$NEW_SHA" = "c5dcbf2abdb012f6250122f6b5fbcfe201aae218b0c0596dd65954b4dfa0c6e9"
+          test "$NEW_BYTES" = "409818"
+          test "$MANIFEST_SHA" = "78f6bc5b712f998fc07933c05ceb352af9085ea18947f1cfe20ca6be53504ed1"
+          python3 -c "import json; p=json.load(open('runtime/integrated-selected/CURRENT-ARCHIVE.json')); assert p['sha256']=='c5dcbf2abdb012f6250122f6b5fbcfe201aae218b0c0596dd65954b4dfa0c6e9'; assert p['bytes']==409818; assert p['source_manifest_sha256']=='78f6bc5b712f998fc07933c05ceb352af9085ea18947f1cfe20ca6be53504ed1'; assert p['runtime_files']==104"
           test -f exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz
+          test "$(sha256sum exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz | awk '{print $1}')" = "6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1"
+          sha256sum exports/titan-current.tar.gz exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz runtime/integrated-selected/CURRENT-SOURCE.json runtime/integrated-selected/CURRENT-ARCHIVE.json | tee "$RUNNER_TEMP/e08-sha256.txt"
 
-      - name: Stage generated release payload
+      - name: Stage audit artifact
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           mkdir -p "$RUNNER_TEMP/e08-release/runtime/integrated-selected" "$RUNNER_TEMP/e08-release/exports/historical"
           cp exports/titan-current.tar.gz "$RUNNER_TEMP/e08-release/exports/titan-current.tar.gz"
+          cp exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz "$RUNNER_TEMP/e08-release/exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz"
           cp runtime/integrated-selected/CURRENT-SOURCE.json "$RUNNER_TEMP/e08-release/runtime/integrated-selected/CURRENT-SOURCE.json"
           cp runtime/integrated-selected/CURRENT-ARCHIVE.json "$RUNNER_TEMP/e08-release/runtime/integrated-selected/CURRENT-ARCHIVE.json"
-          cp exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz "$RUNNER_TEMP/e08-release/exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz"
           cp "$RUNNER_TEMP/e08-build-receipt.json" "$RUNNER_TEMP/e08-release/BUILD-RECEIPT.json"
           cp "$RUNNER_TEMP/e08-check-receipt.json" "$RUNNER_TEMP/e08-release/CHECK-RECEIPT.json"
           cp "$RUNNER_TEMP/e08-sha256.txt" "$RUNNER_TEMP/e08-release/SHA256SUMS.txt"
@@ -69,3 +81,20 @@ jobs:
           path: ${{ runner.temp }}/e08-release/
           if-no-files-found: error
           retention-days: 7
+
+      - name: Publish verified release and remove temporary runner
+        run: |
+          BRANCH="sol/titan-v25-e08-event-horizon-20260909"
+          REMOTE_HEAD="$(git ls-remote origin "refs/heads/$BRANCH" | awk '{print $1}')"
+          test "$REMOTE_HEAD" = "$GITHUB_SHA"
+          git add revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+          git add revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1.tar.gz
+          git add revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json
+          git add revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+          git rm .github/workflows/titan-e08-branch-build.yml
+          git diff --cached --check
+          test "$(git diff --cached --name-only | wc -l)" = "5"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "E08: publish deterministic canonical release"
+          git push origin "HEAD:refs/heads/$BRANCH"
