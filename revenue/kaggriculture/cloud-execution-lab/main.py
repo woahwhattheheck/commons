@@ -6,6 +6,9 @@ _INSTANCE = None
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
+    rival_arrival = load('_titan_rival_arrival',
+                         root/'reference/titan-current/rival_arrival.py', cache=True)
+    rival_arrival.install()
     features = Features(**feature_data)
     admission = None
     if features.fourth_quadrant:
