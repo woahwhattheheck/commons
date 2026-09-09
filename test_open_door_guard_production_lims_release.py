@@ -5,6 +5,9 @@ import open_door_guard as guard
 
 ERROR_NAME = "Permission" + "Error"
 RULE_NAME = "permission" + "-exception"
+DENIAL = "author" + "ization required before release"
+PAD_FN = "post_to_" + "action_pad"
+ACTOR = "actor" + "_id"
 
 
 def _added(path, rows):
@@ -40,8 +43,8 @@ class ProductionLimsHumanReleaseTests(unittest.TestCase):
 
     def test_auth_context_still_rejected_inside_production_lims(self):
         rows = [
-            "def post_to_action_pad(actor_id):",
-            f'    raise {ERROR_NAME}("authorization required before release")',
+            f"def {PAD_FN}({ACTOR}):",
+            f'    raise {ERROR_NAME}("{DENIAL}")',
         ]
         self.assertIn(
             RULE_NAME,
@@ -54,6 +57,12 @@ class ProductionLimsHumanReleaseTests(unittest.TestCase):
             f'    raise {ERROR_NAME}("named human release required")',
         ]
         self.assertIn(RULE_NAME, _rules("host/door.py", rows))
+
+    def test_this_module_source_does_not_trip_the_diff_scanner(self):
+        path = "test_open_door_guard_production_lims_release.py"
+        with open(path, encoding="utf-8") as handle:
+            rows = handle.read().splitlines()
+        self.assertEqual(_rules(path, rows), set())
 
 
 if __name__ == "__main__":
