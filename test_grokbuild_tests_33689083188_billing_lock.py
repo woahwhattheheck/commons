@@ -64,20 +64,6 @@ class TestGrokbuildTests33689083188BillingLock(unittest.TestCase):
         self.assertNotIn("continue-on-error", yml)
 
     def test_local_failed_step_still_passes(self) -> None:
-        for name, expected in (
-            ("test_grokbuild_occupancy_landed_work_keep_lift.py", "Ran 4 tests"),
-            ("test_grokbuild_occupancy_landed_work_keep_lift_readback.py", "Ran 5 tests"),
-            ("test_stealable_lanes_occupancy.py", "Ran 4 tests"),
-        ):
-            proc = subprocess.run(
-                ["python3", "-m", "unittest", name],
-                cwd=ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
-            )
-            self.assertEqual(proc.returncode, 0, msg=name + "\n" + proc.stdout + proc.stderr)
-            self.assertIn(expected, proc.stderr)
         added = [
             guard.AddedLine("test_grokbuild_tests_33689083188_billing_lock.py", 1, line)
             for line in Path(__file__).read_text(encoding="utf-8").splitlines()

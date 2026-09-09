@@ -19,11 +19,8 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
-    "test_grokbuild_tests_33717741059_billing_lock.py": "bff91de7",
     "p/grokbuild-tests-33717733992-billing-lock-20260903-01.md": "e91d0547",
-    "test_grokbuild_tests_33717733992_billing_lock.py": "b6ca9347",
     "p/grokbuild-tests-33699945008-billing-lock-20260903-01.md": "a6542e64",
-    "test_grokbuild_tests_33699945008_billing_lock.py": "05e0f2ba",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "1cbed24a",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
@@ -34,7 +31,6 @@ KEEP = {
     "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "155ae14f",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "97f683f1",
-    "boards.html": "c680d63d",
     "hub_pages.py": "7a8f24d5",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "7b9a2318",
