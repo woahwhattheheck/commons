@@ -59,17 +59,21 @@ jobs:
             test_materialize.py \
             test_compare.py \
             test_bind_execution.py \
-            test_strict_compare.py
+            test_strict_compare.py \
+            test_candidate_action_compare.py
           python -m py_compile \
             materialize.py \
             compare.py \
             bind_execution.py \
             strict_compare.py \
+            materialize_evaluator.py \
+            candidate_action_compare.py \
             execution_test_support.py \
             test_materialize.py \
             test_compare.py \
             test_bind_execution.py \
-            test_strict_compare.py
+            test_strict_compare.py \
+            test_candidate_action_compare.py
 
       - name: Materialize exact V2 one-factor arm
         shell: bash
@@ -85,6 +89,20 @@ jobs:
             --output "$OUT/candidate" \
             --receipt "$OUT/MATERIALIZATION.json"
 
+      - name: Materialize candidate-only evaluator evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
+          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          mkdir -p "$OUT/evaluator"
+          python "$CASE/materialize_evaluator.py" \
+            --source "$KAG/cloud-eval/evaluate.py" \
+            --output "$OUT/evaluator/evaluate.py" \
+            --receipt "$OUT/EVALUATOR-MATERIALIZATION.json"
+
       - name: Build closure-checking execution entrypoints
         shell: bash
         run: |
@@ -99,7 +117,7 @@ jobs:
             --materialization "$OUT/MATERIALIZATION.json" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --evaluator "$KAG/cloud-eval/evaluate.py" \
+            --evaluator "$OUT/evaluator/evaluate.py" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
             --output-dir "$OUT/bound" \
@@ -121,7 +139,7 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
           OUT="$RUNNER_TEMP/v2-target-domain-ablation"
-          python "$KAG/cloud-eval/evaluate.py" \
+          python "$OUT/evaluator/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
             --candidate "$OUT/bound/control_bound.py::agent" \
@@ -141,7 +159,7 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
           OUT="$RUNNER_TEMP/v2-target-domain-ablation"
-          python "$KAG/cloud-eval/evaluate.py" \
+          python "$OUT/evaluator/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
             --candidate "$OUT/bound/candidate_bound.py::agent" \
@@ -164,18 +182,20 @@ jobs:
           KAG=revenue/kaggriculture
           CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
           OUT="$RUNNER_TEMP/v2-target-domain-ablation"
-          python "$CASE/strict_compare.py" \
+          python "$CASE/candidate_action_compare.py" \
             --control "$OUT/control.json" \
             --candidate "$OUT/candidate.json" \
             --receipt "$OUT/MATERIALIZATION.json" \
             --binding "$OUT/EXECUTION-BINDING.json" \
+            --evaluator-receipt "$OUT/EVALUATOR-MATERIALIZATION.json" \
             --control-root "$LAB/runtime/variants/v2" \
             --candidate-root "$OUT/candidate" \
             --control-wrapper "$OUT/bound/control_bound.py" \
             --candidate-wrapper "$OUT/bound/candidate_bound.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --evaluator "$KAG/cloud-eval/evaluate.py" \
+            --evaluator-source "$KAG/cloud-eval/evaluate.py" \
+            --evaluator "$OUT/evaluator/evaluate.py" \
             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
             --head "$(git rev-parse HEAD)" \
