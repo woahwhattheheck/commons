@@ -116,10 +116,14 @@ class DominanceNode:
 
 
 def _map_weakly_ge(a: tuple[tuple[str, int], ...],
-                   b: tuple[tuple[str, int], ...]) -> tuple[bool, bool]:
+                   b: tuple[tuple[str, int], ...], *,
+                   sparse_zero: bool) -> tuple[bool, bool]:
     left = dict(a); right = dict(b)
+    if not sparse_zero and left.keys() != right.keys():
+        return False, False
+    keys = left.keys() | right.keys() if sparse_zero else left.keys()
     strict = False
-    for key in left.keys() | right.keys():
+    for key in keys:
         av = left.get(key, 0); bv = right.get(key, 0)
         if av < bv:
             return False, False
@@ -131,8 +135,15 @@ def _metrics_dominate(a: tuple[Any, ...], b: tuple[Any, ...]) -> bool:
     if a[0] < b[0]:
         return False
     strict = a[0] > b[0]
-    for left, right in zip(a[1:], b[1:]):
-        weak, gained = _map_weakly_ge(left, right)
+    # Inventory may omit a good (treated as zero). Slack and safety require
+    # identical declared dimensions; a missing key is unknown, not zero.
+    specs = (
+        (a[1], b[1], True),
+        (a[2], b[2], False),
+        (a[3], b[3], False),
+    )
+    for left, right, sparse_zero in specs:
+        weak, gained = _map_weakly_ge(left, right, sparse_zero=sparse_zero)
         if not weak:
             return False
         strict = strict or gained
@@ -150,10 +161,12 @@ def prune_frontier(nodes: Iterable[DominanceNode], *, mode: str = "dominance") -
     """Stable exact-dedup / Pareto prune with a protected fallback escape hatch.
 
     ``none`` preserves every node after validating it. ``hash`` removes only
-    exact identity+metric duplicates. ``dominance`` additionally removes an
-    unprotected node when another node with the same exact identity dominates it.
-    Protected nodes are never removed.  A protected duplicate replaces an earlier
-    unprotected duplicate so the canonical/deadline fallback cannot disappear.
+    unprotected exact identity+metric duplicates. ``dominance`` additionally
+    removes an unprotected node when another node with the same exact identity
+    dominates it. Protected nodes are never removed. A protected duplicate
+    replaces an earlier unprotected duplicate so the canonical/deadline
+    fallback cannot disappear. Distinct protected payloads that share an exact
+    state all survive, because payload/path identity is not proven irrelevant.
     """
     if mode not in {"none", "hash", "dominance"}:
         raise ValueError(f"unknown pruning mode: {mode}")
@@ -175,8 +188,11 @@ def prune_frontier(nodes: Iterable[DominanceNode], *, mode: str = "dominance") -
         if prior is None:
             locations[exact] = len(unique)
             unique.append(record)
-        elif node.protected and not unique[prior][0].protected:
-            unique[prior] = record
+        elif node.protected:
+            if not unique[prior][0].protected:
+                unique[prior] = record
+            else:
+                unique.append(record)
 
     if mode == "hash":
         return [row[0] for row in unique]

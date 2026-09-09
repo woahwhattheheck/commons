@@ -94,6 +94,20 @@ class ExactDominanceTests(unittest.TestCase):
         self.assertTrue(dominates(richer, poorer))
         self.assertFalse(dominates(poorer, richer))
 
+    def test_missing_slack_or_safety_dimension_is_incomparable(self):
+        full_safety = node(safety={"cash_reserve": 100, "capacity_headroom": 20})
+        missing_safety = node(safety={"cash_reserve": 100})
+        self.assertFalse(dominates(full_safety, missing_safety))
+        self.assertFalse(dominates(missing_safety, full_safety))
+        self.assertEqual(prune_frontier([missing_safety, full_safety]),
+                         [missing_safety, full_safety])
+        full_slack = node(slack={"turns": 4, "orders": 1})
+        missing_slack = node(slack={"turns": 4})
+        self.assertFalse(dominates(full_slack, missing_slack))
+        self.assertFalse(dominates(missing_slack, full_slack))
+        self.assertEqual(prune_frontier([missing_slack, full_slack]),
+                         [missing_slack, full_slack])
+
     def test_protected_fallback_is_never_pruned(self):
         fallback = DominanceNode.from_state(state(cash=1000), protected=True)
         richer = node(cash=2000)
@@ -103,6 +117,15 @@ class ExactDominanceTests(unittest.TestCase):
         ordinary = DominanceNode.from_state(state(), payload="ordinary")
         protected = DominanceNode.from_state(state(), payload="fallback", protected=True)
         self.assertEqual(prune_frontier([ordinary, protected], mode="hash"), [protected])
+
+    def test_protected_exact_duplicates_all_survive(self):
+        first = DominanceNode.from_state(state(), payload="deadline", protected=True)
+        second = DominanceNode.from_state(state(), payload="canonical", protected=True)
+        ordinary = DominanceNode.from_state(state(), payload="ordinary")
+        for mode in ("hash", "dominance"):
+            with self.subTest(mode=mode):
+                kept = prune_frontier([ordinary, first, second], mode=mode)
+                self.assertEqual([node.payload for node in kept], ["deadline", "canonical"])
 
     def test_hash_never_performs_pareto_pruning(self):
         poor = node(cash=1000); rich = node(cash=1001)
