@@ -76,3 +76,7 @@ Stop the walk if weather makes the sidewalk unsafe. Pause a job if it needs a la
 A dated zero must carry its search space: streets walked, cards dropped, calls, jobs, money collected. KEEP or SELL stays Bryce's in `keep-vs-sell.md`. Do not invent buyers, cash, or Stripe URLs.
 
 Cite, do not take: the GOAT/Cursor candidate runbook at `revenue/pack_keep_sell_candidates/yard-card-route-20260902-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

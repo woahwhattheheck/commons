@@ -102,3 +102,7 @@ slug stands in for `{sale_id}`. Agents do not fire the pixel.
 - Thanks: `packs/thanks.html?value=100&utm_source={channel}&utm_medium=paid&utm_campaign=curbline-weekend-yard-help-20260902-01&utm_content=thanks`
 
 Marketing execution is Bryce. This brief is the cut, not the spend.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
