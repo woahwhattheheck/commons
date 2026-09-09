@@ -1,10 +1,6 @@
 name: titan-v3-horizon-liquidity-sol-kepler
 
 on:
-  push:
-    paths:
-      - '.github/workflows/titan-v3-horizon-liquidity-sol-kepler.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/**'
   pull_request:
     paths:
       - '.github/workflows/titan-v3-horizon-liquidity-sol-kepler.yml'
@@ -15,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
