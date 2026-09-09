@@ -14,6 +14,21 @@ HERE = Path(__file__).resolve().parent
 BASE_COMPARATOR = (
     HERE.parent / "v2-target-domain-ablation-sol-bulwark" / "compare.py"
 )
+LAB = HERE.parent.parent
+KAG = LAB.parent
+ENGINE_DIR = LAB / "reference" / "engine"
+LOADER_PATH = KAG / "20260907-offline-agent" / "evaluate.py"
+EVALUATOR_PATH = KAG / "cloud-eval" / "evaluate.py"
+V2_ENTRY_PATH = LAB / "runtime" / "variants" / "v2" / "candidate.py"
+V1_ENTRY_PATH = LAB / "runtime" / "variants" / "v1" / "candidate.py"
+ARLENE_PATH = (
+    LAB / "runtime" / "variants" / "v1" / "reference" / "next-panel"
+    / "vendor" / "arlene.py"
+)
+ENGINE_FILES = ("kaggriculture.py", "kaggriculture.json", "utils.py")
+EXPECTED_ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+EXPECTED_SEEDS = [539131249, 1834999074, 2609097301, 2611092207]
+EXPECTED_AGENT_RNG_SEED = 20260909
 
 OPERATION = "titan-v2-delayed-rival-ablation-20260909-sol-caliber-01"
 EXPECTED_BASE_COMPARATOR_BLOB = "6d66238b2ce1f11f26752049c106502be5ef0ec7"
@@ -39,6 +54,76 @@ class CompareError(ValueError):
 def git_blob_sha1(data: bytes) -> str:
     header = b"blob " + str(len(data)).encode("ascii") + b"\0"
     return hashlib.sha1(header + data).hexdigest()
+
+
+def sha256_file(path: Path, label: str) -> str:
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError as exc:
+        raise CompareError(f"cannot hash pinned {label}: {path}: {exc}") from exc
+
+
+def _agent_fingerprint(path: Path) -> dict[str, str]:
+    return {
+        "entry": path.name,
+        "callable": "agent",
+        "sha256": sha256_file(path, str(path.relative_to(KAG))),
+    }
+
+
+def expected_report_custody() -> dict[str, Any]:
+    """Derive the exact evaluator identities from this checked-out source tree."""
+    return {
+        "engine_ref": EXPECTED_ENGINE_REF,
+        "engine_sha256": {
+            name: sha256_file(ENGINE_DIR / name, f"engine/{name}")
+            for name in ENGINE_FILES
+        },
+        "loader_sha256": sha256_file(LOADER_PATH, "offline loader"),
+        "evaluator_sha256": sha256_file(EVALUATOR_PATH, "cloud evaluator"),
+        "candidate": _agent_fingerprint(V2_ENTRY_PATH),
+        "opponents": {
+            "arlene": _agent_fingerprint(ARLENE_PATH),
+            "v1": _agent_fingerprint(V1_ENTRY_PATH),
+        },
+        "seeds": list(EXPECTED_SEEDS),
+        "agent_rng_seed": EXPECTED_AGENT_RNG_SEED,
+    }
+
+
+def validate_report_custody(report: Mapping[str, Any], label: str) -> dict[str, Any]:
+    """Bind report-declared execution identity to exact on-disk workflow inputs."""
+    if not isinstance(report, Mapping):
+        raise CompareError(f"{label} report is not an object")
+    expected = expected_report_custody()
+    for key in (
+        "engine_ref",
+        "engine_sha256",
+        "loader_sha256",
+        "evaluator_sha256",
+        "candidate",
+        "opponents",
+        "seeds",
+        "agent_rng_seed",
+    ):
+        if report.get(key) != expected[key]:
+            raise CompareError(f"{label} {key} does not match the exact workflow input")
+    games = report.get("games")
+    if not isinstance(games, list):
+        raise CompareError(f"{label} games is not a list")
+    for index, game in enumerate(games):
+        if not isinstance(game, Mapping):
+            raise CompareError(f"{label} game {index} is not an object")
+        opponent = game.get("opponent")
+        seed = game.get("seed")
+        seat = game.get("candidate_seat")
+        if opponent not in expected["opponents"]:
+            raise CompareError(f"{label} game {index} opponent is outside the workflow grid")
+        if type(seed) is not int or seed not in EXPECTED_SEEDS:
+            raise CompareError(f"{label} game {index} seed is outside the literal workflow grid")
+        if type(seat) is not int or seat not in (0, 1):
+            raise CompareError(f"{label} game {index} candidate seat must be integer 0 or 1")
+    return expected
 
 
 def _load_base() -> ModuleType:
@@ -105,6 +190,8 @@ def compare(
     git_head: str,
 ) -> dict[str, Any]:
     validate_receipt(receipt)
+    validate_report_custody(control, "control")
+    validate_report_custody(candidate, "candidate")
     base = _load_base()
     try:
         report = base.compare(
