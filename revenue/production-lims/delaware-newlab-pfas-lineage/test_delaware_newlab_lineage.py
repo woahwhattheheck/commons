@@ -188,13 +188,35 @@ class DelawareNewLabLineageTests(unittest.TestCase):
     def test_release_requires_named_human_and_automatic_release_is_impossible(self):
         shadow = DelawareNewLabShadow()
         shadow.replay(self.records, self.manifest)
+        request_id = "DNREC-REQ-0001"
+        staged = copy.deepcopy(shadow.reports[request_id])
         with self.assertRaises(PermissionError):
-            shadow.release_report("DNREC-REQ-0001", "")
+            shadow.release_report(request_id, "")
+        for actor in (
+            "auto",
+            " system ",
+            "BOT",
+            "a-u-t-o",
+            "automation",
+            "agent",
+            "autonomous",
+        ):
+            with self.subTest(actor=actor):
+                with self.assertRaises(PermissionError):
+                    shadow.release_report(request_id, actor)
+                self.assertEqual(staged, shadow.reports[request_id])
         with self.assertRaises(PermissionError):
-            shadow.automatic_release("DNREC-REQ-0001")
-        receipt = shadow.release_report("DNREC-REQ-0001", "Named QA Reviewer")
+            shadow.release_report(request_id, None)  # type: ignore[arg-type]
+        self.assertEqual(staged, shadow.reports[request_id])
+        with self.assertRaises(PermissionError):
+            shadow.automatic_release(request_id)
+        self.assertEqual(staged, shadow.reports[request_id])
+        receipt = shadow.release_report(request_id, "Named QA Reviewer")
         self.assertEqual("RELEASED_BY_NAMED_HUMAN", receipt["state"])
         self.assertEqual("Named QA Reviewer", receipt["released_by"])
+        with self.assertRaises(PermissionError):
+            shadow.release_report(request_id, "Second Reviewer")
+        self.assertEqual("Named QA Reviewer", shadow.reports[request_id]["released_by"])
 
 
 if __name__ == "__main__":

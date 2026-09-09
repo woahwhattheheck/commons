@@ -29,6 +29,18 @@ class T(unittest.TestCase):
   L,_=s.first(); sample=next(iter(L.reports)); old=copy.deepcopy(L.reports[sample]);
   with s.assertRaisesRegex(ValueError,"NAMED_HUMAN"): M.release(L,sample,"")
   out=M.release(L,sample,"QA Reviewer"); s.assertEqual((out["status"],out["reviewer"]),(M.RELEASED,"QA Reviewer")); s.assertEqual(L.reports[sample],old)
+
+ def test_unknown_phase_fails_closed_without_mutation(s):
+  L=M.Ledger(); r=M.row(901,"UNKNOWN_CUTOFF","CORE"); before=copy.deepcopy(L)
+  with s.assertRaisesRegex(ValueError,"RECEIVED_PHASE_INVALID"): M.process(r,L,s.m)
+  s.assertEqual(L,before)
+ def test_replay_requires_identical_payload(s):
+  L=M.Ledger(); r=M.row(902,"BEFORE_CUTOFF","CORE"); s.assertEqual(M.process(r,L,s.m),M.CURRENT); before=copy.deepcopy(L); changed=copy.deepcopy(r); changed["qc_batch"]="QC-CHANGED"
+  with s.assertRaisesRegex(ValueError,"SUBMISSION_ID_PAYLOAD_MISMATCH"): M.process(changed,L,s.m)
+  s.assertEqual(L,before); s.assertEqual(M.process(copy.deepcopy(r),L,s.m),"IDEMPOTENT_REPLAY")
+ def test_held_sample_id_is_reserved_across_submissions(s):
+  L=M.Ledger(); held=M.row(903,"BEFORE_CUTOFF","CORE",sample="MALT-HOLD",grain="SORGHUM"); s.assertEqual(M.process(held,L,s.m),M.UNSUP)
+  corrected=M.row(904,"BEFORE_CUTOFF","CORE",sample="MALT-HOLD"); s.assertEqual(M.process(corrected,L,s.m),M.DUP); s.assertNotIn("MALT-HOLD",L.accessions); s.assertEqual(len(L.holds),2)
  def test_tamper(s):
   p=json.loads(s.f.read_text()); p["schema_version"]+=1
   with tempfile.TemporaryDirectory() as td:
