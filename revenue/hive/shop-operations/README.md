@@ -103,7 +103,9 @@ Command keys are durable in SQLite. **Retry the identical key and payload after
 an uncertain response.** It returns the original result even after a restart;
 reusing a key with different data is a conflict. Successful receipt references,
 order IDs and return IDs cannot be inserted again under a new key. Repeated
-fulfill/cancel of an already-matching state does not move stock again. The UI
+fulfill/cancel of an already-matching state does not move stock again. A later
+fulfill under a new key still requires the exact nonempty `shipment_ref`; a
+mismatch or blank reference is a conflict and does not mutate. The UI
 keeps an uncertain request and its key in the current tab for exact retry; it
 does not persist that pending browser request across tab closure. Use the state
 view and the integration's retained request key to reconcile after closure.
