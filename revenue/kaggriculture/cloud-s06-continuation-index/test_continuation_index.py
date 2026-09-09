@@ -1,8 +1,9 @@
+import sys
 import unittest
 
 from continuation_index import (
     ContinuationIndex, action_key, collision_reasons, exact_state_hash,
-    product_quantized_key, project_public_state,
+    product_quantized_key, project_public_state, _deep_size,
 )
 
 
@@ -122,6 +123,19 @@ class ContinuationIndexTests(unittest.TestCase):
         self.assertEqual([(c.source, c.action['name']) for c in result],
                          [('canonical', 'canonical')])
 
+    def test_explicit_falsy_malformed_requires_fail_closed(self):
+        for bad in ([], '', 0, False, None):
+            with self.subTest(requires=repr(bad)):
+                reasons = collision_reasons({'name': 'bad', 'requires': bad}, state())
+                self.assertEqual(reasons, ('malformed_requirements',))
+
+    def test_malformed_requires_history_is_rejected_but_canonical_survives(self):
+        idx = ContinuationIndex()
+        idx.add(state(), {'name': 'bad-history', 'requires': []}, 't1')
+        result = idx.retrieve(state(), [action('canonical')], mode='exact')
+        self.assertEqual([(c.source, c.action['name']) for c in result],
+                         [('canonical', 'canonical')])
+
     def test_duplicate_trajectory_record_is_idempotent(self):
         idx = ContinuationIndex()
         self.assertTrue(idx.add(state(), action('h'), 't1'))
@@ -129,10 +143,31 @@ class ContinuationIndexTests(unittest.TestCase):
         self.assertEqual(idx.stats()['records'], 1)
 
     def test_memory_budget_fails_closed_before_mutation(self):
-        idx = ContinuationIndex(max_bytes=900)
+        idx = ContinuationIndex(max_bytes=5000)
+        before = idx.stats().copy()
         with self.assertRaises(MemoryError):
             idx.add(state(), {'name': 'huge', 'payload': 'x' * 1000}, 't1')
-        self.assertEqual(idx.stats()['records'], 0)
+        self.assertEqual(idx.stats(), before)
+
+    def test_budget_edge_uses_full_record_admission_charge(self):
+        probe = ContinuationIndex()
+        base = probe.stats()['admission_bytes']
+        probe.add(state(), action('edge'), 't1')
+        charge = probe.stats()['admission_bytes'] - base
+        idx = ContinuationIndex(max_bytes=base + charge - 1)
+        before = idx.stats().copy()
+        with self.assertRaises(MemoryError):
+            idx.add(state(), action('edge'), 't1')
+        self.assertEqual(idx.stats(), before)
+
+    def test_admission_charge_bounds_owned_python_object_graph(self):
+        idx = ContinuationIndex(max_bytes=8 * 1024 * 1024)
+        for i in range(256):
+            idx.add(state(money=100 + (i % 4)), action('h%03d' % i), 't%03d' % i)
+        structural = _deep_size((idx._records, idx._exact, idx._product,
+                                 idx._seen, idx.quanta)) + sys.getsizeof(idx)
+        self.assertGreaterEqual(idx.stats()['admission_bytes'], structural)
+        self.assertLessEqual(idx.stats()['admission_bytes'], idx.stats()['max_bytes'])
 
     def test_action_hash_is_content_order_invariant(self):
         self.assertEqual(action_key({'b': 2, 'a': 1}), action_key({'a': 1, 'b': 2}))

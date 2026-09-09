@@ -95,6 +95,36 @@ class DeskInstanceTests(unittest.TestCase):
         for phrase in ("we handle your legal paperwork", "we set up your llc", "compliance guaranteed", "paperwork included", "become a business owner", "for this price"):
             self.assertNotIn(phrase, door, phrase)
 
+    def test_sold_once_badge_is_rendered_from_the_verdict(self):
+        self.assertIs(self.manifest["sold_once"], True)
+        self.assertEqual(self.manifest["badge_line"], desk.SOLD_ONCE_LINE)
+        self.assertEqual(self.manifest["anchor_line"], "OWNER_UNSET")
+        door = (PACK / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(desk.door_badge(door), desk.badge_html(desk.SOLD_ONCE_LINE))
+        self.assertIn('<code data-slot="anchor_line">OWNER_UNSET</code>', door)
+
+    def test_recorded_clone_sale_flips_the_badge(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            dest = _copy_pack(tmp)
+            manifest = json.loads((dest / "manifest.json").read_text(encoding="utf-8"))
+            clone = {"sale_id": "sale-recorded-clone", **manifest["instance_fields"]}
+            manifest["sales"] = [clone]
+            (dest / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+            refreshed = desk.write_manifest(dest)
+            self.assertIs(refreshed["sold_once"], False)
+            self.assertEqual(refreshed["badge_line"], desk.SAME_METHOD_LINE)
+            door = (dest / "index.html").read_text(encoding="utf-8")
+            self.assertEqual(desk.door_badge(door), desk.badge_html(desk.SAME_METHOD_LINE))
+            self.assertEqual(desk.verify(dest)["errors"], [])
+
+    def test_hand_edited_badge_fails_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            dest = _copy_pack(tmp)
+            door = dest / "index.html"
+            door.write_text(door.read_text(encoding="utf-8").replace(desk.SOLD_ONCE_LINE, "Sold to thousands."), encoding="utf-8")
+            result = desk.verify(dest)
+            self.assertTrue(any("badge" in item for item in result["errors"]), result["errors"])
+
     def test_invented_partner_link_fails_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
             dest = _copy_pack(tmp)

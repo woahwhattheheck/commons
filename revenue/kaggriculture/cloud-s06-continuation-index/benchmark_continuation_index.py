@@ -1,9 +1,10 @@
 """Deterministic local microbenchmark for S06 data-structure bounds."""
 import statistics
+import sys
 import time
 import tracemalloc
 
-from continuation_index import ContinuationIndex
+from continuation_index import ContinuationIndex, _deep_size
 
 
 def state(i):
@@ -27,6 +28,13 @@ def main():
     for i in range(20000):
         idx.add(state(i), {'name': 'history-%05d' % i, 'requires': {}}, 't%05d' % i)
     current, peak = tracemalloc.get_traced_memory()
+    structural = _deep_size((idx._records, idx._exact, idx._product,
+                             idx._seen, idx.quanta)) + sys.getsizeof(idx)
+    admission = idx.stats()['admission_bytes']
+    if admission < structural:
+        raise AssertionError('admission charge below retained structural footprint')
+    if admission < peak:
+        raise AssertionError('admission charge below traced benchmark peak')
     timings = []
     canonical = [{'name': 'canonical', 'requires': {}}]
     for i in range(1000):
@@ -39,7 +47,8 @@ def main():
             raise AssertionError('canonical missing')
         timings.append(elapsed)
     print('records', idx.stats()['records'])
-    print('estimated_bytes', idx.stats()['estimated_bytes'])
+    print('admission_bytes', admission)
+    print('structural_bytes', structural)
     print('tracemalloc_current_bytes', current)
     print('tracemalloc_peak_bytes', peak)
     print('lookup_ms_p50', round(statistics.median(timings), 6))
