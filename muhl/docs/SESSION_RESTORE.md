@@ -220,3 +220,13 @@ path: `C:\Users\lucys\Desktop\MUHL_GO\SESSION_RESTORE.md`
 first_user_msg_found **Y**
 n_spanks_listed **19**
 walls_named: Instant Download 100GB/live-EOF · inbox `--go` · winner-only 78 · letter folder · socket · film-as-movie · compress organ · offload-into-`.mno` · World System OUT-OF-SPEC throttle (siblings hunting)
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

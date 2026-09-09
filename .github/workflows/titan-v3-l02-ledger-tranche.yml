@@ -92,11 +92,8 @@ jobs:
         run: |
           if [[ -f "$RUNNER_TEMP/l02-results/L02-PANEL.md" ]]; then
             cat "$RUNNER_TEMP/l02-results/L02-PANEL.md" >> "$GITHUB_STEP_SUMMARY"
-          elif [[ -f "$RUNNER_TEMP/l02-results/L02-PANEL.json" ]]; then
-            echo '# L02 panel did not reach a markdown verdict' >> "$GITHUB_STEP_SUMMARY"
-            cat "$RUNNER_TEMP/l02-results/L02-PANEL.json" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo '# L02 produced no panel receipt' >> "$GITHUB_STEP_SUMMARY"
+            echo '# L02 produced no compact panel receipt' >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Retain exact L02 evidence

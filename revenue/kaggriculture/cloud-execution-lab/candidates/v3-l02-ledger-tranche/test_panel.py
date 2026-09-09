@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -128,6 +129,87 @@ class IsolatedSourcePathTests(unittest.TestCase):
         with self.assertRaises(RuntimeError) as raised:
             panel.assert_isolated_source_imports(panel.LAB, str(panel.LAB))
         self.assertIn("observed_clone", str(raised.exception))
+
+
+class CompactCellFailureTests(unittest.TestCase):
+    def test_rpc_failure_observation_is_not_embedded(self):
+        marker = "UNIQUE_OBS_TOKEN_SHOULD_NOT_LEAK"
+        failure = {
+            "seat": 0, "step": 0, "phase": "action", "kind": "crash",
+            "error": "ModuleNotFoundError: No module named 'observed_clone'",
+            "rpc_failure": {
+                "scope": "parent_observed_failed_rpc",
+                "request": {
+                    "disposition": "complete",
+                    "wire_utf8": json.dumps({
+                        "observation": {"marker": marker, "farm": list(range(200))},
+                        "configuration": {"turnsPerDay": 24},
+                    }),
+                },
+            },
+        }
+        game_row = {**game("arlene", 1, 0, [0, 0], "z"),
+                    "status": "failed", "failure": failure, "scores": None}
+        reason = panel.cell_failure_reason(game_row)
+        self.assertIn("ModuleNotFoundError", reason)
+        self.assertIn("observed_clone", reason)
+        self.assertIn("step=0", reason)
+        self.assertNotIn(marker, reason)
+        self.assertNotIn("wire_utf8", reason)
+        self.assertNotIn("farm", reason)
+        self.assertLessEqual(len(reason), 240)
+
+    def test_collect_games_keeps_compact_errors(self):
+        marker = "UNIQUE_OBS_TOKEN_SHOULD_NOT_LEAK"
+        failed = {**game("arlene", 1, 0, [100, 90], "a"),
+                  "status": "failed",
+                  "failure": {
+                      "seat": 0, "step": 0, "phase": "action", "kind": "crash",
+                      "error": "ModuleNotFoundError: No module named 'observed_clone'",
+                      "rpc_failure": {"request": {"wire_utf8": marker * 50}},
+                  },
+                  "scores": None}
+        _, gate = panel.collect_games(
+            [result("candidate", [failed, game("arlene", 1, 1, [90, 100], "b")])],
+            "candidate", [1], ["arlene"])
+        self.assertFalse(gate["valid"])
+        blob = " ".join(gate["errors"])
+        self.assertIn("observed_clone", blob)
+        self.assertNotIn(marker, blob)
+        self.assertLess(len(blob), 4000)
+
+    def test_failure_markdown_omits_observation_and_caps_rows(self):
+        marker = "UNIQUE_OBS_TOKEN_SHOULD_NOT_LEAK"
+        errors = [
+            f"incomplete or invalid cell ('arlene', {i}, 0): failed action crash "
+            f"step=0 ModuleNotFoundError: No module named 'observed_clone'"
+            for i in range(40)
+        ]
+        payload = {"status": "failed", "stage": "validation", "errors": errors}
+        text = panel.failure_markdown(payload)
+        self.assertIn("Status: **failed**", text)
+        self.assertIn("Compact errors: 40", text)
+        self.assertIn("… 16 more compact errors retained in JSON", text)
+        self.assertNotIn(marker, text)
+        self.assertLess(len(text.encode("utf-8")), 16 * 1024)
+
+
+class CandidateIsolatedRootsTests(unittest.TestCase):
+    def test_stripped_here_only_import_resolves_observed_clone(self):
+        probe = (
+            "import sys\n"
+            f"sys.path.insert(0, {str(panel.HERE)!r})\n"
+            "import candidate\n"
+            "from observed_clone import detached_json_value\n"
+            "import scheduler\n"
+            "assert callable(detached_json_value)\n"
+            "assert callable(candidate.agent)\n"
+            "roots = candidate._install_isolated_source_roots(candidate.LAB)\n"
+            "assert any('cloud-runtime-pulse' in item for item in roots)\n"
+            "assert any('cloud-quickstep' in item for item in roots)\n"
+        )
+        result = _stripped(pythonpath=None, probe=probe)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
 
 
 if __name__ == "__main__":
