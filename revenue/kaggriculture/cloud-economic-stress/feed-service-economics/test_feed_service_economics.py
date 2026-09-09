@@ -148,6 +148,17 @@ class FeedServiceEconomicsContracts(unittest.TestCase):
             candidate, now=100, terminal_step=718)
         self.assertTrue(on_time["physical"])
 
+    def test_already_unfed_service_requires_explicit_escape_deadline(self):
+        candidate = FeedSupplyCandidate(
+            key="stock", mode="inherited", initial_shed_wheat=1)
+        report = evaluate_feed_supply(
+            [service(pickup=101, feeds=(102,), consecutive_unfed=1, escape=None)],
+            candidate, now=100, terminal_step=718)
+        self.assertFalse(report["physical"])
+        self.assertFalse(report["admissible"])
+        self.assertEqual(report["reason"], "missing_escape_deadline")
+        self.assertEqual(report["service_reports"], [])
+
     def test_late_supply_with_no_terminal_value_is_rejected(self):
         candidate = FeedSupplyCandidate(
             key="late-buy", mode="buy", initial_shed_wheat=0,
