@@ -1,0 +1,93 @@
+name: TITAN market-carry WHEAT audit — SOL-COMPASS
+
+on:
+  push:
+    branches:
+      - 'sol-compass/titan-market-carry-wheat-audit-20260909-01'
+    paths:
+      - '.github/workflows/titan-market-carry-wheat-audit-sol-compass.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out branch with exact source ancestry
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify isolated source binding
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE=b6b080a6842107f7e9086f64cb0b2b9c38377696
+          git merge-base --is-ancestor "$SOURCE" HEAD
+          for path in \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-carry/market_carry.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
+            revenue/kaggriculture/cloud-execution-lab/mechanics.py \
+            revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+            revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
+            revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
+          do
+            test "$(git rev-parse "$SOURCE:$path")" = "$(git rev-parse "HEAD:$path")"
+          done
+          git diff --exit-code "$SOURCE" -- \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-carry/market_carry.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
+            revenue/kaggriculture/cloud-execution-lab/mechanics.py \
+            revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+            revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
+            revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
+
+      - name: Compile and execute audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py
+          python revenue/kaggriculture/cloud-execution-lab/evidence/sol_compass_market_carry_wheat_audit.py
+
+      - name: Enforce disposition contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          report = json.load(open('WHEAT-AUDIT.json', encoding='utf-8'))
+          assert report['source_head'] == 'b6b080a6842107f7e9086f64cb0b2b9c38377696'
+          assert report['candidate_legal_carry_universe'] == ['WHEAT']
+          assert report['max_wheat_demand'] == 9
+          assert report['scan']['feasible_rows']
+          assert not report['disposition']['immediate_liquidation_guaranteed']
+          assert not report['disposition']['promotion_ready']
+          print('DISPOSITION_CONTRACT_PASS')
+          PY
+
+      - name: Publish job summary
+        if: always()
+        shell: bash
+        run: |
+          if test -f WHEAT-AUDIT.md; then
+            cat WHEAT-AUDIT.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            printf 'Audit failed before WHEAT-AUDIT.md was produced.\n' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload exact audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-market-carry-wheat-audit-sol-compass
+          path: |
+            WHEAT-AUDIT.json
+            WHEAT-AUDIT.md
+          if-no-files-found: warn
+          retention-days: 7
