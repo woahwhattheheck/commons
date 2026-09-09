@@ -1,4 +1,5 @@
 from __future__ import annotations
+import hashlib
 import importlib.util
 import io
 import json
@@ -77,24 +78,59 @@ class AnalysisTests(unittest.TestCase):
 
 
 class ArchiveTests(unittest.TestCase):
-    def _pin(self, archive, files):
-        return {"release": {"sha256": module.sha256_file(archive), "bytes": archive.stat().st_size,
-                            "runtime_files": files, "entrypoint": "main.py::agent", "config": "TITAN-CONFIG.json"}}
+    SOURCE = b'{"schema":"source"}\n'
 
-    def test_verified_archive_extracts(self):
+    def _pin(self, archive, files, source=SOURCE):
+        return {"release": {"sha256": module.sha256_file(archive), "bytes": archive.stat().st_size,
+                            "runtime_files": files, "entrypoint": "main.py::agent",
+                            "config": "TITAN-CONFIG.json",
+                            "source_manifest_sha256": hashlib.sha256(source).hexdigest()}}
+
+    def _archive(self, path, source=SOURCE):
+        with tarfile.open(path, "w:gz") as tar:
+            for name, data in (("main.py", b"def agent(o,c=None): return {}\n"),
+                               ("TITAN-CONFIG.json", b"{}\n"),
+                               ("SOURCE.json", source)):
+                info = tarfile.TarInfo(name)
+                info.size = len(data)
+                tar.addfile(info, io.BytesIO(data))
+
+    def test_verified_archive_extracts_and_separates_manifest(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            archive = root / "candidate.tar.gz"
+            self._archive(archive)
+            pin = root / "PIN.json"
+            pin.write_text(json.dumps(self._pin(archive, 2)))
+            receipt = module.verify_and_extract(archive, pin, root / "out")
+            self.assertEqual(receipt["extraction"]["regular_files"], 3)
+            self.assertEqual(receipt["extraction"]["runtime_files"], 2)
+            self.assertEqual(receipt["extraction"]["source_manifest"]["sha256"],
+                             hashlib.sha256(self.SOURCE).hexdigest())
+
+    def test_missing_embedded_source_manifest_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             archive = root / "candidate.tar.gz"
             with tarfile.open(archive, "w:gz") as tar:
-                for name, data in (("main.py", b"def agent(o,c=None): return {}\n"),
-                                   ("TITAN-CONFIG.json", b"{}\n")):
+                for name, data in (("main.py", b"x"), ("TITAN-CONFIG.json", b"{}")):
                     info = tarfile.TarInfo(name)
                     info.size = len(data)
                     tar.addfile(info, io.BytesIO(data))
             pin = root / "PIN.json"
             pin.write_text(json.dumps(self._pin(archive, 2)))
-            receipt = module.verify_and_extract(archive, pin, root / "out")
-            self.assertEqual(receipt["extraction"]["regular_files"], 2)
+            with self.assertRaisesRegex(ValueError, "exactly one root SOURCE.json"):
+                module.verify_and_extract(archive, pin, root / "out")
+
+    def test_embedded_source_manifest_hash_is_verified(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            archive = root / "candidate.tar.gz"
+            self._archive(archive, b'{"different":true}\n')
+            pin = root / "PIN.json"
+            pin.write_text(json.dumps(self._pin(archive, 2, self.SOURCE)))
+            with self.assertRaisesRegex(ValueError, "embedded source manifest mismatch"):
+                module.verify_and_extract(archive, pin, root / "out")
 
     def test_parent_traversal_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:

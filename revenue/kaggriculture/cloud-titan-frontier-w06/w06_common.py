@@ -85,8 +85,33 @@ def verify_and_extract(archive_path: Path, pin_path: Path, output: Path) -> dict
     with tarfile.open(archive_path, "r:gz") as archive:
         members = _safe_members(archive)
         regular = [member for member in members if member.isfile()]
-        if len(regular) != release["runtime_files"]:
-            raise ValueError(f"runtime file count mismatch: {len(regular)} != {release['runtime_files']}")
+        embedded_source = [
+            member for member in regular
+            if str(PurePosixPath(member.name)) == "SOURCE.json"
+        ]
+        if len(embedded_source) != 1:
+            raise ValueError(
+                f"expected exactly one root SOURCE.json, found {len(embedded_source)}"
+            )
+        source_stream = archive.extractfile(embedded_source[0])
+        if source_stream is None:
+            raise ValueError("cannot read embedded SOURCE.json")
+        source_bytes = source_stream.read()
+        actual_source_hash = hashlib.sha256(source_bytes).hexdigest()
+        expected_source_hash = release.get("source_manifest_sha256")
+        if actual_source_hash != expected_source_hash:
+            raise ValueError(
+                "embedded source manifest mismatch: "
+                f"{actual_source_hash} != {expected_source_hash}"
+            )
+        runtime = [
+            member for member in regular
+            if str(PurePosixPath(member.name)) != "SOURCE.json"
+        ]
+        if len(runtime) != release["runtime_files"]:
+            raise ValueError(
+                f"runtime file count mismatch: {len(runtime)} != {release['runtime_files']}"
+            )
         archive.extractall(output, members=members, filter="data")
     entry_file = output / release["entrypoint"].partition("::")[0]
     config_file = output / release["config"]
@@ -96,7 +121,16 @@ def verify_and_extract(archive_path: Path, pin_path: Path, output: Path) -> dict
         "schema": SCHEMA,
         "pin": pin,
         "archive": {"path": str(archive_path), "bytes": actual_size, "sha256": actual_hash},
-        "extraction": {"path": str(output), "regular_files": len(regular)},
+        "extraction": {
+            "path": str(output),
+            "regular_files": len(regular),
+            "runtime_files": len(runtime),
+            "source_manifest": {
+                "path": "SOURCE.json",
+                "bytes": len(source_bytes),
+                "sha256": actual_source_hash,
+            },
+        },
         "entrypoint": str(entry_file),
         "config": str(config_file),
     }
