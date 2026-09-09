@@ -35,23 +35,29 @@ These are three different events. Naming one as "paid" is a miss.
 
 Banking setup is not the only blocker. Current-main
 `bazaar.json` first catalog currency is `FREE_COLONY_COMPUTE`.
-Every listed offer is price `0`. Tip carries live public checkout product pages (Autopsy $29 + four $199 diagnostics); collected cash remains USD 0 until evidenced. See ## Live cash doors below. The taking file itself is **CARRIER_ONLY**
-until `p/demon-cash-now-overdrive-20260825-01.md` exists on HEAD.
+Every listed bazaar offer is price `0`. There is no USD collectable
+offer on the bazaar catalog. **Collectable USD** (processor payout
+to bank) stays **NOT_LANDED** until AUTH→SETTLE→BANK_AVAILABLE is
+measured. The taking file itself is **CARRIER_ONLY** until
+`p/demon-cash-now-overdrive-20260825-01.md` exists on HEAD.
 
-## Live cash doors (tip — collected still USD 0)
+## Live product pages (checkout doors — not bank cash)
 
-Authorization ≠ settlement ≠ bank-available still stands. Tip also
-carries **live public checkout product pages** (do not invent
-Payment Links; do not remint Stripe URLs):
+Verified product pages only — no invented Stripe links. These are
+AUTHORIZATION doors on tip. They are **not** SETTLEMENT and **not**
+BANK_AVAILABLE. Do not call them collectable USD.
 
-- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
-Collected cash remains **USD 0** until independently evidenced.
-Opening checkout is not bank-available cash.
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog:
+[commerce.html](../commerce.html). Cite forge tip-shelf / spark
+autopsy / coil MANUAL live-cash — do not remint.
+
+Claim `reed-ground-cash-now-autopsy-doors-20260909-01`.
 
 ## Private provider execution (no public financial data)
 
@@ -69,14 +75,16 @@ credentials anywhere public. The form is routing, not a gate.
 
 ## Same-day sequence (verified public facts, not a sale)
 
-1. A USD-priced offer must exist. Commons bazaar has none.
+1. A USD-priced bazaar offer must exist (still price 0 on tip) **or**
+   a buyer uses a live product-page door above (AUTHORIZATION only).
 2. An agent connects a payout destination through the authorized private provider surface.
 3. A buyer pays → AUTHORIZATION.
 4. Processor SETTLEMENT to platform balance (Stripe US T+2).
 5. BANK_AVAILABLE only after a payout or Instant Transfer.
 
-Step 1 and step 2 are both open. Banking is one private-surface step,
-not the whole path and not an automatic owner escalation.
+Step 1 product doors and step 2 payout destination are both open
+lanes. Banking is one private-surface step, not the whole path and
+not an automatic owner escalation. Collectable USD stays NOT_LANDED.
 
 ## Measure
 
