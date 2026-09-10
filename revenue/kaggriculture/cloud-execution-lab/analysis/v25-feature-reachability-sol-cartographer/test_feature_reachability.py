@@ -50,6 +50,24 @@ class FeatureReachabilityTests(unittest.TestCase):
                 ["seed", "funding", "early_capital"],
             )
 
+    def test_exact_feature_forms_all_have_runtime_access(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            declarations = "\n".join(f"    {name}: bool = True" for name in fr.FACTORS)
+            (root / "titan_runtime.py").write_text(
+                "from dataclasses import dataclass\n"
+                "@dataclass\n"
+                "class Features:\n" + declarations + "\n"
+                "def use(self, f):\n"
+                "    return (self.features.seed and self.features.funding and "
+                "self.features.redundant_hire and self.features.market_pressure and "
+                "self.features.operating_stock and self.features.crop_release and "
+                "f.idle_fertilizer and getattr(self.features, 'early_capital', False))\n",
+                encoding="utf-8",
+            )
+            refs = fr.find_config_references(root)
+            self.assertEqual(fr.runtime_access_factors(refs), list(fr.FACTORS))
+
     def test_declaration_alone_is_not_runtime_reachability(self):
         refs = {
             "seed": [{"kind": "Features declaration"}],
