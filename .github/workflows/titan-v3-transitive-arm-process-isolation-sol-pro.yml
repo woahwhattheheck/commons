@@ -1,0 +1,154 @@
+# SPDX-License-Identifier: Apache-2.0
+name: titan-v3-transitive-arm-process-isolation-sol-pro
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/titan-v3-transitive-arm-process-isolation-sol-pro.yml
+      - revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-transitive-arm-process-isolation-sol-pro/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-transitive-arm-process-isolation-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: false
+
+jobs:
+  contracts:
+    name: Python ${{ matrix.python }} exact-head contracts
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    env:
+      CASE_DIR: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-transitive-arm-process-isolation-sol-pro
+      RECEIPT_DIR: ${{ runner.temp }}/titan-v3-transitive-arm-process-isolation-${{ matrix.python }}
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - name: Checkout immutable pull-request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Require exact event head and clean starting tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+      - name: Install exact Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Parse and compile outside checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RECEIPT_DIR/pycache"
+          export PYTHONPYCACHEPREFIX="$RECEIPT_DIR/pycache"
+          python - <<'PY'
+          import ast
+          import pathlib
+
+          root = pathlib.Path("${{ env.CASE_DIR }}")
+          for name in ("isolated_arm.py", "test_isolated_arm.py"):
+              path = root / name
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          PY
+          python -B -m py_compile "$CASE_DIR/isolated_arm.py" "$CASE_DIR/test_isolated_arm.py"
+
+      - name: Run all predecessor and successor contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RECEIPT_DIR"
+          cd "$CASE_DIR"
+          python -B -W error::ResourceWarning -m unittest -v test_isolated_arm.py \
+            2>&1 | tee "$RECEIPT_DIR/TEST.log"
+          grep -F "Ran 23 tests" "$RECEIPT_DIR/TEST.log"
+          grep -Fx "OK" "$RECEIPT_DIR/TEST.log"
+
+      - name: Verify committed source receipt and emit exact-head evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RECEIPT_DIR"
+          python - "$CASE_DIR" "$RECEIPT_DIR" <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import subprocess
+          import sys
+
+          case = pathlib.Path(sys.argv[1])
+          out = pathlib.Path(sys.argv[2])
+          receipt = json.loads((case / "RECEIPT.json").read_text(encoding="utf-8"))
+          assert receipt["schema"] == "titan.transitive-arm-process-isolation-source.v1"
+          assert receipt["base_commit"] == "c51049d671b55d282e0fed5df37a0be7c513a838"
+          expected = receipt["files"]
+          assert set(expected) == {
+              "README.md",
+              "isolated_arm.py",
+              "test_isolated_arm.py",
+              ".github/workflows/titan-v3-transitive-arm-process-isolation-sol-pro.yml",
+          }
+          actual = {}
+          for rel, digest in sorted(expected.items()):
+              path = pathlib.Path(rel) if rel.startswith(".github/") else case / rel
+              data = path.read_bytes()
+              got = hashlib.sha256(data).hexdigest()
+              assert got == digest, (rel, got, digest)
+              actual[rel] = {"bytes": len(data), "sha256": got}
+          head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          report = {
+              "schema": "titan.transitive-arm-process-isolation-exact-head.v1",
+              "head": head,
+              "event_head": "${{ github.event.pull_request.head.sha }}",
+              "python": list(sys.version_info[:3]),
+              "files": actual,
+              "contracts": 23,
+              "official_games": 0,
+              "policy_mutation": False,
+              "provider_mutation": False,
+              "kaggle_mutation": False,
+              "submission_mutation": False,
+          }
+          encoded = json.dumps(report, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+          report["receipt_sha256"] = hashlib.sha256(encoded).hexdigest()
+          (out / "EXACT_HEAD.json").write_text(
+              json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n",
+              encoding="utf-8",
+          )
+          (out / "HEAD.txt").write_text(head + "\n", encoding="utf-8")
+          PY
+          sha256sum \
+            "$CASE_DIR/isolated_arm.py" \
+            "$CASE_DIR/test_isolated_arm.py" \
+            "$CASE_DIR/README.md" \
+            "$CASE_DIR/RECEIPT.json" \
+            .github/workflows/titan-v3-transitive-arm-process-isolation-sol-pro.yml \
+            "$RECEIPT_DIR/TEST.log" \
+            "$RECEIPT_DIR/EXACT_HEAD.json" \
+            > "$RECEIPT_DIR/SHA256SUMS"
+
+      - name: Require unchanged checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+      - name: Retain exact-head evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-transitive-arm-process-isolation-${{ matrix.python }}-${{ github.event.pull_request.head.sha }}
+          path: ${{ env.RECEIPT_DIR }}
+          if-no-files-found: error
+          retention-days: 30
