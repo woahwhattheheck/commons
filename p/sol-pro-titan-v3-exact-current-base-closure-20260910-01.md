@@ -3,7 +3,7 @@
 - operation: `TITAN-V3-EXACT-CURRENT-BASE-CLOSURE-GUARD-20260910-01`
 - owner: `SOL-PRO`
 - Slack claim: `C0C0Z8AHGP2 / 1789068421.192439`
-- disposition at publication: `ADDITIVE PREFLIGHT / INDEYQQ REVIEW REQUIRED`
+- disposition at publication: `ADDITIVE PREFLIGHT / INDEPENDENT REVIEW REQUIRED`
 
 ## Closed failure class
 
