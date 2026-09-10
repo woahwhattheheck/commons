@@ -6,6 +6,12 @@ on:
       - sol-pro/titan-strict-dominance-pressure-20260910-01
     paths:
       - .github/workflows/titan-strict-dominance-selfbuild.yml
+  pull_request:
+    branches:
+      - sol-pro/titan-strict-dominance-pressure-20260910-01
+    paths:
+      - .github/workflows/titan-strict-dominance-selfbuild.yml
+      - revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_priority_strict_dominance.py
 
 permissions:
   contents: write
@@ -14,11 +20,25 @@ jobs:
   patch-test-build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      EXPECTED_PARENT_SHA: dfef8e57289b59c68bd45eb8f3fdd8ec610e0892
+      PUBLICATION_BRANCH: sol-pro/titan-strict-dominance-pressure-20260910-01
     steps:
-      - name: Check out exact branch
+      - name: Check out exact event head
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+
+      - name: Bind exact head and stacked parent
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT_SHA"
+          test "$(git status --porcelain)" = ""
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,51 +52,86 @@ jobs:
           python - <<'PY'
           from pathlib import Path
 
+          def replace_exact(source: str, old: str, new: str, label: str) -> str:
+              count = source.count(old)
+              if count != 1:
+                  raise SystemExit(f'{label} drifted: expected one anchor, found {count}')
+              return source.replace(old, new, 1)
+
           pressure = Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py')
           source = pressure.read_text()
 
-          old_signature_tail = '              rival_supply: Mapping[str, int] | None = None) -> dict:'
-          new_signature_tail = '''              rival_supply: Mapping[str, int] | None = None,
-                        strict_dominance: bool = False) -> dict:'''
-          if source.count(old_signature_tail) != 1:
-              raise SystemExit('pressure transform signature drifted')
-          source = source.replace(old_signature_tail, new_signature_tail)
+          old_signature = (
+              'def transform(action: dict, observation: Mapping,\n'
+              '              configuration: Mapping | None = None, *, quote: PriceFunction,\n'
+              '              rival_supply: Mapping[str, int] | None = None) -> dict:'
+          )
+          new_signature = (
+              'def transform(action: dict, observation: Mapping,\n'
+              '              configuration: Mapping | None = None, *, quote: PriceFunction,\n'
+              '              rival_supply: Mapping[str, int] | None = None,\n'
+              '              strict_dominance: bool = False) -> dict:'
+          )
+          source = replace_exact(source, old_signature, new_signature, 'pressure transform signature')
 
-          old_validation = "    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):"
-          new_validation = '''    if not isinstance(strict_dominance, bool):
-              raise ValueError('strict_dominance must be boolean')
-              if not isinstance(action, dict) or not isinstance(action.get('market', []), list):'''
-          new_validation = new_validation.replace("\n        if not isinstance(action", "\n    if not isinstance(action")
-          if source.count(old_validation) != 1:
-              raise SystemExit('pressure transform validation drifted')
-          source = source.replace(old_validation, new_validation)
+          old_validation = (
+              "    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):\n"
+              "        raise ValueError('parent policy must return an object with a market list')"
+          )
+          new_validation = (
+              "    if not isinstance(strict_dominance, bool):\n"
+              "        raise ValueError('strict_dominance must be boolean')\n"
+              "    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):\n"
+              "        raise ValueError('parent policy must return an object with a market list')"
+          )
+          source = replace_exact(source, old_validation, new_validation, 'pressure transform validation')
 
-          old_ranking = "        ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])"
-          new_ranking = '''        pairs = list(zip(orders[start:stop], scores[start:stop]))
-              if strict_dominance:
-                  # Proxy magnitude cannot prove which exposed commodity is safe
-                  # to demote against an unseen same-slot rival sale.
-                  ranked = ([pair for pair in pairs if pair[1] > 0]
-                            + [pair for pair in pairs if pair[1] <= 0])
-              else:
-                  ranked = sorted(pairs, key=lambda p: -p[1])'''
-          # Strip only the workflow's visual indentation from continuation lines.
-          new_ranking = new_ranking.replace("\n        ", "\n")
-          if source.count(old_ranking) != 1:
-              raise SystemExit('pressure ranking implementation drifted')
-          source = source.replace(old_ranking, new_ranking)
+          old_ranking = (
+              '        ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])\n'
+              '        orders[start:stop] = [order for order, _ in ranked]'
+          )
+          new_ranking = (
+              '        pairs = list(zip(orders[start:stop], scores[start:stop]))\n'
+              '        if strict_dominance:\n'
+              '            # Proxy magnitude cannot prove which exposed commodity is safe\n'
+              '            # to demote against an unseen same-slot rival sale.\n'
+              '            ranked = (\n'
+              '                [pair for pair in pairs if pair[1] > 0]\n'
+              '                + [pair for pair in pairs if pair[1] <= 0]\n'
+              '            )\n'
+              '        else:\n'
+              '            ranked = sorted(pairs, key=lambda p: -p[1])\n'
+              '        orders[start:stop] = [order for order, _ in ranked]'
+          )
+          source = replace_exact(source, old_ranking, new_ranking, 'pressure ranking implementation')
+          compile(source, str(pressure), 'exec')
           pressure.write_text(source)
 
           runtime = Path('revenue/kaggriculture/cloud-execution-lab/titan_runtime.py')
           source = runtime.read_text()
           old_call = '        result = pressure.transform(selected, obs, cfg, quote=mechanics.market_price)'
-          new_call = '''        result = pressure.transform(
-              selected, obs, cfg, quote=mechanics.market_price,
-              strict_dominance=True)'''
-          new_call = new_call.replace("\n        ", "\n")
-          if source.count(old_call) != 1:
-              raise SystemExit('canonical pressure call drifted')
-          runtime.write_text(source.replace(old_call, new_call))
+          new_call = (
+              '        result = pressure.transform(\n'
+              '            selected, obs, cfg, quote=mechanics.market_price,\n'
+              '            strict_dominance=True)'
+          )
+          source = replace_exact(source, old_call, new_call, 'canonical pressure call')
+          compile(source, str(runtime), 'exec')
+          runtime.write_text(source)
+          PY
+
+      - name: Compile generated source without cache artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          paths = (
+              Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'),
+          )
+          for path in paths:
+              compile(path.read_bytes(), str(path), 'exec')
           PY
 
       - name: Run pressure module contracts
@@ -99,22 +154,25 @@ jobs:
 
       - name: Emit exact build receipt
         shell: bash
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           python - <<'PY'
-          import hashlib, json
+          import hashlib, json, os
           from pathlib import Path
           root = Path('revenue/kaggriculture/cloud-execution-lab')
           pointer = json.loads((root/'runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())
           pressure = Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py')
           runtime = root/'titan_runtime.py'
           receipt = {
-              'schema': 'titan-strict-dominance-build/v1',
-              'base_commit': '${{ github.event.before }}',
-              'source_commit': '${{ github.sha }}',
+              'schema': 'titan-strict-dominance-build/v2',
+              'generator_parent_sha': os.environ['EXPECTED_PARENT_SHA'],
+              'source_commit': os.environ['SOURCE_COMMIT'],
               'archive': pointer,
               'pressure_priority_sha256': hashlib.sha256(pressure.read_bytes()).hexdigest(),
               'titan_runtime_sha256': hashlib.sha256(runtime.read_bytes()).hexdigest(),
               'tests': {
+                  'generated_source_compile': 'pass',
                   'pressure_module_contracts': 'pass',
                   'canonical_runtime_boundary': 'pass',
                   'deterministic_build_check': 'pass',
@@ -137,14 +195,16 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json
             revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json
 
-      - name: Publish tested source and deterministic archive to branch
+      - name: Publish tested source and deterministic archive to parent branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/sol-pro/titan-strict-dominance-pressure-20260910-01'
         shell: bash
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
           rm .github/workflows/titan-strict-dominance-selfbuild.yml
           git config user.name 'commons-board'
           git config user.email 'commons-board@users.noreply.github.com'
           git add -A
           git diff --cached --check
           git commit -m 'TITAN: contain pressure ranking to strict dominance'
-          git push origin HEAD:sol-pro/titan-strict-dominance-pressure-20260910-01
+          git push origin HEAD:"$PUBLICATION_BRANCH"
