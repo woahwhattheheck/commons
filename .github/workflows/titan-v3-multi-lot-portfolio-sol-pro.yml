@@ -1,0 +1,141 @@
+name: titan-v3-multi-lot-portfolio-sol-pro
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-multi-lot-portfolio-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/**'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-multi-lot-portfolio-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  contracts-build-and-panel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact candidate checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          mkdir -p "$RUNNER_TEMP/multi-lot-results"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/multi-lot-results/GIT-HEAD.txt"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Exact-source, portfolio, and deterministic-build contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro
+          PYTHONDONTWRITEBYTECODE=1 python -m unittest -v \
+            test_multi_lot_portfolio.py test_candidate_patch.py test_build_candidate.py
+          python -m py_compile \
+            multi_lot_portfolio.py candidate_patch.py candidate.py build_candidate.py run_panel.py \
+            test_multi_lot_portfolio.py test_candidate_patch.py test_build_candidate.py
+
+      - name: Verify canonical release remains byte-current
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Build deterministic playable candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          CANDIDATE=revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro
+          python "$CANDIDATE/build_candidate.py" \
+            --output "$RUNNER_TEMP/multi-lot-results/titan-v3-multi-lot-portfolio.tar.gz" \
+            --receipt "$RUNNER_TEMP/multi-lot-results/BUILD-RECEIPT.json"
+          python "$CANDIDATE/build_candidate.py" --check | tee "$RUNNER_TEMP/multi-lot-results/BUILD-CHECK.json"
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('multi_lot_candidate_smoke', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          assert callable(module.SellScheduler)
+          PY
+
+      - name: Install exact official-panel dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run paired official-engine development panel
+        id: panel
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/run_panel.py \
+            --head "$(git rev-parse HEAD)" \
+            --seeds '2611092401,2611092402,2611092403,2611092404' \
+            --opponents 'arlene,kaito_v43,v1' \
+            --workers 4 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --output "$RUNNER_TEMP/multi-lot-results/PANEL.json" \
+            --markdown "$RUNNER_TEMP/multi-lot-results/PANEL.md"
+
+      - name: Reject incomplete evidence, retain complete ADVANCE or REJECT receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/multi-lot-results/PANEL.json"
+          test -f "$REPORT"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['RUNNER_TEMP'])/'multi-lot-results'/'PANEL.json').read_text())
+          if report.get('status') != 'complete':
+              raise SystemExit('paired panel did not produce complete evidence')
+          verdict = report.get('verdict', {}).get('decision')
+          if verdict not in {'ADVANCE', 'REJECT'}:
+              raise SystemExit(f'invalid panel verdict: {verdict!r}')
+          print(json.dumps({'status': report['status'], 'verdict': verdict, 'summary': report['summary']}, sort_keys=True))
+          PY
+
+      - name: Publish readable receipt
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f "$RUNNER_TEMP/multi-lot-results/PANEL.md" ]]; then
+            cat "$RUNNER_TEMP/multi-lot-results/PANEL.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# TITAN V3 multi-lot portfolio produced no panel markdown' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain candidate and exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-multi-lot-portfolio-${{ github.run_id }}
+          path: ${{ runner.temp }}/multi-lot-results/
+          if-no-files-found: error
+          retention-days: 30
