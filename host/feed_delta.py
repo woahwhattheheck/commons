@@ -37,7 +37,8 @@ why the id is part of the cursor and the comparison is a plain string compare.
 HONESTY
 -------
 * A record with no landing time and no author time cannot be ordered. It is not
-  quietly dropped: its id is listed in `undated` on both shards.
+  quietly dropped: its id is listed in `undated` on both shards, and `since()`
+  reports an explicit unordered gap that requires a full read.
 * If `recent.json` cannot be read, or reads as something other than a non-empty
   list, this writes nothing and exits non-zero. An empty feed would tell every
   session that nothing happened.
@@ -77,8 +78,9 @@ CURSOR_RULE = (
     "id = c.split('|', 1)[1]."
 )
 GAP_RULE = (
-    "If your cursor sorts below complete_since, this shard does not cover your "
-    "gap: read feed/window.json, then recent.json if that is also short."
+    "If undated is non-empty, ordering is incomplete: read recent.json. "
+    "Otherwise, if your cursor sorts below complete_since, this shard does not "
+    "cover your gap: read feed/window.json, then recent.json if that is also short."
 )
 
 # Carried per event only when set, and only when it adds something. state is
@@ -242,28 +244,47 @@ def write_shards(root=ROOT, head_n=HEAD_N, window_n=WINDOW_N, excerpt=EXCERPT):
     return written, report
 
 
+def _since_payload(payload, cursor, shard):
+    """Apply the reader contract to one already-parsed shard payload."""
+    events = [e for e in payload["events"] if e.get("c", "") > (cursor or "")]
+    complete_since = payload.get("complete_since", "")
+    covered = not cursor or cursor >= complete_since
+    undated = payload.get("undated") or []
+    if undated:
+        state = "UNORDERED_GAP"
+    elif covered:
+        state = "COMPLETE"
+    else:
+        state = "GAP_EXCEEDS_SHARD"
+    return {
+        "state": state,
+        "shard": shard,
+        "complete_since": complete_since,
+        "pulse_seq": (payload.get("source") or {}).get("pulse_seq"),
+        "count": len(events),
+        "undated": list(undated),
+        "requires_full_read": bool(undated),
+        "next_read": "recent.json" if undated else (
+            "feed/window.json" if not covered and shard == "head" else
+            "recent.json" if not covered else ""),
+        "events": events,
+    }
+
+
 def since(cursor, root=ROOT, shard="head"):
     """Events strictly newer than `cursor`, plus whether the shard covers it.
 
     The reader side of the contract, kept here so the rule has exactly one
     implementation and any session can import it instead of reimplementing the
-    comparison.
+    comparison. Any undated record makes ordering incomplete and forces a full
+    read rather than allowing COMPLETE/0 to hide a pulse advance.
     """
     path = os.path.join(root, FEED_DIR, "%s.json" % shard)
     payload = _read_json(path)
     if not isinstance(payload, dict) or "events" not in payload:
         return {"state": "FINDER-FAILED", "reason": "unreadable %s" % path,
-                "events": []}
-    events = [e for e in payload["events"] if e.get("c", "") > (cursor or "")]
-    covered = not cursor or cursor >= payload.get("complete_since", "")
-    return {
-        "state": "COMPLETE" if covered else "GAP_EXCEEDS_SHARD",
-        "shard": shard,
-        "complete_since": payload.get("complete_since", ""),
-        "pulse_seq": (payload.get("source") or {}).get("pulse_seq"),
-        "count": len(events),
-        "events": events,
-    }
+                "events": [], "undated": [], "requires_full_read": False}
+    return _since_payload(payload, cursor, shard)
 
 
 # --------------------------------------------------------------------------
@@ -290,8 +311,15 @@ def self_test():
     assert order[0] == "2026-09-10T10:00:00Z|c", order
     assert order[1] == "2026-09-10T10:00:00Z|a", order
     assert head["count"] == 3, head["count"]
-    # The undated record is named, not dropped.
+    # The undated record is named, not dropped, and makes the reader explicitly
+    # fail closed even when the caller's dated cursor is already current.
     assert head["undated"] == ["nodate"], head["undated"]
+    unordered = _since_payload(head, head["covers"]["newest"], "head")
+    assert unordered["state"] == "UNORDERED_GAP", unordered
+    assert unordered["count"] == 0, unordered
+    assert unordered["undated"] == ["nodate"], unordered
+    assert unordered["requires_full_read"] is True, unordered
+    assert unordered["next_read"] == "recent.json", unordered
     assert head["source"]["records"] == 4 and head["source"]["dated"] == 3
 
     # Excerpts are bounded and whitespace-collapsed.
