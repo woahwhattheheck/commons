@@ -19,6 +19,7 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: "1"
       PAYLOAD: .github/titan-v3-slot-active-consumer-repair-payload.tar.gz
+      FAILURE_LOG: .github/titan-v3-slot-active-consumer-hosted-failure.log
       LAB: revenue/kaggriculture/cloud-execution-lab
       CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro
       NOTE: p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md
@@ -30,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: true
 
       - name: Authenticate and install exact repair carrier
@@ -40,6 +41,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test -f "$PAYLOAD"
           test "$(sha256sum "$PAYLOAD" | awk '{print $1}')" = "$EXPECTED_PAYLOAD_SHA256"
+          rm -f "$FAILURE_LOG"
           work="$(mktemp -d)"
           trap 'rm -rf "$work"' EXIT
           tar -xzf "$PAYLOAD" -C "$work"
@@ -67,16 +69,20 @@ jobs:
           PY
 
       - name: Compile and execute exact active-consumer proof
+        id: proof
+        continue-on-error: true
         shell: bash
         run: |
-          set -euo pipefail
-          python -B -m py_compile "$CASE"/*.py
-          PYTHONPATH="$CASE" python -B -m unittest discover -s "$CASE" -p 'test_*.py' -v
-          work="$(mktemp -d)"
-          trap 'rm -rf "$work"' EXIT
-          PYTHONPATH="$CASE" python -B "$CASE/active_witness.py" \
-            --lab "$LAB" --output "$work/WITNESS.json"
-          python - "$work/WITNESS.json" <<'PY'
+          set +e
+          proof_log="$RUNNER_TEMP/active-proof.log"
+          {
+            set -x
+            python -B -m py_compile "$CASE"/*.py
+            PYTHONPATH="$CASE" python -B -m unittest discover -s "$CASE" -p 'test_*.py' -v
+            work="$(mktemp -d)"
+            PYTHONPATH="$CASE" python -B "$CASE/active_witness.py" \
+              --lab "$LAB" --output "$work/WITNESS.json"
+            python - "$work/WITNESS.json" <<'PY'
           import json, sys
           row=json.load(open(sys.argv[1],encoding='utf-8'))
           assert row['verdicts']=={
@@ -92,8 +98,27 @@ jobs:
           }
           assert row['emission_guard']['selection_emission']['missing']=={'MILK':1}
           PY
+          } >"$proof_log" 2>&1
+          status=$?
+          cat "$proof_log"
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit "$status"
+
+      - name: Publish exact hosted failure receipt
+        if: steps.proof.outcome == 'failure'
+        shell: bash
+        run: |
+          set -euo pipefail
+          install -m 0644 "$RUNNER_TEMP/active-proof.log" "$FAILURE_LOG"
+          git config user.name "woahwhattheheck"
+          git config user.email "brycembusiness2@gmail.com"
+          git add "$FAILURE_LOG"
+          git commit -m "test(titan): retain active-consumer hosted failure receipt [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          exit 1
 
       - name: Commit only the authenticated permanent carrier
+        if: steps.proof.outcome == 'success'
         shell: bash
         run: |
           set -euo pipefail
