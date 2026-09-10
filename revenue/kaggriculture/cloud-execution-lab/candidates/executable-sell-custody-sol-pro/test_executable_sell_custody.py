@@ -43,7 +43,8 @@ class FakeFrozen:
     def transform(self, obs, config, selected):
         # Deliberately model the exact predecessor defect: every represented
         # SELL row, even an engine-inactive suffix, retires pending stock.
-        route_markets = [copy.deepcopy(a["market"]) for a in self.controller.R[0]]
+        route = self.controller.R[self.controller.cur]
+        route_markets = [copy.deepcopy(a["market"]) for a in route]
         own_market = copy.deepcopy(selected["market"])
         sold = sum(
             max(0, int(row[2]))
@@ -56,8 +57,23 @@ class FakeFrozen:
         return copy.deepcopy(selected)
 
 
-def installed_class(route, *, frozen_blob=None, scheduler_blob=None):
-    module = SimpleNamespace(FrozenSelected=FakeFrozen, __file__=__file__)
+class MappingFrozen(FakeFrozen):
+    ROUTE_ID = "7015cc00acfa4922"
+
+    def __init__(self, route):
+        super().__init__(route)
+        self.controller.R = {self.ROUTE_ID: route}
+        self.controller.cur = self.ROUTE_ID
+
+
+def installed_class(
+    route,
+    *,
+    base_class=FakeFrozen,
+    frozen_blob=None,
+    scheduler_blob=None,
+):
+    module = SimpleNamespace(FrozenSelected=base_class, __file__=__file__)
     blob = P.git_blob_sha1(__file__)
     P.install(
         module,
@@ -89,6 +105,29 @@ class SellCustodyTests(unittest.TestCase):
         self.assertEqual(
             agent.diagnostics["executable_sell_custody"]["inert_suffix_rows"], 1
         )
+
+    def test_mapping_route_bank_and_hex_current_key_are_preserved(self):
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [[], ["SELL", "CARROT", 3]],
+        }
+        route = [copy.deepcopy(action), copy.deepcopy(action)]
+        agent, _ = installed_class(route, base_class=MappingFrozen)
+        controller = agent.controller
+        route_bank = controller.R
+        original_route = copy.deepcopy(route_bank[MappingFrozen.ROUTE_ID])
+
+        out = agent.transform({"step": 0}, {"maxMarketOrdersPerTurn": 1}, action)
+
+        self.assertEqual(agent.seen["selected"], [[]])
+        self.assertEqual(agent.seen["route"], [[[]], [[]]])
+        self.assertEqual(agent.pending["CARROT"], 3)
+        self.assertEqual(out, action)
+        self.assertIs(agent.controller, controller)
+        self.assertIs(agent.controller.R, route_bank)
+        self.assertEqual(agent.controller.cur, MappingFrozen.ROUTE_ID)
+        self.assertEqual(agent.controller.R[MappingFrozen.ROUTE_ID], original_route)
 
     def test_active_prefix_sale_still_retires_stock(self):
         action = {
