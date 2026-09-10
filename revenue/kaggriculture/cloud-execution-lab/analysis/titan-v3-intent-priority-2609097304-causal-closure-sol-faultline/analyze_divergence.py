@@ -348,21 +348,71 @@ def action_without_market(action: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
-def precondition(debug: dict[str, Any]) -> dict[str, Any]:
+def external_precondition(debug: dict[str, Any]) -> dict[str, Any]:
+    """Inputs fixed by the official world and unchanged parent action."""
     fields = (
         "step",
         "player",
         "max_market_orders",
         "money",
         "shed",
-        "pending_before",
-        "planned_before",
         "baseline_order",
         "control_order",
-        "intent_order",
         "base_market",
     )
     return {field: debug.get(field) for field in fields}
+
+
+def policy_state(debug: dict[str, Any]) -> dict[str, Any]:
+    """Persistent seller state that the treatment itself may reorder."""
+    fields = (
+        "pending_before",
+        "planned_before",
+        "pending_after",
+    )
+    return {field: debug.get(field) for field in fields}
+
+
+def first_policy_state_difference(
+    control: list[dict[str, Any]],
+    candidate: list[dict[str, Any]],
+    key: tuple[str, int, int],
+) -> int | None:
+    if len(control) != len(candidate):
+        raise EvidenceError(f"cell {key} timeline lengths differ for policy-state scan")
+    for step, (left, right) in enumerate(zip(control, candidate)):
+        if policy_state(left["debug"]) != policy_state(right["debug"]):
+            return step
+    return None
+
+
+def assert_external_preconditions(
+    control: list[dict[str, Any]],
+    candidate: list[dict[str, Any]],
+    key: tuple[str, int, int],
+    stop: int,
+) -> None:
+    for step in range(stop + 1):
+        left = external_precondition(control[step]["debug"])
+        right = external_precondition(candidate[step]["debug"])
+        if left != right:
+            raise EvidenceError(
+                f"cell {key} external policy precondition drift at step {step}"
+            )
+
+
+def expected_intent_order(debug: dict[str, Any]) -> list[str]:
+    """Recompute the candidate's stable unique positive-product traversal."""
+    result: list[str] = []
+    positive = set(debug.get("control_order") or ())
+    for product in [
+        *(debug.get("pending_before") or ()),
+        *(debug.get("baseline_order") or ()),
+        *(debug.get("control_order") or ()),
+    ]:
+        if product in positive and product not in result:
+            result.append(product)
+    return result
 
 
 def cell_result(
@@ -372,6 +422,13 @@ def cell_result(
     control_timeline = control["candidate_timeline"]
     candidate_timeline = candidate["candidate_timeline"]
     difference = first_difference(control_timeline, candidate_timeline, key)
+    policy_difference = first_policy_state_difference(
+        control_timeline, candidate_timeline, key
+    )
+    external_stop = difference if difference is not None else len(control_timeline) - 1
+    assert_external_preconditions(
+        control_timeline, candidate_timeline, key, external_stop
+    )
     own_control = float(control["scores"][seat])
     rival_control = float(control["scores"][1 - seat])
     own_candidate = float(candidate["scores"][seat])
@@ -383,6 +440,13 @@ def cell_result(
         "action_changed": difference is not None,
         "trace_changed": control["trace_sha256"] != candidate["trace_sha256"],
         "first_divergence_step": difference,
+        "policy_state_changed": policy_difference is not None,
+        "first_policy_state_divergence_step": policy_difference,
+        "policy_state_diverged_before_action": (
+            policy_difference is not None
+            and difference is not None
+            and policy_difference < difference
+        ),
         "control_own_cash": own_control,
         "candidate_own_cash": own_candidate,
         "own_cash_delta": own_candidate - own_control,
@@ -396,7 +460,9 @@ def cell_result(
             row[field] != 0.0 for field in ("own_cash_delta", "rival_cash_delta", "margin_delta")
         ):
             raise EvidenceError(f"dormant cell {key} has trace or score drift")
-        row["classification"] = "dormant"
+        row["classification"] = (
+            "policy_state_only" if policy_difference is not None else "fully_dormant"
+        )
         return row
 
     before_control = control_timeline[difference]
@@ -409,14 +475,18 @@ def cell_result(
         raise EvidenceError(f"active cell {key} changes a non-market action field")
     control_debug = before_control["debug"]
     candidate_debug = before_candidate["debug"]
-    if precondition(control_debug) != precondition(candidate_debug):
-        raise EvidenceError(f"active cell {key} lacks identical policy precondition")
+    if external_precondition(control_debug) != external_precondition(candidate_debug):
+        raise EvidenceError(f"active cell {key} lacks an identical external precondition")
+    if candidate_debug.get("intent_order") != expected_intent_order(candidate_debug):
+        raise EvidenceError(f"active cell {key} candidate intent order is not reproducible")
+    if candidate_debug.get("intent_order") == candidate_debug.get("control_order"):
+        raise EvidenceError(f"active cell {key} has no candidate intent-order exposure")
+    if candidate_debug.get("order_changed") is not True:
+        raise EvidenceError(f"active cell {key} did not flag the live order change")
     if control_debug.get("returned_market") != before_control["tested_action"].get("market", []):
         raise EvidenceError(f"active cell {key} control debug/action market mismatch")
     if candidate_debug.get("returned_market") != before_candidate["tested_action"].get("market", []):
         raise EvidenceError(f"active cell {key} candidate debug/action market mismatch")
-    if control_debug.get("control_order") == control_debug.get("intent_order"):
-        raise EvidenceError(f"active cell {key} has no intent-order exposure")
     limit = true_int(control_debug.get("max_market_orders"), "max market orders", 0)
     control_market = executable_market(before_control["tested_action"], limit)
     candidate_market = executable_market(before_candidate["tested_action"], limit)
@@ -451,14 +521,18 @@ def cell_result(
         "sell_multiset_preserved": same_multiset,
         "immediate_own_cash_delta": own_immediate,
         "immediate_rival_cash_delta": rival_immediate,
-        "pending_before": control_debug.get("pending_before"),
+        "control_pending_before": control_debug.get("pending_before"),
+        "candidate_pending_before": candidate_debug.get("pending_before"),
         "baseline_order": control_debug.get("baseline_order"),
         "control_order": control_debug.get("control_order"),
-        "intent_order": control_debug.get("intent_order"),
+        "control_counterfactual_intent_order": control_debug.get("intent_order"),
+        "candidate_intent_order": candidate_debug.get("intent_order"),
         "shed": control_debug.get("shed"),
         "control_chosen": control_debug.get("chosen"),
         "candidate_chosen": candidate_debug.get("chosen"),
-        "precondition_sha256": sha256_value(precondition(control_debug)),
+        "external_precondition_sha256": sha256_value(
+            external_precondition(control_debug)
+        ),
     })
     return row
 
@@ -495,9 +569,7 @@ def analyze(
     own_deltas = [row["own_cash_delta"] for row in rows]
     rival_deltas = [row["rival_cash_delta"] for row in rows]
     margin_deltas = [row["margin_delta"] for row in rows]
-    common_precondition = (
-        active[0]["precondition_sha256"] == active[1]["precondition_sha256"]
-    )
+    policy_state_active = [row for row in rows if row["policy_state_changed"]]
     output = {
         "schema_version": 1,
         "experiment": "titan-v3-intent-priority-2609097304-causal-closure",
@@ -516,6 +588,10 @@ def analyze(
             "paired_cells": len(rows),
             "action_active_cells": len(active),
             "dormant_cells": len(dormant),
+            "policy_state_active_cells": len(policy_state_active),
+            "policy_state_only_cells": sum(
+                row["classification"] == "policy_state_only" for row in rows
+            ),
         },
         "aggregate": {
             "mean_own_cash_delta": statistics.mean(own_deltas),
@@ -528,13 +604,16 @@ def analyze(
             "negative_margin_cells": sum(value < 0 for value in margin_deltas),
         },
         "causal_closure": {
-            "all_pre_divergence_steps_identical": True,
-            "common_pre_world_at_first_divergence": True,
-            "rival_action_identical_at_first_divergence": True,
+            "all_pre_action_worlds_and_returned_actions_identical": True,
+            "external_preconditions_identical_through_first_action_divergence": True,
+            "common_pre_world_at_first_action_divergence": True,
+            "rival_action_identical_at_first_action_divergence": True,
             "only_tested_market_field_changed": True,
             "executable_prefix_changed": True,
             "post_world_changed_immediately": True,
-            "active_cells_share_exact_precondition": common_precondition,
+            "policy_state_diverged_before_action_cells": sum(
+                row["policy_state_diverged_before_action"] for row in active
+            ),
             "classification_counts": {
                 name: sum(row.get("classification") == name for row in active)
                 for name in ("executable_sell_order", "plan_or_quantity_reselection")
@@ -588,26 +667,33 @@ def markdown(report: dict[str, Any]) -> str:
         f"mean rival delta: {report['aggregate']['mean_rival_cash_delta']:+.3f}; "
         f"mean margin delta: {report['aggregate']['mean_margin_delta']:+.3f}.",
         "- Both active cells are mirrored seed `2609097304`: own `-6`, rival `+33`, margin `-39`.",
-        "- Every pre-divergence step is identical; the first changed tested market action has an identical pre-world and rival action, then immediately changes the official post-world.",
+        "- Every external precondition, returned action, and official world is identical before the first changed tested action. Persistent seller state is reported separately because the treatment may reorder it before any world-visible change.",
+        "- At each first changed tested market action the pre-world and rival action are identical, then the official post-world changes immediately.",
         "",
         "## First divergences",
         "",
-        "| Seat | Step | Class | Row | Immediate own | Immediate rival | Pending | Baseline | Control order | Intent order |",
-        "|---:|---:|---|---:|---:|---:|---|---|---|---|",
+        "| Seat | Policy-state step | Action step | Class | Row | Immediate own | Immediate rival | Pending C→T | Baseline | PRODUCTS | Candidate intent |",
+        "|---:|---:|---:|---|---:|---:|---:|---|---|---|---|",
     ]
     for row in active:
         lines.append(
-            "| {seat} | {step} | `{kind}` | {index} | {own:+.0f} | {rival:+.0f} | `{pending}` | `{baseline}` | `{control}` | `{intent}` |".format(
+            "| {seat} | {policy_step} | {action_step} | `{kind}` | {index} | {own:+.0f} | {rival:+.0f} | `{control_pending}`→`{candidate_pending}` | `{baseline}` | `{control}` | `{intent}` |".format(
                 seat=row["candidate_seat"],
-                step=row["first_divergence_step"],
+                policy_step=row["first_policy_state_divergence_step"],
+                action_step=row["first_divergence_step"],
                 kind=row["classification"],
                 index=row["first_changed_market_index"],
                 own=row["immediate_own_cash_delta"],
                 rival=row["immediate_rival_cash_delta"],
-                pending=json.dumps(row["pending_before"], separators=(",", ":")),
+                control_pending=json.dumps(
+                    row["control_pending_before"], separators=(",", ":")
+                ),
+                candidate_pending=json.dumps(
+                    row["candidate_pending_before"], separators=(",", ":")
+                ),
                 baseline=json.dumps(row["baseline_order"], separators=(",", ":")),
                 control=json.dumps(row["control_order"], separators=(",", ":")),
-                intent=json.dumps(row["intent_order"], separators=(",", ":")),
+                intent=json.dumps(row["candidate_intent_order"], separators=(",", ":")),
             )
         )
     lines.extend([
