@@ -3127,7 +3127,18 @@ def write_pulse(rows):
         "ts": now_ts(),
         "post_count": len(rows),
         "newest": newest,
-        "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
+        # The cheap check needs a cheap answer behind it. recent.json carries
+        # the full body of 500 posts; a session that refreshed honestly paid
+        # that read every time, so the beacon now names the delta shards first
+        # and keeps the full bake as the last resort. host/feed_delta.py builds
+        # them from this same bake in the same workflow step.
+        "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+        "feed": {
+            "delta": "feed/head.json",
+            "wider": "feed/window.json",
+            "full": "recent.json",
+            "cursor": "durable_ts|id, compared as a plain string",
+        },
     }
     _write(pulse_path, json.dumps(pulse, indent=2))
     return seq
