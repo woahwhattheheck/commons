@@ -12,7 +12,9 @@ class ConfigDriftCliTests(unittest.TestCase):
         # imported module attribute (which would cause duplicate discovery).
         from test_e2e_mocked import MockedEndToEndTests
 
-        self.harness = MockedEndToEndTests(methodName="runTest")
+        self.harness = MockedEndToEndTests(
+            methodName="test_promote_path_end_to_end"
+        )
         self.harness.setUp()
 
     def tearDown(self):
@@ -58,11 +60,7 @@ class ConfigDriftCliTests(unittest.TestCase):
         self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
         self.assertIn("predecessor config drift", process.stdout)
 
-        # Rejection is observable in the queue, but no gate workspace, receipt,
-        # or untrusted drifted config blob is admitted into state.
-        entry = json.loads(
-            self.harness._cli("status", submission).stdout
-        )
+        entry = json.loads(self.harness._cli("status", submission).stdout)
         self.assertEqual(entry["status"], "failed")
         self.assertIsNone(entry["last_receipt"])
         self.assertEqual(self._blob_names(), blobs_before)
