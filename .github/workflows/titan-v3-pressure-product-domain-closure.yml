@@ -1,0 +1,42 @@
+name: Titan V3 pressure product-domain closure
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-pressure-product-domain-closure-20260910-01
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_product_domain.py"
+      - "revenue/kaggriculture/cloud-execution-lab/mechanics.py"
+      - "analysis/titan-v3-pressure-product-domain-closure-sol-pro/**"
+      - ".github/workflows/titan-v3-pressure-product-domain-closure.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-domain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile carrier and audit
+        run: |
+          python -m py_compile \
+            revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py \
+            revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_product_domain.py \
+            analysis/titan-v3-pressure-product-domain-closure-sol-pro/run_pressure_product_domain_audit.py
+      - name: Run predecessor certificate contracts
+        run: python revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py
+      - name: Run exact product-domain contracts
+        run: python revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_product_domain.py
+      - name: Run deterministic exact-engine matrix
+        run: |
+          python analysis/titan-v3-pressure-product-domain-closure-sol-pro/run_pressure_product_domain_audit.py \
+            --output "$RUNNER_TEMP/titan-pressure-product-domain-receipt.json"
+          cat "$RUNNER_TEMP/titan-pressure-product-domain-receipt.json"
