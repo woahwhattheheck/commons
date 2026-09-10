@@ -1,0 +1,189 @@
+name: titan-v3-partial-future-carry-economic-admission
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-partial-future-carry-sol-interstice.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/**"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/**"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/**"
+      - "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1/**"
+      - "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v2/**"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/**"
+      - "revenue/kaggriculture/cloud-eval/evaluate.py"
+      - "revenue/kaggriculture/20260907-offline-agent/evaluate.py"
+      - "p/sol-interstice-titan-v3-partial-future-carry-20260909-01.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  exact-three-arm-screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    env:
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      KAG: revenue/kaggriculture
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice
+      STRICT_CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel
+      BASE_CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark
+      SEEDS: "539131249,1834999074,2609097301,2611092207"
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONHASHSEED: "0"
+
+    steps:
+      - name: Check out exact tested head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check "kaggle-environments==1.32.7"
+
+      - name: Bind exact source and lane identities
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          expected = {
+              "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1/scheduler.py": "cbc502a92fe9d790cfaf763f6990d1057bc9b82d",
+              "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v2/scheduler.py": "7c068b7078c3d7c09bb3836590ad42b0af934cdf",
+              "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1/candidate.py": "8db1262a2d38cc3115d06732383e18e1132ccfba",
+              "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v2/candidate.py": "8db1262a2d38cc3115d06732383e18e1132ccfba",
+              "revenue/kaggriculture/cloud-execution-lab/runtime/variants/v1/reference/next-panel/vendor/arlene.py": "bdb9cf58148a3c7961c085f4902759537decabf6",
+              "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+              "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json": "b354d06b742fe48402513792253f1a5c29366b20",
+              "revenue/kaggriculture/cloud-execution-lab/reference/engine/utils.py": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87",
+              "revenue/kaggriculture/cloud-eval/evaluate.py": "077feb2208b6e0c1727835eb4f8089709bf67f3b",
+              "revenue/kaggriculture/20260907-offline-agent/evaluate.py": "23948e10cfc3d32f46c9abb1321b0d8fc8db21d5",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/materialize.py": "e7740bbd2f5ad71f565073445535d6941184288c",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/materialize.py": "06515514ec864776f29571d63d3f343376e5865b",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel/materialize_evaluator.py": "b7eb56c79b5db1fd5478f0e47f0f54fab1f037be",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/README.md": "97d60c4c5d6d35993822a4e4f43cb4516a643c01",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/materialize.py": "fbb75652634c5c2c7b17c36ffc39553b6231238d",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/bind_execution.py": "42e83fa85d1996a510ce7a81f848015b8ccbe2e5",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/compare_three_arm.py": "f45656d24d8129dda7cc1b59ab046d9fd511bf63",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/economic_admission.py": "05722391dfaf2a162c87cce5c27265a34f5b1875",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/probe_replay.py": "f3ce913baeb837d8eb11c54004abd206ddbd6f84",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/step-639-decision-capsule.json": "5d7837a41beb93a77d8d82d55cf95088a23dfec8",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_materialize.py": "10c54e63f328e36bc916463adefe8d2a5a1cd2bb",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_mechanism.py": "8df9d781ff388e3a7dbe8cb8009aba58ac32d295",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_bind_execution.py": "1be0101341a34b7b6cdb0b50442222bfec6cacd2",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_compare_three_arm.py": "8e57d7d7707dc461b3f5a6908692137417d4efdd",
+              "revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_economic_admission.py": "124218ae52a9fcfd77e9fa81bb9d5c85d4370f22",
+              "p/sol-interstice-titan-v3-partial-future-carry-20260909-01.md": "cde8e364b19c789f87218c72fe08471bf6612e62",
+          }
+          for name, want in expected.items():
+              data = Path(name).read_bytes()
+              got = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+              if got != want:
+                  raise SystemExit(f"identity mismatch: {name}: {got} != {want}")
+              print(got, name)
+          PY
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - name: Run all 41 predecessor-killing and custody contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_materialize.py test_mechanism.py test_bind_execution.py test_compare_three_arm.py test_economic_admission.py
+          python -B - <<'PY'
+          from pathlib import Path
+          for path in sorted(Path('.').glob('*.py')):
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - name: Materialize exact closures and run all three arms
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v3-partial-future-carry"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          python -B "$STRICT_CASE/materialize.py" --source "$LAB/runtime/variants/v2" --output "$OUT/strict" --receipt "$OUT/STRICT-MATERIALIZATION.json"
+          python -B "$CASE/materialize.py" --source "$LAB/runtime/variants/v2" --output "$OUT/repair" --receipt "$OUT/REPAIR-MATERIALIZATION.json"
+          python -B "$STRICT_CASE/materialize_evaluator.py" --source "$KAG/cloud-eval/evaluate.py" --output "$OUT/evaluate-bound.py" --receipt "$OUT/EVALUATOR-MATERIALIZATION.json"
+          python -B "$CASE/bind_execution.py" --source "$LAB/runtime/variants/v2" --strict "$OUT/strict" --repair "$OUT/repair" --strict-receipt "$OUT/STRICT-MATERIALIZATION.json" --repair-receipt "$OUT/REPAIR-MATERIALIZATION.json" --output "$OUT/arms" --receipt "$OUT/EXECUTION-BINDING.json"
+          (cd "$LAB" && python -B build_integrated.py --check)
+
+          run_arm() {
+            local arm="$1"
+            python -B "$OUT/evaluate-bound.py" \
+              --engine-dir "$LAB/reference/engine" \
+              --loader "$KAG/20260907-offline-agent/evaluate.py" \
+              --candidate "$OUT/arms/$arm/bound_entry.py::agent" \
+              --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+              --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+              --seeds "$SEEDS" --rng-seed 20260909 \
+              --action-timeout 1.0 --startup-timeout 15 --game-timeout 180 \
+              --output "$OUT/$arm.json"
+          }
+          run_arm control
+          run_arm strict
+          run_arm repair
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - name: Classify causal economic admission
+        id: classify
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          OUT="$RUNNER_TEMP/v3-partial-future-carry"
+          python -B "$CASE/economic_admission.py" \
+            --control "$OUT/control.json" --strict "$OUT/strict.json" --repair "$OUT/repair.json" \
+            --binding-receipt "$OUT/EXECUTION-BINDING.json" \
+            --strict-receipt "$OUT/STRICT-MATERIALIZATION.json" \
+            --repair-receipt "$OUT/REPAIR-MATERIALIZATION.json" \
+            --evaluator-receipt "$OUT/EVALUATOR-MATERIALIZATION.json" \
+            --arms-root "$OUT/arms" --patched-evaluator "$OUT/evaluate-bound.py" \
+            --head "$(git rev-parse HEAD)" \
+            --output "$OUT/THREE-ARM-REPORT.json" --markdown "$OUT/THREE-ARM-REPORT.md"
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          if [[ -f "$OUT/THREE-ARM-REPORT.md" ]]; then cat "$OUT/THREE-ARM-REPORT.md" >> "$GITHUB_STEP_SUMMARY"; fi
+          exit 0
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-partial-future-carry-${{ github.run_id }}
+          path: ${{ runner.temp }}/v3-partial-future-carry/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require causal economic admission and clean head
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "${{ steps.classify.outputs.exit_code }}" = "0"
