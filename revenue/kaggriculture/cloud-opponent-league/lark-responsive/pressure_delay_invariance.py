@@ -308,14 +308,45 @@ def _known_parent_stocks(
     result: list[int | None] = []
     for row in actions:
         parsed = _parse_sell(row)
-        if parsed is None:
-            result.append(None)
+        if parsed is not None:
+            product, quantity = parsed
+            before = running[product]
+            result.append(before)
+            if before is not None:
+                running[product] = before + quantity
             continue
-        product, quantity = parsed
-        before = running[product]
-        result.append(before)
-        if before is not None:
-            running[product] = before + quantity
+
+        result.append(None)
+        if not isinstance(row, Mapping):
+            # The helper cannot prove the stock effect of an opaque engine row.
+            # Keep this row as a crossing barrier and invalidate every later
+            # stock baseline rather than silently restarting from observation.
+            running = {product: None for product in PRODUCTS}
+            continue
+
+        action = _safe_get(row, "action")
+        if action == "BUY_PRODUCT":
+            product = _safe_get(row, "type")
+            quantity = _strict_positive_int(_safe_get(row, "quantity"))
+            if (
+                isinstance(product, str)
+                and product in PRODUCTS
+                and quantity is not None
+            ):
+                # Execution depends on cash, capacity, and the exact quote at
+                # this market index. Without an official-prefix replay, the
+                # post-buy stock is unknown even though the row is a barrier.
+                running[product] = None
+            else:
+                running = {product: None for product in PRODUCTS}
+            continue
+
+        if action in {"BUY_SEED", "BUY_ANIMAL", "HIRE", "BUY_LAND"}:
+            # These official operations do not mutate product market stock.
+            continue
+
+        # Unknown/malformed barriers are not evidence of stock transparency.
+        running = {product: None for product in PRODUCTS}
     return result
 
 
