@@ -125,16 +125,49 @@ def _parse_document(document: Any) -> ParsedInput:
     }
 
     gate = _mapping(root.get("gate"), "gate")
-    _exact_keys(gate, "gate", {"minimum_seed_clusters", "minimum_seed_own_delta", "minimum_seed_margin_delta", "require_strict_worst_case"})
+    _exact_keys(
+        gate,
+        "gate",
+        {
+            "minimum_seed_clusters",
+            "minimum_seed_own_delta",
+            "minimum_seed_margin_delta",
+            "minimum_family_seat_own_delta",
+            "minimum_family_seat_margin_delta",
+            "require_strict_worst_case",
+            "require_uniform_family_reference",
+            "require_leave_one_family_out",
+        },
+    )
     minimum_seed_clusters = _integer(gate.get("minimum_seed_clusters"), "gate.minimum_seed_clusters", minimum=2)
     minimum_seed_own_delta = _fraction(gate.get("minimum_seed_own_delta"), "gate.minimum_seed_own_delta")
     minimum_seed_margin_delta = _fraction(gate.get("minimum_seed_margin_delta"), "gate.minimum_seed_margin_delta")
+    minimum_family_seat_own_delta = _fraction(
+        gate.get("minimum_family_seat_own_delta"),
+        "gate.minimum_family_seat_own_delta",
+    )
+    minimum_family_seat_margin_delta = _fraction(
+        gate.get("minimum_family_seat_margin_delta"),
+        "gate.minimum_family_seat_margin_delta",
+    )
     strict_worst_case = _bool(gate.get("require_strict_worst_case"), "gate.require_strict_worst_case")
+    require_uniform_family_reference = _bool(
+        gate.get("require_uniform_family_reference"),
+        "gate.require_uniform_family_reference",
+    )
+    require_leave_one_family_out = _bool(
+        gate.get("require_leave_one_family_out"),
+        "gate.require_leave_one_family_out",
+    )
     gate_normalized = {
         "minimum_seed_clusters": minimum_seed_clusters,
         "minimum_seed_own_delta": _ratio_text(minimum_seed_own_delta),
         "minimum_seed_margin_delta": _ratio_text(minimum_seed_margin_delta),
+        "minimum_family_seat_own_delta": _ratio_text(minimum_family_seat_own_delta),
+        "minimum_family_seat_margin_delta": _ratio_text(minimum_family_seat_margin_delta),
         "require_strict_worst_case": strict_worst_case,
+        "require_uniform_family_reference": require_uniform_family_reference,
+        "require_leave_one_family_out": require_leave_one_family_out,
     }
 
     cells_raw = _list(panel.get("cells"), "panel.cells")
@@ -217,6 +250,10 @@ def _parse_document(document: Any) -> ParsedInput:
         minimum_seed_clusters=minimum_seed_clusters,
         minimum_seed_own_delta=minimum_seed_own_delta,
         minimum_seed_margin_delta=minimum_seed_margin_delta,
+        minimum_family_seat_own_delta=minimum_family_seat_own_delta,
+        minimum_family_seat_margin_delta=minimum_family_seat_margin_delta,
         total_variation_radius=radius,
         strict_worst_case=strict_worst_case,
+        require_uniform_family_reference=require_uniform_family_reference,
+        require_leave_one_family_out=require_leave_one_family_out,
     )
