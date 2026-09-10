@@ -26,8 +26,10 @@ EXPECTED_BEFORE_BLOBS = {
     'frozen_selected.py': 'fc7baf5c179818a55037f6a61d92984d81d1a21c',
     'build_integrated.py': '05994d946885ff0fe2a2ce77439fd335174900aa',
 }
-PATCH_SHA256 = 'eada8856e6ca2d491562732b41a9e4b2e70429057b7211369f8c33b13f1b9cd3'
-TEST_SHA256 = 'fbfb264db89699fb66dbb98bca9adb54875b2f26e76cc3e2028681d8d45b14bc'
+EXPECTED_CARRIER_BLOBS = {
+    'change.patch': 'c5c604c758e90dd614c54a8370230df7f244dce1',
+    'test_scheduler_priority.py': 'b651e0e35f0736b059206d2f214f4bbe8a686d4f',
+}
 OLD_TARGET = (
     "targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS "
     "if shed.get(p,0)>0}"
@@ -119,23 +121,27 @@ def inventory() -> tuple[dict[str, bytes], dict[str, dict[str, Any]]]:
     return raw, records
 
 
-def validate_carrier() -> dict[str, Any]:
-    patch = read_regular(HERE / 'change.patch')
-    test = read_regular(LAB / 'test_scheduler_priority.py')
-    actual_patch = sha256(patch)
-    actual_test = sha256(test)
-    if actual_patch != PATCH_SHA256:
-        raise VerificationError(
-            f'patch digest mismatch: expected {PATCH_SHA256}, got {actual_patch}'
-        )
-    if actual_test != TEST_SHA256:
-        raise VerificationError(
-            f'test digest mismatch: expected {TEST_SHA256}, got {actual_test}'
-        )
-    return {
-        'patch_sha256': actual_patch,
-        'test_sha256': actual_test,
+def validate_carrier() -> dict[str, dict[str, Any]]:
+    paths = {
+        'change.patch': HERE / 'change.patch',
+        'test_scheduler_priority.py': LAB / 'test_scheduler_priority.py',
     }
+    records = {}
+    for name, path in paths.items():
+        data = read_regular(path)
+        actual_blob = git_blob_sha1(data)
+        expected_blob = EXPECTED_CARRIER_BLOBS[name]
+        if actual_blob != expected_blob:
+            raise VerificationError(
+                f'{name}: carrier blob mismatch: expected {expected_blob}, '
+                f'got {actual_blob}'
+            )
+        records[name] = {
+            'bytes': len(data),
+            'git_blob_sha1': actual_blob,
+            'sha256': sha256(data),
+        }
+    return records
 
 
 def validate_before(texts: dict[str, str], records: dict[str, dict[str, Any]]) -> None:

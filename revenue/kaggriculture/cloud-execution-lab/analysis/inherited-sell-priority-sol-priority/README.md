@@ -21,10 +21,10 @@ The materializer refuses source drift before applying the patch:
 - `scheduler.py` Git blob `a483b24dd72b580d7d8811636b54d2d44f391575`;
 - `frozen_selected.py` Git blob `fc7baf5c179818a55037f6a61d92984d81d1a21c`;
 - `build_integrated.py` Git blob `05994d946885ff0fe2a2ce77439fd335174900aa`;
-- `change.patch` SHA-256 `eada8856e6ca2d491562732b41a9e4b2e70429057b7211369f8c33b13f1b9cd3`; and
-- `test_scheduler_priority.py` SHA-256 `fbfb264db89699fb66dbb98bca9adb54875b2f26e76cc3e2028681d8d45b14bc`.
+- `change.patch` Git blob `c5c604c758e90dd614c54a8370230df7f244dce1`; and
+- `test_scheduler_priority.py` Git blob `b651e0e35f0736b059206d2f214f4bbe8a686d4f`.
 
-`verify.py` checks exact predecessor identities before materialization and AST/text semantics afterward. It requires one helper definition, one call in each production path, removal of both fixed-order predecessor expressions, and inclusion of the new contract in the standalone archive's `checks/` inventory.
+`verify.py` checks those exact repository blob identities before materialization and emits independent SHA-256 values in both before/after machine receipts. It also checks AST/text semantics afterward: one helper definition, one call in each production path, removal of both fixed-order predecessor expressions, and inclusion of the new contract in the standalone archive's `checks/` inventory.
 
 ## Predecessor-killing contract
 
