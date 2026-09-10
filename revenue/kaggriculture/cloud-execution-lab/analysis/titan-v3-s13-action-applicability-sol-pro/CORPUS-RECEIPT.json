@@ -1,0 +1,447 @@
+{
+  "audit": {
+    "bundle_collision_groups": 484,
+    "certificate_failures": 0,
+    "first_witness": {
+      "actor_index": 0,
+      "source": {
+        "action_sha256": "deb424e81cb1705c93446893fb0bbcb59922f1fdae200383a7acc7b5f8555383",
+        "candidate": "himanshu-kumar-e107217016-s0",
+        "episode": "107217016",
+        "frame": 49,
+        "seat": 0,
+        "signature": {
+          "hands": 4,
+          "quadrants": 1
+        },
+        "step": 49,
+        "team": "Himanshu Kumar"
+      },
+      "source_certificate_sha256": "c86a27f704ce945473e0d642288a30bf319d242ddfc25c6a465a0147f2a3cb69",
+      "source_component": [
+        "FEED"
+      ],
+      "target": {
+        "action_sha256": "a97ab68b2c0f5d0f4f4b89d96567edad8de0092a7ac59f1098638165f02cdecf",
+        "candidate": "spataro-e107252308-s1",
+        "episode": "107252308",
+        "frame": 49,
+        "seat": 1,
+        "signature": {
+          "hands": 4,
+          "quadrants": 1
+        },
+        "step": 49,
+        "team": "SpaTaro"
+      },
+      "target_certificate_sha256": "f597d740e6a45e97a7f6fc356b17c074598244d69168a0c5a4b04681c885f08d",
+      "target_component": [
+        "PICKUP",
+        "WHEAT",
+        4
+      ]
+    },
+    "largest_route_pair_counts": [
+      {
+        "pair": "spataro-e107252308-s1 -> pensukesan-e107223760-s0",
+        "witnesses": 483
+      },
+      {
+        "pair": "spataro-e107252308-s1 -> terry-luo-e107260189-s0",
+        "witnesses": 483
+      },
+      {
+        "pair": "spataro-e107252308-s1 -> himanshu-kumar-e107217016-s0",
+        "witnesses": 479
+      },
+      {
+        "pair": "otter-vibe-e107252308-s0 -> spataro-e107252308-s1",
+        "witnesses": 458
+      },
+      {
+        "pair": "terry-luo-e107260189-s0 -> spataro-e107252308-s1",
+        "witnesses": 451
+      },
+      {
+        "pair": "spataro-e107252308-s1 -> otter-vibe-e107252308-s0",
+        "witnesses": 446
+      },
+      {
+        "pair": "himanshu-kumar-e107217016-s0 -> spataro-e107252308-s1",
+        "witnesses": 443
+      },
+      {
+        "pair": "pensukesan-e107223760-s0 -> spataro-e107252308-s1",
+        "witnesses": 441
+      },
+      {
+        "pair": "otter-vibe-e107252308-s0 -> terry-luo-e107260189-s0",
+        "witnesses": 270
+      },
+      {
+        "pair": "terry-luo-e107260189-s0 -> otter-vibe-e107252308-s0",
+        "witnesses": 267
+      }
+    ],
+    "multi_route_signature_groups": 806,
+    "ordered_bundle_disagreements": 2556,
+    "route_rows": 3475,
+    "sample_witnesses": [
+      {
+        "actor_index": 0,
+        "source": {
+          "action_sha256": "deb424e81cb1705c93446893fb0bbcb59922f1fdae200383a7acc7b5f8555383",
+          "candidate": "himanshu-kumar-e107217016-s0",
+          "episode": "107217016",
+          "frame": 49,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 49,
+          "team": "Himanshu Kumar"
+        },
+        "source_certificate_sha256": "c86a27f704ce945473e0d642288a30bf319d242ddfc25c6a465a0147f2a3cb69",
+        "source_component": [
+          "FEED"
+        ],
+        "target": {
+          "action_sha256": "a97ab68b2c0f5d0f4f4b89d96567edad8de0092a7ac59f1098638165f02cdecf",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 49,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 49,
+          "team": "SpaTaro"
+        },
+        "target_certificate_sha256": "f597d740e6a45e97a7f6fc356b17c074598244d69168a0c5a4b04681c885f08d",
+        "target_component": [
+          "PICKUP",
+          "WHEAT",
+          4
+        ]
+      },
+      {
+        "actor_index": 0,
+        "source": {
+          "action_sha256": "deb424e81cb1705c93446893fb0bbcb59922f1fdae200383a7acc7b5f8555383",
+          "candidate": "pensukesan-e107223760-s0",
+          "episode": "107223760",
+          "frame": 49,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 49,
+          "team": "pensukesan"
+        },
+        "source_certificate_sha256": "3643924f342ff66204c7a4746cdba92e132a64e7e5ff73bad4585cedb90682a6",
+        "source_component": [
+          "FEED"
+        ],
+        "target": {
+          "action_sha256": "a97ab68b2c0f5d0f4f4b89d96567edad8de0092a7ac59f1098638165f02cdecf",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 49,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 49,
+          "team": "SpaTaro"
+        },
+        "target_certificate_sha256": "f597d740e6a45e97a7f6fc356b17c074598244d69168a0c5a4b04681c885f08d",
+        "target_component": [
+          "PICKUP",
+          "WHEAT",
+          4
+        ]
+      },
+      {
+        "actor_index": 0,
+        "source": {
+          "action_sha256": "deb424e81cb1705c93446893fb0bbcb59922f1fdae200383a7acc7b5f8555383",
+          "candidate": "terry-luo-e107260189-s0",
+          "episode": "107260189",
+          "frame": 49,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 49,
+          "team": "Terry Luo"
+        },
+        "source_certificate_sha256": "c86a27f704ce945473e0d642288a30bf319d242ddfc25c6a465a0147f2a3cb69",
+        "source_component": [
+          "FEED"
+        ],
+        "target": {
+          "action_sha256": "a97ab68b2c0f5d0f4f4b89d96567edad8de0092a7ac59f1098638165f02cdecf",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 49,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 49,
+          "team": "SpaTaro"
+        },
+        "target_certificate_sha256": "f597d740e6a45e97a7f6fc356b17c074598244d69168a0c5a4b04681c885f08d",
+        "target_component": [
+          "PICKUP",
+          "WHEAT",
+          4
+        ]
+      },
+      {
+        "actor_index": 0,
+        "source": {
+          "action_sha256": "7e012ada9f7f5426fc150132fd3b1162195c8fcf9d6ac3dc15b33b719e124d56",
+          "candidate": "himanshu-kumar-e107217016-s0",
+          "episode": "107217016",
+          "frame": 97,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "Himanshu Kumar"
+        },
+        "source_certificate_sha256": "3992a48746348883a3237bc706ff2a2cf69a40a756c01a5f81a45e78c625d84b",
+        "source_component": [
+          "FEED"
+        ],
+        "target": {
+          "action_sha256": "cafebcd7ce9bb04af3e7e4246c5abe677b0f93f414583ec42cd5a6c5ac49b8c6",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 97,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "SpaTaro"
+        },
+        "target_certificate_sha256": "59eb477b21b8473867bcb14071a7be56693bb261320bc5c9347d15abe8dd5173",
+        "target_component": [
+          "PICKUP",
+          "WHEAT",
+          4
+        ]
+      },
+      {
+        "actor_index": 0,
+        "source": {
+          "action_sha256": "7e012ada9f7f5426fc150132fd3b1162195c8fcf9d6ac3dc15b33b719e124d56",
+          "candidate": "pensukesan-e107223760-s0",
+          "episode": "107223760",
+          "frame": 97,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "pensukesan"
+        },
+        "source_certificate_sha256": "891b1897de51083b9fa22510824eb358e09f6f06b2ea1d240798193d0b50033b",
+        "source_component": [
+          "FEED"
+        ],
+        "target": {
+          "action_sha256": "cafebcd7ce9bb04af3e7e4246c5abe677b0f93f414583ec42cd5a6c5ac49b8c6",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 97,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "SpaTaro"
+        },
+        "target_certificate_sha256": "59eb477b21b8473867bcb14071a7be56693bb261320bc5c9347d15abe8dd5173",
+        "target_component": [
+          "PICKUP",
+          "WHEAT",
+          4
+        ]
+      },
+      {
+        "actor_index": 3,
+        "source": {
+          "action_sha256": "cafebcd7ce9bb04af3e7e4246c5abe677b0f93f414583ec42cd5a6c5ac49b8c6",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 97,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "SpaTaro"
+        },
+        "source_certificate_sha256": "3425b8a004e2b53f0bd4e96b79d401045c2f71b8219ac60b12f6c684ba170b12",
+        "source_component": [
+          "PICKUP",
+          "SHEEP",
+          1
+        ],
+        "target": {
+          "action_sha256": "7e012ada9f7f5426fc150132fd3b1162195c8fcf9d6ac3dc15b33b719e124d56",
+          "candidate": "himanshu-kumar-e107217016-s0",
+          "episode": "107217016",
+          "frame": 97,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "Himanshu Kumar"
+        },
+        "target_certificate_sha256": "6f94e6dba2368337a51bd20b9d480c772c8f09be1562e74b6055ba91f8e8a475",
+        "target_component": [
+          "NORTH"
+        ]
+      },
+      {
+        "actor_index": 0,
+        "source": {
+          "action_sha256": "cafebcd7ce9bb04af3e7e4246c5abe677b0f93f414583ec42cd5a6c5ac49b8c6",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 97,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "SpaTaro"
+        },
+        "source_certificate_sha256": "3425b8a004e2b53f0bd4e96b79d401045c2f71b8219ac60b12f6c684ba170b12",
+        "source_component": [
+          "PICKUP",
+          "WHEAT",
+          4
+        ],
+        "target": {
+          "action_sha256": "7e012ada9f7f5426fc150132fd3b1162195c8fcf9d6ac3dc15b33b719e124d56",
+          "candidate": "pensukesan-e107223760-s0",
+          "episode": "107223760",
+          "frame": 97,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "pensukesan"
+        },
+        "target_certificate_sha256": "d1aeda781ed64d04ad49c55a2b5251f98c690db907af6928c95f70cd7c7f7084",
+        "target_component": [
+          "FEED"
+        ]
+      },
+      {
+        "actor_index": 3,
+        "source": {
+          "action_sha256": "cafebcd7ce9bb04af3e7e4246c5abe677b0f93f414583ec42cd5a6c5ac49b8c6",
+          "candidate": "spataro-e107252308-s1",
+          "episode": "107252308",
+          "frame": 97,
+          "seat": 1,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "SpaTaro"
+        },
+        "source_certificate_sha256": "3425b8a004e2b53f0bd4e96b79d401045c2f71b8219ac60b12f6c684ba170b12",
+        "source_component": [
+          "PICKUP",
+          "SHEEP",
+          1
+        ],
+        "target": {
+          "action_sha256": "7e012ada9f7f5426fc150132fd3b1162195c8fcf9d6ac3dc15b33b719e124d56",
+          "candidate": "pensukesan-e107223760-s0",
+          "episode": "107223760",
+          "frame": 97,
+          "seat": 0,
+          "signature": {
+            "hands": 4,
+            "quadrants": 1
+          },
+          "step": 97,
+          "team": "pensukesan"
+        },
+        "target_certificate_sha256": "d1aeda781ed64d04ad49c55a2b5251f98c690db907af6928c95f70cd7c7f7084",
+        "target_component": [
+          "NORTH"
+        ]
+      }
+    ],
+    "signature_groups": 1826,
+    "unit_component_comparisons": 12492,
+    "unit_false_applicability_by_source_op": {
+      "BUILD_COOP": 12,
+      "BUILD_PASTURE": 54,
+      "CARE": 665,
+      "COLLECT_FERTILIZER": 579,
+      "DIG": 13,
+      "DROP": 106,
+      "EAST": 45,
+      "FEED": 839,
+      "FERTILIZE": 143,
+      "HARVEST": 531,
+      "NORTH": 124,
+      "PICKUP": 226,
+      "PLACE": 144,
+      "PLANT": 383,
+      "SOUTH": 29,
+      "WATER": 1291,
+      "WEST": 90
+    },
+    "unit_false_applicability_steps": 285,
+    "unit_false_applicability_witnesses": 5274,
+    "witnesses_sha256": "c90ac034a91ea1dac873fb4b805015d96abfe9691a05f00a4882a477a2712d1a"
+  },
+  "disposition": {
+    "current_structural_signature": "REJECT_AS_ACTION_APPLICABILITY_CERTIFICATE",
+    "market_limitation": "HIDDEN_RIVAL_SIMULTANEOUS_QUEUE_NOT_BOUND",
+    "unit_prestate_certificate": "PASS_ON_PINNED_SOURCE_COLLISION_CENSUS"
+  },
+  "engine": {
+    "oracle": "_apply_unit_action",
+    "path": "kaggriculture.py",
+    "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+  },
+  "schema": "titan-v3-s13-action-applicability-audit/v1",
+  "selected_candidates": [
+    "otter-vibe-e107252308-s0",
+    "spataro-e107252308-s1",
+    "terry-luo-e107260189-s0",
+    "himanshu-kumar-e107217016-s0",
+    "pensukesan-e107223760-s0"
+  ],
+  "source_pins_sha256": "4a9b56673469fec0caab053a8bdf2724ff859087ae03326836a0ce552d30d5cc"
+}
