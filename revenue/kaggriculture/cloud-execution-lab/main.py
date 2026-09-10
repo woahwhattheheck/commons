@@ -2,6 +2,120 @@
 """Canonical TITAN entrypoint. Feature choices are deterministic package data."""
 _INSTANCE = None
 
+def _nonnegative_int(value):
+    """Parse an internal action quantity without admitting bool or malformed rows."""
+    if isinstance(value, bool):
+        return 0
+    try:
+        return max(0, int(value))
+    except (TypeError, ValueError, OverflowError):
+        return 0
+
+
+def _sell_prefix_totals(action, limit):
+    """Return valid positive SELL units in the exact raw engine prefix."""
+    try:
+        bound = max(0, int(limit))
+    except (TypeError, ValueError, OverflowError):
+        bound = 0
+    market = action.get('market', []) if isinstance(action, dict) else []
+    if not isinstance(market, (list, tuple)):
+        return {}
+    totals = {}
+    for order in market[:bound]:
+        if (not isinstance(order, (list, tuple)) or len(order) < 3
+                or order[0] != 'SELL' or not isinstance(order[1], str)):
+            continue
+        quantity = _nonnegative_int(order[2])
+        if quantity:
+            totals[order[1]] = totals.get(order[1], 0)+quantity
+    return totals
+
+
+def _planned_due(rows, step):
+    total = 0
+    for row in rows if isinstance(rows, (list, tuple)) else ():
+        if not isinstance(row, (list, tuple)) or len(row) < 2:
+            continue
+        try:
+            when = int(row[0])
+        except (TypeError, ValueError, OverflowError):
+            continue
+        if when <= step:
+            total += _nonnegative_int(row[1])
+    return total
+
+
+def _reconcile_returned_sell_carry(before, after, authored, returned, step, limit):
+    """Carry pre-existing due SELL units removed by late returned-action guards.
+
+    FrozenSelected settles its planning ledger against ``authored`` before the
+    canonical finalizer protects feed/crop stock and reapplies pressure. The
+    engine, however, observes only ``returned[:maxMarketOrdersPerTurn]``. Bind
+    the next-turn carry to that exact raw prefix without creating obligations
+    for baseline or opportunistic SELL quantities.
+    """
+    from copy import deepcopy
+    checkpoint = deepcopy(after)
+    report = {
+        'changed': False,
+        'step': int(step),
+        'prefix_limit': _nonnegative_int(limit),
+        'authored_sell': _sell_prefix_totals(authored, limit),
+        'returned_sell': _sell_prefix_totals(returned, limit),
+        'items': {},
+    }
+    if not isinstance(before, dict) or not isinstance(checkpoint, dict):
+        report['reason'] = 'missing_seller_checkpoint'
+        return checkpoint, report
+    planned_before = before.get('planned', {})
+    planned_after = checkpoint.setdefault('planned', {})
+    pending_after = checkpoint.setdefault('pending', {})
+    if not isinstance(planned_before, dict) or not isinstance(planned_after, dict):
+        report['reason'] = 'invalid_seller_checkpoint'
+        return checkpoint, report
+    authored_sell = report['authored_sell']
+    returned_sell = report['returned_sell']
+    now = int(step)
+    for item, rows in planned_before.items():
+        if not isinstance(item, str):
+            continue
+        due = _planned_due(rows, now)
+        removed = max(0, authored_sell.get(item, 0)-returned_sell.get(item, 0))
+        carry = min(due, removed)
+        if not carry:
+            continue
+        after_rows = planned_after.get(item, [])
+        existing_due = _planned_due(after_rows, now)
+        added = max(0, carry-existing_due)
+        report['items'][item] = {
+            'due_before': due,
+            'removed_after_guards': removed,
+            'already_carried': min(carry, existing_due),
+            'carried_to_next_turn': added,
+        }
+        if not added:
+            continue
+        by_step = {}
+        for row in after_rows if isinstance(after_rows, (list, tuple)) else ():
+            if not isinstance(row, (list, tuple)) or len(row) < 2:
+                continue
+            try:
+                when = int(row[0])
+            except (TypeError, ValueError, OverflowError):
+                continue
+            quantity = _nonnegative_int(row[1])
+            if quantity:
+                by_step[when] = by_step.get(when, 0)+quantity
+        by_step[now+1] = by_step.get(now+1, 0)+added
+        planned_after[item] = sorted(by_step.items())
+        pending_after[item] = _nonnegative_int(pending_after.get(item, 0))+added
+        report['changed'] = True
+    if not report['items']:
+        report['reason'] = 'no_removed_due_sell'
+    return checkpoint, report
+
+
 
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
@@ -16,6 +130,44 @@ def _new_instance(root, feature_data):
         may reorder only the resulting supported SELL blocks. Deadline fallback
         keeps its existing path and does not start a new optional transform.
         """
+        def act(self, observation, configuration=None, *, entry_started=None):
+            # Capture only intent that predates this action. New plans selected
+            # during this action cannot become synthetic carry obligations.
+            from copy import deepcopy
+            if self.features.consumer != 'frozen':
+                self._seller_state_before_action = None
+            elif self.ready:
+                self._seller_state_before_action = self._seller_state(self.consumer)
+            else:
+                self._seller_state_before_action = deepcopy(self._completed_seller_state)
+            try:
+                return super().act(observation, configuration,
+                                   entry_started=entry_started)
+            finally:
+                self._seller_state_before_action = None
+
+        def _finish_production(self, obs, returned, cfg=None):
+            from copy import deepcopy
+            authored = deepcopy(returned)
+            result = super()._finish_production(obs, returned, cfg)
+            if self.diagnostics.get('status') != 'completed':
+                return result
+            checkpoint, report = _reconcile_returned_sell_carry(
+                getattr(self, '_seller_state_before_action', None),
+                self._completed_seller_state, authored, result, int(obs['step']),
+                (cfg or {}).get('maxMarketOrdersPerTurn', 10))
+            self.diagnostics['returned_sell_carry'] = report
+            if report['changed']:
+                # TitanAgent committed before calling the finalizer. Keep its
+                # live object and recovery checkpoint on the same corrected
+                # planning ledger for both normal and reconstructed next turns.
+                self.consumer.planned = {
+                    item:list(rows) for item,rows in checkpoint['planned'].items()
+                }
+                self.consumer.pending = dict(checkpoint['pending'])
+                self._completed_seller_state = checkpoint
+            return result
+
         def _market_pressure_selected(self, obs, cfg, selected):
             if not getattr(self, '_final_pressure_boundary', False):
                 return selected
