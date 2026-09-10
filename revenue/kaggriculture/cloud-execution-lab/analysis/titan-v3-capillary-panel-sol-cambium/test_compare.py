@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import copy
-import hashlib
 import unittest
 
 import compare
@@ -76,12 +75,14 @@ def report_fixture(entry_sha: str, *, delta: float, changed: bool):
     for opponent in compare.EXPECTED_OPPONENTS:
         for seed in compare.EXPECTED_SEEDS:
             for seat in (0, 1):
-                scores = [100.0, 100.0]
+                control_scores = [100.0, 100.0]
+                scores = list(control_scores)
                 scores[seat] += delta
-                token = (
-                    f"{opponent}:{seed}:{seat}:"
-                    f"{'candidate' if changed else 'control'}"
+                digest_token = (
+                    f"{opponent}:{seed}:{seat}:{'candidate' if changed else 'control'}"
                 ).encode()
+                import hashlib
+                action_digest = hashlib.sha256(digest_token).hexdigest()
                 games.append({
                     "opponent": opponent,
                     "seed": seed,
@@ -93,8 +94,10 @@ def report_fixture(entry_sha: str, *, delta: float, changed: bool):
                     "scores": scores,
                     "bank_snapshot": list(scores),
                     "candidate_action_count": compare.EXPECTED_STEPS,
-                    "candidate_action_sha256": hashlib.sha256(token).hexdigest(),
-                    "trace_sha256": hashlib.sha256(b"trace:" + token).hexdigest(),
+                    "candidate_action_sha256": action_digest,
+                    "trace_sha256": hashlib.sha256(
+                        b"trace:" + digest_token
+                    ).hexdigest(),
                     "actors": [
                         {"calls": compare.EXPECTED_STEPS},
                         {"calls": compare.EXPECTED_STEPS},
@@ -135,7 +138,7 @@ def report_fixture(entry_sha: str, *, delta: float, changed: bool):
         },
         "progress": {
             "state": "complete",
-            "phase": "games",
+            "phase": "finalize",
             "planned_games": compare.EXPECTED_GAMES_PER_ARM,
             "recorded_games": compare.EXPECTED_GAMES_PER_ARM,
             "active_game": None,
@@ -206,6 +209,12 @@ class ClassifyTests(unittest.TestCase):
         candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
         with self.assertRaisesRegex(compare.CompareError, "cardinality drift"):
             compare.classify(self.control, candidate, self.audit, receipt)
+
+    def test_nonfinal_progress_phase_fails_closed(self):
+        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
+        candidate["progress"]["phase"] = "games"
+        with self.assertRaisesRegex(compare.CompareError, "did not finish finalization"):
+            compare.classify(self.control, candidate, self.audit, self.receipt)
 
 
 if __name__ == "__main__":
