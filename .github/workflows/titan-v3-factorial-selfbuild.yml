@@ -1,0 +1,212 @@
+name: TITAN V3 own-value x strict-pressure factorial self-build
+
+on:
+  push:
+    branches:
+      - sol-synergy/titan-v3-own-value-pressure-factorial-20260910-01
+    paths:
+      - .github/workflows/titan-v3-factorial-selfbuild.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out exact carrier commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up matching Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Reassemble and authenticate source bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .github/titan-factorial-bundle.part00 \
+              .github/titan-factorial-bundle.part01 \
+              .github/titan-factorial-bundle.part02 \
+              .github/titan-factorial-bundle.part03 \
+              .github/titan-factorial-bundle.part04 > /tmp/titan-factorial.b64
+          base64 --decode /tmp/titan-factorial.b64 > /tmp/titan-factorial.tgz
+          echo '196526254cea9e9a81694e0852814bec329c660e712f4c036af76670b8476b48  /tmp/titan-factorial.tgz' | sha256sum --check --strict
+
+      - name: Materialize only the authenticated regular files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+          import os
+          from pathlib import Path, PurePosixPath
+          import tarfile
+
+          archive = Path('/tmp/titan-factorial.tgz')
+          expected = (
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/titan_factorial.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/tests/test_titan_factorial.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/EVIDENCE.json',
+          )
+          with tarfile.open(archive, mode='r:gz') as tf:
+              members = tf.getmembers()
+              names = tuple(member.name for member in members)
+              if names != expected:
+                  raise SystemExit(f'unexpected tar members/order: {names!r}')
+              for member in members:
+                  pure = PurePosixPath(member.name)
+                  if (not member.isreg() or member.linkname or pure.is_absolute()
+                          or '..' in pure.parts or member.mode & ~0o777
+                          or member.size < 1 or member.size > 1_000_000):
+                      raise SystemExit(f'unsafe tar member: {member!r}')
+                  destination = Path(*pure.parts)
+                  if destination.exists() or destination.is_symlink():
+                      raise SystemExit(f'refusing to overwrite: {destination}')
+                  source = tf.extractfile(member)
+                  if source is None:
+                      raise SystemExit(f'missing payload: {member.name}')
+                  data = source.read()
+                  if len(data) != member.size:
+                      raise SystemExit(f'short payload: {member.name}')
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  temporary = destination.with_name(destination.name + '.materializing')
+                  try:
+                      with temporary.open('xb') as handle:
+                          handle.write(data)
+                          handle.flush()
+                          os.fsync(handle.fileno())
+                      os.chmod(temporary, 0o644)
+                      os.replace(temporary, destination)
+                  finally:
+                      temporary.unlink(missing_ok=True)
+          PY
+
+      - name: Verify evidence and run the complete contract suite
+        shell: bash
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial
+        run: |
+          set -euo pipefail
+          echo '0c4aaf0e2b62b94616c617e8cc0c802dd4e9d0796ec1e685e00d178d8afae917  README.md' | sha256sum --check --strict
+          echo 'aa91752da9eb52470706c8dfee5291b2e18b869b5a1ade7a7b7f274226f27be8  titan_factorial.py' | sha256sum --check --strict
+          echo 'a620713820e841fe4580aef6f411fdfa54f20c9126fe7600e7105d3f5f89a846  tests/test_titan_factorial.py' | sha256sum --check --strict
+          echo 'a6cee0fea4d8393a1e93d9e69bafafaa3eefb0cb8ab1e1a61d1f3579fe030d2a  EVIDENCE.json' | sha256sum --check --strict
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          evidence = json.loads(Path('EVIDENCE.json').read_text())
+          receipt = evidence.pop('receipt_sha256')
+          encoded = json.dumps(
+              evidence, sort_keys=True, separators=(',', ':'), ensure_ascii=False
+          ).encode()
+          actual = hashlib.sha256(encoded).hexdigest()
+          if receipt != '8be645191448571b9d2d2e02ad4f6ef3762156f9e529fbb3243d91de8ef3c4ef' or actual != receipt:
+              raise SystemExit(f'evidence receipt mismatch: {actual}')
+          if evidence['base_commit'] != 'c51049d671b55d282e0fed5df37a0be7c513a838':
+              raise SystemExit('unexpected evidence base')
+          if evidence['validation'] != {
+              'cli_round_trip': 'PASS',
+              'compile_command': 'python -m py_compile titan_factorial.py tests/test_titan_factorial.py',
+              'errors': 0,
+              'failures': 0,
+              'python': '3.13.5',
+              'status': 'PASS',
+              'test_command': 'python -B -m unittest -v tests/test_titan_factorial.py',
+              'tests_run': 54,
+          }:
+              raise SystemExit('unexpected evidence validation envelope')
+          if any(evidence['custody'].values()):
+              raise SystemExit('carrier may not claim source/game/promotion custody')
+          PY
+          python -m py_compile titan_factorial.py tests/test_titan_factorial.py
+          python -B -m unittest -v tests/test_titan_factorial.py 2>&1 | tee /tmp/titan-factorial-tests.log
+          grep -Eq '^Ran 54 tests in [0-9.]+s$' /tmp/titan-factorial-tests.log
+          grep -Fxq 'OK' /tmp/titan-factorial-tests.log
+
+      - name: Emit run-bound publication receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial')
+          receipt = {
+              'schema': 'titan-v3-factorial-publication/v1',
+              'base_commit': 'c51049d671b55d282e0fed5df37a0be7c513a838',
+              'carrier_commit': os.environ['GITHUB_SHA'],
+              'workflow_run_id': os.environ['GITHUB_RUN_ID'],
+              'workflow_run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'bundle_sha256': '196526254cea9e9a81694e0852814bec329c660e712f4c036af76670b8476b48',
+              'source_sha256': {
+                  'README.md': hashlib.sha256((root / 'README.md').read_bytes()).hexdigest(),
+                  'EVIDENCE.json': hashlib.sha256((root / 'EVIDENCE.json').read_bytes()).hexdigest(),
+                  'titan_factorial.py': hashlib.sha256((root / 'titan_factorial.py').read_bytes()).hexdigest(),
+                  'tests/test_titan_factorial.py': hashlib.sha256((root / 'tests/test_titan_factorial.py').read_bytes()).hexdigest(),
+              },
+              'validation': {
+                  'compile': 'PASS',
+                  'tests_run': 54,
+                  'failures': 0,
+                  'errors': 0,
+                  'cli_round_trip': 'PASS',
+              },
+              'games_run': 0,
+              'canonical_mutated': False,
+              'promotion_emitted': False,
+          }
+          body = dict(receipt)
+          receipt['receipt_sha256'] = hashlib.sha256(
+              (json.dumps(body, indent=2, sort_keys=True) + '\n').encode()
+          ).hexdigest()
+          (root / 'PUBLISH.json').write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+
+      - name: Replace carrier with the tested reviewable source
+        shell: bash
+        run: |
+          set -euo pipefail
+          target='revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial'
+          rm -f .github/titan-factorial-bundle.part00 \
+                .github/titan-factorial-bundle.part01 \
+                .github/titan-factorial-bundle.part02 \
+                .github/titan-factorial-bundle.part03 \
+                .github/titan-factorial-bundle.part04 \
+                .github/workflows/titan-v3-factorial-selfbuild.yml
+          find "$target" -type d -name __pycache__ -prune -exec rm -rf {} +
+          git config user.name 'commons-board'
+          git config user.email 'commons-board@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          python - <<'PY'
+          import subprocess
+
+          allowed = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/EVIDENCE.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/PUBLISH.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/titan_factorial.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/factorial/tests/test_titan_factorial.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--cached', '--name-only',
+               'c51049d671b55d282e0fed5df37a0be7c513a838'],
+              text=True,
+          ).splitlines())
+          if actual != allowed:
+              raise SystemExit(f'unexpected final diff paths: {sorted(actual)!r}')
+          PY
+          git commit -m 'TITAN: add exact own-value x strict-pressure factorial gate'
+          git push origin HEAD:sol-synergy/titan-v3-own-value-pressure-factorial-20260910-01
