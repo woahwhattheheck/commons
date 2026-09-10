@@ -1,0 +1,93 @@
+name: TITAN V3 represented-horizon executable-prefix closure
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-represented-horizon-prefix-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/**"
+      - ".github/workflows/titan-v3-represented-horizon-prefix-sol-pro.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/**"
+      - ".github/workflows/titan-v3-represented-horizon-prefix-sol-pro.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the exact triggering head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Assert exact PR-head custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha }}'
+          if [[ -n "$expected" ]]; then
+            test "$(git rev-parse HEAD)" = "$expected"
+          fi
+          test -z "$(git status --porcelain=v1)"
+
+      - name: Parse carrier without mutating the checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          paths = (
+              Path("revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/repair.py"),
+              Path("revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/test_repair.py"),
+          )
+          for path in paths:
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          PY
+
+      - name: Run exact source and returned-action contracts
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v \
+            revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/test_repair.py
+
+      - name: Emit deterministic receipt and exact patch
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        shell: bash
+        run: |
+          set -euo pipefail
+          case_dir=revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro
+          artifact_dir="$RUNNER_TEMP/titan-represented-horizon-artifacts"
+          mkdir -p "$artifact_dir"
+          python "$case_dir/repair.py" --repo . --format json > "$artifact_dir/receipt.json"
+          python "$case_dir/repair.py" --repo . --format patch > "$artifact_dir/repair.patch"
+          python "$case_dir/repair.py" --repo . --format json > "$artifact_dir/receipt.second.json"
+          cmp "$artifact_dir/receipt.json" "$artifact_dir/receipt.second.json"
+          test -s "$artifact_dir/repair.patch"
+          sha256sum "$artifact_dir/receipt.json" "$artifact_dir/repair.patch" > "$artifact_dir/SHA256SUMS"
+          rm "$artifact_dir/receipt.second.json"
+          test -z "$(git status --porcelain=v1)"
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-represented-horizon-${{ github.sha }}
+          path: ${{ runner.temp }}/titan-represented-horizon-artifacts/
+          if-no-files-found: error
+          retention-days: 30
