@@ -1,0 +1,36 @@
+name: TITAN version regression microscope
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-version-regression-microscope/**"
+      - ".github/workflows/titan-version-regression-microscope.yml"
+  push:
+    branches:
+      - "sol-trace/titan-v3-version-regression-microscope-20260910-01"
+    paths:
+      - "revenue/kaggriculture/cloud-version-regression-microscope/**"
+      - ".github/workflows/titan-version-regression-microscope.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        working-directory: revenue/kaggriculture/cloud-version-regression-microscope
+        run: python -B -m py_compile regression_microscope.py test_regression_microscope.py
+      - name: Predecessor-killing contracts
+        working-directory: revenue/kaggriculture/cloud-version-regression-microscope
+        run: python -B -m unittest -v test_regression_microscope.py
