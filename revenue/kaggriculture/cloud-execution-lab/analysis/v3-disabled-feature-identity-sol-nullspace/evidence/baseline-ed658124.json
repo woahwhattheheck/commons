@@ -1,0 +1,29 @@
+{
+  "clean": false,
+  "evidence_basis": "exact Git blob identities plus AST call-order audit; rerun identity_firewall.py in a repository checkout to reproduce",
+  "expectation_matches": true,
+  "expected_findings": [
+    "features.weed_continuation::missing_field::weed_continuation",
+    "runtime.spatial.install.must-be-domain-gated::unguarded_call::SpatialTempo",
+    "runtime.spatial.install.must-be-domain-gated::unguarded_call::self.spatial.install",
+    "spatial.idle-delivery.must-be-gated::unguarded_call::self._deliver_idle_fertilizer",
+    "spatial.weed.must-have-own-gate::unguarded_call::self._continue_weed"
+  ],
+  "file_bindings": {
+    "spatial_tempo.py": {
+      "git_blob_sha1": "edbc423023479dbe2e78131495334384a87b607f"
+    },
+    "titan_runtime.py": {
+      "git_blob_sha1": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+    }
+  },
+  "kind": "disabled_feature_identity_baseline",
+  "notes": [
+    "This is a baseline witness, not a clean certificate.",
+    "No gameplay score, provider state, runtime source, archive, or Kaggle submission is changed by this artifact."
+  ],
+  "required_clean_exit_command": "python identity_firewall.py --root ../.. --contract contract.json --require-clean",
+  "schema_version": 1,
+  "source_ref": "ed65812449a2cd021b0635a60ff9171957f3e386",
+  "status": "expected_violation"
+}
