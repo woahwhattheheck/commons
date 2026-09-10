@@ -42,7 +42,8 @@
       "type": "object",
       "additionalProperties": {"$ref": "#/$defs/funnel"}
     },
-    "listings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/listing"}}
+    "listings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/listing"}},
+    "live_cash": {"$ref": "#/$defs/live_cash"}
   },
   "$defs": {
     "id": {"type": "string", "minLength": 8, "maxLength": 80, "pattern": "^[A-Za-z0-9._-]+$"},
@@ -222,6 +223,34 @@
       "type": "array",
       "uniqueItems": true,
       "items": {"type": "string", "minLength": 1}
+    },
+    "live_cash_product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "price_usd", "path"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "price_usd": {"type": "integer", "minimum": 1},
+        "path": {"type": "string", "minLength": 1}
+      }
+    },
+    "live_cash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cite", "note", "products"],
+      "properties": {
+        "cite": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "note": {"type": "string", "minLength": 1},
+        "products": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/live_cash_product"}
+        }
+      }
     },
     "funnel_truth": {
       "type": "object",
