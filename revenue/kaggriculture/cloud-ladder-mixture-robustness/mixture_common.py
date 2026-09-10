@@ -244,5 +244,9 @@ class ParsedInput:
     minimum_seed_clusters: int
     minimum_seed_own_delta: Fraction
     minimum_seed_margin_delta: Fraction
+    minimum_family_seat_own_delta: Fraction
+    minimum_family_seat_margin_delta: Fraction
     total_variation_radius: Fraction
     strict_worst_case: bool
+    require_uniform_family_reference: bool
+    require_leave_one_family_out: bool
