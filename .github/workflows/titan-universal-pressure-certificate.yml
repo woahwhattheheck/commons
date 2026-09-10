@@ -1,0 +1,173 @@
+name: TITAN universal pressure bootstrap
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-universal-pressure-certificate-20260910-01
+    paths:
+      - .github/workflows/titan-universal-pressure-certificate.yml
+      - .bootstrap/titan-universal-pressure/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify and decode immutable source payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "START_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          echo "2df7ab85bff84ba2e73dcfdba289ca71819a487f5c01a804bfdf060c039857ba  .bootstrap/titan-universal-pressure/part-00.b64" | sha256sum --check -
+          echo "b14c8338a488259f8de6ca7717fa9df276f4c91d09f8efb9d2d03e9685063142  .bootstrap/titan-universal-pressure/part-01.b64" | sha256sum --check -
+          echo "7f4cb728547785351d8427b6c2b3385c43b9d08480f719e3c715b3e69c778eae  .bootstrap/titan-universal-pressure/part-02.b64" | sha256sum --check -
+          echo "0a4e04043b38566864130dc9fd6c6f299daac0944415787cea2d98b25caab950  .bootstrap/titan-universal-pressure/part-03.b64" | sha256sum --check -
+          echo "3936e10f112ae1cbda84c736a90cc23190f9e75af6e1321d712ddfc0588cadcd  .bootstrap/titan-universal-pressure/part-04.b64" | sha256sum --check -
+          echo "91f1c1b3e53dbde21f49b1f0c3a5b943c688ba517bfa623b51c4a78ca310ab84  .bootstrap/titan-universal-pressure/part-05.b64" | sha256sum --check -
+          cat .bootstrap/titan-universal-pressure/part-*.b64 \
+            > "$RUNNER_TEMP/titan-universal-pressure.tar.gz.b64"
+          test "$(wc -c < "$RUNNER_TEMP/titan-universal-pressure.tar.gz.b64")" = "23860"
+          echo "46f688327fe634ad6ee646078a747f7ce5412e1d2055d124122053e4ff0a85e5  $RUNNER_TEMP/titan-universal-pressure.tar.gz.b64" \
+            | sha256sum --check -
+          base64 --decode "$RUNNER_TEMP/titan-universal-pressure.tar.gz.b64" \
+            > "$RUNNER_TEMP/titan-universal-pressure.tar.gz"
+          echo "43893c078afea372d651e43da1cde1517f8b104f2624d31a19e0575a9a4d6800  $RUNNER_TEMP/titan-universal-pressure.tar.gz" \
+            | sha256sum --check -
+
+          python - <<'PY'
+          import os
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          archive = Path(os.environ["RUNNER_TEMP"]) / "titan-universal-pressure.tar.gz"
+          expected = ['.github/workflows/titan-universal-pressure-certificate.yml', 'revenue/kaggriculture/cloud-market-pressure-universal-certificate/README.md', 'revenue/kaggriculture/cloud-market-pressure-universal-certificate/SOURCE.json', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority_universal.py', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/proof_sweep.py', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_priority_universal.py', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/witness.py']
+          with tarfile.open(archive, "r:gz") as bundle:
+              members = bundle.getmembers()
+              names = sorted(member.name for member in members)
+              assert names == sorted(expected), (names, sorted(expected))
+              for member in members:
+                  path = PurePosixPath(member.name)
+                  assert not path.is_absolute()
+                  assert ".." not in path.parts
+                  assert member.isfile()
+              bundle.extractall(Path("."))
+          print("immutable payload extraction: PASS")
+          PY
+          rm -rf .bootstrap/titan-universal-pressure
+
+      - name: Verify exact dependency and candidate closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git merge-base --is-ancestor \
+            c51049d671b55d282e0fed5df37a0be7c513a838 HEAD
+          python - <<'PY'
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+
+          source = Path(
+              "revenue/kaggriculture/"
+              "cloud-market-pressure-universal-certificate/SOURCE.json"
+          )
+          receipt = json.loads(source.read_text())
+          assert receipt["commons"]["base_commit"] == (
+              "c51049d671b55d282e0fed5df37a0be7c513a838"
+          )
+          for path, identity in receipt["commons"]["dependencies"].items():
+              actual = subprocess.check_output(
+                  ["git", "hash-object", path], text=True
+              ).strip()
+              assert actual == identity["git_blob_sha1"], (
+                  path, actual, identity["git_blob_sha1"]
+              )
+          for path, identity in receipt["candidate_files"].items():
+              payload = Path(path).read_bytes()
+              assert hashlib.sha256(payload).hexdigest() == identity["sha256"]
+              assert len(payload) == identity["bytes"]
+          print("source closure: PASS")
+          PY
+
+      - name: Compile and run all pressure contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_DIR="revenue/kaggriculture/cloud-opponent-league/lark-responsive"
+          PYTHONPYCACHEPREFIX="$RUNNER_TEMP/pycache" python -B -m py_compile \
+            "$SOURCE_DIR/pressure_priority_universal.py" \
+            "$SOURCE_DIR/test_pressure_priority_universal.py" \
+            "$SOURCE_DIR/witness.py" \
+            "$SOURCE_DIR/proof_sweep.py"
+          (
+            cd "$SOURCE_DIR"
+            python -B -m unittest -v \
+              test_pressure_priority.py \
+              test_pressure_priority_public_flow.py \
+              test_pressure_priority_universal.py
+            python -B witness.py \
+              --output "$RUNNER_TEMP/WITNESS.json" >/dev/null
+            python -B proof_sweep.py \
+              --output "$RUNNER_TEMP/PROOF-SWEEP.json" >/dev/null
+          )
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"])
+          witness = json.loads((root / "WITNESS.json").read_text())
+          sweep = json.loads((root / "PROOF-SWEEP.json").read_text())
+          assert witness["unsafe_positive_before_zero"]["own_cash_delta"] == -3
+          assert witness["unsafe_positive_before_zero"]["margin_delta"] == -6
+          assert witness["universal_certificate"]["verdict"] == "PREDECESSOR_KILLED"
+          assert sweep["admitted_crossing_configurations"] == 126
+          assert sweep["exact_rival_comparisons"] == 1638
+          assert sweep["minimum_own_cash_delta"] == 0
+          assert sweep["minimum_margin_delta"] == 0
+          assert sweep["verdict"] == "NO_ADMITTED_REGRESSION"
+          print("witness and finite proof sweep: PASS")
+          PY
+
+      - name: Publish tested additive carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="sol-pro/titan-universal-pressure-certificate-20260910-01"
+          test "$GITHUB_REF" = "refs/heads/$branch"
+
+          python - <<'PY'
+          import subprocess
+
+          expected = ['.bootstrap/titan-universal-pressure/part-00.b64', '.bootstrap/titan-universal-pressure/part-01.b64', '.bootstrap/titan-universal-pressure/part-02.b64', '.bootstrap/titan-universal-pressure/part-03.b64', '.bootstrap/titan-universal-pressure/part-04.b64', '.bootstrap/titan-universal-pressure/part-05.b64', '.github/workflows/titan-universal-pressure-certificate.yml', 'revenue/kaggriculture/cloud-market-pressure-universal-certificate/README.md', 'revenue/kaggriculture/cloud-market-pressure-universal-certificate/SOURCE.json', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority_universal.py', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/proof_sweep.py', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_priority_universal.py', 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/witness.py']
+          rows = subprocess.check_output(
+              ["git", "status", "--porcelain"], text=True
+          ).splitlines()
+          changed = sorted(row[3:] for row in rows)
+          assert changed == expected, (changed, expected)
+          print("changed-path closure: PASS")
+          PY
+
+          git fetch origin "$branch"
+          test "$(git rev-parse "origin/$branch")" = "$START_SHA"
+          git config user.name "commons-board"
+          git config user.email "commons-board@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "TITAN: certify pressure ordering across hidden rival quantity"
+          git push origin "HEAD:$branch"
