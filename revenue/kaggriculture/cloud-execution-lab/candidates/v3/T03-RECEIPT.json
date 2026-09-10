@@ -1,0 +1,71 @@
+{
+  "operation": "TITAN-V3-T03-OPENING-SCRIPT-SOLVENCY-20260910-01",
+  "author": "SOL-APERTURE",
+  "base_handoff": {
+    "slack_file_id": "F0C0JPCAAQP",
+    "sha256": "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728",
+    "bytes": 27500,
+    "text_files": 13
+  },
+  "scope": {
+    "key": "opening_script",
+    "default": false,
+    "seam": "TitanAgent._v3_post before rival-model and hire-guard; market queue only",
+    "variants": [
+      "balanced",
+      "liquid",
+      "gemini_legacy",
+      "leader_legacy"
+    ],
+    "promoted": []
+  },
+  "arithmetic": {
+    "gemini_legacy": {
+      "quoted_cost": 882,
+      "reported_cost_rejected": 502,
+      "remaining_from_1000": 118
+    },
+    "leader_legacy": {
+      "quoted_cost": 1507,
+      "reported_cost_rejected": 757,
+      "remaining_from_1000": -507
+    },
+    "balanced": {
+      "quoted_cost": 402,
+      "remaining_from_1000": 598
+    },
+    "liquid": {
+      "quoted_cost": 167,
+      "remaining_from_1000": 833
+    }
+  },
+  "checks": {
+    "unittest_total": 20,
+    "unittest_passed": 18,
+    "materialized_wiring_deferred": 2,
+    "deterministic_fuzz_applications": 20000,
+    "input_mutations": 0,
+    "uncaught_exceptions": 0,
+    "compileall": "pass",
+    "numeric_boundary": "rejects bool, NaN and infinities"
+  },
+  "changed_paths": [
+    "README.md",
+    "V3-MANIFEST.json",
+    "apply_v3.py",
+    "overlay/opening_script.py",
+    "overlay/opening_script_data.py",
+    "overlay/opening_script_quote.py",
+    "overlay/opening_script_state.py",
+    "overlay/checks/opening_script_test_support.py",
+    "overlay/checks/test_v3_opening_apply.py",
+    "overlay/checks/test_v3_opening_quote.py",
+    "overlay/checks/test_v3_opening_wiring.py"
+  ],
+  "integration_required": [
+    "apply patch to rebased candidates/v3 source",
+    "run build_v3.py to refresh FILES.json, manifest archive and overlay hashes",
+    "run all-off identity and materialized wiring tests",
+    "panel balanced and liquid separately before promotion"
+  ]
+}
