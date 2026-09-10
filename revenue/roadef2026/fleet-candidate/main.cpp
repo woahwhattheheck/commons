@@ -207,11 +207,24 @@ class Solver {
 
     bool routeFlow(int d, int t, const Route& route, Sparse& flow) {
         flow.clear();
+        std::size_t entries = 0;
         int from = demands[d].from;
+        // Segment vectors are immutable cache entries. Prefetch their total size
+        // before materializing the route so the output grows exactly once. A
+        // second lookup is a cache hit and avoids retaining references across a
+        // possible cache clear while another segment is populated.
         for (std::size_t k = 0; k <= route.size(); ++k) {
             int to = k == route.size() ? demands[d].to : route[k];
             const auto& part = segment(t, from, to);
             if (!part.empty() && part.front().first == -1) return false;
+            entries += part.size();
+            from = to;
+        }
+        flow.reserve(entries);
+        from = demands[d].from;
+        for (std::size_t k = 0; k <= route.size(); ++k) {
+            int to = k == route.size() ? demands[d].to : route[k];
+            const auto& part = segment(t, from, to);
             flow.insert(flow.end(), part.begin(), part.end());
             from = to;
         }
@@ -717,7 +730,6 @@ public:
                   << *std::max_element(loads.begin(), loads.end()) << "; elapsed " << elapsed() << "s\n";
     }
 };
-
 int main(int argc, char** argv) {
     if (argc != 5) {
         std::cerr << "Usage: " << argv[0] << " network.json traffic.json scenario.json output.json\n";
