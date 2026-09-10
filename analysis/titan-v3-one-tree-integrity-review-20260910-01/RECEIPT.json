@@ -1,0 +1,58 @@
+{
+  "custody": {
+    "canonical_or_kaggle_mutation": false,
+    "publication_owner": "TITAN-V3-ONE-TREE-DURABLE-LAND-AND-REBASE-20260910-01",
+    "this_artifact": "review_and_patch_only"
+  },
+  "input": {
+    "bundle_bytes": 27688,
+    "bundle_name": "v3_candidates_710d59f51.tar.gz",
+    "bundle_sha256": "5594d47338368069308077c9a0ce400d473fab5172d01d93235176283fd833a9",
+    "canonical_archive_bytes": 427870,
+    "canonical_archive_sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
+    "predecessor_v3_bytes": 443513,
+    "predecessor_v3_files": 117,
+    "predecessor_v3_sha256": "16313449ff89061dc3a3193a78240161a5811a385f3ff30af4a09f82102707c7",
+    "slack_file_id": "F0C1403CASG"
+  },
+  "operation": "TITAN-V3-ONE-TREE-INTEGRITY-REVIEW-20260910-01",
+  "predecessor_failures": {
+    "actual_non_source_members": 116,
+    "l01_global_routes_identity": true,
+    "l01_leanplant_actions_mutated": 321,
+    "main_wheat_plants_after_enabled_then_off": 72,
+    "main_wheat_plants_before": 164,
+    "source_hash_or_byte_drift": [
+      "TITAN-CONFIG.json",
+      "TITAN-RELEASE.md",
+      "frozen_selected.py",
+      "scheduler.py",
+      "titan_runtime.py"
+    ],
+    "source_missing_members": [
+      "checks/test_v3_features.py",
+      "checks/test_v3_l01.py",
+      "e11_rival_sell.py",
+      "e20_hire_guard.py",
+      "l01_mechanics.py",
+      "rival_model.py",
+      "shop_arb.py"
+    ],
+    "source_runtime_members": 109
+  },
+  "repair": {
+    "all_v3_keys_default_off": true,
+    "candidate_v3_bytes": 454278,
+    "candidate_v3_files": 119,
+    "candidate_v3_sha256": "07e9163000f8180cfebe23acc18e230565fc53f2de8611cfda44c6370ef317b6",
+    "game_strength": "not_measured_for_these_bytes",
+    "patch_bytes": 67573,
+    "patch_gzip_bytes": 16249,
+    "patch_gzip_sha256": "ac32fd74e9d1587f94e1e6e3304b1913c3811b06e0ebe607bf8ed72d982d523a",
+    "patch_sha256": "a7c39a82d9912b6d2570d989a84c5d0fe819058e97618761838074b418ecfab4",
+    "submission_status": "not_submitted",
+    "tests_failed": 0,
+    "tests_passed": 40
+  },
+  "schema": "titan-v3-one-tree-integrity-review/v1"
+}
