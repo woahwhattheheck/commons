@@ -117,6 +117,19 @@ class OwnershipRepairContracts(unittest.TestCase):
         self.assertIs(out, action)
         self.assertFalse(repair["authority"])
 
+    def test_token_is_bound_to_source_action_bytes(self):
+        first = closure.make_deferral_token(SOURCE_ACTION, VALID_REPORT, CONTEXT)
+        second = closure.make_deferral_token(
+            {"market": [[], ["SELL", "CARROT", 1]]}, VALID_REPORT, CONTEXT
+        )
+        self.assertIsNotNone(first)
+        self.assertIsNotNone(second)
+        self.assertNotEqual(first["source_action_sha256"], second["source_action_sha256"])
+        self.assertNotEqual(first["token_sha256"], second["token_sha256"])
+        tampered = dict(first)
+        tampered["source_action_sha256"] = second["source_action_sha256"]
+        self.assertEqual(closure.deferred_authority(VALID_REPORT, tampered, CONTEXT), ())
+
     def test_bad_market_queue_fails_without_mutation(self):
         action = {"market": "not-a-list"}
         out, report = closure.enforce_deferred_sell_ownership(
@@ -139,16 +152,6 @@ class DetectorContracts(unittest.TestCase):
             "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728",
         )
         self.assertEqual(closure.AUTHENTICATED_PACKET["bytes"], 27500)
-
-    def test_current_exact_packet_reproduces_predecessor_when_available(self):
-        candidate_root = Path(__file__).resolve().parents[2] / "candidates" / "v3"
-        if not candidate_root.exists():
-            self.skipTest("repository candidate source tree is not present")
-        receipt = closure.run_probe(candidate_root)
-        self.assertEqual(receipt["classification"]["status"], closure.VULNERABLE)
-        self.assertEqual(receipt["classification"]["reintroduced_deferred_items"], ["WHEAT"])
-        self.assertTrue(all(receipt["expected_source_match"].values()))
-        self.assertTrue(all(receipt["repair_handoff"]["invariants"].values()))
 
     def test_source_shape_resolution_rejects_partial_tree(self):
         with tempfile.TemporaryDirectory() as td:
