@@ -1,0 +1,15 @@
+{
+  "claim_boundary": "Measures Python planner/firewall overhead only. Does not measure exact-engine transition cost or game strength.",
+  "cpu_max_ms": 88.258253,
+  "cpu_mean_ms": 0.6388958262,
+  "cpu_p50_ms": 0.45402,
+  "cpu_p95_ms": 1.171259,
+  "iterations": 5000,
+  "mode": "shadow",
+  "schema": "titan.s02.guard.synthetic-overhead.v1",
+  "scope": "synthetic injected evaluator; no official engine",
+  "wall_max_ms": 88.405009,
+  "wall_mean_ms": 0.641193267,
+  "wall_p50_ms": 0.455222,
+  "wall_p95_ms": 1.175096
+}

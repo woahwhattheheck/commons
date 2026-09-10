@@ -1,0 +1,94 @@
+{
+  "canonical_mutation": false,
+  "files": [
+    {
+      "bytes": 6683,
+      "path": "AUDIT.md",
+      "sha256": "5722c39c0ecb3e4196bcd35b5b366f22746765d37b8fde3c4cf747d099b1638c"
+    },
+    {
+      "bytes": 518,
+      "path": "BENCHMARK.json",
+      "sha256": "e4de22b53c2b7be9e2fbc5a09f198a45545c6ba62ade851c5c8cf4207dd87928"
+    },
+    {
+      "bytes": 1333,
+      "path": "LANDING.md",
+      "sha256": "efdf822d9194abbb94c9743c73a2cf063373f4bd0bd9169b60181ccde049d4e8"
+    },
+    {
+      "bytes": 3077,
+      "path": "README.md",
+      "sha256": "3585940e4795737f36c3be74279a1e361e7e76979983bffebe31f21c61307595"
+    },
+    {
+      "bytes": 667,
+      "path": "S02-OBSERVED-SCHEDULE.json",
+      "sha256": "31fd9a76734a44f9db80bf41f203ce621533f21861951e52c0e290dc458292a9"
+    },
+    {
+      "bytes": 497,
+      "path": "S02-OBSERVED-VERDICT.json",
+      "sha256": "1a0c4eb6066ff516057a773c9e1a5bb4e7a0601b962530c6b43c01b9a5f0966a"
+    },
+    {
+      "bytes": 3201,
+      "path": "SLACK-HANDOFF.md",
+      "sha256": "5389b141418e07d721b6816e057395120b918c01a27e7dd0797da07c5df0295d"
+    },
+    {
+      "bytes": 1381,
+      "path": "SOURCE-PIN.json",
+      "sha256": "a59110e4c83142ad6003a7f6fe4d00f83e6aee207e5e4cf48d43e329b1e2abc3"
+    },
+    {
+      "bytes": 2492,
+      "path": "TEST-RECEIPT.json",
+      "sha256": "71af12c53983e1829cf352d58b1a75e0c55a270b8a765fe418b53570840b4842"
+    },
+    {
+      "bytes": 3674,
+      "path": "benchmark_guard.py",
+      "sha256": "3fc618d0c128141c5446e22401654f4d32294c9bacc1f5f8ac6d2e1257e769dd"
+    },
+    {
+      "bytes": 1791,
+      "path": "canonical_main.py",
+      "sha256": "985ff2017a81ec2ddced7fc3cdc03ec50e1ff03c5e3994665a294880a8277fc4"
+    },
+    {
+      "bytes": 665,
+      "path": "main.py",
+      "sha256": "08fe4e7d8d8e9148c18086a34219be7100efc9e90d3e94b29069e959f4470b5b"
+    },
+    {
+      "bytes": 33555,
+      "path": "planner_mpc.py",
+      "sha256": "43b6f9875a5516ae214035486a934a81f500a16de3a602bb3ee64b1295d5b669"
+    },
+    {
+      "bytes": 1030,
+      "path": "s02_observed_smoke.jsonl",
+      "sha256": "0817c3f29d074593c6da8c38693b35efe97cd7c492d5b1e0257d2263a91ae108"
+    },
+    {
+      "bytes": 10907,
+      "path": "test_planner_mpc.py",
+      "sha256": "9af2e77c667d81eae6f793e7582786a6ba12f406246a77aba95089e2f21183ba"
+    },
+    {
+      "bytes": 5383,
+      "path": "test_validate_panel.py",
+      "sha256": "351e3153b21a7014570d49396f1a8981537c428943697b9706def43d9bd9ac8b"
+    },
+    {
+      "bytes": 9526,
+      "path": "validate_panel.py",
+      "sha256": "3cadb2a13ea6e9fab0c5f604fca5a3f437fcb8f911c99c33796a4345422f8b53"
+    }
+  ],
+  "intended_repo_path": "revenue/kaggriculture/cloud-execution-lab/analysis/s02-admission-firewall-20260909-solpro",
+  "operation": "titan-v3-s02-admission-firewall-20260909-solpro",
+  "ownership": "additive-independent-review-only",
+  "schema": "titan.s02.guard.packet-manifest.v1"
+}

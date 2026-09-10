@@ -1,0 +1,30 @@
+{
+  "canonical_at_final_inspection": {
+    "archive_bytes": 423575,
+    "archive_runtime_files": 107,
+    "archive_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+    "current_archive_blob": "047911a9cd63cfb3bac5933f8ce2dcd6858846b7",
+    "main": "3379fd799766609691b4bb777e13f7b3cae0da00",
+    "source_manifest_sha256": "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
+  },
+  "canonical_at_prior_inspection": {
+    "archive_bytes": 423561,
+    "archive_runtime_files": 107,
+    "archive_sha256": "385022ff9d5c153b09086f261197de9ae502ca57731e00ffd9391c5a6cf39492",
+    "main": "d836267a2f6e14e11e43a4b9a986c763593ac5f4",
+    "source_manifest_sha256": "9abd5b96091816428780172c6b0b8f69cfebddcd61de65a3a438f26435da674f",
+    "superseded_by": "E07 source-boundary repair canonical rebuild"
+  },
+  "historical_s02_control": {
+    "archive_sha256": "f8f1750266b3cfaea0ebfe663f287aa9c5a2682f6fc47bc932957e1d48e63f1c",
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+  },
+  "operation": "titan-v3-s02-admission-firewall-20260909-solpro",
+  "review_target": {
+    "canonical_main_blob": "9cf49697432f9519cf1a4acc6281db5f01e3b512",
+    "merge": "db7f1a1e6581388de1170942858c50b1b525fc19",
+    "planner_blob": "aea58ca09d705db39202e1bfa1dd789cde01f929",
+    "pull_request": 11223
+  },
+  "schema": "titan.s02.guard.source-pin.v1"
+}
