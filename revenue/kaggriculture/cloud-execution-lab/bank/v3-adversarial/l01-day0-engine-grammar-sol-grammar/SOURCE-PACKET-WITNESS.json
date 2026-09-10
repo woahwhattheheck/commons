@@ -1,0 +1,42 @@
+{
+  "day0_basket": [
+    ["CARROT", 14],
+    ["MELON", 20],
+    ["MILK", 40],
+    ["STRAWBERRY", 8],
+    ["TOMATO", 12],
+    ["WHEAT", 2]
+  ],
+  "generated_orders": [
+    ["BUY_PRODUCT", "CARROT", 14],
+    ["BUY_PRODUCT", "MELON", 20],
+    ["BUY_PRODUCT", "MILK", 40],
+    ["BUY_PRODUCT", "STRAWBERRY", 8],
+    ["BUY_PRODUCT", "TOMATO", 12],
+    ["BUY_PRODUCT", "WHEAT", 2]
+  ],
+  "l01_main_tape": "7015cc00acfa4922",
+  "manifest_archive": {
+    "bytes": 438079,
+    "files": 115,
+    "path": "dist/titan-v3.tar.gz (build product, not committed)",
+    "sha256": "1d590a3dc65c51a2cd0c94fb59bf34d713e981173ac6436f8cadfab791f7ffac"
+  },
+  "manifest_base": {
+    "archive": "exports/titan-current.tar.gz",
+    "bytes": 423575,
+    "files": 108,
+    "main_sha_seen": "0d82aa7c3946f6922136c99455c3a1e8a6dd8a98",
+    "note": "includes early_capital; supersedes 3b4b083ec2647bb0e715978c2565e916da0ee94c08b234902e3a7e4d3418c320 (main ba1efc87) which the fleet baselines were run on",
+    "sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba"
+  },
+  "member_sha256": {
+    "V3-MANIFEST.json": "0c8aa0df9304f0d08e71ba8f8b48d1fe33072371b2d24ddaf8e152a6769a9b31",
+    "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+    "test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589"
+  },
+  "packet_bytes": 27500,
+  "packet_sha256": "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728",
+  "receipt_sha256": "b7d213b1e70d570f282be944373dca9afdb23446848b521a6dca6ff69c8dc985",
+  "schema": "titan.l01-day0-source-packet-witness.v1"
+}
