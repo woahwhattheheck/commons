@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
 """Default-off executable TITAN V3 carrier for rival crop-decay decontamination.
 
-The carrier pins every current executable seam, replaces the configured
-``FrozenSelected`` class only inside this candidate worker, then loads canonical
-``main.py`` unchanged.  Canonical config, source, archive and Kaggle state are
-never mutated.
+Every local and canonical module is bound to an exact filesystem origin.  Each
+execution of this carrier owns a private canonical ``main.py`` module, so
+independently loaded evaluators cannot share its mutable ``_INSTANCE`` cell.
+Canonical config, source, archive and Kaggle state are never mutated.
 """
 from __future__ import annotations
 
@@ -14,8 +14,6 @@ import importlib.util
 from pathlib import Path
 import sys
 from types import ModuleType
-
-from decay_observer import OPERATION, make_decay_safe_frozen_selected
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
@@ -31,6 +29,37 @@ EXPECTED_GIT_BLOBS = {
 
 class SourceDrift(RuntimeError):
     """The executable current seam no longer matches the reviewed source."""
+
+
+def _origin(module: ModuleType) -> Path:
+    raw = getattr(module, "__file__", None)
+    if not raw:
+        raise SourceDrift(f"module has no filesystem origin: {module!r}")
+    return Path(raw).resolve()
+
+
+def _load_private(name: str, path: Path) -> ModuleType:
+    """Execute one exact source file without publishing a reusable module cell."""
+    expected = path.resolve(strict=True)
+    spec = importlib.util.spec_from_file_location(name, expected)
+    if spec is None or spec.loader is None:
+        raise SourceDrift(f"cannot load exact source: {expected}")
+    module = importlib.util.module_from_spec(spec)
+    # Deliberately do not register this module in sys.modules.  The returned
+    # function/class graph owns it privately, including canonical main._INSTANCE.
+    spec.loader.exec_module(module)
+    if _origin(module) != expected:
+        raise SourceDrift(
+            f"loaded {name} from unexpected path: {_origin(module)} != {expected}"
+        )
+    return module
+
+
+_DECAY_OBSERVER = _load_private(
+    f"{__name__}._rival_decay_observer", HERE / "decay_observer.py"
+)
+OPERATION = _DECAY_OBSERVER.OPERATION
+make_decay_safe_frozen_selected = _DECAY_OBSERVER.make_decay_safe_frozen_selected
 
 
 def git_blob_sha1(data: bytes) -> str:
@@ -59,12 +88,12 @@ def _lab_module(name: str) -> ModuleType:
     expected = (LAB / f"{name}.py").resolve(strict=True)
     loaded = sys.modules.get(name)
     if loaded is not None:
-        origin = Path(getattr(loaded, "__file__", "")).resolve()
+        origin = _origin(loaded)
         if origin != expected:
             raise SourceDrift(f"preloaded {name} from unexpected path: {origin}")
         return loaded
     module = importlib.import_module(name)
-    origin = Path(getattr(module, "__file__", "")).resolve()
+    origin = _origin(module)
     if origin != expected:
         raise SourceDrift(f"loaded {name} from unexpected path: {origin}")
     return module
@@ -74,8 +103,11 @@ def install() -> type:
     """Install the corrected class into this process's exact executable seam."""
     verify_source()
     lab_text = str(LAB)
-    if lab_text not in sys.path:
-        sys.path.insert(0, lab_text)
+    # Ambient cwd/PYTHONPATH must not decide canonical bare imports.  Keep one
+    # exact lab entry at the front while preserving every unrelated path.
+    sys.path[:] = [entry for entry in sys.path if entry != lab_text]
+    sys.path.insert(0, lab_text)
+
     scheduler = _lab_module("scheduler")
     frozen = _lab_module("frozen_selected")
     current = frozen.FrozenSelected
@@ -99,19 +131,9 @@ def install() -> type:
 
 
 def _load_canonical_main() -> ModuleType:
+    """Return an origin-checked canonical module private to this carrier load."""
     install()
-    name = "_titan_v3_rival_decay_decontamination_main"
-    loaded = sys.modules.get(name)
-    if loaded is not None:
-        return loaded
-    path = (LAB / "main.py").resolve(strict=True)
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise SourceDrift("cannot load pinned canonical main.py")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
-    return module
+    return _load_private(f"{__name__}._canonical_main", LAB / "main.py")
 
 
 INSTALLED_CLASS = install()
