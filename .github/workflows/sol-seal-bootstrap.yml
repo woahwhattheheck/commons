@@ -1,0 +1,100 @@
+name: SOL-SEAL one-shot source materializer
+
+on:
+  push:
+    branches:
+      - "sol-seal/titan-v3-canonical-action-evidence-envelope-20260910-01"
+    paths:
+      - "p/sol-seal-bootstrap/**"
+      - ".github/workflows/sol-seal-bootstrap.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Verify exact event head
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+      - name: Decode and verify intended source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          decode() {
+            local payload="$1" target="$2" expected="$3"
+            mkdir -p "$(dirname "$target")"
+            base64 --decode "$payload" | gzip --decompress --stdout > "$target"
+            printf '%s  %s\n' "$expected" "$target" | sha256sum --check --strict -
+          }
+          decode p/sol-seal-bootstrap/01.gz.b64 \
+            .github/workflows/titan-version-evidence-seal.yml \
+            7cbd0eaada4f67239756b4fa2ed55a567b2bebe1283eb973876f73629d979f2f
+          decode p/sol-seal-bootstrap/02.gz.b64 \
+            p/sol-seal-titan-v3-canonical-action-evidence-envelope-20260910-01.md \
+            498e62cc82c12fe390cb8797a428cdfc6ecf15cf33744d198f7bf5763f9d3eb8
+          decode p/sol-seal-bootstrap/03.gz.b64 \
+            revenue/kaggriculture/cloud-version-evidence-seal/README.md \
+            364ad9e0bba623deaced78d7782953bc5ccdd4f363257368b56dac9a3e53ee79
+          decode p/sol-seal-bootstrap/04.gz.b64 \
+            revenue/kaggriculture/cloud-version-evidence-seal/bound_evaluate.py \
+            8c0d9ba1641a2885cf339f6eed98cfa57273f191d21167f70e37880d48789639
+          decode p/sol-seal-bootstrap/05.gz.b64 \
+            revenue/kaggriculture/cloud-version-evidence-seal/build_microscope_input.py \
+            f8606173bc86472347b9fabb0dbe68678fe97564bc7e08eed521f99a4b836612
+          decode p/sol-seal-bootstrap/06.gz.b64 \
+            revenue/kaggriculture/cloud-version-evidence-seal/test_bound_evaluate.py \
+            eb3bd1028cf2bec4f92a95f5faefa36b13462ae4a158c09229fb7208cc17d709
+          decode p/sol-seal-bootstrap/07.gz.b64 \
+            revenue/kaggriculture/cloud-version-evidence-seal/test_build_microscope_input.py \
+            09c70990aabc28183be91f3b8c1846dc979bc8dea3173cc284e155b111e39ec7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile and test decoded source before publication
+        working-directory: revenue/kaggriculture/cloud-version-evidence-seal
+        run: |
+          python -B -m py_compile \
+            bound_evaluate.py build_microscope_input.py \
+            test_bound_evaluate.py test_build_microscope_input.py
+          python -B -m unittest -v
+      - name: Replace transport with reviewed deliverables
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf p/sol-seal-bootstrap
+          rm -f .github/workflows/sol-seal-bootstrap.yml
+          git diff --check
+          git config user.name "sol-seal-bot"
+          git config user.email "sol-seal-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          cat > /tmp/expected-paths <<'EOF'
+          .github/workflows/sol-seal-bootstrap.yml
+          .github/workflows/titan-version-evidence-seal.yml
+          p/sol-seal-bootstrap/01.gz.b64
+          p/sol-seal-bootstrap/02.gz.b64
+          p/sol-seal-bootstrap/03.gz.b64
+          p/sol-seal-bootstrap/04.gz.b64
+          p/sol-seal-bootstrap/05.gz.b64
+          p/sol-seal-bootstrap/06.gz.b64
+          p/sol-seal-bootstrap/07.gz.b64
+          p/sol-seal-titan-v3-canonical-action-evidence-envelope-20260910-01.md
+          revenue/kaggriculture/cloud-version-evidence-seal/README.md
+          revenue/kaggriculture/cloud-version-evidence-seal/bound_evaluate.py
+          revenue/kaggriculture/cloud-version-evidence-seal/build_microscope_input.py
+          revenue/kaggriculture/cloud-version-evidence-seal/test_bound_evaluate.py
+          revenue/kaggriculture/cloud-version-evidence-seal/test_build_microscope_input.py
+          EOF
+          git diff --cached --name-only | sort > /tmp/actual-paths
+          sort -o /tmp/expected-paths /tmp/expected-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+          git commit -m "titan: add canonical version action-evidence seal"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
