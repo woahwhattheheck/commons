@@ -1,0 +1,160 @@
+{
+  "schema": "titan.committed-hire-reserve.causal-witness.v1",
+  "episode_id": 107130860,
+  "source_file_id": "F0C0KEQ5MFY",
+  "selection_observation_step": 1,
+  "opening_boundary": {
+    "v1_market": [
+      [
+        "SELL",
+        "WHEAT",
+        8
+      ],
+      [
+        "BUY_SEED",
+        "WHEAT",
+        7
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "BUY_ANIMAL",
+        "COW",
+        2
+      ],
+      [
+        "BUY_ANIMAL",
+        "SHEEP",
+        2
+      ]
+    ],
+    "v2_market": [
+      [
+        "SELL",
+        "WHEAT",
+        9
+      ],
+      [
+        "BUY_SEED",
+        "WHEAT",
+        7
+      ],
+      [
+        "BUY_SEED",
+        "MELON",
+        12
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "BUY_ANIMAL",
+        "COW",
+        2
+      ],
+      [
+        "BUY_ANIMAL",
+        "SHEEP",
+        2
+      ]
+    ],
+    "melon_seed_unit_cost": 80,
+    "v2_added_melon_seed_quantity": 12,
+    "v2_immediate_seed_capital_capture": 960,
+    "post_action_cash": {
+      "v1": 984,
+      "v2": 52
+    }
+  },
+  "represented_prefix": {
+    "melon_plant_requests_before_hire": 12,
+    "wheat_plant_requests_before_hire": 7,
+    "noncash_state_equal_observations": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "hire_boundary": {
+    "selection_observation_step": 24,
+    "market": [
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ],
+      [
+        "HIRE"
+      ]
+    ],
+    "costs": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "v1_cash_before": 42,
+    "v2_cash_before": 6,
+    "v1_completed": 4,
+    "v2_completed": 3,
+    "v1_cash_after": 35,
+    "v2_cash_after": 2
+  },
+  "downstream": {
+    "unreachable_fourth_hand_rows": 23,
+    "action_rows": [
+      26,
+      48
+    ],
+    "score_delta_v2_minus_v1": -13112
+  },
+  "truth_boundary": "observational causal candidate; no counterfactual score or promotion claim",
+  "source_gzip_sha256": "9337c7c734eff0804400f732d48c155dedb6d6f12b3afdefbc620f78fdfc686b",
+  "source_gzip_bytes": 474669,
+  "replay_alignment": {
+    "opening_pre_action_observation_record": 1,
+    "opening_post_action_record": 2,
+    "hire_pre_action_observation_record": 24,
+    "hire_post_action_record": 25,
+    "downstream_action_records": [
+      26,
+      48
+    ]
+  },
+  "terminal_rewards": {
+    "v1": 127877,
+    "v2": 114765
+  }
+}
