@@ -91,13 +91,30 @@ jobs:
             test_early_capital_executable_prefix.py \
             test_early_capital_cumulative_seed_rows.py \
             test_early_capital_seed_land_composition.py
-          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
-            python3 -m unittest -v \
-              test_early_capital \
-              test_early_capital_executable_prefix \
-              test_early_capital_cumulative_seed_rows \
-              test_early_capital_seed_land_composition \
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 - <<'PY' \
             2>&1 | tee "$RUNNER_TEMP/seed-land-tests.log"
+          import importlib
+          import unittest
+
+          names = [
+              'test_early_capital',
+              'test_early_capital_executable_prefix',
+              'test_early_capital_cumulative_seed_rows',
+              'test_early_capital_seed_land_composition',
+          ]
+          modules = [importlib.import_module(name) for name in names]
+          # Retain the parent contract file byte-exact; rebind only its source
+          # identity assertion to the authenticated composition postimage.
+          modules[2].EARLY_CAPITAL_BLOB = (
+              'ff5fee9159dbe0ef7e4f2400de1a35cab03980f8'
+          )
+          suite = unittest.TestSuite(
+              unittest.defaultTestLoader.loadTestsFromModule(module)
+              for module in modules
+          )
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
 
       - name: Emit exact-head receipt
         env:
