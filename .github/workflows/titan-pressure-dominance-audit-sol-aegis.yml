@@ -1,0 +1,44 @@
+name: TITAN pressure dominance audit (SOL-AEGIS)
+
+on:
+  push:
+    branches:
+      - sol-aegis/titan-pressure-dominance-audit-20260910-01
+    paths:
+      - analysis/titan-v3-pressure-dominance-audit-sol-aegis/**
+      - .github/workflows/titan-pressure-dominance-audit-sol-aegis.yml
+  pull_request:
+    paths:
+      - analysis/titan-v3-pressure-dominance-audit-sol-aegis/**
+      - .github/workflows/titan-pressure-dominance-audit-sol-aegis.yml
+      - revenue/kaggriculture/cloud-execution-lab/mechanics.py
+      - revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+      - revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py
+
+permissions:
+  contents: read
+
+jobs:
+  exact-engine-counterexample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact reviewed source blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/mechanics.py)" = "044a4f9c0a4a44dde10ada57563238bcaf82075d"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py)" = "3c202c7ee921da239356789e266b694635103fc4"
+          test "$(git hash-object revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py)" = "7261674962d10fc8bc6af5ff73ff9212c40f61ad"
+      - name: Run bounded-certificate and exact-engine contracts
+        working-directory: analysis/titan-v3-pressure-dominance-audit-sol-aegis
+        run: python -B -m unittest -v
+      - name: Rebuild deterministic finding receipt
+        working-directory: analysis/titan-v3-pressure-dominance-audit-sol-aegis
+        run: |
+          python -B pressure_dominance_audit.py --write /tmp/FINDING.json
+          diff -u FINDING.json /tmp/FINDING.json

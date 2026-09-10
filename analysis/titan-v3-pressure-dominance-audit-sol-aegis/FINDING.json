@@ -1,0 +1,104 @@
+{
+  "claim": "same-sized proxy zero is not a bounded demotion certificate",
+  "plateau_scan": {
+    "by_product": {
+      "CARROT": 255,
+      "EGG": 370,
+      "FERTILIZER": 121,
+      "MELON": 72,
+      "MILK": 8,
+      "STRAWBERRY": 9,
+      "TOMATO": 143,
+      "WHEAT": 410,
+      "WOOL": 38
+    },
+    "false_zero_cells": 1426,
+    "inventory_range_inclusive": [
+      9950,
+      10050
+    ],
+    "quantity_range_inclusive": [
+      1,
+      8
+    ],
+    "rival_bound": 100,
+    "worst_cell": {
+      "inventory": 9962,
+      "item": "WOOL",
+      "loss_at_bound": 460,
+      "quantity": 2
+    }
+  },
+  "schema": "titan-pressure-dominance-audit/v1",
+  "witness": {
+    "certified_candidate_cash": {
+      "own": 229,
+      "rival": 117
+    },
+    "certified_candidate_orders": [
+      [
+        "SELL",
+        "TOMATO",
+        1
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
+    "inventory": {
+      "MILK": 9999,
+      "TOMATO": 9999
+    },
+    "parent_cash": {
+      "own": 229,
+      "rival": 117
+    },
+    "parent_orders": [
+      [
+        "SELL",
+        "TOMATO",
+        1
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
+    "proxy_candidate_cash": {
+      "own": 226,
+      "rival": 120
+    },
+    "proxy_candidate_orders": [
+      [
+        "SELL",
+        "MILK",
+        1
+      ],
+      [
+        "SELL",
+        "TOMATO",
+        1
+      ]
+    ],
+    "proxy_delta": {
+      "margin": -6,
+      "own": -3
+    },
+    "proxy_scores": {
+      "MILK": 9,
+      "TOMATO": 0
+    },
+    "rival_orders": [
+      [
+        "SELL",
+        "TOMATO",
+        2
+      ],
+      []
+    ],
+    "tomato_safe_through_100": false
+  }
+}
