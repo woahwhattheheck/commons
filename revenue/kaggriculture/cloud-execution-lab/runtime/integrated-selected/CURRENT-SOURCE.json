@@ -577,8 +577,8 @@
       "source_path": "crop_release.py"
     },
     "early_capital.py": {
-      "bytes": 5947,
-      "sha256": "13dc90de8cd3abbb54a8acba066b9e56f6b50aefb34993d3544bac6e4576f4f6",
+      "bytes": 7167,
+      "sha256": "d286f1558a7ee199d761c89b124bb562633da9943a34928780f38578d1817738",
       "source_path": "early_capital.py"
     },
     "fourth_quadrant.py": {
