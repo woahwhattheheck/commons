@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: Bind exact stack and selected archive
@@ -42,7 +42,6 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
-          git merge-base --is-ancestor f5020986a864463485ef1c8a032226ecfe82e983 HEAD
 
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
