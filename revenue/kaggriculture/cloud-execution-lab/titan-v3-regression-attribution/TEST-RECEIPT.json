@@ -12,7 +12,7 @@
   "source_manifest": {
     "bytes": 1906,
     "path": "SOURCE-MANIFEST.json",
-    "sha256": "a81d800239678d1bf35bb169c54770cecce435396a091f16bf35c8aa88612b55"
+    "sha256": "7d7786ecd5931cc0a7945a178341f60d2763794a11eae80f9e435abfb3c645d7"
   },
   "test_suites": {
     "materialize_ablation_matrix": {
@@ -24,7 +24,7 @@
       "passed": 22
     }
   },
-  "tested_at_utc": "2026-09-10T19:44:51.113653+00:00",
+  "tested_at_utc": "2026-09-10T19:50:46.280369+00:00",
   "tests_failed": 0,
   "tests_passed": 38
 }
