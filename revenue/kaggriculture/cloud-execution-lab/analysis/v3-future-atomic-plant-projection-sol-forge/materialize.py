@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Materialize the current TITAN scheduler with official future PLANT semantics.
+"""Materialize TITAN's scheduler with official future PLANT packet semantics.
 
-This tool is deliberately disconnected from the canonical runtime.  It verifies the
-exact current scheduler and engine Git blobs, replaces two source-local preimages,
-and writes a candidate scheduler plus a deterministic receipt.  The source file is
-never edited in place.
+The canonical inputs are immutable.  Candidate and receipt publication is
+create-only and transactional: every byte is validated and staged first; targets
+must not exist or alias an input; completed staging files are atomically linked
+into place; exact readback is required; and any BaseException rolls back every
+published target before the error escapes.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
+import stat
+import tempfile
 from typing import Any
 
 HERE = Path(__file__).resolve().parent
@@ -20,10 +24,12 @@ LAB = HERE.parents[1]
 DEFAULT_SOURCE = LAB / "scheduler.py"
 DEFAULT_ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
 
-BASE_MAIN = "3854f1cc46340f5099ade910e2cfc7b36606425e"
+SOURCE_BASE_MAIN = "3854f1cc46340f5099ade910e2cfc7b36606425e"
+VERIFIED_MAIN = "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb"
+BASE_MAIN = SOURCE_BASE_MAIN  # Compatibility for the first handoff/tests.
 BASE_SCHEDULER_GIT_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
 OFFICIAL_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
-SCHEMA = "titan-v3-future-atomic-plant-projection-materializer-v1"
+SCHEMA = "titan-v3-future-atomic-plant-projection-materializer-v2"
 
 OLD_POST_UNITS = '''def post_units(obs, action, config, *, shed_capacity=None):
     """Exact deterministic engine unit stage on the player's observed farm."""
@@ -95,6 +101,10 @@ NEW_FUTURE_PACKET = '''            if t>now:
 '''
 
 
+class MaterializationError(RuntimeError):
+    """A source, target, publication, or readback invariant failed."""
+
+
 def git_blob(data: bytes) -> str:
     header = f"blob {len(data)}\0".encode("ascii")
     return hashlib.sha1(header + data).hexdigest()
@@ -107,8 +117,174 @@ def sha256(data: bytes) -> str:
 def replace_once(text: str, old: str, new: str, *, label: str) -> str:
     count = text.count(old)
     if count != 1:
-        raise RuntimeError(f"{label} preimage count is {count}, expected exactly 1")
+        raise MaterializationError(
+            f"{label} preimage count is {count}, expected exactly 1"
+        )
     return text.replace(old, new, 1)
+
+
+def _regular_input(path: Path, *, label: str) -> tuple[Path, bytes]:
+    """Resolve one immutable regular-file input without accepting symlink leaves."""
+    requested = Path(path)
+    try:
+        metadata = requested.lstat()
+    except OSError as exc:
+        raise MaterializationError(f"{label} cannot be inspected: {requested}: {exc}") from exc
+    if stat.S_ISLNK(metadata.st_mode):
+        raise MaterializationError(f"{label} must not be a symlink: {requested}")
+    if not stat.S_ISREG(metadata.st_mode):
+        raise MaterializationError(f"{label} is not a regular file: {requested}")
+    try:
+        resolved = requested.resolve(strict=True)
+        data = resolved.read_bytes()
+    except OSError as exc:
+        raise MaterializationError(f"{label} cannot be read: {requested}: {exc}") from exc
+    return resolved, data
+
+
+def _same_existing_file(left: Path, right: Path) -> bool:
+    try:
+        return os.path.samefile(left, right)
+    except (FileNotFoundError, OSError):
+        return False
+
+
+def _target_path(
+    path: Path,
+    *,
+    label: str,
+    immutable_inputs: tuple[Path, ...],
+) -> Path:
+    """Return a canonical create-only target and reject every known alias form."""
+    requested = Path(path)
+    if not requested.name or requested.name in (".", ".."):
+        raise MaterializationError(f"{label} has no file name: {requested}")
+    try:
+        parent = requested.parent.resolve(strict=True)
+    except OSError as exc:
+        raise MaterializationError(
+            f"{label} parent must already exist: {requested.parent}: {exc}"
+        ) from exc
+    if not parent.is_dir():
+        raise MaterializationError(f"{label} parent is not a directory: {parent}")
+    target = parent / requested.name
+
+    try:
+        metadata = target.lstat()
+    except FileNotFoundError:
+        metadata = None
+    except OSError as exc:
+        raise MaterializationError(f"{label} cannot be inspected: {target}: {exc}") from exc
+
+    if metadata is not None:
+        for source in immutable_inputs:
+            if _same_existing_file(target, source):
+                raise MaterializationError(
+                    f"{label} aliases immutable input {source}: {target}"
+                )
+        if stat.S_ISLNK(metadata.st_mode):
+            raise MaterializationError(f"{label} must not be a symlink: {target}")
+        raise MaterializationError(f"{label} already exists (create-only): {target}")
+
+    for source in immutable_inputs:
+        if target == source:
+            raise MaterializationError(
+                f"{label} aliases immutable input {source}: {target}"
+            )
+    return target
+
+
+def _assert_inputs_unchanged(
+    source: Path,
+    source_bytes: bytes,
+    engine: Path,
+    engine_bytes: bytes,
+) -> None:
+    try:
+        actual_source = source.read_bytes()
+        actual_engine = engine.read_bytes()
+    except OSError as exc:
+        raise MaterializationError(f"immutable input became unreadable: {exc}") from exc
+    if actual_source != source_bytes:
+        raise MaterializationError("canonical scheduler changed during materialization")
+    if actual_engine != engine_bytes:
+        raise MaterializationError("official engine changed during materialization")
+
+
+def _stage_bytes(target: Path, data: bytes) -> Path:
+    """Flush one complete same-directory staging inode; publish nothing."""
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="wb",
+            prefix=f".{target.name}.",
+            suffix=".tmp",
+            dir=target.parent,
+            delete=False,
+        ) as stream:
+            temporary = Path(stream.name)
+            remaining = memoryview(data)
+            while remaining:
+                written = stream.write(remaining)
+                if written is None or written <= 0:
+                    raise OSError("staging write made no progress")
+                remaining = remaining[written:]
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.chmod(temporary, 0o644)
+        if temporary.read_bytes() != data:
+            raise MaterializationError(f"staging readback mismatch: {temporary}")
+        return temporary
+    except BaseException:
+        if temporary is not None:
+            try:
+                temporary.unlink(missing_ok=True)
+            except OSError:
+                pass
+        raise
+
+
+def _fsync_directory(directory: Path) -> None:
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
+    descriptor = os.open(directory, flags)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
+def _publish_create_only(staged: Path, target: Path) -> None:
+    """Atomically expose a completed staging inode without replacing anything."""
+    try:
+        os.link(staged, target, follow_symlinks=False)
+        _fsync_directory(target.parent)
+    except FileExistsError as exc:
+        raise MaterializationError(
+            f"target appeared during create-only publication: {target}"
+        ) from exc
+    except OSError as exc:
+        raise MaterializationError(f"cannot publish {target}: {exc}") from exc
+
+
+def _unlink_our_publication(staged: Path, target: Path) -> None:
+    """Remove only a target that still aliases this invocation's staging inode."""
+    try:
+        if target.is_symlink() or not target.exists():
+            return
+        if os.path.samefile(staged, target):
+            target.unlink()
+            _fsync_directory(target.parent)
+    except (FileNotFoundError, OSError):
+        # The caller reports rollback failure separately by checking target state.
+        return
+
+
+def _cleanup_staged(paths: list[Path]) -> None:
+    for path in paths:
+        try:
+            path.unlink(missing_ok=True)
+        except OSError:
+            pass
 
 
 def materialize(
@@ -117,23 +293,43 @@ def materialize(
     output: Path,
     receipt_path: Path,
 ) -> dict[str, Any]:
-    source_bytes = source.read_bytes()
-    engine_bytes = engine.read_bytes()
-    if git_blob(source_bytes) != BASE_SCHEDULER_GIT_BLOB:
-        raise RuntimeError(
-            "scheduler source drift: "
-            f"expected {BASE_SCHEDULER_GIT_BLOB}, got {git_blob(source_bytes)}"
+    source, source_bytes = _regular_input(source, label="scheduler source")
+    engine, engine_bytes = _regular_input(engine, label="official engine")
+    if _same_existing_file(source, engine):
+        raise MaterializationError("scheduler source and official engine alias")
+
+    output = _target_path(
+        output,
+        label="candidate output",
+        immutable_inputs=(source, engine),
+    )
+    receipt_path = _target_path(
+        receipt_path,
+        label="receipt output",
+        immutable_inputs=(source, engine),
+    )
+    if output == receipt_path:
+        raise MaterializationError(
+            f"candidate output and receipt output alias: {output}"
         )
-    if git_blob(engine_bytes) != OFFICIAL_ENGINE_GIT_BLOB:
-        raise RuntimeError(
+
+    source_blob = git_blob(source_bytes)
+    engine_blob = git_blob(engine_bytes)
+    if source_blob != BASE_SCHEDULER_GIT_BLOB:
+        raise MaterializationError(
+            "scheduler source drift: "
+            f"expected {BASE_SCHEDULER_GIT_BLOB}, got {source_blob}"
+        )
+    if engine_blob != OFFICIAL_ENGINE_GIT_BLOB:
+        raise MaterializationError(
             "official engine drift: "
-            f"expected {OFFICIAL_ENGINE_GIT_BLOB}, got {git_blob(engine_bytes)}"
+            f"expected {OFFICIAL_ENGINE_GIT_BLOB}, got {engine_blob}"
         )
 
     try:
         source_text = source_bytes.decode("utf-8")
     except UnicodeDecodeError as exc:
-        raise RuntimeError("scheduler is not UTF-8") from exc
+        raise MaterializationError("scheduler is not UTF-8") from exc
 
     candidate = replace_once(
         source_text,
@@ -148,26 +344,25 @@ def materialize(
         label="future route packet",
     )
     if candidate == source_text:
-        raise RuntimeError("candidate unexpectedly equals source")
+        raise MaterializationError("candidate unexpectedly equals source")
     compile(candidate, str(output), "exec")
-
     candidate_bytes = candidate.encode("utf-8")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_bytes(candidate_bytes)
 
     receipt: dict[str, Any] = {
         "schema": SCHEMA,
-        "base_main": BASE_MAIN,
+        "base_main": SOURCE_BASE_MAIN,
+        "source_base_main": SOURCE_BASE_MAIN,
+        "verified_main": VERIFIED_MAIN,
         "source": {
             "path": str(source),
             "bytes": len(source_bytes),
-            "git_blob": git_blob(source_bytes),
+            "git_blob": source_blob,
             "sha256": sha256(source_bytes),
         },
         "official_engine": {
             "path": str(engine),
             "bytes": len(engine_bytes),
-            "git_blob": git_blob(engine_bytes),
+            "git_blob": engine_blob,
             "sha256": sha256(engine_bytes),
         },
         "candidate": {
@@ -176,25 +371,73 @@ def materialize(
             "git_blob": git_blob(candidate_bytes),
             "sha256": sha256(candidate_bytes),
         },
+        "receipt": {"path": str(receipt_path)},
+        "publication": {
+            "mode": "atomic_create_only_hardlink",
+            "targets_preexisting": False,
+            "exact_readback_required": True,
+            "rollback_on_base_exception": True,
+        },
         "replacements": {
             "shared_atomic_unit_packet": 1,
             "future_receipt_profile_callsite": 1,
         },
         "canonical_source_mutated": False,
+        "official_engine_mutated": False,
         "score_claim": False,
         "disposition": "SOURCE_REAL_ACTION_UNMEASURED",
     }
-    rendered = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
-    receipt_path.parent.mkdir(parents=True, exist_ok=True)
-    receipt_path.write_text(rendered, encoding="utf-8")
+    receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode(
+        "utf-8"
+    )
 
-    if source.read_bytes() != source_bytes:
-        raise RuntimeError("canonical scheduler changed during materialization")
+    _assert_inputs_unchanged(source, source_bytes, engine, engine_bytes)
+    staged_pairs: list[tuple[Path, Path, bytes]] = []
+    try:
+        staged_pairs.append(
+            (_stage_bytes(output, candidate_bytes), output, candidate_bytes)
+        )
+        staged_pairs.append(
+            (_stage_bytes(receipt_path, receipt_bytes), receipt_path, receipt_bytes)
+        )
+        _assert_inputs_unchanged(source, source_bytes, engine, engine_bytes)
+        for staged, target, _ in staged_pairs:
+            _publish_create_only(staged, target)
+        for _, target, expected in staged_pairs:
+            if target.is_symlink() or not target.is_file():
+                raise MaterializationError(f"published target is not regular: {target}")
+            if target.read_bytes() != expected:
+                raise MaterializationError(f"published readback mismatch: {target}")
+        _assert_inputs_unchanged(source, source_bytes, engine, engine_bytes)
+    except BaseException as exc:
+        for staged, target, _ in reversed(staged_pairs):
+            _unlink_our_publication(staged, target)
+        rollback_residue = [
+            str(target)
+            for staged, target, _ in staged_pairs
+            if target.exists() and _same_existing_file(staged, target)
+        ]
+        _cleanup_staged([staged for staged, _, _ in staged_pairs])
+        try:
+            _assert_inputs_unchanged(source, source_bytes, engine, engine_bytes)
+        except BaseException as integrity_exc:
+            raise MaterializationError(
+                f"publication failed and immutable input integrity was lost: {integrity_exc}"
+            ) from exc
+        if rollback_residue:
+            raise MaterializationError(
+                "publication failed and rollback left invocation-owned targets: "
+                + ", ".join(rollback_residue)
+            ) from exc
+        raise
+    finally:
+        _cleanup_staged([staged for staged, _, _ in staged_pairs])
+
     return receipt
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--engine", type=Path, default=DEFAULT_ENGINE)
     parser.add_argument("--output", type=Path, required=True)
