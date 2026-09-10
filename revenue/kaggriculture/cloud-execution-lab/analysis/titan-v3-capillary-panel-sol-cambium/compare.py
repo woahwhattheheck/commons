@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Classify the exact control-vs-Capillary full-game panel."""
+"""Fail-closed classifier for the exact control-vs-Capillary game panel."""
 from __future__ import annotations
 
 import argparse
@@ -24,7 +24,7 @@ OPERATION = "titan-v3-capillary-action-bound-panel-20260910-sol-cambium-01"
 
 
 class CompareError(ValueError):
-    """The panel is incomplete, incomparable, or source-unbound."""
+    """Panel evidence is incomplete, incomparable, or source-unbound."""
 
 
 def strict_json(path: Path) -> dict[str, Any]:
@@ -67,9 +67,15 @@ def digest(value: Any, label: str, length: int = 64) -> str:
     return value
 
 
-def exact_int(value: Any, expected: int, label: str) -> None:
-    if type(value) is not int or value != expected:
-        raise CompareError(f"{label}: expected {expected}, got {value!r}")
+def exact(value: Any, expected: Any, label: str) -> None:
+    if type(value) is not type(expected) or value != expected:
+        raise CompareError(f"{label}: expected {expected!r}, got {value!r}")
+
+
+def mean(values: list[float]) -> float:
+    if not values:
+        raise CompareError("cannot summarize an empty value set")
+    return float(statistics.mean(values))
 
 
 def atomic_text(path: Path, text: str) -> None:
@@ -89,42 +95,33 @@ def atomic_text(path: Path, text: str) -> None:
         raise
 
 
-def mean(values: list[float]) -> float:
-    if not values:
-        raise CompareError("cannot summarize an empty value set")
-    return float(statistics.mean(values))
-
-
 def validate_evaluator(receipt: Mapping[str, Any], audit: Mapping[str, Any]) -> str:
     if receipt.get("schema_version") != 1 or receipt.get("operation") != OPERATION:
         raise CompareError("evaluator receipt identity drift")
-    source = receipt.get("source")
-    patched = receipt.get("patched")
-    expected = audit.get("evaluator_source")
+    source, patched, expected = (
+        receipt.get("source"), receipt.get("patched"), audit.get("evaluator_source")
+    )
     if not all(isinstance(row, Mapping) for row in (source, patched, expected)):
         raise CompareError("evaluator receipt or audit is incomplete")
-    if any(
-        source.get(key) != expected.get(key)
-        for key in ("git_blob_sha1", "sha256", "bytes")
-    ):
+    if any(source.get(key) != expected.get(key) for key in ("git_blob_sha1", "sha256", "bytes")):
         raise CompareError("patched evaluator is not bound to audited source")
     patches = patched.get("patches")
     if not isinstance(patches, list) or len(patches) != 3:
         raise CompareError("candidate-action patch cardinality drift")
-    for index, row in enumerate(patches):
-        if (
-            not isinstance(row, Mapping)
-            or row.get("old_occurrences_before") != 1
-            or row.get("old_occurrences_after") != 0
-            or row.get("new_occurrences_after") != 1
-        ):
-            raise CompareError(f"candidate-action patch {index} cardinality drift")
-    if (
-        patched.get("capture_phase")
-        != "after both returned actions, before interpreter"
-        or patched.get("candidate_action_field") != "candidate_action_sha256"
-        or patched.get("candidate_action_count_field") != "candidate_action_count"
+    if any(
+        not isinstance(row, Mapping)
+        or row.get("old_occurrences_before") != 1
+        or row.get("old_occurrences_after") != 0
+        or row.get("new_occurrences_after") != 1
+        for row in patches
     ):
+        raise CompareError("candidate-action patch cardinality drift")
+    expected_semantics = {
+        "capture_phase": "after both returned actions, before interpreter",
+        "candidate_action_field": "candidate_action_sha256",
+        "candidate_action_count_field": "candidate_action_count",
+    }
+    if any(patched.get(key) != value for key, value in expected_semantics.items()):
         raise CompareError("candidate-action capture semantics drift")
     return digest(patched.get("sha256"), "patched evaluator sha256")
 
@@ -133,64 +130,52 @@ def expected_opponents(audit: Mapping[str, Any]) -> dict[str, dict[str, str]]:
     rows = audit.get("opponents")
     if not isinstance(rows, Mapping) or set(rows) != set(EXPECTED_OPPONENTS):
         raise CompareError("source audit opponent bank drift")
-    out = {}
+    result = {}
     for name in EXPECTED_OPPONENTS:
         row = rows[name]
         if not isinstance(row, Mapping):
             raise CompareError(f"source audit opponent {name} invalid")
-        out[name] = {
+        result[name] = {
             "entry": "arlene.py" if name == "arlene" else "candidate.py",
             "callable": "agent",
             "sha256": digest(row.get("sha256"), f"opponent {name} sha256"),
         }
-    return out
+    return result
 
 
 def validate_report(
-    report: Mapping[str, Any],
-    *,
-    label: str,
-    entry_sha256: str,
-    evaluator_sha256: str,
-    audit: Mapping[str, Any],
+    report: Mapping[str, Any], *, label: str, entry_sha: str,
+    evaluator_sha: str, audit: Mapping[str, Any],
 ) -> dict[tuple[str, int, int], Mapping[str, Any]]:
-    if report.get("schema_version") != 1:
-        raise CompareError(f"{label} report schema drift")
-    if report.get("engine_ref") != EXPECTED_ENGINE_REF:
-        raise CompareError(f"{label} engine ref drift")
-    if report.get("seeds") != list(EXPECTED_SEEDS):
-        raise CompareError(f"{label} seed bank drift")
-    exact_int(report.get("agent_rng_seed"), EXPECTED_AGENT_RNG_SEED, f"{label} RNG seed")
-    if report.get("evaluator_sha256") != evaluator_sha256:
-        raise CompareError(f"{label} evaluator identity drift")
+    exact(report.get("schema_version"), 1, f"{label} schema")
+    exact(report.get("engine_ref"), EXPECTED_ENGINE_REF, f"{label} engine ref")
+    exact(report.get("seeds"), list(EXPECTED_SEEDS), f"{label} seeds")
+    exact(report.get("agent_rng_seed"), EXPECTED_AGENT_RNG_SEED, f"{label} RNG seed")
+    exact(report.get("evaluator_sha256"), evaluator_sha, f"{label} evaluator sha256")
 
     loader = audit.get("loader")
-    if not isinstance(loader, Mapping) or report.get("loader_sha256") != loader.get("sha256"):
-        raise CompareError(f"{label} loader identity drift")
+    if not isinstance(loader, Mapping):
+        raise CompareError("source audit loader missing")
+    exact(report.get("loader_sha256"), loader.get("sha256"), f"{label} loader sha256")
     engine = audit.get("engine")
-    actual_engine = report.get("engine_sha256")
-    if not isinstance(engine, Mapping) or not isinstance(actual_engine, Mapping):
-        raise CompareError(f"{label} engine receipt missing")
+    if not isinstance(engine, Mapping):
+        raise CompareError("source audit engine missing")
     expected_engine = {
         name: row.get("sha256") if isinstance(row, Mapping) else None
         for name, row in engine.items()
     }
-    if actual_engine != expected_engine:
-        raise CompareError(f"{label} engine source identity drift")
+    exact(report.get("engine_sha256"), expected_engine, f"{label} engine hashes")
 
     entry = report.get("candidate")
-    if (
-        not isinstance(entry, Mapping)
-        or entry.get("callable") != "agent"
-        or entry.get("sha256") != entry_sha256
-    ):
-        raise CompareError(f"{label} candidate entry identity drift")
-    if report.get("opponents") != expected_opponents(audit):
-        raise CompareError(f"{label} opponent fingerprints drift")
+    if not isinstance(entry, Mapping):
+        raise CompareError(f"{label} candidate entry missing")
+    exact(entry.get("callable"), "agent", f"{label} callable")
+    exact(entry.get("sha256"), entry_sha, f"{label} candidate sha256")
+    exact(report.get("opponents"), expected_opponents(audit), f"{label} opponents")
 
     limits = report.get("limits")
     if not isinstance(limits, Mapping):
-        raise CompareError(f"{label} timeout contract missing")
+        raise CompareError(f"{label} limits missing")
     if (
         finite(limits.get("action_rpc_seconds"), f"{label} action timeout") != 1.0
         or finite(limits.get("startup_seconds"), f"{label} startup timeout") != 15.0
@@ -200,15 +185,16 @@ def validate_report(
         raise CompareError(f"{label} timeout contract drift")
 
     progress = report.get("progress")
+    if not isinstance(progress, Mapping):
+        raise CompareError(f"{label} progress missing")
     if (
-        not isinstance(progress, Mapping)
-        or progress.get("state") != "complete"
+        progress.get("state") != "complete"
         or progress.get("phase") != "finalize"
         or progress.get("active_game") is not None
     ):
         raise CompareError(f"{label} report did not finish finalization")
-    exact_int(progress.get("planned_games"), EXPECTED_GAMES_PER_ARM, f"{label} planned games")
-    exact_int(progress.get("recorded_games"), EXPECTED_GAMES_PER_ARM, f"{label} recorded games")
+    exact(progress.get("planned_games"), EXPECTED_GAMES_PER_ARM, f"{label} planned games")
+    exact(progress.get("recorded_games"), EXPECTED_GAMES_PER_ARM, f"{label} recorded games")
 
     games = report.get("games")
     if not isinstance(games, list) or len(games) != EXPECTED_GAMES_PER_ARM:
@@ -217,47 +203,34 @@ def validate_report(
     for index, game in enumerate(games):
         if not isinstance(game, Mapping):
             raise CompareError(f"{label} game {index} is not an object")
-        opponent = game.get("opponent")
-        seed = game.get("seed")
-        seat = game.get("candidate_seat")
-        if (
-            opponent not in EXPECTED_OPPONENTS
-            or type(seed) is not int
-            or seed not in EXPECTED_SEEDS
-            or type(seat) is not int
-            or seat not in (0, 1)
-        ):
+        key = (game.get("opponent"), game.get("seed"), game.get("candidate_seat"))
+        if key[0] not in EXPECTED_OPPONENTS or key[1] not in EXPECTED_SEEDS or key[2] not in (0, 1):
             raise CompareError(f"{label} game {index} key drift")
-        key = (opponent, seed, seat)
-        if key in indexed:
-            raise CompareError(f"{label} duplicate cell {key}")
+        if type(key[1]) is not int or type(key[2]) is not int or key in indexed:
+            raise CompareError(f"{label} duplicate or ill-typed cell {key}")
         if game.get("status") != "complete" or game.get("failure") is not None:
             raise CompareError(f"{label} incomplete cell {key}: {game.get('failure')!r}")
-        exact_int(game.get("steps"), EXPECTED_STEPS, f"{label} {key} steps")
-        exact_int(game.get("episode_steps"), EXPECTED_EPISODE_STEPS, f"{label} {key} episode steps")
-        exact_int(game.get("candidate_action_count"), EXPECTED_STEPS, f"{label} {key} action count")
+        exact(game.get("steps"), EXPECTED_STEPS, f"{label} {key} steps")
+        exact(game.get("episode_steps"), EXPECTED_EPISODE_STEPS, f"{label} {key} episode steps")
+        exact(game.get("candidate_action_count"), EXPECTED_STEPS, f"{label} {key} action count")
         digest(game.get("candidate_action_sha256"), f"{label} {key} action digest")
         digest(game.get("trace_sha256"), f"{label} {key} trace digest")
         if "finalization_errors" in game:
             raise CompareError(f"{label} cell {key} has finalization errors")
 
-        scores = game.get("scores")
-        bank = game.get("bank_snapshot")
+        scores, bank = game.get("scores"), game.get("bank_snapshot")
         if not isinstance(scores, list) or len(scores) != 2 or not isinstance(bank, list) or len(bank) != 2:
             raise CompareError(f"{label} cell {key} lacks terminal cash evidence")
-        for player in (0, 1):
-            score = finite(scores[player], f"{label} {key} score {player}")
-            balance = finite(bank[player], f"{label} {key} bank {player}")
-            if score != balance:
-                raise CompareError(f"{label} cell {key} score/bank mismatch at seat {player}")
-
+        for seat in (0, 1):
+            if finite(scores[seat], f"{label} {key} score {seat}") != finite(bank[seat], f"{label} {key} bank {seat}"):
+                raise CompareError(f"{label} cell {key} score/bank mismatch at seat {seat}")
         actors = game.get("actors")
         if not isinstance(actors, list) or len(actors) != 2:
             raise CompareError(f"{label} cell {key} actor receipt drift")
-        for player, actor in enumerate(actors):
+        for seat, actor in enumerate(actors):
             if not isinstance(actor, Mapping):
-                raise CompareError(f"{label} cell {key} actor {player} invalid")
-            exact_int(actor.get("calls"), EXPECTED_STEPS, f"{label} {key} actor {player} calls")
+                raise CompareError(f"{label} cell {key} actor {seat} invalid")
+            exact(actor.get("calls"), EXPECTED_STEPS, f"{label} {key} actor {seat} calls")
         indexed[key] = game
 
     expected_keys = {
@@ -272,119 +245,153 @@ def validate_report(
 
 
 def classify(
-    control: Mapping[str, Any],
-    candidate: Mapping[str, Any],
-    audit: Mapping[str, Any],
-    evaluator_receipt: Mapping[str, Any],
+    control: Mapping[str, Any], candidate: Mapping[str, Any],
+    audit: Mapping[str, Any], evaluator_receipt: Mapping[str, Any],
 ) -> dict[str, Any]:
-    if audit.get("schema_version") != 1 or audit.get("operation") != OPERATION:
-        raise CompareError("source audit operation drift")
+    exact(audit.get("schema_version"), 1, "source audit schema")
+    exact(audit.get("operation"), OPERATION, "source audit operation")
     evaluator_sha = validate_evaluator(evaluator_receipt, audit)
-    control_id = audit.get("control")
-    candidate_id = audit.get("candidate")
+    control_id, candidate_id = audit.get("control"), audit.get("candidate")
     if not isinstance(control_id, Mapping) or not isinstance(candidate_id, Mapping):
         raise CompareError("source audit arm identities missing")
     control_sha = digest(control_id.get("sha256"), "control carrier sha256")
     candidate_sha = digest(candidate_id.get("sha256"), "candidate carrier sha256")
     if control_sha == candidate_sha:
         raise CompareError("control and candidate entry identities alias")
-
     before = validate_report(
-        control, label="control", entry_sha256=control_sha,
-        evaluator_sha256=evaluator_sha, audit=audit,
+        control, label="control", entry_sha=control_sha,
+        evaluator_sha=evaluator_sha, audit=audit,
     )
     after = validate_report(
-        candidate, label="candidate", entry_sha256=candidate_sha,
-        evaluator_sha256=evaluator_sha, audit=audit,
+        candidate, label="candidate", entry_sha=candidate_sha,
+        evaluator_sha=evaluator_sha, audit=audit,
     )
 
     cells = []
-    strata: dict[tuple[str, int], list[float]] = defaultdict(list)
+    strata: dict[tuple[str, int], dict[str, list[float]]] = defaultdict(
+        lambda: {"own": [], "margin": []}
+    )
     for key in sorted(before):
         opponent, seed, seat = key
         left, right = before[key], after[key]
-        own_left = finite(left["scores"][seat], f"control own {key}")
-        own_right = finite(right["scores"][seat], f"candidate own {key}")
-        rival_left = finite(left["scores"][1-seat], f"control rival {key}")
-        rival_right = finite(right["scores"][1-seat], f"candidate rival {key}")
-        own_delta = own_right - own_left
-        rival_delta = rival_right - rival_left
-        margin_delta = (own_right - rival_right) - (own_left - rival_left)
-        changed = left["candidate_action_sha256"] != right["candidate_action_sha256"]
-        strata[(opponent, seat)].append(own_delta)
+        left_scores = [finite(value, f"control score {key}") for value in left["scores"]]
+        right_scores = [finite(value, f"candidate score {key}") for value in right["scores"]]
+        own_delta = right_scores[seat] - left_scores[seat]
+        rival_delta = right_scores[1-seat] - left_scores[1-seat]
+        margin_delta = own_delta - rival_delta
+        action_changed = left["candidate_action_sha256"] != right["candidate_action_sha256"]
+        trace_changed = left["trace_sha256"] != right["trace_sha256"]
+        scores_changed = own_delta != 0 or rival_delta != 0
+        if action_changed and not trace_changed:
+            raise CompareError(
+                f"candidate-action/trace identity mismatch at cell {key}: "
+                "action changed but complete trace did not"
+            )
+        if not action_changed and (trace_changed or scores_changed):
+            raise CompareError(
+                f"action-identical causal divergence at cell {key}: "
+                f"trace_changed={trace_changed}, own_cash_delta={own_delta}, "
+                f"opponent_cash_delta={rival_delta}"
+            )
+
+        strata[(opponent, seat)]["own"].append(own_delta)
+        strata[(opponent, seat)]["margin"].append(margin_delta)
         cells.append({
-            "opponent": opponent,
-            "seed": seed,
-            "candidate_seat": seat,
-            "action_changed": changed,
+            "opponent": opponent, "seed": seed, "candidate_seat": seat,
+            "action_changed": action_changed, "trace_changed": trace_changed,
+            "score_changed": scores_changed, "causal_binding_valid": True,
             "control_candidate_action_sha256": left["candidate_action_sha256"],
             "candidate_candidate_action_sha256": right["candidate_action_sha256"],
-            "control_own_cash": own_left,
-            "candidate_own_cash": own_right,
-            "own_cash_delta": own_delta,
-            "control_opponent_cash": rival_left,
-            "candidate_opponent_cash": rival_right,
+            "control_trace_sha256": left["trace_sha256"],
+            "candidate_trace_sha256": right["trace_sha256"],
+            "control_own_cash": left_scores[seat],
+            "candidate_own_cash": right_scores[seat], "own_cash_delta": own_delta,
+            "control_opponent_cash": left_scores[1-seat],
+            "candidate_opponent_cash": right_scores[1-seat],
             "opponent_cash_delta": rival_delta,
-            "control_margin": own_left - rival_left,
-            "candidate_margin": own_right - rival_right,
+            "control_margin": left_scores[seat] - left_scores[1-seat],
+            "candidate_margin": right_scores[seat] - right_scores[1-seat],
             "margin_delta": margin_delta,
         })
 
     own = [row["own_cash_delta"] for row in cells]
     rival = [row["opponent_cash_delta"] for row in cells]
-    margin = [row["margin_delta"] for row in cells]
-    activation = sum(row["action_changed"] for row in cells)
+    margins = [row["margin_delta"] for row in cells]
     stratum_rows = []
     for (opponent, seat), values in sorted(strata.items()):
+        own_values, margin_values = values["own"], values["margin"]
         stratum_rows.append({
-            "opponent": opponent,
-            "candidate_seat": seat,
-            "cells": len(values),
-            "mean_own_cash_delta": mean(values),
-            "median_own_cash_delta": float(statistics.median(values)),
-            "min_own_cash_delta": min(values),
-            "max_own_cash_delta": max(values),
-            "positive_cells": sum(value > 0 for value in values),
-            "zero_cells": sum(value == 0 for value in values),
-            "negative_cells": sum(value < 0 for value in values),
+            "opponent": opponent, "candidate_seat": seat, "cells": len(own_values),
+            "mean_own_cash_delta": mean(own_values),
+            "median_own_cash_delta": float(statistics.median(own_values)),
+            "min_own_cash_delta": min(own_values), "max_own_cash_delta": max(own_values),
+            "positive_own_cash_cells": sum(value > 0 for value in own_values),
+            "zero_own_cash_cells": sum(value == 0 for value in own_values),
+            "negative_own_cash_cells": sum(value < 0 for value in own_values),
+            "mean_margin_delta": mean(margin_values),
+            "median_margin_delta": float(statistics.median(margin_values)),
+            "min_margin_delta": min(margin_values), "max_margin_delta": max(margin_values),
+            "positive_margin_cells": sum(value > 0 for value in margin_values),
+            "zero_margin_cells": sum(value == 0 for value in margin_values),
+            "negative_margin_cells": sum(value < 0 for value in margin_values),
         })
 
+    activation = sum(row["action_changed"] for row in cells)
     metrics = {
-        "paired_cells": len(cells),
-        "official_games": len(cells) * 2,
+        "paired_cells": len(cells), "official_games": 2 * len(cells),
         "action_changed_cells": activation,
         "action_unchanged_cells": len(cells) - activation,
+        "trace_changed_cells": sum(row["trace_changed"] for row in cells),
+        "score_changed_cells": sum(row["score_changed"] for row in cells),
+        "score_changed_action_bound_cells": sum(
+            row["score_changed"] and row["action_changed"] for row in cells
+        ),
+        "action_unchanged_exact_identity_cells": sum(
+            not row["action_changed"] and not row["trace_changed"] and not row["score_changed"]
+            for row in cells
+        ),
         "mean_own_cash_delta": mean(own),
         "median_own_cash_delta": float(statistics.median(own)),
-        "min_own_cash_delta": min(own),
-        "max_own_cash_delta": max(own),
+        "min_own_cash_delta": min(own), "max_own_cash_delta": max(own),
         "mean_opponent_cash_delta": mean(rival),
-        "mean_margin_delta": mean(margin),
+        "mean_margin_delta": mean(margins),
+        "median_margin_delta": float(statistics.median(margins)),
+        "min_margin_delta": min(margins), "max_margin_delta": max(margins),
         "positive_own_cash_cells": sum(value > 0 for value in own),
         "zero_own_cash_cells": sum(value == 0 for value in own),
         "negative_own_cash_cells": sum(value < 0 for value in own),
+        "positive_margin_cells": sum(value > 0 for value in margins),
+        "zero_margin_cells": sum(value == 0 for value in margins),
+        "negative_margin_cells": sum(value < 0 for value in margins),
     }
     criteria = {
         "candidate_actions_changed": activation > 0,
         "global_mean_own_cash_positive": metrics["mean_own_cash_delta"] > 0,
         "global_median_own_cash_nonnegative": metrics["median_own_cash_delta"] >= 0,
-        "all_opponent_seat_strata_nonnegative": all(
+        "all_opponent_seat_own_cash_strata_nonnegative": all(
             row["mean_own_cash_delta"] >= 0 for row in stratum_rows
         ),
+        "global_mean_margin_nonnegative": metrics["mean_margin_delta"] >= 0,
+        "all_opponent_seat_margin_strata_nonnegative": all(
+            row["mean_margin_delta"] >= 0 for row in stratum_rows
+        ),
     }
-    advance = all(criteria.values())
     canonical = lambda value: json.dumps(
         value, sort_keys=True, separators=(",", ":"), allow_nan=False
     ).encode()
+    advance = all(criteria.values())
     return {
-        "schema_version": 1,
-        "operation": OPERATION,
-        "verdict": "advance" if advance else "reject",
-        "advance": advance,
+        "schema_version": 1, "operation": OPERATION,
+        "verdict": "advance" if advance else "reject", "advance": advance,
         "criteria": criteria,
-        "metrics": metrics,
-        "strata": stratum_rows,
-        "cells": cells,
+        "causal_binding": {
+            "valid": True,
+            "rule": (
+                "candidate action identity implies complete-trace and both-seat "
+                "terminal-score identity; changed candidate actions imply a changed trace"
+            ),
+        },
+        "metrics": metrics, "strata": stratum_rows, "cells": cells,
         "identity": {
             "git_head": audit.get("git_head"),
             "archive_sha256": audit.get("archive", {}).get("sha256"),
@@ -400,42 +407,37 @@ def classify(
 def markdown(report: Mapping[str, Any]) -> str:
     metrics = report["metrics"]
     lines = [
-        "# TITAN V3 Capillary action-bound panel",
-        "",
-        f"**Verdict: {str(report['verdict']).upper()}**",
-        "",
-        "| Criterion | Pass |",
-        "|---|---:|",
+        "# TITAN V3 Capillary action-bound panel", "",
+        f"**Verdict: {str(report['verdict']).upper()}**", "",
+        "Causal binding: **VALID**", "", "| Criterion | Pass |", "|---|---:|",
     ]
     lines.extend(
         f"| `{key}` | {'YES' if value else 'NO'} |"
         for key, value in report["criteria"].items()
     )
     lines += [
-        "",
-        "| Global metric | Value |",
-        "|---|---:|",
+        "", "| Global metric | Value |", "|---|---:|",
         f"| Paired cells / official games | {metrics['paired_cells']} / {metrics['official_games']} |",
-        f"| Action-changed cells | {metrics['action_changed_cells']} |",
+        f"| Action / trace changed cells | {metrics['action_changed_cells']} / {metrics['trace_changed_cells']} |",
+        f"| Score-changed / action-bound score cells | {metrics['score_changed_cells']} / {metrics['score_changed_action_bound_cells']} |",
+        f"| Action-unchanged exact-identity cells | {metrics['action_unchanged_exact_identity_cells']} |",
         f"| Mean / median own-cash delta | {metrics['mean_own_cash_delta']:+.6f} / {metrics['median_own_cash_delta']:+.6f} |",
-        f"| Min / max own-cash delta | {metrics['min_own_cash_delta']:+.6f} / {metrics['max_own_cash_delta']:+.6f} |",
-        f"| Mean opponent-cash / margin delta | {metrics['mean_opponent_cash_delta']:+.6f} / {metrics['mean_margin_delta']:+.6f} |",
-        f"| Positive / zero / negative own cells | {metrics['positive_own_cash_cells']} / {metrics['zero_own_cash_cells']} / {metrics['negative_own_cash_cells']} |",
-        "",
-        "| Opponent | Seat | Mean own Δ | Median | Min | Max | + / 0 / - |",
-        "|---|---:|---:|---:|---:|---:|---:|",
+        f"| Mean / median margin delta | {metrics['mean_margin_delta']:+.6f} / {metrics['median_margin_delta']:+.6f} |",
+        f"| Own + / 0 / - cells | {metrics['positive_own_cash_cells']} / {metrics['zero_own_cash_cells']} / {metrics['negative_own_cash_cells']} |",
+        f"| Margin + / 0 / - cells | {metrics['positive_margin_cells']} / {metrics['zero_margin_cells']} / {metrics['negative_margin_cells']} |",
+        "", "| Opponent | Seat | Mean own Δ | Mean margin Δ | Own +/0/- | Margin +/0/- |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
     for row in report["strata"]:
         lines.append(
             f"| {row['opponent']} | {row['candidate_seat']} | "
-            f"{row['mean_own_cash_delta']:+.6f} | {row['median_own_cash_delta']:+.6f} | "
-            f"{row['min_own_cash_delta']:+.6f} | {row['max_own_cash_delta']:+.6f} | "
-            f"{row['positive_cells']} / {row['zero_cells']} / {row['negative_cells']} |"
+            f"{row['mean_own_cash_delta']:+.6f} | {row['mean_margin_delta']:+.6f} | "
+            f"{row['positive_own_cash_cells']} / {row['zero_own_cash_cells']} / {row['negative_own_cash_cells']} | "
+            f"{row['positive_margin_cells']} / {row['zero_margin_cells']} / {row['negative_margin_cells']} |"
         )
     lines += ["", "## Exact identities", ""]
     lines.extend(f"- `{key}`: `{value}`" for key, value in report["identity"].items())
-    lines.append("")
-    return "\n".join(lines)
+    return "\n".join(lines) + "\n"
 
 
 def main() -> int:
