@@ -85,12 +85,15 @@ jobs:
           from pathlib import Path
           root = Path('/tmp/titan-town-consumption-evidence')
           receipt = json.loads((root / 'RECEIPT.json').read_text())
-          assert receipt['schema'] == 'titan-v3-funding-town-consumption/v1'
+          assert receipt['schema'] == 'titan-v3-funding-town-consumption/v2'
           assert receipt['complete'] is True
           assert receipt['source_blob_sha1'] == 'fc7baf5c179818a55037f6a61d92984d81d1a21c'
           assert receipt['engine_blob_sha1'] == '3c202c7ee921da239356789e266b694635103fc4'
-          assert receipt['helper_count'] == 1
-          assert receipt['call_count'] == 1
+          assert receipt['town_helper_count'] == 1
+          assert receipt['town_call_count'] == 1
+          assert receipt['lifecycle_guard_count'] == 1
+          assert receipt['lifecycle_call_count'] == 1
+          assert receipt['shop_lifecycle_policy'] == 'same-day exact; cross-day fail-closed'
           assert receipt['canonical_runtime_modified'] is False
           assert receipt['hosted_strength_claim'] is False
           assert receipt['release_selection_claim'] is False
