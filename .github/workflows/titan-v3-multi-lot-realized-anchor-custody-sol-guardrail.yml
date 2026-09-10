@@ -1,0 +1,62 @@
+name: titan-v3-multi-lot-realized-anchor-custody-sol-guardrail
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - sol-guardrail/titan-v3-multi-lot-realized-anchor-custody-20260910-01
+    paths:
+      - .github/workflows/titan-v3-multi-lot-realized-anchor-custody-sol-guardrail.yml
+      - revenue/kaggriculture/cloud-execution-lab/analysis/multi-lot-realized-anchor-custody-sol-guardrail/**
+      - revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/multi_lot_portfolio.py
+  pull_request:
+    paths:
+      - .github/workflows/titan-v3-multi-lot-realized-anchor-custody-sol-guardrail.yml
+      - revenue/kaggriculture/cloud-execution-lab/analysis/multi-lot-realized-anchor-custody-sol-guardrail/**
+      - revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/multi_lot_portfolio.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-multi-lot-realized-anchor-custody-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-structural-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run exact-source predecessor killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/multi-lot-realized-anchor-custody-sol-guardrail
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_realized_anchor_custody.py
+          python audit.py --output "$RUNNER_TEMP/AUDIT-1.json"
+          python audit.py --output "$RUNNER_TEMP/AUDIT-2.json"
+          cmp "$RUNNER_TEMP/AUDIT-1.json" "$RUNNER_TEMP/AUDIT-2.json"
+          python -m py_compile realized_anchor_custody.py audit.py test_realized_anchor_custody.py
+
+      - name: Prove repository nonmutation
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git status --porcelain=v1 | tee "$RUNNER_TEMP/GIT-STATUS.txt"
+          test ! -s "$RUNNER_TEMP/GIT-STATUS.txt"
+          git rev-parse HEAD > "$RUNNER_TEMP/GIT-HEAD.txt"
+
+      - name: Retain deterministic structural receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-multi-lot-realized-anchor-custody-${{ github.run_id }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            ${{ runner.temp }}/AUDIT-1.json
+            ${{ runner.temp }}/AUDIT-2.json
+            ${{ runner.temp }}/GIT-HEAD.txt
+            ${{ runner.temp }}/GIT-STATUS.txt
