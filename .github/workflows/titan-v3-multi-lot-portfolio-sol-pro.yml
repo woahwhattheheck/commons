@@ -43,16 +43,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Exact-source, portfolio, and deterministic-build contracts
+      - name: Exact-source, loader, portfolio, and deterministic-build contracts
         shell: bash
         run: |
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro
           PYTHONDONTWRITEBYTECODE=1 python -m unittest -v \
-            test_multi_lot_portfolio.py test_candidate_patch.py test_build_candidate.py
+            test_multi_lot_portfolio.py test_candidate_patch.py \
+            test_candidate_loader.py test_build_candidate.py
           python -m py_compile \
             multi_lot_portfolio.py candidate_patch.py candidate.py build_candidate.py run_panel.py \
-            test_multi_lot_portfolio.py test_candidate_patch.py test_build_candidate.py
+            test_multi_lot_portfolio.py test_candidate_patch.py test_candidate_loader.py \
+            test_build_candidate.py
 
       - name: Confirm candidate tooling leaves tracked canonical tree untouched
         shell: bash
@@ -75,9 +77,13 @@ jobs:
           python - <<'PY'
           import importlib.util
           from pathlib import Path
+          import sys
           path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/multi-lot-portfolio-sol-pro/candidate.py').resolve()
-          spec = importlib.util.spec_from_file_location('multi_lot_candidate_smoke', path)
+          name = 'multi_lot_candidate_smoke'
+          spec = importlib.util.spec_from_file_location(name, path)
+          assert spec is not None and spec.loader is not None
           module = importlib.util.module_from_spec(spec)
+          sys.modules[name] = module
           spec.loader.exec_module(module)
           assert callable(module.agent)
           assert callable(module.SellScheduler)
