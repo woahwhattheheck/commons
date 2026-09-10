@@ -2,19 +2,20 @@
 """Stable market-prefix transport repair for TITAN V3.
 
 The pinned Kaggriculture interpreter slices the raw market queue to
-``maxMarketOrdersPerTurn`` before parsing each row.  An exact ``[]`` inside that
-prefix therefore consumes a transport slot even though it is a no-op.  This
+``maxMarketOrdersPerTurn`` before parsing each row. An exact ``[]`` inside that
+prefix therefore consumes a transport slot even though it is a no-op. This
 module moves only exact blank rows, preserves every non-blank value and relative
-order, and commits the edit only when a structurally executable tail order
-crosses into the interpreter-visible prefix.
+order, and commits the edit only when every row newly exposed to the interpreter
+is structurally executable and at least one executable tail order crosses the
+raw cap.
 
-"Structurally executable" deliberately does not mean "realized".  Affordability,
+"Structurally executable" deliberately does not mean "realized". Affordability,
 stock, shed capacity, and all other live preconditions remain engine decisions.
 The evidence carrier measures post-interpreter state separately.
 
-Mechanism and original implementation credit: Commons PR #11616.  This version
-is a fresh-current-main rebuild with fail-closed configuration handling and
-separate realized-execution custody.
+Mechanism and original implementation credit: Commons PR #11616. This version
+is a fresh-current-main rebuild with fail-closed configuration, transport, and
+diagnostic handling plus separate realized-execution custody.
 """
 from __future__ import annotations
 
@@ -54,7 +55,7 @@ def _config_value(configuration: Any, key: str, default: Any) -> Any:
 def market_limit(configuration: Any = None) -> Optional[int]:
     """Return the exact lower-bounded engine cap, or ``None`` on invalid input.
 
-    Missing configuration uses the official default.  Malformed explicit values
+    Missing configuration uses the official default. Malformed explicit values
     decline the transformation rather than silently inventing a cap.
     """
 
@@ -65,15 +66,18 @@ def market_limit(configuration: Any = None) -> Optional[int]:
 
 
 def is_structurally_executable_order(order: Any) -> bool:
-    """Whether a row can reach a pinned-engine market operation handler.
+    """Return whether a row can reach a pinned-engine market operation handler.
 
-    This is intentionally independent of money, inventory, shed capacity, and
-    other dynamic preconditions.  Those determine realized execution later.
+    The predicate is total for JSON-shaped values. In particular, list/dict
+    operation or item tokens and non-finite quantities return ``False`` instead
+    of escaping from set membership or integer conversion.
     """
 
     if not isinstance(order, list) or not order:
         return False
     op = order[0]
+    if not isinstance(op, str):
+        return False
     if op in ATOMIC_OPS:
         return True
     if op not in QUANTITY_OPS or len(order) < 3:
@@ -82,9 +86,11 @@ def is_structurally_executable_order(order: Any) -> bool:
         quantity = int(order[2])
     except (TypeError, ValueError, OverflowError):
         return False
-    if quantity <= 0 or len(order) < 2:
+    if quantity <= 0:
         return False
     item = order[1]
+    if not isinstance(item, str):
+        return False
     if op == "BUY_SEED":
         return item in CROPS
     if op == "BUY_ANIMAL":
@@ -105,13 +111,24 @@ def _digest(value: Any) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def _strict_digest_or_none(value: Any) -> Optional[str]:
+    """Return a strict-JSON digest or ``None`` without risking agent failure."""
+
+    try:
+        return _digest(value)
+    except (TypeError, ValueError, OverflowError, RecursionError):
+        return None
+
+
 def rescue_market_prefix(action: Any, configuration: Any = None):
     """Return ``(action_or_copy, report)`` after one narrow stable packing.
 
-    The input is never mutated.  No order is added, removed, edited, or reordered
-    relative to another non-blank order.  Exact blank rows move only when at
+    The input is never mutated. No order is added, removed, edited, or reordered
+    relative to another non-blank order. Exact blank rows move only when at
     least one structurally executable order originally outside the raw cap lands
-    inside it.
+    inside it, and every row newly entering that prefix is structurally
+    executable. Any uncertain transport or receipt returns the inherited action
+    object unchanged.
     """
 
     limit = market_limit(configuration)
@@ -124,6 +141,8 @@ def rescue_market_prefix(action: Any, configuration: Any = None):
         "crossings": [],
         "prefix_structural_before": 0,
         "prefix_structural_after": 0,
+        "newly_exposed_rows": [],
+        "nonstructural_newly_exposed_rows": [],
     }
     if limit is None:
         report["reason"] = "invalid_market_limit"
@@ -150,22 +169,65 @@ def rescue_market_prefix(action: Any, configuration: Any = None):
     tagged = list(enumerate(market))
     packed = [entry for entry in tagged if entry[1] != []]
     packed.extend(entry for entry in tagged if entry[1] == [])
+
+    newly_exposed = [
+        (new_index, old_index, row)
+        for new_index, (old_index, row) in enumerate(packed[:limit])
+        if old_index >= limit
+    ]
+    report["newly_exposed_rows"] = [
+        {"from_index": old_index, "to_index": new_index}
+        for new_index, old_index, _ in newly_exposed
+    ]
+
+    crossing_entries = [
+        (new_index, old_index, row)
+        for new_index, old_index, row in newly_exposed
+        if is_structurally_executable_order(row)
+    ]
+    if not crossing_entries:
+        report["reason"] = "no_structural_tail_order_crosses_cap"
+        return action, report
+
+    nonstructural = [
+        {"from_index": old_index, "to_index": new_index}
+        for new_index, old_index, row in newly_exposed
+        if not is_structurally_executable_order(row)
+    ]
+    if nonstructural:
+        report["reason"] = "nonstructural_tail_order_would_enter_prefix"
+        report["nonstructural_newly_exposed_rows"] = nonstructural
+        return action, report
+
+    try:
+        packed_market = [deepcopy(row) for _, row in packed]
+    except Exception:
+        report["reason"] = "market_copy_failed"
+        return action, report
+
+    before_digest = _strict_digest_or_none(market)
+    after_digest = _strict_digest_or_none(packed_market)
+    if before_digest is None or after_digest is None:
+        report["reason"] = "diagnostic_digest_unsafe"
+        return action, report
+    if before_digest == after_digest:
+        report["reason"] = "no_market_byte_change"
+        return action, report
+
+    try:
+        output = deepcopy(action)
+    except Exception:
+        report["reason"] = "action_copy_failed"
+        return action, report
+    output["market"] = packed_market
     crossings = [
         {
             "from_index": old_index,
             "to_index": new_index,
             "order": deepcopy(row),
         }
-        for new_index, (old_index, row) in enumerate(packed[:limit])
-        if old_index >= limit and is_structurally_executable_order(row)
+        for new_index, old_index, row in crossing_entries
     ]
-    if not crossings:
-        report["reason"] = "no_structural_tail_order_crosses_cap"
-        return action, report
-
-    packed_market = [deepcopy(row) for _, row in packed]
-    output = deepcopy(action)
-    output["market"] = packed_market
     report.update(
         syntactic_changed=True,
         reason="structural_tail_order_crossed_cap",
@@ -174,7 +236,7 @@ def rescue_market_prefix(action: Any, configuration: Any = None):
         prefix_structural_after=sum(
             is_structurally_executable_order(row) for row in packed_market[:limit]
         ),
-        market_sha256_before=_digest(market),
-        market_sha256_after=_digest(packed_market),
+        market_sha256_before=before_digest,
+        market_sha256_after=after_digest,
     )
     return output, report

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from types import SimpleNamespace
 import unittest
 
@@ -117,6 +118,126 @@ class MarketPrefixRescueTests(unittest.TestCase):
         ]
         self.assertTrue(all(is_structurally_executable_order(row) for row in accepted))
         self.assertFalse(any(is_structurally_executable_order(row) for row in rejected))
+
+    def test_classifier_is_total_for_json_shaped_unhashable_tokens(self):
+        rows = [
+            [["BUY_SEED"], "WHEAT", 1],
+            [{"op": "BUY_SEED"}, "WHEAT", 1],
+            ["BUY_SEED", [], 1],
+            ["BUY_ANIMAL", {}, 1],
+            ["SELL", ["WHEAT"], 1],
+            ["BUY_SEED", "WHEAT", []],
+            ["BUY_SEED", "WHEAT", {}],
+            ["BUY_SEED", "WHEAT", float("inf")],
+            ["BUY_SEED", "WHEAT", float("nan")],
+        ]
+        for row in rows:
+            with self.subTest(row=row):
+                result = is_structurally_executable_order(row)
+                self.assertIs(type(result), bool)
+                self.assertFalse(result)
+
+    def test_declines_exact_malformed_item_plus_valid_tail_witness(self):
+        action = {
+            "farmer": ["PASS"],
+            "market": [
+                [],
+                [],
+                ["BUY_SEED", [], 1],
+                ["BUY_SEED", "WHEAT", 1],
+            ],
+        }
+        original = deepcopy(action)
+        output, report = rescue_market_prefix(
+            action, {"maxMarketOrdersPerTurn": 2}
+        )
+        self.assertIs(output, action)
+        self.assertEqual(action, original)
+        self.assertFalse(report["syntactic_changed"])
+        self.assertEqual(
+            report["reason"], "nonstructural_tail_order_would_enter_prefix"
+        )
+        self.assertEqual(
+            report["nonstructural_newly_exposed_rows"],
+            [{"from_index": 2, "to_index": 0}],
+        )
+        json.dumps(report, allow_nan=False)
+
+    def test_declines_unhashable_operation_plus_valid_tail_witness(self):
+        action = {
+            "market": [
+                [],
+                [],
+                [["BUY_SEED"], "WHEAT", 1],
+                ["BUY_SEED", "WHEAT", 1],
+            ]
+        }
+        output, report = rescue_market_prefix(
+            action, {"maxMarketOrdersPerTurn": 2}
+        )
+        self.assertIs(output, action)
+        self.assertEqual(
+            report["reason"], "nonstructural_tail_order_would_enter_prefix"
+        )
+
+    def test_declines_nonfinite_newly_exposed_quantity(self):
+        action = {
+            "market": [
+                [],
+                [],
+                ["BUY_SEED", "WHEAT", float("inf")],
+                ["BUY_SEED", "WHEAT", 1],
+            ]
+        }
+        output, report = rescue_market_prefix(
+            action, {"maxMarketOrdersPerTurn": 2}
+        )
+        self.assertIs(output, action)
+        self.assertEqual(
+            report["reason"], "nonstructural_tail_order_would_enter_prefix"
+        )
+        json.dumps(report, allow_nan=False)
+
+    def test_strict_digest_failure_declines_without_agent_exception(self):
+        action = {
+            "market": [
+                [],
+                ["HIRE"],
+                ["BUY_LAND"],
+                ["UNKNOWN", "X", float("nan")],
+            ]
+        }
+        output, report = rescue_market_prefix(
+            action, {"maxMarketOrdersPerTurn": 2}
+        )
+        self.assertIs(output, action)
+        self.assertFalse(report["syntactic_changed"])
+        self.assertEqual(report["reason"], "diagnostic_digest_unsafe")
+        json.dumps(report, allow_nan=False)
+
+    def test_all_newly_exposed_rows_must_be_structural(self):
+        action = {
+            "market": [
+                [],
+                [],
+                ["UNKNOWN", "X", 1],
+                ["BUY_LAND"],
+            ]
+        }
+        output, report = rescue_market_prefix(
+            action, {"maxMarketOrdersPerTurn": 2}
+        )
+        self.assertIs(output, action)
+        self.assertEqual(
+            report["reason"], "nonstructural_tail_order_would_enter_prefix"
+        )
+        self.assertEqual(
+            report["newly_exposed_rows"],
+            [
+                {"from_index": 2, "to_index": 0},
+                {"from_index": 3, "to_index": 1},
+            ],
+        )
 
     def test_limit_matches_engine_floor_and_struct_access(self):
         self.assertEqual(market_limit({"maxMarketOrdersPerTurn": 0}), 1)
