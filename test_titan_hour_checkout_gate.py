@@ -71,9 +71,9 @@ class TitanHourCheckoutGate(unittest.TestCase):
         dead["provider"]["payouts_enabled"] = False
         projected = capability.project(dead, catalog)
         dead_rows = {row["sku"]: row for row in projected["public_rails"]}
-        self.assertIn("sku-whitebox-hour-20260826", dead_rows)
-        self.assertEqual(dead_rows["sku-whitebox-hour-20260826"]["public"], "INERT")
-        self.assertEqual(dead_rows["sku-whitebox-hour-20260826"]["url"], "")
+        self.assertNotIn("sku-whitebox-hour-20260826", dead_rows)
+        self.assertFalse(projected["account_ready"])
+        self.assertFalse(projected["payouts_enabled"])
 
 
 if __name__ == "__main__":
