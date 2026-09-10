@@ -31,6 +31,15 @@ The deterministic `input_digest` and queue dedupe key cover all six SHA-256
 digests. Consequently, the same candidate bytes under a different engine,
 runner, declared commit, or predecessor config form a different submission.
 
+Submission config is parsed fail closed: the root, engine, runner, and slot
+records must be objects; declared commits must be 40- or 64-character hex;
+duplicate JSON keys and non-finite numbers are rejected. After all six files
+are copied into the content-addressed store, the queue reopens and verifies the
+stored manifest, reloads the live config, and binds its named engine/runner
+bytes back to the stored records. A config/identity change during sequential
+pinning can leave an unreferenced tentative pin, but it cannot create a queue
+entry.
+
 `run` must receive the exact predecessor-config bytes supplied to `submit`.
 Before either gate is invoked, the queue:
 
@@ -38,7 +47,9 @@ Before either gate is invoked, the queue:
 - compares the supplied config SHA-256 with the submitted config SHA-256;
 - compares parsed config semantics with the pinned config;
 - re-hashes the live engine and runner identity paths to detect replacement;
-- replaces those paths with the already pinned content-addressed blobs.
+- replaces those paths with the already pinned content-addressed blobs;
+- converts file disappearance or unreadable pin/config/policy state into a
+  bounded failed attempt rather than an uncaught exception.
 
 Legacy three-input queue pins fail closed and must be resubmitted. A receipt
 therefore cannot certify a candidate under executable bytes that were absent
@@ -127,7 +138,9 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
 - `test_store`: FIFO, dedupe, status transitions, and rerun history.
 - `test_receipts`: canonical sealing, verification, and receipt chaining.
 - `test_signing`: HMAC verification, config pinning, and grid enforcement.
-- `test_executable_pins`: engine/runner/config substitution predecessor killers.
+- `test_executable_pins`: engine/runner/config substitution, malformed JSON,
+  crossed-snapshot, and filesystem-race predecessor killers.
+- `test_config_drift_cli`: byte-drift and malformed-config CLI boundaries.
 - `test_e2e_mocked`: full six-input CLI flow against contract-shaped mock gates.
 - `test_dual_wiring`: queue dual strategy through the real dual gate.
 
