@@ -1,6 +1,12 @@
 name: titan-canonical-package-reconcile-sol-prism
 
 on:
+  push:
+    branches:
+      - 'sol-prism/titan-canonical-package-reconcile-20260910-01'
+    paths:
+      - '.github/workflows/titan-canonical-package-reconcile-sol-prism.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/**'
   pull_request:
     paths:
       - '.github/workflows/titan-canonical-package-reconcile-sol-prism.yml'
@@ -19,7 +25,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: titan-canonical-package-reconcile-sol-prism-${{ github.event.pull_request.number }}
+  group: titan-canonical-package-reconcile-sol-prism-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
 env:
@@ -28,20 +34,20 @@ env:
 
 jobs:
   reconcile:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - name: Checkout exact pull-request head
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
           persist-credentials: true
 
       - name: Assert exact checkout
         env:
-          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
@@ -76,7 +82,7 @@ jobs:
         id: rebuild
         working-directory: revenue/kaggriculture/cloud-execution-lab
         env:
-          HEAD_BRANCH: ${{ github.head_ref }}
+          HEAD_BRANCH: ${{ github.head_ref || github.ref_name }}
         run: |
           set -euo pipefail
           python -B build_integrated.py > BUILD-RECEIPT.json
