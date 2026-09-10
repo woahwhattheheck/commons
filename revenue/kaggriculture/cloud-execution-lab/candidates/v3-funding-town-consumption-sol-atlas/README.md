@@ -11,7 +11,8 @@ that is actually needed to fund an inherited purchase.
 The carrier is additive and default-off. It does not modify the canonical
 runtime. It byte-binds the exact current `frozen_selected.py` Git blob, inserts a
 small official-order-equivalent helper, invokes it after every projected market
-stage, compiles the postimage, and emits a strict JSON receipt.
+stage, verifies the exact official interpreter and market→town→decay stage order,
+compiles the postimage, and emits a strict JSON receipt.
 
 ## Exact predecessor
 
@@ -64,6 +65,7 @@ python -m unittest -v test_town_consumption_closure.py
 python -m py_compile town_consumption_closure.py test_town_consumption_closure.py
 python town_consumption_closure.py \
   --source ../../frozen_selected.py \
+  --engine ../../reference/engine/kaggriculture.py \
   --output /tmp/frozen_selected_town.py \
   --receipt /tmp/town-consumption-receipt.json
 python -m py_compile /tmp/frozen_selected_town.py
