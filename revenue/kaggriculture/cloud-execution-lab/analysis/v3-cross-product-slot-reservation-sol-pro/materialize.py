@@ -16,7 +16,6 @@ OPERATION = "TITAN-V3-CROSS-PRODUCT-SELL-SLOT-RESERVATION-CLOSURE-20260910-01"
 CLASS_ANCHOR = "\n\nclass SellScheduler:\n"
 HELPER = r'''
 
-
 def _planned_slot_reservations(planned, current, item, now, step, orders):
     """Executable rows promised to other products that need an appended order."""
     if not isinstance(planned,dict) or not isinstance(current,dict):return None
@@ -37,7 +36,7 @@ def _planned_slot_reservations(planned, current, item, now, step, orders):
                     offered=sum(max(0,int(o[2])) for o in orders if o and o[0]=='SELL' and o[1]==other)
                 except (TypeError,ValueError,IndexError):return None
                 if desired>offered:active=True
-            elif step!=now and due==step:active=True
+            elif step!=now and due<=step:active=True
         if active:reserved+=1
     return reserved
 '''

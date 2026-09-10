@@ -83,6 +83,8 @@ jobs:
           assert row['current_turn']['successor']['feasible'] is False
           assert row['future_turn']['predecessor_admits'] is True
           assert row['future_turn']['successor']['feasible'] is False
+          assert row['overdue_future_turn']['predecessor_admits'] is True
+          assert row['overdue_future_turn']['successor']['feasible'] is False
           PY
 
       - name: Require source-tree nonmutation

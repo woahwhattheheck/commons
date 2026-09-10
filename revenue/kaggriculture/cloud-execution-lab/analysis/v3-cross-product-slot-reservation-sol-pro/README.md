@@ -26,13 +26,13 @@ CARROT and MILK for one future date.
 After the independently owned route-reference normalization, every nonzero
 `self.planned[product]` quantity is scheduler-owned excess above fixed inherited
 route SELLs.  It therefore needs one appended market row when due.  Before a
-candidate uses an extra row, the closure counts one reservation for each executable other
-product due at that date:
+candidate uses an extra row, the closure counts one reservation for each other
+product due by that step:
 
 - `due <= now` for the current action only when current target quantity exceeds
   inherited same-product SELL capacity;
-- exact equality for a future date for every retained nonzero row, including a
-  temporarily absent product that current source can later replenish/resurrect;
+- every retained nonzero row due at or before a future candidate date, including
+  temporarily absent or overdue products that current source can later resurrect;
 - one row per product regardless of tranche count or quantity;
 - no reservation for the candidate product, whose prior plan is being replaced;
 - no extra row when the requested quantity already fits inherited matching SELL

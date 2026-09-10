@@ -10,8 +10,8 @@
 
 Charge one shared market-row reservation for each executable nonzero
 other-product scheduler-owned excess tranche before admitting a candidate extra SELL row.
-Current overdue rows reserve now; future rows reserve their exact date; same-item
-replacement is excluded; malformed ledgers fail closed.
+Current overdue rows reserve now; future candidates reserve every retained row
+due by their date; same-item replacement is excluded; malformed ledgers fail closed.
 
 The exact predecessor has nine inherited rows under cap ten, one due CARROT
 reservation, and a chosen MILK sale.  The predecessor product-local predicate

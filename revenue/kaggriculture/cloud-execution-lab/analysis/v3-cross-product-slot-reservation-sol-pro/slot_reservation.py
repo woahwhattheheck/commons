@@ -37,8 +37,9 @@ def planned_slot_reservations(
     """Count other-product excess rows that claim a market slot at ``step``.
 
     On the current turn, every overdue row (``due <= now``) is still presented as
-    due-now by the production scheduler.  At a future turn, only the exact date
-    is reserved.  Multiple tranches for one product still need just one appended
+    due-now by the production scheduler.  At a future candidate step, every
+    retained nonzero row due at or before that step stays reserved until retired.
+    Multiple tranches for one product still need just one appended
     SELL row because settlement aggregates that product before emission.
     """
     if not isinstance(planned, Mapping):
@@ -80,10 +81,10 @@ def planned_slot_reservations(
                 elif other in current_quantities:
                     desired = _strict_nonnegative_int(current_quantities[other], f"current {other}")
                     active = desired > inherited_sell_quantity(orders, other)
-            elif step_i != now_i and due == step_i:
-                # Current source retains absent-product future rows. They can
-                # become executable after replenishment, so every exact-date
-                # nonzero row reserves until the independent cleanup retires it.
+            elif step_i != now_i and due <= step_i:
+                # Current source can retain already-due rows after zero-stock
+                # or partial settlement. They may execute after replenishment,
+                # so every row due by this future step reserves until retired.
                 active = True
         if active:
             reserved += 1
@@ -246,6 +247,15 @@ def build_witness() -> dict[str, Any]:
         now=100,
         step=101,
     )
+    overdue_future_successor = reservation_aware_feasible(
+        orders=orders,
+        cap=10,
+        item="MILK",
+        quantity=1,
+        planned={"CARROT": [(99, 1)]},
+        now=100,
+        step=101,
+    )
     emitted_products = [o[1] for o in emitted if o and o[0] == "SELL"]
     return {
         "schema": "titan-v3-cross-product-slot-reservation-witness-v1",
@@ -268,6 +278,14 @@ def build_witness() -> dict[str, Any]:
             "candidate_item": "MILK",
             "predecessor_admits": future_predecessor,
             "successor": asdict(future_successor),
+        },
+        "overdue_future_turn": {
+            "now": 100,
+            "step": 101,
+            "prior_planned": {"CARROT": [[99, 1]]},
+            "candidate_item": "MILK",
+            "predecessor_admits": future_predecessor,
+            "successor": asdict(overdue_future_successor),
         },
     }
 

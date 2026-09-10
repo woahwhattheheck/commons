@@ -118,15 +118,16 @@ class ReservationSemanticsTests(unittest.TestCase):
         )
         self.assertFalse(decision.feasible)
 
-    def test_overdue_row_reserves_current_but_not_future(self):
+    def test_overdue_row_reserves_current_and_future_until_retired(self):
         planned = {"CARROT": [(98, 1)]}
         self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=100), 1)
-        self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=101), 0)
+        self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=101), 1)
 
-    def test_future_exact_date_only(self):
+    def test_future_due_boundary_and_later_retention(self):
         planned = {"CARROT": [(102, 1)]}
         self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=101), 0)
         self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=102), 1)
+        self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=103), 1)
 
     def test_multiple_rows_one_product_consume_one_slot(self):
         planned = {"CARROT": [(101, 1), (101, 2)]}
@@ -138,6 +139,7 @@ class ReservationSemanticsTests(unittest.TestCase):
     def test_each_other_product_reserves_one(self):
         planned = {"CARROT": [(101, 1)], "EGG": [(101, 9)], "MILK": [(101, 5)]}
         self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=101), 2)
+
 
     def test_zero_stock_other_product_does_not_reserve_current(self):
         count = planned_slot_reservations(
@@ -194,6 +196,8 @@ class ReservationSemanticsTests(unittest.TestCase):
         self.assertFalse(first["current_turn"]["chosen_item_emitted"])
         self.assertTrue(first["future_turn"]["predecessor_admits"])
         self.assertFalse(first["future_turn"]["successor"]["feasible"])
+        self.assertTrue(first["overdue_future_turn"]["predecessor_admits"])
+        self.assertFalse(first["overdue_future_turn"]["successor"]["feasible"])
 
 
 class MaterializerTests(unittest.TestCase):
