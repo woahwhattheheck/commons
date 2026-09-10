@@ -1,0 +1,219 @@
+name: titan-v3-s13-prefix-695-sol-pro
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-s13-prefix-695-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-prefix-695-sol-pro/**'
+      - 'p/titan-v3-s13-prefix-695-causal-20260910-01.md'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-s13-prefix-695-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-prefix-695-sol-pro/**'
+      - 'p/titan-v3-s13-prefix-695-causal-20260910-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  prefix-695:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      SOURCE_EPISODE: '107223760'
+      SOURCE_REPLAY_SHA256: 'c72ad0d81c65f93f4988f147e5e4bd50a2edfa3aaa631455e76e9e80dfb81b18'
+      FROZEN_SEEDS: '539131249,1834999074,2609097301,2609097302'
+      EXPECTED_ARCHIVE_SHA256: '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86'
+      EXPECTED_SOURCE_MANIFEST_SHA256: '1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind exact parent sources and run child contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          PARENT="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          CHILD="$LAB/analysis/titan-v3-s13-prefix-695-sol-pro"
+          test "$(git hash-object "$PARENT/leader_route_distillation.py")" = 4e84e70f0c1b5a535d48b06bada6350ea2d5cd58
+          test "$(git hash-object "$PARENT/leader_route_runtime.py")" = 3b2b94151c1fd91cd8ec020909863da551262ee9
+          (
+            cd "$CHILD"
+            python -m py_compile *.py
+            python -m unittest -v
+          ) 2>&1 | tee "$RUNNER_TEMP/PREFIX-CONTRACTS.txt"
+          git diff --exit-code -- .
+
+      - name: Install pinned official interpreter
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Download and bind exact Pensukesan replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-s13-prefix"
+          mkdir -p "$OUT/replays"
+          curl --fail --location --compressed --retry 5 --retry-all-errors \
+            --connect-timeout 30 --max-time 300 \
+            --user-agent 'TITAN-V3-S13-prefix-research/1.0' \
+            "https://www.kaggle.com/competitions/episodes/${SOURCE_EPISODE}/replay.json" \
+            -o "$OUT/replays/episode_${SOURCE_EPISODE}.json"
+          test "$(sha256sum "$OUT/replays/episode_${SOURCE_EPISODE}.json" | cut -d' ' -f1)" = "$SOURCE_REPLAY_SHA256"
+
+      - name: Materialize exact complete-archive control
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CARRIER="$LAB/analysis/titan-v3-own-value-archive-carrier-sol-foundry"
+          OBJECTIVE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-s13-prefix"
+          test "$(git hash-object "$CARRIER/archive_carrier.py")" = 2f5be09c36368732ddf80a84f3a86b36b2ae405e
+          test "$(git hash-object "$CARRIER/archive_runtime_guard.py")" = 2fbc4b45d2f0f06f8ccef2665d8d740d73c9e3db
+          test "$(git hash-object "$OBJECTIVE/own_value_objective.py")" = 17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0
+          python "$CARRIER/archive_carrier.py" materialize \
+            --lab-root "$LAB" \
+            --pointer "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" \
+            --overlay "$OBJECTIVE/own_value_objective.py" \
+            --output "$OUT/carrier" \
+            --git-head "$(git rev-parse HEAD)" \
+            | tee "$OUT/MATERIALIZE.json"
+          python "$CARRIER/archive_carrier.py" probe \
+            --entry "$OUT/carrier/control/control_entry.py" \
+            --output "$OUT/CONTROL-PROBE.json" \
+            > "$OUT/CONTROL-PROBE-STDOUT.json"
+          OUT="$OUT" python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ['OUT'])
+          receipt=json.loads((root/'carrier/CARRIER-RECEIPT.json').read_text())
+          probe=json.loads((root/'CONTROL-PROBE.json').read_text())
+          assert receipt['archive']['sha256']==os.environ['EXPECTED_ARCHIVE_SHA256']
+          assert receipt['archive']['source_manifest_sha256']==os.environ['EXPECTED_SOURCE_MANIFEST_SHA256']
+          assert receipt['canonical_runtime_equal'] is True
+          assert receipt['canonical_repository_modified'] is False
+          assert probe['install_receipt'] is None
+          PY
+          git diff --exit-code -- .
+
+      - name: Emit exact full route and deterministic prefix-695 child
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          PARENT="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          CHILD="$LAB/analysis/titan-v3-s13-prefix-695-sol-pro"
+          OUT="$RUNNER_TEMP/titan-v3-s13-prefix"
+          python "$PARENT/leader_route_distillation.py" compile \
+            --input-dir "$OUT/replays" \
+            --output "$OUT/LEADER-BANK.json" \
+            --max-candidates 1
+          python "$PARENT/leader_route_distillation.py" emit \
+            --bank "$OUT/LEADER-BANK.json" \
+            --runtime "$PARENT/leader_route_runtime.py" \
+            --baseline-entry "$OUT/carrier/control/control_entry.py" \
+            --output-dir "$OUT/arms"
+          OUT="$OUT" python - <<'PY' > "$OUT/FULL-ARM-PATH.txt"
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ['OUT'])
+          rows=json.loads((root/'arms/MANIFEST.json').read_text())['arms']
+          matches=[row for row in rows if row['source_episode']=='107223760' and row['mode']=='post24_full']
+          assert len(matches)==1
+          print(root/'arms'/matches[0]['path'])
+          PY
+          FULL_ARM="$(cat "$OUT/FULL-ARM-PATH.txt")"
+          FULL_SHA="$(sha256sum "$FULL_ARM" | cut -d' ' -f1)"
+          python "$CHILD/prefix_route.py" build \
+            --source-arm "$FULL_ARM" \
+            --expected-source-sha256 "$FULL_SHA" \
+            --runtime "$PARENT/leader_route_runtime.py" \
+            --baseline-entry "$OUT/carrier/control/control_entry.py" \
+            --cutoff 695 \
+            --output "$OUT/pensukesan-prefix-695.py" \
+            --receipt "$OUT/PREFIX-695-RECEIPT.json" \
+            > "$OUT/PREFIX-695-STDOUT.json"
+          python -m py_compile "$OUT/pensukesan-prefix-695.py"
+
+      - name: Frozen control, full-route, and prefix-695 panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/titan-v3-s13-prefix"
+          FULL_ARM="$(cat "$OUT/FULL-ARM-PATH.txt")"
+          COMMON=(
+            --engine-dir "$LAB/reference/engine"
+            --loader "$KAG/20260907-offline-agent/evaluate.py"
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent"
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent"
+            --seeds "$FROZEN_SEEDS"
+            --rng-seed 20260913
+            --action-timeout 1.0
+            --startup-timeout 15
+            --game-timeout 180
+            --recheck-first
+          )
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
+            --candidate "$OUT/carrier/control/control_entry.py::agent" \
+            --output "$OUT/control.json"
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
+            --candidate "$FULL_ARM::agent" \
+            --output "$OUT/full.json"
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
+            --candidate "$OUT/pensukesan-prefix-695.py::agent" \
+            --output "$OUT/prefix-695.json"
+
+      - name: Build exact-cell retention report
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHILD=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-prefix-695-sol-pro
+          OUT="$RUNNER_TEMP/titan-v3-s13-prefix"
+          python "$CHILD/prefix_report.py" \
+            --control "$OUT/control.json" \
+            --full "$OUT/full.json" \
+            --prefix "$OUT/prefix-695.json" \
+            --output "$OUT/PREFIX-695-REPORT.json" \
+            --markdown "$OUT/PREFIX-695-REPORT.md" \
+            | tee "$OUT/PREFIX-695-REPORT-STDOUT.json"
+          cat "$OUT/PREFIX-695-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+          OUT="$OUT" python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ['OUT'])
+          report=json.loads((root/'PREFIX-695-REPORT.json').read_text())
+          assert report['full']['pair_rows']==16
+          assert report['prefix']['pair_rows']==16
+          assert report['prefix']['trace_changed_cells']>0
+          assert report['verdict'] in {'PREFIX_SURVIVOR','PREFIX_HOLD'}
+          PY
+          git diff --exit-code -- .
+
+      - name: Upload exact frozen-panel evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-s13-prefix-695-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/PREFIX-CONTRACTS.txt
+            ${{ runner.temp }}/titan-v3-s13-prefix
+          if-no-files-found: error
+          retention-days: 30
