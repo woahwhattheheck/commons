@@ -5,6 +5,7 @@ on:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/scheduler.py"
       - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
       - "revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/**"
       - ".github/workflows/titan-v3-executable-spend-reserve-sol-cashline.yml"
   workflow_dispatch:
@@ -23,10 +24,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run predecessor-killing contracts
+      - name: Run executable-prefix predecessor killers
         run: >-
           python
           revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/test_repair.py
+      - name: Run frozen-route exposure contracts
+        run: >-
+          python
+          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/test_route_exposure.py
       - name: Emit deterministic exact-source receipt
         run: >-
           python
@@ -41,11 +46,18 @@ jobs:
           --repo "$GITHUB_WORKSPACE"
           --format patch
           | tee executable-spend-reserve.patch
+      - name: Emit authenticated frozen-route exposure atlas
+        run: >-
+          python
+          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/route_exposure.py
+          --repo "$GITHUB_WORKSPACE"
+          | tee executable-spend-route-exposure.json
       - uses: actions/upload-artifact@v4
         with:
           name: titan-v3-executable-spend-reserve-receipts
           path: |
             executable-spend-reserve-receipt.json
             executable-spend-reserve.patch
+            executable-spend-route-exposure.json
           if-no-files-found: error
           retention-days: 30
