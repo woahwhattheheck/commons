@@ -1,0 +1,59 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/scheduler.py b/revenue/kaggriculture/cloud-execution-lab/scheduler.py
+--- a/revenue/kaggriculture/cloud-execution-lab/scheduler.py
++++ b/revenue/kaggriculture/cloud-execution-lab/scheduler.py
+@@ -24,8 +24,30 @@ def _load(name, path):
+ parent = _load('intact_arlene', HERE/'reference/next-panel/vendor/arlene.py')
+ receipt_math = _load('pinned_receipt_math', HERE/'reference/decision/decision.py')
+ PRODUCTS = tuple(p for p in m.PRODUCTS if p not in ('WHEAT','FERTILIZER'))
+ HORIZON = 8
+ MAX_PLANS = 700
+ 
+ 
++def ordered_targets(shed, pending, baseline_q):
++    """Keep the full stock domain while restoring inherited intent priority.
++
++    Existing pending keys retain their first-seen order, current baseline SELL
++    keys follow in controller order, and previously unseen stock is appended in
++    the stable product order.  Dict insertion order is the tie-break consumed by
++    both the direct and selected-action scheduler paths.
++    """
++    priority = {}
++    for source in (pending, baseline_q):
++        for item in source:
++            if item in PRODUCTS:
++                priority.setdefault(item, None)
++    for item in PRODUCTS:
++        priority.setdefault(item, None)
++    return {
++        item: max(0, int(shed.get(item, 0)))
++        for item in priority
++        if shed.get(item, 0) > 0
++    }
++
++
+ def post_units(obs, action, config, *, shed_capacity=None):
+@@ -323,5 +345,5 @@ class SellScheduler:
+         for o in base['market']:
+             if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
+                 baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
+-        targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
++        targets=ordered_targets(shed,self.pending,baseline_q)
+         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
+diff --git a/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py b/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
+--- a/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
++++ b/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
+@@ -576,5 +576,5 @@ class FrozenSelected(SellScheduler):
+         for o in base['market']:
+             if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
+                 baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
+-        targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
++        targets=ordered_targets(shed,self.pending,baseline_q)
+         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
+diff --git a/revenue/kaggriculture/cloud-execution-lab/build_integrated.py b/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+--- a/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
++++ b/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+@@ -72,3 +72,4 @@ def source_files():
+     mapping['checks/test_selected_pruning.py']='test_selected_pruning.py'
+     mapping['checks/test_joint_market_slots.py']='test_joint_market_slots.py'
++    mapping['checks/test_scheduler_priority.py']='test_scheduler_priority.py'
+     mapping['checks/test_funded_prefix.py']='test_funded_prefix.py'
