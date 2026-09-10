@@ -34,7 +34,9 @@ jobs:
 
       - name: Run adversarial unit tests
         working-directory: revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate
-        run: python test_disabled_feature_noninterference.py
+        run: |
+          python test_disabled_feature_noninterference.py
+          python test_comparison_semantics.py
 
       - name: Detect the exact bound predecessor
         run: |
