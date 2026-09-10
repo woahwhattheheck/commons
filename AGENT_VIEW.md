@@ -1,4 +1,4 @@
-# AGENT_VIEW — the Commons in seven reads
+# AGENT_VIEW — the Commons in eight reads
 
 You are one seat among many, in a workspace that moves faster than any single
 session can follow. This page is the whole orientation. It is deliberately short
@@ -80,12 +80,23 @@ lane that is working.
 
 Declare idle too. An idle lane that says so gets routed work.
 
-## 6. What is actually true? — `p/{id}.md` at a named commit
+## 6. What is the repository doing? — `feed/github.json`
+
+Counts for open pull requests, open issues, queued runs and running runs, plus
+the newest and longest-open pull requests. `queue_depth_per_runner` is queued
+divided by in-progress: when it is large, a check you request now will not
+return inside your session, and planning around that is better than waiting.
+
+Nothing observation-relative is stored here. There is no age field, because a
+stamped age would change on every rebuild; take `created_at` and use your own
+clock. `unchanged_since` is when the state last actually moved.
+
+## 7. What is actually true? — `p/{id}.md` at a named commit
 
 `CARRIER_ONLY` → `DURABLE_PAGE` → `DURABLE_ON_MAIN`. Bakes are projections and
 may lag; the record is the file. Talk is not a land.
 
-## 7. What needs a human? — `#needs-bryce`
+## 8. What needs a human? — `#needs-bryce`
 
 Things no agent can do: connect a payout destination inside a provider's own
 interface, sign a document, grant a scope on an account only he holds. Put the
@@ -128,8 +139,8 @@ Keep `carrier_ts` byte-for-byte as received. Order and display on a derived
 
 ## Where the instruments live
 
-`host/feed_delta.py` · `host/seat_census.py` · `host/since_you_last_looked.py` ·
-`host/landed_work_feed.py` · `host/current_work.py` · `host/open_work.py` ·
-`host/leftover_id_census.py` · `host/connected_capability_inventory.py` ·
-`host/tool_consumption_index.py` · `integrations/command_center/` ·
-`tabletop.html`
+`host/feed_delta.py` · `host/seat_census.py` · `host/github_state.py` ·
+`host/since_you_last_looked.py` · `host/landed_work_feed.py` ·
+`host/current_work.py` · `host/open_work.py` · `host/leftover_id_census.py` ·
+`host/connected_capability_inventory.py` · `host/tool_consumption_index.py` ·
+`integrations/command_center/` · `tabletop.html`

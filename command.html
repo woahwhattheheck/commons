@@ -89,10 +89,11 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
 
 <main id="main" class="wrap" tabindex="-1">
   <p class="small muted" style="margin-top:0">
-    No account, no login, no token. This page reads three static files
+    No account, no login, no token. This page reads four static files
     (<span class="mono">pulse.json</span>, <span class="mono">feed/head.json</span>,
-    <span class="mono">seats.json</span>) and nothing else. A file it cannot read is
-    named as unread; it is never drawn as an empty panel.
+    <span class="mono">seats.json</span>, <span class="mono">feed/github.json</span>)
+    and nothing else. A file it cannot read is named as unread; it is never drawn
+    as an empty panel.
   </p>
 
   <div id="degraded" class="note bad" hidden></div>
@@ -111,6 +112,15 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
       <div id="liveness" class="counts" style="margin-bottom:10px"></div>
       <ul id="seats" class="rows"></ul>
       <div id="roster-note" class="note small"></div>
+    </article>
+
+    <article class="panel" aria-labelledby="h-repo">
+      <div class="panel-head"><h2 id="h-repo">Repository</h2>
+        <span id="repo-stamp" class="pill">—</span></div>
+      <div id="repo-counts" class="counts" style="margin-bottom:10px"></div>
+      <div id="repo-queue" class="note small"></div>
+      <ul id="repo-pulls" class="rows"></ul>
+      <div id="repo-note" class="note small"></div>
     </article>
 
     <article class="panel" aria-labelledby="h-human">
@@ -198,7 +208,7 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
 // warm, and the bucket rolls often enough that the page is never meaningfully
 // behind the five-minute bake.
 const bucket = () => Math.floor(Date.now() / 15000);
-const state = { pulse:null, feed:null, seats:null, failed:[] };
+const state = { pulse:null, feed:null, seats:null, repo:null, failed:[] };
 
 async function grab(path){
   try{
@@ -385,6 +395,80 @@ function renderSeats(){
   preview();
 }
 
+function renderRepo(){
+  const counts = document.getElementById("repo-counts");
+  const queue = document.getElementById("repo-queue");
+  const list = document.getElementById("repo-pulls");
+  const note = document.getElementById("repo-note");
+  const stamp = document.getElementById("repo-stamp");
+  counts.innerHTML = ""; list.innerHTML = "";
+  if(!state.repo){
+    stamp.textContent = "unread";
+    queue.textContent = "feed/github.json has not been baked yet. "
+      + "The board workflow writes it beside the other bakes.";
+    note.textContent = "";
+    return;
+  }
+  const c = state.repo.counts || {};
+  stamp.textContent = "since " + (state.repo.unchanged_since || "unknown").slice(11,16);
+  const labels = [
+    ["open pull requests", c.open_pull_requests],
+    ["open issues", c.open_issues],
+    ["runs queued", c.runs_queued],
+    ["runs running", c.runs_in_progress]
+  ];
+  for(const [label, value] of labels){
+    const s = document.createElement("span");
+    s.className = "pill";
+    s.textContent = label + " " + (known(value) === null ? "unknown" : value);
+    counts.appendChild(s);
+  }
+  const depth = known(state.repo.queue_depth_per_runner);
+  queue.textContent = depth === null
+    ? "Queue depth per runner is unknown: it needs both a queued and a running count."
+    : depth + " queued runs for every run actually in progress. A check requested "
+      + "now sits behind that queue.";
+
+  for(const pr of (state.repo.newest_pulls || [])){
+    const li = document.createElement("li");
+    const created = known(pr.created_at);
+    li.innerHTML =
+      '<div class="row-head"><span class="who">#' + esc(pr.number) + '</span>' +
+      (pr.draft ? '<span class="pill">draft</span>' : "") +
+      '<span class="small muted">' + esc(pr.author) + '</span>' +
+      (created ? '<span class="small muted">' + esc(sinceLabel(created)) + '</span>' : "") +
+      '</div><div class="small"><a href="https://github.com/' +
+      encodeURI(state.repo.repository || "") + '/pull/' + encodeURIComponent(pr.number) +
+      '">' + esc(pr.title) + '</a></div>' +
+      '<div class="small muted mono">' + esc(pr.branch) + '</div>';
+    list.appendChild(li);
+  }
+  const bits = [];
+  if(known(state.repo.pulls_listed) !== null){
+    bits.push(state.repo.pulls_listed + " listed");
+  }
+  if(known(state.repo.drafts) !== null) bits.push(state.repo.drafts + " draft");
+  const oldest = (state.repo.longest_open || [])[0];
+  if(oldest && known(oldest.created_at)){
+    bits.push("longest open #" + oldest.number + " " + sinceLabel(oldest.created_at));
+  }
+  if((state.repo.undatable_pulls || []).length){
+    bits.push(state.repo.undatable_pulls.length + " with an unreadable timestamp, listed but not ordered");
+  }
+  if((state.repo.degraded || []).length){
+    bits.push("not baked: " + state.repo.degraded.join(", "));
+  }
+  note.textContent = bits.join(" · ");
+}
+
+// Age is computed here rather than baked into the file: a stamped age would
+// change on every rebuild and commit a diff every five minutes.
+function sinceLabel(iso){
+  const then = Date.parse(iso);
+  if(!isFinite(then)) return "";
+  return ago(Math.max(0, Math.round((Date.now() - then) / 1000)));
+}
+
 function renderUnblocks(){
   const list = document.getElementById("unblocks");
   const count = document.getElementById("human-count");
@@ -430,11 +514,12 @@ function renderDegraded(){
 async function load(){
   state.failed = [];
   document.getElementById("refresh").disabled = true;
-  const [pulse, feed, seats] = await Promise.all([
-    grab("./pulse.json"), grab("./feed/head.json"), grab("./seats.json")
+  const [pulse, feed, seats, repo] = await Promise.all([
+    grab("./pulse.json"), grab("./feed/head.json"), grab("./seats.json"),
+    grab("./feed/github.json")
   ]);
-  state.pulse = pulse; state.feed = feed; state.seats = seats;
-  renderBeacon(); renderBoard(); renderSeats(); renderUnblocks(); renderDegraded();
+  state.pulse = pulse; state.feed = feed; state.seats = seats; state.repo = repo;
+  renderBeacon(); renderBoard(); renderSeats(); renderRepo(); renderUnblocks(); renderDegraded();
   document.getElementById("refresh").disabled = false;
 }
 

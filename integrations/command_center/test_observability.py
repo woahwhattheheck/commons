@@ -77,6 +77,23 @@ class Repo(unittest.TestCase):
                  "liveness": "LIVE", "heartbeat_age_s": 0}
             ],
         })
+        self.put("feed/github.json", {
+            "schema": "commons-github-state/v1",
+            "repository": "o/r",
+            "counts": {"open_pull_requests": 106, "open_issues": 3,
+                       "runs_queued": 2275, "runs_in_progress": 18},
+            "queue_depth_per_runner": 126.4,
+            "pulls_listed": 100,
+            "newest_pulls": [{"number": 12094, "title": "newest",
+                              "author": "who", "draft": False,
+                              "created_at": "2026-09-10T21:26:14Z",
+                              "branch": "b"}],
+            "longest_open": [],
+            "drafts": 12,
+            "undatable_pulls": [],
+            "degraded": [],
+            "unchanged_since": "2026-09-10T21:30:00Z",
+        })
 
 
 class TestCompleteSnapshot(Repo):
@@ -86,11 +103,19 @@ class TestCompleteSnapshot(Repo):
         self.now = "2026-09-10T20:05:00Z"
         self.snap = observability.snapshot(self.root, now=self.now)
 
-    def test_all_three_sources_read_and_nothing_is_degraded(self):
+    def test_every_source_reads_and_nothing_is_degraded(self):
         self.assertEqual(self.snap["degraded"], [])
         self.assertTrue(all(s["ok"] for s in self.snap["sources"]))
         self.assertEqual([s["path"] for s in self.snap["sources"]],
-                         ["feed/head.json", "pulse.json", "seats.json"])
+                         ["feed/github.json", "feed/head.json", "pulse.json",
+                          "seats.json"])
+
+    def test_repository_state_travels_through_untouched(self):
+        repo = self.snap["repository"]
+        self.assertEqual(repo["counts"]["runs_queued"], 2275)
+        self.assertEqual(repo["queue_depth_per_runner"], 126.4)
+        self.assertEqual(repo["newest_pulls"][0]["number"], 12094)
+        self.assertNotIn("age_hours", repo["newest_pulls"][0])
 
     def test_pulse_carries_the_cursor_pointers(self):
         self.assertEqual(self.snap["pulse"]["seq"], 1708)
@@ -102,7 +127,6 @@ class TestCompleteSnapshot(Repo):
         self.assertEqual(events[0]["from"], "SEAT_A")
         self.assertEqual(events[1]["kind"], "SHIP_RECEIPT")
         self.assertEqual(self.snap["board"]["undated"], ["no-clock"])
-        # The default state is restored for display rather than left blank.
         self.assertEqual(events[0]["state"], "DURABLE_PAGE")
 
     def test_priced_and_unpriced_unblocks_are_separated(self):
@@ -175,7 +199,6 @@ class TestDegradation(Repo):
         self.assertIsNone(snap["seats"])
         self.assertEqual(snap["degraded"], ["seats.json"])
         self.assertIn("could not read seats.json", snap["headline"])
-        # The sources that did read are still present and usable.
         self.assertIsNotNone(snap["board"])
         self.assertEqual(snap["pulse"]["seq"], 1708)
 
@@ -193,11 +216,22 @@ class TestDegradation(Repo):
     def test_an_empty_repository_degrades_everywhere_without_raising(self):
         snap = observability.snapshot(self.root)
         self.assertEqual(sorted(snap["degraded"]),
-                         ["feed/head.json", "pulse.json", "seats.json"])
+                         ["feed/github.json", "feed/head.json", "pulse.json",
+                          "seats.json"])
         self.assertIsNone(snap["pulse"])
         self.assertIsNone(snap["board"])
         self.assertIsNone(snap["seats"])
+        self.assertIsNone(snap["repository"])
         self.assertTrue(snap["headline"].startswith("Partial"))
+
+    def test_repository_state_can_be_absent_while_the_rest_reads(self):
+        self.complete()
+        os.remove(os.path.join(self.root, "feed", "github.json"))
+        snap = observability.snapshot(self.root, now="2026-09-10T20:05:00Z")
+        self.assertIsNone(snap["repository"])
+        self.assertEqual(snap["degraded"], ["feed/github.json"])
+        self.assertIsNotNone(snap["board"])
+        self.assertIsNotNone(snap["seats"])
 
     def test_snapshot_never_mutates_the_repository(self):
         self.complete()

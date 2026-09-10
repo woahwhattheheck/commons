@@ -2,15 +2,16 @@
 """One read that answers "what is the colony doing right now".
 
 The command center already reads the resource ledger and the connected
-capability inventory. This adds the two things a router and an owner both need
-and neither had in one place: what moved on the board, and which seats are live
-enough to be given it.
+capability inventory. This adds the things a router and an owner both need and
+neither had in one place: what moved on the board, which seats are live enough
+to be given it, and what the repository itself is doing.
 
 It composes existing static bakes and adds no new source of truth:
 
     pulse.json        the freshness beacon
     feed/head.json    the delta shard, built by host/feed_delta.py
     seats.json        the seat census, built by host/seat_census.py
+    feed/github.json  repository state, built by host/github_state.py
 
 Every source keeps its own read status. A source that cannot be read is
 reported as an error with its path, never as an empty section — a panel showing
@@ -39,13 +40,10 @@ SOURCES = (
     ("pulse", "pulse.json"),
     ("feed", "feed/head.json"),
     ("seats", "seats.json"),
+    ("repo", "feed/github.json"),
 )
 
-# Rolled up for the owner: declared blockers that carry a time price. These are
-# the items where a few minutes of a human's attention unblocks a lane.
 PRICED = "est_minutes"
-
-# Fall back to the census v1 contract if an older bake omitted the thresholds.
 LIVE_S = 15 * 60
 QUIET_S = 60 * 60
 STALE_S = 24 * 60 * 60
@@ -193,8 +191,6 @@ def _seats_summary(seats, now=None):
 
     cants = seats.get("open_cants") or []
     return {
-        # `reference_time` is the current read boundary. Keep the bake reference
-        # separately so the historical snapshot remains auditable.
         "reference_time": _iso(current),
         "reference_source": "read-time heartbeat derivation",
         "baked_reference_time": seats.get("reference_time", ""),
@@ -206,15 +202,11 @@ def _seats_summary(seats, now=None):
         "context_pressure": seats.get("context_pressure") or [],
         "budget_watch": seats.get("budget_watch") or [],
         "open_cants": cants,
-        # The owner-facing slice: blockers someone has put a number on.
         "priced_unblocks": [c for c in cants if priced(c)],
         "unpriced_unblocks": [c for c in cants if not priced(c)],
         "unreadable_seat_files": seats.get("unreadable_seat_files") or [],
         "seats": current_seats,
         "roster": current_roster,
-        # Seats worth routing to: awake *at read time*, and carrying enough
-        # declared detail to match a job against. A roster name is awake but
-        # says nothing about what it can take, so it stays separate.
         "routable": [
             s for s in current_seats
             if (s.get("derived") or {}).get("liveness") in ("LIVE", "QUIET")
@@ -256,7 +248,9 @@ def snapshot(root, feed_limit=20, now=None):
     seats = ok.get("seats")
     payload["seats"] = _seats_summary(seats, now) if isinstance(seats, dict) else None
 
-    # A single line an owner can read without opening anything.
+    repo = ok.get("repo")
+    payload["repository"] = repo if isinstance(repo, dict) else None
+
     if payload["seats"] and payload["board"]:
         live = payload["seats"]["by_liveness"].get("LIVE", 0)
         quiet = payload["seats"]["by_liveness"].get("QUIET", 0)
