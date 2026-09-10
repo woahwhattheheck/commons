@@ -1,0 +1,33 @@
+{
+  "operation": "TITAN-V3-FUNDING-PLANT-DECAY-CHRONOLOGY-20260910-01",
+  "status": "SOURCE_REAL_ACTION_UNMEASURED",
+  "binding": {
+    "source_git_blob_sha1": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "official_engine_git_blob_sha1": "3c202c7ee921da239356789e266b694635103fc4"
+  },
+  "witness": {
+    "now": 100,
+    "end": 103,
+    "shed_capacity": 2,
+    "starting_cash": 300,
+    "current_shed": {"MILK": 1},
+    "current_market": [["SELL", "MILK", 1]],
+    "plant": {"crop": "WHEAT", "yield_units": 2, "max_lifespan_step": 100},
+    "future_route": {
+      "101": {"farmer": ["HARVEST"]},
+      "102": {"farmer": ["DROP"]},
+      "103": {"market": [["BUY_ANIMAL", "GOOSE", 1]]}
+    },
+    "incumbent_minimum_now": 0,
+    "candidate_minimum_now": 1,
+    "official_baseline_purchase_units": 1,
+    "official_withheld_purchase_units": 0
+  },
+  "claims_not_made": [
+    "gameplay_strength",
+    "promotion",
+    "hosted_leaderboard_uplift",
+    "canonical_integration",
+    "provider_or_kaggle_mutation"
+  ]
+}

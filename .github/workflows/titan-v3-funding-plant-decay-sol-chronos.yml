@@ -1,0 +1,80 @@
+name: titan-v3-funding-plant-decay-sol-chronos
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-funding-plant-decay-sol-chronos.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPYCACHEPREFIX: /tmp/titan-v3-funding-plant-decay-pycache
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Bind exact event head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run exact source and chronology contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/test_funding_plant_decay.py \
+            2>&1 | tee /tmp/funding-plant-decay-tests.log
+      - name: Materialize disconnected candidate and receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/funding-plant-decay-output
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py \
+            --source revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+            --engine revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
+            --output /tmp/funding-plant-decay-output/frozen_selected_decay.py \
+            --receipt /tmp/funding-plant-decay-output/receipt.json \
+            | tee /tmp/funding-plant-decay-materialize.log
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/test_funding_plant_decay.py \
+            /tmp/funding-plant-decay-output/frozen_selected_decay.py
+          sha256sum \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/test_funding_plant_decay.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/WITNESS.json \
+            /tmp/funding-plant-decay-output/frozen_selected_decay.py \
+            /tmp/funding-plant-decay-output/receipt.json \
+            | tee /tmp/funding-plant-decay-sha256.txt
+      - name: Prove canonical checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-funding-plant-decay-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          path: |
+            /tmp/funding-plant-decay-tests.log
+            /tmp/funding-plant-decay-materialize.log
+            /tmp/funding-plant-decay-sha256.txt
+            /tmp/funding-plant-decay-output/frozen_selected_decay.py
+            /tmp/funding-plant-decay-output/receipt.json
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/WITNESS.json
