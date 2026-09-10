@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""CLI predecessor killer for byte-drifted run configuration."""
+"""CLI predecessor killers for drifted or malformed run configuration."""
 from __future__ import annotations
 
 import json
@@ -57,6 +57,29 @@ class ConfigDriftCliTests(unittest.TestCase):
         receipts = self.harness.state / "receipts"
         self.assertFalse(
             receipts.exists() and any(receipts.iterdir())
+        )
+
+    def test_malformed_config_is_bounded_before_queue_transition(self):
+        submission = self.harness._submit(
+            "malformed-config",
+            own=110.0,
+            policy_delta=5.0,
+        )
+        blobs_before = self._blob_names()
+        self.harness.config.write_text("[]", encoding="utf-8")
+
+        process = self.harness._run("--id", submission)
+        self.assertEqual(process.returncode, 2, process.stdout + process.stderr)
+        self.assertIn("FAILED run configuration", process.stdout)
+        self.assertNotIn("Traceback", process.stdout + process.stderr)
+
+        entry = json.loads(self.harness._cli("status", submission).stdout)
+        self.assertEqual(entry["status"], "pending")
+        self.assertEqual(entry["attempts"], [])
+        self.assertIsNone(entry["last_receipt"])
+        self.assertEqual(self._blob_names(), blobs_before)
+        self.assertFalse(
+            (self.harness.state / "attempts" / submission).exists()
         )
 
 
