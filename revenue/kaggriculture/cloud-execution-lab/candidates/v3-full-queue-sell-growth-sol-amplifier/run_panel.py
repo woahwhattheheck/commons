@@ -223,6 +223,15 @@ def strict_verdict(
     }
 
 
+def _required_argument(argv: Sequence[str], name: str) -> Path:
+    try:
+        index = list(argv).index(name)
+        value = list(argv)[index + 1]
+    except (ValueError, IndexError) as error:
+        raise ValueError(f"missing required runner argument: {name}") from error
+    return Path(value)
+
+
 def main(argv=None) -> int:
     runner = _load_runner()
     original_dependency_receipt = runner.dependency_receipt
@@ -269,6 +278,9 @@ def main(argv=None) -> int:
         receipt["sha256"]["source_audit"] = runner.sha256_file(HERE / "audit_change.py")
         receipt["sha256"]["panel_adapter"] = runner.sha256_file(HERE / "run_panel.py")
         receipt["sha256"]["panel_source"] = runner.sha256_file(RUNNER)
+        receipt["sha256"]["supplemental_gate"] = runner.sha256_file(
+            HERE / "verify_panel.py"
+        )
         receipt["candidate_bundle"] = runner.tree_sha256(HERE)
         receipt["ablation"] = {
             "operation": "titan-v3-full-queue-same-product-sell-growth-20260909-sol-amplifier-01",
@@ -301,7 +313,17 @@ def main(argv=None) -> int:
     runner.verdict = verdict
     runner.dependency_receipt = dependency_receipt
     runner.markdown = markdown
-    return int(runner.main(argv))
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    code = int(runner.main(arguments))
+    if code not in (0, 3):
+        return code
+    import verify_panel
+
+    result = verify_panel.verify_files(
+        _required_argument(arguments, "--output"),
+        _required_argument(arguments, "--markdown"),
+    )
+    return 0 if result["decision"] == "ADVANCE" else 3
 
 
 if __name__ == "__main__":
