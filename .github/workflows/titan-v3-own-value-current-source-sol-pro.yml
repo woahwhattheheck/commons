@@ -1,0 +1,86 @@
+name: titan-v3-own-value-current-source-sol-pro
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-current-source-sol-pro/**"
+      - ".github/workflows/titan-v3-own-value-current-source-sol-pro.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-current-source-sol-pro/**"
+      - ".github/workflows/titan-v3-own-value-current-source-sol-pro.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-own-value-current-source-sol-pro-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-current-source-sol-pro
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
+    steps:
+      - name: Check out exact triggering commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile source and contracts
+        run: |
+          python -m py_compile \
+            "$LAB/selected_sell_core.py" \
+            "$CASE/verify_current_source.py" \
+            "$CASE/test_current_source.py"
+
+      - name: Verify exact current-source objective
+        run: |
+          python "$CASE/verify_current_source.py" \
+            --source "$LAB/selected_sell_core.py" \
+            --output "$RUNNER_TEMP/source-contract.json"
+
+      - name: Run predecessor-killing mechanism suite
+        run: |
+          cd "$CASE"
+          python -m unittest -v test_current_source.py
+
+      - name: Audit emitted receipt
+        run: |
+          python - "$RUNNER_TEMP/source-contract.json" <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          report = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert report["operation"] == "TITAN-V3-OWN-VALUE-CURRENT-SOURCE-INTEGRATION-20260910-01"
+          assert report["objective_field"] == "own_cash + carry"
+          assert report["diagnostic_fields"] == ["own_cash", "other_cash", "remaining"]
+          assert report["objective_dependencies"] == ["carry", "own_cash"]
+          assert report["one_factor_source_contract"] is True
+          assert report["promotion_authorized"] is False
+          print(json.dumps(report, indent=2, sort_keys=True))
+          PY
+
+      - name: Retain exact source-contract receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-value-current-source-${{ github.sha }}
+          path: ${{ runner.temp }}/source-contract.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Prove checkout stayed clean
+        run: git diff --exit-code -- .

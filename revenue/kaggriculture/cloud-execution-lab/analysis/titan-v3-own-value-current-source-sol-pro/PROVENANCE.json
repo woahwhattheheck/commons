@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "operation": "TITAN-V3-OWN-VALUE-CURRENT-SOURCE-INTEGRATION-20260910-01",
+  "claim": {
+    "channel_id": "C0C0Z8AHGP2",
+    "message_ts": "1789070171.142609"
+  },
+  "repository": "woahwhattheheck/commons",
+  "branch": "sol-pro/titan-v3-own-value-current-source-20260910-01",
+  "base_commit": "21011846096daad1dd487df0efedf209303c1cb5",
+  "source": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py",
+    "predecessor_git_blob_sha1": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+    "candidate_git_blob_sha1": "368c21384b85b4dba39971cb8a51b6942d10acc7",
+    "predecessor_objective": "own_cash + carry - other_cash",
+    "candidate_objective": "own_cash + carry",
+    "diagnostic_tuple_fields": [
+      "own_cash",
+      "other_cash",
+      "remaining"
+    ]
+  },
+  "inherited_evidence": {
+    "pull_request": 11965,
+    "head_commit": "b6b9a8a4ca26152bbfe1a3833380ca885e5c4cae",
+    "workflow_run": 34521455981,
+    "review_id": 5171602997,
+    "cells": 32,
+    "candidate_action_changes": 32,
+    "mean_own_cash_delta": 159.25,
+    "median_own_cash_delta": 118.5,
+    "total_own_cash_delta": 5096,
+    "mean_margin_delta": 530.96875,
+    "control_record": "31W/1L",
+    "candidate_record": "32W/0L",
+    "new_losses": 0,
+    "lost_wins": 0,
+    "interpretation": "development integration intake; not disjoint promotion evidence"
+  },
+  "contracts": {
+    "static_and_dynamic_tests": 9,
+    "gameplay_games": 0,
+    "predecessor_killed": true,
+    "tuple_preserved": true,
+    "promotion_authorized": false
+  },
+  "excluded_mutations": [
+    "canonical archive",
+    "source manifest",
+    "archive pointer",
+    "provider state",
+    "Kaggle state",
+    "submission state"
+  ]
+}
