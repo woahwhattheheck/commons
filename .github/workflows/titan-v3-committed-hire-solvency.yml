@@ -1,0 +1,155 @@
+name: titan-v3-committed-hire-solvency
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-committed-hire-solvency.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/committed_hire.py"
+      - "revenue/kaggriculture/cloud-execution-lab/committed_hire_entrypoint.py"
+      - "revenue/kaggriculture/cloud-execution-lab/test_committed_hire.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/committed-hire-solvency-20260910/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-committed-hire-solvency-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONPATH: ${{ github.workspace }}/revenue/kaggriculture/cloud-runtime-pulse:${{ github.workspace }}/revenue/kaggriculture/cloud-quickstep:${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile exact candidate surface
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            committed_hire.py \
+            committed_hire_entrypoint.py \
+            test_committed_hire.py \
+            frozen_selected.py \
+            scheduler.py
+
+      - name: Run committed-HIRE and neighboring funding contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v \
+            test_committed_hire \
+            test_funded_prefix \
+            test_e07_same_turn_funding \
+            test_joint_market_slots
+
+  official-matched-smoke:
+    needs: contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      ENGINE_SHA256: bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e
+      ENGINE_JSON_SHA256: a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867
+      UTILS_SHA256: 537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install and byte-bind official interpreter
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --quiet "kaggle-environments==1.32.7"
+          PACKAGE=$("$RUNNER_TEMP/venv/bin/python" -c 'import kaggle_environments,os;print(os.path.dirname(kaggle_environments.__file__))')
+          mkdir -p "$RUNNER_TEMP/engine" "$RUNNER_TEMP/evidence"
+          cp "$PACKAGE/envs/kaggriculture/kaggriculture.py" \
+             "$PACKAGE/envs/kaggriculture/kaggriculture.json" \
+             "$PACKAGE/utils.py" \
+             "$RUNNER_TEMP/engine/"
+          printf '%s  %s\n' \
+            "$ENGINE_SHA256" "$RUNNER_TEMP/engine/kaggriculture.py" \
+            "$ENGINE_JSON_SHA256" "$RUNNER_TEMP/engine/kaggriculture.json" \
+            "$UTILS_SHA256" "$RUNNER_TEMP/engine/utils.py" | sha256sum -c -
+
+      - name: Run exact submitted-loss seed plus three retained comparison seeds
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/venv/bin/python" -B "$LAB/reference/evaluator/evaluate.py" \
+            --engine-dir "$RUNNER_TEMP/engine" \
+            --loader "revenue/kaggriculture/20260907-offline-agent/evaluate.py" \
+            --candidate "$LAB/committed_hire_entrypoint.py::agent" \
+            --opponent "current_main=$LAB/main.py::agent" \
+            --seeds "539131249,1834999074,1885507524,65112964" \
+            --rng-seed 20260910 \
+            --action-timeout 15 \
+            --startup-timeout 60 \
+            --game-timeout 1800 \
+            --recheck-first \
+            --output "$RUNNER_TEMP/evidence/matched.json"
+
+      - name: Emit fail-closed matched receipt
+        if: always()
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import subprocess
+
+          evidence = pathlib.Path(os.environ["RUNNER_TEMP"]) / "evidence"
+          report_path = evidence / "matched.json"
+          payload = {
+              "schema": "titan-v3-committed-hire-matched-receipt-v1",
+              "workflow_sha": os.environ["GITHUB_SHA"],
+              "run_id": os.environ["GITHUB_RUN_ID"],
+              "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "checkout": subprocess.check_output(
+                  ["git", "rev-parse", "HEAD"], text=True
+              ).strip(),
+              "matched_report": None,
+          }
+          if report_path.exists():
+              report = json.loads(report_path.read_text())
+              summary = report["summary"]["current_main"]
+              if summary["completed"] != summary["scheduled"] or summary["failed"]:
+                  raise SystemExit("incomplete official matched game")
+              payload["matched_report"] = {
+                  "bytes": report_path.stat().st_size,
+                  "sha256": hashlib.sha256(report_path.read_bytes()).hexdigest(),
+                  "summary": summary,
+                  "reproducibility": report["reproducibility"],
+              }
+          (evidence / "RECEIPT.json").write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(payload, indent=2, sort_keys=True))
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-v3-committed-hire-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 14
