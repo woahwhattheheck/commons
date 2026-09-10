@@ -106,8 +106,8 @@ def find_config_references(runtime: Path, factors: Sequence[str] = FACTORS) -> d
 
     The scan is AST-bound and excludes packaged checks, historical fixtures, and
     tests. It recognizes fields declared on ``Features`` plus attribute, ``get``,
-    and subscript reads through the runtime feature/config carriers. This is a
-    conservative source-reachability screen, not proof of execution in a game.
+    ``getattr``, and subscript reads through runtime feature/config carriers. This
+    is a conservative source-reachability screen, not proof of execution in a game.
     """
     references: dict[str, list[dict[str, Any]]] = {factor: [] for factor in factors}
     factor_set = set(factors)
@@ -171,6 +171,15 @@ def find_config_references(runtime: Path, factors: Sequence[str] = FACTORS) -> d
                     and _feature_receiver(node.func.value)
                 ):
                     self.record(str(node.args[0].value), node, "mapping get")
+                if (
+                    isinstance(node.func, ast.Name)
+                    and node.func.id == "getattr"
+                    and len(node.args) >= 2
+                    and isinstance(node.args[1], ast.Constant)
+                    and node.args[1].value in factor_set
+                    and _feature_receiver(node.args[0])
+                ):
+                    self.record(str(node.args[1].value), node, "getattr access")
                 self.generic_visit(node)
 
             def visit_Subscript(self, node: ast.Subscript) -> None:
