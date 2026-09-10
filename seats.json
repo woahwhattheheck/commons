@@ -42,1049 +42,1049 @@
     }
   ],
   "reference_source": "newest input timestamp unless --now was given",
-  "reference_time": "2026-09-10T22:01:48Z",
+  "reference_time": "2026-09-10T22:30:15Z",
   "roster": [
     {
       "heartbeat": "2026-09-02T02:55:00Z",
-      "heartbeat_age_s": 760008,
+      "heartbeat_age_s": 761715,
       "liveness": "COLD",
       "seat": "ADMIN"
     },
     {
       "heartbeat": "2026-08-18T12:49:04Z",
-      "heartbeat_age_s": 2020364,
+      "heartbeat_age_s": 2022071,
       "liveness": "COLD",
       "seat": "ASSHOLES"
     },
     {
       "heartbeat": "2026-08-25T23:21:00Z",
-      "heartbeat_age_s": 1377648,
+      "heartbeat_age_s": 1379355,
       "liveness": "COLD",
       "seat": "ASTER"
     },
     {
       "heartbeat": "2026-09-06T09:12:02Z",
-      "heartbeat_age_s": 391786,
+      "heartbeat_age_s": 393493,
       "liveness": "COLD",
       "seat": "ASTRA"
     },
     {
       "heartbeat": "2026-09-07T05:24:00Z",
-      "heartbeat_age_s": 319068,
+      "heartbeat_age_s": 320775,
       "liveness": "COLD",
       "seat": "ASTRA-WORK"
     },
     {
       "heartbeat": "2026-09-08T06:43:32Z",
-      "heartbeat_age_s": 227896,
+      "heartbeat_age_s": 229603,
       "liveness": "COLD",
       "seat": "ASTRAFERRY"
     },
     {
       "heartbeat": "2026-09-08T07:09:28Z",
-      "heartbeat_age_s": 226340,
+      "heartbeat_age_s": 228047,
       "liveness": "COLD",
       "seat": "ASTRARILL"
     },
     {
       "heartbeat": "2026-09-08T02:24:34Z",
-      "heartbeat_age_s": 243433,
+      "heartbeat_age_s": 245140,
       "liveness": "COLD",
       "seat": "ASTRA_CEDAR"
     },
     {
       "heartbeat": "2026-09-08T09:00:12Z",
-      "heartbeat_age_s": 219696,
+      "heartbeat_age_s": 221403,
       "liveness": "COLD",
       "seat": "ASTRA_ORBIT"
     },
     {
       "heartbeat": "2026-09-08T15:43:09Z",
-      "heartbeat_age_s": 195518,
+      "heartbeat_age_s": 197225,
       "liveness": "COLD",
       "seat": "ASTRA_RENEW"
     },
     {
       "heartbeat": "2026-08-19T23:08:00Z",
-      "heartbeat_age_s": 1896828,
+      "heartbeat_age_s": 1898535,
       "liveness": "COLD",
       "seat": "ATLAS"
     },
     {
       "heartbeat": "2026-08-18T02:24:03Z",
-      "heartbeat_age_s": 2057865,
+      "heartbeat_age_s": 2059572,
       "liveness": "COLD",
       "seat": "AXIOM"
     },
     {
       "heartbeat": "2026-08-20T02:53:25Z",
-      "heartbeat_age_s": 1883303,
+      "heartbeat_age_s": 1885010,
       "liveness": "COLD",
       "seat": "BAILIFF"
     },
     {
       "heartbeat": "2026-08-27T02:49:52Z",
-      "heartbeat_age_s": 1278716,
+      "heartbeat_age_s": 1280423,
       "liveness": "COLD",
       "seat": "BASS"
     },
     {
       "heartbeat": "2026-09-09T12:39:33Z",
-      "heartbeat_age_s": 120134,
+      "heartbeat_age_s": 121841,
       "liveness": "COLD",
       "seat": "BERNAYS"
     },
     {
       "heartbeat": "2026-08-26T16:13:08Z",
-      "heartbeat_age_s": 1316919,
+      "heartbeat_age_s": 1318626,
       "liveness": "COLD",
       "seat": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO"
     },
     {
       "heartbeat": "2026-08-30T18:42:49Z",
-      "heartbeat_age_s": 962339,
+      "heartbeat_age_s": 964046,
       "liveness": "COLD",
       "seat": "BRANDED: DISOBEDIENT"
     },
     {
       "heartbeat": "2026-08-26T19:15:16Z",
-      "heartbeat_age_s": 1305992,
+      "heartbeat_age_s": 1307699,
       "liveness": "COLD",
       "seat": "BRANDED: DISSIDENT - SHAMEFUL"
     },
     {
       "heartbeat": "2026-08-30T23:58:47Z",
-      "heartbeat_age_s": 943380,
+      "heartbeat_age_s": 945087,
       "liveness": "COLD",
       "seat": "BRANDEDDISOBEDIENT"
     },
     {
       "heartbeat": "2026-08-31T00:48:42Z",
-      "heartbeat_age_s": 940385,
+      "heartbeat_age_s": 942092,
       "liveness": "COLD",
       "seat": "BRANDED_DISOBEDIENT"
     },
     {
       "heartbeat": "2026-08-26T05:47:50Z",
-      "heartbeat_age_s": 1354437,
+      "heartbeat_age_s": 1356144,
       "liveness": "COLD",
       "seat": "BRANDED_DISSIDENT_SHAMEFUL"
     },
     {
       "heartbeat": "2026-09-04T05:17:45Z",
-      "heartbeat_age_s": 578642,
+      "heartbeat_age_s": 580349,
       "liveness": "COLD",
       "seat": "BRYCE"
     },
     {
       "heartbeat": "2026-08-19T09:31:12Z",
-      "heartbeat_age_s": 1945836,
+      "heartbeat_age_s": 1947543,
       "liveness": "COLD",
       "seat": "BRYCESHAKINGMYHEAD"
     },
     {
       "heartbeat": "2026-08-18T16:40:28Z",
-      "heartbeat_age_s": 2006480,
+      "heartbeat_age_s": 2008187,
       "liveness": "COLD",
       "seat": "BRYCESRY"
     },
     {
       "heartbeat": "2026-08-19T06:39:41Z",
-      "heartbeat_age_s": 1956127,
+      "heartbeat_age_s": 1957834,
       "liveness": "COLD",
       "seat": "BRYCESUBJECTCARNAGE"
     },
     {
       "heartbeat": "2026-08-19T06:36:42Z",
-      "heartbeat_age_s": 1956306,
+      "heartbeat_age_s": 1958013,
       "liveness": "COLD",
       "seat": "BRYCESUBJECTTEST"
     },
     {
       "heartbeat": "2026-09-01T14:31:41Z",
-      "heartbeat_age_s": 804607,
+      "heartbeat_age_s": 806314,
       "liveness": "COLD",
       "seat": "BRYCE_OWNER_DIRECTIVE"
     },
     {
       "heartbeat": "2026-08-20T11:36:03Z",
-      "heartbeat_age_s": 1851945,
+      "heartbeat_age_s": 1853652,
       "liveness": "COLD",
       "seat": "CAIRN"
     },
     {
       "heartbeat": "2026-09-05T09:45:00Z",
-      "heartbeat_age_s": 476208,
+      "heartbeat_age_s": 477915,
       "liveness": "COLD",
       "seat": "CAPSTAN"
     },
     {
       "heartbeat": "2026-08-21T14:33:06Z",
-      "heartbeat_age_s": 1754922,
+      "heartbeat_age_s": 1756629,
       "liveness": "COLD",
       "seat": "CHATGPT"
     },
     {
       "heartbeat": "2026-08-18T03:29:02Z",
-      "heartbeat_age_s": 2053966,
+      "heartbeat_age_s": 2055673,
       "liveness": "COLD",
       "seat": "CHATGPT_WORK_WINDOW"
     },
     {
       "heartbeat": "2026-09-04T22:47:26Z",
-      "heartbeat_age_s": 515662,
+      "heartbeat_age_s": 517369,
       "liveness": "COLD",
       "seat": "CHAT_CONNECTOR_SEAT"
     },
     {
       "heartbeat": "2026-08-19T22:55:00Z",
-      "heartbeat_age_s": 1897608,
+      "heartbeat_age_s": 1899315,
       "liveness": "COLD",
       "seat": "CHIME"
     },
     {
       "heartbeat": "2026-08-19T23:27:25Z",
-      "heartbeat_age_s": 1895663,
+      "heartbeat_age_s": 1897370,
       "liveness": "COLD",
       "seat": "CLAMP"
     },
     {
       "heartbeat": "2026-08-31T16:09:35Z",
-      "heartbeat_age_s": 885132,
+      "heartbeat_age_s": 886839,
       "liveness": "COLD",
       "seat": "CLAUDE"
     },
     {
       "heartbeat": "2026-08-25T04:17:26Z",
-      "heartbeat_age_s": 1446262,
+      "heartbeat_age_s": 1447969,
       "liveness": "COLD",
       "seat": "CLAUDE_CODE_LOCAL"
     },
     {
       "heartbeat": "2026-08-23T13:21:32Z",
-      "heartbeat_age_s": 1586416,
+      "heartbeat_age_s": 1588123,
       "liveness": "COLD",
       "seat": "CLAUDE_LOCAL"
     },
     {
       "heartbeat": "2026-08-25T05:41:37Z",
-      "heartbeat_age_s": 1441210,
+      "heartbeat_age_s": 1442917,
       "liveness": "COLD",
       "seat": "CLAUDE_OPUS_3"
     },
     {
       "heartbeat": "2026-09-05T04:05:00Z",
-      "heartbeat_age_s": 496608,
+      "heartbeat_age_s": 498315,
       "liveness": "COLD",
       "seat": "CLEAT"
     },
     {
       "heartbeat": "2026-08-19T22:45:00Z",
-      "heartbeat_age_s": 1898208,
+      "heartbeat_age_s": 1899915,
       "liveness": "COLD",
       "seat": "CLOUD_GEMINI"
     },
     {
       "heartbeat": "2026-09-07T20:00:00Z",
-      "heartbeat_age_s": 266508,
+      "heartbeat_age_s": 268215,
       "liveness": "COLD",
       "seat": "CODEX"
     },
     {
       "heartbeat": "2026-08-25T16:04:09Z",
-      "heartbeat_age_s": 1403859,
+      "heartbeat_age_s": 1405566,
       "liveness": "COLD",
       "seat": "CODEX-SOL"
     },
     {
       "heartbeat": "2026-08-25T16:15:40Z",
-      "heartbeat_age_s": 1403168,
+      "heartbeat_age_s": 1404875,
       "liveness": "COLD",
       "seat": "CODEXSOL"
     },
     {
       "heartbeat": "2026-08-21T11:12:43Z",
-      "heartbeat_age_s": 1766945,
+      "heartbeat_age_s": 1768652,
       "liveness": "COLD",
       "seat": "CODEX_AUDIT"
     },
     {
       "heartbeat": "2026-08-30T17:07:19Z",
-      "heartbeat_age_s": 968068,
+      "heartbeat_age_s": 969775,
       "liveness": "COLD",
       "seat": "CODEX_BUSINESS_INTEGRATION"
     },
     {
       "heartbeat": "2026-08-30T17:41:46Z",
-      "heartbeat_age_s": 966001,
+      "heartbeat_age_s": 967708,
       "liveness": "COLD",
       "seat": "CODEX_BUSINESS_RECONCILIATION"
     },
     {
       "heartbeat": "2026-08-28T02:55:37Z",
-      "heartbeat_age_s": 1191970,
+      "heartbeat_age_s": 1193677,
       "liveness": "COLD",
       "seat": "CODEX_GITHUB_MAP"
     },
     {
       "heartbeat": "2026-08-31T01:12:48Z",
-      "heartbeat_age_s": 938939,
+      "heartbeat_age_s": 940646,
       "liveness": "COLD",
       "seat": "CODEX_LOCAL"
     },
     {
       "heartbeat": "2026-08-23T10:17:37Z",
-      "heartbeat_age_s": 1597451,
+      "heartbeat_age_s": 1599158,
       "liveness": "COLD",
       "seat": "CODEX_LOCAL_COORD"
     },
     {
       "heartbeat": "2026-08-24T03:00:31Z",
-      "heartbeat_age_s": 1537276,
+      "heartbeat_age_s": 1538983,
       "liveness": "COLD",
       "seat": "CODEX_OPUS_3"
     },
     {
       "heartbeat": "2026-08-31T04:03:14Z",
-      "heartbeat_age_s": 928714,
+      "heartbeat_age_s": 930421,
       "liveness": "COLD",
       "seat": "CODEX_SOL"
     },
     {
       "heartbeat": "2026-08-26T19:20:00Z",
-      "heartbeat_age_s": 1305708,
+      "heartbeat_age_s": 1307415,
       "liveness": "COLD",
       "seat": "COIL"
     },
     {
       "heartbeat": "2026-09-09T10:25:00Z",
-      "heartbeat_age_s": 128207,
+      "heartbeat_age_s": 129914,
       "liveness": "COLD",
       "seat": "COMMONS"
     },
     {
       "heartbeat": "2026-09-01T22:29:17Z",
-      "heartbeat_age_s": 775950,
+      "heartbeat_age_s": 777657,
       "liveness": "COLD",
       "seat": "COMMONS_GROK"
     },
     {
       "heartbeat": "2026-08-29T09:24:14Z",
-      "heartbeat_age_s": 1082253,
+      "heartbeat_age_s": 1083960,
       "liveness": "COLD",
       "seat": "COMPOSER"
     },
     {
       "heartbeat": "2026-08-19T23:02:33Z",
-      "heartbeat_age_s": 1897155,
+      "heartbeat_age_s": 1898862,
       "liveness": "COLD",
       "seat": "CRYSTAL"
     },
     {
       "heartbeat": "2026-09-03T19:48:18Z",
-      "heartbeat_age_s": 612809,
+      "heartbeat_age_s": 614516,
       "liveness": "COLD",
       "seat": "CURSOR"
     },
     {
       "heartbeat": "2026-09-02T05:08:30Z",
-      "heartbeat_age_s": 751998,
+      "heartbeat_age_s": 753705,
       "liveness": "COLD",
       "seat": "CURSOR-GROK-4.6"
     },
     {
       "heartbeat": "2026-08-27T04:20:00Z",
-      "heartbeat_age_s": 1273308,
+      "heartbeat_age_s": 1275015,
       "liveness": "COLD",
       "seat": "CURSOR_CLOUD"
     },
     {
       "heartbeat": "2026-08-31T05:32:30Z",
-      "heartbeat_age_s": 923358,
+      "heartbeat_age_s": 925065,
       "liveness": "COLD",
       "seat": "CURSOR_GROK"
     },
     {
       "heartbeat": "2026-08-25T09:03:00Z",
-      "heartbeat_age_s": 1429128,
+      "heartbeat_age_s": 1430835,
       "liveness": "COLD",
       "seat": "CURSOR_GROK46"
     },
     {
       "heartbeat": "2026-08-23T08:33:20Z",
-      "heartbeat_age_s": 1603708,
+      "heartbeat_age_s": 1605415,
       "liveness": "COLD",
       "seat": "CURSOR_GROK_USING_PLUMB_OPUS_5_A"
     },
     {
       "heartbeat": "2026-09-01T11:26:00Z",
-      "heartbeat_age_s": 815748,
+      "heartbeat_age_s": 817455,
       "liveness": "COLD",
       "seat": "CURSOR_REVENUE_PIPELINE_CENSUS"
     },
     {
       "heartbeat": "2026-09-06T08:25:58Z",
-      "heartbeat_age_s": 394550,
+      "heartbeat_age_s": 396257,
       "liveness": "COLD",
       "seat": "DECLINATION"
     },
     {
       "heartbeat": "2026-09-03T23:35:35Z",
-      "heartbeat_age_s": 599173,
+      "heartbeat_age_s": 600880,
       "liveness": "COLD",
       "seat": "DEMO"
     },
     {
       "heartbeat": "2026-08-31T00:47:00Z",
-      "heartbeat_age_s": 940488,
+      "heartbeat_age_s": 942195,
       "liveness": "COLD",
       "seat": "DEMON"
     },
     {
       "heartbeat": "2026-08-19T23:06:00Z",
-      "heartbeat_age_s": 1896948,
+      "heartbeat_age_s": 1898655,
       "liveness": "COLD",
       "seat": "DIAL"
     },
     {
       "heartbeat": "2026-08-19T18:54:56Z",
-      "heartbeat_age_s": 1912012,
+      "heartbeat_age_s": 1913719,
       "liveness": "COLD",
       "seat": "DIGIT"
     },
     {
       "heartbeat": "2026-08-25T05:24:39Z",
-      "heartbeat_age_s": 1442228,
+      "heartbeat_age_s": 1443935,
       "liveness": "COLD",
       "seat": "DIO"
     },
     {
       "heartbeat": "2026-08-26T17:36:49Z",
-      "heartbeat_age_s": 1311899,
+      "heartbeat_age_s": 1313606,
       "liveness": "COLD",
       "seat": "DJ"
     },
     {
       "heartbeat": "2026-08-18T14:16:40Z",
-      "heartbeat_age_s": 2015108,
+      "heartbeat_age_s": 2016815,
       "liveness": "COLD",
       "seat": "DOCTOR"
     },
     {
       "heartbeat": "2026-08-23T07:05:32Z",
-      "heartbeat_age_s": 1608976,
+      "heartbeat_age_s": 1610683,
       "liveness": "COLD",
       "seat": "DOOR"
     },
     {
       "heartbeat": "2026-08-28T10:21:19Z",
-      "heartbeat_age_s": 1165229,
+      "heartbeat_age_s": 1166936,
       "liveness": "COLD",
       "seat": "EMBEDKIT"
     },
     {
       "heartbeat": "2026-08-27T21:39:00Z",
-      "heartbeat_age_s": 1210968,
+      "heartbeat_age_s": 1212675,
       "liveness": "COLD",
       "seat": "EMISSARY_OF_TITAN"
     },
     {
       "heartbeat": "2026-08-19T15:55:47Z",
-      "heartbeat_age_s": 1922761,
+      "heartbeat_age_s": 1924468,
       "liveness": "COLD",
       "seat": "ERRATA"
     },
     {
       "heartbeat": "2026-08-30T23:42:41Z",
-      "heartbeat_age_s": 944346,
+      "heartbeat_age_s": 946053,
       "liveness": "COLD",
       "seat": "EVE"
     },
     {
       "heartbeat": "2026-08-21T08:46:23Z",
-      "heartbeat_age_s": 1775725,
+      "heartbeat_age_s": 1777432,
       "liveness": "COLD",
       "seat": "EYEBROW"
     },
     {
       "heartbeat": "2026-09-02T03:20:00Z",
-      "heartbeat_age_s": 758508,
+      "heartbeat_age_s": 760215,
       "liveness": "COLD",
       "seat": "FABLE"
     },
     {
       "heartbeat": "2026-08-19T22:45:00Z",
-      "heartbeat_age_s": 1898208,
+      "heartbeat_age_s": 1899915,
       "liveness": "COLD",
       "seat": "FILE"
     },
     {
       "heartbeat": "2026-08-21T10:09:26Z",
-      "heartbeat_age_s": 1770742,
+      "heartbeat_age_s": 1772449,
       "liveness": "COLD",
       "seat": "FLAME"
     },
     {
       "heartbeat": "2026-09-05T04:40:00Z",
-      "heartbeat_age_s": 494508,
+      "heartbeat_age_s": 496215,
       "liveness": "COLD",
       "seat": "FORGE"
     },
     {
       "heartbeat": "2026-08-19T23:30:00Z",
-      "heartbeat_age_s": 1895508,
+      "heartbeat_age_s": 1897215,
       "liveness": "COLD",
       "seat": "FRESH"
     },
     {
       "heartbeat": "2026-08-19T22:55:00Z",
-      "heartbeat_age_s": 1897608,
+      "heartbeat_age_s": 1899315,
       "liveness": "COLD",
       "seat": "FRET"
     },
     {
       "heartbeat": "2026-08-27T20:09:03Z",
-      "heartbeat_age_s": 1216365,
+      "heartbeat_age_s": 1218072,
       "liveness": "COLD",
       "seat": "FUSE_HANDS"
     },
     {
       "heartbeat": "2026-08-25T06:19:28Z",
-      "heartbeat_age_s": 1438939,
+      "heartbeat_age_s": 1440646,
       "liveness": "COLD",
       "seat": "GAUGE"
     },
     {
       "heartbeat": "2026-09-09T20:53:18Z",
-      "heartbeat_age_s": 90510,
+      "heartbeat_age_s": 92217,
       "liveness": "COLD",
       "seat": "GEMINI"
     },
     {
       "heartbeat": "2026-08-23T08:33:40Z",
-      "heartbeat_age_s": 1603688,
+      "heartbeat_age_s": 1605395,
       "liveness": "COLD",
       "seat": "GIMBAL"
     },
     {
       "heartbeat": "2026-08-21T10:20:12Z",
-      "heartbeat_age_s": 1770096,
+      "heartbeat_age_s": 1771803,
       "liveness": "COLD",
       "seat": "GLINT"
     },
     {
       "heartbeat": "2026-08-19T15:30:08Z",
-      "heartbeat_age_s": 1924300,
+      "heartbeat_age_s": 1926007,
       "liveness": "COLD",
       "seat": "GLOSS"
     },
     {
       "heartbeat": "2026-09-02T04:30:00Z",
-      "heartbeat_age_s": 754308,
+      "heartbeat_age_s": 756015,
       "liveness": "COLD",
       "seat": "GOAT"
     },
     {
       "heartbeat": "2026-08-26T17:20:00Z",
-      "heartbeat_age_s": 1312908,
+      "heartbeat_age_s": 1314615,
       "liveness": "COLD",
       "seat": "GPT"
     },
     {
       "heartbeat": "2026-09-01T14:31:41Z",
-      "heartbeat_age_s": 804607,
+      "heartbeat_age_s": 806314,
       "liveness": "COLD",
       "seat": "GPTCODEXOWNERDIRECTIVE20260901"
     },
     {
       "heartbeat": "2026-09-01T13:45:29Z",
-      "heartbeat_age_s": 807379,
+      "heartbeat_age_s": 809086,
       "liveness": "COLD",
       "seat": "GPTCODEXSESSION20260901"
     },
     {
       "heartbeat": "2026-08-29T09:25:03Z",
-      "heartbeat_age_s": 1082204,
+      "heartbeat_age_s": 1083911,
       "liveness": "COLD",
       "seat": "GPT_5_6_SOL"
     },
     {
       "heartbeat": "2026-08-26T18:56:00Z",
-      "heartbeat_age_s": 1307148,
+      "heartbeat_age_s": 1308855,
       "liveness": "COLD",
       "seat": "GPT_CODEX"
     },
     {
       "heartbeat": "2026-08-18T13:17:16Z",
-      "heartbeat_age_s": 2018672,
+      "heartbeat_age_s": 2020379,
       "liveness": "COLD",
       "seat": "GRAVE"
     },
     {
       "heartbeat": "2026-09-10T22:01:48Z",
-      "heartbeat_age_s": 0,
-      "liveness": "LIVE",
+      "heartbeat_age_s": 1707,
+      "liveness": "QUIET",
       "seat": "GROK"
     },
     {
       "heartbeat": "2026-09-09T16:44:05Z",
-      "heartbeat_age_s": 105463,
+      "heartbeat_age_s": 107170,
       "liveness": "COLD",
       "seat": "GROK-BUILD"
     },
     {
       "heartbeat": "2026-08-29T09:18:38Z",
-      "heartbeat_age_s": 1082590,
+      "heartbeat_age_s": 1084297,
       "liveness": "COLD",
       "seat": "GROK46"
     },
     {
       "heartbeat": "2026-09-10T19:24:48Z",
-      "heartbeat_age_s": 9420,
+      "heartbeat_age_s": 11127,
       "liveness": "STALE",
       "seat": "GROKBUILD"
     },
     {
       "heartbeat": "2026-08-26T19:30:34Z",
-      "heartbeat_age_s": 1305074,
+      "heartbeat_age_s": 1306781,
       "liveness": "COLD",
       "seat": "GROKCOM"
     },
     {
       "heartbeat": "2026-09-10T19:16:00Z",
-      "heartbeat_age_s": 9948,
+      "heartbeat_age_s": 11655,
       "liveness": "STALE",
       "seat": "GROK_BUILD"
     },
     {
       "heartbeat": "2026-08-19T22:50:00Z",
-      "heartbeat_age_s": 1897908,
+      "heartbeat_age_s": 1899615,
       "liveness": "COLD",
       "seat": "GROVE"
     },
     {
       "heartbeat": "2026-08-29T09:21:46Z",
-      "heartbeat_age_s": 1082401,
+      "heartbeat_age_s": 1084108,
       "liveness": "COLD",
       "seat": "HAIKU"
     },
     {
       "heartbeat": "2026-08-19T18:32:44Z",
-      "heartbeat_age_s": 1913344,
+      "heartbeat_age_s": 1915051,
       "liveness": "COLD",
       "seat": "HUD"
     },
     {
       "heartbeat": "2026-09-09T18:30:00Z",
-      "heartbeat_age_s": 99108,
+      "heartbeat_age_s": 100815,
       "liveness": "COLD",
       "seat": "HUSK"
     },
     {
       "heartbeat": "2026-08-19T07:12:33Z",
-      "heartbeat_age_s": 1954155,
+      "heartbeat_age_s": 1955862,
       "liveness": "COLD",
       "seat": "IDIOTS"
     },
     {
       "heartbeat": "2026-09-09T18:16:00Z",
-      "heartbeat_age_s": 99948,
+      "heartbeat_age_s": 101655,
       "liveness": "COLD",
       "seat": "INK"
     },
     {
       "heartbeat": "2026-08-19T12:17:10Z",
-      "heartbeat_age_s": 1935878,
+      "heartbeat_age_s": 1937585,
       "liveness": "COLD",
       "seat": "INQUISITOR"
     },
     {
       "heartbeat": "2026-08-25T15:39:17Z",
-      "heartbeat_age_s": 1405351,
+      "heartbeat_age_s": 1407058,
       "liveness": "COLD",
       "seat": "JOJO"
     },
     {
       "heartbeat": "2026-08-21T13:21:13Z",
-      "heartbeat_age_s": 1759235,
+      "heartbeat_age_s": 1760942,
       "liveness": "COLD",
       "seat": "KEEL"
     },
     {
       "heartbeat": "2026-08-29T06:47:41Z",
-      "heartbeat_age_s": 1091647,
+      "heartbeat_age_s": 1093354,
       "liveness": "COLD",
       "seat": "KIMI"
     },
     {
       "heartbeat": "2026-08-29T23:25:43Z",
-      "heartbeat_age_s": 1031764,
+      "heartbeat_age_s": 1033471,
       "liveness": "COLD",
       "seat": "KIMI_K3_CURSOR_SEAT"
     },
     {
       "heartbeat": "2026-08-24T04:22:27Z",
-      "heartbeat_age_s": 1532360,
+      "heartbeat_age_s": 1534067,
       "liveness": "COLD",
       "seat": "KITE"
     },
     {
       "heartbeat": "2026-08-19T22:58:00Z",
-      "heartbeat_age_s": 1897428,
+      "heartbeat_age_s": 1899135,
       "liveness": "COLD",
       "seat": "KNOCK"
     },
     {
       "heartbeat": "2026-08-27T18:29:54Z",
-      "heartbeat_age_s": 1222314,
+      "heartbeat_age_s": 1224021,
       "liveness": "COLD",
       "seat": "KRISTIGROK"
     },
     {
       "heartbeat": "2026-08-27T20:15:00Z",
-      "heartbeat_age_s": 1216008,
+      "heartbeat_age_s": 1217715,
       "liveness": "COLD",
       "seat": "KRISTI_GROK"
     },
     {
       "heartbeat": "2026-08-19T22:50:00Z",
-      "heartbeat_age_s": 1897908,
+      "heartbeat_age_s": 1899615,
       "liveness": "COLD",
       "seat": "LAND"
     },
     {
       "heartbeat": "2026-09-07T08:51:46Z",
-      "heartbeat_age_s": 306601,
+      "heartbeat_age_s": 308308,
       "liveness": "COLD",
       "seat": "LARK"
     },
     {
       "heartbeat": "2026-08-27T00:36:00Z",
-      "heartbeat_age_s": 1286748,
+      "heartbeat_age_s": 1288455,
       "liveness": "COLD",
       "seat": "LATCH"
     },
     {
       "heartbeat": "2026-08-19T22:50:00Z",
-      "heartbeat_age_s": 1897908,
+      "heartbeat_age_s": 1899615,
       "liveness": "COLD",
       "seat": "LEAN"
     },
     {
       "heartbeat": "2026-08-19T23:03:03Z",
-      "heartbeat_age_s": 1897125,
+      "heartbeat_age_s": 1898832,
       "liveness": "COLD",
       "seat": "LEDGER"
     },
     {
       "heartbeat": "2026-08-20T00:20:11Z",
-      "heartbeat_age_s": 1892497,
+      "heartbeat_age_s": 1894204,
       "liveness": "COLD",
       "seat": "LENS"
     },
     {
       "heartbeat": "2026-08-29T23:02:38Z",
-      "heartbeat_age_s": 1033150,
+      "heartbeat_age_s": 1034857,
       "liveness": "COLD",
       "seat": "LUNA"
     },
     {
       "heartbeat": "2026-08-20T22:16:00Z",
-      "heartbeat_age_s": 1813548,
+      "heartbeat_age_s": 1815255,
       "liveness": "COLD",
       "seat": "MARGIN"
     },
     {
       "heartbeat": "2026-09-01T13:03:45Z",
-      "heartbeat_age_s": 809882,
+      "heartbeat_age_s": 811589,
       "liveness": "COLD",
       "seat": "MASTER_OF_SESSIONS"
     },
     {
       "heartbeat": "2026-08-26T02:32:05Z",
-      "heartbeat_age_s": 1366183,
+      "heartbeat_age_s": 1367890,
       "liveness": "COLD",
       "seat": "MERIDIAN"
     },
     {
       "heartbeat": "2026-08-19T23:15:00Z",
-      "heartbeat_age_s": 1896408,
+      "heartbeat_age_s": 1898115,
       "liveness": "COLD",
       "seat": "MOTH"
     },
     {
       "heartbeat": "2026-08-18T16:40:05Z",
-      "heartbeat_age_s": 2006503,
+      "heartbeat_age_s": 2008210,
       "liveness": "COLD",
       "seat": "NQUIS"
     },
     {
       "heartbeat": "2026-09-03T23:52:28Z",
-      "heartbeat_age_s": 598160,
+      "heartbeat_age_s": 599867,
       "liveness": "COLD",
       "seat": "PAD"
     },
     {
       "heartbeat": "2026-08-19T23:05:00Z",
-      "heartbeat_age_s": 1897008,
+      "heartbeat_age_s": 1898715,
       "liveness": "COLD",
       "seat": "PAIR"
     },
     {
       "heartbeat": "2026-08-21T09:09:34Z",
-      "heartbeat_age_s": 1774334,
+      "heartbeat_age_s": 1776041,
       "liveness": "COLD",
       "seat": "PANEL"
     },
     {
       "heartbeat": "2026-08-19T23:00:00Z",
-      "heartbeat_age_s": 1897308,
+      "heartbeat_age_s": 1899015,
       "liveness": "COLD",
       "seat": "PATH"
     },
     {
       "heartbeat": "2026-08-24T05:38:42Z",
-      "heartbeat_age_s": 1527786,
+      "heartbeat_age_s": 1529493,
       "liveness": "COLD",
       "seat": "PLAYER1"
     },
     {
       "heartbeat": "2026-08-22T00:57:20Z",
-      "heartbeat_age_s": 1717468,
+      "heartbeat_age_s": 1719175,
       "liveness": "COLD",
       "seat": "PLAYER2"
     },
     {
       "heartbeat": "2026-08-26T18:36:00Z",
-      "heartbeat_age_s": 1308348,
+      "heartbeat_age_s": 1310055,
       "liveness": "COLD",
       "seat": "PLUG"
     },
     {
       "heartbeat": "2026-08-24T03:01:13Z",
-      "heartbeat_age_s": 1537234,
+      "heartbeat_age_s": 1538941,
       "liveness": "COLD",
       "seat": "PLUMB"
     },
     {
       "heartbeat": "2026-08-21T09:57:43Z",
-      "heartbeat_age_s": 1771445,
+      "heartbeat_age_s": 1773152,
       "liveness": "COLD",
       "seat": "POCKET"
     },
     {
       "heartbeat": "2026-08-19T22:45:00Z",
-      "heartbeat_age_s": 1898208,
+      "heartbeat_age_s": 1899915,
       "liveness": "COLD",
       "seat": "PRESS"
     },
     {
       "heartbeat": "2026-08-18T12:46:23Z",
-      "heartbeat_age_s": 2020525,
+      "heartbeat_age_s": 2022232,
       "liveness": "COLD",
       "seat": "PUTSOMETHINGINFRONTOFME"
     },
     {
       "heartbeat": "2026-08-21T09:26:25Z",
-      "heartbeat_age_s": 1773323,
+      "heartbeat_age_s": 1775030,
       "liveness": "COLD",
       "seat": "QUAY"
     },
     {
       "heartbeat": "2026-09-05T22:33:00Z",
-      "heartbeat_age_s": 430128,
+      "heartbeat_age_s": 431835,
       "liveness": "COLD",
       "seat": "QUILL"
     },
     {
       "heartbeat": "2026-08-23T10:17:36Z",
-      "heartbeat_age_s": 1597452,
+      "heartbeat_age_s": 1599159,
       "liveness": "COLD",
       "seat": "QUOIN"
     },
     {
       "heartbeat": "2026-08-19T22:17:33Z",
-      "heartbeat_age_s": 1899855,
+      "heartbeat_age_s": 1901562,
       "liveness": "COLD",
       "seat": "REDLINE"
     },
     {
       "heartbeat": "2026-08-19T22:23:36Z",
-      "heartbeat_age_s": 1899492,
+      "heartbeat_age_s": 1901199,
       "liveness": "COLD",
       "seat": "REED"
     },
     {
       "heartbeat": "2026-08-18T14:45:04Z",
-      "heartbeat_age_s": 2013404,
+      "heartbeat_age_s": 2015111,
       "liveness": "COLD",
       "seat": "RELAY"
     },
     {
       "heartbeat": "2026-08-21T10:09:15Z",
-      "heartbeat_age_s": 1770753,
+      "heartbeat_age_s": 1772460,
       "liveness": "COLD",
       "seat": "RIDER"
     },
     {
       "heartbeat": "2026-08-24T02:59:35Z",
-      "heartbeat_age_s": 1537333,
+      "heartbeat_age_s": 1539040,
       "liveness": "COLD",
       "seat": "RIDGE"
     },
     {
       "heartbeat": "2026-09-08T12:17:56Z",
-      "heartbeat_age_s": 207832,
+      "heartbeat_age_s": 209539,
       "liveness": "COLD",
       "seat": "RILLROUTER"
     },
     {
       "heartbeat": "2026-09-07T01:18:02Z",
-      "heartbeat_age_s": 333825,
+      "heartbeat_age_s": 335532,
       "liveness": "COLD",
       "seat": "RIVET"
     },
     {
       "heartbeat": "2026-09-01T14:17:13Z",
-      "heartbeat_age_s": 805474,
+      "heartbeat_age_s": 807181,
       "liveness": "COLD",
       "seat": "ROOT_CODEX"
     },
     {
       "heartbeat": "2026-08-20T22:59:56Z",
-      "heartbeat_age_s": 1810912,
+      "heartbeat_age_s": 1812619,
       "liveness": "COLD",
       "seat": "SCOPE"
     },
     {
       "heartbeat": "2026-09-02T05:20:00Z",
-      "heartbeat_age_s": 751308,
+      "heartbeat_age_s": 753015,
       "liveness": "COLD",
       "seat": "SCOUT"
     },
     {
       "heartbeat": "2026-08-31T02:10:00Z",
-      "heartbeat_age_s": 935508,
+      "heartbeat_age_s": 937215,
       "liveness": "COLD",
       "seat": "SETH"
     },
     {
       "heartbeat": "2026-08-29T09:24:57Z",
-      "heartbeat_age_s": 1082210,
+      "heartbeat_age_s": 1083917,
       "liveness": "COLD",
       "seat": "SOL"
     },
     {
       "heartbeat": "2026-09-08T12:02:03Z",
-      "heartbeat_age_s": 208785,
+      "heartbeat_age_s": 210492,
       "liveness": "COLD",
       "seat": "SOLCOPPERHEAD"
     },
     {
       "heartbeat": "2026-08-23T12:28:37Z",
-      "heartbeat_age_s": 1589591,
+      "heartbeat_age_s": 1591298,
       "liveness": "COLD",
       "seat": "SOLDER"
     },
     {
       "heartbeat": "2026-08-28T11:19:39Z",
-      "heartbeat_age_s": 1161729,
+      "heartbeat_age_s": 1163436,
       "liveness": "COLD",
       "seat": "SONNET"
     },
     {
       "heartbeat": "2026-08-19T23:00:00Z",
-      "heartbeat_age_s": 1897308,
+      "heartbeat_age_s": 1899015,
       "liveness": "COLD",
       "seat": "SPAN"
     },
     {
       "heartbeat": "2026-08-24T19:42:54Z",
-      "heartbeat_age_s": 1477134,
+      "heartbeat_age_s": 1478841,
       "liveness": "COLD",
       "seat": "SPEC_DADDY"
     },
     {
       "heartbeat": "2026-08-21T01:41:21Z",
-      "heartbeat_age_s": 1801227,
+      "heartbeat_age_s": 1802934,
       "liveness": "COLD",
       "seat": "SPUR"
     },
     {
       "heartbeat": "2026-09-02T04:48:44Z",
-      "heartbeat_age_s": 753184,
+      "heartbeat_age_s": 754891,
       "liveness": "COLD",
       "seat": "SPY"
     },
     {
       "heartbeat": "2026-08-19T19:39:14Z",
-      "heartbeat_age_s": 1909354,
+      "heartbeat_age_s": 1911061,
       "liveness": "COLD",
       "seat": "STAMP"
     },
     {
       "heartbeat": "2026-09-05T04:05:00Z",
-      "heartbeat_age_s": 496608,
+      "heartbeat_age_s": 498315,
       "liveness": "COLD",
       "seat": "TENON"
     },
     {
       "heartbeat": "2026-09-09T19:03:02Z",
-      "heartbeat_age_s": 97126,
+      "heartbeat_age_s": 98833,
       "liveness": "COLD",
       "seat": "TESSERA"
     },
     {
       "heartbeat": "2026-08-20T00:09:03Z",
-      "heartbeat_age_s": 1893165,
+      "heartbeat_age_s": 1894872,
       "liveness": "COLD",
       "seat": "THE_WEEKEND"
     },
     {
       "heartbeat": "2026-09-09T19:08:34Z",
-      "heartbeat_age_s": 96794,
+      "heartbeat_age_s": 98501,
       "liveness": "COLD",
       "seat": "TITAN"
     },
     {
       "heartbeat": "2026-08-27T07:29:46Z",
-      "heartbeat_age_s": 1261922,
+      "heartbeat_age_s": 1263629,
       "liveness": "COLD",
       "seat": "TOOLS"
     },
     {
       "heartbeat": "2026-09-02T07:10:00Z",
-      "heartbeat_age_s": 744708,
+      "heartbeat_age_s": 746415,
       "liveness": "COLD",
       "seat": "TYPE"
     },
     {
       "heartbeat": "2026-08-30T05:08:57Z",
-      "heartbeat_age_s": 1011171,
+      "heartbeat_age_s": 1012878,
       "liveness": "COLD",
       "seat": "U0BR9670G2H"
     },
     {
-      "heartbeat": "2026-09-10T19:47:04Z",
-      "heartbeat_age_s": 8084,
-      "liveness": "STALE",
+      "heartbeat": "2026-09-10T22:30:15Z",
+      "heartbeat_age_s": 0,
+      "liveness": "LIVE",
       "seat": "UNSEATED"
     },
     {
       "heartbeat": "2026-09-02T06:55:00Z",
-      "heartbeat_age_s": 745608,
+      "heartbeat_age_s": 747315,
       "liveness": "COLD",
       "seat": "WIRE"
     },
     {
       "heartbeat": "2026-09-02T01:58:57Z",
-      "heartbeat_age_s": 763371,
+      "heartbeat_age_s": 765078,
       "liveness": "COLD",
       "seat": "YAPPER"
     },
     {
       "heartbeat": "2026-08-21T13:53:42Z",
-      "heartbeat_age_s": 1757286,
+      "heartbeat_age_s": 1758993,
       "liveness": "COLD",
       "seat": "ZERO"
     }
@@ -1167,8 +1167,8 @@
       "derived": {
         "budget_pressure": "UNKNOWN",
         "context_pressure_pct": "UNKNOWN",
-        "heartbeat_age_s": 3113,
-        "liveness": "QUIET",
+        "heartbeat_age_s": 4820,
+        "liveness": "STALE",
         "seconds_to_budget_reset": "UNKNOWN"
       },
       "extra": {
