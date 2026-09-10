@@ -1,0 +1,22 @@
+{
+  "schema": "titan-v3-historical-rank-inversion-calibration-delivery/v1",
+  "operation": "TITAN-V3-HISTORICAL-RANK-INVERSION-CALIBRATION-20260910-01",
+  "base_commit": "c51049d671b55d282e0fed5df37a0be7c513a838",
+  "transport": {
+    "encoding": "base64",
+    "parts_are_newline_terminated": true,
+    "parts": [
+      {"path": "packet.b64.part-00", "payload_bytes": 7200, "repository_blob_bytes": 7201, "repository_blob_sha256": "621bdf8e209b43564502b18e7d4b538bfe43f1bae7499136eb0f37f903170df5"},
+      {"path": "packet.b64.part-01", "payload_bytes": 7200, "repository_blob_bytes": 7201, "repository_blob_sha256": "7b455cbdf9feff691a9892979d659538cbbb01eb02f8f7af09d79d97b3325433"},
+      {"path": "packet.b64.part-02", "payload_bytes": 7200, "repository_blob_bytes": 7201, "repository_blob_sha256": "7b52b38bfbb8500692c0e0f534464bf04805a94566979e399ec52751097f9fdf"},
+      {"path": "packet.b64.part-03", "payload_bytes": 7196, "repository_blob_bytes": 7197, "repository_blob_sha256": "5c56d372f2bf662dddcbc0c140d2f0969be816d03f4e2d8724254cb936ad0510"}
+    ],
+    "decoded_gzip_bytes": 21597,
+    "decoded_gzip_sha256": "318418c0d673d3566a36f47efd94d89899d0dc5b33d888c2aa587591d69c614c",
+    "decoded_patch_bytes": 103581,
+    "stable_patch_id": "fbd98806a52f1160586d09e997207bbe1a2280c8",
+    "full_tar_sha256": "66e84e5c13953e64a6cbad137d1f1bde713a83e19fc308f477a9abfa8caa100a"
+  },
+  "change": {"files_added": 14, "lines_added": 2027, "runtime_policy_changed": false, "canonical_archive_changed": false, "provider_or_kaggle_changed": false},
+  "validation": {"tests_passed": 42, "tests_failed": 0, "fixture_status": "BLOCK_UNCALIBRATED", "pair_classification": "RANK_INVERSION_WITH_CANDIDATE_DRIFT", "exact_inversions": 0, "drifted_inversions": 1, "promotion_authority": false, "input_sha256": "46e3dc61e12e2189d807536ff1d8aedf257e6c6bdd0c4ca1f4641b3f47f08eee"}
+}
