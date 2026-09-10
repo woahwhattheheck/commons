@@ -72,7 +72,11 @@ def action(market: list | None = None) -> dict:
     return {"farmer": ["PASS"], "hands": [], "market": market or []}
 
 
-def debug(mode: str, step: int, seat: int, returned: list) -> dict:
+def debug(mode: str, step: int, seat: int, returned: list, active: bool) -> dict:
+    products = ["EGG", "MILK"]
+    candidate_reordered_before = active and mode == "candidate" and step >= 4
+    pending_before = ["MILK", "EGG"] if candidate_reordered_before else products
+    intent_order = list(pending_before)
     return {
         "schema_version": 1,
         "mode": mode,
@@ -81,13 +85,13 @@ def debug(mode: str, step: int, seat: int, returned: list) -> dict:
         "max_market_orders": 10,
         "money": 100,
         "shed": {"EGG": 1, "MILK": 1},
-        "pending_before": ["MILK"],
+        "pending_before": pending_before,
         "pending_after": {"EGG": 0, "MILK": 0},
         "planned_before": {},
         "baseline_order": [],
-        "control_order": ["EGG", "MILK"],
-        "intent_order": ["MILK", "EGG"],
-        "order_changed": True,
+        "control_order": products,
+        "intent_order": intent_order,
+        "order_changed": products != intent_order,
         "base_market": [],
         "returned_market": returned,
         "chosen": {"item": "EGG" if mode == "control" else "MILK"},
@@ -124,7 +128,7 @@ def game(mode: str, seed: int, seat: int) -> dict:
             "tested_action_sha256": m.sha256_value(tested),
             "rival_action": rival,
             "rival_action_sha256": m.sha256_value(rival),
-            "debug": debug(mode, step, seat, market),
+            "debug": debug(mode, step, seat, market, active),
             "post_world_sha256": next_world,
             "bank": list(current_bank),
         })
@@ -185,13 +189,16 @@ class CausalClosureContracts(unittest.TestCase):
         )
         self.assertEqual(result["verdict"]["disposition"], "RETIRE_FACTOR")
         self.assertEqual(result["grid"]["action_active_cells"], 2)
+        self.assertEqual(result["grid"]["policy_state_active_cells"], 2)
         self.assertEqual(result["aggregate"]["mean_own_cash_delta"], -0.75)
         self.assertEqual(result["aggregate"]["mean_rival_cash_delta"], 4.125)
         self.assertEqual(result["aggregate"]["mean_margin_delta"], -4.875)
         active = [row for row in result["cells"] if row["action_changed"]]
         self.assertEqual({row["candidate_seat"] for row in active}, {0, 1})
         self.assertTrue(all(row["classification"] == "executable_sell_order" for row in active))
+        self.assertTrue(all(row["first_policy_state_divergence_step"] == 4 for row in active))
         self.assertTrue(all(row["first_divergence_step"] == 5 for row in active))
+        self.assertTrue(all(row["policy_state_diverged_before_action"] for row in active))
         rendered = m.markdown(result)
         self.assertIn("RETIRE_FACTOR", rendered)
         self.assertIn("2609097304", rendered)
@@ -202,6 +209,23 @@ class CausalClosureContracts(unittest.TestCase):
         binding = m.validate_receipts(pair_receipt(), evaluator_receipt(), "cafebabe", RUNTIME)
         with self.assertRaisesRegex(m.EvidenceError, "candidate-entry mismatch"):
             m.index_report(broken, "candidate", binding)
+
+    def test_external_precondition_drift_fails_closed(self):
+        broken = copy.deepcopy(self.candidate)
+        active = next(
+            game for game in broken["games"]
+            if game["seed"] == 2609097304 and game["candidate_seat"] == 0
+        )
+        active["candidate_timeline"][0]["debug"]["money"] += 1
+        with self.assertRaisesRegex(m.EvidenceError, "external policy precondition drift"):
+            m.analyze(
+                self.control,
+                broken,
+                pair_receipt(),
+                evaluator_receipt(),
+                "cafebabe",
+                RUNTIME,
+            )
 
     def test_timeline_length_and_untreated_world_drift_fail_closed(self):
         left = [{"tested_action": action(), "pre_world_sha256": "a", "rival_action": action(),
