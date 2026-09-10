@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import importlib
 import importlib.util
 import json
 from pathlib import Path
@@ -13,12 +14,41 @@ from typing import Any
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
-if str(LAB) not in sys.path:
-    sys.path.insert(0, str(LAB))
+LAB_TEXT = str(LAB)
+sys.path[:] = [entry for entry in sys.path if entry != LAB_TEXT]
+sys.path.insert(0, LAB_TEXT)
 
-from decay_observer import OPERATION, make_decay_safe_frozen_selected
-import candidate
-import scheduler
+
+def load_exact(name: str, path: Path, *, publish: bool = False):
+    expected = path.resolve(strict=True)
+    spec = importlib.util.spec_from_file_location(name, expected)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {expected}")
+    module = importlib.util.module_from_spec(spec)
+    if publish:
+        sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        if publish:
+            sys.modules.pop(name, None)
+        raise
+    if Path(module.__file__).resolve() != expected:
+        raise RuntimeError(f"wrong module loaded: {module.__file__}")
+    return module
+
+
+decay_observer = load_exact(
+    "_titan_rival_decay_witness_observer", HERE / "decay_observer.py"
+)
+OPERATION = decay_observer.OPERATION
+make_decay_safe_frozen_selected = decay_observer.make_decay_safe_frozen_selected
+candidate = load_exact(
+    "_titan_rival_decay_witness_candidate", HERE / "candidate.py", publish=True
+)
+scheduler = importlib.import_module("scheduler")
+if Path(scheduler.__file__).resolve() != (LAB / "scheduler.py").resolve():
+    raise RuntimeError(f"wrong scheduler loaded: {scheduler.__file__}")
 
 
 def sha256(path: Path) -> str:
@@ -64,19 +94,19 @@ def load_engine():
     prior_utils = sys.modules.get("kaggle_environments.utils")
     sys.modules["kaggle_environments"] = package
     sys.modules["kaggle_environments.utils"] = utils
-    path = LAB / "reference/engine/kaggriculture.py"
-    spec = importlib.util.spec_from_file_location("_decay_witness_engine", path)
-    assert spec is not None and spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    if prior_package is None:
-        sys.modules.pop("kaggle_environments", None)
-    else:
-        sys.modules["kaggle_environments"] = prior_package
-    if prior_utils is None:
-        sys.modules.pop("kaggle_environments.utils", None)
-    else:
-        sys.modules["kaggle_environments.utils"] = prior_utils
+    try:
+        module = load_exact(
+            "_decay_witness_engine", LAB / "reference/engine/kaggriculture.py"
+        )
+    finally:
+        if prior_package is None:
+            sys.modules.pop("kaggle_environments", None)
+        else:
+            sys.modules["kaggle_environments"] = prior_package
+        if prior_utils is None:
+            sys.modules.pop("kaggle_environments.utils", None)
+        else:
+            sys.modules["kaggle_environments.utils"] = prior_utils
     return module
 
 
@@ -148,12 +178,21 @@ def run() -> dict[str, Any]:
                      "test_decay_observer.py", "witness.py")
     }
     return {
-        "schema": 1,
+        "schema": 2,
         "operation": OPERATION,
         "source_commit": candidate.SOURCE_COMMIT,
         "source_git_blobs": candidate.verify_source(),
         "source_sha256": source_sha256,
         "lane_sha256": lane_sha256,
+        "module_origins": {
+            "candidate": str(Path(candidate.__file__).resolve()),
+            "decay_observer": str(Path(decay_observer.__file__).resolve()),
+            "scheduler": str(Path(scheduler.__file__).resolve()),
+            "canonical_main": str(Path(candidate.CANONICAL_MAIN.__file__).resolve()),
+            "canonical_main_published_in_sys_modules": (
+                f"{candidate.__name__}._canonical_main" in sys.modules
+            ),
+        },
         "configured_consumer_seam": {
             "class": "frozen_selected.FrozenSelected",
             "observer_inherited_from": "scheduler.SellScheduler.observe",
