@@ -25,7 +25,7 @@ jobs:
       PYTHONDONTWRITEBYTECODE: "1"
       LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
     steps:
-      - uses: actions/checkout4v4
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
 
