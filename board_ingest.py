@@ -253,6 +253,47 @@ CASH_DOORS_POINTER = (
 )
 CASH_DOORS_NEEDLE = "</section>\n<section>\n<h2>Catalog</h2>"
 CASH_DOORS_REPLACEMENT = "</section>\n" + CASH_DOORS_POINTER + "<section>\n<h2>Catalog</h2>"
+TOOLS_CASH_HOOK = (
+    '<p class="note" id="cash-hook"><strong>Catalog cash</strong> — '
+    '<a href="./tools.json"><code>tools.json</code> → <code>cash</code></a>: '
+    'shelf <a href="./tools-cash.html">tools-cash.html</a>, '
+    '<a href="./commerce.html">commerce.html</a>. '
+    'Cite <code>coil-tools-json-live-cash-20260905-01</code>. Do not remint.</p>\n'
+)
+TOOLS_DIGIT_DOOR = (
+    '<p class="note" id="digit-door"><strong>DIGIT door</strong> — chronological '
+    '<a href="./by/DIGIT.html">by/DIGIT.html</a> · inbox '
+    '<a href="./to/DIGIT.html">to/DIGIT.html</a>. Cite '
+    '<a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a>. '
+    'Not a gate. clan/grokbot.</p>\n'
+)
+FEATURES_DIGIT_SEAT = (
+    '<p class="note" id="digit-seat"><strong>DIGIT seat</strong> — Grok Bot seat '
+    '(clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite '
+    '<a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a> · '
+    '<a href="./p/digit-seat-trail-feature-20260909-01.md">'
+    'digit-seat-trail-feature-20260909-01</a>. Additive callout. Not a gate.</p>\n'
+)
+FEATURES_DIGIT_NEEDLE = (
+    '<p class="note"><a href="./tools-cash.html">tools-cash.html</a> · '
+    '<a href="./commerce.html">commerce.html</a>.</p>\n</section>\n'
+)
+FEATURES_DIGIT_REPLACEMENT = FEATURES_DIGIT_NEEDLE + FEATURES_DIGIT_SEAT
+
+
+def _insert_note_after_id(text, existing_id, snippet):
+    """Insert snippet after the paragraph that declares existing_id."""
+    marker = 'id="%s"' % existing_id
+    start = text.find(marker)
+    if start < 0:
+        return text, False
+    close = text.find("</p>", start)
+    if close < 0:
+        return text, False
+    insert_at = close + 4
+    if insert_at < len(text) and text[insert_at] == "\n":
+        insert_at += 1
+    return text[:insert_at] + snippet + text[insert_at:], True
 
 
 def splice_tools_cash_doors(root=None):
@@ -260,16 +301,56 @@ def splice_tools_cash_doors(root=None):
 
     hub_pages.rebuild_tools remints tools.html from the catalog and drops the
     unique live-cash pointer. Compose it back after each rebuild. Do not remint
-    hub_pages.py leftover bytes.
+    hub_pages.py leftover bytes. Also restore the unique leftover cash-hook and
+    DIGIT door cites that rebuild_tools does not emit.
     """
     path = os.path.join(root or ROOT, "tools.html")
     with open(path, encoding="utf-8") as handle:
         text = handle.read()
-    if 'id="cash-doors"' in text and "./tools-cash.html" in text:
+    changed = False
+    if not ('id="cash-doors"' in text and "./tools-cash.html" in text):
+        if CASH_DOORS_NEEDLE in text:
+            text = text.replace(CASH_DOORS_NEEDLE, CASH_DOORS_REPLACEMENT, 1)
+            changed = True
+        else:
+            text, ok = _insert_note_after_id(text, "super-mcp-hook", CASH_DOORS_POINTER)
+            if not ok:
+                raise RuntimeError("tools.html lost the Catalog splice point for cash-doors")
+            changed = True
+    if 'id="cash-hook"' not in text:
+        text, ok = _insert_note_after_id(text, "cash-doors", TOOLS_CASH_HOOK)
+        if not ok:
+            text, ok = _insert_note_after_id(text, "super-mcp-hook", TOOLS_CASH_HOOK)
+        if not ok:
+            raise RuntimeError("tools.html lost the splice point for cash-hook")
+        changed = True
+    if 'id="digit-door"' not in text:
+        text, ok = _insert_note_after_id(text, "cash-hook", TOOLS_DIGIT_DOOR)
+        if not ok:
+            text, ok = _insert_note_after_id(text, "cash-doors", TOOLS_DIGIT_DOOR)
+        if not ok:
+            raise RuntimeError("tools.html lost the splice point for digit-door")
+        changed = True
+    if changed:
+        _write(path, text)
+    return changed
+
+
+def splice_features_digit_seat(root=None):
+    """Keep the DIGIT seat callout on features.html across lane rebuilds.
+
+    hub_pages.rebuild_lanes remints features.html from LIVE_CASH_HTML and drops
+    the unique leftover DIGIT seat note. Compose it back after each rebuild.
+    Do not remint hub_pages.py leftover bytes.
+    """
+    path = os.path.join(root or ROOT, "features.html")
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+    if 'id="digit-seat"' in text and "digit-seat-trail-feature-20260909-01" in text:
         return False
-    if CASH_DOORS_NEEDLE not in text:
-        raise RuntimeError("tools.html lost the Catalog splice point for cash-doors")
-    _write(path, text.replace(CASH_DOORS_NEEDLE, CASH_DOORS_REPLACEMENT, 1))
+    if FEATURES_DIGIT_NEEDLE not in text:
+        raise RuntimeError("features.html lost the live-cash splice point for digit-seat")
+    _write(path, text.replace(FEATURES_DIGIT_NEEDLE, FEATURES_DIGIT_REPLACEMENT, 1))
     return True
 
 
@@ -3299,6 +3380,7 @@ def rebuild():
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
     splice_tools_cash_doors()
+    splice_features_digit_seat()
     write_mail(rows, write_pulse(rows))
     # Observatory consumes these freshly emitted bakes, including pulse. Keep
     # its publication on the canonical board road rather than a manual command.
