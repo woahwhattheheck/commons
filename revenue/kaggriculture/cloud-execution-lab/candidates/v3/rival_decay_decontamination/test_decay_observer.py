@@ -12,9 +12,18 @@ import unittest
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
-LAB_TEXT = str(LAB)
-sys.path[:] = [entry for entry in sys.path if entry != LAB_TEXT]
-sys.path.insert(0, LAB_TEXT)
+SOURCE_ROOTS = (
+    LAB,
+    LAB.parent / "cloud-runtime-pulse",
+    LAB.parent / "cloud-quickstep",
+    LAB.parent / "cloud-opponent-league" / "lark-responsive",
+    LAB.parent / "cloud-committed-seed-retry",
+    LAB.parent / "cloud-economic-stress" / "funded-payback",
+)
+for root in reversed(tuple(str(path.resolve(strict=True)) for path in SOURCE_ROOTS)):
+    while root in sys.path:
+        sys.path.remove(root)
+    sys.path.insert(0, root)
 
 
 def load_exact(name: str, path: Path):
