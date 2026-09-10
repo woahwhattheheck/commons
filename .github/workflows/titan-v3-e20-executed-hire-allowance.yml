@@ -1,0 +1,49 @@
+name: TITAN V3 E20 executed-HIRE allowance
+
+on:
+  push:
+    branches:
+      - sol-execution/titan-v3-e20-executed-hire-allowance-repair-20260910-01
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v3-e20-executed-hire-allowance-sol-pro/**
+      - .github/workflows/titan-v3-e20-executed-hire-allowance.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-e20-executed-hire-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Verify published replacement bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-e20-executed-hire-allowance-sol-pro
+          printf '%s  %s\n' \
+            54127c61b25584f76ba75df966d33602d48da8405f4064b6b6ada2f81d5e9074 \
+            "$root/e20_hire_guard.py" | sha256sum --check --strict
+      - name: Compile
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-e20-executed-hire-allowance-sol-pro
+          python -B -m py_compile "$root/e20_hire_guard.py" "$root/test_e20_executed_hire_allowance.py"
+      - name: Run predecessor killers
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-e20-executed-hire-allowance-sol-pro
+          cd "$root"
+          python -B -m unittest -v test_e20_executed_hire_allowance.py
