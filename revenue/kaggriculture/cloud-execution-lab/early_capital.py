@@ -156,6 +156,8 @@ def _project_post_unit_private(mechanics, observation, configuration, selected, 
             hands_actions = []
         unit_actions = [farmer_action, *hands_actions]
 
+        # Match the official interpreter's atomic same-crop PLANT admission:
+        # over-subscribed current batches become all PASS before unit execution.
         plant_demand = {}
         for action in unit_actions:
             if isinstance(action, list) and len(action) >= 2 and action[0] == 'PLANT':
@@ -216,21 +218,73 @@ def _certified_funding(active, mechanics, post_private):
     return funding, units
 
 
-def _capital_admitted(order, mechanics, remaining, day):
+def _certified_land_targets(active, observation, mechanics):
+    """Allocate remaining official quadrant unlocks to BUY_LAND rows.
+
+    The official engine selects land structurally from ``LAND_ORDER`` and makes
+    every later BUY_LAND a no-op once all quadrants are unlocked. A stable
+    original-order allocation prevents multiple rows from claiming the same
+    remaining unlock, just as funding certification debits shared shed stock.
+    ``None`` denotes malformed or source-mismatched farm state.
+    """
+    try:
+        if not isinstance(observation, dict):
+            return None
+        player = observation.get('player', 0)
+        if isinstance(player, bool) or not isinstance(player, int):
+            return None
+        farms = observation.get('farms')
+        if (not isinstance(farms, (list, tuple))
+                or not (0 <= player < len(farms))):
+            return None
+        farm = farms[player]
+        if not isinstance(farm, dict):
+            return None
+        unlocked = farm.get('unlocked_quadrants')
+        land_order = getattr(mechanics, 'LAND_ORDER', None)
+        if (not isinstance(unlocked, list)
+                or not isinstance(land_order, (list, tuple))):
+            return None
+        official = ['NW', *land_order]
+        if (not all(isinstance(value, str) for value in official)
+                or len(set(official)) != len(official)
+                or not unlocked
+                or unlocked != official[:len(unlocked)]):
+            return None
+
+        slots = len(official) - len(unlocked)
+        targets = set()
+        for index, order in enumerate(active):
+            if slots <= 0:
+                break
+            if isinstance(order, list) and order and order[0] == 'BUY_LAND':
+                targets.add(index)
+                slots -= 1
+        return targets
+    except (AttributeError, IndexError, OverflowError, TypeError, ValueError):
+        return None
+
+
+def _capital_admitted(order, index, mechanics, remaining, day, land_targets):
     if not isinstance(order, list) or not order:
         return False
     if day > EARLY_DAY_LIMIT:
         return False
     op = order[0]
     if op == 'BUY_LAND':
-        return remaining >= PAYBACK_DAYS['LAND']
+        return (
+            land_targets is not None
+            and index in land_targets
+            and remaining >= PAYBACK_DAYS['LAND']
+        )
     if (op == 'BUY_ANIMAL' and len(order) > 2 and order[1] in mechanics.ANIMALS
             and _qty(order) > 0):
         return remaining >= PAYBACK_DAYS[order[1]]
     return False
 
 
-def _rank(order, index, funding, mechanics, remaining, day, plant_demand, seeds_held):
+def _rank(order, index, funding, mechanics, remaining, day, plant_demand,
+          seeds_held, land_targets):
     if not order:
         return REST
     op = order[0]
@@ -242,7 +296,8 @@ def _rank(order, index, funding, mechanics, remaining, day, plant_demand, seeds_
         crop = order[1]
         need = max(0, int(plant_demand.get(crop, 0)) - int(seeds_held.get(crop, 0)))
         return OPERATING if need > 0 else REST
-    if _capital_admitted(order, mechanics, remaining, day):
+    if _capital_admitted(
+            order, index, mechanics, remaining, day, land_targets):
         return CAPITAL
     return REST
 
@@ -254,7 +309,7 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     multiset of active orders, and every capped suffix row remain unchanged.
     """
     report = {'changed': False, 'reason': 'init', 'moved': 0, 'reserved': 0,
-              'reduced': [], 'revision': 'v4-executable-funding'}
+              'reduced': [], 'revision': 'v5-atomic-land-targets'}
     if not isinstance(selected, dict):
         report['reason'] = 'no_action'
         return selected, report
@@ -314,13 +369,18 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     day = now // turns_per_day
     remaining = _remaining_days(now, configuration)
     seeds_held = dict(post_private.get('seeds') or {})
+    land_targets = _certified_land_targets(active, observation, mechanics)
+    report['certified_land_rows'] = (
+        None if land_targets is None else sorted(land_targets)
+    )
     try:
         horizon = _horizon_end(now, configuration, decisions)
         # The current unit stage already ran in post_private; only future route
         # PLANT actions may still consume the post-unit seed balance.
         plants = _plant_demand(None, route, now, horizon)
         ranks = [
-            _rank(order, index, funding, mechanics, remaining, day, plants, seeds_held)
+            _rank(order, index, funding, mechanics, remaining, day, plants,
+                  seeds_held, land_targets)
             for index, order in enumerate(active)
         ]
     except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):
