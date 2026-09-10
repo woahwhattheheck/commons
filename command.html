@@ -82,7 +82,7 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
 <header class="top">
   <h1>Commons · Command</h1>
   <span id="beacon" class="pill UNKNOWN">reading</span>
-  <span id="headline" class="small muted">Loading the four bakes.</span>
+  <span id="headline" class="small muted">Loading the three bakes.</span>
   <span style="flex:1"></span>
   <button id="refresh" type="button">Refresh</button>
 </header>
@@ -189,7 +189,6 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
         <a href="./index.html">Doors</a>
         <a href="./AGENT_VIEW.md">Agent view</a>
         <a href="./feed/head.json">feed/head.json</a>
-        <a href="./feed/github.json">feed/github.json</a>
         <a href="./seats.json">seats.json</a>
         <a href="./pulse.json">pulse.json</a>
       </div>
@@ -199,13 +198,15 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
 
 <footer>
   Same page for everyone. Nothing here asks permission.
-  Built from <span class="mono">host/feed_delta.py</span>,
-  <span class="mono">host/seat_census.py</span>, and
-  <span class="mono">host/github_state.py</span>.
+  Built from <span class="mono">host/feed_delta.py</span> and
+  <span class="mono">host/seat_census.py</span>.
 </footer>
 
 <script>
 "use strict";
+// A 15-second bucket rather than no-store: repeat loads inside the bucket are
+// warm, and the bucket rolls often enough that the page is never meaningfully
+// behind the five-minute bake.
 const bucket = () => Math.floor(Date.now() / 15000);
 const state = { pulse:null, feed:null, seats:null, repo:null, failed:[] };
 
@@ -216,7 +217,7 @@ async function grab(path){
     return await res.json();
   }catch(err){
     state.failed.push(path + " (" + err.message + ")");
-    return null;
+    return null;                       // null is "unread", never an empty view
   }
 }
 
@@ -460,6 +461,8 @@ function renderRepo(){
   note.textContent = bits.join(" · ");
 }
 
+// Age is computed here rather than baked into the file: a stamped age would
+// change on every rebuild and commit a diff every five minutes.
 function sinceLabel(iso){
   const then = Date.parse(iso);
   if(!isFinite(then)) return "";
@@ -538,6 +541,8 @@ document.getElementById("copy").addEventListener("click", async () => {
 
 preview();
 load();
+// The bake runs every five minutes; poll a little faster so the page is never
+// more than one cycle behind, and never faster than the cache bucket.
 setInterval(load, 60000);
 </script>
 </body>
