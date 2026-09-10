@@ -10,6 +10,7 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py"
       - "revenue/kaggriculture/cloud-execution-lab/seller_snapshot.py"
       - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
       - "revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/repair.py"
       - "revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/**"
   workflow_dispatch:
@@ -45,14 +46,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Execute exact materialized source and lifecycle contracts
+      - name: Execute exact materialized source, lifecycle, and real-caller contracts
         env:
           PYTHONDONTWRITEBYTECODE: "1"
         run: |
           set -euo pipefail
           python -B -m unittest -v \
             revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_repair.py \
-            revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_lifecycle.py
+            revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_lifecycle.py \
+            revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_real_caller.py
 
       - name: Build deterministic receipt and patch
         env:
@@ -76,16 +78,17 @@ jobs:
             "$CASE/repair.py" \
             "$CASE/test_repair.py" \
             "$CASE/test_lifecycle.py" \
+            "$CASE/test_real_caller.py" \
             "$OUT/receipt.json" <<'PY'
           import ast
           import json
           import pathlib
           import sys
 
-          for raw in sys.argv[1:4]:
+          for raw in sys.argv[1:5]:
               path = pathlib.Path(raw)
               ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-          receipt = json.loads(pathlib.Path(sys.argv[4]).read_text(encoding="utf-8"))
+          receipt = json.loads(pathlib.Path(sys.argv[5]).read_text(encoding="utf-8"))
           assert receipt["schema"] == "titan-v3-represented-horizon-plant-decay/v1"
           assert receipt["candidate"]["replacement_count"] == 2
           assert receipt["witness"]["predecessor_unit_event"] == 130
