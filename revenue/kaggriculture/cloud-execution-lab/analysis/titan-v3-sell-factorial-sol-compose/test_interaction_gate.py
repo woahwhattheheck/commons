@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import copy
 import hashlib
-import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -25,7 +24,7 @@ def default_effect(arm: str, opponent: str, seed: int, seat: int) -> dict:
     values = {
         "control": (0.0, 0.0, False),
         "own_value": (10.0, 0.0, True),
-        "strict_pressure": (5.0, 0.0, True),
+        "certified_pressure": (5.0, 0.0, True),
         "both": (18.0, 0.0, True),
     }
     own, rival, changed = values[arm]
@@ -117,7 +116,7 @@ class InteractionGateTests(unittest.TestCase):
         self.assertEqual(report["grid"]["total_games"], 32)
         factorial = report["overall"]["factorial"]
         self.assertEqual(factorial["own_value_main_effect"]["mean"], 11.5)
-        self.assertEqual(factorial["strict_pressure_main_effect"]["mean"], 6.5)
+        self.assertEqual(factorial["certified_pressure_main_effect"]["mean"], 6.5)
         self.assertEqual(factorial["own_cash_interaction"]["mean"], 3.0)
         self.assertEqual(factorial["margin_interaction"]["mean"], 3.0)
         self.assertFalse(report["selection"]["promotion_authorized"])
@@ -127,7 +126,7 @@ class InteractionGateTests(unittest.TestCase):
         values = {
             "control": (0, False),
             "own_value": (10, True),
-            "strict_pressure": (5, True),
+            "certified_pressure": (5, True),
             "both": (6, True),
         }
 
@@ -146,7 +145,7 @@ class InteractionGateTests(unittest.TestCase):
                 return {"own": 0, "rival": 0, "changed": False}
             if arm == "own_value":
                 return {"own": 10, "rival": 0, "changed": True}
-            if arm == "strict_pressure":
+            if arm == "certified_pressure":
                 return {"own": 5, "rival": 0, "changed": True}
             # Huge pooled gain, but one full opponent/seat stratum is one dollar
             # below the eligible own-value singleton.
@@ -165,7 +164,7 @@ class InteractionGateTests(unittest.TestCase):
         values = {
             "control": (0, False),
             "own_value": (-2, True),
-            "strict_pressure": (-1, True),
+            "certified_pressure": (-1, True),
             "both": (4, True),
         }
 
@@ -178,14 +177,14 @@ class InteractionGateTests(unittest.TestCase):
         self.assertEqual(report["selection"]["verdict"], "SELECT_BOTH")
         self.assertEqual(
             report["selection"]["eligible_against_control"],
-            {"own_value": False, "strict_pressure": False, "both": True},
+            {"own_value": False, "certified_pressure": False, "both": True},
         )
 
     def test_no_safe_advance_when_all_active_arms_regress(self):
         values = {
             "control": (0, False),
             "own_value": (-10, True),
-            "strict_pressure": (-5, True),
+            "certified_pressure": (-5, True),
             "both": (-3, True),
         }
 
@@ -219,7 +218,7 @@ class InteractionGateTests(unittest.TestCase):
             if arm == "own_value":
                 delta = -1 if opponent == "v1" and seat == 1 else 20
                 return {"own": delta, "rival": 0, "changed": True}
-            if arm == "strict_pressure":
+            if arm == "certified_pressure":
                 return {"own": 1, "rival": 0, "changed": True}
             return {"own": -2, "rival": 0, "changed": True}
 
@@ -227,7 +226,7 @@ class InteractionGateTests(unittest.TestCase):
         own = report["overall"]["pairwise"]["own_value_vs_control"]
         self.assertGreater(own["own_cash"]["mean"], 0)
         self.assertFalse(report["selection"]["eligible_against_control"]["own_value"])
-        self.assertEqual(report["selection"]["verdict"], "SELECT_STRICT_PRESSURE")
+        self.assertEqual(report["selection"]["verdict"], "SELECT_CERTIFIED_PRESSURE")
 
     def test_score_change_without_captured_action_change_is_rejected(self):
         def effect(arm, opponent, seed, seat):
@@ -269,7 +268,7 @@ class InteractionGateTests(unittest.TestCase):
 
     def test_incomplete_lifecycle_is_rejected(self):
         reports = make_reports()
-        reports["strict_pressure"]["games"][0]["candidate_action_count"] = 718
+        reports["certified_pressure"]["games"][0]["candidate_action_count"] = 718
         with self.assertRaisesRegex(gate.EvidenceError, "719 captured"):
             gate.assess(reports)
 
@@ -289,6 +288,15 @@ class InteractionGateTests(unittest.TestCase):
         reports = make_reports()
         reports["both"]["games"][0]["scores"][0] = float("inf")
         reports["both"]["games"][0]["bank_snapshot"][0] = float("inf")
+        with self.assertRaisesRegex(gate.EvidenceError, "must be finite"):
+            gate.assess(reports)
+
+    def test_finite_scores_that_overflow_a_delta_are_rejected(self):
+        reports = make_reports()
+        control = reports["control"]["games"][0]
+        candidate = reports["own_value"]["games"][0]
+        control["scores"][0] = control["bank_snapshot"][0] = -1e308
+        candidate["scores"][0] = candidate["bank_snapshot"][0] = 1e308
         with self.assertRaisesRegex(gate.EvidenceError, "must be finite"):
             gate.assess(reports)
 
