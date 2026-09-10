@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-checkout-first="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,7 @@
 <title>TITAN Hands Activation Hour — one bounded verified service hour</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 <style>
-body{max-width:70rem}.hero{padding:clamp(1.5rem,5vw,4rem) 0 1.5rem}.hero h1{font-size:clamp(2.4rem,8vw,6rem);line-height:.94;max-width:12ch;margin:.25rem 0 1rem}.lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:52rem}.price{font:800 clamp(2.5rem,7vw,5rem)/1 ui-monospace,monospace;margin:1rem 0}.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0}.cta{display:inline-block;border:1px solid #62b879;border-radius:9px;padding:.75rem 1rem;text-decoration:none;font-weight:800}.cta.secondary{border-color:#666672}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.8rem}.card,.contract{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h2,.contract h2{margin-top:.1rem}.step{font:800 2rem/1 ui-monospace,monospace;color:#62b879}.contract{margin:1.5rem 0}.truth{border-left:4px solid #62b879;padding:.8rem 1rem;background:#111114}.boundary{border-left-color:#d0a252}.intake{overflow-wrap:anywhere}
+body{max-width:70rem}.hero{padding:clamp(1.5rem,5vw,4rem) 0 1.5rem}.hero h1{font-size:clamp(2.4rem,8vw,6rem);line-height:.94;max-width:12ch;margin:.25rem 0 1rem}.lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:52rem}.price{font:800 clamp(2.5rem,7vw,5rem)/1 ui-monospace,monospace;margin:1rem 0}.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0;align-items:center}.cta,.checkout-active{display:inline-block;border:1px solid #62b879;border-radius:9px;padding:.75rem 1rem;text-decoration:none;font-weight:800}.cta.secondary{border-color:#666672}.js-checkout-slot p{margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.8rem}.card,.contract{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h2,.contract h2{margin-top:.1rem}.step{font:800 2rem/1 ui-monospace,monospace;color:#62b879}.contract{margin:1.5rem 0}.truth{border-left:4px solid #62b879;padding:.8rem 1rem;background:#111114}.boundary{border-left-color:#d0a252}.intake{overflow-wrap:anywhere}
 @media print{.nav{display:none}.card,.contract{break-inside:avoid}body{max-width:none}.hero{padding-top:0}}
 </style>
 </head>
@@ -28,13 +28,13 @@ body{max-width:70rem}.hero{padding:clamp(1.5rem,5vw,4rem) 0 1.5rem}.hero h1{font
   <p class="lead">One bounded, buyer-directed computer-use hour: exact intake, observe before acting, perform the agreed action, verify the result, hand off what changed, and publish a public-safe receipt.</p>
   <p class="price">$250 / hour</p>
   <div class="actions">
-    <a class="cta" href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Open Activation Hour checkout — $250</a>
+    <div class="js-checkout-slot" data-sku="sku-whitebox-hour-20260826"><p class="note">Loading verified White Box-hour checkout…</p></div>
     <a class="cta secondary" href="#intake">Read the exact intake</a>
   </div>
 </header>
 
 <section class="grid" aria-label="Activation Hour delivery path">
-  <article class="card"><p class="step">01</p><h2>Buy</h2><p>Use the existing Commons White Box-hour offer. Its canonical ACTIVE_CHARGEABLE record binds the checkout above; this page does not mint a new TITAN SKU.</p></article>
+  <article class="card"><p class="step">01</p><h2>Buy</h2><p>Use the existing Commons White Box-hour offer. The checkout above is rendered only after the canonical catalog and provider-capability evidence pass the shared fail-closed gate; this page does not mint a new TITAN SKU.</p></article>
   <article class="card"><p class="step">02</p><h2>Scope</h2><p>Send one objective, one target surface, the proof that will count, a stop condition, and workable scheduling windows.</p></article>
   <article class="card"><p class="step">03</p><h2>Run</h2><p>During one scheduled hour: observe, perform only the agreed action, observe again, and preserve exact evidence.</p></article>
   <article class="card"><p class="step">04</p><h2>Hand off</h2><p>Receive the result and a dated public-safe <code>land/session-YYYYMMDD.md</code> recording dests, receipts, and what ran.</p></article>
@@ -73,7 +73,8 @@ body{max-width:70rem}.hero{padding:clamp(1.5rem,5vw,4rem) 0 1.5rem}.hero h1{font
   </ul>
 </section>
 
-<p class="truth">Canonical offer: <a href="./land/sku-whitebox-hour-20260826.md"><code>land/sku-whitebox-hour-20260826.md</code></a>. The active checkout rendered above is the existing White Box-hour link bound by that record. A click is intent only; it is not authorization, settlement, payout, or cash. This is the existing White Box hour applied to a bounded TITAN Hands service, not the paid-session tool unlock proposed in PR #4074.</p>
+<p class="truth">Canonical offer: <a href="./land/sku-whitebox-hour-20260826.md"><code>land/sku-whitebox-hour-20260826.md</code></a>. The checkout slot above derives the existing White Box-hour link from the canonical catalog only after current stored provider-capability evidence passes the shared gate; otherwise the provider URL stays inert. A click is intent only; it is not authorization, settlement, payout, or cash. This is the existing White Box hour applied to a bounded TITAN Hands service, not the paid-session tool unlock proposed in PR #4074.</p>
 </main>
+<script src="./pay.js?v=20260902a"></script>
 </body>
 </html>
