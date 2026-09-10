@@ -34,7 +34,7 @@ PROVENANCE_KEYS = (
 EXPECTED_EPISODE_STEPS = 720
 EXPECTED_ACTION_COUNT = 719
 MANIFEST_OPERATION = "titan-v3-sell-factorial-arm-manifest-20260910-01"
-PRESSURE_CONTRACT = "TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01"
+PRESSURE_CONTRACT = "TITAN-V3-PRESSURE-PREFIX-UNION-INVARIANCE-CERTIFICATE-20260910-01"
 FACTOR_NAMES = ("own_value", "certified_pressure")
 EXPECTED_ARM_FACTORS = {
     "control": (),
@@ -171,14 +171,30 @@ def _validate_arm_manifest(
     for name in FACTOR_NAMES:
         expected = {"contract", "source_sha256", "source_git_blob_sha1", "receipt_sha256"}
         if name == "certified_pressure":
-            expected.add("delay_bound_source")
+            expected.update(
+                {
+                    "inventory_window_mode",
+                    "rival_bound_source",
+                    "market_order_cap_source",
+                    "price_floor_source",
+                }
+            )
         row = _exact_keys(factors[name], expected, f"factor {name}")
         contract = _nonempty_string(row["contract"], f"factor {name} contract")
         if name == "certified_pressure":
             if contract != PRESSURE_CONTRACT:
                 raise EvidenceError("certified-pressure contract identity mismatch")
-            if row["delay_bound_source"] != "shedCapacity":
-                raise EvidenceError("certified-pressure delay bound must be shedCapacity")
+            expected_pressure_binding = {
+                "inventory_window_mode": "parent_candidate_execution_prefix_union",
+                "rival_bound_source": "shedCapacity",
+                "market_order_cap_source": "maxMarketOrdersPerTurn",
+                "price_floor_source": "PRICE_FLOOR",
+            }
+            for field, expected_value in expected_pressure_binding.items():
+                if row[field] != expected_value:
+                    raise EvidenceError(
+                        f"certified-pressure {field} must be {expected_value}"
+                    )
         normalized = {
             "contract": contract,
             "source_sha256": _digest(row["source_sha256"], f"factor {name} source SHA-256"),
@@ -188,7 +204,14 @@ def _validate_arm_manifest(
             "receipt_sha256": _digest(row["receipt_sha256"], f"factor {name} receipt SHA-256"),
         }
         if name == "certified_pressure":
-            normalized["delay_bound_source"] = "shedCapacity"
+            normalized.update(
+                {
+                    "inventory_window_mode": "parent_candidate_execution_prefix_union",
+                    "rival_bound_source": "shedCapacity",
+                    "market_order_cap_source": "maxMarketOrdersPerTurn",
+                    "price_floor_source": "PRICE_FLOOR",
+                }
+            )
         normalized_factors[name] = normalized
     if len({row["source_sha256"] for row in normalized_factors.values()}) != len(FACTOR_NAMES):
         raise EvidenceError("factor source identities must be distinct")
