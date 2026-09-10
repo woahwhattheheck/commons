@@ -38,16 +38,22 @@ jobs:
           if [[ -n "$expected" ]]; then
             test "$(git rev-parse HEAD)" = "$expected"
           fi
-          git status --porcelain=v1
           test -z "$(git status --porcelain=v1)"
 
-      - name: Compile carrier
+      - name: Parse carrier without mutating the checkout
         shell: bash
         run: |
           set -euo pipefail
-          python -m py_compile \
-            revenue/kaggriculture/cloud-execution-lab/cases/joint-sell-prefix-sol-pro/repair.py \
-            revenue/kaggriculture/cloud-execution-lab/cases/joint-sell-prefix-sol-pro/test_repair.py
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          paths = (
+              Path("revenue/kaggriculture/cloud-execution-lab/cases/joint-sell-prefix-sol-pro/repair.py"),
+              Path("revenue/kaggriculture/cloud-execution-lab/cases/joint-sell-prefix-sol-pro/test_repair.py"),
+          )
+          for path in paths:
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          PY
 
       - name: Run exact source and returned-action contracts
         env:
@@ -60,22 +66,30 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/cases/joint-sell-prefix-sol-pro/test_repair.py
 
       - name: Emit deterministic receipt and exact patch
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
         shell: bash
         run: |
           set -euo pipefail
           case_dir=revenue/kaggriculture/cloud-execution-lab/cases/joint-sell-prefix-sol-pro
-          mkdir -p artifacts
-          python "$case_dir/repair.py" --repo . --format json > artifacts/receipt.json
-          python "$case_dir/repair.py" --repo . --format patch > artifacts/repair.patch
-          python "$case_dir/repair.py" --repo . --format json > artifacts/receipt.second.json
-          cmp artifacts/receipt.json artifacts/receipt.second.json
-          sha256sum artifacts/receipt.json artifacts/repair.patch > artifacts/SHA256SUMS
-          rm artifacts/receipt.second.json
+          mkdir -p "$RUNNER_TEMP/titan-joint-prefix-artifacts"
+          python "$case_dir/repair.py" --repo . --format json > "$RUNNER_TEMP/titan-joint-prefix-artifacts/receipt.json"
+          python "$case_dir/repair.py" --repo . --format patch > "$RUNNER_TEMP/titan-joint-prefix-artifacts/repair.patch"
+          python "$case_dir/repair.py" --repo . --format json > "$RUNNER_TEMP/titan-joint-prefix-artifacts/receipt.second.json"
+          cmp "$RUNNER_TEMP/titan-joint-prefix-artifacts/receipt.json" "$RUNNER_TEMP/titan-joint-prefix-artifacts/receipt.second.json"
+          test -s "$RUNNER_TEMP/titan-joint-prefix-artifacts/repair.patch"
+          sha256sum \
+            "$RUNNER_TEMP/titan-joint-prefix-artifacts/receipt.json" \
+            "$RUNNER_TEMP/titan-joint-prefix-artifacts/repair.patch" \
+            > "$RUNNER_TEMP/titan-joint-prefix-artifacts/SHA256SUMS"
+          rm "$RUNNER_TEMP/titan-joint-prefix-artifacts/receipt.second.json"
+          test -z "$(git status --porcelain=v1)"
 
       - name: Upload evidence
         uses: actions/upload-artifact@v4
         with:
           name: titan-v3-joint-sell-prefix-${{ github.sha }}
-          path: artifacts/
+          path: ${{ runner.temp }}/titan-joint-prefix-artifacts/
           if-no-files-found: error
           retention-days: 30
