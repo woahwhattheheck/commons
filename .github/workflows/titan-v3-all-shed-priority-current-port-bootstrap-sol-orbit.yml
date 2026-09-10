@@ -1,0 +1,144 @@
+name: titan-v3-all-shed-priority-current-port-bootstrap-sol-orbit
+
+on:
+  push:
+    branches:
+      - sol-orbit/titan-v3-all-shed-priority-current-port-20260910-01
+    paths:
+      - '.github/workflows/titan-v3-all-shed-priority-current-port-bootstrap-sol-orbit.yml'
+      - '.bootstrap/sol-orbit-current-port/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-all-shed-priority-current-port-bootstrap-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize-reviewed-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Bind exact bootstrap checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify and materialize exact source payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+          import base64
+          import hashlib
+          import io
+          from pathlib import Path, PurePosixPath
+          import tarfile
+
+          stage = Path('.bootstrap/sol-orbit-current-port')
+          names = [f'payload.b64.part{i:02d}' for i in range(5)]
+          actual = sorted(path.name for path in stage.glob('payload.b64.part*'))
+          if actual != names:
+              raise SystemExit(f'payload part set mismatch: {actual!r}')
+          encoded = ''.join((stage / name).read_text(encoding='ascii') for name in names)
+          payload = base64.b64decode(encoded, validate=True)
+          expected_payload = 'a1b2932b9079c3630e4791366473c6c6ef1f510187b27f8d4582dcc2f6d2af6e'
+          actual_payload = hashlib.sha256(payload).hexdigest()
+          if actual_payload != expected_payload:
+              raise SystemExit(f'payload digest mismatch: {actual_payload}')
+
+          expected = {
+              '.github/workflows/titan-v3-all-shed-priority-current-port-sol-orbit.yml': 'd92e2f6678ec36f50894dc7b173e93cae26d75f7b07f20155a5cbd3fd196cbfe',
+              'p/sol-orbit-titan-v3-all-shed-priority-current-port-20260910-01.md': 'd3779334e3e5c0198e1583f6a8f505b540be048bc25007876752139c7c3479a4',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/README.md': '880e3389fcaec4c77eb763c8484d06ab6ebbaac5636a5537607200ff4b003768',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/bind_execution.py': '84dad760a40525a0be2153db164e23080a847e50caa4e8e9dde741d8b28a8677',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/materialize.py': 'afca6306fdf61fffe796ebd6bc3e6410c9f3170e4e9aa887679472f8234e0c36',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/materialize_evaluator.py': '52415c46c3853f2f0193f3ba1e6a02d1de984072328949f4435f6510e12892a3',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/screen.py': '2e896e8c90fe623b2f9c4062536fdcca089514ab77fe84e7e7fd55d0f8f66457',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/test_current_port.py': '72b6401fc33c55e5786d1a5190579561e93d9cb5c36a8978bc3ed15a36514c0e',
+          }
+          seen: set[str] = set()
+          with tarfile.open(fileobj=io.BytesIO(payload), mode='r:gz') as bundle:
+              members = bundle.getmembers()
+              if len(members) != len(expected):
+                  raise SystemExit(f'payload member count mismatch: {len(members)}')
+              for member in members:
+                  name = member.name
+                  pure = PurePosixPath(name)
+                  if (
+                      not member.isfile()
+                      or pure.is_absolute()
+                      or not pure.parts
+                      or any(part in ('', '.', '..') for part in pure.parts)
+                      or pure.as_posix() != name
+                      or name not in expected
+                      or name in seen
+                  ):
+                      raise SystemExit(f'unsafe or unexpected payload member: {name!r}')
+                  stream = bundle.extractfile(member)
+                  if stream is None:
+                      raise SystemExit(f'cannot read payload member: {name}')
+                  data = stream.read(member.size + 1)
+                  if len(data) != member.size:
+                      raise SystemExit(f'payload member length mismatch: {name}')
+                  digest = hashlib.sha256(data).hexdigest()
+                  if digest != expected[name]:
+                      raise SystemExit(f'payload member digest mismatch: {name}: {digest}')
+                  target = Path(*pure.parts)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(data)
+                  seen.add(name)
+          if seen != set(expected):
+              raise SystemExit(f'payload member set mismatch: {sorted(set(expected) - seen)!r}')
+          print({'payload_sha256': actual_payload, 'files': len(seen)})
+          PY
+
+      - name: Replace bootstrap transport with reviewed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .bootstrap/sol-orbit-current-port
+          rmdir .bootstrap 2>/dev/null || true
+          rm .github/workflows/titan-v3-all-shed-priority-current-port-bootstrap-sol-orbit.yml
+          git add -A
+          git diff --cached --check
+          python - <<'PY'
+          import subprocess
+          paths = set(subprocess.check_output(
+              ['git', 'diff', '--cached', '--name-only'], text=True
+          ).splitlines())
+          required = {
+              '.github/workflows/titan-v3-all-shed-priority-current-port-sol-orbit.yml',
+              'p/sol-orbit-titan-v3-all-shed-priority-current-port-20260910-01.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/bind_execution.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/materialize.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/materialize_evaluator.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/screen.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/test_current_port.py',
+              '.github/workflows/titan-v3-all-shed-priority-current-port-bootstrap-sol-orbit.yml',
+              *{f'.bootstrap/sol-orbit-current-port/payload.b64.part{i:02d}' for i in range(5)},
+          }
+          if paths != required:
+              raise SystemExit(f'bootstrap change set mismatch; missing={sorted(required-paths)}, extra={sorted(paths-required)}')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'test(titan): materialize current-port causal screen'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/materialized-head.sha"
