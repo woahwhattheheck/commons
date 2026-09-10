@@ -64,9 +64,19 @@ not score rigidity itself as good or bad.
 
 `unit_route_audit.py` rejects digest drift, copied replay bytes, duplicate episode
 IDs or JSON keys, wrong agent seat/opponent/seed declarations, incomplete episode
-grids, action/observation shifts, malformed action rows, bool-as-int quantities,
-non-square own boards, actor/inventory cardinality drift, and output replacement
-failure. Market HIRE counts use only `market[:maxMarketOrdersPerTurn]`.
+grids, action/observation shifts, structurally malformed action containers and
+key quantity types, bool-as-int quantities, non-square own boards, actor/inventory
+cardinality drift, and output replacement failure. Market HIRE counts use only
+`market[:maxMarketOrdersPerTurn]`.
+
+This is not a complete validator for the documented Kaggriculture command grammar.
+For the transition proof, action rows are checked for structural/type safety while
+remaining compatible with the official interpreter semantics that produced the
+replays. In particular, zero-argument `HIRE`/`BUY_LAND` rows with trailing fields
+and unknown unit-op strings are not rejected solely because the documented grammar
+would reject them; the synthetic fixtures also use `WAIT` where the canonical
+grammar documents `PASS`. An `AUDIT_PASS` therefore certifies the stated replay
+orientation and actor-binding invariants, not canonical command-schema conformance.
 
 The synthetic contract and retained-report checks currently run 28 tests:
 
