@@ -1,0 +1,84 @@
+name: titan-rating-promotion-gate
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-rating-promotion-gate/**"
+      - ".github/workflows/titan-rating-promotion-gate.yml"
+  push:
+    paths:
+      - "revenue/kaggriculture/cloud-rating-promotion-gate/**"
+      - ".github/workflows/titan-rating-promotion-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-rating-promotion-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile exact source
+        working-directory: revenue/kaggriculture/cloud-rating-promotion-gate
+        run: python -B -m py_compile rating_gate.py test_rating_gate.py
+      - name: Run adversarial contracts
+        working-directory: revenue/kaggriculture/cloud-rating-promotion-gate
+        run: python -B -m unittest -v test_rating_gate.py
+      - name: Prove deterministic receipt
+        working-directory: revenue/kaggriculture/cloud-rating-promotion-gate
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from rating_gate import classify_bytes
+
+          d = lambda c: c * 64
+          doc = {
+              "schema": "titan.rating-gate.input.v1",
+              "experiment": {
+                  "control_id": "control",
+                  "candidate_id": "candidate",
+                  "engine_sha256": d("a"),
+                  "evaluator_sha256": d("b"),
+                  "opponent_manifest_sha256": d("c"),
+                  "grid_id": "workflow-determinism-witness",
+              },
+              "pairs": [{
+                  "opponent": "synthetic",
+                  "seed": 1,
+                  "seat": 0,
+                  "control": {
+                      "state": "complete", "phase": "finalize",
+                      "own_score": 0, "rival_score": 1,
+                      "tested_action_sha256": d("1"), "action_count": 719,
+                  },
+                  "candidate": {
+                      "state": "complete", "phase": "finalize",
+                      "own_score": 2, "rival_score": 1,
+                      "tested_action_sha256": d("2"), "action_count": 719,
+                  },
+              }],
+          }
+          raw = (
+              json.dumps(doc, sort_keys=True, separators=(",", ":")) + "\n"
+          ).encode()
+          first = classify_bytes(raw)
+          second = classify_bytes(raw)
+          assert first == second
+          assert first["verdict"] == "RATING_ADVANCE_SCREEN"
+          assert len(first["receipt_sha256"]) == 64
+          print(json.dumps({
+              "input_sha256": hashlib.sha256(raw).hexdigest(),
+              "receipt_sha256": first["receipt_sha256"],
+              "verdict": first["verdict"],
+          }, sort_keys=True))
+          PY
