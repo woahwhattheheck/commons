@@ -1,0 +1,27 @@
+{
+  "schema_version": "titan-v3-holdout-seed-ledger/v1",
+  "entries": [
+    {
+      "operation": "titan-v3-own-value-disjoint-holdout-sol-pro-20260910-01",
+      "hypothesis": "own-value-score0",
+      "head": "b1962a216fafd1c654fb96b2a4baa5fb81e2f1c0",
+      "source_pr": 12040,
+      "run_id": 34524185925,
+      "run_attempt": 1,
+      "event_name": "pull_request",
+      "policy_sha256": "679f1ab5a83369696a9b28e4647cb9aae38b0a2b60afb91d3a993238a66a908d",
+      "seeds": [
+        1201189346,
+        2053792019,
+        684357706,
+        572159600,
+        1619590821,
+        1748784700,
+        2100322278,
+        1851971276
+      ],
+      "status": "spent",
+      "reuse_forbidden": true
+    }
+  ]
+}

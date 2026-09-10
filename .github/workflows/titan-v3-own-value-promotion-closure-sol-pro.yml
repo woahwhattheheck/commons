@@ -1,0 +1,196 @@
+name: titan-v3-own-value-promotion-closure-sol-pro
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-own-value-promotion-closure-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  exact-head-preflight-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile and execute promotion-closure contracts
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_PARENT: 'b1962a216fafd1c654fb96b2a4baa5fb81e2f1c0'
+        run: |
+          set -euo pipefail
+          test "$GITHUB_EVENT_NAME" = pull_request
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT"
+
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro
+          OUT="$RUNNER_TEMP/titan-v3-own-value-promotion-closure"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          export PYTHONPYCACHEPREFIX="$OUT/pycache"
+          export PYTHONDONTWRITEBYTECODE=1
+          export PYTHONHASHSEED=0
+
+          cat > "$OUT/EXPECTED-PATHS.txt" <<'EOF'
+          .github/workflows/titan-v3-own-value-promotion-closure-sol-pro.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/README.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/SEED-RUN-LEDGER.json
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_closure.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_core.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_seed.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_manifest.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_trajectory.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_policy.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_assess.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/promotion_test_support.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/test_seed_closure.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/test_trajectory.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-promotion-closure-sol-pro/test_economics_json.py
+          EOF
+          LC_ALL=C sort -o "$OUT/EXPECTED-PATHS.txt" "$OUT/EXPECTED-PATHS.txt"
+          git diff --name-only "$EXPECTED_PARENT" "$EXPECTED_HEAD" | LC_ALL=C sort > "$OUT/ACTUAL-PATHS.txt"
+          diff -u "$OUT/EXPECTED-PATHS.txt" "$OUT/ACTUAL-PATHS.txt"
+
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
+
+          python -m py_compile \
+            "$CASE/promotion_closure.py" \
+            "$CASE/promotion_core.py" \
+            "$CASE/promotion_seed.py" \
+            "$CASE/promotion_manifest.py" \
+            "$CASE/promotion_trajectory.py" \
+            "$CASE/promotion_policy.py" \
+            "$CASE/promotion_assess.py" \
+            "$CASE/promotion_test_support.py" \
+            "$CASE/test_seed_closure.py" \
+            "$CASE/test_trajectory.py" \
+            "$CASE/test_economics_json.py"
+          (
+            cd "$CASE"
+            python -m unittest -v test_seed_closure.py test_trajectory.py test_economics_json.py
+          ) 2>&1 | tee "$OUT/TEST.log"
+          grep -F 'Ran 26 tests' "$OUT/TEST.log"
+          grep -Fx 'OK' "$OUT/TEST.log"
+
+          python "$CASE/promotion_closure.py" verify-ledger \
+            --ledger "$CASE/SEED-RUN-LEDGER.json" \
+            | tee "$OUT/LEDGER-VERIFY.json"
+
+          OUT="$OUT" CASE="$CASE" EXPECTED_HEAD="$EXPECTED_HEAD" EXPECTED_PARENT="$EXPECTED_PARENT" \
+            python - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          out = Path(os.environ["OUT"])
+          case = Path(os.environ["CASE"])
+          paths = [
+              Path(".github/workflows/titan-v3-own-value-promotion-closure-sol-pro.yml"),
+              case / "README.md",
+              case / "SEED-RUN-LEDGER.json",
+              case / "promotion_closure.py",
+              case / "promotion_core.py",
+              case / "promotion_seed.py",
+              case / "promotion_manifest.py",
+              case / "promotion_trajectory.py",
+              case / "promotion_policy.py",
+              case / "promotion_assess.py",
+              case / "promotion_test_support.py",
+              case / "test_seed_closure.py",
+              case / "test_trajectory.py",
+              case / "test_economics_json.py",
+          ]
+          retained = {}
+          for path in paths:
+              data = path.read_bytes()
+              retained[path.as_posix()] = {
+                  "bytes": len(data),
+                  "sha256": hashlib.sha256(data).hexdigest(),
+              }
+          ledger_verify = json.loads((out / "LEDGER-VERIFY.json").read_text(encoding="utf-8"))
+          receipt = {
+              "schema_version": "titan-v3-own-value-promotion-closure-preflight/v1",
+              "operation": "titan-v3-own-value-promotion-closure-sol-pro-20260910-02",
+              "git_head": os.environ["EXPECTED_HEAD"],
+              "exact_parent": os.environ["EXPECTED_PARENT"],
+              "changed_paths": [path.as_posix() for path in paths],
+              "contracts": 26,
+              "ledger_entries": ledger_verify["entries"],
+              "ledger_sha256": ledger_verify["sha256"],
+              "game_runs": 0,
+              "fresh_seed_spend": False,
+              "workflow_dispatch_available": False,
+              "canonical_runtime_modified": False,
+              "promotion_authority": False,
+              "provider_or_kaggle_mutation": False,
+              "retained": retained,
+          }
+          (out / "RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+          python - "$OUT/RECEIPT.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          receipt = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert receipt["contracts"] == 26
+          assert receipt["ledger_entries"] == 1
+          assert receipt["game_runs"] == 0
+          assert receipt["fresh_seed_spend"] is False
+          assert receipt["workflow_dispatch_available"] is False
+          assert receipt["promotion_authority"] is False
+          assert receipt["canonical_runtime_modified"] is False
+          assert receipt["provider_or_kaggle_mutation"] is False
+          assert len(receipt["changed_paths"]) == 14
+          PY
+
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
+          printf '%s\n' "$EXPECTED_HEAD" > "$OUT/COMPLETE"
+
+      - name: Retain exact preflight evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-value-promotion-closure-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-v3-own-value-promotion-closure/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require complete no-game receipt
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-own-value-promotion-closure"
+          test -s "$OUT/COMPLETE"
+          test "$(cat "$OUT/COMPLETE")" = "$EXPECTED_HEAD"
+          test -s "$OUT/TEST.log"
+          test -s "$OUT/LEDGER-VERIFY.json"
+          test -s "$OUT/RECEIPT.json"
