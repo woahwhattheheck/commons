@@ -165,6 +165,13 @@ def _identity_path(config: Mapping, role: str) -> Path:
     return path
 
 
+def _hash_path(path: Path, label: str) -> str:
+    try:
+        return sha256_file(path)
+    except OSError as exc:
+        raise ExecutablePinError(f"{label} cannot be hashed: {path}: {exc}") from exc
+
+
 def submission_inputs(
     *,
     candidate_artifact: Path,
@@ -302,17 +309,29 @@ def bind_submission_config(
         record = _record(inputs, input_name)
         expected = record["sha256"]
         live_path = _identity_path(pinned_config, role)
-        observed = sha256_file(live_path)
+        observed = _hash_path(live_path, f"{role} identity")
         if observed != expected:
             raise ExecutablePinError(
                 f"{role} identity drift: submission pinned {expected}, "
                 f"live path {live_path} has {observed}"
             )
-        if not pins.verify_blob(expected):
+        try:
+            blob_verified = pins.verify_blob(expected)
+        except OSError as exc:
+            raise ExecutablePinError(
+                f"{role} identity blob cannot be verified: {expected}: {exc}"
+            ) from exc
+        if not blob_verified:
             raise ExecutablePinError(
                 f"{role} identity blob missing or modified: {expected}"
             )
-        bound[role]["identity_file"] = str(pins.blob_path(expected))
+        try:
+            bound_path = pins.blob_path(expected)
+        except KeyError as exc:
+            raise ExecutablePinError(
+                f"{role} identity blob disappeared after verification: {expected}"
+            ) from exc
+        bound[role]["identity_file"] = str(bound_path)
 
     return bound
 
@@ -331,11 +350,18 @@ class ExecutablePinnedAttempt(Attempt):
         strategy: str = "auto",
     ) -> dict:
         bound_config = bind_submission_config(self.pins, pin_manifest, config)
-        return super().prepare(
-            submission_id=submission_id,
-            candidate_name=candidate_name,
-            pin_manifest=pin_manifest,
-            config=bound_config,
-            policy=policy,
-            strategy=strategy,
-        )
+        try:
+            return super().prepare(
+                submission_id=submission_id,
+                candidate_name=candidate_name,
+                pin_manifest=pin_manifest,
+                config=bound_config,
+                policy=policy,
+                strategy=strategy,
+            )
+        except RunError:
+            raise
+        except (KeyError, OSError, UnicodeError, json.JSONDecodeError, TypeError, ValueError) as exc:
+            raise ExecutablePinError(
+                f"pinned attempt preparation failed: {exc}"
+            ) from exc
