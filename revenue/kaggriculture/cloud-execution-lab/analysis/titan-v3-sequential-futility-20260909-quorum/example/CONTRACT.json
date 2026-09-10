@@ -1,0 +1,41 @@
+{
+  "baseline_name": "canonical-synthetic",
+  "candidate_name": "challenger-synthetic",
+  "expected_cells": 8,
+  "opponents": [
+    "arlene",
+    "apex"
+  ],
+  "panel_id": "synthetic-futility-example",
+  "policy": {
+    "max_baseline_win_regressions": 8,
+    "max_negative_opponent_strata": 2,
+    "max_negative_seat_strata": 2,
+    "max_new_losses": 8,
+    "max_result_regressions": 8,
+    "min_mean_margin_delta": -1000000.0,
+    "min_mean_own_delta": -1000000.0,
+    "min_median_own_delta": -1000000.0,
+    "min_positive_cell_fraction": 0.75,
+    "min_positive_pair_fraction": 0.0,
+    "min_worst_cell_own_delta": null,
+    "require_any_change": false
+  },
+  "provenance": {
+    "baseline_artifact_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "candidate_artifact_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "engine_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "engine_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "runner_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "runner_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "schema_version": 1,
+  "seats": [
+    0,
+    1
+  ],
+  "seeds": [
+    101,
+    102
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "analysis": {
+    "checks": [
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "name": "mean_own_delta",
+        "observed": 0.0,
+        "op": ">=",
+        "optimistic_final": null,
+        "optimistic_final_unbounded": true,
+        "proof": "partial means are intentionally unbounded without a contract-bound terminal-score envelope",
+        "threshold": -1000000.0
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "name": "median_own_delta",
+        "observed": 0.0,
+        "op": ">=",
+        "optimistic_final": null,
+        "optimistic_final_unbounded": true,
+        "proof": "missing cells are assigned their certified upper deltas; without an envelope they are +infinity, so only an already-fixed middle order statistic can prove futility",
+        "threshold": -1000000.0
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "name": "mean_margin_delta",
+        "observed": 0.0,
+        "op": ">=",
+        "optimistic_final": null,
+        "optimistic_final_unbounded": true,
+        "proof": "partial margin means are intentionally unbounded without a contract-bound terminal-score envelope",
+        "threshold": -1000000.0
+      },
+      {
+        "can_still_pass": false,
+        "futility_proven": true,
+        "name": "positive_cell_fraction",
+        "observed": 0.0,
+        "op": ">=",
+        "optimistic_final": 0.625,
+        "optimistic_final_unbounded": false,
+        "proof": "every missing cell that can still have positive own-cash delta is counted as positive",
+        "threshold": 0.75
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "name": "positive_pair_fraction",
+        "observed": 0.0,
+        "op": ">=",
+        "optimistic_final": 0.75,
+        "optimistic_final_unbounded": false,
+        "proof": "each incomplete seat-pair is positive only when the sum of exact observations and all missing-cell upper bounds can exceed zero",
+        "threshold": 0.0
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "minimum_final": 0,
+        "name": "result_regressions",
+        "op": "<=",
+        "proof": "an observed result regression cannot be undone by later cells",
+        "threshold": 8
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "minimum_final": 0,
+        "name": "baseline_win_regressions",
+        "op": "<=",
+        "proof": "an observed result regression cannot be undone by later cells",
+        "threshold": 8
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "minimum_final": 0,
+        "name": "new_losses",
+        "op": "<=",
+        "proof": "an observed result regression cannot be undone by later cells",
+        "threshold": 8
+      },
+      {
+        "can_still_pass": true,
+        "forced_keys": [],
+        "futility_proven": false,
+        "minimum_final": 0,
+        "name": "negative_opponent_strata",
+        "op": "<=",
+        "proof": "a stratum is counted only when even every missing cell at its optimistic upper delta leaves the final mean negative",
+        "threshold": 2
+      },
+      {
+        "can_still_pass": true,
+        "forced_keys": [],
+        "futility_proven": false,
+        "minimum_final": 0,
+        "name": "negative_seat_strata",
+        "op": "<=",
+        "proof": "a seat is counted only when even every missing cell at its optimistic upper delta leaves the final mean negative",
+        "threshold": 2
+      },
+      {
+        "can_still_pass": true,
+        "enabled": false,
+        "futility_proven": false,
+        "name": "worst_cell_own_delta",
+        "proof": "disabled by the frozen promotion contract"
+      },
+      {
+        "can_still_pass": true,
+        "futility_proven": false,
+        "name": "any_score_change",
+        "observed": 0,
+        "op": ">= 0",
+        "optimistic_final": 5,
+        "proof": "each missing cell is optimistically allowed to change; identity is futile only after the complete grid",
+        "threshold": 0
+      }
+    ],
+    "coverage": {
+      "baseline_cells": 8,
+      "candidate_cells": 3,
+      "complete_pairs": 1,
+      "expected_cells": 8,
+      "matched_cells": 3,
+      "remaining_candidate_cells": 5,
+      "total_pairs": 4
+    },
+    "futility_reasons": [
+      "positive_cell_fraction"
+    ],
+    "observed": {
+      "baseline_win_regressions": 0,
+      "changed_cells": 0,
+      "margin_delta_mean": 0.0,
+      "new_losses": 0,
+      "own_delta_mean": 0.0,
+      "own_delta_median": 0.0,
+      "result_regressions": 0
+    },
+    "opponent_bounds": [
+      {
+        "forced_negative": false,
+        "group": "arlene",
+        "observed_cells": 3,
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "total_cells": 4
+      },
+      {
+        "forced_negative": false,
+        "group": "apex",
+        "observed_cells": 0,
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "total_cells": 4
+      }
+    ],
+    "pair_bounds": [
+      {
+        "can_be_positive": false,
+        "complete": true,
+        "observed_mean": 0.0,
+        "opponent": "arlene",
+        "optimistic_mean": 0.0,
+        "optimistic_mean_unbounded": false,
+        "seed": 101
+      },
+      {
+        "can_be_positive": true,
+        "complete": false,
+        "observed_mean": null,
+        "opponent": "arlene",
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "seed": 102
+      },
+      {
+        "can_be_positive": true,
+        "complete": false,
+        "observed_mean": null,
+        "opponent": "apex",
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "seed": 101
+      },
+      {
+        "can_be_positive": true,
+        "complete": false,
+        "observed_mean": null,
+        "opponent": "apex",
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "seed": 102
+      }
+    ],
+    "seat_bounds": [
+      {
+        "forced_negative": false,
+        "group": 0,
+        "observed_cells": 2,
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "total_cells": 4
+      },
+      {
+        "forced_negative": false,
+        "group": 1,
+        "observed_cells": 1,
+        "optimistic_mean": null,
+        "optimistic_mean_unbounded": true,
+        "total_cells": 4
+      }
+    ]
+  },
+  "baseline_name": "canonical-synthetic",
+  "candidate_name": "challenger-synthetic",
+  "exact_command": "python synthetic_runner.py --grid synthetic-futility-example",
+  "input_binding": "single-open private snapshots; hashes cover exactly parsed bytes",
+  "input_bytes": {
+    "baseline_games": 824,
+    "candidate_games": 312,
+    "contract": 1281,
+    "evidence": 684
+  },
+  "input_sha256": {
+    "baseline_games": "162b9d6861f098b0fdc284ad6253fda8b86e296b240ea569c96e68248956aba8",
+    "candidate_games": "0e0a1cba5fef0267486f0228243da815a2bb35f27b3fa583d585c9dea212281b",
+    "contract": "3eaf34be0e9a579ec0eb6cc3568630423fc6e092cced3bc613b6c3b3c353ec04",
+    "evidence": "10fae815ca5cf1e071f460080fa0dd08ce926bbecd9d906aced114d2838c913f"
+  },
+  "mode": "partial-futility-only",
+  "next_action": "cancel remaining candidate cells",
+  "panel_id": "synthetic-futility-example",
+  "partial_panel_can_promote": false,
+  "provenance": {
+    "baseline_artifact_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "candidate_artifact_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "engine_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "engine_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "runner_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "runner_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "schema_version": 1,
+  "score_envelope": null,
+  "valid": true,
+  "verdict": "FUTILE"
+}
