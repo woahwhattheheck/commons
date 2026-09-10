@@ -25,7 +25,13 @@ This carrier adds an isolated, default-off candidate that delegates admission
 to the merged exact-equivalence primitive in `joint_assignment.py`.  It adds
 both current-action and continuation-commit atomicity, exact current-route
 binding, deterministic bounded pair/horizon selection, and an every-step
-reason census with pre-interpreter candidate-action hashes.
+reason census with pre-interpreter candidate-action hashes.  It also consumes
+SOL-CROSSWIND / PR #11975's narrow source theorem: active-prefix current HIRE is
+processed after all already-present unit actors.  P07 may therefore certify only
+those existing actors through `p07_current_hire.py`, while preserving the full
+market queue and bounded new-actor tail; every non-HIRE, inactive-suffix,
+future, malformed, or unsupported market carrier remains a hard cut.  Twenty
+focused local contracts pass, including the measured predecessor killer.
 
 Owned paths:
 - `revenue/kaggriculture/cloud-execution-lab/candidates/v3-p07-joint-actor-sol-pivot/**`

@@ -19,7 +19,10 @@ if str(HERE) not in sys.path:
 if str(LAB) not in sys.path:
     sys.path.insert(0, str(LAB))
 
-from p07_atomic import install_agent
+import p07_atomic
+from p07_current_hire import install_current_hire_window
+
+install_current_hire_window(p07_atomic)
 
 
 def _load_canonical_main():
@@ -41,7 +44,7 @@ _CANONICAL_NEW_INSTANCE = _CANONICAL._new_instance
 
 def _new_instance(root, feature_data):
     instance = _CANONICAL_NEW_INSTANCE(root, feature_data)
-    return install_agent(instance, enabled=True)
+    return p07_atomic.install_agent(instance, enabled=True)
 
 
 _CANONICAL._new_instance = _new_instance

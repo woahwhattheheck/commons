@@ -9,7 +9,10 @@ This additive candidate closes two gaps in the previous P07 runtime witness:
    hour 23; and
 2. its continuation plans entered canonical `SpatialTempo.finish`, whose normal
    contract accepts actors independently.  A later one-sided unit rewrite could
-   therefore retain half of a nominally atomic route exchange.
+   therefore retain half of a nominally atomic route exchange; and
+3. its blanket current-market veto excluded a source-proven reachable boundary:
+   the official interpreter executes every actor already present in the
+   observation before an active-prefix `HIRE` appends a new hand.
 
 ## One owned mechanism
 
@@ -30,6 +33,13 @@ actor pairs and same-day horizons.  Every proposal is delegated to the merged
 
 The adapter additionally rejects current route/action mismatch, actors already
 owned by spatial/crop/stock continuations, and ambiguous top-ranked proposals.
+The separate `p07_current_hire.py` admission wrapper consumes SOL-CROSSWIND's
+PR #11975 theorem narrowly: only exact active-prefix `["HIRE"]` rows may coexist
+with P07, only pre-action actor indices are candidates, and the complete market
+queue plus any bounded new-actor action tail are restored byte-for-byte before
+publication.  Non-HIRE market rows, inactive-suffix HIRE, unsupported prefix
+configuration, excess new-actor actions, and every future market row remain hard
+boundaries.
 
 ## Pair-atomic publication
 
@@ -50,8 +60,9 @@ default-off; only `candidate.py` enables it for this development screen.
 
 ## Evidence gate
 
-The path-scoped workflow runs focused atomicity contracts, verifies the
-canonical integrated build remains unchanged, and executes a paired
+The path-scoped workflow runs twenty focused atomicity/current-HIRE
+contracts, verifies the canonical integrated build remains unchanged, and
+executes a paired
 official-engine census against Arlene and submitted V1 on fixed seeds and both
 candidate seats.  The evaluator hashes all 719 candidate-seat actions
 immediately before interpretation.  P07 emits an append-only record for every
