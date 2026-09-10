@@ -1,0 +1,51 @@
+name: titan-v3-executable-spend-reserve-sol-cashline
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/scheduler.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/**"
+      - ".github/workflows/titan-v3-executable-spend-reserve-sol-cashline.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run predecessor-killing contracts
+        run: >-
+          python
+          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/test_repair.py
+      - name: Emit deterministic exact-source receipt
+        run: >-
+          python
+          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py
+          --repo "$GITHUB_WORKSPACE"
+          --format json
+          | tee executable-spend-reserve-receipt.json
+      - name: Emit exact one-hunk patch
+        run: >-
+          python
+          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py
+          --repo "$GITHUB_WORKSPACE"
+          --format patch
+          | tee executable-spend-reserve.patch
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-executable-spend-reserve-receipts
+          path: |
+            executable-spend-reserve-receipt.json
+            executable-spend-reserve.patch
+          if-no-files-found: error
+          retention-days: 30
