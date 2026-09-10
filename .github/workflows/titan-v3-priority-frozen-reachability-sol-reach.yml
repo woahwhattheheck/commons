@@ -1,0 +1,36 @@
+name: titan-v3-priority-frozen-reachability-sol-reach
+
+on:
+  push:
+    branches:
+      - sol-reach/titan-v3-intent-priority-frozen-reachability-20260910-01
+    paths:
+      - '.github/workflows/titan-v3-priority-frozen-reachability-sol-reach.yml'
+      - 'p/sol-reach-titan-v3-intent-priority-frozen-reachability-20260910-01.md'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-frozen-reachability-sol-reach/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-priority-frozen-reachability-sol-reach.yml'
+      - 'p/sol-reach-titan-v3-intent-priority-frozen-reachability-20260910-01.md'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-frozen-reachability-sol-reach/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-reachability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact package, call path, materialization, and rejection receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          analysis='revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-frozen-reachability-sol-reach'
+          python -B "$analysis/test_reachability.py"
+          python -B "$analysis/materialize.py" --output "$RUNNER_TEMP/titan-priority-reachability"
+          test -s "$RUNNER_TEMP/titan-priority-reachability/MATERIALIZATION.json"
+          git diff --exit-code -- .
