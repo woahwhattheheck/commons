@@ -7,7 +7,7 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-forced-feasibility-economic-floor-sol-pro/**"
       - "revenue/kaggriculture/cloud-execution-lab/scheduler.py"
       - "revenue/kaggriculture/cloud-execution-lab/mechanics.py"
-      - "revenue/kaggriculture/cloud-execution-lab/observed_clone.py"
+      - "revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py"
       - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
       - "revenue/kaggriculture/cloud-execution-lab/reference/decision/decision.py"
       - "p/sol-pro-titan-v3-forced-feasibility-economic-floor-20260910-01.md"
@@ -26,8 +26,13 @@ jobs:
     timeout-minutes: 10
     env:
       LAB: revenue/kaggriculture/cloud-execution-lab
+      RUNTIME: revenue/kaggriculture/cloud-runtime-pulse
       CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-forced-feasibility-economic-floor-sol-pro
       EXPECTED_SCHEDULER_BLOB: a483b24dd72b580d7d8811636b54d2d44f391575
+      EXPECTED_MECHANICS_BLOB: 044a4f9c0a4a44dde10ada57563238bcaf82075d
+      EXPECTED_OBSERVED_CLONE_BLOB: f810d53193d3035655a36c21021e18ba1d415916
+      EXPECTED_ARLENE_BLOB: bdb9cf58148a3c7961c085f4902759537decabf6
+      EXPECTED_DECISION_BLOB: 2931aa55831204fbb473ab85a6f5b81ec947fcf7
       PYTHONDONTWRITEBYTECODE: "1"
       PYTHONHASHSEED: "0"
     steps:
@@ -38,7 +43,7 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Bind exact head and current scheduler source
+      - name: Bind exact head and direct theorem dependency closure
         shell: bash
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -46,6 +51,10 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git hash-object "$LAB/scheduler.py")" = "$EXPECTED_SCHEDULER_BLOB"
+          test "$(git hash-object "$LAB/mechanics.py")" = "$EXPECTED_MECHANICS_BLOB"
+          test "$(git hash-object "$RUNTIME/observed_clone.py")" = "$EXPECTED_OBSERVED_CLONE_BLOB"
+          test "$(git hash-object "$LAB/reference/next-panel/vendor/arlene.py")" = "$EXPECTED_ARLENE_BLOB"
+          test "$(git hash-object "$LAB/reference/decision/decision.py")" = "$EXPECTED_DECISION_BLOB"
           git diff --exit-code -- .
           test -z "$(git status --porcelain --untracked-files=all)"
 

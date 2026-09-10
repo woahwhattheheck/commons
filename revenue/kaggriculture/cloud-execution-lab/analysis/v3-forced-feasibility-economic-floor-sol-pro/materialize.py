@@ -23,7 +23,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 OPERATION = "titan-v3-forced-feasibility-economic-floor-20260910-sol-pro-01"
 EXPECTED_SOURCE_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
@@ -128,6 +128,53 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _lexists(path: Path) -> bool:
+    """Return true for every existing operand, including dangling symlinks."""
+    return os.path.lexists(os.fspath(path))
+
+
+def _resolved(path: Path, *, strict: bool, label: str) -> Path:
+    try:
+        return Path(path).expanduser().resolve(strict=strict)
+    except (OSError, RuntimeError) as exc:
+        raise MaterializeError(f"cannot resolve {label}: {path}: {exc}") from exc
+
+
+def _destination(path: Path, *, label: str) -> Path:
+    """Resolve a new destination and reject pre-existing path or symlink aliases."""
+    raw = Path(path).expanduser()
+    if _lexists(raw):
+        raise MaterializeError(f"{label} already exists: {raw}")
+    resolved = _resolved(raw, strict=False, label=label)
+    if _lexists(resolved):
+        raise MaterializeError(f"{label} resolves to an existing path: {resolved}")
+    return resolved
+
+
+def resolve_cli_operands(
+    source: Path,
+    output: Path,
+    receipt: Path,
+) -> tuple[Path, Path, Path]:
+    """Resolve all CLI operands before writes and reject canonical aliases."""
+    resolved_source = _resolved(source, strict=True, label="source")
+    resolved_output = _destination(output, label="output")
+    resolved_receipt = _destination(receipt, label="receipt")
+    operands = {
+        "source": resolved_source,
+        "output": resolved_output,
+        "receipt": resolved_receipt,
+    }
+    seen: dict[str, str] = {}
+    for label, path in operands.items():
+        key = os.path.normcase(os.fspath(path))
+        prior = seen.get(key)
+        if prior is not None:
+            raise MaterializeError(f"{label} aliases {prior}: {path}")
+        seen[key] = label
+    return resolved_source, resolved_output, resolved_receipt
+
+
 def _atomic_write(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + f".tmp.{os.getpid()}")
@@ -177,12 +224,10 @@ def materialize(
     *,
     expected_source_blob: str = EXPECTED_SOURCE_BLOB,
 ) -> dict[str, Any]:
-    source = Path(source).resolve(strict=True)
-    output = Path(output).resolve()
+    source = _resolved(source, strict=True, label="source")
+    output = _destination(output, label="output")
     if source == output:
         raise MaterializeError("refusing to overwrite the source scheduler")
-    if output.exists():
-        raise MaterializeError(f"output already exists: {output}")
     before = source.read_bytes()
     actual_blob = git_blob_sha1(before)
     if actual_blob != expected_source_blob:
@@ -234,20 +279,26 @@ def materialize(
 
 
 def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
+    destination = _destination(path, label="receipt")
     data = (
         json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n"
     ).encode("utf-8")
-    _atomic_write(Path(path).resolve(), data)
+    _atomic_write(destination, data)
 
 
-def main() -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--receipt", type=Path, required=True)
-    args = parser.parse_args()
-    receipt = materialize(args.source, args.output)
-    write_receipt(args.receipt, receipt)
+    args = parser.parse_args(argv)
+    source, output, receipt_path = resolve_cli_operands(
+        args.source,
+        args.output,
+        args.receipt,
+    )
+    receipt = materialize(source, output)
+    write_receipt(receipt_path, receipt)
     print(
         json.dumps(
             {

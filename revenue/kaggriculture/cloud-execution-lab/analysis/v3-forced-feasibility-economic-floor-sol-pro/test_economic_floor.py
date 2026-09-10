@@ -16,6 +16,45 @@ SOURCE = LAB / "scheduler.py"
 
 import materialize as subject
 
+DIRECT_DEPENDENCY_BLOBS = (
+    ("scheduler", SOURCE, "a483b24dd72b580d7d8811636b54d2d44f391575"),
+    ("mechanics", LAB / "mechanics.py", "044a4f9c0a4a44dde10ada57563238bcaf82075d"),
+    (
+        "observed_clone",
+        RUNTIME / "observed_clone.py",
+        "f810d53193d3035655a36c21021e18ba1d415916",
+    ),
+    (
+        "arlene",
+        LAB / "reference" / "next-panel" / "vendor" / "arlene.py",
+        "bdb9cf58148a3c7961c085f4902759537decabf6",
+    ),
+    (
+        "decision",
+        LAB / "reference" / "decision" / "decision.py",
+        "2931aa55831204fbb473ab85a6f5b81ec947fcf7",
+    ),
+)
+
+
+def _assert_direct_dependency_identity() -> None:
+    mismatches = []
+    for label, path, expected in DIRECT_DEPENDENCY_BLOBS:
+        try:
+            actual = subject.git_blob_sha1(path.read_bytes())
+        except OSError as exc:
+            mismatches.append(f"{label}: unreadable {path}: {exc}")
+            continue
+        if actual != expected:
+            mismatches.append(f"{label}: expected {expected}, got {actual}")
+    if mismatches:
+        raise AssertionError("direct dependency closure drift:\n" + "\n".join(mismatches))
+
+
+def setUpModule() -> None:
+    # Fail before importing either scheduler if any direct theorem input drifts.
+    _assert_direct_dependency_identity()
+
 
 def _mirror(source: Path, destination: Path) -> None:
     try:
@@ -171,6 +210,9 @@ def _selected_product(
 
 
 class MaterializationContracts(unittest.TestCase):
+    def test_direct_import_dependencies_are_exact(self):
+        _assert_direct_dependency_identity()
+
     def test_exact_current_source_materializes_five_bound_replacements(self):
         before = SOURCE.read_bytes()
         with tempfile.TemporaryDirectory() as directory:
@@ -214,6 +256,58 @@ class MaterializationContracts(unittest.TestCase):
                     root / "output.py",
                     expected_source_blob=subject.git_blob_sha1(data),
                 )
+
+    def test_cli_rejects_receipt_aliasing_source_before_any_write(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.py"
+            source.write_bytes(SOURCE.read_bytes())
+            output = root / "output.py"
+            before = source.read_bytes()
+            with self.assertRaises(subject.MaterializeError):
+                subject.main([
+                    "--source", str(source),
+                    "--output", str(output),
+                    "--receipt", str(source),
+                ])
+            self.assertEqual(source.read_bytes(), before)
+            self.assertFalse(output.exists())
+
+    def test_cli_rejects_receipt_aliasing_output_before_any_write(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.py"
+            source.write_bytes(SOURCE.read_bytes())
+            output = root / "output.py"
+            with self.assertRaises(subject.MaterializeError):
+                subject.main([
+                    "--source", str(source),
+                    "--output", str(output),
+                    "--receipt", str(output),
+                ])
+            self.assertFalse(output.exists())
+
+    def test_cli_rejects_symlinked_parent_destination_alias(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.py"
+            source.write_bytes(SOURCE.read_bytes())
+            real = root / "real"
+            alias = root / "alias"
+            real.mkdir()
+            try:
+                alias.symlink_to(real, target_is_directory=True)
+            except (NotImplementedError, OSError) as exc:
+                self.skipTest(f"directory symlinks unavailable: {exc}")
+            output = real / "output.py"
+            receipt = alias / "output.py"
+            with self.assertRaises(subject.MaterializeError):
+                subject.main([
+                    "--source", str(source),
+                    "--output", str(output),
+                    "--receipt", str(receipt),
+                ])
+            self.assertFalse(output.exists())
 
 
 class EconomicFloorContracts(unittest.TestCase):
