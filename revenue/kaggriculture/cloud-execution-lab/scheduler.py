@@ -111,14 +111,17 @@ class MarketPath:
 
 
 def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
-                 reference,rival_quantity,minimum_now=0,capacity_ok=None,last=718):
+                 reference,rival_quantity,rival_window_quantity=None,minimum_now=0,
+                 capacity_ok=None,last=718):
     end=dates[-1]
     model=MarketPath(item,inventory,params,shops,config,now,end)
-    scenarios=[('no_rival',0,'paired'),('observed_paired',rival_quantity,'paired'),('observed_later_order',rival_quantity,'after')]
+    burst=max(0,int(rival_quantity))
+    window=burst if rival_window_quantity is None else max(burst,int(rival_window_quantity))
+    scenarios=[('no_rival',0,'paired'),('observed_paired',burst,'paired'),('observed_later_order',burst,'after')]
     if end>now:
-        scenarios.append(('observed_next_turn',((now+1,rival_quantity),),'paired'))
+        scenarios.append(('observed_next_turn',((now+1,burst),),'paired'))
     if end>now+2:
-        scenarios.append(('observed_before_delayed_batch',((end-1,rival_quantity),),'paired'))
+        scenarios.append(('observed_before_delayed_batch',((end-1,window),),'paired'))
     baseline=[model.score(reference,quantity,r,a,end==last) for _,r,a in scenarios]
     reference_feasible=(capacity_ok(reference) if capacity_ok else True) and dict(reference).get(now,0)>=minimum_now
     best_plan=tuple(reference);best_key=(0.0,0.0,0.0) if reference_feasible else (-float('inf'),-float('inf'),0.0);best_scores=baseline
@@ -165,7 +168,8 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
         if (key[0]>0 or not reference_feasible) and key>best_key:
             best_key,best_plan,best_scores=key,plan,scores
             found_feasible=True
-    return best_plan,{'item':item,'quantity':quantity,'rival_scenario_quantity':rival_quantity,
+    return best_plan,{'item':item,'quantity':quantity,'rival_scenario_quantity':burst,
+        'rival_window_quantity':window,
         'reference':list(reference),'plan':list(best_plan),'minimum_now':minimum_now,
         'scenarios':{name:{'reference_relative_value':b[0],'relative_value':s[0],
                           'own_receipts':s[1],'rival_receipts':s[2],'carry_units':s[3]}
@@ -191,41 +195,90 @@ def _order_spend(order, farm, inventory, params, hires, config):
     return 0,hires
 
 
+def _tile_product(tile):
+    """Return the public saleable product represented by a farm tile."""
+    if not isinstance(tile,dict):return None
+    if tile.get('kind')=='PLANT':return tile.get('crop')
+    return m.ANIMALS.get(tile.get('animal'),{}).get('product')
+
+
+def _confirmed_harvest(before, after, occupied):
+    """Conservative public harvest evidence; never treat passive decay as supply."""
+    product=_tile_product(before)
+    units=max(0,int(before.get('yield_units',0))) if isinstance(before,dict) else 0
+    if not occupied or product not in PRODUCTS or units<=0:return None,0
+    if before.get('kind')=='PLANT':
+        crop=m.CROPS.get(before.get('crop'),{})
+        if crop.get('ongoing'):
+            if _tile_product(after)==product and max(0,int(after.get('yield_units',0)))==0:
+                return product,units
+        elif after is None:
+            return product,units
+    elif before.get('animal') and isinstance(after,dict):
+        if after.get('animal')==before.get('animal') and max(0,int(after.get('yield_units',0)))==0:
+            return product,units
+    return None,0
+
+
 class SellScheduler:
     def __init__(self, mode='candidate'):
         self.controller=parent.Agent();self.mode=mode;self.pending={};self.planned={}
-        self.previous=None;self.observed_harvests={};self.diagnostics={}
+        self.previous=None;self.previous_sale_caps={};self.observed_harvests={}
+        self.observed_rival_sales={};self.diagnostics={}
+
+    def rival_pressure(self, obs, item):
+        """Evidence-backed burst/window pressure; standing yield is not a sale."""
+        now=int(obs['step'])
+        sales=[n for t,n in self.observed_rival_sales.get(item,[]) if now-t<=HORIZON]
+        harvests=[n for t,n in self.observed_harvests.get(item,[]) if now-t<=HORIZON]
+        burst=max([0,*sales,*harvests])
+        market_total=sum(sales)
+        harvest_total=sum(harvests)
+        window=max(burst,market_total,harvest_total)
+        return {'burst_quantity':min(100,burst),'window_quantity':min(100,window),
+                'market_flow_lower_bound':market_total,'confirmed_harvest_units':harvest_total}
 
     def rival_supply(self, obs, item):
-        """Scenario magnitude only, derived from public standing/harvested yield."""
-        rival=obs['farms'][1-int(obs['player'])]
-        visible=0
-        for row in rival['tiles']:
-            for tile in row:
-                if not isinstance(tile,dict):continue
-                product=tile.get('crop') if tile.get('kind')=='PLANT' else m.ANIMALS.get(tile.get('animal'),{}).get('product')
-                if product==item:visible+=max(0,int(tile.get('yield_units',0)))
-        recent=sum(n for t,n in self.observed_harvests.get(item,[]) if int(obs['step'])-t<=8)
-        # Harvested goods may have sold already; this is a named stress scenario,
-        # not private stock or a calibrated probability/point forecast.
-        return min(100,max(visible,recent))
+        """Backward-compatible one-burst view of the observed pressure model."""
+        return self.rival_pressure(obs,item)['burst_quantity']
 
-    def observe(self, obs):
-        now=int(obs['step'])
-        if self.previous is not None:
-            old=self.previous['farms'][1-int(obs['player'])]['tiles']
-            new=obs['farms'][1-int(obs['player'])]['tiles']
-            for y,row in enumerate(old):
+    def observe(self, obs, config=None):
+        config=dict(config or {});now=int(obs['step'])
+        if self.previous is not None and now==int(self.previous['step'])+1:
+            rival_id=1-int(obs['player'])
+            old_farm=self.previous['farms'][rival_id]
+            new_farm=obs['farms'][rival_id]
+            occupied={tuple(old_farm['farmer']),*(tuple(p) for p in old_farm.get('hands',[]))}
+            for y,row in enumerate(old_farm['tiles']):
                 for x,tile in enumerate(row):
-                    if not isinstance(tile,dict):continue
-                    product=tile.get('crop') if tile.get('kind')=='PLANT' else m.ANIMALS.get(tile.get('animal'),{}).get('product')
-                    if product not in PRODUCTS:continue
-                    later=new[y][x]
-                    a=max(0,int(tile.get('yield_units',0)))
-                    b=max(0,int(later.get('yield_units',0))) if isinstance(later,dict) else 0
-                    if a>b:self.observed_harvests.setdefault(product,[]).append((now,a-b))
-        for p in self.observed_harvests:
-            self.observed_harvests[p]=[(t,n) for t,n in self.observed_harvests[p] if now-t<=8]
+                    product,units=_confirmed_harvest(tile,new_farm['tiles'][y][x],(x,y) in occupied)
+                    if units:self.observed_harvests.setdefault(product,[]).append((now,units))
+
+            # For scheduler products, BUY_PRODUCT is illegal in the official
+            # interpreter. Therefore inventory delta plus known town absorption
+            # is exact total admitted (> $1) supply. Subtracting our maximum
+            # executable admissions yields a safe public lower bound on the rival.
+            previous_step=int(self.previous['step'])
+            shops=self.previous.get('town',{}).get('unlocked_shops',[])
+            old_inventory=self.previous['market']['inventory']
+            new_inventory=obs['market']['inventory']
+            for item in PRODUCTS:
+                total=max(0,int(new_inventory[item])-int(old_inventory[item])
+                          +absorption(item,previous_step,shops,config))
+                rival=max(0,total-int(self.previous_sale_caps.get(item,0)))
+                if rival:self.observed_rival_sales.setdefault(item,[]).append((now,rival))
+        for evidence in (self.observed_harvests,self.observed_rival_sales):
+            for p in evidence:
+                evidence[p]=[(t,n) for t,n in evidence[p] if now-t<=HORIZON]
+
+    def remember(self, obs, action, shed):
+        """Retain only public state plus an upper bound on our admitted supply."""
+        self.previous=copy.deepcopy(obs)
+        self.previous_sale_caps={}
+        for item in PRODUCTS:
+            offered=sum(max(0,int(o[2])) for o in action.get('market',[])
+                        if o and len(o)>2 and o[:2]==['SELL',item])
+            if offered:self.previous_sale_caps[item]=min(offered,max(0,int(shed.get(item,0))))
 
     def cash_reserve(self, obs, config, base, end):
         now=int(obs['step']);farm=dict(obs['farms'][obs['player']])
@@ -291,7 +344,7 @@ class SellScheduler:
 
     def act(self, obs, config=None):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
-        self.observe(obs)
+        self.observe(obs,config)
         base=self.controller.act(obs)
         farm,private=post_units(obs,base,config)
         shed=private['shed'];self.diagnostics={'step':now,'evaluations':[]}
@@ -299,7 +352,7 @@ class SellScheduler:
         if now==last:
             out=copy.deepcopy(base)
             out['market']=parent._terminal_settlement(shed,obs['market']['prices'],out['market'])
-            self.pending={};self.previous=copy.deepcopy(obs);return out
+            self.pending={};self.remember(obs,out,shed);return out
         end=min(now+HORIZON,last,(now//24+1)*24-1)
         # Future controller branch changes are not predicted.
         for checkpoint,*_ in parent.DECISIONS:
@@ -351,7 +404,9 @@ class SellScheduler:
                         offered=sum(max(0,int(o[2])) for o in orders if o and o[0]=='SELL' and o[1]==item)
                         if q>offered:return False
                 return receipt_feasible(plan)
-            plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
+            pressure=self.rival_pressure(obs,item)
+            plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=pressure['burst_quantity'],rival_window_quantity=pressure['window_quantity'],minimum_now=minimum,capacity_ok=feasible,last=last)
+            info['rival_evidence']=pressure
             self.diagnostics['evaluations'].append(info)
             eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)
             rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])
@@ -382,7 +437,7 @@ class SellScheduler:
             sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
             self.pending[item]=max(0,q-sold)
             if not self.pending[item]:self.planned.pop(item,None)
-        self.previous=copy.deepcopy(obs)
+        self.remember(obs,out,shed)
         return out
 
 
