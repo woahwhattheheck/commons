@@ -71,7 +71,7 @@ def super_mcp_pointer_line(data: dict) -> str | None:
     law_name = law.rsplit("/", 1)[-1] if law else "WIRE_SUPER_MCP.md"
     return (
         "One shared super MCP: [%s](../%s) — paste `%s`. "
-        "Law: [%s](./%s). Do not remint a second `/mcp`."
+        "Law: [%s](./%s). Build ledger: [builds.html](../builds.html). Do not remint a second `/mcp`."
         % (door, door, url, law_name, law_name)
     )
 
