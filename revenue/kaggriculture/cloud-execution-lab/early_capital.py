@@ -316,7 +316,9 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     seeds_held = dict(post_private.get('seeds') or {})
     try:
         horizon = _horizon_end(now, configuration, decisions)
-        plants = _plant_demand(selected, route, now, horizon)
+        # The current unit stage already ran in post_private; only future route
+        # PLANT actions may still consume the post-unit seed balance.
+        plants = _plant_demand(None, route, now, horizon)
         ranks = [
             _rank(order, index, funding, mechanics, remaining, day, plants, seeds_held)
             for index, order in enumerate(active)
