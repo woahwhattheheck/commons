@@ -7,6 +7,8 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_executable_prefix.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/titan-current/redundant_hire.py'
   workflow_dispatch:
 
 permissions:
@@ -70,11 +72,15 @@ jobs:
         run: |
           import hashlib, json, os, subprocess
           from pathlib import Path
+          engine = Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py')
+          redundant = Path('revenue/kaggriculture/cloud-execution-lab/reference/titan-current/redundant_hire.py')
           paths = [
               Path('.github/workflows/titan-v3-early-capital-executable-prefix.yml'),
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_executable_prefix.py'),
+              engine,
+              redundant,
           ]
           files = {}
           for path in paths:
@@ -86,10 +92,12 @@ jobs:
                       b'blob ' + str(len(data)).encode() + b'\0' + data
                   ).hexdigest(),
               }
+          assert files[str(engine)]['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
+          assert files[str(redundant)]['git_blob'] == '9ded2a9b636793df0511103da802bd3f26dbbb94'
           log = Path(os.environ['RUNNER_TEMP']) / 'early-capital-tests.log'
           log_bytes = log.read_bytes()
           receipt = {
-              'schema': 'titan-v3-early-capital-executable-prefix/v1',
+              'schema': 'titan-v3-early-capital-executable-prefix/v2',
               'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
               'expected_head': os.environ['EXPECTED_HEAD'],
               'files': files,
