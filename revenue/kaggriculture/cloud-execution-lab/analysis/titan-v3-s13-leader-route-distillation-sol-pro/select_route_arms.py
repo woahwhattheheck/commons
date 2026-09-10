@@ -108,7 +108,16 @@ def metrics(report: Mapping[str, Any]) -> dict[str, Any]:
             bucket["margin"].append(margin)
         control_outcome = str(row.get("control_outcome", row.get("baseline_outcome", ""))).lower()
         candidate_outcome = str(row.get("candidate_outcome", "")).lower()
-        if candidate_outcome == "loss" and control_outcome in {"win", "tie", "draw"}:
+        control_margin = _pick(row, "control_margin")
+        candidate_margin = _pick(row, "candidate_margin")
+        if (
+            candidate_outcome == "loss"
+            and control_outcome in {"win", "tie", "draw"}
+        ) or (
+            candidate_margin is not None
+            and control_margin is not None
+            and candidate_margin < 0 <= control_margin
+        ):
             inferred_new_losses += 1
 
     if mean_own is None and own_values:
