@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - sol-sentinel/titan-v3-rival-decay-decontamination-20260910-01
+      - sol-pathlock/titan-v3-rival-decay-evidence-20260910-01
   pull_request:
     paths:
       - ".github/workflows/titan-v3-rival-decay-decontamination.yml"
@@ -24,30 +25,80 @@ jobs:
       PYTHONDONTWRITEBYTECODE: "1"
       LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      - name: Verify exact immutable checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+          test -z "$(git status --porcelain)"
+          printf '%s\n' "$actual" > "$RUNNER_TEMP/HEAD.txt"
+
       - name: Compile executable carrier
-        run: >-
-          python -B -m py_compile
-          "$LANE/candidate.py"
-          "$LANE/decay_observer.py"
-          "$LANE/test_candidate.py"
-          "$LANE/test_decay_observer.py"
-          "$LANE/witness.py"
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            "$LANE/candidate.py" \
+            "$LANE/decay_observer.py" \
+            "$LANE/test_candidate.py" \
+            "$LANE/test_decay_observer.py" \
+            "$LANE/witness.py"
 
-      - name: Run observer, engine and optimizer contracts
+      - name: Run observer, engine, carrier-isolation and optimizer contracts
+        shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
-        run: python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/TESTS.txt"
+          rm -f "$out"
+          python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$out"
+          test -s "$out"
+          grep -Eq '^Ran [1-9][0-9]* tests? in ' "$out"
+          grep -Fxq 'OK' "$out"
 
-      - name: Emit source-bound predecessor witness
+      - name: Emit and validate source-bound predecessor witness
+        shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
-        run: python -B witness.py "$RUNNER_TEMP/WITNESS.json" | tee "$RUNNER_TEMP/WITNESS.txt"
+        run: |
+          set -euo pipefail
+          json="$RUNNER_TEMP/WITNESS.json"
+          text="$RUNNER_TEMP/WITNESS.txt"
+          rm -f "$json" "$text"
+          python -B witness.py "$json" 2>&1 | tee "$text"
+          test -s "$json"
+          test -s "$text"
+          python -B - "$json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          path = Path(sys.argv[1])
+          payload = json.loads(path.read_text())
+          assert payload["schema"] == 2
+          assert payload["operation"] == "titan-v3-rival-decay-decontamination-20260910-01"
+          assert payload["official_engine_transition"]["control_rival_supply"] == 3
+          assert payload["official_engine_transition"]["candidate_rival_supply"] == 1
+          assert payload["optimizer_predecessor_witness"]["control_plan"] == [[100, 2]]
+          assert payload["optimizer_predecessor_witness"]["candidate_plan"] == [[108, 2]]
+          origins = payload["module_origins"]
+          assert origins["candidate"].endswith("/rival_decay_decontamination/candidate.py")
+          assert origins["decay_observer"].endswith("/rival_decay_decontamination/decay_observer.py")
+          assert origins["scheduler"].endswith("/cloud-execution-lab/scheduler.py")
+          assert origins["canonical_main"].endswith("/cloud-execution-lab/main.py")
+          assert origins["canonical_main_published_in_sys_modules"] is False
+          PY
 
       - name: Bind retained hashes and prove source cleanliness
         shell: bash
@@ -55,23 +106,28 @@ jobs:
           set -euo pipefail
           test -z "$(git status --porcelain)"
           sha256sum \
+            ".github/workflows/titan-v3-rival-decay-decontamination.yml" \
             "$LANE/candidate.py" \
             "$LANE/decay_observer.py" \
             "$LANE/test_candidate.py" \
             "$LANE/test_decay_observer.py" \
             "$LANE/witness.py" \
+            "$RUNNER_TEMP/HEAD.txt" \
             "$RUNNER_TEMP/TESTS.txt" \
             "$RUNNER_TEMP/WITNESS.json" \
             "$RUNNER_TEMP/WITNESS.txt" \
             | tee "$RUNNER_TEMP/SHA256SUMS"
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload exact-head evidence
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: titan-v3-rival-decay-${{ github.sha }}
+          name: titan-v3-rival-decay-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
+            ${{ runner.temp }}/HEAD.txt
             ${{ runner.temp }}/TESTS.txt
             ${{ runner.temp }}/WITNESS.json
             ${{ runner.temp }}/WITNESS.txt
             ${{ runner.temp }}/SHA256SUMS
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14
