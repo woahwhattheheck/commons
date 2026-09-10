@@ -1,0 +1,163 @@
+name: TITAN V3 represented-purchase one-use transport
+
+on:
+  pull_request:
+    paths:
+      - '.github/titan-v3-purchase.payload.part00'
+      - '.github/titan-v3-purchase.payload.part01'
+      - '.github/titan-v3-purchase.payload.part02'
+      - '.github/titan-v3-purchase.payload.part03'
+      - '.github/titan-v3-purchase.payload.part04'
+      - '.github/titan-v3-purchase.payload.part05'
+      - '.github/workflows/titan-v3-purchase-transport.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-purchase-transport-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  materialize-clean-source-head:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE_SHA: ed65812449a2cd021b0635a60ff9171957f3e386
+      EXPECTED_BRANCH: gpt56/titan-v3-represented-purchase-executability-20260910-01
+      PAYLOAD_SHA256: 35b0f78a249e5fdf6d4a7e68ee19ea40a124ad9879ff22bac524d74bfdb38e19
+    steps:
+      - name: Check out immutable event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Authenticate transport head and payload parts
+        shell: bash
+        env:
+          EVENT_SHA: ${{ github.event.pull_request.head.sha }}
+          EVENT_BRANCH: ${{ github.event.pull_request.head.ref }}
+          EVENT_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          set -euo pipefail
+          test "$EVENT_REPO" = "$GITHUB_REPOSITORY"
+          test "$EVENT_BRANCH" = "$EXPECTED_BRANCH"
+          test "$(git rev-parse HEAD)" = "$EVENT_SHA"
+          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
+          git cat-file -e "$BASE_SHA^{commit}"
+          actual="$(git diff --name-status "$BASE_SHA" "$EVENT_SHA" | LC_ALL=C sort)"
+          expected="$(cat <<'EOF'
+          A	.github/titan-v3-purchase.payload.part00
+          A	.github/titan-v3-purchase.payload.part01
+          A	.github/titan-v3-purchase.payload.part02
+          A	.github/titan-v3-purchase.payload.part03
+          A	.github/titan-v3-purchase.payload.part04
+          A	.github/titan-v3-purchase.payload.part05
+          A	.github/workflows/titan-v3-purchase-transport.yml
+          EOF
+          )"
+          test "$actual" = "$expected"
+          sha256sum --check --strict <<'EOF'
+          6a7fe3225d53fe30ad2beb684b10318c4770b8f5926a9591173bc742d73fa9cd  .github/titan-v3-purchase.payload.part00
+          f86c3e9b39448c113d7fd8ca7717d347428db3e5540003e712575b5c160ae4a3  .github/titan-v3-purchase.payload.part01
+          6fc7a998514b9e4cf14e199199ce3fc80543723a94154ce99225ae7e46052e3f  .github/titan-v3-purchase.payload.part02
+          e603c622bd91c187a66f2b797394400c897845b3e6fc214df97b28fd768bccc6  .github/titan-v3-purchase.payload.part03
+          49a77e29b1095e2607b0b5bc7c39ee5049c60b1b17370f10f3b3268abc09c51a  .github/titan-v3-purchase.payload.part04
+          451e8087b23575a07c08e3a41364e1352d4c3a4cbff70cdcaa1773865cb5f108  .github/titan-v3-purchase.payload.part05
+          EOF
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+      - name: Decode and verify exact regular-file archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .github/titan-v3-purchase.payload.part00 \
+              .github/titan-v3-purchase.payload.part01 \
+              .github/titan-v3-purchase.payload.part02 \
+              .github/titan-v3-purchase.payload.part03 \
+              .github/titan-v3-purchase.payload.part04 \
+              .github/titan-v3-purchase.payload.part05 \
+            | base64 --decode > "$RUNNER_TEMP/payload.tar.gz"
+          test "$(sha256sum "$RUNNER_TEMP/payload.tar.gz" | cut -d' ' -f1)" = "$PAYLOAD_SHA256"
+          mkdir -p "$RUNNER_TEMP/extracted"
+          python -B - <<'PY'
+          import hashlib
+          import io
+          import os
+          import tarfile
+          from pathlib import Path
+
+          expected = {
+              ".github/workflows/titan-v3-represented-purchase-executability.yml": (5730, "437b4a232c4195b8dcf2138a133db99c2c0cd4d8d7a884a3caf39a03e9343b7a"),
+              "analysis/titan_v3_represented_purchase_executability_20260910/README.md": (4547, "7e27906a1be1180f730e707043d3bea3fb5d298d52e2d1aad0ef23064a793fb9"),
+              "analysis/titan_v3_represented_purchase_executability_20260910/contract.json": (2647, "18f301a50964762bb78080b0569b7b63ef3313704186a483fa3c088cb8a96c03"),
+              "analysis/titan_v3_represented_purchase_executability_20260910/materialize.py": (9649, "cb1e06d3c9a9fd3257137551414fd591e77dbdf17614da434e3890851204ceb6"),
+              "analysis/titan_v3_represented_purchase_executability_20260910/test_represented_purchase_executability.py": (14301, "61eb075dbfdac07e5b0b5d11412fd4193fbe4c454b003d26efbc95cffa179c9c"),
+              "analysis/titan_v3_represented_purchase_executability_20260910/witness.py": (22523, "4100903ce6a31df9de6513a3ca943fbe6123a928d096a819fc6b329626e2e14e"),
+          }
+          archive = Path(os.environ["RUNNER_TEMP"]) / "payload.tar.gz"
+          destination = Path(os.environ["RUNNER_TEMP"]) / "extracted"
+          with tarfile.open(archive, mode="r:gz") as bundle:
+              members = bundle.getmembers()
+              names = [member.name for member in members]
+              if len(names) != len(set(names)) or set(names) != set(expected):
+                  raise SystemExit(f"archive member mismatch: {names!r}")
+              for member in members:
+                  if not member.isfile() or member.issym() or member.islnk():
+                      raise SystemExit(f"non-regular archive member: {member.name}")
+                  if member.name.startswith("/") or ".." in Path(member.name).parts:
+                      raise SystemExit(f"unsafe archive member: {member.name}")
+                  stream = bundle.extractfile(member)
+                  if stream is None:
+                      raise SystemExit(f"missing bytes for {member.name}")
+                  data = stream.read()
+                  size, digest = expected[member.name]
+                  if len(data) != size or hashlib.sha256(data).hexdigest() != digest:
+                      raise SystemExit(f"postimage mismatch: {member.name}")
+                  target = destination / member.name
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  with target.open("xb") as output:
+                      output.write(data)
+          PY
+
+      - name: Rewrite branch to one clean source commit
+        shell: bash
+        env:
+          EVENT_SHA: ${{ github.event.pull_request.head.sha }}
+          EVENT_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          git checkout --detach "$BASE_SHA"
+          git clean -ffdqx
+          cp -a "$RUNNER_TEMP/extracted/." "$GITHUB_WORKSPACE/"
+          git add -- \
+            .github/workflows/titan-v3-represented-purchase-executability.yml \
+            analysis/titan_v3_represented_purchase_executability_20260910/README.md \
+            analysis/titan_v3_represented_purchase_executability_20260910/contract.json \
+            analysis/titan_v3_represented_purchase_executability_20260910/materialize.py \
+            analysis/titan_v3_represented_purchase_executability_20260910/test_represented_purchase_executability.py \
+            analysis/titan_v3_represented_purchase_executability_20260910/witness.py
+          actual="$(git diff --cached --name-status | LC_ALL=C sort)"
+          expected="$(cat <<'EOF'
+          A	.github/workflows/titan-v3-represented-purchase-executability.yml
+          A	analysis/titan_v3_represented_purchase_executability_20260910/README.md
+          A	analysis/titan_v3_represented_purchase_executability_20260910/contract.json
+          A	analysis/titan_v3_represented_purchase_executability_20260910/materialize.py
+          A	analysis/titan_v3_represented_purchase_executability_20260910/test_represented_purchase_executability.py
+          A	analysis/titan_v3_represented_purchase_executability_20260910/witness.py
+          EOF
+          )"
+          test "$actual" = "$expected"
+          git diff --cached --check
+          git config user.name commons-board
+          git config user.email commons-board@users.noreply.github.com
+          git commit -m "test(titan): close represented purchase phantom fills"
+          new_sha="$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
+          test "$(git diff --name-status "$BASE_SHA" "$new_sha" | LC_ALL=C sort)" = "$expected"
+          git push \
+            --force-with-lease="refs/heads/${EVENT_BRANCH}:${EVENT_SHA}" \
+            origin "HEAD:refs/heads/${EVENT_BRANCH}"
+          printf 'SOURCE_HEAD=%s\n' "$new_sha"
