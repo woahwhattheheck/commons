@@ -10,9 +10,9 @@
   "schema_version": 1,
   "scope": "synthetic/adversarial validation only; no game score, leaderboard, promotion, or release claim",
   "source_manifest": {
-    "bytes": 1377,
+    "bytes": 1906,
     "path": "SOURCE-MANIFEST.json",
-    "sha256": "fb5e48c131b903dc26b5096cbdd19d9512d2bdfadb778b0b727306130bc78bb9"
+    "sha256": "a81d800239678d1bf35bb169c54770cecce435396a091f16bf35c8aa88612b55"
   },
   "test_suites": {
     "materialize_ablation_matrix": {
@@ -24,7 +24,7 @@
       "passed": 22
     }
   },
-  "tested_at_utc": "2026-09-10T19:30:36.053893+00:00",
+  "tested_at_utc": "2026-09-10T19:44:51.113653+00:00",
   "tests_failed": 0,
   "tests_passed": 38
 }
