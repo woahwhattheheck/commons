@@ -3,7 +3,7 @@ name: TITAN strict-dominance self-build
 on:
   push:
     branches:
-      - sol-pro/titan-strict-dominance-pressure-20260910-01
+      - sol-pro/titan-strict-dominance-selfbuild-closure-20260910-01
     paths:
       - .github/workflows/titan-strict-dominance-selfbuild.yml
 
@@ -20,6 +20,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Assert exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -31,52 +38,69 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
+          from textwrap import dedent, indent
+
+          def body(text: str, width: int) -> str:
+              return indent(dedent(text).strip('\n'), ' ' * width)
 
           pressure = Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py')
           source = pressure.read_text()
 
           old_signature_tail = '              rival_supply: Mapping[str, int] | None = None) -> dict:'
-          new_signature_tail = '''              rival_supply: Mapping[str, int] | None = None,
-                        strict_dominance: bool = False) -> dict:'''
+          new_signature_tail = (
+              '              rival_supply: Mapping[str, int] | None = None,\n'
+              '              strict_dominance: bool = False) -> dict:'
+          )
           if source.count(old_signature_tail) != 1:
               raise SystemExit('pressure transform signature drifted')
           source = source.replace(old_signature_tail, new_signature_tail)
 
           old_validation = "    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):"
-          new_validation = '''    if not isinstance(strict_dominance, bool):
-              raise ValueError('strict_dominance must be boolean')
-              if not isinstance(action, dict) or not isinstance(action.get('market', []), list):'''
-          new_validation = new_validation.replace("\n        if not isinstance(action", "\n    if not isinstance(action")
+          new_validation = body('''
+              if not isinstance(strict_dominance, bool):
+                  raise ValueError('strict_dominance must be boolean')
+              if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
+          ''', 4)
           if source.count(old_validation) != 1:
               raise SystemExit('pressure transform validation drifted')
           source = source.replace(old_validation, new_validation)
 
           old_ranking = "        ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])"
-          new_ranking = '''        pairs = list(zip(orders[start:stop], scores[start:stop]))
+          new_ranking = body('''
+              pairs = list(zip(orders[start:stop], scores[start:stop]))
               if strict_dominance:
                   # Proxy magnitude cannot prove which exposed commodity is safe
                   # to demote against an unseen same-slot rival sale.
-                  ranked = ([pair for pair in pairs if pair[1] > 0]
-                            + [pair for pair in pairs if pair[1] <= 0])
+                  ranked = (
+                      [pair for pair in pairs if pair[1] > 0]
+                      + [pair for pair in pairs if pair[1] <= 0]
+                  )
               else:
-                  ranked = sorted(pairs, key=lambda p: -p[1])'''
-          # Strip only the workflow's visual indentation from continuation lines.
-          new_ranking = new_ranking.replace("\n        ", "\n")
+                  ranked = sorted(pairs, key=lambda p: -p[1])
+          ''', 8)
           if source.count(old_ranking) != 1:
               raise SystemExit('pressure ranking implementation drifted')
           source = source.replace(old_ranking, new_ranking)
+          if source.count('strict_dominance: bool = False') != 1:
+              raise SystemExit('pressure strict-dominance signature postimage drifted')
+          compile(source, str(pressure), 'exec')
           pressure.write_text(source)
 
           runtime = Path('revenue/kaggriculture/cloud-execution-lab/titan_runtime.py')
           source = runtime.read_text()
           old_call = '        result = pressure.transform(selected, obs, cfg, quote=mechanics.market_price)'
-          new_call = '''        result = pressure.transform(
-              selected, obs, cfg, quote=mechanics.market_price,
-              strict_dominance=True)'''
-          new_call = new_call.replace("\n        ", "\n")
+          new_call = body('''
+              result = pressure.transform(
+                  selected, obs, cfg, quote=mechanics.market_price,
+                  strict_dominance=True)
+          ''', 8)
           if source.count(old_call) != 1:
               raise SystemExit('canonical pressure call drifted')
-          runtime.write_text(source.replace(old_call, new_call))
+          source = source.replace(old_call, new_call)
+          if source.count('strict_dominance=True') != 1:
+              raise SystemExit('canonical strict-dominance activation postimage drifted')
+          compile(source, str(runtime), 'exec')
+          runtime.write_text(source)
           PY
 
       - name: Run pressure module contracts
@@ -118,6 +142,7 @@ jobs:
                   'pressure_module_contracts': 'pass',
                   'canonical_runtime_boundary': 'pass',
                   'deterministic_build_check': 'pass',
+                  'syntax_compile_before_write': 'pass',
               },
           }
           out = Path('revenue/kaggriculture/cloud-market-pressure-strict-dominance')
@@ -137,14 +162,15 @@ jobs:
             revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json
             revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json
 
-      - name: Publish tested source and deterministic archive to branch
+      - name: Publish tested source and deterministic archive to repair branch
         shell: bash
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           rm .github/workflows/titan-strict-dominance-selfbuild.yml
           git config user.name 'commons-board'
           git config user.email 'commons-board@users.noreply.github.com'
           git add -A
           git diff --cached --check
           git commit -m 'TITAN: contain pressure ranking to strict dominance'
-          git push origin HEAD:sol-pro/titan-strict-dominance-pressure-20260910-01
+          git push origin HEAD:sol-pro/titan-strict-dominance-selfbuild-closure-20260910-01
