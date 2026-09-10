@@ -23,16 +23,35 @@ class FeatureReachabilityTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             fr.validate_config({"a": 1}, ("a",))
 
-    def test_source_reference_scan_excludes_checks(self):
+    def test_source_reference_scan_binds_features_and_excludes_checks(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            (root / "main.py").write_text('enabled = config.get("seed", True)\n', encoding="utf-8")
+            (root / "main.py").write_text(
+                "from dataclasses import dataclass\n"
+                "@dataclass\n"
+                "class Features:\n"
+                "    seed: bool = True\n"
+                "def use(self, f, config):\n"
+                "    return self.features.seed and f.seed and config.get('funding', True)\n",
+                encoding="utf-8",
+            )
             (root / "checks").mkdir()
             (root / "checks" / "test_seed.py").write_text('config["seed"]\n', encoding="utf-8")
-            refs = fr.find_config_references(root, ("seed", "funding"))
-            self.assertEqual(len(refs["seed"]), 1)
-            self.assertEqual(refs["seed"][0]["path"], "main.py")
-            self.assertEqual(refs["funding"], [])
+            refs = fr.find_config_references(root, ("seed", "funding", "crop_release"))
+            self.assertEqual({row["kind"] for row in refs["seed"]}, {"Features declaration", "attribute access"})
+            self.assertEqual(len(refs["seed"]), 2)
+            self.assertEqual(len(refs["funding"]), 1)
+            self.assertEqual(refs["funding"][0]["kind"], "mapping get")
+            self.assertEqual(refs["crop_release"], [])
+            self.assertEqual(fr.runtime_access_factors(refs, ("seed", "funding", "crop_release")),
+                             ["seed", "funding"])
+
+    def test_declaration_alone_is_not_runtime_reachability(self):
+        refs = {
+            "seed": [{"kind": "Features declaration"}],
+            "funding": [{"kind": "Features declaration"}, {"kind": "attribute access"}],
+        }
+        self.assertEqual(fr.runtime_access_factors(refs, ("seed", "funding")), ["funding"])
 
     def test_materialization_changes_exactly_one_flag(self):
         with tempfile.TemporaryDirectory() as directory:
