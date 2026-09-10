@@ -1,0 +1,75 @@
+{
+  "canonical_runtime_mutated": false,
+  "claims": {
+    "exact_parent_materializer": true,
+    "hosted_strength": false,
+    "official_engine_games": false,
+    "release_selection": false,
+    "source_semantic_contracts": true
+  },
+  "files": [
+    {
+      "bytes": 5765,
+      "path": "README.md",
+      "sha256": "489867587625bf8ec6132bc183499744514c2815da5ef348c75539d81b43eaf1"
+    },
+    {
+      "bytes": 10315,
+      "path": "materialize_pressure_certificate.py",
+      "sha256": "d78231433ed50f39fb37ed299acbeafbcc97ae55aa34e0e905ed476087b78bf0"
+    },
+    {
+      "bytes": 6290,
+      "path": "official_plateau_witness.py",
+      "sha256": "905cc684ec124e4a0c016d583240275c8b1d08addee66fdaab8ad0c3e7097d7f"
+    },
+    {
+      "bytes": 11064,
+      "path": "pressure_zero_exposure.py",
+      "sha256": "dd65bdbf5fc8e9a99c0077a99287fe2cafbfd32c07c61d6cb65dccd94822a75b"
+    },
+    {
+      "bytes": 9784,
+      "path": "test_materialize_pressure_certificate.py",
+      "sha256": "10c0203b8ace301bff476c0ec5820b038a74d2aa71b4270ed520cf9d3ffcc90e"
+    },
+    {
+      "bytes": 2217,
+      "path": "test_official_plateau_witness.py",
+      "sha256": "523116eedb4e5c3ecb8069e6e31ad803a7bb1c95a133c7164371aa9ea98006ef"
+    },
+    {
+      "bytes": 9946,
+      "path": "test_pressure_zero_exposure.py",
+      "sha256": "71468663be7c2bf22d9d1c6a81abf2af56f9137db72159e5c665d8bafcb55c1c"
+    }
+  ],
+  "mechanics_git_blob_sha1": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+  "parent_head": "dfef8e57289b59c68bd45eb8f3fdd8ec610e0892",
+  "predecessor": {
+    "certified_order": [
+      "TOMATO",
+      "MILK"
+    ],
+    "margin_delta": -6,
+    "own_delta": -3,
+    "parent_order": [
+      "TOMATO",
+      "MILK"
+    ],
+    "proxy_order": [
+      "MILK",
+      "TOMATO"
+    ],
+    "public_inventory": 9999,
+    "rival_delta": 3
+  },
+  "pressure_parent_git_blob_sha1": "7261674962d10fc8bc6af5ff73ff9212c40f61ad",
+  "schema": "titan-v3-pressure-zero-exposure-local-validation/v1",
+  "tests": {
+    "count": 22,
+    "log_sha256": "0d3722420a196a7a5ca0d7322c54fca242f693ec422364cc6a3d250d1a1b6c92",
+    "seconds": 0.038,
+    "status": "PASS"
+  }
+}
