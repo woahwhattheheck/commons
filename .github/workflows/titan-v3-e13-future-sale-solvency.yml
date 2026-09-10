@@ -1,0 +1,195 @@
+name: titan-v3-e13-future-sale-solvency
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - sol-solvency/titan-v3-e13-future-sale-solvency-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/**"
+      - "p/titan-v3-e13-future-sale-solvency-20260910-01.md"
+      - ".github/workflows/titan-v3-e13-future-sale-solvency.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/**"
+      - "p/titan-v3-e13-future-sale-solvency-20260910-01.md"
+      - ".github/workflows/titan-v3-e13-future-sale-solvency.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-solvency-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/workflows/titan-v3-e13-future-sale-solvency.yml
+            p/titan-v3-e13-future-sale-solvency-20260910-01.md
+            revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
+            revenue/kaggriculture/cloud-execution-lab/scheduler.py
+            revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py
+            revenue/kaggriculture/cloud-execution-lab/mechanics.py
+            revenue/kaggriculture/cloud-execution-lab/test_funded_prefix.py
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+            revenue/kaggriculture/cloud-execution-lab/reference/decision/decision.py
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
+            revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py
+            revenue/kaggriculture/cloud-quickstep/seller_snapshot.py
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Predecessor killers, exact interpreter, custody, and census contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-e13-future-sale-solvency"
+          mkdir -p "$out"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-e13-future-sale-solvency/test_future_sale_solvency.py \
+            2>&1 | tee "$out/contracts.log"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python test_funded_prefix.py \
+            2>&1 | tee -a "$out/contracts.log"
+
+      - name: Materialize one-function candidate and frozen-route census
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-e13-future-sale-solvency"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-e13-future-sale-solvency/materialize.py \
+              --output "$out/frozen_selected.py" \
+              --receipt "$out/RECEIPT.json" \
+              | tee "$out/materialize.log"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-e13-future-sale-solvency/scan_routes.py \
+              --output "$out/ROUTE-CENSUS.json" \
+              | tee "$out/route-census.log"
+          python -m py_compile \
+            analysis/v3-e13-future-sale-solvency/materialize.py \
+            analysis/v3-e13-future-sale-solvency/scan_routes.py \
+            analysis/v3-e13-future-sale-solvency/test_future_sale_solvency.py \
+            "$out/frozen_selected.py"
+
+      - name: Bind hosted provenance and prove canonical nonmutation
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-e13-future-sale-solvency"
+          OUT="$out" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          out = Path(os.environ["OUT"])
+          event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+          pull = event.get("pull_request") or {}
+          head = pull.get("head") or {}
+          base = pull.get("base") or {}
+
+          def digest(path):
+              return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+          bound = [
+              "frozen_selected.py",
+              "scheduler.py",
+              "selected_sell_core.py",
+              "mechanics.py",
+              "test_funded_prefix.py",
+              "reference/engine/kaggriculture.py",
+              "reference/decision/decision.py",
+              "reference/next-panel/vendor/arlene.py",
+              "../cloud-runtime-pulse/observed_clone.py",
+              "../cloud-quickstep/seller_snapshot.py",
+          ]
+          provenance = {
+              "schema": "titan.v3.e13-future-sale-solvency.hosted-provenance.v1",
+              "operation": "TITAN-V3-E13-FUTURE-SALE-SOLVENCY-CLOSURE-20260910-01",
+              "event_name": os.environ.get("GITHUB_EVENT_NAME"),
+              "ref": os.environ.get("GITHUB_REF"),
+              "head_ref": os.environ.get("GITHUB_HEAD_REF"),
+              "base_ref": os.environ.get("GITHUB_BASE_REF"),
+              "github_sha": os.environ.get("GITHUB_SHA"),
+              "checked_out_sha": subprocess.check_output(
+                  ["git", "rev-parse", "HEAD"], text=True
+              ).strip(),
+              "pull_request_head_sha": head.get("sha"),
+              "pull_request_base_sha": base.get("sha"),
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "bound_git_blobs": {
+                  path: subprocess.check_output(
+                      ["git", "hash-object", path], text=True
+                  ).strip()
+                  for path in bound
+              },
+              "artifact_sha256": {
+                  name: digest(out / name)
+                  for name in (
+                      "frozen_selected.py",
+                      "RECEIPT.json",
+                      "ROUTE-CENSUS.json",
+                      "contracts.log",
+                      "materialize.log",
+                      "route-census.log",
+                  )
+              },
+              "claims": {
+                  "source_real": True,
+                  "returned_action_activation": False,
+                  "gameplay_strength": False,
+                  "score_causality": False,
+                  "promotion": False,
+              },
+          }
+          (out / "PROVENANCE.json").write_text(
+              json.dumps(provenance, indent=2, sort_keys=True) + "\n"
+          )
+          PY
+
+          git diff --exit-code -- \
+            frozen_selected.py \
+            scheduler.py \
+            selected_sell_core.py \
+            mechanics.py \
+            test_funded_prefix.py \
+            reference/engine/kaggriculture.py \
+            reference/decision/decision.py \
+            reference/next-panel/vendor/arlene.py \
+            ../cloud-runtime-pulse/observed_clone.py \
+            ../cloud-quickstep/seller_snapshot.py
+
+          sha256sum \
+            "$out/frozen_selected.py" \
+            "$out/RECEIPT.json" \
+            "$out/ROUTE-CENSUS.json" \
+            "$out/PROVENANCE.json" \
+            "$out/contracts.log" \
+            "$out/materialize.log" \
+            "$out/route-census.log" \
+            > "$out/SHA256SUMS"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-v3-e13-future-sale-solvency
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/frozen_selected.py
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/RECEIPT.json
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/ROUTE-CENSUS.json
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/PROVENANCE.json
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/contracts.log
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/materialize.log
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/route-census.log
+            ${{ runner.temp }}/titan-e13-future-sale-solvency/SHA256SUMS

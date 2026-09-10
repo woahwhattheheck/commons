@@ -1,0 +1,72 @@
+{
+  "base": {
+    "commit": "c51049d671b55d282e0fed5df37a0be7c513a838",
+    "ref": "main"
+  },
+  "claims": {
+    "gameplay_strength": false,
+    "promotion": false,
+    "provider_or_kaggle_mutation": false,
+    "returned_action_activation": false,
+    "route_structural_exposure": "HOSTED_CENSUS_PENDING",
+    "score_causality": false,
+    "source_real": true
+  },
+  "defect": {
+    "control": {
+      "candidate_minimum_now": 0,
+      "future_cash": 400,
+      "future_sale": "SELL WOOL 2 at base inventory"
+    },
+    "killer": {
+      "candidate_minimum_now": 3,
+      "current": "SELL MILK 10, candidate quantity searched",
+      "future_sale": "next-turn SELL WOOL 1 at $1 floor",
+      "later_acquisition": "following-turn BUY_ANIMAL COW 1 at $400",
+      "predecessor_minimum_now": 0,
+      "three_milk_plus_future_cash": 475,
+      "two_milk_plus_future_cash": 319
+    },
+    "predecessor": "merged E13 PR #11117",
+    "summary": "The first future SELL with any positive receipt truncates acquisition comparison, so baseline-completed fixed acquisitions on later turns can be lost when that receipt is insufficient."
+  },
+  "disposition": "SOURCE_REAL_ACTION_UNMEASURED",
+  "next_gate": {
+    "matched_both_seat_panel_required": true,
+    "mean_own_cash_delta": ">0",
+    "median_own_cash_delta": ">=0",
+    "negative_opponent_seat_strata": 0,
+    "new_losses": 0,
+    "one_tree_returned_action_activation_required": true
+  },
+  "operation": "TITAN-V3-E13-FUTURE-SALE-SOLVENCY-CLOSURE-20260910-01",
+  "ownership": {
+    "owned_scope": "baseline-completed fixed acquisitions whose turn is strictly greater than the first positive-cash future sale turn",
+    "same_turn_acquisitions_changed": false,
+    "same_turn_escrow_owner_ts": "1788989953.650839",
+    "slack_claim_ts": "1789069704.186569"
+  },
+  "packet": {
+    "canonical_mutation": false,
+    "focused_contracts": 16,
+    "function_replaced_in_disconnected_candidate": "funded_minimum_now",
+    "hosted_artifacts": [
+      "frozen_selected.py",
+      "RECEIPT.json",
+      "ROUTE-CENSUS.json",
+      "PROVENANCE.json",
+      "contracts.log",
+      "materialize.log",
+      "route-census.log",
+      "SHA256SUMS"
+    ],
+    "landed_neighbor_contracts": 8,
+    "route_census": "structural_only"
+  },
+  "schema": "titan.v3.e13-future-sale-solvency.handoff.v1",
+  "source_bindings": {
+    "frozen_selected.py": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+    "reference/next-panel/vendor/arlene.py": "bdb9cf58148a3c7961c085f4902759537decabf6"
+  }
+}
