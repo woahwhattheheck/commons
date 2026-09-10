@@ -27,54 +27,25 @@ env:
   PYTHONHASHSEED: '0'
   LC_ALL: C.UTF-8
   LANG: C.UTF-8
-  SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
-  CANONICAL_BASE: '98a98108998efac9e53a8b045f0fb2c85a4b19e2'
-  EVIDENCE_TOOLS_HEAD: 'c3c2668d4822713afb126579f2f253788372f6ea'
 
 jobs:
-  current-main-closure-bound-panel:
+  supplementary-contracts-only:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 5
     steps:
-      - name: Checkout exact integration head
+      - name: Checkout exact supplementary carrier
         uses: actions/checkout@v4
         with:
-          path: integration
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Checkout exact candidate-action evidence tooling
-        uses: actions/checkout@v4
-        with:
-          path: evidence
-          repository: woahwhattheheck/commons
-          ref: c3c2668d4822713afb126579f2f253788372f6ea
           fetch-depth: 1
           persist-credentials: false
-
-      - name: Bind revisions and canonical ancestry
-        shell: bash
-        env:
-          EXPECTED_INTEGRATION_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: |
-          set -euo pipefail
-          test "$(git -C integration rev-parse HEAD)" = "$EXPECTED_INTEGRATION_HEAD"
-          test "$(git -C evidence rev-parse HEAD)" = "$EVIDENCE_TOOLS_HEAD"
-          git -C integration merge-base --is-ancestor "$CANONICAL_BASE" HEAD
-          printf '%s\n' "$EXPECTED_INTEGRATION_HEAD" | tee "$RUNNER_TEMP/integration-head.sha"
-          printf '%s\n' "$CANONICAL_BASE" | tee "$RUNNER_TEMP/canonical-base.sha"
-          printf '%s\n' "$EVIDENCE_TOOLS_HEAD" | tee "$RUNNER_TEMP/evidence-tools-head.sha"
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install pinned official-interpreter dependency
-        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
-
-      - name: Run current-integration contracts
-        working-directory: integration/revenue/kaggriculture/cloud-execution-lab/candidates/v3/intent-priority-sol-pro
+      - name: Run fail-closed carrier contracts without gameplay
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/intent-priority-sol-pro
         shell: bash
         run: |
           set -euo pipefail
@@ -86,196 +57,39 @@ jobs:
           from pathlib import Path
 
           for name in (
-              "materialize.py",
-              "bind.py",
-              "compare_panel.py",
-              "test_materialize.py",
-              "test_bind.py",
-              "test_compare_panel.py",
+              'materialize.py',
+              'bind.py',
+              'compare_panel.py',
+              'test_materialize.py',
+              'test_bind.py',
+              'test_compare_panel.py',
           ):
-              compile(Path(name).read_text(encoding="utf-8"), name, "exec")
+              compile(Path(name).read_text(encoding='utf-8'), name, 'exec')
           PY
 
-      - name: Prove current canonical release before materialization
-        working-directory: integration/revenue/kaggriculture/cloud-execution-lab
+      - name: Prove no generated checkout state
         shell: bash
         run: |
           set -euo pipefail
-          python -B build_integrated.py --check
-          git diff --exit-code -- .
+          test -z "$(find . -type d -name __pycache__ -print -quit)"
+          test -z "$(find . -type f -name '*.pyc' -print -quit)"
+          test -z "$(git status --porcelain)"
 
-      - name: Materialize exact default-off and enabled closures
-        shell: bash
-        env:
-          INTEGRATION_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: |
-          set -euo pipefail
-          LAB="$GITHUB_WORKSPACE/integration/revenue/kaggriculture/cloud-execution-lab"
-          LANE="$LAB/candidates/v3/intent-priority-sol-pro"
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          rm -rf "$OUT"
-          mkdir -p "$OUT"
-          python -B "$LANE/materialize.py" \
-            --lab "$LAB" \
-            --output "$OUT/control" \
-            --receipt "$OUT/CONTROL-MATERIALIZATION.json" \
-            --head "$INTEGRATION_HEAD"
-          python -B "$LANE/materialize.py" \
-            --lab "$LAB" \
-            --output "$OUT/candidate" \
-            --receipt "$OUT/CANDIDATE-MATERIALIZATION.json" \
-            --head "$INTEGRATION_HEAD" \
-            --enable-intent-priority
-          python - \
-            "$OUT/control/main.py" "$OUT/control/scheduler.py" \
-            "$OUT/candidate/main.py" "$OUT/candidate/scheduler.py" <<'PY'
-          from pathlib import Path
-          import sys
-
-          for name in sys.argv[1:]:
-              compile(Path(name).read_text(encoding="utf-8"), name, "exec")
-          PY
-
-      - name: Materialize candidate-action evaluator
+      - name: Publish custody hold
         shell: bash
         run: |
-          set -euo pipefail
-          KAG="$GITHUB_WORKSPACE/integration/revenue/kaggriculture"
-          TOOLS="$GITHUB_WORKSPACE/evidence/revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark"
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          mkdir -p "$OUT/evaluator"
-          python -B "$TOOLS/materialize_evaluator.py" \
-            --source "$KAG/cloud-eval/evaluate.py" \
-            --output "$OUT/evaluator/evaluate.py" \
-            --receipt "$OUT/EVALUATOR-MATERIALIZATION.json"
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          # Supplementary carrier only — gameplay intentionally disabled
 
-      - name: Build closure-checking execution entrypoints
-        shell: bash
-        env:
-          INTEGRATION_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: |
-          set -euo pipefail
-          LAB="$GITHUB_WORKSPACE/integration/revenue/kaggriculture/cloud-execution-lab"
-          LANE="$LAB/candidates/v3/intent-priority-sol-pro"
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          python -B "$LANE/bind.py" \
-            --control-root "$OUT/control" \
-            --candidate-root "$OUT/candidate" \
-            --control-receipt "$OUT/CONTROL-MATERIALIZATION.json" \
-            --candidate-receipt "$OUT/CANDIDATE-MATERIALIZATION.json" \
-            --output-dir "$OUT/bound" \
-            --receipt "$OUT/EXECUTION-BINDING.json" \
-            --head "$INTEGRATION_HEAD"
+          The exact lane had an earlier durable owner (`SOL-ORBIT`, Slack TS
+          `1789066794.517699`). In addition, canonical archive reconciliation
+          moved the current package from `17f536…` to `5f6a41…` after this
+          branch was cut. The old 64-game workflow was therefore replaced
+          before gameplay with this stdlib-only contract run.
 
-      - name: Run closure-bound current control panel
-        shell: bash
-        run: |
-          set -euo pipefail
-          LAB="$GITHUB_WORKSPACE/integration/revenue/kaggriculture/cloud-execution-lab"
-          KAG="$GITHUB_WORKSPACE/integration/revenue/kaggriculture"
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          python -B "$OUT/evaluator/evaluate.py" \
-            --engine-dir "$LAB/reference/engine" \
-            --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --candidate "$OUT/bound/control_bound.py::agent" \
-            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
-            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
-            --seeds "$SEEDS" \
-            --rng-seed 20260909 \
-            --action-timeout 1.0 \
-            --startup-timeout 15 \
-            --game-timeout 180 \
-            --output "$OUT/control.json"
-
-      - name: Run closure-bound current intent-priority panel
-        shell: bash
-        run: |
-          set -euo pipefail
-          LAB="$GITHUB_WORKSPACE/integration/revenue/kaggriculture/cloud-execution-lab"
-          KAG="$GITHUB_WORKSPACE/integration/revenue/kaggriculture"
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          python -B "$OUT/evaluator/evaluate.py" \
-            --engine-dir "$LAB/reference/engine" \
-            --loader "$KAG/20260907-offline-agent/evaluate.py" \
-            --candidate "$OUT/bound/candidate_bound.py::agent" \
-            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
-            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
-            --seeds "$SEEDS" \
-            --rng-seed 20260909 \
-            --action-timeout 1.0 \
-            --startup-timeout 15 \
-            --game-timeout 180 \
-            --output "$OUT/candidate.json"
-
-      - name: Classify current-main candidate-action evidence
-        id: classify
-        if: always()
-        shell: bash
-        env:
-          INTEGRATION_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: |
-          set +e
-          LAB="$GITHUB_WORKSPACE/integration/revenue/kaggriculture/cloud-execution-lab"
-          KAG="$GITHUB_WORKSPACE/integration/revenue/kaggriculture"
-          LANE="$LAB/candidates/v3/intent-priority-sol-pro"
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          python -B "$LANE/compare_panel.py" \
-            --control "$OUT/control.json" \
-            --candidate "$OUT/candidate.json" \
-            --control-receipt "$OUT/CONTROL-MATERIALIZATION.json" \
-            --candidate-receipt "$OUT/CANDIDATE-MATERIALIZATION.json" \
-            --binding "$OUT/EXECUTION-BINDING.json" \
-            --evaluator-receipt "$OUT/EVALUATOR-MATERIALIZATION.json" \
-            --control-root "$OUT/control" \
-            --candidate-root "$OUT/candidate" \
-            --control-wrapper "$OUT/bound/control_bound.py" \
-            --candidate-wrapper "$OUT/bound/candidate_bound.py" \
-            --evaluator-source "$KAG/cloud-eval/evaluate.py" \
-            --evaluator-patched "$OUT/evaluator/evaluate.py" \
-            --head "$INTEGRATION_HEAD" \
-            --output "$OUT/CURRENT-PANEL.json" \
-            --markdown "$OUT/CURRENT-PANEL.md"
-          status=$?
-          printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
-          exit 0
-
-      - name: Publish exact current-main result
-        if: always()
-        shell: bash
-        run: |
-          OUT="$RUNNER_TEMP/titan-v3-current-intent-priority"
-          if [[ -f "$OUT/CURRENT-PANEL.md" ]]; then
-            cat "$OUT/CURRENT-PANEL.md" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo '# Current-main intent-priority panel produced no final report' >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Verify canonical and both checkouts stayed clean
-        if: always()
-        shell: bash
-        run: |
-          set -euo pipefail
-          (
-            cd integration/revenue/kaggriculture/cloud-execution-lab
-            python -B build_integrated.py --check
-          )
-          test -z "$(git -C integration status --porcelain)"
-          test -z "$(git -C evidence status --porcelain)"
-
-      - name: Retain exact integration evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: titan-v3-current-intent-priority-${{ github.run_id }}
-          path: |
-            ${{ runner.temp }}/integration-head.sha
-            ${{ runner.temp }}/canonical-base.sha
-            ${{ runner.temp }}/evidence-tools-head.sha
-            ${{ runner.temp }}/titan-v3-current-intent-priority/
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Require exact current-main admission
-        if: always()
-        shell: bash
-        run: test "${{ steps.classify.outputs.exit_code }}" = '0'
+          This branch retains independently useful safe-extraction,
+          closure-binding, candidate-action attribution, own-value, margin,
+          outcome, and opponent-by-seat gates for cherry-pick or comparison by
+          the earlier owner. It is not current-package admission evidence and
+          has no merge, release, provider, Kaggle, or submission authority.
+          EOF
