@@ -106,13 +106,13 @@ jobs:
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
           mechanics = 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
           engine = 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
-          assert files[source]['git_blob'] == 'dca5c4aff7961896fa2e996e0f886bc8f6a2c41c'
+          assert files[source]['git_blob'] == 'cef33119f3bfdaa1f81ee7e2068424900110aba6'
           assert files[mechanics]['git_blob'] == '044a4f9c0a4a44dde10ada57563238bcaf82075d'
           assert files[engine]['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
 
           log = Path(os.environ['RUNNER_TEMP']) / 'post-unit-seed-demand-tests.log'
           receipt = {
-              'schema': 'titan-v3-post-unit-seed-demand/v1',
+              'schema': 'titan-v3-post-unit-seed-demand/v2',
               'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
               'expected_head': os.environ['EXPECTED_HEAD'],
               'files': files,
