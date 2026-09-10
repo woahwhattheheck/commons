@@ -1,0 +1,443 @@
+name: titan-v3-s13-leader-route-distillation-sol-pro
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-s13-leader-route-distillation-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro/**'
+      - 'p/titan-v3-s13-top-leader-route-distillation-20260910-01.md'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-s13-leader-route-distillation-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro/**'
+      - 'p/titan-v3-s13-top-leader-route-distillation-20260910-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  distill-and-tournament:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      EPISODES: '107252308 107237316 107217016 107223760 107213024 107260189'
+      STAGE1_SEEDS: '539131249'
+      STAGE2_SEEDS: '539131249,1834999074,2609097301,2609097302'
+      EXPECTED_ARCHIVE_SHA256: '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86'
+      EXPECTED_SOURCE_MANIFEST_SHA256: '1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact triggering head and inherited carrier
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          EXP="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          CARRIER="$LAB/analysis/titan-v3-own-value-archive-carrier-sol-foundry"
+          OBJECTIVE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          test "$(git hash-object "$CARRIER/archive_carrier.py")" = 2f5be09c36368732ddf80a84f3a86b36b2ae405e
+          test "$(git hash-object "$CARRIER/archive_runtime_guard.py")" = 2fbc4b45d2f0f06f8ccef2665d8d740d73c9e3db
+          test "$(git hash-object "$OBJECTIVE/own_value_objective.py")" = 17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0
+          test "$(git hash-object "$OBJECTIVE/compare.py")" = 9a4642211f2fe16da4452aad0a084a1efa85bb31
+          test -f "$EXP/leader_route_distillation.py"
+          test -f "$EXP/leader_route_runtime.py"
+          git diff --exit-code -- .
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official interpreter
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run compiler, runtime, and selector contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro
+          (
+            cd "$EXP"
+            python -m py_compile *.py
+            python -m unittest -v
+          ) 2>&1 | tee "$RUNNER_TEMP/S13-CONTRACTS.txt"
+          git diff --exit-code -- .
+
+      - name: Download exact public top-five replay inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          mkdir -p "$OUT/replays"
+          for episode in $EPISODES; do
+            url="https://www.kaggle.com/competitions/episodes/${episode}/replay.json"
+            curl --fail --location --compressed --retry 5 --retry-all-errors \
+              --connect-timeout 30 --max-time 300 \
+              --user-agent 'TITAN-V3-S13-public-replay-research/1.0' \
+              "$url" -o "$OUT/replays/episode_${episode}.json"
+          done
+          OUT="$OUT" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['OUT']) / 'replays'
+          rows = []
+          for path in sorted(root.glob('episode_*.json')):
+              data = path.read_bytes()
+              value = json.loads(data)
+              assert isinstance(value, dict) and isinstance(value.get('steps'), list)
+              assert len(value['steps']) >= 700
+              rows.append({
+                  'path': path.name,
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+                  'frames': len(value['steps']),
+              })
+          assert len(rows) == len(os.environ['EPISODES'].split())
+          (Path(os.environ['OUT']) / 'REPLAY-SOURCES.json').write_text(
+              json.dumps({'sources': rows}, indent=2, sort_keys=True) + '\n',
+              encoding='utf-8',
+          )
+          print(json.dumps(rows, sort_keys=True))
+          PY
+
+      - name: Compile deterministic leader bank
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          EXP="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$EXP/leader_route_distillation.py" compile \
+            --input-dir "$OUT/replays" \
+            --output "$OUT/LEADER-BANK.json" \
+            --max-candidates 5
+          OUT="$OUT" python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          bank = json.loads((root / 'LEADER-BANK.json').read_text())
+          sources = json.loads((root / 'REPLAY-SOURCES.json').read_text())['sources']
+          expected = {row['sha256'] for row in sources}
+          assert len(bank['candidates']) == 5
+          assert {row['source_sha256'] for row in bank['candidates']} <= expected
+          assert all(row['actions'] >= 700 for row in bank['candidates'])
+          PY
+
+      - name: Materialize immutable complete-archive control
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CARRIER="$LAB/analysis/titan-v3-own-value-archive-carrier-sol-foundry"
+          OBJECTIVE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$CARRIER/archive_carrier.py" materialize \
+            --lab-root "$LAB" \
+            --pointer "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" \
+            --overlay "$OBJECTIVE/own_value_objective.py" \
+            --output "$OUT/carrier" \
+            --git-head "$(git rev-parse HEAD)" \
+            | tee "$OUT/MATERIALIZE.json"
+          python "$CARRIER/archive_carrier.py" probe \
+            --entry "$OUT/carrier/control/control_entry.py" \
+            --output "$OUT/CONTROL-PROBE.json" \
+            > "$OUT/CONTROL-PROBE-STDOUT.json"
+          OUT="$OUT" python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          receipt = json.loads((root / 'carrier/CARRIER-RECEIPT.json').read_text())
+          probe = json.loads((root / 'CONTROL-PROBE.json').read_text())
+          assert receipt['archive']['sha256'] == os.environ['EXPECTED_ARCHIVE_SHA256']
+          assert receipt['archive']['source_manifest_sha256'] == os.environ['EXPECTED_SOURCE_MANIFEST_SHA256']
+          assert receipt['canonical_runtime_equal'] is True
+          assert receipt['canonical_repository_modified'] is False
+          assert probe['install_receipt'] is None
+          PY
+          git diff --exit-code -- .
+
+      - name: Emit and import-probe fifteen route arms
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          EXP="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$EXP/leader_route_distillation.py" emit \
+            --bank "$OUT/LEADER-BANK.json" \
+            --runtime "$EXP/leader_route_runtime.py" \
+            --baseline-entry "$OUT/carrier/control/control_entry.py" \
+            --output-dir "$OUT/arms"
+          OUT="$OUT" python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          manifest = json.loads((root / 'arms/MANIFEST.json').read_text())
+          assert len(manifest['arms']) == 15
+          for row in manifest['arms']:
+              path = root / 'arms' / row['path']
+              spec = importlib.util.spec_from_file_location('probe_' + row['python_sha256'][:12], path)
+              assert spec is not None and spec.loader is not None
+              module = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(module)
+              assert callable(module.agent)
+              assert module.ARM_ID == row['arm_id']
+          PY
+
+      - name: Stage 1 control — one seed, Arlene, both seats
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$OUT/carrier/control/control_entry.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --seeds "$STAGE1_SEEDS" \
+            --rng-seed 20260913 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --recheck-first \
+            --output "$OUT/stage1-control.json"
+
+      - name: Stage 1 tournament — all route arms
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OBJECTIVE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          mkdir -p "$OUT/stage1-candidate" "$OUT/stage1-pairs" "$OUT/stage1-markdown"
+          python - "$OUT/arms/MANIFEST.json" <<'PY' > "$OUT/ARM-LIST.txt"
+          import json, sys
+          for row in json.load(open(sys.argv[1]))['arms']:
+              print(row['arm_id'] + '\t' + row['path'])
+          PY
+          while IFS=$'\t' read -r arm_id arm_path; do
+            python "$KAG/cloud-eval/evaluate.py" \
+              --engine-dir "$LAB/reference/engine" \
+              --loader "$KAG/20260907-offline-agent/evaluate.py" \
+              --candidate "$OUT/arms/$arm_path::agent" \
+              --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+              --seeds "$STAGE1_SEEDS" \
+              --rng-seed 20260913 \
+              --action-timeout 1.0 \
+              --startup-timeout 15 \
+              --game-timeout 180 \
+              --recheck-first \
+              --output "$OUT/stage1-candidate/$arm_id.json"
+            python "$OBJECTIVE/compare.py" \
+              --control "$OUT/stage1-control.json" \
+              --candidate "$OUT/stage1-candidate/$arm_id.json" \
+              --head "$(git rev-parse HEAD)" \
+              --output "$OUT/stage1-pairs/$arm_id.json" \
+              --markdown "$OUT/stage1-markdown/$arm_id.md"
+          done < "$OUT/ARM-LIST.txt"
+
+      - name: Select strict stage 1 survivors
+        id: stage1
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$EXP/select_route_arms.py" \
+            --reports-dir "$OUT/stage1-pairs" \
+            --manifest "$OUT/arms/MANIFEST.json" \
+            --output "$OUT/STAGE1-SELECTION.json" \
+            --selected "$OUT/STAGE1-SELECTED.txt" \
+            --top 2
+          count="$(grep -cve '^$' "$OUT/STAGE1-SELECTED.txt" || true)"
+          echo "selected_count=$count" >> "$GITHUB_OUTPUT"
+          if test "$count" -gt 0; then
+            echo 'has_selected=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'has_selected=false' >> "$GITHUB_OUTPUT"
+          fi
+          cat "$OUT/STAGE1-SELECTION.json" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build selected-arm manifest
+        if: steps.stage1.outputs.has_selected == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          OUT="$OUT" python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          selected = set(root.joinpath('STAGE1-SELECTED.txt').read_text().split())
+          manifest = json.loads(root.joinpath('arms/MANIFEST.json').read_text())
+          manifest['arms'] = [row for row in manifest['arms'] if row['arm_id'] in selected]
+          assert len(manifest['arms']) == len(selected) and selected
+          root.joinpath('STAGE2-MANIFEST.json').write_text(
+              json.dumps(manifest, indent=2, sort_keys=True) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Stage 2 control — four seeds, Arlene and V1, both seats
+        if: steps.stage1.outputs.has_selected == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$KAG/cloud-eval/evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$OUT/carrier/control/control_entry.py::agent" \
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+            --seeds "$STAGE2_SEEDS" \
+            --rng-seed 20260913 \
+            --action-timeout 1.0 \
+            --startup-timeout 15 \
+            --game-timeout 180 \
+            --recheck-first \
+            --output "$OUT/stage2-control.json"
+
+      - name: Stage 2 mirrored tournament
+        if: steps.stage1.outputs.has_selected == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OBJECTIVE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          mkdir -p "$OUT/stage2-candidate" "$OUT/stage2-pairs" "$OUT/stage2-markdown"
+          while read -r arm_id; do
+            test -n "$arm_id" || continue
+            arm_path="$(python - "$OUT/STAGE2-MANIFEST.json" "$arm_id" <<'PY'
+          import json, sys
+          rows = [r for r in json.load(open(sys.argv[1]))['arms'] if r['arm_id'] == sys.argv[2]]
+          assert len(rows) == 1
+          print(rows[0]['path'])
+          PY
+          )"
+            python "$KAG/cloud-eval/evaluate.py" \
+              --engine-dir "$LAB/reference/engine" \
+              --loader "$KAG/20260907-offline-agent/evaluate.py" \
+              --candidate "$OUT/arms/$arm_path::agent" \
+              --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent" \
+              --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent" \
+              --seeds "$STAGE2_SEEDS" \
+              --rng-seed 20260913 \
+              --action-timeout 1.0 \
+              --startup-timeout 15 \
+              --game-timeout 180 \
+              --recheck-first \
+              --output "$OUT/stage2-candidate/$arm_id.json"
+            python "$OBJECTIVE/compare.py" \
+              --control "$OUT/stage2-control.json" \
+              --candidate "$OUT/stage2-candidate/$arm_id.json" \
+              --head "$(git rev-parse HEAD)" \
+              --output "$OUT/stage2-pairs/$arm_id.json" \
+              --markdown "$OUT/stage2-markdown/$arm_id.md"
+          done < "$OUT/STAGE1-SELECTED.txt"
+
+      - name: Final strict disposition
+        if: steps.stage1.outputs.has_selected == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          python "$EXP/select_route_arms.py" \
+            --reports-dir "$OUT/stage2-pairs" \
+            --manifest "$OUT/STAGE2-MANIFEST.json" \
+            --output "$OUT/FINAL-SELECTION.json" \
+            --selected "$OUT/FINAL-SELECTED.txt" \
+            --top 1
+          cat "$OUT/FINAL-SELECTION.json" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Re-inventory immutable carrier
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CARRIER="$LAB/analysis/titan-v3-own-value-archive-carrier-sol-foundry"
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          if test -d "$OUT/carrier"; then
+            python "$CARRIER/archive_carrier.py" verify \
+              --root "$OUT/carrier" \
+              --output "$OUT/POST-PANEL-VERIFY.json" \
+              > "$OUT/POST-PANEL-VERIFY-STDOUT.json"
+          fi
+          git diff --exit-code -- .
+
+      - name: Write immutable provenance
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-s13"
+          mkdir -p "$OUT"
+          OUT="$OUT" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          root = Path(os.environ['OUT'])
+          files = {}
+          for path in sorted(root.rglob('*')):
+              if path.is_file() and path.name != 'PROVENANCE.json':
+                  files[path.relative_to(root).as_posix()] = {
+                      'bytes': path.stat().st_size,
+                      'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                  }
+          payload = {
+              'schema': 'titan-v3-s13-leader-route-provenance/v1',
+              'git_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'episodes': os.environ['EPISODES'].split(),
+              'stage1_seeds': os.environ['STAGE1_SEEDS'].split(','),
+              'stage2_seeds': os.environ['STAGE2_SEEDS'].split(','),
+              'files': files,
+          }
+          root.joinpath('PROVENANCE.json').write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Retain source, action, and score evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-s13-leader-route-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/titan-v3-s13
+            ${{ runner.temp }}/S13-CONTRACTS.txt
+          if-no-files-found: error
+          retention-days: 30
