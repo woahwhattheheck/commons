@@ -30,6 +30,8 @@ import desk
 HERE = Path(__file__).resolve().parent
 ACCESS_COLUMNS = ("order_ref", "support_code")
 PBKDF2_ROUNDS = 200_000
+DUMMY_SALT = b"hive006-dummy-v1"
+DUMMY_VERIFIER = b"\0" * hashlib.sha256().digest_size
 CODE_RE = re.compile(r"[0-9]{8,12}")
 AGENT_VALUES = {"0", "agent", "human", "person", "team", "speak to an agent"}
 
@@ -293,14 +295,18 @@ class MerchantGate:
                     (snapshot["order_ref"],),
                 ).fetchone()
             valid = False
-            if access is not None and supplied:
+            if supplied:
+                salt = access["salt"] if access is not None else DUMMY_SALT
+                expected = access["verifier"] if access is not None else DUMMY_VERIFIER
+                stored_rounds = int(access["rounds"]) if access is not None else PBKDF2_ROUNDS
                 candidate = hashlib.pbkdf2_hmac(
                     "sha256",
                     supplied.encode("ascii"),
-                    access["salt"],
-                    int(access["rounds"]),
+                    salt,
+                    PBKDF2_ROUNDS,
                 )
-                valid = hmac.compare_digest(candidate, access["verifier"])
+                matched = hmac.compare_digest(candidate, expected)
+                valid = access is not None and stored_rounds == PBKDF2_ROUNDS and matched
             if not valid:
                 result = self._gate_result(
                     call_id,
