@@ -18,7 +18,15 @@ The gate runs no games and edits no runtime. It is an evidence consumer intended
 
 ## Evidence contract
 
-All four reports must have identical evaluator provenance, opponents, seeds, limits, and RNG seed. Every report must contain the same complete `opponent × seed × seat` grid. Each game must be complete and bind:
+All four reports must have identical evaluator provenance, opponents, seeds, limits, and RNG seed. Every report must contain the same complete `opponent × seed × seat` grid. A required arm manifest additionally binds each executed candidate fingerprint to one build receipt and one canonical archive/source/runtime tree. The manifest must prove that:
+
+- `control` contains neither factor;
+- `own_value` contains exactly the reviewed own-value source;
+- `certified_pressure` contains exactly the reviewed delay-invariance source and contract `TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01`;
+- `both` reuses those exact two singleton source SHA-256 identities; and
+- every arm uses the same archive, source manifest, runtime tree, engine, loader, and evaluator.
+
+Unknown manifest keys, factor leakage, mislabeled candidate fingerprints, source substitutions, a pressure bound other than `shedCapacity`, or canonical-runtime drift fail closed. Every game must then be complete and bind:
 
 - a 720-state / 719-action lifecycle;
 - 719 pre-interpreter returned candidate actions;
@@ -70,12 +78,53 @@ python -B interaction_gate.py \
   --own-value /evidence/own-value.json \
   --certified-pressure /evidence/certified-pressure.json \
   --both /evidence/both.json \
+  --arm-manifest /evidence/ARM-MANIFEST.json \
   --head "$GITHUB_SHA" \
   --output /evidence/FACTORIAL-DECISION.json \
   --markdown /evidence/FACTORIAL-DECISION.md
 ```
 
-The JSON output retains the shared provenance, every per-cell arm state, five pairwise comparisons, factorial effects, opponent-by-seat strata, and the deterministic selection packet.
+The JSON output retains the normalized arm manifest and its semantic SHA-256, shared evaluator provenance, every per-cell arm state, five pairwise comparisons, factorial effects, opponent-by-seat strata, and the deterministic selection packet.
+
+## Arm manifest
+
+The producer supplies strict JSON with this shape; every digest is checked and all key sets are exact:
+
+```json
+{
+  "schema_version": 1,
+  "operation": "titan-v3-sell-factorial-arm-manifest-20260910-01",
+  "panel_binding": {
+    "archive_sha256": "<64 hex>",
+    "source_manifest_sha256": "<64 hex>",
+    "runtime_tree_sha256": "<64 hex>",
+    "engine_sha256": "<64 hex; equals reports>",
+    "loader_sha256": "<64 hex; equals reports>",
+    "evaluator_sha256": "<64 hex; equals reports>"
+  },
+  "factors": {
+    "own_value": {
+      "contract": "<reviewed contract id>",
+      "source_sha256": "<64 hex>",
+      "source_git_blob_sha1": "<40 hex>",
+      "receipt_sha256": "<64 hex>"
+    },
+    "certified_pressure": {
+      "contract": "TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01",
+      "source_sha256": "<64 hex>",
+      "source_git_blob_sha1": "<40 hex>",
+      "receipt_sha256": "<64 hex>",
+      "delay_bound_source": "shedCapacity"
+    }
+  },
+  "arms": {
+    "control": {"candidate_sha256": "<report candidate sha>", "build_receipt_sha256": "<64 hex>", "archive_sha256": "<same>", "source_manifest_sha256": "<same>", "runtime_tree_sha256": "<same>", "factors": {}},
+    "own_value": {"candidate_sha256": "<report candidate sha>", "build_receipt_sha256": "<64 hex>", "archive_sha256": "<same>", "source_manifest_sha256": "<same>", "runtime_tree_sha256": "<same>", "factors": {"own_value": "<exact source sha>"}},
+    "certified_pressure": {"candidate_sha256": "<report candidate sha>", "build_receipt_sha256": "<64 hex>", "archive_sha256": "<same>", "source_manifest_sha256": "<same>", "runtime_tree_sha256": "<same>", "factors": {"certified_pressure": "<exact source sha>"}},
+    "both": {"candidate_sha256": "<report candidate sha>", "build_receipt_sha256": "<64 hex>", "archive_sha256": "<same>", "source_manifest_sha256": "<same>", "runtime_tree_sha256": "<same>", "factors": {"own_value": "<same exact source sha>", "certified_pressure": "<same exact source sha>"}}
+  }
+}
+```
 
 ## Contracts
 
@@ -85,7 +134,7 @@ PYTHONDONTWRITEBYTECODE=1 python -B -m py_compile \
 PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_interaction_gate.py
 ```
 
-The suite covers positive composition, antagonism, singleton selection, interaction arithmetic, pooled-mean/stratum conflicts, inactive arms, duplicate cells, malformed provenance, nonfinite values, finite arithmetic overflow, boolean identities, lifecycle truncation, fingerprint aliasing, detached action/trace/score evidence, and strict JSON parsing.
+The suite covers positive composition, antagonism, singleton selection, interaction arithmetic, pooled-mean/stratum conflicts, inactive arms, duplicate cells, malformed provenance, nonfinite values, finite arithmetic overflow, boolean identities, lifecycle truncation, fingerprint aliasing, detached action/trace/score evidence, strict JSON parsing, candidate/manifest mismatch, canonical closure drift, factor leakage, source substitution, evaluator detachment, and pressure-contract/bound substitution.
 
 ## Boundary and custody
 
