@@ -42,10 +42,9 @@ gain/tie order, delayed-sale rejection, malformed/nonfinite certificates,
 post-unit quantity bounds, repeated existing SELL rows, input nonmutation,
 future-only no-op behavior, wrapper diagnostics, and fail-closed configuration.
 
-Local receipts:
+Exact local mirror receipts:
 
 - overlay SHA-256: `5d60c30d0fae80bc1de6f634a5502e249cc87d644939e5a2e1973f6e08d2285d`
-- test SHA-256: `11667f567b40e4da8f76262d9a1867dd6e09d454fee213a1147560ab87b150d8`
-- evidence SHA-256 before this receipt section: `36f94c7941ed4e16ca2367637e3770a4f9d86adcd39faab32915bed9dd88c635`
+- test SHA-256: `8f374136abf952bd380abda3113f29dd96ea57aa4080f21867457f83a7079a3c`
 - `python -m unittest -v test_p12_portfolio_ascent.py`: 17/17 PASS
-- `python -m py_compile p12_portfolio_ascent.py test_p12_portfolio_ascent.py`: PASS
+- `python -m py_compile ../overlay/p12_portfolio_ascent.py test_p12_portfolio_ascent.py`: PASS
