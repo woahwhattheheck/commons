@@ -1,0 +1,86 @@
+name: TITAN V3 active frozen-consumer carrier bootstrap
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-slot-active-consumer-20260910-01
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-slot-active-consumer-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize-carrier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      PAYLOAD: .github/titan-v3-slot-active-consumer-payload.tar.gz
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro
+      NOTE: p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md
+      EXPECTED_PAYLOAD_SHA256: e218b9819329c627a7eb30a509efc8ab7938481b9ef0bf20c7fd4f000b5b1f1d
+
+    steps:
+      - name: Checkout triggering branch head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Authenticate and unpack exact carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          if test ! -f "$PAYLOAD"; then
+            echo "payload already consumed"
+            exit 0
+          fi
+          test "$(sha256sum "$PAYLOAD" | awk '{print $1}')" = "$EXPECTED_PAYLOAD_SHA256"
+          work="$(mktemp -d)"
+          trap 'rm -rf "$work"' EXIT
+          tar -xzf "$PAYLOAD" -C "$work"
+          test "$(find "$work" -maxdepth 1 -type f -printf '%f\n' | sort | tr '\n' ' ')" = \
+            "active_witness.py materialize_active_consumer.py project-note.md test_active_consumer.py "
+          mkdir -p "$CASE" "$(dirname "$NOTE")"
+          install -m 0644 "$work/materialize_active_consumer.py" "$CASE/materialize_active_consumer.py"
+          install -m 0644 "$work/active_witness.py" "$CASE/active_witness.py"
+          install -m 0644 "$work/test_active_consumer.py" "$CASE/test_active_consumer.py"
+          install -m 0644 "$work/project-note.md" "$NOTE"
+          rm "$PAYLOAD"
+          python -B -m py_compile "$CASE"/*.py
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/materialize_active_consumer.py': '7c566db79c7e2aed2169c93d095126944891408dfe9e17ad65adb823d4627131',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py': '45686fa62782c7e8d8a51de08c1bca241a07087cea9c14d918833ae2a8375a14',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/test_active_consumer.py': '3b175b71de73cc21036cabcd31d284268ebcd7f632face665119bec2d3330dc4',
+              'p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md': '355524c8edad50552cd1da9c197224e735b8a407e38904294036eecf9b22d622',
+          }
+          for name, digest in expected.items():
+              actual = hashlib.sha256(Path(name).read_bytes()).hexdigest()
+              assert actual == digest, (name, actual, digest)
+          PY
+
+      - name: Commit the authenticated postimage carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test ! -e "$PAYLOAD" && git diff --quiet && test -z "$(git status --porcelain --untracked-files=all)"; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git config user.name "woahwhattheheck"
+          git config user.email "brycembusiness2@gmail.com"
+          git add "$CASE/materialize_active_consumer.py" \
+                  "$CASE/active_witness.py" \
+                  "$CASE/test_active_consumer.py" \
+                  "$NOTE" \
+                  "$PAYLOAD"
+          git diff --cached --name-status
+          git commit -m "test(titan): bind shared SELL slots to active frozen consumer [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
