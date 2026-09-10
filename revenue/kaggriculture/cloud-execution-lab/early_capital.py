@@ -113,7 +113,10 @@ def _rank(order, now, remaining, day, plant_demand, seeds_held):
     if op not in KNOWN:
         return None
     if op == 'SELL':
-        return FUNDING
+        # The official interpreter rejects non-positive/malformed quantities.
+        # Redundant-hire intentionally uses SELL WHEAT 0 as an inert slot
+        # placeholder, so it must never be promoted as cash-producing funding.
+        return FUNDING if _qty(order) > 0 else REST
     if op == 'HIRE':
         return OPERATING
     if op == 'BUY_SEED' and len(order) > 2:
