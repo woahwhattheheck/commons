@@ -1,0 +1,63 @@
+name: titan-v3-intent-priority-fresh-main-port
+
+on:
+  push:
+    branches:
+      - sol-helios/titan-v3-intent-priority-fresh-main-port-20260910-01
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-intent-priority-fresh-main-port.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/intent_priority/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-intent-priority-port-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  current-main-port:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/intent_priority
+      SCHEDULER: revenue/kaggriculture/cloud-execution-lab/scheduler.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run current-seam and semantic contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/intent_priority
+        run: python -B -m unittest -v test_materialize
+
+      - name: Materialize disconnected candidate and bind receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/intent-priority"
+          python -B "$LANE/materialize.py" \
+            --source "$SCHEDULER" \
+            --output "$RUNNER_TEMP/intent-priority/scheduler.py" \
+            --receipt "$RUNNER_TEMP/intent-priority/PORT-RECEIPT.json"
+          python -B -m py_compile "$RUNNER_TEMP/intent-priority/scheduler.py"
+          test "$(git diff --name-only | wc -l)" -eq 0
+          git diff --exit-code
+          sha256sum \
+            "$SCHEDULER" \
+            "$RUNNER_TEMP/intent-priority/scheduler.py" \
+            "$RUNNER_TEMP/intent-priority/PORT-RECEIPT.json" \
+            | tee "$RUNNER_TEMP/intent-priority/SHA256SUMS"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-intent-priority-port-${{ github.sha }}
+          path: ${{ runner.temp }}/intent-priority/
+          if-no-files-found: error
+          retention-days: 14
