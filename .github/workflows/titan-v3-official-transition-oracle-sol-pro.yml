@@ -1,0 +1,109 @@
+name: TITAN V3 official transition oracle successor
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-official-transition-oracle-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-transition-oracle-20260910-sol-pro/**"
+      - ".github/workflows/titan-v3-official-transition-oracle-sol-pro.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-transition-oracle-20260910-sol-pro/**"
+      - ".github/workflows/titan-v3-official-transition-oracle-sol-pro.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-official-transition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the exact triggering head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind exact head and interpreter source
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha }}'
+          if [[ -n "$expected" ]]; then
+            test "$(git rev-parse HEAD)" = "$expected"
+          fi
+          test -z "$(git status --porcelain=v1)"
+          engine=revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+          test "$(git hash-object "$engine")" = 3c202c7ee921da239356789e266b694635103fc4
+
+      - name: Parse all carrier Python without mutating the checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          root = Path("revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-transition-oracle-20260910-sol-pro")
+          for path in sorted(root.glob("*.py")):
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          PY
+
+      - name: Run protocol, custody, metamorphic, and transition contracts
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        shell: bash
+        run: |
+          set -euo pipefail
+          case_dir=revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-transition-oracle-20260910-sol-pro
+          python -m unittest discover -s "$case_dir" -p "test_official_transition_oracle.py" -v
+
+      - name: Run complete official corpus twice and compare every retained byte
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        shell: bash
+        run: |
+          set -euo pipefail
+          case_dir=revenue/kaggriculture/cloud-execution-lab/analysis/v3-official-transition-oracle-20260910-sol-pro
+          engine=revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+          first="$RUNNER_TEMP/titan-official-transition-evidence"
+          second="$RUNNER_TEMP/titan-official-transition-evidence-second"
+          python "$case_dir/run_official_transition_corpus.py" \
+            --engine "$engine" \
+            --worker "$case_dir/official_transition_worker.py" \
+            --output-dir "$first"
+          python "$case_dir/run_official_transition_corpus.py" \
+            --engine "$engine" \
+            --worker "$case_dir/official_transition_worker.py" \
+            --output-dir "$second"
+          diff -qr "$first" "$second"
+          test -s "$first/EVIDENCE.json"
+          test -s "$first/SHA256SUMS"
+          {
+            printf 'head=%s\n' "$(git rev-parse HEAD)"
+            printf 'tree=%s\n' "$(git rev-parse HEAD^{tree})"
+            printf 'engine_git_blob=%s\n' "$(git hash-object "$engine")"
+            sha256sum \
+              "$engine" \
+              "$case_dir"/*.py \
+              "$case_dir"/README.md \
+              .github/workflows/titan-v3-official-transition-oracle-sol-pro.yml
+          } > "$first/SOURCE_RECEIPT.txt"
+          (cd "$first" && sha256sum SOURCE_RECEIPT.txt >> SHA256SUMS)
+          (cd "$first" && sha256sum --check SHA256SUMS)
+          test -z "$(git status --porcelain=v1)"
+
+      - name: Upload exact official-transition evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-official-transition-${{ github.sha }}
+          path: ${{ runner.temp }}/titan-official-transition-evidence/
+          if-no-files-found: error
+          retention-days: 30
