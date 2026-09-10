@@ -1,0 +1,123 @@
+{
+  "control": {
+    "money": 2643.0,
+    "seeds": {},
+    "shed": {
+      "WHEAT": 13
+    },
+    "wheat_market_inventory": 9986,
+    "wheat_market_price": 29
+  },
+  "control_action": {
+    "farmer": [
+      "PASS"
+    ],
+    "hands": [],
+    "market": [
+      [
+        "BUY_PRODUCT",
+        "WHEAT",
+        13
+      ]
+    ]
+  },
+  "control_minus_shipped_wheat": 11,
+  "engine_sha256": {
+    "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+    "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+  },
+  "receipt_sha256": "5fb0abf33b2ffd1930fc1fd41e68511b6a74d9c4b5ef9e1139d9410212577d45",
+  "rival_action": {
+    "farmer": [
+      "PASS"
+    ],
+    "hands": [],
+    "market": []
+  },
+  "schema": "titan.l01-day0-engine-witness.v1",
+  "seed": 1,
+  "shipped": {
+    "money": 2948.0,
+    "seeds": {},
+    "shed": {
+      "WHEAT": 2
+    },
+    "wheat_market_inventory": 9997,
+    "wheat_market_price": 27
+  },
+  "shipped_action": {
+    "farmer": [
+      "PASS"
+    ],
+    "hands": [],
+    "market": [
+      [
+        "BUY_PRODUCT",
+        "CARROT",
+        14
+      ],
+      [
+        "BUY_PRODUCT",
+        "MELON",
+        20
+      ],
+      [
+        "BUY_PRODUCT",
+        "MILK",
+        40
+      ],
+      [
+        "BUY_PRODUCT",
+        "STRAWBERRY",
+        8
+      ],
+      [
+        "BUY_PRODUCT",
+        "TOMATO",
+        12
+      ],
+      [
+        "BUY_PRODUCT",
+        "WHEAT",
+        2
+      ]
+    ]
+  },
+  "shipped_minus_control_money": 305.0,
+  "source_certificate": {
+    "accepted": false,
+    "executable_prefix_rows": 6,
+    "issues": [
+      {
+        "code": "unsupported_product",
+        "detail": "'CARROT'",
+        "index": 0
+      },
+      {
+        "code": "unsupported_product",
+        "detail": "'MELON'",
+        "index": 1
+      },
+      {
+        "code": "unsupported_product",
+        "detail": "'MILK'",
+        "index": 2
+      },
+      {
+        "code": "unsupported_product",
+        "detail": "'STRAWBERRY'",
+        "index": 3
+      },
+      {
+        "code": "unsupported_product",
+        "detail": "'TOMATO'",
+        "index": 4
+      }
+    ],
+    "rejection_reason": "L01_noop:day0buy_rejected[unsupported_product]",
+    "rows": 6,
+    "starting_money": null,
+    "worst_case_cost": null
+  }
+}
