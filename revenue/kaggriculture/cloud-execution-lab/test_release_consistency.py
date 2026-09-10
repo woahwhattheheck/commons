@@ -67,4 +67,19 @@ class ReleaseTests(unittest.TestCase):
    self.assertIn(b'def _entrypoint_fallback',main)
    self.assertIn(b'entrypoint_guard',main)
 
+ def test_live_package_matches_documentation_and_keeps_predecessor(self):
+  receipt=b.verify_current()
+  self.assertEqual(receipt['path'],b.ARCHIVE)
+  historical=b.ROOT/'exports/historical'/'titan-17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86.tar.gz'
+  self.assertEqual(hashlib.sha256(historical.read_bytes()).hexdigest(),
+                   '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86')
+  with tarfile.open(historical) as old, tarfile.open(b.ROOT/b.ARCHIVE) as cur:
+   for name in ('TITAN-RELEASE.md','reference/decision/README.md'):
+    current_bytes=(b.ROOT/name).read_bytes()
+    packaged=cur.extractfile(name).read()
+    self.assertEqual(packaged, current_bytes)
+    predecessor=old.extractfile(name).read()
+    self.assertNotEqual(predecessor, current_bytes)
+    self.assertFalse(name.endswith('.py'))
+
 if __name__=='__main__':unittest.main()
