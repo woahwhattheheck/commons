@@ -23,186 +23,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify and materialize exact Slack handoff
-        run: |
-          set -euo pipefail
-          payload="$(mktemp)"
-          base64 --decode revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64 > "$payload"
-          echo 'f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728  '"$payload" | sha256sum --check --strict
-          test "$(wc -c < "$payload")" -eq 27500
-          python - "$payload" <<'PY'
-          from pathlib import Path
-          import sys
-          import tarfile
-
-          archive = Path(sys.argv[1])
-          root = Path.cwd().resolve()
-          expected = {
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/.gitignore',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/rival_model.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/shop_arb.py',
-          }
-          with tarfile.open(archive, 'r:gz') as tar:
-              members = [member for member in tar.getmembers() if member.isfile()]
-              normalized = {
-                  member.name[2:] if member.name.startswith('./') else member.name
-                  for member in members
-              }
-              assert normalized == expected, (sorted(normalized - expected), sorted(expected - normalized))
-              for member in members:
-                  name = member.name[2:] if member.name.startswith('./') else member.name
-                  target = (root / name).resolve()
-                  assert target == root / name
-                  assert root in target.parents
-                  source = tar.extractfile(member)
-                  assert source is not None
-                  target.parent.mkdir(parents=True, exist_ok=True)
-                  target.write_bytes(source.read())
-          print('HANDOFF_OK', len(expected), 'files')
-          PY
-
-      - name: Apply exact-preimage repair and install predecessor killers
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import hashlib
-          import importlib.util
-          from collections import Counter
-
-          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay')
-          source_path = root / 'l01_mechanics.py'
-          test_path = root / 'checks' / 'test_v3_l01.py'
-
-          old = """            extra = max(0, len(sites) - KEEP_WHEAT_PLANTS)\n            for t, i in sites[-extra:]:\n"""
-          new = """            extra = max(0, len(sites) - KEEP_WHEAT_PLANTS)\n            if extra == 0:\n                continue\n            for t, i in sites[-extra:]:\n"""
-          source = source_path.read_text(encoding='utf-8')
-          assert source.count(old) == 1, 'vulnerable leanplant preimage missing or duplicated'
-          assert new not in source, 'repair already present in authenticated preimage'
-          source_path.write_text(source.replace(old, new), encoding='utf-8')
-
-          test_block = r'''
-
-# Predecessor killers for sites[-0:] / repeated-install / aliased-route corruption.
-import importlib.util as _l01_importlib_util
-from collections import Counter as _L01Counter
-from pathlib import Path as _L01Path
-import unittest as _L01Unittest
-
-
-def _l01_mechanics_under_idempotence_test():
-    path = _L01Path(__file__).resolve().parents[1] / 'l01_mechanics.py'
-    spec = _l01_importlib_util.spec_from_file_location('l01_mechanics_idempotence_test', path)
-    if spec is None or spec.loader is None:
-        raise AssertionError('unable to load l01_mechanics.py')
-    module = _l01_importlib_util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
-def _l01_wheat_route(count):
-    return [
-        {'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []}
-        for _ in range(count)
-    ]
-
-
-class TestL01LeanPlantIdempotence(_L01Unittest.TestCase):
-    def test_exact_72_is_identity(self):
-        mechanics = _l01_mechanics_under_idempotence_test()
-        route = _l01_wheat_route(mechanics.KEEP_WHEAT_PLANTS)
-        activations = _L01Counter()
-        mechanics.patch_routes({'main': route}, {'LEANPLANT': True}, activations, [])
-        self.assertEqual(mechanics.plant_counts(route)['WHEAT'], mechanics.KEEP_WHEAT_PLANTS)
-        self.assertEqual(activations['LEANPLANT'], 0)
-
-    def test_second_application_is_identity(self):
-        mechanics = _l01_mechanics_under_idempotence_test()
-        extra = 92
-        route = _l01_wheat_route(mechanics.KEEP_WHEAT_PLANTS + extra)
-        activations = _L01Counter()
-        flags = {'LEANPLANT': True}
-        mechanics.patch_routes({'main': route}, flags, activations, [])
-        first = mechanics.plant_counts(route)
-        first_activations = activations['LEANPLANT']
-        mechanics.patch_routes({'main': route}, flags, activations, [])
-        self.assertEqual(mechanics.plant_counts(route), first)
-        self.assertEqual(first['WHEAT'], mechanics.KEEP_WHEAT_PLANTS)
-        self.assertEqual(first_activations, extra)
-        self.assertEqual(activations['LEANPLANT'], extra)
-
-    def test_two_keys_aliasing_one_route_convert_once(self):
-        mechanics = _l01_mechanics_under_idempotence_test()
-        extra = 92
-        shared = _l01_wheat_route(mechanics.KEEP_WHEAT_PLANTS + extra)
-        routes = {'first': shared, 'second': shared}
-        activations = _L01Counter()
-        mechanics.patch_routes(routes, {'LEANPLANT': True}, activations, [])
-        self.assertIs(routes['first'], routes['second'])
-        self.assertEqual(mechanics.plant_counts(shared)['WHEAT'], mechanics.KEEP_WHEAT_PLANTS)
-        self.assertEqual(activations['LEANPLANT'], extra)
-'''
-          tests = test_path.read_text(encoding='utf-8')
-          sentinel = 'class TestL01LeanPlantIdempotence('
-          assert sentinel not in tests, 'idempotence tests already present in authenticated preimage'
-          markers = ("\nif __name__ == '__main__':", '\nif __name__ == "__main__":')
-          for marker in markers:
-              if marker in tests:
-                  tests = tests.replace(marker, test_block + marker, 1)
-                  break
-          else:
-              tests += test_block
-          test_path.write_text(tests, encoding='utf-8')
-
-          # Execute the three predecessor witnesses directly against the patched exact source.
-          spec = importlib.util.spec_from_file_location('l01_repair_direct_check', source_path)
-          assert spec is not None and spec.loader is not None
-          mechanics = importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(mechanics)
-
-          def route(n):
-              return [{'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []} for _ in range(n)]
-
-          exact = route(mechanics.KEEP_WHEAT_PLANTS)
-          act = Counter()
-          mechanics.patch_routes({'main': exact}, {'LEANPLANT': True}, act, [])
-          assert mechanics.plant_counts(exact)['WHEAT'] == mechanics.KEEP_WHEAT_PLANTS
-          assert act['LEANPLANT'] == 0
-
-          extra = 92
-          repeated = route(mechanics.KEEP_WHEAT_PLANTS + extra)
-          act = Counter()
-          mechanics.patch_routes({'main': repeated}, {'LEANPLANT': True}, act, [])
-          first = mechanics.plant_counts(repeated)
-          mechanics.patch_routes({'main': repeated}, {'LEANPLANT': True}, act, [])
-          assert mechanics.plant_counts(repeated) == first
-          assert first['WHEAT'] == mechanics.KEEP_WHEAT_PLANTS
-          assert act['LEANPLANT'] == extra
-
-          shared = route(mechanics.KEEP_WHEAT_PLANTS + extra)
-          routes = {'first': shared, 'second': shared}
-          act = Counter()
-          mechanics.patch_routes(routes, {'LEANPLANT': True}, act, [])
-          assert routes['first'] is routes['second']
-          assert mechanics.plant_counts(shared)['WHEAT'] == mechanics.KEEP_WHEAT_PLANTS
-          assert act['LEANPLANT'] == extra
-
-          compile(source_path.read_text(encoding='utf-8'), str(source_path), 'exec')
-          compile(test_path.read_text(encoding='utf-8'), str(test_path), 'exec')
-          print('L01_IDEMPOTENCE_OK')
-          print('SOURCE_SHA256', hashlib.sha256(source_path.read_bytes()).hexdigest())
-          print('TEST_SHA256', hashlib.sha256(test_path.read_bytes()).hexdigest())
-          PY
+      - name: Materialize authenticated handoff and repair L01 idempotence
+        run: python revenue/kaggriculture/cloud-execution-lab/candidates/repair_v3_l01_idempotence.py
 
       - name: Commit only the authenticated repaired one-tree source
         run: |
@@ -210,12 +32,13 @@ class TestL01LeanPlantIdempotence(_L01Unittest.TestCase):
           git config user.name tokenjunkielabs
           git config user.email tokenjunkielabs@gmail.com
           git rm revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/repair_v3_l01_idempotence.py
           git rm .github/workflows/titan-v3-one-tree-land-sol-pro.yml
           git add revenue/kaggriculture/cloud-execution-lab/candidates/v3
           git diff --cached --check
           while IFS= read -r path; do
             case "$path" in
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/*|revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64|.github/workflows/titan-v3-one-tree-land-sol-pro.yml) ;;
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/*|revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64|revenue/kaggriculture/cloud-execution-lab/candidates/repair_v3_l01_idempotence.py|.github/workflows/titan-v3-one-tree-land-sol-pro.yml) ;;
               *) echo "unexpected staged path: $path" >&2; exit 1 ;;
             esac
           done < <(git diff --cached --name-only)
