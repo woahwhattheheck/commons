@@ -1,0 +1,86 @@
+name: titan-hire-liquidity-probe-sol-flywheel
+
+on:
+  push:
+    branches:
+      - 'sol-flywheel/titan-hire-liquidity-probe-20260910-01'
+    paths:
+      - '.github/workflows/titan-hire-liquidity-probe-sol-flywheel.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/hire_liquidity_probe.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/scheduler.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/alder/seed_budget.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact checkout
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - name: Run current-route liquidity probe
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -B -m py_compile hire_liquidity_probe.py
+          python -B hire_liquidity_probe.py --check --output HIRE-LIQUIDITY-PROBE.json | tee HIRE-LIQUIDITY-PROBE.stdout.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('HIRE-LIQUIDITY-PROBE.json').read_text())
+          assert report['schema'] == 'titan-hire-liquidity-source-probe/v1'
+          assert report['scope'] == 'current frozen controller source; no game execution'
+          assert report['route_count'] >= 1
+          assert report['route_length'] >= 49
+          block = report['first_four_hire_block']
+          assert len(block['hire_costs']) >= 4
+          assert block['total_hire_cost'] == sum(block['hire_costs'])
+          assert report['probe_summary']['hire_step'] == block['step']
+          assert report['probe_summary']['hire_cost'] == block['total_hire_cost']
+          assert report['decision_steps_at_or_before_hire'] == sorted(
+              report['decision_steps_at_or_before_hire'])
+          for row in report['early_seed_rows']:
+              assert row['compatible_route_max_units'] >= row['current_route_remaining_units']
+              assert row['branch_contingency_units'] == (
+                  row['compatible_route_max_units'] - row['current_route_remaining_units'])
+          print(json.dumps(report['probe_summary'], sort_keys=True))
+          PY
+
+      - name: Assert source tree unchanged
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all | grep -v -E '^\?\? revenue/kaggriculture/cloud-execution-lab/HIRE-LIQUIDITY-PROBE(\.stdout)?\.json$' || true)"
+
+      - name: Retain exact source report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-hire-liquidity-probe-${{ github.run_id }}
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/HIRE-LIQUIDITY-PROBE.json
+            revenue/kaggriculture/cloud-execution-lab/HIRE-LIQUIDITY-PROBE.stdout.json
+          if-no-files-found: warn
+          retention-days: 30
