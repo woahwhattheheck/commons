@@ -1,0 +1,149 @@
+name: titan-canonical-package-reconcile-sol-prism
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-canonical-package-reconcile-sol-prism.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/release_drift.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_release_drift.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_release_consistency.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/TITAN-RELEASE.md'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/decision/README.md'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-canonical-package-reconcile-sol-prism-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  reconcile:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact pull-request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: true
+
+      - name: Assert exact checkout
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Capture and prove predecessor drift
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -B release_drift.py > PREDECESSOR-DRIFT.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path('PREDECESSOR-DRIFT.json').read_text())
+          expected=['TITAN-RELEASE.md','reference/decision/README.md']
+          actual=[row['member'] for row in report['runtime_member_drift']]
+          if report['clean']:
+              print('Canonical package was already current; no bootstrap mutation needed.')
+          else:
+              assert report['errors'] == [], report
+              assert actual == expected, report
+              assert report['manifest_metadata_drift'] == [], report
+              assert report['artifacts']['archive']['actual_sha256'] == '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86', report
+              assert all('.py' not in name for name in actual), report
+          PY
+
+      - name: Deterministically rebuild and preserve the superseded archive
+        id: rebuild
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          python -B build_integrated.py > BUILD-RECEIPT.json
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          receipt=json.loads(Path('BUILD-RECEIPT.json').read_text())
+          assert receipt == {
+            'path':'exports/titan-current.tar.gz',
+            'entrypoint':'main.py::agent',
+            'config':'TITAN-CONFIG.json',
+            'sha256':'5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1',
+            'bytes':428158,
+            'runtime_files':109,
+            'source_manifest':'runtime/integrated-selected/CURRENT-SOURCE.json',
+            'source_manifest_sha256':'3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469',
+          }, receipt
+          historical=Path('exports/historical/titan-17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86.tar.gz')
+          assert hashlib.sha256(historical.read_bytes()).hexdigest() == historical.stem.removeprefix('titan-').removesuffix('.tar'), historical
+          PY
+          expected=$(cat <<'EOF'
+          exports/historical/titan-17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86.tar.gz
+          exports/titan-current.tar.gz
+          runtime/integrated-selected/CURRENT-ARCHIVE.json
+          runtime/integrated-selected/CURRENT-SOURCE.json
+          EOF
+          )
+          actual=$(git status --porcelain --untracked-files=all | sed -E 's/^.. //' | grep -v -E '^(PREDECESSOR-DRIFT|BUILD-RECEIPT)\.json$' | sort)
+          test "$actual" = "$expected"
+          git add \
+            exports/historical/titan-17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86.tar.gz \
+            exports/titan-current.tar.gz \
+            runtime/integrated-selected/CURRENT-ARCHIVE.json \
+            runtime/integrated-selected/CURRENT-SOURCE.json
+          if git diff --cached --quiet; then
+            echo 'generated=false' >> "$GITHUB_OUTPUT"
+          else
+            git config user.name 'sol-prism'
+            git config user.email 'sol-prism@commons.local'
+            git commit -m 'Reconcile canonical TITAN package with current source'
+            git push origin "HEAD:${HEAD_BRANCH}"
+            echo 'generated=true' >> "$GITHUB_OUTPUT"
+            echo "generated_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify current package and predecessor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python -B release_drift.py --check | tee RELEASE-DRIFT.json
+          python -B build_integrated.py --check
+          python -B -m unittest -v test_release_drift.py test_release_consistency.py
+
+      - name: Assert no uncommitted source or package mutation
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all | grep -v -E '^\?\? revenue/kaggriculture/cloud-execution-lab/(PREDECESSOR-DRIFT|BUILD-RECEIPT|RELEASE-DRIFT)\.json$' || true)"
+
+      - name: Retain exact reconciliation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-canonical-package-reconcile-${{ github.run_id }}
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/PREDECESSOR-DRIFT.json
+            revenue/kaggriculture/cloud-execution-lab/BUILD-RECEIPT.json
+            revenue/kaggriculture/cloud-execution-lab/RELEASE-DRIFT.json
+          if-no-files-found: warn
+          retention-days: 30
