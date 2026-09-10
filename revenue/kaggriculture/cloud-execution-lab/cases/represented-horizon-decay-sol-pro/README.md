@@ -54,9 +54,12 @@ legal and productive.
 
 ## Exact predecessor
 
-The witness is mechanics-valid and metadata-valid:
+The witness is full-season reachable under the exact production mechanics and
+its AST-identical official-interpreter lifecycle functions:
 
 ```text
+plant CARROT on day 1
+WATER later on day 1 and once on days 2, 3, and 4
 now                  120
 baseline_end         128
 hard_end             130
@@ -66,6 +69,12 @@ yield_units          3
 max_lifespan_step    (1 + max_yield_day[3] + 1) * 24 = 120
 represented route    HARVEST @129, DROP @130
 ```
+
+Annual CARROT starts at yield 1 and `consecutive_unwatered=1`. Day-1 WATER keeps
+it alive without adding yield. Day-2 WATER keeps it alive at age 1. Day-3 and
+day-4 WATER occur at ages 2 and 3, the exact CARROT yield window, and add one
+unit each. Official end-of-day refresh after steps 47, 71, 95, and 119 reaches
+the claimed step-120 tile byte-for-field.
 
 Current prefix-only projection:
 
@@ -124,8 +133,10 @@ occurred earlier in official turn order.
 
 ## Contracts
 
-`test_repair.py` executes the exact prefix materialized source and the composed
-candidate, not a handwritten replacement. It covers:
+The 16 exact-source contracts execute the exact prefix-materialized source and
+the composed candidate, not a handwritten replacement.
+
+`test_repair.py` covers:
 
 - exact canonical source, prefix carrier, mechanics, and interpreter binding;
 - exact official `market -> town -> decay` chronology binding;
@@ -138,12 +149,21 @@ candidate, not a handwritten replacement. It covers:
 - malformed/duplicate preimage fail closure;
 - deterministic JSON receipt and unified patch.
 
+`test_lifecycle.py` independently covers:
+
+- AST identity between production and official `_new_plant`,
+  `_apply_unit_action`, `_daily_refresh_plants`, and `_decay_plants`;
+- the legal day-1 PLANT plus day-1..4 WATER/EOD trajectory into the exact
+  step-120 CARROT state;
+- official `3 -> 2 -> 1 -> WEED` decay and no-op HARVEST/DROP from that state.
+
 Run from repository root:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 \
 python -B -m unittest -v \
-  revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_repair.py
+  revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_repair.py \
+  revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_lifecycle.py
 
 python -B \
   revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/repair.py \
@@ -160,6 +180,11 @@ Apply the prefix selection from #12056 before this chronology closure. The
 in-prefix HIRE executability owner and represented purchase executability owner
 remain authoritative for whether their market requests actually complete. This
 donor neither reimplements nor weakens those contracts.
+
+PR #12075 is complementary rather than overlapping: it restores decay inside
+`_funding_trace()` for acquisition-capacity certificates. This donor restores
+decay inside `represented_shed_event()` for the shared SELL-horizon event
+certificate and proves a returned-action difference at that caller.
 
 The composed integration must still run the broader exact transition oracle
 before gameplay promotion. This PR establishes a source-real returned-action
