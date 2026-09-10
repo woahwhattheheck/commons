@@ -99,11 +99,14 @@ class ClusteredSelectorTests(unittest.TestCase):
                 for seat in (0, 1):
                     rows.append(row(opponent, seed, seat, 1, 0, True))
         receipt = analyze(rows)
-        self.assertEqual(receipt["verdict"], "ADVANCE_SCREEN")
+        self.assertEqual(receipt["verdict"], "SIGN_SUPPORTED")
         self.assertEqual(
             receipt["seed_selector"]["one_sided_exact_sign_tail"],
             {"numerator": 1, "denominator": 32, "decimal": 1 / 32},
         )
+        self.assertFalse(receipt["promotion_authority"])
+        self.assertIn("not gameplay-promotion authority", receipt["reason"])
+        self.assertIn("conditional", receipt["tail_assumption"])
 
     def test_negative_cell_is_regression_even_when_cluster_mean_is_positive(self):
         rows = [

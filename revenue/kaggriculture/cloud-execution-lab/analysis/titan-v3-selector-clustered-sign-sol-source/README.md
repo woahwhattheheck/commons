@@ -24,7 +24,7 @@ The factor remains a useful, zero-negative-cell port hypothesis. The corrected d
 - retains concentration, exact all-zero seed-bootstrap mass, and leave-one-seed-out results;
 - routes sparse clean panels that miss the declared clustered threshold to `MORE_EVIDENCE`.
 
-The conservative default experimental unit is the environment seed. A panel advances only with no negative own-cash cell and both declared clustered tails at or below 5%.
+The conservative default experimental unit is the environment seed. Clearing both declared clustered tails with no negative own-cash cell yields `SIGN_SUPPORTED`, not a promotion verdict. This receipt must still be composed with tested-action causality, own-cash and margin safety, W/T/L nonregression, exact-current-base closure, and package custody. Its exact binomial arithmetic is conditional on the experiment justifying exchangeable independent seed clusters; the tool does not manufacture that sampling assumption.
 
 ## Run
 

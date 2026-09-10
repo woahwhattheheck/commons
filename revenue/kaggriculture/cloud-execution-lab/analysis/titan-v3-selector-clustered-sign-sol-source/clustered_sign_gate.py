@@ -201,7 +201,7 @@ def analyze(
 ) -> dict[str, Any]:
     """Validate and classify one mirrored panel.
 
-    ``ADVANCE_SCREEN`` requires all of the following:
+    ``SIGN_SUPPORTED`` requires all of the following:
 
     * no negative own-cash cell;
     * at least one candidate-action activation and positive own-cash cell;
@@ -256,8 +256,11 @@ def analyze(
             "and clustering repeated environment seeds"
         )
     else:
-        verdict = "ADVANCE_SCREEN"
-        reason = "zero negative cells and both declared clustered sign gates pass"
+        verdict = "SIGN_SUPPORTED"
+        reason = (
+            "zero negative cells and both declared clustered sign gates pass; "
+            "this is not gameplay-promotion authority"
+        )
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -266,6 +269,16 @@ def analyze(
         "alpha": _fraction_receipt(alpha),
         "experimental_unit": "seed",
         "seat_treatment": "blocked mirrored replicate, never an independent sign draw",
+        "classification_scope": (
+            "clustered own-cash sign consistency only; compose with causal, margin, "
+            "outcome, current-base, and package gates before any promotion decision"
+        ),
+        "promotion_authority": False,
+        "tail_assumption": (
+            "exact binomial arithmetic is conditional on the declared seed clusters "
+            "being defensible exchangeable independent sign units; the receipt does "
+            "not manufacture that sampling assumption"
+        ),
         "overall": {
             "cells": len(rows),
             "candidate_action_changed_cells": action_changed,
@@ -325,7 +338,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")
     else:
-        print(rendered, end="")
+        print(rend="")
     return 0
 
 
