@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Default-off executable TITAN V3 carrier for rival crop-decay decontamination.
 
-Every local and canonical module is bound to an exact filesystem origin.  Each
+Every local and canonical module is bound to an exact filesystem origin. Each
 execution of this carrier owns a private canonical ``main.py`` module, so
 independently loaded evaluators cannot share its mutable ``_INSTANCE`` cell.
 Canonical config, source, archive and Kaggle state are never mutated.
@@ -26,6 +26,17 @@ EXPECTED_GIT_BLOBS = {
     "reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
 }
 
+# Reproduce build_integrated.source_files()'s archive-root import closure from
+# the repository checkout. LAB stays authoritative for duplicate bare names.
+SOURCE_ROOTS = (
+    LAB,
+    LAB.parent / "cloud-runtime-pulse",
+    LAB.parent / "cloud-quickstep",
+    LAB.parent / "cloud-opponent-league" / "lark-responsive",
+    LAB.parent / "cloud-committed-seed-retry",
+    LAB.parent / "cloud-economic-stress" / "funded-payback",
+)
+
 
 class SourceDrift(RuntimeError):
     """The executable current seam no longer matches the reviewed source."""
@@ -45,7 +56,7 @@ def _load_private(name: str, path: Path) -> ModuleType:
     if spec is None or spec.loader is None:
         raise SourceDrift(f"cannot load exact source: {expected}")
     module = importlib.util.module_from_spec(spec)
-    # Deliberately do not register this module in sys.modules.  The returned
+    # Deliberately do not register this module in sys.modules. The returned
     # function/class graph owns it privately, including canonical main._INSTANCE.
     spec.loader.exec_module(module)
     if _origin(module) != expected:
@@ -84,6 +95,24 @@ def verify_source(root: Path = LAB) -> dict[str, str]:
     return observed
 
 
+def _install_source_roots() -> tuple[str, ...]:
+    resolved: list[str] = []
+    for root in SOURCE_ROOTS:
+        try:
+            path = root.resolve(strict=True)
+        except FileNotFoundError as exc:
+            raise SourceDrift(f"missing current source root: {root}") from exc
+        if not path.is_dir():
+            raise SourceDrift(f"current source root is not a directory: {path}")
+        resolved.append(str(path))
+
+    for root in reversed(resolved):
+        while root in sys.path:
+            sys.path.remove(root)
+        sys.path.insert(0, root)
+    return tuple(resolved)
+
+
 def _lab_module(name: str) -> ModuleType:
     expected = (LAB / f"{name}.py").resolve(strict=True)
     loaded = sys.modules.get(name)
@@ -102,12 +131,7 @@ def _lab_module(name: str) -> ModuleType:
 def install() -> type:
     """Install the corrected class into this process's exact executable seam."""
     verify_source()
-    lab_text = str(LAB)
-    # Ambient cwd/PYTHONPATH must not decide canonical bare imports.  Keep one
-    # exact lab entry at the front while preserving every unrelated path.
-    sys.path[:] = [entry for entry in sys.path if entry != lab_text]
-    sys.path.insert(0, lab_text)
-
+    _install_source_roots()
     scheduler = _lab_module("scheduler")
     frozen = _lab_module("frozen_selected")
     current = frozen.FrozenSelected
