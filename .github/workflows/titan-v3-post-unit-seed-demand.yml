@@ -4,10 +4,12 @@ on:
   pull_request:
     paths:
       - '.github/workflows/titan-v3-post-unit-seed-demand.yml'
+      - '.github/workflows/titan-v3-early-capital-real-target.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_executable_prefix.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
       - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
       - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
   workflow_dispatch:
@@ -30,7 +32,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Assert exact checkout and bounded diff
+      - name: Assert exact checkout and authenticated successor diff
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -39,21 +41,34 @@ jobs:
           import os
           import subprocess
 
-          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
-          assert head == os.environ['EXPECTED_HEAD'], (head, os.environ['EXPECTED_HEAD'])
-          base = os.environ.get('BASE_SHA', '')
-          if base:
-              allowed = {
-                  '.github/workflows/titan-v3-post-unit-seed-demand.yml',
-                  'revenue/kaggriculture/cloud-execution-lab/early_capital.py',
-                  'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
-              }
-              changed = set(subprocess.check_output(
-                  ['git', 'diff', '--name-only', f'{base}...HEAD'], text=True
-              ).splitlines())
-              assert changed == allowed, (changed, allowed)
+          source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+          predecessor = 'cef33119f3bfdaa1f81ee7e2068424900110aba6'
+          head = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD'], (
+              head, os.environ['EXPECTED_HEAD'])
 
-      - name: Compile exact source and contracts
+          base = os.environ.get('BASE_SHA', '')
+          assert base, 'pull-request base SHA is required'
+          actual_predecessor = subprocess.check_output(
+              ['git', 'rev-parse', f'{base}:{source}'], text=True).strip()
+          assert actual_predecessor == predecessor, (
+              actual_predecessor, predecessor)
+
+          allowed = {
+              '.github/workflows/titan-v3-post-unit-seed-demand.yml',
+              '.github/workflows/titan-v3-early-capital-real-target.yml',
+              source,
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py',
+          }
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{base}...HEAD'],
+              text=True,
+          ).splitlines())
+          assert changed == allowed, (changed, allowed)
+
+      - name: Compile composed source and contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
@@ -61,9 +76,10 @@ jobs:
             early_capital.py \
             test_early_capital.py \
             test_early_capital_executable_prefix.py \
-            test_early_capital_post_unit_seed_demand.py
+            test_early_capital_post_unit_seed_demand.py \
+            test_early_capital_real_target.py
 
-      - name: Run early-capital regression suite
+      - name: Run composed early-capital regression suite
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
@@ -72,11 +88,13 @@ jobs:
               test_early_capital \
               test_early_capital_executable_prefix \
               test_early_capital_post_unit_seed_demand \
-            2>&1 | tee "$RUNNER_TEMP/post-unit-seed-demand-tests.log"
+              test_early_capital_real_target \
+            2>&1 | tee "$RUNNER_TEMP/post-unit-seed-demand-composed-tests.log"
 
-      - name: Emit deterministic receipt
+      - name: Emit deterministic composition receipt
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: python
         run: |
           import hashlib
@@ -87,8 +105,10 @@ jobs:
 
           paths = [
               Path('.github/workflows/titan-v3-post-unit-seed-demand.yml'),
+              Path('.github/workflows/titan-v3-early-capital-real-target.yml'),
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'),
           ]
@@ -106,30 +126,44 @@ jobs:
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
           mechanics = 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
           engine = 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
-          assert files[source]['git_blob'] == 'cef33119f3bfdaa1f81ee7e2068424900110aba6'
+          assert files[source]['git_blob'] == '6b4fedbc2c529552a0c3da73caeb29601c7c7332'
           assert files[mechanics]['git_blob'] == '044a4f9c0a4a44dde10ada57563238bcaf82075d'
           assert files[engine]['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
 
-          log = Path(os.environ['RUNNER_TEMP']) / 'post-unit-seed-demand-tests.log'
+          log = (
+              Path(os.environ['RUNNER_TEMP'])
+              / 'post-unit-seed-demand-composed-tests.log'
+          )
           receipt = {
-              'schema': 'titan-v3-post-unit-seed-demand/v2',
-              'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'schema': 'titan-v3-post-unit-seed-demand/v3-land-target-successor',
+              'head': subprocess.check_output(
+                  ['git', 'rev-parse', 'HEAD'], text=True).strip(),
               'expected_head': os.environ['EXPECTED_HEAD'],
+              'base': os.environ['BASE_SHA'],
+              'predecessor_source_blob':
+                  'cef33119f3bfdaa1f81ee7e2068424900110aba6',
               'files': files,
               'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
-              'scope': 'direct source successor and deterministic contracts; no games or archive rebuild',
+              'scope': (
+                  'authenticated exact-seed-chronology plus certified-land-target '
+                  'source successor; no games or archive rebuild'
+              ),
           }
           assert receipt['head'] == receipt['expected_head']
-          out = Path(os.environ['RUNNER_TEMP']) / 'post-unit-seed-demand-receipt.json'
-          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          out = (
+              Path(os.environ['RUNNER_TEMP'])
+              / 'post-unit-seed-demand-composed-receipt.json'
+          )
+          out.write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n')
           print(out.read_text(), end='')
 
       - uses: actions/upload-artifact@v4
         with:
-          name: titan-v3-post-unit-seed-demand-${{ github.run_id }}-${{ github.run_attempt }}
+          name: titan-v3-post-unit-seed-demand-composed-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            ${{ runner.temp }}/post-unit-seed-demand-tests.log
-            ${{ runner.temp }}/post-unit-seed-demand-receipt.json
+            ${{ runner.temp }}/post-unit-seed-demand-composed-tests.log
+            ${{ runner.temp }}/post-unit-seed-demand-composed-receipt.json
           if-no-files-found: error
           retention-days: 30
 
