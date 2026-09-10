@@ -46,13 +46,24 @@ an immutable JSON receipt. It never edits `scheduler.py` in place.
 * one direct mechanics callsite, shared by current and future paths;
 * deterministic materialization, source nonmutation, and drift rejection.
 
+`route_census.py` separately binds current Arlene blob
+`bdb9cf58148a3c7961c085f4902759537decabf6`, constructs its route bank, and
+inventories every row with two or more same-crop `PLANT` requests. A nonzero
+census establishes only the necessary authored-route precondition (`ROUTE_RISK`);
+it does not establish insufficient live seed stock, returned-action activation, or
+score lift. `test_route_census.py` adds six deterministic parser, crop-isolation,
+nonmutation, and fail-closed contracts.
+
 Run from this directory's parent lab root:
 
 ```bash
 python analysis/v3-future-atomic-plant-projection-sol-forge/test_materialize.py
+python analysis/v3-future-atomic-plant-projection-sol-forge/test_route_census.py
 python analysis/v3-future-atomic-plant-projection-sol-forge/materialize.py \
   --output /tmp/titan-future-atomic/scheduler.py \
   --receipt /tmp/titan-future-atomic/RECEIPT.json
+python analysis/v3-future-atomic-plant-projection-sol-forge/route_census.py \
+  --output /tmp/titan-future-atomic/ROUTE-CENSUS.json
 python -m py_compile /tmp/titan-future-atomic/scheduler.py
 ```
 
