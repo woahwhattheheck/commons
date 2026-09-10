@@ -144,13 +144,14 @@ def run(args):
 
             config = fr.validate_config(json.loads((runtime / "TITAN-CONFIG.json").read_text(encoding="utf-8")))
             source_references = fr.find_config_references(runtime)
-            tested_factors = [factor for factor in fr.FACTORS if source_references[factor]]
-            static_unreferenced = [factor for factor in fr.FACTORS if not source_references[factor]]
+            tested_factors = fr.runtime_access_factors(source_references)
+            static_unreferenced = [factor for factor in fr.FACTORS if factor not in tested_factors]
             if not tested_factors:
-                raise AssertionError("No enabled feature flag had an active-source config reference")
+                raise AssertionError("No enabled feature flag had an active-source runtime access")
             if static_unreferenced:
                 raise AssertionError(
-                    f"Whole-stack contract requires an active-source reference for every enabled flag: {static_unreferenced}")
+                    "Whole-stack contract requires a runtime access beyond the Features declaration "
+                    f"for every enabled flag: {static_unreferenced}")
             variants, base_config = fr.materialize_variants(runtime, work / "variants", tested_factors)
 
             evaluator_path = runtime / "checks/reference/evaluator/evaluate.py"
