@@ -60,8 +60,9 @@ class ReleaseTests(unittest.TestCase):
    packaged_early=t.extractfile('early_capital.py').read()
    self.assertEqual(packaged_early,(b.ROOT/'early_capital.py').read_bytes())
    self.assertIn(b'def _market_limit',packaged_early)
-   self.assertIn(b"'revision': 'v3-executable-prefix'",packaged_early)
-   self.assertIn(b'return FUNDING if _qty(order) > 0 else REST',packaged_early)
+   self.assertIn(b"'revision': 'v4-executable-funding'",packaged_early)
+   self.assertIn(b'def _certified_funding',packaged_early)
+   self.assertIn(b'def _project_post_unit_private',packaged_early)
    self.assertNotIn(b"'revision': 'v2-order-only'",packaged_early)
    predecessor=b.ROOT/'exports/historical'/'titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
    self.assertEqual(hashlib.sha256(predecessor.read_bytes()).hexdigest(),
