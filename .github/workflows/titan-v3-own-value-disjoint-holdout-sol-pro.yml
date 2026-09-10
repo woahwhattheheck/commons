@@ -1,0 +1,89 @@
+name: titan-v3-own-value-disjoint-holdout-sol-pro
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-own-value-disjoint-holdout-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-disjoint-holdout-sol-pro/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  exact-one-shot-disjoint-holdout:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run exact one-shot holdout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_PARENT: 'b6b9a8a4ca26152bbfe1a3833380ca885e5c4cae'
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-value-disjoint-holdout-sol-pro
+          OUT="$RUNNER_TEMP/titan-v3-own-value-disjoint-holdout"
+          bash "$CASE/run_holdout.sh" "$OUT" 2>&1 \
+            | tee "$RUNNER_TEMP/titan-v3-own-value-disjoint-holdout.log"
+
+      - name: Retain complete and partial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-value-disjoint-holdout-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/titan-v3-own-value-disjoint-holdout/
+            ${{ runner.temp }}/titan-v3-own-value-disjoint-holdout.log
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require one-shot holdout admission
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-own-value-disjoint-holdout"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -s "$RUNNER_TEMP/titan-v3-own-value-disjoint-holdout.log"
+          test -s "$OUT/COMPLETE"
+          test -s "$OUT/HOLDOUT-ADMISSION.json"
+          test -s "$OUT/PROVENANCE.json"
+          python - "$OUT/HOLDOUT-ADMISSION.json" "$OUT/PROVENANCE.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          admission = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          provenance = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
+          assert admission["verdict"] == "ADMIT", admission["verdict"]
+          assert all(admission["gates"].values()), admission["gates"]
+          assert admission["holdout"]["candidate_hypotheses_spent"] == 1
+          assert admission["holdout"]["development_seed_overlap"] == []
+          assert admission["holdout"]["paired_cells_per_arm"] == 96
+          assert len(admission["rows"]) == 96
+          assert provenance["verdict"] == "ADMIT"
+          assert provenance["canonical_release_modified"] is False
+          assert provenance["promotion_authorized"] is False
+          PY
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
