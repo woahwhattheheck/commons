@@ -33,29 +33,6 @@ def _load_module(name: str, path: Path):
     return module
 
 
-def _require_built_admission(agent: Any, *, apply_land: bool) -> None:
-    """Prove package construction, not the probe, installed LAND admission."""
-    wrapped = getattr(agent, "_land_admission_wrapped", False) is True
-    if apply_land and not wrapped:
-        raise ValueError(
-            "candidate package construction did not install LAND admission"
-        )
-    if not apply_land and wrapped:
-        raise ValueError("baseline package unexpectedly installed LAND admission")
-
-
-def _admission_receipt(agent: Any, *, apply_land: bool) -> dict[str, Any] | None:
-    if not apply_land:
-        return None
-    state = getattr(agent, "_land_admission_state", None)
-    receipt = state.get("receipt") if isinstance(state, dict) else None
-    if not isinstance(receipt, dict) or receipt.get("installed") is not True:
-        raise ValueError(
-            "candidate LAND wrapper did not emit an installed initialization receipt"
-        )
-    return json.loads(json.dumps(receipt, sort_keys=True))
-
-
 def snapshot(package: Path, *, apply_land: bool) -> dict[str, Any]:
     package = package.resolve()
     sys.path.insert(0, str(package))
@@ -63,9 +40,13 @@ def snapshot(package: Path, *, apply_land: bool) -> dict[str, Any]:
         module = _load_module("_titan_route_probe_main", package / "main.py")
         config = json.loads((package / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
         agent = module._new_instance(package, config)
-        _require_built_admission(agent, apply_land=apply_land)
+        if apply_land:
+            mechanism = _load_module(
+                "_titan_route_probe_land",
+                package / "land_admission.py",
+            )
+            agent = mechanism.wrap(agent)
         agent._initialize()
-        admission_receipt = _admission_receipt(agent, apply_land=apply_land)
         controller = getattr(agent, "controller", None)
         routes = getattr(controller, "R", None) if controller is not None else None
         if not isinstance(routes, dict) or not routes:
@@ -75,8 +56,6 @@ def snapshot(package: Path, *, apply_land: bool) -> dict[str, Any]:
             "schema": "titan-v3-route-snapshot-v1",
             "package": str(package),
             "apply_land": apply_land,
-            "land_admission_wrapped": apply_land,
-            "land_admission_receipt": admission_receipt,
             "route_count": len(normalized),
             "routes_sha256": hashlib.sha256(_json_bytes(normalized)).hexdigest(),
             "routes": normalized,

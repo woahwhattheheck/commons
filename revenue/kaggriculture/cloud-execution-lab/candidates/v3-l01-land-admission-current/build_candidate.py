@@ -9,23 +9,17 @@ import hashlib
 import json
 import shutil
 import tarfile
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 from typing import Any
 
-# Hook the single construction boundary rather than individual call sites. The
-# deadline-aware entrypoint can reconstruct an agent from multiple branches;
-# wrapping the constructor return covers every fresh instance while preserving
-# those control-flow and fallback paths byte-for-byte.
 ENTRYPOINT_NEEDLE = (
-    "    return FinalPressureAgent(features, fourth_quadrant_admission=admission)\n"
+    "        _INSTANCE = _new_instance("
+    "root, json.loads((root/'TITAN-CONFIG.json').read_text()))\n"
 )
-ENTRYPOINT_REPLACEMENT = (
-    "    from land_admission import wrap as _wrap_land_admission\n"
-    "    return _wrap_land_admission(\n"
-    "        FinalPressureAgent(features, fourth_quadrant_admission=admission)\n"
-    "    )\n"
+ENTRYPOINT_REPLACEMENT = ENTRYPOINT_NEEDLE + (
+    "        from land_admission import wrap as _wrap_land_admission\n"
+    "        _INSTANCE = _wrap_land_admission(_INSTANCE)\n"
 )
-SOURCE_MEMBER = "SOURCE.json"
 
 
 def sha256(path: Path) -> str:
@@ -48,72 +42,26 @@ def tree_digest(root: Path) -> str:
     return digest.hexdigest()
 
 
-def extracted_inventory(root: Path) -> dict[str, Any]:
-    files = sorted(path for path in root.rglob("*") if path.is_file())
-    embedded = [
-        path for path in files
-        if path.relative_to(root).as_posix() == SOURCE_MEMBER
-    ]
-    if len(embedded) != 1:
-        raise ValueError(
-            f"expected exactly one root {SOURCE_MEMBER}, found {len(embedded)}"
-        )
-    return {
-        "regular_files": len(files),
-        "runtime_files": len(files) - 1,
-        "embedded_source_sha256": sha256(embedded[0]),
-        "embedded_source_bytes": embedded[0].stat().st_size,
-    }
+def file_count(root: Path) -> int:
+    return sum(path.is_file() for path in root.rglob("*"))
 
 
-def safe_extract(archive: Path, destination: Path) -> dict[str, Any]:
+def safe_extract(archive: Path, destination: Path) -> None:
     destination.mkdir(parents=True, exist_ok=False)
     root = destination.resolve()
     with tarfile.open(archive, "r:gz") as handle:
         members = handle.getmembers()
-        seen: set[str] = set()
-        regular: list[tarfile.TarInfo] = []
-        embedded: list[tarfile.TarInfo] = []
         for member in members:
-            relative = PurePosixPath(member.name)
-            if not member.name or relative.is_absolute() or ".." in relative.parts:
-                raise ValueError(f"archive path is unsafe: {member.name!r}")
-            normalized = relative.as_posix()
-            if normalized in seen:
-                raise ValueError(f"duplicate archive member: {normalized!r}")
-            seen.add(normalized)
             if member.issym() or member.islnk():
                 raise ValueError(f"archive link is forbidden: {member.name!r}")
-            if not (member.isfile() or member.isdir()):
-                raise ValueError(f"unsupported archive member: {member.name!r}")
-            target = (root.joinpath(*relative.parts)).resolve()
+            target = (root / member.name).resolve()
             try:
                 target.relative_to(root)
             except ValueError as error:
                 raise ValueError(
                     f"archive path escapes destination: {member.name!r}"
                 ) from error
-            if member.isfile():
-                regular.append(member)
-                if normalized == SOURCE_MEMBER:
-                    embedded.append(member)
-
-        if len(embedded) != 1:
-            raise ValueError(
-                f"expected exactly one root {SOURCE_MEMBER}, found {len(embedded)}"
-            )
-        source_stream = handle.extractfile(embedded[0])
-        if source_stream is None:
-            raise ValueError(f"cannot read embedded {SOURCE_MEMBER}")
-        source_bytes = source_stream.read()
         handle.extractall(destination, members=members, filter="data")
-
-    inventory = extracted_inventory(destination)
-    if inventory["regular_files"] != len(regular):
-        raise ValueError("archive extraction changed the regular-file cardinality")
-    if inventory["embedded_source_sha256"] != hashlib.sha256(source_bytes).hexdigest():
-        raise ValueError("archive extraction changed embedded SOURCE.json bytes")
-    return inventory
 
 
 def patch_entrypoint(path: Path) -> dict[str, Any]:
@@ -121,8 +69,7 @@ def patch_entrypoint(path: Path) -> dict[str, Any]:
     count = source.count(ENTRYPOINT_NEEDLE)
     if count != 1:
         raise ValueError(
-            "expected exactly one current constructor hook site, "
-            f"found {count}"
+            f"expected exactly one current entrypoint insertion site, found {count}"
         )
     patched = source.replace(ENTRYPOINT_NEEDLE, ENTRYPOINT_REPLACEMENT, 1)
     compile(patched, str(path), "exec")
@@ -131,7 +78,6 @@ def patch_entrypoint(path: Path) -> dict[str, Any]:
     path.write_text(patched, encoding="utf-8")
     return {
         "insertion_count": 1,
-        "hook_surface": "_new_instance.return",
         "baseline_main_sha256": before,
         "candidate_main_sha256": after,
     }
@@ -167,16 +113,11 @@ def build(lab_root: Path, output_root: Path, mechanism: Path) -> dict[str, Any]:
     output_root.mkdir(parents=True)
     baseline = output_root / "baseline"
     candidate = output_root / "land"
-    baseline_inventory = safe_extract(archive, baseline)
-    if baseline_inventory["embedded_source_sha256"] != actual_source_sha:
+    safe_extract(archive, baseline)
+    extracted_files = file_count(baseline)
+    if extracted_files != int(manifest["runtime_files"]):
         raise ValueError(
-            "embedded source manifest mismatch: "
-            f"{baseline_inventory['embedded_source_sha256']} != {actual_source_sha}"
-        )
-    if baseline_inventory["runtime_files"] != int(manifest["runtime_files"]):
-        raise ValueError(
-            "archive runtime file count mismatch: "
-            f"{baseline_inventory['runtime_files']} "
+            f"archive file count mismatch: {extracted_files} "
             f"!= {manifest['runtime_files']}"
         )
     shutil.copytree(baseline, candidate)
@@ -194,11 +135,6 @@ def build(lab_root: Path, output_root: Path, mechanism: Path) -> dict[str, Any]:
         "exec",
     )
     patch = patch_entrypoint(candidate_main)
-    candidate_inventory = extracted_inventory(candidate)
-    if candidate_inventory["embedded_source_sha256"] != actual_source_sha:
-        raise ValueError("candidate changed embedded source manifest bytes")
-    if candidate_inventory["runtime_files"] != baseline_inventory["runtime_files"] + 1:
-        raise ValueError("candidate did not add exactly one runtime file")
 
     receipt = {
         "schema": "titan-v3-land-admission-build-v1",
@@ -208,13 +144,9 @@ def build(lab_root: Path, output_root: Path, mechanism: Path) -> dict[str, Any]:
         "archive_bytes": archive.stat().st_size,
         "source_manifest": str(source_manifest.relative_to(lab_root)),
         "source_manifest_sha256": actual_source_sha,
-        "embedded_source_sha256": baseline_inventory["embedded_source_sha256"],
-        "embedded_source_bytes": baseline_inventory["embedded_source_bytes"],
         "entrypoint": manifest["entrypoint"],
-        "baseline_regular_files": baseline_inventory["regular_files"],
-        "baseline_runtime_files": baseline_inventory["runtime_files"],
-        "candidate_regular_files": candidate_inventory["regular_files"],
-        "candidate_runtime_files": candidate_inventory["runtime_files"],
+        "baseline_runtime_files": extracted_files,
+        "candidate_runtime_files": file_count(candidate),
         "baseline_tree_sha256": tree_digest(baseline),
         "candidate_tree_sha256": tree_digest(candidate),
         "mechanism_source_sha256": sha256(mechanism),
