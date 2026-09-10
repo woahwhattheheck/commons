@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Byte-bound current-main overlay for the admitted intent-first SELL traversal.
+"""Byte-bound executable port of admitted intent-first SELL traversal.
 
-This module never edits the source tree. It verifies the exact current
-``scheduler.py`` Git blob, replaces one target-map expression in a separate
-output file, compiles it, and emits a custody receipt. Loading the output is a
-separate explicit act; canonical main/config/archive remain all-off.
+Current TITAN constructs ``FrozenSelected`` and dispatches selected actions to
+``FrozenSelected.transform``.  This module verifies that exact source blob,
+replaces exactly one target-map expression in a detached output file, compiles
+it, and emits a custody receipt.  Canonical source and selected archive remain
+unchanged until an explicit candidate build overlays the generated file.
 """
 from __future__ import annotations
 
@@ -16,9 +17,9 @@ import os
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
-OPERATION = "titan-v3-intent-priority-fresh-main-port-20260910-01"
-SOURCE_COMMIT = "175a844cb01bbb56cb9cc54c0097a489c4997275"
-EXPECTED_SCHEDULER_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
+OPERATION = "titan-v3-intent-priority-executable-port-20260910-02"
+SOURCE_COMMIT = "3854f1cc46340f5099ade910e2cfc7b36606425e"
+EXPECTED_FROZEN_SELECTED_BLOB = "fc7baf5c179818a55037f6a61d92984d81d1a21c"
 ADMISSION_HEAD = "c3c2668d4822713afb126579f2f253788372f6ea"
 ADMISSION_ARTIFACT_SHA256 = (
     "528f7557a899c1376c8fe04ed328c70a17a760aa3a725e190710ea13ad7e13f8"
@@ -30,17 +31,18 @@ OLD = (
 )
 NEW = (
     "        target_order={\n"
-    "            **{p:0 for p in self.pending if p in PRODUCTS},\n"
-    "            **{p:0 for p in baseline_q},\n"
-    "            **{p:0 for p in PRODUCTS},\n"
+    "            p:None for p in [*self.pending,*baseline_q,*PRODUCTS]\n"
+    "            if p in PRODUCTS\n"
     "        }\n"
-    "        targets={p:max(0,int(shed.get(p,0))) for p in target_order "
-    "if shed.get(p,0)>0}\n"
+    "        targets={\n"
+    "            p:max(0,int(shed.get(p,0))) for p in target_order\n"
+    "            if shed.get(p,0)>0\n"
+    "        }\n"
 )
 
 
 class PortError(RuntimeError):
-    """Fail-closed source or materialization mismatch."""
+    """Fail-closed source, seam, or materialization mismatch."""
 
 
 def sha256(data: bytes) -> str:
@@ -86,6 +88,40 @@ def priority_targets(
     }
 
 
+def patch_bytes(original: bytes, *, filename: str = "frozen_selected.py") -> tuple[bytes, dict[str, Any]]:
+    """Return the one-factor source replacement after exact byte validation."""
+    source_blob = git_blob_sha1(original)
+    if source_blob != EXPECTED_FROZEN_SELECTED_BLOB:
+        raise PortError(
+            "current frozen_selected drift: "
+            f"expected {EXPECTED_FROZEN_SELECTED_BLOB}, got {source_blob}"
+        )
+    old, new = OLD.encode(), NEW.encode()
+    old_count = original.count(old)
+    new_count = original.count(new)
+    if old_count != 1 or new_count != 0:
+        raise PortError(
+            f"one-factor seam mismatch: old={old_count} new={new_count}"
+        )
+    patched = original.replace(old, new, 1)
+    try:
+        compile(patched.decode("utf-8"), filename, "exec")
+    except (UnicodeDecodeError, SyntaxError) as exc:
+        raise PortError(f"patched frozen_selected does not compile: {exc}") from exc
+    if patched.count(old) != 0 or patched.count(new) != 1:
+        raise PortError("patched seam cardinality mismatch")
+    return patched, {
+        "source_bytes": len(original),
+        "source_git_blob_sha1": source_blob,
+        "source_sha256": sha256(original),
+        "candidate_bytes": len(patched),
+        "candidate_git_blob_sha1": git_blob_sha1(patched),
+        "candidate_sha256": sha256(patched),
+        "old_occurrences": patched.count(old),
+        "new_occurrences": patched.count(new),
+    }
+
+
 def atomic_write(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + ".tmp")
@@ -99,22 +135,7 @@ def materialize(source: Path, output: Path, receipt_path: Path | None = None) ->
     if source == output:
         raise PortError("output must not alias source")
     original = source.read_bytes()
-    source_blob = git_blob_sha1(original)
-    if source_blob != EXPECTED_SCHEDULER_BLOB:
-        raise PortError(
-            f"current scheduler drift: expected {EXPECTED_SCHEDULER_BLOB}, got {source_blob}"
-        )
-    old, new = OLD.encode(), NEW.encode()
-    if original.count(old) != 1 or original.count(new) != 0:
-        raise PortError(
-            "one-factor seam mismatch: "
-            f"old={original.count(old)} new={original.count(new)}"
-        )
-    patched = original.replace(old, new, 1)
-    try:
-        compile(patched.decode("utf-8"), str(output), "exec")
-    except (UnicodeDecodeError, SyntaxError) as exc:
-        raise PortError(f"patched scheduler does not compile: {exc}") from exc
+    patched, identity = patch_bytes(original, filename=str(output))
     if source.read_bytes() != original:
         raise PortError("source changed during materialization")
     atomic_write(output, patched)
@@ -126,31 +147,32 @@ def materialize(source: Path, output: Path, receipt_path: Path | None = None) ->
         difflib.unified_diff(
             original.decode().splitlines(keepends=True),
             patched.decode().splitlines(keepends=True),
-            fromfile="current/scheduler.py",
-            tofile="intent-priority/scheduler.py",
+            fromfile="current/frozen_selected.py",
+            tofile="intent-priority/frozen_selected.py",
             n=5,
         )
     )
     receipt = {
-        "schema": "titan-v3-intent-priority-fresh-main-port-v1",
+        "schema": "titan-v3-intent-priority-executable-port-v1",
         "operation": OPERATION,
         "source_commit": SOURCE_COMMIT,
         "source": {
             "path": str(source),
-            "bytes": len(original),
-            "git_blob_sha1": source_blob,
-            "sha256": sha256(original),
+            "bytes": identity["source_bytes"],
+            "git_blob_sha1": identity["source_git_blob_sha1"],
+            "sha256": identity["source_sha256"],
         },
         "candidate": {
             "path": str(output),
-            "bytes": len(patched),
-            "git_blob_sha1": git_blob_sha1(patched),
-            "sha256": sha256(patched),
-            "old_occurrences": patched.count(old),
-            "new_occurrences": patched.count(new),
+            "bytes": identity["candidate_bytes"],
+            "git_blob_sha1": identity["candidate_git_blob_sha1"],
+            "sha256": identity["candidate_sha256"],
+            "old_occurrences": identity["old_occurrences"],
+            "new_occurrences": identity["new_occurrences"],
         },
         "factor": {
-            "changed_files": ["scheduler.py"],
+            "changed_files": ["frozen_selected.py"],
+            "runtime_dispatch": "TitanAgent.transform_selected -> FrozenSelected.transform",
             "target_membership": "unchanged all-positive-shed PRODUCTS",
             "target_quantity": "unchanged full post-unit shed quantity",
             "control_order": "PRODUCTS",
@@ -164,7 +186,7 @@ def materialize(source: Path, output: Path, receipt_path: Path | None = None) ->
         "admission": {
             "head": ADMISSION_HEAD,
             "artifact_sha256": ADMISSION_ARTIFACT_SHA256,
-            "scope": "frozen-V2 evidence only; fresh-main gameplay still required",
+            "scope": "frozen-V2 evidence only; fresh-current gameplay still required",
         },
         "canonical_mutation": False,
         "enabled": False,
