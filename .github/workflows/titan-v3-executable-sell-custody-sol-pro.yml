@@ -6,6 +6,7 @@ on:
       - '.github/workflows/titan-v3-executable-sell-custody-sol-pro.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/executable-sell-custody-sol-pro/**'
       - 'p/sol-pro-titan-v3-executable-sell-custody-20260910-01.md'
+      - 'p/sol-pro-titan-v3-sell-custody-integrity-20260910-02.md'
   workflow_dispatch:
 
 permissions:
@@ -56,10 +57,13 @@ jobs:
             "$ROOT/executable_sell_custody.py" \
             "$ROOT/route_census.py" \
             "$ROOT/carrier_smoke.py" \
-            "$ROOT/test_executable_sell_custody.py"
+            "$ROOT/test_executable_sell_custody.py" \
+            "$ROOT/test_executable_sell_custody_integrity.py"
           cd "$ROOT"
           PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
-            python -m unittest -v test_executable_sell_custody.py
+            python -m unittest -v \
+              test_executable_sell_custody.py \
+              test_executable_sell_custody_integrity.py
 
       - name: Census exact represented inactive suffixes
         shell: bash
