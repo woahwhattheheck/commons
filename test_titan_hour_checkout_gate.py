@@ -25,7 +25,7 @@ def field(text: str, name: str) -> str:
 
 
 class TitanHourCheckoutGate(unittest.TestCase):
-    def test_page_uses_checkout_first_canonical_slot_without_raw_stripe_url(self):
+    def test_page_uses_canonical_slot_without_raw_stripe_url_or_checkout_override(self):
         html = (ROOT / "titan-hour.html").read_text(encoding="utf-8")
         pay_js = (ROOT / "pay.js").read_text(encoding="utf-8")
         sku = (ROOT / "land" / "sku-whitebox-hour-20260826.md").read_text(
@@ -35,7 +35,7 @@ class TitanHourCheckoutGate(unittest.TestCase):
 
         self.assertEqual(field(sku, "status"), "ACTIVE_CHARGEABLE")
         self.assertRegex(checkout, r"^https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9]+$")
-        self.assertIn('data-checkout-first="1"', html)
+        self.assertNotIn('data-checkout-first="1"', html)
         self.assertIn('class="js-checkout-slot"', html)
         self.assertIn('data-sku="sku-whitebox-hour-20260826"', html)
         self.assertIn('src="./pay.js?v=20260902a"', html)
@@ -43,14 +43,15 @@ class TitanHourCheckoutGate(unittest.TestCase):
         self.assertNotRegex(html, r"https://(?:buy|donate)\.stripe\.com/")
         self.assertNotIn(checkout, html)
 
-        self.assertIn('root.getAttribute("data-checkout-first") === "1"', pay_js)
         self.assertIn("if (!railEligible(snapshot, listing))", pay_js)
         self.assertIn("Provider rail is inert. Unverified URLs stay unpublished.", pay_js)
         self.assertIn("Catalog unavailable:", pay_js)
         self.assertIn("checkout.account_payouts_enabled !== true", pay_js)
         self.assertIn("inert_duplicate_urls", pay_js)
+        self.assertIn("Start public intake, then pay", pay_js)
+        self.assertIn("./commerce.html#", pay_js)
 
-    def test_whitebox_url_fails_closed_when_provider_is_not_payout_ready(self):
+    def test_whitebox_stays_intake_first_and_fails_closed_when_provider_is_not_ready(self):
         snapshot = json.loads(
             (ROOT / "revenue" / "checkout_capability" / "snapshot.json").read_text(
                 encoding="utf-8"
@@ -61,17 +62,22 @@ class TitanHourCheckoutGate(unittest.TestCase):
                 encoding="utf-8"
             )
         )
+        sku = "sku-whitebox-hour-20260826"
 
+        self.assertEqual(catalog["funnels"][sku]["readiness"], "READY_FOR_QUALIFICATION")
         ready = capability.project(snapshot, catalog)
         ready_rows = {row["sku"]: row for row in ready["public_rails"]}
-        self.assertIn("sku-whitebox-hour-20260826", ready_rows)
-        self.assertNotEqual(ready_rows["sku-whitebox-hour-20260826"]["url"], "")
+        self.assertIn(sku, ready_rows)
+        self.assertTrue(ready_rows[sku]["chargeable"])
+        self.assertEqual(ready_rows[sku]["public"], "EXPOSE_INTAKE_THEN_CHECKOUT")
+        self.assertNotEqual(ready_rows[sku]["url"], "")
+        self.assertNotIn(sku, ready["checkout_first_skus"])
 
         dead = copy.deepcopy(snapshot)
         dead["provider"]["payouts_enabled"] = False
         projected = capability.project(dead, catalog)
         dead_rows = {row["sku"]: row for row in projected["public_rails"]}
-        self.assertNotIn("sku-whitebox-hour-20260826", dead_rows)
+        self.assertNotIn(sku, dead_rows)
         self.assertFalse(projected["account_ready"])
         self.assertFalse(projected["payouts_enabled"])
 
