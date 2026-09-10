@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: titan-strict-dominance-selfbuild-transport-repair
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   patch-test-build:
@@ -24,17 +24,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Bind bootstrap commit to reviewed parent
+      - name: Bind bootstrap chain to reviewed parent
         shell: bash
         env:
           EXPECTED_PARENT: dfef8e57289b59c68bd45eb8f3fdd8ec610e0892
+          EXPECTED_FIRST_BOOTSTRAP: f89cf3aa3345a1c99660d88243ee443fb2f47bf3
           EXPECTED_BRANCH: sol-pro/strict-dominance-selfbuild-transport-repair-20260910-01
         run: |
           set -euo pipefail
           test "$GITHUB_REF_NAME" = "$EXPECTED_BRANCH"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT"
-          test "$(git rev-list --count "$EXPECTED_PARENT"..HEAD)" -eq 1
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_FIRST_BOOTSTRAP"
+          test "$(git rev-parse HEAD^^)" = "$EXPECTED_PARENT"
+          test "$(git rev-list --count "$EXPECTED_PARENT"..HEAD)" -eq 2
           mapfile -t changed < <(git diff --name-only "$EXPECTED_PARENT"..HEAD)
           test "${#changed[@]}" -eq 1
           test "${changed[0]}" = ".github/workflows/titan-strict-dominance-selfbuild.yml"
@@ -44,7 +46,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Apply exact-block strict-dominance patch
+      - name: Apply exact-block strict-dominance patch and contract repair
         shell: bash
         run: |
           set -euo pipefail
@@ -57,6 +59,7 @@ jobs:
 
           PRESSURE_BLOB = "7261674962d10fc8bc6af5ff73ff9212c40f61ad"
           RUNTIME_BLOB = "b952c9c228ecbde592bf3d2df01638677abb0d24"
+          RUNTIME_TEST_BLOB = "bc675ad993673f732ffb21c8922e48d3add679a3"
 
           def git_blob(data: bytes) -> str:
               payload = b"blob " + str(len(data)).encode() + b"\0" + data
@@ -191,14 +194,41 @@ jobs:
           if not isinstance(strict_calls[0], ast.Constant) or strict_calls[0].value is not True:
               raise SystemExit("canonical strict-dominance call is not literal True")
           runtime.write_text(runtime_source, encoding="utf-8", newline="\n")
+
+          runtime_test = Path("revenue/kaggriculture/cloud-execution-lab/test_market_pressure_runtime.py")
+          runtime_test_bytes = runtime_test.read_bytes()
+          if git_blob(runtime_test_bytes) != RUNTIME_TEST_BLOB:
+              raise SystemExit("test_market_pressure_runtime.py source blob drifted")
+          runtime_test_source = runtime_test_bytes.decode("utf-8")
+          old_expectation = (
+              "        self.assertEqual(result['market'], [\n"
+              "            ['SELL', 'MILK', 15], ['SELL', 'WOOL', 14],\n"
+              "            ['HIRE'], ['SELL', 'MILK', 2], ['SELL', 'WOOL', 2],\n"
+              "        ])"
+          )
+          new_expectation = (
+              "        # Both lots have positive exposure. Strict dominance can move them\n"
+              "        # ahead of zero exposure, but cannot justify reversing parent order.\n"
+              "        self.assertEqual(result['market'], [\n"
+              "            ['SELL', 'WOOL', 14], ['SELL', 'MILK', 15],\n"
+              "            ['HIRE'], ['SELL', 'WOOL', 2], ['SELL', 'MILK', 2],\n"
+              "        ])"
+          )
+          runtime_test_source = replace_once(
+              runtime_test_source, old_expectation, new_expectation,
+              "canonical strict-dominance runtime expectation"
+          )
+          ast.parse(runtime_test_source, filename=str(runtime_test))
+          runtime_test.write_text(runtime_test_source, encoding="utf-8", newline="\n")
           PY
 
           # Syntax is a hard gate immediately after generation, before imports,
           # unit tests, archive construction, receipts, or branch publication.
           python -m py_compile \
             revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py \
-            revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
-          test "$(git diff --name-only | sort)" = $'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py\nrevenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py'
+            revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
+            revenue/kaggriculture/cloud-execution-lab/test_market_pressure_runtime.py
+          test "$(git diff --name-only | sort)" = $'revenue/kaggriculture/cloud-execution-lab/test_market_pressure_runtime.py\nrevenue/kaggriculture/cloud-execution-lab/titan_runtime.py\nrevenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py'
 
       - name: Run pressure module contracts
         working-directory: revenue/kaggriculture/cloud-opponent-league/lark-responsive
@@ -221,11 +251,18 @@ jobs:
           set -euo pipefail
           python -B build_integrated.py
           python -B build_integrated.py --check
+          rm -rf /tmp/titan-strict-dominance-archive
+          mkdir -p /tmp/titan-strict-dominance-archive
+          tar -xzf exports/titan-current.tar.gz -C /tmp/titan-strict-dominance-archive
+          cd /tmp/titan-strict-dominance-archive
+          python -m py_compile pressure_priority.py titan_runtime.py checks/test_market_pressure_runtime.py
+          PYTHONPATH="$PWD" python -B checks/test_market_pressure_runtime.py
 
       - name: Emit exact build receipt
         shell: bash
         env:
           EXPECTED_PARENT: dfef8e57289b59c68bd45eb8f3fdd8ec610e0892
+          EXPECTED_FIRST_BOOTSTRAP: f89cf3aa3345a1c99660d88243ee443fb2f47bf3
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -238,25 +275,31 @@ jobs:
           pointer = json.loads((root / "runtime/integrated-selected/CURRENT-ARCHIVE.json").read_text())
           pressure = Path("revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py")
           runtime = root / "titan_runtime.py"
+          runtime_test = root / "test_market_pressure_runtime.py"
           receipt = {
-              "schema": "titan-strict-dominance-build/v2",
+              "schema": "titan-strict-dominance-build/v3",
               "reviewed_parent": os.environ["EXPECTED_PARENT"],
+              "first_bootstrap_commit": os.environ["EXPECTED_FIRST_BOOTSTRAP"],
               "bootstrap_commit": os.environ["GITHUB_SHA"],
               "bootstrap_ref": os.environ["GITHUB_REF"],
               "archive": pointer,
               "pressure_priority_sha256": hashlib.sha256(pressure.read_bytes()).hexdigest(),
               "titan_runtime_sha256": hashlib.sha256(runtime.read_bytes()).hexdigest(),
+              "runtime_contract_sha256": hashlib.sha256(runtime_test.read_bytes()).hexdigest(),
               "transport_guards": {
                   "exact_parent": True,
+                  "exact_bootstrap_chain": True,
                   "exact_source_blobs": True,
                   "complete_block_replacements": True,
                   "ast_postconditions": True,
                   "immediate_py_compile": True,
+                  "standalone_archive_recheck": True,
               },
               "tests": {
                   "pressure_module_contracts": "pass",
                   "canonical_runtime_boundary": "pass",
                   "deterministic_build_check": "pass",
+                  "standalone_archive_runtime": "pass",
               },
           }
           out = Path("revenue/kaggriculture/cloud-market-pressure-strict-dominance")
