@@ -21,6 +21,28 @@ def _new_instance(root, feature_data):
                 return selected
             return super()._market_pressure_selected(obs, cfg, selected)
 
+        def _missing_hire_selected(self, obs, cfg, selected):
+            """Recover one next-turn worker only through an exact current prefix."""
+            from frozen_selected import _market_prefix_state
+            from missing_hire_recovery import recover_missing_hire
+            from scheduler import post_units
+
+            route = self.controller.R[self.controller.cur]
+            farm, private = post_units(obs, selected, cfg)
+            shops = obs.get('town', {}).get('unlocked_shops', [])
+            now = int(obs['step'])
+
+            def certify(queue, stop):
+                return _market_prefix_state(
+                    queue, farm, private, obs['market'], shops, cfg, now,
+                    lambda product: self.consumer.rival_supply(obs, product), stop)
+
+            result, report = recover_missing_hire(
+                obs, cfg, selected, route=route, certify_prefix=certify)
+            report['route_id'] = self.controller.cur
+            self.diagnostics['missing_hire_recovery'] = report
+            return result
+
         def _early_capital_selected(self, obs, cfg, selected):
             # TitanAgent._finish_production calls this after every stock/crop
             # guard and before every receipt/history commit. Reuse that stable
@@ -30,9 +52,10 @@ def _new_instance(root, feature_data):
                 return returned
             self._final_pressure_boundary = True
             try:
-                return super()._market_pressure_selected(obs, cfg, returned)
+                returned = super()._market_pressure_selected(obs, cfg, returned)
             finally:
                 self._final_pressure_boundary = False
+            return self._missing_hire_selected(obs, cfg, returned)
 
     admission = None
     if features.fourth_quadrant:
