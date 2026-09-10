@@ -216,6 +216,46 @@ def _certified_funding(active, mechanics, post_private):
     return funding, units
 
 
+def _operating_seed_rows(active, mechanics, plant_demand, seeds_held):
+    """Allocate represented future seed deficits across current seed rows.
+
+    Rows consume each crop's deficit in stable authored order. A later matching
+    row is discretionary once earlier positive-quantity rows cover the entire
+    represented deficit; zero, negative, and malformed quantities never claim
+    operating priority. This mirrors the official parser's integer quantity
+    domain without splitting or inventing market orders.
+    """
+    remaining = {}
+    for crop, count in plant_demand.items():
+        if crop not in mechanics.CROPS:
+            continue
+        remaining[crop] = max(0, int(count) - int(seeds_held.get(crop, 0)))
+
+    operating = set()
+    allocations = []
+    for index, order in enumerate(active):
+        if (not isinstance(order, list) or len(order) < 3
+                or order[0] != 'BUY_SEED'):
+            continue
+        crop = order[1]
+        if crop not in mechanics.CROPS:
+            continue
+        quantity = _qty(order)
+        need = remaining.get(crop, 0)
+        if need <= 0 or quantity <= 0:
+            continue
+        allocated = min(need, quantity)
+        operating.add(index)
+        remaining[crop] = need - allocated
+        allocations.append({
+            'index': index,
+            'crop': crop,
+            'requested': quantity,
+            'allocated': allocated,
+        })
+    return operating, allocations, remaining
+
+
 def _capital_admitted(order, mechanics, remaining, day):
     if not isinstance(order, list) or not order:
         return False
@@ -230,7 +270,7 @@ def _capital_admitted(order, mechanics, remaining, day):
     return False
 
 
-def _rank(order, index, funding, mechanics, remaining, day, plant_demand, seeds_held):
+def _rank(order, index, funding, seed_operating, mechanics, remaining, day):
     if not order:
         return REST
     op = order[0]
@@ -239,9 +279,7 @@ def _rank(order, index, funding, mechanics, remaining, day, plant_demand, seeds_
     if op == 'HIRE':
         return OPERATING
     if op == 'BUY_SEED' and len(order) > 2 and order[1] in mechanics.CROPS:
-        crop = order[1]
-        need = max(0, int(plant_demand.get(crop, 0)) - int(seeds_held.get(crop, 0)))
-        return OPERATING if need > 0 else REST
+        return OPERATING if index in seed_operating else REST
     if _capital_admitted(order, mechanics, remaining, day):
         return CAPITAL
     return REST
@@ -254,7 +292,7 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     multiset of active orders, and every capped suffix row remain unchanged.
     """
     report = {'changed': False, 'reason': 'init', 'moved': 0, 'reserved': 0,
-              'reduced': [], 'revision': 'v4-executable-funding'}
+              'reduced': [], 'revision': 'v5-cumulative-seed-rows'}
     if not isinstance(selected, dict):
         report['reason'] = 'no_action'
         return selected, report
@@ -316,14 +354,25 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     seeds_held = dict(post_private.get('seeds') or {})
     try:
         horizon = _horizon_end(now, configuration, decisions)
-        plants = _plant_demand(selected, route, now, horizon)
+        # The current unit stage already ran in post_private; only future route
+        # PLANT actions may still consume the post-unit seed balance.
+        plants = _plant_demand(None, route, now, horizon)
+        seed_operating, seed_allocations, unmet_seed_demand = _operating_seed_rows(
+            active, mechanics, plants, seeds_held)
         ranks = [
-            _rank(order, index, funding, mechanics, remaining, day, plants, seeds_held)
+            _rank(order, index, funding, seed_operating, mechanics, remaining, day)
             for index, order in enumerate(active)
         ]
     except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):
         report['reason'] = 'ranking_failed'
         return selected, report
+    report.update(
+        operating_seed_rows=sorted(seed_operating),
+        seed_allocations=seed_allocations,
+        unmet_seed_demand={
+            crop: count for crop, count in sorted(unmet_seed_demand.items()) if count > 0
+        },
+    )
     if CAPITAL not in ranks:
         report['reason'] = 'no_admitted_capital'
         return selected, report
