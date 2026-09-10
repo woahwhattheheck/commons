@@ -291,6 +291,10 @@ class ExecutablePinTests(unittest.TestCase):
         manifest = self._manifest()
         with patch.object(
             self.pins,
+            "verify_pin",
+            return_value=(True, []),
+        ), patch.object(
+            self.pins,
             "verify_blob",
             side_effect=OSError("simulated blob read failure"),
         ):
