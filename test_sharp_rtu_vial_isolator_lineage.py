@@ -180,6 +180,7 @@ class SharpRtuVialIsolatorLineageLimsTests(unittest.TestCase):
             gate.ingest_row(journal, row)
         self.assertEqual(len(journal["jobs"]), 100)
         self.assertEqual(len(journal["holds"]), 30)
+        self.assertEqual(len(journal["row_payload_hashes"]), 120)
         replay = gate.replay_into(journal)
         self.assertEqual(replay["added_job_count"], 0)
         self.assertEqual(replay["added_holds"], 0)
@@ -210,6 +211,29 @@ class SharpRtuVialIsolatorLineageLimsTests(unittest.TestCase):
         replay = gate.ingest_row(journal, deepcopy(row))
         self.assertEqual(replay["kind"], "REPLAY_NOOP")
         self.assertEqual(len(journal["jobs"]), 1)
+
+    def test_intake_hold_row_id_changed_payload_is_rejected_without_mutation(self) -> None:
+        row = next(item for item in gate.build_acceptance_fixture() if item["submission_id"] == "SHP-MV02")
+        journal = gate.empty_journal()
+        first = gate.ingest_row(journal, row)
+        self.assertEqual(first["kind"], "HOLD")
+        self.assertEqual(first["code"], "MISSING_METHOD_VERSION")
+        self.assertFalse(first["scheduled"])
+        self.assertFalse(first["duplicate"])
+        self.assertEqual(journal["jobs"], {})
+        self.assertEqual(journal["row_payload_hashes"], {row["row_id"]: gate.sha256_hex(row)})
+
+        before = deepcopy(journal)
+        changed = deepcopy(row)
+        changed["method_version"] = "FW-6R-v2"
+        with self.assertRaisesRegex(ValueError, "^ROW_ID_PAYLOAD_MISMATCH$"):
+            gate.ingest_row(journal, changed)
+        self.assertEqual(journal, before)
+
+        replay = gate.ingest_row(journal, deepcopy(row))
+        self.assertEqual(replay["kind"], "HOLD")
+        self.assertTrue(replay["duplicate"])
+        self.assertEqual(journal, before)
 
     def test_human_only_named_release_and_held_records_cannot_release(self) -> None:
         result = gate.run_gate()
