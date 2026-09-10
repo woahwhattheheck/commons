@@ -63,11 +63,6 @@ def planned_slot_reservations(
             raise LedgerError("planned product keys must be non-empty strings")
         if other == candidate_item:
             continue
-        if current_quantities is not None and other not in current_quantities:
-            # The current scheduler emits target products only; zero-stock stale
-            # rows do not consume a row in this action and are owned by the
-            # independent expiration cleanup.
-            continue
         if not isinstance(rows, (list, tuple)):
             raise LedgerError(f"planned rows for {other} must be a list or tuple")
 
@@ -82,10 +77,13 @@ def planned_slot_reservations(
             if step_i == now_i and due <= now_i:
                 if current_quantities is None:
                     active = True
-                else:
+                elif other in current_quantities:
                     desired = _strict_nonnegative_int(current_quantities[other], f"current {other}")
                     active = desired > inherited_sell_quantity(orders, other)
             elif step_i != now_i and due == step_i:
+                # Current source retains absent-product future rows. They can
+                # become executable after replenishment, so every exact-date
+                # nonzero row reserves until the independent cleanup retires it.
                 active = True
         if active:
             reserved += 1

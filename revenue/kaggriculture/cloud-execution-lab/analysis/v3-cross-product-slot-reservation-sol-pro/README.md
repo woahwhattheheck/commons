@@ -31,8 +31,8 @@ product due at that date:
 
 - `due <= now` for the current action only when current target quantity exceeds
   inherited same-product SELL capacity;
-- exact equality for a future date, limited to products still present in the
-  current target set;
+- exact equality for a future date for every retained nonzero row, including a
+  temporarily absent product that current source can later replenish/resurrect;
 - one row per product regardless of tranche count or quantity;
 - no reservation for the candidate product, whose prior plan is being replaced;
 - no extra row when the requested quantity already fits inherited matching SELL

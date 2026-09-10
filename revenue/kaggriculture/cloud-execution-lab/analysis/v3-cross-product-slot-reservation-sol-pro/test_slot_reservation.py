@@ -139,7 +139,6 @@ class ReservationSemanticsTests(unittest.TestCase):
         planned = {"CARROT": [(101, 1)], "EGG": [(101, 9)], "MILK": [(101, 5)]}
         self.assertEqual(planned_slot_reservations(planned, candidate_item="MILK", now=100, step=101), 2)
 
-
     def test_zero_stock_other_product_does_not_reserve_current(self):
         count = planned_slot_reservations(
             {"CARROT": [(100, 1)]},
@@ -150,6 +149,17 @@ class ReservationSemanticsTests(unittest.TestCase):
             orders=ORDERS_9,
         )
         self.assertEqual(count, 0)
+
+    def test_zero_stock_other_product_still_reserves_future(self):
+        count = planned_slot_reservations(
+            {"CARROT": [(101, 1)]},
+            candidate_item="MILK",
+            now=100,
+            step=101,
+            current_quantities={"MILK": 1},
+            orders=ORDERS_9,
+        )
+        self.assertEqual(count, 1)
 
     def test_inherited_other_product_row_can_absorb_due_quantity(self):
         orders = ORDERS_9 + [["SELL", "CARROT", 2]]
