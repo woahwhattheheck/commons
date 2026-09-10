@@ -33,7 +33,7 @@ The runner verifies the external archive receipt, archive bytes, internal source
 ## Method
 
 1. Safely extract the exact archive, rejecting traversal, duplicate names, links, devices, and FIFOs.
-2. Scan active packaged Python sources for each config flag while excluding checks, tests, and historical fixtures. The run fails before games unless all eight enabled flags have at least one active-source reference.
+2. AST-scan active packaged Python sources for each config flag while excluding checks, tests, and historical fixtures. A `Features` declaration alone is insufficient: the run fails before games unless all eight enabled flags also have a runtime attribute or mapping access.
 3. Materialize one all-enabled control plus eight variants, each changing exactly one boolean from `true` to `false`; every other file and setting remains byte-identical.
 4. Play the same development opponent/seed in both candidate seats with fresh process-isolated agents under the pinned official interpreter.
 5. Replay the first all-enabled control and require identical terminal scores and trace digest.
