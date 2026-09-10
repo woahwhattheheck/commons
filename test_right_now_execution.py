@@ -191,6 +191,37 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertIn("0 ready drafts", page)
         self.assertIn("Composio remains held", page)
 
+    def test_catalog_live_cash_is_part_of_the_control_contract(self) -> None:
+        catalog = control.read_object(control.CATALOG_PATH)
+        live = control.validate_live_cash(catalog["live_cash"])
+        self.assertEqual(
+            [(row["name"], row["price_usd"], row["path"]) for row in live["products"]],
+            [
+                ("Agent Failure Autopsy", 29, "agent-rescue.html"),
+                ("Dealer Service Lead Rescue", 199, "dealer-service-lead-rescue.html"),
+                ("Referral Intake Completeness", 199, "referral-intake-completeness.html"),
+                ("Repair Booking Preflight", 199, "repair-booking-preflight.html"),
+                ("Plant Downtime Handoff", 199, "plant-downtime-handoff.html"),
+            ],
+        )
+        self.assertIn(control.LIVE_CASH_CITE, live["cite"])
+        self.assertNotIn("buy.stripe.com", live["note"])
+        self.assertNotIn("donate.stripe.com", live["note"])
+        control.validate_catalog(catalog)
+
+    def test_dropping_live_cash_fails_closed(self) -> None:
+        catalog = control.read_object(control.CATALOG_PATH)
+        del catalog["live_cash"]
+        with self.assertRaisesRegex(control.ControlError, "catalog fields differ"):
+            control.validate_catalog(catalog)
+
+    def test_invented_stripe_url_in_live_cash_fails_closed(self) -> None:
+        catalog = control.read_object(control.CATALOG_PATH)
+        catalog["live_cash"] = copy.deepcopy(catalog["live_cash"])
+        catalog["live_cash"]["note"] = "pay at https://buy.stripe.com/invented"
+        with self.assertRaisesRegex(control.ControlError, "invent Stripe"):
+            control.validate_catalog(catalog)
+
 
 if __name__ == "__main__":
     unittest.main()
