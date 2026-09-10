@@ -1,4 +1,4 @@
-name: TITAN strict-dominance self-build transport repair
+name: TITAN strict-pressure transport evidence (semantic HOLD)
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - .github/workflows/titan-strict-dominance-selfbuild.yml
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: titan-strict-dominance-selfbuild-transport-repair
@@ -31,16 +31,18 @@ jobs:
           EXPECTED_FIRST_BOOTSTRAP: f89cf3aa3345a1c99660d88243ee443fb2f47bf3
           EXPECTED_SECOND_BOOTSTRAP: f9b419e5180e9cbb8c0959c185907625bc40cdcd
           EXPECTED_THIRD_BOOTSTRAP: b49b723d90d4baa6f9181cf771db95a472c65b94
+          EXPECTED_FOURTH_BOOTSTRAP: 28f4c3364c391b9f83f04857de1795bad942e4ce
           EXPECTED_BRANCH: sol-pro/strict-dominance-selfbuild-transport-repair-20260910-01
         run: |
           set -euo pipefail
           test "$GITHUB_REF_NAME" = "$EXPECTED_BRANCH"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(git rev-parse HEAD^)" = "$EXPECTED_THIRD_BOOTSTRAP"
-          test "$(git rev-parse HEAD^^)" = "$EXPECTED_SECOND_BOOTSTRAP"
-          test "$(git rev-parse HEAD^^^)" = "$EXPECTED_FIRST_BOOTSTRAP"
-          test "$(git rev-parse HEAD^^^^)" = "$EXPECTED_PARENT"
-          test "$(git rev-list --count "$EXPECTED_PARENT"..HEAD)" -eq 4
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_FOURTH_BOOTSTRAP"
+          test "$(git rev-parse HEAD^^)" = "$EXPECTED_THIRD_BOOTSTRAP"
+          test "$(git rev-parse HEAD^^^)" = "$EXPECTED_SECOND_BOOTSTRAP"
+          test "$(git rev-parse HEAD^^^^)" = "$EXPECTED_FIRST_BOOTSTRAP"
+          test "$(git rev-parse HEAD^^^^^)" = "$EXPECTED_PARENT"
+          test "$(git rev-list --count "$EXPECTED_PARENT"..HEAD)" -eq 5
           mapfile -t changed < <(git diff --name-only "$EXPECTED_PARENT"..HEAD)
           test "${#changed[@]}" -eq 1
           test "${changed[0]}" = ".github/workflows/titan-strict-dominance-selfbuild.yml"
@@ -50,7 +52,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Apply exact-block strict-dominance patch and contract repair
+      - name: Apply exact-block strict-pressure patch and contract repair
         shell: bash
         run: |
           set -euo pipefail
@@ -212,8 +214,8 @@ jobs:
               "        ])"
           )
           new_expectation = (
-              "        # Both lots have positive exposure. Strict dominance can move them\n"
-              "        # ahead of zero exposure, but cannot justify reversing parent order.\n"
+              "        # Both lots have positive exposure. This transport fixture preserves\n"
+              "        # their parent order; semantic safety is explicitly held elsewhere.\n"
               "        self.assertEqual(result['market'], [\n"
               "            ['SELL', 'WOOL', 14], ['SELL', 'MILK', 15],\n"
               "            ['HIRE'], ['SELL', 'WOOL', 2], ['SELL', 'MILK', 2],\n"
@@ -221,13 +223,13 @@ jobs:
           )
           runtime_test_source = replace_once(
               runtime_test_source, old_expectation, new_expectation,
-              "canonical strict-dominance runtime expectation"
+              "canonical strict-pressure runtime expectation"
           )
           ast.parse(runtime_test_source, filename=str(runtime_test))
           runtime_test.write_text(runtime_test_source, encoding="utf-8", newline="\n")
           PY
 
-          PYCACHE_ROOT="$RUNNER_TEMP/titan-strict-dominance-pycache"
+          PYCACHE_ROOT="$RUNNER_TEMP/titan-strict-pressure-pycache"
           rm -rf "$PYCACHE_ROOT"
           PYTHONPYCACHEPREFIX="$PYCACHE_ROOT" python -m py_compile \
             revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py \
@@ -262,21 +264,22 @@ jobs:
           set -euo pipefail
           python -B build_integrated.py
           python -B build_integrated.py --check
-          rm -rf /tmp/titan-strict-dominance-archive
-          mkdir -p /tmp/titan-strict-dominance-archive
-          tar -xzf exports/titan-current.tar.gz -C /tmp/titan-strict-dominance-archive
-          cd /tmp/titan-strict-dominance-archive
-          PYTHONPYCACHEPREFIX="$RUNNER_TEMP/titan-strict-dominance-archive-pycache" \
+          rm -rf "$RUNNER_TEMP/titan-strict-pressure-archive"
+          mkdir -p "$RUNNER_TEMP/titan-strict-pressure-archive"
+          tar -xzf exports/titan-current.tar.gz -C "$RUNNER_TEMP/titan-strict-pressure-archive"
+          cd "$RUNNER_TEMP/titan-strict-pressure-archive"
+          PYTHONPYCACHEPREFIX="$RUNNER_TEMP/titan-strict-pressure-archive-pycache" \
             python -m py_compile pressure_priority.py titan_runtime.py checks/test_market_pressure_runtime.py
           PYTHONPATH="$PWD" python -B checks/test_market_pressure_runtime.py
 
-      - name: Emit exact build receipt
+      - name: Emit exact build receipt with semantic HOLD
         shell: bash
         env:
           EXPECTED_PARENT: dfef8e57289b59c68bd45eb8f3fdd8ec610e0892
           EXPECTED_FIRST_BOOTSTRAP: f89cf3aa3345a1c99660d88243ee443fb2f47bf3
           EXPECTED_SECOND_BOOTSTRAP: f9b419e5180e9cbb8c0959c185907625bc40cdcd
           EXPECTED_THIRD_BOOTSTRAP: b49b723d90d4baa6f9181cf771db95a472c65b94
+          EXPECTED_FOURTH_BOOTSTRAP: 28f4c3364c391b9f83f04857de1795bad942e4ce
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -291,12 +294,13 @@ jobs:
           runtime = root / "titan_runtime.py"
           runtime_test = root / "test_market_pressure_runtime.py"
           receipt = {
-              "schema": "titan-strict-dominance-build/v5",
+              "schema": "titan-strict-pressure-transport-evidence/v6",
               "reviewed_parent": os.environ["EXPECTED_PARENT"],
               "bootstrap_chain": [
                   os.environ["EXPECTED_FIRST_BOOTSTRAP"],
                   os.environ["EXPECTED_SECOND_BOOTSTRAP"],
                   os.environ["EXPECTED_THIRD_BOOTSTRAP"],
+                  os.environ["EXPECTED_FOURTH_BOOTSTRAP"],
                   os.environ["GITHUB_SHA"],
               ],
               "bootstrap_ref": os.environ["GITHUB_REF"],
@@ -304,6 +308,16 @@ jobs:
               "pressure_priority_sha256": hashlib.sha256(pressure.read_bytes()).hexdigest(),
               "titan_runtime_sha256": hashlib.sha256(runtime.read_bytes()).hexdigest(),
               "runtime_contract_sha256": hashlib.sha256(runtime_test.read_bytes()).hexdigest(),
+              "semantic_disposition": {
+                  "status": "HOLD",
+                  "reason": "rounded_plateau_counterexample",
+                  "slack_message_ts": "1789070762.076049",
+                  "counterexample_own_cash_delta": -3,
+                  "counterexample_margin_delta": -6,
+                  "policy_safe": False,
+                  "promotion_eligible": False,
+                  "branch_publication": False,
+              },
               "transport_guards": {
                   "exact_parent": True,
                   "exact_bootstrap_chain": True,
@@ -314,7 +328,8 @@ jobs:
                   "immediate_py_compile": True,
                   "checkout_bytecode_absent": True,
                   "standalone_archive_recheck": True,
-                  "staged_path_allowlist": True,
+                  "generated_path_allowlist": True,
+                  "remote_ref_immutable": True,
               },
               "tests": {
                   "pressure_module_contracts": "pass",
@@ -334,19 +349,19 @@ jobs:
             revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json \
             >/dev/null
 
-      - name: Upload exact candidate archive and receipt
+      - name: Upload non-promotable transport evidence
         uses: actions/upload-artifact@v4
         with:
-          name: titan-strict-dominance-transport-repair-${{ github.sha }}
+          name: DO-NOT-PROMOTE-strict-pressure-transport-${{ github.sha }}
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 3
           path: |
             revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
             revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
             revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json
             revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json
 
-      - name: Publish tested source and deterministic archive to child branch
+      - name: Verify generated path set and leave remote branch unchanged
         shell: bash
         env:
           TARGET_BRANCH: sol-pro/strict-dominance-selfbuild-transport-repair-20260910-01
@@ -354,22 +369,18 @@ jobs:
           set -euo pipefail
           git fetch origin "$TARGET_BRANCH"
           test "$(git rev-parse "origin/$TARGET_BRANCH")" = "$GITHUB_SHA"
-          rm .github/workflows/titan-strict-dominance-selfbuild.yml
           mapfile -t checkout_bytecode < <(
             find . -path './.git' -prune -o \
               \( -type d -name __pycache__ -o -type f -name '*.pyc' -o -type f -name '*.pyo' \) \
               -print
           )
           test "${#checkout_bytecode[@]}" -eq 0
-          git config user.name 'commons-board'
-          git config user.email 'commons-board@users.noreply.github.com'
           git add -A
           git diff --cached --check
           mapfile -t staged < <(git diff --cached --name-only)
-          test "${#staged[@]}" -ge 8
+          test "${#staged[@]}" -ge 7
           for path in "${staged[@]}"; do
             case "$path" in
-              .github/workflows/titan-strict-dominance-selfbuild.yml|\
               revenue/kaggriculture/cloud-execution-lab/titan_runtime.py|\
               revenue/kaggriculture/cloud-execution-lab/test_market_pressure_runtime.py|\
               revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py|\
@@ -380,13 +391,12 @@ jobs:
               revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json)
                 ;;
               *)
-                echo "unexpected staged path: $path" >&2
+                echo "unexpected generated path: $path" >&2
                 exit 1
                 ;;
             esac
           done
           for required in \
-            .github/workflows/titan-strict-dominance-selfbuild.yml \
             revenue/kaggriculture/cloud-execution-lab/titan_runtime.py \
             revenue/kaggriculture/cloud-execution-lab/test_market_pressure_runtime.py \
             revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py \
@@ -396,10 +406,12 @@ jobs:
             revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json
           do
             if git diff --cached --quiet -- "$required"; then
-              echo "required staged path missing: $required" >&2
+              echo "required generated path missing: $required" >&2
               exit 1
             fi
           done
-          git commit -m 'TITAN: transport-safe strict-dominance self-build'
+          git reset --hard HEAD
+          git clean -fdx
           test -z "$(git status --porcelain --untracked-files=all)"
-          git push origin "HEAD:$TARGET_BRANCH"
+          git fetch origin "$TARGET_BRANCH"
+          test "$(git rev-parse "origin/$TARGET_BRANCH")" = "$GITHUB_SHA"
