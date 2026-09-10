@@ -54,4 +54,4 @@ python official_engine_witness.py \
 python source_packet_witness.py /path/to/v3_candidates_657b3d9c.tar.gz
 ```
 
-Focused local evidence at publication: 15 guard contracts, 5 exact-engine contracts, 6 patch-predecessor contracts, and 4 durable-receipt contracts passed. No network, owner-PC compute, provider call, Kaggle write, or canonical-tree mutation is required.
+Focused local evidence at publication: 15 guard contracts, 5 exact-engine contracts, 6 patch-predecessor contracts, and 5 durable-receipt contracts passed (31 total). No network, owner-PC compute, provider call, Kaggle write, or canonical-tree mutation is required.
