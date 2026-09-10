@@ -18,15 +18,22 @@ reported as an error with its path, never as an empty section — a panel showin
 nothing at all. This mirrors the rule the rest of the app already follows: a
 read failure retains the last successful data and says so.
 
+The census bake is deliberately byte-stable, so its derived heartbeat ages are
+historical measurements. This module recomputes heartbeat age and liveness at
+read time before producing rollups or a routable set. A stale bake can therefore
+never keep a dead seat LIVE just because no input file changed.
+
 Read-only. No mutation, no network, no state.
 """
 
 from __future__ import annotations
 
+import datetime as _dt
 import json
 import os
 
 SCHEMA = "commons-command-center-observability/v1"
+UNKNOWN = "UNKNOWN"
 
 SOURCES = (
     ("pulse", "pulse.json"),
@@ -37,6 +44,11 @@ SOURCES = (
 # Rolled up for the owner: declared blockers that carry a time price. These are
 # the items where a few minutes of a human's attention unblocks a lane.
 PRICED = "est_minutes"
+
+# Fall back to the census v1 contract if an older bake omitted the thresholds.
+LIVE_S = 15 * 60
+QUIET_S = 60 * 60
+STALE_S = 24 * 60 * 60
 
 
 def _read(root, rel):
@@ -50,6 +62,78 @@ def _read(root, rel):
     except Exception as exc:
         return {"path": rel, "ok": False, "error": type(exc).__name__,
                 "value": None}
+
+
+def _parse_ts(value):
+    if not isinstance(value, str):
+        return None
+    text = value.strip()
+    if not text or text == UNKNOWN:
+        return None
+    raw = text[:-1] + "+00:00" if text.endswith("Z") else text
+    try:
+        parsed = _dt.datetime.fromisoformat(raw)
+    except Exception:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=_dt.timezone.utc)
+    return parsed.astimezone(_dt.timezone.utc)
+
+
+def _moment(value=None):
+    if value is None:
+        return _dt.datetime.now(_dt.timezone.utc)
+    if isinstance(value, _dt.datetime):
+        parsed = value
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=_dt.timezone.utc)
+        return parsed.astimezone(_dt.timezone.utc)
+    parsed = _parse_ts(value)
+    if parsed is None:
+        raise ValueError("now must be an ISO-8601 timestamp")
+    return parsed
+
+
+def _iso(moment):
+    return moment.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _bands(seats):
+    raw = seats.get("liveness_bands_s") or {}
+
+    def positive(name, default):
+        value = raw.get(name, default)
+        if isinstance(value, bool):
+            return default
+        try:
+            parsed = int(value)
+        except Exception:
+            return default
+        return parsed if parsed > 0 else default
+
+    live = positive("LIVE", LIVE_S)
+    quiet = positive("QUIET", QUIET_S)
+    stale = positive("STALE", STALE_S)
+    if not (live <= quiet <= stale):
+        return LIVE_S, QUIET_S, STALE_S
+    return live, quiet, stale
+
+
+def _heartbeat_state(heartbeat, now, bands):
+    parsed = _parse_ts(heartbeat)
+    if parsed is None:
+        return UNKNOWN, UNKNOWN
+    age = max(0, int((now - parsed).total_seconds()))
+    live_s, quiet_s, stale_s = bands
+    if age <= live_s:
+        state = "LIVE"
+    elif age <= quiet_s:
+        state = "QUIET"
+    elif age <= stale_s:
+        state = "STALE"
+    else:
+        state = "COLD"
+    return state, age
 
 
 def _feed_summary(feed, limit):
@@ -77,16 +161,46 @@ def _feed_summary(feed, limit):
     }
 
 
-def _seats_summary(seats):
+def _seats_summary(seats, now=None):
     def priced(entry):
         value = entry.get(PRICED)
-        return isinstance(value, int)
+        return isinstance(value, int) and not isinstance(value, bool)
+
+    current = _moment(now)
+    bands = _bands(seats)
+    by_liveness = {}
+    current_seats = []
+    for original in seats.get("seats") or []:
+        seat = dict(original)
+        declared = dict(seat.get("declared") or {})
+        derived = dict(seat.get("derived") or {})
+        liveness, age = _heartbeat_state(declared.get("heartbeat"), current, bands)
+        derived["liveness"] = liveness
+        derived["heartbeat_age_s"] = age
+        seat["declared"] = declared
+        seat["derived"] = derived
+        current_seats.append(seat)
+        by_liveness[liveness] = by_liveness.get(liveness, 0) + 1
+
+    current_roster = []
+    for original in seats.get("roster") or []:
+        row = dict(original)
+        liveness, age = _heartbeat_state(row.get("heartbeat"), current, bands)
+        row["liveness"] = liveness
+        row["heartbeat_age_s"] = age
+        current_roster.append(row)
+        by_liveness[liveness] = by_liveness.get(liveness, 0) + 1
 
     cants = seats.get("open_cants") or []
     return {
-        "reference_time": seats.get("reference_time", ""),
+        # `reference_time` is the current read boundary. Keep the bake reference
+        # separately so the historical snapshot remains auditable.
+        "reference_time": _iso(current),
+        "reference_source": "read-time heartbeat derivation",
+        "baked_reference_time": seats.get("reference_time", ""),
+        "baked_reference_source": seats.get("reference_source", ""),
         "totals": seats.get("totals") or {},
-        "by_liveness": seats.get("by_liveness") or {},
+        "by_liveness": dict(sorted(by_liveness.items())),
         "by_harness": seats.get("by_harness") or {},
         "by_kind": seats.get("by_kind") or {},
         "context_pressure": seats.get("context_pressure") or [],
@@ -96,21 +210,23 @@ def _seats_summary(seats):
         "priced_unblocks": [c for c in cants if priced(c)],
         "unpriced_unblocks": [c for c in cants if not priced(c)],
         "unreadable_seat_files": seats.get("unreadable_seat_files") or [],
-        # Seats worth routing to: awake, and carrying enough declared detail to
-        # match a job against. A roster name is awake but says nothing about
-        # what it can take, so it is listed separately rather than mixed in.
+        "seats": current_seats,
+        "roster": current_roster,
+        # Seats worth routing to: awake *at read time*, and carrying enough
+        # declared detail to match a job against. A roster name is awake but
+        # says nothing about what it can take, so it stays separate.
         "routable": [
-            s for s in (seats.get("seats") or [])
+            s for s in current_seats
             if (s.get("derived") or {}).get("liveness") in ("LIVE", "QUIET")
         ],
         "awake_undeclared": [
-            r for r in (seats.get("roster") or [])
+            r for r in current_roster
             if r.get("liveness") in ("LIVE", "QUIET")
         ],
     }
 
 
-def snapshot(root, feed_limit=20):
+def snapshot(root, feed_limit=20, now=None):
     """Compose the observability payload. `root` is the repository root."""
     reads = {name: _read(root, rel) for name, rel in SOURCES}
     sources = [
@@ -138,7 +254,7 @@ def snapshot(root, feed_limit=20):
     payload["board"] = _feed_summary(feed, feed_limit) if isinstance(feed, dict) else None
 
     seats = ok.get("seats")
-    payload["seats"] = _seats_summary(seats) if isinstance(seats, dict) else None
+    payload["seats"] = _seats_summary(seats, now) if isinstance(seats, dict) else None
 
     # A single line an owner can read without opening anything.
     if payload["seats"] and payload["board"]:
@@ -165,7 +281,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--root", default=default_root)
     ap.add_argument("--limit", type=int, default=20)
+    ap.add_argument("--now", help="ISO-8601 read time for deterministic inspection")
     ap.add_argument("--headline", action="store_true")
     args = ap.parse_args()
-    out = snapshot(args.root, args.limit)
+    out = snapshot(args.root, args.limit, args.now)
     print(out["headline"] if args.headline else json.dumps(out, indent=2))
