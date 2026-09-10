@@ -2,11 +2,11 @@
 """E20 low-demand HIRE limiter with executed-allowance custody.
 
 The official engine increments ``hires_today`` only when ``_do_hire`` can pay
-that HIRE at its literal executable market index. A raw HIRE row is therefore
-not proof that the daily allowance was consumed. This repair drops later HIREs
+that HIRE at its literal executable market index.  A raw HIRE row is therefore
+not proof that the daily allowance was consumed.  This repair drops later HIREs
 only after the allowed earlier HIREs are provably executable from current cash,
-before any preceding market order that can change money. Ambiguity is an exact
-no-op. Rows outside the official ``q[:max(1, N)]`` prefix are never changed.
+before any preceding market order that can change money.  Ambiguity is an exact
+no-op.  Rows outside the official ``q[:max(1, N)]`` prefix are never changed.
 
 Lineage: exact one-tree handoff F0C0JPCAAQP, SHA-256
 f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728;
@@ -19,9 +19,7 @@ from copy import deepcopy
 import math
 from typing import Any, Mapping
 
-_MONEY_OPS = frozenset(
-    {"HIRE", "BUY_LAND", "BUY_SEED", "BUY_PRODUCT", "BUY_ANIMAL", "SELL"}
-)
+_MONEY_OPS = frozenset({"HIRE", "BUY_LAND", "BUY_SEED", "BUY_PRODUCT", "BUY_ANIMAL", "SELL"})
 
 
 def unwatered_crops(farm: Mapping[str, Any]) -> int:
@@ -81,7 +79,7 @@ def _is_hire(order: Any) -> bool:
 def _can_change_money(order: Any) -> bool:
     """Conservative engine-recognized money-effect barrier.
 
-    Malformed and unknown rows are engine no-ops. Any syntactically recognized
+    Malformed and unknown rows are engine no-ops.  Any syntactically recognized
     market operation before a HIRE makes its affordability path dependent on
     live execution, so E20 declines to guess.
     """
@@ -221,6 +219,8 @@ def apply_hire_guard(
                 )
                 return action, report
         if len(certified) != remaining_allowance:
+            # Defensive: the earlier cardinality test says a later excess HIRE
+            # exists, but do not mutate unless every allowed success was proved.
             report.update(
                 reason="UNCERTAIN_ALLOWED_HIRE_EXECUTION",
                 uncertainty="ALLOWANCE_NOT_CERTIFIED",
