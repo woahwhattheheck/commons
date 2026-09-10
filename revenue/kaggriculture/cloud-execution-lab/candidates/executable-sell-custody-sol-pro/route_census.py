@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections.abc import Mapping, Sequence
 import importlib.util
 import json
 from pathlib import Path
@@ -24,6 +25,17 @@ def load_candidate():
     return module
 
 
+def represented_routes(route_bank: Any) -> list[tuple[Any, Any]]:
+    """Return route key/value pairs without mistaking mapping keys for routes."""
+    if isinstance(route_bank, Mapping):
+        return list(route_bank.items())
+    if isinstance(route_bank, Sequence) and not isinstance(
+        route_bank, (str, bytes, bytearray)
+    ):
+        return list(enumerate(route_bank))
+    raise RuntimeError("represented controller route bank is not a mapping or sequence")
+
+
 def run() -> dict[str, Any]:
     candidate = load_candidate()
     config = json.loads(
@@ -34,6 +46,7 @@ def run() -> dict[str, Any]:
     consumer = instance.consumer
     controller = consumer.controller
     limit = max(1, int(config.get("maxMarketOrdersPerTurn", 10)))
+    routes = represented_routes(controller.R)
 
     actions_over_limit = 0
     suffix_rows = 0
@@ -43,13 +56,23 @@ def run() -> dict[str, Any]:
     suffix_sell_items: dict[str, int] = {}
     witnesses: list[dict[str, Any]] = []
 
-    for route_index, route in enumerate(controller.R):
+    for route_ordinal, (route_key, route) in enumerate(routes):
+        if not isinstance(route, list):
+            raise RuntimeError(
+                f"route {route_key!r} (ordinal {route_ordinal}) is not a list"
+            )
         for step, action in enumerate(route):
             if not isinstance(action, dict):
-                raise RuntimeError(f"route {route_index} step {step} is not a mapping")
+                raise RuntimeError(
+                    f"route {route_key!r} (ordinal {route_ordinal}) "
+                    f"step {step} is not a mapping"
+                )
             market = action.get("market", [])
             if not isinstance(market, list):
-                raise RuntimeError(f"route {route_index} step {step} market is not a list")
+                raise RuntimeError(
+                    f"route {route_key!r} (ordinal {route_ordinal}) "
+                    f"step {step} market is not a list"
+                )
             if len(market) <= limit:
                 continue
             actions_over_limit += 1
@@ -75,7 +98,8 @@ def run() -> dict[str, Any]:
             if local_sales and len(witnesses) < 24:
                 witnesses.append(
                     {
-                        "route": route_index,
+                        "route": route_ordinal,
+                        "route_key": str(route_key),
                         "step": step,
                         "represented_rows": len(market),
                         "limit": limit,
@@ -91,7 +115,7 @@ def run() -> dict[str, Any]:
         "patch_factor": (receipt or {}).get("factor"),
         "private_runtime": (receipt or {}).get("private_runtime"),
         "max_market_orders_per_turn": limit,
-        "routes": len(controller.R),
+        "routes": len(routes),
         "actions_over_limit": actions_over_limit,
         "suffix_rows": suffix_rows,
         "suffix_nonempty_rows": suffix_nonempty,
