@@ -1,0 +1,44 @@
+{
+  "artifact": "titan-v3-regression-attribution",
+  "files": [
+    {
+      "bytes": 36509,
+      "lines": 936,
+      "path": "regression_attribution.py",
+      "sha256": "16e695292dae2b5f20059bad6b4bc176f0063a04f158dffdea1d581f4b18a17d"
+    },
+    {
+      "bytes": 18306,
+      "lines": 430,
+      "path": "test_regression_attribution.py",
+      "sha256": "68c1f6ab63ce2e7a4c1a6e60b354a2171b1a96922e6439eaf366bb769a0ec334"
+    },
+    {
+      "bytes": 17133,
+      "lines": 480,
+      "path": "materialize_ablation_matrix.py",
+      "sha256": "2154977d8eea007fe48290ae3553dcf50d81fd7ac4c3027d080953a3da1b1e6a"
+    },
+    {
+      "bytes": 9783,
+      "lines": 248,
+      "path": "test_materialize_ablation_matrix.py",
+      "sha256": "17a7288fc7f81f2f7028925d8192dece0db1f24aed42b11f0aa254d586e3dd14"
+    },
+    {
+      "bytes": 11022,
+      "lines": 243,
+      "path": "README.md",
+      "sha256": "1ffb0fb85aac5351f7835c99842b7f527b1e359a02b78be0c20fd26da10f8625"
+    },
+    {
+      "bytes": 6436,
+      "lines": 205,
+      "path": "CURRENT-LINEAGE.json",
+      "sha256": "1ed0dea098c4b12e1f2fb3bcd359e93f5ac3c6cdb78566e37d4f1fc366eb3734"
+    }
+  ],
+  "operation": "titan-v3-causal-regression-attribution-20260910-sol-pro-01",
+  "purpose": "fail-closed current-source ablation materialization and causal attribution for TITAN paired-game regressions",
+  "schema_version": 1
+}
