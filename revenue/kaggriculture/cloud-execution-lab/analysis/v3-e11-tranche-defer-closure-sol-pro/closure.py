@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Exact-source audit for the TITAN V3 E11 -> L01 tranche composition boundary.
 
-The audit intentionally does not modify the candidate. It executes the two public
+The audit intentionally does not modify the candidate.  It executes the two public
 pure-function seams in runtime order and proves whether a SELL that E11 explicitly
 deferred is reintroduced by a later finalizer in the same returned action.
 """
@@ -166,6 +166,7 @@ def make_deferral_token(
 def deferred_authority(
     report: Mapping[str, Any] | None,
     token: Mapping[str, Any] | None,
+    source_action: Mapping[str, Any] | None,
     context: Mapping[str, Any] | None,
 ) -> tuple[str, ...]:
     """Accept only a same-call E11 token bound to report, source action, turn and seat."""
@@ -182,6 +183,8 @@ def deferred_authority(
     source_digest = token.get("source_action_sha256")
     if not isinstance(source_digest, str) or len(source_digest) != 64:
         return ()
+    if not isinstance(source_action, Mapping) or source_digest != action_sha256(source_action):
+        return ()
     claimed_token_sha = token.get("token_sha256")
     token_body = dict(token)
     token_body.pop("token_sha256", None)
@@ -194,6 +197,7 @@ def enforce_deferred_sell_ownership(
     action: Mapping[str, Any],
     e11_report: Mapping[str, Any] | None,
     authority_token: Mapping[str, Any] | None,
+    e11_source_action: Mapping[str, Any] | None,
     context: Mapping[str, Any] | None,
     config: Mapping[str, Any] | None = None,
 ) -> tuple[Mapping[str, Any], dict[str, Any]]:
@@ -201,9 +205,9 @@ def enforce_deferred_sell_ownership(
 
     Only executable SELL rows for items owned by an affirmative E11 deferral are
     blanked. Literal indices, every unrelated order, the non-executable suffix, and
-    the input object remain unchanged. Invalid/stale reports have no authority.
+    the input object remain unchanged.  Invalid/stale reports have no authority.
     """
-    blocked = deferred_authority(e11_report, authority_token, context)
+    blocked = deferred_authority(e11_report, authority_token, e11_source_action, context)
     repair: dict[str, Any] = {
         "authority": bool(blocked),
         "blocked_items": list(blocked),
@@ -295,16 +299,16 @@ def run_probe(candidate_root: Path) -> dict[str, Any]:
     )
 
     authority_token = make_deferral_token(after_e11, e11_report, observation)
-    deferred = deferred_authority(e11_report, authority_token, observation)
+    deferred = deferred_authority(e11_report, authority_token, after_e11, observation)
     final_sells = executable_sell_items(after_tranche, config)
     reintroduced = sorted(set(deferred).intersection(final_sells))
     status = VULNERABLE if reintroduced else CLOSED
 
     repaired, repair_report = enforce_deferred_sell_ownership(
-        after_tranche, e11_report, authority_token, observation, config
+        after_tranche, e11_report, authority_token, after_e11, observation, config
     )
     repaired_again, second_report = enforce_deferred_sell_ownership(
-        repaired, e11_report, authority_token, observation, config
+        repaired, e11_report, authority_token, after_e11, observation, config
     )
     repaired_sells = executable_sell_items(repaired, config)
     repair_invariants = {
