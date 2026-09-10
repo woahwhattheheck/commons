@@ -245,9 +245,10 @@ def disabled_identity_firewall(enabled: Callable[[], bool], transform: Callable[
 def run_identity_oracle(
     *, baseline_factory: Callable[[], Any], candidate_factory: Callable[[], Any],
     cases: Iterable[Any], invoke: Callable[[Any, Any], Any],
-    projections: Mapping[str, Callable[[Any], Any]] = {}, seed: int = 0,
+    projections: Mapping[str, Callable[[Any], Any]] | None = None, seed: int = 0,
 ) -> dict[str, Any]:
     """Compare actions, retained-state projections, and Python RNG in lockstep."""
+    projections = projections or {}
     baseline, candidate = baseline_factory(), candidate_factory()
     random.seed(seed)
     next_rng = random.getstate()
