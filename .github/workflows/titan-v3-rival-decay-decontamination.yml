@@ -1,0 +1,77 @@
+name: titan-v3-rival-decay-decontamination
+
+on:
+  push:
+    branches:
+      - sol-sentinel/titan-v3-rival-decay-decontamination-20260910-01
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-rival-decay-decontamination.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-rival-decay-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  executable-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile executable carrier
+        run: >-
+          python -B -m py_compile
+          "$LANE/candidate.py"
+          "$LANE/decay_observer.py"
+          "$LANE/test_candidate.py"
+          "$LANE/test_decay_observer.py"
+          "$LANE/witness.py"
+
+      - name: Run observer, engine and optimizer contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
+        run: python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
+
+      - name: Emit source-bound predecessor witness
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
+        run: python -B witness.py "$RUNNER_TEMP/WITNESS.json" | tee "$RUNNER_TEMP/WITNESS.txt"
+
+      - name: Bind retained hashes and prove source cleanliness
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          sha256sum \
+            "$LANE/candidate.py" \
+            "$LANE/decay_observer.py" \
+            "$LANE/test_candidate.py" \
+            "$LANE/test_decay_observer.py" \
+            "$LANE/witness.py" \
+            "$RUNNER_TEMP/TESTS.txt" \
+            "$RUNNER_TEMP/WITNESS.json" \
+            "$RUNNER_TEMP/WITNESS.txt" \
+            | tee "$RUNNER_TEMP/SHA256SUMS"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-rival-decay-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/TESTS.txt
+            ${{ runner.temp }}/WITNESS.json
+            ${{ runner.temp }}/WITNESS.txt
+            ${{ runner.temp }}/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
