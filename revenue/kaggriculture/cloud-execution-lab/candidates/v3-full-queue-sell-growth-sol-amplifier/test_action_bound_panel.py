@@ -6,6 +6,10 @@ from pathlib import Path
 import tempfile
 import unittest
 
+# run_contracts.py executes this module explicitly; importing the supplemental
+# class makes its predecessor-killing cases part of the same authoritative suite.
+from test_verify_panel import SupplementalPanelGateTests
+
 
 class ActionBoundEvidenceTests(unittest.TestCase):
     @staticmethod
