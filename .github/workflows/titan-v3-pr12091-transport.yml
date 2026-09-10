@@ -32,7 +32,7 @@ jobs:
           set -euo pipefail
           payload=/tmp/titan-pr12091-payload.tar.gz
           cat .github/titan-pr12091-payload.part* | base64 --decode > "$payload"
-          echo '21fcd95015b553aa3ffa5420b94b8cb521e6fcc60221c5f7b02096041dc81bf6  /tmp/titan-pr12091-payload.tar.gz' | sha256sum --check --strict
+          echo '5553366186949d0c24364daa9268a177386d64688e55c1b82da14fcde666015f  /tmp/titan-pr12091-payload.tar.gz' | sha256sum --check --strict
           actual="$(tar -tzf "$payload" | LC_ALL=C sort)"
           expected=$'source_analysis.py\nsource_gate.py\ntest_disabled_feature_noninterference.py'
           test "$actual" = "$expected"
@@ -41,9 +41,9 @@ jobs:
           tar -xzf "$payload" -C "$gate"
           (
             cd "$gate"
-            echo '34b6acf219922ba29a08c83be2d42b946a8571c5ac36ba673170e933c5340ae8  source_analysis.py'
+            echo '4ba9348531da1ef5be6d851f7a353d11fba8d730d2eea9e2a3f6d82c42caacbd  source_analysis.py'
             echo '618a8dee196fa3fa846bf7e11917d873ca1bb1827161d572a7a6baf5aa8299d0  source_gate.py'
-            echo 'e9b06e5a0ca25d0f11b3748dcba0266272caf5285e984d0caa439cdb26267b60  test_disabled_feature_noninterference.py'
+            echo '9fc6c0dd994b84bef911b6808ea80ed764b6098cade090e51f11b925c56de1d2  test_disabled_feature_noninterference.py'
           ) | sha256sum --check --strict
 
           rm .github/titan-pr12091-payload.part* \
