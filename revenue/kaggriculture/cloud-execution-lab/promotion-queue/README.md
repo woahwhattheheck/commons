@@ -1,8 +1,8 @@
 # Promotion queue service
 
-Turns the manual Titan V3 promotion ritual—submit a candidate, pin every
-identity-bearing input, run the paired gate against frozen control and LAND,
-and seal the result—into a CLI-driven service.
+Turns the manual Titan V3 promotion ritual—submit a candidate, bind every
+declared comparison input to one queue identity, run the paired gate against
+frozen control and LAND, and seal the result—into a CLI-driven service.
 
 The queue is **orchestration and receipt only**. The gate itself remains the
 existing `../titan-v3-paired-game-gate/` implementation (`gate.py` and
@@ -11,54 +11,90 @@ existing `../titan-v3-paired-game-gate/` implementation (`gate.py` and
 ## Pipeline
 
 ```text
-submit  -> SHA-256 pin candidate + panel + policy + config + engine + runner
-run     -> verify the submitted closure, then paired gate vs every predecessor
-receipt -> sealed JSON carrying the complete queue pin and gate outcomes
+submit  -> pin candidate, policy, config, opaque engine/runner identities,
+           and every configured predecessor panel/artifact
+run     -> verify the submitted input set, then run the existing gate
+receipt -> seal the complete queue pin and gate outcomes
 ```
 
 ## Submission identity
 
-A queue submission is identified by the bytes of all six inputs below:
+A submission contains six base records:
 
 1. candidate artifact;
 2. candidate games panel;
 3. gate policy;
 4. predecessor config;
-5. engine identity manifest;
-6. runner identity manifest.
+5. declared engine identity file;
+6. declared runner identity file.
 
-The deterministic `input_digest` and queue dedupe key cover all six SHA-256
-digests. Consequently, the same candidate bytes under a different engine,
-runner, declared commit, or predecessor config form a different submission.
+It also contains exactly two records for every configured predecessor slot:
+that slot's games panel and artifact. Slot records are named from a reversible
+base64url encoding of the exact config key, so path-like and Unicode slot keys
+do not collide in the flat pin manifest.
 
-Submission config is parsed fail closed: the root, engine, runner, and slot
-records must be objects; declared commits must be 40- or 64-character hex;
-duplicate JSON keys and non-finite numbers are rejected. After all six files
-are copied into the content-addressed store, the queue reopens and verifies the
-stored manifest, reloads the live config, and binds its named engine/runner
-bytes back to the stored records. A config/identity change during sequential
-pinning can leave an unreferenced tentative pin, but it cannot create a queue
-entry.
+The deterministic `input_digest` and queue dedupe key cover every named
+record. Consequently, changing candidate bytes, policy, config, an opaque
+engine/runner identity file, any predecessor panel, or any predecessor
+artifact creates a different submission. A byte-identical config whose target
+panel or artifact is replaced cannot reuse the old queue ID successfully.
+
+Submission config is parsed fail closed: the root, engine, runner, slots, and
+slot records must be objects; declared commits must be 40- or 64-character
+hex; slot keys and names must be nonempty; each slot must name nonempty games
+and artifact paths; slot display names must be unique; duplicate JSON keys and
+non-finite numbers are rejected.
+
+After all declared files are copied into the content-addressed store, the
+queue reopens and verifies the stored manifest, reloads the live config, and
+binds every engine, runner, predecessor-panel, and predecessor-artifact path
+back to its stored record. A config/input change during sequential pinning can
+leave an unreferenced tentative pin, but it cannot create a queue entry.
 
 `run` must receive the exact predecessor-config bytes supplied to `submit`.
 Before either gate is invoked, the queue:
 
-- verifies the stored pin manifest and every content-addressed blob;
+- verifies the stored manifest and every referenced blob;
+- requires the observed manifest names to equal the exact config-implied set;
 - compares the supplied config SHA-256 with the submitted config SHA-256;
 - compares parsed config semantics with the pinned config;
-- re-hashes the live engine and runner identity paths to detect replacement;
-- replaces those paths with the already pinned content-addressed blobs;
-- converts file disappearance or unreadable pin/config/policy state into a
-  bounded failed attempt rather than an uncaught exception.
+- re-hashes every live engine, runner, predecessor-panel, and artifact path;
+- rejects any live path/byte drift, including a drifted rerun;
+- replaces every accepted path with its submitted content-addressed blob;
+- converts malformed state or filesystem races into bounded queue errors.
 
-Legacy three-input queue pins fail closed and must be resubmitted. A receipt
-therefore cannot certify a candidate under executable bytes that were absent
-from its submission ID.
+Legacy candidate-only, six-input, or otherwise incomplete pins fail closed and
+must be resubmitted. A failed drifted rerun preserves the prior sealed receipt
+as the last receipt and does not create a new gate workspace or receipt.
+
+## Security and evidence boundary
+
+This service closes **declared input co-identity**. It proves which bytes were
+submitted together and which stored bytes were handed to the existing gate.
+It does not, by itself, prove that a games panel was generated by the named
+candidate, predecessor, engine, or runner.
+
+The following remain separate prerequisites for release-grade promotion
+custody and are intentionally not claimed here:
+
+- strict schemas and dependency-closed inventories for engine/runner identity
+  files;
+- a content-addressed, isolated gate/import closure with pre/post execution
+  rehashing;
+- symlink, hardlink, inode-alias, traversal, non-regular-file, and concurrent
+  publication defenses in the blob store;
+- evaluator-owned evidence cryptographically binding each panel cell to the
+  exact artifacts, executable closure, grid, process attempt, actions, and
+  terminal state/banks.
+
+A green queue result is therefore a gate verdict over co-submitted bytes, not
+standalone proof of causal execution, release authorization, or Kaggle
+submission authority.
 
 ## CLI
 
 ```bash
-# Pin the complete submission closure and enqueue it.
+# Pin the complete declared input set and enqueue it.
 python3 promote.py --state-dir <dir> submit \
   --name v3-p07-joint-actors \
   --artifact joint_actors.py \
@@ -67,7 +103,7 @@ python3 promote.py --state-dir <dir> submit \
   --predecessors predecessors.json
 
 # Run one pending submission or the full FIFO. The config must byte-match the
-# config used above.
+# config used above, and every config-named file must still match its pin.
 python3 promote.py --state-dir <dir> run \
   --all \
   --predecessors predecessors.json
@@ -88,19 +124,20 @@ python3 promote.py pin <file>
 
 ## Predecessor config
 
-`predecessors.json` declares comparison slots and the engine/runner identities.
-See `predecessors.example.json`. Each slot needs a games panel and artifact
-file. Engine and runner entries need a declared commit plus an identity file.
+`predecessors.json` declares comparison slots and the engine/runner identity
+files. See `predecessors.example.json`. Each slot needs a games panel and
+artifact file. Engine and runner entries need a declared commit plus an
+identity file.
 
-`engine_sha256` and `runner_sha256` are the digests of the pinned identity
-manifests. Their `commit` fields carry the declared upstream identities. For a
-content-addressed runner manifest, the manifest's own SHA-1 may be used as the
-commit value; that convention is recorded verbatim and does not imply an
-external repository assertion.
+The identity files are opaque bytes at this layer. Their pinned SHA-256 values
+and declared commit strings enter the submission identity, but this queue does
+not authenticate a commit against a repository tree or infer a dependency
+closure from an identity file.
 
-Predecessor slot artifacts and games are pinned by each attempt and bound into
-the gate contract and receipt. The candidate-facing submission identity is
-closed earlier, at enqueue time, by the six-input contract above.
+The parent attempt still emits per-slot contracts, evidence, and predecessor
+identity records. Because this successor rewrites each config path to the
+already submitted blob before delegating, those records describe the same
+panel/artifact bytes present in the queue pin.
 
 ## Gate strategy
 
@@ -116,16 +153,17 @@ closed earlier, at enqueue time, by the six-input contract above.
 ## Receipts
 
 See [RECEIPT-CONTRACT.md](RECEIPT-CONTRACT.md). Every receipt carries the
-complete queue pin, including `predecessor_config`, `engine_identity`, and
-`runner_identity`; per-slot gate evidence; the exact config SHA-256; timings;
-and a canonical integrity digest. Repeated attempts form a hash chain.
+complete queue pin, including all dynamic predecessor-slot records; per-slot
+gate evidence; the exact config SHA-256; timings; and a canonical integrity
+digest. Repeated valid attempts form a hash chain.
 
 With `--signing-key`, the queue also applies HMAC-SHA256. Keys are supplied by
 the operator and never enter receipts, logs, or queue state.
 
-A `PROMOTE` verdict means only that the pinned candidate satisfied the pinned
-policy against the pinned predecessor evidence under the bound gates. It is
-not a Kaggle submission, leaderboard claim, or release authorization.
+A `PROMOTE` verdict means only that the submitted candidate panel satisfied the
+submitted policy against the submitted predecessor panels under the invoked
+gate. It is not proof that the panels were produced by the submitted artifacts
+or identity files, and it is not a Kaggle submission or release authorization.
 
 ## Tests
 
@@ -134,14 +172,19 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
   python3 -B -m unittest discover -s tests -v
 ```
 
+The expected full corpus is 81 tests: the parent's 40 plus 41 input-identity
+and CLI boundary tests.
+
 - `test_pinning`: deterministic content-addressed pins and tamper detection.
 - `test_store`: FIFO, dedupe, status transitions, and rerun history.
 - `test_receipts`: canonical sealing, verification, and receipt chaining.
 - `test_signing`: HMAC verification, config pinning, and grid enforcement.
-- `test_executable_pins`: engine/runner/config substitution, malformed JSON,
-  crossed-snapshot, and filesystem-race predecessor killers.
-- `test_config_drift_cli`: byte-drift and malformed-config CLI boundaries.
-- `test_e2e_mocked`: full six-input CLI flow against contract-shaped mock gates.
+- `test_executable_pins`: engine/runner/config/slot substitution, exact dynamic
+  cardinality, malformed JSON, crossed snapshots, and filesystem races.
+- `test_config_drift_cli`: config, predecessor-panel, predecessor-artifact, and
+  drifted-rerun boundaries.
+- `test_e2e_mocked`: full dynamic-input CLI flow against contract-shaped mock
+  gates, including receipt-to-slot-digest equality.
 - `test_dual_wiring`: queue dual strategy through the real dual gate.
 
 ## State layout
