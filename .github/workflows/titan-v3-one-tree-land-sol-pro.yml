@@ -1,4 +1,4 @@
-name: titan-v3-l01-materialize-sol-anchor
+name: titan-v3-l01-idempotence-repair-sol-anchor
 
 on:
   push:
@@ -10,11 +10,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: titan-v3-l01-materialize-sol-anchor
-  cancel-in-progress: false
+  group: titan-v3-l01-idempotence-repair-sol-anchor
+  cancel-in-progress: true
 
 jobs:
-  materialize-exact-handoff:
+  materialize-repair-verify:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -71,7 +71,140 @@ jobs:
           print('HANDOFF_OK', len(expected), 'files')
           PY
 
-      - name: Commit exact source on isolated repair ref
+      - name: Apply exact-preimage repair and install predecessor killers
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import importlib.util
+          from collections import Counter
+
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay')
+          source_path = root / 'l01_mechanics.py'
+          test_path = root / 'checks' / 'test_v3_l01.py'
+
+          old = """            extra = max(0, len(sites) - KEEP_WHEAT_PLANTS)\n            for t, i in sites[-extra:]:\n"""
+          new = """            extra = max(0, len(sites) - KEEP_WHEAT_PLANTS)\n            if extra == 0:\n                continue\n            for t, i in sites[-extra:]:\n"""
+          source = source_path.read_text(encoding='utf-8')
+          assert source.count(old) == 1, 'vulnerable leanplant preimage missing or duplicated'
+          assert new not in source, 'repair already present in authenticated preimage'
+          source_path.write_text(source.replace(old, new), encoding='utf-8')
+
+          test_block = r'''
+
+# Predecessor killers for sites[-0:] / repeated-install / aliased-route corruption.
+import importlib.util as _l01_importlib_util
+from collections import Counter as _L01Counter
+from pathlib import Path as _L01Path
+import unittest as _L01Unittest
+
+
+def _l01_mechanics_under_idempotence_test():
+    path = _L01Path(__file__).resolve().parents[1] / 'l01_mechanics.py'
+    spec = _l01_importlib_util.spec_from_file_location('l01_mechanics_idempotence_test', path)
+    if spec is None or spec.loader is None:
+        raise AssertionError('unable to load l01_mechanics.py')
+    module = _l01_importlib_util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _l01_wheat_route(count):
+    return [
+        {'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []}
+        for _ in range(count)
+    ]
+
+
+class TestL01LeanPlantIdempotence(_L01Unittest.TestCase):
+    def test_exact_72_is_identity(self):
+        mechanics = _l01_mechanics_under_idempotence_test()
+        route = _l01_wheat_route(mechanics.KEEP_WHEAT_PLANTS)
+        activations = _L01Counter()
+        mechanics.patch_routes({'main': route}, {'LEANPLANT': True}, activations, [])
+        self.assertEqual(mechanics.plant_counts(route)['WHEAT'], mechanics.KEEP_WHEAT_PLANTS)
+        self.assertEqual(activations['LEANPLANT'], 0)
+
+    def test_second_application_is_identity(self):
+        mechanics = _l01_mechanics_under_idempotence_test()
+        extra = 92
+        route = _l01_wheat_route(mechanics.KEEP_WHEAT_PLANTS + extra)
+        activations = _L01Counter()
+        flags = {'LEANPLANT': True}
+        mechanics.patch_routes({'main': route}, flags, activations, [])
+        first = mechanics.plant_counts(route)
+        first_activations = activations['LEANPLANT']
+        mechanics.patch_routes({'main': route}, flags, activations, [])
+        self.assertEqual(mechanics.plant_counts(route), first)
+        self.assertEqual(first['WHEAT'], mechanics.KEEP_WHEAT_PLANTS)
+        self.assertEqual(first_activations, extra)
+        self.assertEqual(activations['LEANPLANT'], extra)
+
+    def test_two_keys_aliasing_one_route_convert_once(self):
+        mechanics = _l01_mechanics_under_idempotence_test()
+        extra = 92
+        shared = _l01_wheat_route(mechanics.KEEP_WHEAT_PLANTS + extra)
+        routes = {'first': shared, 'second': shared}
+        activations = _L01Counter()
+        mechanics.patch_routes(routes, {'LEANPLANT': True}, activations, [])
+        self.assertIs(routes['first'], routes['second'])
+        self.assertEqual(mechanics.plant_counts(shared)['WHEAT'], mechanics.KEEP_WHEAT_PLANTS)
+        self.assertEqual(activations['LEANPLANT'], extra)
+'''
+          tests = test_path.read_text(encoding='utf-8')
+          sentinel = 'class TestL01LeanPlantIdempotence('
+          assert sentinel not in tests, 'idempotence tests already present in authenticated preimage'
+          markers = ("\nif __name__ == '__main__':", '\nif __name__ == "__main__":')
+          for marker in markers:
+              if marker in tests:
+                  tests = tests.replace(marker, test_block + marker, 1)
+                  break
+          else:
+              tests += test_block
+          test_path.write_text(tests, encoding='utf-8')
+
+          # Execute the three predecessor witnesses directly against the patched exact source.
+          spec = importlib.util.spec_from_file_location('l01_repair_direct_check', source_path)
+          assert spec is not None and spec.loader is not None
+          mechanics = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mechanics)
+
+          def route(n):
+              return [{'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []} for _ in range(n)]
+
+          exact = route(mechanics.KEEP_WHEAT_PLANTS)
+          act = Counter()
+          mechanics.patch_routes({'main': exact}, {'LEANPLANT': True}, act, [])
+          assert mechanics.plant_counts(exact)['WHEAT'] == mechanics.KEEP_WHEAT_PLANTS
+          assert act['LEANPLANT'] == 0
+
+          extra = 92
+          repeated = route(mechanics.KEEP_WHEAT_PLANTS + extra)
+          act = Counter()
+          mechanics.patch_routes({'main': repeated}, {'LEANPLANT': True}, act, [])
+          first = mechanics.plant_counts(repeated)
+          mechanics.patch_routes({'main': repeated}, {'LEANPLANT': True}, act, [])
+          assert mechanics.plant_counts(repeated) == first
+          assert first['WHEAT'] == mechanics.KEEP_WHEAT_PLANTS
+          assert act['LEANPLANT'] == extra
+
+          shared = route(mechanics.KEEP_WHEAT_PLANTS + extra)
+          routes = {'first': shared, 'second': shared}
+          act = Counter()
+          mechanics.patch_routes(routes, {'LEANPLANT': True}, act, [])
+          assert routes['first'] is routes['second']
+          assert mechanics.plant_counts(shared)['WHEAT'] == mechanics.KEEP_WHEAT_PLANTS
+          assert act['LEANPLANT'] == extra
+
+          compile(source_path.read_text(encoding='utf-8'), str(source_path), 'exec')
+          compile(test_path.read_text(encoding='utf-8'), str(test_path), 'exec')
+          print('L01_IDEMPOTENCE_OK')
+          print('SOURCE_SHA256', hashlib.sha256(source_path.read_bytes()).hexdigest())
+          print('TEST_SHA256', hashlib.sha256(test_path.read_bytes()).hexdigest())
+          PY
+
+      - name: Commit only the authenticated repaired one-tree source
         run: |
           set -euo pipefail
           git config user.name tokenjunkielabs
@@ -87,5 +220,5 @@ jobs:
             esac
           done < <(git diff --cached --name-only)
           test "$(git diff --cached --name-only --diff-filter=A | grep -c '^revenue/kaggriculture/cloud-execution-lab/candidates/v3/' || true)" -eq 13
-          git commit -m 'chore(titan): expose exact V3 handoff for bounded repair'
+          git commit -m 'fix(titan): make V3 L01 leanplant patch idempotent'
           git push origin HEAD:sol-anchor/titan-v3-l01-leanplant-idempotence-repair-20260910-01
