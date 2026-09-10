@@ -29,7 +29,7 @@ VERIFIED_MAIN = "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb"
 BASE_MAIN = SOURCE_BASE_MAIN  # Compatibility for the first handoff/tests.
 BASE_SCHEDULER_GIT_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
 OFFICIAL_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
-SCHEMA = "titan-v3-future-atomic-plant-projection-materializer-v2"
+SCHEMA = "titan-v3-future-atomic-plant-projection-materializer-v3"
 
 OLD_POST_UNITS = '''def post_units(obs, action, config, *, shed_capacity=None):
     """Exact deterministic engine unit stage on the player's observed farm."""
@@ -49,12 +49,13 @@ OLD_POST_UNITS = '''def post_units(obs, action, config, *, shed_capacity=None):
 '''
 
 NEW_POST_UNITS = '''def _apply_unit_packet(farm, private, action, *, board_size, day,
-                       turns_per_day, shed_capacity):
-    """Apply one farmer+hands packet with official atomic PLANT admission.
+                       turns_per_day, shed_capacity, untrusted_seed_crops=()):
+    """Apply one farmer+hands packet with crop-local trust boundaries.
 
-    The interpreter counts every same-crop PLANT request before any actor moves.
-    If demand exceeds the packet's starting seed stock, every request for that
-    crop becomes PASS.  Other actions retain their original actor order.
+    Trusted crops use the official same-row atomic PLANT admission.  A crop with
+    an earlier unmodeled future BUY_SEED is explicitly untrusted: its requests
+    retain predecessor sequential behavior rather than making an atomic decision
+    against a stale seed ledger.  Other actions keep their original actor order.
     """
     packet=action if isinstance(action,dict) else {}
     farmer_action=packet.get('farmer',['PASS'])
@@ -66,7 +67,9 @@ NEW_POST_UNITS = '''def _apply_unit_packet(farm, private, action, *, board_size,
         if isinstance(a,list) and len(a)>=2 and a[0]=='PLANT':
             demand[a[1]]=demand.get(a[1],0)+1
     seeds=private.get('seeds',{}) if hasattr(private,'get') else {}
-    blocked={crop for crop,n in demand.items() if n>seeds.get(crop,0)}
+    untrusted=set(untrusted_seed_crops)
+    blocked={crop for crop,n in demand.items()
+             if crop not in untrusted and n>seeds.get(crop,0)}
     for i,a in enumerate(acts):
         if isinstance(a,list) and len(a)>=2 and a[0]=='PLANT' and a[1] in blocked:
             a=['PASS']
@@ -86,6 +89,19 @@ def post_units(obs, action, config, *, shed_capacity=None):
     return farm, private
 '''
 
+OLD_PROFILE_SETUP = '''        profile=[]
+        route=self.controller.R[self.controller.cur]
+'''
+
+NEW_PROFILE_SETUP = '''        profile=[]
+        route=self.controller.R[self.controller.cur]
+        # receipt_profile does not replay market funding/cash, so a prior future
+        # BUY_SEED makes that crop's projected seed ledger unknown.  Preserve the
+        # predecessor's sequential behavior for only those crops rather than
+        # applying an atomic decision to stale seed stock.
+        untrusted_seed_crops=set()
+'''
+
 OLD_FUTURE_PACKET = '''            if t>now:
                 act=route[t] if t<len(route) else parent.PASS
                 acts=[act.get('farmer',['PASS']),*act.get('hands',[])]
@@ -97,7 +113,21 @@ NEW_FUTURE_PACKET = '''            if t>now:
                 act=route[t] if t<len(route) else parent.PASS
                 _apply_unit_packet(f,p,act,
                     board_size=len(f['tiles']),day=t//24,turns_per_day=24,
-                    shed_capacity=10**6)
+                    shed_capacity=10**6,
+                    untrusted_seed_crops=untrusted_seed_crops)
+'''
+
+OLD_MARKET_SEED_GUARD = '''            for o in orders:
+                if not o:continue
+                if o[0]=='SELL' and o[1]!=item:
+'''
+
+NEW_MARKET_SEED_GUARD = '''            for o in orders:
+                if not o:continue
+                if (isinstance(o,list) and len(o)>=2 and
+                        o[0]=='BUY_SEED' and isinstance(o[1],str)):
+                    untrusted_seed_crops.add(o[1])
+                if o[0]=='SELL' and o[1]!=item:
 '''
 
 
@@ -339,9 +369,21 @@ def materialize(
     )
     candidate = replace_once(
         candidate,
+        OLD_PROFILE_SETUP,
+        NEW_PROFILE_SETUP,
+        label="future seed-trust state",
+    )
+    candidate = replace_once(
+        candidate,
         OLD_FUTURE_PACKET,
         NEW_FUTURE_PACKET,
         label="future route packet",
+    )
+    candidate = replace_once(
+        candidate,
+        OLD_MARKET_SEED_GUARD,
+        NEW_MARKET_SEED_GUARD,
+        label="future BUY_SEED uncertainty guard",
     )
     if candidate == source_text:
         raise MaterializationError("candidate unexpectedly equals source")
@@ -354,24 +396,24 @@ def materialize(
         "source_base_main": SOURCE_BASE_MAIN,
         "verified_main": VERIFIED_MAIN,
         "source": {
-            "path": str(source),
+            "path": "scheduler.py",
             "bytes": len(source_bytes),
             "git_blob": source_blob,
             "sha256": sha256(source_bytes),
         },
         "official_engine": {
-            "path": str(engine),
+            "path": "reference/engine/kaggriculture.py",
             "bytes": len(engine_bytes),
             "git_blob": engine_blob,
             "sha256": sha256(engine_bytes),
         },
         "candidate": {
-            "path": str(output),
+            "path": "generated/scheduler.py",
             "bytes": len(candidate_bytes),
             "git_blob": git_blob(candidate_bytes),
             "sha256": sha256(candidate_bytes),
         },
-        "receipt": {"path": str(receipt_path)},
+        "receipt": {"path": "generated/RECEIPT.json"},
         "publication": {
             "mode": "atomic_create_only_hardlink",
             "targets_preexisting": False,
@@ -381,6 +423,14 @@ def materialize(
         "replacements": {
             "shared_atomic_unit_packet": 1,
             "future_receipt_profile_callsite": 1,
+        },
+        "guards": {
+            "future_seed_trust_state": 1,
+            "future_buy_seed_uncertainty_fallback": 1,
+        },
+        "scope": {
+            "trusted_future_crop": "official atomic admission",
+            "crop_after_future_buy_seed": "preserve predecessor sequential behavior",
         },
         "canonical_source_mutated": False,
         "official_engine_mutated": False,
