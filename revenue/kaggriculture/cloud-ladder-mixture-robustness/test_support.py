@@ -30,7 +30,11 @@ def build_document(
     minimum_seed_clusters: int = 5,
     own_floor: int | str = 0,
     margin_floor: int | str = 0,
+    family_seat_own_floor: int | str = 0,
+    family_seat_margin_floor: int | str = 0,
     strict: bool = True,
+    require_uniform: bool = True,
+    require_leave_one_family_out: bool = True,
 ) -> dict:
     """Build cells from per-family [(own_delta, rival_delta), ...] seed rows."""
 
@@ -111,7 +115,11 @@ def build_document(
             "minimum_seed_clusters": minimum_seed_clusters,
             "minimum_seed_own_delta": own_floor,
             "minimum_seed_margin_delta": margin_floor,
+            "minimum_family_seat_own_delta": family_seat_own_floor,
+            "minimum_family_seat_margin_delta": family_seat_margin_floor,
             "require_strict_worst_case": strict,
+            "require_uniform_family_reference": require_uniform,
+            "require_leave_one_family_out": require_leave_one_family_out,
         },
     }
 
