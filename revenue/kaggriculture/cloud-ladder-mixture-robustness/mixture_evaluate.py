@@ -3,11 +3,74 @@ from __future__ import annotations
 
 from collections import defaultdict
 from fractions import Fraction
-from typing import Any
+from typing import Any, Mapping
 
 from mixture_common import Cell, OUTCOME_RANK, RECEIPT_SCHEMA, _mean, _quantity, _sha256
 from mixture_optimize import _worst_case_mixture
 from mixture_parse import _parse_document
+
+
+def _sign_admissible(value: Fraction, *, strict: bool) -> bool:
+    return value > 0 if strict else value >= 0
+
+
+def _distribution_free_stress(
+    effects: Mapping[str, Fraction],
+    *,
+    strict: bool,
+    require_uniform: bool,
+    require_leave_one_family_out: bool,
+) -> dict[str, Any]:
+    """Evaluate equal-family and leave-one-family-out structural stresses.
+
+    These checks intentionally ignore hosted exposure counts. They answer
+    whether the conclusion survives a distribution-free reference and whether
+    it relies on any single favorable family. They complement, rather than
+    replace, the bounded hosted-mixture optimizer.
+    """
+
+    names = sorted(effects)
+    uniform_value = _mean([effects[name] for name in names])
+    uniform_admissible = _sign_admissible(uniform_value, strict=strict)
+
+    leave_one_rows: list[dict[str, Any]] = []
+    if len(names) >= 2:
+        for omitted in names:
+            value = _mean([effects[name] for name in names if name != omitted])
+            leave_one_rows.append(
+                {
+                    "omitted_family": omitted,
+                    "value": _quantity(value),
+                    "sign_admissible": _sign_admissible(value, strict=strict),
+                }
+            )
+    leave_one_admissible = all(row["sign_admissible"] for row in leave_one_rows)
+    minimum_leave_one = (
+        min(Fraction(row["value"]["fraction"]) for row in leave_one_rows)
+        if leave_one_rows
+        else None
+    )
+    uniform_gate_pass = (not require_uniform) or uniform_admissible
+    leave_one_gate_pass = (not require_leave_one_family_out) or leave_one_admissible
+    return {
+        "strict": strict,
+        "uniform_family_reference": {
+            "required": require_uniform,
+            "value": _quantity(uniform_value),
+            "sign_admissible": uniform_admissible,
+            "gate_pass": uniform_gate_pass,
+        },
+        "leave_one_family_out": {
+            "required": require_leave_one_family_out,
+            "applicable": bool(leave_one_rows),
+            "rows": leave_one_rows,
+            "minimum_value": _quantity(minimum_leave_one) if minimum_leave_one is not None else None,
+            "sign_admissible": leave_one_admissible,
+            "gate_pass": leave_one_gate_pass,
+        },
+        "gate_pass": uniform_gate_pass and leave_one_gate_pass,
+    }
+
 
 def evaluate(document: Any) -> dict[str, Any]:
     parsed = _parse_document(document)
@@ -124,6 +187,46 @@ def evaluate(document: Any) -> dict[str, Any]:
                     "trace_changed": any(cell.trace_changed for cell in cells),
                 }
             )
+
+        family_cells = [
+            cell
+            for cells in cells_by_family_seed[family.name].values()
+            for cell in cells
+        ]
+        family_seat_rows: list[dict[str, Any]] = []
+        for seat in parsed.expected_seats:
+            seat_cells = [cell for cell in family_cells if cell.seat == seat]
+            seat_own = _mean([cell.own_delta for cell in seat_cells])
+            seat_margin = _mean([cell.margin_delta for cell in seat_cells])
+            if seat_own < parsed.minimum_family_seat_own_delta:
+                tail_failures.append(
+                    {
+                        "reason": "family_seat_own_below_floor",
+                        "opponent_family": family.name,
+                        "candidate_seat": seat,
+                        "observed": _quantity(seat_own),
+                        "floor": _quantity(parsed.minimum_family_seat_own_delta),
+                    }
+                )
+            if seat_margin < parsed.minimum_family_seat_margin_delta:
+                tail_failures.append(
+                    {
+                        "reason": "family_seat_margin_below_floor",
+                        "opponent_family": family.name,
+                        "candidate_seat": seat,
+                        "observed": _quantity(seat_margin),
+                        "floor": _quantity(parsed.minimum_family_seat_margin_delta),
+                    }
+                )
+            family_seat_rows.append(
+                {
+                    "candidate_seat": seat,
+                    "seed_count": len(seat_cells),
+                    "mean_own_delta": _quantity(seat_own),
+                    "mean_margin_delta": _quantity(seat_margin),
+                }
+            )
+
         seed_count = len(seed_rows)
         if seed_count < parsed.minimum_seed_clusters:
             insufficient.append(
@@ -142,7 +245,7 @@ def evaluate(document: Any) -> dict[str, Any]:
             loo_margin = [(sum_margin - value) / (seed_count - 1) for value in seed_margin_values]
             own_floor = min(loo_own)
             margin_floor = min(loo_margin)
-        else:
+        else:  # structural minimum is two, but retain a total function.
             own_floor = family_mean_own
             margin_floor = family_mean_margin
         family_own_effects[family.name] = own_floor
@@ -155,6 +258,7 @@ def evaluate(document: Any) -> dict[str, Any]:
             "calibration_status": parsed.calibration_status[family.name],
             "seed_clusters": seed_rows,
             "seed_cluster_count": seed_count,
+            "family_seats": family_seat_rows,
             "mean_own_delta": _quantity(family_mean_own),
             "mean_margin_delta": _quantity(family_mean_margin),
             "leave_one_seed_out_own_floor": _quantity(own_floor),
@@ -170,12 +274,22 @@ def evaluate(document: Any) -> dict[str, Any]:
     margin_robustness = _worst_case_mixture(family_margin_effects, parsed.families, parsed.total_variation_radius)
     own_worst = Fraction(own_robustness["worst_case_value"]["fraction"])
     margin_worst = Fraction(margin_robustness["worst_case_value"]["fraction"])
-    if parsed.strict_worst_case:
-        own_pass = own_worst > 0
-        margin_pass = margin_worst > 0
-    else:
-        own_pass = own_worst >= 0
-        margin_pass = margin_worst >= 0
+    own_pass = _sign_admissible(own_worst, strict=parsed.strict_worst_case)
+    margin_pass = _sign_admissible(margin_worst, strict=parsed.strict_worst_case)
+
+    own_distribution_free = _distribution_free_stress(
+        family_own_effects,
+        strict=parsed.strict_worst_case,
+        require_uniform=parsed.require_uniform_family_reference,
+        require_leave_one_family_out=parsed.require_leave_one_family_out,
+    )
+    margin_distribution_free = _distribution_free_stress(
+        family_margin_effects,
+        strict=parsed.strict_worst_case,
+        require_uniform=parsed.require_uniform_family_reference,
+        require_leave_one_family_out=parsed.require_leave_one_family_out,
+    )
+    distribution_free_pass = own_distribution_free["gate_pass"] and margin_distribution_free["gate_pass"]
 
     reasons: list[dict[str, Any]] = []
     if uncalibrated:
@@ -186,10 +300,12 @@ def evaluate(document: Any) -> dict[str, Any]:
         reasons.append({"reason": "worsened_outcomes", "count": len(outcome_regressions)})
     reasons.extend(tail_failures)
     if not any_economic_change:
-        reasons.append({
-            "reason": "no_terminal_economic_change",
-            "action_changed": any_action_change,
-        })
+        reasons.append(
+            {
+                "reason": "no_terminal_economic_change",
+                "action_changed": any_action_change,
+            }
+        )
     if not own_pass:
         reasons.append(
             {
@@ -206,6 +322,34 @@ def evaluate(document: Any) -> dict[str, Any]:
                 "strict": parsed.strict_worst_case,
             }
         )
+    for metric, stress in (
+        ("own", own_distribution_free),
+        ("margin", margin_distribution_free),
+    ):
+        uniform = stress["uniform_family_reference"]
+        if uniform["required"] and not uniform["sign_admissible"]:
+            reasons.append(
+                {
+                    "reason": f"uniform_family_{metric}_not_admissible",
+                    "observed": uniform["value"],
+                    "strict": parsed.strict_worst_case,
+                }
+            )
+        leave_one = stress["leave_one_family_out"]
+        if leave_one["required"] and not leave_one["sign_admissible"]:
+            failing = [
+                row["omitted_family"]
+                for row in leave_one["rows"]
+                if not row["sign_admissible"]
+            ]
+            reasons.append(
+                {
+                    "reason": f"leave_one_family_out_{metric}_not_admissible",
+                    "failing_omissions": failing,
+                    "minimum_observed": leave_one["minimum_value"],
+                    "strict": parsed.strict_worst_case,
+                }
+            )
 
     if uncalibrated:
         verdict = "BLOCK_UNCALIBRATED"
@@ -215,7 +359,14 @@ def evaluate(document: Any) -> dict[str, Any]:
         verdict = "BLOCK_EVIDENCE"
     elif not any_action_change and not any_economic_change:
         verdict = "INACTIVE"
-    elif outcome_regressions or tail_failures or not any_economic_change or not own_pass or not margin_pass:
+    elif (
+        outcome_regressions
+        or tail_failures
+        or not any_economic_change
+        or not own_pass
+        or not margin_pass
+        or not distribution_free_pass
+    ):
         verdict = "ROBUST_HOLD"
     else:
         verdict = "ROBUST_ADVANCE"
@@ -242,6 +393,8 @@ def evaluate(document: Any) -> dict[str, Any]:
             "minimum_seed_clusters": parsed.minimum_seed_clusters,
             "minimum_seed_own_delta": _quantity(parsed.minimum_seed_own_delta),
             "minimum_seed_margin_delta": _quantity(parsed.minimum_seed_margin_delta),
+            "minimum_family_seat_own_delta": _quantity(parsed.minimum_family_seat_own_delta),
+            "minimum_family_seat_margin_delta": _quantity(parsed.minimum_family_seat_margin_delta),
             "family_summaries": family_summaries,
             "outcome_regressions": outcome_regressions,
             "evidence_failures": evidence_failures,
@@ -250,6 +403,10 @@ def evaluate(document: Any) -> dict[str, Any]:
             "total_variation_radius": _quantity(parsed.total_variation_radius),
             "own_cash": own_robustness,
             "margin": margin_robustness,
+            "distribution_free_stress": {
+                "own_cash": own_distribution_free,
+                "margin": margin_distribution_free,
+            },
         },
         "reasons": reasons,
         "authority": {
