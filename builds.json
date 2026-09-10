@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 50,
+ "n_open_prs": 52,
  "open_prs": [
   {
    "number": 11961,
@@ -429,22 +429,6 @@
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11988,
-   "author": "woahwhattheheck",
-   "title": "Titan V3: retain carry with minimum future liquidation",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11988",
-   "base_freshness": {
-    "base_sha": "1d87e934f713b6bafd267be7bc1c8e2f95bd9207",
-    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -673,22 +657,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 12001,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: make E20 HIRE allowance execution-aware",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12001",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 12002,
    "author": "woahwhattheheck",
    "title": "TITAN V3: prove realized-anchor custody gap in multi-lot allocator",
@@ -709,22 +677,6 @@
    "author": "woahwhattheheck",
    "title": "TITAN V3 T02: source-bound land-unlock JIT census",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11995",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12005,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: close executable-prefix spend-reserve false deficits",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12005",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
     "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
@@ -849,22 +801,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 11965,
-   "author": "woahwhattheheck",
-   "title": "titan-v3: run own-value objective on bound current archive",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11965",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 12021,
    "author": "woahwhattheheck",
    "title": "TITAN V3: close canonical input archive and builder-source custody gaps",
@@ -955,22 +891,6 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12018,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: bind receipt projection to executable market prefix",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12018",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
    "road": "pr",
@@ -1089,6 +1009,22 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
+   "number": 12027,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: compose independent robust SELL coordinates",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12027",
+   "base_freshness": {
+    "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
    "number": 12026,
    "author": "woahwhattheheck",
    "title": "TITAN V3: guard inherited purchases against SELL-prefix drift",
@@ -1099,6 +1035,22 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12018,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: bind receipt projection to executable market prefix",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12018",
+   "base_freshness": {
+    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
    "road": "pr",
@@ -1121,32 +1073,112 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 12015,
+   "number": 12028,
    "author": "woahwhattheheck",
-   "title": "TITAN V3: close embedded SOURCE manifest over final bytes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12015",
+   "title": "test(titan): partial-carry repair with causal economic admission",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12028",
    "base_freshness": {
-    "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "base_sha": "1d87e934f713b6bafd267be7bc1c8e2f95bd9207",
     "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12005,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: close executable-prefix spend-reserve false deficits",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12005",
+   "base_freshness": {
+    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 12027,
+   "number": 12001,
    "author": "woahwhattheheck",
-   "title": "TITAN V3: compose independent robust SELL coordinates",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12027",
+   "title": "TITAN V3: make E20 HIRE allowance execution-aware",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12001",
    "base_freshness": {
-    "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
     "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11965,
+   "author": "woahwhattheheck",
+   "title": "titan-v3: run own-value objective on bound current archive",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11965",
+   "base_freshness": {
+    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12030,
+   "author": "woahwhattheheck",
+   "title": "[TITAN V3][SOL-LEVER] exact route-checkpoint regret and holdout threshold screen",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12030",
+   "base_freshness": {
+    "base_sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11988,
+   "author": "woahwhattheheck",
+   "title": "Titan V3: retain carry with minimum future liquidation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11988",
+   "base_freshness": {
+    "base_sha": "1d87e934f713b6bafd267be7bc1c8e2f95bd9207",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12031,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: close embedded SOURCE manifest over final bytes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12031",
+   "base_freshness": {
+    "base_sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead",
+    "main_sha": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
    "road": "pr",
