@@ -1,0 +1,70 @@
+name: titan-v3 returned-action strict causal successor
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism/strict_returned_action_diff.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism/test_strict_returned_action_diff.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism/STRICT-CAUSAL-CONTRACT.md"
+      - ".github/workflows/titan-v3-returned-action-diff-strict-causal-sol.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  strict-causal-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PARENT_SHA: "81cb68dddc701ba5c7ed906418c9fb5f485e1b45"
+      PARENT_HARNESS_BLOB: "035773760d8da60be84a41e610a2a858b918cb3f"
+      DIR: "revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism"
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+
+      - name: Assert exact head, direct parent, and path confinement
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+          test "$(git rev-parse HEAD^)" = "$PARENT_SHA"
+
+          cat > /tmp/expected-paths <<'EOF'
+          .github/workflows/titan-v3-returned-action-diff-strict-causal-sol.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism/STRICT-CAUSAL-CONTRACT.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism/strict_returned_action_diff.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism/test_strict_returned_action_diff.py
+          EOF
+          git diff --name-only "$PARENT_SHA" HEAD | LC_ALL=C sort > /tmp/actual-paths
+          LC_ALL=C sort -o /tmp/expected-paths /tmp/expected-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+
+          test "$(git hash-object "$DIR/returned_action_diff.py")" = "$PARENT_HARNESS_BLOB"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile and run inherited plus strict contracts
+        shell: bash
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/returned-action-diff-sol-prism
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile returned_action_diff.py test_returned_action_diff.py strict_returned_action_diff.py test_strict_returned_action_diff.py
+          python -B -m unittest -v test_returned_action_diff.py test_strict_returned_action_diff.py
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain=v1)"
