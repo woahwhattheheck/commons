@@ -79,7 +79,7 @@ class RetainedReportTests(unittest.TestCase):
             self.assertIn(row["gzip_sha256"], text)
             self.assertIn(row["opponent"], text)
 
-    def test_readme_pins_retained_payload_sha256(self) -> None:
+    def test_readme_states_retained_report_custody_truthfully(self) -> None:
         text = README.read_text(encoding="utf-8")
         self.assertIn(RETAINED_PAYLOAD_SHA256, text)
         if RETAINED_REPORT.is_file():
@@ -87,6 +87,10 @@ class RetainedReportTests(unittest.TestCase):
             payload = {key: value for key, value in report.items() if key != "report_payload_sha256"}
             self.assertEqual(report["report_payload_sha256"], RETAINED_PAYLOAD_SHA256)
             self.assertEqual(sha256_bytes(canonical_json(payload)), RETAINED_PAYLOAD_SHA256)
+        else:
+            self.assertNotIn("The retained `report.json` has payload SHA-256", text)
+            self.assertIn("`evidence/report.json` is not retained in this Git tree", text)
+            self.assertIn("HISTORICAL_EXTERNAL_EVIDENCE", text)
 
     def test_underfilled_hire_interval_attribution(self) -> None:
         with tempfile.TemporaryDirectory() as raw:

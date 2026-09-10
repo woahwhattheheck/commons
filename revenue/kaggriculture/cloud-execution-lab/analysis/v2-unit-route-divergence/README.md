@@ -31,8 +31,13 @@ files by episode, seed, seat, opponent and compressed SHA-256:
 | 107162106 | 1885507524 | ominteam | 1 | WIN / +2,684 | `b41bfdfcef73f35d71d617fb1b025e2bc25422600e43816805363d5470fa496f` |
 | 107172662 | 65112964 | Gappy | 1 | WIN / +12,664 | `385f506e7fd0ea82b963407f7d9dd6231f02f5d324d44b3a1f4cdad7f39f6279` |
 
-The retained `report.json` has payload SHA-256
-`38480d11f872bf6abcb017b2c86a4ca3e5b9f4f2932e01e6c0e7d787c643fbd9`.
+The original local audit recorded report payload SHA-256
+`38480d11f872bf6abcb017b2c86a4ca3e5b9f4f2932e01e6c0e7d787c643fbd9`,
+but `evidence/report.json` is not retained in this Git tree. This checkout
+therefore does not independently bind that historical digest or the replay-derived
+numeric statements in this README unless the four exact manifest-bound replay
+files are supplied and regeneration produces matching report bytes. Treat that
+material as `HISTORICAL_EXTERNAL_EVIDENCE` until such regeneration is performed.
 
 ## Replay orientation
 
