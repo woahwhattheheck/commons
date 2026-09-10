@@ -1,6 +1,6 @@
 name: TITAN V3 PR12091 one-use transport
 
-on:
+'on':
   pull_request:
     paths:
       - '.github/workflows/titan-v3-pr12091-transport.yml'
@@ -20,11 +20,23 @@ jobs:
       github.event.pull_request.head.ref == 'sol-pro/titan-v3-pr12091-fail-closed-analyzer-closure-20260910-01'
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      EVENT_SHA: ${{ github.event.pull_request.head.sha }}
+      BRANCH: sol-pro/titan-v3-pr12091-fail-closed-analyzer-closure-20260910-01
+      GATE: revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+
+      - name: Bind immutable event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EVENT_SHA"
+          remote="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"
+          test "$remote" = "$EVENT_SHA"
 
       - name: Verify, materialize, and remove one-use transport
         shell: bash
@@ -37,10 +49,9 @@ jobs:
           expected=$'source_analysis.py\nsource_gate.py\ntest_disabled_feature_noninterference.py'
           test "$actual" = "$expected"
 
-          gate='revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate'
-          tar -xzf "$payload" -C "$gate"
+          tar -xzf "$payload" -C "$GATE"
           (
-            cd "$gate"
+            cd "$GATE"
             echo '170b4a6d981e26c5e7c7ae7900b1bf63a257104c04d910b694c1b819346729c8  source_analysis.py'
             echo '618a8dee196fa3fa846bf7e11917d873ca1bb1827161d572a7a6baf5aa8299d0  source_gate.py'
             echo 'bc43347a2b0434dd3ff0e0e85147f0cc794da65ae6489aca8501babf61430e53  test_disabled_feature_noninterference.py'
@@ -48,8 +59,48 @@ jobs:
 
           rm .github/titan-pr12091-payload.part* \
              .github/workflows/titan-v3-pr12091-transport.yml
-          git add -A
+
+          python - <<'PY'
+          import subprocess
+          expected = {
+              '.github/titan-pr12091-payload.part00',
+              '.github/titan-pr12091-payload.part01',
+              '.github/workflows/titan-v3-pr12091-transport.yml',
+              'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/source_analysis.py',
+              'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/source_gate.py',
+              'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/test_disabled_feature_noninterference.py',
+          }
+          raw = subprocess.check_output(['git', 'status', '--porcelain=v1', '-z'])
+          entries = [part.decode('utf-8') for part in raw.split(b'\0') if part]
+          actual = {entry[3:].split(' -> ', 1)[-1] for entry in entries}
+          if actual != expected:
+              raise SystemExit(f'unexpected worktree delta: {sorted(actual ^ expected)!r}')
+          PY
+
+          git add -- \
+            .github/titan-pr12091-payload.part00 \
+            .github/titan-pr12091-payload.part01 \
+            .github/workflows/titan-v3-pr12091-transport.yml \
+            "$GATE/source_analysis.py" \
+            "$GATE/source_gate.py" \
+            "$GATE/test_disabled_feature_noninterference.py"
+          test -z "$(git status --porcelain --untracked-files=all | grep '^??' || true)"
+
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'fix(titan): materialize reviewed analyzer closure'
-          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
+
+          mapfile -t changed < <(git diff --name-only "$EVENT_SHA" HEAD | LC_ALL=C sort)
+          expected_changed=(
+            '.github/titan-pr12091-payload.part00'
+            '.github/titan-pr12091-payload.part01'
+            '.github/workflows/titan-v3-pr12091-transport.yml'
+            'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/source_analysis.py'
+            'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/source_gate.py'
+            'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/test_disabled_feature_noninterference.py'
+          )
+          test "${changed[*]}" = "${expected_changed[*]}"
+
+          remote="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"
+          test "$remote" = "$EVENT_SHA"
+          git push origin "HEAD:refs/heads/$BRANCH"
