@@ -5,6 +5,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -13,11 +14,12 @@ from pq.executable_pins import (  # noqa: E402
     ExecutablePinError,
     REQUIRED_SUBMISSION_INPUTS,
     bind_submission_config,
+    load_submission_config,
+    pin_submission,
     require_config_pin,
     submission_inputs,
 )
 from pq.pinning import PinStore, sha256_file  # noqa: E402
-from pq.runner import load_predecessor_config  # noqa: E402
 
 
 class ExecutablePinTests(unittest.TestCase):
@@ -81,8 +83,18 @@ class ExecutablePinTests(unittest.TestCase):
     def _manifest(self):
         return self.pins.pin(self._inputs())
 
+    def _pin_submission(self):
+        return pin_submission(
+            self.pins,
+            candidate_artifact=self.candidate_artifact,
+            candidate_games=self.candidate_games,
+            policy=self.policy,
+            predecessor_config=self.config,
+            note="test submission",
+        )
+
     def _config_value(self):
-        return load_predecessor_config(self.config)
+        return load_submission_config(self.config)
 
     def test_complete_manifest_contains_executable_closure(self):
         manifest = self._manifest()
@@ -101,6 +113,21 @@ class ExecutablePinTests(unittest.TestCase):
         self.assertEqual(
             manifest["inputs"]["predecessor_config"]["sha256"],
             sha256_file(self.config),
+        )
+
+    def test_pin_submission_returns_stored_verified_manifest(self):
+        manifest = self._pin_submission()
+        self.assertEqual(manifest, self.pins.get_pin(manifest["pin_id"]))
+        self.assertEqual(set(manifest["inputs"]), set(REQUIRED_SUBMISSION_INPUTS))
+        self.assertEqual(self.pins.verify_pin(manifest["pin_id"]), (True, []))
+        bound = bind_submission_config(
+            self.pins,
+            manifest,
+            self._config_value(),
+        )
+        self.assertEqual(
+            Path(bound["engine"]["identity_file"]),
+            self.pins.blob_path(manifest["inputs"]["engine_identity"]["sha256"]),
         )
 
     def test_engine_byte_change_changes_submission_identity(self):
@@ -204,6 +231,71 @@ class ExecutablePinTests(unittest.TestCase):
         self.config.write_text(json.dumps(doc))
         with self.assertRaisesRegex(ExecutablePinError, "nonempty string"):
             self._inputs()
+
+    def test_top_level_array_config_is_rejected(self):
+        self.config.write_text("[]")
+        with self.assertRaisesRegex(ExecutablePinError, "expected object"):
+            self._inputs()
+
+    def test_duplicate_json_key_is_rejected(self):
+        valid = self.config.read_text()
+        self.config.write_text('{"schema_version":1,' + valid[1:])
+        with self.assertRaisesRegex(ExecutablePinError, "duplicate JSON key"):
+            self._inputs()
+
+    def test_nonfinite_json_value_is_rejected(self):
+        doc = json.loads(self.config.read_text())
+        doc["unexpected_nonfinite"] = float("nan")
+        self.config.write_text(json.dumps(doc))
+        with self.assertRaisesRegex(ExecutablePinError, "non-finite JSON value"):
+            self._inputs()
+
+    def test_nonhexadecimal_declared_commit_is_rejected(self):
+        self._write_config(engine_commit="g" * 40)
+        with self.assertRaisesRegex(ExecutablePinError, "is not hexadecimal"):
+            self._inputs()
+
+    def test_crossed_config_and_engine_snapshot_is_not_returned(self):
+        replacement = self.root / "engine-v2.json"
+        replacement.write_text(json.dumps({"engine": "official-v2"}))
+        original_pin = self.pins.pin
+
+        def cross_snapshot(inputs, *, note=""):
+            # submission_inputs already resolved engine-v1. Mutate the config
+            # before PinStore reads it so one tentative manifest crosses the
+            # old engine with a config naming engine-v2.
+            doc = json.loads(self.config.read_text())
+            doc["engine"]["identity_file"] = str(replacement)
+            self.config.write_text(json.dumps(doc, sort_keys=True))
+            return original_pin(inputs, note=note)
+
+        with patch.object(self.pins, "pin", side_effect=cross_snapshot):
+            with self.assertRaisesRegex(ExecutablePinError, "engine identity drift"):
+                self._pin_submission()
+
+    def test_identity_disappearance_during_rehash_is_bounded(self):
+        manifest = self._manifest()
+        config = self._config_value()
+        real_hash = sha256_file
+
+        def disappear(path):
+            if Path(path) == self.engine:
+                raise FileNotFoundError("simulated identity disappearance")
+            return real_hash(Path(path))
+
+        with patch("pq.executable_pins.sha256_file", side_effect=disappear):
+            with self.assertRaisesRegex(ExecutablePinError, "cannot be hashed"):
+                bind_submission_config(self.pins, manifest, config)
+
+    def test_blob_verification_io_race_is_bounded(self):
+        manifest = self._manifest()
+        with patch.object(
+            self.pins,
+            "verify_blob",
+            side_effect=OSError("simulated blob read failure"),
+        ):
+            with self.assertRaisesRegex(ExecutablePinError, "blob cannot be verified"):
+                bind_submission_config(self.pins, manifest, self._config_value())
 
 
 if __name__ == "__main__":
