@@ -26,14 +26,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 2
+          fetch-depth: 5
           persist-credentials: false
 
       - name: Bind exact event head and parent
         shell: bash
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-          EXPECTED_PARENT: 8568d4a8cf54f34ef386c4e645c2b430368a92d0
+          EXPECTED_PARENT: 20ca27327b37e3cab2c2e5d539e0c4a2e8d3f065
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
