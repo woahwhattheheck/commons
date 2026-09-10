@@ -1,0 +1,24 @@
+name: TITAN weed continuation factor
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-weed-capital-firewall-sol-canopy/**'
+      - '.github/workflows/titan-v3-weed-continuation-factor-sol-canopy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reassemble exact package and replay retained evidence
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-weed-capital-firewall-sol-canopy
+        run: python unpack_and_verify.py --output /tmp/titan-weed-evidence --verify
