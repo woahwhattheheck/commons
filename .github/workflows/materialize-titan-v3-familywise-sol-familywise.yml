@@ -1,0 +1,134 @@
+name: materialize-titan-v3-familywise-sol-familywise
+
+on:
+  push:
+    branches:
+      - 'sol-familywise/titan-v3-familywise-holdout-ledger-20260910-01'
+    paths:
+      - '.github/workflows/materialize-titan-v3-familywise-sol-familywise.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: materialize-titan-v3-familywise-sol-familywise
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    if: github.repository == 'woahwhattheheck/commons'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      BASE_SHA: 2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb
+      ARCHIVE_SHA256: 84b9a1b2a3fd6dd324d0e4976c38404ee45ed19b0eea9697dc546d6193406cb2
+      ARCHIVE_BYTES: '16545'
+      BOOTSTRAP_DIR: p/sol-familywise-bootstrap-20260910-01
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Authenticate payload and extract exact allowlist
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git merge-base "$BASE_SHA" "$GITHUB_SHA")" = "$BASE_SHA"
+          sha256sum -c <<'EOF'
+          4da1cfdb4e4dacf35f758cf24f38aa7d9afc7aeee4cbab0cb4941a3524f340ce  p/sol-familywise-bootstrap-20260910-01/payload.b64.00
+          9eaf74cee948181c35f190504bf362bcf9c321284eced5be5cdafd34a08b1a74  p/sol-familywise-bootstrap-20260910-01/payload.b64.01
+          1613dcae3457ced0be2c876cb937680f52aafe6d383e923c8abc438530615d8c  p/sol-familywise-bootstrap-20260910-01/payload.b64.02
+          EOF
+          cat "$BOOTSTRAP_DIR"/payload.b64.00 \
+              "$BOOTSTRAP_DIR"/payload.b64.01 \
+              "$BOOTSTRAP_DIR"/payload.b64.02 \
+            | base64 --decode > "$RUNNER_TEMP/final.tar.gz"
+          test "$(stat -c '%s' "$RUNNER_TEMP/final.tar.gz")" = "$ARCHIVE_BYTES"
+          printf '%s  %s\n' "$ARCHIVE_SHA256" "$RUNNER_TEMP/final.tar.gz" | sha256sum -c -
+          export FINAL_ROOT="$RUNNER_TEMP/final-root"
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import os
+          import tarfile
+
+          archive = Path(os.environ["RUNNER_TEMP"]) / "final.tar.gz"
+          root = Path(os.environ["FINAL_ROOT"])
+          expected = {
+              ".github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml": (1277, "3d1181dfdc68914f1fee7bac2ae2828ffa6d503dfc758e085f54f89cbcdd22a5"),
+              "p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md": (3340, "1939fa64c3ebc2654dc99d5743575001bb280b19e32894dba6a6d51af8935f15"),
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md": (6162, "5dcdb51824d3b959febac1fb32cfcb3c89b265762bc7bc86e8130b14e6d27723"),
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py": (44854, "41b5bca8cc848ebc0dd83642f62869ff8e1a55e43fab1be7a55ac08cf6141e86"),
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py": (18478, "ffa63248c7ee5cedd9fefce83cb55428b906e26e664d171934234f4ebf570ecf"),
+          }
+          root.mkdir(parents=True, exist_ok=False)
+          with tarfile.open(archive, "r:gz") as bundle:
+              members = bundle.getmembers()
+              names = [member.name for member in members]
+              if len(names) != len(set(names)):
+                  raise SystemExit("duplicate archive member")
+              if set(names) != set(expected):
+                  raise SystemExit(f"archive allowlist mismatch: {sorted(names)!r}")
+              for member in members:
+                  if not member.isfile():
+                      raise SystemExit(f"non-regular archive member: {member.name}")
+                  relative = Path(member.name)
+                  if relative.is_absolute() or ".." in relative.parts:
+                      raise SystemExit(f"unsafe archive member: {member.name}")
+                  source = bundle.extractfile(member)
+                  if source is None:
+                      raise SystemExit(f"unreadable archive member: {member.name}")
+                  data = source.read()
+                  expected_size, expected_sha = expected[member.name]
+                  if len(data) != expected_size:
+                      raise SystemExit(f"size mismatch: {member.name}")
+                  if hashlib.sha256(data).hexdigest() != expected_sha:
+                      raise SystemExit(f"SHA-256 mismatch: {member.name}")
+                  destination = root / relative
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  destination.write_bytes(data)
+          PY
+
+      - name: Execute normal and optimized predecessor contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/final-root/revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise"
+          python3 -B -m py_compile familywise_holdout.py test_familywise_holdout.py
+          python3 -B -m unittest -v test_familywise_holdout.py
+          python3 -O -B -m unittest -q test_familywise_holdout.py
+
+      - name: Rewrite branch to one exact-base commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          final_root="$RUNNER_TEMP/final-root"
+          git config user.name 'SOL-FAMILYWISE'
+          git config user.email 'actions@users.noreply.github.com'
+          git reset --hard "$BASE_SHA"
+          git clean -fdx
+          cp -a "$final_root"/. .
+          sha256sum -c <<'EOF'
+          3d1181dfdc68914f1fee7bac2ae2828ffa6d503dfc758e085f54f89cbcdd22a5  .github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml
+          1939fa64c3ebc2654dc99d5743575001bb280b19e32894dba6a6d51af8935f15  p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md
+          5dcdb51824d3b959febac1fb32cfcb3c89b265762bc7bc86e8130b14e6d27723  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md
+          41b5bca8cc848ebc0dd83642f62869ff8e1a55e43fab1be7a55ac08cf6141e86  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py
+          ffa63248c7ee5cedd9fefce83cb55428b906e26e664d171934234f4ebf570ecf  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py
+          EOF
+          git add -A
+          git diff --cached --name-only | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
+          cat > "$RUNNER_TEMP/expected-paths" <<'EOF'
+          .github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml
+          p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py
+          EOF
+          LC_ALL=C sort -o "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/expected-paths"
+          diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/actual-paths"
+          git commit -m 'TITAN V3: add familywise holdout-spend ledger'
+          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
+          test "$(git rev-list --count "$BASE_SHA"..HEAD)" = '1'
+          git push --force-with-lease="refs/heads/${GITHUB_REF_NAME}:${GITHUB_SHA}" \
+            origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          echo "published_commit=$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
