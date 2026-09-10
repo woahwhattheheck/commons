@@ -1,0 +1,166 @@
+{
+  "boundary": {
+    "current_canonical_mutated": false,
+    "kaggle_mutated": false,
+    "provider_mutated": false,
+    "submission_authority": false
+  },
+  "classification": "SCHEDULER_PREDECESSOR_DORMANT__REJECT_LIVE_FACTOR",
+  "experiment": "titan-v3-intent-priority-frozen-reachability-20260910-01",
+  "frozen_priority": {
+    "admitted": false,
+    "divergent_rows": [
+      {
+        "action_changed": true,
+        "candidate_outcome": "win",
+        "control_outcome": "win",
+        "margin_delta": -39.0,
+        "opponent": "arlene",
+        "own_delta": -6.0,
+        "rival_delta": 33.0,
+        "seat": 0,
+        "seed": 2609097304,
+        "trace_changed": true
+      },
+      {
+        "action_changed": true,
+        "candidate_outcome": "win",
+        "control_outcome": "win",
+        "margin_delta": -39.0,
+        "opponent": "arlene",
+        "own_delta": -6.0,
+        "rival_delta": 33.0,
+        "seat": 1,
+        "seed": 2609097304,
+        "trace_changed": true
+      }
+    ],
+    "gates": {
+      "no_lost_wins": true,
+      "no_negative_own_cells": false,
+      "no_new_losses": true,
+      "nonnegative_median_own": true,
+      "nonnegative_strata": false,
+      "positive_mean_margin": false,
+      "positive_mean_own": false,
+      "returned_action_activated": true
+    },
+    "summary": {
+      "action_changed_cells": 2,
+      "cells": 16,
+      "lost_wins": 0,
+      "max_margin_delta": 0.0,
+      "max_own_delta": 0.0,
+      "mean_margin_delta": -4.875,
+      "mean_own_delta": -0.75,
+      "median_own_delta": 0.0,
+      "min_margin_delta": -39.0,
+      "min_own_delta": -6.0,
+      "negative_own_cells": 2,
+      "new_losses": 0,
+      "positive_own_cells": 0,
+      "score_changed_cells": 2,
+      "strata": {
+        "arlene:seat0": {
+          "cells": 8,
+          "mean_margin_delta": -4.875,
+          "mean_own_delta": -0.75,
+          "median_own_delta": 0.0,
+          "negative_own_cells": 1
+        },
+        "arlene:seat1": {
+          "cells": 8,
+          "mean_margin_delta": -4.875,
+          "mean_own_delta": -0.75,
+          "median_own_delta": 0.0,
+          "negative_own_cells": 1
+        }
+      },
+      "trace_changed_cells": 2,
+      "zero_own_cells": 14
+    }
+  },
+  "panel": {
+    "agent_rng_seed": 20260909,
+    "candidate_actions_per_game": 719,
+    "completed": 16,
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "8ab156a7fb815161c9bdfb11e9e33203f16cc526b0877391563e4d032936beeb",
+    "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+    "main_sha256": "c4c22d0f2b1071cadf6a9f74effccc8cb20ea9f4d10ca1cf9f1fe57351709dc1",
+    "opponent": "arlene",
+    "opponent_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+    "scheduled": 16,
+    "seats": [
+      0,
+      1
+    ],
+    "seeds": [
+      539131249,
+      1834999074,
+      2609097301,
+      2609097302,
+      2609097303,
+      2609097304,
+      2611092201,
+      2611092207
+    ]
+  },
+  "scheduler_only": {
+    "dormant": true,
+    "summary": {
+      "action_changed_cells": 0,
+      "cells": 16,
+      "lost_wins": 0,
+      "max_margin_delta": 0.0,
+      "max_own_delta": 0.0,
+      "mean_margin_delta": 0.0,
+      "mean_own_delta": 0.0,
+      "median_own_delta": 0.0,
+      "min_margin_delta": 0.0,
+      "min_own_delta": 0.0,
+      "negative_own_cells": 0,
+      "new_losses": 0,
+      "positive_own_cells": 0,
+      "score_changed_cells": 0,
+      "strata": {
+        "arlene:seat0": {
+          "cells": 8,
+          "mean_margin_delta": 0.0,
+          "mean_own_delta": 0.0,
+          "median_own_delta": 0.0,
+          "negative_own_cells": 0
+        },
+        "arlene:seat1": {
+          "cells": 8,
+          "mean_margin_delta": 0.0,
+          "mean_own_delta": 0.0,
+          "median_own_delta": 0.0,
+          "negative_own_cells": 0
+        }
+      },
+      "trace_changed_cells": 0,
+      "zero_own_cells": 16
+    }
+  },
+  "schema_version": 1,
+  "source_panel_files": {
+    "control": {
+      "file": "control-arlene8.json",
+      "sha256": "b4eb5988a926b344878198933f9f1a71b40333ce3dbe64ed83e8d70a336d51cc"
+    },
+    "frozen_priority": {
+      "file": "frozen_priority-arlene8.json",
+      "sha256": "96f10569eb7ab785cfbbcee5cb46be06067a9707d22b5a5452e6985fa5af5ef5"
+    },
+    "scheduler_only": {
+      "file": "scheduler_only-arlene8.json",
+      "sha256": "876700a17d81af9bf9e05fce86a5ec2fd7efdc8329f97695b2ef254c64c8cb2d"
+    }
+  }
+}
