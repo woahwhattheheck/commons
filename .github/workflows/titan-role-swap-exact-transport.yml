@@ -1,0 +1,43 @@
+name: titan-role-swap-exact-transport
+on:
+  push:
+    branches: [sol-antisymmetry/titan-v3-role-swap-seat-artifact-gate-20260910-01]
+    paths: ['.github/workflows/titan-role-swap-exact-transport.yml', '.transport/titan-role-swap/**']
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: '${{ github.sha }}', fetch-depth: 0}
+      - name: Verify, materialize, and commit exact packet
+        run: |
+          set -euo pipefail
+          packet="$RUNNER_TEMP/packet.tar.gz"
+          cat .transport/titan-role-swap/chunk-* > "$packet"
+          echo '47a0a519963ab5b9582acb1630d7bdfa586ebb3aeea6c4289397037dd9107d7c  '"$packet" | sha256sum -c -
+          python - "$packet" <<'PY'
+          import sys, tarfile
+          from pathlib import Path, PurePosixPath
+          with tarfile.open(sys.argv[1], 'r:gz') as bundle:
+              for member in bundle.getmembers():
+                  name = member.name.removeprefix('./')
+                  path = PurePosixPath(name)
+                  if not name or path.is_absolute() or '..' in path.parts or '\\' in name:
+                      raise SystemExit(f'unsafe path: {member.name!r}')
+                  if not (member.isdir() or member.isfile()):
+                      raise SystemExit(f'non-regular member: {member.name!r}')
+                  if member.isfile() and Path(name).exists():
+                      raise SystemExit(f'refuse overwrite: {name}')
+              bundle.extractall('.', filter='data')
+          PY
+          rm -rf .transport/titan-role-swap .github/workflows/titan-role-swap-exact-transport.yml
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git add -A
+          git diff --cached --quiet && exit 1
+          git config user.name commons-board
+          git config user.email commons-board@users.noreply.github.com
+          git commit -m 'TITAN V3: reject role-swap seat artifacts before policy inference'
+          git push origin HEAD:sol-antisymmetry/titan-v3-role-swap-seat-artifact-gate-20260910-01
