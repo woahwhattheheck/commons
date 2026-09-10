@@ -82,6 +82,30 @@ def apply_public_town_consumption(
                 inventory[item] -= 1
 
 
+def verify_official_engine(engine_source: str) -> str:
+    """Verify the exact official interpreter and the stage boundary we mirror."""
+    if not isinstance(engine_source, str):
+        raise TypeError("engine_source must be text")
+    engine_blob = git_blob_sha1(engine_source)
+    if engine_blob != EXPECTED_ENGINE_BLOB_SHA1:
+        raise ValueError(
+            f"engine drift: expected Git blob {EXPECTED_ENGINE_BLOB_SHA1}, "
+            f"got {engine_blob}"
+        )
+    stage_anchor = (
+        "    _process_market(state, env)\n"
+        "    _town_consume(env, state, step)\n"
+        "    for farm in obs0.farms:\n"
+        "        _decay_plants(farm, step)"
+    )
+    if engine_source.count(stage_anchor) != 1:
+        raise ValueError("official market->town->decay stage anchor drift")
+    if engine_source.count("def _town_consume(env, state, step):") != 1:
+        raise ValueError("official town-consumption function anchor drift")
+    compile(engine_source, "<official-kaggriculture-engine>", "exec")
+    return engine_blob
+
+
 def materialize(source: str, *, require_expected_source: bool = True) -> str:
     """Return a compiled source postimage or raise on any closure drift."""
     if not isinstance(source, str):
@@ -113,14 +137,16 @@ def materialize(source: str, *, require_expected_source: bool = True) -> str:
     return patched
 
 
-def receipt(source: str, patched: str) -> dict[str, Any]:
+def receipt(source: str, patched: str, engine_source: str) -> dict[str, Any]:
+    engine_blob = verify_official_engine(engine_source)
     return {
         "schema": "titan-v3-funding-town-consumption/v1",
         "complete": True,
         "source_blob_sha1": git_blob_sha1(source),
         "expected_source_blob_sha1": EXPECTED_SOURCE_BLOB_SHA1,
         "source_sha256": sha256_text(source),
-        "engine_blob_sha1": EXPECTED_ENGINE_BLOB_SHA1,
+        "engine_blob_sha1": engine_blob,
+        "engine_sha256": sha256_text(engine_source),
         "patched_source_sha256": sha256_text(patched),
         "helper_count": patched.count("def _funding_apply_town_consumption("),
         "call_count": patched.count("        _funding_apply_town_consumption(\n"),
@@ -134,15 +160,18 @@ def receipt(source: str, patched: str) -> dict[str, Any]:
 def _main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", required=True, type=Path)
+    parser.add_argument("--engine", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--receipt", required=True, type=Path)
     args = parser.parse_args()
 
     source = args.source.read_text(encoding="utf-8")
+    engine_source = args.engine.read_text(encoding="utf-8")
+    verify_official_engine(engine_source)
     patched = materialize(source)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(patched, encoding="utf-8")
-    data = receipt(source, patched)
+    data = receipt(source, patched, engine_source)
     args.receipt.parent.mkdir(parents=True, exist_ok=True)
     args.receipt.write_text(
         json.dumps(data, sort_keys=True, indent=2, allow_nan=False) + "\n",
