@@ -1,8 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
 """Executable-prefix contracts for early-capital ordering."""
 import copy
+from pathlib import Path
 import unittest
 
+import mechanics as m
 from early_capital import order_early_capital
 
 
@@ -135,6 +137,50 @@ class EarlyCapitalExecutablePrefixContracts(unittest.TestCase):
         out['market'][-1].append('mutated')
         self.assertEqual(source['market'][1], ['BUY_LAND'])
         self.assertEqual(source['market'][-1], ['SELL', 'MILK', 7])
+
+    def test_inert_redundant_hire_sell_cannot_outrank_real_funding(self):
+        redundant_source = Path('reference/titan-current/redundant_hire.py').read_text()
+        self.assertIn('NO_ORDER = ["SELL", "WHEAT", 0]', redundant_source)
+
+        source = action([
+            ['BUY_LAND'],
+            ['SELL', 'MELON', 0],
+            ['SELL', 'MELON', 1],
+        ])
+        out, report = order_early_capital(None, obs(), CFG, source, None)
+        self.assertTrue(report['changed'])
+        self.assertEqual(out['market'], [
+            ['SELL', 'MELON', 1],
+            ['BUY_LAND'],
+            ['SELL', 'MELON', 0],
+        ])
+
+        # Exact lockstep discontinuity: a rival row-0 MELON sale changes the
+        # delayed row-1 quote by one dollar. At $750 starting cash that decides
+        # whether the first $1,000 land purchase commits.
+        simultaneous_quote = m.market_price('MELON', 10007, None)
+        delayed_quote = m.market_price('MELON', 10008, None)
+        self.assertEqual((simultaneous_quote, delayed_quote), (250, 249))
+        self.assertEqual(750 + simultaneous_quote, 1000)
+        self.assertEqual(750 + delayed_quote, 999)
+
+    def test_nonpositive_and_malformed_sells_remain_inert(self):
+        cfg = dict(CFG, maxMarketOrdersPerTurn=5)
+        source = action([
+            ['BUY_LAND'],
+            ['SELL', 'MELON', 0],
+            ['SELL', 'MELON', -1],
+            ['SELL', 'MELON', 'not-a-number'],
+            ['SELL', 'MELON', 1],
+        ])
+        out, _ = order_early_capital(None, obs(), cfg, source, None)
+        self.assertEqual(out['market'], [
+            ['SELL', 'MELON', 1],
+            ['BUY_LAND'],
+            ['SELL', 'MELON', 0],
+            ['SELL', 'MELON', -1],
+            ['SELL', 'MELON', 'not-a-number'],
+        ])
 
 
 if __name__ == '__main__':
