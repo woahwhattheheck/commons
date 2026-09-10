@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "operation": "TITAN-V3-OFFICIAL-MARKET-TRANSITION-ORACLE-20260910-01",
+  "authority": "evidence-only",
+  "exact_engine_git_blobs": {
+    "kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+    "kaggriculture.json": "b354d06b742fe48402513792253f1a5c29366b20",
+    "utils.py": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87"
+  },
+  "transition_boundary": [
+    "official _process_market",
+    "official _town_consume"
+  ],
+  "required_input": {
+    "players": 2,
+    "common_prestate_fields": [
+      "farms",
+      "privates",
+      "market",
+      "town"
+    ],
+    "actions": "two literal player actions before the official raw market-prefix cap",
+    "configuration": [
+      "boardSize",
+      "maxMarketOrdersPerTurn",
+      "farmHandCostMult",
+      "shedCapacity",
+      "townShopSellInterval",
+      "townCenterSellInterval"
+    ],
+    "step": "non-negative integer used by town-consumption chronology"
+  },
+  "comparison_preconditions": [
+    "baseline and candidate start from byte-identical canonical prestate",
+    "the non-tested player's literal action is byte-identical",
+    "each arm independently passes official/reference poststate parity",
+    "all declared protected JSON pointers are compared after the full market-plus-town transition",
+    "all unchanged literal active orders are compared by player, literal action, and duplicate occurrence"
+  ],
+  "modeled_semantics": [
+    "raw executable queue prefix with max(1, maxMarketOrdersPerTurn)",
+    "row-index lockstep",
+    "atomic HIRE and BUY_LAND in player order",
+    "per-unit simultaneous pre-commit quotes followed by player-order commits",
+    "partial fills and permanent order stop after failure",
+    "SELL floor-price supply rule",
+    "BUY_PRODUCT WHEAT/FERTILIZER shed-capacity and post-buy quote rule",
+    "BUY_SEED and BUY_ANIMAL cash/capacity rules",
+    "dynamic price refresh after every market row",
+    "duplicate unlocked shop instances",
+    "shop consumption before town-center consumption",
+    "final price refresh"
+  ],
+  "machine_verdicts": [
+    "PASS_OFFICIAL_PARITY",
+    "PRESERVES_DECLARED_STATE",
+    "DIFFERENT_PROTECTED_STATE"
+  ],
+  "promotion_prohibitions": [
+    "No scheduler or factor is safe merely because this oracle executes it.",
+    "No aggregate score, strength, hosted-rank, or promotion conclusion is emitted.",
+    "A new engine blob requires a new bound oracle version; blob drift fails closed.",
+    "Unit movement, field actions, plant decay, end-of-day production, and full-episode policy state are outside this transition boundary."
+  ],
+  "fixed_contract_receipts": {
+    "bounded_cases": 2160,
+    "bounded_rows_sha256": "ca8975a96e144a29555c19d7b32d85575ce6b5d6ad440e25c3b771c9e138d3d4",
+    "known_same_product_prefix_delta": {
+      "own_money": -1.0,
+      "rival_money": 1.0,
+      "margin": -2.0
+    }
+  }
+}
