@@ -1,0 +1,161 @@
+name: titan-v3 historical calibration transport custody
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery/strict_transport.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery/test_strict_transport.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery/TRANSPORT-CUSTODY.md"
+      - ".github/workflows/titan-v3-historical-calibration-transport-custody-sol.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  transport-custody:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      PARENT_SHA: "7212ae0c6c9ca82e13a6ff13a2549094762269e1"
+      DECLARED_BASE_SHA: "c51049d671b55d282e0fed5df37a0be7c513a838"
+      DELIVERY: "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery"
+      SOURCE_PREFIX: "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration"
+    steps:
+      - name: Checkout literal successor head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Assert direct parent and four-path successor confinement
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+          test "$(git rev-parse HEAD^)" = "$PARENT_SHA"
+          cat > "$RUNNER_TEMP/expected-successor-paths" <<'EOF'
+          .github/workflows/titan-v3-historical-calibration-transport-custody-sol.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery/TRANSPORT-CUSTODY.md
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery/strict_transport.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery/test_strict_transport.py
+          EOF
+          git diff --name-only "$PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-successor-paths"
+          LC_ALL=C sort -o "$RUNNER_TEMP/expected-successor-paths" "$RUNNER_TEMP/expected-successor-paths"
+          diff -u "$RUNNER_TEMP/expected-successor-paths" "$RUNNER_TEMP/actual-successor-paths"
+
+      - name: Run fail-closed transport predecessor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile strict_transport.py test_strict_transport.py
+          python -B -m unittest -v test_strict_transport.py
+
+      - name: Verify real carrier and exclusively decode patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/decoded"
+          python -B "$DELIVERY/strict_transport.py" \
+            "$DELIVERY" \
+            "$RUNNER_TEMP/decoded/calibration.patch" \
+            > "$RUNNER_TEMP/transport-receipt.json"
+          python - "$RUNNER_TEMP/transport-receipt.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          receipt = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert receipt["schema"] == "titan-v3-calibration-transport-verification/v1"
+          assert receipt["base_commit"] == "c51049d671b55d282e0fed5df37a0be7c513a838"
+          assert receipt["decoded_gzip_sha256"] == "318418c0d673d3566a36f47efd94d89899d0dc5b33d888c2aa587591d69c614c"
+          assert receipt["stable_patch_id"] == "fbd98806a52f1160586d09e997207bbe1a2280c8"
+          assert receipt["files_added_declared"] == 14
+          assert len(receipt["parts"]) == 4
+          PY
+
+      - name: Materialize packet only in isolated declared-base worktree
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git cat-file -e "$DECLARED_BASE_SHA^{commit}" 2>/dev/null; then
+            git fetch --no-tags --depth=1 origin "$DECLARED_BASE_SHA"
+          fi
+          test "$(git rev-parse "$DECLARED_BASE_SHA^{commit}")" = "$DECLARED_BASE_SHA"
+          work="$RUNNER_TEMP/materialized-source"
+          git worktree add --detach "$work" "$DECLARED_BASE_SHA"
+          git -C "$work" config user.name "TITAN transport CI"
+          git -C "$work" config user.email "titan-transport@example.invalid"
+          git -C "$work" am "$RUNNER_TEMP/decoded/calibration.patch"
+          test "$(git -C "$work" rev-list --count "$DECLARED_BASE_SHA"..HEAD)" = 1
+
+          git -C "$work" diff --name-status "$DECLARED_BASE_SHA" HEAD > "$RUNNER_TEMP/materialized-name-status"
+          test "$(wc -l < "$RUNNER_TEMP/materialized-name-status" | tr -d ' ')" = 14
+          awk -F '\t' -v prefix="$SOURCE_PREFIX" '
+            $1 != "A" { bad=1 }
+            index($2, prefix) != 1 { bad=1 }
+            END { if (bad) exit 1 }
+          ' "$RUNNER_TEMP/materialized-name-status"
+
+          git -C "$work" diff --numstat "$DECLARED_BASE_SHA" HEAD > "$RUNNER_TEMP/materialized-numstat"
+          awk -F '\t' '
+            $1 !~ /^[0-9]+$/ || $2 !~ /^[0-9]+$/ { bad=1 }
+            { add += $1; del += $2; rows += 1 }
+            END { if (bad || rows != 14 || add != 2027 || del != 0) exit 1 }
+          ' "$RUNNER_TEMP/materialized-numstat"
+
+      - name: Compile every delivered Python source and run exactly 42 delivered tests
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euo pipefail
+          work="$RUNNER_TEMP/materialized-source"
+          mapfile -t added < <(git -C "$work" diff --diff-filter=A --name-only "$DECLARED_BASE_SHA" HEAD)
+          test "${#added[@]}" = 14
+          for rel in "${added[@]}"; do
+            case "$rel" in
+              *.py)
+                python -B - "$work/$rel" <<'PY'
+          from pathlib import Path
+          import sys
+          path = Path(sys.argv[1])
+          compile(path.read_text(encoding="utf-8"), str(path), "exec")
+          PY
+                ;;
+            esac
+          done
+
+          mapfile -t tests < <(printf '%s\n' "${added[@]}" | grep -E '(^|/)test[^/]*\.py$' || true)
+          test "${#tests[@]}" -ge 1
+          test_dir="$(dirname "${tests[0]}")"
+          for rel in "${tests[@]}"; do
+            test "$(dirname "$rel")" = "$test_dir"
+          done
+          (
+            cd "$work/$test_dir"
+            python -B - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover(".", pattern="test*.py")
+          count = suite.countTestCases()
+          if count != 42:
+              raise SystemExit(f"expected exactly 42 delivered tests, discovered {count}")
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if not result.wasSuccessful():
+              raise SystemExit(1)
+          PY
+          )
+
+      - name: Prove primary carrier checkout remained immutable and clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$PARENT_SHA"
+          test -z "$(git status --porcelain=v1)"
+          git worktree remove --force "$RUNNER_TEMP/materialized-source"
