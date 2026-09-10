@@ -1,0 +1,121 @@
+name: TITAN V3 dual-predecessor materialize and smoke
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-dual-predecessor-score-panel-20260910-01
+    paths:
+      - .github/titan-v3-dual-predecessor-payload.part*
+      - .github/workflows/titan-v3-dual-predecessor-materialize-sol-pro.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-dual-predecessor-materialize
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol-pro/titan-v3-dual-predecessor-score-panel-20260910-01
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/titan-v3-dual-predecessor-payload.part*
+            /.github/workflows/titan-v3-dual-predecessor-materialize-sol-pro.yml
+            /revenue/kaggriculture/cloud-execution-lab/
+      - name: Verify and materialize exact payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="$RUNNER_TEMP/titan-v3-dual-predecessor-payload.tar.gz"
+          cat .github/titan-v3-dual-predecessor-payload.part* | base64 --decode > "$payload"
+          printf '%s  %s\n' \
+            'b4e66ef98655373b01b8ffb11ea33e3a312ee0a5dbd0a93edfb4141d0799501f' \
+            "$payload" | sha256sum --check -
+          python3 - "$payload" <<'PY'
+          from pathlib import Path, PurePosixPath
+          import sys
+          import tarfile
+
+          archive = Path(sys.argv[1])
+          expected = {
+              ".github/workflows/titan-v3-dual-predecessor-score-panel-sol-pro.yml",
+              "revenue/kaggriculture/cloud-execution-lab/TITAN-V3-DUAL-PANEL.md",
+              "revenue/kaggriculture/cloud-execution-lab/run_titan_v3_dual_predecessor_panel.py",
+              "revenue/kaggriculture/cloud-execution-lab/test_titan_v3_dual_predecessor_panel.py",
+          }
+          with tarfile.open(archive, "r:gz") as source:
+              members = source.getmembers()
+              names = {member.name for member in members}
+              if names != expected:
+                  raise SystemExit(f"payload member drift: {sorted(names ^ expected)}")
+              for member in members:
+                  path = PurePosixPath(member.name)
+                  if (
+                      path.is_absolute()
+                      or ".." in path.parts
+                      or not member.isfile()
+                      or member.issym()
+                      or member.islnk()
+                  ):
+                      raise SystemExit(f"unsafe payload member: {member.name}")
+              source.extractall(".", filter="data")
+          PY
+          rm -f .github/titan-v3-dual-predecessor-payload.part* \
+            .github/workflows/titan-v3-dual-predecessor-materialize-sol-pro.yml
+      - name: Publish reviewable source commit
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- .github revenue/kaggriculture/cloud-execution-lab
+          git diff --cached --check
+          git commit -m "TITAN V3: add custody-bound dual-predecessor score panel"
+          commit="$(git rev-parse HEAD)"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+      - name: Execute adversarial runner tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euo pipefail
+          python3 -B -m py_compile \
+            run_titan_v3_dual_predecessor_panel.py \
+            test_titan_v3_dual_predecessor_panel.py
+          python3 -B -m unittest -v test_titan_v3_dual_predecessor_panel.py
+      - name: Execute hosted official-engine smoke panel
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+          PANEL_OUTPUT: ${{ runner.temp }}/titan-v3-dual-panel
+        run: |
+          set -euo pipefail
+          python3 -B \
+            revenue/kaggriculture/cloud-execution-lab/run_titan_v3_dual_predecessor_panel.py \
+            --workspace "$GITHUB_WORKSPACE" \
+            --output "$PANEL_OUTPUT" \
+            --runner-commit "${{ steps.publish.outputs.commit }}" \
+            --panel-id "titan-v3-dual-smoke-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --seeds "9600803" \
+            --opponents "arlene,apex" \
+            --seats "0,1" \
+            --game-timeout 300
+          cat "$PANEL_OUTPUT/RESULTS.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload complete custody bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-dual-predecessor-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/titan-v3-dual-panel/
+          retention-days: 30
+          if-no-files-found: warn
