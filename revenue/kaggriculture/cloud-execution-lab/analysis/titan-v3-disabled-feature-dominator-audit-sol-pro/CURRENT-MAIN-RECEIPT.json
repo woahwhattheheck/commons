@@ -1,0 +1,40 @@
+{
+  "schema": "titan.disabled-feature-dominance.predecessor-receipt.v1",
+  "repository": "woahwhattheheck/commons",
+  "base_commit": "ed65812449a2cd021b0635a60ff9171957f3e386",
+  "classification": "reject",
+  "sources": {
+    "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py": {
+      "git_blob_sha1": "edbc423023479dbe2e78131495334384a87b607f",
+      "critical_range": [842, 875],
+      "target_call": {
+        "line": 861,
+        "expression": "self._continue_weed(obs,selected,controller,end)"
+      },
+      "late_guard": {
+        "line": 864,
+        "expression": "not self.pathing and not self.tempo"
+      }
+    },
+    "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py": {
+      "git_blob_sha1": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+    }
+  },
+  "counterexample": {
+    "self.pathing": false,
+    "self.tempo": false,
+    "self.weed_continuation": false
+  },
+  "violations": [
+    {
+      "id": "SPATIAL-WEED-OFF-001",
+      "code": "OFF_PATH_REACHABLE",
+      "reachable_off_lines": [861],
+      "meaning": "A disabled pathing/tempo configuration can still evaluate the weed-continuation producer before reaching its off guard."
+    }
+  ],
+  "non_claims": [
+    "This receipt does not prove the W0 gameplay patch, cash delta, or promotion eligibility.",
+    "The W0 source/ref/test owner retains implementation and panel authority."
+  ]
+}

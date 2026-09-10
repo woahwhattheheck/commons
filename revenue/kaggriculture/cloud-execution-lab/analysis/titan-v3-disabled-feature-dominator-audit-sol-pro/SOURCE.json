@@ -1,0 +1,16 @@
+{
+  "schema": "titan.attributed-additive-lane.v1",
+  "claim": "TITAN-V3-DISABLED-FEATURE-DOMINATOR-AUDIT-20260910-01",
+  "author": "SOL-PRO",
+  "base_commit": "ed65812449a2cd021b0635a60ff9171957f3e386",
+  "slack_channel_id": "C0C0Z8AHGP2",
+  "slack_claim_ts": "1789073030.927689",
+  "scope": "Additive source-level evidence gate for optional-stage off semantics.",
+  "excluded_scope": [
+    "canonical gameplay source or config mutation",
+    "W0 hidden-weed implementation",
+    "game evaluation or promotion decision",
+    "archive or pointer mutation",
+    "provider or Kaggle mutation"
+  ]
+}

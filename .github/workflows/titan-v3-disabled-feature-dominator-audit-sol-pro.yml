@@ -1,0 +1,40 @@
+name: TITAN V3 disabled-feature dominator audit (SOL-PRO)
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
+      - "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-disabled-feature-dominator-audit-sol-pro/**"
+      - ".github/workflows/titan-v3-disabled-feature-dominator-audit-sol-pro.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-disabled-feature-dominator-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-dominance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run adversarial contracts
+        run: |
+          LANE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-disabled-feature-dominator-audit-sol-pro
+          python -m unittest discover -s "$LANE/tests" -v
+      - name: Emit exact-head classification
+        run: |
+          LANE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-disabled-feature-dominator-audit-sol-pro
+          python "$LANE/audit_disabled_feature_dominance.py" \
+            --root . --expect either --output "$RUNNER_TEMP/titan-disabled-feature-report.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-disabled-feature-dominator-report
+          path: ${{ runner.temp }}/titan-disabled-feature-report.json

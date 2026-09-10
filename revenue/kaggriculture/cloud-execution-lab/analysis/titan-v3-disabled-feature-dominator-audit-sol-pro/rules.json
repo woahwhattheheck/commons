@@ -1,0 +1,228 @@
+{
+  "schema": "titan.disabled-feature-dominance.rules.v1",
+  "rules": [
+    {
+      "id": "SPATIAL-WEED-OFF-001",
+      "description": "Weed continuation must not run when every spatial/weed carrier is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+      "class": "SpatialTempo",
+      "function": "transform",
+      "target": "self._continue_weed",
+      "off_world": {
+        "self.pathing": false,
+        "self.tempo": false,
+        "self.weed_continuation": false
+      }
+    },
+    {
+      "id": "SPATIAL-CORE-OFF-002",
+      "description": "Path/tempo suffix analysis must be unreachable when both core spatial modes are disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+      "class": "SpatialTempo",
+      "function": "transform",
+      "target": "self._suffix",
+      "off_world": {
+        "self.pathing": false,
+        "self.tempo": false
+      }
+    },
+    {
+      "id": "SPATIAL-IDLE-COLLECT-OFF-003",
+      "description": "Idle-fertilizer planning must return before stock certification when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+      "class": "SpatialTempo",
+      "function": "_collect_idle_fertilizer",
+      "target": "self._idle_stock_bound",
+      "off_world": {
+        "self.idle_fertilizer": false
+      }
+    },
+    {
+      "id": "SPATIAL-CROP-OBSERVE-OFF-004",
+      "description": "Crop observation must not execute from transform when crop release is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+      "class": "SpatialTempo",
+      "function": "transform",
+      "target": "observed_plant",
+      "off_world": {
+        "self.crop_release": false
+      }
+    },
+    {
+      "id": "SPATIAL-CROP-MARKET-OFF-005",
+      "description": "Crop release preparation must not execute when crop release is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+      "class": "SpatialTempo",
+      "function": "crop_market",
+      "target": "prepare_release",
+      "off_world": {
+        "self.crop_release": false
+      }
+    },
+    {
+      "id": "SPATIAL-CROP-RECEIPT-OFF-006",
+      "description": "Crop receipt repair must not execute when crop release is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+      "class": "SpatialTempo",
+      "function": "observe_crop_receipts",
+      "target": "observe_input_repair",
+      "off_world": {
+        "self.crop_release": false
+      }
+    },
+    {
+      "id": "RUNTIME-SEED-OFF-007",
+      "description": "Seed-budget mutation must not execute when seed transforms are disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_seed_selected",
+      "target": "self.seed_budget.apply",
+      "off_world": {
+        "self.features.seed": false
+      }
+    },
+    {
+      "id": "RUNTIME-FUNDING-OFF-008",
+      "description": "Funding queue arbitration must not execute when funding is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_seed_selected",
+      "target": "self.funding_module.select_seed_queue",
+      "off_world": {
+        "self.features.funding": false
+      }
+    },
+    {
+      "id": "RUNTIME-REDUNDANT-HIRE-OFF-009",
+      "description": "Redundant-hire proposal must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_redundant_hire_selected",
+      "target": "self.redundant_hire_module.propose_redundant_hires",
+      "off_world": {
+        "self.features.redundant_hire": false
+      }
+    },
+    {
+      "id": "RUNTIME-SEED-RETRY-OFF-010",
+      "description": "Committed-seed retry must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_committed_seed_retry_selected",
+      "target": "self.committed_seed_retry_module.apply_committed_seed_retry",
+      "off_world": {
+        "self.features.committed_seed_retry": false
+      }
+    },
+    {
+      "id": "RUNTIME-PRESSURE-OFF-011",
+      "description": "Market-pressure transform must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_market_pressure_selected",
+      "target": "pressure.transform",
+      "off_world": {
+        "self.features.market_pressure": false
+      }
+    },
+    {
+      "id": "RUNTIME-OPERATING-STOCK-OFF-012",
+      "description": "Operating-stock protection must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_operating_stock_selected",
+      "target": "protect_operating_stock",
+      "off_world": {
+        "self.features.operating_stock": false
+      }
+    },
+    {
+      "id": "RUNTIME-FEED-STOCK-OFF-013",
+      "description": "Feed-stock protection must not execute when operating-stock protection is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_feed_stock_selected",
+      "target": "protect_feed_stock",
+      "off_world": {
+        "self.features.operating_stock": false
+      }
+    },
+    {
+      "id": "RUNTIME-EARLY-CAPITAL-OFF-014",
+      "description": "Early-capital reordering must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_early_capital_selected",
+      "target": "order_early_capital",
+      "off_world": {
+        "self.features.early_capital": false
+      }
+    },
+    {
+      "id": "RUNTIME-CROP-MARKET-OFF-015",
+      "description": "Runtime crop-market composition must not execute when crop release is disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "act",
+      "target": "self.spatial.crop_market",
+      "off_world": {
+        "self.features.crop_release": false
+      }
+    },
+    {
+      "id": "RUNTIME-QUADRANT-OFF-016",
+      "description": "Fourth-quadrant constructor must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_initialize",
+      "target": "FourthQuadrant",
+      "off_world": {
+        "f.fourth_quadrant": false
+      }
+    },
+    {
+      "id": "RUNTIME-TERMINAL-ROUTE-OFF-017",
+      "description": "Terminal route owner must not execute when disabled.",
+      "severity": "error",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_initialize",
+      "target": "module.TerminalOwner",
+      "off_world": {
+        "f.terminal_route": false
+      }
+    },
+    {
+      "id": "RUNTIME-SPATIAL-INSTALL-OFF-W01",
+      "description": "Defense-in-depth warning: SpatialTempo is still constructed when every spatial producer flag is false.",
+      "severity": "warning",
+      "file": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "class": "TitanAgent",
+      "function": "_initialize",
+      "target": "SpatialTempo",
+      "off_world": {
+        "f.terminal_route": false,
+        "f.spatial_pathing": false,
+        "f.spatial_tempo": false,
+        "f.idle_fertilizer": false,
+        "f.crop_release": false
+      }
+    }
+  ]
+}
