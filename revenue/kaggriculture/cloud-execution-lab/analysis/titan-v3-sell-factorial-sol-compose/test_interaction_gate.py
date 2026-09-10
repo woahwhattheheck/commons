@@ -106,14 +106,78 @@ def make_reports(effect=default_effect) -> dict[str, dict]:
     return reports
 
 
+def make_manifest(reports: dict[str, dict]) -> dict:
+    archive_sha = digest("canonical-archive")
+    source_manifest_sha = digest("canonical-source-manifest")
+    runtime_tree_sha = digest("canonical-runtime-tree")
+    own_source = digest("own-value-source")
+    pressure_source = digest("certified-pressure-source")
+    factor_rows = {
+        "own_value": {
+            "contract": "TITAN-V3-OWN-VALUE-OBJECTIVE-20260909-01",
+            "source_sha256": own_source,
+            "source_git_blob_sha1": hashlib.sha1(b"own-value-source").hexdigest(),
+            "receipt_sha256": digest("own-value-receipt"),
+        },
+        "certified_pressure": {
+            "contract": gate.PRESSURE_CONTRACT,
+            "source_sha256": pressure_source,
+            "source_git_blob_sha1": hashlib.sha1(b"certified-pressure-source").hexdigest(),
+            "receipt_sha256": digest("certified-pressure-receipt"),
+            "delay_bound_source": "shedCapacity",
+        },
+    }
+    expected = {
+        "control": {},
+        "own_value": {"own_value": own_source},
+        "certified_pressure": {"certified_pressure": pressure_source},
+        "both": {
+            "own_value": own_source,
+            "certified_pressure": pressure_source,
+        },
+    }
+    return {
+        "schema_version": 1,
+        "operation": gate.MANIFEST_OPERATION,
+        "panel_binding": {
+            "archive_sha256": archive_sha,
+            "source_manifest_sha256": source_manifest_sha,
+            "runtime_tree_sha256": runtime_tree_sha,
+            "engine_sha256": reports["control"]["engine_sha256"],
+            "loader_sha256": reports["control"]["loader_sha256"],
+            "evaluator_sha256": reports["control"]["evaluator_sha256"],
+        },
+        "factors": factor_rows,
+        "arms": {
+            arm: {
+                "candidate_sha256": reports[arm]["candidate"]["sha256"],
+                "build_receipt_sha256": digest("build-receipt", arm),
+                "archive_sha256": archive_sha,
+                "source_manifest_sha256": source_manifest_sha,
+                "runtime_tree_sha256": runtime_tree_sha,
+                "factors": expected[arm],
+            }
+            for arm in ARMS
+        },
+    }
+
+
+def assess_reports(reports: dict[str, dict], **kwargs) -> dict:
+    return gate.assess(reports, make_manifest(reports), **kwargs)
+
+
 class InteractionGateTests(unittest.TestCase):
     def test_selects_nondominated_composition_and_computes_interaction(self):
-        report = gate.assess(make_reports(), git_head="d" * 40)
+        report = assess_reports(make_reports(), git_head="d" * 40)
         self.assertEqual(report["selection"]["verdict"], "SELECT_BOTH")
         self.assertEqual(report["selection"]["selected_arm"], "both")
         self.assertTrue(report["selection"]["composition_nondominated"])
         self.assertEqual(report["grid"]["cells_per_arm"], 8)
         self.assertEqual(report["grid"]["total_games"], 32)
+        self.assertEqual(len(report["arm_manifest_binding"]["semantic_sha256"]), 64)
+        self.assertEqual(
+            set(report["arm_manifest_binding"]["manifest"]["arms"]), set(ARMS)
+        )
         factorial = report["overall"]["factorial"]
         self.assertEqual(factorial["own_value_main_effect"]["mean"], 11.5)
         self.assertEqual(factorial["certified_pressure_main_effect"]["mean"], 6.5)
@@ -135,7 +199,7 @@ class InteractionGateTests(unittest.TestCase):
             own, changed = values[arm]
             return {"own": own, "rival": 0, "changed": changed}
 
-        report = gate.assess(make_reports(effect))
+        report = assess_reports(make_reports(effect))
         self.assertEqual(report["selection"]["verdict"], "SELECT_OWN_VALUE")
         self.assertFalse(report["selection"]["composition_nondominated"])
 
@@ -155,7 +219,7 @@ class InteractionGateTests(unittest.TestCase):
                 "changed": True,
             }
 
-        report = gate.assess(make_reports(effect))
+        report = assess_reports(make_reports(effect))
         self.assertTrue(report["selection"]["eligible_against_control"]["both"])
         self.assertFalse(report["selection"]["composition_nondominated"])
         self.assertEqual(report["selection"]["selected_arm"], "own_value")
@@ -173,7 +237,7 @@ class InteractionGateTests(unittest.TestCase):
             own, changed = values[arm]
             return {"own": own, "rival": 0, "changed": changed}
 
-        report = gate.assess(make_reports(effect))
+        report = assess_reports(make_reports(effect))
         self.assertEqual(report["selection"]["verdict"], "SELECT_BOTH")
         self.assertEqual(
             report["selection"]["eligible_against_control"],
@@ -193,7 +257,7 @@ class InteractionGateTests(unittest.TestCase):
             own, changed = values[arm]
             return {"own": own, "rival": 0, "changed": changed}
 
-        report = gate.assess(make_reports(effect))
+        report = assess_reports(make_reports(effect))
         self.assertEqual(report["selection"]["verdict"], "NO_SAFE_ADVANCE")
         self.assertIsNone(report["selection"]["selected_arm"])
 
@@ -202,7 +266,7 @@ class InteractionGateTests(unittest.TestCase):
             del arm, opponent, seed, seat
             return {"own": 0, "rival": 0, "changed": False}
 
-        report = gate.assess(make_reports(effect))
+        report = assess_reports(make_reports(effect))
         self.assertEqual(report["selection"]["verdict"], "INACTIVE")
         self.assertEqual(
             report["overall"]["pairwise"]["both_vs_control"][
@@ -222,7 +286,7 @@ class InteractionGateTests(unittest.TestCase):
                 return {"own": 1, "rival": 0, "changed": True}
             return {"own": -2, "rival": 0, "changed": True}
 
-        report = gate.assess(make_reports(effect))
+        report = assess_reports(make_reports(effect))
         own = report["overall"]["pairwise"]["own_value_vs_control"]
         self.assertGreater(own["own_cash"]["mean"], 0)
         self.assertFalse(report["selection"]["eligible_against_control"]["own_value"])
@@ -236,7 +300,7 @@ class InteractionGateTests(unittest.TestCase):
             return default_effect(arm, "", 0, 0)
 
         with self.assertRaisesRegex(gate.EvidenceError, "action stream"):
-            gate.assess(make_reports(effect))
+            assess_reports(make_reports(effect))
 
     def test_equal_action_stream_with_divergent_trace_is_rejected(self):
         reports = make_reports()
@@ -245,51 +309,51 @@ class InteractionGateTests(unittest.TestCase):
         arm["candidate_action_sha256"] = key["candidate_action_sha256"]
         # Keep the candidate trace and economics different.
         with self.assertRaisesRegex(gate.EvidenceError, "equal candidate action streams"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_provenance_mismatch_is_rejected(self):
         reports = make_reports()
         reports["both"]["engine_sha256"] = "f" * 64
         with self.assertRaisesRegex(gate.EvidenceError, "provenance differs"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_malformed_provenance_digest_is_rejected(self):
         reports = make_reports()
         for arm in ARMS:
             reports[arm]["loader_sha256"] = "not-a-digest"
         with self.assertRaisesRegex(gate.EvidenceError, "loader_sha256"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_duplicate_cell_is_rejected(self):
         reports = make_reports()
         reports["both"]["games"][-1] = copy.deepcopy(reports["both"]["games"][0])
         with self.assertRaisesRegex(gate.EvidenceError, "duplicate cell"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_incomplete_lifecycle_is_rejected(self):
         reports = make_reports()
         reports["certified_pressure"]["games"][0]["candidate_action_count"] = 718
         with self.assertRaisesRegex(gate.EvidenceError, "719 captured"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_bank_score_mismatch_is_rejected(self):
         reports = make_reports()
         reports["own_value"]["games"][0]["bank_snapshot"][0] += 1
         with self.assertRaisesRegex(gate.EvidenceError, "scores differ"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_boolean_identity_is_rejected(self):
         reports = make_reports()
         reports["both"]["games"][0]["candidate_seat"] = True
         with self.assertRaisesRegex(gate.EvidenceError, "must be an integer"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_nonfinite_score_is_rejected(self):
         reports = make_reports()
         reports["both"]["games"][0]["scores"][0] = float("inf")
         reports["both"]["games"][0]["bank_snapshot"][0] = float("inf")
         with self.assertRaisesRegex(gate.EvidenceError, "must be finite"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_finite_scores_that_overflow_a_delta_are_rejected(self):
         reports = make_reports()
@@ -298,7 +362,7 @@ class InteractionGateTests(unittest.TestCase):
         control["scores"][0] = control["bank_snapshot"][0] = -1e308
         candidate["scores"][0] = candidate["bank_snapshot"][0] = 1e308
         with self.assertRaisesRegex(gate.EvidenceError, "must be finite"):
-            gate.assess(reports)
+            assess_reports(reports)
 
     def test_arm_fingerprints_must_be_distinct(self):
         reports = make_reports()
@@ -306,7 +370,66 @@ class InteractionGateTests(unittest.TestCase):
             "sha256"
         ]
         with self.assertRaisesRegex(gate.EvidenceError, "must be distinct"):
-            gate.assess(reports)
+            assess_reports(reports)
+
+    def test_manifest_candidate_must_match_executed_report(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["arms"]["both"]["candidate_sha256"] = digest("wrong-candidate")
+        with self.assertRaisesRegex(gate.EvidenceError, "differs from executed report"):
+            gate.assess(reports, manifest)
+
+    def test_both_arm_must_reuse_exact_singleton_factor_bytes(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["arms"]["both"]["factors"]["certified_pressure"] = digest(
+            "different-pressure-source"
+        )
+        with self.assertRaisesRegex(gate.EvidenceError, "exact singleton source bytes"):
+            gate.assess(reports, manifest)
+
+    def test_control_cannot_leak_a_factor(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["arms"]["control"]["factors"]["own_value"] = manifest["factors"][
+            "own_value"
+        ]["source_sha256"]
+        with self.assertRaisesRegex(gate.EvidenceError, "control factor map keys differ"):
+            gate.assess(reports, manifest)
+
+    def test_every_arm_must_bind_same_canonical_runtime(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["arms"]["certified_pressure"]["runtime_tree_sha256"] = digest(
+            "foreign-runtime"
+        )
+        with self.assertRaisesRegex(gate.EvidenceError, "canonical closure differs"):
+            gate.assess(reports, manifest)
+
+    def test_pressure_contract_and_delay_bound_are_exact(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["factors"]["certified_pressure"]["contract"] = "proxy-zero-partition"
+        with self.assertRaisesRegex(gate.EvidenceError, "contract identity mismatch"):
+            gate.assess(reports, manifest)
+        manifest = make_manifest(reports)
+        manifest["factors"]["certified_pressure"]["delay_bound_source"] = "proxyQuantity"
+        with self.assertRaisesRegex(gate.EvidenceError, "must be shedCapacity"):
+            gate.assess(reports, manifest)
+
+    def test_manifest_evaluator_binding_must_match_reports(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["panel_binding"]["evaluator_sha256"] = digest("foreign-evaluator")
+        with self.assertRaisesRegex(gate.EvidenceError, "differs from reports"):
+            gate.assess(reports, manifest)
+
+    def test_manifest_rejects_unexpected_fields(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["arms"]["own_value"]["unbound_note"] = "ignored without this check"
+        with self.assertRaisesRegex(gate.EvidenceError, "unexpected"):
+            gate.assess(reports, manifest)
 
     def test_strict_loader_rejects_duplicate_keys_and_nan(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -320,7 +443,7 @@ class InteractionGateTests(unittest.TestCase):
                 gate.strict_load(nonfinite, "fixture")
 
     def test_markdown_reports_decision_and_boundaries(self):
-        report = gate.assess(make_reports())
+        report = assess_reports(make_reports())
         rendered = gate.markdown(report)
         self.assertIn("SELECT_BOTH", rendered)
         self.assertIn("32", rendered)
