@@ -30,18 +30,18 @@ MAX_PLANS = 700
 
 
 def post_units(obs, action, config, *, shed_capacity=None):
-    """Exact deterministic engine unit stage on the player's observed farm."""
+    """Execute the deterministic unit stage in official actor order.
+
+    Farmer and hand actions share one mutable seed ledger.  The interpreter
+    therefore accepts the legal prefix when several actors request a crop with
+    scarce seed; an illegal earlier PLANT also leaves its seed available to a
+    later actor.  Sequential ``_apply_unit_action`` calls preserve both rules.
+    """
     farm = detached_json_value(obs['farms'][obs['player']])
     private = detached_json_value(obs['private'])
     acts = [action.get('farmer',['PASS']), *action.get('hands',[])]
-    demand = {}
-    for a in acts:
-        if a and a[0]=='PLANT' and len(a)>1:
-            demand[a[1]]=demand.get(a[1],0)+1
-    blocked={p for p,n in demand.items() if n>private['seeds'].get(p,0)}
     capacity=int(config.get('shedCapacity',100)) if shed_capacity is None else int(shed_capacity)
     for i,a in enumerate(acts):
-        if a and a[0]=='PLANT' and a[1] in blocked:a=['PASS']
         m._apply_unit_action(farm,private,i,a,len(farm['tiles']),int(obs['step'])//int(config.get('turnsPerDay',24)),int(config.get('turnsPerDay',24)),capacity)
     return farm, private
 
