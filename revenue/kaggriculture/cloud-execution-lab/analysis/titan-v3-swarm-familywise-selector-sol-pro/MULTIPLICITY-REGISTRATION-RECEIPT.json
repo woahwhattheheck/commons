@@ -1,0 +1,106 @@
+{
+  "boundary": "registration receipt must be committed before score inspection; this gate is not promotion authority",
+  "candidate_sha256_by_arm": {
+    "synthetic-arm-a": "cefd18931ee340478e53f8ca42043cba1a5f24f6ffc5f325c8d3c5475482b24b",
+    "synthetic-arm-b": "e46ab0bbad10610192a026d020d81ffc644239599e6d7fdea4012b68fa147cc9",
+    "synthetic-arm-c": "b7da1f46a66b54cbbbe0e8425a29684437f641337d5754b40001365884710f36",
+    "synthetic-arm-d": "03f661d4db5efaa83306e0f7ec9bf2a5bca0a32f7e554018debf7df100ead703"
+  },
+  "declared_arm_ids": [
+    "synthetic-arm-a",
+    "synthetic-arm-b",
+    "synthetic-arm-c",
+    "synthetic-arm-d"
+  ],
+  "execution_sha256": "a593cb0a17789d1dcc650b7461f2e7f549035771b2ba0ed359b74eb1fb270229",
+  "family_alpha": {
+    "decimal": 0.05,
+    "denominator": 20,
+    "numerator": 1
+  },
+  "family_id": "titan-v3-synthetic-four-arm-multiplicity-witness",
+  "grid": {
+    "cells_per_arm": 20,
+    "opponents": [
+      "arlene",
+      "v1"
+    ],
+    "seats": [
+      0,
+      1
+    ],
+    "seeds": [
+      2609101001,
+      2609101002,
+      2609101003,
+      2609101004,
+      2609101005
+    ]
+  },
+  "hypotheses": 4,
+  "kind": "titan-v3-swarm-family-registration",
+  "max_looks": 1,
+  "normalized_registration": {
+    "candidates": [
+      {
+        "arm_id": "synthetic-arm-a",
+        "candidate_sha256": "cefd18931ee340478e53f8ca42043cba1a5f24f6ffc5f325c8d3c5475482b24b"
+      },
+      {
+        "arm_id": "synthetic-arm-b",
+        "candidate_sha256": "e46ab0bbad10610192a026d020d81ffc644239599e6d7fdea4012b68fa147cc9"
+      },
+      {
+        "arm_id": "synthetic-arm-c",
+        "candidate_sha256": "b7da1f46a66b54cbbbe0e8425a29684437f641337d5754b40001365884710f36"
+      },
+      {
+        "arm_id": "synthetic-arm-d",
+        "candidate_sha256": "03f661d4db5efaa83306e0f7ec9bf2a5bca0a32f7e554018debf7df100ead703"
+      }
+    ],
+    "execution": {
+      "configuration_sha256": "56c2269721c315c47eb275ed951cec05358c4a995a2b940b63baaaecec711e32",
+      "control_sha256": "cf89773147fe0b24d60b443c9c2f830b91594c294ed35e354af2015529148b9c",
+      "engine_sha256": "49b0260cd2cc9ff7bc93c37941f42dcd9622a42040a908c53faab781a70bfd56",
+      "evaluator_sha256": "dbfaa8cdf50eb94e180cd047bc7f3a997ef2fe4d53b06ef95bd490b012de2bb0",
+      "loader_sha256": "81ecf5d4a26e517dd992b3d34e5d45d7275638ff48b10e7447d4c62ade9deeab",
+      "opponent_sha256": {
+        "arlene": "b648cfb5bb827e24bc2ae265cfbac14d01cac5184054300a24d815b58d79842e",
+        "v1": "facc05bb123fb9bc338ab97baa756a4b88d675e4ea4d9b7e423154728b7ee7b2"
+      },
+      "opponents": [
+        "arlene",
+        "v1"
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "seeds": [
+        2609101001,
+        2609101002,
+        2609101003,
+        2609101004,
+        2609101005
+      ]
+    },
+    "family_alpha": {
+      "denominator": 20,
+      "numerator": 1
+    },
+    "family_id": "titan-v3-synthetic-four-arm-multiplicity-witness",
+    "max_looks": 1,
+    "schema_version": 1,
+    "source_commit": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb"
+  },
+  "per_look_alpha": {
+    "decimal": 0.05,
+    "denominator": 20,
+    "numerator": 1
+  },
+  "procedure": "equal Bonferroni alpha spending across looks; Holm step-down across all registered arms",
+  "registration_sha256": "370296146b69f04cbecad2869854809f39b946d2017c60b8ce2ca178bd0f14f4",
+  "schema_version": 1,
+  "source_commit": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb"
+}

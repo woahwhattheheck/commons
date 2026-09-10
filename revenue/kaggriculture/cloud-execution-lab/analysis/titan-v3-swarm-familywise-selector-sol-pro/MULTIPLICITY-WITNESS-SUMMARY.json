@@ -1,0 +1,21 @@
+{
+  "family_decision": "MORE_EVIDENCE",
+  "holm_adjusted_tail_each_arm": {
+    "denominator": 8,
+    "numerator": 1
+  },
+  "hypotheses": 4,
+  "independent_seed_clusters_per_arm": 5,
+  "kind": "synthetic-predecessor-killing-multiplicity-witness",
+  "lesson": "screening four arms at uncorrected 5% cannot turn four raw 1/32 tails into a selected winner",
+  "naive_individual_5_percent_calls": 4,
+  "raw_one_sided_sign_tail_each_arm": {
+    "denominator": 32,
+    "numerator": 1
+  },
+  "real_gameplay_evidence": false,
+  "registration_sha256": "370296146b69f04cbecad2869854809f39b946d2017c60b8ce2ca178bd0f14f4",
+  "schema_version": 1,
+  "selection_receipt_sha256": "7dce39589102bd9df709d24116bfbe0cbf7dca7180f52ab0bcc1dd27c31942ec",
+  "selection_safe_advance_calls": 0
+}

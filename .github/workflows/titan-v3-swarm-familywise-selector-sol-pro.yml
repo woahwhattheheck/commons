@@ -1,0 +1,42 @@
+name: titan-v3-swarm-familywise-selector-sol-pro
+
+on:
+  push:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-swarm-familywise-selector-sol-pro/**'
+      - '.github/workflows/titan-v3-swarm-familywise-selector-sol-pro.yml'
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-swarm-familywise-selector-sol-pro/**'
+      - '.github/workflows/titan-v3-swarm-familywise-selector-sol-pro.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and run fail-closed contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-swarm-familywise-selector-sol-pro
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            swarm_family_gate.py \
+            test_swarm_family_gate.py \
+            build_multiplicity_witness.py
+          python -m unittest -v test_swarm_family_gate.py
+      - name: Rebuild retained multiplicity witness byte-for-byte
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-swarm-familywise-selector-sol-pro
+        run: |
+          set -euo pipefail
+          output="$(mktemp -d)"
+          python build_multiplicity_witness.py --output-dir "$output"
+          cmp MULTIPLICITY-REGISTRATION-RECEIPT.json "$output/MULTIPLICITY-REGISTRATION-RECEIPT.json"
+          cmp MULTIPLICITY-SELECTION-RECEIPT.json "$output/MULTIPLICITY-SELECTION-RECEIPT.json"
+          cmp MULTIPLICITY-WITNESS-SUMMARY.json "$output/MULTIPLICITY-WITNESS-SUMMARY.json"

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "operation": "TITAN-V3-SWARM-FAMILYWISE-SELECTOR-20260910-01",
+  "owner": "SOL-PRO",
+  "branch_point_main": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+  "slack_claim": {
+    "channel_id": "C0C0Z8AHGP2",
+    "message_ts": "1789069368.997249"
+  },
+  "problem_receipt": {
+    "canonical_readme_path": "revenue/kaggriculture/cloud-policy-portfolio/README.md",
+    "canonical_readme_git_blob": "1b2d39596c424dc6ab529b9a33496579c9044f81",
+    "recorded_regression": "the observation-conditioned research selector regressed two wins and was not promoted"
+  },
+  "composed_predecessors": [
+    {
+      "pull_request": 11774,
+      "head": "ed1ddcd8096d322606d587d889d5eaad6e98e371",
+      "boundary": "complete-arm family and execution-closure custody"
+    },
+    {
+      "pull_request": 11998,
+      "head": "cc7b7392225fd4fcda358fb98059975e575f8a4c",
+      "boundary": "mirrored-seat and repeated-seed clustering"
+    },
+    {
+      "pull_request": 11996,
+      "head": "af9d6575307f6ebe0c163afba1025cfd8ea78bf9",
+      "boundary": "paired W/T/L non-regression"
+    }
+  ],
+  "new_boundary": "cross-arm and cross-look selection integrity for a parallel candidate swarm",
+  "retained_evidence": {
+    "kind": "synthetic predecessor-killing statistical witness",
+    "real_gameplay_evidence": false,
+    "raw_tail_each_of_four_arms": "1/32",
+    "holm_adjusted_tail_each_of_four_arms": "1/8",
+    "family_verdict": "MORE_EVIDENCE"
+  },
+  "mutation_boundary": {
+    "gameplay_policy": false,
+    "canonical_runtime": false,
+    "canonical_config": false,
+    "canonical_archive": false,
+    "release_pointer": false,
+    "provider_state": false,
+    "kaggle_state": false,
+    "submission_state": false
+  }
+}

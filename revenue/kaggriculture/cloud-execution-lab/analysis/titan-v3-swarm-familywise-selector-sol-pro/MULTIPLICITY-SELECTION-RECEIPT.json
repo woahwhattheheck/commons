@@ -1,0 +1,548 @@
+{
+  "advancing_arms": [],
+  "arms": [
+    {
+      "arm_id": "synthetic-arm-a",
+      "behavior_identity": {
+        "candidate_action_vector_sha256": "8e9317022a4344d276069dde98a4cee901156cd2a0f39329306b54c84c98ebc4",
+        "control_action_vector_sha256": "ca4db20bf57878133fc31f4cbe7b99336fcd6eacab9cd047dd473ea564717230"
+      },
+      "holm": {
+        "adjusted_p": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "family_hypotheses": 4,
+        "multiplier": 4,
+        "rank": 1,
+        "rank_critical_alpha": {
+          "decimal": 0.0125,
+          "denominator": 80,
+          "numerator": 1
+        }
+      },
+      "mechanically_eligible": true,
+      "metrics": {
+        "action_changed_cells": 20,
+        "cells": 20,
+        "mean_margin_delta": 1,
+        "mean_own_delta": 1,
+        "median_own_delta": 1,
+        "negative_own_cells": 0,
+        "positive_own_cells": 20,
+        "tie_own_cells": 0,
+        "worst_opponent_seat_margin_delta": 1,
+        "worst_opponent_seat_own_delta": 1,
+        "wtl_regressions": 0
+      },
+      "no_signal_reasons": [],
+      "opponent_seat_strata": [
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 1
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 1
+        }
+      ],
+      "reason": "per-arm tail clears the spent alpha, but the complete-family Holm gate does not",
+      "safety_failures": [],
+      "seed_clusters": {
+        "experimental_unit": "environment seed; all opponents and both seats are blocked within seed",
+        "negative": 0,
+        "nonzero": 5,
+        "positive": 5,
+        "rows": [
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101001,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101002,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101003,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101004,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101005,
+            "sign": 1
+          }
+        ],
+        "ties": 0
+      },
+      "seed_sign_tail": {
+        "decimal": 0.03125,
+        "denominator": 32,
+        "numerator": 1
+      },
+      "verdict": "MORE_EVIDENCE",
+      "wtl_regression_rows": [],
+      "wtl_transition_census": {
+        "WIN->WIN": 20
+      }
+    },
+    {
+      "arm_id": "synthetic-arm-b",
+      "behavior_identity": {
+        "candidate_action_vector_sha256": "8fc947e48bdaa0f88545f7b7ac08a30d295872803b9d7bc0757773ca430a8461",
+        "control_action_vector_sha256": "ca4db20bf57878133fc31f4cbe7b99336fcd6eacab9cd047dd473ea564717230"
+      },
+      "holm": {
+        "adjusted_p": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "family_hypotheses": 4,
+        "multiplier": 3,
+        "rank": 2,
+        "rank_critical_alpha": {
+          "decimal": 0.016666666666666666,
+          "denominator": 60,
+          "numerator": 1
+        }
+      },
+      "mechanically_eligible": true,
+      "metrics": {
+        "action_changed_cells": 20,
+        "cells": 20,
+        "mean_margin_delta": 1,
+        "mean_own_delta": 1,
+        "median_own_delta": 1,
+        "negative_own_cells": 0,
+        "positive_own_cells": 20,
+        "tie_own_cells": 0,
+        "worst_opponent_seat_margin_delta": 1,
+        "worst_opponent_seat_own_delta": 1,
+        "wtl_regressions": 0
+      },
+      "no_signal_reasons": [],
+      "opponent_seat_strata": [
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 1
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 1
+        }
+      ],
+      "reason": "per-arm tail clears the spent alpha, but the complete-family Holm gate does not",
+      "safety_failures": [],
+      "seed_clusters": {
+        "experimental_unit": "environment seed; all opponents and both seats are blocked within seed",
+        "negative": 0,
+        "nonzero": 5,
+        "positive": 5,
+        "rows": [
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101001,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101002,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101003,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101004,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101005,
+            "sign": 1
+          }
+        ],
+        "ties": 0
+      },
+      "seed_sign_tail": {
+        "decimal": 0.03125,
+        "denominator": 32,
+        "numerator": 1
+      },
+      "verdict": "MORE_EVIDENCE",
+      "wtl_regression_rows": [],
+      "wtl_transition_census": {
+        "WIN->WIN": 20
+      }
+    },
+    {
+      "arm_id": "synthetic-arm-c",
+      "behavior_identity": {
+        "candidate_action_vector_sha256": "2685026cbd2351bef92bac47bf12716c6d8c83a71b131852d3082edd3187d0b6",
+        "control_action_vector_sha256": "ca4db20bf57878133fc31f4cbe7b99336fcd6eacab9cd047dd473ea564717230"
+      },
+      "holm": {
+        "adjusted_p": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "family_hypotheses": 4,
+        "multiplier": 2,
+        "rank": 3,
+        "rank_critical_alpha": {
+          "decimal": 0.025,
+          "denominator": 40,
+          "numerator": 1
+        }
+      },
+      "mechanically_eligible": true,
+      "metrics": {
+        "action_changed_cells": 20,
+        "cells": 20,
+        "mean_margin_delta": 1,
+        "mean_own_delta": 1,
+        "median_own_delta": 1,
+        "negative_own_cells": 0,
+        "positive_own_cells": 20,
+        "tie_own_cells": 0,
+        "worst_opponent_seat_margin_delta": 1,
+        "worst_opponent_seat_own_delta": 1,
+        "wtl_regressions": 0
+      },
+      "no_signal_reasons": [],
+      "opponent_seat_strata": [
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 1
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 1
+        }
+      ],
+      "reason": "per-arm tail clears the spent alpha, but the complete-family Holm gate does not",
+      "safety_failures": [],
+      "seed_clusters": {
+        "experimental_unit": "environment seed; all opponents and both seats are blocked within seed",
+        "negative": 0,
+        "nonzero": 5,
+        "positive": 5,
+        "rows": [
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101001,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101002,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101003,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101004,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101005,
+            "sign": 1
+          }
+        ],
+        "ties": 0
+      },
+      "seed_sign_tail": {
+        "decimal": 0.03125,
+        "denominator": 32,
+        "numerator": 1
+      },
+      "verdict": "MORE_EVIDENCE",
+      "wtl_regression_rows": [],
+      "wtl_transition_census": {
+        "WIN->WIN": 20
+      }
+    },
+    {
+      "arm_id": "synthetic-arm-d",
+      "behavior_identity": {
+        "candidate_action_vector_sha256": "a4623802edeaa4972606f7f6554a9cb5d6e7158015daf461d6f471e6a1d14fad",
+        "control_action_vector_sha256": "ca4db20bf57878133fc31f4cbe7b99336fcd6eacab9cd047dd473ea564717230"
+      },
+      "holm": {
+        "adjusted_p": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "family_hypotheses": 4,
+        "multiplier": 1,
+        "rank": 4,
+        "rank_critical_alpha": {
+          "decimal": 0.05,
+          "denominator": 20,
+          "numerator": 1
+        }
+      },
+      "mechanically_eligible": true,
+      "metrics": {
+        "action_changed_cells": 20,
+        "cells": 20,
+        "mean_margin_delta": 1,
+        "mean_own_delta": 1,
+        "median_own_delta": 1,
+        "negative_own_cells": 0,
+        "positive_own_cells": 20,
+        "tie_own_cells": 0,
+        "worst_opponent_seat_margin_delta": 1,
+        "worst_opponent_seat_own_delta": 1,
+        "wtl_regressions": 0
+      },
+      "no_signal_reasons": [],
+      "opponent_seat_strata": [
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "arlene",
+          "seat": 1
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 0
+        },
+        {
+          "cells": 5,
+          "mean_margin_delta": 1,
+          "mean_own_delta": 1,
+          "opponent": "v1",
+          "seat": 1
+        }
+      ],
+      "reason": "per-arm tail clears the spent alpha, but the complete-family Holm gate does not",
+      "safety_failures": [],
+      "seed_clusters": {
+        "experimental_unit": "environment seed; all opponents and both seats are blocked within seed",
+        "negative": 0,
+        "nonzero": 5,
+        "positive": 5,
+        "rows": [
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101001,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101002,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101003,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101004,
+            "sign": 1
+          },
+          {
+            "cells": 4,
+            "mean_own_delta": 1,
+            "seed": 2609101005,
+            "sign": 1
+          }
+        ],
+        "ties": 0
+      },
+      "seed_sign_tail": {
+        "decimal": 0.03125,
+        "denominator": 32,
+        "numerator": 1
+      },
+      "verdict": "MORE_EVIDENCE",
+      "wtl_regression_rows": [],
+      "wtl_transition_census": {
+        "WIN->WIN": 20
+      }
+    }
+  ],
+  "boundary": "ADVANCE_SCREEN nominates an arm for independent confirmation only; it is not canonical, release, leaderboard, or submission authority",
+  "decision": "MORE_EVIDENCE",
+  "execution_identity": {
+    "candidate_sha256_by_arm": {
+      "synthetic-arm-a": "cefd18931ee340478e53f8ca42043cba1a5f24f6ffc5f325c8d3c5475482b24b",
+      "synthetic-arm-b": "e46ab0bbad10610192a026d020d81ffc644239599e6d7fdea4012b68fa147cc9",
+      "synthetic-arm-c": "b7da1f46a66b54cbbbe0e8425a29684437f641337d5754b40001365884710f36",
+      "synthetic-arm-d": "03f661d4db5efaa83306e0f7ec9bf2a5bca0a32f7e554018debf7df100ead703"
+    },
+    "configuration_sha256": "56c2269721c315c47eb275ed951cec05358c4a995a2b940b63baaaecec711e32",
+    "control_sha256": "cf89773147fe0b24d60b443c9c2f830b91594c294ed35e354af2015529148b9c",
+    "engine_sha256": "49b0260cd2cc9ff7bc93c37941f42dcd9622a42040a908c53faab781a70bfd56",
+    "evaluator_sha256": "dbfaa8cdf50eb94e180cd047bc7f3a997ef2fe4d53b06ef95bd490b012de2bb0",
+    "execution_sha256": "a593cb0a17789d1dcc650b7461f2e7f549035771b2ba0ed359b74eb1fb270229",
+    "loader_sha256": "81ecf5d4a26e517dd992b3d34e5d45d7275638ff48b10e7447d4c62ade9deeab",
+    "opponent_sha256": {
+      "arlene": "b648cfb5bb827e24bc2ae265cfbac14d01cac5184054300a24d815b58d79842e",
+      "v1": "facc05bb123fb9bc338ab97baa756a4b88d675e4ea4d9b7e423154728b7ee7b2"
+    }
+  },
+  "experimental_design": {
+    "behavior_alias_groups": [],
+    "behavior_aliases_reduce_hypothesis_count": false,
+    "blocked_within_seed": [
+      "opponent",
+      "candidate seat"
+    ],
+    "control_grid_shared_across_arms": true,
+    "experimental_unit": "environment seed",
+    "negative_opponent_seat_margin_strata_allowed": 0,
+    "score_movement_requires_action_digest_change": true,
+    "statistical_assumption": "independent exchangeable seed-cluster signs under the null",
+    "strict_negative_own_cash_cells_allowed": 0,
+    "strict_wtl_rank_regressions_allowed": 0
+  },
+  "family_identity": {
+    "cells_per_arm": 20,
+    "declared_arm_ids": [
+      "synthetic-arm-a",
+      "synthetic-arm-b",
+      "synthetic-arm-c",
+      "synthetic-arm-d"
+    ],
+    "family_id": "titan-v3-synthetic-four-arm-multiplicity-witness",
+    "hypotheses": 4,
+    "look_index": 1,
+    "max_looks": 1,
+    "panel_id": "synthetic-four-arm-raw-5-of-5-positive",
+    "panel_sha256": "c9a27892aa7c0ec6b9794f6eafbd49c294afc3103a9c28f33a282178d4f599e7",
+    "registration_sha256": "370296146b69f04cbecad2869854809f39b946d2017c60b8ce2ca178bd0f14f4",
+    "source_commit": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb"
+  },
+  "kind": "titan-v3-swarm-family-selection",
+  "reason": "at least one arm has clean positive evidence, but none clears the familywise spent alpha",
+  "receipt_sha256": "7dce39589102bd9df709d24116bfbe0cbf7dca7180f52ab0bcc1dd27c31942ec",
+  "recommended_for_confirmation": null,
+  "schema_version": 1,
+  "thresholds": {
+    "arm_multiplicity": "Holm step-down over every predeclared arm, including rejected/no-signal arms",
+    "family_alpha": {
+      "decimal": 0.05,
+      "denominator": 20,
+      "numerator": 1
+    },
+    "look_spending": "equal Bonferroni allocation over every predeclared look",
+    "per_look_alpha": {
+      "decimal": 0.05,
+      "denominator": 20,
+      "numerator": 1
+    }
+  }
+}
