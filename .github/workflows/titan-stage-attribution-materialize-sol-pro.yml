@@ -7,12 +7,19 @@ on:
     paths:
       - .stage-attribution-bootstrap/**
       - .github/workflows/titan-stage-attribution-materialize-sol-pro.yml
+  pull_request:
+    branches:
+      - sol-pro/titan-v3-stage-attribution-base-ab2c8ff
+    types: [opened, synchronize, reopened]
+    paths:
+      - .stage-attribution-bootstrap/**
+      - .github/workflows/titan-stage-attribution-materialize-sol-pro.yml
 
 permissions:
   contents: write
 
 concurrency:
-  group: titan-stage-attribution-materialize-${{ github.ref }}
+  group: titan-stage-attribution-materialize-${{ github.event.pull_request.head.sha || github.sha }}
   cancel-in-progress: false
 
 jobs:
@@ -21,6 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_SHA: ab2c8ff0368e410f175279b0e0299993209c2670
+      BASE_REF: sol-pro/titan-v3-stage-attribution-base-ab2c8ff
       BRANCH: sol-pro/titan-v3-execution-stage-first-divergence-20260910-01
       DEST: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-execution-stage-attribution-sol-pro
       FINAL_WORKFLOW: .github/workflows/titan-v3-execution-stage-first-divergence-sol-pro.yml
@@ -32,15 +40,22 @@ jobs:
       - name: Check out exact transport head
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 20
 
       - name: Verify transport, materialize, test, and publish final tree
         shell: bash
+        env:
+          EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_HEAD_REF: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          EXPECTED_BASE_REF: ${{ github.event.pull_request.base.ref || 'sol-pro/titan-v3-stage-attribution-base-ab2c8ff' }}
+          EXPECTED_BASE_SHA: ${{ github.event.pull_request.base.sha || 'ab2c8ff0368e410f175279b0e0299993209c2670' }}
         run: |
           set -euo pipefail
-          test "$GITHUB_REF_NAME" = "$BRANCH"
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$EXPECTED_HEAD_REF" = "$BRANCH"
+          test "$EXPECTED_BASE_REF" = "$BASE_REF"
+          test "$EXPECTED_BASE_SHA" = "$BASE_SHA"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD_SHA"
           test "$(git merge-base HEAD "$BASE_SHA")" = "$BASE_SHA"
 
           cat > /tmp/chunk-sha256.txt <<'EOF'
