@@ -16,28 +16,32 @@ Within a same-day funding horizon, an expiring crop can therefore retain one or 
 
 ## Reduced executable witness
 
-At step 100:
+At step 120:
 
 - shed capacity is 2;
 - own shed contains `MILK=1` and the inherited current queue sells that unit;
-- the main farmer stands on a mature WHEAT plant with `yield_units=2` and `max_lifespan_step=100`;
-- the represented route is `HARVEST` at 101, `DROP` at 102, and `BUY_ANIMAL GOOSE 1` at 103;
+- the main farmer stands on a mature WHEAT plant planted on day 0 with `yield_units=2` and `max_lifespan_step=120`;
+- the represented route is `HARVEST` at 121, `DROP` at 122, and `BUY_ANIMAL GOOSE 1` at 123;
 - starting cash is already $300, so only capacity distinguishes the arms.
 
-Official chronology decays the plant from 2 to 1 after the step-100 market. With the inherited MILK sale, the one harvested WHEAT leaves room for the goose; with the sale withheld, the shed is full and the goose purchase fails. The incumbent funding trace omits decay, harvests two WHEAT in both arms, fills the shed in both arms, and incorrectly concludes that the inherited purchase was never completed. On the exact current source, the certificate changes from `minimum_now=0` to `minimum_now=1` after the closure.
+This lifecycle is season-reachable under the pinned engine: non-ongoing WHEAT planted on day 0 receives `max_lifespan_step = (0 + max_yield_day 4 + 1) * turnsPerDay 24 = 120`; two retained units are within its official maximum yield. The fixture also uses the engine's locked-quadrant layout and a shed-access farmer position.
+
+Official chronology decays the plant from 2 to 1 after the step-120 market. With the inherited MILK sale, the one harvested WHEAT leaves room for the goose; with the sale withheld, the shed is full and the goose purchase fails. The incumbent funding trace omits decay, harvests two WHEAT in both arms, fills the shed in both arms, and incorrectly concludes that the inherited purchase was never completed. On the exact current source, the certificate changes from `minimum_now=0` to `minimum_now=1` after the closure.
 
 ## Carrier
 
 `materialize.py` is intentionally additive and fail closed. It:
 
 - authenticates `frozen_selected.py` Git blob `fc7baf5c179818a55037f6a61d92984d81d1a21c`;
+- authenticates the runtime binding path through `scheduler.py` blob `a483b24dd72b580d7d8811636b54d2d44f391575` and `mechanics.py` blob `044a4f9c0a4a44dde10ada57563238bcaf82075d`;
+- verifies that the source wildcard-imports `scheduler`, that `scheduler` exports an unrebound `import mechanics as m`, and that runtime `mechanics._decay_plants` has the same attribute-free AST digest as the official primitive;
 - authenticates official `kaggriculture.py` Git blob `3c202c7ee921da239356789e266b694635103fc4`;
 - verifies the official `market -> town -> decay -> end-of-day` call order;
 - locates exactly one top-level `_funding_trace()` and exactly one `for t in range(now, end + 1)` loop;
 - inserts exactly `m._decay_plants(f, t)` as the final stage of each simulated turn;
 - compiles and structurally re-verifies the generated postimage;
 - writes a new file and deterministic receipt atomically; and
-- refuses source/engine drift, aliases, pre-existing outputs, duplicate patches, or ambiguous anchors.
+- refuses source/scheduler/mechanics/engine drift, unresolved runtime binding, aliases, pre-existing outputs, duplicate patches, or ambiguous anchors.
 
 The patch is designed to compose after PR #12053's town-consumption stage: when that helper is present, town consumption remains immediately before plant decay, matching the official chronology. Horizons crossing an end-of-day boundary still require that lane's fail-closed lifecycle rule; this carrier does not claim to model future shop unlocks, daily crop refresh, auto-drop, or RNG.
 
@@ -55,12 +59,14 @@ Materialize without touching canonical source:
 ```bash
 python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py \
   --source revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+  --scheduler revenue/kaggriculture/cloud-execution-lab/scheduler.py \
+  --mechanics revenue/kaggriculture/cloud-execution-lab/mechanics.py \
   --engine revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
   --output /tmp/frozen_selected_decay.py \
   --receipt /tmp/funding_decay_receipt.json
 ```
 
-Contracts cover the exact source/engine identities, chronology order, deterministic lifecycle parity, wrong-parity no-op, WEED transition, animal noninterference, the capacity killer, canonical nonmutation, byte-identical rematerialization, source/engine drift, output aliasing, and town-consumption composition order.
+Twenty-five contracts cover the exact source/scheduler/mechanics/engine identities, runtime call-target binding, chronology order, a season-reachable lifecycle boundary, deterministic parity, wrong-parity no-op, WEED transition, animal noninterference, the capacity killer, canonical nonmutation, byte-identical rematerialization, dependency drift, output aliasing, and town-consumption composition order.
 
 ## Disposition boundary
 

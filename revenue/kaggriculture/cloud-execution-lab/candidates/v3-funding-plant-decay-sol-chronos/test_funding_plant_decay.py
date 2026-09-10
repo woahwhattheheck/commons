@@ -14,6 +14,8 @@ HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]  # .../cloud-execution-lab
 REPO = HERE.parents[4]
 SOURCE = LAB / "frozen_selected.py"
+SCHEDULER = LAB / "scheduler.py"
+MECHANICS = LAB / "mechanics.py"
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
 
 spec = importlib.util.spec_from_file_location("funding_decay_materializer", HERE / "materialize.py")
@@ -83,6 +85,39 @@ class StructuralContracts(unittest.TestCase):
         self.assertEqual(details["prior_stage_call"], "_funding_apply_town_consumption")
         self.assertLess(post.index("_funding_apply_town_consumption"), post.index("m._decay_plants"))
 
+    def test_runtime_binding_accepts_exact_semantics(self):
+        source = "from scheduler import *\n" + _synthetic_source()
+        scheduler = "import mechanics as m\nVALUE = 1\n"
+        decay = "def _decay_plants(farm, step):\n    farm['n'] -= step\n"
+        details = materializer.verify_runtime_decay_binding(
+            source, scheduler, decay, decay
+        )
+        self.assertTrue(details["implicit_wildcard_export"])
+        self.assertFalse(details["scheduler_rebinds_m"])
+
+    def test_runtime_binding_rejects_mechanics_semantic_drift(self):
+        source = "from scheduler import *\n" + _synthetic_source()
+        scheduler = "import mechanics as m\n"
+        runtime = "def _decay_plants(farm, step):\n    farm['n'] -= step\n"
+        official = "def _decay_plants(farm, step):\n    farm['n'] += step\n"
+        with self.assertRaisesRegex(
+            materializer.MaterializationError, "differs from the official engine"
+        ):
+            materializer.verify_runtime_decay_binding(
+                source, scheduler, runtime, official
+            )
+
+    def test_runtime_binding_rejects_scheduler_alias_rebind(self):
+        source = "from scheduler import *\n" + _synthetic_source()
+        scheduler = "import mechanics as m\nm = object()\n"
+        decay = "def _decay_plants(farm, step):\n    farm['n'] -= step\n"
+        with self.assertRaisesRegex(
+            materializer.MaterializationError, "rebinds mechanics alias"
+        ):
+            materializer.verify_runtime_decay_binding(
+                source, scheduler, decay, decay
+            )
+
     def test_rejects_duplicate_decay(self):
         with self.assertRaisesRegex(materializer.MaterializationError, "already contains"):
             materializer.patch_source(_synthetic_source("m._decay_plants(f, t)"))
@@ -104,7 +139,10 @@ class StructuralContracts(unittest.TestCase):
             materializer.patch_source(source)
 
 
-@unittest.skipUnless(SOURCE.is_file() and ENGINE.is_file(), "repository source tree is required")
+@unittest.skipUnless(
+    all(path.is_file() for path in (SOURCE, SCHEDULER, MECHANICS, ENGINE)),
+    "repository source tree is required",
+)
 class ExactRepositoryContracts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -114,8 +152,17 @@ class ExactRepositoryContracts(unittest.TestCase):
         cls.candidate_path = cls.temp_path / "frozen_selected_decay.py"
         cls.receipt_path = cls.temp_path / "receipt.json"
         cls.source_before = SOURCE.read_bytes()
+        cls.scheduler_before = SCHEDULER.read_bytes()
+        cls.mechanics_before = MECHANICS.read_bytes()
         cls.engine_before = ENGINE.read_bytes()
-        cls.receipt = materializer.materialize(SOURCE, ENGINE, cls.candidate_path, cls.receipt_path)
+        cls.receipt = materializer.materialize(
+            SOURCE,
+            SCHEDULER,
+            MECHANICS,
+            ENGINE,
+            cls.candidate_path,
+            cls.receipt_path,
+        )
         cls.canonical = _load("funding_decay_canonical", SOURCE)
         cls.candidate = _load("funding_decay_candidate", cls.candidate_path)
         cls.engine = _load_official_engine()
@@ -126,7 +173,7 @@ class ExactRepositoryContracts(unittest.TestCase):
             sys.path.pop(0)
         cls.temp.cleanup()
 
-    def _plant(self, yield_units=2, max_lifespan_step=100):
+    def _plant(self, yield_units=2, max_lifespan_step=120):
         return {
             "kind": "PLANT",
             "crop": "WHEAT",
@@ -139,7 +186,10 @@ class ExactRepositoryContracts(unittest.TestCase):
         }
 
     def _farm(self, yield_units=2):
-        tiles = [[None for _ in range(10)] for _ in range(10)]
+        tiles = [
+            [None if x < 5 and y < 5 else "LOCKED" for x in range(10)]
+            for y in range(10)
+        ]
         tiles[4][4] = self._plant(yield_units)
         return {
             "money": 300,
@@ -164,20 +214,22 @@ class ExactRepositoryContracts(unittest.TestCase):
         private = self._private(module)
         inventory = {name: 10000 for name in module.m.PRODUCTS}
         obs = {
-            "step": 100,
+            "step": 120,
             "player": 0,
             "market": {"inventory": inventory, "prices": {name: module.m.market_price(name, 10000) for name in module.m.PRODUCTS}},
             "town": {"unlocked_shops": []},
         }
-        route = [{"farmer": ["PASS"], "hands": [], "market": []} for _ in range(104)]
-        route[101] = {"farmer": ["HARVEST"], "hands": [], "market": []}
-        route[102] = {"farmer": ["DROP"], "hands": [], "market": []}
-        route[103] = {"farmer": ["PASS"], "hands": [], "market": [["BUY_ANIMAL", "GOOSE", 1]]}
+        route = [{"farmer": ["PASS"], "hands": [], "market": []} for _ in range(124)]
+        route[121] = {"farmer": ["HARVEST"], "hands": [], "market": []}
+        route[122] = {"farmer": ["DROP"], "hands": [], "market": []}
+        route[123] = {"farmer": ["PASS"], "hands": [], "market": [["BUY_ANIMAL", "GOOSE", 1]]}
         config = {
             "shedCapacity": 2,
             "maxMarketOrdersPerTurn": 10,
             "turnsPerDay": 24,
             "episodeSteps": 720,
+            "townShopSellInterval": 1000,
+            "townCenterSellInterval": 1000,
         }
         base = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 1]]}
         current = {"MILK": 1}
@@ -187,7 +239,7 @@ class ExactRepositoryContracts(unittest.TestCase):
     def _minimum(self, module):
         obs, config, base, farm, private, route, current, targets = self._fixture(module)
         return module.funded_minimum_now(
-            obs, config, base, farm, private, route, 103,
+            obs, config, base, farm, private, route, 123,
             current, targets, "MILK", stress_units=32,
         )
 
@@ -198,6 +250,8 @@ class ExactRepositoryContracts(unittest.TestCase):
             "maxMarketOrdersPerTurn": 10,
             "turnsPerDay": 24,
             "farmHandCostMult": 1,
+            "townShopSellInterval": 1000,
+            "townCenterSellInterval": 1000,
         }
         farm0 = self._farm()
         farm1 = engine._new_farm(10, 300)
@@ -224,14 +278,14 @@ class ExactRepositoryContracts(unittest.TestCase):
         ]
         env = types.SimpleNamespace(configuration=config)
         actions = {
-            100: {"farmer": ["PASS"], "hands": [],
+            120: {"farmer": ["PASS"], "hands": [],
                   "market": [["SELL", "MILK", sell_quantity]] if sell_quantity else [[]]},
-            101: {"farmer": ["HARVEST"], "hands": [], "market": []},
-            102: {"farmer": ["DROP"], "hands": [], "market": []},
-            103: {"farmer": ["PASS"], "hands": [],
+            121: {"farmer": ["HARVEST"], "hands": [], "market": []},
+            122: {"farmer": ["DROP"], "hands": [], "market": []},
+            123: {"farmer": ["PASS"], "hands": [],
                   "market": [["BUY_ANIMAL", "GOOSE", 1]]},
         }
-        for step in range(100, 104):
+        for step in range(120, 124):
             action = actions[step]
             engine._apply_unit_action(
                 farm0, private0, 0, action["farmer"], 10, step // 24, 24, 2
@@ -244,9 +298,25 @@ class ExactRepositoryContracts(unittest.TestCase):
                 engine._decay_plants(farm, step)
         return private0["shed"].get("GOOSE", 0)
 
-    def test_exact_source_and_engine_git_blobs(self):
+    def test_exact_decay_binding_git_blobs(self):
         self.assertEqual(materializer.git_blob_sha1(self.source_before), materializer.SOURCE_GIT_BLOB)
+        self.assertEqual(materializer.git_blob_sha1(self.scheduler_before), materializer.SCHEDULER_GIT_BLOB)
+        self.assertEqual(materializer.git_blob_sha1(self.mechanics_before), materializer.MECHANICS_GIT_BLOB)
         self.assertEqual(materializer.git_blob_sha1(self.engine_before), materializer.ENGINE_GIT_BLOB)
+
+    def test_runtime_decay_binding_contract(self):
+        details = materializer.verify_runtime_decay_binding(
+            self.source_before.decode("utf-8"),
+            self.scheduler_before.decode("utf-8"),
+            self.mechanics_before.decode("utf-8"),
+            self.engine_before.decode("utf-8"),
+        )
+        self.assertTrue(details["implicit_wildcard_export"])
+        self.assertFalse(details["scheduler_rebinds_m"])
+        self.assertEqual(
+            Path(self.candidate.m.__file__).resolve(),
+            MECHANICS.resolve(),
+        )
 
     def test_official_engine_chronology_contract(self):
         details = materializer.verify_engine(self.engine_before.decode("utf-8"))
@@ -254,8 +324,17 @@ class ExactRepositoryContracts(unittest.TestCase):
         self.assertLess(details["town_statement_index"], details["decay_statement_index"])
         self.assertLess(details["decay_statement_index"], details["end_of_day_statement_index"])
 
+    def test_witness_plant_metadata_is_engine_reachable(self):
+        generated = self.engine._new_plant("WHEAT", 0, 24)
+        witness = self._plant()
+        self.assertEqual(generated["max_lifespan_step"], 120)
+        self.assertEqual(witness["max_lifespan_step"], generated["max_lifespan_step"])
+        self.assertEqual(witness["planted_day"], generated["planted_day"])
+        self.assertLessEqual(witness["yield_units"], self.engine.CROPS["WHEAT"]["max_yield"])
+        self.assertEqual(witness["consecutive_unwatered"], 0)
+
     def test_runtime_decay_matches_official_boundaries(self):
-        for step, expected in ((99, 2), (100, 1), (101, 2), (102, 1)):
+        for step, expected in ((119, 2), (120, 1), (121, 2), (122, 1)):
             official_farm = self._farm()
             runtime_farm = copy.deepcopy(official_farm)
             self.engine._decay_plants(official_farm, step)
@@ -272,9 +351,9 @@ class ExactRepositoryContracts(unittest.TestCase):
             "pending_care_bonus": 0,
         }
         expected = copy.deepcopy(farm)
-        self.engine._decay_plants(expected, 100)
+        self.engine._decay_plants(expected, 120)
         actual = copy.deepcopy(farm)
-        self.candidate.m._decay_plants(actual, 100)
+        self.candidate.m._decay_plants(actual, 120)
         self.assertEqual(actual, expected)
         self.assertEqual(actual["tiles"][4][4], {"kind": "WEED"})
         self.assertEqual(actual["tiles"][4][5]["yield_units"], 2)
@@ -296,14 +375,16 @@ class ExactRepositoryContracts(unittest.TestCase):
         obs, config, base, farm, private, route, current, targets = self._fixture(self.candidate)
         baseline_market = self.candidate.materialize_sales(base["market"], current, private["shed"], targets, 10)
         withheld_market = self.candidate.materialize_sales(base["market"], {"MILK": 0}, private["shed"], targets, 10)
-        baseline = self.candidate._funding_trace(obs, config, farm, private, route, 100, 103, baseline_market)
-        withheld = self.candidate._funding_trace(obs, config, farm, private, route, 100, 103, withheld_market)
-        key = (103, 0, "BUY_ANIMAL", "GOOSE")
+        baseline = self.candidate._funding_trace(obs, config, farm, private, route, 120, 123, baseline_market)
+        withheld = self.candidate._funding_trace(obs, config, farm, private, route, 120, 123, withheld_market)
+        key = (123, 0, "BUY_ANIMAL", "GOOSE")
         self.assertEqual(dict(baseline["acquisitions"])[key], 1)
         self.assertEqual(dict(withheld["acquisitions"])[key], 0)
 
     def test_canonical_inputs_are_not_modified(self):
         self.assertEqual(SOURCE.read_bytes(), self.source_before)
+        self.assertEqual(SCHEDULER.read_bytes(), self.scheduler_before)
+        self.assertEqual(MECHANICS.read_bytes(), self.mechanics_before)
         self.assertEqual(ENGINE.read_bytes(), self.engine_before)
         self.assertTrue(self.candidate_path.is_file())
 
@@ -313,10 +394,16 @@ class ExactRepositoryContracts(unittest.TestCase):
         self.assertEqual(parsed["operation"], materializer.OPERATION)
         self.assertEqual(parsed["status"], "PASS")
         self.assertFalse(parsed["mutation_boundary"]["canonical_source_modified"])
+        self.assertEqual(
+            parsed["runtime_decay_binding"]["contract"]["decay_semantic_sha256"],
+            materializer._semantic_function_digest(
+                materializer._single_function(ast.parse(self.engine_before.decode("utf-8")), "_decay_plants")
+            ),
+        )
         with tempfile.TemporaryDirectory() as second_dir:
             out2 = Path(second_dir) / "candidate.py"
             receipt2 = Path(second_dir) / "receipt.json"
-            materializer.materialize(SOURCE, ENGINE, out2, receipt2)
+            materializer.materialize(SOURCE, SCHEDULER, MECHANICS, ENGINE, out2, receipt2)
             self.assertEqual(out2.read_bytes(), self.candidate_path.read_bytes())
             self.assertEqual(receipt2.read_bytes(), self.receipt_path.read_bytes())
 
@@ -326,7 +413,32 @@ class ExactRepositoryContracts(unittest.TestCase):
             bad = root / "frozen_selected.py"
             bad.write_bytes(self.source_before + b"\n")
             with self.assertRaisesRegex(materializer.MaterializationError, "source Git blob mismatch"):
-                materializer.materialize(bad, ENGINE, root / "out.py", root / "receipt.json")
+                materializer.materialize(
+                    bad, SCHEDULER, MECHANICS, ENGINE,
+                    root / "out.py", root / "receipt.json",
+                )
+
+    def test_scheduler_drift_fails_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bad = root / "scheduler.py"
+            bad.write_bytes(self.scheduler_before + b"\n")
+            with self.assertRaisesRegex(materializer.MaterializationError, "scheduler Git blob mismatch"):
+                materializer.materialize(
+                    SOURCE, bad, MECHANICS, ENGINE,
+                    root / "out.py", root / "receipt.json",
+                )
+
+    def test_mechanics_drift_fails_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bad = root / "mechanics.py"
+            bad.write_bytes(self.mechanics_before + b"\n")
+            with self.assertRaisesRegex(materializer.MaterializationError, "mechanics Git blob mismatch"):
+                materializer.materialize(
+                    SOURCE, SCHEDULER, bad, ENGINE,
+                    root / "out.py", root / "receipt.json",
+                )
 
     def test_engine_drift_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -334,13 +446,18 @@ class ExactRepositoryContracts(unittest.TestCase):
             bad = root / "kaggriculture.py"
             bad.write_bytes(self.engine_before + b"\n")
             with self.assertRaisesRegex(materializer.MaterializationError, "engine Git blob mismatch"):
-                materializer.materialize(SOURCE, bad, root / "out.py", root / "receipt.json")
+                materializer.materialize(
+                    SOURCE, SCHEDULER, MECHANICS, bad,
+                    root / "out.py", root / "receipt.json",
+                )
 
     def test_output_alias_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:
             receipt = Path(directory) / "receipt.json"
             with self.assertRaisesRegex(materializer.MaterializationError, "must be distinct"):
-                materializer.materialize(SOURCE, ENGINE, SOURCE, receipt)
+                materializer.materialize(
+                    SOURCE, SCHEDULER, MECHANICS, ENGINE, SOURCE, receipt
+                )
 
     def test_input_symlink_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -348,7 +465,10 @@ class ExactRepositoryContracts(unittest.TestCase):
             alias = root / "source.py"
             alias.symlink_to(SOURCE)
             with self.assertRaisesRegex(materializer.MaterializationError, "non-symlink"):
-                materializer.materialize(alias, ENGINE, root / "out.py", root / "receipt.json")
+                materializer.materialize(
+                    alias, SCHEDULER, MECHANICS, ENGINE,
+                    root / "out.py", root / "receipt.json",
+                )
 
 
 if __name__ == "__main__":

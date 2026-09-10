@@ -2,9 +2,10 @@
 """Materialize the exact TITAN funding-trace plant-decay chronology closure.
 
 This carrier never edits the canonical source.  It authenticates the current
-source and pinned official interpreter, inserts the missing deterministic
-post-market plant-decay stage into ``_funding_trace()``, compiles the postimage,
-and emits a deterministic receipt.
+source, its scheduler-to-mechanics decay binding, and the pinned official
+interpreter; inserts the missing deterministic post-market plant-decay stage
+into ``_funding_trace()``; compiles the postimage; and emits a deterministic
+receipt.
 """
 from __future__ import annotations
 
@@ -20,13 +21,15 @@ from typing import Any
 
 OPERATION = "TITAN-V3-FUNDING-PLANT-DECAY-CHRONOLOGY-20260910-01"
 SOURCE_GIT_BLOB = "fc7baf5c179818a55037f6a61d92984d81d1a21c"
+SCHEDULER_GIT_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
+MECHANICS_GIT_BLOB = "044a4f9c0a4a44dde10ada57563238bcaf82075d"
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 TARGET_FUNCTION = "_funding_trace"
 INSERTED_CALL = "m._decay_plants(f, t)"
 
 
 class MaterializationError(ValueError):
-    """A source, engine, path, or postimage contract was not satisfied."""
+    """A source, dependency, engine, path, or postimage contract failed."""
 
 
 def git_blob_sha1(data: bytes) -> str:
@@ -119,6 +122,150 @@ def verify_engine(engine_text: str) -> dict[str, Any]:
         "decay_statement_index": decay_index,
         "end_of_day_statement_index": eod_index,
         "decay_call_names": sorted(decay_calls),
+    }
+
+
+
+def _semantic_function_digest(node: ast.FunctionDef) -> str:
+    payload = ast.dump(node, annotate_fields=True, include_attributes=False).encode("utf-8")
+    return sha256_bytes(payload)
+
+
+def _target_names(target: ast.AST) -> set[str]:
+    if isinstance(target, ast.Name):
+        return {target.id}
+    if isinstance(target, (ast.Tuple, ast.List)):
+        result: set[str] = set()
+        for item in target.elts:
+            result.update(_target_names(item))
+        return result
+    if isinstance(target, ast.Starred):
+        return _target_names(target.value)
+    return set()
+
+
+def _top_level_binding_names(statement: ast.stmt) -> set[str]:
+    """Names a top-level statement can bind without entering function bodies."""
+    if isinstance(statement, ast.Import):
+        return {alias.asname or alias.name.split(".")[0] for alias in statement.names}
+    if isinstance(statement, ast.ImportFrom):
+        return {alias.asname or alias.name for alias in statement.names if alias.name != "*"}
+    if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+        return {statement.name}
+    if isinstance(statement, ast.Assign):
+        result: set[str] = set()
+        for target in statement.targets:
+            result.update(_target_names(target))
+        return result
+    if isinstance(statement, (ast.AnnAssign, ast.AugAssign)):
+        return _target_names(statement.target)
+    if isinstance(statement, (ast.For, ast.AsyncFor)):
+        result = _target_names(statement.target)
+        for child in [*statement.body, *statement.orelse]:
+            result.update(_top_level_binding_names(child))
+        return result
+    if isinstance(statement, (ast.With, ast.AsyncWith)):
+        result: set[str] = set()
+        for item in statement.items:
+            if item.optional_vars is not None:
+                result.update(_target_names(item.optional_vars))
+        for child in statement.body:
+            result.update(_top_level_binding_names(child))
+        return result
+    if isinstance(statement, ast.If):
+        result: set[str] = set()
+        for child in [*statement.body, *statement.orelse]:
+            result.update(_top_level_binding_names(child))
+        return result
+    if isinstance(statement, (ast.Try, ast.TryStar)):
+        result: set[str] = set()
+        for child in [*statement.body, *statement.orelse, *statement.finalbody]:
+            result.update(_top_level_binding_names(child))
+        for handler in statement.handlers:
+            if handler.name:
+                result.add(handler.name)
+            for child in handler.body:
+                result.update(_top_level_binding_names(child))
+        return result
+    return set()
+
+
+def verify_runtime_decay_binding(
+    source_text: str,
+    scheduler_text: str,
+    mechanics_text: str,
+    engine_text: str,
+) -> dict[str, Any]:
+    """Bind the inserted ``m._decay_plants`` call to exact official semantics."""
+    texts = {
+        "source": source_text,
+        "scheduler": scheduler_text,
+        "mechanics": mechanics_text,
+        "official engine": engine_text,
+    }
+    trees: dict[str, ast.Module] = {}
+    for label, text in texts.items():
+        try:
+            trees[label] = ast.parse(text)
+            compile(text, f"<{label}>", "exec")
+        except (SyntaxError, ValueError) as exc:
+            raise MaterializationError(f"{label} is not valid Python: {exc}") from exc
+
+    source_imports = [
+        statement
+        for statement in trees["source"].body
+        if isinstance(statement, ast.ImportFrom)
+        and statement.module == "scheduler"
+        and any(alias.name == "*" for alias in statement.names)
+    ]
+    if len(source_imports) != 1:
+        raise MaterializationError(
+            "source must contain exactly one `from scheduler import *` binding"
+        )
+
+    scheduler_imports: list[tuple[ast.Import, ast.alias]] = []
+    for statement in trees["scheduler"].body:
+        if not isinstance(statement, ast.Import):
+            continue
+        for alias in statement.names:
+            if alias.name == "mechanics" and alias.asname == "m":
+                scheduler_imports.append((statement, alias))
+    if len(scheduler_imports) != 1:
+        raise MaterializationError(
+            "scheduler must contain exactly one `import mechanics as m` binding"
+        )
+    import_statement = scheduler_imports[0][0]
+
+    if any(
+        "__all__" in _top_level_binding_names(statement)
+        for statement in trees["scheduler"].body
+    ):
+        raise MaterializationError(
+            "scheduler defines __all__; wildcard export of mechanics binding is unresolved"
+        )
+    for statement in trees["scheduler"].body:
+        if statement is import_statement:
+            continue
+        if "m" in _top_level_binding_names(statement):
+            raise MaterializationError("scheduler rebinds mechanics alias m")
+
+    runtime_decay = _single_function(trees["mechanics"], "_decay_plants")
+    official_decay = _single_function(trees["official engine"], "_decay_plants")
+    runtime_digest = _semantic_function_digest(runtime_decay)
+    official_digest = _semantic_function_digest(official_decay)
+    if runtime_digest != official_digest:
+        raise MaterializationError(
+            "runtime mechanics _decay_plants differs from the official engine"
+        )
+
+    return {
+        "source_scheduler_wildcard_line": source_imports[0].lineno,
+        "scheduler_mechanics_alias_line": import_statement.lineno,
+        "runtime_decay_line": runtime_decay.lineno,
+        "official_decay_line": official_decay.lineno,
+        "decay_semantic_sha256": runtime_digest,
+        "implicit_wildcard_export": True,
+        "scheduler_rebinds_m": False,
     }
 
 
@@ -224,49 +371,80 @@ def _atomic_write(path: Path, data: bytes) -> None:
         raise
 
 
-def materialize(source_path: Path, engine_path: Path, output_path: Path, receipt_path: Path) -> dict[str, Any]:
+def materialize(
+    source_path: Path,
+    scheduler_path: Path,
+    mechanics_path: Path,
+    engine_path: Path,
+    output_path: Path,
+    receipt_path: Path,
+) -> dict[str, Any]:
     # Authenticate file type before resolving aliases; resolving first would erase
     # the evidence that a caller supplied a symlink.
-    source_input = Path(source_path)
-    engine_input = Path(engine_path)
-    source_bytes = _read_regular(source_input)
-    engine_bytes = _read_regular(engine_input)
-    source_resolved = source_input.resolve(strict=True)
-    engine_resolved = engine_input.resolve(strict=True)
+    inputs = {
+        "source": Path(source_path),
+        "scheduler": Path(scheduler_path),
+        "mechanics": Path(mechanics_path),
+        "official_engine": Path(engine_path),
+    }
+    payloads = {name: _read_regular(path) for name, path in inputs.items()}
+    resolved_inputs = {name: path.resolve(strict=True) for name, path in inputs.items()}
     output_resolved = Path(output_path).resolve(strict=False)
     receipt_resolved = Path(receipt_path).resolve(strict=False)
-    if len({source_resolved, engine_resolved, output_resolved, receipt_resolved}) != 4:
-        raise MaterializationError("source, engine, output, and receipt paths must be distinct")
+    all_paths = [*resolved_inputs.values(), output_resolved, receipt_resolved]
+    if len(set(all_paths)) != len(all_paths):
+        raise MaterializationError(
+            "source, scheduler, mechanics, engine, output, and receipt paths must be distinct"
+        )
 
-    source_blob = git_blob_sha1(source_bytes)
-    engine_blob = git_blob_sha1(engine_bytes)
-    if source_blob != SOURCE_GIT_BLOB:
-        raise MaterializationError(f"source Git blob mismatch: {source_blob}")
-    if engine_blob != ENGINE_GIT_BLOB:
-        raise MaterializationError(f"engine Git blob mismatch: {engine_blob}")
+    expected_blobs = {
+        "source": SOURCE_GIT_BLOB,
+        "scheduler": SCHEDULER_GIT_BLOB,
+        "mechanics": MECHANICS_GIT_BLOB,
+        "official_engine": ENGINE_GIT_BLOB,
+    }
+    blobs = {name: git_blob_sha1(data) for name, data in payloads.items()}
+    for name, expected in expected_blobs.items():
+        if blobs[name] != expected:
+            label = "engine" if name == "official_engine" else name
+            raise MaterializationError(f"{label} Git blob mismatch: {blobs[name]}")
 
-    try:
-        source_text = source_bytes.decode("utf-8")
-        engine_text = engine_bytes.decode("utf-8")
-    except UnicodeDecodeError as exc:
-        raise MaterializationError(f"source inputs must be UTF-8: {exc}") from exc
+    texts: dict[str, str] = {}
+    for name, data in payloads.items():
+        try:
+            texts[name] = data.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise MaterializationError(f"{name} must be UTF-8: {exc}") from exc
 
-    engine_contract = verify_engine(engine_text)
-    postimage, patch_contract = patch_source(source_text)
+    engine_contract = verify_engine(texts["official_engine"])
+    binding_contract = verify_runtime_decay_binding(
+        texts["source"],
+        texts["scheduler"],
+        texts["mechanics"],
+        texts["official_engine"],
+    )
+    postimage, patch_contract = patch_source(texts["source"])
     post_bytes = postimage.encode("utf-8")
+
+    def identity(name: str) -> dict[str, Any]:
+        data = payloads[name]
+        return {
+            "git_blob_sha1": blobs[name],
+            "sha256": sha256_bytes(data),
+            "bytes": len(data),
+        }
 
     receipt: dict[str, Any] = {
         "operation": OPERATION,
         "status": "PASS",
-        "source": {
-            "git_blob_sha1": source_blob,
-            "sha256": sha256_bytes(source_bytes),
-            "bytes": len(source_bytes),
+        "source": identity("source"),
+        "runtime_decay_binding": {
+            "scheduler": identity("scheduler"),
+            "mechanics": identity("mechanics"),
+            "contract": binding_contract,
         },
         "official_engine": {
-            "git_blob_sha1": engine_blob,
-            "sha256": sha256_bytes(engine_bytes),
-            "bytes": len(engine_bytes),
+            **identity("official_engine"),
             "chronology": engine_contract,
         },
         "postimage": {
@@ -276,11 +454,15 @@ def materialize(source_path: Path, engine_path: Path, output_path: Path, receipt
         },
         "mutation_boundary": {
             "canonical_source_modified": False,
+            "canonical_scheduler_modified": False,
+            "canonical_mechanics_modified": False,
             "canonical_engine_modified": False,
             "inserted_call": INSERTED_CALL,
         },
     }
-    receipt_bytes = (json.dumps(receipt, sort_keys=True, indent=2, separators=(",", ": ")) + "\n").encode("utf-8")
+    receipt_bytes = (
+        json.dumps(receipt, sort_keys=True, indent=2, separators=(",", ": ")) + "\n"
+    ).encode("utf-8")
     _atomic_write(output_path, post_bytes)
     try:
         _atomic_write(receipt_path, receipt_bytes)
@@ -289,15 +471,23 @@ def materialize(source_path: Path, engine_path: Path, output_path: Path, receipt
         raise
     return receipt
 
-
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", required=True, type=Path)
+    parser.add_argument("--scheduler", required=True, type=Path)
+    parser.add_argument("--mechanics", required=True, type=Path)
     parser.add_argument("--engine", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--receipt", required=True, type=Path)
     args = parser.parse_args(argv)
-    receipt = materialize(args.source, args.engine, args.output, args.receipt)
+    receipt = materialize(
+        args.source,
+        args.scheduler,
+        args.mechanics,
+        args.engine,
+        args.output,
+        args.receipt,
+    )
     print(json.dumps({"status": receipt["status"], "postimage_sha256": receipt["postimage"]["sha256"]}, sort_keys=True))
     return 0
 
