@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import errno
 import hashlib
 import importlib.util
 import json
@@ -87,14 +88,66 @@ def _identity(data: bytes) -> dict[str, Any]:
 
 
 def _read_regular(path: Path, label: str) -> bytes:
+    """Read one stable regular file through an authenticated descriptor.
+
+    The old ``lstat()`` followed by ``Path.read_bytes()`` left a pathname swap
+    window.  This routine still rejects symlinks before opening, then uses
+    ``O_NOFOLLOW`` where available, authenticates the opened descriptor with
+    ``fstat()``, reads only from that descriptor, and rejects identity or
+    metadata changes observed across the read.
+    """
     path = Path(path)
     try:
-        mode = path.lstat().st_mode
+        before = path.lstat()
     except FileNotFoundError as exc:
         raise CompositionError(f"missing {label}: {path}") from exc
-    if stat.S_ISLNK(mode) or not stat.S_ISREG(mode):
+    if stat.S_ISLNK(before.st_mode) or not stat.S_ISREG(before.st_mode):
         raise CompositionError(f"{label} must be a regular non-symlink file: {path}")
-    return path.read_bytes()
+
+    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    descriptor: int | None = None
+    try:
+        try:
+            descriptor = os.open(path, flags)
+        except FileNotFoundError as exc:
+            raise CompositionError(f"{label} disappeared before stable open: {path}") from exc
+        except OSError as exc:
+            if exc.errno == errno.ELOOP:
+                raise CompositionError(
+                    f"{label} became a symlink before stable open: {path}"
+                ) from exc
+            raise CompositionError(f"cannot stably open {label}: {path}: {exc}") from exc
+
+        opened = os.fstat(descriptor)
+        if not stat.S_ISREG(opened.st_mode):
+            raise CompositionError(f"opened {label} is not a regular file: {path}")
+        if (before.st_dev, before.st_ino) != (opened.st_dev, opened.st_ino):
+            raise CompositionError(f"{label} identity changed before stable open: {path}")
+
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        after = os.fstat(descriptor)
+        stable_fields = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")
+        if any(getattr(opened, field) != getattr(after, field) for field in stable_fields):
+            raise CompositionError(f"{label} changed during stable descriptor read: {path}")
+
+        try:
+            named = path.lstat()
+        except FileNotFoundError as exc:
+            raise CompositionError(f"{label} pathname disappeared after stable read: {path}") from exc
+        if stat.S_ISLNK(named.st_mode) or (named.st_dev, named.st_ino) != (
+            opened.st_dev,
+            opened.st_ino,
+        ):
+            raise CompositionError(f"{label} pathname changed during stable read: {path}")
+        return b"".join(chunks)
+    finally:
+        if descriptor is not None:
+            os.close(descriptor)
 
 
 def _require_existing_real_directory(path: Path, label: str) -> Path:
@@ -845,6 +898,14 @@ def compose(
             "operation": OPERATION,
             "status": "PASS",
             "git_custody": git_custody,
+            "authority": {
+                "scope": "exact_checkout_only",
+                "acceptance_requires_checkout_head": git_custody["checkout_head"],
+                "explicit_manifest_covers_composition_chain": True,
+                "runtime_transitive_dependencies_bound_by_checkout_head": True,
+                "standalone_runtime_dependency_manifest": False,
+                "manual_dispatch_evidence_authorized": False,
+            },
             "donors": {
                 "town_consumption": {
                     "pr": TOWN_PR,

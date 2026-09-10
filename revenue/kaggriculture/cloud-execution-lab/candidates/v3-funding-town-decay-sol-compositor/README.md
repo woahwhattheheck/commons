@@ -27,8 +27,8 @@ custody, or production-consumer reachability.
 
 `compose.py` requires a full Git checkout whose HEAD descends from the exact base
 and both donor heads. It verifies the exact donor blobs at both their source
-heads and the final tree, authenticates every executable input as a regular
-non-symlink file, and then performs this one legal chain:
+heads and the final tree. It descriptor-reads every explicitly declared input as
+a stable regular non-symlink file, and then performs this one legal chain:
 
 1. Execute the exact #12053 materializer against pristine source.
 2. Recompute and validate its strict `v2` receipt, including source, engine, and
@@ -42,8 +42,15 @@ non-symlink file, and then performs this one legal chain:
    `TitanAgent` with `consumer='frozen'`, and prove that the instantiated
    `FrozenSelected.transform` resolves `_funding_trace` and both town helpers
    from the final postimage.
-6. Rehash every input and publish the two postimages plus both receipts as one
-   all-or-nothing output directory.
+6. Rehash every explicit input and publish the two postimages plus both receipts
+   as one all-or-nothing output directory.
+
+The receipt is deliberately **exact-checkout authoritative**, not a standalone
+manifest of every module transitively imported by `titan_runtime.py`. Its explicit
+manifest covers the complete town→decay composition chain; other runtime imports
+are cryptographically committed by the required exact checkout head. A consumer
+must therefore require `acceptance_requires_checkout_head` to equal the reviewed
+commit. Manual-dispatch runs are not authorized as evidence for this carrier.
 
 The exact tests retain both source-real predecessor killers in the *final*
 postimage:
@@ -79,9 +86,11 @@ python -B "$CANDIDATE/compose.py" \
 python -B -m unittest -v "$CANDIDATE/test_authenticated_composition.py"
 ```
 
-The authoritative workflow also runs both donor suites, compiles the final
-postimage, validates the receipt seal, retains SHA-256 manifests, and requires a
-clean repository after execution.
+The authoritative pull-request workflow also runs both donor suites, compiles the
+final postimage, validates the receipt seal and exact-checkout authority fields,
+retains SHA-256 manifests, and requires a clean repository after execution. It has
+no manual-dispatch path, so a green run cannot silently weaken event-head or diff
+custody.
 
 ## Boundary
 

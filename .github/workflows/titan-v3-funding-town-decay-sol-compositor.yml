@@ -13,7 +13,6 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
       - 'revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json'
       - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -35,15 +34,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Bind event head, exact donor ancestry, and additive scope
         shell: bash
         env:
-          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
@@ -54,9 +52,8 @@ jobs:
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py)" = 6c215bb626369424051fbe58312ecf225ac32ad3
           mkdir -p /tmp/titan-town-decay-evidence-${{ matrix.python }}
           printf '%s\n' "$EXPECTED_HEAD" > /tmp/titan-town-decay-evidence-${{ matrix.python }}/EXACT_HEAD
-          if [ "$EVENT_NAME" = pull_request ]; then
-            git diff --name-only "$PR_BASE_SHA"...HEAD | sort > /tmp/titan-town-decay-evidence-${{ matrix.python }}/CHANGED_PATHS
-            python - <<'PY'
+          git diff --name-only "$PR_BASE_SHA"...HEAD | sort > /tmp/titan-town-decay-evidence-${{ matrix.python }}/CHANGED_PATHS
+          python - <<'PY'
           from pathlib import Path
           evidence = Path('/tmp/titan-town-decay-evidence-${{ matrix.python }}')
           allowed = {
@@ -78,9 +75,6 @@ jobs:
           if extra or missing:
               raise SystemExit(f'additive scope mismatch: extra={extra}, missing={missing}')
           PY
-          else
-            : > /tmp/titan-town-decay-evidence-${{ matrix.python }}/CHANGED_PATHS
-          fi
 
       - uses: actions/setup-python@v5
         with:
@@ -141,6 +135,12 @@ jobs:
           receipt = json.loads((evidence / 'output/COMPOSITION-RECEIPT.json').read_text())
           assert receipt['schema'] == 'titan-v3-funding-town-decay-composition/v1'
           assert receipt['status'] == 'PASS'
+          assert receipt['authority']['scope'] == 'exact_checkout_only'
+          assert receipt['authority']['acceptance_requires_checkout_head'] == receipt['git_custody']['checkout_head']
+          assert receipt['authority']['explicit_manifest_covers_composition_chain'] is True
+          assert receipt['authority']['runtime_transitive_dependencies_bound_by_checkout_head'] is True
+          assert receipt['authority']['standalone_runtime_dependency_manifest'] is False
+          assert receipt['authority']['manual_dispatch_evidence_authorized'] is False
           assert receipt['donors']['town_consumption']['head'] == 'e701b8bf348b8ccacda854722d1e510cfd3c67c6'
           assert receipt['donors']['plant_decay']['head'] == '30d9d09561a07e3f9eef2c7128b6139bf0acdea7'
           assert receipt['composition']['order'] == ['town_consumption', 'plant_decay']
