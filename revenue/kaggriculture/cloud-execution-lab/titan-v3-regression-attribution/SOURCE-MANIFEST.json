@@ -2,10 +2,28 @@
   "artifact": "titan-v3-regression-attribution",
   "files": [
     {
-      "bytes": 36509,
-      "lines": 936,
+      "bytes": 8933,
+      "lines": 286,
+      "path": "attribution_common.py",
+      "sha256": "64cf88df02c7cf59ad06a6be20c2cf7e4d9ed0ddf4904117966081c2eb83f0e3"
+    },
+    {
+      "bytes": 7653,
+      "lines": 178,
+      "path": "attribution_parse.py",
+      "sha256": "61bc2e551af0967dc445933c8e4d0d452094514db17c3bdcf3baeffbd9cbeae4"
+    },
+    {
+      "bytes": 11267,
+      "lines": 289,
+      "path": "attribution_compare.py",
+      "sha256": "83f22dd8782ff30017fe0eb52530f7ff12362f8386b52d53ed6d655e855e00bd"
+    },
+    {
+      "bytes": 10993,
+      "lines": 272,
       "path": "regression_attribution.py",
-      "sha256": "16e695292dae2b5f20059bad6b4bc176f0063a04f158dffdea1d581f4b18a17d"
+      "sha256": "6c6ab08fb3d22de8659b1f1d9d668daa9d0716f5a339f743ab60f0a048353a5f"
     },
     {
       "bytes": 18306,
