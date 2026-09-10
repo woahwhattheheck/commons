@@ -1,4 +1,4 @@
-name: titan-v3-l01-idempotence-repair-sol-anchor
+name: titan-v3-l01-stale-packet-hold-sol-anchor
 
 on:
   push:
@@ -7,41 +7,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: titan-v3-l01-idempotence-repair-sol-anchor
   cancel-in-progress: true
 
 jobs:
-  materialize-repair-verify:
-    if: github.actor != 'github-actions[bot]'
+  stale-packet-hold:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Materialize authenticated handoff and repair L01 idempotence
-        run: python revenue/kaggriculture/cloud-execution-lab/candidates/repair_v3_l01_idempotence.py
-
-      - name: Commit only the authenticated repaired one-tree source
-        run: |
-          set -euo pipefail
-          git config user.name tokenjunkielabs
-          git config user.email tokenjunkielabs@gmail.com
-          git rm revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64
-          git rm revenue/kaggriculture/cloud-execution-lab/candidates/repair_v3_l01_idempotence.py
-          git rm .github/workflows/titan-v3-one-tree-land-sol-pro.yml
-          git add revenue/kaggriculture/cloud-execution-lab/candidates/v3
-          git diff --cached --check
-          while IFS= read -r path; do
-            case "$path" in
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/*|revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64|revenue/kaggriculture/cloud-execution-lab/candidates/repair_v3_l01_idempotence.py|.github/workflows/titan-v3-one-tree-land-sol-pro.yml) ;;
-              *) echo "unexpected staged path: $path" >&2; exit 1 ;;
-            esac
-          done < <(git diff --cached --name-only)
-          test "$(git diff --cached --name-only --diff-filter=A | grep -c '^revenue/kaggriculture/cloud-execution-lab/candidates/v3/' || true)" -eq 13
-          git commit -m 'fix(titan): make V3 L01 leanplant patch idempotent'
-          git push origin HEAD:sol-anchor/titan-v3-l01-leanplant-idempotence-repair-20260910-01
+      - run: echo 'HOLD — authenticated packet identity does not match advertised current V3 base/output; rebind repair to corrected transport before execution.'
