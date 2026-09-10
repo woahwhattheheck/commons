@@ -138,3 +138,76 @@ class MixtureGateContractsA(unittest.TestCase):
         doc = build_document({"a": [(10, 0)] * 4}, minimum_seed_clusters=5)
         result = gate.evaluate(doc)
         self.assertEqual(result["verdict"], "MORE_EVIDENCE_REQUIRED")
+
+
+class MixtureGatePeerAssistContracts(unittest.TestCase):
+    def test_family_seat_floor_blocks_mirrored_seat_cancellation(self):
+        doc = build_document({"a": [(10, 0)] * 5})
+        for cell in doc["panel"]["cells"]:
+            if cell["candidate_seat"] == 0:
+                cell["candidate_own"] = cell["incumbent_own"] - 5
+                cell["action_changed"] = True
+                cell["trace_changed"] = True
+        result = gate.evaluate(doc)
+        self.assertEqual(result["verdict"], "ROBUST_HOLD")
+        family = result["evidence"]["family_summaries"]["a"]
+        self.assertEqual(family["leave_one_seed_out_own_floor"]["fraction"], "5/2")
+        seat_zero = next(row for row in family["family_seats"] if row["candidate_seat"] == 0)
+        self.assertEqual(seat_zero["mean_own_delta"]["fraction"], "-5/1")
+        reasons = {row["reason"] for row in result["reasons"]}
+        self.assertIn("family_seat_own_below_floor", reasons)
+        self.assertIn("family_seat_margin_below_floor", reasons)
+
+    def test_uniform_family_reference_blocks_count_dominated_average(self):
+        doc = build_document(
+            {
+                "a": [(10, 0)] * 5,
+                "b": [(-8, 0)] * 5,
+                "c": [(-8, 0)] * 5,
+            },
+            counts={"a": 98, "b": 1, "c": 1},
+            radius="0",
+            own_floor=-100,
+            margin_floor=-100,
+            family_seat_own_floor=-100,
+            family_seat_margin_floor=-100,
+            require_leave_one_family_out=False,
+        )
+        result = gate.evaluate(doc)
+        self.assertGreater(
+            quantity_fraction(result, "mixture_robustness", "own_cash", "worst_case_value"),
+            0,
+        )
+        uniform = result["mixture_robustness"]["distribution_free_stress"]["own_cash"]["uniform_family_reference"]
+        self.assertEqual(uniform["value"]["fraction"], "-2/1")
+        self.assertFalse(uniform["gate_pass"])
+        self.assertEqual(result["verdict"], "ROBUST_HOLD")
+        self.assertIn("uniform_family_own_not_admissible", {row["reason"] for row in result["reasons"]})
+
+    def test_leave_one_family_out_blocks_single_family_dependency(self):
+        doc = build_document(
+            {
+                "a": [(100, 0)] * 5,
+                "b": [(-1, 0)] * 5,
+                "c": [(-1, 0)] * 5,
+            },
+            counts={"a": 98, "b": 1, "c": 1},
+            radius="0",
+            own_floor=-100,
+            margin_floor=-100,
+            family_seat_own_floor=-100,
+            family_seat_margin_floor=-100,
+        )
+        result = gate.evaluate(doc)
+        self.assertGreater(
+            quantity_fraction(result, "mixture_robustness", "own_cash", "worst_case_value"),
+            0,
+        )
+        stress = result["mixture_robustness"]["distribution_free_stress"]["own_cash"]
+        self.assertGreater(gate.Fraction(stress["uniform_family_reference"]["value"]["fraction"]), 0)
+        leave_one = stress["leave_one_family_out"]
+        self.assertEqual(leave_one["minimum_value"]["fraction"], "-1/1")
+        failed = [row["omitted_family"] for row in leave_one["rows"] if not row["sign_admissible"]]
+        self.assertEqual(failed, ["a"])
+        self.assertEqual(result["verdict"], "ROBUST_HOLD")
+        self.assertIn("leave_one_family_out_own_not_admissible", {row["reason"] for row in result["reasons"]})
