@@ -1,0 +1,129 @@
+name: TITAN V3 official market-transition oracle (SOL-ANCHOR)
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-official-market-transition-oracle-sol-anchor.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-official-market-transition-oracle-sol-anchor/**"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/utils.py"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/titan-v3-official-market-transition-oracle-sol-anchor.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-official-market-transition-oracle-sol-anchor/**"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/utils.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-official-market-transition-oracle-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-differential:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-official-market-transition-oracle-sol-anchor
+      ENGINE: revenue/kaggriculture/cloud-execution-lab/reference/engine
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - name: Checkout immutable event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Bind checkout and official engine closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git hash-object "$ENGINE/kaggriculture.py")" = 3c202c7ee921da239356789e266b694635103fc4
+          test "$(git hash-object "$ENGINE/kaggriculture.json")" = b354d06b742fe48402513792253f1a5c29366b20
+          test "$(git hash-object "$ENGINE/utils.py")" = 91c8822ee6201ba4a5a8416c7dbe34f95dd61c87
+          test -z "$(git status --porcelain)"
+
+      - name: Compile and run adversarial contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - "$CASE/official_market_transition_oracle.py" "$CASE/test_official_market_transition_oracle.py" <<'PY'
+          from pathlib import Path
+          import sys
+          for raw in sys.argv[1:]:
+              path = Path(raw)
+              compile(path.read_text(encoding="utf-8"), str(path), "exec")
+          PY
+          TITAN_ENGINE_DIR="$ENGINE" \
+            python -B "$CASE/test_official_market_transition_oracle.py"
+
+      - name: Run fixed 2160-cell differential matrix twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B "$CASE/official_market_transition_oracle.py" \
+            self-check --engine-dir "$ENGINE" \
+            --output "$RUNNER_TEMP/self-check-1.json"
+          python -B "$CASE/official_market_transition_oracle.py" \
+            self-check --engine-dir "$ENGINE" \
+            --output "$RUNNER_TEMP/self-check-2.json"
+          cmp "$RUNNER_TEMP/self-check-1.json" "$RUNNER_TEMP/self-check-2.json"
+
+      - name: Validate receipts and machine contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - "$RUNNER_TEMP/self-check-1.json" "$CASE/CONSUMPTION-CONTRACT.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          report = json.loads(Path(sys.argv[1]).read_text())
+          contract = json.loads(Path(sys.argv[2]).read_text())
+          expected = "ca8975a96e144a29555c19d7b32d85575ce6b5d6ad440e25c3b771c9e138d3d4"
+          assert report["verdict"] == "PASS"
+          assert report["bounded_parity"]["cases"] == 2160
+          assert report["bounded_parity"]["rows_sha256"] == expected
+          assert report["own_prefix_counterexample"]["deltas"] == {
+              "margin": -2.0,
+              "own_money": -1.0,
+              "rival_money": 1.0,
+          }
+          assert report["engine"]["files"]["kaggriculture.py"]["git_blob_sha1"] == \
+              "3c202c7ee921da239356789e266b694635103fc4"
+          assert contract["fixed_contract_receipts"]["bounded_cases"] == 2160
+          assert contract["fixed_contract_receipts"]["bounded_rows_sha256"] == expected
+          assert contract["authority"] == "evidence-only"
+          print(json.dumps({
+              "verdict": "PASS",
+              "cases": 2160,
+              "rows_sha256": expected,
+              "receipt_sha256": report["receipt_sha256"],
+          }, sort_keys=True))
+          PY
+
+      - name: Prove checkout remained clean
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+
+      - name: Retain exact receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-official-market-transition-oracle-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/self-check-1.json
+            ${{ runner.temp }}/self-check-2.json
+          if-no-files-found: error
+          retention-days: 30
