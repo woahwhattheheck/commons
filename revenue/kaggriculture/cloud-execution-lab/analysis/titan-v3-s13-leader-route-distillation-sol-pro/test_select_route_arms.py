@@ -12,6 +12,8 @@ class SelectorTests(unittest.TestCase):
                 "opponent": "arlene",
                 "candidate_seat": i,
                 "own_cash_delta": o,
+                "control_margin": 10.0,
+                "candidate_margin": 10.0 + m,
                 "margin_delta": m,
                 "control_outcome": outcomes[i][0],
                 "candidate_outcome": outcomes[i][1],
@@ -37,6 +39,17 @@ class SelectorTests(unittest.TestCase):
 
     def test_new_loss_blocks(self):
         value = metrics(self.report(outcomes=[("win", "loss"), ("loss", "loss")]))
+        ok, reasons = classify(value)
+        self.assertFalse(ok)
+        self.assertIn("new_losses", reasons)
+
+    def test_new_loss_is_derived_from_exact_comparator_margins(self):
+        report = self.report()
+        report["pairs"][0].pop("control_outcome")
+        report["pairs"][0].pop("candidate_outcome")
+        report["pairs"][0]["control_margin"] = 1
+        report["pairs"][0]["candidate_margin"] = -1
+        value = metrics(report)
         ok, reasons = classify(value)
         self.assertFalse(ok)
         self.assertIn("new_losses", reasons)
