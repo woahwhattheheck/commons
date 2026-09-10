@@ -1,0 +1,38 @@
+{
+  "authority": {
+    "archive_or_pointer_mutation": false,
+    "canonical_mutation": false,
+    "playing_strength_claim": false,
+    "provider_or_kaggle_mutation": false
+  },
+  "base_commit": "c51049d671b55d282e0fed5df37a0be7c513a838",
+  "canonical_archive_sha256": "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1",
+  "factor": {
+    "candidate_key": [
+      "moved",
+      "negative_remaining_cash",
+      "source_distance",
+      "destination_distance",
+      "item"
+    ],
+    "changed_source_lines": 1,
+    "predecessor_key": [
+      "moved",
+      "remaining_cash",
+      "source_distance",
+      "destination_distance",
+      "item"
+    ]
+  },
+  "official_engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "operation": "TITAN-V3-SAME-TURN-FUNDING-PARETO-RANK-20260910-01",
+  "slack": {
+    "channel_id": "C0C0Z8AHGP2",
+    "claim_ts": "1789071885.895629",
+    "claim_url": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789071885895629"
+  },
+  "source": {
+    "git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "path": "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py"
+  }
+}

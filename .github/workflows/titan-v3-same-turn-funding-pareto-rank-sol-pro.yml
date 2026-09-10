@@ -1,0 +1,97 @@
+name: titan-v3-same-turn-funding-pareto-rank-sol-pro
+
+"on":
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-same-turn-funding-pareto-rank-sol-pro.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-same-turn-funding-pareto-rank-sol-pro/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONHASHSEED: "0"
+      LANE: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-same-turn-funding-pareto-rank-sol-pro
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Assert immutable event head and clean input tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha }}'
+          if [[ -n "$expected" && "$(git rev-parse HEAD)" != "$expected" ]]; then
+            echo "event-head mismatch" >&2
+            exit 1
+          fi
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+
+      - name: Compile and run fail-closed contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - "$LANE" <<'PY'
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1])
+          for path in (root / "pareto_rank.py", root / "run_current_witness.py", root / "test_pareto_rank.py"):
+              compile(path.read_text(encoding="utf-8"), str(path), "exec")
+          PY
+          PYTHONPATH="$LANE" python -B -m unittest -v test_pareto_rank
+
+      - name: Materialize exact candidate and execute current-source witness
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/titan-pareto-rank-evidence"
+          mkdir -p "$evidence"
+          PYTHONPATH="$LANE" python -B "$LANE/pareto_rank.py" model-witness \
+            --output "$evidence/MODEL-WITNESS.json"
+          PYTHONPATH="$LANE" python -B "$LANE/pareto_rank.py" patch \
+            --source revenue/kaggriculture/cloud-execution-lab/frozen_selected.py \
+            --output "$evidence/frozen_selected.candidate.py" \
+            --receipt "$evidence/PATCH-RECEIPT.json"
+          PYTHONPATH="$LANE" python -B "$LANE/run_current_witness.py" \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --out "$evidence/CURRENT-WITNESS.json"
+          python -B -m py_compile "$evidence/frozen_selected.candidate.py"
+          python - "$evidence" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          model = json.loads((root/'MODEL-WITNESS.json').read_text())
+          current = json.loads((root/'CURRENT-WITNESS.json').read_text())
+          patch = json.loads((root/'PATCH-RECEIPT.json').read_text())
+          assert model['certified_remaining_cash_delta'] == 165
+          assert current['certified_remaining_cash_delta'] == 165
+          assert current['predecessor']['info']['item'] == 'CARROT'
+          assert current['candidate']['info']['item'] == 'WOOL'
+          assert current['invariants']['moved_quantity'] == 1
+          assert current['invariants']['funded_completed'] == 1
+          assert current['invariants']['sale_quantities'] == {'CARROT': 1, 'WOOL': 1}
+          assert patch['changed_lines'] and len(patch['changed_lines']) == 1
+          PY
+          (cd "$evidence" && sha256sum * > SHA256SUMS)
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-v3-same-turn-funding-pareto-rank-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/titan-pareto-rank-evidence
+          if-no-files-found: error
