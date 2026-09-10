@@ -1,0 +1,160 @@
+name: titan-canonical-commit-rebuild
+
+on:
+  push:
+    branches:
+      - sol/aperture-titan-canonical-drift-rebuild-20260910-01
+
+permissions:
+  contents: write
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  commit-rebuild:
+    if: github.event.head_commit.message == 'ci(titan): arm canonical release commit'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: true
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/titan-canonical-commit-rebuild.yml
+            /revenue/kaggriculture/cloud-execution-lab/
+            /revenue/kaggriculture/cloud-economic-stress/funded_payback/
+            /revenue/kaggriculture/cloud-quickstep/
+            /revenue/kaggriculture/cloud-runtime-pulse/
+            /revenue/kaggriculture/cloud-committed-seed-retry/
+            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/
+
+      - name: Rebuild, verify, and prove the pinned release delta
+        shell: python
+        run: |
+          import hashlib, json, os, subprocess, tarfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          lab = root / 'revenue/kaggriculture/cloud-execution-lab'
+          builder = lab / 'build_integrated.py'
+          record = lab / 'runtime/integrated-selected'
+          before = json.loads((record / 'CURRENT-ARCHIVE.json').read_text())
+          expected_before = {
+              'sha256': '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86',
+              'bytes': 427870,
+          }
+          if {key: before[key] for key in expected_before} != expected_before:
+              raise ValueError('Predecessor pointer no longer matches admitted rebuild input')
+
+          subprocess.run(['python3', '-B', str(builder)], check=True)
+          subprocess.run(['python3', '-B', str(builder), '--check'], check=True)
+          subprocess.run(
+              ['python3', '-B', '-m', 'unittest', '-v', 'test_release_consistency'],
+              cwd=lab,
+              check=True,
+          )
+
+          after = json.loads((record / 'CURRENT-ARCHIVE.json').read_text())
+          expected_after = {
+              'sha256': '5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1',
+              'bytes': 428158,
+              'source_manifest_sha256': '3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469',
+          }
+          if {key: after[key] for key in expected_after} != expected_after:
+              raise ValueError('Rebuilt receipt differs from independently proven receipt')
+
+          old_archive = lab / 'exports/historical' / ('titan-' + before['sha256'] + '.tar.gz')
+          new_archive = lab / after['path']
+          source_manifest = lab / after['source_manifest']
+
+          def sha(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          if sha(old_archive) != before['sha256'] or old_archive.stat().st_size != before['bytes']:
+              raise ValueError('Superseded archive was not retained byte-for-byte')
+          if sha(new_archive) != after['sha256'] or new_archive.stat().st_size != after['bytes']:
+              raise ValueError('Rebuilt archive does not match its pointer')
+          if sha(source_manifest) != after['source_manifest_sha256']:
+              raise ValueError('Rebuilt source manifest does not match its pointer')
+
+          def members(path):
+              with tarfile.open(path, 'r:gz') as archive:
+                  rows = {}
+                  for item in archive.getmembers():
+                      if not item.isfile():
+                          raise ValueError('Canonical archive contains a non-file member')
+                      rows[item.name] = archive.extractfile(item).read()
+                  return rows
+
+          old_members = members(old_archive)
+          new_members = members(new_archive)
+          changed = sorted(
+              name for name in set(old_members) | set(new_members)
+              if old_members.get(name) != new_members.get(name)
+          )
+          expected_changed = ['SOURCE.json', 'TITAN-RELEASE.md', 'reference/decision/README.md']
+          if changed != expected_changed or set(old_members) != set(new_members):
+              raise ValueError('Unexpected canonical member delta: ' + repr(changed))
+
+          old_source = json.loads(old_members['SOURCE.json'])
+          new_source = json.loads(new_members['SOURCE.json'])
+          changed_sources = sorted(
+              name for name in set(old_source['runtime']) | set(new_source['runtime'])
+              if old_source['runtime'].get(name) != new_source['runtime'].get(name)
+          )
+          expected_sources = ['TITAN-RELEASE.md', 'reference/decision/README.md']
+          if changed_sources != expected_sources or len(new_source['runtime']) != 109:
+              raise ValueError('Unexpected source binding delta: ' + repr(changed_sources))
+
+          evidence_dir = lab / 'analysis/canonical-drift-20260910-sol-aperture'
+          evidence_dir.mkdir(parents=True, exist_ok=True)
+          evidence = {
+              'successful': True,
+              'source_checkout': os.environ['GITHUB_SHA'],
+              'proof_run_id': os.environ['GITHUB_RUN_ID'],
+              'scope': 'canonical documentation/source-manifest rebuild; no gameplay, config, provider, or submission change',
+              'previous': expected_before,
+              'rebuilt': expected_after,
+              'changed_source_members': changed_sources,
+              'changed_archive_members': changed,
+              'unchanged_archive_members': len(new_members) - len(changed),
+              'runtime_inputs': len(new_source['runtime']),
+              'historical_archive_retained': True,
+          }
+          (evidence_dir / 'REBUILD-EVIDENCE.json').write_text(
+              json.dumps(evidence, indent=2, sort_keys=True) + '\n'
+          )
+          (evidence_dir / 'README.md').write_text(
+              '# TITAN canonical drift repair — 2026-09-10\n\n'
+              'The canonical check was stale because two already-admitted LATCH KEEP blocks '
+              'changed packaged documentation after the preceding archive was sealed. The rebuild '
+              'retains the predecessor archive byte-for-byte and changes only '
+              '`TITAN-RELEASE.md`, `reference/decision/README.md`, and generated `SOURCE.json` '
+              'inside the archive. All other 107 archive members are byte-identical.\n\n'
+              'The runner rebuilt from 109 current inputs, verified the pointer/archive/source '
+              'triplet, ran `test_release_consistency`, and rejected any delta outside that exact '
+              'three-member set. No gameplay, configuration, provider call, or submission changed.\n\n'
+              'Exact hashes and the proof run are recorded in `REBUILD-EVIDENCE.json`.\n'
+          )
+
+      - name: Commit the exact runner-produced release and provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          OLD_SHA=17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86
+          git config user.name "SOL-APERTURE"
+          git config user.email "sol-aperture@commons.local"
+          git add \
+            "$LAB/exports/titan-current.tar.gz" \
+            "$LAB/exports/historical/titan-$OLD_SHA.tar.gz" \
+            "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" \
+            "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" \
+            "$LAB/analysis/canonical-drift-20260910-sol-aperture/README.md" \
+            "$LAB/analysis/canonical-drift-20260910-sol-aperture/REBUILD-EVIDENCE.json"
+          git diff --cached --check
+          git commit -m "titan: reseal canonical release after admitted KEEP drift"
+          git push origin HEAD:refs/heads/sol/aperture-titan-canonical-drift-rebuild-20260910-01
