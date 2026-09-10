@@ -1,7 +1,7 @@
 """Engine-equivalence regressions for scarce shared seed during unit actions.
 
 The scheduler projects the current unit stage before it evaluates future shed
-capacity and sale timing.  That projection must preserve the official
+capacity and seed demand.  That projection must preserve the official
 interpreter's actor order: farmer first, then hands, all consuming one shared
 seed ledger.  Synthetic fixtures below are mechanics certificates, not policy
 or leaderboard evidence.
@@ -9,10 +9,15 @@ or leaderboard evidence.
 from __future__ import annotations
 
 import copy
+from pathlib import Path
 import unittest
 
 import scheduler as s
 import test_engine_semantics as semantics
+from titan_runtime import load
+
+
+HERE = Path(__file__).resolve().parent
 
 
 class SchedulerSeedPrefixTests(unittest.TestCase):
@@ -112,6 +117,34 @@ class SchedulerSeedPrefixTests(unittest.TestCase):
                 self.assertEqual(actual, expected)
                 self.assertEqual(private["seeds"]["WHEAT"], 0)
                 self.assertEqual(private["seeds"]["CARROT"], 0)
+
+    def test_consumed_prefix_preserves_needed_future_seed_purchase(self):
+        """A legal current PLANT must not be mistaken for retained stock."""
+        actions = [["PLANT", "WHEAT"], ["PLANT", "WHEAT"]]
+        _farm, private, _positions = self.assert_matches_engine(
+            actions, {"WHEAT": 1})
+        self.assertEqual(private["seeds"]["WHEAT"], 0)
+
+        route = [semantics.pass_agent({}) for _ in range(4)]
+        route[2] = {
+            "farmer": ["PLANT", "WHEAT"],
+            "hands": [],
+            "market": [],
+        }
+        budget_module = load(
+            "_test_seed_prefix_budget",
+            HERE / "reference/integrated-selected/alder/seed_budget.py",
+        )
+        budget = budget_module.SeedBudget({"fixture": route})
+        selected = {
+            "farmer": copy.deepcopy(actions[0]),
+            "hands": copy.deepcopy(actions[1:]),
+            "market": [["BUY_SEED", "WHEAT", 1]],
+        }
+        retained = budget.apply(
+            selected, private["seeds"], 1, "fixture", max_orders=10)
+        self.assertEqual(retained["market"], [["BUY_SEED", "WHEAT", 1]])
+        self.assertEqual(budget.events, [])
 
 
 if __name__ == "__main__":
