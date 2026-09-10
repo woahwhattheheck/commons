@@ -1,12 +1,6 @@
 name: titan-canonical-package-reconcile-sol-prism
 
 on:
-  push:
-    branches:
-      - 'sol-prism/titan-canonical-package-reconcile-20260910-01'
-    paths:
-      - '.github/workflows/titan-canonical-package-reconcile-sol-prism.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/**'
   pull_request:
     paths:
       - '.github/workflows/titan-canonical-package-reconcile-sol-prism.yml'
@@ -24,8 +18,11 @@ on:
 permissions:
   contents: write
 
+# One PR-scoped serial lane. The first run may publish the generated package
+# commit; the resulting synchronize run waits, then verifies the successor head
+# without becoming a second writer.
 concurrency:
-  group: titan-canonical-package-reconcile-sol-prism-${{ github.event.pull_request.number || github.ref }}
+  group: titan-canonical-package-reconcile-sol-prism-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: false
 
 env:
@@ -34,20 +31,20 @@ env:
 
 jobs:
   reconcile:
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - name: Checkout exact pull-request head
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 2
           persist-credentials: true
 
       - name: Assert exact checkout
         env:
-          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
@@ -69,7 +66,7 @@ jobs:
           expected=['TITAN-RELEASE.md','reference/decision/README.md']
           actual=[row['member'] for row in report['runtime_member_drift']]
           if report['clean']:
-              print('Canonical package was already current; no bootstrap mutation needed.')
+              print('Canonical package is already current; this run is verifier-only.')
           else:
               assert report['errors'] == [], report
               assert actual == expected, report
@@ -82,7 +79,7 @@ jobs:
         id: rebuild
         working-directory: revenue/kaggriculture/cloud-execution-lab
         env:
-          HEAD_BRANCH: ${{ github.head_ref || github.ref_name }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
         run: |
           set -euo pipefail
           python -B build_integrated.py > BUILD-RECEIPT.json
@@ -111,7 +108,9 @@ jobs:
           EOF
           )
           actual=$(git status --porcelain --untracked-files=all | sed -E 's/^.. //' | grep -v -E '^(PREDECESSOR-DRIFT|BUILD-RECEIPT)\.json$' | sort)
-          test "$actual" = "$expected"
+          if test -n "$actual"; then
+            test "$actual" = "$expected"
+          fi
           git add \
             exports/historical/titan-17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86.tar.gz \
             exports/titan-current.tar.gz \
