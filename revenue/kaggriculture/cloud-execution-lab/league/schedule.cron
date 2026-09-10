@@ -1,0 +1,17 @@
+# Weekly TITAN v3 adversarial league — cron schedule.
+#
+# Runs every Sunday at 03:17 UTC: the canonical v3 candidate plus all
+# registered challengers play the vendored public-opponent bank, both
+# seats, identical seeds, through the unmodified reference evaluator with
+# the pinned official engine. Elo/lean ledger and own-cash alarms land in
+# revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/league/.
+#
+# Install (on the league host, from the repo root):
+#   crontab -l > /tmp/cron.bak
+#   (crontab -l; cat revenue/kaggriculture/cloud-execution-lab/league/schedule.cron) | crontab -
+#
+# The runner is idempotent per week: each run writes a new timestamped
+# directory and appends to the shared ledger; re-running the same week
+# only adds another run record.
+
+17 3 * * 0 cd /opt/commons && python3 -B revenue/kaggriculture/cloud-execution-lab/league/run_league.py --config revenue/kaggriculture/cloud-execution-lab/league/config.json >> /var/log/titan-league.log 2>&1

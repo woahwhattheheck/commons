@@ -1,0 +1,179 @@
+{
+  "schema": "titan.league-run.v1",
+  "stamp": "20260910T191342Z",
+  "wall_seconds": 0.0,
+  "plan": {
+    "run": "20260910T191342Z",
+    "seeds": [
+      2611031001,
+      2611031002,
+      2611031003
+    ],
+    "contestants": [
+      "v3-kestrel-capital-execution",
+      "v3-final-crop-binding"
+    ],
+    "opponents": [
+      "official_pass",
+      "official_random",
+      "official_starter",
+      "soil_rain"
+    ],
+    "workers": 4,
+    "cells_per_contestant": 24
+  },
+  "fingerprints": [
+    {
+      "name": "v3-kestrel-capital-execution",
+      "entry": "cloud-execution-lab/candidates/v3-kestrel-capital-execution/candidate_main.py",
+      "callable": "agent",
+      "entry_sha256": "4c7196752137e938296f7b0f631791b74fcb2e91be07a215aefeb638b0f76458",
+      "support": [
+        {
+          "module": "cloud-runtime-pulse/observed_clone.py",
+          "sha256": "ab92d3c18c8edb63cbdd31626ada447783b85bbe9ed32bb546e6c7834a99b152"
+        },
+        {
+          "module": "cloud-quickstep/seller_snapshot.py",
+          "sha256": "e7093c760c05400948ece0a4a00495ab2cb93fd56e585eba9eb78b1f13666576"
+        }
+      ],
+      "bootstrap": "/tmp/league_panel1/staging/v3-kestrel-capital-execution/v3-kestrel-capital-execution_entry.py",
+      "bootstrap_sha256": "a422310db9b713daff5f0dcb76b1bcbf02eff30c2c0d866e87873f94a50b94a5"
+    },
+    {
+      "name": "v3-final-crop-binding",
+      "entry": "cloud-execution-lab/candidates/v3-final-crop-binding/candidate_main.py",
+      "callable": "agent",
+      "entry_sha256": "283c0327df4b8ae0fa79717fe52ef7b680f46b3a758a3ebd03f0a502b1067053",
+      "support": [
+        {
+          "module": "cloud-runtime-pulse/observed_clone.py",
+          "sha256": "ab92d3c18c8edb63cbdd31626ada447783b85bbe9ed32bb546e6c7834a99b152"
+        },
+        {
+          "module": "cloud-quickstep/seller_snapshot.py",
+          "sha256": "e7093c760c05400948ece0a4a00495ab2cb93fd56e585eba9eb78b1f13666576"
+        }
+      ],
+      "bootstrap": "/tmp/league_panel1/staging/v3-final-crop-binding/v3-final-crop-binding_entry.py",
+      "bootstrap_sha256": "d14eaa6ad80b6e45a8d735696cc141453dfd2615cc4a68aa3ff4baa54fa62a78"
+    }
+  ],
+  "standings": [
+    {
+      "name": "v3-final-crop-binding",
+      "elo": 1689.6,
+      "games": 24,
+      "wins": 24,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 118028.5
+    },
+    {
+      "name": "v3-kestrel-capital-execution",
+      "elo": 1667.3,
+      "games": 24,
+      "wins": 24,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 113074.792
+    },
+    {
+      "name": "soil_rain",
+      "elo": 1417.4,
+      "games": 12,
+      "wins": 0,
+      "ties": 0,
+      "losses": 12,
+      "mean_margin": -12840.167
+    },
+    {
+      "name": "official_starter",
+      "elo": 1413.2,
+      "games": 12,
+      "wins": 0,
+      "ties": 0,
+      "losses": 12,
+      "mean_margin": -156729.0
+    },
+    {
+      "name": "official_random",
+      "elo": 1408.7,
+      "games": 12,
+      "wins": 0,
+      "ties": 0,
+      "losses": 12,
+      "mean_margin": -145714.5
+    },
+    {
+      "name": "official_pass",
+      "elo": 1403.8,
+      "games": 12,
+      "wins": 0,
+      "ties": 0,
+      "losses": 12,
+      "mean_margin": -146922.917
+    }
+  ],
+  "alarms": {
+    "v3-kestrel-capital-execution": [],
+    "v3-final-crop-binding": []
+  },
+  "shards": [
+    {
+      "contestant": "v3-final-crop-binding",
+      "seeds": [
+        2611031001
+      ],
+      "seconds": 0.0,
+      "returncode": 0,
+      "games": 8
+    },
+    {
+      "contestant": "v3-final-crop-binding",
+      "seeds": [
+        2611031002
+      ],
+      "seconds": 0.0,
+      "returncode": 0,
+      "games": 8
+    },
+    {
+      "contestant": "v3-final-crop-binding",
+      "seeds": [
+        2611031003
+      ],
+      "seconds": 0.0,
+      "returncode": 0,
+      "games": 8
+    },
+    {
+      "contestant": "v3-kestrel-capital-execution",
+      "seeds": [
+        2611031001
+      ],
+      "seconds": 0.0,
+      "returncode": 0,
+      "games": 8
+    },
+    {
+      "contestant": "v3-kestrel-capital-execution",
+      "seeds": [
+        2611031002
+      ],
+      "seconds": 0.0,
+      "returncode": 0,
+      "games": 8
+    },
+    {
+      "contestant": "v3-kestrel-capital-execution",
+      "seeds": [
+        2611031003
+      ],
+      "seconds": 0.0,
+      "returncode": 0,
+      "games": 8
+    }
+  ]
+}

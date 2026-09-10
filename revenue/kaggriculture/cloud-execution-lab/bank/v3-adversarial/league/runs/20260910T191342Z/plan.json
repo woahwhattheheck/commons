@@ -1,0 +1,20 @@
+{
+  "run": "20260910T191342Z",
+  "seeds": [
+    2611031001,
+    2611031002,
+    2611031003
+  ],
+  "contestants": [
+    "v3-kestrel-capital-execution",
+    "v3-final-crop-binding"
+  ],
+  "opponents": [
+    "official_pass",
+    "official_random",
+    "official_starter",
+    "soil_rain"
+  ],
+  "workers": 4,
+  "cells_per_contestant": 24
+}

@@ -1,0 +1,107 @@
+{
+  "own_cash_baseline": {
+    "v3-final-crop-binding": {
+      "official_pass@0": 145710.0,
+      "official_pass@1": 162561.66666666666,
+      "official_random@0": 133971.33333333334,
+      "official_random@1": 174347.33333333334,
+      "official_starter@0": 163473.0,
+      "official_starter@1": 156057.0,
+      "soil_rain@0": 93170.0,
+      "soil_rain@1": 95739.0
+    },
+    "v3-kestrel-capital-execution": {
+      "official_pass@0": 145710.0,
+      "official_pass@1": 145710.0,
+      "official_random@0": 135757.66666666666,
+      "official_random@1": 138781.66666666666,
+      "official_starter@0": 163473.0,
+      "official_starter@1": 158928.33333333334,
+      "soil_rain@0": 102403.66666666667,
+      "soil_rain@1": 102403.66666666667
+    }
+  },
+  "players": {
+    "official_pass": {
+      "elo": 1403.8444983325444,
+      "games": 12,
+      "losses": 12,
+      "margin_sum": -1763075.0,
+      "ties": 0,
+      "wins": 0
+    },
+    "official_random": {
+      "elo": 1408.6657490589034,
+      "games": 12,
+      "losses": 12,
+      "margin_sum": -1748574.0,
+      "ties": 0,
+      "wins": 0
+    },
+    "official_starter": {
+      "elo": 1413.1669318970314,
+      "games": 12,
+      "losses": 12,
+      "margin_sum": -1880748.0,
+      "ties": 0,
+      "wins": 0
+    },
+    "soil_rain": {
+      "elo": 1417.3631073452589,
+      "games": 12,
+      "losses": 12,
+      "margin_sum": -154082.0,
+      "ties": 0,
+      "wins": 0
+    },
+    "v3-final-crop-binding": {
+      "elo": 1689.6140562560226,
+      "games": 24,
+      "losses": 0,
+      "margin_sum": 2832684.0,
+      "ties": 0,
+      "wins": 24
+    },
+    "v3-kestrel-capital-execution": {
+      "elo": 1667.3456571102392,
+      "games": 24,
+      "losses": 0,
+      "margin_sum": 2713795.0,
+      "ties": 0,
+      "wins": 24
+    }
+  },
+  "runs": [
+    {
+      "alarms": {
+        "v3-final-crop-binding": 0,
+        "v3-kestrel-capital-execution": 0
+      },
+      "completed": 48,
+      "plan": {
+        "cells_per_contestant": 24,
+        "contestants": [
+          "v3-kestrel-capital-execution",
+          "v3-final-crop-binding"
+        ],
+        "opponents": [
+          "official_pass",
+          "official_random",
+          "official_starter",
+          "soil_rain"
+        ],
+        "run": "20260910T191342Z",
+        "seeds": [
+          2611031001,
+          2611031002,
+          2611031003
+        ],
+        "workers": 4
+      },
+      "scheduled": 48,
+      "stamp": "20260910T191342Z",
+      "wall_seconds": 0.0
+    }
+  ],
+  "schema": "titan.league-ledger.v1"
+}

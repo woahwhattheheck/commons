@@ -1,0 +1,13 @@
+{
+  "active": true,
+  "callable": "agent",
+  "entry": "cloud-execution-lab/candidates/v3-final-crop-binding/candidate_main.py",
+  "name": "v3-final-crop-binding",
+  "notes": "First registered league challenger: final-crop-binding variant over the canonical TITAN runtime. Same support modules as canonical (observed_clone, seller_snapshot) for the worker-phase import chain.",
+  "registered": "2026-09-10",
+  "sha256": "283c0327df4b8ae0fa79717fe52ef7b680f46b3a758a3ebd03f0a502b1067053",
+  "support_modules": [
+    "cloud-runtime-pulse/observed_clone.py",
+    "cloud-quickstep/seller_snapshot.py"
+  ]
+}

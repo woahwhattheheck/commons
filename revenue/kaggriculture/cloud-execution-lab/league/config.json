@@ -1,0 +1,43 @@
+{
+  "action_timeout": 15.0,
+  "alarm_drop_tolerance": 10000.0,
+  "alarm_floor": 0.0,
+  "canonical": {
+    "callable": "agent",
+    "entry": "cloud-execution-lab/candidates/v3-kestrel-capital-execution/candidate_main.py",
+    "name": "v3-kestrel-capital-execution",
+    "support_modules": [
+      "cloud-runtime-pulse/observed_clone.py",
+      "cloud-quickstep/seller_snapshot.py"
+    ]
+  },
+  "elo_k": 24.0,
+  "game_timeout": 1200.0,
+  "opponents": [
+    "official_starter",
+    "official_random",
+    "official_pass",
+    "deepesh_wheat",
+    "amey_premium",
+    "amey_plan",
+    "barnyard_v5",
+    "moon_melons",
+    "lonespear_care",
+    "soil_rain",
+    "c95_highscore",
+    "apache_builder"
+  ],
+  "rng_seed": 20260907,
+  "schema": "titan.league-config.v1",
+  "seeds": [
+    2611031001,
+    2611031002,
+    2611031003,
+    2611031004,
+    2611031005,
+    2611031006,
+    2611031007,
+    2611031008
+  ],
+  "workers": 4
+}
