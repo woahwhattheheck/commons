@@ -12,19 +12,26 @@ def farm(money=3000, unlocked=('NW',), hires=0):
             'tiles': [[None] * 10 for _ in range(10)], 'farmer': (4, 4), 'hands': []}
 
 
-def obs(step=1, money=2643, unlocked=('NW',), seeds=None, player=0):
+def obs(step=1, money=2643, unlocked=('NW',), seeds=None, player=0,
+        shed=None, inventories=None):
     empty = farm(money, unlocked)
     rival = farm(3000)
+    stock = ({p: 10 for p in m.PRODUCTS} if shed is None
+             else {p: 0 for p in m.PRODUCTS})
+    if shed is not None:
+        stock.update(shed)
     return {
         'step': step, 'day': step // 24, 'hour': step % 24, 'player': player,
         'farms': [empty, rival] if player == 0 else [rival, empty],
-        'private': {'shed': {}, 'inventories': [{}], 'seeds': dict(seeds or {})},
+        'private': {'shed': stock,
+                    'inventories': deepcopy(inventories) if inventories is not None else [{}],
+                    'seeds': dict(seeds or {})},
         'market': {'inventory': {p: 10000 for p in m.PRODUCTS}, 'prices': {}, 'params': None},
     }
 
 
 CFG = {'episodeSteps': 720, 'turnsPerDay': 24, 'farmHandCostMult': 1,
-       'maxMarketOrdersPerTurn': 10, 'shedCapacity': 100}
+       'maxMarketOrdersPerTurn': 10, 'shedCapacity': 100, 'boardSize': 10}
 
 
 class EarlyCapitalContracts(unittest.TestCase):
@@ -33,8 +40,9 @@ class EarlyCapitalContracts(unittest.TestCase):
                     'market': [['SELL', 'WOOL', 10], ['BUY_PRODUCT', 'WHEAT', 2],
                                ['BUY_LAND'], ['BUY_ANIMAL', 'COW', 2]]}
         route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
-        result, report = order_early_capital(m, obs(150, money=2500, unlocked=['NW']),
-                                             CFG, selected, route, ((226, 'x', 1, 't'),))
+        result, report = order_early_capital(
+            m, obs(150, money=2500, unlocked=['NW'], shed={'WOOL': 10}),
+            CFG, selected, route, ((226, 'x', 1, 't'),))
         ops = [o[0] for o in result['market']]
         self.assertEqual(ops[0], 'SELL')
         self.assertIn('BUY_LAND', ops)
