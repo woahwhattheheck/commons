@@ -18,10 +18,13 @@ archive, pointer, provider, Kaggle, game bank, or submission state.
   `044a4f9c0a4a44dde10ada57563238bcaf82075d`
 - Official interpreter Git blob:
   `3c202c7ee921da239356789e266b694635103fc4`
+- Arlene controller/checkpoint tape Git blob:
+  `bdb9cf58148a3c7961c085f4902759537decabf6`
 
-`repair.py` authenticates all four inputs, invokes the exact #12056 materializer
-in memory, and then applies exactly two reversible insertions to that candidate.
-A source, prefix-carrier, mechanics, interpreter, or preimage drift fails closed.
+`repair.py` authenticates all five executable inputs, invokes the exact #12056
+materializer in memory, and then applies exactly two reversible insertions to
+that candidate. A source, prefix-carrier, mechanics, interpreter, controller,
+or preimage drift fails closed.
 
 ## Source-real defect
 
@@ -150,7 +153,7 @@ occurred earlier in official turn order.
 
 ## Contracts
 
-The 18 exact-source contracts execute the exact prefix-materialized source and
+The 19 exact-source contracts execute the exact prefix-materialized source and
 the composed candidate, not a handwritten replacement.
 
 `test_repair.py` covers:
@@ -176,6 +179,7 @@ the composed candidate, not a handwritten replacement.
 
 `test_real_caller.py` independently covers:
 
+- receipt binding of the exact Arlene controller blob and decision steps;
 - unmocked `event_aware_horizon()` baseline 128 / hard end 143 with no MILK
   service date or checkpoint extension;
 - unmocked `represented_shed_event()` changing only through the decay repair;
