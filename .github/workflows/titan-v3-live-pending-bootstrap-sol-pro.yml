@@ -61,6 +61,25 @@ jobs:
           tar -xzf "$RUNNER_TEMP/payload.tar.gz" -C "$RUNNER_TEMP/unpack"
           cp -a "$RUNNER_TEMP/unpack/." .
 
+          # The probe functions are stored on the TestCase class; wrap them as
+          # static methods so instance lookup cannot inject an extra self.
+          python - "$TARGET/test_contracts.py" <<'PY'
+          from pathlib import Path
+          import sys
+          path = Path(sys.argv[1])
+          source = path.read_text(encoding="utf-8")
+          old = (
+              "        cls.run_targets = _target_executor(cls.live_source)\n"
+              "        cls.run_pending = _pending_executor(cls.live_source)\n"
+          )
+          new = (
+              "        cls.run_targets = staticmethod(_target_executor(cls.live_source))\n"
+              "        cls.run_pending = staticmethod(_pending_executor(cls.live_source))\n"
+          )
+          assert source.count(old) == 1, "probe binding preimage drift"
+          path.write_text(source.replace(old, new), encoding="utf-8")
+          PY
+
           git fetch --no-tags --depth=1 origin \
             pull/12050/head:refs/remotes/origin/sol-reach-donor \
             pull/11997/head:refs/remotes/origin/sol-orbit-donor
@@ -77,7 +96,7 @@ jobs:
           1cf5c3536604bc8cc7ade58cdc50b02c7d1e7888 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/materialize.py
           ae336aea368baf79cd472bfabf9518f994b3ae00 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/bind_execution.py
           0ce59b734e734310fe6a5d373972037637f0d384 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/analyze.py
-          dd31397495321750c77990d9c9faef3728e46113 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/test_contracts.py
+          12b4bcf95fccfbe12c608fa452698a5c672cf008 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/test_contracts.py
           84aad634c5e32f8fd65c7cf85dfbf74cb914940e revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/test_analyze.py
           5764cff64e69f1e37f803e473bf784f02ef4ca62 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/README.md
           bae6038261bd3da1176b82a64c98f0c93001b8a3 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/CONTRACT.json
