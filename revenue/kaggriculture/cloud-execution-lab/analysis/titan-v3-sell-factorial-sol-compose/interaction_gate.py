@@ -11,6 +11,7 @@ computing singleton, composition, and factorial interaction effects.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -32,6 +33,15 @@ PROVENANCE_KEYS = (
 )
 EXPECTED_EPISODE_STEPS = 720
 EXPECTED_ACTION_COUNT = 719
+MANIFEST_OPERATION = "titan-v3-sell-factorial-arm-manifest-20260910-01"
+PRESSURE_CONTRACT = "TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01"
+FACTOR_NAMES = ("own_value", "certified_pressure")
+EXPECTED_ARM_FACTORS = {
+    "control": (),
+    "own_value": ("own_value",),
+    "certified_pressure": ("certified_pressure",),
+    "both": FACTOR_NAMES,
+}
 
 
 class EvidenceError(ValueError):
@@ -80,14 +90,36 @@ def _true_int(value: Any, label: str, *, minimum: int = 0) -> int:
     return value
 
 
-def _digest(value: Any, label: str) -> str:
-    if not isinstance(value, str) or len(value) != 64:
-        raise EvidenceError(f"{label} must be a 64-character SHA-256 digest")
+def _hex_digest(value: Any, label: str, *, length: int) -> str:
+    if not isinstance(value, str) or len(value) != length:
+        raise EvidenceError(f"{label} must be a {length}-character hex digest")
     try:
         int(value, 16)
     except ValueError as exc:
-        raise EvidenceError(f"{label} must be a 64-character SHA-256 digest") from exc
+        raise EvidenceError(f"{label} must be a {length}-character hex digest") from exc
     return value.lower()
+
+
+def _digest(value: Any, label: str) -> str:
+    return _hex_digest(value, label, length=64)
+
+
+def _exact_keys(value: Any, expected: set[str], label: str) -> dict[str, Any]:
+    if not isinstance(value, dict):
+        raise EvidenceError(f"{label} must be an object")
+    actual = set(value)
+    if actual != expected:
+        raise EvidenceError(
+            f"{label} keys differ: missing={sorted(expected-actual)!r}, "
+            f"unexpected={sorted(actual-expected)!r}"
+        )
+    return value
+
+
+def _nonempty_string(value: Any, label: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise EvidenceError(f"{label} must be a non-empty string")
+    return value
 
 
 def _fingerprint(report: Mapping[str, Any], label: str) -> dict[str, Any]:
@@ -99,6 +131,129 @@ def _fingerprint(report: Mapping[str, Any], label: str) -> dict[str, Any]:
     if entrypoint is not None and (not isinstance(entrypoint, str) or not entrypoint):
         raise EvidenceError(f"{label} candidate entrypoint is malformed")
     return dict(value)
+
+
+def _validate_arm_manifest(
+    manifest: Mapping[str, Any],
+    reports: Mapping[str, Mapping[str, Any]],
+    report_provenance: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Bind arm labels to exact factor bytes and one canonical runtime closure."""
+    root = _exact_keys(
+        manifest,
+        {"schema_version", "operation", "panel_binding", "factors", "arms"},
+        "arm manifest",
+    )
+    if _true_int(root["schema_version"], "arm manifest schema", minimum=1) != 1:
+        raise EvidenceError("unsupported arm manifest schema")
+    if root["operation"] != MANIFEST_OPERATION:
+        raise EvidenceError("arm manifest operation mismatch")
+
+    panel = _exact_keys(
+        root["panel_binding"],
+        {
+            "archive_sha256",
+            "source_manifest_sha256",
+            "runtime_tree_sha256",
+            "engine_sha256",
+            "loader_sha256",
+            "evaluator_sha256",
+        },
+        "arm manifest panel_binding",
+    )
+    normalized_panel = {name: _digest(value, f"panel {name}") for name, value in panel.items()}
+    for name in ("engine_sha256", "loader_sha256", "evaluator_sha256"):
+        if normalized_panel[name] != report_provenance[name]:
+            raise EvidenceError(f"arm manifest panel binding differs from reports: {name}")
+
+    factors = _exact_keys(root["factors"], set(FACTOR_NAMES), "arm manifest factors")
+    normalized_factors: dict[str, dict[str, Any]] = {}
+    for name in FACTOR_NAMES:
+        expected = {"contract", "source_sha256", "source_git_blob_sha1", "receipt_sha256"}
+        if name == "certified_pressure":
+            expected.add("delay_bound_source")
+        row = _exact_keys(factors[name], expected, f"factor {name}")
+        contract = _nonempty_string(row["contract"], f"factor {name} contract")
+        if name == "certified_pressure":
+            if contract != PRESSURE_CONTRACT:
+                raise EvidenceError("certified-pressure contract identity mismatch")
+            if row["delay_bound_source"] != "shedCapacity":
+                raise EvidenceError("certified-pressure delay bound must be shedCapacity")
+        normalized = {
+            "contract": contract,
+            "source_sha256": _digest(row["source_sha256"], f"factor {name} source SHA-256"),
+            "source_git_blob_sha1": _hex_digest(
+                row["source_git_blob_sha1"], f"factor {name} Git blob", length=40
+            ),
+            "receipt_sha256": _digest(row["receipt_sha256"], f"factor {name} receipt SHA-256"),
+        }
+        if name == "certified_pressure":
+            normalized["delay_bound_source"] = "shedCapacity"
+        normalized_factors[name] = normalized
+    if len({row["source_sha256"] for row in normalized_factors.values()}) != len(FACTOR_NAMES):
+        raise EvidenceError("factor source identities must be distinct")
+
+    arms = _exact_keys(root["arms"], set(ARM_NAMES), "arm manifest arms")
+    normalized_arms: dict[str, dict[str, Any]] = {}
+    for arm in ARM_NAMES:
+        row = _exact_keys(
+            arms[arm],
+            {
+                "candidate_sha256",
+                "build_receipt_sha256",
+                "archive_sha256",
+                "source_manifest_sha256",
+                "runtime_tree_sha256",
+                "factors",
+            },
+            f"arm manifest {arm}",
+        )
+        candidate_sha = _digest(row["candidate_sha256"], f"{arm} manifest candidate SHA-256")
+        report_sha = _digest(
+            reports[arm]["candidate"]["sha256"], f"{arm} report candidate SHA-256"
+        )
+        if candidate_sha != report_sha:
+            raise EvidenceError(f"{arm} manifest candidate differs from executed report")
+        for field in ("archive_sha256", "source_manifest_sha256", "runtime_tree_sha256"):
+            value = _digest(row[field], f"{arm} {field}")
+            if value != normalized_panel[field]:
+                raise EvidenceError(f"{arm} canonical closure differs from panel binding: {field}")
+        arm_factors = _exact_keys(
+            row["factors"], set(EXPECTED_ARM_FACTORS[arm]), f"{arm} factor map"
+        )
+        normalized_arm_factors: dict[str, str] = {}
+        for factor, source_sha in arm_factors.items():
+            normalized_sha = _digest(source_sha, f"{arm} factor {factor} source SHA-256")
+            if normalized_sha != normalized_factors[factor]["source_sha256"]:
+                raise EvidenceError(
+                    f"{arm} does not bind the exact singleton source bytes for {factor}"
+                )
+            normalized_arm_factors[factor] = normalized_sha
+        normalized_arms[arm] = {
+            "candidate_sha256": candidate_sha,
+            "build_receipt_sha256": _digest(
+                row["build_receipt_sha256"], f"{arm} build receipt SHA-256"
+            ),
+            "archive_sha256": normalized_panel["archive_sha256"],
+            "source_manifest_sha256": normalized_panel["source_manifest_sha256"],
+            "runtime_tree_sha256": normalized_panel["runtime_tree_sha256"],
+            "factors": normalized_arm_factors,
+        }
+
+    normalized = {
+        "schema_version": 1,
+        "operation": MANIFEST_OPERATION,
+        "panel_binding": normalized_panel,
+        "factors": normalized_factors,
+        "arms": normalized_arms,
+    }
+    payload = json.dumps(
+        normalized, sort_keys=True, separators=(",", ":"), allow_nan=False
+    ).encode("utf-8")
+    return {
+        "semantic_sha256": hashlib.sha256(payload).hexdigest(),
+        "manifest": normalized,
+    }
 
 
 def _expected_keys(report: Mapping[str, Any]) -> set[tuple[str, int, int]]:
@@ -367,14 +522,10 @@ def _build_cells(
                         )
         pairwise = {
             "own_value_vs_control": _pair_row(states["control"], states["own_value"]),
-            "certified_pressure_vs_control": _pair_row(
-                states["control"], states["certified_pressure"]
-            ),
+            "certified_pressure_vs_control": _pair_row(states["control"], states["certified_pressure"]),
             "both_vs_control": _pair_row(states["control"], states["both"]),
             "both_vs_own_value": _pair_row(states["own_value"], states["both"]),
-            "both_vs_certified_pressure": _pair_row(
-                states["certified_pressure"], states["both"]
-            ),
+            "both_vs_certified_pressure": _pair_row(states["certified_pressure"], states["both"]),
         }
         own_effect = _finite(
             (
@@ -548,9 +699,17 @@ def _selection(
     }
 
 
-def assess(reports: Mapping[str, Mapping[str, Any]], *, git_head: str | None = None) -> dict[str, Any]:
-    """Validate four evaluator reports and return a deterministic decision packet."""
+def assess(
+    reports: Mapping[str, Mapping[str, Any]],
+    arm_manifest: Mapping[str, Any],
+    *,
+    git_head: str | None = None,
+) -> dict[str, Any]:
+    """Validate four reports plus exact arm construction and return a decision packet."""
     provenance = _validate_shared_provenance(reports)
+    manifest_binding = _validate_arm_manifest(
+        arm_manifest, reports, provenance["shared"]
+    )
     expected = _expected_keys(reports["control"])
     indexed = {
         arm: _index_report(reports[arm], arm, expected)
@@ -565,6 +724,7 @@ def assess(reports: Mapping[str, Mapping[str, Any]], *, git_head: str | None = N
         "git_head": git_head,
         "arms": list(ARM_NAMES),
         "paired_provenance": provenance,
+        "arm_manifest_binding": manifest_binding,
         "grid": {
             "cells_per_arm": len(expected),
             "total_games": len(expected) * len(ARM_NAMES),
@@ -633,6 +793,7 @@ def main() -> int:
     parser.add_argument("--own-value", type=Path, required=True)
     parser.add_argument("--certified-pressure", type=Path, required=True)
     parser.add_argument("--both", type=Path, required=True)
+    parser.add_argument("--arm-manifest", type=Path, required=True)
     parser.add_argument("--head")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--markdown", type=Path, required=True)
@@ -643,7 +804,8 @@ def main() -> int:
         "certified_pressure": strict_load(args.certified_pressure, "certified-pressure"),
         "both": strict_load(args.both, "both"),
     }
-    report = assess(reports, git_head=args.head)
+    arm_manifest = strict_load(args.arm_manifest, "arm manifest")
+    report = assess(reports, arm_manifest, git_head=args.head)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + "\n",
