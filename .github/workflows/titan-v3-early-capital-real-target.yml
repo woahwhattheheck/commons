@@ -1,0 +1,190 @@
+name: titan-v3-early-capital-real-target
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-post-unit-seed-demand.yml'
+      - '.github/workflows/titan-v3-early-capital-real-target.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-head:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Assert exact checkout, latest parent, and bounded diff
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        shell: python
+        run: |
+          import os
+          import subprocess
+
+          source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+          predecessor = 'cef33119f3bfdaa1f81ee7e2068424900110aba6'
+          head = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD'], (
+              head, os.environ['EXPECTED_HEAD'])
+
+          base = os.environ.get('BASE_SHA', '')
+          assert base, 'pull-request base SHA is required'
+          parent_source = subprocess.check_output(
+              ['git', 'rev-parse', f'{base}:{source}'], text=True).strip()
+          assert parent_source == predecessor, (parent_source, predecessor)
+
+          allowed = {
+              '.github/workflows/titan-v3-post-unit-seed-demand.yml',
+              '.github/workflows/titan-v3-early-capital-real-target.yml',
+              source,
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py',
+          }
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{base}...HEAD'],
+              text=True,
+          ).splitlines())
+          assert changed == allowed, (changed, allowed)
+
+      - name: Bind composed and official sources
+        shell: python
+        run: |
+          import hashlib
+          from pathlib import Path
+
+          expected = {
+              Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'):
+                  '6b4fedbc2c529552a0c3da73caeb29601c7c7332',
+              Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'):
+                  '044a4f9c0a4a44dde10ada57563238bcaf82075d',
+              Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'):
+                  '3c202c7ee921da239356789e266b694635103fc4',
+          }
+          for path, expected_blob in expected.items():
+              data = path.read_bytes()
+              actual = hashlib.sha1(
+                  b'blob ' + str(len(data)).encode() + b'\0' + data
+              ).hexdigest()
+              assert actual == expected_blob, (path, actual, expected_blob)
+
+      - name: Compile parent and successor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile \
+            early_capital.py \
+            test_early_capital.py \
+            test_early_capital_executable_prefix.py \
+            test_early_capital_post_unit_seed_demand.py \
+            test_early_capital_real_target.py
+
+      - name: Execute inherited, parent, and successor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python3 -m unittest -v \
+              test_early_capital \
+              test_early_capital_executable_prefix \
+              test_early_capital_post_unit_seed_demand \
+              test_early_capital_real_target \
+            2>&1 | tee "$RUNNER_TEMP/early-capital-real-target-tests.log"
+
+      - name: Emit deterministic exact-head receipt
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          paths = [
+              Path('.github/workflows/titan-v3-post-unit-seed-demand.yml'),
+              Path('.github/workflows/titan-v3-early-capital-real-target.yml'),
+              Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'),
+          ]
+          files = {}
+          for path in paths:
+              data = path.read_bytes()
+              files[str(path)] = {
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+                  'git_blob': hashlib.sha1(
+                      b'blob ' + str(len(data)).encode() + b'\0' + data
+                  ).hexdigest(),
+              }
+
+          source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+          mechanics = 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+          engine = 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+          assert files[source]['git_blob'] == '6b4fedbc2c529552a0c3da73caeb29601c7c7332'
+          assert files[mechanics]['git_blob'] == '044a4f9c0a4a44dde10ada57563238bcaf82075d'
+          assert files[engine]['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
+
+          log = (
+              Path(os.environ['RUNNER_TEMP'])
+              / 'early-capital-real-target-tests.log'
+          )
+          head = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip()
+          receipt = {
+              'schema': 'titan-v3-early-capital-real-target/v3-stacked',
+              'head': head,
+              'expected_head': os.environ['EXPECTED_HEAD'],
+              'base': os.environ['BASE_SHA'],
+              'parent_pr': 12107,
+              'parent_head': '493318c35884fe9cb79c0a76702b5577f9698880',
+              'parent_source_blob':
+                  'cef33119f3bfdaa1f81ee7e2068424900110aba6',
+              'files': files,
+              'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
+              'scope': (
+                  'strict source successor to the latest PR 12107 chronology; '
+                  'canonical repackaging and games remain T08 custody'
+              ),
+          }
+          assert receipt['head'] == receipt['expected_head']
+          out = (
+              Path(os.environ['RUNNER_TEMP'])
+              / 'early-capital-real-target-receipt.json'
+          )
+          out.write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          print(out.read_text(), end='')
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-early-capital-real-target-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/early-capital-real-target-tests.log
+            ${{ runner.temp }}/early-capital-real-target-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        run: test -z "$(git status --porcelain)"
