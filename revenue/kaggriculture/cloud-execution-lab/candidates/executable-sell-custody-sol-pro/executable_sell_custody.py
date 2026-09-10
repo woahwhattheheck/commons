@@ -128,11 +128,13 @@ def install(
 
         def transform(self, obs, config, selected):
             limit = executable_limit(config)
+            config_view = dict(config or {})
+            config_view["maxMarketOrdersPerTurn"] = limit
             selected_view = executable_market_view(selected, limit)
             original_controller = self.controller
             self.controller = controller_view(original_controller, limit)
             try:
-                transformed = original_transform(self, obs, config, selected_view)
+                transformed = original_transform(self, obs, config_view, selected_view)
             finally:
                 self.controller = original_controller
 
