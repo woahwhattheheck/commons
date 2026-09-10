@@ -1,0 +1,196 @@
+name: TITAN pressure delay invariance certificate
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-pressure-delay-invariance-sol-pro.yml"
+      - "analysis/titan-v3-pressure-delay-invariance-sol-pro/**"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py"
+  push:
+    branches:
+      - "sol-pro/titan-pressure-delay-invariance-certificate-20260910-01"
+    paths:
+      - ".github/workflows/titan-pressure-delay-invariance-sol-pro.yml"
+      - "analysis/titan-v3-pressure-delay-invariance-sol-pro/**"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-pressure-delay-invariance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PARENT_SHA: dfef8e57289b59c68bd45eb8f3fdd8ec610e0892
+      ENGINE_BLOB: 3c202c7ee921da239356789e266b694635103fc4
+      ENGINE_PATH: revenue/kaggriculture/cloud-execution-lab/mechanics.py
+      MODULE_PATH: revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py
+      TEST_PATH: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py
+      README_PATH: analysis/titan-v3-pressure-delay-invariance-sol-pro/README.md
+      SOURCE_PATH: analysis/titan-v3-pressure-delay-invariance-sol-pro/SOURCE.json
+      WORKFLOW_PATH: .github/workflows/titan-pressure-delay-invariance-sol-pro.yml
+      EXPECTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Check out immutable event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_HEAD }}
+          fetch-depth: 0
+
+      - name: Bind head, parent, engine, and changed paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git merge-base --is-ancestor "$PARENT_SHA" HEAD
+          test "$(git rev-parse "${PARENT_SHA}:${ENGINE_PATH}")" = "$ENGINE_BLOB"
+          test "$(git rev-parse "HEAD:${ENGINE_PATH}")" = "$ENGINE_BLOB"
+          python - <<'PY'
+          import os
+          import subprocess
+
+          expected = {
+              os.environ["MODULE_PATH"],
+              os.environ["TEST_PATH"],
+              os.environ["README_PATH"],
+              os.environ["SOURCE_PATH"],
+              os.environ["WORKFLOW_PATH"],
+          }
+          changed = {
+              line
+              for line in subprocess.check_output(
+                  ["git", "diff", "--name-only", os.environ["PARENT_SHA"], "HEAD"],
+                  text=True,
+              ).splitlines()
+              if line
+          }
+          if changed != expected:
+              raise SystemExit(
+                  "out-of-scope diff\n"
+                  f"expected={sorted(expected)!r}\n"
+                  f"actual={sorted(changed)!r}"
+              )
+          PY
+
+      - name: Parse source without checkout side effects
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast
+          import os
+          from pathlib import Path
+
+          for key in ("MODULE_PATH", "TEST_PATH"):
+              path = Path(os.environ[key])
+              source = path.read_text(encoding="utf-8")
+              ast.parse(source, filename=str(path))
+          PY
+
+      - name: Run exact-engine and adversarial contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/titan-pressure-delay-invariance"
+          mkdir -p "$evidence"
+          python "$TEST_PATH" -v 2>&1 | tee "$evidence/TEST.log"
+          grep -Fxq "Ran 11 tests" "$evidence/TEST.log"
+          grep -Fxq "OK" "$evidence/TEST.log"
+
+      - name: Emit and validate deterministic receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/titan-pressure-delay-invariance"
+          python - "$evidence" <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          evidence = Path(sys.argv[1])
+          paths = [
+              os.environ["MODULE_PATH"],
+              os.environ["TEST_PATH"],
+              os.environ["README_PATH"],
+              os.environ["SOURCE_PATH"],
+              os.environ["WORKFLOW_PATH"],
+          ]
+          hashes = {
+              path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+              for path in paths
+          }
+          test_log = evidence / "TEST.log"
+          payload = {
+              "schema": "titan-pressure-delay-invariance-receipt/v1",
+              "head": subprocess.check_output(
+                  ["git", "rev-parse", "HEAD"], text=True
+              ).strip(),
+              "parent": os.environ["PARENT_SHA"],
+              "engine_blob": subprocess.check_output(
+                  ["git", "rev-parse", f"HEAD:{os.environ['ENGINE_PATH']}"],
+                  text=True,
+              ).strip(),
+              "changed_paths": sorted(paths),
+              "sha256": hashes,
+              "test_log_sha256": hashlib.sha256(test_log.read_bytes()).hexdigest(),
+              "tests": 11,
+              "exhaustive_monotone_cases": 2160,
+              "official_plateau_parent_cash": {"own": 229, "rival": 117},
+              "official_plateau_unsafe_cash": {"own": 226, "rival": 120},
+              "official_plateau_delta": {"own": -3, "margin": -6},
+              "guarantee": "demoted-own-receipt-delay-invariance",
+              "bilateral_margin_theorem": False,
+              "canonical_runtime_mutated": False,
+              "hosted_strength": False,
+              "release_selection": False,
+          }
+          if payload["head"] != os.environ["EXPECTED_HEAD"]:
+              raise SystemExit("receipt head drift")
+          if payload["engine_blob"] != os.environ["ENGINE_BLOB"]:
+              raise SystemExit("receipt engine drift")
+          (evidence / "RECEIPT.json").write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          python - "$evidence/RECEIPT.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          payload = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert payload["schema"] == "titan-pressure-delay-invariance-receipt/v1"
+          assert payload["tests"] == 11
+          assert payload["exhaustive_monotone_cases"] == 2160
+          assert payload["official_plateau_delta"] == {"own": -3, "margin": -6}
+          assert payload["bilateral_margin_theorem"] is False
+          assert payload["canonical_runtime_mutated"] is False
+          assert payload["hosted_strength"] is False
+          assert payload["release_selection"] is False
+          PY
+          (
+            cd "$evidence"
+            sha256sum TEST.log RECEIPT.json > SHA256SUMS
+            sha256sum -c SHA256SUMS
+          )
+          test -z "$(git status --porcelain)"
+
+      - name: Retain exact-head evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-pressure-delay-invariance-${{ env.EXPECTED_HEAD }}
+          path: ${{ runner.temp }}/titan-pressure-delay-invariance/
+          if-no-files-found: error
+          retention-days: 30
