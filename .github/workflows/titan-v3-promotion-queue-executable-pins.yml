@@ -47,15 +47,28 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
           git rev-parse HEAD
-          git status --porcelain=v1
+          git status --porcelain=v1 --untracked-files=all
 
-      - name: Compile promotion queue
+      - name: Parse every promotion-queue Python source without writing bytecode
         working-directory: revenue/kaggriculture/cloud-execution-lab/promotion-queue
         env:
           PYTHONDONTWRITEBYTECODE: "1"
           PYTHONHASHSEED: "0"
         run: |
-          python -B -m compileall -q -f promote.py pq tests
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          paths = [Path("promote.py")]
+          paths.extend(Path("pq").rglob("*.py"))
+          paths.extend(Path("tests").rglob("*.py"))
+          paths = sorted(set(paths), key=lambda path: path.as_posix())
+          if not paths:
+              raise SystemExit("no Python sources discovered")
+          for path in paths:
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          print(f"parsed {len(paths)} Python sources")
+          PY
 
       - name: Run complete promotion queue suite
         working-directory: revenue/kaggriculture/cloud-execution-lab/promotion-queue
