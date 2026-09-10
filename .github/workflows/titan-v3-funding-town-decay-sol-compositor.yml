@@ -1,0 +1,183 @@
+name: titan-v3-funding-town-decay-sol-compositor
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-funding-town-decay-sol-compositor.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-consumption-sol-atlas/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-decay-sol-compositor/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/frozen_selected.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/scheduler.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-composition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.13']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPYCACHEPREFIX: /tmp/titan-town-decay-pycache-${{ matrix.python }}
+      BASE_MAIN: 6f6f2f0fefd972050dbfa4c4d1ccbb1a9fe67701
+      TOWN_HEAD: e701b8bf348b8ccacda854722d1e510cfd3c67c6
+      DECAY_HEAD: 30d9d09561a07e3f9eef2c7128b6139bf0acdea7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind event head, exact donor ancestry, and additive scope
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git merge-base --is-ancestor "$BASE_MAIN" HEAD
+          git merge-base --is-ancestor "$TOWN_HEAD" HEAD
+          git merge-base --is-ancestor "$DECAY_HEAD" HEAD
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-consumption-sol-atlas/town_consumption_closure.py)" = 3fd5fd361b5356ad3aa1f8dc7bda3ed2b3cee2b0
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py)" = 6c215bb626369424051fbe58312ecf225ac32ad3
+          mkdir -p /tmp/titan-town-decay-evidence-${{ matrix.python }}
+          printf '%s\n' "$EXPECTED_HEAD" > /tmp/titan-town-decay-evidence-${{ matrix.python }}/EXACT_HEAD
+          if [ "$EVENT_NAME" = pull_request ]; then
+            git diff --name-only "$PR_BASE_SHA"...HEAD | sort > /tmp/titan-town-decay-evidence-${{ matrix.python }}/CHANGED_PATHS
+            python - <<'PY'
+          from pathlib import Path
+          evidence = Path('/tmp/titan-town-decay-evidence-${{ matrix.python }}')
+          allowed = {
+              '.github/workflows/titan-v3-funding-town-decay-sol-compositor.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-consumption-sol-atlas/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-consumption-sol-atlas/test_town_consumption_closure.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-consumption-sol-atlas/town_consumption_closure.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/WITNESS.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/materialize.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-plant-decay-sol-chronos/test_funding_plant_decay.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-decay-sol-compositor/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-decay-sol-compositor/compose.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3-funding-town-decay-sol-compositor/test_authenticated_composition.py',
+          }
+          actual = set((evidence / 'CHANGED_PATHS').read_text().splitlines())
+          extra = sorted(actual - allowed)
+          missing = sorted(allowed - actual)
+          if extra or missing:
+              raise SystemExit(f'additive scope mismatch: extra={extra}, missing={missing}')
+          PY
+          else
+            : > /tmp/titan-town-decay-evidence-${{ matrix.python }}/CHANGED_PATHS
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Run exact donor and authenticated-composition contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TOWN="$LAB/candidates/v3-funding-town-consumption-sol-atlas"
+          DECAY="$LAB/candidates/v3-funding-plant-decay-sol-chronos"
+          COMPOSE="$LAB/candidates/v3-funding-town-decay-sol-compositor"
+          EVIDENCE=/tmp/titan-town-decay-evidence-${{ matrix.python }}
+          python -B -m py_compile \
+            "$TOWN/town_consumption_closure.py" \
+            "$TOWN/test_town_consumption_closure.py" \
+            "$DECAY/materialize.py" \
+            "$DECAY/test_funding_plant_decay.py" \
+            "$COMPOSE/compose.py" \
+            "$COMPOSE/test_authenticated_composition.py"
+          (
+            cd "$TOWN"
+            python -B -m unittest -v test_town_consumption_closure.py
+          ) 2>&1 | tee "$EVIDENCE/TOWN-TEST.log"
+          python -B -m unittest -v "$DECAY/test_funding_plant_decay.py" \
+            2>&1 | tee "$EVIDENCE/DECAY-TEST.log"
+          python -B -m unittest -v "$COMPOSE/test_authenticated_composition.py" \
+            2>&1 | tee "$EVIDENCE/COMPOSITION-TEST.log"
+
+      - name: Materialize exact chained postimage and validate receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          COMPOSE="$LAB/candidates/v3-funding-town-decay-sol-compositor"
+          EVIDENCE=/tmp/titan-town-decay-evidence-${{ matrix.python }}
+          python -B "$COMPOSE/compose.py" \
+            --repo-root . \
+            --source "$LAB/frozen_selected.py" \
+            --scheduler "$LAB/scheduler.py" \
+            --mechanics "$LAB/mechanics.py" \
+            --engine "$LAB/reference/engine/kaggriculture.py" \
+            --runtime "$LAB/titan_runtime.py" \
+            --config "$LAB/TITAN-CONFIG.json" \
+            --town-materializer "$LAB/candidates/v3-funding-town-consumption-sol-atlas/town_consumption_closure.py" \
+            --decay-materializer "$LAB/candidates/v3-funding-plant-decay-sol-chronos/materialize.py" \
+            --output-dir "$EVIDENCE/output" \
+            | tee "$EVIDENCE/MATERIALIZE.log"
+          python -B -m py_compile \
+            "$EVIDENCE/output/frozen_selected_town.py" \
+            "$EVIDENCE/output/frozen_selected_town_decay.py"
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          evidence = Path('/tmp/titan-town-decay-evidence-${{ matrix.python }}')
+          receipt = json.loads((evidence / 'output/COMPOSITION-RECEIPT.json').read_text())
+          assert receipt['schema'] == 'titan-v3-funding-town-decay-composition/v1'
+          assert receipt['status'] == 'PASS'
+          assert receipt['donors']['town_consumption']['head'] == 'e701b8bf348b8ccacda854722d1e510cfd3c67c6'
+          assert receipt['donors']['plant_decay']['head'] == '30d9d09561a07e3f9eef2c7128b6139bf0acdea7'
+          assert receipt['composition']['order'] == ['town_consumption', 'plant_decay']
+          assert receipt['composition']['town_receipt_postimage_sha256'] == receipt['composition']['decay_authenticated_input_sha256']
+          assert receipt['composition']['composition_contract']['town_immediately_before_decay'] is True
+          assert receipt['composition']['composition_contract']['decay_is_final_stage'] is True
+          assert receipt['selected_consumer']['dynamic']['selected_postimage'] is True
+          assert receipt['selected_consumer']['dynamic']['consumer_class'] == 'FrozenSelected'
+          body = dict(receipt)
+          seal = body.pop('body_sha256')
+          encoded = json.dumps(body, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
+          assert seal == hashlib.sha256(encoded).hexdigest()
+          PY
+          sha256sum \
+            "$COMPOSE/README.md" \
+            "$COMPOSE/compose.py" \
+            "$COMPOSE/test_authenticated_composition.py" \
+            "$EVIDENCE/output/frozen_selected_town.py" \
+            "$EVIDENCE/output/TOWN-RECEIPT.json" \
+            "$EVIDENCE/output/frozen_selected_town_decay.py" \
+            "$EVIDENCE/output/COMPOSITION-RECEIPT.json" \
+            "$EVIDENCE/TOWN-TEST.log" \
+            "$EVIDENCE/DECAY-TEST.log" \
+            "$EVIDENCE/COMPOSITION-TEST.log" \
+            > "$EVIDENCE/SHA256SUMS"
+
+      - name: Prove canonical checkout remained clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+      - name: Retain exact-head evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-town-decay-composition-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/titan-town-decay-evidence-${{ matrix.python }}
+          retention-days: 30
+          if-no-files-found: error

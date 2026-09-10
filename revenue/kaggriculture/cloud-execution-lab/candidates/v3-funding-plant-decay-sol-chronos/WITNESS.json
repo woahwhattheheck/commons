@@ -1,0 +1,65 @@
+{
+  "operation": "TITAN-V3-FUNDING-PLANT-DECAY-CHRONOLOGY-20260910-01",
+  "status": "SOURCE_REAL_ACTION_UNMEASURED",
+  "binding": {
+    "source_git_blob_sha1": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "scheduler_git_blob_sha1": "a483b24dd72b580d7d8811636b54d2d44f391575",
+    "mechanics_git_blob_sha1": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+    "official_engine_git_blob_sha1": "3c202c7ee921da239356789e266b694635103fc4"
+  },
+  "witness": {
+    "now": 120,
+    "end": 123,
+    "shed_capacity": 2,
+    "starting_cash": 300,
+    "current_shed": {
+      "MILK": 1
+    },
+    "current_market": [
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
+    "plant": {
+      "crop": "WHEAT",
+      "planted_day": 0,
+      "yield_units": 2,
+      "max_lifespan_step": 120,
+      "reachability_formula": "(planted_day + max_yield_day + 1) * turns_per_day = (0 + 4 + 1) * 24"
+    },
+    "future_route": {
+      "121": {
+        "farmer": [
+          "HARVEST"
+        ]
+      },
+      "122": {
+        "farmer": [
+          "DROP"
+        ]
+      },
+      "123": {
+        "market": [
+          [
+            "BUY_ANIMAL",
+            "GOOSE",
+            1
+          ]
+        ]
+      }
+    },
+    "incumbent_minimum_now": 0,
+    "candidate_minimum_now": 1,
+    "official_baseline_purchase_units": 1,
+    "official_withheld_purchase_units": 0
+  },
+  "claims_not_made": [
+    "gameplay_strength",
+    "promotion",
+    "hosted_leaderboard_uplift",
+    "canonical_integration",
+    "provider_or_kaggle_mutation"
+  ]
+}
