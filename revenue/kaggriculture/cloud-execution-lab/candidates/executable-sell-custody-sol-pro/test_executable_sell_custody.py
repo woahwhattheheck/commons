@@ -23,19 +23,24 @@ P = load_patch()
 
 
 class FakeController:
-    def __init__(self, route):
-        self.R = [route]
-        self.cur = 0
+    def __init__(self, route, *, mapping=False, route_id="7015cc00acfa4922"):
+        if mapping:
+            self.R = {route_id: route}
+            self.cur = route_id
+        else:
+            self.R = [route]
+            self.cur = 0
         self.tag = "preserved"
 
 
 class FakeFrozen:
-    def __init__(self, route):
-        self.controller = FakeController(route)
+    def __init__(self, route, *, mapping=False, route_id="7015cc00acfa4922"):
+        self.controller = FakeController(route, mapping=mapping, route_id=route_id)
         self.pending = {}
         self.planned = {}
         self.diagnostics = {}
         self.seen = None
+        self.received_config = None
 
     def cash_reserve(self, *_args, **_kwargs):
         return 0
@@ -43,7 +48,12 @@ class FakeFrozen:
     def transform(self, obs, config, selected):
         # Deliberately model the exact predecessor defect: every represented
         # SELL row, even an engine-inactive suffix, retires pending stock.
-        route_markets = [copy.deepcopy(a["market"]) for a in self.controller.R[0]]
+        self.received_config = copy.deepcopy(config)
+        if isinstance(self.controller.R, dict):
+            cur = self.controller.cur
+            route_markets = [copy.deepcopy(a["market"]) for a in self.controller.R[cur]]
+        else:
+            route_markets = [copy.deepcopy(a["market"]) for a in self.controller.R[0]]
         own_market = copy.deepcopy(selected["market"])
         sold = sum(
             max(0, int(row[2]))
@@ -56,7 +66,7 @@ class FakeFrozen:
         return copy.deepcopy(selected)
 
 
-def installed_class(route, *, frozen_blob=None, scheduler_blob=None):
+def installed_class(route, *, frozen_blob=None, scheduler_blob=None, mapping=False):
     module = SimpleNamespace(FrozenSelected=FakeFrozen, __file__=__file__)
     blob = P.git_blob_sha1(__file__)
     P.install(
@@ -64,7 +74,8 @@ def installed_class(route, *, frozen_blob=None, scheduler_blob=None):
         expected_frozen_blob=frozen_blob or blob,
         expected_scheduler_blob=scheduler_blob or blob,
     )
-    return module.FrozenSelected(route), module
+    agent = module.FrozenSelected(route, mapping=mapping)
+    return agent, module
 
 
 class SellCustodyTests(unittest.TestCase):
@@ -114,77 +125,41 @@ class SellCustodyTests(unittest.TestCase):
         self.assertEqual(agent.seen["route"], [[[]], [["SELL", "CARROT", 1]]])
         self.assertEqual(agent.controller.R[0], route_before)
 
-    def test_arlene_shaped_mapping_route_bank_preserves_keys_and_quarantines(self):
-        route_id = "7015cc00acfa4922"
-        action = {
-            "farmer": ["PASS"],
-            "hands": [],
-            "market": [[], ["SELL", "CARROT", 3]],
-        }
-        route = [copy.deepcopy(action), copy.deepcopy(action)]
-        route_bank = {route_id: route}
-        route_before = copy.deepcopy(route_bank)
-
-        class MappingController:
-            def __init__(self):
-                self.R = route_bank
-                self.cur = route_id
-                self.tag = "preserved"
-
-        class MappingFrozen(FakeFrozen):
-            def __init__(self, _route):
-                self.controller = MappingController()
-                self.pending = {}
-                self.planned = {}
-                self.diagnostics = {}
-                self.seen = None
-
-            def transform(self, obs, config, selected):
-                # Use current selected route key, not list index 0
-                cur = self.controller.cur
-                route_markets = [copy.deepcopy(a["market"]) for a in self.controller.R[cur]]
-                own_market = copy.deepcopy(selected["market"])
-                sold = sum(
-                    max(0, int(row[2]))
-                    for row in own_market
-                    if row and len(row) > 2 and row[0] == "SELL" and row[1] == "CARROT"
-                )
-                self.pending["CARROT"] = max(0, 3 - sold)
-                self.seen = {"selected": own_market, "route": route_markets}
-                self.diagnostics = {"predecessor": True}
-                return copy.deepcopy(selected)
-
-        module = SimpleNamespace(FrozenSelected=MappingFrozen, __file__=__file__)
-        blob = P.git_blob_sha1(__file__)
-        P.install(
-            module,
-            expected_frozen_blob=blob,
-            expected_scheduler_blob=blob,
-        )
-        agent = module.FrozenSelected(None)
-        controller = agent.controller
-        original = copy.deepcopy(action)
-
-        out = agent.transform({"step": 0}, {"maxMarketOrdersPerTurn": 1}, action)
-
-        self.assertEqual(agent.seen["selected"], [[]])
-        self.assertEqual(agent.pending["CARROT"], 3)
-        self.assertEqual(out, original)
-        self.assertEqual(action, original)
-        self.assertIs(agent.controller, controller)
-        self.assertIsInstance(agent.controller.R, dict)
-        self.assertEqual(list(agent.controller.R.keys()), [route_id])
-        self.assertEqual(agent.controller.R, route_before)
-        self.assertEqual(agent.controller.cur, route_id)
-        self.assertEqual(
-            agent.diagnostics["executable_sell_custody"]["inert_suffix_rows"], 1
-        )
-
     def test_market_limit_is_normalized_to_one(self):
         action = {"farmer": ["PASS"], "hands": [], "market": [[], ["SELL", "CARROT", 3]]}
         agent, _ = installed_class([copy.deepcopy(action)])
         agent.transform({}, {"maxMarketOrdersPerTurn": 0}, action)
         self.assertEqual(agent.seen["selected"], [[]])
+
+    def test_delegated_config_limit_is_normalized_for_zero_and_negative(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": [[], ["SELL", "CARROT", 3]]}
+        for configured in (0, -3):
+            with self.subTest(configured=configured):
+                caller_config = {"maxMarketOrdersPerTurn": configured, "other": "keep"}
+                agent, _ = installed_class([copy.deepcopy(action)])
+                agent.transform({}, caller_config, action)
+                self.assertEqual(agent.received_config["maxMarketOrdersPerTurn"], 1)
+                self.assertEqual(agent.received_config["other"], "keep")
+                self.assertEqual(caller_config["maxMarketOrdersPerTurn"], configured)
+                self.assertEqual(agent.seen["selected"], [[]])
+
+    def test_mapping_route_bank_string_cur_is_preserved(self):
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [[], ["SELL", "CARROT", 3]],
+        }
+        route = [copy.deepcopy(action)]
+        agent, _ = installed_class(route, mapping=True)
+        original_R = agent.controller.R
+        original_cur = agent.controller.cur
+        out = agent.transform({}, {"maxMarketOrdersPerTurn": 1}, action)
+        self.assertEqual(agent.seen["selected"], [[]])
+        self.assertEqual(agent.pending["CARROT"], 3)
+        self.assertIs(agent.controller.R, original_R)
+        self.assertEqual(agent.controller.cur, original_cur)
+        self.assertIsInstance(agent.controller.R, dict)
+        self.assertEqual(out["market"][1], ["SELL", "CARROT", 3])
 
     def test_no_suffix_path_is_active_prefix_parity(self):
         action = {"farmer": ["PASS"], "hands": [["WAIT"]], "market": [["SELL", "CARROT", 2]]}

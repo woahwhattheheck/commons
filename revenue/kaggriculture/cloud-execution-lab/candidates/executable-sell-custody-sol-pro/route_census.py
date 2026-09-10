@@ -43,22 +43,21 @@ def run() -> dict[str, Any]:
     suffix_sell_items: dict[str, int] = {}
     witnesses: list[dict[str, Any]] = []
 
-    if isinstance(controller.R, dict):
-        route_items = list(controller.R.items())
-    elif isinstance(controller.R, list):
-        route_items = list(enumerate(controller.R))
+    bank = controller.R
+    if isinstance(bank, dict):
+        route_items = list(bank.items())
     else:
-        raise RuntimeError("controller route bank must be a mapping or list")
+        route_items = list(enumerate(bank))
 
-    for route_id, route in route_items:
+    for route_key, route in route_items:
         if not isinstance(route, list):
-            raise RuntimeError(f"route {route_id!r} is not a list")
+            raise RuntimeError(f"route {route_key!r} is not a list")
         for step, action in enumerate(route):
             if not isinstance(action, dict):
-                raise RuntimeError(f"route {route_id!r} step {step} is not a mapping")
+                raise RuntimeError(f"route {route_key!r} step {step} is not a mapping")
             market = action.get("market", [])
             if not isinstance(market, list):
-                raise RuntimeError(f"route {route_id!r} step {step} market is not a list")
+                raise RuntimeError(f"route {route_key!r} step {step} market is not a list")
             if len(market) <= limit:
                 continue
             actions_over_limit += 1
@@ -84,7 +83,7 @@ def run() -> dict[str, Any]:
             if local_sales and len(witnesses) < 24:
                 witnesses.append(
                     {
-                        "route": route_id,
+                        "route": route_key,
                         "step": step,
                         "represented_rows": len(market),
                         "limit": limit,
@@ -100,7 +99,7 @@ def run() -> dict[str, Any]:
         "patch_factor": (receipt or {}).get("factor"),
         "private_runtime": (receipt or {}).get("private_runtime"),
         "max_market_orders_per_turn": limit,
-        "routes": len(controller.R),
+        "routes": len(bank),
         "actions_over_limit": actions_over_limit,
         "suffix_rows": suffix_rows,
         "suffix_nonempty_rows": suffix_nonempty,
