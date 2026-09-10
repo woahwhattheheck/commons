@@ -1,14 +1,11 @@
-name: titan-v3-receipt-profile-prefix-sol-mechanist
+name: titan-v3 receipt-prefix exact-head repair
 
 on:
-  push:
-    paths:
-      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist/**'
-      - '.github/workflows/titan-v3-receipt-profile-prefix-sol-mechanist.yml'
   pull_request:
     paths:
-      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist/**'
       - '.github/workflows/titan-v3-receipt-profile-prefix-sol-mechanist.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist/run_exact_tests.py'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,51 +14,86 @@ jobs:
   exact-source-contracts:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
+    env:
+      PARENT_SHA: '4ce3056ba1ecff6135d1ef98c50394bf93559af7'
+      DIR: 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
         with:
-          python-version: '3.11'
-      - name: Run exact-source and official-engine predecessor contracts
-        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Assert exact successor custody
+        shell: bash
         run: |
           set -euo pipefail
-          python -m py_compile materialize.py test_materialize.py
-          python -m unittest -v test_materialize.py
-      - name: Materialize, compile, and verify deterministic receipt
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$expected"
+          test "$(git rev-parse HEAD^)" = "$PARENT_SHA"
+          cat > "$RUNNER_TEMP/expected-paths" <<'EOF'
+          .github/workflows/titan-v3-receipt-profile-prefix-sol-mechanist.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist/run_exact_tests.py
+          EOF
+          git diff --name-only "$PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
+          LC_ALL=C sort -o "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/expected-paths"
+          diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/actual-paths"
+
+      - name: Compile without writing repository bytecode
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist
+        shell: python
+        run: |
+          from pathlib import Path
+          for name in ('materialize.py', 'test_materialize.py', 'run_exact_tests.py'):
+              text = Path(name).read_text(encoding='utf-8')
+              compile(text, name, 'exec')
+
+      - name: Run all original parent tests with descriptor custody fix
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONHASHSEED: '0'
         run: |
           set -euo pipefail
-          out="${RUNNER_TEMP}/titan-v3-receipt-prefix"
+          python run_exact_tests.py
+
+      - name: Materialize and verify deterministic receipt
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-v3-receipt-prefix"
           rm -rf "$out"
           mkdir -p "$out"
           python materialize.py \
             ../../scheduler.py \
             ../../reference/engine/kaggriculture.py \
             "$out/scheduler.py" > "$out/receipt.json"
-          python -m py_compile "$out/scheduler.py"
           python - "$out/receipt.json" "$out/scheduler.py" <<'PY'
           import hashlib
           import json
           from pathlib import Path
           import sys
 
-          receipt = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          receipt = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
           candidate = Path(sys.argv[2]).read_bytes()
-          assert receipt["operation"] == "TITAN-V3-RECEIPT-PROFILE-EXECUTABLE-PREFIX-CLOSURE-20260910-01"
-          assert receipt["source"]["git_blob"] == "a483b24dd72b580d7d8811636b54d2d44f391575"
-          assert receipt["engine"]["git_blob"] == "3c202c7ee921da239356789e266b694635103fc4"
-          assert receipt["candidate"]["sha256"] == hashlib.sha256(candidate).hexdigest()
-          assert receipt["patch"] == {
-              "helper_insertions": 1,
-              "receipt_profile_callsite_replacements": 1,
-              "retired_preimages": 0,
+          compile(candidate, '<materialized-scheduler>', 'exec')
+          assert receipt['operation'] == 'TITAN-V3-RECEIPT-PROFILE-EXECUTABLE-PREFIX-CLOSURE-20260910-01'
+          assert receipt['source']['git_blob'] == 'a483b24dd72b580d7d8811636b54d2d44f391575'
+          assert receipt['engine']['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
+          assert receipt['candidate']['sha256'] == hashlib.sha256(candidate).hexdigest()
+          assert receipt['patch'] == {
+              'helper_insertions': 1,
+              'receipt_profile_callsite_replacements': 1,
+              'retired_preimages': 0,
           }
-          assert receipt["claim"] == "SOURCE_REAL_ACTION_UNMEASURED"
+          assert receipt['claim'] == 'SOURCE_REAL_ACTION_UNMEASURED'
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: titan-v3-receipt-prefix-${{ github.sha }}
-          path: ${{ runner.temp }}/titan-v3-receipt-prefix/
-          if-no-files-found: error
-          retention-days: 14
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain=v1)"
