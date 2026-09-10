@@ -34,20 +34,46 @@ class FeatureReachabilityTests(unittest.TestCase):
             self.assertEqual(refs["seed"][0]["path"], "main.py")
             self.assertEqual(refs["funding"], [])
 
-    def test_materialization_changes_exactly_one_flag(self):
+    def test_materialization_preserves_control_bytes_and_proves_tree_diff(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             base, out = root / "base", root / "out"
             base.mkdir()
             (base / "main.py").write_text("def agent(obs, cfg): return {}\n", encoding="utf-8")
-            (base / "TITAN-CONFIG.json").write_text(json.dumps({"a": True, "b": True, "fixed": 7}), encoding="utf-8")
+            original = b'{\n  "fixed": 7,\n  "b": true,\n  "a": true\n}\n'
+            (base / "TITAN-CONFIG.json").write_bytes(original)
             rows, config = fr.materialize_variants(base, out, ("a", "b"))
             self.assertEqual(config["fixed"], 7)
-            for row in rows:
+
+            control = rows[0]
+            self.assertEqual(control["name"], "all_enabled")
+            self.assertEqual((out / "all_enabled" / "TITAN-CONFIG.json").read_bytes(), original)
+            self.assertEqual(control["config_semantic_changed_keys"], [])
+            self.assertEqual(control["tree_diff"], {"added": [], "removed": [], "changed": []})
+            self.assertTrue(control["all_enabled_byte_identical"])
+            self.assertTrue(control["non_config_byte_identical"])
+
+            for row in rows[1:]:
                 built = json.loads((out / row["name"] / "TITAN-CONFIG.json").read_text())
                 changed = [name for name in ("a", "b") if built[name] != config[name]]
-                self.assertEqual(changed, [] if row["disabled"] is None else [row["disabled"]])
+                self.assertEqual(changed, [row["disabled"]])
+                self.assertEqual(row["config_semantic_changed_keys"], [row["disabled"]])
+                self.assertEqual(
+                    row["tree_diff"],
+                    {"added": [], "removed": [], "changed": ["TITAN-CONFIG.json"]},
+                )
+                self.assertFalse(row["all_enabled_byte_identical"])
+                self.assertTrue(row["non_config_byte_identical"])
                 self.assertEqual(built["fixed"], 7)
+
+    def test_manifest_diff_reports_added_removed_and_changed(self):
+        before = {"same": "a", "changed": "b", "removed": "c"}
+        after = {"same": "a", "changed": "d", "added": "e"}
+        self.assertEqual(fr.manifest_diff(before, after), {
+            "added": ["added"],
+            "removed": ["removed"],
+            "changed": ["changed"],
+        })
 
     def test_safe_extract_rejects_traversal(self):
         with tempfile.TemporaryDirectory() as directory:
