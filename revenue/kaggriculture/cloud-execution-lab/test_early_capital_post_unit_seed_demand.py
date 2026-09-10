@@ -14,7 +14,7 @@ from test_early_capital_executable_prefix import CFG, action, load_official_engi
 
 
 EARLY_CAPITAL_PATH = Path('early_capital.py')
-EARLY_CAPITAL_BLOB = 'cef33119f3bfdaa1f81ee7e2068424900110aba6'
+EARLY_CAPITAL_BLOB = '6b4fedbc2c529552a0c3da73caeb29601c7c7332'
 
 
 def git_blob(data: bytes) -> str:
