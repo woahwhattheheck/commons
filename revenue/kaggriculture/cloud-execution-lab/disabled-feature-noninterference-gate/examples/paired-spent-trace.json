@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "claim_id": "TITAN-V3-DISABLED-FEATURE-NONINTERFERENCE-SYNTHETIC-SMOKE",
+  "expected_verdict": "PASS",
+  "expected_case_ids": [
+    "synthetic-disabled-arm-identity"
+  ],
+  "cases": [
+    {
+      "case_id": "synthetic-disabled-arm-identity",
+      "baseline": {
+        "action_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "transition_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "banks": [
+          101,
+          97
+        ],
+        "reward": 101,
+        "state_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "disabled": {
+        "action_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "transition_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "banks": [
+          101,
+          97
+        ],
+        "reward": 101,
+        "state_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    }
+  ]
+}

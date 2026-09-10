@@ -1,0 +1,65 @@
+name: TITAN V3 disabled-feature noninterference
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-disabled-feature-noninterference.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/**'
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/titan-v3-disabled-feature-noninterference.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-disabled-feature-noninterference-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  disabled-feature-noninterference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run adversarial unit tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate
+        run: python test_disabled_feature_noninterference.py
+
+      - name: Detect the exact bound predecessor
+        run: |
+          python revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/disabled_feature_noninterference.py \
+            source \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --contract revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/contracts/spatial-tempo-current.json \
+            --output "$RUNNER_TEMP/titan-disabled-source-receipt.json" \
+            --expect BLOCK
+
+      - name: Verify spent-trace identity schema
+        run: |
+          python revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/disabled_feature_noninterference.py \
+            trace \
+            --evidence revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate/examples/paired-spent-trace.json \
+            --output "$RUNNER_TEMP/titan-disabled-trace-receipt.json" \
+            --expect PASS
+
+      - name: Upload deterministic receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-disabled-feature-noninterference-receipts
+          path: |
+            ${{ runner.temp }}/titan-disabled-source-receipt.json
+            ${{ runner.temp }}/titan-disabled-trace-receipt.json
+          if-no-files-found: warn
+          retention-days: 14

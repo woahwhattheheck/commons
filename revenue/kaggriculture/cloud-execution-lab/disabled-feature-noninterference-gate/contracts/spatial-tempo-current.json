@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "claim_id": "TITAN-V3-DISABLED-FEATURE-NONINTERFERENCE-GATE-20260910-01",
+  "source": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+    "git_blob_sha1": "edbc423023479dbe2e78131495334384a87b607f"
+  },
+  "target": {
+    "class": "SpatialTempo",
+    "method": "transform"
+  },
+  "disabled_bindings": {
+    "self.pathing": false,
+    "self.tempo": false
+  },
+  "protected_effects": [
+    {
+      "kind": "call",
+      "target": "self._continue_weed"
+    }
+  ],
+  "expected_verdict": "BLOCK"
+}
