@@ -181,12 +181,13 @@ def cmd_run(args) -> int:
     pins = PinStore(state / "pin-store")
     queue = Queue(state / "queue")
     receipts = ReceiptStore(state)
-    config = load_predecessor_config(args.predecessors)
-    # Pin the predecessor config itself: the receipt binds the exact bytes
-    # that selected the engine/runner/slots, so a config swap mid-run is
-    # detectable from the sealed receipt alone.
-    config_record = pins.put_blob(Path(args.predecessors))
-    config_sha256 = config_record["sha256"]
+    config_path = Path(args.predecessors)
+    config = load_predecessor_config(config_path)
+    # Observe the supplied bytes without admitting an untrusted drifted config
+    # into the content-addressed store.  The submitted config is already one of
+    # the six immutable queue inputs; require_config_pin rejects any mismatch
+    # before either gate or attempt workspace is touched.
+    config_sha256 = sha256_file(config_path)
     signing_key = _signing_key(args)
     attempt_obj = ExecutablePinnedAttempt(
         state_dir=state,
