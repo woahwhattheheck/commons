@@ -51,7 +51,11 @@ class FakeFrozen:
             if row and len(row) > 2 and row[0] == "SELL" and row[1] == "CARROT"
         )
         self.pending["CARROT"] = max(0, 3 - sold)
-        self.seen = {"selected": own_market, "route": route_markets}
+        self.seen = {
+            "selected": own_market,
+            "route": route_markets,
+            "configured_limit": config.get("maxMarketOrdersPerTurn"),
+        }
         self.diagnostics = {"predecessor": True}
         return copy.deepcopy(selected)
 
@@ -180,11 +184,17 @@ class SellCustodyTests(unittest.TestCase):
             agent.diagnostics["executable_sell_custody"]["inert_suffix_rows"], 1
         )
 
-    def test_market_limit_is_normalized_to_one(self):
+    def test_market_limit_is_normalized_for_delegate_without_mutation(self):
         action = {"farmer": ["PASS"], "hands": [], "market": [[], ["SELL", "CARROT", 3]]}
-        agent, _ = installed_class([copy.deepcopy(action)])
-        agent.transform({}, {"maxMarketOrdersPerTurn": 0}, action)
-        self.assertEqual(agent.seen["selected"], [[]])
+        for configured in (0, -7):
+            with self.subTest(configured=configured):
+                agent, _ = installed_class([copy.deepcopy(action)])
+                config = {"maxMarketOrdersPerTurn": configured, "sentinel": "preserved"}
+                original = copy.deepcopy(config)
+                agent.transform({}, config, action)
+                self.assertEqual(agent.seen["selected"], [[]])
+                self.assertEqual(agent.seen["configured_limit"], 1)
+                self.assertEqual(config, original)
 
     def test_no_suffix_path_is_active_prefix_parity(self):
         action = {"farmer": ["PASS"], "hands": [["WAIT"]], "market": [["SELL", "CARROT", 2]]}
