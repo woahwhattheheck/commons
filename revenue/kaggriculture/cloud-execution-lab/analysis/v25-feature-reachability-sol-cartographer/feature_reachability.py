@@ -232,12 +232,49 @@ def mean(values: Iterable[float]) -> float | None:
     return statistics.mean(values) if values else None
 
 
-def _classify(deltas: Sequence[float], changed: int) -> str:
+def outcome(game: Mapping[str, Any]) -> str:
+    value = margin(game)
+    if value > 0:
+        return "win"
+    if value < 0:
+        return "loss"
+    return "tie"
+
+
+def _classify(pairs: Sequence[Mapping[str, Any]], changed: int) -> str:
+    """Classify only economically safe one-factor evidence.
+
+    Margin alone is not enough: a disabled arm can improve relative margin while
+    reducing TITAN's own terminal cash. `investigate_disable` therefore requires
+    cellwise nonnegative own-cash and margin deltas, at least one strict own-cash
+    gain, and no new losses or lost wins. `retain_enabled` is the symmetric signal.
+    Everything else remains mixed/neutral for another panel.
+    """
     if changed == 0:
         return "panel_inert"
-    if deltas and all(value >= 0 for value in deltas) and any(value > 0 for value in deltas):
+    own = [float(row["disabled_minus_enabled_own"]) for row in pairs]
+    margins = [float(row["disabled_minus_enabled_margin"]) for row in pairs]
+    new_losses = sum(bool(row["new_loss"]) for row in pairs)
+    lost_wins = sum(bool(row["lost_win"]) for row in pairs)
+    new_wins = sum(bool(row["new_win"]) for row in pairs)
+    recovered_losses = sum(bool(row["recovered_loss"]) for row in pairs)
+    if (
+        own
+        and all(value >= 0 for value in own)
+        and any(value > 0 for value in own)
+        and all(value >= 0 for value in margins)
+        and new_losses == 0
+        and lost_wins == 0
+    ):
         return "investigate_disable"
-    if deltas and all(value <= 0 for value in deltas) and any(value < 0 for value in deltas):
+    if (
+        own
+        and all(value <= 0 for value in own)
+        and any(value < 0 for value in own)
+        and all(value <= 0 for value in margins)
+        and new_wins == 0
+        and recovered_losses == 0
+    ):
         return "retain_enabled"
     return "mixed_or_neutral"
 
@@ -255,6 +292,8 @@ def summarize(
         for opponent, seed, seat in cells:
             enabled = index[("all_enabled", opponent, seed, seat)]
             disabled = index[(f"without_{factor}", opponent, seed, seat)]
+            enabled_outcome = outcome(enabled)
+            disabled_outcome = outcome(disabled)
             pairs.append({
                 "opponent": opponent,
                 "seed": seed,
@@ -263,21 +302,59 @@ def summarize(
                 "disabled_minus_enabled_margin": margin(disabled) - margin(enabled),
                 "disabled_minus_enabled_own": own_score(disabled) - own_score(enabled),
                 "disabled_minus_enabled_rival": rival_score(disabled) - rival_score(enabled),
+                "enabled_outcome": enabled_outcome,
+                "disabled_outcome": disabled_outcome,
+                "outcome_transition": f"{enabled_outcome}->{disabled_outcome}",
+                "new_loss": enabled_outcome != "loss" and disabled_outcome == "loss",
+                "lost_win": enabled_outcome == "win" and disabled_outcome != "win",
+                "new_win": enabled_outcome != "win" and disabled_outcome == "win",
+                "recovered_loss": enabled_outcome == "loss" and disabled_outcome != "loss",
                 "enabled_scores": enabled["scores"],
                 "disabled_scores": disabled["scores"],
             })
         changed = sum(bool(row["trace_changed"]) for row in pairs)
-        deltas = [float(row["disabled_minus_enabled_margin"]) for row in pairs]
-        classification = _classify(deltas, changed)
+        margin_deltas = [float(row["disabled_minus_enabled_margin"]) for row in pairs]
+        own_deltas = [float(row["disabled_minus_enabled_own"]) for row in pairs]
+        rival_deltas = [float(row["disabled_minus_enabled_rival"]) for row in pairs]
+        new_losses = sum(bool(row["new_loss"]) for row in pairs)
+        lost_wins = sum(bool(row["lost_win"]) for row in pairs)
+        new_wins = sum(bool(row["new_win"]) for row in pairs)
+        recovered_losses = sum(bool(row["recovered_loss"]) for row in pairs)
+        transitions: dict[str, int] = {}
+        for row in pairs:
+            key = str(row["outcome_transition"])
+            transitions[key] = transitions.get(key, 0) + 1
+        classification = _classify(pairs, changed)
         by_factor[factor] = {
             "source_reference_count": len(source_references.get(factor, ())),
             "source_references": list(source_references.get(factor, ())),
             "matched_cells": len(pairs),
             "trace_changed_cells": changed,
             "trace_change_rate": changed / len(pairs) if pairs else 0.0,
-            "mean_disabled_minus_enabled_margin": mean(deltas),
-            "min_disabled_minus_enabled_margin": min(deltas) if deltas else None,
-            "max_disabled_minus_enabled_margin": max(deltas) if deltas else None,
+            "mean_disabled_minus_enabled_own": mean(own_deltas),
+            "min_disabled_minus_enabled_own": min(own_deltas) if own_deltas else None,
+            "max_disabled_minus_enabled_own": max(own_deltas) if own_deltas else None,
+            "own_positive_zero_negative_cells": {
+                "positive": sum(value > 0 for value in own_deltas),
+                "zero": sum(value == 0 for value in own_deltas),
+                "negative": sum(value < 0 for value in own_deltas),
+            },
+            "mean_disabled_minus_enabled_margin": mean(margin_deltas),
+            "min_disabled_minus_enabled_margin": min(margin_deltas) if margin_deltas else None,
+            "max_disabled_minus_enabled_margin": max(margin_deltas) if margin_deltas else None,
+            "mean_disabled_minus_enabled_rival": mean(rival_deltas),
+            "new_losses": new_losses,
+            "lost_wins": lost_wins,
+            "new_wins": new_wins,
+            "recovered_losses": recovered_losses,
+            "outcome_transitions": transitions,
+            "score_safety_gates": {
+                "nonnegative_own_every_cell": bool(own_deltas) and all(value >= 0 for value in own_deltas),
+                "strict_positive_own_some_cell": any(value > 0 for value in own_deltas),
+                "nonnegative_margin_every_cell": bool(margin_deltas) and all(value >= 0 for value in margin_deltas),
+                "zero_new_losses": new_losses == 0,
+                "zero_lost_wins": lost_wins == 0,
+            },
             "classification": classification,
             "possible_shadow_or_unreached_in_panel": bool(source_references.get(factor)) and changed == 0,
             "promotion_authority": False,
@@ -285,6 +362,7 @@ def summarize(
         }
     calls = sum(actor_calls(game) for game in games)
     return {
+        "classification_policy": "pareto_safe_own_cash_margin_and_outcome_v1",
         "factor_results": by_factor,
         "candidate_disable": [factor for factor, row in by_factor.items() if row["classification"] == "investigate_disable"],
         "candidate_keep": [factor for factor, row in by_factor.items() if row["classification"] == "retain_enabled"],
@@ -306,21 +384,26 @@ def markdown(report: Mapping[str, Any]) -> str:
         f"- Engine: `{report['engine']['ref']}`",
         f"- Games: **{summary['complete_games']} complete**",
         f"- Agent calls: **{summary['observed_agent_calls']} / {report['limits']['max_agent_calls']}**",
+        f"- Classification policy: `{summary['classification_policy']}`",
         "",
-        "| Feature disabled | Source refs | Trace changed | Mean margin delta | Classification |",
-        "|---|---:|---:|---:|---|",
+        "| Feature disabled | Source refs | Trace changed | Mean own delta | Mean margin delta | New losses | Lost wins | Classification |",
+        "|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for factor in report["tested_factors"]:
         row = summary["factor_results"][factor]
         lines.append(
             f"| `{factor}` | {row['source_reference_count']} | "
             f"{row['trace_changed_cells']}/{row['matched_cells']} | "
-            f"{row['mean_disabled_minus_enabled_margin']:.3f} | `{row['classification']}` |"
+            f"{row['mean_disabled_minus_enabled_own']:.3f} | "
+            f"{row['mean_disabled_minus_enabled_margin']:.3f} | "
+            f"{row['new_losses']} | {row['lost_wins']} | `{row['classification']}` |"
         )
     lines += [
         "",
-        "Positive margin delta means the disabled arm scored better than the exact all-enabled control in the same opponent/seed/seat cell.",
-        "`investigate_disable` is a development-panel signal only: it is not a default change, held result, hosted-score estimate, or promotion authority.",
+        "Positive deltas mean the disabled arm finished above the exact all-enabled control in the same opponent/seed/seat cell.",
+        "`investigate_disable` requires nonnegative TITAN own-cash and margin deltas in every matched cell, at least one strict own-cash gain, zero new losses, and zero lost wins.",
+        "`retain_enabled` is the symmetric one-sided signal. Margin-only improvement is never enough to recommend a disable.",
+        "All classifications are development-panel routing signals only: no default change, held result, hosted-score estimate, or promotion authority follows automatically.",
         "Source references prove only a packaged code/config dependency; trace equality in this panel does not prove global inertness.",
         "",
     ]
