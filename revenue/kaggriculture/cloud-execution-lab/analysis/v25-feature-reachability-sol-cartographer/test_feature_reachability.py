@@ -76,6 +76,28 @@ class FeatureReachabilityTests(unittest.TestCase):
             "actors": [{"calls": 10}, {"calls": 10}],
         }
 
+    def _seat_scores(self, seat, own, rival):
+        return [own, rival] if seat == 0 else [rival, own]
+
+    def _two_arm_summary(self, factor, enabled_own, enabled_rival, disabled_own, disabled_rival):
+        games = []
+        for seat in (0, 1):
+            games.append(self._game(
+                "all_enabled",
+                seat,
+                "a",
+                self._seat_scores(seat, enabled_own, enabled_rival),
+            ))
+            games.append(self._game(
+                f"without_{factor}",
+                seat,
+                "b",
+                self._seat_scores(seat, disabled_own, disabled_rival),
+            ))
+        variants = fr.variant_specs((factor,))
+        fr.validate_games(games, variants, ["arlene"], [7])
+        return fr.summarize(games, (factor,), {factor: []})
+
     def test_summary_classifies_drop_keep_and_inert(self):
         games = []
         for seat in (0, 1):
@@ -86,10 +108,70 @@ class FeatureReachabilityTests(unittest.TestCase):
         variants = fr.variant_specs(("drop", "keep", "inert"))
         fr.validate_games(games, variants, ["arlene"], [7])
         summary = fr.summarize(games, ("drop", "keep", "inert"), {name: [] for name in ("drop", "keep", "inert")})
+        self.assertEqual(summary["classification_policy"], "pareto_safe_own_cash_margin_and_outcome_v1")
         self.assertEqual(summary["factor_results"]["drop"]["classification"], "investigate_disable")
         self.assertEqual(summary["factor_results"]["keep"]["classification"], "retain_enabled")
         self.assertEqual(summary["factor_results"]["inert"]["classification"], "panel_inert")
+        self.assertEqual(summary["factor_results"]["drop"]["mean_disabled_minus_enabled_own"], 10)
+        self.assertEqual(summary["factor_results"]["drop"]["new_losses"], 0)
+        self.assertEqual(summary["factor_results"]["drop"]["lost_wins"], 0)
         self.assertEqual(summary["observed_agent_calls"], 160)
+
+    def test_better_margin_but_lower_own_cash_never_recommends_disable(self):
+        # Enabled wins 100-90. Disabled wins 95-80: margin rises +5 only because
+        # the opponent falls more, while TITAN loses 5 terminal cash.
+        summary = self._two_arm_summary("trap", 100, 90, 95, 80)
+        row = summary["factor_results"]["trap"]
+        self.assertEqual(row["mean_disabled_minus_enabled_own"], -5)
+        self.assertEqual(row["mean_disabled_minus_enabled_margin"], 5)
+        self.assertEqual(row["classification"], "mixed_or_neutral")
+        self.assertFalse(row["score_safety_gates"]["nonnegative_own_every_cell"])
+        self.assertEqual(summary["candidate_disable"], [])
+
+    def test_higher_own_cash_with_new_loss_never_recommends_disable(self):
+        # TITAN earns +10 more, but the rival earns +30 more and flips a win to a loss.
+        summary = self._two_arm_summary("trap", 100, 90, 110, 120)
+        row = summary["factor_results"]["trap"]
+        self.assertEqual(row["mean_disabled_minus_enabled_own"], 10)
+        self.assertEqual(row["new_losses"], 2)
+        self.assertEqual(row["lost_wins"], 2)
+        self.assertEqual(row["outcome_transitions"], {"win->loss": 2})
+        self.assertEqual(row["classification"], "mixed_or_neutral")
+        self.assertFalse(row["score_safety_gates"]["nonnegative_margin_every_cell"])
+        self.assertEqual(summary["candidate_disable"], [])
+
+    def test_equal_own_cash_margin_only_gain_is_not_disable_signal(self):
+        summary = self._two_arm_summary("trap", 100, 90, 100, 80)
+        row = summary["factor_results"]["trap"]
+        self.assertEqual(row["mean_disabled_minus_enabled_own"], 0)
+        self.assertEqual(row["mean_disabled_minus_enabled_margin"], 10)
+        self.assertEqual(row["classification"], "mixed_or_neutral")
+        self.assertFalse(row["score_safety_gates"]["strict_positive_own_some_cell"])
+
+    def test_pareto_safe_own_and_margin_gain_recommends_disable(self):
+        summary = self._two_arm_summary("safe", 100, 90, 110, 85)
+        row = summary["factor_results"]["safe"]
+        self.assertEqual(row["mean_disabled_minus_enabled_own"], 10)
+        self.assertEqual(row["mean_disabled_minus_enabled_margin"], 15)
+        self.assertEqual(row["classification"], "investigate_disable")
+        self.assertTrue(all(row["score_safety_gates"].values()))
+        self.assertEqual(summary["candidate_disable"], ["safe"])
+
+    def test_markdown_exposes_own_cash_and_outcome_gates(self):
+        summary = self._two_arm_summary("safe", 100, 90, 110, 85)
+        report = {
+            "runner_head": "a" * 40,
+            "archive": {"sha256": "b" * 64, "bytes": 1, "source_manifest_sha256": "c" * 64},
+            "engine": {"ref": "d" * 40},
+            "limits": {"max_agent_calls": 1000},
+            "tested_factors": ["safe"],
+            "summary": summary,
+        }
+        text = fr.markdown(report)
+        self.assertIn("Mean own delta", text)
+        self.assertIn("New losses", text)
+        self.assertIn("pareto_safe_own_cash_margin_and_outcome_v1", text)
+        self.assertIn("Margin-only improvement is never enough", text)
 
     def test_hard_call_bound(self):
         self.assertEqual(fr.max_scheduled_agent_calls(19, 720), 27360)
