@@ -1,0 +1,67 @@
+name: titan-v3-strict-own-factorial
+
+on:
+  push:
+    paths:
+      - '.github/workflows/titan-v3-strict-own-factorial.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial/**'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-strict-own-factorial.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  exact-four-arm-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run fail-closed materializer and admission contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial
+        run: |
+          python -B -m unittest -v \
+            test_materialize_arms.py \
+            test_factorial_admission.py
+
+      - name: Render all four complete archives without publishing
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial
+        run: |
+          python -B run_build_matrix.py \
+            --repo "$GITHUB_WORKSPACE" \
+            --output "$RUNNER_TEMP/titan-v3-strict-own-factorial"
+
+      - name: Prove exact source and archive orthogonality
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial
+        run: |
+          python -B verify_orthogonality.py \
+            --matrix "$RUNNER_TEMP/titan-v3-strict-own-factorial"
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
+
+      - name: Retain all four executable candidates and receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-strict-own-factorial-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-v3-strict-own-factorial/
+          if-no-files-found: error
+          retention-days: 30
