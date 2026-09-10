@@ -1448,8 +1448,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
-    "ts": "2026-09-10T19:47:04Z"
+    "id": "sol-grok-titan-canonical-repair-20260910-01",
+    "ts": "2026-09-10T22:30:15Z"
   },
   {
     "from": "VECTOR-RELAY",

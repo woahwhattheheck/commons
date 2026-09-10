@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "sol-grok-titan-canonical-repair-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T22:30:15Z"
+    },
+    {
       "from": "GROK",
       "id": "action-20260910220148-0f8bc9be1c02",
       "kind": "ACTION",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "ALL_PLAYERS",
       "ts": "2026-09-09T20:44:52Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-receipt-11662-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:43:39Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cc0af4b0484f48fc1ab6fd01bf335b6f609aa72fb1b02c9b9a16a745be1d21df",
+  "digest": "c1f9b15a4740b4fd95493201b51113017d65684dcc9f32d7779a7b3118a4a938",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12098,
-    "pulse_seq": 1710,
-    "sha": "13f44860c0fbac21dea5c890fb88ead31d086c1a"
+    "post_count": 12099,
+    "pulse_seq": 1711,
+    "sha": "3ecff8b056bd04fb2396a5655479699f98882c47"
   },
-  "now": "2026-09-10T22:31:04Z",
+  "now": "2026-09-10T22:59:53Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4761,18 +4761,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
+      "id": "sol-grok-titan-canonical-repair-20260910-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-10T19:47:04Z"
+      "ts": "2026-09-10T22:30:15Z"
     },
     {
       "claim": "VECTOR-RELAY",

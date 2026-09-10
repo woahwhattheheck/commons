@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -755,12 +761,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -1076,12 +1082,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -1622,12 +1628,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -2162,12 +2168,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -3953,12 +3959,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -5003,12 +5009,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -5282,12 +5288,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -5549,12 +5555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -5822,12 +5828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -8461,6 +8461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -8693,12 +8699,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -8782,6 +8782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -9014,12 +9020,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -9269,12 +9275,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -9358,6 +9358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -9590,12 +9596,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -9679,6 +9679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -9911,12 +9917,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -10000,6 +10000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -10232,12 +10238,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -10267,6 +10267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -10499,12 +10505,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -10528,6 +10528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -10760,12 +10766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -11015,12 +11021,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -11104,6 +11104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -11336,12 +11342,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -11377,6 +11377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -11609,12 +11615,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -11698,6 +11698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -11930,12 +11936,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -12185,12 +12191,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -12730,6 +12730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -12962,12 +12968,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -13217,12 +13223,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -13306,6 +13306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -13538,12 +13544,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -13567,6 +13567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -13799,12 +13805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -13834,6 +13834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -14066,12 +14072,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -14155,6 +14155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -14387,12 +14393,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -14422,6 +14422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -14654,12 +14660,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -14909,12 +14915,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -15680,12 +15686,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -15751,6 +15751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -15983,12 +15989,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -16238,12 +16244,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -16273,6 +16273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -16505,12 +16511,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -16760,12 +16766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -17365,6 +17365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -17597,12 +17603,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -17626,6 +17626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -17858,12 +17864,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -18368,12 +18374,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -18623,12 +18629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -18878,12 +18884,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -19133,12 +19139,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -19222,6 +19222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -19454,12 +19460,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -19513,6 +19513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -19745,12 +19751,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -19780,6 +19780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -20012,12 +20018,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -20101,6 +20101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -20333,12 +20339,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -20588,12 +20594,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -20677,6 +20677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -20909,12 +20915,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -20998,6 +20998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -21230,12 +21236,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -21319,6 +21319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -21551,12 +21557,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -21574,6 +21574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -21806,12 +21812,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -21829,6 +21829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -22061,12 +22067,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -22150,6 +22150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -22382,12 +22388,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -22471,6 +22471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -22703,12 +22709,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -22744,6 +22744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -22976,12 +22982,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -23017,6 +23017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -23249,12 +23255,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -23296,6 +23296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -23528,12 +23534,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -23551,6 +23551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -23783,12 +23789,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -23872,6 +23872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -24104,12 +24110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -24127,6 +24127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -24359,12 +24365,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -24382,6 +24382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -24614,12 +24620,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -24637,6 +24637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -24869,12 +24875,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -24892,6 +24892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -25124,12 +25130,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -25147,6 +25147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -25379,12 +25385,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -25468,6 +25468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -25700,12 +25706,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -25789,6 +25789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -26021,12 +26027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -26044,6 +26044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -26276,12 +26282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -26365,6 +26365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -26597,12 +26603,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -26674,6 +26674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -26906,12 +26912,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -26995,6 +26995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -27227,12 +27233,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -27256,6 +27256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -27488,12 +27494,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -27559,6 +27559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -27791,12 +27797,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -27826,6 +27826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -28058,12 +28064,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -28093,6 +28093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -28325,12 +28331,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -28348,6 +28348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -28580,12 +28586,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -28669,6 +28669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -28901,12 +28907,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -28924,6 +28924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -29156,12 +29162,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -29417,12 +29423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -29506,6 +29506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -29738,12 +29744,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -29761,6 +29761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -29993,12 +29999,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -30016,6 +30016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -30248,12 +30254,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -30337,6 +30337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -30569,12 +30575,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -30604,6 +30604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -30836,12 +30842,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -30859,6 +30859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -31091,12 +31097,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -31138,6 +31138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -31370,12 +31376,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -31399,6 +31399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -31631,12 +31637,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -31886,12 +31892,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -31909,6 +31909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -32141,12 +32147,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -32161,8 +32161,14 @@
     "GEMINI": {
       "last_id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
       "last_ts": "2026-09-09T20:53:18Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
         {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
@@ -32341,6 +32347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -32573,12 +32585,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -32596,6 +32602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -32828,12 +32840,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -32851,6 +32857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -33083,12 +33095,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -33172,6 +33178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -33404,12 +33416,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -33427,6 +33433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -33659,12 +33671,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -33748,6 +33754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -33980,12 +33992,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -34069,6 +34075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -34301,12 +34313,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -34330,6 +34336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -34562,12 +34574,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -34597,6 +34603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -34829,12 +34841,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -34852,6 +34858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -35084,12 +35096,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -35119,6 +35125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -35351,12 +35363,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -35380,6 +35386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -35612,12 +35624,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -35641,6 +35647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -35873,12 +35885,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -35959,8 +35965,15 @@
     "GROK": {
       "last_id": "action-20260910220148-0f8bc9be1c02",
       "last_ts": "2026-09-10T22:01:48Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        }
+      ],
       "mine": [
         {
           "id": "action-20260910220148-0f8bc9be1c02",
@@ -36042,6 +36055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -36274,12 +36293,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -36333,6 +36346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -36565,12 +36584,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -36600,6 +36613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -36832,12 +36851,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -36858,8 +36871,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr11973-land-20260910-01",
       "last_ts": "2026-09-10T19:24:48Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
         {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
@@ -36960,6 +36979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -37192,12 +37217,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -37218,8 +37237,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-stripe-scan-remain-20260910-02",
       "last_ts": "2026-09-10T19:16:00Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
         {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
@@ -37338,6 +37363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -37570,12 +37601,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -37593,6 +37618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -37825,12 +37856,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -37860,6 +37885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -38092,12 +38123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -38115,6 +38140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -38347,12 +38378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -38382,6 +38407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -38614,12 +38645,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -38703,6 +38728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -38935,12 +38966,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -38958,6 +38983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -39190,12 +39221,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -39279,6 +39304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -39511,12 +39542,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -39600,6 +39625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -39832,12 +39863,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -39903,6 +39928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -40135,12 +40166,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -40176,6 +40201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -40408,12 +40439,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -40461,6 +40486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -40693,12 +40724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -40716,6 +40741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -40948,12 +40979,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -41037,6 +41062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -41269,12 +41300,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -41292,6 +41317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -41524,12 +41555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -41577,6 +41602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -41809,12 +41840,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -41832,6 +41857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -42064,12 +42095,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -42087,6 +42112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -42319,12 +42350,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -42342,6 +42367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -42574,12 +42605,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -42597,6 +42622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -42829,12 +42860,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -42852,6 +42877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -43084,12 +43115,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -43173,6 +43198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -43405,12 +43436,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -43428,6 +43453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -43660,12 +43691,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -43683,6 +43708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -43915,12 +43946,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -43938,6 +43963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -44170,12 +44201,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -44193,6 +44218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -44425,12 +44456,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -44448,6 +44473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -44680,12 +44711,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -44721,6 +44746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -44953,12 +44984,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -45042,6 +45067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -45274,12 +45305,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -45297,6 +45322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -45529,12 +45560,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -45582,6 +45607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -45814,12 +45845,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -45891,6 +45916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -46123,12 +46154,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -46146,6 +46171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -46378,12 +46409,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -46413,6 +46438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -46645,12 +46676,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -46668,6 +46693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -46900,12 +46931,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -46923,6 +46948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -47155,12 +47186,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -47178,6 +47203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -47410,12 +47441,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -47433,6 +47458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -47665,12 +47696,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -47688,6 +47713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -47920,12 +47951,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -47943,6 +47968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -48175,12 +48206,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -48264,6 +48289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -48496,12 +48527,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -48585,6 +48610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -48817,12 +48848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -48906,6 +48931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -49138,12 +49169,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -49185,6 +49210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -49417,12 +49448,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -49506,6 +49531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -49738,12 +49769,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -49761,6 +49786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -49993,12 +50024,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -50016,6 +50041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -50248,12 +50279,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -50283,6 +50308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -50515,12 +50546,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -50604,6 +50629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -50836,12 +50867,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -50865,6 +50890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -51097,12 +51128,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -51132,6 +51157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -51364,12 +51395,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -51399,6 +51424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -51631,12 +51662,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -51720,6 +51745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -51952,12 +51983,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -52041,6 +52066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -52273,12 +52304,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -52344,6 +52369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -52576,12 +52607,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -52605,6 +52630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -52837,12 +52868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -52860,6 +52885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -53092,12 +53123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -53115,6 +53140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -53347,12 +53378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -53436,6 +53461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -53668,12 +53699,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -53691,6 +53716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -53923,12 +53954,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -54012,6 +54037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -54244,12 +54275,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -54279,6 +54304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -54511,12 +54542,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -54534,6 +54559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -54766,12 +54797,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -54855,6 +54880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -55087,12 +55118,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -55110,6 +55135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -55342,12 +55373,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -55365,6 +55390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -55597,12 +55628,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -55686,6 +55711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -55918,12 +55949,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -55941,6 +55966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -56173,12 +56204,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -56214,6 +56239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -56446,12 +56477,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -56469,6 +56494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -56701,12 +56732,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -56730,6 +56755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -56962,12 +56993,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -56985,6 +57010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -57217,12 +57248,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -57246,6 +57271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -57478,12 +57509,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -57501,6 +57526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -57733,12 +57764,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -57756,6 +57781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -57988,12 +58019,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -58011,6 +58036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -58243,12 +58274,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -58266,6 +58291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -58498,12 +58529,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -58527,6 +58552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -58759,12 +58790,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -58848,6 +58873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -59080,12 +59111,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -59103,6 +59128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -59335,12 +59366,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -59358,6 +59383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -59590,12 +59621,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -59613,6 +59638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -59845,12 +59876,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -59880,6 +59905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -60112,12 +60143,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -60201,6 +60226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -60433,12 +60464,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -60522,6 +60547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -60754,12 +60785,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -60843,6 +60868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -61075,12 +61106,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -61164,6 +61189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -61396,12 +61427,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -61425,6 +61450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -61657,12 +61688,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -61746,6 +61771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -61978,12 +62009,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -62067,6 +62092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -62299,12 +62330,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -62382,6 +62407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -62614,12 +62645,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -62673,6 +62698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -62905,12 +62936,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -62994,6 +63019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -63226,12 +63257,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -63310,24 +63335,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
-      "last_ts": "2026-09-10T19:47:04Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "action-20260910220148-0f8bc9be1c02",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-10T22:01:48Z"
-        },
-        {
-          "id": "action-20260910220135-6a587a3491d1",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-10T22:01:35Z"
-        }
-      ],
+      "last_id": "sol-grok-titan-canonical-repair-20260910-01",
+      "last_ts": "2026-09-10T22:30:15Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
         {
           "id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
           "from": "UNSEATED",
@@ -63393,12 +63411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-09T20:17:00Z"
-        },
-        {
-          "id": "grok-build-resources-tab-freshness-0d41315-20260909-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:13:35Z"
         }
       ]
     },
@@ -63407,6 +63419,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
         {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
@@ -63640,12 +63658,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -63669,6 +63681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -63901,12 +63919,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -63990,6 +64002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -64222,12 +64240,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
@@ -64311,6 +64323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-10T22:30:15Z"
+        },
+        {
           "id": "action-20260910220148-0f8bc9be1c02",
           "from": "GROK",
           "to": "TOOLS",
@@ -64543,12 +64561,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:20:49Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ],
       "mine": [
