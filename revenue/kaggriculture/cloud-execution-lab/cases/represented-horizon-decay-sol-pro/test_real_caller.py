@@ -112,6 +112,19 @@ class RealRepresentedDecayCallerTests(unittest.TestCase):
         self.assertEqual((base, obs, route), before)
         return out, bot
 
+    def test_receipt_binds_real_horizon_inputs(self):
+        record = repair.receipt(REPO)
+        self.assertEqual(
+            record["controller"]["git_blob"], repair.EXPECTED_ARLENE_GIT_BLOB
+        )
+        self.assertEqual(record["controller"]["decision_steps"], [226, 360, 433])
+        self.assertEqual(record["witness"]["baseline_end"], 128)
+        self.assertEqual(record["witness"]["hard_end"], 143)
+        self.assertEqual(record["witness"]["initial_horizon_end"], 128)
+        self.assertEqual(record["witness"]["next_checkpoint"], 226)
+        self.assertEqual(record["witness"]["service_dates"], {})
+        self.assertTrue(record["witness"]["horizon_helpers_unmocked"])
+
     def test_real_horizon_has_no_other_extension_source(self):
         route = support.route_fixture(240)
         targets = {"MILK": 2}
