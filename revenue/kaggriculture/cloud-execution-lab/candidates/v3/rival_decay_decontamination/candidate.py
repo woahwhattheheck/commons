@@ -38,7 +38,7 @@ SOURCE_ROOTS = (
     LAB.parent / "cloud-quickstep",
     LAB.parent / "cloud-opponent-league" / "lark-responsive",
     LAB.parent / "cloud-committed-seed-retry",
-    LAB.parent / "cloud-economic-stress" / "funded-payback",
+    LAB.parent / "cloud-economic-stress" / "funded_payback",
 )
 
 
