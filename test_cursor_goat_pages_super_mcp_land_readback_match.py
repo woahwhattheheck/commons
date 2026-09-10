@@ -18,7 +18,7 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "3b0a52be",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "2fc6f4c1",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "35a7069f",
     "boards.html": "e4b46040",
@@ -32,14 +32,14 @@ KEEP = {
     "door.js": "de1d570b",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "a31e221d",
+    "test_commerce_agents.py": "cdd4b502",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f6da2c10",
+    "test_commerce_agents_same_loop.py": "60f15399",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/coil-tools-super-mcp-fold-20260902-01.md": "6948bdc1",
 }
 

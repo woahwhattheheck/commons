@@ -32,8 +32,8 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "dbbc96a5",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
 }
 
 

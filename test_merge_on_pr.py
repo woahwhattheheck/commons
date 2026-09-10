@@ -35,7 +35,7 @@ KEEP = {
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
 }
 
 

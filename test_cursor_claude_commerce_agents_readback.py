@@ -18,15 +18,15 @@ KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    "commerce-agents.html": "dfedb16a",
+    "commerce-agents.html": "3dcaca25",
     ".agents/skills/commerce-agents/SKILL.md": "1c0da1d4",
-    "test_commerce_agents.py": "a31e221d",
+    "test_commerce_agents.py": "cdd4b502",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     ".agents/skills/autogtm/SKILL.md": "9c944e77",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f6da2c10",
+    "test_commerce_agents_same_loop.py": "60f15399",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
@@ -36,7 +36,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

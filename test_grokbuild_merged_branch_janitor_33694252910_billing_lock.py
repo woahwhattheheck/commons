@@ -34,7 +34,7 @@ KEEP = {
     "hub_pages.py": "44bbd2ec",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "680d7542",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a5c72234",
 }
 
 EVENT_8479 = {

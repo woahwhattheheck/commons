@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-rematch-20260902-01.md": "c6707847",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
 }
 
 

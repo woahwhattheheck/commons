@@ -27,8 +27,8 @@ KEEP_UNREAD = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/grokbuild-pr8350-verify-20260902-01.md": "538a4d1e",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
-    "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "dbbc96a5",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

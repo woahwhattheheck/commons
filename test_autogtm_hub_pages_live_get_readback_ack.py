@@ -13,10 +13,10 @@ LIVE_GET = "live GET /public/api/v1/autogtm/projects credentials=omit"
 
 KEEP = {
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "test_harborline_qualify_live_probe.py": "0d7166c6",
+    "test_harborline_qualify_live_probe.py": "90194757",
     "p/cursor-harborline-qualify-live-probe-readback-20260902-01.md": "c2532b3d",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
