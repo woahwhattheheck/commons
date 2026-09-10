@@ -1,0 +1,199 @@
+name: titan-v3-one-tree-land-sol-pro
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-one-tree-land-20260910-01
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-one-tree-land-sol-pro
+  cancel-in-progress: false
+
+jobs:
+  materialize-rebase-verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify and materialize exact Slack handoff
+        run: |
+          set -euo pipefail
+          payload="$(mktemp)"
+          base64 --decode revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64 > "$payload"
+          echo 'f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728  '"$payload" | sha256sum --check --strict
+          test "$(wc -c < "$payload")" -eq 27500
+          python - "$payload" <<'PY'
+          from pathlib import Path
+          import sys, tarfile
+
+          archive = Path(sys.argv[1])
+          root = Path.cwd().resolve()
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/.gitignore',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/rival_model.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/shop_arb.py',
+          }
+          with tarfile.open(archive, 'r:gz') as tar:
+              members = [member for member in tar.getmembers() if member.isfile()]
+              normalized = {
+                  member.name[2:] if member.name.startswith('./') else member.name
+                  for member in members
+              }
+              assert normalized == expected, (sorted(normalized - expected), sorted(expected - normalized))
+              for member in members:
+                  name = member.name[2:] if member.name.startswith('./') else member.name
+                  target = (root / name).resolve()
+                  assert target == root / name
+                  assert root in target.parents
+                  source = tar.extractfile(member)
+                  assert source is not None
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(source.read())
+          print('HANDOFF_OK', len(expected), 'files')
+          PY
+
+      - name: Rebase manifest to the branch's canonical archive
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          LANDING_BASE_SHA: 98a98108998efac9e53a8b045f0fb2c85a4b19e2
+          HANDOFF_SHA256: f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728
+        run: |
+          set -euo pipefail
+          ARCHIVE_COMMIT="$(git log -1 --format=%H -- exports/titan-current.tar.gz)"
+          export ARCHIVE_COMMIT
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+          import os
+          import tarfile
+
+          manifest_path = Path('candidates/v3/V3-MANIFEST.json')
+          canonical = Path('exports/titan-current.tar.gz')
+          blob = canonical.read_bytes()
+          with tarfile.open(canonical, 'r:gz') as tar:
+              file_count = sum(1 for member in tar.getmembers() if member.isfile())
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          previous = dict(manifest['base'])
+          digest = hashlib.sha256(blob).hexdigest()
+          if previous.get('sha256') != digest:
+              history = list(manifest.get('base_history', []))
+              history.append(previous)
+              manifest['base_history'] = history
+          manifest['base'] = {
+              'archive': 'exports/titan-current.tar.gz',
+              'sha256': digest,
+              'bytes': len(blob),
+              'files': file_count,
+              'main_sha_seen': os.environ['LANDING_BASE_SHA'],
+              'archive_commit_seen': os.environ['ARCHIVE_COMMIT'],
+              'note': 'Durable landing rebase onto the exact canonical archive present at main@' + os.environ['LANDING_BASE_SHA'] + '. Rebase and rerun the all-off gate before promotion whenever the canonical archive changes.',
+          }
+          manifest['handoff'] = {
+              'slack_file_id': 'F0C0JPCAAQP',
+              'slack_channel_id': 'C0BUH19DW80',
+              'slack_parent_ts': '1789065221.709589',
+              'sha256': os.environ['HANDOFF_SHA256'],
+              'bytes': 27500,
+              'text_files': 13,
+              'features_promoted': [],
+          }
+          manifest['landing'] = {
+              'branch': 'sol-pro/titan-v3-one-tree-land-20260910-01',
+              'branch_base_sha': os.environ['LANDING_BASE_SHA'],
+              'policy': 'source-only integration; every new feature remains default off; no Kaggle upload',
+              'required_checks': [
+                  'exact handoff sha256 and member allowlist',
+                  'exact-anchor application to canonical archive',
+                  'deterministic rebuild and manifest/file digest agreement',
+                  '35 focused V3 contract and wiring tests',
+                  'canonical entrypoint deadline, clock, and recovery tests',
+                  'Python compileall of the materialized candidate',
+              ],
+          }
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+
+          readme_path = Path('candidates/v3/README.md')
+          readme = readme_path.read_text(encoding='utf-8')
+          marker = '## Panel recipe (Haiku shard, chain of custody)\n'
+          replacement = (
+              '## Historical panel recipe (pre-rebase chain of custody)\n\n'
+              '> The commands below reproduce the fleet panel that created this handoff on '
+              '`main@0d82aa7c` / archive `a055fd56…`; they are historical evidence, not the '
+              'promotion command for the rebased tree. Promotion must use the current manifest '
+              'base plus a fresh all-off identity gate and paired panel.\n'
+          )
+          assert readme.count(marker) == 1
+          readme_path.write_text(readme.replace(marker, replacement), encoding='utf-8')
+
+          l01_path = Path('candidates/v3/overlay/checks/test_v3_l01.py')
+          l01 = l01_path.read_text(encoding='utf-8')
+          old = 'onto\nthe a055fd56 canonical, which ships the same Arlene MAIN tape 7015cc00acfa4922.\n'
+          new = ('onto the original a055fd56 audit base.  The durable V3 build now pins the\n'
+                 'canonical archive in V3-MANIFEST.json and still requires the same Arlene MAIN\n'
+                 'tape 7015cc00acfa4922.\n')
+          assert l01.count(old) == 1
+          l01_path.write_text(l01.replace(old, new), encoding='utf-8')
+          print('BASE_OK', digest, len(blob), file_count, os.environ['ARCHIVE_COMMIT'])
+          PY
+
+      - name: Build twice, materialize, and run focused plus entrypoint checks
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          python candidates/v3/build_v3.py
+          python candidates/v3/build_v3.py --check
+          tree="$(mktemp -d)"
+          python candidates/v3/build_v3.py --tree "$tree"
+          python -B -m compileall -q "$tree"
+          (
+            cd "$tree"
+            python -B -m unittest -v checks/test_v3_features.py checks/test_v3_l01.py
+            python -B -m unittest -v checks/test_entrypoint_deadline.py checks/test_entrypoint_clock.py checks/test_module_recovery.py
+          )
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          manifest = json.loads(Path('candidates/v3/V3-MANIFEST.json').read_text())
+          assert manifest['handoff']['features_promoted'] == []
+          assert all(value.get('default') is False for key, value in manifest['keys'].items() if isinstance(value, dict) and 'default' in value)
+          print('V3_RECEIPT', manifest['archive']['sha256'], manifest['archive']['files'], manifest['archive']['bytes'])
+          PY
+
+      - name: Commit only reviewed one-tree source and remove bootstrap files
+        run: |
+          set -euo pipefail
+          git config user.name tokenjunkielabs
+          git config user.email tokenjunkielabs@gmail.com
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64
+          git rm .github/workflows/titan-v3-one-tree-land-sol-pro.yml
+          git add revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          git diff --cached --check
+          while IFS= read -r path; do
+            case "$path" in
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/*|revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64|.github/workflows/titan-v3-one-tree-land-sol-pro.yml) ;;
+              *) echo "unexpected staged path: $path" >&2; exit 1 ;;
+            esac
+          done < <(git diff --cached --name-only)
+          test "$(git diff --cached --name-only --diff-filter=A | grep -c '^revenue/kaggriculture/cloud-execution-lab/candidates/v3/' || true)" -eq 13
+          git status --short
+          git commit -m 'feat(titan): land one deterministic V3 integration tree'
+          git push origin HEAD:sol-pro/titan-v3-one-tree-land-20260910-01
