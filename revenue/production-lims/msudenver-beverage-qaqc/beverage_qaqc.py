@@ -185,6 +185,14 @@ def load_fixture(fixture_path: Path, manifest_path: Path) -> tuple[list[dict[str
         raise ManifestError("manifest_sha256 malformed")
     if _manifest_digest(manifest) != expected_manifest_sha:
         raise ManifestError("manifest canonical digest mismatch")
+
+    expected_expanded_sha = str(manifest.get("expanded_requests_sha256", "")).lower()
+    if not HEX64_RE.fullmatch(expected_expanded_sha):
+        raise ManifestError("manifest expanded_requests_sha256 malformed")
+    observed_expanded_sha = sha256_hex(rows)
+    if observed_expanded_sha != expected_expanded_sha:
+        raise ManifestError("expanded request SHA-256 mismatch")
+
     if manifest.get("adapters") != "synthetic-read-only":
         raise ManifestError("manifest must bind synthetic-read-only adapters")
     if manifest.get("automatic_release") is not False:

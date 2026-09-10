@@ -28,6 +28,7 @@ class BeverageQAQCTests(unittest.TestCase):
             hashlib.sha256(FIXTURE.read_bytes()).hexdigest(),
             self.manifest["fixture_sha256"],
         )
+        self.assertEqual(q.sha256_hex(self.rows), self.manifest["expanded_requests_sha256"])
 
     def test_02_full_acceptance_counts_are_exact(self) -> None:
         summary = q.run_fixture(FIXTURE, MANIFEST)
@@ -173,6 +174,20 @@ class BeverageQAQCTests(unittest.TestCase):
         self.assertEqual(len(adapter.state["accessions"]), 0)
         self.assertEqual(len(adapter.state["jobs"]), 0)
         self.assertEqual(len(adapter.state["reports"]), 0)
+
+    def test_14_coherent_generator_metadata_drift_fails_frozen_expansion_digest(self) -> None:
+        original = deepcopy(q.TEST_META)
+        try:
+            # This is the predecessor-killing vector: _golden_result() and
+            # _validate_golden_results() both read TEST_META, so without an
+            # independently frozen expanded-row digest a coherent drift could
+            # pass self-consistency checks.
+            q.TEST_META["ABV"]["method_version"] = "BA-ABV-v99"
+            with self.assertRaisesRegex(q.ManifestError, "expanded request SHA-256 mismatch"):
+                q.load_fixture(FIXTURE, MANIFEST)
+        finally:
+            q.TEST_META.clear()
+            q.TEST_META.update(original)
 
 
 if __name__ == "__main__":
