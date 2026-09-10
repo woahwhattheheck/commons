@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Promotion queue CLI.
 
-    promote.py submit --name <id> --artifact <file> --games <file> --policy <json>
+    promote.py submit --name <id> --artifact <file> --games <file> --policy <json> --predecessors <config.json>
     promote.py run [--id <submission> | --all] --predecessors <config.json>
     promote.py list [--status pending|running|passed|failed]
     promote.py status <submission>
@@ -25,10 +25,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from pq import POLICY_VERSION  # noqa: E402
+from pq.executable_pins import (  # noqa: E402
+    ExecutablePinnedAttempt,
+    require_config_pin,
+    submission_inputs,
+)
 from pq.pinning import PinStore, sha256_file  # noqa: E402
 from pq.receipts import ReceiptStore  # noqa: E402
 from pq.runner import (  # noqa: E402
-    Attempt,
     RunError,
     load_predecessor_config,
 )
@@ -55,15 +59,19 @@ def cmd_submit(args) -> int:
     state = _state_dir(args)
     pins = PinStore(state / "pin-store")
     queue = Queue(state / "queue")
-    policy_path = Path(args.policy)
-    manifest = pins.pin(
-        {
-            "candidate_artifact": Path(args.artifact),
-            "candidate_games": Path(args.games),
-            "policy": policy_path,
-        },
-        note=args.note or "",
-    )
+    try:
+        manifest = pins.pin(
+            submission_inputs(
+                candidate_artifact=Path(args.artifact),
+                candidate_games=Path(args.games),
+                policy=Path(args.policy),
+                predecessor_config=Path(args.predecessors),
+            ),
+            note=args.note or "",
+        )
+    except (RunError, OSError, json.JSONDecodeError) as exc:
+        print(f"FAILED submit: {exc}")
+        return 2
     existing = queue.find_by_input_digest(manifest["input_digest"])
     if existing is not None:
         print(f"DUPLICATE {existing['id']} status={existing['status']}")
@@ -103,6 +111,7 @@ def _run_one(queue, pins, receipts, entry, config, policy, attempt_obj, strategy
     queue.set_status(submission_id, "running")
     attempt_n = len([a for a in entry["attempts"] if a.get("kind") != "requeue"]) + 1
     try:
+        require_config_pin(pin_manifest, config_sha256)
         outcome = attempt_obj.execute(
             submission_id=submission_id,
             candidate_name=entry["name"],
@@ -179,7 +188,7 @@ def cmd_run(args) -> int:
     config_record = pins.put_blob(Path(args.predecessors))
     config_sha256 = config_record["sha256"]
     signing_key = _signing_key(args)
-    attempt_obj = Attempt(
+    attempt_obj = ExecutablePinnedAttempt(
         state_dir=state,
         gate_dir=Path(args.gate_dir) if args.gate_dir else None
         or (Path(__file__).resolve().parent.parent / "titan-v3-paired-game-gate"),
@@ -292,6 +301,11 @@ def main(argv=None) -> int:
     p.add_argument("--artifact", required=True, help="candidate artifact file")
     p.add_argument("--games", required=True, help="candidate GAMES.jsonl panel")
     p.add_argument("--policy", required=True, help="gate policy JSON file")
+    p.add_argument(
+        "--predecessors",
+        required=True,
+        help="predecessor config whose engine/runner identities enter the submission pin",
+    )
     p.add_argument("--note", default="", help="submitter note")
     p.set_defaults(func=cmd_submit)
 
