@@ -3,7 +3,7 @@
 """Fail-closed 2x2 interaction gate for TITAN SELL-policy candidates.
 
 The four arms are the exact same runtime closure with neither overlay (control),
-the own-value objective only, strict-dominance market pressure only, and both.
+the own-value objective only, receipt-invariance-certified market pressure only, and both.
 This module verifies common official-interpreter provenance, a complete paired
 grid, terminal bank identity, and pre-interpreter returned-action custody before
 computing singleton, composition, and factorial interaction effects.
@@ -17,7 +17,7 @@ from pathlib import Path
 import statistics
 from typing import Any, Iterable, Mapping
 
-ARM_NAMES = ("control", "own_value", "strict_pressure", "both")
+ARM_NAMES = ("control", "own_value", "certified_pressure", "both")
 CANDIDATE_ARMS = ARM_NAMES[1:]
 PROVENANCE_KEYS = (
     "schema_version",
@@ -249,10 +249,11 @@ def _outcome(own: float, rival: float) -> str:
 def _arm_state(game: Mapping[str, Any], seat: int) -> dict[str, Any]:
     own = _finite(game["scores"][seat], "own cash")
     rival = _finite(game["scores"][1 - seat], "rival cash")
+    margin = _finite(own - rival, "terminal margin")
     return {
         "own_cash": own,
         "rival_cash": rival,
-        "margin": own - rival,
+        "margin": margin,
         "outcome": _outcome(own, rival),
         "candidate_action_sha256": game["candidate_action_sha256"],
         "trace_sha256": game["trace_sha256"],
@@ -260,8 +261,9 @@ def _arm_state(game: Mapping[str, Any], seat: int) -> dict[str, Any]:
 
 
 def _pair_row(left: Mapping[str, Any], right: Mapping[str, Any]) -> dict[str, Any]:
-    own_delta = right["own_cash"] - left["own_cash"]
-    rival_delta = right["rival_cash"] - left["rival_cash"]
+    own_delta = _finite(right["own_cash"] - left["own_cash"], "own-cash delta")
+    rival_delta = _finite(right["rival_cash"] - left["rival_cash"], "rival-cash delta")
+    margin_delta = _finite(own_delta - rival_delta, "margin delta")
     action_changed = right["candidate_action_sha256"] != left["candidate_action_sha256"]
     trace_changed = right["trace_sha256"] != left["trace_sha256"]
     score_changed = own_delta != 0 or rival_delta != 0
@@ -272,7 +274,7 @@ def _pair_row(left: Mapping[str, Any], right: Mapping[str, Any]) -> dict[str, An
     return {
         "own_cash_delta": own_delta,
         "rival_cash_delta": rival_delta,
-        "margin_delta": own_delta - rival_delta,
+        "margin_delta": margin_delta,
         "candidate_action_changed": action_changed,
         "trace_changed": trace_changed,
         "new_loss": left["outcome"] != "loss" and right["outcome"] == "loss",
@@ -283,16 +285,22 @@ def _pair_row(left: Mapping[str, Any], right: Mapping[str, Any]) -> dict[str, An
 
 
 def _numeric_summary(values: Iterable[float]) -> dict[str, Any]:
-    data = [float(value) for value in values]
+    data = [_finite(value, "aggregate value") for value in values]
     if not data:
         raise EvidenceError("cannot aggregate an empty value set")
+    try:
+        total = math.fsum(data)
+        mean = total / len(data)
+        median = statistics.median(data)
+    except OverflowError as exc:
+        raise EvidenceError("aggregate arithmetic overflowed") from exc
     return {
         "cells": len(data),
-        "mean": statistics.mean(data),
-        "median": statistics.median(data),
+        "mean": _finite(mean, "aggregate mean"),
+        "median": _finite(median, "aggregate median"),
         "min": min(data),
         "max": max(data),
-        "total": sum(data),
+        "total": _finite(total, "aggregate total"),
         "positive": sum(value > 0 for value in data),
         "zero": sum(value == 0 for value in data),
         "negative": sum(value < 0 for value in data),
@@ -359,30 +367,44 @@ def _build_cells(
                         )
         pairwise = {
             "own_value_vs_control": _pair_row(states["control"], states["own_value"]),
-            "strict_pressure_vs_control": _pair_row(states["control"], states["strict_pressure"]),
+            "certified_pressure_vs_control": _pair_row(
+                states["control"], states["certified_pressure"]
+            ),
             "both_vs_control": _pair_row(states["control"], states["both"]),
             "both_vs_own_value": _pair_row(states["own_value"], states["both"]),
-            "both_vs_strict_pressure": _pair_row(states["strict_pressure"], states["both"]),
+            "both_vs_certified_pressure": _pair_row(
+                states["certified_pressure"], states["both"]
+            ),
         }
-        own_effect = (
-            (states["own_value"]["own_cash"] - states["control"]["own_cash"])
-            + (states["both"]["own_cash"] - states["strict_pressure"]["own_cash"])
-        ) / 2.0
-        pressure_effect = (
-            (states["strict_pressure"]["own_cash"] - states["control"]["own_cash"])
-            + (states["both"]["own_cash"] - states["own_value"]["own_cash"])
-        ) / 2.0
-        interaction = (
+        own_effect = _finite(
+            (
+                (states["own_value"]["own_cash"] - states["control"]["own_cash"])
+                + (states["both"]["own_cash"] - states["certified_pressure"]["own_cash"])
+            )
+            / 2.0,
+            "own-value main effect",
+        )
+        certified_pressure_effect = _finite(
+            (
+                (states["certified_pressure"]["own_cash"] - states["control"]["own_cash"])
+                + (states["both"]["own_cash"] - states["own_value"]["own_cash"])
+            )
+            / 2.0,
+            "certified-pressure main effect",
+        )
+        interaction = _finite(
             states["both"]["own_cash"]
             - states["own_value"]["own_cash"]
-            - states["strict_pressure"]["own_cash"]
-            + states["control"]["own_cash"]
+            - states["certified_pressure"]["own_cash"]
+            + states["control"]["own_cash"],
+            "own-cash interaction",
         )
-        margin_interaction = (
+        margin_interaction = _finite(
             states["both"]["margin"]
             - states["own_value"]["margin"]
-            - states["strict_pressure"]["margin"]
-            + states["control"]["margin"]
+            - states["certified_pressure"]["margin"]
+            + states["control"]["margin"],
+            "margin interaction",
         )
         cells.append(
             {
@@ -393,7 +415,7 @@ def _build_cells(
                 "pairwise": pairwise,
                 "factorial": {
                     "own_value_main_effect": own_effect,
-                    "strict_pressure_main_effect": pressure_effect,
+                    "certified_pressure_main_effect": certified_pressure_effect,
                     "own_cash_interaction": interaction,
                     "margin_interaction": margin_interaction,
                 },
@@ -413,10 +435,10 @@ def _stratum_key(cell: Mapping[str, Any]) -> str:
 def _aggregate_all(cells: list[Mapping[str, Any]]) -> tuple[dict[str, Any], dict[str, Any]]:
     pair_names = (
         "own_value_vs_control",
-        "strict_pressure_vs_control",
+        "certified_pressure_vs_control",
         "both_vs_control",
         "both_vs_own_value",
-        "both_vs_strict_pressure",
+        "both_vs_certified_pressure",
     )
     overall = {name: _aggregate_pair(_pair_rows(cells, name)) for name in pair_names}
     strata: dict[str, Any] = {}
@@ -429,8 +451,8 @@ def _aggregate_all(cells: list[Mapping[str, Any]]) -> tuple[dict[str, Any], dict
         "own_value_main_effect": _numeric_summary(
             cell["factorial"]["own_value_main_effect"] for cell in cells
         ),
-        "strict_pressure_main_effect": _numeric_summary(
-            cell["factorial"]["strict_pressure_main_effect"] for cell in cells
+        "certified_pressure_main_effect": _numeric_summary(
+            cell["factorial"]["certified_pressure_main_effect"] for cell in cells
         ),
         "own_cash_interaction": _numeric_summary(
             cell["factorial"]["own_cash_interaction"] for cell in cells
@@ -468,7 +490,7 @@ def _selection(
 ) -> dict[str, Any]:
     control_pairs = {
         "own_value": "own_value_vs_control",
-        "strict_pressure": "strict_pressure_vs_control",
+        "certified_pressure": "certified_pressure_vs_control",
         "both": "both_vs_control",
     }
     eligible = {
@@ -482,8 +504,8 @@ def _selection(
             or _noninferior_to_singleton("both_vs_own_value", overall, strata)
         )
         and (
-            not eligible["strict_pressure"]
-            or _noninferior_to_singleton("both_vs_strict_pressure", overall, strata)
+            not eligible["certified_pressure"]
+            or _noninferior_to_singleton("both_vs_certified_pressure", overall, strata)
         )
     )
     if composition_frontier:
@@ -492,7 +514,7 @@ def _selection(
         # A composed arm that is not noninferior to every eligible singleton is
         # not allowed back into the ranking through a larger pooled mean.
         candidates = [
-            arm for arm in ("own_value", "strict_pressure") if eligible[arm]
+            arm for arm in ("own_value", "certified_pressure") if eligible[arm]
         ]
         selected = max(
             candidates,
@@ -513,7 +535,7 @@ def _selection(
     else:
         verdict = {
             "own_value": "SELECT_OWN_VALUE",
-            "strict_pressure": "SELECT_STRICT_PRESSURE",
+            "certified_pressure": "SELECT_CERTIFIED_PRESSURE",
             "both": "SELECT_BOTH",
         }[selected]
     return {
@@ -539,7 +561,7 @@ def assess(reports: Mapping[str, Mapping[str, Any]], *, git_head: str | None = N
     selection = _selection(overall["pairwise"], strata)
     return {
         "schema_version": 1,
-        "operation": "titan-v3-sell-objective-pressure-factorial-gate-20260910-01",
+        "operation": "titan-v3-sell-objective-certified-pressure-factorial-gate-20260910-01",
         "git_head": git_head,
         "arms": list(ARM_NAMES),
         "paired_provenance": provenance,
@@ -575,10 +597,10 @@ def markdown(report: Mapping[str, Any]) -> str:
     ]
     for name in (
         "own_value_vs_control",
-        "strict_pressure_vs_control",
+        "certified_pressure_vs_control",
         "both_vs_control",
         "both_vs_own_value",
-        "both_vs_strict_pressure",
+        "both_vs_certified_pressure",
     ):
         row = pairwise[name]
         own = row["own_cash"]
@@ -594,7 +616,7 @@ def markdown(report: Mapping[str, Any]) -> str:
             "## Factorial effects on own cash",
             "",
             f"- Own-value main effect: **{factorial['own_value_main_effect']['mean']:.3f}**",
-            f"- Strict-pressure main effect: **{factorial['strict_pressure_main_effect']['mean']:.3f}**",
+            f"- Certified-pressure main effect: **{factorial['certified_pressure_main_effect']['mean']:.3f}**",
             f"- Interaction: **{factorial['own_cash_interaction']['mean']:.3f}**",
             f"- Margin interaction: **{factorial['margin_interaction']['mean']:.3f}**",
             "",
@@ -609,7 +631,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--control", type=Path, required=True)
     parser.add_argument("--own-value", type=Path, required=True)
-    parser.add_argument("--strict-pressure", type=Path, required=True)
+    parser.add_argument("--certified-pressure", type=Path, required=True)
     parser.add_argument("--both", type=Path, required=True)
     parser.add_argument("--head")
     parser.add_argument("--output", type=Path, required=True)
@@ -618,7 +640,7 @@ def main() -> int:
     reports = {
         "control": strict_load(args.control, "control"),
         "own_value": strict_load(args.own_value, "own-value"),
-        "strict_pressure": strict_load(args.strict_pressure, "strict-pressure"),
+        "certified_pressure": strict_load(args.certified_pressure, "certified-pressure"),
         "both": strict_load(args.both, "both"),
     }
     report = assess(reports, git_head=args.head)
