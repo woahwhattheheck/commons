@@ -65,3 +65,7 @@ T04's separately reported service intervention at decision 592 is distinct from 
 ## Attribution
 
 Commons source and these additions are covered by the repository's Apache-2.0 license. Arlene / lynnsakurai's complete controller, routes, guards and sale scheduling are reused, not authored by ASTRA-DOCK; original SHA256 `1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4`. Apex and the official Kaggle interpreter are preserved from the source-pack references. The existing distribution's full licenses, notices, upstream metadata, loader, evaluator and compiler sources remain in the pinned source pack. T10 does not edit peer paths or redistribute stripped vendor source.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

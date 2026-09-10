@@ -9,3 +9,7 @@ Default consumer=frozen, seed=true, funding=true, terminal_route=false, committe
 No external errors/timeouts. Across per-game maxima, candidate external RPC median .0651979s, p95 .1699519s, maximum .2936828s. These are not per-action percentiles. Maximum child-reported agent execution was .2022793s; the initial delivery mislabeled this as RPC and is corrected here. Internal deadline-fallback counts are not exposed by the existing evaluator. Two losing rows are one mirrored Apex seed9921001: own75280/rival78467. Mirrors are dependent and lonespear greedy/SciPy share a lineage; no held or leaderboard claim.
 
 summary.json includes all paired rows, source report hashes and mirror counts. report.json provides compact cash/timing/feature readback. ../first8-raw.tar.gz preserves all new original evaluator JSON, logs and run-state. Reused controls remain in the previously published PR10009 result bundle. Next24 uses the same immutable archive and disjoint continuation seeds9921009–9921032.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -45,3 +45,7 @@ Use a fresh output path. The reader refuses a changed archive hash, missing or d
 ## Scope
 
 This is a publication of an already-completed saved-bank consumer result. No new exhaustive enumeration, pricing, simulation, actor call, engine transition, game, seed, scenario model, selected-policy change, upload, or spending occurred. The full-bank result does not promote the SHEEP route and does not replace AMBER-CASH, DATE, RILL, ADMISSION-TIMING, or AMBER arrival-law ownership.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

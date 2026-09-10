@@ -44,3 +44,7 @@ python revenue/kaggriculture/cloud-frontier-trace/moments.py replays/episode-106
 ```
 
 `results/106392861/decision-cases.json.gz` preserves20 exact original before/after frame pairs for offline candidate regression inputs. `moments.json.gz` contains all instrumented context; `decision-summary.json` retains shop, labor and joint-operation tables. `decision-manifest.json` binds these follow-up files to the unchanged original replay hash. These are observed witnesses and decision conditions to test, not a promoted policy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -12,3 +12,7 @@ Both parents were already permitted and pinned by cloud-opponent-bench/UPSTREAM.
 - https://www.kaggle.com/code/flexonafft/kaggriculture-multi-route-farming-agent
 
 candidate.py is the frozen validated policy. main.py appends a uniquely named official-loader entrypoint without changing that byte prefix. DISTRIBUTION-NOTICE.txt and LICENSE travel inside the archive. Historical results/*-candidate.py files retain rejected/ablation sources with their own hashes; they are not the selected upload. build.py/overlay.py are the first rejected Igor reconstruction, retained for reproduction only.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 : "${EXPECTED_HEAD:?EXPECTED_HEAD is required}"
+: "${EXPECTED_CURRENT_MAIN:?EXPECTED_CURRENT_MAIN is required}"
 : "${RUNNER_TEMP:?RUNNER_TEMP is required}"
 SEEDS="${SEEDS:-539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207}"
 export SEEDS
@@ -24,6 +25,7 @@ CARRIER="$LAB/analysis/titan-v3-own-value-archive-carrier-sol-foundry"
 CASE="$LAB/analysis/titan-v3-own-value-bound-panel-sol-closure"
 HEAD="$(git rev-parse HEAD)"
 test "$HEAD" = "$EXPECTED_HEAD"
+test "$(git rev-parse HEAD^2)" = "$EXPECTED_CURRENT_MAIN"
 
 git diff --exit-code -- .
 test -z "$(git status --porcelain)"
@@ -37,8 +39,8 @@ verify_blob() {
 
 {
   printf 'head %s\n' "$HEAD"
-  verify_blob "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" 8a9023bb85447f0aad088699ecf7f0a03b808201
-  verify_blob "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" f5d8a9f1338dbef5396de8f23262453b0f70e832
+  verify_blob "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" 5bd67f93b832b6f35ea6482d35cebdd0d600cbe1
+  verify_blob "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" d80b40e345bcdbacfed9f7f4c8173aeb134fd781
   verify_blob "$PARENT/own_value_objective.py" 17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0
   verify_blob "$PARENT/compare.py" 9a4642211f2fe16da4452aad0a084a1efa85bb31
   verify_blob "$CARRIER/archive_runtime_guard.py" 2fbc4b45d2f0f06f8ccef2665d8d740d73c9e3db
@@ -64,11 +66,11 @@ pointer = json.loads(
         encoding="utf-8"
     )
 )
-expected_archive = "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86"
-expected_manifest = "1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083"
+expected_archive = "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1"
+expected_manifest = "3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469"
 assert pointer["sha256"] == expected_archive
 assert pointer["source_manifest_sha256"] == expected_manifest
-assert pointer["bytes"] == 427870
+assert pointer["bytes"] == 428158
 assert pointer["runtime_files"] == 109
 archive = lab / pointer["path"]
 payload = archive.read_bytes()
@@ -140,8 +142,8 @@ receipt = json.loads((out / "carrier/CARRIER-RECEIPT.json").read_text())
 control = json.loads((out / "CONTROL-PROBE.json").read_text())
 candidate = json.loads((out / "CANDIDATE-PROBE.json").read_text())
 pre = json.loads((out / "PRE-PANEL-VERIFY.json").read_text())
-assert receipt["archive"]["sha256"] == "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86"
-assert receipt["archive"]["source_manifest_sha256"] == "1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083"
+assert receipt["archive"]["sha256"] == "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1"
+assert receipt["archive"]["source_manifest_sha256"] == "3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469"
 assert receipt["canonical_runtime_equal"] is True
 assert receipt["canonical_repository_modified"] is False
 assert control["install_receipt"] is None
@@ -214,7 +216,7 @@ python "$CARRIER/archive_carrier.py" verify \
   --output "$OUT/POST-PANEL-VERIFY.json" \
   > "$OUT/POST-PANEL-VERIFY-STDOUT.json"
 
-OUT="$OUT" HEAD="$HEAD" CASE="$CASE" python - <<'PY'
+OUT="$OUT" HEAD="$HEAD" CASE="$CASE" EXPECTED_CURRENT_MAIN="$EXPECTED_CURRENT_MAIN" python - <<'PY'
 import hashlib
 import json
 import os
@@ -246,13 +248,14 @@ result = {
     "schema_version": 2,
     "operation": "titan-v3-own-value-bound-gameplay-screen-20260910-01",
     "git_head": os.environ["HEAD"],
-    "stack_base": "f5020986a864463485ef1c8a032226ecfe82e983",
+    "current_main_parent": os.environ["EXPECTED_CURRENT_MAIN"],
+    "historical_prefooter_archive_sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
     "run_script_git_blob": subprocess.check_output(
         ["git", "hash-object", f"{os.environ['CASE']}/run_bound_panel.sh"],
         text=True,
     ).strip(),
-    "archive_sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
-    "source_manifest_sha256": "1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083",
+    "archive_sha256": "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1",
+    "source_manifest_sha256": "3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469",
     "seeds": [int(value) for value in os.environ["SEEDS"].split(",")],
     "opponents": ["arlene", "v1"],
     "both_seats": True,

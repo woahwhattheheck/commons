@@ -121,3 +121,7 @@ The first command calls the existing solver/selector on retained matrices but
 no engine, controller or scenario generator. The second runs only the four
 selected terminal market checks using the existing pinned native helpers.
 Neither command uses new seeds, provider requests or historical held games.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

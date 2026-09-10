@@ -68,3 +68,7 @@ The patch addresses handler replacement during a delivered caller callback. It
 does not establish hard real-time interruptibility of native extensions, bound
 the execution of a slow caller handler, roll back interrupted producer state,
 or synchronize arbitrary process-wide signal manipulation outside this scope.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -109,3 +109,7 @@ The implementation is independent Python code under Apache-2.0. The validator
 composes the existing Commons loader and executes the pinned public engine
 without edits. See `NOTICE.txt` and `LICENSE`. No engine, route tape, binary,
 credential or new external dependency is vendored in this directory.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -17,3 +17,7 @@
 The PID check is the compatibility check introduced by RENEW in PR10479, not a universal proof of namespace identity. This change records its disposition without changing the check. Existing saved reports and historical resource measurements are not rewritten; absence of the new field means the report did not record this diagnostic.
 
 Focused coverage: `python3 -B test_procfs_provenance.py` from this directory. It uses real worker processes with controlled procfs inputs and the real report writer, not official games. The non-Linux test selects that branch on Linux and is not native non-Linux validation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

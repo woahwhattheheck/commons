@@ -100,3 +100,7 @@ import. The canonical builder retains the single release; its vendored source
 and current archive have not been changed by this component delivery. A later
 normal incorporation needs its own archive identity and consumer result; old
 frozen panels are not evidence for the new bytes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

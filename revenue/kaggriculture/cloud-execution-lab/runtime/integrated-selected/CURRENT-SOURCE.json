@@ -392,8 +392,8 @@
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
-      "bytes": 18313,
-      "sha256": "3709f74fed107caf20dc8538acf72b641e23ee780a56066bce1f0b819aba36fd",
+      "bytes": 18574,
+      "sha256": "21e7a5440dcbd096c0b0b682f6d73474f2b0492f6d359161b59f22770f0f6135",
       "source_path": "TITAN-RELEASE.md"
     },
     "checks/TITAN-HISTORY-CONFIG.json": {
@@ -642,8 +642,8 @@
       "source_path": "../cloud-opponent-league/lark-responsive/pressure_priority.py"
     },
     "reference/decision/README.md": {
-      "bytes": 9410,
-      "sha256": "98c3c233192c83042c80c275cabe2d0ae382baab01ed04e69266ed90042c5bb2",
+      "bytes": 9677,
+      "sha256": "07457ea5dd02e545d8105eb19b522a7dcf3037a09df211aaa69f2418a7ae572d",
       "source_path": "reference/decision/README.md"
     },
     "reference/decision/decision.py": {

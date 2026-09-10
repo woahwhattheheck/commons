@@ -39,6 +39,14 @@ DECISION_PRIORITY = {
     "HOLD_DO_NOT_CONTACT": 4,
     "DISQUALIFIED": 5,
 }
+LIVE_CASH_CITE = "goat-right-now-catalog-json-live-cash-20260909-01"
+LIVE_CASH_PRODUCTS = (
+    {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
+    {"name": "Dealer Service Lead Rescue", "price_usd": 199, "path": "dealer-service-lead-rescue.html"},
+    {"name": "Referral Intake Completeness", "price_usd": 199, "path": "referral-intake-completeness.html"},
+    {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},
+    {"name": "Plant Downtime Handoff", "price_usd": 199, "path": "plant-downtime-handoff.html"},
+)
 
 
 class ControlError(ValueError):
@@ -71,11 +79,55 @@ def _positive_integer(value: Any, where: str) -> int:
     return value
 
 
+def validate_live_cash(value: Any) -> dict[str, Any]:
+    """Keep the leftover live-cash shelf inside the control contract.
+
+    GOAT added verified product-page cites on the catalog. Exact-set
+    validation used to reject that extra field. Expand the contract so
+    the five public checkouts stay measured instead of being dropped.
+    """
+    if not isinstance(value, dict):
+        raise ControlError("live_cash must be an object")
+    required = {"cite", "note", "products"}
+    if set(value) != required:
+        raise ControlError("live_cash fields differ from the control contract")
+    cite = value["cite"]
+    if (
+        not isinstance(cite, list)
+        or not cite
+        or not all(isinstance(item, str) and item.strip() for item in cite)
+    ):
+        raise ControlError("live_cash.cite must be a non-empty list of strings")
+    if LIVE_CASH_CITE not in cite:
+        raise ControlError("live_cash.cite missing the right-now catalog cite")
+    note = value["note"]
+    if not isinstance(note, str) or not note.strip():
+        raise ControlError("live_cash.note must be a non-empty string")
+    lowered = note.lower()
+    if "buy.stripe.com" in lowered or "donate.stripe.com" in lowered:
+        raise ControlError("live_cash must not invent Stripe URLs")
+    products = value["products"]
+    if not isinstance(products, list) or len(products) != len(LIVE_CASH_PRODUCTS):
+        raise ControlError("live_cash.products must list the five verified product pages")
+    for actual, expected in zip(products, LIVE_CASH_PRODUCTS):
+        if not isinstance(actual, dict):
+            raise ControlError("live_cash.products entries must be objects")
+        if set(actual) != {"name", "price_usd", "path"}:
+            raise ControlError("live_cash.products entry fields differ from the control contract")
+        if actual.get("name") != expected["name"]:
+            raise ControlError("live_cash.products name drift")
+        if actual.get("price_usd") != expected["price_usd"]:
+            raise ControlError("live_cash.products price drift")
+        if actual.get("path") != expected["path"]:
+            raise ControlError("live_cash.products path drift")
+    return value
+
+
 def validate_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
     required = {
         "schema_version", "kind", "as_of", "canonical_page", "purpose",
         "truth", "ranking_rule", "portfolio", "offers",
-        "preserved_long_horizon_routes",
+        "preserved_long_horizon_routes", "live_cash",
     }
     if set(catalog) != required:
         raise ControlError("catalog fields differ from the control contract")
@@ -149,6 +201,7 @@ def validate_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
             raise ControlError(
                 "same-day-agent-survival-proof must not use agent-rescue.html while Autopsy owns that page"
             )
+    validate_live_cash(catalog["live_cash"])
     return catalog
 
 

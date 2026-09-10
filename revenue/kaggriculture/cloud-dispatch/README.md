@@ -159,3 +159,7 @@ Owner-authored code retains MIT OR CC-BY-4.0; see the complete licenses here.
 Kaggle code retains its own Apache-2.0 license. Account/root's existing
 [successful v2 entry](https://www.kaggle.com/code/tokenjunkielabs/tokenjunkielabs-farm-manager?scriptVersionId=347872961)
 and the existing contest-sharing workflow remain with their owner.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

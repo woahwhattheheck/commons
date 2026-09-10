@@ -60,3 +60,7 @@ held result, hosted test result, or proof of a future source revision. The build
 No runtime, package, manifest, workflow, default, game panel or peer-owned history
 integration changes. Canonical builder and T09 remain the consumers: reuse the test
 on the next changed timer boundary, without duplicating the existing game shards.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

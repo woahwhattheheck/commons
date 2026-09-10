@@ -34,3 +34,7 @@ Fills are NOT in the replay. Posted SELL/BUY is not a realized fill.
 ## 7. Earlier NE unlock (Otter step 121 vs TITAN 151)
 
 ## 8. Otter day-29 bulk WHEAT 57 + CARROT 32 vs TITAN fertilizer drip
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

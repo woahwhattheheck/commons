@@ -17,15 +17,15 @@ ROOT = Path(__file__).resolve().parent
 HREF = 'href="./keep-sell.html"'
 TITLE = ">KEEP vs SELL</a>"
 COPY = "Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs."
-HUB_BLOB = "d0bd0e8d"
+HUB_BLOB = "44bbd2ec"
 STALE_HUB = "7a8f24d5"
-BOARDS_BLOB = "143730a0"
+BOARDS_BLOB = "e4b46040"
 STALE_BOARDS = "a44e8e3e"
 
 KEEP_UNREAD = {
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "test_keep_sell_board_projection.py": "48a06148",

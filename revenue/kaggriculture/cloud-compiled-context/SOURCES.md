@@ -64,3 +64,7 @@ The final default keeps economic plan fields advisory after the measured losing
 restriction arms. Its active new mechanism is persistent installation intents
 through DIG/BUILD/PLACE, invalid-target replanning and observed completion. This
 is a new deterministic temporal plan, not a source-defined model-selected operator.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

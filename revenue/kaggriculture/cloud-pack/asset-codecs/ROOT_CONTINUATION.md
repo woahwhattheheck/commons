@@ -23,3 +23,7 @@ Carry forward PR9770's accepted nine tests/eight parity games; neither was rerun
 5. Keep driving the existing Claude E4B decision/game loop. FLORA owns production;
    the packaging changes do not change source ownership, seed banks or submission
    decisions. Return any measured model-sample evidence in the same parent thread.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

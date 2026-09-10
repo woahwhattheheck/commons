@@ -111,3 +111,7 @@ experiments or to select a holdout from prior results.
 This is a bounded research integration, not a new hosted rating, earned revenue,
 new opponent league, or approval to publish to Kaggle. Small-panel cash gains do
 not establish a general win rate or justify replacing T08's selected policy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

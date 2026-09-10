@@ -76,3 +76,7 @@ is recorded separately in the PR and its artifact.
 
 No selected-policy, optimizer, producer, engine, game panel, seed, or external
 competition state changes are part of this reporting repair.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

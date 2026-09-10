@@ -14,3 +14,7 @@ The complete Library ZIP in EVIDENCE.json preserves the original held freeze, ad
 python revenue/kaggriculture/cloud-hosted-loss-response/input_budget/test_input_budget.py
 python revenue/kaggriculture/cloud-hosted-loss-response/input_budget/test_public_clock.py
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

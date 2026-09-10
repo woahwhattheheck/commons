@@ -38,3 +38,7 @@ python -B revenue/kaggriculture/cloud-frontier-decision/public-opponent/benchmar
 ```
 
 The preparation wrapper packages the existing next-panel preparation and existing pack adapter calls. Those constituent operations were executed in this run; the wrapper itself was not separately rerun. Adapters use the existing isolated loader and offline restriction. `benchmark.py` derives from LARK's existing Apache-2.0 next-panel measurement harness, adding the frozen opponent and exact fixture metadata. It does not implement alternate game transitions. Source inspection, download, compilation, and all games occurred in the cloud. No Kaggle upload or new paid compute was performed. FLORA's production integration and the separate forecast economics lane are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

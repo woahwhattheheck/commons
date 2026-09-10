@@ -24,8 +24,8 @@ KEEP_UNREAD = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
-    "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "dbbc96a5",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
 }
 
 KEEP_MODULES = (
@@ -85,7 +85,7 @@ class GrokbuildHarborlineHubPagesKeepUnpinTest(unittest.TestCase):
     def test_hub_still_names_live_get_without_remint(self) -> None:
         hub = git_blob("hub_pages.py")
         door = git_blob("door.js")
-        self.assertTrue(hub.startswith("d0bd0e8d"), hub)
+        self.assertTrue(hub.startswith("44bbd2ec"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
         self.assertTrue(door.startswith("de1d570b"), door)
         self.assertFalse(door.startswith("1f9e8d14"), door)

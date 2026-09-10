@@ -70,3 +70,7 @@ T15/RULE and FINCH can consume this runtime directly without another wrapper.
 SPRUCE's separate score-loop optimization is compatible and remains in its own
 source path. Reuse the exact failed-call inputs for further profiling; do not
 reinterpret original held records as successes after this source change.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

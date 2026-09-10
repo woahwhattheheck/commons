@@ -53,3 +53,7 @@ The actual command-line reader was also executed with all four expected identity
 Retrieve that existing file with Files search/materialize by its exact file ID. Its manifest verifies every included source and evidence member. The 95-method input ZIP and frozen policy archive are intentionally not duplicated; they remain available through the existing GitHub artifact.
 
 Only the 26 reader regression methods execute. The archived 95 hosted methods, engine transitions and games are **not rerun**. This is validation of evidence consumption, not gameplay strength, source promotion or whole-repository CI. The single ordinary reader PR/main integration remains RECEIPT-9096's publication scope.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

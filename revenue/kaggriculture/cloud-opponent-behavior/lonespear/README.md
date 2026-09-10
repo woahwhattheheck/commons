@@ -138,3 +138,7 @@ It excludes held/conditional-validation traces and unrelated portfolio data.
 covers every other member. The separate `DELIVERY.json` records the ZIP hash
 and its saved Library location. The runtime source remains commit108e0d17; the
 archive is a source/evidence delivery, not a new policy evaluation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

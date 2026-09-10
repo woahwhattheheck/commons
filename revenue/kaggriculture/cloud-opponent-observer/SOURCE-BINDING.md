@@ -58,3 +58,7 @@ The AST outside `CokObserver.__init__` is unchanged. Historical observer, report
 and streaming receipts remain associated with their original source hashes;
 they are not rewritten as measurements of the new constructor. New results,
 source identities and the original witness are in `SOURCE-BINDING.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

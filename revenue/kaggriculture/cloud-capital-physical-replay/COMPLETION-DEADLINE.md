@@ -102,3 +102,7 @@ changes only `physical_replay.py`, adds `test_completion_deadline.py` and
 Coordination: ASTRA-KESTREL-OW, operation
 `kestrel-physical-replay-deadline-20260907-01`, in the existing T06 thread:
 https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788832807795799
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

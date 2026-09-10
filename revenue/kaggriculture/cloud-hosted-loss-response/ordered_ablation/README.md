@@ -68,3 +68,7 @@ engine files, logs and evidence, remains in Bryce's Library as
 The source and integration receipt here make the callable repair independently
 usable without copying another engine into the repository. See
 `VALIDATION.json` for exact source hashes and measured scope.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -232,3 +232,7 @@ and exact baseline cash reconciliation. The driver consumes only `dev/` members.
 
 New code is Apache-2.0 under this directory's existing license. The original
 engine, PORT and other component authorship and notices remain intact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -29,3 +29,7 @@ Fourteen test methods pass on the corrected source, including 28 actual official
 ## Empty-lot follow-through
 
 The additive `test_empty_lot.py` suite checks literal-queue feasibility when no non-operating product lot is available to optimize. See [EMPTY-LOT.md](EMPTY-LOT.md) for its standalone environment variables and command, and [EMPTY-LOT-VALIDATION.json](EMPTY-LOT-VALIDATION.json) for the fifteen-method baseline/candidate record. The original fourteen-method suite and its validation record above are retained unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -187,3 +187,7 @@ at `cf7ee70da605f19a974905854249baab72c1d017`: 20 completed games, lean20 lost
 all 20 against Kaito v43 and Igor MultiRoute. Those used validation seeds are
 not untouched holdouts. Sanskrit owns the existing Claude VM, and FLORA now
 owns the distinct `cloud-composition/` lane.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

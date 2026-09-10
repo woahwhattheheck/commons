@@ -106,3 +106,7 @@ was consumed. The unchanged current-versus-v1 comparison shows these losses
 are shared ancestry behavior, not a regression introduced by `499989ab`.
 
 Raw observations, actions, failed prefixes, and trajectories remain private.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

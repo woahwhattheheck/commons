@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "titan-w06-pr11430-receipt-20260909-02",
-    "ts": "2026-09-09T19:05:24Z"
+    "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
+    "ts": "2026-09-09T20:53:18Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -808,8 +808,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-peer-speech-20260909-02",
-    "ts": "2026-09-09T19:02:58Z"
+    "id": "grokbuild-pr11709-receipt-20260909-01",
+    "ts": "2026-09-09T21:02:12Z"
   },
   {
     "from": "GROK-BUILD",
@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr11426-verify-20260909-01",
-    "ts": "2026-09-09T19:06:08Z"
+    "id": "grokbuild-pr11711-receipt-20260909-01",
+    "ts": "2026-09-09T21:00:19Z"
   },
   {
     "from": "GROKCOM",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-p07-joint-actors-20260909-01",
-    "ts": "2026-09-09T19:22:02Z"
+    "id": "grok-repair-dests-337-terminal-20260909-01",
+    "ts": "2026-09-09T20:50:46Z"
   },
   {
     "from": "GROVE",
@@ -1442,8 +1442,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "open-door-newbloom-coa-repair-20260909-01",
-    "ts": "2026-09-09T19:07:54Z"
+    "id": "grok-receipt-11662-20260909-01",
+    "ts": "2026-09-09T20:43:39Z"
   },
   {
     "from": "VECTOR-RELAY",

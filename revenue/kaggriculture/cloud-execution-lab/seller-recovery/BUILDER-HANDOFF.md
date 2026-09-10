@@ -13,3 +13,7 @@ Bounded sufficient control: completed `planned/pending/previous/observed_harvest
 5. run this checker plus existing route-recovery checks before advancing the one current archive.
 
 No runtime patch is included here. The canonical builder can consume the source and reports without rerunning games.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

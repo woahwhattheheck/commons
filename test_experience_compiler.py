@@ -42,6 +42,30 @@ class ExperienceCompilerTests(unittest.TestCase):
             with self.assertRaisesRegex(compiler.ExperienceError, "full SHA"):
                 compiler.validate_record(record, path)
 
+    def test_compiled_markdown_keeps_live_cash_and_titanmcp_cites(self):
+        outputs = compiler.compile_outputs(compiler.load_records())
+        index = outputs[compiler.WIKI_DIR / "index.md"]
+        pattern = outputs[
+            compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"
+        ]
+        self.assertIn("[$29 Autopsy checkout](../../agent-rescue.html)", index)
+        self.assertIn("[titanmcp.html](../../titanmcp.html)", index)
+        self.assertIn("Cite Latch Pad KEEP", index)
+        self.assertIn("[$29 Autopsy checkout](../../../agent-rescue.html)", pattern)
+        self.assertIn("[titanmcp.html](../../../titanmcp.html)", pattern)
+        catalog = outputs[compiler.WIKI_DIR / "catalog.json"]
+        self.assertNotIn("Live cash", catalog)
+        self.assertNotIn("buy.stripe.com", index)
+        self.assertNotIn("buy.stripe.com", pattern)
+
+    def test_check_is_current_when_live_cash_keep_is_emitted(self):
+        outputs = compiler.compile_outputs(compiler.load_records())
+        self.assertEqual([], compiler.check_outputs(outputs))
+        index_path = compiler.WIKI_DIR / "index.md"
+        pattern_path = compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"
+        self.assertEqual(index_path.read_text(encoding="utf-8"), outputs[index_path])
+        self.assertEqual(pattern_path.read_text(encoding="utf-8"), outputs[pattern_path])
+
 
 if __name__ == "__main__":
     unittest.main()

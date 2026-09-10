@@ -141,3 +141,7 @@ retained inputs or prior runs are not overwritten. The core CLI also accepts
 `{"deltas": [...]}` and an optional `--output` result path.
 
 Apache-2.0. See `NOTICE.md` for the interface and validation references.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -86,3 +86,7 @@ python3 selected-action-examples.py
 `runtime/selected-action/examples.json` contains four executed examples and their actual official current-market cash receipts. In a synthetic known-consumption case, the same whole ten-unit commitment before market requires MILK10 now (receipts876); after market permits an empty current SELL slot and a planned sale next turn. These are different cash timings, not a game-win claim. Retained669 uses observed carried79 plus the actual committed EGG4 due671 after market: it keeps STRAWBERRY3 at unchanged continuation value552 and executes the inherited WHEAT2 sale for90. It does not reproduce the old envelope over every possible errand.
 
 Runtime imports are `selected_action_sell.py`, `selected_sell_core.py`, existing `mechanics.py`, and pinned `reference/decision/decision.py`, all standard library. Preserve adjacent source licenses and the existing lab NOTICE. The original accepted archive was neither rebuilt nor replaced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

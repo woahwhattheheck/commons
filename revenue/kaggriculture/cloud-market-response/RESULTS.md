@@ -91,3 +91,7 @@ files described above, earlier source and all 719-turn traces are in the
 separately delivered `t12-full-evidence.tar.gz`; they are not claimed as GitHub
 source files. Every complete game record identifies its full trace SHA-256.
 Neither trace truth nor result files are included in the agent package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

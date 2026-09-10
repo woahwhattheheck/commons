@@ -6,12 +6,15 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 import unittest
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from verify_cite import (
+    CALIBRATION_PATH,
+    FINDER_UNVERIFIED,
     classify,
     listing_from_root,
     load_catalog,
@@ -120,10 +123,60 @@ class TestVerifyCite(unittest.TestCase):
         )
         self.assertEqual(found, ["host/verify_cite.py"])
 
+    def test_missing_tree_root_is_finder_unverified(self):
+        catalog = os.path.join(ROOT, "ground", "VERIFY_CITE.json")
+        missing_root = os.path.join(ROOT, "definitely-missing-verify-cite-root")
+        row = measure_paths(catalog, missing_root)
+        self.assertFalse(row["measured"])
+        self.assertEqual(row["finder_state"], FINDER_UNVERIFIED)
+        self.assertFalse(row["calibrated"])
+        self.assertIsNone(row["observed"])
+        verdict = classify(row)
+        self.assertEqual(verdict["state"], FINDER_UNVERIFIED)
+        self.assertNotIn("0/", verdict["note"])
+        self.assertEqual(row["search_space"]["path"], os.path.abspath(missing_root))
+
+    def test_known_present_calibration_miss_voids_tree_zero(self):
+        catalog = os.path.join(ROOT, "ground", "VERIFY_CITE.json")
+        with tempfile.TemporaryDirectory(prefix="verify-cite-root-") as temp_root:
+            os.makedirs(os.path.join(temp_root, "host"))
+            row = measure_paths(catalog, temp_root)
+        self.assertFalse(row["measured"])
+        self.assertEqual(row["finder_state"], FINDER_UNVERIFIED)
+        self.assertFalse(row["calibrated"])
+        self.assertEqual(row["calibration_id"], CALIBRATION_PATH)
+        self.assertIn(CALIBRATION_PATH, row["calibration_missed"])
+        self.assertNotIn("0/", classify(row)["note"])
+
+    def test_calibrated_path_miss_has_named_space_not_bare_zero(self):
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", suffix=".json", delete=False
+        ) as handle:
+            json.dump({"cited_paths": ["host/definitely-missing-cite.py"]}, handle)
+            catalog = handle.name
+        self.addCleanup(lambda: os.path.exists(catalog) and os.unlink(catalog))
+        row = measure_paths(catalog, ROOT)
+        self.assertTrue(row["measured"], row.get("finder_note"))
+        self.assertTrue(row["calibrated"])
+        self.assertEqual(row["finder_state"], "CALIBRATED")
+        self.assertEqual(row["find_state"], FINDER_UNVERIFIED)
+        self.assertIsNone(row["find_count"])
+        self.assertEqual(row["miss_behavior"], "CALIBRATED_ABSENCE")
+        self.assertEqual(row["observed"]["calibration_hits"], [CALIBRATION_PATH])
+        verdict = classify(row)
+        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertIn(FINDER_UNVERIFIED, verdict["note"])
+        self.assertNotIn("0/", verdict["note"])
+        self.assertTrue(row["search_space"]["complete"])
+
     def test_live_catalog_names_the_taking_cite(self):
         path = os.path.join(ROOT, "ground", "VERIFY_CITE.json")
         row = measure_paths(path, ROOT)
         self.assertTrue(row["measured"], row.get("error"))
+        self.assertTrue(row["calibrated"])
+        self.assertEqual(row["finder_state"], "CALIBRATED")
+        self.assertEqual(row["calibration_id"], CALIBRATION_PATH)
+        self.assertEqual(row["observed"]["calibration_hits"], [CALIBRATION_PATH])
         self.assertEqual(
             row["cited_sha"],
             "cd7d4f864f0c04143a573173e0b42f61f3c65533",

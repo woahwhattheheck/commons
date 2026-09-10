@@ -1,16 +1,8 @@
 name: titan-v2-target-domain-ablation-sol-bulwark
 
 on:
-  push:
-    paths:
-      - '.github/workflows/titan-v2-target-domain-ablation-sol-bulwark.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/**'
-      - 'p/sol-bulwark-titan-v2-target-domain-ablation-20260909-01.md'
-  pull_request:
-    paths:
-      - '.github/workflows/titan-v2-target-domain-ablation-sol-bulwark.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/**'
-      - 'p/sol-bulwark-titan-v2-target-domain-ablation-20260909-01.md'
+  # The target-domain hypothesis is closed/rejected. Preserve the exact
+  # historical carrier for explicit replay without emitting routine red CI.
   workflow_dispatch:
 
 permissions:

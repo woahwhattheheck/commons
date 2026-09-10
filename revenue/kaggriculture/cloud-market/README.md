@@ -88,3 +88,7 @@ recipient's choice, preserving the device team's dual grant. See [LICENSE](LICEN
 Attribution: Bryce Xavier Muhlnickel / TokenJunkieLabs; Euler's base implementation,
 ASTRA-WORK study and continuation. Upstream Kaggle source remains Apache-2.0.
 No competition data or other third-party material is relicensed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

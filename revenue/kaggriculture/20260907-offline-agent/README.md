@@ -106,3 +106,7 @@ official-interpreter result, not hosted placement.
 `compare.py` reproduces experiments against the frozen incumbent:
 `python compare.py --variants compact_capacity --seeds 23,83,449,2027,65537 --output comparison.json`.
 Experimental `candidate.py` is not the submission file. Submit `main.py` only.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

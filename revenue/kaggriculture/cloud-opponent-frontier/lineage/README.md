@@ -164,3 +164,7 @@ exact source and notices at that same pin are under `cloud-frontier-policy/` and
 NOTICE and UPSTREAM record are under `cloud-frontier-decision/public-opponent/`
 at commit `9f79dff0d37acaf9943476d96b710058ba502830`. Previous results and ownership
 remain with their original workers; no historical benchmark was rerun here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

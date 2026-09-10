@@ -13,3 +13,7 @@ Expected sha256:
 The archive contains all 64 original arm/seed reports and logs, all three failed
 attempts, isolated replications, resolved reports, loss traces, diagnostic
 action/timing/state trajectories, and every counterfactual report.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

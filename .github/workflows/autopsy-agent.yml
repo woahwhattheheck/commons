@@ -23,6 +23,14 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 2
+          # This Windows-only job does not consume Kaggriculture working-tree
+          # files. Keep those case-colliding SOURCE.json/source.json pairs out
+          # of the worktree while retaining the complete Git tree for ls-tree
+          # and ancestry checks below.
+          sparse-checkout: |
+            .github
+            revenue/agents_for_humans
+          sparse-checkout-cone-mode: true
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'

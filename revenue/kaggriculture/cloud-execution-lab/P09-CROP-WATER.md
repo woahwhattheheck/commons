@@ -29,3 +29,7 @@ Priority is lexicographic: survival first, then current marginal units, then the
 ## Deliberate non-claims
 
 This patch is a shared decision primitive plus focused semantics, not a playing-strength result. It does not claim freed-turn frequency, terminal-cash gain, W/T/L gain, or that any current route should be rewritten. Those claims require source-pinned matched complete games after a canonical writer composes the policy into an actual route edit.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

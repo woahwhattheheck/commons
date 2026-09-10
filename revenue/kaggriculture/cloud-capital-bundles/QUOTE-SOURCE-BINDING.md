@@ -33,3 +33,7 @@ python3 -B check_quote_source_binding.py \
 ```
 
 The checker saves the actual before/after outcome, source identities and hashes in a fresh report. It does not modify original evidence, run a parent, create a new scenario model, fetch a source archive, or alter the selected policy. Conditional scheduled-volume cash is not realized game cash or a physical-fill certificate. Existing peer sources retain their attribution; new checks are Apache-2.0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

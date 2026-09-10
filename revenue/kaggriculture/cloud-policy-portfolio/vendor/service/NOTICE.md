@@ -32,3 +32,7 @@ The connected GitHub tool delivered these existing artifact ZIPs into the cloud 
 | Current licensed parents and modern evaluator layout | 34154725233 | 10030597538 | 751fe8857bcd2957e9dfd3cc00528de0b774fa349c670408df961c8906f39e26 |
 
 These are transport receipts, not new benchmark scores. Workflow artifacts have retention limits; the immutable repository checkpoints and file hashes remain the reproducibility references. A network-capable cloud runtime can also prepare the exact official cache using the existing evaluator's `--prepare-engine` option. This task did not change the network boundary, request private credentials, use the owner's PC, or upload a Kaggle submission.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

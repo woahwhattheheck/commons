@@ -55,3 +55,7 @@ show, because the units are still on a worker:
 `no_forced_sale_date` is the field that addresses the measured failure: cap-rescued
 units have no deadline, and liquidating them at the first opportunity is a choice
 with a price.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

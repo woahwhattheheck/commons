@@ -35,3 +35,7 @@ These executions and attribution remain FINCH's. BRIDGE has not rerun them and d
 The complete original patch, including FINCH's twelve-method regression source and note, remains in Bryce's Library as `TITAN_FINCH_worker_source_audit.patch`, file ID `file_00000000fb9881f7a7d5ba082a7a00f6`. This repository recovery stores the exact isolated production hunk needed for ordinary source composition while retaining that packet as the full test/evidence source.
 
 No current release, game runner, timing helper, canonical archive, games, seeds, workflow, upload, or spend are changed by this recovery directory.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

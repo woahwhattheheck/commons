@@ -135,3 +135,7 @@ then exports the selected entrypoint as `main.py`, its dependency, the unchanged
 SELL closure and original notices. `BUNDLE-MANIFEST.json` records exported
 bytes. The archive is deterministic. `--arm weed` deliberately exports the
 separate experimental arm instead; it does not combine the two policies.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

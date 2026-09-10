@@ -25,3 +25,7 @@ python -B test_candidate.py
 ```
 
 `RESULTS.json` records the source pins, bounded timing result and original evidence identity. `single-pass-receipts.patch` is the exact runtime delta for the existing builder; `candidate.py` exposes the same logic without changing the default runtime. The canonical archive, release pointer, selected policy and Kaggle submission are not changed by this component.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

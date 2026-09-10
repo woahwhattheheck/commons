@@ -39,3 +39,7 @@ python -B revenue/kaggriculture/cloud-market-game-theory/consumer-history-v2/joi
 The JSON output retains every per-receipt interval and family delta.
 
 Changes by product: `{"MILK": 164, "STRAWBERRY": 122, "WOOL": 318}`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

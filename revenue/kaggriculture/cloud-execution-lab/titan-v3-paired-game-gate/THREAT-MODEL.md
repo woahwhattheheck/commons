@@ -48,3 +48,7 @@
 The gate proves that a declared paired panel is complete and that its observed
 metrics satisfy a frozen decision contract. It does not prove why a candidate
 won, that it will generalize, or that it is safe to deploy without review.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

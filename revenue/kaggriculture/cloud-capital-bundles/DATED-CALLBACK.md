@@ -86,3 +86,7 @@ failures/errors. It is a repeated compatibility check of those twelve methods,
 not twelve additional methods or a rerun of the 32-game panel. Full-game replay
 is unnecessary for delivery. The original packet's `verify_results.py` verifies
 its saved records separately; no dependency download or export job is needed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

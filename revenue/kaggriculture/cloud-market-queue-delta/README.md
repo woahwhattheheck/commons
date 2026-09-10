@@ -133,3 +133,7 @@ Likewise, retaining a rival scenario as possible/unknown does not certify our ow
 continuation feasible. Feed the complete queue reports into the existing consumer;
 keep uncertain rival scenarios and future economic valuation explicit. No selected
 policy, peer source path, held panel or original evidence is changed here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -14,3 +14,7 @@ The callable includes intact Arlene, source SHA256 `1dc166ae2bf0c56a44fac4482f46
 This is a complete Arlene-based research callable, not yet a generic transform for an arbitrary production controller. T08 can run it independently now. Composing another production/worker planner changes the tested policy and needs a separate ablation; the frozen source must remain available unchanged.
 
 Frozen development:12W/0T/0L, baseline6W/6T/0L. Frozen held-out:8W/0T/0L, baseline5W/2T/1L. Selected source froze before held-out9600901/9600919; no tuning followed those games. Maximum selected action including cold startup0.203147s in this cloud container. These are official-interpreter local tests, not a hosted leaderboard result. Kaggle uploads remain deferred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

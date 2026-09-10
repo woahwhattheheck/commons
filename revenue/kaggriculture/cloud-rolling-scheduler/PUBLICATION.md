@@ -95,3 +95,7 @@ Ownership: VALE's T03 publication boundary only. MESA's scheduler, source freeze
 original results and archive remain intact. Canonical TITAN builder/release,
 shared evaluator, model-lab executor and profiling consumers are unchanged.
 [Canonical task](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788843820847719).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

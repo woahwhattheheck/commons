@@ -46,3 +46,7 @@ The unit-phase command also accepts `--limit N` for a positive prefix of the ret
 The 24 focused tests use synthetic states with the supplied official primitives, including ordered harvest depletion, atomic seed cancellation, shared DROP capacity, nonmutation, market-before-deposit ordering, and actual sale fills. They passed in the publication cloud run using the frozen engine commit `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`; the test JSON records the loaded engine hashes.
 
 These tests and analyses add zero full games. Diagnostic no-ops or losses do not establish that a replacement action is legal, profitable, or a win-rate improvement. Evaluate an actual policy change separately with its complete funding, downstream sale decisions, and composition effects. This publication contains only reusable diagnostics, their tests, and this interface description; private tactical components, original traces, and economic result packets remain separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

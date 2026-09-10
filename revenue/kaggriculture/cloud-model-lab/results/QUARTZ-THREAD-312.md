@@ -56,3 +56,7 @@ invocation wrapper, original stdout/stderr, process/result records, attribution
 and Apache-2.0 license. Saved size matches; independent download status is
 recorded in the companion JSON. The first version was replaced before handoff
 to include the full license. Claim `1788848850.483809`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

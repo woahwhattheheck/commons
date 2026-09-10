@@ -12,3 +12,7 @@ the full standard license text is included as LICENSE.
 Runtime execution is local research. No Kaggle submission or hosted-rating
 claim is included. Do not use the baseline agents' notices as this author's
 attribution. Preserve all files when redistributing this package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

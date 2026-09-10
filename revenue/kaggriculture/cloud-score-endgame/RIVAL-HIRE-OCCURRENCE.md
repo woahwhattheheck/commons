@@ -66,3 +66,7 @@ python -m unittest -v test_hire_occurrence.py
 The JSON output retains each source record, candidate seat, terminal queue
 hash, source-bound action-stream hash, operation counts, and HIRE timestamps.
 Recorded rival actions are evaluation-only evidence and never actor inputs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

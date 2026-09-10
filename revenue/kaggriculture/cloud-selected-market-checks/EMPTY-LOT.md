@@ -27,3 +27,7 @@ The suite uses only the standard library. Its isolated loader executes the uncha
 Fifteen methods pass on the candidate. The exact pre-change current-main seller fails eleven assertions/subtests across ten methods, with no execution errors. This baseline already includes the preceding ordered-transfer and terminal-stock fixes. Positive controls cover exact cash thresholds, distinct phase minima, seed storage outside shed capacity, fully reserved product normalization, non-SELL positions, and input immutability.
 
 `EMPTY-LOT-VALIDATION.json` records exact source hashes, artifact reuse, baseline and candidate counts, and validation limits. These are focused contract tests, not whole-repository CI, scored games, held panels, or a policy promotion. Frozen optimizer and standalone source bytes remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

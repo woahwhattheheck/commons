@@ -33,3 +33,7 @@ validation. Reproduction must respect the seed ledger and freeze identities.
 Original revision code is Apache-2.0 under the parent license. T12 flow code is
 vendored unchanged with its MIT notice. Frozen parent, engine and public-bank
 dependencies retain their original licenses and notices. No upload is performed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

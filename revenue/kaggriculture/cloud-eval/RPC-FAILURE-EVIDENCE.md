@@ -51,3 +51,7 @@ TITAN_EVALUATOR_PATH=/absolute/path/to/original/evaluate.py \
 ```
 
 `rpc-failure-evidence.json` preserves exact source identities, local counts, witness outputs and full-log hashes. No official game, scored panel or game seed was consumed. Historical missing requests are not retroactively recovered, the original RPC incident is not diagnosed, and no running process or canonical submission package is changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -42,3 +42,7 @@ for array types, failures/skips, source drift, count partitions, missing logs
 and optional coverage. Their manufactured documents are parser fixtures, not
 game or deadline measurements. No cancellation test, adapter, timer, optimizer,
 policy, game, seed or source-export workflow is modified by this addition.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

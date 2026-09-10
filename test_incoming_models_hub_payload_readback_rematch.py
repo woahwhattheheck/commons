@@ -16,7 +16,7 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "test_incoming_models_hub_payload_readback.py": "9fb3f31c",
+    "test_incoming_models_hub_payload_readback.py": "1fd96349",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "host/incoming_models.py": "7f4ae3bf",
     "test_incoming_models.py": "d8f2ddbd",
@@ -27,9 +27,9 @@ KEEP = {
     "p/grokbuild-pr8340-incoming-models-20260902-01.md": "f2917ab4",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",

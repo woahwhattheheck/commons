@@ -121,3 +121,7 @@ are linear-system fixtures, not game seeds. The four `evidence/*.b64` pieces
 retain the complete engine paths, LP systems/certificates, and unit output. `read_results.py`
 checks both archive and decoded hashes from `VALIDATION.json` before returning
 results. The manifest binds all published source bytes used by these checks.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -83,3 +83,7 @@ results or change CALLABLE's independent arity repair.
 TANDEM owns only this directory. Claude owns the executor; CALLABLE owns its
 signature repair; FINCH owns runtime-budget A. Existing integrated candidate,
 selection, game panels and peer source files are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -91,3 +91,7 @@ distinct. FLORA's separate overlay is not claimed integrated with cap scheduling
 The requested author generic SELL interface was still unavailable for this
 comparison; the T08 adapter is explicitly separate. No new public opponent source
 had been admitted through T07 when this bounded panel was scheduled.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

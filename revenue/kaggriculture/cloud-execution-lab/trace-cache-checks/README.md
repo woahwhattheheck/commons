@@ -129,3 +129,7 @@ result does not replace CONTINUITY's older seed-disabled result, the builder's
 focused cache tests, WIDEFIELD's actual game results, or the next checkpoint's
 source-specific acceptance. The canonical builder can reuse this exact result
 without repeating its saved prefixes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

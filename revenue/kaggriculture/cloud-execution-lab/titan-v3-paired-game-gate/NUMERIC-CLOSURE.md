@@ -56,3 +56,7 @@ pass.
 This repair is limited to numeric closure in the paired-game evidence gate. It
 does not claim gameplay strength and intentionally does not duplicate the
 separately owned artifact-binding, single-read/TOCTOU, or no-clobber repair.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -26,3 +26,7 @@ python3 -B revenue/kaggriculture/cloud-selected-market-checks/test_queue_copy.py
 ```
 
 The PR-triggered hosted result is reported separately in the pull-request conversation after execution; the local counts above are not a hosted-pass claim. Complete original/final local logs, unchanged package manifests, YAML comparison and source-bound receipts are retained in the delivery archive. Reused inputs are `TITAN-HAZEL-WREN-queue-copy-20260908.zip` (SHA256 `2c4468027cde2d7883164e02aefc83413823e4416f0c3002eb3c128920476a59`) and `TITAN-STRESS-runner-ci-PR10143.zip` (SHA256 `2fd148700706148bcbc4a18ffbf32ece00b58b71395d72306120fa319dbdd324`). No new workflow, game, seed, upload to Kaggle, spend or owner-PC operation is included.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

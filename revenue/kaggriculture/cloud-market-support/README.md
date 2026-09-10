@@ -77,3 +77,7 @@ https://github.com/woahwhattheheck/commons/blob/3457d8f149b2bb07de6d9993a41ae0e0
 
 Published receipt matrices (README blob `5fb510deeef0136c7143327514a7601d6fac896f`):
 https://github.com/woahwhattheheck/commons/blob/4d97474b0188b0373be1b52b610c0114ceb033c8/revenue/kaggriculture/cloud-market-game-theory/README.md
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

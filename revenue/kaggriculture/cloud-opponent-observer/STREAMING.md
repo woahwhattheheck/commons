@@ -109,3 +109,7 @@ with Path("retry-input.jsonl").open("w", encoding="utf-8") as output:
 
 New consumer, tests and benchmark: Apache-2.0 under the repository license.
 Original source, loader and evidence retain their existing notices and provenance.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

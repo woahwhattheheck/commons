@@ -83,3 +83,7 @@ Focused test Git blob: `1c0dcafd3936dd675ce710a376453922465742ed`.
 Focused test SHA-256: `0a8ba0e8cdf946a6792e94ca68f8cd6a414e955ae138d88c637cbf1d6852ae78`.
 
 The production delta is one helper plus its call in `SelectedActionHistory.observe`. Existing controller, solver, scenario, market, history, fill-ledger, and policy-default behavior is unchanged outside the refined prior-quantity intervals. The canonical release is not rebuilt by this delivery; the single release builder retains that responsibility.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

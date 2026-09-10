@@ -62,3 +62,7 @@ The complete terminal-window probe's maximum measured policy call was
 and cold-start allowance must come from its separate full-game benchmark.
 Official Apache-2.0 attribution is preserved under `reference/engine/LICENSE`;
 the existing evaluator's retained license files remain under `reference/evaluator/`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

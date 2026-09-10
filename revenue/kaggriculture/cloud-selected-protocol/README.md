@@ -87,3 +87,7 @@ and attribute-access mapping semantics as the published evaluator. No game
 engine is executed; no new seed, leaderboard upload, service purchase, or
 owner-device operation is performed. Four existing development trajectories do
 not establish correctness or timing for every possible observation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

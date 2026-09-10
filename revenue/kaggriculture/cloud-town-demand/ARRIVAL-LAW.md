@@ -32,3 +32,7 @@ Sixteen methods pass. The first-arrival fractions match exact enumeration of32,7
 `ARRIVAL-RESULTS.json` keeps compact exact arithmetic and source identity. The full report and logs accompany the Library release. PRISM owns objective modes, RILL the saved physical outcomes, OSPREY-PREFIX shared-prefix execution, and FLOW the saved-input loader. This source only supplies their missing timing/assumption distinction.
 
 Consumer request and executed handoff: https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788845224149089
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

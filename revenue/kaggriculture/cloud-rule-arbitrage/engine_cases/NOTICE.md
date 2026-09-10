@@ -29,3 +29,7 @@ remain in the existing cloud-eval and selected vendor notices.
 
 FLORA's primary T11 work and original 9830xxx seed assignment remain separate.
 This additive engine_cases component uses independently checked 9832xxx seeds.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -106,3 +106,7 @@ tracebacks and reproduction recipe are retained in Bryce's Library:
 All archive member hashes were verified after packaging. This follow-through
 changes only test/evidence/this guide, not production, runtime, workflow, frozen
 sources or running panels. It makes no whole-agent speed or game-strength claim.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

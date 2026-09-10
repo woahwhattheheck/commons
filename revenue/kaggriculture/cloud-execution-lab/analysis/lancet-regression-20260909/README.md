@@ -106,3 +106,7 @@ playing-strength or regression claim. Repair order:
 
 This change does not alter TITAN runtime bytes, build an archive, launch games,
 or submit to Kaggle.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

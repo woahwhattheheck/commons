@@ -75,3 +75,7 @@ PY
 Full source, patches, logs, original manifests and all four new action traces are also saved in the owner's Library as `titan_admission_integrated_followthrough_2026-09-07.zip`, 105,009 bytes, SHA256 `a545d0127b1a644a50e68e761eff3b4c8980e82a52deace30110b22afe2351ca`. Library backing file: `file_00000000e62481f5964da9ec10b275a1`.
 
 The original `SOURCE.json`, `RESULTS.json`, `VALIDATION.log` and reached-case archive deliberately remain the original frozen-SELL delivery's records. They do not identify this patched runtime. Use the new report for the exact follow-through hashes. Current scope supplies a compatible optional consumer and a runnable actual-parent evaluation path; natural admission gains and general nonterminal optimization remain unestablished.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

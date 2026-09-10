@@ -77,3 +77,7 @@ The canonical TITAN runtime/archive and all historical game results are untouche
 Full original/final logs, baseline witness and exact patch are retained in the
 separate TRIAD run-state evidence delivery. Hosted checks, when available, remain
 separate from these local tests; no whole-repository CI result is implied.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

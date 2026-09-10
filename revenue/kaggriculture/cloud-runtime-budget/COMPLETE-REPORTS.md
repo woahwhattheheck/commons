@@ -70,3 +70,7 @@ https://chatgpt.com/c/6a9f415f-5564-83ea-aae7-1e6b9ea28748
 Run `python -B test_complete_reports.py` beside the repaired profiler. The portable
 bundle's README and RUN_CHECKS.py provide individual bounded groups and preserved
 before/after logs. Existing historical measurements retain their original sources.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

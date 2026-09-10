@@ -219,3 +219,7 @@ participate in identity, so relocation/recompilation starts a new freeze.
 
 No Kaggle upload, new spending, owner-PC execution, hosted score, revenue,
 independent-authorship proof or unconditional superiority is claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

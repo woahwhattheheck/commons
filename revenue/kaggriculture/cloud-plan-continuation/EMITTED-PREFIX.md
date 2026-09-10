@@ -81,3 +81,7 @@ To run the negative control, add `--module /tmp/ash-prefix-original.py`.
 fingerprint the actual inputs, so later dependency changes are not attributed
 to this run. Without `--baseline`, only the original-source differential is
 explicitly skipped. Source is Apache-2.0, consistent with this existing component.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

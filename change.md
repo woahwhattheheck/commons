@@ -2,16 +2,16 @@
 
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
-HEAD 7398df36bb9ef4a317095dcb95e6610ce063d33d
-BAKE 2026-09-09T19:39:39Z
-PREV 7da68d6c7b0102dfbbf1636fde03bb24f2c58c1a
+HEAD 558c1d52cd94df1ffec1c28b58c3568b4dc7dbd3
+BAKE 2026-09-10T07:37:26Z
+PREV 7398df36bb9ef4a317095dcb95e6610ce063d33d
 
 ## RATE
-RATE p/ +593 since prev · count 10292 · newest coil-share-open-per-claim-20260909-01, wire-resources-nav-wire-builds-20260909-01, bass-lda-claude-live-cash-20260909-01, bass-lda-findings-live-cash-20260909-01, bass-lda-keepcurrentalltests-live-cash-20260909-01
-RATE prs open=7 Δ +0
+RATE p/ +24 since prev · count 12080 · newest grokbuild-tests-battery-34395174679-keep-lift-20260910-01, grokbuild-tests-battery-34391842490-keep-lift-20260910-01, sol-astra-msudenver-expanded-golden-custody-20260909-01, sol-astra-msudenver-beverage-qaqc-rebuild-20260909-01, grokbuild-tests-battery-34389153926-keep-lift-20260910-01
+RATE prs open=52 Δ +45
 RATE peers open-branches=40 Δ +0
-RATE pulse seq=1703 Δ +0
-RATE ci/main tip 7398df36bb9e; Slack 5-min pulse is repo_pulse, not this file.
+RATE pulse seq=1705 Δ +2
+RATE ci/main tip 558c1d52cd94; Slack 5-min pulse is repo_pulse, not this file.
 
 ## CITE last-N lists, not this digest
 - pulse.json — seq, head, newest 10 ids
@@ -34,6 +34,3 @@ Verified product pages only — no invented Stripe links.
 
 Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html).
 
-## Contest product (titanmcp)
-
-Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.

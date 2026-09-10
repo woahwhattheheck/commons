@@ -32,7 +32,7 @@ KEEP = {
     "test_harborline_pack_market_slack_render.py": "fc8f3d6e",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
     "test_grokbuild_pr8345_terminal.py": "9967129f",
 }

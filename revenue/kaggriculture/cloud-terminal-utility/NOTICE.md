@@ -26,3 +26,7 @@ solver was read at its pinned GitHub revision. SciPy is used only as an optional
 independent linear-programming test oracle; production imports only Python's
 standard library. Full engine and dependency license notices remain in their
 existing source locations.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

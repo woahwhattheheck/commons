@@ -115,3 +115,7 @@ past observations, not evidence that any scenario hypothesis or new policy is
 accurate. The original game results retain PRISM's authorship and source pins.
 Detailed data stay in the account Library; Git contains only the extractor,
 boundary tests, verifier, and this reuse note plus aggregate execution metadata.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

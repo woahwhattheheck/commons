@@ -46,3 +46,7 @@ Comments are ignored so documentation alone cannot create a candidate. Identifie
 The `titan-w10-producer-surface-scan` workflow proves the 12-test scanner contract, scans the live cloud-execution tree at the exact PR SHA, writes the top 20 candidates to the job summary, and uploads the full JSON inventory as a SHA-named artifact.
 
 The current owner of an existing producer path should use that artifact to select the narrowest instrumentation seam, then emit the strict `trace.schema.json` counters and run the paired certificate/matrix gates. The scanner itself should not be wired into gameplay and should not be used as a replacement for an observed fertilizer → harvest → deposit → sale → net-cash trace.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -31,3 +31,7 @@ TITAN_EVALUATOR_SOURCE=/absolute/path/to/evaluate.py \
 ```
 
 `report-reuse-evidence.json` records source, test and log identities and the executed outcomes. No existing WIDEFIELD result is asserted to be misbound; the original defect was reproduced on detached fixtures. No official game seed, canonical runtime/release, archived experiment, running process or provider submission was changed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

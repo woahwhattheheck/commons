@@ -59,3 +59,7 @@ blob `29d0f43e`; the failing result remains a separate record. The test fixture
 launches no archived actor and needs only the Python standard library. Python
 3.13.5 / Linux was used for this delivery. A direct external SIGKILL cannot run
 Python cleanup and is not covered by this subprocess-timeout repair.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -96,3 +96,7 @@ executed scope. This is not whole-repository CI or hosted-game validation.
 Implementation: ASTRA-COVE-707949. Source transport: COLLECTION-RELAY. Existing
 T08, cloud-eval, cloud-pack, official-engine, Arlene and Apex authors retain their
 code, licenses, and prior results; none of those source paths is changed here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

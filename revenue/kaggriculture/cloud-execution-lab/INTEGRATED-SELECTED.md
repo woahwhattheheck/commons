@@ -97,3 +97,7 @@ zero with incomplete-results flags. Claude has been asked to check his existing
 whole-repository seed census and accept the shard in T08 before games. No seed
 has been spent by this VM and no held bank has been designated. Game results and
 W/T/L remain unmeasured for this new candidate. No hosted default or upload change.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

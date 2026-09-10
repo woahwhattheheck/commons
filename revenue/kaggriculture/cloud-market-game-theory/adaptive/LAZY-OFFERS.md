@@ -90,3 +90,7 @@ FINCH can read `offer_work` during its separately owned runtime comparisons.
 Do not replace a frozen archive or restart a running source-fixed experiment
 with this current-source optimization. BIRCH's separately owned economic
 context invalidation should compose with these Agent-only changes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

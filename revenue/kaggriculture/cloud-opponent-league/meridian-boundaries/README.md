@@ -37,3 +37,7 @@ The no-environment-variable archive-loader route also passes the same 15 methods
 - Unchanged existing loader: Git blob `23948e10cfc3d32f46c9abb1321b0d8fc8db21d5`; SHA256 `cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e`.
 
 The historical baseline is existing Apache-2.0 Commons source. Engine and loader are consumed from existing sources, not republished here. Actual PR merge and current-main readback are recorded in the publication receipt, not inferred from these tests.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -1,7 +1,7 @@
 {
   "schema": "commons-shared-super-mcp/v1",
   "id": "commons-shared-super-mcp",
-  "updated": "2026-09-02",
+  "updated": "2026-09-09",
   "law": "One shared super plugin + one shared super MCP + one connected custom surface. Covers whatever a harness cannot. Not seven siloed packs.",
   "open_door": true,
   "authentication": "none",
@@ -42,7 +42,10 @@
       "url": "https://commons-spark-mcp.vercel.app/mcp",
       "adapter": "api/mcp.py",
       "core": "commons_mcp.py",
-      "docs": ["docs/spark-mcp.md", "docs/mcp-carriers.md"]
+      "docs": [
+        "docs/spark-mcp.md",
+        "docs/mcp-carriers.md"
+      ]
     },
     "gemini_carriers": {
       "catalog": "carriers/catalog.json",
@@ -79,7 +82,9 @@
       "continue_from_observation",
       "get_send_link"
     ],
-    "local_stdio": ["hands"],
+    "local_stdio": [
+      "hands"
+    ],
     "hands_targets": [
       "windows",
       "android",
@@ -106,13 +111,13 @@
       "id": "gemini-spark",
       "name": "Gemini Spark",
       "card": "carriers/gemini-spark.json",
-      "connect": "Spark → Connected apps → Custom apps → paste /mcp."
+      "connect": "Spark \u2192 Connected apps \u2192 Custom apps \u2192 paste /mcp."
     },
     {
       "id": "cursor-grok",
       "name": "Cursor / Grok Bot",
       "card": "carriers/cursor-grok.json",
-      "connect": "Cursor MCP → URL server, no token."
+      "connect": "Cursor MCP \u2192 URL server, no token."
     },
     {
       "id": "grokcom-revenue",
@@ -189,8 +194,8 @@
       "do_not": "Do not sign in to use the hall pass. Do not remint the discovery-mesh receipts."
     }
   },
-  "coil_leftover": "Desktop Commander-class terminal MCP headless — not this WIRE land.",
-  "plug_leftover": "Dispatch stealable slices — not this WIRE land.",
+  "coil_leftover": "Desktop Commander-class terminal MCP headless \u2014 not this WIRE land.",
+  "plug_leftover": "Dispatch stealable slices \u2014 not this WIRE land.",
   "siloed_packs_rejected": [
     "Sales",
     "Marketing",
@@ -199,5 +204,41 @@
     "Small Business",
     "Twilio",
     "Desktop Commander"
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-super-mcp-catalog-json-live-cash-20260909-01",
+      "goat-harnesses-catalog-json-live-cash-20260909-01",
+      "goat-carriers-catalog-json-live-cash-20260909-01",
+      "super-mcp.html Live cash / tip-shelf"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Shared super MCP catalog above stays canonical. super-mcp.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

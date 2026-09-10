@@ -30,3 +30,7 @@ Raw panels: `results/development-candidate.json` and
 `results/development-control.json`. Both include pinned engine/evaluator hashes,
 full scores, traces, process isolation, resource measurements, and successful
 first-game replay checks.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

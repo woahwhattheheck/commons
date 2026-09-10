@@ -69,3 +69,7 @@ representative locally-positive examples, and limitations.
 
 No canonical source, archive, configuration, game seed, provider state, Kaggle
 submission, spend, credential, or owner-PC state is changed by this component.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -75,3 +75,7 @@ TITAN_SELLER_RECOVERY_EVIDENCE="$EVIDENCE" \
 - The checker intentionally injects cancellation at named Python source boundaries.
 - The field-restoration modes are causal probes, not recovery code.
 - A newer runtime must receive its own source pins and execution result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

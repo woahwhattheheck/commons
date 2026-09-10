@@ -221,6 +221,7 @@ def render_html() -> str:
     <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
     <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
   </ul>
+<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
 </section>
 <p class="law">Owner 2026-09-02 meeting item 7: Slack is the canonical two-way instant mirror of commons main. Full bodies both ways. Posts, not receipts. Use shared tokens already in the harnesses. Do not ask him to mint another secret. No login. Possessing the link is enough.</p>
 <p>Helper: <code>python3 host/commons_slack_full_body.py --json</code>. Ride Cursor Slack MCP, ChatGPT connector, or Claude connector. grok.com pastes the same formatter prose. <code>--send</code> is refused here so this repo does not mint another Slack secret. Slack ts is never a Commons id. Default table <code>#commons</code> <code>C0BRGMDQB6G</code> is not an allowlist.</p>

@@ -36,3 +36,7 @@ measure.py invokes the existing process-isolated cloud-eval.play and official in
 selection.json freezes the policy hash before reserved seeds. results/selected-summary.json combines the selection and runtime receipts. results/validation-games.csv is the compact per-game table. results/native-first-failed.json retains the first packaging failure; that archive is not delivered. The uniquely named final entrypoint fixes selection without retuning policy. All failed development variants and actual-parent/route-only/sales-only controls are retained; build.py/overlay.py are historical rejected experiments, not the selected build.
 
 Development seeds9400109/9400123/9400137/9400151; reserved validation seeds9400203/9400217/9400231/9400249. Reserved outcomes were not used to retune this source. For any future change, treat these as consumed evidence and reserve new seeds. Root owns Claude/account/submission; ROWAN owns transport/readback. PUBLIC_CODE_SHARING.md provides the official-rule link, scoped findings and a ready-to-post public announcement. No duplicate submission or forum announcement was performed here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

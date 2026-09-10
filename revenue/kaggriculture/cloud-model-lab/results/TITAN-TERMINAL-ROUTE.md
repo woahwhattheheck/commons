@@ -62,3 +62,7 @@ panel and not a new registry.
 Own/rival cash on the flips is small in both directions: the favourable ones run
 +42/−50 and +91/−106 own/rival, the adverse ones −8/−5. These are ties being
 broken by tens of coins, not a production or liquidation gain.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

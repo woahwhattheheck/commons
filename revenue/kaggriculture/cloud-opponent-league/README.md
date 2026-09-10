@@ -81,3 +81,7 @@ A loss, invalid game or paired cash/margin regression produces a `loss-traces/` 
 The regression module covers market-only transformations, observation immutability, duplicate-shop demand, day/hour and full-shed exceptions, fresh actor statistics, exact pairing, separate cash and margin accounting, invalid/empty/nonfinite rejection, disjoint seed panels, immutable runtime inventories, tied-bank cash preservation, and trace ordering. These unit checks are distinct from complete 720-step games.
 
 The release operation announced freeze `9bd9e4bd977d7c36de9cc2fd06d0859f7f8c7c3fa4871544732c9f294b717653`. A freeze identifier alone is not evidence that either panel finished. Consult the corresponding completed result files and final receipt before claiming measured outcomes. This README deliberately does not infer scores from a queued, started or partially recorded execution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

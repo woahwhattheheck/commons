@@ -37,7 +37,7 @@ KEEP = {
     "api/mcp.py": "393da756",
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

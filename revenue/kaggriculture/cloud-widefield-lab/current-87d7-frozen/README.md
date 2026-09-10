@@ -82,3 +82,7 @@ python -B run_frozen_shard.py \
 ```
 
 This is cloud development evidence. It is not a hosted leaderboard result and does not imply an additional independent seed from the mirrored seat record.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

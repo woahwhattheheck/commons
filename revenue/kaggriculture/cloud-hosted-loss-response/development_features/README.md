@@ -73,3 +73,7 @@ projection, held-file exclusion, and preservation of unknown full-prefix
 status. The report/observation fixtures in the parser tests are explicitly
 synthetic; no synthetic fixture is shipped as a game or training observation.
 No new games or held-panel data were used for this component.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -71,3 +71,7 @@ T12 `flow.py`: Commons commit `4d7fd6d4d4e1f71941f7fe76b8e10274f1bfc1a6`, Git bl
 Official engine: Kaggle/kaggle-environments commit `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`, `kaggle_environments/envs/kaggriculture/kaggriculture.py`, blob `3c202c7ee921da239356789e266b694635103fc4`, Apache-2.0. Existing artifact bytes were used. Future test receipts name these source commits only when the actual corresponding input blobs match; otherwise they retain the real hashes and null commit attribution.
 
 Related consumer proposal: T12 thread `1788809875.974229`, addition `1788814018.982219`; claim `1788818077.153819`. T12 flow/scorer, T15 solver/selector, RILL feasibility, ASH continuation, and SORREL composition remain separate owned components. No Kaggle write, owner-PC computation, new transport workflow, or spend was introduced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

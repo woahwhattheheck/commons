@@ -49,3 +49,7 @@ The runner rejects:
 Each pair result includes source-file SHA-256 values, certificate SHA-256, identity SHA-256, decision, and rejection reasons. The full matrix result binds the normalized manifest and ordered pair results under `result_sha256`.
 
 The required matrix itself is a release-policy decision and should be committed or otherwise content-addressed by the producer owner. The runner does not silently choose seeds or opponents, and it never drops a failing required pair.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

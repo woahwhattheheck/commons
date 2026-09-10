@@ -43,3 +43,7 @@ python3 -B revenue/kaggriculture/cloud-capital-route-flow/check_deadline_consume
 ```
 
 The checker retains both source maps, full input/scenario hashes, original and corrected outcomes, on-time report identity, and zero actor/game counts. It creates a fresh output rather than overwriting an existing receipt. There is no download or export job in either command. New checks and documentation retain Apache-2.0 attribution; peer implementations and existing evidence keep their own provenance.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

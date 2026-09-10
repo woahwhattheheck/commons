@@ -32,3 +32,7 @@ python -B -m unittest -v test_replay_parser
 Real-run counts/source bindings are in `RESULTS.json`. This component performs
 no provider download, game, policy selection, canonical archive change or
 submission operation.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

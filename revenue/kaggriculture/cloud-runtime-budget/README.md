@@ -40,3 +40,7 @@ Two initial full-stream instrumentation attempts were interrupted by the surroun
 T08 can run this exact command over TRACE's eventual verified development prefix, optionally carrying recorded candidate actions. Observation reconstruction and actor-state rebuilding are separate: the profiler executes the entire prefix to rebuild the supplied actor and checks expected actions where provided. It does not invent a missing checkpoint. ECON-STRESS's accepted game/deadline evidence remains its own result and was not rerun.
 
 The one-second threshold is descriptive, not a hosted timeout verdict: official overage and execution-environment rules remain separate. No T14 continuation-scorer composition, new game, held seed, Kaggle request, provider write, owner-PC work, new workflow or source export is part of this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

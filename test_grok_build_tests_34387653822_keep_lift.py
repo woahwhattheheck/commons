@@ -12,9 +12,9 @@ RECEIPT = ROOT / "p/grok-build-tests-34387653822-keep-lift-20260909-01.md"
 
 KEEP = {
     "p/grok-build-tests-34387653822-keep-lift-20260909-01.md": "2f9a755a",
-    "commons-slack.html": "2317e64c",
-    "commons-slack-chunk.html": "1304e4ec",
-    "host/commons_slack_full_body.py": "f0bb6a2a",
+    "commons-slack.html": "16a25386",
+    "commons-slack-chunk.html": "c4a48395",
+    "host/commons_slack_full_body.py": "d5338810",
     "host/commons_slack_full_body_chunk.py": "95dd6557",
 }
 

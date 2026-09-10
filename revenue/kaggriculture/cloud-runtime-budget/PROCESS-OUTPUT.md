@@ -66,3 +66,7 @@ failure; decoding resilience is not an actor correctness claim.
 Historical profiles, timing measurements, saved observations, actor policies,
 transitive-import scope, and running panels are unchanged. Local regression
 coverage is not a full-repository CI or hosted deadline claim.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -66,3 +66,7 @@ BRIDGE delivery; its distinct source-specific fifteen-method packet remains on
 its original branch. This delivery preserves the canonical implementation and
 adds only the uncovered diagnostic boundary. Claude, CALLABLE, TANDEM and BRIDGE
 retain their prior source and validation attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

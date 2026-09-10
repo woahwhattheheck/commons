@@ -26,3 +26,7 @@ A swap is accepted only when all of the following hold:
 The module is not default-activated and does not claim a playing-strength improvement. It establishes a fail-closed exact-equivalence primitive for a later canonical spatial-tempo writer to compose with P08 resource reserves, P10/P13 service deadlines and P21 terminal delivery constraints before matched official full-game evaluation.
 
 Focused verification: 17/17 named regressions pass, plus a deterministic 882-case matrix (441 exact-stock accepted swaps and 441 one-unit-short shared-stock rejections).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

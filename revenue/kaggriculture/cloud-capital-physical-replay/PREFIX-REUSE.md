@@ -97,3 +97,7 @@ from its ordered own-input stream; it never creates a new actor at226. Original
 RILL report/economic conclusions, DATE/FLOW/PRISM work, selected policy, existing
 game seeds and canonical submission remain unchanged. New files retain this
 directory's Apache-2.0 attribution; dependency licenses stay with the input pack.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

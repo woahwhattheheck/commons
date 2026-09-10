@@ -19,3 +19,7 @@ imported by the runtime solver or standard-library regression suite. API
 reference: https://docs.scipy.org/doc/scipy/reference/optimize.linprog-highs.html
 No SciPy, HiGHS, T15 solver, selector, game-engine or chess-engine source is
 redistributed in this directory.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

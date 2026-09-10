@@ -18,7 +18,7 @@ SKILL = ROOT / ".agents/skills/commerce-agents/SKILL.md"
 KEEP = {
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     ".agents/skills/autogtm/SKILL.md": "9c944e77",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
@@ -26,7 +26,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

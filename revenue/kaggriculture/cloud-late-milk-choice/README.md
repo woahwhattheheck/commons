@@ -31,3 +31,7 @@ python -B "$D/panel.py" --evaluator "$B/cloud-eval/evaluate.py" --loader "$B/202
 Compile the retained Apex source first with its original build command (in the archive guide). A reproduction consumes the same development seeds and is not new validation. `panel.py` delegates the existing evaluator and interpreter; `diagnose.py` replays existing actions without agent calls, checks every full transition and closes both players' cash bridges. The577 observation alone is not a complete actor checkpoint. Preserve the full original prefix when restoring a stateful actor.
 
 Original engine: Kaggle/kaggle-environments@28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c. Frozen SELL SHA25632c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9. Runtime frozen before the panel at641303552dcaac94bf5ddc9f92cce0ae2c1d20a1. No game source changed between cells.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

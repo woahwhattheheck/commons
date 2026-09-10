@@ -25,3 +25,7 @@ controls and all original evidence remain unchanged.
 Hosted checks are recorded per commit in the pull request, separately from the
 original parser and continuity measurements. This usage-note clarification
 changes no executable source or workflow configuration.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
