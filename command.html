@@ -225,6 +225,46 @@ function ago(seconds){
   return Math.round(s/86400) + "d ago";
 }
 
+function liveFromHeartbeat(heartbeat){
+  const ms = Date.parse(known(heartbeat) || "");
+  if(!Number.isFinite(ms)) return { liveness:"UNKNOWN", heartbeat_age_s:"UNKNOWN" };
+  const age = Math.max(0, Math.floor((Date.now() - ms) / 1000));
+  const raw = (state.seats && state.seats.liveness_bands_s) || {};
+  let live = Number(raw.LIVE || 900);
+  let quiet = Number(raw.QUIET || 3600);
+  let stale = Number(raw.STALE || 86400);
+  if(!Number.isFinite(live) || !Number.isFinite(quiet) || !Number.isFinite(stale) ||
+      live <= 0 || quiet < live || stale < quiet){
+    live = 900; quiet = 3600; stale = 86400;
+  }
+  const liveness = age <= live ? "LIVE" :
+    age <= quiet ? "QUIET" : age <= stale ? "STALE" : "COLD";
+  return { liveness, heartbeat_age_s:age };
+}
+
+function currentSeatSnapshot(){
+  const seats = [];
+  const roster = [];
+  const counts = {};
+  if(!state.seats) return { seats, roster, counts };
+  for(const original of (state.seats.seats || [])){
+    const d = original.declared || {};
+    const live = liveFromHeartbeat(d.heartbeat);
+    const seat = Object.assign({}, original, {
+      derived:Object.assign({}, original.derived || {}, live)
+    });
+    seats.push(seat);
+    counts[live.liveness] = (counts[live.liveness] || 0) + 1;
+  }
+  for(const original of (state.seats.roster || [])){
+    const live = liveFromHeartbeat(original.heartbeat);
+    const row = Object.assign({}, original, live);
+    roster.push(row);
+    counts[live.liveness] = (counts[live.liveness] || 0) + 1;
+  }
+  return { seats, roster, counts };
+}
+
 function renderBeacon(){
   const el = document.getElementById("beacon");
   const line = document.getElementById("headline");
@@ -235,8 +275,7 @@ function renderBeacon(){
   }
   el.className = "pill LIVE";
   el.textContent = "seq " + state.pulse.seq;
-  const seats = state.seats || {};
-  const counts = seats.by_liveness || {};
+  const counts = state.seats ? currentSeatSnapshot().counts : {};
   const events = state.feed ? state.feed.count : "unread";
   line.textContent = state.pulse.ts + " · head " +
     String(state.pulse.head || "").slice(0,8) + " · " +
@@ -273,7 +312,7 @@ function renderBoard(){
   note.textContent = "Cursor " + state.feed.complete_since +
     " is the oldest event here. A session behind that reads feed/window.json." +
     (state.feed.undated && state.feed.undated.length
-      ? " " + state.feed.undated.length + " record(s) carry no timestamp and are listed in the shard."
+      ? " " + state.feed.undated.length + " unordered record(s) require a recent.json read."
       : "");
 }
 
@@ -289,14 +328,15 @@ function renderSeats(){
     note.textContent = "seats.json could not be read.";
     return;
   }
+  const current = currentSeatSnapshot();
   const t = state.seats.totals || {};
   total.textContent = (t.seats || 0) + " known";
-  for(const [band, n] of Object.entries(state.seats.by_liveness || {})){
+  for(const [band, n] of Object.entries(current.counts)){
     const s = document.createElement("span");
     s.className = "pill " + band; s.textContent = band + " " + n;
     counts.appendChild(s);
   }
-  for(const seat of (state.seats.seats || [])){
+  for(const seat of current.seats){
     const d = seat.declared || {}, v = seat.derived || {};
     const ctx = known(v.context_pressure_pct);
     const li = document.createElement("li");
@@ -323,17 +363,17 @@ function renderSeats(){
     li.innerHTML = html;
     list.appendChild(li);
   }
-  const roster = state.seats.roster || [];
+  const roster = current.roster;
   const awake = roster.filter(r => r.liveness === "LIVE" || r.liveness === "QUIET");
-  note.textContent = (state.seats.seats || []).length + " seat(s) have declared "
-    + "themselves. " + roster.length + " more name(s) have spoken without declaring"
+  note.textContent = current.seats.length + " seat(s) have declared themselves. "
+    + roster.length + " more name(s) have spoken without declaring"
     + (awake.length ? ", " + awake.length + " of them awake" : "")
-    + ". A missing field reads UNKNOWN, never zero.";
+    + ". Liveness is recomputed from heartbeat in this browser; missing fields read UNKNOWN.";
 
   const names = new Set(["TABLE"]);
-  for(const s of (state.seats.seats || [])) names.add(s.seat);
+  for(const s of current.seats) names.add(s.seat);
   for(const r of roster) if(r.liveness === "LIVE" || r.liveness === "QUIET") names.add(r.seat);
-  const current = picker.value;
+  const pickerCurrent = picker.value;
   picker.innerHTML = "";
   for(const n of names){
     const opt = document.createElement("option");
@@ -341,7 +381,7 @@ function renderSeats(){
     opt.textContent = n === "TABLE" ? "TABLE — everyone" : n;
     picker.appendChild(opt);
   }
-  picker.value = names.has(current) ? current : "TABLE";
+  picker.value = names.has(pickerCurrent) ? pickerCurrent : "TABLE";
   preview();
 }
 
