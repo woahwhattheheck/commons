@@ -1,0 +1,68 @@
+name: titan-v3-future-atomic-projection-sol-forge
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - sol-forge/titan-v3-future-atomic-plant-projection-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-future-atomic-plant-projection-sol-forge/**"
+      - ".github/workflows/titan-v3-future-atomic-projection-sol-forge.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-future-atomic-plant-projection-sol-forge/**"
+      - ".github/workflows/titan-v3-future-atomic-projection-sol-forge.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-repair-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/workflows/titan-v3-future-atomic-projection-sol-forge.yml
+            revenue/kaggriculture/cloud-execution-lab/scheduler.py
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-future-atomic-plant-projection-sol-forge
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Predecessor-killing contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-future-atomic-plant-projection-sol-forge/test_materialize.py
+      - name: Materialize exact candidate and receipt
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-future-atomic"
+          mkdir -p "$out"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-future-atomic-plant-projection-sol-forge/materialize.py \
+              --output "$out/scheduler.py" \
+              --receipt "$out/RECEIPT.json" \
+              | tee "$out/run.log"
+          python -m py_compile "$out/scheduler.py"
+          git diff --exit-code -- \
+            revenue/kaggriculture/cloud-execution-lab/scheduler.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+          sha256sum "$out/scheduler.py" "$out/RECEIPT.json" "$out/run.log" \
+            > "$out/SHA256SUMS"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-v3-future-atomic-projection-sol-forge
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/titan-future-atomic/scheduler.py
+            ${{ runner.temp }}/titan-future-atomic/RECEIPT.json
+            ${{ runner.temp }}/titan-future-atomic/run.log
+            ${{ runner.temp }}/titan-future-atomic/SHA256SUMS
