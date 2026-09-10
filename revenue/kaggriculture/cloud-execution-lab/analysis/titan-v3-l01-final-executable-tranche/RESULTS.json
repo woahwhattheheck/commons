@@ -1,0 +1,52 @@
+{
+  "schema": "titan.v3.l01-final-executable-results.v1",
+  "operation": "TITAN-V3-L01-FINAL-EXECUTABLE-TRANCHE-20260910-01",
+  "verdict": "SOURCE_REPAIR_READY_FOR_ONE_TREE_CONSUMPTION",
+  "focused_contracts": {
+    "command": "python -m unittest -v test_carrier.py",
+    "passed": 22,
+    "failed": 0,
+    "errors": 0
+  },
+  "patch_probe": {
+    "git_apply_check": "PASS",
+    "postimages_exact": 5,
+    "python_compile": "PASS"
+  },
+  "predecessor_killer": {
+    "episode_steps": 720,
+    "input_step": 718,
+    "predecessor_changed": false,
+    "candidate_changed": true,
+    "candidate_market": [
+      ["SELL", "WHEAT", 57],
+      ["SELL", "CARROT", 32],
+      ["SELL", "EGG", 2],
+      ["SELL", "MILK", 5]
+    ],
+    "post_action_step": 719,
+    "candidate_post_action_changed": false
+  },
+  "replay_boundary": {
+    "episode_id": 107213024,
+    "source_gzip_sha256": "1494f55bad971d957a29f398a35a9ef51ad5c431288b989a3f0b1fb032d3e8c6",
+    "state_count": 720,
+    "action_count": 719,
+    "input_observation_step": 718,
+    "produced_observation_step": 719,
+    "cash_before": 117176,
+    "cash_after": 122100,
+    "cash_delta": 4924,
+    "same_turn_drop_equals_market_sales": true
+  },
+  "not_claimed": [
+    "gameplay strength",
+    "hosted panel",
+    "promotion",
+    "integrated archive",
+    "release pointer",
+    "provider state",
+    "Kaggle state",
+    "submission state"
+  ]
+}

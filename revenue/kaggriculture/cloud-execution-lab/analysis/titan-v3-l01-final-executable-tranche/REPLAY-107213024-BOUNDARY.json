@@ -1,0 +1,171 @@
+{
+  "action_count": 719,
+  "actor_inventories_before": [
+    {
+      "CARROT": 2,
+      "WHEAT": 6
+    },
+    {
+      "CARROT": 6
+    },
+    {
+      "CARROT": 6
+    },
+    {},
+    {},
+    {
+      "CARROT": 6,
+      "WHEAT": 11
+    },
+    {
+      "CARROT": 8
+    },
+    {},
+    {
+      "CARROT": 8,
+      "FERTILIZER": 1,
+      "WOOL": 4
+    },
+    {},
+    {
+      "CARROT": 10
+    },
+    {},
+    {},
+    {
+      "CARROT": 6,
+      "EGG": 1,
+      "FERTILIZER": 1,
+      "WHEAT": 8
+    },
+    {
+      "CARROT": 8,
+      "WHEAT": 6
+    }
+  ],
+  "cash_after": 122100,
+  "cash_before": 117176,
+  "cash_delta": 4924,
+  "drop_actor_indices": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    8,
+    10,
+    13,
+    14
+  ],
+  "dropped_inventory": {
+    "CARROT": 60,
+    "EGG": 1,
+    "FERTILIZER": 2,
+    "WHEAT": 31,
+    "WOOL": 4
+  },
+  "episode_id": 107213024,
+  "final_action": {
+    "farmer": [
+      "DROP"
+    ],
+    "hands": [
+      [
+        "DROP"
+      ],
+      [
+        "DROP"
+      ],
+      [
+        "PASS"
+      ],
+      [
+        "PASS"
+      ],
+      [
+        "DROP"
+      ],
+      [
+        "DROP"
+      ],
+      [
+        "PASS"
+      ],
+      [
+        "DROP"
+      ],
+      [
+        "PASS"
+      ],
+      [
+        "DROP"
+      ],
+      [
+        "PASS"
+      ],
+      [
+        "PASS"
+      ],
+      [
+        "DROP"
+      ],
+      [
+        "DROP"
+      ]
+    ],
+    "market": [
+      [
+        "SELL",
+        "CARROT",
+        60
+      ],
+      [
+        "SELL",
+        "WHEAT",
+        31
+      ],
+      [
+        "SELL",
+        "WOOL",
+        4
+      ],
+      [
+        "SELL",
+        "EGG",
+        1
+      ],
+      [
+        "SELL",
+        "FERTILIZER",
+        2
+      ]
+    ]
+  },
+  "input_day": 29,
+  "input_hour": 22,
+  "input_observation_step": 718,
+  "input_state_index": 718,
+  "market_sales": {
+    "CARROT": 60,
+    "EGG": 1,
+    "FERTILIZER": 2,
+    "WHEAT": 31,
+    "WOOL": 4
+  },
+  "output_observation_step": 719,
+  "output_state_index": 719,
+  "replay_uuid": "ba4a6ff0-ac7d-11f1-ba27-0242ac130203",
+  "schema": "titan.v3.l01-final-executable-replay-receipt.v1",
+  "seat": 0,
+  "source_file": "episode_107213024.json.gz",
+  "source_gzip_bytes": 627337,
+  "source_gzip_sha256": "1494f55bad971d957a29f398a35a9ef51ad5c431288b989a3f0b1fb032d3e8c6",
+  "source_slack_file_id": "F0C10AT69PU",
+  "state_count": 720,
+  "status_after": "DONE",
+  "status_before": "ACTIVE",
+  "team_names": [
+    "Otter Vibe",
+    "Terry Luo"
+  ]
+}

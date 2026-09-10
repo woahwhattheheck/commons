@@ -1,0 +1,40 @@
+{
+  "schema": "titan.v3.l01-final-executable-carrier-pin.v1",
+  "operation": "TITAN-V3-L01-FINAL-EXECUTABLE-TRANCHE-20260910-01",
+  "scope": "exact-source additive repair/evidence carrier; no canonical or release mutation",
+  "one_tree_handoff": {
+    "slack_file_id": "F0C0JPCAAQP",
+    "filename": "v3_candidates_657b3d9c.tar.gz",
+    "sha256": "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728",
+    "bytes": 27500
+  },
+  "replay": {
+    "episode_id": 107213024,
+    "slack_file_id": "F0C10AT69PU",
+    "filename": "episode_107213024.json.gz",
+    "sha256": "1494f55bad971d957a29f398a35a9ef51ad5c431288b989a3f0b1fb032d3e8c6",
+    "bytes": 627337,
+    "receipt_sha256": "9453e0e4ec4a32fee343568a707edd8796257f97e505c48902ef685b1f86fc5f"
+  },
+  "preimages": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py": "8e1093429a1bb463e2b82490963b43d9c9a4fcbd16f9d1b8d02fd75434f84436",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md": "4cad9d600db9612c6c6694342968937a04db858fbfee75f0fb7eb17199ecd909",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json": "0c8aa0df9304f0d08e71ba8f8b48d1fe33072371b2d24ddaf8e152a6769a9b31"
+  },
+  "postimages": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py": "17e41a6a19a743257d9c7ae993a07f36a93ea08bdd76b13ab17c818fef093f88",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py": "8b721a5960b6d18840a1394b0c161bc865f15f37a3001aa67637f290fb750eb8",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py": "ec251551e18635acc36bc174eb1432a99304203b15d71c598981d074d94b8d2f",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md": "1e01149cfab894ef1b2b912fdabee93a463b11d03946fb8bf0e77ce9aabf0058",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json": "85c556d19d74cf42e438dfb14178de71b31c30408cfd4b43f60bc1478a2d48d7"
+  },
+  "standalone": {
+    "predecessor_l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+    "candidate_l01_mechanics.py": "17e41a6a19a743257d9c7ae993a07f36a93ea08bdd76b13ab17c818fef093f88",
+    "extract_replay_boundary.py": "3ce45eea592d70016ccfa6bedf6d79dd838356bc9dc938ea247209e6c87499c9",
+    "REPLAY-107213024-BOUNDARY.json": "9453e0e4ec4a32fee343568a707edd8796257f97e505c48902ef685b1f86fc5f",
+    "one-tree-l01-final-executable.patch": "25e89c0c056e417a69f675f0c0dd901c949ed7a043f5bbbdc5b493a0462e49c1"
+  }
+}
