@@ -49,8 +49,20 @@ jobs:
           set -euo pipefail
           CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v3-route-reference-echo-current-activation-sol-accrual
           OUT="$RUNNER_TEMP/titan-v3-route-reference-echo-current-activation"
-          bash "$CASE/run_current_panel.sh" "$OUT" 2>&1 \
-            | tee "$RUNNER_TEMP/titan-v3-route-reference-echo-current-activation.log"
+          bash "$CASE/run_current_panel.sh" "$OUT" 2>&1 | tee "$RUNNER_TEMP/titan-v3-route-reference-echo-current-activation.log"
+
+      - name: Bind normalization before every returned-action and score effect
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/v3-route-reference-echo-current-activation-sol-accrual
+          OUT="$RUNNER_TEMP/titan-v3-route-reference-echo-current-activation"
+          python -B "$CASE/causal_gate.py" --control "$OUT/control.json" --candidate "$OUT/candidate.json" --panel "$OUT/PANEL.json" --output "$OUT/CAUSAL-BOUND.json" --provenance "$OUT/CAUSAL-PROVENANCE.json" | tee "$OUT/CAUSAL-BOUND-STDOUT.json"
+          {
+            printf '\n## Normalization → returned action → score custody\n\n'
+            cat "$OUT/CAUSAL-BOUND-STDOUT.json"
+            printf '\n'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Retain complete and partial evidence
         if: always()
@@ -73,6 +85,9 @@ jobs:
           test -s "$OUT/COMPLETE"
           test -s "$OUT/PANEL.json"
           test -s "$OUT/PROVENANCE.json"
+          test -s "$OUT/CAUSAL-BOUND.json"
+          test -s "$OUT/CAUSAL-PROVENANCE.json"
+          test -s "$OUT/CAUSAL-BOUND-STDOUT.json"
           test "$(cat "$OUT/COMPLETE")" = "$EXPECTED_HEAD"
           git diff --exit-code -- .
           test -z "$(git status --porcelain)"
