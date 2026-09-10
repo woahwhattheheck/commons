@@ -13,8 +13,14 @@ from typing import Any
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
-if str(LAB) not in sys.path:
-    sys.path.insert(0, str(LAB))
+# Keep the evidence carrier authoritative over the lab-root compatibility
+# module. Running ``python witness.py`` sets HERE on sys.path initially, but a
+# blind LAB prepend would shadow this lane's candidate.py with LAB/candidate.py.
+for root in (LAB, HERE):
+    text = str(root.resolve(strict=True))
+    while text in sys.path:
+        sys.path.remove(text)
+    sys.path.insert(0, text)
 
 from decay_observer import (
     OPERATION,
@@ -23,6 +29,9 @@ from decay_observer import (
 )
 import candidate
 import scheduler
+
+if Path(candidate.__file__).resolve() != (HERE / "candidate.py").resolve(strict=True):
+    raise RuntimeError(f"wrong evidence candidate imported: {candidate.__file__}")
 
 
 def sha256(path: Path) -> str:

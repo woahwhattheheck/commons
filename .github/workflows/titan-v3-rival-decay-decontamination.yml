@@ -24,10 +24,18 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: "1"
       LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ env.EXPECTED_HEAD }}
           persist-credentials: false
+
+      - name: Bind exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
 
       - uses: actions/setup-python@v5
         with:
@@ -80,7 +88,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: titan-v3-rival-decay-${{ github.sha }}
+          name: titan-v3-rival-decay-${{ env.EXPECTED_HEAD }}
           path: |
             ${{ runner.temp }}/TESTS.txt
             ${{ runner.temp }}/WITNESS.json
