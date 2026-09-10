@@ -1,6 +1,7 @@
 """Pure helpers for exact-archive TITAN feature reachability and leave-one-out evidence."""
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import math
@@ -86,39 +87,119 @@ def validate_config(config: Any, factors: Sequence[str] = FACTORS, *, require_en
     return dict(config)
 
 
-def find_config_references(runtime: Path, factors: Sequence[str] = FACTORS) -> dict[str, list[dict[str, Any]]]:
-    """Find active-source config references without importing agent code.
+def _feature_receiver(node: ast.AST) -> bool:
+    """Return whether an expression denotes the runtime feature/config carrier."""
+    try:
+        text = ast.unparse(node)
+    except Exception:
+        return False
+    compact = text.replace(" ", "")
+    return (
+        compact in {"f", "features", "feature", "config", "cfg", "self.features", "self.config"}
+        or compact.endswith(".features")
+        or compact.endswith(".config")
+    )
 
-    The scan excludes packaged checks, historical fixtures, and tests. A match must
-    contain both the exact factor token and a config/cfg token on the same source line.
-    It is a conservative source-reachability screen, not proof of runtime activation.
+
+def find_config_references(runtime: Path, factors: Sequence[str] = FACTORS) -> dict[str, list[dict[str, Any]]]:
+    """Find active-source declarations and accesses for each packaged feature flag.
+
+    The scan is AST-bound and excludes packaged checks, historical fixtures, and
+    tests. It recognizes fields declared on ``Features`` plus attribute, ``get``,
+    and subscript reads through the runtime feature/config carriers. This is a
+    conservative source-reachability screen, not proof of execution in a game.
     """
     references: dict[str, list[dict[str, Any]]] = {factor: [] for factor in factors}
-    factor_patterns = {
-        factor: re.compile(rf"(?<![A-Za-z0-9_]){re.escape(factor)}(?![A-Za-z0-9_])")
-        for factor in factors
-    }
+    factor_set = set(factors)
     for path in sorted(runtime.rglob("*.py")):
         relative = path.relative_to(runtime)
         parts = set(relative.parts)
         if "checks" in parts or "historical" in parts or path.name.startswith("test_"):
             continue
+        source = path.read_text(encoding="utf-8")
         try:
-            lines = path.read_text(encoding="utf-8").splitlines()
-        except UnicodeDecodeError:
-            continue
-        for line_number, line in enumerate(lines, 1):
-            lowered = line.lower()
-            if "config" not in lowered and "cfg" not in lowered:
-                continue
-            for factor, pattern in factor_patterns.items():
-                if pattern.search(line):
-                    references[factor].append({
-                        "path": relative.as_posix(),
-                        "line": line_number,
-                        "source": line.strip()[:300],
-                    })
+            tree = ast.parse(source, filename=str(relative))
+        except SyntaxError as exc:
+            raise ValueError(f"Active packaged source did not parse: {relative}: {exc}") from exc
+        lines = source.splitlines()
+        class Visitor(ast.NodeVisitor):
+            def __init__(self):
+                self.classes: list[str] = []
+
+            def record(self, factor: str, node: ast.AST, kind: str) -> None:
+                line_number = int(getattr(node, "lineno", 0))
+                snippet = lines[line_number - 1].strip()[:300] if 0 < line_number <= len(lines) else ""
+                row = {
+                    "path": relative.as_posix(),
+                    "line": line_number,
+                    "kind": kind,
+                    "source": snippet,
+                }
+                if row not in references[factor]:
+                    references[factor].append(row)
+
+            def visit_ClassDef(self, node: ast.ClassDef) -> None:
+                self.classes.append(node.name)
+                self.generic_visit(node)
+                self.classes.pop()
+
+            def visit_AnnAssign(self, node: ast.AnnAssign) -> None:
+                if self.classes and self.classes[-1] == "Features" and isinstance(node.target, ast.Name):
+                    if node.target.id in factor_set:
+                        self.record(node.target.id, node, "Features declaration")
+                self.generic_visit(node)
+
+            def visit_Assign(self, node: ast.Assign) -> None:
+                if self.classes and self.classes[-1] == "Features":
+                    for target in node.targets:
+                        if isinstance(target, ast.Name) and target.id in factor_set:
+                            self.record(target.id, node, "Features declaration")
+                self.generic_visit(node)
+
+            def visit_Attribute(self, node: ast.Attribute) -> None:
+                if node.attr in factor_set and _feature_receiver(node.value):
+                    self.record(node.attr, node, "attribute access")
+                self.generic_visit(node)
+
+            def visit_Call(self, node: ast.Call) -> None:
+                if (
+                    isinstance(node.func, ast.Attribute)
+                    and node.func.attr == "get"
+                    and node.args
+                    and isinstance(node.args[0], ast.Constant)
+                    and node.args[0].value in factor_set
+                    and _feature_receiver(node.func.value)
+                ):
+                    self.record(str(node.args[0].value), node, "mapping get")
+                self.generic_visit(node)
+
+            def visit_Subscript(self, node: ast.Subscript) -> None:
+                key = node.slice.value if isinstance(node.slice, ast.Constant) else None
+                if key in factor_set and _feature_receiver(node.value):
+                    self.record(str(key), node, "mapping subscript")
+                self.generic_visit(node)
+
+        Visitor().visit(tree)
+    for factor in factors:
+        references[factor].sort(key=lambda row: (row["path"], row["line"], row["kind"]))
     return references
+
+
+def runtime_access_factors(
+    references: Mapping[str, Sequence[Mapping[str, Any]]],
+    factors: Sequence[str] = FACTORS,
+) -> list[str]:
+    """Return flags with a runtime access beyond their ``Features`` declaration.
+
+    A declaration proves that the package accepts a key, not that changing the key
+    can reach a decision. The gameplay matrix is therefore limited to factors with
+    an attribute or mapping read in active packaged source.
+    """
+    return [
+        factor
+        for factor in factors
+        if any(row.get("kind") != "Features declaration" for row in references.get(factor, ()))
+    ]
 
 
 def variant_specs(factors: Sequence[str]) -> list[dict[str, Any]]:
