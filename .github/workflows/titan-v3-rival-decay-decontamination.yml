@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - sol-sentinel/titan-v3-rival-decay-decontamination-20260910-01
+      - sol-pro/titan-v3-rival-harvest-actor-reachability-20260910-01
   pull_request:
     paths:
       - ".github/workflows/titan-v3-rival-decay-decontamination.yml"
@@ -24,7 +25,7 @@ jobs:
       PYTHONDONTWRITEBYTECODE: "1"
       LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout4v4
         with:
           persist-credentials: false
 
@@ -39,14 +40,19 @@ jobs:
           "$LANE/decay_observer.py"
           "$LANE/test_candidate.py"
           "$LANE/test_decay_observer.py"
+          "$LANE/test_actor_reachability.py"
           "$LANE/witness.py"
 
-      - name: Run observer, engine and optimizer contracts
+      - name: Run observer, reachability, engine and optimizer contracts
         shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
         run: |
           set -euo pipefail
-          python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
+          python -B -m unittest -v \
+            test_decay_observer \
+            test_actor_reachability \
+            test_candidate \
+            2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
 
       - name: Emit source-bound predecessor witness
         shell: bash
@@ -65,6 +71,7 @@ jobs:
             "$LANE/decay_observer.py" \
             "$LANE/test_candidate.py" \
             "$LANE/test_decay_observer.py" \
+            "$LANE/test_actor_reachability.py" \
             "$LANE/witness.py" \
             "$RUNNER_TEMP/TESTS.txt" \
             "$RUNNER_TEMP/WITNESS.json" \

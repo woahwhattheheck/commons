@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Emit a source-bound official-transition and optimizer predecessor witness."""
+"""Emit source-bound age-decay, actor-reachability and optimizer witnesses."""
 from __future__ import annotations
 
 import copy
@@ -16,7 +16,11 @@ LAB = HERE.parents[2]
 if str(LAB) not in sys.path:
     sys.path.insert(0, str(LAB))
 
-from decay_observer import OPERATION, make_decay_safe_frozen_selected
+from decay_observer import (
+    OPERATION,
+    REACHABILITY_OPERATION,
+    make_decay_safe_frozen_selected,
+)
 import candidate
 import scheduler
 
@@ -38,14 +42,19 @@ def plant(units: int) -> dict[str, Any]:
     }
 
 
-def observation(step: int, tile: Any) -> dict[str, Any]:
+def empty_farm(size: int = 2) -> dict[str, Any]:
+    return {
+        "tiles": [[None for _ in range(size)] for _ in range(size)],
+        "farmer": [size - 1, size - 1],
+        "hands": [],
+    }
+
+
+def observation(step: int, rival_farm: dict[str, Any]) -> dict[str, Any]:
     return {
         "step": step,
         "player": 0,
-        "farms": [
-            {"tiles": [[None]]},
-            {"tiles": [[copy.deepcopy(tile)]]},
-        ],
+        "farms": [empty_farm(len(rival_farm["tiles"])), copy.deepcopy(rival_farm)],
     }
 
 
@@ -65,7 +74,7 @@ def load_engine():
     sys.modules["kaggle_environments"] = package
     sys.modules["kaggle_environments.utils"] = utils
     path = LAB / "reference/engine/kaggriculture.py"
-    spec = importlib.util.spec_from_file_location("_decay_witness_engine", path)
+    spec = importlib.util.spec_from_file_location("_reachability_witness_engine", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -80,17 +89,17 @@ def load_engine():
     return module
 
 
-def run() -> dict[str, Any]:
-    engine = load_engine()
-    patched_class = make_decay_safe_frozen_selected(
-        scheduler.SellScheduler,
-        products=scheduler.PRODUCTS,
-        animals=scheduler.m.ANIMALS,
-    )
+def run_age_decay_witness(engine, patched_class):
     control = bare(scheduler.SellScheduler)
     patched = bare(patched_class)
-    farm = {"tiles": [[plant(4)]]}
-    current = observation(100, farm["tiles"][0][0])
+    farm = {
+        "tiles": [[plant(4)]],
+        # Keep the actor on the crop so this witness exercises only the parent
+        # exact-age discriminator, not the new reachability suppression.
+        "farmer": [0, 0],
+        "hands": [],
+    }
+    current = observation(100, farm)
     control.previous = copy.deepcopy(current)
     patched.previous = copy.deepcopy(current)
     transitions = []
@@ -98,7 +107,7 @@ def run() -> dict[str, Any]:
         before = copy.deepcopy(farm["tiles"][0][0])
         engine._decay_plants(farm, step)
         after = copy.deepcopy(farm["tiles"][0][0])
-        current = observation(step + 1, after)
+        current = observation(step + 1, farm)
         scheduler.SellScheduler.observe(control, copy.deepcopy(current))
         patched_class.observe(patched, copy.deepcopy(current))
         control.previous = copy.deepcopy(current)
@@ -109,34 +118,123 @@ def run() -> dict[str, Any]:
             "after_yield": after.get("yield_units") if isinstance(after, dict) else None,
             "after_kind": after.get("kind") if isinstance(after, dict) else None,
         })
-
-    current_supply = scheduler.SellScheduler.rival_supply(control, current, "MELON")
+    control_supply = scheduler.SellScheduler.rival_supply(control, current, "MELON")
     patched_supply = patched_class.rival_supply(patched, current, "MELON")
+    assert control_supply == 3
+    assert patched_supply == 1
+    return {
+        "transitions": transitions,
+        "control_observed_harvests": control.observed_harvests,
+        "candidate_observed_harvests": patched.observed_harvests,
+        "visible_final_yield": farm["tiles"][0][0]["yield_units"],
+        "control_rival_supply": control_supply,
+        "candidate_rival_supply": patched_supply,
+    }
+
+
+def run_actor_reachability_witness(engine, patched_class):
+    contrl = bare(scheduler.SellScheduler)
+    patched = bare(patched_class)
+    farm = {
+        "tiles": [
+             [plant(1), plant(1)],
+            [plant(1), None],
+        ],
+        # No unit occupies any crop coordinate. A single action cannot move and
+        # harvest, so every decline is publicly proven impossible harvest supply.
+        "farmer": [1, 1],
+        "hands": [],
+    }
+    before = observation(100, farm)
+    engine._decay_plants(farm, 100)
+    after = observation(101, farm)
+    control.previous = copy.deepcopy(before)
+    patched.previous = copy.deepcopy(before)
+    scheduler.SellScheduler.observe(control, copy.deepcopy(after))
+    patched_class.observe(patched, copy.deepcopy(after))
+    control_supply = scheduler.SellScheduler.rival_supply(control, after, "MELON")
+    patched_supply = patched_class.rival_supply(patched, after, "MELON")
+    assert control.observed_harvests == {
+        "MELON": [(101, 1), (101, 1), (101, 1)]
+    }
+    assert patched.observed_harvests == {}
+    assert control_supply == 3
+    assert patched_supply == 0
+    return {
+        "interpreter_step": 100,
+        "predecessor_actor_positions": {
+            "farmer": before["farms"][1]["farmer"],
+            "hands": before["farms"][1]["hands"],
+        },
+        "crop_coordinates": [[0, 0], [1, 0], [0, 1]],
+        "after_tiles": after["farms"][1]["tiles"],
+        "control_observed_harvests": control.observed_harvests,
+        "candidate_observed_harvests": patched.observed_harvests,
+        "control_rival_supply": control_supply,
+        "candidate_rival_supply": patched_supply,
+    }
+
+
+def run_optimizer_witness(control_supply: int, patched_supply: int):
+    # Step 96 is a real town-center consumption event. Carrying one MELON across
+    # that event strictly improves the no-rival scenario, while phantom rival
+    # stress 3 blocks the change under the exact current optimizer.
     common = dict(
         item="MELON",
-        quantity=2,
-        inventory=80,
+        quantity=4,
+        inventory=9550,
         params=None,
         shops=[],
         config={"townShopSellInterval": 4, "townCenterSellInterval": 24},
-        now=100,
-        dates=(100, 104, 108),
-        reference=((100, 2),),
+        now=90,
+        dates=(90, 96),
+        reference=((90, 4),),
         minimum_now=0,
         capacity_ok=lambda _plan: True,
         last=718,
     )
-    current_plan, current_info = scheduler.optimize_lot(
-        rival_quantity=current_supply, **common
+    control_plan, control_info = scheduler.optimize_lot(
+        rival_quantity=control_supply, **common
     )
     patched_plan, patched_info = scheduler.optimize_lot(
         rival_quantity=patched_supply, **common
     )
-    assert current_supply == 3
-    assert patched_supply == 1
-    assert current_plan == ((100, 2),)
-    assert patched_plan == ((108, 2),)
-    assert patched_info["worst_relative_gain"] > 100
+    assert control_supply == 3
+    assert patched_supply == 0
+    assert control_plan == ((90, 4),)
+    assert control_info["worst_relative_gain"] == 0.0
+    assert patched_plan == ((90, 3),)
+    assert patched_info["worst_relative_gain"] == 1.0
+    return {
+        "item": "MELON",
+        "inventory": 9550,
+        "quantity": 4,
+        "now": 90,
+        "dates": [90, 96],
+        "intervening_town_center_absorption_step": 96,
+        "control_rival_supply": control_supply,
+        "candidate_rival_supply": patched_supply,
+        "control_plan": [list(row) for row in control_plan],
+        "candidate_plan": [list(row) for row in patched_plan],
+        "control_worst_relative_gain": control_info["worst_relative_gain"],
+        "candidate_worst_relative_gain": patched_info["worst_relative_gain"],
+        "candidate_scenarios": patched_info["scenarios"],
+    }
+
+
+def run() -> dict[str, Any]:
+    engine = load_engine()
+    patched_class = make_decay_safe_frozen_selected(
+        scheduler.SellScheduler,
+        products=scheduler.PRODUCTS,
+        animals=scheduler.m.ANIMALS,
+    )
+    age = run_age_decay_witness(engine, patched_class)
+    reachability = run_actor_reachability_witness(engine, patched_class)
+    optimizer = run_optimizer_witness(
+        reachability["control_rival_supply"],
+        reachability["candidate_rival_supply"],
+    )
 
     source_sha256 = {
         relative: sha256(LAB / relative)
@@ -144,12 +242,18 @@ def run() -> dict[str, Any]:
     }
     lane_sha256 = {
         name: sha256(HERE / name)
-        for name in ("candidate.py", "decay_observer.py", "test_candidate.py",
-                     "test_decay_observer.py", "witness.py")
+        for name in (
+            "candidate.py",
+            "decay_observer.py",
+            "test_candidate.py",
+            "test_decay_observer.py",
+            "test_actor_reachability.py",
+            "witness.py",
+        )
     }
     return {
-        "schema": 1,
-        "operation": OPERATION,
+        "schema": 2,
+        "operations": [OPERATION, REACHABILITY_OPERATION],
         "source_commit": candidate.SOURCE_COMMIT,
         "source_git_blobs": candidate.verify_source(),
         "source_sha256": source_sha256,
@@ -158,33 +262,21 @@ def run() -> dict[str, Any]:
             "class": "frozen_selected.FrozenSelected",
             "observer_inherited_from": "scheduler.SellScheduler.observe",
             "candidate_class": candidate.INSTALLED_CLASS.__name__,
-            "runtime_marker": candidate.INSTALLED_CLASS._titan_rival_decay_decontamination,
+            "decay_marker": (
+                candidate.INSTALLED_CLASS._titan_rival_decay_decontamination
+            ),
+            "actor_reachability_marker": (
+                candidate.INSTALLED_CLASS._titan_rival_harvest_actor_reachability
+            ),
         },
-        "official_engine_transition": {
-            "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
-            "transitions": transitions,
-            "control_observed_harvests": control.observed_harvests,
-            "candidate_observed_harvests": patched.observed_harvests,
-            "visible_final_yield": farm["tiles"][0][0]["yield_units"],
-            "control_rival_supply": current_supply,
-            "candidate_rival_supply": patched_supply,
-        },
-        "optimizer_predecessor_witness": {
-            "item": "MELON",
-            "inventory": 80,
-            "quantity": 2,
-            "now": 100,
-            "dates": [100, 104, 108],
-            "control_plan": [list(row) for row in current_plan],
-            "candidate_plan": [list(row) for row in patched_plan],
-            "control_worst_relative_gain": current_info["worst_relative_gain"],
-            "candidate_worst_relative_gain": patched_info["worst_relative_gain"],
-            "candidate_scenarios": patched_info["scenarios"],
-        },
+        "official_engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+        "official_engine_age_decay": age,
+        "official_engine_actor_reachability": reachability,
+        "optimizer_predecessor_witness": optimizer,
         "truth_boundary": (
-            "This proves the transition, executable seam and predecessor decision. "
-            "It is not a full opponent panel, leaderboard claim, production enablement "
-            "or Kaggle submission authorization."
+            "This proves exact public transition classification, executable seam "
+            "and one predecessor decision. It is not a full opponent panel, "
+            "leaderboard claim, production enablement or Kaggle authorization."
         ),
     }
 
@@ -195,8 +287,14 @@ def main() -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     print(json.dumps({
-        "control_supply": payload["official_engine_transition"]["control_rival_supply"],
-        "candidate_supply": payload["official_engine_transition"]["candidate_rival_supply"],
+        "age_decay_supply": [
+            payload["official_engine_age_decay"]["control_rival_supply"],
+            payload["official_engine_age_decay"]["candidate_rival_supply"],
+        ],
+        "actor_reachability_supply": [
+            payload["official_engine_actor_reachability"]["control_rival_supply"],
+            payload["official_engine_actor_reachability"]["candidate_rival_supply"],
+        ],
         "control_plan": payload["optimizer_predecessor_witness"]["control_plan"],
         "candidate_plan": payload["optimizer_predecessor_witness"]["candidate_plan"],
         "gain": payload["optimizer_predecessor_witness"]["candidate_worst_relative_gain"],

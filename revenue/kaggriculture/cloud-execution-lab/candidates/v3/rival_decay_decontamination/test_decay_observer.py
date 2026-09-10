@@ -109,7 +109,8 @@ class ObserverParityTests(unittest.TestCase):
     def test_larger_decline_keeps_non_decay_remainder(self):
         control, candidate = self.compare(plant(4), plant(2))
         self.assertEqual(control, {"MELON": [(101, 2)]})
-        # Larger drops are deliberately ambiguous and not partially rewritten.
+        # With no actor custody in this legacy fixture, the new reachability
+        # layer fails closed and preserves the parent candidate's behavior.
         self.assertEqual(candidate, control)
 
     def test_incumbent_parity_outside_exact_domain(self):
@@ -183,26 +184,30 @@ class OfficialEngineWitnessTests(unittest.TestCase):
         self.assertEqual(scheduler.SellScheduler.rival_supply(control, final, "MELON"), 3)
         self.assertEqual(Patched.rival_supply(candidate, final, "MELON"), 1)
 
-    def test_supply_change_flips_concrete_optimizer_decision(self):
+    def test_source_exact_stress_change_flips_optimizer_decision(self):
+        # The interval crosses the step-96 town-center consumption event. That
+        # creates a real no-rival benefit for carrying one unit; unlike the old
+        # 100..108 fixture, this candidate can satisfy the source's mandatory
+        # strict no-rival improvement rule.
         common = dict(
             item="MELON",
-            quantity=2,
-            inventory=80,
+            quantity=4,
+            inventory=9550,
             params=None,
             shops=[],
             config={"townShopSellInterval": 4, "townCenterSellInterval": 24},
-            now=100,
-            dates=(100, 104, 108),
-            reference=((100, 2),),
+            now=90,
+            dates=(90, 96),
+            reference=((90, 4),),
             minimum_now=0,
             capacity_ok=lambda _plan: True,
             last=718,
         )
-        clean_plan, clean = scheduler.optimize_lot(rival_quantity=1, **common)
+        clean_plan, clean = scheduler.optimize_lot(rival_quantity=0, **common)
         polluted_plan, polluted = scheduler.optimize_lot(rival_quantity=3, **common)
-        self.assertEqual(clean_plan, ((108, 2),))
-        self.assertGreater(clean["worst_relative_gain"], 100.0)
-        self.assertEqual(polluted_plan, ((100, 2),))
+        self.assertEqual(clean_plan, ((90, 3),))
+        self.assertEqual(clean["worst_relative_gain"], 1.0)
+        self.assertEqual(polluted_plan, ((90, 4),))
         self.assertEqual(polluted["worst_relative_gain"], 0.0)
 
 
