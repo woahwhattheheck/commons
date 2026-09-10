@@ -1,0 +1,177 @@
+name: TITAN strict-dominance self-build
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-strict-dominance-pressure-20260910-01
+    paths:
+      - .github/workflows/titan-strict-dominance-selfbuild.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Apply fail-closed strict-dominance patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          pressure = Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py')
+          source = pressure.read_text()
+
+          old_signature = '''def transform(action: dict, observation: Mapping,
+                        configuration: Mapping | None = None, *, quote: PriceFunction,
+                        rival_supply: Mapping[str, int] | None = None) -> dict:'''
+          new_signature = '''def transform(action: dict, observation: Mapping,
+                        configuration: Mapping | None = None, *, quote: PriceFunction,
+                        rival_supply: Mapping[str, int] | None = None,
+                        strict_dominance: bool = False) -> dict:'''
+          if source.count(old_signature) != 1:
+              raise SystemExit('pressure transform signature drifted')
+          source = source.replace(old_signature, new_signature)
+
+          old_doc = '''    ``rival_supply`` is an optional product->public-quantity scenario. Missing
+              product keys retain the historical same-sized proxy for that product; an
+              explicit zero means no rival flow. Present malformed values (including
+              ``None``) are barriers, so ambiguity cannot silently become proxy evidence.
+
+              Preserve all orders, quantities, duplicate lots, economic barriers,'''
+          new_doc = '''    ``rival_supply`` is an optional product->public-quantity scenario. Missing
+              product keys retain the historical same-sized proxy for that product; an
+              explicit zero means no rival flow. Present malformed values (including
+              ``None``) are barriers, so ambiguity cannot silently become proxy evidence.
+
+              ``strict_dominance`` replaces magnitude sorting with a stable two-class
+              partition. Positive-exposure lots may cross zero-exposure lots, but retain
+              their parent relative order because proxy magnitude does not prove which
+              exposed commodity is safe to demote against an unseen same-slot rival sale.
+
+              Preserve all orders, quantities, duplicate lots, economic barriers,'''
+          if source.count(old_doc) != 1:
+              raise SystemExit('pressure transform documentation drifted')
+          source = source.replace(old_doc, new_doc)
+
+          old_validation = '''    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
+              raise ValueError('parent policy must return an object with a market list')'''
+          new_validation = '''    if not isinstance(strict_dominance, bool):
+              raise ValueError('strict_dominance must be boolean')
+              if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
+              raise ValueError('parent policy must return an object with a market list')'''
+          # Keep indentation exact after constructing the replacement text.
+          new_validation = new_validation.replace("\n        if not isinstance(action", "\n    if not isinstance(action")
+          if source.count(old_validation) != 1:
+              raise SystemExit('pressure transform validation drifted')
+          source = source.replace(old_validation, new_validation)
+
+          old_ranking = '''        ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])
+              orders[start:stop] = [order for order, _ in ranked]'''
+          new_ranking = '''        pairs = list(zip(orders[start:stop], scores[start:stop]))
+              if strict_dominance:
+                  # Crossing two exposed commodities has no observation-only dominance:
+                  # hidden rival flow can make the demoted commodity the urgent one.
+                  ranked = ([pair for pair in pairs if pair[1] > 0]
+                            + [pair for pair in pairs if pair[1] <= 0])
+              else:
+                  ranked = sorted(pairs, key=lambda p: -p[1])
+              orders[start:stop] = [order for order, _ in ranked]'''
+          if source.count(old_ranking) != 1:
+              raise SystemExit('pressure ranking implementation drifted')
+          source = source.replace(old_ranking, new_ranking)
+          pressure.write_text(source)
+
+          runtime = Path('revenue/kaggriculture/cloud-execution-lab/titan_runtime.py')
+          source = runtime.read_text()
+          old_call = '        result = pressure.transform(selected, obs, cfg, quote=mechanics.market_price)'
+          new_call = '''        result = pressure.transform(
+              selected, obs, cfg, quote=mechanics.market_price,
+              strict_dominance=True)'''
+          if source.count(old_call) != 1:
+              raise SystemExit('canonical pressure call drifted')
+          runtime.write_text(source.replace(old_call, new_call))
+          PY
+
+      - name: Run pressure module contracts
+        working-directory: revenue/kaggriculture/cloud-opponent-league/lark-responsive
+        run: |
+          python -B -m unittest -v \
+            test_pressure_priority.py \
+            test_pressure_priority_public_flow.py \
+            test_pressure_priority_strict_dominance.py
+
+      - name: Run canonical runtime boundary contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -B -m unittest -v test_market_pressure_runtime.py
+
+      - name: Rebuild and verify deterministic current archive
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -B build_integrated.py
+          python -B build_integrated.py --check
+
+      - name: Emit exact build receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('revenue/kaggriculture/cloud-execution-lab')
+          pointer = json.loads((root/'runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())
+          pressure = Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py')
+          runtime = root/'titan_runtime.py'
+          receipt = {
+              'schema': 'titan-strict-dominance-build/v1',
+              'base_commit': '${{ github.event.before }}',
+              'source_commit': '${{ github.sha }}',
+              'archive': pointer,
+              'pressure_priority_sha256': hashlib.sha256(pressure.read_bytes()).hexdigest(),
+              'titan_runtime_sha256': hashlib.sha256(runtime.read_bytes()).hexdigest(),
+              'tests': {
+                  'pressure_module_contracts': 'pass',
+                  'canonical_runtime_boundary': 'pass',
+                  'deterministic_build_check': 'pass',
+              },
+          }
+          out = Path('revenue/kaggriculture/cloud-market-pressure-strict-dominance')
+          out.mkdir(parents=True, exist_ok=True)
+          (out/'BUILD.json').write_text(json.dumps(receipt, indent=2, sort_keys=True)+'\n')
+          PY
+
+      - name: Upload exact candidate archive and receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-strict-dominance-current
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json
+            revenue/kaggriculture/cloud-market-pressure-strict-dominance/BUILD.json
+
+      - name: Publish tested source and deterministic archive to branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/titan-strict-dominance-selfbuild.yml
+          git config user.name 'commons-board'
+          git config user.email 'commons-board@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'TITAN: contain pressure ranking to strict dominance'
+          git push origin HEAD:sol-pro/titan-strict-dominance-pressure-20260910-01
