@@ -28,6 +28,19 @@ EXPECTED_GIT_BLOBS = {
     "reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
 }
 
+# Current standalone-package root modules are sourced from these repository
+# directories by build_integrated.source_files().  The archive co-locates those
+# modules at its root; a repo-backed executable carrier must reproduce that
+# import closure explicitly instead of relying on an ambient PYTHONPATH.
+SOURCE_ROOTS = (
+    LAB,
+    LAB.parent / "cloud-runtime-pulse",
+    LAB.parent / "cloud-quickstep",
+    LAB.parent / "cloud-opponent-league" / "lark-responsive",
+    LAB.parent / "cloud-committed-seed-retry",
+    LAB.parent / "cloud-economic-stress" / "funded-payback",
+)
+
 
 class SourceDrift(RuntimeError):
     """The executable current seam no longer matches the reviewed source."""
@@ -55,6 +68,29 @@ def verify_source(root: Path = LAB) -> dict[str, str]:
     return observed
 
 
+def _install_source_roots() -> tuple[str, ...]:
+    """Reproduce the current archive's root-module import closure from source."""
+    resolved: list[str] = []
+    for root in SOURCE_ROOTS:
+        try:
+            path = root.resolve(strict=True)
+        except FileNotFoundError as exc:
+            raise SourceDrift(f"missing current source root: {root}") from exc
+        if not path.is_dir():
+            raise SourceDrift(f"current source root is not a directory: {path}")
+        resolved.append(str(path))
+
+    # Keep LAB authoritative for modules that exist there, then consult the
+    # sibling source roots for archive-root modules such as observed_clone and
+    # seller_snapshot. Remove duplicates so ambient runner state cannot reorder
+    # the reviewed source closure.
+    for root in reversed(resolved):
+        while root in sys.path:
+            sys.path.remove(root)
+        sys.path.insert(0, root)
+    return tuple(resolved)
+
+
 def _lab_module(name: str) -> ModuleType:
     expected = (LAB / f"{name}.py").resolve(strict=True)
     loaded = sys.modules.get(name)
@@ -73,9 +109,7 @@ def _lab_module(name: str) -> ModuleType:
 def install() -> type:
     """Install the corrected class into this process's exact executable seam."""
     verify_source()
-    lab_text = str(LAB)
-    if lab_text not in sys.path:
-        sys.path.insert(0, lab_text)
+    _install_source_roots()
     scheduler = _lab_module("scheduler")
     frozen = _lab_module("frozen_selected")
     current = frozen.FrozenSelected

@@ -11,8 +11,14 @@ import unittest
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
-if str(LAB) not in sys.path:
-    sys.path.insert(0, str(LAB))
+# Keep the lane directory first so the following combined unittest invocation
+# cannot accidentally resolve the lab-root candidate.py after this module is
+# imported. Scheduler itself lives in LAB and its current observed_clone root
+# lives in the sibling source directory that is co-located in the release.
+for root in (LAB.parent / "cloud-runtime-pulse", LAB):
+    text = str(root.resolve(strict=True))
+    if text not in sys.path:
+        sys.path.append(text)
 
 from decay_observer import is_exact_age_decay, make_decay_safe_frozen_selected
 import scheduler

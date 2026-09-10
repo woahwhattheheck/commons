@@ -42,12 +42,18 @@ jobs:
           "$LANE/witness.py"
 
       - name: Run observer, engine and optimizer contracts
+        shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
-        run: python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
 
       - name: Emit source-bound predecessor witness
+        shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
-        run: python -B witness.py "$RUNNER_TEMP/WITNESS.json" | tee "$RUNNER_TEMP/WITNESS.txt"
+        run: |
+          set -euo pipefail
+          python -B witness.py "$RUNNER_TEMP/WITNESS.json" | tee "$RUNNER_TEMP/WITNESS.txt"
 
       - name: Bind retained hashes and prove source cleanliness
         shell: bash
