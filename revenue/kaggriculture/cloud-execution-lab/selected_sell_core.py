@@ -89,7 +89,9 @@ class MarketPath:
         carry=0.0
         if remaining and not terminal:
             carry=float(self.single(inv,remaining)[0])
-        return own_cash+carry-other_cash, own_cash,other_cash,remaining
+        # Tournament strength is measured by TITAN's own terminal cash. Rival
+        # receipts remain in the diagnostic tuple, not in the ranking objective.
+        return own_cash+carry, own_cash,other_cash,remaining
 
 def joint_plan_metrics(infos):
     """Sum comparable per-product scenario deltas without double-counting slots."""
