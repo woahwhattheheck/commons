@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import copy
 import importlib.util
-import os
 from pathlib import Path
 import shutil
 import sys
@@ -12,6 +11,7 @@ import unittest
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
+RUNTIME = LAB.parent / "cloud-runtime-pulse"
 SOURCE = LAB / "scheduler.py"
 
 import materialize as subject
@@ -31,7 +31,7 @@ def _patched_root(parent: Path) -> tuple[Path, dict]:
     root = parent / "patched-lab"
     root.mkdir()
     _mirror(LAB / "mechanics.py", root / "mechanics.py")
-    _mirror(LAB / "observed_clone.py", root / "observed_clone.py")
+    _mirror(RUNTIME / "observed_clone.py", root / "observed_clone.py")
     _mirror(LAB / "reference", root / "reference")
     receipt = subject.materialize(SOURCE, root / "scheduler.py")
     return root, receipt
@@ -49,7 +49,10 @@ def _load_scheduler(root: Path, name: str) -> types.ModuleType:
         for key in ("mechanics", "observed_clone", name)
     }
     try:
-        sys.path.insert(0, str(root))
+        # Current source imports observed_clone from cloud-runtime-pulse, while
+        # the materialized mirror co-locates the exact helper with scheduler.py.
+        for search_root in (RUNTIME, root):
+            sys.path.insert(0, str(search_root))
         sys.modules[name] = module
         spec.loader.exec_module(module)
     finally:
