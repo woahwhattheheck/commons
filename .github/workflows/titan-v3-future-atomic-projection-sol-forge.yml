@@ -28,6 +28,7 @@ jobs:
             .github/workflows/titan-v3-future-atomic-projection-sol-forge.yml
             revenue/kaggriculture/cloud-execution-lab/scheduler.py
             revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
             revenue/kaggriculture/cloud-execution-lab/analysis/v3-future-atomic-plant-projection-sol-forge
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
@@ -39,7 +40,9 @@ jobs:
           set -euo pipefail
           PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
             python analysis/v3-future-atomic-plant-projection-sol-forge/test_materialize.py
-      - name: Materialize exact candidate and receipt
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-future-atomic-plant-projection-sol-forge/test_route_census.py
+      - name: Materialize exact candidate and route receipt
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
@@ -50,11 +53,21 @@ jobs:
               --output "$out/scheduler.py" \
               --receipt "$out/RECEIPT.json" \
               | tee "$out/run.log"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-future-atomic-plant-projection-sol-forge/route_census.py \
+              --output "$out/ROUTE-CENSUS.json" \
+              | tee "$out/route-census.log"
           python -m py_compile "$out/scheduler.py"
           git diff --exit-code -- \
             revenue/kaggriculture/cloud-execution-lab/scheduler.py \
-            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
-          sha256sum "$out/scheduler.py" "$out/RECEIPT.json" "$out/run.log" \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
+          sha256sum \
+            "$out/scheduler.py" \
+            "$out/RECEIPT.json" \
+            "$out/ROUTE-CENSUS.json" \
+            "$out/run.log" \
+            "$out/route-census.log" \
             > "$out/SHA256SUMS"
       - uses: actions/upload-artifact@v4
         if: always()
@@ -64,5 +77,7 @@ jobs:
           path: |
             ${{ runner.temp }}/titan-future-atomic/scheduler.py
             ${{ runner.temp }}/titan-future-atomic/RECEIPT.json
+            ${{ runner.temp }}/titan-future-atomic/ROUTE-CENSUS.json
             ${{ runner.temp }}/titan-future-atomic/run.log
+            ${{ runner.temp }}/titan-future-atomic/route-census.log
             ${{ runner.temp }}/titan-future-atomic/SHA256SUMS
