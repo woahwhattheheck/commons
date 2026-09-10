@@ -52,9 +52,12 @@ def executable_market_view(action: Any, limit: int) -> Any:
 
 def controller_view(controller: Any, limit: int) -> Any:
     """Copy the represented controller while truncating only the selected route."""
-    routes = list(controller.R)
-    current = int(controller.cur)
-    route = controller.R[current]
+    routes = copy.copy(controller.R)
+    current = controller.cur
+    try:
+        route = controller.R[current]
+    except (KeyError, TypeError) as exc:
+        raise RuntimeError("selected controller route is unavailable") from exc
     if not isinstance(route, list):
         raise RuntimeError("selected controller route must be a list")
     routes[current] = [executable_market_view(action, limit) for action in route]

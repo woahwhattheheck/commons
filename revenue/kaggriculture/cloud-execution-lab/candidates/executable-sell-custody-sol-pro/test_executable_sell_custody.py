@@ -114,6 +114,72 @@ class SellCustodyTests(unittest.TestCase):
         self.assertEqual(agent.seen["route"], [[[]], [["SELL", "CARROT", 1]]])
         self.assertEqual(agent.controller.R[0], route_before)
 
+    def test_arlene_shaped_mapping_route_bank_preserves_keys_and_quarantines(self):
+        route_id = "7015cc00acfa4922"
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [[], ["SELL", "CARROT", 3]],
+        }
+        route = [copy.deepcopy(action), copy.deepcopy(action)]
+        route_bank = {route_id: route}
+        route_before = copy.deepcopy(route_bank)
+
+        class MappingController:
+            def __init__(self):
+                self.R = route_bank
+                self.cur = route_id
+                self.tag = "preserved"
+
+        class MappingFrozen(FakeFrozen):
+            def __init__(self, _route):
+                self.controller = MappingController()
+                self.pending = {}
+                self.planned = {}
+                self.diagnostics = {}
+                self.seen = None
+
+            def transform(self, obs, config, selected):
+                # Use current selected route key, not list index 0
+                cur = self.controller.cur
+                route_markets = [copy.deepcopy(a["market"]) for a in self.controller.R[cur]]
+                own_market = copy.deepcopy(selected["market"])
+                sold = sum(
+                    max(0, int(row[2]))
+                    for row in own_market
+                    if row and len(row) > 2 and row[0] == "SELL" and row[1] == "CARROT"
+                )
+                self.pending["CARROT"] = max(0, 3 - sold)
+                self.seen = {"selected": own_market, "route": route_markets}
+                self.diagnostics = {"predecessor": True}
+                return copy.deepcopy(selected)
+
+        module = SimpleNamespace(FrozenSelected=MappingFrozen, __file__=__file__)
+        blob = P.git_blob_sha1(__file__)
+        P.install(
+            module,
+            expected_frozen_blob=blob,
+            expected_scheduler_blob=blob,
+        )
+        agent = module.FrozenSelected(None)
+        controller = agent.controller
+        original = copy.deepcopy(action)
+
+        out = agent.transform({"step": 0}, {"maxMarketOrdersPerTurn": 1}, action)
+
+        self.assertEqual(agent.seen["selected"], [[]])
+        self.assertEqual(agent.pending["CARROT"], 3)
+        self.assertEqual(out, original)
+        self.assertEqual(action, original)
+        self.assertIs(agent.controller, controller)
+        self.assertIsInstance(agent.controller.R, dict)
+        self.assertEqual(list(agent.controller.R.keys()), [route_id])
+        self.assertEqual(agent.controller.R, route_before)
+        self.assertEqual(agent.controller.cur, route_id)
+        self.assertEqual(
+            agent.diagnostics["executable_sell_custody"]["inert_suffix_rows"], 1
+        )
+
     def test_market_limit_is_normalized_to_one(self):
         action = {"farmer": ["PASS"], "hands": [], "market": [[], ["SELL", "CARROT", 3]]}
         agent, _ = installed_class([copy.deepcopy(action)])

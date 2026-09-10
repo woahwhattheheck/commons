@@ -43,13 +43,22 @@ def run() -> dict[str, Any]:
     suffix_sell_items: dict[str, int] = {}
     witnesses: list[dict[str, Any]] = []
 
-    for route_index, route in enumerate(controller.R):
+    if isinstance(controller.R, dict):
+        route_items = list(controller.R.items())
+    elif isinstance(controller.R, list):
+        route_items = list(enumerate(controller.R))
+    else:
+        raise RuntimeError("controller route bank must be a mapping or list")
+
+    for route_id, route in route_items:
+        if not isinstance(route, list):
+            raise RuntimeError(f"route {route_id!r} is not a list")
         for step, action in enumerate(route):
             if not isinstance(action, dict):
-                raise RuntimeError(f"route {route_index} step {step} is not a mapping")
+                raise RuntimeError(f"route {route_id!r} step {step} is not a mapping")
             market = action.get("market", [])
             if not isinstance(market, list):
-                raise RuntimeError(f"route {route_index} step {step} market is not a list")
+                raise RuntimeError(f"route {route_id!r} step {step} market is not a list")
             if len(market) <= limit:
                 continue
             actions_over_limit += 1
@@ -75,7 +84,7 @@ def run() -> dict[str, Any]:
             if local_sales and len(witnesses) < 24:
                 witnesses.append(
                     {
-                        "route": route_index,
+                        "route": route_id,
                         "step": step,
                         "represented_rows": len(market),
                         "limit": limit,
