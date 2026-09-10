@@ -1,0 +1,62 @@
+name: titan-v3-loss-cell-opponent-export
+
+on:
+  push:
+    branches:
+      - "sol-capstone/titan-v3-loss-cell-lab-20260910-01"
+    paths:
+      - ".github/workflows/titan-v3-loss-cell-opponent-export.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-loss-cell-opponent-export-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact triggering head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Verify and package frozen opponents
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/titan-v3-loss-cell-opponents"
+          mkdir -p "$root/opponents"
+          cp -a revenue/kaggriculture/cloud-policy-portfolio/vendor/apex "$root/opponents/apex"
+          cp revenue/kaggriculture/cloud-frontier-policy/vendor/kaito_v43.py "$root/opponents/kaito_v43.py"
+          (
+            cd "$root/opponents"
+            printf '%s  %s\n' \
+              '1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a' \
+              'apex/main.py' > EXPECTED.sha256
+            printf '%s  %s\n' \
+              '69f06a802b62aa08f28705dab5728eb924bb6a7c23ffe0164f65b104cc3dadf3' \
+              'kaito_v43.py' >> EXPECTED.sha256
+            sha256sum -c EXPECTED.sha256
+            find apex -type f -print0 | sort -z | xargs -0 sha256sum > APEX-TREE.sha256
+            sha256sum kaito_v43.py > KAITO.sha256
+          )
+          git rev-parse HEAD > "$root/CHECKOUT.sha"
+          tar -C "$root" -czf "$RUNNER_TEMP/titan-v3-loss-cell-opponents.tar.gz" .
+          sha256sum "$RUNNER_TEMP/titan-v3-loss-cell-opponents.tar.gz" > "$RUNNER_TEMP/titan-v3-loss-cell-opponents.tar.gz.sha256"
+
+      - name: Upload exact opponent bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-loss-cell-opponents-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/titan-v3-loss-cell-opponents.tar.gz
+            ${{ runner.temp }}/titan-v3-loss-cell-opponents.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 7
