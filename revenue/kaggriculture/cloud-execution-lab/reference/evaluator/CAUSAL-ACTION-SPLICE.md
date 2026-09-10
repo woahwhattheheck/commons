@@ -1,92 +1,131 @@
-# First-divergence causal action splice
+# First-divergence hybrid action splice
 
-`causal_action_splice.py` answers a narrower and more useful question than a
-source diff:
+`causal_action_splice.py` answers a narrow counterfactual question:
 
-> When the candidate first returns a different action on the same public
-> trajectory, does executing that one action improve the terminal result?
+> On an exactly reproduced pre-world, what happens when the candidate's first
+> different returned action is executed in place of the baseline action, and
+> vice versa?
 
-It is an offline diagnostic. It uses the pinned official interpreter and the
-process-isolated `Actor` implementation in `evaluate.py`. It does not upload a
-submission, call Kaggle, or require network access.
+This is an offline diagnostic. It uses the pinned official interpreter and the
+process-isolated `Actor` from `evaluate.py`. It does not call Kaggle, upload a
+submission, or edit canonical gameplay.
 
-## Experiment
+## Interpretation boundary
 
-For each seed and focal seat, the evaluator runs:
+The treatment and ablation are **hybrid output interventions**, not coherent
+integrated policies. TITAN can mutate seller/controller state while producing
+an action. The baseline process therefore continues with baseline-committed
+state after the candidate output is executed, and the candidate process
+continues with candidate-committed state after the baseline output is executed.
+The report diagnoses an environment/output edge. It cannot by itself attribute
+an entire source feature, nominate a package, or predict leaderboard strength.
 
-1. **Baseline discovery.** Baseline controls the game. Candidate is a shadow
-   process receiving the exact same focal observations until its first returned
-   action differs. Only baseline actions reach the interpreter.
-2. **Baseline replay.** Baseline is rerun without the shadow. Exact trace and
-   scores must match discovery.
-3. **Candidate native + replay.** Candidate controls two identical runs. Exact
-   trace and scores must match.
-4. **Candidate action on baseline.** Baseline remains the policy process, but
-   the candidate shadow's action is executed at the discovered step. Baseline
-   resumes on the resulting observations.
-5. **Baseline action on candidate.** Candidate remains the policy process, but
-   the baseline shadow's action is executed at the discovered step. Candidate
-   resumes on the resulting observations.
+## Fail-closed experiment
 
-Before an intervention, policy and shadow actions must match on every step. At
-the target, the observation hash, prefix-trace hash, and both action bytes must
-match discovery. A mismatch is `unstable`, not evidence.
+For each seed and focal seat the evaluator runs six games:
 
-The two causal margin estimates are:
+1. **Baseline discovery.** Baseline controls the game. Candidate is a shadow on
+   the identical focal observations until the first type-sensitive returned-
+   action difference. Only baseline output reaches the interpreter.
+2. **Baseline replay.** Exact complete-state trace, score, target context,
+   focal output, and rival output must reproduce.
+3. **Candidate native.** Candidate controls the game and must reach the same
+   first-divergence pre-world.
+4. **Candidate replay.** Candidate trace, score, target context, and outputs
+   must reproduce exactly.
+5. **Candidate output on baseline.** Baseline remains the live policy process,
+   but the authenticated candidate shadow output is executed at the target.
+6. **Baseline output on candidate.** Candidate remains the live policy process,
+   but the authenticated baseline shadow output is executed at the target.
 
-- `candidate_action_on_baseline`: treatment run minus baseline;
-- `candidate_action_on_candidate`: candidate native minus ablation.
+Before either intervention, policy and shadow outputs must match byte-for-byte.
+At the target, the evaluator requires equality with discovery for:
 
-A cell is `supported` when both are positive, `harmful` when both are negative,
-`neutral` when both are zero, and `mixed` otherwise. `dormant` means no returned
-action divergence appeared on the full baseline trajectory. These labels apply
-only to the first changed output in that seed/seat/opponent cell. They do not
-attribute an entire feature, transfer results to other opponents, or predict a
-hosted leaderboard score.
+- step/day position;
+- full canonical pre-world, including both agent states and environment info;
+- both seat observations;
+- the complete pretarget trace;
+- baseline and candidate focal outputs;
+- the target-step rival output.
+
+A missing target, early terminal, serialization failure, launch drift, source
+mutation, target mismatch, or replay mismatch is `failed`/`unstable`, never
+economic evidence. Per-step trace custody hashes the complete pre-world,
+executed actions, and post-world rather than only terminal bank values.
+
+## Source custody
+
+Every input is first copied into an authenticated regular-file snapshot. Every
+actor process then receives a fresh private read-only copy. The complete
+normalized file closure, modes, sizes, and SHA-256 hashes are checked before
+and after every process and again after the panel. Archives reject:
+
+- absolute/traversing/backslash paths;
+- duplicate normalized paths;
+- links, devices, and all non-regular members;
+- missing root `main.py`;
+- oversized members, expanded archives, or member counts.
+
+Directory and entrypoint inputs are snapshotted recursively. The receipt marks
+that imports outside an entrypoint's snapshotted parent and installed-package
+provenance are not dynamically attested. Archive inputs are preferred for
+baseline/candidate evidence.
+
+## Effects and labels
+
+The report retains three metric vectors (`focal_score`, `opponent_score`, and
+`margin`):
+
+- `candidate_native_minus_baseline`;
+- `candidate_action_on_baseline` (treatment minus baseline);
+- `candidate_action_on_candidate` (candidate native minus ablation).
+
+It also records W/T/L transitions. Metric-specific labels are emitted for own
+score, margin, and opponent-score reduction. The unqualified cell label is
+conservative and explicitly hybrid:
+
+- `hybrid_own_supported`: both own-score estimates are nonnegative, at least
+  one is positive, margin is not jointly harmful, and neither outcome worsens;
+- `hybrid_own_harmful`: own score is jointly harmful or an outcome worsens;
+- `hybrid_neutral`: own and margin estimates are both zero;
+- `hybrid_mixed`: everything else;
+- `dormant`: no typed returned-action difference appears on the baseline path.
+
+One cell remains one seed/seat/opponent/action diagnostic, not an admission
+panel.
 
 ## Run
 
-From this directory:
+From `reference/evaluator`:
 
 ```sh
-python -B test_causal_action_splice.py
+python -B -m unittest -v test_causal_action_splice.py
 
+mkdir -p /tmp/titan-splice
 python -B causal_action_splice.py \
-  --baseline ../../exports/historical/<baseline>.tar.gz \
+  --baseline ../../exports/integrated-selected-v1.tar.gz \
   --candidate ../../exports/titan-current.tar.gz \
   --opponent official_starter \
   --seeds 2027,6607,104729 \
   --seats 0,1 \
-  --output causal-action-splice.json
+  --output /tmp/titan-splice/report.json
 ```
 
-`--baseline` and `--candidate` each accept:
-
-- a deterministic TITAN `.tar.gz`/`.tgz` archive containing root `main.py`;
-- an extracted directory containing root `main.py`; or
-- an evaluator entry specification such as `/path/main.py::agent`.
-
-The default engine directory is `../engine`, whose source hashes are verified
-by `evaluate.py`. Other evaluator limits can be changed with
-`--action-timeout`, `--startup-timeout`, `--game-timeout`, and
-`--episode-steps`.
+`--baseline`, `--candidate`, and `--opponent` accept a deterministic root-
+`main.py` archive, an extracted root-`main.py` directory, or an evaluator entry
+specification such as `/path/main.py::agent`. `--output` is required, its parent
+must exist, and it must be outside every authenticated/executable source root;
+direct and same-inode aliases are rejected.
 
 ## Receipt
 
-The JSON report records:
+Schema v2 records engine/loader/evaluator hashes; archive and complete closure
+hashes; fresh-copy pre/post custody; seed, seat, target position, both
+observations, pre-world/prefix/rival-output hashes; typed focal outputs and
+structural paths; complete native/replay/treatment/ablation runs; post-world
+hashes; own/rival/margin effects; W/T/L transitions; and metric-specific plus
+hybrid classifications.
 
-- engine ref and SHA-256 hashes;
-- archive, entrypoint, loader, evaluator and splice-evaluator hashes;
-- seed, seat, day, within-day step, observation and prefix hashes;
-- complete baseline and candidate actions plus structural differing paths;
-- native, replay, treatment and ablation scores/traces;
-- focal-score, opponent-score and margin effects;
-- per-cell classification and aggregate mean effects.
-
-Archive extraction accepts only bounded regular files and directories. Absolute
-paths, traversal, links, devices, missing root `main.py`, oversized members and
-oversized expanded archives are rejected.
-
-The command exits nonzero for `failed` or `unstable` cells. `dormant`,
-`supported`, `harmful`, `neutral`, and `mixed` are completed measurements and
-therefore do not alter the exit status.
+The command exits nonzero for `failed` or `unstable` cells. Completed hybrid,
+neutral, mixed, harmful, supported, and dormant measurements do not by
+themselves authorize source integration or release.
