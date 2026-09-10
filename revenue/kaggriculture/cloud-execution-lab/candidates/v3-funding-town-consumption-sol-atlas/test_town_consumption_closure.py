@@ -12,10 +12,11 @@ from town_consumption_closure import (
     EXPECTED_ENGINE_BLOB_SHA1,
     EXPECTED_SOURCE_BLOB_SHA1,
     apply_public_town_consumption,
+    git_blob_sha1,
     materialize,
     receipt,
+    require_static_shop_lifecycle,
     verify_official_engine,
-    git_blob_sha1,
 )
 
 HERE = Path(__file__).resolve().parent
@@ -38,11 +39,11 @@ def _pass_action():
     return {"farmer": ["PASS"], "hands": [], "market": []}
 
 
-def _fixture(module):
-    route = [_pass_action() for _ in range(23)]
-    route[22]["market"] = [["BUY_PRODUCT", "WHEAT", 1]]
+def _state(module, *, money: int, step: int, route_end: int, buy_step: int):
+    route = [_pass_action() for _ in range(route_end + 1)]
+    route[buy_step]["market"] = [["BUY_PRODUCT", "WHEAT", 1]]
     farm = {
-        "money": 31,
+        "money": money,
         "tiles": [[None for _ in range(10)] for _ in range(10)],
         "farmer": [4, 4],
         "hands": [],
@@ -58,19 +59,32 @@ def _fixture(module):
     }
     inventory = {item: 10000 for item in module.m.PRODUCTS}
     obs = {
-        "step": 0,
+        "step": step,
         "player": 0,
         "market": {"inventory": inventory, "prices": {}},
-        "town": {"unlocked_shops": ["BAKERY"] * 8},
+        "town": {"unlocked_shops": []},
     }
     config = {
         "shedCapacity": 100,
         "maxMarketOrdersPerTurn": 10,
+        "turnsPerDay": 24,
         "townShopSellInterval": 4,
         "townCenterSellInterval": 24,
     }
     base = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 1]]}
     return obs, config, base, farm, private, route
+
+
+def _same_day_fixture(module):
+    state = _state(module, money=31, step=0, route_end=22, buy_step=22)
+    state[0]["town"]["unlocked_shops"] = ["BAKERY"] * 8
+    return state
+
+
+def _cross_day_fixture(module):
+    # The current public shop set is stable through step 71 only. A shop can
+    # unlock at that day close and affect the inherited step-77 purchase.
+    return _state(module, money=26, step=71, route_end=77, buy_step=77)
 
 
 class TownConsumptionClosureTests(unittest.TestCase):
@@ -99,12 +113,25 @@ class TownConsumptionClosureTests(unittest.TestCase):
             verify_official_engine(self.engine_text),
             EXPECTED_ENGINE_BLOB_SHA1,
         )
-        self.assertEqual(self.patched_text.count("def _funding_apply_town_consumption("), 1)
-        self.assertEqual(self.patched_text.count("        _funding_apply_town_consumption(\n"), 1)
+        self.assertEqual(
+            self.patched_text.count("def _funding_apply_town_consumption("), 1
+        )
+        self.assertEqual(
+            self.patched_text.count("def _funding_require_static_shop_lifecycle("), 1
+        )
+        self.assertEqual(
+            self.patched_text.count(
+                "    _funding_require_static_shop_lifecycle(now, end, config)\n"
+            ),
+            1,
+        )
+        self.assertEqual(
+            self.patched_text.count("        _funding_apply_town_consumption(\n"), 1
+        )
         compile(self.patched_text, str(self.patched_path), "exec")
 
-    def test_predecessor_false_minimum_zero_becomes_one(self):
-        args = _fixture(self.original)
+    def test_same_day_predecessor_false_minimum_zero_becomes_one(self):
+        args = _same_day_fixture(self.original)
         obs, config, base, farm, private, route = args
         current = {"MILK": 1}
         targets = {"MILK": 1}
@@ -113,7 +140,7 @@ class TownConsumptionClosureTests(unittest.TestCase):
             current, targets, "MILK", stress_units=32,
         )
 
-        args = _fixture(self.patched)
+        args = _same_day_fixture(self.patched)
         obs, config, base, farm, private, route = args
         new_minimum, new_receipt = self.patched.funded_minimum_now(
             obs, config, base, farm, private, route, 22,
@@ -123,6 +150,37 @@ class TownConsumptionClosureTests(unittest.TestCase):
         self.assertFalse(new_receipt["fallback"])
         self.assertEqual(old_minimum, 0)
         self.assertEqual(new_minimum, 1)
+
+    def test_day_close_shop_evolution_predecessor_fails_closed(self):
+        args = _cross_day_fixture(self.original)
+        obs, config, base, farm, private, route = args
+        old_minimum, old_receipt = self.original.funded_minimum_now(
+            obs, config, base, farm, private, route, 77,
+            {"MILK": 1}, {"MILK": 1}, "MILK", stress_units=0,
+        )
+        args = _cross_day_fixture(self.patched)
+        obs, config, base, farm, private, route = args
+        new_minimum, new_receipt = self.patched.funded_minimum_now(
+            obs, config, base, farm, private, route, 77,
+            {"MILK": 1}, {"MILK": 1}, "MILK", stress_units=0,
+        )
+        self.assertEqual(old_minimum, 0)
+        self.assertFalse(old_receipt["fallback"])
+        self.assertEqual(new_minimum, 1)
+        self.assertTrue(new_receipt["fallback"])
+        self.assertIn("day-close shop evolution", new_receipt["error"])
+
+    def test_static_shop_lifecycle_boundary_and_type_contract(self):
+        require_static_shop_lifecycle(0, 22, {"turnsPerDay": 24})
+        require_static_shop_lifecycle(71, 71, {"turnsPerDay": 24})
+        with self.assertRaisesRegex(RuntimeError, "day-close shop evolution"):
+            require_static_shop_lifecycle(71, 77, {"turnsPerDay": 24})
+        with self.assertRaises(TypeError):
+            require_static_shop_lifecycle(0, 0, {"turnsPerDay": True})
+        with self.assertRaises(ValueError):
+            require_static_shop_lifecycle(0, 0, {"turnsPerDay": 24.5})
+        with self.assertRaises(ValueError):
+            require_static_shop_lifecycle(0, 0, {"turnsPerDay": 0})
 
     def test_official_public_wheat_quote_is_32_not_projected_31(self):
         inventory = {item: 10000 for item in self.original.m.PRODUCTS}
@@ -137,8 +195,12 @@ class TownConsumptionClosureTests(unittest.TestCase):
                 products=self.original.m.PRODUCTS,
             )
         self.assertEqual(inventory["WHEAT"], 9951)
-        exact_price = self.original.m.market_price("WHEAT", inventory["WHEAT"] - 1, None)
-        projected_stress_price = self.original.m.market_price("WHEAT", 10000 - 32 - 1, None)
+        exact_price = self.original.m.market_price(
+            "WHEAT", inventory["WHEAT"] - 1, None
+        )
+        projected_stress_price = self.original.m.market_price(
+            "WHEAT", 10000 - 32 - 1, None
+        )
         self.assertEqual(projected_stress_price, 31)
         self.assertEqual(exact_price, 32)
         self.assertLess(31, exact_price)
@@ -172,13 +234,13 @@ class TownConsumptionClosureTests(unittest.TestCase):
         self.assertEqual(inventory["FERTILIZER"], 100)
 
     def test_no_town_event_preserves_trace_exactly(self):
-        obs, config, _base, farm, private, route = _fixture(self.original)
+        obs, config, _base, farm, private, route = _same_day_fixture(self.original)
         obs["step"] = 1
         route = route[:4]
         old = self.original._funding_trace(
             obs, config, farm, private, route, 1, 3, [], stress_units=0
         )
-        obs, config, _base, farm, private, route = _fixture(self.patched)
+        obs, config, _base, farm, private, route = _same_day_fixture(self.patched)
         obs["step"] = 1
         route = route[:4]
         new = self.patched._funding_trace(
@@ -187,7 +249,7 @@ class TownConsumptionClosureTests(unittest.TestCase):
         self.assertEqual(old, new)
 
     def test_unknown_public_shop_fails_closed_to_parent_minimum(self):
-        obs, config, base, farm, private, route = _fixture(self.patched)
+        obs, config, base, farm, private, route = _same_day_fixture(self.patched)
         obs["town"]["unlocked_shops"] = ["NOT_A_SHOP"]
         minimum, report = self.patched.funded_minimum_now(
             obs, config, base, farm, private, route, 22,
@@ -199,7 +261,13 @@ class TownConsumptionClosureTests(unittest.TestCase):
 
     def test_receipt_is_strict_json_and_default_off(self):
         data = receipt(self.source_text, self.patched_text, self.engine_text)
+        self.assertEqual(data["schema"], "titan-v3-funding-town-consumption/v2")
         self.assertTrue(data["complete"])
+        self.assertEqual(data["lifecycle_guard_count"], 1)
+        self.assertEqual(data["lifecycle_call_count"], 1)
+        self.assertEqual(
+            data["shop_lifecycle_policy"], "same-day exact; cross-day fail-closed"
+        )
         self.assertFalse(data["canonical_runtime_modified"])
         self.assertFalse(data["hosted_strength_claim"])
         self.assertFalse(data["release_selection_claim"])
