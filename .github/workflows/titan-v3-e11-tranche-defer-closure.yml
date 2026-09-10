@@ -1,0 +1,49 @@
+name: TITAN V3 E11 tranche deferral closure
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e11-tranche-defer-closure-sol-pro/**"
+      - ".github/workflows/titan-v3-e11-tranche-defer-closure.yml"
+  push:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e11-tranche-defer-closure-sol-pro/**"
+      - ".github/workflows/titan-v3-e11-tranche-defer-closure.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-interaction-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run stdlib contracts
+        run: |
+          python -B revenue/kaggriculture/cloud-execution-lab/analysis/v3-e11-tranche-defer-closure-sol-pro/test_closure.py
+      - name: Materialize exact authenticated source lineage
+        run: |
+          set -euo pipefail
+          C=/tmp/v3-source
+          mkdir -p "$C/overlay"
+          BASE="https://raw.githubusercontent.com/woahwhattheheck/commons/0e7ea5f2bd78040dfc38758d08b149f392c1fb3b/revenue/kaggriculture/cloud-execution-lab/candidates/v3"
+          curl -fsSL "$BASE/apply_v3.py" -o "$C/apply_v3.py"
+          curl -fsSL "$BASE/overlay/e11_rival_sell.py" -o "$C/overlay/e11_rival_sell.py"
+          curl -fsSL "$BASE/overlay/l01_mechanics.py" -o "$C/overlay/l01_mechanics.py"
+          cat > /tmp/source.sha256 <<'EOF'
+          8e1093429a1bb463e2b82490963b43d9c9a4fcbd16f9d1b8d02fd75434f84436  /tmp/v3-source/apply_v3.py
+          0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816  /tmp/v3-source/overlay/e11_rival_sell.py
+          65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691  /tmp/v3-source/overlay/l01_mechanics.py
+          EOF
+          sha256sum -c /tmp/source.sha256
+      - name: Reproduce predecessor and deterministic receipt
+        run: |
+          set -euo pipefail
+          D=revenue/kaggriculture/cloud-execution-lab/analysis/v3-e11-tranche-defer-closure-sol-pro
+          python -B "$D/closure.py" \
+            --candidate-root /tmp/v3-source \
+            --expect-status VULNERABLE_REINTRODUCTION \
+            --require-exact-source \
+            --receipt-out /tmp/receipt.json
+          cmp "$D/receipt.json" /tmp/receipt.json
