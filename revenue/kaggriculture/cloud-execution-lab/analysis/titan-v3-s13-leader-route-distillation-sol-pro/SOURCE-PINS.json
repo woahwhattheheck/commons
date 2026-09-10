@@ -1,0 +1,65 @@
+{
+  "schema": "titan-v3-s13-replay-pins/v1",
+  "ledger": {
+    "repository_path": "docs/s12-leader-replays/top5-20260910/SOURCE.json",
+    "git_commit": "111cb66afc9e2e51f0aa6e6fa3eafe94639490ad",
+    "blob_sha": "cfba4383362038597e513054088115d243060d5f"
+  },
+  "sources": [
+    {
+      "episode": 107213024,
+      "json_bytes": 33072967,
+      "json_sha256": "fd800d42620bbb21007fdc44aa32b3b364d79c98cd851baa1e2110acae7fab95",
+      "frames": 720,
+      "teams": ["Otter Vibe", "Terry Luo"],
+      "rewards": [122100.0, 90800.0]
+    },
+    {
+      "episode": 107217016,
+      "json_bytes": 32834100,
+      "json_sha256": "c358198970d623fc7a9a0dbe0ba566358f0e840dd326e0513a719d76455fd978",
+      "frames": 720,
+      "teams": ["Himanshu Kumar", "Otter Vibe"],
+      "rewards": [118379.0, 130220.0]
+    },
+    {
+      "episode": 107223760,
+      "json_bytes": 32353236,
+      "json_sha256": "c72ad0d81c65f93f4988f147e5e4bd50a2edfa3aaa631455e76e9e80dfb81b18",
+      "frames": 720,
+      "teams": ["pensukesan", "Terry Luo"],
+      "rewards": [106510.0, 107829.0]
+    },
+    {
+      "episode": 107237316,
+      "json_bytes": 33286878,
+      "json_sha256": "17fdcc31c6bb30d29cc91c4e376a15d3c8b92d1ec417786ab41059ee624225c9",
+      "frames": 720,
+      "teams": ["SpaTaro", "Otter Vibe"],
+      "rewards": [102451.0, 100586.0]
+    },
+    {
+      "episode": 107252308,
+      "json_bytes": 32219028,
+      "json_sha256": "93a34c7979c6b0c70f1198f08fb8a38d713e373b3ace38c41346c66cdca74316",
+      "frames": 720,
+      "teams": ["Otter Vibe", "SpaTaro"],
+      "rewards": [145887.0, 143343.0]
+    },
+    {
+      "episode": 107260189,
+      "json_bytes": 32764075,
+      "json_sha256": "869ce4f22085f83b295ec8fd11b48f143d649adf5e33f9c73ad9530a14bea5d9",
+      "frames": 720,
+      "teams": ["Terry Luo", "Otter Vibe"],
+      "rewards": [119623.0, 127713.0]
+    }
+  ],
+  "expected_candidates": [
+    "otter-vibe-e107252308-s0",
+    "spataro-e107252308-s1",
+    "terry-luo-e107260189-s0",
+    "himanshu-kumar-e107217016-s0",
+    "pensukesan-e107223760-s0"
+  ]
+}
