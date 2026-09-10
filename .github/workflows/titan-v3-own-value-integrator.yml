@@ -1,0 +1,93 @@
+name: TITAN V3 own-value integrator
+
+on:
+  push:
+    branches:
+      - codex/titan-v3-own-value-one-tree-20260910
+    paths:
+      - .github/workflows/titan-v3-own-value-integrator.yml
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    if: github.event.head_commit.message == 'chore(titan): run exact own-value integrator'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply the exact score seam to both canonical sources
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          paths = (
+              Path('selected_sell_core.py'),
+              Path('reference/titan-current/latest/selected_sell_core.py'),
+          )
+          old = b'        return own_cash+carry-other_cash, own_cash,other_cash,remaining\n'
+          new = b'        return own_cash+carry, own_cash,other_cash,remaining\n'
+          for path in paths:
+              data = path.read_bytes()
+              count = data.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected exactly one old objective, found {count}')
+              if new in data:
+                  raise SystemExit(f'{path}: new objective already present before patch')
+              path.write_bytes(data.replace(old, new, 1))
+          if paths[0].read_bytes() != paths[1].read_bytes():
+              raise SystemExit('root and packaged selected SELL sources diverged')
+          PY
+
+      - name: Compile and verify the objective contract
+        run: |
+          python -m py_compile selected_sell_core.py reference/titan-current/latest/selected_sell_core.py
+          python -m unittest -v test_selected_sell_objective.py
+
+      - name: Run focused selected SELL regression tests
+        run: |
+          python -m unittest -v \
+            test_joint_market_slots.py \
+            test_selected_pruning.py \
+            test_ordered_selected_sell.py
+
+      - name: Rebuild and verify the canonical package
+        run: |
+          python build_integrated.py
+          python build_integrated.py --check
+          python - <<'PY'
+          import ast
+          import tarfile
+          from pathlib import Path
+
+          archive = Path('exports/titan-current.tar.gz')
+          with tarfile.open(archive, 'r:gz') as stream:
+              source = stream.extractfile('selected_sell_core.py').read().decode('utf-8')
+          tree = ast.parse(source, filename='archive:selected_sell_core.py')
+          market = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == 'MarketPath')
+          score = next(node for node in market.body if isinstance(node, ast.FunctionDef) and node.name == 'score')
+          returned = next(node for node in ast.walk(score) if isinstance(node, ast.Return)).value
+          expected = ast.dump(ast.parse('own_cash + carry', mode='eval').body, include_attributes=False)
+          actual = ast.dump(returned.elts[0], include_attributes=False)
+          if actual != expected:
+              raise SystemExit(f'archive objective mismatch: {actual}')
+          PY
+
+      - name: Commit the source and deterministic release outputs
+        shell: bash
+        run: |
+          git config user.name 'TITAN integration bot'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git add -A
+          git diff --cached --stat
+          git diff --cached --quiet && { echo 'no integration changes produced'; exit 1; }
+          git commit -m 'feat(titan-v3): optimize SELL for own terminal value'
+          git push origin HEAD:codex/titan-v3-own-value-one-tree-20260910
