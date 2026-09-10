@@ -1,0 +1,240 @@
+{
+  "capital_firewall_materialization": {
+    "base_file_count": 99,
+    "base_tree_sha256": "98cd13d3c2cc6d16639be4bd932d313bfd6bfd1d084c0183113021ec3dad8ac2",
+    "changed_paths": [
+      "spatial_tempo.py",
+      "titan_runtime.py"
+    ],
+    "files": {
+      "spatial_tempo.py": {
+        "output_sha256": "4646cb1ef2529e635c7442ef2f83621a6610c4129efbb42da21b3dbcdaa97ae3",
+        "source_sha256": "1ace1547a0f091ce36de1bbb8e023baa7b9699346968ebbc1468433733dbd50d"
+      },
+      "titan_runtime.py": {
+        "output_sha256": "1a4c32826566947b04572da1d342942e225efe1a91304d61261463e036e503ba",
+        "source_sha256": "31b9366d8f04f0d7df71ceb9d3a0ce84548f2f4d419f4e9e72bf665d0192778a"
+      }
+    },
+    "operation": "exact weed-continuation capital-firewall materialization",
+    "output_file_count": 99,
+    "output_tree_sha256": "d655582b1fbf9f59a92c66463bff0bd9404392a18d52a2403837df3369bc8be1",
+    "policy": {
+      "queue_index_preserved": true,
+      "rescued_asset": "retain",
+      "same_species_sale_funded_copy": "suppress"
+    },
+    "schema_version": 1
+  },
+  "complete_report_sha256": {
+    "capital_firewall_64.json": "b505fd95b97b422c3dcff78be47fb161c834ec4b22f707330b342d3fcf40d946",
+    "weed_factor_64.json": "df5097ebe3e3d864feb78613db6b5a87d32ac358c9d74b5adb1fb8c22de40829"
+  },
+  "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "exact_v2_archive_sha256": "6705147ba96fe4c6c3762197f024ff1d47d38004f03d0059055ef4467bb5b88e",
+  "firewall_minus_weed_on": {
+    "active_cells": [
+      {
+        "active": true,
+        "candidate_seat": 1,
+        "margin_delta_firewall_minus_on": -1820.0,
+        "margin_firewall": 4890.0,
+        "margin_on": 6710.0,
+        "opponent": "exact_public_apex_v7",
+        "outcome_firewall": "W",
+        "outcome_on": "W",
+        "own_delta_firewall_minus_on": 1595.0,
+        "own_firewall": 52408.0,
+        "own_on": 50813.0,
+        "rival_delta_firewall_minus_on": 3415.0,
+        "rival_firewall": 47518.0,
+        "rival_on": 44103.0,
+        "seed": 2609097303,
+        "trace_firewall": "b544343c498d700692730b1dbc6c735ae82ae066ffda4883c2f7ddc7d026af18",
+        "trace_on": "a5f47f7284965a8937681aa3105c2ffa8ef41e73f0a70ba3722d1f488ede450b"
+      },
+      {
+        "active": true,
+        "candidate_seat": 0,
+        "margin_delta_firewall_minus_on": -593.0,
+        "margin_firewall": 1473.0,
+        "margin_on": 2066.0,
+        "opponent": "exact_public_apex_v7",
+        "outcome_firewall": "W",
+        "outcome_on": "W",
+        "own_delta_firewall_minus_on": 1212.0,
+        "own_firewall": 84409.0,
+        "own_on": 83197.0,
+        "rival_delta_firewall_minus_on": 1805.0,
+        "rival_firewall": 82936.0,
+        "rival_on": 81131.0,
+        "seed": 2609097306,
+        "trace_firewall": "1bc80b230cea54f88f91c7bbfe9e009fb79ee813897c21aed97b67a4ccd2f593",
+        "trace_on": "684d5bee320d5ca9a5884a3bbcb40ce0c1550a17d405d397b7e81fb2b7446d66"
+      }
+    ],
+    "disposition": {
+      "hosted_leaderboard_claim": false,
+      "promotion_authorized": false,
+      "reason": "own cash improved in every active cell, every W/T/L outcome preserved, 62/64 exact traces dormant",
+      "spent_bank": "ADVANCE_TO_FRESH_PAIRED_BOTH_SEAT_PANEL"
+    },
+    "summary": {
+      "active_cells": 2,
+      "active_margin_negative": 2,
+      "active_mean_margin_delta_firewall_minus_on": -1206.5,
+      "active_mean_own_delta_firewall_minus_on": 1403.5,
+      "active_mean_rival_delta_firewall_minus_on": 2610.0,
+      "active_outcomes_preserved": 2,
+      "active_own_positive": 2,
+      "all_mean_margin_delta_firewall_minus_on": -37.703125,
+      "all_mean_own_delta_firewall_minus_on": 43.859375,
+      "all_mean_rival_delta_firewall_minus_on": 81.5625,
+      "cells": 64,
+      "classification": "ACTIVE_OWN_CASH_IMPROVED_OUTCOME_PRESERVED_MARGIN_REDUCED",
+      "inactive_cells": 62,
+      "outcome_transitions": {
+        "W->W": 64
+      },
+      "outcomes_firewall": {
+        "L": 0,
+        "T": 0,
+        "W": 64
+      },
+      "outcomes_on": {
+        "L": 0,
+        "T": 0,
+        "W": 64
+      }
+    }
+  },
+  "hosted_leaderboard_claim": false,
+  "parent_slack_packet": {
+    "file_id": "F0C0LF6206M",
+    "sha256": "d56d7890dadfad7192e43cd5b5d0a2789237c70547873b9906b3717e8d705a42"
+  },
+  "promotion_authorized": false,
+  "raw_report_sha256": {
+    "firewall_apex": "fba0a8672e33e3edc61db76afe76407047ccf07e8fc724ab5fa1d2574dfc503d",
+    "firewall_arlene": "ecd1a0b2236f14b13fdf703e64b8d7cedf3f0fc27b0523f2679b14aab4c144d3",
+    "firewall_kaito": "93dc2f947d45540ab9cfe9117825706727c39c469145a409ed9300791655782b",
+    "firewall_reyhan": "d89175a6d3dd534dff183aaad17f6a8b66a18bc48e4a3e934e76af213c851b2e",
+    "off_apex": "51389e7cd5851b47cd00e0508066bea3aff1e9f213ec305c2210c018f6c2c449",
+    "off_arlene": "6662fbaf0b38cc0f61f7d176b7d261490597d825c2eaedc8e57a3d93e088aac8",
+    "off_kaito": "c224495e85af6200aafc5f2378db050b18dbac772aae2faaf3c52d3648d86ea4",
+    "off_reyhan": "715c3a4adcb5dcd71a5810b4d2fb09e805436ee4c4e16061d55a59e66778749f",
+    "on_apex_h1": "0ed74e394816ca6223c30378d923f2de35f1f32293215c0342061ad05dda827b",
+    "on_apex_h2": "34a13c59df23bf8deed6540004a466a12bb531fc54ed305c3c0e6ad32914e87e",
+    "on_arlene_h1": "482d9d5c943c7698a73941dfe09b5888c4d5caa7fa74318b2c0c4686943eb7cb",
+    "on_arlene_h2": "85d8b03cb7b6755b05e990df47ed104c1eb4dc6fc7b8b0cd56d9d50beed299eb",
+    "on_kaito": "e617b41a5227bf8d9572f2d4d7921e5885b5197181aa3cbdad1a02e06d93950d",
+    "on_reyhan_h1": "1f46a2a84613512fbbd0269855df2d60ee3cb5872a71f81467cedc45fbc3c9d2",
+    "on_reyhan_h2": "f0a0d2c743f0612d51d0f62102b193fdc992f65f9fd859598178233d0fbd8d8c"
+  },
+  "schema_version": 1,
+  "scope": "spent exact official-interpreter bank: 4 opponents x 8 published seeds x both seats",
+  "tests": {
+    "evaluator_failures": 0,
+    "focused_and_replay_contracts": 14,
+    "passed": 14
+  },
+  "weed_off_materialization": {
+    "base_file_count": 99,
+    "base_tree_sha256": "98cd13d3c2cc6d16639be4bd932d313bfd6bfd1d084c0183113021ec3dad8ac2",
+    "changed_paths": [
+      "spatial_tempo.py"
+    ],
+    "new": "        if (self.pathing or self.tempo) and self._continue_weed(obs,selected,controller,end):return selected",
+    "old": "        if self._continue_weed(obs,selected,controller,end):return selected",
+    "operation": "exact one-factor weed continuation OFF materialization",
+    "output_file_count": 99,
+    "output_sha256": "f4f31b62b006b7cf9754e924a9dc80a2e71baa60b504caa6ad352aaea3a33e74",
+    "output_tree_sha256": "18d73e996405a88186922140717e9b39195d476827419ba1477c4308ebe11158",
+    "schema_version": 1,
+    "source_sha256": "1ace1547a0f091ce36de1bbb8e023baa7b9699346968ebbc1468433733dbd50d",
+    "target": "spatial_tempo.py"
+  },
+  "weed_on_minus_off": {
+    "active_cells": [
+      {
+        "active": true,
+        "candidate_seat": 1,
+        "first_changed_day_end": 95,
+        "margin_delta_on_minus_off": 8273.0,
+        "margin_off": -1563.0,
+        "margin_on": 6710.0,
+        "opponent": "exact_public_apex_v7",
+        "outcome_off": "L",
+        "outcome_on": "W",
+        "own_delta_on_minus_off": -50515.0,
+        "own_off": 101328.0,
+        "own_on": 50813.0,
+        "rival_delta_on_minus_off": -58788.0,
+        "rival_off": 102891.0,
+        "rival_on": 44103.0,
+        "seed": 2609097303,
+        "trace_off": "afcf53facd890d2fe74f7be0d97311691b9153277ddc536e0f92a475e40894de",
+        "trace_on": "a5f47f7284965a8937681aa3105c2ffa8ef41e73f0a70ba3722d1f488ede450b"
+      },
+      {
+        "active": true,
+        "candidate_seat": 0,
+        "first_changed_day_end": 95,
+        "margin_delta_on_minus_off": 2820.0,
+        "margin_off": -754.0,
+        "margin_on": 2066.0,
+        "opponent": "exact_public_apex_v7",
+        "outcome_off": "L",
+        "outcome_on": "W",
+        "own_delta_on_minus_off": -22099.0,
+        "own_off": 105296.0,
+        "own_on": 83197.0,
+        "rival_delta_on_minus_off": -24919.0,
+        "rival_off": 106050.0,
+        "rival_on": 81131.0,
+        "seed": 2609097306,
+        "trace_off": "3d0a889d5b363bb2d906b62f4cee0de6881ea67e4ee2599fe04be3011e67f95b",
+        "trace_on": "684d5bee320d5ca9a5884a3bbcb40ce0c1550a17d405d397b7e81fb2b7446d66"
+      }
+    ],
+    "disposition": {
+      "blanket_off": "REJECT_ON_SPENT_BANK_OUTCOME_REGRESSION",
+      "hosted_leaderboard_claim": false,
+      "integration": "EXPLICIT_FACTOR_AND_OUTCOME_FIRST_PAIRED_GATE",
+      "promotion_authorized": false,
+      "unconditional_on": "HOLD_EXTREME_OWN_CASH_TAIL"
+    },
+    "summary": {
+      "active_cells": 2,
+      "active_lost_wins": 0,
+      "active_margin_negative": 0,
+      "active_margin_positive": 2,
+      "active_mean_margin_delta": 5546.5,
+      "active_mean_own_delta": -36307.0,
+      "active_mean_rival_delta": -41853.5,
+      "active_new_wins": 2,
+      "active_own_negative": 2,
+      "active_own_positive": 0,
+      "all_mean_margin_delta": 173.328125,
+      "all_mean_own_delta": -1134.59375,
+      "all_mean_rival_delta": -1307.921875,
+      "cells": 64,
+      "classification": "ACTIVE_OUTCOME_BENEFICIAL_CASH_DESTRUCTIVE",
+      "inactive_cells": 62,
+      "outcome_transitions": {
+        "L->W": 2,
+        "W->W": 62
+      },
+      "outcomes_off": {
+        "L": 2,
+        "T": 0,
+        "W": 62
+      },
+      "outcomes_on": {
+        "L": 0,
+        "T": 0,
+        "W": 64
+      }
+    }
+  }
+}
