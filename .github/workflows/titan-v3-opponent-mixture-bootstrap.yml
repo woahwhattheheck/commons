@@ -1,0 +1,113 @@
+name: TITAN V3 opponent-mixture carrier bootstrap
+
+on:
+  push:
+    branches:
+      - sol-minimax/titan-v3-opponent-mixture-robust-release-20260910-01
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-opponent-mixture-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  publish-exact-bundle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      BRANCH: sol-minimax/titan-v3-opponent-mixture-robust-release-20260910-01
+      BASE: c51049d671b55d282e0fed5df37a0be7c513a838
+      BUNDLE_PREFIX: revenue/kaggriculture/cloud-execution-lab/candidates/v3-opponent-mixture-robust-release-sol-minimax/BOOTSTRAP_BUNDLE.
+      BOOTSTRAP: .github/workflows/titan-v3-opponent-mixture-bootstrap.yml
+      ROOT: revenue/kaggriculture/cloud-execution-lab/candidates/v3-opponent-mixture-robust-release-sol-minimax
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Bind exact bootstrap head and delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = "$BRANCH"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD^)" = "$BASE"
+          mapfile -t changed < <(git diff --name-only "$BASE" HEAD | sort)
+          mapfile -t expected < <(printf '%s\n' \
+            "$BOOTSTRAP" \
+            "${BUNDLE_PREFIX}00" \
+            "${BUNDLE_PREFIX}01" \
+            "${BUNDLE_PREFIX}02" \
+            "${BUNDLE_PREFIX}03" | sort)
+          printf '%s\n' "${changed[@]}"
+          test "${#changed[@]}" -eq "${#expected[@]}"
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${changed[@]}")
+          test -z "$(git status --porcelain)"
+      - name: Verify and extract controlled bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          encoded="$RUNNER_TEMP/titan-mixture-bundle.b64"
+          cat "${BUNDLE_PREFIX}00" "${BUNDLE_PREFIX}01" "${BUNDLE_PREFIX}02" "${BUNDLE_PREFIX}03" > "$encoded"
+          echo "0b4c1187d3bcbfe65e860753c889958163196ef1b4563b397c4da559db0b98ee  $encoded" | sha256sum -c -
+          archive="$RUNNER_TEMP/titan-mixture-bundle.tar.gz"
+          base64 --decode "$encoded" > "$archive"
+          echo "dd7567c7c2d241b065ca2a9c674af0963efa0dfdee5531cbad83c7803aa8de84  $archive" | sha256sum -c -
+          export ARCHIVE="$archive"
+          export DEST="$RUNNER_TEMP/extracted"
+          mkdir -p "$DEST"
+          python - <<'PY'
+          import os
+          import pathlib
+          import tarfile
+
+          archive = pathlib.Path(os.environ["ARCHIVE"])
+          destination = pathlib.Path(os.environ["DEST"])
+          with tarfile.open(archive, "r:gz") as bundle:
+              members = bundle.getmembers()
+              if not members:
+                  raise SystemExit("empty bundle")
+              for member in members:
+                  path = pathlib.PurePosixPath(member.name)
+                  if path.is_absolute() or ".." in path.parts:
+                      raise SystemExit(f"unsafe bundle path: {member.name!r}")
+                  if member.issym() or member.islnk() or member.isdev():
+                      raise SystemExit(f"forbidden bundle member: {member.name!r}")
+                  if not (member.isdir() or member.isfile()):
+                      raise SystemExit(f"unsupported bundle member: {member.name!r}")
+              bundle.extractall(destination, members=members, filter="data")
+          PY
+          cp -a "$DEST"/. .
+          rm -f "${BUNDLE_PREFIX}00" "${BUNDLE_PREFIX}01" "${BUNDLE_PREFIX}02" "${BUNDLE_PREFIX}03" "$BOOTSTRAP"
+      - name: Validate complete postimage before publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(python -c 'import json; print(json.load(open("'"$ROOT"'/SOURCE.json"))["repository_base_commit"])')" = "$BASE"
+          output=$(cd "$ROOT" && python -B -m unittest discover -s . -p 'test_*.py' -v 2>&1)
+          printf '%s\n' "$output"
+          ! grep -q 'skipped=' <<<"$output"
+          grep -q '^Ran 31 tests ' <<<"$output"
+          grep -q '^OK$' <<<"$output"
+          python -B "$ROOT/build_predecessor.py" --check --emit-input "$RUNNER_TEMP/predecessor-input.json"
+          python -B "$ROOT/opponent_mixture_gate.py" \
+            "$RUNNER_TEMP/predecessor-input.json" \
+            --output "$RUNNER_TEMP/predecessor-receipt.json" \
+            --require-status BLOCK_MIXTURE_SENSITIVITY
+          cmp "$ROOT/PREDECESSOR_RECEIPT.json" "$RUNNER_TEMP/predecessor-receipt.json"
+          python -B "$ROOT/build_publication.py" --check
+      - name: Publish validated postimage to owned branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! compgen -G "${BUNDLE_PREFIX}*" >/dev/null
+          test ! -e "$BOOTSTRAP"
+          git add -A
+          git diff --cached --quiet && { echo "no postimage delta"; exit 1; }
+          git config user.name "commons-board"
+          git config user.email "commons-board@users.noreply.github.com"
+          git commit -m "feat(titan): add opponent-mixture robust release gate [skip ci]"
+          test "$(git rev-parse HEAD^)" = "$GITHUB_SHA"
+          git push origin "HEAD:$BRANCH"
