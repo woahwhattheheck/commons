@@ -13,8 +13,6 @@ difference, is invalid evidence rather than an attributed regression.
 """
 from __future__ import annotations
 
-import argparse
-from collections import Counter
 from dataclasses import dataclass
 import hashlib
 import json
@@ -22,8 +20,7 @@ import math
 import os
 from pathlib import Path
 import stat
-import tempfile
-from typing import Any, Mapping, Sequence
+from typing import Any, Mapping
 
 
 MAX_MANIFEST_BYTES = 4 * 1024 * 1024
@@ -254,33 +251,3 @@ def _require_mapping(value: Any, label: str) -> Mapping[str, Any]:
     if not isinstance(value, Mapping):
         raise AttributionError(f"{label}: expected an object")
     return value
-
-__all__ = [
-    'AttributionError',
-    'CellKey',
-    'GameCell',
-    'TraceStep',
-    'Snapshot',
-    'MAX_MANIFEST_BYTES',
-    'MAX_JSON_BYTES',
-    'MAX_JSONL_BYTES',
-    '_HEX',
-    '_reject_constant',
-    '_pairs_object',
-    '_loads_json',
-    '_loads_jsonl',
-    '_canonical_bytes',
-    '_sha256',
-    '_exact_keys',
-    '_key_contract',
-    '_nonempty_string',
-    '_strict_int',
-    '_finite',
-    '_hex_digest',
-    '_commit',
-    '_resolved_path',
-    '_read_regular_file',
-    '_snapshot_file',
-    '_snapshot_manifest',
-    '_require_mapping',
-]
