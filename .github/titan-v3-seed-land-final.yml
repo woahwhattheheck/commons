@@ -1,0 +1,144 @@
+name: titan-v3-seed-land-composition
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-cumulative-seed-row-allocation.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_executable_prefix.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_cumulative_seed_rows.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_seed_land_composition.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-head:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Authenticate direct parent, scope, and source postimage
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_BASE: ${{ github.event.pull_request.base.sha || 'e446ff4b3d31acf98c6b12b04a1e402ebe0b1e83' }}
+        shell: python
+        run: |
+          import hashlib
+          import os
+          from pathlib import Path
+          import subprocess
+
+          parent = 'e446ff4b3d31acf98c6b12b04a1e402ebe0b1e83'
+          head = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD'], (head, os.environ['EXPECTED_HEAD'])
+          assert os.environ['EVENT_BASE'] == parent, (os.environ['EVENT_BASE'], parent)
+          parents = subprocess.check_output(
+              ['git', 'rev-list', '--parents', '-n', '1', 'HEAD'], text=True
+          ).split()[1:]
+          assert parents == [parent], (parents, parent)
+          allowed = {
+              '.github/workflows/titan-v3-cumulative-seed-row-allocation.yml',
+              'revenue/kaggriculture/cloud-execution-lab/early_capital.py',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_seed_land_composition.py',
+          }
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{parent}...HEAD'], text=True
+          ).splitlines())
+          assert changed == allowed, (changed, allowed)
+          subprocess.check_call(['git', 'diff', '--check', f'{parent}...HEAD'])
+
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/early_capital.py':
+                  'ff5fee9159dbe0ef7e4f2400de1a35cab03980f8',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_seed_land_composition.py':
+                  'c986f258c47d892de03cca80cc35cbb82b7560de',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_cumulative_seed_rows.py':
+                  '2b93902b6b702bdf3389dda21559c92044b0fd2f',
+              'revenue/kaggriculture/cloud-execution-lab/mechanics.py':
+                  '044a4f9c0a4a44dde10ada57563238bcaf82075d',
+              'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py':
+                  '3c202c7ee921da239356789e266b694635103fc4',
+          }
+          for raw, wanted in expected.items():
+              data = Path(raw).read_bytes()
+              actual = hashlib.sha1(
+                  b'blob ' + str(len(data)).encode() + b'\0' + data
+              ).hexdigest()
+              assert actual == wanted, (raw, actual, wanted)
+
+      - name: Execute inherited seed and composed land contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile \
+            early_capital.py \
+            test_early_capital.py \
+            test_early_capital_executable_prefix.py \
+            test_early_capital_cumulative_seed_rows.py \
+            test_early_capital_seed_land_composition.py
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python3 -m unittest -v \
+              test_early_capital \
+              test_early_capital_executable_prefix \
+              test_early_capital_cumulative_seed_rows \
+              test_early_capital_seed_land_composition \
+            2>&1 | tee "$RUNNER_TEMP/seed-land-tests.log"
+
+      - name: Emit exact-head receipt
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          head = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip()
+          receipt = {
+              'schema': 'titan-v3-seed-land-composition/v1',
+              'head': head,
+              'expected_head': os.environ['EXPECTED_HEAD'],
+              'seed_parent_pr': 12114,
+              'seed_parent_head': 'e446ff4b3d31acf98c6b12b04a1e402ebe0b1e83',
+              'land_donor_pr': 12116,
+              'land_donor_head': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
+              'source_blob': 'ff5fee9159dbe0ef7e4f2400de1a35cab03980f8',
+              'test_blob': 'c986f258c47d892de03cca80cc35cbb82b7560de',
+              'test_log_sha256': hashlib.sha256(
+                  (Path(os.environ['RUNNER_TEMP']) / 'seed-land-tests.log').read_bytes()
+              ).hexdigest(),
+          }
+          assert receipt['head'] == receipt['expected_head']
+          out = Path(os.environ['RUNNER_TEMP']) / 'seed-land-receipt.json'
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          print(out.read_text(), end='')
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-seed-land-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/seed-land-tests.log
+            ${{ runner.temp }}/seed-land-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        run: test -z "$(git status --porcelain)"
