@@ -1,0 +1,61 @@
+name: titan-terminal-outcome-selector-bootstrap
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-terminal-outcome-selector-20260910-01
+    paths:
+      - ".github/workflows/titan-terminal-outcome-selector-bootstrap.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ROOT: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-outcome-lexicographic-selector
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Materialize and verify exact source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B "$ROOT/materialize_sources.py"
+          cd "$ROOT"
+          sha256sum -c <<'EOF'
+          e5697a61b977bd08fae59eaa5997514599fc2d14c7c1947ffee63fcd225ccade  terminal_outcome_selector.py
+          d61ff11c3306df179ae94c59ae8ddfa662776149cbcfd7ebd6ba5d20e93a78b1  test_terminal_outcome_selector.py
+          3d45554d2024cf39eae2be471e0d8b0599c62cec8946a4c53639bf441a3005a7  fuzz_terminal_outcome_selector.py
+          EOF
+          python -B -m py_compile terminal_outcome_selector.py test_terminal_outcome_selector.py fuzz_terminal_outcome_selector.py verify_packet.py
+          python -B verify_packet.py
+          cmp WORKFLOW.yml "$GITHUB_WORKSPACE/.github/workflows/titan-terminal-outcome-selector.yml"
+
+      - name: Replace transport carriers with ordinary reviewable files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm \
+            "$ROOT/terminal_outcome_selector.py.gz.b64" \
+            "$ROOT/test_terminal_outcome_selector.py.gz.b64" \
+            "$ROOT/fuzz_terminal_outcome_selector.py.gz.b64" \
+            "$ROOT/materialize_sources.py" \
+            .github/workflows/titan-terminal-outcome-selector-bootstrap.yml
+          git add -A
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "feat(titan): publish terminal outcome selector"
+          git push origin "HEAD:${GITHUB_REF}"
