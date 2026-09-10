@@ -38,8 +38,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SCHEMA = "commons-github-state/v1"
 OUT = "feed/github.json"
+
+# Enough to act on without turning the file into a listing of everything.
 NEWEST_N = 10
 OLDEST_N = 5
+
 UNKNOWN = "UNKNOWN"
 
 
@@ -67,7 +70,13 @@ def _count(value):
 
 
 def _pull(row):
-    """One pull request, carrying only durable facts."""
+    """One pull request, carrying only durable facts.
+
+    Deliberately no age field. An age is computed against the moment of
+    observation, so carrying one would make this file differ on every rebuild
+    and commit a fresh diff every five minutes forever. The viewer has a clock;
+    `created_at` plus that clock is a better age than a stamped one anyway.
+    """
     user = row.get("user") or {}
     created = (row.get("created_at") or "").strip()
     return {
@@ -75,6 +84,7 @@ def _pull(row):
         "title": (row.get("title") or "").strip()[:120],
         "author": (user.get("login") or "").strip() or UNKNOWN,
         "draft": bool(row.get("draft")),
+        # Kept verbatim when present, and only ordered when it truly parses.
         "created_at": created or UNKNOWN,
         "branch": ((row.get("head") or {}).get("ref") or "").strip() or UNKNOWN,
     }
@@ -85,7 +95,8 @@ def build(pulls, counts, now=None, degraded=None):
 
     `now` is accepted and deliberately unused. Nothing observation-relative is
     allowed into the payload, so two builds of the same state at different
-    clocks are byte-identical and a quiet rebuild produces no diff.
+    clocks are byte-identical and a quiet rebuild produces no diff. The
+    parameter stays so callers do not have to know that.
     """
     payload = {
         "schema": SCHEMA,
@@ -98,8 +109,11 @@ def build(pulls, counts, now=None, degraded=None):
         },
         "degraded": sorted(degraded or []),
     }
+
     queued = payload["counts"]["runs_queued"]
     running = payload["counts"]["runs_in_progress"]
+    # Reported so a session can decide whether waiting on a check is realistic.
+    # It is a ratio of two observations, not a prediction of anything.
     if isinstance(queued, int) and isinstance(running, int) and running > 0:
         payload["queue_depth_per_runner"] = round(queued / running, 1)
     else:
@@ -110,6 +124,9 @@ def build(pulls, counts, now=None, degraded=None):
         return payload
 
     rows = [_pull(row) for row in pulls if isinstance(row, dict)]
+    # Order only on a timestamp that actually parses. A non-empty but malformed
+    # value sorts as a plain string, and most malformed values sort above every
+    # real ISO date, which would put the one broken row at the top of the page.
     dated = [r for r in rows if _parse_ts(r["created_at"])]
     dated.sort(key=lambda r: r["created_at"], reverse=True)
     payload["pulls_listed"] = len(rows)
@@ -126,6 +143,7 @@ def _dump(payload):
 
 
 def _stable_view(payload):
+    """Everything except the moment it was written."""
     return {k: v for k, v in payload.items() if k != "unchanged_since"}
 
 
@@ -139,8 +157,12 @@ def write(root, payload, now):
                 prior = json.load(fh)
         except Exception:
             prior = None
+
     if isinstance(prior, dict) and _stable_view(prior) == _stable_view(payload):
+        # Same state as last time. Leaving the file untouched keeps the diff
+        # clean and keeps unchanged_since meaning "when this last moved".
         return False
+
     payload = dict(payload, unchanged_since=now)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(_dump(payload))
@@ -166,14 +188,16 @@ def self_test():
     counts = {"repository": "o/r", "open_prs": 106, "open_issues": 3,
               "runs_queued": 2284, "runs_in_progress": 18}
     out = build(pulls, counts, now)
+
     assert out["counts"]["open_pull_requests"] == 106
     assert out["counts"]["runs_queued"] == 2284
     assert out["queue_depth_per_runner"] == round(2284 / 18, 1)
-    assert [p["number"] for p in out["newest_pulls"]] == [3, 2, 1]
-    assert out["longest_open"][0]["number"] == 1
+    assert [p["number"] for p in out["newest_pulls"]] == [3, 2, 1], out["newest_pulls"]
+    assert out["longest_open"][0]["number"] == 1, out["longest_open"]
     assert out["pulls_listed"] == 4
-    assert out["undatable_pulls"] == [4]
+    assert out["undatable_pulls"] == [4], out["undatable_pulls"]
     assert out["drafts"] == 1
+    assert out["newest_pulls"][0]["branch"] == "b3"
     assert _dump(build(pulls, counts, "2026-09-11T09:00:00Z")) == _dump(out)
 
     sparse = build(None, {"repository": "o/r"}, now)
@@ -187,7 +211,11 @@ def self_test():
     assert zeroed["counts"]["open_pull_requests"] == 0
     assert zeroed["pulls_listed"] == 0
     assert zeroed["queue_depth_per_runner"] == UNKNOWN
-    assert build(None, {}, now, degraded=["pulls"])["degraded"] == ["pulls"]
+
+    named = build(None, {}, now, degraded=["pulls"])
+    assert named["degraded"] == ["pulls"]
+
+    assert _dump(build(pulls, counts, now)) == _dump(out)
     print("github_state self-test: PASS")
     return 0
 
@@ -205,10 +233,13 @@ def main(argv=None):
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--self-test", action="store_true")
     args = ap.parse_args(argv)
+
     if args.self_test:
         return self_test()
+
     now = args.observed_at.strip() or _dt.datetime.now(
         _dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     pulls, degraded = None, []
     if args.pulls:
         try:
@@ -219,6 +250,7 @@ def main(argv=None):
             pulls, degraded = None, ["pulls"]
     else:
         degraded = ["pulls"]
+
     payload = build(pulls, {
         "repository": args.repository,
         "open_prs": args.open_prs,
@@ -226,6 +258,7 @@ def main(argv=None):
         "runs_queued": args.runs_queued,
         "runs_in_progress": args.runs_in_progress,
     }, now, degraded)
+
     if args.write:
         changed = write(args.root, payload, now)
         counts = payload["counts"]
@@ -236,6 +269,7 @@ def main(argv=None):
             sys.stderr.write("github_state: degraded sources: %s\n"
                              % ", ".join(payload["degraded"]))
         return 0
+
     print(_dump(payload))
     return 0
 
