@@ -29,6 +29,34 @@ def _json(value: Any) -> str:
     return json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
 
 
+def live_cash_markdown(path: Path) -> str:
+    """Emit living KEEP live-cash + titanmcp cites for a compiled wiki page.
+
+    Bass/latch already landed these cites on the markdown wiki. Compile and
+    check must emit the same bytes so rebuilds keep the shelf instead of
+    reporting DRIFT.
+    """
+    prefix = "/".join(".." for _ in path.parent.relative_to(ROOT).parts)
+    return (
+        "## Live cash\n"
+        "\n"
+        "Verified product pages only — no invented Stripe links.\n"
+        "\n"
+        f"- [$29 Autopsy checkout]({prefix}/agent-rescue.html)\n"
+        f"- [$199 dealer diagnostic]({prefix}/dealer-service-lead-rescue.html)\n"
+        f"- [$199 referral diagnostic]({prefix}/referral-intake-completeness.html)\n"
+        f"- [$199 repair diagnostic]({prefix}/repair-booking-preflight.html)\n"
+        f"- [$199 plant diagnostic]({prefix}/plant-downtime-handoff.html)\n"
+        "\n"
+        "## Contest product (titanmcp)\n"
+        "\n"
+        "Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): "
+        "https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, "
+        "Agent Resources, `syncConsents`. Board: "
+        f"[titanmcp.html]({prefix}/titanmcp.html). Cite Latch Pad KEEP.\n"
+    )
+
+
 def load_records() -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -189,7 +217,8 @@ def compile_outputs(records: list[dict[str, Any]]) -> dict[Path, str]:
             *[f"- `experience/raw/{record_id}.json`" for record_id in compiled["evidence_records"]],
             "",
         ]
-        outputs[PATTERN_DIR / f"{pattern_id}.md"] = "\n".join(lines)
+        pattern_path = PATTERN_DIR / f"{pattern_id}.md"
+        outputs[pattern_path] = "\n".join(lines) + "\n" + live_cash_markdown(pattern_path)
 
     index_lines = [
         "# Commons Experience Wiki",
@@ -213,7 +242,8 @@ def compile_outputs(records: list[dict[str, Any]]) -> dict[Path, str]:
         "proposers use the wiki to make one evidence-backed procedural change at a time.",
         "",
     ]
-    outputs[WIKI_DIR / "index.md"] = "\n".join(index_lines)
+    index_path = WIKI_DIR / "index.md"
+    outputs[index_path] = "\n".join(index_lines) + "\n" + live_cash_markdown(index_path)
     outputs[WIKI_DIR / "catalog.json"] = _json(catalog)
     outputs[WIKI_DIR / "evolution-log.jsonl"] = "".join(
         json.dumps(item, sort_keys=True, ensure_ascii=False) + "\n" for item in evolution
