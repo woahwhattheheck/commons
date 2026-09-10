@@ -51,10 +51,12 @@ There is no IDLE band. A seat is idle only when it says so, and that stays in
 
 REFERENCE TIME
 --------------
-Ages are measured against `reference_time`, which defaults to the newest
-timestamp found in the inputs rather than the wall clock, so a rebuild that
-ingested nothing reproduces byte-identical output. Pass `--now` for a live
-reading; the command center does this, the scheduled bake does not.
+Ages in the static bake are measured against `reference_time`, which defaults
+to the newest timestamp found in the inputs rather than the wall clock, so a
+rebuild that ingested nothing reproduces byte-identical output. That makes the
+baked age a historical snapshot, not a routing clock: live consumers recompute
+heartbeat age at read time. Pass `--now` when an explicitly live one-off bake
+is wanted.
 
 Stdlib only. No network.
 """
@@ -65,6 +67,7 @@ import argparse
 import datetime as _dt
 import glob
 import json
+import math
 import os
 import sys
 
@@ -122,13 +125,33 @@ def _iso(moment):
     return moment.strftime("%Y-%m-%dT%H:%M:%SZ") if moment else ""
 
 
+def _finite_tree(value):
+    """Python's JSON reader accepts NaN/Infinity; the browser JSON reader does not."""
+    if isinstance(value, float):
+        return math.isfinite(value)
+    if isinstance(value, dict):
+        return all(_finite_tree(item) for item in value.values())
+    if isinstance(value, (list, tuple)):
+        return all(_finite_tree(item) for item in value)
+    return True
+
+
 def _num(value):
     if isinstance(value, bool) or value is None:
         return None
     try:
-        return float(value)
+        parsed = float(value)
     except Exception:
         return None
+    return parsed if math.isfinite(parsed) else None
+
+
+def _count(value):
+    """A non-negative integral count, or None when silence/garbage was supplied."""
+    parsed = _num(value)
+    if parsed is None or parsed < 0 or not parsed.is_integer():
+        return None
+    return int(parsed)
 
 
 def read_declared(root=ROOT):
@@ -147,6 +170,9 @@ def read_declared(root=ROOT):
             continue
         if not isinstance(rec, dict):
             bad.append({"file": base, "error": "not-an-object"})
+            continue
+        if not _finite_tree(rec):
+            bad.append({"file": base, "error": "non-finite-number"})
             continue
         name = _s(rec.get("seat")) or os.path.splitext(base)[0]
         rec = dict(rec)
@@ -198,6 +224,10 @@ def _context_block(raw):
                 "measured_at": UNKNOWN}, None
     limit = _num(raw.get("limit_tokens"))
     used = _num(raw.get("used_tokens"))
+    if limit is not None and limit < 0:
+        limit = None
+    if used is not None and used < 0:
+        used = None
     block = {
         "limit_tokens": limit if limit is not None else UNKNOWN,
         "used_tokens": used if used is not None else UNKNOWN,
@@ -214,6 +244,8 @@ def _budget_block(raw, reference):
         return {"window": UNKNOWN, "remaining_pct": UNKNOWN,
                 "resets_at": UNKNOWN, "source": UNKNOWN}, UNKNOWN, None
     remaining = _num(raw.get("remaining_pct"))
+    if remaining is not None and not 0 <= remaining <= 100:
+        remaining = None
     resets_at = _parse_ts(raw.get("resets_at"))
     block = {
         "window": _s(raw.get("window")) or UNKNOWN,
@@ -239,15 +271,15 @@ def _budget_block(raw, reference):
 def _tools_block(raw):
     if not isinstance(raw, dict):
         return {"count": UNKNOWN, "surface_ref": UNKNOWN}, None
-    count = _num(raw.get("count"))
+    count = _count(raw.get("count"))
     block = {
-        "count": int(count) if count is not None else UNKNOWN,
+        "count": count if count is not None else UNKNOWN,
         "surface_ref": _s(raw.get("surface_ref")) or UNKNOWN,
     }
     sample = raw.get("names_sample")
     if isinstance(sample, list) and sample:
         block["names_sample"] = [_s(x) for x in sample][:12]
-    return block, (int(count) if count is not None else None)
+    return block, count
 
 
 def build(declared, presence, reference, bad_files=None):
@@ -294,12 +326,12 @@ def build(declared, presence, reference, bad_files=None):
         for item in cants:
             if not isinstance(item, dict):
                 continue
-            minutes = _num(item.get("est_minutes"))
+            minutes = _count(item.get("est_minutes"))
             entry = {
                 "what": _s(item.get("what")) or UNKNOWN,
                 "need": _s(item.get("need")) or UNKNOWN,
                 "since": _s(item.get("since")) or UNKNOWN,
-                "est_minutes": int(minutes) if minutes is not None else UNKNOWN,
+                "est_minutes": minutes if minutes is not None else UNKNOWN,
             }
             clean_cants.append(entry)
             rollup_cants.append(dict(entry, seat=name))
@@ -365,7 +397,7 @@ def build(declared, presence, reference, bad_files=None):
 
     def _minutes(entry):
         value = entry.get("est_minutes")
-        return value if isinstance(value, int) else 10 ** 9
+        return value if isinstance(value, int) and not isinstance(value, bool) else 10 ** 9
 
     return {
         "schema": SCHEMA,
@@ -435,7 +467,9 @@ def write(root=ROOT, now=None):
             "roster; nothing written rather than publishing an empty colony.\n")
         raise SystemExit(2)
     payload = build(declared, presence, reference_time(declared, presence, now), bad)
-    blob = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+    # RFC JSON only. This should be redundant with read_declared/_num validation,
+    # but allow_nan=False makes any future leak fail closed before publication.
+    blob = json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n"
     path = os.path.join(root, OUT)
     prior = None
     if os.path.exists(path):
@@ -530,9 +564,18 @@ def self_test():
     # Doubly-quoted roster values normalise rather than becoming new seats.
     assert _s('"ASTRA-WORK"') == "ASTRA-WORK"
 
+    # Non-finite and invalid integral numerics fail closed before JSON output.
+    assert _num("NaN") is None
+    assert _num("Infinity") is None
+    assert _num(float("-inf")) is None
+    assert _count(3.0) == 3
+    assert _count(3.5) is None
+    assert _count(-1) is None
+    assert not _finite_tree({"nested": [1, float("nan")]})
+
     # Byte-stability.
-    a = json.dumps(build(declared, presence, ref), sort_keys=True)
-    b = json.dumps(build(declared, presence, ref), sort_keys=True)
+    a = json.dumps(build(declared, presence, ref), sort_keys=True, allow_nan=False)
+    b = json.dumps(build(declared, presence, ref), sort_keys=True, allow_nan=False)
     assert a == b
 
     print("seat_census self-test: PASS")

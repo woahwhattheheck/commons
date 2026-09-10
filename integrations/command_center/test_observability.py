@@ -47,7 +47,11 @@ class Repo(unittest.TestCase):
             ],
         })
         self.put("seats.json", {
+            # This reference is intentionally a historical bake reference. The
+            # observability reader must not trust its liveness values as current.
             "reference_time": "2026-09-10T20:00:00Z",
+            "reference_source": "newest input timestamp unless --now was given",
+            "liveness_bands_s": {"LIVE": 900, "QUIET": 3600, "STALE": 86400},
             "totals": {"seats": 3, "declared": 2, "presence_only": 1},
             "by_liveness": {"LIVE": 1, "QUIET": 1, "COLD": 1},
             "by_harness": {"harness-a": 1, "UNKNOWN": 2},
@@ -61,10 +65,17 @@ class Repo(unittest.TestCase):
             ],
             "unreadable_seat_files": [],
             "seats": [
-                {"seat": "HOT", "derived": {"liveness": "LIVE"}},
-                {"seat": "COLDSEAT", "derived": {"liveness": "COLD"}},
+                {"seat": "HOT",
+                 "declared": {"heartbeat": "2026-09-10T19:55:00Z"},
+                 "derived": {"liveness": "LIVE", "heartbeat_age_s": 0}},
+                {"seat": "COLDSEAT",
+                 "declared": {"heartbeat": "2026-09-01T00:00:00Z"},
+                 "derived": {"liveness": "COLD", "heartbeat_age_s": 0}},
             ],
-            "roster": [{"seat": "NAMEONLY", "liveness": "QUIET"}],
+            "roster": [
+                {"seat": "NAMEONLY", "heartbeat": "2026-09-10T19:20:00Z",
+                 "liveness": "LIVE", "heartbeat_age_s": 0}
+            ],
         })
 
 
@@ -72,7 +83,8 @@ class TestCompleteSnapshot(Repo):
     def setUp(self):
         super().setUp()
         self.complete()
-        self.snap = observability.snapshot(self.root)
+        self.now = "2026-09-10T20:05:00Z"
+        self.snap = observability.snapshot(self.root, now=self.now)
 
     def test_all_three_sources_read_and_nothing_is_degraded(self):
         self.assertEqual(self.snap["degraded"], [])
@@ -99,11 +111,14 @@ class TestCompleteSnapshot(Repo):
         self.assertEqual([c["seat"] for c in seats["unpriced_unblocks"]],
                          ["COLDSEAT"])
 
-    def test_routable_seats_exclude_the_cold_and_the_undeclared(self):
+    def test_routable_seats_use_read_time_not_baked_liveness(self):
         seats = self.snap["seats"]
         self.assertEqual([s["seat"] for s in seats["routable"]], ["HOT"])
         self.assertEqual([r["seat"] for r in seats["awake_undeclared"]],
                          ["NAMEONLY"])
+        self.assertEqual(seats["reference_time"], self.now)
+        self.assertEqual(seats["baked_reference_time"], "2026-09-10T20:00:00Z")
+        self.assertEqual(seats["reference_source"], "read-time heartbeat derivation")
 
     def test_headline_is_one_readable_line(self):
         self.assertEqual(
@@ -111,9 +126,45 @@ class TestCompleteSnapshot(Repo):
             "1 live, 1 quiet, 2 events in the delta shard, 1 priced unblocks")
 
     def test_board_limit_caps_events_without_changing_the_count(self):
-        snap = observability.snapshot(self.root, feed_limit=1)
+        snap = observability.snapshot(self.root, feed_limit=1, now=self.now)
         self.assertEqual(len(snap["board"]["events"]), 1)
         self.assertEqual(snap["board"]["count"], 2)
+
+
+class TestReadTimeLiveness(Repo):
+    def test_unchanged_bake_ages_live_to_quiet_to_stale_to_cold(self):
+        self.complete()
+        path = os.path.join(self.root, "seats.json")
+        with open(path, "rb") as fh:
+            before = fh.read()
+
+        cases = [
+            ("2026-09-10T20:05:00Z", "LIVE", True),
+            ("2026-09-10T20:20:00Z", "QUIET", True),
+            ("2026-09-10T21:00:01Z", "STALE", False),
+            ("2026-09-11T19:55:01Z", "COLD", False),
+        ]
+        for now, expected, routable in cases:
+            snap = observability.snapshot(self.root, now=now)
+            hot = [s for s in snap["seats"]["seats"] if s["seat"] == "HOT"][0]
+            self.assertEqual(hot["derived"]["liveness"], expected, now)
+            routed = [s["seat"] for s in snap["seats"]["routable"]]
+            self.assertEqual("HOT" in routed, routable, now)
+
+        with open(path, "rb") as fh:
+            self.assertEqual(fh.read(), before,
+                             "read-time aging must not mutate the stable bake")
+
+    def test_future_heartbeat_clamps_to_live_zero_age(self):
+        self.complete()
+        seats = json.loads(open(os.path.join(self.root, "seats.json"),
+                                encoding="utf-8").read())
+        seats["seats"][0]["declared"]["heartbeat"] = "2026-09-11T00:00:00Z"
+        self.put("seats.json", seats)
+        snap = observability.snapshot(self.root, now="2026-09-10T20:00:00Z")
+        hot = [s for s in snap["seats"]["seats"] if s["seat"] == "HOT"][0]
+        self.assertEqual(hot["derived"]["liveness"], "LIVE")
+        self.assertEqual(hot["derived"]["heartbeat_age_s"], 0)
 
 
 class TestDegradation(Repo):
