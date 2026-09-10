@@ -43,6 +43,33 @@ def write_json(path: Path, value: Any) -> None:
     os.replace(temporary, path)
 
 
+def tree_manifest(root: Path) -> dict[str, str]:
+    """Return a deterministic regular-file SHA-256 manifest for an extracted runtime tree."""
+    if not root.is_dir():
+        raise ValueError(f"Runtime tree is not a directory: {root}")
+    manifest: dict[str, str] = {}
+    for path in sorted(root.rglob("*")):
+        relative = path.relative_to(root).as_posix()
+        if path.is_symlink():
+            raise ValueError(f"Runtime tree contains a symbolic link: {relative}")
+        if path.is_file():
+            manifest[relative] = sha256_file(path)
+        elif not path.is_dir():
+            raise ValueError(f"Runtime tree contains an unsupported entry: {relative}")
+    return manifest
+
+
+def manifest_diff(before: Mapping[str, str], after: Mapping[str, str]) -> dict[str, list[str]]:
+    """Return deterministic added/removed/changed paths between two file manifests."""
+    before_paths = set(before)
+    after_paths = set(after)
+    return {
+        "added": sorted(after_paths - before_paths),
+        "removed": sorted(before_paths - after_paths),
+        "changed": sorted(path for path in before_paths & after_paths if before[path] != after[path]),
+    }
+
+
 def safe_extract(archive: Path, destination: Path) -> list[str]:
     """Extract only in-root regular files/directories; reject links, devices, and duplicates."""
     destination.mkdir(parents=True, exist_ok=True)
@@ -135,7 +162,9 @@ def materialize_variants(
     factors: Sequence[str],
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     config_path = base / "TITAN-CONFIG.json"
-    config = validate_config(json.loads(config_path.read_text(encoding="utf-8")), factors)
+    original_config_bytes = config_path.read_bytes()
+    config = validate_config(json.loads(original_config_bytes.decode("utf-8")), factors)
+    base_manifest = tree_manifest(base)
     rows = variant_specs(factors)
     for row in rows:
         root = destination / row["name"]
@@ -143,13 +172,42 @@ def materialize_variants(
         built = dict(config)
         if row["disabled"] is not None:
             built[row["disabled"]] = False
-        changed = [key for key in factors if built[key] != config[key]]
-        expected = [] if row["disabled"] is None else [row["disabled"]]
-        if changed != expected:
-            raise AssertionError(f"Variant {row['name']} changed {changed}, expected {expected}")
-        write_json(root / "TITAN-CONFIG.json", built)
-        row["config_sha256"] = sha256_file(root / "TITAN-CONFIG.json")
-        row["candidate"] = str((root / "main.py").resolve()) + "::agent"
+        semantic_changed = sorted(
+            key for key in set(config) | set(built)
+            if key not in config or key not in built or config[key] != built[key]
+        )
+        expected_keys = [] if row["disabled"] is None else [row["disabled"]]
+        if semantic_changed != expected_keys:
+            raise AssertionError(
+                f"Variant {row['name']} changed config keys {semantic_changed}, expected {expected_keys}"
+            )
+
+        variant_config = root / "TITAN-CONFIG.json"
+        if row["disabled"] is None:
+            if variant_config.read_bytes() != original_config_bytes:
+                raise AssertionError("All-enabled control did not preserve exact archive config bytes")
+        else:
+            write_json(variant_config, built)
+            loaded = json.loads(variant_config.read_text(encoding="utf-8"))
+            if loaded != built:
+                raise AssertionError(f"Variant {row['name']} config serialization changed semantics")
+
+        diff = manifest_diff(base_manifest, tree_manifest(root))
+        expected_paths = [] if row["disabled"] is None else ["TITAN-CONFIG.json"]
+        if diff["added"] or diff["removed"] or diff["changed"] != expected_paths:
+            raise AssertionError(
+                f"Variant {row['name']} tree diff {diff}, expected only changed={expected_paths}"
+            )
+        row.update({
+            "config_sha256": sha256_file(variant_config),
+            "config_semantic_changed_keys": semantic_changed,
+            "tree_diff": diff,
+            "all_enabled_byte_identical": row["disabled"] is None,
+            "non_config_byte_identical": not diff["added"] and not diff["removed"] and all(
+                path == "TITAN-CONFIG.json" for path in diff["changed"]
+            ),
+            "candidate": str((root / "main.py").resolve()) + "::agent",
+        })
     return rows, config
 
 
