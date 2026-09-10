@@ -21,8 +21,8 @@ jobs:
     timeout-minutes: 10
     env:
       BASE_SHA: 2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb
-      ARCHIVE_SHA256: 84b9a1b2a3fd6dd324d0e4976c38404ee45ed19b0eea9697dc546d6193406cb2
-      ARCHIVE_BYTES: '16545'
+      ARCHIVE_SHA256: 592cf859874358df942058030e40f09b5d7ca3853a59b2741f9b912660f9524b
+      ARCHIVE_BYTES: '17742'
       BOOTSTRAP_DIR: p/sol-familywise-bootstrap-20260910-01
     steps:
       - uses: actions/checkout@v4
@@ -42,9 +42,9 @@ jobs:
           git cat-file -e "$BASE_SHA^{commit}"
           test "$(git merge-base "$BASE_SHA" "$GITHUB_SHA")" = "$BASE_SHA"
           sha256sum -c <<'EOF'
-          4da1cfdb4e4dacf35f758cf24f38aa7d9afc7aeee4cbab0cb4941a3524f340ce  p/sol-familywise-bootstrap-20260910-01/payload.b64.00
-          9eaf74cee948181c35f190504bf362bcf9c321284eced5be5cdafd34a08b1a74  p/sol-familywise-bootstrap-20260910-01/payload.b64.01
-          1613dcae3457ced0be2c876cb937680f52aafe6d383e923c8abc438530615d8c  p/sol-familywise-bootstrap-20260910-01/payload.b64.02
+          393a061c936426a5883821fea37180df0c106680ed5d1f0ff866b6ed6ef8f47b  p/sol-familywise-bootstrap-20260910-01/payload.b64.00
+          8c9856fd9b2203b32924dc4443988f53f68ba420ffc4ca637ea3f71c9a4b2953  p/sol-familywise-bootstrap-20260910-01/payload.b64.01
+          bdb3e13c7693874a6872ca2ef258eeca18cfc999074a63977f7476469185ab44  p/sol-familywise-bootstrap-20260910-01/payload.b64.02
           EOF
           cat "$BOOTSTRAP_DIR"/payload.b64.00 \
               "$BOOTSTRAP_DIR"/payload.b64.01 \
@@ -63,10 +63,10 @@ jobs:
           root = Path(os.environ["FINAL_ROOT"])
           expected = {
               ".github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml": (1277, "3d1181dfdc68914f1fee7bac2ae2828ffa6d503dfc758e085f54f89cbcdd22a5"),
-              "p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md": (3340, "1939fa64c3ebc2654dc99d5743575001bb280b19e32894dba6a6d51af8935f15"),
-              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md": (6162, "5dcdb51824d3b959febac1fb32cfcb3c89b265762bc7bc86e8130b14e6d27723"),
-              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py": (44854, "41b5bca8cc848ebc0dd83642f62869ff8e1a55e43fab1be7a55ac08cf6141e86"),
-              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py": (18478, "ffa63248c7ee5cedd9fefce83cb55428b906e26e664d171934234f4ebf570ecf"),
+              "p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md": (3602, "56eac3a5fd3276e573efd9b6241396ba9ea6b5fbe0aa54f15e10e74dc004e23b"),
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md": (6870, "2455651fd6ba2f1fc987eeba5bb5495eee79974bb617b54152f59d7a2b5e40de"),
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py": (48173, "6a305364b4d8a5690c556a46b8862fd3eb6e17b8b6e6b676e10cfb10b5840499"),
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py": (20349, "143e62a4c5f674a047100252cc04b50ecbc6fe6496b6f228f595eea5cee666c2"),
           }
           root.mkdir(parents=True, exist_ok=False)
           with tarfile.open(archive, "r:gz") as bundle:
@@ -127,10 +127,10 @@ jobs:
             git update-index --add --cacheinfo "$mode,$blob,$path"
           done <<'EOF'
           100644|.github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml|3d1181dfdc68914f1fee7bac2ae2828ffa6d503dfc758e085f54f89cbcdd22a5
-          100644|p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md|1939fa64c3ebc2654dc99d5743575001bb280b19e32894dba6a6d51af8935f15
-          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md|5dcdb51824d3b959febac1fb32cfcb3c89b265762bc7bc86e8130b14e6d27723
-          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py|41b5bca8cc848ebc0dd83642f62869ff8e1a55e43fab1be7a55ac08cf6141e86
-          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py|ffa63248c7ee5cedd9fefce83cb55428b906e26e664d171934234f4ebf570ecf
+          100644|p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md|56eac3a5fd3276e573efd9b6241396ba9ea6b5fbe0aa54f15e10e74dc004e23b
+          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md|2455651fd6ba2f1fc987eeba5bb5495eee79974bb617b54152f59d7a2b5e40de
+          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py|6a305364b4d8a5690c556a46b8862fd3eb6e17b8b6e6b676e10cfb10b5840499
+          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py|143e62a4c5f674a047100252cc04b50ecbc6fe6496b6f228f595eea5cee666c2
           EOF
           git diff --cached --name-status "$BASE_SHA" | awk '$1 != "A" { print "non-additive path: " $0 > "/dev/stderr"; bad=1 } END { exit bad }'
           git diff --cached --name-only "$BASE_SHA" | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
