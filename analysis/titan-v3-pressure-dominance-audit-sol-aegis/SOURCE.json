@@ -1,30 +1,41 @@
 {
-  "schema": "titan-pressure-dominance-audit-source/v1",
+  "audit_revisions": [
+    {
+      "commit": "494ba27dd0d87975bd77f8f6b76ddbd8d7386214",
+      "disposition": "evidence retained; bounded repair claim superseded",
+      "role": "initial proxy-zero counterexample and plateau scan"
+    },
+    {
+      "disposition": "universal dominance HOLD",
+      "role": "follow-up exact prefix-state and rival-BUY predecessors"
+    }
+  ],
   "base_commit": "c51049d671b55d282e0fed5df37a0be7c513a838",
-  "reviewed_proposal": {
-    "branch": "sol-pro/titan-strict-dominance-pressure-20260910-01",
-    "head_at_review": "dfef8e57289b59c68bd45eb8f3fdd8ec610e0892",
-    "workflow_path": ".github/workflows/titan-strict-dominance-selfbuild.yml",
-    "workflow_blob": "3e18013cfca13b53f7af64408e475ca177f1d731",
-    "algorithm": "stable positive same-sized proxy scores before zero scores"
-  },
+  "canonical_mutation": false,
   "pinned_sources": [
     {
-      "path": "revenue/kaggriculture/cloud-execution-lab/mechanics.py",
       "git_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+      "path": "revenue/kaggriculture/cloud-execution-lab/mechanics.py",
       "role": "mechanically extracted official market execution and quote curve"
     },
     {
-      "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
       "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
       "role": "pinned official engine source"
     },
     {
-      "path": "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py",
       "git_blob": "7261674962d10fc8bc6af5ff73ff9212c40f61ad",
+      "path": "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py",
       "role": "same-sized market-pressure proxy under review"
     }
   ],
-  "canonical_mutation": false,
-  "provider_mutation": false
+  "provider_mutation": false,
+  "reviewed_proposal": {
+    "algorithm": "stable positive same-sized proxy scores before zero scores",
+    "branch": "sol-pro/titan-strict-dominance-pressure-20260910-01",
+    "head_at_review": "dfef8e57289b59c68bd45eb8f3fdd8ec610e0892",
+    "workflow_blob": "3e18013cfca13b53f7af64408e475ca177f1d731",
+    "workflow_path": ".github/workflows/titan-strict-dominance-selfbuild.yml"
+  },
+  "schema": "titan-pressure-dominance-audit-source/v2"
 }

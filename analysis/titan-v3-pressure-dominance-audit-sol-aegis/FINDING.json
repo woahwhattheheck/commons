@@ -1,5 +1,9 @@
 {
-  "claim": "same-sized proxy zero is not a bounded demotion certificate",
+  "claims_disproved": [
+    "same-sized proxy zero certifies safe demotion",
+    "raw-public-inventory 0..shedCapacity sale-delay invariance certifies safe demotion",
+    "demoted-lot sale-supply invariance alone establishes universal own-cash dominance"
+  ],
   "plateau_scan": {
     "by_product": {
       "CARROT": 255,
@@ -21,7 +25,7 @@
       1,
       8
     ],
-    "rival_bound": 100,
+    "rival_sell_bound": 100,
     "worst_cell": {
       "inventory": 9962,
       "item": "WOOL",
@@ -29,31 +33,41 @@
       "quantity": 2
     }
   },
-  "schema": "titan-pressure-dominance-audit/v1",
-  "witness": {
-    "certified_candidate_cash": {
-      "own": 229,
-      "rival": 117
-    },
-    "certified_candidate_orders": [
-      [
-        "SELL",
-        "TOMATO",
-        1
-      ],
-      [
-        "SELL",
-        "MILK",
-        1
-      ]
+  "production_disposition": {
+    "required_scope": [
+      "exact or conservative queue-prefix inventory envelopes",
+      "both promoted and demoted lots",
+      "opponent BUY and SELL feasibility",
+      "quote-all then commit-all row semantics",
+      "active-prefix and shed/cash bounds",
+      "parent-order fallback on ambiguity"
     ],
+    "universal_strict_dominance": "HOLD"
+  },
+  "schema": "titan-pressure-dominance-audit/v2",
+  "witness_proxy_zero": {
     "inventory": {
       "MILK": 9999,
       "TOMATO": 9999
     },
-    "parent_cash": {
-      "own": 229,
-      "rival": 117
+    "parent": {
+      "market_inventory": {
+        "MILK": 10000,
+        "TOMATO": 10002
+      },
+      "money": {
+        "own": 229,
+        "rival": 117
+      },
+      "sheds": [
+        {
+          "MILK": 0,
+          "TOMATO": 0
+        },
+        {
+          "TOMATO": 0
+        }
+      ]
     },
     "parent_orders": [
       [
@@ -67,9 +81,24 @@
         1
       ]
     ],
-    "proxy_candidate_cash": {
-      "own": 226,
-      "rival": 120
+    "proxy_candidate": {
+      "market_inventory": {
+        "MILK": 10000,
+        "TOMATO": 10002
+      },
+      "money": {
+        "own": 226,
+        "rival": 120
+      },
+      "sheds": [
+        {
+          "MILK": 0,
+          "TOMATO": 0
+        },
+        {
+          "TOMATO": 0
+        }
+      ]
     },
     "proxy_candidate_orders": [
       [
@@ -85,12 +114,40 @@
     ],
     "proxy_delta": {
       "margin": -6,
-      "own": -3
+      "own": -3,
+      "rival": 3
     },
-    "proxy_scores": {
-      "MILK": 9,
-      "TOMATO": 0
+    "raw_bounded_candidate": {
+      "market_inventory": {
+        "MILK": 10000,
+        "TOMATO": 10002
+      },
+      "money": {
+        "own": 229,
+        "rival": 117
+      },
+      "sheds": [
+        {
+          "MILK": 0,
+          "TOMATO": 0
+        },
+        {
+          "TOMATO": 0
+        }
+      ]
     },
+    "raw_bounded_orders": [
+      [
+        "SELL",
+        "TOMATO",
+        1
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
     "rival_orders": [
       [
         "SELL",
@@ -99,6 +156,210 @@
       ],
       []
     ],
-    "tomato_safe_through_100": false
+    "same_sized_proxy_scores": {
+      "MILK": 9,
+      "TOMATO": 0
+    }
+  },
+  "witness_raw_prefix": {
+    "actual_middle_candidate_quote": 20,
+    "actual_middle_candidate_start_inventory": 10244,
+    "actual_middle_parent_quote": 21,
+    "actual_middle_parent_start_inventory": 10144,
+    "candidate": {
+      "market_inventory": {
+        "MILK": 10000,
+        "WHEAT": 10245
+      },
+      "money": {
+        "own": 1827,
+        "rival": 2076
+      },
+      "sheds": [
+        {
+          "MILK": 0,
+          "WHEAT": 0
+        },
+        {
+          "WHEAT": 0
+        }
+      ]
+    },
+    "delta": {
+      "margin": -2,
+      "own": -1,
+      "rival": 1
+    },
+    "inventory": {
+      "MILK": 9999,
+      "WHEAT": 10066
+    },
+    "middle_raw_safe_through_100": true,
+    "parent": {
+      "market_inventory": {
+        "MILK": 10000,
+        "WHEAT": 10245
+      },
+      "money": {
+        "own": 1828,
+        "rival": 2075
+      },
+      "sheds": [
+        {
+          "MILK": 0,
+          "WHEAT": 0
+        },
+        {
+          "WHEAT": 0
+        }
+      ]
+    },
+    "parent_orders": [
+      [
+        "SELL",
+        "WHEAT",
+        78
+      ],
+      [
+        "SELL",
+        "WHEAT",
+        1
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
+    "raw_bounded_candidate_orders": [
+      [
+        "SELL",
+        "WHEAT",
+        78
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ],
+      [
+        "SELL",
+        "WHEAT",
+        1
+      ]
+    ],
+    "rival_orders": [
+      [],
+      [
+        "SELL",
+        "WHEAT",
+        100
+      ],
+      []
+    ],
+    "same_sized_proxy_scores": [
+      2,
+      0,
+      9
+    ]
+  },
+  "witness_rival_buy": {
+    "candidate": {
+      "market_inventory": {
+        "EGG": 10140,
+        "WHEAT": 10000
+      },
+      "money": {
+        "own": 66,
+        "rival": 974
+      },
+      "sheds": [
+        {
+          "EGG": 0,
+          "WHEAT": 0
+        },
+        {
+          "WHEAT": 1
+        }
+      ]
+    },
+    "delta": {
+      "margin": -1,
+      "own": -1,
+      "rival": 0
+    },
+    "egg_bidirectional_flat_0_buy_100_sell": true,
+    "egg_raw_safe_through_100": true,
+    "inventory": {
+      "EGG": 10139,
+      "WHEAT": 10000
+    },
+    "parent": {
+      "market_inventory": {
+        "EGG": 10140,
+        "WHEAT": 10000
+      },
+      "money": {
+        "own": 67,
+        "rival": 974
+      },
+      "sheds": [
+        {
+          "EGG": 0,
+          "WHEAT": 0
+        },
+        {
+          "WHEAT": 1
+        }
+      ]
+    },
+    "parent_orders": [
+      [
+        "SELL",
+        "EGG",
+        1
+      ],
+      [
+        "SELL",
+        "WHEAT",
+        1
+      ]
+    ],
+    "quotes": {
+      "egg_plus_100": 41,
+      "egg_public": 41,
+      "wheat_after_sell": 24,
+      "wheat_post_buy": 26,
+      "wheat_precommit_sell": 25
+    },
+    "raw_bounded_candidate_orders": [
+      [
+        "SELL",
+        "WHEAT",
+        1
+      ],
+      [
+        "SELL",
+        "EGG",
+        1
+      ]
+    ],
+    "rival_orders": [
+      [
+        "BUY_PRODUCT",
+        "WHEAT",
+        1
+      ],
+      []
+    ],
+    "same_sized_proxy_scores": {
+      "EGG": 0,
+      "WHEAT": 1
+    },
+    "starting_money": {
+      "own": 0,
+      "rival": 1000
+    },
+    "wheat_bidirectional_flat_1_buy_100_sell": false
   }
 }
