@@ -1,0 +1,175 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py
+@@ -25,6 +25,8 @@
+ LAND_STEPS = (74, 98)
+ LAND_FALLBACK_STEPS = (150, 265)
+ KEEP_WHEAT_PLANTS = 72  # 164 wheat -> 72; 240-92 = 148 total plants
++DAY0_BUY_PRODUCT_ITEMS = frozenset(('WHEAT', 'FERTILIZER'))
++DAY0_REJECT_PREFIX = 'L01_noop:day0buy_rejected'
+ DAY0_BASKET = (
+     ('CARROT', 14),
+     ('MELON', 20),
+@@ -80,6 +82,40 @@
+     return any(o and o[0] == 'BUY_LAND' for o in (market or []))
+ 
+ 
++def day0_basket_issues(orders):
++    """Return deterministic source-policy defects for a static BUY_PRODUCT basket.
++
++    The pinned interpreter accepts BUY_PRODUCT only for WHEAT and FERTILIZER.  This
++    source guard is intentionally stricter than its permissive ``int()`` parser:
++    package-generated quantities must be literal positive ints and every row must
++    have exactly three fields.  Cost and strength admission remain separate gates.
++    """
++    issues = []
++    if not isinstance(orders, (list, tuple)):
++        return ((-1, 'orders_not_sequence'),)
++    if len(orders) > MAX_ORDERS:
++        issues.append((MAX_ORDERS, 'prefix_truncation'))
++    for index, order in enumerate(orders[:MAX_ORDERS]):
++        if not isinstance(order, (list, tuple)) or len(order) != 3:
++            issues.append((index, 'malformed_row'))
++            continue
++        op, item, quantity = order
++        if op != 'BUY_PRODUCT':
++            issues.append((index, 'unsupported_op'))
++            continue
++        if item not in DAY0_BUY_PRODUCT_ITEMS:
++            issues.append((index, 'unsupported_product:' + repr(item)))
++            continue
++        if isinstance(quantity, bool) or type(quantity) is not int or quantity <= 0:
++            issues.append((index, 'noncanonical_quantity'))
++    return tuple(issues)
++
++
++def _day0_rejection_reason(issues):
++    codes = ','.join(f'{index}:{code}' for index, code in issues)
++    return f'{DAY0_REJECT_PREFIX}[{codes}]'
++
++
+ def patch_routes(routes, flags, activations, reasons):
+     """Mutate every tape in `routes` in place. Shared step objects convert once."""
+     route_on = any(flags.get(k) for k in ('LAND', 'SHEEP', 'DAY0BUY', 'LEANPLANT'))
+@@ -87,6 +123,12 @@
+         if not any(flags.values()):
+             reasons.append(NOOP)
+         return
++    day0_wanted = [['BUY_PRODUCT', item, n] for item, n in DAY0_BASKET]
++    day0_issues = day0_basket_issues(day0_wanted) if flags.get('DAY0BUY') else ()
++    if day0_issues:
++        reason = _day0_rejection_reason(day0_issues)
++        if reason not in reasons:
++            reasons.append(reason)
+     for route in list(routes.values()):
+         if not route:
+             continue
+@@ -108,11 +150,10 @@
+                     if o and o[0] == 'BUY_ANIMAL' and len(o) > 1 and o[1] == 'COW':
+                         o[1] = 'SHEEP'
+                         activations['SHEEP'] += 1
+-        if flags.get('DAY0BUY') and len(route) > 0:
++        if flags.get('DAY0BUY') and not day0_issues and len(route) > 0:
+             market = route[0].setdefault('market', [])
+-            wanted = [['BUY_PRODUCT', item, n] for item, n in DAY0_BASKET]
+-            if market != wanted:
+-                market[:] = [list(x) for x in wanted]
++            if market != day0_wanted:
++                market[:] = [list(x) for x in day0_wanted]
+                 activations['DAY0BUY'] += 1
+         if flags.get('LEANPLANT'):
+             sites = []
+--- /dev/null
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_l01_day0_engine_grammar.py
+@@ -0,0 +1,92 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Predecessor killers for L01's engine-invalid day-zero basket."""
++from __future__ import annotations
++
++from collections import Counter
++import copy
++from pathlib import Path
++import sys
++import unittest
++
++ROOT = Path(__file__).resolve().parents[1]
++if str(ROOT) not in sys.path:
++    sys.path.insert(0, str(ROOT))
++
++import l01_mechanics as l01  # noqa: E402
++
++
++def flags(**on):
++    result = {key: False for key in l01.FLAG_KEYS}
++    result.update(on)
++    return result
++
++
++class L01Day0GrammarTests(unittest.TestCase):
++    def route(self):
++        return [{"farmer": ["PASS"], "hands": [], "market": [["BUY_PRODUCT", "WHEAT", 13]]}]
++
++    def test_exact_shipped_basket_has_five_unsupported_products(self):
++        wanted = [["BUY_PRODUCT", item, quantity] for item, quantity in l01.DAY0_BASKET]
++        issues = l01.day0_basket_issues(wanted)
++        self.assertEqual(issues, (
++            (0, "unsupported_product:'CARROT'"),
++            (1, "unsupported_product:'MELON'"),
++            (2, "unsupported_product:'MILK'"),
++            (3, "unsupported_product:'STRAWBERRY'"),
++            (4, "unsupported_product:'TOMATO'"),
++        ))
++
++    def test_day0_flag_preserves_canonical_wheat_thirteen(self):
++        route = self.route()
++        routes = {"MAIN": route, "ALIAS": route}
++        before = copy.deepcopy(routes)
++        activations = Counter()
++        reasons = []
++        l01.patch_routes(routes, flags(DAY0BUY=True), activations, reasons)
++        self.assertEqual(routes, before)
++        self.assertEqual(activations, Counter())
++        self.assertEqual(len(reasons), 1)
++        self.assertTrue(reasons[0].startswith(l01.DAY0_REJECT_PREFIX))
++        self.assertIn("unsupported_product:'MILK'", reasons[0])
++
++    def test_repeated_rejection_is_idempotent(self):
++        routes = {"MAIN": self.route()}
++        before = copy.deepcopy(routes)
++        activations = Counter()
++        reasons = []
++        for _ in range(3):
++            l01.patch_routes(routes, flags(DAY0BUY=True), activations, reasons)
++        self.assertEqual(routes, before)
++        self.assertEqual(activations, Counter())
++        self.assertEqual(len(reasons), 1)
++
++    def test_supported_product_rows_pass_grammar_only(self):
++        self.assertEqual(l01.day0_basket_issues([
++            ["BUY_PRODUCT", "WHEAT", 13],
++            ["BUY_PRODUCT", "FERTILIZER", 2],
++        ]), ())
++
++    def test_malformed_cap_and_quantity_fail_closed(self):
++        self.assertIn((0, "noncanonical_quantity"), l01.day0_basket_issues([
++            ["BUY_PRODUCT", "WHEAT", True],
++        ]))
++        self.assertIn((l01.MAX_ORDERS, "prefix_truncation"), l01.day0_basket_issues([
++            ["BUY_PRODUCT", "WHEAT", 1] for _ in range(l01.MAX_ORDERS + 1)
++        ]))
++        self.assertIn((0, "unsupported_op"), l01.day0_basket_issues([
++            ["BUY_SEED", "CARROT", 14],
++        ]))
++
++    def test_all_flags_off_remains_exact_identity(self):
++        routes = {"MAIN": self.route()}
++        before = copy.deepcopy(routes)
++        activations = Counter()
++        reasons = []
++        l01.patch_routes(routes, flags(), activations, reasons)
++        self.assertEqual(routes, before)
++        self.assertEqual(activations, Counter())
++        self.assertEqual(reasons, [l01.NOOP])
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)
