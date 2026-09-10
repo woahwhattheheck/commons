@@ -1,0 +1,346 @@
+--- a/apply_v3.py
++++ b/apply_v3.py
+@@ -127,23 +127,27 @@
+ 
+ SELLER_METHOD = (
+     "    def _v3_e11_before_pending(self, obs, config, out, now):\n"
+-    "        \"\"\"V3 lane E11 at the seller-owned seam before pending accounting (ARGUS A3).\"\"\"\n"
++    "        \"\"\"Return (post-E11 action, explicitly deferred items) before pending accounting.\"\"\"\n"
+     "        v3=config.get('titan_v3') if isinstance(config,dict) else None\n"
+-    "        if not v3 or not v3.get('e11_rival_sell'):return out\n"
++    "        if not v3 or not v3.get('e11_rival_sell'):return out,frozenset()\n"
++    "        original=out\n"
+     "        try:\n"
+     "            from e11_rival_sell import apply_e11\n"
+     "            cfg=dict(config);cfg.update(v3.get('params') or {})\n"
+     "            history=list(getattr(self,'_v3_price_history',[]))\n"
+-    "            out,report=apply_e11(obs,out,history,cfg,absorption,enabled=True)\n"
+-    "            self.diagnostics['v3_e11']=report\n"
++    "            candidate,report=apply_e11(obs,original,history,cfg,absorption,enabled=True)\n"
+     "            prices=dict((obs.get('market') or {}).get('prices') or {})\n"
+     "            history.append((int(now),prices))\n"
+     "            lookback=max(0,int(cfg.get('rival_dump_lookback_steps',8)))\n"
+-    "            self._v3_price_history=[entry for entry in history if 0<=int(now)-int(entry[0])<=lookback]\n"
+-    "            return out\n"
++    "            next_history=[entry for entry in history if 0<=int(now)-int(entry[0])<=lookback]\n"
++    "            deferred=frozenset(report.get('deferred') or ())\n"
++    "            report['pending_targets_removed']=sorted(deferred)\n"
++    "            self._v3_price_history=next_history\n"
++    "            self.diagnostics['v3_e11']=report\n"
++    "            return candidate,deferred\n"
+     "        except Exception as error:\n"
+     "            self.diagnostics['v3_e11']={'enabled':True,'changed':False,'reason':'V3_E11_ERROR_'+type(error).__name__}\n"
+-    "            return out\n\n"
++    "            return original,frozenset()\n\n"
+ )
+ 
+ RELEASE_NOTE = (
+@@ -233,7 +237,10 @@
+     sched = _replace_once(
+         sched,
+         "        out['market']=market\n        for item,q in targets.items():\n",
+-        "        out['market']=market\n        out=self._v3_e11_before_pending(obs,config,out,now)\n        for item,q in targets.items():\n",
++        "        out['market']=market\n"
++        "        out,v3_deferred=self._v3_e11_before_pending(obs,config,out,now)\n"
++        "        if v3_deferred:targets={item:q for item,q in targets.items() if item not in v3_deferred}\n"
++        "        for item,q in targets.items():\n",
+         "scheduler pre-pending seam",
+     )
+     write("scheduler.py", sched)
+@@ -243,7 +250,8 @@
+         frozen,
+         "        if funding is not None:self.diagnostics['same_turn_funding']=funding\n        for item,q in targets.items():\n",
+         "        if funding is not None:self.diagnostics['same_turn_funding']=funding\n"
+-        "        out=self._v3_e11_before_pending(obs,config,out,now)\n"
++        "        out,v3_deferred=self._v3_e11_before_pending(obs,config,out,now)\n"
++        "        if v3_deferred:targets={item:q for item,q in targets.items() if item not in v3_deferred}\n"
+         "        for item,q in targets.items():\n",
+         "frozen pre-pending seam",
+     )
+--- a/overlay/checks/test_v3_e11_pending_reconciliation.py
++++ b/overlay/checks/test_v3_e11_pending_reconciliation.py
+@@ -0,0 +1,284 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Predecessor-killing contracts for E11 action/checkpoint reconciliation.
++
++The integration seam edits the emitted market queue before seller pending-state
++bookkeeping.  These tests materialize tiny canonical-shaped seller modules and
++run the real apply_v3 source rewriter, so the contract covers both exact source
++anchors and the resulting two-turn state behavior without importing the full
++canonical archive.
++"""
++from __future__ import annotations
++
++import importlib
++import importlib.util
++import json
++import sys
++import tempfile
++import textwrap
++import unittest
++import warnings
++from pathlib import Path
++
++HERE = Path(__file__).resolve()
++V3 = HERE.parents[2]
++OVERLAY = V3 / "overlay"
++
++
++def _load_apply_v3():
++    spec = importlib.util.spec_from_file_location("v3_apply_under_test", V3 / "apply_v3.py")
++    assert spec and spec.loader
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++RUNTIME = '''\
++from dataclasses import dataclass
++import time
++
++@dataclass
++class Features:
++    existing: bool = False
++
++    def __post_init__(self):
++        pass
++
++class TitanAgent:
++    def __init__(self):
++        self.features = Features()
++        self.diagnostics = {}
++
++    def _commit_seller_state(self, checkpoint):
++        pass
++
++    def _finish_production(self, obs, output, cfg):
++        return output
++
++    def _restore_seller_state(self):
++        pass
++
++    def act(self, observation, configuration=None):
++        started = time.perf_counter()
++        cpu_started = time.process_time()
++        cfg = dict(configuration or {})
++        obs = dict(observation)
++        seller_checkpoint = None
++        output = {"market": []}
++        self._commit_seller_state(seller_checkpoint)
++        self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
++                                act_cpu_seconds=time.process_time()-cpu_started)
++        output = self._finish_production(obs, output, cfg)
++        return output
++
++    def _initialize(self):
++        self._restore_seller_state()
++        self.ready = True
++
++    __call__ = act
++'''
++
++SCHEDULER = '''\
++def absorption(item, step, shops, config):
++    return 1
++
++class SellScheduler:
++    def __init__(self):
++        self.diagnostics = {}
++        self.pending = {}
++        self._v3_price_history = [(2, {"WHEAT": 40, "CARROT": 25})]
++
++    def act(self, obs, config=None):
++        config = dict(config or {})
++        now = int(obs.get("step", 0))
++        targets = dict(obs.get("targets") or {})
++        market = [list(order) for order in (obs.get("orders") or [])]
++        out = {"farmer": ["PASS"], "hands": [], "market": []}
++        out['market']=market
++        for item,q in targets.items():
++            self.pending[item] = self.pending.get(item, 0) + q
++        return out
++'''
++
++FROZEN = '''\
++from scheduler import SellScheduler
++
++class FrozenSelected(SellScheduler):
++    def transform(self, obs, config=None):
++        config = dict(config or {})
++        now = int(obs.get("step", 0))
++        targets = dict(obs.get("targets") or {})
++        out = {"farmer": ["PASS"], "hands": [],
++               "market": [list(order) for order in (obs.get("orders") or [])]}
++        funding = None
++        if funding is not None:self.diagnostics['same_turn_funding']=funding
++        for item,q in targets.items():
++            self.pending[item] = self.pending.get(item, 0) + q
++        return out
++'''
++
++
++def _obs(orders, targets, *, step=5, prices=None):
++    return {
++        "step": step,
++        "orders": orders,
++        "targets": targets,
++        "market": {"prices": dict(prices or {"WHEAT": 10, "CARROT": 25})},
++        "town": {"unlocked_shops": ["BAKERY"]},
++    }
++
++
++def _enabled():
++    return {
++        "episodeSteps": 12,
++        "titan_v3": {
++            "e11_rival_sell": True,
++            "params": {
++                "rival_dump_price_drop": 15.0,
++                "rival_dump_lookback_steps": 8,
++                "e11_min_future_absorption": 1,
++            },
++        },
++    }
++
++
++class MaterializedHarness(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.temp = tempfile.TemporaryDirectory(prefix="v3-e11-reconcile-")
++        cls.root = Path(cls.temp.name)
++        (cls.root / "titan_runtime.py").write_text(RUNTIME, encoding="utf-8")
++        (cls.root / "scheduler.py").write_text(SCHEDULER, encoding="utf-8")
++        (cls.root / "frozen_selected.py").write_text(FROZEN, encoding="utf-8")
++        (cls.root / "TITAN-CONFIG.json").write_text("{}\n", encoding="utf-8")
++        (cls.root / "TITAN-RELEASE.md").write_text("fixture\n", encoding="utf-8")
++        (cls.root / "e11_rival_sell.py").write_bytes((OVERLAY / "e11_rival_sell.py").read_bytes())
++        (cls.root / "rival_model.py").write_bytes((OVERLAY / "rival_model.py").read_bytes())
++        (cls.root / "e20_hire_guard.py").write_bytes((OVERLAY / "e20_hire_guard.py").read_bytes())
++        (cls.root / "l01_mechanics.py").write_bytes((OVERLAY / "l01_mechanics.py").read_bytes())
++        with warnings.catch_warnings():
++            warnings.simplefilter("ignore", ResourceWarning)
++            _load_apply_v3().apply(str(cls.root))
++        cls._old_path = list(sys.path)
++        sys.path.insert(0, str(cls.root))
++        for name in ("scheduler", "frozen_selected", "e11_rival_sell"):
++            sys.modules.pop(name, None)
++        cls.scheduler = importlib.import_module("scheduler")
++        cls.frozen = importlib.import_module("frozen_selected")
++
++    @classmethod
++    def tearDownClass(cls):
++        sys.path[:] = cls._old_path
++        for name in ("scheduler", "frozen_selected", "e11_rival_sell"):
++            sys.modules.pop(name, None)
++        cls.temp.cleanup()
++
++    def _new(self, cls):
++        return cls()
++
++    def test_scheduler_does_not_commit_a_deferred_sell(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        out = seller.act(_obs([["SELL", "WHEAT", 4], ["SELL", "CARROT", 2]],
++                              {"WHEAT": 4, "CARROT": 2}), _enabled())
++        self.assertEqual(out["market"], [[], ["SELL", "CARROT", 2]])
++        self.assertEqual(seller.pending, {"CARROT": 2})
++        self.assertEqual(seller.diagnostics["v3_e11"]["deferred"], ["WHEAT"])
++        self.assertEqual(seller.diagnostics["v3_e11"]["pending_targets_removed"], ["WHEAT"])
++
++    def test_inherited_frozen_path_has_the_same_reconciliation(self):
++        seller = self._new(self.frozen.FrozenSelected)
++        out = seller.transform(_obs([["SELL", "WHEAT", 4], ["SELL", "CARROT", 2]],
++                                    {"WHEAT": 4, "CARROT": 2}), _enabled())
++        self.assertEqual(out["market"], [[], ["SELL", "CARROT", 2]])
++        self.assertEqual(seller.pending, {"CARROT": 2})
++
++    def test_duplicate_same_item_rows_remove_one_aggregate_target(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        out = seller.act(_obs([["SELL", "WHEAT", 2], ["SELL", "WHEAT", 3],
++                               ["SELL", "CARROT", 1]],
++                              {"WHEAT": 5, "CARROT": 1}), _enabled())
++        self.assertEqual(out["market"], [[], [], ["SELL", "CARROT", 1]])
++        self.assertEqual(seller.pending, {"CARROT": 1})
++
++    def test_disabled_path_preserves_action_targets_and_object_identity_contract(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        # A stale implementation detail must not suppress a later disabled call.
++        seller._v3_e11_deferred = {"WHEAT"}
++        obs = _obs([["SELL", "WHEAT", 4]], {"WHEAT": 4})
++        out = seller.act(obs, {"titan_v3": {"e11_rival_sell": False}})
++        self.assertEqual(out["market"], [["SELL", "WHEAT", 4]])
++        self.assertEqual(seller.pending, {"WHEAT": 4})
++        self.assertNotIn("v3_e11", seller.diagnostics)
++
++    def test_noop_price_path_preserves_target(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        obs = _obs([["SELL", "WHEAT", 4]], {"WHEAT": 4}, prices={"WHEAT": 39})
++        out = seller.act(obs, _enabled())
++        self.assertEqual(out["market"], [["SELL", "WHEAT", 4]])
++        self.assertEqual(seller.pending, {"WHEAT": 4})
++        self.assertFalse(seller.diagnostics["v3_e11"]["changed"])
++
++    def test_error_before_transform_preserves_original_target_without_stale_suppression(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        module = importlib.import_module("e11_rival_sell")
++        original = module.apply_e11
++        try:
++            def explode(*_args, **_kwargs):
++                raise RuntimeError("fixture")
++            module.apply_e11 = explode
++            seller._v3_e11_deferred = {"WHEAT"}
++            obs = _obs([["SELL", "WHEAT", 4]], {"WHEAT": 4})
++            out = seller.act(obs, _enabled())
++        finally:
++            module.apply_e11 = original
++        self.assertEqual(out["market"], [["SELL", "WHEAT", 4]])
++        self.assertEqual(seller.pending, {"WHEAT": 4})
++        self.assertEqual(seller.diagnostics["v3_e11"]["reason"], "V3_E11_ERROR_RuntimeError")
++
++
++    def test_error_after_transform_rolls_back_action_and_pending_reconciliation(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        # apply_e11 can still produce a changed candidate from the valid entry;
++        # the malformed later entry fails only while staging next_history.
++        seller._v3_price_history = [(2, {"WHEAT": 40}), ("bad", {})]
++        obs = _obs([["SELL", "WHEAT", 4]], {"WHEAT": 4})
++        out = seller.act(obs, _enabled())
++        self.assertEqual(out["market"], [["SELL", "WHEAT", 4]])
++        self.assertEqual(seller.pending, {"WHEAT": 4})
++        self.assertEqual(seller._v3_price_history, [(2, {"WHEAT": 40}), ("bad", {})])
++        self.assertEqual(seller.diagnostics["v3_e11"]["reason"], "V3_E11_ERROR_ValueError")
++
++    def test_two_turn_witness_has_no_phantom_commit(self):
++        seller = self._new(self.scheduler.SellScheduler)
++        first = _obs([["SELL", "WHEAT", 4]], {"WHEAT": 4})
++        out = seller.act(first, _enabled())
++        self.assertEqual(out["market"], [[]])
++        self.assertNotIn("WHEAT", seller.pending)
++        # Next turn is flat.  A deferred turn must not have left a committed sale.
++        second = _obs([], {}, step=6, prices={"WHEAT": 10})
++        seller.act(second, _enabled())
++        self.assertNotIn("WHEAT", seller.pending)
++
++
++class SourceContractTests(unittest.TestCase):
++    def test_hook_returns_action_and_explicit_deferred_set(self):
++        text = (V3 / "apply_v3.py").read_text(encoding="utf-8")
++        self.assertIn("return out,frozenset()", text)
++        self.assertIn("return candidate,deferred", text)
++        self.assertIn("deferred=frozenset(report.get('deferred') or ())", text)
++        self.assertIn("return original,frozenset()", text)
++
++    def test_both_anchors_filter_only_explicitly_deferred_targets(self):
++        text = (V3 / "apply_v3.py").read_text(encoding="utf-8")
++        needle = "targets={item:q for item,q in targets.items() if item not in v3_deferred}"
++        self.assertEqual(text.count(needle), 2)
++        self.assertEqual(text.count("out,v3_deferred=self._v3_e11_before_pending"), 2)
++        self.assertEqual(text.count("if v3_deferred:"), 2)
++
++    def test_rewriter_is_fail_closed_on_predecessor_anchor_drift(self):
++        apply_v3 = _load_apply_v3()
++        with self.assertRaises(AssertionError):
++            apply_v3._replace_once("no target", "anchor", "replacement", "fixture")
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)
