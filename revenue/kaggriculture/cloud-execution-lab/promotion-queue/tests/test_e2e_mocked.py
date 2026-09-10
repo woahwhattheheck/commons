@@ -1,12 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
-"""End-to-end promotion queue test with a mocked gate script.
+"""End-to-end promotion queue tests against contract-shaped mock gates."""
+from __future__ import annotations
 
-The stub gate honors the real gate.py CLI contract
-(--contract/--evidence/--baseline/--candidate/--report, exit 0/2/3) and
-evaluates one real policy key (min_mean_own_delta) over the paired cells,
-so the queue's orchestration, verdict combination, receipt sealing, and
-rerun semantics are exercised without the heavyweight real gate.
-"""
 import json
 import subprocess
 import sys
@@ -16,39 +11,41 @@ from pathlib import Path
 
 PROMOTE_PY = Path(__file__).resolve().parent.parent / "promote.py"
 
-STUB_GATE = r"""#!/usr/bin/env python3
-# Mocked gate.py: honors the real CLI contract (exit 0/2/3) and evaluates
-# one real policy key (min_mean_own_delta) over the paired cells.
-import argparse, json, sys
+STUB_GATE = r'''#!/usr/bin/env python3
+import argparse
+import json
+import sys
 from pathlib import Path
 
+
+def load_rows(path):
+    rows = {}
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            row = json.loads(line)
+            key = (row["opponent"], row["seed"], row["candidate_seat"])
+            if key in rows:
+                raise ValueError("duplicate cell")
+            rows[key] = row
+    return rows
+
+
 def evaluate(contract_path, evidence_path, baseline_path, candidate_path):
-    contract = json.loads(Path(contract_path).read_text())
-    evidence = json.loads(Path(evidence_path).read_text())
+    contract = json.loads(Path(contract_path).read_text(encoding="utf-8"))
+    evidence = json.loads(Path(evidence_path).read_text(encoding="utf-8"))
     if evidence["provenance"] != contract["provenance"]:
         return None, 2, "INVALID: provenance drift"
-
-    def load(path):
-        rows = {}
-        for line in Path(path).read_text().splitlines():
-            line = line.strip()
-            if line:
-                row = json.loads(line)
-                rows[(row["opponent"], row["seed"], row["candidate_seat"])] = row
-        return rows
-
-    baseline = load(baseline_path)
-    candidate = load(candidate_path)
+    baseline = load_rows(baseline_path)
+    candidate = load_rows(candidate_path)
     if set(baseline) != set(candidate):
         return None, 2, "INVALID: cell sets differ"
     deltas = [
-        candidate[k]["scores"][candidate[k]["candidate_seat"]]
-        - baseline[k]["scores"][baseline[k]["candidate_seat"]]
-        for k in baseline
+        candidate[key]["scores"][candidate[key]["candidate_seat"]]
+        - baseline[key]["scores"][baseline[key]["candidate_seat"]]
+        for key in sorted(baseline)
     ]
     mean_delta = sum(deltas) / len(deltas)
-    policy = contract["policy"]
-    passed = mean_delta >= policy["min_mean_own_delta"]
+    passed = mean_delta >= contract["policy"]["min_mean_own_delta"]
     verdict = "PROMOTE" if passed else "REJECT"
     report = {
         "schema_version": 1,
@@ -62,8 +59,11 @@ def evaluate(contract_path, evidence_path, baseline_path, candidate_path):
             "expected_cells": contract["expected_cells"],
         },
         "checks": [
-            {"name": "min_mean_own_delta", "pass": passed,
-             "detail": {"mean": mean_delta}},
+            {
+                "name": "min_mean_own_delta",
+                "pass": passed,
+                "detail": {"mean": mean_delta},
+            }
         ],
         "metrics": {
             "aggregate": {
@@ -76,75 +76,102 @@ def evaluate(contract_path, evidence_path, baseline_path, candidate_path):
     }
     return report, (0 if passed else 3), ""
 
+
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--contract", required=True)
-    ap.add_argument("--evidence", required=True)
-    ap.add_argument("--baseline", required=True)
-    ap.add_argument("--candidate", required=True)
-    ap.add_argument("--report", required=True)
-    args = ap.parse_args()
-    report, code, err = evaluate(
-        args.contract, args.evidence, args.baseline, args.candidate)
-    if err:
-        print(err, file=sys.stderr)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--contract", required=True)
+    parser.add_argument("--evidence", required=True)
+    parser.add_argument("--baseline", required=True)
+    parser.add_argument("--candidate", required=True)
+    parser.add_argument("--report", required=True)
+    args = parser.parse_args()
+    try:
+        report, code, error = evaluate(
+            args.contract,
+            args.evidence,
+            args.baseline,
+            args.candidate,
+        )
+    except (KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+        print(f"INVALID: {exc}", file=sys.stderr)
+        return 2
+    if error:
+        print(error, file=sys.stderr)
         return code
-    Path(args.report).write_text(json.dumps(report, indent=2))
+    Path(args.report).write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     return code
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
-"""
+'''
 
-STUB_DUAL_GATE = r"""#!/usr/bin/env python3
-# Mocked dual_predecessor_gate.py: honors the real 14-arg CLI contract and
-# report shape (verdict + comparisons{predecessor_a,predecessor_b}), running
-# the mocked paired gate once per slot and AND-ing the verdicts.
-import argparse, json, os, sys
+STUB_DUAL_GATE = r'''#!/usr/bin/env python3
+import argparse
+import json
+import os
+import sys
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gate as paired
 
+
 def main():
-    ap = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser()
     for slot in ("predecessor-a", "predecessor-b"):
-        ap.add_argument(f"--{slot}-contract", required=True)
-        ap.add_argument(f"--{slot}-evidence", required=True)
-        ap.add_argument(f"--{slot}-games", required=True)
-        ap.add_argument(f"--{slot}-receipt", required=True)
-        ap.add_argument(f"--{slot}-artifact", required=True)
-    ap.add_argument("--candidate-games", required=True)
-    ap.add_argument("--candidate-artifact", required=True)
-    ap.add_argument("--engine-artifact", required=True)
-    ap.add_argument("--runner-artifact", required=True)
-    ap.add_argument("--report", required=True)
-    args = ap.parse_args()
+        parser.add_argument(f"--{slot}-contract", required=True)
+        parser.add_argument(f"--{slot}-evidence", required=True)
+        parser.add_argument(f"--{slot}-games", required=True)
+        parser.add_argument(f"--{slot}-receipt", required=True)
+        parser.add_argument(f"--{slot}-artifact", required=True)
+    parser.add_argument("--candidate-games", required=True)
+    parser.add_argument("--candidate-artifact", required=True)
+    parser.add_argument("--engine-artifact", required=True)
+    parser.add_argument("--runner-artifact", required=True)
+    parser.add_argument("--report", required=True)
+    args = parser.parse_args()
 
     reports = {}
     codes = []
-    for key, slot in (("predecessor_a", "predecessor-a"),
-                      ("predecessor_b", "predecessor-b")):
-        report, code, err = paired.evaluate(
-            getattr(args, f"{slot}_contract".replace("-", "_")),
-            getattr(args, f"{slot}_evidence".replace("-", "_")),
-            getattr(args, f"{slot}_games".replace("-", "_")),
+    for key, prefix in (
+        ("predecessor_a", "predecessor_a"),
+        ("predecessor_b", "predecessor_b"),
+    ):
+        report, code, error = paired.evaluate(
+            getattr(args, f"{prefix}_contract"),
+            getattr(args, f"{prefix}_evidence"),
+            getattr(args, f"{prefix}_games"),
             args.candidate_games,
         )
-        if err:
-            print(f"{key}: {err}", file=sys.stderr)
+        if error:
+            print(f"{key}: {error}", file=sys.stderr)
             return 2
         reports[key] = report
         codes.append(code)
-    verdict = "PROMOTE" if all(c == 0 for c in codes) else "REJECT"
-    Path(args.report).write_text(json.dumps(
-        {"schema_version": 1, "verdict": verdict, "comparisons": reports},
-        indent=2))
+    verdict = "PROMOTE" if all(code == 0 for code in codes) else "REJECT"
+    Path(args.report).write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "verdict": verdict,
+                "comparisons": reports,
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     return 0 if verdict == "PROMOTE" else 3
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
-"""
+'''
 
 
 def write_panel(path: Path, own: float, rival: float = 50.0) -> None:
@@ -163,7 +190,10 @@ def write_panel(path: Path, own: float, rival: float = 50.0) -> None:
                         "scores": scores,
                     }
                 )
-    path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    path.write_text(
+        "\n".join(json.dumps(row, sort_keys=True) for row in rows) + "\n",
+        encoding="utf-8",
+    )
 
 
 def write_policy(path: Path, min_mean_own_delta: float) -> None:
@@ -182,26 +212,36 @@ def write_policy(path: Path, min_mean_own_delta: float) -> None:
                 "max_negative_seat_strata": 2,
                 "min_worst_cell_own_delta": None,
                 "require_any_change": False,
-            }
-        )
+            },
+            sort_keys=True,
+        ),
+        encoding="utf-8",
     )
 
 
 class MockedEndToEndTests(unittest.TestCase):
     def setUp(self):
-        self.td = tempfile.TemporaryDirectory()
-        self.root = Path(self.td.name)
+        self.tempdir = tempfile.TemporaryDirectory()
+        self.root = Path(self.tempdir.name)
         self.state = self.root / "state"
-        gate_dir = self.root / "fake-gate"
-        gate_dir.mkdir()
-        (gate_dir / "gate.py").write_text(STUB_GATE)
-        (gate_dir / "dual_predecessor_gate.py").write_text(STUB_DUAL_GATE)
-        self.gate_dir = gate_dir
+        self.gate_dir = self.root / "fake-gate"
+        self.gate_dir.mkdir()
+        (self.gate_dir / "gate.py").write_text(STUB_GATE, encoding="utf-8")
+        (self.gate_dir / "dual_predecessor_gate.py").write_text(
+            STUB_DUAL_GATE,
+            encoding="utf-8",
+        )
 
         self.engine_id = self.root / "engine.json"
-        self.engine_id.write_text(json.dumps({"engine": "stub-1.0"}))
+        self.engine_id.write_text(
+            json.dumps({"engine": "stub-1.0"}),
+            encoding="utf-8",
+        )
         self.runner_id = self.root / "runner.json"
-        self.runner_id.write_text(json.dumps({"runner": "stub-evaluator"}))
+        self.runner_id.write_text(
+            json.dumps({"runner": "stub-evaluator"}),
+            encoding="utf-8",
+        )
         self.control_games = self.root / "control.GAMES.jsonl"
         write_panel(self.control_games, own=100.0)
         self.control_artifact = self.root / "control.bin"
@@ -212,8 +252,14 @@ class MockedEndToEndTests(unittest.TestCase):
         config = {
             "schema_version": 1,
             "policy_version": "promotion-policy/v1",
-            "engine": {"commit": "a" * 40, "identity_file": str(self.engine_id)},
-            "runner": {"commit": "b" * 40, "identity_file": str(self.runner_id)},
+            "engine": {
+                "commit": "a" * 40,
+                "identity_file": str(self.engine_id),
+            },
+            "runner": {
+                "commit": "b" * 40,
+                "identity_file": str(self.runner_id),
+            },
             "slots": {
                 "frozen_control": {
                     "name": "frozen-control",
@@ -228,108 +274,171 @@ class MockedEndToEndTests(unittest.TestCase):
             },
         }
         self.config = self.root / "predecessors.json"
-        self.config.write_text(json.dumps(config))
+        self.config.write_text(
+            json.dumps(config, sort_keys=True),
+            encoding="utf-8",
+        )
 
     def tearDown(self):
-        self.td.cleanup()
+        self.tempdir.cleanup()
 
-    def _cli(self, *argv) -> subprocess.CompletedProcess:
+    def _cli(self, *argv: str) -> subprocess.CompletedProcess:
         return subprocess.run(
-            [sys.executable, str(PROMOTE_PY), "--state-dir", str(self.state), *argv],
+            [
+                sys.executable,
+                str(PROMOTE_PY),
+                "--state-dir",
+                str(self.state),
+                *argv,
+            ],
             capture_output=True,
             text=True,
+            check=False,
         )
 
-    def _run(self, *argv) -> subprocess.CompletedProcess:
-        """Run the queue against the mocked gate scripts (never the real ones)."""
+    def _run(self, *argv: str) -> subprocess.CompletedProcess:
         return self._cli(
-            "run", *argv, "--predecessors", str(self.config),
-            "--gate-dir", str(self.gate_dir),
+            "run",
+            *argv,
+            "--predecessors",
+            str(self.config),
+            "--gate-dir",
+            str(self.gate_dir),
         )
 
-    def _submit(self, name, own, policy_delta, artifact_tag=None):
-        cand_games = self.root / f"{name}.GAMES.jsonl"
-        write_panel(cand_games, own=own)
+    def _submit(
+        self,
+        name: str,
+        own: float,
+        policy_delta: float,
+        artifact_tag: str | None = None,
+    ) -> str:
+        candidate_games = self.root / f"{name}.GAMES.jsonl"
+        write_panel(candidate_games, own=own)
         artifact = self.root / f"{name}.bin"
-        artifact.write_bytes(f"candidate-{artifact_tag or name}".encode())
+        artifact.write_bytes(f"candidate-{artifact_tag or name}".encode("utf-8"))
         policy = self.root / f"{name}.policy.json"
         write_policy(policy, policy_delta)
-        proc = self._cli(
-            "submit", "--name", name, "--artifact", str(artifact),
-            "--games", str(cand_games), "--policy", str(policy),
+        process = self._cli(
+            "submit",
+            "--name",
+            name,
+            "--artifact",
+            str(artifact),
+            "--games",
+            str(candidate_games),
+            "--policy",
+            str(policy),
+            "--predecessors",
+            str(self.config),
         )
-        self.assertEqual(proc.returncode, 0, proc.stderr)
-        first = proc.stdout.splitlines()[0]
-        self.assertTrue(first.startswith("SUBMITTED") or first.startswith("DUPLICATE"),
-                        proc.stdout)
+        self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+        first = process.stdout.splitlines()[0]
+        self.assertTrue(
+            first.startswith("SUBMITTED") or first.startswith("DUPLICATE"),
+            process.stdout,
+        )
         return first.split()[1]
 
     def test_promote_path_end_to_end(self):
-        sub = self._submit("good", own=110.0, policy_delta=5.0)
-        proc = self._run("--id", sub)
-        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        self.assertIn("PROMOTE", proc.stdout)
+        submission = self._submit("good", own=110.0, policy_delta=5.0)
+        process = self._run("--id", submission)
+        self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+        self.assertIn("PROMOTE", process.stdout)
 
-        status = self._cli("status", sub)
+        status = self._cli("status", submission)
         entry = json.loads(status.stdout)
         self.assertEqual(entry["status"], "passed")
         self.assertIsNotNone(entry["last_receipt"])
 
-        receipt = self._cli("receipt", sub, "--verify")
-        self.assertEqual(receipt.returncode, 0, receipt.stdout)
-        self.assertIn("OK", receipt.stdout)
+        verify = self._cli("receipt", submission, "--verify")
+        self.assertEqual(verify.returncode, 0, verify.stdout)
+        self.assertIn("OK", verify.stdout)
 
-        raw = self._cli("receipt", sub)
-        doc = json.loads(raw.stdout)
-        self.assertEqual(doc["verdict"], "PROMOTE")
-        self.assertEqual(len(doc["comparisons"]), 2)
+        raw = self._cli("receipt", submission)
+        receipt = json.loads(raw.stdout)
+        self.assertEqual(receipt["verdict"], "PROMOTE")
+        self.assertEqual(len(receipt["comparisons"]), 2)
         self.assertEqual(
-            {c["slot"] for c in doc["comparisons"]}, {"frozen_control", "land"}
+            {comparison["slot"] for comparison in receipt["comparisons"]},
+            {"frozen_control", "land"},
         )
-        self.assertTrue(all(c["verdict"] == "PROMOTE" for c in doc["comparisons"]))
+        self.assertTrue(
+            all(
+                comparison["verdict"] == "PROMOTE"
+                for comparison in receipt["comparisons"]
+            )
+        )
+        self.assertEqual(
+            set(receipt["queue_pin"]["inputs"]),
+            {
+                "candidate_artifact",
+                "candidate_games",
+                "policy",
+                "predecessor_config",
+                "engine_identity",
+                "runner_identity",
+            },
+        )
+        self.assertEqual(
+            receipt["extra"]["config_sha256"],
+            receipt["queue_pin"]["inputs"]["predecessor_config"]["sha256"],
+        )
+        for comparison in receipt["comparisons"]:
+            slot = comparison["slot"]
+            provenance = receipt["predecessors"][slot]
+            self.assertEqual(
+                provenance["panel_id"],
+                comparison["panel_id"],
+            )
 
-    def test_reject_then_rerun(self):
-        sub = self._submit("weak", own=100.0, policy_delta=50.0)
-        proc = self._run("--id", sub)
-        self.assertNotEqual(proc.returncode, 0)
-        self.assertIn("REJECT", proc.stdout)
-        entry = json.loads(self._cli("status", sub).stdout)
+    def test_reject_then_rerun_keeps_hash_chain(self):
+        submission = self._submit("weak", own=100.0, policy_delta=50.0)
+        process = self._run("--id", submission)
+        self.assertNotEqual(process.returncode, 0)
+        self.assertIn("REJECT", process.stdout)
+        entry = json.loads(self._cli("status", submission).stdout)
         self.assertEqual(entry["status"], "failed")
         first_receipt = entry["last_receipt"]
         self.assertIsNotNone(first_receipt)
 
-        rerun = self._cli("rerun", sub)
+        rerun = self._cli("rerun", submission)
         self.assertEqual(rerun.returncode, 0, rerun.stdout)
-        entry = json.loads(self._cli("status", sub).stdout)
-        self.assertEqual(entry["status"], "pending")
-
-        proc = self._run("--id", sub)
-        self.assertNotEqual(proc.returncode, 0)
-        entry = json.loads(self._cli("status", sub).stdout)
+        process = self._run("--id", submission)
+        self.assertNotEqual(process.returncode, 0)
+        entry = json.loads(self._cli("status", submission).stdout)
         self.assertEqual(entry["status"], "failed")
-        # rerun is deterministic: same verdict, chained receipt
         self.assertNotEqual(entry["last_receipt"], first_receipt)
-        raw = self._cli("receipt", sub)
-        doc = json.loads(raw.stdout)
-        self.assertEqual(doc["verdict"], "REJECT")
-        verify = self._cli("receipt", sub, "--verify")
-        self.assertEqual(verify.returncode, 0)
+        receipt = json.loads(self._cli("receipt", submission).stdout)
+        self.assertEqual(receipt["verdict"], "REJECT")
+        self.assertIsNotNone(
+            receipt["integrity"]["prev_receipt_digest"],
+        )
+        verify = self._cli("receipt", submission, "--verify")
+        self.assertEqual(verify.returncode, 0, verify.stdout)
 
-    def test_fifo_and_dedupe(self):
+    def test_fifo_and_dedupe_include_executable_bytes(self):
         first = self._submit("one", own=110.0, policy_delta=5.0)
         second = self._submit("two", own=110.0, policy_delta=5.0)
-        # identical input bytes (same artifact/panel/policy bytes) dedupe,
-        # even under a different candidate name (names are not pinned)
-        dup = self._submit("three", own=110.0, policy_delta=5.0, artifact_tag="one")
-        self.assertEqual(dup, first)
-        listing = self._cli("list", "--status", "pending").stdout
-        lines = [ln for ln in listing.splitlines() if ln.startswith("pq-")]
-        self.assertEqual([ln.split()[0] for ln in lines], [first, second])
+        duplicate = self._submit(
+            "three",
+            own=110.0,
+            policy_delta=5.0,
+            artifact_tag="one",
+        )
+        self.assertEqual(duplicate, first)
 
-        proc = self._run("--all")
-        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        for sub in (first, second):
-            entry = json.loads(self._cli("status", sub).stdout)
+        listing = self._cli("list", "--status", "pending").stdout
+        lines = [line for line in listing.splitlines() if line.startswith("pq-")]
+        self.assertEqual(
+            [line.split()[0] for line in lines],
+            [first, second],
+        )
+
+        process = self._run("--all")
+        self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+        for submission in (first, second):
+            entry = json.loads(self._cli("status", submission).stdout)
             self.assertEqual(entry["status"], "passed")
 
 
