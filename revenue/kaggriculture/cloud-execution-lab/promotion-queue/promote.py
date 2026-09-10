@@ -27,15 +27,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from pq import POLICY_VERSION  # noqa: E402
 from pq.executable_pins import (  # noqa: E402
     ExecutablePinnedAttempt,
+    load_submission_config,
+    pin_submission,
     require_config_pin,
-    submission_inputs,
 )
 from pq.pinning import PinStore, sha256_file  # noqa: E402
 from pq.receipts import ReceiptStore  # noqa: E402
-from pq.runner import (  # noqa: E402
-    RunError,
-    load_predecessor_config,
-)
+from pq.runner import RunError  # noqa: E402
 from pq.signing import SigningError, load_key  # noqa: E402
 from pq.store import Queue, QueueError  # noqa: E402
 
@@ -60,16 +58,15 @@ def cmd_submit(args) -> int:
     pins = PinStore(state / "pin-store")
     queue = Queue(state / "queue")
     try:
-        manifest = pins.pin(
-            submission_inputs(
-                candidate_artifact=Path(args.artifact),
-                candidate_games=Path(args.games),
-                policy=Path(args.policy),
-                predecessor_config=Path(args.predecessors),
-            ),
+        manifest = pin_submission(
+            pins,
+            candidate_artifact=Path(args.artifact),
+            candidate_games=Path(args.games),
+            policy=Path(args.policy),
+            predecessor_config=Path(args.predecessors),
             note=args.note or "",
         )
-    except (RunError, OSError, json.JSONDecodeError) as exc:
+    except (RunError, OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
         print(f"FAILED submit: {exc}")
         return 2
     existing = queue.find_by_input_digest(manifest["input_digest"])
@@ -102,8 +99,13 @@ def cmd_pin(args) -> int:
 def _run_one(queue, pins, receipts, entry, config, policy, attempt_obj, strategy,
               signing_key=None, config_sha256=None) -> int:
     submission_id = entry["id"]
-    pin_manifest = pins.get_pin(entry["pin_id"])
-    ok, problems = pins.verify_pin(entry["pin_id"])
+    try:
+        pin_manifest = pins.get_pin(entry["pin_id"])
+        ok, problems = pins.verify_pin(entry["pin_id"])
+    except (KeyError, OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
+        queue.set_status(submission_id, "failed")
+        print(f"FAILED {submission_id}: unreadable submission pin: {exc}")
+        return 1
     if not ok:
         queue.set_status(submission_id, "failed")
         print(f"FAILED {submission_id}: pin verification failed: {problems}")
@@ -182,12 +184,15 @@ def cmd_run(args) -> int:
     queue = Queue(state / "queue")
     receipts = ReceiptStore(state)
     config_path = Path(args.predecessors)
-    config = load_predecessor_config(config_path)
-    # Observe the supplied bytes without admitting an untrusted drifted config
-    # into the content-addressed store.  The submitted config is already one of
-    # the six immutable queue inputs; require_config_pin rejects any mismatch
-    # before either gate or attempt workspace is touched.
-    config_sha256 = sha256_file(config_path)
+    try:
+        config = load_submission_config(config_path)
+        # Observe the supplied bytes without admitting an untrusted drifted
+        # config into the content-addressed store. The submitted config is
+        # already one of the six immutable queue inputs.
+        config_sha256 = sha256_file(config_path)
+    except (RunError, OSError) as exc:
+        print(f"FAILED run configuration: {exc}")
+        return 2
     signing_key = _signing_key(args)
     attempt_obj = ExecutablePinnedAttempt(
         state_dir=state,
@@ -195,7 +200,11 @@ def cmd_run(args) -> int:
         or (Path(__file__).resolve().parent.parent / "titan-v3-paired-game-gate"),
     )
     if args.id:
-        entries = [queue.get(args.id)]
+        try:
+            entries = [queue.get(args.id)]
+        except QueueError as exc:
+            print(f"FAILED run: {exc}")
+            return 2
         if entries[0]["status"] != "pending":
             print(f"SKIP {args.id}: status={entries[0]['status']} (use rerun first)")
             return 2
@@ -210,16 +219,22 @@ def cmd_run(args) -> int:
             return 0
     code = 0
     for entry in entries:
-        # refresh entry (status may have changed)
+        # Refresh the entry; another operator may have advanced its status.
         entry = queue.get(entry["id"])
         if entry["status"] != "pending":
             print(f"SKIP {entry['id']}: status={entry['status']}")
             continue
-        policy = json.loads(
-            pins.blob_path(
-                pins.get_pin(entry["pin_id"])["inputs"]["policy"]["sha256"]
-            ).read_text(encoding="utf-8")
-        )
+        try:
+            pin_manifest = pins.get_pin(entry["pin_id"])
+            policy_record = pin_manifest["inputs"]["policy"]
+            policy = json.loads(
+                pins.blob_path(policy_record["sha256"]).read_text(encoding="utf-8")
+            )
+        except (KeyError, OSError, UnicodeError, json.JSONDecodeError, TypeError) as exc:
+            queue.set_status(entry["id"], "failed")
+            print(f"FAILED {entry['id']}: unreadable pinned policy: {exc}")
+            code = code or 1
+            continue
         rc = _run_one(
             queue, pins, receipts, entry, config, policy, attempt_obj, args.strategy,
             signing_key=signing_key, config_sha256=config_sha256,
