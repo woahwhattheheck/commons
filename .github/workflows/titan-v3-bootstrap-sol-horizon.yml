@@ -1,0 +1,151 @@
+name: titan-v3-source-packet-bootstrap-sol-horizon
+
+on:
+  push:
+    branches:
+      - 'sol-horizon/titan-v3-horizon-residual-port-20260910-01'
+    paths:
+      - '.github/workflows/titan-v3-bootstrap-sol-horizon.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/.bootstrap/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-source-packet-bootstrap-sol-horizon
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact pushed head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Verify and materialize exact source packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import io
+          import json
+          from pathlib import Path, PurePosixPath
+          import tarfile
+
+          root = Path.cwd().resolve()
+          chunk_root = root / "revenue/kaggriculture/cloud-execution-lab/candidates/v3/.bootstrap"
+          chunks = json.loads('{"part00": {"length": 11600, "sha256": "870a35c40db967ae9181984ff28eca86297e1c0104a00778a2e6372d5eebb45f"}, "part01": {"length": 11600, "sha256": "2610d51eb4ab79c8b79b5d8b7577c7f9043094162a8b798f01df07387a3ce5a8"}, "part02": {"length": 11600, "sha256": "8ff1f4249ea144349286a5a3b9cb6e2778f5b4d3c420288d51438ad2e9abcf9f"}, "part03": {"length": 11584, "sha256": "f2bd5c9e27914b448e4449d5e69f3111e7af96c5b1cf585dd4025429797c2b61"}}')
+          expected = json.loads('{".github/workflows/titan-v3-horizon-residual-sol-horizon.yml": "cc3c18dddf605e035151eda72291f904acb86886a5539a2b71abeba89905da0c", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/.gitignore": "eb23201bf8045bae97d6f115436fbeceb52a080b218644bf1b15f92b9da8dd4e", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json": "a5897d4a1b205f183bc912acaddd9cccfab651d5154b1c64e2f9983cc67908e5", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/HORIZON-RESIDUAL.md": "529b1e8807ce68dcbaae72a9509a59512d0e2ae852530247c4af04eca1633f21", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md": "d98275c2f9ade1488c2fac93d97aa76265fb6c61cacb8d480e55e23a729c4a89", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json": "4bcffae6ff1dc01bd427604064703946e2b34a3df2964e2bdee970c146abc8f1", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py": "5a1f43a5f7b94b13d939e691c359c9a498d7fa9bdf2c3240ce61b6687583b82c", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py": "5850edb9c56e40509fb79e1a2772acc25c8b092acd17ba9905e3daa6d2342204", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py": "19f8c42da93bf9d1f7db7722af80f5b6ab12c249362ddb95d9142c1c57d76e8d", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_horizon.py": "f5d7c78f95e8a18323ed401ad7427054a389b381b6bae3438ad296d055bb65f7", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/horizon_residual.py": "9071cb1910813aeaba7edc2f1687031f80a5096596ed9fef71447966eb019f54", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25", "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655"}')
+          encoded_parts = []
+          for name in sorted(chunks):
+              path = chunk_root / name
+              data = path.read_bytes()
+              receipt = chunks[name]
+              if len(data) != receipt["length"]:
+                  raise SystemExit(f"{name} length mismatch: {len(data)} != {receipt['length']}")
+              digest = hashlib.sha256(data).hexdigest()
+              if digest != receipt["sha256"]:
+                  raise SystemExit(f"{name} hash mismatch: {digest}")
+              encoded_parts.append(data)
+
+          encoded = b"".join(encoded_parts)
+          if len(encoded) != 46384:
+              raise SystemExit(f"encoded length mismatch: {len(encoded)}")
+          raw = base64.b64decode(encoded, validate=True)
+          if len(raw) != 34788:
+              raise SystemExit(f"bundle length mismatch: {len(raw)}")
+          digest = hashlib.sha256(raw).hexdigest()
+          if digest != "3b69c688785366b780ccd15c51245c4e4b9bdeed3327802c29509c274a556ec0":
+              raise SystemExit(f"bundle hash mismatch: {digest}")
+
+          with tarfile.open(fileobj=io.BytesIO(raw), mode="r:gz") as archive:
+              members = archive.getmembers()
+              names = [member.name for member in members]
+              if len(members) != 17 or len(set(names)) != 17:
+                  raise SystemExit(f"unexpected packet cardinality: {len(members)} members")
+              if set(names) != set(expected):
+                  missing = sorted(set(expected) - set(names))
+                  extra = sorted(set(names) - set(expected))
+                  raise SystemExit(f"packet member mismatch: missing={missing} extra={extra}")
+              payloads = {}
+              for member in members:
+                  name = member.name
+                  pure = PurePosixPath(name)
+                  if (
+                      not member.isfile()
+                      or pure.is_absolute()
+                      or "\\" in name
+                      or any(part in ("", ".", "..") for part in pure.parts)
+                  ):
+                      raise SystemExit(f"unsafe packet member: {name!r}")
+                  stream = archive.extractfile(member)
+                  if stream is None:
+                      raise SystemExit(f"missing packet payload: {name}")
+                  data = stream.read()
+                  actual = hashlib.sha256(data).hexdigest()
+                  if actual != expected[name]:
+                      raise SystemExit(f"file hash mismatch for {name}: {actual}")
+                  payloads[name] = data
+
+          for name, data in payloads.items():
+              target = (root / name).resolve()
+              try:
+                  target.relative_to(root)
+              except ValueError as exc:
+                  raise SystemExit(f"target escapes workspace: {name}") from exc
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(data)
+
+          for name, wanted in expected.items():
+              actual = hashlib.sha256((root / name).read_bytes()).hexdigest()
+              if actual != wanted:
+                  raise SystemExit(f"post-write hash mismatch for {name}: {actual}")
+          print(json.dumps({
+              "status": "SOURCE_PACKET_MATERIALIZED",
+              "bundle_sha256": digest,
+              "files": len(expected),
+          }, sort_keys=True))
+          PY
+
+      - name: Commit only the materialized one-tree source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm -r revenue/kaggriculture/cloud-execution-lab/candidates/v3/.bootstrap .github/workflows/titan-v3-bootstrap-sol-horizon.yml
+          git add .github/workflows/titan-v3-horizon-residual-sol-horizon.yml revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          git diff --cached --check
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          allowed_root = "revenue/kaggriculture/cloud-execution-lab/candidates/v3/"
+          allowed_workflow = ".github/workflows/titan-v3-horizon-residual-sol-horizon.yml"
+          bootstrap_workflow = ".github/workflows/titan-v3-bootstrap-sol-horizon.yml"
+          names = subprocess.check_output(
+              ["git", "diff", "--cached", "--name-only"], text=True
+          ).splitlines()
+          unexpected = [
+              name for name in names
+              if not (
+                  name.startswith(allowed_root)
+                  or name in (allowed_workflow, bootstrap_workflow)
+              )
+          ]
+          if unexpected:
+              raise SystemExit(f"unexpected staged paths: {unexpected}")
+          if not Path(allowed_workflow).is_file():
+              raise SystemExit("final path-scoped workflow was not materialized")
+          print("STAGED_SOURCE_PATHS_OK", len(names))
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "TITAN V3: materialize measured horizon residual source packet"
+          git push origin "HEAD:${{ github.ref_name }}"
