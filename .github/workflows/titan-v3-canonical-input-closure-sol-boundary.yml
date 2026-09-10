@@ -1,0 +1,51 @@
+name: TITAN V3 canonical input closure — SOL-BOUNDARY
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/evidence/sol-boundary-v3-canonical-input-archive-closure-20260910-01/**'
+      - '.github/workflows/titan-v3-canonical-input-closure-sol-boundary.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Verify exact source/evidence closure under both interpreter modes
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE='revenue/kaggriculture/cloud-execution-lab/evidence/sol-boundary-v3-canonical-input-archive-closure-20260910-01'
+          python3 -B "$CASE/verify_evidence.py"
+          python3 -B -O "$CASE/verify_evidence.py"
+          PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile "$CASE/verify_evidence.py"
+      - name: Confirm additive path scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          case '${{ github.event_name }}' in
+            pull_request)
+              git fetch --no-tags --depth=1 origin '${{ github.event.pull_request.base.sha }}'
+              git diff --name-only '${{ github.event.pull_request.base.sha }}' '${{ github.event.pull_request.head.sha }}' > /tmp/changed
+              ;;
+            *)
+              printf '%s\n' \
+                '.github/workflows/titan-v3-canonical-input-closure-sol-boundary.yml' \
+                'revenue/kaggriculture/cloud-execution-lab/evidence/sol-boundary-v3-canonical-input-archive-closure-20260910-01/README.md' > /tmp/changed
+              ;;
+          esac
+          while IFS= read -r path; do
+            case "$path" in
+              .github/workflows/titan-v3-canonical-input-closure-sol-boundary.yml|revenue/kaggriculture/cloud-execution-lab/evidence/sol-boundary-v3-canonical-input-archive-closure-20260910-01/*) ;;
+              *) echo "disallowed path: $path" >&2; exit 1 ;;
+            esac
+          done < /tmp/changed
+          test -s /tmp/changed

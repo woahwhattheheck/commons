@@ -1,0 +1,370 @@
+--- a/build_v3.py
++++ b/build_v3.py
+@@ -26,6 +26,21 @@
+ import tempfile
+ from pathlib import Path
+ 
++MAX_CANONICAL_MEMBERS = 4096
++MAX_CANONICAL_FILE_BYTES = 32 * 1024 * 1024
++MAX_CANONICAL_TOTAL_BYTES = 128 * 1024 * 1024
++
++
++class V3BuildError(RuntimeError):
++    """Fail-closed V3 source/archive custody violation."""
++
++
++def _require(condition, message):
++    """Optimization-independent invariant (unlike a syntactic ``assert``)."""
++    if not condition:
++        raise V3BuildError(message)
++
++
+ HERE = Path(__file__).resolve().parent
+ sys.path.insert(0, str(HERE))
+ import apply_v3  # noqa: E402
+@@ -41,27 +56,108 @@
+ 
+ 
+ def overlay_files():
+-    return {p.relative_to(OVERLAY).as_posix(): p.read_bytes()
+-            for p in sorted(OVERLAY.rglob("*"))
+-            if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"}
++    files = {}
++    for path in sorted(OVERLAY.rglob("*")):
++        if "__pycache__" in path.parts or path.suffix == ".pyc":
++            continue
++        _require(not path.is_symlink(), "overlay contains symlink: %s" % path)
++        if path.is_file():
++            files[path.relative_to(OVERLAY).as_posix()] = path.read_bytes()
++    return files
++
++
++def _canonical_member_name(member):
++    """Return one canonical relative POSIX name, or None for the archive root dir."""
++    raw = member.name
++    _require(isinstance(raw, str) and raw != "", "canonical archive has an empty member name")
++    _require("\x00" not in raw, "canonical archive member contains NUL")
++    _require("\\" not in raw, "canonical archive member is not POSIX: %r" % raw)
++    _require(not raw.startswith("/"), "canonical archive member is absolute: %r" % raw)
++
++    name = raw
++    while name.startswith("./"):
++        name = name[2:]
++    if member.isdir():
++        name = name.rstrip("/")
++    if name in ("", "."):
++        _require(member.isdir(), "canonical archive regular file has root name: %r" % raw)
++        return None
++
++    _require("//" not in name, "canonical archive member has empty path segment: %r" % raw)
++    parts = name.split("/")
++    _require(all(part not in ("", ".", "..") for part in parts),
++             "canonical archive member is non-canonical or escapes root: %r" % raw)
++    first = parts[0]
++    _require(not (len(first) >= 2 and first[0].isalpha() and first[1] == ":"),
++             "canonical archive member has a drive prefix: %r" % raw)
++    return "/".join(parts)
++
++
++def canonical_archive_files(data, base):
++    """Authenticate and decode the canonical input without filesystem extraction."""
++    expected_sha = str(base.get("sha256", ""))
++    digest = hashlib.sha256(data).hexdigest()
++    _require(digest == expected_sha,
++             "canonical archive is %s, manifest pins %s" % (digest, expected_sha))
++    _require(len(data) == int(base.get("bytes", -1)),
++             "canonical archive byte length is %d, manifest pins %r" % (len(data), base.get("bytes")))
++
++    files = {}
++    seen = set()
++    total = 0
++    try:
++        with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
++            for member_count, member in enumerate(tar, 1):
++                _require(member_count <= MAX_CANONICAL_MEMBERS,
++                         "canonical archive has more than %d members" % MAX_CANONICAL_MEMBERS)
++                name = _canonical_member_name(member)
++                if name is None:
++                    continue
++                _require(name not in seen, "canonical archive has duplicate normalized member: %s" % name)
++                seen.add(name)
++
++                ancestors = ["/".join(name.split("/")[:index])
++                             for index in range(1, len(name.split("/")))]
++                _require(not any(parent in files for parent in ancestors),
++                         "canonical archive places a member below a regular file: %s" % name)
++                if member.isfile():
++                    _require(not any(other.startswith(name + "/") for other in seen if other != name),
++                             "canonical archive regular file shadows another member: %s" % name)
++                    _require(not getattr(member, "issparse", lambda: False)(),
++                             "canonical archive sparse member is not allowed: %s" % name)
++                    _require(0 <= member.size <= MAX_CANONICAL_FILE_BYTES,
++                             "canonical archive member size is out of bounds: %s (%d)" % (name, member.size))
++                    handle = tar.extractfile(member)
++                    _require(handle is not None, "canonical archive member is unreadable: %s" % name)
++                    payload = handle.read()
++                    _require(len(payload) == member.size,
++                             "canonical archive member size mismatch: %s" % name)
++                    total += len(payload)
++                    _require(total <= MAX_CANONICAL_TOTAL_BYTES,
++                             "canonical archive uncompressed bytes exceed %d" % MAX_CANONICAL_TOTAL_BYTES)
++                    files[name] = payload
++                else:
++                    _require(member.isdir(),
++                             "canonical archive special member is not allowed: %s type=%r" % (name, member.type))
++    except (tarfile.TarError, EOFError, OSError) as error:
++        raise V3BuildError("canonical archive cannot be decoded: %s" % type(error).__name__) from error
++
++    _require(len(files) == int(base.get("files", -1)),
++             "canonical archive has %d regular files, manifest pins %r" % (len(files), base.get("files")))
++    return files
+ 
+ 
+ def package_files(canon_path=None):
+     m = manifest()
+     archive = Path(canon_path or CANON)
+     data = archive.read_bytes()
+-    digest = hashlib.sha256(data).hexdigest()
+-    assert digest == m["base"]["sha256"], "canonical archive %s is %s, manifest pins %s" % (archive, digest, m["base"]["sha256"])
++    canonical = canonical_archive_files(data, m["base"])
+     work = Path(tempfile.mkdtemp(prefix="titan-v3-"))
+     try:
+-        with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+-            for member in tar.getmembers():
+-                if not member.isfile():
+-                    continue
+-                name = member.name[2:] if member.name.startswith("./") else member.name
+-                target = work / name
+-                target.parent.mkdir(parents=True, exist_ok=True)
+-                target.write_bytes(tar.extractfile(member).read())
++        for name, blob in canonical.items():
++            target = work / name
++            target.parent.mkdir(parents=True, exist_ok=True)
++            target.write_bytes(blob)
+         for name, blob in overlay_files().items():
+             target = work / name
+             target.parent.mkdir(parents=True, exist_ok=True)
+@@ -99,7 +195,19 @@
+ 
+ def source_shas():
+     shas = file_shas(overlay_files())
+-    shas["apply_v3.py"] = hashlib.sha256((HERE / "apply_v3.py").read_bytes()).hexdigest()
++    for name in ("apply_v3.py", "build_v3.py"):
++        _require(name not in shas, "overlay shadows builder source: %s" % name)
++        shas[name] = hashlib.sha256((HERE / name).read_bytes()).hexdigest()
++    checks = HERE / "source_checks"
++    if checks.exists():
++        for path in sorted(checks.rglob("*")):
++            if "__pycache__" in path.parts or path.suffix == ".pyc":
++                continue
++            _require(not path.is_symlink(), "source check contains symlink: %s" % path)
++            if path.is_file():
++                name = path.relative_to(HERE).as_posix()
++                _require(name not in shas, "duplicate source receipt key: %s" % name)
++                shas[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+     return shas
+ 
+ 
+--- a/V3-MANIFEST.json
++++ b/V3-MANIFEST.json
+@@ -215,6 +215,8 @@
+     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
+     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
+-    "apply_v3.py": "8e1093429a1bb463e2b82490963b43d9c9a4fcbd16f9d1b8d02fd75434f84436"
++    "apply_v3.py": "8e1093429a1bb463e2b82490963b43d9c9a4fcbd16f9d1b8d02fd75434f84436",
++    "build_v3.py": "48e5df9154d6a165ed6f29d0981bb1a25b2566bea6f0ca08ec18f97c75d41155",
++    "source_checks/test_build_v3_closure.py": "a192c5fea7e73a0544ac2fc50097cd7aa5593be5980311256f17612b2034ba36"
+   }
+ }
+--- a/README.md
++++ b/README.md
+@@ -80,3 +80,22 @@
+ EOF
+ V25_REPO=/home/user/commons /tmp/v25/.venv/bin/python -B tools/v25_sims/gauntlet.py --seeds <seeds> --opponents arlene,apex,kaito_v43,cok_v10,public_bt12,v1_submitted --workers 8 --action-timeout 15.0 --candidate /tmp/v25/cand_v3_e11/main.py --outdir /tmp/out_v3_e11
+ ```
++
++## Canonical input/archive source closure (SOL-BOUNDARY carrier)
++
++Before the canonical input is materialized, `build_v3.py` now authenticates all three
++manifest dimensions (`base.sha256`, `base.bytes`, and `base.files`) and decodes regular
++files into memory only after each tar member has a canonical relative POSIX name.
++Absolute, parent-escaping, backslash, duplicate-normalized, special, sparse, oversized,
++and regular-file-prefix-colliding members fail before any filesystem write. This is the
++*input* boundary; atomic/non-empty handling for `--tree` remains a separate publication
++lane.
++
++The source receipt now includes the executing `build_v3.py`, `apply_v3.py`, and the
++source-only closure contracts as well as package overlays. Run the predecessor killers
++from this directory under both interpreter modes:
++
++```bash
++python -m unittest -v source_checks/test_build_v3_closure.py
++python -O -m unittest -v source_checks/test_build_v3_closure.py
++```
+--- /dev/null
++++ b/source_checks/test_build_v3_closure.py
+@@ -0,0 +1,163 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Predecessor-killing source/archive custody contracts for the signed V3 builder.
++
++Run from candidates/v3:
++    python -m unittest -v source_checks/test_build_v3_closure.py
++    python -O -m unittest -v source_checks/test_build_v3_closure.py
++"""
++from __future__ import annotations
++
++from contextlib import contextmanager
++import hashlib
++import io
++from pathlib import Path
++import sys
++import tarfile
++import tempfile
++import unittest
++
++ROOT = Path(__file__).resolve().parents[1]
++if str(ROOT) not in sys.path:
++    sys.path.insert(0, str(ROOT))
++
++import apply_v3  # noqa: E402
++import build_v3  # noqa: E402
++
++
++def archive(entries):
++    """Create a gzip tar from (name, payload, kind) triples."""
++    raw = io.BytesIO()
++    with tarfile.open(fileobj=raw, mode="w:gz") as tar:
++        for name, payload, kind in entries:
++            info = tarfile.TarInfo(name)
++            if kind == "file":
++                payload = bytes(payload)
++                info.size = len(payload)
++                tar.addfile(info, io.BytesIO(payload))
++            elif kind == "dir":
++                info.type = tarfile.DIRTYPE
++                info.size = 0
++                tar.addfile(info)
++            elif kind == "symlink":
++                info.type = tarfile.SYMTYPE
++                info.linkname = str(payload)
++                info.size = 0
++                tar.addfile(info)
++            elif kind == "hardlink":
++                info.type = tarfile.LNKTYPE
++                info.linkname = str(payload)
++                info.size = 0
++                tar.addfile(info)
++            else:
++                raise ValueError(kind)
++    return raw.getvalue()
++
++
++def base_for(blob, files):
++    return {
++        "sha256": hashlib.sha256(blob).hexdigest(),
++        "bytes": len(blob),
++        "files": files,
++    }
++
++
++@contextmanager
++def patched(obj, name, value):
++    old = getattr(obj, name)
++    setattr(obj, name, value)
++    try:
++        yield
++    finally:
++        setattr(obj, name, old)
++
++
++class CanonicalArchiveClosureTests(unittest.TestCase):
++    def test_valid_relative_regular_files_decode_byte_exact(self):
++        blob = archive([
++            ("./", b"", "dir"),
++            ("./main.py", b"print('ok')\n", "file"),
++            ("pkg", b"", "dir"),
++            ("pkg/data.json", b"{}\n", "file"),
++        ])
++        self.assertEqual(
++            build_v3.canonical_archive_files(blob, base_for(blob, 2)),
++            {"main.py": b"print('ok')\n", "pkg/data.json": b"{}\n"},
++        )
++
++    def test_parent_escape_is_rejected_before_filesystem_write(self):
++        unique = "v3-escape-%s.txt" % next(tempfile._get_candidate_names())
++        outside = Path(tempfile.gettempdir()) / unique
++        outside.unlink(missing_ok=True)
++        blob = archive([("../" + unique, b"escape\n", "file")])
++        with tempfile.NamedTemporaryFile(suffix=".tar.gz", delete=False) as handle:
++            handle.write(blob)
++            archive_path = Path(handle.name)
++        try:
++            with patched(build_v3, "manifest", lambda: {"base": base_for(blob, 1)}):
++                with self.assertRaisesRegex(build_v3.V3BuildError, "escapes root"):
++                    build_v3.package_files(archive_path)
++            self.assertFalse(outside.exists())
++        finally:
++            archive_path.unlink(missing_ok=True)
++            outside.unlink(missing_ok=True)
++
++    def test_absolute_and_windows_ambiguous_paths_are_rejected(self):
++        cases = [
++            ("/tmp/absolute.py", "absolute"),
++            ("C:/drive.py", "drive prefix"),
++            ("C:drive.py", "drive prefix"),
++            ("pkg\\windows.py", "not POSIX"),
++            ("pkg//alias.py", "empty path segment"),
++            ("pkg/./alias.py", "non-canonical"),
++            ("pkg/../escape.py", "escapes root"),
++        ]
++        for name, error in cases:
++            with self.subTest(name=name):
++                blob = archive([(name, b"x", "file")])
++                with self.assertRaisesRegex(build_v3.V3BuildError, error):
++                    build_v3.canonical_archive_files(blob, base_for(blob, 1))
++
++    def test_duplicate_normalized_member_is_rejected(self):
++        blob = archive([("main.py", b"first", "file"), ("./main.py", b"second", "file")])
++        with self.assertRaisesRegex(build_v3.V3BuildError, "duplicate normalized member"):
++            build_v3.canonical_archive_files(blob, base_for(blob, 2))
++
++    def test_regular_file_cannot_shadow_descendant(self):
++        for entries in (
++            [("a", b"x", "file"), ("a/b", b"y", "file")],
++            [("a/b", b"y", "file"), ("a", b"x", "file")],
++        ):
++            with self.subTest(entries=[entry[0] for entry in entries]):
++                blob = archive(entries)
++                with self.assertRaisesRegex(build_v3.V3BuildError, "regular file|below a regular file"):
++                    build_v3.canonical_archive_files(blob, base_for(blob, 2))
++
++    def test_links_and_special_aliases_are_rejected(self):
++        for kind in ("symlink", "hardlink"):
++            with self.subTest(kind=kind):
++                blob = archive([("alias", "main.py", kind)])
++                with self.assertRaisesRegex(build_v3.V3BuildError, "special member"):
++                    build_v3.canonical_archive_files(blob, base_for(blob, 0))
++
++    def test_base_sha_byte_count_and_regular_file_count_are_all_bound(self):
++        blob = archive([("main.py", b"x", "file")])
++        bad_sha = dict(base_for(blob, 1), sha256="0" * 64)
++        bad_bytes = dict(base_for(blob, 1), bytes=len(blob) + 1)
++        bad_files = dict(base_for(blob, 2))
++        for base, error in ((bad_sha, "manifest pins"), (bad_bytes, "byte length"), (bad_files, "regular files")):
++            with self.subTest(error=error):
++                with self.assertRaisesRegex(build_v3.V3BuildError, error):
++                    build_v3.canonical_archive_files(blob, base)
++
++
++class ExecutedSourceClosureTests(unittest.TestCase):
++    def test_builder_and_applier_are_both_in_source_receipt(self):
++        shas = build_v3.source_shas()
++        self.assertEqual(shas["build_v3.py"], hashlib.sha256((ROOT / "build_v3.py").read_bytes()).hexdigest())
++        self.assertEqual(shas["apply_v3.py"], hashlib.sha256((ROOT / "apply_v3.py").read_bytes()).hexdigest())
++        check = ROOT / "source_checks/test_build_v3_closure.py"
++        self.assertEqual(shas["source_checks/test_build_v3_closure.py"], hashlib.sha256(check.read_bytes()).hexdigest())
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)

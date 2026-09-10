@@ -1,0 +1,73 @@
+{
+  "limitations": [
+    "Authenticated packet F0C0JPCAAQP is stale versus the advertised current re-pin and remains HOLD_STALE_REPIN.",
+    "The packet did not include canonical archive a055fd56..., so this session did not claim a full package rebuild or generated-archive equivalence.",
+    "Carrier is evidence-only for rebasing by the current one-tree publisher; no direct merge or strength claim."
+  ],
+  "operation": "TITAN-V3-CANONICAL-INPUT-ARCHIVE-CLOSURE-20260910-01",
+  "patch": {
+    "path": "evidence/canonical-input-closure.patch",
+    "sha256": "fe6e9b53c5a1546394e591f9657ce555551c057eb7e9d38d667c82227dd7ef59"
+  },
+  "patched_files": {
+    "README.md": "6ea24012a8d60955b96afd1fb875581a3b0a8081b9bfe2a0b028075dbb526030",
+    "V3-MANIFEST.json": "4f23c00d76d91f3ddc734a8e692db5916657e1a09bba84b87c5625328f4b3d1a",
+    "build_v3.py": "48e5df9154d6a165ed6f29d0981bb1a25b2566bea6f0ca08ec18f97c75d41155",
+    "source_checks/test_build_v3_closure.py": "a192c5fea7e73a0544ac2fc50097cd7aa5593be5980311256f17612b2034ba36"
+  },
+  "preserved_outputs": {
+    "FILES.json_sha256": "a5897d4a1b205f183bc912acaddd9cccfab651d5154b1c64e2f9983cc67908e5",
+    "FILES.json_unchanged": true,
+    "apply_v3.py_sha256": "8e1093429a1bb463e2b82490963b43d9c9a4fcbd16f9d1b8d02fd75434f84436",
+    "apply_v3.py_unchanged": true,
+    "declared_built_archive": {
+      "bytes": 438079,
+      "files": 115,
+      "sha256": "1d590a3dc65c51a2cd0c94fb59bf34d713e981173ac6436f8cadfab791f7ffac"
+    }
+  },
+  "schema": "titan.v3-canonical-input-closure-validation.v1",
+  "scope": {
+    "excluded": [
+      "--tree target publication/atomic replacement (SOL-CLEANROOM)",
+      "general Python assert/-O audit and repair (SOL-ASTRA-AUTO)",
+      "stale/current repin transport identity (SOL-PRO)",
+      "runtime policy, gameplay, provider, Kaggle, submission"
+    ],
+    "included": [
+      "build_v3.py canonical input authentication/decode",
+      "manifest base.sha256+base.bytes+base.files binding",
+      "executed build_v3.py + source-check hashes in source receipt",
+      "source-only predecessor contracts"
+    ]
+  },
+  "validation": {
+    "normal_python": {
+      "status": "PASS",
+      "tests": 8,
+      "transcript_sha256": "acbd5ffdfc5c45ed1dec8f64aebf957d72ab4f1edf876555bcde7a79d15d99c1"
+    },
+    "optimized_python": {
+      "status": "PASS",
+      "tests": 8,
+      "transcript_sha256": "acbd5ffdfc5c45ed1dec8f64aebf957d72ab4f1edf876555bcde7a79d15d99c1"
+    },
+    "original_with_successor_contracts": {
+      "reported_errors": 18,
+      "returncode": 1,
+      "status": "FAIL_AS_REQUIRED",
+      "transcript_sha256": "63f235df2ae3dfc3e7bb62568f03ec5ecb9a5c3a119763cd0db76ba07469563c"
+    },
+    "patch_applies_byte_exact_to_packet": true,
+    "patch_apply_transcript_sha256": "2407d9a8310b90adf805d82cf9c8d244d1e4489fdc266cda74329f90b32920f2",
+    "py_compile": [
+      "build_v3.py",
+      "source_checks/test_build_v3_closure.py"
+    ],
+    "source_receipt": {
+      "entries": 10,
+      "status": "MATCH_V3_MANIFEST_OVERLAY",
+      "transcript_sha256": "a4191174ef34524a09e53c3590e1005c95505a5367097e20ffa895fb4fa1de54"
+    }
+  }
+}
