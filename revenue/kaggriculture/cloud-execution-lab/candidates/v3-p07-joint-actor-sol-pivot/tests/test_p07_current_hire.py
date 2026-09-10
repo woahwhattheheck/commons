@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from copy import deepcopy
 from types import SimpleNamespace
+import json
+import os
+from pathlib import Path
+import tempfile
 import unittest
 
 import p07_atomic
@@ -17,6 +21,12 @@ class Controller:
         self.R = {0: route}
 
 
+def fixed_hire(farm, private, board, mult=1):
+    """Test primitive with the same append-after-units contract as official HIRE."""
+    farm.setdefault("hands", []).append([2, 2])
+    private.setdefault("inventories", []).append({})
+
+
 class CurrentHireWindowTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -24,6 +34,7 @@ class CurrentHireWindowTests(unittest.TestCase):
 
     def setUp(self):
         mechanics, observation, route = crossing_fixture()
+        mechanics._do_hire = fixed_hire
         while len(route) < 720:
             route.append(row())
         observation.update(step=0, day=0, hour=0)
@@ -35,6 +46,7 @@ class CurrentHireWindowTests(unittest.TestCase):
             "turnsPerDay": 24,
             "episodeSteps": 720,
             "shedCapacity": 100,
+            "farmHandCostMult": 1,
             "maxMarketOrdersPerTurn": 10,
         }
         self.instance = SimpleNamespace(
@@ -80,6 +92,87 @@ class CurrentHireWindowTests(unittest.TestCase):
         self.assertEqual(receipt["existing_actor_count"], 2)
         self.assertEqual(receipt["active_hires"], 1)
         self.assertEqual(receipt["extra_actor_actions"], 1)
+        self.assertTrue(receipt["replay"]["accepted"])
+        self.assertTrue(receipt["final_market_bound"])
+        self.assertEqual(
+            self.spatial._p07_pending["required_market"], [["HIRE"]]
+        )
+        guarded = self.spatial.guard_returned(self.observation, output)
+        self.assertEqual(guarded, output)
+        self.assertEqual(
+            self.spatial._p07_pending["guard_decision"], "commit_pair"
+        )
+        self.assertTrue(self.spatial._p07_pending["guard_pair_actions"])
+        self.assertTrue(self.spatial._p07_pending["guard_market_binding"])
+
+    def test_full_replay_rejects_spawn_difference_hidden_by_unit_only_proof(self):
+        def position_sensitive_hire(farm, private, board, mult=1):
+            # Baseline step-0 movements leave all sites empty and choose (4,0).
+            # The travel-reduced candidate remains on both edge sites and
+            # chooses (2,0).  The unit-only predecessor cannot see this.
+            sites = [(4, 0), (2, 0), (0, 0)]
+            occupied = {site: 0 for site in sites}
+            for position in [farm["farmer"], *farm.get("hands", [])]:
+                key = tuple(position)
+                if key in occupied:
+                    occupied[key] += 1
+            chosen = min(sites, key=lambda site: (occupied[site], sites.index(site)))
+            farm["hands"].append(list(chosen))
+            private["inventories"].append({})
+
+        self.spatial.m._do_hire = position_sensitive_hire
+        self.set_current([["HIRE"]])
+        original_refs = list(self.route[:15])
+        original = deepcopy(self.route)
+        with tempfile.TemporaryDirectory() as directory:
+            log = Path(directory) / "trace.jsonl"
+            previous = os.environ.get("TITAN_P07_LOG")
+            os.environ["TITAN_P07_LOG"] = str(log)
+            try:
+                output = self.propose()
+            finally:
+                if previous is None:
+                    os.environ.pop("TITAN_P07_LOG", None)
+                else:
+                    os.environ["TITAN_P07_LOG"] = previous
+            trace = [json.loads(line) for line in log.read_text().splitlines()]
+        self.assertEqual(len(trace), 1)
+        self.assertFalse(trace[0]["changed"])
+        self.assertEqual(
+            trace[0]["reason"], "current_hire_full_replay_mismatch"
+        )
+        self.assertEqual(output, self.selected)
+        self.assertEqual(self.route, original)
+        self.assertTrue(all(self.route[i] is original_refs[i] for i in range(15)))
+        self.assertEqual(self.spatial.plans, {})
+        self.assertEqual(self.spatial.active, {})
+        self.assertIsNone(self.spatial._p07_pending)
+        report = self.spatial.p07_report
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "current_hire_full_replay_mismatch")
+        window = report["current_hire_window"]
+        self.assertTrue(window["rolled_back_exact_proposal"])
+        self.assertFalse(window["replay"]["accepted"])
+        self.assertFalse(window["replay"]["hands_equal"])
+
+    def test_final_market_change_rolls_back_both_pair_actions(self):
+        self.set_current([["HIRE"]])
+        output = self.propose()
+        pending = deepcopy(self.spatial._p07_pending)
+        pair = tuple(pending["pair"])
+        altered = deepcopy(output)
+        altered["market"] = []
+        guarded = self.spatial.guard_returned(self.observation, altered)
+        for worker in pair:
+            self.assertEqual(
+                unit(guarded, worker), pending["baseline_current"][worker]
+            )
+        self.assertEqual(guarded["market"], [])
+        self.assertEqual(
+            self.spatial._p07_pending["guard_decision"], "rollback_pair"
+        )
+        self.assertTrue(self.spatial._p07_pending["guard_pair_actions"])
+        self.assertFalse(self.spatial._p07_pending["guard_market_binding"])
 
     def test_non_hire_current_market_remains_a_hard_boundary(self):
         self.set_current([["SELL", "WHEAT", 1]])
@@ -101,6 +194,16 @@ class CurrentHireWindowTests(unittest.TestCase):
             self.spatial.p07_report["reason"],
             "inactive_suffix_market_boundary",
         )
+
+    def test_official_none_and_empty_blanks_are_inert(self):
+        receipt = classify_current_hire(
+            {"market": [None, [], ["HIRE"]], "hands": [["PASS"]]},
+            {"market": [None, [], ["HIRE"]], "hands": [["PASS"]]},
+            {"maxMarketOrdersPerTurn": 10},
+            2,
+        )
+        self.assertTrue(receipt["admitted"])
+        self.assertEqual(receipt["active_hires"], 1)
 
     def test_bool_and_zero_prefix_carriers_fail_closed(self):
         for invalid in (True, 0):
@@ -160,6 +263,7 @@ class CurrentHireWindowTests(unittest.TestCase):
 
     def test_certified_but_dormant_row_preserves_route_object_identity(self):
         mechanics, observation, route = crossing_fixture(aligned=True)
+        mechanics._do_hire = fixed_hire
         while len(route) < 720:
             route.append(row())
         observation.update(step=0, day=0, hour=0)
@@ -171,6 +275,7 @@ class CurrentHireWindowTests(unittest.TestCase):
             "turnsPerDay": 24,
             "episodeSteps": 720,
             "shedCapacity": 100,
+            "farmHandCostMult": 1,
             "maxMarketOrdersPerTurn": 10,
         }
         instance = SimpleNamespace(
@@ -187,10 +292,25 @@ class CurrentHireWindowTests(unittest.TestCase):
         self.assertFalse(spatial.p07_report["changed"])
         self.assertIn("current_hire_window", spatial.p07_report)
 
+    def test_missing_hire_primitive_fails_closed_after_exact_proposal(self):
+        delattr(self.spatial.m, "_do_hire")
+        self.set_current([["HIRE"]])
+        original = deepcopy(self.route)
+        output = self.propose()
+        self.assertEqual(output, self.selected)
+        self.assertEqual(self.route, original)
+        self.assertFalse(self.spatial.p07_report["changed"])
+        self.assertEqual(
+            self.spatial.p07_report["reason"],
+            "current_hire_replay_error:ValueError",
+        )
+
     def test_install_is_idempotent(self):
         wrapped = p07_atomic.reconcile
+        wrapped_install = p07_atomic.install_spatial_hooks
         install_current_hire_window(p07_atomic)
         self.assertIs(p07_atomic.reconcile, wrapped)
+        self.assertIs(p07_atomic.install_spatial_hooks, wrapped_install)
 
 
 if __name__ == "__main__":

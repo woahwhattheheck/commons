@@ -46,7 +46,7 @@ jobs:
       - name: Install pinned official interpreter dependency
         run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
 
-      - name: Run 20 pair-atomic and fail-closed contracts
+      - name: Run 24 pair-atomic and fail-closed contracts
         shell: bash
         run: |
           set -euo pipefail
@@ -71,6 +71,7 @@ jobs:
             "$LAB/titan_runtime.py" \
             "$LAB/spatial_tempo.py" \
             "$LAB/joint_assignment.py" \
+            "$LAB/mechanics.py" \
             "$LAB/reference/engine/kaggriculture.py" \
             "$LAB/TITAN-CONFIG.json" \
             "$ROOT/candidate.py" \
