@@ -9,6 +9,8 @@ from pathlib import Path
 
 import regression_microscope as rm
 
+N = rm.DEFAULT_EXPECTED_ACTION_COUNT
+
 
 def h(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
@@ -19,7 +21,7 @@ def action(name: str, quantity: int = 1):
 
 
 def cell(*, seed=1, seat=0, actions=None, own=100, rival=90, world="w", trace="t", engine="e"):
-    actions = actions or [action("WAIT")] * 5
+    actions = actions or [action("WAIT")] * N
     return {
         "opponent": "Arlene", "seed": seed, "seat": seat,
         "state": "complete", "phase": "finalize",
@@ -34,6 +36,14 @@ def cell(*, seed=1, seat=0, actions=None, own=100, rival=90, world="w", trace="t
 
 
 def version(label: str, cells):
+    cells = list(cells)
+    pairs = {(row["opponent"], row["seed"]) for row in cells}
+    present = {(row["opponent"], row["seed"], row["seat"]) for row in cells}
+    for opponent, seed in sorted(pairs):
+        if (opponent, seed, 1) not in present:
+            mirror = cell(seed=seed, seat=1, world=f"mirror-world-{seed}", trace=f"mirror-trace-{seed}")
+            mirror["opponent"] = opponent
+            cells.append(mirror)
     return {
         "identity": {
             "source_sha256": h(f"source:{label}"),
@@ -45,9 +55,18 @@ def version(label: str, cells):
 
 
 def dataset(versions, *, status="PASS", labels=("v1", "v2", "v3")):
+    first = versions[labels[0]]["cells"] if labels[0] in versions else next(iter(versions.values()))["cells"]
+    expected = []
+    seen = set()
+    for row in first:
+        key = (row["opponent"], row["seed"], row["seat"])
+        if key not in seen:
+            expected.append({"opponent": key[0], "seed": key[1], "seat": key[2]})
+            seen.add(key)
     return {
         "schema": rm.SCHEMA,
-        "expected_action_count": 5,
+        "expected_action_count": N,
+        "expected_cells": expected,
         "upstream_causal_gate": {
             "tool": "SOL-AUDITOR paired-evidence causal gate",
             "schema": "titan-paired-evidence/v1",
@@ -60,14 +79,14 @@ def dataset(versions, *, status="PASS", labels=("v1", "v2", "v3")):
 
 
 def actions_with(step: int, name: str, quantity: int = 1):
-    result = [action("WAIT")] * 5
+    result = [action("WAIT")] * N
     result[step] = action(name, quantity)
     return result
 
 
 class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
     def test_localises_v2_harm_v3_repair_and_signature(self):
-        v1 = [action("WAIT")] * 5
+        v1 = [action("WAIT")] * N
         v2 = actions_with(2, "BUY_PRODUCT", 3)
         v3 = actions_with(2, "SELL", 2)
         report = rm.build_report(dataset({
@@ -84,7 +103,7 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
         self.assertIn("BUY_PRODUCT", out["v2_harmful_first_divergence_clusters"][0]["signature"])
 
     def test_unrepaired_and_new_v3_regressions_remain_separate(self):
-        wait = [action("WAIT")] * 5
+        wait = [action("WAIT")] * N
         report = rm.build_report(dataset({
             "v1": version("v1", [cell(seed=1, actions=wait, own=100, world="a1", trace="a1"), cell(seed=2, actions=wait, own=100, world="a2", trace="a2")]),
             "v2": version("v2", [cell(seed=1, actions=actions_with(0, "BUY_PRODUCT"), own=80, world="b1", trace="b1"), cell(seed=2, actions=actions_with(1, "SELL"), own=110, world="b2", trace="b2")]),
@@ -102,7 +121,7 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
         self.assertEqual(report["upstream_causal_gate"]["receipt_sha256"], h("causal receipt"))
 
     def test_action_identical_world_score_or_trace_drift_is_invalid(self):
-        wait = [action("WAIT")] * 5
+        wait = [action("WAIT")] * N
         report = rm.build_report(dataset({
             "v1": version("v1", [cell(actions=wait, own=100, world="a", trace="a")]),
             "v2": version("v2", [cell(actions=wait, own=120, world="b", trace="b")]),
@@ -115,7 +134,7 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
         self.assertEqual(report["comparisons"]["v1->v2"]["summary"]["diagnostic_status"], "INVALID_EVIDENCE")
 
     def test_own_down_rival_down_more_is_regression_not_gain(self):
-        wait = [action("WAIT")] * 5
+        wait = [action("WAIT")] * N
         changed = actions_with(1, "SELL")
         report = rm.build_report(dataset({
             "v1": version("v1", [cell(actions=wait, own=100, rival=100, world="a", trace="a")]),
@@ -128,7 +147,7 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
         self.assertEqual(report["comparisons"]["v1->v2"]["summary"]["diagnostic_status"], "REGRESSION_PRESENT")
 
     def test_action_change_requires_full_trace_change(self):
-        wait = [action("WAIT")] * 5
+        wait = [action("WAIT")] * N
         report = rm.build_report(dataset({
             "v1": version("v1", [cell(actions=wait, world="a", trace="same")]),
             "v2": version("v2", [cell(actions=actions_with(4, "SELL"), world="b", trace="same")]),
@@ -138,9 +157,9 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
         self.assertIn("action_changed_but_full_trace_identical", issues)
 
     def test_exact_action_cardinality_and_digest_are_enforced(self):
-        bad_count = cell(actions=[action("WAIT")] * 4)
+        bad_count = cell(actions=[action("WAIT")] * (N - 1))
         versions = {"v1": version("v1", [bad_count]), "v2": version("v2", [cell()]), "v3": version("v3", [cell()])}
-        with self.assertRaisesRegex(rm.MicroscopeError, "exactly 5 returned actions"):
+        with self.assertRaisesRegex(rm.MicroscopeError, f"exactly {N} returned actions"):
             rm.build_report(dataset(versions))
         bad_digest = cell()
         bad_digest["tested_action_sha256"] = h("wrong")
@@ -167,7 +186,7 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
             }))
 
     def test_engine_identity_mismatch_is_invalid(self):
-        wait = [action("WAIT")] * 5
+        wait = [action("WAIT")] * N
         report = rm.build_report(dataset({
             "v1": version("v1", [cell(actions=wait, engine="a", trace="a")]),
             "v2": version("v2", [cell(actions=actions_with(2, "SELL"), engine="b", trace="b")]),
@@ -177,8 +196,48 @@ class ThreeWayRegressionMicroscopeTests(unittest.TestCase):
         self.assertEqual(row["classification"], "invalid_confounded")
         self.assertIn("engine_sha256_mismatch", row["defense_in_depth_issues"])
 
+    def test_action_identical_v2_to_v3_cannot_be_reported_as_repair(self):
+        a = [action("WAIT")] * N
+        b = actions_with(2, "BUY_PRODUCT")
+        report = rm.build_report(dataset({
+            "v1": version("v1", [cell(actions=a, own=100, world="a", trace="a")]),
+            "v2": version("v2", [cell(actions=b, own=80, world="b", trace="b")]),
+            "v3": version("v3", [cell(actions=b, own=110, world="c", trace="c")]),
+        }))
+        key = "Arlene|seed=1|seat=0"
+        self.assertEqual(report["comparisons"]["v2->v3"]["cells"][0]["classification"], "invalid_confounded")
+        self.assertNotIn(key, report["attribution"]["v3_repaired_to_v1_cells"])
+        self.assertIn(key, report["attribution"]["v3_unrepaired_v2_regressions"])
+
+    def test_wrapped_action_step_and_seat_continuity_are_checked(self):
+        wrapped = [
+            {"step": index, "tested_seat": 0, "action": action("WAIT")}
+            for index in range(N)
+        ]
+        bad_step = cell(actions=wrapped)
+        bad_step["tested_seat_actions"][7]["step"] = 8
+        versions = {"v1": version("v1", [bad_step]), "v2": version("v2", [cell()]), "v3": version("v3", [cell()])}
+        with self.assertRaisesRegex(rm.MicroscopeError, "step must equal 7"):
+            rm.build_report(dataset(versions))
+        bad_seat = cell(actions=wrapped)
+        bad_seat["tested_seat_actions"][7]["tested_seat"] = 1
+        versions["v1"] = version("v1", [bad_seat])
+        with self.assertRaisesRegex(rm.MicroscopeError, "must equal cell seat 0"):
+            rm.build_report(dataset(versions))
+
+    def test_production_action_count_and_two_seat_grid_are_fixed(self):
+        versions = {label: version(label, [cell()]) for label in ("v1", "v2", "v3")}
+        raw = dataset(versions)
+        raw["expected_action_count"] = 5
+        with self.assertRaisesRegex(rm.MicroscopeError, "must equal 719"):
+            rm.build_report(raw)
+        raw = dataset(versions)
+        raw["expected_cells"] = [item for item in raw["expected_cells"] if item["seat"] == 0]
+        with self.assertRaisesRegex(rm.MicroscopeError, "both seats"):
+            rm.build_report(raw)
+
     def test_cli_emits_self_hashed_machine_and_human_receipts_only(self):
-        wait = [action("WAIT")] * 5
+        wait = [action("WAIT")] * N
         raw = dataset({
             "v1": version("v1", [cell(actions=wait, own=100, world="a", trace="a")]),
             "v2": version("v2", [cell(actions=actions_with(0, "BUY_PRODUCT"), own=90, world="b", trace="b")]),
