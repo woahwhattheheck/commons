@@ -1,0 +1,22 @@
+{
+  "adapters": "synthetic-read-only",
+  "automatic_release": false,
+  "demand_id": "msudenver-beverage-qaqc-lims-01",
+  "expected": {
+    "DUPLICATE_CLIENT_ID": 5,
+    "INCOMPATIBLE_PACKAGE_TEST_SELECTION": 4,
+    "MISSING_SAMPLE_TEST_IDENTITY": 8,
+    "QC_CONTROL_FAIL": 3,
+    "READY": 80,
+    "accessions": 80,
+    "events": 100,
+    "holds": 20,
+    "jobs": 180,
+    "reports": 80,
+    "total": 100
+  },
+  "fixture": "msudenver_100_requests.json",
+  "fixture_sha256": "0a98cce071bf52113d0c95902ca9cca9f381964216931614c5ba46fe13b15f7c",
+  "manifest_sha256": "03f8cf17be2794872f9f022d03d3e94e9b33493c971dde84d642e594a4d846a4",
+  "manifest_version": 1
+}
