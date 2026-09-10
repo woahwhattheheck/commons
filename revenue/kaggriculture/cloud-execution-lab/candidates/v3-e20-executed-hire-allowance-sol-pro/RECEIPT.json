@@ -1,0 +1,52 @@
+{
+  "schema": "titan-v3-e20-executed-hire-allowance-receipt/v1",
+  "operation": "TITAN-V3-E20-EXECUTED-HIRE-ALLOWANCE-REPAIR-20260910-01",
+  "status": "SOURCE_READY_NO_STRENGTH_CLAIM",
+  "authored_base": "3854f1cc46340f5099ade910e2cfc7b36606425e",
+  "branch": "sol-execution/titan-v3-e20-executed-hire-allowance-repair-20260910-01",
+  "input": {
+    "slack_file_id": "F0C0JPCAAQP",
+    "bundle_sha256": "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728",
+    "e20_source_sha256": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
+    "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4"
+  },
+  "predecessor_witness": {
+    "money": 0,
+    "hires_today": 2,
+    "max_hires": 3,
+    "farm_hand_cost_multiplier": 1,
+    "market": [
+      ["HIRE"],
+      ["SELL", "WHEAT", 1],
+      ["HIRE"]
+    ],
+    "predecessor_dropped_indices": [2],
+    "baseline_terminal_hires_today": 3,
+    "predecessor_terminal_hires_today": 2,
+    "failure": "raw HIRE ordinal was treated as a successful HIRE"
+  },
+  "repair": {
+    "replacement_sha256": "54127c61b25584f76ba75df966d33602d48da8405f4064b6b6ada2f81d5e9074",
+    "replacement_git_blob": "b89f53971ac5275730e94b2441effba3e4978ca0",
+    "contracts_discovered": 10,
+    "contracts_passed_local": 10,
+    "compile_passed_local": true,
+    "inert_suffix_preserved": true,
+    "input_nonmutation": true,
+    "idempotent": true
+  },
+  "deterministic_local_packet": {
+    "path": "titan-v3-e20-executed-hire-allowance-repair-20260910.tar.gz",
+    "sha256": "a7f29cf614e6f7a23c12e55efea4c80bf7d229de280dc1b79c46e04ea82d0066",
+    "bytes": 11153,
+    "slack_upload": "reservation F0C0YLJ5BEJ created; byte POST unavailable because the execution container could not resolve files.slack.com; GitHub branch is the durable publication"
+  },
+  "scope": {
+    "one_tree_publication_branch_mutated": false,
+    "canonical_or_release_pointer_mutated": false,
+    "gameplay_or_provider_spend": false,
+    "kaggle_or_submission_mutated": false,
+    "integration_owner": "one-tree publisher",
+    "promotion_gate": "exact one-tree composition plus returned-action activation and matched complete games"
+  }
+}
