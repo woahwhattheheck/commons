@@ -1,0 +1,16 @@
+{
+  "minimum_action_active_cells": 1,
+  "minimum_cell_margin_delta": 0,
+  "minimum_cell_own_delta": 0,
+  "minimum_global_mean_margin_delta": 0,
+  "minimum_global_mean_own_delta": 0,
+  "minimum_seed_count": 8,
+  "minimum_seed_mean_margin_delta": 0,
+  "minimum_seed_mean_own_delta": 0,
+  "minimum_stratum_mean_margin_delta": 0,
+  "minimum_stratum_mean_own_delta": 0,
+  "minimum_world_active_cells": 1,
+  "require_zero_lost_wins": true,
+  "require_zero_new_losses": true,
+  "schema_version": 1
+}
