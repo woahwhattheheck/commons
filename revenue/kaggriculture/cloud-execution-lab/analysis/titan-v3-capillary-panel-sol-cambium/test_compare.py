@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import unittest
 
 import compare
@@ -69,20 +70,18 @@ def evaluator_receipt_fixture():
     }
 
 
-def report_fixture(entry_sha: str, *, delta: float, changed: bool):
+def report_fixture(entry_sha: str, *, own_delta: float, changed: bool):
     audit = audit_fixture()
     games = []
     for opponent in compare.EXPECTED_OPPONENTS:
         for seed in compare.EXPECTED_SEEDS:
             for seat in (0, 1):
-                control_scores = [100.0, 100.0]
-                scores = list(control_scores)
-                scores[seat] += delta
-                digest_token = (
-                    f"{opponent}:{seed}:{seat}:{'candidate' if changed else 'control'}"
+                scores = [100.0, 100.0]
+                scores[seat] += own_delta
+                token = (
+                    f"{opponent}:{seed}:{seat}:"
+                    f"{'candidate' if changed else 'control'}"
                 ).encode()
-                import hashlib
-                action_digest = hashlib.sha256(digest_token).hexdigest()
                 games.append({
                     "opponent": opponent,
                     "seed": seed,
@@ -94,10 +93,8 @@ def report_fixture(entry_sha: str, *, delta: float, changed: bool):
                     "scores": scores,
                     "bank_snapshot": list(scores),
                     "candidate_action_count": compare.EXPECTED_STEPS,
-                    "candidate_action_sha256": action_digest,
-                    "trace_sha256": hashlib.sha256(
-                        b"trace:" + digest_token
-                    ).hexdigest(),
+                    "candidate_action_sha256": hashlib.sha256(token).hexdigest(),
+                    "trace_sha256": hashlib.sha256(b"trace:" + token).hexdigest(),
                     "actors": [
                         {"calls": compare.EXPECTED_STEPS},
                         {"calls": compare.EXPECTED_STEPS},
@@ -147,74 +144,184 @@ def report_fixture(entry_sha: str, *, delta: float, changed: bool):
     }
 
 
+def indexed(report):
+    return {
+        (game["opponent"], game["seed"], game["candidate_seat"]): game
+        for game in report["games"]
+    }
+
+
 class ClassifyTests(unittest.TestCase):
     def setUp(self):
         self.audit = audit_fixture()
         self.receipt = evaluator_receipt_fixture()
-        self.control = report_fixture(CONTROL_SHA, delta=0.0, changed=False)
+        self.control = report_fixture(
+            CONTROL_SHA, own_delta=0.0, changed=False
+        )
 
-    def test_positive_action_bound_panel_advances(self):
-        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
-        result = compare.classify(
+    def classify(self, candidate):
+        return compare.classify(
             self.control, candidate, self.audit, self.receipt
         )
+
+    def test_positive_action_bound_panel_advances(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=5.0, changed=True
+        )
+        result = self.classify(candidate)
         self.assertTrue(result["advance"])
         self.assertEqual(result["metrics"]["official_games"], 32)
         self.assertEqual(result["metrics"]["action_changed_cells"], 16)
-        self.assertEqual(result["metrics"]["mean_own_cash_delta"], 5.0)
-
-    def test_zero_activation_rejects_even_with_cash_delta(self):
-        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=False)
-        result = compare.classify(
-            self.control, candidate, self.audit, self.receipt
+        self.assertEqual(result["metrics"]["trace_changed_cells"], 16)
+        self.assertEqual(
+            result["metrics"]["score_changed_action_bound_cells"], 16
         )
+        self.assertEqual(result["metrics"]["mean_own_cash_delta"], 5.0)
+        self.assertEqual(result["metrics"]["mean_margin_delta"], 5.0)
+
+    def test_zero_activation_exact_identity_rejects(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=0.0, changed=False
+        )
+        result = self.classify(candidate)
         self.assertFalse(result["advance"])
         self.assertFalse(result["criteria"]["candidate_actions_changed"])
+        self.assertEqual(
+            result["metrics"]["action_unchanged_exact_identity_cells"], 16
+        )
 
-    def test_negative_opponent_seat_stratum_rejects(self):
-        candidate = report_fixture(CANDIDATE_SHA, delta=10.0, changed=True)
+    def test_negative_own_cash_stratum_rejects(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=10.0, changed=True
+        )
         for game in candidate["games"]:
             if game["opponent"] == "arlene" and game["candidate_seat"] == 0:
                 game["scores"][0] -= 11.0
                 game["bank_snapshot"][0] -= 11.0
-        result = compare.classify(
-            self.control, candidate, self.audit, self.receipt
-        )
+        result = self.classify(candidate)
         self.assertGreater(result["metrics"]["mean_own_cash_delta"], 0)
         self.assertFalse(
-            result["criteria"]["all_opponent_seat_strata_nonnegative"]
+            result["criteria"][
+                "all_opponent_seat_own_cash_strata_nonnegative"
+            ]
         )
         self.assertFalse(result["advance"])
 
+    def test_head_to_head_margin_regression_rejects(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=1.0, changed=True
+        )
+        for game in candidate["games"]:
+            rival_seat = 1 - game["candidate_seat"]
+            game["scores"][rival_seat] += 900.0
+            game["bank_snapshot"][rival_seat] += 900.0
+        result = self.classify(candidate)
+        self.assertTrue(result["criteria"]["global_mean_own_cash_positive"])
+        self.assertTrue(
+            result["criteria"][
+                "all_opponent_seat_own_cash_strata_nonnegative"
+            ]
+        )
+        self.assertEqual(result["metrics"]["mean_margin_delta"], -899.0)
+        self.assertFalse(
+            result["criteria"]["global_mean_margin_nonnegative"]
+        )
+        self.assertFalse(
+            result["criteria"][
+                "all_opponent_seat_margin_strata_nonnegative"
+            ]
+        )
+        self.assertFalse(result["advance"])
+
+    def test_action_identical_cash_divergence_fails_closed(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=0.0, changed=False
+        )
+        game = candidate["games"][0]
+        seat = game["candidate_seat"]
+        game["scores"][seat] += 1.0
+        game["bank_snapshot"][seat] += 1.0
+        game["trace_sha256"] = "c" * 64
+        with self.assertRaisesRegex(
+            compare.CompareError, "action-identical causal divergence"
+        ):
+            self.classify(candidate)
+
+    def test_mixed_cell_activation_cannot_launder_cash_gain(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=0.0, changed=False
+        )
+        rows = indexed(candidate)
+        control_rows = indexed(self.control)
+        keys = sorted(rows)
+
+        harmless_activation = rows[keys[0]]
+        harmless_activation["candidate_action_sha256"] = "d" * 64
+        harmless_activation["trace_sha256"] = "e" * 64
+
+        laundered_gain = rows[keys[1]]
+        seat = laundered_gain["candidate_seat"]
+        laundered_gain["scores"][seat] += 16.0
+        laundered_gain["bank_snapshot"][seat] += 16.0
+        self.assertEqual(
+            laundered_gain["candidate_action_sha256"],
+            control_rows[keys[1]]["candidate_action_sha256"],
+        )
+        laundered_gain["trace_sha256"] = "f" * 64
+
+        with self.assertRaisesRegex(
+            compare.CompareError, "action-identical causal divergence"
+        ):
+            self.classify(candidate)
+
+    def test_changed_action_without_changed_trace_fails_closed(self):
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=5.0, changed=True
+        )
+        candidate_rows = indexed(candidate)
+        control_rows = indexed(self.control)
+        key = sorted(candidate_rows)[0]
+        candidate_rows[key]["trace_sha256"] = control_rows[key]["trace_sha256"]
+        with self.assertRaisesRegex(
+            compare.CompareError, "candidate-action/trace identity mismatch"
+        ):
+            self.classify(candidate)
+
     def test_incomplete_game_fails_closed(self):
-        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=5.0, changed=True
+        )
         candidate["games"][0]["status"] = "failed"
         candidate["games"][0]["failure"] = {"kind": "timeout"}
         with self.assertRaisesRegex(compare.CompareError, "incomplete cell"):
-            compare.classify(
-                self.control, candidate, self.audit, self.receipt
-            )
+            self.classify(candidate)
 
     def test_score_bank_mismatch_fails_closed(self):
-        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=5.0, changed=True
+        )
         candidate["games"][0]["bank_snapshot"][0] += 1
         with self.assertRaisesRegex(compare.CompareError, "score/bank mismatch"):
-            compare.classify(
-                self.control, candidate, self.audit, self.receipt
-            )
+            self.classify(candidate)
 
     def test_evaluator_patch_cardinality_fails_closed(self):
         receipt = copy.deepcopy(self.receipt)
         receipt["patched"]["patches"][1]["old_occurrences_after"] = 1
-        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=5.0, changed=True
+        )
         with self.assertRaisesRegex(compare.CompareError, "cardinality drift"):
             compare.classify(self.control, candidate, self.audit, receipt)
 
     def test_nonfinal_progress_phase_fails_closed(self):
-        candidate = report_fixture(CANDIDATE_SHA, delta=5.0, changed=True)
+        candidate = report_fixture(
+            CANDIDATE_SHA, own_delta=5.0, changed=True
+        )
         candidate["progress"]["phase"] = "games"
-        with self.assertRaisesRegex(compare.CompareError, "did not finish finalization"):
-            compare.classify(self.control, candidate, self.audit, self.receipt)
+        with self.assertRaisesRegex(
+            compare.CompareError, "did not finish finalization"
+        ):
+            self.classify(candidate)
 
 
 if __name__ == "__main__":
