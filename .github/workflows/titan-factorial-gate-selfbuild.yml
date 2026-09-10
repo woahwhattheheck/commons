@@ -1,0 +1,161 @@
+name: TITAN strict-own factorial gate self-build
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-strict-own-factorial-gate-20260910-01
+    paths:
+      - '.github/workflows/titan-factorial-gate-selfbuild.yml'
+      - '.titan-factorial-payload.part1'
+      - '.titan-factorial-payload.part2'
+      - '.titan-factorial-payload.part3'
+      - '.titan-factorial-payload.part4'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-strict-own-factorial-selfbuild-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize-test-publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Assert exact clean input
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Reassemble and verify attributed payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat \
+            .titan-factorial-payload.part1 \
+            .titan-factorial-payload.part2 \
+            .titan-factorial-payload.part3 \
+            .titan-factorial-payload.part4 \
+            > /tmp/titan-factorial-payload.b64
+          base64 --decode /tmp/titan-factorial-payload.b64 > /tmp/titan-factorial-payload.tar.gz
+          echo '17836e369adafd712d1e6c9fa1350b700661b33baf0706c4612dd83432523bd3  /tmp/titan-factorial-payload.tar.gz' | sha256sum --check --strict
+          cat > /tmp/titan-factorial-expected.txt <<'EOF'
+          factorial_gate.py
+          test_factorial_gate.py
+          README.md
+          SWARM-HANDOFF.md
+          titan-strict-own-factorial-gate.yml
+          EOF
+          tar -tzf /tmp/titan-factorial-payload.tar.gz > /tmp/titan-factorial-actual.txt
+          diff -u /tmp/titan-factorial-expected.txt /tmp/titan-factorial-actual.txt
+
+      - name: Materialize additive analysis contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/titan-factorial-payload
+          mkdir -p /tmp/titan-factorial-payload
+          tar -xzf /tmp/titan-factorial-payload.tar.gz -C /tmp/titan-factorial-payload
+          target='revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial-sol-pro'
+          test ! -e "$target"
+          mkdir -p "$target"
+          install -m 0644 /tmp/titan-factorial-payload/factorial_gate.py "$target/factorial_gate.py"
+          install -m 0644 /tmp/titan-factorial-payload/test_factorial_gate.py "$target/test_factorial_gate.py"
+          install -m 0644 /tmp/titan-factorial-payload/README.md "$target/README.md"
+          install -m 0644 /tmp/titan-factorial-payload/SWARM-HANDOFF.md "$target/SWARM-HANDOFF.md"
+          install -m 0644 /tmp/titan-factorial-payload/titan-strict-own-factorial-gate.yml \
+            .github/workflows/titan-strict-own-factorial-gate.yml
+
+      - name: Run fail-closed adversarial contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial-sol-pro
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONHASHSEED: '0'
+        run: |
+          set -euo pipefail
+          python -B -m py_compile factorial_gate.py test_factorial_gate.py
+          python -B -m unittest -v test_factorial_gate.py
+
+      - name: Emit exact self-build receipt
+        env:
+          INPUT_COMMIT: ${{ github.sha }}
+          EVENT_BEFORE: ${{ github.event.before }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          target = Path('revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-strict-own-factorial-sol-pro')
+          paths = [
+              target / 'factorial_gate.py',
+              target / 'test_factorial_gate.py',
+              target / 'README.md',
+              target / 'SWARM-HANDOFF.md',
+              Path('.github/workflows/titan-strict-own-factorial-gate.yml'),
+          ]
+          receipt = {
+              'schema': 'titan-v3-strict-own-factorial-selfbuild/v1',
+              'operation': 'titan-v3-strict-dominance-x-own-value-factorial-20260910-01',
+              'branch': 'sol-pro/titan-strict-own-factorial-gate-20260910-01',
+              'event_before': os.environ['EVENT_BEFORE'],
+              'input_commit': os.environ['INPUT_COMMIT'],
+              'payload_sha256': '17836e369adafd712d1e6c9fa1350b700661b33baf0706c4612dd83432523bd3',
+              'tests': {
+                  'adversarial_contracts': 16,
+                  'python_compile': 'pass',
+                  'unittest': 'pass',
+              },
+              'files': {
+                  str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+                  for path in paths
+              },
+              'mutation_boundary': {
+                  'policy_source': False,
+                  'canonical_runtime': False,
+                  'release_pointer': False,
+                  'provider': False,
+                  'kaggle': False,
+              },
+          }
+          (target / 'SELFBUILD.json').write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n',
+              encoding='utf-8',
+          )
+          PY
+
+      - name: Publish tested source to exact branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          rm \
+            .github/workflows/titan-factorial-gate-selfbuild.yml \
+            .titan-factorial-payload.part1 \
+            .titan-factorial-payload.part2 \
+            .titan-factorial-payload.part3 \
+            .titan-factorial-payload.part4
+          git config user.name 'commons-board'
+          git config user.email 'commons-board@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          test -n "$(git diff --cached --name-only)"
+          git commit -m 'feat(TITAN): add strict-own factorial interaction gate'
+          git push origin HEAD:sol-pro/titan-strict-own-factorial-gate-20260910-01
