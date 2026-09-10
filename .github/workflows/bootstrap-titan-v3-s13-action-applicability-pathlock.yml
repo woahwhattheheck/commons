@@ -1,0 +1,65 @@
+name: bootstrap-titan-v3-s13-action-applicability-pathlock
+
+on:
+  push:
+    branches:
+      - sol-pathlock/titan-v3-s13-action-applicability-20260910-01
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bootstrap-titan-v3-s13-action-applicability
+  cancel-in-progress: false
+
+jobs:
+  publish-reviewed-packet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Verify, extract, and publish the exact reviewed packet
+        shell: bash
+        env:
+          BRANCH: sol-pathlock/titan-v3-s13-action-applicability-20260910-01
+          BASE: 5ab2c77d07f8da62b82fe2de85d87ca1e2c9456b
+          PAYLOAD_B64_SHA256: 5c179d5b1f7058a466f2d25d292aaeadcf8186ef6a336c0aca0f123ec3c23fce
+          PAYLOAD_XZ_SHA256: bca1f7e967b8ad8e05d3042c6144bd37872ed9a63e3a9b7afa35f22bb2e268e6
+          LANE: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-pathlock
+        run: |
+          set -euo pipefail
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          cat .s13-payload/chunk-* | tr -d '[:space:]' > "$RUNNER_TEMP/payload.b64"
+          printf '%s  %s\n' "$PAYLOAD_B64_SHA256" "$RUNNER_TEMP/payload.b64" | sha256sum -c -
+          base64 -d "$RUNNER_TEMP/payload.b64" > "$RUNNER_TEMP/payload.tar.xz"
+          printf '%s  %s\n' "$PAYLOAD_XZ_SHA256" "$RUNNER_TEMP/payload.tar.xz" | sha256sum -c -
+          tar -tJf "$RUNNER_TEMP/payload.tar.xz" > "$RUNNER_TEMP/payload-paths.txt"
+          python -B - "$RUNNER_TEMP/payload-paths.txt" <<'PY'
+          from pathlib import PurePosixPath
+          import sys
+
+          lane = PurePosixPath("revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-pathlock")
+          allowed = {
+              PurePosixPath(".github/workflows/titan-v3-s13-action-applicability-pathlock.yml"),
+              lane,
+              lane / "README.md",
+              lane / "action_applicability.py",
+              lane / "test_action_applicability.py",
+              lane / "witness.py",
+          }
+          names = {PurePosixPath(row) for row in open(sys.argv[1], encoding="utf-8") if row.strip()}
+          assert names == allowed, (names, allowed)
+          assert all(not name.is_absolute() and ".." not in name.parts for name in names)
+          PY
+          tar -xJf "$RUNNER_TEMP/payload.tar.xz" -C .
+          git rm -r .s13-payload .github/workflows/bootstrap-titan-v3-s13-action-applicability-pathlock.yml
+          git add ".github/workflows/titan-v3-s13-action-applicability-pathlock.yml" "$LANE"
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat(titan): bind S13 actions to realized transitions'
+          git push origin "HEAD:$BRANCH"
