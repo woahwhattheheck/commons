@@ -158,6 +158,78 @@ class SupplementalPanelGateTests(unittest.TestCase):
             self.assertEqual(first_markdown, markdown.read_bytes())
             self.assertEqual(first["decision"], "ADVANCE")
 
+    def test_parent_reject_cannot_be_promoted(self):
+        report = self._report()
+        report["verdict"]["decision"] = "REJECT"
+        gate = verify_panel.apply(report)
+        self.assertEqual(gate["decision"], "PASS")
+        self.assertEqual(report["verdict"]["pre_supplemental_decision"], "REJECT")
+        self.assertEqual(report["verdict"]["decision"], "REJECT")
+
+    def test_adapter_main_applies_supplemental_gate_authoritatively(self):
+        import run_panel
+
+        payload = self._report()
+
+        class FakeRunner:
+            HERE = Path(".")
+            LAB = Path(".")
+            dependency_receipt = staticmethod(lambda *args, **kwargs: {"sha256": {}})
+            markdown = staticmethod(
+                lambda report: (
+                    "# TITAN L02 ledger-coherent tranche — development panel\n\n"
+                    "Verdict: **ADVANCE**\n"
+                )
+            )
+            patch_evaluator = staticmethod(lambda *args, **kwargs: None)
+            pair_games = staticmethod(lambda *args, **kwargs: [])
+            summarize = staticmethod(lambda rows: {})
+            sha256_file = staticmethod(lambda path: "0" * 64)
+            tree_sha256 = staticmethod(lambda path: {})
+
+            @staticmethod
+            def main(argv):
+                panel = Path(argv[argv.index("--output") + 1])
+                markdown = Path(argv[argv.index("--markdown") + 1])
+                panel.write_text(
+                    json.dumps(payload, indent=2, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+                markdown.write_text(
+                    FakeRunner.markdown(payload), encoding="utf-8"
+                )
+                return 0
+
+        original_loader = run_panel._load_runner
+        run_panel._load_runner = lambda: FakeRunner
+        try:
+            with tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                panel = root / "PANEL.json"
+                markdown = root / "PANEL.md"
+                code = run_panel.main(
+                    [
+                        "--head",
+                        "test-head",
+                        "--output",
+                        str(panel),
+                        "--markdown",
+                        str(markdown),
+                    ]
+                )
+                rewritten = json.loads(panel.read_text(encoding="utf-8"))
+                self.assertEqual(code, 0)
+                self.assertEqual(rewritten["verdict"]["decision"], "ADVANCE")
+                self.assertEqual(
+                    rewritten["supplemental_gate"]["decision"], "PASS"
+                )
+                self.assertIn(
+                    verify_panel.MARKDOWN_MARKER,
+                    markdown.read_text(encoding="utf-8"),
+                )
+        finally:
+            run_panel._load_runner = original_loader
+
 
 if __name__ == "__main__":
     unittest.main()
