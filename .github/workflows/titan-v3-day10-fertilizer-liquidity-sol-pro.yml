@@ -1,0 +1,178 @@
+name: titan-v3-day10-fertilizer-liquidity-sol-pro
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-day10-fertilizer-liquidity-sol-pro.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/day10-fertilizer-liquidity-sol-pro/**"
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
+      - "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
+      - "revenue/kaggriculture/cloud-execution-lab/scheduler.py"
+      - "revenue/kaggriculture/cloud-execution-lab/operating_stock.py"
+      - "revenue/kaggriculture/cloud-execution-lab/mechanics.py"
+      - "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json"
+      - "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
+      - "revenue/kaggriculture/cloud-eval/**"
+  push:
+    branches:
+      - "sol-pro/titan-v3-day10-fertilizer-liquidity-20260910-01"
+    paths:
+      - ".github/workflows/titan-v3-day10-fertilizer-liquidity-sol-pro.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/day10-fertilizer-liquidity-sol-pro/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-day10-fertilizer-liquidity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-official-panel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      CANDIDATE_DIR: revenue/kaggriculture/cloud-execution-lab/candidates/v3/day10-fertilizer-liquidity-sol-pro
+      LAB_DIR: revenue/kaggriculture/cloud-execution-lab
+      EVAL_DIR: revenue/kaggriculture/cloud-eval
+      ARTIFACT_DIR: /tmp/titan-day10-fertilizer-liquidity
+      SEEDS: "539131249,2611101001,2611101002,2611101003"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bind exact source and canonical archive
+        run: |
+          set -euo pipefail
+          mkdir -p "$ARTIFACT_DIR"
+          python -B "$CANDIDATE_DIR/verify_source.py" \
+            --repository "$GITHUB_WORKSPACE" \
+            --output "$ARTIFACT_DIR/SOURCE.json"
+
+      - name: Run focused contracts
+        run: |
+          set -euo pipefail
+          cd "$CANDIDATE_DIR"
+          python -m py_compile \
+            fertilizer_liquidity.py candidate_runtime.py candidate.py panel_entry.py \
+            materialize.py compare_panel.py verify_source.py \
+            test_fertilizer_liquidity.py test_candidate_runtime.py \
+            test_materialize.py test_compare_panel.py
+          python -B -m unittest -v \
+            test_fertilizer_liquidity.py \
+            test_candidate_runtime.py \
+            test_materialize.py \
+            test_compare_panel.py 2>&1 | tee "$ARTIFACT_DIR/focused-tests.txt"
+          test "$(grep -c '^test_' "$ARTIFACT_DIR/focused-tests.txt")" -eq 45
+
+      - name: Materialize exact control and candidate closures
+        run: |
+          set -euo pipefail
+          python -B "$CANDIDATE_DIR/materialize.py" \
+            --archive "$LAB_DIR/exports/titan-current.tar.gz" \
+            --source-directory "$CANDIDATE_DIR" \
+            --control-directory /tmp/titan-control \
+            --candidate-directory /tmp/titan-candidate \
+            --receipt "$ARTIFACT_DIR/MATERIALIZATION.json"
+          python -I - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          import sys
+          path = Path("/tmp/titan-control/main.py")
+          sys.path.insert(0, str(path.parent))
+          spec = importlib.util.spec_from_file_location("smoke_control", path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          print("control", path)
+          PY
+          python -I - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          import sys
+          path = Path("/tmp/titan-candidate/panel_entry.py")
+          sys.path.insert(0, str(path.parent))
+          spec = importlib.util.spec_from_file_location("smoke_candidate", path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          print("candidate", path)
+          PY
+
+      - name: Prepare pinned official interpreter
+        run: |
+          set -euo pipefail
+          python -B "$EVAL_DIR/evaluate.py" \
+            --prepare-engine /tmp/kag-engine \
+            > "$ARTIFACT_DIR/engine-preparation.json"
+
+      - name: Run canonical control against frozen Arlene
+        run: |
+          set -euo pipefail
+          python -B "$EVAL_DIR/evaluate.py" \
+            --engine-dir /tmp/kag-engine \
+            --candidate /tmp/titan-control/main.py \
+            --opponent "arlene=$GITHUB_WORKSPACE/$LAB_DIR/reference/next-panel/vendor/arlene.py" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260910 \
+            --recheck-first \
+            --output "$ARTIFACT_DIR/control.json" \
+            | tee "$ARTIFACT_DIR/control.log"
+
+      - name: Run fertilizer-liquidity candidate against frozen Arlene
+        run: |
+          set -euo pipefail
+          python -B "$EVAL_DIR/evaluate.py" \
+            --engine-dir /tmp/kag-engine \
+            --candidate /tmp/titan-candidate/panel_entry.py \
+            --opponent "arlene=$GITHUB_WORKSPACE/$LAB_DIR/reference/next-panel/vendor/arlene.py" \
+            --seeds "$SEEDS" \
+            --rng-seed 20260910 \
+            --recheck-first \
+            --output "$ARTIFACT_DIR/candidate.json" \
+            | tee "$ARTIFACT_DIR/candidate.log"
+
+      - name: Classify exact paired panel
+        run: |
+          set -euo pipefail
+          mkdir -p "$ARTIFACT_DIR/panel-events"
+          if [ -d /tmp/titan-candidate/panel-events ]; then
+            cp -a /tmp/titan-candidate/panel-events/. "$ARTIFACT_DIR/panel-events/"
+          fi
+          python -B "$CANDIDATE_DIR/compare_panel.py" \
+            --control "$ARTIFACT_DIR/control.json" \
+            --candidate "$ARTIFACT_DIR/candidate.json" \
+            --events "$ARTIFACT_DIR/panel-events" \
+            --output "$ARTIFACT_DIR/VERDICT.json" \
+            --markdown "$ARTIFACT_DIR/VERDICT.md"
+          cat "$ARTIFACT_DIR/VERDICT.md"
+
+      - name: Prove canonical build remains unchanged
+        run: |
+          set -euo pipefail
+          python -B "$LAB_DIR/build_integrated.py" --check
+          git diff --exit-code -- \
+            "$LAB_DIR/main.py" \
+            "$LAB_DIR/titan_runtime.py" \
+            "$LAB_DIR/scheduler.py" \
+            "$LAB_DIR/operating_stock.py" \
+            "$LAB_DIR/mechanics.py" \
+            "$LAB_DIR/TITAN-CONFIG.json" \
+            "$LAB_DIR/exports/titan-current.tar.gz"
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-day10-fertilizer-liquidity-${{ github.sha }}
+          path: /tmp/titan-day10-fertilizer-liquidity
+          if-no-files-found: error
+          retention-days: 30
