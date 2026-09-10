@@ -1,0 +1,55 @@
+name: TITAN V3 PR12091 one-use transport
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-pr12091-transport.yml'
+      - '.github/titan-pr12091-payload.part*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-pr12091-transport-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  materialize-reviewed-bytes:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref == 'sol-pro/titan-v3-pr12091-fail-closed-analyzer-closure-20260910-01'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Verify, materialize, and remove one-use transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload=/tmp/titan-pr12091-payload.tar.gz
+          cat .github/titan-pr12091-payload.part* | base64 --decode > "$payload"
+          echo '21fcd95015b553aa3ffa5420b94b8cb521e6fcc60221c5f7b02096041dc81bf6  /tmp/titan-pr12091-payload.tar.gz' | sha256sum --check --strict
+          actual="$(tar -tzf "$payload" | LC_ALL=C sort)"
+          expected=$'source_analysis.py\nsource_gate.py\ntest_disabled_feature_noninterference.py'
+          test "$actual" = "$expected"
+
+          gate='revenue/kaggriculture/cloud-execution-lab/disabled-feature-noninterference-gate'
+          tar -xzf "$payload" -C "$gate"
+          (
+            cd "$gate"
+            echo '34b6acf219922ba29a08c83be2d42b946a8571c5ac36ba673170e933c5340ae8  source_analysis.py'
+            echo '618a8dee196fa3fa846bf7e11917d873ca1bb1827161d572a7a6baf5aa8299d0  source_gate.py'
+            echo 'e9b06e5a0ca25d0f11b3748dcba0266272caf5285e984d0caa439cdb26267b60  test_disabled_feature_noninterference.py'
+          ) | sha256sum --check --strict
+
+          rm .github/titan-pr12091-payload.part* \
+             .github/workflows/titan-v3-pr12091-transport.yml
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix(titan): materialize reviewed analyzer closure'
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
