@@ -1,4 +1,4 @@
-name: TITAN version regression microscope
+name: TITAN three-way regression delta microscope
 
 on:
   pull_request:
@@ -28,9 +28,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Compile
+      - name: Compile diagnostic consumer
         working-directory: revenue/kaggriculture/cloud-version-regression-microscope
         run: python -B -m py_compile regression_microscope.py test_regression_microscope.py
-      - name: Predecessor-killing contracts
+      - name: Three-way predecessor contracts
         working-directory: revenue/kaggriculture/cloud-version-regression-microscope
         run: python -B -m unittest -v test_regression_microscope.py
