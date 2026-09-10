@@ -44,8 +44,13 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
         self.assertIn('id="cash-doors"', ingest)
         self.assertIn("./tools-cash.html", ingest)
         self.assertIn("$29 Autopsy", ingest)
+        self.assertIn("def splice_tools_cash_doors", ingest)
+        self.assertIn('id="cash-hook"', ingest)
+        self.assertIn('id="digit-door"', ingest)
         hub = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
         self.assertNotIn('id="cash-doors"', hub)
+        self.assertNotIn('id="cash-hook"', hub)
+        self.assertNotIn('id="digit-door"', hub)
 
     def test_splice_restores_missing_pointer(self) -> None:
         import tempfile
@@ -54,6 +59,8 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             src = TOOLS.read_text(encoding="utf-8")
             stripped = src.replace(board_ingest.CASH_DOORS_POINTER, "")
+            stripped = stripped.replace(board_ingest.TOOLS_CASH_HOOK, "")
+            stripped = stripped.replace(board_ingest.TOOLS_DIGIT_DOOR, "")
             if 'id="cash-doors"' in stripped:
                 stripped = stripped.replace(
                     '<p class="note cash-doors-link" id="cash-doors"><a href="./tools-cash.html"><strong>Live cash</strong></a> — $29 Autopsy + four $199 tip-shelf diagnostics (product pages only).</p>\n',
@@ -66,8 +73,13 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
             self.assertTrue(wrote)
             restored = dest.read_text(encoding="utf-8")
             self.assertIn('id="cash-doors"', restored)
+            self.assertIn('id="cash-hook"', restored)
+            self.assertIn('id="digit-door"', restored)
             self.assertIn("./tools-cash.html", restored)
             self.assertIn("$29 Autopsy", restored)
+            self.assertIn("coil-tools-json-live-cash-20260905-01", restored)
+            self.assertIn("by/DIGIT.html", restored)
+            self.assertNotIn("hygiene seat", restored)
             self.assertFalse(board_ingest.splice_tools_cash_doors(root=td))
 
 

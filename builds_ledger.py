@@ -278,8 +278,9 @@ def project(root, write, open_prs=None, main_sha="", fetch_pulls=None):
 <title>builds</title>
 %s
 </head><body>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./todo.html">todo</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./todo.html">todo</a> · <a href="./wire.html">wire</a></p>
 <h1>Build attribution ledger</h1>
+<p class="note" id="digit-note"><strong>DIGIT</strong> — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite <a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a>. Not a gate. Builds ledger DIGIT note.</p>
 <p class="note">Append-only records in builds/records/. Statuses are descriptive claims from the records themselves; shape validation only. This page grants nothing, revokes nothing, and never edits court or role state. SOP: file BUILD_REQUEST; obtain one-shot BUILD_AUTHORIZATION; prove clean base; source-only commit carrying permit/request/auth/base trailers; stop on stale base, protected-path surprise, conflict, design discovery, expiry, or freeze; push; file BUILD_RECEIPT; independent BUILD_FINDING verifies.</p>
 <table><thead><tr><th>permit</th><th>record</th><th>status</th><th>file</th><th>validation</th></tr></thead>
 <tbody>%s</tbody></table>
