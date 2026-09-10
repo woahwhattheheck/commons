@@ -1,4 +1,4 @@
-name: TITAN V3 active frozen-consumer carrier bootstrap
+name: TITAN V3 active frozen-consumer dependency repair bootstrap
 
 on:
   push:
@@ -9,78 +9,103 @@ permissions:
   contents: write
 
 concurrency:
-  group: titan-v3-slot-active-consumer-bootstrap-${{ github.ref }}
+  group: titan-v3-slot-active-consumer-repair-bootstrap-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  materialize-carrier:
+  authenticate-test-and-finalize:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 15
     env:
-      PAYLOAD: .github/titan-v3-slot-active-consumer-payload.tar.gz
+      PYTHONDONTWRITEBYTECODE: "1"
+      PAYLOAD: .github/titan-v3-slot-active-consumer-repair-payload.tar.gz
+      LAB: revenue/kaggriculture/cloud-execution-lab
       CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro
       NOTE: p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md
-      EXPECTED_PAYLOAD_SHA256: e218b9819329c627a7eb30a509efc8ab7938481b9ef0bf20c7fd4f000b5b1f1d
+      WORKFLOW: .github/workflows/titan-v3-slot-active-consumer-sol-pro.yml
+      EXPECTED_PAYLOAD_SHA256: 5f94dc23dc76a2a0c41e9b6803ebaac9d6edca278041f5d8d8dc434826f80c11
 
     steps:
-      - name: Checkout triggering branch head
+      - name: Checkout literal triggering branch head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Authenticate and unpack exact carrier
+      - name: Authenticate and install exact repair carrier
         shell: bash
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          if test ! -f "$PAYLOAD"; then
-            echo "payload already consumed"
-            exit 0
-          fi
+          test -f "$PAYLOAD"
           test "$(sha256sum "$PAYLOAD" | awk '{print $1}')" = "$EXPECTED_PAYLOAD_SHA256"
           work="$(mktemp -d)"
           trap 'rm -rf "$work"' EXIT
           tar -xzf "$PAYLOAD" -C "$work"
           test "$(find "$work" -maxdepth 1 -type f -printf '%f\n' | sort | tr '\n' ' ')" = \
-            "active_witness.py materialize_active_consumer.py project-note.md test_active_consumer.py "
-          mkdir -p "$CASE" "$(dirname "$NOTE")"
-          install -m 0644 "$work/materialize_active_consumer.py" "$CASE/materialize_active_consumer.py"
+            "README.md active_witness.py project-note.md test_active_consumer.py workflow.yml "
+          install -m 0644 "$work/README.md" "$CASE/README.md"
           install -m 0644 "$work/active_witness.py" "$CASE/active_witness.py"
           install -m 0644 "$work/test_active_consumer.py" "$CASE/test_active_consumer.py"
           install -m 0644 "$work/project-note.md" "$NOTE"
+          install -m 0644 "$work/workflow.yml" "$WORKFLOW"
           rm "$PAYLOAD"
-          python -B -m py_compile "$CASE"/*.py
           python - <<'PY'
           from pathlib import Path
           import hashlib
           expected = {
-              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/materialize_active_consumer.py': '7c566db79c7e2aed2169c93d095126944891408dfe9e17ad65adb823d4627131',
-              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py': '45686fa62782c7e8d8a51de08c1bca241a07087cea9c14d918833ae2a8375a14',
-              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/test_active_consumer.py': '3b175b71de73cc21036cabcd31d284268ebcd7f632face665119bec2d3330dc4',
-              'p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md': '355524c8edad50552cd1da9c197224e735b8a407e38904294036eecf9b22d622',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/README.md': '3bcad232e8b15a64cc431ba640cf7c6f51fbf9ff10fba2fd8b5b1d8c315ea697',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py': '1a9b8499ebdef5cc7d8da86458a2a4aa96b8b81f8be5e109e92d051d2f0833f0',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/test_active_consumer.py': 'dc0644fa88e98d42f21080a8f92bc6caa1ba721d62b7f0c68e20c4f76239244f',
+              'p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md': '1adfc28ce62ab8f81de8f0ca70e47576f8791f27177cad3e141716a3358dafe4',
+              '.github/workflows/titan-v3-slot-active-consumer-sol-pro.yml': '161c42b41adbcd55ffc50c5b230587b717d3cbc0bf4efc3867f51353cdb9f328',
           }
           for name, digest in expected.items():
               actual = hashlib.sha256(Path(name).read_bytes()).hexdigest()
               assert actual == digest, (name, actual, digest)
           PY
 
-      - name: Commit the authenticated postimage carrier
+      - name: Compile and execute exact active-consumer proof
         shell: bash
         run: |
           set -euo pipefail
-          if test ! -e "$PAYLOAD" && git diff --quiet && test -z "$(git status --porcelain --untracked-files=all)"; then
-            echo "nothing to commit"
-            exit 0
-          fi
+          python -B -m py_compile "$CASE"/*.py
+          PYTHONPATH="$CASE" python -B -m unittest discover -s "$CASE" -p 'test_*.py' -v
+          work="$(mktemp -d)"
+          trap 'rm -rf "$work"' EXIT
+          PYTHONPATH="$CASE" python -B "$CASE/active_witness.py" \
+            --lab "$LAB" --output "$work/WITNESS.json"
+          python - "$work/WITNESS.json" <<'PY'
+          import json, sys
+          row=json.load(open(sys.argv[1],encoding='utf-8'))
+          assert row['verdicts']=={
+              'emission_guard_restores_incumbent': True,
+              'predecessor_detached': True,
+              'successor_rejects_collision': True,
+          }
+          assert row['dependency_bridge']=={
+              'export':'detached_json_value',
+              'mode':'witness-local-json-roundtrip',
+              'module_file':'<titan-active-witness-observed-clone-bridge>',
+              'source_absent':True,
+          }
+          assert row['emission_guard']['selection_emission']['missing']=={'MILK':1}
+          PY
+
+      - name: Commit only the authenticated permanent carrier
+        shell: bash
+        run: |
+          set -euo pipefail
           git config user.name "woahwhattheheck"
           git config user.email "brycembusiness2@gmail.com"
-          git add "$CASE/materialize_active_consumer.py" \
+          git add "$CASE/README.md" \
                   "$CASE/active_witness.py" \
                   "$CASE/test_active_consumer.py" \
                   "$NOTE" \
+                  "$WORKFLOW" \
                   "$PAYLOAD"
-          git diff --cached --name-status
-          git commit -m "test(titan): bind shared SELL slots to active frozen consumer [skip ci]"
+          test "$(git diff --cached --name-only | sort | tr '\n' ' ')" = \
+            ".github/titan-v3-slot-active-consumer-repair-payload.tar.gz .github/workflows/titan-v3-slot-active-consumer-sol-pro.yml p/sol-pro-titan-v3-cross-product-slot-active-consumer-20260910-01.md revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/README.md revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/test_active_consumer.py "
+          git commit -m "test(titan): close active witness dependency and emission custody [skip ci]"
           git push origin "HEAD:${GITHUB_REF_NAME}"
