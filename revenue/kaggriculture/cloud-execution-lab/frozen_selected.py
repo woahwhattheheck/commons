@@ -125,16 +125,24 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
                                targets, rival_quantity):
     """Move only already-planned SELL units ahead of the first failing fixed buy.
 
-    Producer order indexes never move. A sale can occupy an earlier empty slot or
-    enlarge an earlier SELL of the same product. Total same-turn sale quantities
-    are invariant, so this only realizes proceeds earlier; it never invents stock
-    or future cash. BUY_PRODUCT is a hard boundary because its unit price changes
-    with same-index market interleaving.
+    Only the engine-executable market prefix can define either the acquisition
+    target or a funding sale source. Producer order indexes never move. A sale can
+    occupy an earlier empty slot or enlarge an earlier SELL of the same product.
+    Total same-turn sale quantities are invariant, so this only realizes proceeds
+    earlier; it never invents stock or future cash. BUY_PRODUCT is a hard boundary
+    because its unit price changes with same-index market interleaving.
     """
     original=copy.deepcopy(orders)
     if not original:return original,None
+    try:
+        max_orders=int(config.get('maxMarketOrdersPerTurn',10))
+    except (TypeError,ValueError,OverflowError):
+        return original,{'applied':False,'reason':'invalid-market-prefix-limit'}
+    if max_orders<=0:
+        return original,{'applied':False,'reason':'invalid-market-prefix-limit'}
+    active_end=min(len(original),max_orders)
     baseline=_market_prefix_state(
-        original,farm,private,market,shops,config,now,rival_quantity,len(original)-1)
+        original,farm,private,market,shops,config,now,rival_quantity,active_end-1)
     target=None
     for index in sorted(baseline['outcomes']):
         outcome=baseline['outcomes'][index]
@@ -150,7 +158,7 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
     before=baseline['outcomes'][target]
     candidates=[]
     targets=set(targets)
-    source_limit=barrier if barrier is not None else len(original)
+    source_limit=min(active_end,barrier if barrier is not None else active_end)
     for source in range(target+1,source_limit):
         row=original[source]
         if not (row and len(row)>2 and row[0]=='SELL'
