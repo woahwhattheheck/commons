@@ -1,0 +1,56 @@
++ python -B -m py_compile revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/materialize_active_consumer.py revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/test_active_consumer.py
++ PYTHONPATH=revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro
++ python -B -m unittest discover -s revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro -p 'test_*.py' -v
+setUpClass (test_active_consumer.ExactActiveConsumerTests) ... ERROR
+test_duplicate_ambiguous_and_wrong_blob_inputs_fail_closed (test_active_consumer.SourceMaterializerTests.test_duplicate_ambiguous_and_wrong_blob_inputs_fail_closed) ... ok
+test_materialized_helpers_reserve_shared_rows_and_bind_emission (test_active_consumer.SourceMaterializerTests.test_materialized_helpers_reserve_shared_rows_and_bind_emission) ... ok
+test_patch_is_unique_parseable_and_closes_both_anchors (test_active_consumer.SourceMaterializerTests.test_patch_is_unique_parseable_and_closes_both_anchors) ... ok
+test_missing_observed_clone_bridge_is_hermetic_and_json_only (test_active_consumer.WitnessDependencyTests.test_missing_observed_clone_bridge_is_hermetic_and_json_only) ... ok
+
+======================================================================
+ERROR: setUpClass (test_active_consumer.ExactActiveConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/test_active_consumer.py", line 129, in setUpClass
+    cls.witness=active_witness.build_witness(cls.lab)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py", line 207, in build_witness
+    original=_load('_slot_original_frozen',lab/'frozen_selected.py')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py", line 25, in _load
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py", line 10, in <module>
+    from seller_snapshot import seller_public_observation
+ModuleNotFoundError: No module named 'seller_snapshot'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.051s
+
+FAILED (errors=1)
+++ mktemp -d
++ work=/tmp/tmp.NM5bNX8QyL
++ PYTHONPATH=revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro
++ python -B revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py --lab revenue/kaggriculture/cloud-execution-lab --output /tmp/tmp.NM5bNX8QyL/WITNESS.json
+Traceback (most recent call last):
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py", line 259, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py", line 250, in main
+    text=json.dumps(build_witness(args.lab),sort_keys=True,indent=2)+'\n'
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py", line 207, in build_witness
+    original=_load('_slot_original_frozen',lab/'frozen_selected.py')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/analysis/v3-slot-active-consumer-sol-pro/active_witness.py", line 25, in _load
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/runner/work/commons/commons/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py", line 10, in <module>
+    from seller_snapshot import seller_public_observation
+ModuleNotFoundError: No module named 'seller_snapshot'
++ python - /tmp/tmp.NM5bNX8QyL/WITNESS.json
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmp.NM5bNX8QyL/WITNESS.json'
