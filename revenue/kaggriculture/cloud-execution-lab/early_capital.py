@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
+# This module orders actions only inside the Kaggle Kaggriculture simulation game.
 """Horizon-aware same-queue capital investment ordering.
 
 Improves one canonical TITAN. It never invents purchases, never changes worker
@@ -216,6 +217,74 @@ def _certified_funding(active, mechanics, post_private):
     return funding, units
 
 
+def _operating_seed_rows(active, mechanics, plant_demand, seeds_held):
+    """Select an executable whole-row cover for represented seed deficits.
+
+    A market row is indivisible for ordering: once moved ahead of capital, the
+    official interpreter attempts its full positive quantity before advancing.
+    Therefore a row may claim OPERATING priority only when every requested unit
+    fits inside the represented deficit. For each crop, choose the subset of
+    positive rows with maximum total quantity not exceeding that deficit;
+    lexicographically earliest authored indices break ties. This maximizes exact
+    demand coverage without splitting, editing, inventing, or overbuying rows.
+    """
+    remaining = {}
+    rows_by_crop = {}
+    for crop, count in plant_demand.items():
+        if crop not in mechanics.CROPS:
+            continue
+        need = max(0, int(count) - int(seeds_held.get(crop, 0)))
+        remaining[crop] = need
+        rows_by_crop[crop] = []
+
+    for index, order in enumerate(active):
+        if (not isinstance(order, list) or len(order) < 3
+                or order[0] != 'BUY_SEED'):
+            continue
+        crop = order[1]
+        if crop not in rows_by_crop:
+            continue
+        quantity = _qty(order)
+        if quantity > 0:
+            rows_by_crop[crop].append((index, quantity))
+
+    operating = set()
+    allocations = []
+    for crop in sorted(rows_by_crop):
+        need = remaining[crop]
+        # total -> lexicographically earliest tuple of row indices producing it.
+        choices = {0: ()}
+        quantities = {}
+        for index, quantity in rows_by_crop[crop]:
+            quantities[index] = quantity
+            updated = dict(choices)
+            for total, indices in choices.items():
+                candidate_total = total + quantity
+                if candidate_total > need:
+                    continue
+                candidate = indices + (index,)
+                incumbent = updated.get(candidate_total)
+                if incumbent is None or candidate < incumbent:
+                    updated[candidate_total] = candidate
+            choices = updated
+
+        covered = max(choices)
+        selected_indices = choices[covered]
+        for index in selected_indices:
+            quantity = quantities[index]
+            operating.add(index)
+            allocations.append({
+                'index': index,
+                'crop': crop,
+                'requested': quantity,
+                'allocated': quantity,
+            })
+        remaining[crop] = need - covered
+
+    allocations.sort(key=lambda row: row['index'])
+    return operating, allocations, remaining
+
+
 def _capital_admitted(order, mechanics, remaining, day):
     if not isinstance(order, list) or not order:
         return False
@@ -230,7 +299,7 @@ def _capital_admitted(order, mechanics, remaining, day):
     return False
 
 
-def _rank(order, index, funding, mechanics, remaining, day, plant_demand, seeds_held):
+def _rank(order, index, funding, seed_operating, mechanics, remaining, day):
     if not order:
         return REST
     op = order[0]
@@ -239,9 +308,7 @@ def _rank(order, index, funding, mechanics, remaining, day, plant_demand, seeds_
     if op == 'HIRE':
         return OPERATING
     if op == 'BUY_SEED' and len(order) > 2 and order[1] in mechanics.CROPS:
-        crop = order[1]
-        need = max(0, int(plant_demand.get(crop, 0)) - int(seeds_held.get(crop, 0)))
-        return OPERATING if need > 0 else REST
+        return OPERATING if index in seed_operating else REST
     if _capital_admitted(order, mechanics, remaining, day):
         return CAPITAL
     return REST
@@ -254,7 +321,7 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     multiset of active orders, and every capped suffix row remain unchanged.
     """
     report = {'changed': False, 'reason': 'init', 'moved': 0, 'reserved': 0,
-              'reduced': [], 'revision': 'v4-executable-funding'}
+              'reduced': [], 'revision': 'v6-whole-seed-rows'}
     if not isinstance(selected, dict):
         report['reason'] = 'no_action'
         return selected, report
@@ -316,14 +383,25 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     seeds_held = dict(post_private.get('seeds') or {})
     try:
         horizon = _horizon_end(now, configuration, decisions)
-        plants = _plant_demand(selected, route, now, horizon)
+        # The current unit stage already ran in post_private; only future route
+        # PLANT actions may still consume the post-unit seed balance.
+        plants = _plant_demand(None, route, now, horizon)
+        seed_operating, seed_allocations, unmet_seed_demand = _operating_seed_rows(
+            active, mechanics, plants, seeds_held)
         ranks = [
-            _rank(order, index, funding, mechanics, remaining, day, plants, seeds_held)
+            _rank(order, index, funding, seed_operating, mechanics, remaining, day)
             for index, order in enumerate(active)
         ]
     except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):
         report['reason'] = 'ranking_failed'
         return selected, report
+    report.update(
+        operating_seed_rows=sorted(seed_operating),
+        seed_allocations=seed_allocations,
+        unmet_seed_demand={
+            crop: count for crop, count in sorted(unmet_seed_demand.items()) if count > 0
+        },
+    )
     if CAPITAL not in ranks:
         report['reason'] = 'no_admitted_capital'
         return selected, report
