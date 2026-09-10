@@ -1,0 +1,3181 @@
+{
+  "schema_version": 1,
+  "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "engine_sha256": {
+    "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+    "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+  },
+  "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+  "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+  "candidate": {
+    "entry": "base_agent.py",
+    "callable": "agent",
+    "sha256": "02bf9cd793605ea0678c056213261b88c91211a498a3f6cd9a542999dd4b907f"
+  },
+  "opponents": {
+    "champion": {
+      "entry": "base_agent.py",
+      "callable": "agent",
+      "sha256": "02bf9cd793605ea0678c056213261b88c91211a498a3f6cd9a542999dd4b907f"
+    }
+  },
+  "seeds": [
+    777001,
+    777002,
+    777003,
+    777004,
+    777005,
+    777006
+  ],
+  "agent_rng_seed": 20260907,
+  "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "platform": "linux",
+  "resource_usage": {
+    "cpu_seconds": 10.013935,
+    "peak_rss_kib": 25704
+  },
+  "limits": {
+    "action_rpc_seconds": 1.0,
+    "startup_seconds": 10.0,
+    "game_seconds_between_steps": 120.0,
+    "remaining_overage_time": 0
+  },
+  "method": "Official interpreter with explicit driver; not hosted Kaggle scoring. Decision timings are child-reported; RPC deadlines are parent-enforced. Resource samples combine child rusage with Linux procfs before cleanup. Entry-file hashes do not cover arbitrary agent dependencies.",
+  "summary": {
+    "champion": {
+      "scheduled": 12,
+      "completed": 12,
+      "failed": 0,
+      "wins": 0,
+      "ties": 12,
+      "losses": 0,
+      "mean_margin": 0.0,
+      "candidate_failures": 0,
+      "opponent_failures": 0
+    }
+  },
+  "games": [
+    {
+      "seed": 777001,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        89621.0,
+        89621.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            142.0,
+            142.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            217.0,
+            217.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            615.0,
+            615.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            303.0,
+            303.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            682.0,
+            682.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1634.0,
+            1634.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14194.0,
+            14194.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            12874.0,
+            12874.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16866.0,
+            16866.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18672.0,
+            18672.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            22097.0,
+            22097.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            28111.0,
+            28111.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            35340.0,
+            35340.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            40304.0,
+            40304.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            45805.0,
+            45805.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            50199.0,
+            50199.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            55262.0,
+            55262.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            60622.0,
+            60622.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            64370.0,
+            64370.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            66069.0,
+            66069.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            68481.0,
+            68481.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            70351.0,
+            70351.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            75154.0,
+            75154.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            78335.0,
+            78335.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            84195.0,
+            84195.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            89621.0,
+            89621.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.3699357349999994,
+          "cpu_seconds": 3.9353730000000002,
+          "peak_rss_kib": 29796,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07941396699970937,
+          "max_call_seconds": 0.08506826299981185,
+          "mean_call_seconds": 0.005170862926285669,
+          "max_rpc_seconds": 0.09889019499996721,
+          "mean_rpc_seconds": 0.006466891705147922
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.3601454189999984,
+          "cpu_seconds": 3.9210969999999996,
+          "peak_rss_kib": 30080,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.08370769000021028,
+          "max_call_seconds": 0.0632663340002182,
+          "mean_call_seconds": 0.0051488309902712045,
+          "max_rpc_seconds": 0.06390382099971248,
+          "mean_rpc_seconds": 0.006330283413075594
+        }
+      ],
+      "wall_seconds": 9.643312291000257,
+      "driver_cpu_seconds": 0.8220292,
+      "bank_snapshot": [
+        89621.0,
+        89621.0
+      ],
+      "trace_sha256": "a1a38c497e6c6cf21d126541ed39bc497e00f78eb82114b8daf06a850884453d",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777001,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        89621.0,
+        89621.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            142.0,
+            142.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            217.0,
+            217.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            615.0,
+            615.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            303.0,
+            303.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            682.0,
+            682.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1634.0,
+            1634.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14194.0,
+            14194.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            12874.0,
+            12874.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16866.0,
+            16866.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18672.0,
+            18672.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            22097.0,
+            22097.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            28111.0,
+            28111.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            35340.0,
+            35340.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            40304.0,
+            40304.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            45805.0,
+            45805.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            50199.0,
+            50199.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            55262.0,
+            55262.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            60622.0,
+            60622.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            64370.0,
+            64370.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            66069.0,
+            66069.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            68481.0,
+            68481.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            70351.0,
+            70351.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            75154.0,
+            75154.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            78335.0,
+            78335.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            84195.0,
+            84195.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            89621.0,
+            89621.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.474759621999999,
+          "cpu_seconds": 4.061366,
+          "peak_rss_kib": 30048,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.10144378799986953,
+          "max_call_seconds": 0.05010263900021528,
+          "mean_call_seconds": 0.005883684906822183,
+          "max_rpc_seconds": 0.05318991300009657,
+          "mean_rpc_seconds": 0.007348381261462021
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.4587386750000038,
+          "cpu_seconds": 4.04333,
+          "peak_rss_kib": 30032,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07860110800038456,
+          "max_call_seconds": 0.08418597800027783,
+          "mean_call_seconds": 0.006341000084842123,
+          "max_rpc_seconds": 0.10300126399988585,
+          "mean_rpc_seconds": 0.007842917596663434
+        }
+      ],
+      "wall_seconds": 11.428673502000038,
+      "driver_cpu_seconds": 0.867474595,
+      "bank_snapshot": [
+        89621.0,
+        89621.0
+      ],
+      "trace_sha256": "a1a38c497e6c6cf21d126541ed39bc497e00f78eb82114b8daf06a850884453d",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777002,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        87722.0,
+        87722.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            833.0,
+            833.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            375.0,
+            375.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            677.0,
+            677.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            2006.0,
+            2006.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14090.0,
+            14090.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            12549.0,
+            12549.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16499.0,
+            16499.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18080.0,
+            18080.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            20910.0,
+            20910.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            26502.0,
+            26502.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            34388.0,
+            34388.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            39620.0,
+            39620.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            44923.0,
+            44923.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            49406.0,
+            49406.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            53346.0,
+            53346.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            57158.0,
+            57158.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            60155.0,
+            60155.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            62855.0,
+            62855.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            66204.0,
+            66204.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            68255.0,
+            68255.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            73303.0,
+            73303.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            76387.0,
+            76387.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            81782.0,
+            81782.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            87722.0,
+            87722.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.093507426999999,
+          "cpu_seconds": 4.652451,
+          "peak_rss_kib": 29652,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.08961728899976151,
+          "max_call_seconds": 0.05381361800027662,
+          "mean_call_seconds": 0.0058693187246166055,
+          "max_rpc_seconds": 0.05442712900003244,
+          "mean_rpc_seconds": 0.007006391571639255
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.101167652000004,
+          "cpu_seconds": 4.6676280000000006,
+          "peak_rss_kib": 29920,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.16032717400003094,
+          "max_call_seconds": 0.05563048499971046,
+          "mean_call_seconds": 0.005865449581371538,
+          "max_rpc_seconds": 0.056256414000017685,
+          "mean_rpc_seconds": 0.00700861437691112
+        }
+      ],
+      "wall_seconds": 10.605358609999712,
+      "driver_cpu_seconds": 0.8312826820000001,
+      "bank_snapshot": [
+        87722.0,
+        87722.0
+      ],
+      "trace_sha256": "6ff2b56fb0e0761ab33a729a71d0bde02edd1187c03f368b77ff3118b5d82f20",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777002,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        87722.0,
+        87722.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            833.0,
+            833.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            375.0,
+            375.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            677.0,
+            677.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            2006.0,
+            2006.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14090.0,
+            14090.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            12549.0,
+            12549.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16499.0,
+            16499.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18080.0,
+            18080.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            20910.0,
+            20910.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            26502.0,
+            26502.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            34388.0,
+            34388.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            39620.0,
+            39620.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            44923.0,
+            44923.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            49406.0,
+            49406.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            53346.0,
+            53346.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            57158.0,
+            57158.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            60155.0,
+            60155.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            62855.0,
+            62855.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            66204.0,
+            66204.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            68255.0,
+            68255.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            73303.0,
+            73303.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            76387.0,
+            76387.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            81782.0,
+            81782.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            87722.0,
+            87722.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.003915563,
+          "cpu_seconds": 4.551296,
+          "peak_rss_kib": 29612,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07399092899959214,
+          "max_call_seconds": 0.04247029499993005,
+          "mean_call_seconds": 0.005674402311549237,
+          "max_rpc_seconds": 0.04377834900014932,
+          "mean_rpc_seconds": 0.006762376968015028
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.044588832000002,
+          "cpu_seconds": 4.601232,
+          "peak_rss_kib": 29616,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07695641899999828,
+          "max_call_seconds": 0.052759405999950104,
+          "mean_call_seconds": 0.005730939229471715,
+          "max_rpc_seconds": 0.054335832000106166,
+          "mean_rpc_seconds": 0.006825241929082305
+        }
+      ],
+      "wall_seconds": 10.191534981000132,
+      "driver_cpu_seconds": 0.7937699970000001,
+      "bank_snapshot": [
+        87722.0,
+        87722.0
+      ],
+      "trace_sha256": "6ff2b56fb0e0761ab33a729a71d0bde02edd1187c03f368b77ff3118b5d82f20",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777003,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        93082.0,
+        93082.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            607.0,
+            607.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            317.0,
+            317.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            868.0,
+            868.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            2022.0,
+            2022.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14943.0,
+            14943.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            13902.0,
+            13902.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            18293.0,
+            18293.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            20332.0,
+            20332.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            23063.0,
+            23063.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            27692.0,
+            27692.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            36905.0,
+            36905.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            44013.0,
+            44013.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            50875.0,
+            50875.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            54620.0,
+            54620.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            57079.0,
+            57079.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            60203.0,
+            60203.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            63255.0,
+            63255.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            65986.0,
+            65986.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            69627.0,
+            69627.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            72738.0,
+            72738.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            77175.0,
+            77175.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            81784.0,
+            81784.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            86318.0,
+            86318.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            93082.0,
+            93082.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.058344225000001,
+          "cpu_seconds": 4.648872,
+          "peak_rss_kib": 29772,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.08491904900029112,
+          "max_call_seconds": 0.05305099399993196,
+          "mean_call_seconds": 0.005782361516007458,
+          "max_rpc_seconds": 0.05513289900000018,
+          "mean_rpc_seconds": 0.006948762764956613
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.9911450239999953,
+          "cpu_seconds": 4.566738,
+          "peak_rss_kib": 29508,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07560134599998491,
+          "max_call_seconds": 0.05940624100003333,
+          "mean_call_seconds": 0.0056887477997265,
+          "max_rpc_seconds": 0.06131352300008075,
+          "mean_rpc_seconds": 0.006860298522953678
+        }
+      ],
+      "wall_seconds": 10.375978046,
+      "driver_cpu_seconds": 0.8467593730000003,
+      "bank_snapshot": [
+        93082.0,
+        93082.0
+      ],
+      "trace_sha256": "f387c05b5c90ba03fcac2ec4a2fd0b6d99db8c4f4f2fdb44c7ee5b668f272ce6",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777003,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        93082.0,
+        93082.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            607.0,
+            607.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            317.0,
+            317.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            868.0,
+            868.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            2022.0,
+            2022.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14943.0,
+            14943.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            13902.0,
+            13902.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            18293.0,
+            18293.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            20332.0,
+            20332.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            23063.0,
+            23063.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            27692.0,
+            27692.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            36905.0,
+            36905.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            44013.0,
+            44013.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            50875.0,
+            50875.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            54620.0,
+            54620.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            57079.0,
+            57079.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            60203.0,
+            60203.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            63255.0,
+            63255.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            65986.0,
+            65986.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            69627.0,
+            69627.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            72738.0,
+            72738.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            77175.0,
+            77175.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            81784.0,
+            81784.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            86318.0,
+            86318.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            93082.0,
+            93082.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.8659567249999975,
+          "cpu_seconds": 4.410782,
+          "peak_rss_kib": 29404,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07447804000003089,
+          "max_call_seconds": 0.04253738599982171,
+          "mean_call_seconds": 0.005471849179414097,
+          "max_rpc_seconds": 0.04397766799957026,
+          "mean_rpc_seconds": 0.006554459881780947
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.848370890999999,
+          "cpu_seconds": 4.3919239999999995,
+          "peak_rss_kib": 29632,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07537729900013801,
+          "max_call_seconds": 0.04230939400031275,
+          "mean_call_seconds": 0.005443260004173373,
+          "max_rpc_seconds": 0.04369021599995904,
+          "mean_rpc_seconds": 0.006523297781630754
+        }
+      ],
+      "wall_seconds": 9.853948733999914,
+      "driver_cpu_seconds": 0.7831901409999995,
+      "bank_snapshot": [
+        93082.0,
+        93082.0
+      ],
+      "trace_sha256": "f387c05b5c90ba03fcac2ec4a2fd0b6d99db8c4f4f2fdb44c7ee5b668f272ce6",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777004,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        86594.0,
+        86594.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            585.0,
+            585.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            273.0,
+            273.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            922.0,
+            922.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1833.0,
+            1833.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            15360.0,
+            15360.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            14483.0,
+            14483.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            18328.0,
+            18328.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            20716.0,
+            20716.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            25499.0,
+            25499.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            28097.0,
+            28097.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            35810.0,
+            35810.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            41530.0,
+            41530.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            48989.0,
+            48989.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            53682.0,
+            53682.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            59757.0,
+            59757.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            65251.0,
+            65251.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            67695.0,
+            67695.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            69908.0,
+            69908.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            70681.0,
+            70681.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            72639.0,
+            72639.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            74611.0,
+            74611.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            76240.0,
+            76240.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            79853.0,
+            79853.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            86594.0,
+            86594.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.1724318019999944,
+          "cpu_seconds": 3.732544,
+          "peak_rss_kib": 29508,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.0796579030002249,
+          "max_call_seconds": 0.04002477599988197,
+          "mean_call_seconds": 0.004490076223923633,
+          "max_rpc_seconds": 0.041683886000100756,
+          "mean_rpc_seconds": 0.005590607714875078
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.185504916,
+          "cpu_seconds": 3.753361,
+          "peak_rss_kib": 29824,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.08993176100011624,
+          "max_call_seconds": 0.04438825299985183,
+          "mean_call_seconds": 0.004498912520175104,
+          "max_rpc_seconds": 0.04501474299968322,
+          "mean_rpc_seconds": 0.005603202965236109
+        }
+      ],
+      "wall_seconds": 8.48657107300005,
+      "driver_cpu_seconds": 0.7912873349999998,
+      "bank_snapshot": [
+        86594.0,
+        86594.0
+      ],
+      "trace_sha256": "ba0b3eef10f2bb201c6c44f565610e690a3a029712a310481796b0fde438f388",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777004,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        86594.0,
+        86594.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            585.0,
+            585.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            273.0,
+            273.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            922.0,
+            922.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1833.0,
+            1833.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            15360.0,
+            15360.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            14483.0,
+            14483.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            18328.0,
+            18328.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            20716.0,
+            20716.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            25499.0,
+            25499.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            28097.0,
+            28097.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            35810.0,
+            35810.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            41530.0,
+            41530.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            48989.0,
+            48989.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            53682.0,
+            53682.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            59757.0,
+            59757.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            65251.0,
+            65251.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            67695.0,
+            67695.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            69908.0,
+            69908.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            70681.0,
+            70681.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            72639.0,
+            72639.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            74611.0,
+            74611.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            76240.0,
+            76240.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            79853.0,
+            79853.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            86594.0,
+            86594.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.1769637469999967,
+          "cpu_seconds": 3.728062,
+          "peak_rss_kib": 29432,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07770269900038329,
+          "max_call_seconds": 0.039441010000246024,
+          "mean_call_seconds": 0.004512773034776768,
+          "max_rpc_seconds": 0.040773038000224915,
+          "mean_rpc_seconds": 0.005606893627269485
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.162057007000002,
+          "cpu_seconds": 3.714345,
+          "peak_rss_kib": 29452,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07594967800014274,
+          "max_call_seconds": 0.03846100900000238,
+          "mean_call_seconds": 0.00450734663839377,
+          "max_rpc_seconds": 0.04584437799985608,
+          "mean_rpc_seconds": 0.005636336477048028
+        }
+      ],
+      "wall_seconds": 8.508669016000113,
+      "driver_cpu_seconds": 0.7935326009999999,
+      "bank_snapshot": [
+        86594.0,
+        86594.0
+      ],
+      "trace_sha256": "ba0b3eef10f2bb201c6c44f565610e690a3a029712a310481796b0fde438f388",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777005,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        59349.0,
+        59349.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            585.0,
+            585.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            273.0,
+            273.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            667.0,
+            667.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1727.0,
+            1727.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14700.0,
+            14700.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            13381.0,
+            13381.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16712.0,
+            16712.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18520.0,
+            18520.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            21056.0,
+            21056.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            22268.0,
+            22268.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            27890.0,
+            27890.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            31632.0,
+            31632.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            35433.0,
+            35433.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            37168.0,
+            37168.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            39094.0,
+            39094.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            40562.0,
+            40562.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            40930.0,
+            40930.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            41485.0,
+            41485.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            41702.0,
+            41702.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            43327.0,
+            43327.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            44717.0,
+            44717.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            46025.0,
+            46025.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            49181.0,
+            49181.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            59349.0,
+            59349.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.807712430000005,
+          "cpu_seconds": 4.34277,
+          "peak_rss_kib": 29740,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07498277699960454,
+          "max_call_seconds": 0.04324029100007465,
+          "mean_call_seconds": 0.005364686581360072,
+          "max_rpc_seconds": 0.044599910999750136,
+          "mean_rpc_seconds": 0.006430333036169588
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.7987746789999997,
+          "cpu_seconds": 4.337425,
+          "peak_rss_kib": 29384,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.0788888990000487,
+          "max_call_seconds": 0.04325454199988599,
+          "mean_call_seconds": 0.005355990478438268,
+          "max_rpc_seconds": 0.044816225999966264,
+          "mean_rpc_seconds": 0.00641481022114492
+        }
+      ],
+      "wall_seconds": 9.649517553999885,
+      "driver_cpu_seconds": 0.7568334590000001,
+      "bank_snapshot": [
+        59349.0,
+        59349.0
+      ],
+      "trace_sha256": "5a57e1a3aab15928dcfce259225317e2d8910c2ff4a2deb2015bd13a70a6788e",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777005,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        59349.0,
+        59349.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            147.0,
+            147.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            220.0,
+            220.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            585.0,
+            585.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            273.0,
+            273.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            667.0,
+            667.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1727.0,
+            1727.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14700.0,
+            14700.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            13381.0,
+            13381.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16712.0,
+            16712.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18520.0,
+            18520.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            21056.0,
+            21056.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            22268.0,
+            22268.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            27890.0,
+            27890.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            31632.0,
+            31632.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            35433.0,
+            35433.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            37168.0,
+            37168.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            39094.0,
+            39094.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            40562.0,
+            40562.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            40930.0,
+            40930.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            41485.0,
+            41485.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            41702.0,
+            41702.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            43327.0,
+            43327.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            44717.0,
+            44717.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            46025.0,
+            46025.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            49181.0,
+            49181.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            59349.0,
+            59349.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.9462616189999973,
+          "cpu_seconds": 4.512946,
+          "peak_rss_kib": 29428,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07349945100031618,
+          "max_call_seconds": 0.045488475000183826,
+          "mean_call_seconds": 0.0056842192475680415,
+          "max_rpc_seconds": 0.04686697399984041,
+          "mean_rpc_seconds": 0.006839456577199978
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 3.967656720000001,
+          "cpu_seconds": 4.536933,
+          "peak_rss_kib": 29484,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07449188999999024,
+          "max_call_seconds": 0.04487040699996214,
+          "mean_call_seconds": 0.0056769163045965075,
+          "max_rpc_seconds": 0.04635186099994826,
+          "mean_rpc_seconds": 0.006831576105699992
+        }
+      ],
+      "wall_seconds": 10.259042280999893,
+      "driver_cpu_seconds": 0.8192265259999996,
+      "bank_snapshot": [
+        59349.0,
+        59349.0
+      ],
+      "trace_sha256": "5a57e1a3aab15928dcfce259225317e2d8910c2ff4a2deb2015bd13a70a6788e",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777006,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        101505.0,
+        101505.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            142.0,
+            142.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            217.0,
+            217.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            618.0,
+            618.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            306.0,
+            306.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            674.0,
+            674.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1712.0,
+            1712.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14625.0,
+            14625.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            13291.0,
+            13291.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16640.0,
+            16640.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18466.0,
+            18466.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            21020.0,
+            21020.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            22204.0,
+            22204.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            29148.0,
+            29148.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            34037.0,
+            34037.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            40012.0,
+            40012.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            43785.0,
+            43785.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            50009.0,
+            50009.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            57527.0,
+            57527.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            66120.0,
+            66120.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            71818.0,
+            71818.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            75707.0,
+            75707.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            78764.0,
+            78764.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            80672.0,
+            80672.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            87603.0,
+            87603.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            94234.0,
+            94234.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            101505.0,
+            101505.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.372336980000005,
+          "cpu_seconds": 4.986065,
+          "peak_rss_kib": 29640,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07795624899972609,
+          "max_call_seconds": 0.07915009099997405,
+          "mean_call_seconds": 0.00735011141862885,
+          "max_rpc_seconds": 0.08081488000016179,
+          "mean_rpc_seconds": 0.008782927941583555
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.316949008000002,
+          "cpu_seconds": 4.926153,
+          "peak_rss_kib": 29480,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.08675889899996037,
+          "max_call_seconds": 0.0797065459996702,
+          "mean_call_seconds": 0.0069612003184879485,
+          "max_rpc_seconds": 0.10104155399994852,
+          "mean_rpc_seconds": 0.008391973874827355
+        }
+      ],
+      "wall_seconds": 12.82278224799984,
+      "driver_cpu_seconds": 0.9100634299999992,
+      "bank_snapshot": [
+        101505.0,
+        101505.0
+      ],
+      "trace_sha256": "711fa89972414a23c6833fd292e633e487f68e25517a05dd492591f30ca2f403",
+      "opponent": "champion"
+    },
+    {
+      "seed": 777006,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        101505.0,
+        101505.0
+      ],
+      "failure": null,
+      "steps": 719,
+      "episode_steps": 720,
+      "daily_bank": [
+        {
+          "step": 23,
+          "bank": [
+            24.0,
+            24.0
+          ]
+        },
+        {
+          "step": 47,
+          "bank": [
+            149.0,
+            149.0
+          ]
+        },
+        {
+          "step": 71,
+          "bank": [
+            144.0,
+            144.0
+          ]
+        },
+        {
+          "step": 95,
+          "bank": [
+            127.0,
+            127.0
+          ]
+        },
+        {
+          "step": 119,
+          "bank": [
+            142.0,
+            142.0
+          ]
+        },
+        {
+          "step": 143,
+          "bank": [
+            217.0,
+            217.0
+          ]
+        },
+        {
+          "step": 167,
+          "bank": [
+            618.0,
+            618.0
+          ]
+        },
+        {
+          "step": 191,
+          "bank": [
+            306.0,
+            306.0
+          ]
+        },
+        {
+          "step": 215,
+          "bank": [
+            674.0,
+            674.0
+          ]
+        },
+        {
+          "step": 239,
+          "bank": [
+            1712.0,
+            1712.0
+          ]
+        },
+        {
+          "step": 263,
+          "bank": [
+            14625.0,
+            14625.0
+          ]
+        },
+        {
+          "step": 287,
+          "bank": [
+            13291.0,
+            13291.0
+          ]
+        },
+        {
+          "step": 311,
+          "bank": [
+            16640.0,
+            16640.0
+          ]
+        },
+        {
+          "step": 335,
+          "bank": [
+            18466.0,
+            18466.0
+          ]
+        },
+        {
+          "step": 359,
+          "bank": [
+            21020.0,
+            21020.0
+          ]
+        },
+        {
+          "step": 383,
+          "bank": [
+            22204.0,
+            22204.0
+          ]
+        },
+        {
+          "step": 407,
+          "bank": [
+            29148.0,
+            29148.0
+          ]
+        },
+        {
+          "step": 431,
+          "bank": [
+            34037.0,
+            34037.0
+          ]
+        },
+        {
+          "step": 455,
+          "bank": [
+            40012.0,
+            40012.0
+          ]
+        },
+        {
+          "step": 479,
+          "bank": [
+            43785.0,
+            43785.0
+          ]
+        },
+        {
+          "step": 503,
+          "bank": [
+            50009.0,
+            50009.0
+          ]
+        },
+        {
+          "step": 527,
+          "bank": [
+            57527.0,
+            57527.0
+          ]
+        },
+        {
+          "step": 551,
+          "bank": [
+            66120.0,
+            66120.0
+          ]
+        },
+        {
+          "step": 575,
+          "bank": [
+            71818.0,
+            71818.0
+          ]
+        },
+        {
+          "step": 599,
+          "bank": [
+            75707.0,
+            75707.0
+          ]
+        },
+        {
+          "step": 623,
+          "bank": [
+            78764.0,
+            78764.0
+          ]
+        },
+        {
+          "step": 647,
+          "bank": [
+            80672.0,
+            80672.0
+          ]
+        },
+        {
+          "step": 671,
+          "bank": [
+            87603.0,
+            87603.0
+          ]
+        },
+        {
+          "step": 695,
+          "bank": [
+            94234.0,
+            94234.0
+          ]
+        },
+        {
+          "step": 718,
+          "bank": [
+            101505.0,
+            101505.0
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.202764149999993,
+          "cpu_seconds": 4.781255,
+          "peak_rss_kib": 29868,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.076241846999892,
+          "max_call_seconds": 0.06127642800038302,
+          "mean_call_seconds": 0.006489856617524724,
+          "max_rpc_seconds": 0.06280409099963435,
+          "mean_rpc_seconds": 0.007737082047277224
+        },
+        {
+          "calls": 719,
+          "call_cpu_seconds": 4.235850811,
+          "cpu_seconds": 4.8154330000000005,
+          "peak_rss_kib": 29564,
+          "exit_code": 0,
+          "resource_sample": "child_rusage_plus_linux_procfs",
+          "startup_seconds": 0.07550024300007863,
+          "max_call_seconds": 0.05902507900009368,
+          "mean_call_seconds": 0.0065309674714765596,
+          "max_rpc_seconds": 0.06252345899974898,
+          "mean_rpc_seconds": 0.007778003748254467
+        }
+      ],
+      "wall_seconds": 11.604286245999901,
+      "driver_cpu_seconds": 0.8840323980000004,
+      "bank_snapshot": [
+        101505.0,
+        101505.0
+      ],
+      "trace_sha256": "711fa89972414a23c6833fd292e633e487f68e25517a05dd492591f30ca2f403",
+      "opponent": "champion"
+    }
+  ],
+  "reproducibility": null
+}
