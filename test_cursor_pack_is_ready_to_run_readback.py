@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "host/pack_is_ready_to_run.py": "aab508cf",
     "ground/PACK_IS_READY_TO_RUN.json": "69a67ee1",
-    "test_pack_is_ready_to_run.py": "7766e668",
+    "test_pack_is_ready_to_run.py": "39ea1d0e",
     "pack-is-ready-to-run.html": "8e0a04a3",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
@@ -28,11 +28,11 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/what_a_pack_is.py": "3de395af",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
-    "test_what_a_pack_is.py": "8a8452d1",
+    "test_what_a_pack_is.py": "22ff25ed",
     "what-a-pack-is.html": "f2d23bed",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",
-    "host/commons_slack_full_body.py": "f0bb6a2a",
+    "host/commons_slack_full_body.py": "d5338810",
     "host/slack_mirror.py": "95d6aff3",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -46,7 +46,7 @@ KEEP = {
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

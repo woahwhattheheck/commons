@@ -19,7 +19,7 @@ KEEP = {
     "host/merge_on_pr.py": "0270094d",
     "ground/MERGE_ON_PR.json": "4e7967dc",
     "merge-on-pr.html": "a31298c2",
-    "test_merge_on_pr.py": "40d6e2fa",
+    "test_merge_on_pr.py": "44450a68",
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
@@ -29,7 +29,7 @@ KEEP = {
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "c90284fb",
-    "ground/STEALABLE_LANES.json": "ac388a70",
+    "ground/STEALABLE_LANES.json": "87e4c835",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
@@ -39,8 +39,8 @@ KEEP = {
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "dbbc96a5",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
 }
 
 

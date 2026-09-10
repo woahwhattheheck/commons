@@ -27,7 +27,7 @@ KEEP = {
     "catalog.html": "35a7069f",
     "hub_pages.py": "44bbd2ec",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "680d7542",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a5c72234",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",

@@ -18,7 +18,7 @@ KEEP = {
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "d72c7828",
     "host/super_mcp.py": "defaf19f",
-    "super-mcp/catalog.json": "f087937c",
+    "super-mcp/catalog.json": "a668a320",
     "test_super_mcp.py": "29cdec41",
     ".agents/skills/super-mcp/SKILL.md": "11eae655",
     "ground/tokens/super-mcp.md": "e4ffb61d",
@@ -39,7 +39,7 @@ KEEP = {
     "api/mcp.py": "393da756",
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

@@ -32,7 +32,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",

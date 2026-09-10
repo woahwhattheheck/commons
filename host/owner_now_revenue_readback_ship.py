@@ -35,7 +35,7 @@ KEEP = {
     "owner-now-revenue.html": "7c98199a",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "65a960f2",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
@@ -102,7 +102,7 @@ def leftover_readback_match(root: Path | None = None) -> dict[str, Any]:
         "did_not_remint_leftover_helper": git_blob(
             "host/owner_now_revenue.py", base
         ).startswith("7e1ab768"),
-        "did_not_remint_owner_card": blobs["ground/OWNER_NOW.md"].startswith("0a574d94"),
+        "did_not_remint_owner_card": blobs["ground/OWNER_NOW.md"].startswith("4b2a58ed"),
         "did_not_steal_harborline": harborline_absent,
         "harborline_path_absent": harborline_absent,
         "qualify_absent": qualify_absent,

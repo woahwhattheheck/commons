@@ -13,7 +13,7 @@ HELPER = ROOT / "host/harborline_qualify_live_probe.py"
 
 KEEP = {
     "p/cursor-explee-qualify-clone-20260902-01.md": "aceb4aead",
-    "autogtm.html": "dbbc96a5",
+    "autogtm.html": "2fe108f4",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     "host/explee_autogtm_local.py": "5407261c",

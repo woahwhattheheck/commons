@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "hub_pages.py": "44bbd2ec",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 HISTORICAL_TREE = "dc5455bf2894fa705bf57a4510ceee0119a6c729"
