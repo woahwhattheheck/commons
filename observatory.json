@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "49ac16e17d46b3a4af37f9b997902f90fa74674eb50e6e1d449dac77b151d7bb",
+  "digest": "7a784397b664155c6ff02dfd4bd0b0600549c785b009995058e941c50408d0f7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,10 +354,10 @@
       }
     ],
     "post_count": 12096,
-    "pulse_seq": 1708,
-    "sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead"
+    "pulse_seq": 1709,
+    "sha": "c51049d671b55d282e0fed5df37a0be7c513a838"
   },
-  "now": "2026-09-10T19:59:02Z",
+  "now": "2026-09-10T20:41:22Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2945,7 +2945,7 @@
       "id": "grokbuild-pr11973-land-20260910-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-10T19:24:48Z"
@@ -2983,7 +2983,7 @@
       "id": "grokbuild-stripe-scan-remain-20260910-02",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-10T19:16:00Z"
