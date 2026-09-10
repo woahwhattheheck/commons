@@ -9,12 +9,12 @@ import types
 import unittest
 
 import mechanics as m
-from early_capital import order_early_capital
+from early_capital import _project_post_unit_private, order_early_capital
 from test_early_capital_executable_prefix import CFG, action, load_official_engine, obs
 
 
 EARLY_CAPITAL_PATH = Path('early_capital.py')
-EARLY_CAPITAL_BLOB = 'dca5c4aff7961896fa2e996e0f886bc8f6a2c41c'
+EARLY_CAPITAL_BLOB = 'cef33119f3bfdaa1f81ee7e2068424900110aba6'
 
 
 def git_blob(data: bytes) -> str:
@@ -29,6 +29,31 @@ def route_with(*, step: int, action_row: dict | None = None) -> list[dict]:
     if action_row is not None:
         route[step] = copy.deepcopy(action_row)
     return route
+
+
+def with_one_hand(observation: dict, position=(3, 4)) -> dict:
+    result = copy.deepcopy(observation)
+    result['farms'][0]['hands'] = [list(position)]
+    result['private']['inventories'] = [{}, {}]
+    return result
+
+
+def run_official_unit_prefix(*, seeds: int, first_tile=None):
+    engine = load_official_engine()
+    board = 10
+    farm = engine._new_farm(board, 750)
+    private = engine._new_private()
+    farm['hands'].append([3, 4])
+    private['inventories'].append({})
+    private['seeds']['WHEAT'] = seeds
+    if first_tile is not None:
+        farm['tiles'][4][4] = copy.deepcopy(first_tile)
+    actions = [['PLANT', 'WHEAT'], ['PLANT', 'WHEAT']]
+    for index, unit_action in enumerate(actions):
+        engine._apply_unit_action(
+            farm, private, index, unit_action, board, 0, 24, 100,
+        )
+    return farm, private
 
 
 def run_official_unit_then_market(market_orders: list[list]) -> tuple[dict, dict, dict]:
@@ -74,7 +99,7 @@ def run_official_unit_then_market(market_orders: list[list]) -> tuple[dict, dict
 
 
 class PostUnitSeedDemandContracts(unittest.TestCase):
-    def _source(self, *, farmer_action=None):
+    def _source(self, *, farmer_action=None, hands=None):
         return action(
             [
                 ['BUY_LAND'],
@@ -82,6 +107,7 @@ class PostUnitSeedDemandContracts(unittest.TestCase):
                 ['SELL', 'MELON', 1],
             ],
             farmer_action=farmer_action,
+            hands=hands,
         )
 
     def test_source_blob_is_exact(self):
@@ -146,6 +172,114 @@ class PostUnitSeedDemandContracts(unittest.TestCase):
             ['BUY_LAND'],
             ['BUY_SEED', 'WHEAT', 1],
         ])
+
+    def test_current_plant_prefix_consumes_only_available_seed(self):
+        source = self._source(
+            farmer_action=['PLANT', 'WHEAT'],
+            hands=[['PLANT', 'WHEAT']],
+        )
+        observation = with_one_hand(obs(
+            step=1,
+            shed={'MELON': 1},
+            seeds={'WHEAT': 1},
+            money=750,
+        ))
+        projected = _project_post_unit_private(m, observation, CFG, source, 1)
+        self.assertIsNotNone(projected)
+        self.assertEqual(projected['seeds']['WHEAT'], 0)
+
+        official_farm, official_private = run_official_unit_prefix(seeds=1)
+        self.assertEqual(official_private['seeds']['WHEAT'], 0)
+        self.assertEqual(official_farm['tiles'][4][4]['crop'], 'WHEAT')
+        self.assertIsNone(official_farm['tiles'][4][3])
+
+    def test_partial_current_plant_prefix_preserves_future_seed_purchase(self):
+        source = self._source(
+            farmer_action=['PLANT', 'WHEAT'],
+            hands=[['PLANT', 'WHEAT']],
+        )
+        observation = with_one_hand(obs(
+            step=1,
+            shed={'MELON': 1},
+            seeds={'WHEAT': 1},
+            money=750,
+        ))
+        future = route_with(
+            step=2,
+            action_row={'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []},
+        )
+        fixed, _ = order_early_capital(m, observation, CFG, source, future)
+        self.assertEqual(fixed['market'], [
+            ['SELL', 'MELON', 1],
+            ['BUY_SEED', 'WHEAT', 1],
+            ['BUY_LAND'],
+        ])
+
+    def test_invalid_first_valid_second_current_plant_consumes_seed(self):
+        source = self._source(
+            farmer_action=['PLANT', 'WHEAT'],
+            hands=[['PLANT', 'WHEAT']],
+        )
+        observation = with_one_hand(obs(
+            step=1,
+            shed={'MELON': 1},
+            seeds={'WHEAT': 1},
+            money=750,
+        ))
+        observation['farms'][0]['tiles'][4][4] = {'kind': 'WEED'}
+        projected = _project_post_unit_private(m, observation, CFG, source, 1)
+        self.assertIsNotNone(projected)
+        self.assertEqual(projected['seeds']['WHEAT'], 0)
+
+        official_farm, official_private = run_official_unit_prefix(
+            seeds=1,
+            first_tile={'kind': 'WEED'},
+        )
+        self.assertEqual(official_private['seeds']['WHEAT'], 0)
+        self.assertEqual(official_farm['tiles'][4][4], {'kind': 'WEED'})
+        self.assertEqual(official_farm['tiles'][4][3]['crop'], 'WHEAT')
+
+    def test_invalid_first_valid_second_preserves_future_seed_purchase(self):
+        source = self._source(
+            farmer_action=['PLANT', 'WHEAT'],
+            hands=[['PLANT', 'WHEAT']],
+        )
+        observation = with_one_hand(obs(
+            step=1,
+            shed={'MELON': 1},
+            seeds={'WHEAT': 1},
+            money=750,
+        ))
+        observation['farms'][0]['tiles'][4][4] = {'kind': 'WEED'}
+        future = route_with(
+            step=2,
+            action_row={'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []},
+        )
+        fixed, _ = order_early_capital(m, observation, CFG, source, future)
+        self.assertEqual(fixed['market'], [
+            ['SELL', 'MELON', 1],
+            ['BUY_SEED', 'WHEAT', 1],
+            ['BUY_LAND'],
+        ])
+
+    def test_zero_seed_current_plant_batch_is_an_exact_noop(self):
+        source = self._source(
+            farmer_action=['PLANT', 'WHEAT'],
+            hands=[['PLANT', 'WHEAT']],
+        )
+        observation = with_one_hand(obs(
+            step=1,
+            shed={'MELON': 1},
+            seeds={'WHEAT': 0},
+            money=750,
+        ))
+        projected = _project_post_unit_private(m, observation, CFG, source, 1)
+        self.assertIsNotNone(projected)
+        self.assertEqual(projected['seeds']['WHEAT'], 0)
+        official_farm, official_private = run_official_unit_prefix(seeds=0)
+        self.assertEqual(official_private['seeds']['WHEAT'], 0)
+        self.assertIsNone(official_farm['tiles'][4][4])
+        self.assertIsNone(official_farm['tiles'][4][3])
 
     def test_official_unit_then_market_transition_decides_land_unlock(self):
         source = self._source(farmer_action=['PLANT', 'WHEAT'])
