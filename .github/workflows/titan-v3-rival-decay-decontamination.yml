@@ -46,12 +46,14 @@ jobs:
           python -B -m py_compile
           "$LANE/candidate.py"
           "$LANE/decay_observer.py"
+          "$LANE/legal_trace.py"
           "$LANE/test_candidate.py"
           "$LANE/test_decay_observer.py"
           "$LANE/test_actor_reachability.py"
+          "$LANE/test_legal_trace.py"
           "$LANE/witness.py"
 
-      - name: Run observer, reachability, engine and optimizer contracts
+      - name: Run observer, reachability, legal-engine, optimizer, and caller contracts
         shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
         run: |
@@ -60,9 +62,10 @@ jobs:
             test_decay_observer \
             test_actor_reachability \
             test_candidate \
+            test_legal_trace \
             2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
 
-      - name: Emit source-bound predecessor witness
+      - name: Emit source-bound legal predecessor witness
         shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
         run: |
@@ -77,9 +80,11 @@ jobs:
           sha256sum \
             "$LANE/candidate.py" \
             "$LANE/decay_observer.py" \
+            "$LANE/legal_trace.py" \
             "$LANE/test_candidate.py" \
             "$LANE/test_decay_observer.py" \
             "$LANE/test_actor_reachability.py" \
+            "$LANE/test_legal_trace.py" \
             "$LANE/witness.py" \
             "$RUNNER_TEMP/TESTS.txt" \
             "$RUNNER_TEMP/WITNESS.json" \
