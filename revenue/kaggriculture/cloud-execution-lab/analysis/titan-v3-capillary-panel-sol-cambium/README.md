@@ -63,11 +63,22 @@ The candidate advances only when all of these are true:
 2. global mean own-cash delta is positive;
 3. global median own-cash delta is nonnegative;
 4. every opponent × candidate-seat stratum has nonnegative mean own-cash
+   delta;
+5. global mean head-to-head margin delta is nonnegative;
+6. every opponent × candidate-seat stratum has nonnegative mean margin
    delta.
 
-Margin and opponent-cash deltas are reported, but they are secondary. Any
-incomplete lifecycle, actor failure, source drift, closure alias, score/bank
-mismatch, evaluator drift, or missing cell fails closed.
+Causal attribution is a fail-closed invariant rather than a soft gate. In every
+paired cell, a changed candidate-action digest must have a changed complete
+trace. An action-identical pair must have an identical complete trace and
+identical terminal scores for both seats. This prevents an activation in one
+cell from laundering a cash gain produced by an unrelated action-identical
+cell.
+
+Opponent-cash delta remains diagnostic, but margin is now a promotion gate.
+Any incomplete lifecycle, actor failure, source drift, closure alias,
+score/bank mismatch, evaluator drift, causal-binding violation, or missing
+cell fails closed.
 
 A positive verdict nominates a fresh-main port. It does not mutate canonical
 runtime, archive pointers, providers, or Kaggle submissions. A rejection
