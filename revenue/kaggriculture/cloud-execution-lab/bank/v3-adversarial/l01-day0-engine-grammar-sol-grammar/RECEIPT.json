@@ -49,7 +49,7 @@
     "L01-DAY0-ENGINE-WITNESS.json": "723f83c2d04f830cca791d998ded85275a4c58141bd6966a14e28d41b063ab53",
     "L01-DAY0-GRAMMAR.patch": "96ae934f8b886eb0610e2420f74c91a7c7462e8914941ae396fd51295ab85d45",
     "L01-DAY0-PANEL.json": "aa7917b41b0c3c0f6dc7ab4f36482ef7312ddec0718ccef0b497d8b968316a6b",
-    "README.md": "37db5b92b5997af0905dadb1b20762ed3c974a30ac0a07f4a92c41250b82785b",
+    "README.md": "05b651cc482849d5e0974a691f700878614a3759774156c98dcea6acfde68515",
     "SOURCE-PACKET-WITNESS.json": "4ffdaa8c5b8a0c8c3a00847a9e5c93deb5e8b71ff941ae43c01fe7191f64e363",
     "l01_day0_guard.py": "fa991c9ab0866ba47900ee3d65fa39b7b212019373ea88fd38da0c3a77df3596",
     "official_engine_witness.py": "16e02a3dacd6b6d574b96471bd6e74f1585c5d409e9f9ebd5d26e126f231709e",
@@ -126,7 +126,7 @@
     "no current-main strength claim from the predecessor diagnostic panel"
   ],
   "operation": "TITAN-V3-L01-DAY0-ENGINE-GRAMMAR-CLOSURE-20260910-01",
-  "receipt_sha256": "968a3ade2e617b41b13e09823a34dbf192f835720ad6f78f113b981bd45e42e9",
+  "receipt_sha256": "67fa08f892b6e8db8c99d45773fa4359bace58fc39a42731771d87075a67a89c",
   "repair": {
     "future_hypothesis_rule": "legal verbs, explicit cost bound, returned-action activation, and matched games are separate required evidence",
     "patch_sha256": "96ae934f8b886eb0610e2420f74c91a7c7462e8914941ae396fd51295ab85d45",
