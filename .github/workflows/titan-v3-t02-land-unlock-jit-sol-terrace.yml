@@ -1,0 +1,77 @@
+name: TITAN V3 T02 land-unlock JIT census
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - sol-terrace/titan-v3-t02-land-unlock-jit-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace/**"
+      - ".github/workflows/titan-v3-t02-land-unlock-jit-sol-terrace.yml"
+      - "p/sol-terrace-titan-v3-t02-land-unlock-jit-20260910-01.md"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace/**"
+      - ".github/workflows/titan-v3-t02-land-unlock-jit-sol-terrace.yml"
+      - "p/sol-terrace-titan-v3-t02-land-unlock-jit-20260910-01.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-t02-land-unlock-jit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-bound-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Pure contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace
+        run: python -m unittest -v test_land_unlock_jit.py
+
+      - name: Exact-current route census
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace
+        run: python audit_current_routes.py --output CURRENT-CENSUS.json
+
+      - name: Validate census schema and source binding
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("CURRENT-CENSUS.json").read_text())
+          assert report["schema"] == "titan.t02.land-unlock-jit.census.v1"
+          assert report["route_count"] == len(report["source"]["route_ids"])
+          assert report["purchase_count"] == len(report["purchases"])
+          assert report["relocation_count"] == len(report["relocations"])
+          assert set(report["source"]["git_blobs"]) == {
+              "frozen_selected.py",
+              "scheduler.py",
+              "mechanics.py",
+              "reference/next-panel/vendor/arlene.py",
+          }
+          for item in report["relocations"]:
+              assert item["purchase_step"] < item["target_step"] < item["first_effect_step"]
+              assert item["saved_cash_turns"] == item["target_step"] - item["purchase_step"]
+          print(json.dumps(report["summary"], sort_keys=True))
+          PY
+
+      - name: Upload exact census
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-t02-land-unlock-jit-census
+          path: revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace/CURRENT-CENSUS.json
+          if-no-files-found: error
+          retention-days: 14
