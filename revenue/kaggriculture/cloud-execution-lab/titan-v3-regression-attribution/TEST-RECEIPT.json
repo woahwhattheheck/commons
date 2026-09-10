@@ -1,0 +1,30 @@
+{
+  "artifact": "titan-v3-regression-attribution",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_regression_attribution.py test_materialize_ablation_matrix.py",
+  "compileall": {
+    "command": "python3 -m compileall -q .",
+    "exit_code": 0
+  },
+  "exit_code": 0,
+  "python": "3.13.5",
+  "schema_version": 1,
+  "scope": "synthetic/adversarial validation only; no game score, leaderboard, promotion, or release claim",
+  "source_manifest": {
+    "bytes": 1377,
+    "path": "SOURCE-MANIFEST.json",
+    "sha256": "fb5e48c131b903dc26b5096cbdd19d9512d2bdfadb778b0b727306130bc78bb9"
+  },
+  "test_suites": {
+    "materialize_ablation_matrix": {
+      "failed": 0,
+      "passed": 16
+    },
+    "regression_attribution": {
+      "failed": 0,
+      "passed": 22
+    }
+  },
+  "tested_at_utc": "2026-09-10T19:30:36.053893+00:00",
+  "tests_failed": 0,
+  "tests_passed": 38
+}
