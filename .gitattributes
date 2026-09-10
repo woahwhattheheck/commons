@@ -40,3 +40,5 @@ test_feed_delta.py text eol=lf
 test_seat_census.py text eol=lf
 integrations/command_center/observability.py text eol=lf
 integrations/command_center/test_observability.py text eol=lf
+host/github_state.py text eol=lf
+test_github_state.py text eol=lf
