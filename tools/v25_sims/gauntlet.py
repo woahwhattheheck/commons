@@ -22,6 +22,7 @@ POOL = {
     "cok_v10":      f"{R}/cloud-policy-portfolio/revision2/vendor/opponents/cok-v10.py::agent",
     "public_bt12":  f"{R}/cloud-frontier-decision/public-opponent/submission.py::agent",
     "v1_submitted": str(SP / "v1/main.py") + "::agent",
+    "prvsiyan_soil": "/tmp/bank/prvsiyan_soil/main.py::agent",
 }
 
 def shard(seeds, n):
