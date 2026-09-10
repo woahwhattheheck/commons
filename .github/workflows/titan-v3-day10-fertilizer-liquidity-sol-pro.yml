@@ -71,7 +71,7 @@ jobs:
             test_candidate_runtime.py \
             test_materialize.py \
             test_compare_panel.py 2>&1 | tee "$ARTIFACT_DIR/focused-tests.txt"
-          test "$(grep -c '^test_' "$ARTIFACT_DIR/focused-tests.txt")" -eq 45
+          test "$(grep -c '^test_' "$ARTIFACT_DIR/focused-tests.txt")" -eq 47
 
       - name: Materialize exact control and candidate closures
         run: |

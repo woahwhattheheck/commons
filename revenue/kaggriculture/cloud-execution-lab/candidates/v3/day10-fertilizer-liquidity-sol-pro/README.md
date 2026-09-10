@@ -56,13 +56,13 @@ python -m unittest -v \
   test_materialize.py \
   test_compare_panel.py
 
-Ran 45 tests — OK
+Ran 47 tests — OK
 ```
 
 The path-scoped workflow:
 
 1. binds the six source Git blobs and canonical archive identity;
-2. reruns all 45 contracts;
+2. reruns all 47 contracts;
 3. proves independent control/candidate materialization;
 4. imports both exact entries in isolated mode;
 5. prepares the pinned official interpreter through the repository evaluator;

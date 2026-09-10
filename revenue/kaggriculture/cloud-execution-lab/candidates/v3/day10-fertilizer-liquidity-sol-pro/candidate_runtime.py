@@ -109,9 +109,55 @@ def install_final_boundary(
             consumer.selected_post_units_binding = (step, player, farmer, hands)
             installed_snapshot = True
 
-            guarded = self._operating_stock_selected(
-                observation, configuration or {}, proposed
+            proposed_market = proposed.get("market")
+            if not isinstance(proposed_market, list):
+                raise ValueError("proposed_market_not_list")
+            limit = executable_market_limit(configuration or {})
+            inactive_suffix = deepcopy(proposed_market[limit:])
+            guard_input = deepcopy(proposed)
+            guard_input["market"] = deepcopy(proposed_market[:limit])
+
+            guarded_prefix = self._operating_stock_selected(
+                observation, configuration or {}, guard_input
             )
+            if not isinstance(guarded_prefix, dict):
+                raise ValueError("operating_stock_action_not_object")
+            guarded_market = guarded_prefix.get("market")
+            if not isinstance(guarded_market, list):
+                raise ValueError("operating_stock_market_not_list")
+            if len(guarded_market) != len(guard_input["market"]):
+                raise ValueError("operating_stock_changed_prefix_length")
+            if any(
+                guarded_prefix.get(key) != guard_input.get(key)
+                for key in set(guarded_prefix) | set(guard_input)
+                if key != "market"
+            ):
+                raise ValueError("operating_stock_changed_nonmarket_field")
+            for before, after in zip(guard_input["market"], guarded_market):
+                if before == after:
+                    continue
+                valid_before = (
+                    isinstance(before, list)
+                    and len(before) == 3
+                    and before[:2] == ["SELL", ITEM]
+                    and type(before[2]) is int
+                    and before[2] > 0
+                )
+                valid_after = (
+                    not after
+                    or (
+                        isinstance(after, list)
+                        and len(after) == 3
+                        and after[:2] == ["SELL", ITEM]
+                        and type(after[2]) is int
+                        and 0 < after[2] <= before[2]
+                    )
+                )
+                if not (valid_before and valid_after):
+                    raise ValueError("operating_stock_changed_unowned_prefix_row")
+
+            guarded = deepcopy(guarded_prefix)
+            guarded["market"] = deepcopy(guarded_market) + inactive_suffix
             guard_report = deepcopy(diagnostics.get("operating_stock") or {})
             guard_reason = guard_report.get("reason")
             certified = bool(guard_report.get("changed")) or (
@@ -143,6 +189,11 @@ def install_final_boundary(
                 final_quantity=final_quantity,
                 operating_stock=guard_report,
                 post_unit_snapshot_bound=True,
+                executable_prefix_rows=len(guard_input["market"]),
+                inactive_suffix_rows_quarantined=len(inactive_suffix),
+                inactive_suffix_preserved=(
+                    guarded["market"][limit:] == proposed_market[limit:]
+                ),
             )
             diagnostics["day10_fertilizer_liquidity"] = report
             return guarded

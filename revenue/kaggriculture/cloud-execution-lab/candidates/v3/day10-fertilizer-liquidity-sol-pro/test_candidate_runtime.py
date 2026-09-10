@@ -23,22 +23,32 @@ class Consumer:
 
 
 class FakeInstance:
-    def __init__(self, guard_reason="sale_already_leaves_required_stock", guard_quantity=None):
+    def __init__(
+        self,
+        guard_reason="sale_already_leaves_required_stock",
+        guard_quantity=None,
+        *,
+        append_hire=True,
+    ):
         self.diagnostics = {"status": "completed"}
         self.consumer = Consumer()
         self.selected = {"farmer": ["PASS"], "hands": [], "market": []}
         self.events = []
         self.guard_reason = guard_reason
         self.guard_quantity = guard_quantity
+        self.append_hire = append_hire
+        self.guard_inputs = []
 
     def _early_capital_selected(self, _obs, _cfg, selected):
         self.events.append("canonical_final_pressure")
         result = copy.deepcopy(selected)
-        result["market"].append(["HIRE"])
+        if self.append_hire:
+            result["market"].append(["HIRE"])
         return result
 
     def _operating_stock_selected(self, _obs, _cfg, selected):
         self.events.append("operating_stock_certificate")
+        self.guard_inputs.append(copy.deepcopy(selected))
         result = copy.deepcopy(selected)
         if self.guard_quantity is not None:
             for index, row in enumerate(result["market"]):
@@ -101,6 +111,41 @@ class CandidateRuntimeTests(unittest.TestCase):
         report = instance.diagnostics["day10_fertilizer_liquidity"]
         self.assertGreater(report["proposed_quantity"], 7)
         self.assertEqual(report["final_quantity"], 7)
+
+
+    def test_operating_stock_sees_only_executable_prefix_and_suffix_is_exact(self):
+        instance = self.install(FakeInstance(append_hire=False))
+        suffix = [["SELL", ITEM, 90], ["BUY_SEED", "WHEAT", 2]]
+        result = instance._early_capital_selected(
+            observation(),
+            {"maxMarketOrdersPerTurn": 1, "turnsPerDay": 24},
+            {"farmer": ["PASS"], "hands": [], "market": [[], *copy.deepcopy(suffix)]},
+        )
+        self.assertEqual(len(instance.guard_inputs), 1)
+        self.assertEqual(len(instance.guard_inputs[0]["market"]), 1)
+        self.assertEqual(instance.guard_inputs[0]["market"][0][:2], ["SELL", ITEM])
+        self.assertEqual(result["market"][1:], suffix)
+        report = instance.diagnostics["day10_fertilizer_liquidity"]
+        self.assertEqual(report["inactive_suffix_rows_quarantined"], 2)
+        self.assertTrue(report["inactive_suffix_preserved"])
+
+    def test_certificate_reduction_cannot_rewrite_inactive_suffix_sale(self):
+        instance = self.install(
+            FakeInstance(
+                guard_reason="reserve_reachable_fertilizer",
+                guard_quantity=7,
+                append_hire=False,
+            )
+        )
+        suffix = [["SELL", ITEM, 90]]
+        result = instance._early_capital_selected(
+            observation(),
+            {"maxMarketOrdersPerTurn": 1, "turnsPerDay": 24},
+            {"farmer": ["PASS"], "hands": [], "market": [[], *copy.deepcopy(suffix)]},
+        )
+        self.assertEqual(result["market"][0], ["SELL", ITEM, 7])
+        self.assertEqual(result["market"][1:], suffix)
+        self.assertEqual(instance.guard_inputs[0]["market"], [["SELL", ITEM, 64]])
 
     def test_uncertified_guard_withdraws_invented_sale(self):
         instance = self.install(FakeInstance(guard_reason="requires_one_unambiguous_pickup"))
