@@ -1,0 +1,63 @@
+{
+  "agent_name": "Bryce Muhlnickel",
+  "comparisons": [
+    [
+      107140666,
+      107142511
+    ],
+    [
+      107140666,
+      107150217
+    ]
+  ],
+  "expected_steps": 720,
+  "replays": [
+    {
+      "bytes": 552636,
+      "episode_id": 107113451,
+      "filename": "107113451.json.gz",
+      "role": "V1",
+      "seat": 1,
+      "sha256": "e7c8fad30e3014db67bca3691d9947b22874275eeb57ba0f917625a47c29aad0",
+      "slack_file_id": "F0C0KGH8DCN"
+    },
+    {
+      "bytes": 474669,
+      "episode_id": 107130860,
+      "filename": "107130860.json.gz",
+      "role": "V1",
+      "seat": 1,
+      "sha256": "9337c7c734eff0804400f732d48c155dedb6d6f12b3afdefbc620f78fdfc686b",
+      "slack_file_id": "F0C0KEQ5MFY"
+    },
+    {
+      "bytes": 464876,
+      "episode_id": 107142511,
+      "filename": "107142511.json.gz",
+      "role": "V1",
+      "seat": 1,
+      "sha256": "a18879c53613cb90f75e6f31f8d60c9726c490fd4ec6c753d3e90e69a1555d68",
+      "slack_file_id": "F0C06PZLP1D"
+    },
+    {
+      "bytes": 490279,
+      "episode_id": 107150217,
+      "filename": "107150217.json.gz",
+      "role": "V1",
+      "seat": 1,
+      "sha256": "29725fd6d06a5a6cf736427a9a64fc0b43b573d469cf47dec2d824a17d7b5f38",
+      "slack_file_id": "F0C0PTCJNRF"
+    },
+    {
+      "bytes": 459451,
+      "episode_id": 107140666,
+      "filename": "107140666.json.gz",
+      "role": "V2",
+      "seat": 1,
+      "sha256": "120f9a62911e897adb085d7397f1f3a67100bf8c241065e4e424adb540bdf916",
+      "slack_file_id": "F0C0N4AGR5G"
+    }
+  ],
+  "schema": "titan-controller-fingerprint-corpus-v1",
+  "truth_boundary": "Replay transport/action fingerprint evidence only. Role labels come from the submitted V1/V2 corpus handoff; the replay payload itself does not encode submission version."
+}

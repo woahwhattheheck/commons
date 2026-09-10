@@ -1,0 +1,40 @@
+name: titan-v3-controller-fingerprint-sol-aegis
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/controller-fingerprint-20260909-sol-aegis/**'
+      - '.github/workflows/titan-v3-controller-fingerprint-sol-aegis.yml'
+      - 'p/sol-astra-recovery-titan-aegis-cipher-publication-20260909-01.md'
+  push:
+    branches:
+      - 'sol-aegis/titan-v3-controller-fingerprint-20260909-01'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/controller-fingerprint-20260909-sol-aegis/**'
+      - '.github/workflows/titan-v3-controller-fingerprint-sol-aegis.yml'
+      - 'p/sol-astra-recovery-titan-aegis-cipher-publication-20260909-01.md'
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/controller-fingerprint-20260909-sol-aegis
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Parse and compile
+        run: python -m py_compile controller_fingerprint.py test_controller_fingerprint.py
+      - name: Synthetic and checked-in evidence contracts
+        run: |
+          python -m unittest -v test_controller_fingerprint.py 2>&1 | tee /tmp/aegis-tests.log
+          grep -F "AEGIS_CORPUS_DIR not set" /tmp/aegis-tests.log
+          grep -F "OK (skipped=1)" /tmp/aegis-tests.log
