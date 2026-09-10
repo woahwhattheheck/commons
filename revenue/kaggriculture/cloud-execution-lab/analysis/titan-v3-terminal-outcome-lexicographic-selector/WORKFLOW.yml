@@ -1,0 +1,68 @@
+name: titan-terminal-outcome-selector
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-outcome-lexicographic-selector/**"
+      - ".github/workflows/titan-terminal-outcome-selector.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ROOT: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-outcome-lexicographic-selector
+      TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact head and workflow copy
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          cmp "$ROOT/WORKFLOW.yml" .github/workflows/titan-terminal-outcome-selector.yml
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Compile and run contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$ROOT"
+          python -B -m py_compile terminal_outcome_selector.py test_terminal_outcome_selector.py fuzz_terminal_outcome_selector.py verify_packet.py
+          python -B -m unittest -v test_terminal_outcome_selector.py
+          python -O -B -m unittest -v test_terminal_outcome_selector.py
+
+      - name: Rebuild deterministic evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$ROOT"
+          python -B terminal_outcome_selector.py WITNESS-INPUT.json "$RUNNER_TEMP/witness.json"
+          cmp WITNESS-REPORT.json "$RUNNER_TEMP/witness.json"
+          python -B fuzz_terminal_outcome_selector.py \
+            --input WITNESS-INPUT.json \
+            --iterations 25000 \
+            --seed 20260910 \
+            --output "$RUNNER_TEMP/fuzz.json"
+          cmp FUZZ-RECEIPT.json "$RUNNER_TEMP/fuzz.json"
+          python -B verify_packet.py
+
+      - name: Prove clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
