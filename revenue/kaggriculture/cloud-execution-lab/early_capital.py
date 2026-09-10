@@ -54,6 +54,19 @@ def _horizon_end(now, config, decisions):
     return end
 
 
+def _market_limit(config):
+    """Return the official executable raw-market prefix length, or None.
+
+    The interpreter executes at least one row even when the configured limit is
+    zero. Reject non-integral configuration rather than letting an optional
+    ordering transform reinterpret the action grammar.
+    """
+    limit = config.get('maxMarketOrdersPerTurn', 10)
+    if isinstance(limit, bool) or not isinstance(limit, int):
+        return None
+    return max(1, limit)
+
+
 def _qty(order):
     if not order or len(order) < 3:
         return 0
@@ -113,13 +126,13 @@ def _rank(order, now, remaining, day, plant_demand, seeds_held):
 
 
 def order_early_capital(mechanics, observation, configuration, selected, route, decisions=()):
-    """Reorder the current market tape. Purchases are never dropped or invented.
+    """Reorder only the executable prefix of the current market tape.
 
-    Returns (action, report). Action farmer/hands are unchanged. Market length
-    and the multiset of orders are unchanged; only same-queue index order.
+    Purchases are never dropped or invented. Farmer/hands, market length, the
+    multiset of active orders, and every capped suffix row remain unchanged.
     """
     report = {'changed': False, 'reason': 'init', 'moved': 0, 'reserved': 0,
-              'reduced': [], 'revision': 'v2-order-only'}
+              'reduced': [], 'revision': 'v3-executable-prefix'}
     if not isinstance(selected, dict):
         report['reason'] = 'no_action'
         return selected, report
@@ -127,6 +140,15 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     if not market:
         report['reason'] = 'empty_market'
         return selected, report
+    limit = _market_limit(configuration)
+    if limit is None:
+        report['reason'] = 'unsupported_market_limit'
+        return selected, report
+    active_count = min(limit, len(market))
+    active = market[:active_count]
+    suffix = market[active_count:]
+    report.update(active_limit=limit, active_rows=active_count,
+                  suffix_rows=len(suffix))
     now = int(observation.get('step') if observation.get('step') is not None
               else int(observation['day']) * _turns_per_day(configuration)
               + int(observation['hour']))
@@ -136,16 +158,15 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
         return selected, report
     day = now // _turns_per_day(configuration)
     remaining = _remaining_days(now, configuration)
-    if any(o and o[0] not in KNOWN for o in market):
+    if any(o and o[0] not in KNOWN for o in active):
         report['reason'] = 'unknown_order'
         return selected, report
-    player = int(observation['player'])
     private = observation.get('private') or {}
     seeds_held = dict(private.get('seeds') or {})
     horizon = _horizon_end(now, configuration, decisions)
     plants = _plant_demand(selected, route, now, horizon)
     ranks = []
-    for order in market:
+    for order in active:
         rank = _rank(order, now, remaining, day, plants, seeds_held)
         if rank is None:
             report['reason'] = 'unknown_order'
@@ -155,16 +176,18 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
         report['reason'] = 'no_admitted_capital'
         return selected, report
 
-    indexed = list(enumerate(market))
+    indexed = list(enumerate(active))
     ordered = sorted(indexed, key=lambda item: (ranks[item[0]], item[0]))
-    reordered = [order for _, order in ordered]
-    moved = sum(1 for old, new in zip(market, reordered) if old != new)
-    if reordered == market:
+    reordered_active = [order for _, order in ordered]
+    reordered = reordered_active + suffix
+    moved = sum(1 for old, new in zip(active, reordered_active) if old != new)
+    if reordered_active == active:
         report.update(reason='already_ordered', moved=0, horizon_end=horizon,
                       remaining_days=remaining)
         return selected, report
     result = deepcopy(selected)
-    result['market'] = reordered
+    # Do not reintroduce references to caller-owned order rows after deepcopy.
+    result['market'] = deepcopy(reordered)
     report.update(changed=True, reason='ordered', moved=moved, reserved=0,
                   reduced=[], horizon_end=horizon, remaining_days=remaining)
     return result, report
