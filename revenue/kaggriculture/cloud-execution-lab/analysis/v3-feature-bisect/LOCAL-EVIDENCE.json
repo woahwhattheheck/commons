@@ -1,0 +1,51 @@
+{
+  "commands": [
+    {
+      "command": "python -m py_compile feature_bisect.py test_feature_bisect.py",
+      "return_code": 0
+    },
+    {
+      "command": "python -m unittest -v test_feature_bisect.py",
+      "return_code": 0,
+      "stderr_sha256": "e8de9fa2c3925598e0f24ffbca4f7aff84f90bc4158e1c151fcd36caf63e87be",
+      "stdout_sha256": "3ebb26e1a5a8861d3495427a3e78d37d5f2128aab052ab0341314f167a5d7d8d",
+      "tests_run": 19
+    }
+  ],
+  "environment": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "files": {
+    ".github/workflows/titan-v3-feature-bisect.yml": {
+      "bytes": 5874,
+      "sha256": "8b0263d4d52c44aefc05d09c42c2d8c866149351c76ba3d5d56c6cbfc8e9913d"
+    },
+    "p/sol-scalpel-titan-v3-config-causal-bisect-20260909-01.md": {
+      "bytes": 2947,
+      "sha256": "bc00bb52e279bb94b172aa2c7e6c40084861c692fcf2ed02c25af9f19474d3c0"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/README.md": {
+      "bytes": 5626,
+      "sha256": "e93b5b58550de699da2c4a0096c8f22d524d69911ac280d8ed260d2356828177"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/feature_bisect.py": {
+      "bytes": 54510,
+      "sha256": "2e098afaf4984f0e8bf1423d1b679e2665f40bf9e981abbbffb146036d2f3cc6"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-feature-bisect/test_feature_bisect.py": {
+      "bytes": 25076,
+      "sha256": "9b25b2b5c870d3179316d7aa0392b0cab1b8330ecc76563040dacba121b49cee"
+    }
+  },
+  "operation": "titan-v3-config-causal-bisect-20260909-sol-scalpel-01",
+  "receipt_sha256": "6e0fdbfc59ae10813ce443f29b300b931fc9144f0b6f1d11dc1593ecf9f17520",
+  "result": {
+    "compile": "PASS",
+    "contracts": "19/19 PASS",
+    "official_engine_games": 0,
+    "promotion_authorized": false
+  },
+  "schema_version": 1,
+  "truth_boundary": "Local contracts and synthetic evaluator integration only. Hosted official-engine cells are intentionally not claimed here."
+}
