@@ -11,7 +11,11 @@
   complete official-interpreter games.
 - Causal discriminator: pre-interpreter candidate-action SHA-256.
 - Advance gate: nonzero action activation, positive global mean own-cash
-  delta, nonnegative median own-cash delta, and no negative
-  opponent×seat own-cash stratum.
+  delta, nonnegative median own-cash delta, no negative opponent×seat
+  own-cash stratum, nonnegative global mean margin delta, and no negative
+  opponent×seat margin stratum.
+- Causal gate: candidate-action identity must imply complete-trace and
+  both-seat terminal-score identity; changed candidate actions must change
+  the complete trace. Any mismatch is invalid evidence, not a rejection.
 - Positive evidence nominates a fresh-main port only; it does not authorize
   a submission.
