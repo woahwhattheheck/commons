@@ -1,0 +1,160 @@
+name: titan-v3-e13-future-sale-solvency-custody
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - sol-solvency/titan-v3-e13-future-sale-solvency-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/safe_materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/test_safe_materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/CUSTODY.json"
+      - "p/titan-v3-e13-future-sale-solvency-custody-20260910-01.md"
+      - ".github/workflows/titan-v3-e13-future-sale-solvency-custody.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/safe_materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/test_safe_materialize.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/CUSTODY.json"
+      - "p/titan-v3-e13-future-sale-solvency-custody-20260910-01.md"
+      - ".github/workflows/titan-v3-e13-future-sale-solvency-custody.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  alias-safe-exact-head:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            .github/workflows/titan-v3-e13-future-sale-solvency-custody.yml
+            p/titan-v3-e13-future-sale-solvency-custody-20260910-01.md
+            revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/materialize.py
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/safe_materialize.py
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/test_safe_materialize.py
+            revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/CUSTODY.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Assert exact event head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_HEAD"
+          printf '%s\n' "$actual" > "$RUNNER_TEMP/CHECKED-OUT-HEAD"
+
+      - name: Run filesystem-adversarial custody contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-e13-solvency-custody"
+          mkdir -p "$out"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-e13-future-sale-solvency/test_safe_materialize.py \
+            2>&1 | tee "$out/contracts.log"
+
+      - name: Materialize through the authoritative safe writer
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-e13-solvency-custody"
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python analysis/v3-e13-future-sale-solvency/safe_materialize.py \
+              --output "$out/frozen_selected.py" \
+              --receipt "$out/SAFE-RECEIPT.json" \
+              2>&1 | tee "$out/materialize.log"
+          python -m py_compile \
+            analysis/v3-e13-future-sale-solvency/materialize.py \
+            analysis/v3-e13-future-sale-solvency/safe_materialize.py \
+            analysis/v3-e13-future-sale-solvency/test_safe_materialize.py \
+            "$out/frozen_selected.py"
+
+      - name: Bind provenance and clean canonical inputs
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/titan-e13-solvency-custody"
+          OUT="$out" python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          out = Path(os.environ["OUT"])
+          bound = [
+              "frozen_selected.py",
+              "reference/engine/kaggriculture.py",
+              "analysis/v3-e13-future-sale-solvency/materialize.py",
+              "analysis/v3-e13-future-sale-solvency/safe_materialize.py",
+              "analysis/v3-e13-future-sale-solvency/test_safe_materialize.py",
+              "analysis/v3-e13-future-sale-solvency/CUSTODY.json",
+          ]
+          receipt = json.loads((out / "SAFE-RECEIPT.json").read_text())
+          checked = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          if checked != os.environ["EXPECTED_HEAD"]:
+              raise SystemExit("checked-out head drift")
+          provenance = {
+              "schema": "titan.v3.e13-future-sale-solvency.custody-provenance.v1",
+              "operation": "TITAN-V3-E13-FUTURE-SALE-SOLVENCY-CUSTODY-20260910-01",
+              "expected_head": os.environ["EXPECTED_HEAD"],
+              "checked_out_head": checked,
+              "bound_git_blobs": {
+                  path: subprocess.check_output(["git", "hash-object", path], text=True).strip()
+                  for path in bound
+              },
+              "safe_receipt_sha256": hashlib.sha256(
+                  (out / "SAFE-RECEIPT.json").read_bytes()
+              ).hexdigest(),
+              "candidate_sha256": hashlib.sha256(
+                  (out / "frozen_selected.py").read_bytes()
+              ).hexdigest(),
+              "receipt_claims": receipt["claims"],
+          }
+          (out / "PROVENANCE.json").write_text(
+              json.dumps(provenance, indent=2, sort_keys=True) + "\n"
+          )
+          PY
+
+          git diff --exit-code -- \
+            frozen_selected.py \
+            reference/engine/kaggriculture.py \
+            analysis/v3-e13-future-sale-solvency/materialize.py \
+            analysis/v3-e13-future-sale-solvency/safe_materialize.py \
+            analysis/v3-e13-future-sale-solvency/test_safe_materialize.py \
+            analysis/v3-e13-future-sale-solvency/CUSTODY.json
+
+          sha256sum \
+            "$out/frozen_selected.py" \
+            "$out/SAFE-RECEIPT.json" \
+            "$out/PROVENANCE.json" \
+            "$out/contracts.log" \
+            "$out/materialize.log" \
+            > "$out/SHA256SUMS"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: titan-v3-e13-future-sale-solvency-custody
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/titan-e13-solvency-custody/frozen_selected.py
+            ${{ runner.temp }}/titan-e13-solvency-custody/SAFE-RECEIPT.json
+            ${{ runner.temp }}/titan-e13-solvency-custody/PROVENANCE.json
+            ${{ runner.temp }}/titan-e13-solvency-custody/contracts.log
+            ${{ runner.temp }}/titan-e13-solvency-custody/materialize.log
+            ${{ runner.temp }}/titan-e13-solvency-custody/SHA256SUMS

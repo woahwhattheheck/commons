@@ -1,0 +1,26 @@
+{
+  "authoritative_writer": "safe_materialize.py",
+  "base_commit": "304b73013e7df0e8ffb69f487c7590a9e3fa5e4a",
+  "claims": {
+    "gameplay_strength": false,
+    "promotion": false,
+    "provider_or_kaggle_mutation": false,
+    "returned_action_activation": false,
+    "score_causality": false
+  },
+  "contracts": {
+    "direct_destination_symlink_rejection": true,
+    "exact_event_head_checkout": true,
+    "exclusive_random_temporary_files": true,
+    "fixed_tmp_hardlink_killers": 2,
+    "protected_same_inode_alias_rejection": true,
+    "safe_writer_tests": 11
+  },
+  "disposition": "SOURCE_REAL_ACTION_UNMEASURED",
+  "generator": {
+    "git_blob_sha1": "cc7dd4133a43da29294770d9b066ef550b34aaa6",
+    "path": "revenue/kaggriculture/cloud-execution-lab/analysis/v3-e13-future-sale-solvency/materialize.py"
+  },
+  "operation": "TITAN-V3-E13-FUTURE-SALE-SOLVENCY-CUSTODY-20260910-01",
+  "schema": "titan.v3.e13-future-sale-solvency.custody.v1"
+}
