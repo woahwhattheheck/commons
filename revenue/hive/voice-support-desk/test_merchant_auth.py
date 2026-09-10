@@ -4,6 +4,7 @@ import datetime as dt
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 import desk
 import merchant_auth
@@ -55,6 +56,33 @@ class MerchantAuthTests(unittest.TestCase):
             self.assertEqual(known[field], unknown[field])
         self.assertEqual(known["state"], "verify")
         self.assertIsNone(known["order_ref"])
+
+    def test_known_wrong_and_unknown_valid_code_use_same_kdf_shape(self):
+        original_pbkdf2 = merchant_auth.hashlib.pbkdf2_hmac
+        observations = []
+
+        def traced_pbkdf2(hash_name, password, salt, iterations, *args, **kwargs):
+            observations.append((hash_name, len(password), len(salt), iterations))
+            return original_pbkdf2(hash_name, password, salt, iterations, *args, **kwargs)
+
+        with mock.patch.object(
+            merchant_auth.hashlib, "pbkdf2_hmac", side_effect=traced_pbkdf2
+        ):
+            self.enter_ref("known-work", "1001")
+            start = len(observations)
+            known = self.gate.turn("known-work", 2, digits="99999999")
+            known_calls = observations[start:]
+
+            self.enter_ref("unknown-work", "9999")
+            start = len(observations)
+            unknown = self.gate.turn("unknown-work", 2, digits="99999999")
+            unknown_calls = observations[start:]
+
+        self.assertEqual(known["state"], "ended")
+        self.assertEqual(unknown["state"], "ended")
+        self.assertEqual(known["message"], unknown["message"])
+        self.assertEqual(known_calls, [("sha256", 8, 16, merchant_auth.PBKDF2_ROUNDS)])
+        self.assertEqual(unknown_calls, known_calls)
 
     def test_wrong_blank_and_cross_order_codes_disclose_nothing_and_mutate_no_return(self):
         cases = (
