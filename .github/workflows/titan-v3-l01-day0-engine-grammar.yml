@@ -16,22 +16,42 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the exact reviewed head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Bind checkout to the event head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+          printf 'exact_head=%s\n' "$actual"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Compile carrier
-        run: >-
-          python -m py_compile
-          revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar/*.py
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar/*.py
       - name: Pure guard and durable receipts
         working-directory: revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar
-        run: python -m unittest -v test_l01_day0_guard.py test_receipts.py
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_l01_day0_guard.py test_receipts.py
       - name: Exact repair snapshot predecessor killers
         working-directory: revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar/repair
-        run: python -m unittest -v checks/test_l01_day0_engine_grammar.py
+        run: |
+          set -euo pipefail
+          python -m unittest -v checks/test_l01_day0_engine_grammar.py
       - name: Exact pinned-engine one-turn witness
         working-directory: revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar
         env:
           TITAN_ARCHIVE: ../../../exports/titan-current.tar.gz
-        run: python -m unittest -v test_official_engine_witness.py
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_official_engine_witness.py
