@@ -22,6 +22,10 @@ returned-action culprit families that policy owners can repair and retest.
 {
   "schema": "titan-three-way-regression-microscope/v1",
   "expected_action_count": 719,
+  "expected_cells": [
+    {"opponent": "Arlene", "seed": 9921001, "seat": 0},
+    {"opponent": "Arlene", "seed": 9921001, "seat": 1}
+  ],
   "upstream_causal_gate": {
     "tool": "SOL-AUDITOR paired-evidence causal gate",
     "schema": "titan-paired-evidence/v1",
@@ -63,8 +67,11 @@ returned-action culprit families that policy owners can repair and retest.
 ```
 
 All identity and trace fields must be lowercase 64-hex SHA-256 values. The
-three versions must contain the same literal cell grid. The tested action hash
-is mandatory and recomputed from the supplied returned-action sequence.
+production lifecycle is fixed at exactly 719 returned actions. `expected_cells`
+is mandatory, duplicate-free, and must contain both seats for every declared
+opponent/seed pair; each version must equal that literal grid. The tested
+action hash is mandatory and recomputed from the supplied sequence. Wrapped
+action rows must carry continuous `step=0..718` and the correct tested seat.
 
 The upstream causal gate is authoritative. This consumer still repeats narrow
 defense-in-depth invariants needed for safe cross-version localization:
