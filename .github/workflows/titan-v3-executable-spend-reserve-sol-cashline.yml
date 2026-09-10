@@ -13,10 +13,6 @@ on:
 permissions:
   contents: read
 
-env:
-  EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-  ARTIFACT_DIR: ${{ runner.temp }}/titan-v3-executable-spend-reserve
-
 jobs:
   exact-source-contracts:
     runs-on: ubuntu-latest
@@ -31,11 +27,13 @@ jobs:
           python-version: "3.11"
       - name: Assert exact checkout and clean source tree
         shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test -z "$(git status --porcelain)"
-          mkdir -p "$ARTIFACT_DIR"
+          mkdir -p "$RUNNER_TEMP/titan-v3-executable-spend-reserve"
       - name: Run executable-prefix predecessor killers
         run: >-
           python -B
@@ -48,10 +46,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          out="$RUNNER_TEMP/titan-v3-executable-spend-reserve/executable-spend-reserve-receipt.json"
           python -B revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py \
             --repo "$GITHUB_WORKSPACE" --format json \
-            | tee "$ARTIFACT_DIR/executable-spend-reserve-receipt.json"
-          python - "$ARTIFACT_DIR/executable-spend-reserve-receipt.json" <<'PY'
+            | tee "$out"
+          python - "$out" <<'PY'
           import json
           import pathlib
           import sys
@@ -66,21 +65,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          out="$RUNNER_TEMP/titan-v3-executable-spend-reserve/executable-spend-reserve.patch"
           python -B revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py \
             --repo "$GITHUB_WORKSPACE" --format patch \
-            | tee "$ARTIFACT_DIR/executable-spend-reserve.patch"
-          test -s "$ARTIFACT_DIR/executable-spend-reserve.patch"
-          test "$(grep -c '^@@' "$ARTIFACT_DIR/executable-spend-reserve.patch")" -eq 1
-          grep -q '^--- a/revenue/kaggriculture/cloud-execution-lab/scheduler.py' "$ARTIFACT_DIR/executable-spend-reserve.patch"
-          grep -q '^+++ b/revenue/kaggriculture/cloud-execution-lab/scheduler.py' "$ARTIFACT_DIR/executable-spend-reserve.patch"
+            | tee "$out"
+          test -s "$out"
+          test "$(grep -c '^@@' "$out")" -eq 1
+          grep -q '^--- a/revenue/kaggriculture/cloud-execution-lab/scheduler.py' "$out"
+          grep -q '^+++ b/revenue/kaggriculture/cloud-execution-lab/scheduler.py' "$out"
       - name: Emit and validate authenticated frozen-route exposure atlas
         shell: bash
         run: |
           set -euo pipefail
+          out="$RUNNER_TEMP/titan-v3-executable-spend-reserve/executable-spend-route-exposure.json"
           python -B revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/route_exposure.py \
             --repo "$GITHUB_WORKSPACE" \
-            | tee "$ARTIFACT_DIR/executable-spend-route-exposure.json"
-          python - "$ARTIFACT_DIR/executable-spend-route-exposure.json" <<'PY'
+            | tee "$out"
+          python - "$out" <<'PY'
           import json
           import pathlib
           import sys
@@ -94,10 +95,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          root="$RUNNER_TEMP/titan-v3-executable-spend-reserve"
           test -z "$(git status --porcelain)"
-          test -s "$ARTIFACT_DIR/executable-spend-reserve-receipt.json"
-          test -s "$ARTIFACT_DIR/executable-spend-reserve.patch"
-          test -s "$ARTIFACT_DIR/executable-spend-route-exposure.json"
+          test -s "$root/executable-spend-reserve-receipt.json"
+          test -s "$root/executable-spend-reserve.patch"
+          test -s "$root/executable-spend-route-exposure.json"
       - uses: actions/upload-artifact@v4
         with:
           name: titan-v3-executable-spend-reserve-receipts
