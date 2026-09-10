@@ -1,0 +1,30 @@
+name: titan-helios-source-snapshot
+
+on:
+  push:
+    branches:
+      - sol-helios/titan-v3-committed-hire-reconciliation-20260910-01
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package exact TITAN source checkout
+        run: |
+          set -euo pipefail
+          tar -czf /tmp/titan-source.tar.gz revenue/kaggriculture/cloud-execution-lab
+          sha256sum /tmp/titan-source.tar.gz | tee /tmp/titan-source.tar.gz.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-helios-source-${{ github.sha }}
+          path: |
+            /tmp/titan-source.tar.gz
+            /tmp/titan-source.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 1
