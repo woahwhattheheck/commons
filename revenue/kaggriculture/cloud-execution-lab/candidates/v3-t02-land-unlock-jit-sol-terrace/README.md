@@ -21,8 +21,10 @@ land-dependent tile action.
 2. map each executable `BUY_LAND` to `NE`, `SW`, then `SE`;
 3. locate the first represented land-dependent tile effect;
 4. reject checkpoint crossings and same-day horizons without a safe target;
-5. nominate only a literal **trailing empty** market slot inside the official
-   `max(1, maxMarketOrdersPerTurn)` prefix; and
+5. nominate only trailing executable capacity inside the official
+   `max(1, maxMarketOrdersPerTurn)` prefix—either an existing empty placeholder
+   after every nonempty order or the exact append index while the row is below
+   the cap; and
 6. move exactly one existing `BUY_LAND` atomically, leaving all other rows and
    nonempty market entries byte-equivalent.
 
@@ -52,6 +54,25 @@ If the exact current bank has no relocation, T02 is rejected before games. If it
 does, candidate-action activation and a complete mirrored
 opponent × seed × seat panel are still required before any promotion claim.
 
+## Exact-blob preview
+
+Before the hosted branch run received a runner, the retained source bundle from
+completed artifact `10168056904` supplied the exact current Arlene Git blob
+`bdb9cf58148a3c7961c085f4902759537decabf6`. The deterministic compiler found:
+
+- four routes, each 720 rows, route-bank SHA-256
+  `4d1f8382d971e5baa815c614241e85473ae82018886e62e08b13375cbe01e76c`;
+- eight executable authored land purchases total;
+- four identical NE opportunities: step 150 slot 4 → step 154 append slot 1,
+  followed by the first NE tile effect, `BUILD_PASTURE`, at step 155;
+- four SW purchases at step 265 whose first SW `PLANT STRAWBERRY` effect occurs
+  at step 266, leaving no safe delay; and
+- no authored SE purchase.
+
+This preview is an applicability result, not a runtime activation or strength
+claim. The workflow independently re-derives the same signatures from checkout
+bytes and fails closed on any discrepancy.
+
 ## Verification
 
 ```bash
@@ -60,8 +81,9 @@ python -m unittest -v test_land_unlock_jit.py
 python audit_current_routes.py --output CURRENT-CENSUS.json
 ```
 
-The pure suite covers locked-tile movement, unit-before-market timing, HIRE spawn
-positions, animal-versus-shed `PLACE`, active-prefix semantics, checkpoint and
-day boundaries, trailing-slot preservation, exact two-slot mutation, source
-drift rejection, multiple land purchases, deterministic serialization, and
-malformed-input fail closure.
+The 16-test pure suite covers locked-tile movement, unit-before-market timing,
+HIRE spawn positions, animal-versus-shed `PLACE`, active-prefix semantics,
+explicit-empty and append-capacity targets, saturated queues, checkpoint and day
+boundaries, trailing-slot preservation, exact two-site mutation, source drift
+rejection, multiple land purchases, deterministic serialization, and malformed-
+input fail closure.

@@ -41,7 +41,7 @@ jobs:
 
       - name: Exact-current route census
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace
-        run: python audit_current_routes.py --output CURRENT-CENSUS.json
+        run: python audit_current_routes.py --output CURRENT-CENSUS.json --require-relocation
 
       - name: Validate census schema and source binding
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3-t02-land-unlock-jit-sol-terrace
@@ -52,9 +52,21 @@ jobs:
 
           report = json.loads(Path("CURRENT-CENSUS.json").read_text())
           assert report["schema"] == "titan.t02.land-unlock-jit.census.v1"
-          assert report["route_count"] == len(report["source"]["route_ids"])
-          assert report["purchase_count"] == len(report["purchases"])
-          assert report["relocation_count"] == len(report["relocations"])
+          expected_routes = [
+              "7015cc00acfa4922",
+              "a84d06f1d12add7c",
+              "ab9669b9abfbea4e",
+              "dc76e4003029ac51",
+          ]
+          assert report["route_count"] == 4
+          assert report["source"]["route_ids"] == expected_routes
+          assert report["source"]["route_lengths"] == {key: 720 for key in expected_routes}
+          assert report["source"]["route_bank_sha256"] == (
+              "4d1f8382d971e5baa815c614241e85473ae82018886e62e08b13375cbe01e76c"
+          )
+          assert report["purchase_count"] == len(report["purchases"]) == 8
+          assert report["relocation_count"] == len(report["relocations"]) == 4
+          assert report["routes_with_relocations"] == expected_routes
           assert set(report["source"]["git_blobs"]) == {
               "frozen_selected.py",
               "scheduler.py",
@@ -62,8 +74,29 @@ jobs:
               "reference/next-panel/vendor/arlene.py",
           }
           for item in report["relocations"]:
-              assert item["purchase_step"] < item["target_step"] < item["first_effect_step"]
-              assert item["saved_cash_turns"] == item["target_step"] - item["purchase_step"]
+              assert item["purchase_step"] == 150
+              assert item["purchase_slot"] == 4
+              assert item["target_step"] == 154
+              assert item["target_slot"] == 1
+              assert item["target_kind"] == "append_capacity"
+              assert item["target_quadrant"] == "NE"
+              assert item["first_effect_step"] == 155
+              assert item["first_effect_worker"] == 0
+              assert item["first_effect_action"] == ["BUILD_PASTURE"]
+              assert item["first_effect_position"] == [5, 3]
+              assert item["saved_cash_turns"] == 4
+          signatures = {}
+          for item in report["purchases"]:
+              key = (
+                  item["purchase_step"], item["purchase_slot"], item["target_quadrant"],
+                  item["first_effect_step"], tuple(item["first_effect_action"] or []),
+              )
+              signatures[key] = signatures.get(key, 0) + 1
+          assert signatures == {
+              (150, 4, "NE", 155, ("BUILD_PASTURE",)): 4,
+              (265, 7, "SW", 266, ("PLANT", "STRAWBERRY")): 4,
+          }
+          assert report["summary"]["target_kinds"] == {"append_capacity": 4}
           print(json.dumps(report["summary"], sort_keys=True))
           PY
 

@@ -45,6 +45,7 @@ class LandUnlockJITTests(unittest.TestCase):
         plan = propose_relocations(route, "r", checkpoints=())[0]
         self.assertEqual((plan.purchase_step, plan.target_step), (0, 4))
         self.assertEqual((plan.purchase_slot, plan.target_slot), (0, 1))
+        self.assertEqual(plan.target_kind, "explicit_empty")
         self.assertEqual(plan.saved_cash_turns, 4)
 
     def test_market_on_effect_step_is_too_late(self):
@@ -60,8 +61,34 @@ class LandUnlockJITTests(unittest.TestCase):
     def test_literal_empty_must_be_trailing(self):
         route = blank_route(8)
         route[0] = row(market=(("BUY_LAND",),))
+        route[1] = row(farmer=("EAST",), market=(("SELL", "WHEAT", 1),) * 10)
+        route[2] = row(
+            farmer=("PASS",),
+            market=((), ("HIRE",), *(("SELL", "WHEAT", 1),) * 8),
+        )
+        route[3] = row(farmer=("PLANT", "WHEAT"))
+        self.assertEqual(propose_relocations(route, "r", checkpoints=()), ())
+
+    def test_appendable_capacity_is_a_trailing_executable_slot(self):
+        route = blank_route(8)
+        route[0] = row(market=(("BUY_LAND",),))
         route[1] = row(farmer=("EAST",))
-        route[2] = row(farmer=("PASS",), market=((), ("HIRE",)))
+        route[2] = row(market=(("BUY_PRODUCT", "WHEAT", 1),))
+        route[3] = row(farmer=("PLANT", "WHEAT"))
+        plan = propose_relocations(route, "r", checkpoints=())[0]
+        self.assertEqual((plan.target_step, plan.target_slot), (2, 1))
+        self.assertEqual(plan.target_kind, "append_capacity")
+        changed = apply_relocation(route, plan)
+        self.assertEqual(
+            changed[2]["market"],
+            [["BUY_PRODUCT", "WHEAT", 1], ["BUY_LAND"]],
+        )
+
+    def test_saturated_target_row_has_no_append_capacity(self):
+        route = blank_route(8)
+        route[0] = row(market=(("BUY_LAND",),))
+        route[1] = row(farmer=("EAST",), market=(("SELL", "WHEAT", 1),) * 10)
+        route[2] = row(market=(("SELL", "WHEAT", 1),) * 10)
         route[3] = row(farmer=("PLANT", "WHEAT"))
         self.assertEqual(propose_relocations(route, "r", checkpoints=()), ())
 
@@ -69,6 +96,9 @@ class LandUnlockJITTests(unittest.TestCase):
         route = blank_route(12)
         route[0] = row(market=(("BUY_LAND",),))
         route[1] = row(farmer=("EAST",))
+        full = (("SELL", "WHEAT", 1),) * 10
+        for step in range(1, 6):
+            route[step]["market"] = [list(order) for order in full]
         route[7] = row(market=((),))
         route[8] = row(farmer=("PLANT", "WHEAT"))
         self.assertEqual(propose_relocations(route, "r", checkpoints=(6,)), ())
@@ -91,6 +121,7 @@ class LandUnlockJITTests(unittest.TestCase):
         route[5] = row(farmer=("PLANT", "WHEAT"), hands=(("PASS",),))
         before = copy.deepcopy(route)
         plan = propose_relocations(route, "r", checkpoints=())[0]
+        self.assertEqual(plan.target_kind, "explicit_empty")
         changed = apply_relocation(route, plan)
 
         self.assertEqual(route, before)
@@ -120,6 +151,20 @@ class LandUnlockJITTests(unittest.TestCase):
 
         drifted = copy.deepcopy(route)
         drifted[4]["market"][0] = ["SELL", "WHEAT", 1]
+        with self.assertRaises(LandUnlockError):
+            apply_relocation(drifted, plan)
+
+    def test_append_target_rejects_source_drift_and_new_competing_row(self):
+        route = blank_route(8)
+        route[0] = row(market=(("BUY_LAND",),))
+        route[1] = row(farmer=("EAST",))
+        route[2] = row(market=(("BUY_PRODUCT", "WHEAT", 1),))
+        route[3] = row(farmer=("PLANT", "WHEAT"))
+        plan = propose_relocations(route, "r", checkpoints=())[0]
+        self.assertEqual(plan.target_kind, "append_capacity")
+
+        drifted = copy.deepcopy(route)
+        drifted[2]["market"].append(["HIRE"])
         with self.assertRaises(LandUnlockError):
             apply_relocation(drifted, plan)
 

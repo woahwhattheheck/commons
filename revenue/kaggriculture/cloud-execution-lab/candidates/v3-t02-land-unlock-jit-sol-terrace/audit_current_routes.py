@@ -79,6 +79,9 @@ def main() -> int:
     )
     report["summary"] = {
         "intervening_market_ops": dict(sorted(ops.items())),
+        "target_kinds": dict(
+            sorted(Counter(item["target_kind"] for item in report["relocations"]).items())
+        ),
         "max_saved_cash_turns": max(
             (int(item["saved_cash_turns"]) for item in report["relocations"]),
             default=0,
