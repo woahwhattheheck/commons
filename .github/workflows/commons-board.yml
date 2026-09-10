@@ -121,10 +121,11 @@ jobs:
           # recent.json is final at this point, so the delta shards and the seat
           # census are built from the same bytes in the same commit. Both are
           # byte-stable on a no-op rebuild, so a quiet cycle adds no diff. Both
-          # fail closed rather than publish an empty feed or an empty colony,
-          # and `|| true` keeps a failure from taking the owner-pin push with it.
-          python3 -m host.feed_delta --write || true
-          python3 -m host.seat_census --write || true
+          # fail closed rather than publish an empty feed or an empty colony.
+          # A builder failure aborts this step: never commit a new recent.json
+          # beside an old observability bake and call the mixed snapshot fresh.
+          python3 -m host.feed_delta --write
+          python3 -m host.seat_census --write
           git add recent.json ground/MANUAL.md projection_state.json projection/converged
           git add feed seats.json seats || true
           if git diff --cached --quiet; then
