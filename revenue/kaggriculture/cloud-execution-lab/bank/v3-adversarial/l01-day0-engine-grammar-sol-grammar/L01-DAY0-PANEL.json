@@ -38,7 +38,17 @@
       "control_outcome": "W",
       "control_own": 106036.0,
       "control_rival": 104330.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [47.0, 26.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          47.0,
+          26.0
+        ],
+        "step": 23
+      },
       "margin_delta": -22975.0,
       "own_delta": 12530.0,
       "rival_delta": 35505.0,
@@ -57,7 +67,17 @@
       "control_outcome": "W",
       "control_own": 106036.0,
       "control_rival": 104330.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [26.0, 47.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          26.0,
+          47.0
+        ],
+        "step": 23
+      },
       "margin_delta": -22975.0,
       "own_delta": 12530.0,
       "rival_delta": 35505.0,
@@ -76,7 +96,17 @@
       "control_outcome": "W",
       "control_own": 117632.0,
       "control_rival": 115754.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [47.0, 26.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          47.0,
+          26.0
+        ],
+        "step": 23
+      },
       "margin_delta": -10916.0,
       "own_delta": -30398.0,
       "rival_delta": -19482.0,
@@ -95,7 +125,17 @@
       "control_outcome": "W",
       "control_own": 117632.0,
       "control_rival": 115754.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [26.0, 47.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          26.0,
+          47.0
+        ],
+        "step": 23
+      },
       "margin_delta": -10916.0,
       "own_delta": -30398.0,
       "rival_delta": -19482.0,
@@ -114,7 +154,17 @@
       "control_outcome": "W",
       "control_own": 67770.0,
       "control_rival": 66644.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [47.0, 26.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          47.0,
+          26.0
+        ],
+        "step": 23
+      },
       "margin_delta": -4509.0,
       "own_delta": 16228.0,
       "rival_delta": 20737.0,
@@ -133,7 +183,17 @@
       "control_outcome": "W",
       "control_own": 67770.0,
       "control_rival": 66644.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [26.0, 47.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          26.0,
+          47.0
+        ],
+        "step": 23
+      },
       "margin_delta": -4509.0,
       "own_delta": 16228.0,
       "rival_delta": 20737.0,
@@ -152,7 +212,17 @@
       "control_outcome": "W",
       "control_own": 80986.0,
       "control_rival": 80034.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [47.0, 26.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          47.0,
+          26.0
+        ],
+        "step": 23
+      },
       "margin_delta": -28353.0,
       "own_delta": 39715.0,
       "rival_delta": 68068.0,
@@ -171,7 +241,17 @@
       "control_outcome": "W",
       "control_own": 80986.0,
       "control_rival": 80034.0,
-      "first_daily_bank_divergence": {"control_bank": [24.0, 24.0], "shipped_bank": [26.0, 47.0], "step": 23},
+      "first_daily_bank_divergence": {
+        "control_bank": [
+          24.0,
+          24.0
+        ],
+        "shipped_bank": [
+          26.0,
+          47.0
+        ],
+        "step": 23
+      },
       "margin_delta": -28353.0,
       "own_delta": 39715.0,
       "rival_delta": 68068.0,
@@ -185,7 +265,12 @@
     }
   ],
   "receipt_sha256": "a42d8c409c1bd69e2719331960707473bdfcdb43cf145e8d2ef0d8f73fb332da",
-  "seeds": [2611061001, 2611061002, 2611061003, 2611061004],
+  "seeds": [
+    2611061001,
+    2611061002,
+    2611061003,
+    2611061004
+  ],
   "source_archive_sha256": "6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1",
   "source_note": "Full-game diagnostic uses transferred predecessor archive 6ac897; MAIN route 7015cc00acfa4922 is the L01 documented tape. Structural grammar witness is source-exact to the authenticated packet. This is not current-one-tree strength or promotion evidence.",
   "source_packet_sha256": "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728"
