@@ -1,0 +1,203 @@
+name: titan-v3-all-shed-priority-current-port-sol-orbit
+
+on:
+  push:
+    branches:
+      - sol-orbit/titan-v3-all-shed-priority-current-port-20260910-01
+    paths:
+      - '.github/workflows/titan-v3-all-shed-priority-current-port-sol-orbit.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/**'
+      - 'p/sol-orbit-titan-v3-all-shed-priority-current-port-20260910-01.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-all-shed-priority-current-port-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-current-canonical-screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      SEEDS: '539131249,1834999074,2609097301,2609097302,2609097303,2609097304,2611092201,2611092207'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned official-interpreter dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run current-port contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_current_port.py
+          python -m py_compile             materialize.py             bind_execution.py             materialize_evaluator.py             screen.py             test_current_port.py
+
+      - name: Materialize exact current canonical control and factor
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/v3-all-shed-priority-current-port-sol-orbit"
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          test "$(git hash-object "$LAB/exports/titan-current.tar.gz")" =             "10e92806e24a32f3f301e32edbb1f0b5106be92a"
+          python "$CASE/materialize.py"             --archive "$LAB/exports/titan-current.tar.gz"             --control "$OUT/control"             --candidate "$OUT/candidate"             --receipt "$OUT/MATERIALIZATION.json"
+
+      - name: Prove domain and quantities are unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          python - "$OUT/MATERIALIZATION.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          receipt = json.loads(Path(sys.argv[1]).read_text())
+          assert receipt["experiment"] == (
+              "titan-v3-all-shed-priority-current-port-20260910-01"
+          )
+          assert receipt["archive"]["sha256"] == (
+              "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1"
+          )
+          assert receipt["source"]["scheduler_git_blob_sha1"] == (
+              "a483b24dd72b580d7d8811636b54d2d44f391575"
+          )
+          assert receipt["source"]["entry"] == "main.py"
+          assert receipt["ablation"]["changed_files"] == ["scheduler.py"]
+          assert receipt["factor"]["target_domain"] == (
+              "all positive non-operating PRODUCTS in the post-unit shed"
+          )
+          assert receipt["factor"]["target_quantity"] == (
+              "full post-unit shed quantity for every target"
+          )
+          assert receipt["factor"]["candidate_priority"] == [
+              "existing pending scheduler intent",
+              "inherited baseline SELL first-seen order",
+              "remaining PRODUCTS order",
+          ]
+          print(json.dumps({
+              "archive": receipt["archive"]["sha256"],
+              "source_scheduler": receipt["source"]["scheduler_git_blob_sha1"],
+              "candidate_scheduler": receipt["ablation"]["scheduler_git_blob_sha1"],
+              "source_closure": receipt["source"]["closure_sha256"],
+              "candidate_closure": receipt["ablation"]["closure_sha256"],
+          }, sort_keys=True))
+          PY
+
+      - name: Materialize candidate-only evaluator evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CASE="$LAB/analysis/v3-all-shed-priority-current-port-sol-orbit"
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          mkdir -p "$OUT/evaluator"
+          python "$CASE/materialize_evaluator.py"             --source "$KAG/cloud-eval/evaluate.py"             --output "$OUT/evaluator/evaluate.py"             --receipt "$OUT/EVALUATOR-MATERIALIZATION.json"
+
+      - name: Build canonical-main closure-bound entrypoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CASE="$LAB/analysis/v3-all-shed-priority-current-port-sol-orbit"
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          python "$CASE/bind_execution.py"             --control-root "$OUT/control"             --candidate-root "$OUT/candidate"             --materialization "$OUT/MATERIALIZATION.json"             --engine-dir "$LAB/reference/engine"             --loader "$KAG/20260907-offline-agent/evaluate.py"             --evaluator "$OUT/evaluator/evaluate.py"             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent"             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent"             --output-dir "$OUT/bound"             --receipt "$OUT/EXECUTION-BINDING.json"             --head "$(git rev-parse HEAD)"
+
+      - name: Verify canonical package stayed unchanged
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python build_integrated.py --check
+          git diff --exit-code -- .
+
+      - name: Run current canonical control panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          python "$OUT/evaluator/evaluate.py"             --engine-dir "$LAB/reference/engine"             --loader "$KAG/20260907-offline-agent/evaluate.py"             --candidate "$OUT/bound/control_bound.py::agent"             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent"             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent"             --seeds "$SEEDS"             --rng-seed 20260909             --action-timeout 1.0             --startup-timeout 15             --game-timeout 180             --output "$OUT/control.json"
+
+      - name: Run current priority-factor candidate panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          python "$OUT/evaluator/evaluate.py"             --engine-dir "$LAB/reference/engine"             --loader "$KAG/20260907-offline-agent/evaluate.py"             --candidate "$OUT/bound/candidate_bound.py::agent"             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent"             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent"             --seeds "$SEEDS"             --rng-seed 20260909             --action-timeout 1.0             --startup-timeout 15             --game-timeout 180             --output "$OUT/candidate.json"
+
+      - name: Recompute and gate exact current-port result
+        id: screen
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CASE="$LAB/analysis/v3-all-shed-priority-current-port-sol-orbit"
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          python "$CASE/screen.py"             --control "$OUT/control.json"             --candidate "$OUT/candidate.json"             --materialization "$OUT/MATERIALIZATION.json"             --binding "$OUT/EXECUTION-BINDING.json"             --evaluator-receipt "$OUT/EVALUATOR-MATERIALIZATION.json"             --control-root "$OUT/control"             --candidate-root "$OUT/candidate"             --control-wrapper "$OUT/bound/control_bound.py"             --candidate-wrapper "$OUT/bound/candidate_bound.py"             --engine-dir "$LAB/reference/engine"             --loader "$KAG/20260907-offline-agent/evaluate.py"             --evaluator-source "$KAG/cloud-eval/evaluate.py"             --evaluator "$OUT/evaluator/evaluate.py"             --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent"             --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent"             --head "$(git rev-parse HEAD)"             --output "$OUT/SCREEN.json"             --markdown "$OUT/SCREEN.md"
+          status=$?
+          printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Publish readable result
+        if: always()
+        shell: bash
+        run: |
+          OUT="$RUNNER_TEMP/v3-all-shed-priority-current-port"
+          if [[ -f "$OUT/SCREEN.md" ]]; then
+            cat "$OUT/SCREEN.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '# Current-port panel did not reach classification' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Retain exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-all-shed-priority-current-port-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/exact-head.sha
+            ${{ runner.temp }}/v3-all-shed-priority-current-port/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
+
+      - name: Require exact current-port admission
+        if: always()
+        shell: bash
+        run: test "${{ steps.screen.outputs.exit_code }}" = '0'
