@@ -1,19 +1,61 @@
 {
   "day0_basket": [
-    ["CARROT", 14],
-    ["MELON", 20],
-    ["MILK", 40],
-    ["STRAWBERRY", 8],
-    ["TOMATO", 12],
-    ["WHEAT", 2]
+    [
+      "CARROT",
+      14
+    ],
+    [
+      "MELON",
+      20
+    ],
+    [
+      "MILK",
+      40
+    ],
+    [
+      "STRAWBERRY",
+      8
+    ],
+    [
+      "TOMATO",
+      12
+    ],
+    [
+      "WHEAT",
+      2
+    ]
   ],
   "generated_orders": [
-    ["BUY_PRODUCT", "CARROT", 14],
-    ["BUY_PRODUCT", "MELON", 20],
-    ["BUY_PRODUCT", "MILK", 40],
-    ["BUY_PRODUCT", "STRAWBERRY", 8],
-    ["BUY_PRODUCT", "TOMATO", 12],
-    ["BUY_PRODUCT", "WHEAT", 2]
+    [
+      "BUY_PRODUCT",
+      "CARROT",
+      14
+    ],
+    [
+      "BUY_PRODUCT",
+      "MELON",
+      20
+    ],
+    [
+      "BUY_PRODUCT",
+      "MILK",
+      40
+    ],
+    [
+      "BUY_PRODUCT",
+      "STRAWBERRY",
+      8
+    ],
+    [
+      "BUY_PRODUCT",
+      "TOMATO",
+      12
+    ],
+    [
+      "BUY_PRODUCT",
+      "WHEAT",
+      2
+    ]
   ],
   "l01_main_tape": "7015cc00acfa4922",
   "manifest_archive": {
