@@ -22,11 +22,11 @@ All four reports must have identical evaluator provenance, opponents, seeds, lim
 
 - `control` contains neither factor;
 - `own_value` contains exactly the reviewed own-value source;
-- `certified_pressure` contains exactly the reviewed delay-invariance source and contract `TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01`;
+- `certified_pressure` contains exactly a reviewed execution-prefix-union invariance source and contract `TITAN-V3-PRESSURE-PREFIX-UNION-INVARIANCE-CERTIFICATE-20260910-01`;
 - `both` reuses those exact two singleton source SHA-256 identities; and
 - every arm uses the same archive, source manifest, runtime tree, engine, loader, and evaluator.
 
-Unknown manifest keys, factor leakage, mislabeled candidate fingerprints, source substitutions, a pressure bound other than `shedCapacity`, or canonical-runtime drift fail closed. Every game must then be complete and bind:
+Unknown manifest keys, factor leakage, mislabeled candidate fingerprints, source substitutions, canonical-runtime drift, or a pressure proof rooted only at raw public inventory fail closed. The certified pressure factor must bind a parent/candidate execution-prefix inventory union, the literal `maxMarketOrdersPerTurn` cap, the public `shedCapacity` rival bound, and official `PRICE_FLOOR` behavior. This prevents earlier own same-product sales from shifting a supposedly invariant lot outside the checked quote window. Every game must then be complete and bind:
 
 - a 720-state / 719-action lifecycle;
 - 719 pre-interpreter returned candidate actions;
@@ -110,11 +110,14 @@ The producer supplies strict JSON with this shape; every digest is checked and a
       "receipt_sha256": "<64 hex>"
     },
     "certified_pressure": {
-      "contract": "TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01",
+      "contract": "TITAN-V3-PRESSURE-PREFIX-UNION-INVARIANCE-CERTIFICATE-20260910-01",
       "source_sha256": "<64 hex>",
       "source_git_blob_sha1": "<40 hex>",
       "receipt_sha256": "<64 hex>",
-      "delay_bound_source": "shedCapacity"
+      "inventory_window_mode": "parent_candidate_execution_prefix_union",
+      "rival_bound_source": "shedCapacity",
+      "market_order_cap_source": "maxMarketOrdersPerTurn",
+      "price_floor_source": "PRICE_FLOOR"
     }
   },
   "arms": {
@@ -134,10 +137,10 @@ PYTHONDONTWRITEBYTECODE=1 python -B -m py_compile \
 PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_interaction_gate.py
 ```
 
-The suite covers positive composition, antagonism, singleton selection, interaction arithmetic, pooled-mean/stratum conflicts, inactive arms, duplicate cells, malformed provenance, nonfinite values, finite arithmetic overflow, boolean identities, lifecycle truncation, fingerprint aliasing, detached action/trace/score evidence, strict JSON parsing, candidate/manifest mismatch, canonical closure drift, factor leakage, source substitution, evaluator detachment, and pressure-contract/bound substitution.
+The suite covers positive composition, antagonism, singleton selection, interaction arithmetic, pooled-mean/stratum conflicts, inactive arms, duplicate cells, malformed provenance, nonfinite values, finite arithmetic overflow, boolean identities, lifecycle truncation, fingerprint aliasing, detached action/trace/score evidence, strict JSON parsing, candidate/manifest mismatch, canonical closure drift, factor leakage, source substitution, evaluator detachment, pressure-contract/bound substitution, and raw-public-inventory/prefix-union substitution.
 
 ## Boundary and custody
 
-This package does not copy, modify, or claim custody of either candidate implementation. The own-value source and bound gameplay evidence remain with their existing owners. The pressure arm must bind a clean exact-source implementation of the stronger receipt-invariance certificate; the disproved proxy-zero partition is not a valid input under the `certified_pressure` label. The four-arm producer must pin both reviewed candidate byte sets, the canonical control closure, evaluator, engine, opponents, seeds, and both seats before invoking this gate.
+This package does not copy, modify, or claim custody of either candidate implementation. The own-value source and bound gameplay evidence remain with their existing owners. The pressure arm must bind a clean exact-source implementation of the stronger execution-prefix-union receipt-invariance certificate. Neither the disproved proxy-zero partition nor the first raw-public-inventory `0..shedCapacity` repair is a valid input under the `certified_pressure` label. The four-arm producer must pin both reviewed candidate byte sets, the canonical control closure, evaluator, engine, opponents, seeds, and both seats before invoking this gate.
 
 No canonical archive, configuration, release pointer, provider state, or Kaggle submission is changed here.
