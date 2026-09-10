@@ -1,0 +1,101 @@
+name: TITAN V3 represented-horizon plant-decay closure
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v3-represented-horizon-decay-sol-pro.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py"
+      - "revenue/kaggriculture/cloud-execution-lab/mechanics.py"
+      - "revenue/kaggriculture/cloud-execution-lab/scheduler.py"
+      - "revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py"
+      - "revenue/kaggriculture/cloud-execution-lab/seller_snapshot.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-prefix-sol-pro/repair.py"
+      - "revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-represented-horizon-decay-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout immutable event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Assert exact pull-request head
+        if: github.event_name == 'pull_request'
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Execute exact materialized source contracts
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v \
+            revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_repair.py
+
+      - name: Build deterministic receipt and patch
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro
+          OUT=/tmp/titan-represented-horizon-decay
+          mkdir -p "$OUT"
+
+          python -B "$CASE/repair.py" --repo . --format json > "$OUT/receipt-1.json"
+          python -B "$CASE/repair.py" --repo . --format json > "$OUT/receipt-2.json"
+          cmp "$OUT/receipt-1.json" "$OUT/receipt-2.json"
+          mv "$OUT/receipt-1.json" "$OUT/receipt.json"
+          rm "$OUT/receipt-2.json"
+
+          python -B "$CASE/repair.py" --repo . --format patch > "$OUT/repair.patch"
+          test -s "$OUT/repair.patch"
+
+          python -B - "$CASE/repair.py" "$CASE/test_repair.py" "$OUT/receipt.json" <<'PY'
+          import ast
+          import json
+          import pathlib
+          import sys
+
+          for raw in sys.argv[1:3]:
+              path = pathlib.Path(raw)
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          receipt = json.loads(pathlib.Path(sys.argv[3]).read_text(encoding="utf-8"))
+          assert receipt["schema"] == "titan-v3-represented-horizon-plant-decay/v1"
+          assert receipt["candidate"]["replacement_count"] == 2
+          assert receipt["witness"]["predecessor_unit_event"] == 130
+          assert receipt["witness"]["candidate_unit_event"] is None
+          assert receipt["composition"]["canonical_source_mutated"] is False
+          PY
+
+          sha256sum "$OUT/receipt.json" "$OUT/repair.patch" > "$OUT/SHA256SUMS"
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact-head evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-represented-horizon-decay-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/titan-represented-horizon-decay
+          if-no-files-found: error
+          retention-days: 14
