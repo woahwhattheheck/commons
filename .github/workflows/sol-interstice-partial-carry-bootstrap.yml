@@ -1,0 +1,95 @@
+name: sol-interstice-partial-carry-bootstrap
+
+on:
+  push:
+    branches:
+      - sol-interstice/titan-v3-partial-future-carry-20260909-01
+    paths:
+      - ".github/workflows/sol-interstice-partial-carry-bootstrap.yml"
+      - ".interstice-payload/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sol-interstice-partial-carry-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact transport head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Reconstruct, verify, test, and commit exact packet
+        shell: bash
+        env:
+          BASE_SHA: 1d87e934f713b6bafd267be7bc1c8e2f95bd9207
+          GZIP_SHA256: 97b869a58a6a05b6c2f49108c52a1e77091d2641857d1282d840a2eb9d4c2134
+          PATCH_SHA256: bd10bbfb170c1bee38392b727ab1cb377e7a3d8e0fad1f1033021b56779a2b13
+          PATCH_BYTES: "137509"
+          CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euo pipefail
+
+          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
+          test "$(git diff --name-only "$BASE_SHA" HEAD | sort | tr '\n' ' ')" = ".github/workflows/sol-interstice-partial-carry-bootstrap.yml .interstice-payload/part-00.bin .interstice-payload/part-01.bin .interstice-payload/part-02.bin .interstice-payload/part-03.bin .interstice-payload/part-04.bin .interstice-payload/part-05.bin .interstice-payload/part-06.bin "
+
+          cat .interstice-payload/part-*.bin > /tmp/titan-v3-partial-future-carry.patch.gz
+          printf '%s  %s\n' "$GZIP_SHA256" /tmp/titan-v3-partial-future-carry.patch.gz | sha256sum -c -
+          gzip -dc /tmp/titan-v3-partial-future-carry.patch.gz > /tmp/titan-v3-partial-future-carry.patch
+          test "$(wc -c < /tmp/titan-v3-partial-future-carry.patch)" = "$PATCH_BYTES"
+          printf '%s  %s\n' "$PATCH_SHA256" /tmp/titan-v3-partial-future-carry.patch | sha256sum -c -
+          git apply --check --whitespace=error /tmp/titan-v3-partial-future-carry.patch
+          git apply --index --whitespace=error /tmp/titan-v3-partial-future-carry.patch
+
+          cat > /tmp/expected-blobs.txt <<'EOF'
+          30aea6af3c8a81d046b0b828360cac2b73898164 .github/workflows/titan-v3-partial-future-carry-sol-interstice.yml
+          6e7b889971a82c13952d98ef041779cbfc336182 p/sol-interstice-titan-v3-partial-future-carry-20260909-01.md
+          3f87e024e7d8dc2968b203afa1f8fbb60f5f076f revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/README.md
+          42e83fa85d1996a510ce7a81f848015b8ccbe2e5 revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/bind_execution.py
+          f45656d24d8129dda7cc1b59ab046d9fd511bf63 revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/compare_three_arm.py
+          fbb75652634c5c2c7b17c36ffc39553b6231238d revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/materialize.py
+          f3ce913baeb837d8eb11c54004abd206ddbd6f84 revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/probe_replay.py
+          5d7837a41beb93a77d8d82d55cf95088a23dfec8 revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/step-639-decision-capsule.json
+          1be0101341a34b7b6cdb0b50442222bfec6cacd2 revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_bind_execution.py
+          8e57d7d7707dc461b3f5a6908692137417d4efdd revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_compare_three_arm.py
+          10c54e63f328e36bc916463adefe8d2a5a1cd2bb revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_materialize.py
+          8df9d781ff388e3a7dbe8cb8009aba58ac32d295 revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice/test_mechanism.py
+          EOF
+          sed -i 's/^          //' /tmp/expected-blobs.txt
+
+          while IFS=' ' read -r want path; do
+            test "$(git hash-object "$path")" = "$want"
+          done < /tmp/expected-blobs.txt
+          cut -d' ' -f2- /tmp/expected-blobs.txt | sort > /tmp/expected-paths.txt
+          git diff --cached --name-only | sort > /tmp/actual-paths.txt
+          diff -u /tmp/expected-paths.txt /tmp/actual-paths.txt
+          git diff --cached --check
+
+          (
+            cd "$CASE"
+            python -B -m unittest -v \
+              test_materialize.py \
+              test_mechanism.py \
+              test_bind_execution.py \
+              test_compare_three_arm.py
+          )
+          python -B - <<'PY'
+          from pathlib import Path
+          for path in sorted(Path("revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice").glob("*.py")):
+              compile(path.read_text(encoding="utf-8"), str(path), "exec")
+              print("compiled", path)
+          PY
+
+          git config user.name "SOL-INTERSTICE bootstrap"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "titan: materialize minimum-capacity partial future liquidation"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
