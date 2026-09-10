@@ -1,0 +1,203 @@
+{
+  "assertions": {
+    "baseline_wheat_purchase_capacity_admitted": true,
+    "candidate_rejected": true,
+    "candidate_wheat_purchase_blocked_by_capacity": true,
+    "predecessor_false_positive_reproduced": true,
+    "rejection_reason_exact": true
+  },
+  "case": {
+    "baseline_market": [
+      [
+        "SELL",
+        "CARROT",
+        1
+      ],
+      [
+        "BUY_PRODUCT",
+        "WHEAT",
+        1
+      ],
+      [
+        "SELL",
+        "EGG",
+        1
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
+    "candidate_market": [
+      [],
+      [
+        "BUY_PRODUCT",
+        "WHEAT",
+        1
+      ],
+      [
+        "SELL",
+        "EGG",
+        1
+      ],
+      [
+        "SELL",
+        "MILK",
+        1
+      ]
+    ],
+    "configuration": {
+      "maxMarketOrdersPerTurn": 10,
+      "shedCapacity": 3
+    },
+    "initial_shed": {
+      "CARROT": 1,
+      "EGG": 1,
+      "MILK": 1
+    }
+  },
+  "guard": {
+    "delta": {
+      "differing_indices": [
+        0
+      ],
+      "reason": "SELL_ONLY_SCHEDULER_DELTA",
+      "safe": true
+    },
+    "prefix": {
+      "differing_indices": [
+        0
+      ],
+      "guarded_through_index": 1,
+      "limit": 10,
+      "purchase_indices": [
+        1
+      ],
+      "reason": "PURCHASE_PREFIX_CHANGED",
+      "safe": false
+    },
+    "reason": "PURCHASE_PREFIX_CHANGED",
+    "safe": false
+  },
+  "literal_prefix_capacity_trace": {
+    "baseline": {
+      "capacity": 3,
+      "events": [
+        {
+          "committed": 1,
+          "index": 0,
+          "item": "CARROT",
+          "occupancy_after": 2,
+          "requested": 1,
+          "type": "SELL"
+        },
+        {
+          "committed": 1,
+          "index": 1,
+          "item": "WHEAT",
+          "occupancy_after": 3,
+          "requested": 1,
+          "type": "BUY_PRODUCT"
+        },
+        {
+          "committed": 1,
+          "index": 2,
+          "item": "EGG",
+          "occupancy_after": 2,
+          "requested": 1,
+          "type": "SELL"
+        },
+        {
+          "committed": 1,
+          "index": 3,
+          "item": "MILK",
+          "occupancy_after": 1,
+          "requested": 1,
+          "type": "SELL"
+        }
+      ],
+      "final_occupancy": 1,
+      "final_shed": {
+        "WHEAT": 1
+      },
+      "initial_occupancy": 3,
+      "limit": 10,
+      "ok": true,
+      "reason": "TRACED"
+    },
+    "baseline_purchase_commits": [
+      {
+        "capacity_admitted": 1,
+        "index": 1,
+        "item": "WHEAT",
+        "requested": 1,
+        "type": "BUY_PRODUCT"
+      }
+    ],
+    "candidate": {
+      "capacity": 3,
+      "events": [
+        {
+          "committed": 0,
+          "index": 0,
+          "occupancy_after": 3,
+          "type": "NO_OP"
+        },
+        {
+          "committed": 0,
+          "index": 1,
+          "item": "WHEAT",
+          "occupancy_after": 3,
+          "requested": 1,
+          "type": "BUY_PRODUCT"
+        },
+        {
+          "committed": 1,
+          "index": 2,
+          "item": "EGG",
+          "occupancy_after": 2,
+          "requested": 1,
+          "type": "SELL"
+        },
+        {
+          "committed": 1,
+          "index": 3,
+          "item": "MILK",
+          "occupancy_after": 1,
+          "requested": 1,
+          "type": "SELL"
+        }
+      ],
+      "final_occupancy": 1,
+      "final_shed": {
+        "CARROT": 1
+      },
+      "initial_occupancy": 3,
+      "limit": 10,
+      "ok": true,
+      "reason": "TRACED"
+    },
+    "candidate_purchase_commits": [
+      {
+        "capacity_admitted": 0,
+        "index": 1,
+        "item": "WHEAT",
+        "requested": 1,
+        "type": "BUY_PRODUCT"
+      }
+    ]
+  },
+  "operation": "TITAN-V3-MARKET-PREFIX-SHED-EXECUTION-20260910-01",
+  "predecessor": {
+    "current_receipt_profile_shape_accepts_candidate": true,
+    "reason": "whole-row aggregation applies target SELL only after inherited purchases and later sales"
+  },
+  "schema_version": 1,
+  "scope": {
+    "canonical_mutation": false,
+    "hosted_test_executes_pinned_scheduler_and_engine": true,
+    "playing_strength_claim": false,
+    "trace_models_capacity_only": true
+  }
+}

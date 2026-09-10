@@ -1,0 +1,76 @@
+name: TITAN V3 market-prefix shed-execution custody
+
+on:
+  push:
+    branches:
+      - sol-ledger/titan-v3-market-prefix-shed-execution-20260910-01
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-prefix-shed-execution-sol-ledger/**
+      - .github/workflows/titan-v3-market-prefix-shed-execution-sol-ledger.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-market-prefix-shed-execution-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-predecessor-and-repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Bind exact production and engine sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          lab=revenue/kaggriculture/cloud-execution-lab
+          test -f "$lab/scheduler.py"
+          test -f "$lab/reference/engine/kaggriculture.py"
+          test "$(git hash-object "$lab/scheduler.py")" = a483b24dd72b580d7d8811636b54d2d44f391575
+          test "$(git hash-object "$lab/reference/engine/kaggriculture.py")" = 3c202c7ee921da239356789e266b694635103fc4
+      - name: Verify published candidate bytes and receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-prefix-shed-execution-sol-ledger
+          python - "$root" <<'PY'
+          import hashlib, json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          receipt = json.loads((root / "RECEIPT.json").read_text())
+          for name, expected in receipt["published_sha256"].items():
+              actual = hashlib.sha256((root / name).read_bytes()).hexdigest()
+              if actual != expected:
+                  raise SystemExit(f"{name}: {actual} != {expected}")
+          print("published bytes: PASS")
+          PY
+      - name: Compile and rebuild deterministic witness
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-prefix-shed-execution-sol-ledger
+          python -B -m py_compile "$root"/*.py
+          python -B "$root/build_witness.py" --check
+      - name: Run portable and exact pinned-source predecessor killers
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-prefix-shed-execution-sol-ledger
+          cd "$root"
+          output=$(python -B -m unittest discover -s . -p 'test_*.py' -v 2>&1)
+          printf '%s\n' "$output"
+          ! grep -q 'skipped=' <<<"$output"
+          grep -q 'Ran 26 tests' <<<"$output"
+          grep -q '^OK$' <<<"$output"
+      - name: Prove canonical package remains clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python -B build_integrated.py --check
