@@ -1,0 +1,93 @@
+name: titan-v3-own-strict-factorial-sol-integrator
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-own-strict-factorial-20260910-01
+    paths:
+      - '.github/workflows/titan-v3-own-strict-factorial-sol-integrator.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-strict-factorial-sol-integrator/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  semantic-ineligibility-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Check out exact triggering commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate reusable static contracts only
+        shell: bash
+        run: |
+          set -euo pipefail
+          CASE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-own-strict-factorial-sol-integrator
+          cd "$CASE"
+          python -m py_compile *.py
+          python -m unittest -v 2>&1 | tee "$RUNNER_TEMP/contracts.log"
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
+
+      - name: Emit machine-readable semantic hold
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold"
+          cat > "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold/HOLD.json" <<JSON
+          {
+            "schema_version": 1,
+            "operation": "TITAN-V3-OWN-VALUE-X-STRICT-PRESSURE-FACTORIAL-20260910-01",
+            "disposition": "HOLD_SEMANTIC_INELIGIBILITY",
+            "reason": "strict-pressure has an exact official-engine promoted-lot rival-BUY counterexample; do not spend the four-arm game bank",
+            "blocking_slack_ts": "1789072277.074099",
+            "blocking_pr": 12054,
+            "gameplay_executed": false,
+            "seed_bank_spent_by_this_run": false,
+            "canonical_release_modified": false,
+            "promotion_authorized": false,
+            "hosted_leaderboard_claim": false,
+            "git_head": "${GITHUB_SHA}"
+          }
+          JSON
+          printf '%s\n' "$GITHUB_SHA" > "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold/COMPLETE"
+
+      - name: Retain static contracts and hold receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-own-strict-factorial-hold-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/contracts.log
+            ${{ runner.temp }}/titan-v3-own-strict-factorial-hold/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require no-game terminal hold receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s "$RUNNER_TEMP/contracts.log"
+          test -s "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold/HOLD.json"
+          test -s "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold/COMPLETE"
+          grep -F '"gameplay_executed": false' "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold/HOLD.json"
+          grep -F '"seed_bank_spent_by_this_run": false' "$RUNNER_TEMP/titan-v3-own-strict-factorial-hold/HOLD.json"
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain)"
