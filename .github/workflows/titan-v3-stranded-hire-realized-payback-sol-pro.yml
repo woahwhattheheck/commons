@@ -1,0 +1,72 @@
+name: titan-v3-stranded-hire-realized-payback-sol-pro
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-stranded-hire-realized-payback-sol-pro.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/main.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/missing_hire_recovery.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/realized_hire_payback*.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_missing_hire_recovery.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_realized_hire_payback.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPYCACHEPREFIX: /tmp/titan-v3-stranded-hire-payback-pycache
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Bind exact event head and source contract
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/verify_source_contract.py \
+            | tee /tmp/titan-v3-stranded-hire-source-contract.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run bridge and realized-payback contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python -B -m unittest -v \
+            test_missing_hire_recovery.py \
+            test_realized_hire_payback.py \
+            2>&1 | tee /tmp/titan-v3-stranded-hire-tests.log
+          python -B -m py_compile \
+            main.py \
+            missing_hire_recovery.py \
+            realized_hire_payback*.py \
+            test_missing_hire_recovery.py \
+            test_realized_hire_payback.py
+      - name: Prove patch hygiene and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-stranded-hire-payback-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          path: |
+            /tmp/titan-v3-stranded-hire-source-contract.json
+            /tmp/titan-v3-stranded-hire-tests.log
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/SOURCE.json

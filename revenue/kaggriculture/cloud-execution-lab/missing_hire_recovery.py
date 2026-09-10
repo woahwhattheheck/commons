@@ -5,7 +5,8 @@ The adapter never changes the route and never speculates about future income. It
 may replace one physically inert market row (an empty row or a zero-unit SELL),
 or append within the current market limit, with one HIRE. A caller-supplied
 prefix executor must prove that the inserted order completes from the exact
-post-unit state before the action is returned.
+post-unit state. A separate payback certificate must then admit its represented,
+realized value before the action is returned.
 """
 from __future__ import annotations
 
@@ -50,6 +51,9 @@ def recover_missing_hire(
     *,
     route: Sequence[Mapping[str, Any]],
     certify_prefix: Callable[[list, int], Mapping[str, Any]],
+    certify_payback: (
+        Callable[[list, list, int, Mapping[str, Any]], Mapping[str, Any]] | None
+    ) = None,
 ) -> tuple[dict, dict]:
     """Insert one executable HIRE when next-turn route work has one missing hand.
 
@@ -57,12 +61,19 @@ def recover_missing_hire(
     prefix from the caller's exact post-unit state and return the same compact
     shape as ``frozen_selected._market_prefix_state``: ``outcomes`` keyed by
     order index, optional ``unsupported_index``, and terminal ``money``.
+
+    ``certify_payback(baseline_queue, candidate_queue, inserted_index,
+    hire_outcome)`` is mandatory for mutation. It must return a mapping whose
+    ``admit`` member is exactly ``True``; every other result fails closed.
     """
     out = copy.deepcopy(dict(selected_action))
     report = {
         "changed": False,
         "reason": "not_evaluated",
-        "scope": "one-turn route-cardinality recovery; one prefix-certified HIRE; no route mutation",
+        "scope": (
+            "one-turn route-cardinality recovery; prefix-certified HIRE plus "
+            "mandatory realized-payback certificate; no route mutation"
+        ),
     }
     cfg = dict(configuration or {})
     try:
@@ -158,19 +169,39 @@ def recover_missing_hire(
             failures.append({"slot": slot, "reason": "hire_not_funded",
                              "remaining_cash": certificate.get("money")})
             continue
+        if certify_payback is None:
+            failures.append({"slot": slot, "reason": "payback_certificate_required"})
+            continue
+        try:
+            payback = certify_payback(
+                copy.deepcopy(queue), copy.deepcopy(candidate), slot,
+                copy.deepcopy(outcome))
+        except Exception as exc:
+            failures.append({"slot": slot, "reason": "payback_certificate_error",
+                             "error": f"{type(exc).__name__}: {exc}"[:200]})
+            continue
+        if not isinstance(payback, Mapping):
+            failures.append({"slot": slot, "reason": "malformed_payback_certificate"})
+            continue
+        if payback.get("admit") is not True:
+            failures.append({"slot": slot, "reason": "payback_rejected",
+                             "payback_reason": payback.get("reason"),
+                             "payback_certificate": copy.deepcopy(dict(payback))})
+            continue
         out["market"] = candidate
         report.update(
             changed=True,
-            reason="inserted_prefix_certified_hire",
+            reason="inserted_prefix_and_payback_certified_hire",
             inserted_index=slot,
             replaced_order=replaced,
             certified_remaining_cash=certificate.get("money"),
             hire_cost=outcome.get("cost_per_unit"),
             available_next_hands=available_next + 1,
             certificate_outcome=copy.deepcopy(outcome),
+            payback_certificate=copy.deepcopy(dict(payback)),
             candidate_failures=failures,
         )
         return out, report
 
-    report.update(reason="no_funded_inert_slot", candidate_failures=failures)
+    report.update(reason="no_admissible_inert_slot", candidate_failures=failures)
     return out, report

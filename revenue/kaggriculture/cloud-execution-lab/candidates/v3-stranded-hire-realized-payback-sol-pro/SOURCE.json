@@ -1,0 +1,81 @@
+{
+  "allowed_paths": [
+    ".github/workflows/titan-v3-stranded-hire-realized-payback-sol-pro.yml",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/README.md",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/SOURCE.json",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/verify_source_contract.py",
+    "revenue/kaggriculture/cloud-execution-lab/main.py",
+    "revenue/kaggriculture/cloud-execution-lab/missing_hire_recovery.py",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback.py",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_common.py",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_finish.py",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_loop.py",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_market.py",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_replay.py",
+    "revenue/kaggriculture/cloud-execution-lab/test_missing_hire_recovery.py",
+    "revenue/kaggriculture/cloud-execution-lab/test_realized_hire_payback.py"
+  ],
+  "canonical_runtime_config_archive_pointer_mutated": false,
+  "claim_id": "TITAN-V3-STRANDED-HIRE-REALIZED-PAYBACK-GATE-20260910-01",
+  "current_sha256": {
+    ".github/workflows/titan-v3-stranded-hire-realized-payback-sol-pro.yml": "19d5c6f53df93a3551fee786646410750f53236750528b09f6a0667516fc04d4",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/README.md": "c7bc08993db8c3fb836656e96656d93b508118602690dedff8db9e081a370321",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-stranded-hire-realized-payback-sol-pro/verify_source_contract.py": "0cac2607719933d4eb6473a6779e589465209bf50f14027095b871b6c7b72ccb",
+    "revenue/kaggriculture/cloud-execution-lab/main.py": "dd253a1cd48698c323ecc1b1fc67c9bde21a032499ce0a56a7bb412bfc0a8105",
+    "revenue/kaggriculture/cloud-execution-lab/missing_hire_recovery.py": "52de89d027f87999ec86c49b6ebaee53709315ba67e2f8c7af40503968906a2b",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback.py": "aa2dbbabf2e8a7ef5b3cd648e01a6238d4bae90636508140363e1755d9415d41",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_common.py": "33a5ea429f218bafad175bdfe5663f2f92d5c0b6972be0815bf8330434477743",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_finish.py": "afb9e8af1c0ca113311037fbab15a059cf5e496c430085bd3268c91c144a449a",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_loop.py": "112f1debb4b4c0179bf89327dca2efbe5aeb020bcacf070f287e7fb69255aaf7",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_market.py": "934581b2c2843d22e73ca37f78f5e013042deb496acc63fcbb3a9f552eae0066",
+    "revenue/kaggriculture/cloud-execution-lab/realized_hire_payback_replay.py": "da3240a513ccb6187e345cbe1ebffcfe314f7388704d5b0df7479057e1c595da",
+    "revenue/kaggriculture/cloud-execution-lab/test_missing_hire_recovery.py": "7205f0eb9e17110c7ae5c8882873452ecad8113b364081cea7d8b7852d1a7bfe",
+    "revenue/kaggriculture/cloud-execution-lab/test_realized_hire_payback.py": "49a0a0a5e6eb1d1bcc19e25aa6be423abe4e006a07490f2c425bec596d63200d"
+  },
+  "evidence": {
+    "cells": 36,
+    "commit": "2b7b0113db2107e768daf7faaf51b9c147825b7b",
+    "pull_request": 12074,
+    "verdict": "regression_do_not_merge_as_is"
+  },
+  "fresh_game_or_seed_spend": false,
+  "hosted_leaderboard_claim": false,
+  "implementation_modules": [
+    "realized_hire_payback.py",
+    "realized_hire_payback_common.py",
+    "realized_hire_payback_market.py",
+    "realized_hire_payback_replay.py",
+    "realized_hire_payback_loop.py",
+    "realized_hire_payback_finish.py"
+  ],
+  "known_limits": [
+    "future policy transforms are not replayed",
+    "official paired gameplay evaluation remains authoritative"
+  ],
+  "local_validation": {
+    "compile_command": "python -B -m py_compile main.py missing_hire_recovery.py realized_hire_payback*.py test_missing_hire_recovery.py test_realized_hire_payback.py",
+    "unit_command": "python -B -m unittest -v test_missing_hire_recovery.py test_realized_hire_payback.py",
+    "unit_tests": 31
+  },
+  "official_engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "parent": {
+    "branch": "codex/titan-v3-route-worker-recovery-20260910",
+    "commit": "cf2047e80772319e920fe013ae8a427ef2d077ea",
+    "pull_request": 12042
+  },
+  "parent_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "revenue/kaggriculture/cloud-execution-lab/main.py": "53b683b525b8f965f2217d57d6dd34482525a2f6",
+    "revenue/kaggriculture/cloud-execution-lab/mechanics.py": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+    "revenue/kaggriculture/cloud-execution-lab/missing_hire_recovery.py": "9453a7c77a8708f384f2c6d8d63f16ab6b8b4f94",
+    "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+    "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py": "bdb9cf58148a3c7961c085f4902759537decabf6",
+    "revenue/kaggriculture/cloud-execution-lab/scheduler.py": "a483b24dd72b580d7d8811636b54d2d44f391575",
+    "revenue/kaggriculture/cloud-execution-lab/test_missing_hire_recovery.py": "a86d1860ced5e48c7e7643b48b054aa9f90bfe21",
+    "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+  },
+  "promotion_authorized": false,
+  "proof_scope": "represented same-day route; exact official unit/decay and HIRE-cost primitives; SELL-only market; deterministic town lower bound; floor-price public-state-neutral incremental sales",
+  "schema_version": 1
+}

@@ -22,10 +22,11 @@ def _new_instance(root, feature_data):
             return super()._market_pressure_selected(obs, cfg, selected)
 
         def _missing_hire_selected(self, obs, cfg, selected):
-            """Recover one next-turn worker only through an exact current prefix."""
+            """Recover one hand only after prefix and realized-payback proof."""
             from frozen_selected import _market_prefix_state
             from missing_hire_recovery import recover_missing_hire
-            from scheduler import post_units
+            from realized_hire_payback import certify_realized_hire_payback
+            from scheduler import parent as route_parent, post_units
 
             route = self.controller.R[self.controller.cur]
             farm, private = post_units(obs, selected, cfg)
@@ -37,8 +38,25 @@ def _new_instance(root, feature_data):
                     queue, farm, private, obs['market'], shops, cfg, now,
                     lambda product: self.consumer.rival_supply(obs, product), stop)
 
+            def certify_payback(baseline_queue, candidate_queue, slot, outcome):
+                return certify_realized_hire_payback(
+                    farm=farm,
+                    private=private,
+                    market=obs['market'],
+                    unlocked_shops=shops,
+                    route=route,
+                    baseline_market=baseline_queue,
+                    candidate_market=candidate_queue,
+                    inserted_index=slot,
+                    hire_cost=outcome.get('cost_per_unit'),
+                    current_step=now,
+                    configuration=cfg,
+                    decision_steps=[row[0] for row in route_parent.DECISIONS],
+                )
+
             result, report = recover_missing_hire(
-                obs, cfg, selected, route=route, certify_prefix=certify)
+                obs, cfg, selected, route=route, certify_prefix=certify,
+                certify_payback=certify_payback)
             report['route_id'] = self.controller.cur
             self.diagnostics['missing_hire_recovery'] = report
             return result
