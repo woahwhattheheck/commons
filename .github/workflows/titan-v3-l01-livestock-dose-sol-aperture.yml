@@ -1,0 +1,118 @@
+name: titan-v3-l01-livestock-dose-sol-aperture
+
+on:
+  push:
+    branches:
+      - sol-aperture/titan-v3-l01-livestock-dose-20260910-01
+    paths:
+      - '.github/workflows/titan-v3-l01-livestock-dose-sol-aperture.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-l01-livestock-dose-sol-aperture/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-l01-livestock-dose-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          printf '%s\n' "$EXPECTED_HEAD" | tee "$RUNNER_TEMP/exact-head.sha"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run transform contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-l01-livestock-dose-sol-aperture
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_livestock_dose.py
+          python -B -m py_compile livestock_dose.py route_audit.py test_livestock_dose.py
+
+      - name: Audit repository and exact archive route addresses
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/v3-l01-livestock-dose-sol-aperture"
+          OUT="$RUNNER_TEMP/livestock-dose-audit"
+          mkdir -p "$OUT/archive"
+          python "$CASE/route_audit.py" \
+            --source "$LAB/reference/next-panel/vendor/arlene.py" \
+            --output "$OUT/source-route.json"
+          python - "$LAB" "$OUT/archive" <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import tarfile
+          import sys
+
+          lab = Path(sys.argv[1])
+          destination = Path(sys.argv[2])
+          receipt = json.loads((lab / 'runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())
+          archive = lab / receipt['path']
+          payload = archive.read_bytes()
+          actual = hashlib.sha256(payload).hexdigest()
+          assert actual == receipt['sha256'], (actual, receipt['sha256'])
+          with tarfile.open(archive, 'r:gz') as bundle:
+              for member in bundle.getmembers():
+                  path = Path(member.name)
+                  assert not path.is_absolute() and '..' not in path.parts
+                  assert member.isfile() or member.isdir()
+              bundle.extractall(destination, filter='data')
+          print(json.dumps({'archive_sha256': actual,
+                            'archive_bytes': len(payload),
+                            'source_manifest_sha256': receipt['source_manifest_sha256']},
+                           sort_keys=True))
+          PY
+          python "$CASE/route_audit.py" \
+            --source "$OUT/archive/reference/next-panel/vendor/arlene.py" \
+            --output "$OUT/archive-route.json"
+          cmp "$OUT/source-route.json" "$OUT/archive-route.json"
+          python - "$OUT/source-route.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          report = json.loads(Path(sys.argv[1]).read_text())
+          assert report['eligible_cow_units'] >= 4, report
+          assert all(row['quantity'] == 1 for row in report['eligible_cow_orders'][:4]), report
+          print(json.dumps({'eligible_cow_units': report['eligible_cow_units'],
+                            'eligible_cow_orders': report['eligible_cow_orders'],
+                            'all_animal_events': report['all_animal_events']},
+                           sort_keys=True))
+          PY
+
+      - name: Retain exact audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-l01-livestock-dose-source-audit-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/exact-head.sha
+            ${{ runner.temp }}/livestock-dose-audit/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Assert checkout stayed clean
+        if: always()
+        run: git diff --exit-code -- .
