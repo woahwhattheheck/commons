@@ -72,7 +72,7 @@ jobs:
             exit 1
           }
           test -f .github/workflows/titan-v3-route-regret-sol-lever.yml
-          for file in README.md SOURCE.json source_contract.py route_arm.py panel_engine.py thresholds.py run_panel.py test_route_arm.py test_thresholds.py test_source_contract.py; do
+          for file in README.md SOURCE.json source_contract.py runtime_closure.py route_arm.py panel_engine.py thresholds.py run_panel.py test_route_arm.py test_runtime_closure.py test_thresholds.py test_source_contract.py; do
             test -f "$CASE/$file"
           done
           git diff --check "$BASE"...HEAD
@@ -99,6 +99,7 @@ jobs:
           python -m py_compile *.py
           python -m unittest -v \
             test_source_contract.py \
+            test_runtime_closure.py \
             test_route_arm.py \
             test_thresholds.py
           find . -type d -name __pycache__ -prune -exec rm -rf {} +

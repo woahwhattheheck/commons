@@ -37,7 +37,9 @@ class RouteArmTests(unittest.TestCase):
             raise RuntimeError("boom")
 
         base.agent = explode
-        with mock.patch.object(route_arm, "_load_base", return_value=base), mock.patch.object(
+        with mock.patch.object(
+            route_arm, "_load_base", return_value=base
+        ), mock.patch.object(
             route_arm, "_producer", return_value=(controller, namespace)
         ):
             with self.assertRaisesRegex(RuntimeError, "boom"):
@@ -61,9 +63,14 @@ class RouteArmTests(unittest.TestCase):
                 "market": [],
             },
         )
-        with mock.patch.object(route_arm, "_load_base", return_value=base), mock.patch.object(
+        attestation = {"identity_bound": True}
+        with mock.patch.object(
+            route_arm, "_load_base", return_value=base
+        ), mock.patch.object(
             route_arm, "_producer", return_value=(controller, namespace)
-        ):
+        ), mock.patch.object(
+            route_arm, "_attest_import", return_value=attestation
+        ) as imported:
             output = route_arm._instrumented(
                 {"step": 226, "player": 0, "value": 0},
                 {},
@@ -73,6 +80,8 @@ class RouteArmTests(unittest.TestCase):
         marker = output[route_arm.DIAGNOSTIC_KEY]
         self.assertFalse(marker["override_applied"])
         self.assertEqual(marker["unavailable_reason"], "force_not_prefix_legal")
+        self.assertEqual(marker["import_closure"], attestation)
+        imported.assert_called_once_with(required=True, refresh=True)
         self.assertEqual(controller.cur, "MAIN")
 
     def test_auto_does_not_patch_decision_table(self):
@@ -88,8 +97,14 @@ class RouteArmTests(unittest.TestCase):
                 "market": [],
             },
         )
-        with mock.patch.object(route_arm, "_load_base", return_value=base), mock.patch.object(
+        with mock.patch.object(
+            route_arm, "_load_base", return_value=base
+        ), mock.patch.object(
             route_arm, "_producer", return_value=(controller, namespace)
+        ), mock.patch.object(
+            route_arm,
+            "_attest_import",
+            return_value={"identity_bound": True},
         ):
             route_arm._instrumented(
                 {"step": 226, "player": 0, "value": 0},
@@ -99,6 +114,26 @@ class RouteArmTests(unittest.TestCase):
             )
         self.assertIs(namespace["DECISIONS"], original)
         self.assertEqual(controller.cur, "MAIN")
+
+    def test_noncheckpoint_call_does_not_require_early_scheduler_import(self):
+        base = SimpleNamespace(
+            _INSTANCE=None,
+            agent=lambda observation, configuration: {
+                "farmer": ["PASS"],
+                "hands": [],
+                "market": [],
+            },
+        )
+        with mock.patch.object(
+            route_arm, "_load_base", return_value=base
+        ), mock.patch.object(
+            route_arm, "_attest_import", return_value=None
+        ) as imported:
+            output = route_arm._instrumented(
+                {"step": 0, "player": 0}, {}, mode="auto", checkpoint=None
+            )
+        self.assertNotIn(route_arm.DIAGNOSTIC_KEY, output)
+        imported.assert_called_once_with(required=False, refresh=False)
 
 
 if __name__ == "__main__":

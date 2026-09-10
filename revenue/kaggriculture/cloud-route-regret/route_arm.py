@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 from typing import Any, Callable
 
+from runtime_closure import attest_scheduler, install as install_runtime_closure
 from source_contract import checkpoints, verify_source_contract
 
 HERE = Path(__file__).resolve().parent
@@ -17,13 +18,19 @@ SCHEMA = "titan-route-regret-event/v1"
 CHECKPOINTS = {int(row[0]): tuple(row) for row in checkpoints()}
 _BASE_MODULE = None
 _SOURCE_RECEIPT = None
+_IMPORT_RECEIPT = None
+_IMPORT_ATTESTATION = None
 
 
 def _load_base():
-    global _BASE_MODULE, _SOURCE_RECEIPT
+    global _BASE_MODULE, _SOURCE_RECEIPT, _IMPORT_RECEIPT
     if _BASE_MODULE is not None:
         return _BASE_MODULE
     _SOURCE_RECEIPT = verify_source_contract()
+    # Source-tree execution differs from the canonical archive in exactly one
+    # import location: the archive places observed_clone.py at its root. Stage
+    # and preload those authenticated bytes inside this worker's private CWD.
+    _IMPORT_RECEIPT = install_runtime_closure(_SOURCE_RECEIPT)
     path = LAB / "main.py"
     name = "_sol_lever_route_regret_canonical_titan"
     spec = importlib.util.spec_from_file_location(name, path)
@@ -42,6 +49,19 @@ def _load_base():
         sys.path[:] = old_path
     _BASE_MODULE = module
     return module
+
+
+def _attest_import(*, required: bool, refresh: bool = False):
+    """Cache ordinary evidence, but revalidate the exact binding at checkpoints."""
+    global _IMPORT_ATTESTATION
+    if not refresh and _IMPORT_ATTESTATION is not None:
+        return deepcopy(_IMPORT_ATTESTATION)
+    if "scheduler" not in sys.modules:
+        if required:
+            raise ValueError("canonical scheduler was not imported before checkpoint")
+        return None
+    _IMPORT_ATTESTATION = attest_scheduler()
+    return deepcopy(_IMPORT_ATTESTATION)
 
 
 def _step(observation) -> int:
@@ -161,6 +181,9 @@ def _instrumented(
 
     try:
         output = base.agent(observation, configuration)
+        import_attestation = _attest_import(
+            required=event is not None, refresh=event is not None
+        )
     finally:
         if patch is not None:
             namespace, original = patch
@@ -177,6 +200,7 @@ def _instrumented(
     event["source_authored_base"] = (
         None if _SOURCE_RECEIPT is None else _SOURCE_RECEIPT["authored_base"]
     )
+    event["import_closure"] = import_attestation
     marked = deepcopy(output)
     marked[DIAGNOSTIC_KEY] = event
     return marked
@@ -184,7 +208,9 @@ def _instrumented(
 
 def agent(observation, configuration=None):
     """Submission-compatible untouched current TITAN entrypoint."""
-    return _load_base().agent(observation, configuration)
+    output = _load_base().agent(observation, configuration)
+    _attest_import(required=False)
+    return output
 
 
 def auto(observation, configuration=None):
