@@ -1,0 +1,14 @@
+--- a/spatial_tempo.py
++++ b/spatial_tempo.py
+@@ -175,6 +175,11 @@
+ 
+     def install(self,controller):
+         """Bind to the same producer; caller must call finish after each return."""
++        # Disabled features must be a strict identity.  Binding the wrapper when
++        # both switches are false still runs _begin(), which reconstructs R from
++        # the captured pristine table and erases producer route mutations.
++        if not (self.pathing or self.tempo):
++            return
+         pristine=controller.R
+         original=controller.act
+         def act(obs):
