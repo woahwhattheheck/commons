@@ -15,6 +15,7 @@ case "$OUT" in
 esac
 rm -rf "$OUT"
 mkdir -p "$OUT"
+export PYTHONPYCACHEPREFIX="$OUT/pycache"
 
 LAB=revenue/kaggriculture/cloud-execution-lab
 KAG=revenue/kaggriculture
