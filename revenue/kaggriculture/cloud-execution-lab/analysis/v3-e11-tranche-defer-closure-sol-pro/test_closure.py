@@ -42,7 +42,12 @@ class OwnershipRepairContracts(unittest.TestCase):
         }
         before = deepcopy(action)
         out, report = closure.enforce_deferred_sell_ownership(
-            action, VALID_REPORT, token(), CONTEXT, {"maxMarketOrdersPerTurn": 4}
+            action,
+            VALID_REPORT,
+            token(),
+            SOURCE_ACTION,
+            CONTEXT,
+            {"maxMarketOrdersPerTurn": 4},
         )
         self.assertEqual(action, before)
         self.assertEqual(out["market"], [[], ["HIRE"], [], ["SELL", "CARROT", 4]])
@@ -52,7 +57,12 @@ class OwnershipRepairContracts(unittest.TestCase):
     def test_preserves_nonexecuted_suffix_exactly(self):
         action = {"market": [["SELL", "CARROT", 1], ["SELL", "WHEAT", 99]]}
         out, report = closure.enforce_deferred_sell_ownership(
-            action, VALID_REPORT, token(), CONTEXT, {"maxMarketOrdersPerTurn": 1}
+            action,
+            VALID_REPORT,
+            token(),
+            SOURCE_ACTION,
+            CONTEXT,
+            {"maxMarketOrdersPerTurn": 1},
         )
         self.assertIs(out, action)
         self.assertFalse(report["changed"])
@@ -72,7 +82,7 @@ class OwnershipRepairContracts(unittest.TestCase):
         for report in bad_reports:
             with self.subTest(report=report):
                 out, repair = closure.enforce_deferred_sell_ownership(
-                    action, report, token(report), CONTEXT, {}
+                    action, report, token(report), SOURCE_ACTION, CONTEXT, {}
                 )
                 self.assertIs(out, action)
                 self.assertFalse(repair["authority"])
@@ -81,10 +91,10 @@ class OwnershipRepairContracts(unittest.TestCase):
     def test_value_and_object_idempotence(self):
         action = {"market": [["SELL", "WHEAT", 4], ["SELL", "CARROT", 3]]}
         once, first = closure.enforce_deferred_sell_ownership(
-            action, VALID_REPORT, token(), CONTEXT, {}
+            action, VALID_REPORT, token(), SOURCE_ACTION, CONTEXT, {}
         )
         twice, second = closure.enforce_deferred_sell_ownership(
-            once, VALID_REPORT, token(), CONTEXT, {}
+            once, VALID_REPORT, token(), SOURCE_ACTION, CONTEXT, {}
         )
         self.assertTrue(first["changed"])
         self.assertIs(twice, once)
@@ -95,7 +105,7 @@ class OwnershipRepairContracts(unittest.TestCase):
         action = {"market": [["SELL", "CARROT", 4]]}
         report = {**VALID_REPORT, "deferred": ["CARROT"]}
         out, repair = closure.enforce_deferred_sell_ownership(
-            action, report, token(report), CONTEXT, {}
+            action, report, token(report), SOURCE_ACTION, CONTEXT, {}
         )
         self.assertIs(out, action)
         self.assertFalse(repair["authority"])
@@ -105,35 +115,41 @@ class OwnershipRepairContracts(unittest.TestCase):
         valid = token()
         stale = {**CONTEXT, "step": 697}
         out, repair = closure.enforce_deferred_sell_ownership(
-            action, VALID_REPORT, valid, stale, {}
+            action, VALID_REPORT, valid, SOURCE_ACTION, stale, {}
         )
         self.assertIs(out, action)
         self.assertFalse(repair["authority"])
         tampered = dict(valid)
         tampered["deferred"] = ["CARROT"]
         out, repair = closure.enforce_deferred_sell_ownership(
-            action, VALID_REPORT, tampered, CONTEXT, {}
+            action, VALID_REPORT, tampered, SOURCE_ACTION, CONTEXT, {}
         )
         self.assertIs(out, action)
         self.assertFalse(repair["authority"])
 
     def test_token_is_bound_to_source_action_bytes(self):
         first = closure.make_deferral_token(SOURCE_ACTION, VALID_REPORT, CONTEXT)
-        second = closure.make_deferral_token(
-            {"market": [[], ["SELL", "CARROT", 1]]}, VALID_REPORT, CONTEXT
-        )
+        second_source = {"market": [[], ["SELL", "CARROT", 1]]}
+        second = closure.make_deferral_token(second_source, VALID_REPORT, CONTEXT)
         self.assertIsNotNone(first)
         self.assertIsNotNone(second)
         self.assertNotEqual(first["source_action_sha256"], second["source_action_sha256"])
         self.assertNotEqual(first["token_sha256"], second["token_sha256"])
+        self.assertEqual(
+            closure.deferred_authority(VALID_REPORT, first, second_source, CONTEXT),
+            (),
+        )
         tampered = dict(first)
         tampered["source_action_sha256"] = second["source_action_sha256"]
-        self.assertEqual(closure.deferred_authority(VALID_REPORT, tampered, CONTEXT), ())
+        self.assertEqual(
+            closure.deferred_authority(VALID_REPORT, tampered, SOURCE_ACTION, CONTEXT),
+            (),
+        )
 
     def test_bad_market_queue_fails_without_mutation(self):
         action = {"market": "not-a-list"}
         out, report = closure.enforce_deferred_sell_ownership(
-            action, VALID_REPORT, token(), CONTEXT, {}
+            action, VALID_REPORT, token(), SOURCE_ACTION, CONTEXT, {}
         )
         self.assertIs(out, action)
         self.assertEqual(report["reason"], "BAD_MARKET_QUEUE")
