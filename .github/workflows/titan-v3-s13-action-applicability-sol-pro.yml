@@ -1,0 +1,60 @@
+name: TITAN V3 S13 action-applicability certificate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-sol-pro/**"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro/SOURCE-PINS.json"
+      - ".github/workflows/titan-v3-s13-action-applicability-sol-pro.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-s13-action-applicability-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  certificate-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify exact committed evidence and source pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "fcb672c7e72de7f77b6d5d30bce69c2703943c78c763e96987c99b293b6cb0ff  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-sol-pro/CORPUS-RECEIPT.json" | sha256sum -c -
+          echo "4a9b56673469fec0caab053a8bdf2724ff859087ae03326836a0ce552d30d5cc  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-leader-route-distillation-sol-pro/SOURCE-PINS.json" | sha256sum -c -
+      - name: Run fail-closed certificate contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-sol-pro
+        run: |
+          python -m py_compile action_applicability.py
+          python -m unittest -v test_action_applicability.py
+      - name: Verify receipt semantics
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-sol-pro
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          receipt = json.loads(Path("CORPUS-RECEIPT.json").read_text(encoding="utf-8"))
+          audit = receipt["audit"]
+          assert receipt["schema"] == "titan-v3-s13-action-applicability-audit/v1"
+          assert receipt["source_pins_sha256"] == "4a9b56673469fec0caab053a8bdf2724ff859087ae03326836a0ce552d30d5cc"
+          assert receipt["engine"]["sha256"] == "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+          assert audit["route_rows"] == 3475
+          assert audit["multi_route_signature_groups"] == 806
+          assert audit["bundle_collision_groups"] == 484
+          assert audit["unit_component_comparisons"] == 12492
+          assert audit["unit_false_applicability_witnesses"] == 5274
+          assert audit["unit_false_applicability_steps"] == 285
+          assert audit["certificate_failures"] == 0
+          assert audit["witnesses_sha256"] == "c90ac034a91ea1dac873fb4b805015d96abfe9691a05f00a4882a477a2712d1a"
+          assert audit["first_witness"]["source_component"] == ["FEED"]
+          assert audit["first_witness"]["target_component"] == ["PICKUP", "WHEAT", 4]
+          PY
