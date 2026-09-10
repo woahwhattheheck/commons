@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import importlib
 import importlib.util
 from pathlib import Path
 import random
@@ -11,11 +12,31 @@ import unittest
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
-if str(LAB) not in sys.path:
-    sys.path.insert(0, str(LAB))
+LAB_TEXT = str(LAB)
+sys.path[:] = [entry for entry in sys.path if entry != LAB_TEXT]
+sys.path.insert(0, LAB_TEXT)
 
-from decay_observer import is_exact_age_decay, make_decay_safe_frozen_selected
-import scheduler
+
+def load_exact(name: str, path: Path):
+    expected = path.resolve(strict=True)
+    spec = importlib.util.spec_from_file_location(name, expected)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {expected}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    if Path(module.__file__).resolve() != expected:
+        raise RuntimeError(f"wrong module loaded: {module.__file__}")
+    return module
+
+
+decay_observer = load_exact(
+    "_titan_rival_decay_observer_under_test", HERE / "decay_observer.py"
+)
+is_exact_age_decay = decay_observer.is_exact_age_decay
+make_decay_safe_frozen_selected = decay_observer.make_decay_safe_frozen_selected
+scheduler = importlib.import_module("scheduler")
+if Path(scheduler.__file__).resolve() != (LAB / "scheduler.py").resolve():
+    raise RuntimeError(f"wrong scheduler loaded: {scheduler.__file__}")
 
 
 def plant(yield_units=4, *, crop="MELON", planted_day=0, lifespan=100, **extra):
@@ -49,6 +70,18 @@ Patched = make_decay_safe_frozen_selected(
     products=scheduler.PRODUCTS,
     animals=scheduler.m.ANIMALS,
 )
+
+
+class ExactOriginTests(unittest.TestCase):
+    def test_exact_lane_and_scheduler_origins(self):
+        self.assertEqual(
+            Path(decay_observer.__file__).resolve(),
+            (HERE / "decay_observer.py").resolve(),
+        )
+        self.assertEqual(
+            Path(scheduler.__file__).resolve(),
+            (LAB / "scheduler.py").resolve(),
+        )
 
 
 class ExactTransitionTests(unittest.TestCase):
@@ -103,7 +136,6 @@ class ObserverParityTests(unittest.TestCase):
     def test_larger_decline_keeps_non_decay_remainder(self):
         control, candidate = self.compare(plant(4), plant(2))
         self.assertEqual(control, {"MELON": [(101, 2)]})
-        # Larger drops are deliberately ambiguous and not partially rewritten.
         self.assertEqual(candidate, control)
 
     def test_incumbent_parity_outside_exact_domain(self):
@@ -137,18 +169,17 @@ class OfficialEngineWitnessTests(unittest.TestCase):
         sys.modules["kaggle_environments"] = package
         sys.modules["kaggle_environments.utils"] = utils
         path = LAB / "reference/engine/kaggriculture.py"
-        spec = importlib.util.spec_from_file_location("_decay_test_engine", path)
-        assert spec is not None and spec.loader is not None
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        if prior_package is None:
-            sys.modules.pop("kaggle_environments", None)
-        else:
-            sys.modules["kaggle_environments"] = prior_package
-        if prior_utils is None:
-            sys.modules.pop("kaggle_environments.utils", None)
-        else:
-            sys.modules["kaggle_environments.utils"] = prior_utils
+        try:
+            module = load_exact("_decay_test_engine", path)
+        finally:
+            if prior_package is None:
+                sys.modules.pop("kaggle_environments", None)
+            else:
+                sys.modules["kaggle_environments"] = prior_package
+            if prior_utils is None:
+                sys.modules.pop("kaggle_environments.utils", None)
+            else:
+                sys.modules["kaggle_environments.utils"] = prior_utils
         return module
 
     def test_three_official_decay_ticks_do_not_manufacture_rival_lot(self):
