@@ -1,0 +1,26 @@
+{
+  "schema": "titan-v3-ladder-mixture-source/v1",
+  "claim_id": "TITAN-V3-LADDER-MIXTURE-ROBUST-PROMOTION-20260910-01",
+  "implementation": "stdlib-only Python 3.11",
+  "license": "Apache-2.0",
+  "purpose": "Downstream release gate for opponent-family mixture shift after historical family calibration and action-bound causal closure.",
+  "owned_paths": [
+    ".github/workflows/titan-v3-ladder-mixture-robust-sol-pro.yml",
+    "revenue/kaggriculture/cloud-ladder-mixture-robustness/"
+  ],
+  "scope_exclusions": [
+    "canonical policy source",
+    "runtime configuration",
+    "selected archives or pointers",
+    "fresh game execution or seed custody",
+    "historical family-calibration semantics",
+    "provider or Kaggle mutation",
+    "promotion authority"
+  ],
+  "consumer": "T08 one-tree integration / release authority",
+  "math": {
+    "family_effect": "minimum leave-one-independent-seed-out mean after mirrored-seat clustering",
+    "uncertainty": "box-constrained total-variation ball around integer hosted family counts",
+    "optimizer": "exact rational greedy mass transport for a linear objective"
+  }
+}
