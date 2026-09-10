@@ -35,61 +35,33 @@ jobs:
           pressure = Path('revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py')
           source = pressure.read_text()
 
-          old_signature = '''def transform(action: dict, observation: Mapping,
-                        configuration: Mapping | None = None, *, quote: PriceFunction,
-                        rival_supply: Mapping[str, int] | None = None) -> dict:'''
-          new_signature = '''def transform(action: dict, observation: Mapping,
-                        configuration: Mapping | None = None, *, quote: PriceFunction,
-                        rival_supply: Mapping[str, int] | None = None,
+          old_signature_tail = '              rival_supply: Mapping[str, int] | None = None) -> dict:'
+          new_signature_tail = '''              rival_supply: Mapping[str, int] | None = None,
                         strict_dominance: bool = False) -> dict:'''
-          if source.count(old_signature) != 1:
+          if source.count(old_signature_tail) != 1:
               raise SystemExit('pressure transform signature drifted')
-          source = source.replace(old_signature, new_signature)
+          source = source.replace(old_signature_tail, new_signature_tail)
 
-          old_doc = '''    ``rival_supply`` is an optional product->public-quantity scenario. Missing
-              product keys retain the historical same-sized proxy for that product; an
-              explicit zero means no rival flow. Present malformed values (including
-              ``None``) are barriers, so ambiguity cannot silently become proxy evidence.
-
-              Preserve all orders, quantities, duplicate lots, economic barriers,'''
-          new_doc = '''    ``rival_supply`` is an optional product->public-quantity scenario. Missing
-              product keys retain the historical same-sized proxy for that product; an
-              explicit zero means no rival flow. Present malformed values (including
-              ``None``) are barriers, so ambiguity cannot silently become proxy evidence.
-
-              ``strict_dominance`` replaces magnitude sorting with a stable two-class
-              partition. Positive-exposure lots may cross zero-exposure lots, but retain
-              their parent relative order because proxy magnitude does not prove which
-              exposed commodity is safe to demote against an unseen same-slot rival sale.
-
-              Preserve all orders, quantities, duplicate lots, economic barriers,'''
-          if source.count(old_doc) != 1:
-              raise SystemExit('pressure transform documentation drifted')
-          source = source.replace(old_doc, new_doc)
-
-          old_validation = '''    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
-              raise ValueError('parent policy must return an object with a market list')'''
+          old_validation = "    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):"
           new_validation = '''    if not isinstance(strict_dominance, bool):
               raise ValueError('strict_dominance must be boolean')
-              if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
-              raise ValueError('parent policy must return an object with a market list')'''
-          # Keep indentation exact after constructing the replacement text.
+              if not isinstance(action, dict) or not isinstance(action.get('market', []), list):'''
           new_validation = new_validation.replace("\n        if not isinstance(action", "\n    if not isinstance(action")
           if source.count(old_validation) != 1:
               raise SystemExit('pressure transform validation drifted')
           source = source.replace(old_validation, new_validation)
 
-          old_ranking = '''        ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])
-              orders[start:stop] = [order for order, _ in ranked]'''
+          old_ranking = "        ranked = sorted(zip(orders[start:stop], scores[start:stop]), key=lambda p: -p[1])"
           new_ranking = '''        pairs = list(zip(orders[start:stop], scores[start:stop]))
               if strict_dominance:
-                  # Crossing two exposed commodities has no observation-only dominance:
-                  # hidden rival flow can make the demoted commodity the urgent one.
+                  # Proxy magnitude cannot prove which exposed commodity is safe
+                  # to demote against an unseen same-slot rival sale.
                   ranked = ([pair for pair in pairs if pair[1] > 0]
                             + [pair for pair in pairs if pair[1] <= 0])
               else:
-                  ranked = sorted(pairs, key=lambda p: -p[1])
-              orders[start:stop] = [order for order, _ in ranked]'''
+                  ranked = sorted(pairs, key=lambda p: -p[1])'''
+          # Strip only the workflow's visual indentation from continuation lines.
+          new_ranking = new_ranking.replace("\n        ", "\n")
           if source.count(old_ranking) != 1:
               raise SystemExit('pressure ranking implementation drifted')
           source = source.replace(old_ranking, new_ranking)
@@ -101,6 +73,7 @@ jobs:
           new_call = '''        result = pressure.transform(
               selected, obs, cfg, quote=mechanics.market_price,
               strict_dominance=True)'''
+          new_call = new_call.replace("\n        ", "\n")
           if source.count(old_call) != 1:
               raise SystemExit('canonical pressure call drifted')
           runtime.write_text(source.replace(old_call, new_call))
