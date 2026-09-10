@@ -65,6 +65,7 @@ MECHANICS_ANCHORS = (
     "def _decay_plants(farm, step):",
     'if (step - mls) % 2 != 0:',
     'tile["yield_units"] -= 1',
+    'if tile["yield_units"] <= 0:\n                '
     'farm["tiles"][y][x] = {"kind": "WEED"}',
 )
 ENGINE_CHRONOLOGY_ANCHOR = """    _process_market(state, env)
