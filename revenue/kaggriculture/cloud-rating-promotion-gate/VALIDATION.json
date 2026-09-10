@@ -1,0 +1,36 @@
+{
+  "schema": "titan.rating-gate.validation.v1",
+  "operation": "TITAN-V3-RATING-ALIGNED-PROMOTION-GATE-20260910-01",
+  "executed": {
+    "python_compile": "PASS",
+    "unittest": {
+      "status": "PASS",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    "synthetic_cli_witness": {
+      "status": "PASS",
+      "expected_verdict": "POLISH_ONLY",
+      "receipt_sha256": "b6adc093358f33eb7132e944ea91d6ccc8280fa0572c97d34aa5cdfe6cee6def"
+    }
+  },
+  "local_source_sha256": {
+    "README.md": "16bf9806ec328340a8bf47087758375195d4a1ae60fd478e09a0e90cd3e51a51",
+    "rating_gate.py": "d503bd962a015035c278b52a6fdee7794c20c579cdf0c98025daf185e2a66c19",
+    "test_rating_gate.py": "c13ed1ef07fdb813370e405eeb2b5ef9d2d6e34f3f31ab23ec5b86ec932254d6"
+  },
+  "prior_art": {
+    "terminal_win_point_semantics_pr": 9992,
+    "cash_positive_no_outcome_flip_examples": [11963, 11654]
+  },
+  "claims": {
+    "gameplay_strength": false,
+    "leaderboard_improvement": false,
+    "rating_estimate": false,
+    "policy_mutation": false,
+    "game_launch": false,
+    "provider_or_kaggle_mutation": false
+  }
+}
