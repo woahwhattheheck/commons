@@ -1,0 +1,107 @@
+name: titan-v3-live-pending-bootstrap-sol-pro
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-live-pending-frozen-20260910-01
+    paths:
+      - '.github/workflows/titan-v3-live-pending-bootstrap-sol-pro.yml'
+      - '.bootstrap/titan-v3-live-pending/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-live-pending-bootstrap-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reconstruct-verified-tree:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      EXPECTED_BOOTSTRAP_HEAD: ${{ github.sha }}
+      EXPECTED_PAYLOAD_SHA256: 3a769b9ac2cc15ac05815206c693a3fd4d8acfc8671576d25aedca49a934d420
+      REACH_DONOR_HEAD: a7074432c1b364bda64d9501f89975d00cf0f94d
+      EVALUATOR_DONOR_HEAD: 169803af10e5ea99d8321ee81f9eaf980b59206e
+      TARGET: revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Reconstruct, verify, test, and commit exact final tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_BOOTSTRAP_HEAD"
+
+          mapfile -t parts < <(find .bootstrap/titan-v3-live-pending -maxdepth 1 -type f -name 'payload.part.*' -print | sort)
+          test "${#parts[@]}" -eq 10
+          cat "${parts[@]}" > "$RUNNER_TEMP/payload.b64"
+          base64 --decode "$RUNNER_TEMP/payload.b64" > "$RUNNER_TEMP/payload.tar.gz"
+          printf '%s  %s\n' "$EXPECTED_PAYLOAD_SHA256" "$RUNNER_TEMP/payload.tar.gz" | sha256sum --check --strict -
+
+          tar -tzf "$RUNNER_TEMP/payload.tar.gz" > "$RUNNER_TEMP/payload.paths"
+          python - "$RUNNER_TEMP/payload.paths" <<'PY'
+          from pathlib import PurePosixPath
+          import sys
+          paths = [line.strip() for line in open(sys.argv[1], encoding='utf-8') if line.strip() not in ('.', './')]
+          assert paths, 'empty payload'
+          for raw in paths:
+              value = raw[2:] if raw.startswith('./') else raw
+              path = PurePosixPath(value)
+              assert not path.is_absolute(), raw
+              assert '..' not in path.parts, raw
+          PY
+          mkdir "$RUNNER_TEMP/unpack"
+          tar -xzf "$RUNNER_TEMP/payload.tar.gz" -C "$RUNNER_TEMP/unpack"
+          cp -a "$RUNNER_TEMP/unpack/." .
+
+          git fetch --no-tags --depth=1 origin \
+            pull/12050/head:refs/remotes/origin/sol-reach-donor \
+            pull/11997/head:refs/remotes/origin/sol-orbit-donor
+          test "$(git rev-parse refs/remotes/origin/sol-reach-donor)" = "$REACH_DONOR_HEAD"
+          test "$(git rev-parse refs/remotes/origin/sol-orbit-donor)" = "$EVALUATOR_DONOR_HEAD"
+          git show "$REACH_DONOR_HEAD:revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-frozen-reachability-sol-reach/materialize.py" > "$TARGET/reach_materialize.py"
+          git show "$EVALUATOR_DONOR_HEAD:revenue/kaggriculture/cloud-execution-lab/analysis/v3-all-shed-priority-current-port-sol-orbit/materialize_evaluator.py" > "$TARGET/materialize_evaluator.py"
+          test "$(git hash-object "$TARGET/reach_materialize.py")" = 718c7fc2b8d71d24eac3a4afaf991719836fca79
+          test "$(git hash-object "$TARGET/materialize_evaluator.py")" = daffe4ac5bbee8f920ed2c39d67fc0177b9fa67c
+
+          while read -r expected path; do
+            test "$(git hash-object "$path")" = "$expected"
+          done <<'EOF'
+          1cf5c3536604bc8cc7ade58cdc50b02c7d1e7888 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/materialize.py
+          ae336aea368baf79cd472bfabf9518f994b3ae00 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/bind_execution.py
+          0ce59b734e734310fe6a5d373972037637f0d384 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/analyze.py
+          dd31397495321750c77990d9c9faef3728e46113 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/test_contracts.py
+          84aad634c5e32f8fd65c7cf85dfbf74cb914940e revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/test_analyze.py
+          5764cff64e69f1e37f803e473bf784f02ef4ca62 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/README.md
+          bae6038261bd3da1176b82a64c98f0c93001b8a3 revenue/kaggriculture/cloud-execution-lab/analysis/v3-live-pending-frozen-sol-pro/CONTRACT.json
+          52b731f1b11da78074b4ba43ee19c4346633a360 p/sol-pro-titan-v3-live-pending-executable-frozen-port-20260910-01.md
+          436e36e3f8d6fc77d8204e0a071336e09a806a12 .github/workflows/titan-v3-live-pending-frozen-sol-pro.yml
+          EOF
+
+          (
+            cd "$TARGET"
+            python -B -m unittest -v test_analyze.py test_contracts.py
+            python -B -m py_compile \
+              materialize.py reach_materialize.py materialize_evaluator.py \
+              bind_execution.py analyze.py test_contracts.py test_analyze.py
+          )
+
+          rm -rf .bootstrap/titan-v3-live-pending
+          rm -f .github/workflows/titan-v3-live-pending-bootstrap-sol-pro.yml
+          test -z "$(find .bootstrap -type f -print 2>/dev/null || true)"
+          rmdir .bootstrap 2>/dev/null || true
+
+          git config user.name 'sol-pro-titan-v3'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git add -A
+          git diff --cached --check
+          test -n "$(git diff --cached --name-only)"
+          git commit -m 'test(titan): isolate rebuilt live-pending frozen successor'
+          git push origin "HEAD:$GITHUB_REF_NAME"
