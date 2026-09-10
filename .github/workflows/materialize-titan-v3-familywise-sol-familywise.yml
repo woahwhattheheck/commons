@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: materialize-titan-v3-familywise-sol-familywise
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   materialize:
@@ -27,12 +27,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
+          fetch-tags: false
+          filter: blob:none
+          sparse-checkout: |
+            p/sol-familywise-bootstrap-20260910-01
 
-      - name: Authenticate payload and extract exact allowlist
+      - name: Authenticate ancestry, payload, and exact allowlist
         shell: bash
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git fetch --no-tags --filter=blob:none --depth=32 origin "$GITHUB_SHA"
+          git cat-file -e "$BASE_SHA^{commit}"
           test "$(git merge-base "$BASE_SHA" "$GITHUB_SHA")" = "$BASE_SHA"
           sha256sum -c <<'EOF'
           4da1cfdb4e4dacf35f758cf24f38aa7d9afc7aeee4cbab0cb4941a3524f340ce  p/sol-familywise-bootstrap-20260910-01/payload.b64.00
@@ -98,25 +105,35 @@ jobs:
           python3 -B -m unittest -v test_familywise_holdout.py
           python3 -O -B -m unittest -q test_familywise_holdout.py
 
-      - name: Rewrite branch to one exact-base commit
+      - name: Publish one exact-base commit without a full-tree checkout
         shell: bash
         run: |
           set -euo pipefail
           final_root="$RUNNER_TEMP/final-root"
           git config user.name 'SOL-FAMILYWISE'
           git config user.email 'actions@users.noreply.github.com'
-          git reset --hard "$BASE_SHA"
-          git clean -fdx
-          cp -a "$final_root"/. .
-          sha256sum -c <<'EOF'
-          3d1181dfdc68914f1fee7bac2ae2828ffa6d503dfc758e085f54f89cbcdd22a5  .github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml
-          1939fa64c3ebc2654dc99d5743575001bb280b19e32894dba6a6d51af8935f15  p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md
-          5dcdb51824d3b959febac1fb32cfcb3c89b265762bc7bc86e8130b14e6d27723  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md
-          41b5bca8cc848ebc0dd83642f62869ff8e1a55e43fab1be7a55ac08cf6141e86  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py
-          ffa63248c7ee5cedd9fefce83cb55428b906e26e664d171934234f4ebf570ecf  revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py
+          export GIT_INDEX_FILE="$RUNNER_TEMP/final.index"
+          rm -f "$GIT_INDEX_FILE"
+          git read-tree "$BASE_SHA"
+          while IFS='|' read -r mode path expected_sha; do
+            file="$final_root/$path"
+            test -f "$file"
+            printf '%s  %s\n' "$expected_sha" "$file" | sha256sum -c -
+            if git cat-file -e "$BASE_SHA:$path" 2>/dev/null; then
+              echo "refusing to overwrite base path: $path" >&2
+              exit 1
+            fi
+            blob="$(git hash-object -w "$file")"
+            git update-index --add --cacheinfo "$mode,$blob,$path"
+          done <<'EOF'
+          100644|.github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml|3d1181dfdc68914f1fee7bac2ae2828ffa6d503dfc758e085f54f89cbcdd22a5
+          100644|p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md|1939fa64c3ebc2654dc99d5743575001bb280b19e32894dba6a6d51af8935f15
+          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/README.md|5dcdb51824d3b959febac1fb32cfcb3c89b265762bc7bc86e8130b14e6d27723
+          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/familywise_holdout.py|41b5bca8cc848ebc0dd83642f62869ff8e1a55e43fab1be7a55ac08cf6141e86
+          100644|revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-familywise-holdout-ledger-sol-familywise/test_familywise_holdout.py|ffa63248c7ee5cedd9fefce83cb55428b906e26e664d171934234f4ebf570ecf
           EOF
-          git add -A
-          git diff --cached --name-only | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
+          git diff --cached --name-status "$BASE_SHA" | awk '$1 != "A" { print "non-additive path: " $0 > "/dev/stderr"; bad=1 } END { exit bad }'
+          git diff --cached --name-only "$BASE_SHA" | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
           cat > "$RUNNER_TEMP/expected-paths" <<'EOF'
           .github/workflows/titan-v3-familywise-holdout-ledger-sol-familywise.yml
           p/sol-familywise-titan-v3-familywise-holdout-spend-ledger-20260910-01.md
@@ -126,9 +143,11 @@ jobs:
           EOF
           LC_ALL=C sort -o "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/expected-paths"
           diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/actual-paths"
-          git commit -m 'TITAN V3: add familywise holdout-spend ledger'
-          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
-          test "$(git rev-list --count "$BASE_SHA"..HEAD)" = '1'
+          tree="$(git write-tree)"
+          commit="$(printf '%s\n' 'TITAN V3: add familywise holdout-spend ledger' | git commit-tree "$tree" -p "$BASE_SHA")"
+          test "$(git show -s --format=%P "$commit")" = "$BASE_SHA"
+          git diff-tree --no-commit-id --name-only -r "$BASE_SHA" "$commit" | LC_ALL=C sort > "$RUNNER_TEMP/commit-paths"
+          diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/commit-paths"
           git push --force-with-lease="refs/heads/${GITHUB_REF_NAME}:${GITHUB_SHA}" \
-            origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
-          echo "published_commit=$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+            origin "$commit:refs/heads/${GITHUB_REF_NAME}"
+          echo "published_commit=$commit" >> "$GITHUB_STEP_SUMMARY"
