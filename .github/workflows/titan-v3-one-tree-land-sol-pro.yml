@@ -1,13 +1,259 @@
-name: titan-v3-t03-bootstrap-staging
+name: titan-v3-t03-state-bound-prefix-sol-origin
 
 on:
+  push:
+    branches:
+      - sol-origin/titan-v3-t03-state-bound-v1-prefix-20260910-01
+    paths:
+      - .github/workflows/titan-v3-one-tree-land-sol-pro.yml
+      - revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64
+      - revenue/kaggriculture/cloud-execution-lab/candidates/.t03-patch/**
+      - revenue/kaggriculture/cloud-execution-lab/candidates/.t03-fixup/**
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: titan-v3-one-tree-land-sol-origin
+  cancel-in-progress: true
 
 jobs:
-  staged:
+  materialize-test-commit:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
-      - run: echo 'T03 patch staging only'
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify and materialize exact V3 handoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="$RUNNER_TEMP/v3-handoff.tar.gz"
+          base64 --decode revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64 > "$payload"
+          echo 'f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728  '"$payload" | sha256sum --check --strict
+          test "$(wc -c < "$payload")" -eq 27500
+          python - "$payload" <<'PY'
+          from pathlib import Path
+          import sys, tarfile
+
+          archive = Path(sys.argv[1])
+          root = Path.cwd().resolve()
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/.gitignore',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/rival_model.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/shop_arb.py',
+          }
+          with tarfile.open(archive, 'r:gz') as tar:
+              members = [member for member in tar.getmembers() if member.isfile()]
+              names = {member.name[2:] if member.name.startswith('./') else member.name for member in members}
+              assert names == expected, (sorted(names - expected), sorted(expected - names))
+              for member in members:
+                  name = member.name[2:] if member.name.startswith('./') else member.name
+                  target = (root / name).resolve()
+                  assert target == root / name and root in target.parents
+                  source = tar.extractfile(member)
+                  assert source is not None
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(source.read())
+          print('HANDOFF_OK', len(expected), 'files')
+          PY
+
+      - name: Verify and apply T03 source patch plus deadline-isolation fixup
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat revenue/kaggriculture/cloud-execution-lab/candidates/.t03-patch/part-* > "$RUNNER_TEMP/t03-patch.b64"
+          echo '262b0801e9a092e6716a4dd0a6b9d9f80570ea90e555d8226f758d438a6a7565  '"$RUNNER_TEMP/t03-patch.b64" | sha256sum --check --strict
+          base64 --decode "$RUNNER_TEMP/t03-patch.b64" > "$RUNNER_TEMP/t03-patch.tar.gz"
+          echo '460df1329563b280da1812079e48cb6bc9dfe6c7eef71ed81340039a18f6eb71  '"$RUNNER_TEMP/t03-patch.tar.gz" | sha256sum --check --strict
+          test "$(wc -c < "$RUNNER_TEMP/t03-patch.tar.gz")" -eq 16155
+
+          cat revenue/kaggriculture/cloud-execution-lab/candidates/.t03-fixup/part-* > "$RUNNER_TEMP/t03-fixup.b64"
+          echo '881b414271261804a2320cbc4b0c09d77fa6c11fdab07cf71fcccce557ec7b74  '"$RUNNER_TEMP/t03-fixup.b64" | sha256sum --check --strict
+          base64 --decode "$RUNNER_TEMP/t03-fixup.b64" > "$RUNNER_TEMP/t03-fixup.tar.gz"
+          echo '382384465359c11168ffc2a1b5bc3afbed73389c31fec3f468dfa406ff0b6288  '"$RUNNER_TEMP/t03-fixup.tar.gz" | sha256sum --check --strict
+          test "$(wc -c < "$RUNNER_TEMP/t03-fixup.tar.gz")" -eq 11043
+
+          python - "$RUNNER_TEMP/t03-patch.tar.gz" "$RUNNER_TEMP/t03-fixup.tar.gz" <<'PY'
+          from pathlib import Path
+          import sys, tarfile
+
+          root = Path.cwd().resolve()
+          allowlists = [
+              {
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md',
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_t03.py',
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/t03_opening_prefix.py',
+              },
+              {
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_t03.py',
+                  'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/t03_opening_prefix.py',
+              },
+          ]
+          for raw, expected in zip(sys.argv[1:], allowlists):
+              with tarfile.open(raw, 'r:gz') as tar:
+                  members = [member for member in tar.getmembers() if member.isfile()]
+                  names = {member.name[2:] if member.name.startswith('./') else member.name for member in members}
+                  assert names == expected, (sorted(names - expected), sorted(expected - names))
+                  for member in members:
+                      name = member.name[2:] if member.name.startswith('./') else member.name
+                      target = (root / name).resolve()
+                      assert target == root / name and root in target.parents
+                      source = tar.extractfile(member)
+                      assert source is not None
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      target.write_bytes(source.read())
+              print('PATCH_OK', Path(raw).name, len(expected), 'files')
+          PY
+
+      - name: Pin exact hosted V1 source into the one tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
+          target=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/v1_opening.py
+          echo '1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4  '"$source" | sha256sum --check --strict
+          test "$(git hash-object "$source")" = bdb9cf58148a3c7961c085f4902759537decabf6
+          cp "$source" "$target"
+          echo '1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4  '"$target" | sha256sum --check --strict
+          test "$(git hash-object "$target")" = bdb9cf58148a3c7961c085f4902759537decabf6
+
+      - name: Rebase manifest onto the exact canonical archive at branch base
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        env:
+          LANDING_BASE_SHA: 175a844cb01bbb56cb9cc54c0097a489c4997275
+          HANDOFF_SHA256: f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728
+          PATCH_SHA256: 460df1329563b280da1812079e48cb6bc9dfe6c7eef71ed81340039a18f6eb71
+          FIXUP_SHA256: 382384465359c11168ffc2a1b5bc3afbed73389c31fec3f468dfa406ff0b6288
+        run: |
+          set -euo pipefail
+          ARCHIVE_COMMIT="$(git log -1 --format=%H -- exports/titan-current.tar.gz)"
+          export ARCHIVE_COMMIT
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os, tarfile
+
+          manifest_path = Path('candidates/v3/V3-MANIFEST.json')
+          canonical = Path('exports/titan-current.tar.gz')
+          blob = canonical.read_bytes()
+          digest = hashlib.sha256(blob).hexdigest()
+          with tarfile.open(canonical, 'r:gz') as tar:
+              file_count = sum(1 for member in tar.getmembers() if member.isfile())
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          previous = dict(manifest['base'])
+          if previous.get('sha256') != digest:
+              history = list(manifest.get('base_history', []))
+              history.append(previous)
+              manifest['base_history'] = history
+          manifest['base'] = {
+              'archive': 'exports/titan-current.tar.gz',
+              'sha256': digest,
+              'bytes': len(blob),
+              'files': file_count,
+              'main_sha_seen': os.environ['LANDING_BASE_SHA'],
+              'archive_commit_seen': os.environ['ARCHIVE_COMMIT'],
+              'note': 'T03 durable landing rebased onto the exact canonical archive present at the branch base; all feature keys remain default off.',
+          }
+          manifest['handoff'] = {
+              'slack_file_id': 'F0C0JPCAAQP',
+              'slack_channel_id': 'C0BUH19DW80',
+              'sha256': os.environ['HANDOFF_SHA256'],
+              'bytes': 27500,
+              'text_files': 13,
+              'features_promoted': [],
+          }
+          manifest['t03_bootstrap'] = {
+              'patch_sha256': os.environ['PATCH_SHA256'],
+              'patch_bytes': 16155,
+              'deadline_fixup_sha256': os.environ['FIXUP_SHA256'],
+              'deadline_fixup_bytes': 11043,
+              'source_sha256': '1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4',
+              'source_git_blob': 'bdb9cf58148a3c7961c085f4902759537decabf6',
+              'source_route_id': '7015cc00acfa4922',
+          }
+          manifest['landing'] = {
+              'branch': 'sol-origin/titan-v3-t03-state-bound-v1-prefix-20260910-01',
+              'branch_base_sha': os.environ['LANDING_BASE_SHA'],
+              'policy': 'one deterministic V3 source tree; T03 default off; no provider or Kaggle submission',
+              'required_checks': [
+                  'handoff, patch, fixup, source, and member allowlist receipts',
+                  'exact-anchor application to the canonical archive',
+                  'deterministic double rebuild and FILES/manifest agreement',
+                  'V3 feature, L01, and T03 contract suites',
+                  'entrypoint deadline, clock, and reconstruction suites',
+                  'Python compileall of the materialized candidate',
+              ],
+          }
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+          print('BASE_OK', digest, len(blob), file_count, os.environ['ARCHIVE_COMMIT'])
+          PY
+
+      - name: Build twice and run focused plus entrypoint contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python candidates/v3/build_v3.py
+          python candidates/v3/build_v3.py --check
+          tree="$(mktemp -d)"
+          python candidates/v3/build_v3.py --tree "$tree"
+          python -B -m compileall -q "$tree"
+          (
+            cd "$tree"
+            python -B -m unittest -v checks/test_v3_features.py checks/test_v3_l01.py checks/test_v3_t03.py
+            python -B -m unittest -v checks/test_entrypoint_deadline.py checks/test_entrypoint_clock.py checks/test_module_recovery.py
+          )
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root = Path('candidates/v3')
+          manifest = json.loads((root/'V3-MANIFEST.json').read_text())
+          assert manifest['handoff']['features_promoted'] == []
+          assert manifest['keys']['opening_script']['default'] is False
+          assert manifest['keys']['params']['opening_script_steps'] == 24
+          assert all(value.get('default') is False for value in manifest['keys'].values()
+                     if isinstance(value, dict) and 'default' in value)
+          source = root/'overlay/v1_opening.py'
+          assert hashlib.sha256(source.read_bytes()).hexdigest() == manifest['t03_bootstrap']['source_sha256']
+          print('V3_T03_RECEIPT', manifest['archive']['sha256'], manifest['archive']['files'], manifest['archive']['bytes'])
+          PY
+
+      - name: Commit only the reviewed one-tree source and remove bootstrap material
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name tokenjunkielabs
+          git config user.email tokenjunkielabs@gmail.com
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64
+          git rm -r revenue/kaggriculture/cloud-execution-lab/candidates/.t03-patch
+          git rm -r revenue/kaggriculture/cloud-execution-lab/candidates/.t03-fixup
+          git rm .github/workflows/titan-v3-one-tree-land-sol-pro.yml
+          git add revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          git diff --cached --check
+          while IFS= read -r path; do
+            case "$path" in
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/*|revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64|revenue/kaggriculture/cloud-execution-lab/candidates/.t03-patch/*|revenue/kaggriculture/cloud-execution-lab/candidates/.t03-fixup/*|.github/workflows/titan-v3-one-tree-land-sol-pro.yml) ;;
+              *) echo "unexpected staged path: $path" >&2; exit 1 ;;
+            esac
+          done < <(git diff --cached --name-only)
+          test "$(git diff --cached --name-only --diff-filter=A | grep -c '^revenue/kaggriculture/cloud-execution-lab/candidates/v3/' || true)" -eq 16
+          git status --short
+          git commit -m 'feat(titan): integrate state-bound exact-V1 opening prefix'
+          git push origin HEAD:sol-origin/titan-v3-t03-state-bound-v1-prefix-20260910-01
