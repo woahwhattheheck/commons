@@ -20,6 +20,7 @@ from market_prefix_guard import preserves_scheduler_contract
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[1]
 SCHEDULER = LAB / "scheduler.py"
+FROZEN_SELECTED = LAB / "frozen_selected.py"
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
 CONFIG = {"shedCapacity": 3, "maxMarketOrdersPerTurn": 10}
 SHED = {"CARROT": 1, "EGG": 1, "MILK": 1}
@@ -93,6 +94,36 @@ class CurrentSchedulerPredecessorTest(unittest.TestCase):
         )
         safe, report = preserves_scheduler_contract(
             BASELINE_MARKET, CANDIDATE_MARKET, CONFIG
+        )
+        self.assertFalse(safe)
+        self.assertEqual(report["reason"], "PURCHASE_PREFIX_CHANGED")
+
+
+class ActiveFrozenConsumerWitnessTest(unittest.TestCase):
+    def test_materialize_sales_emits_purchase_blocking_queue(self):
+        if not FROZEN_SELECTED.is_file():
+            self.skipTest("repository frozen_selected.py is not present")
+        sys.path.insert(0, str(LAB))
+        try:
+            frozen = _load_from_path("sol_ledger_current_frozen_selected", FROZEN_SELECTED)
+        finally:
+            sys.path.pop(0)
+
+        current = {"CARROT": 0, "EGG": 1, "MILK": 1}
+        materialized = frozen.materialize_sales(
+            deepcopy(BASELINE_MARKET),
+            current,
+            deepcopy(SHED),
+            set(current),
+            CONFIG["maxMarketOrdersPerTurn"],
+        )
+        self.assertEqual(
+            materialized,
+            CANDIDATE_MARKET,
+            "the active FrozenSelected consumer can suppress the early sale before the inherited purchase",
+        )
+        safe, report = preserves_scheduler_contract(
+            BASELINE_MARKET, materialized, CONFIG
         )
         self.assertFalse(safe)
         self.assertEqual(report["reason"], "PURCHASE_PREFIX_CHANGED")

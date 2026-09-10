@@ -22,13 +22,16 @@ The work was authored against fresh reconciled `main` commit
 | Role | Repository path | Git blob |
 |---|---|---|
 | production scheduler | `revenue/kaggriculture/cloud-execution-lab/scheduler.py` | `a483b24dd72b580d7d8811636b54d2d44f391575` |
+| active one-tree consumer | `revenue/kaggriculture/cloud-execution-lab/frozen_selected.py` | `fc7baf5c179818a55037f6a61d92984d81d1a21c` |
 | pinned official engine | `revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py` | `3c202c7ee921da239356789e266b694635103fc4` |
 
-The hosted verifier fails unless both exact blobs are present.
+The hosted verifier fails unless all three exact blobs are present. The branch was merged forward onto current main `21011846096daad1dd487df0efedf209303c1cb5`; these execution blobs remained byte-identical.
 
 ## Defect
 
-`SellScheduler.receipt_profile()` models each turn with one `before` shed total
+The active one-tree path is `FrozenSelected.transform()`, which inherits
+`SellScheduler.receipt_profile()` and then emits the selected queue through
+`materialize_sales()`. The callback models each turn with one `before` shed total
 and one `after` total. Between those checkpoints it adds every inherited
 `BUY_PRODUCT`/`BUY_ANIMAL`, subtracts inherited non-target SELLs, and only then
 subtracts the candidate target sale.
@@ -82,8 +85,10 @@ zero candidate CARROT units are subtracted. The literal engine path differs:
 
 The later EGG/MILK sales occur after index 1 and cannot rescue that failed
 purchase. `WITNESS.json` is a deterministic machine-readable copy of the case.
-The hosted test also executes the pinned production callback and pinned official
-engine, rather than relying only on the local audit model.
+The hosted tests execute the pinned production callback, the exact active
+`FrozenSelected.materialize_sales()` consumer, and the pinned official engine,
+rather than relying only on the local audit model. The active consumer produces
+the witness queue exactly when `current={CARROT:0, EGG:1, MILK:1}`.
 
 ## Repair theorem
 
@@ -114,9 +119,10 @@ partial multi-unit orders, malformed rows, and raw-prefix blank semantics.
   atomic wrapper.
 - `test_market_prefix_guard.py`: 24 local predecessor, totality, raw-cap,
   mutation-boundary, and fallback contracts.
-- `test_pinned_predecessor.py`: two checkout-bound tests. One proves that the
-  exact pinned `receipt_profile()` accepts the witness. The other runs the
-  exact pinned engine and proves the inherited WHEAT purchase changes 1 → 0.
+- `test_pinned_predecessor.py`: three checkout-bound tests. They prove that the
+  exact pinned `receipt_profile()` accepts the witness, the exact active
+  `FrozenSelected.materialize_sales()` emits that queue, and the exact pinned
+  engine changes the inherited WHEAT purchase from 1 → 0.
 - `build_witness.py` / `WITNESS.json`: deterministic evidence builder and
   checked receipt.
 - `SOURCE.json` / `RECEIPT.json`: immutable source and validation metadata.
@@ -164,8 +170,9 @@ python -m py_compile *.py
 python build_witness.py --check
 python -m unittest discover -s . -p 'test_*.py' -v
 
-25 tests discovered: 24 portable PASS; 1 checkout-bound scheduler test and the
-checkout-bound official-engine class skip outside the repository.
+Outside the repository, unittest reports 26 methods: 24 portable PASS and two
+checkout-bound methods skipped; the official-engine class skips before its one
+method is counted. Hosted CI requires all 27 methods to execute with zero skips.
 ```
 
 The hosted workflow requires those checkout-bound tests to execute and also

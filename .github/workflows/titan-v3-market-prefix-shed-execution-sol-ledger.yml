@@ -26,13 +26,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      - name: Bind exact production and engine sources
+      - name: Bind exact active consumer, production scheduler, and engine
         shell: bash
         run: |
           set -euo pipefail
           lab=revenue/kaggriculture/cloud-execution-lab
+          test -f "$lab/frozen_selected.py"
           test -f "$lab/scheduler.py"
           test -f "$lab/reference/engine/kaggriculture.py"
+          test "$(git hash-object "$lab/frozen_selected.py")" = fc7baf5c179818a55037f6a61d92984d81d1a21c
           test "$(git hash-object "$lab/scheduler.py")" = a483b24dd72b580d7d8811636b54d2d44f391575
           test "$(git hash-object "$lab/reference/engine/kaggriculture.py")" = 3c202c7ee921da239356789e266b694635103fc4
       - name: Verify published candidate bytes and receipt
@@ -57,7 +59,7 @@ jobs:
           root=revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-prefix-shed-execution-sol-ledger
           python -B -m py_compile "$root"/*.py
           python -B "$root/build_witness.py" --check
-      - name: Run portable and exact pinned-source predecessor killers
+      - name: Run portable and exact active-source predecessor killers
         shell: bash
         run: |
           set -euo pipefail
@@ -66,7 +68,7 @@ jobs:
           output=$(python -B -m unittest discover -s . -p 'test_*.py' -v 2>&1)
           printf '%s\n' "$output"
           ! grep -q 'skipped=' <<<"$output"
-          grep -q 'Ran 26 tests' <<<"$output"
+          grep -q 'Ran 27 tests' <<<"$output"
           grep -q '^OK$' <<<"$output"
       - name: Prove canonical package remains clean
         shell: bash

@@ -1,6 +1,7 @@
 {
   "authored_main_commit": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
   "claims": {
+    "active_consumer_witness_reproduced": true,
     "canonical_mutation": false,
     "default_enabled": false,
     "exact_predecessor_false_positive_reproduced": true,
@@ -12,12 +13,12 @@
   },
   "hosted_contract": {
     "canonical_check": "python -B build_integrated.py --check",
-    "expected_test_methods": 26,
+    "expected_test_methods": 27,
     "skips_allowed": 0,
     "status": "PENDING"
   },
   "local_validation": {
-    "checkout_bound_test_methods_pending_hosted": 2,
+    "checkout_bound_test_methods_pending_hosted": 3,
     "commands": [
       "python -m py_compile *.py",
       "python build_witness.py --check",
@@ -30,17 +31,19 @@
   "operation": "TITAN-V3-MARKET-PREFIX-SHED-EXECUTION-20260910-01",
   "publication_status": "SOURCE_READY_HOSTED_PENDING",
   "published_sha256": {
-    "README.md": "faf87eb15237a37c0bb1853a0a2a8e41aa51a7995e3cdb6a007e36174290b6e2",
-    "SOURCE.json": "ee44158c651c8b8bc28930ea0b4a1ce51ff20c38642c50c98cb3a0262fd192bc",
+    "README.md": "50b65ff35a1fcc2c6f4f11b99a3cd86407985ea57bc6f0943ac78cc361ff63fa",
+    "SOURCE.json": "2e581abe7080f0a25c16113ed4d24ab08b15d17083ef58167666674870321629",
     "WITNESS.json": "4b2b3c2e895d646d299205d4fcdd82b1d6226cde79ae00676df06301e40f1f8a",
     "build_witness.py": "8e590b391e95d4c6c320bdcc7384448dd6e79c4316acbcc5986354b02befa4aa",
     "market_prefix_guard.py": "e7fa6f9d4ec8222ad7f515ab994b9345873685d545d0791b3267c506e09df493",
     "test_market_prefix_guard.py": "d4fcc6c59a32f506c4adbcc05b707c3ee1c9202947111d00087f55bfc2856f23",
-    "test_pinned_predecessor.py": "fe7aa6c072903980b1772786ef1b8d04e3885e958be32b8002b80cf4e02a4a16"
+    "test_pinned_predecessor.py": "49b6b59f0348684cd473d53c228aba6d6ef7397435198a9ee39e0ff42c261d29"
   },
+  "reconciled_main_commit": "21011846096daad1dd487df0efedf209303c1cb5",
   "schema_version": 1,
   "source_bindings": {
     "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "frozen_selected_git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
     "scheduler_git_blob": "a483b24dd72b580d7d8811636b54d2d44f391575"
   }
 }

@@ -30,5 +30,11 @@
     "provider": false,
     "kaggle": false,
     "submission": false
+  },
+  "reconciled_main_comit": "21011846096daad1dd487df0efedf209303c1cb5",
+  "active_consumer": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py",
+    "git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "execution_path": "FrozenSelected.transform -> SellScheduler.receipt_profile + materialize_sales"
   }
 }
