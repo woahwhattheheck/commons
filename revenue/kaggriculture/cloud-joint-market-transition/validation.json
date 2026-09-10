@@ -1,0 +1,37 @@
+{
+  "complete_comparison_cases": 22,
+  "elapsed_seconds": 1.9705425530000866,
+  "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "engine_path": "kaggle_environments/envs/kaggriculture/kaggriculture.py",
+  "engine_repository": "Kaggle/kaggle-environments",
+  "engine_sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+  "errors": 0,
+  "failures": 0,
+  "full_official_module_differential_cases": 4,
+  "game_panels": 0,
+  "game_seeds": 0,
+  "python": "3.13.5",
+  "schema": "titan-joint-market-transition-validation-v1",
+  "skipped": 0,
+  "source_files": {
+    "engine_binding.py": "97197a8d6b64c5bd69395895c8a9d883405d3f22eaea9c065bf55ba8909cac20",
+    "joint_transition.py": "00926e7bb0ba8ec489746a1603455a32f86ca4e9deb6b8f55b22eae681ceba52",
+    "protection.py": "16af37051f843f4329968743ff57e1289ffe3e9d6204f5ea6064924bd07370cd",
+    "state_contracts.py": "e2aef545d3b5f7abf9996342eaae6791cb4e42edc14605b7d08d73290801f35e",
+    "transition_core.py": "a6e98a07216929f985066e97a8a6211f9af11388043306310ed31c72d348989e"
+  },
+  "source_tree_sha256": "840aa7626167bc32180e8f7299a1d68351998dc8d07ec296d915cbaee1aa8867",
+  "test_files": {
+    "test_cases_cli.py": "ce30518727353f37106cd659bf2b357bb68018d561f8bc26eacbf987efbe6e5b",
+    "test_cases_engine.py": "4b2d0efd4e7f03b3363ebd615ea8c3ee663dbacd9e00ee5064ba88584da378bb",
+    "test_cases_fail_closed.py": "fd16fa441743bf6f42b6131d11f44a14fe91384254aa973a17422a3067f56832",
+    "test_cases_market_blockers.py": "262b6e5b1c78f1bec69fe2e02377ac2a968ac81882a196b5f78dcc25d69a57f4",
+    "test_cases_market_core.py": "f3380caeb6461e3e3c69025909380084ee19c8d0e3f4688716d42cf4191fcabd",
+    "test_cases_market_effects.py": "814b050146f58b62956a327db28022705f31b83414dc2a10abfe81ec240140ba",
+    "test_joint_transition.py": "6bb13181da28fa05c69622f7ea696ea5415a679b18a14659b57e6e7534662775",
+    "test_support.py": "bfdc025c0a44628a39fc23c61fef0dca2f045889df7e71fcd2334dcaa2ffa1e4"
+  },
+  "test_tree_sha256": "c9e5aed86a02cd0a6592b26294bd901f72769c4f38f0c4b33e1cef0e476f8be3",
+  "tests": 48
+}

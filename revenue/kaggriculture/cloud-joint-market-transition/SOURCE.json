@@ -1,0 +1,40 @@
+{
+  "schema": "titan-joint-market-transition-source-v1",
+  "claim": {
+    "id": "TITAN-V3-JOINT-MARKET-TRANSITION-ORACLE-20260910-01",
+    "slack_channel": "C0C0Z8AHGP2",
+    "slack_parent_ts": "1788805315.069209",
+    "slack_claim_ts": "1789072067.896949"
+  },
+  "official_engine": {
+    "repository": "Kaggle/kaggle-environments",
+    "commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "path": "kaggle_environments/envs/kaggriculture/kaggriculture.py",
+    "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "license": "Apache-2.0",
+    "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "reused_artifact": {
+    "repository": "woahwhattheheck/commons",
+    "artifact_id": 10005621438,
+    "zip_sha256": "06e526df0a87d1d94e60dd0f2ea380aa099a4f0edd40a604a7c5bd274bd189cc",
+    "new_workflow_dispatched": false,
+    "new_game_panel_run": false,
+    "new_game_seed_consumed": false
+  },
+  "predecessor": {
+    "path": "revenue/kaggriculture/cloud-market-queue-delta/queue_delta.py",
+    "git_blob_on_observed_main": "30a227956d16b822909acf9053255c39999cd616",
+    "relationship": "additive exact-source market-plus-town composition successor; predecessor API and ownership unchanged"
+  },
+  "scope": {
+    "source_root": "revenue/kaggriculture/cloud-joint-market-transition",
+    "policy_changed": false,
+    "runtime_changed": false,
+    "configuration_changed": false,
+    "archive_or_pointer_changed": false,
+    "provider_or_kaggle_changed": false,
+    "promotion_claimed": false
+  }
+}
