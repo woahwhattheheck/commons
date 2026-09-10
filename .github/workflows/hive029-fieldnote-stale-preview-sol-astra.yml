@@ -1,0 +1,49 @@
+name: Hive029 Fieldnote stale preview guard
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/hive_prospect_workspace/app.js'
+      - 'revenue/hive_prospect_workspace/test_app.cjs'
+      - 'revenue/hive_prospect_workspace/test_stale_preview.cjs'
+      - '.github/workflows/hive029-fieldnote-stale-preview-sol-astra.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stale-preview-state-integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Bind exact event head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Parse Fieldnote controller
+        run: node --check revenue/hive_prospect_workspace/app.js
+
+      - name: Run parent and stale-preview contracts
+        run: |
+          node --test \
+            revenue/hive_prospect_workspace/test_app.cjs \
+            revenue/hive_prospect_workspace/test_stale_preview.cjs
+
+      - name: Prove clean checkout
+        shell: bash
+        run: test -z "$(git status --porcelain)"

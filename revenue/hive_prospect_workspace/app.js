@@ -99,10 +99,13 @@
     const bridge = options.bridge || new StorageBridge(options.storage || null, options.key || STORAGE_KEY);
     const loaded = bridge.load(model);
     let state = loaded.state;
+    let stateGeneration = 0;
+    const previewGenerations = new WeakMap();
 
     function replace(next) {
       model.validateState(next);
       state = model.clone(next);
+      stateGeneration += 1;
       bridge.persist(model, state);
       return model.clone(state);
     }
@@ -112,10 +115,15 @@
       getState: () => model.clone(state),
       getStatus: () => bridge.status,
       preview(text, filename, mapping) {
-        return model.previewImport(state, text, { filename: filename || 'Customer import', mapping });
+        const preview = model.previewImport(state, text, { filename: filename || 'Customer import', mapping });
+        if (preview && typeof preview === 'object') previewGenerations.set(preview, stateGeneration);
+        return preview;
       },
       commit(preview) {
         if (!preview || !preview.report) throw new Error('Preview the import first.');
+        if (previewGenerations.get(preview) !== stateGeneration) {
+          throw new Error('Preview is stale; preview the import again after workspace changes.');
+        }
         if (preview.report.errors && preview.report.errors.length) {
           throw new Error('Fix all import errors before committing; partial imports are not applied.');
         }
@@ -142,6 +150,7 @@
       },
       reset() {
         state = model.empty();
+        stateGeneration += 1;
         bridge.clear();
         return model.clone(state);
       },
