@@ -55,13 +55,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m unittest -v test_compare.py
+          python -m unittest -v test_compare.py test_strict_compare.py
           python -m py_compile \
             audit.py \
             compare.py \
+            strict_compare.py \
             control.py \
             materialize_evaluator.py \
-            test_compare.py
+            test_compare.py \
+            test_strict_compare.py
 
       - name: Audit exact control, candidate, evaluator, engine, and opponents
         shell: bash
@@ -150,7 +152,7 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           CASE="$LAB/analysis/titan-v3-capillary-panel-sol-cambium"
           OUT="$RUNNER_TEMP/titan-v3-capillary-panel"
-          python "$CASE/compare.py" \
+          python "$CASE/strict_compare.py" \
             --control "$OUT/control.json" \
             --candidate "$OUT/candidate.json" \
             --audit "$OUT/SOURCE-AUDIT.json" \
@@ -187,7 +189,7 @@ jobs:
         if: always()
         run: git diff --exit-code -- .
 
-      - name: Require exact broad own-cash upside
+      - name: Require exact causally-bound head-to-head upside
         if: always()
         shell: bash
         run: test "${{ steps.classify.outputs.exit_code }}" = '0'
