@@ -2,9 +2,10 @@
 """Exact-source carrier for deterministic town consumption in funding traces.
 
 The current funding trace replays future market orders but omits the official
-engine's public town-consumption stage.  This module materializes a minimal
-patch against one byte-pinned ``frozen_selected.py`` source and can emit a
-machine-readable receipt for integration.
+engine's public town-consumption stage. This module materializes a minimal patch
+against one byte-pinned ``frozen_selected.py`` source. The patch is exact while
+the public shop set is stable and fails closed across any day boundary, where a
+new random shop can unlock before a later acquisition.
 """
 from __future__ import annotations
 
@@ -26,7 +27,22 @@ _RETURN_ANCHOR = (
     "            'executed_sales': executed_sales}"
 )
 
-_HELPER_SOURCE = '''def _funding_apply_town_consumption(inventory, shops, config, step):
+_HELPER_SOURCE = '''def _funding_require_static_shop_lifecycle(now, end, config):
+    """Fail closed before an end-of-day shop unlock can change future quotes."""
+    raw=config.get('turnsPerDay',24)
+    if isinstance(raw,bool):
+        raise TypeError('turnsPerDay must be a positive integer')
+    try:
+        turns=int(raw)
+    except (TypeError,ValueError,OverflowError) as exc:
+        raise ValueError('turnsPerDay must be a positive integer') from exc
+    if turns<=0 or (isinstance(raw,float) and not raw.is_integer()):
+        raise ValueError('turnsPerDay must be a positive integer')
+    if int(now)//turns != int(end)//turns:
+        raise RuntimeError('funding horizon crosses day-close shop evolution')
+
+
+def _funding_apply_town_consumption(inventory, shops, config, step):
     """Apply the official public town stage after one projected market stage."""
     shop_interval=max(1,int(config.get('townShopSellInterval',4)))
     center_interval=max(1,int(config.get('townCenterSellInterval',24)))
@@ -41,6 +57,7 @@ _HELPER_SOURCE = '''def _funding_apply_town_consumption(inventory, shops, config
             if item!='FERTILIZER':
                 inventory[item]-=1'''
 
+_GUARD_CALL_SOURCE = "    _funding_require_static_shop_lifecycle(now, end, config)"
 _CALL_SOURCE = '''        _funding_apply_town_consumption(
             inventory, obs.get('town', {}).get('unlocked_shops', ()),
             config, t)
@@ -56,6 +73,28 @@ def git_blob_sha1(text: str) -> str:
     payload = text.encode("utf-8")
     header = f"blob {len(payload)}\0".encode("ascii")
     return hashlib.sha1(header + payload).hexdigest()
+
+
+def _positive_turns_per_day(config: Mapping[str, Any]) -> int:
+    raw = config.get("turnsPerDay", 24)
+    if isinstance(raw, bool):
+        raise TypeError("turnsPerDay must be a positive integer")
+    try:
+        turns = int(raw)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("turnsPerDay must be a positive integer") from exc
+    if turns <= 0 or (isinstance(raw, float) and not raw.is_integer()):
+        raise ValueError("turnsPerDay must be a positive integer")
+    return turns
+
+
+def require_static_shop_lifecycle(
+    now: int, end: int, config: Mapping[str, Any]
+) -> None:
+    """Oracle for the injected fail-closed shop-lifecycle boundary."""
+    turns = _positive_turns_per_day(config)
+    if int(now) // turns != int(end) // turns:
+        raise RuntimeError("funding horizon crosses day-close shop evolution")
 
 
 def apply_public_town_consumption(
@@ -122,17 +161,27 @@ def materialize(source: str, *, require_expected_source: bool = True) -> str:
         raise ValueError("funding trace return anchor count is not exactly one")
     if "def _funding_apply_town_consumption(" in source:
         raise ValueError("town-consumption helper already present")
+    if "def _funding_require_static_shop_lifecycle(" in source:
+        raise ValueError("shop-lifecycle guard already present")
 
     patched = source.replace(
         _FUNCTION_ANCHOR,
-        _HELPER_SOURCE + "\n\n\n" + _FUNCTION_ANCHOR,
+        _HELPER_SOURCE
+        + "\n\n\n"
+        + _FUNCTION_ANCHOR
+        + "\n"
+        + _GUARD_CALL_SOURCE,
         1,
     )
     patched = patched.replace(_RETURN_ANCHOR, _CALL_SOURCE + _RETURN_ANCHOR, 1)
     if patched.count("def _funding_apply_town_consumption(") != 1:
-        raise ValueError("helper insertion failed")
+        raise ValueError("town-consumption helper insertion failed")
+    if patched.count("def _funding_require_static_shop_lifecycle(") != 1:
+        raise ValueError("shop-lifecycle guard insertion failed")
+    if patched.count("    _funding_require_static_shop_lifecycle(now, end, config)\n") != 1:
+        raise ValueError("shop-lifecycle call insertion failed")
     if patched.count("        _funding_apply_town_consumption(\n") != 1:
-        raise ValueError("funding-loop call insertion failed")
+        raise ValueError("funding-loop town call insertion failed")
     compile(patched, "<frozen_selected-town-consumption>", "exec")
     return patched
 
@@ -140,7 +189,7 @@ def materialize(source: str, *, require_expected_source: bool = True) -> str:
 def receipt(source: str, patched: str, engine_source: str) -> dict[str, Any]:
     engine_blob = verify_official_engine(engine_source)
     return {
-        "schema": "titan-v3-funding-town-consumption/v1",
+        "schema": "titan-v3-funding-town-consumption/v2",
         "complete": True,
         "source_blob_sha1": git_blob_sha1(source),
         "expected_source_blob_sha1": EXPECTED_SOURCE_BLOB_SHA1,
@@ -148,8 +197,15 @@ def receipt(source: str, patched: str, engine_source: str) -> dict[str, Any]:
         "engine_blob_sha1": engine_blob,
         "engine_sha256": sha256_text(engine_source),
         "patched_source_sha256": sha256_text(patched),
-        "helper_count": patched.count("def _funding_apply_town_consumption("),
-        "call_count": patched.count("        _funding_apply_town_consumption(\n"),
+        "town_helper_count": patched.count("def _funding_apply_town_consumption("),
+        "town_call_count": patched.count("        _funding_apply_town_consumption(\n"),
+        "lifecycle_guard_count": patched.count(
+            "def _funding_require_static_shop_lifecycle("
+        ),
+        "lifecycle_call_count": patched.count(
+            "    _funding_require_static_shop_lifecycle(now, end, config)\n"
+        ),
+        "shop_lifecycle_policy": "same-day exact; cross-day fail-closed",
         "official_stage_order": "unit_actions->market->town_consume->decay->day_close",
         "canonical_runtime_modified": False,
         "hosted_strength_claim": False,
