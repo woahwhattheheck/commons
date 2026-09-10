@@ -14,9 +14,12 @@
       "price_usd": "49.00",
       "interval": "month",
       "link": {
-        "status": "NOT_MINTED",
-        "active": false,
-        "url": null
+        "status": "ACTIVE",
+        "active": true,
+        "url": "https://buy.stripe.com/7sYdR8bgVezD8qBgJs43S0u",
+        "payment_link_id": "plink_1UEGXbATH4EDE7XDMPcqDIPA",
+        "link_measured_at": "2026-09-10T22:58:03Z",
+        "link_source": "livemode GET /v1/payment_links/plink_1UEGXbATH4EDE7XDMPcqDIPA"
       },
       "fallback_url": "mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Operator",
       "fallback_label": "Join operator pilot"
@@ -26,12 +29,16 @@
       "price_usd": "2500.00",
       "interval": "one_time",
       "link": {
-        "status": "NOT_MINTED",
-        "active": false,
-        "url": null
+        "status": "ACTIVE",
+        "active": true,
+        "url": "https://buy.stripe.com/4gMcN4gBffDH8qBfFo43S0v",
+        "payment_link_id": "plink_1UEGXwATH4EDE7XDnnuCSG66",
+        "link_measured_at": "2026-09-10T22:58:03Z",
+        "link_source": "livemode GET /v1/payment_links/plink_1UEGXwATH4EDE7XDnnuCSG66"
       },
       "fallback_url": "mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Foundry",
-      "fallback_label": "Book integration"
+      "fallback_label": "Book integration",
+      "capture": "manual; written scope acceptance before capture"
     }
   },
   "economic_truth": {
