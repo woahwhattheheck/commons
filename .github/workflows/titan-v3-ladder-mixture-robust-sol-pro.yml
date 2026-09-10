@@ -43,7 +43,7 @@ jobs:
           BASE="$(git merge-base "$EVENT_BASE" HEAD)"
           test "$BASE" = "$EVENT_BASE"
           commit_count="$(git rev-list --count "$BASE"..HEAD)"
-          test "$commit_count" -ge 1
+          test "$commit_count"" -ge 1
           test "$commit_count" -le 30
           test -z "$(git diff --diff-filter=D --name-only "$BASE"...HEAD)"
           unexpected="$(
@@ -76,8 +76,8 @@ jobs:
           python -B -m unittest -v \
             test_contracts_a.py test_contracts_b.py test_contracts_c.py \
             2>&1 | tee "$RUNNER_TEMP/TEST.log"
-          test "$(grep -c '^test_.* \.\.\. ok$' "$RUNNER_TEMP/TEST.log")" -eq 32
-          grep -E '^Ran 32 tests in [0-9.]+s$' "$RUNNER_TEMP/TEST.log"
+          test "$(grep -c '^test_.* \.\.\. ok$' "$RUNNER_TEMP/TEST.log")" -eq 35
+          grep -E '^Ran 35 tests in [0-9.]+s$' "$RUNNER_TEMP/TEST.log"
           grep -Fx 'OK' "$RUNNER_TEMP/TEST.log"
           ! grep -E 'FAILED|skipped=' "$RUNNER_TEMP/TEST.log"
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
@@ -154,7 +154,8 @@ jobs:
               "schema": "titan-v3-ladder-mixture-ci-receipt/v1",
               "exact_head": head,
               "exact_base": base,
-              "tests": 32,
+              "tests": 35,
+              "peer_assist_contracts": 3,
               "example_verdict": "ROBUST_HOLD",
               "policy_mutation": False,
               "game_execution": False,
