@@ -3,9 +3,9 @@
 
 This carrier stacks on the executable-prefix donor without editing the checkout.
 It authenticates the prefix materializer, canonical frozen seller, mechanics,
-and official interpreter; materializes the prefix candidate in memory; inserts
-the two missing official decay transitions; proves reversibility; and emits a
-deterministic receipt or reviewable patch.
+official interpreter, and controller checkpoint tape; materializes the prefix
+candidate in memory; inserts the two missing official decay transitions; proves
+reversibility; and emits a deterministic receipt or reviewable patch.
 """
 from __future__ import annotations
 
@@ -25,6 +25,9 @@ MECHANICS_REL = Path("revenue/kaggriculture/cloud-execution-lab/mechanics.py")
 ENGINE_REL = Path(
     "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
 )
+ARLENE_REL = Path(
+    "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
+)
 PREFIX_REPAIR_REL = Path(
     "revenue/kaggriculture/cloud-execution-lab/cases/"
     "represented-horizon-prefix-sol-pro/repair.py"
@@ -33,6 +36,7 @@ PREFIX_REPAIR_REL = Path(
 EXPECTED_SOURCE_GIT_BLOB = "fc7baf5c179818a55037f6a61d92984d81d1a21c"
 EXPECTED_MECHANICS_GIT_BLOB = "044a4f9c0a4a44dde10ada57563238bcaf82075d"
 EXPECTED_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+EXPECTED_ARLENE_GIT_BLOB = "bdb9cf58148a3c7961c085f4902759537decabf6"
 EXPECTED_PREFIX_REPAIR_GIT_BLOB = "f14341425ad6bf697702e0167c7c4ae3264d434b"
 
 OLD_CURRENT_STAGE = """    apply_represented_market(f,p,executable_market(current_market),size)
@@ -73,6 +77,11 @@ ENGINE_CHRONOLOGY_ANCHOR = """    _process_market(state, env)
     for farm in obs0.farms:
         _decay_plants(farm, step)
 """
+ARLENE_DECISIONS_ANCHOR = """DECISIONS = (
+    (226, "shop_YARN_STORE", 1, YARN),
+    (360, "px_CARROT", 42, YARN_CARROT),
+    (433, "inv_MILK", 10067, MILK_GLUT),
+)"""
 PREFIX_SOURCE_ANCHORS = (
     "def represented_shed_event(now, baseline_end, hard_end, route, farm, private, config,",
     "apply_represented_market(f,p,executable_market(current_market),size)",
@@ -158,6 +167,7 @@ def build(
     prefix, prefix_repair_source = _load_prefix_repair(repo)
     source, engine, prefix_candidate, _prefix_patch = prefix.build(repo)
     mechanics = _bound_read(repo, MECHANICS_REL, EXPECTED_MECHANICS_GIT_BLOB)
+    arlene = _bound_read(repo, ARLENE_REL, EXPECTED_ARLENE_GIT_BLOB)
 
     if git_blob_sha(source) != EXPECTED_SOURCE_GIT_BLOB:
         raise IntegrityError("prefix build returned a different canonical source")
@@ -175,6 +185,9 @@ def build(
     engine_text = engine.decode("utf-8")
     if engine_text.count(ENGINE_CHRONOLOGY_ANCHOR) != 1:
         raise IntegrityError("official market -> town -> decay chronology drift")
+    arlene_text = arlene.decode("utf-8")
+    if arlene_text.count(ARLENE_DECISIONS_ANCHOR) != 1:
+        raise IntegrityError("Arlene decision checkpoint tape drift")
     prefix_text = prefix_candidate.decode("utf-8")
     missing_prefix = [
         anchor for anchor in PREFIX_SOURCE_ANCHORS if prefix_text.count(anchor) != 1
@@ -216,6 +229,7 @@ def receipt(repo: Path) -> dict[str, Any]:
         candidate,
         patch,
     ) = build(repo)
+    arlene = _bound_read(repo, ARLENE_REL, EXPECTED_ARLENE_GIT_BLOB)
     return {
         "schema": "titan-v3-represented-horizon-plant-decay/v1",
         "stack_base_commit": STACK_BASE_COMMIT,
@@ -251,6 +265,13 @@ def receipt(repo: Path) -> dict[str, Any]:
             "bytes": len(engine),
             "chronology": "unit -> market -> town -> decay",
         },
+        "controller": {
+            "path": ARLENE_REL.as_posix(),
+            "git_blob": git_blob_sha(arlene),
+            "sha256": sha256(arlene),
+            "bytes": len(arlene),
+            "decision_steps": [226, 360, 433],
+        },
         "candidate": {
             "git_blob": git_blob_sha(candidate),
             "sha256": sha256(candidate),
@@ -262,7 +283,10 @@ def receipt(repo: Path) -> dict[str, Any]:
         "witness": {
             "now": 120,
             "baseline_end": 128,
-            "hard_end": 130,
+            "hard_end": 143,
+            "initial_horizon_end": 128,
+            "next_checkpoint": 226,
+            "service_dates": {},
             "crop": "CARROT",
             "planted_day": 1,
             "yield_units": 3,
@@ -271,6 +295,7 @@ def receipt(repo: Path) -> dict[str, Any]:
             "represented_actions": [[129, "HARVEST"], [130, "DROP"]],
             "predecessor_unit_event": 130,
             "candidate_unit_event": None,
+            "horizon_helpers_unmocked": True,
             "returned_action_discriminator": "SELL MILK 1 -> SELL MILK 2",
         },
         "composition": {
