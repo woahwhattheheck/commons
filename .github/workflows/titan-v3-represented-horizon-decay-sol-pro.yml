@@ -91,8 +91,13 @@ jobs:
           receipt = json.loads(pathlib.Path(sys.argv[5]).read_text(encoding="utf-8"))
           assert receipt["schema"] == "titan-v3-represented-horizon-plant-decay/v1"
           assert receipt["candidate"]["replacement_count"] == 2
+          assert receipt["controller"]["git_blob"] == "bdb9cf58148a3c7961c085f4902759537decabf6"
+          assert receipt["controller"]["decision_steps"] == [226, 360, 433]
+          assert receipt["witness"]["baseline_end"] == 128
+          assert receipt["witness"]["hard_end"] == 143
           assert receipt["witness"]["predecessor_unit_event"] == 130
           assert receipt["witness"]["candidate_unit_event"] is None
+          assert receipt["witness"]["horizon_helpers_unmocked"] is True
           assert receipt["composition"]["canonical_source_mutated"] is False
           PY
 
