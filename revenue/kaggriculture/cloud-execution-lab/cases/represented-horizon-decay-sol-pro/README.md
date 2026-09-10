@@ -46,11 +46,12 @@ already reduced its yield to zero and replaced it with a WEED. A later
 HARVEST -> DROP can fabricate `unit_event`; every product then inherits the
 longer horizon, so the omission can change the returned current SELL action.
 
-Town consumption intentionally remains outside this physical-own-state helper.
-It mutates shared market inventory, not farm tiles or private carried/shed state.
-Its economic consequences belong to the broader shared-transition owner. Plant
-decay is different: it directly changes whether the next own unit action is
-legal and productive.
+Town consumption intentionally remains outside this farm-local repair. It
+mutates shared market inventory, not farm tiles or private carried/shed state.
+Its later purchase-price consequences belong to the broader shared-transition
+and purchase-executability owners. Plant decay is different: it directly changes
+whether the next own unit action is legal and productive. The packet claims and
+tests that bounded farm-local transition, not full market-world equivalence.
 
 ## Exact predecessor
 
@@ -62,7 +63,7 @@ plant CARROT on day 1
 WATER later on day 1 and once on days 2, 3, and 4
 now                  120
 baseline_end         128
-hard_end             130
+hard_end             143
 crop                 CARROT
 planted_day          1
 yield_units          3
@@ -76,11 +77,25 @@ day-4 WATER occur at ages 2 and 3, the exact CARROT yield window, and add one
 unit each. Official end-of-day refresh after steps 47, 71, 95, and 119 reaches
 the claimed step-120 tile byte-for-field.
 
+The real caller theorem is unmocked. With `episodeSteps=240`, route length 240,
+and `now=120`, `event_aware_horizon()` computes:
+
+```text
+represented day end  143
+next checkpoint      226 (outside represented day)
+baseline              128
+MILK service dates    none inside 129..143
+initial end            128
+```
+
+The route's HARVEST/DROP is therefore the sole possible extension source.
+
 Current prefix-only projection:
 
 ```text
 yield remains 3 -> HARVEST @129 -> carried CARROT -> DROP @130
 unit_event = 130
+horizon end = 130
 ```
 
 Official chronology and repaired projection:
@@ -92,10 +107,12 @@ decay @124: 1 -> WEED
 HARVEST @129 no-op
 DROP @130 no-op
 unit_event = None
+horizon end = 128
 ```
 
 The active `FrozenSelected.transform()` discriminator uses real current MILK
-stock and a controlled ordinary optimizer:
+stock and a controlled ordinary optimizer only; the horizon and represented
+event helpers execute unmocked:
 
 ```text
 prefix-only predecessor: false horizon -> returned SELL MILK 1
@@ -133,7 +150,7 @@ occurred earlier in official turn order.
 
 ## Contracts
 
-The 16 exact-source contracts execute the exact prefix-materialized source and
+The 18 exact-source contracts execute the exact prefix-materialized source and
 the composed candidate, not a handwritten replacement.
 
 `test_repair.py` covers:
@@ -157,13 +174,23 @@ the composed candidate, not a handwritten replacement.
   step-120 CARROT state;
 - official `3 -> 2 -> 1 -> WEED` decay and no-op HARVEST/DROP from that state.
 
+`test_real_caller.py` independently covers:
+
+- unmocked `event_aware_horizon()` baseline 128 / hard end 143 with no MILK
+  service date or checkpoint extension;
+- unmocked `represented_shed_event()` changing only through the decay repair;
+- real `FrozenSelected.transform()` diagnostics and returned market action,
+  including `unit_event 130 -> None`, horizon `130 -> 128`, and
+  `SELL MILK 1 -> SELL MILK 2`.
+
 Run from repository root:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 \
 python -B -m unittest -v \
   revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_repair.py \
-  revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_lifecycle.py
+  revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_lifecycle.py \
+  revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/test_real_caller.py
 
 python -B \
   revenue/kaggriculture/cloud-execution-lab/cases/represented-horizon-decay-sol-pro/repair.py \
