@@ -1,0 +1,87 @@
+name: titan-v3-exact-tree-materialization-guard
+
+on:
+  push:
+    branches:
+      - sol-cleanroom/titan-v3-exact-tree-materialization-guard-20260910-01
+    paths:
+      - .github/workflows/titan-v3-exact-tree-materialization-guard.yml
+      - revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-exact-tree-materialization-guard/**
+      - revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-tree-guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify and extract authenticated V3 handoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          B64="revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64"
+          ARCHIVE="$RUNNER_TEMP/v3-handoff.tar.gz"
+          ROOT="$RUNNER_TEMP/v3-handoff"
+          base64 --decode "$B64" > "$ARCHIVE"
+          test "$(stat -c %s "$ARCHIVE")" = "27500"
+          echo "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728  $ARCHIVE" | sha256sum --check --strict
+          mkdir -p "$ROOT"
+          python - "$ARCHIVE" "$ROOT" <<'PY'
+          from pathlib import Path
+          import sys, tarfile
+          archive = Path(sys.argv[1])
+          root = Path(sys.argv[2]).resolve()
+          with tarfile.open(archive, "r:gz") as handle:
+              members = handle.getmembers()
+              for member in members:
+                  target = (root / member.name).resolve()
+                  if target != root and root not in target.parents:
+                      raise SystemExit("unsafe handoff member: %s" % member.name)
+                  if member.issym() or member.islnk():
+                      raise SystemExit("handoff link forbidden: %s" % member.name)
+              handle.extractall(root, members=members, filter="data")
+          PY
+          echo "V3_PACKET_ROOT=$ROOT/revenue/kaggriculture/cloud-execution-lab/candidates/v3" >> "$GITHUB_ENV"
+
+      - name: Prove exact predecessor failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-exact-tree-materialization-guard/prove_predecessor.py "$V3_PACKET_ROOT/build_v3.py" | tee "$RUNNER_TEMP/predecessor.json"
+          python - "$RUNNER_TEMP/predecessor.json" <<'PY'
+          import json, sys
+          data = json.load(open(sys.argv[1], encoding="utf-8"))
+          assert data["nonempty_merge"]["files"] == ["main.py", "sitecustomize.py"]
+          assert data["path_escape"]["escaped_file_exists"] is True
+          PY
+
+      - name: Apply bounded repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-exact-tree-materialization-guard/repair.patch"
+          cd "$RUNNER_TEMP/v3-handoff"
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+
+      - name: Run successor contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$V3_PACKET_ROOT"
+          python -B -m unittest -v test_build_v3_tree.py
+          python -B -m py_compile build_v3.py test_build_v3_tree.py
+
+      - name: Verify carrier immutability
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- \
+            revenue/kaggriculture/cloud-execution-lab/candidates/.v3-handoff-f68792.b64 \
+            revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-exact-tree-materialization-guard \
+            .github/workflows/titan-v3-exact-tree-materialization-guard.yml

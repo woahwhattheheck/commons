@@ -1,0 +1,14 @@
+{
+  "nonempty_merge": {
+    "stale_survived": true,
+    "main_written": true,
+    "files": [
+      "main.py",
+      "sitecustomize.py"
+    ]
+  },
+  "path_escape": {
+    "escaped_file_exists": true,
+    "target_files": []
+  }
+}

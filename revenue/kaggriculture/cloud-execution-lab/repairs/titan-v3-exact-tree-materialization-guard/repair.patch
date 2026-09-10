@@ -1,0 +1,202 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py
+@@ -24,7 +24,7 @@
+ import sys
+ import tarfile
+ import tempfile
+-from pathlib import Path
++from pathlib import Path, PurePosixPath
+ 
+ HERE = Path(__file__).resolve().parent
+ sys.path.insert(0, str(HERE))
+@@ -103,6 +103,80 @@
+     return shas
+ 
+ 
++def _tree_member(name):
++    """Return a canonical relative POSIX path or reject an unsafe/ambiguous name."""
++    if not isinstance(name, str) or not name or "\\" in name:
++        raise ValueError("unsafe V3 tree member %r" % (name,))
++    relative = PurePosixPath(name)
++    if (
++        relative.is_absolute()
++        or relative.as_posix() != name
++        or any(part in ("", ".", "..") for part in relative.parts)
++    ):
++        raise ValueError("unsafe V3 tree member %r" % (name,))
++    return relative
++
++
++def materialize_tree(files, target):
++    """Publish exactly ``files`` into an absent or empty directory, all-or-nothing.
++
++    A non-empty/file/symlink target is never merged with the candidate.  Bytes are
++    staged beside the target, read back, and only then renamed into place so stale
++    modules and partial writes cannot enter a panel tree.
++    """
++    target = Path(target)
++    if not target.name or target.name in (".", ".."):
++        raise ValueError("unsafe V3 tree target %s" % target)
++    target_was_empty = False
++    if target.is_symlink():
++        raise FileExistsError("refusing symlink --tree target %s" % target)
++    if target.exists():
++        if not target.is_dir():
++            raise FileExistsError("refusing non-directory --tree target %s" % target)
++        if any(target.iterdir()):
++            raise FileExistsError("refusing non-empty --tree target %s" % target)
++        target_was_empty = True
++
++    target.parent.mkdir(parents=True, exist_ok=True)
++    stage = Path(tempfile.mkdtemp(prefix=".%s.stage-" % target.name, dir=str(target.parent)))
++    published = False
++    try:
++        expected = {}
++        for name in sorted(files):
++            relative = _tree_member(name)
++            blob = files[name]
++            if not isinstance(blob, bytes):
++                raise TypeError("V3 tree member %s is not bytes" % name)
++            destination = stage.joinpath(*relative.parts)
++            destination.parent.mkdir(parents=True, exist_ok=True)
++            destination.write_bytes(blob)
++            expected[name] = blob
++
++        observed = {
++            path.relative_to(stage).as_posix(): path.read_bytes()
++            for path in sorted(p for p in stage.rglob("*") if p.is_file())
++        }
++        if observed != expected:
++            raise AssertionError("staged V3 tree differs from requested files")
++
++        if target_was_empty:
++            if target.is_symlink() or not target.is_dir() or any(target.iterdir()):
++                raise FileExistsError("--tree target changed during materialization: %s" % target)
++            target.rmdir()
++        elif target.exists():
++            raise FileExistsError("--tree target appeared during materialization: %s" % target)
++        try:
++            stage.rename(target)
++        except Exception:
++            if target_was_empty and not target.exists():
++                target.mkdir()
++            raise
++        published = True
++    finally:
++        if not published:
++            shutil.rmtree(stage, ignore_errors=True)
++
++
+ def main(argv):
+     canon = Path(argv[argv.index("--canonical") + 1]) if "--canonical" in argv else None
+     files = package_files(canon)
+@@ -111,10 +185,7 @@
+     shas = file_shas(files)
+     if "--tree" in argv:
+         target = Path(argv[argv.index("--tree") + 1])
+-        for name, data in files.items():
+-            path = target / name
+-            path.parent.mkdir(parents=True, exist_ok=True)
+-            path.write_bytes(data)
++        materialize_tree(files, target)
+         print("V3 TREE", target, len(files), "files", digest)
+         return
+     m = manifest()
+--- /dev/null
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_build_v3_tree.py
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Predecessor-killing contracts for exact, atomic V3 --tree materialization."""
++from __future__ import annotations
++
++import os
++from pathlib import Path
++import tempfile
++import unittest
++from unittest import mock
++
++import build_v3
++
++
++class MaterializeTreeTests(unittest.TestCase):
++    def test_main_rejects_nonempty_target_without_merging_stale_module(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            target.mkdir()
++            stale = target / "sitecustomize.py"
++            stale.write_text("raise RuntimeError('stale tree executed')\n", encoding="utf-8")
++            with mock.patch.object(build_v3, "package_files", return_value={"main.py": b"print('ok')\n"}):
++                with self.assertRaisesRegex(FileExistsError, "non-empty"):
++                    build_v3.main(["--tree", str(target)])
++            self.assertEqual(stale.read_text(encoding="utf-8"), "raise RuntimeError('stale tree executed')\n")
++            self.assertFalse((target / "main.py").exists())
++
++    def test_existing_empty_target_is_replaced_by_exact_tree(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            target.mkdir()
++            files = {"main.py": b"MAIN\n", "nested/module.py": b"MODULE\n"}
++            build_v3.materialize_tree(files, target)
++            observed = {
++                path.relative_to(target).as_posix(): path.read_bytes()
++                for path in target.rglob("*") if path.is_file()
++            }
++            self.assertEqual(observed, files)
++            self.assertFalse(any(path.name.startswith(".candidate.stage-") for path in Path(root).iterdir()))
++
++    def test_absent_target_is_published_exactly(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            build_v3.materialize_tree({"main.py": b"MAIN\n"}, target)
++            self.assertEqual((target / "main.py").read_bytes(), b"MAIN\n")
++
++    def test_parent_traversal_is_rejected_without_escape(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            with self.assertRaisesRegex(ValueError, "unsafe V3 tree member"):
++                build_v3.materialize_tree({"../escape.py": b"ESCAPE\n"}, target)
++            self.assertFalse((Path(root) / "escape.py").exists())
++            self.assertFalse(target.exists())
++
++    def test_absolute_and_ambiguous_member_names_are_rejected(self):
++        bad = ("/absolute.py", "./relative.py", "a//b.py", "a\\b.py", "", "a/../b.py")
++        with tempfile.TemporaryDirectory() as root:
++            for index, name in enumerate(bad):
++                with self.subTest(name=name):
++                    target = Path(root) / ("candidate-%d" % index)
++                    with self.assertRaises((TypeError, ValueError)):
++                        build_v3.materialize_tree({name: b"x"}, target)
++                    self.assertFalse(target.exists())
++
++    def test_write_failure_leaves_existing_empty_target_empty(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            target.mkdir()
++            original = Path.write_bytes
++
++            def fail_second(path, data):
++                if path.name == "b.py":
++                    raise OSError("injected write failure")
++                return original(path, data)
++
++            with mock.patch.object(Path, "write_bytes", fail_second):
++                with self.assertRaisesRegex(OSError, "injected"):
++                    build_v3.materialize_tree({"a.py": b"A", "b.py": b"B"}, target)
++            self.assertTrue(target.is_dir())
++            self.assertEqual(list(target.iterdir()), [])
++            self.assertFalse(any(path.name.startswith(".candidate.stage-") for path in Path(root).iterdir()))
++
++    @unittest.skipUnless(hasattr(os, "symlink"), "symlinks unavailable")
++    def test_symlink_target_is_rejected_and_destination_untouched(self):
++        with tempfile.TemporaryDirectory() as root:
++            destination = Path(root) / "elsewhere"
++            destination.mkdir()
++            target = Path(root) / "candidate"
++            os.symlink(destination, target, target_is_directory=True)
++            with self.assertRaisesRegex(FileExistsError, "symlink"):
++                build_v3.materialize_tree({"main.py": b"MAIN"}, target)
++            self.assertEqual(list(destination.iterdir()), [])
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)
