@@ -13,6 +13,10 @@ on:
 permissions:
   contents: read
 
+env:
+  EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+  ARTIFACT_DIR: ${{ runner.temp }}/titan-v3-executable-spend-reserve
+
 jobs:
   exact-source-contracts:
     runs-on: ubuntu-latest
@@ -20,44 +24,83 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Assert exact checkout and clean source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+          mkdir -p "$ARTIFACT_DIR"
       - name: Run executable-prefix predecessor killers
         run: >-
-          python
+          python -B
           revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/test_repair.py
       - name: Run frozen-route exposure contracts
         run: >-
-          python
+          python -B
           revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/test_route_exposure.py
-      - name: Emit deterministic exact-source receipt
-        run: >-
-          python
-          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py
-          --repo "$GITHUB_WORKSPACE"
-          --format json
-          | tee executable-spend-reserve-receipt.json
-      - name: Emit exact one-hunk patch
-        run: >-
-          python
-          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py
-          --repo "$GITHUB_WORKSPACE"
-          --format patch
-          | tee executable-spend-reserve.patch
-      - name: Emit authenticated frozen-route exposure atlas
-        run: >-
-          python
-          revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/route_exposure.py
-          --repo "$GITHUB_WORKSPACE"
-          | tee executable-spend-route-exposure.json
+      - name: Emit and validate deterministic exact-source receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py \
+            --repo "$GITHUB_WORKSPACE" --format json \
+            | tee "$ARTIFACT_DIR/executable-spend-reserve-receipt.json"
+          python - "$ARTIFACT_DIR/executable-spend-reserve-receipt.json" <<'PY'
+          import json
+          import pathlib
+          import sys
+          path = pathlib.Path(sys.argv[1])
+          value = json.loads(path.read_text(encoding="utf-8"))
+          assert value["schema"] == "titan-v3-executable-spend-reserve-closure/v1"
+          assert value["candidate"]["replacement_count"] == 1
+          assert value["candidate"]["unified_diff_hunks"] == 1
+          assert value["canonical_mutated"] is False
+          PY
+      - name: Emit and validate exact one-hunk patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/repair.py \
+            --repo "$GITHUB_WORKSPACE" --format patch \
+            | tee "$ARTIFACT_DIR/executable-spend-reserve.patch"
+          test -s "$ARTIFACT_DIR/executable-spend-reserve.patch"
+          test "$(grep -c '^@@' "$ARTIFACT_DIR/executable-spend-reserve.patch")" -eq 1
+          grep -q '^--- a/revenue/kaggriculture/cloud-execution-lab/scheduler.py' "$ARTIFACT_DIR/executable-spend-reserve.patch"
+          grep -q '^+++ b/revenue/kaggriculture/cloud-execution-lab/scheduler.py' "$ARTIFACT_DIR/executable-spend-reserve.patch"
+      - name: Emit and validate authenticated frozen-route exposure atlas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/cases/executable-spend-reserve-sol-cashline/route_exposure.py \
+            --repo "$GITHUB_WORKSPACE" \
+            | tee "$ARTIFACT_DIR/executable-spend-route-exposure.json"
+          python - "$ARTIFACT_DIR/executable-spend-route-exposure.json" <<'PY'
+          import json
+          import pathlib
+          import sys
+          path = pathlib.Path(sys.argv[1])
+          value = json.loads(path.read_text(encoding="utf-8"))
+          assert value["schema"] == "titan-v3-executable-spend-route-exposure/v1"
+          assert value["scoreboard_causality_claim"] is False
+          assert value["default_cap_status"] in {"EXPOSED", "DORMANT_AT_DEFAULT_CAP"}
+          PY
+      - name: Prove evidence generation did not mutate checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          test -s "$ARTIFACT_DIR/executable-spend-reserve-receipt.json"
+          test -s "$ARTIFACT_DIR/executable-spend-reserve.patch"
+          test -s "$ARTIFACT_DIR/executable-spend-route-exposure.json"
       - uses: actions/upload-artifact@v4
         with:
           name: titan-v3-executable-spend-reserve-receipts
-          path: |
-            executable-spend-reserve-receipt.json
-            executable-spend-reserve.patch
-            executable-spend-route-exposure.json
+          path: ${{ runner.temp }}/titan-v3-executable-spend-reserve/*
           if-no-files-found: error
           retention-days: 30
