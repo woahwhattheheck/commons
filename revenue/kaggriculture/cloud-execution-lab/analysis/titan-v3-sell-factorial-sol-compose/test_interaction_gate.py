@@ -124,7 +124,10 @@ def make_manifest(reports: dict[str, dict]) -> dict:
             "source_sha256": pressure_source,
             "source_git_blob_sha1": hashlib.sha1(b"certified-pressure-source").hexdigest(),
             "receipt_sha256": digest("certified-pressure-receipt"),
-            "delay_bound_source": "shedCapacity",
+            "inventory_window_mode": "parent_candidate_execution_prefix_union",
+            "rival_bound_source": "shedCapacity",
+            "market_order_cap_source": "maxMarketOrdersPerTurn",
+            "price_floor_source": "PRICE_FLOOR",
         },
     }
     expected = {
@@ -413,8 +416,27 @@ class InteractionGateTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.EvidenceError, "contract identity mismatch"):
             gate.assess(reports, manifest)
         manifest = make_manifest(reports)
-        manifest["factors"]["certified_pressure"]["delay_bound_source"] = "proxyQuantity"
-        with self.assertRaisesRegex(gate.EvidenceError, "must be shedCapacity"):
+        manifest["factors"]["certified_pressure"]["rival_bound_source"] = "proxyQuantity"
+        with self.assertRaisesRegex(gate.EvidenceError, "rival_bound_source must be shedCapacity"):
+            gate.assess(reports, manifest)
+
+    def test_pressure_manifest_requires_execution_prefix_union(self):
+        reports = make_reports()
+        manifest = make_manifest(reports)
+        manifest["factors"]["certified_pressure"][
+            "inventory_window_mode"
+        ] = "raw_public_inventory_window"
+        with self.assertRaisesRegex(
+            gate.EvidenceError, "inventory_window_mode must be parent_candidate_execution_prefix_union"
+        ):
+            gate.assess(reports, manifest)
+        manifest = make_manifest(reports)
+        manifest["factors"]["certified_pressure"][
+            "market_order_cap_source"
+        ] = "uncapped_authored_queue"
+        with self.assertRaisesRegex(
+            gate.EvidenceError, "market_order_cap_source must be maxMarketOrdersPerTurn"
+        ):
             gate.assess(reports, manifest)
 
     def test_manifest_evaluator_binding_must_match_reports(self):
