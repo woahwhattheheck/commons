@@ -198,6 +198,60 @@ def _parse_gate(root: Mapping[str, Any]) -> Mapping[str, str]:
     }
 
 
+def _parse_expected_cells(root: Mapping[str, Any]) -> frozenset[CellKey]:
+    raw = _sequence(root.get("expected_cells"), "expected_cells")
+    keys: set[CellKey] = set()
+    seats_by_pair: dict[tuple[str, int], set[int]] = defaultdict(set)
+    for index, item in enumerate(raw):
+        where = f"expected_cells[{index}]"
+        obj = _mapping(item, where)
+        key = CellKey(
+            _text(obj.get("opponent"), f"{where}.opponent"),
+            _integer(obj.get("seed"), f"{where}.seed"),
+            _integer(obj.get("seat"), f"{where}.seat"),
+        )
+        if key.seat not in (0, 1):
+            raise MicroscopeError(f"{where}.seat must be 0 or 1")
+        if key in keys:
+            raise MicroscopeError(f"expected_cells contains duplicate cell {key.display()}")
+        keys.add(key)
+        seats_by_pair[(key.opponent, key.seed)].add(key.seat)
+    if not keys:
+        raise MicroscopeError("expected_cells cannot be empty")
+    incomplete = [
+        f"{opponent}|seed={seed}"
+        for (opponent, seed), seats in sorted(seats_by_pair.items())
+        if seats != {0, 1}
+    ]
+    if incomplete:
+        raise MicroscopeError("expected_cells must contain both seats for every opponent/seed: " + ", ".join(incomplete))
+    return frozenset(keys)
+
+
+def _parse_actions(raw: Any, where: str, action_count: int, seat: int) -> tuple[Any, ...]:
+    records = _sequence(raw, where)
+    if len(records) != action_count:
+        raise MicroscopeError(f"{where} must contain exactly {action_count} returned actions")
+    actions: list[Any] = []
+    wrapper_keys = {"step", "action", "tested_seat", "candidate_seat"}
+    for index, record in enumerate(records):
+        if isinstance(record, Mapping) and "action" in record and set(record) <= wrapper_keys:
+            if "step" not in record:
+                raise MicroscopeError(f"{where}[{index}] wrapper is missing step")
+            if _integer(record["step"], f"{where}[{index}].step") != index:
+                raise MicroscopeError(f"{where}[{index}].step must equal {index}")
+            seat_fields = [field for field in ("tested_seat", "candidate_seat") if field in record]
+            if not seat_fields:
+                raise MicroscopeError(f"{where}[{index}] wrapper is missing tested-seat identity")
+            for field in seat_fields:
+                if _integer(record[field], f"{where}[{index}].{field}") != seat:
+                    raise MicroscopeError(f"{where}[{index}].{field} must equal cell seat {seat}")
+            actions.append(copy.deepcopy(record["action"]))
+        else:
+            actions.append(copy.deepcopy(record))
+    return tuple(actions)
+
+
 def _parse_cell(raw: Any, where: str, action_count: int) -> Cell:
     obj = _mapping(raw, where)
     state = _text(obj.get("state"), f"{where}.state").lower()
@@ -207,12 +261,12 @@ def _parse_cell(raw: Any, where: str, action_count: int) -> Cell:
     seat = _integer(_one_of(obj, ("seat", "candidate_seat", "tested_seat"), f"{where}.seat"), f"{where}.seat")
     if seat not in (0, 1):
         raise MicroscopeError(f"{where}.seat must be 0 or 1")
-    actions = tuple(_unwrap(a) for a in _sequence(
+    actions = _parse_actions(
         _one_of(obj, ("tested_seat_actions", "candidate_actions", "actions"), f"{where}.actions"),
         f"{where}.actions",
-    ))
-    if len(actions) != action_count:
-        raise MicroscopeError(f"{where}.actions must contain exactly {action_count} returned actions")
+        action_count,
+        seat,
+    )
     digest = action_sequence_digest(actions)
     declared = _sha(
         _one_of(obj, ("tested_action_sha256", "candidate_action_sha256"), f"{where}.tested_action_sha256"),
@@ -246,8 +300,9 @@ def _parse_dataset(raw: Any) -> tuple[int, Mapping[str, str], tuple[str, str, st
     if root.get("schema") != SCHEMA:
         raise MicroscopeError(f"dataset.schema must be {SCHEMA!r}")
     action_count = _integer(root.get("expected_action_count", DEFAULT_EXPECTED_ACTION_COUNT), "expected_action_count")
-    if action_count <= 0:
-        raise MicroscopeError("expected_action_count must be positive")
+    if action_count != DEFAULT_EXPECTED_ACTION_COUNT:
+        raise MicroscopeError(f"expected_action_count must equal {DEFAULT_EXPECTED_ACTION_COUNT}")
+    expected_cells = _parse_expected_cells(root)
     gate = _parse_gate(root)
     labels_raw = _sequence(root.get("three_way"), "three_way")
     if len(labels_raw) != 3:
@@ -272,8 +327,10 @@ def _parse_dataset(raw: Any) -> tuple[int, Mapping[str, str], tuple[str, str, st
             if cell.key in cells:
                 raise MicroscopeError(f"versions[{label!r}] contains duplicate cell {cell.key.display()}")
             cells[cell.key] = cell
-        if not cells:
-            raise MicroscopeError(f"versions[{label!r}].cells cannot be empty")
+        if set(cells) != set(expected_cells):
+            missing = sorted(key.display() for key in expected_cells - set(cells))
+            extra = sorted(key.display() for key in set(cells) - expected_cells)
+            raise MicroscopeError(f"grid mismatch for {label}: missing={missing}, extra={extra}")
         versions[label] = Version(label, parsed_identity, cells)
     return action_count, gate, labels, versions  # type: ignore[return-value]
 
@@ -414,13 +471,23 @@ def build_report(raw: Any) -> Mapping[str, Any]:
     c13 = _compare_versions(versions[v1], versions[v3])
     r12, r23, r13 = _rows(c12), _rows(c23), _rows(c13)
     regressions = sorted(key for key, row in r12.items() if _is_regression(row))
-    repairs = sorted(key for key in regressions if not r13[key]["defense_in_depth_issues"] and r13[key]["delta"]["own_cash"] >= 0 and r13[key]["delta"]["outcome_rank"] >= 0 and r23[key]["delta"]["own_cash"] > 0)
+    repairs = sorted(
+        key
+        for key in regressions
+        if r23[key]["classification"] == "candidate_benefit"
+        and r23[key]["action_changed"]
+        and not r23[key]["defense_in_depth_issues"]
+        and not r13[key]["defense_in_depth_issues"]
+        and r13[key]["delta"]["own_cash"] >= 0
+        and r13[key]["delta"]["outcome_rank"] >= 0
+    )
     unrepaired = sorted(set(regressions) - set(repairs))
     new_v3 = sorted(key for key, row in r13.items() if _is_regression(row) and key not in regressions)
     report: dict[str, Any] = {
         "schema": SCHEMA,
         "input_sha256": sha256_json(raw),
         "expected_action_count": action_count,
+        "expected_cell_count": len(versions[v1].cells),
         "upstream_causal_gate": dict(gate),
         "labels": {"v1": v1, "v2": v2, "v3": v3},
         "comparisons": {f"{v1}->{v2}": c12, f"{v2}->{v3}": c23, f"{v1}->{v3}": c13},
