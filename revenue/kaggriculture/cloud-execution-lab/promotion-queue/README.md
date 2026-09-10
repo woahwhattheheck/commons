@@ -14,7 +14,7 @@ existing `../titan-v3-paired-game-gate/` implementation (`gate.py` and
 submit  -> pin candidate, policy, config, opaque engine/runner identities,
            and every configured predecessor panel/artifact
 run     -> verify the submitted input set, then run the existing gate
-receipt -> seal the complete queue pin and gate outcomes
+receipt -> independently bind returned slot hashes to the queue pin and seal
 ```
 
 ## Submission identity
@@ -62,6 +62,12 @@ Before either gate is invoked, the queue:
 - rejects any live path/byte drift, including a drifted rerun;
 - replaces every accepted path with its submitted content-addressed blob;
 - converts malformed state or filesystem races into bounded queue errors.
+
+After the inherited attempt returns and before receipt construction, the queue
+independently requires the exact configured slot set, each predecessor games
+and artifact digest, each slot name, and every available paired-comparison
+input digest to agree with the submitted records. A propagation mismatch fails
+the attempt and cannot be sealed into a promotion receipt.
 
 Legacy candidate-only, six-input, or otherwise incomplete pins fail closed and
 must be resubmitted. A failed drifted rerun preserves the prior sealed receipt
@@ -136,8 +142,9 @@ closure from an identity file.
 
 The parent attempt still emits per-slot contracts, evidence, and predecessor
 identity records. Because this successor rewrites each config path to the
-already submitted blob before delegating, those records describe the same
-panel/artifact bytes present in the queue pin.
+already submitted blob before delegating, those records should describe the
+same panel/artifact bytes present in the queue pin; the pre-seal validator now
+enforces that equality rather than trusting propagation.
 
 ## Gate strategy
 
@@ -155,7 +162,8 @@ panel/artifact bytes present in the queue pin.
 See [RECEIPT-CONTRACT.md](RECEIPT-CONTRACT.md). Every receipt carries the
 complete queue pin, including all dynamic predecessor-slot records; per-slot
 gate evidence; the exact config SHA-256; timings; and a canonical integrity
-digest. Repeated valid attempts form a hash chain.
+digest. Returned predecessor/comparison hashes are checked against the queue
+pin before the receipt is built. Repeated valid attempts form a hash chain.
 
 With `--signing-key`, the queue also applies HMAC-SHA256. Keys are supplied by
 the operator and never enter receipts, logs, or queue state.
@@ -172,8 +180,8 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
   python3 -B -m unittest discover -s tests -v
 ```
 
-The expected full corpus is 81 tests: the parent's 40 plus 41 input-identity
-and CLI boundary tests.
+The expected full corpus is 88 tests: the parent's 40 plus 48 input-identity,
+outcome-binding, and CLI boundary tests.
 
 - `test_pinning`: deterministic content-addressed pins and tamper detection.
 - `test_store`: FIFO, dedupe, status transitions, and rerun history.
@@ -183,6 +191,8 @@ and CLI boundary tests.
   cardinality, malformed JSON, crossed snapshots, and filesystem races.
 - `test_config_drift_cli`: config, predecessor-panel, predecessor-artifact, and
   drifted-rerun boundaries.
+- `test_receipt_binding`: paired/dual positive outcomes and pre-seal rejection
+  of slot, panel, artifact, and candidate-digest substitutions.
 - `test_e2e_mocked`: full dynamic-input CLI flow against contract-shaped mock
   gates, including receipt-to-slot-digest equality.
 - `test_dual_wiring`: queue dual strategy through the real dual gate.
