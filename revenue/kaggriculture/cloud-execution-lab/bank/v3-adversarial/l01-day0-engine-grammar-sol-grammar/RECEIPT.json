@@ -1,0 +1,157 @@
+{
+  "claim": {
+    "slack_channel": "C0C0Z8AHGP2",
+    "slack_ts": "1789068874.920969",
+    "url": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789068874920969"
+  },
+  "created_utc": "2026-09-10T19:44:59Z",
+  "diagnostic_panel": {
+    "action_changed_cells": 8,
+    "control_wins_to_candidate_losses": 8,
+    "games": 16,
+    "lost_wins": 8,
+    "margin_delta": {
+      "max": -4509.0,
+      "mean": -16688.25,
+      "median": -16945.5,
+      "min": -28353.0,
+      "negative": 8,
+      "positive": 0,
+      "sum": -133506.0,
+      "zero": 0
+    },
+    "note": "predecessor diagnostic only; not current-one-tree strength or promotion evidence",
+    "own_delta": {
+      "max": 39715.0,
+      "mean": 9518.75,
+      "median": 14379.0,
+      "min": -30398.0,
+      "negative": 2,
+      "positive": 6,
+      "sum": 76150.0,
+      "zero": 0
+    },
+    "paired_cells": 8,
+    "receipt_sha256": "a42d8c409c1bd69e2719331960707473bdfcdb43cf145e8d2ef0d8f73fb332da",
+    "seats": [
+      0,
+      1
+    ],
+    "seeds": [
+      2611061001,
+      2611061002,
+      2611061003,
+      2611061004
+    ],
+    "source_archive_sha256": "6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1"
+  },
+  "files": {
+    "L01-DAY0-ENGINE-WITNESS.json": "723f83c2d04f830cca791d998ded85275a4c58141bd6966a14e28d41b063ab53",
+    "L01-DAY0-GRAMMAR.patch": "96ae934f8b886eb0610e2420f74c91a7c7462e8914941ae396fd51295ab85d45",
+    "L01-DAY0-PANEL.json": "aa7917b41b0c3c0f6dc7ab4f36482ef7312ddec0718ccef0b497d8b968316a6b",
+    "README.md": "37db5b92b5997af0905dadb1b20762ed3c974a30ac0a07f4a92c41250b82785b",
+    "SOURCE-PACKET-WITNESS.json": "4ffdaa8c5b8a0c8c3a00847a9e5c93deb5e8b71ff941ae43c01fe7191f64e363",
+    "l01_day0_guard.py": "fa991c9ab0866ba47900ee3d65fa39b7b212019373ea88fd38da0c3a77df3596",
+    "official_engine_witness.py": "16e02a3dacd6b6d574b96471bd6e74f1585c5d409e9f9ebd5d26e126f231709e",
+    "repair/checks/test_l01_day0_engine_grammar.py": "022a076c671a452dbf2328d52b34a9ebdd501d70c17b2c8f448178284518c9c0",
+    "repair/l01_mechanics.py": "20eefb55b2b8fde65c34883527a2d2f01cb8b986c28ccd64503e542416cec19d",
+    "source_packet_witness.py": "99c97b65befd8d9797b83b4ca0200fba8507f79a68e41308b44f423329a84d3b",
+    "test_l01_day0_guard.py": "cd33754a8a57b760808989470242c30624cd8cf29d4a4e83a3976931c93e238b",
+    "test_official_engine_witness.py": "d467884d18c606b2ebd5a80dadad1ced8740db7dfcd9eb1989a536e841d0696e",
+    "test_receipts.py": "3b1512d5aa208f7def1adc4fd72bc93fa470de3ccd6e795f4cd08e5c980875d0"
+  },
+  "finding": {
+    "canonical_action": [
+      "BUY_PRODUCT",
+      "WHEAT",
+      13
+    ],
+    "control_minus_shipped_wheat": 11,
+    "disposition": "REJECT_L01_DAY0BUY_AS_SHIPPED",
+    "engine_member_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "engine_witness_receipt_sha256": "5fb0abf33b2ffd1930fc1fd41e68511b6a74d9c4b5ef9e1139d9410212577d45",
+    "shipped_generated_orders": [
+      [
+        "BUY_PRODUCT",
+        "CARROT",
+        14
+      ],
+      [
+        "BUY_PRODUCT",
+        "MELON",
+        20
+      ],
+      [
+        "BUY_PRODUCT",
+        "MILK",
+        40
+      ],
+      [
+        "BUY_PRODUCT",
+        "STRAWBERRY",
+        8
+      ],
+      [
+        "BUY_PRODUCT",
+        "TOMATO",
+        12
+      ],
+      [
+        "BUY_PRODUCT",
+        "WHEAT",
+        2
+      ]
+    ],
+    "sole_executable_action": [
+      "BUY_PRODUCT",
+      "WHEAT",
+      2
+    ],
+    "unsupported_rows": 5
+  },
+  "git": {
+    "base_main": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+    "branch": "sol-grammar/titan-v3-l01-day0-engine-grammar-20260910-01",
+    "repository": "woahwhattheheck/commons"
+  },
+  "nonclaims": [
+    "no generic opening or T03 policy ownership",
+    "no corrected leader basket hypothesis",
+    "no L01 land, sheep, tranche, or leanplant ownership",
+    "no canonical archive, config, pointer, provider, Kaggle, or submission mutation",
+    "no current-main strength claim from the predecessor diagnostic panel"
+  ],
+  "operation": "TITAN-V3-L01-DAY0-ENGINE-GRAMMAR-CLOSURE-20260910-01",
+  "receipt_sha256": "968a3ade2e617b41b13e09823a34dbf192f835720ad6f78f113b981bd45e42e9",
+  "repair": {
+    "future_hypothesis_rule": "legal verbs, explicit cost bound, returned-action activation, and matched games are separate required evidence",
+    "patch_sha256": "96ae934f8b886eb0610e2420f74c91a7c7462e8914941ae396fd51295ab85d45",
+    "repaired_l01_sha256": "20eefb55b2b8fde65c34883527a2d2f01cb8b986c28ccd64503e542416cec19d",
+    "repaired_predecessor_test_sha256": "022a076c671a452dbf2328d52b34a9ebdd501d70c17b2c8f448178284518c9c0",
+    "runtime_policy": "fail closed; preserve canonical row; zero activation; deterministic rejection reason"
+  },
+  "schema": "titan.l01-day0-engine-grammar-carrier.v1",
+  "source": {
+    "l01_preimage_sha256": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+    "main_tape": "7015cc00acfa4922",
+    "manifest_base_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+    "manifest_output_sha256": "1d590a3dc65c51a2cd0c94fb59bf34d713e981173ac6436f8cadfab791f7ffac",
+    "packet_bytes": 27500,
+    "packet_receipt_sha256": "b7d213b1e70d570f282be944373dca9afdb23446848b521a6dca6ff69c8dc985",
+    "packet_sha256": "f68792bf7f0fb269864ef4ab25967292e2d4cd03439dbc5c52b98dfcebd1b728",
+    "test_preimage_sha256": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
+    "transport_disposition": "HOLD_STALE_REPIN acknowledged; this carrier does not relabel the packet as current"
+  },
+  "tests": {
+    "durable_receipt_contracts": 5,
+    "exact_engine_contracts": 5,
+    "full_game_callbacks": "16 complete games x 719 candidate actions; no hosted/provider/Kaggle execution",
+    "guard_contracts": 15,
+    "patch_predecessor_contracts": 6,
+    "total": 31
+  }
+}
