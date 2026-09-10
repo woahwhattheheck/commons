@@ -369,8 +369,8 @@ class MockedEndToEndTests(unittest.TestCase):
                 for comparison in receipt["comparisons"]
             )
         )
+        queue_inputs = receipt["queue_pin"]["inputs"]
         self.assertEqual(
-            set(receipt["queue_pin"]["inputs"]),
             {
                 "candidate_artifact",
                 "candidate_games",
@@ -379,11 +379,32 @@ class MockedEndToEndTests(unittest.TestCase):
                 "engine_identity",
                 "runner_identity",
             },
+            set(queue_inputs) - {
+                name for name in queue_inputs if name.startswith("predecessor_slot.")
+            },
+        )
+        slot_inputs = {
+            name for name in queue_inputs if name.startswith("predecessor_slot.")
+        }
+        self.assertEqual(len(queue_inputs), 10)
+        self.assertEqual(len(slot_inputs), 4)
+        self.assertEqual(
+            sum(name.endswith(".games") for name in slot_inputs),
+            2,
+        )
+        self.assertEqual(
+            sum(name.endswith(".artifact") for name in slot_inputs),
+            2,
         )
         self.assertEqual(
             receipt["extra"]["config_sha256"],
-            receipt["queue_pin"]["inputs"]["predecessor_config"]["sha256"],
+            queue_inputs["predecessor_config"]["sha256"],
         )
+        pinned_digests = {record["sha256"] for record in queue_inputs.values()}
+        self.assertIn(receipt["predecessors"]["frozen_control"]["games_sha256"], pinned_digests)
+        self.assertIn(receipt["predecessors"]["frozen_control"]["artifact_sha256"], pinned_digests)
+        self.assertIn(receipt["predecessors"]["land"]["games_sha256"], pinned_digests)
+        self.assertIn(receipt["predecessors"]["land"]["artifact_sha256"], pinned_digests)
         for comparison in receipt["comparisons"]:
             slot = comparison["slot"]
             provenance = receipt["predecessors"][slot]
@@ -417,7 +438,7 @@ class MockedEndToEndTests(unittest.TestCase):
         verify = self._cli("receipt", submission, "--verify")
         self.assertEqual(verify.returncode, 0, verify.stdout)
 
-    def test_fifo_and_dedupe_include_executable_bytes(self):
+    def test_fifo_and_dedupe_include_all_submission_bytes(self):
         first = self._submit("one", own=110.0, policy_delta=5.0)
         second = self._submit("two", own=110.0, policy_delta=5.0)
         duplicate = self._submit(
