@@ -1,6 +1,9 @@
 name: TITAN V3 source bootstrap
 
 on:
+  push:
+    branches:
+      - sol-astra/titan-v3-roundtrip-netting-20260910-01
   workflow_dispatch:
 
 permissions:
