@@ -74,6 +74,7 @@ jobs:
           )
           python "$CANDIDATE/town_consumption_closure.py" \
             --source "$LAB/frozen_selected.py" \
+            --engine "$LAB/reference/engine/kaggriculture.py" \
             --output /tmp/titan-town-consumption-evidence/frozen_selected_town.py \
             --receipt /tmp/titan-town-consumption-evidence/RECEIPT.json \
             | tee /tmp/titan-town-consumption-evidence/MATERIALIZE.log
