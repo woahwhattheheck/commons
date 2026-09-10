@@ -10,7 +10,7 @@
     promote.py receipt <submission> [--verify]
     promote.py pin <file>
 
-Pipeline: submit (hash-pin inputs) -> run (FIFO paired gate vs frozen
+Pipeline: submit (hash-pin declared inputs) -> run (FIFO paired gate vs frozen
 control AND vs LAND) -> signed tamper-evident receipt. The gate itself is
 always the existing titan-v3-paired-game-gate scripts; this CLI is the
 orchestration and receipt layer around them.
@@ -32,6 +32,7 @@ from pq.executable_pins import (  # noqa: E402
     require_config_pin,
 )
 from pq.pinning import PinStore, sha256_file  # noqa: E402
+from pq.receipt_binding import require_outcome_input_binding  # noqa: E402
 from pq.receipts import ReceiptStore  # noqa: E402
 from pq.runner import RunError  # noqa: E402
 from pq.signing import SigningError, load_key  # noqa: E402
@@ -122,6 +123,14 @@ def _run_one(queue, pins, receipts, entry, config, policy, attempt_obj, strategy
             policy=policy,
             strategy=strategy,
         )
+        # Do not trust propagation merely because the parent currently reads
+        # the submitted blobs. Independently require the returned slot hashes
+        # and comparison inputs to agree with the queue pin before sealing.
+        require_outcome_input_binding(
+            pin_manifest=pin_manifest,
+            config=config,
+            outcome=outcome,
+        )
     except (RunError, QueueError) as exc:
         queue.set_status(submission_id, "failed")
         queue.record_attempt(
@@ -188,7 +197,7 @@ def cmd_run(args) -> int:
         config = load_submission_config(config_path)
         # Observe the supplied bytes without admitting an untrusted drifted
         # config into the content-addressed store. The submitted config is
-        # already one of the six immutable queue inputs.
+        # already one of the immutable queue inputs.
         config_sha256 = sha256_file(config_path)
     except (RunError, OSError) as exc:
         print(f"FAILED run configuration: {exc}")
@@ -219,7 +228,6 @@ def cmd_run(args) -> int:
             return 0
     code = 0
     for entry in entries:
-        # Refresh the entry; another operator may have advanced its status.
         entry = queue.get(entry["id"])
         if entry["status"] != "pending":
             print(f"SKIP {entry['id']}: status={entry['status']}")
@@ -320,7 +328,7 @@ def main(argv=None) -> int:
     p.add_argument(
         "--predecessors",
         required=True,
-        help="predecessor config whose engine/runner identities enter the submission pin",
+        help="config whose role and predecessor-slot inputs enter the queue pin",
     )
     p.add_argument("--note", default="", help="submitter note")
     p.set_defaults(func=cmd_submit)
