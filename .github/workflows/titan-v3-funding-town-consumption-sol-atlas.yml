@@ -14,6 +14,8 @@ jobs:
   exact-head-contracts:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      PYTHONPYCACHEPREFIX: /tmp/titan-town-consumption-pycache
     steps:
       - uses: actions/checkout@v4
         with:
@@ -101,6 +103,7 @@ jobs:
             /tmp/titan-town-consumption-evidence/TEST.log \
             > /tmp/titan-town-consumption-evidence/SHA256SUMS
           git diff --exit-code
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
 
       - name: Retain exact-head evidence
         uses: actions/upload-artifact@v4
