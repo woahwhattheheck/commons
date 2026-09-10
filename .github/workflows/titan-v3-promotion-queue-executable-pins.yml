@@ -1,0 +1,77 @@
+name: titan-v3-promotion-queue-executable-pins
+
+on:
+  push:
+    branches:
+      - sol-pro/titan-v3-pr12072-executable-pin-closure-20260910-01
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/promotion-queue/**"
+      - ".github/workflows/titan-v3-promotion-queue-executable-pins.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/promotion-queue/**"
+      - ".github/workflows/titan-v3-promotion-queue-executable-pins.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-promotion-queue-executable-pins-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-head:
+    name: exact-head / python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Record exact source identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          git rev-parse HEAD
+          git status --porcelain=v1
+
+      - name: Compile promotion queue
+        working-directory: revenue/kaggriculture/cloud-execution-lab/promotion-queue
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          python -B -m compileall -q -f promote.py pq tests
+
+      - name: Run complete promotion queue suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/promotion-queue
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          python -B -m unittest discover -s tests -v
+
+      - name: Prove tests did not mutate tracked or untracked source
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          status="$(git status --porcelain=v1 --untracked-files=all)"
+          if [[ -n "${status}" ]]; then
+            printf '%s\n' "${status}"
+            exit 1
+          fi
