@@ -29,7 +29,9 @@ not random corruption:
 This is a hard publication boundary because exact-string patch anchors, runtime closure,
 `FILES.json`, source pins, tests, and any later gameplay evidence are all interpreted
 relative to the canonical package named by `V3-MANIFEST.json`. A packet cannot inherit a
-newer base merely because a surrounding Slack message names it.
+newer base merely because a surrounding Slack message names it. The `17f536…` /
+`163134…` values above are the exact publication claim being audited, not timeless
+constants: canonical `main` may advance independently after that message.
 
 ## Delivered gate
 
@@ -44,7 +46,21 @@ python -B audit_transport.py \
 
 # Hosted verification of the checked-in immutable finding.
 python -B audit_transport.py --verify-finding FINDING.json
+
+# A successor object must supply its own independently recorded claim profile.
+python -B audit_successor.py \
+  --packet /path/to/new-v3-packet.tar.gz \
+  --claim-profile /path/to/new-publication-claim.json \
+  --output SUCCESSOR-REPORT.json
 ```
+
+`audit_transport.py` is intentionally pinned to the exact historical object and
+publication claim retained by `FINDING.json`. `audit_successor.py` accepts a separately
+sealed profile with schema `titan.v3-one-tree-publication-claim.v1` binding `{file_id,
+transport, package, publication_claim}`. It temporarily binds the same fail-closed parser
+to those expectations, restores every historical constant, and re-seals the report with
+the external claim digest; a new object cannot silently reuse this object's file ID, byte
+identity, or once-current package pins.
 
 Raw mode fails closed on transport byte/hash drift, invalid gzip/TAR, duplicate names,
 absolute/traversal/backslash paths, links or devices, out-of-root files, oversized input,
@@ -56,16 +72,19 @@ missing files, duplicate/non-finite JSON, boolean-as-integer pins, malformed SHA
 - `INVALID` for corruption, ambiguity, or malformed custody.
 
 The report is canonical-JSON sealed and written by create-plus-atomic-replace. The test
-suite contains 17 contracts; hosted CI runs 16 and explicitly skips only the raw Slack
-object. Local raw reproduction runs all 17.
+suite contains 22 contracts; hosted CI runs 21 and explicitly skips only the raw Slack
+object. Local raw reproduction runs all 22. Five successor-profile contracts prove a new
+object is bound to its own sealed file, transport, package, and message identities and
+that the historical module state is restored after evaluation.
 
 ## Required successor
 
 Publish a **new** Slack object whose own `V3-MANIFEST.json`, `FILES.json`, source hashes,
 and rebuilt archive fields bind the same current base and output identities. Do not mutate
-or relabel `F0C0JPCAAQP`. The successor should run this gate in raw mode and receive
-`PASS` before source review, one-tree composition, or any official-engine panel spends a
-single game.
+or relabel `F0C0JPCAAQP`. Record the successor's actual file ID, raw SHA-256/bytes/file
+count, claimed base/archive pins, and Slack message identity in a strict external claim
+profile, then run this gate with `--claim-profile` and receive `PASS` before source review,
+one-tree composition, or any official-engine panel spends a single game.
 
 ## Truth boundary
 
