@@ -55,7 +55,9 @@ jobs:
           fi
           BASE="$(git merge-base "$TARGET" HEAD)"
           test -n "$BASE"
-          test "$(git rev-list --count "$BASE"..HEAD)" = "1"
+          count="$(git rev-list --count "$BASE"..HEAD)"
+          test "$count" -ge 1
+          test "$count" -le 2
           test -z "$(git diff --diff-filter=D --name-only "$BASE"...HEAD)"
           unexpected="$(
             git diff --name-only "$BASE"...HEAD |

@@ -19,6 +19,15 @@
     "../../runtime/variants/v1/FREEZE.json": "38be2cb81c5f1708dce4d63b4c3369414fbeb6a8"
   },
   "frozen_variant_manifest": "../../runtime/variants/v1/FREEZE.json",
+  "inherited_frozen_docs_drift": {
+    "runtime/variants/v1/reference/decision/README.md": {
+      "kind": "titanmcp-1.4.5-docs-footer",
+      "freeze_sha256": "98c3c233192c83042c80c275cabe2d0ae382baab01ed04e69266ed90042c5bb2",
+      "freeze_bytes": 9410,
+      "observed_sha256": "16124115bd29915125221b2e2c08785bf77548a67a0f3de9501845f8658a9a50",
+      "observed_bytes": 9686
+    }
+  },
   "invariants": {
     "queue_rule": "raw market queue is sliced before order parsing",
     "action_marker_phase": "candidate return before interpreter",

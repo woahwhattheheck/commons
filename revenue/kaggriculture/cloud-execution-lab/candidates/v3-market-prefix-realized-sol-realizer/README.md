@@ -70,7 +70,10 @@ The hosted workflow:
   ancestor;
 - rejects unrelated paths, deletions, extra commits, dirty trees, and diff errors;
 - verifies Git-blob identities for current TITAN/config/evaluator/engine/opponents;
-- verifies every byte and SHA-256 entry in the complete frozen-V1 manifest;
+- verifies every frozen-V1 member against FREEZE.json, with the one inherited
+  titanmcp 1.4.5 documentation-footer drift in
+  `runtime/variants/v1/reference/decision/README.md` named in SOURCE.json rather
+  than treated as a silent pass; every `.py` freeze member remains exact;
 - runs all pure and exact-engine contracts;
 - requires `build_integrated.py --check` on unchanged canonical source; and
 - runs 32 games: four development seeds × Arlene/frozen-V1 × both seats ×

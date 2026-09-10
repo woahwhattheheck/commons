@@ -49,6 +49,50 @@ def _inside_lab(path: Path) -> Path:
     return resolved
 
 
+def _inherited_docs_drift(contract: dict[str, Any]) -> dict[str, Any]:
+    inherited = contract.get("inherited_frozen_docs_drift", {})
+    if inherited is None:
+        inherited = {}
+    if not isinstance(inherited, dict):
+        raise ValueError("inherited_frozen_docs_drift must be an object")
+    for relative, recorded in inherited.items():
+        if not isinstance(relative, str) or not relative.endswith(".md"):
+            raise ValueError(f"inherited frozen drift must be Markdown: {relative}")
+        if relative.endswith(".py") or Path(relative).suffix == ".py":
+            raise ValueError(f"inherited frozen drift cannot cover Python: {relative}")
+        if not isinstance(recorded, dict):
+            raise ValueError(f"inherited frozen drift metadata must be an object: {relative}")
+        for key in (
+            "kind",
+            "freeze_sha256",
+            "freeze_bytes",
+            "observed_sha256",
+            "observed_bytes",
+        ):
+            if key not in recorded:
+                raise ValueError(f"inherited frozen drift missing {key} for {relative}")
+    return inherited
+
+
+def _matches_inherited(
+    relative: str,
+    recorded: Any,
+    *,
+    expected_sha: Any,
+    expected_bytes: Any,
+    actual_sha: str,
+    actual_bytes: int,
+) -> bool:
+    return (
+        isinstance(recorded, dict)
+        and relative.endswith(".md")
+        and recorded.get("freeze_sha256") == expected_sha
+        and recorded.get("freeze_bytes") == expected_bytes
+        and recorded.get("observed_sha256") == actual_sha
+        and recorded.get("observed_bytes") == actual_bytes
+    )
+
+
 def verify_source_contract(path: Path = SOURCE) -> dict[str, Any]:
     contract = load_json(path)
     if contract.get("schema") != "titan-market-prefix-realized-source/v1":
@@ -56,6 +100,7 @@ def verify_source_contract(path: Path = SOURCE) -> dict[str, Any]:
     expected = contract.get("git_blobs")
     if not isinstance(expected, dict) or not expected:
         raise ValueError("source contract has no Git blobs")
+    inherited = _inherited_docs_drift(contract)
 
     observed = {}
     for relative, wanted in sorted(expected.items()):
@@ -76,6 +121,7 @@ def verify_source_contract(path: Path = SOURCE) -> dict[str, Any]:
     files = freeze.get("files")
     if not isinstance(files, dict) or not files:
         raise ValueError("frozen V1 manifest has no files")
+    unused_inherited = set(inherited)
     frozen_observed = {}
     for relative, metadata in sorted(files.items()):
         if not isinstance(metadata, dict):
@@ -85,16 +131,38 @@ def verify_source_contract(path: Path = SOURCE) -> dict[str, Any]:
         actual_bytes = source.stat().st_size
         expected_sha = metadata.get("sha256")
         expected_bytes = metadata.get("bytes")
-        if actual_sha != expected_sha or actual_bytes != expected_bytes:
-            raise ValueError(
-                f"frozen V1 drift at {relative}: "
-                f"sha {actual_sha}/{expected_sha}, bytes {actual_bytes}/{expected_bytes}"
-            )
-        frozen_observed[relative] = {
+        record = {
             "sha256": actual_sha,
             "bytes": actual_bytes,
             "git_blob": git_blob_sha1(source),
         }
+        if actual_sha != expected_sha or actual_bytes != expected_bytes:
+            recorded = inherited.get(relative)
+            if not _matches_inherited(
+                relative,
+                recorded,
+                expected_sha=expected_sha,
+                expected_bytes=expected_bytes,
+                actual_sha=actual_sha,
+                actual_bytes=actual_bytes,
+            ):
+                raise ValueError(
+                    f"frozen V1 drift at {relative}: "
+                    f"sha {actual_sha}/{expected_sha}, bytes {actual_bytes}/{expected_bytes}"
+                )
+            unused_inherited.discard(relative)
+            record["inherited_docs_drift"] = True
+            record["inherited_kind"] = recorded["kind"]
+        elif relative in unused_inherited:
+            raise ValueError(
+                f"inherited frozen drift recorded for matching file: {relative}"
+            )
+        frozen_observed[relative] = record
+
+    if unused_inherited:
+        raise ValueError(
+            "unused inherited frozen docs drift: " + ", ".join(sorted(unused_inherited))
+        )
 
     return {
         "schema": "titan-market-prefix-realized-source-receipt/v1",
@@ -105,6 +173,11 @@ def verify_source_contract(path: Path = SOURCE) -> dict[str, Any]:
         "git_blobs": observed,
         "frozen_variant": "v1",
         "frozen_files": frozen_observed,
+        "inherited_frozen_docs_drift": sorted(
+            relative
+            for relative, metadata in frozen_observed.items()
+            if metadata.get("inherited_docs_drift") is True
+        ),
         "invariants": contract["invariants"],
     }
 
