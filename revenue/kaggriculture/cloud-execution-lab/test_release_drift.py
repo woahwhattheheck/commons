@@ -65,6 +65,56 @@ class ReleaseDriftTests(unittest.TestCase):
         main = next(row for row in members if row["member"] == "main.py")
         self.assertEqual(main["fields"], [{"field": "bytes", "actual": True, "expected": 7}])
 
+    def test_true_vs_one_and_false_vs_zero_fail_closed(self):
+        """Predecessor-killing: Python True==1 / False==0 must not hide JSON type drift."""
+        # Top-level scalar field True vs 1
+        deltas = d.field_deltas({"flag": True}, {"flag": 1})
+        self.assertEqual(deltas, [{"field": "flag", "actual": True, "expected": 1}])
+
+        # Top-level scalar field False vs 0
+        deltas = d.field_deltas({"flag": False}, {"flag": 0})
+        self.assertEqual(deltas, [{"field": "flag", "actual": False, "expected": 0}])
+
+        # Nested inside dict (runtime member shape)
+        expected = {
+            "runtime": {
+                "main.py": {"source_path": "main.py", "sha256": "a" * 64, "bytes": 1},
+            }
+        }
+        actual = copy.deepcopy(expected)
+        actual["runtime"]["main.py"]["bytes"] = True
+        members, metadata = d.compare_manifests(actual, expected)
+        self.assertEqual([row["member"] for row in members], ["main.py"])
+        self.assertEqual(metadata, [])
+        main = members[0]
+        self.assertEqual(main["fields"], [{"field": "bytes", "actual": True, "expected": 1}])
+
+        # Nested False vs 0
+        expected2 = {
+            "runtime": {
+                "main.py": {"source_path": "main.py", "sha256": "a" * 64, "bytes": 0},
+            }
+        }
+        actual2 = copy.deepcopy(expected2)
+        actual2["runtime"]["main.py"]["bytes"] = False
+        members2, _ = d.compare_manifests(actual2, expected2)
+        self.assertEqual([row["member"] for row in members2], ["main.py"])
+        self.assertEqual(
+            members2[0]["fields"], [{"field": "bytes", "actual": False, "expected": 0}]
+        )
+
+        # Nested list / mapping recursion
+        self.assertFalse(d.json_values_equal([True], [1]))
+        self.assertFalse(d.json_values_equal({"x": False}, {"x": 0}))
+        self.assertTrue(d.json_values_equal({"x": True}, {"x": True}))
+        self.assertTrue(d.json_values_equal([0, False], [0, False]))
+        self.assertFalse(d.json_values_equal([0, False], [0, 0]))
+
+        # _MISSING handling
+        self.assertTrue(d.json_values_equal(d._MISSING, d._MISSING))
+        self.assertFalse(d.json_values_equal(d._MISSING, None))
+        self.assertFalse(d.json_values_equal(True, d._MISSING))
+
     def test_malformed_runtime_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "actual manifest runtime"):
             d.compare_manifests({"runtime": []}, {"runtime": {}})

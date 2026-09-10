@@ -52,13 +52,30 @@ def _summary(value: Any) -> Any:
     }
 
 
+def json_values_equal(actual: Any, expected: Any) -> bool:
+    """JSON-type-sensitive recursive equality (True != 1, False != 0)."""
+    if actual is _MISSING or expected is _MISSING:
+        return actual is expected
+    if type(actual) is not type(expected):
+        return False
+    if isinstance(actual, dict):
+        if set(actual) != set(expected):
+            return False
+        return all(json_values_equal(actual[k], expected[k]) for k in actual)
+    if isinstance(actual, list):
+        if len(actual) != len(expected):
+            return False
+        return all(json_values_equal(a, e) for a, e in zip(actual, expected))
+    return actual == expected
+
+
 def field_deltas(actual: Mapping[str, Any], expected: Mapping[str, Any]) -> list[dict[str, Any]]:
     """Return deterministic, missing-aware field differences."""
     rows: list[dict[str, Any]] = []
     for field in sorted(set(actual) | set(expected)):
         av = actual[field] if field in actual else _MISSING
         ev = expected[field] if field in expected else _MISSING
-        if av != ev:
+        if not json_values_equal(av, ev):
             rows.append({"field": field, "actual": _summary(av), "expected": _summary(ev)})
     return rows
 
@@ -162,7 +179,7 @@ def analyze(root: Path | None = None) -> dict[str, Any]:
                     "path": b.RECORD + "CURRENT-ARCHIVE.json",
                     "actual_bytes": len(actual_receipt_raw),
                     "actual_sha256": _sha256(actual_receipt_raw),
-                    "semantic_equal": actual_receipt == expected_receipt,
+                    "semantic_equal": json_values_equal(actual_receipt, expected_receipt),
                 },
             },
         )
@@ -172,7 +189,7 @@ def analyze(root: Path | None = None) -> dict[str, Any]:
             and not receipt_drift
             and actual_archive == expected_archive
             and actual_manifest_raw == expected_manifest_raw
-            and actual_receipt == expected_receipt
+            and json_values_equal(actual_receipt, expected_receipt)
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         report["errors"].append(f"{type(exc).__name__}: {exc}")
