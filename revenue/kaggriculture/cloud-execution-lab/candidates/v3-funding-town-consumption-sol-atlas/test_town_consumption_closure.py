@@ -14,6 +14,7 @@ from town_consumption_closure import (
     apply_public_town_consumption,
     materialize,
     receipt,
+    verify_official_engine,
     git_blob_sha1,
 )
 
@@ -79,6 +80,7 @@ class TownConsumptionClosureTests(unittest.TestCase):
             raise unittest.SkipTest("run from repository candidate directory")
         sys.path.insert(0, str(LAB))
         cls.source_text = SOURCE.read_text(encoding="utf-8")
+        cls.engine_text = ENGINE.read_text(encoding="utf-8")
         cls.patched_text = materialize(cls.source_text)
         cls.tmp = tempfile.TemporaryDirectory()
         cls.patched_path = Path(cls.tmp.name) / "frozen_selected_town.py"
@@ -94,7 +96,7 @@ class TownConsumptionClosureTests(unittest.TestCase):
     def test_exact_source_and_engine_closure(self):
         self.assertEqual(git_blob_sha1(self.source_text), EXPECTED_SOURCE_BLOB_SHA1)
         self.assertEqual(
-            git_blob_sha1(ENGINE.read_text(encoding="utf-8")),
+            verify_official_engine(self.engine_text),
             EXPECTED_ENGINE_BLOB_SHA1,
         )
         self.assertEqual(self.patched_text.count("def _funding_apply_town_consumption("), 1)
@@ -196,7 +198,7 @@ class TownConsumptionClosureTests(unittest.TestCase):
         self.assertIn("KeyError", report["error"])
 
     def test_receipt_is_strict_json_and_default_off(self):
-        data = receipt(self.source_text, self.patched_text)
+        data = receipt(self.source_text, self.patched_text, self.engine_text)
         self.assertTrue(data["complete"])
         self.assertFalse(data["canonical_runtime_modified"])
         self.assertFalse(data["hosted_strength_claim"])
