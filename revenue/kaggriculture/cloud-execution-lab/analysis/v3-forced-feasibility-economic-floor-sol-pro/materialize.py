@@ -96,7 +96,8 @@ CALLER_NEW = """\
             gain=info['worst_relative_gain']
             forced=bool(info.get('forced_feasibility',False))
             own_floor=info.get('worst_own_gain',0.0)
-            eligible=gain>0 or (forced and gain>=0 and own_floor>=0)
+            eligible=((forced and gain>=0 and own_floor>=0)
+                      or (not forced and gain>0))
             rank=(gain,forced)
             prior=(-float('inf'),False) if best is None else (
                 best[2]['worst_relative_gain'],
