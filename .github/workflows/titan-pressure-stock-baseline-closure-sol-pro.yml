@@ -1,0 +1,183 @@
+name: TITAN pressure stock-baseline closure
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-pressure-stock-baseline-closure-sol-pro.yml"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_stock_baseline_closure.py"
+  push:
+    branches:
+      - "sol-pro/titan-pressure-stock-baseline-closure-20260910-01"
+    paths:
+      - ".github/workflows/titan-pressure-stock-baseline-closure-sol-pro.yml"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_stock_baseline_closure.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-pressure-stock-baseline-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-stock-baseline-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      PARENT_SHA: 119ece622cde9d8da373719a3367591d14c5e33c
+      ENGINE_BLOB: 3c202c7ee921da239356789e266b694635103fc4
+      MODULE_BLOB: 3f2547f363c4a316350605cab8581b2ce73947b5
+      ENGINE_PATH: revenue/kaggriculture/cloud-execution-lab/mechanics.py
+      MODULE_PATH: revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py
+      PREDECESSOR_TEST: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py
+      DOMAIN_TEST: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_product_domain.py
+      CLOSURE_TEST: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_stock_baseline_closure.py
+      WORKFLOW_PATH: .github/workflows/titan-pressure-stock-baseline-closure-sol-pro.yml
+      EXPECTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - name: Check out immutable event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_HEAD }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind ancestry, source, engine, and exact changed paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git merge-base --is-ancestor "$PARENT_SHA" HEAD
+          test "$(git rev-parse "HEAD:${ENGINE_PATH}")" = "$ENGINE_BLOB"
+          test "$(git rev-parse "HEAD:${MODULE_PATH}")" = "$MODULE_BLOB"
+          python - <<'PY'
+          import os
+          import subprocess
+
+          expected = {
+              os.environ["MODULE_PATH"],
+              os.environ["CLOSURE_TEST"],
+              os.environ["WORKFLOW_PATH"],
+          }
+          changed = {
+              path
+              for path in subprocess.check_output(
+                  ["git", "diff", "--name-only", os.environ["PARENT_SHA"], "HEAD"],
+                  text=True,
+              ).splitlines()
+              if path
+          }
+          if changed != expected:
+              raise SystemExit(
+                  f"out-of-scope diff: expected={sorted(expected)!r} "
+                  f"actual={sorted(changed)!r}"
+              )
+          PY
+
+      - name: Parse changed Python without checkout side effects
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import ast
+          import os
+          from pathlib import Path
+
+          for key in ("MODULE_PATH", "CLOSURE_TEST"):
+              path = Path(os.environ[key])
+              ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          PY
+
+      - name: Run predecessor, product-domain, and stock-baseline contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/titan-pressure-stock-baseline"
+          mkdir -p "$evidence"
+          python -B "$PREDECESSOR_TEST" -v 2>&1 | tee "$evidence/PREDECESSOR.log"
+          grep -Eq '^Ran 11 tests in [0-9.]+s$' "$evidence/PREDECESSOR.log"
+          grep -Fxq 'OK' "$evidence/PREDECESSOR.log"
+          python -B "$DOMAIN_TEST" -v 2>&1 | tee "$evidence/DOMAIN.log"
+          grep -Eq '^Ran 4 tests in [0-9.]+s$' "$evidence/DOMAIN.log"
+          grep -Fxq 'OK' "$evidence/DOMAIN.log"
+          python -B "$CLOSURE_TEST" -v 2>&1 | tee "$evidence/CLOSURE.log"
+          grep -Eq '^Ran 4 tests in [0-9.]+s$' "$evidence/CLOSURE.log"
+          grep -Fxq 'OK' "$evidence/CLOSURE.log"
+
+      - name: Emit deterministic exact-head receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/titan-pressure-stock-baseline"
+          python -B - "$evidence" <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          evidence = Path(sys.argv[1])
+          changed_paths = sorted(
+              [
+                  os.environ["MODULE_PATH"],
+                  os.environ["CLOSURE_TEST"],
+                  os.environ["WORKFLOW_PATH"],
+              ]
+          )
+          payload = {
+              "schema": "titan-pressure-stock-baseline-closure/v1",
+              "claim": "TITAN-V3-PRESSURE-STOCK-BASELINE-CLOSURE-20260910-01",
+              "head": subprocess.check_output(
+                  ["git", "rev-parse", "HEAD"], text=True
+              ).strip(),
+              "parent": os.environ["PARENT_SHA"],
+              "engine_blob": os.environ["ENGINE_BLOB"],
+              "module_blob": os.environ["MODULE_BLOB"],
+              "changed_paths": changed_paths,
+              "sha256": {
+                  path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                  for path in changed_paths
+              },
+              "tests": {"predecessor": 11, "product_domain": 4, "closure": 4},
+              "false_certificate_census": 169226,
+              "witness": {
+                  "public_wheat": 9900,
+                  "prior_buy_units": 11,
+                  "rival_sell_units": 1,
+                  "parent_cash": {"own": 99810, "rival": 36},
+                  "unsafe_cash": {"own": 99809, "rival": 36},
+                  "delta": {"own": -1, "margin": -1},
+              },
+              "guarantee": "unknown post-mutation stock is a hard barrier",
+              "canonical_runtime_mutated": False,
+              "games_run": 0,
+              "promotion_authorized": False,
+              "kaggle_state_mutated": False,
+          }
+          if payload["head"] != os.environ["EXPECTED_HEAD"]:
+              raise SystemExit("receipt head drift")
+          (evidence / "RECEIPT.json").write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          (
+            cd "$evidence"
+            sha256sum PREDECESSOR.log DOMAIN.log CLOSURE.log RECEIPT.json > SHA256SUMS
+            sha256sum -c SHA256SUMS
+          )
+          test -z "$(git status --porcelain)"
+
+      - name: Retain exact-head evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-pressure-stock-baseline-${{ env.EXPECTED_HEAD }}
+          path: ${{ runner.temp }}/titan-pressure-stock-baseline/
+          if-no-files-found: error
+          retention-days: 30
