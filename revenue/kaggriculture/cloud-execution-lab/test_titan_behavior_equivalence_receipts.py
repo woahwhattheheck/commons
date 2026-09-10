@@ -1,6 +1,19 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
+import multiprocessing
+
 from titan_behavior_equivalence_test_support import *
+
+
+def _append_worker(ledger_path: str, worker_id: int, count: int) -> None:
+    report = gate.preflight_family(family_raw())
+    for index in range(count):
+        gate.append_ledger(
+            ledger_path,
+            report,
+            f"worker-{worker_id:02d}-entry-{index:02d}",
+        )
+
 
 class LedgerAndCliTests(unittest.TestCase):
     def test_append_only_ledger_verifies_and_detects_tamper(self) -> None:
@@ -19,6 +32,61 @@ class LedgerAndCliTests(unittest.TestCase):
             ledger.write_text("\n".join(lines) + "\n", encoding="utf-8")
             with self.assertRaisesRegex(gate.BehaviorGateError, "entry_sha256 mismatch"):
                 gate.verify_ledger(ledger)
+
+    def test_unterminated_or_noncanonical_ledger_is_refused_without_mutation(self) -> None:
+        report = gate.preflight_family(family_raw())
+        with tempfile.TemporaryDirectory() as directory:
+            ledger = Path(directory) / "ledger.jsonl"
+            gate.append_ledger(ledger, report, "preflight")
+            canonical = ledger.read_bytes()
+
+            unterminated = canonical[:-1]
+            ledger.write_bytes(unterminated)
+            with self.assertRaisesRegex(gate.BehaviorGateError, "final newline"):
+                gate.verify_ledger(ledger)
+            with self.assertRaisesRegex(gate.BehaviorGateError, "final newline"):
+                gate.append_ledger(ledger, report, "must-not-write")
+            self.assertEqual(unterminated, ledger.read_bytes())
+
+            entry = json.loads(canonical.decode("utf-8"))
+            noncanonical = (
+                json.dumps(entry, sort_keys=False, separators=(", ", ": ")).encode("utf-8")
+                + b"\n"
+            )
+            ledger.write_bytes(noncanonical)
+            with self.assertRaisesRegex(gate.BehaviorGateError, "not canonical JSON"):
+                gate.verify_ledger(ledger)
+
+    def test_concurrent_appenders_form_one_contiguous_chain(self) -> None:
+        workers = 4
+        entries_per_worker = 6
+        with tempfile.TemporaryDirectory() as directory:
+            ledger = Path(directory) / "ledger.jsonl"
+            context = multiprocessing.get_context("spawn")
+            processes = [
+                context.Process(
+                    target=_append_worker,
+                    args=(str(ledger), worker_id, entries_per_worker),
+                )
+                for worker_id in range(workers)
+            ]
+            for process in processes:
+                process.start()
+            for process in processes:
+                process.join(30)
+                if process.is_alive():
+                    process.terminate()
+                    process.join(5)
+                self.assertEqual(0, process.exitcode)
+
+            entries = gate.verify_ledger(ledger)
+            expected_count = workers * entries_per_worker
+            self.assertEqual(expected_count, len(entries))
+            self.assertEqual(list(range(expected_count)), [entry["sequence"] for entry in entries])
+            self.assertEqual(
+                {f"worker-{worker_id:02d}-entry-{index:02d}" for worker_id in range(workers) for index in range(entries_per_worker)},
+                {entry["kind"] for entry in entries},
+            )
 
     def test_invalid_report_receipt_cannot_be_appended(self) -> None:
         report = gate.preflight_family(family_raw())
@@ -68,4 +136,3 @@ class LedgerAndCliTests(unittest.TestCase):
             result = gate.main(["preflight", "--family", str(path), "--json-out", str(output)])
             self.assertEqual(2, result)
             self.assertEqual("REFUSED_DUPLICATE_EXECUTABLES", json.loads(output.read_text())["verdict"])
-

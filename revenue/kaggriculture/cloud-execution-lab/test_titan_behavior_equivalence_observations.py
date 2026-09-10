@@ -121,6 +121,24 @@ class ObservationValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.BehaviorGateError, "outcome=.*contradicts"):
             gate.analyze_equivalence(family, observations)
 
+    def test_outcome_sign_is_derived_from_cash_not_tolerated_reported_margin(self) -> None:
+        family = family_raw()
+        observations = observations_raw(family)
+        cell = observations["candidates"][0]["cells"][0]
+        cell["own_cash"] = cell["rival_cash"]
+        cell["margin"] = 1e-12
+        cell["outcome"] = "WIN"
+        with self.assertRaisesRegex(gate.BehaviorGateError, "cash-derived margin \(TIE\)"):
+            gate.analyze_equivalence(family, observations)
+
+        observations = observations_raw(family)
+        cell = observations["candidates"][0]["cells"][0]
+        cell["own_cash"] = cell["rival_cash"]
+        cell["margin"] = 1e-12
+        cell["outcome"] = "TIE"
+        parsed, _ = gate.validate_observations(observations, gate.validate_family(family))
+        self.assertEqual(0.0, parsed[0].cells[common_keys()[0]].margin)
+
     def test_bool_seed_failed_status_and_games_mismatch_are_rejected(self) -> None:
         family = family_raw()
         observations = observations_raw(family)
@@ -142,5 +160,3 @@ class ObservationValidationTests(unittest.TestCase):
         observations["observations_sha256"] = digest("f")
         with self.assertRaisesRegex(gate.BehaviorGateError, "observations_sha256 mismatch"):
             gate.analyze_equivalence(family, observations)
-
-

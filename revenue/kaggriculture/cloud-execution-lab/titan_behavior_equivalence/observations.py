@@ -173,18 +173,19 @@ def _parse_cell(
 
     own_cash = _finite_number(row.get("own_cash"), f"{where}.own_cash")
     rival_cash = _finite_number(row.get("rival_cash"), f"{where}.rival_cash")
-    margin = _finite_number(row.get("margin"), f"{where}.margin")
+    reported_margin = _finite_number(row.get("margin"), f"{where}.margin")
     derived_margin = own_cash - rival_cash
-    if not math.isclose(margin, derived_margin, rel_tol=0.0, abs_tol=1e-9):
+    if not math.isclose(reported_margin, derived_margin, rel_tol=0.0, abs_tol=1e-9):
         raise BehaviorGateError(
-            f"{where}.margin contradicts own_cash-rival_cash: {margin} != {derived_margin}"
+            f"{where}.margin contradicts own_cash-rival_cash: {reported_margin} != {derived_margin}"
         )
+    margin = 0.0 if derived_margin == 0.0 else derived_margin
 
     outcome = _nonempty_string(row.get("outcome"), f"{where}.outcome").upper()
     expected_outcome = "WIN" if margin > 0 else "LOSS" if margin < 0 else "TIE"
     if outcome != expected_outcome:
         raise BehaviorGateError(
-            f"{where}.outcome={outcome!r} contradicts margin ({expected_outcome})"
+            f"{where}.outcome={outcome!r} contradicts cash-derived margin ({expected_outcome})"
         )
 
     return CellEvidence(
@@ -349,5 +350,3 @@ def _group_by(
     for observation in observations:
         grouped[str(getattr(observation, attribute))].append(observation)
     return grouped
-
-
