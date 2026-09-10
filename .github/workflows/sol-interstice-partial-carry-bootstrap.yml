@@ -7,6 +7,12 @@ on:
     paths:
       - ".github/workflows/sol-interstice-partial-carry-bootstrap.yml"
       - ".interstice-payload/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".github/workflows/sol-interstice-partial-carry-bootstrap.yml"
+      - ".interstice-payload/**"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,6 +29,7 @@ jobs:
       - name: Check out exact transport head
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: true
 
@@ -33,13 +40,14 @@ jobs:
           GZIP_SHA256: 97b869a58a6a05b6c2f49108c52a1e77091d2641857d1282d840a2eb9d4c2134
           PATCH_SHA256: bd10bbfb170c1bee38392b727ab1cb377e7a3d8e0fad1f1033021b56779a2b13
           PATCH_BYTES: "137509"
+          TARGET_BRANCH: ${{ github.head_ref || github.ref_name }}
           CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v3-partial-future-carry-sol-interstice
           PYTHONDONTWRITEBYTECODE: "1"
           PYTHONHASHSEED: "0"
         run: |
           set -euo pipefail
 
-          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
+          git merge-base --is-ancestor "$BASE_SHA" HEAD
           test "$(git diff --name-only "$BASE_SHA" HEAD | sort | tr '\n' ' ')" = ".github/workflows/sol-interstice-partial-carry-bootstrap.yml .interstice-payload/part-00.bin .interstice-payload/part-01.bin .interstice-payload/part-02.bin .interstice-payload/part-03.bin .interstice-payload/part-04.bin .interstice-payload/part-05.bin .interstice-payload/part-06.bin "
 
           cat .interstice-payload/part-*.bin > /tmp/titan-v3-partial-future-carry.patch.gz
@@ -92,4 +100,4 @@ jobs:
           git config user.name "SOL-INTERSTICE bootstrap"
           git config user.email "actions@users.noreply.github.com"
           git commit -m "titan: materialize minimum-capacity partial future liquidation"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          git push origin "HEAD:${TARGET_BRANCH}"
