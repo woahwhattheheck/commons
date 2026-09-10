@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""Fail-closed consumer for same-state returned-action evidence.
+"""Fail-closed consumer for one same-state/same-request returned-action pair.
 
-This module is intentionally additive to ``returned_action_diff.py``.  It does
-not perform network capture.  Instead it validates saved capture bundles from
-the parent harness bottom-up before permitting comparison or temporal
-attribution.
+This module is intentionally narrower than a trajectory analyzer. It validates
+saved capture bundles from ``returned_action_diff.py`` bottom-up, then compares
+ONE pair of deterministic actions. It does not infer temporal ordering,
+state-transition edges, causality, or a first causal divergence across rows.
 
-Security/evidence properties:
+Evidence properties:
 * duplicate JSON keys and non-finite JSON numbers are rejected;
-* capture state/request/action/sample claims are recomputed from payload bytes;
-* both operands must prove the same canonical state and request;
+* persisted state/request/action/sample claims are recomputed where the
+  persisted bytes permit recomputation;
+* both operands must prove the exact same canonical state and request bytes;
 * unstable repeat captures produce HOLD rather than a sample-zero comparison;
 * list order is semantic by default; unordered alignment requires an explicit
-  JSON-path allowlist supplied by the caller;
-* temporal "first divergence" claims require a contiguous, validated equal
-  prefix; and
-* input files must be regular, distinct files and outputs may not alias inputs.
+  reviewed JSON-path allowlist supplied by the caller; and
+* inputs must be regular distinct files and outputs may not alias inputs.
 """
 
 from __future__ import annotations
@@ -34,19 +33,13 @@ from typing import Any, Mapping, Sequence
 
 import returned_action_diff as parent
 
-STRICT_REPORT_FORMAT = "titan-returned-action-diff-strict/v1"
-STRICT_LEDGER_FORMAT = "titan-returned-action-ledger/v1"
-STRICT_LEDGER_REPORT_FORMAT = "titan-returned-action-ledger-report/v1"
+STRICT_REPORT_FORMAT = "titan-returned-action-diff-strict/v2"
 SHA256_LEN = 64
 _MISSING = object()
 
 
 class EvidenceError(ValueError):
     """Evidence is malformed, self-inconsistent, aliased, or insufficient."""
-
-
-class HoldError(EvidenceError):
-    """Evidence is structurally valid but unsafe for attribution."""
 
 
 @dataclass(frozen=True)
@@ -62,6 +55,7 @@ class StrictDifference:
 @dataclass(frozen=True)
 class ValidatedCapture:
     name: str
+    endpoint: str
     source: str
     state: Any
     state_sha256: str
@@ -123,6 +117,14 @@ def strict_loads(text: str) -> Any:
         raise EvidenceError(f"invalid JSON: {exc}") from exc
 
 
+def _json_path_key(key: str) -> str:
+    if key and (key[0].isalpha() or key[0] == "_") and all(
+        ch.isalnum() or ch == "_" for ch in key
+    ):
+        return "." + key
+    return "[" + json.dumps(key, ensure_ascii=False) + "]"
+
+
 def _validate_json_domain(value: Any, path: str = "$") -> None:
     if value is None or isinstance(value, (str, bool, int)):
         return
@@ -169,46 +171,67 @@ def _require_sha(value: Any, field: str) -> str:
     return value
 
 
-def _json_path_key(key: str) -> str:
-    if key and (key[0].isalpha() or key[0] == "_") and all(ch.isalnum() or ch == "_" for ch in key):
-        return "." + key
-    return "[" + json.dumps(key, ensure_ascii=False) + "]"
-
-
-def _numeric_delta(left: int | float, right: int | float) -> tuple[float | int, float | None]:
-    absolute = abs(right - left)
-    denominator = max(abs(left), abs(right))
-    relative = float(absolute / denominator) if denominator else 0.0
-    return absolute, relative
-
-
-def _numbers_close(left: int | float, right: int | float, abs_tol: float, rel_tol: float) -> bool:
-    if isinstance(left, int) and isinstance(right, int) and abs_tol == 0 and rel_tol == 0:
+def _numbers_close(
+    left: int | float,
+    right: int | float,
+    abs_tol: float,
+    rel_tol: float,
+) -> bool:
+    if abs_tol == 0 and rel_tol == 0:
+        if isinstance(left, int) and isinstance(right, int):
+            return left == right
+        if isinstance(left, int) and isinstance(right, float):
+            return right.is_integer() and left == int(right)
+        if isinstance(left, float) and isinstance(right, int):
+            return left.is_integer() and int(left) == right
         return left == right
     try:
-        left_f = float(left)
-        right_f = float(right)
+        return math.isclose(float(left), float(right), abs_tol=abs_tol, rel_tol=rel_tol)
     except OverflowError:
         return left == right
-    if not math.isfinite(left_f) or not math.isfinite(right_f):
-        return left == right
-    return math.isclose(left_f, right_f, abs_tol=abs_tol, rel_tol=rel_tol)
+
+
+def _numeric_delta(
+    left: int | float, right: int | float
+) -> tuple[float | int, float | None]:
+    absolute = abs(right - left)
+    denominator = max(abs(left), abs(right))
+    if not denominator:
+        return absolute, 0.0
+    try:
+        relative = float(absolute / denominator)
+    except (OverflowError, ZeroDivisionError):
+        relative = None
+    return absolute, relative
 
 
 def _identity_scalar(value: Any) -> bool:
     return value is None or isinstance(value, (str, int, float, bool))
 
 
-def _identity_keyset(left: Sequence[Any], right: Sequence[Any]) -> tuple[str, ...] | None:
+def _identity_keyset(
+    left: Sequence[Any], right: Sequence[Any]
+) -> tuple[str, ...] | None:
     items = [*left, *right]
     if not items or not all(isinstance(item, Mapping) for item in items):
         return None
     for keys in parent.IDENTITY_CANDIDATES:
-        if not all(all(key in item and _identity_scalar(item[key]) for key in keys) for item in items):
+        if not all(
+            all(key in item and _identity_scalar(item[key]) for key in keys)
+            for item in items
+        ):
             continue
-        left_tokens = [canonical_json_bytes([item[key] for key in keys]).decode("utf-8") for item in left]
-        right_tokens = [canonical_json_bytes([item[key] for key in keys]).decode("utf-8") for item in right]
-        if len(left_tokens) == len(set(left_tokens)) and len(right_tokens) == len(set(right_tokens)):
+        left_tokens = [
+            canonical_json_bytes([item[key] for key in keys]).decode("utf-8")
+            for item in left
+        ]
+        right_tokens = [
+            canonical_json_bytes([item[key] for key in keys]).decode("utf-8")
+            for item in right
+        ]
+        if len(left_tokens) == len(set(left_tokens)) and len(right_tokens) == len(
+            set(right_tokens)
+        ):
             return tuple(keys)
     return None
 
@@ -218,7 +241,10 @@ def _identity_token(item: Mapping[str, Any], keys: Sequence[str]) -> str:
 
 
 def _identity_path(keys: Sequence[str], item: Mapping[str, Any]) -> str:
-    pieces = [f"{key}={json.dumps(item[key], ensure_ascii=False, sort_keys=True)}" for key in keys]
+    pieces = [
+        f"{key}={json.dumps(item[key], ensure_ascii=False, sort_keys=True)}"
+        for key in keys
+    ]
     return "[" + ",".join(pieces) + "]"
 
 
@@ -231,8 +257,7 @@ def strict_semantic_diff(
     unordered_paths: frozenset[str] = frozenset(),
     path: str = "$",
 ) -> list[StrictDifference]:
-    """Diff JSON values with positional lists unless the exact path is allowlisted."""
-
+    """Diff JSON values; list positions are semantic unless explicitly allowed."""
     if abs_tol < 0 or rel_tol < 0 or not math.isfinite(abs_tol) or not math.isfinite(rel_tol):
         raise EvidenceError("numeric tolerances must be finite and non-negative")
     _validate_json_domain(left, "$left")
@@ -250,9 +275,9 @@ def strict_semantic_diff(
             differences.append(StrictDifference(current_path, "right_missing", left_value, None))
             return
 
-        left_is_number = isinstance(left_value, (int, float)) and not isinstance(left_value, bool)
-        right_is_number = isinstance(right_value, (int, float)) and not isinstance(right_value, bool)
-        if left_is_number and right_is_number:
+        left_number = type(left_value) in (int, float)
+        right_number = type(right_value) in (int, float)
+        if left_number and right_number:
             if not _numbers_close(left_value, right_value, abs_tol, rel_tol):
                 absolute, relative = _numeric_delta(left_value, right_value)
                 differences.append(
@@ -272,8 +297,7 @@ def strict_semantic_diff(
             return
 
         if isinstance(left_value, Mapping):
-            keys = sorted(set(left_value) | set(right_value))
-            for key in keys:
+            for key in sorted(set(left_value) | set(right_value)):
                 visit(
                     left_value.get(key, _MISSING),
                     right_value.get(key, _MISSING),
@@ -288,15 +312,18 @@ def strict_semantic_diff(
                     raise EvidenceError(
                         f"{current_path}: unordered alignment requires a unique reviewed identity key"
                     )
-                left_by_token = {_identity_token(item, identity_keys): item for item in left_value}
-                right_by_token = {_identity_token(item, identity_keys): item for item in right_value}
+                left_by_token = {
+                    _identity_token(item, identity_keys): item for item in left_value
+                }
+                right_by_token = {
+                    _identity_token(item, identity_keys): item for item in right_value
+                }
                 for token in sorted(set(left_by_token) | set(right_by_token)):
                     representative = left_by_token.get(token) or right_by_token[token]
-                    item_path = current_path + _identity_path(identity_keys, representative)
                     visit(
                         left_by_token.get(token, _MISSING),
                         right_by_token.get(token, _MISSING),
-                        item_path,
+                        current_path + _identity_path(identity_keys, representative),
                     )
             else:
                 for index in range(max(len(left_value), len(right_value))):
@@ -315,16 +342,14 @@ def strict_semantic_diff(
 
 
 def _recomputed_internal_difference(first: Any, later: Any) -> dict[str, Any] | None:
-    # Validate the parent's own diagnostic field against the algorithm that
-    # produced it.  This field is never used for attribution; strict action
-    # comparison below remains positional by default.
+    # This validates the parent's diagnostic field only. Attribution below uses
+    # the stricter positional-by-default comparator.
     diffs = parent.semantic_diff(first, later)
     return asdict(diffs[0]) if diffs else None
 
 
 def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> ValidatedCapture:
-    """Validate a parent capture bundle bottom-up and return trusted fields only."""
-
+    """Validate one parent capture bundle bottom-up and return trusted fields."""
     if not isinstance(data, Mapping):
         raise EvidenceError(f"{source}: capture must be an object")
     _validate_json_domain(data)
@@ -332,9 +357,10 @@ def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> Validated
         raise EvidenceError(f"{source}: unsupported capture format")
 
     name = _require_exact_type(data.get("name"), str, f"{source}.name")
-    state = data.get("state")
+    endpoint = _require_exact_type(data.get("endpoint"), str, f"{source}.endpoint")
     if "state" not in data:
         raise EvidenceError(f"{source}.state: missing")
+    state = data["state"]
     state_bytes = canonical_json_bytes(state)
     expected_state_sha = sha256_bytes(state_bytes)
     state_sha = _require_sha(data.get("state_sha256"), f"{source}.state_sha256")
@@ -342,8 +368,12 @@ def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> Validated
     if state_sha != expected_state_sha:
         raise EvidenceError(f"{source}: state_sha256 does not match canonical state bytes")
     if request_sha != expected_state_sha:
-        raise EvidenceError(f"{source}: request_sha256 does not match canonical state bytes")
-    if _require_int(data.get("request_bytes_length"), f"{source}.request_bytes_length", minimum=0) != len(state_bytes):
+        raise EvidenceError(f"{source}: request_sha256 does not match canonical request bytes")
+    if _require_int(
+        data.get("request_bytes_length"),
+        f"{source}.request_bytes_length",
+        minimum=0,
+    ) != len(state_bytes):
         raise EvidenceError(f"{source}: request_bytes_length mismatch")
 
     samples = data.get("samples")
@@ -364,7 +394,9 @@ def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> Validated
         raw_response = sample["raw_response"]
         action = sample["action"]
         claimed_path = sample.get("unwrap_path")
-        if not isinstance(claimed_path, list) or not all(isinstance(item, str) for item in claimed_path):
+        if not isinstance(claimed_path, list) or not all(
+            isinstance(item, str) for item in claimed_path
+        ):
             raise EvidenceError(f"{prefix}.unwrap_path: expected string list")
         recomputed_action, recomputed_path = parent.unwrap_action(raw_response)
         if action != recomputed_action:
@@ -374,42 +406,52 @@ def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> Validated
         action_sha = _require_sha(sample.get("action_sha256"), f"{prefix}.action_sha256")
         if action_sha != sha256_json(action):
             raise EvidenceError(f"{prefix}: action_sha256 mismatch")
-        action_hashes.append(action_sha)
-
         http = sample.get("http")
         if not isinstance(http, Mapping):
             raise EvidenceError(f"{prefix}.http: expected object")
         _require_int(http.get("status"), f"{prefix}.http.status", minimum=100)
-        body_sha = _require_sha(http.get("body_sha256"), f"{prefix}.http.body_sha256")
-        # The parent hashes raw wire bytes before JSON parsing; those bytes are
-        # intentionally not persisted.  We therefore validate the digest's
-        # shape but never mislabel it as recomputed evidence.
-        _ = body_sha
+        # Parent hashes raw wire bytes before JSON parsing, but those bytes are
+        # not persisted. Validate digest shape only; never relabel it as
+        # recomputed evidence.
+        _require_sha(http.get("body_sha256"), f"{prefix}.http.body_sha256")
+        action_hashes.append(action_sha)
         trusted_samples.append((raw_response, action, tuple(recomputed_path), action_sha))
 
     unique_action_count = len(set(action_hashes))
     deterministic = unique_action_count == 1
-    if _require_int(data.get("unique_action_count"), f"{source}.unique_action_count", minimum=1) != unique_action_count:
+    if _require_int(
+        data.get("unique_action_count"),
+        f"{source}.unique_action_count",
+        minimum=1,
+    ) != unique_action_count:
         raise EvidenceError(f"{source}: unique_action_count mismatch")
-    if _require_exact_type(data.get("deterministic"), bool, f"{source}.deterministic") != deterministic:
+    if _require_exact_type(
+        data.get("deterministic"), bool, f"{source}.deterministic"
+    ) != deterministic:
         raise EvidenceError(f"{source}: deterministic flag mismatch")
 
-    first_unstable = next((i for i, value in enumerate(action_hashes[1:], 1) if value != action_hashes[0]), None)
+    first_unstable = next(
+        (i for i, value in enumerate(action_hashes[1:], 1) if value != action_hashes[0]),
+        None,
+    )
     claimed_first_unstable = data.get("first_unstable_sample")
     if claimed_first_unstable is not None:
         claimed_first_unstable = _require_int(
-            claimed_first_unstable, f"{source}.first_unstable_sample", minimum=1
+            claimed_first_unstable,
+            f"{source}.first_unstable_sample",
+            minimum=1,
         )
     if claimed_first_unstable != first_unstable:
         raise EvidenceError(f"{source}: first_unstable_sample mismatch")
 
-    claimed_internal = data.get("first_internal_difference")
     expected_internal = (
-        _recomputed_internal_difference(trusted_samples[0][1], trusted_samples[first_unstable][1])
+        _recomputed_internal_difference(
+            trusted_samples[0][1], trusted_samples[first_unstable][1]
+        )
         if first_unstable is not None
         else None
     )
-    if claimed_internal != expected_internal:
+    if data.get("first_internal_difference") != expected_internal:
         raise EvidenceError(f"{source}: first_internal_difference mismatch")
 
     baseline_raw, baseline_action, baseline_path, baseline_sha = trusted_samples[0]
@@ -426,6 +468,7 @@ def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> Validated
 
     return ValidatedCapture(
         name=name,
+        endpoint=endpoint,
         source=source,
         state=state,
         state_sha256=state_sha,
@@ -440,9 +483,9 @@ def validate_capture_bundle(data: Any, *, source: str = "<memory>") -> Validated
 
 def _pair_proof(left: ValidatedCapture, right: ValidatedCapture) -> dict[str, Any]:
     if left.state_sha256 != right.state_sha256:
-        raise EvidenceError("state SHA-256 mismatch; same-state attribution forbidden")
+        raise EvidenceError("state SHA-256 mismatch; same-state comparison forbidden")
     if left.request_sha256 != right.request_sha256:
-        raise EvidenceError("request SHA-256 mismatch; same-request attribution forbidden")
+        raise EvidenceError("request SHA-256 mismatch; same-request comparison forbidden")
     if left.state_sha256 != left.request_sha256 or right.state_sha256 != right.request_sha256:
         raise EvidenceError("capture state/request identity is internally inconsistent")
     return {
@@ -469,14 +512,18 @@ def compare_validated_captures(
     rel_tol: float = 0.0,
     unordered_paths: frozenset[str] = frozenset(),
 ) -> dict[str, Any]:
+    """Validate and compare one pair; this function makes no cross-row claim."""
     left = validate_capture_bundle(left_data, source=left_source)
     right = validate_capture_bundle(right_data, source=right_source)
     proof = _pair_proof(left, right)
-
     report: dict[str, Any] = {
         "format": STRICT_REPORT_FORMAT,
+        "scope": "single_pair_only",
+        "trajectory_claim": False,
+        "causality_claim": False,
         "left": {
             "name": left.name,
+            "endpoint": left.endpoint,
             "source": left.source,
             "action_sha256": left.action_sha256,
             "sample_count": left.sample_count,
@@ -484,6 +531,7 @@ def compare_validated_captures(
         },
         "right": {
             "name": right.name,
+            "endpoint": right.endpoint,
             "source": right.source,
             "action_sha256": right.action_sha256,
             "sample_count": right.sample_count,
@@ -493,7 +541,6 @@ def compare_validated_captures(
         "unordered_paths": sorted(unordered_paths),
         "tolerances": {"absolute": abs_tol, "relative": rel_tol},
     }
-
     if not left.deterministic or not right.deterministic:
         report.update(
             {
@@ -502,7 +549,7 @@ def compare_validated_captures(
                     "equal": None,
                     "difference_count": None,
                     "first_difference": None,
-                    "reason": "repeat instability forbids cross-version attribution",
+                    "reason": "repeat instability forbids pair attribution",
                 },
             }
         )
@@ -521,105 +568,15 @@ def compare_validated_captures(
                     "equal": not differences,
                     "difference_count": len(differences),
                     "first_difference": asdict(differences[0]) if differences else None,
-                    "by_kind": dict(sorted(Counter(item.kind for item in differences).items())),
+                    "by_kind": dict(
+                        sorted(Counter(item.kind for item in differences).items())
+                    ),
                 },
                 "differences": [asdict(item) for item in differences],
             }
         )
     report["report_sha256"] = _seal(report)
     return report
-
-
-def validate_temporal_ledger(
-    data: Any,
-    *,
-    source: str = "<ledger>",
-    abs_tol: float = 0.0,
-    rel_tol: float = 0.0,
-    unordered_paths: frozenset[str] = frozenset(),
-) -> dict[str, Any]:
-    if not isinstance(data, Mapping) or data.get("format") != STRICT_LEDGER_FORMAT:
-        raise EvidenceError(f"{source}: unsupported temporal ledger format")
-    _validate_json_domain(data)
-    rows = data.get("steps")
-    if not isinstance(rows, list) or not rows:
-        raise EvidenceError(f"{source}.steps: expected non-empty list")
-
-    prior_equal = True
-    equal_prefix_steps = 0
-    first_divergence: dict[str, Any] | None = None
-    validated_rows: list[dict[str, Any]] = []
-    previous_step: int | None = None
-
-    for index, row in enumerate(rows):
-        prefix = f"{source}.steps[{index}]"
-        if not isinstance(row, Mapping):
-            raise EvidenceError(f"{prefix}: expected object")
-        step = _require_int(row.get("step"), f"{prefix}.step", minimum=0)
-        if previous_step is not None and step != previous_step + 1:
-            raise EvidenceError(f"{prefix}.step: temporal ledger must be contiguous")
-        previous_step = step
-        if "left" not in row or "right" not in row:
-            raise EvidenceError(f"{prefix}: left/right capture missing")
-
-        pair = compare_validated_captures(
-            row["left"],
-            row["right"],
-            left_source=f"{prefix}.left",
-            right_source=f"{prefix}.right",
-            abs_tol=abs_tol,
-            rel_tol=rel_tol,
-            unordered_paths=unordered_paths,
-        )
-        if pair["verdict"] == "HOLD_UNSTABLE":
-            result = {
-                "format": STRICT_LEDGER_REPORT_FORMAT,
-                "verdict": "HOLD_UNSTABLE",
-                "source": source,
-                "equal_prefix_steps": equal_prefix_steps,
-                "first_temporal_divergence": None,
-                "hold_step": step,
-                "rows": validated_rows,
-                "unordered_paths": sorted(unordered_paths),
-            }
-            result["report_sha256"] = _seal(result)
-            return result
-
-        equal = pair["verdict"] == "EQUAL"
-        validated_rows.append(
-            {
-                "step": step,
-                "verdict": pair["verdict"],
-                "pair_report_sha256": pair["report_sha256"],
-                "state_sha256": pair["proof"]["state_sha256"],
-                "request_sha256": pair["proof"]["request_sha256"],
-            }
-        )
-        if prior_equal and equal:
-            equal_prefix_steps += 1
-            continue
-        if prior_equal and not equal:
-            first_divergence = {
-                "step": step,
-                "first_difference": pair["summary"]["first_difference"],
-                "left_action_sha256": pair["left"]["action_sha256"],
-                "right_action_sha256": pair["right"]["action_sha256"],
-            }
-            prior_equal = False
-            continue
-
-    verdict = "ALL_EQUAL" if first_divergence is None else "TEMPORAL_DIVERGENCE"
-    result = {
-        "format": STRICT_LEDGER_REPORT_FORMAT,
-        "verdict": verdict,
-        "source": source,
-        "equal_prefix_steps": equal_prefix_steps,
-        "first_temporal_divergence": first_divergence,
-        "rows": validated_rows,
-        "unordered_paths": sorted(unordered_paths),
-    }
-    result["report_sha256"] = _seal(result)
-    return result
 
 
 def _assert_regular_file(path: Path, label: str) -> None:
@@ -667,7 +624,9 @@ def validate_path_separation(inputs: Sequence[Path], outputs: Sequence[Path]) ->
         if info is not None and not stat.S_ISREG(info.st_mode):
             raise EvidenceError("existing output must be a regular file")
         for input_path in inputs:
-            if _resolved(output) == _resolved(input_path) or _same_existing_file(output, input_path):
+            if _resolved(output) == _resolved(input_path) or _same_existing_file(
+                output, input_path
+            ):
                 raise EvidenceError("output path aliases immutable input evidence")
 
 
@@ -689,7 +648,9 @@ def atomic_write_json(path: Path, value: Any) -> None:
         allow_nan=False,
     ) + "\n"
     path.parent.mkdir(parents=True, exist_ok=True)
-    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    fd, temp_name = tempfile.mkstemp(
+        prefix=f".{path.name}.", suffix=".tmp", dir=path.parent
+    )
     temp_path = Path(temp_name)
     try:
         with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
@@ -715,12 +676,10 @@ def atomic_write_json(path: Path, value: Any) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Fail-closed validator/consumer for parent returned-action capture bundles."
+        description="Validate and compare exactly one parent returned-action capture pair."
     )
-    mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--left", type=Path, help="left parent capture bundle")
-    mode.add_argument("--ledger", type=Path, help=f"embedded temporal ledger ({STRICT_LEDGER_FORMAT})")
-    parser.add_argument("--right", type=Path, help="right parent capture bundle; required with --left")
+    parser.add_argument("--left", type=Path, required=True, help="left parent capture bundle")
+    parser.add_argument("--right", type=Path, required=True, help="right parent capture bundle")
     parser.add_argument("--json-out", type=Path)
     parser.add_argument("--abs-tol", type=float, default=0.0)
     parser.add_argument("--rel-tol", type=float, default=0.0)
@@ -728,55 +687,42 @@ def build_parser() -> argparse.ArgumentParser:
         "--unordered-path",
         action="append",
         default=[],
-        help="exact JSON path where unordered identity alignment is explicitly reviewed; repeatable",
+        help="exact reviewed JSON path where order is semantically irrelevant; repeatable",
     )
     parser.add_argument("--fail-on-diff", action="store_true")
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = build_parser()
-    args = parser.parse_args(argv)
+    args = build_parser().parse_args(argv)
     unordered_paths = frozenset(args.unordered_path)
     output_paths = [args.json_out] if args.json_out else []
-
     try:
-        if args.left:
-            if args.right is None:
-                parser.error("--right is required with --left")
-            validate_path_separation([args.left, args.right], output_paths)
-            left = strict_load_file(args.left)
-            right = strict_load_file(args.right)
-            report = compare_validated_captures(
-                left,
-                right,
-                left_source=str(args.left),
-                right_source=str(args.right),
-                abs_tol=args.abs_tol,
-                rel_tol=args.rel_tol,
-                unordered_paths=unordered_paths,
-            )
-        else:
-            if args.right is not None:
-                parser.error("--right is not valid with --ledger")
-            validate_path_separation([args.ledger], output_paths)
-            ledger = strict_load_file(args.ledger)
-            report = validate_temporal_ledger(
-                ledger,
-                source=str(args.ledger),
-                abs_tol=args.abs_tol,
-                rel_tol=args.rel_tol,
-                unordered_paths=unordered_paths,
-            )
-
+        validate_path_separation([args.left, args.right], output_paths)
+        report = compare_validated_captures(
+            strict_load_file(args.left),
+            strict_load_file(args.right),
+            left_source=str(args.left),
+            right_source=str(args.right),
+            abs_tol=args.abs_tol,
+            rel_tol=args.rel_tol,
+            unordered_paths=unordered_paths,
+        )
         if args.json_out:
             atomic_write_json(args.json_out, report)
         else:
-            print(json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False))
-
+            print(
+                json.dumps(
+                    report,
+                    indent=2,
+                    sort_keys=True,
+                    ensure_ascii=False,
+                    allow_nan=False,
+                )
+            )
         if report["verdict"] == "HOLD_UNSTABLE":
             return 3
-        if args.fail_on_diff and report["verdict"] in {"DIFFERENT", "TEMPORAL_DIVERGENCE"}:
+        if args.fail_on_diff and report["verdict"] == "DIFFERENT":
             return 1
         return 0
     except (EvidenceError, OSError, OverflowError, TypeError, ValueError) as exc:
