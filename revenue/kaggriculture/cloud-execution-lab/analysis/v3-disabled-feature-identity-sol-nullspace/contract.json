@@ -1,0 +1,72 @@
+{
+  "call_rules": [
+    {
+      "calls": [
+        "self._continue_weed"
+      ],
+      "class": "SpatialTempo",
+      "id": "spatial.weed.must-have-own-gate",
+      "method": "transform",
+      "path": "spatial_tempo.py",
+      "requires_any": [
+        "weed_continuation"
+      ]
+    },
+    {
+      "calls": [
+        "self._deliver_idle_fertilizer"
+      ],
+      "class": "SpatialTempo",
+      "id": "spatial.idle-delivery.must-be-gated",
+      "method": "transform",
+      "path": "spatial_tempo.py",
+      "requires_any": [
+        "idle_fertilizer"
+      ]
+    },
+    {
+      "calls": [
+        "SpatialTempo",
+        "self.spatial.install"
+      ],
+      "class": "TitanAgent",
+      "id": "runtime.spatial.install.must-be-domain-gated",
+      "method": "_initialize",
+      "path": "titan_runtime.py",
+      "requires_any": [
+        "spatial_pathing",
+        "spatial_tempo",
+        "idle_fertilizer",
+        "crop_release",
+        "weed_continuation"
+      ]
+    }
+  ],
+  "expected_current_findings": [
+    "features.weed_continuation::missing_field::weed_continuation",
+    "runtime.spatial.install.must-be-domain-gated::unguarded_call::SpatialTempo",
+    "runtime.spatial.install.must-be-domain-gated::unguarded_call::self.spatial.install",
+    "spatial.idle-delivery.must-be-gated::unguarded_call::self._deliver_idle_fertilizer",
+    "spatial.weed.must-have-own-gate::unguarded_call::self._continue_weed"
+  ],
+  "field_rules": [
+    {
+      "class": "Features",
+      "id": "features.weed_continuation",
+      "path": "titan_runtime.py",
+      "required": [
+        "weed_continuation"
+      ]
+    }
+  ],
+  "files": {
+    "spatial_tempo.py": {
+      "git_blob_sha1": "edbc423023479dbe2e78131495334384a87b607f"
+    },
+    "titan_runtime.py": {
+      "git_blob_sha1": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+    }
+  },
+  "schema_version": 1,
+  "source_ref": "ed65812449a2cd021b0635a60ff9171957f3e386"
+}
