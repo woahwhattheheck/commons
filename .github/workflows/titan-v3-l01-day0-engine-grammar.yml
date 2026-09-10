@@ -1,0 +1,37 @@
+name: TITAN V3 L01 day0 engine grammar
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - '.github/workflows/titan-v3-l01-day0-engine-grammar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-carrier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile carrier
+        run: >-
+          python -m py_compile
+          revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar/*.py
+      - name: Pure guard and durable receipts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar
+        run: python -m unittest -v test_l01_day0_guard.py test_receipts.py
+      - name: Exact repair snapshot predecessor killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar/repair
+        run: python -m unittest -v checks/test_l01_day0_engine_grammar.py
+      - name: Exact pinned-engine one-turn witness
+        working-directory: revenue/kaggriculture/cloud-execution-lab/bank/v3-adversarial/l01-day0-engine-grammar-sol-grammar
+        env:
+          TITAN_ARCHIVE: ../../../exports/titan-current.tar.gz
+        run: python -m unittest -v test_official_engine_witness.py
