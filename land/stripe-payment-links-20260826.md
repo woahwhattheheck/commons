@@ -45,21 +45,3 @@ If Stripe later fails closed, keep `mailto:tokenjunkielabs@gmail.com`.
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
-
-## Offer shelf — product diagnostics and packs
-
-Live links on Token Junkie Labs `acct_1U6HI9ATH4EDE7XD`, each price taken from its own product page. Each link is also on the product page it belongs to.
-
-| sku | product page | price | link |
-| --- | --- | --- | --- |
-| invoice exception pack | [invoice-exception-pack.html](../invoice-exception-pack.html) | $199 | `https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l` |
-| salesforce contact preflight | [salesforce-contact-preflight.html](../salesforce-contact-preflight.html) | $199 | `https://buy.stripe.com/4gM8wO4SxbnrdKV9h043S0m` |
-| permit intake receipt | [permit-intake-receipt.html](../permit-intake-receipt.html) | $199 | `https://buy.stripe.com/8x2cN42Kp8bf8qBgJs43S0n` |
-| open model release receipt | [open-model-release-receipt.html](../open-model-release-receipt.html) | $199 | `https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o` |
-| fleet work order | [fleet-work-order.html](../fleet-work-order.html) | $199 | `https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p` |
-| catering deposit rescue | [catering-deposit-rescue.html](../catering-deposit-rescue.html) | $199 | `https://buy.stripe.com/dRmdR8acR4Z36it2SC43S0q` |
-| mcp conformance receipt run | [mcp-conformance.html](../mcp-conformance.html) | $49 | `https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r` |
-| mcp conformance same-day repair | [mcp-conformance.html](../mcp-conformance.html) | $250 | `https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s` |
-| pixel agent pack | [pixel-portfolio.html](../pixel-portfolio.html) | $800 | `https://buy.stripe.com/fZufZgfxb9fj8qBbp843S0t` |
-| agent ops operator | [agent-ops.html](../agent-ops.html) | $49/mo | `https://buy.stripe.com/7sYdR8bgVezD8qBgJs43S0u` |
-| agent ops foundry | [agent-ops.html](../agent-ops.html) | $2,500 | `https://buy.stripe.com/4gMcN4gBffDH8qBfFo43S0v` |
