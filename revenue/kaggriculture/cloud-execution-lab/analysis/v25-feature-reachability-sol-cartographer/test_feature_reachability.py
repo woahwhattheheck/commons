@@ -32,19 +32,23 @@ class FeatureReachabilityTests(unittest.TestCase):
                 "class Features:\n"
                 "    seed: bool = True\n"
                 "def use(self, f, config):\n"
-                "    return self.features.seed and f.seed and config.get('funding', True)\n",
+                "    return self.features.seed and f.seed and config.get('funding', True) and getattr(self.features, 'early_capital', False)\n",
                 encoding="utf-8",
             )
             (root / "checks").mkdir()
             (root / "checks" / "test_seed.py").write_text('config["seed"]\n', encoding="utf-8")
-            refs = fr.find_config_references(root, ("seed", "funding", "crop_release"))
+            refs = fr.find_config_references(root, ("seed", "funding", "early_capital", "crop_release"))
             self.assertEqual({row["kind"] for row in refs["seed"]}, {"Features declaration", "attribute access"})
             self.assertEqual(len(refs["seed"]), 2)
             self.assertEqual(len(refs["funding"]), 1)
             self.assertEqual(refs["funding"][0]["kind"], "mapping get")
+            self.assertEqual(len(refs["early_capital"]), 1)
+            self.assertEqual(refs["early_capital"][0]["kind"], "getattr access")
             self.assertEqual(refs["crop_release"], [])
-            self.assertEqual(fr.runtime_access_factors(refs, ("seed", "funding", "crop_release")),
-                             ["seed", "funding"])
+            self.assertEqual(
+                fr.runtime_access_factors(refs, ("seed", "funding", "early_capital", "crop_release")),
+                ["seed", "funding", "early_capital"],
+            )
 
     def test_declaration_alone_is_not_runtime_reachability(self):
         refs = {
