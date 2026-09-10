@@ -237,60 +237,73 @@ class OfficialOneActionWitnessTests(unittest.TestCase):
             sys.modules["kaggle_environments.utils"] = prior_utils
         return module
 
-    def test_three_unoccupied_decay_to_weed_transitions_create_zero_supply(self):
+    def test_unoccupied_decay_to_weed_transitions_leave_only_visible_supply(self):
         engine = self.load_engine()
         rival_farm = {
             "tiles": [
-                [plant(1), plant(1)],
-                [plant(1), None],
+                [
+                    plant(1, crop="CARROT", lifespan=96),
+                    plant(1, crop="CARROT", lifespan=96),
+                ],
+                [
+                    plant(1, crop="CARROT", lifespan=96),
+                    # Metadata-valid later planting remains publicly visible.
+                    plant(1, crop="CARROT", planted_day=1, lifespan=120),
+                ],
             ],
+            # The actor occupies only the surviving visible crop, never a crop
+            # that declines to WEED.
             "farmer": [1, 1],
             "hands": [],
         }
-        old = observation(100, rival_farm)
-        engine._decay_plants(rival_farm, 100)
+        current = observation(96, rival_farm)
+        control = bare(scheduler.SellScheduler)
+        candidate = bare(Patched)
+        control.previous = copy.deepcopy(current)
+        candidate.previous = copy.deepcopy(current)
+
+        for transition in range(96, 101):
+            engine._decay_plants(rival_farm, transition)
+            current = observation(transition + 1, rival_farm)
+            scheduler.SellScheduler.observe(control, copy.deepcopy(current))
+            Patched.observe(candidate, copy.deepcopy(current))
+            control.previous = copy.deepcopy(current)
+            candidate.previous = copy.deepcopy(current)
+
         self.assertEqual(
             [rival_farm["tiles"][0][0], rival_farm["tiles"][0][1], rival_farm["tiles"][1][0]],
             [{"kind": "WEED"}, {"kind": "WEED"}, {"kind": "WEED"}],
         )
-        new = observation(101, rival_farm)
-
-        control = bare(scheduler.SellScheduler)
-        candidate = bare(Patched)
-        control.previous = copy.deepcopy(old)
-        candidate.previous = copy.deepcopy(old)
-        scheduler.SellScheduler.observe(control, copy.deepcopy(new))
-        Patched.observe(candidate, copy.deepcopy(new))
-
+        self.assertEqual(rival_farm["tiles"][1][1]["yield_units"], 1)
         self.assertEqual(
             control.observed_harvests,
-            {"MELON": [(101, 1), (101, 1), (101, 1)]},
+            {"CARROT": [(97, 1), (97, 1), (97, 1)]},
         )
         self.assertEqual(candidate.observed_harvests, {})
         self.assertEqual(
-            scheduler.SellScheduler.rival_supply(control, new, "MELON"), 3
+            scheduler.SellScheduler.rival_supply(control, current, "CARROT"), 3
         )
-        self.assertEqual(Patched.rival_supply(candidate, new, "MELON"), 0)
+        self.assertEqual(Patched.rival_supply(candidate, current, "CARROT"), 1)
 
         common = dict(
-            item="MELON",
-            quantity=4,
-            inventory=9550,
+            item="CARROT",
+            quantity=5,
+            inventory=10002,
             params=None,
-            shops=[],
-            config={"townShopSellInterval": 4, "townCenterSellInterval": 24},
-            now=90,
-            dates=(90, 96),
-            reference=((90, 4),),
+            shops=["PET_CAFE"],
+            config={},
+            now=101,
+            dates=(101, 105, 109),
+            reference=((101, 5),),
             minimum_now=0,
             capacity_ok=lambda _plan: True,
             last=718,
         )
-        clean_plan, clean = scheduler.optimize_lot(rival_quantity=0, **common)
+        clean_plan, clean = scheduler.optimize_lot(rival_quantity=1, **common)
         polluted_plan, polluted = scheduler.optimize_lot(rival_quantity=3, **common)
-        self.assertEqual(clean_plan, ((90, 3),))
-        self.assertEqual(clean["worst_relative_gain"], 1.0)
-        self.assertEqual((polluted_plan, ((90, 4),)))
+        self.assertEqual(clean_plan, ((101, 0), (105, 1), (109, 4)))
+        self.assertEqual(clean["worst_relative_gain"], 5.0)
+        self.assertEqual(polluted_plan, ((101, 5),))
         self.assertEqual(polluted["worst_relative_gain"], 0.0)
 
     def test_actor_must_start_on_tile_to_harvest(self):

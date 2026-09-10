@@ -29,12 +29,18 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def plant(units: int) -> dict[str, Any]:
+def plant(
+    units: int,
+    *,
+    crop: str = "MELON",
+    planted_day: int = 0,
+    lifespan: int = 100,
+) -> dict[str, Any]:
     return {
         "kind": "PLANT",
-        "crop": "MELON",
-        "planted_day": 0,
-        "max_lifespan_step": 100,
+        "crop": crop,
+        "planted_day": planted_day,
+        "max_lifespan_step": lifespan,
         "yield_units": units,
         "watered_today": False,
         "consecutive_unwatered": 0,
@@ -93,17 +99,17 @@ def run_age_decay_witness(engine, patched_class):
     control = bare(scheduler.SellScheduler)
     patched = bare(patched_class)
     farm = {
-        "tiles": [[plant(4)]],
+        "tiles": [[plant(4, crop="CARROT", lifespan=96)]],
         # Keep the actor on the crop so this witness exercises only the parent
         # exact-age discriminator, not the new reachability suppression.
         "farmer": [0, 0],
         "hands": [],
     }
-    current = observation(100, farm)
+    current = observation(96, farm)
     control.previous = copy.deepcopy(current)
     patched.previous = copy.deepcopy(current)
     transitions = []
-    for step in range(100, 105):
+    for step in range(96, 101):
         before = copy.deepcopy(farm["tiles"][0][0])
         engine._decay_plants(farm, step)
         after = copy.deepcopy(farm["tiles"][0][0])
@@ -118,11 +124,13 @@ def run_age_decay_witness(engine, patched_class):
             "after_yield": after.get("yield_units") if isinstance(after, dict) else None,
             "after_kind": after.get("kind") if isinstance(after, dict) else None,
         })
-    control_supply = scheduler.SellScheduler.rival_supply(control, current, "MELON")
-    patched_supply = patched_class.rival_supply(patched, current, "MELON")
+    control_supply = scheduler.SellScheduler.rival_supply(control, current, "CARROT")
+    patched_supply = patched_class.rival_supply(patched, current, "CARROT")
     assert control_supply == 3
     assert patched_supply == 1
     return {
+        "product": "CARROT",
+        "metadata_valid_lifespan": 96,
         "transitions": transitions,
         "control_observed_harvests": control.observed_harvests,
         "candidate_observed_harvests": patched.observed_harvests,
@@ -133,41 +141,59 @@ def run_age_decay_witness(engine, patched_class):
 
 
 def run_actor_reachability_witness(engine, patched_class):
-    contrl = bare(scheduler.SellScheduler)
+    control = bare(scheduler.SellScheduler)
     patched = bare(patched_class)
     farm = {
         "tiles": [
-             [plant(1), plant(1)],
-            [plant(1), None],
+            [
+                plant(1, crop="CARROT", lifespan=96),
+                plant(1, crop="CARROT", lifespan=96),
+            ],
+            [
+                plant(1, crop="CARROT", lifespan=96),
+                plant(1, crop="CARROT", planted_day=1, lifespan=120),
+            ],
         ],
-        # No unit occupies any crop coordinate. A single action cannot move and
-        # harvest, so every decline is publicly proven impossible harvest supply.
+        # The actor occupies only the surviving visible crop. No unit occupies a
+        # declining coordinate, and one action cannot move then harvest.
         "farmer": [1, 1],
         "hands": [],
     }
-    before = observation(100, farm)
-    engine._decay_plants(farm, 100)
-    after = observation(101, farm)
-    control.previous = copy.deepcopy(before)
-    patched.previous = copy.deepcopy(before)
-    scheduler.SellScheduler.observe(control, copy.deepcopy(after))
-    patched_class.observe(patched, copy.deepcopy(after))
-    control_supply = scheduler.SellScheduler.rival_supply(control, after, "MELON")
-    patched_supply = patched_class.rival_supply(patched, after, "MELON")
+    current = observation(96, farm)
+    control.previous = copy.deepcopy(current)
+    patched.previous = copy.deepcopy(current)
+    transitions = []
+    for step in range(96, 101):
+        before_tiles = copy.deepcopy(farm["tiles"])
+        engine._decay_plants(farm, step)
+        current = observation(step + 1, farm)
+        scheduler.SellScheduler.observe(control, copy.deepcopy(current))
+        patched_class.observe(patched, copy.deepcopy(current))
+        control.previous = copy.deepcopy(current)
+        patched.previous = copy.deepcopy(current)
+        transitions.append({
+            "interpreter_step": step,
+            "before_tiles": before_tiles,
+            "after_tiles": copy.deepcopy(farm["tiles"]),
+        })
+    control_supply = scheduler.SellScheduler.rival_supply(control, current, "CARROT")
+    patched_supply = patched_class.rival_supply(patched, current, "CARROT")
     assert control.observed_harvests == {
-        "MELON": [(101, 1), (101, 1), (101, 1)]
+        "CARROT": [(97, 1), (97, 1), (97, 1)]
     }
     assert patched.observed_harvests == {}
     assert control_supply == 3
-    assert patched_supply == 0
+    assert patched_supply == 1
     return {
-        "interpreter_step": 100,
+        "product": "CARROT",
+        "interpreter_steps": [96, 97, 98, 99, 100],
         "predecessor_actor_positions": {
-            "farmer": before["farms"][1]["farmer"],
-            "hands": before["farms"][1]["hands"],
+            "farmer": [1, 1],
+            "hands": [],
         },
-        "crop_coordinates": [[0, 0], [1, 0], [0, 1]],
-        "after_tiles": after["farms"][1]["tiles"],
+        "declining_crop_coordinates": [[0, 0], [1, 0], [0, 1]],
+        "visible_crop_coordinate": [1, 1],
+        "final_tiles": current["farms"][1]["tiles"],
         "control_observed_harvests": control.observed_harvests,
         "candidate_observed_harvests": patched.observed_harvests,
         "control_rival_supply": control_supply,
@@ -176,19 +202,19 @@ def run_actor_reachability_witness(engine, patched_class):
 
 
 def run_optimizer_witness(control_supply: int, patched_supply: int):
-    # Step 96 is a real town-center consumption event. Carrying one MELON across
-    # that event strictly improves the no-rival scenario, while phantom rival
-    # stress 3 blocks the change under the exact current optimizer.
+    # now=101 and replans 105/109 are inside the current-day caller horizon.
+    # PET_CAFE consumes two CARROT at steps 104 and 108. Clean stress 1 admits
+    # carrying stock across those events; phantom stress 3 rejects that plan.
     common = dict(
-        item="MELON",
-        quantity=4,
-        inventory=9550,
+        item="CARROT",
+        quantity=5,
+        inventory=10002,
         params=None,
-        shops=[],
-        config={"townShopSellInterval": 4, "townCenterSellInterval": 24},
-        now=90,
-        dates=(90, 96),
-        reference=((90, 4),),
+        shops=["PET_CAFE"],
+        config={},
+        now=101,
+        dates=(101, 105, 109),
+        reference=((101, 5),),
         minimum_now=0,
         capacity_ok=lambda _plan: True,
         last=718,
@@ -200,18 +226,20 @@ def run_optimizer_witness(control_supply: int, patched_supply: int):
         rival_quantity=patched_supply, **common
     )
     assert control_supply == 3
-    assert patched_supply == 0
-    assert control_plan == ((90, 4),)
+    assert patched_supply == 1
+    assert control_plan == ((101, 5),)
     assert control_info["worst_relative_gain"] == 0.0
-    assert patched_plan == ((90, 3),)
-    assert patched_info["worst_relative_gain"] == 1.0
+    assert patched_plan == ((101, 0), (105, 1), (109, 4))
+    assert patched_info["worst_relative_gain"] == 5.0
+    assert [row["relative_value"] - row["reference_relative_value"] for row in patched_info["scenarios"].values()] == [9, 7, 5, 5, 5]
     return {
-        "item": "MELON",
-        "inventory": 9550,
-        "quantity": 4,
-        "now": 90,
-        "dates": [90, 96],
-        "intervening_town_center_absorption_step": 96,
+        "item": "CARROT",
+        "inventory": 10002,
+        "quantity": 5,
+        "now": 101,
+        "dates": [101, 105, 109],
+        "active_shop": "PET_CAFE",
+        "intervening_shop_absorption_steps": [104, 108],
         "control_rival_supply": control_supply,
         "candidate_rival_supply": patched_supply,
         "control_plan": [list(row) for row in control_plan],
@@ -219,6 +247,7 @@ def run_optimizer_witness(control_supply: int, patched_supply: int):
         "control_worst_relative_gain": control_info["worst_relative_gain"],
         "candidate_worst_relative_gain": patched_info["worst_relative_gain"],
         "candidate_scenarios": patched_info["scenarios"],
+        "peer_assist_slack_ts": "1789077848.040539",
     }
 
 
