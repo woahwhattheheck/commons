@@ -9,7 +9,7 @@ from typing import Any, Mapping
 import bind_execution  # noqa: F401
 import compare  # noqa: F401
 import materialize as lane
-import materialize_evaluator  # noqa: F401
+import materialize_evaluator as evaluator_module
 from delegate import load_parent, reexport
 
 _PARENT = load_parent(
@@ -17,6 +17,45 @@ _PARENT = load_parent(
 )
 _ORIGINAL_COMPARE_BOUND = _PARENT.compare_bound
 _ORIGINAL_MARKDOWN = _PARENT.markdown
+_ORIGINAL_VALIDATE_EVALUATOR = _PARENT.validate_evaluator
+
+
+def validate_evaluator(
+    receipt: Mapping[str, Any], patched_path: Any
+) -> str:
+    """Require exact raw/embedded accounting in addition to parent custody."""
+    expected_sha = _ORIGINAL_VALIDATE_EVALUATOR(receipt, patched_path)
+    patched = receipt.get("patched")
+    if not isinstance(patched, Mapping):
+        raise _PARENT.BoundCompareError("patched evaluator is not an object")
+    patches = patched.get("patches")
+    if not isinstance(patches, list) or len(patches) != len(evaluator_module.NEEDLES):
+        raise _PARENT.BoundCompareError("evaluator patch receipt is incomplete")
+
+    data = patched_path.resolve(strict=True).read_bytes()
+    helper = lane._load_base()
+    for index, (row, needle) in enumerate(
+        zip(patches, evaluator_module.NEEDLES, strict=True)
+    ):
+        if not isinstance(row, Mapping):
+            raise _PARENT.BoundCompareError(
+                f"evaluator patch {index} is not an object"
+            )
+        old, new, label = needle
+        raw_after = data.count(old)
+        embedded = new.count(old)
+        if (
+            row.get("label") != label
+            or row.get("old_sha256") != helper.sha256(old)
+            or row.get("new_sha256") != helper.sha256(new)
+            or row.get("old_occurrences_after_raw") != raw_after
+            or row.get("old_occurrences_embedded_in_replacement") != embedded
+            or raw_after - embedded != 0
+        ):
+            raise _PARENT.BoundCompareError(
+                f"evaluator patch {index} raw/embedded accounting is invalid"
+            )
+    return expected_sha
 
 
 def compare_bound(*args: Any, **kwargs: Any) -> dict[str, Any]:
@@ -47,6 +86,7 @@ def markdown(report: Mapping[str, Any]) -> str:
     return rendered
 
 
+_PARENT.validate_evaluator = validate_evaluator
 _PARENT.compare_bound = compare_bound
 _PARENT.markdown = markdown
 reexport(_PARENT, globals())
