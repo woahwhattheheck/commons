@@ -1,0 +1,75 @@
+name: TITAN V3 source bootstrap
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v3-source-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          persist-credentials: true
+
+      - name: Bind bootstrap branch and materialize source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "sol-astra/titan-v3-roundtrip-netting-20260910-01"
+          cat .github/titan-v3-bundle/part-* > /tmp/titan-v3-roundtrip-source.tar.gz
+          echo "7f41ffe93e940372840e4a7aa1390313416c651da90129cf45492d55723f2314  /tmp/titan-v3-roundtrip-source.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/titan-v3-roundtrip-source.tar.gz
+          rm -rf .github/titan-v3-bundle .github/workflows/titan-v3-bootstrap.yml
+          test -f .github/workflows/titan-v3-roundtrip-netting.yml
+          test -f revenue/kaggriculture/cloud-execution-lab/candidates/v3-roundtrip-netting/main.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify exact source before publication
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-roundtrip-netting
+          python -m py_compile \
+            main.py roundtrip_netting.py hire_cardinality.py \
+            replay_evidence.py verify_replay_evidence.py \
+            build_replay_evidence.py build_candidate_archive.py compare_matched.py
+          python -m unittest -v \
+            test_roundtrip_netting.py \
+            test_hire_cardinality.py \
+            test_entrypoint.py \
+            test_replay_evidence.py \
+            test_compare_matched.py \
+            test_support_mechanics.py
+          python verify_replay_evidence.py
+          python build_candidate_archive.py \
+            --runner-head "$(git rev-parse HEAD)" \
+            --output /tmp/titan-v3-roundtrip.tar.gz \
+            --receipt /tmp/titan-v3-roundtrip-archive.json
+          test -s /tmp/titan-v3-roundtrip.tar.gz
+          test -s /tmp/titan-v3-roundtrip-archive.json
+
+      - name: Publish verified source commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git config user.name "TITAN SOL-ASTRA"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git add -A
+          git commit -m "feat(titan): add adaptive round-trip V3 candidate"
+          git push origin "HEAD:$GITHUB_REF_NAME"
