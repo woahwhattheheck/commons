@@ -1,0 +1,71 @@
+{
+  "branch": "sol-pro/titan-v3-current-intent-priority-integration-20260910-01",
+  "canonical_archive_sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
+  "canonical_base_head": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
+  "canonical_scheduler_git_blob_sha1": "a483b24dd72b580d7d8811636b54d2d44f391575",
+  "created_date": "2026-09-10",
+  "factor": {
+    "changed_runtime_files_when_enabled": [
+      "scheduler.py"
+    ],
+    "priority": [
+      "existing pending scheduler intent",
+      "inherited baseline SELL first-seen order",
+      "remaining PRODUCTS order"
+    ],
+    "target_domain_change": false,
+    "target_quantity_change": false
+  },
+  "fresh_panel": {
+    "candidate": "exact current canonical archive plus scheduler-only priority factor",
+    "candidate_actions_per_game": 719,
+    "control": "exact current canonical archive",
+    "opponents": [
+      "arlene",
+      "v1"
+    ],
+    "seats": [
+      0,
+      1
+    ],
+    "seeds": [
+      539131249,
+      1834999074,
+      2609097301,
+      2609097302,
+      2609097303,
+      2609097304,
+      2611092201,
+      2611092207
+    ],
+    "status": "workflow_pending"
+  },
+  "mutations_forbidden": [
+    "canonical runtime",
+    "TITAN-CONFIG.json",
+    "exports/titan-current.tar.gz",
+    "current archive/source pointers",
+    "provider state",
+    "Kaggle notebook",
+    "Kaggle submission"
+  ],
+  "operation": "TITAN-V3-CURRENT-INTENT-PRIORITY-INTEGRATION-20260910-01",
+  "owner": "SOL-PRO",
+  "schema_version": 1,
+  "upstream_evidence": {
+    "artifact": 10168056904,
+    "artifact_sha256": "528f7557a899c1376c8fe04ed328c70a17a760aa3a725e190710ea13ad7e13f8",
+    "candidate_action_changed_cells": 6,
+    "cells": 32,
+    "head": "c3c2668d4822713afb126579f2f253788372f6ea",
+    "lost_wins": 0,
+    "mean_margin_delta": 6.25,
+    "mean_own_delta": 8.375,
+    "median_own_delta": 0.0,
+    "negative_cells": 0,
+    "new_losses": 0,
+    "official_games": 64,
+    "pull_request": 11963,
+    "workflow_run": 34516136132
+  }
+}
