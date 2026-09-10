@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "effect_orientation": "weed ON minus weed OFF",
+  "cases": [
+    {
+      "seed": 2609097303,
+      "candidate_seat": 1,
+      "capture_sha256": {
+        "on": "b6849c358807b2c9fac5834b18b80d92849b28b03666d4cc2b88d17244bb1e40",
+        "off": "f1007fc82f2e5bfde228d486a7ba6bbcf7f7e4ac0bb8fb37705fbe93c3bce2f4"
+      },
+      "scores": {
+        "on": [44103.0, 50813.0],
+        "off": [102891.0, 101328.0],
+        "own_delta_on_minus_off": -50515.0,
+        "rival_delta_on_minus_off": -58788.0,
+        "margin_delta_on_minus_off": 8273.0,
+        "outcome": "L->W"
+      },
+      "first_candidate_action_divergence": {
+        "step": 30,
+        "same_world_pre": true,
+        "world_pre_sha256": "6fd63257cb4d04f17e45ff18eea0ce35deab32c62df6d70c232e4092a7e62d1e",
+        "actor": 3,
+        "on": ["BUILD_PASTURE"],
+        "off": ["PASS"]
+      },
+      "first_world_post_divergence": {
+        "step": 30,
+        "on_sha256": "e3663de5950ef7aaf5fb25154c4591bf80e610e6abe1a71e483ace510e95dc42",
+        "off_sha256": "ff7b51973d25a7af4b9775ba99311b2ce00f2d72f43e44b7bbd1680f50b3a3c4"
+      },
+      "first_tile_divergence": {
+        "observed_step": 31,
+        "site": [4, 2],
+        "on": {"kind": "PASTURE"},
+        "off": null
+      },
+      "capital_cascade_boundary": {
+        "step": 88,
+        "bank_after_step_87": [141.0, 142.0],
+        "market_on": [["SELL", "FERTILIZER", 3], ["BUY_ANIMAL", "COW", 1]],
+        "market_off": [["SELL", "FERTILIZER", 2], ["BUY_ANIMAL", "COW", 1]],
+        "bank_on": [30.0, 31.0],
+        "bank_off": [30.0, 335.0],
+        "candidate_bank_delta_on_minus_off": -304.0,
+        "mechanism": "third fertilizer sale crosses the fixed $400 COW threshold; OFF's BUY_ANIMAL does not fill"
+      },
+      "first_bank_divergence": {
+        "step": 88,
+        "bank_on": [30.0, 31.0],
+        "bank_off": [30.0, 335.0]
+      },
+      "first_opponent_action_divergence": {
+        "step": 242,
+        "on": {
+          "farmer": ["WEST"],
+          "hands": [["WEST"], ["NORTH"], ["WEST"], ["WEST"], ["NORTH"], ["WEST"], ["WEST"], ["PICKUP", "WHEAT", 5], ["WEST"], ["WEST"], ["WEST"]],
+          "market": [["SELL", "FERTILIZER", 3], ["BUY_PRODUCT", "WHEAT", 5]]
+        },
+        "off": {
+          "farmer": ["WEST"],
+          "hands": [["WEST"], ["NORTH"], ["WEST"], ["WEST"], ["NORTH"], ["WEST"], ["WEST"], ["PICKUP", "WHEAT", 5], ["WEST"], ["WEST"], ["WEST"]],
+          "market": [["SELL", "FERTILIZER", 3], ["BUY_PRODUCT", "WHEAT", 5], ["SELL", "WHEAT", 2]]
+        }
+      },
+      "productive_use_refutation": {
+        "site": [4, 2],
+        "animal_present_by_step": 70,
+        "animal": "COW",
+        "first_harvest_step": 253,
+        "conclusion": "a later-use-only guard would admit both harmful-cash witnesses"
+      }
+    },
+    {
+      "seed": 2609097306,
+      "candidate_seat": 0,
+      "capture_sha256": {
+        "on": "69c7ae7de6edf8b2284864f6fc3fc19b892abbe36d6eec1efbecf09e9c27a220",
+        "off": "ade469c83e55dc58067fa57ab6822e4b81a8de67c2098d970285cd8d7cf90fa5"
+      },
+      "scores": {
+        "on": [83197.0, 81131.0],
+        "off": [105296.0, 106050.0],
+        "own_delta_on_minus_off": -22099.0,
+        "rival_delta_on_minus_off": -24919.0,
+        "margin_delta_on_minus_off": 2820.0,
+        "outcome": "L->W"
+      },
+      "first_candidate_action_divergence": {
+        "step": 30,
+        "same_world_pre": true,
+        "world_pre_sha256": "b32bede3e8f13fddc98c3f05d8224fe8871a4bb637df6ce16432d0df772b3c6e",
+        "actor": 3,
+        "on": ["BUILD_PASTURE"],
+        "off": ["PASS"]
+      },
+      "first_world_post_divergence": {
+        "step": 30,
+        "on_sha256": "e3663de5950ef7aaf5fb25154c4591bf80e610e6abe1a71e483ace510e95dc42",
+        "off_sha256": "3a15ac2e1b5f4b9d2104d9758791664d492796ed3c4530d0652050994fcd9969"
+      },
+      "first_tile_divergence": {
+        "observed_step": 31,
+        "site": [4, 2],
+        "on": {"kind": "PASTURE"},
+        "off": null
+      },
+      "capital_cascade_boundary": {
+        "step": 88,
+        "bank_after_step_87": [142.0, 141.0],
+        "market_on": [["SELL", "FERTILIZER", 3], ["BUY_ANIMAL", "COW", 1]],
+        "market_off": [["SELL", "FERTILIZER", 2], ["BUY_ANIMAL", "COW", 1]],
+        "bank_on": [31.0, 30.0],
+        "bank_off": [335.0, 30.0],
+        "candidate_bank_delta_on_minus_off": -304.0,
+        "mechanism": "third fertilizer sale crosses the fixed $400 COW threshold; OFF's BUY_ANIMAL does not fill"
+      },
+      "first_bank_divergence": {
+        "step": 88,
+        "bank_on": [31.0, 30.0],
+        "bank_off": [335.0, 30.0]
+      },
+      "first_opponent_action_divergence": {
+        "step": 436,
+        "on": {
+          "farmer": ["HARVEST"],
+          "hands": [["NORTH"], ["WATER"], ["WEST"], ["WEST"], ["NORTH"], ["FEED"], ["WATER"], ["FEED"], ["COLLECT_FERTILIZER"], ["SOUTH"], ["PICKUP", "FERTILIZER"], ["EAST"]],
+          "market": []
+        },
+        "off": {
+          "farmer": ["HARVEST"],
+          "hands": [["NORTH"], ["WATER"], ["WEST"], ["WEST"], ["NORTH"], ["FEED"], ["WATER"], ["FEED"], ["COLLECT_FERTILIZER"], ["SOUTH"], ["PICKUP", "FERTILIZER"], ["EAST"]],
+          "market": [["SELL", "MILK", 4]]
+        }
+      },
+      "productive_use_refutation": {
+        "site": [4, 2],
+        "animal_present_by_step": 70,
+        "animal": "COW",
+        "first_harvest_step": 253,
+        "conclusion": "a later-use-only guard would admit both harmful-cash witnesses"
+      }
+    }
+  ],
+  "cross_case_conclusion": {
+    "same_first_action": true,
+    "same_site": true,
+    "same_first_bank_step": true,
+    "blanket_off_safe": false,
+    "productive_use_guard_sufficient": false
+  }
+}
