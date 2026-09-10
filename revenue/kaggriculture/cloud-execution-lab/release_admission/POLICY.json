@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "pointer_path": "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json",
+  "champion_path": "revenue/kaggriculture/cloud-execution-lab/release_admission/CHAMPION.json",
+  "gate_tool_path": "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/gate.py",
+  "bootstrap_champion": {
+    "champion_name": "titan-v1-submitted",
+    "archive_path": "exports/historical/titan-7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524.tar.gz",
+    "archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
+    "status": "grandfathered_submitted_baseline"
+  },
+  "minimum_grid": {
+    "seeds": 16,
+    "opponents": 6,
+    "seats": [0, 1],
+    "expected_cells": 192
+  },
+  "required_checks": [
+    "mean_own_delta",
+    "median_own_delta",
+    "mean_margin_delta",
+    "positive_cell_fraction",
+    "positive_pair_fraction",
+    "result_regressions",
+    "baseline_win_regressions",
+    "new_losses",
+    "negative_opponent_strata",
+    "negative_seat_strata",
+    "any_score_change"
+  ]
+}

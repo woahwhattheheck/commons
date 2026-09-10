@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "champion_name": "titan-v1-submitted",
+  "archive_path": "exports/historical/titan-7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524.tar.gz",
+  "archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
+  "source_manifest_sha256": null,
+  "previous_champion_sha256": null,
+  "promotion_evidence_dir": null,
+  "status": "grandfathered_submitted_baseline"
+}

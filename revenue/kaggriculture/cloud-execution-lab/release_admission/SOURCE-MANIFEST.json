@@ -1,0 +1,47 @@
+{
+  "base_commit": "14ede5571e0c0e0c9536f517b7d4f17f00e92538",
+  "files": [
+    {
+      "bytes": 2968,
+      "path": ".github/workflows/titan-measured-champion-guard.yml",
+      "sha256": "bc20dddbe0a265a56842f77720a574d86e4b02497a5f0d3610c0cc9d2e5520fc"
+    },
+    {
+      "bytes": 425,
+      "path": "revenue/kaggriculture/cloud-execution-lab/release_admission/CHAMPION.json",
+      "sha256": "2c28cc806bc96cb16896252e750ab97ebd2cd8362a17cce60f3f5bcbd184449a"
+    },
+    {
+      "bytes": 1093,
+      "path": "revenue/kaggriculture/cloud-execution-lab/release_admission/POLICY.json",
+      "sha256": "e48cb476864a0966f4407ee6160848dbe339fed9e94d2fc4f14fbc3806cd68c0"
+    },
+    {
+      "bytes": 4232,
+      "path": "revenue/kaggriculture/cloud-execution-lab/release_admission/README.md",
+      "sha256": "e9bdecda3b85f4cced27f897be7d074d45e523269c01fd81535c8e1d981b823f"
+    },
+    {
+      "bytes": 1965,
+      "path": "revenue/kaggriculture/cloud-execution-lab/release_admission/RESULTS.md",
+      "sha256": "a4b01c8bb74a45a826ab79d1c8ec13de9c29d20ebaae7e957b5e9f8d29ef00ee"
+    },
+    {
+      "bytes": 2122,
+      "path": "revenue/kaggriculture/cloud-execution-lab/release_admission/THREAT-MODEL.md",
+      "sha256": "5bdba428049ba167fbdadce09e3f907d61a748c5ac0a1a8170a3a320cd166507"
+    },
+    {
+      "bytes": 36736,
+      "path": "revenue/kaggriculture/cloud-execution-lab/release_admission/guard.py",
+      "sha256": "2eb03ec3dd244543e45f367173adf8cd3c5f22510d44f118b0b58a56964cfb6c"
+    },
+    {
+      "bytes": 28607,
+      "path": "revenue/kaggriculture/cloud-execution-lab/test_release_admission.py",
+      "sha256": "9e98a7da367cd8daca873a63b698cc6407cb14d432134f78fadded4df0d047ee"
+    }
+  ],
+  "operation": "titan-v3-measured-champion-firewall-20260909-sol-firewall-01",
+  "schema": "titan-measured-champion-source-manifest-v1"
+}
