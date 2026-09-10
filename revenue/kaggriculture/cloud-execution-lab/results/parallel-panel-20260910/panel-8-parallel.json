@@ -1,0 +1,235 @@
+{
+  "schema": "titan.parallel-panel-cost.v1",
+  "contract": {
+    "runs_per_panel": 64,
+    "beam_width": 24,
+    "per_move_budget_ms": 35.0,
+    "provenance": "work-item specification; searched cloud-execution-lab (E16 64-game screens, TITAN-CONFIG 1.0s action budget, SCORE-SCHEDULE p99 ~21ms per move) and did not locate these exact constants in-repo"
+  },
+  "panel": {
+    "mode": "self_play",
+    "candidate": "/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/candidate_main.py::agent",
+    "opponent": null,
+    "cells": [
+      {
+        "seed": 1,
+        "candidate_seat": 0
+      },
+      {
+        "seed": 1,
+        "candidate_seat": 1
+      },
+      {
+        "seed": 2,
+        "candidate_seat": 0
+      },
+      {
+        "seed": 2,
+        "candidate_seat": 1
+      },
+      {
+        "seed": 3,
+        "candidate_seat": 0
+      },
+      {
+        "seed": 3,
+        "candidate_seat": 1
+      },
+      {
+        "seed": 4,
+        "candidate_seat": 0
+      },
+      {
+        "seed": 4,
+        "candidate_seat": 1
+      }
+    ],
+    "runs": 8,
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "engine_sha256": {
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "isolated_pythonpath": "/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-execution-lab:/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-execution-lab/reference/titan-current/latest:/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-quickstep:/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-runtime-pulse:/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-opponent-league/lark-responsive:/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-committed-seed-retry:/home/hatch/workspace/build/wt-parallel-eval/revenue/kaggriculture/cloud-economic-stress/funded_payback",
+    "scheduler": "deadline_aware_worker_pool",
+    "workers": 2,
+    "task_deadline_s": 300.0,
+    "max_retries": 2
+  },
+  "outcomes": {
+    "completed": 8,
+    "failed": 0,
+    "infra_retries": 0,
+    "deadline_misses": 0,
+    "requeues": 0,
+    "steals": 0,
+    "late_completions": 0,
+    "pool_outcomes": {
+      "completed": 8
+    }
+  },
+  "wall_seconds": 67.78658676147461,
+  "driver_cpu_seconds": 7.485557817,
+  "child_cpu_seconds": 79.847293207,
+  "per_run": {
+    "mean_wall_s": 16.94538261424998,
+    "max_wall_s": 18.0032409800001,
+    "min_wall_s": 15.650613206999878
+  },
+  "per_move": {
+    "total_moves": 11504,
+    "mean_ms": 9.73106080520146,
+    "worst_ms": 193.05395599985786,
+    "budget_ms": 35.0,
+    "games_with_worst_move_over_budget": 8
+  },
+  "vs_contract": {
+    "runs": "8/64",
+    "runs_complete": false,
+    "workers_vs_beam_width": "2/24",
+    "per_move_budget_ms": 35.0,
+    "worst_move_ms": 193.05395599985786,
+    "per_move_budget_met": false
+  },
+  "speedup_vs_serial": 1.4840694126404126,
+  "serial_baseline_wall_s": 100.6,
+  "games": [
+    {
+      "seed": 1,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        100104.0,
+        100104.0
+      ],
+      "steps": 719,
+      "wall_seconds": 15.650613206999878,
+      "trace_sha256": "6fd10642772e70d0f7e574de6fa9829c85940bba2dc6620797d886e44648b4ec",
+      "_cell": {
+        "seed": 1,
+        "candidate_seat": 0
+      },
+      "_driver_cpu_seconds": 1.852157506
+    },
+    {
+      "seed": 1,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        100104.0,
+        100104.0
+      ],
+      "steps": 719,
+      "wall_seconds": 15.880749318999733,
+      "trace_sha256": "6fd10642772e70d0f7e574de6fa9829c85940bba2dc6620797d886e44648b4ec",
+      "_cell": {
+        "seed": 1,
+        "candidate_seat": 1
+      },
+      "_driver_cpu_seconds": 1.869424425
+    },
+    {
+      "seed": 2,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        79470.0,
+        79470.0
+      ],
+      "steps": 719,
+      "wall_seconds": 17.830599599999914,
+      "trace_sha256": "c222eba9556fe96b452185aa73c8a82e27ac972b34409c05295777b2e3604deb",
+      "_cell": {
+        "seed": 2,
+        "candidate_seat": 0
+      },
+      "_driver_cpu_seconds": 1.84416101
+    },
+    {
+      "seed": 2,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        79470.0,
+        79470.0
+      ],
+      "steps": 719,
+      "wall_seconds": 17.96781216999989,
+      "trace_sha256": "c222eba9556fe96b452185aa73c8a82e27ac972b34409c05295777b2e3604deb",
+      "_cell": {
+        "seed": 2,
+        "candidate_seat": 1
+      },
+      "_driver_cpu_seconds": 1.8507517800000002
+    },
+    {
+      "seed": 3,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        75172.0,
+        75172.0
+      ],
+      "steps": 719,
+      "wall_seconds": 16.298307480000403,
+      "trace_sha256": "97e936423fa55510190eb635dd64cc398fdd24410738937a9cfdb6e5b91be229",
+      "_cell": {
+        "seed": 3,
+        "candidate_seat": 0
+      },
+      "_driver_cpu_seconds": 1.87041031
+    },
+    {
+      "seed": 3,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        75172.0,
+        75172.0
+      ],
+      "steps": 719,
+      "wall_seconds": 16.22523851599999,
+      "trace_sha256": "97e936423fa55510190eb635dd64cc398fdd24410738937a9cfdb6e5b91be229",
+      "_cell": {
+        "seed": 3,
+        "candidate_seat": 1
+      },
+      "_driver_cpu_seconds": 1.8690563300000003
+    },
+    {
+      "seed": 4,
+      "candidate_seat": 0,
+      "status": "complete",
+      "scores": [
+        69991.0,
+        69991.0
+      ],
+      "steps": 719,
+      "wall_seconds": 18.0032409800001,
+      "trace_sha256": "75ba7d614b15d02507c168595f074e13ee145bb484d97dbe4edc4aea018030d6",
+      "_cell": {
+        "seed": 4,
+        "candidate_seat": 0
+      },
+      "_driver_cpu_seconds": 1.9166566940000003
+    },
+    {
+      "seed": 4,
+      "candidate_seat": 1,
+      "status": "complete",
+      "scores": [
+        69991.0,
+        69991.0
+      ],
+      "steps": 719,
+      "wall_seconds": 17.706499641999926,
+      "trace_sha256": "75ba7d614b15d02507c168595f074e13ee145bb484d97dbe4edc4aea018030d6",
+      "_cell": {
+        "seed": 4,
+        "candidate_seat": 1
+      },
+      "_driver_cpu_seconds": 1.8916963249999998
+    }
+  ]
+}
