@@ -1,0 +1,110 @@
+name: TITAN V3 one-tree current-canonical bridge
+
+on:
+  push:
+    branches:
+      - sol-bridge/titan-v3-one-tree-publication-20260910-01
+    paths:
+      - .github/workflows/titan-v3-one-tree-current-canonical-sol-bridge.yml
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v3/**
+      - p/sol-bridge-titan-v3-one-tree-publication-20260910-01.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-current-canonical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Bind event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+
+      - name: Audit and seal current canonical archive
+        shell: bash
+        env:
+          ARCHIVE: revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+          REPORT: current-canonical.json
+          STALE_BASE_SHA256: a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import hashlib
+          import json
+          import os
+          import tarfile
+
+          archive = Path(os.environ["ARCHIVE"])
+          data = archive.read_bytes()
+          digest = hashlib.sha256(data).hexdigest()
+          stale = os.environ["STALE_BASE_SHA256"]
+          if digest == stale:
+              raise SystemExit("current canonical unexpectedly equals stale V3 handoff base")
+
+          members = []
+          regular = 0
+          with tarfile.open(archive, "r:gz") as tf:
+              for member in tf.getmembers():
+                  path = PurePosixPath(member.name)
+                  if path.is_absolute() or ".." in path.parts:
+                      raise SystemExit(f"unsafe canonical member path: {member.name}")
+                  if member.issym() or member.islnk() or member.isdev():
+                      raise SystemExit(f"unsafe canonical member type: {member.name}")
+                  if not (member.isfile() or member.isdir()):
+                      raise SystemExit(f"unsupported canonical member type: {member.name}")
+                  if member.isfile():
+                      stream = tf.extractfile(member)
+                      if stream is None:
+                          raise SystemExit(f"missing canonical stream: {member.name}")
+                      blob = stream.read()
+                      if len(blob) != member.size:
+                          raise SystemExit(f"canonical size mismatch: {member.name}")
+                      members.append({
+                          "path": member.name,
+                          "bytes": len(blob),
+                          "sha256": hashlib.sha256(blob).hexdigest(),
+                      })
+                      regular += 1
+
+          report = {
+              "schema": "titan.v3-current-canonical-bridge.v1",
+              "operation": "titan-v3-one-tree-publication-20260910-sol-bridge-01",
+              "event_sha": os.environ["GITHUB_SHA"],
+              "archive_path": str(archive),
+              "archive_sha256": digest,
+              "archive_bytes": len(data),
+              "regular_files": regular,
+              "stale_handoff_base_sha256": stale,
+              "stale_base_rejected": digest != stale,
+              "members": sorted(members, key=lambda row: row["path"]),
+          }
+          Path(os.environ["REPORT"]).write_text(
+              json.dumps(report, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps({k: report[k] for k in (
+              "event_sha", "archive_sha256", "archive_bytes",
+              "regular_files", "stale_base_rejected"
+          )}, sort_keys=True))
+          PY
+
+      - name: Upload exact current canonical and inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-current-canonical-${{ github.sha }}
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+            current-canonical.json
+          if-no-files-found: error
+          retention-days: 1
