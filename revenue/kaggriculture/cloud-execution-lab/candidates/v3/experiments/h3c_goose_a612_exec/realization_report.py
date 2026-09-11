@@ -5,24 +5,88 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import statistics
 from pathlib import Path
 
 EXPECTED_ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+EXPECTED_OPPONENT = "a612"
+EXPECTED_SEEDS = (2611151001, 2611151002, 2611151003, 2611151004)
+EXPECTED_CELLS = frozenset(
+    (EXPECTED_OPPONENT, seed, seat) for seed in EXPECTED_SEEDS for seat in (0, 1)
+)
 
 
 def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def key(game):
-    return (game["opponent"], int(game["seed"]), int(game["candidate_seat"]))
+def _strict_score(value, label):
+    if type(value) not in (int, float) or not math.isfinite(value):
+        raise ValueError(f"{label}: score must be a finite JSON number, got {value!r}")
+    return value
+
+
+def validate_game(game, label):
+    """Validate one evaluator game without bool/int/string/float coercion."""
+    if not isinstance(game, dict):
+        raise ValueError(f"{label}: game must be an object")
+    opponent = game.get("opponent")
+    seed = game.get("seed")
+    seat = game.get("candidate_seat")
+    if opponent != EXPECTED_OPPONENT or not isinstance(opponent, str):
+        raise ValueError(f"{label}: wrong opponent {opponent!r}")
+    if type(seed) is not int or seed not in EXPECTED_SEEDS:
+        raise ValueError(f"{label}: invalid seed {seed!r}")
+    if type(seat) is not int or seat not in (0, 1):
+        raise ValueError(f"{label}: invalid candidate_seat {seat!r}")
+    if game.get("status") != "complete" or not isinstance(game.get("status"), str):
+        raise ValueError(f"{label}: incomplete/invalid status {game.get('status')!r}")
+    scores = game.get("scores")
+    if not isinstance(scores, list) or len(scores) != 2:
+        raise ValueError(f"{label}: scores must be a two-element list")
+    _strict_score(scores[0], f"{label}:scores[0]")
+    _strict_score(scores[1], f"{label}:scores[1]")
+    trace = game.get("trace_sha256")
+    if not isinstance(trace, str) or len(trace) != 64 or any(c not in "0123456789abcdef" for c in trace):
+        raise ValueError(f"{label}: invalid trace_sha256 {trace!r}")
+    daily_bank = game.get("daily_bank", [])
+    if not isinstance(daily_bank, list):
+        raise ValueError(f"{label}: daily_bank must be a list")
+    return (opponent, seed, seat)
+
+
+def validate_report(report, label):
+    if not isinstance(report, dict):
+        raise ValueError(f"{label}: report must be an object")
+    if report.get("engine_ref") != EXPECTED_ENGINE_REF:
+        raise ValueError(f"{label}: wrong engine ref {report.get('engine_ref')!r}")
+    seeds = report.get("seeds")
+    if not isinstance(seeds, list) or len(seeds) != len(EXPECTED_SEEDS):
+        raise ValueError(f"{label}: seed panel shape mismatch")
+    if any(type(seed) is not int for seed in seeds) or tuple(seeds) != EXPECTED_SEEDS:
+        raise ValueError(f"{label}: seed panel mismatch {seeds!r}")
+    games = report.get("games")
+    if not isinstance(games, list):
+        raise ValueError(f"{label}: games must be a list")
+
+    indexed = {}
+    for index, game in enumerate(games):
+        cell = validate_game(game, f"{label}:games[{index}]")
+        if cell in indexed:
+            raise ValueError(f"{label}: duplicate paired cell {cell!r}")
+        indexed[cell] = game
+    if frozenset(indexed) != EXPECTED_CELLS:
+        missing = sorted(EXPECTED_CELLS - frozenset(indexed))
+        extra = sorted(frozenset(indexed) - EXPECTED_CELLS)
+        raise ValueError(f"{label}: exact paired cell set mismatch missing={missing!r} extra={extra!r}")
+    return indexed
 
 
 def score_pair(game):
-    seat = int(game["candidate_seat"])
+    seat = game["candidate_seat"]
     scores = game["scores"]
-    return float(scores[seat]), float(scores[1 - seat])
+    return scores[seat], scores[1 - seat]
 
 
 def first_bank_divergence(control, candidate):
@@ -45,24 +109,18 @@ def main():
     args = p.parse_args()
 
     control, candidate = load(args.control), load(args.candidate)
-    for label, report in (("control", control), ("candidate", candidate)):
-        if report.get("engine_ref") != EXPECTED_ENGINE_REF:
-            raise SystemExit(f"{label}: wrong engine ref {report.get('engine_ref')!r}")
-        if report.get("seeds") != control.get("seeds"):
-            raise SystemExit(f"{label}: seed panel mismatch")
-        if report.get("opponents") != control.get("opponents"):
-            raise SystemExit(f"{label}: opponent fingerprint mismatch")
+    try:
+        cg = validate_report(control, "control")
+        hg = validate_report(candidate, "candidate")
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from exc
 
-    cg = {key(g): g for g in control.get("games", [])}
-    hg = {key(g): g for g in candidate.get("games", [])}
-    if not cg or cg.keys() != hg.keys():
-        raise SystemExit("paired cell set mismatch or empty panel")
+    if control.get("opponents") != candidate.get("opponents"):
+        raise SystemExit("opponent fingerprint mismatch")
 
     cells = []
-    for cell_key in sorted(cg):
+    for cell_key in sorted(EXPECTED_CELLS):
         c, h = cg[cell_key], hg[cell_key]
-        if c.get("status") != "complete" or h.get("status") != "complete":
-            raise SystemExit(f"incomplete paired cell {cell_key}")
         c_own, c_rival = score_pair(c)
         h_own, h_rival = score_pair(h)
         d_own = h_own - c_own
@@ -74,7 +132,7 @@ def main():
             "candidate_seat": cell_key[2],
             "control_scores": c["scores"],
             "candidate_scores": h["scores"],
-            "trace_changed": c.get("trace_sha256") != h.get("trace_sha256"),
+            "trace_changed": c["trace_sha256"] != h["trace_sha256"],
             "delta_own": d_own,
             "delta_rival": d_rival,
             "delta_margin": d_margin,
@@ -102,9 +160,9 @@ def main():
         disposition = "HOLD_MARGIN_NEUTRAL"
 
     result = {
-        "schema": "titan-v31-h3c-a612-realization/v1",
+        "schema": "titan-v31-h3c-a612-realization/v2",
         "engine_ref": EXPECTED_ENGINE_REF,
-        "seeds": control["seeds"],
+        "seeds": list(EXPECTED_SEEDS),
         "cells": cells,
         "summary": {
             "paired_cells": len(cells),
@@ -118,7 +176,7 @@ def main():
         },
         "truth_boundary": "Trace delta is an activation proxy. Promotion requires opponent-diverse paired own/rival/margin evidence on the then-current canonical stack.",
     }
-    Path(args.json_out).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    Path(args.json_out).write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
     lines = [
         "## H3c goose rescue — a612 exact-current-stack realization",
@@ -134,14 +192,14 @@ def main():
     ]
     for row in cells:
         div = row["first_daily_bank_divergence"]
-        compact = "—" if div is None else json.dumps(div, separators=(",", ":"))
+        compact = "—" if div is None else json.dumps(div, separators=(",", ":"), allow_nan=False)
         lines.append(
             f"| {row['seed']} | {row['candidate_seat']} | {'yes' if row['trace_changed'] else 'no'} | "
             f"{row['delta_own']:+.0f} | {row['delta_rival']:+.0f} | {row['delta_margin']:+.0f} | `{compact}` |"
         )
     lines += ["", "This is execution evidence only. Any positive result still requires an opponent-diverse D3-style widen before package/default work."]
     Path(args.markdown_out).write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(json.dumps(result["summary"], sort_keys=True))
+    print(json.dumps(result["summary"], sort_keys=True, allow_nan=False))
 
 
 if __name__ == "__main__":
