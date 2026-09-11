@@ -7,6 +7,7 @@ or decide whether an economically valid result should be promoted.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -21,6 +22,8 @@ class ReceiptError(ValueError):
 
 RECEIPT_SCHEMA = "titan-v31-gate-receipt/v1"
 OFFICIAL_INTERPRETER_COMMIT = "28b6d8af3"
+LIVE_RELEASE_VERSION = "3.1"
+SEED_LIST_ENCODING = "ASCII decimal seed per line, LF after every seed including the final seed"
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -63,11 +66,33 @@ def _score_pair(value: Any, label: str) -> tuple[float, float]:
     return _number(value[0], f"{label}[0]"), _number(value[1], f"{label}[1]")
 
 
+def _json_equal(left: Any, right: Any) -> bool:
+    """JSON structural equality without Python's bool/int equivalence."""
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, dict):
+        return left.keys() == right.keys() and all(_json_equal(left[key], right[key]) for key in left)
+    if isinstance(left, list):
+        return len(left) == len(right) and all(_json_equal(a, b) for a, b in zip(left, right))
+    return left == right
+
+
 def _latest_release(manifest: Mapping[str, Any]) -> Mapping[str, Any]:
     releases = manifest.get("releases")
     if not isinstance(releases, list) or not releases:
         raise ReceiptError("manifest.releases must be a non-empty list")
     return _mapping(releases[-1], "manifest.releases[-1]")
+
+
+def _live_v31_release(manifest: Mapping[str, Any]) -> Mapping[str, Any]:
+    release = _latest_release(manifest)
+    if release.get("version") != LIVE_RELEASE_VERSION:
+        raise ReceiptError(
+            "manifest latest release must be authoritative V3.1; "
+            f"found version {release.get('version')!r}. Official V3.1 receipts fail closed until "
+            "the live-submission release/config is durably recorded."
+        )
+    return release
 
 
 def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
@@ -85,42 +110,60 @@ def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
     normalized_seats = [_seat(seat, f"panel.seats[{idx}]") for idx, seat in enumerate(seats)]
     if sorted(normalized_seats) != [0, 1]:
         raise ReceiptError("panel.seats must contain both seats exactly once")
+
+    encoding = panel.get("seed_list_sha256_encoding")
+    if encoding != SEED_LIST_ENCODING:
+        raise ReceiptError(f"panel.seed_list_sha256_encoding must be exactly {SEED_LIST_ENCODING!r}")
+    seed_bytes = "".join(f"{seed}\n" for seed in normalized_seeds).encode("ascii")
+    recomputed_digest = hashlib.sha256(seed_bytes).hexdigest()
+    declared_digest = _sha256(panel.get("seed_list_sha256"), "panel.seed_list_sha256")
+    if declared_digest != recomputed_digest:
+        raise ReceiptError(
+            "panel.seed_list_sha256 disagrees with the authoritative seeds/encoding: "
+            f"declared {declared_digest}, recomputed {recomputed_digest}"
+        )
     return {(seed, seat) for seed in normalized_seeds for seat in normalized_seats}
 
 
 def _validate_config(receipt: Mapping[str, Any], manifest: Mapping[str, Any]) -> None:
-    release = _latest_release(manifest)
-    expected_live = _mapping(release.get("config"), "manifest latest release.config")
-    submission = _mapping(release.get("submission_archive"), "manifest latest release.submission_archive")
+    release = _live_v31_release(manifest)
+    expected_live = _mapping(release.get("config"), "manifest V3.1 release.config")
+    submission = _mapping(release.get("submission_archive"), "manifest V3.1 release.submission_archive")
     expected_submission_sha = _sha256(
-        submission.get("sha256"), "manifest latest release.submission_archive.sha256"
+        submission.get("sha256"), "manifest V3.1 release.submission_archive.sha256"
     )
 
     baseline = _mapping(receipt.get("baseline"), "baseline")
     if baseline.get("submission_archive_sha256") != expected_submission_sha:
-        raise ReceiptError("baseline.submission_archive_sha256 does not match the live-submission release")
+        raise ReceiptError("baseline.submission_archive_sha256 does not match the authoritative V3.1 release")
     baseline_config = _mapping(baseline.get("config"), "baseline.config")
-    for key, expected in expected_live.items():
-        if key not in baseline_config:
-            raise ReceiptError(f"baseline.config missing live-submission key: {key}")
-        if baseline_config[key] != expected:
-            raise ReceiptError(
-                f"baseline.config[{key!r}]={baseline_config[key]!r} "
-                f"does not match live submission {expected!r}"
-            )
+    if not _json_equal(dict(baseline_config), dict(expected_live)):
+        raise ReceiptError(
+            "baseline.config must exactly equal the complete authoritative V3.1 release.config "
+            "with JSON type+value strictness"
+        )
 
     candidate = _mapping(receipt.get("candidate"), "candidate")
     candidate_config = _mapping(candidate.get("config"), "candidate.config")
     overrides = _mapping(candidate.get("config_overrides"), "candidate.config_overrides")
     if set(candidate_config) != set(baseline_config):
         raise ReceiptError("candidate.config key set must exactly match baseline.config")
-    expected_candidate = dict(baseline_config)
-    unknown = sorted(set(overrides) - set(expected_candidate))
+    unknown = sorted(set(overrides) - set(baseline_config))
     if unknown:
         raise ReceiptError(f"candidate.config_overrides contains unknown keys: {unknown}")
-    expected_candidate.update(overrides)
-    if dict(candidate_config) != expected_candidate:
-        raise ReceiptError("candidate.config differs from baseline by more than declared config_overrides")
+
+    expected_candidate = dict(baseline_config)
+    for key, value in overrides.items():
+        if type(value) is not type(baseline_config[key]):
+            raise ReceiptError(
+                f"candidate.config_overrides[{key!r}] changes JSON type "
+                f"from {type(baseline_config[key]).__name__} to {type(value).__name__}"
+            )
+        expected_candidate[key] = value
+    if not _json_equal(dict(candidate_config), expected_candidate):
+        raise ReceiptError(
+            "candidate.config differs from baseline by more than the declared, JSON-type-strict config_overrides"
+        )
 
 
 def _validate_provenance(receipt: Mapping[str, Any], manifest: Mapping[str, Any]) -> None:
