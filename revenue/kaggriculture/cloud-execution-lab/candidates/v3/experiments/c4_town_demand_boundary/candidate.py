@@ -14,6 +14,11 @@ applies its rollback to the final action. This ordering is deliberate: a zeroed 
 an explicit raw ``[]`` market slot, so C4 cannot make incumbent ROW_ORDER compact a placeholder
 and shift unrelated parent rows against different rival lockstep indices.
 
+The parent callable is an explicit custody boundary. The frozen 8e3 donor entrypoint binds the
+entire shipped R04 feature tuple with keywords; later current-stack consumers may instead pass
+an already-configured parent callable, avoiding silent fallback to R04 defaults when the stack
+evolves.
+
 This module lives outside ``overlay/**`` and is default-off. It changes timing only; source
 custody is not an economics claim because lower pre-tick supply may also improve the rival's
 quotes. Paired Delta-margin is required before promotion.
@@ -53,6 +58,7 @@ TOWN_CENTER_PRODUCTS = tuple(item for item in base.PRODUCTS if item != "FERTILIZ
 SHOP_INTERVAL = 4
 CENTER_INTERVAL = 24
 C4_ENABLED = False
+_PARENT_AGENT = base.v3_agent
 
 telemetry = Counter()
 
@@ -240,7 +246,7 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
 
 
 def c4_agent(observation, configuration=None):
-    """Snapshot E184 debt, execute exact shipped parent, then apply bounded C4 rollback."""
+    """Snapshot E184 debt, execute the explicitly bound parent, then apply C4 rollback."""
     player = observation.get("player") if isinstance(observation, dict) else None
     before = {}
     snapshot_ok = True
@@ -253,8 +259,7 @@ def c4_agent(observation, configuration=None):
             else:
                 before = snapshot
 
-    # Use the full incumbent V3.1 composition; do not duplicate ROW_ORDER/FLUSH logic here.
-    action = base.v3_agent(observation, configuration)
+    action = _PARENT_AGENT(observation, configuration)
 
     if C4_ENABLED and snapshot_ok and type(player) is int and base._POLICY is not None:
         state = base._POLICY.players.get(player)
@@ -266,22 +271,65 @@ def c4_agent(observation, configuration=None):
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None, c4_enabled=None):
-    global C4_ENABLED
-    base.install(host, horizon, opening, row_order, evening_flush, sale_fertilizer, cattle_early)
+            sale_fertilizer=None, cattle_early=None, kill_late_water=None,
+            strawberry_endgame=None, strawberry_max_plants=None,
+            no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
+            b5_carrot_fertilizer=None, b5_jit_fertilize=None, c4_enabled=None,
+            parent_agent=None):
+    """Bind C4 around either an explicit parent callable or a fully spelled R04 tuple."""
+    global C4_ENABLED, _PARENT_AGENT
+    knobs = (
+        horizon, opening, row_order, evening_flush, sale_fertilizer, cattle_early,
+        kill_late_water, strawberry_endgame, strawberry_max_plants,
+        no_late_sale_advance, no_late_sale_advance_step, strawberry_topup,
+        b5_carrot_fertilizer, b5_jit_fertilize,
+    )
+    if parent_agent is not None:
+        if not callable(parent_agent):
+            raise TypeError("parent_agent must be callable")
+        if host is not None or any(value is not None for value in knobs):
+            raise ValueError("explicit parent_agent cannot be combined with R04 install knobs")
+        _PARENT_AGENT = parent_agent
+    else:
+        _PARENT_AGENT = base.install(
+            host=host,
+            horizon=horizon,
+            opening=opening,
+            row_order=row_order,
+            evening_flush=evening_flush,
+            sale_fertilizer=sale_fertilizer,
+            cattle_early=cattle_early,
+            kill_late_water=kill_late_water,
+            strawberry_endgame=strawberry_endgame,
+            strawberry_max_plants=strawberry_max_plants,
+            no_late_sale_advance=no_late_sale_advance,
+            no_late_sale_advance_step=no_late_sale_advance_step,
+            strawberry_topup=strawberry_topup,
+            b5_carrot_fertilizer=b5_carrot_fertilizer,
+            b5_jit_fertilize=b5_jit_fertilize,
+        )
     if c4_enabled is not None:
         C4_ENABLED = bool(c4_enabled)
     return c4_agent
 
 
+# Frozen 8e3 donor entrypoint: spell the entire shipped R04 tuple. A final-stack consumer
+# should bind an already-configured parent_agent instead of relying on these predecessor values.
 agent = install(
-    None,
     horizon=8,
     opening=0,
     row_order=True,
     evening_flush=True,
     sale_fertilizer=True,
     cattle_early=True,
+    kill_late_water=False,
+    strawberry_endgame=False,
+    strawberry_max_plants=8,
+    no_late_sale_advance=True,
+    no_late_sale_advance_step=648,
+    strawberry_topup=True,
+    b5_carrot_fertilizer=True,
+    b5_jit_fertilize=True,
     c4_enabled=True,
 )
 
@@ -292,6 +340,14 @@ C4_EVALUATOR_CONFIG = {
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
+    "r04_kill_late_water": False,
+    "r04_strawberry_endgame": False,
+    "r04_strawberry_max_plants": 8,
+    "r04_no_late_sale_advance": True,
+    "r04_no_late_sale_advance_step": 648,
+    "r04_strawberry_topup": True,
+    "r04_b5_carrot_fertilizer": True,
+    "r04_b5_jit_fertilize": True,
     "townShopSellInterval": 4,
     "townCenterSellInterval": 24,
     "c4_town_demand_boundary": True,
