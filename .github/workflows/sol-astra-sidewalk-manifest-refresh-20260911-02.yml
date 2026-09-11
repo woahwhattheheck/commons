@@ -1,0 +1,68 @@
+name: One-use Sidewalk Signal manifest refresh
+
+on:
+  push:
+    branches:
+      - sol-astra/sidewalk-manifest-refresh-mainb009-20260911-02
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Reproduce stale manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python3 host/business_pack_desk_instance.py > /tmp/sidewalk-before.json; then
+            echo "Expected current Sidewalk manifest to be stale before refresh"
+            cat /tmp/sidewalk-before.json
+            exit 1
+          fi
+          cat /tmp/sidewalk-before.json
+          grep -Fq 'manifest.assets is stale; run --write' /tmp/sidewalk-before.json
+
+      - name: Canonically refresh and verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 host/business_pack_desk_instance.py --write
+          python3 host/business_pack_desk_instance.py > /tmp/sidewalk-after.json
+          cat /tmp/sidewalk-after.json
+          grep -Fq '"state": "INSTANCE_OK"' /tmp/sidewalk-after.json
+
+          python3 - <<'PY'
+          import subprocess
+          allowed = {
+              'packs/sidewalk-signal-web-desk-20260902-01/manifest.json',
+              'packs/sidewalk-signal-web-desk-20260902-01/index.html',
+          }
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          if not changed:
+              raise SystemExit('canonical --write produced no repair')
+          extra = changed - allowed
+          if extra:
+              raise SystemExit(f'unexpected generated paths: {sorted(extra)}')
+          print('GENERATED_PATHS=' + ','.join(sorted(changed)))
+          PY
+
+          python3 -m unittest -v test_business_pack_desk_instance.py test_business_pack_unique.py
+          python3 -m py_compile host/business_pack_desk_instance.py host/business_pack_unique.py host/tjlabs_pack_terms.py test_business_pack_desk_instance.py test_business_pack_unique.py
+
+      - name: Commit product-only repair and self-delete workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/sol-astra-sidewalk-manifest-refresh-20260911-02.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --name-only
+          git commit -m 'fix(sidewalk): refresh generated pack manifest'
+          git push origin HEAD:sol-astra/sidewalk-manifest-refresh-mainb009-20260911-02
