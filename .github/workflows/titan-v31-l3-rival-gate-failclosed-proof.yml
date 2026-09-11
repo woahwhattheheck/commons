@@ -60,7 +60,12 @@ jobs:
           git apply --check "$PATCH"
           git apply "$PATCH"
           test "$(git diff --name-only)" = "$TARGET"
-          python -B -m py_compile "$TARGET"
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py')
+          compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('L3_FAILCLOSED_COMPILE_OK')
+          PY
 
       - name: Run fail-closed focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
