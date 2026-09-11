@@ -1,0 +1,98 @@
+name: titan-v31-a612-h13-gatedstack
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_a612_gatedstack/**'
+      - '.github/workflows/titan-v31-a612-h13-gatedstack.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  h13-current-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact a612 parent and evidence scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=a6120d0ea1bdb75eb0da2239220efce551f624a6
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          cat > /tmp/expected-paths <<'EOF'
+          .github/workflows/titan-v31-a612-h13-gatedstack.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_a612_gatedstack/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_a612_gatedstack/run_current_stack.py
+          EOF
+          sort -o /tmp/expected-paths /tmp/expected-paths
+          git diff --name-only "$PARENT...HEAD" | sort > /tmp/actual-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py)" = "39f5c071a64702ae260f9d55d66123c60af8d9e0"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py)" = "ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = "7a96c0f1d38fff674493e92bc420eb3dfe821f20"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "d797ecd6068dc714d2ba45d44c2d672842116c7b"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = "d6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json)" = "1dd83aa1e15de25fbf9775f51ddd0d861038be6e"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py)" = "1fb6b655bb4ca1e1684be165a8ef513e2e6c2325"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py)" = "bdb9cf58148a3c7961c085f4902759537decabf6"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py)" = "3c202c7ee921da239356789e266b694635103fc4"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json)" = "b354d06b742fe48402513792253f1a5c29366b20"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/engine/utils.py)" = "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87"
+          echo H13_A612_CUSTODY_OK
+
+      - name: Run exact shipped-stack horizon gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/h13-a612"
+          mkdir -p "$OUT"
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_a612_gatedstack/run_current_stack.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" |& tee "$RUNNER_TEMP/h13-a612.log"
+          grep -F 'H13_A612_RESULT ' "$RUNNER_TEMP/h13-a612.log"
+          grep -F 'H13_A612_RECEIPT ' "$RUNNER_TEMP/h13-a612.log"
+          python - "$OUT/h13-a612-receipt.json" <<'PY'
+          import json, pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          data = json.loads(path.read_text())
+          assert data['schema'] == 'titan-v31-a612-h13-gatedstack/v1'
+          print('H13_A612_DISPOSITION', data['disposition'])
+          for name, regime in data['regimes'].items():
+              summary = regime['summary']
+              print('H13_A612_REGIME', name,
+                    'mean_dm=', summary['mean_delta_margin'],
+                    'mean_own=', summary['mean_delta_own'],
+                    'mean_rival=', summary['mean_delta_rival'],
+                    'pos/zero/neg=', summary['positive'], summary['zero'], summary['negative'])
+          PY
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact evidence receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-a612-h13-gatedstack-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/h13-a612
+            ${{ runner.temp }}/h13-a612.log
+          if-no-files-found: error
+          retention-days: 14
