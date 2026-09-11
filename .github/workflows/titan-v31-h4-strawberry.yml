@@ -45,6 +45,24 @@ jobs:
           grep -F 'Ran 13 tests' /tmp/v31-h4-tests.log
           grep -F 'OK' /tmp/v31-h4-tests.log
 
+      - name: Prove direct H4 evaluator entrypoint
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('experiments/h4_strawberry/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('h4_candidate_exact', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          import r04_h4_strawberry as h4
+          assert h4.STRAWBERRY_TOPUP is True
+          print('H4_DIRECT_ENTRYPOINT_OK')
+          PY
+
       - name: Run H4 route-tape structural screen
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
