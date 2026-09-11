@@ -50,10 +50,25 @@ def _materialize_source(target: Path) -> None:
     )
 
 
+def _sale_window_value(data: object) -> bool:
+    """Return the exact JSON boolean submission-mode flag or fail closed."""
+    if not isinstance(data, dict):
+        raise SystemExit("TITAN-CONFIG.json must contain a JSON object")
+    if "r04_sale_window" not in data:
+        raise SystemExit("TITAN-CONFIG.json is missing r04_sale_window")
+    value = data["r04_sale_window"]
+    if value is True:
+        return True
+    if value is False:
+        return False
+    raise SystemExit("TITAN-CONFIG.json r04_sale_window must be a JSON boolean")
+
+
 def _normalized_config_bytes(path: Path) -> bytes:
     raw = path.read_bytes()
     data = json.loads(raw.decode("utf-8"))
-    if bool(data.get("r04_sale_window", False)):
+    submission_mode = _sale_window_value(data)
+    if submission_mode:
         data["r04_sale_window"] = False
         return (json.dumps(data, indent=2) + "\n").encode("utf-8")
     return raw
@@ -108,7 +123,7 @@ def _copy_tree(source: Path, target: Path) -> None:
 def _force_source_mode(target: Path) -> tuple[bool, dict]:
     config_path = target / "TITAN-CONFIG.json"
     data = json.loads(config_path.read_text(encoding="utf-8"))
-    original = bool(data.get("r04_sale_window", False))
+    original = _sale_window_value(data)
     # These are the two measured V3.1 base mechanisms.  A tree that lacks them is not
     # the d5eca5b12 V3.1 baseline and should not silently receive a green receipt.
     for key in ("r04_sale_fertilizer", "r04_cattle_early"):
