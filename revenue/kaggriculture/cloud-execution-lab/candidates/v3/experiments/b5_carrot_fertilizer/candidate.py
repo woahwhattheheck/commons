@@ -106,24 +106,22 @@ def apply_carrot_fertilizer(observation, action):
 
     positions = [farmer_position, *farm_hands]
     commands = [farmer_command, *hand_commands]
-    if len(positions) != len(commands) or len(inventories) != len(commands):
+    # A valid engine action may omit rows for later live hands; those workers implicitly
+    # do nothing and are not eligible evidence. Every *explicitly commanded* actor must,
+    # however, have a corresponding public position and private inventory.
+    if len(positions) < len(commands) or len(inventories) < len(commands):
         return action
 
-    # Validate the complete worker-state carrier before mutating any one actor. This keeps
-    # a malformed sibling worker from turning a partially interpreted observation into an
-    # apparently valid mutation.
     normalized_positions = []
-    for position, inventory in zip(positions, inventories):
-        coordinate = _strict_position(position)
-        if coordinate is None or not isinstance(inventory, dict):
+    for actor in range(len(commands)):
+        coordinate = _strict_position(positions[actor])
+        if coordinate is None or not isinstance(inventories[actor], dict):
             return action
         normalized_positions.append(coordinate)
 
     claimed = set()
     replacements = {}
-    for actor, (command, (x, y), inventory) in enumerate(
-        zip(commands, normalized_positions, inventories)
-    ):
+    for actor, (command, (x, y)) in enumerate(zip(commands, normalized_positions)):
         if command != ["PASS"]:
             continue
         if y < 0 or y >= len(tiles):
@@ -134,7 +132,7 @@ def apply_carrot_fertilizer(observation, action):
         if (x, y) in claimed:
             continue
         tile = row[x]
-        if not _eligible(tile, inventory, day):
+        if not _eligible(tile, inventories[actor], day):
             continue
         replacements[actor] = ["FERTILIZE"]
         claimed.add((x, y))
