@@ -122,6 +122,28 @@ class RuntimeTransformTests(unittest.TestCase):
         self.assertEqual(changed, action)
         self.assertEqual(len(runtime.suppression_failures), 1)
 
+    def test_partial_prefix_suppression_failure_rejects_before_no_activation(self):
+        runtime = b4.ShiftRuntime(self.spec)
+        runtime.enabled = True
+        buy, pickup = self.spec["events"][:2]
+        runtime.success[buy["id"]] = True
+        ambiguous = blank_action()
+        ambiguous["market"] = [copy.deepcopy(buy["row"]), copy.deepcopy(buy["row"])]
+        unchanged, _ = runtime.transform(ambiguous, observation(), 0, buy["source_step"])
+        self.assertEqual(unchanged, ambiguous)
+        self.assertEqual(len(runtime.suppression_failures), 1)
+
+        runtime.success[pickup["id"]] = False
+        shift = runtime.report()
+        self.assertFalse(shift["all_shifted_events_executed"])
+        activated, negative, positive, disposition = b4._classify_cells([
+            {"delta_margin": 0.0, "shift": shift},
+        ])
+        self.assertEqual(activated, [])
+        self.assertEqual(negative, [])
+        self.assertEqual(positive, [])
+        self.assertEqual(disposition, "REJECT_SUPPRESSION_PROVENANCE_MISMATCH")
+
 
 if __name__ == "__main__":
     unittest.main()
