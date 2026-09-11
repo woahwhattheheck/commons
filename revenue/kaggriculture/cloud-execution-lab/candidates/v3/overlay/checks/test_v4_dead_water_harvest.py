@@ -82,6 +82,20 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["recovered"], 1)
 
+    def test_hour23_ongoing_crop_fails_closed_before_eod_cargo_drop(self):
+        # Unit actions execute before EOD. On step 695 (day 28 hour 23),
+        # HARVEST would move held TOMATO into actor cargo; a full shed can then
+        # discard it during the automatic inventory drop. Parent WATER no-ops
+        # and leaves the ongoing crop's held yield safely on the plant.
+        tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
+                     watered_today=True, max_lifespan_step=-1)
+        observation = _obs(tile, step=695, day=28)
+        observation["private"] = {"inventories": [{}], "shed": {"WHEAT": 100}}
+        action = _action()
+        out = _apply(observation, action)
+        self.assertIs(out, action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
     def test_unwatered_ongoing_negative_lifespan_sentinel_is_not_expiring(self):
         # Official ongoing crops use -1 until terminal production. WATER is
         # productive here and must not be replaced merely because -1 <= step.
