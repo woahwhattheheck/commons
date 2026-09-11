@@ -28,9 +28,6 @@ HERE = Path(__file__).resolve().parent
 AUTHORITATIVE_MANIFEST = HERE / "V3-MANIFEST.json"
 AUTHORITATIVE_PANEL = HERE / "OFFICIAL-GATE-PANEL.json"
 
-# Frozen canonical TITAN-CONFIG keys inherited by the V3.1 package before the V3
-# integration keys are applied. The V3 keys themselves are derived dynamically
-# from V3-MANIFEST.json below, so adding a lane makes old release metadata fail closed.
 CANONICAL_V31_CONFIG_KEYS = frozenset(
     {
         "consumer",
@@ -305,12 +302,7 @@ def _validate_receipt_against_inputs(
     manifest: Mapping[str, Any],
     panel: Mapping[str, Any],
 ) -> dict[str, Any]:
-    """Pure consistency validator used by focused tests and trusted wrappers.
-
-    This function does not establish where manifest/panel mappings came from.  Callers
-    must not treat its official result as provenance unless the mappings were loaded by
-    validate_authoritative_receipt().
-    """
+    """Pure consistency validator; it never grants official eligibility."""
     if receipt.get("schema") != RECEIPT_SCHEMA:
         raise ReceiptError(f"schema must be {RECEIPT_SCHEMA}")
 
@@ -336,7 +328,7 @@ def _validate_receipt_against_inputs(
     return {
         "valid": True,
         "mode": "official",
-        "official_gate_eligible": True,
+        "input_contract_valid": True,
         **result,
     }
 
@@ -346,12 +338,7 @@ def validate_receipt(
     manifest: Mapping[str, Any],
     panel: Mapping[str, Any],
 ) -> dict[str, Any]:
-    """Validate caller-supplied mappings without granting official provenance.
-
-    Arbitrary manifest/panel objects are useful for tests and practice receipts, but
-    they are not a trusted source of truth.  Official callers must use
-    validate_authoritative_receipt(), which owns the repository input paths.
-    """
+    """Validate caller-supplied mappings without granting official provenance."""
     if receipt.get("mode") == "official":
         raise ReceiptError(
             "caller-supplied manifest/panel mappings cannot mint official eligibility; "
@@ -382,12 +369,15 @@ def _read_authoritative_json(path: Path, label: str) -> tuple[Mapping[str, Any],
 
 
 def validate_authoritative_receipt(receipt: Mapping[str, Any]) -> dict[str, Any]:
-    """Validate official evidence against only this checkout's committed sibling inputs."""
+    """Validate official evidence against only this checkout's sibling authority files."""
     if receipt.get("mode") != "official":
         raise ReceiptError("validate_authoritative_receipt() requires mode='official'")
     manifest, manifest_sha256 = _read_authoritative_json(AUTHORITATIVE_MANIFEST, "manifest")
     panel, panel_sha256 = _read_authoritative_json(AUTHORITATIVE_PANEL, "panel")
     result = _validate_receipt_against_inputs(receipt, manifest, panel)
+    if result.get("input_contract_valid") is not True:
+        raise ReceiptError("authoritative input contract did not validate")
+    result["official_gate_eligible"] = True
     result["authoritative_inputs"] = {
         "manifest": AUTHORITATIVE_MANIFEST.name,
         "manifest_sha256": manifest_sha256,
