@@ -12,6 +12,10 @@ on:
         description: Exact 40-hex head the review holding may block.
         required: true
         type: string
+      observation_generation:
+        description: Monotonic nonnegative per-head observation generation.
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       holding_json:
@@ -21,6 +25,10 @@ on:
         default: ""
       expected_head_sha:
         description: Exact 40-hex head the review holding may block.
+        required: true
+        type: string
+      observation_generation:
+        description: Monotonic nonnegative per-head observation generation.
         required: true
         type: string
 
@@ -34,7 +42,14 @@ jobs:
     env:
       HOLDING_JSON: ${{ inputs.holding_json }}
       EXPECTED_HEAD_SHA: ${{ inputs.expected_head_sha }}
+      OBSERVATION_GENERATION: ${{ inputs.observation_generation }}
     steps:
+      - name: Validate immutable inputs before checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$EXPECTED_HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$OBSERVATION_GENERATION" =~ ^(0|[1-9][0-9]*)$ ]]
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.expected_head_sha }}
@@ -58,7 +73,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          args=(--expected-head-sha "$EXPECTED_HEAD_SHA" --publish-check)
+          args=(
+            --expected-head-sha "$EXPECTED_HEAD_SHA"
+            --generation "$OBSERVATION_GENERATION"
+            --publish-check
+          )
           if [ -s "$RUNNER_TEMP/review-holding.json" ]; then
             args+=(--holding "$RUNNER_TEMP/review-holding.json")
           fi
