@@ -34,32 +34,62 @@ def observation(*tiles, player=0):
     }
 
 
+def action(*rows):
+    return {"farmer": ["PASS"], "hands": [], "market": list(rows)}
+
+
 class D1PublicSupplyOrderTest(unittest.TestCase):
     def test_public_signal_uses_only_strict_visible_yield(self):
         obs = observation(
             {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3},
             {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2},
-            {"kind": "PLANT", "crop": "MELON", "yield_units": True},
-            {"kind": "PLANT", "crop": "CARROT", "yield_units": "4"},
             {"kind": "WEED", "yield_units": 9},
+            "LOCKED",
+            None,
         )
         self.assertEqual(public_rival_supply(obs), {"STRAWBERRY": 3, "WOOL": 2})
 
+    def test_malformed_producing_counter_invalidates_whole_signal(self):
+        valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
+        for bad in (True, 1.0, "1", None):
+            with self.subTest(bad=bad):
+                malformed = {"kind": "PLANT", "crop": "CARROT", "yield_units": bad}
+                self.assertEqual(public_rival_supply(observation(valid, malformed)), {})
+
+    def test_malformed_rival_board_shape_invalidates_whole_signal(self):
+        valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
+        cases = []
+        obs = observation(valid)
+        obs["farms"][1]["tiles"].append("not-a-row")
+        cases.append(obs)
+        obs = observation(valid, 17)
+        cases.append(obs)
+        obs = observation(valid, {"kind": "PLANT", "crop": [], "yield_units": 1})
+        cases.append(obs)
+        obs = observation(valid, {"kind": "PASTURE", "animal": "DRAGON", "yield_units": 1})
+        cases.append(obs)
+        for bad_obs in cases:
+            with self.subTest(bad_obs=bad_obs):
+                self.assertEqual(public_rival_supply(bad_obs), {})
+
     def test_disabled_is_exact_parent_identity(self):
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
-        self.assertIs(apply_public_supply_order(observation(), action, enabled=False), action)
+        parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
+        self.assertIs(apply_public_supply_order(observation(), parent, enabled=False), parent)
 
     def test_no_signal_is_exact_parent_identity(self):
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
-        self.assertIs(apply_public_supply_order(observation(None), action), action)
+        parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
+        self.assertIs(apply_public_supply_order(observation(None), parent), parent)
 
-    def test_custom_market_params_fail_closed(self):
+    def test_custom_or_malformed_configuration_fails_closed(self):
         obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2})
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
+        parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
         self.assertIs(
-            apply_public_supply_order(obs, action, {"marketParams": {"WOOL": {"base": 999}}}),
-            action,
+            apply_public_supply_order(obs, parent, {"marketParams": {"WOOL": {"base": 999}}}),
+            parent,
         )
+        for bad in ([], "bad", True, 1):
+            with self.subTest(bad=bad):
+                self.assertIs(apply_public_supply_order(obs, parent, bad), parent)
 
     def test_stable_promote_pressured_rows_only_inside_leading_sell_block(self):
         milk = ["SELL", "MILK", 4]
@@ -68,26 +98,26 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         hire = ["HIRE"]
         later = ["SELL", "CARROT", 8]
         market = [milk, strawberry, wool, hire, later]
-        action = {"farmer": ["PASS"], "hands": [["PASS"]], "market": market, "marker": object()}
-        before = copy.deepcopy(action)
+        parent = {"farmer": ["PASS"], "hands": [["PASS"]], "market": market, "marker": object()}
+        before = copy.deepcopy(parent)
         obs = observation(
             {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 5},
             {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 1},
         )
-        changed = apply_public_supply_order(obs, action)
+        changed = apply_public_supply_order(obs, parent)
 
-        self.assertIsNot(changed, action)
+        self.assertIsNot(changed, parent)
         self.assertEqual(changed["market"], [strawberry, wool, milk, hire, later])
         self.assertIs(changed["market"][0], strawberry)
         self.assertIs(changed["market"][1], wool)
         self.assertIs(changed["market"][2], milk)
         self.assertIs(changed["market"][3], hire)
         self.assertIs(changed["market"][4], later)
-        self.assertIs(changed["farmer"], action["farmer"])
-        self.assertIs(changed["hands"], action["hands"])
-        self.assertIs(changed["marker"], action["marker"])
-        self.assertEqual(action["market"], market)
-        self.assertEqual(action["market"], before["market"])
+        self.assertIs(changed["farmer"], parent["farmer"])
+        self.assertIs(changed["hands"], parent["hands"])
+        self.assertIs(changed["marker"], parent["marker"])
+        self.assertEqual(parent["market"], market)
+        self.assertEqual(parent["market"], before["market"])
 
     def test_parent_order_retained_inside_pressure_and_quiet_groups(self):
         rows = [
@@ -100,29 +130,44 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
             {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 99},
             {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 1},
         )
-        changed = apply_public_supply_order(obs, {"farmer": ["PASS"], "hands": [], "market": rows})
+        changed = apply_public_supply_order(obs, action(*rows))
         self.assertEqual(changed["market"], [rows[1], rows[2], rows[0], rows[3]])
 
     def test_already_prioritized_returns_exact_parent_identity(self):
         wool = ["SELL", "WOOL", 2]
         milk = ["SELL", "MILK", 4]
-        action = {"farmer": ["PASS"], "hands": [], "market": [wool, milk]}
+        parent = action(wool, milk)
         obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 3})
-        self.assertIs(apply_public_supply_order(obs, action), action)
+        self.assertIs(apply_public_supply_order(obs, parent), parent)
 
     def test_noninteger_sell_quantity_terminates_leading_eligible_block(self):
         milk = ["SELL", "MILK", 2]
         malformed = ["SELL", "WOOL", "7"]
         strawberry = ["SELL", "STRAWBERRY", 4]
-        action = {"farmer": ["PASS"], "hands": [], "market": [milk, malformed, strawberry]}
+        parent = action(milk, malformed, strawberry)
         obs = observation({"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 4})
-        self.assertIs(apply_public_supply_order(obs, action), action)
+        self.assertIs(apply_public_supply_order(obs, parent), parent)
+
+    def test_malformed_sell_product_never_hashes_or_reorders(self):
+        obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 4})
+        for product in ([], {}, True, 7, 1.0, "DRAGON_FRUIT"):
+            with self.subTest(product=product):
+                parent = action(["SELL", "MILK", 2], ["SELL", product, 1], ["SELL", "WOOL", 2])
+                self.assertIs(apply_public_supply_order(obs, parent), parent)
+
+    def test_partial_malformed_public_signal_cannot_trigger_reorder(self):
+        obs = observation(
+            {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 4},
+            {"kind": "PLANT", "crop": "CARROT", "yield_units": True},
+        )
+        parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
+        self.assertIs(apply_public_supply_order(obs, parent), parent)
 
     def test_wrong_farm_shape_fails_closed(self):
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
+        parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
         for obs in ({}, {"player": 0, "farms": []}, {"player": True, "farms": [{}, {}]}):
             with self.subTest(obs=obs):
-                self.assertIs(apply_public_supply_order(obs, action), action)
+                self.assertIs(apply_public_supply_order(obs, parent), parent)
 
 
 if __name__ == "__main__":
