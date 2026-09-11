@@ -1,0 +1,80 @@
+name: TITAN V3.1 S33 row-shed current-root donor
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v31-s33-row-shed.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/s33_row_shed_current_root/**"
+  push:
+    branches:
+      - astra/v31-s33-row-shed-8e3-20260911
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-s33-row-shed-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CASE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/s33_row_shed_current_root
+      R04: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+      BASE: 8e3d92a286806f9f9525973ee7d359b629a11487
+      EXPECTED_R04_BLOB: 7edacbfb4916b8f241b689ded6643240ca02a9ec
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+
+    steps:
+      - name: Checkout literal head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_HEAD }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact shipped root and four-path scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git merge-base --is-ancestor "$BASE" HEAD
+          test "$(git rev-parse "HEAD:$R04")" = "$EXPECTED_R04_BLOB"
+          git diff --check "$BASE" HEAD
+          actual="$(git diff --name-only "$BASE" HEAD | sort)"
+          expected="$(printf '%s\n' \
+            '.github/workflows/titan-v31-s33-row-shed.yml' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/s33_row_shed_current_root/README.md' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/s33_row_shed_current_root/candidate.py' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/s33_row_shed_current_root/test_candidate.py' | sort)"
+          test "$actual" = "$expected"
+          test -z "$(git status --short)"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile and run focused contracts
+        working-directory: ${{ env.CASE }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile candidate.py test_candidate.py
+          python -B -m unittest -v test_candidate.py 2>&1 | tee "$RUNNER_TEMP/S33-TEST.log"
+          grep -E '^Ran 11 tests in [0-9.]+s$' "$RUNNER_TEMP/S33-TEST.log"
+          grep -Fx 'OK' "$RUNNER_TEMP/S33-TEST.log"
+          ! grep -E 'FAILED|ERROR|skipped=' "$RUNNER_TEMP/S33-TEST.log"
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --short)"
+
+      - name: Upload source-contract receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-s33-row-shed-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: ${{ runner.temp }}/S33-TEST.log
