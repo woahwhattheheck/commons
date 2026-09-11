@@ -76,18 +76,18 @@ class DeltaDistributionReportTests(unittest.TestCase):
         self.assertEqual(feature["inactive"]["count"], 1)
         self.assertEqual(feature["unknown_count"], 1)
 
-    def test_separate_arm_rows_pair_by_exact_cell_key(self):
+    def test_separate_arm_rows_pair_raw_evaluator_scores_by_candidate_seat(self):
         document = {
             "baseline": [
                 {"opponent": "a", "seed": 1, "seat": 0, "own": 10, "rival": 9},
-                {"opponent": "a", "seed": 1, "seat": 1, "scores": [8, 8]},
+                {"opponent": "a", "seed": 1, "candidate_seat": 1, "scores": [8, 10]},
             ],
             "candidate": [
                 {
                     "opponent": "a",
                     "seed": 1,
-                    "seat": 1,
-                    "scores": [9, 8],
+                    "candidate_seat": 1,
+                    "scores": [7, 12],
                     "activations": {"x": 1},
                 },
                 {"opponent": "a", "seed": 1, "seat": 0, "own": 12, "rival": 9},
@@ -95,13 +95,67 @@ class DeltaDistributionReportTests(unittest.TestCase):
         }
         report = reporter.analyze(reporter.load_records(document))
         self.assertEqual(report["cells"], 2)
-        self.assertEqual(report["delta_m"]["mean"], 1.5)
+        self.assertEqual(report["delta_m"]["mean"], 2.5)
+        self.assertEqual(report["by_seat"]["1"]["mean_delta_m"], 3.0)
         self.assertEqual(report["activations"]["x"]["active"]["count"], 1)
         self.assertEqual(report["activations"]["x"]["unknown_count"], 1)
 
         broken = {"baseline": document["baseline"], "candidate": document["candidate"][:1]}
         with self.assertRaisesRegex(reporter.DataError, "arm cell sets differ"):
             reporter.load_records(broken)
+
+    def test_top_level_raw_score_vectors_are_seat_ordered(self):
+        report = reporter.analyze(
+            [
+                {
+                    "opponent": "raw-official",
+                    "seed": 2,
+                    "candidate_seat": 1,
+                    "baseline_scores": [90, 120],
+                    "candidate_scores": [80, 130],
+                }
+            ]
+        )
+        self.assertEqual(report["delta_m"]["mean"], 20.0)
+        self.assertEqual(report["delta_m"]["best_cell"]["baseline_margin"], 30.0)
+        self.assertEqual(report["delta_m"]["best_cell"]["candidate_margin"], 50.0)
+
+    def test_conflicting_identity_aliases_fail_closed(self):
+        row = cell("a", 1, 0, (10, 9), (11, 9))
+        row["candidate_seat"] = 1
+        with self.assertRaisesRegex(reporter.DataError, "conflicting seat aliases"):
+            reporter.analyze([row])
+
+        row = cell("a", 1, 0, (10, 9), (11, 9))
+        row["opponent_name"] = "b"
+        with self.assertRaisesRegex(reporter.DataError, "conflicting opponent aliases"):
+            reporter.analyze([row])
+
+        row = cell("a", 1, 0, (10, 9), (11, 9))
+        row["game_seed"] = 2
+        with self.assertRaisesRegex(reporter.DataError, "conflicting seed aliases"):
+            reporter.analyze([row])
+
+    def test_conflicting_score_representations_fail_closed(self):
+        row = cell("a", 1, 0, (10, 9), (11, 9))
+        row["baseline_scores"] = [9, 10]
+        with self.assertRaisesRegex(reporter.DataError, "conflicting baseline score representations"):
+            reporter.analyze([row])
+
+        row = cell("a", 1, 0, (10, 9), (11, 9))
+        row["candidate"]["scores"] = [99, 1]
+        with self.assertRaisesRegex(reporter.DataError, "conflicting candidate score representations"):
+            reporter.analyze([row])
+
+    def test_blank_seed_and_conflicting_delta_aliases_fail_closed(self):
+        row = cell("a", "", 0, (10, 9), (11, 9))
+        with self.assertRaisesRegex(reporter.DataError, "non-empty string"):
+            reporter.analyze([row])
+
+        row = cell("a", 1, 0, (10, 9), (11, 9), delta_m=1)
+        row["deltaM"] = 2
+        with self.assertRaisesRegex(reporter.DataError, "conflicting supplied delta aliases"):
+            reporter.analyze([row])
 
     def test_policy_is_explicit_and_separate_from_measurement(self):
         report = reporter.analyze(
