@@ -1455,7 +1455,7 @@
         "acceptance": [
           "The same input produces the same decision",
           "A duplicate replay creates no second approval request",
-          "A crash after durable intent retries to exactly one approval request"
+          "A crash after durable intent can retry to exactly one approval request"
         ],
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
@@ -2529,8 +2529,8 @@
       "name": "Invoice Exception Pack Diagnostic",
       "state": "PUBLIC_OFFER",
       "source_artifact": {
-        "path": "invoice-exception-pack.json",
-        "blob_sha": "d8d381c2861a9a9b629ab2f03d6ca58bfdf77ce5",
+        "path": "revenue/invoice_exception_pack/contract.json",
+        "blob_sha": "faa5742a4b045f55073fa2386aee9f4e17eab76a",
         "terms_authority": "source"
       },
       "pricing": {
@@ -2546,12 +2546,12 @@
         ]
       },
       "outcome": {
-        "acceptance_source": "invoice-exception-pack.json",
+        "acceptance_source": "revenue/invoice_exception_pack/contract.json",
         "evidence_required": true
       },
       "routes": {
         "human": "invoice-exception-pack.html",
-        "machine": "invoice-exception-pack.json"
+        "machine": "revenue/invoice_exception_pack/contract.json"
       },
       "checkout": {
         "status": "ACTIVE_CHARGEABLE",
