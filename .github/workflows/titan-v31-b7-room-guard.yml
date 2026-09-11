@@ -1,0 +1,50 @@
+name: titan-v31-b7-room-guard
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_room_guard/**'
+      - '.github/workflows/titan-v31-b7-room-guard.yml'
+  push:
+    branches:
+      - 'astra/v31-b7-room-guard-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_room_guard/**'
+      - '.github/workflows/titan-v31-b7-room-guard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Assert literal workflow head
+        if: github.event_name == 'pull_request'
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - name: Focused B7 room-guard suite
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_room_guard
+          -p 'test_*.py'
+      - name: Optimization-safe focused suite
+        env:
+          PYTHONOPTIMIZE: '1'
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_room_guard
+          -p 'test_*.py'
+      - name: Compile experiment
+        run: >-
+          python -m py_compile
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_room_guard/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_room_guard/test_candidate.py
