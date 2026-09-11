@@ -17,7 +17,15 @@ import r04_full_router as r04  # noqa: E402
 import r04_s6_fert_roi as lane  # noqa: E402
 from titan_runtime import Features  # noqa: E402
 
-STANDARD_CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10}
+STANDARD_CONFIG = {
+    "episodeSteps": 720,
+    "turnsPerDay": 24,
+    "boardSize": 10,
+    "shedCapacity": 100,
+    "maxMarketOrdersPerTurn": 10,
+    "farmHandCostMult": 1,
+    "marketParams": {},
+}
 
 
 def plant(crop, *, planted_day, yield_units=1, watered_today=False, covered=-1):
@@ -118,16 +126,35 @@ def consider_hire(obs, *, enabled, tape=None):
 
 
 class S6FertRoiTest(unittest.TestCase):
-    def test_s6_activation_requires_exact_standard_configuration(self):
+    def test_s6_activation_requires_exact_semantic_configuration(self):
         self.assertTrue(lane.standard_configuration(dict(STANDARD_CONFIG)))
-        bad = (
+        no_market_params = dict(STANDARD_CONFIG)
+        no_market_params.pop("marketParams")
+        self.assertTrue(lane.standard_configuration(no_market_params))
+        none_market_params = dict(STANDARD_CONFIG, marketParams=None)
+        self.assertTrue(lane.standard_configuration(none_market_params))
+
+        bad = []
+        for name, value in (
+            ("episodeSteps", 719),
+            ("turnsPerDay", 12),
+            ("boardSize", 9),
+            ("shedCapacity", 99),
+            ("maxMarketOrdersPerTurn", 1),
+            ("farmHandCostMult", 2),
+            ("farmHandCostMult", True),
+            ("turnsPerDay", True),
+            ("episodeSteps", 720.0),
+        ):
+            candidate = dict(STANDARD_CONFIG)
+            candidate[name] = value
+            bad.append(candidate)
+        bad.extend((
             None,
-            {"episodeSteps": 719, "turnsPerDay": 24, "boardSize": 10},
-            {"episodeSteps": 720, "turnsPerDay": 12, "boardSize": 10},
-            {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 9},
-            {"episodeSteps": 720, "turnsPerDay": True, "boardSize": 10},
-            {"episodeSteps": 720.0, "turnsPerDay": 24, "boardSize": 10},
-        )
+            dict(STANDARD_CONFIG, marketParams={"WHEAT": {"base": 99}}),
+            dict(STANDARD_CONFIG, marketParams=[]),
+            dict(STANDARD_CONFIG, marketParams=True),
+        ))
         for configuration in bad:
             with self.subTest(configuration=configuration):
                 self.assertFalse(lane.standard_configuration(configuration))
@@ -160,7 +187,7 @@ class S6FertRoiTest(unittest.TestCase):
         tape = tape_with_later_carrot(obs["step"])
         out, st = consider_hire(obs, enabled=True, tape=tape)
         self.assertEqual(sum(order[0] == "HIRE" for order in out["market"]), 1)
-        self.assertEqual(st.want, 2)  # one current + one authored future CARROT, no S6 spare
+        self.assertEqual(st.want, 2)
         self.assertIn(["BUY_PRODUCT", "FERTILIZER", 2], out["market"])
 
     def test_low_roi_extension_does_not_reserve_extra(self):
