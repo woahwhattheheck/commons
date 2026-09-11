@@ -94,6 +94,15 @@ class C5WheatDemandTests(unittest.TestCase):
         self.assertIs(c5.apply_c5_wheat_demand(obs(1, 100), parent, enabled=False), parent)
         self.assertEqual(c5.RIDER.players, {})
 
+    def test_invalid_player_never_seeds_or_uses_transition_state(self):
+        rider = c5.WheatDemandRider(enabled=True)
+        parent = action(("SELL", "WHEAT", 3))
+        self.assertIs(rider.apply(obs(1, 100, player=2), parent), parent)
+        self.assertIs(rider.apply(obs(2, 99, price=30, player=2), parent), parent)
+        self.assertEqual(rider.players, {})
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
+        self.assertEqual(rider.telemetry["relocations"], 0)
+
     def test_own_buy_upper_bound_masks_self_caused_inventory_drop(self):
         rider = c5.WheatDemandRider(enabled=True)
         rider.apply(obs(1, 100), action(("BUY_PRODUCT", "WHEAT", 2)))
