@@ -32,6 +32,10 @@ jobs:
           test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
           test "$(git cat-file -t "$PARENT")" = commit
           test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          test '${{ github.event.pull_request.base.sha }}' = "$PARENT"
+          BASE_REF='${{ github.event.pull_request.base.ref }}'
+          git fetch --no-tags origin "$BASE_REF"
+          test "$(git rev-parse "refs/remotes/origin/$BASE_REF")" = "$PARENT"
           test "$(git hash-object "$V3/make_submission.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
           test "$(git hash-object "$V3/build_v3.py")" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
           test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
