@@ -52,7 +52,8 @@ def overlay_files():
 def _verified_archive(path, expected, label):
     data = Path(path).read_bytes()
     digest = hashlib.sha256(data).hexdigest()
-    assert digest == expected, "%s %s is %s, manifest pins %s" % (label, path, digest, expected)
+    if digest != expected:
+        raise AssertionError("%s %s is %s, manifest pins %s" % (label, path, digest, expected))
     return Path(path), data
 
 
