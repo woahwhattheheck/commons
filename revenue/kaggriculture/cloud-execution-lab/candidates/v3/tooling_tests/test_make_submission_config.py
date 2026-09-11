@@ -38,6 +38,7 @@ def held_config(**patch):
         "r04_b5_carrot_fertilizer": True,
         "r04_b5_jit_fertilize": True,
         "r04_row_shed": True,
+        "r04_fert_hand": True,
         "r01_shop_router": False,
         "r02_route_bank": False,
         "sentinel": "unchanged",
@@ -74,6 +75,7 @@ class SubmissionConfigTests(unittest.TestCase):
         self.assertIs(config["r04_sale_fertilizer"], True)
         self.assertIs(config["r04_cattle_early"], False)
         self.assertIs(config["r04_row_shed"], True)
+        self.assertIs(config["r04_fert_hand"], True)
         self.assertIs(config["r04_row_order"], True)
         self.assertEqual(config["r04_no_late_sale_advance_step"], 648)
         self.assertEqual(config["sentinel"], "unchanged")
@@ -108,6 +110,7 @@ class SubmissionConfigTests(unittest.TestCase):
             "r04_b5_carrot_fertilizer",
             "r04_b5_jit_fertilize",
             "r04_row_shed",
+            "r04_fert_hand",
         )
         for key in keys:
             for bad in (False, None, 0, 1, "true", [], {}):
