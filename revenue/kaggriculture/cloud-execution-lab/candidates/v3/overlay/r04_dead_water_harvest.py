@@ -16,7 +16,9 @@ so yield_units alone is not sufficient. Also, HARVEST removes annual crops from
 the board: a mature WHEAT/CARROT/MELON can still have remaining yield growth
 before max_yield_day. Ongoing crops use max_lifespan_step == -1 as a sentinel
 until their terminal production, so that value must never be treated as expired.
-Unexpected state fails closed.
+The timing proof is valid only under the standard 720-step, 24-turn/day, 10x10
+engine configuration and a public day consistent with step. Unexpected state
+fails closed.
 """
 from __future__ import annotations
 
@@ -39,6 +41,12 @@ ANNUAL_MAX_YIELD_DAY = {
     "WHEAT": 4,
     "CARROT": 3,
     "MELON": 12,
+}
+
+_STANDARD_CONFIGURATION = {
+    "episodeSteps": 720,
+    "turnsPerDay": 24,
+    "boardSize": 10,
 }
 
 _WATER = ["WATER"]
@@ -66,6 +74,17 @@ def get_report():
 
 def _plain_int(value):
     return isinstance(value, int) and not isinstance(value, bool)
+
+
+def _standard_configuration(configuration):
+    """Require the exact public timing/board constants used by this proof."""
+    if not isinstance(configuration, dict):
+        return False
+    for key, expected in _STANDARD_CONFIGURATION.items():
+        value = configuration.get(key, _UNKNOWN)
+        if not _plain_int(value) or value != expected:
+            return False
+    return True
 
 
 def _worker_tile(farm, position):
@@ -149,18 +168,20 @@ def _harvest_preserves_future_yield(tile, day, reason):
         return False
 
 
-def apply_dead_water_harvest(observation, action, enabled=True):
+def apply_dead_water_harvest(observation, action, configuration=None, enabled=True):
     """Recover same-tile HARVESTs; return the original object when unchanged."""
     if not enabled:
         return action
     try:
+        if not _standard_configuration(configuration):
+            return action
         step = observation["step"]
         day = observation["day"]
         player = observation["player"]
         if not _plain_int(step) or not _plain_int(day):
             return action
         # Maturity consumes day while the late-window/expiry proof consumes
-        # step.  They must describe one engine clock or the state is ambiguous.
+        # step. They must describe one engine clock or the state is ambiguous.
         if day != step // 24:
             return action
         if not _plain_int(player) or player not in (0, 1):
