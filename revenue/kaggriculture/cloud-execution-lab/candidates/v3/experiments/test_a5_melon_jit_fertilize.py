@@ -91,6 +91,30 @@ class A5MelonJitTests(unittest.TestCase):
         tile["yield_units"] = a5.MELON_MAX_YIELD
         self.assertIs(a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)[0], action)
 
+    def test_zero_marginal_yield_five_is_exact_identity(self):
+        obs, action, nxt = fixture(yield_units=5)
+        out, rows = a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(rows, ())
+        ok, reason = a5._melon_qualifies(
+            obs["farms"][0]["tiles"][1][1],
+            obs["private"]["inventories"][1],
+            obs["step"] // 24,
+        )
+        self.assertFalse(ok)
+        self.assertEqual(reason, "no_marginal_yield")
+
+    def test_yield_four_still_has_one_unit_marginal_gain(self):
+        obs, action, nxt = fixture(yield_units=4)
+        out, rows = a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)
+        self.assertIsNot(out, action)
+        self.assertEqual(out["hands"], [["FERTILIZE"]])
+        self.assertEqual(len(rows), 1)
+        baseline = min(a5.MELON_MAX_YIELD, 4 + 1)
+        covered = min(a5.MELON_MAX_YIELD, 4 + 2)
+        self.assertEqual((baseline, covered), (5, 6))
+        self.assertGreater(covered, baseline)
+
     def test_bool_and_string_quantities_do_not_coerce(self):
         for bad in (True, "2", 2.0):
             with self.subTest(bad=bad):
