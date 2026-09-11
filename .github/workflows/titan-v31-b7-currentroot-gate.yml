@@ -75,6 +75,7 @@ jobs:
           git diff --check "$PARENT_SHA...HEAD"
           git fetch --no-tags origin "+refs/heads/$LIVE_BRANCH:refs/remotes/origin/$LIVE_BRANCH"
           LIVE="$(git rev-parse "refs/remotes/origin/$LIVE_BRANCH")"
+          test "$LIVE" = "$ROOT_SHA"
           test "$(git merge-base "$ROOT_SHA" "$LIVE")" = "$ROOT_SHA"
           test "$(git rev-parse "$LIVE:$R04")" = "$R04_BLOB"
           test "$(git rev-parse "$LIVE:$APPLY")" = "$APPLY_BLOB"
@@ -197,6 +198,7 @@ jobs:
           test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha || github.sha }}'
           git fetch --no-tags origin "+refs/heads/$LIVE_BRANCH:refs/remotes/origin/$LIVE_BRANCH"
           LIVE="$(git rev-parse "refs/remotes/origin/$LIVE_BRANCH")"
+          test "$LIVE" = "$ROOT_SHA"
           test "$(git merge-base "$ROOT_SHA" "$LIVE")" = "$ROOT_SHA"
           test "$(git rev-parse "$LIVE:$R04")" = "$R04_BLOB"
           test "$(git rev-parse "$LIVE:$APPLY")" = "$APPLY_BLOB"
