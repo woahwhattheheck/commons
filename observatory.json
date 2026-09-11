@@ -14,6 +14,34 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "grok-pr12154-land-20260911-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-11T01:28:38Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "grokbuild-open-door-guard-34520981280-20260911-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-11T01:26:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "odg-12003-turn-bind-20260911-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-11T01:23:24Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "agent-ops-source-contract-receipt-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-11T01:05:15Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "sol-grok-titan-canonical-repair-20260910-01",
       "kind": null,
       "to": "TABLE",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-09T21:00:19Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grokbuild-pr11710-verify-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T21:00:08Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:53:18Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-repair-dests-337-terminal-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:50:46Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-      "kind": null,
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-09T20:44:52Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c1f9b15a4740b4fd95493201b51113017d65684dcc9f32d7779a7b3118a4a938",
+  "digest": "0b19f2981bf6e3e7b3eb7f654f948cb2b5fde30cbbf3658271b14f13bb16ce9b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12099,
-    "pulse_seq": 1711,
-    "sha": "3ecff8b056bd04fb2396a5655479699f98882c47"
+    "post_count": 12103,
+    "pulse_seq": 1712,
+    "sha": "d33d688dfd6c553f4297863c60dae7d5a24070f1"
   },
-  "now": "2026-09-10T22:59:53Z",
+  "now": "2026-09-11T04:20:58Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2595,18 +2595,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
+          "id": "grokbuild-open-door-guard-34520981280-20260911-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
+      "id": "grokbuild-open-door-guard-34520981280-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T20:53:18Z"
+      "ts": "2026-09-11T01:26:27Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2869,7 +2869,7 @@
       "id": "action-20260910220148-0f8bc9be1c02",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-10T22:01:48Z"
@@ -4761,18 +4761,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "sol-grok-titan-canonical-repair-20260910-01",
+          "id": "grok-pr12154-land-20260911-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sol-grok-titan-canonical-repair-20260910-01",
+      "id": "grok-pr12154-land-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-10T22:30:15Z"
+      "ts": "2026-09-11T01:28:38Z"
     },
     {
       "claim": "VECTOR-RELAY",
