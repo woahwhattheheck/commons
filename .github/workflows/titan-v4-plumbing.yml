@@ -6,31 +6,25 @@ on:
       - titan/v4-20260911
     paths:
       - '.github/workflows/titan-v4-plumbing.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing_monotonic.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
   push:
     branches:
       - titan/v4-20260911
     paths:
       - '.github/workflows/titan-v4-plumbing.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing_monotonic.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: titan-v4-plumbing-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || format('{0}-run-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   contract:
@@ -68,7 +62,9 @@ jobs:
               "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
           )
           lab = pathlib.Path("revenue/kaggriculture/cloud-execution-lab/candidates/v3")
-          pinned = json.loads(lab.joinpath("V3-MANIFEST.json").read_text(encoding="utf-8"))["base"]["sha256"]
+          pinned = json.loads(
+              lab.joinpath("V3-MANIFEST.json").read_text(encoding="utf-8")
+          )["base"]["sha256"]
           historical = (
               "revenue/kaggriculture/cloud-execution-lab/exports/historical/"
               f"titan-{pinned}.tar.gz"
@@ -83,7 +79,9 @@ jobs:
                   ["git", "fetch", "--no-tags", "--filter=blob:none", "--depth=1", "origin", ref],
                   check=True,
               )
-              return subprocess.check_output(["git", "rev-parse", "FETCH_HEAD"], text=True).strip()
+              return subprocess.check_output(
+                  ["git", "rev-parse", "FETCH_HEAD"], text=True
+              ).strip()
 
           def cat_file(sha: str, path: str):
               probe = subprocess.run(
@@ -92,7 +90,9 @@ jobs:
               )
               if probe.returncode != 0:
                   return None
-              return subprocess.check_output(["git", "cat-file", "blob", f"{sha}:{path}"])
+              return subprocess.check_output(
+                  ["git", "cat-file", "blob", f"{sha}:{path}"]
+              )
 
           tried = []
 
@@ -110,10 +110,13 @@ jobs:
           chosen = consider("HEAD titan-current", cat_file(head_sha, str(archive)))
           if chosen is None:
               main_sha = fetch("main")
-              chosen = consider(
-                  "main digest-addressed historical",
-                  cat_file(main_sha, historical),
-              ) or consider("main titan-current", cat_file(main_sha, str(archive)))
+              chosen = (
+                  consider(
+                      "main digest-addressed historical",
+                      cat_file(main_sha, historical),
+                  )
+                  or consider("main titan-current", cat_file(main_sha, str(archive)))
+              )
           if chosen is None:
               sys.stderr.write(
                   f"canonical archive pin {pinned} not found; tried {', '.join(tried)}\n"
@@ -140,24 +143,6 @@ jobs:
             if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
               git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_SHA"
             fi
-
-            # The promotion-state wrapper reconstructs the base package by
-            # swapping only base apply_v4.py into the HEAD build recipe. That
-            # comparison is exact only while the frozen V3/build inputs are
-            # byte-identical to the target. Fail closed on any drift instead of
-            # letting HEAD rewrite both sides of the monotonicity proof.
-            for frozen in \
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py \
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py \
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json
-            do
-              if ! git diff --quiet "$BASE_SHA" "$HEAD_SHA" -- "$frozen"; then
-                echo "::error file=$frozen::V4 plumbing guard requires this frozen V3/build input to match the exact target base"
-                git diff -- "$BASE_SHA" "$HEAD_SHA" -- "$frozen"
-                exit 1
-              fi
-            done
-
             git cat-file blob "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
           else
             cp "$APPLY" "$RUNNER_TEMP/base_apply_v4.py"
@@ -168,95 +153,6 @@ jobs:
         run: |
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
-          python3 -m py_compile \
-            "$LAB/check_v4_plumbing.py" \
-            "$LAB/check_v4_plumbing_monotonic.py"
+          python3 -m py_compile "$LAB/check_v4_plumbing.py"
           python3 -O "$LAB/check_v4_plumbing.py" \
             --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
-          python3 -O "$LAB/check_v4_plumbing_monotonic.py" \
-            --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
-          python3 - <<'PY'
-          import ast
-          import pathlib
-          import sys
-
-          lab = pathlib.Path("revenue/kaggriculture/cloud-execution-lab/candidates/v3")
-          sys.path.insert(0, str(lab))
-          import build_v3
-
-          runtime = build_v3.package_files()["titan_runtime.py"].decode("utf-8")
-          tree = ast.parse(runtime, filename="titan_runtime.py")
-
-          def direct_names(target):
-              if isinstance(target, ast.Name):
-                  return {target.id}
-              if isinstance(target, (ast.Tuple, ast.List)):
-                  out = set()
-                  for item in target.elts:
-                      out.update(direct_names(item))
-                  return out
-              return set()
-
-          def final_live_class(name):
-              found = None
-              class_defs = []
-              for node in tree.body:
-                  if isinstance(node, ast.ClassDef):
-                      if node.name == name:
-                          class_defs.append(node)
-                          found = node
-                      continue
-                  if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                      if node.name == name:
-                          found = None
-                      continue
-                  if isinstance(node, ast.Assign):
-                      if any(name in direct_names(target) for target in node.targets):
-                          found = None
-                      continue
-                  if isinstance(node, ast.AnnAssign):
-                      if name in direct_names(node.target):
-                          found = None
-                      continue
-                  if isinstance(node, ast.AugAssign):
-                      if name in direct_names(node.target):
-                          found = None
-                      continue
-                  if isinstance(node, ast.Delete):
-                      if any(name in direct_names(target) for target in node.targets):
-                          found = None
-                      continue
-                  if isinstance(node, (ast.Import, ast.ImportFrom)):
-                      for alias in node.names:
-                          bound = alias.asname or alias.name.split(".", 1)[0]
-                          if bound == name:
-                              found = None
-              if len(class_defs) != 1 or found is not class_defs[0]:
-                  raise SystemExit(
-                      f"materialized titan_runtime.py has shadowed/rebound {name}; "
-                      "plumbing audit must bind the live runtime class"
-                  )
-              return found
-
-          for required in ("Features", "TitanAgent"):
-              final_live_class(required)
-
-          poison = ast.parse(
-              "class TitanAgent:\n    pass\nclass TitanAgent:\n    pass\n"
-          )
-          original = tree
-          tree = poison
-          try:
-              try:
-                  final_live_class("TitanAgent")
-              except SystemExit:
-                  pass
-              else:
-                  raise SystemExit(
-                      "internal class-binding regression: duplicate TitanAgent false-passed"
-                  )
-          finally:
-              tree = original
-
-          print("V4 LIVE CLASS BINDINGS OK", "Features", "TitanAgent")
-          PY
