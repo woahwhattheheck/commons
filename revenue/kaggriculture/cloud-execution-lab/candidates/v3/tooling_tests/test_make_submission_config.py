@@ -39,7 +39,7 @@ def base_files(**patch):
 
 
 class SubmissionConfigTests(unittest.TestCase):
-    def test_field_gated_tuple_is_forced_and_input_is_unchanged(self):
+    def test_field_gated_tuple_is_forced_and_shipped_lanes_survive(self):
         source = base_files()
         original = copy.deepcopy(source)
         out, config = submission.apply_submission_config(source)
@@ -49,24 +49,17 @@ class SubmissionConfigTests(unittest.TestCase):
         self.assertIs(config["r04_cattle_early"], False)
         self.assertEqual(config["r04_sale_horizon"], 8)
         self.assertIs(config["r04_no_late_sale_advance"], True)
-        self.assertIs(config["r04_strawberry_topup"], True)
         self.assertEqual(config["r04_no_late_sale_advance_step"], 648)
+        self.assertIs(config["r04_strawberry_topup"], True)
         self.assertEqual(config["sentinel"], "unchanged")
         self.assertEqual(out["main.py"], source["main.py"])
         self.assertNotEqual(out["TITAN-CONFIG.json"], source["TITAN-CONFIG.json"])
 
-    def test_shipped_h4_and_l3_keys_are_preserved_not_forced(self):
-        _, config = submission.apply_submission_config(
-            base_files(r04_strawberry_topup=False, r04_no_late_sale_advance=False)
-        )
-        self.assertIs(config["r04_strawberry_topup"], False)
-        self.assertIs(config["r04_no_late_sale_advance"], False)
-
-    def test_field_gated_tuple_does_not_inherit_future_base_horizon(self):
+    def test_default_submission_horizon_does_not_inherit_future_base_horizon(self):
         _, config = submission.apply_submission_config(base_files(r04_sale_horizon=10))
         self.assertEqual(config["r04_sale_horizon"], 8)
-        self.assertIs(config["r04_sale_fertilizer"], True)
-        self.assertIs(config["r04_cattle_early"], False)
+        self.assertIs(config["r04_no_late_sale_advance"], True)
+        self.assertIs(config["r04_strawberry_topup"], True)
 
     def test_sale_fertilizer_is_forced_on_even_if_base_default_moves(self):
         out, config = submission.apply_submission_config(base_files(r04_sale_fertilizer=False))
@@ -74,18 +67,18 @@ class SubmissionConfigTests(unittest.TestCase):
         self.assertIs(config["r04_cattle_early"], False)
         self.assertIn(b'"r04_sale_fertilizer": true', out["TITAN-CONFIG.json"])
 
-    def test_horizon_override_is_positive_integer_and_does_not_touch_other_keys(self):
+    def test_horizon_override_is_positive_integer_and_preserves_shipped_lanes(self):
         _, config = submission.apply_submission_config(base_files(), 5)
         self.assertEqual(config["r04_sale_horizon"], 5)
-        self.assertEqual(config["sentinel"], "unchanged")
-        self.assertIs(config["r04_strawberry_topup"], True)
         self.assertIs(config["r04_no_late_sale_advance"], True)
+        self.assertIs(config["r04_strawberry_topup"], True)
+        self.assertEqual(config["sentinel"], "unchanged")
         for bad in (0, -1, True, 5.0, "5"):
             with self.subTest(bad=bad):
                 with self.assertRaisesRegex(AssertionError, "positive integer"):
                     submission.apply_submission_config(base_files(), bad)
 
-    def test_invalid_cli_horizon_fails_before_package_access(self):
+    def test_invalid_cli_horizon_fails_before_sys_path_or_package_access(self):
         fake = types.ModuleType("build_v3")
 
         def forbidden(*_args, **_kwargs):
@@ -93,11 +86,27 @@ class SubmissionConfigTests(unittest.TestCase):
 
         fake.package_files = forbidden
         fake.build_bytes = forbidden
+        original_path = list(sys.path)
         for raw in ("0", "-1"):
             with self.subTest(raw=raw):
                 with mock.patch.dict(sys.modules, {"build_v3": fake}):
                     with self.assertRaisesRegex(AssertionError, "submission horizon must be a positive integer"):
-                        submission.main(["unused-v3", "canonical.tar.gz", "out.tar.gz", raw])
+                        submission.main(["poison-v3-path", "canonical.tar.gz", "out.tar.gz", raw])
+                self.assertEqual(sys.path, original_path)
+
+    def test_non_integer_cli_horizon_fails_before_package_access(self):
+        fake = types.ModuleType("build_v3")
+
+        def forbidden(*_args, **_kwargs):
+            self.fail("non-integer CLI horizon touched package access")
+
+        fake.package_files = forbidden
+        fake.build_bytes = forbidden
+        original_path = list(sys.path)
+        with mock.patch.dict(sys.modules, {"build_v3": fake}):
+            with self.assertRaises(ValueError):
+                submission.main(["poison-v3-path", "canonical.tar.gz", "out.tar.gz", "not-an-int"])
+        self.assertEqual(sys.path, original_path)
 
     def test_base_horizon_contract_fails_closed_before_transform(self):
         for bad in (None, 0, -1, True, 8.0, "8"):
@@ -106,16 +115,28 @@ class SubmissionConfigTests(unittest.TestCase):
                     submission.apply_submission_config(base_files(r04_sale_horizon=bad))
 
     def test_submission_boolean_contracts_fail_closed(self):
-        for key in ("r04_sale_window", "r04_sale_fertilizer", "r04_cattle_early"):
+        keys = (
+            "r04_sale_window",
+            "r04_sale_fertilizer",
+            "r04_cattle_early",
+            "r04_no_late_sale_advance",
+            "r04_strawberry_topup",
+        )
+        for key in keys:
             for bad in (None, 0, 1, "false", [], {}):
                 with self.subTest(key=key, bad=bad):
-                    files = base_files(**{key: bad})
                     with self.assertRaisesRegex(AssertionError, "JSON boolean"):
-                        submission.apply_submission_config(files)
+                        submission.apply_submission_config(base_files(**{key: bad}))
 
     def test_base_route_must_still_ship_off_before_submission_transform(self):
         with self.assertRaisesRegex(AssertionError, "must ship with r04_sale_window=false"):
             submission.apply_submission_config(base_files(r04_sale_window=True))
+
+    def test_shipped_h4_and_gated_l3_must_be_on_before_transform(self):
+        with self.assertRaisesRegex(AssertionError, "rival-gated L3"):
+            submission.apply_submission_config(base_files(r04_no_late_sale_advance=False))
+        with self.assertRaisesRegex(AssertionError, "H4 strawberry"):
+            submission.apply_submission_config(base_files(r04_strawberry_topup=False))
 
     def test_missing_config_member_fails(self):
         with self.assertRaises(KeyError):
