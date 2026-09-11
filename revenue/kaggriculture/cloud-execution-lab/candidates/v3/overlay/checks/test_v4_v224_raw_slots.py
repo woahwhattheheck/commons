@@ -27,6 +27,10 @@ CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10,
           "farmHandCostMult": 1}
 
 
+class StructConfig:
+    maxMarketOrdersPerTurn = 10
+
+
 def action(market):
     return {"farmer": ["PASS"], "hands": [], "market": copy.deepcopy(market)}
 
@@ -190,24 +194,45 @@ class V224RawSlots(unittest.TestCase):
     def test_router_flag_on_prevents_falsey_compaction(self):
         parent = action([[], ["SELL", "WOOL", 2]])
         r04.V224_RAW_SLOTS = True
-        out = r04._v224_sales_first(parent)
+        out = r04._v224_sales_first(parent, dict(CONFIG))
         self.assertIs(out, parent)
         self.assertEqual(out["market"], [[], ["SELL", "WOOL", 2]])
+
+    def test_router_flag_on_accepts_struct_configuration(self):
+        parent = action([[], ["SELL", "WOOL", 2]])
+        r04.V224_RAW_SLOTS = True
+        out = r04._v224_sales_first(parent, StructConfig())
+        self.assertIs(out, parent)
+        self.assertEqual(out["market"], [[], ["SELL", "WOOL", 2]])
+
+    def test_nonstandard_or_missing_market_cap_falls_back_to_frozen_v224(self):
+        for configuration in (None, {}, {"maxMarketOrdersPerTurn": 5},
+                              {"maxMarketOrdersPerTurn": True}):
+            with self.subTest(configuration=configuration):
+                parent = action([[], ["SELL", "WOOL", 2]])
+                r04.V224_RAW_SLOTS = True
+                out = r04._v224_sales_first(copy.deepcopy(parent), configuration)
+                self.assertEqual(out["market"], [["SELL", "WOOL", 2]])
 
     def test_router_flag_on_preserves_reorder_telemetry(self):
         r04.V224_RAW_SLOTS = True
         before = r04._V224_REPORT["reordered_market_turns"]
         parent = action([["HIRE"], ["SELL", "WOOL", 2]])
-        out = r04._v224_sales_first(parent)
+        out = r04._v224_sales_first(parent, dict(CONFIG))
         self.assertIsNot(out, parent)
         self.assertEqual(out["market"], [["SELL", "WOOL", 2], ["HIRE"]])
         self.assertEqual(r04._V224_REPORT["reordered_market_turns"], before + 1)
 
         before = r04._V224_REPORT["reordered_market_turns"]
         barrier = action([[], ["SELL", "WOOL", 2]])
-        out = r04._v224_sales_first(barrier)
+        out = r04._v224_sales_first(barrier, dict(CONFIG))
         self.assertIs(out, barrier)
         self.assertEqual(r04._V224_REPORT["reordered_market_turns"], before)
+
+    def test_generated_callers_forward_runtime_configuration(self):
+        source = (ROOT / "r04_full_router.py").read_text(encoding="utf-8")
+        self.assertIn("_v224_sales_first(action, configuration)", source)
+        self.assertNotIn("_v224_sales_first(action)\n", source)
 
     def test_raw_slot_changes_lockstep_receipt_against_rival_sell(self):
         # Rival sells MILK in row 0. With the authored None barrier our SELL is
@@ -221,7 +246,7 @@ class V224RawSlots(unittest.TestCase):
         self.assertEqual(compacted["market"], [["SELL", "MILK", 1]])
 
         r04.V224_RAW_SLOTS = True
-        preserved = r04._v224_sales_first(parent)
+        preserved = r04._v224_sales_first(parent, dict(CONFIG))
         self.assertIs(preserved, parent)
         self.assertEqual(preserved["market"], [None, ["SELL", "MILK", 1]])
 
