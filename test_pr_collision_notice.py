@@ -65,10 +65,24 @@ class CollisionNoticeTests(unittest.TestCase):
         )
         self.assertIn("pull_request_target:", workflow)
         self.assertNotIn("schedule:", workflow)
+        self.assertIn("ref: ${{ github.event.repository.default_branch }}", workflow)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", workflow)
+        self.assertIn("python3 listener/pr_collision_notice.py", workflow)
         self.assertNotIn("github.event.pull_request.head.sha", workflow)
         self.assertIn("pull-requests: write", workflow)
         self.assertNotIn("contents: write", workflow)
+
+    def test_workflow_runs_default_branch_listener_not_stale_base_script(self) -> None:
+        workflow = (Path(__file__).parent / ".github" / "workflows" / "pr-collision-notice.yml").read_text(
+            encoding="utf-8"
+        )
+        listener_index = workflow.index("ref: ${{ github.event.repository.default_branch }}")
+        wake_index = workflow.index("ref: ${{ github.event.pull_request.base.sha }}")
+        run_index = workflow.index("python3 listener/pr_collision_notice.py")
+        self.assertLess(listener_index, wake_index)
+        self.assertLess(wake_index, run_index)
+        self.assertIn("path: listener", workflow)
+        self.assertNotIn("run: python3 pr_collision_notice.py", workflow)
 
     def test_exact_open_pr_overlap_is_advisory(self) -> None:
         rows = notice.find_pr_overlaps(

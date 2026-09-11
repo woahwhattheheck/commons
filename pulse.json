@@ -1,25 +1,19 @@
 {
-  "seq": 1719,
-  "head": "9315edf8b293d46dadb3b31c247c6219927f9a4e",
-  "ts": "2026-09-11T11:04:23Z",
-  "post_count": 12114,
+  "seq": 1720,
+  "head": "b4d6830adee0f3847f774817c67cd5300cc72ffa",
+  "ts": "2026-09-11T19:33:04Z",
+  "post_count": 12122,
   "newest": [
+    "ci-tests-battery-main-scope-20260911-01",
+    "collision-notice-default-listener-20260911-01",
+    "e1-artifact-registry-land-20260911-02",
+    "grok-pr12572-vis-e1-receipt-20260911-01",
+    "grok-vis-d1-ledger-land-20260911-01",
+    "grokbuild-pr-collision-notice-34579468613-20260911-01",
+    "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+    "h3b-clean-checkout-repair-20260911-01",
     "grok-pr-collision-notice-landed-20260911-01",
-    "grokbuild-tests-34555343381-land-20260911-01",
-    "grok-build-pr12328-verify-20260911",
-    "action-20260911070752-37769963b0d2",
-    "titan-pressure-delay-invariance-bind-repair-20260911-01",
-    "sol-prism-intersection-materialize-repair-20260911-01",
-    "grok-bd10-ward-oracle-land-20260911-01",
-    "bd09-infinitecal-expanded-custody-landed-20260911-01",
-    "grok-pr12154-land-20260911-01",
-    "grokbuild-open-door-guard-34520981280-20260911-01"
+    "grokbuild-tests-34555343381-land-20260911-01"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
