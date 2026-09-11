@@ -51,33 +51,42 @@ def _ro_price(item, inventory):
     return max(1, int(round(price)))
 
 
-def _effective_quantity(item, requested, projected_shed):
-    """Return the quantity used only for ROW_ORDER valuation.
+def _projection_is_complete(market, lead, projected_shed):
+    """Require one coherent, non-negative projection for every known SELL item.
 
-    ``None`` or malformed projection data deliberately falls back to the
-    inherited requested-quantity score.  A real projected shed produced by the
-    current router contains strict integer quantities for every product.
+    A partial/type-poisoned projection must not create a hybrid sort where some
+    rows use S33 valuation and others silently use the inherited valuation.  If
+    this predicate fails, the entire leading block uses inherited scoring.
     """
     if type(projected_shed) is not dict:
-        return requested
-    available = projected_shed.get(item)
-    if type(available) is not int:
-        return requested
-    return min(requested, max(0, available))
+        return False
+    for order in market[:lead]:
+        if not isinstance(order, (list, tuple)) or len(order) < 3:
+            return False
+        item = order[1]
+        if item not in _RO_PARAMS:
+            continue
+        available = projected_shed.get(item)
+        if type(available) is not int or available < 0:
+            return False
+    return True
 
 
 def order_sells(market, inventory, projected_shed=None):
     """Rank only the contiguous leading SELL block using realizable quantity.
 
     The returned rows and their quantities are never edited.  ``projected_shed``
-    affects only the score used by the stable sort.  Passing ``None`` exactly
-    reproduces the inherited requested-quantity valuation rule.
+    affects only the score used by the stable sort.  Missing, partial, or
+    malformed projection data falls back *for the whole leading block* to the
+    inherited requested-quantity valuation rule.
     """
     lead = 0
     while lead < len(market) and market[lead] and market[lead][0] == "SELL":
         lead += 1
     if lead < 2:
         return market
+
+    use_projection = _projection_is_complete(market, lead, projected_shed)
 
     def drop(order):
         if len(order) < 3:
@@ -90,7 +99,7 @@ def order_sells(market, inventory, projected_shed=None):
             requested = max(0, int(order[2]))
         except (AttributeError, TypeError, ValueError, OverflowError):
             return 0
-        quantity = _effective_quantity(item, requested, projected_shed)
+        quantity = min(requested, projected_shed[item]) if use_projection else requested
         return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity
 
     return sorted(market[:lead], key=drop, reverse=True) + market[lead:]
