@@ -27,7 +27,7 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONHASHSEED: '0'
-      EXACT_PARENT: '7ac82fdc07788f58c504282b54460fa29152ab06'
+      EXACT_PARENT: '581003122340496a851c3a037d76cd38482c7918'
       CERT_HEAD: 'cbfff2bec813e2c2609ce9c5819b74669e98c566'
       CERT_BLOB: '89a3325eb541ae0e8a81e1e0a426292820f10d98'
       SOURCE_EPISODE: '107223760'
@@ -35,6 +35,7 @@ jobs:
       FROZEN_SEEDS: '539131249,1834999074,2609097301,2609097302'
       EXPECTED_ARCHIVE_SHA256: '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86'
       EXPECTED_SOURCE_MANIFEST_SHA256: '1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083'
+      EVALUATOR_BLOB: '077feb2208b6e0c1727835eb4f8089709bf67f3b'
 
     steps:
       - uses: actions/checkout@v4
@@ -55,6 +56,11 @@ jobs:
           test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
           cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
           .github/workflows/titan-v3-s13-certified-prefix695-sol-pro.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/activation_capture.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/certified_evaluate.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/certified_report.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/test_activation_evidence.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/test_certified_report.py
           EOF
           git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
           diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
@@ -261,15 +267,28 @@ jobs:
             --expected-cutoff 695 \
             > "$OUT/CERTIFIED-PREFIX-695-STDOUT.json"
           python -m py_compile "$OUT/pensukesan-prefix-695-certified.py"
-          OUT="$OUT" python - <<'PY'
-          import json, os
+          CERTIFIED_SHA="$(sha256sum "$OUT/pensukesan-prefix-695-certified.py" | cut -d' ' -f1)"
+          python "$CHILD/activation_capture.py" \
+            --candidate "$OUT/pensukesan-prefix-695-certified.py" \
+            --expected-candidate-sha256 "$CERTIFIED_SHA" \
+            --output "$OUT/pensukesan-prefix-695-certified-captured.py" \
+            --receipt "$OUT/ACTIVATION-CAPTURE-RECEIPT.json" \
+            > "$OUT/ACTIVATION-CAPTURE-STDOUT.json"
+          python -m py_compile "$OUT/pensukesan-prefix-695-certified-captured.py"
+          OUT="$OUT" CERTIFIED_SHA="$CERTIFIED_SHA" python - <<'PY'
+          import hashlib, json, os
           from pathlib import Path
           root=Path(os.environ['OUT'])
           receipt=json.loads((root/'CERTIFIED-PREFIX-695-RECEIPT.json').read_text())
+          capture=json.loads((root/'ACTIVATION-CAPTURE-RECEIPT.json').read_text())
+          wrapper=root/'pensukesan-prefix-695-certified-captured.py'
           assert receipt['certificate_summary']['rows']==696
           assert receipt['certificate_summary']['owned_rows']==672
           assert receipt['source_seat_portability'] is False
           assert receipt['market_outcome_claim'] is False
+          assert capture['candidate_sha256']==os.environ['CERTIFIED_SHA']
+          assert capture['wrapper_sha256']==hashlib.sha256(wrapper.read_bytes()).hexdigest()
+          assert capture['diagnostic_schema']=='titan-v3-s13-certified-activation/v1'
           PY
           git diff --exit-code -- .
 
@@ -279,6 +298,7 @@ jobs:
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
+          CHILD="$LAB/analysis/titan-v3-s13-certified-prefix695-sol-pro"
           OUT="$RUNNER_TEMP/titan-v3-s13-certified-prefix"
           COMMON=(
             --engine-dir "$LAB/reference/engine"
@@ -292,14 +312,18 @@ jobs:
             --game-timeout 180
             --recheck-first
           )
+          test "$(git hash-object "$KAG/cloud-eval/evaluate.py")" = "$EVALUATOR_BLOB"
           python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
             --candidate "$OUT/carrier/control/control_entry.py::agent" \
             --output "$OUT/control.json"
           python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
             --candidate "$OUT/pensukesan-prefix-695.py::agent" \
             --output "$OUT/unsafe-prefix-695.json"
-          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
-            --candidate "$OUT/pensukesan-prefix-695-certified.py::agent" \
+          python "$CHILD/certified_evaluate.py" \
+            --evaluator "$KAG/cloud-eval/evaluate.py" \
+            --expected-evaluator-git-blob "$EVALUATOR_BLOB" \
+            "${COMMON[@]}" \
+            --candidate "$OUT/pensukesan-prefix-695-certified-captured.py::agent" \
             --output "$OUT/certified-prefix-695.json"
 
       - name: Build exact-cell certificate disposition
@@ -324,6 +348,7 @@ jobs:
             --unsafe-prefix "$OUT/unsafe-prefix-695.json" \
             --certified-prefix "$OUT/certified-prefix-695.json" \
             --source-seat "$SOURCE_SEAT" \
+            --capture-receipt "$OUT/ACTIVATION-CAPTURE-RECEIPT.json" \
             --output "$OUT/CERTIFIED-PREFIX-695-REPORT.json" \
             --markdown "$OUT/CERTIFIED-PREFIX-695-REPORT.md" \
             | tee "$OUT/CERTIFIED-PREFIX-695-REPORT-STDOUT.json"
@@ -332,9 +357,19 @@ jobs:
           import json, os
           from pathlib import Path
           report=json.loads((Path(os.environ['OUT'])/'CERTIFIED-PREFIX-695-REPORT.json').read_text())
+          assert report['schema']=='titan-v3-s13-certified-prefix-report/v2'
           assert report['unsafe_prefix']['pair_rows']==16
           assert report['certified_prefix']['pair_rows']==16
           assert report['off_seat_exact_fallback'] is True
+          assert isinstance(report['source_seat_activated'], bool)
+          assert isinstance(report['activation_evidence']['source_activation_count'], int)
+          assert report['activation_evidence']['activation_trace_consistent'] is True
+          if report['verdict']=='CERTIFIED_SURVIVOR':
+              assert report['source_seat_activated'] is True
+              assert report['activation_evidence']['source_activation_count'] > 0
+          if report['verdict']=='CERTIFICATE_REJECTS_TRANSPLANT':
+              assert report['source_seat_activated'] is False
+              assert report['activation_evidence']['source_activation_count'] == 0
           assert report['verdict'] in {'CERTIFIED_SURVIVOR','CERTIFICATE_REJECTS_TRANSPLANT','CERTIFIED_HOLD'}
           PY
           git diff --exit-code -- .
