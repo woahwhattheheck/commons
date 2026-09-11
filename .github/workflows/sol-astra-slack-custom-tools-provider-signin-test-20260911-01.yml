@@ -1,0 +1,51 @@
+name: sol-astra-slack-custom-tools-provider-signin-test-20260911-01
+
+on:
+  push:
+    branches:
+      - sol-astra/slack-custom-tools-provider-signin-test-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Bind repair parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "8d48620cefe78807594fd530fd10c513cd0cced0"
+          mapfile -t changed < <(git diff --name-only HEAD^ HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = ".github/workflows/sol-astra-slack-custom-tools-provider-signin-test-20260911-01.yml"
+      - name: Compile repair surface
+        run: python3 -m py_compile host/slack_custom_tools_app.py host/slack_service_tag.py host/needs_bryce_login_queue.py test_slack_custom_tools_install.py test_slack_service_tags.py test_slack_service_tag_provider_signin_docs.py
+      - name: Run focused current contracts
+        run: python3 -m unittest -v test_slack_custom_tools_install.py test_slack_service_tags.py test_slack_service_tag_provider_signin_docs.py
+      - name: Prove provider and CLI queues stay separate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'host')
+          import slack_custom_tools_app as app
+          import needs_bryce_login_queue as nbq
+          provider = app.drive('facebook', 'post the drop tonight', sessions={})
+          assert provider['state'] == 'NEEDS_OWNER_SIGNIN', provider
+          assert provider['channel_id'] == 'C0BUFA9G23E', provider
+          assert provider['channel_name'] == '#provider-sign-in', provider
+          assert provider['copy_secrets'] is False, provider
+          assert '#provider-sign-in' in provider['result'], provider
+          cli = nbq.slack_cli_ticket_item('/slackauthticket example.ticket')
+          assert cli['channel_id'] == 'C0BRX6EV739', cli
+          assert cli['copy_secrets'] is False, cli
+          print('PROVIDER_SIGNIN_SPLIT_OK')
+          PY
+      - name: Clean checkout
+        run: test -z "$(git status --porcelain)"
