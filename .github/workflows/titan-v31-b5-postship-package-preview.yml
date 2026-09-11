@@ -1,0 +1,234 @@
+name: titan-v31-b5-postship-package-preview
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-b5-postship-package-preview.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_postship_package/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-b5-postship-package-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-postship-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ROOT: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+      CANON: ${{ github.workspace }}/revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+      BASE: a6120d0ea1bdb75eb0da2239220efce551f624a6
+      APPLY_BLOB: 7a96c0f1d38fff674493e92bc420eb3dfe821f20
+      APPLY_SHA256: 8c214c4e66a9081428c7df4ec051fe0af1ddaa22393b870822a7a362439edea5
+      LIVE_PACKAGE: 400ae640f3258b6a6ff19f9da99c66ef9c433e315febb1d72c75296cddeb277c
+
+    steps:
+      - name: Checkout literal preview head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind merged a612 base and additive preview scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          test "$(git rev-parse "$BASE:$ROOT/apply_v3.py")" = "$APPLY_BLOB"
+          printf '%s  %s\n' "$APPLY_SHA256" "$ROOT/apply_v3.py" | sha256sum -c -
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          python - <<'PY'
+          import subprocess
+          base = 'a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          expected = {
+              '.github/workflows/titan-v31-b5-postship-package-preview.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_postship_package/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_postship_package/materialize.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_postship_package/production_helper.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_postship_package/test_production_helper.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', base, 'HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'unexpected post-ship B5 preview scope: {sorted(actual)}')
+          print('B5_POSTSHIP_SCOPE_OK', len(actual))
+          PY
+          git diff --check
+          test -z "$(git status --porcelain)"
+
+      - name: Prove merged package receipt is still exact
+        working-directory: ${{ env.ROOT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check --canonical "$CANON" | tee "$RUNNER_TEMP/live-build-check.log"
+          grep -F "V3 CHECK OK $LIVE_PACKAGE" "$RUNNER_TEMP/live-build-check.log"
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
+
+      - name: Run source-green production preview contracts
+        working-directory: ${{ env.ROOT }}/experiments/b5_postship_package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_production_helper.py 2>&1 | tee "$RUNNER_TEMP/b5-postship-tests.log"
+          grep -E '^Ran 7 tests in [0-9.]+s$' "$RUNNER_TEMP/b5-postship-tests.log"
+          grep -Fx 'OK' "$RUNNER_TEMP/b5-postship-tests.log"
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in ('production_helper.py', 'materialize.py', 'test_production_helper.py'):
+              text = Path(name).read_text(encoding='utf-8')
+              compile(text, name, 'exec')
+              print('syntax_ok', name)
+          PY
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
+
+      - name: Materialize detached post-ship package source
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v3-b5-postship"
+          python -B "$ROOT/experiments/b5_postship_package/materialize.py" "$ROOT" "$OUT"
+          test -f "$OUT/overlay/b5_carrot_fertilizer.py"
+          test -f "$OUT/build_v3.py"
+          test -f "$OUT/V3-MANIFEST.json"
+
+      - name: Regenerate deterministic detached package receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v3-b5-postship"
+          cd "$OUT"
+          python -B build_v3.py --canonical "$CANON" | tee "$RUNNER_TEMP/b5-build.log"
+          python -B build_v3.py --check --canonical "$CANON" | tee "$RUNNER_TEMP/b5-build-check.log"
+          grep -F 'V3 BUILD ' "$RUNNER_TEMP/b5-build.log"
+          grep -F 'V3 CHECK OK ' "$RUNNER_TEMP/b5-build-check.log"
+
+      - name: Emit exact B5-off control and B5-on score-facing archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v3-b5-postship"
+          RECEIPT="$RUNNER_TEMP/b5-postship-receipt"
+          mkdir -p "$RECEIPT"
+          OUT="$OUT" CANON="$CANON" RECEIPT="$RECEIPT" python -B - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import sys
+
+          root = Path(os.environ['OUT'])
+          canon = Path(os.environ['CANON'])
+          receipt_dir = Path(os.environ['RECEIPT'])
+          sys.path.insert(0, str(root))
+          import build_v3
+
+          package_files = build_v3.package_files(canon)
+          base_config = json.loads(package_files['TITAN-CONFIG.json'].decode('utf-8'))
+          assert base_config['b5_carrot_fertilizer'] is False
+          assert base_config['r04_strawberry_topup'] is True
+          assert base_config['r04_no_late_sale_advance'] is True
+          assert base_config['r04_sale_fertilizer'] is True
+          assert base_config['r04_sale_horizon'] == 8
+          assert 'b5_carrot_fertilizer.py' in package_files
+
+          control = dict(package_files)
+          control_config = dict(base_config)
+          control_config['r04_sale_window'] = True
+          control_config['r04_sale_horizon'] = 8
+          control_config['b5_carrot_fertilizer'] = False
+          control['TITAN-CONFIG.json'] = (json.dumps(control_config, indent=2) + '\n').encode()
+
+          candidate = dict(control)
+          candidate_config = dict(control_config)
+          candidate_config['b5_carrot_fertilizer'] = True
+          candidate['TITAN-CONFIG.json'] = (json.dumps(candidate_config, indent=2) + '\n').encode()
+
+          differing = sorted(name for name in control if control[name] != candidate[name])
+          assert differing == ['TITAN-CONFIG.json'], differing
+          assert set(control) == set(candidate)
+          config_delta = {
+              key: (control_config.get(key), candidate_config.get(key))
+              for key in sorted(set(control_config) | set(candidate_config))
+              if control_config.get(key) != candidate_config.get(key)
+          }
+          assert config_delta == {'b5_carrot_fertilizer': (False, True)}, config_delta
+
+          control_blob = build_v3.build_bytes(control)
+          candidate_blob = build_v3.build_bytes(candidate)
+          control_path = receipt_dir / 'control-a612.tar.gz'
+          candidate_path = receipt_dir / 'candidate-b5-on-a612.tar.gz'
+          control_path.write_bytes(control_blob)
+          candidate_path.write_bytes(candidate_blob)
+
+          generated_manifest = json.loads((root / 'V3-MANIFEST.json').read_text())
+          assert generated_manifest['keys']['b5_carrot_fertilizer']['default'] is False
+          generated_files = json.loads((root / 'FILES.json').read_text())
+          assert generated_files['b5_carrot_fertilizer.py'] == hashlib.sha256(
+              package_files['b5_carrot_fertilizer.py']
+          ).hexdigest()
+
+          receipt = {
+              'live_base_commit': 'a6120d0ea1bdb75eb0da2239220efce551f624a6',
+              'live_package_sha256': '400ae640f3258b6a6ff19f9da99c66ef9c433e315febb1d72c75296cddeb277c',
+              'b5_source_donor_head': '15e8367e4d3fff41e7e6eb2d088327f558764454',
+              'b5_source_donor_blob': '4e4f9d490332f075cf50df595cb7a067d6236066',
+              'generated_package_sha256': generated_manifest['archive']['sha256'],
+              'generated_package_files': generated_manifest['archive']['files'],
+              'control_sha256': hashlib.sha256(control_blob).hexdigest(),
+              'candidate_sha256': hashlib.sha256(candidate_blob).hexdigest(),
+              'archive_files': len(control),
+              'only_control_candidate_file_delta': differing,
+              'only_control_candidate_config_delta': {'b5_carrot_fertilizer': [False, True]},
+              'inherited_score_tuple': {
+                  'r04_sale_window': True,
+                  'r04_sale_horizon': control_config['r04_sale_horizon'],
+                  'r04_sale_fertilizer': control_config['r04_sale_fertilizer'],
+                  'r04_cattle_early': control_config['r04_cattle_early'],
+                  'r04_no_late_sale_advance': control_config['r04_no_late_sale_advance'],
+                  'r04_strawberry_topup': control_config['r04_strawberry_topup'],
+              },
+          }
+          (receipt_dir / 'B5-POSTSHIP-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n'
+          )
+          (receipt_dir / 'generated-FILES.json').write_bytes((root / 'FILES.json').read_bytes())
+          (receipt_dir / 'generated-V3-MANIFEST.json').write_bytes((root / 'V3-MANIFEST.json').read_bytes())
+          (receipt_dir / 'generated-titan-v3.sha256').write_bytes((root / 'dist/titan-v3.sha256').read_bytes())
+          print('B5_POSTSHIP_RECEIPT', json.dumps(receipt, sort_keys=True))
+          PY
+          test -s "$RECEIPT/B5-POSTSHIP-RECEIPT.json"
+          test -s "$RECEIPT/control-a612.tar.gz"
+          test -s "$RECEIPT/candidate-b5-on-a612.tar.gz"
+
+      - name: Prove repository checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+
+      - name: Upload deterministic preview receipts and archive pair
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-b5-postship-preview-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/b5-postship-receipt/
+            ${{ runner.temp }}/b5-postship-tests.log
+            ${{ runner.temp }}/live-build-check.log
+            ${{ runner.temp }}/b5-build.log
+            ${{ runner.temp }}/b5-build-check.log
+          if-no-files-found: warn
+          retention-days: 14
