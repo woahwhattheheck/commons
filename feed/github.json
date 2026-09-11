@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 5,
-    "runs_in_progress": 19,
-    "runs_queued": 75
+    "runs_in_progress": 20,
+    "runs_queued": 161
   },
   "degraded": [],
   "drafts": 219,
@@ -52,6 +52,38 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "branch": "astra/fix-pr-collision-checkout-20260911",
+      "created_at": "2026-09-11T22:08:44Z",
+      "draft": false,
+      "number": 12617,
+      "title": "CI: preserve collision listener across target checkout"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-w2-dead-feed-care-20260911",
+      "created_at": "2026-09-11T22:06:14Z",
+      "draft": true,
+      "number": 12616,
+      "title": "TITAN V4 W2: salvage redundant FEED as same-tile CARE"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-v224-raw-slots-20260911",
+      "created_at": "2026-09-11T22:04:54Z",
+      "draft": false,
+      "number": 12615,
+      "title": "TITAN V4: preserve lockstep raw slots in V224 SELL ordering"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-f3-v217-eod-tail-20260911",
+      "created_at": "2026-09-11T22:04:18Z",
+      "draft": false,
+      "number": 12613,
+      "title": "V4 F3: guarded V217 EOD tail compression"
+    },
+    {
+      "author": "woahwhattheheck",
       "branch": "astra/v4-eod-capacity-rescue-20260911",
       "created_at": "2026-09-11T22:03:22Z",
       "draft": false,
@@ -65,14 +97,6 @@
       "draft": true,
       "number": 12611,
       "title": "TITAN V4 C5: public WHEAT buy-signal rider (default off)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-d4-strawberry-20260911",
-      "created_at": "2026-09-11T22:02:31Z",
-      "draft": true,
-      "number": 12610,
-      "title": "TITAN V4 D4: repaired STRAWBERRY midgame timing carrier"
     },
     {
       "author": "woahwhattheheck",
@@ -105,37 +129,13 @@
       "draft": true,
       "number": 12603,
       "title": "TITAN V4 H3b: port repaired sheep max-held harvest priority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-s5-pet-carrot-20260911",
-      "created_at": "2026-09-11T21:53:48Z",
-      "draft": true,
-      "number": 12602,
-      "title": "[V4 S5] PET_CAFE-first carrot substitution analysis"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-dead-water-harvest",
-      "created_at": "2026-09-11T21:53:46Z",
-      "draft": false,
-      "number": 12601,
-      "title": "TITAN V4: recover provably dead WATER as same-tile HARVEST"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-s6-fert-roi-20260911",
-      "created_at": "2026-09-11T21:49:55Z",
-      "draft": false,
-      "number": 12598,
-      "title": "TITAN V4: add S6 fertilizer-hand ROI allocator key"
     }
   ],
-  "pulls_listed": 287,
+  "pulls_listed": 290,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 3.9,
+  "queue_depth_per_runner": 8.1,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T22:03:40Z",
+  "unchanged_since": "2026-09-11T22:09:50Z",
   "undatable_pulls": []
 }
