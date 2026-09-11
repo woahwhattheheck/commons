@@ -149,7 +149,7 @@ button{cursor:pointer}
   }
 
   function renderSeveral() {
-    var box = el("div", "lane");
+    var box = document.getElementById("several");
     box.textContent = "";
     var lanes = (data.lanes || []).filter(function (l) { return l.state === "OPEN" && l.open.length > 1; });
     if (!lanes.length) { box.appendChild(el("span", "muted", "None right now.")); return; }
