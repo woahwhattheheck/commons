@@ -34,6 +34,8 @@ EXPECTED_KEYS = frozenset(
     for seed in EXPECTED_SEEDS
     for seat in (0, 1)
 )
+OUTPUT_SCHEMA = "titan-v31-8e3-current-package-cattle-off-ab/v2"
+OUTPUT_TITLE = "## Cattle OFF vs ON — exact 8e3 current-package score-facing A/B"
 
 
 def load(path):
@@ -299,7 +301,7 @@ def main():
         disposition = "HOLD_MARGIN_NEUTRAL"
 
     result = {
-        "schema": "titan-v31-a612-cattle-off-ab/v2",
+        "schema": OUTPUT_SCHEMA,
         "engine_ref": ENGINE_REF,
         "materialization": materialization,
         "seeds": list(EXPECTED_SEEDS),
@@ -324,7 +326,7 @@ def main():
     Path(args.json_out).write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
     lines = [
-        "## Cattle OFF vs ON — exact a612 score-facing package A/B",
+        OUTPUT_TITLE,
         "",
         f"Packages differ only in `TITAN-CONFIG.json:r04_cattle_early` (`true -> false`). Engine `{ENGINE_REF}`.",
         "",
