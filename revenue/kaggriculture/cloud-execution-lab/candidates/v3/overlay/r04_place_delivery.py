@@ -7,11 +7,11 @@ of a DROP payload.  PLACE is capacity-bounded without destroying the worker's
 unplaced cargo.  This lane is shipped off as ``r04_place_delivery``.
 
 When enabled, only terminal-step DROP actions beside the shed are touched.  The
-transform chooses at most one product per worker, gives scarce shed capacity to
-the highest public-price cargo first, converts accepted cargo to explicit PLACE,
-and turns the remaining DROP actions into PASS.  It then recomputes terminal SELL
-rows from the projected shed.  Disabled and non-terminal calls return the exact
-parent action object.
+transform chooses at most one sellable product per worker, gives scarce shed
+capacity to the highest public-price cargo first, converts accepted cargo to
+explicit PLACE, and turns the remaining DROP actions into PASS.  It then
+recomputes terminal SELL rows from the projected shed.  Disabled, non-terminal,
+and terminal calls without a shed-adjacent DROP return the exact parent object.
 """
 from __future__ import annotations
 
@@ -29,18 +29,20 @@ def apply_place_delivery(observation, action, enabled=False):
     view = r04.FarmView(observation)
     workers = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
     eligible = []
+    touched = False
     for worker in range(min(len(workers), len(view.positions))):
         command = workers[worker]
         if not (isinstance(command, list) and command and command[0] == "DROP"):
             continue
         if not view.beside_shed(view.positions[worker]):
             continue
+        touched = True
         inventory = view.inventory(worker)
         if not isinstance(inventory, dict):
             continue
         choices = []
         for item, held in inventory.items():
-            if item in r04.ANIMALS or not _positive_plain_int(held):
+            if item not in r04.PRODUCTS or not _positive_plain_int(held):
                 continue
             price = view.prices.get(item, 0)
             if type(price) is not int:
@@ -48,17 +50,17 @@ def apply_place_delivery(observation, action, enabled=False):
                     price = int(price)
                 except (TypeError, ValueError):
                     price = 0
-            try:
-                product_order = r04.PRODUCTS.index(item)
-            except ValueError:
-                product_order = len(r04.PRODUCTS)
+            product_order = r04.PRODUCTS.index(item)
             choices.append((int(price), int(held), -product_order, item))
         if choices:
             price, held, _, item = max(choices)
             eligible.append((price, held, worker, item))
 
-    # Every terminal DROP is removed even if there is no safe capacity or no
-    # recognized product.  Cargo left on a worker is preserved instead of lost.
+    if not touched:
+        return action
+
+    # Every shed-adjacent terminal DROP is removed even when there is no safe
+    # capacity or recognized product. Cargo left on a worker is preserved.
     out_workers = [list(command) if isinstance(command, list) else command for command in workers]
     for worker in range(min(len(out_workers), len(view.positions))):
         command = out_workers[worker]
