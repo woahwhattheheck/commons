@@ -2,16 +2,140 @@
   "counts": {
     "open_issues": 6,
     "open_pull_requests": 6,
-    "runs_in_progress": "UNKNOWN",
-    "runs_queued": "UNKNOWN"
+    "runs_in_progress": 20,
+    "runs_queued": 66
   },
-  "degraded": [
-    "pulls"
+  "degraded": [],
+  "drafts": 219,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
+      "created_at": "2026-09-10T18:42:48Z",
+      "draft": false,
+      "number": 11959,
+      "title": "TITAN: reconcile canonical package with current source and name drift"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "owner/titan-v3-regression-recovery-20260910-01",
+      "created_at": "2026-09-10T18:53:43Z",
+      "draft": false,
+      "number": 11961,
+      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
+      "created_at": "2026-09-10T18:55:16Z",
+      "draft": true,
+      "number": 11963,
+      "title": "TITAN V3: admit all-shed intent-first SELL priority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
+      "created_at": "2026-09-10T18:59:26Z",
+      "draft": false,
+      "number": 11965,
+      "title": "titan-v3: run own-value objective on bound current archive"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
+      "created_at": "2026-09-10T19:00:36Z",
+      "draft": true,
+      "number": 11968,
+      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
+    }
   ],
-  "pulls_listed": "UNKNOWN",
-  "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": "UNKNOWN",
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-c5-wheat-demand-20260911",
+      "created_at": "2026-09-11T22:02:37Z",
+      "draft": true,
+      "number": 12611,
+      "title": "TITAN V4 C5: public WHEAT buy-signal rider (default off)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-d4-strawberry-20260911",
+      "created_at": "2026-09-11T22:02:31Z",
+      "draft": true,
+      "number": 12610,
+      "title": "TITAN V4 D4: repaired STRAWBERRY midgame timing carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-f2-feed-prebuy-20260911",
+      "created_at": "2026-09-11T22:00:39Z",
+      "draft": true,
+      "number": 12609,
+      "title": "TITAN V4 F2: pre-buy WHEAT only when it unlocks V217 rescue"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-d4-strawberry-timing-20260911",
+      "created_at": "2026-09-11T21:58:39Z",
+      "draft": true,
+      "number": 12606,
+      "title": "TITAN V4 D4: repaired pre-flush STRAWBERRY timing key"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-m1-wheat-trade-20260911",
+      "created_at": "2026-09-11T21:58:09Z",
+      "draft": true,
+      "number": 12605,
+      "title": "TITAN V4 M1: bounded future WHEAT demand hedge"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-h3b-sheep-clip-20260911",
+      "created_at": "2026-09-11T21:57:50Z",
+      "draft": true,
+      "number": 12603,
+      "title": "TITAN V4 H3b: port repaired sheep max-held harvest priority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-s5-pet-carrot-20260911",
+      "created_at": "2026-09-11T21:53:48Z",
+      "draft": true,
+      "number": 12602,
+      "title": "[V4 S5] PET_CAFE-first carrot substitution analysis"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-dead-water-harvest",
+      "created_at": "2026-09-11T21:53:46Z",
+      "draft": false,
+      "number": 12601,
+      "title": "TITAN V4: recover provably dead WATER as same-tile HARVEST"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-s6-fert-roi-20260911",
+      "created_at": "2026-09-11T21:49:55Z",
+      "draft": false,
+      "number": 12598,
+      "title": "TITAN V4: add S6 fertilizer-hand ROI allocator key"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-b10-public-supply-20260911",
+      "created_at": "2026-09-11T21:49:33Z",
+      "draft": false,
+      "number": 12597,
+      "title": "TITAN V4 B10: public-supply SELL ordering key"
+    }
+  ],
+  "pulls_listed": 286,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 3.3,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T19:52:25Z"
+  "unchanged_since": "2026-09-11T22:02:46Z",
+  "undatable_pulls": []
 }
