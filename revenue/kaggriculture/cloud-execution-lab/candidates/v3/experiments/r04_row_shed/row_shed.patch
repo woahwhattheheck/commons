@@ -1,0 +1,101 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+@@ -1543,6 +1543,10 @@ TAPE_OPENING = [["BUY_PRODUCT", "WHEAT", 13], ["SELL", "WHEAT", 13], ["BUY_PROD
+ # a rival's same-item row. Quantities and every non-SELL row are unchanged; a configuration
+ # that overrides marketParams leaves the order untouched.
+ ROW_ORDER = False
++# S33 row-shed: when enabled, ROW_ORDER prices each requested SELL only by units the
++# current projected shed can actually satisfy.  The submitted order quantity is never
++# changed; this only removes impossible units from the ordering score.
++ROW_SHED = False
+ _RO_PARAMS = {
+     "WHEAT": (25, 400, "sqrt", 0.80, "log", 0.20), "CARROT": (35, 450, "hinge", 1.00, "sqrt", 0.70),
+     "TOMATO": (60, 200, "hinge", 0.40, "sqrt", 0.60), "STRAWBERRY": (120, 100, "sqrt", 0.70, "linear", 1.60),
+@@ -1579,8 +1583,11 @@ def _ro_price(item, inventory):
+     return max(1, int(round(price)))
+ 
+ 
+-def order_sells(market, inventory):
+-    """Leading SELL rows sorted by the price drop each causes, steepest first."""
++def order_sells(market, inventory, shed=None):
++    """Leading SELL rows sorted by realizable price-drop effect, steepest first.
++
++    ``shed is None`` is the exact pre-S33 behavior.  Otherwise the ranking quantity
++    is capped by current projected shed stock while the returned SELL rows stay intact.
++    """
+     lead = 0
+     while lead < len(market) and market[lead] and market[lead][0] == "SELL":
+         lead += 1
+@@ -1593,6 +1600,8 @@ def order_sells(market, inventory):
+             return 0
+         level = int(inventory.get(item, _RO_I0))
+         quantity = max(0, int(order[2]))
++        if shed is not None:
++            quantity = min(quantity, max(0, int(shed.get(item, 0))))
+         return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity
+ 
+     return sorted(market[:lead], key=drop, reverse=True) + market[lead:]
+@@ -1689,7 +1698,8 @@ def v3_agent(observation, configuration=None):
+     if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
+         inventory = (observation.get("market") or {}).get("inventory") or {}
+         market = [list(o) for o in action.get("market") or [] if o]
+-        ordered = order_sells(market, inventory)
++        shed = projected_shed(action, FarmView(observation)) if ROW_SHED else None
++        ordered = order_sells(market, inventory, shed)
+         if ordered != market:
+             action = dict(action)
+             action["market"] = ordered
+@@ -1709,7 +1719,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=
+             strawberry_endgame=None, strawberry_max_plants=None,
+             no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
+-            b5_carrot_fertilizer=None, b5_jit_fertilize=None):
++            b5_carrot_fertilizer=None, b5_jit_fertilize=None, row_shed=None):
+     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
+ 
+     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
+@@ -1729,7 +1739,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=
+     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
+     global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP
+-    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE
++    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, ROW_SHED
+     if horizon is not None:
+         horizon = int(horizon)
+         if horizon < 1:
+@@ -1765,5 +1775,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=
+         B5_CARROT_FERTILIZER = bool(b5_carrot_fertilizer)
+     if b5_jit_fertilize is not None:
+         B5_JIT_FERTILIZE = bool(b5_jit_fertilize)
++    if row_shed is not None:
++        ROW_SHED = bool(row_shed)
+     return v3_agent
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
+@@ -38,6 +38,7 @@ PARAMS = {
+     "r04_strawberry_topup": True,
+     "r04_b5_carrot_fertilizer": True,
+     "r04_b5_jit_fertilize": True,
++    "r04_row_shed": False,
+ }
+ 
+ FIELDS = (
+@@ -83,6 +84,7 @@ FIELDS = (
+     "    r04_strawberry_topup: bool = True\n"
+     "    r04_b5_carrot_fertilizer: bool = True\n"
+     "    r04_b5_jit_fertilize: bool = True\n"
++    "    r04_row_shed: bool = False\n"
+ )
+@@ -219,7 +221,8 @@ RUNTIME_METHODS = (
+     "                                 int(self.features.r04_no_late_sale_advance_step),\n"
+     "                                 bool(self.features.r04_strawberry_topup),\n"
+     "                                 bool(self.features.r04_b5_carrot_fertilizer),\n"
+-    "                                 bool(self.features.r04_b5_jit_fertilize))(observation, configuration)\n"
++    "                                 bool(self.features.r04_b5_jit_fertilize),\n"
++    "                                 bool(self.features.r04_row_shed))(observation, configuration)\n"
+@@ -237,6 +240,7 @@ RUNTIME_METHODS = (
+     "                self.diagnostics['strawberry_topup'] = bool(self.features.r04_strawberry_topup)\n"
+     "                self.diagnostics['b5_carrot_fertilizer'] = bool(self.features.r04_b5_carrot_fertilizer)\n"
+     "                self.diagnostics['b5_jit_fertilize'] = bool(self.features.r04_b5_jit_fertilize)\n"
++    "                self.diagnostics['row_shed'] = bool(self.features.r04_row_shed)\n"
+     "            else:\n"
