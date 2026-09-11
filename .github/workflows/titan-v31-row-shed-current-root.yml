@@ -1,0 +1,73 @@
+name: TITAN V3.1 current-root row-shed proof
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - ".github/workflows/titan-v31-row-shed-current-root.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_row_shed/**"
+
+permissions:
+  contents: read
+
+jobs:
+  prove-row-shed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind current-root ancestry and donor scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a
+          CANON=8e3d92a286806f9f9525973ee7d359b629a11487
+          STACK_REF=astra/v31-a612-restore-5f6-canonical-archive-20260911
+          R04=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          APPLY=revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
+
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          test "${{ github.event.pull_request.base.sha }}" = "$BASE"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          test "$(git rev-parse "$BASE:$R04")" = 7edacbfb4916b8f241b689ded6643240ca02a9ec
+          test "$(git rev-parse "$BASE:$APPLY")" = a43d6c470ab05d87803fb016966d1cc54fab9d17
+
+          git fetch --no-tags origin \
+            "+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911" \
+            "+refs/heads/$STACK_REF:refs/remotes/origin/$STACK_REF"
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$CANON"
+          test "$(git rev-parse refs/remotes/origin/$STACK_REF)" = "$BASE"
+
+          expected=$(cat <<'EOF'
+          .github/workflows/titan-v31-row-shed-current-root.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_row_shed/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_row_shed/row_shed.patch
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_row_shed/test_row_shed_contract.py
+          EOF
+          )
+          actual="$(git diff --name-only "$BASE"...HEAD | sort)"
+          test "$actual" = "$(printf '%s\n' "$expected" | sed 's/^          //' | sort)"
+
+      - name: Apply donor ephemerally and run focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_row_shed/row_shed.patch
+          TEST=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_row_shed/test_row_shed_contract.py
+          R04=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          APPLY=revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
+
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          trap 'git apply -R "$PATCH"' EXIT
+          python -m py_compile "$R04" "$APPLY" "$TEST"
+          python "$TEST"
+          git apply -R "$PATCH"
+          trap - EXIT
+          test -z "$(git status --porcelain)"
