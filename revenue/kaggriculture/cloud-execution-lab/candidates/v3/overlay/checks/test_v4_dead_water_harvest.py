@@ -42,6 +42,17 @@ def _action(command=None):
     return {"farmer": command or ["WATER"], "hands": [], "market": []}
 
 
+def _config():
+    return {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10}
+
+
+def _apply(observation, action, configuration=None, enabled=True):
+    if configuration is None:
+        configuration = _config()
+    return lane.apply_dead_water_harvest(
+        observation, action, configuration, enabled=enabled)
+
+
 class DeadWaterHarvestTest(unittest.TestCase):
     def setUp(self):
         lane.reset()
@@ -49,7 +60,7 @@ class DeadWaterHarvestTest(unittest.TestCase):
     def test_already_watered_max_age_annual_recovers_harvest(self):
         # WHEAT max_yield_day=4. At age 4 an already-watered plant has no
         # remaining future WATER growth, so removing it by HARVEST is safe.
-        out = lane.apply_dead_water_harvest(_obs(_tile()), _action())
+        out = _apply(_obs(_tile()), _action())
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["recovered"], 1)
 
@@ -60,14 +71,14 @@ class DeadWaterHarvestTest(unittest.TestCase):
         tile = _tile(crop="WHEAT", planted_day=26, yield_units=3,
                      watered_today=True, max_lifespan_step=744)
         action = _action()
-        out = lane.apply_dead_water_harvest(_obs(tile), action)
+        out = _apply(_obs(tile), action)
         self.assertIs(out, action)
         self.assertEqual(lane.get_report()["future_yield_block"], 1)
 
     def test_already_watered_ongoing_crop_can_harvest_without_removal(self):
         tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
                      watered_today=True, max_lifespan_step=-1)
-        out = lane.apply_dead_water_harvest(_obs(tile), _action())
+        out = _apply(_obs(tile), _action())
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["recovered"], 1)
 
@@ -77,7 +88,7 @@ class DeadWaterHarvestTest(unittest.TestCase):
         tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
                      watered_today=False, max_lifespan_step=-1)
         action = _action()
-        out = lane.apply_dead_water_harvest(_obs(tile), action)
+        out = _apply(_obs(tile), action)
         self.assertIs(out, action)
         self.assertEqual(lane.get_report()["expiring"], 0)
         self.assertEqual(lane.get_report()["recovered"], 0)
@@ -85,7 +96,7 @@ class DeadWaterHarvestTest(unittest.TestCase):
     def test_expiring_unwatered_mature_plant_recovers_harvest(self):
         tile = _tile(crop="CARROT", planted_day=25, yield_units=4,
                      watered_today=False, max_lifespan_step=680)
-        out = lane.apply_dead_water_harvest(_obs(tile), _action())
+        out = _apply(_obs(tile), _action())
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["expiring"], 1)
 
@@ -94,25 +105,25 @@ class DeadWaterHarvestTest(unittest.TestCase):
         tile = _tile(crop="WHEAT", planted_day=28, yield_units=1,
                      watered_today=True, max_lifespan_step=792)
         action = _action()
-        out = lane.apply_dead_water_harvest(_obs(tile), action)
+        out = _apply(_obs(tile), action)
         self.assertIs(out, action)
         self.assertEqual(lane.get_report()["not_harvestable"], 1)
 
     def test_productive_water_is_untouched(self):
         tile = _tile(watered_today=False, max_lifespan_step=696)
         action = _action()
-        self.assertIs(lane.apply_dead_water_harvest(_obs(tile), action), action)
+        self.assertIs(_apply(_obs(tile), action), action)
 
     def test_zero_yield_ongoing_crop_is_untouched(self):
         tile = _tile(crop="TOMATO", planted_day=18, yield_units=0,
                      watered_today=True, max_lifespan_step=-1)
         action = _action()
-        self.assertIs(lane.apply_dead_water_harvest(_obs(tile), action), action)
+        self.assertIs(_apply(_obs(tile), action), action)
 
     def test_outside_window_and_disabled_are_identity(self):
         action = _action()
         self.assertIs(
-            lane.apply_dead_water_harvest(_obs(_tile(), step=671, day=27), action),
+            _apply(_obs(_tile(), step=671, day=27), action),
             action,
         )
         self.assertIs(
@@ -124,24 +135,21 @@ class DeadWaterHarvestTest(unittest.TestCase):
         observation = _obs(_tile())
         observation["farms"][0]["farmer"] = [-1, 0]
         action = _action()
-        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+        self.assertIs(_apply(observation, action), action)
 
         pass_action = _action(["PASS"])
-        self.assertIs(
-            lane.apply_dead_water_harvest(_obs(_tile()), pass_action),
-            pass_action,
-        )
+        self.assertIs(_apply(_obs(_tile()), pass_action), pass_action)
 
         bool_player = _action()
         self.assertIs(
-            lane.apply_dead_water_harvest(_obs(_tile(), player=True), bool_player),
+            _apply(_obs(_tile(), player=True), bool_player),
             bool_player,
         )
 
         malformed_hands = _action()
         malformed_hands["hands"] = (["WATER"],)
         self.assertIs(
-            lane.apply_dead_water_harvest(_obs(_tile()), malformed_hands),
+            _apply(_obs(_tile()), malformed_hands),
             malformed_hands,
         )
 
@@ -149,20 +157,40 @@ class DeadWaterHarvestTest(unittest.TestCase):
         observation = _obs(_tile())
         observation["farms"][0]["hands"] = [[0, 0]]
         action = _action()
-        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+        self.assertIs(_apply(observation, action), action)
 
         observation = _obs(_tile())
         action = _action()
         action["hands"] = [["WATER"]]
-        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+        self.assertIs(_apply(observation, action), action)
 
     def test_inconsistent_public_clock_fails_closed(self):
         # Maturity uses `day` while the late/expiry window uses `step`; do not
         # let a malformed clock make an immature plant appear harvestable.
         action = _action()
         observation = _obs(_tile(), step=680, day=29)
-        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+        self.assertIs(_apply(observation, action), action)
         self.assertEqual(lane.get_report()["recovered"], 0)
+
+    def test_nonstandard_or_missing_configuration_fails_closed(self):
+        observation = _obs(_tile())
+        action = _action()
+        self.assertIs(
+            lane.apply_dead_water_harvest(observation, action, enabled=True),
+            action,
+        )
+        for key, bad_value in (
+            ("episodeSteps", 721),
+            ("turnsPerDay", 25),
+            ("boardSize", 11),
+            ("turnsPerDay", True),
+        ):
+            configuration = _config()
+            configuration[key] = bad_value
+            self.assertIs(
+                _apply(observation, action, configuration=configuration),
+                action,
+            )
 
 
 if __name__ == "__main__":
