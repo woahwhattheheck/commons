@@ -8,6 +8,11 @@ runtime plumbing and source-land default-OFF. R04 keys must retain their router 
 install parameter/setter, a reachable production read (or a proven install-time
 callable selector), and TitanAgent install wiring reachable from ``TitanAgent.act``.
 
+Reachability checks deliberately ignore nested scopes and statically dead branches.
+Top-level router bindings are processed in source order so a later non-function or
+non-boolean reassignment invalidates an earlier trusted binding instead of leaving a
+stale proof behind.
+
 Failures use explicit exceptions so ``python -O`` cannot strip the contract.
 """
 from __future__ import annotations
@@ -23,6 +28,8 @@ import build_v3
 HERE = Path(__file__).resolve().parent
 APPLY_V4 = HERE / "apply_v4.py"
 
+_SCOPE_NODES = (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda, ast.ClassDef)
+
 
 def _fail(message: str) -> NoReturn:
     raise SystemExit(message)
@@ -33,19 +40,128 @@ def _require(cond: object, message: str) -> None:
         _fail(message)
 
 
+def _static_truth(node: ast.AST) -> bool | None:
+    """Return the compile-time truth of a literal expression, else unknown."""
+    try:
+        value = ast.literal_eval(node)
+    except (ValueError, TypeError):
+        return None
+    try:
+        return bool(value)
+    except Exception:
+        return None
+
+
+def _visit_live(node: ast.AST, out: list[ast.AST]) -> None:
+    """Collect executable descendants, stopping at nested scopes/dead literals."""
+    if isinstance(node, _SCOPE_NODES):
+        return
+
+    out.append(node)
+
+    if isinstance(node, ast.If):
+        _visit_live(node.test, out)
+        truth = _static_truth(node.test)
+        if truth is True:
+            branches = node.body
+        elif truth is False:
+            branches = node.orelse
+        else:
+            branches = (*node.body, *node.orelse)
+        for child in branches:
+            _visit_live(child, out)
+        return
+
+    if isinstance(node, ast.IfExp):
+        _visit_live(node.test, out)
+        truth = _static_truth(node.test)
+        if truth is True:
+            _visit_live(node.body, out)
+        elif truth is False:
+            _visit_live(node.orelse, out)
+        else:
+            _visit_live(node.body, out)
+            _visit_live(node.orelse, out)
+        return
+
+    if isinstance(node, ast.While):
+        _visit_live(node.test, out)
+        truth = _static_truth(node.test)
+        if truth is False:
+            for child in node.orelse:
+                _visit_live(child, out)
+        else:
+            for child in node.body:
+                _visit_live(child, out)
+            for child in node.orelse:
+                _visit_live(child, out)
+        return
+
+    if isinstance(node, ast.BoolOp):
+        is_and = isinstance(node.op, ast.And)
+        is_or = isinstance(node.op, ast.Or)
+        for value in node.values:
+            _visit_live(value, out)
+            truth = _static_truth(value)
+            if (is_and and truth is False) or (is_or and truth is True):
+                break
+        return
+
+    for child in ast.iter_child_nodes(node):
+        _visit_live(child, out)
+
+
+def _live_subtree_nodes(node: ast.AST) -> list[ast.AST]:
+    out: list[ast.AST] = []
+    _visit_live(node, out)
+    return out
+
+
+def _direct_body_nodes(function: ast.AST) -> list[ast.AST]:
+    """Executable nodes in a function, excluding nested scopes/dead branches."""
+    out: list[ast.AST] = []
+    for statement in getattr(function, "body", []):
+        _visit_live(statement, out)
+    return out
+
+
 def _literal_keys(path: Path) -> tuple[str, ...]:
     tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-    value = None
+    value: object = None
+    seen = False
     for node in tree.body:
-        if not isinstance(node, ast.Assign):
-            continue
-        if any(isinstance(target, ast.Name) and target.id == "KEYS" for target in node.targets):
-            try:
-                value = ast.literal_eval(node.value)
-            except (ValueError, TypeError):
+        targets: tuple[ast.AST, ...] = ()
+        assigned: ast.AST | None = None
+        if isinstance(node, ast.Assign):
+            targets = tuple(node.targets)
+            assigned = node.value
+        elif isinstance(node, ast.AnnAssign):
+            targets = (node.target,)
+            assigned = node.value
+        elif isinstance(node, ast.AugAssign):
+            targets = (node.target,)
+        elif isinstance(node, ast.Delete):
+            targets = tuple(node.targets)
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            if node.name == "KEYS":
+                seen = True
                 value = None
-            break
-    _require(isinstance(value, (tuple, list)), f"{path}: KEYS must be a literal tuple/list")
+            continue
+        else:
+            continue
+
+        if not any(isinstance(target, ast.Name) and target.id == "KEYS" for target in targets):
+            continue
+        seen = True
+        if assigned is None:
+            value = None
+            continue
+        try:
+            value = ast.literal_eval(assigned)
+        except (ValueError, TypeError):
+            value = None
+
+    _require(seen and isinstance(value, (tuple, list)), f"{path}: KEYS must be a literal tuple/list")
     keys = tuple(value)
     _require(keys, f"{path}: KEYS must not be empty")
     _require(all(type(key) is str and key for key in keys), f"{path}: KEYS must contain nonempty strings")
@@ -59,19 +175,37 @@ def _feature_defaults(tree: ast.AST) -> dict[str, object]:
             continue
         defaults: dict[str, object] = {}
         for stmt in node.body:
-            if isinstance(stmt, ast.AnnAssign) and isinstance(stmt.target, ast.Name) and stmt.value is not None:
-                try:
-                    defaults[stmt.target.id] = ast.literal_eval(stmt.value)
-                except (ValueError, TypeError):
-                    pass
+            targets: tuple[ast.AST, ...] = ()
+            value: ast.AST | None = None
+            if isinstance(stmt, ast.AnnAssign):
+                targets = (stmt.target,)
+                value = stmt.value
             elif isinstance(stmt, ast.Assign):
-                try:
-                    literal = ast.literal_eval(stmt.value)
-                except (ValueError, TypeError):
-                    continue
-                for target in stmt.targets:
-                    if isinstance(target, ast.Name):
-                        defaults[target.id] = literal
+                targets = tuple(stmt.targets)
+                value = stmt.value
+            elif isinstance(stmt, ast.AugAssign):
+                targets = (stmt.target,)
+            elif isinstance(stmt, ast.Delete):
+                targets = tuple(stmt.targets)
+            elif isinstance(stmt, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                defaults.pop(stmt.name, None)
+                continue
+            else:
+                continue
+
+            names = [target.id for target in targets if isinstance(target, ast.Name)]
+            if value is None:
+                for name in names:
+                    defaults.pop(name, None)
+                continue
+            try:
+                literal = ast.literal_eval(value)
+            except (ValueError, TypeError):
+                for name in names:
+                    defaults.pop(name, None)
+                continue
+            for name in names:
+                defaults[name] = literal
         return defaults
     _fail("materialized titan_runtime.py has no Features class")
 
@@ -84,7 +218,7 @@ def _titan_agent_class(tree: ast.AST) -> ast.ClassDef:
 
 
 def _contains_feature_ref(node: ast.AST, key: str) -> bool:
-    for child in ast.walk(node):
+    for child in _live_subtree_nodes(node):
         if not isinstance(child, ast.Attribute) or child.attr != key:
             continue
         owner = child.value
@@ -98,19 +232,6 @@ def _contains_feature_ref(node: ast.AST, key: str) -> bool:
     return False
 
 
-def _direct_body_nodes(function: ast.AST) -> list[ast.AST]:
-    """Nodes in *function* excluding nested function/class/lambda bodies."""
-    skip: set[int] = set()
-    for child in ast.walk(function):
-        if child is function:
-            continue
-        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda, ast.ClassDef)):
-            for nested in ast.walk(child):
-                if nested is not child:
-                    skip.add(id(nested))
-    return [child for child in ast.walk(function) if id(child) not in skip]
-
-
 def _agent_methods(agent: ast.ClassDef) -> dict[str, ast.FunctionDef | ast.AsyncFunctionDef]:
     return {
         node.name: node
@@ -120,7 +241,7 @@ def _agent_methods(agent: ast.ClassDef) -> dict[str, ast.FunctionDef | ast.Async
 
 
 def _reachable_agent_methods(agent: ast.ClassDef) -> tuple[ast.FunctionDef | ast.AsyncFunctionDef, ...]:
-    """Return TitanAgent methods reachable from act via direct ``self.method(...)`` calls."""
+    """Return TitanAgent methods reachable from act via direct live self.method calls."""
     methods = _agent_methods(agent)
     root = methods.get("act")
     _require(root is not None, "materialized TitanAgent has no act() method")
@@ -185,40 +306,83 @@ def _runtime_install_wired(
 
 
 def _top_level_bool_names(tree: ast.AST) -> dict[str, bool]:
+    """Track trusted literal bool bindings; later nonliteral rebinds invalidate them."""
     out: dict[str, bool] = {}
     for node in getattr(tree, "body", []):
-        targets: Iterable[ast.AST]
-        value = None
+        targets: tuple[ast.AST, ...] = ()
+        value: ast.AST | None = None
         if isinstance(node, ast.Assign):
-            targets = node.targets
+            targets = tuple(node.targets)
             value = node.value
         elif isinstance(node, ast.AnnAssign):
             targets = (node.target,)
             value = node.value
+        elif isinstance(node, ast.AugAssign):
+            targets = (node.target,)
+        elif isinstance(node, ast.Delete):
+            targets = tuple(node.targets)
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            out.pop(node.name, None)
+            continue
+        elif isinstance(node, (ast.Import, ast.ImportFrom)):
+            aliases = node.names
+            for alias in aliases:
+                bound = alias.asname or alias.name.split(".", 1)[0]
+                out.pop(bound, None)
+            continue
         else:
             continue
-        if not (isinstance(value, ast.Constant) and type(value.value) is bool):
-            continue
-        for target in targets:
-            if isinstance(target, ast.Name):
-                out[target.id] = value.value
+
+        names = [target.id for target in targets if isinstance(target, ast.Name)]
+        literal_bool = (
+            value.value
+            if isinstance(value, ast.Constant) and type(value.value) is bool
+            else None
+        )
+        for name in names:
+            if literal_bool is None:
+                out.pop(name, None)
+            else:
+                out[name] = literal_bool
     return out
 
 
 def _find_function(tree: ast.AST, name: str) -> ast.FunctionDef:
+    found: ast.FunctionDef | None = None
     for node in getattr(tree, "body", []):
         if isinstance(node, ast.FunctionDef) and node.name == name:
-            return node
-    _fail(f"materialized r04_full_router.py has no {name}()")
+            found = node
+        elif isinstance(node, (ast.AsyncFunctionDef, ast.ClassDef)) and node.name == name:
+            found = None
+        elif isinstance(node, ast.Assign):
+            if any(isinstance(target, ast.Name) and target.id == name for target in node.targets):
+                found = None
+        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name) and node.target.id == name:
+            found = None
+        elif isinstance(node, ast.Delete):
+            if any(isinstance(target, ast.Name) and target.id == name for target in node.targets):
+                found = None
+    if found is not None:
+        return found
+    _fail(f"materialized r04_full_router.py has no live top-level {name}()")
 
 
 def _global_names(function: ast.FunctionDef) -> set[str]:
     return {
         name
-        for node in ast.walk(function)
+        for node in _direct_body_nodes(function)
         if isinstance(node, ast.Global)
         for name in node.names
     }
+
+
+def _stores_name(function: ast.FunctionDef, name: str) -> bool:
+    return any(
+        isinstance(node, ast.Name)
+        and node.id == name
+        and isinstance(node.ctx, ast.Store)
+        for node in _direct_body_nodes(function)
+    )
 
 
 def _loads_name(node: ast.AST, name: str) -> bool:
@@ -226,36 +390,49 @@ def _loads_name(node: ast.AST, name: str) -> bool:
         isinstance(child, ast.Name)
         and child.id == name
         and isinstance(child.ctx, ast.Load)
-        for child in ast.walk(node)
+        for child in _live_subtree_nodes(node)
     )
 
 
 def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
+    """Resolve simple top-level function aliases, invalidating later unknown rebinds."""
     bindings: dict[str, ast.AST] = {}
     for node in getattr(router_tree, "body", []):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             bindings[node.name] = node
             continue
-        if isinstance(node, ast.Assign) and isinstance(node.value, ast.Name):
-            source = bindings.get(node.value.id)
-            if source is not None:
-                for target in node.targets:
-                    if isinstance(target, ast.Name):
-                        bindings[target.id] = source
+        if isinstance(node, ast.ClassDef):
+            bindings.pop(node.name, None)
             continue
-        if (
-            isinstance(node, ast.AnnAssign)
-            and isinstance(node.target, ast.Name)
-            and isinstance(node.value, ast.Name)
-        ):
-            source = bindings.get(node.value.id)
-            if source is not None:
+        if isinstance(node, ast.Assign):
+            source = bindings.get(node.value.id) if isinstance(node.value, ast.Name) else None
+            for target in node.targets:
+                if not isinstance(target, ast.Name):
+                    continue
+                if source is None:
+                    bindings.pop(target.id, None)
+                else:
+                    bindings[target.id] = source
+            continue
+        if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            source = bindings.get(node.value.id) if isinstance(node.value, ast.Name) else None
+            if source is None:
+                bindings.pop(node.target.id, None)
+            else:
                 bindings[node.target.id] = source
+            continue
+        if isinstance(node, ast.AugAssign) and isinstance(node.target, ast.Name):
+            bindings.pop(node.target.id, None)
             continue
         if isinstance(node, ast.Delete):
             for target in node.targets:
                 if isinstance(target, ast.Name):
                     bindings.pop(target.id, None)
+            continue
+        if isinstance(node, (ast.Import, ast.ImportFrom)):
+            for alias in node.names:
+                bound = alias.asname or alias.name.split(".", 1)[0]
+                bindings.pop(bound, None)
     return bindings
 
 
@@ -271,7 +448,7 @@ def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
         if function in reachable:
             continue
         reachable.add(function)
-        for child in ast.walk(function):
+        for child in _direct_body_nodes(function):
             if not isinstance(child, ast.Name) or not isinstance(child.ctx, ast.Load):
                 continue
             target = bindings.get(child.id)
@@ -282,7 +459,12 @@ def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
 
 def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
     for function in _production_function_nodes(router_tree):
-        if _loads_name(function, flag):
+        if any(
+            isinstance(child, ast.Name)
+            and child.id == flag
+            and isinstance(child.ctx, ast.Load)
+            for child in _direct_body_nodes(function)
+        ):
             return getattr(function, "name", "<anonymous>")
     return None
 
@@ -292,7 +474,7 @@ def _install_selects_callable_on_flag(install: ast.FunctionDef, flag: str) -> bo
         if not isinstance(node, ast.If) or not _loads_name(node.test, flag):
             continue
         for statement in node.body:
-            for child in _direct_body_nodes(statement):
+            for child in _live_subtree_nodes(statement):
                 if not isinstance(child, ast.Return) or child.value is None:
                     continue
                 if isinstance(child.value, ast.Name) and child.value.id == "v3_agent":
@@ -310,7 +492,7 @@ def _assert_r04_router_contract(
     flag = suffix.upper()
 
     router_defaults = _top_level_bool_names(router_tree)
-    _require(flag in router_defaults, f"{key}: router {flag} must be a literal boolean")
+    _require(flag in router_defaults, f"{key}: router {flag} must be a live literal boolean")
     _require(router_defaults[flag] is False, f"{key}: router {flag} must source-land False")
 
     install = _find_function(router_tree, "install")
@@ -319,22 +501,17 @@ def _assert_r04_router_contract(
         for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)
     }
     _require(suffix in install_args, f"{key}: router install() missing {suffix} parameter")
-    _require(flag in _global_names(install), f"{key}: router install() does not declare {flag} global")
+    _require(flag in _global_names(install), f"{key}: router install() does not directly declare {flag} global")
     _require(
-        any(
-            isinstance(node, ast.Name)
-            and node.id == flag
-            and isinstance(node.ctx, ast.Store)
-            for node in ast.walk(install)
-        ),
-        f"{key}: router install() never sets {flag}",
+        _stores_name(install, flag),
+        f"{key}: router install() never live-sets {flag} outside nested/dead scope",
     )
 
     reader = _router_flag_reader(router_tree, flag)
     install_selector = _install_selects_callable_on_flag(install, flag)
     _require(
         reader is not None or install_selector,
-        f"{key}: router flag {flag} is neither read on the production v3_agent chain "
+        f"{key}: router flag {flag} is neither read on the live production v3_agent chain "
         "nor used by install() to select a non-baseline runtime callable",
     )
     _require(
@@ -374,6 +551,8 @@ class TitanAgent:
         def dead_local():
             self._dead_poison()
             return install(place_delivery=self.features.r04_place_delivery)
+        if False:
+            return install(place_delivery=self.features.r04_place_delivery)
         return self._v3_r03_act()
     def _v3_r03_act(self):
         return None
@@ -386,16 +565,134 @@ class TitanAgent:
     poison_reachable = _reachable_agent_methods(poison_agent)
     _require(
         not _reachable_agent_feature_ref(poison_reachable, "r04_place_delivery"),
-        "internal reachability regression: dead feature reference false-passed",
+        "internal reachability regression: nested/dead feature reference false-passed",
     )
     _require(
         not _runtime_install_wired(poison_reachable, "r04_place_delivery", "place_delivery"),
-        "internal reachability regression: dead install wiring false-passed",
+        "internal reachability regression: nested/dead install wiring false-passed",
+    )
+
+
+def _self_test_router_reachability() -> None:
+    live = ast.parse(
+        """
+PLACE_DELIVERY = False
+
+def helper(observation, configuration=None):
+    return observation
+
+def v3_agent(observation, configuration=None):
+    if PLACE_DELIVERY:
+        return helper(observation, configuration)
+    return observation
+
+def install(*, place_delivery=None):
+    global PLACE_DELIVERY
+    if place_delivery is not None:
+        PLACE_DELIVERY = bool(place_delivery)
+    return v3_agent
+"""
+    )
+    install = _find_function(live, "install")
+    _require(
+        _top_level_bool_names(live).get("PLACE_DELIVERY") is False,
+        "internal router regression: live false default missing",
+    )
+    _require(
+        "PLACE_DELIVERY" in _global_names(install) and _stores_name(install, "PLACE_DELIVERY"),
+        "internal router regression: live install setter missing",
+    )
+    _require(
+        _router_flag_reader(live, "PLACE_DELIVERY") == "v3_agent",
+        "internal router regression: live production flag read missing",
+    )
+
+    nested_setter = ast.parse(
+        """
+PLACE_DELIVERY = False
+def v3_agent(observation, configuration=None):
+    return observation
+def install(*, place_delivery=None):
+    def dead():
+        global PLACE_DELIVERY
+        PLACE_DELIVERY = bool(place_delivery)
+    return v3_agent
+"""
+    )
+    nested_install = _find_function(nested_setter, "install")
+    _require(
+        "PLACE_DELIVERY" not in _global_names(nested_install)
+        and not _stores_name(nested_install, "PLACE_DELIVERY"),
+        "internal router regression: nested install setter false-passed",
+    )
+
+    dead_setter = ast.parse(
+        """
+PLACE_DELIVERY = False
+def v3_agent(observation, configuration=None):
+    return observation
+def install(*, place_delivery=None):
+    global PLACE_DELIVERY
+    if False:
+        PLACE_DELIVERY = bool(place_delivery)
+    return v3_agent
+"""
+    )
+    dead_install = _find_function(dead_setter, "install")
+    _require(
+        not _stores_name(dead_install, "PLACE_DELIVERY"),
+        "internal router regression: statically dead install setter false-passed",
+    )
+
+    dead_reader = ast.parse(
+        """
+PLACE_DELIVERY = False
+def v3_agent(observation, configuration=None):
+    def dead():
+        return PLACE_DELIVERY
+    if False:
+        return PLACE_DELIVERY
+    return observation
+def install(*, place_delivery=None):
+    global PLACE_DELIVERY
+    PLACE_DELIVERY = bool(place_delivery)
+    return v3_agent
+"""
+    )
+    _require(
+        _router_flag_reader(dead_reader, "PLACE_DELIVERY") is None,
+        "internal router regression: nested/dead production read false-passed",
+    )
+
+    stale_function = ast.parse(
+        """
+PLACE_DELIVERY = False
+def live_agent(observation, configuration=None):
+    return PLACE_DELIVERY
+v3_agent = live_agent
+v3_agent = object()
+"""
+    )
+    _require(
+        not _production_function_nodes(stale_function),
+        "internal router regression: stale v3_agent function binding survived reassignment",
+    )
+
+    stale_flag = ast.parse(
+        """
+PLACE_DELIVERY = False
+PLACE_DELIVERY = object()
+"""
+    )
+    _require(
+        "PLACE_DELIVERY" not in _top_level_bool_names(stale_flag),
+        "internal router regression: stale false flag binding survived reassignment",
     )
 
 
 def check(base_apply_v4: Path) -> None:
     _self_test_agent_reachability()
+    _self_test_router_reachability()
 
     base_keys = _literal_keys(base_apply_v4)
     head_keys = _literal_keys(APPLY_V4)
