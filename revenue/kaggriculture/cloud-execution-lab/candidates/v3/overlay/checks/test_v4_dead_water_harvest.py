@@ -156,6 +156,14 @@ class DeadWaterHarvestTest(unittest.TestCase):
         action["hands"] = [["WATER"]]
         self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
 
+    def test_inconsistent_public_clock_fails_closed(self):
+        # Maturity uses `day` while the late/expiry window uses `step`; do not
+        # let a malformed clock make an immature plant appear harvestable.
+        action = _action()
+        observation = _obs(_tile(), step=680, day=29)
+        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()
