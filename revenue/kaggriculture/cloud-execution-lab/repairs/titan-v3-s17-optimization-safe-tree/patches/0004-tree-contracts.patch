@@ -85,7 +85,7 @@ index 0000000000000000000000000000000000000000..2e1bbf7639495e133981b2627ad90925
 +            self.assertEqual(list(target.iterdir()), [])
 +            self.assertFalse(any(path.name.startswith(".candidate.stage-") for path in Path(root).iterdir()))
 +
-+    @unittest.skipUnless(hasattr(os, "symlinkb), "symlinks unavailable")
++    @unittest.skipUnless(hasattr(os, "symlink"), "symlinks unavailable")
 +    def test_symlink_target_is_rejected_and_destination_untouched(self):
 +        with tempfile.TemporaryDirectory() as root:
 +            destination = Path(root) / "elsewhere"
