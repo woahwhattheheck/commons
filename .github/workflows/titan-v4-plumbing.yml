@@ -7,23 +7,19 @@ on:
     paths:
       - '.github/workflows/titan-v4-plumbing.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
-      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
-      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
   push:
     branches:
       - titan/v4-20260911
     paths:
       - '.github/workflows/titan-v4-plumbing.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
-      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
-      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || format('{0}-run-{1}', github.event_name, github.run_id) }}
+  group: titan-v4-plumbing-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || format('{0}-{1}', github.event_name, github.sha) }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
@@ -90,9 +86,7 @@ jobs:
               )
               if probe.returncode != 0:
                   return None
-              return subprocess.check_output(
-                  ["git", "cat-file", "blob", f"{sha}:{path}"]
-              )
+              return subprocess.check_output(["git", "cat-file", "blob", f"{sha}:{path}"])
 
           tried = []
 
@@ -110,23 +104,21 @@ jobs:
           chosen = consider("HEAD titan-current", cat_file(head_sha, str(archive)))
           if chosen is None:
               main_sha = fetch("main")
-              chosen = (
-                  consider(
-                      "main digest-addressed historical",
-                      cat_file(main_sha, historical),
-                  )
-                  or consider("main titan-current", cat_file(main_sha, str(archive)))
-              )
+              chosen = consider(
+                  "main digest-addressed historical",
+                  cat_file(main_sha, historical),
+              ) or consider("main titan-current", cat_file(main_sha, str(archive)))
           if chosen is None:
               sys.stderr.write(
                   f"canonical archive pin {pinned} not found; tried {', '.join(tried)}\n"
               )
               sys.exit(1)
+
           archive.write_bytes(chosen)
           print("CANONICAL ARCHIVE OK", digest_of(chosen), archive.stat().st_size)
           PY
 
-      - name: Capture exact target V4 apply layer
+      - name: Capture exact target V4 layer and pin
         shell: bash
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -134,7 +126,10 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$HEAD_SHA"
-          APPLY=revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py
+          LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          APPLY="$LAB/apply_v4.py"
+          MANIFEST="$LAB/V3-MANIFEST.json"
+
           if [[ -n "${BASE_SHA:-}" ]]; then
             if [[ "$BASE_SHA" =~ ^0+$ ]]; then
               echo "refusing zero/unknown predecessor SHA" >&2
@@ -144,6 +139,26 @@ jobs:
               git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_SHA"
             fi
             git cat-file blob "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
+            git cat-file blob "${BASE_SHA}:${MANIFEST}" > "$RUNNER_TEMP/base_manifest.json"
+
+            python3 - <<'PY'
+          import json
+          import os
+          import pathlib
+
+          lab = pathlib.Path("revenue/kaggriculture/cloud-execution-lab/candidates/v3")
+          head = json.loads(lab.joinpath("V3-MANIFEST.json").read_text(encoding="utf-8"))
+          base = json.loads(
+              (pathlib.Path(os.environ["RUNNER_TEMP"]) / "base_manifest.json").read_text(encoding="utf-8")
+          )
+          head_pin = head["base"]["sha256"]
+          base_pin = base["base"]["sha256"]
+          if head_pin != base_pin:
+              raise SystemExit(
+                  f"V4 plumbing guard forbids silent canonical base repin: {base_pin} -> {head_pin}"
+              )
+          print("V4 BASE PIN OK", head_pin)
+          PY
           else
             cp "$APPLY" "$RUNNER_TEMP/base_apply_v4.py"
           fi
@@ -154,5 +169,6 @@ jobs:
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
           python3 -m py_compile "$LAB/check_v4_plumbing.py"
+          python3 -O "$LAB/check_v4_plumbing.py" --self-test
           python3 -O "$LAB/check_v4_plumbing.py" \
             --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
