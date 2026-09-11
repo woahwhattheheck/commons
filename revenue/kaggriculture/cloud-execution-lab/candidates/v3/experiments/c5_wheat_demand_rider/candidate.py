@@ -300,7 +300,8 @@ class WheatDemandRider:
         return result
 
 
-# Exact ready-V3.1 R04 tuple from V3-MANIFEST.json at the frozen 508b base.
+# Exact ready-V3.1 R04 tuple from V3-MANIFEST.json at frozen base 508b.  This
+# base predates the separate L3 carrier, so no L3 keyword is passed to install().
 BASE_AGENT = base.install(
     horizon=8,
     opening=0,
@@ -308,7 +309,6 @@ BASE_AGENT = base.install(
     evening_flush=True,
     sale_fertilizer=True,
     cattle_early=True,
-    no_late_sale_advance=False,
 )
 RIDER = WheatDemandRider(enabled=True)
 
