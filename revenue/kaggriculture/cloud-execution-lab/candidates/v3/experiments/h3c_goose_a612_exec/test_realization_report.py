@@ -28,7 +28,13 @@ def valid_report():
     return {
         "engine_ref": m.EXPECTED_ENGINE_REF,
         "seeds": list(m.EXPECTED_SEEDS),
-        "opponents": [{"name": m.EXPECTED_OPPONENT}],
+        "opponents": {
+            m.EXPECTED_OPPONENT: {
+                "entry": "baseline.py",
+                "callable": "agent",
+                "sha256": "c" * 64,
+            }
+        },
         "games": games,
     }
 
@@ -104,6 +110,28 @@ class StrictReceiptTests(unittest.TestCase):
         report["games"][0]["status"] = True
         with self.assertRaises(ValueError):
             m.validate_report(report, "status")
+
+    def test_opponent_metadata_must_match_exact_evaluator_shape(self):
+        poisons = []
+        report = valid_report()
+        report["opponents"] = [{"name": m.EXPECTED_OPPONENT}]
+        poisons.append(report)
+        report = valid_report()
+        report["opponents"] = {"other": report["opponents"][m.EXPECTED_OPPONENT]}
+        poisons.append(report)
+        report = valid_report()
+        report["opponents"][m.EXPECTED_OPPONENT]["entry"] = "other.py"
+        poisons.append(report)
+        report = valid_report()
+        report["opponents"][m.EXPECTED_OPPONENT]["callable"] = "other"
+        poisons.append(report)
+        report = valid_report()
+        report["opponents"][m.EXPECTED_OPPONENT]["sha256"] = "not-a-hash"
+        poisons.append(report)
+        for index, poisoned in enumerate(poisons):
+            with self.subTest(index=index):
+                with self.assertRaises(ValueError):
+                    m.validate_report(poisoned, "opponent-meta")
 
 
 if __name__ == "__main__":
