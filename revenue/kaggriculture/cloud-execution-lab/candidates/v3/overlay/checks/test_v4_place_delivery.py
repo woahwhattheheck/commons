@@ -147,6 +147,14 @@ class PlaceDelivery(unittest.TestCase):
         obs["step"] = "718"
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_bool_player_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        # Both farms are deliberately valid/equivalent. Without an exact-int
+        # player guard, Python True aliases index 1 and the rewrite still fires.
+        obs["player"] = True
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_malformed_shed_quantity_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
