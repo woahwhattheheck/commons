@@ -1,0 +1,38 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
+@@ -157,6 +157,31 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
+         telemetry["malformed"] += 1
+         return action
+ 
++    # Validate the entire pre-parent debt surface before trusting any newly-created debt.
++    # The parent may legitimately settle debt due exactly on this step. Future pre-debt,
++    # however, must survive the parent with at least its prior amount; otherwise a popped or
++    # malformed pre-cell could disappear from the post-parent map and let an unrelated new
++    # reservation authorize a C4 rollback.
++    for due_step, due_items in before_debts.items():
++        if type(due_step) is not int or due_step < step or not isinstance(due_items, dict):
++            telemetry["malformed"] += 1
++            return action
++        for item, amount in due_items.items():
++            if item not in base.PRODUCTS or not _strict_nonnegative_int(amount):
++                telemetry["malformed"] += 1
++                return action
++        if due_step == step:
++            continue
++        after_items = after.get(due_step)
++        if not isinstance(after_items, dict):
++            telemetry["malformed"] += 1
++            return action
++        for item, old_amount in due_items.items():
++            if item not in after_items:
++                telemetry["malformed"] += 1
++                return action
++            new_amount = after_items[item]
++            if not _strict_nonnegative_int(new_amount) or new_amount < old_amount:
++                telemetry["malformed"] += 1
++                return action
++
+     per_due = {}
+     per_item = {}
+     for due_step, due_items in after.items():
