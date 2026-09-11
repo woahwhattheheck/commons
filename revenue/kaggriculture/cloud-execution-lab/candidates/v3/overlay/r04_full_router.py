@@ -45,6 +45,9 @@ import base64
 import lzma
 # The thirteen 719-step tapes are carried once for the tree, in r01_tapes.
 from r01_tapes import load_tapes
+# R04 lane A6 (feed wheat): pure seed-order/plant/water/harvest logic plus the
+# emergency-buy cap helpers for the v226/v234 call sites.
+import r04_feed_wheat
 
 _INLINE_TAPES = load_tapes()
 TURNS_PER_DAY = 24
@@ -1048,6 +1051,13 @@ def _v226_topup(obs,action,state,configuration=None):
     if previous is None or previous['day']!=day:
         previous=_V226_DAY[player]={'day':day,'units':0}
     if previous['units']+shortage>8:return action
+    # V3.1 lane A6 (r04_feed_wheat): cap the emergency wheat buy once the extra
+    # harvest can cover feed. Flag off short-circuits: byte-identical.
+    if FEED_WHEAT:
+        shortage=r04_feed_wheat.capped(shortage,player,day,FEED_WHEAT_BUY_CAP)
+        if shortage<=0:
+            _V226_REPORT['wheat_topup_feed_wheat_declines']=_V226_REPORT.get('wheat_topup_feed_wheat_declines',0)+1
+            return action
     if sum(stock.values())+shortage>100:
         _V226_REPORT['wheat_topup_capacity_declines']+=1;return action
     quote=int(obs['market']['prices']['WHEAT'])
@@ -1056,6 +1066,7 @@ def _v226_topup(obs,action,state,configuration=None):
     result=copy.deepcopy(action)
     result['market']=market+[['BUY_PRODUCT','WHEAT',shortage]]
     previous['units']+=shortage
+    if FEED_WHEAT:r04_feed_wheat.note_bought(player,day,shortage)
     _V226_REPORT['wheat_topup_orders']+=1;_V226_REPORT['wheat_topup_units']+=shortage
     return result
 
@@ -1297,10 +1308,17 @@ def _v234_rescue(obs,action,state):
     stock=projected_shed(action,FarmView(obs))
     shortage=hungry-carried-stock.get('WHEAT',0)
     if not 0<shortage<=6 or state.get('rescue_today',0)+shortage>6:return action
+    # V3.1 lane A6 (r04_feed_wheat): cap the emergency wheat buy once the extra
+    # harvest can cover feed. Flag off short-circuits: byte-identical.
+    if FEED_WHEAT:
+        player=int(obs['player']);day=int(obs['step'])//24
+        shortage=r04_feed_wheat.capped(shortage,player,day,FEED_WHEAT_BUY_CAP)
+        if shortage<=0:return action
     quote=int(obs['market']['prices']['WHEAT'])
     if quote<1 or farm['money']<1000+shortage*(quote+10) or sum(stock.values())+shortage>100:return action
     result=copy.deepcopy(action);result['market'].append(['BUY_PRODUCT','WHEAT',shortage])
     state['rescue_today']=state.get('rescue_today',0)+shortage
+    if FEED_WHEAT:r04_feed_wheat.note_bought(int(obs['player']),int(obs['step'])//24,shortage)
     _V233_REPORT['sheep_rescue_feed_requests']+=shortage
     return result
 
@@ -1372,6 +1390,14 @@ SALE_EXCLUDED = ('WHEAT', 'FERTILIZER')
 ADVANCE_START = 288
 _SALE_NATIVE_ADVANCE = advance_sales
 _SALE_NATIVE_SUBTRACT = subtract_advanced_sales
+# V3.1 lane A6 (r04_feed_wheat): grow feed wheat instead of buying product.
+# When True, v3_agent() runs the seed front-load + opportunistic crew, and the
+# v226 topup / v234 rescue wheat buys are capped at FEED_WHEAT_BUY_CAP
+# units/day from day 5. Read at call time, exactly like SALE_HORIZON. Flag off
+# short-circuits: byte-identical.
+FEED_WHEAT = False
+FEED_WHEAT_SEEDS = r04_feed_wheat.DEFAULT_EXTRA_SEEDS
+FEED_WHEAT_BUY_CAP = 1.2
 
 
 
@@ -1605,20 +1631,34 @@ def v3_agent(observation, configuration=None):
         action = dict(action)
         action["market"] = [["BUY_PRODUCT", "WHEAT", 13], ["BUY_PRODUCT", "WHEAT", OPEN_ROUNDTRIP],
                             ["SELL", "WHEAT", OPEN_ROUNDTRIP]]
+    if FEED_WHEAT:
+        # V3.1 lane A6 (r04_feed_wheat): grow feed wheat instead of buying
+        # product. Flag off short-circuits inside the helper: byte-identical.
+        action = r04_feed_wheat.apply(observation, action, FEED_WHEAT,
+                                      FEED_WHEAT_SEEDS, FEED_WHEAT_BUY_CAP)
     return action
 
 
+# Sentinel so install(feed_wheat_buy_cap=None) explicitly disables the cap.
+_UNSET = object()
+
+
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None):
+            sale_fertilizer=None, cattle_early=None, feed_wheat=None,
+            feed_wheat_seeds=None, feed_wheat_buy_cap=_UNSET):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
     factory sets SALE_HORIZON; V231 reads _V231_EARLY at call time. sale_fertilizer lets the
     window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
     also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
-    first two shops consume MILK and neither is the YARN_STORE.
+    first two shops consume MILK and neither is the YARN_STORE. feed_wheat enables V3.1 lane
+    A6 (grow feed wheat instead of buying product); feed_wheat_seeds sets the extra-seed
+    quota (default 26); feed_wheat_buy_cap caps emergency wheat buys per day from day 5
+    (default 1.2, None disables the cap).
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global FEED_WHEAT, FEED_WHEAT_SEEDS, FEED_WHEAT_BUY_CAP
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1637,4 +1677,17 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
     if cattle_early is not None:
         _V231_EARLY = bool(cattle_early)
+    if feed_wheat is not None:
+        new_wheat = bool(feed_wheat)
+        # The delegate calls install() on every act, so only reset lane state
+        # when the flag actually flips; per-episode rollover is handled by
+        # r04_feed_wheat's own day comparison.
+        if new_wheat != FEED_WHEAT:
+            r04_feed_wheat.reset()
+        FEED_WHEAT = new_wheat
+    if feed_wheat_seeds is not None:
+        FEED_WHEAT_SEEDS = int(feed_wheat_seeds)
+    if feed_wheat_buy_cap is not _UNSET:
+        FEED_WHEAT_BUY_CAP = (None if feed_wheat_buy_cap is None
+                              else float(feed_wheat_buy_cap))
     return v3_agent

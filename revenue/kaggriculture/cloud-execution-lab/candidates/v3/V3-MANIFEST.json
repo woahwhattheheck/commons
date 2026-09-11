@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "088ce50169a0087ebb0f2f1c09358d2aebd8ac93a2b27e42b613098cd126fd90",
-    "bytes": 528738,
-    "files": 126
+    "sha256": "68aee2992546e128feaf470ad1b748bb7d8ecd54f49af7da88b1b5e3fe78b916",
+    "bytes": 537584,
+    "files": 128
   },
   "releases": [
     {
@@ -341,6 +341,7 @@
     "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
     "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
     "checks/test_v3_r04.py": "116faac16e8438154bc5d3a03f77f729e82c73284f46afac10cf0a35f8f98e37",
+    "checks/test_v3_r04_feed_wheat.py": "aaf5a4c3d204d561c7d46336f7a7f34edab111042f0b8d0dd14e6b326a78d0d6",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
@@ -348,9 +349,10 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "281117d7460d57c71a8caa9f30ed81cd918b714ad88638d47cb06d071bc12239",
+    "r04_feed_wheat.py": "fc13562c0ae28fefacbd3adbdb84c7bd270c7e734a9de23d35454cb4dc95f5a0",
+    "r04_full_router.py": "911cbea903048a86742cb7efd3475791d7460ee28522898cb20f2552dc897cd0",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "84560b01567833ec1eecb31c127e325e286d77bb7cc40bb88089734a125ed34f"
+    "apply_v3.py": "bdba9e5e38befd86887061f495b6cb84195884046d9ed37a904fe7d3ca74deb2"
   }
 }

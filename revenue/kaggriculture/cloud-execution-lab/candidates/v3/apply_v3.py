@@ -35,6 +35,9 @@ PARAMS = {
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
+    "r04_feed_wheat": False,
+    "r04_feed_wheat_seeds": 26,
+    "r04_feed_wheat_buy_cap": 1.2,
 }
 
 FIELDS = (
@@ -69,6 +72,9 @@ FIELDS = (
     "    r04_evening_flush: bool = True\n"
     "    r04_sale_fertilizer: bool = True\n"
     "    r04_cattle_early: bool = True\n"
+    "    r04_feed_wheat: bool = False\n"
+    "    r04_feed_wheat_seeds: int = 26\n"
+    "    r04_feed_wheat_buy_cap: float = 1.2\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -188,13 +194,19 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_row_order),\n"
     "                                 bool(self.features.r04_evening_flush),\n"
     "                                 bool(self.features.r04_sale_fertilizer),\n"
-    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\n"
+    "                                 bool(self.features.r04_cattle_early),\n"
+    "                                 bool(self.features.r04_feed_wheat),\n"
+    "                                 int(self.features.r04_feed_wheat_seeds),\n"
+    "                                 float(self.features.r04_feed_wheat_buy_cap))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
     "                self.diagnostics['sale_fertilizer'] = bool(self.features.r04_sale_fertilizer)\n"
     "                self.diagnostics['cattle_early'] = bool(self.features.r04_cattle_early)\n"
+    "                self.diagnostics['feed_wheat'] = bool(self.features.r04_feed_wheat)\n"
+    "                self.diagnostics['feed_wheat_seeds'] = int(self.features.r04_feed_wheat_seeds)\n"
+    "                self.diagnostics['feed_wheat_buy_cap'] = float(self.features.r04_feed_wheat_buy_cap)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -343,9 +355,13 @@ RELEASE_NOTE = (
     "lets the sale window advance FERTILIZER, which the published window skips with WHEAT.\n"
     "`r04_cattle_early` (default True) also runs V231's bounded sheep-to-cow swap at the day-8\n"
     "purchase (steps 190-215) when both of the first two shops consume MILK and neither is the\n"
-    "YARN_STORE; the published day-9 window is unchanged. With either key on the canonical\n"
+    "YARN_STORE; the published day-9 window is unchanged. `r04_feed_wheat` (default False,\n"
+    "V3.1 lane A6) front-loads `r04_feed_wheat_seeds` extra WHEAT seeds (default 26) on days\n"
+    "0-2, plants/waters/harvests them with idle crew, and caps emergency wheat product buys\n"
+    "at `r04_feed_wheat_buy_cap` units/day (default 1.2) from day 5, growing feed wheat instead\n"
+    "of buying ~156 units of product. With either key on the canonical\n"
     "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
-    "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
+    "appended to NOTICE. Checks: `checks/test_v3_r04.py`, `checks/test_v3_r04_feed_wheat.py`.\n"
 )
 
 
