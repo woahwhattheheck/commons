@@ -20,6 +20,7 @@ MAX_BUY = 4
 MAX_DAILY_BUY = 8
 CASH_RESERVE = 1000
 _PURCHASE_OPS = {"HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_ANIMAL", "BUY_SEED"}
+_SHED_INFLOW_OPS = {"DROP", "PLACE"}
 _STANDARD_CONFIG = {
     "episodeSteps": 720,
     "turnsPerDay": 24,
@@ -105,7 +106,10 @@ def _future_literal_pickup(tape, step, actor_count):
     Future HIRE/purchase rows are a hard veto below, so the live actor count
     cannot increase before the certified pickup. Tape hand rows beyond that
     count are non-executable in the official interpreter and must not create
-    speculative WHEAT demand.
+    speculative WHEAT demand. Any intervening authored DROP/PLACE is also a
+    hard veto: M1's earlier market buy occupies shed capacity immediately, so
+    later unit-phase shed inflow could otherwise discard cargo before the
+    certified WHEAT pickup has a chance to free space.
     """
     if type(actor_count) is not int or actor_count < 1:
         return None, 0
@@ -120,6 +124,11 @@ def _future_literal_pickup(tape, step, actor_count):
         commands = _commands(planned)
         if rows is None or commands is None:
             return None, 0
+        for command in commands:
+            if not isinstance(command[0], str):
+                return None, 0
+            if command[0] in _SHED_INFLOW_OPS:
+                return None, 0
         for row in rows:
             if not row:
                 continue
