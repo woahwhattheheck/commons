@@ -65,7 +65,12 @@ def _reserved_for_carrots(observation, tape, step, day):
     """True unless the shipped hand has no remaining CARROT obligation today."""
     try:
         import r04_fert_hand as fert
-        farm = observation["farms"][int(observation["player"])]
+        if not isinstance(observation, dict):
+            return True
+        player = observation.get("player")
+        if type(player) is not int:
+            return True
+        farm = observation["farms"][player]
         if fert._targets(farm["tiles"], day):
             return True
         if tape is None:
@@ -80,13 +85,9 @@ def _prices(observation):
         prices = observation["market"]["prices"]
         wheat = prices.get("WHEAT")
         fertilizer = prices.get("FERTILIZER")
-        if type(wheat) not in (int, float) or type(wheat) is bool:
+        if not _plain_nonnegative_int(wheat):
             return None
-        if type(fertilizer) not in (int, float) or type(fertilizer) is bool:
-            return None
-        wheat = float(wheat)
-        fertilizer = float(fertilizer)
-        if wheat < 0 or fertilizer < 0:
+        if not _plain_nonnegative_int(fertilizer):
             return None
         return wheat, fertilizer
     except Exception:
@@ -96,8 +97,12 @@ def _prices(observation):
 def _targets(observation, position):
     """Positive-ROI reachable WHEAT targets as (distance, -gain, y, x, gain)."""
     try:
-        player = int(observation["player"])
-        step = int(observation["step"])
+        if not isinstance(observation, dict):
+            return []
+        player = observation.get("player")
+        step = observation.get("step")
+        if type(player) is not int or type(step) is not int:
+            return []
         day, hour = divmod(step, 24)
         farm = observation["farms"][player]
         tiles = farm["tiles"]
@@ -131,13 +136,17 @@ def _targets(observation, position):
 def apply_fert_mix(observation, action, enabled=False):
     if not enabled:
         return action
+    if not isinstance(observation, dict):
+        return action
+    if type(observation.get("player")) is not int or type(observation.get("step")) is not int:
+        return action
     try:
         import r04_fert_hand as fert
         import r04_full_router as r04
         if not fert.FERT_HAND:
             return action
-        player = int(observation["player"])
-        step = int(observation["step"])
+        player = observation["player"]
+        step = observation["step"]
         day = step // 24
         if day not in fert.DAYS or not isinstance(action, dict):
             return action
