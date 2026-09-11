@@ -1,0 +1,94 @@
+name: TITAN V3.1 canonical base recovery
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-canonical-base-recovery.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover-and-rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout literal event head with history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind a612 parent, live canonical, and exact recovery scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          ARCHIVE='revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
+          WORKFLOW='.github/workflows/titan-v31-canonical-base-recovery.yml'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          git diff --name-only "$BASE...HEAD" > /tmp/v31-base-recovery-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/v31-base-recovery-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-canonical-base-recovery.yml',
+              'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected canonical-base recovery scope: {sorted(actual)!r}')
+          print('V31 BASE RECOVERY SCOPE OK', len(actual))
+          PY
+          test "$(git rev-parse "HEAD:$ARCHIVE")" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
+          git diff --check "$BASE...HEAD" -- "$WORKFLOW"
+
+      - name: Prove recovered bytes are the historical 5f6 generation
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_COMMIT='741e7262f0226ef26b9d14a2f394edc9f24545a6'
+          SOURCE_PATH='revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+          ARCHIVE='revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
+          EXPECTED_BLOB='10e92806e24a32f3f301e32edbb1f0b5106be92a'
+          EXPECTED_SHA='5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1'
+          git cat-file -e "$SOURCE_COMMIT^{commit}"
+          test "$(git rev-parse "$SOURCE_COMMIT:$SOURCE_PATH")" = "$EXPECTED_BLOB"
+          test "$(git rev-parse "HEAD:$ARCHIVE")" = "$EXPECTED_BLOB"
+          test "$(sha256sum "$ARCHIVE" | awk '{print $1}')" = "$EXPECTED_SHA"
+          test "$(wc -c < "$ARCHIVE" | tr -d ' ')" = '428158'
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json').read_text())
+          expected = '5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1'
+          if manifest['base']['sha256'] != expected:
+              raise SystemExit(f"manifest base sha drift: {manifest['base']['sha256']} != {expected}")
+          print('V31 BASE SHA PIN OK', expected)
+          print('V31 BASE ACTUAL BYTES', 428158, 'MANIFEST_RECORDED_BYTES', manifest['base'].get('bytes'))
+          PY
+
+      - name: Prove deterministic V3 package is rebuildable from recovered base
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -B build_v3.py --check |& tee /tmp/v31-base-recovery-build.log
+          grep -F 'V3 CHECK OK ' /tmp/v31-base-recovery-build.log
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
