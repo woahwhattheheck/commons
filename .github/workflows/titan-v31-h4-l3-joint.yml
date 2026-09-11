@@ -70,7 +70,7 @@ jobs:
           print('H4_STRUCTURAL_RECEIPT', 372, 292, 80)
           PY
 
-      - name: Smoke joint installer
+      - name: Smoke direct joint evaluator entrypoint
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
@@ -79,12 +79,11 @@ jobs:
           import joint_arm
           import r04_full_router as base
           import r04_h4_strawberry as h4
-          agent = joint_arm.install_joint()
-          assert callable(agent)
+          assert callable(joint_arm.agent)
           assert h4.STRAWBERRY_TOPUP is True
           assert base.NO_LATE_SALE_ADVANCE is True
           assert base.NO_LATE_SALE_ADVANCE_STEP == 648
-          print('JOINT_FLAGS_OK')
+          print('JOINT_ENTRYPOINT_OK')
           PY
 
       - name: Prove checkout stayed clean
