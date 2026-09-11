@@ -69,11 +69,16 @@
     var link = offer.link || {};
     var url = String(link.url || "");
     var stripeUrl = /^https:\/\/(?:buy|donate)\.stripe\.com\/[A-Za-z0-9]+$/.test(url);
-    var chargeable = provider.name === "stripe" && provider.livemode === true && provider.account_charges_enabled === true && provider.account_payouts_enabled === true && link.status === "ACTIVE" && link.active === true && stripeUrl;
+    var requirementsClear = Array.isArray(provider.currently_due) && provider.currently_due.length === 0;
+    var accountReady = provider.name === "stripe" && provider.livemode === true && provider.account_charges_enabled === true && provider.account_payouts_enabled === true && requirementsClear && provider.card_payments === "active" && provider.transfers === "active";
+    var chargeable = accountReady && link.status === "ACTIVE" && link.active === true && stripeUrl;
     var reason = "Checkout state unavailable.";
     if (catalog && provider.livemode !== true) reason = "Stripe live account is not connected.";
     else if (provider.account_charges_enabled !== true) reason = "Stripe live charges are not enabled.";
     else if (provider.account_payouts_enabled !== true) reason = "Stripe live payouts are not enabled.";
+    else if (!requirementsClear) reason = "Stripe account requirements are not clear.";
+    else if (provider.card_payments !== "active") reason = "Stripe card payments capability is not active.";
+    else if (provider.transfers !== "active") reason = "Stripe transfers capability is not active.";
     else if (link.status !== "ACTIVE" || link.active !== true || !stripeUrl) reason = "Checkout " + String(link.status || "NOT_MINTED") + ".";
     else reason = "Chargeable Stripe checkout active.";
     return {
