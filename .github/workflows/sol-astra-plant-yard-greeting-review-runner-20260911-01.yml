@@ -1,0 +1,80 @@
+name: sol-astra-plant-yard-greeting-review-runner-20260911-01
+
+on:
+  push:
+    branches:
+      - sol-astra/plant-yard-greeting-review-runner-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Bind carrier topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "ae53dafa3457bfb524e5e44aff69a8099a610897"
+          mapfile -t changed < <(git diff --name-only HEAD^ HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = ".github/workflows/sol-astra-plant-yard-greeting-review-runner-20260911-01.yml"
+      - name: Compile focused implementation
+        run: python3 -m py_compile host/business_pack_plant_instance.py test_business_pack_plant_instance.py
+      - name: Run focused current-main contract
+        run: python3 -m unittest -v test_business_pack_plant_instance.py
+      - name: Run helper CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 host/business_pack_plant_instance.py > /tmp/plant.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/plant.json'))
+          assert data['verdict']=='PLANT_INSTANCE_OK', data
+          assert data['matched_demand_id']=='scout-demand-plant-yard-greeting-pack-20260902-01', data
+          assert data['checkout']=='NOT_MINTED', data
+          assert data['saleable'] is False, data
+          assert data['running_cost']=='OWNER_UNSET', data
+          assert data['sold_once'] is True, data
+          print('CLI_OK')
+          PY
+      - name: Hash exact reviewed 23 paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          paths=(
+            ground/BUSINESS_PACK_PLANT.json
+            host/business_pack_plant_instance.py
+            land/plant-yard-greeting-20260902.md
+            p/cursor-plant-yard-greeting-pack-20260902-01.md
+            packs/lotribbon-greetings-20260902-01/README.md
+            packs/lotribbon-greetings-20260902-01/assets.md
+            packs/lotribbon-greetings-20260902-01/calendar.md
+            packs/lotribbon-greetings-20260902-01/checkout.md
+            packs/lotribbon-greetings-20260902-01/day.md
+            packs/lotribbon-greetings-20260902-01/index.html
+            packs/lotribbon-greetings-20260902-01/instructions.md
+            packs/lotribbon-greetings-20260902-01/insurance-licensing.md
+            packs/lotribbon-greetings-20260902-01/inventory.json
+            packs/lotribbon-greetings-20260902-01/keep-vs-sell.md
+            packs/lotribbon-greetings-20260902-01/manifest.json
+            packs/lotribbon-greetings-20260902-01/offer.md
+            packs/lotribbon-greetings-20260902-01/paperwork.md
+            packs/lotribbon-greetings-20260902-01/pricing.md
+            packs/lotribbon-greetings-20260902-01/running-cost.md
+            packs/lotribbon-greetings-20260902-01/sop-delivery.md
+            packs/lotribbon-greetings-20260902-01/terms.md
+            packs/lotribbon-greetings-20260902-01/week1.md
+            test_business_pack_plant_instance.py
+          )
+          for p in "${paths[@]}"; do
+            test -f "$p"
+            printf '%s  %s\n' "$(git hash-object "$p")" "$p"
+          done
+      - name: Clean checkout
+        run: test -z "$(git status --porcelain)"
