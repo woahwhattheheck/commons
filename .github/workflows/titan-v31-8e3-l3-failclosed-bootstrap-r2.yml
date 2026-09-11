@@ -147,6 +147,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
           git diff --name-only "$BASE" > /tmp/l3-r3-working-paths.txt
           python3 - <<'PY'
