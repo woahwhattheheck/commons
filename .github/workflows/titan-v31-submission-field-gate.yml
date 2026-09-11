@@ -31,6 +31,7 @@ jobs:
           BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git cat-file -t "$BASE")" = commit
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           git diff --name-only "$BASE"..HEAD > /tmp/field-gate-paths.txt
           python - <<'PY'
@@ -45,6 +46,16 @@ jobs:
           print('SUBMISSION FIELD-GATE SCOPE OK', len(actual))
           PY
 
+      - name: Pin shipped H4 plus gated-L3 source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          V3=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          test "$(git rev-parse HEAD:$V3/apply_v3.py)" = 7a96c0f1d38fff674493e92bc420eb3dfe821f20
+          test "$(git rev-parse HEAD:$V3/overlay/r04_full_router.py)" = d797ecd6068dc714d2ba45d44c2d672842116c7b
+          test "$(git rev-parse HEAD:$V3/overlay/r04_h4_strawberry.py)" = d6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8
+          test "$(git rev-parse HEAD:$V3/overlay/r04_no_late_sale_advance.py)" = fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0
+
       - name: Prove shipped deterministic package is unchanged
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
@@ -58,6 +69,13 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest -v tooling_tests/test_make_submission_config.py
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in ('make_submission.py', 'tooling_tests/test_make_submission_config.py'):
+              source = Path(name).read_text()
+              compile(source, name, 'exec')
+          print('IN-MEMORY COMPILE OK')
+          PY
 
       - name: Prove only cattle-facing config changes on shipped H4 plus rival-gated L3 package
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
@@ -108,4 +126,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git diff --check 'a6120d0ea1bdb75eb0da2239220efce551f624a6'..HEAD
           test -z "$(git status --porcelain)"
