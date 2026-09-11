@@ -3,9 +3,9 @@
 """Reduce matched current-canonical B5 control/candidate evaluator receipts.
 
 This is an interaction screen, not a promotion gate. It requires complete, unique,
-finite, seat-aware paired cells drawn from the exact declared seed/opponent cartesian
-product, and treats any negative own-score or competitive-margin cell as a HOLD before
-a wider opponent-diverse D3 receipt is attempted.
+finite, seat-aware paired cells drawn from the exact workflow-requested seed/opponent
+cartesian product, and treats any negative own-score or competitive-margin cell as a
+HOLD before a wider opponent-diverse D3 receipt is attempted.
 """
 from __future__ import annotations
 
@@ -16,6 +16,17 @@ import statistics
 from pathlib import Path
 
 ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+EXPECTED_SEEDS = (
+    2611152101, 2611152102, 2611152103, 2611152104,
+    2611152105, 2611152106, 2611152107, 2611152108,
+)
+EXPECTED_OPPONENTS = ("a612-score",)
+EXPECTED_KEYS = frozenset(
+    (opponent, seed, seat)
+    for opponent in EXPECTED_OPPONENTS
+    for seed in EXPECTED_SEEDS
+    for seat in (0, 1)
+)
 
 
 def load(path):
@@ -43,25 +54,27 @@ def normalized_games(report, label):
     seeds = report.get("seeds")
     opponents = report.get("opponents")
     games = report.get("games")
-    if not isinstance(seeds, list) or not seeds or not isinstance(opponents, list) or not opponents:
+    if not isinstance(seeds, list) or not isinstance(opponents, list):
         raise SystemExit(f"{label}: missing seeds/opponents metadata")
     if not isinstance(games, list) or not games:
         raise SystemExit(f"{label}: missing games")
 
-    seed_set = set()
-    for i, seed in enumerate(seeds):
+    if len(seeds) != len(EXPECTED_SEEDS):
+        raise SystemExit(f"{label}: requested seed panel length mismatch")
+    for i, (seed, expected) in enumerate(zip(seeds, EXPECTED_SEEDS)):
         strict_int(seed, f"{label}.seeds[{i}]")
-        if seed in seed_set:
-            raise SystemExit(f"{label}: duplicate declared seed {seed!r}")
-        seed_set.add(seed)
+        if seed != expected:
+            raise SystemExit(
+                f"{label}.seeds[{i}]: unexpected seed {seed!r}; requested {expected!r}"
+            )
 
-    opponent_set = set()
-    for i, opponent in enumerate(opponents):
-        if not isinstance(opponent, str) or not opponent:
-            raise SystemExit(f"{label}.opponents[{i}]: expected non-empty string")
-        if opponent in opponent_set:
-            raise SystemExit(f"{label}: duplicate declared opponent {opponent!r}")
-        opponent_set.add(opponent)
+    if len(opponents) != len(EXPECTED_OPPONENTS):
+        raise SystemExit(f"{label}: requested opponent panel length mismatch")
+    for i, (opponent, expected) in enumerate(zip(opponents, EXPECTED_OPPONENTS)):
+        if not isinstance(opponent, str) or opponent != expected:
+            raise SystemExit(
+                f"{label}.opponents[{i}]: unexpected opponent {opponent!r}; requested {expected!r}"
+            )
 
     result = {}
     for index, game in enumerate(games):
@@ -70,12 +83,10 @@ def normalized_games(report, label):
         if game.get("status") != "complete":
             raise SystemExit(f"{label}.games[{index}]: incomplete status {game.get('status')!r}")
         opponent = game.get("opponent")
-        if not isinstance(opponent, str) or not opponent:
-            raise SystemExit(f"{label}.games[{index}]: bad opponent")
-        if opponent not in opponent_set:
+        if not isinstance(opponent, str) or opponent not in EXPECTED_OPPONENTS:
             raise SystemExit(f"{label}.games[{index}]: undeclared opponent {opponent!r}")
         seed = strict_int(game.get("seed"), f"{label}.games[{index}].seed")
-        if seed not in seed_set:
+        if seed not in EXPECTED_SEEDS:
             raise SystemExit(f"{label}.games[{index}]: undeclared seed {seed!r}")
         seat = strict_int(game.get("candidate_seat"), f"{label}.games[{index}].candidate_seat")
         if seat not in (0, 1):
@@ -94,18 +105,12 @@ def normalized_games(report, label):
         row["scores"] = scores
         result[key] = row
 
-    expected_keys = {
-        (opponent, seed, seat)
-        for opponent in opponent_set
-        for seed in seed_set
-        for seat in (0, 1)
-    }
-    actual_keys = set(result)
-    if actual_keys != expected_keys:
-        missing = sorted(expected_keys - actual_keys)
-        extra = sorted(actual_keys - expected_keys)
+    actual_keys = frozenset(result)
+    if actual_keys != EXPECTED_KEYS:
+        missing = sorted(EXPECTED_KEYS - actual_keys)
+        extra = sorted(actual_keys - EXPECTED_KEYS)
         raise SystemExit(
-            f"{label}: declared cartesian coverage mismatch: missing={missing!r} extra={extra!r}"
+            f"{label}: exact requested coverage mismatch: missing={missing!r} extra={extra!r}"
         )
     return result
 
@@ -119,17 +124,13 @@ def main():
     args = parser.parse_args()
 
     control_raw, candidate_raw = load(args.control), load(args.candidate)
-    if control_raw.get("seeds") != candidate_raw.get("seeds"):
-        raise SystemExit("seed metadata mismatch")
-    if control_raw.get("opponents") != candidate_raw.get("opponents"):
-        raise SystemExit("opponent metadata mismatch")
     control = normalized_games(control_raw, "control")
     candidate = normalized_games(candidate_raw, "candidate")
     if control.keys() != candidate.keys():
         raise SystemExit("paired cell key mismatch")
 
     cells = []
-    for key in sorted(control):
+    for key in sorted(EXPECTED_KEYS):
         c, b = control[key], candidate[key]
         seat = key[2]
         c_own, c_rival = c["scores"][seat], c["scores"][1 - seat]
@@ -180,8 +181,8 @@ def main():
     payload = {
         "schema": "titan-v31-b5-a612-interaction-screen/v1",
         "engine_ref": ENGINE_REF,
-        "seeds": control_raw["seeds"],
-        "opponents": control_raw["opponents"],
+        "seeds": list(EXPECTED_SEEDS),
+        "opponents": list(EXPECTED_OPPONENTS),
         "cells": cells,
         "summary": summary,
         "truth_boundary": (
@@ -190,7 +191,7 @@ def main():
             "A promising result still requires opponent-diverse D3 product-externality coverage before integration."
         ),
     }
-    Path(args.json_out).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    Path(args.json_out).write_text(json.dumps(payload, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
     lines = [
         "## B5 CARROT JIT — current canonical interaction screen",
@@ -217,7 +218,7 @@ def main():
         "product-externality D3 coverage remain mandatory.",
     ]
     Path(args.markdown_out).write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(json.dumps(summary, sort_keys=True))
+    print(json.dumps(summary, sort_keys=True, allow_nan=False))
 
 
 if __name__ == "__main__":
