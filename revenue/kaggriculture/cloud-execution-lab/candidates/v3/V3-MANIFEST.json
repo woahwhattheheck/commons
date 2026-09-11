@@ -12,7 +12,7 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "b366d6310dc310abf292ce4bec38438f5577ec68456149f6f237dae2de7a5bc6",
+    "sha256": "35bb3b6fce4aaa6dcc0b9fa78b1d6c8a9da299bf8ddb7f99b0523ce4de60a6b0",
     "bytes": 522866,
     "files": 126
   },
@@ -40,7 +40,7 @@
       "e20_min_unwatered_crops": 3,
       "g01_early_expander_step": 144,
       "g01_land_cash_floor": 0,
-      "r04_sale_horizon": 4
+      "r04_sale_horizon": 8
     },
     "l01_land": {
       "default": false,
@@ -94,7 +94,7 @@
       "default": false,
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
-      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 4); takes precedence over R03 and R01"
+      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); takes precedence over R03 and R01"
     }
   },
   "lanes": [
@@ -260,10 +260,12 @@
         "E184 appended verbatim as the outermost layer; checks/test_v3_r04.py"
       ],
       "panels": [
-        "protocol: pinned engine 28b6d8af (kaggle-environments 1.32.7, blob-verified) through a Windows port of checks/reference/evaluator play() (same configuration defaults, seed assignment, observation writes, JSON round trip to one agent process per seat, per-seat RNG and PYTHONHASHSEED); seeds 2611151001-008, both seats, 16 games per cell; opponents are the published Kaggle output archives (S14 public bank) and two local variants named inline",
+        "protocol: pinned engine 28b6d8af (kaggle-environments 1.32.7, blob-verified) through a Windows port of checks/reference/evaluator play() (same configuration defaults, seed assignment, observation writes, JSON round trip to one agent process per seat, per-seat RNG and PYTHONHASHSEED); seeds 2611151001-008, both seats, 16 games per cell; opponents are the published Kaggle output archives (S14 public bank) and local variants named inline",
+        "r04_sale_horizon=8 (standalone composition): gluzdov_twocoins 16-0-0 +4262, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4365, prvsiyan_soil 16-0-0 +3453, berat_v33 16-0-0 +4113, ravi_v21mem 16-0-0 +42452, web3cainiao_v21 16-0-0 +53197, boatlee_v21 16-0-0 +26412, sokolovsky 16-0-0 +38318, tokenjunkielabs_v2 16-0-0 +7550, nusrati_2715 16-0-0 +6982, r04(horizon 3) 16-0-0 +3140, r04(horizon 4) 16-0-0 +2950, r04(horizon 6) 16-0-0 +3568",
         "r04_sale_horizon=4 (standalone composition): gluzdov_twocoins 16-0-0 +5151, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4891, prvsiyan_soil 16-0-0 +4349, berat_v33 16-0-0 +5012, ravi_v21mem 16-0-0 +43400, web3cainiao_v21 16-0-0 +53745, boatlee_v21 16-0-0 +26197, sokolovsky 16-0-0 +38957, tokenjunkielabs_v2 16-0-0 +8632, nusrati_2715 16-0-0 +8059, r04(horizon 3) 16-0-0 +3620",
-        "V3 tree with r04_sale_window on through the TITAN entrypoint versus the standalone composition: 16 of 16 games identical final scores at the default horizon 4, and 16 of 16 at horizon 3 (prvsiyan_soil and gluzdov_twocoins, seeds 2611151001-004, both seats)",
-        "default horizon 4: highest margin against the measured field among horizons 3-12; r04_sale_horizon stays a parameter",
+        "private lineage tier: 49 recorded seats of 13 private agents that follow the public tapes (hands agreement with their best tape 458-719 of 719 steps; mtmr_s1, Yusuke Hayashi, insuperabilehart, Michael Shihong Zhang and nine others, rated about 2850-2960) from 48 hosted Kaggle episodes that the pinned engine reproduces exactly; each recorded seat plays open-loop on its own seed against the candidate in the other seat (recorded seats drift 0-3% from their recorded scores): gluzdov_twocoins 11-38, prvsiyan_soil 20-29, r04 horizon 4 24-25, horizon 6 27-22, horizon 8 32-17 (mean +3803), horizon 10 33-16, horizon 12 32-17, horizon 16 32-17",
+        "V3 tree with r04_sale_window on through the TITAN entrypoint versus the standalone composition: 16 of 16 games identical final scores at horizons 3, 4 and 8 each (prvsiyan_soil and gluzdov_twocoins, seeds 2611151001-004, both seats)",
+        "default horizon 8: top of the private-tier plateau (horizons 8-12) with the largest mean margin there, 16-0 against every public agent measured, and 16-0 head to head against horizons 3, 4 and 6; r04_sale_horizon stays a parameter",
         "first-call setup through the TITAN entrypoint: 0.45 s on step 0, about 3 ms per later step (TITAN budget 1.0 s)"
       ]
     }
@@ -295,9 +297,9 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "a214b7fe670d89a83d1c8fe58863a7747106ef6bb13d2f04bc58cef354c6c6c0",
+    "r04_full_router.py": "62de51a077bca8b5a38fabd6b55c20288fc72abcaf2f646bce15f8faa25df073",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "8ce6156bff76be0726b363570d0ccc71ceee3983b22f5603f3dddbca3f92cc06"
+    "apply_v3.py": "39861f722719d174d8b216251bf4f28429d21f0874b79c6924ef190a763dbfb1"
   }
 }

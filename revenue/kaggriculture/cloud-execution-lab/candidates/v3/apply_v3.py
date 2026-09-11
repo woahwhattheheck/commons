@@ -29,7 +29,7 @@ PARAMS = {
     "e20_min_unwatered_crops": 3,
     "g01_early_expander_step": 144,
     "g01_land_cash_floor": 0,
-    "r04_sale_horizon": 4,
+    "r04_sale_horizon": 8,
 }
 
 FIELDS = (
@@ -58,7 +58,7 @@ FIELDS = (
     "    r03_full_router: bool = False\n"
     "    # R04 the R03 policy with the E184 sale window outermost (Gluzdov, Apache-2.0): whole-route delegate.\n"
     "    r04_sale_window: bool = False\n"
-    "    r04_sale_horizon: int = 4\n"
+    "    r04_sale_horizon: int = 8\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -304,7 +304,7 @@ RELEASE_NOTE = (
     "blob replaced by `r01_tapes` (byte-identical tapes); no rule is changed. Checks:\n"
     "`checks/test_v3_r03.py`.\n"
     "\n"
-    "R04 (`r04_sale_window`, shipped off; `r04_sale_horizon`, default 4) runs the R03 policy with\n"
+    "R04 (`r04_sale_window`, shipped off; `r04_sale_horizon`, default 8) runs the R03 policy with\n"
     "Dmitrii Gluzdov's E184 Sale Window appended verbatim as the outermost layer: from step 288\n"
     "the one-turn sale advance is replaced by reservations that sell now the units the tape plans\n"
     "to sell over the next `r04_sale_horizon` own actions, bounded by projected stock, never\n"

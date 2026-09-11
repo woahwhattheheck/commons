@@ -1358,7 +1358,7 @@ yhay81 / aurax7 / prvsiyan's router, without reading future market observations.
 This module is appended to the audited Moon policy during development staging.
 """
 
-SALE_HORIZON = 4
+SALE_HORIZON = 8
 ADVANCE_START = 288
 _SALE_NATIVE_ADVANCE = advance_sales
 _SALE_NATIVE_SUBTRACT = subtract_advanced_sales
