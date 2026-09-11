@@ -1,0 +1,73 @@
+name: titan-v3-pr12153-predecessor-killer
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-pr12153-predecessor-killer.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation/test_predecessor_killer.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation/apply_repair.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation/test_apply_repair.py'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-predecessor-killer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Checkout exact pull request head with predecessor history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 5
+          persist-credentials: false
+
+      - name: Bind exact successor topology and old witness bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha }}'
+          expected_parent='72df964c456cae2049e590505869453cf1e3ce20'
+          predecessor='abb32c2bc8b6f5907b218b8febe273ccd7c65002'
+          carrier='revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation/apply_repair.py'
+          current_test='revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation/test_apply_repair.py'
+          proof_test='revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation/test_predecessor_killer.py'
+          workflow='.github/workflows/titan-v3-pr12153-predecessor-killer.yml'
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          git merge-base --is-ancestor "$predecessor" HEAD
+          test "$(git show "$predecessor:$carrier" | git hash-object --stdin)" = '3613982a364fee67b9fbfbebb81c0e66c9f37934'
+          test "$(git hash-object "$carrier")" = '20677df58173dfef079068321518ee1a1428c0fa'
+          test "$(git hash-object "$current_test")" = 'e07e6ab9b5ddd79643dfd0fb6dce63e5a03bf76a'
+          mapfile -t changed < <(git diff --name-only "$expected_parent" HEAD)
+          test "${#changed[@]}" -eq 2
+          printf '%s\n' "${changed[@]}" | grep -Fx "$proof_test"
+          printf '%s\n' "${changed[@]}" | grep -Fx "$workflow"
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile current carrier and proof modules
+        working-directory: revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation
+        run: |
+          python -m py_compile \
+            apply_repair.py \
+            test_apply_repair.py \
+            test_predecessor_killer.py
+
+      - name: Run successor contracts plus literal predecessor killer
+        working-directory: revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-l01-r02-composition-preservation
+        run: python -m unittest -v test_apply_repair.py test_predecessor_killer.py
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git diff --cached --exit-code
