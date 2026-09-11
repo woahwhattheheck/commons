@@ -6,8 +6,8 @@ on:
       - titan/v3.1-20260911
     paths:
       - '.github/workflows/titan-v31-canonical-base-recovery.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
   workflow_dispatch:
 
 permissions:
@@ -24,13 +24,14 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind a612 parent, live canonical, and exact recovery scope
+      - name: Bind 8e3 canonical, exact recovery scope, and builder postimage
         shell: bash
         run: |
           set -euo pipefail
-          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
           EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
           ARCHIVE='revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
+          BUILDER='revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
           WORKFLOW='.github/workflows/titan-v31-canonical-base-recovery.yml'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
@@ -42,6 +43,7 @@ jobs:
           actual = set(Path('/tmp/v31-base-recovery-paths.txt').read_text().splitlines())
           expected = {
               '.github/workflows/titan-v31-canonical-base-recovery.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py',
               'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz',
           }
           if actual != expected:
@@ -49,7 +51,8 @@ jobs:
           print('V31 BASE RECOVERY SCOPE OK', len(actual))
           PY
           test "$(git rev-parse "HEAD:$ARCHIVE")" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
-          git diff --check "$BASE...HEAD" -- "$WORKFLOW"
+          test "$(git rev-parse "HEAD:$BUILDER")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          git diff --check "$BASE...HEAD" -- "$WORKFLOW" "$BUILDER"
 
       - name: Prove recovered bytes are the historical 5f6 generation
         shell: bash
@@ -76,7 +79,7 @@ jobs:
           print('V31 BASE ACTUAL BYTES', 428158, 'MANIFEST_RECORDED_BYTES', manifest['base'].get('bytes'))
           PY
 
-      - name: Prove deterministic V3 package is rebuildable from recovered base
+      - name: Prove builder defaults to immutable manifest-pinned history
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         env:
@@ -84,8 +87,11 @@ jobs:
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
           set -euo pipefail
-          python3 -B build_v3.py --check |& tee /tmp/v31-base-recovery-build.log
-          grep -F 'V3 CHECK OK ' /tmp/v31-base-recovery-build.log
+          python3 -B build_v3.py --check |& tee /tmp/v31-base-recovery-default.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/v31-base-recovery-default.log
+          python3 -B build_v3.py --check --canonical ../../exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz |& tee /tmp/v31-base-recovery-explicit.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/v31-base-recovery-explicit.log
+          cmp /tmp/v31-base-recovery-default.log /tmp/v31-base-recovery-explicit.log
 
       - name: Prove checkout stayed clean
         shell: bash
