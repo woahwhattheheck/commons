@@ -34,7 +34,7 @@ def _last_action_step(config: Mapping[str, Any]) -> int:
 
 def _market_order_limit(config: Mapping[str, Any]) -> int:
     try:
-        return max(0, int(config.get("maxMarketOrdersPerTurn", 10)))
+        return max(1, int(config.get("maxMarketOrdersPerTurn", 10)))
     except (TypeError, ValueError):
         return 10
 
