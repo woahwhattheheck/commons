@@ -33,7 +33,10 @@ def apply(src):
         "def _v224_sales_first(action):\n"
         "    if V224_RAW_SLOTS:\n"
         "        import r04_v224_raw_slots\n"
-        "        return r04_v224_raw_slots.sales_first_raw_slots(action, max_orders=MAX_ORDERS)\n"
+        "        changed = r04_v224_raw_slots.sales_first_raw_slots(action, max_orders=MAX_ORDERS)\n"
+        "        if changed is not action:\n"
+        "            _V224_REPORT['reordered_market_turns'] += 1\n"
+        "        return changed\n"
         "    original=action.get('market',[])[:MAX_ORDERS]\n",
         "R04 V4 V224 raw-slot seam",
     )
