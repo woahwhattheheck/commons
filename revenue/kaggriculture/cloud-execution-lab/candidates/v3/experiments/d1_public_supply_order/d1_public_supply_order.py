@@ -1,16 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0
 """D1 experiment: prioritize already-returned SELL rows exposed to public rival supply.
 
-This module is intentionally narrower than a price predictor.  It reads only the public
-`farms` projection in the observation and treats standing rival tile `yield_units` as a
-bounded supply-pressure signal.  It never reads rival private shed/inventory/order state,
-never creates or changes a quantity, and never moves a sale across turns.
+This module is intentionally narrower than a price predictor. It reads only the public
+``farms`` projection in the observation and treats standing rival tile ``yield_units``
+as a bounded supply-pressure signal. It never reads rival private shed/inventory/order
+state, never creates or changes a quantity, and never moves a sale across turns.
 
 The only eligible mutation is a stable partition of the *leading* SELL block in the
 parent's final market action: products with visible rival standing yield move before
-products with no such signal, while parent order is retained within both groups.  The
-Kaggriculture interpreter executes market rows index-by-index, so this is the smallest
-row-position experiment that can test Muse D1 without repeating broad sale-timing arms.
+products with no such signal, while parent order is retained within both groups.
+Malformed evidence invalidates the whole signal rather than being partially trusted.
 """
 
 from __future__ import annotations
@@ -18,7 +17,9 @@ from __future__ import annotations
 from typing import Any
 
 
+_CROP_PRODUCTS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
 _ANIMAL_PRODUCTS = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
+_PRODUCTS = _CROP_PRODUCTS | set(_ANIMAL_PRODUCTS.values()) | {"FERTILIZER"}
 
 REPORT = {
     "calls": 0,
@@ -30,58 +31,82 @@ REPORT = {
 
 
 def _strict_nonnegative_int(value: Any) -> int | None:
-    """Accept only real integer public counters; bool/string/float are unknown."""
-    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+    """Accept only exact JSON integers; bool/string/float/subclasses are unknown."""
+    if type(value) is not int or value < 0:
         return None
     return value
 
 
 def public_rival_supply(observation: Any) -> dict[str, int]:
-    """Return visible standing yield by product for the one rival, or {} fail-closed.
+    """Return visible standing rival yield, or ``{}`` if evidence is invalid/absent.
 
-    `farms[*].tiles[*][*]` is public in the pinned official interpreter.  Private shed,
-    per-worker inventory, seeds and market orders are deliberately outside this helper.
-    A malformed tile/counter contributes nothing rather than being coerced.
+    A structurally malformed rival board is never partially trusted. Normal locked/empty
+    cells and non-producing well-formed tiles contribute no signal. A PLANT or occupied
+    animal structure must carry an exact known product/animal and nonnegative integer
+    ``yield_units``; otherwise the entire public signal fails closed.
     """
-    if not isinstance(observation, dict):
+    if type(observation) is not dict:
         return {}
     farms = observation.get("farms")
     player = observation.get("player")
-    if (not isinstance(farms, list) or len(farms) != 2
-            or isinstance(player, bool) or not isinstance(player, int) or player not in (0, 1)):
+    if type(farms) is not list or len(farms) != 2 or type(player) is not int or player not in (0, 1):
         return {}
     rival = farms[1 - player]
-    if not isinstance(rival, dict):
+    if type(rival) is not dict:
         return {}
     tiles = rival.get("tiles")
-    if not isinstance(tiles, list):
+    if type(tiles) is not list:
         return {}
 
     result: dict[str, int] = {}
     for row in tiles:
-        if not isinstance(row, list):
-            continue
+        if type(row) is not list:
+            return {}
         for tile in row:
-            if not isinstance(tile, dict):
+            # Locked/empty cells are non-signals, not malformed producing evidence.
+            if tile is None or tile == "LOCKED":
                 continue
-            units = _strict_nonnegative_int(tile.get("yield_units"))
-            if not units:
+            if type(tile) is not dict:
+                return {}
+
+            kind = tile.get("kind")
+            if kind == "PLANT":
+                crop = tile.get("crop")
+                units = _strict_nonnegative_int(tile.get("yield_units"))
+                if type(crop) is not str or crop not in _CROP_PRODUCTS or units is None:
+                    return {}
+                if units:
+                    result[crop] = result.get(crop, 0) + units
                 continue
-            product = None
-            if tile.get("kind") == "PLANT" and isinstance(tile.get("crop"), str):
-                product = tile["crop"]
-            elif isinstance(tile.get("animal"), str):
-                product = _ANIMAL_PRODUCTS.get(tile["animal"])
-            if product:
-                result[product] = result.get(product, 0) + units
+
+            animal = tile.get("animal")
+            if animal is not None:
+                if type(animal) is not str or animal not in _ANIMAL_PRODUCTS:
+                    return {}
+                units = _strict_nonnegative_int(tile.get("yield_units"))
+                if units is None:
+                    return {}
+                if units:
+                    product = _ANIMAL_PRODUCTS[animal]
+                    result[product] = result.get(product, 0) + units
+                continue
+
+            # Soil, weed, empty structures, etc. are well-formed non-signal tiles.
     return result
 
 
 def _eligible_sell(row: Any) -> bool:
-    if not isinstance(row, list) or len(row) < 3 or row[0] != "SELL":
+    """Accept only an executable-looking SELL row with a known exact product key."""
+    if type(row) is not list or len(row) < 3 or row[0] != "SELL":
         return False
+    product = row[1]
     quantity = row[2]
-    return not isinstance(quantity, bool) and isinstance(quantity, int) and quantity > 0
+    return (
+        type(product) is str
+        and product in _PRODUCTS
+        and type(quantity) is int
+        and quantity > 0
+    )
 
 
 def apply_public_supply_order(
@@ -93,17 +118,19 @@ def apply_public_supply_order(
 ) -> Any:
     """Stable-partition the leading SELL block by visible rival standing supply.
 
-    Disabled or unsupported inputs return the exact same parent object.  Custom market
+    Disabled or unsupported inputs return the exact same parent object. Custom market
     parameters also fail closed so this experiment stays on the exact live V3.1 market
-    contract.  Every row object, quantity, tail position and non-market action is retained.
+    contract. Every row object, quantity, tail position and non-market action is retained.
     """
     REPORT["calls"] += 1
-    if not enabled or not isinstance(action, dict):
+    if not enabled or type(action) is not dict:
         return action
-    if isinstance(configuration, dict) and configuration.get("marketParams"):
+    if configuration is not None and type(configuration) is not dict:
+        return action
+    if type(configuration) is dict and configuration.get("marketParams"):
         return action
     market = action.get("market")
-    if not isinstance(market, list):
+    if type(market) is not list:
         return action
 
     lead = 0
