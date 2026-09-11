@@ -21,13 +21,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
 
       - name: Bind stacked scope
         shell: bash
         run: |
           set -euo pipefail
+          PARENT=bc3de14fff86079e70659fd3c2ea42ffd2101b97
           test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
-          git diff --name-only bc3de14fff86079e70659fd3c2ea42ffd2101b97..HEAD | tee /tmp/d3-paths.txt
+          git merge-base --is-ancestor "$PARENT" HEAD
+          git diff --name-only "$PARENT"..HEAD | tee /tmp/d3-paths.txt
           python - <<'PY'
           from pathlib import Path
           paths = [p for p in Path('/tmp/d3-paths.txt').read_text().splitlines() if p]
@@ -41,10 +44,23 @@ jobs:
           print('D3_SCOPE_OK', len(paths))
           PY
 
-      - name: Compile evidence tools
+      - name: Compile evidence tools without mutating checkout
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
         run: |
-          python -m py_compile v31_delta_distribution_report.py v31_externality_gate.py test_v31_externality_gate.py
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          names = (
+              'v31_delta_distribution_report.py',
+              'v31_externality_gate.py',
+              'test_v31_externality_gate.py',
+          )
+          for name in names:
+              source = Path(name).read_text(encoding='utf-8')
+              compile(source, name, 'exec')
+          print('D3_COMPILE_OK', len(names))
+          PY
 
       - name: Preserve parent score-normalization suite
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
