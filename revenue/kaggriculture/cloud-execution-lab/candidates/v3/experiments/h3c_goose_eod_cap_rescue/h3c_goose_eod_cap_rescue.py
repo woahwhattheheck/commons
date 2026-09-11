@@ -8,11 +8,11 @@ literal ``COLLECT_FERTILIZER`` on the GOOSE the actor is already standing on to
 ``HARVEST`` when tonight's production would otherwise clip held yield.
 
 The guard is deliberately narrow: the goose is already fed+cared, fertilizer is
-actually collectible, the harvest is legal, the production tick is due, and a
-whole-farm upper bound proves every item that can be added by this turn's unit work
-still fits in the EOD shed.  Same-turn BUY_PRODUCT/BUY_ANIMAL rows are vetoed because
-their lockstep realization is rival-dependent.  Any ambiguity returns the exact
-parent action object.
+actually collectible, the harvest is legal, the production tick is due, no stacked
+worker has another non-PASS command on the same animal, and a whole-farm upper bound
+proves every item that can be added by this turn's unit work still fits in the EOD
+shed.  Same-turn BUY_PRODUCT/BUY_ANIMAL rows are vetoed because their lockstep
+realization is rival-dependent.  Any ambiguity returns the exact parent action object.
 """
 from __future__ import annotations
 
@@ -181,6 +181,7 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
     candidates = []
     seen_sites = set()
     actor_tiles = []
+    normalized_positions = []
     day = step // 24
     for actor, (position, command, inventory) in enumerate(zip(positions, rows, inventories)):
         if (not isinstance(position, list) or len(position) != 2
@@ -191,6 +192,7 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
             return action
         tile = tiles[y][x]
         actor_tiles.append(tile)
+        normalized_positions.append((x, y))
         if command != ["COLLECT_FERTILIZER"]:
             continue
         goose = _strict_goose(tile)
@@ -204,15 +206,26 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
             continue
         site = (x, y)
         if site in seen_sites:
-            # Two actors attempting the same animal makes success/order ambiguous.
+            # Two qualifying collectors on one animal are action-order ambiguous.
             return action
         seen_sites.add(site)
-        candidates.append((actor, units, overflow, placed))
+        candidates.append((actor, site, units, overflow, placed))
 
     if not candidates:
         return action
 
-    candidate_by_actor = {actor: units for actor, units, _overflow, _placed in candidates}
+    # A stacked worker with any other active command can invalidate the claimed
+    # zero-movement substitution.  The critical case is an existing HARVEST: then
+    # H3c's second HARVEST would be a no-op while sacrificing fertilizer collection.
+    for actor, site, _units, _overflow, _placed in candidates:
+        for other, (other_site, other_command) in enumerate(zip(normalized_positions, rows)):
+            if other == actor or other_site != site:
+                continue
+            if other_command != ["PASS"]:
+                telemetry["stacked_worker_block"] += 1
+                return action
+
+    candidate_by_actor = {actor: units for actor, _site, units, _overflow, _placed in candidates}
     unit_inflow_upper_bound = 0
     for actor, (command, tile) in enumerate(zip(rows, actor_tiles)):
         if actor in candidate_by_actor:
@@ -234,7 +247,7 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
 
     result = copy.deepcopy(action)
     result_rows = [result["farmer"], *result["hands"]]
-    for actor, units, overflow, _placed in candidates:
+    for actor, _site, units, overflow, _placed in candidates:
         result_rows[actor] = ["HARVEST"]
         telemetry["activations"] += 1
         telemetry["egg_units_banked"] += units
