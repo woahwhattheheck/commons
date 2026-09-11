@@ -25,12 +25,12 @@ ever touched, so higher-value tape work is never displaced:
             day (both consume worker inventory): the PASS becomes ["DROP"], which
             moves the worker's cargo into the shed the same step. Delivery is
             authorized only when strict current shed + every parent DROP cargo +
-            every new DROP cargo fits the canonical 100-unit shed. If capacity or
-            inventory evidence is malformed, all new DROPs fail closed to PASS.
-            This needs the route tape; when tape is None the deliver half is
-            skipped and only collection runs. Fertilizer that is not dropped
-            same-day still reaches the shed through the tape's own DROP rows or
-            the end-of-day inventory sweep.
+            every new DROP cargo fits the engine-resolved shedCapacity supplied by
+            the caller. If capacity or inventory evidence is malformed, all new
+            DROPs fail closed to PASS. This needs the route tape; when tape is None
+            the deliver half is skipped and only collection runs. Fertilizer that
+            is not dropped same-day still reaches the shed through the tape's own
+            DROP rows or the end-of-day inventory sweep.
 
 Early sale needs no new market rows: with the V3.1 default r04_sale_fertilizer on,
 the E184 sale window's reserve_sales already advances the tape's planned
@@ -48,7 +48,7 @@ from __future__ import annotations
 _PASS = ["PASS"]
 _COLLECT = ["COLLECT_FERTILIZER"]
 _DROP = ["DROP"]
-_SHED_CAPACITY = 100
+_DEFAULT_SHED_CAPACITY = 100
 
 # Worker-inventory consumers the deliver half must not starve: FERTILIZE takes
 # FERTILIZER, FEED takes WHEAT. (PLACE takes animal items; those are excluded by
@@ -169,19 +169,21 @@ def _strict_inventory_total(inventory):
     return total
 
 
-def _drop_capacity_safe(observation, positions, inventories, commands, candidates):
-    """Prove parent DROPs plus all proposed DROPs fit the canonical shed.
+def _drop_capacity_safe(observation, positions, inventories, commands, candidates, shed_capacity):
+    """Prove parent DROPs plus all proposed DROPs fit the configured shed.
 
     PICKUP actions are intentionally ignored: treating their shed release as zero is
     conservative. Existing DROP cargo is included even when its worker might fail to
     reach the shed, so a new DROP can never consume capacity a parent DROP may need.
     """
     try:
+        if type(shed_capacity) is not int or shed_capacity < 0:
+            return False
         private = observation.get("private")
         if not isinstance(private, dict):
             return False
         shed_total = _strict_inventory_total(private.get("shed"))
-        if shed_total is None or shed_total > _SHED_CAPACITY:
+        if shed_total is None or shed_total > shed_capacity:
             return False
         if not isinstance(inventories, list) or len(commands) > len(positions):
             return False
@@ -196,25 +198,26 @@ def _drop_capacity_safe(observation, positions, inventories, commands, candidate
             if cargo is None:
                 return False
             cargo_total += cargo
-        return shed_total + cargo_total <= _SHED_CAPACITY
+        return shed_total + cargo_total <= shed_capacity
     except Exception:
         return False
 
 
-def apply_fert_daily_sweep(observation, action, tape=None):
+def apply_fert_daily_sweep(observation, action, tape=None, shed_capacity=_DEFAULT_SHED_CAPACITY):
     """Rewrite idle workers into fertilizer collection/delivery; never raises.
 
-    Returns the action unchanged when the observation or action is malformed,
-    when nothing qualifies, or when tape is None and no collection applies
-    (the deliver half needs the tape for its inventory-work guard).
+    ``shed_capacity`` must be the exact integer capacity the engine will use for
+    this game. Returns the action unchanged when capacity/observation/action is
+    malformed, when nothing qualifies, or when tape is None and no collection
+    applies (the deliver half needs the tape for its inventory-work guard).
     """
     try:
-        return _apply(observation, action, tape)
+        return _apply(observation, action, tape, shed_capacity)
     except Exception:
         return action
 
 
-def _apply(observation, action, tape):
+def _apply(observation, action, tape, shed_capacity):
     try:
         step = int(observation["step"])
     except Exception:
@@ -285,7 +288,7 @@ def _apply(observation, action, tape):
         drop_candidates.append(index)
 
     if drop_candidates:
-        if _drop_capacity_safe(observation, positions, inventories, commands, drop_candidates):
+        if _drop_capacity_safe(observation, positions, inventories, commands, drop_candidates, shed_capacity):
             for index in drop_candidates:
                 new_commands[index] = list(_DROP)
             report["dropped"] += len(drop_candidates)
