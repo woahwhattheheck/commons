@@ -72,8 +72,14 @@ def source_files():
     mapping['checks/reference/weed-continuation/spruce-native.json.gz']='reference/weed-continuation/spruce-native.json.gz'
     mapping['checks/test_seed_retry.py']='../cloud-committed-seed-retry/test_seed_retry.py'
     for name in ('reference/historical/seed_budget-before-derived-cache.py','reference/engine/kaggriculture.py','reference/engine/kaggriculture.json',
-                 'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py','reference/evaluator/loader.py'):
+                 'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py',
+                 'reference/evaluator/loader.py','reference/evaluator/opponents.py'):
         mapping['checks/'+name]=name
+    # The vendored evaluator keeps its original adjacent offline-agent layout in
+    # its default loader and compact-ablation paths. Preserve those references
+    # inside the standalone archive by aliasing already-vendored exact sources.
+    mapping['checks/reference/20260907-offline-agent/evaluate.py']='reference/evaluator/loader.py'
+    mapping['checks/reference/20260907-offline-agent/main.py']='reference/evaluator/official_agent.py'
     return mapping
 
 
