@@ -37,6 +37,7 @@ jobs:
           import os
           import subprocess
 
+          compiler_fix_parent = '88e070511634b4380043559694b6664cee9cb909'
           reviewed_parent = '4403d361bc9769e09d12a59d732ea12861d0b2b7'
           source_parent = '69b07cf42d3111469e8523f84efd9014cc30c0a9'
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
@@ -46,24 +47,37 @@ jobs:
           assert head == os.environ['EXPECTED_HEAD'], (
               head, os.environ['EXPECTED_HEAD'])
           assert subprocess.check_output(
-              ['git', 'rev-parse', 'HEAD^'], text=True).strip() == reviewed_parent
+              ['git', 'rev-parse', 'HEAD^'], text=True).strip() == compiler_fix_parent
           assert subprocess.check_output(
-              ['git', 'rev-parse', 'HEAD^^'], text=True).strip() == source_parent
+              ['git', 'rev-parse', 'HEAD^^'], text=True).strip() == reviewed_parent
+          assert subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD^^^'], text=True).strip() == source_parent
 
           parent_source = subprocess.check_output(
               ['git', 'rev-parse', f'{source_parent}:{source}'], text=True).strip()
           assert parent_source == predecessor, (parent_source, predecessor)
 
-          child_allowed = {
+          compiler_child_allowed = {
+              '.github/workflows/titan-v3-post-unit-seed-demand.yml',
+              '.github/workflows/titan-v3-early-capital-real-target.yml',
+          }
+          compiler_child_changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', compiler_fix_parent, head],
+              text=True,
+          ).splitlines())
+          assert compiler_child_changed == compiler_child_allowed, (
+              compiler_child_changed, compiler_child_allowed)
+
+          repair_allowed = {
               '.github/workflows/titan-v3-post-unit-seed-demand.yml',
               '.github/workflows/titan-v3-early-capital-real-target.yml',
               'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
           }
-          child_changed = set(subprocess.check_output(
+          repair_changed = set(subprocess.check_output(
               ['git', 'diff', '--name-only', reviewed_parent, head],
               text=True,
           ).splitlines())
-          assert child_changed == child_allowed, (child_changed, child_allowed)
+          assert repair_changed == repair_allowed, (repair_changed, repair_allowed)
 
           stack_allowed = {
               '.github/workflows/titan-v3-post-unit-seed-demand.yml',
@@ -80,9 +94,11 @@ jobs:
           assert stack_changed == stack_allowed, (stack_changed, stack_allowed)
           print({
               'head': head,
+              'compiler_fix_parent': compiler_fix_parent,
               'reviewed_parent': reviewed_parent,
               'source_parent': source_parent,
-              'child_changed': sorted(child_changed),
+              'compiler_child_changed': sorted(compiler_child_changed),
+              'repair_changed': sorted(repair_changed),
               'stack_changed': sorted(stack_changed),
           })
 
@@ -107,17 +123,22 @@ jobs:
               ).hexdigest()
               assert actual == expected_blob, (path, actual, expected_blob)
 
-      - name: Compile inherited and commit-real contracts
+      - name: Compile inherited and commit-real contracts without bytecode
         working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: python
         run: |
-          set -euo pipefail
-          PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile \
-            early_capital.py \
-            test_early_capital.py \
-            test_early_capital_executable_prefix.py \
-            test_early_capital_post_unit_seed_demand.py \
-            test_early_capital_real_target.py \
-            test_early_capital_commit_real.py
+          from pathlib import Path
+
+          for name in (
+              'early_capital.py',
+              'test_early_capital.py',
+              'test_early_capital_executable_prefix.py',
+              'test_early_capital_post_unit_seed_demand.py',
+              'test_early_capital_real_target.py',
+              'test_early_capital_commit_real.py',
+          ):
+              text = Path(name).read_text(encoding='utf-8')
+              compile(text, name, 'exec')
 
       - name: Execute complete early-capital contract stack
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -180,6 +201,7 @@ jobs:
               'expected_head': os.environ['EXPECTED_HEAD'],
               'source_parent': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
               'reviewed_parent': '4403d361bc9769e09d12a59d732ea12861d0b2b7',
+              'compiler_fix_parent': '88e070511634b4380043559694b6664cee9cb909',
               'parent_source_blob':
                   '21c4ac15583e45f6f55ef615d95fc3db93637194',
               'files': files,
@@ -187,8 +209,9 @@ jobs:
               'scope': (
                   'commit-real capital certificate after guaranteed funding '
                   'and operating costs; exact land/animal resource allocation; '
-                  'stale source-pin custody repaired; canonical repackaging and '
-                  'games remain T08 custody'
+                  'stale source-pin custody repaired; compile is in-memory so '
+                  'strict clean-checkout proof remains meaningful; canonical '
+                  'repackaging and games remain T08 custody'
               ),
           }
           assert receipt['head'] == receipt['expected_head']
