@@ -8,7 +8,7 @@ import io
 import json
 import os
 
-KEYS = ("r04_place_delivery", "r04_goose_pass_rescue")
+KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_s1_fert_sweep")
 
 
 def _replace_once(text, old, new, label):
@@ -32,6 +32,8 @@ def apply(src):
         "GOOSE_RESCUE = False\n"
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
+        "S1_FERT_SWEEP = False\n"
+        "_S1_FERT_SWEEP_AGENT = None\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
     )
@@ -54,7 +56,7 @@ def apply(src):
         router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, s1_fert_sweep=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -64,13 +66,16 @@ def apply(src):
         "    mirror_horizon, terminal_fertilizer and goose_rescue switch the ASTRA lanes B11, B9 and H3c,\n"
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
-        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n",
+        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
+        "    s1_fert_sweep adds one hidden-index late-day hand on days 4-23 for bounded animal\n"
+        "    fertilizer collection after the parent's authored HIRE/COLLECT obligations are clear.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n"
+        "    global S1_FERT_SWEEP, _S1_FERT_SWEEP_AGENT\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -84,8 +89,15 @@ def apply(src):
         "        PLACE_DELIVERY = bool(place_delivery)\n"
         "    if goose_pass_rescue is not None:\n"
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
+        "    if s1_fert_sweep is not None:\n"
+        "        S1_FERT_SWEEP = bool(s1_fert_sweep)\n"
+        "    if S1_FERT_SWEEP:\n"
+        "        if _S1_FERT_SWEEP_AGENT is None:\n"
+        "            import r04_s1_fert_sweep\n"
+        "            _S1_FERT_SWEEP_AGENT = r04_s1_fert_sweep.wrap(v3_agent, _policy_tape)\n"
+        "        return _S1_FERT_SWEEP_AGENT\n"
         "    return v3_agent\n",
-        "R04 V4 install setters",
+        "R04 V4 install setters and S1 outer wrapper",
     )
     write("r04_full_router.py", router)
 
@@ -95,7 +107,8 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n\n    def __post_init__(self):",
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
-        "    r04_goose_pass_rescue: bool = False\n\n    def __post_init__(self):",
+        "    r04_goose_pass_rescue: bool = False\n"
+        "    r04_s1_fert_sweep: bool = False\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -105,7 +118,8 @@ def apply(src):
         "                                 terminal_fertilizer=bool(self.features.r04_terminal_fertilizer),\n"
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
-        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue))(observation, configuration)\n",
+        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
+        "                                 s1_fert_sweep=bool(self.features.r04_s1_fert_sweep))(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -113,7 +127,8 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n",
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
-        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n",
+        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
+        "                self.diagnostics['s1_fert_sweep'] = bool(self.features.r04_s1_fert_sweep)\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
