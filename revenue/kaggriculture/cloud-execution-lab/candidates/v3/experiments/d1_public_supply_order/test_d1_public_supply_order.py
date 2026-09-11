@@ -21,6 +21,14 @@ class Poison:
         raise AssertionError(f"private state must not be read: {key}")
 
 
+class DictLikeConfiguration:
+    def __init__(self, values=None):
+        self.values = dict(values or {})
+
+    def get(self, key, default=None):
+        return self.values.get(key, default)
+
+
 def observation(*tiles, player=0):
     board = [list(tiles)]
     return {
@@ -34,6 +42,14 @@ def observation(*tiles, player=0):
     }
 
 
+def sell_action():
+    return {
+        "farmer": ["PASS"],
+        "hands": [],
+        "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]],
+    }
+
+
 class D1PublicSupplyOrderTest(unittest.TestCase):
     def test_public_signal_uses_only_strict_visible_yield(self):
         obs = observation(
@@ -41,25 +57,55 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
             {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2},
             {"kind": "PLANT", "crop": "MELON", "yield_units": True},
             {"kind": "PLANT", "crop": "CARROT", "yield_units": "4"},
+            {"kind": "PLANT", "crop": "NOT_A_PRODUCT", "yield_units": 8},
             {"kind": "WEED", "yield_units": 9},
         )
         self.assertEqual(public_rival_supply(obs), {"STRAWBERRY": 3, "WOOL": 2})
 
     def test_disabled_is_exact_parent_identity(self):
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
+        action = sell_action()
         self.assertIs(apply_public_supply_order(observation(), action, enabled=False), action)
 
     def test_no_signal_is_exact_parent_identity(self):
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
+        action = sell_action()
         self.assertIs(apply_public_supply_order(observation(None), action), action)
 
     def test_custom_market_params_fail_closed(self):
         obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2})
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
-        self.assertIs(
-            apply_public_supply_order(obs, action, {"marketParams": {"WOOL": {"base": 999}}}),
-            action,
-        )
+        action = sell_action()
+        for configuration in (
+            {"marketParams": {"WOOL": {"base": 999}}},
+            DictLikeConfiguration({"marketParams": {"WOOL": {"base": 999}}}),
+        ):
+            with self.subTest(configuration=configuration):
+                self.assertIs(apply_public_supply_order(obs, action, configuration), action)
+
+    def test_falsey_malformed_market_params_and_non_mapping_config_fail_closed(self):
+        obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2})
+        for malformed in (False, 0, [], ""):
+            with self.subTest(marketParams=malformed):
+                action = sell_action()
+                self.assertIs(
+                    apply_public_supply_order(obs, action, {"marketParams": malformed}),
+                    action,
+                )
+        action = sell_action()
+        self.assertIs(apply_public_supply_order(obs, action, object()), action)
+
+    def test_missing_none_or_empty_market_params_preserve_default_contract(self):
+        obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2})
+        for configuration in (
+            None,
+            {},
+            {"marketParams": None},
+            {"marketParams": {}},
+            DictLikeConfiguration(),
+            DictLikeConfiguration({"marketParams": {}}),
+        ):
+            with self.subTest(configuration=configuration):
+                action = sell_action()
+                changed = apply_public_supply_order(obs, action, configuration)
+                self.assertEqual(changed["market"], [action["market"][1], action["market"][0]])
 
     def test_stable_promote_pressured_rows_only_inside_leading_sell_block(self):
         milk = ["SELL", "MILK", 4]
@@ -110,16 +156,44 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 3})
         self.assertIs(apply_public_supply_order(obs, action), action)
 
-    def test_noninteger_sell_quantity_terminates_leading_eligible_block(self):
-        milk = ["SELL", "MILK", 2]
-        malformed = ["SELL", "WOOL", "7"]
-        strawberry = ["SELL", "STRAWBERRY", 4]
-        action = {"farmer": ["PASS"], "hands": [], "market": [milk, malformed, strawberry]}
-        obs = observation({"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 4})
-        self.assertIs(apply_public_supply_order(obs, action), action)
+    def test_malformed_literal_sell_prefix_is_exact_parent_identity(self):
+        obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 4})
+        malformed_rows = (
+            ["SELL", [], 1],
+            ["SELL", "WOOL", "7"],
+            ["SELL", "WOOL", True],
+            ["SELL", "WOOL", 0],
+            ["SELL", "NOT_A_PRODUCT", 3],
+            ["SELL", "WOOL"],
+        )
+        for malformed in malformed_rows:
+            with self.subTest(malformed=malformed):
+                milk = ["SELL", "MILK", 2]
+                strawberry = ["SELL", "STRAWBERRY", 4]
+                action = {
+                    "farmer": ["PASS"],
+                    "hands": [],
+                    "market": [milk, strawberry, malformed],
+                }
+                before = copy.deepcopy(action)
+                result = apply_public_supply_order(obs, action)
+                self.assertIs(result, action)
+                self.assertEqual(action, before)
+
+    def test_non_sell_row_ends_leading_block_without_touching_tail(self):
+        wool = ["SELL", "WOOL", 2]
+        milk = ["SELL", "MILK", 4]
+        hire = ["HIRE"]
+        malformed_tail = ["SELL", [], 1]
+        action = {"farmer": ["PASS"], "hands": [], "market": [milk, wool, hire, malformed_tail]}
+        obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 3})
+        changed = apply_public_supply_order(obs, action)
+        self.assertEqual(changed["market"], [wool, milk, hire, malformed_tail])
+        self.assertIs(changed["market"][2], hire)
+        self.assertIs(changed["market"][3], malformed_tail)
 
     def test_wrong_farm_shape_fails_closed(self):
-        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2], ["SELL", "WOOL", 2]]}
+        action = sell_action()
         for obs in ({}, {"player": 0, "farms": []}, {"player": True, "farms": [{}, {}]}):
             with self.subTest(obs=obs):
                 self.assertIs(apply_public_supply_order(obs, action), action)
