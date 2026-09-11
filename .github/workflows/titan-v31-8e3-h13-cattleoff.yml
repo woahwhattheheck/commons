@@ -42,7 +42,7 @@ jobs:
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          test "$(git hash-object "$DIR/run_current_stack.py")" = '65a359c489f22bde56d7b09082e02939644de197'
+          test "$(git hash-object "$DIR/run_current_stack.py")" = 'bd1639fab21d8bd26673c127713703f65c660ada'
           test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
 
@@ -76,7 +76,7 @@ jobs:
           done
           git diff --check "$STACK...HEAD"
 
-      - name: Prove strict native receipt and paired H8 baseline before spend
+      - name: Prove strict native receipt, actual fingerprints, and paired H8 baseline before spend
         shell: bash
         run: |
           set -euo pipefail
@@ -163,8 +163,51 @@ jobs:
           rejects('incomplete', lambda r: r['games'][0].__setitem__('status', 'error'))
           rejects('truthy-repro', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
           rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'bad'))
+
+          # Internal candidate/opponent equality is not enough: bind fingerprints to
+          # the materialized entry bytes and pinned Arlene source, then poison both
+          # sides together with another syntactically-valid digest.
+          actual_main = 'b' * 64
+          control = copy.deepcopy(valid)
+          candidate = copy.deepcopy(valid)
+          for report in (control, candidate):
+              report['candidate']['sha256'] = actual_main
+              report['opponents']['h8_self']['sha256'] = actual_main
+              report['opponents']['arlene']['sha256'] = m.ARLENE_SHA256
+          materialization = {
+              'h8_main_sha256': actual_main,
+              'h10_main_sha256': actual_main,
+              'arlene_sha256': m.ARLENE_SHA256,
+          }
+          m.validate_actual_fingerprint_custody(control, candidate, materialization)
+
+          substituted_control = copy.deepcopy(control)
+          substituted_candidate = copy.deepcopy(candidate)
+          fake = 'd' * 64
+          for report in (substituted_control, substituted_candidate):
+              report['candidate']['sha256'] = fake
+              report['opponents']['h8_self']['sha256'] = fake
+          try:
+              m.validate_actual_fingerprint_custody(
+                  substituted_control, substituted_candidate, materialization
+              )
+          except AssertionError:
+              pass
+          else:
+              raise AssertionError('internally-consistent substituted candidate/self fingerprints accepted')
+
+          substituted_arlene = copy.deepcopy(candidate)
+          substituted_arlene['opponents']['arlene']['sha256'] = 'e' * 64
+          try:
+              m.validate_actual_fingerprint_custody(control, substituted_arlene, materialization)
+          except AssertionError:
+              pass
+          else:
+              raise AssertionError('substituted Arlene fingerprint accepted')
+
           print('H13_8E3_RECEIPT_POISONS_OK', len(m.expected_keys()))
           print('H13_8E3_NONZERO_H8_BASELINE_PAIRED_OK', raw_self_margins[0])
+          print('H13_8E3_ACTUAL_FINGERPRINT_CUSTODY_POISONS_OK')
           PY
           test -z "$(git status --porcelain)"
 
