@@ -1,0 +1,101 @@
+name: Astra Sidewalk manifest refresh
+
+on:
+  push:
+    branches:
+      - astra/sidewalk-manifest-refresh-20260911-0126
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+
+      - name: Reproduce stale generated state
+        shell: bash
+        run: |
+          set +e
+          python3 test_business_pack_desk_instance.py >/tmp/pre-refresh.txt 2>&1
+          code=$?
+          set -e
+          cat /tmp/pre-refresh.txt
+          echo "pre_refresh_exit=$code"
+          if [ "$code" -eq 0 ]; then
+            echo "Expected stale-manifest regression is no longer present; refusing unnecessary rewrite."
+            exit 64
+          fi
+
+      - name: Canonical generated refresh
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 host/business_pack_desk_instance.py --write
+          echo "Generated diff:"
+          git diff --name-only
+          bad="$(git diff --name-only | grep -Ev '^(packs/sidewalk-signal-web-desk-20260902-01/(manifest\.json|index\.html))$' || true)"
+          if [ -n "$bad" ]; then
+            echo "Unexpected generated paths:"
+            echo "$bad"
+            exit 65
+          fi
+          test -n "$(git diff --name-only)"
+
+      - name: Focused validation and policy invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 test_business_pack_desk_instance.py
+          python3 -m py_compile host/business_pack_desk_instance.py test_business_pack_desk_instance.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('packs/sidewalk-signal-web-desk-20260902-01/manifest.json')
+          m = json.loads(p.read_text(encoding='utf-8'))
+          c = m['checkout']
+          assert c['state'] == 'OWNER_PASTE_REQUIRED'
+          assert c['status'] == 'NOT_MINTED'
+          assert c['url'] == ''
+          assert m['marketing'] == 'bryce_only'
+          assert m['marketing_spend_usd'] == 0
+          assert m['cash_usd'] == 0
+          assert m['buyers_invented'] is False
+          assert m['leads_included'] is False
+          assert m['customers_provided'] is False
+          assert m['earnings_claims'] is False
+          assert m['gate'] is False and m['requires_login'] is False and m['open_door'] is True
+          assert m['demand_id'] == 'scout-demand-desk-website-service-pack-20260902-01'
+          assert m['did_not_remint_scout_demand'] is True
+          assert m['sell_instance_verdict'] == 'UNIQUE_INSTANCE_SELL_OK'
+          assert m['twin_sale_verdict'] == 'CLONE_STAMP'
+          assert m['terms_verdict'] == 'TOS_INCOMPLETE'
+          assert m['saleable'] is False
+          print('policy_invariants=PASS')
+          PY
+
+      - name: Publish generated repair and self-delete runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "astra-commons"
+          git config user.email "astra-commons@users.noreply.github.com"
+          git add packs/sidewalk-signal-web-desk-20260902-01/manifest.json
+          if ! git diff --quiet -- packs/sidewalk-signal-web-desk-20260902-01/index.html; then
+            git add packs/sidewalk-signal-web-desk-20260902-01/index.html
+          fi
+          git rm .github/workflows/astra-sidewalk-manifest-refresh-20260911.yml
+          echo "Staged paths:"
+          git diff --cached --name-only
+          bad="$(git diff --cached --name-only | grep -Ev '^(\.github/workflows/astra-sidewalk-manifest-refresh-20260911\.yml|packs/sidewalk-signal-web-desk-20260902-01/(manifest\.json|index\.html))$' || true)"
+          if [ -n "$bad" ]; then
+            echo "Unexpected staged paths:"
+            echo "$bad"
+            exit 66
+          fi
+          git commit -m "Repair Sidewalk generated manifest after compatible pack drift"
+          git push origin HEAD:${{ github.ref_name }}
