@@ -19,6 +19,7 @@ _PRODUCT_BY_ANIMAL = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
 _MAX_PREBUY = 2
 _CASH_RESERVE = 1000
 _PRICE_PAD = 10
+_MISSING = object()
 
 REPORT = {"probes": 0, "armed": 0, "units_requested": 0,
           "baseline_rescue": 0, "no_proxy_rescue": 0}
@@ -38,26 +39,37 @@ def _finite_nonnegative_number(value):
     )
 
 
+def _cfg(configuration, key, default=_MISSING):
+    """Read a public config field from mapping or Kaggle Struct shape."""
+    if configuration is None:
+        return default
+    try:
+        if isinstance(configuration, dict):
+            return configuration.get(key, default)
+        return getattr(configuration, key, default)
+    except Exception:
+        return default
+
+
 def _config_ok(configuration, r04):
     """Require the exact standard geometry/timing/capacity contract V217 assumes."""
     if configuration is None:
-        return True
-    if not isinstance(configuration, dict):
         return False
     expected = {
+        "episodeSteps": 720,
         "boardSize": 10,
         "turnsPerDay": 24,
         "shedCapacity": int(r04.SHED_CAPACITY),
         "maxMarketOrdersPerTurn": int(r04.MAX_ORDERS),
     }
-    for key, default in expected.items():
-        value = configuration.get(key, default)
-        if type(value) is not int or value != default:
+    for key, expected_value in expected.items():
+        value = _cfg(configuration, key)
+        if value is _MISSING or type(value) is not int or value != expected_value:
             return False
-    market_params = configuration.get("marketParams")
-    if market_params is not None and not isinstance(market_params, dict):
-        return False
-    return not market_params
+    market_params = _cfg(configuration, "marketParams", None)
+    if market_params is None:
+        return True
+    return isinstance(market_params, dict) and not market_params
 
 
 def _all_pass(observation, action):
