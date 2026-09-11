@@ -144,6 +144,50 @@ class RuntimeTransformTests(unittest.TestCase):
         self.assertEqual(positive, [])
         self.assertEqual(disposition, "REJECT_SUPPRESSION_PROVENANCE_MISMATCH")
 
+    def test_hour23_place_cannot_be_injected_or_certified_from_eod_reset(self):
+        rows = tape()
+        rows[224]["farmer"] = ["PASS"]
+        rows[239]["farmer"] = ["PLACE", "SHEEP", 1]
+        spec = b4.build_chain_spec(rows, 9)
+        self.assertTrue(spec["static_safe"])
+        place = spec["events"][-1]
+        self.assertEqual(place["kind"], "place")
+        self.assertEqual(place["target_step"], 215)
+        self.assertEqual(place["target_step"] % b4.TURNS_PER_DAY, 23)
+
+        runtime = b4.ShiftRuntime(spec)
+        runtime.enabled = True
+        for prior in spec["events"][:-1]:
+            runtime.success[prior["id"]] = True
+        parent = blank_action()
+        shifted, pending = runtime.transform(parent, observation(), 0, place["target_step"])
+        self.assertEqual(shifted, parent)
+        self.assertEqual(pending, [])
+        self.assertFalse(runtime.success[place["id"]])
+        self.assertEqual(runtime.attempts[-1]["result"], "runtime-eod-place-unverifiable")
+
+        # Defensive killer for the original false-positive shape: EOD can empty
+        # actor cargo while a matching same-day SHEEP tile already exists. Even if
+        # a stale/manual pending record reaches observe(), this must remain false.
+        before = {
+            "sheep_total": 1,
+            "actor_sheep": 1,
+            "position": (0, 0),
+            "money": 100,
+            "shed_total": 0,
+            "shops": ["YARN_STORE"],
+        }
+        after = observation()
+        after["private"]["inventories"][0]["SHEEP"] = 0
+        after["farms"][0]["tiles"][0][0] = {
+            "kind": "PASTURE",
+            "animal": "SHEEP",
+            "placed_day": place["target_step"] // b4.TURNS_PER_DAY,
+        }
+        runtime.success.pop(place["id"], None)
+        runtime.observe([(place, before)], after, 0, place["target_step"])
+        self.assertFalse(runtime.success[place["id"]])
+
 
 if __name__ == "__main__":
     unittest.main()
