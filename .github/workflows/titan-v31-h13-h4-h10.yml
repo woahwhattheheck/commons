@@ -1,0 +1,30 @@
+name: titan-v31-h13-h4-h10
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+      - '.github/workflows/titan-v31-h13-h4-h10.yml'
+  workflow_dispatch:
+
+jobs:
+  focused-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Compile exact interaction sources
+        run: |
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/test_candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/r04_h4_strawberry.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+      - name: Run focused H4 horizon10 contract
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10
+        run: python -B -m unittest -v test_candidate.py
+      - name: Require clean checkout
+        run: git diff --exit-code
