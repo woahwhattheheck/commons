@@ -124,6 +124,32 @@ class T(unittest.TestCase):
         a(obs(step=716), {"episodeSteps": 719, "turnsPerDay": 24})
         self.assertEqual(a(obs(step=718), STANDARD)["market"], calls[718]["market"])
 
+    def test_invalid_timing_clears_existing_collection_provenance(self):
+        calls = {
+            716: {"farmer": ["PASS"], "hands": [], "market": []},
+            717: {"farmer": ["PASS"], "hands": [], "market": []},
+            718: {
+                "farmer": ["PASS"],
+                "hands": [],
+                "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+            },
+        }
+
+        def parent(o, _cfg=None):
+            return copy.deepcopy(calls[o["step"]])
+
+        bad_configs = (
+            {"episodeSteps": 719, "turnsPerDay": 24},
+            {},
+            None,
+        )
+        for config in bad_configs:
+            with self.subTest(config=config):
+                a = make_agent(parent)
+                self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
+                a(obs(step=717), config)
+                self.assertEqual(a(obs(step=718), STANDARD)["market"], calls[718]["market"])
+
     def test_trails_only_after_collection(self):
         terminal = {
             "farmer": ["PASS"],
