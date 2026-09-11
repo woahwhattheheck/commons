@@ -161,6 +161,42 @@ class H3bContracts(unittest.TestCase):
         self.assertIs(result, action)
         self.assertEqual(state["work"][1]["command"], ["CARE"])
 
+    def test_hour23_distance_one_declines_unrealizable_rescue(self):
+        action, observation, state = fixture(step=18 * 24 + 23, position=(5, 5))
+        result = self.run_case(action, observation, state)
+        self.assertIs(result, action)
+        self.assertEqual(result["hands"][0], ["HARVEST"])
+        self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
+    def test_hour22_distance_one_has_move_then_harvest_budget(self):
+        action, observation, state = fixture(step=18 * 24 + 22, position=(5, 5))
+        result = self.run_case(action, observation, state)
+        self.assertIsNot(result, action)
+        self.assertEqual(result["hands"][0], ["EAST"])
+        self.assertEqual(state["work"][1]["command"], ["EAST"])
+
+        next_action, next_observation, next_state = fixture(step=18 * 24 + 23, position=(6, 5))
+        next_result = self.run_case(next_action, next_observation, next_state)
+        self.assertIs(next_result, next_action)
+        self.assertEqual(next_result["hands"][0], ["HARVEST"])
+
+    def test_hour23_on_urgent_target_preserves_harvest(self):
+        action, observation, state = fixture(step=18 * 24 + 23, position=(6, 5))
+        result = self.run_case(action, observation, state)
+        self.assertIs(result, action)
+        self.assertEqual(result["hands"][0], ["HARVEST"])
+
+    def test_unreachable_higher_overflow_does_not_outrank_reachable_lower_overflow(self):
+        action, observation, state = fixture(step=18 * 24 + 23, position=(5, 5))
+        observation["farms"][0]["tiles"][5][5]["yield_units"] = 6
+        observation["farms"][0]["tiles"][5][5]["pending_care_bonus"] = 0
+        observation["farms"][0]["tiles"][5][6]["yield_units"] = 6
+        observation["farms"][0]["tiles"][5][6]["pending_care_bonus"] = 3
+        result = self.run_case(action, observation, state)
+        self.assertIs(result, action)
+        self.assertEqual(result["hands"][0], ["HARVEST"])
+        self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_final_day_is_identity(self):
         action, observation, state = fixture(step=29 * 24 + 10)
         state["last_step"] = observation["step"]
