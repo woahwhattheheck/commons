@@ -43,6 +43,7 @@ PARAMS = {
     "r04_strawberry_topup": True,
     "r04_b5_carrot_fertilizer": True,
     "r04_b5_jit_fertilize": True,
+    "r04_row_shed": True,
 }
 
 FIELDS = (
@@ -85,6 +86,7 @@ FIELDS = (
     "    r04_strawberry_topup: bool = True\n"
     "    r04_b5_carrot_fertilizer: bool = True\n"
     "    r04_b5_jit_fertilize: bool = True\n"
+    "    r04_row_shed: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -213,7 +215,8 @@ RUNTIME_METHODS = (
     "                                 int(self.features.r04_no_late_sale_advance_step),\n"
     "                                 bool(self.features.r04_strawberry_topup),\n"
     "                                 bool(self.features.r04_b5_carrot_fertilizer),\n"
-    "                                 bool(self.features.r04_b5_jit_fertilize))(observation, configuration)\n"
+    "                                 bool(self.features.r04_b5_jit_fertilize),\n"
+    "                                 bool(self.features.r04_row_shed))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -228,6 +231,7 @@ RUNTIME_METHODS = (
     "                self.diagnostics['strawberry_topup'] = bool(self.features.r04_strawberry_topup)\n"
     "                self.diagnostics['b5_carrot_fertilizer'] = bool(self.features.r04_b5_carrot_fertilizer)\n"
     "                self.diagnostics['b5_jit_fertilize'] = bool(self.features.r04_b5_jit_fertilize)\n"
+    "                self.diagnostics['row_shed'] = bool(self.features.r04_row_shed)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -441,6 +445,14 @@ RELEASE_NOTE = (
 "(overlay/jit_pass_fertilize.py, #12428 verbatim). Applied last in v3_agent(). Shipping\n"
 "evidence on the same 41 live games, against the V3.1 package with H4 and gated L3: +106.0\n"
 "margin per game, better in all 41. Checks: `checks/test_v31_b5_fertilize.py`.\n"
+"\n"
+"Key `r04_row_shed` (V3.1, shipped on; from the Gemini endgame lane): ROW_ORDER prices each\n"
+"leading SELL row at min(order quantity, projected shed stock) instead of the order quantity,\n"
+"so a tape row asking for more units than the shed holds is ranked by the units it can sell.\n"
+"Field gate (official reference evaluator, 30 v25 shards x 32 seeds x both seats, 1,920 games\n"
+"against 16 published agents), the a6120d0e R04 modules with r04_cattle_early off: +281.4 margin\n"
+"per game, better in 1,912 of 1,920 games, 1911 W / 9 L against 1908 W / 2 T / 10 L without it.\n"
+"Checks: `checks/test_v31_row_shed.py`.\n"
 )
 
 

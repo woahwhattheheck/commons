@@ -55,6 +55,7 @@ def reset():
     r04.B5_CARROT_FERTILIZER = False
     r04.B5_JIT_FERTILIZE = False
     r04.STRAWBERRY_TOPUP = False
+    r04.ROW_SHED = False
     r04.NO_LATE_SALE_ADVANCE = False
     r04.SALE_HORIZON = 8
     r04.OPEN_ROUNDTRIP = 0

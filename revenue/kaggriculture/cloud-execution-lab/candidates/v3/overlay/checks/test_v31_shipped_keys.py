@@ -45,6 +45,7 @@ def reset():
     r04.NO_LATE_SALE_ADVANCE = False
     r04.NO_LATE_SALE_ADVANCE_STEP = 648
     r04.STRAWBERRY_TOPUP = False
+    r04.ROW_SHED = False
     r04.SALE_HORIZON = 8
     r04.OPEN_ROUNDTRIP = 0
     r04.ROW_ORDER = False
