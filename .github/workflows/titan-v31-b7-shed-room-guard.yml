@@ -2,8 +2,6 @@ name: titan-v31-b7-shed-room-guard
 
 on:
   pull_request:
-    branches:
-      - 'titan/v3.1-20260911'
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py'
@@ -23,18 +21,66 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Checkout exact event revision
+      - name: Checkout literal event head with full history
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+
+      - name: Bind frozen stack, repaired parent, exact scope, and reviewed bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          FROZEN='508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          REPAIRED_PARENT='2220a247a4471767a14becebf70546602286834b'
+          WORKFLOW='.github/workflows/titan-v31-b7-shed-room-guard.yml'
+          SOURCE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py'
+          TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py'
+          CANDIDATE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/candidate.py'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$FROZEN" HEAD)" = "$FROZEN"
+          test "$(git merge-base "$REPAIRED_PARENT" HEAD)" = "$REPAIRED_PARENT"
+
+          test "$(git hash-object "$SOURCE")" = 'a27da659884c0f9a9594cbd9332b5edb4d7f3307'
+          test "$(git hash-object "$TEST")" = '406962b66cefbd5e2d6399da94e80df599aee0cc'
+          test "$(git hash-object "$CANDIDATE")" = 'aeec4bb5f52f971cff376f8aae21edec3ad77c3a'
+          test "$(git hash-object "$R04")" = '21c4f1db0298f8955b1f5ad366bd780a89cad206'
+
+          python3 - <<'PY'
+          import subprocess
+
+          frozen = '508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          parent = '2220a247a4471767a14becebf70546602286834b'
+          workflow = '.github/workflows/titan-v31-b7-shed-room-guard.yml'
+          expected_stack = {
+              workflow,
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/candidate.py',
+          }
+          stack = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{frozen}...HEAD'], text=True
+          ).splitlines())
+          if stack != expected_stack:
+              raise SystemExit(f'wrong frozen->HEAD B7 scope: {sorted(stack)!r}')
+
+          child = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{parent}...HEAD'], text=True
+          ).splitlines())
+          if child != {workflow}:
+              raise SystemExit(f'wrong repaired-parent->HEAD child scope: {sorted(child)!r}')
+          print('B7 EXACT TOPOLOGY OK')
+          PY
 
       - name: Compile in memory and run focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
         shell: bash
         run: |
           set -euo pipefail
-          python -B - <<'PY'
+          python3 -B - <<'PY'
           from pathlib import Path
           for name in (
               'b7_shed_room_guard.py',
@@ -45,14 +91,14 @@ jobs:
               compile(path.read_text(encoding='utf-8'), str(path), 'exec')
           print('B7 COMPILE OK')
           PY
-          python -B -m unittest -v test_b7_shed_room_guard.py
+          python3 -B -m unittest -v test_b7_shed_room_guard.py
 
       - name: Bind engine theorem and candidate custody
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
           set -euo pipefail
-          python -B - <<'PY'
+          python3 -B - <<'PY'
           import hashlib
           import importlib.util
           from pathlib import Path
@@ -87,20 +133,6 @@ jobs:
           assert not any(name.startswith('experiments/') for name in build_v3.source_shas())
           print('B7 CUSTODY OK', engine_sha)
           PY
-
-      - name: Prove exact experiment-only PR scope
-        if: github.event_name == 'pull_request'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > /tmp/b7-changed
-          cat /tmp/b7-changed
-          while IFS= read -r path; do
-            case "$path" in
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/*|.github/workflows/titan-v31-b7-shed-room-guard.yml) ;;
-              *) echo "unexpected path in B7 room guard: $path" >&2; exit 1 ;;
-            esac
-          done < /tmp/b7-changed
 
       - name: Prove checkout stayed clean
         shell: bash
