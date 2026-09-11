@@ -3,8 +3,8 @@
 
 This module is intentionally outside ``overlay/**`` and does not change V3.1
 package inputs or defaults. It arms the exact #12377 L3 seam, but permits the
-late ``reserve_sales()`` suppression only when recent public market inventory
-transitions do *not* prove positive rival net supply.
+late ``reserve_sales()`` suppression only when a complete recent public market
+window does *not* prove positive rival net supply.
 
 For product p between our calls t and t+1, the official engine gives:
 
@@ -20,8 +20,8 @@ is non-negative. A positive lower bound proves rival net supply using only
 public market/town state plus our own previous action. In that case the gate
 keeps E184's normal reservation behavior; otherwise L3 may suppress it.
 
-The first observation, gaps/rewinds, malformed state, and unknown shops all fail
-closed to baseline E184 behavior.
+The first observation, incomplete lookback windows, gaps/rewinds, malformed
+state, and unknown shops all fail closed to baseline E184 behavior.
 """
 
 from __future__ import annotations
@@ -63,11 +63,17 @@ def _get(value: Any, key: str, default: Any = None) -> Any:
     return getattr(value, key, default)
 
 
+def _exact_int(value: Any, label: str, *, minimum: int | None = None) -> int:
+    """Accept only canonical Python integer scalars; bool/float/string fail closed."""
+    if type(value) is not int:
+        raise ValueError(f"{label} must be an integer")
+    if minimum is not None and value < minimum:
+        raise ValueError(f"{label} must be >= {minimum}")
+    return value
+
+
 def _nonnegative_int(value: Any) -> int:
-    number = int(value)
-    if number < 0:
-        raise ValueError("negative public market inventory")
-    return number
+    return _exact_int(value, "public market inventory", minimum=0)
 
 
 def _market_inventory(observation: Mapping[str, Any]) -> dict[str, int]:
@@ -80,11 +86,13 @@ def _market_inventory(observation: Mapping[str, Any]) -> dict[str, int]:
 
 def _town_consumption(observation: Mapping[str, Any], configuration: Any = None) -> dict[str, int]:
     """Exact deterministic town demand that follows this step's market phase."""
-    step = int(_get(observation, "step", -1))
-    if step < 0:
-        raise ValueError("invalid step")
-    shop_interval = max(1, int(_get(configuration, "townShopSellInterval", 4)))
-    center_interval = max(1, int(_get(configuration, "townCenterSellInterval", 24)))
+    step = _exact_int(_get(observation, "step", -1), "step", minimum=0)
+    shop_interval = _exact_int(
+        _get(configuration, "townShopSellInterval", 4), "townShopSellInterval", minimum=1
+    )
+    center_interval = _exact_int(
+        _get(configuration, "townCenterSellInterval", 24), "townCenterSellInterval", minimum=1
+    )
     consume = {item: 0 for item in PRODUCTS}
     town = _get(observation, "town", {})
     shops = _get(town, "unlocked_shops", [])
@@ -120,9 +128,7 @@ def _own_sell_upper_bound(action: Mapping[str, Any]) -> dict[str, int]:
             continue
         if len(order) < 3 or order[1] not in upper:
             raise ValueError("malformed SELL order")
-        quantity = int(order[2])
-        if quantity <= 0:
-            raise ValueError("SELL quantity must be positive")
+        quantity = _exact_int(order[2], "SELL quantity", minimum=1)
         upper[order[1]] += quantity
     return upper
 
@@ -135,17 +141,15 @@ def _rival_supply_lower_bound(
 ) -> dict[str, int]:
     """Conservative per-product lower bound on rival SELL minus rival BUY units."""
     return {
-        item: int(current_inventory[item]) - int(previous_inventory[item])
-        + int(town_consume.get(item, 0)) - int(own_sell_upper.get(item, 0))
+        item: current_inventory[item] - previous_inventory[item]
+        + town_consume.get(item, 0) - own_sell_upper.get(item, 0)
         for item in PRODUCTS
     }
 
 
 class PublicSupplyGate:
     def __init__(self, lookback: int = DEFAULT_LOOKBACK):
-        self.lookback = int(lookback)
-        if self.lookback < 1:
-            raise ValueError("lookback must be positive")
+        self.lookback = _exact_int(lookback, "lookback", minimum=1)
         self.players: dict[int, dict[str, Any]] = {}
         self.last_evidence: dict[int, dict[str, int]] = {}
 
@@ -159,18 +163,16 @@ class PublicSupplyGate:
         }
 
     def begin(self, observation: Mapping[str, Any]) -> bool:
-        """Return whether L3 may suppress at this observation; false is fail-closed."""
+        """Return whether L3 may suppress; false until a full clean window exists."""
         try:
-            step = int(_get(observation, "step", -1))
-            player = int(_get(observation, "player", -1))
+            step = _exact_int(_get(observation, "step", -1), "step", minimum=0)
+            player = _exact_int(_get(observation, "player", -1), "player", minimum=0)
             current = _market_inventory(observation)
-            if step < 0 or player < 0:
-                raise ValueError("invalid step/player")
         except (KeyError, TypeError, ValueError):
             return False
 
         state = self.players.setdefault(player, self._fresh())
-        if state["last_step"] is None or step != int(state["last_step"]) + 1:
+        if state["last_step"] is None or step != state["last_step"] + 1:
             state["pressure"].clear()
             self.last_evidence[player] = {}
             return False
@@ -189,21 +191,24 @@ class PublicSupplyGate:
             return False
         self.last_evidence[player] = lower
         state["pressure"].append(any(value > 0 for value in lower.values()))
-        return not any(state["pressure"])
+        # Unknown history is unsafe history: a partial clean deque cannot prove the
+        # preceding missing transitions were pressure-free. Re-arm L3 only after the
+        # complete configured lookback has been rebuilt and is clean.
+        return len(state["pressure"]) == self.lookback and not any(state["pressure"])
 
     def finish(self, observation: Mapping[str, Any], action: Mapping[str, Any], configuration: Any = None) -> None:
         """Record only public transition inputs and our own requested SELL upper bound."""
+        player = -1
         try:
-            step = int(_get(observation, "step", -1))
-            player = int(_get(observation, "player", -1))
-            if step < 0 or player < 0:
-                raise ValueError("invalid step/player")
+            step = _exact_int(_get(observation, "step", -1), "step", minimum=0)
+            player = _exact_int(_get(observation, "player", -1), "player", minimum=0)
             inventory = _market_inventory(observation)
             own_sell_upper = _own_sell_upper_bound(action)
             town_consume = _town_consumption(observation, configuration)
         except (KeyError, TypeError, ValueError):
-            if player >= 0:
+            if type(player) is int and player >= 0:
                 self.players[player] = self._fresh()
+                self.last_evidence[player] = {}
             return
         state = self.players.setdefault(player, self._fresh())
         state["last_step"] = step
