@@ -12,16 +12,17 @@ replaces only that outer layer:
 * withholding is allowed only when exact own state proves no worker inventory transfer,
   no inventory-producing worker action, and no shed-adding market buy can make the
   retained units change end-of-day shed-overflow behavior;
-* the withheld quantity is attempted at next-day hour 1, after the hour-0 town-center
-  tick, capped by then-current projected stock and the 10-row market limit;
-* existing native/E184 rows are never removed.  If the current action already sells the
-  same item, E7 only tops that row up; otherwise it prepends one row, mirroring the
-  incumbent flush's priority.
+* parent market rows must be explicit list rows with no falsey placeholders; ambiguous raw
+  lockstep-slot semantics fail closed to incumbent evening flush;
+* at next-day hour 1, after the hour-0 town tick, E7 sells at most the withheld quantity
+  still present in projected shed stock. Existing same-item SELL rows are topped up in
+  place; otherwise a new row is appended only when a literal trailing slot is available;
+* existing native/E184 rows are never removed, compacted, reduced, or reindexed.
 
 This is deliberately an experiment, not a theorem that post-tick prices always improve:
 a rival can still trade at hour 0.  Telemetry records the observed pre/post quote delta
 so the paired economics gate can decide the lane.  Unknown/nonstandard configuration or
-unsafe capacity state preserves incumbent evening-flush behavior.
+unsafe capacity/market shape preserves incumbent behavior.
 """
 from __future__ import annotations
 
@@ -60,7 +61,7 @@ def _exact_int(configuration, name, expected):
 
 
 def _standard_configuration(configuration):
-    """Bind only the engine clocks/capacity E7's source proof depends on."""
+    """Bind only the engine clocks/capacity/default market E7's proof depends on."""
     if not _exact_int(configuration, "turnsPerDay", TURNS_PER_DAY):
         return False
     if not _exact_int(configuration, "shedCapacity", SHED_CAPACITY):
@@ -70,7 +71,7 @@ def _standard_configuration(configuration):
     if not _exact_int(configuration, "townCenterSellInterval", TURNS_PER_DAY):
         return False
     market_params = _cfg(configuration, "marketParams", None)
-    return not market_params
+    return market_params is None or (type(market_params) is dict and not market_params)
 
 
 def _strict_step_player(observation):
@@ -84,6 +85,11 @@ def _strict_step_player(observation):
 
 
 def _normalized_market(action):
+    """Return a detached market copy only when raw lockstep slots are unambiguous.
+
+    Falsey placeholders are semantically meaningful raw row indexes in the official
+    market engine, so E7 deliberately refuses to normalize/compact them.
+    """
     if not isinstance(action, dict):
         return None
     raw = action.get("market", [])
@@ -91,9 +97,7 @@ def _normalized_market(action):
         return None
     market = []
     for order in raw:
-        if not order:
-            continue
-        if not isinstance(order, (list, tuple)):
+        if not order or not isinstance(order, list):
             return None
         market.append(list(order))
     return market
@@ -174,7 +178,7 @@ def _market_does_not_add_shed(action):
     if market is None or len(market) > MAX_ORDERS:
         return False
     for order in market:
-        if not order or not isinstance(order[0], str):
+        if not isinstance(order[0], str):
             return False
         if order[0] in SHED_ADDING_MARKET:
             return False
@@ -248,7 +252,7 @@ class PostTickEveningFlush:
             return action
         state["pending"] = None
         market = _normalized_market(action)
-        if market is None:
+        if market is None or len(market) > MAX_ORDERS:
             self.telemetry["release_malformed_market"] += 1
             return action
         try:
@@ -274,7 +278,6 @@ class PostTickEveningFlush:
             self.telemetry["release_malformed_price"] += 1
             return action
 
-        prepend = []
         released = {}
         shortfall = {}
         for _, item, wanted in pending["rows"]:
@@ -286,8 +289,8 @@ class PostTickEveningFlush:
             idx = same_item_row.get(item)
             if idx is not None:
                 market[idx][2] += qty
-            elif len(market) + len(prepend) < MAX_ORDERS:
-                prepend.append(["SELL", item, qty])
+            elif len(market) < MAX_ORDERS:
+                market.append(["SELL", item, qty])
             else:
                 shortfall[item] = wanted
                 continue
@@ -314,7 +317,7 @@ class PostTickEveningFlush:
         if not released:
             return action
         result = dict(action)
-        result["market"] = prepend + market
+        result["market"] = market
         return result
 
     def __call__(self, observation, configuration=None):
@@ -372,7 +375,7 @@ class PostTickEveningFlush:
             "rows": [list(row) for row in extras],
             "prices": prices,
         })
-        # Return the exact inner action: only incumbent outer flush extras are withheld.
+        # With explicit non-falsey list rows, incumbent flush differs only by its extras.
         return action
 
 
