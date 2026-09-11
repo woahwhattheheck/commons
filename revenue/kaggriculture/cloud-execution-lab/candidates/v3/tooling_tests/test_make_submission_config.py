@@ -4,7 +4,10 @@ import copy
 import importlib.util
 import json
 from pathlib import Path
+import sys
+import types
 import unittest
+from unittest import mock
 
 
 HERE = Path(__file__).resolve().parents[1]
@@ -81,6 +84,20 @@ class SubmissionConfigTests(unittest.TestCase):
             with self.subTest(bad=bad):
                 with self.assertRaisesRegex(AssertionError, "positive integer"):
                     submission.apply_submission_config(base_files(), bad)
+
+    def test_invalid_cli_horizon_fails_before_package_access(self):
+        fake = types.ModuleType("build_v3")
+
+        def forbidden(*_args, **_kwargs):
+            self.fail("invalid CLI horizon touched package access")
+
+        fake.package_files = forbidden
+        fake.build_bytes = forbidden
+        for raw in ("0", "-1"):
+            with self.subTest(raw=raw):
+                with mock.patch.dict(sys.modules, {"build_v3": fake}):
+                    with self.assertRaisesRegex(AssertionError, "submission horizon must be a positive integer"):
+                        submission.main(["unused-v3", "canonical.tar.gz", "out.tar.gz", raw])
 
     def test_base_horizon_contract_fails_closed_before_transform(self):
         for bad in (None, 0, -1, True, 8.0, "8"):
