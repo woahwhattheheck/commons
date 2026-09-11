@@ -1,0 +1,191 @@
+name: titan-v3-s13-auth-report-provenance-proof
+
+on:
+  push:
+    branches:
+      - sol-astra/titan-v3-s13-auth-report-provenance-20260910
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/certified_report_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/test_certified_report_v3.py'
+      - '.github/workflows/titan-v3-s13-auth-report-provenance-proof.yml'
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/certified_report_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/test_certified_report_v3.py'
+      - '.github/workflows/titan-v3-s13-auth-report-provenance-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  authenticated-report-proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      EXACT_PARENT: 'b3be1c24d93365fb2775385d7ff4b212ba1703ca'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind exact successor and run predecessor killers
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git merge-base "$EXACT_PARENT" HEAD)" = "$EXACT_PARENT"
+          cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
+          .github/workflows/titan-v3-s13-auth-report-provenance-proof.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/certified_report_v3.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/test_certified_report_v3.py
+          EOF
+          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          git diff --check "$EXACT_PARENT"..HEAD
+          CLOSURE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure
+          python -m py_compile \
+            "$CLOSURE/certified_report_v2.py" \
+            "$CLOSURE/certified_report_v3.py" \
+            "$CLOSURE/diagnostic_evaluate.py" \
+            "$CLOSURE/test_certified_report_v2.py" \
+            "$CLOSURE/test_certified_report_v3.py"
+          (
+            cd "$CLOSURE"
+            python -m unittest -v test_certified_report_v2.py test_certified_report_v3.py
+          ) 2>&1 | tee "$RUNNER_TEMP/AUTH-REPORT-UNIT-TESTS.txt"
+          git diff --exit-code -- .
+
+      - name: Install pinned official interpreter
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Run real canonical-evaluator to DiagnosticActor to v3-report smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          KAG=revenue/kaggriculture
+          LAB="$KAG/cloud-execution-lab"
+          CLOSURE="$LAB/analysis/titan-v3-s13-certified-prefix695-custody-closure"
+          TARGET="$(realpath "$KAG/20260907-offline-agent/main.py")"
+          SMOKE="$RUNNER_TEMP/s13-auth-smoke-candidate.py"
+          OUT="$RUNNER_TEMP/s13-auth-report-smoke"
+          mkdir -p "$OUT"
+          TARGET="$TARGET" SMOKE="$SMOKE" python - <<'PY'
+          import os
+          from pathlib import Path
+          target = Path(os.environ['TARGET'])
+          output = Path(os.environ['SMOKE'])
+          output.write_text(f'''from __future__ import annotations
+          import importlib.util
+          from pathlib import Path
+          import sys
+
+          TARGET = Path({str(target)!r})
+          sys.path.insert(0, str(TARGET.parent))
+          _name = "s13_auth_smoke_target"
+          _spec = importlib.util.spec_from_file_location(_name, TARGET)
+          if _spec is None or _spec.loader is None:
+              raise RuntimeError("cannot load smoke target")
+          _module = importlib.util.module_from_spec(_spec)
+          _previous = sys.modules.get(_name)
+          sys.modules[_name] = _module
+          try:
+              _spec.loader.exec_module(_module)
+          except BaseException:
+              if _previous is None:
+                  sys.modules.pop(_name, None)
+              else:
+                  sys.modules[_name] = _previous
+              raise
+          agent = _module.agent
+
+          def diagnostics():
+              return {{
+                  "mode": "post24_full",
+                  "certificate_mode": "full",
+                  "source_seat": 0,
+                  "start_step": 0,
+                  "active": False,
+                  "handoff_step": 0,
+                  "handoff_reason": "smoke_no_activation",
+                  "certificate_checks": 0,
+                  "certificate_matches": 0,
+                  "activation_count": 0,
+                  "activation_steps": [],
+                  "certificate_donor_head": "cbfff2bec813e2c2609ce9c5819b74669e98c566",
+                  "certificate_donor_blob": "89a3325eb541ae0e8a81e1e0a426292820f10d98",
+                  "market_outcome_claim": False,
+              }}
+          ''', encoding='utf-8')
+          PY
+          CANDIDATE_SHA="$(sha256sum "$SMOKE" | cut -d' ' -f1)"
+          COMMON=(
+            --engine-dir "$LAB/reference/engine"
+            --loader "$KAG/20260907-offline-agent/evaluate.py"
+            --candidate "$SMOKE::agent"
+            --opponent "starter=official_starter"
+            --seeds "7"
+            --rng-seed 20260913
+            --action-timeout 1.0
+            --startup-timeout 15
+            --game-timeout 60
+            --episode-steps 4
+          )
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" --output "$OUT/control.json"
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" --output "$OUT/unsafe.json"
+          python "$CLOSURE/diagnostic_evaluate.py" "${COMMON[@]}" --output "$OUT/certified.json"
+          python "$CLOSURE/certified_report_v3.py" \
+            --control "$OUT/control.json" \
+            --unsafe-prefix "$OUT/unsafe.json" \
+            --certified-prefix "$OUT/certified.json" \
+            --source-seat 0 \
+            --expected-control-candidate-sha256 "$CANDIDATE_SHA" \
+            --expected-unsafe-candidate-sha256 "$CANDIDATE_SHA" \
+            --expected-certified-candidate-sha256 "$CANDIDATE_SHA" \
+            --expected-seeds 7 \
+            --expected-opponents starter \
+            --output "$OUT/report.json" \
+            --markdown "$OUT/report.md" \
+            > "$OUT/report-stdout.json"
+          OUT="$OUT" python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          certified = json.loads((root/'certified.json').read_text())
+          report = json.loads((root/'report.json').read_text())
+          assert report['schema'] == 'titan-v3-s13-certified-prefix-report/v3'
+          assert report['verdict'] == 'CERTIFICATE_REJECTS_TRANSPLANT'
+          assert report['source_seat_activated'] is False
+          assert len(report['authenticated_provenance']['sha256']) == 64
+          assert len(certified['games']) == 2
+          for game in certified['games']:
+              seat = game['candidate_seat']
+              diag = game['actors'][seat]['agent_diagnostics']
+              assert diag['activation_steps'] == []
+              assert game['steps'] > 0
+          print('REAL_DIAGNOSTIC_REPORT_JOIN_OK', report['authenticated_provenance']['sha256'])
+          PY
+          git diff --exit-code -- .
+
+      - name: Upload authenticated report proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-s13-auth-report-proof-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/AUTH-REPORT-UNIT-TESTS.txt
+            ${{ runner.temp }}/s13-auth-report-smoke
+          if-no-files-found: error
+          retention-days: 30
