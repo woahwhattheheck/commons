@@ -16,10 +16,12 @@ literal `PASS` when all of these are already true:
 - the tile is not already fertilized through `day + 2`;
 - at most one worker claims a tile in the same action.
 
-Malformed or non-canonical state fails closed to the exact parent action: integer engine
+Malformed or non-canonical state fails closed to the exact parent action. Integer engine
 fields must be real `int` values (not booleans, floats, or numeric strings), the action
 must contain explicit worker rows, and `fertilized_until_day` must be present as the
-canonical integer field emitted by the pinned engine.
+canonical integer field emitted by the pinned engine. Actor validation is atomic: every
+explicit command, position and inventory row is validated before any replacement is
+recorded, so a malformed later actor cannot leave an earlier partial mutation alive.
 
 The evaluator arm explicitly pins the live V3.1 R04 baseline tuple: horizon 8, opening 0,
 row-order ON, evening-flush ON, sale-fertilizer ON, cattle-early ON.
@@ -60,11 +62,19 @@ was `8445.8125`.
 The initial empirical source used for that screen had SHA-256
 `191febc1c751c6553103b92411f0a1f4a5942e69d39d6c8c6d8d61260f2ee4a4`.
 After independent review found fail-open handling of malformed synthetic inputs, the
-source was hardened to SHA-256
+first hardened source had SHA-256
 `9dd13b58e5e699d9eb8ab89835077f46e2ed4f133e0b11c74307bd42d4ed5a32`.
-The repaired source was rerun on all 16 valid frozen cells; every final score **and every
-full action-trace SHA-256** is byte-for-byte identical to the original empirical arm.
-Thus the repair changes malformed-input behavior only and preserves the measured signal.
+A second review found a whole-action atomicity edge (eligible early actor plus malformed
+later actor). The current two-pass source has SHA-256
+`9a5685a02ab7746d9af691036faaa7d32d0e39093cdc372ae5260012739a13be`.
+The focused suite now has **11 methods**, including out-of-bounds, malformed-inventory,
+and malformed-command later-actor killers that require exact parent identity and zero
+telemetry.
+
+The current two-pass source was rerun on all 16 valid frozen cells; every final score
+**and every full action-trace SHA-256** is byte-for-byte identical to the preceding
+repaired source. Thus both robustness repairs change malformed-input behavior only and
+preserve the measured +89.125 signal.
 
 The recovered handoff archive was
 `8fb4776b416f32dcd978f57a6f8caf42c84d2245d5f9a08962adbe814dadab8e`; its ready-submit
