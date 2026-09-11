@@ -7,13 +7,13 @@
                                   runs --candidate D/main.py directly)
     --canonical PATH              use another canonical archive (must match base.sha256)
 
-Recipe: extract ../../exports/titan-current.tar.gz (SHA-256 pinned in V3-MANIFEST.json
-under base.sha256), copy overlay/ over it (the lane modules and the check), then run
-apply_v3.apply() which edits titan_runtime.py, scheduler.py, frozen_selected.py,
-TITAN-CONFIG.json and TITAN-RELEASE.md with exact-anchor replacements.  Fixed tar
-metadata makes the archive a pure function of (canonical, overlay, apply_v3).  dist/
-is a build product and is not committed; a shard verifies each materialised file
-against FILES.json.
+Recipe: resolve the SHA-256 pinned in V3-MANIFEST.json under base.sha256 to the
+immutable ../../exports/historical/titan-<sha256>.tar.gz archive, copy overlay/ over
+it (the lane modules and the check), then run apply_v3.apply() which edits
+titan_runtime.py, scheduler.py, frozen_selected.py, TITAN-CONFIG.json and
+TITAN-RELEASE.md with exact-anchor replacements.  Fixed tar metadata makes the
+archive a pure function of (canonical, overlay, apply_v3).  dist/ is a build product
+and is not committed; a shard verifies each materialised file against FILES.json.
 """
 import gzip
 import hashlib
@@ -33,7 +33,7 @@ import apply_v3  # noqa: E402
 OVERLAY = HERE / "overlay"
 DIST = HERE / "dist"
 MANIFEST = HERE / "V3-MANIFEST.json"
-CANON = HERE.parent.parent / "exports" / "titan-current.tar.gz"
+CANON_HISTORY = HERE.parent.parent / "exports" / "historical"
 
 
 def manifest():
@@ -48,7 +48,10 @@ def overlay_files():
 
 def package_files(canon_path=None):
     m = manifest()
-    archive = Path(canon_path or CANON)
+    if canon_path is not None:
+        archive = Path(canon_path)
+    else:
+        archive = CANON_HISTORY / ("titan-%s.tar.gz" % m["base"]["sha256"])
     data = archive.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
     assert digest == m["base"]["sha256"], "canonical archive %s is %s, manifest pins %s" % (archive, digest, m["base"]["sha256"])
