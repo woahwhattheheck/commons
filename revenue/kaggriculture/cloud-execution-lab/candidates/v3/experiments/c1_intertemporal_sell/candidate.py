@@ -1,18 +1,23 @@
 # SPDX-License-Identifier: Apache-2.0
-"""C1 default-off experiment: defer selected native hour-20 SELLs past town demand.
+"""C1 default-off experiment: defer proven-native hour-20 STRAWBERRY sales.
 
-The official engine processes player market rows before deterministic town demand and
-refreshes prices afterward. Live V3.1 already runs EVENING_FLUSH at hours 21-23. This
-experiment therefore blanks only *native-tape-owned* hour-20 SELL rows for flush items
-that an already-unlocked shop consumes at that same step, leaving their stock for the
-incumbent hour-21 flush.
+The official engine processes unit actions, then player market rows, then deterministic
+town-shop consumption and price refresh. Live frozen V3.1 already flushes residual
+STRAWBERRY at hours 21-23. C1 therefore tests one narrow timing factor: retain a proven
+native hour-20 STRAWBERRY sale for one callback when a currently unlocked shop consumes
+STRAWBERRY at that same town tick.
 
-This carrier is deliberately stricter than the original development probe. It preserves
-raw market indices with [] placeholders; rejects mixed/non-native market rows; rejects
-E184/native-advance debt ownership; and rejects current HARVEST/COLLECT_FERTILIZER or
-capacity ambiguity that could make holding shed stock for one callback destroy cargo.
-No new market order, worker action, quantity, movement, hidden-rival inference, or package
-input is introduced.
+This repaired carrier deliberately narrows the original WOOL/MILK/STRAWBERRY hypothesis.
+Frozen V231 can synthesize/touch MILK sale quantity and V233 can synthesize WOOL sales;
+a final market multiset can therefore look native after one incumbent layer cancels a
+native row and another replaces it. Neither layer synthesizes STRAWBERRY. For the sole
+remaining target, C1 snapshots E184/native sale-accounting state *before* the parent call
+and requires no current STRAWBERRY ownership plus no new future STRAWBERRY reservation
+across the callback. Only then can current-vs-native SELL equality establish provenance.
+
+Every rejection returns the exact parent action. A successful transform preserves raw
+market indices with ``[]`` and changes no worker command, quantity, row ordering, package
+input, default, or hidden-rival state.
 """
 from __future__ import annotations
 
@@ -42,8 +47,9 @@ TURN_PER_DAY = 24
 SHOP_INTERVAL = 4
 SHED_CAPACITY = 100
 EPISODE_STEPS = 720
+MAX_MARKET_ORDERS = 10
 TARGET_HOUR = 20
-FLUSH_ITEMS = frozenset(("WOOL", "MILK", "STRAWBERRY", "MELON"))
+TARGET_ITEM = "STRAWBERRY"
 INVENTORY_PRODUCERS = frozenset(("HARVEST", "COLLECT_FERTILIZER"))
 SHOP_PRODUCTS = {
     "BAKERY": ("EGG", "WHEAT"),
@@ -61,24 +67,25 @@ REPORT = {
     "deferrals": 0,
     "deferred_rows": 0,
     "deferred_requested_qty": 0,
-    "by_item": {item: 0 for item in sorted(FLUSH_ITEMS)},
+    "by_item": {TARGET_ITEM: 0},
 }
 
 _MISSING = object()
 
 
-def _cfg_value(configuration, key, default):
+def _cfg_value(configuration, key):
+    """Read an explicitly present config field; absence never inherits a default."""
     if configuration is None:
-        return default
+        return _MISSING
     if isinstance(configuration, dict):
-        return configuration.get(key, default)
+        return configuration[key] if key in configuration else _MISSING
     getter = getattr(configuration, "get", None)
     if callable(getter):
         try:
-            return getter(key, default)
+            return getter(key, _MISSING)
         except Exception:
             return _MISSING
-    return getattr(configuration, key, default)
+    return getattr(configuration, key, _MISSING)
 
 
 def _standard_config(configuration) -> bool:
@@ -87,15 +94,13 @@ def _standard_config(configuration) -> bool:
         ("townShopSellInterval", SHOP_INTERVAL),
         ("shedCapacity", SHED_CAPACITY),
         ("episodeSteps", EPISODE_STEPS),
+        ("maxMarketOrdersPerTurn", MAX_MARKET_ORDERS),
     ):
-        value = _cfg_value(configuration, key, expected)
+        value = _cfg_value(configuration, key)
         if type(value) is not int or value != expected:
             return False
-    market_params = _cfg_value(configuration, "marketParams", None)
-    if market_params is not None:
-        if not isinstance(market_params, dict) or market_params:
-            return False
-    return True
+    market_params = _cfg_value(configuration, "marketParams")
+    return isinstance(market_params, dict) and not market_params
 
 
 def _strict_nonnegative_mapping(mapping) -> int | None:
@@ -133,9 +138,7 @@ def _sell_counter(rows):
 
 
 def _current_commands(action):
-    if not isinstance(action, dict):
-        return None
-    if "farmer" not in action or "hands" not in action:
+    if not isinstance(action, dict) or "farmer" not in action or "hands" not in action:
         return None
     farmer = action["farmer"]
     hands = action["hands"]
@@ -147,52 +150,99 @@ def _current_commands(action):
     return commands
 
 
-def _debt_owned_items(sale_state, step: int) -> set[str] | None:
-    """Items whose current SELL may be coupled to parent sale accounting."""
-    if sale_state is None:
-        return set()
-    owned = set()
-    advanced = getattr(sale_state, "advanced_sales", {})
-    if advanced is None:
-        advanced = {}
+def snapshot_sale_provenance(sale_state, step: int):
+    """Strict immutable E184/native-sale snapshot for STRAWBERRY provenance.
+
+    Full accounting containers are validated so poison in an unrelated cell cannot be
+    hidden by the parent popping/pruning it. The returned fields contain only the target
+    facts needed by C1's ownership theorem.
+    """
+    if sale_state is None or type(step) is not int:
+        return None
+
+    advanced = getattr(sale_state, "advanced_sales", _MISSING)
     if not isinstance(advanced, dict):
         return None
     for item, quantity in advanced.items():
-        if not isinstance(item, str) or type(quantity) is not int or quantity < 0:
+        if item not in base.PRODUCTS or type(quantity) is not int or quantity < 0:
             return None
-        if quantity > 0:
-            owned.add(item)
 
-    debts = getattr(sale_state, "sale_window_debts", {})
-    if debts is None:
-        debts = {}
+    sale_due_step = getattr(sale_state, "sale_due_step", _MISSING)
+    if type(sale_due_step) is not int or sale_due_step < -1 or sale_due_step > base.LAST_STEP:
+        return None
+
+    debts = getattr(sale_state, "sale_window_debts", _MISSING)
     if not isinstance(debts, dict):
         return None
+    future_target = []
+    current_target = 0
     for due_step, by_item in debts.items():
-        if type(due_step) is not int or due_step < 0 or not isinstance(by_item, dict):
+        if type(due_step) is not int or due_step < 0 or due_step > base.LAST_STEP:
             return None
-        if due_step <= step:
-            continue
+        if not isinstance(by_item, dict):
+            return None
         for item, quantity in by_item.items():
-            if not isinstance(item, str) or type(quantity) is not int or quantity < 0:
+            if item not in base.PRODUCTS or type(quantity) is not int or quantity < 0:
                 return None
-            if quantity > 0:
-                owned.add(item)
-    return owned
+        quantity = by_item.get(TARGET_ITEM, 0)
+        if due_step == step:
+            current_target = quantity
+        elif due_step > step and quantity:
+            future_target.append((due_step, quantity))
+
+    return {
+        "advanced_target": advanced.get(TARGET_ITEM, 0),
+        "sale_due_step": sale_due_step,
+        "current_target_debt": current_target,
+        "future_target_debts": tuple(sorted(future_target)),
+    }
 
 
-def _demanded_flush_items(town) -> set[str] | None:
+def _proven_target_sale_ownership(pre_snapshot, post_snapshot) -> bool:
+    """Require no incumbent STRAWBERRY cancellation or synthesis this callback."""
+    if not isinstance(pre_snapshot, dict) or not isinstance(post_snapshot, dict):
+        return False
+    required = {
+        "advanced_target", "sale_due_step", "current_target_debt", "future_target_debts"
+    }
+    if set(pre_snapshot) != required or set(post_snapshot) != required:
+        return False
+    for snap in (pre_snapshot, post_snapshot):
+        if type(snap["advanced_target"]) is not int or snap["advanced_target"] < 0:
+            return False
+        if type(snap["sale_due_step"]) is not int:
+            return False
+        if type(snap["current_target_debt"]) is not int or snap["current_target_debt"] < 0:
+            return False
+        if not isinstance(snap["future_target_debts"], tuple):
+            return False
+
+    # No legacy/native one-turn STRAWBERRY advance may own the current row, and no E184
+    # debt due now may subtract it before C1 sees the parent output.
+    if pre_snapshot["advanced_target"] or pre_snapshot["current_target_debt"]:
+        return False
+
+    # Post-288 E184 resets legacy advanced_sales. Any target value here is anomalous.
+    if post_snapshot["advanced_target"] or post_snapshot["current_target_debt"]:
+        return False
+
+    # reserve_sales only adds future debt. Exact equality proves this callback did not
+    # synthesize a future-tape STRAWBERRY SELL into the current parent market.
+    return pre_snapshot["future_target_debts"] == post_snapshot["future_target_debts"]
+
+
+def _demanded_target(town) -> bool:
     if not isinstance(town, dict):
-        return None
+        return False
     shops = town.get("unlocked_shops")
     if not isinstance(shops, list):
-        return None
+        return False
     demanded = set()
     for shop in shops:
         if not isinstance(shop, str) or shop not in SHOP_PRODUCTS:
-            return None
+            return False
         demanded.update(SHOP_PRODUCTS[shop])
-    return demanded & FLUSH_ITEMS
+    return TARGET_ITEM in demanded
 
 
 def apply_intertemporal_deferral(
@@ -200,14 +250,11 @@ def apply_intertemporal_deferral(
     action,
     *,
     native_market,
-    sale_state=None,
+    pre_sale_snapshot=None,
+    post_sale_snapshot=None,
     configuration=None,
 ):
-    """Return action with proven native hour-20 demand-exposed SELL rows blanked.
-
-    Every reject returns the exact parent object. Successful transforms copy once and keep
-    market list length/indexes unchanged; each deferred row becomes an empty placeholder.
-    """
+    """Blank proven-native hour-20 STRAWBERRY SELL rows at their exact raw indices."""
     if not isinstance(observation, dict) or not isinstance(action, dict):
         return action
     if not _standard_config(configuration):
@@ -215,15 +262,15 @@ def apply_intertemporal_deferral(
 
     step = observation.get("step")
     player = observation.get("player")
-    if type(step) is not int or step < TURN_PER_DAY or step >= EPISODE_STEPS - 2:
+    if type(step) is not int or step < base.ADVANCE_START or step >= EPISODE_STEPS - 2:
         return action
     if step % TURN_PER_DAY != TARGET_HOUR:
         return action
     if type(player) is not int or player not in (0, 1):
         return action
-
-    demanded = _demanded_flush_items(observation.get("town"))
-    if not demanded:
+    if not _demanded_target(observation.get("town")):
+        return action
+    if not _proven_target_sale_ownership(pre_sale_snapshot, post_sale_snapshot):
         return action
 
     farms = observation.get("farms")
@@ -231,9 +278,15 @@ def apply_intertemporal_deferral(
     if not isinstance(farms, list) or len(farms) != 2 or not isinstance(private, dict):
         return action
 
-    shed_total = _strict_nonnegative_mapping(private.get("shed"))
+    commands = _current_commands(action)
+    if commands is None:
+        return action
     inventories = private.get("inventories")
-    if shed_total is None or not isinstance(inventories, list) or not inventories:
+    if not isinstance(inventories, list) or len(inventories) != len(commands):
+        return action
+
+    shed_total = _strict_nonnegative_mapping(private.get("shed"))
+    if shed_total is None:
         return action
     cargo_total = 0
     for inventory in inventories:
@@ -244,9 +297,6 @@ def apply_intertemporal_deferral(
     if shed_total + cargo_total > SHED_CAPACITY:
         return action
 
-    commands = _current_commands(action)
-    if commands is None:
-        return action
     for command in commands:
         if command and command[0] in INVENTORY_PRODUCERS:
             return action
@@ -254,15 +304,9 @@ def apply_intertemporal_deferral(
     market = action.get("market")
     current_counter = _sell_counter(market)
     native_counter = _sell_counter(native_market)
-    # Ownership theorem: the parent output must contain exactly the selected tape's SELL-only
-    # multiset. Any E184/V233/V219/other synthesized row or quantity mutation fails closed.
     if current_counter is None or native_counter is None or current_counter != native_counter:
         return action
     if not current_counter:
-        return action
-
-    debt_owned = _debt_owned_items(sale_state, step)
-    if debt_owned is None:
         return action
 
     replacements = []
@@ -273,62 +317,81 @@ def apply_intertemporal_deferral(
         if parsed is None:
             return action
         _, item, quantity = parsed
-        if item in demanded and item not in debt_owned:
-            replacements.append((index, item, quantity))
+        if item == TARGET_ITEM:
+            replacements.append((index, quantity))
 
     if not replacements:
         return action
 
     result = copy.deepcopy(action)
-    for index, _, _ in replacements:
+    for index, _ in replacements:
         result["market"][index] = []
 
     REPORT["callbacks"] += 1
     REPORT["deferrals"] += 1
     REPORT["deferred_rows"] += len(replacements)
-    REPORT["deferred_requested_qty"] += sum(quantity for _, _, quantity in replacements)
-    for _, item, _ in replacements:
-        REPORT["by_item"][item] += 1
+    REPORT["deferred_requested_qty"] += sum(quantity for _, quantity in replacements)
+    REPORT["by_item"][TARGET_ITEM] += len(replacements)
     return result
 
 
-def _parent_state_and_native(player: int, step: int):
+def _pre_parent_context(observation):
+    if not isinstance(observation, dict):
+        return None
+    step = observation.get("step")
+    player = observation.get("player")
+    if type(step) is not int or type(player) is not int or player not in (0, 1):
+        return None
     policy = getattr(base, "_POLICY", None)
     players = getattr(policy, "players", None)
     tapes = getattr(policy, "tapes", None)
     if not isinstance(players, dict) or not isinstance(tapes, list):
-        return None, None
+        return None
     state = players.get(player)
     if state is None:
-        return None, None
+        return None
     plan = getattr(state, "plan", None)
     if type(plan) is not int or plan < 0 or plan >= len(tapes):
-        return None, None
+        return None
     tape = tapes[plan]
     if not isinstance(tape, list) or step < 0 or step >= len(tape):
-        return None, None
+        return None
     native = tape[step]
-    if not isinstance(native, dict):
-        return None, None
-    return state, native.get("market")
+    if not isinstance(native, dict) or not isinstance(native.get("market"), list):
+        return None
+    snapshot = snapshot_sale_provenance(state, step)
+    if snapshot is None:
+        return None
+    return state, copy.deepcopy(native["market"]), snapshot
 
 
 def agent(observation, configuration=None):
+    context = _pre_parent_context(observation)
     parent = _BASE_AGENT(observation, configuration)
-    if not isinstance(observation, dict):
+    if context is None or not isinstance(observation, dict):
         return parent
+
+    pre_state, native_market, pre_snapshot = context
     step = observation.get("step")
     player = observation.get("player")
-    if type(step) is not int or type(player) is not int:
+    policy = getattr(base, "_POLICY", None)
+    players = getattr(policy, "players", None)
+    if not isinstance(players, dict):
         return parent
-    state, native_market = _parent_state_and_native(player, step)
-    if native_market is None:
+    post_state = players.get(player)
+    # Rewind/reset/replacement means our pre-parent ownership proof no longer applies.
+    if post_state is not pre_state:
         return parent
+    post_snapshot = snapshot_sale_provenance(post_state, step)
+    if post_snapshot is None:
+        return parent
+
     return apply_intertemporal_deferral(
         observation,
         parent,
         native_market=native_market,
-        sale_state=state,
+        pre_sale_snapshot=pre_snapshot,
+        post_sale_snapshot=post_snapshot,
         configuration=configuration,
     )
 
