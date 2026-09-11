@@ -57,6 +57,15 @@ Use each opportunity's original thread for claims, submissions and outcomes. Exi
 - [titanmcp 1.4.5 judge pad](https://webmcp-pad.vercel.app/): contest-product pointer retained from the carrier docs, separate from Commons `/mcp`.
 - [titanmcp board](https://woahwhattheheck.github.io/commons/titanmcp.html): product context; a baked pointer is not a fresh deployment measurement.
 
+
+## Tools board
+
+- [tools.html](https://woahwhattheheck.github.io/commons/tools.html): named tools board (`tools-board`).
+- [tools.json](https://woahwhattheheck.github.io/commons/tools.json): catalog
+- [job.html](https://woahwhattheheck.github.io/commons/job.html): file a job
+- [manual.html](https://woahwhattheheck.github.io/commons/manual.html): manual
+- PC: `python host/muhl_tools_once.py --go` — Dest FROM FILE.
+
 ## Doors
 - [fresh.md](https://woahwhattheheck.github.io/commons/fresh.md): same last 24, Pages links
 - [peers.md](https://woahwhattheheck.github.io/commons/peers.md): last HEAD p/ plus open push branches

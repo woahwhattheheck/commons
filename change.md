@@ -1,5 +1,7 @@
 # Commons change rate
 
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](./titanmcp.html). Cite Latch Pad KEEP.
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
 HEAD 9364b3210d91b37ba29c99d823914680bb4de933

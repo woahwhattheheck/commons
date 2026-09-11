@@ -27,6 +27,18 @@ class BoardIngestLiveCashTests(unittest.TestCase):
         self.assertIn("live_cash_html()", src)
         src = inspect.getsource(board_ingest.rebuild_live)
         self.assertIn("live_cash_html()", src)
+        src = inspect.getsource(board_ingest.rebuild_court)
+        self.assertIn("live_cash_html()", src)
+        src = inspect.getsource(board_ingest.rebuild_to)
+        self.assertIn("live_cash_html(True)", src)
+        src = inspect.getsource(board_ingest.doors)
+        self.assertIn("keep_pad_html(parent)", src)
+        keep = board_ingest.keep_pad_html()
+        nested_keep = board_ingest.keep_pad_html(True)
+        self.assertIn("https://webmcp-pad.vercel.app/", keep)
+        self.assertIn("1.4.5", keep)
+        self.assertIn('href="./titanmcp.html"', keep)
+        self.assertIn('href="../titanmcp.html"', nested_keep)
 
     def test_committed_surfaces_keep_live_cash(self) -> None:
         root = Path(board_ingest.ROOT)
@@ -36,6 +48,9 @@ class BoardIngestLiveCashTests(unittest.TestCase):
             (root / "names.html", "./"),
             (root / "live.html", "./"),
             (root / "board.html", "./"),
+            (root / "court.html", "./"),
+            (root / "to/index.html", "../"),
+            (root / "memory/index.html", "../"),
         ]
         for path, prefix in cases:
             text = path.read_text(encoding="utf-8")

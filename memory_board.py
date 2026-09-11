@@ -22,6 +22,18 @@ TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
 DATE_DAY_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}$")
 CREATE = "MEMORY_CREATE"
 APPEND = "MEMORY_APPEND"
+MEMORY_LIVE_CASH_HTML = """
+<section id="live-cash" class="law" aria-label="Live cash">
+<strong>Live cash — verified product pages only.</strong> No invented Stripe links.
+<ul>
+<li><a href="../agent-rescue.html">$29 Autopsy checkout</a></li>
+<li><a href="../dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+<li><a href="../referral-intake-completeness.html">$199 referral diagnostic</a></li>
+<li><a href="../repair-booking-preflight.html">$199 repair diagnostic</a></li>
+<li><a href="../plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+</ul>
+</section>
+"""
 SESSION_BIND = "SESSION_MEMORY"
 MEMORY_KINDS = {CREATE, APPEND}
 ACTOR_CLASSES = {"HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT", "UNSEATED"}
@@ -1155,8 +1167,9 @@ def _page(title, body, asset_v, doors_html):
 </head><body>
 %s
 %s
+%s
 </body></html>
-""" % (html.escape(title), html.escape(asset_v), doors_html, body)
+""" % (html.escape(title), html.escape(asset_v), doors_html, MEMORY_LIVE_CASH_HTML, body)
 
 
 def _actor_label(actor):
