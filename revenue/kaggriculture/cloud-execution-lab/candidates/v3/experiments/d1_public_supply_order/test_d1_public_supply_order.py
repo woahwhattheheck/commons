@@ -55,12 +55,51 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         obs = observation(
             {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3},
             {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2},
-            {"kind": "PLANT", "crop": "MELON", "yield_units": True},
-            {"kind": "PLANT", "crop": "CARROT", "yield_units": "4"},
-            {"kind": "PLANT", "crop": "NOT_A_PRODUCT", "yield_units": 8},
-            {"kind": "WEED", "yield_units": 9},
+            {"kind": "PLANT", "crop": "MELON", "yield_units": 0},
+            {"kind": "WEED"},
+            {"kind": "COOP"},
+            {"kind": "PASTURE"},
+            "LOCKED",
+            None,
         )
         self.assertEqual(public_rival_supply(obs), {"STRAWBERRY": 3, "WOOL": 2})
+
+    def test_malformed_rival_evidence_is_distinct_from_valid_no_signal(self):
+        self.assertEqual(public_rival_supply(observation(None, "LOCKED", {"kind": "WEED"})), {})
+        malformed_tiles = (
+            {"kind": "PLANT", "crop": "MELON", "yield_units": True},
+            {"kind": "PLANT", "crop": "CARROT", "yield_units": "4"},
+            {"kind": "PLANT", "crop": "NOT_A_PRODUCT", "yield_units": 1},
+            {"kind": "PLANT", "crop": "WHEAT"},
+            {"kind": "PASTURE", "animal": "SHEEP", "yield_units": False},
+            {"kind": "PASTURE", "animal": "GOOSE", "yield_units": 1},
+            {"kind": "COOP", "animal": "DRAGON", "yield_units": 1},
+            {"kind": "MYSTERY"},
+            "UNLOCKED",
+            7,
+        )
+        for malformed in malformed_tiles:
+            with self.subTest(malformed=malformed):
+                self.assertIs(
+                    public_rival_supply(
+                        observation(
+                            {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 9},
+                            malformed,
+                        )
+                    ),
+                    None,
+                )
+
+    def test_mixed_valid_and_malformed_rival_evidence_fails_exact_parent(self):
+        action = sell_action()
+        before = copy.deepcopy(action)
+        obs = observation(
+            {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 9},
+            {"kind": "PLANT", "crop": "CARROT", "yield_units": "4"},
+        )
+        result = apply_public_supply_order(obs, action)
+        self.assertIs(result, action)
+        self.assertEqual(action, before)
 
     def test_disabled_is_exact_parent_identity(self):
         action = sell_action()
@@ -197,6 +236,7 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         for obs in ({}, {"player": 0, "farms": []}, {"player": True, "farms": [{}, {}]}):
             with self.subTest(obs=obs):
                 self.assertIs(apply_public_supply_order(obs, action), action)
+                self.assertIs(public_rival_supply(obs), None)
 
 
 if __name__ == "__main__":
