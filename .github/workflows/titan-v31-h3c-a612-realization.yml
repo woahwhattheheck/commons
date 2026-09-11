@@ -1,0 +1,146 @@
+name: TITAN V3.1 H3c a612 realization gate
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-h3c-a612-realization.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  exact-current-stack-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind canonical parent, scope, and reviewed bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          test "$(git hash-object "$DIR/h3c_goose_eod_cap_rescue.py")" = '2044d6cf1e0c51f95027229863f910aa43ac7008'
+          test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
+          test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          git diff --name-only "$BASE"..HEAD > /tmp/h3c-a612-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/h3c-a612-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-h3c-a612-realization.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/h3c_goose_eod_cap_rescue.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/realization_report.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'wrong H3c a612 execution scope: {sorted(actual)!r}')
+          print('H3C_A612_SCOPE_OK', len(actual))
+          PY
+
+      - name: Compile evidence carrier without dirtying checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec')
+          for path in sorted(root.glob('*.py')):
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Prepare pinned official interpreter cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run exact a612 policy self-play control
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$DIR/baseline.py" \
+            --opponent "a612=$DIR/baseline.py" \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/h3c-a612-control.json
+
+      - name: Run exact reviewed H3c on the same cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$DIR/candidate.py" \
+            --opponent "a612=$DIR/baseline.py" \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/h3c-a612-candidate.json
+
+      - name: Derive paired current-stack verdict
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec'
+          python3 -B "$DIR/realization_report.py" \
+            /tmp/h3c-a612-control.json /tmp/h3c-a612-candidate.json \
+            --json-out /tmp/h3c-a612-realization.json \
+            --markdown-out /tmp/h3c-a612-realization.md
+          cat /tmp/h3c-a612-realization.md
+          cat /tmp/h3c-a612-realization.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: h3c-a612-realization-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/h3c-a612-control.json
+            /tmp/h3c-a612-candidate.json
+            /tmp/h3c-a612-realization.json
+            /tmp/h3c-a612-realization.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/h3c-a612-realization.md
+            printf '\nEvidence-only current-stack screen. Reviewed H3c donor source is byte-exact from #12473 head `2f7ab898d28a98749a5b0625eb15da0d56a38552`; canonical gameplay bytes are inherited unchanged from `a6120d0ea1bdb75eb0da2239220efce551f624a6`.\n'
+          } > /tmp/h3c-a612-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/h3c-a612-comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
