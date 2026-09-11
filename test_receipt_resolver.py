@@ -223,8 +223,8 @@ class ResolverTests(unittest.TestCase):
             json_by_url={
                 expected_search: {
                     "items": [
-                        {"number": 12, "pull_request": {}},
-                        {"number": 13, "pull_request": {}},
+                        {"number": 12, "pull_request": {"url": "p12"}},
+                        {"number": 13, "pull_request": {"url": "p13"}},
                     ]
                 }
             },
