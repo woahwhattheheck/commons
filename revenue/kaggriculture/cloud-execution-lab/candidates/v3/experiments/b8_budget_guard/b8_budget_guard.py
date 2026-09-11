@@ -9,13 +9,14 @@ unavailable to the existing V219/V233 budget test. The original request
 functions still own every eligibility, capacity, order-cap, state, and row
 construction decision.
 
-If any remaining native purchase has a state/market-dependent cost (HIRE or
-BUY_PRODUCT), malformed shape/type, or an unknown opcode, B8 fails open to the
-parent exactly rather than inventing a reserve.
+State/market-dependent future costs (BUY_LAND, HIRE, BUY_PRODUCT), malformed
+shape/type, or an unknown opcode make B8 fail open to the parent exactly rather
+than inventing a reserve.
 """
 from __future__ import annotations
 
 import copy
+import math
 
 import r04_full_router as r04
 
@@ -24,7 +25,6 @@ _ORIGINAL_V233_REQUEST = r04._v233_request
 
 _ANIMAL_COST = {"GOOSE": 300, "COW": 400, "SHEEP": 500}
 _SEED_COST = {"WHEAT": 10, "CARROT": 20, "TOMATO": 50, "STRAWBERRY": 100, "MELON": 80}
-_LAND_COST = 4000
 
 REPORT = {
     "calls": 0,
@@ -47,36 +47,52 @@ def _strict_nonnegative_int(value):
     return value if isinstance(value, int) and not isinstance(value, bool) and value >= 0 else None
 
 
+def _strict_nonnegative_money(value):
+    """Accept official-engine numeric money, reject bool/non-finite/type poison."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    if not math.isfinite(value) or value < 0:
+        return None
+    return value
+
+
 def _fixed_cost_of_future_actions(actions):
-    """Return exact fixed purchase cost, or None when the bound is incomplete."""
+    """Return exact fixed purchase cost, or None when the bound is incomplete.
+
+    Empty list rows are canonical market placeholders. Every non-empty row must
+    otherwise be canonical before it can contribute *or* be ignored. In
+    particular SELL contributes zero reserve only after item/quantity validation.
+    BUY_LAND is intentionally incomplete here: the official engine prices the
+    first/second/third extra quadrant at different values, so a context-free
+    tape-row helper cannot certify an exact land obligation.
+    """
     total = 0
     if not isinstance(actions, list):
         return None
     for planned in actions:
-        if not isinstance(planned, dict):
+        if not isinstance(planned, dict) or "market" not in planned:
             return None
-        market = planned.get("market", [])
-        if market is None:
-            market = []
+        market = planned["market"]
         if not isinstance(market, list):
             return None
         for order in market:
-            if not order:
+            if order == []:
                 continue
             if not isinstance(order, list) or not order or not isinstance(order[0], str):
                 return None
             op = order[0]
             if op == "SELL":
-                continue
-            if op in ("HIRE", "BUY_PRODUCT"):
-                return None
-            if op == "BUY_LAND":
-                if len(order) != 1:
+                if len(order) != 3 or not isinstance(order[1], str) or order[1] not in r04.PRODUCTS:
                     return None
-                total += _LAND_COST
+                if _strict_nonnegative_int(order[2]) is None:
+                    return None
                 continue
+            if op in ("BUY_LAND", "HIRE", "BUY_PRODUCT"):
+                # BUY_LAND depends on unlocked-quadrant state; HIRE depends on
+                # future hires_today; BUY_PRODUCT depends on the future quote.
+                return None
             if op == "BUY_ANIMAL":
-                if len(order) < 3 or not isinstance(order[1], str) or order[1] not in _ANIMAL_COST:
+                if len(order) != 3 or not isinstance(order[1], str) or order[1] not in _ANIMAL_COST:
                     return None
                 qty = _strict_nonnegative_int(order[2])
                 if qty is None:
@@ -84,7 +100,7 @@ def _fixed_cost_of_future_actions(actions):
                 total += qty * _ANIMAL_COST[order[1]]
                 continue
             if op == "BUY_SEED":
-                if len(order) < 3 or not isinstance(order[1], str) or order[1] not in _SEED_COST:
+                if len(order) != 3 or not isinstance(order[1], str) or order[1] not in _SEED_COST:
                     return None
                 qty = _strict_nonnegative_int(order[2])
                 if qty is None:
@@ -108,8 +124,8 @@ def _future_native_reserve(obs, native):
         return None
     if not isinstance(farms, list) or player >= len(farms) or not isinstance(farms[player], dict):
         return None
-    money = farms[player].get("money")
-    if not isinstance(money, int) or isinstance(money, bool) or money < 0:
+    money = _strict_nonnegative_money(farms[player].get("money"))
+    if money is None:
         return None
     day, hour = divmod(step, 24)
     try:
@@ -150,7 +166,9 @@ def _guard_request(layer, original, parent_report, obs, action, state, native):
     try:
         guarded_obs = copy.deepcopy(obs)
         player = guarded_obs["player"]
-        real_money = guarded_obs["farms"][player]["money"]
+        real_money = _strict_nonnegative_money(guarded_obs["farms"][player]["money"])
+        if real_money is None:
+            return original(obs, action, state, native)
         guarded_obs["farms"][player]["money"] = max(0, real_money - reserve)
     except Exception:
         return original(obs, action, state, native)
@@ -165,7 +183,7 @@ def _guard_request(layer, original, parent_report, obs, action, state, native):
                 "step": int(obs["step"]),
                 "layer": layer,
                 "reserve": int(reserve),
-                "money": int(real_money),
+                "money": real_money,
             })
     return result
 
