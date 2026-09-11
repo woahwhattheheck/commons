@@ -148,9 +148,9 @@ class H3bSheepClip(unittest.TestCase):
                 self.assertIs(self.run_case(action, observation, state), action)
 
     def test_nonstandard_configuration_fails_closed_without_coercion(self):
-        for configuration in ({"turnsPerDay": 12}, {"turnsPerDay": "24"},
-                              {"turnsPerDay": 24.0}, {"turnsPerDay": True},
-                              {"shedCapacity": 99}):
+        for configuration in ({"episodeSteps": 456}, {"turnsPerDay": 12},
+                              {"turnsPerDay": "24"}, {"turnsPerDay": 24.0},
+                              {"turnsPerDay": True}, {"shedCapacity": 99}):
             with self.subTest(configuration=configuration):
                 action, observation, state = fixture()
                 self.assertIs(self.run_case(action, observation, state,
