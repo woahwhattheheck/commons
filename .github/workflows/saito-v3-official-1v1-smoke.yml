@@ -16,26 +16,41 @@ jobs:
       - name: Checkout exact smoke head
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
           persist-credentials: false
 
-      - name: Bind parent and workflow-only delta
+      - name: Bind V3 parent and execution-only delta
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "0db46d2fb8847c7908940abc5a83eb7cc143cc7b"
-          test "$(git diff --name-only HEAD^ HEAD)" = ".github/workflows/saito-v3-official-1v1-smoke.yml"
+          BASE="0db46d2fb8847c7908940abc5a83eb7cc143cc7b"
+          git merge-base --is-ancestor "$BASE" HEAD
+          python3 - <<'PY'
+          import subprocess
+          base = "0db46d2fb8847c7908940abc5a83eb7cc143cc7b"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}...HEAD"], text=True
+          ).splitlines())
+          allowed = {
+              ".github/workflows/saito-v3-official-1v1-smoke.yml",
+              "revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json",
+          }
+          assert changed == allowed, (changed, allowed)
+          PY
           echo "SMOKE_HEAD=$(git rev-parse HEAD)"
-          echo "V3_PARENT=$(git rev-parse HEAD^)"
+          echo "V3_PARENT=$BASE"
 
-      - name: Verify canonical archive and V3 source tree
+      - name: Verify canonical archive and reconstruct exact V3 tree
         shell: bash
         run: |
           set -euo pipefail
           CANON="revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
           V3="revenue/kaggriculture/cloud-execution-lab/candidates/v3"
           echo "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9  $CANON" | sha256sum -c -
-          python3 "$V3/build_v3.py" --check --canonical "$CANON"
+          rm -rf /tmp/saito-v3verify
+          OUT="$(python3 "$V3/build_v3.py" --tree /tmp/saito-v3verify --canonical "$CANON")"
+          echo "$OUT"
+          test "$OUT" = "V3 TREE /tmp/saito-v3verify 122 files 6766c55a80b4cfc95232dd219a11b701121cd21935da5bb38a76dd90bbb9fd5f"
 
       - name: Materialize three one-factor arms
         shell: bash
@@ -58,8 +73,6 @@ jobs:
           }.items():
               p = Path(f"/tmp/saito-{arm}/TITAN-CONFIG.json")
               cfg = json.loads(p.read_text())
-              # One-factor smoke: every optional V3 gameplay key stays at its
-              # materialized default except the named arm flag.
               for key, value in flags.items():
                   cfg[key] = value
               p.write_text(json.dumps(cfg, indent=2, sort_keys=True) + "\n")
@@ -108,6 +121,7 @@ jobs:
           from pathlib import Path
           print("PARENT 0db46d2fb8847c7908940abc5a83eb7cc143cc7b")
           print("CANON b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9")
+          print("V3_BUILD 6766c55a80b4cfc95232dd219a11b701121cd21935da5bb38a76dd90bbb9fd5f")
           for arm in ("v3off", "r01on", "r02on"):
               p = Path(f"/tmp/saito-results/{arm}.json")
               r = json.loads(p.read_text())
