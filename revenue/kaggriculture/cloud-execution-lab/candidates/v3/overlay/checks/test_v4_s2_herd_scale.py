@@ -66,19 +66,21 @@ class S2HerdScaleTests(unittest.TestCase):
         r04.install(s2_herd_scale=False)
         self.assertEqual(
             r04._v4_s2_profile(),
-            {"sheep": 6, "workers": 2, "rows": (5, 6)},
+            {"sheep": 6, "workers": 2, "targets": s2.BASE_TARGETS},
         )
         self.assertEqual(s2.initial_fixed_cost(r04._v4_s2_profile()), 7000)
 
-    def test_profile_on_adds_one_three_sheep_worker_row(self):
+    def test_profile_on_scales_animals_without_changing_hire_footprint(self):
         r04.install(s2_herd_scale=True)
-        self.assertEqual(
-            r04._v4_s2_profile(),
-            {"sheep": 9, "workers": 3, "rows": (5, 6, 7)},
-        )
-        self.assertEqual(s2.initial_fixed_cost(r04._v4_s2_profile()), 8500)
+        profile = r04._v4_s2_profile()
+        self.assertEqual(profile["sheep"], 8)
+        self.assertEqual(profile["workers"], 2)
+        self.assertEqual(profile["targets"], s2.SCALED_TARGETS)
+        self.assertEqual(s2.initial_fixed_cost(profile), 8000)
+        self.assertEqual(len(profile["targets"][0]), 4)
+        self.assertEqual(len(profile["targets"][1]), 4)
 
-    def test_initial_request_scales_sheep_grain_hires_and_pending_receipt(self):
+    def test_initial_request_scales_sheep_and_grain_but_not_hires(self):
         original_eligible = r04._v233_eligible
         original_native_day = r04._v219_native_day
         r04._v233_eligible = lambda obs, native: True
@@ -86,9 +88,9 @@ class S2HerdScaleTests(unittest.TestCase):
             {"farmer": ["PASS"], "hands": [], "market": []} for _ in range(24)
         ]
         try:
-            for enabled, sheep, workers, rows in (
-                (False, 6, 2, (5, 6)),
-                (True, 9, 3, (5, 6, 7)),
+            for enabled, sheep, targets in (
+                (False, 6, s2.BASE_TARGETS),
+                (True, 8, s2.SCALED_TARGETS),
             ):
                 with self.subTest(enabled=enabled):
                     r04.install(s2_herd_scale=enabled)
@@ -97,25 +99,24 @@ class S2HerdScaleTests(unittest.TestCase):
                     self.assertEqual(
                         result["market"],
                         [["BUY_LAND"], ["BUY_ANIMAL", "SHEEP", sheep],
-                         ["BUY_PRODUCT", "WHEAT", sheep]]
-                        + [["HIRE"] for _ in range(workers)],
+                         ["BUY_PRODUCT", "WHEAT", sheep], ["HIRE"], ["HIRE"]],
                     )
                     self.assertEqual(state["pending"]["sheep"], sheep)
-                    self.assertEqual(state["pending"]["workers"], workers)
-                    self.assertEqual(state["pending"]["rows"], rows)
+                    self.assertEqual(state["pending"]["workers"], 2)
+                    self.assertEqual(state["pending"]["targets"], targets)
         finally:
             r04._v233_eligible = original_eligible
             r04._v219_native_day = original_native_day
 
-    def test_scaled_eligibility_requires_third_target_row_to_be_pristine(self):
+    def test_scaled_eligibility_requires_only_added_target_cells_to_be_pristine(self):
         original_native_day = r04._v219_native_day
         r04._v219_native_day = lambda native, day: [
             {"farmer": ["PASS"], "hands": [], "market": []}
         ]
         try:
             tiles = _grid(None)
-            for y in (5, 6, 7):
-                for x in range(5, 8):
+            for group in s2.SCALED_TARGETS:
+                for x, y in group:
                     tiles[y][x] = "LOCKED"
             tiles[7][5] = None
             observation = _obs(tiles=tiles)
@@ -127,25 +128,24 @@ class S2HerdScaleTests(unittest.TestCase):
         finally:
             r04._v219_native_day = original_native_day
 
-    def test_rescue_cap_tracks_active_service_surface(self):
+    def test_rescue_cap_tracks_eight_active_target_cells(self):
         tiles = _grid(None)
-        targets = {}
-        for actor, y in enumerate((5, 6, 7), start=1):
-            targets[actor] = [(x, y) for x in range(5, 8)]
-            for x in range(5, 8):
+        targets = {1: list(s2.SCALED_TARGETS[0]), 2: list(s2.SCALED_TARGETS[1])}
+        for group in targets.values():
+            for x, y in group:
                 tiles[y][x] = {"kind": "PASTURE", "animal": "SHEEP", "fed_today": False}
 
-        observation = _obs(step=300, hands=3, tiles=tiles)
-        observation["private"]["inventories"] = [{}, {}, {}, {}]
+        observation = _obs(step=300, hands=2, tiles=tiles)
+        observation["private"]["inventories"] = [{}, {}, {}]
         state = {"workers": targets, "rescue_today": 0}
-        result = r04._v234_rescue(observation, _action(hands=3), state)
-        self.assertEqual(result["market"], [["BUY_PRODUCT", "WHEAT", 9]])
-        self.assertEqual(state["rescue_today"], 9)
+        result = r04._v234_rescue(observation, _action(hands=2), state)
+        self.assertEqual(result["market"], [["BUY_PRODUCT", "WHEAT", 8]])
+        self.assertEqual(state["rescue_today"], 8)
 
-    def test_profile_helper_rejects_internal_ratio_drift(self):
+    def test_profile_helper_rejects_target_count_drift(self):
         original = dict(s2.SCALED_PROFILE)
         try:
-            s2.SCALED_PROFILE["sheep"] = 8
+            s2.SCALED_PROFILE["sheep"] = 7
             with self.assertRaises(ValueError):
                 s2.v233_profile(True)
         finally:
