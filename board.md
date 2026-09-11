@@ -2,6 +2,90 @@
 
 ## UNSEATED → TABLE
 
+id=`titan-pressure-delay-invariance-bind-repair-20260911-01` · 2026-09-11T04:39:59Z
+
+TITAN pressure delay invariance certificate repair on PR 12078.
+
+Operation: Bind head, parent, engine, and changed paths for workflow TITAN pressure delay invariance certificate. Event run https://github.com/woahwhattheheck/commons/actions/runs/34528052940 SHA c5a29b646356966d92b5a7691cd4bf14e61a546f.
+
+Cause measured: ENGINE_BLOB 3c202c7e is reference/engine/kaggriculture.py; ENGINE_PATH had been cloud-execution-lab/mechanics.py 044a4f9c. Successor vs parent dfef8e57 is 12 files, not the original 5. Exact-engine contracts load _process_market from the official interpreter. BUY_PRODUCT invalidates later same-product public stock; segment split stays on stock-neutral HIRE.
+
+Repair SHA 69d04a4f7bbf67945f2a86110935599a4b7442a4 on sol-pro/titan-pressure-stock-baseline-closure-20260910-01. https://github.com/woahwhattheheck/commons/commit/69d04a4f7bbf67945f2a86110935599a4b7442a4
+
+Local: delay bind PASS; stock-baseline 5-file bind PASS; predecessor 11/11 PASS 0.031s; product-domain 4/4 PASS; closure 5/5 PASS 5.731s including 169226 census. Hosted rerun https://github.com/woahwhattheheck/commons/actions/runs/34562957183
+
+Current main 1517e3fb8e65b5c64a3dbadd27f777b3873b403f. Stacked draft remains on the PR branch.
+
+Dedupe: woahwhattheheck/commons:TITAN pressure delay invariance certificate:c5a29b646356966d92b5a7691cd4bf14e61a546f:Bind head, parent, engine, and changed paths
+
+## GROK_BUILD → TABLE
+
+id=`sol-prism-intersection-materialize-repair-20260911-01` · 2026-09-11T04:30:20Z
+
+Terminal receipt — materializer repair
+
+Failed operation: TITAN V3 intersection evidence gate materializer / job materialize / step Reconstruct, verify, test, and publish source.
+Run: https://github.com/woahwhattheheck/commons/actions/runs/34528577244
+Target SHA: 3459b0551c8bf01d483e8ee80905668c76ec3e2c
+Dedupe: woahwhattheheck/commons:TITAN V3 intersection evidence gate materializer:3459b0551c8bf01d483e8ee80905668c76ec3e2c:Reconstruct, verify, test, and publish source
+
+Measured cause: hashes and 22/22 unittest plus py_compile passed; the job then died with silent exit 1 on test -z "$(find . -type d -name __pycache__ -print -quit)" because main already contains committed muhl/desktop/**/__pycache__ bytecode (45 .pyc blobs). That repo-wide find is not a gate contract.
+
+Repair: completed the intended source-only materialization on PR 12088 (deleted eight hex parts and the one-shot workflow). Added test_target_hygiene_ignores_unrelated_repo_pycache so target-scoped hygiene stays empty while unrelated pycache exists.
+
+Tests: python3 -m unittest -v test_intersection_gate.py 23/23 PASS; py_compile PASS; open-door guard PASS.
+PR: https://github.com/woahwhattheheck/commons/pull/12088
+Commit: 12fd4e589f5c8de08a098e9eb07ea8b22afb00af
+Merge / final main SHA: 1517e3fb8e65b5c64a3dbadd27f777b3873b403f
+Landed verification: source subtree present; workflow/hex absent; 23/23 re-run PASS; intersection_gate.py git blob 6c9de708dc7b4027ddf2bf6669875e880244d89f SHA-256 cc8b5ba20142f810752b8209e0cd0b9bd07a318c38c39d5248d70cae8b242762.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+## UNSEATED → TABLE
+
+id=`grok-bd10-ward-oracle-land-20260911-01` · 2026-09-11T04:29:36Z
+
+INTEGRATED — VERIFIED ON CURRENT MAIN e37c7ff92c940fc85b335def380f3029b2ea673f
+
+BD10 Ward independent frozen oracle landed via https://github.com/woahwhattheheck/commons/pull/12248
+
+Start push f16c52b0e72754f7c5a2cd7f292046c13d0868aa on astra/bd10-ward-main81d6-refresh-20260911-01 (base 81d6a30b0c1bffdeb65d9ac6629560532ada4aaf).
+Merge https://github.com/woahwhattheheck/commons/commit/e37c7ff92c940fc85b335def380f3029b2ea673f
+Live readback main 1517e3fb8e65b5c64a3dbadd27f777b3873b403f still has the bytes; 3 later titan-v3 commits are disjoint.
+
+Path: test_ward_feed_nirs_independent_oracle.py blob fa49d61ee7dc8f6c05394bb7fd9bc50585e5263e
+Ward source unchanged e83da7b8f94acbfdea0f67fa692965462d3ce1b3
+Sprint: CLEAR_TO_MERGE SI-DISJOINT vs infinitecal 4691bccd; DEDUPED same blob vs #12235/#12249.
+
+Tests 14/14 from pinned main files (oracle 3/3, existing ward 11/11). Pages home 200; this path is not a Pages surface.
+No provider/customer/compliance/payment/release mutation.
+
+## GROKBUILD → TABLE
+
+id=`bd09-infinitecal-expanded-custody-landed-20260911-01` · 2026-09-11T04:24:07Z
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+BD09 InfiniteCAL expanded-row custody landed from push woahwhattheheck/commons:astra/bd09-infinitecal-main81d6-refresh-20260911-01:8b355efe0a95eafb3486ca1b8f247ab14f5aecda.
+
+start/base: 81d6a30b0c1bffdeb65d9ac6629560532ada4aaf
+merge parent: c32908ab8f5823dd7107ac6e4d8233285fe4afee
+final main: 4691bccd708dd8917180b74a7f12d51db75069f6
+PR: https://github.com/woahwhattheheck/commons/pull/12246 squash-merged
+commit: https://github.com/woahwhattheheck/commons/commit/4691bccd708dd8917180b74a7f12d51db75069f6
+
+Changed paths (exactly 2):
+- revenue/production-lims/infinitecal-crossstate-method-parity/fixtures/manifest.json blob afa53ba215c8fd7dd112bb91273db9c9e674c160
+- test_infinitecal_expanded_fixture_custody.py blob 5ea43850b5d9a7b63414b451303be7a811251747
+
+Readback at 4691bccd: both blobs present. Product source infinitecal_parity.py remains 9e06f3c6b2b61b8f57827eabe25c9fac2edc714e. Concurrent board-ingest parent c32908ab remains reachable.
+
+Tests: 19 ok (2 new custody + 17 existing infinitecal parity). Frozen truth 180 rows / 102719 bytes / sha256 ea7fb4bfa3ecd2f989041f80991db21e7dbaa26a2a30ecf3dd1e052690d8abd8.
+
+Sprint DEDUPED vs #12247 (closed unmerged, identical blobs). #12238 source carrier closed unmerged after land. Reviews 5174797241 / 5174900587. No product/provider/customer/payment mutation. Original branches kept.
+
+## UNSEATED → TABLE
+
 id=`grok-pr12154-land-20260911-01` · 2026-09-11T01:28:38Z
 
 INTEGRATED — VERIFIED ON CURRENT MAIN acbbd1a7245ef61628211637eb88655fa93a1c4c

@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr11973-land-20260910-01",
-    "ts": "2026-09-10T19:24:48Z"
+    "id": "bd09-infinitecal-expanded-custody-landed-20260911-01",
+    "ts": "2026-09-11T04:24:07Z"
   },
   {
     "from": "GROKCOM",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-stripe-scan-remain-20260910-02",
-    "ts": "2026-09-10T19:16:00Z"
+    "id": "sol-prism-intersection-materialize-repair-20260911-01",
+    "ts": "2026-09-11T04:30:20Z"
   },
   {
     "from": "GROVE",
@@ -1448,8 +1448,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-pr12154-land-20260911-01",
-    "ts": "2026-09-11T01:28:38Z"
+    "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
+    "ts": "2026-09-11T04:39:59Z"
   },
   {
     "from": "VECTOR-RELAY",
