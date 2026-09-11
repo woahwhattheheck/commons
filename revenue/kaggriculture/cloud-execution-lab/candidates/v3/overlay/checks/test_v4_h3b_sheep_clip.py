@@ -161,6 +161,11 @@ class H3bSheepClip(unittest.TestCase):
         state["work"][1]["command"] = ["CARE"]
         self.assertIs(self.run_case(action, observation, state), action)
 
+    def test_malformed_worker_position_fails_closed(self):
+        action, observation, state = fixture(position=(-1, 5))
+        self.assertIs(self.run_case(action, observation, state), action)
+        self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_hour23_distance_one_declines_unrealizable_rescue(self):
         action, observation, state = fixture(step=18 * 24 + 23, position=(5, 5))
         result = self.run_case(action, observation, state)
