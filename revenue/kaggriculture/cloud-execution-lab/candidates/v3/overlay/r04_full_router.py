@@ -45,6 +45,12 @@ import base64
 import lzma
 # The thirteen 719-step tapes are carried once for the tree, in r01_tapes.
 from r01_tapes import load_tapes
+from a4_second_melons import (
+    apply_a4,
+    reset as a4_reset,
+    DEFAULT_COUNT as A4_DEFAULT_COUNT,
+    DEFAULT_PLANT_DAY as A4_DEFAULT_PLANT_DAY,
+)
 
 _INLINE_TAPES = load_tapes()
 TURNS_PER_DAY = 24
@@ -1564,6 +1570,15 @@ FLUSH_ITEMS = ("WOOL", "MILK", "STRAWBERRY", "MELON")
 FLUSH_HOURS = (21, 22, 23)
 
 
+# A4_SECOND_MELONS plants a second wave of melons on A4_PLANT_DAY (default 12):
+# the lane buys A4_MELON_COUNT seeds, hires its own daily crew (hired hands reset
+# every dawn), plants on free tiles, waters through the d18-24 yield window and
+# harvests d22-24. Default off; the apply_a4() core takes `enabled` explicitly.
+A4_SECOND_MELONS = False
+A4_MELON_COUNT = A4_DEFAULT_COUNT
+A4_PLANT_DAY = A4_DEFAULT_PLANT_DAY
+
+
 def evening_flush(observation, action):
     step = int(observation["step"])
     if step >= LAST_STEP or step < 24 or step % 24 not in FLUSH_HOURS:
@@ -1600,6 +1615,9 @@ def v3_agent(observation, configuration=None):
             action["market"] = ordered
     if EVENING_FLUSH:
         action = evening_flush(observation, action)
+    if A4_SECOND_MELONS:
+        action = apply_a4(observation, action, enabled=True,
+                          count=A4_MELON_COUNT, plant_day=A4_PLANT_DAY)
     if (OPEN_ROUNDTRIP > 0 and int(observation["step"]) == 0
             and [list(o) for o in action.get("market") or []] == TAPE_OPENING):
         action = dict(action)
@@ -1609,16 +1627,19 @@ def v3_agent(observation, configuration=None):
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None):
+            sale_fertilizer=None, cattle_early=None, a4_second_melons=None,
+            a4_melon_count=None, a4_plant_day=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
     factory sets SALE_HORIZON; V231 reads _V231_EARLY at call time. sale_fertilizer lets the
     window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
     also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
-    first two shops consume MILK and neither is the YARN_STORE.
+    first two shops consume MILK and neither is the YARN_STORE. a4_second_melons enables the
+    day-12 second-wave melon planting lane (a4_melon_count seeds, a4_plant_day planting day).
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global A4_SECOND_MELONS, A4_MELON_COUNT, A4_PLANT_DAY
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1637,4 +1658,16 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
     if cattle_early is not None:
         _V231_EARLY = bool(cattle_early)
+    if a4_second_melons is not None:
+        A4_SECOND_MELONS = bool(a4_second_melons)
+    if a4_melon_count is not None:
+        a4_melon_count = int(a4_melon_count)
+        if a4_melon_count < 0:
+            raise ValueError("a4 melon count must be non-negative")
+        A4_MELON_COUNT = a4_melon_count
+    if a4_plant_day is not None:
+        a4_plant_day = int(a4_plant_day)
+        if not 0 <= a4_plant_day <= 24:
+            raise ValueError("a4 plant day must be within the season")
+        A4_PLANT_DAY = a4_plant_day
     return v3_agent

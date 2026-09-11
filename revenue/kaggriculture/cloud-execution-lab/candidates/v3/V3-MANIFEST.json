@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "088ce50169a0087ebb0f2f1c09358d2aebd8ac93a2b27e42b613098cd126fd90",
-    "bytes": 528738,
-    "files": 126
+    "sha256": "ea5a74d30e0378e06ff60fdd3e01a7d6a925e277c02982bbe29add997fdf1d8a",
+    "bytes": 537706,
+    "files": 128
   },
   "releases": [
     {
@@ -335,6 +335,8 @@
     "results": []
   },
   "overlay": {
+    "a4_second_melons.py": "33bc61330b868116e8d7c5220b0886ddba11a8ac89e275dd6e73f013c2d8a85f",
+    "checks/test_v3_a4_second_melons.py": "d926c2a40cc96f791e7f241aedfa87be5d2e600320bfbeba688b9870a717d92c",
     "checks/test_v3_features.py": "19f8c42da93bf9d1f7db7722af80f5b6ab12c249362ddb95d9142c1c57d76e8d",
     "checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
     "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
@@ -348,9 +350,9 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "281117d7460d57c71a8caa9f30ed81cd918b714ad88638d47cb06d071bc12239",
+    "r04_full_router.py": "35d63aab324865d2a0c6aed7abb80f53ab9c279657e41fe5ecf7465bba8e4587",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "84560b01567833ec1eecb31c127e325e286d77bb7cc40bb88089734a125ed34f"
+    "apply_v3.py": "b5d1e02fbdcd6f8effd0ae1148111b5394916d618b53964d40f93c24cc263eb9"
   }
 }
