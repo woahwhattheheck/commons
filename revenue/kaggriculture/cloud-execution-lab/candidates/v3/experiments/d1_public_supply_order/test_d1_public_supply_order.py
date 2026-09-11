@@ -21,6 +21,27 @@ class Poison:
         raise AssertionError(f"private state must not be read: {key}")
 
 
+class EvaluatorStruct(dict):
+    """Minimal exact model of reference/evaluator/evaluate.py::Struct."""
+
+    def __getattr__(self, key):
+        try:
+            return self[key]
+        except KeyError:
+            raise AttributeError(key) from None
+
+    def __setattr__(self, key, value):
+        self[key] = value
+
+
+def evaluator_structify(value):
+    if isinstance(value, dict):
+        return EvaluatorStruct({k: evaluator_structify(v) for k, v in value.items()})
+    if isinstance(value, list):
+        return [evaluator_structify(v) for v in value]
+    return value
+
+
 def observation(*tiles, player=0):
     board = [[None for _ in range(10)] for _ in range(10)]
     for index, tile in enumerate(tiles):
@@ -60,6 +81,37 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
             public_rival_supply(obs),
             {"STRAWBERRY": 3, "WOOL": 2, "EGG": 4, "MILK": 5},
         )
+
+    def test_evaluator_struct_wrapping_preserves_plain_json_signal_and_action(self):
+        plain = observation(
+            {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3},
+            {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2},
+        )
+        wrapped = evaluator_structify(plain)
+        self.assertEqual(public_rival_supply(wrapped), public_rival_supply(plain))
+        self.assertEqual(public_rival_supply(wrapped), {"STRAWBERRY": 3, "WOOL": 2})
+
+        milk = ["SELL", "MILK", 2]
+        wool = ["SELL", "WOOL", 2]
+        parent = action(milk, wool)
+        changed = apply_public_supply_order(
+            wrapped,
+            parent,
+            evaluator_structify({"marketParams": {}}),
+        )
+        self.assertEqual(changed["market"], [wool, milk])
+        self.assertIs(changed["market"][0], wool)
+        self.assertIs(changed["market"][1], milk)
+
+    def test_evaluator_struct_wrapping_does_not_weaken_malformed_fail_closed_rules(self):
+        valid = {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2}
+        malformed = {"kind": "PLANT", "crop": "CARROT", "yield_units": True}
+        wrapped = evaluator_structify(observation(valid, malformed))
+        self.assertEqual(public_rival_supply(wrapped), {})
+
+        parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
+        custom = evaluator_structify({"marketParams": {"WOOL": {"base": 999}}})
+        self.assertIs(apply_public_supply_order(evaluator_structify(observation(valid)), parent, custom), parent)
 
     def test_malformed_producing_counter_invalidates_whole_signal(self):
         valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}

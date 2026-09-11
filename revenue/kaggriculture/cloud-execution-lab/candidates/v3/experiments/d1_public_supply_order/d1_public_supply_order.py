@@ -14,6 +14,7 @@ Malformed evidence invalidates the whole signal rather than being partially trus
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import Any
 
 
@@ -42,6 +43,10 @@ def _strict_nonnegative_int(value: Any) -> int | None:
 def public_rival_supply(observation: Any) -> dict[str, int]:
     """Return visible standing rival yield, or ``{}`` if evidence is invalid/absent.
 
+    The official evaluator recursively wraps JSON objects in a ``dict`` subclass before
+    calling agents. Mapping containers are therefore accepted at JSON-object boundaries,
+    while list/scalar fields retain their exact-type contracts.
+
     A structurally malformed rival board is never partially trusted. The frozen V3.1
     theorem uses the standard 10x10 board, so truncated/ragged/nonstandard board shapes
     are ambiguous and fail closed before any producing tile can authorize a reorder.
@@ -50,14 +55,14 @@ def public_rival_supply(observation: Any) -> dict[str, int]:
     structure kind, and nonnegative integer ``yield_units``; otherwise the entire public
     signal fails closed.
     """
-    if type(observation) is not dict:
+    if not isinstance(observation, Mapping):
         return {}
     farms = observation.get("farms")
     player = observation.get("player")
     if type(farms) is not list or len(farms) != 2 or type(player) is not int or player not in (0, 1):
         return {}
     rival = farms[1 - player]
-    if type(rival) is not dict:
+    if not isinstance(rival, Mapping):
         return {}
     tiles = rival.get("tiles")
     if type(tiles) is not list or len(tiles) != _BOARD_SIZE:
@@ -71,7 +76,7 @@ def public_rival_supply(observation: Any) -> dict[str, int]:
             # Locked/empty cells are non-signals, not malformed producing evidence.
             if tile is None or tile == "LOCKED":
                 continue
-            if type(tile) is not dict:
+            if not isinstance(tile, Mapping):
                 return {}
 
             kind = tile.get("kind")
@@ -132,19 +137,21 @@ def apply_public_supply_order(
     """Stable-partition the leading SELL block by visible rival standing supply.
 
     Disabled or unsupported inputs return the exact same parent object. Only absent,
-    ``None``, or an exact empty ``marketParams`` mapping counts as the frozen default
+    ``None``, or an exact empty mapping ``marketParams`` counts as the frozen default
     market contract; custom parameters and falsey type-confused aliases fail closed.
-    Every row object, quantity, tail position and non-market action is retained.
+    Mapping containers are accepted only where the official evaluator represents JSON
+    objects; scalar and list grammar remains exact. Every row object, quantity, tail
+    position and non-market action is retained.
     """
     REPORT["calls"] += 1
     if not enabled or type(action) is not dict:
         return action
-    if configuration is not None and type(configuration) is not dict:
+    if configuration is not None and not isinstance(configuration, Mapping):
         return action
-    if type(configuration) is dict:
+    if isinstance(configuration, Mapping):
         market_params = configuration.get("marketParams")
         if market_params is not None:
-            if type(market_params) is not dict or market_params:
+            if not isinstance(market_params, Mapping) or market_params:
                 return action
     market = action.get("market")
     if type(market) is not list:
