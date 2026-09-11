@@ -1,0 +1,122 @@
+name: TITAN V3.1 B11 a612 mirror screen
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-a612-b11-mirror-screen.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_a612_screen/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-current-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout literal evidence head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact a612 ancestry, scope, donor, and current stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          DONOR='d8fb85e7dd510cb816e616864760446332e5be7b'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git cat-file -e "$DONOR^{commit}"
+          test "$(git rev-parse "$DONOR:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/b11_mirror_horizon.py")" = '94b270f36c4a27b3d958ac3420bbe5764ac327a1'
+
+          cat > /tmp/expected <<'EOF'
+          .github/workflows/titan-v31-a612-b11-mirror-screen.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_a612_screen/run_current_stack.py
+          EOF
+          sort -o /tmp/expected /tmp/expected
+          git diff --name-only "$BASE"...HEAD | sort > /tmp/actual
+          diff -u /tmp/expected /tmp/actual
+
+          for path in \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json \
+            revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/utils.py
+          do
+            test "$(git rev-parse "HEAD:$path")" = "$(git rev-parse "$BASE:$path")"
+          done
+          echo B11_A612_CUSTODY_OK
+
+      - name: Prove pinned canonical is still the live target
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+
+      - name: Compile runner without mutating checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_a612_screen/run_current_stack.py')
+          compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run exact a612 B11 two-regime composition gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/b11-a612"
+          mkdir -p "$OUT"
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_a612_screen/run_current_stack.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" |& tee "$RUNNER_TEMP/b11-a612.log"
+          cat "$OUT/receipt.md" >> "$GITHUB_STEP_SUMMARY"
+          python - "$OUT/receipt.json" <<'PY'
+          import json, pathlib, sys
+          data = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          assert data['schema'] == 'titan-v31-b11-a612-screen/v1'
+          assert data['canonical_head'] == 'a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          assert data['reviewed_b11_donor']['blob'] == '94b270f36c4a27b3d958ac3420bbe5764ac327a1'
+          print('B11_A612_DISPOSITION', data['disposition'])
+          print('B11_A612_ARLENE_IDENTITY', data['arlene_exact_h8_identity'])
+          print('B11_A612_SELF', data['self']['summary'])
+          print('B11_A612_ARLENE', data['arlene']['summary'])
+          PY
+
+      - name: Recheck live canonical before retaining evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact paired evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-a612-b11-mirror-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/b11-a612
+            ${{ runner.temp }}/b11-a612.log
+          if-no-files-found: error
+          retention-days: 14
