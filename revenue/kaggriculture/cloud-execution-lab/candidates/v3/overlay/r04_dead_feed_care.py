@@ -24,7 +24,8 @@ def _strict_animal(tile: Any, day: int):
     if not isinstance(tile, dict):
         return None
     animal = tile.get("animal", _MISSING)
-    if animal not in _ANIMAL_KIND or tile.get("kind", _MISSING) != _ANIMAL_KIND[animal]:
+    if (not isinstance(animal, str) or animal not in _ANIMAL_KIND
+            or tile.get("kind", _MISSING) != _ANIMAL_KIND[animal]):
         return None
     placed = tile.get("placed_day", _MISSING)
     units = tile.get("yield_units", _MISSING)
