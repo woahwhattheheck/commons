@@ -82,6 +82,28 @@ class StrictReceiptTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "literal requested panel"):
             sr.validate_receipt(receipt, fx["requested_panel"], fx["live_canonical_sha"])
 
+    def test_opponent_whitespace_is_literal_identity_not_normalized(self):
+        fx = self.fixture
+        requested = copy.deepcopy(fx["requested_panel"])
+        requested["opponents"][0] = " alpha "
+
+        # This is the predecessor-killing poison: the old implementation
+        # stripped the caller's requested opponent to "alpha" and accepted the
+        # unmodified receipt. Literal panel identity must reject substitution.
+        with self.assertRaisesRegex(ValueError, "literal requested panel"):
+            sr.validate_receipt(fx["valid_receipt"], requested, fx["live_canonical_sha"])
+
+        # Whitespace is still permitted when it is actually part of the
+        # requested identifier; panel and cell coordinates preserve it exactly.
+        receipt = copy.deepcopy(fx["valid_receipt"])
+        receipt["panel"] = copy.deepcopy(requested)
+        for cell in receipt["cells"]:
+            if cell["opponent"] == "alpha":
+                cell["opponent"] = " alpha "
+        got = sr.validate_receipt(receipt, requested, fx["live_canonical_sha"])
+        self.assertEqual(got["panel"]["opponents"][0], " alpha ")
+        self.assertIn(" alpha ", {cell["opponent"] for cell in got["cells"]})
+
     def test_exact_cartesian_requires_all_pairs_even_when_count_matches(self):
         fx = self.fixture
         receipt = copy.deepcopy(fx["valid_receipt"])
