@@ -3,9 +3,12 @@
 
 This is deliberately not a gameplay-strength or cash-feasibility claim. It decodes the
 current v3 R04 route bank and derives, from authored worker movement + HIRE spawns, the
-first target-quadrant tile effect after each active-prefix BUY_LAND. It also records
-market occupancy and SELL/HIRE rows before the first authored land purchase so a later
-official-interpreter cash probe has an exact, source-bound search space.
+first target-quadrant tile effect around each active-prefix BUY_LAND. Because farm
+workers act before market orders, the audit separately records target-quadrant actions
+on the BUY_LAND step itself: moving the purchase one step earlier could make those
+otherwise-locked actions productive. It also records market occupancy and SELL/HIRE
+rows before the first authored land purchase so a later official-interpreter cash
+probe has an exact, source-bound search space.
 """
 from __future__ import annotations
 
@@ -99,11 +102,33 @@ def census_route(route: Sequence[Mapping[str, Any]], route_id: int) -> dict[str,
         if step % TURNS_PER_DAY == 0:
             positions = [origin]
 
+        market = _market(row)
+        planned_buy_targets: dict[int, str] = {}
+        buy_index = len(unlocked) - 1
+        for slot, order in enumerate(market):
+            if order and order[0] == "BUY_LAND":
+                if buy_index >= len(LAND_ORDER):
+                    raise AssertionError((route_id, step, "too many authored BUY_LAND rows"))
+                planned_buy_targets[slot] = LAND_ORDER[buy_index]
+                buy_index += 1
+
+        # Farm actions execute before market orders. Capture any target-quadrant action
+        # that would become newly legal if this step's BUY_LAND were moved earlier.
+        purchase_step_latent: dict[str, list[dict[str, Any]]] = {
+            target: [] for target in planned_buy_targets.values()
+        }
         for worker in range(len(positions)):
             action = _unit(row, worker)
             pos = positions[worker]
             quadrant = _quadrant(pos)
             nxt = _move(pos, action)
+            for target in purchase_step_latent:
+                if _land_dependent(action) and quadrant == target:
+                    purchase_step_latent[target].append({
+                        "worker": worker,
+                        "action": list(action),
+                        "position": list(pos),
+                    })
             for item in pending:
                 if item["first_move_step"] is None and action[0] in MOVES:
                     if _quadrant(nxt) == item["target_quadrant"]:
@@ -117,20 +142,22 @@ def census_route(route: Sequence[Mapping[str, Any]], route_id: int) -> dict[str,
                         item["first_effect_position"] = list(pos)
             positions[worker] = nxt
 
-        for slot, order in enumerate(_market(row)):
+        for slot, order in enumerate(market):
             if not order:
                 continue
             if order[0] == "HIRE":
                 positions.append(_spawn(positions))
             elif order[0] == "BUY_LAND":
-                if len(unlocked) - 1 >= len(LAND_ORDER):
-                    raise AssertionError((route_id, step, "too many authored BUY_LAND rows"))
-                target = LAND_ORDER[len(unlocked) - 1]
+                target = planned_buy_targets[slot]
+                expected = LAND_ORDER[len(unlocked) - 1]
+                if target != expected:
+                    raise AssertionError((route_id, step, slot, target, expected))
                 unlocked.append(target)
                 item = {
                     "purchase_step": step,
                     "purchase_slot": slot,
                     "target_quadrant": target,
+                    "purchase_step_latent_effects": purchase_step_latent[target],
                     "first_move_step": None,
                     "first_effect_step": None,
                     "first_effect_worker": None,
@@ -144,6 +171,12 @@ def census_route(route: Sequence[Mapping[str, Any]], route_id: int) -> dict[str,
     for item in purchases:
         effect = item["first_effect_step"]
         item["gap_to_first_effect"] = None if effect is None else effect - item["purchase_step"]
+        latent = item["purchase_step_latent_effects"]
+        item["earliest_effect_if_bought_previous_step"] = (
+            item["purchase_step"] if latent else effect
+        )
+        earliest = item["earliest_effect_if_bought_previous_step"]
+        item["productive_purchase_deadline"] = None if earliest is None else earliest - 1
 
     pre150 = []
     funding_rows = []
@@ -166,8 +199,7 @@ def census_route(route: Sequence[Mapping[str, Any]], route_id: int) -> dict[str,
         "route_id": route_id,
         "purchase_steps": [item["purchase_step"] for item in purchases],
         "purchases": purchases,
-        "first_land_deadline": None if first is None or first["first_effect_step"] is None
-        else first["first_effect_step"] - 1,
+        "first_land_deadline": None if first is None else first["productive_purchase_deadline"],
         "pre150_rows_96_149": pre150,
         "pre150_funding_related_rows": funding_rows,
     }
@@ -189,8 +221,10 @@ def main() -> int:
             raise AssertionError((row["route_id"], "BUY_LAND drift", row["purchase_steps"]))
 
     first_effects = [row["purchases"][0]["first_effect_step"] for row in routes]
+    first_latent = [bool(row["purchases"][0]["purchase_step_latent_effects"]) for row in routes]
+    deadlines = [row["first_land_deadline"] for row in routes]
     report = {
-        "schema": "titan.v31.h13.r04-land-structural-census.v1",
+        "schema": "titan.v31.h13.r04-land-structural-census.v2",
         "scope": "structural-only; no cash/execution/score claim",
         "git_head": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         "source": {
@@ -201,12 +235,13 @@ def main() -> int:
         },
         "summary": {
             "all_purchase_steps": sorted({tuple(row["purchase_steps"]) for row in routes}),
-            "first_effect_steps": first_effects,
-            "earliest_first_effect": min(x for x in first_effects if x is not None),
-            "latest_first_effect": max(x for x in first_effects if x is not None),
-            "routes_with_pre150_land_effect": sum(
-                1 for x in first_effects if x is not None and x < FIRST_AUTHORED_LAND_STEP
-            ),
+            "first_post_purchase_effect_steps": first_effects,
+            "earliest_post_purchase_effect": min(x for x in first_effects if x is not None),
+            "latest_post_purchase_effect": max(x for x in first_effects if x is not None),
+            "routes_with_purchase_step_latent_effect": sum(first_latent),
+            "first_land_productive_deadlines": deadlines,
+            "earliest_first_land_deadline": min(x for x in deadlines if x is not None),
+            "latest_first_land_deadline": max(x for x in deadlines if x is not None),
         },
         "routes": routes,
     }
@@ -218,8 +253,9 @@ def main() -> int:
         first = row["purchases"][0]
         print(
             f"route={row['route_id']:02d} buy={first['purchase_step']}:{first['purchase_slot']} "
-            f"target={first['target_quadrant']} first_move={first['first_move_step']} "
-            f"first_effect={first['first_effect_step']} deadline={row['first_land_deadline']} "
+            f"target={first['target_quadrant']} latent={len(first['purchase_step_latent_effects'])} "
+            f"first_move={first['first_move_step']} first_effect={first['first_effect_step']} "
+            f"deadline={row['first_land_deadline']} "
             f"effect={first['first_effect_action']}@{first['first_effect_position']}"
         )
     return 0
