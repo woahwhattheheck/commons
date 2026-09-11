@@ -1,0 +1,76 @@
+name: titan-v31-a5-melon-jit-fertilize
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a5_melon_jit_fertilize.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_a5_melon_jit_fertilize.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a5_melon_jit/**'
+      - '.github/workflows/titan-v31-a5-melon-jit-fertilize.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind frozen base and exact proof-only scope
+        run: |
+          set -euo pipefail
+          base=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          git merge-base --is-ancestor "$base" HEAD
+          test "$(git merge-base "$base" HEAD)" = "$base"
+          git diff --name-only "$base"..HEAD | sort > /tmp/a5-actual
+          cat > /tmp/a5-expected <<'EOF'
+          .github/workflows/titan-v31-a5-melon-jit-fertilize.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a5_melon_jit/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a5_melon_jit_fertilize.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_a5_melon_jit_fertilize.py
+          EOF
+          sort -o /tmp/a5-expected /tmp/a5-expected
+          diff -u /tmp/a5-expected /tmp/a5-actual
+
+      - name: Compile and run focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
+        run: |
+          set -euo pipefail
+          python -B -m py_compile a5_melon_jit_fertilize.py test_a5_melon_jit_fertilize.py a5_melon_jit/candidate.py
+          python -B -m unittest -v test_a5_melon_jit_fertilize.py
+
+      - name: Smoke exact evaluator custody
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('a5_melon_jit/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('a5_candidate', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert module.A5_EVALUATOR_CONFIG['r04_sale_horizon'] == 8
+          assert module.A5_EVALUATOR_CONFIG['r04_evening_flush'] is True
+          assert module.A5_EVALUATOR_CONFIG['r04_sale_fertilizer'] is True
+          assert module.A5_EVALUATOR_CONFIG['r04_cattle_early'] is True
+          assert module.A5_EVALUATOR_CONFIG['a5_melon_jit_fertilize'] is True
+          assert module.A5_EVALUATOR_CONFIG['a5_evidence_boundary'] == 'next_authored_water_not_guaranteed_next_actual_action'
+          assert not module.REPORT
+          assert module.TRACE == []
+          print('A5 SOURCE GATE OK')
+          PY
+
+      - name: Prove checkout stayed clean
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
