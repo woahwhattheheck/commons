@@ -2,16 +2,140 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 5,
-    "runs_in_progress": "UNKNOWN",
-    "runs_queued": "UNKNOWN"
+    "runs_in_progress": 20,
+    "runs_queued": 2224
   },
-  "degraded": [
-    "pulls"
+  "degraded": [],
+  "drafts": 235,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
+      "created_at": "2026-09-10T18:42:48Z",
+      "draft": false,
+      "number": 11959,
+      "title": "TITAN: reconcile canonical package with current source and name drift"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "owner/titan-v3-regression-recovery-20260910-01",
+      "created_at": "2026-09-10T18:53:43Z",
+      "draft": false,
+      "number": 11961,
+      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
+      "created_at": "2026-09-10T18:55:16Z",
+      "draft": true,
+      "number": 11963,
+      "title": "TITAN V3: admit all-shed intent-first SELL priority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
+      "created_at": "2026-09-10T18:59:26Z",
+      "draft": false,
+      "number": 11965,
+      "title": "titan-v3: run own-value objective on bound current archive"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
+      "created_at": "2026-09-10T19:00:36Z",
+      "draft": true,
+      "number": 11968,
+      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
+    }
   ],
-  "pulls_listed": "UNKNOWN",
-  "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": "UNKNOWN",
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-b11-mirror-currentroot-20260911",
+      "created_at": "2026-09-11T10:41:29Z",
+      "draft": true,
+      "number": 12559,
+      "title": "TITAN V3.1: recompose B11 mirror horizon on shipped 8e3 B5+JIT"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-s33-row-shed-8e3-20260911",
+      "created_at": "2026-09-11T10:40:55Z",
+      "draft": true,
+      "number": 12558,
+      "title": "TITAN V3.1: preserve S33 row-shed donor on shipped 8e3 root"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-d3-merge-policy-consume-20260911",
+      "created_at": "2026-09-11T10:40:42Z",
+      "draft": true,
+      "number": 12557,
+      "title": "TITAN V3.1: consume D3 merge policy on shipped 8e3 root"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-d3-externality-gate-current-root-20260911",
+      "created_at": "2026-09-11T10:40:29Z",
+      "draft": true,
+      "number": 12556,
+      "title": "TITAN V3.1: consume reviewed D3 externality gate on shipped 8e3 root"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-h3c-goose-realization-20260911",
+      "created_at": "2026-09-11T10:40:29Z",
+      "draft": true,
+      "number": 12555,
+      "title": "TITAN V3.1: recompose H3c goose rescue on shipped 8e3 root"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-row-shed-current-root-20260911-01",
+      "created_at": "2026-09-11T10:40:17Z",
+      "draft": true,
+      "number": 12554,
+      "title": "TITAN V3.1: bind S33 row-shed to current 8e3 convergence root"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-h13-cattleoff-horizon-recompose-20260911",
+      "created_at": "2026-09-11T10:40:00Z",
+      "draft": true,
+      "number": 12553,
+      "title": "TITAN V3.1 H13: gate horizon10 on shipped 8e3 cattle-OFF stack"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-e20-current-root-consume-20260911",
+      "created_at": "2026-09-11T10:39:56Z",
+      "draft": true,
+      "number": 12552,
+      "title": "TITAN V3.1: consume reviewed E20 on shipped 8e3 B5+JIT stack"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-row-shed-current-root-recompose-20260911",
+      "created_at": "2026-09-11T10:39:10Z",
+      "draft": true,
+      "number": 12551,
+      "title": "TITAN V3.1: surface current-root S33 row-shed donor"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "opus/obs-ghstate-main828-compose-20260911-01",
+      "created_at": "2026-09-11T10:37:59Z",
+      "draft": true,
+      "number": 12546,
+      "title": "observability + github_state: compose reviewed command road and heads custody on current main"
+    }
+  ],
+  "pulls_listed": 300,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 111.2,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T09:28:24Z"
+  "unchanged_since": "2026-09-11T10:41:53Z",
+  "undatable_pulls": []
 }
