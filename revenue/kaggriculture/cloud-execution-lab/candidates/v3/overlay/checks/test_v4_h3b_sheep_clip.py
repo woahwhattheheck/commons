@@ -168,6 +168,16 @@ class H3bSheepClip(unittest.TestCase):
                 self.assertIs(self.run_case(action, observation, state,
                                             configuration=configuration), action)
 
+    def test_out_of_range_player_fails_closed_even_with_third_farm_and_state(self):
+        action, observation, state = fixture()
+        observation["farms"].append(copy.deepcopy(observation["farms"][0]))
+        observation["player"] = 2
+        r04._V233_STATES[2] = state
+        result = lane.apply_h3b_sheep_clip(
+            action, observation, dict(CONFIG), enabled=True)
+        self.assertIs(result, action)
+        self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_v233_same_call_snapshot_mismatch_fails_closed(self):
         action, observation, state = fixture()
         state["work"][1]["command"] = ["CARE"]
