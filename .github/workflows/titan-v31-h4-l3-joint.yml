@@ -70,23 +70,80 @@ jobs:
           print('H4_STRUCTURAL_RECEIPT', 372, 292, 80)
           PY
 
-      - name: Smoke self-contained joint evaluator entrypoint
+      - name: Smoke exact V3.1 + H4 + L3 practice entrypoint
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
+          python -B - <<'PY'
           import importlib.util
           from pathlib import Path
+
           path = Path('experiments/h4_l3_joint/joint_arm.py').resolve()
           spec = importlib.util.spec_from_file_location('h4_l3_joint_exact', path)
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
-          assert callable(module.agent)
-          assert module.h4.STRAWBERRY_TOPUP is True
-          assert module.base.NO_LATE_SALE_ADVANCE is True
-          assert module.base.NO_LATE_SALE_ADVANCE_STEP == 648
-          print('JOINT_ENTRYPOINT_OK')
+
+          if not callable(module.agent):
+              raise SystemExit('joint agent is not callable')
+          if module.verify_joint_state() is not True:
+              raise SystemExit('joint baseline verifier did not return True')
+
+          expected = {
+              'SALE_HORIZON': 8,
+              'OPEN_ROUNDTRIP': 0,
+              'ROW_ORDER': True,
+              'EVENING_FLUSH': True,
+              'SALE_EXCLUDED': ('WHEAT',),
+              '_V231_EARLY': True,
+              'NO_LATE_SALE_ADVANCE': True,
+              'NO_LATE_SALE_ADVANCE_STEP': 648,
+          }
+          for name, wanted in expected.items():
+              actual = getattr(module.base, name)
+              if type(actual) is not type(wanted) or actual != wanted:
+                  raise SystemExit(f'{name} drifted: {actual!r} != {wanted!r}')
+          if module.h4.STRAWBERRY_TOPUP is not True:
+              raise SystemExit('H4 strawberry top-up is not enabled')
+
+          # The practice arm is a fixed comparison target, not a knob playground.
+          for kwargs in (
+              {'row_order': False},
+              {'evening_flush': False},
+              {'sale_fertilizer': False},
+              {'cattle_early': False},
+              {'horizon': 7},
+              {'opening': 1},
+              {'no_late_sale_advance_step': 647},
+          ):
+              try:
+                  module.install_joint(**kwargs)
+              except ValueError:
+                  pass
+              else:
+                  raise SystemExit(f'non-baseline override was accepted: {kwargs!r}')
+          if module.verify_joint_state() is not True:
+              raise SystemExit('negative override probes mutated the joint baseline')
+          print('JOINT_ENTRYPOINT_OK V31_BASELINE_PLUS_H4_L3')
+          PY
+
+      - name: Prove optimized import keeps explicit baseline guard
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '1'
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('experiments/h4_l3_joint/joint_arm.py').resolve()
+          spec = importlib.util.spec_from_file_location('h4_l3_joint_optimized', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          if module.verify_joint_state() is not True:
+              raise SystemExit('optimized joint baseline verification failed')
+          print('JOINT_OPTIMIZED_BASELINE_OK')
           PY
 
       - name: Prove checkout stayed clean
