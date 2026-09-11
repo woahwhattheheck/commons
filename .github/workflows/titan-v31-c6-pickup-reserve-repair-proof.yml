@@ -1,0 +1,105 @@
+name: titan-v31-c6-pickup-reserve-repair-proof
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-c6-fertilizer-sale-cap-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_pickup_reserve_repair/**'
+      - '.github/workflows/titan-v31-c6-pickup-reserve-repair-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-parent-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact parent, additive scope, and reviewed blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=e0a25c2984ea086e912078e992d0f9559ffd455c
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          python - <<'PY'
+          import subprocess
+          parent = 'e0a25c2984ea086e912078e992d0f9559ffd455c'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-c6-pickup-reserve-repair-proof.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_pickup_reserve_repair/repair.patch',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_pickup_reserve_repair/test_pickup_reserve_repair.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected C6 repair-proof scope: {sorted(actual)}')
+          print('C6_PICKUP_RESERVE_REPAIR_SCOPE_OK', len(actual))
+          PY
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py")" = d2c7993c96eab45e44ecff228aa6624432c7d6f8
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/test_candidate.py")" = 7e8d796b4cdf5b18b1d58d53436d852ac795742d
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py")" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+
+      - name: Apply pickup-reserve repair ephemerally
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_pickup_reserve_repair/repair.patch
+          TARGET=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          test "$(git diff --name-only)" = "$TARGET"
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py')
+          compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('C6_PICKUP_RESERVE_COMPILE_OK')
+          PY
+
+      - name: Run inherited C6 predecessors normal and optimized
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_candidate.py |& tee /tmp/c6-parent.log
+          grep -F 'Ran 13 tests' /tmp/c6-parent.log
+          grep -F 'OK' /tmp/c6-parent.log
+          python -B -O -m unittest -v test_candidate.py |& tee /tmp/c6-parent-opt.log
+          grep -F 'Ran 13 tests' /tmp/c6-parent-opt.log
+          grep -F 'OK' /tmp/c6-parent-opt.log
+
+      - name: Run pickup-request causal killers normal and optimized
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v experiments/c6_pickup_reserve_repair/test_pickup_reserve_repair.py |& tee /tmp/c6-pickup.log
+          grep -F 'Ran 4 tests' /tmp/c6-pickup.log
+          grep -F 'OK' /tmp/c6-pickup.log
+          python -B -O -m unittest -v experiments/c6_pickup_reserve_repair/test_pickup_reserve_repair.py |& tee /tmp/c6-pickup-opt.log
+          grep -F 'Ran 4 tests' /tmp/c6-pickup-opt.log
+          grep -F 'OK' /tmp/c6-pickup-opt.log
+
+      - name: Revert ephemeral source and prove clean carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -- revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py
+          test -z "$(git status --porcelain)"
+          echo C6_PICKUP_RESERVE_EPHEMERAL_REVERT_OK
