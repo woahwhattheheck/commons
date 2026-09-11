@@ -6,9 +6,12 @@ from pathlib import Path
 import sys
 import unittest
 
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+HERE = Path(__file__).resolve().parent
+V3_ROOT = Path(__file__).resolve().parents[2]
+OVERLAY = V3_ROOT / "overlay"
+for path in (HERE, OVERLAY):
+    if str(path) not in sys.path:
+        sys.path.insert(0, str(path))
 
 import r04_full_router as r04  # noqa: E402
 import r04_h4_strawberry as h4  # noqa: E402

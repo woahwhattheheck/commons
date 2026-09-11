@@ -21,7 +21,11 @@ market already contains a SELL for that item.  Therefore an undersized current S
 prevents the sale window from reserving additional already-planned strawberry units even when
 current projected shed stock can fill them.
 
-`overlay/r04_h4_strawberry.py` closes only that live seam.
+`experiments/h4_strawberry/r04_h4_strawberry.py` closes only that live seam.  It intentionally
+lives outside `overlay/`: `build_v3.py` packages and hashes every file under `overlay/**`, so a
+default-off experiment there would silently alter the deterministic V3 package and stale
+`FILES.json` / `V3-MANIFEST.json`.  The H4 CI therefore also runs `build_v3.py --check` to prove
+that this experiment does not change shipped package bytes before promotion.
 
 ## Contract
 
@@ -50,6 +54,11 @@ The experimental `h4_agent()` preserves the live V3.1 order:
 
 This matters because ROW_ORDER should see the final strawberry quantity, while EVENING_FLUSH
 must residualize against the already-enlarged strawberry sale rather than emit a duplicate.
+
+H4 is subordinate to later sale-suppression / holding policies at integration.  In particular,
+a `noLateSaleAdvance` policy that disables advancing sales at step >= 648 must also hard-disable
+H4 there, and an intentional strawberry hold must not be refilled by H4.  Those interactions
+remain joint-gate work; this standalone experiment does not wire itself into shipped R04.
 
 ## Required gate before integration
 

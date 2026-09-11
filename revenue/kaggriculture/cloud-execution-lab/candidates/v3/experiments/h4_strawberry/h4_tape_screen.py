@@ -18,7 +18,8 @@ from pathlib import Path
 import sys
 
 HERE = Path(__file__).resolve().parent
-OVERLAY = HERE.parent
+V3_ROOT = Path(__file__).resolve().parents[2]
+OVERLAY = V3_ROOT / "overlay"
 if str(OVERLAY) not in sys.path:
     sys.path.insert(0, str(OVERLAY))
 

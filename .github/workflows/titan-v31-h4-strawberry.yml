@@ -27,12 +27,20 @@ jobs:
           git rev-parse HEAD
           git status --short
 
-      - name: Run V3.1 baseline plus H4 focused contracts
+      - name: Run V3.1 source baseline
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
           set -euo pipefail
-          python -B -m unittest discover -v -s overlay/checks -p 'test_v3*.py' |& tee /tmp/v31-h4-tests.log
+          python -B -m unittest discover -v -s overlay/checks -p 'test_v3*.py' |& tee /tmp/v31-h4-baseline.log
+          grep -F 'OK' /tmp/v31-h4-baseline.log
+
+      - name: Run H4 focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -v -s experiments/h4_strawberry -p 'test_v31_h4_strawberry.py' |& tee /tmp/v31-h4-tests.log
           grep -F 'OK' /tmp/v31-h4-tests.log
 
       - name: Run H4 route-tape structural screen
@@ -40,7 +48,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B overlay/checks/h4_tape_screen.py | tee /tmp/v31-h4-screen.json
+          python -B experiments/h4_strawberry/h4_tape_screen.py | tee /tmp/v31-h4-screen.json
           python - <<'PY'
           import json
           p = '/tmp/v31-h4-screen.json'
@@ -53,6 +61,13 @@ jobs:
           print('H4_POST_H3_CUTOFF', data['opportunity_steps_at_or_after_h3_cutoff'])
           print('H4_AUTHORED_FUTURE_QTY', data['authored_future_qty'])
           PY
+
+      - name: Verify deterministic V3 package integrity
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check
 
       - name: Prove checkout stayed clean
         shell: bash
