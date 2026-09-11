@@ -2,20 +2,22 @@
 """V4 PLACE-safe terminal shed delivery.
 
 The published R04 final-turn liquidator uses DROP for every loaded worker beside
-the shed.  The engine accepts only the remaining capacity and destroys the rest
-of a DROP payload.  PLACE is capacity-bounded without destroying the worker's
-unplaced cargo.  This lane is shipped off as ``r04_place_delivery``.
+the shed. The engine accepts only the remaining capacity and destroys the rest
+of a DROP payload. PLACE is capacity-bounded without destroying the worker's
+unplaced cargo. This lane is shipped off as ``r04_place_delivery``.
 
 When enabled, terminal-step DROP actions beside the shed are changed only when
-their combined payload would overflow the remaining shed capacity.  If every
+their combined payload would overflow the remaining shed capacity. If every
 payload fits, the exact parent action is returned so normal DROP behavior,
-including multi-product cargo, stays untouched.  Overflow also fails closed when
+including multi-product cargo, stays untouched. Overflow also fails closed when
 one worker carries multiple sellable products: the engine permits only one PLACE
 command per worker, so rewriting that DROP could leave profitable shed capacity
-unused.  Finally, a candidate rewrite must project to the exact same shed vector
-as the parent DROP action; public-price priority is never allowed to change the
-product composition admitted by baseline actor order.  Malformed terminal step/
-shed/inventory/price/position/board state fails closed to the parent action.
+unused. Finally, a candidate rewrite must project to the exact same full shed
+mapping as the parent DROP action, and the parent market vector is preserved
+verbatim. Thus public-price priority is never allowed to change terminal product
+composition, quantities, raw SELL-row indices, or hidden-rival lockstep timing.
+Malformed terminal step/shed/inventory/price/position/board state fails closed
+to the exact parent action.
 """
 from __future__ import annotations
 
@@ -47,10 +49,14 @@ def apply_place_delivery(observation, action, enabled=False):
 
     # Parent actions are positional: one farmer command plus exactly one command
     # per hand. Missing/partial vectors are ambiguous and must not be padded or
-    # silently truncated before a destructive DROP rewrite.
+    # silently truncated before a destructive DROP rewrite. The final market
+    # vector is also part of the safety theorem and must remain byte-for-byte in
+    # the same Python row structure when a rewrite is accepted.
     raw_farmer = action.get("farmer")
     raw_hands = action.get("hands")
-    if not isinstance(raw_farmer, list) or not isinstance(raw_hands, list):
+    raw_market = action.get("market")
+    if (not isinstance(raw_farmer, list) or not isinstance(raw_hands, list)
+            or not isinstance(raw_market, list)):
         return action
     workers = [raw_farmer, *raw_hands]
 
@@ -116,9 +122,9 @@ def apply_place_delivery(observation, action, enabled=False):
             return action
 
     # Overflow rewriting may consider public-price priority, but the candidate is
-    # accepted only if it reproduces the exact baseline DROP shed vector below.
+    # accepted only if it reproduces the exact baseline DROP shed mapping below.
     # This blocks cross-actor product swaps whose current quotes look attractive
-    # but whose realized terminal cash can regress under rival supply pressure.
+    # but whose realized terminal cash can regress under nonlinear/rival supply.
     if not isinstance(view.prices, dict):
         return action
     for item in touched_products:
@@ -153,7 +159,8 @@ def apply_place_delivery(observation, action, enabled=False):
         return action
 
     # Every shed-adjacent terminal DROP is removed even when there is no safe
-    # capacity or recognized product. Cargo left on a worker is preserved.
+    # capacity or recognized product. Cargo left on a worker is preserved only
+    # if the final projected-shed equality proves this changes no terminal input.
     out_workers = [list(command) if isinstance(command, list) else command for command in workers]
     for worker in range(len(out_workers)):
         command = out_workers[worker]
@@ -187,23 +194,16 @@ def apply_place_delivery(observation, action, enabled=False):
         return action
     if not isinstance(parent_stock, dict) or not isinstance(stock, dict):
         return action
-    # This is the safety theorem: the DROP->PLACE transform may preserve excess
-    # worker cargo, but it must not change any product/quantity admitted to the
-    # shed on the current turn. That keeps the terminal liquidation input exact.
-    if stock != parent_stock:
+    if any(type(quantity) is not int or quantity < 0 for quantity in parent_stock.values()):
+        return action
+    if any(type(quantity) is not int or quantity < 0 for quantity in stock.values()):
         return action
 
-    market = []
-    for item in r04.PRODUCTS:
-        quantity = stock.get(item, 0)
-        if type(quantity) is not int or quantity < 0:
-            return action
-        if quantity <= 0:
-            continue
-        price = view.prices.get(item)
-        if type(price) is not int or price < 0:
-            return action
-        market.append(["SELL", item, quantity])
-    market.sort(key=lambda order: -view.prices[order[1]] * order[2])
-    out["market"] = market[: int(r04.MAX_ORDERS)]
+    # Safety theorem: the unit substitution may preserve otherwise-destroyed
+    # overflow cargo, but it must not alter anything admitted to the shed. Keep
+    # the exact parent market list as well; rebuilding/re-sorting equal stock can
+    # still alter raw-row alignment against hidden rival orders.
+    if stock != parent_stock:
+        return action
+    out["market"] = raw_market
     return out
