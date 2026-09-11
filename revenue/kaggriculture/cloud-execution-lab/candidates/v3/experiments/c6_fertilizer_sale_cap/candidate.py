@@ -7,7 +7,7 @@ FERTILIZER quantity that E184 booked on the *same callback*.  Cancellation is
 allowed only to preserve fertilizer for already-confirmed V219 workers whose
 route state says they still need to load it.  Native/tape sales, V233 credit
 sales, unrelated E184 debt, worker commands, purchases, hires and other market
-rows are never rewritten.
+rows are never rewritten or reindexed.
 """
 from __future__ import annotations
 
@@ -268,7 +268,10 @@ def cap_owned_fertilizer_advance(observation, action, state, bookings, reserve):
     result = copy.deepcopy(action)
     row_index, quantity = rows[0]
     if withhold == quantity:
-        del result["market"][row_index]
+        # Market execution is lockstep by raw index. Preserve the E184-owned
+        # slot as an inert parser no-op so every later parent row keeps its
+        # exact index, executable-prefix membership and rival pairing.
+        result["market"][row_index] = []
     else:
         result["market"][row_index][2] = quantity - withhold
     state.sale_window_debts = refunded
