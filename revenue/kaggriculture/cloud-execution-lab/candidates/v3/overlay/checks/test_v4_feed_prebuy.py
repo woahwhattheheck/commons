@@ -59,6 +59,16 @@ def _action():
     return {"farmer": ["PASS"], "hands": [], "market": []}
 
 
+def _standard_config():
+    return {
+        "boardSize": 10,
+        "turnsPerDay": 24,
+        "shedCapacity": 100,
+        "maxMarketOrdersPerTurn": 10,
+        "marketParams": {},
+    }
+
+
 class FeedPrebuyTests(unittest.TestCase):
     def setUp(self):
         self.old_policy = r04._POLICY
@@ -87,6 +97,11 @@ class FeedPrebuyTests(unittest.TestCase):
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
         self.assertEqual(parent["market"], [])
 
+    def test_explicit_standard_config_preserves_activation(self):
+        out = lane.apply_feed_prebuy(
+            _observation(wheat=0), _action(), configuration=_standard_config(), enabled=True)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+
     def test_one_wheat_prebuy_is_minimal_when_one_is_already_stored(self):
         out = lane.apply_feed_prebuy(_observation(wheat=1), _action(), enabled=True)
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 1]])
@@ -104,6 +119,54 @@ class FeedPrebuyTests(unittest.TestCase):
         parent = _action()
         parent["farmer"] = ["EAST"]
         self.assertIs(lane.apply_feed_prebuy(_observation(), parent, enabled=True), parent)
+
+    def test_actor_surface_must_be_explicit_and_cardinality_exact(self):
+        obs = _observation()
+        malformed = []
+        missing_farmer = _action(); missing_farmer.pop("farmer")
+        missing_hands = _action(); missing_hands.pop("hands")
+        empty_farmer = _action(); empty_farmer["farmer"] = []
+        malformed.extend((missing_farmer, missing_hands, empty_farmer))
+        for parent in malformed:
+            with self.subTest(parent=parent):
+                self.assertIs(lane.apply_feed_prebuy(obs, parent, enabled=True), parent)
+
+        one_hand_obs = _observation()
+        one_hand_obs["farms"][0]["hands"] = [[4, 4]]
+        parent = _action()
+        self.assertIs(lane.apply_feed_prebuy(one_hand_obs, parent, enabled=True), parent)
+
+        one_hand_obs["private"]["inventories"] = [{}, {}]
+        parent = {"farmer": ["PASS"], "hands": [["PASS"]], "market": []}
+        out = lane.apply_feed_prebuy(one_hand_obs, parent, enabled=True)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+
+    def test_nonstandard_engine_contract_fails_closed(self):
+        obs = _observation()
+        variants = (
+            ("boardSize", 11),
+            ("turnsPerDay", 23),
+            ("shedCapacity", 99),
+            ("maxMarketOrdersPerTurn", 9),
+            ("boardSize", True),
+            ("shedCapacity", 100.0),
+        )
+        for key, value in variants:
+            config = _standard_config()
+            config[key] = value
+            parent = _action()
+            with self.subTest(key=key, value=value):
+                self.assertIs(
+                    lane.apply_feed_prebuy(obs, parent, configuration=config, enabled=True),
+                    parent,
+                )
+
+        parent = _action()
+        config = _standard_config(); config["marketParams"] = {"WHEAT": {}}
+        self.assertIs(lane.apply_feed_prebuy(obs, parent, configuration=config, enabled=True), parent)
+
+        parent = _action()
+        self.assertIs(lane.apply_feed_prebuy(obs, parent, configuration=[], enabled=True), parent)
 
     def test_low_output_value_rejects_purchase(self):
         parent = _action()
