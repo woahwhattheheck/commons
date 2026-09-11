@@ -55,7 +55,8 @@ def apply(src):
         "            action, observation, configuration, enabled=True)\n"
         "    if DEAD_WATER_HARVEST:\n"
         "        import r04_dead_water_harvest\n"
-        "        action = r04_dead_water_harvest.apply_dead_water_harvest(observation, action, enabled=True)\n",
+        "        action = r04_dead_water_harvest.apply_dead_water_harvest(\n"
+        "            observation, action, configuration, enabled=True)\n",
         "R04 V4 stack seams",
     )
     router = _replace_once(
