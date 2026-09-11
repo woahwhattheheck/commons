@@ -86,16 +86,19 @@ class PlaceDelivery(unittest.TestCase):
                           inventories=[{"CARROT": 5, "WOOL": 5}, {}])
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
-    def test_overflow_becomes_bounded_place_and_preserves_excess_cargo(self):
-        parent = action(["DROP"], [["PASS"]])
+    def test_overflow_becomes_bounded_place_and_preserves_parent_market(self):
+        # Deliberately keep a parent raw order that a fresh value-sort would
+        # reverse. The defensive seam must preserve it exactly.
+        market = [["SELL", "WHEAT", 98], ["SELL", "CARROT", 2]]
+        parent = action(["DROP"], [["PASS"]], market)
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
-                          prices={"CARROT": 30})
+                          prices={"CARROT": 1000})
         out = lane.apply_place_delivery(obs, parent, enabled=True)
+        self.assertIsNot(out, parent)
         self.assertEqual(out["farmer"], ["PLACE", "CARROT", 2])
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
-        self.assertIn(["SELL", "CARROT", 2], out["market"])
-        self.assertIn(["SELL", "WHEAT", 98], out["market"])
-        self.assertEqual(sum(row[2] for row in out["market"]), 100)
+        self.assertIs(out["market"], parent["market"])
+        self.assertEqual(out["market"], market)
 
     def test_animal_cargo_overflow_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
@@ -104,13 +107,23 @@ class PlaceDelivery(unittest.TestCase):
         # animals, so suppressing DROP would change the full projected shed dict.
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
-    def test_full_shed_never_drops_worker_cargo(self):
-        parent = action(["DROP"], [["PASS"]])
+    def test_unknown_cargo_overflow_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]], [["SELL", "WHEAT", 99]])
+        obs = observation(shed={"WHEAT": 99},
+                          inventories=[{"UNKNOWN": 1, "WHEAT": 1}, {}])
+        # Official DROP admits UNKNOWN first. A WHEAT PLACE proposal projects a
+        # different full shed mapping, so exact equality must reject it.
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_full_shed_never_drops_worker_cargo_and_keeps_market(self):
+        market = [["SELL", "WHEAT", 100]]
+        parent = action(["DROP"], [["PASS"]], market)
         obs = observation(shed={"WHEAT": 100}, inventories=[{"CARROT": 5}, {}])
         out = lane.apply_place_delivery(obs, parent, enabled=True)
+        self.assertIsNot(out, parent)
         self.assertEqual(out["farmer"], ["PASS"])
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
-        self.assertEqual(out["market"], [["SELL", "WHEAT", 100]])
+        self.assertIs(out["market"], parent["market"])
 
     def test_cross_actor_price_priority_cannot_change_parent_shed_vector(self):
         parent = action(["DROP"], [["DROP"]])
@@ -124,9 +137,9 @@ class PlaceDelivery(unittest.TestCase):
 
         # The old helper reordered by current quote and would PLACE WOOL from the
         # later actor. That changes terminal product composition versus parent
-        # DROP actor order and can regress realized cash under rival supply.
-        out = lane.apply_place_delivery(obs, parent, enabled=True)
-        self.assertIs(out, parent)
+        # DROP actor order and can regress realized cash under nonlinear/rival
+        # supply. The exact projected-shed theorem must return the parent object.
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
     def test_string_step_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
@@ -180,6 +193,11 @@ class PlaceDelivery(unittest.TestCase):
 
     def test_malformed_action_hands_fail_closed_to_exact_parent(self):
         parent = action(["DROP"], 7)
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_action_market_fails_closed_to_exact_parent(self):
+        parent = {"farmer": ["DROP"], "hands": [["PASS"]], "market": 7}
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
