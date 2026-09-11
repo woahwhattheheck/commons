@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import importlib.util
+import io
 import json
 from pathlib import Path
+import tempfile
 import unittest
 
 HERE = Path(__file__).resolve().parent
@@ -184,10 +187,58 @@ def valid_receipt():
 
 
 class SimFidelityGuardTests(unittest.TestCase):
-    def test_valid_official_receipt_passes_with_authoritative_v31_release(self):
+    def test_synthetic_official_receipt_is_consistency_only(self):
         result = guard.validate_receipt(valid_receipt(), manifest(), panel())
-        self.assertTrue(result["official_gate_eligible"])
+        self.assertTrue(result["valid"])
+        self.assertEqual(result["mode"], "official")
+        self.assertFalse(result["official_gate_eligible"])
+        self.assertEqual(result["input_authority"], "caller-supplied-consistency-only")
         self.assertEqual(result["cells"], 4)
+
+    def test_private_consistency_core_never_grants_eligibility(self):
+        result = guard._validate_receipt_consistency(valid_receipt(), manifest(), panel())
+        self.assertTrue(result["valid"])
+        self.assertFalse(result["official_gate_eligible"])
+        self.assertEqual(result["input_authority"], "consistency-only")
+
+    def test_manifest_and_panel_must_be_supplied_together(self):
+        with self.assertRaisesRegex(guard.ReceiptError, "supplied together"):
+            guard.validate_receipt(valid_receipt(), manifest(), None)
+        with self.assertRaisesRegex(guard.ReceiptError, "supplied together"):
+            guard.validate_receipt(valid_receipt(), None, panel())
+
+    def test_public_authoritative_validator_uses_committed_inputs(self):
+        repo_manifest = json.loads((HERE / "V3-MANIFEST.json").read_text(encoding="utf-8"))
+        latest = repo_manifest["releases"][-1]
+        if latest.get("version") == guard.LIVE_RELEASE_VERSION:
+            self.skipTest("repo now records an authoritative V3.1 release")
+        with self.assertRaisesRegex(guard.ReceiptError, "authoritative V3.1"):
+            guard.validate_receipt(valid_receipt())
+
+    def test_cli_custom_manifest_and_panel_are_consistency_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            receipt_path = root / "receipt.json"
+            manifest_path = root / "manifest.json"
+            panel_path = root / "panel.json"
+            receipt_path.write_text(json.dumps(valid_receipt()), encoding="utf-8")
+            manifest_path.write_text(json.dumps(manifest()), encoding="utf-8")
+            panel_path.write_text(json.dumps(panel()), encoding="utf-8")
+            stdout = io.StringIO()
+            with contextlib.redirect_stdout(stdout):
+                code = guard.main(
+                    [
+                        str(receipt_path),
+                        "--manifest",
+                        str(manifest_path),
+                        "--panel",
+                        str(panel_path),
+                    ]
+                )
+            self.assertEqual(code, 0)
+            result = json.loads(stdout.getvalue())
+            self.assertFalse(result["official_gate_eligible"])
+            self.assertEqual(result["input_authority"], "caller-supplied-consistency-only")
 
     def test_current_repo_manifest_cannot_false_green_without_v31_release(self):
         repo_manifest = json.loads((HERE / "V3-MANIFEST.json").read_text(encoding="utf-8"))
