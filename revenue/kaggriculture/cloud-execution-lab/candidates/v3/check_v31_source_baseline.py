@@ -1,10 +1,14 @@
-"""Run the six V3 source-level integration suites against an isolated materialized tree.
+"""Run the six V3.1 source-level suites against an explicit isolated package tree.
 
-By default this builds the current candidates/v3 source with build_v3.package_files().
-``--package-tree`` can instead point at an already materialized or submission-mode tree.
-The selected tree is always copied to a temporary directory; if its only submission-mode
-difference is ``r04_sale_window=true``, that toggle is changed to false in the temporary
-copy before tests run.  The caller's source/package is never edited.
+The live V3.1 branch does not currently guarantee that its checked-in canonical export
+matches ``V3-MANIFEST.json:base.sha256``.  This runner therefore deliberately requires
+``--package-tree`` instead of implicitly calling ``build_v3.package_files()``.  That
+keeps a stale or rebound canonical archive from turning the advertised default path into
+an assertion failure before the suites run.
+
+The selected tree is always copied to a temporary directory.  If its submission-mode
+``r04_sale_window`` value is true, only the temporary copy is normalized to false before
+the six historical source-baseline suites run.  The caller's package is never edited.
 """
 from __future__ import annotations
 
@@ -32,13 +36,11 @@ SUITES = (
 
 
 def _materialize_source(target: Path) -> None:
-    import build_v3
-
-    files = build_v3.package_files()
-    for name, blob in files.items():
-        path = target / name
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(blob)
+    """Reject the old implicit source path until the canonical base is reconciled."""
+    raise SystemExit(
+        "implicit source materialization is disabled: pass --package-tree PATH "
+        "for an exact materialized/submission package tree"
+    )
 
 
 def _copy_tree(source: Path, target: Path) -> None:
@@ -73,10 +75,8 @@ def run(package_tree: Path | None = None) -> int:
         target = Path(temp)
         if package_tree is None:
             _materialize_source(target)
-            source_label = "current candidates/v3 source"
-        else:
-            _copy_tree(package_tree.resolve(), target)
-            source_label = str(package_tree.resolve())
+        _copy_tree(package_tree.resolve(), target)
+        source_label = str(package_tree.resolve())
 
         submission_mode, data = _force_source_mode(target)
         _assert_suites(target)
@@ -109,7 +109,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--package-tree",
         type=Path,
-        help="copy and test an existing materialized/submission-mode tree instead of rebuilding source",
+        required=True,
+        help="exact materialized/submission-mode package tree to copy and test",
     )
     args = parser.parse_args(argv)
     return run(args.package_tree)
