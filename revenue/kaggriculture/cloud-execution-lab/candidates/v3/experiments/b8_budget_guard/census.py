@@ -5,11 +5,12 @@
 This is deliberately weaker than runtime activation: it asks only whether a
 V219/V233 request-hour callback can be followed later that same native day by
 one or more fixed-cost purchases, with *all* later purchases in the inspected
-suffix exactly priceable by B8.  Dynamic future HIRE/BUY_PRODUCT rows make a
-window incomplete, matching the runtime fail-open rule.
+suffix exactly priceable by B8. Dynamic future/state-dependent rows such as
+HIRE, BUY_PRODUCT and BUY_LAND make a window incomplete, matching the runtime
+fail-open rule.
 
 A zero reachable-window count is a hard NO-LANE result for B8 on this frozen
-policy, so CI treats it as failure.  A positive count merely justifies runtime
+policy, so CI treats it as failure. A positive count merely justifies runtime
 activation/economics measurement; it is not a promotion claim.
 """
 from __future__ import annotations
@@ -29,20 +30,23 @@ import b8_budget_guard as b8  # noqa: E402
 import r04_full_router as r04  # noqa: E402
 
 
+def _plans_for_day(day: int):
+    # Match Policy.act/_v219_native_day: step 648 (day 27) forces plan 2.
+    return (2,) if day >= 27 else range(len(r04._POLICY.tapes))
+
+
 def _day_actions(plan: int, day: int):
-    # Match _v219_native_day(): every route is forced to tape 2 on day >= 27.
-    actual_plan = 2 if day >= 27 else plan
-    tape = r04._POLICY.tapes[actual_plan]
+    tape = r04._POLICY.tapes[plan]
     start = day * 24
-    return tape[start : min(start + 24, r04.LAST_STEP)]
+    return tape[start : min(start + 24, r04.LAST_STEP + 1)]
 
 
 def _scan(layer: str, days, hours):
     windows = []
     incomplete = 0
     zero = 0
-    for plan in range(len(r04._POLICY.tapes)):
-        for day in days:
+    for day in days:
+        for plan in _plans_for_day(day):
             actions = _day_actions(plan, day)
             for hour in hours:
                 if hour >= len(actions):
@@ -58,7 +62,6 @@ def _scan(layer: str, days, hours):
                     {
                         "layer": layer,
                         "plan": plan,
-                        "effective_plan": 2 if day >= 27 else plan,
                         "day": day,
                         "hour": hour,
                         "step": day * 24 + hour,
