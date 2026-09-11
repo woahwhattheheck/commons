@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "f2015569654c800c4cd23bf276f964df293710d31b873a673421c14865e4dcb8",
-    "bytes": 480162,
-    "files": 122
+    "sha256": "b366d6310dc310abf292ce4bec38438f5577ec68456149f6f237dae2de7a5bc6",
+    "bytes": 522866,
+    "files": 126
   },
   "keys": {
     "e11_rival_sell": {
@@ -39,7 +39,8 @@
       "e20_max_hires_per_day": 3,
       "e20_min_unwatered_crops": 3,
       "g01_early_expander_step": 144,
-      "g01_land_cash_floor": 0
+      "g01_land_cash_floor": 0,
+      "r04_sale_horizon": 4
     },
     "l01_land": {
       "default": false,
@@ -70,6 +71,30 @@
       "seam": "TitanAgent._v3_post_final after _finish_production",
       "module": "l01_mechanics.py",
       "effect": "day>=28 SELL WHEAT<=57 CARROT<=32 and pack other shed products"
+    },
+    "r01_shop_router": {
+      "default": false,
+      "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
+      "module": "r01_shop_router.py, r01_tapes.py",
+      "effect": "yhay81 Shop Router 0909 base policy and its 13 tapes"
+    },
+    "r02_route_bank": {
+      "default": false,
+      "seam": "TitanAgent._v3_r02_install at the end of _initialize; _v3_r02_step inside the deadline context",
+      "module": "r02_route_bank.py, r01_tapes.py",
+      "effect": "the same tapes seated as the canonical MAIN route; TITAN keeps the market"
+    },
+    "r03_full_router": {
+      "default": false,
+      "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
+      "module": "r03_full_router.py, r01_tapes.py",
+      "effect": "complete published shop-router policy: base rules plus layers V216-V234"
+    },
+    "r04_sale_window": {
+      "default": false,
+      "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
+      "module": "r04_full_router.py, r01_tapes.py",
+      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 4); takes precedence over R03 and R01"
     }
   },
   "lanes": [
@@ -192,6 +217,55 @@
       "panels": {
         "a055 control seeds 2611061001-016 (shard V 23:20Z)": "arlene 32-0 +1630.3, apex 32-0 +8942.7, kaito_v43 30-2 +14596.8, cok_v10 32-0 +26303.1, public_bt12 32-0 +22454.7, v1_submitted 32-0 +873.9"
       }
+    },
+    {
+      "id": "R01",
+      "key": "r01_shop_router",
+      "status": "integrated",
+      "lineage": [
+        "yhay81, Shop Router 0909 (https://www.kaggle.com/code/yhay81/shop-router-0909), Apache-2.0",
+        "13 tapes extracted from prvsiyan's lossless single-file packaging; checks/test_v3_r01.py"
+      ]
+    },
+    {
+      "id": "R02",
+      "key": "r02_route_bank",
+      "status": "integrated",
+      "lineage": [
+        "R01 tapes seated in place as the canonical MAIN route; tail replacement at steps 144 and 648",
+        "checks/test_v3_r02.py"
+      ]
+    },
+    {
+      "id": "R03",
+      "key": "r03_full_router",
+      "status": "integrated",
+      "lineage": [
+        "prvsiyan, Kaggriculture Frontier | The Soil Remembers Rain, kernel version 348803013, submission.tar.gz sha256 c06916d03be5b1f11430e453e5ce6a9dc223f9e80f4cda9e807b3797dca72b12, Apache-2.0",
+        "base policy and tapes: yhay81 Shop Router 0909; layers V216-V234: prvsiyan",
+        "module = the published main.py with its inline tape blob replaced by r01_tapes and the redundant tape deepcopy skipped (every rule only reads the tapes); checks/test_v3_r03.py"
+      ],
+      "fidelity": "against the published agent, 8 of 8 games returned identical final scores (seeds 2611151001-004, both seats)"
+    },
+    {
+      "id": "R04",
+      "key": [
+        "r04_sale_window",
+        "r04_sale_horizon"
+      ],
+      "status": "integrated",
+      "lineage": [
+        "R03 policy",
+        "Dmitrii Gluzdov, E184 Sale Window, Kaggriculture Two Coins One Sheep, kernel version 348776687, submission.tar.gz sha256 d02b8e23992611fa928eba96ee0952948f672e737e5fd611712688614a077c4a, Apache-2.0",
+        "E184 appended verbatim as the outermost layer; checks/test_v3_r04.py"
+      ],
+      "panels": [
+        "protocol: pinned engine 28b6d8af (kaggle-environments 1.32.7, blob-verified) through a Windows port of checks/reference/evaluator play() (same configuration defaults, seed assignment, observation writes, JSON round trip to one agent process per seat, per-seat RNG and PYTHONHASHSEED); seeds 2611151001-008, both seats, 16 games per cell; opponents are the published Kaggle output archives (S14 public bank) and two local variants named inline",
+        "r04_sale_horizon=4 (standalone composition): gluzdov_twocoins 16-0-0 +5151, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4891, prvsiyan_soil 16-0-0 +4349, berat_v33 16-0-0 +5012, ravi_v21mem 16-0-0 +43400, web3cainiao_v21 16-0-0 +53745, boatlee_v21 16-0-0 +26197, sokolovsky 16-0-0 +38957, tokenjunkielabs_v2 16-0-0 +8632, nusrati_2715 16-0-0 +8059, r04(horizon 3) 16-0-0 +3620",
+        "V3 tree with r04_sale_window on through the TITAN entrypoint versus the standalone composition: 16 of 16 games identical final scores at the default horizon 4, and 16 of 16 at horizon 3 (prvsiyan_soil and gluzdov_twocoins, seeds 2611151001-004, both seats)",
+        "default horizon 4: highest margin against the measured field among horizons 3-12; r04_sale_horizon stays a parameter",
+        "first-call setup through the TITAN entrypoint: 0.45 s on step 0, about 3 ms per later step (TITAN budget 1.0 s)"
+      ]
     }
   ],
   "panels": {
@@ -212,14 +286,18 @@
     "checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
     "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
     "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
+    "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
+    "checks/test_v3_r04.py": "512b78273a5f726c21ebb4da972ca45f79fe4de5e6d2ebdef0501d6bec9bbf2f",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
     "r01_shop_router.py": "7729665719f8eb1faa1317f76da05ab1fe9090b675c66d4e112ab9c77900133c",
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
+    "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
+    "r04_full_router.py": "a214b7fe670d89a83d1c8fe58863a7747106ef6bb13d2f04bc58cef354c6c6c0",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "eb6d8e558e84bd5aeec2a178007ba9f46a76be01e4d269e7c852f25df8ff45de"
+    "apply_v3.py": "8ce6156bff76be0726b363570d0ccc71ceee3983b22f5603f3dddbca3f92cc06"
   }
 }

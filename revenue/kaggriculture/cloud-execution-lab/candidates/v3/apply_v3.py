@@ -29,6 +29,7 @@ PARAMS = {
     "e20_min_unwatered_crops": 3,
     "g01_early_expander_step": 144,
     "g01_land_cash_floor": 0,
+    "r04_sale_horizon": 4,
 }
 
 FIELDS = (
@@ -53,6 +54,11 @@ FIELDS = (
     "    r01_shop_router: bool = False\n"
     "    # R02 route bank: the same tapes seated as the canonical MAIN route (TITAN keeps the market).\n"
     "    r02_route_bank: bool = False\n"
+    "    # R03 complete published shop-router policy (base + nine layers, Apache-2.0): whole-route delegate.\n"
+    "    r03_full_router: bool = False\n"
+    "    # R04 the R03 policy with the E184 sale window outermost (Gluzdov, Apache-2.0): whole-route delegate.\n"
+    "    r04_sale_window: bool = False\n"
+    "    r04_sale_horizon: int = 4\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -63,7 +69,8 @@ RUNTIME_METHODS = (
     "        f = self.features\n"
     "        return bool(f.e11_rival_sell or f.rival_model or f.e20_hire_guard\n"
     "                    or f.l01_land or f.l01_sheep or f.l01_day0buy or f.l01_tranche or f.l01_leanplant\n"
-    "                    or f.r01_shop_router or f.r02_route_bank)\n\n"
+    "                    or f.r01_shop_router or f.r02_route_bank or f.r03_full_router\n"
+    "                    or f.r04_sale_window)\n\n"
     "    def _v3_config(self):\n"
     "        \"\"\"Deterministic package keys for the V3 lanes, carried inside the game config.\"\"\"\n"
     "        f = self.features\n"
@@ -140,6 +147,43 @@ RUNTIME_METHODS = (
     "            output = (deadline.terminal_liquidation_fallback(obs, cfg) if obs['step'] == last\n"
     "                      else deadline.legal_pass(obs))\n"
     "            self.diagnostics.update(status='r01_error', error=type(error).__name__)\n"
+    "        self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,\n"
+    "                                act_cpu_seconds=time.process_time()-cpu_started)\n"
+    "        return output\n"
+    "\n"
+    "    def _v3_r03_act(self, observation, configuration, invoked, entry_started):\n"
+    "        \"\"\"V3 lanes R03 / R04: whole-route delegate to the complete published shop-router policy.\n"
+    "\n"
+    "        Key r03_full_router runs the base rules and the nine additive layers exactly as published;\n"
+    "        key r04_sale_window runs the same policy with the E184 sale window outermost, at horizon\n"
+    "        r04_sale_horizon.  Both run on the observation and configuration the entrypoint received;\n"
+    "        the canonical controller is never built while either key is on.  A raised error returns a\n"
+    "        legal PASS (the terminal liquidation fallback on the last decision step) and is recorded.\n"
+    "        \"\"\"\n"
+    "        started = invoked if entry_started is None else min(invoked, float(entry_started))\n"
+    "        cpu_started = time.process_time()\n"
+    "        cfg = dict(configuration or {})\n"
+    "        obs = dict(observation)\n"
+    "        obs['step'] = int(obs['step']) if obs.get('step') is not None else int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])\n"
+    "        route = 'r04_sale_window' if self.features.r04_sale_window else 'r03_full_router'\n"
+    "        self.selected = None\n"
+    "        self.post = None\n"
+    "        self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0,\n"
+    "                            'entrypoint_prelude_seconds': invoked-started, 'route': route}\n"
+    "        try:\n"
+    "            if route == 'r04_sale_window':\n"
+    "                from r04_full_router import install\n"
+    "                output = install(self, int(self.features.r04_sale_horizon))(observation, configuration)\n"
+    "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
+    "            else:\n"
+    "                from r03_full_router import install\n"
+    "                output = install(self)(observation, configuration)\n"
+    "            self.diagnostics['status'] = 'completed'\n"
+    "        except Exception as error:\n"
+    "            last = int(cfg.get('episodeSteps', 720))-2\n"
+    "            output = (deadline.terminal_liquidation_fallback(obs, cfg) if obs['step'] == last\n"
+    "                      else deadline.legal_pass(obs))\n"
+    "            self.diagnostics.update(status=route + '_error', error=type(error).__name__)\n"
     "        self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,\n"
     "                                act_cpu_seconds=time.process_time()-cpu_started)\n"
     "        return output\n"
@@ -250,6 +294,24 @@ RELEASE_NOTE = (
     "tail from step 144, the plan 2 tail from step 648, each replacement leaving every\n"
     "already-played step byte-identical. The frozen seller, pending accounting and every\n"
     "other canonical stage then run on that route unchanged. Checks: `checks/test_v3_r02.py`.\n"
+    "\n"
+    "R03 (`r03_full_router`, shipped off) delegates every turn to the complete published\n"
+    "shop-router policy: the same base rules and tapes as R01 plus the nine additive layers\n"
+    "shipped with it (V216 hire funding, V217 idle-farmer feed rescue, V218 terminal fertilizer\n"
+    "collection, V219 late tomato investment, V224 sales-first market ordering, V226 bounded\n"
+    "wheat top-up, V231 bounded livestock substitution, V233 six-sheep SE investment, V234\n"
+    "sheep feed rescue). The module body is the published Apache-2.0 file with its inline tape\n"
+    "blob replaced by `r01_tapes` (byte-identical tapes); no rule is changed. Checks:\n"
+    "`checks/test_v3_r03.py`.\n"
+    "\n"
+    "R04 (`r04_sale_window`, shipped off; `r04_sale_horizon`, default 4) runs the R03 policy with\n"
+    "Dmitrii Gluzdov's E184 Sale Window appended verbatim as the outermost layer: from step 288\n"
+    "the one-turn sale advance is replaced by reservations that sell now the units the tape plans\n"
+    "to sell over the next `r04_sale_horizon` own actions, bounded by projected stock, never\n"
+    "across a 72-step route boundary, never past an upcoming pickup or purchase of the item,\n"
+    "with per-due-step debts so no advanced unit is sold twice. With either key on the canonical\n"
+    "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
+    "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
 )
 
 
@@ -262,6 +324,21 @@ R01_NOTICE = (
     "Lossless single-file tape packaging: prvsiyan,\n"
     "https://www.kaggle.com/code/prvsiyan/kaggriculture-frontier-the-soil-remembers-rain, Apache License 2.0.\n"
     "Carried behind the TITAN-CONFIG.json key r01_shop_router, shipped false.\n"
+)
+
+
+R03_NOTICE = (
+    "\n\nV3 lanes R03 / R04 (candidates/v3/overlay/r03_full_router.py, r04_full_router.py)\n"
+    "Complete published shop-router policy, Apache License 2.0:\n"
+    "base policy and its 13 action tapes by yhay81, https://www.kaggle.com/code/yhay81/shop-router-0909;\n"
+    "single-file packaging and the V216-V234 layers by prvsiyan,\n"
+    "https://www.kaggle.com/code/prvsiyan/kaggriculture-frontier-the-soil-remembers-rain;\n"
+    "sell timing and shed projection by aurax7; terminal fertilizer collection inspired by\n"
+    "Dmitrii Gluzdov, https://www.kaggle.com/code/dmitriigluzdov/kaggriculture-seven-turn-rescue-best-lb-2800.\n"
+    "E184 Sale Window (R04) by Dmitrii Gluzdov, Apache License 2.0,\n"
+    "https://www.kaggle.com/code/dmitriigluzdov/kaggriculture-two-coins-one-sheep-lb-2700.\n"
+    "Both modules retain the published license text inline. Carried behind the TITAN-CONFIG.json\n"
+    "keys r03_full_router and r04_sale_window, shipped false.\n"
 )
 
 
@@ -316,10 +393,12 @@ def apply(src):
         "        invoked = time.perf_counter()\n"
         "        # The canonical entrypoint shares its start clock with this same timer.\n",
         "        invoked = time.perf_counter()\n"
+        "        if self.features.r03_full_router or self.features.r04_sale_window:\n"
+        "            return self._v3_r03_act(observation, configuration, invoked, entry_started)\n"
         "        if self.features.r01_shop_router:\n"
         "            return self._v3_r01_act(observation, configuration, invoked, entry_started)\n"
         "        # The canonical entrypoint shares its start clock with this same timer.\n",
-        "r01 delegate seam",
+        "r01/r03/r04 delegate seam",
     )
     runtime = _replace_once(
         runtime,
@@ -358,7 +437,7 @@ def apply(src):
 
     cfg_path = os.path.join(src, "TITAN-CONFIG.json")
     data = json.loads(io.open(cfg_path, encoding="utf-8").read())
-    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank"):
+    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank", "r03_full_router", "r04_sale_window"):
         assert key not in data, key
         data[key] = False
     for key, value in PARAMS.items():
@@ -368,7 +447,7 @@ def apply(src):
         handle.write(json.dumps(data, indent=2) + "\n")
 
     write("TITAN-RELEASE.md", read("TITAN-RELEASE.md") + RELEASE_NOTE)
-    write("NOTICE", read("NOTICE") + R01_NOTICE)
+    write("NOTICE", read("NOTICE") + R01_NOTICE + R03_NOTICE)
     return src
 
 

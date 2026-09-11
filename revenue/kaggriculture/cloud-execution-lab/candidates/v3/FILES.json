@@ -1,9 +1,9 @@
 {
   "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-  "NOTICE": "470210654989da23c0bf96830aa1fc52e92fd7b44948c2a2276604983c801671",
+  "NOTICE": "5a246d37a036145e6b15f4382d2b4349799b0112ae030b29b6e013286a6e282a",
   "SOURCE.json": "3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469",
-  "TITAN-CONFIG.json": "30e2ceabf782046b7bae68d28990fa806f618e01e1a69326e425129876001beb",
-  "TITAN-RELEASE.md": "dde4c9fd612c3929dd2cf3962cfa05b9649af83fd705a152fae0148a22bb71e9",
+  "TITAN-CONFIG.json": "35abf315ae179e3dbdfe27fe53e0b306ba723d4e59a92cd708e894a5c8fd1362",
+  "TITAN-RELEASE.md": "bfb9ad85e33d6ab568fd1238d20858bda7a22b352dd0d2d88cd536a1e15b43d1",
   "checks/TITAN-HISTORY-CONFIG.json": "79efcc4048db3067906aa695d702a402097478f64f19c801f7a1da2daa3feb87",
   "checks/reference/engine/kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
   "checks/reference/engine/kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
@@ -40,6 +40,8 @@
   "checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
   "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
   "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
+  "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
+  "checks/test_v3_r04.py": "512b78273a5f726c21ebb4da972ca45f79fe4de5e6d2ebdef0501d6bec9bbf2f",
   "checks/test_weed_continuation.py": "ec25b5707539fc6d987705c02cf06c3a4fbb138b71d2684c48ac8c8123c6bdfc",
   "checks/test_worker_deadline.py": "c531c51436d1bcdfbb58ae4ed06defe8c84e6dcdfe975c4436f31810505904ab",
   "checks/test_worker_episode.py": "bcd9a56fc7af87d70b4fb168e7109614a44a52b9aacbcd1e208bb36ecc13b034",
@@ -63,6 +65,8 @@
   "r01_shop_router.py": "7729665719f8eb1faa1317f76da05ab1fe9090b675c66d4e112ab9c77900133c",
   "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
   "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
+  "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
+  "r04_full_router.py": "a214b7fe670d89a83d1c8fe58863a7747106ef6bb13d2f04bc58cef354c6c6c0",
   "reference/decision/README.md": "07457ea5dd02e545d8105eb19b522a7dcf3037a09df211aaa69f2418a7ae572d",
   "reference/decision/decision.py": "9d78406668c927785b29f5bf2b5a67f0263bfcd63f626c881a60bad5f8293c52",
   "reference/engine/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
@@ -120,5 +124,5 @@
   "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
   "spatial_tempo.py": "9efe9588013b97452813f43dcfe0f5f2c311c2668b5ad64e53f173b7c457a60e",
   "terminal_history_join.py": "e1482ba22eeb2784157f337e2abc055cf4e9ac7cc8d464fe75a67cc38ec41582",
-  "titan_runtime.py": "9f8573cdfcd0c9c0062b5956ee66858a742fc5d0ff4f73fac5a24663f6b9a974"
+  "titan_runtime.py": "7c4fea8f7d3da2d8ab47a879f732d1b44103165d7301140c687b022bf6020865"
 }
