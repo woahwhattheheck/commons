@@ -12,13 +12,15 @@ is accepted only when the caller declares ``externality_complete: true`` and sup
 an exact per-cell coverage receipt plus any observed product events. Missing/incomplete
 trace evidence yields HOLD, never PASS.
 
-D3 hardens two evidence boundaries beyond the current parent reporter:
+D3 hardens evidence boundaries beyond the current parent reporter:
 
 * every generic score vector, including top-level ``baseline_scores`` and
   ``candidate_scores``, is the pinned evaluator's player order ``[seat0, seat1]``;
 * arm-pair input (``baseline`` + ``candidate``) may not coexist with a row-container
-  alias (``cells``/``results``/``games``/``matches``), so representations cannot
-  silently precedence-win over contradictory evidence.
+  alias (``cells``/``results``/``games``/``matches``); and
+* more than one row-container alias is rejected outright.  D3 never relies on Python
+  object equality to decide whether duplicate evidence families are "the same", because
+  JSON-distinct values such as ``false``/``0`` and ``true``/``1`` compare equal in Python.
 
 Input extends the normal paired-evidence document with:
 
@@ -110,6 +112,11 @@ def _validate_document_representation(document: Any) -> None:
     if arm_keys and len(arm_keys) != 2:
         raise ExternalityError(
             "top-level arm evidence requires both baseline and candidate"
+        )
+    if len(container_keys) > 1:
+        raise ExternalityError(
+            "multiple row-container representations are ambiguous: "
+            + ", ".join(container_keys)
         )
     if arm_keys and container_keys:
         raise ExternalityError(
