@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest discover -v -s experiments/e5_floor_liquidation -p 'test_e5_floor_liquidation.py' |& tee /tmp/e5-tests.log
-          grep -F 'Ran 10 tests' /tmp/e5-tests.log
+          grep -F 'Ran 11 tests' /tmp/e5-tests.log
           grep -F 'OK' /tmp/e5-tests.log
 
       - name: Compile exact experiment entrypoints
