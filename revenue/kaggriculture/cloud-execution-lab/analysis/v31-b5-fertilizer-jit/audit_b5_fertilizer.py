@@ -51,23 +51,34 @@ def load_current_tapes(path: Path = TAPES_PATH) -> list[list[dict[str, Any]]]:
 
 
 def _op(action: Any) -> str:
+    # Idle-capacity evidence is literal: only an explicit nonempty ["PASS", ...]
+    # row may contribute. Missing/empty/non-list actions are malformed evidence,
+    # never synthetic PASS capacity.
     if not isinstance(action, list) or not action:
-        return "PASS"
+        return "MALFORMED"
     value = action[0]
     return value if isinstance(value, str) and value else "MALFORMED"
 
 
 def _units(row: dict[str, Any]) -> list[Any]:
-    farmer = row.get("farmer", ["PASS"])
+    farmer = row.get("farmer")
     hands = row.get("hands", [])
     if not isinstance(hands, list):
-        hands = []
+        raise TypeError("row.hands must be a list when present")
     return [farmer, *hands]
 
 
 def _close_streak(
     out: list[dict[str, int]], worker: int, start: int, stop_exclusive: int
 ) -> None:
+    if stop_exclusive <= start:
+        return
+    # A bounded insertion-capacity witness may never cross midnight. Callers
+    # split at every day boundary; keep this assertion as a fail-closed guard.
+    if start // 24 != (stop_exclusive - 1) // 24:
+        raise RuntimeError(
+            f"idle streak crossed day boundary: worker={worker} start={start} stop={stop_exclusive}"
+        )
     length = stop_exclusive - start
     if length >= MIN_IDLE_STREAK:
         out.append(
@@ -85,8 +96,9 @@ def _close_streak(
 def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
     """Return a deterministic census of authored service/input/idle actions.
 
-    PASS streaks count only workers whose action slot exists in the tape row;
-    absent future hand slots are never credited as idle capacity.  Market counts
+    PASS streaks count only explicit literal PASS rows for worker slots that
+    exist in the tape row, and they are split at every 24-step day boundary;
+    absent future hand slots are never credited as idle capacity. Market counts
     use the first ten rows, matching the canonical maxMarketOrdersPerTurn gate.
     """
     routes = list(tapes)
@@ -110,6 +122,15 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
             if not isinstance(row, dict):
                 raise TypeError(f"route {route_index} step {step} is not an object")
             total_steps += 1
+
+            # Never join partial windows across midnight. Close day N before
+            # looking at any authored slots on day N+1; a PASS at the new day
+            # may immediately open a fresh independent window.
+            if step and step % 24 == 0:
+                for worker in sorted(open_idle):
+                    _close_streak(idle_streaks, worker, open_idle[worker], step)
+                open_idle.clear()
+
             units = _units(row)
             present = set(range(len(units)))
             max_workers = max(max_workers, len(units))
