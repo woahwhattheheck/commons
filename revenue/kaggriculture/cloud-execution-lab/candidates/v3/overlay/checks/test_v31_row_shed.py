@@ -60,12 +60,43 @@ def reset():
     r04._RIVAL_TAPE.update(same=0, seen=0, last=-1)
 
 
+def incumbent_order_sells(market, inventory):
+    """Literal pre-row-shed ROW_ORDER semantics used to freeze the OFF arm."""
+    lead = 0
+    while lead < len(market) and market[lead] and market[lead][0] == "SELL":
+        lead += 1
+    if lead < 2:
+        return market
+
+    def value(order):
+        item = order[1]
+        if item not in r04._RO_PARAMS:
+            return 0
+        quantity = max(0, int(order[2]))
+        level = int(inventory.get(item, r04._RO_I0))
+        return (r04._ro_price(item, level) - r04._ro_price(item, level + quantity)) * quantity
+
+    return sorted(market[:lead], key=value, reverse=True) + market[lead:]
+
+
 class OrderSells(unittest.TestCase):
     MARKET = [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["HIRE"], ["SELL", "EGG", 3]]
 
     def test_without_shed_rows_are_priced_at_the_order_quantity(self):
         self.assertEqual(r04.order_sells([list(o) for o in self.MARKET], {}),
                          [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["HIRE"], ["SELL", "EGG", 3]])
+
+    def test_without_shed_preserves_literal_incumbent_coercion_semantics(self):
+        cases = (
+            ([ ["SELL", "WOOL", "1"], ["SELL", "MILK", 6], ["HIRE"] ], {}),
+            ([ ["SELL", "WOOL", True], ["SELL", "MILK", 6.0], ["HIRE"] ], {"WOOL": "0", "MILK": 0.0}),
+        )
+        for market, inventory in cases:
+            with self.subTest(market=market, inventory=inventory):
+                self.assertEqual(
+                    r04.order_sells(copy.deepcopy(market), copy.deepcopy(inventory)),
+                    incumbent_order_sells(copy.deepcopy(market), copy.deepcopy(inventory)),
+                )
 
     def test_with_shed_rows_are_priced_at_the_units_they_can_sell(self):
         ordered = r04.order_sells([list(o) for o in self.MARKET], {}, {"WOOL": 1, "MILK": 6})
@@ -136,6 +167,20 @@ class Wiring(unittest.TestCase):
             self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]])
             r04.install(None, 8, 0, True, False, row_shed=True)
             self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], [["SELL", "MILK", 6], ["SELL", "WOOL", 1000]])
+        finally:
+            r04.POLICY_AGENT = saved
+
+    def test_row_shed_off_preserves_incumbent_falsey_slot_compaction(self):
+        saved = r04.POLICY_AGENT
+        try:
+            raw = [["SELL", "WOOL", 1000], [], ["SELL", "MILK", 6]]
+            r04.POLICY_AGENT = lambda obs, cfg=None: {"farmer": ["PASS"], "hands": [], "market": copy.deepcopy(raw)}
+            obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
+            r04.install(None, 8, 0, True, False, row_shed=False)
+            compacted = [list(order) for order in raw if order]
+            expected = incumbent_order_sells(compacted, {})
+            self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], expected)
+            self.assertNotIn([], expected)
         finally:
             r04.POLICY_AGENT = saved
 
