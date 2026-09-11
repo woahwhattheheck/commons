@@ -87,13 +87,44 @@ assert(html.includes('href="./index.html">Commons home</a>'));
 assert(!/maxlength/.test(html));
 
 const checkout = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops-checkout.json"), "utf8"));
+const providerReadback = JSON.parse(fs.readFileSync(path.join(__dirname, "revenue", "checkout_capability", "offer-shelf-links-20260910.json"), "utf8"));
+const contract = JSON.parse(fs.readFileSync(path.join(__dirname, "revenue", "agent_ops", "contract.json"), "utf8"));
 assert.strictEqual(checkout.provider.connection_state, "LIVEMODE_CONNECTED");
 assert.strictEqual(checkout.provider.account_charges_enabled, true);
 assert.strictEqual(checkout.provider.account_payouts_enabled, true);
 assert.strictEqual(checkout.provider.livemode, true);
-assert.strictEqual(checkout.offers.operator.link.status, "NOT_MINTED");
-assert.strictEqual(checkout.offers.foundry.link.url, null);
+assert.strictEqual(checkout.measured_at, providerReadback.read_timestamp_utc);
+
+for (const [offerName, receiptName, cents] of [
+  ["operator", "commons-agent-ops-operator", 4900],
+  ["foundry", "commons-agent-ops-foundry", 250000]
+]) {
+  const offer = checkout.offers[offerName];
+  const recorded = providerReadback.links[receiptName];
+  const terms = contract.offers[offerName];
+  assert(recorded, receiptName);
+  assert.strictEqual(recorded.active, true);
+  assert.strictEqual(recorded.livemode, true);
+  assert.strictEqual(recorded.currency, "usd");
+  assert.strictEqual(recorded.unit_amount, cents);
+  assert.strictEqual(offer.link.status, "ACTIVE");
+  assert.strictEqual(offer.link.active, true);
+  assert.strictEqual(offer.link.url, recorded.url);
+  assert.strictEqual(offer.link.payment_link_id, recorded.payment_link_id);
+  assert.strictEqual(offer.link.price_id, recorded.price_id);
+  assert.strictEqual(offer.link.product_id, recorded.product_id);
+  assert.strictEqual(offer.sku, terms.sku);
+  assert.strictEqual(Number(offer.price_usd), terms.price_usd);
+  const state = ops.checkoutState(checkout, offerName);
+  assert.strictEqual(state.chargeable, true);
+  assert.strictEqual(state.url, recorded.url);
+}
+assert.strictEqual(contract.commercial.refund_status, "NOT_PUBLISHED_IN_CURRENT_SOURCE");
+assert.strictEqual(checkout.economic_truth.buyer_claimed, false);
+assert.strictEqual(checkout.economic_truth.processor_payment_claimed, false);
 assert.strictEqual(checkout.economic_truth.collected_cash_usd, "0.00");
+assert(checkout.source_refs.includes("revenue/checkout_capability/offer-shelf-links-20260910.json"));
+assert(checkout.source_refs.includes("revenue/agent_ops/contract.json"));
 
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops.webmanifest"), "utf8"));
 assert.strictEqual(manifest.display, "standalone");
