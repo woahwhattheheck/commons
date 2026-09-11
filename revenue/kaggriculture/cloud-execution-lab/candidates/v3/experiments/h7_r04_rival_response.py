@@ -8,13 +8,20 @@ queued, and the final market queue has a free slot.
 
 Canonical ``TitanAgent._v3_post`` applies that model on the normal controller path, but
 R04 is a whole-route delegate and never reaches ``_v3_post``.  This experiment wraps the
-*final* R04 callable instead of copying the model.  Running last is deliberate: ROW_ORDER,
-EVENING_FLUSH, and the optional opening replacement retain first claim on market rows;
-O01 may append BUY_LAND only after those R04 transforms have finished.
+*final* R04 callable instead of copying the model.  Running last is deliberate for the
+experiment: ROW_ORDER, EVENING_FLUSH, and the optional opening replacement retain first
+claim on market rows; O01 may append BUY_LAND only after those R04 transforms finish.
+
+Important evidence boundary: canonical O01 normally runs before downstream production /
+capital ordering.  A final-R04 wrapper does not inherit that cash-ordering stage, so an
+appended BUY_LAND is only a *proposal*.  Earlier executable market rows can consume cash
+before the land row.  Telemetry therefore separates proposed action edits from a quadrant
+unlock observed on the next later callback.  Proposal count must never be interpreted as
+executed land purchases.
 
 This file lives outside ``overlay/**`` and is not included by build_v3.py.  It is a
-bench/evaluator arm only until paired competitive-margin evidence justifies production
-wiring.  Disabled mode returns the exact parent output object.
+bench/evaluator arm only; production wiring requires both positive economics and an
+execution-safe composition seam.  Disabled mode returns the exact parent output object.
 """
 from __future__ import annotations
 
@@ -33,6 +40,15 @@ DEFAULT_EARLY_EXPANDER_STEP = 144
 DEFAULT_LAND_CASH_FLOOR = 0.0
 
 
+def _unlocked_count(observation: Mapping[str, Any], player: int) -> int:
+    farms = observation.get("farms") or []
+    if not isinstance(farms, list) or not (0 <= player < len(farms)):
+        return 0
+    farm = farms[player] or {}
+    unlocked = farm.get("unlocked_quadrants") or []
+    return len(unlocked) if isinstance(unlocked, list) else 0
+
+
 def install(
     parent: Callable[[Mapping[str, Any], Mapping[str, Any] | None], Mapping[str, Any]],
     *,
@@ -44,13 +60,21 @@ def install(
 
     The wrapper intentionally executes after the parent.  Therefore existing R04 market
     construction, row ordering, evening flush, and opening semantics win before O01 checks
-    the final queue capacity.  No parent output is copied in disabled mode.
+    final queue capacity.  Because this placement is after canonical capital ordering,
+    ``changed`` / ``proposals`` are proposal metrics only.  A later observation with more
+    unlocked quadrants is counted separately as ``confirmed_unlocks``.
     """
     previous_prices: dict[int, dict[str, Any]] = {}
     last_step: dict[int, int] = {}
+    pending_land: dict[int, tuple[int, int]] = {}
     telemetry: dict[str, Any] = {
         "calls": 0,
+        # Backward-compatible name: this is action mutation, NOT execution.
         "changed": 0,
+        "proposals": 0,
+        "confirmed_unlocks": 0,
+        "no_unlock_next_observation": 0,
+        "reset_with_pending": 0,
         "archetypes": Counter(),
         "reasons": Counter(),
     }
@@ -68,8 +92,22 @@ def install(
 
         player = int(observation.get("player", 0))
         step = int(observation.get("step", 0))
-        if player not in last_step or step <= last_step[player]:
+        unlocked_now = _unlocked_count(observation, player)
+        is_reset = player not in last_step or step <= last_step[player]
+        if is_reset:
             previous_prices.pop(player, None)
+            if player in pending_land:
+                telemetry["reset_with_pending"] += 1
+                pending_land.pop(player, None)
+        else:
+            pending = pending_land.get(player)
+            if pending is not None and step > pending[0]:
+                _proposal_step, unlocked_before = pending
+                if unlocked_now > unlocked_before:
+                    telemetry["confirmed_unlocks"] += 1
+                else:
+                    telemetry["no_unlock_next_observation"] += 1
+                pending_land.pop(player, None)
         last_step[player] = step
 
         out, report = apply_rival_model(
@@ -82,7 +120,11 @@ def install(
         previous_prices[player] = dict((observation.get("market") or {}).get("prices") or {})
         telemetry["archetypes"][report.get("archetype", "NO_ARCHETYPE")] += 1
         telemetry["reasons"][report.get("reason", "UNKNOWN")] += 1
-        telemetry["changed"] += int(bool(report.get("changed")))
+        changed = int(bool(report.get("changed")))
+        telemetry["changed"] += changed
+        telemetry["proposals"] += changed
+        if changed:
+            pending_land[player] = (step, unlocked_now)
         return out
 
     agent.telemetry = telemetry
