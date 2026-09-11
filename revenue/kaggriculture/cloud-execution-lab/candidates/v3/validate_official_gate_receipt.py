@@ -24,6 +24,31 @@ RECEIPT_SCHEMA = "titan-v31-gate-receipt/v1"
 OFFICIAL_INTERPRETER_COMMIT = "28b6d8af3"
 LIVE_RELEASE_VERSION = "3.1"
 SEED_LIST_ENCODING = "ASCII decimal seed per line, LF after every seed including the final seed"
+
+# Frozen canonical TITAN-CONFIG keys inherited by the V3.1 package before the V3
+# integration keys are applied.  The V3 keys themselves are derived dynamically
+# from V3-MANIFEST.json below, so adding a lane makes old release metadata fail closed.
+CANONICAL_V31_CONFIG_KEYS = frozenset(
+    {
+        "consumer",
+        "frozen",
+        "seed",
+        "funding",
+        "terminal_route",
+        "committed",
+        "budget_seconds",
+        "reserve_seconds",
+        "terminal_history",
+        "redundant_hire",
+        "fourth_quadrant",
+        "market_pressure",
+        "committed_seed_retry",
+        "operating_stock",
+        "idle_fertilizer",
+        "crop_release",
+        "early_capital",
+    }
+)
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -95,6 +120,21 @@ def _live_v31_release(manifest: Mapping[str, Any]) -> Mapping[str, Any]:
     return release
 
 
+def _required_v31_config_keys(manifest: Mapping[str, Any]) -> set[str]:
+    """Every known canonical + V3 integration key that a live V3.1 config must record."""
+    required = set(CANONICAL_V31_CONFIG_KEYS)
+    keys = _mapping(manifest.get("keys"), "manifest.keys")
+    params = _mapping(keys.get("params"), "manifest.keys.params")
+    required.update(params.keys())
+    for key, spec_any in keys.items():
+        if key == "params":
+            continue
+        spec = _mapping(spec_any, f"manifest.keys[{key!r}]")
+        if "default" in spec:
+            required.add(key)
+    return required
+
+
 def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
     seeds = _list(panel.get("seeds"), "panel.seeds")
     seats = _list(panel.get("seats"), "panel.seats")
@@ -128,6 +168,12 @@ def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
 def _validate_config(receipt: Mapping[str, Any], manifest: Mapping[str, Any]) -> None:
     release = _live_v31_release(manifest)
     expected_live = _mapping(release.get("config"), "manifest V3.1 release.config")
+    missing_required = sorted(_required_v31_config_keys(manifest) - set(expected_live))
+    if missing_required:
+        raise ReceiptError(
+            "manifest V3.1 release.config is not a complete live TITAN-CONFIG; "
+            f"missing required keys: {missing_required}"
+        )
     submission = _mapping(release.get("submission_archive"), "manifest V3.1 release.submission_archive")
     expected_submission_sha = _sha256(
         submission.get("sha256"), "manifest V3.1 release.submission_archive.sha256"
