@@ -43,6 +43,7 @@ PARAMS = {
     "r04_strawberry_topup": True,
     "r04_b5_carrot_fertilizer": True,
     "r04_b5_jit_fertilize": True,
+    "r04_fert_hand": True,
 }
 
 FIELDS = (
@@ -85,6 +86,7 @@ FIELDS = (
     "    r04_strawberry_topup: bool = True\n"
     "    r04_b5_carrot_fertilizer: bool = True\n"
     "    r04_b5_jit_fertilize: bool = True\n"
+    "    r04_fert_hand: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -213,7 +215,8 @@ RUNTIME_METHODS = (
     "                                 int(self.features.r04_no_late_sale_advance_step),\n"
     "                                 bool(self.features.r04_strawberry_topup),\n"
     "                                 bool(self.features.r04_b5_carrot_fertilizer),\n"
-    "                                 bool(self.features.r04_b5_jit_fertilize))(observation, configuration)\n"
+    "                                 bool(self.features.r04_b5_jit_fertilize),\n"
+    "                                 fert_hand=bool(self.features.r04_fert_hand))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -228,6 +231,7 @@ RUNTIME_METHODS = (
     "                self.diagnostics['strawberry_topup'] = bool(self.features.r04_strawberry_topup)\n"
     "                self.diagnostics['b5_carrot_fertilizer'] = bool(self.features.r04_b5_carrot_fertilizer)\n"
     "                self.diagnostics['b5_jit_fertilize'] = bool(self.features.r04_b5_jit_fertilize)\n"
+    "                self.diagnostics['fert_hand'] = bool(self.features.r04_fert_hand)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -441,6 +445,19 @@ RELEASE_NOTE = (
 "(overlay/jit_pass_fertilize.py, #12428 verbatim). Applied last in v3_agent(). Shipping\n"
 "evidence on the same 41 live games, against the V3.1 package with H4 and gated L3: +106.0\n"
 "margin per game, better in all 41. Checks: `checks/test_v31_b5_fertilize.py`.\n"
+"\n"
+"Key `r04_fert_hand` (V3.1, shipped on): the endgame fertilizer hand (overlay/r04_fert_hand.py).\n"
+"On days 24-28 one extra hand is hired after the tape's own hires when the carrot price pays for\n"
+"it (the n-th hire of a day costs fib(n)); it picks up FERTILIZER at the shed, buying the\n"
+"shortfall, and fertilizes the tape's young CARROTs before their yield-bearing WATER (+1 carrot\n"
+"per tile). The stack underneath never sees the extra hand. Seen on the ladder in senkin13's and\n"
+"Syed Asad Ali's play. It hires when the expected gain is at least 1.2x the hire price and 100\n"
+"above it. Live bench (80 games of submission 56159263, opponents pinned), this package against\n"
+"the V3.1 package with B5: +440.0 margin per game, better in 55, worse in none, 68-12 -> 70-10.\n"
+"Field gate (official reference evaluator on the v25 shards, 32 seeds x both seats per shard,\n"
+"3,008 games against 16 published agents over two seed blocks, base = these R04 modules with\n"
+"row-shed and cattle off): +320.3 margin per game, better in 2,109, worse in 2, no result changed.\n"
+"Checks: `checks/test_v31_fert_hand.py`.\n"
 )
 
 
