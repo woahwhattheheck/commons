@@ -9,12 +9,12 @@ unplaced cargo.  This lane is shipped off as ``r04_place_delivery``.
 When enabled, terminal-step DROP actions beside the shed are changed only when
 their combined payload would overflow the remaining shed capacity.  If every
 payload fits, the exact parent action is returned so normal DROP behavior,
-including multi-product cargo, stays untouched.  On overflow, scarce capacity
-goes to the highest public-price cargo first and excess cargo stays on workers.
-A single PLACE can name only one product, so overflow actors carrying multiple
-sellable products fail closed rather than underfilling capacity versus DROP.
-Malformed terminal step/shed/inventory/price/position/board state fails closed
-to the parent action.
+including multi-product cargo, stays untouched.  On overflow, the transform
+also fails closed whenever affected DROP workers collectively carry more than
+one positive sellable product kind: the official market requotes after each
+sold unit, so current spot price is not a cash-monotone ordering across product
+curves.  Malformed terminal step/shed/inventory/price/position/board state fails
+closed to the parent action.
 """
 from __future__ import annotations
 
@@ -71,11 +71,17 @@ def apply_place_delivery(observation, action, enabled=False):
         if (not isinstance(position, (list, tuple)) or len(position) != 2
                 or type(position[0]) is not int or type(position[1]) is not int):
             return action
+        x, y = position
+        if not (0 <= x < 10 and 0 <= y < 10):
+            return action
 
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
+    # Multiple carried product kinds can have different moving quote curves. The
+    # engine refreshes price after each sold unit, so a higher current quote is
+    # not proof that filling scarce capacity with that product yields >= cash.
     payload = 0
     has_drop = False
-    multi_product_drop = False
+    sellable_drop_kinds = set()
     touched_products = {
         item for item, quantity in raw_shed.items()
         if item in r04.PRODUCTS and quantity > 0
@@ -89,30 +95,23 @@ def apply_place_delivery(observation, action, enabled=False):
         inventory = view.inventory(worker)
         if not isinstance(inventory, dict):
             return action
-        sellable_products = 0
         for item, held in inventory.items():
             if type(held) is not int or held < 0:
                 return action
             payload += held
             if item in r04.PRODUCTS and held > 0:
                 touched_products.add(item)
-                sellable_products += 1
-        if sellable_products > 1:
-            multi_product_drop = True
+                sellable_drop_kinds.add(item)
         has_drop = True
     if has_drop:
         remaining = max(0, int(r04.SHED_CAPACITY) - sum(raw_shed.values()))
         if payload <= remaining:
             return action
-        # One unit action can PLACE only one named product. Rewriting a
-        # multi-product DROP could leave free shed slots that baseline DROP
-        # would have filled with the same actor's second product.
-        if multi_product_drop:
+        if len(sellable_drop_kinds) > 1:
             return action
 
-    # Overflow rewriting reprices PLACE priority and rebuilds terminal SELLs.
-    # Validate every sellable product that can participate; never coerce a
-    # malformed public price into a different cargo choice or sale order.
+    # Overflow rewriting validates every sellable product that can participate;
+    # never coerce a malformed public price into a cargo choice or sale order.
     if not isinstance(view.prices, dict):
         return action
     for item in touched_products:
@@ -157,7 +156,8 @@ def apply_place_delivery(observation, action, enabled=False):
 
     used = sum(raw_shed.values())
     remaining = max(0, int(r04.SHED_CAPACITY) - used)
-    # Public value first; stable worker index breaks equal-value ties.
+    # At most one carried sellable product kind survives the theorem guard; this
+    # ordering can therefore choose workers, but cannot compare moving curves.
     eligible.sort(key=lambda row: (-row[0], row[2], row[3]))
     for _, held, worker, item in eligible:
         if remaining <= 0:
