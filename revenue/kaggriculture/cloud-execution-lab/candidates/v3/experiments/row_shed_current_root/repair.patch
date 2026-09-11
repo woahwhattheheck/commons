@@ -1,0 +1,33 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+@@ -1544,7 +1544,7 @@ def _ro_price(item, inventory):
+     return max(1, int(round(price)))
+ 
+ 
+-def order_sells(market, inventory):
++def order_sells(market, inventory, shed=None):
+     """Leading SELL rows sorted by the price drop each causes, steepest first."""
+     lead = 0
+     while lead < len(market) and market[lead] and market[lead][0] == "SELL":
+@@ -1557,8 +1557,10 @@ def order_sells(market, inventory):
+         if item not in _RO_PARAMS or len(order) < 3:
+             return 0
+         level = int(inventory.get(item, _RO_I0))
+-        quantity = max(0, int(order[2]))
++        requested = max(0, int(order[2]))
++        quantity = (requested if shed is None else
++                    min(requested, max(0, int(shed.get(item, 0)))))
+         return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity
+ 
+     return sorted(market[:lead], key=drop, reverse=True) + market[lead:]
+@@ -1695,7 +1697,8 @@ def v3_agent(observation, configuration=None):
+     if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
+         inventory = (observation.get("market") or {}).get("inventory") or {}
+         market = [list(o) for o in action.get("market") or [] if o]
+-        ordered = order_sells(market, inventory)
++        shed = projected_shed(action, FarmView(observation))
++        ordered = order_sells(market, inventory, shed)
+         if ordered != market:
+             action = dict(action)
+             action["market"] = ordered
