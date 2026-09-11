@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import importlib.util
+import json
 from pathlib import Path
 import unittest
 
@@ -15,43 +17,45 @@ SPEC.loader.exec_module(guard)
 SHA = "a" * 64
 OTHER_SHA = "b" * 64
 
+BASE_CONFIG = {
+    "r04_sale_window": True,
+    "r04_sale_horizon": 8,
+    "r04_open_roundtrip": 0,
+    "r04_row_order": True,
+    "r04_evening_flush": True,
+    "r04_sale_fertilizer": True,
+    "r04_cattle_early": True,
+    "lane_x": False,
+}
+
 
 def manifest():
     return {
         "base": {"sha256": SHA},
         "releases": [
             {
+                "version": guard.LIVE_RELEASE_VERSION,
                 "submission_archive": {"sha256": OTHER_SHA},
-                "config": {
-                    "r04_sale_window": True,
-                    "r04_sale_horizon": 8,
-                    "r04_open_roundtrip": 0,
-                    "r04_row_order": True,
-                    "r04_evening_flush": True,
-                },
+                "config": dict(BASE_CONFIG),
             }
         ],
     }
 
 
 def panel():
+    seeds = [101, 102]
+    digest = hashlib.sha256("".join(f"{seed}\n" for seed in seeds).encode("ascii")).hexdigest()
     return {
-        "seeds": [101, 102],
+        "seeds": seeds,
         "seats": [0, 1],
         "games_per_opponent": 4,
-        "seed_list_sha256": "c" * 64,
+        "seed_list_sha256": digest,
+        "seed_list_sha256_encoding": guard.SEED_LIST_ENCODING,
     }
 
 
 def valid_receipt():
-    base_config = {
-        "r04_sale_window": True,
-        "r04_sale_horizon": 8,
-        "r04_open_roundtrip": 0,
-        "r04_row_order": True,
-        "r04_evening_flush": True,
-        "lane_x": False,
-    }
+    base_config = dict(BASE_CONFIG)
     candidate_config = dict(base_config)
     candidate_config["lane_x"] = True
     rows = []
@@ -73,6 +77,7 @@ def valid_receipt():
                 "delta_m": (c_own - c_rival) - (b_own - b_rival),
             }
         )
+    frozen = panel()
     return {
         "schema": guard.RECEIPT_SCHEMA,
         "mode": "official",
@@ -94,10 +99,10 @@ def valid_receipt():
             "config_overrides": {"lane_x": True},
         },
         "panel": {
-            "seeds": [101, 102],
-            "seats": [0, 1],
-            "games_per_opponent": 4,
-            "seed_list_sha256": "c" * 64,
+            "seeds": list(frozen["seeds"]),
+            "seats": list(frozen["seats"]),
+            "games_per_opponent": frozen["games_per_opponent"],
+            "seed_list_sha256": frozen["seed_list_sha256"],
         },
         "opponent": {
             "name": "exact-opponent",
@@ -112,10 +117,18 @@ def valid_receipt():
 
 
 class SimFidelityGuardTests(unittest.TestCase):
-    def test_valid_official_receipt_passes(self):
+    def test_valid_official_receipt_passes_with_authoritative_v31_release(self):
         result = guard.validate_receipt(valid_receipt(), manifest(), panel())
         self.assertTrue(result["official_gate_eligible"])
         self.assertEqual(result["cells"], 4)
+
+    def test_current_repo_manifest_cannot_false_green_without_v31_release(self):
+        repo_manifest = json.loads((HERE / "V3-MANIFEST.json").read_text(encoding="utf-8"))
+        latest = repo_manifest["releases"][-1]
+        if latest.get("version") == guard.LIVE_RELEASE_VERSION:
+            self.skipTest("repo now records an authoritative V3.1 release")
+        with self.assertRaisesRegex(guard.ReceiptError, "authoritative V3.1"):
+            guard.validate_receipt(valid_receipt(), repo_manifest, panel())
 
     def test_wrong_interpreter_commit_fails(self):
         receipt = valid_receipt()
@@ -138,13 +151,30 @@ class SimFidelityGuardTests(unittest.TestCase):
     def test_live_submission_config_mismatch_fails(self):
         receipt = valid_receipt()
         receipt["baseline"]["config"]["r04_sale_horizon"] = 99
-        with self.assertRaisesRegex(guard.ReceiptError, "live submission"):
+        with self.assertRaisesRegex(guard.ReceiptError, "exactly equal"):
+            guard.validate_receipt(receipt, manifest(), panel())
+
+    def test_baseline_bool_int_type_confusion_fails(self):
+        receipt = valid_receipt()
+        receipt["baseline"]["config"]["r04_sale_window"] = 1
+        with self.assertRaisesRegex(guard.ReceiptError, "type\+value strictness"):
+            guard.validate_receipt(receipt, manifest(), panel())
+        receipt = valid_receipt()
+        receipt["baseline"]["config"]["lane_x"] = 0
+        with self.assertRaisesRegex(guard.ReceiptError, "type\+value strictness"):
             guard.validate_receipt(receipt, manifest(), panel())
 
     def test_undeclared_candidate_config_drift_fails(self):
         receipt = valid_receipt()
         receipt["candidate"]["config"]["r04_sale_horizon"] = 7
-        with self.assertRaisesRegex(guard.ReceiptError, "declared config_overrides"):
+        with self.assertRaisesRegex(guard.ReceiptError, "declared"):
+            guard.validate_receipt(receipt, manifest(), panel())
+
+    def test_candidate_override_bool_int_type_confusion_fails(self):
+        receipt = valid_receipt()
+        receipt["candidate"]["config_overrides"]["lane_x"] = 1
+        receipt["candidate"]["config"]["lane_x"] = 1
+        with self.assertRaisesRegex(guard.ReceiptError, "changes JSON type"):
             guard.validate_receipt(receipt, manifest(), panel())
 
     def test_seed_or_seat_substitution_fails(self):
@@ -161,6 +191,10 @@ class SimFidelityGuardTests(unittest.TestCase):
         broken = panel()
         broken["games_per_opponent"] = 99
         with self.assertRaisesRegex(guard.ReceiptError, "seed x seat"):
+            guard.validate_receipt(valid_receipt(), manifest(), broken)
+        broken = panel()
+        broken["seed_list_sha256"] = "c" * 64
+        with self.assertRaisesRegex(guard.ReceiptError, "recomputed"):
             guard.validate_receipt(valid_receipt(), manifest(), broken)
 
     def test_opponent_bytes_must_match_between_arms(self):
