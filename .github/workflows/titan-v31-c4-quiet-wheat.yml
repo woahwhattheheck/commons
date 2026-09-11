@@ -1,0 +1,59 @@
+name: titan-v31-c4-quiet-wheat
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_quiet_wheat/**'
+      - '.github/workflows/titan-v31-c4-quiet-wheat.yml'
+  push:
+    branches:
+      - 'titan/v31-c4-quiet-wheat-*'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_quiet_wheat/**'
+      - '.github/workflows/titan-v31-c4-quiet-wheat.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Bind exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          echo "expected=$expected"
+          echo "actual=$actual"
+          test "$actual" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile exact experiment files
+        run: |
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_quiet_wheat/candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_quiet_wheat/test_candidate.py
+      - name: Run focused C4 contracts
+        run: |
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_quiet_wheat/test_candidate.py -v
+      - name: Prove experiment-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > /tmp/changed
+            cat /tmp/changed
+            while IFS= read -r path; do
+              case "$path" in
+                revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_quiet_wheat/*|.github/workflows/titan-v31-c4-quiet-wheat.yml) ;;
+                *) echo "unexpected path in C4 experiment: $path" >&2; exit 1 ;;
+              esac
+            done < /tmp/changed
+          fi
