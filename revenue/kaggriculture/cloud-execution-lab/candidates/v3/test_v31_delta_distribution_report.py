@@ -6,7 +6,6 @@ from pathlib import Path
 import tempfile
 import unittest
 
-
 HERE = Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location(
     "v31_delta_distribution_report", HERE / "v31_delta_distribution_report.py"
@@ -80,14 +79,14 @@ class DeltaDistributionReportTests(unittest.TestCase):
         document = {
             "baseline": [
                 {"opponent": "a", "seed": 1, "seat": 0, "own": 10, "rival": 9},
-                {"opponent": "a", "seed": 1, "seat": 1, "scores": [8, 8]},
+                {"opponent": "a", "seed": 1, "candidate_seat": 1, "scores": [8, 8]},
             ],
             "candidate": [
                 {
                     "opponent": "a",
                     "seed": 1,
-                    "seat": 1,
-                    "scores": [9, 8],
+                    "candidate_seat": 1,
+                    "scores": [8, 9],
                     "activations": {"x": 1},
                 },
                 {"opponent": "a", "seed": 1, "seat": 0, "own": 12, "rival": 9},
@@ -102,6 +101,87 @@ class DeltaDistributionReportTests(unittest.TestCase):
         broken = {"baseline": document["baseline"], "candidate": document["candidate"][:1]}
         with self.assertRaisesRegex(reporter.DataError, "arm cell sets differ"):
             reporter.load_records(broken)
+
+    def test_raw_evaluator_seat1_scores_are_player_ordered(self):
+        document = {
+            "baseline": [
+                {
+                    "opponent": "official",
+                    "seed": 99,
+                    "candidate_seat": 1,
+                    "scores": [90, 100],
+                }
+            ],
+            "candidate": [
+                {
+                    "opponent": "official",
+                    "seed": 99,
+                    "candidate_seat": 1,
+                    "scores": [90, 120],
+                }
+            ],
+        }
+        report = reporter.analyze(reporter.load_records(document))
+        self.assertEqual(report["delta_m"]["mean"], 20.0)
+        self.assertEqual(report["by_seat"]["1"]["mean_delta_m"], 20.0)
+
+    def test_conflicting_aliases_and_score_forms_fail_closed(self):
+        with self.assertRaisesRegex(reporter.DataError, "conflicting seat aliases"):
+            reporter.analyze(
+                [
+                    {
+                        "opponent": "a",
+                        "seed": 1,
+                        "seat": 0,
+                        "candidate_seat": 1,
+                        "baseline": {"own": 10, "rival": 9},
+                        "candidate": {"own": 11, "rival": 9},
+                    }
+                ]
+            )
+        with self.assertRaisesRegex(reporter.DataError, "conflicting opponent aliases"):
+            reporter.analyze(
+                [
+                    {
+                        "opponent": "a",
+                        "opponent_name": "b",
+                        "seed": 1,
+                        "seat": 0,
+                        "baseline": {"own": 10, "rival": 9},
+                        "candidate": {"own": 11, "rival": 9},
+                    }
+                ]
+            )
+        with self.assertRaisesRegex(reporter.DataError, "conflicting baseline score forms"):
+            reporter.analyze(
+                [
+                    {
+                        "opponent": "a",
+                        "seed": 1,
+                        "seat": 0,
+                        "baseline": {"own": 10, "rival": 9},
+                        "baseline_scores": [999, 9],
+                        "candidate": {"own": 11, "rival": 9},
+                    }
+                ]
+            )
+
+    def test_consistent_aliases_are_allowed(self):
+        report = reporter.analyze(
+            [
+                {
+                    "opponent": "a",
+                    "opponent_name": "a",
+                    "seed": 1,
+                    "game_seed": "1",
+                    "candidate_seat": 1,
+                    "seat": "1",
+                    "baseline": {"scores": [9, 10], "own": 10, "rival": 9},
+                    "candidate": {"scores": [9, 12], "own": 12, "rival": 9},
+                }
+            ]
+        )
+        self.assertEqual(report["delta_m"]["mean"], 2.0)
 
     def test_policy_is_explicit_and_separate_from_measurement(self):
         report = reporter.analyze(

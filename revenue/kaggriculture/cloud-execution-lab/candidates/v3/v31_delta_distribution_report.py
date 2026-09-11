@@ -6,8 +6,10 @@ Input may be either:
     containing baseline and candidate scores, or
   * {"baseline": [...], "candidate": [...]} with one row per arm.
 
-Each logical cell is keyed by opponent, seed, and seat. Competitive margin is
-always recomputed as (candidate_own - candidate_rival) -
+Each logical cell is keyed by opponent, seed, and candidate seat. Generic ``scores``
+vectors follow the pinned official evaluator contract: ``[seat0, seat1]``. Explicit
+``own``/``rival`` fields are already candidate-relative. Competitive margin is always
+recomputed as (candidate_own - candidate_rival) -
 (baseline_own - baseline_rival). A supplied delta_m is diagnostic only.
 """
 from __future__ import annotations
@@ -19,7 +21,7 @@ import math
 from pathlib import Path
 import statistics
 import sys
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Callable, Iterable, Mapping, Sequence
 
 
 class DataError(ValueError):
@@ -27,16 +29,8 @@ class DataError(ValueError):
 
 
 _MISSING = object()
+_NO_DEFAULT = object()
 _EPS = 1e-9
-
-
-def _first(mapping: Mapping[str, Any], keys: Iterable[str], default: Any = _MISSING) -> Any:
-    for key in keys:
-        if key in mapping:
-            return mapping[key]
-    if default is _MISSING:
-        raise DataError("missing required field; expected one of: " + ", ".join(keys))
-    return default
 
 
 def _number(value: Any, label: str) -> float:
@@ -48,64 +42,178 @@ def _number(value: Any, label: str) -> float:
     return out
 
 
-def _seat(value: Any) -> int:
+def _seat(value: Any, label: str = "seat") -> int:
     if isinstance(value, str) and value in {"0", "1"}:
         value = int(value)
     if isinstance(value, bool) or not isinstance(value, int) or value not in (0, 1):
-        raise DataError("seat must be 0 or 1")
+        raise DataError(f"{label} must be 0 or 1")
     return value
 
 
+def _opponent(value: Any, label: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise DataError(f"{label} must be a non-empty string")
+    return value.strip()
+
+
+def _seed(value: Any, label: str) -> str:
+    if isinstance(value, bool) or not isinstance(value, (int, str)):
+        raise DataError(f"{label} must be an integer or non-empty string")
+    out = str(value).strip()
+    if not out:
+        raise DataError(f"{label} must be an integer or non-empty string")
+    return out
+
+
+def _consistent_alias(
+    mapping: Mapping[str, Any],
+    keys: Iterable[str],
+    label: str,
+    normalize: Callable[[Any, str], Any],
+    *,
+    default: Any = _NO_DEFAULT,
+) -> Any:
+    present = [(key, normalize(mapping[key], key)) for key in keys if key in mapping]
+    if not present:
+        if default is _NO_DEFAULT:
+            raise DataError("missing required field; expected one of: " + ", ".join(keys))
+        return default
+    value = present[0][1]
+    for key, other in present[1:]:
+        if other != value:
+            names = ", ".join(name for name, _ in present)
+            raise DataError(f"conflicting {label} aliases: {names}")
+    return value
+
+
+def _optional_number_alias(mapping: Mapping[str, Any], keys: Iterable[str], label: str) -> Any:
+    return _consistent_alias(mapping, keys, label, _number, default=_MISSING)
+
+
 def _cell_key(record: Mapping[str, Any]) -> tuple[str, str, int]:
-    opponent = _first(record, ("opponent", "opponent_name", "rival_name"))
-    if not isinstance(opponent, str) or not opponent.strip():
-        raise DataError("opponent must be a non-empty string")
-    seed = _first(record, ("seed", "game_seed"))
-    if isinstance(seed, bool) or not isinstance(seed, (int, str)):
-        raise DataError("seed must be an integer or string")
-    return opponent.strip(), str(seed), _seat(_first(record, ("seat", "our_seat")))
+    opponent = _consistent_alias(
+        record, ("opponent", "opponent_name", "rival_name"), "opponent", _opponent
+    )
+    seed = _consistent_alias(record, ("seed", "game_seed"), "seed", _seed)
+    seat = _consistent_alias(
+        record, ("candidate_seat", "seat", "our_seat"), "seat", _seat
+    )
+    return opponent, seed, seat
 
 
-def _pair_from_mapping(mapping: Mapping[str, Any], label: str) -> tuple[float, float]:
+def _score_vector(mapping: Mapping[str, Any], label: str, seat: int) -> Any:
     scores = mapping.get("scores", _MISSING)
-    if scores is not _MISSING:
-        if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
-            raise DataError(f"{label}.scores must contain [own, rival]")
-        return _number(scores[0], f"{label}.scores[0]"), _number(scores[1], f"{label}.scores[1]")
-    own = _first(mapping, ("own", "ours", "own_score", "our_score", "score"))
-    rival = _first(mapping, ("rival", "rival_score", "opponent_score", "their_score"))
-    return _number(own, f"{label}.own"), _number(rival, f"{label}.rival")
+    if scores is _MISSING:
+        return _MISSING
+    if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
+        raise DataError(f"{label}.scores must contain player-ordered [seat0, seat1]")
+    seat0 = _number(scores[0], f"{label}.scores[0]")
+    seat1 = _number(scores[1], f"{label}.scores[1]")
+    return (seat0, seat1) if seat == 0 else (seat1, seat0)
 
 
-def _arm_scores(record: Mapping[str, Any], arm: str) -> tuple[float, float]:
-    nested = record.get(arm, _MISSING)
-    if isinstance(nested, Mapping):
-        return _pair_from_mapping(nested, arm)
-    scores = record.get(f"{arm}_scores", _MISSING)
-    if scores is not _MISSING:
-        if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
-            raise DataError(f"{arm}_scores must contain [own, rival]")
-        return _number(scores[0], f"{arm}_scores[0]"), _number(scores[1], f"{arm}_scores[1]")
-    own = _first(record, (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"))
-    rival = _first(record, (f"{arm}_rival", f"{arm}_rival_score", f"{arm}_opponent_score", f"{arm}_their_score"))
-    return _number(own, f"{arm}_own"), _number(rival, f"{arm}_rival")
+def _pair_from_mapping(mapping: Mapping[str, Any], label: str, *, seat: int) -> tuple[float, float]:
+    """Return candidate-relative (own, rival).
+
+    Generic ``scores`` is reserved for the official evaluator's player-ordered
+    ``[seat0, seat1]`` vector. Explicit own/rival aliases are candidate-relative.
+    If both forms are supplied they must normalize to the same pair.
+    """
+    vector_pair = _score_vector(mapping, label, seat)
+    own = _optional_number_alias(
+        mapping, ("own", "ours", "own_score", "our_score", "score"), f"{label}.own"
+    )
+    rival = _optional_number_alias(
+        mapping, ("rival", "rival_score", "opponent_score", "their_score"), f"{label}.rival"
+    )
+    explicit_present = own is not _MISSING or rival is not _MISSING
+    if explicit_present and (own is _MISSING or rival is _MISSING):
+        raise DataError(f"{label} explicit score form requires both own and rival")
+    explicit_pair = (own, rival) if explicit_present else _MISSING
+
+    if vector_pair is _MISSING and explicit_pair is _MISSING:
+        raise DataError(
+            f"{label} must contain player-ordered scores or explicit own/rival scores"
+        )
+    if vector_pair is not _MISSING and explicit_pair is not _MISSING:
+        if vector_pair != explicit_pair:
+            raise DataError(f"conflicting {label} score forms")
+        return explicit_pair
+    return explicit_pair if explicit_pair is not _MISSING else vector_pair
+
+
+def _normalized_pair_array(value: Any, label: str) -> tuple[float, float]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes)) or len(value) != 2:
+        raise DataError(f"{label} must contain normalized [own, rival]")
+    return _number(value[0], f"{label}[0]"), _number(value[1], f"{label}[1]")
+
+
+def _arm_scores(record: Mapping[str, Any], arm: str, *, seat: int) -> tuple[float, float]:
+    forms: list[tuple[str, tuple[float, float]]] = []
+
+    if arm in record:
+        nested = record[arm]
+        if not isinstance(nested, Mapping):
+            raise DataError(f"{arm} must be an object")
+        forms.append((arm, _pair_from_mapping(nested, arm, seat=seat)))
+
+    flat_scores_key = f"{arm}_scores"
+    if flat_scores_key in record:
+        forms.append(
+            (flat_scores_key, _normalized_pair_array(record[flat_scores_key], flat_scores_key))
+        )
+
+    own = _optional_number_alias(
+        record,
+        (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"),
+        f"{arm}_own",
+    )
+    rival = _optional_number_alias(
+        record,
+        (
+            f"{arm}_rival",
+            f"{arm}_rival_score",
+            f"{arm}_opponent_score",
+            f"{arm}_their_score",
+        ),
+        f"{arm}_rival",
+    )
+    flat_explicit = own is not _MISSING or rival is not _MISSING
+    if flat_explicit and (own is _MISSING or rival is _MISSING):
+        raise DataError(f"{arm} flat score form requires both own and rival")
+    if flat_explicit:
+        forms.append(("flat explicit", (own, rival)))
+
+    if not forms:
+        raise DataError(f"missing {arm} scores")
+    pair = forms[0][1]
+    for name, other in forms[1:]:
+        if other != pair:
+            raise DataError(
+                f"conflicting {arm} score forms: {forms[0][0]} vs {name}"
+            )
+    return pair
 
 
 def _activation_mapping(record: Mapping[str, Any]) -> Mapping[str, Any]:
-    direct = record.get("activations")
-    if direct is not None:
+    direct = record.get("activations", _MISSING)
+    diagnostics = record.get("diagnostics", _MISSING)
+    nested = _MISSING
+    if diagnostics is not _MISSING:
+        if not isinstance(diagnostics, Mapping):
+            raise DataError("diagnostics must be an object")
+        nested = diagnostics.get("activations", _MISSING)
+        if nested is not _MISSING and not isinstance(nested, Mapping):
+            raise DataError("diagnostics.activations must be an object")
+    if direct is not _MISSING:
         if not isinstance(direct, Mapping):
             raise DataError("activations must be an object")
+        if nested is not _MISSING and dict(direct) != dict(nested):
+            raise DataError("conflicting activations and diagnostics.activations")
         return direct
-    diagnostics = record.get("diagnostics")
-    if diagnostics is None:
-        return {}
-    if not isinstance(diagnostics, Mapping):
-        raise DataError("diagnostics must be an object")
-    activations = diagnostics.get("activations", {})
-    if not isinstance(activations, Mapping):
-        raise DataError("diagnostics.activations must be an object")
-    return activations
+    if nested is not _MISSING:
+        return nested
+    return {}
 
 
 def _activation_state(value: Any, label: str) -> bool:
@@ -121,13 +229,15 @@ def _records_container(document: Any) -> list[Mapping[str, Any]]:
     if isinstance(document, list):
         rows = document
     elif isinstance(document, Mapping):
-        rows = _MISSING
-        for key in ("cells", "results", "games", "matches"):
-            if key in document:
-                rows = document[key]
-                break
-        if rows is _MISSING:
-            raise DataError("input object must contain cells/results/games/matches or baseline+candidate arms")
+        present = [key for key in ("cells", "results", "games", "matches") if key in document]
+        if not present:
+            raise DataError(
+                "input object must contain cells/results/games/matches or baseline+candidate arms"
+            )
+        rows = document[present[0]]
+        for key in present[1:]:
+            if document[key] != rows:
+                raise DataError("conflicting evidence-container aliases: " + ", ".join(present))
     else:
         raise DataError("input must be a JSON list or object")
     if not isinstance(rows, list) or not rows:
@@ -135,6 +245,22 @@ def _records_container(document: Any) -> list[Mapping[str, Any]]:
     if not all(isinstance(row, Mapping) for row in rows):
         raise DataError("every evidence cell must be an object")
     return list(rows)
+
+
+def _supplied_delta(record: Mapping[str, Any]) -> tuple[str | None, Any]:
+    present: list[tuple[str, float]] = []
+    for name in ("delta_m", "deltaM", "delta_margin"):
+        if name in record:
+            present.append((name, _number(record[name], name)))
+    if not present:
+        return None, _MISSING
+    value = present[0][1]
+    for name, other in present[1:]:
+        if not math.isclose(other, value, rel_tol=0.0, abs_tol=_EPS):
+            raise DataError(
+                "conflicting supplied delta aliases: " + ", ".join(name for name, _ in present)
+            )
+    return present[0][0], value
 
 
 def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | None:
@@ -167,20 +293,21 @@ def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | N
     for key in sorted(baseline_keys):
         base = indexed["baseline"][key]
         cand = indexed["candidate"][key]
-        bo, br = _pair_from_mapping(base, "baseline")
-        co, cr = _pair_from_mapping(cand, "candidate")
+        bo, br = _pair_from_mapping(base, "baseline", seat=key[2])
+        co, cr = _pair_from_mapping(cand, "candidate", seat=key[2])
         synthesized: dict[str, Any] = {
-            "opponent": key[0], "seed": key[1], "seat": key[2],
+            "opponent": key[0],
+            "seed": key[1],
+            "candidate_seat": key[2],
             "baseline": {"own": bo, "rival": br},
             "candidate": {"own": co, "rival": cr},
         }
         activations = _activation_mapping(cand)
         if activations:
             synthesized["activations"] = dict(activations)
-        for delta_key in ("delta_m", "deltaM", "delta_margin"):
-            if delta_key in cand:
-                synthesized[delta_key] = cand[delta_key]
-                break
+        delta_key, delta_value = _supplied_delta(cand)
+        if delta_key is not None:
+            synthesized[delta_key] = delta_value
         paired.append(synthesized)
     return paired
 
@@ -217,10 +344,14 @@ def _basic_stats(cells: Sequence[dict[str, Any]]) -> dict[str, Any]:
 
 def _public_cell(cell: Mapping[str, Any]) -> dict[str, Any]:
     return {
-        "opponent": cell["opponent"], "seed": cell["seed"], "seat": cell["seat"],
-        "delta_m": cell["delta_m"], "baseline_margin": cell["baseline_margin"],
+        "opponent": cell["opponent"],
+        "seed": cell["seed"],
+        "seat": cell["seat"],
+        "delta_m": cell["delta_m"],
+        "baseline_margin": cell["baseline_margin"],
         "candidate_margin": cell["candidate_margin"],
-        "baseline_outcome": cell["baseline_outcome"], "candidate_outcome": cell["candidate_outcome"],
+        "baseline_outcome": cell["baseline_outcome"],
+        "candidate_outcome": cell["candidate_outcome"],
     }
 
 
@@ -236,8 +367,8 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         if key in seen:
             raise DataError(f"duplicate logical cell: {key}")
         seen.add(key)
-        baseline_own, baseline_rival = _arm_scores(record, "baseline")
-        candidate_own, candidate_rival = _arm_scores(record, "candidate")
+        baseline_own, baseline_rival = _arm_scores(record, "baseline", seat=key[2])
+        candidate_own, candidate_rival = _arm_scores(record, "candidate", seat=key[2])
         baseline_margin = baseline_own - baseline_rival
         candidate_margin = candidate_own - candidate_rival
         delta_m = candidate_margin - baseline_margin
@@ -248,36 +379,53 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
             activations[name] = _activation_state(raw, f"activations.{name}")
             feature_names.add(name)
         cell = {
-            "opponent": key[0], "seed": key[1], "seat": key[2],
-            "baseline_margin": baseline_margin, "candidate_margin": candidate_margin,
+            "opponent": key[0],
+            "seed": key[1],
+            "seat": key[2],
+            "baseline_margin": baseline_margin,
+            "candidate_margin": candidate_margin,
             "delta_m": delta_m,
             "baseline_outcome": _outcome(baseline_own, baseline_rival),
             "candidate_outcome": _outcome(candidate_own, candidate_rival),
             "activations": activations,
         }
         cells.append(cell)
-        supplied = _MISSING
-        supplied_key = None
-        for name in ("delta_m", "deltaM", "delta_margin"):
-            if name in record:
-                supplied_key = name
-                supplied = _number(record[name], name)
-                break
-        if supplied is not _MISSING and not math.isclose(supplied, delta_m, rel_tol=0.0, abs_tol=_EPS):
-            supplied_mismatches.append({
-                "opponent": key[0], "seed": key[1], "seat": key[2], "field": supplied_key,
-                "supplied": supplied, "recomputed": delta_m,
-            })
+        supplied_key, supplied = _supplied_delta(record)
+        if supplied is not _MISSING and not math.isclose(
+            supplied, delta_m, rel_tol=0.0, abs_tol=_EPS
+        ):
+            supplied_mismatches.append(
+                {
+                    "opponent": key[0],
+                    "seed": key[1],
+                    "seat": key[2],
+                    "field": supplied_key,
+                    "supplied": supplied,
+                    "recomputed": delta_m,
+                }
+            )
+
     ordered = sorted(cells, key=lambda c: (c["opponent"], c["seed"], c["seat"]))
     deltas = [cell["delta_m"] for cell in ordered]
     worst = min(ordered, key=lambda cell: cell["delta_m"])
     best = max(ordered, key=lambda cell: cell["delta_m"])
-    transitions = Counter(f'{cell["baseline_outcome"]}->{cell["candidate_outcome"]}' for cell in ordered)
-    new_losses = [_public_cell(cell) for cell in ordered if cell["baseline_outcome"] != "L" and cell["candidate_outcome"] == "L"]
-    lost_wins = [_public_cell(cell) for cell in ordered if cell["baseline_outcome"] == "W" and cell["candidate_outcome"] != "W"]
+    transitions = Counter(
+        f'{cell["baseline_outcome"]}->{cell["candidate_outcome"]}' for cell in ordered
+    )
+    new_losses = [
+        _public_cell(cell)
+        for cell in ordered
+        if cell["baseline_outcome"] != "L" and cell["candidate_outcome"] == "L"
+    ]
+    lost_wins = [
+        _public_cell(cell)
+        for cell in ordered
+        if cell["baseline_outcome"] == "W" and cell["candidate_outcome"] != "W"
+    ]
     by_seat = {
         str(seat): _basic_stats([cell for cell in ordered if cell["seat"] == seat])
-        for seat in (0, 1) if any(cell["seat"] == seat for cell in ordered)
+        for seat in (0, 1)
+        if any(cell["seat"] == seat for cell in ordered)
     }
     by_opponent = {
         opponent: _basic_stats([cell for cell in ordered if cell["opponent"] == opponent])
@@ -294,39 +442,57 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
             "unknown_count": len(unknown),
         }
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "cells": len(ordered),
         "delta_m": {
-            "mean": statistics.fmean(deltas), "median": statistics.median(deltas),
+            "mean": statistics.fmean(deltas),
+            "median": statistics.median(deltas),
             "positive": sum(delta > _EPS for delta in deltas),
             "negative": sum(delta < -_EPS for delta in deltas),
             "zero": sum(abs(delta) <= _EPS for delta in deltas),
-            "worst_cell": _public_cell(worst), "best_cell": _public_cell(best),
+            "worst_cell": _public_cell(worst),
+            "best_cell": _public_cell(best),
             "supplied_mismatch_count": len(supplied_mismatches),
             "supplied_mismatches": supplied_mismatches,
         },
         "outcomes": {
-            "baseline_wtl": dict(sorted(Counter(c["baseline_outcome"] for c in ordered).items())),
-            "candidate_wtl": dict(sorted(Counter(c["candidate_outcome"] for c in ordered).items())),
+            "baseline_wtl": dict(
+                sorted(Counter(c["baseline_outcome"] for c in ordered).items())
+            ),
+            "candidate_wtl": dict(
+                sorted(Counter(c["candidate_outcome"] for c in ordered).items())
+            ),
             "transitions": dict(sorted(transitions.items())),
-            "new_losses": new_losses, "lost_wins": lost_wins,
+            "new_losses": new_losses,
+            "lost_wins": lost_wins,
         },
-        "by_seat": by_seat, "by_opponent": by_opponent, "activations": activation_summary,
+        "by_seat": by_seat,
+        "by_opponent": by_opponent,
+        "activations": activation_summary,
     }
 
 
-def policy_failures(report: Mapping[str, Any], *, require_no_new_losses: bool = False,
-                    require_no_lost_wins: bool = False, min_mean_delta: float | None = None,
-                    strict_supplied_delta: bool = False) -> list[str]:
+def policy_failures(
+    report: Mapping[str, Any],
+    *,
+    require_no_new_losses: bool = False,
+    require_no_lost_wins: bool = False,
+    min_mean_delta: float | None = None,
+    strict_supplied_delta: bool = False,
+) -> list[str]:
     failures: list[str] = []
     if require_no_new_losses and report["outcomes"]["new_losses"]:
         failures.append(f'new losses: {len(report["outcomes"]["new_losses"])}')
     if require_no_lost_wins and report["outcomes"]["lost_wins"]:
         failures.append(f'lost wins: {len(report["outcomes"]["lost_wins"])}')
     if min_mean_delta is not None and report["delta_m"]["mean"] < min_mean_delta:
-        failures.append(f'mean delta_m {report["delta_m"]["mean"]:.12g} < {min_mean_delta:.12g}')
+        failures.append(
+            f'mean delta_m {report["delta_m"]["mean"]:.12g} < {min_mean_delta:.12g}'
+        )
     if strict_supplied_delta and report["delta_m"]["supplied_mismatch_count"]:
-        failures.append(f'supplied delta_m mismatches: {report["delta_m"]["supplied_mismatch_count"]}')
+        failures.append(
+            f'supplied delta_m mismatches: {report["delta_m"]["supplied_mismatch_count"]}'
+        )
     return failures
 
 
@@ -344,8 +510,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--require-no-new-losses", action="store_true")
     parser.add_argument("--require-no-lost-wins", action="store_true")
     parser.add_argument("--min-mean-delta", type=float)
-    parser.add_argument("--strict-supplied-delta", action="store_true",
-                        help="fail policy if a supplied delta field disagrees with recomputed scores")
+    parser.add_argument(
+        "--strict-supplied-delta",
+        action="store_true",
+        help="fail policy if a supplied delta field disagrees with recomputed scores",
+    )
     args = parser.parse_args(argv)
     try:
         if args.min_mean_delta is not None and not math.isfinite(args.min_mean_delta):
