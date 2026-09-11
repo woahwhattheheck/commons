@@ -1,12 +1,13 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import math
 import unittest
 
 import candidate as c
 
 
-def obs(step=648, player=0, money0=10000, money1=12000):
+def obs(step=648, player=0, money0=10000.0, money1=12000.0):
     return {
         "step": step,
         "player": player,
@@ -18,12 +19,14 @@ def obs(step=648, player=0, money0=10000, money1=12000):
 
 
 class PublicCashGapTests(unittest.TestCase):
-    def test_cash_gap_is_public_and_player_symmetric(self):
-        self.assertEqual(c.public_cash_gap(obs(player=0, money0=100, money1=230)), 130)
-        self.assertEqual(c.public_cash_gap(obs(player=1, money0=100, money1=230)), 130)
+    def test_cash_gap_accepts_official_float_money_and_is_player_symmetric(self):
+        self.assertEqual(c.public_cash_gap(obs(player=0, money0=100.0, money1=230.0)), 130)
+        self.assertEqual(c.public_cash_gap(obs(player=1, money0=100.0, money1=230.0)), 130)
+        self.assertEqual(c.public_cash_gap(obs(money0=3000.0, money1=3000.0)), 0)
 
-    def test_money_bool_float_and_string_fail_closed(self):
-        for malformed in (True, 100.0, "100"):
+    def test_money_must_be_finite_integral_float(self):
+        malformed_values = (True, 100, "100", 100.5, float("nan"), float("inf"), float("-inf"))
+        for malformed in malformed_values:
             with self.subTest(malformed=malformed):
                 state = obs(money0=malformed)
                 with self.assertRaises(ValueError):
@@ -42,7 +45,7 @@ class PublicCashGapTests(unittest.TestCase):
                 self.assertEqual(gate.last_evidence, {})
 
     def test_farm_shape_is_exact_two_player_public_state(self):
-        for farms in ([], [{"money": 1}], [{"money": 1}, {"money": 2}, {"money": 3}], [1, 2]):
+        for farms in ([], [{"money": 1.0}], [{"money": 1.0}, {"money": 2.0}, {"money": 3.0}], [1, 2]):
             with self.subTest(farms=farms):
                 state = obs()
                 state["farms"] = farms
@@ -53,39 +56,39 @@ class PublicCashGapTests(unittest.TestCase):
 class TightCashGateTests(unittest.TestCase):
     def test_pre_latch_step_never_arms(self):
         gate = c.TightCashGate(max_abs_cash_gap=5000, latch_step=648)
-        self.assertFalse(gate.allow(obs(step=647, money0=10000, money1=10001)))
+        self.assertFalse(gate.allow(obs(step=647, money0=10000.0, money1=10001.0)))
         self.assertEqual(gate.last_evidence, {})
 
     def test_tight_cash_gap_latches_true_at_first_late_decision(self):
         gate = c.TightCashGate(max_abs_cash_gap=5000)
-        self.assertTrue(gate.allow(obs(step=648, money0=10000, money1=14999)))
+        self.assertTrue(gate.allow(obs(step=648, money0=10000.0, money1=14999.0)))
         self.assertEqual(gate.last_evidence[0]["cash_gap"], 4999)
         self.assertIs(gate.last_evidence[0]["tight"], True)
 
     def test_boundary_is_inclusive_and_over_boundary_guards(self):
         gate = c.TightCashGate(max_abs_cash_gap=5000)
-        self.assertTrue(gate.allow(obs(step=648, money0=10000, money1=15000)))
+        self.assertTrue(gate.allow(obs(step=648, money0=10000.0, money1=15000.0)))
         gate = c.TightCashGate(max_abs_cash_gap=5000)
-        self.assertFalse(gate.allow(obs(step=648, money0=10000, money1=15001)))
+        self.assertFalse(gate.allow(obs(step=648, money0=10000.0, money1=15001.0)))
         self.assertIs(gate.last_evidence[0]["tight"], False)
 
     def test_tight_latch_does_not_oscillate_after_our_market_behavior(self):
         gate = c.TightCashGate(max_abs_cash_gap=5000)
-        self.assertTrue(gate.allow(obs(step=648, money0=10000, money1=12000)))
-        self.assertTrue(gate.allow(obs(step=649, money0=10000, money1=30000)))
+        self.assertTrue(gate.allow(obs(step=648, money0=10000.0, money1=12000.0)))
+        self.assertTrue(gate.allow(obs(step=649, money0=10000.0, money1=30000.0)))
         self.assertEqual(gate.last_evidence[0]["cash_gap"], 2000)
 
     def test_loose_latch_does_not_turn_on_later(self):
         gate = c.TightCashGate(max_abs_cash_gap=5000)
-        self.assertFalse(gate.allow(obs(step=648, money0=10000, money1=20000)))
-        self.assertFalse(gate.allow(obs(step=649, money0=10000, money1=10001)))
+        self.assertFalse(gate.allow(obs(step=648, money0=10000.0, money1=20000.0)))
+        self.assertFalse(gate.allow(obs(step=649, money0=10000.0, money1=10001.0)))
         self.assertEqual(gate.last_evidence[0]["cash_gap"], 10000)
 
     def test_rewind_relatches_as_a_new_episode(self):
         gate = c.TightCashGate(max_abs_cash_gap=5000)
-        self.assertTrue(gate.allow(obs(step=648, money0=10000, money1=12000)))
-        self.assertTrue(gate.allow(obs(step=649, money0=10000, money1=30000)))
-        self.assertFalse(gate.allow(obs(step=648, money0=10000, money1=30000)))
+        self.assertTrue(gate.allow(obs(step=648, money0=10000.0, money1=12000.0)))
+        self.assertTrue(gate.allow(obs(step=649, money0=10000.0, money1=30000.0)))
+        self.assertFalse(gate.allow(obs(step=648, money0=10000.0, money1=30000.0)))
         self.assertEqual(gate.last_evidence[0]["cash_gap"], 20000)
 
     def test_malformed_latch_snapshot_is_not_carried_forward(self):
@@ -94,7 +97,7 @@ class TightCashGateTests(unittest.TestCase):
         bad["farms"][1]["money"] = True
         self.assertFalse(gate.allow(bad))
         self.assertEqual(gate.last_evidence, {})
-        self.assertTrue(gate.allow(obs(step=649, money0=10000, money1=12000)))
+        self.assertTrue(gate.allow(obs(step=649, money0=10000.0, money1=12000.0)))
         self.assertEqual(gate.last_evidence[0]["step"], 649)
 
     def test_parameters_are_type_strict_and_nonnegative(self):
