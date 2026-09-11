@@ -9,11 +9,11 @@
 
 Recipe: extract ../../exports/titan-current.tar.gz (SHA-256 pinned in V3-MANIFEST.json
 under base.sha256), copy overlay/ over it (the lane modules and the check), then run
-apply_v3.apply() which edits titan_runtime.py, scheduler.py, frozen_selected.py,
-TITAN-CONFIG.json and TITAN-RELEASE.md with exact-anchor replacements.  Fixed tar
-metadata makes the archive a pure function of (canonical, overlay, apply_v3).  dist/
-is a build product and is not committed; a shard verifies each materialised file
-against FILES.json.
+apply_v3.apply() followed by the V4 exact-string key layer in apply_v4.apply().  Those
+steps edit titan_runtime.py, scheduler.py, frozen_selected.py, r04_full_router.py,
+TITAN-CONFIG.json and TITAN-RELEASE.md. Fixed tar metadata makes the archive a pure
+function of (canonical, overlay, apply_v3, apply_v4). dist/ is a build product and is
+not committed; a shard verifies each materialised file against FILES.json.
 """
 import gzip
 import hashlib
@@ -29,6 +29,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import apply_v3  # noqa: E402
+import apply_v4  # noqa: E402
 
 OVERLAY = HERE / "overlay"
 DIST = HERE / "dist"
@@ -67,6 +68,7 @@ def package_files(canon_path=None):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(blob)
         apply_v3.apply(str(work))
+        apply_v4.apply(str(work))
         files = {}
         for path in sorted(p for p in work.rglob("*") if p.is_file()):
             files[path.relative_to(work).as_posix()] = path.read_bytes()
@@ -100,6 +102,7 @@ def file_shas(files):
 def source_shas():
     shas = file_shas(overlay_files())
     shas["apply_v3.py"] = hashlib.sha256((HERE / "apply_v3.py").read_bytes()).hexdigest()
+    shas["apply_v4.py"] = hashlib.sha256((HERE / "apply_v4.py").read_bytes()).hexdigest()
     return shas
 
 
