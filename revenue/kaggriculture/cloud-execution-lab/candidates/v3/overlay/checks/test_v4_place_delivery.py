@@ -113,16 +113,21 @@ class PlaceDelivery(unittest.TestCase):
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
         self.assertEqual(out["market"], [["SELL", "WHEAT", 100]])
 
-    def test_capacity_goes_to_higher_value_worker(self):
+    def test_cross_actor_price_priority_cannot_change_parent_shed_vector(self):
         parent = action(["DROP"], [["DROP"]])
         obs = observation(shed={"WHEAT": 98},
                           inventories=[{"CARROT": 5}, {"WOOL": 5}],
                           prices={"CARROT": 5, "WOOL": 100})
+        view = r04.FarmView(obs)
+        baseline = r04.projected_shed(parent, view)
+        self.assertEqual(baseline["CARROT"], 2)
+        self.assertEqual(baseline["WOOL"], 0)
+
+        # The old helper reordered by current quote and would PLACE WOOL from the
+        # later actor. That changes terminal product composition versus parent
+        # DROP actor order and can regress realized cash under rival supply.
         out = lane.apply_place_delivery(obs, parent, enabled=True)
-        self.assertEqual(out["farmer"], ["PASS"])
-        self.assertEqual(out["hands"], [["PLACE", "WOOL", 2]])
-        self.assertIn(["SELL", "WOOL", 2], out["market"])
-        self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
+        self.assertIs(out, parent)
 
     def test_string_step_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
