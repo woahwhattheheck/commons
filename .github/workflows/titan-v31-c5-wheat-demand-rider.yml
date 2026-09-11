@@ -1,0 +1,74 @@
+name: TITAN V3.1 C5 wheat demand rider
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v31-c5-wheat-demand-rider.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c5_wheat_demand_rider/**"
+  push:
+    branches:
+      - astra/v31-c5-wheat-demand-rider-20260911
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-c5-wheat-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CASE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c5_wheat_demand_rider
+      R04: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+      ENGINE: revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+      EXPECTED_R04_BLOB: 21c4f1db0298f8955b1f5ad366bd780a89cad206
+      EXPECTED_ENGINE_BLOB: 3c202c7ee921da239356789e266b694635103fc4
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+
+    steps:
+      - name: Checkout literal head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_HEAD }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact candidate source dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git rev-parse "HEAD:$R04")" = "$EXPECTED_R04_BLOB"
+          test "$(git rev-parse "HEAD:$ENGINE")" = "$EXPECTED_ENGINE_BLOB"
+          git diff --check
+          test -z "$(git status --short)"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile and run focused predecessor suite
+        working-directory: ${{ env.CASE }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile candidate.py test_candidate.py
+          python -B -m unittest -v test_candidate.py 2>&1 | tee "$RUNNER_TEMP/C5-TEST.log"
+          grep -E '^Ran 15 tests in [0-9.]+s$' "$RUNNER_TEMP/C5-TEST.log"
+          grep -Fx 'OK' "$RUNNER_TEMP/C5-TEST.log"
+          ! grep -E 'FAILED|ERROR|skipped=' "$RUNNER_TEMP/C5-TEST.log"
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --short)"
+
+      - name: Upload source-contract receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-c5-wheat-demand-rider-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: ${{ runner.temp }}/C5-TEST.log
