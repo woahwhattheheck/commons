@@ -17,6 +17,14 @@ import r04_d4_strawberry_timing as d4  # noqa: E402
 import r04_full_router as r04  # noqa: E402
 from titan_runtime import Features  # noqa: E402
 
+CONFIG = {
+    "episodeSteps": 720,
+    "turnsPerDay": 24,
+    "boardSize": 10,
+    "shedCapacity": 100,
+    "maxMarketOrdersPerTurn": 10,
+}
+
 
 class View:
     def __init__(self, stock=12, price=200):
@@ -85,6 +93,33 @@ class D4V4Tests(unittest.TestCase):
     def test_disabled_apply_returns_exact_parent_object(self):
         parent = action()
         self.assertIs(d4.apply_d4({}, parent, enabled=False), parent)
+
+    def test_nonstandard_configuration_and_bad_player_fail_closed(self):
+        parent = action()
+        obs = {"step": 369, "player": 0}
+        bad = dict(CONFIG)
+        bad["maxMarketOrdersPerTurn"] = 9
+        self.assertIs(d4.apply_d4(obs, parent, bad, enabled=True), parent)
+        self.assertIs(d4.apply_d4({"step": 369, "player": True}, parent,
+                                  dict(CONFIG), enabled=True), parent)
+        self.assertIs(d4.apply_d4({"step": 369, "player": 2}, parent,
+                                  dict(CONFIG), enabled=True), parent)
+
+    def test_malformed_current_action_is_exact_parent(self):
+        parent = {"farmer": {}, "hands": [], "market": []}
+        out, added, reservations = d4.advance_midgame_strawberry(
+            r04, parent, View(), state(), tape_with(380), 369, min_price=180)
+        self.assertIs(out, parent)
+        self.assertEqual((0, ()), (added, reservations))
+
+    def test_missing_debt_state_is_exact_parent(self):
+        parent = action()
+        memory = SimpleNamespace(queues={})
+        out, added, reservations = d4.advance_midgame_strawberry(
+            r04, parent, View(), memory, tape_with(380), 369, min_price=180)
+        self.assertIs(out, parent)
+        self.assertEqual((0, ()), (added, reservations))
+        self.assertFalse(hasattr(memory, "sale_window_debts"))
 
     def test_pre_flush_authored_sale_is_advanced_and_reserved(self):
         original = action()
