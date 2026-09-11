@@ -42,7 +42,7 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest discover -v -s experiments/h4_strawberry -p 'test_v31_h4_strawberry.py' |& tee /tmp/v31-h4-tests.log
-          grep -F 'Ran 12 tests' /tmp/v31-h4-tests.log
+          grep -F 'Ran 13 tests' /tmp/v31-h4-tests.log
           grep -F 'OK' /tmp/v31-h4-tests.log
 
       - name: Run H4 route-tape structural screen
