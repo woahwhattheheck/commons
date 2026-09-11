@@ -110,7 +110,7 @@ jobs:
           evidence="$RUNNER_TEMP/titan-pressure-delay-invariance"
           mkdir -p "$evidence"
           python "$TEST_PATH" -v 2>&1 | tee "$evidence/TEST.log"
-          grep -Fxq "Ran 11 tests" "$evidence/TEST.log"
+          grep -Eq '^Ran 11 tests in [0-9.]+s$' "$evidence/TEST.log"
           grep -Fxq "OK" "$evidence/TEST.log"
 
       - name: Emit and validate deterministic receipt
