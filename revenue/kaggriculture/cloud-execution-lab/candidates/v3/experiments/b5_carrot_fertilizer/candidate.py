@@ -101,6 +101,10 @@ def apply_carrot_fertilizer(observation, action):
     for command, position, inventory in zip(commands, positions, inventories):
         if not isinstance(command, list) or not command or not isinstance(command[0], str):
             return action
+        # PASS is the only opcode this transform interprets. A PASS-like row with
+        # extra payload is malformed evidence, not a non-PASS command to ignore.
+        if command[0] == "PASS" and command != ["PASS"]:
+            return action
         if (
             not isinstance(position, (list, tuple))
             or len(position) != 2
@@ -109,10 +113,26 @@ def apply_carrot_fertilizer(observation, action):
             or not isinstance(inventory, dict)
         ):
             return action
+        if "FERTILIZER" in inventory:
+            fertilizer = inventory["FERTILIZER"]
+            if not _int(fertilizer) or fertilizer < 0:
+                return action
         x, y = position
         if y < 0 or y >= len(tiles) or not isinstance(tiles[y], list) or x < 0 or x >= len(tiles[y]):
             return action
-        actor_rows.append((command, inventory, x, y, tiles[y][x]))
+        tile = tiles[y][x]
+        # A literal PASS on a CARROT is potentially transformable, so malformed
+        # coverage cannot be downgraded to ordinary ineligibility after another
+        # actor has already qualified.
+        if (
+            command == ["PASS"]
+            and isinstance(tile, dict)
+            and tile.get("kind") == "PLANT"
+            and tile.get("crop") == "CARROT"
+            and not _int(tile.get("fertilized_until_day"))
+        ):
+            return action
+        actor_rows.append((command, inventory, x, y, tile))
 
     day = step // 24
     claimed = set()
