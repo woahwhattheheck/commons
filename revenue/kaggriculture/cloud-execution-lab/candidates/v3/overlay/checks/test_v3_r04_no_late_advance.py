@@ -46,6 +46,17 @@ def synthetic_observation(step, shed=None, player=0, money=1000):
             "town": {"unlocked_shops": ["BAKERY", "YARN_STORE"]}}
 
 
+def certify_off_tape():
+    """Feed the complete public opening (steps 0-143) with the rival elsewhere, so the fail-closed
+    L3 rival gate certifies OFF_TAPE; without a complete opening it keeps the E184 reservation."""
+    r04._reset_rival_tape()
+    for step in range(0, r04.RIVAL_GATE_WINDOW[1]):
+        observation = synthetic_observation(step)
+        observation["farms"][1]["farmer"] = [9, 9]
+        r04.rival_on_tape(observation, step)
+    assert r04._RIVAL_TAPE["decision"] is False
+
+
 def blank_tape():
     return [{"farmer": ["PASS"], "hands": [], "market": []} for _ in range(r04.LAST_STEP + 1)]
 
@@ -60,6 +71,7 @@ class Base(unittest.TestCase):
         r04.SALE_EXCLUDED = PUBLISHED_EXCLUDED
         r04.NO_LATE_SALE_ADVANCE = False
         r04.NO_LATE_SALE_ADVANCE_STEP = DEFAULT_STEP
+        r04._reset_rival_tape()
         nla.reset()
 
 
@@ -144,6 +156,7 @@ class CallSiteGateTests(Base):
                     no_late_sale_advance=True, no_late_sale_advance_step=648)
         self.tape[649]["market"] = [["SELL", "MILK", 4]]
         self.tape[655]["market"] = [["SELL", "MILK", 6]]
+        certify_off_tape()
         for step in (648, 649, 655, 700):
             action = self.run_step(step, {"MILK": 20})
             self.assertEqual(action["market"], [], step)

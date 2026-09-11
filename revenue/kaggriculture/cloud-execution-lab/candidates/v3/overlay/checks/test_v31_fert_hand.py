@@ -78,7 +78,7 @@ def reset():
     r04.EVENING_FLUSH = False
     r04.SALE_EXCLUDED = ("WHEAT", "FERTILIZER")
     r04._V231_EARLY = False
-    r04._RIVAL_TAPE.update(same=0, seen=0, last=-1)
+    r04._RIVAL_TAPE.update(same=0, seen=0, last=-1, decision=None, valid=True)
 
 
 class ShippedKey(unittest.TestCase):

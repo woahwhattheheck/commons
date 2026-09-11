@@ -86,7 +86,7 @@ def reset():
     r04.B5_JIT_FERTILIZE = False
     r04.FERT_HAND = False
     r04._FERT_HAND_AGENT = None
-    r04._RIVAL_TAPE.update(same=0, seen=0, last=-1)
+    r04._RIVAL_TAPE.update(same=0, seen=0, last=-1, decision=None, valid=True)
     b11.reset_state()
 
 
