@@ -5,7 +5,7 @@ This experiment stays outside ``overlay/**`` and therefore changes no production
 submission bytes.  It runs the exact frozen V3.1 R04 tuple, then may cancel only
 FERTILIZER quantity that E184 booked on the *same callback*.  Cancellation is
 allowed only to preserve fertilizer for already-confirmed V219 workers whose
-route state says they still need to load it.  Native/tape sales, V233 credit
+route state says they still need a future load.  Native/tape sales, V233 credit
 sales, unrelated E184 debt, worker commands, purchases, hires and other market
 rows are never rewritten or reindexed.
 """
@@ -103,11 +103,14 @@ def _pre_parent_snapshot(player, step):
 
 
 def v219_fertilizer_reserve(observation):
-    """Units still needed by confirmed day-24/day-27 V219 fertilizer loaders.
+    """Units still needed by confirmed day-24/day-27 V219 future loaders.
 
     V219 creates two crop workers on day 24, each with a five-unit loading target,
     and one dedicated fertilizer worker on day 27 with a ten-unit target.  We use
     the live V219 role objects rather than predicting route state from the tape.
+    A role with ``pickup_requested=True`` is already taking its fertilizer in the
+    current worker phase, before market execution, so it contributes no *future*
+    reserve on that callback.
     """
     step = observation.get("step") if isinstance(observation, dict) else None
     player = observation.get("player") if isinstance(observation, dict) else None
@@ -143,9 +146,10 @@ def v219_fertilizer_reserve(observation):
             return None
         needs = role.get("needs_fertilizer", False)
         loaded = role.get("loaded", False)
-        if type(needs) is not bool or type(loaded) is not bool:
+        pickup_requested = role.get("pickup_requested", False)
+        if type(needs) is not bool or type(loaded) is not bool or type(pickup_requested) is not bool:
             return None
-        if not needs or loaded:
+        if not needs or loaded or pickup_requested:
             continue
         kind = role.get("kind")
         if kind not in ("crop", "fertilizer"):
