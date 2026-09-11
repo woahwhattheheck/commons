@@ -17,22 +17,45 @@ import copy
 import r04_full_router as r04
 
 _ORIGINAL_RESERVE = r04.reserve_sales
+_STANDARD_CENTER_INTERVAL = 24
+_CENTER_TICK_ENABLED = False
 
 REPORT = {
     "center_tick_calls": 0,
     "counterfactual_activations": 0,
     "skipped_rows": 0,
     "skipped_units": 0,
+    "config_accepts": 0,
+    "config_rejections": 0,
     "trace": [],
 }
 
 
 def reset_report():
+    global _CENTER_TICK_ENABLED
+    _CENTER_TICK_ENABLED = False
     REPORT["center_tick_calls"] = 0
     REPORT["counterfactual_activations"] = 0
     REPORT["skipped_rows"] = 0
     REPORT["skipped_units"] = 0
+    REPORT["config_accepts"] = 0
+    REPORT["config_rejections"] = 0
     REPORT["trace"] = []
+
+
+def _standard_center_configuration(configuration):
+    """Accept only an explicit literal-int 24 runtime town-center interval.
+
+    The official interpreter reads ``townCenterSellInterval`` from runtime
+    configuration and int-coerces it.  This experiment intentionally does not:
+    malformed/type-confused or nonstandard configs fail open to the parent.
+    """
+    missing = object()
+    if isinstance(configuration, dict):
+        value = configuration.get("townCenterSellInterval", missing)
+    else:
+        value = getattr(configuration, "townCenterSellInterval", missing)
+    return type(value) is int and value == _STANDARD_CENTER_INTERVAL
 
 
 def _new_nonfert_sell_rows(before_market, after_market):
@@ -56,8 +79,13 @@ def _new_nonfert_sell_rows(before_market, after_market):
 
 
 def guarded_reserve_sales(action, view, state, tape, step):
-    """Preserve parent behavior except at guaranteed town-center ticks."""
-    if step < r04.ADVANCE_START or step >= r04.LAST_STEP or step % 24 != 0:
+    """Preserve parent behavior except at runtime-proven center ticks."""
+    if (
+        not _CENTER_TICK_ENABLED
+        or step < r04.ADVANCE_START
+        or step >= r04.LAST_STEP
+        or step % _STANDARD_CENTER_INTERVAL != 0
+    ):
         return _ORIGINAL_RESERVE(action, view, state, tape, step)
 
     REPORT["center_tick_calls"] += 1
@@ -115,5 +143,20 @@ def install(
         sale_fertilizer=sale_fertilizer,
         cattle_early=cattle_early,
     )
-    r04.reserve_sales = guarded_reserve_sales if enabled else _ORIGINAL_RESERVE
-    return parent
+    if not enabled:
+        r04.reserve_sales = _ORIGINAL_RESERVE
+        return parent
+
+    r04.reserve_sales = guarded_reserve_sales
+
+    def configured_agent(observation, configuration=None):
+        global _CENTER_TICK_ENABLED
+        _CENTER_TICK_ENABLED = _standard_center_configuration(configuration)
+        if _CENTER_TICK_ENABLED:
+            REPORT["config_accepts"] += 1
+        else:
+            REPORT["config_rejections"] += 1
+        return parent(observation, configuration)
+
+    configured_agent.__name__ = "e7_center_tick_agent"
+    return configured_agent
