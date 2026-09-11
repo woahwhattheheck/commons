@@ -99,6 +99,34 @@ def strict_fingerprint(value, label: str) -> dict:
     return value
 
 
+def assert_fingerprint_custody(
+    report: dict,
+    label: str,
+    *,
+    candidate_sha: str,
+    current_self_sha: str,
+    arlene_sha: str = ARLENE_SHA256,
+) -> None:
+    candidate = strict_fingerprint(report.get("candidate"), f"{label}.candidate")
+    opponents = report.get("opponents")
+    if not isinstance(opponents, dict) or set(opponents) != set(OPPONENTS):
+        raise AssertionError(f"{label}: native opponent fingerprint map drift")
+    current_self = strict_fingerprint(opponents["current_self"], f"{label}.opponents['current_self']")
+    arlene = strict_fingerprint(opponents["arlene"], f"{label}.opponents['arlene']")
+    expected = {
+        "candidate": strict_trace(candidate_sha, f"{label}.expected_candidate_sha"),
+        "current_self": strict_trace(current_self_sha, f"{label}.expected_current_self_sha"),
+        "arlene": strict_trace(arlene_sha, f"{label}.expected_arlene_sha"),
+    }
+    got = {
+        "candidate": candidate["sha256"],
+        "current_self": current_self["sha256"],
+        "arlene": arlene["sha256"],
+    }
+    if got != expected:
+        raise AssertionError(f"{label}: fingerprint bytes drift got={got!r} expected={expected!r}")
+
+
 def read_tree(root: Path) -> dict[str, bytes]:
     return {
         path.relative_to(root).as_posix(): path.read_bytes()
@@ -453,6 +481,20 @@ def main() -> int:
         control_report = evaluate(repo, control_dir / "main.py", control_dir / "main.py", arlene, control_raw)
         candidate_report = evaluate(repo, candidate_dir / "b11_candidate.py", control_dir / "main.py", arlene, candidate_raw)
 
+        control_main_sha = sha256(control_dir / "main.py")
+        candidate_entry_sha = sha256(candidate_dir / "b11_candidate.py")
+        assert_fingerprint_custody(
+            control_report,
+            "control",
+            candidate_sha=control_main_sha,
+            current_self_sha=control_main_sha,
+        )
+        assert_fingerprint_custody(
+            candidate_report,
+            "candidate",
+            candidate_sha=candidate_entry_sha,
+            current_self_sha=control_main_sha,
+        )
         if control_report.get("opponents") != candidate_report.get("opponents"):
             raise AssertionError("fixed opponent fingerprints drifted across arms")
         if control_report.get("candidate", {}).get("sha256") == candidate_report.get("candidate", {}).get("sha256"):
