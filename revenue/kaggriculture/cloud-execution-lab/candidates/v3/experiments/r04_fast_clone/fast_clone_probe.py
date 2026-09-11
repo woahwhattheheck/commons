@@ -32,30 +32,28 @@ if str(OVERLAY) not in sys.path:
 import r04_full_router as r04  # noqa: E402
 
 
-_JSON_SCALAR_TYPES = (str, int, float, bool, type(None))
-
-
-def _is_json_scalar(value):
-    """Accept only immutable JSON scalar leaf values, never containers/subclasses."""
-    return type(value) in _JSON_SCALAR_TYPES
-
-
-def _is_scalar_row(row):
-    return isinstance(row, list) and all(_is_json_scalar(value) for value in row)
+_JSON_SCALAR_TYPES = frozenset((str, int, float, bool, type(None)))
 
 
 def is_fast_shape(template):
     """Return whether ``template`` is exactly the shallow-clone-safe R04 JSON action shape."""
-    if (not isinstance(template, dict) or len(template) != 3
+    if (type(template) is not dict or len(template) != 3
             or "farmer" not in template or "hands" not in template or "market" not in template):
         return False
     farmer, hands, market = template["farmer"], template["hands"], template["market"]
-    return (isinstance(farmer, list)
-            and all(_is_json_scalar(value) for value in farmer)
-            and isinstance(hands, list)
-            and isinstance(market, list)
-            and all(_is_scalar_row(row) for row in hands)
-            and all(_is_scalar_row(row) for row in market))
+    if type(farmer) is not list or type(hands) is not list or type(market) is not list:
+        return False
+    for value in farmer:
+        if type(value) not in _JSON_SCALAR_TYPES:
+            return False
+    for rows in (hands, market):
+        for row in rows:
+            if type(row) is not list:
+                return False
+            for value in row:
+                if type(value) not in _JSON_SCALAR_TYPES:
+                    return False
+    return True
 
 
 def fast_clone_action(template):
