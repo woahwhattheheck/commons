@@ -135,6 +135,12 @@
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
       "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); evening flush r04_evening_flush (default true); FERTILIZER in the sale window r04_sale_fertilizer (default true, V3.1); V231 day-8 cattle window r04_cattle_early (default true, V3.1); takes precedence over R03 and R01"
+    },
+    "r04_fert_daily_sweep": {
+      "default": false,
+      "seam": "r04_full_router.v3_agent between POLICY_AGENT and ROW_ORDER",
+      "module": "r04_fert_daily_sweep.py, r04_full_router.py",
+      "effect": "idle (PASS) workers collect each day's free fertilizer from animal tiles and drop it at the shed for the early sale window; no other command touched, workers never move, no market rows added"
     }
   },
   "lanes": [
@@ -296,7 +302,8 @@
         "r04_row_order",
         "r04_evening_flush",
         "r04_sale_fertilizer",
-        "r04_cattle_early"
+        "r04_cattle_early",
+        "r04_fert_daily_sweep"
       ],
       "status": "integrated",
       "lineage": [

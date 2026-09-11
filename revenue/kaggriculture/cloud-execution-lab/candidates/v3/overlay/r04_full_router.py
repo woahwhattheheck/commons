@@ -46,6 +46,10 @@ import lzma
 # The thirteen 719-step tapes are carried once for the tree, in r01_tapes.
 from r01_tapes import load_tapes
 
+# R04 lane B5 "fert-daily-sweep": idle-worker fertilizer collection/delivery,
+# behind the FERT_DAILY_SWEEP module flag (TITAN-CONFIG.json r04_fert_daily_sweep).
+from r04_fert_daily_sweep import apply_fert_daily_sweep
+
 _INLINE_TAPES = load_tapes()
 TURNS_PER_DAY = 24
 ROUTE_STEP = 144
@@ -1564,6 +1568,24 @@ FLUSH_ITEMS = ("WOOL", "MILK", "STRAWBERRY", "MELON")
 FLUSH_HOURS = (21, 22, 23)
 
 
+# R04 lane B5 "fert-daily-sweep" (default off): sweep each day's free fertilizer
+# with idle workers. Set by install(fert_daily_sweep=...).
+FERT_DAILY_SWEEP = False
+
+
+def _fert_sweep_tape(observation):
+    """Return the active route tape for the sweep's deliver guard, or None.
+
+    None (unreadable player/plan) runs the sweep in collection-only mode; the
+    deliver half needs the tape to prove no FERTILIZE/FEED is planned.
+    """
+    try:
+        state = _POLICY.players[int(observation["player"])]
+        return _POLICY.tapes[state.plan]
+    except Exception:
+        return None
+
+
 def evening_flush(observation, action):
     step = int(observation["step"])
     if step >= LAST_STEP or step < 24 or step % 24 not in FLUSH_HOURS:
@@ -1591,6 +1613,8 @@ def evening_flush(observation, action):
 
 def v3_agent(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
+    if FERT_DAILY_SWEEP:
+        action = apply_fert_daily_sweep(observation, action, _fert_sweep_tape(observation))
     if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
         inventory = (observation.get("market") or {}).get("inventory") or {}
         market = [list(o) for o in action.get("market") or [] if o]
@@ -1609,16 +1633,19 @@ def v3_agent(observation, configuration=None):
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None):
+            sale_fertilizer=None, cattle_early=None, fert_daily_sweep=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
     factory sets SALE_HORIZON; V231 reads _V231_EARLY at call time. sale_fertilizer lets the
     window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
     also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
-    first two shops consume MILK and neither is the YARN_STORE.
+    first two shops consume MILK and neither is the YARN_STORE; fert_daily_sweep turns on the
+    B5 daily fertilizer sweep (r04_fert_daily_sweep.py): idle workers collect each day's free
+    fertilizer and drop it at the shed for the early sale window.
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global FERT_DAILY_SWEEP
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1637,4 +1664,6 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
     if cattle_early is not None:
         _V231_EARLY = bool(cattle_early)
+    if fert_daily_sweep is not None:
+        FERT_DAILY_SWEEP = bool(fert_daily_sweep)
     return v3_agent

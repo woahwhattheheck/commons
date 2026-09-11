@@ -35,6 +35,7 @@ PARAMS = {
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
+    "r04_fert_daily_sweep": False,
 }
 
 FIELDS = (
@@ -69,6 +70,7 @@ FIELDS = (
     "    r04_evening_flush: bool = True\n"
     "    r04_sale_fertilizer: bool = True\n"
     "    r04_cattle_early: bool = True\n"
+    "    r04_fert_daily_sweep: bool = False\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -80,7 +82,7 @@ RUNTIME_METHODS = (
     "        return bool(f.e11_rival_sell or f.rival_model or f.e20_hire_guard\n"
     "                    or f.l01_land or f.l01_sheep or f.l01_day0buy or f.l01_tranche or f.l01_leanplant\n"
     "                    or f.r01_shop_router or f.r02_route_bank or f.r03_full_router\n"
-    "                    or f.r04_sale_window)\n\n"
+    "                    or f.r04_sale_window or f.r04_fert_daily_sweep)\n\n"
     "    def _v3_config(self):\n"
     "        \"\"\"Deterministic package keys for the V3 lanes, carried inside the game config.\"\"\"\n"
     "        f = self.features\n"
@@ -188,13 +190,15 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_row_order),\n"
     "                                 bool(self.features.r04_evening_flush),\n"
     "                                 bool(self.features.r04_sale_fertilizer),\n"
-    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\n"
+    "                                 bool(self.features.r04_cattle_early),\n"
+    "                                 bool(self.features.r04_fert_daily_sweep))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
     "                self.diagnostics['sale_fertilizer'] = bool(self.features.r04_sale_fertilizer)\n"
     "                self.diagnostics['cattle_early'] = bool(self.features.r04_cattle_early)\n"
+    "                self.diagnostics['fert_daily_sweep'] = bool(self.features.r04_fert_daily_sweep)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -346,6 +350,21 @@ RELEASE_NOTE = (
     "YARN_STORE; the published day-9 window is unchanged. With either key on the canonical\n"
     "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
     "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
+    "\n"
+    "R04 lane B5 (`r04_fert_daily_sweep`, shipped off) collects each day's free\n"
+    "fertilizer with idle workers instead of only terminally: every animal tile sets\n"
+    "a boolean `fertilizer_available` flag once per day, so uncollected units\n"
+    "evaporate and never stack. Any worker whose command is exactly [\"PASS\"] and\n"
+    "who stands on an animal tile with the flag set becomes [\"COLLECT_FERTILIZER\"];\n"
+    "a PASS worker beside the shed holding FERTILIZER (and no animal items, with no\n"
+    "FERTILIZE/FEED planned for it later that day) becomes [\"DROP\"], moving the\n"
+    "unit into the shed the same step. No other command is touched, workers never\n"
+    "move, and no market rows are added: with the V3.1 default `r04_sale_fertilizer`\n"
+    "on, the E184 sale window already advances the tape's planned FERTILIZER SELL\n"
+    "rows whenever projected shed stock exists, and fertilizer's price curve only\n"
+    "falls, so shed delivery routes the units into early sales. The layer never\n"
+    "raises; a malformed observation leaves the action unchanged. Checks:\n"
+    "`checks/test_v3_r04_fert_daily_sweep.py`.\n"
 )
 
 
