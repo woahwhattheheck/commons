@@ -198,13 +198,19 @@ def _projected_fertilizer_after_sales(observation, action):
 
 
 def _refunded_debts(state, bookings, amount):
-    """Return a copied debt ledger with exactly ``amount`` same-call units restored."""
+    """Restore exactly ``amount`` same-call units, taking latest due debt first.
+
+    Keeping nearer E184 debt intact prevents an earlier native due row from
+    re-selling fertilizer while a confirmed V219 loader is still approaching
+    the shed. The deferred units are restored to the latest authored due rows
+    first, which is the conservative temporal ownership for a partial cap.
+    """
     debts = getattr(state, "sale_window_debts", None)
     if not isinstance(debts, dict) or _quantity(amount) is None:
         return None
     changed = copy.deepcopy(debts)
     remaining = amount
-    for due_step in sorted(bookings):
+    for due_step in sorted(bookings, reverse=True):
         if remaining <= 0:
             break
         booked = _quantity(bookings[due_step])
