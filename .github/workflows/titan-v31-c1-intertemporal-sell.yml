@@ -48,8 +48,15 @@ jobs:
 
       - name: Focused source tests
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c1_intertemporal_sell
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
         run: |
-          python -B -m py_compile candidate.py test_candidate.py
+          python - <<'PY'
+          from pathlib import Path
+          for name in ('candidate.py', 'test_candidate.py'):
+              path = Path(name)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
           python -B -m unittest -q test_candidate.py
 
       - name: Prove test did not mutate checkout
