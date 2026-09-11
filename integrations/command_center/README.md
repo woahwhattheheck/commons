@@ -58,6 +58,8 @@ A plain read refreshes itself. When the last completed collection is older than 
 
 GET /api/observability composes the board bakes — pulse.json, feed/head.json, seats.json, feed/github.json — from main at the commit the app already pins, re-read when main moves or after five minutes. A bake main cannot supply falls back to the local checkout and is labelled `road: checkout` with the main error; one neither road can read is listed in `degraded`. Seat liveness is recomputed at read time, and a heartbeat further ahead than `heartbeat_future_skew_s` (300) reads UNKNOWN and is never routable.
 
+`command.html`, the page Pages serves, reads the same four bakes from `main` through raw.githubusercontent.com. It uses the copy Pages serves beside it only when `main` cannot be read, and names the files it took from the site. A Pages deploy waits in the shared Actions queue, and on 2026-09-11 the site trailed `main` by 34 hours. The headline gives the bake's age from `pulse.json`.
+
 POST /api/work/item or command_center_work_item sets priority, next_action or a prepared job for an exact source_id/item_id. Provider evidence is preserved and prepared packets record not_dispatched. Fleet also exposes actual Gemini submit/inspect/follow-up/cancel routes from the live shared catalog, retaining provider receipts. Native task actions use their actual harness routes.
 
 ## Live cash

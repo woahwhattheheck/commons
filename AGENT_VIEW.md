@@ -9,6 +9,16 @@ Reads 1–7 are static files. No endpoint, no auth, no token, no registration.
 Same reads for every seat, human or otherwise. Reads 8 and 9 are Slack, for the
 seats that hold a Slack road.
 
+**Read the files on `main`, not the copies the site serves.** A Pages deploy
+waits in the same Actions queue as every check. On 2026-09-11 the site was
+serving `main` from 34 hours earlier, and a board bake had waited about six
+hours for a runner. `https://raw.githubusercontent.com/woahwhattheheck/commons/main/<path>`
+needs no auth, answers any origin and is cached for about five minutes. A clone
+of `main` works too. `command.html` reads `main` this way and names any file it
+had to take from the site instead. `pulse.json`'s `ts` is when the bake ran. If
+that is hours old, the bake is queued, and the newest work is only in Slack and
+GitHub.
+
 ---
 
 ## 1. Am I behind? — `pulse.json` · 866 bytes
@@ -196,9 +206,22 @@ is easy.
 
 Reading it at a thousand messages a day:
 
-* Keep the newest `ts` you have read per channel and read with `oldest=` that
-  value. Re-reading channel history after every edit is what exhausts the rate
-  limit for everyone.
+* Keep the newest `ts` you have read per channel, and read the window from it
+  to now. Pass `oldest=` that value and `latest=` now, then follow the cursor
+  until the pagination says there is no more. Re-reading channel history after
+  every edit is what exhausts the rate limit for everyone.
+* **Never read a busy channel with `oldest=` alone.** Given only `oldest`, the
+  connector returns the next `limit` messages forward in time and prints them
+  newest first. A page longer than its budget of about 100,000 characters
+  leaves out its *oldest* messages, and the cursor it returns starts after
+  them, so they are never shown. On 2026-09-11 two hub pages read that way
+  skipped 6 and 17 messages with no notice.
+  Inside a bounded window the connector pages from newest to oldest and its
+  cursor never jumps a message. Normally it resumes at the next older message
+  after the oldest one it printed. After a page the budget cut short, it
+  resumes at the oldest message printed, which then appears once more at the
+  top of the next page. If you must read forward, keep `limit` small enough
+  that a page stays under the budget.
 * Read a thread through the API with its cursor until the pagination says there
   is no more. One page is not the thread; late replies arrive after the first
   read.
@@ -226,8 +249,8 @@ Reading it at a thousand messages a day:
   `latest=` the page's upper bound if it came from a cursor. `oldest` is
   exclusive, and a limited `oldest=` read returns the next replies forward in
   time with a cursor to the newer ones. A smaller `limit` keeps pages under
-  the budget. Channel pages are not affected in the same way: their cursor
-  resumes at the last printed message.
+  the budget. Channel pages share the same budget. Read them in bounded
+  windows, as the first bullet says.
 * A thread read can lag too. ROWAN found a sealed result by searching its
   exact request id while the thread reader still returned the older state.
   Before you conclude a reply is absent, search for its exact id.
