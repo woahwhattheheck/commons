@@ -96,6 +96,45 @@ class DeltaDistributionReportTests(unittest.TestCase):
         with self.assertRaisesRegex(reporter.DataError, "contradictory seat aliases"):
             reporter.analyze([bad])
 
+    def test_opponent_and_seed_aliases_must_agree_after_normalization(self):
+        opponent_bad = cell("a", 1, 0, (10, 9), (11, 9))
+        opponent_bad["opponent_name"] = "b"
+        with self.assertRaisesRegex(reporter.DataError, "contradictory opponent aliases"):
+            reporter.analyze([opponent_bad])
+
+        seed_bad = cell("a", 1, 0, (10, 9), (11, 9))
+        seed_bad["game_seed"] = 2
+        with self.assertRaisesRegex(reporter.DataError, "contradictory seed aliases"):
+            reporter.analyze([seed_bad])
+
+        equivalent = cell(" a ", 1, 0, (10, 9), (11, 9))
+        equivalent["opponent_name"] = "a"
+        equivalent["game_seed"] = "1"
+        self.assertEqual(reporter.analyze([equivalent])["delta_m"]["mean"], 1.0)
+
+    def test_mixed_score_representations_must_agree(self):
+        equivalent = cell("a", 1, 0, (10, 9), (11, 9))
+        equivalent["baseline_scores"] = [10, 9]
+        equivalent["candidate_scores"] = [11, 9]
+        self.assertEqual(reporter.analyze([equivalent])["delta_m"]["mean"], 1.0)
+
+        top_level_conflict = cell("a", 1, 0, (10, 9), (11, 9))
+        top_level_conflict["baseline_scores"] = [10, 8]
+        with self.assertRaisesRegex(reporter.DataError, "baseline has contradictory score representations"):
+            reporter.analyze([top_level_conflict])
+
+        nested_conflict = cell("a", 1, 0, (10, 9), (11, 9))
+        nested_conflict["baseline"] = {"scores": [10, 9], "own": 10, "rival": 8}
+        with self.assertRaisesRegex(reporter.DataError, "baseline has contradictory score representations"):
+            reporter.analyze([nested_conflict])
+
+        separate_conflict = {
+            "baseline": [{"opponent": "a", "seed": 1, "seat": 0, "scores": [10, 9], "own": 10, "rival": 8}],
+            "candidate": [{"opponent": "a", "seed": 1, "seat": 0, "scores": [11, 9]}],
+        }
+        with self.assertRaisesRegex(reporter.DataError, "baseline has contradictory score representations"):
+            reporter.load_records(separate_conflict)
+
     def test_explicit_own_rival_schema_remains_actor_ordered(self):
         row = {
             "opponent": "a", "seed": 3, "candidate_seat": 1,
