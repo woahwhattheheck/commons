@@ -210,6 +210,26 @@ class E20ContractTests(unittest.TestCase):
         self.assertEqual(report["dropped_indices"], [2])
         self.assertTrue(report["changed"])
 
+    def test_zero_limit_still_executes_row_zero_only(self):
+        obs = observation(hires_today=3, own_tiles=[[plant(True)]])
+        action = {"market": [["HIRE"], ["HIRE"]]}
+        original = deepcopy(action)
+        out, report = e20.apply_hire_guard(obs, action, {"maxMarketOrdersPerTurn": 0}, enabled=True)
+        self.assertEqual(action, original)
+        self.assertEqual(out["market"], [[], ["HIRE"]])
+        self.assertEqual(report["dropped_indices"], [0])
+        self.assertTrue(report["changed"])
+
+    def test_negative_limit_still_executes_row_zero_only(self):
+        obs = observation(hires_today=3, own_tiles=[[plant(True)]])
+        action = {"market": [["HIRE"], ["HIRE"]]}
+        original = deepcopy(action)
+        out, report = e20.apply_hire_guard(obs, action, {"maxMarketOrdersPerTurn": -3}, enabled=True)
+        self.assertEqual(action, original)
+        self.assertEqual(out["market"], [[], ["HIRE"]])
+        self.assertEqual(report["dropped_indices"], [0])
+        self.assertTrue(report["changed"])
+
     def test_real_unwatered_plant_demand_leaves_queue_untouched(self):
         obs = observation(hires_today=3, own_tiles=[[plant(False), plant(False), plant(False)]])
         action = {"market": [["HIRE"], ["HIRE"]]}
