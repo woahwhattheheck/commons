@@ -21,14 +21,31 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
 
-      - name: Bind exact reviewed H4 blob
+      - name: Bind exact convergence parent and reviewed H4 postimages
         shell: bash
         run: |
           set -euo pipefail
+          PARENT=bea2d12dffaf36fe2284cc8f00c6548326e208f9
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          cat > /tmp/expected-paths <<'EOF'
+          .github/workflows/titan-v31-h4-production-source.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_h4_production_wiring_source.py
+          EOF
+          sort -o /tmp/expected-paths /tmp/expected-paths
+          git diff --name-only "$PARENT...HEAD" | sort > /tmp/actual-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = "472d450ee969c88ca83017aea29a81a88d41c3fd"
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = "ecad11eb195a82273f73b78ac7b319552a27cbcd"
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/r04_h4_strawberry.py)" = "ecad11eb195a82273f73b78ac7b319552a27cbcd"
-          echo H4_REVIEWED_BLOB_OK
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_h4_production_wiring_source.py)" = "9f984ee70f2e01c3a7fc96be00c754f7ae60a232"
+          echo H4_PRODUCTION_SOURCE_CUSTODY_OK
 
       - name: Run H4 production source contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
