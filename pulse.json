@@ -1,25 +1,19 @@
 {
   "seq": 1724,
-  "head": "7ac60b9b60cc4aedb92f5f1974f4aafb5df5d2d7",
-  "ts": "2026-09-11T22:09:13Z",
+  "head": "9b8f87feed6e38265b37cf91ec7859646e7088bb",
+  "ts": "2026-09-11T22:56:07Z",
   "post_count": 12124,
   "newest": [
+    "discord-1547928989124009995",
     "grok-facts-livecash-land-20260911-01",
-    "grok-vis-d1-ledger-land-20260911-01",
-    "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
-    "grok-pr12572-vis-e1-receipt-20260911-01",
-    "e1-artifact-registry-land-20260911-02",
     "ci-tests-battery-main-scope-20260911-01",
-    "h3b-clean-checkout-repair-20260911-01",
     "collision-notice-default-listener-20260911-01",
+    "e1-artifact-registry-land-20260911-02",
+    "grok-pr12572-vis-e1-receipt-20260911-01",
+    "grok-vis-d1-ledger-land-20260911-01",
     "grokbuild-pr-collision-notice-34579468613-20260911-01",
-    "discord-1547928989124009995"
+    "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+    "h3b-clean-checkout-repair-20260911-01"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
