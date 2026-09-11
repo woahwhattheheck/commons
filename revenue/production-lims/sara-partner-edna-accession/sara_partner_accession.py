@@ -136,19 +136,45 @@ class SaraPartnerAccessionShadow:
                 replayed+=1; outcomes.append({"record_id":rid,"status":"IDEMPOTENT_REPLAY","hold_code":self.holds.get(rid,{}).get("hold_code"),"record_sha256":_record_hash(r)}); continue
             code=_classify(r,self._external,failed)
             if code!=r["truth_hold"]:raise IntegrityError(f"classifier/truth mismatch {rid}")
-            self._seen.add(rid)
-            if code!=HOLD_CODES[2]:self._external.add(r["external_submission_id"])
+            before=(
+                copy.deepcopy(dict(self.accessions)),
+                copy.deepcopy(dict(self.jobs)),
+                copy.deepcopy(dict(self.staged_reports)),
+                copy.deepcopy(dict(self.holds)),
+                copy.deepcopy(list(self.events)),
+                set(self._seen),
+                set(self._external),
+            )
+            try:
+                self._seen.add(rid)
+                if code!=HOLD_CODES[2]:self._external.add(r["external_submission_id"])
+                if code:
+                    self.holds[rid]={"record_id":rid,"hold_code":code,"jobs_created":0,"report_created":0,"program_id":r["program_id"],"client_id":r["client_id"]}
+                    out={"record_id":rid,"status":"HOLD","hold_code":code,"jobs_created":0,"report_created":0,"record_sha256":_record_hash(r)}
+                else:
+                    client=PROGRAM_CLIENT[r["program_id"]]
+                    if r["client_id"]!=client:raise IntegrityError("client/program leak")
+                    acc=f"ACC-{rid[-4:]}"; self.accessions[rid]={"record_id":rid,"accession_id":acc,"external_submission_id":r["external_submission_id"],"facility_id":r["facility_id"],"program_id":r["program_id"],"client_id":client,"source_sha256":r["source_sha256"],"custody_sha256":r["custody_sha256"]}
+                    self.jobs[rid]={"record_id":rid,"accession_id":acc,"facility_id":r["facility_id"],"scope_id":r["scope_id"],"panel_version":r["panel_version"],"method_version":r["method_version"],"control_batch_id":r["control_batch_id"],"route_sha256":r["route_sha256"],"state":"STAGED_NOT_STARTED"}
+                    self.staged_reports[rid]={"record_id":rid,"state":"STAGED_HUMAN_QA","program_id":r["program_id"],"client_id":client,"facility_id":r["facility_id"],"report_digest":r["expected_report_digest"],"source_sha256":r["source_sha256"],"custody_sha256":r["custody_sha256"],"released_by":None,"sent":False}
+                    out={"record_id":rid,"status":"READY","hold_code":None,"facility_id":r["facility_id"],"scope_id":r["scope_id"],"panel_version":r["panel_version"],"control_batch_id":r["control_batch_id"],"program_id":r["program_id"],"client_id":client,"source_sha256":r["source_sha256"],"custody_sha256":r["custody_sha256"],"report_digest":r["expected_report_digest"],"sent":False,"record_sha256":_record_hash(r)}
+                self.events.append({"sequence":len(self.events)+1,"record_id":rid,"status":out["status"],"hold_code":out["hold_code"],"record_sha256":out["record_sha256"]})
+            except Exception:
+                (
+                    self.accessions,
+                    self.jobs,
+                    self.staged_reports,
+                    self.holds,
+                    self.events,
+                    self._seen,
+                    self._external,
+                )=before
+                raise
             if code:
-                hold+=1; counts[code]+=1; self.holds[rid]={"record_id":rid,"hold_code":code,"jobs_created":0,"report_created":0,"program_id":r["program_id"],"client_id":r["client_id"]}; ha+=1
-                out={"record_id":rid,"status":"HOLD","hold_code":code,"jobs_created":0,"report_created":0,"record_sha256":_record_hash(r)}
+                hold+=1; counts[code]+=1; ha+=1
             else:
-                ready+=1; client=PROGRAM_CLIENT[r["program_id"]]
-                if r["client_id"]!=client:raise IntegrityError("client/program leak")
-                acc=f"ACC-{rid[-4:]}"; self.accessions[rid]={"record_id":rid,"accession_id":acc,"external_submission_id":r["external_submission_id"],"facility_id":r["facility_id"],"program_id":r["program_id"],"client_id":client,"source_sha256":r["source_sha256"],"custody_sha256":r["custody_sha256"]}; aa+=1
-                self.jobs[rid]={"record_id":rid,"accession_id":acc,"facility_id":r["facility_id"],"scope_id":r["scope_id"],"panel_version":r["panel_version"],"method_version":r["method_version"],"control_batch_id":r["control_batch_id"],"route_sha256":r["route_sha256"],"state":"STAGED_NOT_STARTED"}; ja+=1
-                self.staged_reports[rid]={"record_id":rid,"state":"STAGED_HUMAN_QA","program_id":r["program_id"],"client_id":client,"facility_id":r["facility_id"],"report_digest":r["expected_report_digest"],"source_sha256":r["source_sha256"],"custody_sha256":r["custody_sha256"],"released_by":None,"sent":False}; ra+=1
-                out={"record_id":rid,"status":"READY","hold_code":None,"facility_id":r["facility_id"],"scope_id":r["scope_id"],"panel_version":r["panel_version"],"control_batch_id":r["control_batch_id"],"program_id":r["program_id"],"client_id":client,"source_sha256":r["source_sha256"],"custody_sha256":r["custody_sha256"],"report_digest":r["expected_report_digest"],"sent":False,"record_sha256":_record_hash(r)}
-            self.events.append({"sequence":len(self.events)+1,"record_id":rid,"status":out["status"],"hold_code":out["hold_code"],"record_sha256":out["record_sha256"]}); ea+=1; outcomes.append(out)
+                ready+=1; aa+=1; ja+=1; ra+=1
+            ea+=1; outcomes.append(out)
         if not replayed and (ready!=m["expected_ready"] or hold!=m["expected_hold"] or counts!=Counter(m["expected_hold_codes"])):raise IntegrityError("replay counts mismatch")
         self.authoritative_fingerprint
         return ReplayReport(ready,hold,replayed,dict(sorted(counts.items())),aa,ja,ra,ha,ea,self.state_digest(),outcomes)
