@@ -45,9 +45,7 @@ def apply_place_delivery(observation, action, enabled=False):
     workers = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
 
     # Validate the public geometry/inventory surfaces used by beside_shed() and
-    # inventory() before the legacy transform touches them.  This keeps malformed
-    # observations on the exact-parent path without wrapping or rewriting the
-    # existing action-selection block below.
+    # inventory() before the transform touches them.
     if (not isinstance(view.tiles, list) or not isinstance(view.positions, list)
             or not isinstance(view.inventories, list)):
         return action
@@ -57,12 +55,12 @@ def apply_place_delivery(observation, action, enabled=False):
             return action
 
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
-    # The public price map is also the engine's public product namespace, so this
-    # proof does not add a second product/action enumeration to the V4 wrapper.
-    if not isinstance(view.prices, dict):
-        return action
     payload = 0
     has_drop = False
+    touched_products = {
+        item for item, quantity in raw_shed.items()
+        if item in r04.PRODUCTS and quantity > 0
+    }
     for worker in range(min(len(workers), len(view.positions))):
         command = workers[worker]
         if not (isinstance(command, list) and command and command[0] == "DROP"):
@@ -75,14 +73,23 @@ def apply_place_delivery(observation, action, enabled=False):
         for item, held in inventory.items():
             if type(held) is not int or held < 0:
                 return action
-            if item in view.prices:
-                if type(view.prices.get(item)) is not int:
-                    return action
-                payload += held
+            payload += held
+            if item in r04.PRODUCTS and held > 0:
+                touched_products.add(item)
         has_drop = True
     if has_drop:
         remaining = max(0, int(r04.SHED_CAPACITY) - sum(raw_shed.values()))
         if payload <= remaining:
+            return action
+
+    # Overflow rewriting reprices PLACE priority and rebuilds terminal SELLs.
+    # Validate every sellable product that can participate; never coerce a
+    # malformed public price into a different cargo choice or sale order.
+    if not isinstance(view.prices, dict):
+        return action
+    for item in touched_products:
+        price = view.prices.get(item)
+        if type(price) is not int or price < 0:
             return action
 
     eligible = []
@@ -96,19 +103,14 @@ def apply_place_delivery(observation, action, enabled=False):
         touched = True
         inventory = view.inventory(worker)
         if not isinstance(inventory, dict):
-            continue
+            return action
         choices = []
         for item, held in inventory.items():
             if item not in r04.PRODUCTS or not _positive_plain_int(held):
                 continue
-            price = view.prices.get(item, 0)
-            if type(price) is not int:
-                try:
-                    price = int(price)
-                except (TypeError, ValueError):
-                    price = 0
+            price = view.prices[item]
             product_order = r04.PRODUCTS.index(item)
-            choices.append((int(price), int(held), -product_order, item))
+            choices.append((price, held, -product_order, item))
         if choices:
             price, held, _, item = max(choices)
             eligible.append((price, held, worker, item))
@@ -125,14 +127,14 @@ def apply_place_delivery(observation, action, enabled=False):
                 and view.beside_shed(view.positions[worker])):
             out_workers[worker] = ["PASS"]
 
-    used = sum(max(0, int(quantity)) for quantity in view.shed.values())
+    used = sum(raw_shed.values())
     remaining = max(0, int(r04.SHED_CAPACITY) - used)
     # Public value first; stable worker index breaks equal-value ties.
     eligible.sort(key=lambda row: (-row[0], row[2], row[3]))
     for _, held, worker, item in eligible:
         if remaining <= 0:
             break
-        quantity = min(int(held), remaining)
+        quantity = min(held, remaining)
         if quantity <= 0:
             continue
         out_workers[worker] = ["PLACE", item, quantity]
@@ -142,8 +144,23 @@ def apply_place_delivery(observation, action, enabled=False):
     out["farmer"] = out_workers[0] if out_workers else ["PASS"]
     out["hands"] = out_workers[1:]
 
-    stock = r04.projected_shed(out, view)
-    market = [["SELL", item, stock[item]] for item in r04.PRODUCTS if int(stock.get(item, 0)) > 0]
-    market.sort(key=lambda order: -int(view.prices.get(order[1], 0)) * int(order[2]))
+    try:
+        stock = r04.projected_shed(out, view)
+    except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
+        return action
+    if not isinstance(stock, dict):
+        return action
+    market = []
+    for item in r04.PRODUCTS:
+        quantity = stock.get(item, 0)
+        if type(quantity) is not int or quantity < 0:
+            return action
+        if quantity <= 0:
+            continue
+        price = view.prices.get(item)
+        if type(price) is not int or price < 0:
+            return action
+        market.append(["SELL", item, quantity])
+    market.sort(key=lambda order: -view.prices[order[1]] * order[2])
     out["market"] = market[: int(r04.MAX_ORDERS)]
     return out
