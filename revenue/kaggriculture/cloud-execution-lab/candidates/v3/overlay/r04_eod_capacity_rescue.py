@@ -1,14 +1,16 @@
 # SPDX-License-Identifier: Apache-2.0
 """V4 EOD capacity rescue: sell same-product shed stock to save carried overflow.
 
-At hour 23 the official interpreter runs unit actions, then the market, then the
-end-of-day inventory drop. That final drop deletes carried overflow when the
-shared 100-unit shed is full. This lane is deliberately narrow: when every
-carried unit is the same product, all unit commands are cargo-neutral, and no
-existing market order changes shed stock, append a SELL for exactly the amount
-that would otherwise be discarded. The EOD drop then re-admits the same product,
-so post-EOD private shed composition matches the unmodified path while the
-otherwise-lost carried units are preserved economically through the sale.
+At hour 23 the official interpreter runs unit actions, then the market, then
+town consume, then the end-of-day inventory drop. That final drop deletes
+carried overflow when the shared 100-unit shed is full. This lane is
+deliberately narrow: when every carried unit is the same product, all unit
+commands are cargo-neutral, no existing market order changes shed stock, and
+town consumption cannot fire on this hour-23 callback, append a SELL for
+exactly the amount that would otherwise be discarded. The EOD drop then
+re-admits the same product, so post-EOD private shed composition matches the
+unmodified path while the otherwise-lost carried units are preserved
+economically through the sale.
 
 The key ships disabled. Ambiguous or malformed state returns the exact parent
 object. Promotion remains a paired economics decision because a sale above the
@@ -33,6 +35,14 @@ _SHED_CHANGING_MARKET = frozenset({"SELL", "BUY_PRODUCT", "BUY_ANIMAL"})
 # stock. Unknown verbs are ambiguous raw rows and must fail closed rather than
 # being assumed harmless by this exact private-shed theorem.
 _SHED_NEUTRAL_MARKET = frozenset({"HIRE", "BUY_LAND", "BUY_SEED"})
+# Official kaggriculture.json defaults. Hour-23 (step % 24 == 23) is not a
+# consume tick under these intervals, so pre-town overflow equals pre-EOD
+# overflow. A custom interval that consumes on this callback can free shed
+# room after the rescue SELL and break private-shed identity.
+_STANDARD_TOWN_INTERVALS = {
+    "townShopSellInterval": 4,
+    "townCenterSellInterval": 24,
+}
 telemetry = Counter()
 
 
@@ -62,16 +72,30 @@ def _single_carried_product(inventories: Any, products):
     return product, total
 
 
+def _standard_town_intervals(configuration: Any) -> bool:
+    """Accept missing keys as official defaults; reject any nonstandard present value."""
+    for name, expected in _STANDARD_TOWN_INTERVALS.items():
+        actual = h3c._cfg(configuration, name)
+        if actual is h3c._MISSING:
+            continue
+        if type(actual) is not int or actual != expected:
+            return False
+    return True
+
+
 def apply_eod_capacity_rescue(action: Any, observation: Any, configuration: Any, *, enabled=False):
     """Append one bounded same-product SELL or preserve exact parent identity."""
     if not enabled or not h3c._standard_configuration(configuration):
         return action
     # H3c's shared standard-config theorem intentionally covers only the
     # fields its own mechanism consumes. This lane additionally hard-codes
-    # the 720-step season boundary (last usable pre-EOD step 695), so require
-    # that public configuration explicitly and without bool/int coercion.
+    # the 720-step season boundary (last usable pre-EOD step 695) and the
+    # official town consume intervals so hour-23 overflow is computed after
+    # a market that is not followed by a consume tick.
     episode_steps = h3c._cfg(configuration, "episodeSteps")
     if type(episode_steps) is not int or episode_steps != 720:
+        return action
+    if not _standard_town_intervals(configuration):
         return action
     if not isinstance(observation, dict) or not isinstance(action, dict):
         return action

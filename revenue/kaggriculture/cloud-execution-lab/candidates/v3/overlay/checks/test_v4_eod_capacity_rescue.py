@@ -172,11 +172,33 @@ class EodCapacityRescue(unittest.TestCase):
             ("shedCapacity", 99),
             ("episodeSteps", 696),
             ("episodeSteps", True),
+            ("townShopSellInterval", 1),
+            ("townCenterSellInterval", 1),
+            ("townShopSellInterval", True),
         ):
             bad = dict(CONFIG)
             bad[key] = bad_value
             self.assertIs(lane.apply_eod_capacity_rescue(
                 parent, obs, bad, enabled=True), parent)
+
+    def test_custom_hour23_town_consume_is_exact_parent(self):
+        parent = action()
+        obs = observation(shed={"WHEAT": 98, "CARROT": 1}, inventories=[{"WHEAT": 3}, {}])
+        for key, consume_every_hour in (
+            ("townShopSellInterval", 1),
+            ("townCenterSellInterval", 1),
+        ):
+            bad = dict(CONFIG)
+            bad[key] = consume_every_hour
+            out = lane.apply_eod_capacity_rescue(parent, obs, bad, enabled=True)
+            self.assertIs(out, parent)
+            self.assertEqual(out["market"], [])
+
+        pinned = dict(CONFIG)
+        pinned["townShopSellInterval"] = 4
+        pinned["townCenterSellInterval"] = 24
+        out = lane.apply_eod_capacity_rescue(parent, obs, pinned, enabled=True)
+        self.assertEqual(out["market"], [["SELL", "WHEAT", 2]])
 
     def test_rescue_is_whole_agent_outer_seam_after_h3c(self):
         stack_source = inspect.getsource(r04._v3_stack)
