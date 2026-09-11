@@ -68,7 +68,13 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest -v tooling_tests/test_make_submission_config.py
-          python -B -m py_compile make_submission.py tooling_tests/test_make_submission_config.py
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in ('make_submission.py', 'tooling_tests/test_make_submission_config.py'):
+              source = Path(name).read_text()
+              compile(source, name, 'exec')
+          print('IN-MEMORY COMPILE OK')
+          PY
 
       - name: Prove only TITAN-CONFIG changes and shipped lanes survive
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
