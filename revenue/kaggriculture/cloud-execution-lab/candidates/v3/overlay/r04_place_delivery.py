@@ -11,8 +11,8 @@ their combined payload would overflow the remaining shed capacity.  If every
 payload fits, the exact parent action is returned so normal DROP behavior,
 including multi-product cargo, stays untouched.  On overflow, scarce capacity
 goes to the highest public-price cargo first and excess cargo stays on workers.
-Malformed terminal step/shed/inventory/price/position state fails closed to the
-parent action.
+Malformed terminal step/shed/inventory/price/position/board state fails closed
+to the parent action.
 """
 from __future__ import annotations
 
@@ -52,11 +52,16 @@ def apply_place_delivery(observation, action, enabled=False):
     workers = [raw_farmer, *raw_hands]
 
     # Validate the public geometry/inventory surfaces used by beside_shed() and
-    # inventory() before the transform touches them. Exact actor cardinality is
-    # required in both directions: neither the public state nor the parent action
-    # may expose only a prefix of the actual worker set.
+    # inventory() before the transform touches them. beside_shed() derives the
+    # shed center from len(tiles), so malformed board dimensions must not be
+    # allowed to redefine shed adjacency. Exact actor cardinality is required in
+    # both directions: neither the public state nor the parent action may expose
+    # only a prefix of the actual worker set.
     if (not isinstance(view.tiles, list) or not isinstance(view.positions, list)
             or not isinstance(view.inventories, list)):
+        return action
+    if len(view.tiles) != 10 or any(not isinstance(row, list) or len(row) != 10
+                                    for row in view.tiles):
         return action
     if len(view.positions) != len(workers) or len(view.inventories) != len(workers):
         return action
