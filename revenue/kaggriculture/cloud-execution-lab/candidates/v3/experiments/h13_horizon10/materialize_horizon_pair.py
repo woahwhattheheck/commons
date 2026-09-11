@@ -9,7 +9,8 @@ submission mode; the H10 candidate differs from H8 only in
 
 The caller must provide the exact frozen canonical archive.  We verify its SHA
 before entering the current ``build_v3`` helper so this tool remains fail-closed
-even if Python assertions are disabled.
+even if Python assertions are disabled.  The final H8 and H10 archives must also
+reproduce the fleet's already-observed exact archive digests.
 """
 from __future__ import annotations
 
@@ -28,6 +29,8 @@ if str(V3) not in sys.path:
 import build_v3  # noqa: E402
 
 EXPECTED_CANONICAL_SHA256 = "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1"
+EXPECTED_CONTROL_H8_SHA256 = "e4e5a3acfe4984c89c22c7aa841b4ddd6efe4f4cd71e507d1dabecbb6e865849"
+EXPECTED_CANDIDATE_H10_SHA256 = "8054f8b63debd3c67490ca05397e8e1d71635f6034765c30f1f7d9666f1055fb"
 CONFIG_NAME = "TITAN-CONFIG.json"
 CONTROL_NAME = "titan-v3.1-h8-control.tar.gz"
 CANDIDATE_NAME = "titan-v3.1-h10-candidate.tar.gz"
@@ -169,6 +172,16 @@ def materialize(canonical: Path, out_dir: Path) -> dict[str, Any]:
     source_blob = build_v3.build_bytes(source_files)
     h8_blob = build_v3.build_bytes(h8_files)
     h10_blob = build_v3.build_bytes(h10_files)
+    h8_sha = _sha256(h8_blob)
+    h10_sha = _sha256(h10_blob)
+    _require(
+        h8_sha == EXPECTED_CONTROL_H8_SHA256,
+        f"H8 control does not reproduce shipped V3.1 archive: got {h8_sha}, expected {EXPECTED_CONTROL_H8_SHA256}",
+    )
+    _require(
+        h10_sha == EXPECTED_CANDIDATE_H10_SHA256,
+        f"H10 candidate does not reproduce screened archive: got {h10_sha}, expected {EXPECTED_CANDIDATE_H10_SHA256}",
+    )
 
     _require(not out_dir.exists(), f"output directory already exists: {out_dir}")
     out_dir.mkdir(parents=True)
@@ -188,20 +201,22 @@ def materialize(canonical: Path, out_dir: Path) -> dict[str, Any]:
         },
         "control_h8": {
             "archive": CONTROL_NAME,
-            "sha256": _sha256(h8_blob),
+            "sha256": h8_sha,
             "bytes": len(h8_blob),
             "files": len(h8_files),
             "config": {key: h8_config[key] for key in BASELINE_R04},
         },
         "candidate_h10": {
             "archive": CANDIDATE_NAME,
-            "sha256": _sha256(h10_blob),
+            "sha256": h10_sha,
             "bytes": len(h10_blob),
             "files": len(h10_files),
             "config": {key: h10_config[key] for key in BASELINE_R04},
         },
         "arm_config_delta": config_delta(h8_config, h10_config),
         "source_to_control_delta": config_delta(source_config, h8_config),
+        "expected_control_h8_sha256": EXPECTED_CONTROL_H8_SHA256,
+        "expected_candidate_h10_sha256": EXPECTED_CANDIDATE_H10_SHA256,
         "build_v3_sha256": _sha256((V3 / "build_v3.py").read_bytes()),
         "make_submission_sha256": _sha256((V3 / "make_submission.py").read_bytes()),
     }
