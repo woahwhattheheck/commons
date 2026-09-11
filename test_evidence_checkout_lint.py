@@ -131,6 +131,68 @@ jobs:
 """
         self.assertEqual(len(self.lint("proof.yml", body)), 1)
 
+    def test_quoted_empty_double_ref_is_rejected(self):
+        body = """# evidence-workflow: true
+jobs:
+  proof:
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ""
+          fetch-depth: 1
+"""
+        self.assertEqual(len(self.lint("proof.yml", body)), 1)
+
+    def test_quoted_empty_single_ref_is_rejected(self):
+        body = """# evidence-workflow: true
+jobs:
+  proof:
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ''
+          fetch-depth: 1
+"""
+        self.assertEqual(len(self.lint("proof.yml", body)), 1)
+
+    def test_empty_block_scalar_ref_is_rejected(self):
+        body = """# evidence-workflow: true
+jobs:
+  proof:
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: |
+          fetch-depth: 1
+"""
+        self.assertEqual(len(self.lint("proof.yml", body)), 1)
+
+    def test_null_ref_is_rejected(self):
+        body = """# evidence-workflow: true
+jobs:
+  proof:
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: null
+          fetch-depth: 1
+"""
+        self.assertEqual(len(self.lint("proof.yml", body)), 1)
+
+    def test_nested_ref_inside_path_block_does_not_count(self):
+        body = """# evidence-workflow: true
+jobs:
+  proof:
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: |
+            some
+            ref: fake
+          fetch-depth: 1
+"""
+        self.assertEqual(len(self.lint("proof.yml", body)), 1)
+
     def test_reusable_exact_head_job_is_not_mistaken_for_checkout(self):
         body = """# evidence-workflow: true
 jobs:

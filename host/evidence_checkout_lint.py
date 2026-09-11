@@ -36,7 +36,8 @@ CHECKOUT_RE = re.compile(
 )
 LIST_ITEM_RE = re.compile(r"^(?P<indent>\s*)-\s+")
 WITH_RE = re.compile(r"^(?P<indent>\s*)with\s*:\s*(?:#.*)?$")
-REF_RE = re.compile(r"^\s*ref\s*:\s*(?P<value>.*)$")
+# Match a direct mapping key under with: at a specific indent (spaces only for indent).
+KEY_RE = re.compile(r"^(?P<indent>\s*)(?P<key>[A-Za-z0-9_-]+)\s*:\s*(?P<value>.*)$")
 
 
 @dataclass(frozen=True)
@@ -92,20 +93,42 @@ def _step_end(lines: Sequence[str], checkout_index: int, step_indent: int) -> in
     return len(lines)
 
 
-def _ref_value(raw: str) -> str | None:
-    match = REF_RE.match(raw)
-    if not match:
-        return None
-    value = match.group("value").strip()
-    if not value or value.startswith("#"):
-        return ""
-    return value
+def _scalar_is_nonempty(value: str) -> bool:
+    """Return True only if the YAML scalar text is a non-empty value.
+
+    Treats quoted-empty, null/Null/~ , empty flow, and empty block indicators as empty.
+    Does not expand expressions; any non-empty expression text counts as present.
+    """
+    v = value.strip()
+    if not v or v.startswith("#"):
+        return False
+    # Strip trailing comment if present (simple, not full YAML).
+    if " #" in v:
+        v = v.split(" #", 1)[0].rstrip()
+    # Quoted empty
+    if v in ('""', "''"):
+        return False
+    # Explicit null
+    if v.lower() in ("null", "~"):
+        return False
+    # Empty block/folded scalar indicators with no content on same line
+    if v in ("|", ">", "|-", ">-", "|+", ">+"):
+        return False
+    # Non-empty block indicator with content after? rare; still treat indicator-only empty
+    if re.match(r"^[|>][-+]?\s*$", v):
+        return False
+    return True
 
 
 def checkout_has_ref(lines: Sequence[str], checkout_index: int) -> bool:
     step_indent = _step_indent(lines, checkout_index)
     end = _step_end(lines, checkout_index, step_indent)
     with_indent = None
+    # Expected key indent under with: is with_indent + 2 (common YAML style).
+    # Accept any key whose indent is strictly greater than with_indent and
+    # that is a direct sibling (not deeper nested under another key's block).
+    # We track the current direct-child indent once we see the first key.
+    key_indent = None
     for idx in range(checkout_index + 1, end):
         raw = lines[idx]
         if not raw.strip() or raw.lstrip().startswith("#"):
@@ -113,14 +136,33 @@ def checkout_has_ref(lines: Sequence[str], checkout_index: int) -> bool:
         leading = len(raw) - len(raw.lstrip(" "))
         if with_indent is not None and leading <= with_indent:
             with_indent = None
+            key_indent = None
         with_match = WITH_RE.match(raw)
         if with_match and len(with_match.group("indent")) > step_indent:
             with_indent = len(with_match.group("indent"))
+            key_indent = None
             continue
         if with_indent is None:
             continue
-        value = _ref_value(raw)
-        if value:
+        key_match = KEY_RE.match(raw)
+        if not key_match:
+            # Continuation of a block scalar or list under a previous key.
+            # Do not treat nested "ref:" text inside another scalar as a with.ref.
+            continue
+        this_indent = len(key_match.group("indent"))
+        if this_indent <= with_indent:
+            with_indent = None
+            key_indent = None
+            continue
+        if key_indent is None:
+            key_indent = this_indent
+        # Only accept keys at the exact direct-child indent under with:
+        if this_indent != key_indent:
+            # Nested mapping or deeper; ignore.
+            continue
+        if key_match.group("key") != "ref":
+            continue
+        if _scalar_is_nonempty(key_match.group("value")):
             return True
     return False
 
