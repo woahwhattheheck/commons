@@ -2,10 +2,11 @@
 # SPDX-License-Identifier: Apache-2.0
 """Paired current-package cattle OFF vs ON economics receipt.
 
-The reducer is intentionally strict: only the workflow-requested 8-seed x 2-seat
-cartesian panel against the literal cattle_on opponent is admissible.  Receipt
+The reducer accepts only the exact native evaluator schema emitted by the pinned
+driver for the workflow-requested 8-seed x 2-seat cattle_on panel. Receipt
 normalization rejects coercible aliases, duplicate/substituted cells, non-finite
-scores, and incomplete/failed games before any economics are computed.
+scores, malformed fingerprints/traces, and incomplete/failed games before any
+economics are computed.
 """
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ import statistics
 from pathlib import Path
 
 ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+EXPECTED_RNG_SEED = 20260911
 EXPECTED_SEEDS = (
     2611152001,
     2611152002,
@@ -26,10 +28,9 @@ EXPECTED_SEEDS = (
     2611152007,
     2611152008,
 )
-EXPECTED_OPPONENTS = ("cattle_on",)
+EXPECTED_OPPONENT = "cattle_on"
 EXPECTED_KEYS = frozenset(
-    (opponent, seed, seat)
-    for opponent in EXPECTED_OPPONENTS
+    (EXPECTED_OPPONENT, seed, seat)
     for seed in EXPECTED_SEEDS
     for seat in (0, 1)
 )
@@ -49,9 +50,9 @@ def strict_int(value, label):
 
 
 def finite_number(value, label):
-    if type(value) not in (int, float) or isinstance(value, bool) or not math.isfinite(float(value)):
+    if type(value) not in (int, float) or not math.isfinite(value):
         raise SystemExit(f"{label}: expected finite number")
-    return float(value)
+    return value
 
 
 def strict_trace(value, label):
@@ -64,17 +65,34 @@ def strict_trace(value, label):
     return value
 
 
+def strict_fingerprint(value, label):
+    if not isinstance(value, dict):
+        raise SystemExit(f"{label}: fingerprint must be an object")
+    if value.get("entry") != "main.py":
+        raise SystemExit(f"{label}: expected main.py entry")
+    if value.get("callable") != "agent":
+        raise SystemExit(f"{label}: expected agent callable")
+    strict_trace(value.get("sha256"), f"{label}.sha256")
+    return value
+
+
 def normalized_games(report, label):
     if not isinstance(report, dict):
         raise SystemExit(f"{label}: receipt must be an object")
+    if report.get("schema_version") != 1 or type(report.get("schema_version")) is not int:
+        raise SystemExit(f"{label}: wrong schema_version {report.get('schema_version')!r}")
     if report.get("engine_ref") != ENGINE_REF:
         raise SystemExit(f"{label}: wrong engine ref {report.get('engine_ref')!r}")
+    if report.get("agent_rng_seed") != EXPECTED_RNG_SEED or type(report.get("agent_rng_seed")) is not int:
+        raise SystemExit(f"{label}: wrong agent_rng_seed {report.get('agent_rng_seed')!r}")
 
     seeds = report.get("seeds")
     opponents = report.get("opponents")
     games = report.get("games")
-    if not isinstance(seeds, list) or not isinstance(opponents, list):
-        raise SystemExit(f"{label}: missing seeds/opponents metadata")
+    if not isinstance(seeds, list):
+        raise SystemExit(f"{label}: missing seeds metadata")
+    if not isinstance(opponents, dict):
+        raise SystemExit(f"{label}: opponents metadata must use native evaluator mapping")
     if not isinstance(games, list) or not games:
         raise SystemExit(f"{label}: missing games")
 
@@ -91,19 +109,12 @@ def normalized_games(report, label):
                 f"{label}.seeds[{index}]: unexpected seed {seed!r}; requested {expected!r}"
             )
 
-    if len(opponents) != len(EXPECTED_OPPONENTS):
-        raise SystemExit(f"{label}: requested opponent panel length mismatch")
-    seen_opponents = set()
-    for index, (opponent, expected) in enumerate(zip(opponents, EXPECTED_OPPONENTS)):
-        if not isinstance(opponent, str):
-            raise SystemExit(f"{label}.opponents[{index}]: expected string")
-        if opponent in seen_opponents:
-            raise SystemExit(f"{label}: duplicate opponent metadata {opponent!r}")
-        seen_opponents.add(opponent)
-        if opponent != expected:
-            raise SystemExit(
-                f"{label}.opponents[{index}]: unexpected opponent {opponent!r}; requested {expected!r}"
-            )
+    if set(opponents) != {EXPECTED_OPPONENT}:
+        raise SystemExit(
+            f"{label}: opponent metadata must contain exactly {EXPECTED_OPPONENT!r}"
+        )
+    strict_fingerprint(opponents[EXPECTED_OPPONENT], f"{label}.opponents[{EXPECTED_OPPONENT!r}]")
+    strict_fingerprint(report.get("candidate"), f"{label}.candidate")
 
     reproducibility = report.get("reproducibility")
     if not isinstance(reproducibility, dict) or reproducibility.get("same_trace_and_scores") is not True:
@@ -113,13 +124,13 @@ def normalized_games(report, label):
     for index, game in enumerate(games):
         if not isinstance(game, dict):
             raise SystemExit(f"{label}.games[{index}]: expected object")
-        if game.get("status") != "complete":
+        if game.get("status") != "complete" or not isinstance(game.get("status"), str):
             raise SystemExit(f"{label}.games[{index}]: incomplete status {game.get('status')!r}")
         if game.get("failure") is not None:
             raise SystemExit(f"{label}.games[{index}]: non-null failure {game.get('failure')!r}")
 
         opponent = game.get("opponent")
-        if not isinstance(opponent, str) or opponent not in EXPECTED_OPPONENTS:
+        if opponent != EXPECTED_OPPONENT or not isinstance(opponent, str):
             raise SystemExit(f"{label}.games[{index}]: undeclared opponent {opponent!r}")
         seed = strict_int(game.get("seed"), f"{label}.games[{index}].seed")
         if seed not in EXPECTED_SEEDS:
@@ -214,6 +225,10 @@ def main():
     candidate = normalized_games(candidate_raw, "candidate")
     if control.keys() != candidate.keys():
         raise SystemExit("paired cell key mismatch")
+    if control_raw["opponents"] != candidate_raw["opponents"]:
+        raise SystemExit("fixed cattle_on opponent fingerprint drifted across arms")
+    if control_raw["candidate"]["sha256"] == candidate_raw["candidate"]["sha256"]:
+        raise SystemExit("control/candidate fingerprints are identical; cattle A/B did not materialize")
 
     rows = []
     transitions = {}
@@ -272,11 +287,11 @@ def main():
         disposition = "HOLD_MARGIN_NEUTRAL"
 
     result = {
-        "schema": "titan-v31-a612-cattle-off-ab/v1",
+        "schema": "titan-v31-a612-cattle-off-ab/v2",
         "engine_ref": ENGINE_REF,
         "materialization": materialization,
         "seeds": list(EXPECTED_SEEDS),
-        "opponents": list(EXPECTED_OPPONENTS),
+        "opponents": [EXPECTED_OPPONENT],
         "cells": rows,
         "summary": {
             "paired_cells": len(rows),
