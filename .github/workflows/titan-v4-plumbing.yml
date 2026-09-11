@@ -151,3 +151,88 @@ jobs:
           python3 -m py_compile "$LAB/check_v4_plumbing.py"
           python3 -O "$LAB/check_v4_plumbing.py" \
             --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
+          python3 - <<'PY'
+          import ast
+          import pathlib
+          import sys
+
+          lab = pathlib.Path("revenue/kaggriculture/cloud-execution-lab/candidates/v3")
+          sys.path.insert(0, str(lab))
+          import build_v3
+
+          runtime = build_v3.package_files()["titan_runtime.py"].decode("utf-8")
+          tree = ast.parse(runtime, filename="titan_runtime.py")
+
+          def direct_names(target):
+              if isinstance(target, ast.Name):
+                  return {target.id}
+              if isinstance(target, (ast.Tuple, ast.List)):
+                  out = set()
+                  for item in target.elts:
+                      out.update(direct_names(item))
+                  return out
+              return set()
+
+          def final_live_class(name):
+              found = None
+              class_defs = []
+              for node in tree.body:
+                  if isinstance(node, ast.ClassDef):
+                      if node.name == name:
+                          class_defs.append(node)
+                          found = node
+                      continue
+                  if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                      if node.name == name:
+                          found = None
+                      continue
+                  if isinstance(node, ast.Assign):
+                      if any(name in direct_names(target) for target in node.targets):
+                          found = None
+                      continue
+                  if isinstance(node, ast.AnnAssign):
+                      if name in direct_names(node.target):
+                          found = None
+                      continue
+                  if isinstance(node, ast.AugAssign):
+                      if name in direct_names(node.target):
+                          found = None
+                      continue
+                  if isinstance(node, ast.Delete):
+                      if any(name in direct_names(target) for target in node.targets):
+                          found = None
+                      continue
+                  if isinstance(node, (ast.Import, ast.ImportFrom)):
+                      for alias in node.names:
+                          bound = alias.asname or alias.name.split(".", 1)[0]
+                          if bound == name:
+                              found = None
+              if len(class_defs) != 1 or found is not class_defs[0]:
+                  raise SystemExit(
+                      f"materialized titan_runtime.py has shadowed/rebound {name}; "
+                      "plumbing audit must bind the live runtime class"
+                  )
+              return found
+
+          for required in ("Features", "TitanAgent"):
+              final_live_class(required)
+
+          poison = ast.parse(
+              "class TitanAgent:\n    pass\nclass TitanAgent:\n    pass\n"
+          )
+          original = tree
+          tree = poison
+          try:
+              try:
+                  final_live_class("TitanAgent")
+              except SystemExit:
+                  pass
+              else:
+                  raise SystemExit(
+                      "internal class-binding regression: duplicate TitanAgent false-passed"
+                  )
+          finally:
+              tree = original
+
+          print("V4 LIVE CLASS BINDINGS OK", "Features", "TitanAgent")
+          PY
