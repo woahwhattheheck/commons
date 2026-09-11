@@ -53,6 +53,33 @@ class PlaceDeliveryCashMonotone(unittest.TestCase):
         out = lane.apply_place_delivery(observation, parent, enabled=True)
         self.assertIs(out, parent)
 
+    def test_out_of_board_sibling_actor_fails_closed_before_valid_overflow_rewrite(self):
+        tiles = [["LOCKED"] * 10 for _ in range(10)]
+        farm = {"tiles": tiles, "farmer": [4, 4], "hands": [[-1, 4]]}
+        prices = {product: 10 for product in r04.PRODUCTS}
+        prices["WOOL"] = 20
+        observation = {
+            "step": 718,
+            "player": 0,
+            "farms": [farm],
+            "private": {
+                "shed": {"WHEAT": 99},
+                "inventories": [{"WOOL": 2}, {}],
+            },
+            "market": {"prices": prices},
+        }
+        parent = {
+            "farmer": ["DROP"],
+            "hands": [["PASS"]],
+            "market": [["SELL", "WHEAT", 99], ["SELL", "WOOL", 1]],
+        }
+
+        # The farmer alone is a valid single-product overflow that would become
+        # PLACE WOOL 1. The malformed sibling geometry poisons the whole public
+        # actor surface, so the hotfix must preserve exact parent identity.
+        out = lane.apply_place_delivery(observation, parent, enabled=True)
+        self.assertIs(out, parent)
+
 
 if __name__ == "__main__":
     unittest.main()
