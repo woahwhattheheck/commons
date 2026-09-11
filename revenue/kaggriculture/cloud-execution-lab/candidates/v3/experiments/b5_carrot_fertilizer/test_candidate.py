@@ -68,6 +68,18 @@ class B5CarrotFertilizerTest(unittest.TestCase):
         obs["farms"][0]["farmer"] = [99, 99]
         self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [], "market": []})
 
+    def test_atomic_validation_rejects_later_malformed_actor(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        # Actor 0 is eligible, but a later explicit PASS actor is out of bounds.
+        obs = observation(carrot, hands=[[99, 99]], hand_inventories=[{"FERTILIZER": 1}])
+        self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS"]], "market": []})
+        # Same partial-mutation killer with a malformed later inventory mapping.
+        obs = observation(carrot, hands=[[0, 0]], hand_inventories=[None])
+        self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS"]], "market": []})
+        # A malformed later explicit command is also whole-action invalid, not ignorable.
+        obs = observation(carrot, hands=[[0, 0]], hand_inventories=[{"FERTILIZER": 1}])
+        self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [[None]], "market": []})
+
     def test_falsey_or_missing_command_never_fabricates_pass(self):
         carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
         for value in (None, [], ""):
