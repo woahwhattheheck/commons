@@ -1899,7 +1899,7 @@ GOOSE_RESCUE = False
 _TERMINAL_FERTILIZER_AGENT = None
 
 
-def v3_agent(observation, configuration=None):
+def _v3_lanes(observation, configuration=None):
     global SALE_HORIZON, _TERMINAL_FERTILIZER_AGENT
     if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE):
         return _v3_core(observation, configuration)
@@ -1926,12 +1926,28 @@ def v3_agent(observation, configuration=None):
     return action
 
 
+# V4 lane S3 (r04_s3_land, r04_s3_land.py): after the tape owns NE and SW, one BUY_LAND opens the
+# SE quadrant, which no authored tape routes to. It is a market append outside every other lane;
+# with the key off v3_agent() is _v3_lanes().
+S3_LAND = False
+
+
+def v3_agent(observation, configuration=None):
+    action = _v3_lanes(observation, configuration)
+    if S3_LAND:
+        import r04_s3_land
+        r04_s3_land.S3_LAND = True
+        action = r04_s3_land.apply_s3_land(observation, action)
+    return action
+
+
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
             sale_fertilizer=None, cattle_early=None, kill_late_water=None,
             strawberry_endgame=None, strawberry_max_plants=None,
             no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
             b5_carrot_fertilizer=None, b5_jit_fertilize=None, row_shed=None, fert_hand=None,
-            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):
+            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,
+            s3_land=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1951,8 +1967,11 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     dribble_dump caps the fragile goods' SELL rows per step (lane E1, r04_dribble_dump.py).
     mirror_horizon, terminal_fertilizer and goose_rescue switch the ASTRA lanes B11, B9 and H3c,
     applied around the whole agent in v3_agent().
+    s3_land (V4 lane S3) appends one BUY_LAND for the SE quadrant once NE and SW are owned
+    (r04_s3_land.py), outside every other lane.
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global S3_LAND
     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
     global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP, ROW_SHED
     global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, FERT_HAND, DRIBBLE_DUMP
@@ -2009,4 +2028,6 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         TERMINAL_FERTILIZER = bool(terminal_fertilizer)
     if goose_rescue is not None:
         GOOSE_RESCUE = bool(goose_rescue)
+    if s3_land is not None:
+        S3_LAND = bool(s3_land)
     return v3_agent

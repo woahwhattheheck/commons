@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "3f98599280dec218955ed4387be786c33cff070d97ef9e5ad3f7a39a74dfbbe3",
-    "bytes": 579495,
-    "files": 148
+    "sha256": "70c53945abed6185420d240340a7924b2560cbc3966e60c1171bb8df758bade7",
+    "bytes": 584449,
+    "files": 150
   },
   "releases": [
     {
@@ -390,6 +390,7 @@
     "checks/test_v3_r04_late_water.py": "c97206b9d5c4583dbfdc8476c77b204692f7049daa79705914f58ae0de3f7a91",
     "checks/test_v3_r04_no_late_advance.py": "dce65a47f2ba99fb0d22c43f5230998bb04664b2c6fe1943ba9ab0a0c00d72df",
     "checks/test_v3_r04_strawberry.py": "281aa36ff0d9f3dba33e3d41a7af7aeb74f70032ac215f67a3606a7c0f983e1c",
+    "checks/test_v4_s3_land.py": "c1cdcddd588e39e1c5b8304ed3ef270ff67f777f052e910d4a17af1765fa6010",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "h3c_goose_eod_cap_rescue.py": "582949e1ba4b2f65aa898a362929013fd9b96f8865582884c181972ffcba5fab",
@@ -401,13 +402,14 @@
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
     "r04_dribble_dump.py": "e65e0ad94de8cfc71393082dc12aa7c3ed0372599374a82c67a99e6251b95df4",
     "r04_fert_hand.py": "c34b1c3c58f58506ed66a6d551c6df8ac03d659b4373932cf58a464b631cead0",
-    "r04_full_router.py": "41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a",
+    "r04_full_router.py": "6e70d2c83b68d39758aa01b975d4e2bf4702d14aeae0fc1df751604a123ca1a4",
     "r04_h4_strawberry.py": "e7069b9a1c3909fa011d806708fc91cebc7ed36da29d78f77c9ae3789a882785",
     "r04_kill_late_water.py": "601170700110118b2d5692fb298ccc8fb3d3d3e3bab190c7113be3636f09b97d",
     "r04_no_late_sale_advance.py": "a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7",
+    "r04_s3_land.py": "1b6164be21be4852c78f344864dbff7ff6bf135f639bfc1dff4e47888b6b0c37",
     "r04_strawberry_endgame.py": "4f7abca92cb44793046524847cefab73d5fcb7d0d9a91e0d0c1434c7a7b98fea",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "0ea2e80a74f3ce4b7409f1ed42735945ab6b9d5040b8885ae6c585c320a464e2"
+    "apply_v3.py": "4c135c63046d14b54a2177aaf4a3a32700fbe0e119c3607b9b22c47ee3d3cda6"
   }
 }

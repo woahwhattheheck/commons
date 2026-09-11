@@ -49,6 +49,7 @@ PARAMS = {
     "r04_mirror_horizon": False,
     "r04_terminal_fertilizer": True,
     "r04_goose_rescue": True,
+    "r04_s3_land": False,
 }
 
 FIELDS = (
@@ -97,6 +98,7 @@ FIELDS = (
     "    r04_mirror_horizon: bool = False\n"
     "    r04_terminal_fertilizer: bool = True\n"
     "    r04_goose_rescue: bool = True\n"
+    "    r04_s3_land: bool = False\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -231,7 +233,8 @@ RUNTIME_METHODS = (
     "                                 dribble_dump=bool(self.features.r04_dribble_dump),\n"
     "                                 mirror_horizon=bool(self.features.r04_mirror_horizon),\n"
     "                                 terminal_fertilizer=bool(self.features.r04_terminal_fertilizer),\n"
-    "                                 goose_rescue=bool(self.features.r04_goose_rescue))(observation, configuration)\n"
+    "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
+    "                                 s3_land=bool(self.features.r04_s3_land))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -252,6 +255,7 @@ RUNTIME_METHODS = (
     "                self.diagnostics['mirror_horizon'] = bool(self.features.r04_mirror_horizon)\n"
     "                self.diagnostics['terminal_fertilizer'] = bool(self.features.r04_terminal_fertilizer)\n"
     "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
+    "                self.diagnostics['s3_land'] = bool(self.features.r04_s3_land)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -524,6 +528,20 @@ RELEASE_NOTE = (
 "Key `r04_mirror_horizon` (B11, shipped off; overlay/b11_mirror_horizon.py, blob 94b270f3): sale\n"
 "horizon 10 for a callback after eight consecutive exact public farm mirrors.\n"
 "Checks: `checks/test_v31_astra_lanes.py`.\n"
+"\n"
+"V4 lanes (branch titan/v4-20260911; docs/V4.md):\n"
+"\n"
+"Key `r04_s3_land` (S3, shipped off; overlay/r04_s3_land.py): once the farm owns NE and SW, one\n"
+"BUY_LAND is appended outside every other lane, so it can only buy SE ($4,000), which no authored\n"
+"tape routes to. It goes out only in hours 0-5 of a day with day % 3 == 0, up to step 480, when money\n"
+"covers SE plus a 3,000 reserve, no BUY_LAND is queued and an order slot is free. The engine draws the\n"
+"town's next shop from the same nightly stream that draws one number per empty tile, so SE left\n"
+"empty on a shop night changes the town for both players; the buy day leaves three whole days before\n"
+"the next shop night, and se_empty() / shop_draw_tonight() give the SE operator the zero-empty rule.\n"
+"V219's day-18 tomato program buys SE itself, so S3 waits while three PIZZA_SHOP / FARMERS_MARKET\n"
+"could still be unlocked by day 18, stays out of hours 0-3 of day 18, and on day 18 buys in hours 4-5\n"
+"only when V219 left SE locked. S3 is gated only together with the SE operator.\n"
+"Checks: `checks/test_v4_s3_land.py`.\n"
 )
 
 
