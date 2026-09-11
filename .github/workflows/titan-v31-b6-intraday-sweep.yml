@@ -1,0 +1,38 @@
+name: titan-v31-b6-intraday-sweep
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_intraday_sweep/**'
+      - '.github/workflows/titan-v31-b6-intraday-sweep.yml'
+  push:
+    branches:
+      - 'astra/v31-b6-intraday-market-sweep-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_intraday_sweep/**'
+      - '.github/workflows/titan-v31-b6-intraday-sweep.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused B6 predecessor suite
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_intraday_sweep
+          -p 'test_*.py'
+      - name: Optimization-safe focused suite
+        env:
+          PYTHONOPTIMIZE: '1'
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_intraday_sweep
+          -p 'test_*.py'
