@@ -1,0 +1,254 @@
+name: TITAN V3.1 B5 a612 materialized screen
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-b5-a612-materialized-screen.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_a612_screen/paired_report.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  exact-current-canonical-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout literal evidence head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind canonical parent, evidence-only scope, and repaired B5 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          B5='15e8367e4d3fff41e7e6eb2d088327f558764454'
+          CAND='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_carrot_fertilizer/candidate.py'
+          TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_carrot_fertilizer/test_candidate.py'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git cat-file -e "$B5^{commit}"
+          test "$(git show "$B5:$CAND" | git hash-object --stdin)" = '4e4f9d490332f075cf50df595cb7a067d6236066'
+          test "$(git show "$B5:$TEST" | git hash-object --stdin)" = '234261f4301daf02bdbd7806cca4418f31cf7c75'
+          git diff --name-only "$BASE"...HEAD > /tmp/b5-a612-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/b5-a612-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-b5-a612-materialized-screen.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_a612_screen/paired_report.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'wrong B5 a612 evidence scope: actual={sorted(actual)!r} expected={sorted(expected)!r}')
+          print('B5 A612 EVIDENCE SCOPE OK', len(actual))
+          PY
+
+      - name: Prove canonical package receipts before materialization
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B build_v3.py --check
+          test -z "$(git status --porcelain)"
+
+      - name: Materialize current package bytes and exact repaired B5 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          B5='15e8367e4d3fff41e7e6eb2d088327f558764454'
+          CAND="$V3/experiments/b5_carrot_fertilizer/candidate.py"
+          TEST="$V3/experiments/b5_carrot_fertilizer/test_candidate.py"
+          V3_ABS="$(cd "$V3" && pwd)"
+          V3_ABS="$V3_ABS" python3 -B - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import sys
+
+          source = Path(os.environ['V3_ABS'])
+          sys.path.insert(0, str(source))
+          import build_v3
+
+          root = Path('/tmp/b5pkg')
+          root.mkdir(parents=True, exist_ok=True)
+          files = build_v3.package_files()
+          required = {
+              'r04_full_router.py': '99dfec07bf48955a1a1c5d8974082174ff48263deea9c299d39234a47b4e19b1',
+              'r04_h4_strawberry.py': 'e7069b9a1c3909fa011d806708fc91cebc7ed36da29d78f77c9ae3789a882785',
+              'r04_no_late_sale_advance.py': 'a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7',
+          }
+          for name, digest in required.items():
+              actual = hashlib.sha256(files[name]).hexdigest()
+              if actual != digest:
+                  raise SystemExit(f'materialized {name} mismatch: {actual} != {digest}')
+          for name, data in files.items():
+              path = root / name
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_bytes(data)
+
+          config_path = root / 'TITAN-CONFIG.json'
+          config = json.loads(config_path.read_text(encoding='utf-8'))
+          expected = {
+              'r04_sale_window': False,
+              'r04_sale_horizon': 8,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'r04_no_late_sale_advance': True,
+              'r04_no_late_sale_advance_step': 648,
+              'r04_strawberry_topup': True,
+          }
+          for key, value in expected.items():
+              if config.get(key) != value or type(config.get(key)) is not type(value):
+                  raise SystemExit(f'canonical config mismatch {key}: {config.get(key)!r} != {value!r}')
+          # Match the preferred score-facing cattle-off tuple without mutating repository/package inputs.
+          config['r04_sale_window'] = True
+          config['r04_sale_horizon'] = 8
+          config['r04_sale_fertilizer'] = True
+          config['r04_cattle_early'] = False
+          config_path.write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
+          print('MATERIALIZED A612 SCORE TUPLE OK', {k: config[k] for k in expected})
+          PY
+
+          mkdir -p /tmp/b5pkg/experiments/b5_carrot_fertilizer
+          git show "$B5:$CAND" > /tmp/b5pkg/experiments/b5_carrot_fertilizer/candidate.py
+          git show "$B5:$TEST" > /tmp/b5pkg/experiments/b5_carrot_fertilizer/test_candidate.py
+
+          cat > /tmp/b5pkg/experiments/b5_carrot_fertilizer/a612_baseline.py <<'PY'
+          from pathlib import Path
+          import sys
+          ROOT = Path(__file__).resolve().parents[2]
+          if str(ROOT) not in sys.path:
+              sys.path.insert(0, str(ROOT))
+          import r04_full_router as base
+
+          SCORE_TUPLE = dict(
+              horizon=8,
+              opening=0,
+              row_order=True,
+              evening_flush=True,
+              sale_fertilizer=True,
+              cattle_early=False,
+              kill_late_water=False,
+              strawberry_endgame=False,
+              strawberry_max_plants=8,
+              no_late_sale_advance=True,
+              no_late_sale_advance_step=648,
+              strawberry_topup=True,
+          )
+          _PARENT = base.install(**SCORE_TUPLE)
+
+          def agent(observation, configuration=None):
+              return _PARENT(observation, configuration)
+          PY
+
+          cat > /tmp/b5pkg/experiments/b5_carrot_fertilizer/a612_candidate.py <<'PY'
+          # Import reviewed B5 first; it initializes the legacy parent tuple. Importing
+          # a612_baseline second deliberately resets every current R04/H4/L3 flag to the
+          # score-facing canonical tuple. Only apply_carrot_fertilizer() is reused below.
+          import candidate as reviewed_b5
+          import a612_baseline as current
+
+          def agent(observation, configuration=None):
+              return reviewed_b5.apply_carrot_fertilizer(
+                  observation, current.agent(observation, configuration)
+              )
+          PY
+
+      - name: Run repaired B5 focused predecessors against materialized current modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/b5pkg/experiments/b5_carrot_fertilizer
+          python3 -B -m unittest -v test_candidate.py
+
+      - name: Prepare pinned official interpreter cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run matched current-canonical control panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='/tmp/b5pkg/experiments/b5_carrot_fertilizer/a612_baseline.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$BASE" \
+            --opponent "a612-score=$BASE" \
+            --seeds 2611152101,2611152102,2611152103,2611152104,2611152105,2611152106,2611152107,2611152108 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/b5-a612-control.json
+
+      - name: Run B5 on the identical current-canonical cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='/tmp/b5pkg/experiments/b5_carrot_fertilizer/a612_baseline.py'
+          CAND='/tmp/b5pkg/experiments/b5_carrot_fertilizer/a612_candidate.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$CAND" \
+            --opponent "a612-score=$BASE" \
+            --seeds 2611152101,2611152102,2611152103,2611152104,2611152105,2611152106,2611152107,2611152108 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/b5-a612-candidate.json
+
+      - name: Derive strict paired interaction verdict
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_a612_screen/paired_report.py \
+            /tmp/b5-a612-control.json /tmp/b5-a612-candidate.json \
+            --json-out /tmp/b5-a612-report.json \
+            --markdown-out /tmp/b5-a612-report.md
+          cat /tmp/b5-a612-report.md
+          cat /tmp/b5-a612-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: b5-a612-screen-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            /tmp/b5-a612-control.json
+            /tmp/b5-a612-candidate.json
+            /tmp/b5-a612-report.json
+            /tmp/b5-a612-report.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            printf 'Canonical package parent: `a6120d0ea1bdb75eb0da2239220efce551f624a6`; reviewed B5 transform source: `15e8367e4d3fff41e7e6eb2d088327f558764454`.\n\n'
+            cat /tmp/b5-a612-report.md
+            printf '\nThis is a current-canonical interaction screen only. Opponent-diverse D3 product-externality evidence remains required before integration.\n'
+          } > /tmp/b5-a612-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/b5-a612-comment.md
+
+      - name: Prove repository checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
