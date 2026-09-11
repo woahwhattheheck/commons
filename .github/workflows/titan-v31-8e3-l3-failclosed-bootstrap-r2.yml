@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          BASE='0fc8ea0d399a9506873f7249415e2491db2ff565'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
           CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
@@ -43,6 +43,7 @@ jobs:
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
           test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
+          test "$(git rev-parse "$BASE:.github/workflows/titan-v31-canonical-base-recovery.yml")" = 'dd8711297b18b6703677da0bc4eb14c9178ac67d'
           test "$(git rev-parse "$BASE:$ROUTER")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
           test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
           test "$(git rev-parse "$BASE:$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
@@ -265,10 +266,17 @@ jobs:
                     print('L3_R4_FINAL_CONFIG_PRESERVED_B5_JIT_OK')
                     PY
 
-                - name: Prove checkout stayed clean
+                - name: Recheck live roots and prove checkout stayed clean
                   shell: bash
                   run: |
                     set -euo pipefail
+                    EXPECTED_BASE='__EVENT_BASE_EXPR__'
+                    BASE_REF='__EVENT_BASE_REF_EXPR__'
+                    CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
+                    git fetch --no-tags origin "$BASE_REF"
+                    test "$(git rev-parse FETCH_HEAD)" = "$EXPECTED_BASE"
+                    test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
+                    test "$(git merge-base "$CANONICAL" "$EXPECTED_BASE")" = "$CANONICAL"
                     test -z "$(git status --porcelain)"
           YAML
           ROUTER_BLOB="$(git hash-object "$V3/overlay/r04_full_router.py")"
@@ -293,8 +301,8 @@ jobs:
                   raise SystemExit(f'invalid blob {key}={value!r}')
           expected_counts = {
               '__EVENT_HEAD_EXPR__': 2,
-              '__EVENT_BASE_EXPR__': 1,
-              '__EVENT_BASE_REF_EXPR__': 1,
+              '__EVENT_BASE_EXPR__': 2,
+              '__EVENT_BASE_REF_EXPR__': 2,
               '__FILES_BLOB__': 1,
               '__MANIFEST_BLOB__': 1,
               '__ROUTER_BLOB__': 1,
@@ -315,7 +323,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          BASE='0fc8ea0d399a9506873f7249415e2491db2ff565'
           CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
           GATE='.github/workflows/titan-v31-current-l3-failclosed-package.yml'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
@@ -383,7 +391,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          BASE='0fc8ea0d399a9506873f7249415e2491db2ff565'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
           CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
           git fetch --no-tags origin "$BASE_REF"
