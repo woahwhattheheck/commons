@@ -154,6 +154,14 @@ class PlaceDelivery(unittest.TestCase):
         obs["farms"][0]["farmer"] = [4]
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_out_of_bounds_worker_position_fails_closed_to_exact_parent(self):
+        for position in ([-1, 4], [10, 4], [4, -1], [4, 10]):
+            with self.subTest(position=position):
+                parent = action(["DROP"], [["PASS"]])
+                obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+                obs["farms"][0]["hands"][0] = list(position)
+                self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_malformed_board_shape_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
