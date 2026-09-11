@@ -45,23 +45,36 @@ jobs:
       - name: Compile and run focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
         shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
         run: |
           set -euo pipefail
-          python -B -m py_compile candidate.py test_candidate.py
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in ('candidate.py', 'test_candidate.py'):
+              source = Path(name).read_text(encoding='utf-8')
+              compile(source, name, 'exec')
+          PY
+          test ! -d __pycache__
           python -B -m unittest -v test_candidate.py
+          test ! -d __pycache__
 
       - name: Optimization-safe focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
         env:
           PYTHONOPTIMIZE: '1'
+          PYTHONDONTWRITEBYTECODE: '1'
         shell: bash
         run: |
           set -euo pipefail
           python -B -m unittest -v test_candidate.py
+          test ! -d __pycache__
 
       - name: Prove evaluator tuple and package neutrality
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
         run: |
           set -euo pipefail
           python -B - <<'PY'
