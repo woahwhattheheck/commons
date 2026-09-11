@@ -46,13 +46,14 @@ jobs:
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/candidate.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/h3c_goose_eod_cap_rescue.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/realization_report.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec/test_realization_report.py',
           }
           if actual != expected:
               raise SystemExit(f'wrong H3c a612 execution scope: {sorted(actual)!r}')
           print('H3C_A612_SCOPE_OK', len(actual))
           PY
 
-      - name: Compile evidence carrier without dirtying checkout
+      - name: Compile and test evidence carrier without dirtying checkout
         shell: bash
         run: |
           set -euo pipefail
@@ -62,6 +63,9 @@ jobs:
           for path in sorted(root.glob('*.py')):
               compile(path.read_text(encoding='utf-8'), str(path), 'exec')
           PY
+          python3 -B -m unittest -q \
+            revenue.kaggriculture.cloud-execution-lab.candidates.v3.experiments.h3c_goose_a612_exec.test_realization_report || \
+            (cd revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_a612_exec && python3 -B -m unittest -q test_realization_report.py)
           test -z "$(git status --porcelain)"
 
       - name: Prepare pinned official interpreter cache
@@ -70,6 +74,14 @@ jobs:
           set -euo pipefail
           python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
             --prepare-engine /tmp/kag-engine
+
+      - name: Require pinned canonical is still live before evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
 
       - name: Run exact a612 policy self-play control
         shell: bash
@@ -113,6 +125,14 @@ jobs:
           cat /tmp/h3c-a612-realization.md
           cat /tmp/h3c-a612-realization.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Recheck canonical before publishing any receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+
       - name: Retain exact receipts
         uses: actions/upload-artifact@v4
         with:
@@ -132,6 +152,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/h3c-a612-realization.md
