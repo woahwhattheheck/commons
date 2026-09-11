@@ -5,8 +5,9 @@ This is the repaired H3b theorem from #12457, ported as a V4 default-OFF
 post-policy transform. It never adds workers, animals, land, seed, market rows,
 or service work. A V233 sheep worker may only swap one already-authored
 HARVEST target for another sheep in the same assigned block when that sheep is
-provably due to lose held WOOL at tonight's production refresh and movement plus
-the HARVEST callback both fit before end-of-day.
+provably due to lose held WOOL at tonight's production refresh. Movement
+reroutes are restricted to an adjacent urgent sheep: V233 reselects its target
+every callback, so a longer walk is not persistence-safe without a target lock.
 
 Disabled, malformed, nonstandard, stale-snapshot, service-debt, cargo-return,
 setup, final-day, and unreachable paths preserve the exact parent action object.
@@ -200,12 +201,16 @@ def apply_h3b_sheep_clip(action: Any, observation: Any, configuration=None, *, e
         if not (0 <= pos[0] < board_size and 0 <= pos[1] < board_size):
             return action
 
-        # Repair from #12457: movement plus the HARVEST callback must both fit.
+        # V233 chooses min(tasks) afresh on every callback.  H3b has no target
+        # latch, so a multi-step detour can be immediately reversed by V233 and
+        # lose both the parent harvest and the clipping rescue.  Restrict movement
+        # overrides to an adjacent urgent target; after that one move the next
+        # callback sees distance zero and V233 itself authors HARVEST there.
         remaining_callbacks = 24 - hour
         reachable = []
         for row in urgent:
             distance = abs(pos[0] - row[1][0]) + abs(pos[1] - row[1][1])
-            if distance + 1 <= remaining_callbacks:
+            if distance == 0 or (distance == 1 and remaining_callbacks >= 2):
                 reachable.append(row)
         if not reachable:
             telemetry["deadline_declines"] += 1
