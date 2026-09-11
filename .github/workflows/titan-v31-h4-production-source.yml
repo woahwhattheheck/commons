@@ -1,0 +1,46 @@
+name: titan-v31-h4-production-source
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_h4_production_wiring_source.py'
+      - '.github/workflows/titan-v31-h4-production-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  h4-production-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind exact reviewed H4 blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = "ecad11eb195a82273f73b78ac7b319552a27cbcd"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/r04_h4_strawberry.py)" = "ecad11eb195a82273f73b78ac7b319552a27cbcd"
+          echo H4_REVIEWED_BLOB_OK
+
+      - name: Run H4 production source contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v tooling_tests/test_h4_production_wiring_source.py |& tee /tmp/h4-production-source.log
+          grep -F 'Ran 4 tests' /tmp/h4-production-source.log
+          grep -F 'OK' /tmp/h4-production-source.log
+
+      - name: Prove source checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"

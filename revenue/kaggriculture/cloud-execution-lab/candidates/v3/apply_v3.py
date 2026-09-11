@@ -63,6 +63,8 @@ FIELDS = (
     "    r03_full_router: bool = False\n"
     "    # R04 the R03 policy with the E184 sale window outermost (Gluzdov, Apache-2.0): whole-route delegate.\n"
     "    r04_sale_window: bool = False\n"
+    "    # H4 is subordinate to R04: same-row STRAWBERRY top-up from reviewed future-sale debt logic.\n"
+    "    r04_strawberry_topup: bool = False\n"
     "    r04_sale_horizon: int = 8\n"
     "    r04_open_roundtrip: int = 0\n"
     "    r04_row_order: bool = True\n"
@@ -166,8 +168,9 @@ RUNTIME_METHODS = (
     "\n"
     "        Key r03_full_router runs the base rules and the nine additive layers exactly as published;\n"
     "        key r04_sale_window runs the same policy with the E184 sale window outermost, at horizon\n"
-    "        r04_sale_horizon.  Both run on the observation and configuration the entrypoint received;\n"
-    "        the canonical controller is never built while either key is on.  A raised error returns a\n"
+    "        r04_sale_horizon. H4 is a subordinate R04 wrapper selected only by r04_strawberry_topup.\n"
+    "        Both run on the observation and configuration the entrypoint received; the canonical\n"
+    "        controller is never built while either route key is on. A raised error returns a\n"
     "        legal PASS (the terminal liquidation fallback on the last decision step) and is recorded.\n"
     "        \"\"\"\n"
     "        started = invoked if entry_started is None else min(invoked, float(entry_started))\n"
@@ -182,19 +185,30 @@ RUNTIME_METHODS = (
     "                            'entrypoint_prelude_seconds': invoked-started, 'route': route}\n"
     "        try:\n"
     "            if route == 'r04_sale_window':\n"
-    "                from r04_full_router import install\n"
-    "                output = install(self, int(self.features.r04_sale_horizon),\n"
-    "                                 int(self.features.r04_open_roundtrip),\n"
-    "                                 bool(self.features.r04_row_order),\n"
-    "                                 bool(self.features.r04_evening_flush),\n"
-    "                                 bool(self.features.r04_sale_fertilizer),\n"
-    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\n"
+    "                if bool(self.features.r04_strawberry_topup):\n"
+    "                    from r04_h4_strawberry import install\n"
+    "                    output = install(self, int(self.features.r04_sale_horizon),\n"
+    "                                     int(self.features.r04_open_roundtrip),\n"
+    "                                     bool(self.features.r04_row_order),\n"
+    "                                     bool(self.features.r04_evening_flush),\n"
+    "                                     bool(self.features.r04_sale_fertilizer),\n"
+    "                                     bool(self.features.r04_cattle_early),\n"
+    "                                     True)(observation, configuration)\n"
+    "                else:\n"
+    "                    from r04_full_router import install\n"
+    "                    output = install(self, int(self.features.r04_sale_horizon),\n"
+    "                                     int(self.features.r04_open_roundtrip),\n"
+    "                                     bool(self.features.r04_row_order),\n"
+    "                                     bool(self.features.r04_evening_flush),\n"
+    "                                     bool(self.features.r04_sale_fertilizer),\n"
+    "                                     bool(self.features.r04_cattle_early))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
     "                self.diagnostics['sale_fertilizer'] = bool(self.features.r04_sale_fertilizer)\n"
     "                self.diagnostics['cattle_early'] = bool(self.features.r04_cattle_early)\n"
+    "                self.diagnostics['strawberry_topup'] = bool(self.features.r04_strawberry_topup)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -343,9 +357,12 @@ RELEASE_NOTE = (
     "lets the sale window advance FERTILIZER, which the published window skips with WHEAT.\n"
     "`r04_cattle_early` (default True) also runs V231's bounded sheep-to-cow swap at the day-8\n"
     "purchase (steps 190-215) when both of the first two shops consume MILK and neither is the\n"
-    "YARN_STORE; the published day-9 window is unchanged. With either key on the canonical\n"
-    "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
-    "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
+    "YARN_STORE; the published day-9 window is unchanged. `r04_strawberry_topup` (default False)\n"
+    "selects the reviewed H4 wrapper only while R04 itself is active; H4 reuses one current\n"
+    "STRAWBERRY SELL row to reserve stock-backed, already-planned future strawberry sales and\n"
+    "writes the same per-due-step debt before row-order/evening-flush processing. With either\n"
+    "route key on the canonical controller never runs; R04 takes precedence over R03, and both\n"
+    "over R01. Attribution is appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
 )
 
 
@@ -471,7 +488,7 @@ def apply(src):
 
     cfg_path = os.path.join(src, "TITAN-CONFIG.json")
     data = json.loads(io.open(cfg_path, encoding="utf-8").read())
-    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank", "r03_full_router", "r04_sale_window"):
+    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank", "r03_full_router", "r04_sale_window", "r04_strawberry_topup"):
         assert key not in data, key
         data[key] = False
     for key, value in PARAMS.items():
